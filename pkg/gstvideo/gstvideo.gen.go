@@ -5300,7 +5300,7 @@ func VideoMultiviewGetDoubledHeightModes() *gobject.Value {
 
 	var goret *gobject.Value
 
-	goret = gobject.UseAnyInstead(unsafe.Pointer(cret))
+	goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -5316,7 +5316,7 @@ func VideoMultiviewGetDoubledSizeModes() *gobject.Value {
 
 	var goret *gobject.Value
 
-	goret = gobject.UseAnyInstead(unsafe.Pointer(cret))
+	goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -5332,7 +5332,7 @@ func VideoMultiviewGetDoubledWidthModes() *gobject.Value {
 
 	var goret *gobject.Value
 
-	goret = gobject.UseAnyInstead(unsafe.Pointer(cret))
+	goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -5348,7 +5348,7 @@ func VideoMultiviewGetMonoModes() *gobject.Value {
 
 	var goret *gobject.Value
 
-	goret = gobject.UseAnyInstead(unsafe.Pointer(cret))
+	goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -5364,7 +5364,7 @@ func VideoMultiviewGetUnpackedModes() *gobject.Value {
 
 	var goret *gobject.Value
 
-	goret = gobject.UseAnyInstead(unsafe.Pointer(cret))
+	goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -8336,7 +8336,7 @@ func VideoOverlayInstanceSetProperty(object gobject.Object, lastPropId int, prop
 	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(object))
 	carg2 = C.gint(lastPropId)
 	carg3 = C.guint(propertyId)
-	carg4 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg4 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_video_overlay_set_property(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(object)

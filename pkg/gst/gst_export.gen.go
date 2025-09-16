@@ -198,8 +198,8 @@ func _gotk4_gst1_IteratorFoldFunction(carg1 *C.GValue, carg2 *C.GValue, carg3 C.
 	var ret   *gobject.Value // in, none, converted
 	var goret bool           // return
 
-	item = gobject.UseAnyInstead(unsafe.Pointer(carg1))
-	ret = gobject.UseAnyInstead(unsafe.Pointer(carg2))
+	item = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg1))
+	ret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
 
 	goret = fn(item, ret)
 
@@ -223,7 +223,7 @@ func _gotk4_gst1_IteratorForEachFunction(carg1 *C.GValue, carg2 C.gpointer) {
 
 	var item *gobject.Value // in, none, converted
 
-	item = gobject.UseAnyInstead(unsafe.Pointer(carg1))
+	item = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg1))
 
 	fn(item)
 }
@@ -435,7 +435,7 @@ func _gotk4_gst1_StructureFilterMapFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C
 	var goret   bool           // return
 
 	fieldId = glib.Quark(carg1)
-	value = gobject.UseAnyInstead(unsafe.Pointer(carg2))
+	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
 
 	goret = fn(fieldId, value)
 
@@ -462,7 +462,7 @@ func _gotk4_gst1_StructureForEachFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.g
 	var goret   bool           // return
 
 	fieldId = glib.Quark(carg1)
-	value = gobject.UseAnyInstead(unsafe.Pointer(carg2))
+	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
 
 	goret = fn(fieldId, value)
 
@@ -489,7 +489,7 @@ func _gotk4_gst1_StructureMapFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.gpoin
 	var goret   bool           // return
 
 	fieldId = glib.Quark(carg1)
-	value = gobject.UseAnyInstead(unsafe.Pointer(carg2))
+	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
 
 	goret = fn(fieldId, value)
 

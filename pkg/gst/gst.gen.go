@@ -6787,7 +6787,7 @@ func TagMergeStringsWithComma(src *gobject.Value) gobject.Value {
 	var carg2 *C.GValue // in, none, converted
 	var carg1 C.GValue  // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
 
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(src))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(src))
 
 	C.gst_tag_merge_strings_with_comma(&carg1, carg2)
 	runtime.KeepAlive(src)
@@ -6817,7 +6817,7 @@ func TagMergeUseFirst(src *gobject.Value) gobject.Value {
 	var carg2 *C.GValue // in, none, converted
 	var carg1 C.GValue  // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
 
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(src))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(src))
 
 	C.gst_tag_merge_use_first(&carg1, carg2)
 	runtime.KeepAlive(src)
@@ -7817,8 +7817,8 @@ func ValueCanCompare(value1 *gobject.Value, value2 *gobject.Value) bool {
 	var carg2 *C.GValue  // in, none, converted
 	var cret  C.gboolean // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value1))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value2))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value1))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value2))
 
 	cret = C.gst_value_can_compare(carg1, carg2)
 	runtime.KeepAlive(value1)
@@ -7852,8 +7852,8 @@ func ValueCanIntersect(value1 *gobject.Value, value2 *gobject.Value) bool {
 	var carg2 *C.GValue  // in, none, converted
 	var cret  C.gboolean // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value1))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value2))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value1))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value2))
 
 	cret = C.gst_value_can_intersect(carg1, carg2)
 	runtime.KeepAlive(value1)
@@ -7885,8 +7885,8 @@ func ValueCanSubtract(minuend *gobject.Value, subtrahend *gobject.Value) bool {
 	var carg2 *C.GValue  // in, none, converted
 	var cret  C.gboolean // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(minuend))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(subtrahend))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(minuend))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(subtrahend))
 
 	cret = C.gst_value_can_subtract(carg1, carg2)
 	runtime.KeepAlive(minuend)
@@ -7924,8 +7924,8 @@ func ValueCanUnion(value1 *gobject.Value, value2 *gobject.Value) bool {
 	var carg2 *C.GValue  // in, none, converted
 	var cret  C.gboolean // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value1))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value2))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value1))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value2))
 
 	cret = C.gst_value_can_union(carg1, carg2)
 	runtime.KeepAlive(value1)
@@ -7961,8 +7961,8 @@ func ValueCompare(value1 *gobject.Value, value2 *gobject.Value) int {
 	var carg2 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value1))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value2))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value1))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value2))
 
 	cret = C.gst_value_compare(carg1, carg2)
 	runtime.KeepAlive(value1)
@@ -8033,8 +8033,8 @@ func ValueFixate(dest *gobject.Value, src *gobject.Value) bool {
 	var carg2 *C.GValue  // in, none, converted
 	var cret  C.gboolean // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(dest))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(src))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(dest))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(src))
 
 	cret = C.gst_value_fixate(carg1, carg2)
 	runtime.KeepAlive(dest)
@@ -8069,9 +8069,9 @@ func ValueFractionMultiply(product *gobject.Value, factor1 *gobject.Value, facto
 	var carg3 *C.GValue  // in, none, converted
 	var cret  C.gboolean // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(product))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(factor1))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibNone(factor2))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(product))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(factor1))
+	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(factor2))
 
 	cret = C.gst_value_fraction_multiply(carg1, carg2, carg3)
 	runtime.KeepAlive(product)
@@ -8106,9 +8106,9 @@ func ValueFractionSubtract(dest *gobject.Value, minuend *gobject.Value, subtrahe
 	var carg3 *C.GValue  // in, none, converted
 	var cret  C.gboolean // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(dest))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(minuend))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibNone(subtrahend))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(dest))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(minuend))
+	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(subtrahend))
 
 	cret = C.gst_value_fraction_subtract(carg1, carg2, carg3)
 	runtime.KeepAlive(dest)
@@ -8139,7 +8139,7 @@ func ValueGetBitmask(value *gobject.Value) uint64 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.guint64 // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_bitmask(carg1)
 	runtime.KeepAlive(value)
@@ -8168,7 +8168,7 @@ func ValueGetCaps(value *gobject.Value) *Caps {
 	var carg1 *C.GValue  // in, none, converted
 	var cret  *C.GstCaps // return, none, converted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_caps(carg1)
 	runtime.KeepAlive(value)
@@ -8195,7 +8195,7 @@ func ValueGetCapsFeatures(value *gobject.Value) *CapsFeatures {
 	var carg1 *C.GValue          // in, none, converted
 	var cret  *C.GstCapsFeatures // return, none, converted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_caps_features(carg1)
 	runtime.KeepAlive(value)
@@ -8222,7 +8222,7 @@ func ValueGetDoubleRangeMax(value *gobject.Value) float64 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gdouble // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_double_range_max(carg1)
 	runtime.KeepAlive(value)
@@ -8249,7 +8249,7 @@ func ValueGetDoubleRangeMin(value *gobject.Value) float64 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gdouble // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_double_range_min(carg1)
 	runtime.KeepAlive(value)
@@ -8276,7 +8276,7 @@ func ValueGetFlagsetFlags(value *gobject.Value) uint {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.guint   // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_flagset_flags(carg1)
 	runtime.KeepAlive(value)
@@ -8303,7 +8303,7 @@ func ValueGetFlagsetMask(value *gobject.Value) uint {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.guint   // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_flagset_mask(carg1)
 	runtime.KeepAlive(value)
@@ -8330,7 +8330,7 @@ func ValueGetFractionDenominator(value *gobject.Value) int {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_fraction_denominator(carg1)
 	runtime.KeepAlive(value)
@@ -8357,7 +8357,7 @@ func ValueGetFractionNumerator(value *gobject.Value) int {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_fraction_numerator(carg1)
 	runtime.KeepAlive(value)
@@ -8384,14 +8384,14 @@ func ValueGetFractionRangeMax(value *gobject.Value) *gobject.Value {
 	var carg1 *C.GValue // in, none, converted
 	var cret  *C.GValue // return, none, converted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_fraction_range_max(carg1)
 	runtime.KeepAlive(value)
 
 	var goret *gobject.Value
 
-	goret = gobject.UseAnyInstead(unsafe.Pointer(cret))
+	goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -8411,14 +8411,14 @@ func ValueGetFractionRangeMin(value *gobject.Value) *gobject.Value {
 	var carg1 *C.GValue // in, none, converted
 	var cret  *C.GValue // return, none, converted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_fraction_range_min(carg1)
 	runtime.KeepAlive(value)
 
 	var goret *gobject.Value
 
-	goret = gobject.UseAnyInstead(unsafe.Pointer(cret))
+	goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -8438,7 +8438,7 @@ func ValueGetInt64RangeMax(value *gobject.Value) int64 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint64  // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_int64_range_max(carg1)
 	runtime.KeepAlive(value)
@@ -8465,7 +8465,7 @@ func ValueGetInt64RangeMin(value *gobject.Value) int64 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint64  // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_int64_range_min(carg1)
 	runtime.KeepAlive(value)
@@ -8492,7 +8492,7 @@ func ValueGetInt64RangeStep(value *gobject.Value) int64 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint64  // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_int64_range_step(carg1)
 	runtime.KeepAlive(value)
@@ -8519,7 +8519,7 @@ func ValueGetIntRangeMax(value *gobject.Value) int {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_int_range_max(carg1)
 	runtime.KeepAlive(value)
@@ -8546,7 +8546,7 @@ func ValueGetIntRangeMin(value *gobject.Value) int {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_int_range_min(carg1)
 	runtime.KeepAlive(value)
@@ -8573,7 +8573,7 @@ func ValueGetIntRangeStep(value *gobject.Value) int {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_int_range_step(carg1)
 	runtime.KeepAlive(value)
@@ -8600,7 +8600,7 @@ func ValueGetStructure(value *gobject.Value) *Structure {
 	var carg1 *C.GValue       // in, none, converted
 	var cret  *C.GstStructure // return, none, converted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_get_structure(carg1)
 	runtime.KeepAlive(value)
@@ -8628,7 +8628,7 @@ func ValueInitAndCopy(src *gobject.Value) gobject.Value {
 	var carg2 *C.GValue // in, none, converted
 	var carg1 C.GValue  // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
 
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(src))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(src))
 
 	C.gst_value_init_and_copy(&carg1, carg2)
 	runtime.KeepAlive(src)
@@ -8667,8 +8667,8 @@ func ValueIntersect(value1 *gobject.Value, value2 *gobject.Value) (gobject.Value
 	var carg1 C.GValue   // out, transfer: full, C Pointers: 0, Name: Value, optional, caller-allocates
 	var cret  C.gboolean // return
 
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value1))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value2))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value1))
+	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value2))
 
 	cret = C.gst_value_intersect(&carg1, carg2, carg3)
 	runtime.KeepAlive(value1)
@@ -8705,7 +8705,7 @@ func ValueIsFixed(value *gobject.Value) bool {
 	var carg1 *C.GValue  // in, none, converted
 	var cret  C.gboolean // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_is_fixed(carg1)
 	runtime.KeepAlive(value)
@@ -8736,8 +8736,8 @@ func ValueIsSubset(value1 *gobject.Value, value2 *gobject.Value) bool {
 	var carg2 *C.GValue  // in, none, converted
 	var cret  C.gboolean // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value1))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value2))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value1))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value2))
 
 	cret = C.gst_value_is_subset(carg1, carg2)
 	runtime.KeepAlive(value1)
@@ -8787,7 +8787,7 @@ func ValueSerialize(value *gobject.Value) string {
 	var carg1 *C.GValue // in, none, converted
 	var cret  *C.gchar  // return, full, string, casted *C.gchar
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_value_serialize(carg1)
 	runtime.KeepAlive(value)
@@ -8812,7 +8812,7 @@ func ValueSetBitmask(value *gobject.Value, bitmask uint64) {
 	var carg1 *C.GValue // in, none, converted
 	var carg2 C.guint64 // in, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.guint64(bitmask)
 
 	C.gst_value_set_bitmask(carg1, carg2)
@@ -8833,7 +8833,7 @@ func ValueSetCaps(value *gobject.Value, caps *Caps) {
 	var carg1 *C.GValue  // in, none, converted
 	var carg2 *C.GstCaps // in, none, converted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
 
 	C.gst_value_set_caps(carg1, carg2)
@@ -8853,7 +8853,7 @@ func ValueSetCapsFeatures(value *gobject.Value, features *CapsFeatures) {
 	var carg1 *C.GValue          // in, none, converted
 	var carg2 *C.GstCapsFeatures // in, none, converted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
 
 	C.gst_value_set_caps_features(carg1, carg2)
@@ -8875,7 +8875,7 @@ func ValueSetDoubleRange(value *gobject.Value, start float64, end float64) {
 	var carg2 C.gdouble // in, none, casted
 	var carg3 C.gdouble // in, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.gdouble(start)
 	carg3 = C.gdouble(end)
 
@@ -8901,7 +8901,7 @@ func ValueSetFlagset(value *gobject.Value, flags uint, mask uint) {
 	var carg2 C.guint   // in, none, casted
 	var carg3 C.guint   // in, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.guint(flags)
 	carg3 = C.guint(mask)
 
@@ -8927,7 +8927,7 @@ func ValueSetFraction(value *gobject.Value, numerator int, denominator int) {
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gint    // in, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.gint(numerator)
 	carg3 = C.gint(denominator)
 
@@ -8951,9 +8951,9 @@ func ValueSetFractionRange(value *gobject.Value, start *gobject.Value, end *gobj
 	var carg2 *C.GValue // in, none, converted
 	var carg3 *C.GValue // in, none, converted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(start))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibNone(end))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(start))
+	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(end))
 
 	C.gst_value_set_fraction_range(carg1, carg2, carg3)
 	runtime.KeepAlive(value)
@@ -8980,7 +8980,7 @@ func ValueSetFractionRangeFull(value *gobject.Value, numeratorStart int, denomin
 	var carg4 C.gint    // in, none, casted
 	var carg5 C.gint    // in, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.gint(numeratorStart)
 	carg3 = C.gint(denominatorStart)
 	carg4 = C.gint(numeratorEnd)
@@ -9008,7 +9008,7 @@ func ValueSetInt64Range(value *gobject.Value, start int64, end int64) {
 	var carg2 C.gint64  // in, none, casted
 	var carg3 C.gint64  // in, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.gint64(start)
 	carg3 = C.gint64(end)
 
@@ -9034,7 +9034,7 @@ func ValueSetInt64RangeStep(value *gobject.Value, start int64, end int64, step i
 	var carg3 C.gint64  // in, none, casted
 	var carg4 C.gint64  // in, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.gint64(start)
 	carg3 = C.gint64(end)
 	carg4 = C.gint64(step)
@@ -9060,7 +9060,7 @@ func ValueSetIntRange(value *gobject.Value, start int, end int) {
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gint    // in, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.gint(start)
 	carg3 = C.gint(end)
 
@@ -9086,7 +9086,7 @@ func ValueSetIntRangeStep(value *gobject.Value, start int, end int, step int) {
 	var carg3 C.gint    // in, none, casted
 	var carg4 C.gint    // in, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.gint(start)
 	carg3 = C.gint(end)
 	carg4 = C.gint(step)
@@ -9110,7 +9110,7 @@ func ValueSetStructure(value *gobject.Value, structure *Structure) {
 	var carg1 *C.GValue       // in, none, converted
 	var carg2 *C.GstStructure // in, none, converted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
 
 	C.gst_value_set_structure(carg1, carg2)
@@ -9141,8 +9141,8 @@ func ValueSubtract(minuend *gobject.Value, subtrahend *gobject.Value) (gobject.V
 	var carg1 C.GValue   // out, transfer: none, C Pointers: 0, Name: Value, optional, caller-allocates
 	var cret  C.gboolean // return
 
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(minuend))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibNone(subtrahend))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(minuend))
+	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(subtrahend))
 
 	cret = C.gst_value_subtract(&carg1, carg2, carg3)
 	runtime.KeepAlive(minuend)
@@ -9180,8 +9180,8 @@ func ValueUnion(value1 *gobject.Value, value2 *gobject.Value) (gobject.Value, bo
 	var carg1 C.GValue   // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
 	var cret  C.gboolean // return
 
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value1))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value2))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value1))
+	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value2))
 
 	cret = C.gst_value_union(&carg1, carg2, carg3)
 	runtime.KeepAlive(value1)
@@ -10463,7 +10463,7 @@ func (setter *TagSetterInstance) AddTagValue(mode TagMergeMode, tag string, valu
 	carg1 = C.GstTagMergeMode(mode)
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
 	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_tag_setter_add_tag_value(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(setter)
@@ -36117,7 +36117,7 @@ func (caps *Caps) SetValue(field string, value *gobject.Value) {
 	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
 	carg1 = (*C.char)(unsafe.Pointer(C.CString(field)))
 	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_caps_set_value(carg0, carg1, carg2)
 	runtime.KeepAlive(caps)
@@ -42008,7 +42008,7 @@ func NewIteratorSingle(typ gobject.Type, object *gobject.Value) *Iterator {
 	var cret  *C.GstIterator // return, full, converted
 
 	carg1 = C.GType(typ)
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(object))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(object))
 
 	cret = C.gst_iterator_new_single(carg1, carg2)
 	runtime.KeepAlive(typ)
@@ -42080,7 +42080,7 @@ func (it *Iterator) Fold(fn IteratorFoldFunction, ret *gobject.Value) IteratorRe
 	carg1 = (*[0]byte)(C._gotk4_gst1_IteratorFoldFunction)
 	carg3 = C.gpointer(userdata.Register(fn))
 	defer userdata.Delete(unsafe.Pointer(carg3))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(ret))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(ret))
 
 	cret = C.gst_iterator_fold(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(it)
@@ -45968,7 +45968,7 @@ func (message *Message) SetStreamStatusObject(object *gobject.Value) {
 	var carg1 *C.GValue     // in, none, converted
 
 	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(object))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(object))
 
 	C.gst_message_set_stream_status_object(carg0, carg1)
 	runtime.KeepAlive(message)
@@ -54601,7 +54601,7 @@ func (structure *Structure) IDSetValue(field glib.Quark, value *gobject.Value) {
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
 	carg1 = C.GQuark(field)
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_structure_id_set_value(carg0, carg1, carg2)
 	runtime.KeepAlive(structure)
@@ -54980,7 +54980,7 @@ func (structure *Structure) SetValue(fieldname string, value *gobject.Value) {
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
 	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_structure_set_value(carg0, carg1, carg2)
 	runtime.KeepAlive(structure)
@@ -55226,7 +55226,7 @@ func (list *TagList) AddValue(mode TagMergeMode, tag string, value *gobject.Valu
 	carg1 = C.GstTagMergeMode(mode)
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
 	defer C.free(unsafe.Pointer(carg2))
-	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg3 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	C.gst_tag_list_add_value(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(list)
