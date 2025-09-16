@@ -2153,8 +2153,7 @@ func (ice *WebRTCICEInstance) SetTurnServer(uri string) {
 // are supplied, they will be discovered automatically. Calling this signal
 // stops automatic ICE gathering.
 func (o *WebRTCICEInstance) EmitAddLocalIPAddress(arg0 string) bool {
-	return 
-	o.Emit("add-local-ip-address", arg0)
+	return o.Emit("add-local-ip-address", arg0).(bool)
 }
 // WebRTCICEStreamInstance is the instance type used by all types extending GstWebRTCICEStream. It is used internally by the bindings. Users should use the interface [WebRTCICEStream] instead.
 type WebRTCICEStreamInstance struct {
