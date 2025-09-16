@@ -74,6 +74,18 @@ var Data = genmain.Data{
 			// during init
 			t.GLibGetType = ""
 		}),
+
+		// PadProbeInfo must not be freed, so we mark it as borrowed.
+		gir.ModifyCallable("Gst-1.PadProbeCallback", func(c *gir.CallableAttrs) {
+			for _, p := range c.Parameters.Parameters {
+				if p.Name == "info" && p.Type.Name == "PadProbeInfo" {
+					p.TransferOwnership.TransferOwnership = "borrow"
+					return
+				}
+			}
+
+			panic("PadProbeCallback does not have an info parameter")
+		}),
 	},
 	Config: typesystem.Config{
 		Namespaces: map[string]typesystem.NamespaceConfig{
