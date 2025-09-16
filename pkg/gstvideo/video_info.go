@@ -12,8 +12,7 @@ func (info *VideoInfo) SetFramerate(num, denom int) {
 	info.videoInfo.native.fps_d = C.gint(denom)
 }
 
-// SetFramerate sets the framerate of the video info as a fraction of
-// denom/num in frames per second.
+// GetSize returns the default size of one frame
 func (info *VideoInfo) GetSize() int {
 	return int(info.videoInfo.native.size)
 }
