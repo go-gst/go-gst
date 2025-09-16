@@ -426,7 +426,7 @@ func (e GLConfigCaveat) String() string {
 	}
 }
 
-// String wraps gst_gl_config_caveat_to_string
+// GLConfigCaveatString wraps gst_gl_config_caveat_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -435,7 +435,7 @@ func (e GLConfigCaveat) String() string {
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func String(caveat GLConfigCaveat) string {
+func GLConfigCaveatString(caveat GLConfigCaveat) string {
 	var carg1 C.GstGLConfigCaveat // in, none, casted
 	var cret  *C.gchar            // return, none, string, nullable-string
 
@@ -1116,7 +1116,7 @@ func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string
 	return goret
 }
 
-// String wraps gst_glsl_version_to_string
+// GLSLVersionString wraps gst_glsl_version_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1125,7 +1125,7 @@ func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func String(version GLSLVersion) string {
+func GLSLVersionString(version GLSLVersion) string {
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var cret  *C.gchar         // return, none, string, nullable-string
 
@@ -1343,7 +1343,7 @@ func GLTextureTargetToGl(target GLTextureTarget) uint {
 	return goret
 }
 
-// String wraps gst_gl_texture_target_to_string
+// GLTextureTargetString wraps gst_gl_texture_target_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1352,7 +1352,7 @@ func GLTextureTargetToGl(target GLTextureTarget) uint {
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func String(target GLTextureTarget) string {
+func GLTextureTargetString(target GLTextureTarget) string {
 	var carg1 C.GstGLTextureTarget // in, none, casted
 	var cret  *C.gchar             // return, none, string, nullable-string
 
@@ -1581,7 +1581,7 @@ func GLAPIFromString(apiS string) GLAPI {
 	return goret
 }
 
-// String wraps gst_gl_api_to_string
+// GLAPIString wraps gst_gl_api_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1590,7 +1590,7 @@ func GLAPIFromString(apiS string) GLAPI {
 // The function returns the following values:
 // 
 // 	- goret string 
-func String(api GLAPI) string {
+func GLAPIString(api GLAPI) string {
 	var carg1 C.GstGLAPI // in, none, casted
 	var cret  *C.gchar   // return, full, string
 
@@ -1717,7 +1717,7 @@ func (f GLConfigSurfaceType) String() string {
 	return "GLConfigSurfaceType(" + strings.Join(parts, "|") + ")"
 }
 
-// String wraps gst_gl_config_surface_type_to_string
+// GLConfigSurfaceTypeString wraps gst_gl_config_surface_type_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1726,7 +1726,7 @@ func (f GLConfigSurfaceType) String() string {
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func String(surfaceType GLConfigSurfaceType) string {
+func GLConfigSurfaceTypeString(surfaceType GLConfigSurfaceType) string {
 	var carg1 C.GstGLConfigSurfaceType // in, none, casted
 	var cret  *C.gchar                 // return, none, string, nullable-string
 
@@ -2046,7 +2046,7 @@ func GLPlatformFromString(platformS string) GLPlatform {
 	return goret
 }
 
-// String wraps gst_gl_platform_to_string
+// GLPlatformString wraps gst_gl_platform_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -2055,7 +2055,7 @@ func GLPlatformFromString(platformS string) GLPlatform {
 // The function returns the following values:
 // 
 // 	- goret string 
-func String(platform GLPlatform) string {
+func GLPlatformString(platform GLPlatform) string {
 	var carg1 C.GstGLPlatform // in, none, casted
 	var cret  *C.gchar        // return, full, string
 
@@ -2168,7 +2168,7 @@ func GLSLProfileFromString(str string) GLSLProfile {
 	return goret
 }
 
-// String wraps gst_glsl_profile_to_string
+// GLSLProfileString wraps gst_glsl_profile_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -2177,7 +2177,7 @@ func GLSLProfileFromString(str string) GLSLProfile {
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func String(profile GLSLProfile) string {
+func GLSLProfileString(profile GLSLProfile) string {
 	var carg1 C.GstGLSLProfile // in, none, casted
 	var cret  *C.gchar         // return, none, string, nullable-string
 

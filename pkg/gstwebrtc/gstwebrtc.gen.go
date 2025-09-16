@@ -1018,7 +1018,7 @@ func (e WebRTCSDPType) String() string {
 	}
 }
 
-// String wraps gst_webrtc_sdp_type_to_string
+// WebRTCSDPTypeString wraps gst_webrtc_sdp_type_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1027,7 +1027,7 @@ func (e WebRTCSDPType) String() string {
 // The function returns the following values:
 // 
 // 	- goret string 
-func String(typ WebRTCSDPType) string {
+func WebRTCSDPTypeString(typ WebRTCSDPType) string {
 	var carg1 C.GstWebRTCSDPType // in, none, casted
 	var cret  *C.gchar           // return, none, string
 
