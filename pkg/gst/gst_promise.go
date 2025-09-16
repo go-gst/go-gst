@@ -192,8 +192,10 @@ func UnsafePromiseToGlibFull(p *Promise) unsafe.Pointer {
 func NewPromise() *Promise {
 	done := make(chan struct{})
 
-	var changefunc PromiseChangeFunc = func(p *Promise) {
-		close(p.done)
+	var changefunc PromiseChangeFunc = func(_ *Promise) {
+		// the promise passed to this function is transferred from C, so we close the done channel
+		// directly here
+		close(done)
 	}
 
 	var carg1 C.GstPromiseChangeFunc = (*[0]byte)(C._gotk4_gst1_PromiseChangeFunc)
@@ -206,6 +208,7 @@ func NewPromise() *Promise {
 
 	goret = UnsafePromiseFromGlibFull(unsafe.Pointer(cret))
 
+	// save the done channel so [Promise.Await] can use it
 	goret.done = done
 
 	return goret
