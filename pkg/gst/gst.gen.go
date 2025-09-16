@@ -40830,7 +40830,7 @@ func (minuend *Caps) Subtract(subtrahend *Caps) *Caps {
 	return goret
 }
 
-// ToString wraps gst_caps_to_string
+// String wraps gst_caps_to_string
 // 
 // The function returns the following values:
 // 
@@ -40849,7 +40849,7 @@ func (minuend *Caps) Subtract(subtrahend *Caps) *Caps {
 // 
 // The implementation of serialization up to 1.20 would lead to unexpected results
 // when there were nested #GstCaps / #GstStructure deeper than one level.
-func (caps *Caps) ToString() string {
+func (caps *Caps) String() string {
 	var carg0 *C.GstCaps // in, none, converted
 	var cret  *C.gchar   // return, full, string
 
