@@ -1496,8 +1496,19 @@ type aRGBControlBindingClass struct {
 	native *C.GstARGBControlBindingClass
 }
 
+// UnsafeARGBControlBindingClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *ARGBControlBindingClass) instance() *C.GstARGBControlBindingClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeARGBControlBindingClassFromGlibBorrow is used to convert raw C.GstARGBControlBindingClass pointers to go. This is used by the bindings internally.
 func UnsafeARGBControlBindingClassFromGlibBorrow(p unsafe.Pointer) *ARGBControlBindingClass {
+	if p == nil {
+		return nil
+	}
 	return &ARGBControlBindingClass{&aRGBControlBindingClass{(*C.GstARGBControlBindingClass)(p)}}
 }
 
@@ -1510,6 +1521,9 @@ func UnsafeARGBControlBindingClassFree(a *ARGBControlBindingClass) {
 
 // UnsafeARGBControlBindingClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeARGBControlBindingClassToGlibNone(a *ARGBControlBindingClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -1536,11 +1550,19 @@ type controlPoint struct {
 	native *C.GstControlPoint
 }
 
+// UnsafeControlPointToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (c *ControlPoint) instance() *C.GstControlPoint {
+	if c == nil {
+		return nil
+	}
+	return c.native
+}
+
 var _ gobject.GoValueInitializer = (*ControlPoint)(nil)
 
 func marshalControlPoint(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeControlPointFromGlibBorrow(b), nil
+	return UnsafeControlPointFromGlibNone(b), nil
 }
 
 func (r *ControlPoint) GoValueType() gobject.Type {
@@ -1548,11 +1570,14 @@ func (r *ControlPoint) GoValueType() gobject.Type {
 }
 
 func (r *ControlPoint) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeControlPointFromGlibBorrow is used to convert raw C.GstControlPoint pointers to go. This is used by the bindings internally.
 func UnsafeControlPointFromGlibBorrow(p unsafe.Pointer) *ControlPoint {
+	if p == nil {
+		return nil
+	}
 	return &ControlPoint{&controlPoint{(*C.GstControlPoint)(p)}}
 }
 
@@ -1560,6 +1585,9 @@ func UnsafeControlPointFromGlibBorrow(p unsafe.Pointer) *ControlPoint {
 func UnsafeControlPointFromGlibNone(p unsafe.Pointer) *ControlPoint {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeControlPointFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.controlPoint)), 1)
 	runtime.SetFinalizer(
 		wrapped.controlPoint,
@@ -1574,6 +1602,9 @@ func UnsafeControlPointFromGlibNone(p unsafe.Pointer) *ControlPoint {
 // UnsafeControlPointFromGlibFull is used to convert raw C.GstControlPoint pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeControlPointFromGlibFull(p unsafe.Pointer) *ControlPoint {
 	wrapped := UnsafeControlPointFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.controlPoint)), 1)
 	runtime.SetFinalizer(
 		wrapped.controlPoint,
@@ -1594,12 +1625,18 @@ func UnsafeControlPointFree(c *ControlPoint) {
 
 // UnsafeControlPointToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeControlPointToGlibNone(c *ControlPoint) unsafe.Pointer {
+	if c == nil {
+		return nil
+	}
 	return unsafe.Pointer(c.native)
 }
 
 // UnsafeControlPointToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeControlPointToGlibFull(c *ControlPoint) unsafe.Pointer {
+	if c == nil {
+		return nil
+	}
 	runtime.SetFinalizer(c.controlPoint, nil)
 	_p := unsafe.Pointer(c.native)
 	c.native = nil // ControlPoint is invalid from here on
@@ -1643,8 +1680,19 @@ type directControlBindingClass struct {
 	native *C.GstDirectControlBindingClass
 }
 
+// UnsafeDirectControlBindingClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DirectControlBindingClass) instance() *C.GstDirectControlBindingClass {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 // UnsafeDirectControlBindingClassFromGlibBorrow is used to convert raw C.GstDirectControlBindingClass pointers to go. This is used by the bindings internally.
 func UnsafeDirectControlBindingClassFromGlibBorrow(p unsafe.Pointer) *DirectControlBindingClass {
+	if p == nil {
+		return nil
+	}
 	return &DirectControlBindingClass{&directControlBindingClass{(*C.GstDirectControlBindingClass)(p)}}
 }
 
@@ -1657,6 +1705,9 @@ func UnsafeDirectControlBindingClassFree(d *DirectControlBindingClass) {
 
 // UnsafeDirectControlBindingClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDirectControlBindingClassToGlibNone(d *DirectControlBindingClass) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
@@ -1681,8 +1732,19 @@ type interpolationControlSourceClass struct {
 	native *C.GstInterpolationControlSourceClass
 }
 
+// UnsafeInterpolationControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (i *InterpolationControlSourceClass) instance() *C.GstInterpolationControlSourceClass {
+	if i == nil {
+		return nil
+	}
+	return i.native
+}
+
 // UnsafeInterpolationControlSourceClassFromGlibBorrow is used to convert raw C.GstInterpolationControlSourceClass pointers to go. This is used by the bindings internally.
 func UnsafeInterpolationControlSourceClassFromGlibBorrow(p unsafe.Pointer) *InterpolationControlSourceClass {
+	if p == nil {
+		return nil
+	}
 	return &InterpolationControlSourceClass{&interpolationControlSourceClass{(*C.GstInterpolationControlSourceClass)(p)}}
 }
 
@@ -1695,6 +1757,9 @@ func UnsafeInterpolationControlSourceClassFree(i *InterpolationControlSourceClas
 
 // UnsafeInterpolationControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeInterpolationControlSourceClassToGlibNone(i *InterpolationControlSourceClass) unsafe.Pointer {
+	if i == nil {
+		return nil
+	}
 	return unsafe.Pointer(i.native)
 }
 
@@ -1719,8 +1784,19 @@ type lFOControlSourceClass struct {
 	native *C.GstLFOControlSourceClass
 }
 
+// UnsafeLFOControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (l *LFOControlSourceClass) instance() *C.GstLFOControlSourceClass {
+	if l == nil {
+		return nil
+	}
+	return l.native
+}
+
 // UnsafeLFOControlSourceClassFromGlibBorrow is used to convert raw C.GstLFOControlSourceClass pointers to go. This is used by the bindings internally.
 func UnsafeLFOControlSourceClassFromGlibBorrow(p unsafe.Pointer) *LFOControlSourceClass {
+	if p == nil {
+		return nil
+	}
 	return &LFOControlSourceClass{&lFOControlSourceClass{(*C.GstLFOControlSourceClass)(p)}}
 }
 
@@ -1733,6 +1809,9 @@ func UnsafeLFOControlSourceClassFree(l *LFOControlSourceClass) {
 
 // UnsafeLFOControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeLFOControlSourceClassToGlibNone(l *LFOControlSourceClass) unsafe.Pointer {
+	if l == nil {
+		return nil
+	}
 	return unsafe.Pointer(l.native)
 }
 
@@ -1759,8 +1838,19 @@ type proxyControlBindingClass struct {
 	native *C.GstProxyControlBindingClass
 }
 
+// UnsafeProxyControlBindingClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *ProxyControlBindingClass) instance() *C.GstProxyControlBindingClass {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafeProxyControlBindingClassFromGlibBorrow is used to convert raw C.GstProxyControlBindingClass pointers to go. This is used by the bindings internally.
 func UnsafeProxyControlBindingClassFromGlibBorrow(p unsafe.Pointer) *ProxyControlBindingClass {
+	if p == nil {
+		return nil
+	}
 	return &ProxyControlBindingClass{&proxyControlBindingClass{(*C.GstProxyControlBindingClass)(p)}}
 }
 
@@ -1773,6 +1863,9 @@ func UnsafeProxyControlBindingClassFree(p *ProxyControlBindingClass) {
 
 // UnsafeProxyControlBindingClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeProxyControlBindingClassToGlibNone(p *ProxyControlBindingClass) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
@@ -1797,8 +1890,19 @@ type timedValueControlSourceClass struct {
 	native *C.GstTimedValueControlSourceClass
 }
 
+// UnsafeTimedValueControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *TimedValueControlSourceClass) instance() *C.GstTimedValueControlSourceClass {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 // UnsafeTimedValueControlSourceClassFromGlibBorrow is used to convert raw C.GstTimedValueControlSourceClass pointers to go. This is used by the bindings internally.
 func UnsafeTimedValueControlSourceClassFromGlibBorrow(p unsafe.Pointer) *TimedValueControlSourceClass {
+	if p == nil {
+		return nil
+	}
 	return &TimedValueControlSourceClass{&timedValueControlSourceClass{(*C.GstTimedValueControlSourceClass)(p)}}
 }
 
@@ -1811,6 +1915,9 @@ func UnsafeTimedValueControlSourceClassFree(t *TimedValueControlSourceClass) {
 
 // UnsafeTimedValueControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeTimedValueControlSourceClassToGlibNone(t *TimedValueControlSourceClass) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 
@@ -1835,8 +1942,19 @@ type triggerControlSourceClass struct {
 	native *C.GstTriggerControlSourceClass
 }
 
+// UnsafeTriggerControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *TriggerControlSourceClass) instance() *C.GstTriggerControlSourceClass {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 // UnsafeTriggerControlSourceClassFromGlibBorrow is used to convert raw C.GstTriggerControlSourceClass pointers to go. This is used by the bindings internally.
 func UnsafeTriggerControlSourceClassFromGlibBorrow(p unsafe.Pointer) *TriggerControlSourceClass {
+	if p == nil {
+		return nil
+	}
 	return &TriggerControlSourceClass{&triggerControlSourceClass{(*C.GstTriggerControlSourceClass)(p)}}
 }
 
@@ -1849,6 +1967,9 @@ func UnsafeTriggerControlSourceClassFree(t *TriggerControlSourceClass) {
 
 // UnsafeTriggerControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeTriggerControlSourceClassToGlibNone(t *TriggerControlSourceClass) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 

@@ -4581,8 +4581,19 @@ type webRTCDTLSTransportClass struct {
 	native *C.GstWebRTCDTLSTransportClass
 }
 
+// UnsafeWebRTCDTLSTransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCDTLSTransportClass) instance() *C.GstWebRTCDTLSTransportClass {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 // UnsafeWebRTCDTLSTransportClassFromGlibBorrow is used to convert raw C.GstWebRTCDTLSTransportClass pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCDTLSTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDTLSTransportClass {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCDTLSTransportClass{&webRTCDTLSTransportClass{(*C.GstWebRTCDTLSTransportClass)(p)}}
 }
 
@@ -4595,6 +4606,9 @@ func UnsafeWebRTCDTLSTransportClassFree(w *WebRTCDTLSTransportClass) {
 
 // UnsafeWebRTCDTLSTransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCDTLSTransportClassToGlibNone(w *WebRTCDTLSTransportClass) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
@@ -4619,8 +4633,19 @@ type webRTCDataChannelClass struct {
 	native *C.GstWebRTCDataChannelClass
 }
 
+// UnsafeWebRTCDataChannelClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCDataChannelClass) instance() *C.GstWebRTCDataChannelClass {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 // UnsafeWebRTCDataChannelClassFromGlibBorrow is used to convert raw C.GstWebRTCDataChannelClass pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCDataChannelClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDataChannelClass {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCDataChannelClass{&webRTCDataChannelClass{(*C.GstWebRTCDataChannelClass)(p)}}
 }
 
@@ -4633,6 +4658,9 @@ func UnsafeWebRTCDataChannelClassFree(w *WebRTCDataChannelClass) {
 
 // UnsafeWebRTCDataChannelClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCDataChannelClassToGlibNone(w *WebRTCDataChannelClass) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
@@ -4655,11 +4683,19 @@ type webRTCICECandidateStats struct {
 	native *C.GstWebRTCICECandidateStats
 }
 
+// UnsafeWebRTCICECandidateStatsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCICECandidateStats) instance() *C.GstWebRTCICECandidateStats {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 var _ gobject.GoValueInitializer = (*WebRTCICECandidateStats)(nil)
 
 func marshalWebRTCICECandidateStats(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeWebRTCICECandidateStatsFromGlibBorrow(b), nil
+	return UnsafeWebRTCICECandidateStatsFromGlibNone(b), nil
 }
 
 func (r *WebRTCICECandidateStats) GoValueType() gobject.Type {
@@ -4667,11 +4703,14 @@ func (r *WebRTCICECandidateStats) GoValueType() gobject.Type {
 }
 
 func (r *WebRTCICECandidateStats) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeWebRTCICECandidateStatsFromGlibBorrow is used to convert raw C.GstWebRTCICECandidateStats pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCICECandidateStatsFromGlibBorrow(p unsafe.Pointer) *WebRTCICECandidateStats {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCICECandidateStats{&webRTCICECandidateStats{(*C.GstWebRTCICECandidateStats)(p)}}
 }
 
@@ -4679,6 +4718,9 @@ func UnsafeWebRTCICECandidateStatsFromGlibBorrow(p unsafe.Pointer) *WebRTCICECan
 func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandidateStats {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeWebRTCICECandidateStatsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCICECandidateStats)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCICECandidateStats,
@@ -4693,6 +4735,9 @@ func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandi
 // UnsafeWebRTCICECandidateStatsFromGlibFull is used to convert raw C.GstWebRTCICECandidateStats pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeWebRTCICECandidateStatsFromGlibFull(p unsafe.Pointer) *WebRTCICECandidateStats {
 	wrapped := UnsafeWebRTCICECandidateStatsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCICECandidateStats)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCICECandidateStats,
@@ -4713,12 +4758,18 @@ func UnsafeWebRTCICECandidateStatsFree(w *WebRTCICECandidateStats) {
 
 // UnsafeWebRTCICECandidateStatsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCICECandidateStatsToGlibNone(w *WebRTCICECandidateStats) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
 // UnsafeWebRTCICECandidateStatsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeWebRTCICECandidateStatsToGlibFull(w *WebRTCICECandidateStats) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	runtime.SetFinalizer(w.webRTCICECandidateStats, nil)
 	_p := unsafe.Pointer(w.native)
 	w.native = nil // WebRTCICECandidateStats is invalid from here on
@@ -4758,8 +4809,19 @@ type webRTCICEClass struct {
 	native *C.GstWebRTCICEClass
 }
 
+// UnsafeWebRTCICEClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCICEClass) instance() *C.GstWebRTCICEClass {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 // UnsafeWebRTCICEClassFromGlibBorrow is used to convert raw C.GstWebRTCICEClass pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCICEClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICEClass {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCICEClass{&webRTCICEClass{(*C.GstWebRTCICEClass)(p)}}
 }
 
@@ -4772,6 +4834,9 @@ func UnsafeWebRTCICEClassFree(w *WebRTCICEClass) {
 
 // UnsafeWebRTCICEClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCICEClassToGlibNone(w *WebRTCICEClass) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
@@ -4796,8 +4861,19 @@ type webRTCICEStreamClass struct {
 	native *C.GstWebRTCICEStreamClass
 }
 
+// UnsafeWebRTCICEStreamClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCICEStreamClass) instance() *C.GstWebRTCICEStreamClass {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 // UnsafeWebRTCICEStreamClassFromGlibBorrow is used to convert raw C.GstWebRTCICEStreamClass pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCICEStreamClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICEStreamClass {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCICEStreamClass{&webRTCICEStreamClass{(*C.GstWebRTCICEStreamClass)(p)}}
 }
 
@@ -4810,6 +4886,9 @@ func UnsafeWebRTCICEStreamClassFree(w *WebRTCICEStreamClass) {
 
 // UnsafeWebRTCICEStreamClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCICEStreamClassToGlibNone(w *WebRTCICEStreamClass) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
@@ -4834,8 +4913,19 @@ type webRTCICETransportClass struct {
 	native *C.GstWebRTCICETransportClass
 }
 
+// UnsafeWebRTCICETransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCICETransportClass) instance() *C.GstWebRTCICETransportClass {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 // UnsafeWebRTCICETransportClassFromGlibBorrow is used to convert raw C.GstWebRTCICETransportClass pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCICETransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICETransportClass {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCICETransportClass{&webRTCICETransportClass{(*C.GstWebRTCICETransportClass)(p)}}
 }
 
@@ -4848,6 +4938,9 @@ func UnsafeWebRTCICETransportClassFree(w *WebRTCICETransportClass) {
 
 // UnsafeWebRTCICETransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCICETransportClassToGlibNone(w *WebRTCICETransportClass) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
@@ -4872,8 +4965,19 @@ type webRTCRTPReceiverClass struct {
 	native *C.GstWebRTCRTPReceiverClass
 }
 
+// UnsafeWebRTCRTPReceiverClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCRTPReceiverClass) instance() *C.GstWebRTCRTPReceiverClass {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 // UnsafeWebRTCRTPReceiverClassFromGlibBorrow is used to convert raw C.GstWebRTCRTPReceiverClass pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCRTPReceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPReceiverClass {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCRTPReceiverClass{&webRTCRTPReceiverClass{(*C.GstWebRTCRTPReceiverClass)(p)}}
 }
 
@@ -4886,6 +4990,9 @@ func UnsafeWebRTCRTPReceiverClassFree(w *WebRTCRTPReceiverClass) {
 
 // UnsafeWebRTCRTPReceiverClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCRTPReceiverClassToGlibNone(w *WebRTCRTPReceiverClass) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
@@ -4910,8 +5017,19 @@ type webRTCRTPSenderClass struct {
 	native *C.GstWebRTCRTPSenderClass
 }
 
+// UnsafeWebRTCRTPSenderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCRTPSenderClass) instance() *C.GstWebRTCRTPSenderClass {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 // UnsafeWebRTCRTPSenderClassFromGlibBorrow is used to convert raw C.GstWebRTCRTPSenderClass pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCRTPSenderClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPSenderClass {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCRTPSenderClass{&webRTCRTPSenderClass{(*C.GstWebRTCRTPSenderClass)(p)}}
 }
 
@@ -4924,6 +5042,9 @@ func UnsafeWebRTCRTPSenderClassFree(w *WebRTCRTPSenderClass) {
 
 // UnsafeWebRTCRTPSenderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCRTPSenderClassToGlibNone(w *WebRTCRTPSenderClass) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
@@ -4948,8 +5069,19 @@ type webRTCRTPTransceiverClass struct {
 	native *C.GstWebRTCRTPTransceiverClass
 }
 
+// UnsafeWebRTCRTPTransceiverClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCRTPTransceiverClass) instance() *C.GstWebRTCRTPTransceiverClass {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 // UnsafeWebRTCRTPTransceiverClassFromGlibBorrow is used to convert raw C.GstWebRTCRTPTransceiverClass pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCRTPTransceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPTransceiverClass {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCRTPTransceiverClass{&webRTCRTPTransceiverClass{(*C.GstWebRTCRTPTransceiverClass)(p)}}
 }
 
@@ -4962,6 +5094,9 @@ func UnsafeWebRTCRTPTransceiverClassFree(w *WebRTCRTPTransceiverClass) {
 
 // UnsafeWebRTCRTPTransceiverClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCRTPTransceiverClassToGlibNone(w *WebRTCRTPTransceiverClass) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
@@ -4986,8 +5121,19 @@ type webRTCSCTPTransportClass struct {
 	native *C.GstWebRTCSCTPTransportClass
 }
 
+// UnsafeWebRTCSCTPTransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCSCTPTransportClass) instance() *C.GstWebRTCSCTPTransportClass {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 // UnsafeWebRTCSCTPTransportClassFromGlibBorrow is used to convert raw C.GstWebRTCSCTPTransportClass pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCSCTPTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCSCTPTransportClass {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCSCTPTransportClass{&webRTCSCTPTransportClass{(*C.GstWebRTCSCTPTransportClass)(p)}}
 }
 
@@ -5000,6 +5146,9 @@ func UnsafeWebRTCSCTPTransportClassFree(w *WebRTCSCTPTransportClass) {
 
 // UnsafeWebRTCSCTPTransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCSCTPTransportClassToGlibNone(w *WebRTCSCTPTransportClass) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
@@ -5024,11 +5173,19 @@ type webRTCSessionDescription struct {
 	native *C.GstWebRTCSessionDescription
 }
 
+// UnsafeWebRTCSessionDescriptionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (w *WebRTCSessionDescription) instance() *C.GstWebRTCSessionDescription {
+	if w == nil {
+		return nil
+	}
+	return w.native
+}
+
 var _ gobject.GoValueInitializer = (*WebRTCSessionDescription)(nil)
 
 func marshalWebRTCSessionDescription(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeWebRTCSessionDescriptionFromGlibBorrow(b), nil
+	return UnsafeWebRTCSessionDescriptionFromGlibNone(b), nil
 }
 
 func (r *WebRTCSessionDescription) GoValueType() gobject.Type {
@@ -5036,11 +5193,14 @@ func (r *WebRTCSessionDescription) GoValueType() gobject.Type {
 }
 
 func (r *WebRTCSessionDescription) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeWebRTCSessionDescriptionFromGlibBorrow is used to convert raw C.GstWebRTCSessionDescription pointers to go. This is used by the bindings internally.
 func UnsafeWebRTCSessionDescriptionFromGlibBorrow(p unsafe.Pointer) *WebRTCSessionDescription {
+	if p == nil {
+		return nil
+	}
 	return &WebRTCSessionDescription{&webRTCSessionDescription{(*C.GstWebRTCSessionDescription)(p)}}
 }
 
@@ -5048,6 +5208,9 @@ func UnsafeWebRTCSessionDescriptionFromGlibBorrow(p unsafe.Pointer) *WebRTCSessi
 func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSessionDescription {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeWebRTCSessionDescriptionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCSessionDescription)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCSessionDescription,
@@ -5062,6 +5225,9 @@ func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSession
 // UnsafeWebRTCSessionDescriptionFromGlibFull is used to convert raw C.GstWebRTCSessionDescription pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeWebRTCSessionDescriptionFromGlibFull(p unsafe.Pointer) *WebRTCSessionDescription {
 	wrapped := UnsafeWebRTCSessionDescriptionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCSessionDescription)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCSessionDescription,
@@ -5082,12 +5248,18 @@ func UnsafeWebRTCSessionDescriptionFree(w *WebRTCSessionDescription) {
 
 // UnsafeWebRTCSessionDescriptionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeWebRTCSessionDescriptionToGlibNone(w *WebRTCSessionDescription) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	return unsafe.Pointer(w.native)
 }
 
 // UnsafeWebRTCSessionDescriptionToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeWebRTCSessionDescriptionToGlibFull(w *WebRTCSessionDescription) unsafe.Pointer {
+	if w == nil {
+		return nil
+	}
 	runtime.SetFinalizer(w.webRTCSessionDescription, nil)
 	_p := unsafe.Pointer(w.native)
 	w.native = nil // WebRTCSessionDescription is invalid from here on

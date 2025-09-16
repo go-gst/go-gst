@@ -2675,8 +2675,19 @@ type tagDemuxClass struct {
 	native *C.GstTagDemuxClass
 }
 
+// UnsafeTagDemuxClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *TagDemuxClass) instance() *C.GstTagDemuxClass {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 // UnsafeTagDemuxClassFromGlibBorrow is used to convert raw C.GstTagDemuxClass pointers to go. This is used by the bindings internally.
 func UnsafeTagDemuxClassFromGlibBorrow(p unsafe.Pointer) *TagDemuxClass {
+	if p == nil {
+		return nil
+	}
 	return &TagDemuxClass{&tagDemuxClass{(*C.GstTagDemuxClass)(p)}}
 }
 
@@ -2689,6 +2700,9 @@ func UnsafeTagDemuxClassFree(t *TagDemuxClass) {
 
 // UnsafeTagDemuxClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeTagDemuxClassToGlibNone(t *TagDemuxClass) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 
@@ -2716,8 +2730,19 @@ type tagMuxClass struct {
 	native *C.GstTagMuxClass
 }
 
+// UnsafeTagMuxClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *TagMuxClass) instance() *C.GstTagMuxClass {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 // UnsafeTagMuxClassFromGlibBorrow is used to convert raw C.GstTagMuxClass pointers to go. This is used by the bindings internally.
 func UnsafeTagMuxClassFromGlibBorrow(p unsafe.Pointer) *TagMuxClass {
+	if p == nil {
+		return nil
+	}
 	return &TagMuxClass{&tagMuxClass{(*C.GstTagMuxClass)(p)}}
 }
 
@@ -2730,6 +2755,9 @@ func UnsafeTagMuxClassFree(t *TagMuxClass) {
 
 // UnsafeTagMuxClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeTagMuxClassToGlibNone(t *TagMuxClass) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 
@@ -2752,8 +2780,19 @@ type tagXmpWriterInterface struct {
 	native *C.GstTagXmpWriterInterface
 }
 
+// UnsafeTagXmpWriterInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *TagXmpWriterInterface) instance() *C.GstTagXmpWriterInterface {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 // UnsafeTagXmpWriterInterfaceFromGlibBorrow is used to convert raw C.GstTagXmpWriterInterface pointers to go. This is used by the bindings internally.
 func UnsafeTagXmpWriterInterfaceFromGlibBorrow(p unsafe.Pointer) *TagXmpWriterInterface {
+	if p == nil {
+		return nil
+	}
 	return &TagXmpWriterInterface{&tagXmpWriterInterface{(*C.GstTagXmpWriterInterface)(p)}}
 }
 
@@ -2761,6 +2800,9 @@ func UnsafeTagXmpWriterInterfaceFromGlibBorrow(p unsafe.Pointer) *TagXmpWriterIn
 func UnsafeTagXmpWriterInterfaceFromGlibNone(p unsafe.Pointer) *TagXmpWriterInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTagXmpWriterInterfaceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.tagXmpWriterInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.tagXmpWriterInterface,
@@ -2775,6 +2817,9 @@ func UnsafeTagXmpWriterInterfaceFromGlibNone(p unsafe.Pointer) *TagXmpWriterInte
 // UnsafeTagXmpWriterInterfaceFromGlibFull is used to convert raw C.GstTagXmpWriterInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTagXmpWriterInterfaceFromGlibFull(p unsafe.Pointer) *TagXmpWriterInterface {
 	wrapped := UnsafeTagXmpWriterInterfaceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.tagXmpWriterInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.tagXmpWriterInterface,
@@ -2795,12 +2840,18 @@ func UnsafeTagXmpWriterInterfaceFree(t *TagXmpWriterInterface) {
 
 // UnsafeTagXmpWriterInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeTagXmpWriterInterfaceToGlibNone(t *TagXmpWriterInterface) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 
 // UnsafeTagXmpWriterInterfaceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeTagXmpWriterInterfaceToGlibFull(t *TagXmpWriterInterface) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	runtime.SetFinalizer(t.tagXmpWriterInterface, nil)
 	_p := unsafe.Pointer(t.native)
 	t.native = nil // TagXmpWriterInterface is invalid from here on

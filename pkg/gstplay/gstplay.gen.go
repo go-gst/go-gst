@@ -4949,8 +4949,19 @@ type playAudioInfoClass struct {
 	native *C.GstPlayAudioInfoClass
 }
 
+// UnsafePlayAudioInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlayAudioInfoClass) instance() *C.GstPlayAudioInfoClass {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePlayAudioInfoClassFromGlibBorrow is used to convert raw C.GstPlayAudioInfoClass pointers to go. This is used by the bindings internally.
 func UnsafePlayAudioInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayAudioInfoClass {
+	if p == nil {
+		return nil
+	}
 	return &PlayAudioInfoClass{&playAudioInfoClass{(*C.GstPlayAudioInfoClass)(p)}}
 }
 
@@ -4963,6 +4974,9 @@ func UnsafePlayAudioInfoClassFree(p *PlayAudioInfoClass) {
 
 // UnsafePlayAudioInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlayAudioInfoClassToGlibNone(p *PlayAudioInfoClass) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
@@ -4987,8 +5001,19 @@ type playClass struct {
 	native *C.GstPlayClass
 }
 
+// UnsafePlayClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlayClass) instance() *C.GstPlayClass {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePlayClassFromGlibBorrow is used to convert raw C.GstPlayClass pointers to go. This is used by the bindings internally.
 func UnsafePlayClassFromGlibBorrow(p unsafe.Pointer) *PlayClass {
+	if p == nil {
+		return nil
+	}
 	return &PlayClass{&playClass{(*C.GstPlayClass)(p)}}
 }
 
@@ -5001,6 +5026,9 @@ func UnsafePlayClassFree(p *PlayClass) {
 
 // UnsafePlayClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlayClassToGlibNone(p *PlayClass) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
@@ -5025,8 +5053,19 @@ type playMediaInfoClass struct {
 	native *C.GstPlayMediaInfoClass
 }
 
+// UnsafePlayMediaInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlayMediaInfoClass) instance() *C.GstPlayMediaInfoClass {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePlayMediaInfoClassFromGlibBorrow is used to convert raw C.GstPlayMediaInfoClass pointers to go. This is used by the bindings internally.
 func UnsafePlayMediaInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayMediaInfoClass {
+	if p == nil {
+		return nil
+	}
 	return &PlayMediaInfoClass{&playMediaInfoClass{(*C.GstPlayMediaInfoClass)(p)}}
 }
 
@@ -5039,6 +5078,9 @@ func UnsafePlayMediaInfoClassFree(p *PlayMediaInfoClass) {
 
 // UnsafePlayMediaInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlayMediaInfoClassToGlibNone(p *PlayMediaInfoClass) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
@@ -5063,8 +5105,19 @@ type playSignalAdapterClass struct {
 	native *C.GstPlaySignalAdapterClass
 }
 
+// UnsafePlaySignalAdapterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlaySignalAdapterClass) instance() *C.GstPlaySignalAdapterClass {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePlaySignalAdapterClassFromGlibBorrow is used to convert raw C.GstPlaySignalAdapterClass pointers to go. This is used by the bindings internally.
 func UnsafePlaySignalAdapterClassFromGlibBorrow(p unsafe.Pointer) *PlaySignalAdapterClass {
+	if p == nil {
+		return nil
+	}
 	return &PlaySignalAdapterClass{&playSignalAdapterClass{(*C.GstPlaySignalAdapterClass)(p)}}
 }
 
@@ -5077,6 +5130,9 @@ func UnsafePlaySignalAdapterClassFree(p *PlaySignalAdapterClass) {
 
 // UnsafePlaySignalAdapterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlaySignalAdapterClassToGlibNone(p *PlaySignalAdapterClass) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
@@ -5101,8 +5157,19 @@ type playStreamInfoClass struct {
 	native *C.GstPlayStreamInfoClass
 }
 
+// UnsafePlayStreamInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlayStreamInfoClass) instance() *C.GstPlayStreamInfoClass {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePlayStreamInfoClassFromGlibBorrow is used to convert raw C.GstPlayStreamInfoClass pointers to go. This is used by the bindings internally.
 func UnsafePlayStreamInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayStreamInfoClass {
+	if p == nil {
+		return nil
+	}
 	return &PlayStreamInfoClass{&playStreamInfoClass{(*C.GstPlayStreamInfoClass)(p)}}
 }
 
@@ -5115,6 +5182,9 @@ func UnsafePlayStreamInfoClassFree(p *PlayStreamInfoClass) {
 
 // UnsafePlayStreamInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlayStreamInfoClassToGlibNone(p *PlayStreamInfoClass) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
@@ -5139,8 +5209,19 @@ type playSubtitleInfoClass struct {
 	native *C.GstPlaySubtitleInfoClass
 }
 
+// UnsafePlaySubtitleInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlaySubtitleInfoClass) instance() *C.GstPlaySubtitleInfoClass {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePlaySubtitleInfoClassFromGlibBorrow is used to convert raw C.GstPlaySubtitleInfoClass pointers to go. This is used by the bindings internally.
 func UnsafePlaySubtitleInfoClassFromGlibBorrow(p unsafe.Pointer) *PlaySubtitleInfoClass {
+	if p == nil {
+		return nil
+	}
 	return &PlaySubtitleInfoClass{&playSubtitleInfoClass{(*C.GstPlaySubtitleInfoClass)(p)}}
 }
 
@@ -5153,6 +5234,9 @@ func UnsafePlaySubtitleInfoClassFree(p *PlaySubtitleInfoClass) {
 
 // UnsafePlaySubtitleInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlaySubtitleInfoClassToGlibNone(p *PlaySubtitleInfoClass) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
@@ -5177,8 +5261,19 @@ type playVideoInfoClass struct {
 	native *C.GstPlayVideoInfoClass
 }
 
+// UnsafePlayVideoInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlayVideoInfoClass) instance() *C.GstPlayVideoInfoClass {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePlayVideoInfoClassFromGlibBorrow is used to convert raw C.GstPlayVideoInfoClass pointers to go. This is used by the bindings internally.
 func UnsafePlayVideoInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayVideoInfoClass {
+	if p == nil {
+		return nil
+	}
 	return &PlayVideoInfoClass{&playVideoInfoClass{(*C.GstPlayVideoInfoClass)(p)}}
 }
 
@@ -5191,6 +5286,9 @@ func UnsafePlayVideoInfoClassFree(p *PlayVideoInfoClass) {
 
 // UnsafePlayVideoInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlayVideoInfoClassToGlibNone(p *PlayVideoInfoClass) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
@@ -5215,8 +5313,19 @@ type playVideoOverlayVideoRendererClass struct {
 	native *C.GstPlayVideoOverlayVideoRendererClass
 }
 
+// UnsafePlayVideoOverlayVideoRendererClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlayVideoOverlayVideoRendererClass) instance() *C.GstPlayVideoOverlayVideoRendererClass {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePlayVideoOverlayVideoRendererClassFromGlibBorrow is used to convert raw C.GstPlayVideoOverlayVideoRendererClass pointers to go. This is used by the bindings internally.
 func UnsafePlayVideoOverlayVideoRendererClassFromGlibBorrow(p unsafe.Pointer) *PlayVideoOverlayVideoRendererClass {
+	if p == nil {
+		return nil
+	}
 	return &PlayVideoOverlayVideoRendererClass{&playVideoOverlayVideoRendererClass{(*C.GstPlayVideoOverlayVideoRendererClass)(p)}}
 }
 
@@ -5229,6 +5338,9 @@ func UnsafePlayVideoOverlayVideoRendererClassFree(p *PlayVideoOverlayVideoRender
 
 // UnsafePlayVideoOverlayVideoRendererClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlayVideoOverlayVideoRendererClassToGlibNone(p *PlayVideoOverlayVideoRendererClass) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
@@ -5251,8 +5363,19 @@ type playVideoRendererInterface struct {
 	native *C.GstPlayVideoRendererInterface
 }
 
+// UnsafePlayVideoRendererInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlayVideoRendererInterface) instance() *C.GstPlayVideoRendererInterface {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePlayVideoRendererInterfaceFromGlibBorrow is used to convert raw C.GstPlayVideoRendererInterface pointers to go. This is used by the bindings internally.
 func UnsafePlayVideoRendererInterfaceFromGlibBorrow(p unsafe.Pointer) *PlayVideoRendererInterface {
+	if p == nil {
+		return nil
+	}
 	return &PlayVideoRendererInterface{&playVideoRendererInterface{(*C.GstPlayVideoRendererInterface)(p)}}
 }
 
@@ -5260,6 +5383,9 @@ func UnsafePlayVideoRendererInterfaceFromGlibBorrow(p unsafe.Pointer) *PlayVideo
 func UnsafePlayVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayVideoRendererInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePlayVideoRendererInterfaceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.playVideoRendererInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVideoRendererInterface,
@@ -5274,6 +5400,9 @@ func UnsafePlayVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayVideoRe
 // UnsafePlayVideoRendererInterfaceFromGlibFull is used to convert raw C.GstPlayVideoRendererInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePlayVideoRendererInterfaceFromGlibFull(p unsafe.Pointer) *PlayVideoRendererInterface {
 	wrapped := UnsafePlayVideoRendererInterfaceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.playVideoRendererInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVideoRendererInterface,
@@ -5294,12 +5423,18 @@ func UnsafePlayVideoRendererInterfaceFree(p *PlayVideoRendererInterface) {
 
 // UnsafePlayVideoRendererInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlayVideoRendererInterfaceToGlibNone(p *PlayVideoRendererInterface) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
 // UnsafePlayVideoRendererInterfaceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePlayVideoRendererInterfaceToGlibFull(p *PlayVideoRendererInterface) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	runtime.SetFinalizer(p.playVideoRendererInterface, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PlayVideoRendererInterface is invalid from here on
@@ -5318,11 +5453,19 @@ type playVisualization struct {
 	native *C.GstPlayVisualization
 }
 
+// UnsafePlayVisualizationToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PlayVisualization) instance() *C.GstPlayVisualization {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 var _ gobject.GoValueInitializer = (*PlayVisualization)(nil)
 
 func marshalPlayVisualization(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafePlayVisualizationFromGlibBorrow(b), nil
+	return UnsafePlayVisualizationFromGlibNone(b), nil
 }
 
 func (r *PlayVisualization) GoValueType() gobject.Type {
@@ -5330,11 +5473,14 @@ func (r *PlayVisualization) GoValueType() gobject.Type {
 }
 
 func (r *PlayVisualization) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafePlayVisualizationFromGlibBorrow is used to convert raw C.GstPlayVisualization pointers to go. This is used by the bindings internally.
 func UnsafePlayVisualizationFromGlibBorrow(p unsafe.Pointer) *PlayVisualization {
+	if p == nil {
+		return nil
+	}
 	return &PlayVisualization{&playVisualization{(*C.GstPlayVisualization)(p)}}
 }
 
@@ -5342,6 +5488,9 @@ func UnsafePlayVisualizationFromGlibBorrow(p unsafe.Pointer) *PlayVisualization 
 func UnsafePlayVisualizationFromGlibNone(p unsafe.Pointer) *PlayVisualization {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePlayVisualizationFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.playVisualization)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVisualization,
@@ -5356,6 +5505,9 @@ func UnsafePlayVisualizationFromGlibNone(p unsafe.Pointer) *PlayVisualization {
 // UnsafePlayVisualizationFromGlibFull is used to convert raw C.GstPlayVisualization pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePlayVisualizationFromGlibFull(p unsafe.Pointer) *PlayVisualization {
 	wrapped := UnsafePlayVisualizationFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.playVisualization)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVisualization,
@@ -5376,12 +5528,18 @@ func UnsafePlayVisualizationFree(p *PlayVisualization) {
 
 // UnsafePlayVisualizationToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePlayVisualizationToGlibNone(p *PlayVisualization) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
 // UnsafePlayVisualizationToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePlayVisualizationToGlibFull(p *PlayVisualization) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	runtime.SetFinalizer(p.playVisualization, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PlayVisualization is invalid from here on

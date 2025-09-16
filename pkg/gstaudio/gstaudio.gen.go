@@ -15044,8 +15044,19 @@ type audioAggregatorClass struct {
 	native *C.GstAudioAggregatorClass
 }
 
+// UnsafeAudioAggregatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioAggregatorClass) instance() *C.GstAudioAggregatorClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioAggregatorClassFromGlibBorrow is used to convert raw C.GstAudioAggregatorClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioAggregatorClassFromGlibBorrow(p unsafe.Pointer) *AudioAggregatorClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioAggregatorClass{&audioAggregatorClass{(*C.GstAudioAggregatorClass)(p)}}
 }
 
@@ -15058,6 +15069,9 @@ func UnsafeAudioAggregatorClassFree(a *AudioAggregatorClass) {
 
 // UnsafeAudioAggregatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioAggregatorClassToGlibNone(a *AudioAggregatorClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -15082,8 +15096,19 @@ type audioAggregatorConvertPadClass struct {
 	native *C.GstAudioAggregatorConvertPadClass
 }
 
+// UnsafeAudioAggregatorConvertPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioAggregatorConvertPadClass) instance() *C.GstAudioAggregatorConvertPadClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioAggregatorConvertPadClassFromGlibBorrow is used to convert raw C.GstAudioAggregatorConvertPadClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioAggregatorConvertPadClassFromGlibBorrow(p unsafe.Pointer) *AudioAggregatorConvertPadClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioAggregatorConvertPadClass{&audioAggregatorConvertPadClass{(*C.GstAudioAggregatorConvertPadClass)(p)}}
 }
 
@@ -15096,6 +15121,9 @@ func UnsafeAudioAggregatorConvertPadClassFree(a *AudioAggregatorConvertPadClass)
 
 // UnsafeAudioAggregatorConvertPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioAggregatorConvertPadClassToGlibNone(a *AudioAggregatorConvertPadClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -15120,8 +15148,19 @@ type audioAggregatorPadClass struct {
 	native *C.GstAudioAggregatorPadClass
 }
 
+// UnsafeAudioAggregatorPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioAggregatorPadClass) instance() *C.GstAudioAggregatorPadClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioAggregatorPadClassFromGlibBorrow is used to convert raw C.GstAudioAggregatorPadClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioAggregatorPadClassFromGlibBorrow(p unsafe.Pointer) *AudioAggregatorPadClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioAggregatorPadClass{&audioAggregatorPadClass{(*C.GstAudioAggregatorPadClass)(p)}}
 }
 
@@ -15134,6 +15173,9 @@ func UnsafeAudioAggregatorPadClassFree(a *AudioAggregatorPadClass) {
 
 // UnsafeAudioAggregatorPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioAggregatorPadClassToGlibNone(a *AudioAggregatorPadClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -15161,8 +15203,19 @@ type audioBaseSinkClass struct {
 	native *C.GstAudioBaseSinkClass
 }
 
+// UnsafeAudioBaseSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioBaseSinkClass) instance() *C.GstAudioBaseSinkClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioBaseSinkClassFromGlibBorrow is used to convert raw C.GstAudioBaseSinkClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioBaseSinkClassFromGlibBorrow(p unsafe.Pointer) *AudioBaseSinkClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioBaseSinkClass{&audioBaseSinkClass{(*C.GstAudioBaseSinkClass)(p)}}
 }
 
@@ -15175,6 +15228,9 @@ func UnsafeAudioBaseSinkClassFree(a *AudioBaseSinkClass) {
 
 // UnsafeAudioBaseSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioBaseSinkClassToGlibNone(a *AudioBaseSinkClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -15202,8 +15258,19 @@ type audioBaseSrcClass struct {
 	native *C.GstAudioBaseSrcClass
 }
 
+// UnsafeAudioBaseSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioBaseSrcClass) instance() *C.GstAudioBaseSrcClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioBaseSrcClassFromGlibBorrow is used to convert raw C.GstAudioBaseSrcClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioBaseSrcClassFromGlibBorrow(p unsafe.Pointer) *AudioBaseSrcClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioBaseSrcClass{&audioBaseSrcClass{(*C.GstAudioBaseSrcClass)(p)}}
 }
 
@@ -15216,6 +15283,9 @@ func UnsafeAudioBaseSrcClassFree(a *AudioBaseSrcClass) {
 
 // UnsafeAudioBaseSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioBaseSrcClassToGlibNone(a *AudioBaseSrcClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -15247,8 +15317,19 @@ type audioBuffer struct {
 	native *C.GstAudioBuffer
 }
 
+// UnsafeAudioBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioBuffer) instance() *C.GstAudioBuffer {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioBufferFromGlibBorrow is used to convert raw C.GstAudioBuffer pointers to go. This is used by the bindings internally.
 func UnsafeAudioBufferFromGlibBorrow(p unsafe.Pointer) *AudioBuffer {
+	if p == nil {
+		return nil
+	}
 	return &AudioBuffer{&audioBuffer{(*C.GstAudioBuffer)(p)}}
 }
 
@@ -15256,6 +15337,9 @@ func UnsafeAudioBufferFromGlibBorrow(p unsafe.Pointer) *AudioBuffer {
 func UnsafeAudioBufferFromGlibNone(p unsafe.Pointer) *AudioBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioBufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioBuffer,
@@ -15270,6 +15354,9 @@ func UnsafeAudioBufferFromGlibNone(p unsafe.Pointer) *AudioBuffer {
 // UnsafeAudioBufferFromGlibFull is used to convert raw C.GstAudioBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioBufferFromGlibFull(p unsafe.Pointer) *AudioBuffer {
 	wrapped := UnsafeAudioBufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioBuffer,
@@ -15290,12 +15377,18 @@ func UnsafeAudioBufferFree(a *AudioBuffer) {
 
 // UnsafeAudioBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioBufferToGlibNone(a *AudioBuffer) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioBufferToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioBufferToGlibFull(a *AudioBuffer) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioBuffer, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioBuffer is invalid from here on
@@ -15545,8 +15638,19 @@ type audioCdSrcClass struct {
 	native *C.GstAudioCdSrcClass
 }
 
+// UnsafeAudioCdSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioCdSrcClass) instance() *C.GstAudioCdSrcClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioCdSrcClassFromGlibBorrow is used to convert raw C.GstAudioCdSrcClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioCdSrcClassFromGlibBorrow(p unsafe.Pointer) *AudioCdSrcClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioCdSrcClass{&audioCdSrcClass{(*C.GstAudioCdSrcClass)(p)}}
 }
 
@@ -15559,6 +15663,9 @@ func UnsafeAudioCdSrcClassFree(a *AudioCdSrcClass) {
 
 // UnsafeAudioCdSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioCdSrcClassToGlibNone(a *AudioCdSrcClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -15589,8 +15696,19 @@ type audioCdSrcTrack struct {
 	native *C.GstAudioCdSrcTrack
 }
 
+// UnsafeAudioCdSrcTrackToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioCdSrcTrack) instance() *C.GstAudioCdSrcTrack {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioCdSrcTrackFromGlibBorrow is used to convert raw C.GstAudioCdSrcTrack pointers to go. This is used by the bindings internally.
 func UnsafeAudioCdSrcTrackFromGlibBorrow(p unsafe.Pointer) *AudioCdSrcTrack {
+	if p == nil {
+		return nil
+	}
 	return &AudioCdSrcTrack{&audioCdSrcTrack{(*C.GstAudioCdSrcTrack)(p)}}
 }
 
@@ -15598,6 +15716,9 @@ func UnsafeAudioCdSrcTrackFromGlibBorrow(p unsafe.Pointer) *AudioCdSrcTrack {
 func UnsafeAudioCdSrcTrackFromGlibNone(p unsafe.Pointer) *AudioCdSrcTrack {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioCdSrcTrackFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioCdSrcTrack)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioCdSrcTrack,
@@ -15612,6 +15733,9 @@ func UnsafeAudioCdSrcTrackFromGlibNone(p unsafe.Pointer) *AudioCdSrcTrack {
 // UnsafeAudioCdSrcTrackFromGlibFull is used to convert raw C.GstAudioCdSrcTrack pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioCdSrcTrackFromGlibFull(p unsafe.Pointer) *AudioCdSrcTrack {
 	wrapped := UnsafeAudioCdSrcTrackFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioCdSrcTrack)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioCdSrcTrack,
@@ -15632,12 +15756,18 @@ func UnsafeAudioCdSrcTrackFree(a *AudioCdSrcTrack) {
 
 // UnsafeAudioCdSrcTrackToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioCdSrcTrackToGlibNone(a *AudioCdSrcTrack) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioCdSrcTrackToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioCdSrcTrackToGlibFull(a *AudioCdSrcTrack) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioCdSrcTrack, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioCdSrcTrack is invalid from here on
@@ -15654,8 +15784,19 @@ type audioChannelMixer struct {
 	native *C.GstAudioChannelMixer
 }
 
+// UnsafeAudioChannelMixerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioChannelMixer) instance() *C.GstAudioChannelMixer {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioChannelMixerFromGlibBorrow is used to convert raw C.GstAudioChannelMixer pointers to go. This is used by the bindings internally.
 func UnsafeAudioChannelMixerFromGlibBorrow(p unsafe.Pointer) *AudioChannelMixer {
+	if p == nil {
+		return nil
+	}
 	return &AudioChannelMixer{&audioChannelMixer{(*C.GstAudioChannelMixer)(p)}}
 }
 
@@ -15663,6 +15804,9 @@ func UnsafeAudioChannelMixerFromGlibBorrow(p unsafe.Pointer) *AudioChannelMixer 
 func UnsafeAudioChannelMixerFromGlibNone(p unsafe.Pointer) *AudioChannelMixer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioChannelMixerFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioChannelMixer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioChannelMixer,
@@ -15677,6 +15821,9 @@ func UnsafeAudioChannelMixerFromGlibNone(p unsafe.Pointer) *AudioChannelMixer {
 // UnsafeAudioChannelMixerFromGlibFull is used to convert raw C.GstAudioChannelMixer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioChannelMixerFromGlibFull(p unsafe.Pointer) *AudioChannelMixer {
 	wrapped := UnsafeAudioChannelMixerFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioChannelMixer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioChannelMixer,
@@ -15697,12 +15844,18 @@ func UnsafeAudioChannelMixerFree(a *AudioChannelMixer) {
 
 // UnsafeAudioChannelMixerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioChannelMixerToGlibNone(a *AudioChannelMixer) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioChannelMixerToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioChannelMixerToGlibFull(a *AudioChannelMixer) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioChannelMixer, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioChannelMixer is invalid from here on
@@ -15766,8 +15919,19 @@ type audioClippingMeta struct {
 	native *C.GstAudioClippingMeta
 }
 
+// UnsafeAudioClippingMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioClippingMeta) instance() *C.GstAudioClippingMeta {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioClippingMetaFromGlibBorrow is used to convert raw C.GstAudioClippingMeta pointers to go. This is used by the bindings internally.
 func UnsafeAudioClippingMetaFromGlibBorrow(p unsafe.Pointer) *AudioClippingMeta {
+	if p == nil {
+		return nil
+	}
 	return &AudioClippingMeta{&audioClippingMeta{(*C.GstAudioClippingMeta)(p)}}
 }
 
@@ -15775,6 +15939,9 @@ func UnsafeAudioClippingMetaFromGlibBorrow(p unsafe.Pointer) *AudioClippingMeta 
 func UnsafeAudioClippingMetaFromGlibNone(p unsafe.Pointer) *AudioClippingMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioClippingMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioClippingMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioClippingMeta,
@@ -15789,6 +15956,9 @@ func UnsafeAudioClippingMetaFromGlibNone(p unsafe.Pointer) *AudioClippingMeta {
 // UnsafeAudioClippingMetaFromGlibFull is used to convert raw C.GstAudioClippingMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioClippingMetaFromGlibFull(p unsafe.Pointer) *AudioClippingMeta {
 	wrapped := UnsafeAudioClippingMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioClippingMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioClippingMeta,
@@ -15809,12 +15979,18 @@ func UnsafeAudioClippingMetaFree(a *AudioClippingMeta) {
 
 // UnsafeAudioClippingMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioClippingMetaToGlibNone(a *AudioClippingMeta) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioClippingMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioClippingMetaToGlibFull(a *AudioClippingMeta) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioClippingMeta, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioClippingMeta is invalid from here on
@@ -15850,8 +16026,19 @@ type audioClockClass struct {
 	native *C.GstAudioClockClass
 }
 
+// UnsafeAudioClockClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioClockClass) instance() *C.GstAudioClockClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioClockClassFromGlibBorrow is used to convert raw C.GstAudioClockClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioClockClassFromGlibBorrow(p unsafe.Pointer) *AudioClockClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioClockClass{&audioClockClass{(*C.GstAudioClockClass)(p)}}
 }
 
@@ -15864,6 +16051,9 @@ func UnsafeAudioClockClassFree(a *AudioClockClass) {
 
 // UnsafeAudioClockClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioClockClassToGlibNone(a *AudioClockClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -15895,11 +16085,19 @@ type audioConverter struct {
 	native *C.GstAudioConverter
 }
 
+// UnsafeAudioConverterToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioConverter) instance() *C.GstAudioConverter {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AudioConverter)(nil)
 
 func marshalAudioConverter(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAudioConverterFromGlibBorrow(b), nil
+	return UnsafeAudioConverterFromGlibNone(b), nil
 }
 
 func (r *AudioConverter) GoValueType() gobject.Type {
@@ -15907,11 +16105,14 @@ func (r *AudioConverter) GoValueType() gobject.Type {
 }
 
 func (r *AudioConverter) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAudioConverterFromGlibBorrow is used to convert raw C.GstAudioConverter pointers to go. This is used by the bindings internally.
 func UnsafeAudioConverterFromGlibBorrow(p unsafe.Pointer) *AudioConverter {
+	if p == nil {
+		return nil
+	}
 	return &AudioConverter{&audioConverter{(*C.GstAudioConverter)(p)}}
 }
 
@@ -15919,6 +16120,9 @@ func UnsafeAudioConverterFromGlibBorrow(p unsafe.Pointer) *AudioConverter {
 func UnsafeAudioConverterFromGlibNone(p unsafe.Pointer) *AudioConverter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioConverterFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioConverter,
@@ -15933,6 +16137,9 @@ func UnsafeAudioConverterFromGlibNone(p unsafe.Pointer) *AudioConverter {
 // UnsafeAudioConverterFromGlibFull is used to convert raw C.GstAudioConverter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioConverterFromGlibFull(p unsafe.Pointer) *AudioConverter {
 	wrapped := UnsafeAudioConverterFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioConverter,
@@ -15953,12 +16160,18 @@ func UnsafeAudioConverterFree(a *AudioConverter) {
 
 // UnsafeAudioConverterToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioConverterToGlibNone(a *AudioConverter) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioConverterToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioConverterToGlibFull(a *AudioConverter) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioConverter, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioConverter is invalid from here on
@@ -16265,8 +16478,19 @@ type audioDecoderClass struct {
 	native *C.GstAudioDecoderClass
 }
 
+// UnsafeAudioDecoderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioDecoderClass) instance() *C.GstAudioDecoderClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioDecoderClassFromGlibBorrow is used to convert raw C.GstAudioDecoderClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioDecoderClassFromGlibBorrow(p unsafe.Pointer) *AudioDecoderClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioDecoderClass{&audioDecoderClass{(*C.GstAudioDecoderClass)(p)}}
 }
 
@@ -16279,6 +16503,9 @@ func UnsafeAudioDecoderClassFree(a *AudioDecoderClass) {
 
 // UnsafeAudioDecoderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioDecoderClassToGlibNone(a *AudioDecoderClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -16310,8 +16537,19 @@ type audioDownmixMeta struct {
 	native *C.GstAudioDownmixMeta
 }
 
+// UnsafeAudioDownmixMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioDownmixMeta) instance() *C.GstAudioDownmixMeta {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioDownmixMetaFromGlibBorrow is used to convert raw C.GstAudioDownmixMeta pointers to go. This is used by the bindings internally.
 func UnsafeAudioDownmixMetaFromGlibBorrow(p unsafe.Pointer) *AudioDownmixMeta {
+	if p == nil {
+		return nil
+	}
 	return &AudioDownmixMeta{&audioDownmixMeta{(*C.GstAudioDownmixMeta)(p)}}
 }
 
@@ -16319,6 +16557,9 @@ func UnsafeAudioDownmixMetaFromGlibBorrow(p unsafe.Pointer) *AudioDownmixMeta {
 func UnsafeAudioDownmixMetaFromGlibNone(p unsafe.Pointer) *AudioDownmixMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioDownmixMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioDownmixMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioDownmixMeta,
@@ -16333,6 +16574,9 @@ func UnsafeAudioDownmixMetaFromGlibNone(p unsafe.Pointer) *AudioDownmixMeta {
 // UnsafeAudioDownmixMetaFromGlibFull is used to convert raw C.GstAudioDownmixMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioDownmixMetaFromGlibFull(p unsafe.Pointer) *AudioDownmixMeta {
 	wrapped := UnsafeAudioDownmixMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioDownmixMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioDownmixMeta,
@@ -16353,12 +16597,18 @@ func UnsafeAudioDownmixMetaFree(a *AudioDownmixMeta) {
 
 // UnsafeAudioDownmixMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioDownmixMetaToGlibNone(a *AudioDownmixMeta) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioDownmixMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioDownmixMetaToGlibFull(a *AudioDownmixMeta) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioDownmixMeta, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioDownmixMeta is invalid from here on
@@ -16397,8 +16647,19 @@ type audioEncoderClass struct {
 	native *C.GstAudioEncoderClass
 }
 
+// UnsafeAudioEncoderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioEncoderClass) instance() *C.GstAudioEncoderClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioEncoderClassFromGlibBorrow is used to convert raw C.GstAudioEncoderClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioEncoderClassFromGlibBorrow(p unsafe.Pointer) *AudioEncoderClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioEncoderClass{&audioEncoderClass{(*C.GstAudioEncoderClass)(p)}}
 }
 
@@ -16411,6 +16672,9 @@ func UnsafeAudioEncoderClassFree(a *AudioEncoderClass) {
 
 // UnsafeAudioEncoderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioEncoderClassToGlibNone(a *AudioEncoderClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -16439,8 +16703,19 @@ type audioFilterClass struct {
 	native *C.GstAudioFilterClass
 }
 
+// UnsafeAudioFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioFilterClass) instance() *C.GstAudioFilterClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioFilterClassFromGlibBorrow is used to convert raw C.GstAudioFilterClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioFilterClassFromGlibBorrow(p unsafe.Pointer) *AudioFilterClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioFilterClass{&audioFilterClass{(*C.GstAudioFilterClass)(p)}}
 }
 
@@ -16453,6 +16728,9 @@ func UnsafeAudioFilterClassFree(a *AudioFilterClass) {
 
 // UnsafeAudioFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioFilterClassToGlibNone(a *AudioFilterClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -16499,11 +16777,19 @@ type audioFormatInfo struct {
 	native *C.GstAudioFormatInfo
 }
 
+// UnsafeAudioFormatInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioFormatInfo) instance() *C.GstAudioFormatInfo {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AudioFormatInfo)(nil)
 
 func marshalAudioFormatInfo(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAudioFormatInfoFromGlibBorrow(b), nil
+	return UnsafeAudioFormatInfoFromGlibNone(b), nil
 }
 
 func (r *AudioFormatInfo) GoValueType() gobject.Type {
@@ -16511,11 +16797,14 @@ func (r *AudioFormatInfo) GoValueType() gobject.Type {
 }
 
 func (r *AudioFormatInfo) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAudioFormatInfoFromGlibBorrow is used to convert raw C.GstAudioFormatInfo pointers to go. This is used by the bindings internally.
 func UnsafeAudioFormatInfoFromGlibBorrow(p unsafe.Pointer) *AudioFormatInfo {
+	if p == nil {
+		return nil
+	}
 	return &AudioFormatInfo{&audioFormatInfo{(*C.GstAudioFormatInfo)(p)}}
 }
 
@@ -16523,6 +16812,9 @@ func UnsafeAudioFormatInfoFromGlibBorrow(p unsafe.Pointer) *AudioFormatInfo {
 func UnsafeAudioFormatInfoFromGlibNone(p unsafe.Pointer) *AudioFormatInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioFormatInfoFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioFormatInfo,
@@ -16537,6 +16829,9 @@ func UnsafeAudioFormatInfoFromGlibNone(p unsafe.Pointer) *AudioFormatInfo {
 // UnsafeAudioFormatInfoFromGlibFull is used to convert raw C.GstAudioFormatInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioFormatInfoFromGlibFull(p unsafe.Pointer) *AudioFormatInfo {
 	wrapped := UnsafeAudioFormatInfoFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioFormatInfo,
@@ -16557,12 +16852,18 @@ func UnsafeAudioFormatInfoFree(a *AudioFormatInfo) {
 
 // UnsafeAudioFormatInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioFormatInfoToGlibNone(a *AudioFormatInfo) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioFormatInfoToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioFormatInfoToGlibFull(a *AudioFormatInfo) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioFormatInfo, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioFormatInfo is invalid from here on
@@ -16584,11 +16885,19 @@ type audioInfo struct {
 	native *C.GstAudioInfo
 }
 
+// UnsafeAudioInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioInfo) instance() *C.GstAudioInfo {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AudioInfo)(nil)
 
 func marshalAudioInfo(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAudioInfoFromGlibBorrow(b), nil
+	return UnsafeAudioInfoFromGlibNone(b), nil
 }
 
 func (r *AudioInfo) GoValueType() gobject.Type {
@@ -16596,11 +16905,14 @@ func (r *AudioInfo) GoValueType() gobject.Type {
 }
 
 func (r *AudioInfo) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAudioInfoFromGlibBorrow is used to convert raw C.GstAudioInfo pointers to go. This is used by the bindings internally.
 func UnsafeAudioInfoFromGlibBorrow(p unsafe.Pointer) *AudioInfo {
+	if p == nil {
+		return nil
+	}
 	return &AudioInfo{&audioInfo{(*C.GstAudioInfo)(p)}}
 }
 
@@ -16608,6 +16920,9 @@ func UnsafeAudioInfoFromGlibBorrow(p unsafe.Pointer) *AudioInfo {
 func UnsafeAudioInfoFromGlibNone(p unsafe.Pointer) *AudioInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioInfoFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioInfo,
@@ -16622,6 +16937,9 @@ func UnsafeAudioInfoFromGlibNone(p unsafe.Pointer) *AudioInfo {
 // UnsafeAudioInfoFromGlibFull is used to convert raw C.GstAudioInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioInfoFromGlibFull(p unsafe.Pointer) *AudioInfo {
 	wrapped := UnsafeAudioInfoFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioInfo,
@@ -16642,12 +16960,18 @@ func UnsafeAudioInfoFree(a *AudioInfo) {
 
 // UnsafeAudioInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioInfoToGlibNone(a *AudioInfo) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioInfoToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioInfoToGlibFull(a *AudioInfo) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioInfo, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioInfo is invalid from here on
@@ -16931,8 +17255,19 @@ type audioLevelMeta struct {
 	native *C.GstAudioLevelMeta
 }
 
+// UnsafeAudioLevelMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioLevelMeta) instance() *C.GstAudioLevelMeta {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioLevelMetaFromGlibBorrow is used to convert raw C.GstAudioLevelMeta pointers to go. This is used by the bindings internally.
 func UnsafeAudioLevelMetaFromGlibBorrow(p unsafe.Pointer) *AudioLevelMeta {
+	if p == nil {
+		return nil
+	}
 	return &AudioLevelMeta{&audioLevelMeta{(*C.GstAudioLevelMeta)(p)}}
 }
 
@@ -16940,6 +17275,9 @@ func UnsafeAudioLevelMetaFromGlibBorrow(p unsafe.Pointer) *AudioLevelMeta {
 func UnsafeAudioLevelMetaFromGlibNone(p unsafe.Pointer) *AudioLevelMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioLevelMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioLevelMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioLevelMeta,
@@ -16954,6 +17292,9 @@ func UnsafeAudioLevelMetaFromGlibNone(p unsafe.Pointer) *AudioLevelMeta {
 // UnsafeAudioLevelMetaFromGlibFull is used to convert raw C.GstAudioLevelMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioLevelMetaFromGlibFull(p unsafe.Pointer) *AudioLevelMeta {
 	wrapped := UnsafeAudioLevelMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioLevelMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioLevelMeta,
@@ -16974,12 +17315,18 @@ func UnsafeAudioLevelMetaFree(a *AudioLevelMeta) {
 
 // UnsafeAudioLevelMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioLevelMetaToGlibNone(a *AudioLevelMeta) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioLevelMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioLevelMetaToGlibFull(a *AudioLevelMeta) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioLevelMeta, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioLevelMeta is invalid from here on
@@ -17019,8 +17366,19 @@ type audioMeta struct {
 	native *C.GstAudioMeta
 }
 
+// UnsafeAudioMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioMeta) instance() *C.GstAudioMeta {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioMetaFromGlibBorrow is used to convert raw C.GstAudioMeta pointers to go. This is used by the bindings internally.
 func UnsafeAudioMetaFromGlibBorrow(p unsafe.Pointer) *AudioMeta {
+	if p == nil {
+		return nil
+	}
 	return &AudioMeta{&audioMeta{(*C.GstAudioMeta)(p)}}
 }
 
@@ -17028,6 +17386,9 @@ func UnsafeAudioMetaFromGlibBorrow(p unsafe.Pointer) *AudioMeta {
 func UnsafeAudioMetaFromGlibNone(p unsafe.Pointer) *AudioMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioMeta,
@@ -17042,6 +17403,9 @@ func UnsafeAudioMetaFromGlibNone(p unsafe.Pointer) *AudioMeta {
 // UnsafeAudioMetaFromGlibFull is used to convert raw C.GstAudioMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioMetaFromGlibFull(p unsafe.Pointer) *AudioMeta {
 	wrapped := UnsafeAudioMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioMeta,
@@ -17062,12 +17426,18 @@ func UnsafeAudioMetaFree(a *AudioMeta) {
 
 // UnsafeAudioMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioMetaToGlibNone(a *AudioMeta) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioMetaToGlibFull(a *AudioMeta) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioMeta, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioMeta is invalid from here on
@@ -17101,8 +17471,19 @@ type audioQuantize struct {
 	native *C.GstAudioQuantize
 }
 
+// UnsafeAudioQuantizeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioQuantize) instance() *C.GstAudioQuantize {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioQuantizeFromGlibBorrow is used to convert raw C.GstAudioQuantize pointers to go. This is used by the bindings internally.
 func UnsafeAudioQuantizeFromGlibBorrow(p unsafe.Pointer) *AudioQuantize {
+	if p == nil {
+		return nil
+	}
 	return &AudioQuantize{&audioQuantize{(*C.GstAudioQuantize)(p)}}
 }
 
@@ -17110,6 +17491,9 @@ func UnsafeAudioQuantizeFromGlibBorrow(p unsafe.Pointer) *AudioQuantize {
 func UnsafeAudioQuantizeFromGlibNone(p unsafe.Pointer) *AudioQuantize {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioQuantizeFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioQuantize)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioQuantize,
@@ -17124,6 +17508,9 @@ func UnsafeAudioQuantizeFromGlibNone(p unsafe.Pointer) *AudioQuantize {
 // UnsafeAudioQuantizeFromGlibFull is used to convert raw C.GstAudioQuantize pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioQuantizeFromGlibFull(p unsafe.Pointer) *AudioQuantize {
 	wrapped := UnsafeAudioQuantizeFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioQuantize)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioQuantize,
@@ -17144,12 +17531,18 @@ func UnsafeAudioQuantizeFree(a *AudioQuantize) {
 
 // UnsafeAudioQuantizeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioQuantizeToGlibNone(a *AudioQuantize) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioQuantizeToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioQuantizeToGlibFull(a *AudioQuantize) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioQuantize, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioQuantize is invalid from here on
@@ -17182,8 +17575,19 @@ type audioResampler struct {
 	native *C.GstAudioResampler
 }
 
+// UnsafeAudioResamplerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioResampler) instance() *C.GstAudioResampler {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioResamplerFromGlibBorrow is used to convert raw C.GstAudioResampler pointers to go. This is used by the bindings internally.
 func UnsafeAudioResamplerFromGlibBorrow(p unsafe.Pointer) *AudioResampler {
+	if p == nil {
+		return nil
+	}
 	return &AudioResampler{&audioResampler{(*C.GstAudioResampler)(p)}}
 }
 
@@ -17191,6 +17595,9 @@ func UnsafeAudioResamplerFromGlibBorrow(p unsafe.Pointer) *AudioResampler {
 func UnsafeAudioResamplerFromGlibNone(p unsafe.Pointer) *AudioResampler {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioResamplerFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioResampler,
@@ -17205,6 +17612,9 @@ func UnsafeAudioResamplerFromGlibNone(p unsafe.Pointer) *AudioResampler {
 // UnsafeAudioResamplerFromGlibFull is used to convert raw C.GstAudioResampler pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioResamplerFromGlibFull(p unsafe.Pointer) *AudioResampler {
 	wrapped := UnsafeAudioResamplerFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioResampler,
@@ -17225,12 +17635,18 @@ func UnsafeAudioResamplerFree(a *AudioResampler) {
 
 // UnsafeAudioResamplerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioResamplerToGlibNone(a *AudioResampler) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioResamplerToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioResamplerToGlibFull(a *AudioResampler) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioResampler, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioResampler is invalid from here on
@@ -17479,8 +17895,19 @@ type audioRingBufferClass struct {
 	native *C.GstAudioRingBufferClass
 }
 
+// UnsafeAudioRingBufferClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioRingBufferClass) instance() *C.GstAudioRingBufferClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioRingBufferClassFromGlibBorrow is used to convert raw C.GstAudioRingBufferClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioRingBufferClassFromGlibBorrow(p unsafe.Pointer) *AudioRingBufferClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioRingBufferClass{&audioRingBufferClass{(*C.GstAudioRingBufferClass)(p)}}
 }
 
@@ -17493,6 +17920,9 @@ func UnsafeAudioRingBufferClassFree(a *AudioRingBufferClass) {
 
 // UnsafeAudioRingBufferClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioRingBufferClassToGlibNone(a *AudioRingBufferClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -17521,8 +17951,19 @@ type audioRingBufferSpec struct {
 	native *C.GstAudioRingBufferSpec
 }
 
+// UnsafeAudioRingBufferSpecToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioRingBufferSpec) instance() *C.GstAudioRingBufferSpec {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioRingBufferSpecFromGlibBorrow is used to convert raw C.GstAudioRingBufferSpec pointers to go. This is used by the bindings internally.
 func UnsafeAudioRingBufferSpecFromGlibBorrow(p unsafe.Pointer) *AudioRingBufferSpec {
+	if p == nil {
+		return nil
+	}
 	return &AudioRingBufferSpec{&audioRingBufferSpec{(*C.GstAudioRingBufferSpec)(p)}}
 }
 
@@ -17530,6 +17971,9 @@ func UnsafeAudioRingBufferSpecFromGlibBorrow(p unsafe.Pointer) *AudioRingBufferS
 func UnsafeAudioRingBufferSpecFromGlibNone(p unsafe.Pointer) *AudioRingBufferSpec {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioRingBufferSpecFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioRingBufferSpec)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioRingBufferSpec,
@@ -17544,6 +17988,9 @@ func UnsafeAudioRingBufferSpecFromGlibNone(p unsafe.Pointer) *AudioRingBufferSpe
 // UnsafeAudioRingBufferSpecFromGlibFull is used to convert raw C.GstAudioRingBufferSpec pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioRingBufferSpecFromGlibFull(p unsafe.Pointer) *AudioRingBufferSpec {
 	wrapped := UnsafeAudioRingBufferSpecFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioRingBufferSpec)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioRingBufferSpec,
@@ -17564,12 +18011,18 @@ func UnsafeAudioRingBufferSpecFree(a *AudioRingBufferSpec) {
 
 // UnsafeAudioRingBufferSpecToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioRingBufferSpecToGlibNone(a *AudioRingBufferSpec) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioRingBufferSpecToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioRingBufferSpecToGlibFull(a *AudioRingBufferSpec) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioRingBufferSpec, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioRingBufferSpec is invalid from here on
@@ -17588,8 +18041,19 @@ type audioSinkClass struct {
 	native *C.GstAudioSinkClass
 }
 
+// UnsafeAudioSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioSinkClass) instance() *C.GstAudioSinkClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioSinkClassFromGlibBorrow is used to convert raw C.GstAudioSinkClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioSinkClassFromGlibBorrow(p unsafe.Pointer) *AudioSinkClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioSinkClass{&audioSinkClass{(*C.GstAudioSinkClass)(p)}}
 }
 
@@ -17602,6 +18066,9 @@ func UnsafeAudioSinkClassFree(a *AudioSinkClass) {
 
 // UnsafeAudioSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioSinkClassToGlibNone(a *AudioSinkClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -17624,8 +18091,19 @@ type audioSinkClassExtension struct {
 	native *C.GstAudioSinkClassExtension
 }
 
+// UnsafeAudioSinkClassExtensionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioSinkClassExtension) instance() *C.GstAudioSinkClassExtension {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioSinkClassExtensionFromGlibBorrow is used to convert raw C.GstAudioSinkClassExtension pointers to go. This is used by the bindings internally.
 func UnsafeAudioSinkClassExtensionFromGlibBorrow(p unsafe.Pointer) *AudioSinkClassExtension {
+	if p == nil {
+		return nil
+	}
 	return &AudioSinkClassExtension{&audioSinkClassExtension{(*C.GstAudioSinkClassExtension)(p)}}
 }
 
@@ -17633,6 +18111,9 @@ func UnsafeAudioSinkClassExtensionFromGlibBorrow(p unsafe.Pointer) *AudioSinkCla
 func UnsafeAudioSinkClassExtensionFromGlibNone(p unsafe.Pointer) *AudioSinkClassExtension {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioSinkClassExtensionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioSinkClassExtension)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioSinkClassExtension,
@@ -17647,6 +18128,9 @@ func UnsafeAudioSinkClassExtensionFromGlibNone(p unsafe.Pointer) *AudioSinkClass
 // UnsafeAudioSinkClassExtensionFromGlibFull is used to convert raw C.GstAudioSinkClassExtension pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioSinkClassExtensionFromGlibFull(p unsafe.Pointer) *AudioSinkClassExtension {
 	wrapped := UnsafeAudioSinkClassExtensionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioSinkClassExtension)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioSinkClassExtension,
@@ -17667,12 +18151,18 @@ func UnsafeAudioSinkClassExtensionFree(a *AudioSinkClassExtension) {
 
 // UnsafeAudioSinkClassExtensionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioSinkClassExtensionToGlibNone(a *AudioSinkClassExtension) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioSinkClassExtensionToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioSinkClassExtensionToGlibFull(a *AudioSinkClassExtension) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioSinkClassExtension, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioSinkClassExtension is invalid from here on
@@ -17694,8 +18184,19 @@ type audioSrcClass struct {
 	native *C.GstAudioSrcClass
 }
 
+// UnsafeAudioSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioSrcClass) instance() *C.GstAudioSrcClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioSrcClassFromGlibBorrow is used to convert raw C.GstAudioSrcClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioSrcClassFromGlibBorrow(p unsafe.Pointer) *AudioSrcClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioSrcClass{&audioSrcClass{(*C.GstAudioSrcClass)(p)}}
 }
 
@@ -17708,6 +18209,9 @@ func UnsafeAudioSrcClassFree(a *AudioSrcClass) {
 
 // UnsafeAudioSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioSrcClassToGlibNone(a *AudioSrcClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -17737,11 +18241,19 @@ type audioStreamAlign struct {
 	native *C.GstAudioStreamAlign
 }
 
+// UnsafeAudioStreamAlignToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioStreamAlign) instance() *C.GstAudioStreamAlign {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AudioStreamAlign)(nil)
 
 func marshalAudioStreamAlign(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAudioStreamAlignFromGlibBorrow(b), nil
+	return UnsafeAudioStreamAlignFromGlibNone(b), nil
 }
 
 func (r *AudioStreamAlign) GoValueType() gobject.Type {
@@ -17749,11 +18261,14 @@ func (r *AudioStreamAlign) GoValueType() gobject.Type {
 }
 
 func (r *AudioStreamAlign) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAudioStreamAlignFromGlibBorrow is used to convert raw C.GstAudioStreamAlign pointers to go. This is used by the bindings internally.
 func UnsafeAudioStreamAlignFromGlibBorrow(p unsafe.Pointer) *AudioStreamAlign {
+	if p == nil {
+		return nil
+	}
 	return &AudioStreamAlign{&audioStreamAlign{(*C.GstAudioStreamAlign)(p)}}
 }
 
@@ -17761,6 +18276,9 @@ func UnsafeAudioStreamAlignFromGlibBorrow(p unsafe.Pointer) *AudioStreamAlign {
 func UnsafeAudioStreamAlignFromGlibNone(p unsafe.Pointer) *AudioStreamAlign {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioStreamAlignFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioStreamAlign)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioStreamAlign,
@@ -17775,6 +18293,9 @@ func UnsafeAudioStreamAlignFromGlibNone(p unsafe.Pointer) *AudioStreamAlign {
 // UnsafeAudioStreamAlignFromGlibFull is used to convert raw C.GstAudioStreamAlign pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioStreamAlignFromGlibFull(p unsafe.Pointer) *AudioStreamAlign {
 	wrapped := UnsafeAudioStreamAlignFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioStreamAlign)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioStreamAlign,
@@ -17795,12 +18316,18 @@ func UnsafeAudioStreamAlignFree(a *AudioStreamAlign) {
 
 // UnsafeAudioStreamAlignToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioStreamAlignToGlibNone(a *AudioStreamAlign) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioStreamAlignToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioStreamAlignToGlibFull(a *AudioStreamAlign) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioStreamAlign, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioStreamAlign is invalid from here on
@@ -18193,11 +18720,19 @@ type dsdInfo struct {
 	native *C.GstDsdInfo
 }
 
+// UnsafeDsdInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DsdInfo) instance() *C.GstDsdInfo {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DsdInfo)(nil)
 
 func marshalDsdInfo(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDsdInfoFromGlibBorrow(b), nil
+	return UnsafeDsdInfoFromGlibNone(b), nil
 }
 
 func (r *DsdInfo) GoValueType() gobject.Type {
@@ -18205,11 +18740,14 @@ func (r *DsdInfo) GoValueType() gobject.Type {
 }
 
 func (r *DsdInfo) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDsdInfoFromGlibBorrow is used to convert raw C.GstDsdInfo pointers to go. This is used by the bindings internally.
 func UnsafeDsdInfoFromGlibBorrow(p unsafe.Pointer) *DsdInfo {
+	if p == nil {
+		return nil
+	}
 	return &DsdInfo{&dsdInfo{(*C.GstDsdInfo)(p)}}
 }
 
@@ -18217,6 +18755,9 @@ func UnsafeDsdInfoFromGlibBorrow(p unsafe.Pointer) *DsdInfo {
 func UnsafeDsdInfoFromGlibNone(p unsafe.Pointer) *DsdInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDsdInfoFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdInfo,
@@ -18231,6 +18772,9 @@ func UnsafeDsdInfoFromGlibNone(p unsafe.Pointer) *DsdInfo {
 // UnsafeDsdInfoFromGlibFull is used to convert raw C.GstDsdInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDsdInfoFromGlibFull(p unsafe.Pointer) *DsdInfo {
 	wrapped := UnsafeDsdInfoFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdInfo,
@@ -18251,12 +18795,18 @@ func UnsafeDsdInfoFree(d *DsdInfo) {
 
 // UnsafeDsdInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDsdInfoToGlibNone(d *DsdInfo) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDsdInfoToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDsdInfoToGlibFull(d *DsdInfo) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dsdInfo, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DsdInfo is invalid from here on
@@ -18509,8 +19059,19 @@ type dsdPlaneOffsetMeta struct {
 	native *C.GstDsdPlaneOffsetMeta
 }
 
+// UnsafeDsdPlaneOffsetMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DsdPlaneOffsetMeta) instance() *C.GstDsdPlaneOffsetMeta {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 // UnsafeDsdPlaneOffsetMetaFromGlibBorrow is used to convert raw C.GstDsdPlaneOffsetMeta pointers to go. This is used by the bindings internally.
 func UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p unsafe.Pointer) *DsdPlaneOffsetMeta {
+	if p == nil {
+		return nil
+	}
 	return &DsdPlaneOffsetMeta{&dsdPlaneOffsetMeta{(*C.GstDsdPlaneOffsetMeta)(p)}}
 }
 
@@ -18518,6 +19079,9 @@ func UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p unsafe.Pointer) *DsdPlaneOffsetMet
 func UnsafeDsdPlaneOffsetMetaFromGlibNone(p unsafe.Pointer) *DsdPlaneOffsetMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdPlaneOffsetMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdPlaneOffsetMeta,
@@ -18532,6 +19096,9 @@ func UnsafeDsdPlaneOffsetMetaFromGlibNone(p unsafe.Pointer) *DsdPlaneOffsetMeta 
 // UnsafeDsdPlaneOffsetMetaFromGlibFull is used to convert raw C.GstDsdPlaneOffsetMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDsdPlaneOffsetMetaFromGlibFull(p unsafe.Pointer) *DsdPlaneOffsetMeta {
 	wrapped := UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdPlaneOffsetMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdPlaneOffsetMeta,
@@ -18552,12 +19119,18 @@ func UnsafeDsdPlaneOffsetMetaFree(d *DsdPlaneOffsetMeta) {
 
 // UnsafeDsdPlaneOffsetMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDsdPlaneOffsetMetaToGlibNone(d *DsdPlaneOffsetMeta) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDsdPlaneOffsetMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDsdPlaneOffsetMetaToGlibFull(d *DsdPlaneOffsetMeta) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dsdPlaneOffsetMeta, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DsdPlaneOffsetMeta is invalid from here on
@@ -18591,8 +19164,19 @@ type streamVolumeInterface struct {
 	native *C.GstStreamVolumeInterface
 }
 
+// UnsafeStreamVolumeInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *StreamVolumeInterface) instance() *C.GstStreamVolumeInterface {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 // UnsafeStreamVolumeInterfaceFromGlibBorrow is used to convert raw C.GstStreamVolumeInterface pointers to go. This is used by the bindings internally.
 func UnsafeStreamVolumeInterfaceFromGlibBorrow(p unsafe.Pointer) *StreamVolumeInterface {
+	if p == nil {
+		return nil
+	}
 	return &StreamVolumeInterface{&streamVolumeInterface{(*C.GstStreamVolumeInterface)(p)}}
 }
 
@@ -18600,6 +19184,9 @@ func UnsafeStreamVolumeInterfaceFromGlibBorrow(p unsafe.Pointer) *StreamVolumeIn
 func UnsafeStreamVolumeInterfaceFromGlibNone(p unsafe.Pointer) *StreamVolumeInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeStreamVolumeInterfaceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.streamVolumeInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamVolumeInterface,
@@ -18614,6 +19201,9 @@ func UnsafeStreamVolumeInterfaceFromGlibNone(p unsafe.Pointer) *StreamVolumeInte
 // UnsafeStreamVolumeInterfaceFromGlibFull is used to convert raw C.GstStreamVolumeInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeStreamVolumeInterfaceFromGlibFull(p unsafe.Pointer) *StreamVolumeInterface {
 	wrapped := UnsafeStreamVolumeInterfaceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.streamVolumeInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamVolumeInterface,
@@ -18634,12 +19224,18 @@ func UnsafeStreamVolumeInterfaceFree(s *StreamVolumeInterface) {
 
 // UnsafeStreamVolumeInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeStreamVolumeInterfaceToGlibNone(s *StreamVolumeInterface) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeStreamVolumeInterfaceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeStreamVolumeInterfaceToGlibFull(s *StreamVolumeInterface) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.streamVolumeInterface, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // StreamVolumeInterface is invalid from here on
