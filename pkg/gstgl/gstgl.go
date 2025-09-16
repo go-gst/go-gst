@@ -319,81 +319,99 @@ func init() {
 	})
 }
 
-// BUFFER_POOL_OPTION_GL_SYNC_META: option that can be activated on bufferpools
-// to request OpenGL synchronization metadata on buffers from the pool.
+// BUFFER_POOL_OPTION_GL_SYNC_META (GST_BUFFER_POOL_OPTION_GL_SYNC_META):
+// option that can be activated on bufferpools to request OpenGL synchronization
+// metadata on buffers from the pool.
 const BUFFER_POOL_OPTION_GL_SYNC_META = "GstBufferPoolOptionGLSyncMeta"
 
-// BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_2D: string used for
+// BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_2D
+// (GST_BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_2D): string used for
 // GST_GL_TEXTURE_TARGET_2D as a BufferPool pool option.
 const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_2D = "GstBufferPoolOptionGLTextureTarget2D"
 
-// BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_EXTERNAL_OES: string used for
+// BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_EXTERNAL_OES
+// (GST_BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_EXTERNAL_OES): string used for
 // GST_GL_TEXTURE_TARGET_EXTERNAL_OES as a BufferPool pool option.
 const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_EXTERNAL_OES = "GstBufferPoolOptionGLTextureTargetExternalOES"
 
-// BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_RECTANGLE: string used for
+// BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_RECTANGLE
+// (GST_BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_RECTANGLE): string used for
 // GST_GL_TEXTURE_TARGET_RECTANGLE as a BufferPool pool option.
 const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_RECTANGLE = "GstBufferPoolOptionGLTextureTargetRectangle"
 
-// CAPS_FEATURE_MEMORY_GL_BUFFER: name of the caps feature indicating the use of
-// GL buffers.
+// CAPS_FEATURE_MEMORY_GL_BUFFER (GST_CAPS_FEATURE_MEMORY_GL_BUFFER): name of
+// the caps feature indicating the use of GL buffers.
 const CAPS_FEATURE_MEMORY_GL_BUFFER = "memory:GLBuffer"
 
-// CAPS_FEATURE_MEMORY_GL_MEMORY: name of the caps feature for indicating the
-// use of GLMemory.
+// CAPS_FEATURE_MEMORY_GL_MEMORY (GST_CAPS_FEATURE_MEMORY_GL_MEMORY): name of
+// the caps feature for indicating the use of GLMemory.
 const CAPS_FEATURE_MEMORY_GL_MEMORY = "memory:GLMemory"
 
-// GL_ALLOCATION_PARAMS_ALLOC_FLAG_ALLOC: GL Allocation flag indicating that the
-// implementation should allocate the necessary resources.
+// GL_ALLOCATION_PARAMS_ALLOC_FLAG_ALLOC
+// (GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_ALLOC): GL Allocation flag indicating
+// that the implementation should allocate the necessary resources.
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_ALLOC = 1
 
-// GL_ALLOCATION_PARAMS_ALLOC_FLAG_BUFFER: GL allocation flag indicating the
-// allocation of a GL buffer.
+// GL_ALLOCATION_PARAMS_ALLOC_FLAG_BUFFER
+// (GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_BUFFER): GL allocation flag indicating
+// the allocation of a GL buffer.
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_BUFFER = 16
 
-// GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER values >= than
+// GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER
+// (GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER) values >= than
 // T_GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER can be used for user-defined purposes.
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER = 65536
 
-// GL_ALLOCATION_PARAMS_ALLOC_FLAG_VIDEO: GL allocation flag indicating the
-// allocation of 2D video frames.
+// GL_ALLOCATION_PARAMS_ALLOC_FLAG_VIDEO
+// (GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_VIDEO): GL allocation flag indicating
+// the allocation of 2D video frames.
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_VIDEO = 8
 
-// GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_GPU_HANDLE: GL Allocation flag for using
-// the provided GPU handle as storage.
+// GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_GPU_HANDLE
+// (GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_GPU_HANDLE): GL Allocation flag for
+// using the provided GPU handle as storage.
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_GPU_HANDLE = 4
 
-// GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM: GL Allocation flag for using the
-// provided system memory data as storage.
+// GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM
+// (GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM): GL Allocation flag for
+// using the provided system memory data as storage.
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM = 2
 
-// GL_API_GLES1_NAME: name for GST_GL_API_GLES1 used in various places.
+// GL_API_GLES1_NAME (GST_GL_API_GLES1_NAME): name for GST_GL_API_GLES1 used in
+// various places.
 const GL_API_GLES1_NAME = "gles1"
 
-// GL_API_GLES2_NAME: name for GST_GL_API_GLES2 used in various places.
+// GL_API_GLES2_NAME (GST_GL_API_GLES2_NAME): name for GST_GL_API_GLES2 used in
+// various places.
 const GL_API_GLES2_NAME = "gles2"
 
-// GL_API_OPENGL3_NAME: name for GST_GL_API_OPENGL3 used in various places.
+// GL_API_OPENGL3_NAME (GST_GL_API_OPENGL3_NAME): name for GST_GL_API_OPENGL3
+// used in various places.
 const GL_API_OPENGL3_NAME = "opengl3"
 
-// GL_API_OPENGL_NAME: name for GST_GL_API_OPENGL used in various places.
+// GL_API_OPENGL_NAME (GST_GL_API_OPENGL_NAME): name for GST_GL_API_OPENGL used
+// in various places.
 const GL_API_OPENGL_NAME = "opengl"
 
-// GL_BASE_MEMORY_ALLOCATOR_NAME: name of the GL buffer allocator.
+// GL_BASE_MEMORY_ALLOCATOR_NAME (GST_GL_BASE_MEMORY_ALLOCATOR_NAME): name of
+// the GL buffer allocator.
 const GL_BASE_MEMORY_ALLOCATOR_NAME = "GLBaseMemory"
 
-// GL_BUFFER_ALLOCATOR_NAME: name of the GL buffer allocator.
+// GL_BUFFER_ALLOCATOR_NAME (GST_GL_BUFFER_ALLOCATOR_NAME): name of the GL
+// buffer allocator.
 const GL_BUFFER_ALLOCATOR_NAME = "GLBuffer"
 const GL_COLOR_CONVERT_EXT_FORMATS = ", RGBA64_LE, BGR10A2_LE, RGB10A2_LE, P010_10LE, P012_LE, P016_LE, Y212_LE, Y412_LE, A444_16LE, A422_16LE, A420_16LE, A444_12LE, A422_12LE, A420_12LE, A420_10LE, A422_10LE, A444_10LE, I420_12LE, I420_10LE"
 
-// GL_COLOR_CONVERT_FORMATS: currently supported formats that can be converted.
+// GL_COLOR_CONVERT_FORMATS (GST_GL_COLOR_CONVERT_FORMATS): currently supported
+// formats that can be converted.
 const GL_COLOR_CONVERT_FORMATS = "{ RGBA, RGB, RGBx, BGR, BGRx, BGRA, xRGB, xBGR, ARGB, ABGR, GBRA, GBR, RGBP, BGRP, Y444, I420, YV12, Y42B, Y41B, NV12, NV21, NV16, NV61, YUY2, UYVY, Y210, AYUV, VUYA, Y410, A444, A422, GRAY8, GRAY16_LE, GRAY16_BE, RGB16, BGR16, ARGB64, A420, AV12, NV12_16L32S, NV12_4L4, RBGA"
 
-// GL_COLOR_CONVERT_VIDEO_CAPS: currently supported Caps that can be converted.
+// GL_COLOR_CONVERT_VIDEO_CAPS (GST_GL_COLOR_CONVERT_VIDEO_CAPS): currently
+// supported Caps that can be converted.
 const GL_COLOR_CONVERT_VIDEO_CAPS = "video/x-raw("
 
-// GL_CONFIG_STRUCTURE_NAME: canonical name of a Structure that contains a
-// configuration for a GLContext.
+// GL_CONFIG_STRUCTURE_NAME (GST_GL_CONFIG_STRUCTURE_NAME): canonical name of a
+// Structure that contains a configuration for a GLContext.
 const GL_CONFIG_STRUCTURE_NAME = "gst-gl-context-config"
 const GL_CONTEXT_TYPE_CGL = "gst.gl.context.CGL"
 const GL_CONTEXT_TYPE_EAGL = "gst.gl.context.EAGL"
@@ -401,38 +419,42 @@ const GL_CONTEXT_TYPE_EGL = "gst.gl.context.EGL"
 const GL_CONTEXT_TYPE_GLX = "gst.gl.context.GLX"
 const GL_CONTEXT_TYPE_WGL = "gst.gl.context.WGL"
 
-// GL_DISPLAY_CONTEXT_TYPE: name used in Context queries for requesting a
-// GLDisplay.
+// GL_DISPLAY_CONTEXT_TYPE (GST_GL_DISPLAY_CONTEXT_TYPE): name used in Context
+// queries for requesting a GLDisplay.
 const GL_DISPLAY_CONTEXT_TYPE = "gst.gl.GLDisplay"
 
-// GL_MEMORY_ALLOCATOR_NAME: name of the GL memory allocator.
+// GL_MEMORY_ALLOCATOR_NAME (GST_GL_MEMORY_ALLOCATOR_NAME): name of the GL
+// memory allocator.
 const GL_MEMORY_ALLOCATOR_NAME = "GLMemory"
 
-// GL_MEMORY_PBO_ALLOCATOR_NAME: name of the GL Memory PBO allocator.
+// GL_MEMORY_PBO_ALLOCATOR_NAME (GST_GL_MEMORY_PBO_ALLOCATOR_NAME): name of the
+// GL Memory PBO allocator.
 const GL_MEMORY_PBO_ALLOCATOR_NAME = "GLMemoryPBO"
 const GL_MEMORY_VIDEO_EXT_FORMATS = ", RGBA64_LE, BGR10A2_LE, RGB10A2_LE, P010_10LE, P012_LE, P016_LE, Y212_LE, Y412_LE, A444_16LE, A422_16LE, A420_16LE, A444_12LE, A422_12LE, A420_12LE, A420_10LE, A422_10LE, A444_10LE, I420_12LE, I420_10LE"
 
-// GL_MEMORY_VIDEO_FORMATS_STR: list of video formats that are supported by
-// GLMemory.
+// GL_MEMORY_VIDEO_FORMATS_STR (GST_GL_MEMORY_VIDEO_FORMATS_STR): list of video
+// formats that are supported by GLMemory.
 const GL_MEMORY_VIDEO_FORMATS_STR = "{ RGBA, BGRA, RGBx, BGRx, ARGB, ABGR, xRGB, xBGR, GBRA, GBR, RGBP, BGRP, RGB, BGR, RGB16, BGR16, AYUV, VUYA, A444, A422, Y410, I420, YV12, NV12, NV21, NV16, NV61, YUY2, UYVY, Y210, Y41B, Y42B, Y444, GRAY8, GRAY16_LE, GRAY16_BE, ARGB64, A420, AV12, NV12_16L32S, NV12_4L4, RBGA"
 
-// GL_RENDERBUFFER_ALLOCATOR_NAME: name of the GL renderbuffer allocator.
+// GL_RENDERBUFFER_ALLOCATOR_NAME (GST_GL_RENDERBUFFER_ALLOCATOR_NAME): name of
+// the GL renderbuffer allocator.
 const GL_RENDERBUFFER_ALLOCATOR_NAME = "GLRenderbuffer"
 
-// GL_TEXTURE_TARGET_2D_STR: string used for GST_GL_TEXTURE_TARGET_2D in things
-// like caps values.
+// GL_TEXTURE_TARGET_2D_STR (GST_GL_TEXTURE_TARGET_2D_STR): string used for
+// GST_GL_TEXTURE_TARGET_2D in things like caps values.
 const GL_TEXTURE_TARGET_2D_STR = "2D"
 
-// GL_TEXTURE_TARGET_EXTERNAL_OES_STR: string used for
-// GST_GL_TEXTURE_TARGET_EXTERNAL_OES in things like caps values.
+// GL_TEXTURE_TARGET_EXTERNAL_OES_STR (GST_GL_TEXTURE_TARGET_EXTERNAL_OES_STR):
+// string used for GST_GL_TEXTURE_TARGET_EXTERNAL_OES in things like caps
+// values.
 const GL_TEXTURE_TARGET_EXTERNAL_OES_STR = "external-oes"
 
-// GL_TEXTURE_TARGET_RECTANGLE_STR: string used for
-// GST_GL_TEXTURE_TARGET_RECTANGLE in things like caps values.
+// GL_TEXTURE_TARGET_RECTANGLE_STR (GST_GL_TEXTURE_TARGET_RECTANGLE_STR):
+// string used for GST_GL_TEXTURE_TARGET_RECTANGLE in things like caps values.
 const GL_TEXTURE_TARGET_RECTANGLE_STR = "rectangle"
 
-// MAP_GL: flag indicating that we should map the GL object instead of to system
-// memory.
+// MAP_GL (GST_MAP_GL): flag indicating that we should map the GL object instead
+// of to system memory.
 //
 // Combining T_MAP_GL with T_MAP_WRITE has the same semantics as though you are
 // writing to OpenGL. Conversely, combining T_MAP_GL with T_MAP_READ has the
@@ -442,12 +464,15 @@ const MAP_GL = 131072
 type GLBaseMemoryError C.gint
 
 const (
-	// GLBaseMemoryErrorFailed: generic failure.
+	// GLBaseMemoryErrorFailed (GST_GL_BASE_MEMORY_ERROR_FAILED): generic
+	// failure.
 	GLBaseMemoryErrorFailed GLBaseMemoryError = iota
-	// GLBaseMemoryErrorOldLibs: implementation is too old and doesn't implement
-	// enough features.
+	// GLBaseMemoryErrorOldLibs (GST_GL_BASE_MEMORY_ERROR_OLD_LIBS):
+	// implementation is too old and doesn't implement enough features.
 	GLBaseMemoryErrorOldLibs
-	// GLBaseMemoryErrorResourceUnavailable: resource could not be found.
+	// GLBaseMemoryErrorResourceUnavailable
+	// (GST_GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE): resource could not be
+	// found.
 	GLBaseMemoryErrorResourceUnavailable
 )
 
@@ -487,11 +512,12 @@ func GLBaseMemoryErrorQuark() glib.Quark {
 type GLConfigCaveat C.gint
 
 const (
-	// GLConfigCaveatNone: none.
+	// GLConfigCaveatNone (GST_GL_CONFIG_CAVEAT_NONE): none.
 	GLConfigCaveatNone GLConfigCaveat = iota
-	// GLConfigCaveatSlow: slow.
+	// GLConfigCaveatSlow (GST_GL_CONFIG_CAVEAT_SLOW): slow.
 	GLConfigCaveatSlow
-	// GLConfigCaveatNonConformant: non-conformant.
+	// GLConfigCaveatNonConformant (GST_GL_CONFIG_CAVEAT_NON_CONFORMANT):
+	// non-conformant.
 	GLConfigCaveatNonConformant
 )
 
@@ -539,21 +565,27 @@ func GLConfigCaveatToString(caveat GLConfigCaveat) string {
 	return _utf8
 }
 
-// GLContextError: openGL context errors.
+// GLContextError (GstGLContextError): openGL context errors.
 type GLContextError C.gint
 
 const (
-	// GLContextErrorFailed: failed for an unspecified reason.
+	// GLContextErrorFailed (GST_GL_CONTEXT_ERROR_FAILED): failed for an
+	// unspecified reason.
 	GLContextErrorFailed GLContextError = iota
-	// GLContextErrorWrongConfig: configuration requested is not correct.
+	// GLContextErrorWrongConfig (GST_GL_CONTEXT_ERROR_WRONG_CONFIG):
+	// configuration requested is not correct.
 	GLContextErrorWrongConfig
-	// GLContextErrorWrongApi: openGL API requested is not correct.
+	// GLContextErrorWrongApi (GST_GL_CONTEXT_ERROR_WRONG_API): openGL API
+	// requested is not correct.
 	GLContextErrorWrongApi
-	// GLContextErrorOldLibs: openGL libraries are too old.
+	// GLContextErrorOldLibs (GST_GL_CONTEXT_ERROR_OLD_LIBS): openGL libraries
+	// are too old.
 	GLContextErrorOldLibs
-	// GLContextErrorCreateContext: glXCreateContext (or similar) failed.
+	// GLContextErrorCreateContext (GST_GL_CONTEXT_ERROR_CREATE_CONTEXT):
+	// glXCreateContext (or similar) failed.
 	GLContextErrorCreateContext
-	// GLContextErrorResourceUnavailable: resource is not available.
+	// GLContextErrorResourceUnavailable
+	// (GST_GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE): resource is not available.
 	GLContextErrorResourceUnavailable
 )
 
@@ -599,50 +631,59 @@ func GLContextErrorQuark() glib.Quark {
 type GLFormat C.gint
 
 const (
-	// GLLuminance: single component replicated across R, G, and B textures
-	// components.
+	// GLLuminance (GST_GL_LUMINANCE): single component replicated across R, G,
+	// and B textures components.
 	GLLuminance GLFormat = 6409
-	// GLAlpha: single component stored in the A texture component.
+	// GLAlpha (GST_GL_ALPHA): single component stored in the A texture
+	// component.
 	GLAlpha GLFormat = 6406
-	// GLLuminanceAlpha: combination of T_GL_LUMINANCE and T_GL_ALPHA.
+	// GLLuminanceAlpha (GST_GL_LUMINANCE_ALPHA): combination of T_GL_LUMINANCE
+	// and T_GL_ALPHA.
 	GLLuminanceAlpha GLFormat = 6410
-	// GLRed: single component stored in the R texture component.
+	// GLRed (GST_GL_RED): single component stored in the R texture component.
 	GLRed GLFormat = 6403
-	// GLR8: single 8-bit component stored in the R texture component.
+	// GLR8 (GST_GL_R8): single 8-bit component stored in the R texture
+	// component.
 	GLR8 GLFormat = 33321
-	// GLRg: two components stored in the R and G texture components.
+	// GLRg (GST_GL_RG): two components stored in the R and G texture
+	// components.
 	GLRg GLFormat = 33319
-	// GLRg8: two 8-bit components stored in the R and G texture components.
+	// GLRg8 (GST_GL_RG8): two 8-bit components stored in the R and G texture
+	// components.
 	GLRg8 GLFormat = 33323
-	// GLRGB: three components stored in the R, G, and B texture components.
+	// GLRGB (GST_GL_RGB): three components stored in the R, G, and B texture
+	// components.
 	GLRGB GLFormat = 6407
-	// GLRGB8: three 8-bit components stored in the R, G, and B texture
-	// components.
+	// GLRGB8 (GST_GL_RGB8): three 8-bit components stored in the R, G, and B
+	// texture components.
 	GLRGB8 GLFormat = 32849
-	// GLRGB565: three components of bit depth 5, 6 and 5 stored in the R, G,
-	// and B texture components respectively.
+	// GLRGB565 (GST_GL_RGB565): three components of bit depth 5, 6 and 5 stored
+	// in the R, G, and B texture components respectively.
 	GLRGB565 GLFormat = 36194
-	// GLRGB16: three 16-bit components stored in the R, G, and B texture
-	// components.
+	// GLRGB16 (GST_GL_RGB16): three 16-bit components stored in the R, G,
+	// and B texture components.
 	GLRGB16 GLFormat = 32852
-	// GLRGBA: four components stored in the R, G, B, and A texture components
-	// respectively.
+	// GLRGBA (GST_GL_RGBA): four components stored in the R, G, B, and A
+	// texture components respectively.
 	GLRGBA GLFormat = 6408
-	// GLRGBA8: four 8-bit components stored in the R, G, B, and A texture
-	// components respectively.
+	// GLRGBA8 (GST_GL_RGBA8): four 8-bit components stored in the R, G, B,
+	// and A texture components respectively.
 	GLRGBA8 GLFormat = 32856
-	// GLRGBA16: four 16-bit components stored in the R, G, B, and A texture
-	// components respectively.
+	// GLRGBA16 (GST_GL_RGBA16): four 16-bit components stored in the R, G, B,
+	// and A texture components respectively.
 	GLRGBA16 GLFormat = 32859
-	// GLDepthComponent16: single 16-bit component for depth information.
+	// GLDepthComponent16 (GST_GL_DEPTH_COMPONENT16): single 16-bit component
+	// for depth information.
 	GLDepthComponent16 GLFormat = 33189
-	// GLDepth24Stencil8: 24-bit component for depth information and a 8-bit
-	// component for stencil informat.
+	// GLDepth24Stencil8 (GST_GL_DEPTH24_STENCIL8): 24-bit component for depth
+	// information and a 8-bit component for stencil informat.
 	GLDepth24Stencil8 GLFormat = 35056
 	GLRGB10A2         GLFormat = 32857
-	// GLR16: single 16-bit component stored in the R texture component.
+	// GLR16 (GST_GL_R16): single 16-bit component stored in the R texture
+	// component.
 	GLR16 GLFormat = 33322
-	// GLRg16: two 16-bit components stored in the R and G texture components.
+	// GLRg16 (GST_GL_RG16): two 16-bit components stored in the R and G texture
+	// components.
 	GLRg16 GLFormat = 33324
 )
 
@@ -780,9 +821,9 @@ func GLFormatNComponents(glFormat GLFormat) uint {
 	return _guint
 }
 
-// GLFormatTypeFromSizedGLFormat: get the unsized format and type from format
-// for usage in glReadPixels, glTex{Sub}Image*, glTexImage* and similar
-// functions.
+// GLFormatTypeFromSizedGLFormat (gst_gl_format_type_from_sized_gl_format):
+// get the unsized format and type from format for usage in glReadPixels,
+// glTex{Sub}Image*, glTexImage* and similar functions.
 //
 // The function takes the following parameters:
 //
@@ -842,11 +883,11 @@ func GLFormatTypeNBytes(format, typ uint) uint {
 type GLQueryType C.gint
 
 const (
-	// GLQueryNone: no query.
+	// GLQueryNone (GST_GL_QUERY_NONE): no query.
 	GLQueryNone GLQueryType = iota
-	// GLQueryTimeElapsed: query the time elapsed.
+	// GLQueryTimeElapsed (GST_GL_QUERY_TIME_ELAPSED): query the time elapsed.
 	GLQueryTimeElapsed
-	// GLQueryTimestamp: query the current time.
+	// GLQueryTimestamp (GST_GL_QUERY_TIMESTAMP): query the current time.
 	GLQueryTimestamp
 )
 
@@ -868,15 +909,16 @@ func (g GLQueryType) String() string {
 	}
 }
 
-// GLSLError: compilation stage that caused an error.
+// GLSLError (GstGLSLError): compilation stage that caused an error.
 type GLSLError C.gint
 
 const (
-	// GlslErrorCompile: compilation error occurred.
+	// GlslErrorCompile (GST_GLSL_ERROR_COMPILE): compilation error occurred.
 	GlslErrorCompile GLSLError = iota
-	// GlslErrorLink: link error occurred.
+	// GlslErrorLink (GST_GLSL_ERROR_LINK): link error occurred.
 	GlslErrorLink
-	// GlslErrorProgram: general program error occurred.
+	// GlslErrorProgram (GST_GLSL_ERROR_PROGRAM): general program error
+	// occurred.
 	GlslErrorProgram
 )
 
@@ -913,43 +955,55 @@ func GLSLErrorQuark() glib.Quark {
 	return _quark
 }
 
-// GLSLVersion: GLSL version list.
+// GLSLVersion (GstGLSLVersion): GLSL version list.
 type GLSLVersion C.gint
 
 const (
-	// GlslVersionNone: no version.
+	// GlslVersionNone (GST_GLSL_VERSION_NONE): no version.
 	GlslVersionNone GLSLVersion = 0
-	// GlslVersion100: version 100 (only valid for ES).
+	// GlslVersion100 (GST_GLSL_VERSION_100): version 100 (only valid for ES).
 	GlslVersion100 GLSLVersion = 100
-	// GlslVersion110: version 110 (only valid for compatibility desktop GL).
+	// GlslVersion110 (GST_GLSL_VERSION_110): version 110 (only valid for
+	// compatibility desktop GL).
 	GlslVersion110 GLSLVersion = 110
-	// GlslVersion120: version 120 (only valid for compatibility desktop GL).
+	// GlslVersion120 (GST_GLSL_VERSION_120): version 120 (only valid for
+	// compatibility desktop GL).
 	GlslVersion120 GLSLVersion = 120
-	// GlslVersion130: version 130 (only valid for compatibility desktop GL).
+	// GlslVersion130 (GST_GLSL_VERSION_130): version 130 (only valid for
+	// compatibility desktop GL).
 	GlslVersion130 GLSLVersion = 130
-	// GlslVersion140: version 140 (only valid for compatibility desktop GL).
+	// GlslVersion140 (GST_GLSL_VERSION_140): version 140 (only valid for
+	// compatibility desktop GL).
 	GlslVersion140 GLSLVersion = 140
-	// GlslVersion150: version 150 (valid for compatibility/core desktop GL).
+	// GlslVersion150 (GST_GLSL_VERSION_150): version 150 (valid for
+	// compatibility/core desktop GL).
 	GlslVersion150 GLSLVersion = 150
-	// GlslVersion300: version 300 (only valid for ES).
+	// GlslVersion300 (GST_GLSL_VERSION_300): version 300 (only valid for ES).
 	GlslVersion300 GLSLVersion = 300
-	// GlslVersion310: version 310 (only valid for ES).
+	// GlslVersion310 (GST_GLSL_VERSION_310): version 310 (only valid for ES).
 	GlslVersion310 GLSLVersion = 310
-	// GlslVersion320: version 320 (only valid for ES).
+	// GlslVersion320 (GST_GLSL_VERSION_320): version 320 (only valid for ES).
 	GlslVersion320 GLSLVersion = 320
-	// GlslVersion330: version 330 (valid for compatibility/core desktop GL).
+	// GlslVersion330 (GST_GLSL_VERSION_330): version 330 (valid for
+	// compatibility/core desktop GL).
 	GlslVersion330 GLSLVersion = 330
-	// GlslVersion400: version 400 (valid for compatibility/core desktop GL).
+	// GlslVersion400 (GST_GLSL_VERSION_400): version 400 (valid for
+	// compatibility/core desktop GL).
 	GlslVersion400 GLSLVersion = 400
-	// GlslVersion410: version 410 (valid for compatibility/core desktop GL).
+	// GlslVersion410 (GST_GLSL_VERSION_410): version 410 (valid for
+	// compatibility/core desktop GL).
 	GlslVersion410 GLSLVersion = 410
-	// GlslVersion420: version 420 (valid for compatibility/core desktop GL).
+	// GlslVersion420 (GST_GLSL_VERSION_420): version 420 (valid for
+	// compatibility/core desktop GL).
 	GlslVersion420 GLSLVersion = 420
-	// GlslVersion430: version 430 (valid for compatibility/core desktop GL).
+	// GlslVersion430 (GST_GLSL_VERSION_430): version 430 (valid for
+	// compatibility/core desktop GL).
 	GlslVersion430 GLSLVersion = 430
-	// GlslVersion440: version 440 (valid for compatibility/core desktop GL).
+	// GlslVersion440 (GST_GLSL_VERSION_440): version 440 (valid for
+	// compatibility/core desktop GL).
 	GlslVersion440 GLSLVersion = 440
-	// GlslVersion450: version 450 (valid for compatibility/core desktop GL).
+	// GlslVersion450 (GST_GLSL_VERSION_450): version 450 (valid for
+	// compatibility/core desktop GL).
 	GlslVersion450 GLSLVersion = 450
 )
 
@@ -1023,8 +1077,9 @@ func GLSLVersionFromString(str string) GLSLVersion {
 	return _glslVersion
 }
 
-// GLSLVersionProfileFromString: note: this function expects either a #version
-// GLSL preprocesser directive or a valid GLSL version and/or profile.
+// GLSLVersionProfileFromString (gst_glsl_version_profile_from_string): note:
+// this function expects either a #version GLSL preprocesser directive or a
+// valid GLSL version and/or profile.
 //
 // The function takes the following parameters:
 //
@@ -1115,17 +1170,22 @@ func GLSLVersionToString(version GLSLVersion) string {
 	return _utf8
 }
 
-// GLStereoDownmix: output anaglyph type to generate when downmixing to mono.
+// GLStereoDownmix (GstGLStereoDownmix): output anaglyph type to generate when
+// downmixing to mono.
 type GLStereoDownmix C.gint
 
 const (
-	// GLStereoDownmixAnaglyphGreenMagentaDubois dubois optimised Green-Magenta
-	// anaglyph.
+	// GLStereoDownmixAnaglyphGreenMagentaDubois
+	// (GST_GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS) dubois optimised
+	// Green-Magenta anaglyph.
 	GLStereoDownmixAnaglyphGreenMagentaDubois GLStereoDownmix = iota
-	// GLStereoDownmixAnaglyphRedCyanDubois dubois optimised Red-Cyan anaglyph.
+	// GLStereoDownmixAnaglyphRedCyanDubois
+	// (GST_GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS) dubois optimised
+	// Red-Cyan anaglyph.
 	GLStereoDownmixAnaglyphRedCyanDubois
-	// GLStereoDownmixAnaglyphAmberBlueDubois dubois optimised Amber-Blue
-	// anaglyph.
+	// GLStereoDownmixAnaglyphAmberBlueDubois
+	// (GST_GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS) dubois optimised
+	// Amber-Blue anaglyph.
 	GLStereoDownmixAnaglyphAmberBlueDubois
 )
 
@@ -1147,23 +1207,24 @@ func (g GLStereoDownmix) String() string {
 	}
 }
 
-// GLTextureTarget: openGL texture target that an OpenGL texture can
-// be bound to. The gst_gl_value_set_texture_target_from_mask(),
+// GLTextureTarget (GstGLTextureTarget): openGL texture target that an OpenGL
+// texture can be bound to. The gst_gl_value_set_texture_target_from_mask(),
 // gst_gl_value_get_texture_target_mask(), and gst_gl_value_set_texture_target()
 // functions can be used for handling texture targets with #GValue's when e.g.
 // dealing with Caps.
 type GLTextureTarget C.gint
 
 const (
-	// GLTextureTargetNone: no texture target.
+	// GLTextureTargetNone (GST_GL_TEXTURE_TARGET_NONE): no texture target.
 	GLTextureTargetNone GLTextureTarget = iota
-	// GLTextureTarget2D: 2D texture target (GL_TEXTURE_2D).
+	// GLTextureTarget2D (GST_GL_TEXTURE_TARGET_2D): 2D texture target
+	// (GL_TEXTURE_2D).
 	GLTextureTarget2D
-	// GLTextureTargetRectangle: rectangle texture target
-	// (GL_TEXTURE_RECTANGLE).
+	// GLTextureTargetRectangle (GST_GL_TEXTURE_TARGET_RECTANGLE): rectangle
+	// texture target (GL_TEXTURE_RECTANGLE).
 	GLTextureTargetRectangle
-	// GLTextureTargetExternalOes: external oes texture target
-	// (GL_TEXTURE_EXTERNAL_OES).
+	// GLTextureTargetExternalOes (GST_GL_TEXTURE_TARGET_EXTERNAL_OES): external
+	// oes texture target (GL_TEXTURE_EXTERNAL_OES).
 	GLTextureTargetExternalOes
 )
 
@@ -1313,15 +1374,18 @@ func GLTextureTargetToString(target GLTextureTarget) string {
 type GLUploadReturn C.gint
 
 const (
-	// GLUploadDone: no further processing required.
+	// GLUploadDone (GST_GL_UPLOAD_DONE): no further processing required.
 	GLUploadDone GLUploadReturn = 1
-	// GLUploadError: unspecified error occurred.
+	// GLUploadError (GST_GL_UPLOAD_ERROR): unspecified error occurred.
 	GLUploadError GLUploadReturn = -1
-	// GLUploadUnsupported: configuration is unsupported.
+	// GLUploadUnsupported (GST_GL_UPLOAD_UNSUPPORTED): configuration is
+	// unsupported.
 	GLUploadUnsupported GLUploadReturn = -2
-	// GLUploadReconfigure: this element requires a reconfiguration.
+	// GLUploadReconfigure (GST_GL_UPLOAD_RECONFIGURE): this element requires a
+	// reconfiguration.
 	GLUploadReconfigure GLUploadReturn = -3
-	// GLUploadUnsharedGLContext: private return value.
+	// GLUploadUnsharedGLContext (GST_GL_UPLOAD_UNSHARED_GL_CONTEXT): private
+	// return value.
 	GLUploadUnsharedGLContext GLUploadReturn = -100
 )
 
@@ -1350,11 +1414,14 @@ func (g GLUploadReturn) String() string {
 type GLWindowError C.gint
 
 const (
-	// GLWindowErrorFailed: failed for a unspecified reason.
+	// GLWindowErrorFailed (GST_GL_WINDOW_ERROR_FAILED): failed for a
+	// unspecified reason.
 	GLWindowErrorFailed GLWindowError = iota
-	// GLWindowErrorOldLibs: implementation is too old.
+	// GLWindowErrorOldLibs (GST_GL_WINDOW_ERROR_OLD_LIBS): implementation is
+	// too old.
 	GLWindowErrorOldLibs
-	// GLWindowErrorResourceUnavailable: no such resource was found.
+	// GLWindowErrorResourceUnavailable
+	// (GST_GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE): no such resource was found.
 	GLWindowErrorResourceUnavailable
 )
 
@@ -1394,18 +1461,18 @@ func GLWindowErrorQuark() glib.Quark {
 type GLAPI C.guint
 
 const (
-	// GLApiNone: no API.
+	// GLApiNone (GST_GL_API_NONE): no API.
 	GLApiNone GLAPI = 0b0
-	// GLApiOpengl: desktop OpenGL up to and including 3.1. The compatibility
-	// profile when the OpenGL version is >= 3.2.
+	// GLApiOpengl (GST_GL_API_OPENGL): desktop OpenGL up to and including 3.1.
+	// The compatibility profile when the OpenGL version is >= 3.2.
 	GLApiOpengl GLAPI = 0b1
-	// GLApiOpengl3: desktop OpenGL >= 3.2 core profile.
+	// GLApiOpengl3 (GST_GL_API_OPENGL3): desktop OpenGL >= 3.2 core profile.
 	GLApiOpengl3 GLAPI = 0b10
-	// GLApiGles1: openGL ES 1.x.
+	// GLApiGles1 (GST_GL_API_GLES1): openGL ES 1.x.
 	GLApiGles1 GLAPI = 0b1000000000000000
-	// GLApiGles2: openGL ES 2.x and 3.x.
+	// GLApiGles2 (GST_GL_API_GLES2): openGL ES 2.x and 3.x.
 	GLApiGles2 GLAPI = 0b10000000000000000
-	// GLApiAny: any OpenGL API.
+	// GLApiAny (GST_GL_API_ANY): any OpenGL API.
 	GLApiAny GLAPI = 0b11111111111111111111111111111111
 )
 
@@ -1505,11 +1572,12 @@ func GLAPIToString(api GLAPI) string {
 type GLBaseMemoryTransfer C.guint
 
 const (
-	// GLBaseMemoryTransferNeedDownload: texture needs downloading to the data
-	// pointer.
+	// GLBaseMemoryTransferNeedDownload
+	// (GST_GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD): texture needs downloading to
+	// the data pointer.
 	GLBaseMemoryTransferNeedDownload GLBaseMemoryTransfer = 0b100000000000000000000
-	// GLBaseMemoryTransferNeedUpload: data pointer needs uploading to the
-	// texture.
+	// GLBaseMemoryTransferNeedUpload (GST_GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD):
+	// data pointer needs uploading to the texture.
 	GLBaseMemoryTransferNeedUpload GLBaseMemoryTransfer = 0b1000000000000000000000
 )
 
@@ -1553,13 +1621,13 @@ func (g GLBaseMemoryTransfer) Has(other GLBaseMemoryTransfer) bool {
 type GLConfigSurfaceType C.guint
 
 const (
-	// GLConfigSurfaceTypeNone: none.
+	// GLConfigSurfaceTypeNone (GST_GL_CONFIG_SURFACE_TYPE_NONE): none.
 	GLConfigSurfaceTypeNone GLConfigSurfaceType = 0b0
-	// GLConfigSurfaceTypeWindow: window.
+	// GLConfigSurfaceTypeWindow (GST_GL_CONFIG_SURFACE_TYPE_WINDOW): window.
 	GLConfigSurfaceTypeWindow GLConfigSurfaceType = 0b1
-	// GLConfigSurfaceTypePbuffer: pbuffer.
+	// GLConfigSurfaceTypePbuffer (GST_GL_CONFIG_SURFACE_TYPE_PBUFFER): pbuffer.
 	GLConfigSurfaceTypePbuffer GLConfigSurfaceType = 0b10
-	// GLConfigSurfaceTypePixmap: pixmap.
+	// GLConfigSurfaceTypePixmap (GST_GL_CONFIG_SURFACE_TYPE_PIXMAP): pixmap.
 	GLConfigSurfaceTypePixmap GLConfigSurfaceType = 0b100
 )
 
@@ -1633,36 +1701,38 @@ func GLConfigSurfaceTypeToString(surfaceType GLConfigSurfaceType) string {
 type GLDisplayType C.guint
 
 const (
-	// GLDisplayTypeNone: no display type.
+	// GLDisplayTypeNone (GST_GL_DISPLAY_TYPE_NONE): no display type.
 	GLDisplayTypeNone GLDisplayType = 0b0
-	// GLDisplayTypeX11: x11 display.
+	// GLDisplayTypeX11 (GST_GL_DISPLAY_TYPE_X11): x11 display.
 	GLDisplayTypeX11 GLDisplayType = 0b1
-	// GLDisplayTypeWayland: wayland display.
+	// GLDisplayTypeWayland (GST_GL_DISPLAY_TYPE_WAYLAND): wayland display.
 	GLDisplayTypeWayland GLDisplayType = 0b10
-	// GLDisplayTypeCocoa: cocoa display.
+	// GLDisplayTypeCocoa (GST_GL_DISPLAY_TYPE_COCOA): cocoa display.
 	GLDisplayTypeCocoa GLDisplayType = 0b100
-	// GLDisplayTypeWin32: win32 display.
+	// GLDisplayTypeWin32 (GST_GL_DISPLAY_TYPE_WIN32): win32 display.
 	GLDisplayTypeWin32 GLDisplayType = 0b1000
-	// GLDisplayTypeDispmanx: dispmanx display.
+	// GLDisplayTypeDispmanx (GST_GL_DISPLAY_TYPE_DISPMANX): dispmanx display.
 	GLDisplayTypeDispmanx GLDisplayType = 0b10000
-	// GLDisplayTypeEgl: EGL display.
+	// GLDisplayTypeEgl (GST_GL_DISPLAY_TYPE_EGL): EGL display.
 	GLDisplayTypeEgl GLDisplayType = 0b100000
-	// GLDisplayTypeVivFb: vivante Framebuffer display.
+	// GLDisplayTypeVivFb (GST_GL_DISPLAY_TYPE_VIV_FB): vivante Framebuffer
+	// display.
 	GLDisplayTypeVivFb GLDisplayType = 0b1000000
-	// GLDisplayTypeGbm: mesa3D GBM display.
+	// GLDisplayTypeGbm (GST_GL_DISPLAY_TYPE_GBM): mesa3D GBM display.
 	GLDisplayTypeGbm GLDisplayType = 0b10000000
-	// GLDisplayTypeEglDevice: EGLDevice display.
+	// GLDisplayTypeEglDevice (GST_GL_DISPLAY_TYPE_EGL_DEVICE): EGLDevice
+	// display.
 	GLDisplayTypeEglDevice GLDisplayType = 0b100000000
-	// GLDisplayTypeEagl: EAGL display.
+	// GLDisplayTypeEagl (GST_GL_DISPLAY_TYPE_EAGL): EAGL display.
 	GLDisplayTypeEagl GLDisplayType = 0b1000000000
-	// GLDisplayTypeWinrt: winRT display.
+	// GLDisplayTypeWinrt (GST_GL_DISPLAY_TYPE_WINRT): winRT display.
 	GLDisplayTypeWinrt GLDisplayType = 0b10000000000
-	// GLDisplayTypeAndroid: android display.
+	// GLDisplayTypeAndroid (GST_GL_DISPLAY_TYPE_ANDROID): android display.
 	GLDisplayTypeAndroid GLDisplayType = 0b100000000000
-	// GLDisplayTypeEglSurfaceless: mesa3D surfaceless display using the
-	// EGL_PLATFORM_SURFACELESS_MESA extension.
+	// GLDisplayTypeEglSurfaceless (GST_GL_DISPLAY_TYPE_EGL_SURFACELESS): mesa3D
+	// surfaceless display using the EGL_PLATFORM_SURFACELESS_MESA extension.
 	GLDisplayTypeEglSurfaceless GLDisplayType = 0b1000000000000
-	// GLDisplayTypeAny: any display type.
+	// GLDisplayTypeAny (GST_GL_DISPLAY_TYPE_ANY): any display type.
 	GLDisplayTypeAny GLDisplayType = 0b11111111111111111111111111111111
 )
 
@@ -1732,20 +1802,23 @@ func (g GLDisplayType) Has(other GLDisplayType) bool {
 type GLPlatform C.guint
 
 const (
-	// GLPlatformNone: no platform.
+	// GLPlatformNone (GST_GL_PLATFORM_NONE): no platform.
 	GLPlatformNone GLPlatform = 0b0
-	// GLPlatformEgl: EGL platform used primarily with the X11, wayland and
-	// android window systems as well as on embedded Linux.
+	// GLPlatformEgl (GST_GL_PLATFORM_EGL): EGL platform used primarily with the
+	// X11, wayland and android window systems as well as on embedded Linux.
 	GLPlatformEgl GLPlatform = 0b1
-	// GLPlatformGLX: GLX platform used primarily with the X11 window system.
+	// GLPlatformGLX (GST_GL_PLATFORM_GLX): GLX platform used primarily with the
+	// X11 window system.
 	GLPlatformGLX GLPlatform = 0b10
-	// GLPlatformWgl: WGL platform used primarily on Windows.
+	// GLPlatformWgl (GST_GL_PLATFORM_WGL): WGL platform used primarily on
+	// Windows.
 	GLPlatformWgl GLPlatform = 0b100
-	// GLPlatformCgl: CGL platform used primarily on OS X.
+	// GLPlatformCgl (GST_GL_PLATFORM_CGL): CGL platform used primarily on OS X.
 	GLPlatformCgl GLPlatform = 0b1000
-	// GLPlatformEagl: EAGL platform used primarily on iOS.
+	// GLPlatformEagl (GST_GL_PLATFORM_EAGL): EAGL platform used primarily on
+	// iOS.
 	GLPlatformEagl GLPlatform = 0b10000
-	// GLPlatformAny: any OpenGL platform.
+	// GLPlatformAny (GST_GL_PLATFORM_ANY): any OpenGL platform.
 	GLPlatformAny GLPlatform = 0b11111111111111111111111111111111
 )
 
@@ -1844,19 +1917,20 @@ func GLPlatformToString(platform GLPlatform) string {
 	return _utf8
 }
 
-// GLSLProfile: GLSL profiles.
+// GLSLProfile (GstGLSLProfile): GLSL profiles.
 type GLSLProfile C.guint
 
 const (
-	// GlslProfileNone: no profile supported/available.
+	// GlslProfileNone (GST_GLSL_PROFILE_NONE): no profile supported/available.
 	GlslProfileNone GLSLProfile = 0b0
-	// GlslProfileES: openGL|ES profile.
+	// GlslProfileES (GST_GLSL_PROFILE_ES): openGL|ES profile.
 	GlslProfileES GLSLProfile = 0b1
-	// GlslProfileCore: openGL core profile.
+	// GlslProfileCore (GST_GLSL_PROFILE_CORE): openGL core profile.
 	GlslProfileCore GLSLProfile = 0b10
-	// GlslProfileCompatibility: openGL compatibility profile.
+	// GlslProfileCompatibility (GST_GLSL_PROFILE_COMPATIBILITY): openGL
+	// compatibility profile.
 	GlslProfileCompatibility GLSLProfile = 0b100
-	// GlslProfileAny: any OpenGL/OpenGL|ES profile.
+	// GlslProfileAny (GST_GLSL_PROFILE_ANY): any OpenGL/OpenGL|ES profile.
 	GlslProfileAny GLSLProfile = 0b11111111111111111111111111111111
 )
 
@@ -2045,7 +2119,8 @@ func BufferPoolConfigGetGLAllocationParams(config *gst.Structure) *GLAllocationP
 	return _glAllocationParams
 }
 
-// BufferPoolConfigGetGLMinFreeQueueSize: see
+// BufferPoolConfigGetGLMinFreeQueueSize
+// (gst_buffer_pool_config_get_gl_min_free_queue_size): see
 // gst_buffer_pool_config_set_gl_min_free_queue_size().
 //
 // The function takes the following parameters:
@@ -2071,7 +2146,8 @@ func BufferPoolConfigGetGLMinFreeQueueSize(config *gst.Structure) uint {
 	return _guint
 }
 
-// BufferPoolConfigSetGLAllocationParams sets params on config.
+// BufferPoolConfigSetGLAllocationParams
+// (gst_buffer_pool_config_set_gl_allocation_params) sets params on config.
 //
 // The function takes the following parameters:
 //
@@ -2091,8 +2167,10 @@ func BufferPoolConfigSetGLAllocationParams(config *gst.Structure, params *GLAllo
 	runtime.KeepAlive(params)
 }
 
-// BufferPoolConfigSetGLMinFreeQueueSize instructs the GLBufferPool to keep
-// queue_size amount of buffers around before allowing them for reuse.
+// BufferPoolConfigSetGLMinFreeQueueSize
+// (gst_buffer_pool_config_set_gl_min_free_queue_size) instructs the
+// GLBufferPool to keep queue_size amount of buffers around before allowing them
+// for reuse.
 //
 // This is helpful to allow GPU processing to complete before the CPU operations
 // on the same buffer could start. Particularly useful when uploading or
@@ -2150,7 +2228,7 @@ func ContextGetGLDisplay(context *gst.Context) (*GLDisplay, bool) {
 	return _display, _ok
 }
 
-// ContextSetGLDisplay sets display on context.
+// ContextSetGLDisplay (gst_context_set_gl_display) sets display on context.
 //
 // The function takes the following parameters:
 //
@@ -2217,9 +2295,10 @@ func GLElementPropagateDisplayContext(element gst.Elementer, display *GLDisplay)
 	runtime.KeepAlive(display)
 }
 
-// GLGetAffineTransformationMetaAsNdc retrieves the stored 4x4 affine
-// transformation matrix stored in meta in NDC coordinates. if meta is NULL,
-// an identity matrix is returned.
+// GLGetAffineTransformationMetaAsNdc
+// (gst_gl_get_affine_transformation_meta_as_ndc) retrieves the stored 4x4
+// affine transformation matrix stored in meta in NDC coordinates. if meta is
+// NULL, an identity matrix is returned.
 //
 // # NDC is a left-handed coordinate system
 //
@@ -2254,8 +2333,8 @@ func GLGetAffineTransformationMetaAsNdc(meta *gstvideo.VideoAffineTransformation
 	return _matrix
 }
 
-// GLGetPlaneDataSize: retrieve the size in bytes of a video plane of data with
-// a certain alignment.
+// GLGetPlaneDataSize (gst_gl_get_plane_data_size): retrieve the size in bytes
+// of a video plane of data with a certain alignment.
 //
 // The function takes the following parameters:
 //
@@ -2364,8 +2443,8 @@ func GLHandleContextQuery(element gst.Elementer, query *gst.Query, display *GLDi
 	return _ok
 }
 
-// GLHandleSetContext: helper function for implementing
-// ElementClass.set_context() in OpenGL capable elements.
+// GLHandleSetContext (gst_gl_handle_set_context): helper function for
+// implementing ElementClass.set_context() in OpenGL capable elements.
 //
 // Retrieve's the GLDisplay or GLContext in context and places the result in
 // display or other_context respectively.
@@ -2423,8 +2502,8 @@ func GLHandleSetContext(element gst.Elementer, context *gst.Context) (*GLDisplay
 	return _display, _otherContext, _ok
 }
 
-// GLMultiplyMatrix4 multiplies two 4x4 matrices, a and b, and stores the
-// result, a 2-dimensional array of #gfloat, in result.
+// GLMultiplyMatrix4 (gst_gl_multiply_matrix4) multiplies two 4x4 matrices,
+// a and b, and stores the result, a 2-dimensional array of #gfloat, in result.
 //
 // The function takes the following parameters:
 //
@@ -2453,8 +2532,9 @@ func GLMultiplyMatrix4(a, b [16]float32) [16]float32 {
 	return _result
 }
 
-// GLSetAffineTransformationMetaFromNdc: set the 4x4 affine transformation
-// matrix stored in meta from the NDC coordinates in matrix.
+// GLSetAffineTransformationMetaFromNdc
+// (gst_gl_set_affine_transformation_meta_from_ndc): set the 4x4 affine
+// transformation matrix stored in meta from the NDC coordinates in matrix.
 //
 // The function takes the following parameters:
 //
@@ -2516,7 +2596,8 @@ func GLStereoDownmixModeGetType() coreglib.Type {
 	return _gType
 }
 
-// GLSwizzleInvert: given swizzle, produce inversion such that:
+// GLSwizzleInvert (gst_gl_swizzle_invert): given swizzle, produce inversion
+// such that:
 //
 // swizzle[inversion[i]] == identity[i] where:
 //
@@ -2570,8 +2651,8 @@ func GLSyncMetaApiGetType() coreglib.Type {
 	return _gType
 }
 
-// GLValueGetTextureTargetMask: see gst_gl_value_set_texture_target_from_mask()
-// for what entails a mask.
+// GLValueGetTextureTargetMask (gst_gl_value_get_texture_target_mask):
+// see gst_gl_value_set_texture_target_from_mask() for what entails a mask.
 //
 // The function takes the following parameters:
 //
@@ -2626,8 +2707,9 @@ func GLValueSetTextureTarget(value *coreglib.Value, target GLTextureTarget) bool
 	return _ok
 }
 
-// GLValueSetTextureTargetFromMask: mask is a bitwise OR of (1 << target) where
-// target is a valid GLTextureTarget.
+// GLValueSetTextureTargetFromMask (gst_gl_value_set_texture_target_from_mask):
+// mask is a bitwise OR of (1 << target) where target is a valid
+// GLTextureTarget.
 //
 // The function takes the following parameters:
 //
@@ -2690,10 +2772,10 @@ func GLVersionToGlslVersion(glApi GLAPI, maj, min int) GLSLVersion {
 	return _glslVersion
 }
 
-// GLVideoFormatSwizzle calculates the swizzle indices for video_format and
-// gl_format in order to access a texture such that accessing a texel from a
-// texture through the swizzle index produces values in the order (R, G, B,
-// A) or (Y, U, V, A).
+// GLVideoFormatSwizzle (gst_gl_video_format_swizzle) calculates the swizzle
+// indices for video_format and gl_format in order to access a texture such that
+// accessing a texel from a texture through the swizzle index produces values in
+// the order (R, G, B, A) or (Y, U, V, A).
 //
 // For multi-planer formats, the swizzle index uses the same component order
 // (RGBA/YUVA) and should be applied after combining multiple planes into a
@@ -2736,9 +2818,9 @@ func GLVideoFormatSwizzle(videoFormat gstvideo.VideoFormat) ([4]int, bool) {
 	return _swizzle, _ok
 }
 
-// GlslStringGetVersionProfile: note: this function first searches the
-// first 1 kilobytes for a #version preprocessor directive and then executes
-// gst_glsl_version_profile_from_string().
+// GlslStringGetVersionProfile (gst_glsl_string_get_version_profile): note: this
+// function first searches the first 1 kilobytes for a #version preprocessor
+// directive and then executes gst_glsl_version_profile_from_string().
 //
 // The function takes the following parameters:
 //
@@ -2924,10 +3006,10 @@ func defaultGLBaseFilterOverrides(v *GLBaseFilter) GLBaseFilterOverrides {
 	}
 }
 
-// GLBaseFilter handles the nitty gritty details of retrieving an OpenGL
-// context. It also provided some wrappers around BaseTransform's start(),
-// stop() and set_caps() virtual methods that ensure an OpenGL context is
-// available and current in the calling thread.
+// GLBaseFilter (GstGLBaseFilter) handles the nitty gritty details of retrieving
+// an OpenGL context. It also provided some wrappers around BaseTransform's
+// start(), stop() and set_caps() virtual methods that ensure an OpenGL context
+// is available and current in the calling thread.
 type GLBaseFilter struct {
 	_ [0]func() // equal guard
 	gstbase.BaseTransform
@@ -2936,6 +3018,21 @@ type GLBaseFilter struct {
 var (
 	_ gstbase.BaseTransformer = (*GLBaseFilter)(nil)
 )
+
+// GLBaseFilterer describes types inherited from GLBaseFilter.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLBaseFilterer interface {
+	gstbase.BaseTransformer
+
+	FindGLContext() bool
+	GLContext() GLContexter
+
+	baseGLBaseFilter() *GLBaseFilter
+}
+
+var _ GLBaseFilterer = (*GLBaseFilter)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLBaseFilter, *GLBaseFilterClass, GLBaseFilterOverrides](
@@ -2983,6 +3080,15 @@ func wrapGLBaseFilter(obj *coreglib.Object) *GLBaseFilter {
 
 func marshalGLBaseFilter(p uintptr) (interface{}, error) {
 	return wrapGLBaseFilter(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (filter *GLBaseFilter) baseGLBaseFilter() *GLBaseFilter {
+	return filter
+}
+
+// BaseGLBaseFilter returns the underlying base object.
+func BaseGLBaseFilter(obj GLBaseFilterer) *GLBaseFilter {
+	return obj.baseGLBaseFilter()
 }
 
 // The function returns the following values:
@@ -3131,7 +3237,8 @@ func defaultGLBaseMemoryAllocatorOverrides(v *GLBaseMemoryAllocator) GLBaseMemor
 	}
 }
 
-// GLBaseMemoryAllocator: opaque GLBaseMemoryAllocator struct.
+// GLBaseMemoryAllocator (GstGLBaseMemoryAllocator): opaque
+// GLBaseMemoryAllocator struct.
 type GLBaseMemoryAllocator struct {
 	_ [0]func() // equal guard
 	gst.Allocator
@@ -3141,12 +3248,13 @@ var (
 	_ gst.Allocatorrer = (*GLBaseMemoryAllocator)(nil)
 )
 
-// GLBaseMemoryAllocatorrer describes types inherited from class GLBaseMemoryAllocator.
+// GLBaseMemoryAllocatorrer describes types inherited from GLBaseMemoryAllocator.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type GLBaseMemoryAllocatorrer interface {
-	coreglib.Objector
+	gst.Allocatorrer
+
 	baseGLBaseMemoryAllocator() *GLBaseMemoryAllocator
 }
 
@@ -3258,9 +3366,9 @@ func defaultGLBaseMixerOverrides(v *GLBaseMixer) GLBaseMixerOverrides {
 	}
 }
 
-// GLBaseMixer handles the nitty gritty details of retrieving an OpenGL context.
-// It provides some virtual methods to know when the OpenGL context is available
-// and is not available within this element.
+// GLBaseMixer (GstGLBaseMixer) handles the nitty gritty details of retrieving
+// an OpenGL context. It provides some virtual methods to know when the OpenGL
+// context is available and is not available within this element.
 type GLBaseMixer struct {
 	_ [0]func() // equal guard
 	gstvideo.VideoAggregator
@@ -3270,12 +3378,15 @@ var (
 	_ gstvideo.VideoAggregatorrer = (*GLBaseMixer)(nil)
 )
 
-// GLBaseMixerer describes types inherited from class GLBaseMixer.
+// GLBaseMixerer describes types inherited from GLBaseMixer.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type GLBaseMixerer interface {
-	coreglib.Objector
+	gstvideo.VideoAggregatorrer
+
+	GLContext() GLContexter
+
 	baseGLBaseMixer() *GLBaseMixer
 }
 
@@ -3426,6 +3537,18 @@ var (
 	_ gst.GstObjector = (*GLBaseMixerPad)(nil)
 )
 
+// GLBaseMixerPadder describes types inherited from GLBaseMixerPad.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLBaseMixerPadder interface {
+	gstvideo.VideoAggregatorPadder
+
+	baseGLBaseMixerPad() *GLBaseMixerPad
+}
+
+var _ GLBaseMixerPadder = (*GLBaseMixerPad)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*GLBaseMixerPad, *GLBaseMixerPadClass, GLBaseMixerPadOverrides](
 		GTypeGLBaseMixerPad,
@@ -3462,6 +3585,15 @@ func marshalGLBaseMixerPad(p uintptr) (interface{}, error) {
 	return wrapGLBaseMixerPad(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (v *GLBaseMixerPad) baseGLBaseMixerPad() *GLBaseMixerPad {
+	return v
+}
+
+// BaseGLBaseMixerPad returns the underlying base object.
+func BaseGLBaseMixerPad(obj GLBaseMixerPadder) *GLBaseMixerPad {
+	return obj.baseGLBaseMixerPad()
+}
+
 // GLBaseSrcOverrides contains methods that are overridable.
 type GLBaseSrcOverrides struct {
 	// FillGLMemory: called in the GL thread to fill the current video texture.
@@ -3480,10 +3612,10 @@ func defaultGLBaseSrcOverrides(v *GLBaseSrc) GLBaseSrcOverrides {
 	}
 }
 
-// GLBaseSrc handles the nitty gritty details of retrieving an OpenGL context.
-// It also provided some wrappers around BaseSrc's start() and stop() virtual
-// methods that ensure an OpenGL context is available and current in the calling
-// thread.
+// GLBaseSrc (GstGLBaseSrc) handles the nitty gritty details of retrieving an
+// OpenGL context. It also provided some wrappers around BaseSrc's start() and
+// stop() virtual methods that ensure an OpenGL context is available and current
+// in the calling thread.
 type GLBaseSrc struct {
 	_ [0]func() // equal guard
 	gstbase.PushSrc
@@ -3493,12 +3625,13 @@ var (
 	_ gstbase.BaseSrcer = (*GLBaseSrc)(nil)
 )
 
-// GLBaseSrcer describes types inherited from class GLBaseSrc.
+// GLBaseSrcer describes types inherited from GLBaseSrc.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type GLBaseSrcer interface {
-	coreglib.Objector
+	gstbase.PushSrcer
+
 	baseGLBaseSrc() *GLBaseSrc
 }
 
@@ -3631,7 +3764,7 @@ func defaultGLBufferAllocatorOverrides(v *GLBufferAllocator) GLBufferAllocatorOv
 	return GLBufferAllocatorOverrides{}
 }
 
-// GLBufferAllocator: opaque GLBufferAllocator struct.
+// GLBufferAllocator (GstGLBufferAllocator): opaque GLBufferAllocator struct.
 type GLBufferAllocator struct {
 	_ [0]func() // equal guard
 	GLBaseMemoryAllocator
@@ -3640,6 +3773,18 @@ type GLBufferAllocator struct {
 var (
 	_ GLBaseMemoryAllocatorrer = (*GLBufferAllocator)(nil)
 )
+
+// GLBufferAllocatorrer describes types inherited from GLBufferAllocator.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLBufferAllocatorrer interface {
+	GLBaseMemoryAllocatorrer
+
+	baseGLBufferAllocator() *GLBufferAllocator
+}
+
+var _ GLBufferAllocatorrer = (*GLBufferAllocator)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLBufferAllocator, *GLBufferAllocatorClass, GLBufferAllocatorOverrides](
@@ -3675,6 +3820,15 @@ func marshalGLBufferAllocator(p uintptr) (interface{}, error) {
 	return wrapGLBufferAllocator(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (v *GLBufferAllocator) baseGLBufferAllocator() *GLBufferAllocator {
+	return v
+}
+
+// BaseGLBufferAllocator returns the underlying base object.
+func BaseGLBufferAllocator(obj GLBufferAllocatorrer) *GLBufferAllocator {
+	return obj.baseGLBufferAllocator()
+}
+
 // GLBufferPoolOverrides contains methods that are overridable.
 type GLBufferPoolOverrides struct {
 }
@@ -3683,7 +3837,8 @@ func defaultGLBufferPoolOverrides(v *GLBufferPool) GLBufferPoolOverrides {
 	return GLBufferPoolOverrides{}
 }
 
-// GLBufferPool is an object that allocates buffers with GLBaseMemory
+// GLBufferPool (GstGLBufferPool) is an object that allocates buffers with
+// GLBaseMemory
 //
 // A GLBufferPool is created with gst_gl_buffer_pool_new()
 //
@@ -3699,6 +3854,23 @@ type GLBufferPool struct {
 var (
 	_ gst.GstObjector = (*GLBufferPool)(nil)
 )
+
+// GLBufferPooler describes types inherited from GLBufferPool.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLBufferPooler interface {
+	gst.BufferPooler
+
+	// GLAllocationParams (gst_gl_buffer_pool_get_gl_allocation_params):
+	// returned GLAllocationParams will by NULL before the first successful call
+	// to gst_buffer_pool_set_config().
+	GLAllocationParams() *GLAllocationParams
+
+	baseGLBufferPool() *GLBufferPool
+}
+
+var _ GLBufferPooler = (*GLBufferPool)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLBufferPool, *GLBufferPoolClass, GLBufferPoolOverrides](
@@ -3732,6 +3904,15 @@ func marshalGLBufferPool(p uintptr) (interface{}, error) {
 	return wrapGLBufferPool(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (pool *GLBufferPool) baseGLBufferPool() *GLBufferPool {
+	return pool
+}
+
+// BaseGLBufferPool returns the underlying base object.
+func BaseGLBufferPool(obj GLBufferPooler) *GLBufferPool {
+	return obj.baseGLBufferPool()
+}
+
 // The function takes the following parameters:
 //
 //   - context to use.
@@ -3755,9 +3936,10 @@ func NewGLBufferPool(context GLContexter) *GLBufferPool {
 	return _glBufferPool
 }
 
-// GLAllocationParams: returned GLAllocationParams will by NULL before the first
-// successful call to gst_buffer_pool_set_config(). Subsequent successful calls
-// to gst_buffer_pool_set_config() will cause this function to return a new
+// GLAllocationParams (gst_gl_buffer_pool_get_gl_allocation_params):
+// returned GLAllocationParams will by NULL before the first successful
+// call to gst_buffer_pool_set_config(). Subsequent successful calls to
+// gst_buffer_pool_set_config() will cause this function to return a new
 // GLAllocationParams which may or may not contain the same information.
 //
 // The function returns the following values:
@@ -3796,8 +3978,8 @@ func defaultGLColorConvertOverrides(v *GLColorConvert) GLColorConvertOverrides {
 	return GLColorConvertOverrides{}
 }
 
-// GLColorConvert is an object that converts between color spaces and/or formats
-// using OpenGL Shaders.
+// GLColorConvert (GstGLColorConvert) is an object that converts between color
+// spaces and/or formats using OpenGL Shaders.
 //
 // A GLColorConvert can be created with gst_gl_color_convert_new(), the
 // configuration negotiated with gst_gl_color_convert_transform_caps() and the
@@ -3813,6 +3995,29 @@ type GLColorConvert struct {
 var (
 	_ gst.GstObjector = (*GLColorConvert)(nil)
 )
+
+// GLColorConverter describes types inherited from GLColorConvert.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLColorConverter interface {
+	gst.GstObjector
+
+	// DecideAllocation (gst_gl_color_convert_decide_allocation) provides an
+	// implementation of BaseTransformClass.decide_allocation().
+	DecideAllocation(query *gst.Query) bool
+	// Perform (gst_gl_color_convert_perform) converts the data contained
+	// by inbuf using the formats specified by the Caps passed to
+	// gst_gl_color_convert_set_caps().
+	Perform(inbuf *gst.Buffer) *gst.Buffer
+	// SetCaps (gst_gl_color_convert_set_caps) initializes convert with the
+	// information required for conversion.
+	SetCaps(inCaps, outCaps *gst.Caps) bool
+
+	baseGLColorConvert() *GLColorConvert
+}
+
+var _ GLColorConverter = (*GLColorConvert)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLColorConvert, *GLColorConvertClass, GLColorConvertOverrides](
@@ -3844,6 +4049,15 @@ func marshalGLColorConvert(p uintptr) (interface{}, error) {
 	return wrapGLColorConvert(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (convert *GLColorConvert) baseGLColorConvert() *GLColorConvert {
+	return convert
+}
+
+// BaseGLColorConvert returns the underlying base object.
+func BaseGLColorConvert(obj GLColorConverter) *GLColorConvert {
+	return obj.baseGLColorConvert()
+}
+
 // The function takes the following parameters:
 //
 //   - context: GLContext.
@@ -3867,8 +4081,8 @@ func NewGLColorConvert(context GLContexter) *GLColorConvert {
 	return _glColorConvert
 }
 
-// DecideAllocation provides an implementation of
-// BaseTransformClass.decide_allocation().
+// DecideAllocation (gst_gl_color_convert_decide_allocation) provides an
+// implementation of BaseTransformClass.decide_allocation().
 //
 // The function takes the following parameters:
 //
@@ -3898,8 +4112,9 @@ func (convert *GLColorConvert) DecideAllocation(query *gst.Query) bool {
 	return _ok
 }
 
-// Perform converts the data contained by inbuf using the formats specified by
-// the Caps passed to gst_gl_color_convert_set_caps().
+// Perform (gst_gl_color_convert_perform) converts the data contained
+// by inbuf using the formats specified by the Caps passed to
+// gst_gl_color_convert_set_caps().
 //
 // The function takes the following parameters:
 //
@@ -3934,7 +4149,8 @@ func (convert *GLColorConvert) Perform(inbuf *gst.Buffer) *gst.Buffer {
 	return _buffer
 }
 
-// SetCaps initializes convert with the information required for conversion.
+// SetCaps (gst_gl_color_convert_set_caps) initializes convert with the
+// information required for conversion.
 //
 // The function takes the following parameters:
 //
@@ -3964,8 +4180,8 @@ func (convert *GLColorConvert) SetCaps(inCaps, outCaps *gst.Caps) bool {
 	return _ok
 }
 
-// GLColorConvertFixateCaps provides an implementation of
-// BaseTransformClass.fixate_caps().
+// GLColorConvertFixateCaps (gst_gl_color_convert_fixate_caps) provides an
+// implementation of BaseTransformClass.fixate_caps().
 //
 // The function takes the following parameters:
 //
@@ -4033,8 +4249,8 @@ func GLColorConvertSwizzleShaderString(context GLContexter) string {
 	return _utf8
 }
 
-// GLColorConvertTransformCaps provides an implementation of
-// BaseTransformClass.transform_caps().
+// GLColorConvertTransformCaps (gst_gl_color_convert_transform_caps) provides an
+// implementation of BaseTransformClass.transform_caps().
 //
 // The function takes the following parameters:
 //
@@ -4076,7 +4292,9 @@ func GLColorConvertTransformCaps(context GLContexter, direction gst.PadDirection
 	return _ret
 }
 
-// GLColorConvertYuvToRGBShaderString: returned glsl function has declaration:
+// GLColorConvertYuvToRGBShaderString
+// (gst_gl_color_convert_yuv_to_rgb_shader_string): returned glsl function has
+// declaration:
 //
 // vec3 yuv_to_rgb (vec3 rgb, vec3 offset, vec3 ycoeff, vec3 ucoeff, vec3
 // vcoeff);
@@ -4233,9 +4451,9 @@ func defaultGLContextOverrides(v *GLContext) GLContextOverrides {
 	}
 }
 
-// GLContext wraps an OpenGL context object in a uniform API. As a result of the
-// limitation on OpenGL context, this object is not thread safe unless specified
-// and must only be activated in a single thread.
+// GLContext (GstGLContext) wraps an OpenGL context object in a uniform API.
+// As a result of the limitation on OpenGL context, this object is not thread
+// safe unless specified and must only be activated in a single thread.
 //
 // Environment variables:
 //
@@ -4261,12 +4479,80 @@ var (
 	_ gst.GstObjector = (*GLContext)(nil)
 )
 
-// GLContexter describes types inherited from class GLContext.
+// GLContexter describes types inherited from GLContext.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type GLContexter interface {
-	coreglib.Objector
+	gst.GstObjector
+
+	// Activate (gst_gl_context_activate): (De)activate the OpenGL context
+	// represented by this context.
+	Activate(activate bool) bool
+	// CanShare (gst_gl_context_can_share): note: This will always fail for two
+	// wrapped GLContext's.
+	CanShare(otherContext GLContexter) bool
+	// CheckFeature (gst_gl_context_check_feature): check for an OpenGL feature
+	// being supported.
+	CheckFeature(feature string) bool
+	// CheckFramebufferStatus (gst_gl_context_check_framebuffer_status):
+	// must be called with context current.
+	CheckFramebufferStatus(fboTarget uint) bool
+	CheckGLVersion(api GLAPI, maj, min int) bool
+	// ClearFramebuffer (gst_gl_context_clear_framebuffer): unbind the current
+	// framebuffer.
+	ClearFramebuffer()
+	// ClearShader (gst_gl_context_clear_shader) clear's the currently set
+	// shader from the GL state machine.
+	ClearShader()
+	// Create (gst_gl_context_create) creates an OpenGL context with the
+	// specified other_context as a context to share shareable OpenGL objects
+	// with.
+	Create(otherContext GLContexter) error
+	// Destroy (gst_gl_context_destroy) destroys an OpenGL context.
+	Destroy()
+	// FillInfo (gst_gl_context_fill_info) fills context's info (version,
+	// extensions, vtable, etc) from the GL context in the current thread.
+	FillInfo() error
+	// Config (gst_gl_context_get_config): retrieve the OpenGL configuration for
+	// this context.
+	Config() *gst.Structure
+	Display() *GLDisplay
+	// GLApi (gst_gl_context_get_gl_api): get the currently enabled OpenGL api.
+	GLApi() GLAPI
+	// GLContext (gst_gl_context_get_gl_context) gets the backing OpenGL context
+	// used by context.
+	GLContext() uintptr
+	// GLPlatform (gst_gl_context_get_gl_platform) gets the OpenGL platform that
+	// used by context.
+	GLPlatform() GLPlatform
+	// GLPlatformVersion (gst_gl_context_get_gl_platform_version): get the
+	// version of the OpenGL platform (GLX, EGL, etc) used.
+	GLPlatformVersion() (major, minor int)
+	// GLVersion (gst_gl_context_get_gl_version) returns the OpenGL version
+	// implemented by context.
+	GLVersion() (maj, min int)
+	// ProcAddress (gst_gl_context_get_proc_address): get a function pointer to
+	// a specified opengl function, name.
+	ProcAddress(name string) unsafe.Pointer
+	Window() GLWindower
+	IsShared() bool
+	// RequestConfig (gst_gl_context_request_config): set the OpenGL
+	// configuration for this context.
+	RequestConfig(glConfig *gst.Structure) bool
+	// SetSharedWith (gst_gl_context_set_shared_with) will internally set
+	// context as shared with share.
+	SetSharedWith(share GLContexter)
+	// SetWindow (gst_gl_context_set_window) set's the current window on context
+	// to window.
+	SetWindow(window GLWindower) bool
+	SupportsGlslProfileVersion(version GLSLVersion, profile GLSLProfile) bool
+	SupportsPrecision(version GLSLVersion, profile GLSLProfile) bool
+	SupportsPrecisionHighp(version GLSLVersion, profile GLSLProfile) bool
+	// SwapBuffers (gst_gl_context_swap_buffers): swap the front and back
+	// buffers on the window attached to context.
+	SwapBuffers()
+
 	baseGLContext() *GLContext
 }
 
@@ -4361,7 +4647,8 @@ func BaseGLContext(obj GLContexter) *GLContext {
 	return obj.baseGLContext()
 }
 
-// NewGLContext: create a new GLContext with the specified display.
+// NewGLContext (gst_gl_context_new): create a new GLContext with the specified
+// display.
 //
 // The function takes the following parameters:
 //
@@ -4386,7 +4673,8 @@ func NewGLContext(display *GLDisplay) *GLContext {
 	return _glContext
 }
 
-// NewGLContextWrapped wraps an existing OpenGL context into a GLContext.
+// NewGLContextWrapped (gst_gl_context_new_wrapped) wraps an existing OpenGL
+// context into a GLContext.
 //
 // Note: The caller is responsible for ensuring that the OpenGL context
 // represented by handle stays alive while the returned GLContext is active.
@@ -4432,7 +4720,8 @@ func NewGLContextWrapped(display *GLDisplay, handle uintptr, contextType GLPlatf
 	return _glContext
 }
 
-// Activate: (De)activate the OpenGL context represented by this context.
+// Activate (gst_gl_context_activate): (De)activate the OpenGL context
+// represented by this context.
 //
 // In OpenGL terms, calls eglMakeCurrent or similar with this context and the
 // currently set window. See gst_gl_context_set_window() for details.
@@ -4467,7 +4756,8 @@ func (context *GLContext) Activate(activate bool) bool {
 	return _ok
 }
 
-// CanShare: note: This will always fail for two wrapped GLContext's.
+// CanShare (gst_gl_context_can_share): note: This will always fail for two
+// wrapped GLContext's.
 //
 // The function takes the following parameters:
 //
@@ -4497,7 +4787,8 @@ func (context *GLContext) CanShare(otherContext GLContexter) bool {
 	return _ok
 }
 
-// CheckFeature: check for an OpenGL feature being supported.
+// CheckFeature (gst_gl_context_check_feature): check for an OpenGL feature
+// being supported.
 //
 // Note: Most features require that the context be created before it is possible
 // to determine their existence and so will fail if that is not the case.
@@ -4531,7 +4822,8 @@ func (context *GLContext) CheckFeature(feature string) bool {
 	return _ok
 }
 
-// CheckFramebufferStatus: must be called with context current.
+// CheckFramebufferStatus (gst_gl_context_check_framebuffer_status): must be
+// called with context current.
 //
 // The function takes the following parameters:
 //
@@ -4599,7 +4891,8 @@ func (context *GLContext) CheckGLVersion(api GLAPI, maj, min int) bool {
 	return _ok
 }
 
-// ClearFramebuffer: unbind the current framebuffer.
+// ClearFramebuffer (gst_gl_context_clear_framebuffer): unbind the current
+// framebuffer.
 func (context *GLContext) ClearFramebuffer() {
 	var _arg0 *C.GstGLContext // out
 
@@ -4609,7 +4902,8 @@ func (context *GLContext) ClearFramebuffer() {
 	runtime.KeepAlive(context)
 }
 
-// ClearShader clear's the currently set shader from the GL state machine.
+// ClearShader (gst_gl_context_clear_shader) clear's the currently set shader
+// from the GL state machine.
 //
 // Note: must be called in the GL thread.
 func (context *GLContext) ClearShader() {
@@ -4621,9 +4915,9 @@ func (context *GLContext) ClearShader() {
 	runtime.KeepAlive(context)
 }
 
-// Create creates an OpenGL context with the specified other_context as a
-// context to share shareable OpenGL objects with. See the OpenGL specification
-// for what is shared between OpenGL contexts.
+// Create (gst_gl_context_create) creates an OpenGL context with the specified
+// other_context as a context to share shareable OpenGL objects with. See the
+// OpenGL specification for what is shared between OpenGL contexts.
 //
 // Since 1.20, the configuration can be overriden with the environment variable
 // GST_GL_CONFIG which is a stringified Structure as would be returned from
@@ -4666,7 +4960,7 @@ func (context *GLContext) Create(otherContext GLContexter) error {
 	return _goerr
 }
 
-// Destroy destroys an OpenGL context.
+// Destroy (gst_gl_context_destroy) destroys an OpenGL context.
 //
 // Should only be called after gst_gl_context_create() has been successfully
 // called for this context.
@@ -4679,9 +4973,10 @@ func (context *GLContext) Destroy() {
 	runtime.KeepAlive(context)
 }
 
-// FillInfo fills context's info (version, extensions, vtable, etc) from the GL
-// context in the current thread. Typically used with wrapped contexts to allow
-// wrapped contexts to be used as regular GLContext's.
+// FillInfo (gst_gl_context_fill_info) fills context's info (version,
+// extensions, vtable, etc) from the GL context in the current thread. Typically
+// used with wrapped contexts to allow wrapped contexts to be used as regular
+// GLContext's.
 func (context *GLContext) FillInfo() error {
 	var _arg0 *C.GstGLContext // out
 	var _cerr *C.GError       // in
@@ -4700,8 +4995,9 @@ func (context *GLContext) FillInfo() error {
 	return _goerr
 }
 
-// Config: retrieve the OpenGL configuration for this context. The context must
-// have been successfully created for this function to return a valid value.
+// Config (gst_gl_context_get_config): retrieve the OpenGL configuration for
+// this context. The context must have been successfully created for this
+// function to return a valid value.
 //
 // Not all implementations currently support retrieving the config and will
 // return NULL when not supported.
@@ -4751,7 +5047,7 @@ func (context *GLContext) Display() *GLDisplay {
 	return _glDisplay
 }
 
-// GLApi: get the currently enabled OpenGL api.
+// GLApi (gst_gl_context_get_gl_api): get the currently enabled OpenGL api.
 //
 // The currently available API may be limited by the GLDisplay in use and/or the
 // GLWindow chosen.
@@ -4775,7 +5071,8 @@ func (context *GLContext) GLApi() GLAPI {
 	return _glapI
 }
 
-// GLContext gets the backing OpenGL context used by context.
+// GLContext (gst_gl_context_get_gl_context) gets the backing OpenGL context
+// used by context.
 //
 // The function returns the following values:
 //
@@ -4796,7 +5093,8 @@ func (context *GLContext) GLContext() uintptr {
 	return _guintptr
 }
 
-// GLPlatform gets the OpenGL platform that used by context.
+// GLPlatform (gst_gl_context_get_gl_platform) gets the OpenGL platform that
+// used by context.
 //
 // The function returns the following values:
 //
@@ -4817,8 +5115,9 @@ func (context *GLContext) GLPlatform() GLPlatform {
 	return _glPlatform
 }
 
-// GLPlatformVersion: get the version of the OpenGL platform (GLX, EGL, etc)
-// used. Only valid after a call to gst_gl_context_create().
+// GLPlatformVersion (gst_gl_context_get_gl_platform_version): get the version
+// of the OpenGL platform (GLX, EGL, etc) used. Only valid after a call to
+// gst_gl_context_create().
 //
 // The function returns the following values:
 //
@@ -4843,9 +5142,9 @@ func (context *GLContext) GLPlatformVersion() (major, minor int) {
 	return _major, _minor
 }
 
-// GLVersion returns the OpenGL version implemented by context. See
-// gst_gl_context_get_gl_api() for retrieving the OpenGL api implemented by
-// context.
+// GLVersion (gst_gl_context_get_gl_version) returns the OpenGL version
+// implemented by context. See gst_gl_context_get_gl_api() for retrieving the
+// OpenGL api implemented by context.
 //
 // The function returns the following values:
 //
@@ -4870,8 +5169,9 @@ func (context *GLContext) GLVersion() (maj, min int) {
 	return _maj, _min
 }
 
-// ProcAddress: get a function pointer to a specified opengl function, name.
-// If the the specific function does not exist, NULL is returned instead.
+// ProcAddress (gst_gl_context_get_proc_address): get a function pointer to a
+// specified opengl function, name. If the the specific function does not exist,
+// NULL is returned instead.
 //
 // Platform specific functions (names starting 'egl', 'glX', 'wgl', etc) can
 // also be retrieved using this method.
@@ -4969,9 +5269,10 @@ func (context *GLContext) IsShared() bool {
 	return _ok
 }
 
-// RequestConfig: set the OpenGL configuration for this context. The context
-// must not have been created for this function to succeed. Setting a NULL
-// config has the affect of removing any specific configuration request.
+// RequestConfig (gst_gl_context_request_config): set the OpenGL configuration
+// for this context. The context must not have been created for this function
+// to succeed. Setting a NULL config has the affect of removing any specific
+// configuration request.
 //
 // Not all implementations currently support retrieving the config and this
 // function will return FALSE when not supported.
@@ -5014,7 +5315,8 @@ func (context *GLContext) RequestConfig(glConfig *gst.Structure) bool {
 	return _ok
 }
 
-// SetSharedWith will internally set context as shared with share.
+// SetSharedWith (gst_gl_context_set_shared_with) will internally set context as
+// shared with share.
 //
 // The function takes the following parameters:
 //
@@ -5031,9 +5333,9 @@ func (context *GLContext) SetSharedWith(share GLContexter) {
 	runtime.KeepAlive(share)
 }
 
-// SetWindow set's the current window on context to window. The window can only
-// be changed before gst_gl_context_create() has been called and the window is
-// not already running.
+// SetWindow (gst_gl_context_set_window) set's the current window on context
+// to window. The window can only be changed before gst_gl_context_create() has
+// been called and the window is not already running.
 //
 // The function takes the following parameters:
 //
@@ -5161,8 +5463,9 @@ func (context *GLContext) SupportsPrecisionHighp(version GLSLVersion, profile GL
 	return _ok
 }
 
-// SwapBuffers: swap the front and back buffers on the window attached to
-// context. This will display the frame on the next refresh cycle.
+// SwapBuffers (gst_gl_context_swap_buffers): swap the front and back buffers
+// on the window attached to context. This will display the frame on the next
+// refresh cycle.
 func (context *GLContext) SwapBuffers() {
 	var _arg0 *C.GstGLContext // out
 
@@ -5516,9 +5819,9 @@ func (context *GLContext) swapBuffers() {
 	runtime.KeepAlive(context)
 }
 
-// GLContextDefaultGetProcAddress: default implementation of the various
-// GetProcAddress functions that looks for name in the OpenGL shared libraries
-// or in the current process.
+// GLContextDefaultGetProcAddress (gst_gl_context_default_get_proc_address):
+// default implementation of the various GetProcAddress functions that looks for
+// name in the OpenGL shared libraries or in the current process.
 //
 // See also: gst_gl_context_get_proc_address().
 //
@@ -5550,7 +5853,8 @@ func GLContextDefaultGetProcAddress(glApi GLAPI, name string) unsafe.Pointer {
 	return _gpointer
 }
 
-// GLContextGetCurrent: see also gst_gl_context_activate().
+// GLContextGetCurrent (gst_gl_context_get_current): see also
+// gst_gl_context_activate().
 //
 // The function returns the following values:
 //
@@ -5582,8 +5886,8 @@ func GLContextGetCurrent() GLContexter {
 	return _glContext
 }
 
-// GLContextGetCurrentGLApi: if an error occurs, major and minor are not
-// modified and GST_GL_API_NONE is returned.
+// GLContextGetCurrentGLApi (gst_gl_context_get_current_gl_api): if an error
+// occurs, major and minor are not modified and GST_GL_API_NONE is returned.
 //
 // The function takes the following parameters:
 //
@@ -5641,8 +5945,9 @@ func GLContextGetCurrentGLContext(contextType GLPlatform) uintptr {
 	return _guintptr
 }
 
-// GLContextGetProcAddressWithPlatform attempts to use the context_type specific
-// GetProcAddress implementations to retrieve name.
+// GLContextGetProcAddressWithPlatform
+// (gst_gl_context_get_proc_address_with_platform) attempts to use the
+// context_type specific GetProcAddress implementations to retrieve name.
 //
 // See also gst_gl_context_get_proc_address().
 //
@@ -5697,8 +6002,8 @@ func defaultGLDisplayOverrides(v *GLDisplay) GLDisplayOverrides {
 	}
 }
 
-// GLDisplay represents a connection to the underlying windowing system.
-// Elements are required to make use of Context to share and propagate a
+// GLDisplay (GstGLDisplay) represents a connection to the underlying windowing
+// system. Elements are required to make use of Context to share and propagate a
 // GLDisplay.
 //
 // There are a number of environment variables that influence the choice of
@@ -5728,6 +6033,40 @@ type GLDisplay struct {
 var (
 	_ gst.GstObjector = (*GLDisplay)(nil)
 )
+
+// GLDisplayer describes types inherited from GLDisplay.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLDisplayer interface {
+	gst.GstObjector
+
+	AddContext(context GLContexter) bool
+	// CreateContext (gst_gl_display_create_context): it requires the display's
+	// object lock to be held.
+	CreateContext(otherContext GLContexter) (GLContexter, error)
+	CreateWindow() GLWindower
+	// FilterGLApi (gst_gl_display_filter_gl_api): limit the use of OpenGL to
+	// the requested gl_api.
+	FilterGLApi(glApi GLAPI)
+	// GLApi (gst_gl_display_get_gl_api): see gst_gl_display_filter_gl_api() for
+	// what the returned value represents.
+	GLApi() GLAPI
+	GLApiUnlocked() GLAPI
+	Handle() uintptr
+	HandleType() GLDisplayType
+	// RemoveContext (gst_gl_display_remove_context): must be called with the
+	// object lock held.
+	RemoveContext(context GLContexter)
+	RemoveWindow(window GLWindower) bool
+
+	// Create-context overrides the GstGLContext creation mechanism.
+	ConnectCreateContext(func(context GLContexter) (glContext GLContexter)) coreglib.SignalHandle
+
+	baseGLDisplay() *GLDisplay
+}
+
+var _ GLDisplayer = (*GLDisplay)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLDisplay, *GLDisplayClass, GLDisplayOverrides](
@@ -5769,6 +6108,15 @@ func marshalGLDisplay(p uintptr) (interface{}, error) {
 	return wrapGLDisplay(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (display *GLDisplay) baseGLDisplay() *GLDisplay {
+	return display
+}
+
+// BaseGLDisplay returns the underlying base object.
+func BaseGLDisplay(obj GLDisplayer) *GLDisplay {
+	return obj.baseGLDisplay()
+}
+
 // ConnectCreateContext overrides the GstGLContext creation mechanism. It can be
 // called in any thread and it is emitted with display's object lock held.
 func (display *GLDisplay) ConnectCreateContext(f func(context GLContexter) (glContext GLContexter)) coreglib.SignalHandle {
@@ -5790,10 +6138,10 @@ func NewGLDisplay() *GLDisplay {
 	return _glDisplay
 }
 
-// NewGLDisplayWithType will always return a GLDisplay of a single type.
-// This differs from gst_gl_display_new() and the seemingly equivalent call
-// gst_gl_display_new_with_type (GST_GL_DISPLAY_TYPE_ANY) in that the latter may
-// return NULL.
+// NewGLDisplayWithType (gst_gl_display_new_with_type) will always return
+// a GLDisplay of a single type. This differs from gst_gl_display_new()
+// and the seemingly equivalent call gst_gl_display_new_with_type
+// (GST_GL_DISPLAY_TYPE_ANY) in that the latter may return NULL.
 //
 // The function takes the following parameters:
 //
@@ -5851,7 +6199,8 @@ func (display *GLDisplay) AddContext(context GLContexter) bool {
 	return _ok
 }
 
-// CreateContext: it requires the display's object lock to be held.
+// CreateContext (gst_gl_display_create_context): it requires the display's
+// object lock to be held.
 //
 // The function takes the following parameters:
 //
@@ -5936,10 +6285,11 @@ func (display *GLDisplay) CreateWindow() GLWindower {
 	return _glWindow
 }
 
-// FilterGLApi: limit the use of OpenGL to the requested gl_api. This is
-// intended to allow application and elements to request a specific set of
-// OpenGL API's based on what they support. See gst_gl_context_get_gl_api() for
-// the retrieving the API supported by a GLContext.
+// FilterGLApi (gst_gl_display_filter_gl_api): limit the use of OpenGL to
+// the requested gl_api. This is intended to allow application and elements
+// to request a specific set of OpenGL API's based on what they support.
+// See gst_gl_context_get_gl_api() for the retrieving the API supported by a
+// GLContext.
 //
 // The function takes the following parameters:
 //
@@ -5956,8 +6306,8 @@ func (display *GLDisplay) FilterGLApi(glApi GLAPI) {
 	runtime.KeepAlive(glApi)
 }
 
-// GLApi: see gst_gl_display_filter_gl_api() for what the returned value
-// represents.
+// GLApi (gst_gl_display_get_gl_api): see gst_gl_display_filter_gl_api() for
+// what the returned value represents.
 //
 // The function returns the following values:
 //
@@ -6032,7 +6382,8 @@ func (display *GLDisplay) HandleType() GLDisplayType {
 	return _glDisplayType
 }
 
-// RemoveContext: must be called with the object lock held.
+// RemoveContext (gst_gl_display_remove_context): must be called with the object
+// lock held.
 //
 // The function takes the following parameters:
 //
@@ -6190,8 +6541,8 @@ func defaultGLFilterOverrides(v *GLFilter) GLFilterOverrides {
 	}
 }
 
-// GLFilter helps to implement simple OpenGL filter elements taking a single
-// input and producing a single output with a GLFramebuffer.
+// GLFilter (GstGLFilter) helps to implement simple OpenGL filter elements
+// taking a single input and producing a single output with a GLFramebuffer.
 type GLFilter struct {
 	_ [0]func() // equal guard
 	GLBaseFilter
@@ -6200,6 +6551,31 @@ type GLFilter struct {
 var (
 	_ gstbase.BaseTransformer = (*GLFilter)(nil)
 )
+
+// GLFilterer describes types inherited from GLFilter.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLFilterer interface {
+	GLBaseFilterer
+
+	// DrawFullscreenQuad (gst_gl_filter_draw_fullscreen_quad): render a
+	// fullscreen quad using the current GL state.
+	DrawFullscreenQuad()
+	// FilterTexture (gst_gl_filter_filter_texture) calls filter_texture vfunc
+	// with correctly mapped GLMemorys.
+	FilterTexture(input, output *gst.Buffer) bool
+	// RenderToTarget (gst_gl_filter_render_to_target) transforms input into
+	// output using func on through FBO.
+	RenderToTarget(input, output *GLMemory, fn GLFilterRenderFunc) bool
+	// RenderToTargetWithShader (gst_gl_filter_render_to_target_with_shader)
+	// transforms input into output using shader with a FBO.
+	RenderToTargetWithShader(input, output *GLMemory, shader *GLShader)
+
+	baseGLFilter() *GLFilter
+}
+
+var _ GLFilterer = (*GLFilter)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLFilter, *GLFilterClass, GLFilterOverrides](
@@ -6259,10 +6635,20 @@ func marshalGLFilter(p uintptr) (interface{}, error) {
 	return wrapGLFilter(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// DrawFullscreenQuad: render a fullscreen quad using the current GL state.
-// The only GL state this modifies is the necessary vertex/index buffers and, if
-// necessary, a Vertex Array Object for drawing a fullscreen quad. Framebuffer
-// state, any shaders, viewport state, etc must be setup by the caller.
+func (filter *GLFilter) baseGLFilter() *GLFilter {
+	return filter
+}
+
+// BaseGLFilter returns the underlying base object.
+func BaseGLFilter(obj GLFilterer) *GLFilter {
+	return obj.baseGLFilter()
+}
+
+// DrawFullscreenQuad (gst_gl_filter_draw_fullscreen_quad): render a fullscreen
+// quad using the current GL state. The only GL state this modifies is the
+// necessary vertex/index buffers and, if necessary, a Vertex Array Object for
+// drawing a fullscreen quad. Framebuffer state, any shaders, viewport state,
+// etc must be setup by the caller.
 func (filter *GLFilter) DrawFullscreenQuad() {
 	var _arg0 *C.GstGLFilter // out
 
@@ -6272,7 +6658,8 @@ func (filter *GLFilter) DrawFullscreenQuad() {
 	runtime.KeepAlive(filter)
 }
 
-// FilterTexture calls filter_texture vfunc with correctly mapped GLMemorys.
+// FilterTexture (gst_gl_filter_filter_texture) calls filter_texture vfunc with
+// correctly mapped GLMemorys.
 //
 // The function takes the following parameters:
 //
@@ -6306,7 +6693,8 @@ func (filter *GLFilter) FilterTexture(input, output *gst.Buffer) bool {
 	return _ok
 }
 
-// RenderToTarget transforms input into output using func on through FBO.
+// RenderToTarget (gst_gl_filter_render_to_target) transforms input into output
+// using func on through FBO.
 //
 // The function takes the following parameters:
 //
@@ -6347,8 +6735,8 @@ func (filter *GLFilter) RenderToTarget(input, output *GLMemory, fn GLFilterRende
 	return _ok
 }
 
-// RenderToTargetWithShader transforms input into output using shader with a
-// FBO.
+// RenderToTargetWithShader (gst_gl_filter_render_to_target_with_shader)
+// transforms input into output using shader with a FBO.
 //
 // See also: gst_gl_filter_render_to_target().
 //
@@ -6561,8 +6949,8 @@ func defaultGLFramebufferOverrides(v *GLFramebuffer) GLFramebufferOverrides {
 	return GLFramebufferOverrides{}
 }
 
-// GLFramebuffer represents and holds an OpenGL framebuffer object with it's
-// associated attachments.
+// GLFramebuffer (GstGLFramebuffer) represents and holds an OpenGL framebuffer
+// object with it's associated attachments.
 //
 // A GLFramebuffer can be created with gst_gl_framebuffer_new()
 // or gst_gl_framebuffer_new_with_default_depth() and bound with
@@ -6579,6 +6967,28 @@ type GLFramebuffer struct {
 var (
 	_ gst.GstObjector = (*GLFramebuffer)(nil)
 )
+
+// GLFramebufferer describes types inherited from GLFramebuffer.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLFramebufferer interface {
+	gst.GstObjector
+
+	// Attach (gst_gl_framebuffer_attach): attach mem to attachment_point.
+	Attach(attachmentPoint uint, mem *GLBaseMemory)
+	// Bind (gst_gl_framebuffer_bind) fb into the current thread.
+	Bind()
+	// EffectiveDimensions (gst_gl_framebuffer_get_effective_dimensions):
+	// retrieve the effective dimensions from the current attachments attached
+	// to fb.
+	EffectiveDimensions() (width, height uint)
+	ID() uint
+
+	baseGLFramebuffer() *GLFramebuffer
+}
+
+var _ GLFramebufferer = (*GLFramebuffer)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLFramebuffer, *GLFramebufferClass, GLFramebufferOverrides](
@@ -6610,8 +7020,18 @@ func marshalGLFramebuffer(p uintptr) (interface{}, error) {
 	return wrapGLFramebuffer(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewGLFramebuffer: this function will internally create an OpenGL framebuffer
-// object and must be called on context's OpenGL thread.
+func (fb *GLFramebuffer) baseGLFramebuffer() *GLFramebuffer {
+	return fb
+}
+
+// BaseGLFramebuffer returns the underlying base object.
+func BaseGLFramebuffer(obj GLFramebufferer) *GLFramebuffer {
+	return obj.baseGLFramebuffer()
+}
+
+// NewGLFramebuffer (gst_gl_framebuffer_new): this function will internally
+// create an OpenGL framebuffer object and must be called on context's OpenGL
+// thread.
 //
 // The function takes the following parameters:
 //
@@ -6636,8 +7056,9 @@ func NewGLFramebuffer(context GLContexter) *GLFramebuffer {
 	return _glFramebuffer
 }
 
-// NewGLFramebufferWithDefaultDepth: this function will internally create an
-// OpenGL framebuffer object and must be called on context's OpenGL thread.
+// NewGLFramebufferWithDefaultDepth (gst_gl_framebuffer_new_with_default_depth):
+// this function will internally create an OpenGL framebuffer object and must be
+// called on context's OpenGL thread.
 //
 // The function takes the following parameters:
 //
@@ -6670,7 +7091,7 @@ func NewGLFramebufferWithDefaultDepth(context GLContexter, width, height uint) *
 	return _glFramebuffer
 }
 
-// Attach: attach mem to attachment_point
+// Attach (gst_gl_framebuffer_attach): attach mem to attachment_point
 //
 // Must be called with the same OpenGL context current that fb was created with.
 //
@@ -6693,7 +7114,7 @@ func (fb *GLFramebuffer) Attach(attachmentPoint uint, mem *GLBaseMemory) {
 	runtime.KeepAlive(mem)
 }
 
-// Bind fb into the current thread
+// Bind (gst_gl_framebuffer_bind) fb into the current thread
 //
 // Must be called with the same OpenGL context current that fb was created with.
 func (fb *GLFramebuffer) Bind() {
@@ -6705,8 +7126,8 @@ func (fb *GLFramebuffer) Bind() {
 	runtime.KeepAlive(fb)
 }
 
-// EffectiveDimensions: retrieve the effective dimensions from the current
-// attachments attached to fb.
+// EffectiveDimensions (gst_gl_framebuffer_get_effective_dimensions): retrieve
+// the effective dimensions from the current attachments attached to fb.
 //
 // The function returns the following values:
 //
@@ -6758,7 +7179,7 @@ func defaultGLMemoryAllocatorOverrides(v *GLMemoryAllocator) GLMemoryAllocatorOv
 	return GLMemoryAllocatorOverrides{}
 }
 
-// GLMemoryAllocator: opaque GLMemoryAllocator struct.
+// GLMemoryAllocator (GstGLMemoryAllocator): opaque GLMemoryAllocator struct.
 type GLMemoryAllocator struct {
 	_ [0]func() // equal guard
 	GLBaseMemoryAllocator
@@ -6767,6 +7188,18 @@ type GLMemoryAllocator struct {
 var (
 	_ GLBaseMemoryAllocatorrer = (*GLMemoryAllocator)(nil)
 )
+
+// GLMemoryAllocatorrer describes types inherited from GLMemoryAllocator.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLMemoryAllocatorrer interface {
+	GLBaseMemoryAllocatorrer
+
+	baseGLMemoryAllocator() *GLMemoryAllocator
+}
+
+var _ GLMemoryAllocatorrer = (*GLMemoryAllocator)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLMemoryAllocator, *GLMemoryAllocatorClass, GLMemoryAllocatorOverrides](
@@ -6802,6 +7235,15 @@ func marshalGLMemoryAllocator(p uintptr) (interface{}, error) {
 	return wrapGLMemoryAllocator(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (v *GLMemoryAllocator) baseGLMemoryAllocator() *GLMemoryAllocator {
+	return v
+}
+
+// BaseGLMemoryAllocator returns the underlying base object.
+func BaseGLMemoryAllocator(obj GLMemoryAllocatorrer) *GLMemoryAllocator {
+	return obj.baseGLMemoryAllocator()
+}
+
 // The function takes the following parameters:
 //
 //   - context: GLContext.
@@ -6833,7 +7275,8 @@ func defaultGLMemoryPBOAllocatorOverrides(v *GLMemoryPBOAllocator) GLMemoryPBOAl
 	return GLMemoryPBOAllocatorOverrides{}
 }
 
-// GLMemoryPBOAllocator: opaque GLMemoryPBOAllocator struct.
+// GLMemoryPBOAllocator (GstGLMemoryPBOAllocator): opaque GLMemoryPBOAllocator
+// struct.
 type GLMemoryPBOAllocator struct {
 	_ [0]func() // equal guard
 	GLMemoryAllocator
@@ -6842,6 +7285,18 @@ type GLMemoryPBOAllocator struct {
 var (
 	_ GLBaseMemoryAllocatorrer = (*GLMemoryPBOAllocator)(nil)
 )
+
+// GLMemoryPBOAllocatorrer describes types inherited from GLMemoryPBOAllocator.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLMemoryPBOAllocatorrer interface {
+	GLMemoryAllocatorrer
+
+	baseGLMemoryPBOAllocator() *GLMemoryPBOAllocator
+}
+
+var _ GLMemoryPBOAllocatorrer = (*GLMemoryPBOAllocator)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLMemoryPBOAllocator, *GLMemoryPBOAllocatorClass, GLMemoryPBOAllocatorOverrides](
@@ -6879,6 +7334,15 @@ func marshalGLMemoryPBOAllocator(p uintptr) (interface{}, error) {
 	return wrapGLMemoryPBOAllocator(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (v *GLMemoryPBOAllocator) baseGLMemoryPBOAllocator() *GLMemoryPBOAllocator {
+	return v
+}
+
+// BaseGLMemoryPBOAllocator returns the underlying base object.
+func BaseGLMemoryPBOAllocator(obj GLMemoryPBOAllocatorrer) *GLMemoryPBOAllocator {
+	return obj.baseGLMemoryPBOAllocator()
+}
+
 // GLMixerOverrides contains methods that are overridable.
 type GLMixerOverrides struct {
 	// ProcessBuffers: perform operations on the input buffers to produce an
@@ -6901,7 +7365,8 @@ func defaultGLMixerOverrides(v *GLMixer) GLMixerOverrides {
 	}
 }
 
-// GLMixer helps implement an element that operates on RGBA textures.
+// GLMixer (GstGLMixer) helps implement an element that operates on RGBA
+// textures.
 type GLMixer struct {
 	_ [0]func() // equal guard
 	GLBaseMixer
@@ -6911,12 +7376,18 @@ var (
 	_ GLBaseMixerer = (*GLMixer)(nil)
 )
 
-// GLMixerer describes types inherited from class GLMixer.
+// GLMixerer describes types inherited from GLMixer.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type GLMixerer interface {
-	coreglib.Objector
+	GLBaseMixerer
+
+	Framebuffer() *GLFramebuffer
+	// ProcessTextures (gst_gl_mixer_process_textures): perform processing
+	// required and call GLMixerClass::process_textures().
+	ProcessTextures(outbuf *gst.Buffer) bool
+
 	baseGLMixer() *GLMixer
 }
 
@@ -6998,9 +7469,9 @@ func (mix *GLMixer) Framebuffer() *GLFramebuffer {
 	return _glFramebuffer
 }
 
-// ProcessTextures: perform processing required and call
-// GLMixerClass::process_textures(). Intended for use within implementations of
-// GLMixerClass::process_buffers().
+// ProcessTextures (gst_gl_mixer_process_textures): perform processing
+// required and call GLMixerClass::process_textures(). Intended for use within
+// implementations of GLMixerClass::process_buffers().
 //
 // The function takes the following parameters:
 //
@@ -7104,6 +7575,18 @@ var (
 	_ gst.GstObjector = (*GLMixerPad)(nil)
 )
 
+// GLMixerPadder describes types inherited from GLMixerPad.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLMixerPadder interface {
+	GLBaseMixerPadder
+
+	baseGLMixerPad() *GLMixerPad
+}
+
+var _ GLMixerPadder = (*GLMixerPad)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*GLMixerPad, *GLMixerPadClass, GLMixerPadOverrides](
 		GTypeGLMixerPad,
@@ -7142,6 +7625,15 @@ func marshalGLMixerPad(p uintptr) (interface{}, error) {
 	return wrapGLMixerPad(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (v *GLMixerPad) baseGLMixerPad() *GLMixerPad {
+	return v
+}
+
+// BaseGLMixerPad returns the underlying base object.
+func BaseGLMixerPad(obj GLMixerPadder) *GLMixerPad {
+	return obj.baseGLMixerPad()
+}
+
 // GLOverlayCompositorOverrides contains methods that are overridable.
 type GLOverlayCompositorOverrides struct {
 }
@@ -7150,7 +7642,8 @@ func defaultGLOverlayCompositorOverrides(v *GLOverlayCompositor) GLOverlayCompos
 	return GLOverlayCompositorOverrides{}
 }
 
-// GLOverlayCompositor: opaque GLOverlayCompositor object.
+// GLOverlayCompositor (GstGLOverlayCompositor): opaque GLOverlayCompositor
+// object.
 type GLOverlayCompositor struct {
 	_ [0]func() // equal guard
 	gst.GstObject
@@ -7159,6 +7652,22 @@ type GLOverlayCompositor struct {
 var (
 	_ gst.GstObjector = (*GLOverlayCompositor)(nil)
 )
+
+// GLOverlayCompositorrer describes types inherited from GLOverlayCompositor.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLOverlayCompositorrer interface {
+	gst.GstObjector
+
+	DrawOverlays()
+	FreeOverlays()
+	UploadOverlays(buf *gst.Buffer)
+
+	baseGLOverlayCompositor() *GLOverlayCompositor
+}
+
+var _ GLOverlayCompositorrer = (*GLOverlayCompositor)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLOverlayCompositor, *GLOverlayCompositorClass, GLOverlayCompositorOverrides](
@@ -7188,6 +7697,15 @@ func wrapGLOverlayCompositor(obj *coreglib.Object) *GLOverlayCompositor {
 
 func marshalGLOverlayCompositor(p uintptr) (interface{}, error) {
 	return wrapGLOverlayCompositor(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (compositor *GLOverlayCompositor) baseGLOverlayCompositor() *GLOverlayCompositor {
+	return compositor
+}
+
+// BaseGLOverlayCompositor returns the underlying base object.
+func BaseGLOverlayCompositor(obj GLOverlayCompositorrer) *GLOverlayCompositor {
+	return obj.baseGLOverlayCompositor()
 }
 
 func NewGLOverlayCompositor(context GLContexter) *GLOverlayCompositor {
@@ -7265,7 +7783,8 @@ func defaultGLRenderbufferAllocatorOverrides(v *GLRenderbufferAllocator) GLRende
 	return GLRenderbufferAllocatorOverrides{}
 }
 
-// GLRenderbufferAllocator: opaque GLRenderbufferAllocator struct.
+// GLRenderbufferAllocator (GstGLRenderbufferAllocator): opaque
+// GLRenderbufferAllocator struct.
 type GLRenderbufferAllocator struct {
 	_ [0]func() // equal guard
 	GLBaseMemoryAllocator
@@ -7274,6 +7793,18 @@ type GLRenderbufferAllocator struct {
 var (
 	_ GLBaseMemoryAllocatorrer = (*GLRenderbufferAllocator)(nil)
 )
+
+// GLRenderbufferAllocatorrer describes types inherited from GLRenderbufferAllocator.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLRenderbufferAllocatorrer interface {
+	GLBaseMemoryAllocatorrer
+
+	baseGLRenderbufferAllocator() *GLRenderbufferAllocator
+}
+
+var _ GLRenderbufferAllocatorrer = (*GLRenderbufferAllocator)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLRenderbufferAllocator, *GLRenderbufferAllocatorClass, GLRenderbufferAllocatorOverrides](
@@ -7309,6 +7840,15 @@ func marshalGLRenderbufferAllocator(p uintptr) (interface{}, error) {
 	return wrapGLRenderbufferAllocator(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (v *GLRenderbufferAllocator) baseGLRenderbufferAllocator() *GLRenderbufferAllocator {
+	return v
+}
+
+// BaseGLRenderbufferAllocator returns the underlying base object.
+func BaseGLRenderbufferAllocator(obj GLRenderbufferAllocatorrer) *GLRenderbufferAllocator {
+	return obj.baseGLRenderbufferAllocator()
+}
+
 // GLSLStageOverrides contains methods that are overridable.
 type GLSLStageOverrides struct {
 }
@@ -7317,7 +7857,7 @@ func defaultGLSLStageOverrides(v *GLSLStage) GLSLStageOverrides {
 	return GLSLStageOverrides{}
 }
 
-// GLSLStage holds and represents a single OpenGL shader stage.
+// GLSLStage (GstGLSLStage) holds and represents a single OpenGL shader stage.
 type GLSLStage struct {
 	_ [0]func() // equal guard
 	gst.GstObject
@@ -7326,6 +7866,27 @@ type GLSLStage struct {
 var (
 	_ gst.GstObjector = (*GLSLStage)(nil)
 )
+
+// GLSLStager describes types inherited from GLSLStage.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLSLStager interface {
+	gst.GstObjector
+
+	Compile() error
+	Handle() uint
+	Profile() GLSLProfile
+	ShaderType() uint
+	Version() GLSLVersion
+	// SetStrings (gst_glsl_stage_set_strings) replaces the current shader
+	// string with str.
+	SetStrings(version GLSLVersion, profile GLSLProfile, str []string) bool
+
+	baseGLSLStage() *GLSLStage
+}
+
+var _ GLSLStager = (*GLSLStage)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLSLStage, *GLSLStageClass, GLSLStageOverrides](
@@ -7355,6 +7916,15 @@ func wrapGLSLStage(obj *coreglib.Object) *GLSLStage {
 
 func marshalGLSLStage(p uintptr) (interface{}, error) {
 	return wrapGLSLStage(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (stage *GLSLStage) baseGLSLStage() *GLSLStage {
+	return stage
+}
+
+// BaseGLSLStage returns the underlying base object.
+func BaseGLSLStage(obj GLSLStager) *GLSLStage {
+	return obj.baseGLSLStage()
 }
 
 // The function takes the following parameters:
@@ -7613,7 +8183,8 @@ func (stage *GLSLStage) Version() GLSLVersion {
 	return _glslVersion
 }
 
-// SetStrings replaces the current shader string with str.
+// SetStrings (gst_glsl_stage_set_strings) replaces the current shader string
+// with str.
 //
 // The function takes the following parameters:
 //
@@ -7674,6 +8245,130 @@ var (
 	_ gst.GstObjector = (*GLShader)(nil)
 )
 
+// GLShaderer describes types inherited from GLShader.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLShaderer interface {
+	gst.GstObjector
+
+	// Attach (gst_gl_shader_attach) attaches stage to shader.
+	Attach(stage *GLSLStage) bool
+	// AttachUnlocked (gst_gl_shader_attach_unlocked) attaches stage to shader.
+	AttachUnlocked(stage *GLSLStage) bool
+	// BindAttributeLocation (gst_gl_shader_bind_attribute_location):
+	// bind attribute name to the specified location index using
+	// glBindAttributeLocation().
+	BindAttributeLocation(index uint, name string)
+	// BindFragDataLocation (gst_gl_shader_bind_frag_data_location):
+	// bind attribute name to the specified location index using
+	// glBindFragDataLocation().
+	BindFragDataLocation(index uint, name string)
+	// CompileAttachStage (gst_gl_shader_compile_attach_stage) compiles stage
+	// and attaches it to shader.
+	CompileAttachStage(stage *GLSLStage) error
+	// Detach (gst_gl_shader_detach) detaches stage from shader.
+	Detach(stage *GLSLStage)
+	// DetachUnlocked (gst_gl_shader_detach_unlocked) detaches stage from
+	// shader.
+	DetachUnlocked(stage *GLSLStage)
+	AttributeLocation(name string) int
+	ProgramHandle() int
+	// IsLinked (gst_gl_shader_is_linked): note: must be called in the GL
+	// thread.
+	IsLinked() bool
+	// Link (gst_gl_shader_link) links the current list of GLSLStage's in
+	// shader.
+	Link() error
+	// Release (gst_gl_shader_release) releases the shader and stages.
+	Release()
+	// ReleaseUnlocked (gst_gl_shader_release_unlocked) releases the shader and
+	// stages.
+	ReleaseUnlocked()
+	// SetUniform1F (gst_gl_shader_set_uniform_1f): perform glUniform1f() for
+	// name on shader.
+	SetUniform1F(name string, value float32)
+	// SetUniform1Fv (gst_gl_shader_set_uniform_1fv): perform glUniform1fv() for
+	// name on shader.
+	SetUniform1Fv(name string, value []float32)
+	// SetUniform1I (gst_gl_shader_set_uniform_1i): perform glUniform1i() for
+	// name on shader.
+	SetUniform1I(name string, value int)
+	// SetUniform1Iv (gst_gl_shader_set_uniform_1iv): perform glUniform1iv() for
+	// name on shader.
+	SetUniform1Iv(name string, value []int)
+	// SetUniform2F (gst_gl_shader_set_uniform_2f): perform glUniform2f() for
+	// name on shader.
+	SetUniform2F(name string, v0, v1 float32)
+	// SetUniform2Fv (gst_gl_shader_set_uniform_2fv): perform glUniform2fv() for
+	// name on shader.
+	SetUniform2Fv(name string, value []float32)
+	// SetUniform2I (gst_gl_shader_set_uniform_2i): perform glUniform2i() for
+	// name on shader.
+	SetUniform2I(name string, v0, v1 int)
+	// SetUniform2Iv (gst_gl_shader_set_uniform_2iv): perform glUniform2iv() for
+	// name on shader.
+	SetUniform2Iv(name string, value []int)
+	// SetUniform3F (gst_gl_shader_set_uniform_3f): perform glUniform3f() for
+	// name on shader.
+	SetUniform3F(name string, v0, v1, v2 float32)
+	// SetUniform3Fv (gst_gl_shader_set_uniform_3fv): perform glUniform3fv() for
+	// name on shader.
+	SetUniform3Fv(name string, value []float32)
+	// SetUniform3I (gst_gl_shader_set_uniform_3i): perform glUniform3i() for
+	// name on shader.
+	SetUniform3I(name string, v0, v1, v2 int)
+	// SetUniform3Iv (gst_gl_shader_set_uniform_3iv): perform glUniform3iv() for
+	// name on shader.
+	SetUniform3Iv(name string, value []int)
+	// SetUniform4F (gst_gl_shader_set_uniform_4f): perform glUniform4f() for
+	// name on shader.
+	SetUniform4F(name string, v0, v1, v2, v3 float32)
+	// SetUniform4Fv (gst_gl_shader_set_uniform_4fv): perform glUniform4fv() for
+	// name on shader.
+	SetUniform4Fv(name string, value []float32)
+	// SetUniform4I (gst_gl_shader_set_uniform_4i): perform glUniform4i() for
+	// name on shader.
+	SetUniform4I(name string, v0, v1, v2, v3 int)
+	// SetUniform4Iv (gst_gl_shader_set_uniform_4iv): perform glUniform4iv() for
+	// name on shader.
+	SetUniform4Iv(name string, value []int)
+	// SetUniformMatrix2Fv (gst_gl_shader_set_uniform_matrix_2fv): perform
+	// glUniformMatrix2fv() for name on shader.
+	SetUniformMatrix2Fv(name string, count int, transpose bool, value *float32)
+	// SetUniformMatrix2X3Fv (gst_gl_shader_set_uniform_matrix_2x3fv): perform
+	// glUniformMatrix2x3fv() for name on shader.
+	SetUniformMatrix2X3Fv(name string, count int, transpose bool, value *float32)
+	// SetUniformMatrix2X4Fv (gst_gl_shader_set_uniform_matrix_2x4fv): perform
+	// glUniformMatrix2x4fv() for name on shader.
+	SetUniformMatrix2X4Fv(name string, count int, transpose bool, value *float32)
+	// SetUniformMatrix3Fv (gst_gl_shader_set_uniform_matrix_3fv): perform
+	// glUniformMatrix3fv() for name on shader.
+	SetUniformMatrix3Fv(name string, count int, transpose bool, value *float32)
+	// SetUniformMatrix3X2Fv (gst_gl_shader_set_uniform_matrix_3x2fv): perform
+	// glUniformMatrix3x2fv() for name on shader.
+	SetUniformMatrix3X2Fv(name string, count int, transpose bool, value *float32)
+	// SetUniformMatrix3X4Fv (gst_gl_shader_set_uniform_matrix_3x4fv): perform
+	// glUniformMatrix3x4fv() for name on shader.
+	SetUniformMatrix3X4Fv(name string, count int, transpose bool, value *float32)
+	// SetUniformMatrix4Fv (gst_gl_shader_set_uniform_matrix_4fv): perform
+	// glUniformMatrix4fv() for name on shader.
+	SetUniformMatrix4Fv(name string, count int, transpose bool, value *float32)
+	// SetUniformMatrix4X2Fv (gst_gl_shader_set_uniform_matrix_4x2fv): perform
+	// glUniformMatrix4x2fv() for name on shader.
+	SetUniformMatrix4X2Fv(name string, count int, transpose bool, value *float32)
+	// SetUniformMatrix4X3Fv (gst_gl_shader_set_uniform_matrix_4x3fv): perform
+	// glUniformMatrix4x3fv() for name on shader.
+	SetUniformMatrix4X3Fv(name string, count int, transpose bool, value *float32)
+	// Use (gst_gl_shader_use) mark's shader as being used for the next GL draw
+	// command.
+	Use()
+
+	baseGLShader() *GLShader
+}
+
+var _ GLShaderer = (*GLShader)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*GLShader, *GLShaderClass, GLShaderOverrides](
 		GTypeGLShader,
@@ -7704,7 +8399,16 @@ func marshalGLShader(p uintptr) (interface{}, error) {
 	return wrapGLShader(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewGLShader: note: must be called in the GL thread.
+func (shader *GLShader) baseGLShader() *GLShader {
+	return shader
+}
+
+// BaseGLShader returns the underlying base object.
+func BaseGLShader(obj GLShaderer) *GLShader {
+	return obj.baseGLShader()
+}
+
+// NewGLShader (gst_gl_shader_new): note: must be called in the GL thread.
 //
 // The function takes the following parameters:
 //
@@ -7729,7 +8433,8 @@ func NewGLShader(context GLContexter) *GLShader {
 	return _glShader
 }
 
-// NewGLShaderDefault: note: must be called in the GL thread.
+// NewGLShaderDefault (gst_gl_shader_new_default): note: must be called in the
+// GL thread.
 //
 // The function takes the following parameters:
 //
@@ -7759,8 +8464,8 @@ func NewGLShaderDefault(context GLContexter) (*GLShader, error) {
 	return _glShader, _goerr
 }
 
-// Attach attaches stage to shader. stage must have been successfully compiled
-// with gst_glsl_stage_compile().
+// Attach (gst_gl_shader_attach) attaches stage to shader. stage must have been
+// successfully compiled with gst_glsl_stage_compile().
 //
 // Note: must be called in the GL thread.
 //
@@ -7792,8 +8497,8 @@ func (shader *GLShader) Attach(stage *GLSLStage) bool {
 	return _ok
 }
 
-// AttachUnlocked attaches stage to shader. stage must have been successfully
-// compiled with gst_glsl_stage_compile().
+// AttachUnlocked (gst_gl_shader_attach_unlocked) attaches stage to shader.
+// stage must have been successfully compiled with gst_glsl_stage_compile().
 //
 // Note: must be called in the GL thread.
 //
@@ -7825,8 +8530,8 @@ func (shader *GLShader) AttachUnlocked(stage *GLSLStage) bool {
 	return _ok
 }
 
-// BindAttributeLocation: bind attribute name to the specified location index
-// using glBindAttributeLocation().
+// BindAttributeLocation (gst_gl_shader_bind_attribute_location): bind attribute
+// name to the specified location index using glBindAttributeLocation().
 //
 // The function takes the following parameters:
 //
@@ -7848,8 +8553,8 @@ func (shader *GLShader) BindAttributeLocation(index uint, name string) {
 	runtime.KeepAlive(name)
 }
 
-// BindFragDataLocation: bind attribute name to the specified location index
-// using glBindFragDataLocation().
+// BindFragDataLocation (gst_gl_shader_bind_frag_data_location): bind attribute
+// name to the specified location index using glBindFragDataLocation().
 //
 // The function takes the following parameters:
 //
@@ -7871,7 +8576,8 @@ func (shader *GLShader) BindFragDataLocation(index uint, name string) {
 	runtime.KeepAlive(name)
 }
 
-// CompileAttachStage compiles stage and attaches it to shader.
+// CompileAttachStage (gst_gl_shader_compile_attach_stage) compiles stage and
+// attaches it to shader.
 //
 // Note: must be called in the GL thread.
 //
@@ -7899,8 +8605,9 @@ func (shader *GLShader) CompileAttachStage(stage *GLSLStage) error {
 	return _goerr
 }
 
-// Detach detaches stage from shader. stage must have been successfully attached
-// to shader with gst_gl_shader_attach() or gst_gl_shader_attach_unlocked().
+// Detach (gst_gl_shader_detach) detaches stage from shader. stage must
+// have been successfully attached to shader with gst_gl_shader_attach() or
+// gst_gl_shader_attach_unlocked().
 //
 // Note: must be called in the GL thread.
 //
@@ -7919,9 +8626,9 @@ func (shader *GLShader) Detach(stage *GLSLStage) {
 	runtime.KeepAlive(stage)
 }
 
-// DetachUnlocked detaches stage from shader. stage must have been
-// successfully attached to shader with gst_gl_shader_attach() or
-// gst_gl_shader_attach_unlocked().
+// DetachUnlocked (gst_gl_shader_detach_unlocked) detaches stage from
+// shader. stage must have been successfully attached to shader with
+// gst_gl_shader_attach() or gst_gl_shader_attach_unlocked().
 //
 // Note: must be called in the GL thread.
 //
@@ -7986,7 +8693,7 @@ func (shader *GLShader) ProgramHandle() int {
 	return _gint
 }
 
-// IsLinked: note: must be called in the GL thread.
+// IsLinked (gst_gl_shader_is_linked): note: must be called in the GL thread.
 //
 // The function returns the following values:
 //
@@ -8009,7 +8716,7 @@ func (shader *GLShader) IsLinked() bool {
 	return _ok
 }
 
-// Link links the current list of GLSLStage's in shader.
+// Link (gst_gl_shader_link) links the current list of GLSLStage's in shader.
 //
 // Note: must be called in the GL thread.
 func (shader *GLShader) Link() error {
@@ -8030,7 +8737,7 @@ func (shader *GLShader) Link() error {
 	return _goerr
 }
 
-// Release releases the shader and stages.
+// Release (gst_gl_shader_release) releases the shader and stages.
 //
 // Note: must be called in the GL thread.
 func (shader *GLShader) Release() {
@@ -8042,7 +8749,8 @@ func (shader *GLShader) Release() {
 	runtime.KeepAlive(shader)
 }
 
-// ReleaseUnlocked releases the shader and stages.
+// ReleaseUnlocked (gst_gl_shader_release_unlocked) releases the shader and
+// stages.
 //
 // Note: must be called in the GL thread.
 func (shader *GLShader) ReleaseUnlocked() {
@@ -8054,7 +8762,8 @@ func (shader *GLShader) ReleaseUnlocked() {
 	runtime.KeepAlive(shader)
 }
 
-// SetUniform1F: perform glUniform1f() for name on shader.
+// SetUniform1F (gst_gl_shader_set_uniform_1f): perform glUniform1f() for name
+// on shader.
 //
 // The function takes the following parameters:
 //
@@ -8076,7 +8785,8 @@ func (shader *GLShader) SetUniform1F(name string, value float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform1Fv: perform glUniform1fv() for name on shader.
+// SetUniform1Fv (gst_gl_shader_set_uniform_1fv): perform glUniform1fv() for
+// name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8102,7 +8812,8 @@ func (shader *GLShader) SetUniform1Fv(name string, value []float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform1I: perform glUniform1i() for name on shader.
+// SetUniform1I (gst_gl_shader_set_uniform_1i): perform glUniform1i() for name
+// on shader.
 //
 // The function takes the following parameters:
 //
@@ -8124,7 +8835,8 @@ func (shader *GLShader) SetUniform1I(name string, value int) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform1Iv: perform glUniform1iv() for name on shader.
+// SetUniform1Iv (gst_gl_shader_set_uniform_1iv): perform glUniform1iv() for
+// name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8155,7 +8867,8 @@ func (shader *GLShader) SetUniform1Iv(name string, value []int) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform2F: perform glUniform2f() for name on shader.
+// SetUniform2F (gst_gl_shader_set_uniform_2f): perform glUniform2f() for name
+// on shader.
 //
 // The function takes the following parameters:
 //
@@ -8181,7 +8894,8 @@ func (shader *GLShader) SetUniform2F(name string, v0, v1 float32) {
 	runtime.KeepAlive(v1)
 }
 
-// SetUniform2Fv: perform glUniform2fv() for name on shader.
+// SetUniform2Fv (gst_gl_shader_set_uniform_2fv): perform glUniform2fv() for
+// name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8207,7 +8921,8 @@ func (shader *GLShader) SetUniform2Fv(name string, value []float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform2I: perform glUniform2i() for name on shader.
+// SetUniform2I (gst_gl_shader_set_uniform_2i): perform glUniform2i() for name
+// on shader.
 //
 // The function takes the following parameters:
 //
@@ -8233,7 +8948,8 @@ func (shader *GLShader) SetUniform2I(name string, v0, v1 int) {
 	runtime.KeepAlive(v1)
 }
 
-// SetUniform2Iv: perform glUniform2iv() for name on shader.
+// SetUniform2Iv (gst_gl_shader_set_uniform_2iv): perform glUniform2iv() for
+// name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8264,7 +8980,8 @@ func (shader *GLShader) SetUniform2Iv(name string, value []int) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform3F: perform glUniform3f() for name on shader.
+// SetUniform3F (gst_gl_shader_set_uniform_3f): perform glUniform3f() for name
+// on shader.
 //
 // The function takes the following parameters:
 //
@@ -8294,7 +9011,8 @@ func (shader *GLShader) SetUniform3F(name string, v0, v1, v2 float32) {
 	runtime.KeepAlive(v2)
 }
 
-// SetUniform3Fv: perform glUniform3fv() for name on shader.
+// SetUniform3Fv (gst_gl_shader_set_uniform_3fv): perform glUniform3fv() for
+// name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8320,7 +9038,8 @@ func (shader *GLShader) SetUniform3Fv(name string, value []float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform3I: perform glUniform3i() for name on shader.
+// SetUniform3I (gst_gl_shader_set_uniform_3i): perform glUniform3i() for name
+// on shader.
 //
 // The function takes the following parameters:
 //
@@ -8350,7 +9069,8 @@ func (shader *GLShader) SetUniform3I(name string, v0, v1, v2 int) {
 	runtime.KeepAlive(v2)
 }
 
-// SetUniform3Iv: perform glUniform3iv() for name on shader.
+// SetUniform3Iv (gst_gl_shader_set_uniform_3iv): perform glUniform3iv() for
+// name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8381,7 +9101,8 @@ func (shader *GLShader) SetUniform3Iv(name string, value []int) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform4F: perform glUniform4f() for name on shader.
+// SetUniform4F (gst_gl_shader_set_uniform_4f): perform glUniform4f() for name
+// on shader.
 //
 // The function takes the following parameters:
 //
@@ -8415,7 +9136,8 @@ func (shader *GLShader) SetUniform4F(name string, v0, v1, v2, v3 float32) {
 	runtime.KeepAlive(v3)
 }
 
-// SetUniform4Fv: perform glUniform4fv() for name on shader.
+// SetUniform4Fv (gst_gl_shader_set_uniform_4fv): perform glUniform4fv() for
+// name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8441,7 +9163,8 @@ func (shader *GLShader) SetUniform4Fv(name string, value []float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform4I: perform glUniform4i() for name on shader.
+// SetUniform4I (gst_gl_shader_set_uniform_4i): perform glUniform4i() for name
+// on shader.
 //
 // The function takes the following parameters:
 //
@@ -8475,7 +9198,8 @@ func (shader *GLShader) SetUniform4I(name string, v0, v1, v2, v3 int) {
 	runtime.KeepAlive(v3)
 }
 
-// SetUniform4Iv: perform glUniform4iv() for name on shader.
+// SetUniform4Iv (gst_gl_shader_set_uniform_4iv): perform glUniform4iv() for
+// name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8506,7 +9230,8 @@ func (shader *GLShader) SetUniform4Iv(name string, value []int) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix2Fv: perform glUniformMatrix2fv() for name on shader.
+// SetUniformMatrix2Fv (gst_gl_shader_set_uniform_matrix_2fv): perform
+// glUniformMatrix2fv() for name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8538,7 +9263,8 @@ func (shader *GLShader) SetUniformMatrix2Fv(name string, count int, transpose bo
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix2X3Fv: perform glUniformMatrix2x3fv() for name on shader.
+// SetUniformMatrix2X3Fv (gst_gl_shader_set_uniform_matrix_2x3fv): perform
+// glUniformMatrix2x3fv() for name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8570,7 +9296,8 @@ func (shader *GLShader) SetUniformMatrix2X3Fv(name string, count int, transpose 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix2X4Fv: perform glUniformMatrix2x4fv() for name on shader.
+// SetUniformMatrix2X4Fv (gst_gl_shader_set_uniform_matrix_2x4fv): perform
+// glUniformMatrix2x4fv() for name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8602,7 +9329,8 @@ func (shader *GLShader) SetUniformMatrix2X4Fv(name string, count int, transpose 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix3Fv: perform glUniformMatrix3fv() for name on shader.
+// SetUniformMatrix3Fv (gst_gl_shader_set_uniform_matrix_3fv): perform
+// glUniformMatrix3fv() for name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8634,7 +9362,8 @@ func (shader *GLShader) SetUniformMatrix3Fv(name string, count int, transpose bo
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix3X2Fv: perform glUniformMatrix3x2fv() for name on shader.
+// SetUniformMatrix3X2Fv (gst_gl_shader_set_uniform_matrix_3x2fv): perform
+// glUniformMatrix3x2fv() for name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8666,7 +9395,8 @@ func (shader *GLShader) SetUniformMatrix3X2Fv(name string, count int, transpose 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix3X4Fv: perform glUniformMatrix3x4fv() for name on shader.
+// SetUniformMatrix3X4Fv (gst_gl_shader_set_uniform_matrix_3x4fv): perform
+// glUniformMatrix3x4fv() for name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8698,7 +9428,8 @@ func (shader *GLShader) SetUniformMatrix3X4Fv(name string, count int, transpose 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix4Fv: perform glUniformMatrix4fv() for name on shader.
+// SetUniformMatrix4Fv (gst_gl_shader_set_uniform_matrix_4fv): perform
+// glUniformMatrix4fv() for name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8730,7 +9461,8 @@ func (shader *GLShader) SetUniformMatrix4Fv(name string, count int, transpose bo
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix4X2Fv: perform glUniformMatrix4x2fv() for name on shader.
+// SetUniformMatrix4X2Fv (gst_gl_shader_set_uniform_matrix_4x2fv): perform
+// glUniformMatrix4x2fv() for name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8762,7 +9494,8 @@ func (shader *GLShader) SetUniformMatrix4X2Fv(name string, count int, transpose 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix4X3Fv: perform glUniformMatrix4x3fv() for name on shader.
+// SetUniformMatrix4X3Fv (gst_gl_shader_set_uniform_matrix_4x3fv): perform
+// glUniformMatrix4x3fv() for name on shader.
 //
 // The function takes the following parameters:
 //
@@ -8794,7 +9527,8 @@ func (shader *GLShader) SetUniformMatrix4X3Fv(name string, count int, transpose 
 	runtime.KeepAlive(value)
 }
 
-// Use mark's shader as being used for the next GL draw command.
+// Use (gst_gl_shader_use) mark's shader as being used for the next GL draw
+// command.
 //
 // Note: must be called in the GL thread and shader must have been linked.
 func (shader *GLShader) Use() {
@@ -8872,10 +9606,11 @@ func GLShaderStringFragmentGetDefault(context GLContexter, version GLSLVersion, 
 	return _utf8
 }
 
-// GLShaderStringGetHighestPrecision generates a shader string that defines the
-// precision of float types in GLSL shaders. This is particularly needed for
-// fragment shaders in a GLSL ES context where there is no default precision
-// specified.
+// GLShaderStringGetHighestPrecision
+// (gst_gl_shader_string_get_highest_precision) generates a shader string that
+// defines the precision of float types in GLSL shaders. This is particularly
+// needed for fragment shaders in a GLSL ES context where there is no default
+// precision specified.
 //
 // Practically, this will return the string 'precision mediump float' or
 // 'precision highp float' depending on if high precision floats are determined
@@ -8921,7 +9656,8 @@ func defaultGLUploadOverrides(v *GLUpload) GLUploadOverrides {
 	return GLUploadOverrides{}
 }
 
-// GLUpload is an object that uploads data from system memory into GL textures.
+// GLUpload (GstGLUpload) is an object that uploads data from system memory into
+// GL textures.
 //
 // A GLUpload can be created with gst_gl_upload_new().
 type GLUpload struct {
@@ -8932,6 +9668,35 @@ type GLUpload struct {
 var (
 	_ gst.GstObjector = (*GLUpload)(nil)
 )
+
+// GLUploader describes types inherited from GLUpload.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLUploader interface {
+	gst.GstObjector
+
+	// FixateCaps (gst_gl_upload_fixate_caps): fixate the othercaps based on the
+	// information of the caps.
+	FixateCaps(direction gst.PadDirection, caps, othercaps *gst.Caps) *gst.Caps
+	Caps() (inCaps, outCaps *gst.Caps)
+	// PerformWithBuffer (gst_gl_upload_perform_with_buffer) uploads buffer
+	// using the transformation specified by gst_gl_upload_set_caps() creating a
+	// new Buffer in outbuf_ptr.
+	PerformWithBuffer(buffer *gst.Buffer) (*gst.Buffer, GLUploadReturn)
+	// ProposeAllocation (gst_gl_upload_propose_allocation) adds the required
+	// allocation parameters to support uploading.
+	ProposeAllocation(decideQuery, query *gst.Query)
+	// SetCaps (gst_gl_upload_set_caps) initializes upload with the information
+	// required for upload.
+	SetCaps(inCaps, outCaps *gst.Caps) bool
+	SetContext(context GLContexter)
+	TransformCaps(context GLContexter, direction gst.PadDirection, caps, filter *gst.Caps) *gst.Caps
+
+	baseGLUpload() *GLUpload
+}
+
+var _ GLUploader = (*GLUpload)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLUpload, *GLUploadClass, GLUploadOverrides](
@@ -8963,6 +9728,15 @@ func marshalGLUpload(p uintptr) (interface{}, error) {
 	return wrapGLUpload(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (upload *GLUpload) baseGLUpload() *GLUpload {
+	return upload
+}
+
+// BaseGLUpload returns the underlying base object.
+func BaseGLUpload(obj GLUploader) *GLUpload {
+	return obj.baseGLUpload()
+}
+
 // The function takes the following parameters:
 //
 //   - context: GLContext.
@@ -8986,7 +9760,8 @@ func NewGLUpload(context GLContexter) *GLUpload {
 	return _glUpload
 }
 
-// FixateCaps: fixate the othercaps based on the information of the caps.
+// FixateCaps (gst_gl_upload_fixate_caps): fixate the othercaps based on the
+// information of the caps.
 //
 // The function takes the following parameters:
 //
@@ -9065,8 +9840,9 @@ func (upload *GLUpload) Caps() (inCaps, outCaps *gst.Caps) {
 	return _inCaps, _outCaps
 }
 
-// PerformWithBuffer uploads buffer using the transformation specified by
-// gst_gl_upload_set_caps() creating a new Buffer in outbuf_ptr.
+// PerformWithBuffer (gst_gl_upload_perform_with_buffer) uploads buffer using
+// the transformation specified by gst_gl_upload_set_caps() creating a new
+// Buffer in outbuf_ptr.
 //
 // The function takes the following parameters:
 //
@@ -9103,8 +9879,8 @@ func (upload *GLUpload) PerformWithBuffer(buffer *gst.Buffer) (*gst.Buffer, GLUp
 	return _outbufPtr, _glUploadReturn
 }
 
-// ProposeAllocation adds the required allocation parameters to support
-// uploading.
+// ProposeAllocation (gst_gl_upload_propose_allocation) adds the required
+// allocation parameters to support uploading.
 //
 // The function takes the following parameters:
 //
@@ -9127,7 +9903,8 @@ func (upload *GLUpload) ProposeAllocation(decideQuery, query *gst.Query) {
 	runtime.KeepAlive(query)
 }
 
-// SetCaps initializes upload with the information required for upload.
+// SetCaps (gst_gl_upload_set_caps) initializes upload with the information
+// required for upload.
 //
 // The function takes the following parameters:
 //
@@ -9237,7 +10014,8 @@ func defaultGLViewConvertOverrides(v *GLViewConvert) GLViewConvertOverrides {
 	return GLViewConvertOverrides{}
 }
 
-// GLViewConvert: convert stereoscopic/multiview video using fragment shaders.
+// GLViewConvert (GstGLViewConvert): convert stereoscopic/multiview video using
+// fragment shaders.
 type GLViewConvert struct {
 	_ [0]func() // equal guard
 	gst.GstObject
@@ -9246,6 +10024,42 @@ type GLViewConvert struct {
 var (
 	_ gst.GstObjector = (*GLViewConvert)(nil)
 )
+
+// GLViewConverter describes types inherited from GLViewConvert.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GLViewConverter interface {
+	gst.GstObjector
+
+	// FixateCaps (gst_gl_view_convert_fixate_caps) provides an implementation
+	// of BaseTransformClass.fixate_caps().
+	FixateCaps(direction gst.PadDirection, caps, othercaps *gst.Caps) *gst.Caps
+	// Output (gst_gl_view_convert_get_output): retrieve the processed output
+	// buffer placing the output in outbuf_ptr.
+	Output() (*gst.Buffer, gst.FlowReturn)
+	// Perform (gst_gl_view_convert_perform) converts the data contained
+	// by inbuf using the formats specified by the Caps passed to
+	// gst_gl_view_convert_set_caps().
+	Perform(inbuf *gst.Buffer) *gst.Buffer
+	// Reset (gst_gl_view_convert_reset) viewconvert to the default state.
+	Reset()
+	// SetCaps (gst_gl_view_convert_set_caps) initializes viewconvert with the
+	// information required for conversion.
+	SetCaps(inCaps, outCaps *gst.Caps) bool
+	// SetContext (gst_gl_view_convert_set_context): set context on viewconvert.
+	SetContext(context GLContexter)
+	// SubmitInputBuffer (gst_gl_view_convert_submit_input_buffer): submit input
+	// to be processed by viewconvert.
+	SubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn
+	// TransformCaps (gst_gl_view_convert_transform_caps) provides an
+	// implementation of BaseTransformClass.transform_caps().
+	TransformCaps(direction gst.PadDirection, caps, filter *gst.Caps) *gst.Caps
+
+	baseGLViewConvert() *GLViewConvert
+}
+
+var _ GLViewConverter = (*GLViewConvert)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GLViewConvert, *GLViewConvertClass, GLViewConvertOverrides](
@@ -9277,6 +10091,15 @@ func marshalGLViewConvert(p uintptr) (interface{}, error) {
 	return wrapGLViewConvert(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (viewconvert *GLViewConvert) baseGLViewConvert() *GLViewConvert {
+	return viewconvert
+}
+
+// BaseGLViewConvert returns the underlying base object.
+func BaseGLViewConvert(obj GLViewConverter) *GLViewConvert {
+	return obj.baseGLViewConvert()
+}
+
 // The function returns the following values:
 //
 //   - glViewConvert: new GLViewConvert.
@@ -9292,7 +10115,8 @@ func NewGLViewConvert() *GLViewConvert {
 	return _glViewConvert
 }
 
-// FixateCaps provides an implementation of BaseTransformClass.fixate_caps().
+// FixateCaps (gst_gl_view_convert_fixate_caps) provides an implementation of
+// BaseTransformClass.fixate_caps().
 //
 // The function takes the following parameters:
 //
@@ -9334,8 +10158,8 @@ func (viewconvert *GLViewConvert) FixateCaps(direction gst.PadDirection, caps, o
 	return _ret
 }
 
-// Output: retrieve the processed output buffer placing the output in
-// outbuf_ptr.
+// Output (gst_gl_view_convert_get_output): retrieve the processed output buffer
+// placing the output in outbuf_ptr.
 //
 // The function returns the following values:
 //
@@ -9365,8 +10189,9 @@ func (viewconvert *GLViewConvert) Output() (*gst.Buffer, gst.FlowReturn) {
 	return _outbufPtr, _flowReturn
 }
 
-// Perform converts the data contained by inbuf using the formats specified by
-// the Caps passed to gst_gl_view_convert_set_caps().
+// Perform (gst_gl_view_convert_perform) converts the data contained
+// by inbuf using the formats specified by the Caps passed to
+// gst_gl_view_convert_set_caps().
 //
 // The function takes the following parameters:
 //
@@ -9401,8 +10226,8 @@ func (viewconvert *GLViewConvert) Perform(inbuf *gst.Buffer) *gst.Buffer {
 	return _buffer
 }
 
-// Reset viewconvert to the default state. Further operation will require
-// setting the caps with gst_gl_view_convert_set_caps().
+// Reset (gst_gl_view_convert_reset) viewconvert to the default state. Further
+// operation will require setting the caps with gst_gl_view_convert_set_caps().
 func (viewconvert *GLViewConvert) Reset() {
 	var _arg0 *C.GstGLViewConvert // out
 
@@ -9412,7 +10237,8 @@ func (viewconvert *GLViewConvert) Reset() {
 	runtime.KeepAlive(viewconvert)
 }
 
-// SetCaps initializes viewconvert with the information required for conversion.
+// SetCaps (gst_gl_view_convert_set_caps) initializes viewconvert with the
+// information required for conversion.
 //
 // The function takes the following parameters:
 //
@@ -9442,7 +10268,7 @@ func (viewconvert *GLViewConvert) SetCaps(inCaps, outCaps *gst.Caps) bool {
 	return _ok
 }
 
-// SetContext: set context on viewconvert.
+// SetContext (gst_gl_view_convert_set_context): set context on viewconvert.
 //
 // The function takes the following parameters:
 //
@@ -9459,7 +10285,8 @@ func (viewconvert *GLViewConvert) SetContext(context GLContexter) {
 	runtime.KeepAlive(context)
 }
 
-// SubmitInputBuffer: submit input to be processed by viewconvert.
+// SubmitInputBuffer (gst_gl_view_convert_submit_input_buffer): submit input to
+// be processed by viewconvert.
 //
 // The function takes the following parameters:
 //
@@ -9494,8 +10321,8 @@ func (viewconvert *GLViewConvert) SubmitInputBuffer(isDiscont bool, input *gst.B
 	return _flowReturn
 }
 
-// TransformCaps provides an implementation of
-// BaseTransformClass.transform_caps().
+// TransformCaps (gst_gl_view_convert_transform_caps) provides an implementation
+// of BaseTransformClass.transform_caps().
 //
 // The function takes the following parameters:
 //
@@ -9641,8 +10468,8 @@ func defaultGLWindowOverrides(v *GLWindow) GLWindowOverrides {
 	}
 }
 
-// GLWindow represents a window that elements can render into. A window can
-// either be a user visible window (onscreen) or hidden (offscreen).
+// GLWindow (GstGLWindow) represents a window that elements can render into. A
+// window can either be a user visible window (onscreen) or hidden (offscreen).
 type GLWindow struct {
 	_ [0]func() // equal guard
 	gst.GstObject
@@ -9652,12 +10479,67 @@ var (
 	_ gst.GstObjector = (*GLWindow)(nil)
 )
 
-// GLWindower describes types inherited from class GLWindow.
+// GLWindower describes types inherited from GLWindow.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type GLWindower interface {
-	coreglib.Objector
+	gst.GstObjector
+
+	// ControlsViewport (gst_gl_window_controls_viewport) checks if window
+	// controls the GL viewport.
+	ControlsViewport() bool
+	// Draw (gst_gl_window_draw): redraw the window contents.
+	Draw()
+	Context() GLContexter
+	Display() uintptr
+	SurfaceDimensions() (width, height uint)
+	WindowHandle() uintptr
+	// HandleEvents (gst_gl_window_handle_events): tell a window that it should
+	// handle events from the window system.
+	HandleEvents(handleEvents bool)
+	// HasOutputSurface (gst_gl_window_has_output_surface): query whether window
+	// has output surface or not.
+	HasOutputSurface() bool
+	// QueueResize (gst_gl_window_queue_resize): queue resizing of window.
+	QueueResize()
+	// Quit (gst_gl_window_quit) the runloop's execution.
+	Quit()
+	// Resize (gst_gl_window_resize) window to the given width and height.
+	Resize(width, height uint)
+	// Run (gst_gl_window_run): start the execution of the runloop.
+	Run()
+	SendKeyEvent(eventType, keyStr string)
+	SendMouseEvent(eventType string, button int, posx, posy float64)
+	// SendScrollEvent (gst_gl_window_send_scroll_event): notify a window about
+	// a scroll event.
+	SendScrollEvent(posx, posy, deltaX, deltaY float64)
+	// SetPreferredSize (gst_gl_window_set_preferred_size): set the preferred
+	// width and height of the window.
+	SetPreferredSize(width, height int)
+	// SetRenderRectangle (gst_gl_window_set_render_rectangle): tell a window
+	// that it should render into a specific region of the window according to
+	// the VideoOverlay interface.
+	SetRenderRectangle(x, y, width, height int) bool
+	// SetWindowHandle (gst_gl_window_set_window_handle) sets the window that
+	// this window should render into.
+	SetWindowHandle(handle uintptr)
+	// Show (gst_gl_window_show): present the window to the screen.
+	Show()
+
+	// Key-event will be emitted when a key event is received by the
+	// GstGLwindow.
+	ConnectKeyEvent(func(id, key string)) coreglib.SignalHandle
+	// Mouse-event will be emitted when a mouse event is received by the
+	// GstGLwindow.
+	ConnectMouseEvent(func(id string, button int, x, y float64)) coreglib.SignalHandle
+	// Scroll-event will be emitted when a mouse scroll event is received by the
+	// GstGLwindow.
+	ConnectScrollEvent(func(x, y, deltaX, deltaY float64)) coreglib.SignalHandle
+	// Window-handle-changed will be emitted when the window handle has been set
+	// into the native implementation, but before the context is re-activated.
+	ConnectWindowHandleChanged(func()) coreglib.SignalHandle
+
 	baseGLWindow() *GLWindow
 }
 
@@ -9813,7 +10695,8 @@ func NewGLWindow(display *GLDisplay) *GLWindow {
 	return _glWindow
 }
 
-// ControlsViewport checks if window controls the GL viewport.
+// ControlsViewport (gst_gl_window_controls_viewport) checks if window controls
+// the GL viewport.
 //
 // The function returns the following values:
 //
@@ -9836,8 +10719,8 @@ func (window *GLWindow) ControlsViewport() bool {
 	return _ok
 }
 
-// Draw: redraw the window contents. Implementations should invoke the draw
-// callback.
+// Draw (gst_gl_window_draw): redraw the window contents. Implementations should
+// invoke the draw callback.
 func (window *GLWindow) Draw() {
 	var _arg0 *C.GstGLWindow // out
 
@@ -9943,11 +10826,11 @@ func (window *GLWindow) WindowHandle() uintptr {
 	return _guintptr
 }
 
-// HandleEvents: tell a window that it should handle events from the window
-// system. These events are forwarded upstream as navigation events. In some
-// window systems events are not propagated in the window hierarchy if a client
-// is listening for them. This method allows you to disable events handling
-// completely from the window.
+// HandleEvents (gst_gl_window_handle_events): tell a window that it should
+// handle events from the window system. These events are forwarded upstream as
+// navigation events. In some window systems events are not propagated in the
+// window hierarchy if a client is listening for them. This method allows you to
+// disable events handling completely from the window.
 //
 // The function takes the following parameters:
 //
@@ -9966,7 +10849,8 @@ func (window *GLWindow) HandleEvents(handleEvents bool) {
 	runtime.KeepAlive(handleEvents)
 }
 
-// HasOutputSurface: query whether window has output surface or not.
+// HasOutputSurface (gst_gl_window_has_output_surface): query whether window has
+// output surface or not.
 //
 // The function returns the following values:
 //
@@ -9989,7 +10873,7 @@ func (window *GLWindow) HasOutputSurface() bool {
 	return _ok
 }
 
-// QueueResize: queue resizing of window.
+// QueueResize (gst_gl_window_queue_resize): queue resizing of window.
 func (window *GLWindow) QueueResize() {
 	var _arg0 *C.GstGLWindow // out
 
@@ -9999,7 +10883,7 @@ func (window *GLWindow) QueueResize() {
 	runtime.KeepAlive(window)
 }
 
-// Quit the runloop's execution.
+// Quit (gst_gl_window_quit) the runloop's execution.
 func (window *GLWindow) Quit() {
 	var _arg0 *C.GstGLWindow // out
 
@@ -10009,7 +10893,7 @@ func (window *GLWindow) Quit() {
 	runtime.KeepAlive(window)
 }
 
-// Resize window to the given width and height.
+// Resize (gst_gl_window_resize) window to the given width and height.
 //
 // The function takes the following parameters:
 //
@@ -10030,7 +10914,7 @@ func (window *GLWindow) Resize(width, height uint) {
 	runtime.KeepAlive(height)
 }
 
-// Run: start the execution of the runloop.
+// Run (gst_gl_window_run): start the execution of the runloop.
 func (window *GLWindow) Run() {
 	var _arg0 *C.GstGLWindow // out
 
@@ -10089,8 +10973,8 @@ func (window *GLWindow) SendMouseEvent(eventType string, button int, posx, posy 
 	runtime.KeepAlive(posy)
 }
 
-// SendScrollEvent: notify a window about a scroll event. A scroll signal
-// holding the event coordinates will be emitted.
+// SendScrollEvent (gst_gl_window_send_scroll_event): notify a window about a
+// scroll event. A scroll signal holding the event coordinates will be emitted.
 //
 // The function takes the following parameters:
 //
@@ -10119,8 +11003,9 @@ func (window *GLWindow) SendScrollEvent(posx, posy, deltaX, deltaY float64) {
 	runtime.KeepAlive(deltaY)
 }
 
-// SetPreferredSize: set the preferred width and height of the window.
-// Implementations are free to ignore this information.
+// SetPreferredSize (gst_gl_window_set_preferred_size): set the preferred
+// width and height of the window. Implementations are free to ignore this
+// information.
 //
 // The function takes the following parameters:
 //
@@ -10141,8 +11026,9 @@ func (window *GLWindow) SetPreferredSize(width, height int) {
 	runtime.KeepAlive(height)
 }
 
-// SetRenderRectangle: tell a window that it should render into a specific
-// region of the window according to the VideoOverlay interface.
+// SetRenderRectangle (gst_gl_window_set_render_rectangle): tell a window
+// that it should render into a specific region of the window according to the
+// VideoOverlay interface.
 //
 // The function takes the following parameters:
 //
@@ -10184,9 +11070,9 @@ func (window *GLWindow) SetRenderRectangle(x, y, width, height int) bool {
 	return _ok
 }
 
-// SetWindowHandle sets the window that this window should render into. Some
-// implementations require this to be called with a valid handle before drawing
-// can commence.
+// SetWindowHandle (gst_gl_window_set_window_handle) sets the window that this
+// window should render into. Some implementations require this to be called
+// with a valid handle before drawing can commence.
 //
 // The function takes the following parameters:
 //
@@ -10203,7 +11089,7 @@ func (window *GLWindow) SetWindowHandle(handle uintptr) {
 	runtime.KeepAlive(handle)
 }
 
-// Show: present the window to the screen.
+// Show (gst_gl_window_show): present the window to the screen.
 func (window *GLWindow) Show() {
 	var _arg0 *C.GstGLWindow // out
 
@@ -10534,7 +11420,8 @@ func (window *GLWindow) show() {
 	runtime.KeepAlive(window)
 }
 
-// GLAllocationParams: instance of this type is always passed by reference.
+// GLAllocationParams (GstGLAllocationParams): instance of this type is always
+// passed by reference.
 type GLAllocationParams struct {
 	*glAllocationParams
 }
@@ -10574,8 +11461,9 @@ func (src *GLAllocationParams) Copy() *GLAllocationParams {
 	return _glAllocationParams
 }
 
-// CopyData copies the dynamically allocated data from src to dest. Direct
-// subclasses should call this function in their own overridden copy function.
+// CopyData (gst_gl_allocation_params_copy_data) copies the dynamically
+// allocated data from src to dest. Direct subclasses should call this function
+// in their own overridden copy function.
 //
 // The function takes the following parameters:
 //
@@ -10592,8 +11480,9 @@ func (src *GLAllocationParams) CopyData(dest *GLAllocationParams) {
 	runtime.KeepAlive(dest)
 }
 
-// FreeData frees the dynamically allocated data in params. Direct subclasses
-// should call this function in their own overridden free function.
+// FreeData (gst_gl_allocation_params_free_data) frees the dynamically allocated
+// data in params. Direct subclasses should call this function in their own
+// overridden free function.
 func (params *GLAllocationParams) FreeData() {
 	var _arg0 *C.GstGLAllocationParams // out
 
@@ -10603,8 +11492,8 @@ func (params *GLAllocationParams) FreeData() {
 	runtime.KeepAlive(params)
 }
 
-// GLAsyncDebug an opaque structure and should only be accessed through the
-// provided API.
+// GLAsyncDebug (GstGLAsyncDebug) an opaque structure and should only be
+// accessed through the provided API.
 //
 // An instance of this type is always passed by reference.
 type GLAsyncDebug struct {
@@ -10616,9 +11505,9 @@ type glAsyncDebug struct {
 	native *C.GstGLAsyncDebug
 }
 
-// Freeze: freeze the debug output. While frozen, any call to
-// gst_gl_async_debug_output_log_msg() will not output any messages but
-// subsequent calls to gst_gl_async_debug_store_log_msg() will overwrite
+// Freeze (gst_gl_async_debug_freeze): freeze the debug output. While frozen,
+// any call to gst_gl_async_debug_output_log_msg() will not output any messages
+// but subsequent calls to gst_gl_async_debug_store_log_msg() will overwrite
 // previous messages.
 func (ad *GLAsyncDebug) Freeze() {
 	var _arg0 *C.GstGLAsyncDebug // out
@@ -10629,8 +11518,8 @@ func (ad *GLAsyncDebug) Freeze() {
 	runtime.KeepAlive(ad)
 }
 
-// Init: initialize ad. Intended for use with GLAsyncDebug's that are embedded
-// in other structs.
+// Init (gst_gl_async_debug_init): initialize ad. Intended for use with
+// GLAsyncDebug's that are embedded in other structs.
 func (ad *GLAsyncDebug) Init() {
 	var _arg0 *C.GstGLAsyncDebug // out
 
@@ -10640,7 +11529,8 @@ func (ad *GLAsyncDebug) Init() {
 	runtime.KeepAlive(ad)
 }
 
-// OutputLogMsg outputs a previously stored debug message.
+// OutputLogMsg (gst_gl_async_debug_output_log_msg) outputs a previously stored
+// debug message.
 func (ad *GLAsyncDebug) OutputLogMsg() {
 	var _arg0 *C.GstGLAsyncDebug // out
 
@@ -10650,8 +11540,8 @@ func (ad *GLAsyncDebug) OutputLogMsg() {
 	runtime.KeepAlive(ad)
 }
 
-// Thaw: unfreeze the debug output. See gst_gl_async_debug_freeze() for what
-// freezing means.
+// Thaw (gst_gl_async_debug_thaw): unfreeze the debug output. See
+// gst_gl_async_debug_freeze() for what freezing means.
 func (ad *GLAsyncDebug) Thaw() {
 	var _arg0 *C.GstGLAsyncDebug // out
 
@@ -10661,8 +11551,8 @@ func (ad *GLAsyncDebug) Thaw() {
 	runtime.KeepAlive(ad)
 }
 
-// Unset any dynamically allocated data. Intended for use with GLAsyncDebug's
-// that are embedded in other structs.
+// Unset (gst_gl_async_debug_unset) any dynamically allocated data. Intended for
+// use with GLAsyncDebug's that are embedded in other structs.
 func (ad *GLAsyncDebug) Unset() {
 	var _arg0 *C.GstGLAsyncDebug // out
 
@@ -10672,7 +11562,7 @@ func (ad *GLAsyncDebug) Unset() {
 	runtime.KeepAlive(ad)
 }
 
-// GLBaseFilterClass: base class for GStreamer GL Filter.
+// GLBaseFilterClass (GstGLBaseFilterClass): base class for GStreamer GL Filter.
 //
 // An instance of this type is always passed by reference.
 type GLBaseFilterClass struct {
@@ -10699,8 +11589,8 @@ func (g *GLBaseFilterClass) SupportedGLApi() GLAPI {
 	return _v
 }
 
-// GLBaseMemory is a Memory subclass providing the basis of support for the
-// mapping of GL buffers.
+// GLBaseMemory (GstGLBaseMemory) is a Memory subclass providing the basis of
+// support for the mapping of GL buffers.
 //
 // Data is uploaded or downloaded from the GPU as is necessary.
 //
@@ -10801,9 +11691,9 @@ func (g *GLBaseMemory) SetGLMapCount(glMapCount int) {
 	*valptr = C.gint(glMapCount)
 }
 
-// AllocData: note: only intended for subclass usage to allocate the system
-// memory buffer on demand. If there is already a non-NULL data pointer in
-// gl_mem->data, then this function imply returns TRUE.
+// AllocData (gst_gl_base_memory_alloc_data): note: only intended for subclass
+// usage to allocate the system memory buffer on demand. If there is already a
+// non-NULL data pointer in gl_mem->data, then this function imply returns TRUE.
 //
 // The function returns the following values:
 //
@@ -10898,15 +11788,15 @@ func GLBaseMemoryAlloc(allocator GLBaseMemoryAllocatorrer, params *GLAllocationP
 	return _glBaseMemory
 }
 
-// GLBaseMemoryInitOnce initializes the GL Base Memory allocator. It is safe
-// to call this function multiple times. This must be called before any other
-// GstGLBaseMemory operation.
+// GLBaseMemoryInitOnce (gst_gl_base_memory_init_once) initializes the GL Base
+// Memory allocator. It is safe to call this function multiple times. This must
+// be called before any other GstGLBaseMemory operation.
 func GLBaseMemoryInitOnce() {
 	C.gst_gl_base_memory_init_once()
 }
 
-// GLBaseMemoryAllocatorClass: instance of this type is always passed by
-// reference.
+// GLBaseMemoryAllocatorClass (GstGLBaseMemoryAllocatorClass): instance of this
+// type is always passed by reference.
 type GLBaseMemoryAllocatorClass struct {
 	*glBaseMemoryAllocatorClass
 }
@@ -10916,7 +11806,8 @@ type glBaseMemoryAllocatorClass struct {
 	native *C.GstGLBaseMemoryAllocatorClass
 }
 
-// GLBaseMixerClass: instance of this type is always passed by reference.
+// GLBaseMixerClass (GstGLBaseMixerClass): instance of this type is always
+// passed by reference.
 type GLBaseMixerClass struct {
 	*glBaseMixerClass
 }
@@ -10942,7 +11833,8 @@ func (g *GLBaseMixerClass) SupportedGLApi() GLAPI {
 	return _v
 }
 
-// GLBaseMixerPadClass: instance of this type is always passed by reference.
+// GLBaseMixerPadClass (GstGLBaseMixerPadClass): instance of this type is always
+// passed by reference.
 type GLBaseMixerPadClass struct {
 	*glBaseMixerPadClass
 }
@@ -10960,7 +11852,8 @@ func (g *GLBaseMixerPadClass) ParentClass() *gstvideo.VideoAggregatorPadClass {
 	return _v
 }
 
-// GLBaseSrcClass: base class for GStreamer GL Video sources.
+// GLBaseSrcClass (GstGLBaseSrcClass): base class for GStreamer GL Video
+// sources.
 //
 // An instance of this type is always passed by reference.
 type GLBaseSrcClass struct {
@@ -10987,8 +11880,8 @@ func (g *GLBaseSrcClass) SupportedGLApi() GLAPI {
 	return _v
 }
 
-// GLBuffer is a Memory subclass providing support for the mapping of GL
-// buffers.
+// GLBuffer (GstGLBuffer) is a Memory subclass providing support for the mapping
+// of GL buffers.
 //
 // Data is uploaded or downloaded from the GPU as is necessary.
 //
@@ -11057,15 +11950,15 @@ func (g *GLBuffer) SetUsageHints(usageHints uint) {
 	*valptr = C.guint(usageHints)
 }
 
-// GLBufferInitOnce initializes the GL Buffer allocator. It is safe to call
-// this function multiple times. This must be called before any other GLBuffer
-// operation.
+// GLBufferInitOnce (gst_gl_buffer_init_once) initializes the GL Buffer
+// allocator. It is safe to call this function multiple times. This must be
+// called before any other GLBuffer operation.
 func GLBufferInitOnce() {
 	C.gst_gl_buffer_init_once()
 }
 
-// GLBufferAllocationParams: instance of this type is always passed by
-// reference.
+// GLBufferAllocationParams (GstGLBufferAllocationParams): instance of this type
+// is always passed by reference.
 type GLBufferAllocationParams struct {
 	*glBufferAllocationParams
 }
@@ -11153,7 +12046,7 @@ func (g *GLBufferAllocationParams) SetGLUsage(glUsage uint) {
 	*valptr = C.guint(glUsage)
 }
 
-// GLBufferAllocatorClass only contains private data
+// GLBufferAllocatorClass (GstGLBufferAllocatorClass) only contains private data
 //
 // An instance of this type is always passed by reference.
 type GLBufferAllocatorClass struct {
@@ -11172,7 +12065,7 @@ func (g *GLBufferAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass {
 	return _v
 }
 
-// GLBufferPoolClass structure contains only private data
+// GLBufferPoolClass (GstGLBufferPoolClass) structure contains only private data
 //
 // An instance of this type is always passed by reference.
 type GLBufferPoolClass struct {
@@ -11191,7 +12084,8 @@ func (g *GLBufferPoolClass) ParentClass() *gst.BufferPoolClass {
 	return _v
 }
 
-// GLColorConvertClass struct only contains private data
+// GLColorConvertClass (GstGLColorConvertClass) struct only contains private
+// data
 //
 // An instance of this type is always passed by reference.
 type GLColorConvertClass struct {
@@ -11203,7 +12097,8 @@ type glColorConvertClass struct {
 	native *C.GstGLColorConvertClass
 }
 
-// GLContextClass: instance of this type is always passed by reference.
+// GLContextClass (GstGLContextClass): instance of this type is always passed by
+// reference.
 type GLContextClass struct {
 	*glContextClass
 }
@@ -11220,7 +12115,8 @@ func (g *GLContextClass) ParentClass() *gst.ObjectClass {
 	return _v
 }
 
-// GLDisplayClass: instance of this type is always passed by reference.
+// GLDisplayClass (GstGLDisplayClass): instance of this type is always passed by
+// reference.
 type GLDisplayClass struct {
 	*glDisplayClass
 }
@@ -11237,7 +12133,8 @@ func (g *GLDisplayClass) ObjectClass() *gst.ObjectClass {
 	return _v
 }
 
-// GLFilterClass: instance of this type is always passed by reference.
+// GLFilterClass (GstGLFilterClass): instance of this type is always passed by
+// reference.
 type GLFilterClass struct {
 	*glFilterClass
 }
@@ -11254,7 +12151,7 @@ func (g *GLFilterClass) ParentClass() *GLBaseFilterClass {
 	return _v
 }
 
-// GLFramebufferClass: opaque GLFramebufferClass struct
+// GLFramebufferClass (GstGLFramebufferClass): opaque GLFramebufferClass struct
 //
 // An instance of this type is always passed by reference.
 type GLFramebufferClass struct {
@@ -11266,8 +12163,8 @@ type glFramebufferClass struct {
 	native *C.GstGLFramebufferClass
 }
 
-// GLMemory is a GLBaseMemory subclass providing support for the mapping of
-// OpenGL textures.
+// GLMemory (GstGLMemory) is a GLBaseMemory subclass providing support for the
+// mapping of OpenGL textures.
 //
 // GLMemory is created or wrapped through gst_gl_base_memory_alloc() with
 // GLVideoAllocationParams.
@@ -11411,8 +12308,8 @@ func (g *GLMemory) SetTexWidth(texWidth uint) {
 	*valptr = C.guint(texWidth)
 }
 
-// CopyInto copies gl_mem into the texture specified by tex_id. The format of
-// tex_id is specified by tex_format, width and height.
+// CopyInto (gst_gl_memory_copy_into) copies gl_mem into the texture specified
+// by tex_id. The format of tex_id is specified by tex_format, width and height.
 //
 // The function takes the following parameters:
 //
@@ -11458,8 +12355,9 @@ func (glMem *GLMemory) CopyInto(texId uint, target GLTextureTarget, texFormat GL
 	return _ok
 }
 
-// CopyTeximage copies the texture in GLMemory into the texture specified by
-// tex_id, out_target, out_tex_format, out_width and out_height.
+// CopyTeximage (gst_gl_memory_copy_teximage) copies the texture in GLMemory
+// into the texture specified by tex_id, out_target, out_tex_format, out_width
+// and out_height.
 //
 // The function takes the following parameters:
 //
@@ -11600,10 +12498,11 @@ func (glMem *GLMemory) TextureWidth() int {
 	return _gint
 }
 
-// ReadPixels reads the texture in GLMemory into write_pointer if no buffer is
-// bound to GL_PIXEL_PACK_BUFFER. Otherwise write_pointer is the byte offset
-// into the currently bound GL_PIXEL_PACK_BUFFER buffer to store the result of
-// glReadPixels. See the OpenGL specification for glReadPixels for more details.
+// ReadPixels (gst_gl_memory_read_pixels) reads the texture in GLMemory
+// into write_pointer if no buffer is bound to GL_PIXEL_PACK_BUFFER.
+// Otherwise write_pointer is the byte offset into the currently bound
+// GL_PIXEL_PACK_BUFFER buffer to store the result of glReadPixels. See the
+// OpenGL specification for glReadPixels for more details.
 //
 // The function takes the following parameters:
 //
@@ -11633,7 +12532,8 @@ func (glMem *GLMemory) ReadPixels(writePointer unsafe.Pointer) bool {
 	return _ok
 }
 
-// Texsubimage reads the texture in read_pointer into gl_mem.
+// Texsubimage (gst_gl_memory_texsubimage) reads the texture in read_pointer
+// into gl_mem.
 //
 // See gst_gl_memory_read_pixels() for what read_pointer signifies.
 //
@@ -11652,14 +12552,15 @@ func (glMem *GLMemory) Texsubimage(readPointer unsafe.Pointer) {
 	runtime.KeepAlive(readPointer)
 }
 
-// GLMemoryInitOnce initializes the GL Base Texture allocator. It is safe to
-// call this function multiple times. This must be called before any other
-// GstGLMemory operation.
+// GLMemoryInitOnce (gst_gl_memory_init_once) initializes the GL Base Texture
+// allocator. It is safe to call this function multiple times. This must be
+// called before any other GstGLMemory operation.
 func GLMemoryInitOnce() {
 	C.gst_gl_memory_init_once()
 }
 
-// GLMemoryAllocatorClass: instance of this type is always passed by reference.
+// GLMemoryAllocatorClass (GstGLMemoryAllocatorClass): instance of this type is
+// always passed by reference.
 type GLMemoryAllocatorClass struct {
 	*glMemoryAllocatorClass
 }
@@ -11669,8 +12570,8 @@ type glMemoryAllocatorClass struct {
 	native *C.GstGLMemoryAllocatorClass
 }
 
-// GLMemoryPBO is created or wrapped through gst_gl_base_memory_alloc() with
-// GLVideoAllocationParams.
+// GLMemoryPBO (GstGLMemoryPBO) is created or wrapped through
+// gst_gl_base_memory_alloc() with GLVideoAllocationParams.
 //
 // Data is uploaded or downloaded from the GPU as is necessary.
 //
@@ -11689,8 +12590,9 @@ func marshalGLMemoryPBO(p uintptr) (interface{}, error) {
 	return &GLMemoryPBO{&glMemoryPBO{(*C.GstGLMemoryPBO)(b)}}, nil
 }
 
-// CopyIntoTexture copies gl_mem into the texture specified by tex_id.
-// The format of tex_id is specified by tex_format, width and height.
+// CopyIntoTexture (gst_gl_memory_pbo_copy_into_texture) copies gl_mem into the
+// texture specified by tex_id. The format of tex_id is specified by tex_format,
+// width and height.
 //
 // If respecify is TRUE, then the copy is performed in terms of the texture
 // data. This is useful for splitting RGBA textures into RG or R textures or
@@ -11757,8 +12659,8 @@ func (glMem *GLMemoryPBO) CopyIntoTexture(texId uint, target GLTextureTarget, te
 	return _ok
 }
 
-// DownloadTransfer: transfer the texture data from the texture into the PBO if
-// necessary.
+// DownloadTransfer (gst_gl_memory_pbo_download_transfer): transfer the texture
+// data from the texture into the PBO if necessary.
 func (glMem *GLMemoryPBO) DownloadTransfer() {
 	var _arg0 *C.GstGLMemoryPBO // out
 
@@ -11768,8 +12670,8 @@ func (glMem *GLMemoryPBO) DownloadTransfer() {
 	runtime.KeepAlive(glMem)
 }
 
-// UploadTransfer: transfer the texture data from the PBO into the texture if
-// necessary.
+// UploadTransfer (gst_gl_memory_pbo_upload_transfer): transfer the texture data
+// from the PBO into the texture if necessary.
 func (glMem *GLMemoryPBO) UploadTransfer() {
 	var _arg0 *C.GstGLMemoryPBO // out
 
@@ -11783,7 +12685,8 @@ func GLMemoryPBOInitOnce() {
 	C.gst_gl_memory_pbo_init_once()
 }
 
-// GLMemoryPBOAllocatorClass: only contains private data
+// GLMemoryPBOAllocatorClass (GstGLMemoryPBOAllocatorClass): only contains
+// private data
 //
 // An instance of this type is always passed by reference.
 type GLMemoryPBOAllocatorClass struct {
@@ -11802,7 +12705,8 @@ func (g *GLMemoryPBOAllocatorClass) ParentClass() *GLMemoryAllocatorClass {
 	return _v
 }
 
-// GLMixerClass: instance of this type is always passed by reference.
+// GLMixerClass (GstGLMixerClass): instance of this type is always passed by
+// reference.
 type GLMixerClass struct {
 	*glMixerClass
 }
@@ -11819,10 +12723,10 @@ func (g *GLMixerClass) ParentClass() *GLBaseMixerClass {
 	return _v
 }
 
-// AddRGBAPadTemplates adds the default RGBA pad templates to this class.
-// If you have any special template requirements like a different pad subclass
-// or different supported caps, you should not call this function and add the
-// pad templates yourself manually.
+// AddRGBAPadTemplates (gst_gl_mixer_class_add_rgba_pad_templates) adds the
+// default RGBA pad templates to this class. If you have any special template
+// requirements like a different pad subclass or different supported caps, you
+// should not call this function and add the pad templates yourself manually.
 func (klass *GLMixerClass) AddRGBAPadTemplates() {
 	var _arg0 *C.GstGLMixerClass // out
 
@@ -11832,7 +12736,8 @@ func (klass *GLMixerClass) AddRGBAPadTemplates() {
 	runtime.KeepAlive(klass)
 }
 
-// GLMixerPadClass: instance of this type is always passed by reference.
+// GLMixerPadClass (GstGLMixerPadClass): instance of this type is always passed
+// by reference.
 type GLMixerPadClass struct {
 	*glMixerPadClass
 }
@@ -11850,8 +12755,8 @@ func (g *GLMixerPadClass) ParentClass() *GLBaseMixerPadClass {
 	return _v
 }
 
-// GLOverlayCompositorClass: instance of this type is always passed by
-// reference.
+// GLOverlayCompositorClass (GstGLOverlayCompositorClass): instance of this type
+// is always passed by reference.
 type GLOverlayCompositorClass struct {
 	*glOverlayCompositorClass
 }
@@ -11868,8 +12773,8 @@ func (g *GLOverlayCompositorClass) ObjectClass() *gst.ObjectClass {
 	return _v
 }
 
-// GLQuery represents and holds an OpenGL query object. Various types of queries
-// can be run or counters retrieved.
+// GLQuery (GstGLQuery) represents and holds an OpenGL query object. Various
+// types of queries can be run or counters retrieved.
 //
 // An instance of this type is always passed by reference.
 type GLQuery struct {
@@ -11881,7 +12786,7 @@ type glQuery struct {
 	native *C.GstGLQuery
 }
 
-// Counter: record the result of a counter.
+// Counter (gst_gl_query_counter): record the result of a counter.
 func (query *GLQuery) Counter() {
 	var _arg0 *C.GstGLQuery // out
 
@@ -11891,7 +12796,7 @@ func (query *GLQuery) Counter() {
 	runtime.KeepAlive(query)
 }
 
-// End counting the query.
+// End (gst_gl_query_end) counting the query.
 func (query *GLQuery) End() {
 	var _arg0 *C.GstGLQuery // out
 
@@ -11939,7 +12844,7 @@ func (query *GLQuery) Result() uint64 {
 	return _guint64
 }
 
-// Start counting the query.
+// Start (gst_gl_query_start) counting the query.
 func (query *GLQuery) Start() {
 	var _arg0 *C.GstGLQuery // out
 
@@ -11949,7 +12854,7 @@ func (query *GLQuery) Start() {
 	runtime.KeepAlive(query)
 }
 
-// Unset: free any dynamically allocated resources.
+// Unset (gst_gl_query_unset): free any dynamically allocated resources.
 func (query *GLQuery) Unset() {
 	var _arg0 *C.GstGLQuery // out
 
@@ -11959,8 +12864,8 @@ func (query *GLQuery) Unset() {
 	runtime.KeepAlive(query)
 }
 
-// GLRenderbuffer is a GLBaseMemory subclass providing support for OpenGL
-// renderbuffers.
+// GLRenderbuffer (GstGLRenderbuffer) is a GLBaseMemory subclass providing
+// support for OpenGL renderbuffers.
 //
 // GLRenderbuffer is created or wrapped through gst_gl_base_memory_alloc() with
 // GLRenderbufferAllocationParams.
@@ -12094,14 +12999,15 @@ func (glMem *GLRenderbuffer) Width() int {
 	return _gint
 }
 
-// GLRenderbufferInitOnce initializes the GL Base Texture allocator. It is safe
-// to call this function multiple times. This must be called before any other
-// GstGLRenderbuffer operation.
+// GLRenderbufferInitOnce (gst_gl_renderbuffer_init_once) initializes the GL
+// Base Texture allocator. It is safe to call this function multiple times.
+// This must be called before any other GstGLRenderbuffer operation.
 func GLRenderbufferInitOnce() {
 	C.gst_gl_renderbuffer_init_once()
 }
 
-// GLRenderbufferAllocationParams: allocation parameters
+// GLRenderbufferAllocationParams (GstGLRenderbufferAllocationParams):
+// allocation parameters
 //
 // An instance of this type is always passed by reference.
 type GLRenderbufferAllocationParams struct {
@@ -12191,7 +13097,8 @@ func (g *GLRenderbufferAllocationParams) SetHeight(height uint) {
 	*valptr = C.guint(height)
 }
 
-// GLRenderbufferAllocatorClass only contains private data
+// GLRenderbufferAllocatorClass (GstGLRenderbufferAllocatorClass) only contains
+// private data
 //
 // An instance of this type is always passed by reference.
 type GLRenderbufferAllocatorClass struct {
@@ -12210,7 +13117,7 @@ func (g *GLRenderbufferAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass
 	return _v
 }
 
-// GLSLStageClass: opaque GLSLStageClass struct
+// GLSLStageClass (GstGLSLStageClass): opaque GLSLStageClass struct
 //
 // An instance of this type is always passed by reference.
 type GLSLStageClass struct {
@@ -12222,7 +13129,8 @@ type glslStageClass struct {
 	native *C.GstGLSLStageClass
 }
 
-// GLShaderClass: instance of this type is always passed by reference.
+// GLShaderClass (GstGLShaderClass): instance of this type is always passed by
+// reference.
 type GLShaderClass struct {
 	*glShaderClass
 }
@@ -12232,8 +13140,8 @@ type glShaderClass struct {
 	native *C.GstGLShaderClass
 }
 
-// GLSyncMeta provides the ability to synchronize the OpenGL command stream with
-// the CPU or with other OpenGL contexts.
+// GLSyncMeta (GstGLSyncMeta) provides the ability to synchronize the OpenGL
+// command stream with the CPU or with other OpenGL contexts.
 //
 // An instance of this type is always passed by reference.
 type GLSyncMeta struct {
@@ -12285,7 +13193,8 @@ func (g *GLSyncMeta) Data() unsafe.Pointer {
 	return _v
 }
 
-// SetSyncPoint: set a sync point to possibly wait on at a later time.
+// SetSyncPoint (gst_gl_sync_meta_set_sync_point): set a sync point to possibly
+// wait on at a later time.
 //
 // The function takes the following parameters:
 //
@@ -12302,8 +13211,8 @@ func (syncMeta *GLSyncMeta) SetSyncPoint(context GLContexter) {
 	runtime.KeepAlive(context)
 }
 
-// Wait: insert a wait into context's command stream ensuring all previous
-// OpenGL commands before sync_meta have completed.
+// Wait (gst_gl_sync_meta_wait): insert a wait into context's command stream
+// ensuring all previous OpenGL commands before sync_meta have completed.
 //
 // The function takes the following parameters:
 //
@@ -12320,9 +13229,9 @@ func (syncMeta *GLSyncMeta) Wait(context GLContexter) {
 	runtime.KeepAlive(context)
 }
 
-// WaitCpu: perform a wait so that the sync point has passed from the CPU's
-// perspective What that means, is that all GL operations changing CPU-visible
-// data before the sync point are now visible.
+// WaitCpu (gst_gl_sync_meta_wait_cpu): perform a wait so that the sync point
+// has passed from the CPU's perspective What that means, is that all GL
+// operations changing CPU-visible data before the sync point are now visible.
 //
 // The function takes the following parameters:
 //
@@ -12351,7 +13260,7 @@ func GLSyncMetaGetInfo() *gst.MetaInfo {
 	return _metaInfo
 }
 
-// GLUploadClass struct only contains private data
+// GLUploadClass (GstGLUploadClass) struct only contains private data
 //
 // An instance of this type is always passed by reference.
 type GLUploadClass struct {
@@ -12370,7 +13279,8 @@ func (g *GLUploadClass) ObjectClass() *gst.ObjectClass {
 	return _v
 }
 
-// GLVideoAllocationParams: instance of this type is always passed by reference.
+// GLVideoAllocationParams (GstGLVideoAllocationParams): instance of this type
+// is always passed by reference.
 type GLVideoAllocationParams struct {
 	*glVideoAllocationParams
 }
@@ -12484,9 +13394,9 @@ func (g *GLVideoAllocationParams) SetPlane(plane uint) {
 	*valptr = C.guint(plane)
 }
 
-// CopyData: copy and set any dynamically allocated resources in dest_vid.
-// Intended for subclass usage only to chain up at the end of a subclass copy
-// function.
+// CopyData (gst_gl_video_allocation_params_copy_data): copy and set any
+// dynamically allocated resources in dest_vid. Intended for subclass usage only
+// to chain up at the end of a subclass copy function.
 //
 // The function takes the following parameters:
 //
@@ -12503,8 +13413,9 @@ func (srcVid *GLVideoAllocationParams) CopyData(destVid *GLVideoAllocationParams
 	runtime.KeepAlive(destVid)
 }
 
-// FreeData: unset and free any dynamically allocated resources. Intended for
-// subclass usage only to chain up at the end of a subclass free function.
+// FreeData (gst_gl_video_allocation_params_free_data): unset and free any
+// dynamically allocated resources. Intended for subclass usage only to chain up
+// at the end of a subclass free function.
 func (params *GLVideoAllocationParams) FreeData() {
 	var _arg0 *C.GstGLVideoAllocationParams // out
 
@@ -12514,7 +13425,7 @@ func (params *GLVideoAllocationParams) FreeData() {
 	runtime.KeepAlive(params)
 }
 
-// GLViewConvertClass: opaque GLViewConvertClass struct
+// GLViewConvertClass (GstGLViewConvertClass): opaque GLViewConvertClass struct
 //
 // An instance of this type is always passed by reference.
 type GLViewConvertClass struct {
@@ -12526,7 +13437,8 @@ type glViewConvertClass struct {
 	native *C.GstGLViewConvertClass
 }
 
-// GLWindowClass: instance of this type is always passed by reference.
+// GLWindowClass (GstGLWindowClass): instance of this type is always passed by
+// reference.
 type GLWindowClass struct {
 	*glWindowClass
 }

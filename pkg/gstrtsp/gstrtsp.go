@@ -100,18 +100,19 @@ func init() {
 	})
 }
 
-// RTSP_DEFAULT_PORT: default RTSP port to connect to.
+// RTSP_DEFAULT_PORT (GST_RTSP_DEFAULT_PORT): default RTSP port to connect to.
 const RTSP_DEFAULT_PORT = 554
 
-// RTSPAuthMethod: authentication methods, ordered by strength.
+// RTSPAuthMethod (GstRTSPAuthMethod): authentication methods, ordered by
+// strength.
 type RTSPAuthMethod C.gint
 
 const (
-	// RtspAuthNone: no authentication.
+	// RtspAuthNone (GST_RTSP_AUTH_NONE): no authentication.
 	RtspAuthNone RTSPAuthMethod = iota
-	// RtspAuthBasic: basic authentication.
+	// RtspAuthBasic (GST_RTSP_AUTH_BASIC): basic authentication.
 	RtspAuthBasic
-	// RtspAuthDigest: digest authentication.
+	// RtspAuthDigest (GST_RTSP_AUTH_DIGEST): digest authentication.
 	RtspAuthDigest
 )
 
@@ -133,15 +134,15 @@ func (r RTSPAuthMethod) String() string {
 	}
 }
 
-// RTSPFamily: possible network families.
+// RTSPFamily (GstRTSPFamily): possible network families.
 type RTSPFamily C.gint
 
 const (
-	// RtspFamNone: unknown network family.
+	// RtspFamNone (GST_RTSP_FAM_NONE): unknown network family.
 	RtspFamNone RTSPFamily = iota
-	// RtspFamInet: internet.
+	// RtspFamInet (GST_RTSP_FAM_INET): internet.
 	RtspFamInet
-	// RtspFamInet6: internet V6.
+	// RtspFamInet6 (GST_RTSP_FAM_INET6): internet V6.
 	RtspFamInet6
 )
 
@@ -163,7 +164,7 @@ func (r RTSPFamily) String() string {
 	}
 }
 
-// RTSPHeaderField: enumeration of rtsp header fields.
+// RTSPHeaderField (GstRTSPHeaderField): enumeration of rtsp header fields.
 type RTSPHeaderField C.gint
 
 const (
@@ -451,21 +452,23 @@ func (r RTSPHeaderField) String() string {
 	}
 }
 
-// RTSPMsgType: type of a message.
+// RTSPMsgType (GstRTSPMsgType): type of a message.
 type RTSPMsgType C.gint
 
 const (
-	// RtspMessageInvalid: invalid message type.
+	// RtspMessageInvalid (GST_RTSP_MESSAGE_INVALID): invalid message type.
 	RtspMessageInvalid RTSPMsgType = iota
-	// RtspMessageRequest: RTSP request message.
+	// RtspMessageRequest (GST_RTSP_MESSAGE_REQUEST): RTSP request message.
 	RtspMessageRequest
-	// RtspMessageResponse: RTSP response message.
+	// RtspMessageResponse (GST_RTSP_MESSAGE_RESPONSE): RTSP response message.
 	RtspMessageResponse
-	// RtspMessageHTTPRequest: HTTP request message.
+	// RtspMessageHTTPRequest (GST_RTSP_MESSAGE_HTTP_REQUEST): HTTP request
+	// message.
 	RtspMessageHTTPRequest
-	// RtspMessageHTTPResponse: HTTP response message.
+	// RtspMessageHTTPResponse (GST_RTSP_MESSAGE_HTTP_RESPONSE): HTTP response
+	// message.
 	RtspMessageHTTPResponse
-	// RtspMessageData: data message.
+	// RtspMessageData (GST_RTSP_MESSAGE_DATA): data message.
 	RtspMessageData
 )
 
@@ -493,19 +496,21 @@ func (r RTSPMsgType) String() string {
 	}
 }
 
-// RTSPRangeUnit: different possible time range units.
+// RTSPRangeUnit (GstRTSPRangeUnit): different possible time range units.
 type RTSPRangeUnit C.gint
 
 const (
-	// RtspRangeSmpte: SMPTE timecode.
+	// RtspRangeSmpte (GST_RTSP_RANGE_SMPTE): SMPTE timecode.
 	RtspRangeSmpte RTSPRangeUnit = iota
-	// RtspRangeSmpte30Drop: 29.97 frames per second.
+	// RtspRangeSmpte30Drop (GST_RTSP_RANGE_SMPTE_30_DROP): 29.97 frames per
+	// second.
 	RtspRangeSmpte30Drop
-	// RtspRangeSmpte25: 25 frames per second.
+	// RtspRangeSmpte25 (GST_RTSP_RANGE_SMPTE_25): 25 frames per second.
 	RtspRangeSmpte25
-	// RtspRangeNpt: normal play time.
+	// RtspRangeNpt (GST_RTSP_RANGE_NPT): normal play time.
 	RtspRangeNpt
-	// RtspRangeClock: absolute time expressed as ISO 8601 timestamps.
+	// RtspRangeClock (GST_RTSP_RANGE_CLOCK): absolute time expressed as ISO
+	// 8601 timestamps.
 	RtspRangeClock
 )
 
@@ -531,47 +536,52 @@ func (r RTSPRangeUnit) String() string {
 	}
 }
 
-// RTSPResult: result codes from the RTSP functions.
+// RTSPResult (GstRTSPResult): result codes from the RTSP functions.
 type RTSPResult C.gint
 
 const (
-	// RtspOK: no error.
+	// RtspOK (GST_RTSP_OK): no error.
 	RtspOK RTSPResult = 0
-	// RtspOKRedirect: RTSP request is successful, but was redirected.
+	// RtspOKRedirect (GST_RTSP_OK_REDIRECT): RTSP request is successful,
+	// but was redirected.
 	RtspOKRedirect RTSPResult = 1
-	// RtspError: some unspecified error occurred.
+	// RtspError (GST_RTSP_ERROR): some unspecified error occurred.
 	RtspError RTSPResult = -1
-	// RtspEinval: invalid arguments were provided to a function.
+	// RtspEinval (GST_RTSP_EINVAL): invalid arguments were provided to a
+	// function.
 	RtspEinval RTSPResult = -2
-	// RtspEintr: operation was canceled.
+	// RtspEintr (GST_RTSP_EINTR): operation was canceled.
 	RtspEintr RTSPResult = -3
-	// RtspEnomem: no memory was available for the operation.
+	// RtspEnomem (GST_RTSP_ENOMEM): no memory was available for the operation.
 	RtspEnomem RTSPResult = -4
-	// RtspEresolv: host resolve error occurred.
+	// RtspEresolv (GST_RTSP_ERESOLV): host resolve error occurred.
 	RtspEresolv RTSPResult = -5
-	// RtspEnotimpl: function not implemented.
+	// RtspEnotimpl (GST_RTSP_ENOTIMPL): function not implemented.
 	RtspEnotimpl RTSPResult = -6
-	// RtspEsys: system error occurred, errno contains more details.
+	// RtspEsys (GST_RTSP_ESYS): system error occurred, errno contains more
+	// details.
 	RtspEsys RTSPResult = -7
-	// RtspEparse: parsing error occurred.
+	// RtspEparse (GST_RTSP_EPARSE): parsing error occurred.
 	RtspEparse RTSPResult = -8
-	// RtspEwsastart windows networking could not start.
+	// RtspEwsastart (GST_RTSP_EWSASTART) windows networking could not start.
 	RtspEwsastart RTSPResult = -9
-	// RtspEwsaversion windows networking stack has wrong version.
+	// RtspEwsaversion (GST_RTSP_EWSAVERSION) windows networking stack has wrong
+	// version.
 	RtspEwsaversion RTSPResult = -10
-	// RtspEeof: end-of-file was reached.
+	// RtspEeof (GST_RTSP_EEOF): end-of-file was reached.
 	RtspEeof RTSPResult = -11
-	// RtspEnet: network problem occurred, h_errno contains more details.
+	// RtspEnet (GST_RTSP_ENET): network problem occurred, h_errno contains more
+	// details.
 	RtspEnet RTSPResult = -12
-	// RtspEnotip: host is not an IP host.
+	// RtspEnotip (GST_RTSP_ENOTIP): host is not an IP host.
 	RtspEnotip RTSPResult = -13
-	// RtspEtimeout: timeout occurred.
+	// RtspEtimeout (GST_RTSP_ETIMEOUT): timeout occurred.
 	RtspEtimeout RTSPResult = -14
-	// RtspEtget: tunnel GET request has been performed.
+	// RtspEtget (GST_RTSP_ETGET): tunnel GET request has been performed.
 	RtspEtget RTSPResult = -15
-	// RtspEtpost: tunnel POST request has been performed.
+	// RtspEtpost (GST_RTSP_ETPOST): tunnel POST request has been performed.
 	RtspEtpost RTSPResult = -16
-	// RtspElast: last error.
+	// RtspElast (GST_RTSP_ELAST): last error.
 	RtspElast RTSPResult = -17
 )
 
@@ -625,21 +635,21 @@ func (r RTSPResult) String() string {
 	}
 }
 
-// RTSPState: different RTSP states.
+// RTSPState (GstRTSPState): different RTSP states.
 type RTSPState C.gint
 
 const (
-	// RtspStateInvalid: invalid state.
+	// RtspStateInvalid (GST_RTSP_STATE_INVALID): invalid state.
 	RtspStateInvalid RTSPState = iota
-	// RtspStateInit: initializing.
+	// RtspStateInit (GST_RTSP_STATE_INIT): initializing.
 	RtspStateInit
-	// RtspStateReady: ready for operation.
+	// RtspStateReady (GST_RTSP_STATE_READY): ready for operation.
 	RtspStateReady
-	// RtspStateSeeking: seeking in progress.
+	// RtspStateSeeking (GST_RTSP_STATE_SEEKING): seeking in progress.
 	RtspStateSeeking
-	// RtspStatePlaying: playing.
+	// RtspStatePlaying (GST_RTSP_STATE_PLAYING): playing.
 	RtspStatePlaying
-	// RtspStateRecording: recording.
+	// RtspStateRecording (GST_RTSP_STATE_RECORDING): recording.
 	RtspStateRecording
 )
 
@@ -667,7 +677,7 @@ func (r RTSPState) String() string {
 	}
 }
 
-// RTSPStatusCode: enumeration of rtsp status codes.
+// RTSPStatusCode (GstRTSPStatusCode): enumeration of rtsp status codes.
 type RTSPStatusCode C.gint
 
 const (
@@ -682,9 +692,11 @@ const (
 	RtspStsSeeOther         RTSPStatusCode = 303
 	RtspStsNotModified      RTSPStatusCode = 304
 	RtspStsUseProxy         RTSPStatusCode = 305
-	// RtspStsRedirectTemporarily: RTSP request is temporarily redirected.
+	// RtspStsRedirectTemporarily (GST_RTSP_STS_REDIRECT_TEMPORARILY): RTSP
+	// request is temporarily redirected.
 	RtspStsRedirectTemporarily RTSPStatusCode = 307
-	// RtspStsRedirectPermanently: RTSP request is permanently redirected.
+	// RtspStsRedirectPermanently (GST_RTSP_STS_REDIRECT_PERMANENTLY): RTSP
+	// request is permanently redirected.
 	RtspStsRedirectPermanently            RTSPStatusCode = 308
 	RtspStsBadRequest                     RTSPStatusCode = 400
 	RtspStsUnauthorized                   RTSPStatusCode = 401
@@ -831,19 +843,19 @@ func (r RTSPStatusCode) String() string {
 	}
 }
 
-// RTSPTimeType: possible time types.
+// RTSPTimeType (GstRTSPTimeType): possible time types.
 type RTSPTimeType C.gint
 
 const (
-	// RtspTimeSeconds: seconds.
+	// RtspTimeSeconds (GST_RTSP_TIME_SECONDS): seconds.
 	RtspTimeSeconds RTSPTimeType = iota
-	// RtspTimeNow: now.
+	// RtspTimeNow (GST_RTSP_TIME_NOW): now.
 	RtspTimeNow
-	// RtspTimeEnd: end.
+	// RtspTimeEnd (GST_RTSP_TIME_END): end.
 	RtspTimeEnd
-	// RtspTimeFrames frames and subframes.
+	// RtspTimeFrames (GST_RTSP_TIME_FRAMES) frames and subframes.
 	RtspTimeFrames
-	// RtspTimeUTC: UTC time.
+	// RtspTimeUTC (GST_RTSP_TIME_UTC): UTC time.
 	RtspTimeUTC
 )
 
@@ -869,17 +881,17 @@ func (r RTSPTimeType) String() string {
 	}
 }
 
-// RTSPVersion: supported RTSP versions.
+// RTSPVersion (GstRTSPVersion): supported RTSP versions.
 type RTSPVersion C.gint
 
 const (
-	// RtspVersionInvalid: unknown/invalid version.
+	// RtspVersionInvalid (GST_RTSP_VERSION_INVALID): unknown/invalid version.
 	RtspVersionInvalid RTSPVersion = 0
-	// RtspVersion10: version 1.0.
+	// RtspVersion10 (GST_RTSP_VERSION_1_0): version 1.0.
 	RtspVersion10 RTSPVersion = 16
-	// RtspVersion11: version 1.1.
+	// RtspVersion11 (GST_RTSP_VERSION_1_1): version 1.1.
 	RtspVersion11 RTSPVersion = 17
-	// RtspVersion20: version 2.0.
+	// RtspVersion20 (GST_RTSP_VERSION_2_0): version 2.0.
 	RtspVersion20 RTSPVersion = 32
 )
 
@@ -903,7 +915,7 @@ func (r RTSPVersion) String() string {
 	}
 }
 
-// RTSPVersionAsText: convert version to a string.
+// RTSPVersionAsText (gst_rtsp_version_as_text): convert version to a string.
 //
 // The function takes the following parameters:
 //
@@ -928,13 +940,13 @@ func RTSPVersionAsText(version RTSPVersion) string {
 	return _utf8
 }
 
-// RTSPEvent: possible events for the connection.
+// RTSPEvent (GstRTSPEvent): possible events for the connection.
 type RTSPEvent C.guint
 
 const (
-	// RtspEvRead: connection is readable.
+	// RtspEvRead (GST_RTSP_EV_READ): connection is readable.
 	RtspEvRead RTSPEvent = 0b1
-	// RtspEvWrite: connection is writable.
+	// RtspEvWrite (GST_RTSP_EV_WRITE): connection is writable.
 	RtspEvWrite RTSPEvent = 0b10
 )
 
@@ -975,21 +987,25 @@ func (r RTSPEvent) Has(other RTSPEvent) bool {
 	return (r & other) == other
 }
 
-// RTSPLowerTrans: different transport methods.
+// RTSPLowerTrans (GstRTSPLowerTrans): different transport methods.
 type RTSPLowerTrans C.guint
 
 const (
-	// RtspLowerTransUnknown: invalid transport flag.
+	// RtspLowerTransUnknown (GST_RTSP_LOWER_TRANS_UNKNOWN): invalid transport
+	// flag.
 	RtspLowerTransUnknown RTSPLowerTrans = 0b0
-	// RtspLowerTransUDP: stream data over UDP.
+	// RtspLowerTransUDP (GST_RTSP_LOWER_TRANS_UDP): stream data over UDP.
 	RtspLowerTransUDP RTSPLowerTrans = 0b1
-	// RtspLowerTransUDPMcast: stream data over UDP multicast.
+	// RtspLowerTransUDPMcast (GST_RTSP_LOWER_TRANS_UDP_MCAST): stream data over
+	// UDP multicast.
 	RtspLowerTransUDPMcast RTSPLowerTrans = 0b10
-	// RtspLowerTransTCP: stream data over TCP.
+	// RtspLowerTransTCP (GST_RTSP_LOWER_TRANS_TCP): stream data over TCP.
 	RtspLowerTransTCP RTSPLowerTrans = 0b100
-	// RtspLowerTransHTTP: stream data tunneled over HTTP.
+	// RtspLowerTransHTTP (GST_RTSP_LOWER_TRANS_HTTP): stream data tunneled over
+	// HTTP.
 	RtspLowerTransHTTP RTSPLowerTrans = 0b10000
-	// RtspLowerTransTLS: encrypt TCP and HTTP with TLS.
+	// RtspLowerTransTLS (GST_RTSP_LOWER_TRANS_TLS): encrypt TCP and HTTP with
+	// TLS.
 	RtspLowerTransTLS RTSPLowerTrans = 0b100000
 )
 
@@ -1038,37 +1054,37 @@ func (r RTSPLowerTrans) Has(other RTSPLowerTrans) bool {
 	return (r & other) == other
 }
 
-// RTSPMethod: different supported RTSP methods.
+// RTSPMethod (GstRTSPMethod): different supported RTSP methods.
 type RTSPMethod C.guint
 
 const (
-	// RtspInvalid: invalid method.
+	// RtspInvalid (GST_RTSP_INVALID): invalid method.
 	RtspInvalid RTSPMethod = 0b0
-	// RtspDescribe: DESCRIBE method.
+	// RtspDescribe (GST_RTSP_DESCRIBE): DESCRIBE method.
 	RtspDescribe RTSPMethod = 0b1
-	// RtspAnnounce: ANNOUNCE method.
+	// RtspAnnounce (GST_RTSP_ANNOUNCE): ANNOUNCE method.
 	RtspAnnounce RTSPMethod = 0b10
-	// RtspGetParameter: GET_PARAMETER method.
+	// RtspGetParameter (GST_RTSP_GET_PARAMETER): GET_PARAMETER method.
 	RtspGetParameter RTSPMethod = 0b100
-	// RtspOptions: OPTIONS method.
+	// RtspOptions (GST_RTSP_OPTIONS): OPTIONS method.
 	RtspOptions RTSPMethod = 0b1000
-	// RtspPause: PAUSE method.
+	// RtspPause (GST_RTSP_PAUSE): PAUSE method.
 	RtspPause RTSPMethod = 0b10000
-	// RtspPlay: PLAY method.
+	// RtspPlay (GST_RTSP_PLAY): PLAY method.
 	RtspPlay RTSPMethod = 0b100000
-	// RtspRecord: RECORD method.
+	// RtspRecord (GST_RTSP_RECORD): RECORD method.
 	RtspRecord RTSPMethod = 0b1000000
-	// RtspRedirect: REDIRECT method.
+	// RtspRedirect (GST_RTSP_REDIRECT): REDIRECT method.
 	RtspRedirect RTSPMethod = 0b10000000
-	// RtspSetup: SETUP method.
+	// RtspSetup (GST_RTSP_SETUP): SETUP method.
 	RtspSetup RTSPMethod = 0b100000000
-	// RtspSetParameter: SET_PARAMETER method.
+	// RtspSetParameter (GST_RTSP_SET_PARAMETER): SET_PARAMETER method.
 	RtspSetParameter RTSPMethod = 0b1000000000
-	// RtspTeardown: TEARDOWN method.
+	// RtspTeardown (GST_RTSP_TEARDOWN): TEARDOWN method.
 	RtspTeardown RTSPMethod = 0b10000000000
-	// RtspGet: GET method (HTTP).
+	// RtspGet (GST_RTSP_GET): GET method (HTTP).
 	RtspGet RTSPMethod = 0b100000000000
-	// RtspPost: POST method (HTTP).
+	// RtspPost (GST_RTSP_POST): POST method (HTTP).
 	RtspPost RTSPMethod = 0b1000000000000
 )
 
@@ -1133,7 +1149,7 @@ func (r RTSPMethod) Has(other RTSPMethod) bool {
 	return (r & other) == other
 }
 
-// RTSPMethodAsText: convert method to a string.
+// RTSPMethodAsText (gst_rtsp_method_as_text): convert method to a string.
 //
 // The function takes the following parameters:
 //
@@ -1160,19 +1176,22 @@ func RTSPMethodAsText(method RTSPMethod) string {
 	return _utf8
 }
 
-// RTSPProfile: transfer profile to use.
+// RTSPProfile (GstRTSPProfile): transfer profile to use.
 type RTSPProfile C.guint
 
 const (
-	// RtspProfileUnknown: invalid profile.
+	// RtspProfileUnknown (GST_RTSP_PROFILE_UNKNOWN): invalid profile.
 	RtspProfileUnknown RTSPProfile = 0b0
-	// RtspProfileAvp: audio/Visual profile (RFC 3551).
+	// RtspProfileAvp (GST_RTSP_PROFILE_AVP): audio/Visual profile (RFC 3551).
 	RtspProfileAvp RTSPProfile = 0b1
-	// RtspProfileSavp: secure Audio/Visual profile (RFC 3711).
+	// RtspProfileSavp (GST_RTSP_PROFILE_SAVP): secure Audio/Visual profile (RFC
+	// 3711).
 	RtspProfileSavp RTSPProfile = 0b10
-	// RtspProfileAvpf: audio/Visual profile with feedback (RFC 4585).
+	// RtspProfileAvpf (GST_RTSP_PROFILE_AVPF): audio/Visual profile with
+	// feedback (RFC 4585).
 	RtspProfileAvpf RTSPProfile = 0b100
-	// RtspProfileSavpf: secure Audio/Visual profile with feedback (RFC 5124).
+	// RtspProfileSavpf (GST_RTSP_PROFILE_SAVPF): secure Audio/Visual profile
+	// with feedback (RFC 5124).
 	RtspProfileSavpf RTSPProfile = 0b1000
 )
 
@@ -1219,15 +1238,15 @@ func (r RTSPProfile) Has(other RTSPProfile) bool {
 	return (r & other) == other
 }
 
-// RTSPTransMode: transfer mode to use.
+// RTSPTransMode (GstRTSPTransMode): transfer mode to use.
 type RTSPTransMode C.guint
 
 const (
-	// RtspTransUnknown: invalid tansport mode.
+	// RtspTransUnknown (GST_RTSP_TRANS_UNKNOWN): invalid tansport mode.
 	RtspTransUnknown RTSPTransMode = 0b0
-	// RtspTransRtp: transfer RTP data.
+	// RtspTransRtp (GST_RTSP_TRANS_RTP): transfer RTP data.
 	RtspTransRtp RTSPTransMode = 0b1
-	// RtspTransRdt: transfer RDT (RealMedia) data.
+	// RtspTransRdt (GST_RTSP_TRANS_RDT): transfer RDT (RealMedia) data.
 	RtspTransRdt RTSPTransMode = 0b10
 )
 
@@ -1272,7 +1291,8 @@ func (r RTSPTransMode) Has(other RTSPTransMode) bool {
 
 type RTSPConnectionAcceptCertificateFunc func(conn gio.TLSConnectioner, peerCert gio.TLSCertificater, errors gio.TLSCertificateFlags) (ok bool)
 
-// RtspFindHeaderField: convert header to a RTSPHeaderField.
+// RtspFindHeaderField (gst_rtsp_find_header_field): convert header to a
+// RTSPHeaderField.
 //
 // The function takes the following parameters:
 //
@@ -1299,7 +1319,7 @@ func RtspFindHeaderField(header string) RTSPHeaderField {
 	return _rtspHeaderField
 }
 
-// RtspFindMethod: convert method to a RTSPMethod.
+// RtspFindMethod (gst_rtsp_find_method): convert method to a RTSPMethod.
 //
 // The function takes the following parameters:
 //
@@ -1325,9 +1345,9 @@ func RtspFindMethod(method string) RTSPMethod {
 	return _rtspMethod
 }
 
-// RtspGenerateDigestAuthResponse calculates the digest auth response from the
-// values given by the server and the username and password. See RFC2069 for
-// details.
+// RtspGenerateDigestAuthResponse (gst_rtsp_generate_digest_auth_response)
+// calculates the digest auth response from the values given by the server and
+// the username and password. See RFC2069 for details.
 //
 // Currently only supported algorithm "md5".
 //
@@ -1390,8 +1410,10 @@ func RtspGenerateDigestAuthResponse(algorithm, method, realm, username, password
 	return _utf8
 }
 
-// RtspGenerateDigestAuthResponseFromMD5 calculates the digest auth response
-// from the values given by the server and the md5sum. See RFC2069 for details.
+// RtspGenerateDigestAuthResponseFromMD5
+// (gst_rtsp_generate_digest_auth_response_from_md5) calculates the digest auth
+// response from the values given by the server and the md5sum. See RFC2069 for
+// details.
 //
 // This function is useful when the passwords are not stored in clear text,
 // but instead in the same format as the .htdigest file.
@@ -1447,8 +1469,8 @@ func RtspGenerateDigestAuthResponseFromMD5(algorithm, method, md5, uri, nonce st
 	return _utf8
 }
 
-// RtspHeaderAllowMultiple: check whether field may appear multiple times in a
-// message.
+// RtspHeaderAllowMultiple (gst_rtsp_header_allow_multiple): check whether field
+// may appear multiple times in a message.
 //
 // The function takes the following parameters:
 //
@@ -1475,7 +1497,7 @@ func RtspHeaderAllowMultiple(field RTSPHeaderField) bool {
 	return _ok
 }
 
-// RtspHeaderAsText: convert field to a string.
+// RtspHeaderAsText (gst_rtsp_header_as_text): convert field to a string.
 //
 // The function takes the following parameters:
 //
@@ -1502,8 +1524,8 @@ func RtspHeaderAsText(field RTSPHeaderField) string {
 	return _utf8
 }
 
-// NewRtspMessage: create a new initialized RTSPMessage. Free with
-// gst_rtsp_message_free().
+// NewRtspMessage (gst_rtsp_message_new): create a new initialized RTSPMessage.
+// Free with gst_rtsp_message_free().
 //
 // The function returns the following values:
 //
@@ -1530,8 +1552,9 @@ func NewRtspMessage() (*RTSPMessage, RTSPResult) {
 	return _msg, _rtspResult
 }
 
-// RtspMessageNewData: create a new data RTSPMessage with channel and store the
-// result message in msg. Free with gst_rtsp_message_free().
+// RtspMessageNewData (gst_rtsp_message_new_data): create a new data
+// RTSPMessage with channel and store the result message in msg. Free with
+// gst_rtsp_message_free().
 //
 // The function takes the following parameters:
 //
@@ -1566,8 +1589,9 @@ func RtspMessageNewData(channel byte) (*RTSPMessage, RTSPResult) {
 	return _msg, _rtspResult
 }
 
-// RtspMessageNewRequest: create a new RTSPMessage with method and uri and store
-// the result request message in msg. Free with gst_rtsp_message_free().
+// RtspMessageNewRequest (gst_rtsp_message_new_request): create a new
+// RTSPMessage with method and uri and store the result request message in msg.
+// Free with gst_rtsp_message_free().
 //
 // The function takes the following parameters:
 //
@@ -1607,9 +1631,9 @@ func RtspMessageNewRequest(method RTSPMethod, uri string) (*RTSPMessage, RTSPRes
 	return _msg, _rtspResult
 }
 
-// RtspMessageNewResponse: create a new response RTSPMessage with
-// code and reason and store the result message in msg. Free with
-// gst_rtsp_message_free().
+// RtspMessageNewResponse (gst_rtsp_message_new_response): create a new response
+// RTSPMessage with code and reason and store the result message in msg.
+// Free with gst_rtsp_message_free().
 //
 // When reason is NULL, the default reason for code will be used.
 //
@@ -1662,7 +1686,7 @@ func RtspMessageNewResponse(code RTSPStatusCode, reason string, request *RTSPMes
 	return _msg, _rtspResult
 }
 
-// RtspOptionsAsText: convert options to a string.
+// RtspOptionsAsText (gst_rtsp_options_as_text): convert options to a string.
 //
 // The function takes the following parameters:
 //
@@ -1688,9 +1712,9 @@ func RtspOptionsAsText(options RTSPMethod) string {
 	return _utf8
 }
 
-// RtspOptionsFromText: convert the comma separated list options to a
-// RTSPMethod bitwise or of methods. This functions is the reverse of
-// gst_rtsp_options_as_text().
+// RtspOptionsFromText (gst_rtsp_options_from_text): convert the comma separated
+// list options to a RTSPMethod bitwise or of methods. This functions is the
+// reverse of gst_rtsp_options_as_text().
 //
 // The function takes the following parameters:
 //
@@ -1716,7 +1740,7 @@ func RtspOptionsFromText(options string) RTSPMethod {
 	return _rtspMethod
 }
 
-// RtspStatusAsText: convert code to a string.
+// RtspStatusAsText (gst_rtsp_status_as_text): convert code to a string.
 //
 // The function takes the following parameters:
 //
@@ -1741,7 +1765,8 @@ func RtspStatusAsText(code RTSPStatusCode) string {
 	return _utf8
 }
 
-// RtspStrresult: convert result in a human readable string.
+// RtspStrresult (gst_rtsp_strresult): convert result in a human readable
+// string.
 //
 // The function takes the following parameters:
 //
@@ -1767,9 +1792,9 @@ func RtspStrresult(result RTSPResult) string {
 	return _utf8
 }
 
-// RTSPExtension: this interface is implemented e.g. by the Windows Media
-// Streaming RTSP exentension (rtspwms) and the RealMedia RTSP extension
-// (rtspreal).
+// RTSPExtension (GstRTSPExtension): this interface is implemented e.g. by the
+// Windows Media Streaming RTSP exentension (rtspwms) and the RealMedia RTSP
+// extension (rtspreal).
 //
 // RTSPExtension wraps an interface. This means the user can get the
 // underlying type by calling Cast().
@@ -1782,7 +1807,10 @@ var (
 	_ coreglib.Objector = (*RTSPExtension)(nil)
 )
 
-// RTSPExtensioner describes RTSPExtension's interface methods.
+// RTSPExtensioner describes types inherited from RTSPExtension.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
 type RTSPExtensioner interface {
 	coreglib.Objector
 
@@ -2234,7 +2262,7 @@ func (ext *RTSPExtension) streamSelect(url *RTSPURL) RTSPResult {
 	return _rtspResult
 }
 
-// RTSPAuthCredential: RTSP Authentication credentials
+// RTSPAuthCredential (GstRTSPAuthCredential): RTSP Authentication credentials
 //
 // An instance of this type is always passed by reference.
 type RTSPAuthCredential struct {
@@ -2275,7 +2303,7 @@ func (r *RTSPAuthCredential) Authorization() string {
 	return _v
 }
 
-// RTSPAuthParam: RTSP Authentication parameter
+// RTSPAuthParam (GstRTSPAuthParam): RTSP Authentication parameter
 //
 // An instance of this type is always passed by reference.
 type RTSPAuthParam struct {
@@ -2330,7 +2358,8 @@ func (param *RTSPAuthParam) Copy() *RTSPAuthParam {
 	return _rtspAuthParam
 }
 
-// RTSPExtensionInterface: interface representing RTSP extensions.
+// RTSPExtensionInterface (GstRTSPExtensionInterface): interface representing
+// RTSP extensions.
 //
 // An instance of this type is always passed by reference.
 type RTSPExtensionInterface struct {
@@ -2342,8 +2371,8 @@ type rtspExtensionInterface struct {
 	native *C.GstRTSPExtensionInterface
 }
 
-// RTSPMessage provides methods for creating and parsing request, response and
-// data messages.
+// RTSPMessage (GstRTSPMessage) provides methods for creating and parsing
+// request, response and data messages.
 //
 // An instance of this type is always passed by reference.
 type RTSPMessage struct {
@@ -2360,8 +2389,8 @@ func marshalRTSPMessage(p uintptr) (interface{}, error) {
 	return &RTSPMessage{&rtspMessage{(*C.GstRTSPMessage)(b)}}, nil
 }
 
-// AddHeader: add a header with key field and value to msg. This function takes
-// a copy of value.
+// AddHeader (gst_rtsp_message_add_header): add a header with key field and
+// value to msg. This function takes a copy of value.
 //
 // The function takes the following parameters:
 //
@@ -2394,8 +2423,8 @@ func (msg *RTSPMessage) AddHeader(field RTSPHeaderField, value string) RTSPResul
 	return _rtspResult
 }
 
-// AddHeaderByName: add a header with key header and value to msg. This function
-// takes a copy of value.
+// AddHeaderByName (gst_rtsp_message_add_header_by_name): add a header with key
+// header and value to msg. This function takes a copy of value.
 //
 // The function takes the following parameters:
 //
@@ -2429,8 +2458,9 @@ func (msg *RTSPMessage) AddHeaderByName(header string, value string) RTSPResult 
 	return _rtspResult
 }
 
-// Copy: allocate a new copy of msg and store the result in copy. The value in
-// copy should be release with gst_rtsp_message_free function.
+// Copy (gst_rtsp_message_copy): allocate a new copy of msg and store the result
+// in copy. The value in copy should be release with gst_rtsp_message_free
+// function.
 //
 // The function returns the following values:
 //
@@ -2463,7 +2493,7 @@ func (msg *RTSPMessage) Copy() (*RTSPMessage, RTSPResult) {
 	return _copy, _rtspResult
 }
 
-// Dump the contents of msg to stdout.
+// Dump (gst_rtsp_message_dump) the contents of msg to stdout.
 //
 // The function returns the following values:
 //
@@ -2484,8 +2514,8 @@ func (msg *RTSPMessage) Dump() RTSPResult {
 	return _rtspResult
 }
 
-// Body: get the body of msg. data remains valid for as long as msg is valid and
-// unchanged.
+// Body (gst_rtsp_message_get_body): get the body of msg. data remains valid for
+// as long as msg is valid and unchanged.
 //
 // If the message body was set as a Buffer before this will cause the data to
 // be copied and stored in the message. The Buffer will no longer be kept in the
@@ -2516,8 +2546,8 @@ func (msg *RTSPMessage) Body() ([]byte, RTSPResult) {
 	return _data, _rtspResult
 }
 
-// BodyBuffer: get the body of msg. buffer remains valid for as long as msg is
-// valid and unchanged.
+// BodyBuffer (gst_rtsp_message_get_body_buffer): get the body of msg. buffer
+// remains valid for as long as msg is valid and unchanged.
 //
 // If body data was set from raw memory instead of a Buffer this function will
 // always return NULL. The caller can check if there is a body buffer by calling
@@ -2552,8 +2582,9 @@ func (msg *RTSPMessage) BodyBuffer() (*gst.Buffer, RTSPResult) {
 	return _buffer, _rtspResult
 }
 
-// Header: get the indx header value with key field from msg. The result in
-// value stays valid as long as it remains present in msg.
+// Header (gst_rtsp_message_get_header): get the indx header value with key
+// field from msg. The result in value stays valid as long as it remains present
+// in msg.
 //
 // The function takes the following parameters:
 //
@@ -2592,8 +2623,9 @@ func (msg *RTSPMessage) Header(field RTSPHeaderField, indx int) (string, RTSPRes
 	return _value, _rtspResult
 }
 
-// HeaderByName: get the index header value with key header from msg. The result
-// in value stays valid as long as it remains present in msg.
+// HeaderByName (gst_rtsp_message_get_header_by_name): get the index header
+// value with key header from msg. The result in value stays valid as long as it
+// remains present in msg.
 //
 // The function takes the following parameters:
 //
@@ -2633,7 +2665,7 @@ func (msg *RTSPMessage) HeaderByName(header string, index int) (string, RTSPResu
 	return _value, _rtspResult
 }
 
-// Type: get the message type of msg.
+// Type (gst_rtsp_message_get_type): get the message type of msg.
 //
 // The function returns the following values:
 //
@@ -2654,7 +2686,8 @@ func (msg *RTSPMessage) Type() RTSPMsgType {
 	return _rtspMsgType
 }
 
-// HasBodyBuffer checks if msg has a body and the body is stored as Buffer.
+// HasBodyBuffer (gst_rtsp_message_has_body_buffer) checks if msg has a body and
+// the body is stored as Buffer.
 //
 // The function returns the following values:
 //
@@ -2677,8 +2710,9 @@ func (msg *RTSPMessage) HasBodyBuffer() bool {
 	return _ok
 }
 
-// Init: initialize msg. This function is mostly used when msg is allocated on
-// the stack. The reverse operation of this is gst_rtsp_message_unset().
+// Init (gst_rtsp_message_init): initialize msg. This function is mostly
+// used when msg is allocated on the stack. The reverse operation of this is
+// gst_rtsp_message_unset().
 //
 // The function returns the following values:
 //
@@ -2699,7 +2733,8 @@ func (msg *RTSPMessage) Init() RTSPResult {
 	return _rtspResult
 }
 
-// InitData: initialize a new data RTSPMessage for channel.
+// InitData (gst_rtsp_message_init_data): initialize a new data RTSPMessage for
+// channel.
 //
 // The function takes the following parameters:
 //
@@ -2727,8 +2762,9 @@ func (msg *RTSPMessage) InitData(channel byte) RTSPResult {
 	return _rtspResult
 }
 
-// InitRequest: initialize msg as a request message with method and uri.
-// To clear msg again, use gst_rtsp_message_unset().
+// InitRequest (gst_rtsp_message_init_request): initialize msg as
+// a request message with method and uri. To clear msg again, use
+// gst_rtsp_message_unset().
 //
 // The function takes the following parameters:
 //
@@ -2761,7 +2797,8 @@ func (msg *RTSPMessage) InitRequest(method RTSPMethod, uri string) RTSPResult {
 	return _rtspResult
 }
 
-// InitResponse: initialize msg with code and reason.
+// InitResponse (gst_rtsp_message_init_response): initialize msg with code and
+// reason.
 //
 // When reason is NULL, the default reason for code will be used.
 //
@@ -2807,8 +2844,8 @@ func (msg *RTSPMessage) InitResponse(code RTSPStatusCode, reason string, request
 	return _rtspResult
 }
 
-// ParseAuthCredentials parses the credentials given in a WWW-Authenticate or
-// Authorization header.
+// ParseAuthCredentials (gst_rtsp_message_parse_auth_credentials) parses the
+// credentials given in a WWW-Authenticate or Authorization header.
 //
 // The function takes the following parameters:
 //
@@ -2856,7 +2893,8 @@ func (msg *RTSPMessage) ParseAuthCredentials(field RTSPHeaderField) []*RTSPAuthC
 	return _rtspAuthCredentials
 }
 
-// ParseData: parse the data message msg and store the channel in channel.
+// ParseData (gst_rtsp_message_parse_data): parse the data message msg and store
+// the channel in channel.
 //
 // The function returns the following values:
 //
@@ -2881,9 +2919,9 @@ func (msg *RTSPMessage) ParseData() (byte, RTSPResult) {
 	return _channel, _rtspResult
 }
 
-// ParseRequest: parse the request message msg and store the values method,
-// uri and version. The result locations can be NULL if one is not interested in
-// its value.
+// ParseRequest (gst_rtsp_message_parse_request): parse the request message msg
+// and store the values method, uri and version. The result locations can be
+// NULL if one is not interested in its value.
 //
 // uri remains valid for as long as msg is valid and unchanged.
 //
@@ -2920,9 +2958,9 @@ func (msg *RTSPMessage) ParseRequest() (RTSPMethod, string, RTSPVersion, RTSPRes
 	return _method, _uri, _version, _rtspResult
 }
 
-// ParseResponse: parse the response message msg and store the values code,
-// reason and version. The result locations can be NULL if one is not interested
-// in its value.
+// ParseResponse (gst_rtsp_message_parse_response): parse the response message
+// msg and store the values code, reason and version. The result locations can
+// be NULL if one is not interested in its value.
 //
 // reason remains valid for as long as msg is valid and unchanged.
 //
@@ -2959,8 +2997,8 @@ func (msg *RTSPMessage) ParseResponse() (RTSPStatusCode, string, RTSPVersion, RT
 	return _code, _reason, _version, _rtspResult
 }
 
-// RemoveHeader: remove the indx header with key field from msg. If indx equals
-// -1, all headers will be removed.
+// RemoveHeader (gst_rtsp_message_remove_header): remove the indx header with
+// key field from msg. If indx equals -1, all headers will be removed.
 //
 // The function takes the following parameters:
 //
@@ -2992,8 +3030,9 @@ func (msg *RTSPMessage) RemoveHeader(field RTSPHeaderField, indx int) RTSPResult
 	return _rtspResult
 }
 
-// RemoveHeaderByName: remove the index header with key header from msg.
-// If index equals -1, all matching headers will be removed.
+// RemoveHeaderByName (gst_rtsp_message_remove_header_by_name): remove the index
+// header with key header from msg. If index equals -1, all matching headers
+// will be removed.
 //
 // The function takes the following parameters:
 //
@@ -3026,8 +3065,8 @@ func (msg *RTSPMessage) RemoveHeaderByName(header string, index int) RTSPResult 
 	return _rtspResult
 }
 
-// SetBody: set the body of msg to a copy of data. Any existing body or body
-// buffer will be replaced by the new body.
+// SetBody (gst_rtsp_message_set_body): set the body of msg to a copy of data.
+// Any existing body or body buffer will be replaced by the new body.
 //
 // The function takes the following parameters:
 //
@@ -3059,8 +3098,8 @@ func (msg *RTSPMessage) SetBody(data []byte) RTSPResult {
 	return _rtspResult
 }
 
-// SetBodyBuffer: set the body of msg to buffer. Any existing body or body
-// buffer will be replaced by the new body.
+// SetBodyBuffer (gst_rtsp_message_set_body_buffer): set the body of msg to
+// buffer. Any existing body or body buffer will be replaced by the new body.
 //
 // The function takes the following parameters:
 //
@@ -3088,8 +3127,9 @@ func (msg *RTSPMessage) SetBodyBuffer(buffer *gst.Buffer) RTSPResult {
 	return _rtspResult
 }
 
-// StealBody: take the body of msg and store it in data and size. After this
-// method, the body and size of msg will be set to NULL and 0 respectively.
+// StealBody (gst_rtsp_message_steal_body): take the body of msg and store it
+// in data and size. After this method, the body and size of msg will be set to
+// NULL and 0 respectively.
 //
 // The function returns the following values:
 //
@@ -3117,8 +3157,9 @@ func (msg *RTSPMessage) StealBody() ([]byte, RTSPResult) {
 	return _data, _rtspResult
 }
 
-// StealBodyBuffer: take the body of msg and store it in buffer. After this
-// method, the body and size of msg will be set to NULL and 0 respectively.
+// StealBodyBuffer (gst_rtsp_message_steal_body_buffer): take the body of msg
+// and store it in buffer. After this method, the body and size of msg will be
+// set to NULL and 0 respectively.
 //
 // If body data was set from raw memory instead of a Buffer this function will
 // always return NULL. The caller can check if there is a body buffer by calling
@@ -3152,8 +3193,9 @@ func (msg *RTSPMessage) StealBodyBuffer() (*gst.Buffer, RTSPResult) {
 	return _buffer, _rtspResult
 }
 
-// TakeBody: set the body of msg to data and size. This method takes ownership
-// of data. Any existing body or body buffer will be replaced by the new body.
+// TakeBody (gst_rtsp_message_take_body): set the body of msg to data and size.
+// This method takes ownership of data. Any existing body or body buffer will be
+// replaced by the new body.
 //
 // The function takes the following parameters:
 //
@@ -3184,8 +3226,9 @@ func (msg *RTSPMessage) TakeBody(data []byte) RTSPResult {
 	return _rtspResult
 }
 
-// TakeBodyBuffer: set the body of msg to buffer. This method takes ownership of
-// buffer. Any existing body or body buffer will be replaced by the new body.
+// TakeBodyBuffer (gst_rtsp_message_take_body_buffer): set the body of msg to
+// buffer. This method takes ownership of buffer. Any existing body or body
+// buffer will be replaced by the new body.
 //
 // The function takes the following parameters:
 //
@@ -3214,8 +3257,8 @@ func (msg *RTSPMessage) TakeBodyBuffer(buffer *gst.Buffer) RTSPResult {
 	return _rtspResult
 }
 
-// TakeHeader: add a header with key field and value to msg. This function takes
-// ownership of value.
+// TakeHeader (gst_rtsp_message_take_header): add a header with key field and
+// value to msg. This function takes ownership of value.
 //
 // The function takes the following parameters:
 //
@@ -3247,8 +3290,9 @@ func (msg *RTSPMessage) TakeHeader(field RTSPHeaderField, value string) RTSPResu
 	return _rtspResult
 }
 
-// TakeHeaderByName: add a header with key header and value to msg. This
-// function takes ownership of value, but not of header.
+// TakeHeaderByName (gst_rtsp_message_take_header_by_name): add a header with
+// key header and value to msg. This function takes ownership of value, but not
+// of header.
 //
 // The function takes the following parameters:
 //
@@ -3281,9 +3325,9 @@ func (msg *RTSPMessage) TakeHeaderByName(header string, value string) RTSPResult
 	return _rtspResult
 }
 
-// Unset the contents of msg so that it becomes an uninitialized
-// RTSPMessage again. This function is mostly used in combination with
-// gst_rtsp_message_init_request(), gst_rtsp_message_init_response() and
+// Unset (gst_rtsp_message_unset) the contents of msg so that it becomes an
+// uninitialized RTSPMessage again. This function is mostly used in combination
+// with gst_rtsp_message_init_request(), gst_rtsp_message_init_response() and
 // gst_rtsp_message_init_data() on stack allocated RTSPMessage structures.
 //
 // The function returns the following values:
@@ -3305,7 +3349,7 @@ func (msg *RTSPMessage) Unset() RTSPResult {
 	return _rtspResult
 }
 
-// RTSPRange provides helper functions to deal with time ranges.
+// RTSPRange (GstRTSPRange) provides helper functions to deal with time ranges.
 //
 // An instance of this type is always passed by reference.
 type RTSPRange struct {
@@ -3362,9 +3406,10 @@ func (r *RTSPRange) SetMax(max int) {
 	*valptr = C.gint(max)
 }
 
-// RTSPRangeConvertUnits converts the range in-place between different types
-// of units. Ranges containing the special value T_RTSP_TIME_NOW can not be
-// converted as these are only valid for T_RTSP_RANGE_NPT.
+// RTSPRangeConvertUnits (gst_rtsp_range_convert_units) converts the range
+// in-place between different types of units. Ranges containing the special
+// value T_RTSP_TIME_NOW can not be converted as these are only valid for
+// T_RTSP_RANGE_NPT.
 //
 // The function takes the following parameters:
 //
@@ -3395,8 +3440,8 @@ func RTSPRangeConvertUnits(_range *RTSPTimeRange, unit RTSPRangeUnit) bool {
 	return _ok
 }
 
-// RTSPRangeGetTimes: retrieve the minimum and maximum values from range
-// converted to ClockTime in min and max.
+// RTSPRangeGetTimes (gst_rtsp_range_get_times): retrieve the minimum and
+// maximum values from range converted to ClockTime in min and max.
 //
 // A value of GST_CLOCK_TIME_NONE will be used to signal T_RTSP_TIME_NOW and
 // T_RTSP_TIME_END for min and max respectively.
@@ -3436,7 +3481,7 @@ func RTSPRangeGetTimes(_range *RTSPTimeRange) (min, max gst.ClockTime, ok bool) 
 	return _min, _max, _ok
 }
 
-// RTSPRangeParse: parse rangestr to a RTSPTimeRange.
+// RTSPRangeParse (gst_rtsp_range_parse): parse rangestr to a RTSPTimeRange.
 //
 // The function takes the following parameters:
 //
@@ -3472,7 +3517,8 @@ func RTSPRangeParse(rangestr string) (*RTSPTimeRange, RTSPResult) {
 	return __range, _rtspResult
 }
 
-// RTSPRangeToString: convert range into a string representation.
+// RTSPRangeToString (gst_rtsp_range_to_string): convert range into a string
+// representation.
 //
 // The function takes the following parameters:
 //
@@ -3498,7 +3544,7 @@ func RTSPRangeToString(_range *RTSPTimeRange) string {
 	return _utf8
 }
 
-// RTSPTime: time indication.
+// RTSPTime (GstRTSPTime): time indication.
 //
 // An instance of this type is always passed by reference.
 type RTSPTime struct {
@@ -3534,7 +3580,7 @@ func (r *RTSPTime) SetSeconds(seconds float64) {
 	*valptr = C.gdouble(seconds)
 }
 
-// RTSPTime2: extra fields for a time indication.
+// RTSPTime2 (GstRTSPTime2): extra fields for a time indication.
 //
 // An instance of this type is always passed by reference.
 type RTSPTime2 struct {
@@ -3625,7 +3671,7 @@ func (r *RTSPTime2) SetDay(day uint) {
 	*valptr = C.guint(day)
 }
 
-// RTSPTimeRange: time range.
+// RTSPTimeRange (GstRTSPTimeRange): time range.
 //
 // An instance of this type is always passed by reference.
 type RTSPTimeRange struct {
@@ -3677,7 +3723,8 @@ func (r *RTSPTimeRange) Max2() *RTSPTime2 {
 	return _v
 }
 
-// RTSPTransport provides helper functions to deal with RTSP transport strings.
+// RTSPTransport (GstRTSPTransport) provides helper functions to deal with RTSP
+// transport strings.
 //
 // An instance of this type is always passed by reference.
 type RTSPTransport struct {
@@ -3861,8 +3908,8 @@ func (r *RTSPTransport) SetSsrc(ssrc uint) {
 	*valptr = C.guint(ssrc)
 }
 
-// AsText: convert transport into a string that can be used to signal the
-// transport in an RTSP SETUP response.
+// AsText (gst_rtsp_transport_as_text): convert transport into a string that can
+// be used to signal the transport in an RTSP SETUP response.
 //
 // The function returns the following values:
 //
@@ -3887,8 +3934,8 @@ func (transport *RTSPTransport) AsText() string {
 	return _utf8
 }
 
-// MediaType: get the media type of transport. This media type is typically used
-// to generate Caps events.
+// MediaType (gst_rtsp_transport_get_media_type): get the media type of
+// transport. This media type is typically used to generate Caps events.
 //
 // The function returns the following values:
 //
@@ -3913,8 +3960,8 @@ func (transport *RTSPTransport) MediaType() (string, RTSPResult) {
 	return _mediaType, _rtspResult
 }
 
-// RTSPTransportGetManager: get the Element that can handle the buffers
-// transported over trans.
+// RTSPTransportGetManager (gst_rtsp_transport_get_manager): get the Element
+// that can handle the buffers transported over trans.
 //
 // It is possible that there are several managers available, use option to
 // selected one.
@@ -3955,8 +4002,9 @@ func RTSPTransportGetManager(trans RTSPTransMode, option uint) (string, RTSPResu
 	return _manager, _rtspResult
 }
 
-// RTSPTransportGetMIME: get the mime type of the transport mode trans. This
-// mime type is typically used to generate Caps events.
+// RTSPTransportGetMIME (gst_rtsp_transport_get_mime): get the mime type of
+// the transport mode trans. This mime type is typically used to generate Caps
+// events.
 //
 // Deprecated: This functions only deals with the GstRTSPTransMode
 // and only returns the mime type for T_RTSP_PROFILE_AVP. Use
@@ -3989,7 +4037,8 @@ func RTSPTransportGetMIME(trans RTSPTransMode) (string, RTSPResult) {
 	return _mime, _rtspResult
 }
 
-// RTSPTransportInit: initialize transport so that it can be used.
+// RTSPTransportInit (gst_rtsp_transport_init): initialize transport so that it
+// can be used.
 //
 // The function returns the following values:
 //
@@ -4010,8 +4059,8 @@ func RTSPTransportInit() (*RTSPTransport, RTSPResult) {
 	return _transport, _rtspResult
 }
 
-// NewRTSPTransport: allocate a new initialized RTSPTransport. Use
-// gst_rtsp_transport_free() after usage.
+// NewRTSPTransport (gst_rtsp_transport_new): allocate a new initialized
+// RTSPTransport. Use gst_rtsp_transport_free() after usage.
 //
 // The function returns the following values:
 //
@@ -4038,7 +4087,8 @@ func NewRTSPTransport() (*RTSPTransport, RTSPResult) {
 	return _transport, _rtspResult
 }
 
-// RTSPTransportParse: parse the RTSP transport string str into transport.
+// RTSPTransportParse (gst_rtsp_transport_parse): parse the RTSP transport
+// string str into transport.
 //
 // The function takes the following parameters:
 //
@@ -4068,7 +4118,7 @@ func RTSPTransportParse(str string) (*RTSPTransport, RTSPResult) {
 	return _transport, _rtspResult
 }
 
-// RTSPURL provides helper functions to handle RTSP urls.
+// RTSPURL (GstRTSPUrl) provides helper functions to handle RTSP urls.
 //
 // An instance of this type is always passed by reference.
 type RTSPURL struct {
@@ -4141,7 +4191,7 @@ func (r *RTSPURL) Query() string {
 	return _v
 }
 
-// Copy: make a copy of url.
+// Copy (gst_rtsp_url_copy): make a copy of url.
 //
 // The function returns the following values:
 //
@@ -4168,8 +4218,8 @@ func (url *RTSPURL) Copy() *RTSPURL {
 	return _rtspUrl
 }
 
-// DecodePathComponents splits the path of url on '/' boundaries, decoding the
-// resulting components,
+// DecodePathComponents (gst_rtsp_url_decode_path_components) splits the path of
+// url on '/' boundaries, decoding the resulting components,
 //
 // The decoding performed by this routine is "URI decoding", as defined in RFC
 // 3986, commonly known as percent-decoding. For example, a string "foo\2fbar"
@@ -4215,7 +4265,7 @@ func (url *RTSPURL) DecodePathComponents() []string {
 	return _utf8s
 }
 
-// Port: get the port number of url.
+// Port (gst_rtsp_url_get_port): get the port number of url.
 //
 // The function returns the following values:
 //
@@ -4240,7 +4290,8 @@ func (url *RTSPURL) Port() (uint16, RTSPResult) {
 	return _port, _rtspResult
 }
 
-// RequestURI: get a newly allocated string describing the request URI for url.
+// RequestURI (gst_rtsp_url_get_request_uri): get a newly allocated string
+// describing the request URI for url.
 //
 // The function returns the following values:
 //
@@ -4262,8 +4313,9 @@ func (url *RTSPURL) RequestURI() string {
 	return _utf8
 }
 
-// RequestURIWithControl: get a newly allocated string describing the request
-// URI for url combined with the control path for control_path.
+// RequestURIWithControl (gst_rtsp_url_get_request_uri_with_control): get a
+// newly allocated string describing the request URI for url combined with the
+// control path for control_path.
 //
 // The function takes the following parameters:
 //
@@ -4294,7 +4346,7 @@ func (url *RTSPURL) RequestURIWithControl(controlPath string) string {
 	return _utf8
 }
 
-// SetPort: set the port number in url to port.
+// SetPort (gst_rtsp_url_set_port): set the port number in url to port.
 //
 // The function takes the following parameters:
 //
@@ -4322,8 +4374,8 @@ func (url *RTSPURL) SetPort(port uint16) RTSPResult {
 	return _rtspResult
 }
 
-// RTSPURLParse: parse the RTSP urlstr into a newly allocated RTSPUrl. Free
-// after usage with gst_rtsp_url_free().
+// RTSPURLParse (gst_rtsp_url_parse): parse the RTSP urlstr into a newly
+// allocated RTSPUrl. Free after usage with gst_rtsp_url_free().
 //
 // The function takes the following parameters:
 //
@@ -4361,7 +4413,7 @@ func RTSPURLParse(urlstr string) (*RTSPURL, RTSPResult) {
 	return _url, _rtspResult
 }
 
-// RTSPWatchFuncs: callback functions from a RTSPWatch.
+// RTSPWatchFuncs (GstRTSPWatchFuncs): callback functions from a RTSPWatch.
 //
 // An instance of this type is always passed by reference.
 type RTSPWatchFuncs struct {

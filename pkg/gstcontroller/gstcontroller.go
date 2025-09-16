@@ -52,20 +52,24 @@ func init() {
 	})
 }
 
-// InterpolationMode various interpolation modes available.
+// InterpolationMode (GstInterpolationMode) various interpolation modes
+// available.
 type InterpolationMode C.gint
 
 const (
-	// InterpolationModeNone: steps-like interpolation, default.
+	// InterpolationModeNone (GST_INTERPOLATION_MODE_NONE): steps-like
+	// interpolation, default.
 	InterpolationModeNone InterpolationMode = iota
-	// InterpolationModeLinear: linear interpolation.
+	// InterpolationModeLinear (GST_INTERPOLATION_MODE_LINEAR): linear
+	// interpolation.
 	InterpolationModeLinear
-	// InterpolationModeCubic: cubic interpolation (natural), may overshoot the
-	// min or max values set by the control point, but is more 'curvy'.
+	// InterpolationModeCubic (GST_INTERPOLATION_MODE_CUBIC): cubic
+	// interpolation (natural), may overshoot the min or max values set by the
+	// control point, but is more 'curvy'.
 	InterpolationModeCubic
-	// InterpolationModeCubicMonotonic: monotonic cubic interpolation, will not
-	// produce any values outside of the min-max range set by the control points
-	// (Since: 1.8).
+	// InterpolationModeCubicMonotonic (GST_INTERPOLATION_MODE_CUBIC_MONOTONIC):
+	// monotonic cubic interpolation, will not produce any values outside of the
+	// min-max range set by the control points (Since: 1.8).
 	InterpolationModeCubicMonotonic
 )
 
@@ -89,19 +93,20 @@ func (i InterpolationMode) String() string {
 	}
 }
 
-// LFOWaveform various waveform modes available.
+// LFOWaveform (GstLFOWaveform) various waveform modes available.
 type LFOWaveform C.gint
 
 const (
-	// LfoWaveformSine: sine waveform.
+	// LfoWaveformSine (GST_LFO_WAVEFORM_SINE): sine waveform.
 	LfoWaveformSine LFOWaveform = iota
-	// LfoWaveformSquare: square waveform.
+	// LfoWaveformSquare (GST_LFO_WAVEFORM_SQUARE): square waveform.
 	LfoWaveformSquare
-	// LfoWaveformSaw: saw waveform.
+	// LfoWaveformSaw (GST_LFO_WAVEFORM_SAW): saw waveform.
 	LfoWaveformSaw
-	// LfoWaveformReverseSaw: reverse saw waveform.
+	// LfoWaveformReverseSaw (GST_LFO_WAVEFORM_REVERSE_SAW): reverse saw
+	// waveform.
 	LfoWaveformReverseSaw
-	// LfoWaveformTriangle: triangle waveform.
+	// LfoWaveformTriangle (GST_LFO_WAVEFORM_TRIANGLE): triangle waveform.
 	LfoWaveformTriangle
 )
 
@@ -127,7 +132,8 @@ func (l LFOWaveform) String() string {
 	}
 }
 
-// TimedValueControlInvalidateCache: reset the controlled value cache.
+// TimedValueControlInvalidateCache (gst_timed_value_control_invalidate_cache):
+// reset the controlled value cache.
 //
 // The function takes the following parameters:
 //
@@ -149,10 +155,10 @@ func defaultARGBControlBindingOverrides(v *ARGBControlBinding) ARGBControlBindin
 	return ARGBControlBindingOverrides{}
 }
 
-// ARGBControlBinding: value mapping object that attaches multiple control
-// sources to a guint gobject properties representing a color. A control value
-// of 0.0 will turn the color component off and a value of 1.0 will be the color
-// level.
+// ARGBControlBinding (GstARGBControlBinding): value mapping object that
+// attaches multiple control sources to a guint gobject properties representing
+// a color. A control value of 0.0 will turn the color component off and a value
+// of 1.0 will be the color level.
 type ARGBControlBinding struct {
 	_ [0]func() // equal guard
 	gst.ControlBinding
@@ -161,6 +167,18 @@ type ARGBControlBinding struct {
 var (
 	_ gst.ControlBindinger = (*ARGBControlBinding)(nil)
 )
+
+// ARGBControlBindinger describes types inherited from ARGBControlBinding.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type ARGBControlBindinger interface {
+	gst.ControlBindinger
+
+	baseARGBControlBinding() *ARGBControlBinding
+}
+
+var _ ARGBControlBindinger = (*ARGBControlBinding)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*ARGBControlBinding, *ARGBControlBindingClass, ARGBControlBindingOverrides](
@@ -194,8 +212,18 @@ func marshalARGBControlBinding(p uintptr) (interface{}, error) {
 	return wrapARGBControlBinding(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewARGBControlBinding: create a new control-binding that attaches the given
-// ControlSource to the #GObject property.
+func (v *ARGBControlBinding) baseARGBControlBinding() *ARGBControlBinding {
+	return v
+}
+
+// BaseARGBControlBinding returns the underlying base object.
+func BaseARGBControlBinding(obj ARGBControlBindinger) *ARGBControlBinding {
+	return obj.baseARGBControlBinding()
+}
+
+// NewARGBControlBinding (gst_argb_control_binding_new): create a new
+// control-binding that attaches the given ControlSource to the #GObject
+// property.
 //
 // The function takes the following parameters:
 //
@@ -249,12 +277,12 @@ func defaultDirectControlBindingOverrides(v *DirectControlBinding) DirectControl
 	return DirectControlBindingOverrides{}
 }
 
-// DirectControlBinding: value mapping object that attaches control sources
-// to gobject properties. It will map the control values directly to the
-// target property range. If a non-absolute direct control binding is used,
-// the value range [0.0 ... 1.0] is mapped to full target property range,
-// and all values outside the range will be clipped. An absolute control binding
-// will not do any value transformations.
+// DirectControlBinding (GstDirectControlBinding): value mapping object that
+// attaches control sources to gobject properties. It will map the control
+// values directly to the target property range. If a non-absolute direct
+// control binding is used, the value range [0.0 ... 1.0] is mapped to full
+// target property range, and all values outside the range will be clipped.
+// An absolute control binding will not do any value transformations.
 type DirectControlBinding struct {
 	_ [0]func() // equal guard
 	gst.ControlBinding
@@ -263,6 +291,18 @@ type DirectControlBinding struct {
 var (
 	_ gst.ControlBindinger = (*DirectControlBinding)(nil)
 )
+
+// DirectControlBindinger describes types inherited from DirectControlBinding.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DirectControlBindinger interface {
+	gst.ControlBindinger
+
+	baseDirectControlBinding() *DirectControlBinding
+}
+
+var _ DirectControlBindinger = (*DirectControlBinding)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*DirectControlBinding, *DirectControlBindingClass, DirectControlBindingOverrides](
@@ -296,10 +336,19 @@ func marshalDirectControlBinding(p uintptr) (interface{}, error) {
 	return wrapDirectControlBinding(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewDirectControlBinding: create a new control-binding that attaches the
-// ControlSource to the #GObject property. It will map the control source range
-// [0.0 ... 1.0] to the full target property range, and clip all values outside
-// this range.
+func (v *DirectControlBinding) baseDirectControlBinding() *DirectControlBinding {
+	return v
+}
+
+// BaseDirectControlBinding returns the underlying base object.
+func BaseDirectControlBinding(obj DirectControlBindinger) *DirectControlBinding {
+	return obj.baseDirectControlBinding()
+}
+
+// NewDirectControlBinding (gst_direct_control_binding_new): create a new
+// control-binding that attaches the ControlSource to the #GObject property. It
+// will map the control source range [0.0 ... 1.0] to the full target property
+// range, and clip all values outside this range.
 //
 // The function takes the following parameters:
 //
@@ -333,9 +382,10 @@ func NewDirectControlBinding(object gst.GstObjector, propertyName string, cs gst
 	return _directControlBinding
 }
 
-// NewDirectControlBindingAbsolute: create a new control-binding that attaches
-// the ControlSource to the #GObject property. It will directly map the control
-// source values to the target property range without any transformations.
+// NewDirectControlBindingAbsolute (gst_direct_control_binding_new_absolute):
+// create a new control-binding that attaches the ControlSource to the #GObject
+// property. It will directly map the control source values to the target
+// property range without any transformations.
 //
 // The function takes the following parameters:
 //
@@ -377,9 +427,9 @@ func defaultInterpolationControlSourceOverrides(v *InterpolationControlSource) I
 	return InterpolationControlSourceOverrides{}
 }
 
-// InterpolationControlSource is a ControlSource, that interpolates values
-// between user-given control points. It supports several interpolation modes
-// and property types.
+// InterpolationControlSource (GstInterpolationControlSource) is a
+// ControlSource, that interpolates values between user-given control points.
+// It supports several interpolation modes and property types.
 //
 // To use InterpolationControlSource get a new instance by calling
 // gst_interpolation_control_source_new(), bind it to a Spec and set some
@@ -394,6 +444,18 @@ type InterpolationControlSource struct {
 var (
 	_ TimedValueControlSourcer = (*InterpolationControlSource)(nil)
 )
+
+// InterpolationControlSourcer describes types inherited from InterpolationControlSource.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type InterpolationControlSourcer interface {
+	TimedValueControlSourcer
+
+	baseInterpolationControlSource() *InterpolationControlSource
+}
+
+var _ InterpolationControlSourcer = (*InterpolationControlSource)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*InterpolationControlSource, *InterpolationControlSourceClass, InterpolationControlSourceOverrides](
@@ -429,8 +491,17 @@ func marshalInterpolationControlSource(p uintptr) (interface{}, error) {
 	return wrapInterpolationControlSource(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewInterpolationControlSource: this returns a new, unbound
-// InterpolationControlSource.
+func (v *InterpolationControlSource) baseInterpolationControlSource() *InterpolationControlSource {
+	return v
+}
+
+// BaseInterpolationControlSource returns the underlying base object.
+func BaseInterpolationControlSource(obj InterpolationControlSourcer) *InterpolationControlSource {
+	return obj.baseInterpolationControlSource()
+}
+
+// NewInterpolationControlSource (gst_interpolation_control_source_new):
+// this returns a new, unbound InterpolationControlSource.
 //
 // The function returns the following values:
 //
@@ -455,8 +526,8 @@ func defaultLFOControlSourceOverrides(v *LFOControlSource) LFOControlSourceOverr
 	return LFOControlSourceOverrides{}
 }
 
-// LFOControlSource is a ControlSource, that provides several periodic waveforms
-// as control values.
+// LFOControlSource (GstLFOControlSource) is a ControlSource, that provides
+// several periodic waveforms as control values.
 //
 // To use LFOControlSource get a new instance by calling
 // gst_lfo_control_source_new(), bind it to a Spec and set the relevant
@@ -471,6 +542,18 @@ type LFOControlSource struct {
 var (
 	_ gst.ControlSourcer = (*LFOControlSource)(nil)
 )
+
+// LFOControlSourcer describes types inherited from LFOControlSource.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type LFOControlSourcer interface {
+	gst.ControlSourcer
+
+	baseLFOControlSource() *LFOControlSource
+}
+
+var _ LFOControlSourcer = (*LFOControlSource)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*LFOControlSource, *LFOControlSourceClass, LFOControlSourceOverrides](
@@ -504,7 +587,17 @@ func marshalLFOControlSource(p uintptr) (interface{}, error) {
 	return wrapLFOControlSource(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewLFOControlSource: this returns a new, unbound LFOControlSource.
+func (v *LFOControlSource) baseLFOControlSource() *LFOControlSource {
+	return v
+}
+
+// BaseLFOControlSource returns the underlying base object.
+func BaseLFOControlSource(obj LFOControlSourcer) *LFOControlSource {
+	return obj.baseLFOControlSource()
+}
+
+// NewLFOControlSource (gst_lfo_control_source_new): this returns a new,
+// unbound LFOControlSource.
 //
 // The function returns the following values:
 //
@@ -529,7 +622,8 @@ func defaultProxyControlBindingOverrides(v *ProxyControlBinding) ProxyControlBin
 	return ProxyControlBindingOverrides{}
 }
 
-// ProxyControlBinding that forwards requests to another ControlBinding.
+// ProxyControlBinding (GstProxyControlBinding) that forwards requests to
+// another ControlBinding.
 type ProxyControlBinding struct {
 	_ [0]func() // equal guard
 	gst.ControlBinding
@@ -538,6 +632,18 @@ type ProxyControlBinding struct {
 var (
 	_ gst.ControlBindinger = (*ProxyControlBinding)(nil)
 )
+
+// ProxyControlBindinger describes types inherited from ProxyControlBinding.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type ProxyControlBindinger interface {
+	gst.ControlBindinger
+
+	baseProxyControlBinding() *ProxyControlBinding
+}
+
+var _ ProxyControlBindinger = (*ProxyControlBinding)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*ProxyControlBinding, *ProxyControlBindingClass, ProxyControlBindingOverrides](
@@ -571,9 +677,18 @@ func marshalProxyControlBinding(p uintptr) (interface{}, error) {
 	return wrapProxyControlBinding(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewProxyControlBinding forwards all access to data or sync_values() requests
-// from property_name on object to the control binding at ref_property_name on
-// ref_object.
+func (v *ProxyControlBinding) baseProxyControlBinding() *ProxyControlBinding {
+	return v
+}
+
+// BaseProxyControlBinding returns the underlying base object.
+func BaseProxyControlBinding(obj ProxyControlBindinger) *ProxyControlBinding {
+	return obj.baseProxyControlBinding()
+}
+
+// NewProxyControlBinding (gst_proxy_control_binding_new) forwards all access
+// to data or sync_values() requests from property_name on object to the control
+// binding at ref_property_name on ref_object.
 //
 // The function takes the following parameters:
 //
@@ -621,8 +736,8 @@ func defaultTimedValueControlSourceOverrides(v *TimedValueControlSource) TimedVa
 	return TimedValueControlSourceOverrides{}
 }
 
-// TimedValueControlSource: base class for ControlSource that use time-stamped
-// values.
+// TimedValueControlSource (GstTimedValueControlSource): base class for
+// ControlSource that use time-stamped values.
 //
 // When overriding bind, chain up first to give this bind implementation a
 // chance to setup things.
@@ -637,12 +752,40 @@ var (
 	_ gst.ControlSourcer = (*TimedValueControlSource)(nil)
 )
 
-// TimedValueControlSourcer describes types inherited from class TimedValueControlSource.
+// TimedValueControlSourcer describes types inherited from TimedValueControlSource.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type TimedValueControlSourcer interface {
-	coreglib.Objector
+	gst.ControlSourcer
+
+	// All (gst_timed_value_control_source_get_all) returns a read-only copy of
+	// the list of TimedValue for the given property.
+	All() []*gst.TimedValue
+	// Count (gst_timed_value_control_source_get_count): get the number of
+	// control points that are set.
+	Count() int
+	// Set (gst_timed_value_control_source_set) the value of given
+	// controller-handled property at a certain time.
+	Set(timestamp gst.ClockTime, value float64) bool
+	// SetFromList (gst_timed_value_control_source_set_from_list) sets multiple
+	// timed values at once.
+	SetFromList(timedvalues []*gst.TimedValue) bool
+	// Unset (gst_timed_value_control_source_unset): used to remove the value of
+	// given controller-handled property at a certain time.
+	Unset(timestamp gst.ClockTime) bool
+	// UnsetAll (gst_timed_value_control_source_unset_all): used to remove all
+	// time-stamped values of given controller-handled property.
+	UnsetAll()
+
+	// Value-added is emitted right after the new value has been added to self.
+	ConnectValueAdded(func(timedValue *ControlPoint)) coreglib.SignalHandle
+	// Value-changed is emitted right after the new value has been set on
+	// timed_signals.
+	ConnectValueChanged(func(timedValue *ControlPoint)) coreglib.SignalHandle
+	// Value-removed is emitted when timed_value is removed from self.
+	ConnectValueRemoved(func(timedValue *ControlPoint)) coreglib.SignalHandle
+
 	baseTimedValueControlSource() *TimedValueControlSource
 }
 
@@ -706,8 +849,8 @@ func (self *TimedValueControlSource) ConnectValueRemoved(f func(timedValue *Cont
 	return coreglib.ConnectGeneratedClosure(self, "value-removed", false, unsafe.Pointer(C._gotk4_gstcontroller1_TimedValueControlSource_ConnectValueRemoved), f)
 }
 
-// All returns a read-only copy of the list of TimedValue for the given
-// property. Free the list after done with it.
+// All (gst_timed_value_control_source_get_all) returns a read-only copy of the
+// list of TimedValue for the given property. Free the list after done with it.
 //
 // The function returns the following values:
 //
@@ -735,7 +878,8 @@ func (self *TimedValueControlSource) All() []*gst.TimedValue {
 	return _list
 }
 
-// Count: get the number of control points that are set.
+// Count (gst_timed_value_control_source_get_count): get the number of control
+// points that are set.
 //
 // The function returns the following values:
 //
@@ -756,7 +900,8 @@ func (self *TimedValueControlSource) Count() int {
 	return _gint
 }
 
-// Set the value of given controller-handled property at a certain time.
+// Set (gst_timed_value_control_source_set) the value of given
+// controller-handled property at a certain time.
 //
 // The function takes the following parameters:
 //
@@ -790,7 +935,8 @@ func (self *TimedValueControlSource) Set(timestamp gst.ClockTime, value float64)
 	return _ok
 }
 
-// SetFromList sets multiple timed values at once.
+// SetFromList (gst_timed_value_control_source_set_from_list) sets multiple
+// timed values at once.
 //
 // The function takes the following parameters:
 //
@@ -826,8 +972,8 @@ func (self *TimedValueControlSource) SetFromList(timedvalues []*gst.TimedValue) 
 	return _ok
 }
 
-// Unset: used to remove the value of given controller-handled property at a
-// certain time.
+// Unset (gst_timed_value_control_source_unset): used to remove the value of
+// given controller-handled property at a certain time.
 //
 // The function takes the following parameters:
 //
@@ -857,8 +1003,8 @@ func (self *TimedValueControlSource) Unset(timestamp gst.ClockTime) bool {
 	return _ok
 }
 
-// UnsetAll: used to remove all time-stamped values of given controller-handled
-// property.
+// UnsetAll (gst_timed_value_control_source_unset_all): used to remove all
+// time-stamped values of given controller-handled property.
 func (self *TimedValueControlSource) UnsetAll() {
 	var _arg0 *C.GstTimedValueControlSource // out
 
@@ -876,8 +1022,9 @@ func defaultTriggerControlSourceOverrides(v *TriggerControlSource) TriggerContro
 	return TriggerControlSourceOverrides{}
 }
 
-// TriggerControlSource is a ControlSource, that returns values from user-given
-// control points. It allows for a tolerance on the time-stamps.
+// TriggerControlSource (GstTriggerControlSource) is a ControlSource, that
+// returns values from user-given control points. It allows for a tolerance on
+// the time-stamps.
 //
 // To use TriggerControlSource get a new instance by calling
 // gst_trigger_control_source_new(), bind it to a Spec and set some control
@@ -892,6 +1039,18 @@ type TriggerControlSource struct {
 var (
 	_ TimedValueControlSourcer = (*TriggerControlSource)(nil)
 )
+
+// TriggerControlSourcer describes types inherited from TriggerControlSource.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type TriggerControlSourcer interface {
+	TimedValueControlSourcer
+
+	baseTriggerControlSource() *TriggerControlSource
+}
+
+var _ TriggerControlSourcer = (*TriggerControlSource)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*TriggerControlSource, *TriggerControlSourceClass, TriggerControlSourceOverrides](
@@ -927,7 +1086,17 @@ func marshalTriggerControlSource(p uintptr) (interface{}, error) {
 	return wrapTriggerControlSource(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewTriggerControlSource: this returns a new, unbound TriggerControlSource.
+func (v *TriggerControlSource) baseTriggerControlSource() *TriggerControlSource {
+	return v
+}
+
+// BaseTriggerControlSource returns the underlying base object.
+func BaseTriggerControlSource(obj TriggerControlSourcer) *TriggerControlSource {
+	return obj.baseTriggerControlSource()
+}
+
+// NewTriggerControlSource (gst_trigger_control_source_new): this returns a new,
+// unbound TriggerControlSource.
 //
 // The function returns the following values:
 //
@@ -944,7 +1113,8 @@ func NewTriggerControlSource() *TriggerControlSource {
 	return _triggerControlSource
 }
 
-// ARGBControlBindingClass class structure of ARGBControlBinding.
+// ARGBControlBindingClass (GstARGBControlBindingClass) class structure of
+// ARGBControlBinding.
 //
 // An instance of this type is always passed by reference.
 type ARGBControlBindingClass struct {
@@ -964,8 +1134,8 @@ func (a *ARGBControlBindingClass) ParentClass() *gst.ControlBindingClass {
 	return _v
 }
 
-// ControlPoint: internal structure for value+time and various temporary values
-// used for interpolation. This "inherits" from GstTimedValue.
+// ControlPoint (GstControlPoint): internal structure for value+time and various
+// temporary values used for interpolation. This "inherits" from GstTimedValue.
 //
 // An instance of this type is always passed by reference.
 type ControlPoint struct {
@@ -1004,7 +1174,7 @@ func (c *ControlPoint) SetValue(value float64) {
 	*valptr = C.gdouble(value)
 }
 
-// Copy copies a ControlPoint.
+// Copy (gst_control_point_copy) copies a ControlPoint.
 //
 // The function returns the following values:
 //
@@ -1031,7 +1201,8 @@ func (cp *ControlPoint) Copy() *ControlPoint {
 	return _controlPoint
 }
 
-// DirectControlBindingClass class structure of DirectControlBinding.
+// DirectControlBindingClass (GstDirectControlBindingClass) class structure of
+// DirectControlBinding.
 //
 // An instance of this type is always passed by reference.
 type DirectControlBindingClass struct {
@@ -1051,8 +1222,8 @@ func (d *DirectControlBindingClass) ParentClass() *gst.ControlBindingClass {
 	return _v
 }
 
-// InterpolationControlSourceClass: instance of this type is always passed by
-// reference.
+// InterpolationControlSourceClass (GstInterpolationControlSourceClass):
+// instance of this type is always passed by reference.
 type InterpolationControlSourceClass struct {
 	*interpolationControlSourceClass
 }
@@ -1069,7 +1240,8 @@ func (i *InterpolationControlSourceClass) ParentClass() *TimedValueControlSource
 	return _v
 }
 
-// LFOControlSourceClass: instance of this type is always passed by reference.
+// LFOControlSourceClass (GstLFOControlSourceClass): instance of this type is
+// always passed by reference.
 type LFOControlSourceClass struct {
 	*lfoControlSourceClass
 }
@@ -1086,7 +1258,8 @@ func (l *LFOControlSourceClass) ParentClass() *gst.ControlSourceClass {
 	return _v
 }
 
-// ProxyControlBindingClass: opaque ProxyControlBindingClass struct
+// ProxyControlBindingClass (GstProxyControlBindingClass): opaque
+// ProxyControlBindingClass struct
 //
 // An instance of this type is always passed by reference.
 type ProxyControlBindingClass struct {
@@ -1098,8 +1271,8 @@ type proxyControlBindingClass struct {
 	native *C.GstProxyControlBindingClass
 }
 
-// TimedValueControlSourceClass: instance of this type is always passed by
-// reference.
+// TimedValueControlSourceClass (GstTimedValueControlSourceClass): instance of
+// this type is always passed by reference.
 type TimedValueControlSourceClass struct {
 	*timedValueControlSourceClass
 }
@@ -1116,8 +1289,8 @@ func (t *TimedValueControlSourceClass) ParentClass() *gst.ControlSourceClass {
 	return _v
 }
 
-// TriggerControlSourceClass: instance of this type is always passed by
-// reference.
+// TriggerControlSourceClass (GstTriggerControlSourceClass): instance of this
+// type is always passed by reference.
 type TriggerControlSourceClass struct {
 	*triggerControlSourceClass
 }

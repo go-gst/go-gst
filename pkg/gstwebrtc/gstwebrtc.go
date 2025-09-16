@@ -198,19 +198,21 @@ func init() {
 	})
 }
 
-// WebRTCBundlePolicy: see
+// WebRTCBundlePolicy (GstWebRTCBundlePolicy): see
 // https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-24#section-4.1.1 for more
 // information.
 type WebRTCBundlePolicy C.gint
 
 const (
-	// WebrtcBundlePolicyNone: none.
+	// WebrtcBundlePolicyNone (GST_WEBRTC_BUNDLE_POLICY_NONE): none.
 	WebrtcBundlePolicyNone WebRTCBundlePolicy = iota
-	// WebrtcBundlePolicyBalanced: balanced.
+	// WebrtcBundlePolicyBalanced (GST_WEBRTC_BUNDLE_POLICY_BALANCED): balanced.
 	WebrtcBundlePolicyBalanced
-	// WebrtcBundlePolicyMaxCompat: max-compat.
+	// WebrtcBundlePolicyMaxCompat (GST_WEBRTC_BUNDLE_POLICY_MAX_COMPAT):
+	// max-compat.
 	WebrtcBundlePolicyMaxCompat
-	// WebrtcBundlePolicyMaxBundle: max-bundle.
+	// WebrtcBundlePolicyMaxBundle (GST_WEBRTC_BUNDLE_POLICY_MAX_BUNDLE):
+	// max-bundle.
 	WebrtcBundlePolicyMaxBundle
 )
 
@@ -237,13 +239,13 @@ func (w WebRTCBundlePolicy) String() string {
 type WebRTCDTLSSetup C.gint
 
 const (
-	// WebrtcDTLSSetupNone: none.
+	// WebrtcDTLSSetupNone (GST_WEBRTC_DTLS_SETUP_NONE): none.
 	WebrtcDTLSSetupNone WebRTCDTLSSetup = iota
-	// WebrtcDTLSSetupActpass: actpass.
+	// WebrtcDTLSSetupActpass (GST_WEBRTC_DTLS_SETUP_ACTPASS): actpass.
 	WebrtcDTLSSetupActpass
-	// WebrtcDTLSSetupActive: sendonly.
+	// WebrtcDTLSSetupActive (GST_WEBRTC_DTLS_SETUP_ACTIVE): sendonly.
 	WebrtcDTLSSetupActive
-	// WebrtcDTLSSetupPassive: recvonly.
+	// WebrtcDTLSSetupPassive (GST_WEBRTC_DTLS_SETUP_PASSIVE): recvonly.
 	WebrtcDTLSSetupPassive
 )
 
@@ -270,15 +272,19 @@ func (w WebRTCDTLSSetup) String() string {
 type WebRTCDTLSTransportState C.gint
 
 const (
-	// NewWebrtcDTLSTransportState: new.
+	// NewWebrtcDTLSTransportState (GST_WEBRTC_DTLS_TRANSPORT_STATE_NEW): new.
 	NewWebrtcDTLSTransportState WebRTCDTLSTransportState = iota
-	// WebrtcDTLSTransportStateClosed: closed.
+	// WebrtcDTLSTransportStateClosed (GST_WEBRTC_DTLS_TRANSPORT_STATE_CLOSED):
+	// closed.
 	WebrtcDTLSTransportStateClosed
-	// WebrtcDTLSTransportStateFailed: failed.
+	// WebrtcDTLSTransportStateFailed (GST_WEBRTC_DTLS_TRANSPORT_STATE_FAILED):
+	// failed.
 	WebrtcDTLSTransportStateFailed
-	// WebrtcDTLSTransportStateConnecting: connecting.
+	// WebrtcDTLSTransportStateConnecting
+	// (GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING): connecting.
 	WebrtcDTLSTransportStateConnecting
-	// WebrtcDTLSTransportStateConnected: connected.
+	// WebrtcDTLSTransportStateConnected
+	// (GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED): connected.
 	WebrtcDTLSTransportStateConnected
 )
 
@@ -304,18 +310,21 @@ func (w WebRTCDTLSTransportState) String() string {
 	}
 }
 
-// WebRTCDataChannelState: see
+// WebRTCDataChannelState (GstWebRTCDataChannelState): see
 // <http://w3c.github.io/webrtc-pc/#dom-rtcdatachannelstate>.
 type WebRTCDataChannelState C.gint
 
 const (
-	// WebrtcDataChannelStateConnecting: connecting.
+	// WebrtcDataChannelStateConnecting
+	// (GST_WEBRTC_DATA_CHANNEL_STATE_CONNECTING): connecting.
 	WebrtcDataChannelStateConnecting WebRTCDataChannelState = 1
-	// WebrtcDataChannelStateOpen: open.
+	// WebrtcDataChannelStateOpen (GST_WEBRTC_DATA_CHANNEL_STATE_OPEN): open.
 	WebrtcDataChannelStateOpen WebRTCDataChannelState = 2
-	// WebrtcDataChannelStateClosing: closing.
+	// WebrtcDataChannelStateClosing (GST_WEBRTC_DATA_CHANNEL_STATE_CLOSING):
+	// closing.
 	WebrtcDataChannelStateClosing WebRTCDataChannelState = 3
-	// WebrtcDataChannelStateClosed: closed.
+	// WebrtcDataChannelStateClosed (GST_WEBRTC_DATA_CHANNEL_STATE_CLOSED):
+	// closed.
 	WebrtcDataChannelStateClosed WebRTCDataChannelState = 4
 )
 
@@ -339,34 +348,42 @@ func (w WebRTCDataChannelState) String() string {
 	}
 }
 
-// WebRTCError: see <https://www.w3.org/TR/webrtc/#dom-rtcerrordetailtype> for
-// more information.
+// WebRTCError (GstWebRTCError): see
+// <https://www.w3.org/TR/webrtc/#dom-rtcerrordetailtype> for more information.
 type WebRTCError C.gint
 
 const (
-	// WebrtcErrorDataChannelFailure: data-channel-failure.
+	// WebrtcErrorDataChannelFailure (GST_WEBRTC_ERROR_DATA_CHANNEL_FAILURE):
+	// data-channel-failure.
 	WebrtcErrorDataChannelFailure WebRTCError = iota
-	// WebrtcErrorDTLSFailure: dtls-failure.
+	// WebrtcErrorDTLSFailure (GST_WEBRTC_ERROR_DTLS_FAILURE): dtls-failure.
 	WebrtcErrorDTLSFailure
-	// WebrtcErrorFingerprintFailure: fingerprint-failure.
+	// WebrtcErrorFingerprintFailure (GST_WEBRTC_ERROR_FINGERPRINT_FAILURE):
+	// fingerprint-failure.
 	WebrtcErrorFingerprintFailure
-	// WebrtcErrorSCTPFailure: sctp-failure.
+	// WebrtcErrorSCTPFailure (GST_WEBRTC_ERROR_SCTP_FAILURE): sctp-failure.
 	WebrtcErrorSCTPFailure
-	// WebrtcErrorSdpSyntaxError: sdp-syntax-error.
+	// WebrtcErrorSdpSyntaxError (GST_WEBRTC_ERROR_SDP_SYNTAX_ERROR):
+	// sdp-syntax-error.
 	WebrtcErrorSdpSyntaxError
-	// WebrtcErrorHardwareEncoderNotAvailable: hardware-encoder-not-available.
+	// WebrtcErrorHardwareEncoderNotAvailable
+	// (GST_WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE):
+	// hardware-encoder-not-available.
 	WebrtcErrorHardwareEncoderNotAvailable
-	// WebrtcErrorEncoderError: encoder-error.
+	// WebrtcErrorEncoderError (GST_WEBRTC_ERROR_ENCODER_ERROR): encoder-error.
 	WebrtcErrorEncoderError
-	// WebrtcErrorInvalidState: invalid-state (part of WebIDL specification).
+	// WebrtcErrorInvalidState (GST_WEBRTC_ERROR_INVALID_STATE): invalid-state
+	// (part of WebIDL specification).
 	WebrtcErrorInvalidState
-	// WebrtcErrorInternalFailure: GStreamer-specific failure, not matching any
-	// other value from the specification.
+	// WebrtcErrorInternalFailure (GST_WEBRTC_ERROR_INTERNAL_FAILURE):
+	// GStreamer-specific failure, not matching any other value from the
+	// specification.
 	WebrtcErrorInternalFailure
-	// WebrtcErrorInvalidModification: invalid-modification (part of WebIDL
-	// specification).
+	// WebrtcErrorInvalidModification (GST_WEBRTC_ERROR_INVALID_MODIFICATION):
+	// invalid-modification (part of WebIDL specification).
 	WebrtcErrorInvalidModification
-	// WebrtcErrorTypeError: type-error (maps to JavaScript TypeError).
+	// WebrtcErrorTypeError (GST_WEBRTC_ERROR_TYPE_ERROR): type-error (maps to
+	// JavaScript TypeError).
 	WebrtcErrorTypeError
 )
 
@@ -419,9 +436,9 @@ func WebRTCErrorQuark() glib.Quark {
 type WebRTCFECType C.gint
 
 const (
-	// WebrtcFecTypeNone: none.
+	// WebrtcFecTypeNone (GST_WEBRTC_FEC_TYPE_NONE): none.
 	WebrtcFecTypeNone WebRTCFECType = iota
-	// WebrtcFecTypeUlpRed: ulpfec + red.
+	// WebrtcFecTypeUlpRed (GST_WEBRTC_FEC_TYPE_ULP_RED): ulpfec + red.
 	WebrtcFecTypeUlpRed
 )
 
@@ -444,9 +461,9 @@ func (w WebRTCFECType) String() string {
 type WebRTCICEComponent C.gint
 
 const (
-	// WebrtcIceComponentRtp: RTP component.
+	// WebrtcIceComponentRtp (GST_WEBRTC_ICE_COMPONENT_RTP): RTP component.
 	WebrtcIceComponentRtp WebRTCICEComponent = iota
-	// WebrtcIceComponentRtcp: RTCP component.
+	// WebrtcIceComponentRtcp (GST_WEBRTC_ICE_COMPONENT_RTCP): RTCP component.
 	WebrtcIceComponentRtcp
 )
 
@@ -466,24 +483,30 @@ func (w WebRTCICEComponent) String() string {
 	}
 }
 
-// WebRTCICEConnectionState: see
+// WebRTCICEConnectionState (GstWebRTCICEConnectionState): see
 // <http://w3c.github.io/webrtc-pc/#dom-rtciceconnectionstate>.
 type WebRTCICEConnectionState C.gint
 
 const (
-	// NewWebrtcIceConnectionState: new.
+	// NewWebrtcIceConnectionState (GST_WEBRTC_ICE_CONNECTION_STATE_NEW): new.
 	NewWebrtcIceConnectionState WebRTCICEConnectionState = iota
-	// WebrtcIceConnectionStateChecking: checking.
+	// WebrtcIceConnectionStateChecking
+	// (GST_WEBRTC_ICE_CONNECTION_STATE_CHECKING): checking.
 	WebrtcIceConnectionStateChecking
-	// WebrtcIceConnectionStateConnected: connected.
+	// WebrtcIceConnectionStateConnected
+	// (GST_WEBRTC_ICE_CONNECTION_STATE_CONNECTED): connected.
 	WebrtcIceConnectionStateConnected
-	// WebrtcIceConnectionStateCompleted: completed.
+	// WebrtcIceConnectionStateCompleted
+	// (GST_WEBRTC_ICE_CONNECTION_STATE_COMPLETED): completed.
 	WebrtcIceConnectionStateCompleted
-	// WebrtcIceConnectionStateFailed: failed.
+	// WebrtcIceConnectionStateFailed (GST_WEBRTC_ICE_CONNECTION_STATE_FAILED):
+	// failed.
 	WebrtcIceConnectionStateFailed
-	// WebrtcIceConnectionStateDisconnected: disconnected.
+	// WebrtcIceConnectionStateDisconnected
+	// (GST_WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED): disconnected.
 	WebrtcIceConnectionStateDisconnected
-	// WebrtcIceConnectionStateClosed: closed.
+	// WebrtcIceConnectionStateClosed (GST_WEBRTC_ICE_CONNECTION_STATE_CLOSED):
+	// closed.
 	WebrtcIceConnectionStateClosed
 )
 
@@ -513,16 +536,18 @@ func (w WebRTCICEConnectionState) String() string {
 	}
 }
 
-// WebRTCICEGatheringState: see
+// WebRTCICEGatheringState (GstWebRTCICEGatheringState): see
 // <http://w3c.github.io/webrtc-pc/#dom-rtcicegatheringstate>.
 type WebRTCICEGatheringState C.gint
 
 const (
-	// NewWebrtcIceGatheringState: new.
+	// NewWebrtcIceGatheringState (GST_WEBRTC_ICE_GATHERING_STATE_NEW): new.
 	NewWebrtcIceGatheringState WebRTCICEGatheringState = iota
-	// WebrtcIceGatheringStateGathering: gathering.
+	// WebrtcIceGatheringStateGathering
+	// (GST_WEBRTC_ICE_GATHERING_STATE_GATHERING): gathering.
 	WebrtcIceGatheringStateGathering
-	// WebrtcIceGatheringStateComplete: complete.
+	// WebrtcIceGatheringStateComplete
+	// (GST_WEBRTC_ICE_GATHERING_STATE_COMPLETE): complete.
 	WebrtcIceGatheringStateComplete
 )
 
@@ -547,9 +572,9 @@ func (w WebRTCICEGatheringState) String() string {
 type WebRTCICERole C.gint
 
 const (
-	// WebrtcIceRoleControlled: controlled.
+	// WebrtcIceRoleControlled (GST_WEBRTC_ICE_ROLE_CONTROLLED): controlled.
 	WebrtcIceRoleControlled WebRTCICERole = iota
-	// WebrtcIceRoleControlling: controlling.
+	// WebrtcIceRoleControlling (GST_WEBRTC_ICE_ROLE_CONTROLLING): controlling.
 	WebrtcIceRoleControlling
 )
 
@@ -569,15 +594,16 @@ func (w WebRTCICERole) String() string {
 	}
 }
 
-// WebRTCICETransportPolicy: see
+// WebRTCICETransportPolicy (GstWebRTCICETransportPolicy): see
 // https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-24#section-4.1.1 for more
 // information.
 type WebRTCICETransportPolicy C.gint
 
 const (
-	// WebrtcIceTransportPolicyAll: all.
+	// WebrtcIceTransportPolicyAll (GST_WEBRTC_ICE_TRANSPORT_POLICY_ALL): all.
 	WebrtcIceTransportPolicyAll WebRTCICETransportPolicy = iota
-	// WebrtcIceTransportPolicyRelay: relay.
+	// WebrtcIceTransportPolicyRelay (GST_WEBRTC_ICE_TRANSPORT_POLICY_RELAY):
+	// relay.
 	WebrtcIceTransportPolicyRelay
 )
 
@@ -597,16 +623,16 @@ func (w WebRTCICETransportPolicy) String() string {
 	}
 }
 
-// WebRTCKind:
+// WebRTCKind (GstWebRTCKind):
 // https://w3c.github.io/mediacapture-main/#dom-mediastreamtrack-kind.
 type WebRTCKind C.gint
 
 const (
-	// WebrtcKindUnknown: kind has not yet been set.
+	// WebrtcKindUnknown (GST_WEBRTC_KIND_UNKNOWN): kind has not yet been set.
 	WebrtcKindUnknown WebRTCKind = iota
-	// WebrtcKindAudio: kind is audio.
+	// WebrtcKindAudio (GST_WEBRTC_KIND_AUDIO): kind is audio.
 	WebrtcKindAudio
-	// WebrtcKindVideo: kind is audio.
+	// WebrtcKindVideo (GST_WEBRTC_KIND_VIDEO): kind is audio.
 	WebrtcKindVideo
 )
 
@@ -628,22 +654,27 @@ func (w WebRTCKind) String() string {
 	}
 }
 
-// WebRTCPeerConnectionState: see
+// WebRTCPeerConnectionState (GstWebRTCPeerConnectionState): see
 // <http://w3c.github.io/webrtc-pc/#dom-rtcpeerconnectionstate>.
 type WebRTCPeerConnectionState C.gint
 
 const (
-	// NewWebrtcPeerConnectionState: new.
+	// NewWebrtcPeerConnectionState (GST_WEBRTC_PEER_CONNECTION_STATE_NEW): new.
 	NewWebrtcPeerConnectionState WebRTCPeerConnectionState = iota
-	// WebrtcPeerConnectionStateConnecting: connecting.
+	// WebrtcPeerConnectionStateConnecting
+	// (GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTING): connecting.
 	WebrtcPeerConnectionStateConnecting
-	// WebrtcPeerConnectionStateConnected: connected.
+	// WebrtcPeerConnectionStateConnected
+	// (GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTED): connected.
 	WebrtcPeerConnectionStateConnected
-	// WebrtcPeerConnectionStateDisconnected: disconnected.
+	// WebrtcPeerConnectionStateDisconnected
+	// (GST_WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED): disconnected.
 	WebrtcPeerConnectionStateDisconnected
-	// WebrtcPeerConnectionStateFailed: failed.
+	// WebrtcPeerConnectionStateFailed
+	// (GST_WEBRTC_PEER_CONNECTION_STATE_FAILED): failed.
 	WebrtcPeerConnectionStateFailed
-	// WebrtcPeerConnectionStateClosed: closed.
+	// WebrtcPeerConnectionStateClosed
+	// (GST_WEBRTC_PEER_CONNECTION_STATE_CLOSED): closed.
 	WebrtcPeerConnectionStateClosed
 )
 
@@ -671,18 +702,18 @@ func (w WebRTCPeerConnectionState) String() string {
 	}
 }
 
-// WebRTCPriorityType: see
+// WebRTCPriorityType (GstWebRTCPriorityType): see
 // <http://w3c.github.io/webrtc-pc/#dom-rtcprioritytype>.
 type WebRTCPriorityType C.gint
 
 const (
-	// WebrtcPriorityTypeVeryLow: very-low.
+	// WebrtcPriorityTypeVeryLow (GST_WEBRTC_PRIORITY_TYPE_VERY_LOW): very-low.
 	WebrtcPriorityTypeVeryLow WebRTCPriorityType = 1
-	// WebrtcPriorityTypeLow: low.
+	// WebrtcPriorityTypeLow (GST_WEBRTC_PRIORITY_TYPE_LOW): low.
 	WebrtcPriorityTypeLow WebRTCPriorityType = 2
-	// WebrtcPriorityTypeMedium: medium.
+	// WebrtcPriorityTypeMedium (GST_WEBRTC_PRIORITY_TYPE_MEDIUM): medium.
 	WebrtcPriorityTypeMedium WebRTCPriorityType = 3
-	// WebrtcPriorityTypeHigh: high.
+	// WebrtcPriorityTypeHigh (GST_WEBRTC_PRIORITY_TYPE_HIGH): high.
 	WebrtcPriorityTypeHigh WebRTCPriorityType = 4
 )
 
@@ -709,15 +740,20 @@ func (w WebRTCPriorityType) String() string {
 type WebRTCRTPTransceiverDirection C.gint
 
 const (
-	// WebrtcRtpTransceiverDirectionNone: none.
+	// WebrtcRtpTransceiverDirectionNone
+	// (GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE): none.
 	WebrtcRtpTransceiverDirectionNone WebRTCRTPTransceiverDirection = iota
-	// WebrtcRtpTransceiverDirectionInactive: inactive.
+	// WebrtcRtpTransceiverDirectionInactive
+	// (GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE): inactive.
 	WebrtcRtpTransceiverDirectionInactive
-	// WebrtcRtpTransceiverDirectionSendonly: sendonly.
+	// WebrtcRtpTransceiverDirectionSendonly
+	// (GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY): sendonly.
 	WebrtcRtpTransceiverDirectionSendonly
-	// WebrtcRtpTransceiverDirectionRecvonly: recvonly.
+	// WebrtcRtpTransceiverDirectionRecvonly
+	// (GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY): recvonly.
 	WebrtcRtpTransceiverDirectionRecvonly
-	// WebrtcRtpTransceiverDirectionSendrecv: sendrecv.
+	// WebrtcRtpTransceiverDirectionSendrecv
+	// (GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV): sendrecv.
 	WebrtcRtpTransceiverDirectionSendrecv
 )
 
@@ -743,18 +779,21 @@ func (w WebRTCRTPTransceiverDirection) String() string {
 	}
 }
 
-// WebRTCSCTPTransportState: see
+// WebRTCSCTPTransportState (GstWebRTCSCTPTransportState): see
 // <http://w3c.github.io/webrtc-pc/#dom-rtcsctptransportstate>.
 type WebRTCSCTPTransportState C.gint
 
 const (
-	// NewWebrtcSCTPTransportState: new.
+	// NewWebrtcSCTPTransportState (GST_WEBRTC_SCTP_TRANSPORT_STATE_NEW): new.
 	NewWebrtcSCTPTransportState WebRTCSCTPTransportState = iota
-	// WebrtcSCTPTransportStateConnecting: connecting.
+	// WebrtcSCTPTransportStateConnecting
+	// (GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING): connecting.
 	WebrtcSCTPTransportStateConnecting
-	// WebrtcSCTPTransportStateConnected: connected.
+	// WebrtcSCTPTransportStateConnected
+	// (GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED): connected.
 	WebrtcSCTPTransportStateConnected
-	// WebrtcSCTPTransportStateClosed: closed.
+	// WebrtcSCTPTransportStateClosed (GST_WEBRTC_SCTP_TRANSPORT_STATE_CLOSED):
+	// closed.
 	WebrtcSCTPTransportStateClosed
 )
 
@@ -778,17 +817,18 @@ func (w WebRTCSCTPTransportState) String() string {
 	}
 }
 
-// WebRTCSDPType: see <http://w3c.github.io/webrtc-pc/#rtcsdptype>.
+// WebRTCSDPType (GstWebRTCSDPType): see
+// <http://w3c.github.io/webrtc-pc/#rtcsdptype>.
 type WebRTCSDPType C.gint
 
 const (
-	// WebrtcSdpTypeOffer: offer.
+	// WebrtcSdpTypeOffer (GST_WEBRTC_SDP_TYPE_OFFER): offer.
 	WebrtcSdpTypeOffer WebRTCSDPType = 1
-	// WebrtcSdpTypePranswer: pranswer.
+	// WebrtcSdpTypePranswer (GST_WEBRTC_SDP_TYPE_PRANSWER): pranswer.
 	WebrtcSdpTypePranswer WebRTCSDPType = 2
-	// WebrtcSdpTypeAnswer: answer.
+	// WebrtcSdpTypeAnswer (GST_WEBRTC_SDP_TYPE_ANSWER): answer.
 	WebrtcSdpTypeAnswer WebRTCSDPType = 3
-	// WebrtcSdpTypeRollback: rollback.
+	// WebrtcSdpTypeRollback (GST_WEBRTC_SDP_TYPE_ROLLBACK): rollback.
 	WebrtcSdpTypeRollback WebRTCSDPType = 4
 )
 
@@ -836,22 +876,26 @@ func WebRTCSDPTypeToString(typ WebRTCSDPType) string {
 	return _utf8
 }
 
-// WebRTCSignalingState: see
+// WebRTCSignalingState (GstWebRTCSignalingState): see
 // <http://w3c.github.io/webrtc-pc/#dom-rtcsignalingstate>.
 type WebRTCSignalingState C.gint
 
 const (
-	// WebrtcSignalingStateStable: stable.
+	// WebrtcSignalingStateStable (GST_WEBRTC_SIGNALING_STATE_STABLE): stable.
 	WebrtcSignalingStateStable WebRTCSignalingState = iota
-	// WebrtcSignalingStateClosed: closed.
+	// WebrtcSignalingStateClosed (GST_WEBRTC_SIGNALING_STATE_CLOSED): closed.
 	WebrtcSignalingStateClosed
-	// WebrtcSignalingStateHaveLocalOffer: have-local-offer.
+	// WebrtcSignalingStateHaveLocalOffer
+	// (GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER): have-local-offer.
 	WebrtcSignalingStateHaveLocalOffer
-	// WebrtcSignalingStateHaveRemoteOffer: have-remote-offer.
+	// WebrtcSignalingStateHaveRemoteOffer
+	// (GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER): have-remote-offer.
 	WebrtcSignalingStateHaveRemoteOffer
-	// WebrtcSignalingStateHaveLocalPranswer: have-local-pranswer.
+	// WebrtcSignalingStateHaveLocalPranswer
+	// (GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER): have-local-pranswer.
 	WebrtcSignalingStateHaveLocalPranswer
-	// WebrtcSignalingStateHaveRemotePranswer: have-remote-pranswer.
+	// WebrtcSignalingStateHaveRemotePranswer
+	// (GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER): have-remote-pranswer.
 	WebrtcSignalingStateHaveRemotePranswer
 )
 
@@ -879,37 +923,44 @@ func (w WebRTCSignalingState) String() string {
 	}
 }
 
-// WebRTCStatsType: see <https://w3c.github.io/webrtc-stats/#dom-rtcstatstype>.
+// WebRTCStatsType (GstWebRTCStatsType): see
+// <https://w3c.github.io/webrtc-stats/#dom-rtcstatstype>.
 type WebRTCStatsType C.gint
 
 const (
-	// WebrtcStatsCodec: codec.
+	// WebrtcStatsCodec (GST_WEBRTC_STATS_CODEC): codec.
 	WebrtcStatsCodec WebRTCStatsType = 1
-	// WebrtcStatsInboundRtp: inbound-rtp.
+	// WebrtcStatsInboundRtp (GST_WEBRTC_STATS_INBOUND_RTP): inbound-rtp.
 	WebrtcStatsInboundRtp WebRTCStatsType = 2
-	// WebrtcStatsOutboundRtp: outbound-rtp.
+	// WebrtcStatsOutboundRtp (GST_WEBRTC_STATS_OUTBOUND_RTP): outbound-rtp.
 	WebrtcStatsOutboundRtp WebRTCStatsType = 3
-	// WebrtcStatsRemoteInboundRtp: remote-inbound-rtp.
+	// WebrtcStatsRemoteInboundRtp (GST_WEBRTC_STATS_REMOTE_INBOUND_RTP):
+	// remote-inbound-rtp.
 	WebrtcStatsRemoteInboundRtp WebRTCStatsType = 4
-	// WebrtcStatsRemoteOutboundRtp: remote-outbound-rtp.
+	// WebrtcStatsRemoteOutboundRtp (GST_WEBRTC_STATS_REMOTE_OUTBOUND_RTP):
+	// remote-outbound-rtp.
 	WebrtcStatsRemoteOutboundRtp WebRTCStatsType = 5
-	// WebrtcStatsCsrc: csrc.
+	// WebrtcStatsCsrc (GST_WEBRTC_STATS_CSRC): csrc.
 	WebrtcStatsCsrc WebRTCStatsType = 6
-	// WebrtcStatsPeerConnection: peer-connection.
+	// WebrtcStatsPeerConnection (GST_WEBRTC_STATS_PEER_CONNECTION):
+	// peer-connection.
 	WebrtcStatsPeerConnection WebRTCStatsType = 7
-	// WebrtcStatsDataChannel: data-channel.
+	// WebrtcStatsDataChannel (GST_WEBRTC_STATS_DATA_CHANNEL): data-channel.
 	WebrtcStatsDataChannel WebRTCStatsType = 8
-	// WebrtcStatsStream: stream.
+	// WebrtcStatsStream (GST_WEBRTC_STATS_STREAM): stream.
 	WebrtcStatsStream WebRTCStatsType = 9
-	// WebrtcStatsTransport: transport.
+	// WebrtcStatsTransport (GST_WEBRTC_STATS_TRANSPORT): transport.
 	WebrtcStatsTransport WebRTCStatsType = 10
-	// WebrtcStatsCandidatePair: candidate-pair.
+	// WebrtcStatsCandidatePair (GST_WEBRTC_STATS_CANDIDATE_PAIR):
+	// candidate-pair.
 	WebrtcStatsCandidatePair WebRTCStatsType = 11
-	// WebrtcStatsLocalCandidate: local-candidate.
+	// WebrtcStatsLocalCandidate (GST_WEBRTC_STATS_LOCAL_CANDIDATE):
+	// local-candidate.
 	WebrtcStatsLocalCandidate WebRTCStatsType = 12
-	// WebrtcStatsRemoteCandidate: remote-candidate.
+	// WebrtcStatsRemoteCandidate (GST_WEBRTC_STATS_REMOTE_CANDIDATE):
+	// remote-candidate.
 	WebrtcStatsRemoteCandidate WebRTCStatsType = 13
-	// WebrtcStatsCertificate: certificate.
+	// WebrtcStatsCertificate (GST_WEBRTC_STATS_CERTIFICATE): certificate.
 	WebrtcStatsCertificate WebRTCStatsType = 14
 )
 
@@ -966,6 +1017,18 @@ var (
 	_ gst.GstObjector = (*WebRTCDTLSTransport)(nil)
 )
 
+// WebRTCDTLSTransporter describes types inherited from WebRTCDTLSTransport.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type WebRTCDTLSTransporter interface {
+	gst.GstObjector
+
+	baseWebRTCDTLSTransport() *WebRTCDTLSTransport
+}
+
+var _ WebRTCDTLSTransporter = (*WebRTCDTLSTransport)(nil)
+
 func wrapWebRTCDTLSTransport(obj *coreglib.Object) *WebRTCDTLSTransport {
 	return &WebRTCDTLSTransport{
 		GstObject: gst.GstObject{
@@ -980,6 +1043,15 @@ func marshalWebRTCDTLSTransport(p uintptr) (interface{}, error) {
 	return wrapWebRTCDTLSTransport(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (v *WebRTCDTLSTransport) baseWebRTCDTLSTransport() *WebRTCDTLSTransport {
+	return v
+}
+
+// BaseWebRTCDTLSTransport returns the underlying base object.
+func BaseWebRTCDTLSTransport(obj WebRTCDTLSTransporter) *WebRTCDTLSTransport {
+	return obj.baseWebRTCDTLSTransport()
+}
+
 type WebRTCDataChannel struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -989,12 +1061,35 @@ var (
 	_ coreglib.Objector = (*WebRTCDataChannel)(nil)
 )
 
-// WebRTCDataChanneller describes types inherited from class WebRTCDataChannel.
+// WebRTCDataChanneller describes types inherited from WebRTCDataChannel.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type WebRTCDataChanneller interface {
 	coreglib.Objector
+
+	// Close (gst_webrtc_data_channel_close) the channel.
+	Close()
+	// SendData (gst_webrtc_data_channel_send_data): send data as a data message
+	// over channel.
+	SendData(data *glib.Bytes)
+	// SendDataFull (gst_webrtc_data_channel_send_data_full): send data as a
+	// data message over channel.
+	SendDataFull(data *glib.Bytes) error
+	// SendString (gst_webrtc_data_channel_send_string): send str as a string
+	// message over channel.
+	SendString(str string)
+	// SendStringFull (gst_webrtc_data_channel_send_string_full): send str as a
+	// string message over channel.
+	SendStringFull(str string) error
+
+	ConnectOnBufferedAmountLow(func()) coreglib.SignalHandle
+	ConnectOnClose(func()) coreglib.SignalHandle
+	ConnectOnError(func(err error)) coreglib.SignalHandle
+	ConnectOnMessageData(func(data *glib.Bytes)) coreglib.SignalHandle
+	ConnectOnMessageString(func(data string)) coreglib.SignalHandle
+	ConnectOnOpen(func()) coreglib.SignalHandle
+
 	baseWebRTCDataChannel() *WebRTCDataChannel
 }
 
@@ -1043,7 +1138,7 @@ func (channel *WebRTCDataChannel) ConnectOnOpen(f func()) coreglib.SignalHandle 
 	return coreglib.ConnectGeneratedClosure(channel, "on-open", false, unsafe.Pointer(C._gotk4_gstwebrtc1_WebRTCDataChannel_ConnectOnOpen), f)
 }
 
-// Close the channel.
+// Close (gst_webrtc_data_channel_close) the channel.
 func (channel *WebRTCDataChannel) Close() {
 	var _arg0 *C.GstWebRTCDataChannel // out
 
@@ -1053,7 +1148,8 @@ func (channel *WebRTCDataChannel) Close() {
 	runtime.KeepAlive(channel)
 }
 
-// SendData: send data as a data message over channel.
+// SendData (gst_webrtc_data_channel_send_data): send data as a data message
+// over channel.
 //
 // The function takes the following parameters:
 //
@@ -1072,7 +1168,8 @@ func (channel *WebRTCDataChannel) SendData(data *glib.Bytes) {
 	runtime.KeepAlive(data)
 }
 
-// SendDataFull: send data as a data message over channel.
+// SendDataFull (gst_webrtc_data_channel_send_data_full): send data as a data
+// message over channel.
 //
 // The function takes the following parameters:
 //
@@ -1100,7 +1197,8 @@ func (channel *WebRTCDataChannel) SendDataFull(data *glib.Bytes) error {
 	return _goerr
 }
 
-// SendString: send str as a string message over channel.
+// SendString (gst_webrtc_data_channel_send_string): send str as a string
+// message over channel.
 //
 // The function takes the following parameters:
 //
@@ -1120,7 +1218,8 @@ func (channel *WebRTCDataChannel) SendString(str string) {
 	runtime.KeepAlive(str)
 }
 
-// SendStringFull: send str as a string message over channel.
+// SendStringFull (gst_webrtc_data_channel_send_string_full): send str as a
+// string message over channel.
 //
 // The function takes the following parameters:
 //
@@ -1303,12 +1402,37 @@ var (
 	_ gst.GstObjector = (*WebRTCICE)(nil)
 )
 
-// WebRTCICEer describes types inherited from class WebRTCICE.
+// WebRTCICEer describes types inherited from WebRTCICE.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type WebRTCICEer interface {
-	coreglib.Objector
+	gst.GstObjector
+
+	AddCandidate(stream WebRTCICEStreamer, candidate string, promise *gst.Promise)
+	AddStream(sessionId uint) WebRTCICEStreamer
+	AddTurnServer(uri string) bool
+	FindTransport(stream WebRTCICEStreamer, component WebRTCICEComponent) WebRTCICETransporter
+	GatherCandidates(stream WebRTCICEStreamer) bool
+	HTTPProxy() string
+	IsController() bool
+	LocalCandidates(stream WebRTCICEStreamer) []*WebRTCICECandidateStats
+	RemoteCandidates(stream WebRTCICEStreamer) []*WebRTCICECandidateStats
+	SelectedPair(stream WebRTCICEStreamer) (localStats, remoteStats *WebRTCICECandidateStats, ok bool)
+	StunServer() string
+	TurnServer() string
+	SetForceRelay(forceRelay bool)
+	// SetHTTPProxy (gst_webrtc_ice_set_http_proxy): set HTTP Proxy to be used
+	// when connecting to TURN server.
+	SetHTTPProxy(uri string)
+	SetIsController(controller bool)
+	SetLocalCredentials(stream WebRTCICEStreamer, ufrag, pwd string) bool
+	SetOnIceCandidate(fn WebRTCICEOnCandidateFunc)
+	SetRemoteCredentials(stream WebRTCICEStreamer, ufrag, pwd string) bool
+	SetStunServer(uri string)
+	SetTos(stream WebRTCICEStreamer, tos uint)
+	SetTurnServer(uri string)
+
 	baseWebRTCICE() *WebRTCICE
 }
 
@@ -1839,7 +1963,8 @@ func (ice *WebRTCICE) SetForceRelay(forceRelay bool) {
 	runtime.KeepAlive(forceRelay)
 }
 
-// SetHTTPProxy: set HTTP Proxy to be used when connecting to TURN server.
+// SetHTTPProxy (gst_webrtc_ice_set_http_proxy): set HTTP Proxy to be used when
+// connecting to TURN server.
 //
 // The function takes the following parameters:
 //
@@ -2680,12 +2805,16 @@ var (
 	_ gst.GstObjector = (*WebRTCICEStream)(nil)
 )
 
-// WebRTCICEStreamer describes types inherited from class WebRTCICEStream.
+// WebRTCICEStreamer describes types inherited from WebRTCICEStream.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type WebRTCICEStreamer interface {
-	coreglib.Objector
+	gst.GstObjector
+
+	FindTransport(component WebRTCICEComponent) WebRTCICETransporter
+	GatherCandidates() bool
+
 	baseWebRTCICEStream() *WebRTCICEStream
 }
 
@@ -2890,12 +3019,21 @@ var (
 	_ gst.GstObjector = (*WebRTCICETransport)(nil)
 )
 
-// WebRTCICETransporter describes types inherited from class WebRTCICETransport.
+// WebRTCICETransporter describes types inherited from WebRTCICETransport.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type WebRTCICETransporter interface {
-	coreglib.Objector
+	gst.GstObjector
+
+	ConnectionStateChange(newState WebRTCICEConnectionState)
+	GatheringStateChange(newState WebRTCICEGatheringState)
+	NewCandidate(streamId uint, component WebRTCICEComponent, attr string)
+	SelectedPairChange()
+
+	ConnectOnNewCandidate(func(object string)) coreglib.SignalHandle
+	ConnectOnSelectedCandidatePairChange(func()) coreglib.SignalHandle
+
 	baseWebRTCICETransport() *WebRTCICETransport
 }
 
@@ -3032,7 +3170,8 @@ func (transport *WebRTCICETransport) gatherCandidates() bool {
 	return _ok
 }
 
-// WebRTCRTPReceiver: object to track the receiving aspect of the stream
+// WebRTCRTPReceiver (GstWebRTCRTPReceiver): object to track the receiving
+// aspect of the stream
 //
 // Mostly matches the WebRTC RTCRtpReceiver interface.
 type WebRTCRTPReceiver struct {
@@ -3043,6 +3182,18 @@ type WebRTCRTPReceiver struct {
 var (
 	_ gst.GstObjector = (*WebRTCRTPReceiver)(nil)
 )
+
+// WebRTCRTPReceiverer describes types inherited from WebRTCRTPReceiver.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type WebRTCRTPReceiverer interface {
+	gst.GstObjector
+
+	baseWebRTCRTPReceiver() *WebRTCRTPReceiver
+}
+
+var _ WebRTCRTPReceiverer = (*WebRTCRTPReceiver)(nil)
 
 func wrapWebRTCRTPReceiver(obj *coreglib.Object) *WebRTCRTPReceiver {
 	return &WebRTCRTPReceiver{
@@ -3058,7 +3209,17 @@ func marshalWebRTCRTPReceiver(p uintptr) (interface{}, error) {
 	return wrapWebRTCRTPReceiver(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// WebRTCRTPSender: object to track the sending aspect of the stream
+func (v *WebRTCRTPReceiver) baseWebRTCRTPReceiver() *WebRTCRTPReceiver {
+	return v
+}
+
+// BaseWebRTCRTPReceiver returns the underlying base object.
+func BaseWebRTCRTPReceiver(obj WebRTCRTPReceiverer) *WebRTCRTPReceiver {
+	return obj.baseWebRTCRTPReceiver()
+}
+
+// WebRTCRTPSender (GstWebRTCRTPSender): object to track the sending aspect of
+// the stream
 //
 // Mostly matches the WebRTC RTCRtpSender interface.
 type WebRTCRTPSender struct {
@@ -3069,6 +3230,23 @@ type WebRTCRTPSender struct {
 var (
 	_ gst.GstObjector = (*WebRTCRTPSender)(nil)
 )
+
+// WebRTCRTPSenderer describes types inherited from WebRTCRTPSender.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type WebRTCRTPSenderer interface {
+	gst.GstObjector
+
+	// SetPriority (gst_webrtc_rtp_sender_set_priority) sets the content of the
+	// IPv4 Type of Service (ToS), also known as DSCP (Differentiated Services
+	// Code Point).
+	SetPriority(priority WebRTCPriorityType)
+
+	baseWebRTCRTPSender() *WebRTCRTPSender
+}
+
+var _ WebRTCRTPSenderer = (*WebRTCRTPSender)(nil)
 
 func wrapWebRTCRTPSender(obj *coreglib.Object) *WebRTCRTPSender {
 	return &WebRTCRTPSender{
@@ -3084,9 +3262,18 @@ func marshalWebRTCRTPSender(p uintptr) (interface{}, error) {
 	return wrapWebRTCRTPSender(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// SetPriority sets the content of the IPv4 Type of Service (ToS), also known as
-// DSCP (Differentiated Services Code Point). This also sets the Traffic Class
-// field of IPv6.
+func (sender *WebRTCRTPSender) baseWebRTCRTPSender() *WebRTCRTPSender {
+	return sender
+}
+
+// BaseWebRTCRTPSender returns the underlying base object.
+func BaseWebRTCRTPSender(obj WebRTCRTPSenderer) *WebRTCRTPSender {
+	return obj.baseWebRTCRTPSender()
+}
+
+// SetPriority (gst_webrtc_rtp_sender_set_priority) sets the content of the
+// IPv4 Type of Service (ToS), also known as DSCP (Differentiated Services Code
+// Point). This also sets the Traffic Class field of IPv6.
 //
 // The function takes the following parameters:
 //
@@ -3103,7 +3290,8 @@ func (sender *WebRTCRTPSender) SetPriority(priority WebRTCPriorityType) {
 	runtime.KeepAlive(priority)
 }
 
-// WebRTCRTPTransceiver: mostly matches the WebRTC RTCRtpTransceiver interface.
+// WebRTCRTPTransceiver (GstWebRTCRTPTransceiver): mostly matches the WebRTC
+// RTCRtpTransceiver interface.
 type WebRTCRTPTransceiver struct {
 	_ [0]func() // equal guard
 	gst.GstObject
@@ -3113,12 +3301,13 @@ var (
 	_ gst.GstObjector = (*WebRTCRTPTransceiver)(nil)
 )
 
-// WebRTCRTPTransceiverer describes types inherited from class WebRTCRTPTransceiver.
+// WebRTCRTPTransceiverer describes types inherited from WebRTCRTPTransceiver.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type WebRTCRTPTransceiverer interface {
-	coreglib.Objector
+	gst.GstObjector
+
 	baseWebRTCRTPTransceiver() *WebRTCRTPTransceiver
 }
 
@@ -3156,12 +3345,13 @@ var (
 	_ gst.GstObjector = (*WebRTCSCTPTransport)(nil)
 )
 
-// WebRTCSCTPTransporter describes types inherited from class WebRTCSCTPTransport.
+// WebRTCSCTPTransporter describes types inherited from WebRTCSCTPTransport.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type WebRTCSCTPTransporter interface {
-	coreglib.Objector
+	gst.GstObjector
+
 	baseWebRTCSCTPTransport() *WebRTCSCTPTransport
 }
 
@@ -3190,7 +3380,8 @@ func BaseWebRTCSCTPTransport(obj WebRTCSCTPTransporter) *WebRTCSCTPTransport {
 	return obj.baseWebRTCSCTPTransport()
 }
 
-// WebRTCICECandidateStats: instance of this type is always passed by reference.
+// WebRTCICECandidateStats (GstWebRTCICECandidateStats): instance of this type
+// is always passed by reference.
 type WebRTCICECandidateStats struct {
 	*webRTCICECandidateStats
 }
@@ -3313,7 +3504,8 @@ func (stats *WebRTCICECandidateStats) Copy() *WebRTCICECandidateStats {
 	return _webRTCICECandidateStats
 }
 
-// WebRTCICEClass: instance of this type is always passed by reference.
+// WebRTCICEClass (GstWebRTCICEClass): instance of this type is always passed by
+// reference.
 type WebRTCICEClass struct {
 	*webRTCICEClass
 }
@@ -3342,7 +3534,8 @@ func (w *WebRTCICEClass) GstReserved() [4]unsafe.Pointer {
 	return _v
 }
 
-// WebRTCICEStreamClass: instance of this type is always passed by reference.
+// WebRTCICEStreamClass (GstWebRTCICEStreamClass): instance of this type is
+// always passed by reference.
 type WebRTCICEStreamClass struct {
 	*webRTCICEStreamClass
 }
@@ -3359,7 +3552,8 @@ func (w *WebRTCICEStreamClass) ParentClass() *gst.ObjectClass {
 	return _v
 }
 
-// WebRTCICETransportClass: instance of this type is always passed by reference.
+// WebRTCICETransportClass (GstWebRTCICETransportClass): instance of this type
+// is always passed by reference.
 type WebRTCICETransportClass struct {
 	*webRTCICETransportClass
 }
@@ -3388,7 +3582,7 @@ func (w *WebRTCICETransportClass) Padding() [4]unsafe.Pointer {
 	return _v
 }
 
-// WebRTCSessionDescription: see
+// WebRTCSessionDescription (GstWebRTCSessionDescription): see
 // <https://www.w3.org/TR/webrtc/#rtcsessiondescription-class>
 //
 // An instance of this type is always passed by reference.

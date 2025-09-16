@@ -5,6 +5,7 @@ go 1.24
 require (
 	github.com/diamondburned/gotk4 v0.3.1
 	github.com/diamondburned/gotk4/pkg v0.3.1
+	github.com/go-gst/go-glib v1.4.0
 )
 
 require (
@@ -13,9 +14,11 @@ require (
 	github.com/fatih/color v1.10.0 // indirect
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/mattn/go-isatty v0.0.12 // indirect
+	github.com/mattn/go-pointer v0.0.1 // indirect
 	go4.org/unsafe/assume-no-moving-gc v0.0.0-20231121144256-b99613f794b6 // indirect
-	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
+	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
+	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae // indirect
 )
 
-replace github.com/diamondburned/gotk4 => github.com/rswilli/gotk4 v0.0.0-20250207153004-4452c4b29580
+replace github.com/diamondburned/gotk4 => github.com/rswilli/gotk4 v0.0.0-20250218094048-e83785744cc4
