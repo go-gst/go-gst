@@ -2792,7 +2792,7 @@ func MessageNewMpegtsSection(parent gst.GstObjector, section *Section) *gst.Mess
 	var _arg2 *C.GstMpegtsSection // out
 	var _cret *C.GstMessage       // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg2 = (*C.GstMpegtsSection)(gextras.StructNative(unsafe.Pointer(section)))
 
 	_cret = C.gst_message_new_mpegts_section(_arg1, _arg2)
@@ -7622,7 +7622,7 @@ func (section *Section) SendEvent(element gst.Elementer) bool {
 	var _cret C.gboolean          // in
 
 	_arg0 = (*C.GstMpegtsSection)(gextras.StructNative(unsafe.Pointer(section)))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_mpegts_section_send_event(_arg0, _arg1)
 	runtime.KeepAlive(section)

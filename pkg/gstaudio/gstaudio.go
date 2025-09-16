@@ -3088,7 +3088,7 @@ func (volume *StreamVolume) Mute() bool {
 	var _arg0 *C.GstStreamVolume // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstStreamVolume)(unsafe.Pointer(coreglib.InternObject(volume).Native()))
+	_arg0 = (*C.GstStreamVolume)(unsafe.Pointer(coreglib.BaseObject(volume).Native()))
 
 	_cret = C.gst_stream_volume_get_mute(_arg0)
 	runtime.KeepAlive(volume)
@@ -3114,7 +3114,7 @@ func (volume *StreamVolume) Volume(format StreamVolumeFormat) float64 {
 	var _arg1 C.GstStreamVolumeFormat // out
 	var _cret C.gdouble               // in
 
-	_arg0 = (*C.GstStreamVolume)(unsafe.Pointer(coreglib.InternObject(volume).Native()))
+	_arg0 = (*C.GstStreamVolume)(unsafe.Pointer(coreglib.BaseObject(volume).Native()))
 	_arg1 = C.GstStreamVolumeFormat(format)
 
 	_cret = C.gst_stream_volume_get_volume(_arg0, _arg1)
@@ -3135,7 +3135,7 @@ func (volume *StreamVolume) SetMute(mute bool) {
 	var _arg0 *C.GstStreamVolume // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstStreamVolume)(unsafe.Pointer(coreglib.InternObject(volume).Native()))
+	_arg0 = (*C.GstStreamVolume)(unsafe.Pointer(coreglib.BaseObject(volume).Native()))
 	if mute {
 		_arg1 = C.TRUE
 	}
@@ -3154,7 +3154,7 @@ func (volume *StreamVolume) SetVolume(format StreamVolumeFormat, val float64) {
 	var _arg1 C.GstStreamVolumeFormat // out
 	var _arg2 C.gdouble               // out
 
-	_arg0 = (*C.GstStreamVolume)(unsafe.Pointer(coreglib.InternObject(volume).Native()))
+	_arg0 = (*C.GstStreamVolume)(unsafe.Pointer(coreglib.BaseObject(volume).Native()))
 	_arg1 = C.GstStreamVolumeFormat(format)
 	_arg2 = C.gdouble(val)
 
@@ -3352,8 +3352,8 @@ func (aagg *AudioAggregator) SetSinkCaps(pad *AudioAggregatorPad, caps *gst.Caps
 	var _arg1 *C.GstAudioAggregatorPad // out
 	var _arg2 *C.GstCaps               // out
 
-	_arg0 = (*C.GstAudioAggregator)(unsafe.Pointer(coreglib.InternObject(aagg).Native()))
-	_arg1 = (*C.GstAudioAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstAudioAggregator)(unsafe.Pointer(coreglib.BaseObject(aagg).Native()))
+	_arg1 = (*C.GstAudioAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	C.gst_audio_aggregator_set_sink_caps(_arg0, _arg1, _arg2)
@@ -3388,8 +3388,8 @@ func (aagg *AudioAggregator) aggregateOneBuffer(pad *AudioAggregatorPad, inbuf *
 	var _arg6 C.guint                  // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstAudioAggregator)(unsafe.Pointer(coreglib.InternObject(aagg).Native()))
-	_arg1 = (*C.GstAudioAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstAudioAggregator)(unsafe.Pointer(coreglib.BaseObject(aagg).Native()))
+	_arg1 = (*C.GstAudioAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg2 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inbuf)))
 	_arg3 = C.guint(inOffset)
 	_arg4 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(outbuf)))
@@ -3423,7 +3423,7 @@ func (aagg *AudioAggregator) createOutputBuffer(numFrames uint) *gst.Buffer {
 	var _arg1 C.guint               // out
 	var _cret *C.GstBuffer          // in
 
-	_arg0 = (*C.GstAudioAggregator)(unsafe.Pointer(coreglib.InternObject(aagg).Native()))
+	_arg0 = (*C.GstAudioAggregator)(unsafe.Pointer(coreglib.BaseObject(aagg).Native()))
 	_arg1 = C.guint(numFrames)
 
 	_cret = C._gotk4_gstaudio1_AudioAggregator_virtual_create_output_buffer(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -3593,7 +3593,7 @@ func (pad *AudioAggregatorPad) convertBuffer(inInfo, outInfo *AudioInfo, buffer 
 	var _arg3 *C.GstBuffer             // out
 	var _cret *C.GstBuffer             // in
 
-	_arg0 = (*C.GstAudioAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstAudioAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstAudioInfo)(gextras.StructNative(unsafe.Pointer(inInfo)))
 	_arg2 = (*C.GstAudioInfo)(gextras.StructNative(unsafe.Pointer(outInfo)))
 	_arg3 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
@@ -3624,7 +3624,7 @@ func (pad *AudioAggregatorPad) updateConversionInfo() {
 
 	var _arg0 *C.GstAudioAggregatorPad // out
 
-	_arg0 = (*C.GstAudioAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstAudioAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C._gotk4_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(pad)
@@ -3721,7 +3721,7 @@ func (sink *AudioBaseSink) CreateRingbuffer() AudioRingBufferer {
 	var _arg0 *C.GstAudioBaseSink   // out
 	var _cret *C.GstAudioRingBuffer // in
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C.gst_audio_base_sink_create_ringbuffer(_arg0)
 	runtime.KeepAlive(sink)
@@ -3758,7 +3758,7 @@ func (sink *AudioBaseSink) AlignmentThreshold() gst.ClockTime {
 	var _arg0 *C.GstAudioBaseSink // out
 	var _cret C.GstClockTime      // in
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C.gst_audio_base_sink_get_alignment_threshold(_arg0)
 	runtime.KeepAlive(sink)
@@ -3779,7 +3779,7 @@ func (sink *AudioBaseSink) DiscontWait() gst.ClockTime {
 	var _arg0 *C.GstAudioBaseSink // out
 	var _cret C.GstClockTime      // in
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C.gst_audio_base_sink_get_discont_wait(_arg0)
 	runtime.KeepAlive(sink)
@@ -3801,7 +3801,7 @@ func (sink *AudioBaseSink) DriftTolerance() int64 {
 	var _arg0 *C.GstAudioBaseSink // out
 	var _cret C.gint64            // in
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C.gst_audio_base_sink_get_drift_tolerance(_arg0)
 	runtime.KeepAlive(sink)
@@ -3823,7 +3823,7 @@ func (sink *AudioBaseSink) ProvideClock() bool {
 	var _arg0 *C.GstAudioBaseSink // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C.gst_audio_base_sink_get_provide_clock(_arg0)
 	runtime.KeepAlive(sink)
@@ -3846,7 +3846,7 @@ func (sink *AudioBaseSink) SlaveMethod() AudioBaseSinkSlaveMethod {
 	var _arg0 *C.GstAudioBaseSink           // out
 	var _cret C.GstAudioBaseSinkSlaveMethod // in
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C.gst_audio_base_sink_get_slave_method(_arg0)
 	runtime.KeepAlive(sink)
@@ -3866,7 +3866,7 @@ func (sink *AudioBaseSink) SlaveMethod() AudioBaseSinkSlaveMethod {
 func (sink *AudioBaseSink) ReportDeviceFailure() {
 	var _arg0 *C.GstAudioBaseSink // out
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	C.gst_audio_base_sink_report_device_failure(_arg0)
 	runtime.KeepAlive(sink)
@@ -3881,7 +3881,7 @@ func (sink *AudioBaseSink) SetAlignmentThreshold(alignmentThreshold gst.ClockTim
 	var _arg0 *C.GstAudioBaseSink // out
 	var _arg1 C.GstClockTime      // out
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	_arg1 = C.GstClockTime(alignmentThreshold)
 
 	C.gst_audio_base_sink_set_alignment_threshold(_arg0, _arg1)
@@ -3906,7 +3906,7 @@ func (sink *AudioBaseSink) SetCustomSlavingCallback(callback AudioBaseSinkCustom
 	var _arg2 C.gpointer
 	var _arg3 C.GDestroyNotify
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSinkCustomSlavingCallback)
 	_arg2 = C.gpointer(gbox.Assign(callback))
 	_arg3 = (C.GDestroyNotify)((*[0]byte)(C.callbackDelete))
@@ -3926,7 +3926,7 @@ func (sink *AudioBaseSink) SetDiscontWait(discontWait gst.ClockTime) {
 	var _arg0 *C.GstAudioBaseSink // out
 	var _arg1 C.GstClockTime      // out
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	_arg1 = C.GstClockTime(discontWait)
 
 	C.gst_audio_base_sink_set_discont_wait(_arg0, _arg1)
@@ -3943,7 +3943,7 @@ func (sink *AudioBaseSink) SetDriftTolerance(driftTolerance int64) {
 	var _arg0 *C.GstAudioBaseSink // out
 	var _arg1 C.gint64            // out
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	_arg1 = C.gint64(driftTolerance)
 
 	C.gst_audio_base_sink_set_drift_tolerance(_arg0, _arg1)
@@ -3963,7 +3963,7 @@ func (sink *AudioBaseSink) SetProvideClock(provide bool) {
 	var _arg0 *C.GstAudioBaseSink // out
 	var _arg1 C.gboolean          // out
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	if provide {
 		_arg1 = C.TRUE
 	}
@@ -3982,7 +3982,7 @@ func (sink *AudioBaseSink) SetSlaveMethod(method AudioBaseSinkSlaveMethod) {
 	var _arg0 *C.GstAudioBaseSink           // out
 	var _arg1 C.GstAudioBaseSinkSlaveMethod // out
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	_arg1 = C.GstAudioBaseSinkSlaveMethod(method)
 
 	C.gst_audio_base_sink_set_slave_method(_arg0, _arg1)
@@ -4004,7 +4004,7 @@ func (sink *AudioBaseSink) createRingbuffer() AudioRingBufferer {
 	var _arg0 *C.GstAudioBaseSink   // out
 	var _cret *C.GstAudioRingBuffer // in
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(sink)
@@ -4042,7 +4042,7 @@ func (sink *AudioBaseSink) payload(buffer *gst.Buffer) *gst.Buffer {
 	var _arg1 *C.GstBuffer        // out
 	var _cret *C.GstBuffer        // in
 
-	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioBaseSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 
 	_cret = C._gotk4_gstaudio1_AudioBaseSink_virtual_payload(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -4144,7 +4144,7 @@ func (src *AudioBaseSrc) CreateRingbuffer() AudioRingBufferer {
 	var _arg0 *C.GstAudioBaseSrc    // out
 	var _cret *C.GstAudioRingBuffer // in
 
-	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C.gst_audio_base_src_create_ringbuffer(_arg0)
 	runtime.KeepAlive(src)
@@ -4181,7 +4181,7 @@ func (src *AudioBaseSrc) ProvideClock() bool {
 	var _arg0 *C.GstAudioBaseSrc // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C.gst_audio_base_src_get_provide_clock(_arg0)
 	runtime.KeepAlive(src)
@@ -4204,7 +4204,7 @@ func (src *AudioBaseSrc) SlaveMethod() AudioBaseSrcSlaveMethod {
 	var _arg0 *C.GstAudioBaseSrc           // out
 	var _cret C.GstAudioBaseSrcSlaveMethod // in
 
-	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C.gst_audio_base_src_get_slave_method(_arg0)
 	runtime.KeepAlive(src)
@@ -4228,7 +4228,7 @@ func (src *AudioBaseSrc) SetProvideClock(provide bool) {
 	var _arg0 *C.GstAudioBaseSrc // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	if provide {
 		_arg1 = C.TRUE
 	}
@@ -4247,7 +4247,7 @@ func (src *AudioBaseSrc) SetSlaveMethod(method AudioBaseSrcSlaveMethod) {
 	var _arg0 *C.GstAudioBaseSrc           // out
 	var _arg1 C.GstAudioBaseSrcSlaveMethod // out
 
-	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg1 = C.GstAudioBaseSrcSlaveMethod(method)
 
 	C.gst_audio_base_src_set_slave_method(_arg0, _arg1)
@@ -4269,7 +4269,7 @@ func (src *AudioBaseSrc) createRingbuffer() AudioRingBufferer {
 	var _arg0 *C.GstAudioBaseSrc    // out
 	var _cret *C.GstAudioRingBuffer // in
 
-	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioBaseSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(src)
@@ -4438,7 +4438,7 @@ func (src *AudioCdSrc) AddTrack(track *AudioCdSrcTrack) bool {
 	var _arg1 *C.GstAudioCdSrcTrack // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioCdSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioCdSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg1 = (*C.GstAudioCdSrcTrack)(gextras.StructNative(unsafe.Pointer(track)))
 
 	_cret = C.gst_audio_cd_src_add_track(_arg0, _arg1)
@@ -4461,7 +4461,7 @@ func (src *AudioCdSrc) close() {
 
 	var _arg0 *C.GstAudioCdSrc // out
 
-	_arg0 = (*C.GstAudioCdSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioCdSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	C._gotk4_gstaudio1_AudioCdSrc_virtual_close(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(src)
@@ -4476,7 +4476,7 @@ func (src *AudioCdSrc) open(device string) bool {
 	var _arg1 *C.gchar         // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstAudioCdSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioCdSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(device)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -4502,7 +4502,7 @@ func (src *AudioCdSrc) readSector(sector int) *gst.Buffer {
 	var _arg1 C.gint           // out
 	var _cret *C.GstBuffer     // in
 
-	_arg0 = (*C.GstAudioCdSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioCdSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg1 = C.gint(sector)
 
 	_cret = C._gotk4_gstaudio1_AudioCdSrc_virtual_read_sector(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -4626,7 +4626,7 @@ func (clock *AudioClock) Adjust(time gst.ClockTime) gst.ClockTime {
 	var _arg1 C.GstClockTime   // out
 	var _cret C.GstClockTime   // in
 
-	_arg0 = (*C.GstAudioClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstAudioClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(time)
 
 	_cret = C.gst_audio_clock_adjust(_arg0, _arg1)
@@ -4650,7 +4650,7 @@ func (clock *AudioClock) Time() gst.ClockTime {
 	var _arg0 *C.GstAudioClock // out
 	var _cret C.GstClockTime   // in
 
-	_arg0 = (*C.GstAudioClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstAudioClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_audio_clock_get_time(_arg0)
 	runtime.KeepAlive(clock)
@@ -4671,7 +4671,7 @@ func (clock *AudioClock) Time() gst.ClockTime {
 func (clock *AudioClock) Invalidate() {
 	var _arg0 *C.GstAudioClock // out
 
-	_arg0 = (*C.GstAudioClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstAudioClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	C.gst_audio_clock_invalidate(_arg0)
 	runtime.KeepAlive(clock)
@@ -4689,7 +4689,7 @@ func (clock *AudioClock) Reset(time gst.ClockTime) {
 	var _arg0 *C.GstAudioClock // out
 	var _arg1 C.GstClockTime   // out
 
-	_arg0 = (*C.GstAudioClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstAudioClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(time)
 
 	C.gst_audio_clock_reset(_arg0, _arg1)
@@ -5036,7 +5036,7 @@ func (dec *AudioDecoder) AllocateOutputBuffer(size uint) *gst.Buffer {
 	var _arg1 C.gsize            // out
 	var _cret *C.GstBuffer       // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = C.gsize(size)
 
 	_cret = C.gst_audio_decoder_allocate_output_buffer(_arg0, _arg1)
@@ -5079,7 +5079,7 @@ func (dec *AudioDecoder) FinishFrame(buf *gst.Buffer, frames int) gst.FlowReturn
 	var _arg2 C.gint             // out
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if buf != nil {
 		_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buf)))
 		runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buf)), nil)
@@ -5124,7 +5124,7 @@ func (dec *AudioDecoder) FinishSubframe(buf *gst.Buffer) gst.FlowReturn {
 	var _arg1 *C.GstBuffer       // out
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if buf != nil {
 		_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buf)))
 		runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buf)), nil)
@@ -5155,7 +5155,7 @@ func (dec *AudioDecoder) Allocator() (gst.Allocatorrer, *gst.AllocationParams) {
 	var _arg1 *C.GstAllocator       // in
 	var _arg2 C.GstAllocationParams // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	C.gst_audio_decoder_get_allocator(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(dec)
@@ -5197,7 +5197,7 @@ func (dec *AudioDecoder) AudioInfo() *AudioInfo {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret *C.GstAudioInfo    // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_audio_info(_arg0)
 	runtime.KeepAlive(dec)
@@ -5216,7 +5216,7 @@ func (dec *AudioDecoder) Delay() int {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_delay(_arg0)
 	runtime.KeepAlive(dec)
@@ -5239,7 +5239,7 @@ func (dec *AudioDecoder) Drainable() bool {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_drainable(_arg0)
 	runtime.KeepAlive(dec)
@@ -5260,7 +5260,7 @@ func (dec *AudioDecoder) EstimateRate() int {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_estimate_rate(_arg0)
 	runtime.KeepAlive(dec)
@@ -5284,7 +5284,7 @@ func (dec *AudioDecoder) Latency() (min, max gst.ClockTime) {
 	var _arg1 C.GstClockTime     // in
 	var _arg2 C.GstClockTime     // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	C.gst_audio_decoder_get_latency(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(dec)
@@ -5305,7 +5305,7 @@ func (dec *AudioDecoder) MaxErrors() int {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_max_errors(_arg0)
 	runtime.KeepAlive(dec)
@@ -5328,7 +5328,7 @@ func (dec *AudioDecoder) MinLatency() gst.ClockTime {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.GstClockTime     // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_min_latency(_arg0)
 	runtime.KeepAlive(dec)
@@ -5351,7 +5351,7 @@ func (dec *AudioDecoder) NeedsFormat() bool {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_needs_format(_arg0)
 	runtime.KeepAlive(dec)
@@ -5376,7 +5376,7 @@ func (dec *AudioDecoder) ParseState() (sync, eos bool) {
 	var _arg1 C.gboolean         // in
 	var _arg2 C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	C.gst_audio_decoder_get_parse_state(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(dec)
@@ -5405,7 +5405,7 @@ func (dec *AudioDecoder) Plc() bool {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_plc(_arg0)
 	runtime.KeepAlive(dec)
@@ -5426,7 +5426,7 @@ func (dec *AudioDecoder) PlcAware() int {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_plc_aware(_arg0)
 	runtime.KeepAlive(dec)
@@ -5449,7 +5449,7 @@ func (dec *AudioDecoder) Tolerance() gst.ClockTime {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.GstClockTime     // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_get_tolerance(_arg0)
 	runtime.KeepAlive(dec)
@@ -5477,7 +5477,7 @@ func (dec *AudioDecoder) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var _arg1 *C.GstTagList      // out
 	var _arg2 C.GstTagMergeMode  // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if tags != nil {
 		_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(tags)))
 	}
@@ -5500,7 +5500,7 @@ func (dec *AudioDecoder) Negotiate() bool {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_audio_decoder_negotiate(_arg0)
 	runtime.KeepAlive(dec)
@@ -5532,7 +5532,7 @@ func (decoder *AudioDecoder) ProxyGetcaps(caps, filter *gst.Caps) *gst.Caps {
 	var _arg2 *C.GstCaps         // out
 	var _cret *C.GstCaps         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	if caps != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	}
@@ -5569,7 +5569,7 @@ func (dec *AudioDecoder) SetAllocationCaps(allocationCaps *gst.Caps) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 *C.GstCaps         // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if allocationCaps != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(allocationCaps)))
 	}
@@ -5593,7 +5593,7 @@ func (dec *AudioDecoder) SetDrainable(enabled bool) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -5613,7 +5613,7 @@ func (dec *AudioDecoder) SetEstimateRate(enabled bool) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -5636,7 +5636,7 @@ func (dec *AudioDecoder) SetLatency(min, max gst.ClockTime) {
 	var _arg1 C.GstClockTime     // out
 	var _arg2 C.GstClockTime     // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = C.GstClockTime(min)
 	_arg2 = C.GstClockTime(max)
 
@@ -5658,7 +5658,7 @@ func (dec *AudioDecoder) SetMaxErrors(num int) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.gint             // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = C.gint(num)
 
 	C.gst_audio_decoder_set_max_errors(_arg0, _arg1)
@@ -5677,7 +5677,7 @@ func (dec *AudioDecoder) SetMinLatency(num gst.ClockTime) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.GstClockTime     // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = C.GstClockTime(num)
 
 	C.gst_audio_decoder_set_min_latency(_arg0, _arg1)
@@ -5700,7 +5700,7 @@ func (dec *AudioDecoder) SetNeedsFormat(enabled bool) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -5727,7 +5727,7 @@ func (dec *AudioDecoder) SetOutputCaps(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps         // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_audio_decoder_set_output_caps(_arg0, _arg1)
@@ -5757,7 +5757,7 @@ func (dec *AudioDecoder) SetOutputFormat(info *AudioInfo) bool {
 	var _arg1 *C.GstAudioInfo    // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstAudioInfo)(gextras.StructNative(unsafe.Pointer(info)))
 
 	_cret = C.gst_audio_decoder_set_output_format(_arg0, _arg1)
@@ -5785,7 +5785,7 @@ func (dec *AudioDecoder) SetPlc(enabled bool) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -5805,7 +5805,7 @@ func (dec *AudioDecoder) SetPlcAware(plc bool) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if plc {
 		_arg1 = C.TRUE
 	}
@@ -5826,7 +5826,7 @@ func (dec *AudioDecoder) SetTolerance(tolerance gst.ClockTime) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.GstClockTime     // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = C.GstClockTime(tolerance)
 
 	C.gst_audio_decoder_set_tolerance(_arg0, _arg1)
@@ -5848,7 +5848,7 @@ func (decoder *AudioDecoder) SetUseDefaultPadAcceptcaps(use bool) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	if use {
 		_arg1 = C.TRUE
 	}
@@ -5867,7 +5867,7 @@ func (dec *AudioDecoder) close() bool {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_close(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(dec)
@@ -5893,7 +5893,7 @@ func (dec *AudioDecoder) decideAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_decide_allocation(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -5919,7 +5919,7 @@ func (dec *AudioDecoder) flush(hard bool) {
 	var _arg0 *C.GstAudioDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if hard {
 		_arg1 = C.TRUE
 	}
@@ -5940,7 +5940,7 @@ func (dec *AudioDecoder) caps(filter *gst.Caps) *gst.Caps {
 	var _arg1 *C.GstCaps         // out
 	var _cret *C.GstCaps         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_getcaps(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -5971,7 +5971,7 @@ func (dec *AudioDecoder) handleFrame(buffer *gst.Buffer) gst.FlowReturn {
 	var _arg1 *C.GstBuffer       // out
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_handle_frame(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -5999,7 +5999,7 @@ func (dec *AudioDecoder) negotiate() bool {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_negotiate(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(dec)
@@ -6022,7 +6022,7 @@ func (dec *AudioDecoder) open() bool {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_open(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(dec)
@@ -6051,8 +6051,8 @@ func (dec *AudioDecoder) parse(adapter *gstbase.Adapter) (offset, length int, fl
 	var _arg3 C.gint             // in
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
-	_arg1 = (*C.GstAdapter)(unsafe.Pointer(coreglib.InternObject(adapter).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
+	_arg1 = (*C.GstAdapter)(unsafe.Pointer(coreglib.BaseObject(adapter).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_parse(unsafe.Pointer(fnarg), _arg0, _arg1, &_arg2, &_arg3)
 	runtime.KeepAlive(dec)
@@ -6080,7 +6080,7 @@ func (dec *AudioDecoder) proposeAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_propose_allocation(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -6105,7 +6105,7 @@ func (dec *AudioDecoder) setFormat(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps         // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_set_format(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -6131,7 +6131,7 @@ func (dec *AudioDecoder) sinkEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_sink_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -6158,7 +6158,7 @@ func (dec *AudioDecoder) sinkQuery(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_sink_query(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -6184,7 +6184,7 @@ func (dec *AudioDecoder) srcEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_src_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -6211,7 +6211,7 @@ func (dec *AudioDecoder) srcQuery(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_src_query(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -6236,7 +6236,7 @@ func (dec *AudioDecoder) start() bool {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(dec)
@@ -6259,7 +6259,7 @@ func (dec *AudioDecoder) stop() bool {
 	var _arg0 *C.GstAudioDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioDecoder_virtual_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(dec)
@@ -6293,7 +6293,7 @@ func (enc *AudioDecoder) transformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf
 	var _arg3 *C.GstBuffer       // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioDecoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(outbuf)))
 	_arg2 = (*C.GstMeta)(gextras.StructNative(unsafe.Pointer(meta)))
 	_arg3 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inbuf)))
@@ -6646,7 +6646,7 @@ func (enc *AudioEncoder) AllocateOutputBuffer(size uint) *gst.Buffer {
 	var _arg1 C.gsize            // out
 	var _cret *C.GstBuffer       // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = C.gsize(size)
 
 	_cret = C.gst_audio_encoder_allocate_output_buffer(_arg0, _arg1)
@@ -6690,7 +6690,7 @@ func (enc *AudioEncoder) FinishFrame(buffer *gst.Buffer, samples int) gst.FlowRe
 	var _arg2 C.gint             // out
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if buffer != nil {
 		_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 		runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buffer)), nil)
@@ -6723,7 +6723,7 @@ func (enc *AudioEncoder) Allocator() (gst.Allocatorrer, *gst.AllocationParams) {
 	var _arg1 *C.GstAllocator       // in
 	var _arg2 C.GstAllocationParams // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	C.gst_audio_encoder_get_allocator(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(enc)
@@ -6765,7 +6765,7 @@ func (enc *AudioEncoder) AudioInfo() *AudioInfo {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret *C.GstAudioInfo    // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_audio_info(_arg0)
 	runtime.KeepAlive(enc)
@@ -6788,7 +6788,7 @@ func (enc *AudioEncoder) Drainable() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_drainable(_arg0)
 	runtime.KeepAlive(enc)
@@ -6809,7 +6809,7 @@ func (enc *AudioEncoder) FrameMax() int {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_frame_max(_arg0)
 	runtime.KeepAlive(enc)
@@ -6828,7 +6828,7 @@ func (enc *AudioEncoder) FrameSamplesMax() int {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_frame_samples_max(_arg0)
 	runtime.KeepAlive(enc)
@@ -6847,7 +6847,7 @@ func (enc *AudioEncoder) FrameSamplesMin() int {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_frame_samples_min(_arg0)
 	runtime.KeepAlive(enc)
@@ -6870,7 +6870,7 @@ func (enc *AudioEncoder) HardMin() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_hard_min(_arg0)
 	runtime.KeepAlive(enc)
@@ -6888,7 +6888,7 @@ func (enc *AudioEncoder) HardResync() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_hard_resync(_arg0)
 	runtime.KeepAlive(enc)
@@ -6914,7 +6914,7 @@ func (enc *AudioEncoder) Latency() (min, max gst.ClockTime) {
 	var _arg1 C.GstClockTime     // in
 	var _arg2 C.GstClockTime     // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	C.gst_audio_encoder_get_latency(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(enc)
@@ -6935,7 +6935,7 @@ func (enc *AudioEncoder) Lookahead() int {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_lookahead(_arg0)
 	runtime.KeepAlive(enc)
@@ -6958,7 +6958,7 @@ func (enc *AudioEncoder) MarkGranule() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_mark_granule(_arg0)
 	runtime.KeepAlive(enc)
@@ -6983,7 +6983,7 @@ func (enc *AudioEncoder) PerfectTimestamp() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_perfect_timestamp(_arg0)
 	runtime.KeepAlive(enc)
@@ -7008,7 +7008,7 @@ func (enc *AudioEncoder) Tolerance() gst.ClockTime {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.GstClockTime     // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_get_tolerance(_arg0)
 	runtime.KeepAlive(enc)
@@ -7038,7 +7038,7 @@ func (enc *AudioEncoder) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var _arg1 *C.GstTagList      // out
 	var _arg2 C.GstTagMergeMode  // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if tags != nil {
 		_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(tags)))
 	}
@@ -7061,7 +7061,7 @@ func (enc *AudioEncoder) Negotiate() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C.gst_audio_encoder_negotiate(_arg0)
 	runtime.KeepAlive(enc)
@@ -7093,7 +7093,7 @@ func (enc *AudioEncoder) ProxyGetcaps(caps, filter *gst.Caps) *gst.Caps {
 	var _arg2 *C.GstCaps         // out
 	var _cret *C.GstCaps         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if caps != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	}
@@ -7130,7 +7130,7 @@ func (enc *AudioEncoder) SetAllocationCaps(allocationCaps *gst.Caps) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 *C.GstCaps         // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if allocationCaps != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(allocationCaps)))
 	}
@@ -7154,7 +7154,7 @@ func (enc *AudioEncoder) SetDrainable(enabled bool) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -7177,7 +7177,7 @@ func (enc *AudioEncoder) SetFrameMax(num int) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.gint             // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = C.gint(num)
 
 	C.gst_audio_encoder_set_frame_max(_arg0, _arg1)
@@ -7202,7 +7202,7 @@ func (enc *AudioEncoder) SetFrameSamplesMax(num int) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.gint             // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = C.gint(num)
 
 	C.gst_audio_encoder_set_frame_samples_max(_arg0, _arg1)
@@ -7227,7 +7227,7 @@ func (enc *AudioEncoder) SetFrameSamplesMin(num int) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.gint             // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = C.gint(num)
 
 	C.gst_audio_encoder_set_frame_samples_min(_arg0, _arg1)
@@ -7249,7 +7249,7 @@ func (enc *AudioEncoder) SetHardMin(enabled bool) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -7263,7 +7263,7 @@ func (enc *AudioEncoder) SetHardResync(enabled bool) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -7282,7 +7282,7 @@ func (enc *AudioEncoder) SetHeaders(headers []*gst.Buffer) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 *C.GList           // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	for i := len(headers) - 1; i >= 0; i-- {
 		src := headers[i]
 		var dst *C.GstBuffer // out
@@ -7309,7 +7309,7 @@ func (enc *AudioEncoder) SetLatency(min, max gst.ClockTime) {
 	var _arg1 C.GstClockTime     // out
 	var _arg2 C.GstClockTime     // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = C.GstClockTime(min)
 	_arg2 = C.GstClockTime(max)
 
@@ -7331,7 +7331,7 @@ func (enc *AudioEncoder) SetLookahead(num int) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.gint             // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = C.gint(num)
 
 	C.gst_audio_encoder_set_lookahead(_arg0, _arg1)
@@ -7350,7 +7350,7 @@ func (enc *AudioEncoder) SetMarkGranule(enabled bool) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -7374,7 +7374,7 @@ func (enc *AudioEncoder) SetOutputFormat(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps         // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_audio_encoder_set_output_format(_arg0, _arg1)
@@ -7402,7 +7402,7 @@ func (enc *AudioEncoder) SetPerfectTimestamp(enabled bool) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -7423,7 +7423,7 @@ func (enc *AudioEncoder) SetTolerance(tolerance gst.ClockTime) {
 	var _arg0 *C.GstAudioEncoder // out
 	var _arg1 C.GstClockTime     // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = C.GstClockTime(tolerance)
 
 	C.gst_audio_encoder_set_tolerance(_arg0, _arg1)
@@ -7440,7 +7440,7 @@ func (enc *AudioEncoder) close() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_close(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(enc)
@@ -7466,7 +7466,7 @@ func (enc *AudioEncoder) decideAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_decide_allocation(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7490,7 +7490,7 @@ func (enc *AudioEncoder) flush() {
 
 	var _arg0 *C.GstAudioEncoder // out
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	C._gotk4_gstaudio1_AudioEncoder_virtual_flush(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(enc)
@@ -7507,7 +7507,7 @@ func (enc *AudioEncoder) caps(filter *gst.Caps) *gst.Caps {
 	var _arg1 *C.GstCaps         // out
 	var _cret *C.GstCaps         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_getcaps(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7539,7 +7539,7 @@ func (enc *AudioEncoder) handleFrame(buffer *gst.Buffer) gst.FlowReturn {
 	var _arg1 *C.GstBuffer       // out
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_handle_frame(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7567,7 +7567,7 @@ func (enc *AudioEncoder) negotiate() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_negotiate(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(enc)
@@ -7590,7 +7590,7 @@ func (enc *AudioEncoder) open() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_open(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(enc)
@@ -7615,7 +7615,7 @@ func (enc *AudioEncoder) proposeAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_propose_allocation(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7641,7 +7641,7 @@ func (enc *AudioEncoder) setFormat(info *AudioInfo) bool {
 	var _arg1 *C.GstAudioInfo    // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstAudioInfo)(gextras.StructNative(unsafe.Pointer(info)))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_set_format(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7667,7 +7667,7 @@ func (enc *AudioEncoder) sinkEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_sink_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7694,7 +7694,7 @@ func (encoder *AudioEncoder) sinkQuery(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_sink_query(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7720,7 +7720,7 @@ func (enc *AudioEncoder) srcEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_src_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7747,7 +7747,7 @@ func (encoder *AudioEncoder) srcQuery(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_src_query(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7772,7 +7772,7 @@ func (enc *AudioEncoder) start() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(enc)
@@ -7795,7 +7795,7 @@ func (enc *AudioEncoder) stop() bool {
 	var _arg0 *C.GstAudioEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioEncoder_virtual_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(enc)
@@ -7829,7 +7829,7 @@ func (enc *AudioEncoder) transformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf
 	var _arg3 *C.GstBuffer       // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstAudioEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(outbuf)))
 	_arg2 = (*C.GstMeta)(gextras.StructNative(unsafe.Pointer(meta)))
 	_arg3 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inbuf)))
@@ -7950,7 +7950,7 @@ func (filter *AudioFilter) setup(info *AudioInfo) bool {
 	var _arg1 *C.GstAudioInfo   // out
 	var _cret C.gboolean        // in
 
-	_arg0 = (*C.GstAudioFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstAudioFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstAudioInfo)(gextras.StructNative(unsafe.Pointer(info)))
 
 	_cret = C._gotk4_gstaudio1_AudioFilter_virtual_setup(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -8217,7 +8217,7 @@ func (buf *AudioRingBuffer) Acquire(spec *AudioRingBufferSpec) bool {
 	var _arg1 *C.GstAudioRingBufferSpec // out
 	var _cret C.gboolean                // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	_arg1 = (*C.GstAudioRingBufferSpec)(gextras.StructNative(unsafe.Pointer(spec)))
 
 	_cret = C.gst_audio_ring_buffer_acquire(_arg0, _arg1)
@@ -8250,7 +8250,7 @@ func (buf *AudioRingBuffer) Activate(active bool) bool {
 	var _arg1 C.gboolean            // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	if active {
 		_arg1 = C.TRUE
 	}
@@ -8280,7 +8280,7 @@ func (buf *AudioRingBuffer) Advance(advance uint) {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _arg1 C.guint               // out
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	_arg1 = C.guint(advance)
 
 	C.gst_audio_ring_buffer_advance(_arg0, _arg1)
@@ -8300,7 +8300,7 @@ func (buf *AudioRingBuffer) Clear(segment int) {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _arg1 C.gint                // out
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	_arg1 = C.gint(segment)
 
 	C.gst_audio_ring_buffer_clear(_arg0, _arg1)
@@ -8314,7 +8314,7 @@ func (buf *AudioRingBuffer) Clear(segment int) {
 func (buf *AudioRingBuffer) ClearAll() {
 	var _arg0 *C.GstAudioRingBuffer // out
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	C.gst_audio_ring_buffer_clear_all(_arg0)
 	runtime.KeepAlive(buf)
@@ -8332,7 +8332,7 @@ func (buf *AudioRingBuffer) CloseDevice() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_close_device(_arg0)
 	runtime.KeepAlive(buf)
@@ -8367,7 +8367,7 @@ func (buf *AudioRingBuffer) Convert(srcFmt gst.Format, srcVal int64, destFmt gst
 	var _arg4 C.gint64              // in
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	_arg1 = C.GstFormat(srcFmt)
 	_arg2 = C.gint64(srcVal)
 	_arg3 = C.GstFormat(destFmt)
@@ -8408,7 +8408,7 @@ func (buf *AudioRingBuffer) Delay() uint {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.guint               // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_delay(_arg0)
 	runtime.KeepAlive(buf)
@@ -8431,7 +8431,7 @@ func (buf *AudioRingBuffer) DeviceIsOpen() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_device_is_open(_arg0)
 	runtime.KeepAlive(buf)
@@ -8456,7 +8456,7 @@ func (buf *AudioRingBuffer) IsAcquired() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_is_acquired(_arg0)
 	runtime.KeepAlive(buf)
@@ -8481,7 +8481,7 @@ func (buf *AudioRingBuffer) IsActive() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_is_active(_arg0)
 	runtime.KeepAlive(buf)
@@ -8506,7 +8506,7 @@ func (buf *AudioRingBuffer) IsFlushing() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_is_flushing(_arg0)
 	runtime.KeepAlive(buf)
@@ -8532,7 +8532,7 @@ func (buf *AudioRingBuffer) MayStart(allowed bool) {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _arg1 C.gboolean            // out
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	if allowed {
 		_arg1 = C.TRUE
 	}
@@ -8555,7 +8555,7 @@ func (buf *AudioRingBuffer) OpenDevice() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_open_device(_arg0)
 	runtime.KeepAlive(buf)
@@ -8580,7 +8580,7 @@ func (buf *AudioRingBuffer) Pause() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_pause(_arg0)
 	runtime.KeepAlive(buf)
@@ -8613,7 +8613,7 @@ func (buf *AudioRingBuffer) PrepareRead() (int, []byte, bool) {
 	var _arg3 C.gint                // in
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_prepare_read(_arg0, &_arg1, &_arg2, &_arg3)
 	runtime.KeepAlive(buf)
@@ -8661,7 +8661,7 @@ func (buf *AudioRingBuffer) Read(sample uint64, data []byte) (gst.ClockTime, uin
 	var _arg4 C.GstClockTime // in
 	var _cret C.guint        // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	_arg1 = C.guint64(sample)
 	_arg3 = (C.guint)(len(data))
 	if len(data) > 0 {
@@ -8693,7 +8693,7 @@ func (buf *AudioRingBuffer) Release() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_release(_arg0)
 	runtime.KeepAlive(buf)
@@ -8720,7 +8720,7 @@ func (buf *AudioRingBuffer) SamplesDone() uint64 {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.guint64             // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_samples_done(_arg0)
 	runtime.KeepAlive(buf)
@@ -8746,7 +8746,7 @@ func (buf *AudioRingBuffer) SetCallback(cb AudioRingBufferCallback) {
 	var _arg2 C.gpointer
 	var _arg3 C.GDestroyNotify
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	if cb != nil {
 		_arg1 = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBufferCallback)
 		_arg2 = C.gpointer(gbox.Assign(cb))
@@ -8764,7 +8764,7 @@ func (buf *AudioRingBuffer) SetCallback(cb AudioRingBufferCallback) {
 func (buf *AudioRingBuffer) SetErrored() {
 	var _arg0 *C.GstAudioRingBuffer // out
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	C.gst_audio_ring_buffer_set_errored(_arg0)
 	runtime.KeepAlive(buf)
@@ -8781,7 +8781,7 @@ func (buf *AudioRingBuffer) SetFlushing(flushing bool) {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _arg1 C.gboolean            // out
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	if flushing {
 		_arg1 = C.TRUE
 	}
@@ -8806,7 +8806,7 @@ func (buf *AudioRingBuffer) SetSample(sample uint64) {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _arg1 C.guint64             // out
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	_arg1 = C.guint64(sample)
 
 	C.gst_audio_ring_buffer_set_sample(_arg0, _arg1)
@@ -8823,7 +8823,7 @@ func (buf *AudioRingBuffer) SetTimestamp(readseg int, timestamp gst.ClockTime) {
 	var _arg1 C.gint                // out
 	var _arg2 C.GstClockTime        // out
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	_arg1 = C.gint(readseg)
 	_arg2 = C.GstClockTime(timestamp)
 
@@ -8844,7 +8844,7 @@ func (buf *AudioRingBuffer) Start() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_start(_arg0)
 	runtime.KeepAlive(buf)
@@ -8869,7 +8869,7 @@ func (buf *AudioRingBuffer) Stop() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C.gst_audio_ring_buffer_stop(_arg0)
 	runtime.KeepAlive(buf)
@@ -8904,7 +8904,7 @@ func (buf *AudioRingBuffer) acquire(spec *AudioRingBufferSpec) bool {
 	var _arg1 *C.GstAudioRingBufferSpec // out
 	var _cret C.gboolean                // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	_arg1 = (*C.GstAudioRingBufferSpec)(gextras.StructNative(unsafe.Pointer(spec)))
 
 	_cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_acquire(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -8940,7 +8940,7 @@ func (buf *AudioRingBuffer) activate(active bool) bool {
 	var _arg1 C.gboolean            // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 	if active {
 		_arg1 = C.TRUE
 	}
@@ -8967,7 +8967,7 @@ func (buf *AudioRingBuffer) clearAll() {
 
 	var _arg0 *C.GstAudioRingBuffer // out
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	C._gotk4_gstaudio1_AudioRingBuffer_virtual_clear_all(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(buf)
@@ -8988,7 +8988,7 @@ func (buf *AudioRingBuffer) closeDevice() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_close_device(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(buf)
@@ -9024,7 +9024,7 @@ func (buf *AudioRingBuffer) delay() uint {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.guint               // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_delay(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(buf)
@@ -9052,7 +9052,7 @@ func (buf *AudioRingBuffer) openDevice() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_open_device(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(buf)
@@ -9080,7 +9080,7 @@ func (buf *AudioRingBuffer) pause() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_pause(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(buf)
@@ -9108,7 +9108,7 @@ func (buf *AudioRingBuffer) release() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_release(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(buf)
@@ -9130,7 +9130,7 @@ func (buf *AudioRingBuffer) resume() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_resume(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(buf)
@@ -9158,7 +9158,7 @@ func (buf *AudioRingBuffer) start() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(buf)
@@ -9186,7 +9186,7 @@ func (buf *AudioRingBuffer) stop() bool {
 	var _arg0 *C.GstAudioRingBuffer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(buf).Native()))
+	_arg0 = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(buf).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(buf)
@@ -9428,7 +9428,7 @@ func (sink *AudioSink) close() bool {
 	var _arg0 *C.GstAudioSink // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioSink_virtual_close(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(sink)
@@ -9451,7 +9451,7 @@ func (sink *AudioSink) delay() uint {
 	var _arg0 *C.GstAudioSink // out
 	var _cret C.guint         // in
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioSink_virtual_delay(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(sink)
@@ -9472,7 +9472,7 @@ func (sink *AudioSink) open() bool {
 	var _arg0 *C.GstAudioSink // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioSink_virtual_open(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(sink)
@@ -9495,7 +9495,7 @@ func (sink *AudioSink) pause() {
 
 	var _arg0 *C.GstAudioSink // out
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	C._gotk4_gstaudio1_AudioSink_virtual_pause(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(sink)
@@ -9510,7 +9510,7 @@ func (sink *AudioSink) prepare(spec *AudioRingBufferSpec) bool {
 	var _arg1 *C.GstAudioRingBufferSpec // out
 	var _cret C.gboolean                // in
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	_arg1 = (*C.GstAudioRingBufferSpec)(gextras.StructNative(unsafe.Pointer(spec)))
 
 	_cret = C._gotk4_gstaudio1_AudioSink_virtual_prepare(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -9535,7 +9535,7 @@ func (sink *AudioSink) reset() {
 
 	var _arg0 *C.GstAudioSink // out
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	C._gotk4_gstaudio1_AudioSink_virtual_reset(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(sink)
@@ -9548,7 +9548,7 @@ func (sink *AudioSink) resume() {
 
 	var _arg0 *C.GstAudioSink // out
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	C._gotk4_gstaudio1_AudioSink_virtual_resume(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(sink)
@@ -9563,7 +9563,7 @@ func (sink *AudioSink) stop() {
 
 	var _arg0 *C.GstAudioSink // out
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	C._gotk4_gstaudio1_AudioSink_virtual_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(sink)
@@ -9577,7 +9577,7 @@ func (sink *AudioSink) unprepare() bool {
 	var _arg0 *C.GstAudioSink // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioSink_virtual_unprepare(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(sink)
@@ -9605,7 +9605,7 @@ func (sink *AudioSink) write(data []byte) int {
 	var _arg2 C.guint
 	var _cret C.gint // in
 
-	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstAudioSink)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	_arg2 = (C.guint)(len(data))
 	if len(data) > 0 {
 		_arg1 = (C.gpointer)(unsafe.Pointer(&data[0]))
@@ -9758,7 +9758,7 @@ func (src *AudioSrc) close() bool {
 	var _arg0 *C.GstAudioSrc // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioSrc_virtual_close(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(src)
@@ -9780,7 +9780,7 @@ func (src *AudioSrc) delay() uint {
 	var _arg0 *C.GstAudioSrc // out
 	var _cret C.guint        // in
 
-	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioSrc_virtual_delay(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(src)
@@ -9800,7 +9800,7 @@ func (src *AudioSrc) open() bool {
 	var _arg0 *C.GstAudioSrc // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioSrc_virtual_open(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(src)
@@ -9823,7 +9823,7 @@ func (src *AudioSrc) prepare(spec *AudioRingBufferSpec) bool {
 	var _arg1 *C.GstAudioRingBufferSpec // out
 	var _cret C.gboolean                // in
 
-	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg1 = (*C.GstAudioRingBufferSpec)(gextras.StructNative(unsafe.Pointer(spec)))
 
 	_cret = C._gotk4_gstaudio1_AudioSrc_virtual_prepare(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -9859,7 +9859,7 @@ func (src *AudioSrc) read(data []byte) (gst.ClockTime, uint) {
 	var _arg3 C.GstClockTime // in
 	var _cret C.guint        // in
 
-	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg2 = (C.guint)(len(data))
 	if len(data) > 0 {
 		_arg1 = (C.gpointer)(unsafe.Pointer(&data[0]))
@@ -9885,7 +9885,7 @@ func (src *AudioSrc) reset() {
 
 	var _arg0 *C.GstAudioSrc // out
 
-	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	C._gotk4_gstaudio1_AudioSrc_virtual_reset(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(src)
@@ -9899,7 +9899,7 @@ func (src *AudioSrc) unprepare() bool {
 	var _arg0 *C.GstAudioSrc // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstAudioSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C._gotk4_gstaudio1_AudioSrc_virtual_unprepare(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(src)

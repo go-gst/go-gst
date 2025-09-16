@@ -7139,7 +7139,7 @@ func DebugBinToDotData(bin *Bin, details DebugGraphDetails) string {
 	var _arg2 C.GstDebugGraphDetails // out
 	var _cret *C.gchar               // in
 
-	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg2 = C.GstDebugGraphDetails(details)
 
 	_cret = C.gst_debug_bin_to_dot_data(_arg1, _arg2)
@@ -7170,7 +7170,7 @@ func DebugBinToDotFile(bin *Bin, details DebugGraphDetails, fileName string) {
 	var _arg2 C.GstDebugGraphDetails // out
 	var _arg3 *C.gchar               // out
 
-	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg2 = C.GstDebugGraphDetails(details)
 	_arg3 = (*C.gchar)(unsafe.Pointer(C.CString(fileName)))
 	defer C.free(unsafe.Pointer(_arg3))
@@ -7195,7 +7195,7 @@ func DebugBinToDotFileWithTs(bin *Bin, details DebugGraphDetails, fileName strin
 	var _arg2 C.GstDebugGraphDetails // out
 	var _arg3 *C.gchar               // out
 
-	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg2 = C.GstDebugGraphDetails(details)
 	_arg3 = (*C.gchar)(unsafe.Pointer(C.CString(fileName)))
 	defer C.free(unsafe.Pointer(_arg3))
@@ -7723,7 +7723,7 @@ func DynamicTypeRegister(plugin *Plugin, typ coreglib.Type) bool {
 	var _arg2 C.GType      // out
 	var _cret C.gboolean   // in
 
-	_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	_arg2 = C.GType(typ)
 
 	_cret = C.gst_dynamic_type_register(_arg1, _arg2)
@@ -11197,7 +11197,7 @@ func (parent *ChildProxy) ChildAdded(child *coreglib.Object, name string) {
 	var _arg1 *C.GObject       // out
 	var _arg2 *C.gchar         // out
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg1 = (*C.GObject)(unsafe.Pointer(child.Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -11219,7 +11219,7 @@ func (parent *ChildProxy) ChildRemoved(child *coreglib.Object, name string) {
 	var _arg1 *C.GObject       // out
 	var _arg2 *C.gchar         // out
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg1 = (*C.GObject)(unsafe.Pointer(child.Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -11244,7 +11244,7 @@ func (parent *ChildProxy) ChildByIndex(index uint) *coreglib.Object {
 	var _arg1 C.guint          // out
 	var _cret *C.GObject       // in
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg1 = C.guint(index)
 
 	_cret = C.gst_child_proxy_get_child_by_index(_arg0, _arg1)
@@ -11278,7 +11278,7 @@ func (parent *ChildProxy) ChildByName(name string) *coreglib.Object {
 	var _arg1 *C.gchar         // out
 	var _cret *C.GObject       // in
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -11315,7 +11315,7 @@ func (childProxy *ChildProxy) ChildByNameRecurse(name string) *coreglib.Object {
 	var _arg1 *C.gchar         // out
 	var _cret *C.GObject       // in
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(childProxy).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(childProxy).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -11341,7 +11341,7 @@ func (parent *ChildProxy) ChildrenCount() uint {
 	var _arg0 *C.GstChildProxy // out
 	var _cret C.guint          // in
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 
 	_cret = C.gst_child_proxy_get_children_count(_arg0)
 	runtime.KeepAlive(parent)
@@ -11368,7 +11368,7 @@ func (object *ChildProxy) Property(name string) coreglib.Value {
 	var _arg1 *C.gchar         // out
 	var _arg2 C.GValue         // in
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -11394,7 +11394,7 @@ func (object *ChildProxy) SetProperty(name string, value *coreglib.Value) {
 	var _arg1 *C.gchar         // out
 	var _arg2 *C.GValue        // out
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (*C.GValue)(unsafe.Pointer(value.Native()))
@@ -11419,7 +11419,7 @@ func (parent *ChildProxy) childAdded(child *coreglib.Object, name string) {
 	var _arg1 *C.GObject       // out
 	var _arg2 *C.gchar         // out
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg1 = (*C.GObject)(unsafe.Pointer(child.Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -11444,7 +11444,7 @@ func (parent *ChildProxy) childRemoved(child *coreglib.Object, name string) {
 	var _arg1 *C.GObject       // out
 	var _arg2 *C.gchar         // out
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg1 = (*C.GObject)(unsafe.Pointer(child.Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -11472,7 +11472,7 @@ func (parent *ChildProxy) childByIndex(index uint) *coreglib.Object {
 	var _arg1 C.guint          // out
 	var _cret *C.GObject       // in
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg1 = C.guint(index)
 
 	_cret = C._gotk4_gst1_ChildProxy_virtual_get_child_by_index(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -11509,7 +11509,7 @@ func (parent *ChildProxy) childByName(name string) *coreglib.Object {
 	var _arg1 *C.gchar         // out
 	var _cret *C.GObject       // in
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -11538,7 +11538,7 @@ func (parent *ChildProxy) childrenCount() uint {
 	var _arg0 *C.GstChildProxy // out
 	var _cret C.guint          // in
 
-	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstChildProxy)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 
 	_cret = C._gotk4_gst1_ChildProxy_virtual_get_children_count(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(parent)
@@ -11640,7 +11640,7 @@ func (preset *Preset) DeletePreset(name string) bool {
 	var _arg1 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -11677,7 +11677,7 @@ func (preset *Preset) Meta(name, tag string) (string, bool) {
 	var _arg3 *C.gchar     // in
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
@@ -11709,7 +11709,7 @@ func (preset *Preset) PresetNames() []string {
 	var _arg0 *C.GstPreset // out
 	var _cret **C.gchar    // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 
 	_cret = C.gst_preset_get_preset_names(_arg0)
 	runtime.KeepAlive(preset)
@@ -11746,7 +11746,7 @@ func (preset *Preset) PropertyNames() []string {
 	var _arg0 *C.GstPreset // out
 	var _cret **C.gchar    // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 
 	_cret = C.gst_preset_get_property_names(_arg0)
 	runtime.KeepAlive(preset)
@@ -11782,7 +11782,7 @@ func (preset *Preset) IsEditable() bool {
 	var _arg0 *C.GstPreset // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 
 	_cret = C.gst_preset_is_editable(_arg0)
 	runtime.KeepAlive(preset)
@@ -11810,7 +11810,7 @@ func (preset *Preset) LoadPreset(name string) bool {
 	var _arg1 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -11844,7 +11844,7 @@ func (preset *Preset) RenamePreset(oldName, newName string) bool {
 	var _arg2 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(oldName)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(newName)))
@@ -11879,7 +11879,7 @@ func (preset *Preset) SavePreset(name string) bool {
 	var _arg1 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -11916,7 +11916,7 @@ func (preset *Preset) SetMeta(name, tag, value string) bool {
 	var _arg3 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
@@ -11958,7 +11958,7 @@ func (preset *Preset) deletePreset(name string) bool {
 	var _arg1 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -11998,7 +11998,7 @@ func (preset *Preset) meta(name, tag string) (string, bool) {
 	var _arg3 *C.gchar     // in
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
@@ -12033,7 +12033,7 @@ func (preset *Preset) presetNames() []string {
 	var _arg0 *C.GstPreset // out
 	var _cret **C.gchar    // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 
 	_cret = C._gotk4_gst1_Preset_virtual_get_preset_names(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(preset)
@@ -12073,7 +12073,7 @@ func (preset *Preset) propertyNames() []string {
 	var _arg0 *C.GstPreset // out
 	var _cret **C.gchar    // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 
 	_cret = C._gotk4_gst1_Preset_virtual_get_property_names(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(preset)
@@ -12116,7 +12116,7 @@ func (preset *Preset) loadPreset(name string) bool {
 	var _arg1 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -12153,7 +12153,7 @@ func (preset *Preset) renamePreset(oldName, newName string) bool {
 	var _arg2 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(oldName)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(newName)))
@@ -12191,7 +12191,7 @@ func (preset *Preset) savePreset(name string) bool {
 	var _arg1 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -12231,7 +12231,7 @@ func (preset *Preset) setMeta(name, tag, value string) bool {
 	var _arg3 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.InternObject(preset).Native()))
+	_arg0 = (*C.GstPreset)(unsafe.Pointer(coreglib.BaseObject(preset).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
@@ -12417,7 +12417,7 @@ func (setter *TagSetter) AddTagValue(mode TagMergeMode, tag string, value *coreg
 	var _arg2 *C.gchar          // out
 	var _arg3 *C.GValue         // out
 
-	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.InternObject(setter).Native()))
+	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.BaseObject(setter).Native()))
 	_arg1 = C.GstTagMergeMode(mode)
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -12443,7 +12443,7 @@ func (setter *TagSetter) TagList() *TagList {
 	var _arg0 *C.GstTagSetter // out
 	var _cret *C.GstTagList   // in
 
-	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.InternObject(setter).Native()))
+	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.BaseObject(setter).Native()))
 
 	_cret = C.gst_tag_setter_get_tag_list(_arg0)
 	runtime.KeepAlive(setter)
@@ -12467,7 +12467,7 @@ func (setter *TagSetter) TagMergeMode() TagMergeMode {
 	var _arg0 *C.GstTagSetter   // out
 	var _cret C.GstTagMergeMode // in
 
-	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.InternObject(setter).Native()))
+	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.BaseObject(setter).Native()))
 
 	_cret = C.gst_tag_setter_get_tag_merge_mode(_arg0)
 	runtime.KeepAlive(setter)
@@ -12490,7 +12490,7 @@ func (setter *TagSetter) MergeTags(list *TagList, mode TagMergeMode) {
 	var _arg1 *C.GstTagList     // out
 	var _arg2 C.GstTagMergeMode // out
 
-	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.InternObject(setter).Native()))
+	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.BaseObject(setter).Native()))
 	_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(list)))
 	_arg2 = C.GstTagMergeMode(mode)
 
@@ -12505,7 +12505,7 @@ func (setter *TagSetter) MergeTags(list *TagList, mode TagMergeMode) {
 func (setter *TagSetter) ResetTags() {
 	var _arg0 *C.GstTagSetter // out
 
-	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.InternObject(setter).Native()))
+	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.BaseObject(setter).Native()))
 
 	C.gst_tag_setter_reset_tags(_arg0)
 	runtime.KeepAlive(setter)
@@ -12522,7 +12522,7 @@ func (setter *TagSetter) SetTagMergeMode(mode TagMergeMode) {
 	var _arg0 *C.GstTagSetter   // out
 	var _arg1 C.GstTagMergeMode // out
 
-	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.InternObject(setter).Native()))
+	_arg0 = (*C.GstTagSetter)(unsafe.Pointer(coreglib.BaseObject(setter).Native()))
 	_arg1 = C.GstTagMergeMode(mode)
 
 	C.gst_tag_setter_set_tag_merge_mode(_arg0, _arg1)
@@ -12604,7 +12604,7 @@ func (setter *TocSetter) Toc() *Toc {
 	var _arg0 *C.GstTocSetter // out
 	var _cret *C.GstToc       // in
 
-	_arg0 = (*C.GstTocSetter)(unsafe.Pointer(coreglib.InternObject(setter).Native()))
+	_arg0 = (*C.GstTocSetter)(unsafe.Pointer(coreglib.BaseObject(setter).Native()))
 
 	_cret = C.gst_toc_setter_get_toc(_arg0)
 	runtime.KeepAlive(setter)
@@ -12629,7 +12629,7 @@ func (setter *TocSetter) Toc() *Toc {
 func (setter *TocSetter) Reset() {
 	var _arg0 *C.GstTocSetter // out
 
-	_arg0 = (*C.GstTocSetter)(unsafe.Pointer(coreglib.InternObject(setter).Native()))
+	_arg0 = (*C.GstTocSetter)(unsafe.Pointer(coreglib.BaseObject(setter).Native()))
 
 	C.gst_toc_setter_reset(_arg0)
 	runtime.KeepAlive(setter)
@@ -12645,7 +12645,7 @@ func (setter *TocSetter) SetToc(toc *Toc) {
 	var _arg0 *C.GstTocSetter // out
 	var _arg1 *C.GstToc       // out
 
-	_arg0 = (*C.GstTocSetter)(unsafe.Pointer(coreglib.InternObject(setter).Native()))
+	_arg0 = (*C.GstTocSetter)(unsafe.Pointer(coreglib.BaseObject(setter).Native()))
 	if toc != nil {
 		_arg1 = (*C.GstToc)(gextras.StructNative(unsafe.Pointer(toc)))
 	}
@@ -12711,7 +12711,7 @@ func (handler *URIHandler) Protocols() []string {
 	var _arg0 *C.GstURIHandler // out
 	var _cret **C.gchar        // in
 
-	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.InternObject(handler).Native()))
+	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.BaseObject(handler).Native()))
 
 	_cret = C.gst_uri_handler_get_protocols(_arg0)
 	runtime.KeepAlive(handler)
@@ -12748,7 +12748,7 @@ func (handler *URIHandler) URI() string {
 	var _arg0 *C.GstURIHandler // out
 	var _cret *C.gchar         // in
 
-	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.InternObject(handler).Native()))
+	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.BaseObject(handler).Native()))
 
 	_cret = C.gst_uri_handler_get_uri(_arg0)
 	runtime.KeepAlive(handler)
@@ -12773,7 +12773,7 @@ func (handler *URIHandler) URIType() URIType {
 	var _arg0 *C.GstURIHandler // out
 	var _cret C.GstURIType     // in
 
-	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.InternObject(handler).Native()))
+	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.BaseObject(handler).Native()))
 
 	_cret = C.gst_uri_handler_get_uri_type(_arg0)
 	runtime.KeepAlive(handler)
@@ -12795,7 +12795,7 @@ func (handler *URIHandler) SetURI(uri string) error {
 	var _arg1 *C.gchar         // out
 	var _cerr *C.GError        // in
 
-	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.InternObject(handler).Native()))
+	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.BaseObject(handler).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -12826,7 +12826,7 @@ func (handler *URIHandler) urI() string {
 	var _arg0 *C.GstURIHandler // out
 	var _cret *C.gchar         // in
 
-	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.InternObject(handler).Native()))
+	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.BaseObject(handler).Native()))
 
 	_cret = C._gotk4_gst1_URIHandler_virtual_get_uri(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(handler)
@@ -12854,7 +12854,7 @@ func (handler *URIHandler) setURI(uri string) error {
 	var _arg1 *C.gchar         // out
 	var _cerr *C.GError        // in
 
-	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.InternObject(handler).Native()))
+	_arg0 = (*C.GstURIHandler)(unsafe.Pointer(coreglib.BaseObject(handler).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -13012,7 +13012,7 @@ func (allocator *Allocator) Alloc(size uint, params *AllocationParams) *Memory {
 	var _cret *C.GstMemory           // in
 
 	if allocator != nil {
-		_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+		_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	}
 	_arg1 = C.gsize(size)
 	if params != nil {
@@ -13042,8 +13042,8 @@ func (allocator *Allocator) Alloc(size uint, params *AllocationParams) *Memory {
 func (allocator *Allocator) SetDefault() {
 	var _arg0 *C.GstAllocator // out
 
-	_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
-	C.g_object_ref(C.gpointer(coreglib.InternObject(allocator).Native()))
+	_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
+	C.g_object_ref(C.gpointer(coreglib.BaseObject(allocator).Native()))
 
 	C.gst_allocator_set_default(_arg0)
 	runtime.KeepAlive(allocator)
@@ -13083,7 +13083,7 @@ func (allocator *Allocator) alloc(size uint, params *AllocationParams) *Memory {
 	var _cret *C.GstMemory           // in
 
 	if allocator != nil {
-		_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+		_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	}
 	_arg1 = C.gsize(size)
 	if params != nil {
@@ -13166,8 +13166,8 @@ func AllocatorRegister(name string, allocator Allocatorrer) {
 
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
-	_arg2 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
-	C.g_object_ref(C.gpointer(coreglib.InternObject(allocator).Native()))
+	_arg2 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
+	C.g_object_ref(C.gpointer(coreglib.BaseObject(allocator).Native()))
 
 	C.gst_allocator_register(_arg1, _arg2)
 	runtime.KeepAlive(name)
@@ -13518,8 +13518,8 @@ func (bin *Bin) Add(element Elementer) bool {
 	var _arg1 *C.GstElement // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_bin_add(_arg0, _arg1)
 	runtime.KeepAlive(bin)
@@ -13552,7 +13552,7 @@ func (bin *Bin) FindUnlinkedPad(direction PadDirection) *Pad {
 	var _arg1 C.GstPadDirection // out
 	var _cret *C.GstPad         // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg1 = C.GstPadDirection(direction)
 
 	_cret = C.gst_bin_find_unlinked_pad(_arg0, _arg1)
@@ -13586,7 +13586,7 @@ func (bin *Bin) ByInterface(iface coreglib.Type) Elementer {
 	var _arg1 C.GType       // out
 	var _cret *C.GstElement // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg1 = C.GType(iface)
 
 	_cret = C.gst_bin_get_by_interface(_arg0, _arg1)
@@ -13630,7 +13630,7 @@ func (bin *Bin) ByName(name string) Elementer {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GstElement // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -13675,7 +13675,7 @@ func (bin *Bin) ByNameRecurseUp(name string) Elementer {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GstElement // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -13712,7 +13712,7 @@ func (bin *Bin) SuppressedFlags() ElementFlags {
 	var _arg0 *C.GstBin         // out
 	var _cret C.GstElementFlags // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 
 	_cret = C.gst_bin_get_suppressed_flags(_arg0)
 	runtime.KeepAlive(bin)
@@ -13741,7 +13741,7 @@ func (bin *Bin) IterateAllByElementFactoryName(factoryName string) *Iterator {
 	var _arg1 *C.gchar       // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryName)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -13782,7 +13782,7 @@ func (bin *Bin) IterateAllByInterface(iface coreglib.Type) *Iterator {
 	var _arg1 C.GType        // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg1 = C.GType(iface)
 
 	_cret = C.gst_bin_iterate_all_by_interface(_arg0, _arg1)
@@ -13813,7 +13813,7 @@ func (bin *Bin) IterateElements() *Iterator {
 	var _arg0 *C.GstBin      // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 
 	_cret = C.gst_bin_iterate_elements(_arg0)
 	runtime.KeepAlive(bin)
@@ -13843,7 +13843,7 @@ func (bin *Bin) IterateRecurse() *Iterator {
 	var _arg0 *C.GstBin      // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 
 	_cret = C.gst_bin_iterate_recurse(_arg0)
 	runtime.KeepAlive(bin)
@@ -13873,7 +13873,7 @@ func (bin *Bin) IterateSinks() *Iterator {
 	var _arg0 *C.GstBin      // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 
 	_cret = C.gst_bin_iterate_sinks(_arg0)
 	runtime.KeepAlive(bin)
@@ -13907,7 +13907,7 @@ func (bin *Bin) IterateSorted() *Iterator {
 	var _arg0 *C.GstBin      // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 
 	_cret = C.gst_bin_iterate_sorted(_arg0)
 	runtime.KeepAlive(bin)
@@ -13937,7 +13937,7 @@ func (bin *Bin) IterateSources() *Iterator {
 	var _arg0 *C.GstBin      // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 
 	_cret = C.gst_bin_iterate_sources(_arg0)
 	runtime.KeepAlive(bin)
@@ -13973,7 +13973,7 @@ func (bin *Bin) RecalculateLatency() bool {
 	var _arg0 *C.GstBin  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 
 	_cret = C.gst_bin_recalculate_latency(_arg0)
 	runtime.KeepAlive(bin)
@@ -14009,8 +14009,8 @@ func (bin *Bin) Remove(element Elementer) bool {
 	var _arg1 *C.GstElement // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_bin_remove(_arg0, _arg1)
 	runtime.KeepAlive(bin)
@@ -14036,7 +14036,7 @@ func (bin *Bin) SetSuppressedFlags(flags ElementFlags) {
 	var _arg0 *C.GstBin         // out
 	var _arg1 C.GstElementFlags // out
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg1 = C.GstElementFlags(flags)
 
 	C.gst_bin_set_suppressed_flags(_arg0, _arg1)
@@ -14055,7 +14055,7 @@ func (bin *Bin) SyncChildrenStates() bool {
 	var _arg0 *C.GstBin  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 
 	_cret = C.gst_bin_sync_children_states(_arg0)
 	runtime.KeepAlive(bin)
@@ -14086,8 +14086,8 @@ func (bin *Bin) addElement(element Elementer) bool {
 	var _arg1 *C.GstElement // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C._gotk4_gst1_Bin_virtual_add_element(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(bin)
@@ -14117,9 +14117,9 @@ func (bin *Bin) deepElementAdded(subBin *Bin, child Elementer) {
 	var _arg1 *C.GstBin     // out
 	var _arg2 *C.GstElement // out
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
-	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(subBin).Native()))
-	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(child).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
+	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(subBin).Native()))
+	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(child).Native()))
 
 	C._gotk4_gst1_Bin_virtual_deep_element_added(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2)
 	runtime.KeepAlive(bin)
@@ -14142,9 +14142,9 @@ func (bin *Bin) deepElementRemoved(subBin *Bin, child Elementer) {
 	var _arg1 *C.GstBin     // out
 	var _arg2 *C.GstElement // out
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
-	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(subBin).Native()))
-	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(child).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
+	_arg1 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(subBin).Native()))
+	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(child).Native()))
 
 	C._gotk4_gst1_Bin_virtual_deep_element_removed(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2)
 	runtime.KeepAlive(bin)
@@ -14159,7 +14159,7 @@ func (bin *Bin) doLatency() bool {
 	var _arg0 *C.GstBin  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 
 	_cret = C._gotk4_gst1_Bin_virtual_do_latency(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(bin)
@@ -14185,8 +14185,8 @@ func (bin *Bin) elementAdded(child Elementer) {
 	var _arg0 *C.GstBin     // out
 	var _arg1 *C.GstElement // out
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(child).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(child).Native()))
 
 	C._gotk4_gst1_Bin_virtual_element_added(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(bin)
@@ -14205,8 +14205,8 @@ func (bin *Bin) elementRemoved(child Elementer) {
 	var _arg0 *C.GstBin     // out
 	var _arg1 *C.GstElement // out
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(child).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(child).Native()))
 
 	C._gotk4_gst1_Bin_virtual_element_removed(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(bin)
@@ -14225,7 +14225,7 @@ func (bin *Bin) handleMessage(message *Message) {
 	var _arg0 *C.GstBin     // out
 	var _arg1 *C.GstMessage // out
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
 	_arg1 = (*C.GstMessage)(gextras.StructNative(unsafe.Pointer(message)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(message)), nil)
 
@@ -14251,8 +14251,8 @@ func (bin *Bin) removeElement(element Elementer) bool {
 	var _arg1 *C.GstElement // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.InternObject(bin).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstBin)(unsafe.Pointer(coreglib.BaseObject(bin).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C._gotk4_gst1_Bin_virtual_remove_element(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(bin)
@@ -14576,7 +14576,7 @@ func (pool *BufferPool) AcquireBuffer(params *BufferPoolAcquireParams) (*Buffer,
 	var _arg2 *C.GstBufferPoolAcquireParams // out
 	var _cret C.GstFlowReturn               // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	if params != nil {
 		_arg2 = (*C.GstBufferPoolAcquireParams)(gextras.StructNative(unsafe.Pointer(params)))
 	}
@@ -14612,7 +14612,7 @@ func (pool *BufferPool) Config() *Structure {
 	var _arg0 *C.GstBufferPool // out
 	var _cret *C.GstStructure  // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 
 	_cret = C.gst_buffer_pool_get_config(_arg0)
 	runtime.KeepAlive(pool)
@@ -14640,7 +14640,7 @@ func (pool *BufferPool) Options() []string {
 	var _arg0 *C.GstBufferPool // out
 	var _cret **C.gchar        // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 
 	_cret = C.gst_buffer_pool_get_options(_arg0)
 	runtime.KeepAlive(pool)
@@ -14678,7 +14678,7 @@ func (pool *BufferPool) HasOption(option string) bool {
 	var _arg1 *C.gchar         // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(option)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -14705,7 +14705,7 @@ func (pool *BufferPool) IsActive() bool {
 	var _arg0 *C.GstBufferPool // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 
 	_cret = C.gst_buffer_pool_is_active(_arg0)
 	runtime.KeepAlive(pool)
@@ -14732,7 +14732,7 @@ func (pool *BufferPool) ReleaseBuffer(buffer *Buffer) {
 	var _arg0 *C.GstBufferPool // out
 	var _arg1 *C.GstBuffer     // out
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buffer)), nil)
 
@@ -14764,7 +14764,7 @@ func (pool *BufferPool) SetActive(active bool) bool {
 	var _arg1 C.gboolean       // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	if active {
 		_arg1 = C.TRUE
 	}
@@ -14811,7 +14811,7 @@ func (pool *BufferPool) SetConfig(config *Structure) bool {
 	var _arg1 *C.GstStructure  // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(config)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(config)), nil)
 
@@ -14838,7 +14838,7 @@ func (pool *BufferPool) SetFlushing(flushing bool) {
 	var _arg0 *C.GstBufferPool // out
 	var _arg1 C.gboolean       // out
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	if flushing {
 		_arg1 = C.TRUE
 	}
@@ -14872,7 +14872,7 @@ func (pool *BufferPool) acquireBuffer(params *BufferPoolAcquireParams) (*Buffer,
 	var _arg2 *C.GstBufferPoolAcquireParams // out
 	var _cret C.GstFlowReturn               // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	if params != nil {
 		_arg2 = (*C.GstBufferPoolAcquireParams)(gextras.StructNative(unsafe.Pointer(params)))
 	}
@@ -14921,7 +14921,7 @@ func (pool *BufferPool) allocBuffer(params *BufferPoolAcquireParams) (*Buffer, F
 	var _arg2 *C.GstBufferPoolAcquireParams // out
 	var _cret C.GstFlowReturn               // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	if params != nil {
 		_arg2 = (*C.GstBufferPoolAcquireParams)(gextras.StructNative(unsafe.Pointer(params)))
 	}
@@ -14953,7 +14953,7 @@ func (pool *BufferPool) flushStart() {
 
 	var _arg0 *C.GstBufferPool // out
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 
 	C._gotk4_gst1_BufferPool_virtual_flush_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(pool)
@@ -14966,7 +14966,7 @@ func (pool *BufferPool) flushStop() {
 
 	var _arg0 *C.GstBufferPool // out
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 
 	C._gotk4_gst1_BufferPool_virtual_flush_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(pool)
@@ -14984,7 +14984,7 @@ func (pool *BufferPool) freeBuffer(buffer *Buffer) {
 	var _arg0 *C.GstBufferPool // out
 	var _arg1 *C.GstBuffer     // out
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 
 	C._gotk4_gst1_BufferPool_virtual_free_buffer(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -15006,7 +15006,7 @@ func (pool *BufferPool) options() []string {
 	var _arg0 *C.GstBufferPool // out
 	var _cret **C.gchar        // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 
 	_cret = C._gotk4_gst1_BufferPool_virtual_get_options(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(pool)
@@ -15046,7 +15046,7 @@ func (pool *BufferPool) releaseBuffer(buffer *Buffer) {
 	var _arg0 *C.GstBufferPool // out
 	var _arg1 *C.GstBuffer     // out
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buffer)), nil)
 
@@ -15072,7 +15072,7 @@ func (pool *BufferPool) resetBuffer(buffer *Buffer) {
 	var _arg0 *C.GstBufferPool // out
 	var _arg1 *C.GstBuffer     // out
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 
 	C._gotk4_gst1_BufferPool_virtual_reset_buffer(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -15112,7 +15112,7 @@ func (pool *BufferPool) setConfig(config *Structure) bool {
 	var _arg1 *C.GstStructure  // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(config)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(config)), nil)
 
@@ -15142,7 +15142,7 @@ func (pool *BufferPool) start() bool {
 	var _arg0 *C.GstBufferPool // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 
 	_cret = C._gotk4_gst1_BufferPool_virtual_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(pool)
@@ -15170,7 +15170,7 @@ func (pool *BufferPool) stop() bool {
 	var _arg0 *C.GstBufferPool // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 
 	_cret = C._gotk4_gst1_BufferPool_virtual_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(pool)
@@ -15425,7 +15425,7 @@ func BufferPoolConfigSetAllocator(config *Structure, allocator Allocatorrer, par
 
 	_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(config)))
 	if allocator != nil {
-		_arg2 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+		_arg2 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	}
 	if params != nil {
 		_arg3 = (*C.GstAllocationParams)(gextras.StructNative(unsafe.Pointer(params)))
@@ -15681,7 +15681,7 @@ func NewBus() *Bus {
 func (bus *Bus) AddSignalWatch() {
 	var _arg0 *C.GstBus // out
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 
 	C.gst_bus_add_signal_watch(_arg0)
 	runtime.KeepAlive(bus)
@@ -15710,7 +15710,7 @@ func (bus *Bus) AddSignalWatchFull(priority int) {
 	var _arg0 *C.GstBus // out
 	var _arg1 C.gint    // out
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = C.gint(priority)
 
 	C.gst_bus_add_signal_watch_full(_arg0, _arg1)
@@ -15756,7 +15756,7 @@ func (bus *Bus) AddWatch(priority int, fn BusFunc) uint {
 	var _arg4 C.GDestroyNotify
 	var _cret C.guint // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = C.gint(priority)
 	_arg2 = (*[0]byte)(C._gotk4_gst1_BusFunc)
 	_arg3 = C.gpointer(gbox.Assign(fn))
@@ -15791,7 +15791,7 @@ func (bus *Bus) AsyncSignalFunc(message *Message, data unsafe.Pointer) bool {
 	var _arg2 C.gpointer    // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = (*C.GstMessage)(gextras.StructNative(unsafe.Pointer(message)))
 	_arg2 = (C.gpointer)(unsafe.Pointer(data))
 
@@ -15823,7 +15823,7 @@ func (bus *Bus) CreateWatch() *glib.Source {
 	var _arg0 *C.GstBus  // out
 	var _cret *C.GSource // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 
 	_cret = C.gst_bus_create_watch(_arg0)
 	runtime.KeepAlive(bus)
@@ -15856,7 +15856,7 @@ func (bus *Bus) CreateWatch() *glib.Source {
 func (bus *Bus) DisableSyncMessageEmission() {
 	var _arg0 *C.GstBus // out
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 
 	C.gst_bus_disable_sync_message_emission(_arg0)
 	runtime.KeepAlive(bus)
@@ -15880,7 +15880,7 @@ func (bus *Bus) DisableSyncMessageEmission() {
 func (bus *Bus) EnableSyncMessageEmission() {
 	var _arg0 *C.GstBus // out
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 
 	C.gst_bus_enable_sync_message_emission(_arg0)
 	runtime.KeepAlive(bus)
@@ -15896,7 +15896,7 @@ func (bus *Bus) HavePending() bool {
 	var _arg0 *C.GstBus  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 
 	_cret = C.gst_bus_have_pending(_arg0)
 	runtime.KeepAlive(bus)
@@ -15920,7 +15920,7 @@ func (bus *Bus) Peek() *Message {
 	var _arg0 *C.GstBus     // out
 	var _cret *C.GstMessage // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 
 	_cret = C.gst_bus_peek(_arg0)
 	runtime.KeepAlive(bus)
@@ -15987,7 +15987,7 @@ func (bus *Bus) Poll(events MessageType, timeout ClockTime) *Message {
 	var _arg2 C.GstClockTime   // out
 	var _cret *C.GstMessage    // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = C.GstMessageType(events)
 	_arg2 = C.GstClockTime(timeout)
 
@@ -16019,7 +16019,7 @@ func (bus *Bus) Pop() *Message {
 	var _arg0 *C.GstBus     // out
 	var _cret *C.GstMessage // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 
 	_cret = C.gst_bus_pop(_arg0)
 	runtime.KeepAlive(bus)
@@ -16057,7 +16057,7 @@ func (bus *Bus) PopFiltered(types MessageType) *Message {
 	var _arg1 C.GstMessageType // out
 	var _cret *C.GstMessage    // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = C.GstMessageType(types)
 
 	_cret = C.gst_bus_pop_filtered(_arg0, _arg1)
@@ -16093,7 +16093,7 @@ func (bus *Bus) Post(message *Message) bool {
 	var _arg1 *C.GstMessage // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = (*C.GstMessage)(gextras.StructNative(unsafe.Pointer(message)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(message)), nil)
 
@@ -16115,7 +16115,7 @@ func (bus *Bus) Post(message *Message) bool {
 func (bus *Bus) RemoveSignalWatch() {
 	var _arg0 *C.GstBus // out
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 
 	C.gst_bus_remove_signal_watch(_arg0)
 	runtime.KeepAlive(bus)
@@ -16130,7 +16130,7 @@ func (bus *Bus) RemoveWatch() bool {
 	var _arg0 *C.GstBus  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 
 	_cret = C.gst_bus_remove_watch(_arg0)
 	runtime.KeepAlive(bus)
@@ -16155,7 +16155,7 @@ func (bus *Bus) SetFlushing(flushing bool) {
 	var _arg0 *C.GstBus  // out
 	var _arg1 C.gboolean // out
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	if flushing {
 		_arg1 = C.TRUE
 	}
@@ -16184,7 +16184,7 @@ func (bus *Bus) SetSyncHandler(fn BusSyncHandler) {
 	var _arg2 C.gpointer
 	var _arg3 C.GDestroyNotify
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	if fn != nil {
 		_arg1 = (*[0]byte)(C._gotk4_gst1_BusSyncHandler)
 		_arg2 = C.gpointer(gbox.Assign(fn))
@@ -16213,7 +16213,7 @@ func (bus *Bus) SyncSignalHandler(message *Message, data unsafe.Pointer) BusSync
 	var _arg2 C.gpointer        // out
 	var _cret C.GstBusSyncReply // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = (*C.GstMessage)(gextras.StructNative(unsafe.Pointer(message)))
 	_arg2 = (C.gpointer)(unsafe.Pointer(data))
 
@@ -16248,7 +16248,7 @@ func (bus *Bus) TimedPop(timeout ClockTime) *Message {
 	var _arg1 C.GstClockTime // out
 	var _cret *C.GstMessage  // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = C.GstClockTime(timeout)
 
 	_cret = C.gst_bus_timed_pop(_arg0, _arg1)
@@ -16292,7 +16292,7 @@ func (bus *Bus) TimedPopFiltered(timeout ClockTime, types MessageType) *Message 
 	var _arg2 C.GstMessageType // out
 	var _cret *C.GstMessage    // in
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = C.GstClockTime(timeout)
 	_arg2 = C.GstMessageType(types)
 
@@ -16327,7 +16327,7 @@ func (bus *Bus) message(message *Message) {
 	var _arg0 *C.GstBus     // out
 	var _arg1 *C.GstMessage // out
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = (*C.GstMessage)(gextras.StructNative(unsafe.Pointer(message)))
 
 	C._gotk4_gst1_Bus_virtual_message(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -16347,7 +16347,7 @@ func (bus *Bus) syncMessage(message *Message) {
 	var _arg0 *C.GstBus     // out
 	var _arg1 *C.GstMessage // out
 
-	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+	_arg0 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	_arg1 = (*C.GstMessage)(gextras.StructNative(unsafe.Pointer(message)))
 
 	C._gotk4_gst1_Bus_virtual_sync_message(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -16622,7 +16622,7 @@ func (clock *Clock) AddObservation(slave, master ClockTime) (float64, bool) {
 	var _arg3 C.gdouble      // in
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(slave)
 	_arg2 = C.GstClockTime(master)
 
@@ -16674,7 +16674,7 @@ func (clock *Clock) AddObservationUnapplied(slave, master ClockTime) (rSquared f
 	var _arg7 C.GstClockTime // in
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(slave)
 	_arg2 = C.GstClockTime(master)
 
@@ -16722,7 +16722,7 @@ func (clock *Clock) AdjustUnlocked(internal ClockTime) ClockTime {
 	var _arg1 C.GstClockTime // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(internal)
 
 	_cret = C.gst_clock_adjust_unlocked(_arg0, _arg1)
@@ -16765,7 +16765,7 @@ func (clock *Clock) AdjustWithCalibration(internalTarget, cinternal, cexternal, 
 	var _cret C.GstClockTime // in
 
 	if clock != nil {
-		_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+		_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	}
 	_arg1 = C.GstClockTime(internalTarget)
 	_arg2 = C.GstClockTime(cinternal)
@@ -16807,7 +16807,7 @@ func (clock *Clock) Calibration() (internal, external, rateNum, rateDenom ClockT
 	var _arg3 C.GstClockTime // in
 	var _arg4 C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	C.gst_clock_get_calibration(_arg0, &_arg1, &_arg2, &_arg3, &_arg4)
 	runtime.KeepAlive(clock)
@@ -16836,7 +16836,7 @@ func (clock *Clock) InternalTime() ClockTime {
 	var _arg0 *C.GstClock    // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_clock_get_internal_time(_arg0)
 	runtime.KeepAlive(clock)
@@ -16859,7 +16859,7 @@ func (clock *Clock) Master() Clocker {
 	var _arg0 *C.GstClock // out
 	var _cret *C.GstClock // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_clock_get_master(_arg0)
 	runtime.KeepAlive(clock)
@@ -16896,7 +16896,7 @@ func (clock *Clock) Resolution() ClockTime {
 	var _arg0 *C.GstClock    // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_clock_get_resolution(_arg0)
 	runtime.KeepAlive(clock)
@@ -16920,7 +16920,7 @@ func (clock *Clock) Time() ClockTime {
 	var _arg0 *C.GstClock    // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_clock_get_time(_arg0)
 	runtime.KeepAlive(clock)
@@ -16941,7 +16941,7 @@ func (clock *Clock) Timeout() ClockTime {
 	var _arg0 *C.GstClock    // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_clock_get_timeout(_arg0)
 	runtime.KeepAlive(clock)
@@ -16963,7 +16963,7 @@ func (clock *Clock) IsSynced() bool {
 	var _arg0 *C.GstClock // out
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_clock_is_synced(_arg0)
 	runtime.KeepAlive(clock)
@@ -16995,7 +16995,7 @@ func (clock *Clock) NewPeriodicID(startTime, interval ClockTime) ClockID {
 	var _arg2 C.GstClockTime // out
 	var _cret C.GstClockID   // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(startTime)
 	_arg2 = C.GstClockTime(interval)
 
@@ -17026,7 +17026,7 @@ func (clock *Clock) NewSingleShotID(time ClockTime) ClockID {
 	var _arg1 C.GstClockTime // out
 	var _cret C.GstClockID   // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(time)
 
 	_cret = C.gst_clock_new_single_shot_id(_arg0, _arg1)
@@ -17060,7 +17060,7 @@ func (clock *Clock) PeriodicIDReinit(id ClockID, startTime, interval ClockTime) 
 	var _arg3 C.GstClockTime // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = (C.GstClockID)(unsafe.Pointer(id))
 	_arg2 = C.GstClockTime(startTime)
 	_arg3 = C.GstClockTime(interval)
@@ -17114,7 +17114,7 @@ func (clock *Clock) SetCalibration(internal, external, rateNum, rateDenom ClockT
 	var _arg3 C.GstClockTime // out
 	var _arg4 C.GstClockTime // out
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(internal)
 	_arg2 = C.GstClockTime(external)
 	_arg3 = C.GstClockTime(rateNum)
@@ -17153,9 +17153,9 @@ func (clock *Clock) SetMaster(master Clocker) bool {
 	var _arg1 *C.GstClock // out
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	if master != nil {
-		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(master).Native()))
+		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(master).Native()))
 	}
 
 	_cret = C.gst_clock_set_master(_arg0, _arg1)
@@ -17189,7 +17189,7 @@ func (clock *Clock) SetResolution(resolution ClockTime) ClockTime {
 	var _arg1 C.GstClockTime // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(resolution)
 
 	_cret = C.gst_clock_set_resolution(_arg0, _arg1)
@@ -17216,7 +17216,7 @@ func (clock *Clock) SetSynced(synced bool) {
 	var _arg0 *C.GstClock // out
 	var _arg1 C.gboolean  // out
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	if synced {
 		_arg1 = C.TRUE
 	}
@@ -17236,7 +17236,7 @@ func (clock *Clock) SetTimeout(timeout ClockTime) {
 	var _arg0 *C.GstClock    // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(timeout)
 
 	C.gst_clock_set_timeout(_arg0, _arg1)
@@ -17262,7 +17262,7 @@ func (clock *Clock) SingleShotIDReinit(id ClockID, time ClockTime) bool {
 	var _arg2 C.GstClockTime // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = (C.GstClockID)(unsafe.Pointer(id))
 	_arg2 = C.GstClockTime(time)
 
@@ -17299,7 +17299,7 @@ func (clock *Clock) UnadjustUnlocked(external ClockTime) ClockTime {
 	var _arg1 C.GstClockTime // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(external)
 
 	_cret = C.gst_clock_unadjust_unlocked(_arg0, _arg1)
@@ -17341,7 +17341,7 @@ func (clock *Clock) UnadjustWithCalibration(externalTarget, cinternal, cexternal
 	var _cret C.GstClockTime // in
 
 	if clock != nil {
-		_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+		_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	}
 	_arg1 = C.GstClockTime(externalTarget)
 	_arg2 = C.GstClockTime(cinternal)
@@ -17385,7 +17385,7 @@ func (clock *Clock) WaitForSync(timeout ClockTime) bool {
 	var _arg1 C.GstClockTime // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(timeout)
 
 	_cret = C.gst_clock_wait_for_sync(_arg0, _arg1)
@@ -17421,7 +17421,7 @@ func (clock *Clock) changeResolution(oldResolution, newResolution ClockTime) Clo
 	var _arg2 C.GstClockTime // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = C.GstClockTime(oldResolution)
 	_arg2 = C.GstClockTime(newResolution)
 
@@ -17451,7 +17451,7 @@ func (clock *Clock) internalTime() ClockTime {
 	var _arg0 *C.GstClock    // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C._gotk4_gst1_Clock_virtual_get_internal_time(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(clock)
@@ -17476,7 +17476,7 @@ func (clock *Clock) resolution() ClockTime {
 	var _arg0 *C.GstClock    // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C._gotk4_gst1_Clock_virtual_get_resolution(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(clock)
@@ -17500,7 +17500,7 @@ func (clock *Clock) unschedule(entry *ClockEntry) {
 	var _arg0 *C.GstClock      // out
 	var _arg1 *C.GstClockEntry // out
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = (*C.GstClockEntry)(gextras.StructNative(unsafe.Pointer(entry)))
 
 	C._gotk4_gst1_Clock_virtual_unschedule(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -17530,7 +17530,7 @@ func (clock *Clock) wait(entry *ClockEntry) (ClockTimeDiff, ClockReturn) {
 	var _arg2 C.GstClockTimeDiff // in
 	var _cret C.GstClockReturn   // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = (*C.GstClockEntry)(gextras.StructNative(unsafe.Pointer(entry)))
 
 	_cret = C._gotk4_gst1_Clock_virtual_wait(unsafe.Pointer(fnarg), _arg0, _arg1, &_arg2)
@@ -17563,7 +17563,7 @@ func (clock *Clock) waitAsync(entry *ClockEntry) ClockReturn {
 	var _arg1 *C.GstClockEntry // out
 	var _cret C.GstClockReturn // in
 
-	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg0 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	_arg1 = (*C.GstClockEntry)(gextras.StructNative(unsafe.Pointer(entry)))
 
 	_cret = C._gotk4_gst1_Clock_virtual_wait_async(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -17708,7 +17708,7 @@ func ClockIDUsesClock(id ClockID, clock Clocker) bool {
 	var _cret C.gboolean   // in
 
 	_arg1 = (C.GstClockID)(unsafe.Pointer(id))
-	_arg2 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg2 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_clock_id_uses_clock(_arg1, _arg2)
 	runtime.KeepAlive(id)
@@ -17963,7 +17963,7 @@ func (binding *ControlBinding) GValueArray(timestamp, interval ClockTime, values
 	var _arg3 C.guint
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
+	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 	_arg2 = C.GstClockTime(interval)
 	_arg3 = (C.guint)(len(values))
@@ -18006,7 +18006,7 @@ func (binding *ControlBinding) Value(timestamp ClockTime) *coreglib.Value {
 	var _arg1 C.GstClockTime       // out
 	var _cret *C.GValue            // in
 
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
+	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 
 	_cret = C.gst_control_binding_get_value(_arg0, _arg1)
@@ -18034,7 +18034,7 @@ func (binding *ControlBinding) IsDisabled() bool {
 	var _arg0 *C.GstControlBinding // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
+	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
 
 	_cret = C.gst_control_binding_is_disabled(_arg0)
 	runtime.KeepAlive(binding)
@@ -18059,7 +18059,7 @@ func (binding *ControlBinding) SetDisabled(disabled bool) {
 	var _arg0 *C.GstControlBinding // out
 	var _arg1 C.gboolean           // out
 
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
+	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
 	if disabled {
 		_arg1 = C.TRUE
 	}
@@ -18092,8 +18092,8 @@ func (binding *ControlBinding) SyncValues(object GstObjector, timestamp, lastSyn
 	var _arg3 C.GstClockTime       // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg2 = C.GstClockTime(timestamp)
 	_arg3 = C.GstClockTime(lastSync)
 
@@ -18139,7 +18139,7 @@ func (binding *ControlBinding) gValueArray(timestamp, interval ClockTime, values
 	var _arg3 C.guint
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
+	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 	_arg2 = C.GstClockTime(interval)
 	_arg3 = (C.guint)(len(values))
@@ -18185,7 +18185,7 @@ func (binding *ControlBinding) value(timestamp ClockTime) *coreglib.Value {
 	var _arg1 C.GstClockTime       // out
 	var _cret *C.GValue            // in
 
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
+	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 
 	_cret = C._gotk4_gst1_ControlBinding_virtual_get_value(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -18230,8 +18230,8 @@ func (binding *ControlBinding) syncValues(object GstObjector, timestamp, lastSyn
 	var _arg3 C.GstClockTime       // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg2 = C.GstClockTime(timestamp)
 	_arg3 = C.GstClockTime(lastSync)
 
@@ -18348,7 +18348,7 @@ func (self *ControlSource) ControlSourceGetValue(timestamp ClockTime) (float64, 
 	var _arg2 C.gdouble           // in
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstControlSource)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstControlSource)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 
 	_cret = C.gst_control_source_get_value(_arg0, _arg1, &_arg2)
@@ -18386,7 +18386,7 @@ func (self *ControlSource) ControlSourceGetValueArray(timestamp, interval ClockT
 	var _arg3 C.guint
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstControlSource)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstControlSource)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 	_arg2 = C.GstClockTime(interval)
 	_arg3 = (C.guint)(len(values))
@@ -18543,7 +18543,7 @@ func (device *Device) CreateElement(name string) Elementer {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GstElement // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 	if name != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -18585,7 +18585,7 @@ func (device *Device) Caps() *Caps {
 	var _arg0 *C.GstDevice // out
 	var _cret *C.GstCaps   // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 
 	_cret = C.gst_device_get_caps(_arg0)
 	runtime.KeepAlive(device)
@@ -18615,7 +18615,7 @@ func (device *Device) DeviceClass() string {
 	var _arg0 *C.GstDevice // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 
 	_cret = C.gst_device_get_device_class(_arg0)
 	runtime.KeepAlive(device)
@@ -18637,7 +18637,7 @@ func (device *Device) DisplayName() string {
 	var _arg0 *C.GstDevice // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 
 	_cret = C.gst_device_get_display_name(_arg0)
 	runtime.KeepAlive(device)
@@ -18660,7 +18660,7 @@ func (device *Device) Properties() *Structure {
 	var _arg0 *C.GstDevice    // out
 	var _cret *C.GstStructure // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 
 	_cret = C.gst_device_get_properties(_arg0)
 	runtime.KeepAlive(device)
@@ -18694,7 +18694,7 @@ func (device *Device) HasClasses(classes string) bool {
 	var _arg1 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(classes)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -18726,7 +18726,7 @@ func (device *Device) HasClassesv(classes []string) bool {
 	var _arg1 **C.gchar    // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 	{
 		_arg1 = (**C.gchar)(C.calloc(C.size_t((len(classes) + 1)), C.size_t(unsafe.Sizeof(uint(0)))))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -18774,8 +18774,8 @@ func (device *Device) ReconfigureElement(element Elementer) bool {
 	var _arg1 *C.GstElement // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_device_reconfigure_element(_arg0, _arg1)
 	runtime.KeepAlive(device)
@@ -18809,7 +18809,7 @@ func (device *Device) createElement(name string) Elementer {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GstElement // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 	if name != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -18864,8 +18864,8 @@ func (device *Device) reconfigureElement(element Elementer) bool {
 	var _arg1 *C.GstElement // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C._gotk4_gst1_Device_virtual_reconfigure_element(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(device)
@@ -19030,7 +19030,7 @@ func (monitor *DeviceMonitor) AddFilter(classes string, caps *Caps) uint {
 	var _arg2 *C.GstCaps          // out
 	var _cret C.guint             // in
 
-	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.InternObject(monitor).Native()))
+	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.BaseObject(monitor).Native()))
 	if classes != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(classes)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -19060,7 +19060,7 @@ func (monitor *DeviceMonitor) Bus() *Bus {
 	var _arg0 *C.GstDeviceMonitor // out
 	var _cret *C.GstBus           // in
 
-	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.InternObject(monitor).Native()))
+	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.BaseObject(monitor).Native()))
 
 	_cret = C.gst_device_monitor_get_bus(_arg0)
 	runtime.KeepAlive(monitor)
@@ -19082,7 +19082,7 @@ func (monitor *DeviceMonitor) Devices() []Devicer {
 	var _arg0 *C.GstDeviceMonitor // out
 	var _cret *C.GList            // in
 
-	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.InternObject(monitor).Native()))
+	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.BaseObject(monitor).Native()))
 
 	_cret = C.gst_device_monitor_get_devices(_arg0)
 	runtime.KeepAlive(monitor)
@@ -19130,7 +19130,7 @@ func (monitor *DeviceMonitor) Providers() []string {
 	var _arg0 *C.GstDeviceMonitor // out
 	var _cret **C.gchar           // in
 
-	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.InternObject(monitor).Native()))
+	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.BaseObject(monitor).Native()))
 
 	_cret = C.gst_device_monitor_get_providers(_arg0)
 	runtime.KeepAlive(monitor)
@@ -19166,7 +19166,7 @@ func (monitor *DeviceMonitor) ShowAllDevices() bool {
 	var _arg0 *C.GstDeviceMonitor // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.InternObject(monitor).Native()))
+	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.BaseObject(monitor).Native()))
 
 	_cret = C.gst_device_monitor_get_show_all_devices(_arg0)
 	runtime.KeepAlive(monitor)
@@ -19195,7 +19195,7 @@ func (monitor *DeviceMonitor) RemoveFilter(filterId uint) bool {
 	var _arg1 C.guint             // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.InternObject(monitor).Native()))
+	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.BaseObject(monitor).Native()))
 	_arg1 = C.guint(filterId)
 
 	_cret = C.gst_device_monitor_remove_filter(_arg0, _arg1)
@@ -19222,7 +19222,7 @@ func (monitor *DeviceMonitor) SetShowAllDevices(showAll bool) {
 	var _arg0 *C.GstDeviceMonitor // out
 	var _arg1 C.gboolean          // out
 
-	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.InternObject(monitor).Native()))
+	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.BaseObject(monitor).Native()))
 	if showAll {
 		_arg1 = C.TRUE
 	}
@@ -19244,7 +19244,7 @@ func (monitor *DeviceMonitor) Start() bool {
 	var _arg0 *C.GstDeviceMonitor // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.InternObject(monitor).Native()))
+	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.BaseObject(monitor).Native()))
 
 	_cret = C.gst_device_monitor_start(_arg0)
 	runtime.KeepAlive(monitor)
@@ -19262,7 +19262,7 @@ func (monitor *DeviceMonitor) Start() bool {
 func (monitor *DeviceMonitor) Stop() {
 	var _arg0 *C.GstDeviceMonitor // out
 
-	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.InternObject(monitor).Native()))
+	_arg0 = (*C.GstDeviceMonitor)(unsafe.Pointer(coreglib.BaseObject(monitor).Native()))
 
 	C.gst_device_monitor_stop(_arg0)
 	runtime.KeepAlive(monitor)
@@ -19389,7 +19389,7 @@ func (provider *DeviceProvider) CanMonitor() bool {
 	var _arg0 *C.GstDeviceProvider // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	_cret = C.gst_device_provider_can_monitor(_arg0)
 	runtime.KeepAlive(provider)
@@ -19418,8 +19418,8 @@ func (provider *DeviceProvider) DeviceAdd(device Devicer) {
 	var _arg0 *C.GstDeviceProvider // out
 	var _arg1 *C.GstDevice         // out
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
-	_arg1 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
+	_arg1 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 
 	C.gst_device_provider_device_add(_arg0, _arg1)
 	runtime.KeepAlive(provider)
@@ -19441,9 +19441,9 @@ func (provider *DeviceProvider) DeviceChanged(device, changedDevice Devicer) {
 	var _arg1 *C.GstDevice         // out
 	var _arg2 *C.GstDevice         // out
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
-	_arg1 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
-	_arg2 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(changedDevice).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
+	_arg1 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
+	_arg2 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(changedDevice).Native()))
 
 	C.gst_device_provider_device_changed(_arg0, _arg1, _arg2)
 	runtime.KeepAlive(provider)
@@ -19463,8 +19463,8 @@ func (provider *DeviceProvider) DeviceRemove(device Devicer) {
 	var _arg0 *C.GstDeviceProvider // out
 	var _arg1 *C.GstDevice         // out
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
-	_arg1 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
+	_arg1 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 
 	C.gst_device_provider_device_remove(_arg0, _arg1)
 	runtime.KeepAlive(provider)
@@ -19480,7 +19480,7 @@ func (provider *DeviceProvider) Bus() *Bus {
 	var _arg0 *C.GstDeviceProvider // out
 	var _cret *C.GstBus            // in
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	_cret = C.gst_device_provider_get_bus(_arg0)
 	runtime.KeepAlive(provider)
@@ -19505,7 +19505,7 @@ func (provider *DeviceProvider) Devices() []Devicer {
 	var _arg0 *C.GstDeviceProvider // out
 	var _cret *C.GList             // in
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	_cret = C.gst_device_provider_get_devices(_arg0)
 	runtime.KeepAlive(provider)
@@ -19549,7 +19549,7 @@ func (provider *DeviceProvider) Factory() *DeviceProviderFactory {
 	var _arg0 *C.GstDeviceProvider        // out
 	var _cret *C.GstDeviceProviderFactory // in
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	_cret = C.gst_device_provider_get_factory(_arg0)
 	runtime.KeepAlive(provider)
@@ -19574,7 +19574,7 @@ func (provider *DeviceProvider) HiddenProviders() []string {
 	var _arg0 *C.GstDeviceProvider // out
 	var _cret **C.gchar            // in
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	_cret = C.gst_device_provider_get_hidden_providers(_arg0)
 	runtime.KeepAlive(provider)
@@ -19614,7 +19614,7 @@ func (provider *DeviceProvider) Metadata(key string) string {
 	var _arg1 *C.gchar             // out
 	var _cret *C.gchar             // in
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -19642,7 +19642,7 @@ func (provider *DeviceProvider) HideProvider(name string) {
 	var _arg0 *C.GstDeviceProvider // out
 	var _arg1 *C.gchar             // out
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -19657,7 +19657,7 @@ func (provider *DeviceProvider) IsStarted() bool {
 	var _arg0 *C.GstDeviceProvider // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	_cret = C.gst_device_provider_is_started(_arg0)
 	runtime.KeepAlive(provider)
@@ -19690,7 +19690,7 @@ func (provider *DeviceProvider) Start() bool {
 	var _arg0 *C.GstDeviceProvider // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	_cret = C.gst_device_provider_start(_arg0)
 	runtime.KeepAlive(provider)
@@ -19710,7 +19710,7 @@ func (provider *DeviceProvider) Start() bool {
 func (provider *DeviceProvider) Stop() {
 	var _arg0 *C.GstDeviceProvider // out
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	C.gst_device_provider_stop(_arg0)
 	runtime.KeepAlive(provider)
@@ -19729,7 +19729,7 @@ func (provider *DeviceProvider) UnhideProvider(name string) {
 	var _arg0 *C.GstDeviceProvider // out
 	var _arg1 *C.gchar             // out
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -19760,7 +19760,7 @@ func (provider *DeviceProvider) start() bool {
 	var _arg0 *C.GstDeviceProvider // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	_cret = C._gotk4_gst1_DeviceProvider_virtual_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(provider)
@@ -19783,7 +19783,7 @@ func (provider *DeviceProvider) stop() {
 
 	var _arg0 *C.GstDeviceProvider // out
 
-	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.InternObject(provider).Native()))
+	_arg0 = (*C.GstDeviceProvider)(unsafe.Pointer(coreglib.BaseObject(provider).Native()))
 
 	C._gotk4_gst1_DeviceProvider_virtual_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(provider)
@@ -19812,7 +19812,7 @@ func DeviceProviderRegister(plugin *Plugin, name string, rank uint, typ coreglib
 	var _cret C.gboolean   // in
 
 	if plugin != nil {
-		_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+		_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	}
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -19878,7 +19878,7 @@ func (factory *DeviceProviderFactory) Get() DeviceProviderer {
 	var _arg0 *C.GstDeviceProviderFactory // out
 	var _cret *C.GstDeviceProvider        // in
 
-	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_device_provider_factory_get(_arg0)
 	runtime.KeepAlive(factory)
@@ -19916,7 +19916,7 @@ func (factory *DeviceProviderFactory) DeviceProviderType() coreglib.Type {
 	var _arg0 *C.GstDeviceProviderFactory // out
 	var _cret C.GType                     // in
 
-	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_device_provider_factory_get_device_provider_type(_arg0)
 	runtime.KeepAlive(factory)
@@ -19943,7 +19943,7 @@ func (factory *DeviceProviderFactory) Metadata(key string) string {
 	var _arg1 *C.gchar                    // out
 	var _cret *C.gchar                    // in
 
-	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -19970,7 +19970,7 @@ func (factory *DeviceProviderFactory) MetadataKeys() []string {
 	var _arg0 *C.GstDeviceProviderFactory // out
 	var _cret **C.gchar                   // in
 
-	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_device_provider_factory_get_metadata_keys(_arg0)
 	runtime.KeepAlive(factory)
@@ -20013,7 +20013,7 @@ func (factory *DeviceProviderFactory) HasClasses(classes string) bool {
 	var _arg1 *C.gchar                    // out
 	var _cret C.gboolean                  // in
 
-	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	if classes != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(classes)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -20047,7 +20047,7 @@ func (factory *DeviceProviderFactory) HasClassesv(classes []string) bool {
 	var _arg1 **C.gchar                   // out
 	var _cret C.gboolean                  // in
 
-	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstDeviceProviderFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	{
 		_arg1 = (**C.gchar)(C.calloc(C.size_t((len(classes) + 1)), C.size_t(unsafe.Sizeof(uint(0)))))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -20673,7 +20673,7 @@ func (element *Element) ConnectPadRemoved(f func(oldPad *Pad)) coreglib.SignalHa
 func (element *Element) AbortState() {
 	var _arg0 *C.GstElement // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	C.gst_element_abort_state(_arg0)
 	runtime.KeepAlive(element)
@@ -20703,8 +20703,8 @@ func (element *Element) AddPad(pad *Pad) bool {
 	var _arg1 *C.GstPad     // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_element_add_pad(_arg0, _arg1)
 	runtime.KeepAlive(element)
@@ -20735,7 +20735,7 @@ func (element *Element) AddPropertyDeepNotifyWatch(propertyName string, includeV
 	var _arg2 C.gboolean    // out
 	var _cret C.gulong      // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	if propertyName != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -20772,7 +20772,7 @@ func (element *Element) AddPropertyNotifyWatch(propertyName string, includeValue
 	var _arg2 C.gboolean    // out
 	var _cret C.gulong      // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	if propertyName != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -20813,7 +20813,7 @@ func (element *Element) CallAsync(fn ElementCallAsyncFunc) {
 	var _arg2 C.gpointer
 	var _arg3 C.GDestroyNotify
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gst1_ElementCallAsyncFunc)
 	_arg2 = C.gpointer(gbox.Assign(fn))
 	_arg3 = (C.GDestroyNotify)((*[0]byte)(C.callbackDelete))
@@ -20840,7 +20840,7 @@ func (element *Element) ChangeState(transition StateChange) StateChangeReturn {
 	var _arg1 C.GstStateChange       // out
 	var _cret C.GstStateChangeReturn // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstStateChange(transition)
 
 	_cret = C.gst_element_change_state(_arg0, _arg1)
@@ -20881,7 +20881,7 @@ func (element *Element) ContinueState(ret StateChangeReturn) StateChangeReturn {
 	var _arg1 C.GstStateChangeReturn // out
 	var _cret C.GstStateChangeReturn // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstStateChangeReturn(ret)
 
 	_cret = C.gst_element_continue_state(_arg0, _arg1)
@@ -20901,7 +20901,7 @@ func (element *Element) ContinueState(ret StateChangeReturn) StateChangeReturn {
 func (element *Element) CreateAllPads() {
 	var _arg0 *C.GstElement // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	C.gst_element_create_all_pads(_arg0)
 	runtime.KeepAlive(element)
@@ -20933,7 +20933,7 @@ func (element *Element) DecorateStreamID(streamId string) string {
 	var _arg1 *C.gchar      // out
 	var _cret *C.gchar      // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -20970,7 +20970,7 @@ func (element *Element) ForEachPad(fn ElementForEachPadFunc) bool {
 	var _arg2 C.gpointer
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gst1_ElementForEachPadFunc)
 	_arg2 = C.gpointer(gbox.Assign(fn))
 	defer gbox.Delete(uintptr(_arg2))
@@ -21009,7 +21009,7 @@ func (element *Element) ForEachSinkPad(fn ElementForEachPadFunc) bool {
 	var _arg2 C.gpointer
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gst1_ElementForEachPadFunc)
 	_arg2 = C.gpointer(gbox.Assign(fn))
 	defer gbox.Delete(uintptr(_arg2))
@@ -21048,7 +21048,7 @@ func (element *Element) ForEachSrcPad(fn ElementForEachPadFunc) bool {
 	var _arg2 C.gpointer
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gst1_ElementForEachPadFunc)
 	_arg2 = C.gpointer(gbox.Assign(fn))
 	defer gbox.Delete(uintptr(_arg2))
@@ -21079,7 +21079,7 @@ func (element *Element) BaseTime() ClockTime {
 	var _arg0 *C.GstElement  // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_get_base_time(_arg0)
 	runtime.KeepAlive(element)
@@ -21103,7 +21103,7 @@ func (element *Element) Bus() *Bus {
 	var _arg0 *C.GstElement // out
 	var _cret *C.GstBus     // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_get_bus(_arg0)
 	runtime.KeepAlive(element)
@@ -21132,7 +21132,7 @@ func (element *Element) Clock() Clocker {
 	var _arg0 *C.GstElement // out
 	var _cret *C.GstClock   // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_get_clock(_arg0)
 	runtime.KeepAlive(element)
@@ -21182,8 +21182,8 @@ func (element *Element) CompatiblePad(pad *Pad, caps *Caps) *Pad {
 	var _arg2 *C.GstCaps    // out
 	var _cret *C.GstPad     // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if caps != nil {
 		_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	}
@@ -21219,8 +21219,8 @@ func (element *Element) CompatiblePadTemplate(compattempl *PadTemplate) *PadTemp
 	var _arg1 *C.GstPadTemplate // out
 	var _cret *C.GstPadTemplate // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(compattempl).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(compattempl).Native()))
 
 	_cret = C.gst_element_get_compatible_pad_template(_arg0, _arg1)
 	runtime.KeepAlive(element)
@@ -21251,7 +21251,7 @@ func (element *Element) Context(contextType string) *Context {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GstContext // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -21289,7 +21289,7 @@ func (element *Element) ContextUnlocked(contextType string) *Context {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GstContext // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -21323,7 +21323,7 @@ func (element *Element) Contexts() []*Context {
 	var _arg0 *C.GstElement // out
 	var _cret *C.GList      // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_get_contexts(_arg0)
 	runtime.KeepAlive(element)
@@ -21358,7 +21358,7 @@ func (element *Element) CurrentClockTime() ClockTime {
 	var _arg0 *C.GstElement  // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_get_current_clock_time(_arg0)
 	runtime.KeepAlive(element)
@@ -21383,7 +21383,7 @@ func (element *Element) CurrentRunningTime() ClockTime {
 	var _arg0 *C.GstElement  // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_get_current_running_time(_arg0)
 	runtime.KeepAlive(element)
@@ -21406,7 +21406,7 @@ func (element *Element) Factory() *ElementFactory {
 	var _arg0 *C.GstElement        // out
 	var _cret *C.GstElementFactory // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_get_factory(_arg0)
 	runtime.KeepAlive(element)
@@ -21434,7 +21434,7 @@ func (element *Element) Metadata(key string) string {
 	var _arg1 *C.gchar      // out
 	var _cret *C.gchar      // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -21464,7 +21464,7 @@ func (element *Element) PadTemplate(name string) *PadTemplate {
 	var _arg1 *C.gchar          // out
 	var _cret *C.GstPadTemplate // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -21491,7 +21491,7 @@ func (element *Element) PadTemplateList() []*PadTemplate {
 	var _arg0 *C.GstElement // out
 	var _cret *C.GList      // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_get_pad_template_list(_arg0)
 	runtime.KeepAlive(element)
@@ -21529,7 +21529,7 @@ func (element *Element) GetRequestPad(name string) *Pad {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GstPad     // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -21560,7 +21560,7 @@ func (element *Element) StartTime() ClockTime {
 	var _arg0 *C.GstElement  // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_get_start_time(_arg0)
 	runtime.KeepAlive(element)
@@ -21617,7 +21617,7 @@ func (element *Element) State(timeout ClockTime) (state, pending State, stateCha
 	var _arg3 C.GstClockTime         // out
 	var _cret C.GstStateChangeReturn // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg3 = C.GstClockTime(timeout)
 
 	_cret = C.gst_element_get_state(_arg0, &_arg1, &_arg2, _arg3)
@@ -21653,7 +21653,7 @@ func (element *Element) StaticPad(name string) *Pad {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GstPad     // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -21684,7 +21684,7 @@ func (element *Element) IsLockedState() bool {
 	var _arg0 *C.GstElement // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_is_locked_state(_arg0)
 	runtime.KeepAlive(element)
@@ -21714,7 +21714,7 @@ func (element *Element) IteratePads() *Iterator {
 	var _arg0 *C.GstElement  // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_iterate_pads(_arg0)
 	runtime.KeepAlive(element)
@@ -21746,7 +21746,7 @@ func (element *Element) IterateSinkPads() *Iterator {
 	var _arg0 *C.GstElement  // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_iterate_sink_pads(_arg0)
 	runtime.KeepAlive(element)
@@ -21778,7 +21778,7 @@ func (element *Element) IterateSrcPads() *Iterator {
 	var _arg0 *C.GstElement  // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_iterate_src_pads(_arg0)
 	runtime.KeepAlive(element)
@@ -21817,8 +21817,8 @@ func (src *Element) Link(dest Elementer) bool {
 	var _arg1 *C.GstElement // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(src).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(dest).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(dest).Native()))
 
 	_cret = C.gst_element_link(_arg0, _arg1)
 	runtime.KeepAlive(src)
@@ -21856,8 +21856,8 @@ func (src *Element) LinkFiltered(dest Elementer, filter *Caps) bool {
 	var _arg2 *C.GstCaps    // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(src).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(dest).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(dest).Native()))
 	if filter != nil {
 		_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
 	}
@@ -21899,12 +21899,12 @@ func (src *Element) LinkPads(srcpadname string, dest Elementer, destpadname stri
 	var _arg3 *C.gchar      // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	if srcpadname != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(srcpadname)))
 		defer C.free(unsafe.Pointer(_arg1))
 	}
-	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(dest).Native()))
+	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(dest).Native()))
 	if destpadname != "" {
 		_arg3 = (*C.gchar)(unsafe.Pointer(C.CString(destpadname)))
 		defer C.free(unsafe.Pointer(_arg3))
@@ -21951,12 +21951,12 @@ func (src *Element) LinkPadsFiltered(srcpadname string, dest Elementer, destpadn
 	var _arg4 *C.GstCaps    // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	if srcpadname != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(srcpadname)))
 		defer C.free(unsafe.Pointer(_arg1))
 	}
-	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(dest).Native()))
+	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(dest).Native()))
 	if destpadname != "" {
 		_arg3 = (*C.gchar)(unsafe.Pointer(C.CString(destpadname)))
 		defer C.free(unsafe.Pointer(_arg3))
@@ -22012,12 +22012,12 @@ func (src *Element) LinkPadsFull(srcpadname string, dest Elementer, destpadname 
 	var _arg4 C.GstPadLinkCheck // out
 	var _cret C.gboolean        // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	if srcpadname != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(srcpadname)))
 		defer C.free(unsafe.Pointer(_arg1))
 	}
-	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(dest).Native()))
+	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(dest).Native()))
 	if destpadname != "" {
 		_arg3 = (*C.gchar)(unsafe.Pointer(C.CString(destpadname)))
 		defer C.free(unsafe.Pointer(_arg3))
@@ -22059,7 +22059,7 @@ func (src *Element) LinkPadsFull(srcpadname string, dest Elementer, destpadname 
 func (element *Element) LostState() {
 	var _arg0 *C.GstElement // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	C.gst_element_lost_state(_arg0)
 	runtime.KeepAlive(element)
@@ -22095,7 +22095,7 @@ func (element *Element) MessageFull(typ MessageType, domain glib.Quark, code int
 	var _arg7 *C.gchar         // out
 	var _arg8 C.gint           // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstMessageType(typ)
 	_arg2 = C.GQuark(domain)
 	_arg3 = C.gint(code)
@@ -22153,7 +22153,7 @@ func (element *Element) MessageFullWithDetails(typ MessageType, domain glib.Quar
 	var _arg8 C.gint           // out
 	var _arg9 *C.GstStructure  // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstMessageType(typ)
 	_arg2 = C.GQuark(domain)
 	_arg3 = C.gint(code)
@@ -22196,7 +22196,7 @@ func (element *Element) MessageFullWithDetails(typ MessageType, domain glib.Quar
 func (element *Element) NoMorePads() {
 	var _arg0 *C.GstElement // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	C.gst_element_no_more_pads(_arg0)
 	runtime.KeepAlive(element)
@@ -22221,7 +22221,7 @@ func (element *Element) PostMessage(message *Message) bool {
 	var _arg1 *C.GstMessage // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.GstMessage)(gextras.StructNative(unsafe.Pointer(message)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(message)), nil)
 
@@ -22252,7 +22252,7 @@ func (element *Element) ProvideClock() Clocker {
 	var _arg0 *C.GstElement // out
 	var _cret *C.GstClock   // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_provide_clock(_arg0)
 	runtime.KeepAlive(element)
@@ -22301,7 +22301,7 @@ func (element *Element) Query(query *Query) bool {
 	var _arg1 *C.GstQuery   // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C.gst_element_query(_arg0, _arg1)
@@ -22338,7 +22338,7 @@ func (element *Element) QueryConvert(srcFormat Format, srcVal int64, destFormat 
 	var _arg4 C.gint64      // in
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstFormat(srcFormat)
 	_arg2 = C.gint64(srcVal)
 	_arg3 = C.GstFormat(destFormat)
@@ -22385,7 +22385,7 @@ func (element *Element) QueryDuration(format Format) (int64, bool) {
 	var _arg2 C.gint64      // in
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstFormat(format)
 
 	_cret = C.gst_element_query_duration(_arg0, _arg1, &_arg2)
@@ -22427,7 +22427,7 @@ func (element *Element) QueryPosition(format Format) (int64, bool) {
 	var _arg2 C.gint64      // in
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstFormat(format)
 
 	_cret = C.gst_element_query_position(_arg0, _arg1, &_arg2)
@@ -22461,8 +22461,8 @@ func (element *Element) ReleaseRequestPad(pad *Pad) {
 	var _arg0 *C.GstElement // out
 	var _arg1 *C.GstPad     // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C.gst_element_release_request_pad(_arg0, _arg1)
 	runtime.KeepAlive(element)
@@ -22501,8 +22501,8 @@ func (element *Element) RemovePad(pad *Pad) bool {
 	var _arg1 *C.GstPad     // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_element_remove_pad(_arg0, _arg1)
 	runtime.KeepAlive(element)
@@ -22524,7 +22524,7 @@ func (element *Element) RemovePropertyNotifyWatch(watchId uint32) {
 	var _arg0 *C.GstElement // out
 	var _arg1 C.gulong      // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.gulong(watchId)
 
 	C.gst_element_remove_property_notify_watch(_arg0, _arg1)
@@ -22555,8 +22555,8 @@ func (element *Element) RequestPad(templ *PadTemplate, name string, caps *Caps) 
 	var _arg3 *C.GstCaps        // out
 	var _cret *C.GstPad         // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
 	if name != "" {
 		_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg2))
@@ -22605,7 +22605,7 @@ func (element *Element) RequestPadSimple(name string) *Pad {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GstPad     // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -22653,7 +22653,7 @@ func (element *Element) Seek(rate float64, format Format, flags SeekFlags, start
 	var _arg7 C.gint64       // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.gdouble(rate)
 	_arg2 = C.GstFormat(format)
 	_arg3 = C.GstSeekFlags(flags)
@@ -22717,7 +22717,7 @@ func (element *Element) SeekSimple(format Format, seekFlags SeekFlags, seekPos i
 	var _arg3 C.gint64       // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstFormat(format)
 	_arg2 = C.GstSeekFlags(seekFlags)
 	_arg3 = C.gint64(seekPos)
@@ -22759,7 +22759,7 @@ func (element *Element) SendEvent(event *Event) bool {
 	var _arg1 *C.GstEvent   // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(event)), nil)
 
@@ -22788,7 +22788,7 @@ func (element *Element) SetBaseTime(time ClockTime) {
 	var _arg0 *C.GstElement  // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstClockTime(time)
 
 	C.gst_element_set_base_time(_arg0, _arg1)
@@ -22808,9 +22808,9 @@ func (element *Element) SetBus(bus *Bus) {
 	var _arg0 *C.GstElement // out
 	var _arg1 *C.GstBus     // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	if bus != nil {
-		_arg1 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+		_arg1 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	}
 
 	C.gst_element_set_bus(_arg0, _arg1)
@@ -22837,9 +22837,9 @@ func (element *Element) SetClock(clock Clocker) bool {
 	var _arg1 *C.GstClock   // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	if clock != nil {
-		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	}
 
 	_cret = C.gst_element_set_clock(_arg0, _arg1)
@@ -22867,7 +22867,7 @@ func (element *Element) SetContext(context *Context) {
 	var _arg0 *C.GstElement // out
 	var _arg1 *C.GstContext // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.GstContext)(gextras.StructNative(unsafe.Pointer(context)))
 
 	C.gst_element_set_context(_arg0, _arg1)
@@ -22897,7 +22897,7 @@ func (element *Element) SetLockedState(lockedState bool) bool {
 	var _arg1 C.gboolean    // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	if lockedState {
 		_arg1 = C.TRUE
 	}
@@ -22935,7 +22935,7 @@ func (element *Element) SetStartTime(time ClockTime) {
 	var _arg0 *C.GstElement  // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstClockTime(time)
 
 	C.gst_element_set_start_time(_arg0, _arg1)
@@ -22970,7 +22970,7 @@ func (element *Element) SetState(state State) StateChangeReturn {
 	var _arg1 C.GstState             // out
 	var _cret C.GstStateChangeReturn // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstState(state)
 
 	_cret = C.gst_element_set_state(_arg0, _arg1)
@@ -22997,7 +22997,7 @@ func (element *Element) SyncStateWithParent() bool {
 	var _arg0 *C.GstElement // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C.gst_element_sync_state_with_parent(_arg0)
 	runtime.KeepAlive(element)
@@ -23024,8 +23024,8 @@ func (src *Element) Unlink(dest Elementer) {
 	var _arg0 *C.GstElement // out
 	var _arg1 *C.GstElement // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(src).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(dest).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(dest).Native()))
 
 	C.gst_element_unlink(_arg0, _arg1)
 	runtime.KeepAlive(src)
@@ -23047,10 +23047,10 @@ func (src *Element) UnlinkPads(srcpadname string, dest Elementer, destpadname st
 	var _arg2 *C.GstElement // out
 	var _arg3 *C.gchar      // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(srcpadname)))
 	defer C.free(unsafe.Pointer(_arg1))
-	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(dest).Native()))
+	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(dest).Native()))
 	_arg3 = (*C.gchar)(unsafe.Pointer(C.CString(destpadname)))
 	defer C.free(unsafe.Pointer(_arg3))
 
@@ -23081,7 +23081,7 @@ func (element *Element) changeState(transition StateChange) StateChangeReturn {
 	var _arg1 C.GstStateChange       // out
 	var _cret C.GstStateChangeReturn // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstStateChange(transition)
 
 	_cret = C._gotk4_gst1_Element_virtual_change_state(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -23143,7 +23143,7 @@ func (element *Element) state(timeout ClockTime) (state, pending State, stateCha
 	var _arg3 C.GstClockTime         // out
 	var _cret C.GstStateChangeReturn // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg3 = C.GstClockTime(timeout)
 
 	_cret = C._gotk4_gst1_Element_virtual_get_state(unsafe.Pointer(fnarg), _arg0, &_arg1, &_arg2, _arg3)
@@ -23176,7 +23176,7 @@ func (element *Element) noMorePads() {
 
 	var _arg0 *C.GstElement // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	C._gotk4_gst1_Element_virtual_no_more_pads(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(element)
@@ -23189,8 +23189,8 @@ func (element *Element) padAdded(pad *Pad) {
 	var _arg0 *C.GstElement // out
 	var _arg1 *C.GstPad     // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C._gotk4_gst1_Element_virtual_pad_added(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(element)
@@ -23204,8 +23204,8 @@ func (element *Element) padRemoved(pad *Pad) {
 	var _arg0 *C.GstElement // out
 	var _arg1 *C.GstPad     // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C._gotk4_gst1_Element_virtual_pad_removed(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(element)
@@ -23234,7 +23234,7 @@ func (element *Element) postMessage(message *Message) bool {
 	var _arg1 *C.GstMessage // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.GstMessage)(gextras.StructNative(unsafe.Pointer(message)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(message)), nil)
 
@@ -23268,7 +23268,7 @@ func (element *Element) provideClock() Clocker {
 	var _arg0 *C.GstElement // out
 	var _cret *C.GstClock   // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 
 	_cret = C._gotk4_gst1_Element_virtual_provide_clock(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(element)
@@ -23320,7 +23320,7 @@ func (element *Element) query(query *Query) bool {
 	var _arg1 *C.GstQuery   // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gst1_Element_virtual_query(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -23344,8 +23344,8 @@ func (element *Element) releasePad(pad *Pad) {
 	var _arg0 *C.GstElement // out
 	var _arg1 *C.GstPad     // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C._gotk4_gst1_Element_virtual_release_pad(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(element)
@@ -23378,8 +23378,8 @@ func (element *Element) requestNewPad(templ *PadTemplate, name string, caps *Cap
 	var _arg3 *C.GstCaps        // out
 	var _cret *C.GstPad         // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
 	if name != "" {
 		_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg2))
@@ -23428,7 +23428,7 @@ func (element *Element) sendEvent(event *Event) bool {
 	var _arg1 *C.GstEvent   // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(event)), nil)
 
@@ -23460,9 +23460,9 @@ func (element *Element) setBus(bus *Bus) {
 	var _arg0 *C.GstElement // out
 	var _arg1 *C.GstBus     // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	if bus != nil {
-		_arg1 = (*C.GstBus)(unsafe.Pointer(coreglib.InternObject(bus).Native()))
+		_arg1 = (*C.GstBus)(unsafe.Pointer(coreglib.BaseObject(bus).Native()))
 	}
 
 	C._gotk4_gst1_Element_virtual_set_bus(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -23492,9 +23492,9 @@ func (element *Element) setClock(clock Clocker) bool {
 	var _arg1 *C.GstClock   // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	if clock != nil {
-		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	}
 
 	_cret = C._gotk4_gst1_Element_virtual_set_clock(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -23525,7 +23525,7 @@ func (element *Element) setContext(context *Context) {
 	var _arg0 *C.GstElement // out
 	var _arg1 *C.GstContext // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = (*C.GstContext)(gextras.StructNative(unsafe.Pointer(context)))
 
 	C._gotk4_gst1_Element_virtual_set_context(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -23563,7 +23563,7 @@ func (element *Element) setState(state State) StateChangeReturn {
 	var _arg1 C.GstState             // out
 	var _cret C.GstStateChangeReturn // in
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstState(state)
 
 	_cret = C._gotk4_gst1_Element_virtual_set_state(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -23593,7 +23593,7 @@ func (element *Element) stateChanged(oldstate, newstate, pending State) {
 	var _arg2 C.GstState    // out
 	var _arg3 C.GstState    // out
 
-	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg0 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg1 = C.GstState(oldstate)
 	_arg2 = C.GstState(newstate)
 	_arg3 = C.GstState(pending)
@@ -23685,7 +23685,7 @@ func ElementRegister(plugin *Plugin, name string, rank uint, typ coreglib.Type) 
 	var _cret C.gboolean   // in
 
 	if plugin != nil {
-		_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+		_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	}
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -23849,7 +23849,7 @@ func (factory *ElementFactory) CanSinkAllCaps(caps *Caps) bool {
 	var _arg1 *C.GstCaps           // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_element_factory_can_sink_all_caps(_arg0, _arg1)
@@ -23879,7 +23879,7 @@ func (factory *ElementFactory) CanSinkAnyCaps(caps *Caps) bool {
 	var _arg1 *C.GstCaps           // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_element_factory_can_sink_any_caps(_arg0, _arg1)
@@ -23909,7 +23909,7 @@ func (factory *ElementFactory) CanSrcAllCaps(caps *Caps) bool {
 	var _arg1 *C.GstCaps           // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_element_factory_can_src_all_caps(_arg0, _arg1)
@@ -23939,7 +23939,7 @@ func (factory *ElementFactory) CanSrcAnyCaps(caps *Caps) bool {
 	var _arg1 *C.GstCaps           // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_element_factory_can_src_any_caps(_arg0, _arg1)
@@ -23973,7 +23973,7 @@ func (factory *ElementFactory) Create(name string) Elementer {
 	var _arg1 *C.gchar             // out
 	var _cret *C.GstElement        // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	if name != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -24025,7 +24025,7 @@ func (factory *ElementFactory) CreateWithProperties(names []string, values []cor
 	var _arg3 *C.GValue     // out
 	var _cret *C.GstElement // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = (C.guint)(len(names))
 	_arg2 = (**C.gchar)(C.calloc(C.size_t(len(names)), C.size_t(unsafe.Sizeof(uint(0)))))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -24085,7 +24085,7 @@ func (factory *ElementFactory) ElementType() coreglib.Type {
 	var _arg0 *C.GstElementFactory // out
 	var _cret C.GType              // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_element_factory_get_element_type(_arg0)
 	runtime.KeepAlive(factory)
@@ -24112,7 +24112,7 @@ func (factory *ElementFactory) Metadata(key string) string {
 	var _arg1 *C.gchar             // out
 	var _cret *C.gchar             // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -24139,7 +24139,7 @@ func (factory *ElementFactory) MetadataKeys() []string {
 	var _arg0 *C.GstElementFactory // out
 	var _cret **C.gchar            // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_element_factory_get_metadata_keys(_arg0)
 	runtime.KeepAlive(factory)
@@ -24176,7 +24176,7 @@ func (factory *ElementFactory) NumPadTemplates() uint {
 	var _arg0 *C.GstElementFactory // out
 	var _cret C.guint              // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_element_factory_get_num_pad_templates(_arg0)
 	runtime.KeepAlive(factory)
@@ -24198,7 +24198,7 @@ func (factory *ElementFactory) SkipDocumentation() bool {
 	var _arg0 *C.GstElementFactory // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_element_factory_get_skip_documentation(_arg0)
 	runtime.KeepAlive(factory)
@@ -24221,7 +24221,7 @@ func (factory *ElementFactory) StaticPadTemplates() []*StaticPadTemplate {
 	var _arg0 *C.GstElementFactory // out
 	var _cret *C.GList             // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_element_factory_get_static_pad_templates(_arg0)
 	runtime.KeepAlive(factory)
@@ -24251,7 +24251,7 @@ func (factory *ElementFactory) URIProtocols() []string {
 	var _arg0 *C.GstElementFactory // out
 	var _cret **C.gchar            // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_element_factory_get_uri_protocols(_arg0)
 	runtime.KeepAlive(factory)
@@ -24284,7 +24284,7 @@ func (factory *ElementFactory) URIType() URIType {
 	var _arg0 *C.GstElementFactory // out
 	var _cret C.GstURIType         // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_element_factory_get_uri_type(_arg0)
 	runtime.KeepAlive(factory)
@@ -24311,7 +24311,7 @@ func (factory *ElementFactory) HasInterface(interfacename string) bool {
 	var _arg1 *C.gchar             // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(interfacename)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -24342,7 +24342,7 @@ func (factory *ElementFactory) ListIsType(typ ElementFactoryListType) bool {
 	var _arg1 C.GstElementFactoryListType // out
 	var _cret C.gboolean                  // in
 
-	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = C.GstElementFactoryListType(typ)
 
 	_cret = C.gst_element_factory_list_is_type(_arg0, _arg1)
@@ -24415,7 +24415,7 @@ func ElementFactoryListFilter(list []*ElementFactory, caps *Caps, direction PadD
 	for i := len(list) - 1; i >= 0; i-- {
 		src := list[i]
 		var dst *C.GstElementFactory // out
-		dst = (*C.GstElementFactory)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		dst = (*C.GstElementFactory)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 		_arg1 = C.g_list_prepend(_arg1, C.gpointer(unsafe.Pointer(dst)))
 	}
 	defer C.g_list_free(_arg1)
@@ -24775,7 +24775,7 @@ func NewGhostPad(name string, target *Pad) *GhostPad {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg1))
 	}
-	_arg2 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(target).Native()))
+	_arg2 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
 
 	_cret = C.gst_ghost_pad_new(_arg1, _arg2)
 	runtime.KeepAlive(name)
@@ -24815,8 +24815,8 @@ func NewGhostPadFromTemplate(name string, target *Pad, templ *PadTemplate) *Ghos
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg1))
 	}
-	_arg2 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(target).Native()))
-	_arg3 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
+	_arg2 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
+	_arg3 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
 
 	_cret = C.gst_ghost_pad_new_from_template(_arg1, _arg2, _arg3)
 	runtime.KeepAlive(name)
@@ -24890,7 +24890,7 @@ func NewGhostPadNoTargetFromTemplate(name string, templ *PadTemplate) *GhostPad 
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg1))
 	}
-	_arg2 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
+	_arg2 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
 
 	_cret = C.gst_ghost_pad_new_no_target_from_template(_arg1, _arg2)
 	runtime.KeepAlive(name)
@@ -24921,7 +24921,7 @@ func (gpad *GhostPad) Construct() bool {
 	var _arg0 *C.GstGhostPad // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGhostPad)(unsafe.Pointer(coreglib.InternObject(gpad).Native()))
+	_arg0 = (*C.GstGhostPad)(unsafe.Pointer(coreglib.BaseObject(gpad).Native()))
 
 	_cret = C.gst_ghost_pad_construct(_arg0)
 	runtime.KeepAlive(gpad)
@@ -24945,7 +24945,7 @@ func (gpad *GhostPad) Target() *Pad {
 	var _arg0 *C.GstGhostPad // out
 	var _cret *C.GstPad      // in
 
-	_arg0 = (*C.GstGhostPad)(unsafe.Pointer(coreglib.InternObject(gpad).Native()))
+	_arg0 = (*C.GstGhostPad)(unsafe.Pointer(coreglib.BaseObject(gpad).Native()))
 
 	_cret = C.gst_ghost_pad_get_target(_arg0)
 	runtime.KeepAlive(gpad)
@@ -24976,9 +24976,9 @@ func (gpad *GhostPad) SetTarget(newtarget *Pad) bool {
 	var _arg1 *C.GstPad      // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGhostPad)(unsafe.Pointer(coreglib.InternObject(gpad).Native()))
+	_arg0 = (*C.GstGhostPad)(unsafe.Pointer(coreglib.BaseObject(gpad).Native()))
 	if newtarget != nil {
-		_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(newtarget).Native()))
+		_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(newtarget).Native()))
 	}
 
 	_cret = C.gst_ghost_pad_set_target(_arg0, _arg1)
@@ -25014,9 +25014,9 @@ func GhostPadActivateModeDefault(pad *Pad, parent GstObjector, mode PadMode, act
 	var _arg4 C.gboolean   // out
 	var _cret C.gboolean   // in
 
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if parent != nil {
-		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	}
 	_arg3 = C.GstPadMode(mode)
 	if active {
@@ -25058,9 +25058,9 @@ func GhostPadInternalActivateModeDefault(pad *Pad, parent GstObjector, mode PadM
 	var _arg4 C.gboolean   // out
 	var _cret C.gboolean   // in
 
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if parent != nil {
-		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	}
 	_arg3 = C.GstPadMode(mode)
 	if active {
@@ -25254,8 +25254,8 @@ func (object *GstObject) AddControlBinding(binding ControlBindinger) bool {
 	var _arg1 *C.GstControlBinding // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
-	_arg1 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
+	_arg1 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
 
 	_cret = C.gst_object_add_control_binding(_arg0, _arg1)
 	runtime.KeepAlive(object)
@@ -25284,7 +25284,7 @@ func (source *GstObject) DefaultError(err error, debug string) {
 	var _arg1 *C.GError    // out
 	var _arg2 *C.gchar     // out
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(source).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(source).Native()))
 	if err != nil {
 		_arg1 = (*C.GError)(gerror.New(err))
 	}
@@ -25315,7 +25315,7 @@ func (object *GstObject) ControlBinding(propertyName string) ControlBindinger {
 	var _arg1 *C.gchar             // out
 	var _cret *C.GstControlBinding // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -25363,7 +25363,7 @@ func (object *GstObject) ControlRate() ClockTime {
 	var _arg0 *C.GstObject   // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 
 	_cret = C.gst_object_get_control_rate(_arg0)
 	runtime.KeepAlive(object)
@@ -25401,7 +25401,7 @@ func (object *GstObject) GValueArray(propertyName string, timestamp, interval Cl
 	var _arg4 C.guint
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.GstClockTime(timestamp)
@@ -25447,7 +25447,7 @@ func (object *GstObject) Name() string {
 	var _arg0 *C.GstObject // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 
 	_cret = C.gst_object_get_name(_arg0)
 	runtime.KeepAlive(object)
@@ -25475,7 +25475,7 @@ func (object *GstObject) Parent() GstObjector {
 	var _arg0 *C.GstObject // out
 	var _cret *C.GstObject // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 
 	_cret = C.gst_object_get_parent(_arg0)
 	runtime.KeepAlive(object)
@@ -25518,7 +25518,7 @@ func (object *GstObject) PathString() string {
 	var _arg0 *C.GstObject // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 
 	_cret = C.gst_object_get_path_string(_arg0)
 	runtime.KeepAlive(object)
@@ -25548,7 +25548,7 @@ func (object *GstObject) Value(propertyName string, timestamp ClockTime) *coregl
 	var _arg2 C.GstClockTime // out
 	var _cret *C.GValue      // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.GstClockTime(timestamp)
@@ -25580,7 +25580,7 @@ func (object *GstObject) HasActiveControlBindings() bool {
 	var _arg0 *C.GstObject // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 
 	_cret = C.gst_object_has_active_control_bindings(_arg0)
 	runtime.KeepAlive(object)
@@ -25613,8 +25613,8 @@ func (object *GstObject) HasAncestor(ancestor GstObjector) bool {
 	var _arg1 *C.GstObject // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(ancestor).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(ancestor).Native()))
 
 	_cret = C.gst_object_has_ancestor(_arg0, _arg1)
 	runtime.KeepAlive(object)
@@ -25646,8 +25646,8 @@ func (object *GstObject) HasAsAncestor(ancestor GstObjector) bool {
 	var _arg1 *C.GstObject // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(ancestor).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(ancestor).Native()))
 
 	_cret = C.gst_object_has_as_ancestor(_arg0, _arg1)
 	runtime.KeepAlive(object)
@@ -25680,8 +25680,8 @@ func (object *GstObject) HasAsParent(parent GstObjector) bool {
 	var _arg1 *C.GstObject // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 
 	_cret = C.gst_object_has_as_parent(_arg0, _arg1)
 	runtime.KeepAlive(object)
@@ -25711,8 +25711,8 @@ func (object *GstObject) RemoveControlBinding(binding ControlBindinger) bool {
 	var _arg1 *C.GstControlBinding // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
-	_arg1 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.InternObject(binding).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
+	_arg1 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
 
 	_cret = C.gst_object_remove_control_binding(_arg0, _arg1)
 	runtime.KeepAlive(object)
@@ -25741,7 +25741,7 @@ func (object *GstObject) SetControlBindingDisabled(propertyName string, disabled
 	var _arg1 *C.gchar     // out
 	var _arg2 C.gboolean   // out
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 	defer C.free(unsafe.Pointer(_arg1))
 	if disabled {
@@ -25766,7 +25766,7 @@ func (object *GstObject) SetControlBindingsDisabled(disabled bool) {
 	var _arg0 *C.GstObject // out
 	var _arg1 C.gboolean   // out
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	if disabled {
 		_arg1 = C.TRUE
 	}
@@ -25791,7 +25791,7 @@ func (object *GstObject) SetControlRate(controlRate ClockTime) {
 	var _arg0 *C.GstObject   // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg1 = C.GstClockTime(controlRate)
 
 	C.gst_object_set_control_rate(_arg0, _arg1)
@@ -25818,7 +25818,7 @@ func (object *GstObject) SetName(name string) bool {
 	var _arg1 *C.gchar     // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	if name != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -25856,8 +25856,8 @@ func (object *GstObject) SetParent(parent GstObjector) bool {
 	var _arg1 *C.GstObject // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 
 	_cret = C.gst_object_set_parent(_arg0, _arg1)
 	runtime.KeepAlive(object)
@@ -25883,7 +25883,7 @@ func (object *GstObject) SuggestNextSync() ClockTime {
 	var _arg0 *C.GstObject   // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 
 	_cret = C.gst_object_suggest_next_sync(_arg0)
 	runtime.KeepAlive(object)
@@ -25914,7 +25914,7 @@ func (object *GstObject) SyncValues(timestamp ClockTime) bool {
 	var _arg1 C.GstClockTime // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 
 	_cret = C.gst_object_sync_values(_arg0, _arg1)
@@ -25937,7 +25937,7 @@ func (object *GstObject) SyncValues(timestamp ClockTime) bool {
 func (object *GstObject) Unparent() {
 	var _arg0 *C.GstObject // out
 
-	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg0 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 
 	C.gst_object_unparent(_arg0)
 	runtime.KeepAlive(object)
@@ -25968,7 +25968,7 @@ func ObjectCheckUniqueness(list []GstObjector, name string) bool {
 	for i := len(list) - 1; i >= 0; i-- {
 		src := list[i]
 		var dst *C.GstObject // out
-		dst = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		dst = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 		_arg1 = C.g_list_prepend(_arg1, C.gpointer(unsafe.Pointer(dst)))
 	}
 	defer C.g_list_free(_arg1)
@@ -26204,7 +26204,7 @@ func NewPadFromTemplate(templ *PadTemplate, name string) *Pad {
 	var _arg2 *C.gchar          // out
 	var _cret *C.GstPad         // in
 
-	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
+	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
 	if name != "" {
 		_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg2))
@@ -26243,7 +26243,7 @@ func (pad *Pad) ActivateMode(mode PadMode, active bool) bool {
 	var _arg2 C.gboolean   // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.GstPadMode(mode)
 	if active {
 		_arg2 = C.TRUE
@@ -26293,7 +26293,7 @@ func (pad *Pad) AddProbe(mask PadProbeType, callback PadProbeCallback) uint32 {
 	var _arg4 C.GDestroyNotify
 	var _cret C.gulong // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.GstPadProbeType(mask)
 	_arg2 = (*[0]byte)(C._gotk4_gst1_PadProbeCallback)
 	_arg3 = C.gpointer(gbox.Assign(callback))
@@ -26326,8 +26326,8 @@ func (srcpad *Pad) CanLink(sinkpad *Pad) bool {
 	var _arg1 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(srcpad).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(sinkpad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(srcpad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(sinkpad).Native()))
 
 	_cret = C.gst_pad_can_link(_arg0, _arg1)
 	runtime.KeepAlive(srcpad)
@@ -26371,7 +26371,7 @@ func (pad *Pad) Chain(buffer *Buffer) FlowReturn {
 	var _arg1 *C.GstBuffer    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buffer)), nil)
 
@@ -26415,7 +26415,7 @@ func (pad *Pad) ChainList(list *BufferList) FlowReturn {
 	var _arg1 *C.GstBufferList // out
 	var _cret C.GstFlowReturn  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstBufferList)(gextras.StructNative(unsafe.Pointer(list)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(list)), nil)
 
@@ -26440,7 +26440,7 @@ func (pad *Pad) CheckReconfigure() bool {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_check_reconfigure(_arg0)
 	runtime.KeepAlive(pad)
@@ -26484,8 +26484,8 @@ func (pad *Pad) CreateStreamID(parent Elementer, streamId string) string {
 	var _arg2 *C.gchar      // out
 	var _cret *C.gchar      // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	if streamId != "" {
 		_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
 		defer C.free(unsafe.Pointer(_arg2))
@@ -26526,9 +26526,9 @@ func (pad *Pad) EventDefault(parent GstObjector, event *Event) bool {
 	var _arg2 *C.GstEvent  // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if parent != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	}
 	_arg2 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(event)), nil)
@@ -26566,7 +26566,7 @@ func (pad *Pad) Forward(forward PadForwardFunction) bool {
 	var _arg2 C.gpointer
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gst1_PadForwardFunction)
 	_arg2 = C.gpointer(gbox.Assign(forward))
 	defer gbox.Delete(uintptr(_arg2))
@@ -26601,7 +26601,7 @@ func (pad *Pad) AllowedCaps() *Caps {
 	var _arg0 *C.GstPad  // out
 	var _cret *C.GstCaps // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_allowed_caps(_arg0)
 	runtime.KeepAlive(pad)
@@ -26631,7 +26631,7 @@ func (pad *Pad) CurrentCaps() *Caps {
 	var _arg0 *C.GstPad  // out
 	var _cret *C.GstCaps // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_current_caps(_arg0)
 	runtime.KeepAlive(pad)
@@ -26662,7 +26662,7 @@ func (pad *Pad) Direction() PadDirection {
 	var _arg0 *C.GstPad         // out
 	var _cret C.GstPadDirection // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_direction(_arg0)
 	runtime.KeepAlive(pad)
@@ -26684,7 +26684,7 @@ func (pad *Pad) ElementPrivate() unsafe.Pointer {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gpointer // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_element_private(_arg0)
 	runtime.KeepAlive(pad)
@@ -26702,7 +26702,7 @@ func (pad *Pad) LastFlowReturn() FlowReturn {
 	var _arg0 *C.GstPad       // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_last_flow_return(_arg0)
 	runtime.KeepAlive(pad)
@@ -26724,7 +26724,7 @@ func (pad *Pad) Offset() int64 {
 	var _arg0 *C.GstPad // out
 	var _cret C.gint64  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_offset(_arg0)
 	runtime.KeepAlive(pad)
@@ -26746,7 +26746,7 @@ func (pad *Pad) PadTemplate() *PadTemplate {
 	var _arg0 *C.GstPad         // out
 	var _cret *C.GstPadTemplate // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_pad_template(_arg0)
 	runtime.KeepAlive(pad)
@@ -26769,7 +26769,7 @@ func (pad *Pad) PadTemplateCaps() *Caps {
 	var _arg0 *C.GstPad  // out
 	var _cret *C.GstCaps // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_pad_template_caps(_arg0)
 	runtime.KeepAlive(pad)
@@ -26799,7 +26799,7 @@ func (pad *Pad) ParentElement() Elementer {
 	var _arg0 *C.GstPad     // out
 	var _cret *C.GstElement // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_parent_element(_arg0)
 	runtime.KeepAlive(pad)
@@ -26838,7 +26838,7 @@ func (pad *Pad) Peer() *Pad {
 	var _arg0 *C.GstPad // out
 	var _cret *C.GstPad // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_peer(_arg0)
 	runtime.KeepAlive(pad)
@@ -26896,7 +26896,7 @@ func (pad *Pad) Range(offset uint64, size uint) (*Buffer, FlowReturn) {
 	var _arg3 *C.GstBuffer    // in
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.guint64(offset)
 	_arg2 = C.guint(size)
 
@@ -26930,7 +26930,7 @@ func (pad *Pad) SingleInternalLink() *Pad {
 	var _arg0 *C.GstPad // out
 	var _cret *C.GstPad // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_single_internal_link(_arg0)
 	runtime.KeepAlive(pad)
@@ -26962,7 +26962,7 @@ func (pad *Pad) StickyEvent(eventType EventType, idx uint) *Event {
 	var _arg2 C.guint        // out
 	var _cret *C.GstEvent    // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.GstEventType(eventType)
 	_arg2 = C.guint(idx)
 
@@ -27000,7 +27000,7 @@ func (pad *Pad) Stream() *Stream {
 	var _arg0 *C.GstPad    // out
 	var _cret *C.GstStream // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_stream(_arg0)
 	runtime.KeepAlive(pad)
@@ -27031,7 +27031,7 @@ func (pad *Pad) StreamID() string {
 	var _arg0 *C.GstPad // out
 	var _cret *C.gchar  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_stream_id(_arg0)
 	runtime.KeepAlive(pad)
@@ -27056,7 +27056,7 @@ func (pad *Pad) TaskState() TaskState {
 	var _arg0 *C.GstPad      // out
 	var _cret C.GstTaskState // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_get_task_state(_arg0)
 	runtime.KeepAlive(pad)
@@ -27077,7 +27077,7 @@ func (pad *Pad) HasCurrentCaps() bool {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_has_current_caps(_arg0)
 	runtime.KeepAlive(pad)
@@ -27102,7 +27102,7 @@ func (pad *Pad) IsActive() bool {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_is_active(_arg0)
 	runtime.KeepAlive(pad)
@@ -27129,7 +27129,7 @@ func (pad *Pad) IsBlocked() bool {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_is_blocked(_arg0)
 	runtime.KeepAlive(pad)
@@ -27155,7 +27155,7 @@ func (pad *Pad) IsBlocking() bool {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_is_blocking(_arg0)
 	runtime.KeepAlive(pad)
@@ -27180,7 +27180,7 @@ func (pad *Pad) IsLinked() bool {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_is_linked(_arg0)
 	runtime.KeepAlive(pad)
@@ -27211,7 +27211,7 @@ func (pad *Pad) IterateInternalLinks() *Iterator {
 	var _arg0 *C.GstPad      // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_iterate_internal_links(_arg0)
 	runtime.KeepAlive(pad)
@@ -27251,9 +27251,9 @@ func (pad *Pad) IterateInternalLinksDefault(parent GstObjector) *Iterator {
 	var _arg1 *C.GstObject   // out
 	var _cret *C.GstIterator // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if parent != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	}
 
 	_cret = C.gst_pad_iterate_internal_links_default(_arg0, _arg1)
@@ -27292,8 +27292,8 @@ func (srcpad *Pad) Link(sinkpad *Pad) PadLinkReturn {
 	var _arg1 *C.GstPad          // out
 	var _cret C.GstPadLinkReturn // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(srcpad).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(sinkpad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(srcpad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(sinkpad).Native()))
 
 	_cret = C.gst_pad_link(_arg0, _arg1)
 	runtime.KeepAlive(srcpad)
@@ -27331,8 +27331,8 @@ func (srcpad *Pad) LinkFull(sinkpad *Pad, flags PadLinkCheck) PadLinkReturn {
 	var _arg2 C.GstPadLinkCheck  // out
 	var _cret C.GstPadLinkReturn // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(srcpad).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(sinkpad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(srcpad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(sinkpad).Native()))
 	_arg2 = C.GstPadLinkCheck(flags)
 
 	_cret = C.gst_pad_link_full(_arg0, _arg1, _arg2)
@@ -27368,8 +27368,8 @@ func (src *Pad) LinkMaybeGhosting(sink *Pad) bool {
 	var _arg1 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(src).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 
 	_cret = C.gst_pad_link_maybe_ghosting(_arg0, _arg1)
 	runtime.KeepAlive(src)
@@ -27411,8 +27411,8 @@ func (src *Pad) LinkMaybeGhostingFull(sink *Pad, flags PadLinkCheck) bool {
 	var _arg2 C.GstPadLinkCheck // out
 	var _cret C.gboolean        // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(src).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(sink).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(sink).Native()))
 	_arg2 = C.GstPadLinkCheck(flags)
 
 	_cret = C.gst_pad_link_maybe_ghosting_full(_arg0, _arg1, _arg2)
@@ -27434,7 +27434,7 @@ func (src *Pad) LinkMaybeGhostingFull(sink *Pad, flags PadLinkCheck) bool {
 func (pad *Pad) MarkReconfigure() {
 	var _arg0 *C.GstPad // out
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C.gst_pad_mark_reconfigure(_arg0)
 	runtime.KeepAlive(pad)
@@ -27450,7 +27450,7 @@ func (pad *Pad) NeedsReconfigure() bool {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_needs_reconfigure(_arg0)
 	runtime.KeepAlive(pad)
@@ -27475,7 +27475,7 @@ func (pad *Pad) PauseTask() bool {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_pause_task(_arg0)
 	runtime.KeepAlive(pad)
@@ -27507,7 +27507,7 @@ func (pad *Pad) PeerQuery(query *Query) bool {
 	var _arg1 *C.GstQuery // out
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C.gst_pad_peer_query(_arg0, _arg1)
@@ -27538,7 +27538,7 @@ func (pad *Pad) PeerQueryAcceptCaps(caps *Caps) bool {
 	var _arg1 *C.GstCaps // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_pad_peer_query_accept_caps(_arg0, _arg1)
@@ -27575,7 +27575,7 @@ func (pad *Pad) PeerQueryCaps(filter *Caps) *Caps {
 	var _arg1 *C.GstCaps // out
 	var _cret *C.GstCaps // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if filter != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
 	}
@@ -27617,7 +27617,7 @@ func (pad *Pad) PeerQueryConvert(srcFormat Format, srcVal int64, destFormat Form
 	var _arg4 C.gint64    // in
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.GstFormat(srcFormat)
 	_arg2 = C.gint64(srcVal)
 	_arg3 = C.GstFormat(destFormat)
@@ -27657,7 +27657,7 @@ func (pad *Pad) PeerQueryDuration(format Format) (int64, bool) {
 	var _arg2 C.gint64    // in
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.GstFormat(format)
 
 	_cret = C.gst_pad_peer_query_duration(_arg0, _arg1, &_arg2)
@@ -27692,7 +27692,7 @@ func (pad *Pad) PeerQueryPosition(format Format) (int64, bool) {
 	var _arg2 C.gint64    // in
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.GstFormat(format)
 
 	_cret = C.gst_pad_peer_query_position(_arg0, _arg1, &_arg2)
@@ -27729,7 +27729,7 @@ func (pad *Pad) ProxyQueryAcceptCaps(query *Query) bool {
 	var _arg1 *C.GstQuery // out
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C.gst_pad_proxy_query_accept_caps(_arg0, _arg1)
@@ -27764,7 +27764,7 @@ func (pad *Pad) ProxyQueryCaps(query *Query) bool {
 	var _arg1 *C.GstQuery // out
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C.gst_pad_proxy_query_caps(_arg0, _arg1)
@@ -27823,7 +27823,7 @@ func (pad *Pad) PullRange(offset uint64, size uint) (*Buffer, FlowReturn) {
 	var _arg3 *C.GstBuffer    // in
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.guint64(offset)
 	_arg2 = C.guint(size)
 
@@ -27872,7 +27872,7 @@ func (pad *Pad) Push(buffer *Buffer) FlowReturn {
 	var _arg1 *C.GstBuffer    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buffer)), nil)
 
@@ -27907,7 +27907,7 @@ func (pad *Pad) PushEvent(event *Event) bool {
 	var _arg1 *C.GstEvent // out
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(event)), nil)
 
@@ -27952,7 +27952,7 @@ func (pad *Pad) PushList(list *BufferList) FlowReturn {
 	var _arg1 *C.GstBufferList // out
 	var _cret C.GstFlowReturn  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstBufferList)(gextras.StructNative(unsafe.Pointer(list)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(list)), nil)
 
@@ -27990,7 +27990,7 @@ func (pad *Pad) Query(query *Query) bool {
 	var _arg1 *C.GstQuery // out
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C.gst_pad_query(_arg0, _arg1)
@@ -28020,7 +28020,7 @@ func (pad *Pad) QueryAcceptCaps(caps *Caps) bool {
 	var _arg1 *C.GstCaps // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_pad_query_accept_caps(_arg0, _arg1)
@@ -28063,7 +28063,7 @@ func (pad *Pad) QueryCaps(filter *Caps) *Caps {
 	var _arg1 *C.GstCaps // out
 	var _cret *C.GstCaps // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if filter != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
 	}
@@ -28104,7 +28104,7 @@ func (pad *Pad) QueryConvert(srcFormat Format, srcVal int64, destFormat Format) 
 	var _arg4 C.gint64    // in
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.GstFormat(srcFormat)
 	_arg2 = C.gint64(srcVal)
 	_arg3 = C.GstFormat(destFormat)
@@ -28145,9 +28145,9 @@ func (pad *Pad) QueryDefault(parent GstObjector, query *Query) bool {
 	var _arg2 *C.GstQuery  // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if parent != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	}
 	_arg2 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
@@ -28182,7 +28182,7 @@ func (pad *Pad) QueryDuration(format Format) (int64, bool) {
 	var _arg2 C.gint64    // in
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.GstFormat(format)
 
 	_cret = C.gst_pad_query_duration(_arg0, _arg1, &_arg2)
@@ -28216,7 +28216,7 @@ func (pad *Pad) QueryPosition(format Format) (int64, bool) {
 	var _arg2 C.gint64    // in
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.GstFormat(format)
 
 	_cret = C.gst_pad_query_position(_arg0, _arg1, &_arg2)
@@ -28245,7 +28245,7 @@ func (pad *Pad) RemoveProbe(id uint32) {
 	var _arg0 *C.GstPad // out
 	var _arg1 C.gulong  // out
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.gulong(id)
 
 	C.gst_pad_remove_probe(_arg0, _arg1)
@@ -28285,7 +28285,7 @@ func (pad *Pad) SendEvent(event *Event) bool {
 	var _arg1 *C.GstEvent // out
 	var _cret C.gboolean  // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(event)), nil)
 
@@ -28326,7 +28326,7 @@ func (pad *Pad) SetActive(active bool) bool {
 	var _arg1 C.gboolean // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if active {
 		_arg1 = C.TRUE
 	}
@@ -28355,7 +28355,7 @@ func (pad *Pad) SetElementPrivate(priv unsafe.Pointer) {
 	var _arg0 *C.GstPad  // out
 	var _arg1 C.gpointer // out
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (C.gpointer)(unsafe.Pointer(priv))
 
 	C.gst_pad_set_element_private(_arg0, _arg1)
@@ -28372,7 +28372,7 @@ func (pad *Pad) SetOffset(offset int64) {
 	var _arg0 *C.GstPad // out
 	var _arg1 C.gint64  // out
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = C.gint64(offset)
 
 	C.gst_pad_set_offset(_arg0, _arg1)
@@ -28399,7 +28399,7 @@ func (pad *Pad) StartTask(fn TaskFunction) bool {
 	var _arg3 C.GDestroyNotify
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gst1_TaskFunction)
 	_arg2 = C.gpointer(gbox.Assign(fn))
 	_arg3 = (C.GDestroyNotify)((*[0]byte)(C.callbackDelete))
@@ -28429,7 +28429,7 @@ func (pad *Pad) StickyEventsForEach(foreachFunc PadStickyEventsForEachFunction) 
 	var _arg1 C.GstPadStickyEventsForeachFunction // out
 	var _arg2 C.gpointer
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gst1_PadStickyEventsForEachFunction)
 	_arg2 = C.gpointer(gbox.Assign(foreachFunc))
 	defer gbox.Delete(uintptr(_arg2))
@@ -28456,7 +28456,7 @@ func (pad *Pad) StopTask() bool {
 	var _arg0 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_pad_stop_task(_arg0)
 	runtime.KeepAlive(pad)
@@ -28485,7 +28485,7 @@ func (pad *Pad) StoreStickyEvent(event *Event) FlowReturn {
 	var _arg1 *C.GstEvent     // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C.gst_pad_store_sticky_event(_arg0, _arg1)
@@ -28517,8 +28517,8 @@ func (srcpad *Pad) Unlink(sinkpad *Pad) bool {
 	var _arg1 *C.GstPad  // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(srcpad).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(sinkpad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(srcpad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(sinkpad).Native()))
 
 	_cret = C.gst_pad_unlink(_arg0, _arg1)
 	runtime.KeepAlive(srcpad)
@@ -28543,7 +28543,7 @@ func (srcpad *Pad) Unlink(sinkpad *Pad) bool {
 func (pad *Pad) UseFixedCaps() {
 	var _arg0 *C.GstPad // out
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C.gst_pad_use_fixed_caps(_arg0)
 	runtime.KeepAlive(pad)
@@ -28556,8 +28556,8 @@ func (pad *Pad) linked(peer *Pad) {
 	var _arg0 *C.GstPad // out
 	var _arg1 *C.GstPad // out
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(peer).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(peer).Native()))
 
 	C._gotk4_gst1_Pad_virtual_linked(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(pad)
@@ -28571,8 +28571,8 @@ func (pad *Pad) unlinked(peer *Pad) {
 	var _arg0 *C.GstPad // out
 	var _arg1 *C.GstPad // out
 
-	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(peer).Native()))
+	_arg0 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(peer).Native()))
 
 	C._gotk4_gst1_Pad_virtual_unlinked(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(pad)
@@ -28836,7 +28836,7 @@ func (templ *PadTemplate) Caps() *Caps {
 	var _arg0 *C.GstPadTemplate // out
 	var _cret *C.GstCaps        // in
 
-	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
+	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
 
 	_cret = C.gst_pad_template_get_caps(_arg0)
 	runtime.KeepAlive(templ)
@@ -28863,7 +28863,7 @@ func (templ *PadTemplate) DocumentationCaps() *Caps {
 	var _arg0 *C.GstPadTemplate // out
 	var _cret *C.GstCaps        // in
 
-	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
+	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
 
 	_cret = C.gst_pad_template_get_documentation_caps(_arg0)
 	runtime.KeepAlive(templ)
@@ -28890,8 +28890,8 @@ func (templ *PadTemplate) PadCreated(pad *Pad) {
 	var _arg0 *C.GstPadTemplate // out
 	var _arg1 *C.GstPad         // out
 
-	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C.gst_pad_template_pad_created(_arg0, _arg1)
 	runtime.KeepAlive(templ)
@@ -28910,7 +28910,7 @@ func (templ *PadTemplate) SetDocumentationCaps(caps *Caps) {
 	var _arg0 *C.GstPadTemplate // out
 	var _arg1 *C.GstCaps        // out
 
-	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
+	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	C.gst_pad_template_set_documentation_caps(_arg0, _arg1)
@@ -28931,8 +28931,8 @@ func (templ *PadTemplate) padCreated(pad *Pad) {
 	var _arg0 *C.GstPadTemplate // out
 	var _arg1 *C.GstPad         // out
 
-	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C._gotk4_gst1_PadTemplate_virtual_pad_created(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(templ)
@@ -29081,7 +29081,7 @@ func NewPipeline(name string) *Pipeline {
 func (pipeline *Pipeline) AutoClock() {
 	var _arg0 *C.GstPipeline // out
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 
 	C.gst_pipeline_auto_clock(_arg0)
 	runtime.KeepAlive(pipeline)
@@ -29100,7 +29100,7 @@ func (pipeline *Pipeline) AutoFlushBus() bool {
 	var _arg0 *C.GstPipeline // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 
 	_cret = C.gst_pipeline_get_auto_flush_bus(_arg0)
 	runtime.KeepAlive(pipeline)
@@ -29126,7 +29126,7 @@ func (pipeline *Pipeline) Bus() *Bus {
 	var _arg0 *C.GstPipeline // out
 	var _cret *C.GstBus      // in
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 
 	_cret = C.gst_pipeline_get_bus(_arg0)
 	runtime.KeepAlive(pipeline)
@@ -29150,7 +29150,7 @@ func (pipeline *Pipeline) ConfiguredLatency() ClockTime {
 	var _arg0 *C.GstPipeline // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 
 	_cret = C.gst_pipeline_get_configured_latency(_arg0)
 	runtime.KeepAlive(pipeline)
@@ -29173,7 +29173,7 @@ func (pipeline *Pipeline) Delay() ClockTime {
 	var _arg0 *C.GstPipeline // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 
 	_cret = C.gst_pipeline_get_delay(_arg0)
 	runtime.KeepAlive(pipeline)
@@ -29195,7 +29195,7 @@ func (pipeline *Pipeline) Latency() ClockTime {
 	var _arg0 *C.GstPipeline // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 
 	_cret = C.gst_pipeline_get_latency(_arg0)
 	runtime.KeepAlive(pipeline)
@@ -29219,7 +29219,7 @@ func (pipeline *Pipeline) PipelineClock() Clocker {
 	var _arg0 *C.GstPipeline // out
 	var _cret *C.GstClock    // in
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 
 	_cret = C.gst_pipeline_get_pipeline_clock(_arg0)
 	runtime.KeepAlive(pipeline)
@@ -29259,7 +29259,7 @@ func (pipeline *Pipeline) IsLive() bool {
 	var _arg0 *C.GstPipeline // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 
 	_cret = C.gst_pipeline_is_live(_arg0)
 	runtime.KeepAlive(pipeline)
@@ -29296,7 +29296,7 @@ func (pipeline *Pipeline) SetAutoFlushBus(autoFlush bool) {
 	var _arg0 *C.GstPipeline // out
 	var _arg1 C.gboolean     // out
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 	if autoFlush {
 		_arg1 = C.TRUE
 	}
@@ -29322,7 +29322,7 @@ func (pipeline *Pipeline) SetDelay(delay ClockTime) {
 	var _arg0 *C.GstPipeline // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 	_arg1 = C.GstClockTime(delay)
 
 	C.gst_pipeline_set_delay(_arg0, _arg1)
@@ -29345,7 +29345,7 @@ func (pipeline *Pipeline) SetLatency(latency ClockTime) {
 	var _arg0 *C.GstPipeline // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 	_arg1 = C.GstClockTime(latency)
 
 	C.gst_pipeline_set_latency(_arg0, _arg1)
@@ -29368,9 +29368,9 @@ func (pipeline *Pipeline) UseClock(clock Clocker) {
 	var _arg0 *C.GstPipeline // out
 	var _arg1 *C.GstClock    // out
 
-	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.InternObject(pipeline).Native()))
+	_arg0 = (*C.GstPipeline)(unsafe.Pointer(coreglib.BaseObject(pipeline).Native()))
 	if clock != nil {
-		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	}
 
 	C.gst_pipeline_use_clock(_arg0, _arg1)
@@ -29451,7 +29451,7 @@ func (plugin *Plugin) AddDependency(envVars, paths, names []string, flags Plugin
 	var _arg3 **C.gchar                  // out
 	var _arg4 C.GstPluginDependencyFlags // out
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	{
 		_arg1 = (**C.gchar)(C.calloc(C.size_t((len(envVars) + 1)), C.size_t(unsafe.Sizeof(uint(0)))))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -29534,7 +29534,7 @@ func (plugin *Plugin) AddDependencySimple(envVars, paths, names string, flags Pl
 	var _arg3 *C.gchar                   // out
 	var _arg4 C.GstPluginDependencyFlags // out
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	if envVars != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(envVars)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -29564,7 +29564,7 @@ func (plugin *Plugin) AddStatusError(message string) {
 	var _arg0 *C.GstPlugin // out
 	var _arg1 *C.gchar     // out
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(message)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -29580,7 +29580,7 @@ func (plugin *Plugin) AddStatusInfo(message string) {
 	var _arg0 *C.GstPlugin // out
 	var _arg1 *C.gchar     // out
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(message)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -29596,7 +29596,7 @@ func (plugin *Plugin) AddStatusWarning(message string) {
 	var _arg0 *C.GstPlugin // out
 	var _arg1 *C.gchar     // out
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(message)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -29615,7 +29615,7 @@ func (plugin *Plugin) CacheData() *Structure {
 	var _arg0 *C.GstPlugin    // out
 	var _cret *C.GstStructure // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_cache_data(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29644,7 +29644,7 @@ func (plugin *Plugin) Description() string {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_description(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29665,7 +29665,7 @@ func (plugin *Plugin) Filename() string {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_filename(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29688,7 +29688,7 @@ func (plugin *Plugin) License() string {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_license(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29709,7 +29709,7 @@ func (plugin *Plugin) Name() string {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_name(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29730,7 +29730,7 @@ func (plugin *Plugin) Origin() string {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_origin(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29751,7 +29751,7 @@ func (plugin *Plugin) Package() string {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_package(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29780,7 +29780,7 @@ func (plugin *Plugin) ReleaseDateString() string {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_release_date_string(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29803,7 +29803,7 @@ func (plugin *Plugin) Source() string {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_source(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29822,7 +29822,7 @@ func (plugin *Plugin) StatusErrors() []string {
 	var _arg0 *C.GstPlugin // out
 	var _cret **C.gchar    // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_status_errors(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29857,7 +29857,7 @@ func (plugin *Plugin) StatusInfos() []string {
 	var _arg0 *C.GstPlugin // out
 	var _cret **C.gchar    // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_status_infos(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29892,7 +29892,7 @@ func (plugin *Plugin) StatusWarnings() []string {
 	var _arg0 *C.GstPlugin // out
 	var _cret **C.gchar    // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_status_warnings(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29929,7 +29929,7 @@ func (plugin *Plugin) Version() string {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_get_version(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29950,7 +29950,7 @@ func (plugin *Plugin) IsLoaded() bool {
 	var _arg0 *C.GstPlugin // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_is_loaded(_arg0)
 	runtime.KeepAlive(plugin)
@@ -29980,7 +29980,7 @@ func (plugin *Plugin) Load() *Plugin {
 	var _arg0 *C.GstPlugin // out
 	var _cret *C.GstPlugin // in
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_plugin_load(_arg0)
 	runtime.KeepAlive(plugin)
@@ -30006,7 +30006,7 @@ func (plugin *Plugin) SetCacheData(cacheData *Structure) {
 	var _arg0 *C.GstPlugin    // out
 	var _arg1 *C.GstStructure // out
 
-	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(cacheData)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(cacheData)), nil)
 
@@ -30232,7 +30232,7 @@ func (feature *PluginFeature) CheckVersion(minMajor, minMinor, minMicro uint) bo
 	var _arg3 C.guint             // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(feature).Native()))
+	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(feature).Native()))
 	_arg1 = C.guint(minMajor)
 	_arg2 = C.guint(minMinor)
 	_arg3 = C.guint(minMicro)
@@ -30262,7 +30262,7 @@ func (feature *PluginFeature) Plugin() *Plugin {
 	var _arg0 *C.GstPluginFeature // out
 	var _cret *C.GstPlugin        // in
 
-	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(feature).Native()))
+	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(feature).Native()))
 
 	_cret = C.gst_plugin_feature_get_plugin(_arg0)
 	runtime.KeepAlive(feature)
@@ -30286,7 +30286,7 @@ func (feature *PluginFeature) PluginName() string {
 	var _arg0 *C.GstPluginFeature // out
 	var _cret *C.gchar            // in
 
-	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(feature).Native()))
+	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(feature).Native()))
 
 	_cret = C.gst_plugin_feature_get_plugin_name(_arg0)
 	runtime.KeepAlive(feature)
@@ -30309,7 +30309,7 @@ func (feature *PluginFeature) Rank() uint {
 	var _arg0 *C.GstPluginFeature // out
 	var _cret C.guint             // in
 
-	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(feature).Native()))
+	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(feature).Native()))
 
 	_cret = C.gst_plugin_feature_get_rank(_arg0)
 	runtime.KeepAlive(feature)
@@ -30341,7 +30341,7 @@ func (feature *PluginFeature) Load() PluginFeaturer {
 	var _arg0 *C.GstPluginFeature // out
 	var _cret *C.GstPluginFeature // in
 
-	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(feature).Native()))
+	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(feature).Native()))
 
 	_cret = C.gst_plugin_feature_load(_arg0)
 	runtime.KeepAlive(feature)
@@ -30378,7 +30378,7 @@ func (feature *PluginFeature) SetRank(rank uint) {
 	var _arg0 *C.GstPluginFeature // out
 	var _arg1 C.guint             // out
 
-	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(feature).Native()))
+	_arg0 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(feature).Native()))
 	_arg1 = C.guint(rank)
 
 	C.gst_plugin_feature_set_rank(_arg0, _arg1)
@@ -30403,7 +30403,7 @@ func PluginFeatureListCopy(list []PluginFeaturer) []PluginFeaturer {
 	for i := len(list) - 1; i >= 0; i-- {
 		src := list[i]
 		var dst *C.GstPluginFeature // out
-		dst = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		dst = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 		_arg1 = C.g_list_prepend(_arg1, C.gpointer(unsafe.Pointer(dst)))
 	}
 	defer C.g_list_free(_arg1)
@@ -30451,7 +30451,7 @@ func PluginFeatureListDebug(list []PluginFeaturer) {
 	for i := len(list) - 1; i >= 0; i-- {
 		src := list[i]
 		var dst *C.GstPluginFeature // out
-		dst = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		dst = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 		_arg1 = C.g_list_prepend(_arg1, C.gpointer(unsafe.Pointer(dst)))
 	}
 	defer C.g_list_free(_arg1)
@@ -30555,7 +30555,7 @@ func (pad *ProxyPad) Internal() *ProxyPad {
 	var _arg0 *C.GstProxyPad // out
 	var _cret *C.GstProxyPad // in
 
-	_arg0 = (*C.GstProxyPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstProxyPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_proxy_pad_get_internal(_arg0)
 	runtime.KeepAlive(pad)
@@ -30586,9 +30586,9 @@ func ProxyPadChainDefault(pad *Pad, parent GstObjector, buffer *Buffer) FlowRetu
 	var _arg3 *C.GstBuffer    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if parent != nil {
-		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	}
 	_arg3 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buffer)), nil)
@@ -30623,9 +30623,9 @@ func ProxyPadChainListDefault(pad *Pad, parent GstObjector, list *BufferList) Fl
 	var _arg3 *C.GstBufferList // out
 	var _cret C.GstFlowReturn  // in
 
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if parent != nil {
-		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	}
 	_arg3 = (*C.GstBufferList)(gextras.StructNative(unsafe.Pointer(list)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(list)), nil)
@@ -30664,8 +30664,8 @@ func ProxyPadGetrangeDefault(pad *Pad, parent GstObjector, offset uint64, size u
 	var _arg5 *C.GstBuffer    // in
 	var _cret C.GstFlowReturn // in
 
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
-	_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
+	_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	_arg3 = C.guint64(offset)
 	_arg4 = C.guint(size)
 
@@ -30706,9 +30706,9 @@ func ProxyPadIterateInternalLinksDefault(pad *Pad, parent GstObjector) *Iterator
 	var _arg2 *C.GstObject   // out
 	var _cret *C.GstIterator // in
 
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if parent != nil {
-		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(parent).Native()))
+		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(parent).Native()))
 	}
 
 	_cret = C.gst_proxy_pad_iterate_internal_links_default(_arg1, _arg2)
@@ -30866,8 +30866,8 @@ func (registry *Registry) AddFeature(feature PluginFeaturer) bool {
 	var _arg1 *C.GstPluginFeature // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
-	_arg1 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(feature).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
+	_arg1 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(feature).Native()))
 
 	_cret = C.gst_registry_add_feature(_arg0, _arg1)
 	runtime.KeepAlive(registry)
@@ -30902,8 +30902,8 @@ func (registry *Registry) AddPlugin(plugin *Plugin) bool {
 	var _arg1 *C.GstPlugin   // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
-	_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
+	_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	_cret = C.gst_registry_add_plugin(_arg0, _arg1)
 	runtime.KeepAlive(registry)
@@ -30940,7 +30940,7 @@ func (registry *Registry) CheckFeatureVersion(featureName string, minMajor, minM
 	var _arg4 C.guint        // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(featureName)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.guint(minMajor)
@@ -30984,7 +30984,7 @@ func (registry *Registry) FeatureFilter(filter PluginFeatureFilter, first bool) 
 	var _arg2 C.gboolean // out
 	var _cret *C.GList   // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gst1_PluginFeatureFilter)
 	_arg3 = C.gpointer(gbox.Assign(filter))
 	defer gbox.Delete(uintptr(_arg3))
@@ -31046,7 +31046,7 @@ func (registry *Registry) FindFeature(name string, typ coreglib.Type) PluginFeat
 	var _arg2 C.GType             // out
 	var _cret *C.GstPluginFeature // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.GType(typ)
@@ -31096,7 +31096,7 @@ func (registry *Registry) FindPlugin(name string) *Plugin {
 	var _arg1 *C.gchar       // out
 	var _cret *C.GstPlugin   // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -31130,7 +31130,7 @@ func (registry *Registry) FeatureList(typ coreglib.Type) []PluginFeaturer {
 	var _arg1 C.GType        // out
 	var _cret *C.GList       // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = C.GType(typ)
 
 	_cret = C.gst_registry_get_feature_list(_arg0, _arg1)
@@ -31181,7 +31181,7 @@ func (registry *Registry) FeatureListByPlugin(name string) []PluginFeaturer {
 	var _arg1 *C.gchar       // out
 	var _cret *C.GList       // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -31228,7 +31228,7 @@ func (registry *Registry) FeatureListCookie() uint32 {
 	var _arg0 *C.GstRegistry // out
 	var _cret C.guint32      // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 
 	_cret = C.gst_registry_get_feature_list_cookie(_arg0)
 	runtime.KeepAlive(registry)
@@ -31252,7 +31252,7 @@ func (registry *Registry) PluginList() []*Plugin {
 	var _arg0 *C.GstRegistry // out
 	var _cret *C.GList       // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 
 	_cret = C.gst_registry_get_plugin_list(_arg0)
 	runtime.KeepAlive(registry)
@@ -31286,7 +31286,7 @@ func (registry *Registry) Lookup(filename string) *Plugin {
 	var _arg1 *C.char        // out
 	var _cret *C.GstPlugin   // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = (*C.char)(unsafe.Pointer(C.CString(filename)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -31320,7 +31320,7 @@ func (registry *Registry) LookupFeature(name string) PluginFeaturer {
 	var _arg1 *C.char             // out
 	var _cret *C.GstPluginFeature // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = (*C.char)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -31372,7 +31372,7 @@ func (registry *Registry) PluginFilter(filter PluginFilter, first bool) []*Plugi
 	var _arg2 C.gboolean // out
 	var _cret *C.GList   // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = (*[0]byte)(C._gotk4_gst1_PluginFilter)
 	_arg3 = C.gpointer(gbox.Assign(filter))
 	defer gbox.Delete(uintptr(_arg3))
@@ -31409,8 +31409,8 @@ func (registry *Registry) RemoveFeature(feature PluginFeaturer) {
 	var _arg0 *C.GstRegistry      // out
 	var _arg1 *C.GstPluginFeature // out
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
-	_arg1 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.InternObject(feature).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
+	_arg1 = (*C.GstPluginFeature)(unsafe.Pointer(coreglib.BaseObject(feature).Native()))
 
 	C.gst_registry_remove_feature(_arg0, _arg1)
 	runtime.KeepAlive(registry)
@@ -31428,8 +31428,8 @@ func (registry *Registry) RemovePlugin(plugin *Plugin) {
 	var _arg0 *C.GstRegistry // out
 	var _arg1 *C.GstPlugin   // out
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
-	_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
+	_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 
 	C.gst_registry_remove_plugin(_arg0, _arg1)
 	runtime.KeepAlive(registry)
@@ -31451,7 +31451,7 @@ func (registry *Registry) ScanPath(path string) bool {
 	var _arg1 *C.gchar       // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.InternObject(registry).Native()))
+	_arg0 = (*C.GstRegistry)(unsafe.Pointer(coreglib.BaseObject(registry).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(path)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -31642,7 +31642,7 @@ func (stream *Stream) Caps() *Caps {
 	var _arg0 *C.GstStream // out
 	var _cret *C.GstCaps   // in
 
-	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 
 	_cret = C.gst_stream_get_caps(_arg0)
 	runtime.KeepAlive(stream)
@@ -31670,7 +31670,7 @@ func (stream *Stream) StreamFlags() StreamFlags {
 	var _arg0 *C.GstStream     // out
 	var _cret C.GstStreamFlags // in
 
-	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 
 	_cret = C.gst_stream_get_stream_flags(_arg0)
 	runtime.KeepAlive(stream)
@@ -31692,7 +31692,7 @@ func (stream *Stream) StreamID() string {
 	var _arg0 *C.GstStream // out
 	var _cret *C.gchar     // in
 
-	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 
 	_cret = C.gst_stream_get_stream_id(_arg0)
 	runtime.KeepAlive(stream)
@@ -31715,7 +31715,7 @@ func (stream *Stream) StreamType() StreamType {
 	var _arg0 *C.GstStream    // out
 	var _cret C.GstStreamType // in
 
-	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 
 	_cret = C.gst_stream_get_stream_type(_arg0)
 	runtime.KeepAlive(stream)
@@ -31736,7 +31736,7 @@ func (stream *Stream) Tags() *TagList {
 	var _arg0 *C.GstStream  // out
 	var _cret *C.GstTagList // in
 
-	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 
 	_cret = C.gst_stream_get_tags(_arg0)
 	runtime.KeepAlive(stream)
@@ -31765,7 +31765,7 @@ func (stream *Stream) SetCaps(caps *Caps) {
 	var _arg0 *C.GstStream // out
 	var _arg1 *C.GstCaps   // out
 
-	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 	if caps != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	}
@@ -31784,7 +31784,7 @@ func (stream *Stream) SetStreamFlags(flags StreamFlags) {
 	var _arg0 *C.GstStream     // out
 	var _arg1 C.GstStreamFlags // out
 
-	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 	_arg1 = C.GstStreamFlags(flags)
 
 	C.gst_stream_set_stream_flags(_arg0, _arg1)
@@ -31801,7 +31801,7 @@ func (stream *Stream) SetStreamType(streamType StreamType) {
 	var _arg0 *C.GstStream    // out
 	var _arg1 C.GstStreamType // out
 
-	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 	_arg1 = C.GstStreamType(streamType)
 
 	C.gst_stream_set_stream_type(_arg0, _arg1)
@@ -31818,7 +31818,7 @@ func (stream *Stream) SetTags(tags *TagList) {
 	var _arg0 *C.GstStream  // out
 	var _arg1 *C.GstTagList // out
 
-	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 	if tags != nil {
 		_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(tags)))
 	}
@@ -31932,9 +31932,9 @@ func (collection *StreamCollection) AddStream(stream *Stream) bool {
 	var _arg1 *C.GstStream           // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.InternObject(collection).Native()))
-	_arg1 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
-	C.g_object_ref(C.gpointer(coreglib.InternObject(stream).Native()))
+	_arg0 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.BaseObject(collection).Native()))
+	_arg1 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
+	C.g_object_ref(C.gpointer(coreglib.BaseObject(stream).Native()))
 
 	_cret = C.gst_stream_collection_add_stream(_arg0, _arg1)
 	runtime.KeepAlive(collection)
@@ -31958,7 +31958,7 @@ func (collection *StreamCollection) Size() uint {
 	var _arg0 *C.GstStreamCollection // out
 	var _cret C.guint                // in
 
-	_arg0 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.InternObject(collection).Native()))
+	_arg0 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.BaseObject(collection).Native()))
 
 	_cret = C.gst_stream_collection_get_size(_arg0)
 	runtime.KeepAlive(collection)
@@ -31986,7 +31986,7 @@ func (collection *StreamCollection) Stream(index uint) *Stream {
 	var _arg1 C.guint                // out
 	var _cret *C.GstStream           // in
 
-	_arg0 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.InternObject(collection).Native()))
+	_arg0 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.BaseObject(collection).Native()))
 	_arg1 = C.guint(index)
 
 	_cret = C.gst_stream_collection_get_stream(_arg0, _arg1)
@@ -32011,7 +32011,7 @@ func (collection *StreamCollection) UpstreamID() string {
 	var _arg0 *C.GstStreamCollection // out
 	var _cret *C.gchar               // in
 
-	_arg0 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.InternObject(collection).Native()))
+	_arg0 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.BaseObject(collection).Native()))
 
 	_cret = C.gst_stream_collection_get_upstream_id(_arg0)
 	runtime.KeepAlive(collection)
@@ -32134,7 +32134,7 @@ func SystemClockSetDefault(newClock Clocker) {
 	var _arg1 *C.GstClock // out
 
 	if newClock != nil {
-		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(newClock).Native()))
+		_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(newClock).Native()))
 	}
 
 	C.gst_system_clock_set_default(_arg1)
@@ -32281,7 +32281,7 @@ func (task *Task) State() TaskState {
 	var _arg0 *C.GstTask     // out
 	var _cret C.GstTaskState // in
 
-	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.InternObject(task).Native()))
+	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.BaseObject(task).Native()))
 
 	_cret = C.gst_task_get_state(_arg0)
 	runtime.KeepAlive(task)
@@ -32310,7 +32310,7 @@ func (task *Task) Join() bool {
 	var _arg0 *C.GstTask // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.InternObject(task).Native()))
+	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.BaseObject(task).Native()))
 
 	_cret = C.gst_task_join(_arg0)
 	runtime.KeepAlive(task)
@@ -32337,7 +32337,7 @@ func (task *Task) Pause() bool {
 	var _arg0 *C.GstTask // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.InternObject(task).Native()))
+	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.BaseObject(task).Native()))
 
 	_cret = C.gst_task_pause(_arg0)
 	runtime.KeepAlive(task)
@@ -32363,7 +32363,7 @@ func (task *Task) Resume() bool {
 	var _arg0 *C.GstTask // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.InternObject(task).Native()))
+	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.BaseObject(task).Native()))
 
 	_cret = C.gst_task_resume(_arg0)
 	runtime.KeepAlive(task)
@@ -32397,7 +32397,7 @@ func (task *Task) SetState(state TaskState) bool {
 	var _arg1 C.GstTaskState // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.InternObject(task).Native()))
+	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.BaseObject(task).Native()))
 	_arg1 = C.GstTaskState(state)
 
 	_cret = C.gst_task_set_state(_arg0, _arg1)
@@ -32425,7 +32425,7 @@ func (task *Task) Start() bool {
 	var _arg0 *C.GstTask // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.InternObject(task).Native()))
+	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.BaseObject(task).Native()))
 
 	_cret = C.gst_task_start(_arg0)
 	runtime.KeepAlive(task)
@@ -32452,7 +32452,7 @@ func (task *Task) Stop() bool {
 	var _arg0 *C.GstTask // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.InternObject(task).Native()))
+	_arg0 = (*C.GstTask)(unsafe.Pointer(coreglib.BaseObject(task).Native()))
 
 	_cret = C.gst_task_stop(_arg0)
 	runtime.KeepAlive(task)
@@ -32565,7 +32565,7 @@ func TracerRegister(plugin *Plugin, name string, typ coreglib.Type) bool {
 	var _cret C.gboolean   // in
 
 	if plugin != nil {
-		_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+		_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	}
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -32624,7 +32624,7 @@ func (factory *TracerFactory) TracerType() coreglib.Type {
 	var _arg0 *C.GstTracerFactory // out
 	var _cret C.GType             // in
 
-	_arg0 = (*C.GstTracerFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstTracerFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_tracer_factory_get_tracer_type(_arg0)
 	runtime.KeepAlive(factory)
@@ -32772,7 +32772,7 @@ func (factory *TypeFindFactory) CallFunction(find *TypeFind) {
 	var _arg0 *C.GstTypeFindFactory // out
 	var _arg1 *C.GstTypeFind        // out
 
-	_arg0 = (*C.GstTypeFindFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstTypeFindFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 	_arg1 = (*C.GstTypeFind)(gextras.StructNative(unsafe.Pointer(find)))
 
 	C.gst_type_find_factory_call_function(_arg0, _arg1)
@@ -32789,7 +32789,7 @@ func (factory *TypeFindFactory) Caps() *Caps {
 	var _arg0 *C.GstTypeFindFactory // out
 	var _cret *C.GstCaps            // in
 
-	_arg0 = (*C.GstTypeFindFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstTypeFindFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_type_find_factory_get_caps(_arg0)
 	runtime.KeepAlive(factory)
@@ -32822,7 +32822,7 @@ func (factory *TypeFindFactory) Extensions() []string {
 	var _arg0 *C.GstTypeFindFactory // out
 	var _cret **C.gchar             // in
 
-	_arg0 = (*C.GstTypeFindFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstTypeFindFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_type_find_factory_get_extensions(_arg0)
 	runtime.KeepAlive(factory)
@@ -32859,7 +32859,7 @@ func (factory *TypeFindFactory) HasFunction() bool {
 	var _arg0 *C.GstTypeFindFactory // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstTypeFindFactory)(unsafe.Pointer(coreglib.InternObject(factory).Native()))
+	_arg0 = (*C.GstTypeFindFactory)(unsafe.Pointer(coreglib.BaseObject(factory).Native()))
 
 	_cret = C.gst_type_find_factory_has_function(_arg0)
 	runtime.KeepAlive(factory)
@@ -33705,7 +33705,7 @@ func NewBufferAllocate(allocator Allocatorrer, size uint, params *AllocationPara
 	var _cret *C.GstBuffer           // in
 
 	if allocator != nil {
-		_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+		_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	}
 	_arg2 = C.gsize(size)
 	if params != nil {
@@ -39362,7 +39362,7 @@ func (klass *ElementClass) AddPadTemplate(templ *PadTemplate) {
 	var _arg1 *C.GstPadTemplate  // out
 
 	_arg0 = (*C.GstElementClass)(gextras.StructNative(unsafe.Pointer(klass)))
-	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.InternObject(templ).Native()))
+	_arg1 = (*C.GstPadTemplate)(unsafe.Pointer(coreglib.BaseObject(templ).Native()))
 
 	C.gst_element_class_add_pad_template(_arg0, _arg1)
 	runtime.KeepAlive(klass)
@@ -40223,7 +40223,7 @@ func NewEventStreamCollection(collection *StreamCollection) *Event {
 	var _arg1 *C.GstStreamCollection // out
 	var _cret *C.GstEvent            // in
 
-	_arg1 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.InternObject(collection).Native()))
+	_arg1 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.BaseObject(collection).Native()))
 
 	_cret = C.gst_event_new_stream_collection(_arg1)
 	runtime.KeepAlive(collection)
@@ -41440,7 +41440,7 @@ func (event *Event) SetStream(stream *Stream) {
 	var _arg1 *C.GstStream // out
 
 	_arg0 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
-	_arg1 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg1 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 
 	C.gst_event_set_stream(_arg0, _arg1)
 	runtime.KeepAlive(event)
@@ -42357,7 +42357,7 @@ func NewMessageApplication(src GstObjector, structure *Structure) *Message {
 	var _cret *C.GstMessage   // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(structure)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(structure)), nil)
@@ -42385,7 +42385,7 @@ func NewMessageAsyncDone(src GstObjector, runningTime ClockTime) *Message {
 	var _cret *C.GstMessage  // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstClockTime(runningTime)
 
@@ -42411,7 +42411,7 @@ func NewMessageAsyncStart(src GstObjector) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 
 	_cret = C.gst_message_new_async_start(_arg1)
@@ -42436,7 +42436,7 @@ func NewMessageBuffering(src GstObjector, percent int) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.gint(percent)
 
@@ -42463,9 +42463,9 @@ func NewMessageClockLost(src GstObjector, clock Clocker) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
-	_arg2 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg2 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_message_new_clock_lost(_arg1, _arg2)
 	runtime.KeepAlive(src)
@@ -42491,9 +42491,9 @@ func NewMessageClockProvide(src GstObjector, clock Clocker, ready bool) *Message
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
-	_arg2 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg2 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	if ready {
 		_arg3 = C.TRUE
 	}
@@ -42524,7 +42524,7 @@ func NewMessageCustom(typ MessageType, src GstObjector, structure *Structure) *M
 
 	_arg1 = C.GstMessageType(typ)
 	if src != nil {
-		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg2 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	if structure != nil {
 		_arg3 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(structure)))
@@ -42555,9 +42555,9 @@ func NewMessageDeviceAdded(src GstObjector, device Devicer) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
-	_arg2 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg2 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 
 	_cret = C.gst_message_new_device_added(_arg1, _arg2)
 	runtime.KeepAlive(src)
@@ -42583,10 +42583,10 @@ func NewMessageDeviceChanged(src GstObjector, device Devicer, changedDevice Devi
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
-	_arg2 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
-	_arg3 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(changedDevice).Native()))
+	_arg2 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
+	_arg3 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(changedDevice).Native()))
 
 	_cret = C.gst_message_new_device_changed(_arg1, _arg2, _arg3)
 	runtime.KeepAlive(src)
@@ -42612,9 +42612,9 @@ func NewMessageDeviceRemoved(src GstObjector, device Devicer) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
-	_arg2 = (*C.GstDevice)(unsafe.Pointer(coreglib.InternObject(device).Native()))
+	_arg2 = (*C.GstDevice)(unsafe.Pointer(coreglib.BaseObject(device).Native()))
 
 	_cret = C.gst_message_new_device_removed(_arg1, _arg2)
 	runtime.KeepAlive(src)
@@ -42638,7 +42638,7 @@ func NewMessageDurationChanged(src GstObjector) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 
 	_cret = C.gst_message_new_duration_changed(_arg1)
@@ -42663,7 +42663,7 @@ func NewMessageElement(src GstObjector, structure *Structure) *Message {
 	var _cret *C.GstMessage   // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(structure)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(structure)), nil)
@@ -42690,7 +42690,7 @@ func NewMessageEos(src GstObjector) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 
 	_cret = C.gst_message_new_eos(_arg1)
@@ -42716,7 +42716,7 @@ func NewMessageError(src GstObjector, err error, debug string) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	if err != nil {
 		_arg2 = (*C.GError)(gerror.New(err))
@@ -42750,7 +42750,7 @@ func NewMessageErrorWithDetails(src GstObjector, err error, debug string, detail
 	var _cret *C.GstMessage   // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	if err != nil {
 		_arg2 = (*C.GError)(gerror.New(err))
@@ -42787,7 +42787,7 @@ func NewMessageHaveContext(src GstObjector, context *Context) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = (*C.GstContext)(gextras.StructNative(unsafe.Pointer(context)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(context)), nil)
@@ -42816,7 +42816,7 @@ func NewMessageInfo(src GstObjector, err error, debug string) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	if err != nil {
 		_arg2 = (*C.GError)(gerror.New(err))
@@ -42850,7 +42850,7 @@ func NewMessageInfoWithDetails(src GstObjector, err error, debug string, details
 	var _cret *C.GstMessage   // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	if err != nil {
 		_arg2 = (*C.GError)(gerror.New(err))
@@ -42887,7 +42887,7 @@ func NewMessageInstantRateRequest(src GstObjector, rateMultiplier float64) *Mess
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.gdouble(rateMultiplier)
 
@@ -42913,7 +42913,7 @@ func NewMessageLatency(src GstObjector) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 
 	_cret = C.gst_message_new_latency(_arg1)
@@ -42938,7 +42938,7 @@ func NewMessageNeedContext(src GstObjector, contextType string) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -42966,9 +42966,9 @@ func NewMessageNewClock(src GstObjector, clock Clocker) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
-	_arg2 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg2 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 
 	_cret = C.gst_message_new_new_clock(_arg1, _arg2)
 	runtime.KeepAlive(src)
@@ -42995,7 +42995,7 @@ func NewMessageProgress(src GstObjector, typ ProgressType, code string, text str
 	var _cret *C.GstMessage     // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstProgressType(typ)
 	_arg3 = (*C.gchar)(unsafe.Pointer(C.CString(code)))
@@ -43028,7 +43028,7 @@ func NewMessagePropertyNotify(src GstObjector, propertyName string, val *coregli
 	var _arg3 *C.GValue     // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 	defer C.free(unsafe.Pointer(_arg2))
 	if val != nil {
@@ -43063,7 +43063,7 @@ func NewMessageQos(src GstObjector, live bool, runningTime uint64, streamTime ui
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	if live {
 		_arg2 = C.TRUE
@@ -43102,7 +43102,7 @@ func NewMessageRedirect(src GstObjector, location string, tagList *TagList, entr
 	var _cret *C.GstMessage   // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(location)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -43140,7 +43140,7 @@ func NewMessageRequestState(src GstObjector, state State) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstState(state)
 
@@ -43167,7 +43167,7 @@ func NewMessageResetTime(src GstObjector, runningTime ClockTime) *Message {
 	var _cret *C.GstMessage  // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstClockTime(runningTime)
 
@@ -43195,7 +43195,7 @@ func NewMessageSegmentDone(src GstObjector, format Format, position int64) *Mess
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstFormat(format)
 	_arg3 = C.gint64(position)
@@ -43225,7 +43225,7 @@ func NewMessageSegmentStart(src GstObjector, format Format, position int64) *Mes
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstFormat(format)
 	_arg3 = C.gint64(position)
@@ -43256,7 +43256,7 @@ func NewMessageStateChanged(src GstObjector, oldstate State, newstate State, pen
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstState(oldstate)
 	_arg3 = C.GstState(newstate)
@@ -43286,7 +43286,7 @@ func NewMessageStateDirty(src GstObjector) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 
 	_cret = C.gst_message_new_state_dirty(_arg1)
@@ -43317,7 +43317,7 @@ func NewMessageStepDone(src GstObjector, format Format, amount uint64, rate floa
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstFormat(format)
 	_arg3 = C.guint64(amount)
@@ -43367,7 +43367,7 @@ func NewMessageStepStart(src GstObjector, active bool, format Format, amount uin
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	if active {
 		_arg2 = C.TRUE
@@ -43410,9 +43410,9 @@ func NewMessageStreamCollection(src GstObjector, collection *StreamCollection) *
 	var _cret *C.GstMessage          // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
-	_arg2 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.InternObject(collection).Native()))
+	_arg2 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.BaseObject(collection).Native()))
 
 	_cret = C.gst_message_new_stream_collection(_arg1, _arg2)
 	runtime.KeepAlive(src)
@@ -43436,7 +43436,7 @@ func NewMessageStreamStart(src GstObjector) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 
 	_cret = C.gst_message_new_stream_start(_arg1)
@@ -43462,10 +43462,10 @@ func NewMessageStreamStatus(src GstObjector, typ StreamStatusType, owner Element
 	var _cret *C.GstMessage         // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstStreamStatusType(typ)
-	_arg3 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(owner).Native()))
+	_arg3 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(owner).Native()))
 
 	_cret = C.gst_message_new_stream_status(_arg1, _arg2, _arg3)
 	runtime.KeepAlive(src)
@@ -43491,9 +43491,9 @@ func NewMessageStreamsSelected(src GstObjector, collection *StreamCollection) *M
 	var _cret *C.GstMessage          // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
-	_arg2 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.InternObject(collection).Native()))
+	_arg2 = (*C.GstStreamCollection)(unsafe.Pointer(coreglib.BaseObject(collection).Native()))
 
 	_cret = C.gst_message_new_streams_selected(_arg1, _arg2)
 	runtime.KeepAlive(src)
@@ -43520,10 +43520,10 @@ func NewMessageStructureChange(src GstObjector, typ StructureChangeType, owner E
 	var _cret *C.GstMessage            // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = C.GstStructureChangeType(typ)
-	_arg3 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(owner).Native()))
+	_arg3 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(owner).Native()))
 	if busy {
 		_arg4 = C.TRUE
 	}
@@ -43553,7 +43553,7 @@ func NewMessageTag(src GstObjector, tagList *TagList) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(tagList)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(tagList)), nil)
@@ -43582,7 +43582,7 @@ func NewMessageToc(src GstObjector, toc *Toc, updated bool) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	_arg2 = (*C.GstToc)(gextras.StructNative(unsafe.Pointer(toc)))
 	if updated {
@@ -43614,7 +43614,7 @@ func NewMessageWarning(src GstObjector, err error, debug string) *Message {
 	var _cret *C.GstMessage // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	if err != nil {
 		_arg2 = (*C.GError)(gerror.New(err))
@@ -43648,7 +43648,7 @@ func NewMessageWarningWithDetails(src GstObjector, err error, debug string, deta
 	var _cret *C.GstMessage   // in
 
 	if src != nil {
-		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	}
 	if err != nil {
 		_arg2 = (*C.GError)(gerror.New(err))
@@ -45499,7 +45499,7 @@ func (message *Message) StreamsSelectedAdd(stream *Stream) {
 	var _arg1 *C.GstStream  // out
 
 	_arg0 = (*C.GstMessage)(gextras.StructNative(unsafe.Pointer(message)))
-	_arg1 = (*C.GstStream)(unsafe.Pointer(coreglib.InternObject(stream).Native()))
+	_arg1 = (*C.GstStream)(unsafe.Pointer(coreglib.BaseObject(stream).Native()))
 
 	C.gst_message_streams_selected_add(_arg0, _arg1)
 	runtime.KeepAlive(message)
@@ -47760,7 +47760,7 @@ func (query *Query) AddAllocationParam(allocator Allocatorrer, params *Allocatio
 
 	_arg0 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 	if allocator != nil {
-		_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+		_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	}
 	if params != nil {
 		_arg2 = (*C.GstAllocationParams)(gextras.StructNative(unsafe.Pointer(params)))
@@ -47789,7 +47789,7 @@ func (query *Query) AddAllocationPool(pool *BufferPool, size uint, minBuffers ui
 
 	_arg0 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 	if pool != nil {
-		_arg1 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+		_arg1 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	}
 	_arg2 = C.guint(size)
 	_arg3 = C.guint(minBuffers)
@@ -49349,7 +49349,7 @@ func (query *Query) SetNthAllocationParam(index uint, allocator Allocatorrer, pa
 	_arg0 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 	_arg1 = C.guint(index)
 	if allocator != nil {
-		_arg2 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+		_arg2 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	}
 	if params != nil {
 		_arg3 = (*C.GstAllocationParams)(gextras.StructNative(unsafe.Pointer(params)))
@@ -49382,7 +49382,7 @@ func (query *Query) SetNthAllocationPool(index uint, pool *BufferPool, size uint
 	_arg0 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 	_arg1 = C.guint(index)
 	if pool != nil {
-		_arg2 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+		_arg2 = (*C.GstBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 	}
 	_arg3 = C.guint(size)
 	_arg4 = C.guint(minBuffers)
@@ -55471,7 +55471,7 @@ func TypeFindRegister(plugin *Plugin, name string, rank uint, fn TypeFindFunctio
 	var _cret C.gboolean // in
 
 	if plugin != nil {
-		_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.InternObject(plugin).Native()))
+		_arg1 = (*C.GstPlugin)(unsafe.Pointer(coreglib.BaseObject(plugin).Native()))
 	}
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))

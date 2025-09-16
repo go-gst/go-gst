@@ -1728,7 +1728,7 @@ func NewMissingDecoderMessage(element gst.Elementer, decodeCaps *gst.Caps) *gst.
 	var _arg2 *C.GstCaps    // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(decodeCaps)))
 
 	_cret = C.gst_missing_decoder_message_new(_arg1, _arg2)
@@ -1800,7 +1800,7 @@ func NewMissingElementMessage(element gst.Elementer, factoryName string) *gst.Me
 	var _arg2 *C.gchar      // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(factoryName)))
 	defer C.free(unsafe.Pointer(_arg2))
 
@@ -1870,7 +1870,7 @@ func NewMissingEncoderMessage(element gst.Elementer, encodeCaps *gst.Caps) *gst.
 	var _arg2 *C.GstCaps    // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(encodeCaps)))
 
 	_cret = C.gst_missing_encoder_message_new(_arg1, _arg2)
@@ -2010,7 +2010,7 @@ func NewMissingURISinkMessage(element gst.Elementer, protocol string) *gst.Messa
 	var _arg2 *C.gchar      // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
 	defer C.free(unsafe.Pointer(_arg2))
 
@@ -2083,7 +2083,7 @@ func NewMissingURISourceMessage(element gst.Elementer, protocol string) *gst.Mes
 	var _arg2 *C.gchar      // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
 	defer C.free(unsafe.Pointer(_arg2))
 
@@ -2572,7 +2572,7 @@ func (scope *AudioVisualizer) decideAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery           // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioVisualizer)(unsafe.Pointer(coreglib.InternObject(scope).Native()))
+	_arg0 = (*C.GstAudioVisualizer)(unsafe.Pointer(coreglib.BaseObject(scope).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2601,7 +2601,7 @@ func (scope *AudioVisualizer) render(audio *gst.Buffer, video *gstvideo.VideoFra
 	var _arg2 *C.GstVideoFrame      // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioVisualizer)(unsafe.Pointer(coreglib.InternObject(scope).Native()))
+	_arg0 = (*C.GstAudioVisualizer)(unsafe.Pointer(coreglib.BaseObject(scope).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(audio)))
 	_arg2 = (*C.GstVideoFrame)(gextras.StructNative(unsafe.Pointer(video)))
 
@@ -2626,7 +2626,7 @@ func (scope *AudioVisualizer) setup() bool {
 	var _arg0 *C.GstAudioVisualizer // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstAudioVisualizer)(unsafe.Pointer(coreglib.InternObject(scope).Native()))
+	_arg0 = (*C.GstAudioVisualizer)(unsafe.Pointer(coreglib.BaseObject(scope).Native()))
 
 	_cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_setup(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(scope)
@@ -2836,7 +2836,7 @@ func (discoverer *Discoverer) DiscoverURI(uri string) (*DiscovererInfo, error) {
 	var _cret *C.GstDiscovererInfo // in
 	var _cerr *C.GError            // in
 
-	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.InternObject(discoverer).Native()))
+	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.BaseObject(discoverer).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -2875,7 +2875,7 @@ func (discoverer *Discoverer) DiscoverURIAsync(uri string) bool {
 	var _arg1 *C.gchar         // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.InternObject(discoverer).Native()))
+	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.BaseObject(discoverer).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -2897,7 +2897,7 @@ func (discoverer *Discoverer) DiscoverURIAsync(uri string) bool {
 func (discoverer *Discoverer) Start() {
 	var _arg0 *C.GstDiscoverer // out
 
-	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.InternObject(discoverer).Native()))
+	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.BaseObject(discoverer).Native()))
 
 	C.gst_discoverer_start(_arg0)
 	runtime.KeepAlive(discoverer)
@@ -2908,7 +2908,7 @@ func (discoverer *Discoverer) Start() {
 func (discoverer *Discoverer) Stop() {
 	var _arg0 *C.GstDiscoverer // out
 
-	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.InternObject(discoverer).Native()))
+	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.BaseObject(discoverer).Native()))
 
 	C.gst_discoverer_stop(_arg0)
 	runtime.KeepAlive(discoverer)
@@ -2926,8 +2926,8 @@ func (discoverer *Discoverer) discovered(info *DiscovererInfo, err error) {
 	var _arg1 *C.GstDiscovererInfo // out
 	var _arg2 *C.GError            // out
 
-	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.InternObject(discoverer).Native()))
-	_arg1 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.BaseObject(discoverer).Native()))
+	_arg1 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 	if err != nil {
 		_arg2 = (*C.GError)(gerror.New(err))
 	}
@@ -2944,7 +2944,7 @@ func (discoverer *Discoverer) finished() {
 
 	var _arg0 *C.GstDiscoverer // out
 
-	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.InternObject(discoverer).Native()))
+	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.BaseObject(discoverer).Native()))
 
 	C._gotk4_gstpbutils1_Discoverer_virtual_finished(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(discoverer)
@@ -2967,7 +2967,7 @@ func (dc *Discoverer) loadSerializeInfo(uri string) *DiscovererInfo {
 	var _arg1 *C.gchar             // out
 	var _cret *C.GstDiscovererInfo // in
 
-	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.InternObject(dc).Native()))
+	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.BaseObject(dc).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -2989,8 +2989,8 @@ func (discoverer *Discoverer) sourceSetup(source gst.Elementer) {
 	var _arg0 *C.GstDiscoverer // out
 	var _arg1 *C.GstElement    // out
 
-	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.InternObject(discoverer).Native()))
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(source).Native()))
+	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.BaseObject(discoverer).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(source).Native()))
 
 	C._gotk4_gstpbutils1_Discoverer_virtual_source_setup(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(discoverer)
@@ -3003,7 +3003,7 @@ func (discoverer *Discoverer) starting() {
 
 	var _arg0 *C.GstDiscoverer // out
 
-	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.InternObject(discoverer).Native()))
+	_arg0 = (*C.GstDiscoverer)(unsafe.Pointer(coreglib.BaseObject(discoverer).Native()))
 
 	C._gotk4_gstpbutils1_Discoverer_virtual_starting(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(discoverer)
@@ -3038,7 +3038,7 @@ func (info *DiscovererAudioInfo) Bitrate() uint {
 	var _arg0 *C.GstDiscovererAudioInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_audio_info_get_bitrate(_arg0)
 	runtime.KeepAlive(info)
@@ -3058,7 +3058,7 @@ func (info *DiscovererAudioInfo) ChannelMask() uint64 {
 	var _arg0 *C.GstDiscovererAudioInfo // out
 	var _cret C.guint64                 // in
 
-	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_audio_info_get_channel_mask(_arg0)
 	runtime.KeepAlive(info)
@@ -3077,7 +3077,7 @@ func (info *DiscovererAudioInfo) Channels() uint {
 	var _arg0 *C.GstDiscovererAudioInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_audio_info_get_channels(_arg0)
 	runtime.KeepAlive(info)
@@ -3096,7 +3096,7 @@ func (info *DiscovererAudioInfo) Depth() uint {
 	var _arg0 *C.GstDiscovererAudioInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_audio_info_get_depth(_arg0)
 	runtime.KeepAlive(info)
@@ -3115,7 +3115,7 @@ func (info *DiscovererAudioInfo) Language() string {
 	var _arg0 *C.GstDiscovererAudioInfo // out
 	var _cret *C.gchar                  // in
 
-	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_audio_info_get_language(_arg0)
 	runtime.KeepAlive(info)
@@ -3136,7 +3136,7 @@ func (info *DiscovererAudioInfo) MaxBitrate() uint {
 	var _arg0 *C.GstDiscovererAudioInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_audio_info_get_max_bitrate(_arg0)
 	runtime.KeepAlive(info)
@@ -3155,7 +3155,7 @@ func (info *DiscovererAudioInfo) SampleRate() uint {
 	var _arg0 *C.GstDiscovererAudioInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_audio_info_get_sample_rate(_arg0)
 	runtime.KeepAlive(info)
@@ -3197,7 +3197,7 @@ func (info *DiscovererContainerInfo) Streams() []*DiscovererStreamInfo {
 	var _arg0 *C.GstDiscovererContainerInfo // out
 	var _cret *C.GList                      // in
 
-	_arg0 = (*C.GstDiscovererContainerInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererContainerInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_container_info_get_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -3223,7 +3223,7 @@ func (info *DiscovererContainerInfo) Tags() *gst.TagList {
 	var _arg0 *C.GstDiscovererContainerInfo // out
 	var _cret *C.GstTagList                 // in
 
-	_arg0 = (*C.GstDiscovererContainerInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererContainerInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_container_info_get_tags(_arg0)
 	runtime.KeepAlive(info)
@@ -3265,7 +3265,7 @@ func (ptr *DiscovererInfo) Copy() *DiscovererInfo {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.GstDiscovererInfo // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(ptr).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(ptr).Native()))
 
 	_cret = C.gst_discoverer_info_copy(_arg0)
 	runtime.KeepAlive(ptr)
@@ -3287,7 +3287,7 @@ func (info *DiscovererInfo) AudioStreams() []*DiscovererAudioInfo {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.GList             // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_audio_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -3315,7 +3315,7 @@ func (info *DiscovererInfo) ContainerStreams() []*DiscovererContainerInfo {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.GList             // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_container_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -3340,7 +3340,7 @@ func (info *DiscovererInfo) Duration() gst.ClockTime {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret C.GstClockTime       // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_duration(_arg0)
 	runtime.KeepAlive(info)
@@ -3359,7 +3359,7 @@ func (info *DiscovererInfo) Live() bool {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_live(_arg0)
 	runtime.KeepAlive(info)
@@ -3385,7 +3385,7 @@ func (info *DiscovererInfo) Misc() *gst.Structure {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.GstStructure      // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_misc(_arg0)
 	runtime.KeepAlive(info)
@@ -3417,7 +3417,7 @@ func (info *DiscovererInfo) MissingElementsInstallerDetails() []string {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret **C.gchar            // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_missing_elements_installer_details(_arg0)
 	runtime.KeepAlive(info)
@@ -3448,7 +3448,7 @@ func (info *DiscovererInfo) Result() DiscovererResult {
 	var _arg0 *C.GstDiscovererInfo  // out
 	var _cret C.GstDiscovererResult // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_result(_arg0)
 	runtime.KeepAlive(info)
@@ -3467,7 +3467,7 @@ func (info *DiscovererInfo) Seekable() bool {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_seekable(_arg0)
 	runtime.KeepAlive(info)
@@ -3490,7 +3490,7 @@ func (info *DiscovererInfo) StreamInfo() *DiscovererStreamInfo {
 	var _arg0 *C.GstDiscovererInfo       // out
 	var _cret *C.GstDiscovererStreamInfo // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_stream_info(_arg0)
 	runtime.KeepAlive(info)
@@ -3512,7 +3512,7 @@ func (info *DiscovererInfo) StreamList() []*DiscovererStreamInfo {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.GList             // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_stream_list(_arg0)
 	runtime.KeepAlive(info)
@@ -3546,7 +3546,7 @@ func (info *DiscovererInfo) Streams(streamtype coreglib.Type) []*DiscovererStrea
 	var _arg1 C.GType              // out
 	var _cret *C.GList             // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 	_arg1 = C.GType(streamtype)
 
 	_cret = C.gst_discoverer_info_get_streams(_arg0, _arg1)
@@ -3576,7 +3576,7 @@ func (info *DiscovererInfo) SubtitleStreams() []*DiscovererSubtitleInfo {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.GList             // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_subtitle_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -3605,7 +3605,7 @@ func (info *DiscovererInfo) Tags() *gst.TagList {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.GstTagList        // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_tags(_arg0)
 	runtime.KeepAlive(info)
@@ -3627,7 +3627,7 @@ func (info *DiscovererInfo) Toc() *gst.Toc {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.GstToc            // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_toc(_arg0)
 	runtime.KeepAlive(info)
@@ -3649,7 +3649,7 @@ func (info *DiscovererInfo) URI() string {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.gchar             // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_uri(_arg0)
 	runtime.KeepAlive(info)
@@ -3671,7 +3671,7 @@ func (info *DiscovererInfo) VideoStreams() []*DiscovererVideoInfo {
 	var _arg0 *C.GstDiscovererInfo // out
 	var _cret *C.GList             // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_info_get_video_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -3708,7 +3708,7 @@ func (info *DiscovererInfo) ToVariant(flags DiscovererSerializeFlags) *glib.Vari
 	var _arg1 C.GstDiscovererSerializeFlags // out
 	var _cret *C.GVariant                   // in
 
-	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 	_arg1 = C.GstDiscovererSerializeFlags(flags)
 
 	_cret = C.gst_discoverer_info_to_variant(_arg0, _arg1)
@@ -3794,7 +3794,7 @@ func (info *DiscovererStreamInfo) Caps() *gst.Caps {
 	var _arg0 *C.GstDiscovererStreamInfo // out
 	var _cret *C.GstCaps                 // in
 
-	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_stream_info_get_caps(_arg0)
 	runtime.KeepAlive(info)
@@ -3825,7 +3825,7 @@ func (info *DiscovererStreamInfo) Misc() *gst.Structure {
 	var _arg0 *C.GstDiscovererStreamInfo // out
 	var _cret *C.GstStructure            // in
 
-	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_stream_info_get_misc(_arg0)
 	runtime.KeepAlive(info)
@@ -3854,7 +3854,7 @@ func (info *DiscovererStreamInfo) Next() *DiscovererStreamInfo {
 	var _arg0 *C.GstDiscovererStreamInfo // out
 	var _cret *C.GstDiscovererStreamInfo // in
 
-	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_stream_info_get_next(_arg0)
 	runtime.KeepAlive(info)
@@ -3877,7 +3877,7 @@ func (info *DiscovererStreamInfo) Previous() *DiscovererStreamInfo {
 	var _arg0 *C.GstDiscovererStreamInfo // out
 	var _cret *C.GstDiscovererStreamInfo // in
 
-	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_stream_info_get_previous(_arg0)
 	runtime.KeepAlive(info)
@@ -3899,7 +3899,7 @@ func (info *DiscovererStreamInfo) StreamID() string {
 	var _arg0 *C.GstDiscovererStreamInfo // out
 	var _cret *C.gchar                   // in
 
-	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_stream_info_get_stream_id(_arg0)
 	runtime.KeepAlive(info)
@@ -3921,7 +3921,7 @@ func (info *DiscovererStreamInfo) StreamNumber() int {
 	var _arg0 *C.GstDiscovererStreamInfo // out
 	var _cret C.gint                     // in
 
-	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_stream_info_get_stream_number(_arg0)
 	runtime.KeepAlive(info)
@@ -3941,7 +3941,7 @@ func (info *DiscovererStreamInfo) StreamTypeNick() string {
 	var _arg0 *C.GstDiscovererStreamInfo // out
 	var _cret *C.gchar                   // in
 
-	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_stream_info_get_stream_type_nick(_arg0)
 	runtime.KeepAlive(info)
@@ -3961,7 +3961,7 @@ func (info *DiscovererStreamInfo) Tags() *gst.TagList {
 	var _arg0 *C.GstDiscovererStreamInfo // out
 	var _cret *C.GstTagList              // in
 
-	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_stream_info_get_tags(_arg0)
 	runtime.KeepAlive(info)
@@ -3983,7 +3983,7 @@ func (info *DiscovererStreamInfo) Toc() *gst.Toc {
 	var _arg0 *C.GstDiscovererStreamInfo // out
 	var _cret *C.GstToc                  // in
 
-	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_stream_info_get_toc(_arg0)
 	runtime.KeepAlive(info)
@@ -4027,7 +4027,7 @@ func (info *DiscovererSubtitleInfo) Language() string {
 	var _arg0 *C.GstDiscovererSubtitleInfo // out
 	var _cret *C.gchar                     // in
 
-	_arg0 = (*C.GstDiscovererSubtitleInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererSubtitleInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_subtitle_info_get_language(_arg0)
 	runtime.KeepAlive(info)
@@ -4070,7 +4070,7 @@ func (info *DiscovererVideoInfo) Bitrate() uint {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_get_bitrate(_arg0)
 	runtime.KeepAlive(info)
@@ -4089,7 +4089,7 @@ func (info *DiscovererVideoInfo) Depth() uint {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_get_depth(_arg0)
 	runtime.KeepAlive(info)
@@ -4108,7 +4108,7 @@ func (info *DiscovererVideoInfo) FramerateDenom() uint {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_get_framerate_denom(_arg0)
 	runtime.KeepAlive(info)
@@ -4127,7 +4127,7 @@ func (info *DiscovererVideoInfo) FramerateNum() uint {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_get_framerate_num(_arg0)
 	runtime.KeepAlive(info)
@@ -4146,7 +4146,7 @@ func (info *DiscovererVideoInfo) Height() uint {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_get_height(_arg0)
 	runtime.KeepAlive(info)
@@ -4165,7 +4165,7 @@ func (info *DiscovererVideoInfo) MaxBitrate() uint {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_get_max_bitrate(_arg0)
 	runtime.KeepAlive(info)
@@ -4184,7 +4184,7 @@ func (info *DiscovererVideoInfo) ParDenom() uint {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_get_par_denom(_arg0)
 	runtime.KeepAlive(info)
@@ -4203,7 +4203,7 @@ func (info *DiscovererVideoInfo) ParNum() uint {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_get_par_num(_arg0)
 	runtime.KeepAlive(info)
@@ -4222,7 +4222,7 @@ func (info *DiscovererVideoInfo) Width() uint {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.guint                   // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_get_width(_arg0)
 	runtime.KeepAlive(info)
@@ -4242,7 +4242,7 @@ func (info *DiscovererVideoInfo) IsImage() bool {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.gboolean                // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_is_image(_arg0)
 	runtime.KeepAlive(info)
@@ -4263,7 +4263,7 @@ func (info *DiscovererVideoInfo) IsInterlaced() bool {
 	var _arg0 *C.GstDiscovererVideoInfo // out
 	var _cret C.gboolean                // in
 
-	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstDiscovererVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_discoverer_video_info_is_interlaced(_arg0)
 	runtime.KeepAlive(info)
@@ -4433,9 +4433,9 @@ func (container *EncodingContainerProfile) AddProfile(profile *EncodingProfile) 
 	var _arg1 *C.GstEncodingProfile          // out
 	var _cret C.gboolean                     // in
 
-	_arg0 = (*C.GstEncodingContainerProfile)(unsafe.Pointer(coreglib.InternObject(container).Native()))
-	_arg1 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
-	C.g_object_ref(C.gpointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingContainerProfile)(unsafe.Pointer(coreglib.BaseObject(container).Native()))
+	_arg1 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
+	C.g_object_ref(C.gpointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_container_profile_add_profile(_arg0, _arg1)
 	runtime.KeepAlive(container)
@@ -4466,8 +4466,8 @@ func (container *EncodingContainerProfile) ContainsProfile(profile *EncodingProf
 	var _arg1 *C.GstEncodingProfile          // out
 	var _cret C.gboolean                     // in
 
-	_arg0 = (*C.GstEncodingContainerProfile)(unsafe.Pointer(coreglib.InternObject(container).Native()))
-	_arg1 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingContainerProfile)(unsafe.Pointer(coreglib.BaseObject(container).Native()))
+	_arg1 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_container_profile_contains_profile(_arg0, _arg1)
 	runtime.KeepAlive(container)
@@ -4489,7 +4489,7 @@ func (profile *EncodingContainerProfile) Profiles() []*EncodingProfile {
 	var _arg0 *C.GstEncodingContainerProfile // out
 	var _cret *C.GList                       // in
 
-	_arg0 = (*C.GstEncodingContainerProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingContainerProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_container_profile_get_profiles(_arg0)
 	runtime.KeepAlive(profile)
@@ -4537,7 +4537,7 @@ func (self *EncodingProfile) Copy() *EncodingProfile {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.GstEncodingProfile // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 
 	_cret = C.gst_encoding_profile_copy(_arg0)
 	runtime.KeepAlive(self)
@@ -4555,7 +4555,7 @@ func (profile *EncodingProfile) AllowDynamicOutput() bool {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_allow_dynamic_output(_arg0)
 	runtime.KeepAlive(profile)
@@ -4576,7 +4576,7 @@ func (profile *EncodingProfile) Description() string {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.gchar              // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_description(_arg0)
 	runtime.KeepAlive(profile)
@@ -4598,7 +4598,7 @@ func (self *EncodingProfile) ElementProperties() *gst.Structure {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.GstStructure       // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 
 	_cret = C.gst_encoding_profile_get_element_properties(_arg0)
 	runtime.KeepAlive(self)
@@ -4624,7 +4624,7 @@ func (profile *EncodingProfile) FileExtension() string {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.gchar              // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_file_extension(_arg0)
 	runtime.KeepAlive(profile)
@@ -4646,7 +4646,7 @@ func (profile *EncodingProfile) Format() *gst.Caps {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.GstCaps            // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_format(_arg0)
 	runtime.KeepAlive(profile)
@@ -4674,7 +4674,7 @@ func (profile *EncodingProfile) InputCaps() *gst.Caps {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.GstCaps            // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_input_caps(_arg0)
 	runtime.KeepAlive(profile)
@@ -4698,7 +4698,7 @@ func (profile *EncodingProfile) Name() string {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.gchar              // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_name(_arg0)
 	runtime.KeepAlive(profile)
@@ -4720,7 +4720,7 @@ func (profile *EncodingProfile) Presence() uint {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret C.guint               // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_presence(_arg0)
 	runtime.KeepAlive(profile)
@@ -4740,7 +4740,7 @@ func (profile *EncodingProfile) Preset() string {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.gchar              // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_preset(_arg0)
 	runtime.KeepAlive(profile)
@@ -4761,7 +4761,7 @@ func (profile *EncodingProfile) PresetName() string {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.gchar              // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_preset_name(_arg0)
 	runtime.KeepAlive(profile)
@@ -4787,7 +4787,7 @@ func (profile *EncodingProfile) Restriction() *gst.Caps {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.GstCaps            // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_restriction(_arg0)
 	runtime.KeepAlive(profile)
@@ -4815,7 +4815,7 @@ func (profile *EncodingProfile) SingleSegment() bool {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_single_segment(_arg0)
 	runtime.KeepAlive(profile)
@@ -4836,7 +4836,7 @@ func (profile *EncodingProfile) TypeNick() string {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret *C.gchar              // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_get_type_nick(_arg0)
 	runtime.KeepAlive(profile)
@@ -4852,7 +4852,7 @@ func (profile *EncodingProfile) IsEnabled() bool {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_profile_is_enabled(_arg0)
 	runtime.KeepAlive(profile)
@@ -4880,8 +4880,8 @@ func (a *EncodingProfile) IsEqual(b *EncodingProfile) bool {
 	var _arg1 *C.GstEncodingProfile // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(a).Native()))
-	_arg1 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(b).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(a).Native()))
+	_arg1 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(b).Native()))
 
 	_cret = C.gst_encoding_profile_is_equal(_arg0, _arg1)
 	runtime.KeepAlive(a)
@@ -4907,7 +4907,7 @@ func (profile *EncodingProfile) SetAllowDynamicOutput(allowDynamicOutput bool) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 C.gboolean            // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	if allowDynamicOutput {
 		_arg1 = C.TRUE
 	}
@@ -4927,7 +4927,7 @@ func (profile *EncodingProfile) SetDescription(description string) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 *C.gchar              // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	if description != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -4966,7 +4966,7 @@ func (self *EncodingProfile) SetElementProperties(elementProperties *gst.Structu
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 *C.GstStructure       // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 	_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(elementProperties)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(elementProperties)), nil)
 
@@ -4984,7 +4984,7 @@ func (profile *EncodingProfile) SetEnabled(enabled bool) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 C.gboolean            // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -5003,7 +5003,7 @@ func (profile *EncodingProfile) SetFormat(format *gst.Caps) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 *C.GstCaps            // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(format)))
 
 	C.gst_encoding_profile_set_format(_arg0, _arg1)
@@ -5021,7 +5021,7 @@ func (profile *EncodingProfile) SetName(name string) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 *C.gchar              // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	if name != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -5042,7 +5042,7 @@ func (profile *EncodingProfile) SetPresence(presence uint) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 C.guint               // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	_arg1 = C.guint(presence)
 
 	C.gst_encoding_profile_set_presence(_arg0, _arg1)
@@ -5061,7 +5061,7 @@ func (profile *EncodingProfile) SetPreset(preset string) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 *C.gchar              // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	if preset != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(preset)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -5082,7 +5082,7 @@ func (profile *EncodingProfile) SetPresetName(presetName string) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 *C.gchar              // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	if presetName != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(presetName)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -5104,7 +5104,7 @@ func (profile *EncodingProfile) SetRestriction(restriction *gst.Caps) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 *C.GstCaps            // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	if restriction != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(restriction)))
 		runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(restriction)), nil)
@@ -5129,7 +5129,7 @@ func (profile *EncodingProfile) SetSingleSegment(singleSegment bool) {
 	var _arg0 *C.GstEncodingProfile // out
 	var _arg1 C.gboolean            // out
 
-	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
 	if singleSegment {
 		_arg1 = C.TRUE
 	}
@@ -5198,7 +5198,7 @@ func EncodingProfileFromDiscoverer(info *DiscovererInfo) *EncodingProfile {
 	var _arg1 *C.GstDiscovererInfo  // out
 	var _cret *C.GstEncodingProfile // in
 
-	_arg1 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg1 = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_encoding_profile_from_discoverer(_arg1)
 	runtime.KeepAlive(info)
@@ -5274,7 +5274,7 @@ func NewEncodingTarget(name, category, description string, profiles []*EncodingP
 	for i := len(profiles) - 1; i >= 0; i-- {
 		src := profiles[i]
 		var dst *C.GstEncodingProfile // out
-		dst = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+		dst = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 		_arg4 = C.g_list_prepend(_arg4, C.gpointer(unsafe.Pointer(dst)))
 	}
 	defer C.g_list_free(_arg4)
@@ -5312,9 +5312,9 @@ func (target *EncodingTarget) AddProfile(profile *EncodingProfile) bool {
 	var _arg1 *C.GstEncodingProfile // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.InternObject(target).Native()))
-	_arg1 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.InternObject(profile).Native()))
-	C.g_object_ref(C.gpointer(coreglib.InternObject(profile).Native()))
+	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
+	_arg1 = (*C.GstEncodingProfile)(unsafe.Pointer(coreglib.BaseObject(profile).Native()))
+	C.g_object_ref(C.gpointer(coreglib.BaseObject(profile).Native()))
 
 	_cret = C.gst_encoding_target_add_profile(_arg0, _arg1)
 	runtime.KeepAlive(target)
@@ -5336,7 +5336,7 @@ func (target *EncodingTarget) Category() string {
 	var _arg0 *C.GstEncodingTarget // out
 	var _cret *C.gchar             // in
 
-	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.InternObject(target).Native()))
+	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
 
 	_cret = C.gst_encoding_target_get_category(_arg0)
 	runtime.KeepAlive(target)
@@ -5355,7 +5355,7 @@ func (target *EncodingTarget) Description() string {
 	var _arg0 *C.GstEncodingTarget // out
 	var _cret *C.gchar             // in
 
-	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.InternObject(target).Native()))
+	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
 
 	_cret = C.gst_encoding_target_get_description(_arg0)
 	runtime.KeepAlive(target)
@@ -5374,7 +5374,7 @@ func (target *EncodingTarget) Name() string {
 	var _arg0 *C.GstEncodingTarget // out
 	var _cret *C.gchar             // in
 
-	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.InternObject(target).Native()))
+	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
 
 	_cret = C.gst_encoding_target_get_name(_arg0)
 	runtime.KeepAlive(target)
@@ -5393,7 +5393,7 @@ func (target *EncodingTarget) Path() string {
 	var _arg0 *C.GstEncodingTarget // out
 	var _cret *C.gchar             // in
 
-	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.InternObject(target).Native()))
+	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
 
 	_cret = C.gst_encoding_target_get_path(_arg0)
 	runtime.KeepAlive(target)
@@ -5419,7 +5419,7 @@ func (target *EncodingTarget) Profile(name string) *EncodingProfile {
 	var _arg1 *C.gchar              // out
 	var _cret *C.GstEncodingProfile // in
 
-	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.InternObject(target).Native()))
+	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -5443,7 +5443,7 @@ func (target *EncodingTarget) Profiles() []*EncodingProfile {
 	var _arg0 *C.GstEncodingTarget // out
 	var _cret *C.GList             // in
 
-	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.InternObject(target).Native()))
+	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
 
 	_cret = C.gst_encoding_target_get_profiles(_arg0)
 	runtime.KeepAlive(target)
@@ -5466,7 +5466,7 @@ func (target *EncodingTarget) Save() error {
 	var _arg0 *C.GstEncodingTarget // out
 	var _cerr *C.GError            // in
 
-	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.InternObject(target).Native()))
+	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
 
 	C.gst_encoding_target_save(_arg0, &_cerr)
 	runtime.KeepAlive(target)
@@ -5490,7 +5490,7 @@ func (target *EncodingTarget) SaveToFile(filepath string) error {
 	var _arg1 *C.gchar             // out
 	var _cerr *C.GError            // in
 
-	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.InternObject(target).Native()))
+	_arg0 = (*C.GstEncodingTarget)(unsafe.Pointer(coreglib.BaseObject(target).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(filepath)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -5669,7 +5669,7 @@ func (prof *EncodingVideoProfile) Pass() uint {
 	var _arg0 *C.GstEncodingVideoProfile // out
 	var _cret C.guint                    // in
 
-	_arg0 = (*C.GstEncodingVideoProfile)(unsafe.Pointer(coreglib.InternObject(prof).Native()))
+	_arg0 = (*C.GstEncodingVideoProfile)(unsafe.Pointer(coreglib.BaseObject(prof).Native()))
 
 	_cret = C.gst_encoding_video_profile_get_pass(_arg0)
 	runtime.KeepAlive(prof)
@@ -5691,7 +5691,7 @@ func (prof *EncodingVideoProfile) Variableframerate() bool {
 	var _arg0 *C.GstEncodingVideoProfile // out
 	var _cret C.gboolean                 // in
 
-	_arg0 = (*C.GstEncodingVideoProfile)(unsafe.Pointer(coreglib.InternObject(prof).Native()))
+	_arg0 = (*C.GstEncodingVideoProfile)(unsafe.Pointer(coreglib.BaseObject(prof).Native()))
 
 	_cret = C.gst_encoding_video_profile_get_variableframerate(_arg0)
 	runtime.KeepAlive(prof)
@@ -5716,7 +5716,7 @@ func (prof *EncodingVideoProfile) SetPass(pass uint) {
 	var _arg0 *C.GstEncodingVideoProfile // out
 	var _arg1 C.guint                    // out
 
-	_arg0 = (*C.GstEncodingVideoProfile)(unsafe.Pointer(coreglib.InternObject(prof).Native()))
+	_arg0 = (*C.GstEncodingVideoProfile)(unsafe.Pointer(coreglib.BaseObject(prof).Native()))
 	_arg1 = C.guint(pass)
 
 	C.gst_encoding_video_profile_set_pass(_arg0, _arg1)
@@ -5736,7 +5736,7 @@ func (prof *EncodingVideoProfile) SetVariableframerate(variableframerate bool) {
 	var _arg0 *C.GstEncodingVideoProfile // out
 	var _arg1 C.gboolean                 // out
 
-	_arg0 = (*C.GstEncodingVideoProfile)(unsafe.Pointer(coreglib.InternObject(prof).Native()))
+	_arg0 = (*C.GstEncodingVideoProfile)(unsafe.Pointer(coreglib.BaseObject(prof).Native()))
 	if variableframerate {
 		_arg1 = C.TRUE
 	}
