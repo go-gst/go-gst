@@ -15334,11 +15334,12 @@ func UnsafeAudioBufferFromGlibBorrow(p unsafe.Pointer) *AudioBuffer {
 
 // UnsafeAudioBufferFromGlibNone is used to convert raw C.GstAudioBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioBufferFromGlibNone(p unsafe.Pointer) *AudioBuffer {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioBufferFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioBuffer,
 		func (intern *audioBuffer) {
@@ -15709,11 +15710,12 @@ func UnsafeAudioCdSrcTrackFromGlibBorrow(p unsafe.Pointer) *AudioCdSrcTrack {
 
 // UnsafeAudioCdSrcTrackFromGlibNone is used to convert raw C.GstAudioCdSrcTrack pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioCdSrcTrackFromGlibNone(p unsafe.Pointer) *AudioCdSrcTrack {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioCdSrcTrackFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioCdSrcTrack,
 		func (intern *audioCdSrcTrack) {
@@ -15793,11 +15795,12 @@ func UnsafeAudioChannelMixerFromGlibBorrow(p unsafe.Pointer) *AudioChannelMixer 
 
 // UnsafeAudioChannelMixerFromGlibNone is used to convert raw C.GstAudioChannelMixer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioChannelMixerFromGlibNone(p unsafe.Pointer) *AudioChannelMixer {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioChannelMixerFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioChannelMixer,
 		func (intern *audioChannelMixer) {
@@ -15924,11 +15927,12 @@ func UnsafeAudioClippingMetaFromGlibBorrow(p unsafe.Pointer) *AudioClippingMeta 
 
 // UnsafeAudioClippingMetaFromGlibNone is used to convert raw C.GstAudioClippingMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioClippingMetaFromGlibNone(p unsafe.Pointer) *AudioClippingMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioClippingMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioClippingMeta,
 		func (intern *audioClippingMeta) {
@@ -16101,11 +16105,12 @@ func UnsafeAudioConverterFromGlibBorrow(p unsafe.Pointer) *AudioConverter {
 
 // UnsafeAudioConverterFromGlibNone is used to convert raw C.GstAudioConverter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioConverterFromGlibNone(p unsafe.Pointer) *AudioConverter {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioConverterFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioConverter,
 		func (intern *audioConverter) {
@@ -16534,11 +16539,12 @@ func UnsafeAudioDownmixMetaFromGlibBorrow(p unsafe.Pointer) *AudioDownmixMeta {
 
 // UnsafeAudioDownmixMetaFromGlibNone is used to convert raw C.GstAudioDownmixMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioDownmixMetaFromGlibNone(p unsafe.Pointer) *AudioDownmixMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioDownmixMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioDownmixMeta,
 		func (intern *audioDownmixMeta) {
@@ -16785,11 +16791,12 @@ func UnsafeAudioFormatInfoFromGlibBorrow(p unsafe.Pointer) *AudioFormatInfo {
 
 // UnsafeAudioFormatInfoFromGlibNone is used to convert raw C.GstAudioFormatInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioFormatInfoFromGlibNone(p unsafe.Pointer) *AudioFormatInfo {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioFormatInfoFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioFormatInfo,
 		func (intern *audioFormatInfo) {
@@ -16889,11 +16896,13 @@ func UnsafeAudioInfoFromGlibBorrow(p unsafe.Pointer) *AudioInfo {
 
 // UnsafeAudioInfoFromGlibNone is used to convert raw C.GstAudioInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioInfoFromGlibNone(p unsafe.Pointer) *AudioInfo {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioInfoFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.audioInfo,
 		func (intern *audioInfo) {
@@ -17240,11 +17249,12 @@ func UnsafeAudioLevelMetaFromGlibBorrow(p unsafe.Pointer) *AudioLevelMeta {
 
 // UnsafeAudioLevelMetaFromGlibNone is used to convert raw C.GstAudioLevelMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioLevelMetaFromGlibNone(p unsafe.Pointer) *AudioLevelMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioLevelMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioLevelMeta,
 		func (intern *audioLevelMeta) {
@@ -17347,11 +17357,12 @@ func UnsafeAudioMetaFromGlibBorrow(p unsafe.Pointer) *AudioMeta {
 
 // UnsafeAudioMetaFromGlibNone is used to convert raw C.GstAudioMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioMetaFromGlibNone(p unsafe.Pointer) *AudioMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioMeta,
 		func (intern *audioMeta) {
@@ -17448,11 +17459,12 @@ func UnsafeAudioQuantizeFromGlibBorrow(p unsafe.Pointer) *AudioQuantize {
 
 // UnsafeAudioQuantizeFromGlibNone is used to convert raw C.GstAudioQuantize pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioQuantizeFromGlibNone(p unsafe.Pointer) *AudioQuantize {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioQuantizeFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioQuantize,
 		func (intern *audioQuantize) {
@@ -17548,11 +17560,12 @@ func UnsafeAudioResamplerFromGlibBorrow(p unsafe.Pointer) *AudioResampler {
 
 // UnsafeAudioResamplerFromGlibNone is used to convert raw C.GstAudioResampler pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioResamplerFromGlibNone(p unsafe.Pointer) *AudioResampler {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioResamplerFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioResampler,
 		func (intern *audioResampler) {
@@ -17920,11 +17933,12 @@ func UnsafeAudioRingBufferSpecFromGlibBorrow(p unsafe.Pointer) *AudioRingBufferS
 
 // UnsafeAudioRingBufferSpecFromGlibNone is used to convert raw C.GstAudioRingBufferSpec pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioRingBufferSpecFromGlibNone(p unsafe.Pointer) *AudioRingBufferSpec {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioRingBufferSpecFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioRingBufferSpec,
 		func (intern *audioRingBufferSpec) {
@@ -18056,11 +18070,12 @@ func UnsafeAudioSinkClassExtensionFromGlibBorrow(p unsafe.Pointer) *AudioSinkCla
 
 // UnsafeAudioSinkClassExtensionFromGlibNone is used to convert raw C.GstAudioSinkClassExtension pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioSinkClassExtensionFromGlibNone(p unsafe.Pointer) *AudioSinkClassExtension {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioSinkClassExtensionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioSinkClassExtension,
 		func (intern *audioSinkClassExtension) {
@@ -18217,11 +18232,13 @@ func UnsafeAudioStreamAlignFromGlibBorrow(p unsafe.Pointer) *AudioStreamAlign {
 
 // UnsafeAudioStreamAlignFromGlibNone is used to convert raw C.GstAudioStreamAlign pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioStreamAlignFromGlibNone(p unsafe.Pointer) *AudioStreamAlign {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioStreamAlignFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.audioStreamAlign,
 		func (intern *audioStreamAlign) {
@@ -18692,11 +18709,13 @@ func UnsafeDsdInfoFromGlibBorrow(p unsafe.Pointer) *DsdInfo {
 
 // UnsafeDsdInfoFromGlibNone is used to convert raw C.GstDsdInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDsdInfoFromGlibNone(p unsafe.Pointer) *DsdInfo {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDsdInfoFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.dsdInfo,
 		func (intern *dsdInfo) {
@@ -19012,11 +19031,12 @@ func UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p unsafe.Pointer) *DsdPlaneOffsetMet
 
 // UnsafeDsdPlaneOffsetMetaFromGlibNone is used to convert raw C.GstDsdPlaneOffsetMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDsdPlaneOffsetMetaFromGlibNone(p unsafe.Pointer) *DsdPlaneOffsetMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dsdPlaneOffsetMeta,
 		func (intern *dsdPlaneOffsetMeta) {
@@ -19113,11 +19133,12 @@ func UnsafeStreamVolumeInterfaceFromGlibBorrow(p unsafe.Pointer) *StreamVolumeIn
 
 // UnsafeStreamVolumeInterfaceFromGlibNone is used to convert raw C.GstStreamVolumeInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeStreamVolumeInterfaceFromGlibNone(p unsafe.Pointer) *StreamVolumeInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeStreamVolumeInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.streamVolumeInterface,
 		func (intern *streamVolumeInterface) {

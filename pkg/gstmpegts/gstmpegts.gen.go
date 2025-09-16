@@ -3281,11 +3281,12 @@ func UnsafeAtscEITFromGlibBorrow(p unsafe.Pointer) *AtscEIT {
 
 // UnsafeAtscEITFromGlibNone is used to convert raw C.GstMpegtsAtscEIT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscEITFromGlibNone(p unsafe.Pointer) *AtscEIT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscEITFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscEIT,
 		func (intern *atscEIT) {
@@ -3382,11 +3383,12 @@ func UnsafeAtscEITEventFromGlibBorrow(p unsafe.Pointer) *AtscEITEvent {
 
 // UnsafeAtscEITEventFromGlibNone is used to convert raw C.GstMpegtsAtscEITEvent pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscEITEventFromGlibNone(p unsafe.Pointer) *AtscEITEvent {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscEITEventFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscEITEvent,
 		func (intern *atscEITEvent) {
@@ -3483,11 +3485,12 @@ func UnsafeAtscETTFromGlibBorrow(p unsafe.Pointer) *AtscETT {
 
 // UnsafeAtscETTFromGlibNone is used to convert raw C.GstMpegtsAtscETT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscETTFromGlibNone(p unsafe.Pointer) *AtscETT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscETTFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscETT,
 		func (intern *atscETT) {
@@ -3584,11 +3587,12 @@ func UnsafeAtscMGTFromGlibBorrow(p unsafe.Pointer) *AtscMGT {
 
 // UnsafeAtscMGTFromGlibNone is used to convert raw C.GstMpegtsAtscMGT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscMGTFromGlibNone(p unsafe.Pointer) *AtscMGT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscMGTFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscMGT,
 		func (intern *atscMGT) {
@@ -3702,11 +3706,12 @@ func UnsafeAtscMGTTableFromGlibBorrow(p unsafe.Pointer) *AtscMGTTable {
 
 // UnsafeAtscMGTTableFromGlibNone is used to convert raw C.GstMpegtsAtscMGTTable pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscMGTTableFromGlibNone(p unsafe.Pointer) *AtscMGTTable {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscMGTTableFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscMGTTable,
 		func (intern *atscMGTTable) {
@@ -3801,11 +3806,12 @@ func UnsafeAtscMultStringFromGlibBorrow(p unsafe.Pointer) *AtscMultString {
 
 // UnsafeAtscMultStringFromGlibNone is used to convert raw C.GstMpegtsAtscMultString pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscMultStringFromGlibNone(p unsafe.Pointer) *AtscMultString {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscMultStringFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscMultString,
 		func (intern *atscMultString) {
@@ -3902,11 +3908,12 @@ func UnsafeAtscRRTFromGlibBorrow(p unsafe.Pointer) *AtscRRT {
 
 // UnsafeAtscRRTFromGlibNone is used to convert raw C.GstMpegtsAtscRRT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscRRTFromGlibNone(p unsafe.Pointer) *AtscRRT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscRRTFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscRRT,
 		func (intern *atscRRT) {
@@ -4018,11 +4025,12 @@ func UnsafeAtscRRTDimensionFromGlibBorrow(p unsafe.Pointer) *AtscRRTDimension {
 
 // UnsafeAtscRRTDimensionFromGlibNone is used to convert raw C.GstMpegtsAtscRRTDimension pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscRRTDimensionFromGlibNone(p unsafe.Pointer) *AtscRRTDimension {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscRRTDimensionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscRRTDimension,
 		func (intern *atscRRTDimension) {
@@ -4134,11 +4142,12 @@ func UnsafeAtscRRTDimensionValueFromGlibBorrow(p unsafe.Pointer) *AtscRRTDimensi
 
 // UnsafeAtscRRTDimensionValueFromGlibNone is used to convert raw C.GstMpegtsAtscRRTDimensionValue pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscRRTDimensionValueFromGlibNone(p unsafe.Pointer) *AtscRRTDimensionValue {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscRRTDimensionValueFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscRRTDimensionValue,
 		func (intern *atscRRTDimensionValue) {
@@ -4252,11 +4261,12 @@ func UnsafeAtscSTTFromGlibBorrow(p unsafe.Pointer) *AtscSTT {
 
 // UnsafeAtscSTTFromGlibNone is used to convert raw C.GstMpegtsAtscSTT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscSTTFromGlibNone(p unsafe.Pointer) *AtscSTT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscSTTFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscSTT,
 		func (intern *atscSTT) {
@@ -4391,11 +4401,12 @@ func UnsafeAtscStringSegmentFromGlibBorrow(p unsafe.Pointer) *AtscStringSegment 
 
 // UnsafeAtscStringSegmentFromGlibNone is used to convert raw C.GstMpegtsAtscStringSegment pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscStringSegmentFromGlibNone(p unsafe.Pointer) *AtscStringSegment {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscStringSegmentFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscStringSegment,
 		func (intern *atscStringSegment) {
@@ -4554,11 +4565,12 @@ func UnsafeAtscVCTFromGlibBorrow(p unsafe.Pointer) *AtscVCT {
 
 // UnsafeAtscVCTFromGlibNone is used to convert raw C.GstMpegtsAtscVCT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscVCTFromGlibNone(p unsafe.Pointer) *AtscVCT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscVCTFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscVCT,
 		func (intern *atscVCT) {
@@ -4655,11 +4667,12 @@ func UnsafeAtscVCTSourceFromGlibBorrow(p unsafe.Pointer) *AtscVCTSource {
 
 // UnsafeAtscVCTSourceFromGlibNone is used to convert raw C.GstMpegtsAtscVCTSource pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtscVCTSourceFromGlibNone(p unsafe.Pointer) *AtscVCTSource {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAtscVCTSourceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.atscVCTSource,
 		func (intern *atscVCTSource) {
@@ -4741,11 +4754,12 @@ func UnsafeAudioPreselectionDescriptorFromGlibBorrow(p unsafe.Pointer) *AudioPre
 
 // UnsafeAudioPreselectionDescriptorFromGlibNone is used to convert raw C.GstMpegtsAudioPreselectionDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioPreselectionDescriptorFromGlibNone(p unsafe.Pointer) *AudioPreselectionDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAudioPreselectionDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.audioPreselectionDescriptor,
 		func (intern *audioPreselectionDescriptor) {
@@ -4842,11 +4856,12 @@ func UnsafeBATFromGlibBorrow(p unsafe.Pointer) *BAT {
 
 // UnsafeBATFromGlibNone is used to convert raw C.GstMpegtsBAT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBATFromGlibNone(p unsafe.Pointer) *BAT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeBATFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.bAT,
 		func (intern *bAT) {
@@ -4941,11 +4956,12 @@ func UnsafeBATStreamFromGlibBorrow(p unsafe.Pointer) *BATStream {
 
 // UnsafeBATStreamFromGlibNone is used to convert raw C.GstMpegtsBATStream pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBATStreamFromGlibNone(p unsafe.Pointer) *BATStream {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeBATStreamFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.bATStream,
 		func (intern *bATStream) {
@@ -5042,11 +5058,12 @@ func UnsafeCableDeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *CableD
 
 // UnsafeCableDeliverySystemDescriptorFromGlibNone is used to convert raw C.GstMpegtsCableDeliverySystemDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCableDeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *CableDeliverySystemDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeCableDeliverySystemDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.cableDeliverySystemDescriptor,
 		func (intern *cableDeliverySystemDescriptor) {
@@ -5141,11 +5158,12 @@ func UnsafeComponentDescriptorFromGlibBorrow(p unsafe.Pointer) *ComponentDescrip
 
 // UnsafeComponentDescriptorFromGlibNone is used to convert raw C.GstMpegtsComponentDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeComponentDescriptorFromGlibNone(p unsafe.Pointer) *ComponentDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeComponentDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.componentDescriptor,
 		func (intern *componentDescriptor) {
@@ -5240,11 +5258,12 @@ func UnsafeContentFromGlibBorrow(p unsafe.Pointer) *Content {
 
 // UnsafeContentFromGlibNone is used to convert raw C.GstMpegtsContent pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeContentFromGlibNone(p unsafe.Pointer) *Content {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeContentFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.content,
 		func (intern *content) {
@@ -5339,11 +5358,12 @@ func UnsafeDVBLinkageDescriptorFromGlibBorrow(p unsafe.Pointer) *DVBLinkageDescr
 
 // UnsafeDVBLinkageDescriptorFromGlibNone is used to convert raw C.GstMpegtsDVBLinkageDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDVBLinkageDescriptorFromGlibNone(p unsafe.Pointer) *DVBLinkageDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDVBLinkageDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageDescriptor,
 		func (intern *dVBLinkageDescriptor) {
@@ -5484,11 +5504,12 @@ func UnsafeDVBLinkageEventFromGlibBorrow(p unsafe.Pointer) *DVBLinkageEvent {
 
 // UnsafeDVBLinkageEventFromGlibNone is used to convert raw C.GstMpegtsDVBLinkageEvent pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDVBLinkageEventFromGlibNone(p unsafe.Pointer) *DVBLinkageEvent {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDVBLinkageEventFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageEvent,
 		func (intern *dVBLinkageEvent) {
@@ -5583,11 +5604,12 @@ func UnsafeDVBLinkageExtendedEventFromGlibBorrow(p unsafe.Pointer) *DVBLinkageEx
 
 // UnsafeDVBLinkageExtendedEventFromGlibNone is used to convert raw C.GstMpegtsDVBLinkageExtendedEvent pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDVBLinkageExtendedEventFromGlibNone(p unsafe.Pointer) *DVBLinkageExtendedEvent {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDVBLinkageExtendedEventFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageExtendedEvent,
 		func (intern *dVBLinkageExtendedEvent) {
@@ -5682,11 +5704,12 @@ func UnsafeDVBLinkageMobileHandOverFromGlibBorrow(p unsafe.Pointer) *DVBLinkageM
 
 // UnsafeDVBLinkageMobileHandOverFromGlibNone is used to convert raw C.GstMpegtsDVBLinkageMobileHandOver pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDVBLinkageMobileHandOverFromGlibNone(p unsafe.Pointer) *DVBLinkageMobileHandOver {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDVBLinkageMobileHandOverFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageMobileHandOver,
 		func (intern *dVBLinkageMobileHandOver) {
@@ -5781,11 +5804,12 @@ func UnsafeDVBParentalRatingItemFromGlibBorrow(p unsafe.Pointer) *DVBParentalRat
 
 // UnsafeDVBParentalRatingItemFromGlibNone is used to convert raw C.GstMpegtsDVBParentalRatingItem pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDVBParentalRatingItemFromGlibNone(p unsafe.Pointer) *DVBParentalRatingItem {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDVBParentalRatingItemFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dVBParentalRatingItem,
 		func (intern *dVBParentalRatingItem) {
@@ -5880,11 +5904,12 @@ func UnsafeDVBServiceListItemFromGlibBorrow(p unsafe.Pointer) *DVBServiceListIte
 
 // UnsafeDVBServiceListItemFromGlibNone is used to convert raw C.GstMpegtsDVBServiceListItem pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDVBServiceListItemFromGlibNone(p unsafe.Pointer) *DVBServiceListItem {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDVBServiceListItemFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dVBServiceListItem,
 		func (intern *dVBServiceListItem) {
@@ -5979,11 +6004,12 @@ func UnsafeDataBroadcastDescriptorFromGlibBorrow(p unsafe.Pointer) *DataBroadcas
 
 // UnsafeDataBroadcastDescriptorFromGlibNone is used to convert raw C.GstMpegtsDataBroadcastDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDataBroadcastDescriptorFromGlibNone(p unsafe.Pointer) *DataBroadcastDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDataBroadcastDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dataBroadcastDescriptor,
 		func (intern *dataBroadcastDescriptor) {
@@ -6083,11 +6109,13 @@ func UnsafeDescriptorFromGlibBorrow(p unsafe.Pointer) *Descriptor {
 
 // UnsafeDescriptorFromGlibNone is used to convert raw C.GstMpegtsDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDescriptorFromGlibNone(p unsafe.Pointer) *Descriptor {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.descriptor,
 		func (intern *descriptor) {
@@ -7423,11 +7451,12 @@ func UnsafeDvbMultilingualBouquetNameItemFromGlibBorrow(p unsafe.Pointer) *DvbMu
 
 // UnsafeDvbMultilingualBouquetNameItemFromGlibNone is used to convert raw C.GstMpegtsDvbMultilingualBouquetNameItem pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDvbMultilingualBouquetNameItemFromGlibNone(p unsafe.Pointer) *DvbMultilingualBouquetNameItem {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDvbMultilingualBouquetNameItemFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualBouquetNameItem,
 		func (intern *dvbMultilingualBouquetNameItem) {
@@ -7522,11 +7551,12 @@ func UnsafeDvbMultilingualComponentItemFromGlibBorrow(p unsafe.Pointer) *DvbMult
 
 // UnsafeDvbMultilingualComponentItemFromGlibNone is used to convert raw C.GstMpegtsDvbMultilingualComponentItem pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDvbMultilingualComponentItemFromGlibNone(p unsafe.Pointer) *DvbMultilingualComponentItem {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDvbMultilingualComponentItemFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualComponentItem,
 		func (intern *dvbMultilingualComponentItem) {
@@ -7623,11 +7653,12 @@ func UnsafeDvbMultilingualNetworkNameItemFromGlibBorrow(p unsafe.Pointer) *DvbMu
 
 // UnsafeDvbMultilingualNetworkNameItemFromGlibNone is used to convert raw C.GstMpegtsDvbMultilingualNetworkNameItem pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDvbMultilingualNetworkNameItemFromGlibNone(p unsafe.Pointer) *DvbMultilingualNetworkNameItem {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDvbMultilingualNetworkNameItemFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualNetworkNameItem,
 		func (intern *dvbMultilingualNetworkNameItem) {
@@ -7724,11 +7755,12 @@ func UnsafeDvbMultilingualServiceNameItemFromGlibBorrow(p unsafe.Pointer) *DvbMu
 
 // UnsafeDvbMultilingualServiceNameItemFromGlibNone is used to convert raw C.GstMpegtsDvbMultilingualServiceNameItem pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDvbMultilingualServiceNameItemFromGlibNone(p unsafe.Pointer) *DvbMultilingualServiceNameItem {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeDvbMultilingualServiceNameItemFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualServiceNameItem,
 		func (intern *dvbMultilingualServiceNameItem) {
@@ -7825,11 +7857,12 @@ func UnsafeEITFromGlibBorrow(p unsafe.Pointer) *EIT {
 
 // UnsafeEITFromGlibNone is used to convert raw C.GstMpegtsEIT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeEITFromGlibNone(p unsafe.Pointer) *EIT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeEITFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.eIT,
 		func (intern *eIT) {
@@ -7926,11 +7959,12 @@ func UnsafeEITEventFromGlibBorrow(p unsafe.Pointer) *EITEvent {
 
 // UnsafeEITEventFromGlibNone is used to convert raw C.GstMpegtsEITEvent pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeEITEventFromGlibNone(p unsafe.Pointer) *EITEvent {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeEITEventFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.eITEvent,
 		func (intern *eITEvent) {
@@ -8027,11 +8061,12 @@ func UnsafeExtendedEventDescriptorFromGlibBorrow(p unsafe.Pointer) *ExtendedEven
 
 // UnsafeExtendedEventDescriptorFromGlibNone is used to convert raw C.GstMpegtsExtendedEventDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeExtendedEventDescriptorFromGlibNone(p unsafe.Pointer) *ExtendedEventDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeExtendedEventDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.extendedEventDescriptor,
 		func (intern *extendedEventDescriptor) {
@@ -8126,11 +8161,12 @@ func UnsafeExtendedEventItemFromGlibBorrow(p unsafe.Pointer) *ExtendedEventItem 
 
 // UnsafeExtendedEventItemFromGlibNone is used to convert raw C.GstMpegtsExtendedEventItem pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeExtendedEventItemFromGlibNone(p unsafe.Pointer) *ExtendedEventItem {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeExtendedEventItemFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.extendedEventItem,
 		func (intern *extendedEventItem) {
@@ -8225,11 +8261,12 @@ func UnsafeISO639LanguageDescriptorFromGlibBorrow(p unsafe.Pointer) *ISO639Langu
 
 // UnsafeISO639LanguageDescriptorFromGlibNone is used to convert raw C.GstMpegtsISO639LanguageDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeISO639LanguageDescriptorFromGlibNone(p unsafe.Pointer) *ISO639LanguageDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeISO639LanguageDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.iSO639LanguageDescriptor,
 		func (intern *iSO639LanguageDescriptor) {
@@ -8336,11 +8373,12 @@ func UnsafeJpegXsDescriptorFromGlibBorrow(p unsafe.Pointer) *JpegXsDescriptor {
 
 // UnsafeJpegXsDescriptorFromGlibNone is used to convert raw C.GstMpegtsJpegXsDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeJpegXsDescriptorFromGlibNone(p unsafe.Pointer) *JpegXsDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeJpegXsDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.jpegXsDescriptor,
 		func (intern *jpegXsDescriptor) {
@@ -8435,11 +8473,12 @@ func UnsafeLogicalChannelFromGlibBorrow(p unsafe.Pointer) *LogicalChannel {
 
 // UnsafeLogicalChannelFromGlibNone is used to convert raw C.GstMpegtsLogicalChannel pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeLogicalChannelFromGlibNone(p unsafe.Pointer) *LogicalChannel {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeLogicalChannelFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.logicalChannel,
 		func (intern *logicalChannel) {
@@ -8534,11 +8573,12 @@ func UnsafeLogicalChannelDescriptorFromGlibBorrow(p unsafe.Pointer) *LogicalChan
 
 // UnsafeLogicalChannelDescriptorFromGlibNone is used to convert raw C.GstMpegtsLogicalChannelDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeLogicalChannelDescriptorFromGlibNone(p unsafe.Pointer) *LogicalChannelDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeLogicalChannelDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.logicalChannelDescriptor,
 		func (intern *logicalChannelDescriptor) {
@@ -8640,11 +8680,12 @@ func UnsafeMetadataDescriptorFromGlibBorrow(p unsafe.Pointer) *MetadataDescripto
 
 // UnsafeMetadataDescriptorFromGlibNone is used to convert raw C.GstMpegtsMetadataDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMetadataDescriptorFromGlibNone(p unsafe.Pointer) *MetadataDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeMetadataDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.metadataDescriptor,
 		func (intern *metadataDescriptor) {
@@ -8748,11 +8789,12 @@ func UnsafeMetadataPointerDescriptorFromGlibBorrow(p unsafe.Pointer) *MetadataPo
 
 // UnsafeMetadataPointerDescriptorFromGlibNone is used to convert raw C.GstMpegtsMetadataPointerDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMetadataPointerDescriptorFromGlibNone(p unsafe.Pointer) *MetadataPointerDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeMetadataPointerDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.metadataPointerDescriptor,
 		func (intern *metadataPointerDescriptor) {
@@ -8849,11 +8891,12 @@ func UnsafeNITFromGlibBorrow(p unsafe.Pointer) *NIT {
 
 // UnsafeNITFromGlibNone is used to convert raw C.GstMpegtsNIT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNITFromGlibNone(p unsafe.Pointer) *NIT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeNITFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.nIT,
 		func (intern *nIT) {
@@ -8967,11 +9010,12 @@ func UnsafeNITStreamFromGlibBorrow(p unsafe.Pointer) *NITStream {
 
 // UnsafeNITStreamFromGlibNone is used to convert raw C.GstMpegtsNITStream pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNITStreamFromGlibNone(p unsafe.Pointer) *NITStream {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeNITStreamFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.nITStream,
 		func (intern *nITStream) {
@@ -9076,11 +9120,12 @@ func UnsafePESMetadataMetaFromGlibBorrow(p unsafe.Pointer) *PESMetadataMeta {
 
 // UnsafePESMetadataMetaFromGlibNone is used to convert raw C.GstMpegtsPESMetadataMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePESMetadataMetaFromGlibNone(p unsafe.Pointer) *PESMetadataMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePESMetadataMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.pESMetadataMeta,
 		func (intern *pESMetadataMeta) {
@@ -9200,11 +9245,12 @@ func UnsafePMTFromGlibBorrow(p unsafe.Pointer) *PMT {
 
 // UnsafePMTFromGlibNone is used to convert raw C.GstMpegtsPMT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePMTFromGlibNone(p unsafe.Pointer) *PMT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePMTFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.pMT,
 		func (intern *pMT) {
@@ -9322,11 +9368,12 @@ func UnsafePMTStreamFromGlibBorrow(p unsafe.Pointer) *PMTStream {
 
 // UnsafePMTStreamFromGlibNone is used to convert raw C.GstMpegtsPMTStream pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePMTStreamFromGlibNone(p unsafe.Pointer) *PMTStream {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePMTStreamFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.pMTStream,
 		func (intern *pMTStream) {
@@ -9442,11 +9489,12 @@ func UnsafePatProgramFromGlibBorrow(p unsafe.Pointer) *PatProgram {
 
 // UnsafePatProgramFromGlibNone is used to convert raw C.GstMpegtsPatProgram pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePatProgramFromGlibNone(p unsafe.Pointer) *PatProgram {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePatProgramFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.patProgram,
 		func (intern *patProgram) {
@@ -9560,11 +9608,12 @@ func UnsafeSCTESITFromGlibBorrow(p unsafe.Pointer) *SCTESIT {
 
 // UnsafeSCTESITFromGlibNone is used to convert raw C.GstMpegtsSCTESIT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSCTESITFromGlibNone(p unsafe.Pointer) *SCTESIT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeSCTESITFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.sCTESIT,
 		func (intern *sCTESIT) {
@@ -9680,11 +9729,12 @@ func UnsafeSCTESpliceComponentFromGlibBorrow(p unsafe.Pointer) *SCTESpliceCompon
 
 // UnsafeSCTESpliceComponentFromGlibNone is used to convert raw C.GstMpegtsSCTESpliceComponent pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSCTESpliceComponentFromGlibNone(p unsafe.Pointer) *SCTESpliceComponent {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeSCTESpliceComponentFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.sCTESpliceComponent,
 		func (intern *sCTESpliceComponent) {
@@ -9806,11 +9856,12 @@ func UnsafeSCTESpliceEventFromGlibBorrow(p unsafe.Pointer) *SCTESpliceEvent {
 
 // UnsafeSCTESpliceEventFromGlibNone is used to convert raw C.GstMpegtsSCTESpliceEvent pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSCTESpliceEventFromGlibNone(p unsafe.Pointer) *SCTESpliceEvent {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeSCTESpliceEventFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.sCTESpliceEvent,
 		func (intern *sCTESpliceEvent) {
@@ -9926,11 +9977,12 @@ func UnsafeSDTFromGlibBorrow(p unsafe.Pointer) *SDT {
 
 // UnsafeSDTFromGlibNone is used to convert raw C.GstMpegtsSDT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSDTFromGlibNone(p unsafe.Pointer) *SDT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeSDTFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.sDT,
 		func (intern *sDT) {
@@ -10044,11 +10096,12 @@ func UnsafeSDTServiceFromGlibBorrow(p unsafe.Pointer) *SDTService {
 
 // UnsafeSDTServiceFromGlibNone is used to convert raw C.GstMpegtsSDTService pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSDTServiceFromGlibNone(p unsafe.Pointer) *SDTService {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeSDTServiceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.sDTService,
 		func (intern *sDTService) {
@@ -10164,11 +10217,12 @@ func UnsafeSITFromGlibBorrow(p unsafe.Pointer) *SIT {
 
 // UnsafeSITFromGlibNone is used to convert raw C.GstMpegtsSIT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSITFromGlibNone(p unsafe.Pointer) *SIT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeSITFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.sIT,
 		func (intern *sIT) {
@@ -10265,11 +10319,12 @@ func UnsafeSITServiceFromGlibBorrow(p unsafe.Pointer) *SITService {
 
 // UnsafeSITServiceFromGlibNone is used to convert raw C.GstMpegtsSITService pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSITServiceFromGlibNone(p unsafe.Pointer) *SITService {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeSITServiceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.sITService,
 		func (intern *sITService) {
@@ -10366,11 +10421,12 @@ func UnsafeSatelliteDeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *Sa
 
 // UnsafeSatelliteDeliverySystemDescriptorFromGlibNone is used to convert raw C.GstMpegtsSatelliteDeliverySystemDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSatelliteDeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *SatelliteDeliverySystemDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeSatelliteDeliverySystemDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.satelliteDeliverySystemDescriptor,
 		func (intern *satelliteDeliverySystemDescriptor) {
@@ -10510,11 +10566,12 @@ func UnsafeSectionFromGlibBorrow(p unsafe.Pointer) *Section {
 
 // UnsafeSectionFromGlibNone is used to convert raw C.GstMpegtsSection pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSectionFromGlibNone(p unsafe.Pointer) *Section {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeSectionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.section,
 		func (intern *section) {
@@ -11332,11 +11389,12 @@ func UnsafeT2DeliverySystemCellFromGlibBorrow(p unsafe.Pointer) *T2DeliverySyste
 
 // UnsafeT2DeliverySystemCellFromGlibNone is used to convert raw C.GstMpegtsT2DeliverySystemCell pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellFromGlibNone(p unsafe.Pointer) *T2DeliverySystemCell {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeT2DeliverySystemCellFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.t2DeliverySystemCell,
 		func (intern *t2DeliverySystemCell) {
@@ -11431,11 +11489,12 @@ func UnsafeT2DeliverySystemCellExtensionFromGlibBorrow(p unsafe.Pointer) *T2Deli
 
 // UnsafeT2DeliverySystemCellExtensionFromGlibNone is used to convert raw C.GstMpegtsT2DeliverySystemCellExtension pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellExtensionFromGlibNone(p unsafe.Pointer) *T2DeliverySystemCellExtension {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeT2DeliverySystemCellExtensionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.t2DeliverySystemCellExtension,
 		func (intern *t2DeliverySystemCellExtension) {
@@ -11532,11 +11591,12 @@ func UnsafeT2DeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *T2Deliver
 
 // UnsafeT2DeliverySystemDescriptorFromGlibNone is used to convert raw C.GstMpegtsT2DeliverySystemDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeT2DeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *T2DeliverySystemDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeT2DeliverySystemDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.t2DeliverySystemDescriptor,
 		func (intern *t2DeliverySystemDescriptor) {
@@ -11633,11 +11693,12 @@ func UnsafeTOTFromGlibBorrow(p unsafe.Pointer) *TOT {
 
 // UnsafeTOTFromGlibNone is used to convert raw C.GstMpegtsTOT pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTOTFromGlibNone(p unsafe.Pointer) *TOT {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeTOTFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.tOT,
 		func (intern *tOT) {
@@ -11734,11 +11795,12 @@ func UnsafeTerrestrialDeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *
 
 // UnsafeTerrestrialDeliverySystemDescriptorFromGlibNone is used to convert raw C.GstMpegtsTerrestrialDeliverySystemDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTerrestrialDeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *TerrestrialDeliverySystemDescriptor {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeTerrestrialDeliverySystemDescriptorFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.terrestrialDeliverySystemDescriptor,
 		func (intern *terrestrialDeliverySystemDescriptor) {

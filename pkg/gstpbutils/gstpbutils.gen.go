@@ -8061,11 +8061,13 @@ func UnsafeInstallPluginsContextFromGlibBorrow(p unsafe.Pointer) *InstallPlugins
 
 // UnsafeInstallPluginsContextFromGlibNone is used to convert raw C.GstInstallPluginsContext pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeInstallPluginsContextFromGlibNone(p unsafe.Pointer) *InstallPluginsContext {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeInstallPluginsContextFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.installPluginsContext,
 		func (intern *installPluginsContext) {

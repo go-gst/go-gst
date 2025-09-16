@@ -963,11 +963,12 @@ func UnsafeHarnessFromGlibBorrow(p unsafe.Pointer) *Harness {
 
 // UnsafeHarnessFromGlibNone is used to convert raw C.GstHarness pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeHarnessFromGlibNone(p unsafe.Pointer) *Harness {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeHarnessFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.harness,
 		func (intern *harness) {
@@ -2773,11 +2774,12 @@ func UnsafeHarnessThreadFromGlibBorrow(p unsafe.Pointer) *HarnessThread {
 
 // UnsafeHarnessThreadFromGlibNone is used to convert raw C.GstHarnessThread pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeHarnessThreadFromGlibNone(p unsafe.Pointer) *HarnessThread {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeHarnessThreadFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.harnessThread,
 		func (intern *harnessThread) {
@@ -2859,11 +2861,12 @@ func UnsafeStreamConsistencyFromGlibBorrow(p unsafe.Pointer) *StreamConsistency 
 
 // UnsafeStreamConsistencyFromGlibNone is used to convert raw C.GstStreamConsistency pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeStreamConsistencyFromGlibNone(p unsafe.Pointer) *StreamConsistency {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeStreamConsistencyFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.streamConsistency,
 		func (intern *streamConsistency) {

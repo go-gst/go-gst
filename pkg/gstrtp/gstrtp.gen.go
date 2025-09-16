@@ -5349,11 +5349,12 @@ func UnsafeRTCPBufferFromGlibBorrow(p unsafe.Pointer) *RTCPBuffer {
 
 // UnsafeRTCPBufferFromGlibNone is used to convert raw C.GstRTCPBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTCPBufferFromGlibNone(p unsafe.Pointer) *RTCPBuffer {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTCPBufferFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTCPBuffer,
 		func (intern *rTCPBuffer) {
@@ -5759,11 +5760,12 @@ func UnsafeRTCPPacketFromGlibBorrow(p unsafe.Pointer) *RTCPPacket {
 
 // UnsafeRTCPPacketFromGlibNone is used to convert raw C.GstRTCPPacket pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTCPPacketFromGlibNone(p unsafe.Pointer) *RTCPPacket {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTCPPacketFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTCPPacket,
 		func (intern *rTCPPacket) {
@@ -8274,11 +8276,12 @@ func UnsafeRTPBufferFromGlibBorrow(p unsafe.Pointer) *RTPBuffer {
 
 // UnsafeRTPBufferFromGlibNone is used to convert raw C.GstRTPBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTPBufferFromGlibNone(p unsafe.Pointer) *RTPBuffer {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTPBufferFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTPBuffer,
 		func (intern *rTPBuffer) {
@@ -9469,11 +9472,12 @@ func UnsafeRTPPayloadInfoFromGlibBorrow(p unsafe.Pointer) *RTPPayloadInfo {
 
 // UnsafeRTPPayloadInfoFromGlibNone is used to convert raw C.GstRTPPayloadInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTPPayloadInfoFromGlibNone(p unsafe.Pointer) *RTPPayloadInfo {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTPPayloadInfoFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTPPayloadInfo,
 		func (intern *rTPPayloadInfo) {
@@ -9625,11 +9629,12 @@ func UnsafeRTPSourceMetaFromGlibBorrow(p unsafe.Pointer) *RTPSourceMeta {
 
 // UnsafeRTPSourceMetaFromGlibNone is used to convert raw C.GstRTPSourceMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTPSourceMetaFromGlibNone(p unsafe.Pointer) *RTPSourceMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTPSourceMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTPSourceMeta,
 		func (intern *rTPSourceMeta) {

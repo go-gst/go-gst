@@ -2797,11 +2797,12 @@ func UnsafeTagXmpWriterInterfaceFromGlibBorrow(p unsafe.Pointer) *TagXmpWriterIn
 
 // UnsafeTagXmpWriterInterfaceFromGlibNone is used to convert raw C.GstTagXmpWriterInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTagXmpWriterInterfaceFromGlibNone(p unsafe.Pointer) *TagXmpWriterInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeTagXmpWriterInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.tagXmpWriterInterface,
 		func (intern *tagXmpWriterInterface) {
