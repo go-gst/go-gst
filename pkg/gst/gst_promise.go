@@ -192,7 +192,7 @@ func UnsafePromiseToGlibFull(p *Promise) unsafe.Pointer {
 func NewPromise() *Promise {
 	done := make(chan struct{})
 
-	changefunc := func(p *Promise) {
+	var changefunc PromiseChangeFunc = func(p *Promise) {
 		close(p.done)
 	}
 
