@@ -19888,11 +19888,12 @@ func UnsafeAncillaryMetaFromGlibBorrow(p unsafe.Pointer) *AncillaryMeta {
 
 // UnsafeAncillaryMetaFromGlibNone is used to convert raw C.GstAncillaryMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAncillaryMetaFromGlibNone(p unsafe.Pointer) *AncillaryMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeAncillaryMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.ancillaryMeta,
 		func (intern *ancillaryMeta) {
@@ -20045,11 +20046,12 @@ func UnsafeColorBalanceInterfaceFromGlibBorrow(p unsafe.Pointer) *ColorBalanceIn
 
 // UnsafeColorBalanceInterfaceFromGlibNone is used to convert raw C.GstColorBalanceInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeColorBalanceInterfaceFromGlibNone(p unsafe.Pointer) *ColorBalanceInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeColorBalanceInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.colorBalanceInterface,
 		func (intern *colorBalanceInterface) {
@@ -20131,11 +20133,12 @@ func UnsafeNavigationInterfaceFromGlibBorrow(p unsafe.Pointer) *NavigationInterf
 
 // UnsafeNavigationInterfaceFromGlibNone is used to convert raw C.GstNavigationInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNavigationInterfaceFromGlibNone(p unsafe.Pointer) *NavigationInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeNavigationInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.navigationInterface,
 		func (intern *navigationInterface) {
@@ -20230,11 +20233,12 @@ func UnsafeVideoAFDMetaFromGlibBorrow(p unsafe.Pointer) *VideoAFDMeta {
 
 // UnsafeVideoAFDMetaFromGlibNone is used to convert raw C.GstVideoAFDMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoAFDMetaFromGlibNone(p unsafe.Pointer) *VideoAFDMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoAFDMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoAFDMeta,
 		func (intern *videoAFDMeta) {
@@ -20342,11 +20346,12 @@ func UnsafeVideoAffineTransformationMetaFromGlibBorrow(p unsafe.Pointer) *VideoA
 
 // UnsafeVideoAffineTransformationMetaFromGlibNone is used to convert raw C.GstVideoAffineTransformationMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoAffineTransformationMetaFromGlibNone(p unsafe.Pointer) *VideoAffineTransformationMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoAffineTransformationMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoAffineTransformationMeta,
 		func (intern *videoAffineTransformationMeta) {
@@ -20677,11 +20682,12 @@ func UnsafeVideoAlignmentFromGlibBorrow(p unsafe.Pointer) *VideoAlignment {
 
 // UnsafeVideoAlignmentFromGlibNone is used to convert raw C.GstVideoAlignment pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoAlignmentFromGlibNone(p unsafe.Pointer) *VideoAlignment {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoAlignmentFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoAlignment,
 		func (intern *videoAlignment) {
@@ -20778,11 +20784,12 @@ func UnsafeVideoAncillaryFromGlibBorrow(p unsafe.Pointer) *VideoAncillary {
 
 // UnsafeVideoAncillaryFromGlibNone is used to convert raw C.GstVideoAncillary pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoAncillaryFromGlibNone(p unsafe.Pointer) *VideoAncillary {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoAncillaryFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoAncillary,
 		func (intern *videoAncillary) {
@@ -20875,11 +20882,12 @@ func UnsafeVideoBarMetaFromGlibBorrow(p unsafe.Pointer) *VideoBarMeta {
 
 // UnsafeVideoBarMetaFromGlibNone is used to convert raw C.GstVideoBarMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoBarMetaFromGlibNone(p unsafe.Pointer) *VideoBarMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoBarMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoBarMeta,
 		func (intern *videoBarMeta) {
@@ -21030,11 +21038,12 @@ func UnsafeVideoCaptionMetaFromGlibBorrow(p unsafe.Pointer) *VideoCaptionMeta {
 
 // UnsafeVideoCaptionMetaFromGlibNone is used to convert raw C.GstVideoCaptionMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoCaptionMetaFromGlibNone(p unsafe.Pointer) *VideoCaptionMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoCaptionMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoCaptionMeta,
 		func (intern *videoCaptionMeta) {
@@ -21131,11 +21140,12 @@ func UnsafeVideoChromaResamplerFromGlibBorrow(p unsafe.Pointer) *VideoChromaResa
 
 // UnsafeVideoChromaResamplerFromGlibNone is used to convert raw C.GstVideoChromaResample pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoChromaResamplerFromGlibNone(p unsafe.Pointer) *VideoChromaResample {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoChromaResamplerFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoChromaResample,
 		func (intern *videoChromaResample) {
@@ -21222,11 +21232,12 @@ func UnsafeVideoCodecAlphaMetaFromGlibBorrow(p unsafe.Pointer) *VideoCodecAlphaM
 
 // UnsafeVideoCodecAlphaMetaFromGlibNone is used to convert raw C.GstVideoCodecAlphaMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoCodecAlphaMetaFromGlibNone(p unsafe.Pointer) *VideoCodecAlphaMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoCodecAlphaMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoCodecAlphaMeta,
 		func (intern *videoCodecAlphaMeta) {
@@ -21346,6 +21357,7 @@ func UnsafeVideoCodecFrameFromGlibNone(p unsafe.Pointer) *VideoCodecFrame {
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoCodecFrame,
 		func (intern *videoCodecFrame) {
@@ -21462,6 +21474,7 @@ func UnsafeVideoCodecStateFromGlibNone(p unsafe.Pointer) *VideoCodecState {
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoCodecState,
 		func (intern *videoCodecState) {
@@ -21552,11 +21565,12 @@ func UnsafeVideoColorPrimariesInfoFromGlibBorrow(p unsafe.Pointer) *VideoColorPr
 
 // UnsafeVideoColorPrimariesInfoFromGlibNone is used to convert raw C.GstVideoColorPrimariesInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoColorPrimariesInfoFromGlibNone(p unsafe.Pointer) *VideoColorPrimariesInfo {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoColorPrimariesInfoFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoColorPrimariesInfo,
 		func (intern *videoColorPrimariesInfo) {
@@ -21638,11 +21652,12 @@ func UnsafeVideoColorimetryFromGlibBorrow(p unsafe.Pointer) *VideoColorimetry {
 
 // UnsafeVideoColorimetryFromGlibNone is used to convert raw C.GstVideoColorimetry pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoColorimetryFromGlibNone(p unsafe.Pointer) *VideoColorimetry {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoColorimetryFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoColorimetry,
 		func (intern *videoColorimetry) {
@@ -21890,11 +21905,12 @@ func UnsafeVideoContentLightLevelFromGlibBorrow(p unsafe.Pointer) *VideoContentL
 
 // UnsafeVideoContentLightLevelFromGlibNone is used to convert raw C.GstVideoContentLightLevel pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoContentLightLevelFromGlibNone(p unsafe.Pointer) *VideoContentLightLevel {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoContentLightLevelFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoContentLightLevel,
 		func (intern *videoContentLightLevel) {
@@ -22140,11 +22156,12 @@ func UnsafeVideoConverterFromGlibBorrow(p unsafe.Pointer) *VideoConverter {
 
 // UnsafeVideoConverterFromGlibNone is used to convert raw C.GstVideoConverter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoConverterFromGlibNone(p unsafe.Pointer) *VideoConverter {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoConverterFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoConverter,
 		func (intern *videoConverter) {
@@ -22374,11 +22391,12 @@ func UnsafeVideoCropMetaFromGlibBorrow(p unsafe.Pointer) *VideoCropMeta {
 
 // UnsafeVideoCropMetaFromGlibNone is used to convert raw C.GstVideoCropMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoCropMetaFromGlibNone(p unsafe.Pointer) *VideoCropMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoCropMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoCropMeta,
 		func (intern *videoCropMeta) {
@@ -22534,11 +22552,12 @@ func UnsafeVideoDirectionInterfaceFromGlibBorrow(p unsafe.Pointer) *VideoDirecti
 
 // UnsafeVideoDirectionInterfaceFromGlibNone is used to convert raw C.GstVideoDirectionInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoDirectionInterfaceFromGlibNone(p unsafe.Pointer) *VideoDirectionInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoDirectionInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoDirectionInterface,
 		func (intern *videoDirectionInterface) {
@@ -22621,11 +22640,12 @@ func UnsafeVideoDitherFromGlibBorrow(p unsafe.Pointer) *VideoDither {
 
 // UnsafeVideoDitherFromGlibNone is used to convert raw C.GstVideoDither pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoDitherFromGlibNone(p unsafe.Pointer) *VideoDither {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoDitherFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoDither,
 		func (intern *videoDither) {
@@ -22817,11 +22837,12 @@ func UnsafeVideoFormatInfoFromGlibBorrow(p unsafe.Pointer) *VideoFormatInfo {
 
 // UnsafeVideoFormatInfoFromGlibNone is used to convert raw C.GstVideoFormatInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoFormatInfoFromGlibNone(p unsafe.Pointer) *VideoFormatInfo {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoFormatInfoFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoFormatInfo,
 		func (intern *videoFormatInfo) {
@@ -22970,11 +22991,12 @@ func UnsafeVideoFrameFromGlibBorrow(p unsafe.Pointer) *VideoFrame {
 
 // UnsafeVideoFrameFromGlibNone is used to convert raw C.GstVideoFrame pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoFrameFromGlibNone(p unsafe.Pointer) *VideoFrame {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoFrameFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoFrame,
 		func (intern *videoFrame) {
@@ -23284,11 +23306,12 @@ func UnsafeVideoGLTextureUploadMetaFromGlibBorrow(p unsafe.Pointer) *VideoGLText
 
 // UnsafeVideoGLTextureUploadMetaFromGlibNone is used to convert raw C.GstVideoGLTextureUploadMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoGLTextureUploadMetaFromGlibNone(p unsafe.Pointer) *VideoGLTextureUploadMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoGLTextureUploadMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoGLTextureUploadMeta,
 		func (intern *videoGLTextureUploadMeta) {
@@ -23441,11 +23464,13 @@ func UnsafeVideoInfoFromGlibBorrow(p unsafe.Pointer) *VideoInfo {
 
 // UnsafeVideoInfoFromGlibNone is used to convert raw C.GstVideoInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoInfoFromGlibNone(p unsafe.Pointer) *VideoInfo {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoInfoFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.videoInfo,
 		func (intern *videoInfo) {
@@ -23943,11 +23968,12 @@ func UnsafeVideoInfoDmaDrmFromGlibBorrow(p unsafe.Pointer) *VideoInfoDmaDrm {
 
 // UnsafeVideoInfoDmaDrmFromGlibNone is used to convert raw C.GstVideoInfoDmaDrm pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoInfoDmaDrmFromGlibNone(p unsafe.Pointer) *VideoInfoDmaDrm {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoInfoDmaDrmFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoInfoDmaDrm,
 		func (intern *videoInfoDmaDrm) {
@@ -24242,11 +24268,12 @@ func UnsafeVideoMasteringDisplayInfoFromGlibBorrow(p unsafe.Pointer) *VideoMaste
 
 // UnsafeVideoMasteringDisplayInfoFromGlibNone is used to convert raw C.GstVideoMasteringDisplayInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoMasteringDisplayInfoFromGlibNone(p unsafe.Pointer) *VideoMasteringDisplayInfo {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoMasteringDisplayInfoFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfo,
 		func (intern *videoMasteringDisplayInfo) {
@@ -24497,11 +24524,12 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibBorrow(p unsafe.Pointer) 
 
 // UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibNone is used to convert raw C.GstVideoMasteringDisplayInfoCoordinates pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibNone(p unsafe.Pointer) *VideoMasteringDisplayInfoCoordinates {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfoCoordinates,
 		func (intern *videoMasteringDisplayInfoCoordinates) {
@@ -24605,11 +24633,12 @@ func UnsafeVideoMetaFromGlibBorrow(p unsafe.Pointer) *VideoMeta {
 
 // UnsafeVideoMetaFromGlibNone is used to convert raw C.GstVideoMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoMetaFromGlibNone(p unsafe.Pointer) *VideoMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoMeta,
 		func (intern *videoMeta) {
@@ -24745,11 +24774,12 @@ func UnsafeVideoMetaTransformFromGlibBorrow(p unsafe.Pointer) *VideoMetaTransfor
 
 // UnsafeVideoMetaTransformFromGlibNone is used to convert raw C.GstVideoMetaTransform pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoMetaTransformFromGlibNone(p unsafe.Pointer) *VideoMetaTransform {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoMetaTransformFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoMetaTransform,
 		func (intern *videoMetaTransform) {
@@ -24850,11 +24880,12 @@ func UnsafeVideoOrientationInterfaceFromGlibBorrow(p unsafe.Pointer) *VideoOrien
 
 // UnsafeVideoOrientationInterfaceFromGlibNone is used to convert raw C.GstVideoOrientationInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOrientationInterfaceFromGlibNone(p unsafe.Pointer) *VideoOrientationInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoOrientationInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoOrientationInterface,
 		func (intern *videoOrientationInterface) {
@@ -24972,11 +25003,13 @@ func UnsafeVideoOverlayCompositionFromGlibBorrow(p unsafe.Pointer) *VideoOverlay
 
 // UnsafeVideoOverlayCompositionFromGlibNone is used to convert raw C.GstVideoOverlayComposition pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayCompositionFromGlibNone(p unsafe.Pointer) *VideoOverlayComposition {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayCompositionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.videoOverlayComposition,
 		func (intern *videoOverlayComposition) {
@@ -25285,11 +25318,12 @@ func UnsafeVideoOverlayCompositionMetaFromGlibBorrow(p unsafe.Pointer) *VideoOve
 
 // UnsafeVideoOverlayCompositionMetaFromGlibNone is used to convert raw C.GstVideoOverlayCompositionMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayCompositionMetaFromGlibNone(p unsafe.Pointer) *VideoOverlayCompositionMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoOverlayCompositionMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoOverlayCompositionMeta,
 		func (intern *videoOverlayCompositionMeta) {
@@ -25388,11 +25422,12 @@ func UnsafeVideoOverlayInterfaceFromGlibBorrow(p unsafe.Pointer) *VideoOverlayIn
 
 // UnsafeVideoOverlayInterfaceFromGlibNone is used to convert raw C.GstVideoOverlayInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayInterfaceFromGlibNone(p unsafe.Pointer) *VideoOverlayInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoOverlayInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoOverlayInterface,
 		func (intern *videoOverlayInterface) {
@@ -25490,11 +25525,13 @@ func UnsafeVideoOverlayRectangleFromGlibBorrow(p unsafe.Pointer) *VideoOverlayRe
 
 // UnsafeVideoOverlayRectangleFromGlibNone is used to convert raw C.GstVideoOverlayRectangle pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayRectangleFromGlibNone(p unsafe.Pointer) *VideoOverlayRectangle {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayRectangleFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.videoOverlayRectangle,
 		func (intern *videoOverlayRectangle) {
@@ -26061,11 +26098,12 @@ func UnsafeVideoRectangleFromGlibBorrow(p unsafe.Pointer) *VideoRectangle {
 
 // UnsafeVideoRectangleFromGlibNone is used to convert raw C.GstVideoRectangle pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoRectangleFromGlibNone(p unsafe.Pointer) *VideoRectangle {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoRectangleFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoRectangle,
 		func (intern *videoRectangle) {
@@ -26147,11 +26185,12 @@ func UnsafeVideoRegionOfInterestMetaFromGlibBorrow(p unsafe.Pointer) *VideoRegio
 
 // UnsafeVideoRegionOfInterestMetaFromGlibNone is used to convert raw C.GstVideoRegionOfInterestMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoRegionOfInterestMetaFromGlibNone(p unsafe.Pointer) *VideoRegionOfInterestMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoRegionOfInterestMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoRegionOfInterestMeta,
 		func (intern *videoRegionOfInterestMeta) {
@@ -26312,11 +26351,12 @@ func UnsafeVideoResamplerFromGlibBorrow(p unsafe.Pointer) *VideoResampler {
 
 // UnsafeVideoResamplerFromGlibNone is used to convert raw C.GstVideoResampler pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoResamplerFromGlibNone(p unsafe.Pointer) *VideoResampler {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoResamplerFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoResampler,
 		func (intern *videoResampler) {
@@ -26468,11 +26508,12 @@ func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibBorrow(p unsafe.Pointer) *Vid
 
 // UnsafeVideoSEIUserDataUnregisteredMetaFromGlibNone is used to convert raw C.GstVideoSEIUserDataUnregisteredMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibNone(p unsafe.Pointer) *VideoSEIUserDataUnregisteredMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoSEIUserDataUnregisteredMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoSEIUserDataUnregisteredMeta,
 		func (intern *videoSEIUserDataUnregisteredMeta) {
@@ -26572,11 +26613,12 @@ func UnsafeVideoScalerFromGlibBorrow(p unsafe.Pointer) *VideoScaler {
 
 // UnsafeVideoScalerFromGlibNone is used to convert raw C.GstVideoScaler pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoScalerFromGlibNone(p unsafe.Pointer) *VideoScaler {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoScalerFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoScaler,
 		func (intern *videoScaler) {
@@ -26781,11 +26823,12 @@ func UnsafeVideoTileInfoFromGlibBorrow(p unsafe.Pointer) *VideoTileInfo {
 
 // UnsafeVideoTileInfoFromGlibNone is used to convert raw C.GstVideoTileInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTileInfoFromGlibNone(p unsafe.Pointer) *VideoTileInfo {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoTileInfoFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoTileInfo,
 		func (intern *videoTileInfo) {
@@ -26874,11 +26917,13 @@ func UnsafeVideoTimeCodeFromGlibBorrow(p unsafe.Pointer) *VideoTimeCode {
 
 // UnsafeVideoTimeCodeFromGlibNone is used to convert raw C.GstVideoTimeCode pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeFromGlibNone(p unsafe.Pointer) *VideoTimeCode {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.videoTimeCode,
 		func (intern *videoTimeCode) {
@@ -27234,11 +27279,12 @@ func UnsafeVideoTimeCodeConfigFromGlibBorrow(p unsafe.Pointer) *VideoTimeCodeCon
 
 // UnsafeVideoTimeCodeConfigFromGlibNone is used to convert raw C.GstVideoTimeCodeConfig pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeConfigFromGlibNone(p unsafe.Pointer) *VideoTimeCodeConfig {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeConfigFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeConfig,
 		func (intern *videoTimeCodeConfig) {
@@ -27336,11 +27382,13 @@ func UnsafeVideoTimeCodeIntervalFromGlibBorrow(p unsafe.Pointer) *VideoTimeCodeI
 
 // UnsafeVideoTimeCodeIntervalFromGlibNone is used to convert raw C.GstVideoTimeCodeInterval pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeIntervalFromGlibNone(p unsafe.Pointer) *VideoTimeCodeInterval {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeIntervalFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeInterval,
 		func (intern *videoTimeCodeInterval) {
@@ -27556,11 +27604,12 @@ func UnsafeVideoTimeCodeMetaFromGlibBorrow(p unsafe.Pointer) *VideoTimeCodeMeta 
 
 // UnsafeVideoTimeCodeMetaFromGlibNone is used to convert raw C.GstVideoTimeCodeMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeMetaFromGlibNone(p unsafe.Pointer) *VideoTimeCodeMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeMeta,
 		func (intern *videoTimeCodeMeta) {
@@ -27675,11 +27724,13 @@ func UnsafeVideoVBIEncoderFromGlibBorrow(p unsafe.Pointer) *VideoVBIEncoder {
 
 // UnsafeVideoVBIEncoderFromGlibNone is used to convert raw C.GstVideoVBIEncoder pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoVBIEncoderFromGlibNone(p unsafe.Pointer) *VideoVBIEncoder {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoVBIEncoderFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.videoVBIEncoder,
 		func (intern *videoVBIEncoder) {
@@ -27905,11 +27956,13 @@ func UnsafeVideoVBIParserFromGlibBorrow(p unsafe.Pointer) *VideoVBIParser {
 
 // UnsafeVideoVBIParserFromGlibNone is used to convert raw C.GstVideoVBIParser pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoVBIParserFromGlibNone(p unsafe.Pointer) *VideoVBIParser {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoVBIParserFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.videoVBIParser,
 		func (intern *videoVBIParser) {

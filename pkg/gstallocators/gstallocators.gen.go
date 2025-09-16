@@ -1360,11 +1360,12 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p unsafe.Pointer) *PhysMem
 
 // UnsafePhysMemoryAllocatorInterfaceFromGlibNone is used to convert raw C.GstPhysMemoryAllocatorInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorInterfaceFromGlibNone(p unsafe.Pointer) *PhysMemoryAllocatorInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.physMemoryAllocatorInterface,
 		func (intern *physMemoryAllocatorInterface) {

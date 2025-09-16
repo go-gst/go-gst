@@ -1158,11 +1158,12 @@ func UnsafeNetAddressMetaFromGlibBorrow(p unsafe.Pointer) *NetAddressMeta {
 
 // UnsafeNetAddressMetaFromGlibNone is used to convert raw C.GstNetAddressMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNetAddressMetaFromGlibNone(p unsafe.Pointer) *NetAddressMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeNetAddressMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.netAddressMeta,
 		func (intern *netAddressMeta) {
@@ -1317,11 +1318,12 @@ func UnsafeNetControlMessageMetaFromGlibBorrow(p unsafe.Pointer) *NetControlMess
 
 // UnsafeNetControlMessageMetaFromGlibNone is used to convert raw C.GstNetControlMessageMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNetControlMessageMetaFromGlibNone(p unsafe.Pointer) *NetControlMessageMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeNetControlMessageMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.netControlMessageMeta,
 		func (intern *netControlMessageMeta) {
@@ -1436,11 +1438,13 @@ func UnsafeNetTimePacketFromGlibBorrow(p unsafe.Pointer) *NetTimePacket {
 
 // UnsafeNetTimePacketFromGlibNone is used to convert raw C.GstNetTimePacket pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNetTimePacketFromGlibNone(p unsafe.Pointer) *NetTimePacket {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNetTimePacketFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.netTimePacket,
 		func (intern *netTimePacket) {

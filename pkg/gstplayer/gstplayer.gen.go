@@ -4123,11 +4123,12 @@ func UnsafePlayerSignalDispatcherInterfaceFromGlibBorrow(p unsafe.Pointer) *Play
 
 // UnsafePlayerSignalDispatcherInterfaceFromGlibNone is used to convert raw C.GstPlayerSignalDispatcherInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayerSignalDispatcherInterfaceFromGlibNone(p unsafe.Pointer) *PlayerSignalDispatcherInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePlayerSignalDispatcherInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.playerSignalDispatcherInterface,
 		func (intern *playerSignalDispatcherInterface) {
@@ -4415,11 +4416,12 @@ func UnsafePlayerVideoRendererInterfaceFromGlibBorrow(p unsafe.Pointer) *PlayerV
 
 // UnsafePlayerVideoRendererInterfaceFromGlibNone is used to convert raw C.GstPlayerVideoRendererInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayerVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayerVideoRendererInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePlayerVideoRendererInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.playerVideoRendererInterface,
 		func (intern *playerVideoRendererInterface) {
@@ -4516,11 +4518,13 @@ func UnsafePlayerVisualizationFromGlibBorrow(p unsafe.Pointer) *PlayerVisualizat
 
 // UnsafePlayerVisualizationFromGlibNone is used to convert raw C.GstPlayerVisualization pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayerVisualizationFromGlibNone(p unsafe.Pointer) *PlayerVisualization {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePlayerVisualizationFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.playerVisualization,
 		func (intern *playerVisualization) {

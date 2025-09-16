@@ -2450,11 +2450,12 @@ func UnsafeRTSPAuthCredentialFromGlibBorrow(p unsafe.Pointer) *RTSPAuthCredentia
 
 // UnsafeRTSPAuthCredentialFromGlibNone is used to convert raw C.GstRTSPAuthCredential pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPAuthCredentialFromGlibNone(p unsafe.Pointer) *RTSPAuthCredential {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPAuthCredentialFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthCredential,
 		func (intern *rTSPAuthCredential) {
@@ -2551,11 +2552,13 @@ func UnsafeRTSPAuthParamFromGlibBorrow(p unsafe.Pointer) *RTSPAuthParam {
 
 // UnsafeRTSPAuthParamFromGlibNone is used to convert raw C.GstRTSPAuthParam pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPAuthParamFromGlibNone(p unsafe.Pointer) *RTSPAuthParam {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPAuthParamFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthParam,
 		func (intern *rTSPAuthParam) {
@@ -2659,11 +2662,12 @@ func UnsafeRTSPConnectionFromGlibBorrow(p unsafe.Pointer) *RTSPConnection {
 
 // UnsafeRTSPConnectionFromGlibNone is used to convert raw C.GstRTSPConnection pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPConnectionFromGlibNone(p unsafe.Pointer) *RTSPConnection {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPConnectionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPConnection,
 		func (intern *rTSPConnection) {
@@ -4078,11 +4082,12 @@ func UnsafeRTSPExtensionInterfaceFromGlibBorrow(p unsafe.Pointer) *RTSPExtension
 
 // UnsafeRTSPExtensionInterfaceFromGlibNone is used to convert raw C.GstRTSPExtensionInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPExtensionInterfaceFromGlibNone(p unsafe.Pointer) *RTSPExtensionInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPExtensionInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPExtensionInterface,
 		func (intern *rTSPExtensionInterface) {
@@ -4179,11 +4184,12 @@ func UnsafeRTSPMessageFromGlibBorrow(p unsafe.Pointer) *RTSPMessage {
 
 // UnsafeRTSPMessageFromGlibNone is used to convert raw C.GstRTSPMessage pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPMessageFromGlibNone(p unsafe.Pointer) *RTSPMessage {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPMessageFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPMessage,
 		func (intern *rTSPMessage) {
@@ -5161,11 +5167,12 @@ func UnsafeRTSPRangeFromGlibBorrow(p unsafe.Pointer) *RTSPRange {
 
 // UnsafeRTSPRangeFromGlibNone is used to convert raw C.GstRTSPRange pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPRangeFromGlibNone(p unsafe.Pointer) *RTSPRange {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPRangeFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPRange,
 		func (intern *rTSPRange) {
@@ -5401,11 +5408,12 @@ func UnsafeRTSPTimeFromGlibBorrow(p unsafe.Pointer) *RTSPTime {
 
 // UnsafeRTSPTimeFromGlibNone is used to convert raw C.GstRTSPTime pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeFromGlibNone(p unsafe.Pointer) *RTSPTime {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPTimeFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPTime,
 		func (intern *rTSPTime) {
@@ -5487,11 +5495,12 @@ func UnsafeRTSPTime2FromGlibBorrow(p unsafe.Pointer) *RTSPTime2 {
 
 // UnsafeRTSPTime2FromGlibNone is used to convert raw C.GstRTSPTime2 pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTime2FromGlibNone(p unsafe.Pointer) *RTSPTime2 {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPTime2FromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPTime2,
 		func (intern *rTSPTime2) {
@@ -5573,11 +5582,12 @@ func UnsafeRTSPTimeRangeFromGlibBorrow(p unsafe.Pointer) *RTSPTimeRange {
 
 // UnsafeRTSPTimeRangeFromGlibNone is used to convert raw C.GstRTSPTimeRange pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeRangeFromGlibNone(p unsafe.Pointer) *RTSPTimeRange {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPTimeRangeFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPTimeRange,
 		func (intern *rTSPTimeRange) {
@@ -5659,11 +5669,12 @@ func UnsafeRTSPTransportFromGlibBorrow(p unsafe.Pointer) *RTSPTransport {
 
 // UnsafeRTSPTransportFromGlibNone is used to convert raw C.GstRTSPTransport pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTransportFromGlibNone(p unsafe.Pointer) *RTSPTransport {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPTransportFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPTransport,
 		func (intern *rTSPTransport) {
@@ -5977,11 +5988,13 @@ func UnsafeRTSPUrlFromGlibBorrow(p unsafe.Pointer) *RTSPUrl {
 
 // UnsafeRTSPUrlFromGlibNone is used to convert raw C.GstRTSPUrl pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPUrlFromGlibNone(p unsafe.Pointer) *RTSPUrl {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPUrlFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.rTSPUrl,
 		func (intern *rTSPUrl) {
@@ -6271,11 +6284,12 @@ func UnsafeRTSPWatchFromGlibBorrow(p unsafe.Pointer) *RTSPWatch {
 
 // UnsafeRTSPWatchFromGlibNone is used to convert raw C.GstRTSPWatch pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFromGlibNone(p unsafe.Pointer) *RTSPWatch {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPWatchFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPWatch,
 		func (intern *rTSPWatch) {
@@ -6651,11 +6665,12 @@ func UnsafeRTSPWatchFuncsFromGlibBorrow(p unsafe.Pointer) *RTSPWatchFuncs {
 
 // UnsafeRTSPWatchFuncsFromGlibNone is used to convert raw C.GstRTSPWatchFuncs pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFuncsFromGlibNone(p unsafe.Pointer) *RTSPWatchFuncs {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPWatchFuncsFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.rTSPWatchFuncs,
 		func (intern *rTSPWatchFuncs) {

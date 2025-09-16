@@ -18535,11 +18535,13 @@ func UnsafeBaseParseFrameFromGlibBorrow(p unsafe.Pointer) *BaseParseFrame {
 
 // UnsafeBaseParseFrameFromGlibNone is used to convert raw C.GstBaseParseFrame pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBaseParseFrameFromGlibNone(p unsafe.Pointer) *BaseParseFrame {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBaseParseFrameFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.baseParseFrame,
 		func (intern *baseParseFrame) {
@@ -18870,11 +18872,12 @@ func UnsafeBitReaderFromGlibBorrow(p unsafe.Pointer) *BitReader {
 
 // UnsafeBitReaderFromGlibNone is used to convert raw C.GstBitReader pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBitReaderFromGlibNone(p unsafe.Pointer) *BitReader {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeBitReaderFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.bitReader,
 		func (intern *bitReader) {
@@ -19428,11 +19431,12 @@ func UnsafeBitWriterFromGlibBorrow(p unsafe.Pointer) *BitWriter {
 
 // UnsafeBitWriterFromGlibNone is used to convert raw C.GstBitWriter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBitWriterFromGlibNone(p unsafe.Pointer) *BitWriter {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeBitWriterFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.bitWriter,
 		func (intern *bitWriter) {
@@ -19833,11 +19837,12 @@ func UnsafeByteReaderFromGlibBorrow(p unsafe.Pointer) *ByteReader {
 
 // UnsafeByteReaderFromGlibNone is used to convert raw C.GstByteReader pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeByteReaderFromGlibNone(p unsafe.Pointer) *ByteReader {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeByteReaderFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.byteReader,
 		func (intern *byteReader) {
@@ -21715,11 +21720,12 @@ func UnsafeByteWriterFromGlibBorrow(p unsafe.Pointer) *ByteWriter {
 
 // UnsafeByteWriterFromGlibNone is used to convert raw C.GstByteWriter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeByteWriterFromGlibNone(p unsafe.Pointer) *ByteWriter {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeByteWriterFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.byteWriter,
 		func (intern *byteWriter) {
@@ -22935,11 +22941,12 @@ func UnsafeCollectDataFromGlibBorrow(p unsafe.Pointer) *CollectData {
 
 // UnsafeCollectDataFromGlibNone is used to convert raw C.GstCollectData pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCollectDataFromGlibNone(p unsafe.Pointer) *CollectData {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeCollectDataFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.collectData,
 		func (intern *collectData) {
@@ -23175,6 +23182,7 @@ func UnsafeFlowCombinerFromGlibNone(p unsafe.Pointer) *FlowCombiner {
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.flowCombiner,
 		func (intern *flowCombiner) {

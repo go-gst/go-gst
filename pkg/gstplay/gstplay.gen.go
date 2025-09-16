@@ -5380,11 +5380,12 @@ func UnsafePlayVideoRendererInterfaceFromGlibBorrow(p unsafe.Pointer) *PlayVideo
 
 // UnsafePlayVideoRendererInterfaceFromGlibNone is used to convert raw C.GstPlayVideoRendererInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayVideoRendererInterface {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePlayVideoRendererInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.playVideoRendererInterface,
 		func (intern *playVideoRendererInterface) {
@@ -5481,11 +5482,13 @@ func UnsafePlayVisualizationFromGlibBorrow(p unsafe.Pointer) *PlayVisualization 
 
 // UnsafePlayVisualizationFromGlibNone is used to convert raw C.GstPlayVisualization pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayVisualizationFromGlibNone(p unsafe.Pointer) *PlayVisualization {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePlayVisualizationFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.playVisualization,
 		func (intern *playVisualization) {

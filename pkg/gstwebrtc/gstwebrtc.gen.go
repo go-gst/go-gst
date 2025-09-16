@@ -4715,11 +4715,13 @@ func UnsafeWebRTCICECandidateStatsFromGlibBorrow(p unsafe.Pointer) *WebRTCICECan
 
 // UnsafeWebRTCICECandidateStatsFromGlibNone is used to convert raw C.GstWebRTCICECandidateStats pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandidateStats {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeWebRTCICECandidateStatsFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.webRTCICECandidateStats,
 		func (intern *webRTCICECandidateStats) {
@@ -5201,11 +5203,13 @@ func UnsafeWebRTCSessionDescriptionFromGlibBorrow(p unsafe.Pointer) *WebRTCSessi
 
 // UnsafeWebRTCSessionDescriptionFromGlibNone is used to convert raw C.GstWebRTCSessionDescription pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSessionDescription {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeWebRTCSessionDescriptionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.webRTCSessionDescription,
 		func (intern *webRTCSessionDescription) {

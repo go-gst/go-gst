@@ -13,4 +13,4 @@ require (
 	golang.org/x/sync v0.15.0 // indirect
 )
 
-replace github.com/diamondburned/gotk4 => github.com/rswilli/gotk4 v0.0.0-20250805120531-775967756f2b
+replace github.com/diamondburned/gotk4 => github.com/rswilli/gotk4 v0.0.0-20250805124210-85d1814335e6

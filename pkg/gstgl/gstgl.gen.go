@@ -14458,11 +14458,13 @@ func UnsafeGLAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLAllocationParam
 
 // UnsafeGLAllocationParamsFromGlibNone is used to convert raw C.GstGLAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLAllocationParamsFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.gLAllocationParams,
 		func (intern *gLAllocationParams) {
@@ -14599,11 +14601,12 @@ func UnsafeGLAsyncDebugFromGlibBorrow(p unsafe.Pointer) *GLAsyncDebug {
 
 // UnsafeGLAsyncDebugFromGlibNone is used to convert raw C.GstGLAsyncDebug pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLAsyncDebugFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLAsyncDebug,
 		func (intern *gLAsyncDebug) {
@@ -14822,11 +14825,12 @@ func UnsafeGLBaseMemoryFromGlibBorrow(p unsafe.Pointer) *GLBaseMemory {
 
 // UnsafeGLBaseMemoryFromGlibNone is used to convert raw C.GstGLBaseMemory pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLBaseMemoryFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLBaseMemory,
 		func (intern *gLBaseMemory) {
@@ -15241,11 +15245,12 @@ func UnsafeGLBufferFromGlibBorrow(p unsafe.Pointer) *GLBuffer {
 
 // UnsafeGLBufferFromGlibNone is used to convert raw C.GstGLBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLBufferFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLBuffer,
 		func (intern *gLBuffer) {
@@ -15349,11 +15354,12 @@ func UnsafeGLBufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLBufferAll
 
 // UnsafeGLBufferAllocationParamsFromGlibNone is used to convert raw C.GstGLBufferAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAllocationParams {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLBufferAllocationParamsFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLBufferAllocationParams,
 		func (intern *gLBufferAllocationParams) {
@@ -15853,11 +15859,12 @@ func UnsafeGLFuncsFromGlibBorrow(p unsafe.Pointer) *GLFuncs {
 
 // UnsafeGLFuncsFromGlibNone is used to convert raw C.GstGLFuncs pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLFuncsFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLFuncs,
 		func (intern *gLFuncs) {
@@ -15966,11 +15973,12 @@ func UnsafeGLMemoryFromGlibBorrow(p unsafe.Pointer) *GLMemory {
 
 // UnsafeGLMemoryFromGlibNone is used to convert raw C.GstGLMemory pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLMemoryFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLMemory,
 		func (intern *gLMemory) {
@@ -16334,11 +16342,12 @@ func UnsafeGLMemoryPBOFromGlibBorrow(p unsafe.Pointer) *GLMemoryPBO {
 
 // UnsafeGLMemoryPBOFromGlibNone is used to convert raw C.GstGLMemoryPBO pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLMemoryPBOFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLMemoryPBO,
 		func (intern *gLMemoryPBO) {
@@ -16746,11 +16755,12 @@ func UnsafeGLQueryFromGlibBorrow(p unsafe.Pointer) *GLQuery {
 
 // UnsafeGLQueryFromGlibNone is used to convert raw C.GstGLQuery pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLQueryFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLQuery,
 		func (intern *gLQuery) {
@@ -16941,11 +16951,12 @@ func UnsafeGLRenderbufferFromGlibBorrow(p unsafe.Pointer) *GLRenderbuffer {
 
 // UnsafeGLRenderbufferFromGlibNone is used to convert raw C.GstGLRenderbuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLRenderbufferFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLRenderbuffer,
 		func (intern *gLRenderbuffer) {
@@ -17135,11 +17146,12 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLRen
 
 // UnsafeGLRenderbufferAllocationParamsFromGlibNone is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRenderbufferAllocationParams {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLRenderbufferAllocationParams,
 		func (intern *gLRenderbufferAllocationParams) {
@@ -17425,11 +17437,12 @@ func UnsafeGLSyncMetaFromGlibBorrow(p unsafe.Pointer) *GLSyncMeta {
 
 // UnsafeGLSyncMetaFromGlibNone is used to convert raw C.GstGLSyncMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLSyncMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLSyncMeta,
 		func (intern *gLSyncMeta) {
@@ -17655,11 +17668,12 @@ func UnsafeGLVideoAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLVideoAlloc
 
 // UnsafeGLVideoAllocationParamsFromGlibNone is used to convert raw C.GstGLVideoAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocationParams {
-	// FIXME: this has no ref function, what should we do here?
+	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeGLVideoAllocationParamsFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
 	runtime.SetFinalizer(
 		wrapped.gLVideoAllocationParams,
 		func (intern *gLVideoAllocationParams) {

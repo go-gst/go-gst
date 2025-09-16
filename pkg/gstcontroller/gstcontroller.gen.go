@@ -1582,11 +1582,13 @@ func UnsafeControlPointFromGlibBorrow(p unsafe.Pointer) *ControlPoint {
 
 // UnsafeControlPointFromGlibNone is used to convert raw C.GstControlPoint pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeControlPointFromGlibNone(p unsafe.Pointer) *ControlPoint {
-	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeControlPointFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
+
+	wrapped = wrapped.Copy() // create an owned copy
+
 	runtime.SetFinalizer(
 		wrapped.controlPoint,
 		func (intern *controlPoint) {
