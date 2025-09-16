@@ -7,6 +7,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
@@ -601,6 +602,32 @@ func UnsafeApplyDRMDumbAllocatorOverrides[Instance DRMDumbAllocator](gclass unsa
 	gst.UnsafeApplyAllocatorOverrides(gclass, overrides.AllocatorOverrides)
 }
 
+// RegisterDRMDumbAllocatorSubClass is used to register a go subclass of GstDRMDumbAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterDRMDumbAllocatorSubClass[InstanceT DRMDumbAllocator](
+		name string,
+		classInit func(class *DRMDumbAllocatorClass),
+		constructor func() InstanceT,
+		overrides DRMDumbAllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeDRMDumbAllocator,
+		UnsafeDRMDumbAllocatorClassFromGlibBorrow,
+		UnsafeApplyDRMDumbAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDRMDumbAllocator(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // FdAllocatorInstance is the instance type used by all types extending GstFdAllocator. It is used internally by the bindings. Users should use the interface [FdAllocator] instead.
 type FdAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -731,6 +758,32 @@ func UnsafeApplyFdAllocatorOverrides[Instance FdAllocator](gclass unsafe.Pointer
 	gst.UnsafeApplyAllocatorOverrides(gclass, overrides.AllocatorOverrides)
 }
 
+// RegisterFdAllocatorSubClass is used to register a go subclass of GstFdAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterFdAllocatorSubClass[InstanceT FdAllocator](
+		name string,
+		classInit func(class *FdAllocatorClass),
+		constructor func() InstanceT,
+		overrides FdAllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeFdAllocator,
+		UnsafeFdAllocatorClassFromGlibBorrow,
+		UnsafeApplyFdAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapFdAllocator(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // ShmAllocatorInstance is the instance type used by all types extending GstShmAllocator. It is used internally by the bindings. Users should use the interface [ShmAllocator] instead.
 type ShmAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -840,6 +893,32 @@ type ShmAllocatorOverrides[Instance ShmAllocator] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyShmAllocatorOverrides[Instance ShmAllocator](gclass unsafe.Pointer, overrides ShmAllocatorOverrides[Instance]) {
 	UnsafeApplyFdAllocatorOverrides(gclass, overrides.FdAllocatorOverrides)
+}
+
+// RegisterShmAllocatorSubClass is used to register a go subclass of GstShmAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterShmAllocatorSubClass[InstanceT ShmAllocator](
+		name string,
+		classInit func(class *ShmAllocatorClass),
+		constructor func() InstanceT,
+		overrides ShmAllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeShmAllocator,
+		UnsafeShmAllocatorClassFromGlibBorrow,
+		UnsafeApplyShmAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapShmAllocator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // DmaBufAllocatorInstance is the instance type used by all types extending GstDmaBufAllocator. It is used internally by the bindings. Users should use the interface [DmaBufAllocator] instead.
@@ -1009,6 +1088,32 @@ type DmaBufAllocatorOverrides[Instance DmaBufAllocator] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyDmaBufAllocatorOverrides[Instance DmaBufAllocator](gclass unsafe.Pointer, overrides DmaBufAllocatorOverrides[Instance]) {
 	UnsafeApplyFdAllocatorOverrides(gclass, overrides.FdAllocatorOverrides)
+}
+
+// RegisterDmaBufAllocatorSubClass is used to register a go subclass of GstDmaBufAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterDmaBufAllocatorSubClass[InstanceT DmaBufAllocator](
+		name string,
+		classInit func(class *DmaBufAllocatorClass),
+		constructor func() InstanceT,
+		overrides DmaBufAllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeDmaBufAllocator,
+		UnsafeDmaBufAllocatorClassFromGlibBorrow,
+		UnsafeApplyDmaBufAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDmaBufAllocator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // DRMDumbAllocatorClass wraps GstDRMDumbAllocatorClass

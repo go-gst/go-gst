@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -3640,91 +3641,551 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 
 	if overrides.Aggregate != nil {
 		pclass.aggregate = (*[0]byte)(C._gotk4_gstbase1_Aggregator_aggregate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_aggregate",
+			func(carg0 *C.GstAggregator, carg1 C.gboolean) (cret C.GstFlowReturn) {
+				var aggregator Instance       // go GstAggregator subclass
+				var timeout    bool           // in
+				var goret      gst.FlowReturn // return, none, casted
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					timeout = true
+				}
+
+				goret = overrides.Aggregate(aggregator, timeout)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Clip != nil {
 		pclass.clip = (*[0]byte)(C._gotk4_gstbase1_Aggregator_clip)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_clip",
+			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstBuffer) (cret *C.GstBuffer) {
+				var aggregator    Instance      // go GstAggregator subclass
+				var aggregatorPad AggregatorPad // in, none, converted
+				var buf           *gst.Buffer   // in, none, converted
+				var goret         *gst.Buffer   // return, full, converted
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
+				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.Clip(aggregator, aggregatorPad, buf)
+
+				cret = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DecideAllocation != nil {
 		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstbase1_Aggregator_decide_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_decide_allocation",
+			func(carg0 *C.GstAggregator, carg1 *C.GstQuery) (cret C.gboolean) {
+				var self  Instance   // go GstAggregator subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DecideAllocation(self, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.FinishBuffer != nil {
 		pclass.finish_buffer = (*[0]byte)(C._gotk4_gstbase1_Aggregator_finish_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_finish_buffer",
+			func(carg0 *C.GstAggregator, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var aggregator Instance       // go GstAggregator subclass
+				var buffer     *gst.Buffer    // in, full, converted
+				var goret      gst.FlowReturn // return, none, casted
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.FinishBuffer(aggregator, buffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.FinishBufferList != nil {
 		pclass.finish_buffer_list = (*[0]byte)(C._gotk4_gstbase1_Aggregator_finish_buffer_list)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_finish_buffer_list",
+			func(carg0 *C.GstAggregator, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
+				var aggregator Instance        // go GstAggregator subclass
+				var bufferlist *gst.BufferList // in, full, converted
+				var goret      gst.FlowReturn  // return, none, casted
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bufferlist = gst.UnsafeBufferListFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.FinishBufferList(aggregator, bufferlist)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.FixateSrcCaps != nil {
 		pclass.fixate_src_caps = (*[0]byte)(C._gotk4_gstbase1_Aggregator_fixate_src_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_fixate_src_caps",
+			func(carg0 *C.GstAggregator, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var self  Instance  // go GstAggregator subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret *gst.Caps // return, full, converted
+
+				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.FixateSrcCaps(self, caps)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Flush != nil {
 		pclass.flush = (*[0]byte)(C._gotk4_gstbase1_Aggregator_flush)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_flush",
+			func(carg0 *C.GstAggregator) (cret C.GstFlowReturn) {
+				var aggregator Instance       // go GstAggregator subclass
+				var goret      gst.FlowReturn // return, none, casted
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Flush(aggregator)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetNextTime != nil {
 		pclass.get_next_time = (*[0]byte)(C._gotk4_gstbase1_Aggregator_get_next_time)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_get_next_time",
+			func(carg0 *C.GstAggregator) (cret C.GstClockTime) {
+				var aggregator Instance      // go GstAggregator subclass
+				var goret      gst.ClockTime // return, none, casted, alias
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetNextTime(aggregator)
+
+				cret = C.GstClockTime(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Negotiate != nil {
 		pclass.negotiate = (*[0]byte)(C._gotk4_gstbase1_Aggregator_negotiate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_negotiate",
+			func(carg0 *C.GstAggregator) (cret C.gboolean) {
+				var self  Instance // go GstAggregator subclass
+				var goret bool     // return
+
+				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Negotiate(self)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.NegotiatedSrcCaps != nil {
 		pclass.negotiated_src_caps = (*[0]byte)(C._gotk4_gstbase1_Aggregator_negotiated_src_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_negotiated_src_caps",
+			func(carg0 *C.GstAggregator, carg1 *C.GstCaps) (cret C.gboolean) {
+				var self  Instance  // go GstAggregator subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret bool      // return
+
+				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.NegotiatedSrcCaps(self, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PeekNextSample != nil {
 		pclass.peek_next_sample = (*[0]byte)(C._gotk4_gstbase1_Aggregator_peek_next_sample)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_peek_next_sample",
+			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad) (cret *C.GstSample) {
+				var aggregator    Instance      // go GstAggregator subclass
+				var aggregatorPad AggregatorPad // in, none, converted
+				var goret         *gst.Sample   // return, full, converted, nullable
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.PeekNextSample(aggregator, aggregatorPad)
+
+				if goret != nil {
+					cret = (*C.GstSample)(gst.UnsafeSampleToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProposeAllocation != nil {
 		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstbase1_Aggregator_propose_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_propose_allocation",
+			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstQuery, carg3 *C.GstQuery) (cret C.gboolean) {
+				var self        Instance      // go GstAggregator subclass
+				var pad         AggregatorPad // in, none, converted
+				var decideQuery *gst.Query    // in, none, converted
+				var query       *gst.Query    // in, none, converted
+				var goret       bool          // return
+
+				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
+				decideQuery = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.ProposeAllocation(self, pad, decideQuery, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkEvent != nil {
 		pclass.sink_event = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_sink_event",
+			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstEvent) (cret C.gboolean) {
+				var aggregator    Instance      // go GstAggregator subclass
+				var aggregatorPad AggregatorPad // in, none, converted
+				var event         *gst.Event    // in, none, converted
+				var goret         bool          // return
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.SinkEvent(aggregator, aggregatorPad, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkEventPreQueue != nil {
 		pclass.sink_event_pre_queue = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_event_pre_queue)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_sink_event_pre_queue",
+			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstEvent) (cret C.GstFlowReturn) {
+				var aggregator    Instance       // go GstAggregator subclass
+				var aggregatorPad AggregatorPad  // in, none, converted
+				var event         *gst.Event     // in, none, converted
+				var goret         gst.FlowReturn // return, none, casted
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.SinkEventPreQueue(aggregator, aggregatorPad, event)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkQuery != nil {
 		pclass.sink_query = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_sink_query",
+			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstQuery) (cret C.gboolean) {
+				var aggregator    Instance      // go GstAggregator subclass
+				var aggregatorPad AggregatorPad // in, none, converted
+				var query         *gst.Query    // in, none, converted
+				var goret         bool          // return
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.SinkQuery(aggregator, aggregatorPad, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkQueryPreQueue != nil {
 		pclass.sink_query_pre_queue = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_query_pre_queue)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_sink_query_pre_queue",
+			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstQuery) (cret C.gboolean) {
+				var aggregator    Instance      // go GstAggregator subclass
+				var aggregatorPad AggregatorPad // in, none, converted
+				var query         *gst.Query    // in, none, converted
+				var goret         bool          // return
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.SinkQueryPreQueue(aggregator, aggregatorPad, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcActivate != nil {
 		pclass.src_activate = (*[0]byte)(C._gotk4_gstbase1_Aggregator_src_activate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_src_activate",
+			func(carg0 *C.GstAggregator, carg1 C.GstPadMode, carg2 C.gboolean) (cret C.gboolean) {
+				var aggregator Instance    // go GstAggregator subclass
+				var mode       gst.PadMode // in, none, casted
+				var active     bool        // in
+				var goret      bool        // return
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				mode = gst.PadMode(carg1)
+				if carg2 != 0 {
+					active = true
+				}
+
+				goret = overrides.SrcActivate(aggregator, mode, active)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcEvent != nil {
 		pclass.src_event = (*[0]byte)(C._gotk4_gstbase1_Aggregator_src_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_src_event",
+			func(carg0 *C.GstAggregator, carg1 *C.GstEvent) (cret C.gboolean) {
+				var aggregator Instance   // go GstAggregator subclass
+				var event      *gst.Event // in, none, converted
+				var goret      bool       // return
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcEvent(aggregator, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcQuery != nil {
 		pclass.src_query = (*[0]byte)(C._gotk4_gstbase1_Aggregator_src_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_src_query",
+			func(carg0 *C.GstAggregator, carg1 *C.GstQuery) (cret C.gboolean) {
+				var aggregator Instance   // go GstAggregator subclass
+				var query      *gst.Query // in, none, converted
+				var goret      bool       // return
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcQuery(aggregator, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstbase1_Aggregator_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_start",
+			func(carg0 *C.GstAggregator) (cret C.gboolean) {
+				var aggregator Instance // go GstAggregator subclass
+				var goret      bool     // return
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(aggregator)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_Aggregator_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_stop",
+			func(carg0 *C.GstAggregator) (cret C.gboolean) {
+				var aggregator Instance // go GstAggregator subclass
+				var goret      bool     // return
+
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(aggregator)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.UpdateSrcCaps != nil {
 		pclass.update_src_caps = (*[0]byte)(C._gotk4_gstbase1_Aggregator_update_src_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_Aggregator_update_src_caps",
+			func(carg0 *C.GstAggregator, carg1 *C.GstCaps, carg2 **C.GstCaps) (cret C.GstFlowReturn) {
+				var self  Instance       // go GstAggregator subclass
+				var caps  *gst.Caps      // in, none, converted
+				var ret   *gst.Caps      // out, full, converted
+				var goret gst.FlowReturn // return, none, casted
+
+				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				ret, goret = overrides.UpdateSrcCaps(self, caps)
+
+				*carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(ret))
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAggregatorSubClass is used to register a go subclass of GstAggregator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAggregatorSubClass[InstanceT Aggregator](
+		name string,
+		classInit func(class *AggregatorClass),
+		constructor func() InstanceT,
+		overrides AggregatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAggregator,
+		UnsafeAggregatorClassFromGlibBorrow,
+		UnsafeApplyAggregatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAggregator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AggregatorPadInstance is the instance type used by all types extending GstAggregatorPad. It is used internally by the bindings. Users should use the interface [AggregatorPad] instead.
@@ -4023,11 +4484,77 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 
 	if overrides.Flush != nil {
 		pclass.flush = (*[0]byte)(C._gotk4_gstbase1_AggregatorPad_flush)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_AggregatorPad_flush",
+			func(carg0 *C.GstAggregatorPad, carg1 *C.GstAggregator) (cret C.GstFlowReturn) {
+				var aggpad     Instance       // go GstAggregatorPad subclass
+				var aggregator Aggregator     // in, none, converted
+				var goret      gst.FlowReturn // return, none, casted
+
+				aggpad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Flush(aggpad, aggregator)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SkipBuffer != nil {
 		pclass.skip_buffer = (*[0]byte)(C._gotk4_gstbase1_AggregatorPad_skip_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_AggregatorPad_skip_buffer",
+			func(carg0 *C.GstAggregatorPad, carg1 *C.GstAggregator, carg2 *C.GstBuffer) (cret C.gboolean) {
+				var aggpad     Instance    // go GstAggregatorPad subclass
+				var aggregator Aggregator  // in, none, converted
+				var buffer     *gst.Buffer // in, none, converted
+				var goret      bool        // return
+
+				aggpad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg1))
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.SkipBuffer(aggpad, aggregator, buffer)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAggregatorPadSubClass is used to register a go subclass of GstAggregatorPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAggregatorPadSubClass[InstanceT AggregatorPad](
+		name string,
+		classInit func(class *AggregatorPadClass),
+		constructor func() InstanceT,
+		overrides AggregatorPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAggregatorPad,
+		UnsafeAggregatorPadClassFromGlibBorrow,
+		UnsafeApplyAggregatorPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAggregatorPad(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // BaseParseInstance is the instance type used by all types extending GstBaseParse. It is used internally by the bindings. Users should use the interface [BaseParse] instead.
@@ -5086,51 +5613,315 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 
 	if overrides.Convert != nil {
 		pclass.convert = (*[0]byte)(C._gotk4_gstbase1_BaseParse_convert)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_convert",
+			func(carg0 *C.GstBaseParse, carg1 C.GstFormat, carg2 C.gint64, carg3 C.GstFormat, carg4 *C.gint64) (cret C.gboolean) {
+				var parse      Instance   // go GstBaseParse subclass
+				var srcFormat  gst.Format // in, none, casted
+				var srcValue   int64      // in, none, casted
+				var destFormat gst.Format // in, none, casted
+				var destValue  *int64     // in, transfer: none, C Pointers: 1, Name: gint64
+				var goret      bool       // return
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				srcFormat = gst.Format(carg1)
+				srcValue = int64(carg2)
+				destFormat = gst.Format(carg3)
+				_ = destValue
+				_ = carg4
+				panic("unimplemented conversion of *int64 (gint64*)")
+
+				goret = overrides.Convert(parse, srcFormat, srcValue, destFormat, destValue)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Detect != nil {
 		pclass.detect = (*[0]byte)(C._gotk4_gstbase1_BaseParse_detect)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_detect",
+			func(carg0 *C.GstBaseParse, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var parse  Instance       // go GstBaseParse subclass
+				var buffer *gst.Buffer    // in, none, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Detect(parse, buffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetSinkCaps != nil {
 		pclass.get_sink_caps = (*[0]byte)(C._gotk4_gstbase1_BaseParse_get_sink_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_get_sink_caps",
+			func(carg0 *C.GstBaseParse, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var parse  Instance  // go GstBaseParse subclass
+				var filter *gst.Caps // in, none, converted
+				var goret  *gst.Caps // return, full, converted
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.GetSinkCaps(parse, filter)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.HandleFrame != nil {
 		pclass.handle_frame = (*[0]byte)(C._gotk4_gstbase1_BaseParse_handle_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_handle_frame",
+			func(carg0 *C.GstBaseParse, carg1 *C.GstBaseParseFrame, carg2 *C.gint) (cret C.GstFlowReturn) {
+				var parse    Instance        // go GstBaseParse subclass
+				var frame    *BaseParseFrame // in, none, converted
+				var skipsize int             // out, full, casted
+				var goret    gst.FlowReturn  // return, none, casted
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				frame = UnsafeBaseParseFrameFromGlibNone(unsafe.Pointer(carg1))
+
+				skipsize, goret = overrides.HandleFrame(parse, frame)
+
+				*carg2 = C.gint(skipsize)
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PrePushFrame != nil {
 		pclass.pre_push_frame = (*[0]byte)(C._gotk4_gstbase1_BaseParse_pre_push_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_pre_push_frame",
+			func(carg0 *C.GstBaseParse, carg1 *C.GstBaseParseFrame) (cret C.GstFlowReturn) {
+				var parse Instance        // go GstBaseParse subclass
+				var frame *BaseParseFrame // in, none, converted
+				var goret gst.FlowReturn  // return, none, casted
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				frame = UnsafeBaseParseFrameFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.PrePushFrame(parse, frame)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetSinkCaps != nil {
 		pclass.set_sink_caps = (*[0]byte)(C._gotk4_gstbase1_BaseParse_set_sink_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_set_sink_caps",
+			func(carg0 *C.GstBaseParse, carg1 *C.GstCaps) (cret C.gboolean) {
+				var parse Instance  // go GstBaseParse subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret bool      // return
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetSinkCaps(parse, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkEvent != nil {
 		pclass.sink_event = (*[0]byte)(C._gotk4_gstbase1_BaseParse_sink_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_sink_event",
+			func(carg0 *C.GstBaseParse, carg1 *C.GstEvent) (cret C.gboolean) {
+				var parse Instance   // go GstBaseParse subclass
+				var event *gst.Event // in, none, converted
+				var goret bool       // return
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkEvent(parse, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkQuery != nil {
 		pclass.sink_query = (*[0]byte)(C._gotk4_gstbase1_BaseParse_sink_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_sink_query",
+			func(carg0 *C.GstBaseParse, carg1 *C.GstQuery) (cret C.gboolean) {
+				var parse Instance   // go GstBaseParse subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkQuery(parse, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcEvent != nil {
 		pclass.src_event = (*[0]byte)(C._gotk4_gstbase1_BaseParse_src_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_src_event",
+			func(carg0 *C.GstBaseParse, carg1 *C.GstEvent) (cret C.gboolean) {
+				var parse Instance   // go GstBaseParse subclass
+				var event *gst.Event // in, none, converted
+				var goret bool       // return
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcEvent(parse, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcQuery != nil {
 		pclass.src_query = (*[0]byte)(C._gotk4_gstbase1_BaseParse_src_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_src_query",
+			func(carg0 *C.GstBaseParse, carg1 *C.GstQuery) (cret C.gboolean) {
+				var parse Instance   // go GstBaseParse subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcQuery(parse, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseParse_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_start",
+			func(carg0 *C.GstBaseParse) (cret C.gboolean) {
+				var parse Instance // go GstBaseParse subclass
+				var goret bool     // return
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(parse)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseParse_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseParse_stop",
+			func(carg0 *C.GstBaseParse) (cret C.gboolean) {
+				var parse Instance // go GstBaseParse subclass
+				var goret bool     // return
+
+				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(parse)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterBaseParseSubClass is used to register a go subclass of GstBaseParse. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterBaseParseSubClass[InstanceT BaseParse](
+		name string,
+		classInit func(class *BaseParseClass),
+		constructor func() InstanceT,
+		overrides BaseParseOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeBaseParse,
+		UnsafeBaseParseClassFromGlibBorrow,
+		UnsafeApplyBaseParseOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBaseParse(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // BaseSinkInstance is the instance type used by all types extending GstBaseSink. It is used internally by the bindings. Users should use the interface [BaseSink] instead.
@@ -6711,75 +7502,439 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 
 	if overrides.ActivatePull != nil {
 		pclass.activate_pull = (*[0]byte)(C._gotk4_gstbase1_BaseSink_activate_pull)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_activate_pull",
+			func(carg0 *C.GstBaseSink, carg1 C.gboolean) (cret C.gboolean) {
+				var sink   Instance // go GstBaseSink subclass
+				var active bool     // in
+				var goret  bool     // return
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					active = true
+				}
+
+				goret = overrides.ActivatePull(sink, active)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Event != nil {
 		pclass.event = (*[0]byte)(C._gotk4_gstbase1_BaseSink_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_event",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstEvent) (cret C.gboolean) {
+				var sink  Instance   // go GstBaseSink subclass
+				var event *gst.Event // in, none, converted
+				var goret bool       // return
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Event(sink, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Fixate != nil {
 		pclass.fixate = (*[0]byte)(C._gotk4_gstbase1_BaseSink_fixate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_fixate",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var sink  Instance  // go GstBaseSink subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret *gst.Caps // return, full, converted
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Fixate(sink, caps)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetCaps != nil {
 		pclass.get_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSink_get_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_get_caps",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var sink   Instance  // go GstBaseSink subclass
+				var filter *gst.Caps // in, none, converted, nullable
+				var goret  *gst.Caps // return, full, converted
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != nil {
+					filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+				}
+
+				goret = overrides.GetCaps(sink, filter)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetTimes != nil {
 		pclass.get_times = (*[0]byte)(C._gotk4_gstbase1_BaseSink_get_times)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_get_times",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstBuffer, carg2 *C.GstClockTime, carg3 *C.GstClockTime) {
+				var sink   Instance      // go GstBaseSink subclass
+				var buffer *gst.Buffer   // in, none, converted
+				var start  gst.ClockTime // out, full, casted, alias
+				var end    gst.ClockTime // out, full, casted, alias
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				start, end = overrides.GetTimes(sink, buffer)
+
+				*carg2 = C.GstClockTime(start)
+				*carg3 = C.GstClockTime(end)
+			},
+		)
 	}
 
 	if overrides.Prepare != nil {
 		pclass.prepare = (*[0]byte)(C._gotk4_gstbase1_BaseSink_prepare)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_prepare",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var sink   Instance       // go GstBaseSink subclass
+				var buffer *gst.Buffer    // in, none, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Prepare(sink, buffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PrepareList != nil {
 		pclass.prepare_list = (*[0]byte)(C._gotk4_gstbase1_BaseSink_prepare_list)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_prepare_list",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
+				var sink       Instance        // go GstBaseSink subclass
+				var bufferList *gst.BufferList // in, none, converted
+				var goret      gst.FlowReturn  // return, none, casted
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bufferList = gst.UnsafeBufferListFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.PrepareList(sink, bufferList)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Preroll != nil {
 		pclass.preroll = (*[0]byte)(C._gotk4_gstbase1_BaseSink_preroll)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_preroll",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var sink   Instance       // go GstBaseSink subclass
+				var buffer *gst.Buffer    // in, none, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Preroll(sink, buffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProposeAllocation != nil {
 		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseSink_propose_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_propose_allocation",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstQuery) (cret C.gboolean) {
+				var sink  Instance   // go GstBaseSink subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ProposeAllocation(sink, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Query != nil {
 		pclass.query = (*[0]byte)(C._gotk4_gstbase1_BaseSink_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_query",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstQuery) (cret C.gboolean) {
+				var sink  Instance   // go GstBaseSink subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Query(sink, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Render != nil {
 		pclass.render = (*[0]byte)(C._gotk4_gstbase1_BaseSink_render)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_render",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var sink   Instance       // go GstBaseSink subclass
+				var buffer *gst.Buffer    // in, none, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Render(sink, buffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.RenderList != nil {
 		pclass.render_list = (*[0]byte)(C._gotk4_gstbase1_BaseSink_render_list)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_render_list",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
+				var sink       Instance        // go GstBaseSink subclass
+				var bufferList *gst.BufferList // in, none, converted
+				var goret      gst.FlowReturn  // return, none, casted
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bufferList = gst.UnsafeBufferListFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.RenderList(sink, bufferList)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetCaps != nil {
 		pclass.set_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSink_set_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_set_caps",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstCaps) (cret C.gboolean) {
+				var sink  Instance  // go GstBaseSink subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret bool      // return
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetCaps(sink, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseSink_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_start",
+			func(carg0 *C.GstBaseSink) (cret C.gboolean) {
+				var sink  Instance // go GstBaseSink subclass
+				var goret bool     // return
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(sink)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseSink_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_stop",
+			func(carg0 *C.GstBaseSink) (cret C.gboolean) {
+				var sink  Instance // go GstBaseSink subclass
+				var goret bool     // return
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(sink)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Unlock != nil {
 		pclass.unlock = (*[0]byte)(C._gotk4_gstbase1_BaseSink_unlock)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_unlock",
+			func(carg0 *C.GstBaseSink) (cret C.gboolean) {
+				var sink  Instance // go GstBaseSink subclass
+				var goret bool     // return
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Unlock(sink)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.UnlockStop != nil {
 		pclass.unlock_stop = (*[0]byte)(C._gotk4_gstbase1_BaseSink_unlock_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_unlock_stop",
+			func(carg0 *C.GstBaseSink) (cret C.gboolean) {
+				var sink  Instance // go GstBaseSink subclass
+				var goret bool     // return
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.UnlockStop(sink)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.WaitEvent != nil {
 		pclass.wait_event = (*[0]byte)(C._gotk4_gstbase1_BaseSink_wait_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSink_wait_event",
+			func(carg0 *C.GstBaseSink, carg1 *C.GstEvent) (cret C.GstFlowReturn) {
+				var sink  Instance       // go GstBaseSink subclass
+				var event *gst.Event     // in, none, converted
+				var goret gst.FlowReturn // return, none, casted
+
+				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.WaitEvent(sink, event)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterBaseSinkSubClass is used to register a go subclass of GstBaseSink. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterBaseSinkSubClass[InstanceT BaseSink](
+		name string,
+		classInit func(class *BaseSinkClass),
+		constructor func() InstanceT,
+		overrides BaseSinkOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeBaseSink,
+		UnsafeBaseSinkClassFromGlibBorrow,
+		UnsafeApplyBaseSinkOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBaseSink(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // BaseSrcInstance is the instance type used by all types extending GstBaseSrc. It is used internally by the bindings. Users should use the interface [BaseSrc] instead.
@@ -8087,75 +9242,451 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 
 	if overrides.Alloc != nil {
 		pclass.alloc = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_alloc)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_alloc",
+			func(carg0 *C.GstBaseSrc, carg1 C.guint64, carg2 C.guint, carg3 **C.GstBuffer) (cret C.GstFlowReturn) {
+				var src    Instance       // go GstBaseSrc subclass
+				var offset uint64         // in, none, casted
+				var size   uint           // in, none, casted
+				var buf    *gst.Buffer    // out, full, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				offset = uint64(carg1)
+				size = uint(carg2)
+
+				buf, goret = overrides.Alloc(src, offset, size)
+
+				*carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buf))
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DecideAllocation != nil {
 		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_decide_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_decide_allocation",
+			func(carg0 *C.GstBaseSrc, carg1 *C.GstQuery) (cret C.gboolean) {
+				var src   Instance   // go GstBaseSrc subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DecideAllocation(src, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DoSeek != nil {
 		pclass.do_seek = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_do_seek)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_do_seek",
+			func(carg0 *C.GstBaseSrc, carg1 *C.GstSegment) (cret C.gboolean) {
+				var src     Instance     // go GstBaseSrc subclass
+				var segment *gst.Segment // in, none, converted
+				var goret   bool         // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				segment = gst.UnsafeSegmentFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DoSeek(src, segment)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Event != nil {
 		pclass.event = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_event",
+			func(carg0 *C.GstBaseSrc, carg1 *C.GstEvent) (cret C.gboolean) {
+				var src   Instance   // go GstBaseSrc subclass
+				var event *gst.Event // in, none, converted
+				var goret bool       // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Event(src, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Fill != nil {
 		pclass.fill = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_fill)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_fill",
+			func(carg0 *C.GstBaseSrc, carg1 C.guint64, carg2 C.guint, carg3 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var src    Instance       // go GstBaseSrc subclass
+				var offset uint64         // in, none, casted
+				var size   uint           // in, none, casted
+				var buf    *gst.Buffer    // in, none, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				offset = uint64(carg1)
+				size = uint(carg2)
+				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.Fill(src, offset, size, buf)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Fixate != nil {
 		pclass.fixate = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_fixate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_fixate",
+			func(carg0 *C.GstBaseSrc, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var src   Instance  // go GstBaseSrc subclass
+				var caps  *gst.Caps // in, full, converted
+				var goret *gst.Caps // return, full, converted
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.Fixate(src, caps)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetCaps != nil {
 		pclass.get_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_get_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_get_caps",
+			func(carg0 *C.GstBaseSrc, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var src    Instance  // go GstBaseSrc subclass
+				var filter *gst.Caps // in, none, converted, nullable
+				var goret  *gst.Caps // return, full, converted
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != nil {
+					filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+				}
+
+				goret = overrides.GetCaps(src, filter)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetSize != nil {
 		pclass.get_size = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_get_size)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_get_size",
+			func(carg0 *C.GstBaseSrc, carg1 *C.guint64) (cret C.gboolean) {
+				var src   Instance // go GstBaseSrc subclass
+				var size  uint64   // out, full, casted
+				var goret bool     // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				size, goret = overrides.GetSize(src)
+
+				*carg1 = C.guint64(size)
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetTimes != nil {
 		pclass.get_times = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_get_times)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_get_times",
+			func(carg0 *C.GstBaseSrc, carg1 *C.GstBuffer, carg2 *C.GstClockTime, carg3 *C.GstClockTime) {
+				var src    Instance      // go GstBaseSrc subclass
+				var buffer *gst.Buffer   // in, none, converted
+				var start  gst.ClockTime // out, full, casted, alias
+				var end    gst.ClockTime // out, full, casted, alias
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				start, end = overrides.GetTimes(src, buffer)
+
+				*carg2 = C.GstClockTime(start)
+				*carg3 = C.GstClockTime(end)
+			},
+		)
 	}
 
 	if overrides.IsSeekable != nil {
 		pclass.is_seekable = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_is_seekable)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_is_seekable",
+			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+				var src   Instance // go GstBaseSrc subclass
+				var goret bool     // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.IsSeekable(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Negotiate != nil {
 		pclass.negotiate = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_negotiate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_negotiate",
+			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+				var src   Instance // go GstBaseSrc subclass
+				var goret bool     // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Negotiate(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PrepareSeekSegment != nil {
 		pclass.prepare_seek_segment = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_prepare_seek_segment)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_prepare_seek_segment",
+			func(carg0 *C.GstBaseSrc, carg1 *C.GstEvent, carg2 *C.GstSegment) (cret C.gboolean) {
+				var src     Instance     // go GstBaseSrc subclass
+				var seek    *gst.Event   // in, none, converted
+				var segment *gst.Segment // in, none, converted
+				var goret   bool         // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				seek = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+				segment = gst.UnsafeSegmentFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.PrepareSeekSegment(src, seek, segment)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Query != nil {
 		pclass.query = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_query",
+			func(carg0 *C.GstBaseSrc, carg1 *C.GstQuery) (cret C.gboolean) {
+				var src   Instance   // go GstBaseSrc subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Query(src, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetCaps != nil {
 		pclass.set_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_set_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_set_caps",
+			func(carg0 *C.GstBaseSrc, carg1 *C.GstCaps) (cret C.gboolean) {
+				var src   Instance  // go GstBaseSrc subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret bool      // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetCaps(src, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_start",
+			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+				var src   Instance // go GstBaseSrc subclass
+				var goret bool     // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_stop",
+			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+				var src   Instance // go GstBaseSrc subclass
+				var goret bool     // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Unlock != nil {
 		pclass.unlock = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_unlock)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_unlock",
+			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+				var src   Instance // go GstBaseSrc subclass
+				var goret bool     // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Unlock(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.UnlockStop != nil {
 		pclass.unlock_stop = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_unlock_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseSrc_unlock_stop",
+			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+				var src   Instance // go GstBaseSrc subclass
+				var goret bool     // return
+
+				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.UnlockStop(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterBaseSrcSubClass is used to register a go subclass of GstBaseSrc. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterBaseSrcSubClass[InstanceT BaseSrc](
+		name string,
+		classInit func(class *BaseSrcClass),
+		constructor func() InstanceT,
+		overrides BaseSrcOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeBaseSrc,
+		UnsafeBaseSrcClassFromGlibBorrow,
+		UnsafeApplyBaseSrcOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBaseSrc(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // BaseTransformInstance is the instance type used by all types extending GstBaseTransform. It is used internally by the bindings. Users should use the interface [BaseTransform] instead.
@@ -9124,91 +10655,576 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 
 	if overrides.AcceptCaps != nil {
 		pclass.accept_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_accept_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_accept_caps",
+			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps) (cret C.gboolean) {
+				var trans     Instance         // go GstBaseTransform subclass
+				var direction gst.PadDirection // in, none, casted
+				var caps      *gst.Caps        // in, none, converted
+				var goret     bool             // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				direction = gst.PadDirection(carg1)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.AcceptCaps(trans, direction, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.BeforeTransform != nil {
 		pclass.before_transform = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_before_transform)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_before_transform",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer) {
+				var trans  Instance    // go GstBaseTransform subclass
+				var buffer *gst.Buffer // in, none, converted
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.BeforeTransform(trans, buffer)
+			},
+		)
 	}
 
 	if overrides.CopyMetadata != nil {
 		pclass.copy_metadata = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_copy_metadata)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_copy_metadata",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 *C.GstBuffer) (cret C.gboolean) {
+				var trans  Instance    // go GstBaseTransform subclass
+				var input  *gst.Buffer // in, none, converted
+				var outbuf *gst.Buffer // in, none, converted
+				var goret  bool        // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				input = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.CopyMetadata(trans, input, outbuf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DecideAllocation != nil {
 		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_decide_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_decide_allocation",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstQuery) (cret C.gboolean) {
+				var trans Instance   // go GstBaseTransform subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DecideAllocation(trans, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.FilterMeta != nil {
 		pclass.filter_meta = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_filter_meta)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_filter_meta",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstQuery, carg2 C.GType, carg3 *C.GstStructure) (cret C.gboolean) {
+				var trans  Instance       // go GstBaseTransform subclass
+				var query  *gst.Query     // in, none, converted
+				var api    gobject.Type   // in, none, casted, alias
+				var params *gst.Structure // in, none, converted
+				var goret  bool           // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+				api = gobject.Type(carg2)
+				params = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.FilterMeta(trans, query, api, params)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.FixateCaps != nil {
 		pclass.fixate_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_fixate_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_fixate_caps",
+			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 *C.GstCaps) (cret *C.GstCaps) {
+				var trans     Instance         // go GstBaseTransform subclass
+				var direction gst.PadDirection // in, none, casted
+				var caps      *gst.Caps        // in, none, converted
+				var othercaps *gst.Caps        // in, full, converted
+				var goret     *gst.Caps        // return, full, converted
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				direction = gst.PadDirection(carg1)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
+				othercaps = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(carg3))
+
+				goret = overrides.FixateCaps(trans, direction, caps, othercaps)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GenerateOutput != nil {
 		pclass.generate_output = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_generate_output)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_generate_output",
+			func(carg0 *C.GstBaseTransform, carg1 **C.GstBuffer) (cret C.GstFlowReturn) {
+				var trans  Instance       // go GstBaseTransform subclass
+				var outbuf *gst.Buffer    // out, full, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				outbuf, goret = overrides.GenerateOutput(trans)
+
+				*carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(outbuf))
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetUnitSize != nil {
 		pclass.get_unit_size = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_get_unit_size)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_get_unit_size",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstCaps, carg2 *C.gsize) (cret C.gboolean) {
+				var trans Instance  // go GstBaseTransform subclass
+				var caps  *gst.Caps // in, none, converted
+				var size  uint      // out, full, casted
+				var goret bool      // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				size, goret = overrides.GetUnitSize(trans, caps)
+
+				*carg2 = C.gsize(size)
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PrepareOutputBuffer != nil {
 		pclass.prepare_output_buffer = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_prepare_output_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_prepare_output_buffer",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 **C.GstBuffer) (cret C.GstFlowReturn) {
+				var trans  Instance       // go GstBaseTransform subclass
+				var input  *gst.Buffer    // in, none, converted
+				var outbuf *gst.Buffer    // out, full, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				input = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				outbuf, goret = overrides.PrepareOutputBuffer(trans, input)
+
+				*carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(outbuf))
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProposeAllocation != nil {
 		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_propose_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_propose_allocation",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstQuery, carg2 *C.GstQuery) (cret C.gboolean) {
+				var trans       Instance   // go GstBaseTransform subclass
+				var decideQuery *gst.Query // in, none, converted
+				var query       *gst.Query // in, none, converted
+				var goret       bool       // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decideQuery = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.ProposeAllocation(trans, decideQuery, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Query != nil {
 		pclass.query = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_query",
+			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstQuery) (cret C.gboolean) {
+				var trans     Instance         // go GstBaseTransform subclass
+				var direction gst.PadDirection // in, none, casted
+				var query     *gst.Query       // in, none, converted
+				var goret     bool             // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				direction = gst.PadDirection(carg1)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.Query(trans, direction, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetCaps != nil {
 		pclass.set_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_set_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_set_caps",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstCaps, carg2 *C.GstCaps) (cret C.gboolean) {
+				var trans   Instance  // go GstBaseTransform subclass
+				var incaps  *gst.Caps // in, none, converted
+				var outcaps *gst.Caps // in, none, converted
+				var goret   bool      // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.SetCaps(trans, incaps, outcaps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkEvent != nil {
 		pclass.sink_event = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_sink_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_sink_event",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstEvent) (cret C.gboolean) {
+				var trans Instance   // go GstBaseTransform subclass
+				var event *gst.Event // in, full, converted
+				var goret bool       // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkEvent(trans, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcEvent != nil {
 		pclass.src_event = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_src_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_src_event",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstEvent) (cret C.gboolean) {
+				var trans Instance   // go GstBaseTransform subclass
+				var event *gst.Event // in, full, converted
+				var goret bool       // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcEvent(trans, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_start",
+			func(carg0 *C.GstBaseTransform) (cret C.gboolean) {
+				var trans Instance // go GstBaseTransform subclass
+				var goret bool     // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(trans)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_stop",
+			func(carg0 *C.GstBaseTransform) (cret C.gboolean) {
+				var trans Instance // go GstBaseTransform subclass
+				var goret bool     // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(trans)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SubmitInputBuffer != nil {
 		pclass.submit_input_buffer = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_submit_input_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_submit_input_buffer",
+			func(carg0 *C.GstBaseTransform, carg1 C.gboolean, carg2 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var trans     Instance       // go GstBaseTransform subclass
+				var isDiscont bool           // in
+				var input     *gst.Buffer    // in, none, converted
+				var goret     gst.FlowReturn // return, none, casted
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					isDiscont = true
+				}
+				input = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.SubmitInputBuffer(trans, isDiscont, input)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Transform != nil {
 		pclass.transform = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_transform",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var trans  Instance       // go GstBaseTransform subclass
+				var inbuf  *gst.Buffer    // in, none, converted
+				var outbuf *gst.Buffer    // in, none, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.Transform(trans, inbuf, outbuf)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformCaps != nil {
 		pclass.transform_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_transform_caps",
+			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 *C.GstCaps) (cret *C.GstCaps) {
+				var trans     Instance         // go GstBaseTransform subclass
+				var direction gst.PadDirection // in, none, casted
+				var caps      *gst.Caps        // in, none, converted
+				var filter    *gst.Caps        // in, none, converted
+				var goret     *gst.Caps        // return, full, converted
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				direction = gst.PadDirection(carg1)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
+				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.TransformCaps(trans, direction, caps, filter)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformIP != nil {
 		pclass.transform_ip = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_ip)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_transform_ip",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var trans Instance       // go GstBaseTransform subclass
+				var buf   *gst.Buffer    // in, none, converted
+				var goret gst.FlowReturn // return, none, casted
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.TransformIP(trans, buf)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformMeta != nil {
 		pclass.transform_meta = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_meta)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_transform_meta",
+			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean) {
+				var trans  Instance    // go GstBaseTransform subclass
+				var outbuf *gst.Buffer // in, none, converted
+				var meta   *gst.Meta   // in, none, converted
+				var inbuf  *gst.Buffer // in, none, converted
+				var goret  bool        // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
+				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.TransformMeta(trans, outbuf, meta, inbuf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformSize != nil {
 		pclass.transform_size = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_size)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_BaseTransform_transform_size",
+			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 C.gsize, carg4 *C.GstCaps, carg5 *C.gsize) (cret C.gboolean) {
+				var trans     Instance         // go GstBaseTransform subclass
+				var direction gst.PadDirection // in, none, casted
+				var caps      *gst.Caps        // in, none, converted
+				var size      uint             // in, none, casted
+				var othercaps *gst.Caps        // in, none, converted
+				var othersize uint             // out, full, casted
+				var goret     bool             // return
+
+				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				direction = gst.PadDirection(carg1)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
+				size = uint(carg3)
+				othercaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg4))
+
+				othersize, goret = overrides.TransformSize(trans, direction, caps, size, othercaps)
+
+				*carg5 = C.gsize(othersize)
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterBaseTransformSubClass is used to register a go subclass of GstBaseTransform. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterBaseTransformSubClass[InstanceT BaseTransform](
+		name string,
+		classInit func(class *BaseTransformClass),
+		constructor func() InstanceT,
+		overrides BaseTransformOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeBaseTransform,
+		UnsafeBaseTransformClassFromGlibBorrow,
+		UnsafeApplyBaseTransformOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBaseTransform(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // CollectPadsInstance is the instance type used by all types extending GstCollectPads. It is used internally by the bindings. Users should use the interface [CollectPads] instead.
@@ -10302,6 +12318,32 @@ func UnsafeApplyCollectPadsOverrides[Instance CollectPads](gclass unsafe.Pointer
 	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
+// RegisterCollectPadsSubClass is used to register a go subclass of GstCollectPads. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterCollectPadsSubClass[InstanceT CollectPads](
+		name string,
+		classInit func(class *CollectPadsClass),
+		constructor func() InstanceT,
+		overrides CollectPadsOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeCollectPads,
+		UnsafeCollectPadsClassFromGlibBorrow,
+		UnsafeApplyCollectPadsOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapCollectPads(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // DataQueueInstance is the instance type used by all types extending GstDataQueue. It is used internally by the bindings. Users should use the interface [DataQueue] instead.
 type DataQueueInstance struct {
 	_ [0]func() // equal guard
@@ -10410,11 +12452,59 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 
 	if overrides.Empty != nil {
 		pclass.empty = (*[0]byte)(C._gotk4_gstbase1_DataQueue_empty)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_DataQueue_empty",
+			func(carg0 *C.GstDataQueue) {
+				var queue Instance // go GstDataQueue subclass
+
+				queue = UnsafeDataQueueFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Empty(queue)
+			},
+		)
 	}
 
 	if overrides.Full != nil {
 		pclass.full = (*[0]byte)(C._gotk4_gstbase1_DataQueue_full)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_DataQueue_full",
+			func(carg0 *C.GstDataQueue) {
+				var queue Instance // go GstDataQueue subclass
+
+				queue = UnsafeDataQueueFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Full(queue)
+			},
+		)
 	}
+}
+
+// RegisterDataQueueSubClass is used to register a go subclass of GstDataQueue. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterDataQueueSubClass[InstanceT DataQueue](
+		name string,
+		classInit func(class *DataQueueClass),
+		constructor func() InstanceT,
+		overrides DataQueueOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeDataQueue,
+		UnsafeDataQueueClassFromGlibBorrow,
+		UnsafeApplyDataQueueOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDataQueue(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // PushSrcInstance is the instance type used by all types extending GstPushSrc. It is used internally by the bindings. Users should use the interface [PushSrc] instead.
@@ -10525,11 +12615,73 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 
 	if overrides.Alloc != nil {
 		pclass.alloc = (*[0]byte)(C._gotk4_gstbase1_PushSrc_alloc)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_PushSrc_alloc",
+			func(carg0 *C.GstPushSrc, carg1 **C.GstBuffer) (cret C.GstFlowReturn) {
+				var src   Instance       // go GstPushSrc subclass
+				var buf   *gst.Buffer    // out, full, converted
+				var goret gst.FlowReturn // return, none, casted
+
+				src = UnsafePushSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				buf, goret = overrides.Alloc(src)
+
+				*carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buf))
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Fill != nil {
 		pclass.fill = (*[0]byte)(C._gotk4_gstbase1_PushSrc_fill)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstbase1_PushSrc_fill",
+			func(carg0 *C.GstPushSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var src   Instance       // go GstPushSrc subclass
+				var buf   *gst.Buffer    // in, none, converted
+				var goret gst.FlowReturn // return, none, casted
+
+				src = UnsafePushSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Fill(src, buf)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterPushSrcSubClass is used to register a go subclass of GstPushSrc. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterPushSrcSubClass[InstanceT PushSrc](
+		name string,
+		classInit func(class *PushSrcClass),
+		constructor func() InstanceT,
+		overrides PushSrcOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypePushSrc,
+		UnsafePushSrcClassFromGlibBorrow,
+		UnsafeApplyPushSrcOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPushSrc(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AdapterClass wraps GstAdapterClass

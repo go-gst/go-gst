@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -2462,79 +2463,455 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 
 	if overrides.AddCandidate != nil {
 		pclass.add_candidate = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_add_candidate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_add_candidate",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.GstPromise) {
+				var ice       Instance        // go GstWebRTCICE subclass
+				var stream    WebRTCICEStream // in, none, converted
+				var candidate string          // in, none, string
+				var promise   *gst.Promise    // in, none, converted, nullable
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
+				candidate = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+				if carg3 != nil {
+					promise = gst.UnsafePromiseFromGlibNone(unsafe.Pointer(carg3))
+				}
+
+				overrides.AddCandidate(ice, stream, candidate, promise)
+			},
+		)
 	}
 
 	if overrides.AddStream != nil {
 		pclass.add_stream = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_add_stream)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_add_stream",
+			func(carg0 *C.GstWebRTCICE, carg1 C.guint) (cret *C.GstWebRTCICEStream) {
+				var ice       Instance        // go GstWebRTCICE subclass
+				var sessionId uint            // in, none, casted
+				var goret     WebRTCICEStream // return, full, converted, nullable
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sessionId = uint(carg1)
+
+				goret = overrides.AddStream(ice, sessionId)
+
+				if goret != nil {
+					cret = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.AddTurnServer != nil {
 		pclass.add_turn_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_add_turn_server)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_add_turn_server",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.gchar) (cret C.gboolean) {
+				var ice   Instance // go GstWebRTCICE subclass
+				var uri   string   // in, none, string
+				var goret bool     // return
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				goret = overrides.AddTurnServer(ice, uri)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.FindTransport != nil {
 		pclass.find_transport = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_find_transport)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_find_transport",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 C.GstWebRTCICEComponent) (cret *C.GstWebRTCICETransport) {
+				var ice       Instance           // go GstWebRTCICE subclass
+				var stream    WebRTCICEStream    // in, none, converted
+				var component WebRTCICEComponent // in, none, casted
+				var goret     WebRTCICETransport // return, full, converted, nullable
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
+				component = WebRTCICEComponent(carg2)
+
+				goret = overrides.FindTransport(ice, stream, component)
+
+				if goret != nil {
+					cret = (*C.GstWebRTCICETransport)(UnsafeWebRTCICETransportToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GatherCandidates != nil {
 		pclass.gather_candidates = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_gather_candidates)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_gather_candidates",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream) (cret C.gboolean) {
+				var ice    Instance        // go GstWebRTCICE subclass
+				var stream WebRTCICEStream // in, none, converted
+				var goret  bool            // return
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.GatherCandidates(ice, stream)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetHTTPProxy != nil {
 		pclass.get_http_proxy = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_http_proxy)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_get_http_proxy",
+			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
+				var ice   Instance // go GstWebRTCICE subclass
+				var goret string   // return, full, string
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetHTTPProxy(ice)
+
+				cret = (*C.gchar)(unsafe.Pointer(C.CString(goret)))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetIsController != nil {
 		pclass.get_is_controller = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_is_controller)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_get_is_controller",
+			func(carg0 *C.GstWebRTCICE) (cret C.gboolean) {
+				var ice   Instance // go GstWebRTCICE subclass
+				var goret bool     // return
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetIsController(ice)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetSelectedPair != nil {
 		pclass.get_selected_pair = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_selected_pair)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_get_selected_pair",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 **C.GstWebRTCICECandidateStats, carg3 **C.GstWebRTCICECandidateStats) (cret C.gboolean) {
+				var ice         Instance                 // go GstWebRTCICE subclass
+				var stream      WebRTCICEStream          // in, none, converted
+				var localStats  *WebRTCICECandidateStats // out, full, converted
+				var remoteStats *WebRTCICECandidateStats // out, full, converted
+				var goret       bool                     // return
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
+
+				localStats, remoteStats, goret = overrides.GetSelectedPair(ice, stream)
+
+				*carg2 = (*C.GstWebRTCICECandidateStats)(UnsafeWebRTCICECandidateStatsToGlibFull(localStats))
+				*carg3 = (*C.GstWebRTCICECandidateStats)(UnsafeWebRTCICECandidateStatsToGlibFull(remoteStats))
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetStunServer != nil {
 		pclass.get_stun_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_stun_server)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_get_stun_server",
+			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
+				var ice   Instance // go GstWebRTCICE subclass
+				var goret string   // return, full, string, nullable-string
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetStunServer(ice)
+
+				if goret != "" {
+					cret = (*C.gchar)(unsafe.Pointer(C.CString(goret)))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetTurnServer != nil {
 		pclass.get_turn_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_turn_server)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_get_turn_server",
+			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
+				var ice   Instance // go GstWebRTCICE subclass
+				var goret string   // return, full, string, nullable-string
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetTurnServer(ice)
+
+				if goret != "" {
+					cret = (*C.gchar)(unsafe.Pointer(C.CString(goret)))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetForceRelay != nil {
 		pclass.set_force_relay = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_force_relay)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_set_force_relay",
+			func(carg0 *C.GstWebRTCICE, carg1 C.gboolean) {
+				var ice        Instance // go GstWebRTCICE subclass
+				var forceRelay bool     // in
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					forceRelay = true
+				}
+
+				overrides.SetForceRelay(ice, forceRelay)
+			},
+		)
 	}
 
 	if overrides.SetHTTPProxy != nil {
 		pclass.set_http_proxy = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_http_proxy)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_set_http_proxy",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.gchar) {
+				var ice Instance // go GstWebRTCICE subclass
+				var uri string   // in, none, string
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				overrides.SetHTTPProxy(ice, uri)
+			},
+		)
 	}
 
 	if overrides.SetIsController != nil {
 		pclass.set_is_controller = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_is_controller)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_set_is_controller",
+			func(carg0 *C.GstWebRTCICE, carg1 C.gboolean) {
+				var ice        Instance // go GstWebRTCICE subclass
+				var controller bool     // in
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					controller = true
+				}
+
+				overrides.SetIsController(ice, controller)
+			},
+		)
 	}
 
 	if overrides.SetLocalCredentials != nil {
 		pclass.set_local_credentials = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_local_credentials)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_set_local_credentials",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
+				var ice    Instance        // go GstWebRTCICE subclass
+				var stream WebRTCICEStream // in, none, converted
+				var ufrag  string          // in, none, string
+				var pwd    string          // in, none, string
+				var goret  bool            // return
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
+				ufrag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+				pwd = C.GoString((*C.char)(unsafe.Pointer(carg3)))
+
+				goret = overrides.SetLocalCredentials(ice, stream, ufrag, pwd)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetOnIceCandidate != nil {
 		pclass.set_on_ice_candidate = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate",
+			func(carg0 *C.GstWebRTCICE, carg1 C.GstWebRTCICEOnCandidateFunc, carg2 C.gpointer, carg3 C.GDestroyNotify) {
+				var ice Instance                 // go GstWebRTCICE subclass
+				var fn  WebRTCICEOnCandidateFunc // in, transfer: none, C Pointers: 0, Name: WebRTCICEOnCandidateFunc, scope: notified, closure: carg2, destroy: carg3
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				_ = fn
+				_ = carg1
+				_ = _
+				_ = carg2
+				_ = notify
+				_ = carg3
+				panic("unimplemented conversion of WebRTCICEOnCandidateFunc (GstWebRTCICEOnCandidateFunc)")
+
+				overrides.SetOnIceCandidate(ice, fn)
+			},
+		)
 	}
 
 	if overrides.SetRemoteCredentials != nil {
 		pclass.set_remote_credentials = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
+				var ice    Instance        // go GstWebRTCICE subclass
+				var stream WebRTCICEStream // in, none, converted
+				var ufrag  string          // in, none, string
+				var pwd    string          // in, none, string
+				var goret  bool            // return
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
+				ufrag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+				pwd = C.GoString((*C.char)(unsafe.Pointer(carg3)))
+
+				goret = overrides.SetRemoteCredentials(ice, stream, ufrag, pwd)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetStunServer != nil {
 		pclass.set_stun_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_stun_server)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_set_stun_server",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.gchar) {
+				var ice Instance // go GstWebRTCICE subclass
+				var uri string   // in, none, string, nullable-string
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != nil {
+					uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+				}
+
+				overrides.SetStunServer(ice, uri)
+			},
+		)
 	}
 
 	if overrides.SetTos != nil {
 		pclass.set_tos = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_tos)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_set_tos",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 C.guint) {
+				var ice    Instance        // go GstWebRTCICE subclass
+				var stream WebRTCICEStream // in, none, converted
+				var tos    uint            // in, none, casted
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
+				tos = uint(carg2)
+
+				overrides.SetTos(ice, stream, tos)
+			},
+		)
 	}
 
 	if overrides.SetTurnServer != nil {
 		pclass.set_turn_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_turn_server)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICE_set_turn_server",
+			func(carg0 *C.GstWebRTCICE, carg1 *C.gchar) {
+				var ice Instance // go GstWebRTCICE subclass
+				var uri string   // in, none, string, nullable-string
+
+				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != nil {
+					uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+				}
+
+				overrides.SetTurnServer(ice, uri)
+			},
+		)
 	}
+}
+
+// RegisterWebRTCICESubClass is used to register a go subclass of GstWebRTCICE. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterWebRTCICESubClass[InstanceT WebRTCICE](
+		name string,
+		classInit func(class *WebRTCICEClass),
+		constructor func() InstanceT,
+		overrides WebRTCICEOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeWebRTCICE,
+		UnsafeWebRTCICEClassFromGlibBorrow,
+		UnsafeApplyWebRTCICEOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCICE(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // WebRTCICEStreamInstance is the instance type used by all types extending GstWebRTCICEStream. It is used internally by the bindings. Users should use the interface [WebRTCICEStream] instead.
@@ -2690,11 +3067,75 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 
 	if overrides.FindTransport != nil {
 		pclass.find_transport = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICEStream_find_transport)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICEStream_find_transport",
+			func(carg0 *C.GstWebRTCICEStream, carg1 C.GstWebRTCICEComponent) (cret *C.GstWebRTCICETransport) {
+				var stream    Instance           // go GstWebRTCICEStream subclass
+				var component WebRTCICEComponent // in, none, casted
+				var goret     WebRTCICETransport // return, full, converted, nullable
+
+				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				component = WebRTCICEComponent(carg1)
+
+				goret = overrides.FindTransport(stream, component)
+
+				if goret != nil {
+					cret = (*C.GstWebRTCICETransport)(UnsafeWebRTCICETransportToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GatherCandidates != nil {
 		pclass.gather_candidates = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates",
+			func(carg0 *C.GstWebRTCICEStream) (cret C.gboolean) {
+				var ice   Instance // go GstWebRTCICEStream subclass
+				var goret bool     // return
+
+				ice = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GatherCandidates(ice)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterWebRTCICEStreamSubClass is used to register a go subclass of GstWebRTCICEStream. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterWebRTCICEStreamSubClass[InstanceT WebRTCICEStream](
+		name string,
+		classInit func(class *WebRTCICEStreamClass),
+		constructor func() InstanceT,
+		overrides WebRTCICEStreamOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeWebRTCICEStream,
+		UnsafeWebRTCICEStreamClassFromGlibBorrow,
+		UnsafeApplyWebRTCICEStreamOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCICEStream(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // WebRTCICETransportInstance is the instance type used by all types extending GstWebRTCICETransport. It is used internally by the bindings. Users should use the interface [WebRTCICETransport] instead.
@@ -2878,7 +3319,51 @@ func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass 
 
 	if overrides.GatherCandidates != nil {
 		pclass.gather_candidates = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates",
+			func(carg0 *C.GstWebRTCICETransport) (cret C.gboolean) {
+				var transport Instance // go GstWebRTCICETransport subclass
+				var goret     bool     // return
+
+				transport = UnsafeWebRTCICETransportFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GatherCandidates(transport)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterWebRTCICETransportSubClass is used to register a go subclass of GstWebRTCICETransport. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterWebRTCICETransportSubClass[InstanceT WebRTCICETransport](
+		name string,
+		classInit func(class *WebRTCICETransportClass),
+		constructor func() InstanceT,
+		overrides WebRTCICETransportOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeWebRTCICETransport,
+		UnsafeWebRTCICETransportClassFromGlibBorrow,
+		UnsafeApplyWebRTCICETransportOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCICETransport(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // WebRTCRTPReceiverInstance is the instance type used by all types extending GstWebRTCRTPReceiver. It is used internally by the bindings. Users should use the interface [WebRTCRTPReceiver] instead.

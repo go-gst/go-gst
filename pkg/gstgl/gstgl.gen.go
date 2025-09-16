@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -3035,15 +3036,92 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 
 	if overrides.GLSetCaps != nil {
 		pclass.gl_set_caps = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_set_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLBaseFilter_gl_set_caps",
+			func(carg0 *C.GstGLBaseFilter, carg1 *C.GstCaps, carg2 *C.GstCaps) (cret C.gboolean) {
+				var filter  Instance  // go GstGLBaseFilter subclass
+				var incaps  *gst.Caps // in, none, converted
+				var outcaps *gst.Caps // in, none, converted
+				var goret   bool      // return
+
+				filter = UnsafeGLBaseFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.GLSetCaps(filter, incaps, outcaps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GLStart != nil {
 		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLBaseFilter_gl_start",
+			func(carg0 *C.GstGLBaseFilter) (cret C.gboolean) {
+				var filter Instance // go GstGLBaseFilter subclass
+				var goret  bool     // return
+
+				filter = UnsafeGLBaseFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GLStart(filter)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GLStop != nil {
 		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLBaseFilter_gl_stop",
+			func(carg0 *C.GstGLBaseFilter) {
+				var filter Instance // go GstGLBaseFilter subclass
+
+				filter = UnsafeGLBaseFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.GLStop(filter)
+			},
+		)
 	}
+}
+
+// RegisterGLBaseFilterSubClass is used to register a go subclass of GstGLBaseFilter. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLBaseFilterSubClass[InstanceT GLBaseFilter](
+		name string,
+		classInit func(class *GLBaseFilterClass),
+		constructor func() InstanceT,
+		overrides GLBaseFilterOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLBaseFilter,
+		UnsafeGLBaseFilterClassFromGlibBorrow,
+		UnsafeApplyGLBaseFilterOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseFilter(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLBaseMemoryAllocatorInstance is the instance type used by all types extending GstGLBaseMemoryAllocator. It is used internally by the bindings. Users should use the interface [GLBaseMemoryAllocator] instead.
@@ -3114,6 +3192,32 @@ type GLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator](gclass unsafe.Pointer, overrides GLBaseMemoryAllocatorOverrides[Instance]) {
 	gst.UnsafeApplyAllocatorOverrides(gclass, overrides.AllocatorOverrides)
+}
+
+// RegisterGLBaseMemoryAllocatorSubClass is used to register a go subclass of GstGLBaseMemoryAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLBaseMemoryAllocatorSubClass[InstanceT GLBaseMemoryAllocator](
+		name string,
+		classInit func(class *GLBaseMemoryAllocatorClass),
+		constructor func() InstanceT,
+		overrides GLBaseMemoryAllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLBaseMemoryAllocator,
+		UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow,
+		UnsafeApplyGLBaseMemoryAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseMemoryAllocator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLBaseMixerInstance is the instance type used by all types extending GstGLBaseMixer. It is used internally by the bindings. Users should use the interface [GLBaseMixer] instead.
@@ -3232,11 +3336,66 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 
 	if overrides.GLStart != nil {
 		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLBaseMixer_gl_start",
+			func(carg0 *C.GstGLBaseMixer) (cret C.gboolean) {
+				var mix   Instance // go GstGLBaseMixer subclass
+				var goret bool     // return
+
+				mix = UnsafeGLBaseMixerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GLStart(mix)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GLStop != nil {
 		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLBaseMixer_gl_stop",
+			func(carg0 *C.GstGLBaseMixer) {
+				var mix Instance // go GstGLBaseMixer subclass
+
+				mix = UnsafeGLBaseMixerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.GLStop(mix)
+			},
+		)
 	}
+}
+
+// RegisterGLBaseMixerSubClass is used to register a go subclass of GstGLBaseMixer. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLBaseMixerSubClass[InstanceT GLBaseMixer](
+		name string,
+		classInit func(class *GLBaseMixerClass),
+		constructor func() InstanceT,
+		overrides GLBaseMixerOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLBaseMixer,
+		UnsafeGLBaseMixerClassFromGlibBorrow,
+		UnsafeApplyGLBaseMixerOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseMixer(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLBaseMixerPadInstance is the instance type used by all types extending GstGLBaseMixerPad. It is used internally by the bindings. Users should use the interface [GLBaseMixerPad] instead.
@@ -3309,6 +3468,32 @@ type GLBaseMixerPadOverrides[Instance GLBaseMixerPad] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLBaseMixerPadOverrides[Instance GLBaseMixerPad](gclass unsafe.Pointer, overrides GLBaseMixerPadOverrides[Instance]) {
 	gstvideo.UnsafeApplyVideoAggregatorPadOverrides(gclass, overrides.VideoAggregatorPadOverrides)
+}
+
+// RegisterGLBaseMixerPadSubClass is used to register a go subclass of GstGLBaseMixerPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLBaseMixerPadSubClass[InstanceT GLBaseMixerPad](
+		name string,
+		classInit func(class *GLBaseMixerPadClass),
+		constructor func() InstanceT,
+		overrides GLBaseMixerPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLBaseMixerPad,
+		UnsafeGLBaseMixerPadClassFromGlibBorrow,
+		UnsafeApplyGLBaseMixerPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseMixerPad(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLBaseSrcInstance is the instance type used by all types extending GstGLBaseSrc. It is used internally by the bindings. Users should use the interface [GLBaseSrc] instead.
@@ -3407,15 +3592,90 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 
 	if overrides.FillGLMemory != nil {
 		pclass.fill_gl_memory = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_fill_gl_memory)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLBaseSrc_fill_gl_memory",
+			func(carg0 *C.GstGLBaseSrc, carg1 *C.GstGLMemory) (cret C.gboolean) {
+				var src   Instance  // go GstGLBaseSrc subclass
+				var mem   *GLMemory // in, none, converted
+				var goret bool      // return
+
+				src = UnsafeGLBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				mem = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.FillGLMemory(src, mem)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GLStart != nil {
 		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_gl_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLBaseSrc_gl_start",
+			func(carg0 *C.GstGLBaseSrc) (cret C.gboolean) {
+				var src   Instance // go GstGLBaseSrc subclass
+				var goret bool     // return
+
+				src = UnsafeGLBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GLStart(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GLStop != nil {
 		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_gl_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLBaseSrc_gl_stop",
+			func(carg0 *C.GstGLBaseSrc) {
+				var src Instance // go GstGLBaseSrc subclass
+
+				src = UnsafeGLBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.GLStop(src)
+			},
+		)
 	}
+}
+
+// RegisterGLBaseSrcSubClass is used to register a go subclass of GstGLBaseSrc. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLBaseSrcSubClass[InstanceT GLBaseSrc](
+		name string,
+		classInit func(class *GLBaseSrcClass),
+		constructor func() InstanceT,
+		overrides GLBaseSrcOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLBaseSrc,
+		UnsafeGLBaseSrcClassFromGlibBorrow,
+		UnsafeApplyGLBaseSrcOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseSrc(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLBufferAllocatorInstance is the instance type used by all types extending GstGLBufferAllocator. It is used internally by the bindings. Users should use the interface [GLBufferAllocator] instead.
@@ -3488,6 +3748,32 @@ type GLBufferAllocatorOverrides[Instance GLBufferAllocator] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLBufferAllocatorOverrides[Instance GLBufferAllocator](gclass unsafe.Pointer, overrides GLBufferAllocatorOverrides[Instance]) {
 	UnsafeApplyGLBaseMemoryAllocatorOverrides(gclass, overrides.GLBaseMemoryAllocatorOverrides)
+}
+
+// RegisterGLBufferAllocatorSubClass is used to register a go subclass of GstGLBufferAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLBufferAllocatorSubClass[InstanceT GLBufferAllocator](
+		name string,
+		classInit func(class *GLBufferAllocatorClass),
+		constructor func() InstanceT,
+		overrides GLBufferAllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLBufferAllocator,
+		UnsafeGLBufferAllocatorClassFromGlibBorrow,
+		UnsafeApplyGLBufferAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBufferAllocator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLBufferPoolInstance is the instance type used by all types extending GstGLBufferPool. It is used internally by the bindings. Users should use the interface [GLBufferPool] instead.
@@ -3630,6 +3916,32 @@ type GLBufferPoolOverrides[Instance GLBufferPool] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLBufferPoolOverrides[Instance GLBufferPool](gclass unsafe.Pointer, overrides GLBufferPoolOverrides[Instance]) {
 	gst.UnsafeApplyBufferPoolOverrides(gclass, overrides.BufferPoolOverrides)
+}
+
+// RegisterGLBufferPoolSubClass is used to register a go subclass of GstGLBufferPool. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLBufferPoolSubClass[InstanceT GLBufferPool](
+		name string,
+		classInit func(class *GLBufferPoolClass),
+		constructor func() InstanceT,
+		overrides GLBufferPoolOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLBufferPool,
+		UnsafeGLBufferPoolClassFromGlibBorrow,
+		UnsafeApplyGLBufferPoolOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBufferPool(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLColorConvertInstance is the instance type used by all types extending GstGLColorConvert. It is used internally by the bindings. Users should use the interface [GLColorConvert] instead.
@@ -4009,6 +4321,32 @@ type GLColorConvertOverrides[Instance GLColorConvert] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLColorConvertOverrides[Instance GLColorConvert](gclass unsafe.Pointer, overrides GLColorConvertOverrides[Instance]) {
 	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
+// RegisterGLColorConvertSubClass is used to register a go subclass of GstGLColorConvert. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLColorConvertSubClass[InstanceT GLColorConvert](
+		name string,
+		classInit func(class *GLColorConvertClass),
+		constructor func() InstanceT,
+		overrides GLColorConvertOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLColorConvert,
+		UnsafeGLColorConvertClassFromGlibBorrow,
+		UnsafeApplyGLColorConvertOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLColorConvert(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLContextInstance is the instance type used by all types extending GstGLContext. It is used internally by the bindings. Users should use the interface [GLContext] instead.
@@ -5261,47 +5599,269 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 
 	if overrides.Activate != nil {
 		pclass.activate = (*[0]byte)(C._gotk4_gstgl1_GLContext_activate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_activate",
+			func(carg0 *C.GstGLContext, carg1 C.gboolean) (cret C.gboolean) {
+				var _context Instance // go GstGLContext subclass
+				var activate bool     // in
+				var goret    bool     // return
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					activate = true
+				}
+
+				goret = overrides.Activate(_context, activate)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.CheckFeature != nil {
 		pclass.check_feature = (*[0]byte)(C._gotk4_gstgl1_GLContext_check_feature)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_check_feature",
+			func(carg0 *C.GstGLContext, carg1 *C.gchar) (cret C.gboolean) {
+				var _context Instance // go GstGLContext subclass
+				var feature  string   // in, none, string
+				var goret    bool     // return
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				feature = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				goret = overrides.CheckFeature(_context, feature)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ChooseFormat != nil {
 		pclass.choose_format = (*[0]byte)(C._gotk4_gstgl1_GLContext_choose_format)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_choose_format",
+			func(carg0 *C.GstGLContext, _cerr **C.GError) (cret C.gboolean) {
+				var _context Instance // go GstGLContext subclass
+				var goret    bool     // return
+				var _goerr   error    // out, full, converted
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret, _goerr = overrides.ChooseFormat(_context)
+
+				if goret {
+					cret = C.TRUE
+				}
+				*_cerr = (*C.GError)(glib.UnsafeErrorToGlibFull(_goerr))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.CreateContext != nil {
 		pclass.create_context = (*[0]byte)(C._gotk4_gstgl1_GLContext_create_context)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_create_context",
+			func(carg0 *C.GstGLContext, carg1 C.GstGLAPI, carg2 *C.GstGLContext, _cerr **C.GError) (cret C.gboolean) {
+				var _context     Instance  // go GstGLContext subclass
+				var glApi        GLAPI     // in, none, casted
+				var otherContext GLContext // in, none, converted
+				var goret        bool      // return
+				var _goerr       error     // out, full, converted
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				glApi = GLAPI(carg1)
+				otherContext = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg2))
+
+				goret, _goerr = overrides.CreateContext(_context, glApi, otherContext)
+
+				if goret {
+					cret = C.TRUE
+				}
+				*_cerr = (*C.GError)(glib.UnsafeErrorToGlibFull(_goerr))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DestroyContext != nil {
 		pclass.destroy_context = (*[0]byte)(C._gotk4_gstgl1_GLContext_destroy_context)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_destroy_context",
+			func(carg0 *C.GstGLContext) {
+				var _context Instance // go GstGLContext subclass
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.DestroyContext(_context)
+			},
+		)
 	}
 
 	if overrides.GetConfig != nil {
 		pclass.get_config = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_config)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_get_config",
+			func(carg0 *C.GstGLContext) (cret *C.GstStructure) {
+				var _context Instance       // go GstGLContext subclass
+				var goret    *gst.Structure // return, full, converted, nullable
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetConfig(_context)
+
+				if goret != nil {
+					cret = (*C.GstStructure)(gst.UnsafeStructureToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetGLApi != nil {
 		pclass.get_gl_api = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_api)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_get_gl_api",
+			func(carg0 *C.GstGLContext) (cret C.GstGLAPI) {
+				var _context Instance // go GstGLContext subclass
+				var goret    GLAPI    // return, none, casted
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetGLApi(_context)
+
+				cret = C.GstGLAPI(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetGLPlatform != nil {
 		pclass.get_gl_platform = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_platform)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_get_gl_platform",
+			func(carg0 *C.GstGLContext) (cret C.GstGLPlatform) {
+				var _context Instance   // go GstGLContext subclass
+				var goret    GLPlatform // return, none, casted
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetGLPlatform(_context)
+
+				cret = C.GstGLPlatform(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetGLPlatformVersion != nil {
 		pclass.get_gl_platform_version = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_platform_version)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_get_gl_platform_version",
+			func(carg0 *C.GstGLContext, carg1 *C.gint, carg2 *C.gint) {
+				var _context Instance // go GstGLContext subclass
+				var major    int      // out, full, casted
+				var minor    int      // out, full, casted
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				major, minor = overrides.GetGLPlatformVersion(_context)
+
+				*carg1 = C.gint(major)
+				*carg2 = C.gint(minor)
+			},
+		)
 	}
 
 	if overrides.RequestConfig != nil {
 		pclass.request_config = (*[0]byte)(C._gotk4_gstgl1_GLContext_request_config)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_request_config",
+			func(carg0 *C.GstGLContext, carg1 *C.GstStructure) (cret C.gboolean) {
+				var _context Instance       // go GstGLContext subclass
+				var glConfig *gst.Structure // in, full, converted, nullable
+				var goret    bool           // return
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != nil {
+					glConfig = gst.UnsafeStructureFromGlibFull(unsafe.Pointer(carg1))
+				}
+
+				goret = overrides.RequestConfig(_context, glConfig)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SwapBuffers != nil {
 		pclass.swap_buffers = (*[0]byte)(C._gotk4_gstgl1_GLContext_swap_buffers)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLContext_swap_buffers",
+			func(carg0 *C.GstGLContext) {
+				var _context Instance // go GstGLContext subclass
+
+				_context = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.SwapBuffers(_context)
+			},
+		)
 	}
+}
+
+// RegisterGLContextSubClass is used to register a go subclass of GstGLContext. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLContextSubClass[InstanceT GLContext](
+		name string,
+		classInit func(class *GLContextClass),
+		constructor func() InstanceT,
+		overrides GLContextOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLContext,
+		UnsafeGLContextClassFromGlibBorrow,
+		UnsafeApplyGLContextOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLContext(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLDisplayInstance is the instance type used by all types extending GstGLDisplay. It is used internally by the bindings. Users should use the interface [GLDisplay] instead.
@@ -5776,7 +6336,51 @@ func UnsafeApplyGLDisplayOverrides[Instance GLDisplay](gclass unsafe.Pointer, ov
 
 	if overrides.CreateWindow != nil {
 		pclass.create_window = (*[0]byte)(C._gotk4_gstgl1_GLDisplay_create_window)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLDisplay_create_window",
+			func(carg0 *C.GstGLDisplay) (cret *C.GstGLWindow) {
+				var display Instance // go GstGLDisplay subclass
+				var goret   GLWindow // return, full, converted, nullable
+
+				display = UnsafeGLDisplayFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.CreateWindow(display)
+
+				if goret != nil {
+					cret = (*C.GstGLWindow)(UnsafeGLWindowToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterGLDisplaySubClass is used to register a go subclass of GstGLDisplay. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLDisplaySubClass[InstanceT GLDisplay](
+		name string,
+		classInit func(class *GLDisplayClass),
+		constructor func() InstanceT,
+		overrides GLDisplayOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLDisplay,
+		UnsafeGLDisplayClassFromGlibBorrow,
+		UnsafeApplyGLDisplayOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLDisplay(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLFilterInstance is the instance type used by all types extending GstGLFilter. It is used internally by the bindings. Users should use the interface [GLFilter] instead.
@@ -6087,23 +6691,155 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 
 	if overrides.Filter != nil {
 		pclass.filter = (*[0]byte)(C._gotk4_gstgl1_GLFilter_filter)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLFilter_filter",
+			func(carg0 *C.GstGLFilter, carg1 *C.GstBuffer, carg2 *C.GstBuffer) (cret C.gboolean) {
+				var filter Instance    // go GstGLFilter subclass
+				var inbuf  *gst.Buffer // in, none, converted
+				var outbuf *gst.Buffer // in, none, converted
+				var goret  bool        // return
+
+				filter = UnsafeGLFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.Filter(filter, inbuf, outbuf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.FilterTexture != nil {
 		pclass.filter_texture = (*[0]byte)(C._gotk4_gstgl1_GLFilter_filter_texture)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLFilter_filter_texture",
+			func(carg0 *C.GstGLFilter, carg1 *C.GstGLMemory, carg2 *C.GstGLMemory) (cret C.gboolean) {
+				var filter Instance  // go GstGLFilter subclass
+				var input  *GLMemory // in, none, converted
+				var output *GLMemory // in, none, converted
+				var goret  bool      // return
+
+				filter = UnsafeGLFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				input = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg1))
+				output = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.FilterTexture(filter, input, output)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.InitFbo != nil {
 		pclass.init_fbo = (*[0]byte)(C._gotk4_gstgl1_GLFilter_init_fbo)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLFilter_init_fbo",
+			func(carg0 *C.GstGLFilter) (cret C.gboolean) {
+				var filter Instance // go GstGLFilter subclass
+				var goret  bool     // return
+
+				filter = UnsafeGLFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.InitFbo(filter)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetCaps != nil {
 		pclass.set_caps = (*[0]byte)(C._gotk4_gstgl1_GLFilter_set_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLFilter_set_caps",
+			func(carg0 *C.GstGLFilter, carg1 *C.GstCaps, carg2 *C.GstCaps) (cret C.gboolean) {
+				var filter  Instance  // go GstGLFilter subclass
+				var incaps  *gst.Caps // in, none, converted
+				var outcaps *gst.Caps // in, none, converted
+				var goret   bool      // return
+
+				filter = UnsafeGLFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.SetCaps(filter, incaps, outcaps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformInternalCaps != nil {
 		pclass.transform_internal_caps = (*[0]byte)(C._gotk4_gstgl1_GLFilter_transform_internal_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLFilter_transform_internal_caps",
+			func(carg0 *C.GstGLFilter, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 *C.GstCaps) (cret *C.GstCaps) {
+				var filter     Instance         // go GstGLFilter subclass
+				var direction  gst.PadDirection // in, none, casted
+				var caps       *gst.Caps        // in, none, converted
+				var filterCaps *gst.Caps        // in, none, converted
+				var goret      *gst.Caps        // return, full, converted
+
+				filter = UnsafeGLFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				direction = gst.PadDirection(carg1)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
+				filterCaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.TransformInternalCaps(filter, direction, caps, filterCaps)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterGLFilterSubClass is used to register a go subclass of GstGLFilter. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLFilterSubClass[InstanceT GLFilter](
+		name string,
+		classInit func(class *GLFilterClass),
+		constructor func() InstanceT,
+		overrides GLFilterOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLFilter,
+		UnsafeGLFilterClassFromGlibBorrow,
+		UnsafeApplyGLFilterOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLFilter(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLFramebufferInstance is the instance type used by all types extending GstGLFramebuffer. It is used internally by the bindings. Users should use the interface [GLFramebuffer] instead.
@@ -6373,6 +7109,32 @@ func UnsafeApplyGLFramebufferOverrides[Instance GLFramebuffer](gclass unsafe.Poi
 	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
+// RegisterGLFramebufferSubClass is used to register a go subclass of GstGLFramebuffer. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLFramebufferSubClass[InstanceT GLFramebuffer](
+		name string,
+		classInit func(class *GLFramebufferClass),
+		constructor func() InstanceT,
+		overrides GLFramebufferOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLFramebuffer,
+		UnsafeGLFramebufferClassFromGlibBorrow,
+		UnsafeApplyGLFramebufferOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLFramebuffer(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // GLMemoryAllocatorInstance is the instance type used by all types extending GstGLMemoryAllocator. It is used internally by the bindings. Users should use the interface [GLMemoryAllocator] instead.
 type GLMemoryAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -6470,6 +7232,32 @@ func UnsafeApplyGLMemoryAllocatorOverrides[Instance GLMemoryAllocator](gclass un
 	UnsafeApplyGLBaseMemoryAllocatorOverrides(gclass, overrides.GLBaseMemoryAllocatorOverrides)
 }
 
+// RegisterGLMemoryAllocatorSubClass is used to register a go subclass of GstGLMemoryAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLMemoryAllocatorSubClass[InstanceT GLMemoryAllocator](
+		name string,
+		classInit func(class *GLMemoryAllocatorClass),
+		constructor func() InstanceT,
+		overrides GLMemoryAllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLMemoryAllocator,
+		UnsafeGLMemoryAllocatorClassFromGlibBorrow,
+		UnsafeApplyGLMemoryAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLMemoryAllocator(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // GLMemoryPBOAllocatorInstance is the instance type used by all types extending GstGLMemoryPBOAllocator. It is used internally by the bindings. Users should use the interface [GLMemoryPBOAllocator] instead.
 type GLMemoryPBOAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -6542,6 +7330,32 @@ type GLMemoryPBOAllocatorOverrides[Instance GLMemoryPBOAllocator] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLMemoryPBOAllocatorOverrides[Instance GLMemoryPBOAllocator](gclass unsafe.Pointer, overrides GLMemoryPBOAllocatorOverrides[Instance]) {
 	UnsafeApplyGLMemoryAllocatorOverrides(gclass, overrides.GLMemoryAllocatorOverrides)
+}
+
+// RegisterGLMemoryPBOAllocatorSubClass is used to register a go subclass of GstGLMemoryPBOAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLMemoryPBOAllocatorSubClass[InstanceT GLMemoryPBOAllocator](
+		name string,
+		classInit func(class *GLMemoryPBOAllocatorClass),
+		constructor func() InstanceT,
+		overrides GLMemoryPBOAllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLMemoryPBOAllocator,
+		UnsafeGLMemoryPBOAllocatorClassFromGlibBorrow,
+		UnsafeApplyGLMemoryPBOAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLMemoryPBOAllocator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLMixerInstance is the instance type used by all types extending GstGLMixer. It is used internally by the bindings. Users should use the interface [GLMixer] instead.
@@ -6717,11 +7531,77 @@ func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overri
 
 	if overrides.ProcessBuffers != nil {
 		pclass.process_buffers = (*[0]byte)(C._gotk4_gstgl1_GLMixer_process_buffers)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLMixer_process_buffers",
+			func(carg0 *C.GstGLMixer, carg1 *C.GstBuffer) (cret C.gboolean) {
+				var mix    Instance    // go GstGLMixer subclass
+				var outbuf *gst.Buffer // in, none, converted
+				var goret  bool        // return
+
+				mix = UnsafeGLMixerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ProcessBuffers(mix, outbuf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProcessTextures != nil {
 		pclass.process_textures = (*[0]byte)(C._gotk4_gstgl1_GLMixer_process_textures)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLMixer_process_textures",
+			func(carg0 *C.GstGLMixer, carg1 *C.GstGLMemory) (cret C.gboolean) {
+				var mix    Instance  // go GstGLMixer subclass
+				var outTex *GLMemory // in, none, converted
+				var goret  bool      // return
+
+				mix = UnsafeGLMixerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				outTex = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ProcessTextures(mix, outTex)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterGLMixerSubClass is used to register a go subclass of GstGLMixer. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLMixerSubClass[InstanceT GLMixer](
+		name string,
+		classInit func(class *GLMixerClass),
+		constructor func() InstanceT,
+		overrides GLMixerOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLMixer,
+		UnsafeGLMixerClassFromGlibBorrow,
+		UnsafeApplyGLMixerOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLMixer(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLMixerPadInstance is the instance type used by all types extending GstGLMixerPad. It is used internally by the bindings. Users should use the interface [GLMixerPad] instead.
@@ -6796,6 +7676,32 @@ type GLMixerPadOverrides[Instance GLMixerPad] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLMixerPadOverrides[Instance GLMixerPad](gclass unsafe.Pointer, overrides GLMixerPadOverrides[Instance]) {
 	UnsafeApplyGLBaseMixerPadOverrides(gclass, overrides.GLBaseMixerPadOverrides)
+}
+
+// RegisterGLMixerPadSubClass is used to register a go subclass of GstGLMixerPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLMixerPadSubClass[InstanceT GLMixerPad](
+		name string,
+		classInit func(class *GLMixerPadClass),
+		constructor func() InstanceT,
+		overrides GLMixerPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLMixerPad,
+		UnsafeGLMixerPadClassFromGlibBorrow,
+		UnsafeApplyGLMixerPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLMixerPad(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLOverlayCompositorInstance is the instance type used by all types extending GstGLOverlayCompositor. It is used internally by the bindings. Users should use the interface [GLOverlayCompositor] instead.
@@ -6964,6 +7870,32 @@ func UnsafeApplyGLOverlayCompositorOverrides[Instance GLOverlayCompositor](gclas
 	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
+// RegisterGLOverlayCompositorSubClass is used to register a go subclass of GstGLOverlayCompositor. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLOverlayCompositorSubClass[InstanceT GLOverlayCompositor](
+		name string,
+		classInit func(class *GLOverlayCompositorClass),
+		constructor func() InstanceT,
+		overrides GLOverlayCompositorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLOverlayCompositor,
+		UnsafeGLOverlayCompositorClassFromGlibBorrow,
+		UnsafeApplyGLOverlayCompositorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLOverlayCompositor(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // GLRenderbufferAllocatorInstance is the instance type used by all types extending GstGLRenderbufferAllocator. It is used internally by the bindings. Users should use the interface [GLRenderbufferAllocator] instead.
 type GLRenderbufferAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -7034,6 +7966,32 @@ type GLRenderbufferAllocatorOverrides[Instance GLRenderbufferAllocator] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLRenderbufferAllocatorOverrides[Instance GLRenderbufferAllocator](gclass unsafe.Pointer, overrides GLRenderbufferAllocatorOverrides[Instance]) {
 	UnsafeApplyGLBaseMemoryAllocatorOverrides(gclass, overrides.GLBaseMemoryAllocatorOverrides)
+}
+
+// RegisterGLRenderbufferAllocatorSubClass is used to register a go subclass of GstGLRenderbufferAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLRenderbufferAllocatorSubClass[InstanceT GLRenderbufferAllocator](
+		name string,
+		classInit func(class *GLRenderbufferAllocatorClass),
+		constructor func() InstanceT,
+		overrides GLRenderbufferAllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLRenderbufferAllocator,
+		UnsafeGLRenderbufferAllocatorClassFromGlibBorrow,
+		UnsafeApplyGLRenderbufferAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLRenderbufferAllocator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLSLStageInstance is the instance type used by all types extending GstGLSLStage. It is used internally by the bindings. Users should use the interface [GLSLStage] instead.
@@ -7472,6 +8430,32 @@ type GLSLStageOverrides[Instance GLSLStage] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLSLStageOverrides[Instance GLSLStage](gclass unsafe.Pointer, overrides GLSLStageOverrides[Instance]) {
 	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
+// RegisterGLSLStageSubClass is used to register a go subclass of GstGLSLStage. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLSLStageSubClass[InstanceT GLSLStage](
+		name string,
+		classInit func(class *GLSLStageClass),
+		constructor func() InstanceT,
+		overrides GLSLStageOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLSLStage,
+		UnsafeGLSLStageClassFromGlibBorrow,
+		UnsafeApplyGLSLStageOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLSLStage(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLShaderInstance is the instance type used by all types extending GstGLShader. It is used internally by the bindings. Users should use the interface [GLShader] instead.
@@ -9247,6 +10231,32 @@ func UnsafeApplyGLShaderOverrides[Instance GLShader](gclass unsafe.Pointer, over
 	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
+// RegisterGLShaderSubClass is used to register a go subclass of GstGLShader. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLShaderSubClass[InstanceT GLShader](
+		name string,
+		classInit func(class *GLShaderClass),
+		constructor func() InstanceT,
+		overrides GLShaderOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLShader,
+		UnsafeGLShaderClassFromGlibBorrow,
+		UnsafeApplyGLShaderOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLShader(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // GLUploadInstance is the instance type used by all types extending GstGLUpload. It is used internally by the bindings. Users should use the interface [GLUpload] instead.
 type GLUploadInstance struct {
 	_ [0]func() // equal guard
@@ -9650,6 +10660,32 @@ type GLUploadOverrides[Instance GLUpload] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLUploadOverrides[Instance GLUpload](gclass unsafe.Pointer, overrides GLUploadOverrides[Instance]) {
 	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
+// RegisterGLUploadSubClass is used to register a go subclass of GstGLUpload. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLUploadSubClass[InstanceT GLUpload](
+		name string,
+		classInit func(class *GLUploadClass),
+		constructor func() InstanceT,
+		overrides GLUploadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLUpload,
+		UnsafeGLUploadClassFromGlibBorrow,
+		UnsafeApplyGLUploadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLUpload(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLViewConvertInstance is the instance type used by all types extending GstGLViewConvert. It is used internally by the bindings. Users should use the interface [GLViewConvert] instead.
@@ -10065,6 +11101,32 @@ type GLViewConvertOverrides[Instance GLViewConvert] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLViewConvertOverrides[Instance GLViewConvert](gclass unsafe.Pointer, overrides GLViewConvertOverrides[Instance]) {
 	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
+// RegisterGLViewConvertSubClass is used to register a go subclass of GstGLViewConvert. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLViewConvertSubClass[InstanceT GLViewConvert](
+		name string,
+		classInit func(class *GLViewConvertClass),
+		constructor func() InstanceT,
+		overrides GLViewConvertOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLViewConvert,
+		UnsafeGLViewConvertClassFromGlibBorrow,
+		UnsafeApplyGLViewConvertOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLViewConvert(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLWindowInstance is the instance type used by all types extending GstGLWindow. It is used internally by the bindings. Users should use the interface [GLWindow] instead.
@@ -10748,51 +11810,255 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 
 	if overrides.Close != nil {
 		pclass.close = (*[0]byte)(C._gotk4_gstgl1_GLWindow_close)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_close",
+			func(carg0 *C.GstGLWindow) {
+				var window Instance // go GstGLWindow subclass
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Close(window)
+			},
+		)
 	}
 
 	if overrides.ControlsViewport != nil {
 		pclass.controls_viewport = (*[0]byte)(C._gotk4_gstgl1_GLWindow_controls_viewport)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_controls_viewport",
+			func(carg0 *C.GstGLWindow) (cret C.gboolean) {
+				var window Instance // go GstGLWindow subclass
+				var goret  bool     // return
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.ControlsViewport(window)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Draw != nil {
 		pclass.draw = (*[0]byte)(C._gotk4_gstgl1_GLWindow_draw)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_draw",
+			func(carg0 *C.GstGLWindow) {
+				var window Instance // go GstGLWindow subclass
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Draw(window)
+			},
+		)
 	}
 
 	if overrides.HandleEvents != nil {
 		pclass.handle_events = (*[0]byte)(C._gotk4_gstgl1_GLWindow_handle_events)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_handle_events",
+			func(carg0 *C.GstGLWindow, carg1 C.gboolean) {
+				var window       Instance // go GstGLWindow subclass
+				var handleEvents bool     // in
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					handleEvents = true
+				}
+
+				overrides.HandleEvents(window, handleEvents)
+			},
+		)
 	}
 
 	if overrides.HasOutputSurface != nil {
 		pclass.has_output_surface = (*[0]byte)(C._gotk4_gstgl1_GLWindow_has_output_surface)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_has_output_surface",
+			func(carg0 *C.GstGLWindow) (cret C.gboolean) {
+				var window Instance // go GstGLWindow subclass
+				var goret  bool     // return
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.HasOutputSurface(window)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Open != nil {
 		pclass.open = (*[0]byte)(C._gotk4_gstgl1_GLWindow_open)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_open",
+			func(carg0 *C.GstGLWindow, _cerr **C.GError) (cret C.gboolean) {
+				var window Instance // go GstGLWindow subclass
+				var goret  bool     // return
+				var _goerr error    // out, full, converted
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret, _goerr = overrides.Open(window)
+
+				if goret {
+					cret = C.TRUE
+				}
+				*_cerr = (*C.GError)(glib.UnsafeErrorToGlibFull(_goerr))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.QueueResize != nil {
 		pclass.queue_resize = (*[0]byte)(C._gotk4_gstgl1_GLWindow_queue_resize)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_queue_resize",
+			func(carg0 *C.GstGLWindow) {
+				var window Instance // go GstGLWindow subclass
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.QueueResize(window)
+			},
+		)
 	}
 
 	if overrides.Quit != nil {
 		pclass.quit = (*[0]byte)(C._gotk4_gstgl1_GLWindow_quit)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_quit",
+			func(carg0 *C.GstGLWindow) {
+				var window Instance // go GstGLWindow subclass
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Quit(window)
+			},
+		)
 	}
 
 	if overrides.Run != nil {
 		pclass.run = (*[0]byte)(C._gotk4_gstgl1_GLWindow_run)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_run",
+			func(carg0 *C.GstGLWindow) {
+				var window Instance // go GstGLWindow subclass
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Run(window)
+			},
+		)
 	}
 
 	if overrides.SetPreferredSize != nil {
 		pclass.set_preferred_size = (*[0]byte)(C._gotk4_gstgl1_GLWindow_set_preferred_size)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_set_preferred_size",
+			func(carg0 *C.GstGLWindow, carg1 C.gint, carg2 C.gint) {
+				var window Instance // go GstGLWindow subclass
+				var width  int      // in, none, casted
+				var height int      // in, none, casted
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				width = int(carg1)
+				height = int(carg2)
+
+				overrides.SetPreferredSize(window, width, height)
+			},
+		)
 	}
 
 	if overrides.SetRenderRectangle != nil {
 		pclass.set_render_rectangle = (*[0]byte)(C._gotk4_gstgl1_GLWindow_set_render_rectangle)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_set_render_rectangle",
+			func(carg0 *C.GstGLWindow, carg1 C.gint, carg2 C.gint, carg3 C.gint, carg4 C.gint) (cret C.gboolean) {
+				var window Instance // go GstGLWindow subclass
+				var x      int      // in, none, casted
+				var y      int      // in, none, casted
+				var width  int      // in, none, casted
+				var height int      // in, none, casted
+				var goret  bool     // return
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				x = int(carg1)
+				y = int(carg2)
+				width = int(carg3)
+				height = int(carg4)
+
+				goret = overrides.SetRenderRectangle(window, x, y, width, height)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Show != nil {
 		pclass.show = (*[0]byte)(C._gotk4_gstgl1_GLWindow_show)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLWindow_show",
+			func(carg0 *C.GstGLWindow) {
+				var window Instance // go GstGLWindow subclass
+
+				window = UnsafeGLWindowFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Show(window)
+			},
+		)
 	}
+}
+
+// RegisterGLWindowSubClass is used to register a go subclass of GstGLWindow. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGLWindowSubClass[InstanceT GLWindow](
+		name string,
+		classInit func(class *GLWindowClass),
+		constructor func() InstanceT,
+		overrides GLWindowOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGLWindow,
+		UnsafeGLWindowClassFromGlibBorrow,
+		UnsafeApplyGLWindowOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLWindow(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // GLAllocationParams wraps GstGLAllocationParams

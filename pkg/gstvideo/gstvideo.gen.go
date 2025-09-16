@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -8101,22 +8102,104 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 
 	if overrides.GetBalanceType != nil {
 		pclass.get_balance_type = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_get_balance_type)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_ColorBalance_get_balance_type",
+			func(carg0 *C.GstColorBalance) (cret C.GstColorBalanceType) {
+				var balance Instance         // go GstColorBalance subclass
+				var goret   ColorBalanceType // return, none, casted
+
+				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetBalanceType(balance)
+
+				cret = C.GstColorBalanceType(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetValue != nil {
 		pclass.get_value = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_get_value)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_ColorBalance_get_value",
+			func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel) (cret C.gint) {
+				var balance Instance            // go GstColorBalance subclass
+				var channel ColorBalanceChannel // in, none, converted
+				var goret   int                 // return, none, casted
+
+				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.GetValue(balance, channel)
+
+				cret = C.gint(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ListChannels != nil {
 		pclass.list_channels = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_list_channels)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_ColorBalance_list_channels",
+			func(carg0 *C.GstColorBalance) (cret *C.GList) {
+				var balance Instance              // go GstColorBalance subclass
+				var goret   []ColorBalanceChannel // return, transfer: none, C Pointers: 1, Name: List, scope: 
+
+				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.ListChannels(balance)
+
+				_ = goret
+				_ = cret
+				panic("unimplemented conversion of []ColorBalanceChannel (GList*)")
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetValue != nil {
 		pclass.set_value = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_set_value)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_ColorBalance_set_value",
+			func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint) {
+				var balance Instance            // go GstColorBalance subclass
+				var channel ColorBalanceChannel // in, none, converted
+				var value   int                 // in, none, casted
+
+				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg1))
+				value = int(carg2)
+
+				overrides.SetValue(balance, channel, value)
+			},
+		)
 	}
 
 	if overrides.ValueChanged != nil {
 		pclass.value_changed = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_value_changed)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_ColorBalance_value_changed",
+			func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint) {
+				var balance Instance            // go GstColorBalance subclass
+				var channel ColorBalanceChannel // in, none, converted
+				var value   int                 // in, none, casted
+
+				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg1))
+				value = int(carg2)
+
+				overrides.ValueChanged(balance, channel, value)
+			},
+		)
 	}
 }
 
@@ -9796,10 +9879,36 @@ func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, 
 
 	if overrides.SendEvent != nil {
 		pclass.send_event = (*[0]byte)(C._gotk4_gstvideo1_Navigation_send_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_Navigation_send_event",
+			func(carg0 *C.GstNavigation, carg1 *C.GstStructure) {
+				var navigation Instance       // go GstNavigation subclass
+				var structure  *gst.Structure // in, none, converted
+
+				navigation = UnsafeNavigationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				structure = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.SendEvent(navigation, structure)
+			},
+		)
 	}
 
 	if overrides.SendEventSimple != nil {
 		pclass.send_event_simple = (*[0]byte)(C._gotk4_gstvideo1_Navigation_send_event_simple)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_Navigation_send_event_simple",
+			func(carg0 *C.GstNavigation, carg1 *C.GstEvent) {
+				var navigation Instance   // go GstNavigation subclass
+				var event      *gst.Event // in, full, converted
+
+				navigation = UnsafeNavigationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
+
+				overrides.SendEventSimple(navigation, event)
+			},
+		)
 	}
 }
 
@@ -10364,34 +10473,202 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 
 	if overrides.GetHcenter != nil {
 		pclass.get_hcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_hcenter)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOrientation_get_hcenter",
+			func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean) {
+				var videoOrientation Instance // go GstVideoOrientation subclass
+				var center           int      // out, full, casted
+				var goret            bool     // return
+
+				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				center, goret = overrides.GetHcenter(videoOrientation)
+
+				*carg1 = C.gint(center)
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetHflip != nil {
 		pclass.get_hflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_hflip)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOrientation_get_hflip",
+			func(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean) {
+				var videoOrientation Instance // go GstVideoOrientation subclass
+				var flip             bool     // out
+				var goret            bool     // return
+
+				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				flip, goret = overrides.GetHflip(videoOrientation)
+
+				if flip {
+					carg1 = C.TRUE
+				}
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetVcenter != nil {
 		pclass.get_vcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_vcenter)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOrientation_get_vcenter",
+			func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean) {
+				var videoOrientation Instance // go GstVideoOrientation subclass
+				var center           int      // out, full, casted
+				var goret            bool     // return
+
+				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				center, goret = overrides.GetVcenter(videoOrientation)
+
+				*carg1 = C.gint(center)
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetVflip != nil {
 		pclass.get_vflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_vflip)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOrientation_get_vflip",
+			func(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean) {
+				var videoOrientation Instance // go GstVideoOrientation subclass
+				var flip             bool     // out
+				var goret            bool     // return
+
+				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				flip, goret = overrides.GetVflip(videoOrientation)
+
+				if flip {
+					carg1 = C.TRUE
+				}
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetHcenter != nil {
 		pclass.set_hcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_hcenter)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOrientation_set_hcenter",
+			func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean) {
+				var videoOrientation Instance // go GstVideoOrientation subclass
+				var center           int      // in, none, casted
+				var goret            bool     // return
+
+				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				center = int(carg1)
+
+				goret = overrides.SetHcenter(videoOrientation, center)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetHflip != nil {
 		pclass.set_hflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_hflip)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOrientation_set_hflip",
+			func(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean) {
+				var videoOrientation Instance // go GstVideoOrientation subclass
+				var flip             bool     // in
+				var goret            bool     // return
+
+				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					flip = true
+				}
+
+				goret = overrides.SetHflip(videoOrientation, flip)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetVcenter != nil {
 		pclass.set_vcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_vcenter)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOrientation_set_vcenter",
+			func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean) {
+				var videoOrientation Instance // go GstVideoOrientation subclass
+				var center           int      // in, none, casted
+				var goret            bool     // return
+
+				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				center = int(carg1)
+
+				goret = overrides.SetVcenter(videoOrientation, center)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetVflip != nil {
 		pclass.set_vflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_vflip)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOrientation_set_vflip",
+			func(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean) {
+				var videoOrientation Instance // go GstVideoOrientation subclass
+				var flip             bool     // in
+				var goret            bool     // return
+
+				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					flip = true
+				}
+
+				goret = overrides.SetVflip(videoOrientation, flip)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 }
 
@@ -10935,14 +11212,59 @@ func UnsafeApplyVideoOverlayOverrides[Instance VideoOverlay](gclass unsafe.Point
 
 	if overrides.Expose != nil {
 		pclass.expose = (*[0]byte)(C._gotk4_gstvideo1_VideoOverlay_expose)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOverlay_expose",
+			func(carg0 *C.GstVideoOverlay) {
+				var overlay Instance // go GstVideoOverlay subclass
+
+				overlay = UnsafeVideoOverlayFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Expose(overlay)
+			},
+		)
 	}
 
 	if overrides.HandleEvents != nil {
 		pclass.handle_events = (*[0]byte)(C._gotk4_gstvideo1_VideoOverlay_handle_events)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOverlay_handle_events",
+			func(carg0 *C.GstVideoOverlay, carg1 C.gboolean) {
+				var overlay      Instance // go GstVideoOverlay subclass
+				var handleEvents bool     // in
+
+				overlay = UnsafeVideoOverlayFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					handleEvents = true
+				}
+
+				overrides.HandleEvents(overlay, handleEvents)
+			},
+		)
 	}
 
 	if overrides.SetRenderRectangle != nil {
 		pclass.set_render_rectangle = (*[0]byte)(C._gotk4_gstvideo1_VideoOverlay_set_render_rectangle)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoOverlay_set_render_rectangle",
+			func(carg0 *C.GstVideoOverlay, carg1 C.gint, carg2 C.gint, carg3 C.gint, carg4 C.gint) {
+				var overlay Instance // go GstVideoOverlay subclass
+				var x       int      // in, none, casted
+				var y       int      // in, none, casted
+				var width   int      // in, none, casted
+				var height  int      // in, none, casted
+
+				overlay = UnsafeVideoOverlayFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				x = int(carg1)
+				y = int(carg2)
+				width = int(carg3)
+				height = int(carg4)
+
+				overrides.SetRenderRectangle(overlay, x, y, width, height)
+			},
+		)
 	}
 }
 
@@ -11032,7 +11354,46 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 
 	if overrides.ValueChanged != nil {
 		pclass.value_changed = (*[0]byte)(C._gotk4_gstvideo1_ColorBalanceChannel_value_changed)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_ColorBalanceChannel_value_changed",
+			func(carg0 *C.GstColorBalanceChannel, carg1 C.gint) {
+				var channel Instance // go GstColorBalanceChannel subclass
+				var value   int      // in, none, casted
+
+				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				value = int(carg1)
+
+				overrides.ValueChanged(channel, value)
+			},
+		)
 	}
+}
+
+// RegisterColorBalanceChannelSubClass is used to register a go subclass of GstColorBalanceChannel. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterColorBalanceChannelSubClass[InstanceT ColorBalanceChannel](
+		name string,
+		classInit func(class *ColorBalanceChannelClass),
+		constructor func() InstanceT,
+		overrides ColorBalanceChannelOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeColorBalanceChannel,
+		UnsafeColorBalanceChannelClassFromGlibBorrow,
+		UnsafeApplyColorBalanceChannelOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapColorBalanceChannel(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // VideoAggregatorInstance is the instance type used by all types extending GstVideoAggregator. It is used internally by the bindings. Users should use the interface [VideoAggregator] instead.
@@ -11186,15 +11547,97 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 
 	if overrides.AggregateFrames != nil {
 		pclass.aggregate_frames = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregator_aggregate_frames)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoAggregator_aggregate_frames",
+			func(carg0 *C.GstVideoAggregator, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var videoaggregator Instance       // go GstVideoAggregator subclass
+				var outbuffer       *gst.Buffer    // in, none, converted
+				var goret           gst.FlowReturn // return, none, casted
+
+				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				outbuffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.AggregateFrames(videoaggregator, outbuffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.FindBestFormat != nil {
 		pclass.find_best_format = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregator_find_best_format)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoAggregator_find_best_format",
+			func(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.gboolean) {
+				var vagg            Instance   // go GstVideoAggregator subclass
+				var downstreamCaps  *gst.Caps  // in, none, converted
+				var bestInfo        *VideoInfo // in, none, converted
+				var atLeastOneAlpha bool       // out
+
+				vagg = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				downstreamCaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+				bestInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
+
+				atLeastOneAlpha = overrides.FindBestFormat(vagg, downstreamCaps, bestInfo)
+
+				if atLeastOneAlpha {
+					carg3 = C.TRUE
+				}
+			},
+		)
 	}
 
 	if overrides.UpdateCaps != nil {
 		pclass.update_caps = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregator_update_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoAggregator_update_caps",
+			func(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var videoaggregator Instance  // go GstVideoAggregator subclass
+				var caps            *gst.Caps // in, none, converted
+				var goret           *gst.Caps // return, full, converted
+
+				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.UpdateCaps(videoaggregator, caps)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterVideoAggregatorSubClass is used to register a go subclass of GstVideoAggregator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterVideoAggregatorSubClass[InstanceT VideoAggregator](
+		name string,
+		classInit func(class *VideoAggregatorClass),
+		constructor func() InstanceT,
+		overrides VideoAggregatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeVideoAggregator,
+		UnsafeVideoAggregatorClassFromGlibBorrow,
+		UnsafeApplyVideoAggregatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoAggregator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // VideoAggregatorPadInstance is the instance type used by all types extending GstVideoAggregatorPad. It is used internally by the bindings. Users should use the interface [VideoAggregatorPad] instead.
@@ -11463,23 +11906,131 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 
 	if overrides.CleanFrame != nil {
 		pclass.clean_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_clean_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoAggregatorPad_clean_frame",
+			func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame) {
+				var pad             Instance        // go GstVideoAggregatorPad subclass
+				var videoaggregator VideoAggregator // in, none, converted
+				var preparedFrame   *VideoFrame     // in, none, converted
+
+				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
+				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
+
+				overrides.CleanFrame(pad, videoaggregator, preparedFrame)
+			},
+		)
 	}
 
 	if overrides.PrepareFrame != nil {
 		pclass.prepare_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_prepare_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame",
+			func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame) (cret C.gboolean) {
+				var pad             Instance        // go GstVideoAggregatorPad subclass
+				var videoaggregator VideoAggregator // in, none, converted
+				var buffer          *gst.Buffer     // in, none, converted
+				var preparedFrame   *VideoFrame     // in, none, converted
+				var goret           bool            // return
+
+				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
+				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.PrepareFrame(pad, videoaggregator, buffer, preparedFrame)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PrepareFrameFinish != nil {
 		pclass.prepare_frame_finish = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish",
+			func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame) {
+				var pad             Instance        // go GstVideoAggregatorPad subclass
+				var videoaggregator VideoAggregator // in, none, converted
+				var preparedFrame   *VideoFrame     // in, none, converted
+
+				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
+				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
+
+				overrides.PrepareFrameFinish(pad, videoaggregator, preparedFrame)
+			},
+		)
 	}
 
 	if overrides.PrepareFrameStart != nil {
 		pclass.prepare_frame_start = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start",
+			func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame) {
+				var pad             Instance        // go GstVideoAggregatorPad subclass
+				var videoaggregator VideoAggregator // in, none, converted
+				var buffer          *gst.Buffer     // in, none, converted
+				var preparedFrame   *VideoFrame     // in, none, converted
+
+				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
+				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg3))
+
+				overrides.PrepareFrameStart(pad, videoaggregator, buffer, preparedFrame)
+			},
+		)
 	}
 
 	if overrides.UpdateConversionInfo != nil {
 		pclass.update_conversion_info = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info",
+			func(carg0 *C.GstVideoAggregatorPad) {
+				var pad Instance // go GstVideoAggregatorPad subclass
+
+				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.UpdateConversionInfo(pad)
+			},
+		)
 	}
+}
+
+// RegisterVideoAggregatorPadSubClass is used to register a go subclass of GstVideoAggregatorPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterVideoAggregatorPadSubClass[InstanceT VideoAggregatorPad](
+		name string,
+		classInit func(class *VideoAggregatorPadClass),
+		constructor func() InstanceT,
+		overrides VideoAggregatorPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeVideoAggregatorPad,
+		UnsafeVideoAggregatorPadClassFromGlibBorrow,
+		UnsafeApplyVideoAggregatorPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoAggregatorPad(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // VideoBufferPoolInstance is the instance type used by all types extending GstVideoBufferPool. It is used internally by the bindings. Users should use the interface [VideoBufferPool] instead.
@@ -11568,6 +12119,32 @@ type VideoBufferPoolOverrides[Instance VideoBufferPool] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyVideoBufferPoolOverrides[Instance VideoBufferPool](gclass unsafe.Pointer, overrides VideoBufferPoolOverrides[Instance]) {
 	gst.UnsafeApplyBufferPoolOverrides(gclass, overrides.BufferPoolOverrides)
+}
+
+// RegisterVideoBufferPoolSubClass is used to register a go subclass of GstVideoBufferPool. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterVideoBufferPoolSubClass[InstanceT VideoBufferPool](
+		name string,
+		classInit func(class *VideoBufferPoolClass),
+		constructor func() InstanceT,
+		overrides VideoBufferPoolOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeVideoBufferPool,
+		UnsafeVideoBufferPoolClassFromGlibBorrow,
+		UnsafeApplyVideoBufferPoolOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoBufferPool(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // VideoDecoderInstance is the instance type used by all types extending GstVideoDecoder. It is used internally by the bindings. Users should use the interface [VideoDecoder] instead.
@@ -13742,87 +14319,519 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 
 	if overrides.Close != nil {
 		pclass.close = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_close)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_close",
+			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
+				var decoder Instance // go GstVideoDecoder subclass
+				var goret   bool     // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Close(decoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DecideAllocation != nil {
 		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_decide_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_decide_allocation",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var decoder Instance   // go GstVideoDecoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DecideAllocation(decoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Drain != nil {
 		pclass.drain = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_drain)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_drain",
+			func(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn) {
+				var decoder Instance       // go GstVideoDecoder subclass
+				var goret   gst.FlowReturn // return, none, casted
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Drain(decoder)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Finish != nil {
 		pclass.finish = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_finish)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_finish",
+			func(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn) {
+				var decoder Instance       // go GstVideoDecoder subclass
+				var goret   gst.FlowReturn // return, none, casted
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Finish(decoder)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Flush != nil {
 		pclass.flush = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_flush)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_flush",
+			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
+				var decoder Instance // go GstVideoDecoder subclass
+				var goret   bool     // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Flush(decoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Getcaps != nil {
 		pclass.getcaps = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_getcaps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_getcaps",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var decoder Instance  // go GstVideoDecoder subclass
+				var filter  *gst.Caps // in, none, converted
+				var goret   *gst.Caps // return, full, converted
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Getcaps(decoder, filter)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.HandleFrame != nil {
 		pclass.handle_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_handle_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_handle_frame",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn) {
+				var decoder Instance         // go GstVideoDecoder subclass
+				var frame   *VideoCodecFrame // in, full, converted
+				var goret   gst.FlowReturn   // return, none, casted
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				frame = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.HandleFrame(decoder, frame)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.HandleMissingData != nil {
 		pclass.handle_missing_data = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_handle_missing_data)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_handle_missing_data",
+			func(carg0 *C.GstVideoDecoder, carg1 C.GstClockTime, carg2 C.GstClockTime) (cret C.gboolean) {
+				var decoder   Instance      // go GstVideoDecoder subclass
+				var timestamp gst.ClockTime // in, none, casted, alias
+				var duration  gst.ClockTime // in, none, casted, alias
+				var goret     bool          // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				timestamp = gst.ClockTime(carg1)
+				duration = gst.ClockTime(carg2)
+
+				goret = overrides.HandleMissingData(decoder, timestamp, duration)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Negotiate != nil {
 		pclass.negotiate = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_negotiate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_negotiate",
+			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
+				var decoder Instance // go GstVideoDecoder subclass
+				var goret   bool     // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Negotiate(decoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Open != nil {
 		pclass.open = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_open)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_open",
+			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
+				var decoder Instance // go GstVideoDecoder subclass
+				var goret   bool     // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Open(decoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Parse != nil {
 		pclass.parse = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_parse)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_parse",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstAdapter, carg3 C.gboolean) (cret C.GstFlowReturn) {
+				var decoder Instance         // go GstVideoDecoder subclass
+				var frame   *VideoCodecFrame // in, none, converted
+				var adapter gstbase.Adapter  // in, none, converted
+				var atEos   bool             // in
+				var goret   gst.FlowReturn   // return, none, casted
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
+				adapter = gstbase.UnsafeAdapterFromGlibNone(unsafe.Pointer(carg2))
+				if carg3 != 0 {
+					atEos = true
+				}
+
+				goret = overrides.Parse(decoder, frame, adapter, atEos)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProposeAllocation != nil {
 		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_propose_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_propose_allocation",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var decoder Instance   // go GstVideoDecoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ProposeAllocation(decoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Reset != nil {
 		pclass.reset = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_reset)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_reset",
+			func(carg0 *C.GstVideoDecoder, carg1 C.gboolean) (cret C.gboolean) {
+				var decoder Instance // go GstVideoDecoder subclass
+				var hard    bool     // in
+				var goret   bool     // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					hard = true
+				}
+
+				goret = overrides.Reset(decoder, hard)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetFormat != nil {
 		pclass.set_format = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_set_format)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_set_format",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecState) (cret C.gboolean) {
+				var decoder Instance         // go GstVideoDecoder subclass
+				var state   *VideoCodecState // in, none, converted
+				var goret   bool             // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				state = UnsafeVideoCodecStateFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetFormat(decoder, state)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkEvent != nil {
 		pclass.sink_event = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_sink_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_sink_event",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
+				var decoder Instance   // go GstVideoDecoder subclass
+				var event   *gst.Event // in, none, converted
+				var goret   bool       // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkEvent(decoder, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkQuery != nil {
 		pclass.sink_query = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_sink_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_sink_query",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var decoder Instance   // go GstVideoDecoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkQuery(decoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcEvent != nil {
 		pclass.src_event = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_src_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_src_event",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
+				var decoder Instance   // go GstVideoDecoder subclass
+				var event   *gst.Event // in, none, converted
+				var goret   bool       // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcEvent(decoder, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcQuery != nil {
 		pclass.src_query = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_src_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_src_query",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var decoder Instance   // go GstVideoDecoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcQuery(decoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_start",
+			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
+				var decoder Instance // go GstVideoDecoder subclass
+				var goret   bool     // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(decoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_stop",
+			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
+				var decoder Instance // go GstVideoDecoder subclass
+				var goret   bool     // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(decoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformMeta != nil {
 		pclass.transform_meta = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_transform_meta)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoDecoder_transform_meta",
+			func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean) {
+				var decoder Instance         // go GstVideoDecoder subclass
+				var frame   *VideoCodecFrame // in, none, converted
+				var meta    *gst.Meta        // in, none, converted
+				var goret   bool             // return
+
+				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
+				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.TransformMeta(decoder, frame, meta)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterVideoDecoderSubClass is used to register a go subclass of GstVideoDecoder. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterVideoDecoderSubClass[InstanceT VideoDecoder](
+		name string,
+		classInit func(class *VideoDecoderClass),
+		constructor func() InstanceT,
+		overrides VideoDecoderOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeVideoDecoder,
+		UnsafeVideoDecoderClassFromGlibBorrow,
+		UnsafeApplyVideoDecoderOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoDecoder(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // VideoEncoderInstance is the instance type used by all types extending GstVideoEncoder. It is used internally by the bindings. Users should use the interface [VideoEncoder] instead.
@@ -15041,79 +16050,467 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 
 	if overrides.Close != nil {
 		pclass.close = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_close)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_close",
+			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
+				var encoder Instance // go GstVideoEncoder subclass
+				var goret   bool     // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Close(encoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DecideAllocation != nil {
 		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_decide_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_decide_allocation",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var encoder Instance   // go GstVideoEncoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DecideAllocation(encoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Finish != nil {
 		pclass.finish = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_finish)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_finish",
+			func(carg0 *C.GstVideoEncoder) (cret C.GstFlowReturn) {
+				var encoder Instance       // go GstVideoEncoder subclass
+				var goret   gst.FlowReturn // return, none, casted
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Finish(encoder)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Flush != nil {
 		pclass.flush = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_flush)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_flush",
+			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
+				var encoder Instance // go GstVideoEncoder subclass
+				var goret   bool     // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Flush(encoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Getcaps != nil {
 		pclass.getcaps = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_getcaps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_getcaps",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var enc    Instance  // go GstVideoEncoder subclass
+				var filter *gst.Caps // in, none, converted
+				var goret  *gst.Caps // return, full, converted
+
+				enc = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Getcaps(enc, filter)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.HandleFrame != nil {
 		pclass.handle_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_handle_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_handle_frame",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn) {
+				var encoder Instance         // go GstVideoEncoder subclass
+				var frame   *VideoCodecFrame // in, none, converted
+				var goret   gst.FlowReturn   // return, none, casted
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.HandleFrame(encoder, frame)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Negotiate != nil {
 		pclass.negotiate = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_negotiate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_negotiate",
+			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
+				var encoder Instance // go GstVideoEncoder subclass
+				var goret   bool     // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Negotiate(encoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Open != nil {
 		pclass.open = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_open)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_open",
+			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
+				var encoder Instance // go GstVideoEncoder subclass
+				var goret   bool     // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Open(encoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PrePush != nil {
 		pclass.pre_push = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_pre_push)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_pre_push",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn) {
+				var encoder Instance         // go GstVideoEncoder subclass
+				var frame   *VideoCodecFrame // in, none, converted
+				var goret   gst.FlowReturn   // return, none, casted
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.PrePush(encoder, frame)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProposeAllocation != nil {
 		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_propose_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_propose_allocation",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var encoder Instance   // go GstVideoEncoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ProposeAllocation(encoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Reset != nil {
 		pclass.reset = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_reset)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_reset",
+			func(carg0 *C.GstVideoEncoder, carg1 C.gboolean) (cret C.gboolean) {
+				var encoder Instance // go GstVideoEncoder subclass
+				var hard    bool     // in
+				var goret   bool     // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					hard = true
+				}
+
+				goret = overrides.Reset(encoder, hard)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetFormat != nil {
 		pclass.set_format = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_set_format)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_set_format",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecState) (cret C.gboolean) {
+				var encoder Instance         // go GstVideoEncoder subclass
+				var state   *VideoCodecState // in, none, converted
+				var goret   bool             // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				state = UnsafeVideoCodecStateFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetFormat(encoder, state)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkEvent != nil {
 		pclass.sink_event = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_sink_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_sink_event",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
+				var encoder Instance   // go GstVideoEncoder subclass
+				var event   *gst.Event // in, none, converted
+				var goret   bool       // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkEvent(encoder, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkQuery != nil {
 		pclass.sink_query = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_sink_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_sink_query",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var encoder Instance   // go GstVideoEncoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkQuery(encoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcEvent != nil {
 		pclass.src_event = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_src_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_src_event",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
+				var encoder Instance   // go GstVideoEncoder subclass
+				var event   *gst.Event // in, none, converted
+				var goret   bool       // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcEvent(encoder, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcQuery != nil {
 		pclass.src_query = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_src_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_src_query",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var encoder Instance   // go GstVideoEncoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcQuery(encoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_start",
+			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
+				var encoder Instance // go GstVideoEncoder subclass
+				var goret   bool     // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(encoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_stop",
+			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
+				var encoder Instance // go GstVideoEncoder subclass
+				var goret   bool     // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(encoder)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformMeta != nil {
 		pclass.transform_meta = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_transform_meta)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoEncoder_transform_meta",
+			func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean) {
+				var encoder Instance         // go GstVideoEncoder subclass
+				var frame   *VideoCodecFrame // in, none, converted
+				var meta    *gst.Meta        // in, none, converted
+				var goret   bool             // return
+
+				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
+				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.TransformMeta(encoder, frame, meta)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterVideoEncoderSubClass is used to register a go subclass of GstVideoEncoder. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterVideoEncoderSubClass[InstanceT VideoEncoder](
+		name string,
+		classInit func(class *VideoEncoderClass),
+		constructor func() InstanceT,
+		overrides VideoEncoderOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeVideoEncoder,
+		UnsafeVideoEncoderClassFromGlibBorrow,
+		UnsafeApplyVideoEncoderOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoEncoder(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // VideoFilterInstance is the instance type used by all types extending GstVideoFilter. It is used internally by the bindings. Users should use the interface [VideoFilter] instead.
@@ -15225,15 +16622,105 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 
 	if overrides.SetInfo != nil {
 		pclass.set_info = (*[0]byte)(C._gotk4_gstvideo1_VideoFilter_set_info)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoFilter_set_info",
+			func(carg0 *C.GstVideoFilter, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.GstCaps, carg4 *C.GstVideoInfo) (cret C.gboolean) {
+				var filter  Instance   // go GstVideoFilter subclass
+				var incaps  *gst.Caps  // in, none, converted
+				var inInfo  *VideoInfo // in, none, converted
+				var outcaps *gst.Caps  // in, none, converted
+				var outInfo *VideoInfo // in, none, converted
+				var goret   bool       // return
+
+				filter = UnsafeVideoFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+				inInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
+				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg3))
+				outInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg4))
+
+				goret = overrides.SetInfo(filter, incaps, inInfo, outcaps, outInfo)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformFrame != nil {
 		pclass.transform_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoFilter_transform_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoFilter_transform_frame",
+			func(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame, carg2 *C.GstVideoFrame) (cret C.GstFlowReturn) {
+				var filter   Instance       // go GstVideoFilter subclass
+				var inframe  *VideoFrame    // in, none, converted
+				var outframe *VideoFrame    // in, none, converted
+				var goret    gst.FlowReturn // return, none, casted
+
+				filter = UnsafeVideoFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				inframe = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg1))
+				outframe = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.TransformFrame(filter, inframe, outframe)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformFrameIP != nil {
 		pclass.transform_frame_ip = (*[0]byte)(C._gotk4_gstvideo1_VideoFilter_transform_frame_ip)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoFilter_transform_frame_ip",
+			func(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame) (cret C.GstFlowReturn) {
+				var trans Instance       // go GstVideoFilter subclass
+				var frame *VideoFrame    // in, none, converted
+				var goret gst.FlowReturn // return, none, casted
+
+				trans = UnsafeVideoFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				frame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.TransformFrameIP(trans, frame)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterVideoFilterSubClass is used to register a go subclass of GstVideoFilter. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterVideoFilterSubClass[InstanceT VideoFilter](
+		name string,
+		classInit func(class *VideoFilterClass),
+		constructor func() InstanceT,
+		overrides VideoFilterOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeVideoFilter,
+		UnsafeVideoFilterClassFromGlibBorrow,
+		UnsafeApplyVideoFilterOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoFilter(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // VideoSinkInstance is the instance type used by all types extending GstVideoSink. It is used internally by the bindings. Users should use the interface [VideoSink] instead.
@@ -15378,11 +16865,77 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 
 	if overrides.SetInfo != nil {
 		pclass.set_info = (*[0]byte)(C._gotk4_gstvideo1_VideoSink_set_info)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoSink_set_info",
+			func(carg0 *C.GstVideoSink, carg1 *C.GstCaps, carg2 *C.GstVideoInfo) (cret C.gboolean) {
+				var videoSink Instance   // go GstVideoSink subclass
+				var caps      *gst.Caps  // in, none, converted
+				var info      *VideoInfo // in, none, converted
+				var goret     bool       // return
+
+				videoSink = UnsafeVideoSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+				info = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.SetInfo(videoSink, caps, info)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ShowFrame != nil {
 		pclass.show_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoSink_show_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoSink_show_frame",
+			func(carg0 *C.GstVideoSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var videoSink Instance       // go GstVideoSink subclass
+				var buf       *gst.Buffer    // in, none, converted
+				var goret     gst.FlowReturn // return, none, casted
+
+				videoSink = UnsafeVideoSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ShowFrame(videoSink, buf)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterVideoSinkSubClass is used to register a go subclass of GstVideoSink. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterVideoSinkSubClass[InstanceT VideoSink](
+		name string,
+		classInit func(class *VideoSinkClass),
+		constructor func() InstanceT,
+		overrides VideoSinkOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeVideoSink,
+		UnsafeVideoSinkClassFromGlibBorrow,
+		UnsafeApplyVideoSinkOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoSink(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // VideoAggregatorConvertPadInstance is the instance type used by all types extending GstVideoAggregatorConvertPad. It is used internally by the bindings. Users should use the interface [VideoAggregatorConvertPad] instead.
@@ -15489,7 +17042,48 @@ func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConve
 
 	if overrides.CreateConversionInfo != nil {
 		pclass.create_conversion_info = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info",
+			func(carg0 *C.GstVideoAggregatorConvertPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoInfo) {
+				var pad            Instance        // go GstVideoAggregatorConvertPad subclass
+				var agg            VideoAggregator // in, none, converted
+				var conversionInfo *VideoInfo      // in, none, converted
+
+				pad = UnsafeVideoAggregatorConvertPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				agg = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
+				conversionInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
+
+				overrides.CreateConversionInfo(pad, agg, conversionInfo)
+			},
+		)
 	}
+}
+
+// RegisterVideoAggregatorConvertPadSubClass is used to register a go subclass of GstVideoAggregatorConvertPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterVideoAggregatorConvertPadSubClass[InstanceT VideoAggregatorConvertPad](
+		name string,
+		classInit func(class *VideoAggregatorConvertPadClass),
+		constructor func() InstanceT,
+		overrides VideoAggregatorConvertPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeVideoAggregatorConvertPad,
+		UnsafeVideoAggregatorConvertPadClassFromGlibBorrow,
+		UnsafeApplyVideoAggregatorConvertPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoAggregatorConvertPad(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // VideoAggregatorParallelConvertPadInstance is the instance type used by all types extending GstVideoAggregatorParallelConvertPad. It is used internally by the bindings. Users should use the interface [VideoAggregatorParallelConvertPad] instead.
@@ -15568,6 +17162,32 @@ type VideoAggregatorParallelConvertPadOverrides[Instance VideoAggregatorParallel
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyVideoAggregatorParallelConvertPadOverrides[Instance VideoAggregatorParallelConvertPad](gclass unsafe.Pointer, overrides VideoAggregatorParallelConvertPadOverrides[Instance]) {
 	UnsafeApplyVideoAggregatorConvertPadOverrides(gclass, overrides.VideoAggregatorConvertPadOverrides)
+}
+
+// RegisterVideoAggregatorParallelConvertPadSubClass is used to register a go subclass of GstVideoAggregatorParallelConvertPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterVideoAggregatorParallelConvertPadSubClass[InstanceT VideoAggregatorParallelConvertPad](
+		name string,
+		classInit func(class *VideoAggregatorParallelConvertPadClass),
+		constructor func() InstanceT,
+		overrides VideoAggregatorParallelConvertPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeVideoAggregatorParallelConvertPad,
+		UnsafeVideoAggregatorParallelConvertPadClassFromGlibBorrow,
+		UnsafeApplyVideoAggregatorParallelConvertPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoAggregatorParallelConvertPad(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AncillaryMeta wraps GstAncillaryMeta

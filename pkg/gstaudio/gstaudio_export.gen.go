@@ -5,6 +5,7 @@ package gstaudio
 import (
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
@@ -88,351 +89,841 @@ func _gotk4_gstaudio1_AudioRingBufferCallback(carg1 *C.GstAudioRingBuffer, carg2
 
 //export _gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer
 func _gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer(carg0 *C.GstAudioAggregator, carg1 *C.GstAudioAggregatorPad, carg2 *C.GstBuffer, carg3 C.guint, carg4 *C.GstBuffer, carg5 C.guint, carg6 C.guint) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioAggregator, carg1 *C.GstAudioAggregatorPad, carg2 *C.GstBuffer, carg3 C.guint, carg4 *C.GstBuffer, carg5 C.guint, carg6 C.guint) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer").(func(carg0 *C.GstAudioAggregator, carg1 *C.GstAudioAggregatorPad, carg2 *C.GstBuffer, carg3 C.guint, carg4 *C.GstBuffer, carg5 C.guint, carg6 C.guint) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2, carg3, carg4, carg5, carg6)
 }
 
 //export _gotk4_gstaudio1_AudioAggregator_create_output_buffer
 func _gotk4_gstaudio1_AudioAggregator_create_output_buffer(carg0 *C.GstAudioAggregator, carg1 C.guint) (cret *C.GstBuffer) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioAggregator, carg1 C.guint) (cret *C.GstBuffer)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioAggregator_create_output_buffer").(func(carg0 *C.GstAudioAggregator, carg1 C.guint) (cret *C.GstBuffer))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioAggregator_create_output_buffer: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioAggregatorPad_convert_buffer
 func _gotk4_gstaudio1_AudioAggregatorPad_convert_buffer(carg0 *C.GstAudioAggregatorPad, carg1 *C.GstAudioInfo, carg2 *C.GstAudioInfo, carg3 *C.GstBuffer) (cret *C.GstBuffer) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioAggregatorPad, carg1 *C.GstAudioInfo, carg2 *C.GstAudioInfo, carg3 *C.GstBuffer) (cret *C.GstBuffer)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioAggregatorPad_convert_buffer").(func(carg0 *C.GstAudioAggregatorPad, carg1 *C.GstAudioInfo, carg2 *C.GstAudioInfo, carg3 *C.GstBuffer) (cret *C.GstBuffer))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioAggregatorPad_convert_buffer: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2, carg3)
 }
 
 //export _gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info
 func _gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info(carg0 *C.GstAudioAggregatorPad) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioAggregatorPad)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info").(func(carg0 *C.GstAudioAggregatorPad))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioBaseSink_create_ringbuffer
 func _gotk4_gstaudio1_AudioBaseSink_create_ringbuffer(carg0 *C.GstAudioBaseSink) (cret *C.GstAudioRingBuffer) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioBaseSink) (cret *C.GstAudioRingBuffer)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioBaseSink_create_ringbuffer").(func(carg0 *C.GstAudioBaseSink) (cret *C.GstAudioRingBuffer))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioBaseSink_create_ringbuffer: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioBaseSink_payload
 func _gotk4_gstaudio1_AudioBaseSink_payload(carg0 *C.GstAudioBaseSink, carg1 *C.GstBuffer) (cret *C.GstBuffer) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioBaseSink, carg1 *C.GstBuffer) (cret *C.GstBuffer)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioBaseSink_payload").(func(carg0 *C.GstAudioBaseSink, carg1 *C.GstBuffer) (cret *C.GstBuffer))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioBaseSink_payload: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer
 func _gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer(carg0 *C.GstAudioBaseSrc) (cret *C.GstAudioRingBuffer) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioBaseSrc) (cret *C.GstAudioRingBuffer)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer").(func(carg0 *C.GstAudioBaseSrc) (cret *C.GstAudioRingBuffer))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioCdSrc_close
 func _gotk4_gstaudio1_AudioCdSrc_close(carg0 *C.GstAudioCdSrc) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioCdSrc)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioCdSrc_close").(func(carg0 *C.GstAudioCdSrc))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioCdSrc_close: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioCdSrc_open
 func _gotk4_gstaudio1_AudioCdSrc_open(carg0 *C.GstAudioCdSrc, carg1 *C.gchar) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioCdSrc, carg1 *C.gchar) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioCdSrc_open").(func(carg0 *C.GstAudioCdSrc, carg1 *C.gchar) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioCdSrc_open: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioCdSrc_read_sector
 func _gotk4_gstaudio1_AudioCdSrc_read_sector(carg0 *C.GstAudioCdSrc, carg1 C.gint) (cret *C.GstBuffer) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioCdSrc, carg1 C.gint) (cret *C.GstBuffer)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioCdSrc_read_sector").(func(carg0 *C.GstAudioCdSrc, carg1 C.gint) (cret *C.GstBuffer))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioCdSrc_read_sector: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_close
 func _gotk4_gstaudio1_AudioDecoder_close(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_close").(func(carg0 *C.GstAudioDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_close: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_decide_allocation
 func _gotk4_gstaudio1_AudioDecoder_decide_allocation(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_decide_allocation").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_decide_allocation: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_flush
 func _gotk4_gstaudio1_AudioDecoder_flush(carg0 *C.GstAudioDecoder, carg1 C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_flush").(func(carg0 *C.GstAudioDecoder, carg1 C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_flush: no function pointer found")
+		}
+	}
+	fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_getcaps
 func _gotk4_gstaudio1_AudioDecoder_getcaps(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret *C.GstCaps)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_getcaps").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret *C.GstCaps))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_getcaps: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_handle_frame
 func _gotk4_gstaudio1_AudioDecoder_handle_frame(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_handle_frame").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_handle_frame: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_negotiate
 func _gotk4_gstaudio1_AudioDecoder_negotiate(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_negotiate").(func(carg0 *C.GstAudioDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_negotiate: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_open
 func _gotk4_gstaudio1_AudioDecoder_open(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_open").(func(carg0 *C.GstAudioDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_open: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_parse
 func _gotk4_gstaudio1_AudioDecoder_parse(carg0 *C.GstAudioDecoder, carg1 *C.GstAdapter, carg2 *C.gint, carg3 *C.gint) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstAdapter, carg2 *C.gint, carg3 *C.gint) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_parse").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstAdapter, carg2 *C.gint, carg3 *C.gint) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_parse: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2, carg3)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_propose_allocation
 func _gotk4_gstaudio1_AudioDecoder_propose_allocation(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_propose_allocation").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_propose_allocation: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_set_format
 func _gotk4_gstaudio1_AudioDecoder_set_format(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_set_format").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_set_format: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_sink_event
 func _gotk4_gstaudio1_AudioDecoder_sink_event(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_sink_event").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_sink_event: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_sink_query
 func _gotk4_gstaudio1_AudioDecoder_sink_query(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_sink_query").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_sink_query: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_src_event
 func _gotk4_gstaudio1_AudioDecoder_src_event(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_src_event").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_src_event: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_src_query
 func _gotk4_gstaudio1_AudioDecoder_src_query(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_src_query").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_src_query: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_start
 func _gotk4_gstaudio1_AudioDecoder_start(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_start").(func(carg0 *C.GstAudioDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_start: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_stop
 func _gotk4_gstaudio1_AudioDecoder_stop(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_stop").(func(carg0 *C.GstAudioDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_stop: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioDecoder_transform_meta
 func _gotk4_gstaudio1_AudioDecoder_transform_meta(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioDecoder_transform_meta").(func(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioDecoder_transform_meta: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2, carg3)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_close
 func _gotk4_gstaudio1_AudioEncoder_close(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_close").(func(carg0 *C.GstAudioEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_close: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_decide_allocation
 func _gotk4_gstaudio1_AudioEncoder_decide_allocation(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_decide_allocation").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_decide_allocation: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_flush
 func _gotk4_gstaudio1_AudioEncoder_flush(carg0 *C.GstAudioEncoder) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_flush").(func(carg0 *C.GstAudioEncoder))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_flush: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_getcaps
 func _gotk4_gstaudio1_AudioEncoder_getcaps(carg0 *C.GstAudioEncoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstCaps) (cret *C.GstCaps)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_getcaps").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstCaps) (cret *C.GstCaps))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_getcaps: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_handle_frame
 func _gotk4_gstaudio1_AudioEncoder_handle_frame(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_handle_frame").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_handle_frame: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_negotiate
 func _gotk4_gstaudio1_AudioEncoder_negotiate(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_negotiate").(func(carg0 *C.GstAudioEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_negotiate: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_open
 func _gotk4_gstaudio1_AudioEncoder_open(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_open").(func(carg0 *C.GstAudioEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_open: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_propose_allocation
 func _gotk4_gstaudio1_AudioEncoder_propose_allocation(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_propose_allocation").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_propose_allocation: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_set_format
 func _gotk4_gstaudio1_AudioEncoder_set_format(carg0 *C.GstAudioEncoder, carg1 *C.GstAudioInfo) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstAudioInfo) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_set_format").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstAudioInfo) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_set_format: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_sink_event
 func _gotk4_gstaudio1_AudioEncoder_sink_event(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_sink_event").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_sink_event: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_sink_query
 func _gotk4_gstaudio1_AudioEncoder_sink_query(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_sink_query").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_sink_query: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_src_event
 func _gotk4_gstaudio1_AudioEncoder_src_event(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_src_event").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_src_event: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_src_query
 func _gotk4_gstaudio1_AudioEncoder_src_query(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_src_query").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_src_query: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_start
 func _gotk4_gstaudio1_AudioEncoder_start(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_start").(func(carg0 *C.GstAudioEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_start: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_stop
 func _gotk4_gstaudio1_AudioEncoder_stop(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_stop").(func(carg0 *C.GstAudioEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_stop: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioEncoder_transform_meta
 func _gotk4_gstaudio1_AudioEncoder_transform_meta(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioEncoder_transform_meta").(func(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioEncoder_transform_meta: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2, carg3)
 }
 
 //export _gotk4_gstaudio1_AudioFilter_setup
 func _gotk4_gstaudio1_AudioFilter_setup(carg0 *C.GstAudioFilter, carg1 *C.GstAudioInfo) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioFilter, carg1 *C.GstAudioInfo) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioFilter_setup").(func(carg0 *C.GstAudioFilter, carg1 *C.GstAudioInfo) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioFilter_setup: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_acquire
 func _gotk4_gstaudio1_AudioRingBuffer_acquire(carg0 *C.GstAudioRingBuffer, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_acquire").(func(carg0 *C.GstAudioRingBuffer, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_acquire: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_activate
 func _gotk4_gstaudio1_AudioRingBuffer_activate(carg0 *C.GstAudioRingBuffer, carg1 C.gboolean) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer, carg1 C.gboolean) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_activate").(func(carg0 *C.GstAudioRingBuffer, carg1 C.gboolean) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_activate: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_clear_all
 func _gotk4_gstaudio1_AudioRingBuffer_clear_all(carg0 *C.GstAudioRingBuffer) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_clear_all").(func(carg0 *C.GstAudioRingBuffer))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_clear_all: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_close_device
 func _gotk4_gstaudio1_AudioRingBuffer_close_device(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_close_device").(func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_close_device: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_delay
 func _gotk4_gstaudio1_AudioRingBuffer_delay(carg0 *C.GstAudioRingBuffer) (cret C.guint) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer) (cret C.guint)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_delay").(func(carg0 *C.GstAudioRingBuffer) (cret C.guint))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_delay: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_open_device
 func _gotk4_gstaudio1_AudioRingBuffer_open_device(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_open_device").(func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_open_device: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_pause
 func _gotk4_gstaudio1_AudioRingBuffer_pause(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_pause").(func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_pause: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_release
 func _gotk4_gstaudio1_AudioRingBuffer_release(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_release").(func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_release: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_resume
 func _gotk4_gstaudio1_AudioRingBuffer_resume(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_resume").(func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_resume: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_start
 func _gotk4_gstaudio1_AudioRingBuffer_start(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_start").(func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_start: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioRingBuffer_stop
 func _gotk4_gstaudio1_AudioRingBuffer_stop(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioRingBuffer_stop").(func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioRingBuffer_stop: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSink_close
 func _gotk4_gstaudio1_AudioSink_close(carg0 *C.GstAudioSink) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSink) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSink_close").(func(carg0 *C.GstAudioSink) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSink_close: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSink_delay
 func _gotk4_gstaudio1_AudioSink_delay(carg0 *C.GstAudioSink) (cret C.guint) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSink) (cret C.guint)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSink_delay").(func(carg0 *C.GstAudioSink) (cret C.guint))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSink_delay: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSink_open
 func _gotk4_gstaudio1_AudioSink_open(carg0 *C.GstAudioSink) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSink) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSink_open").(func(carg0 *C.GstAudioSink) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSink_open: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSink_pause
 func _gotk4_gstaudio1_AudioSink_pause(carg0 *C.GstAudioSink) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSink)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSink_pause").(func(carg0 *C.GstAudioSink))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSink_pause: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSink_prepare
 func _gotk4_gstaudio1_AudioSink_prepare(carg0 *C.GstAudioSink, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSink, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSink_prepare").(func(carg0 *C.GstAudioSink, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSink_prepare: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioSink_reset
 func _gotk4_gstaudio1_AudioSink_reset(carg0 *C.GstAudioSink) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSink)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSink_reset").(func(carg0 *C.GstAudioSink))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSink_reset: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSink_resume
 func _gotk4_gstaudio1_AudioSink_resume(carg0 *C.GstAudioSink) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSink)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSink_resume").(func(carg0 *C.GstAudioSink))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSink_resume: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSink_stop
 func _gotk4_gstaudio1_AudioSink_stop(carg0 *C.GstAudioSink) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSink)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSink_stop").(func(carg0 *C.GstAudioSink))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSink_stop: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSink_unprepare
 func _gotk4_gstaudio1_AudioSink_unprepare(carg0 *C.GstAudioSink) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSink) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSink_unprepare").(func(carg0 *C.GstAudioSink) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSink_unprepare: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSrc_close
 func _gotk4_gstaudio1_AudioSrc_close(carg0 *C.GstAudioSrc) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSrc) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSrc_close").(func(carg0 *C.GstAudioSrc) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSrc_close: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSrc_delay
 func _gotk4_gstaudio1_AudioSrc_delay(carg0 *C.GstAudioSrc) (cret C.guint) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSrc) (cret C.guint)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSrc_delay").(func(carg0 *C.GstAudioSrc) (cret C.guint))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSrc_delay: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSrc_open
 func _gotk4_gstaudio1_AudioSrc_open(carg0 *C.GstAudioSrc) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSrc) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSrc_open").(func(carg0 *C.GstAudioSrc) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSrc_open: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSrc_prepare
 func _gotk4_gstaudio1_AudioSrc_prepare(carg0 *C.GstAudioSrc, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSrc, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSrc_prepare").(func(carg0 *C.GstAudioSrc, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSrc_prepare: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstaudio1_AudioSrc_reset
 func _gotk4_gstaudio1_AudioSrc_reset(carg0 *C.GstAudioSrc) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSrc)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSrc_reset").(func(carg0 *C.GstAudioSrc))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSrc_reset: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstaudio1_AudioSrc_unprepare
 func _gotk4_gstaudio1_AudioSrc_unprepare(carg0 *C.GstAudioSrc) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstAudioSrc) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstaudio1_AudioSrc_unprepare").(func(carg0 *C.GstAudioSrc) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstaudio1_AudioSrc_unprepare: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 

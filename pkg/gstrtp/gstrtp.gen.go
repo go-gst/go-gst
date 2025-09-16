@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -1741,23 +1742,145 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 
 	if overrides.HandleEvent != nil {
 		pclass.handle_event = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_handle_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBaseDepayload_handle_event",
+			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean) {
+				var filter Instance   // go GstRTPBaseDepayload subclass
+				var event  *gst.Event // in, none, converted
+				var goret  bool       // return
+
+				filter = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.HandleEvent(filter, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PacketLost != nil {
 		pclass.packet_lost = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_packet_lost)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBaseDepayload_packet_lost",
+			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean) {
+				var filter Instance   // go GstRTPBaseDepayload subclass
+				var event  *gst.Event // in, none, converted
+				var goret  bool       // return
+
+				filter = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.PacketLost(filter, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Process != nil {
 		pclass.process = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_process)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBaseDepayload_process",
+			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstBuffer) (cret *C.GstBuffer) {
+				var base  Instance    // go GstRTPBaseDepayload subclass
+				var in    *gst.Buffer // in, none, converted
+				var goret *gst.Buffer // return, full, converted
+
+				base = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				in = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Process(base, in)
+
+				cret = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProcessRtpPacket != nil {
 		pclass.process_rtp_packet = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet",
+			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstRTPBuffer) (cret *C.GstBuffer) {
+				var base      Instance    // go GstRTPBaseDepayload subclass
+				var rtpBuffer *RTPBuffer  // in, none, converted
+				var goret     *gst.Buffer // return, full, converted
+
+				base = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				rtpBuffer = UnsafeRTPBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ProcessRtpPacket(base, rtpBuffer)
+
+				cret = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetCaps != nil {
 		pclass.set_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_set_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBaseDepayload_set_caps",
+			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstCaps) (cret C.gboolean) {
+				var filter Instance  // go GstRTPBaseDepayload subclass
+				var caps   *gst.Caps // in, none, converted
+				var goret  bool      // return
+
+				filter = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetCaps(filter, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterRTPBaseDepayloadSubClass is used to register a go subclass of GstRTPBaseDepayload. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterRTPBaseDepayloadSubClass[InstanceT RTPBaseDepayload](
+		name string,
+		classInit func(class *RTPBaseDepayloadClass),
+		constructor func() InstanceT,
+		overrides RTPBaseDepayloadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeRTPBaseDepayload,
+		UnsafeRTPBaseDepayloadClassFromGlibBorrow,
+		UnsafeApplyRTPBaseDepayloadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRTPBaseDepayload(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // RTPBasePayloadInstance is the instance type used by all types extending GstRTPBasePayload. It is used internally by the bindings. Users should use the interface [RTPBasePayload] instead.
@@ -2340,27 +2463,173 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 
 	if overrides.GetCaps != nil {
 		pclass.get_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_get_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBasePayload_get_caps",
+			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstCaps) (cret *C.GstCaps) {
+				var payload Instance  // go GstRTPBasePayload subclass
+				var pad     gst.Pad   // in, none, converted
+				var filter  *gst.Caps // in, none, converted
+				var goret   *gst.Caps // return, full, converted
+
+				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = gst.UnsafePadFromGlibNone(unsafe.Pointer(carg1))
+				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.GetCaps(payload, pad, filter)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.HandleBuffer != nil {
 		pclass.handle_buffer = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_handle_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBasePayload_handle_buffer",
+			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var payload Instance       // go GstRTPBasePayload subclass
+				var buffer  *gst.Buffer    // in, none, converted
+				var goret   gst.FlowReturn // return, none, casted
+
+				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.HandleBuffer(payload, buffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Query != nil {
 		pclass.query = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBasePayload_query",
+			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstQuery) (cret C.gboolean) {
+				var payload Instance   // go GstRTPBasePayload subclass
+				var pad     gst.Pad    // in, none, converted
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = gst.UnsafePadFromGlibNone(unsafe.Pointer(carg1))
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.Query(payload, pad, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetCaps != nil {
 		pclass.set_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_set_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBasePayload_set_caps",
+			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstCaps) (cret C.gboolean) {
+				var payload Instance  // go GstRTPBasePayload subclass
+				var caps    *gst.Caps // in, none, converted
+				var goret   bool      // return
+
+				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetCaps(payload, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkEvent != nil {
 		pclass.sink_event = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_sink_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBasePayload_sink_event",
+			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean) {
+				var payload Instance   // go GstRTPBasePayload subclass
+				var event   *gst.Event // in, none, converted
+				var goret   bool       // return
+
+				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkEvent(payload, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcEvent != nil {
 		pclass.src_event = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_src_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPBasePayload_src_event",
+			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean) {
+				var payload Instance   // go GstRTPBasePayload subclass
+				var event   *gst.Event // in, none, converted
+				var goret   bool       // return
+
+				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcEvent(payload, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterRTPBasePayloadSubClass is used to register a go subclass of GstRTPBasePayload. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterRTPBasePayloadSubClass[InstanceT RTPBasePayload](
+		name string,
+		classInit func(class *RTPBasePayloadClass),
+		constructor func() InstanceT,
+		overrides RTPBasePayloadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeRTPBasePayload,
+		UnsafeRTPBasePayloadClassFromGlibBorrow,
+		UnsafeApplyRTPBasePayloadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRTPBasePayload(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // RTPHeaderExtensionInstance is the instance type used by all types extending GstRTPHeaderExtension. It is used internally by the bindings. Users should use the interface [RTPHeaderExtension] instead.
@@ -3254,35 +3523,231 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 
 	if overrides.GetMaxSize != nil {
 		pclass.get_max_size = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_get_max_size)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPHeaderExtension_get_max_size",
+			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer) (cret C.gsize) {
+				var ext       Instance    // go GstRTPHeaderExtension subclass
+				var inputMeta *gst.Buffer // in, none, converted
+				var goret     uint        // return, none, casted
+
+				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				inputMeta = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.GetMaxSize(ext, inputMeta)
+
+				cret = C.gsize(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetSupportedFlags != nil {
 		pclass.get_supported_flags = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags",
+			func(carg0 *C.GstRTPHeaderExtension) (cret C.GstRTPHeaderExtensionFlags) {
+				var ext   Instance                // go GstRTPHeaderExtension subclass
+				var goret RTPHeaderExtensionFlags // return, none, casted
+
+				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetSupportedFlags(ext)
+
+				cret = C.GstRTPHeaderExtensionFlags(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Read != nil {
 		pclass.read = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_read)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPHeaderExtension_read",
+			func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionFlags, carg2 *C.guint8, carg3 C.gsize, carg4 *C.GstBuffer) (cret C.gboolean) {
+				var ext       Instance                // go GstRTPHeaderExtension subclass
+				var readFlags RTPHeaderExtensionFlags // in, none, casted
+				var data      []uint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+				var buffer    *gst.Buffer             // in, none, converted
+				var goret     bool                    // return
+
+				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				readFlags = RTPHeaderExtensionFlags(carg1)
+				_ = data
+				_ = carg2
+				_ = carg3
+				panic("unimplemented conversion of []uint8 (const guint8*)")
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg4))
+
+				goret = overrides.Read(ext, readFlags, data, buffer)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetAttributes != nil {
 		pclass.set_attributes = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_set_attributes)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPHeaderExtension_set_attributes",
+			func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionDirection, carg2 *C.gchar) (cret C.gboolean) {
+				var ext        Instance                    // go GstRTPHeaderExtension subclass
+				var direction  RTPHeaderExtensionDirection // in, none, casted
+				var attributes string                      // in, none, string
+				var goret      bool                        // return
+
+				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				direction = RTPHeaderExtensionDirection(carg1)
+				attributes = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+
+				goret = overrides.SetAttributes(ext, direction, attributes)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetCapsFromAttributes != nil {
 		pclass.set_caps_from_attributes = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes",
+			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
+				var ext   Instance  // go GstRTPHeaderExtension subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret bool      // return
+
+				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetCapsFromAttributes(ext, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetNonRtpSinkCaps != nil {
 		pclass.set_non_rtp_sink_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps",
+			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
+				var ext   Instance  // go GstRTPHeaderExtension subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret bool      // return
+
+				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetNonRtpSinkCaps(ext, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.UpdateNonRtpSrcCaps != nil {
 		pclass.update_non_rtp_src_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps",
+			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
+				var ext   Instance  // go GstRTPHeaderExtension subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret bool      // return
+
+				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.UpdateNonRtpSrcCaps(ext, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Write != nil {
 		pclass.write = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_write)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtp1_RTPHeaderExtension_write",
+			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer, carg2 C.GstRTPHeaderExtensionFlags, carg3 *C.GstBuffer, carg4 *C.guint8, carg5 C.gsize) (cret C.gssize) {
+				var ext        Instance                // go GstRTPHeaderExtension subclass
+				var inputMeta  *gst.Buffer             // in, none, converted
+				var writeFlags RTPHeaderExtensionFlags // in, none, casted
+				var output     *gst.Buffer             // in, none, converted
+				var data       []uint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
+				var goret      int                     // return, none, casted
+
+				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				inputMeta = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+				writeFlags = RTPHeaderExtensionFlags(carg2)
+				output = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
+				_ = data
+				_ = carg4
+				_ = carg5
+				panic("unimplemented conversion of []uint8 (guint8*)")
+
+				goret = overrides.Write(ext, inputMeta, writeFlags, output, data)
+
+				cret = C.gssize(goret)
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterRTPHeaderExtensionSubClass is used to register a go subclass of GstRTPHeaderExtension. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterRTPHeaderExtensionSubClass[InstanceT RTPHeaderExtension](
+		name string,
+		classInit func(class *RTPHeaderExtensionClass),
+		constructor func() InstanceT,
+		overrides RTPHeaderExtensionOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeRTPHeaderExtension,
+		UnsafeRTPHeaderExtensionClassFromGlibBorrow,
+		UnsafeApplyRTPHeaderExtensionOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRTPHeaderExtension(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // RTPBaseAudioPayloadInstance is the instance type used by all types extending GstRTPBaseAudioPayload. It is used internally by the bindings. Users should use the interface [RTPBaseAudioPayload] instead.
@@ -3648,6 +4113,32 @@ type RTPBaseAudioPayloadOverrides[Instance RTPBaseAudioPayload] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyRTPBaseAudioPayloadOverrides[Instance RTPBaseAudioPayload](gclass unsafe.Pointer, overrides RTPBaseAudioPayloadOverrides[Instance]) {
 	UnsafeApplyRTPBasePayloadOverrides(gclass, overrides.RTPBasePayloadOverrides)
+}
+
+// RegisterRTPBaseAudioPayloadSubClass is used to register a go subclass of GstRTPBaseAudioPayload. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterRTPBaseAudioPayloadSubClass[InstanceT RTPBaseAudioPayload](
+		name string,
+		classInit func(class *RTPBaseAudioPayloadClass),
+		constructor func() InstanceT,
+		overrides RTPBaseAudioPayloadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeRTPBaseAudioPayload,
+		UnsafeRTPBaseAudioPayloadClassFromGlibBorrow,
+		UnsafeApplyRTPBaseAudioPayloadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRTPBaseAudioPayload(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // RTCPBuffer wraps GstRTCPBuffer

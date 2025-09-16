@@ -6,6 +6,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -1560,6 +1561,32 @@ type TestClockOverrides[Instance TestClock] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyTestClockOverrides[Instance TestClock](gclass unsafe.Pointer, overrides TestClockOverrides[Instance]) {
 	gst.UnsafeApplyClockOverrides(gclass, overrides.ClockOverrides)
+}
+
+// RegisterTestClockSubClass is used to register a go subclass of GstTestClock. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterTestClockSubClass[InstanceT TestClock](
+		name string,
+		classInit func(class *TestClockClass),
+		constructor func() InstanceT,
+		overrides TestClockOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeTestClock,
+		UnsafeTestClockClassFromGlibBorrow,
+		UnsafeApplyTestClockOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTestClock(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // CheckABIStruct wraps GstCheckABIStruct

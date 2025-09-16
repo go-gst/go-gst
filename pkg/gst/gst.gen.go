@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -12192,22 +12193,108 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 
 	if overrides.ChildAdded != nil {
 		pclass.child_added = (*[0]byte)(C._gotk4_gst1_ChildProxy_child_added)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_ChildProxy_child_added",
+			func(carg0 *C.GstChildProxy, carg1 *C.GObject, carg2 *C.gchar) {
+				var parent Instance       // go GstChildProxy subclass
+				var child  gobject.Object // in, none, converted
+				var name   string         // in, none, string
+
+				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				child = gobject.UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
+				name = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+
+				overrides.ChildAdded(parent, child, name)
+			},
+		)
 	}
 
 	if overrides.ChildRemoved != nil {
 		pclass.child_removed = (*[0]byte)(C._gotk4_gst1_ChildProxy_child_removed)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_ChildProxy_child_removed",
+			func(carg0 *C.GstChildProxy, carg1 *C.GObject, carg2 *C.gchar) {
+				var parent Instance       // go GstChildProxy subclass
+				var child  gobject.Object // in, none, converted
+				var name   string         // in, none, string
+
+				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				child = gobject.UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
+				name = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+
+				overrides.ChildRemoved(parent, child, name)
+			},
+		)
 	}
 
 	if overrides.GetChildByIndex != nil {
 		pclass.get_child_by_index = (*[0]byte)(C._gotk4_gst1_ChildProxy_get_child_by_index)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_ChildProxy_get_child_by_index",
+			func(carg0 *C.GstChildProxy, carg1 C.guint) (cret *C.GObject) {
+				var parent Instance       // go GstChildProxy subclass
+				var index  uint           // in, none, casted
+				var goret  gobject.Object // return, full, converted, nullable
+
+				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				index = uint(carg1)
+
+				goret = overrides.GetChildByIndex(parent, index)
+
+				if goret != nil {
+					cret = (*C.GObject)(gobject.UnsafeObjectToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetChildByName != nil {
 		pclass.get_child_by_name = (*[0]byte)(C._gotk4_gst1_ChildProxy_get_child_by_name)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_ChildProxy_get_child_by_name",
+			func(carg0 *C.GstChildProxy, carg1 *C.gchar) (cret *C.GObject) {
+				var parent Instance       // go GstChildProxy subclass
+				var name   string         // in, none, string
+				var goret  gobject.Object // return, full, converted, nullable
+
+				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				goret = overrides.GetChildByName(parent, name)
+
+				if goret != nil {
+					cret = (*C.GObject)(gobject.UnsafeObjectToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetChildrenCount != nil {
 		pclass.get_children_count = (*[0]byte)(C._gotk4_gst1_ChildProxy_get_children_count)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_ChildProxy_get_children_count",
+			func(carg0 *C.GstChildProxy) (cret C.guint) {
+				var parent Instance // go GstChildProxy subclass
+				var goret  uint     // return, none, casted
+
+				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetChildrenCount(parent)
+
+				cret = C.guint(goret)
+
+				return cret
+			},
+		)
 	}
 }
 
@@ -12833,34 +12920,202 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 
 	if overrides.DeletePreset != nil {
 		pclass.delete_preset = (*[0]byte)(C._gotk4_gst1_Preset_delete_preset)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Preset_delete_preset",
+			func(carg0 *C.GstPreset, carg1 *C.gchar) (cret C.gboolean) {
+				var preset Instance // go GstPreset subclass
+				var name   string   // in, none, string
+				var goret  bool     // return
+
+				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				goret = overrides.DeletePreset(preset, name)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetMeta != nil {
 		pclass.get_meta = (*[0]byte)(C._gotk4_gst1_Preset_get_meta)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Preset_get_meta",
+			func(carg0 *C.GstPreset, carg1 *C.gchar, carg2 *C.gchar, carg3 **C.gchar) (cret C.gboolean) {
+				var preset Instance // go GstPreset subclass
+				var name   string   // in, none, string
+				var tag    string   // in, none, string
+				var value  string   // out, full, string
+				var goret  bool     // return
+
+				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+				tag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+
+				value, goret = overrides.GetMeta(preset, name, tag)
+
+				carg3 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetPresetNames != nil {
 		pclass.get_preset_names = (*[0]byte)(C._gotk4_gst1_Preset_get_preset_names)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Preset_get_preset_names",
+			func(carg0 *C.GstPreset) (cret **C.gchar) {
+				var preset Instance // go GstPreset subclass
+				var goret  []string // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+
+				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetPresetNames(preset)
+
+				_ = goret
+				_ = cret
+				panic("unimplemented conversion of []string (gchar**)")
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetPropertyNames != nil {
 		pclass.get_property_names = (*[0]byte)(C._gotk4_gst1_Preset_get_property_names)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Preset_get_property_names",
+			func(carg0 *C.GstPreset) (cret **C.gchar) {
+				var preset Instance // go GstPreset subclass
+				var goret  []string // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+
+				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetPropertyNames(preset)
+
+				_ = goret
+				_ = cret
+				panic("unimplemented conversion of []string (gchar**)")
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.LoadPreset != nil {
 		pclass.load_preset = (*[0]byte)(C._gotk4_gst1_Preset_load_preset)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Preset_load_preset",
+			func(carg0 *C.GstPreset, carg1 *C.gchar) (cret C.gboolean) {
+				var preset Instance // go GstPreset subclass
+				var name   string   // in, none, string
+				var goret  bool     // return
+
+				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				goret = overrides.LoadPreset(preset, name)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.RenamePreset != nil {
 		pclass.rename_preset = (*[0]byte)(C._gotk4_gst1_Preset_rename_preset)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Preset_rename_preset",
+			func(carg0 *C.GstPreset, carg1 *C.gchar, carg2 *C.gchar) (cret C.gboolean) {
+				var preset  Instance // go GstPreset subclass
+				var oldName string   // in, none, string
+				var newName string   // in, none, string
+				var goret   bool     // return
+
+				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				oldName = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+				newName = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+
+				goret = overrides.RenamePreset(preset, oldName, newName)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SavePreset != nil {
 		pclass.save_preset = (*[0]byte)(C._gotk4_gst1_Preset_save_preset)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Preset_save_preset",
+			func(carg0 *C.GstPreset, carg1 *C.gchar) (cret C.gboolean) {
+				var preset Instance // go GstPreset subclass
+				var name   string   // in, none, string
+				var goret  bool     // return
+
+				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				goret = overrides.SavePreset(preset, name)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetMeta != nil {
 		pclass.set_meta = (*[0]byte)(C._gotk4_gst1_Preset_set_meta)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Preset_set_meta",
+			func(carg0 *C.GstPreset, carg1 *C.gchar, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
+				var preset Instance // go GstPreset subclass
+				var name   string   // in, none, string
+				var tag    string   // in, none, string
+				var value  string   // in, none, string, nullable-string
+				var goret  bool     // return
+
+				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+				tag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+				if carg3 != nil {
+					value = C.GoString((*C.char)(unsafe.Pointer(carg3)))
+				}
+
+				goret = overrides.SetMeta(preset, name, tag, value)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 }
 
@@ -13104,10 +13359,50 @@ func UnsafeApplyURIHandlerOverrides[Instance URIHandler](gclass unsafe.Pointer, 
 
 	if overrides.GetURI != nil {
 		pclass.get_uri = (*[0]byte)(C._gotk4_gst1_URIHandler_get_uri)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_URIHandler_get_uri",
+			func(carg0 *C.GstURIHandler) (cret *C.gchar) {
+				var handler Instance // go GstURIHandler subclass
+				var goret   string   // return, full, string, nullable-string
+
+				handler = UnsafeURIHandlerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetURI(handler)
+
+				if goret != "" {
+					cret = (*C.gchar)(unsafe.Pointer(C.CString(goret)))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetURI != nil {
 		pclass.set_uri = (*[0]byte)(C._gotk4_gst1_URIHandler_set_uri)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_URIHandler_set_uri",
+			func(carg0 *C.GstURIHandler, carg1 *C.gchar, _cerr **C.GError) (cret C.gboolean) {
+				var handler Instance // go GstURIHandler subclass
+				var uri     string   // in, none, string
+				var goret   bool     // return
+				var _goerr  error    // out, full, converted
+
+				handler = UnsafeURIHandlerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				goret, _goerr = overrides.SetURI(handler, uri)
+
+				if goret {
+					cret = C.TRUE
+				}
+				*_cerr = (*C.GError)(glib.UnsafeErrorToGlibFull(_goerr))
+
+				return cret
+			},
+		)
 	}
 }
 
@@ -14493,6 +14788,32 @@ type ObjectOverrides[Instance Object] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyObjectOverrides[Instance Object](gclass unsafe.Pointer, overrides ObjectOverrides[Instance]) {
 	gobject.UnsafeApplyInitiallyUnownedOverrides(gclass, overrides.InitiallyUnownedOverrides)
+}
+
+// RegisterObjectSubClass is used to register a go subclass of GstObject. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterObjectSubClass[InstanceT Object](
+		name string,
+		classInit func(class *ObjectClass),
+		constructor func() InstanceT,
+		overrides ObjectOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeObject,
+		UnsafeObjectClassFromGlibBorrow,
+		UnsafeApplyObjectOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapObject(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // PadInstance is the instance type used by all types extending GstPad. It is used internally by the bindings. Users should use the interface [Pad] instead.
@@ -18092,11 +18413,63 @@ func UnsafeApplyPadOverrides[Instance Pad](gclass unsafe.Pointer, overrides PadO
 
 	if overrides.Linked != nil {
 		pclass.linked = (*[0]byte)(C._gotk4_gst1_Pad_linked)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Pad_linked",
+			func(carg0 *C.GstPad, carg1 *C.GstPad) {
+				var pad  Instance // go GstPad subclass
+				var peer Pad      // in, none, converted
+
+				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				peer = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.Linked(pad, peer)
+			},
+		)
 	}
 
 	if overrides.Unlinked != nil {
 		pclass.unlinked = (*[0]byte)(C._gotk4_gst1_Pad_unlinked)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Pad_unlinked",
+			func(carg0 *C.GstPad, carg1 *C.GstPad) {
+				var pad  Instance // go GstPad subclass
+				var peer Pad      // in, none, converted
+
+				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				peer = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.Unlinked(pad, peer)
+			},
+		)
 	}
+}
+
+// RegisterPadSubClass is used to register a go subclass of GstPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterPadSubClass[InstanceT Pad](
+		name string,
+		classInit func(class *PadClass),
+		constructor func() InstanceT,
+		overrides PadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypePad,
+		UnsafePadClassFromGlibBorrow,
+		UnsafeApplyPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPad(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // PadTemplateInstance is the instance type used by all types extending GstPadTemplate. It is used internally by the bindings. Users should use the interface [PadTemplate] instead.
@@ -18491,7 +18864,46 @@ func UnsafeApplyPadTemplateOverrides[Instance PadTemplate](gclass unsafe.Pointer
 
 	if overrides.PadCreated != nil {
 		pclass.pad_created = (*[0]byte)(C._gotk4_gst1_PadTemplate_pad_created)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_PadTemplate_pad_created",
+			func(carg0 *C.GstPadTemplate, carg1 *C.GstPad) {
+				var templ Instance // go GstPadTemplate subclass
+				var pad   Pad      // in, none, converted
+
+				templ = UnsafePadTemplateFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.PadCreated(templ, pad)
+			},
+		)
 	}
+}
+
+// RegisterPadTemplateSubClass is used to register a go subclass of GstPadTemplate. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterPadTemplateSubClass[InstanceT PadTemplate](
+		name string,
+		classInit func(class *PadTemplateClass),
+		constructor func() InstanceT,
+		overrides PadTemplateOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypePadTemplate,
+		UnsafePadTemplateClassFromGlibBorrow,
+		UnsafeApplyPadTemplateOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPadTemplate(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // PluginInstance is the instance type used by all types extending GstPlugin. It is used internally by the bindings. Users should use the interface [Plugin] instead.
@@ -20095,6 +20507,32 @@ func UnsafeApplyProxyPadOverrides[Instance ProxyPad](gclass unsafe.Pointer, over
 	UnsafeApplyPadOverrides(gclass, overrides.PadOverrides)
 }
 
+// RegisterProxyPadSubClass is used to register a go subclass of GstProxyPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterProxyPadSubClass[InstanceT ProxyPad](
+		name string,
+		classInit func(class *ProxyPadClass),
+		constructor func() InstanceT,
+		overrides ProxyPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeProxyPad,
+		UnsafeProxyPadClassFromGlibBorrow,
+		UnsafeApplyProxyPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapProxyPad(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // RegistryInstance is the instance type used by all types extending GstRegistry. It is used internally by the bindings. Users should use the interface [Registry] instead.
 type RegistryInstance struct {
 	_ [0]func() // equal guard
@@ -21080,6 +21518,32 @@ func UnsafeApplyRegistryOverrides[Instance Registry](gclass unsafe.Pointer, over
 	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
+// RegisterRegistrySubClass is used to register a go subclass of GstRegistry. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterRegistrySubClass[InstanceT Registry](
+		name string,
+		classInit func(class *RegistryClass),
+		constructor func() InstanceT,
+		overrides RegistryOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeRegistry,
+		UnsafeRegistryClassFromGlibBorrow,
+		UnsafeApplyRegistryOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRegistry(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // StreamInstance is the instance type used by all types extending GstStream. It is used internally by the bindings. Users should use the interface [Stream] instead.
 type StreamInstance struct {
 	_ [0]func() // equal guard
@@ -21479,6 +21943,32 @@ func UnsafeApplyStreamOverrides[Instance Stream](gclass unsafe.Pointer, override
 	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
+// RegisterStreamSubClass is used to register a go subclass of GstStream. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterStreamSubClass[InstanceT Stream](
+		name string,
+		classInit func(class *StreamClass),
+		constructor func() InstanceT,
+		overrides StreamOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeStream,
+		UnsafeStreamClassFromGlibBorrow,
+		UnsafeApplyStreamOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapStream(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // StreamCollectionInstance is the instance type used by all types extending GstStreamCollection. It is used internally by the bindings. Users should use the interface [StreamCollection] instead.
 type StreamCollectionInstance struct {
 	_ [0]func() // equal guard
@@ -21747,6 +22237,32 @@ type StreamCollectionOverrides[Instance StreamCollection] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyStreamCollectionOverrides[Instance StreamCollection](gclass unsafe.Pointer, overrides StreamCollectionOverrides[Instance]) {
 	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
+// RegisterStreamCollectionSubClass is used to register a go subclass of GstStreamCollection. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterStreamCollectionSubClass[InstanceT StreamCollection](
+		name string,
+		classInit func(class *StreamCollectionClass),
+		constructor func() InstanceT,
+		overrides StreamCollectionOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeStreamCollection,
+		UnsafeStreamCollectionClassFromGlibBorrow,
+		UnsafeApplyStreamCollectionOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapStreamCollection(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // TaskInstance is the instance type used by all types extending GstTask. It is used internally by the bindings. Users should use the interface [Task] instead.
@@ -22260,6 +22776,32 @@ func UnsafeApplyTaskOverrides[Instance Task](gclass unsafe.Pointer, overrides Ta
 	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
+// RegisterTaskSubClass is used to register a go subclass of GstTask. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterTaskSubClass[InstanceT Task](
+		name string,
+		classInit func(class *TaskClass),
+		constructor func() InstanceT,
+		overrides TaskOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeTask,
+		UnsafeTaskClassFromGlibBorrow,
+		UnsafeApplyTaskOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTask(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // TaskPoolInstance is the instance type used by all types extending GstTaskPool. It is used internally by the bindings. Users should use the interface [TaskPool] instead.
 type TaskPoolInstance struct {
 	_ [0]func() // equal guard
@@ -22421,11 +22963,62 @@ func UnsafeApplyTaskPoolOverrides[Instance TaskPool](gclass unsafe.Pointer, over
 
 	if overrides.Cleanup != nil {
 		pclass.cleanup = (*[0]byte)(C._gotk4_gst1_TaskPool_cleanup)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_TaskPool_cleanup",
+			func(carg0 *C.GstTaskPool) {
+				var pool Instance // go GstTaskPool subclass
+
+				pool = UnsafeTaskPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Cleanup(pool)
+			},
+		)
 	}
 
 	if overrides.Prepare != nil {
 		pclass.prepare = (*[0]byte)(C._gotk4_gst1_TaskPool_prepare)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_TaskPool_prepare",
+			func(carg0 *C.GstTaskPool, _cerr **C.GError) {
+				var pool   Instance // go GstTaskPool subclass
+				var _goerr error    // out, full, converted
+
+				pool = UnsafeTaskPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				_goerr = overrides.Prepare(pool)
+
+				*_cerr = (*C.GError)(glib.UnsafeErrorToGlibFull(_goerr))
+			},
+		)
 	}
+}
+
+// RegisterTaskPoolSubClass is used to register a go subclass of GstTaskPool. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterTaskPoolSubClass[InstanceT TaskPool](
+		name string,
+		classInit func(class *TaskPoolClass),
+		constructor func() InstanceT,
+		overrides TaskPoolOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeTaskPool,
+		UnsafeTaskPoolClassFromGlibBorrow,
+		UnsafeApplyTaskPoolOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTaskPool(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // TracerInstance is the instance type used by all types extending GstTracer. It is used internally by the bindings. Users should use the interface [Tracer] instead.
@@ -22538,6 +23131,32 @@ type TracerOverrides[Instance Tracer] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyTracerOverrides[Instance Tracer](gclass unsafe.Pointer, overrides TracerOverrides[Instance]) {
 	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
+// RegisterTracerSubClass is used to register a go subclass of GstTracer. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterTracerSubClass[InstanceT Tracer](
+		name string,
+		classInit func(class *TracerClass),
+		constructor func() InstanceT,
+		overrides TracerOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeTracer,
+		UnsafeTracerClassFromGlibBorrow,
+		UnsafeApplyTracerOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTracer(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // TracerFactoryInstance is the instance type used by all types extending GstTracerFactory. It is used internally by the bindings. Users should use the interface [TracerFactory] instead.
@@ -23267,11 +23886,74 @@ func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, ov
 
 	if overrides.Alloc != nil {
 		pclass.alloc = (*[0]byte)(C._gotk4_gst1_Allocator_alloc)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Allocator_alloc",
+			func(carg0 *C.GstAllocator, carg1 C.gsize, carg2 *C.GstAllocationParams) (cret *C.GstMemory) {
+				var allocator Instance          // go GstAllocator subclass
+				var size      uint              // in, none, casted
+				var params    *AllocationParams // in, none, converted, nullable
+				var goret     *Memory           // return, full, converted, nullable
+
+				allocator = UnsafeAllocatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				size = uint(carg1)
+				if carg2 != nil {
+					params = UnsafeAllocationParamsFromGlibNone(unsafe.Pointer(carg2))
+				}
+
+				goret = overrides.Alloc(allocator, size, params)
+
+				if goret != nil {
+					cret = (*C.GstMemory)(UnsafeMemoryToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Free != nil {
 		pclass.free = (*[0]byte)(C._gotk4_gst1_Allocator_free)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Allocator_free",
+			func(carg0 *C.GstAllocator, carg1 *C.GstMemory) {
+				var allocator Instance // go GstAllocator subclass
+				var memory    *Memory  // in, full, converted
+
+				allocator = UnsafeAllocatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				memory = UnsafeMemoryFromGlibFull(unsafe.Pointer(carg1))
+
+				overrides.Free(allocator, memory)
+			},
+		)
 	}
+}
+
+// RegisterAllocatorSubClass is used to register a go subclass of GstAllocator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAllocatorSubClass[InstanceT Allocator](
+		name string,
+		classInit func(class *AllocatorClass),
+		constructor func() InstanceT,
+		overrides AllocatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAllocator,
+		UnsafeAllocatorClassFromGlibBorrow,
+		UnsafeApplyAllocatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAllocator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // BufferPoolInstance is the instance type used by all types extending GstBufferPool. It is used internally by the bindings. Users should use the interface [BufferPool] instead.
@@ -24209,47 +24891,252 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 
 	if overrides.AcquireBuffer != nil {
 		pclass.acquire_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_acquire_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_acquire_buffer",
+			func(carg0 *C.GstBufferPool, carg1 **C.GstBuffer, carg2 *C.GstBufferPoolAcquireParams) (cret C.GstFlowReturn) {
+				var pool   Instance                 // go GstBufferPool subclass
+				var params *BufferPoolAcquireParams // in, none, converted, nullable
+				var buffer *Buffer                  // out, full, converted
+				var goret  FlowReturn               // return, none, casted
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg2 != nil {
+					params = UnsafeBufferPoolAcquireParamsFromGlibNone(unsafe.Pointer(carg2))
+				}
+
+				buffer, goret = overrides.AcquireBuffer(pool, params)
+
+				*carg1 = (*C.GstBuffer)(UnsafeBufferToGlibFull(buffer))
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.AllocBuffer != nil {
 		pclass.alloc_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_alloc_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_alloc_buffer",
+			func(carg0 *C.GstBufferPool, carg1 **C.GstBuffer, carg2 *C.GstBufferPoolAcquireParams) (cret C.GstFlowReturn) {
+				var pool   Instance                 // go GstBufferPool subclass
+				var params *BufferPoolAcquireParams // in, none, converted, nullable
+				var buffer *Buffer                  // out, full, converted
+				var goret  FlowReturn               // return, none, casted
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg2 != nil {
+					params = UnsafeBufferPoolAcquireParamsFromGlibNone(unsafe.Pointer(carg2))
+				}
+
+				buffer, goret = overrides.AllocBuffer(pool, params)
+
+				*carg1 = (*C.GstBuffer)(UnsafeBufferToGlibFull(buffer))
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.FlushStart != nil {
 		pclass.flush_start = (*[0]byte)(C._gotk4_gst1_BufferPool_flush_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_flush_start",
+			func(carg0 *C.GstBufferPool) {
+				var pool Instance // go GstBufferPool subclass
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.FlushStart(pool)
+			},
+		)
 	}
 
 	if overrides.FlushStop != nil {
 		pclass.flush_stop = (*[0]byte)(C._gotk4_gst1_BufferPool_flush_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_flush_stop",
+			func(carg0 *C.GstBufferPool) {
+				var pool Instance // go GstBufferPool subclass
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.FlushStop(pool)
+			},
+		)
 	}
 
 	if overrides.FreeBuffer != nil {
 		pclass.free_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_free_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_free_buffer",
+			func(carg0 *C.GstBufferPool, carg1 *C.GstBuffer) {
+				var pool   Instance // go GstBufferPool subclass
+				var buffer *Buffer  // in, none, converted
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.FreeBuffer(pool, buffer)
+			},
+		)
 	}
 
 	if overrides.GetOptions != nil {
 		pclass.get_options = (*[0]byte)(C._gotk4_gst1_BufferPool_get_options)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_get_options",
+			func(carg0 *C.GstBufferPool) (cret **C.gchar) {
+				var pool  Instance // go GstBufferPool subclass
+				var goret []string // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetOptions(pool)
+
+				_ = goret
+				_ = cret
+				panic("unimplemented conversion of []string (const gchar**)")
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ReleaseBuffer != nil {
 		pclass.release_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_release_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_release_buffer",
+			func(carg0 *C.GstBufferPool, carg1 *C.GstBuffer) {
+				var pool   Instance // go GstBufferPool subclass
+				var buffer *Buffer  // in, full, converted
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
+
+				overrides.ReleaseBuffer(pool, buffer)
+			},
+		)
 	}
 
 	if overrides.ResetBuffer != nil {
 		pclass.reset_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_reset_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_reset_buffer",
+			func(carg0 *C.GstBufferPool, carg1 *C.GstBuffer) {
+				var pool   Instance // go GstBufferPool subclass
+				var buffer *Buffer  // in, none, converted
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.ResetBuffer(pool, buffer)
+			},
+		)
 	}
 
 	if overrides.SetConfig != nil {
 		pclass.set_config = (*[0]byte)(C._gotk4_gst1_BufferPool_set_config)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_set_config",
+			func(carg0 *C.GstBufferPool, carg1 *C.GstStructure) (cret C.gboolean) {
+				var pool   Instance   // go GstBufferPool subclass
+				var config *Structure // in, full, converted
+				var goret  bool       // return
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				config = UnsafeStructureFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.SetConfig(pool, config)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gst1_BufferPool_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_start",
+			func(carg0 *C.GstBufferPool) (cret C.gboolean) {
+				var pool  Instance // go GstBufferPool subclass
+				var goret bool     // return
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(pool)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gst1_BufferPool_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_BufferPool_stop",
+			func(carg0 *C.GstBufferPool) (cret C.gboolean) {
+				var pool  Instance // go GstBufferPool subclass
+				var goret bool     // return
+
+				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(pool)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterBufferPoolSubClass is used to register a go subclass of GstBufferPool. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterBufferPoolSubClass[InstanceT BufferPool](
+		name string,
+		classInit func(class *BufferPoolClass),
+		constructor func() InstanceT,
+		overrides BufferPoolOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeBufferPool,
+		UnsafeBufferPoolClassFromGlibBorrow,
+		UnsafeApplyBufferPoolOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBufferPool(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // BusInstance is the instance type used by all types extending GstBus. It is used internally by the bindings. Users should use the interface [Bus] instead.
@@ -25338,11 +26225,63 @@ func UnsafeApplyBusOverrides[Instance Bus](gclass unsafe.Pointer, overrides BusO
 
 	if overrides.Message != nil {
 		pclass.message = (*[0]byte)(C._gotk4_gst1_Bus_message)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bus_message",
+			func(carg0 *C.GstBus, carg1 *C.GstMessage) {
+				var bus     Instance // go GstBus subclass
+				var message *Message // in, none, converted
+
+				bus = UnsafeBusFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				message = UnsafeMessageFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.Message(bus, message)
+			},
+		)
 	}
 
 	if overrides.SyncMessage != nil {
 		pclass.sync_message = (*[0]byte)(C._gotk4_gst1_Bus_sync_message)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bus_sync_message",
+			func(carg0 *C.GstBus, carg1 *C.GstMessage) {
+				var bus     Instance // go GstBus subclass
+				var message *Message // in, none, converted
+
+				bus = UnsafeBusFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				message = UnsafeMessageFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.SyncMessage(bus, message)
+			},
+		)
 	}
+}
+
+// RegisterBusSubClass is used to register a go subclass of GstBus. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterBusSubClass[InstanceT Bus](
+		name string,
+		classInit func(class *BusClass),
+		constructor func() InstanceT,
+		overrides BusOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeBus,
+		UnsafeBusClassFromGlibBorrow,
+		UnsafeApplyBusOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBus(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // ClockInstance is the instance type used by all types extending GstClock. It is used internally by the bindings. Users should use the interface [Clock] instead.
@@ -27020,27 +27959,156 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 
 	if overrides.ChangeResolution != nil {
 		pclass.change_resolution = (*[0]byte)(C._gotk4_gst1_Clock_change_resolution)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Clock_change_resolution",
+			func(carg0 *C.GstClock, carg1 C.GstClockTime, carg2 C.GstClockTime) (cret C.GstClockTime) {
+				var clock         Instance  // go GstClock subclass
+				var oldResolution ClockTime // in, none, casted, alias
+				var newResolution ClockTime // in, none, casted, alias
+				var goret         ClockTime // return, none, casted, alias
+
+				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				oldResolution = ClockTime(carg1)
+				newResolution = ClockTime(carg2)
+
+				goret = overrides.ChangeResolution(clock, oldResolution, newResolution)
+
+				cret = C.GstClockTime(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetInternalTime != nil {
 		pclass.get_internal_time = (*[0]byte)(C._gotk4_gst1_Clock_get_internal_time)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Clock_get_internal_time",
+			func(carg0 *C.GstClock) (cret C.GstClockTime) {
+				var clock Instance  // go GstClock subclass
+				var goret ClockTime // return, none, casted, alias
+
+				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetInternalTime(clock)
+
+				cret = C.GstClockTime(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetResolution != nil {
 		pclass.get_resolution = (*[0]byte)(C._gotk4_gst1_Clock_get_resolution)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Clock_get_resolution",
+			func(carg0 *C.GstClock) (cret C.GstClockTime) {
+				var clock Instance  // go GstClock subclass
+				var goret ClockTime // return, none, casted, alias
+
+				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.GetResolution(clock)
+
+				cret = C.GstClockTime(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Unschedule != nil {
 		pclass.unschedule = (*[0]byte)(C._gotk4_gst1_Clock_unschedule)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Clock_unschedule",
+			func(carg0 *C.GstClock, carg1 *C.GstClockEntry) {
+				var clock Instance    // go GstClock subclass
+				var entry *ClockEntry // in, none, converted
+
+				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				entry = UnsafeClockEntryFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.Unschedule(clock, entry)
+			},
+		)
 	}
 
 	if overrides.Wait != nil {
 		pclass.wait = (*[0]byte)(C._gotk4_gst1_Clock_wait)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Clock_wait",
+			func(carg0 *C.GstClock, carg1 *C.GstClockEntry, carg2 *C.GstClockTimeDiff) (cret C.GstClockReturn) {
+				var clock  Instance      // go GstClock subclass
+				var entry  *ClockEntry   // in, none, converted
+				var jitter ClockTimeDiff // out, full, casted, alias
+				var goret  ClockReturn   // return, none, casted
+
+				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				entry = UnsafeClockEntryFromGlibNone(unsafe.Pointer(carg1))
+
+				jitter, goret = overrides.Wait(clock, entry)
+
+				*carg2 = C.GstClockTimeDiff(jitter)
+				cret = C.GstClockReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.WaitAsync != nil {
 		pclass.wait_async = (*[0]byte)(C._gotk4_gst1_Clock_wait_async)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Clock_wait_async",
+			func(carg0 *C.GstClock, carg1 *C.GstClockEntry) (cret C.GstClockReturn) {
+				var clock Instance    // go GstClock subclass
+				var entry *ClockEntry // in, none, converted
+				var goret ClockReturn // return, none, casted
+
+				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				entry = UnsafeClockEntryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.WaitAsync(clock, entry)
+
+				cret = C.GstClockReturn(goret)
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterClockSubClass is used to register a go subclass of GstClock. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterClockSubClass[InstanceT Clock](
+		name string,
+		classInit func(class *ClockClass),
+		constructor func() InstanceT,
+		overrides ClockOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeClock,
+		UnsafeClockClassFromGlibBorrow,
+		UnsafeApplyClockOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapClock(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // ControlBindingInstance is the instance type used by all types extending GstControlBinding. It is used internally by the bindings. Users should use the interface [ControlBinding] instead.
@@ -27257,7 +28325,57 @@ func UnsafeApplyControlBindingOverrides[Instance ControlBinding](gclass unsafe.P
 
 	if overrides.SyncValues != nil {
 		pclass.sync_values = (*[0]byte)(C._gotk4_gst1_ControlBinding_sync_values)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_ControlBinding_sync_values",
+			func(carg0 *C.GstControlBinding, carg1 *C.GstObject, carg2 C.GstClockTime, carg3 C.GstClockTime) (cret C.gboolean) {
+				var binding   Instance  // go GstControlBinding subclass
+				var object    Object    // in, none, converted
+				var timestamp ClockTime // in, none, casted, alias
+				var lastSync  ClockTime // in, none, casted, alias
+				var goret     bool      // return
+
+				binding = UnsafeControlBindingFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				object = UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
+				timestamp = ClockTime(carg2)
+				lastSync = ClockTime(carg3)
+
+				goret = overrides.SyncValues(binding, object, timestamp, lastSync)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterControlBindingSubClass is used to register a go subclass of GstControlBinding. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterControlBindingSubClass[InstanceT ControlBinding](
+		name string,
+		classInit func(class *ControlBindingClass),
+		constructor func() InstanceT,
+		overrides ControlBindingOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeControlBinding,
+		UnsafeControlBindingClassFromGlibBorrow,
+		UnsafeApplyControlBindingOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapControlBinding(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // ControlSourceInstance is the instance type used by all types extending GstControlSource. It is used internally by the bindings. Users should use the interface [ControlSource] instead.
@@ -27448,6 +28566,32 @@ type ControlSourceOverrides[Instance ControlSource] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyControlSourceOverrides[Instance ControlSource](gclass unsafe.Pointer, overrides ControlSourceOverrides[Instance]) {
 	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
+// RegisterControlSourceSubClass is used to register a go subclass of GstControlSource. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterControlSourceSubClass[InstanceT ControlSource](
+		name string,
+		classInit func(class *ControlSourceClass),
+		constructor func() InstanceT,
+		overrides ControlSourceOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeControlSource,
+		UnsafeControlSourceClassFromGlibBorrow,
+		UnsafeApplyControlSourceOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapControlSource(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // DeviceInstance is the instance type used by all types extending GstDevice. It is used internally by the bindings. Users should use the interface [Device] instead.
@@ -27887,11 +29031,79 @@ func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, override
 
 	if overrides.CreateElement != nil {
 		pclass.create_element = (*[0]byte)(C._gotk4_gst1_Device_create_element)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Device_create_element",
+			func(carg0 *C.GstDevice, carg1 *C.gchar) (cret *C.GstElement) {
+				var device Instance // go GstDevice subclass
+				var name   string   // in, none, string, nullable-string
+				var goret  Element  // return, none, converted, nullable
+
+				device = UnsafeDeviceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != nil {
+					name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+				}
+
+				goret = overrides.CreateElement(device, name)
+
+				if goret != nil {
+					cret = (*C.GstElement)(UnsafeElementToGlibNone(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ReconfigureElement != nil {
 		pclass.reconfigure_element = (*[0]byte)(C._gotk4_gst1_Device_reconfigure_element)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Device_reconfigure_element",
+			func(carg0 *C.GstDevice, carg1 *C.GstElement) (cret C.gboolean) {
+				var device  Instance // go GstDevice subclass
+				var element Element  // in, none, converted
+				var goret   bool     // return
+
+				device = UnsafeDeviceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ReconfigureElement(device, element)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterDeviceSubClass is used to register a go subclass of GstDevice. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterDeviceSubClass[InstanceT Device](
+		name string,
+		classInit func(class *DeviceClass),
+		constructor func() InstanceT,
+		overrides DeviceOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeDevice,
+		UnsafeDeviceClassFromGlibBorrow,
+		UnsafeApplyDeviceOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDevice(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // DeviceMonitorInstance is the instance type used by all types extending GstDeviceMonitor. It is used internally by the bindings. Users should use the interface [DeviceMonitor] instead.
@@ -28385,6 +29597,32 @@ type DeviceMonitorOverrides[Instance DeviceMonitor] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyDeviceMonitorOverrides[Instance DeviceMonitor](gclass unsafe.Pointer, overrides DeviceMonitorOverrides[Instance]) {
 	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
+// RegisterDeviceMonitorSubClass is used to register a go subclass of GstDeviceMonitor. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterDeviceMonitorSubClass[InstanceT DeviceMonitor](
+		name string,
+		classInit func(class *DeviceMonitorClass),
+		constructor func() InstanceT,
+		overrides DeviceMonitorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeDeviceMonitor,
+		UnsafeDeviceMonitorClassFromGlibBorrow,
+		UnsafeApplyDeviceMonitorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDeviceMonitor(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // DeviceProviderInstance is the instance type used by all types extending GstDeviceProvider. It is used internally by the bindings. Users should use the interface [DeviceProvider] instead.
@@ -29045,11 +30283,66 @@ func UnsafeApplyDeviceProviderOverrides[Instance DeviceProvider](gclass unsafe.P
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gst1_DeviceProvider_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_DeviceProvider_start",
+			func(carg0 *C.GstDeviceProvider) (cret C.gboolean) {
+				var provider Instance // go GstDeviceProvider subclass
+				var goret    bool     // return
+
+				provider = UnsafeDeviceProviderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(provider)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gst1_DeviceProvider_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_DeviceProvider_stop",
+			func(carg0 *C.GstDeviceProvider) {
+				var provider Instance // go GstDeviceProvider subclass
+
+				provider = UnsafeDeviceProviderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Stop(provider)
+			},
+		)
 	}
+}
+
+// RegisterDeviceProviderSubClass is used to register a go subclass of GstDeviceProvider. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterDeviceProviderSubClass[InstanceT DeviceProvider](
+		name string,
+		classInit func(class *DeviceProviderClass),
+		constructor func() InstanceT,
+		overrides DeviceProviderOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeDeviceProvider,
+		UnsafeDeviceProviderClassFromGlibBorrow,
+		UnsafeApplyDeviceProviderOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDeviceProvider(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // DeviceProviderFactoryInstance is the instance type used by all types extending GstDeviceProviderFactory. It is used internally by the bindings. Users should use the interface [DeviceProviderFactory] instead.
@@ -33502,67 +34795,374 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 
 	if overrides.ChangeState != nil {
 		pclass.change_state = (*[0]byte)(C._gotk4_gst1_Element_change_state)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_change_state",
+			func(carg0 *C.GstElement, carg1 C.GstStateChange) (cret C.GstStateChangeReturn) {
+				var element    Instance          // go GstElement subclass
+				var transition StateChange       // in, none, casted
+				var goret      StateChangeReturn // return, none, casted
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				transition = StateChange(carg1)
+
+				goret = overrides.ChangeState(element, transition)
+
+				cret = C.GstStateChangeReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.GetState != nil {
 		pclass.get_state = (*[0]byte)(C._gotk4_gst1_Element_get_state)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_get_state",
+			func(carg0 *C.GstElement, carg1 *C.GstState, carg2 *C.GstState, carg3 C.GstClockTime) (cret C.GstStateChangeReturn) {
+				var element Instance          // go GstElement subclass
+				var timeout ClockTime         // in, none, casted, alias
+				var state   State             // out, full, casted
+				var pending State             // out, full, casted
+				var goret   StateChangeReturn // return, none, casted
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				timeout = ClockTime(carg3)
+
+				state, pending, goret = overrides.GetState(element, timeout)
+
+				*carg1 = C.GstState(state)
+				*carg2 = C.GstState(pending)
+				cret = C.GstStateChangeReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.NoMorePads != nil {
 		pclass.no_more_pads = (*[0]byte)(C._gotk4_gst1_Element_no_more_pads)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_no_more_pads",
+			func(carg0 *C.GstElement) {
+				var element Instance // go GstElement subclass
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.NoMorePads(element)
+			},
+		)
 	}
 
 	if overrides.PadAdded != nil {
 		pclass.pad_added = (*[0]byte)(C._gotk4_gst1_Element_pad_added)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_pad_added",
+			func(carg0 *C.GstElement, carg1 *C.GstPad) {
+				var element Instance // go GstElement subclass
+				var pad     Pad      // in, none, converted
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.PadAdded(element, pad)
+			},
+		)
 	}
 
 	if overrides.PadRemoved != nil {
 		pclass.pad_removed = (*[0]byte)(C._gotk4_gst1_Element_pad_removed)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_pad_removed",
+			func(carg0 *C.GstElement, carg1 *C.GstPad) {
+				var element Instance // go GstElement subclass
+				var pad     Pad      // in, none, converted
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.PadRemoved(element, pad)
+			},
+		)
 	}
 
 	if overrides.PostMessage != nil {
 		pclass.post_message = (*[0]byte)(C._gotk4_gst1_Element_post_message)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_post_message",
+			func(carg0 *C.GstElement, carg1 *C.GstMessage) (cret C.gboolean) {
+				var element Instance // go GstElement subclass
+				var message *Message // in, full, converted
+				var goret   bool     // return
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				message = UnsafeMessageFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.PostMessage(element, message)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProvideClock != nil {
 		pclass.provide_clock = (*[0]byte)(C._gotk4_gst1_Element_provide_clock)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_provide_clock",
+			func(carg0 *C.GstElement) (cret *C.GstClock) {
+				var element Instance // go GstElement subclass
+				var goret   Clock    // return, full, converted, nullable
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.ProvideClock(element)
+
+				if goret != nil {
+					cret = (*C.GstClock)(UnsafeClockToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Query != nil {
 		pclass.query = (*[0]byte)(C._gotk4_gst1_Element_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_query",
+			func(carg0 *C.GstElement, carg1 *C.GstQuery) (cret C.gboolean) {
+				var element Instance // go GstElement subclass
+				var query   *Query   // in, none, converted
+				var goret   bool     // return
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Query(element, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ReleasePad != nil {
 		pclass.release_pad = (*[0]byte)(C._gotk4_gst1_Element_release_pad)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_release_pad",
+			func(carg0 *C.GstElement, carg1 *C.GstPad) {
+				var element Instance // go GstElement subclass
+				var pad     Pad      // in, none, converted
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.ReleasePad(element, pad)
+			},
+		)
 	}
 
 	if overrides.RequestNewPad != nil {
 		pclass.request_new_pad = (*[0]byte)(C._gotk4_gst1_Element_request_new_pad)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_request_new_pad",
+			func(carg0 *C.GstElement, carg1 *C.GstPadTemplate, carg2 *C.gchar, carg3 *C.GstCaps) (cret *C.GstPad) {
+				var element Instance    // go GstElement subclass
+				var templ   PadTemplate // in, none, converted
+				var name    string      // in, none, string, nullable-string
+				var caps    *Caps       // in, none, converted, nullable
+				var goret   Pad         // return, full, converted, nullable
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				templ = UnsafePadTemplateFromGlibNone(unsafe.Pointer(carg1))
+				if carg2 != nil {
+					name = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+				}
+				if carg3 != nil {
+					caps = UnsafeCapsFromGlibNone(unsafe.Pointer(carg3))
+				}
+
+				goret = overrides.RequestNewPad(element, templ, name, caps)
+
+				if goret != nil {
+					cret = (*C.GstPad)(UnsafePadToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SendEvent != nil {
 		pclass.send_event = (*[0]byte)(C._gotk4_gst1_Element_send_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_send_event",
+			func(carg0 *C.GstElement, carg1 *C.GstEvent) (cret C.gboolean) {
+				var element Instance // go GstElement subclass
+				var event   *Event   // in, full, converted
+				var goret   bool     // return
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.SendEvent(element, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetBus != nil {
 		pclass.set_bus = (*[0]byte)(C._gotk4_gst1_Element_set_bus)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_set_bus",
+			func(carg0 *C.GstElement, carg1 *C.GstBus) {
+				var element Instance // go GstElement subclass
+				var bus     Bus      // in, none, converted, nullable
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != nil {
+					bus = UnsafeBusFromGlibNone(unsafe.Pointer(carg1))
+				}
+
+				overrides.SetBus(element, bus)
+			},
+		)
 	}
 
 	if overrides.SetClock != nil {
 		pclass.set_clock = (*[0]byte)(C._gotk4_gst1_Element_set_clock)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_set_clock",
+			func(carg0 *C.GstElement, carg1 *C.GstClock) (cret C.gboolean) {
+				var element Instance // go GstElement subclass
+				var clock   Clock    // in, none, converted, nullable
+				var goret   bool     // return
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != nil {
+					clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg1))
+				}
+
+				goret = overrides.SetClock(element, clock)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetContext != nil {
 		pclass.set_context = (*[0]byte)(C._gotk4_gst1_Element_set_context)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_set_context",
+			func(carg0 *C.GstElement, carg1 *C.GstContext) {
+				var element  Instance // go GstElement subclass
+				var _context *Context // in, none, converted
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeContextFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.SetContext(element, _context)
+			},
+		)
 	}
 
 	if overrides.SetState != nil {
 		pclass.set_state = (*[0]byte)(C._gotk4_gst1_Element_set_state)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_set_state",
+			func(carg0 *C.GstElement, carg1 C.GstState) (cret C.GstStateChangeReturn) {
+				var element Instance          // go GstElement subclass
+				var state   State             // in, none, casted
+				var goret   StateChangeReturn // return, none, casted
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				state = State(carg1)
+
+				goret = overrides.SetState(element, state)
+
+				cret = C.GstStateChangeReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.StateChanged != nil {
 		pclass.state_changed = (*[0]byte)(C._gotk4_gst1_Element_state_changed)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Element_state_changed",
+			func(carg0 *C.GstElement, carg1 C.GstState, carg2 C.GstState, carg3 C.GstState) {
+				var element  Instance // go GstElement subclass
+				var oldstate State    // in, none, casted
+				var newstate State    // in, none, casted
+				var pending  State    // in, none, casted
+
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				oldstate = State(carg1)
+				newstate = State(carg2)
+				pending = State(carg3)
+
+				overrides.StateChanged(element, oldstate, newstate, pending)
+			},
+		)
 	}
+}
+
+// RegisterElementSubClass is used to register a go subclass of GstElement. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterElementSubClass[InstanceT Element](
+		name string,
+		classInit func(class *ElementClass),
+		constructor func() InstanceT,
+		overrides ElementOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeElement,
+		UnsafeElementClassFromGlibBorrow,
+		UnsafeApplyElementOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapElement(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // ElementFactoryInstance is the instance type used by all types extending GstElementFactory. It is used internally by the bindings. Users should use the interface [ElementFactory] instead.
@@ -34888,6 +36488,32 @@ func UnsafeApplyGhostPadOverrides[Instance GhostPad](gclass unsafe.Pointer, over
 	UnsafeApplyProxyPadOverrides(gclass, overrides.ProxyPadOverrides)
 }
 
+// RegisterGhostPadSubClass is used to register a go subclass of GstGhostPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterGhostPadSubClass[InstanceT GhostPad](
+		name string,
+		classInit func(class *GhostPadClass),
+		constructor func() InstanceT,
+		overrides GhostPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeGhostPad,
+		UnsafeGhostPadClassFromGlibBorrow,
+		UnsafeApplyGhostPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGhostPad(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // SharedTaskPoolInstance is the instance type used by all types extending GstSharedTaskPool. It is used internally by the bindings. Users should use the interface [SharedTaskPool] instead.
 type SharedTaskPoolInstance struct {
 	_ [0]func() // equal guard
@@ -35045,6 +36671,32 @@ func UnsafeApplySharedTaskPoolOverrides[Instance SharedTaskPool](gclass unsafe.P
 	UnsafeApplyTaskPoolOverrides(gclass, overrides.TaskPoolOverrides)
 }
 
+// RegisterSharedTaskPoolSubClass is used to register a go subclass of GstSharedTaskPool. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterSharedTaskPoolSubClass[InstanceT SharedTaskPool](
+		name string,
+		classInit func(class *SharedTaskPoolClass),
+		constructor func() InstanceT,
+		overrides SharedTaskPoolOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeSharedTaskPool,
+		UnsafeSharedTaskPoolClassFromGlibBorrow,
+		UnsafeApplySharedTaskPoolOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapSharedTaskPool(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // SystemClockInstance is the instance type used by all types extending GstSystemClock. It is used internally by the bindings. Users should use the interface [SystemClock] instead.
 type SystemClockInstance struct {
 	_ [0]func() // equal guard
@@ -35167,6 +36819,32 @@ type SystemClockOverrides[Instance SystemClock] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplySystemClockOverrides[Instance SystemClock](gclass unsafe.Pointer, overrides SystemClockOverrides[Instance]) {
 	UnsafeApplyClockOverrides(gclass, overrides.ClockOverrides)
+}
+
+// RegisterSystemClockSubClass is used to register a go subclass of GstSystemClock. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterSystemClockSubClass[InstanceT SystemClock](
+		name string,
+		classInit func(class *SystemClockClass),
+		constructor func() InstanceT,
+		overrides SystemClockOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeSystemClock,
+		UnsafeSystemClockClassFromGlibBorrow,
+		UnsafeApplySystemClockOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapSystemClock(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // BinInstance is the instance type used by all types extending GstBin. It is used internally by the bindings. Users should use the interface [Bin] instead.
@@ -36252,35 +37930,188 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 
 	if overrides.AddElement != nil {
 		pclass.add_element = (*[0]byte)(C._gotk4_gst1_Bin_add_element)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bin_add_element",
+			func(carg0 *C.GstBin, carg1 *C.GstElement) (cret C.gboolean) {
+				var bin     Instance // go GstBin subclass
+				var element Element  // in, none, converted
+				var goret   bool     // return
+
+				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.AddElement(bin, element)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DeepElementAdded != nil {
 		pclass.deep_element_added = (*[0]byte)(C._gotk4_gst1_Bin_deep_element_added)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bin_deep_element_added",
+			func(carg0 *C.GstBin, carg1 *C.GstBin, carg2 *C.GstElement) {
+				var bin    Instance // go GstBin subclass
+				var subBin Bin      // in, none, converted
+				var child  Element  // in, none, converted
+
+				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				subBin = UnsafeBinFromGlibNone(unsafe.Pointer(carg1))
+				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg2))
+
+				overrides.DeepElementAdded(bin, subBin, child)
+			},
+		)
 	}
 
 	if overrides.DeepElementRemoved != nil {
 		pclass.deep_element_removed = (*[0]byte)(C._gotk4_gst1_Bin_deep_element_removed)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bin_deep_element_removed",
+			func(carg0 *C.GstBin, carg1 *C.GstBin, carg2 *C.GstElement) {
+				var bin    Instance // go GstBin subclass
+				var subBin Bin      // in, none, converted
+				var child  Element  // in, none, converted
+
+				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				subBin = UnsafeBinFromGlibNone(unsafe.Pointer(carg1))
+				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg2))
+
+				overrides.DeepElementRemoved(bin, subBin, child)
+			},
+		)
 	}
 
 	if overrides.DoLatency != nil {
 		pclass.do_latency = (*[0]byte)(C._gotk4_gst1_Bin_do_latency)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bin_do_latency",
+			func(carg0 *C.GstBin) (cret C.gboolean) {
+				var bin   Instance // go GstBin subclass
+				var goret bool     // return
+
+				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.DoLatency(bin)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ElementAdded != nil {
 		pclass.element_added = (*[0]byte)(C._gotk4_gst1_Bin_element_added)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bin_element_added",
+			func(carg0 *C.GstBin, carg1 *C.GstElement) {
+				var bin   Instance // go GstBin subclass
+				var child Element  // in, none, converted
+
+				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.ElementAdded(bin, child)
+			},
+		)
 	}
 
 	if overrides.ElementRemoved != nil {
 		pclass.element_removed = (*[0]byte)(C._gotk4_gst1_Bin_element_removed)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bin_element_removed",
+			func(carg0 *C.GstBin, carg1 *C.GstElement) {
+				var bin   Instance // go GstBin subclass
+				var child Element  // in, none, converted
+
+				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.ElementRemoved(bin, child)
+			},
+		)
 	}
 
 	if overrides.HandleMessage != nil {
 		pclass.handle_message = (*[0]byte)(C._gotk4_gst1_Bin_handle_message)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bin_handle_message",
+			func(carg0 *C.GstBin, carg1 *C.GstMessage) {
+				var bin     Instance // go GstBin subclass
+				var message *Message // in, full, converted
+
+				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				message = UnsafeMessageFromGlibFull(unsafe.Pointer(carg1))
+
+				overrides.HandleMessage(bin, message)
+			},
+		)
 	}
 
 	if overrides.RemoveElement != nil {
 		pclass.remove_element = (*[0]byte)(C._gotk4_gst1_Bin_remove_element)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Bin_remove_element",
+			func(carg0 *C.GstBin, carg1 *C.GstElement) (cret C.gboolean) {
+				var bin     Instance // go GstBin subclass
+				var element Element  // in, none, converted
+				var goret   bool     // return
+
+				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.RemoveElement(bin, element)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterBinSubClass is used to register a go subclass of GstBin. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterBinSubClass[InstanceT Bin](
+		name string,
+		classInit func(class *BinClass),
+		constructor func() InstanceT,
+		overrides BinOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeBin,
+		UnsafeBinClassFromGlibBorrow,
+		UnsafeApplyBinOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBin(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // PipelineInstance is the instance type used by all types extending GstPipeline. It is used internally by the bindings. Users should use the interface [Pipeline] instead.
@@ -36882,6 +38713,32 @@ type PipelineOverrides[Instance Pipeline] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyPipelineOverrides[Instance Pipeline](gclass unsafe.Pointer, overrides PipelineOverrides[Instance]) {
 	UnsafeApplyBinOverrides(gclass, overrides.BinOverrides)
+}
+
+// RegisterPipelineSubClass is used to register a go subclass of GstPipeline. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterPipelineSubClass[InstanceT Pipeline](
+		name string,
+		classInit func(class *PipelineClass),
+		constructor func() InstanceT,
+		overrides PipelineOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypePipeline,
+		UnsafePipelineClassFromGlibBorrow,
+		UnsafeApplyPipelineOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPipeline(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AllocationParams wraps GstAllocationParams
