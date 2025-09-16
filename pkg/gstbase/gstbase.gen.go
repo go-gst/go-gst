@@ -3,7 +3,9 @@
 package gstbase
 
 import (
+	"fmt"
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
@@ -94,6 +96,15 @@ func (e AggregatorStartTimeSelection) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AggregatorStartTimeSelection) String() string {
+	switch e {
+		case AggregatorStartTimeSelectionFirst: return "AggregatorStartTimeSelectionFirst"
+		case AggregatorStartTimeSelectionSet: return "AggregatorStartTimeSelectionSet"
+		case AggregatorStartTimeSelectionZero: return "AggregatorStartTimeSelectionZero"
+		default: return fmt.Sprintf("AggregatorStartTimeSelection(%d)", e)
+	}
+}
+
 // BaseParseFrameFlags wraps GstBaseParseFrameFlags
 //
 // Flags to be used in a #GstBaseParseFrame.
@@ -141,6 +152,33 @@ func (b BaseParseFrameFlags) Has(other BaseParseFrameFlags) bool {
 	return (b & other) == other
 }
 
+func (f BaseParseFrameFlags) String() string {
+	if f == 0 {
+		return "BaseParseFrameFlags(0)"
+	}
+
+	var parts []string
+	if (f & BaseParseFrameFlagNone) != 0 {
+		parts = append(parts, "BaseParseFrameFlagNone")
+	}
+	if (f & BaseParseFrameFlagNewFrame) != 0 {
+		parts = append(parts, "BaseParseFrameFlagNewFrame")
+	}
+	if (f & BaseParseFrameFlagNoFrame) != 0 {
+		parts = append(parts, "BaseParseFrameFlagNoFrame")
+	}
+	if (f & BaseParseFrameFlagClip) != 0 {
+		parts = append(parts, "BaseParseFrameFlagClip")
+	}
+	if (f & BaseParseFrameFlagDrop) != 0 {
+		parts = append(parts, "BaseParseFrameFlagDrop")
+	}
+	if (f & BaseParseFrameFlagQueue) != 0 {
+		parts = append(parts, "BaseParseFrameFlagQueue")
+	}
+	return "BaseParseFrameFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // BaseSrcFlags wraps GstBaseSrcFlags
 //
 // The #GstElement flags that a basesrc element may have.
@@ -164,6 +202,24 @@ const (
 // Has returns true if b contains other
 func (b BaseSrcFlags) Has(other BaseSrcFlags) bool {
 	return (b & other) == other
+}
+
+func (f BaseSrcFlags) String() string {
+	if f == 0 {
+		return "BaseSrcFlags(0)"
+	}
+
+	var parts []string
+	if (f & BaseSrcFlagStarting) != 0 {
+		parts = append(parts, "BaseSrcFlagStarting")
+	}
+	if (f & BaseSrcFlagStarted) != 0 {
+		parts = append(parts, "BaseSrcFlagStarted")
+	}
+	if (f & BaseSrcFlagLast) != 0 {
+		parts = append(parts, "BaseSrcFlagLast")
+	}
+	return "BaseSrcFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // CollectPadsStateFlags wraps GstCollectPadsStateFlags
@@ -199,6 +255,30 @@ const (
 // Has returns true if c contains other
 func (c CollectPadsStateFlags) Has(other CollectPadsStateFlags) bool {
 	return (c & other) == other
+}
+
+func (f CollectPadsStateFlags) String() string {
+	if f == 0 {
+		return "CollectPadsStateFlags(0)"
+	}
+
+	var parts []string
+	if (f & CollectPadsStateEos) != 0 {
+		parts = append(parts, "CollectPadsStateEos")
+	}
+	if (f & CollectPadsStateFlushing) != 0 {
+		parts = append(parts, "CollectPadsStateFlushing")
+	}
+	if (f & CollectPadsStateNewSegment) != 0 {
+		parts = append(parts, "CollectPadsStateNewSegment")
+	}
+	if (f & CollectPadsStateWaiting) != 0 {
+		parts = append(parts, "CollectPadsStateWaiting")
+	}
+	if (f & CollectPadsStateLocked) != 0 {
+		parts = append(parts, "CollectPadsStateLocked")
+	}
+	return "CollectPadsStateFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // CollectPadsBufferFunction wraps GstCollectPadsBufferFunction
@@ -1184,13 +1264,13 @@ func UnsafeAdapterToGlibFull(c Adapter) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewAdapterInstance wraps gst_adapter_new
+// NewAdapter wraps gst_adapter_new
 // The function returns the following values:
 // 
 // 	- goret Adapter 
 //
 // Creates a new #GstAdapter. Free with g_object_unref().
-func NewAdapterInstance() Adapter {
+func NewAdapter() Adapter {
 	var cret *C.GstAdapter // return, full, converted
 
 	cret = C.gst_adapter_new()
@@ -7536,7 +7616,7 @@ func UnsafeCollectPadsToGlibFull(c CollectPads) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewCollectPadsInstance wraps gst_collect_pads_new
+// NewCollectPads wraps gst_collect_pads_new
 // The function returns the following values:
 // 
 // 	- goret CollectPads 
@@ -7544,7 +7624,7 @@ func UnsafeCollectPadsToGlibFull(c CollectPads) unsafe.Pointer {
 // Create a new instance of #GstCollectPads.
 // 
 // MT safe.
-func NewCollectPadsInstance() CollectPads {
+func NewCollectPads() CollectPads {
 	var cret *C.GstCollectPads // return, full, converted
 
 	cret = C.gst_collect_pads_new()

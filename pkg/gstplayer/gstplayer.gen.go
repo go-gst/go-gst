@@ -3,6 +3,7 @@
 package gstplayer
 
 import (
+	"fmt"
 	"runtime"
 	"unsafe"
 
@@ -88,6 +89,16 @@ func (e PlayerColorBalanceType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e PlayerColorBalanceType) String() string {
+	switch e {
+		case PlayerColorBalanceHue: return "PlayerColorBalanceHue"
+		case PlayerColorBalanceBrightness: return "PlayerColorBalanceBrightness"
+		case PlayerColorBalanceSaturation: return "PlayerColorBalanceSaturation"
+		case PlayerColorBalanceContrast: return "PlayerColorBalanceContrast"
+		default: return fmt.Sprintf("PlayerColorBalanceType(%d)", e)
+	}
+}
+
 // PlayerError wraps GstPlayerError
 type PlayerError C.int
 
@@ -109,6 +120,13 @@ func (e PlayerError) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e PlayerError) String() string {
+	switch e {
+		case PlayerErrorFailed: return "PlayerErrorFailed"
+		default: return fmt.Sprintf("PlayerError(%d)", e)
+	}
+}
+
 // PlayerSnapshotFormat wraps GstPlayerSnapshotFormat
 type PlayerSnapshotFormat C.int
 
@@ -125,6 +143,17 @@ const (
 	PlayerThumbnailPNG PlayerSnapshotFormat = 4
 )
 
+
+func (e PlayerSnapshotFormat) String() string {
+	switch e {
+		case PlayerThumbnailRawNative: return "PlayerThumbnailRawNative"
+		case PlayerThumbnailRawXrgb: return "PlayerThumbnailRawXrgb"
+		case PlayerThumbnailRawBgrx: return "PlayerThumbnailRawBgrx"
+		case PlayerThumbnailJPG: return "PlayerThumbnailJPG"
+		case PlayerThumbnailPNG: return "PlayerThumbnailPNG"
+		default: return fmt.Sprintf("PlayerSnapshotFormat(%d)", e)
+	}
+}
 
 // PlayerState wraps GstPlayerState
 type PlayerState C.int
@@ -158,6 +187,16 @@ var _ gobject.GoValueInitializer = PlayerState(0)
 func (e PlayerState) InitGoValue(v *gobject.Value) {
 	v.Init(TypePlayerState)
 	v.SetEnum(int(e))
+}
+
+func (e PlayerState) String() string {
+	switch e {
+		case PlayerStateBuffering: return "PlayerStateBuffering"
+		case PlayerStatePaused: return "PlayerStatePaused"
+		case PlayerStatePlaying: return "PlayerStatePlaying"
+		case PlayerStateStopped: return "PlayerStateStopped"
+		default: return fmt.Sprintf("PlayerState(%d)", e)
+	}
 }
 
 // PlayerSignalDispatcherInstance is the instance type used by all types implementing GstPlayerSignalDispatcher. It is used internally by the bindings. Users should use the interface [PlayerSignalDispatcher] instead.
@@ -678,7 +717,7 @@ func UnsafePlayerToGlibFull(c Player) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPlayerInstance wraps gst_player_new
+// NewPlayer wraps gst_player_new
 // 
 // The function takes the following parameters:
 // 
@@ -699,7 +738,7 @@ func UnsafePlayerToGlibFull(c Player) unsafe.Pointer {
 // 
 // This also initializes GStreamer via `gst_init()` on the first call if this
 // didn't happen before.
-func NewPlayerInstance(videoRenderer PlayerVideoRenderer, signalDispatcher PlayerSignalDispatcher) Player {
+func NewPlayer(videoRenderer PlayerVideoRenderer, signalDispatcher PlayerSignalDispatcher) Player {
 	var carg1 *C.GstPlayerVideoRenderer    // in, full, converted, nullable
 	var carg2 *C.GstPlayerSignalDispatcher // in, full, converted, nullable
 	var cret  *C.GstPlayer                 // return, full, converted
@@ -722,7 +761,7 @@ func NewPlayerInstance(videoRenderer PlayerVideoRenderer, signalDispatcher Playe
 	return goret
 }
 
-// PlayerInstanceConfigGetPositionUpdateInterval wraps gst_player_config_get_position_update_interval
+// PlayerConfigGetPositionUpdateInterval wraps gst_player_config_get_position_update_interval
 // 
 // The function takes the following parameters:
 // 
@@ -731,7 +770,7 @@ func NewPlayerInstance(videoRenderer PlayerVideoRenderer, signalDispatcher Playe
 // The function returns the following values:
 // 
 // 	- goret uint 
-func PlayerInstanceConfigGetPositionUpdateInterval(config *gst.Structure) uint {
+func PlayerConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.guint         // return, none, casted
 
@@ -747,7 +786,7 @@ func PlayerInstanceConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 	return goret
 }
 
-// PlayerInstanceConfigGetSeekAccurate wraps gst_player_config_get_seek_accurate
+// PlayerConfigGetSeekAccurate wraps gst_player_config_get_seek_accurate
 // 
 // The function takes the following parameters:
 // 
@@ -756,7 +795,7 @@ func PlayerInstanceConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func PlayerInstanceConfigGetSeekAccurate(config *gst.Structure) bool {
+func PlayerConfigGetSeekAccurate(config *gst.Structure) bool {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.gboolean      // return
 
@@ -774,7 +813,7 @@ func PlayerInstanceConfigGetSeekAccurate(config *gst.Structure) bool {
 	return goret
 }
 
-// PlayerInstanceConfigGetUserAgent wraps gst_player_config_get_user_agent
+// PlayerConfigGetUserAgent wraps gst_player_config_get_user_agent
 // 
 // The function takes the following parameters:
 // 
@@ -786,7 +825,7 @@ func PlayerInstanceConfigGetSeekAccurate(config *gst.Structure) bool {
 //
 // Return the user agent which has been configured using
 // gst_player_config_set_user_agent() if any.
-func PlayerInstanceConfigGetUserAgent(config *gst.Structure) string {
+func PlayerConfigGetUserAgent(config *gst.Structure) string {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  *C.gchar        // return, full, string, casted *C.gchar
 
@@ -803,7 +842,7 @@ func PlayerInstanceConfigGetUserAgent(config *gst.Structure) string {
 	return goret
 }
 
-// PlayerInstanceConfigSetPositionUpdateInterval wraps gst_player_config_set_position_update_interval
+// PlayerConfigSetPositionUpdateInterval wraps gst_player_config_set_position_update_interval
 // 
 // The function takes the following parameters:
 // 
@@ -812,7 +851,7 @@ func PlayerInstanceConfigGetUserAgent(config *gst.Structure) string {
 //
 // set interval in milliseconds between two position-updated signals.
 // pass 0 to stop updating the position.
-func PlayerInstanceConfigSetPositionUpdateInterval(config *gst.Structure, interval uint) {
+func PlayerConfigSetPositionUpdateInterval(config *gst.Structure, interval uint) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.guint         // in, none, casted
 
@@ -824,7 +863,7 @@ func PlayerInstanceConfigSetPositionUpdateInterval(config *gst.Structure, interv
 	runtime.KeepAlive(interval)
 }
 
-// PlayerInstanceConfigSetSeekAccurate wraps gst_player_config_set_seek_accurate
+// PlayerConfigSetSeekAccurate wraps gst_player_config_set_seek_accurate
 // 
 // The function takes the following parameters:
 // 
@@ -840,7 +879,7 @@ func PlayerInstanceConfigSetPositionUpdateInterval(config *gst.Structure, interv
 // position without slowing down seeking too much.
 // 
 // Accurate seeking is disabled by default.
-func PlayerInstanceConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
+func PlayerConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.gboolean      // in
 
@@ -854,7 +893,7 @@ func PlayerInstanceConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 	runtime.KeepAlive(accurate)
 }
 
-// PlayerInstanceConfigSetUserAgent wraps gst_player_config_set_user_agent
+// PlayerConfigSetUserAgent wraps gst_player_config_set_user_agent
 // 
 // The function takes the following parameters:
 // 
@@ -864,7 +903,7 @@ func PlayerInstanceConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 // Set the user agent to pass to the server if @player needs to connect
 // to a server during playback. This is typically used when playing HTTP
 // or RTSP streams.
-func PlayerInstanceConfigSetUserAgent(config *gst.Structure, agent string) {
+func PlayerConfigSetUserAgent(config *gst.Structure, agent string) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 *C.gchar        // in, none, string, nullable-string
 
@@ -1931,7 +1970,7 @@ func UnsafePlayerGMainContextSignalDispatcherToGlibFull(c PlayerGMainContextSign
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPlayerGMainContextSignalDispatcherInstance wraps gst_player_g_main_context_signal_dispatcher_new
+// NewPlayerGMainContextSignalDispatcher wraps gst_player_g_main_context_signal_dispatcher_new
 // 
 // The function takes the following parameters:
 // 
@@ -1943,7 +1982,7 @@ func UnsafePlayerGMainContextSignalDispatcherToGlibFull(c PlayerGMainContextSign
 //
 // Creates a new GstPlayerSignalDispatcher that uses @application_context,
 // or the thread default one if %NULL is used. See gst_player_new().
-func NewPlayerGMainContextSignalDispatcherInstance(applicationContext *glib.MainContext) PlayerSignalDispatcher {
+func NewPlayerGMainContextSignalDispatcher(applicationContext *glib.MainContext) PlayerSignalDispatcher {
 	var carg1 *C.GMainContext              // in, none, converted, nullable
 	var cret  *C.GstPlayerSignalDispatcher // return, full, converted
 
@@ -2910,7 +2949,7 @@ func UnsafePlayerVideoOverlayVideoRendererToGlibFull(c PlayerVideoOverlayVideoRe
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPlayerVideoOverlayVideoRendererInstance wraps gst_player_video_overlay_video_renderer_new
+// NewPlayerVideoOverlayVideoRenderer wraps gst_player_video_overlay_video_renderer_new
 // 
 // The function takes the following parameters:
 // 
@@ -2919,7 +2958,7 @@ func UnsafePlayerVideoOverlayVideoRendererToGlibFull(c PlayerVideoOverlayVideoRe
 // The function returns the following values:
 // 
 // 	- goret PlayerVideoRenderer 
-func NewPlayerVideoOverlayVideoRendererInstance(windowHandle unsafe.Pointer) PlayerVideoRenderer {
+func NewPlayerVideoOverlayVideoRenderer(windowHandle unsafe.Pointer) PlayerVideoRenderer {
 	var carg1 C.gpointer                // in, none, casted, nullable
 	var cret  *C.GstPlayerVideoRenderer // return, full, converted
 
@@ -2937,7 +2976,7 @@ func NewPlayerVideoOverlayVideoRendererInstance(windowHandle unsafe.Pointer) Pla
 	return goret
 }
 
-// NewPlayerVideoOverlayVideoRendererInstanceWithSink wraps gst_player_video_overlay_video_renderer_new_with_sink
+// NewPlayerVideoOverlayVideoRendererWithSink wraps gst_player_video_overlay_video_renderer_new_with_sink
 // 
 // The function takes the following parameters:
 // 
@@ -2947,7 +2986,7 @@ func NewPlayerVideoOverlayVideoRendererInstance(windowHandle unsafe.Pointer) Pla
 // The function returns the following values:
 // 
 // 	- goret PlayerVideoRenderer 
-func NewPlayerVideoOverlayVideoRendererInstanceWithSink(windowHandle unsafe.Pointer, videoSink gst.Element) PlayerVideoRenderer {
+func NewPlayerVideoOverlayVideoRendererWithSink(windowHandle unsafe.Pointer, videoSink gst.Element) PlayerVideoRenderer {
 	var carg1 C.gpointer                // in, none, casted, nullable
 	var carg2 *C.GstElement             // in, none, converted
 	var cret  *C.GstPlayerVideoRenderer // return, full, converted

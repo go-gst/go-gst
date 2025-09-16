@@ -3,7 +3,9 @@
 package gst
 
 import (
+	"fmt"
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
@@ -484,10 +486,6 @@ const VERSION_NANO = 0
 //
 // A datatype to hold the handle to an outstanding sync or async clock callback.
 type ClockID = unsafe.Pointer
-// ClockTime wraps GstClockTime
-//
-// A datatype to hold a time, measured in nanoseconds.
-type ClockTime = uint64
 // ClockTimeDiff wraps GstClockTimeDiff
 //
 // A datatype to hold a time difference, measured in nanoseconds.
@@ -531,6 +529,16 @@ func (e BufferingMode) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e BufferingMode) String() string {
+	switch e {
+		case BufferingStream: return "BufferingStream"
+		case BufferingDownload: return "BufferingDownload"
+		case BufferingTimeshift: return "BufferingTimeshift"
+		case BufferingLive: return "BufferingLive"
+		default: return fmt.Sprintf("BufferingMode(%d)", e)
+	}
+}
+
 // BusSyncReply wraps GstBusSyncReply
 //
 // The result values for a GstBusSyncHandler.
@@ -560,6 +568,15 @@ var _ gobject.GoValueInitializer = BusSyncReply(0)
 func (e BusSyncReply) InitGoValue(v *gobject.Value) {
 	v.Init(TypeBusSyncReply)
 	v.SetEnum(int(e))
+}
+
+func (e BusSyncReply) String() string {
+	switch e {
+		case BusAsync: return "BusAsync"
+		case BusDrop: return "BusDrop"
+		case BusPass: return "BusPass"
+		default: return fmt.Sprintf("BusSyncReply(%d)", e)
+	}
 }
 
 // CapsIntersectMode wraps GstCapsIntersectMode
@@ -609,6 +626,14 @@ func (e CapsIntersectMode) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e CapsIntersectMode) String() string {
+	switch e {
+		case CapsIntersectZigZag: return "CapsIntersectZigZag"
+		case CapsIntersectFirst: return "CapsIntersectFirst"
+		default: return fmt.Sprintf("CapsIntersectMode(%d)", e)
+	}
+}
+
 // ClockEntryType wraps GstClockEntryType
 //
 // The type of the clock entry
@@ -634,6 +659,14 @@ var _ gobject.GoValueInitializer = ClockEntryType(0)
 func (e ClockEntryType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeClockEntryType)
 	v.SetEnum(int(e))
+}
+
+func (e ClockEntryType) String() string {
+	switch e {
+		case ClockEntryPeriodic: return "ClockEntryPeriodic"
+		case ClockEntrySingle: return "ClockEntrySingle"
+		default: return fmt.Sprintf("ClockEntryType(%d)", e)
+	}
 }
 
 // ClockReturn wraps GstClockReturn
@@ -687,6 +720,20 @@ func (e ClockReturn) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e ClockReturn) String() string {
+	switch e {
+		case ClockUnscheduled: return "ClockUnscheduled"
+		case ClockBusy: return "ClockBusy"
+		case ClockBadtime: return "ClockBadtime"
+		case ClockError: return "ClockError"
+		case ClockUnsupported: return "ClockUnsupported"
+		case ClockDone: return "ClockDone"
+		case ClockOK: return "ClockOK"
+		case ClockEarly: return "ClockEarly"
+		default: return fmt.Sprintf("ClockReturn(%d)", e)
+	}
+}
+
 // ClockType wraps GstClockType
 //
 // The different kind of clocks.
@@ -722,6 +769,16 @@ var _ gobject.GoValueInitializer = ClockType(0)
 func (e ClockType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeClockType)
 	v.SetEnum(int(e))
+}
+
+func (e ClockType) String() string {
+	switch e {
+		case ClockTypeRealtime: return "ClockTypeRealtime"
+		case ClockTypeMonotonic: return "ClockTypeMonotonic"
+		case ClockTypeOther: return "ClockTypeOther"
+		case ClockTypeTai: return "ClockTypeTai"
+		default: return fmt.Sprintf("ClockType(%d)", e)
+	}
 }
 
 // CoreError wraps GstCoreError
@@ -807,6 +864,27 @@ func (e CoreError) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e CoreError) String() string {
+	switch e {
+		case CoreErrorClock: return "CoreErrorClock"
+		case CoreErrorTooLaZY: return "CoreErrorTooLaZY"
+		case CoreErrorNegotiation: return "CoreErrorNegotiation"
+		case CoreErrorSeek: return "CoreErrorSeek"
+		case CoreErrorMissingPlugin: return "CoreErrorMissingPlugin"
+		case CoreErrorFailed: return "CoreErrorFailed"
+		case CoreErrorCaps: return "CoreErrorCaps"
+		case CoreErrorTag: return "CoreErrorTag"
+		case CoreErrorDisabled: return "CoreErrorDisabled"
+		case CoreErrorNotImplemented: return "CoreErrorNotImplemented"
+		case CoreErrorStateChange: return "CoreErrorStateChange"
+		case CoreErrorThread: return "CoreErrorThread"
+		case CoreErrorEvent: return "CoreErrorEvent"
+		case CoreErrorNumErrors: return "CoreErrorNumErrors"
+		case CoreErrorPad: return "CoreErrorPad"
+		default: return fmt.Sprintf("CoreError(%d)", e)
+	}
+}
+
 // DebugColorMode wraps GstDebugColorMode
 type DebugColorMode C.int
 
@@ -835,6 +913,15 @@ var _ gobject.GoValueInitializer = DebugColorMode(0)
 func (e DebugColorMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeDebugColorMode)
 	v.SetEnum(int(e))
+}
+
+func (e DebugColorMode) String() string {
+	switch e {
+		case DebugColorModeOff: return "DebugColorModeOff"
+		case DebugColorModeOn: return "DebugColorModeOn"
+		case DebugColorModeUnix: return "DebugColorModeUnix"
+		default: return fmt.Sprintf("DebugColorMode(%d)", e)
+	}
 }
 
 // DebugLevel wraps GstDebugLevel
@@ -922,6 +1009,22 @@ var _ gobject.GoValueInitializer = DebugLevel(0)
 func (e DebugLevel) InitGoValue(v *gobject.Value) {
 	v.Init(TypeDebugLevel)
 	v.SetEnum(int(e))
+}
+
+func (e DebugLevel) String() string {
+	switch e {
+		case LevelNone: return "LevelNone"
+		case LevelWarning: return "LevelWarning"
+		case LevelInfo: return "LevelInfo"
+		case LevelLog: return "LevelLog"
+		case LevelMemdump: return "LevelMemdump"
+		case LevelError: return "LevelError"
+		case LevelFixme: return "LevelFixme"
+		case LevelDebug: return "LevelDebug"
+		case LevelTrace: return "LevelTrace"
+		case LevelCount: return "LevelCount"
+		default: return fmt.Sprintf("DebugLevel(%d)", e)
+	}
 }
 
 // EventType wraps GstEventType
@@ -1105,6 +1208,44 @@ func (e EventType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e EventType) String() string {
+	switch e {
+		case EventFlushStop: return "EventFlushStop"
+		case EventStreamStart: return "EventStreamStart"
+		case EventCustomDownstreamOob: return "EventCustomDownstreamOob"
+		case EventCustomBoth: return "EventCustomBoth"
+		case EventCustomBothOob: return "EventCustomBothOob"
+		case EventProtection: return "EventProtection"
+		case EventLatency: return "EventLatency"
+		case EventTocSelect: return "EventTocSelect"
+		case EventCustomDownstream: return "EventCustomDownstream"
+		case EventSegment: return "EventSegment"
+		case EventStreamCollection: return "EventStreamCollection"
+		case EventBuffersize: return "EventBuffersize"
+		case EventNavigation: return "EventNavigation"
+		case EventCaps: return "EventCaps"
+		case EventQos: return "EventQos"
+		case EventCustomUpstream: return "EventCustomUpstream"
+		case EventToc: return "EventToc"
+		case EventTag: return "EventTag"
+		case EventStreamGroupDone: return "EventStreamGroupDone"
+		case EventGap: return "EventGap"
+		case EventCustomDownstreamSticky: return "EventCustomDownstreamSticky"
+		case EventSeek: return "EventSeek"
+		case EventSelectStreams: return "EventSelectStreams"
+		case EventSegmentDone: return "EventSegmentDone"
+		case EventStep: return "EventStep"
+		case EventInstantRateSyncTime: return "EventInstantRateSyncTime"
+		case EventFlushStart: return "EventFlushStart"
+		case EventSinkMessage: return "EventSinkMessage"
+		case EventInstantRateChange: return "EventInstantRateChange"
+		case EventReconfigure: return "EventReconfigure"
+		case EventEos: return "EventEos"
+		case EventUnknown: return "EventUnknown"
+		default: return fmt.Sprintf("EventType(%d)", e)
+	}
+}
+
 // FlowReturn wraps GstFlowReturn
 //
 // The result of passing data to a pad.
@@ -1188,6 +1329,25 @@ func (e FlowReturn) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e FlowReturn) String() string {
+	switch e {
+		case FlowCustomSuccess2: return "FlowCustomSuccess2"
+		case FlowCustomSuccess: return "FlowCustomSuccess"
+		case FlowNotLinked: return "FlowNotLinked"
+		case FlowFlushing: return "FlowFlushing"
+		case FlowEos: return "FlowEos"
+		case FlowNotNegotiated: return "FlowNotNegotiated"
+		case FlowCustomError2: return "FlowCustomError2"
+		case FlowCustomSuccess1: return "FlowCustomSuccess1"
+		case FlowOK: return "FlowOK"
+		case FlowError: return "FlowError"
+		case FlowNotSupported: return "FlowNotSupported"
+		case FlowCustomError: return "FlowCustomError"
+		case FlowCustomError1: return "FlowCustomError1"
+		default: return fmt.Sprintf("FlowReturn(%d)", e)
+	}
+}
+
 // Format wraps GstFormat
 //
 // Standard predefined formats
@@ -1236,6 +1396,18 @@ func (e Format) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e Format) String() string {
+	switch e {
+		case FormatBytes: return "FormatBytes"
+		case FormatTime: return "FormatTime"
+		case FormatBuffers: return "FormatBuffers"
+		case FormatPercent: return "FormatPercent"
+		case FormatUndefined: return "FormatUndefined"
+		case FormatDefault: return "FormatDefault"
+		default: return fmt.Sprintf("Format(%d)", e)
+	}
+}
+
 // IteratorItem wraps GstIteratorItem
 //
 // The result of a #GstIteratorItemFunction.
@@ -1265,6 +1437,15 @@ var _ gobject.GoValueInitializer = IteratorItem(0)
 func (e IteratorItem) InitGoValue(v *gobject.Value) {
 	v.Init(TypeIteratorItem)
 	v.SetEnum(int(e))
+}
+
+func (e IteratorItem) String() string {
+	switch e {
+		case IteratorItemSkip: return "IteratorItemSkip"
+		case IteratorItemPass: return "IteratorItemPass"
+		case IteratorItemEnd: return "IteratorItemEnd"
+		default: return fmt.Sprintf("IteratorItem(%d)", e)
+	}
 }
 
 // IteratorResult wraps GstIteratorResult
@@ -1300,6 +1481,16 @@ var _ gobject.GoValueInitializer = IteratorResult(0)
 func (e IteratorResult) InitGoValue(v *gobject.Value) {
 	v.Init(TypeIteratorResult)
 	v.SetEnum(int(e))
+}
+
+func (e IteratorResult) String() string {
+	switch e {
+		case IteratorDone: return "IteratorDone"
+		case IteratorOK: return "IteratorOK"
+		case IteratorResync: return "IteratorResync"
+		case IteratorError: return "IteratorError"
+		default: return fmt.Sprintf("IteratorResult(%d)", e)
+	}
 }
 
 // LibraryError wraps GstLibraryError
@@ -1352,6 +1543,19 @@ func (e LibraryError) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e LibraryError) String() string {
+	switch e {
+		case LibraryErrorEncode: return "LibraryErrorEncode"
+		case LibraryErrorNumErrors: return "LibraryErrorNumErrors"
+		case LibraryErrorFailed: return "LibraryErrorFailed"
+		case LibraryErrorTooLaZY: return "LibraryErrorTooLaZY"
+		case LibraryErrorInit: return "LibraryErrorInit"
+		case LibraryErrorShutdown: return "LibraryErrorShutdown"
+		case LibraryErrorSettings: return "LibraryErrorSettings"
+		default: return fmt.Sprintf("LibraryError(%d)", e)
+	}
+}
+
 // PadDirection wraps GstPadDirection
 //
 // The direction of a pad.
@@ -1381,6 +1585,15 @@ var _ gobject.GoValueInitializer = PadDirection(0)
 func (e PadDirection) InitGoValue(v *gobject.Value) {
 	v.Init(TypePadDirection)
 	v.SetEnum(int(e))
+}
+
+func (e PadDirection) String() string {
+	switch e {
+		case PadUnknown: return "PadUnknown"
+		case PadSrc: return "PadSrc"
+		case PadSink: return "PadSink"
+		default: return fmt.Sprintf("PadDirection(%d)", e)
+	}
 }
 
 // PadLinkReturn wraps GstPadLinkReturn
@@ -1430,6 +1643,19 @@ func (e PadLinkReturn) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e PadLinkReturn) String() string {
+	switch e {
+		case PadLinkNoformat: return "PadLinkNoformat"
+		case PadLinkNosched: return "PadLinkNosched"
+		case PadLinkRefused: return "PadLinkRefused"
+		case PadLinkOK: return "PadLinkOK"
+		case PadLinkWrongHierarchy: return "PadLinkWrongHierarchy"
+		case PadLinkWasLinked: return "PadLinkWasLinked"
+		case PadLinkWrongDirection: return "PadLinkWrongDirection"
+		default: return fmt.Sprintf("PadLinkReturn(%d)", e)
+	}
+}
+
 // PadMode wraps GstPadMode
 //
 // The status of a GstPad. After activating a pad, which usually happens when the
@@ -1463,6 +1689,15 @@ func (e PadMode) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e PadMode) String() string {
+	switch e {
+		case PadModePush: return "PadModePush"
+		case PadModePull: return "PadModePull"
+		case PadModeNone: return "PadModeNone"
+		default: return fmt.Sprintf("PadMode(%d)", e)
+	}
+}
+
 // PadPresence wraps GstPadPresence
 //
 // Indicates when this pad will become available.
@@ -1493,6 +1728,15 @@ var _ gobject.GoValueInitializer = PadPresence(0)
 func (e PadPresence) InitGoValue(v *gobject.Value) {
 	v.Init(TypePadPresence)
 	v.SetEnum(int(e))
+}
+
+func (e PadPresence) String() string {
+	switch e {
+		case PadAlways: return "PadAlways"
+		case PadSometimes: return "PadSometimes"
+		case PadRequest: return "PadRequest"
+		default: return fmt.Sprintf("PadPresence(%d)", e)
+	}
 }
 
 // PadProbeReturn wraps GstPadProbeReturn
@@ -1553,6 +1797,17 @@ func (e PadProbeReturn) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e PadProbeReturn) String() string {
+	switch e {
+		case PadProbeRemove: return "PadProbeRemove"
+		case PadProbePass: return "PadProbePass"
+		case PadProbeHandled: return "PadProbeHandled"
+		case PadProbeDrop: return "PadProbeDrop"
+		case PadProbeOK: return "PadProbeOK"
+		default: return fmt.Sprintf("PadProbeReturn(%d)", e)
+	}
+}
+
 // ParseError wraps GstParseError
 //
 // The different parsing errors that can occur.
@@ -1604,6 +1859,20 @@ func (e ParseError) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e ParseError) String() string {
+	switch e {
+		case ParseErrorNoSuchElement: return "ParseErrorNoSuchElement"
+		case ParseErrorNoSuchProperty: return "ParseErrorNoSuchProperty"
+		case ParseErrorLink: return "ParseErrorLink"
+		case ParseErrorCouldNotSetProperty: return "ParseErrorCouldNotSetProperty"
+		case ParseErrorEmptyBin: return "ParseErrorEmptyBin"
+		case ParseErrorEmpty: return "ParseErrorEmpty"
+		case ParseErrorDelayedLink: return "ParseErrorDelayedLink"
+		case ParseErrorSyntax: return "ParseErrorSyntax"
+		default: return fmt.Sprintf("ParseError(%d)", e)
+	}
+}
+
 // PluginError wraps GstPluginError
 //
 // The plugin loading errors
@@ -1633,6 +1902,15 @@ var _ gobject.GoValueInitializer = PluginError(0)
 func (e PluginError) InitGoValue(v *gobject.Value) {
 	v.Init(TypePluginError)
 	v.SetEnum(int(e))
+}
+
+func (e PluginError) String() string {
+	switch e {
+		case PluginErrorModule: return "PluginErrorModule"
+		case PluginErrorDependencies: return "PluginErrorDependencies"
+		case PluginErrorNameMismatch: return "PluginErrorNameMismatch"
+		default: return fmt.Sprintf("PluginError(%d)", e)
+	}
 }
 
 // ProgressType wraps GstProgressType
@@ -1676,6 +1954,17 @@ func (e ProgressType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e ProgressType) String() string {
+	switch e {
+		case ProgressTypeCanceled: return "ProgressTypeCanceled"
+		case ProgressTypeError: return "ProgressTypeError"
+		case ProgressTypeStart: return "ProgressTypeStart"
+		case ProgressTypeContinue: return "ProgressTypeContinue"
+		case ProgressTypeComplete: return "ProgressTypeComplete"
+		default: return fmt.Sprintf("ProgressType(%d)", e)
+	}
+}
+
 // PromiseResult wraps GstPromiseResult
 //
 // The result of a #GstPromise
@@ -1714,6 +2003,16 @@ func (e PromiseResult) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e PromiseResult) String() string {
+	switch e {
+		case PromiseResultReplied: return "PromiseResultReplied"
+		case PromiseResultExpired: return "PromiseResultExpired"
+		case PromiseResultPending: return "PromiseResultPending"
+		case PromiseResultInterrupted: return "PromiseResultInterrupted"
+		default: return fmt.Sprintf("PromiseResult(%d)", e)
+	}
+}
+
 // QOSType wraps GstQOSType
 //
 // The different types of QoS events that can be given to the
@@ -1750,6 +2049,15 @@ var _ gobject.GoValueInitializer = QOSType(0)
 func (e QOSType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeQOSType)
 	v.SetEnum(int(e))
+}
+
+func (e QOSType) String() string {
+	switch e {
+		case QosTypeThrottle: return "QosTypeThrottle"
+		case QosTypeOverflow: return "QosTypeOverflow"
+		case QosTypeUnderflow: return "QosTypeUnderflow"
+		default: return fmt.Sprintf("QOSType(%d)", e)
+	}
 }
 
 // QueryType wraps GstQueryType
@@ -1856,6 +2164,33 @@ func (e QueryType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e QueryType) String() string {
+	switch e {
+		case QueryPosition: return "QueryPosition"
+		case QueryJitter: return "QueryJitter"
+		case QuerySeeking: return "QuerySeeking"
+		case QuerySegment: return "QuerySegment"
+		case QueryFormats: return "QueryFormats"
+		case QueryCustom: return "QueryCustom"
+		case QueryScheduling: return "QueryScheduling"
+		case QueryCaps: return "QueryCaps"
+		case QueryUnknown: return "QueryUnknown"
+		case QueryLatency: return "QueryLatency"
+		case QueryConvert: return "QueryConvert"
+		case QueryBuffering: return "QueryBuffering"
+		case QueryAllocation: return "QueryAllocation"
+		case QueryDrain: return "QueryDrain"
+		case QueryContext: return "QueryContext"
+		case QuerySelectable: return "QuerySelectable"
+		case QueryRate: return "QueryRate"
+		case QueryURI: return "QueryURI"
+		case QueryDuration: return "QueryDuration"
+		case QueryAcceptCaps: return "QueryAcceptCaps"
+		case QueryBitrate: return "QueryBitrate"
+		default: return fmt.Sprintf("QueryType(%d)", e)
+	}
+}
+
 // Rank wraps GstRank
 //
 // Element priority ranks. Defines the order in which the autoplugger (or
@@ -1895,6 +2230,16 @@ var _ gobject.GoValueInitializer = Rank(0)
 func (e Rank) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRank)
 	v.SetEnum(int(e))
+}
+
+func (e Rank) String() string {
+	switch e {
+		case RankNone: return "RankNone"
+		case RankMarginal: return "RankMarginal"
+		case RankSecondary: return "RankSecondary"
+		case RankPrimary: return "RankPrimary"
+		default: return fmt.Sprintf("Rank(%d)", e)
+	}
 }
 
 // ResourceError wraps GstResourceError
@@ -1987,6 +2332,28 @@ func (e ResourceError) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e ResourceError) String() string {
+	switch e {
+		case ResourceErrorFailed: return "ResourceErrorFailed"
+		case ResourceErrorTooLaZY: return "ResourceErrorTooLaZY"
+		case ResourceErrorOpenRead: return "ResourceErrorOpenRead"
+		case ResourceErrorSync: return "ResourceErrorSync"
+		case ResourceErrorOpenReadWrite: return "ResourceErrorOpenReadWrite"
+		case ResourceErrorNotAuthorized: return "ResourceErrorNotAuthorized"
+		case ResourceErrorNumErrors: return "ResourceErrorNumErrors"
+		case ResourceErrorNoSpaceLeft: return "ResourceErrorNoSpaceLeft"
+		case ResourceErrorBusy: return "ResourceErrorBusy"
+		case ResourceErrorOpenWrite: return "ResourceErrorOpenWrite"
+		case ResourceErrorSeek: return "ResourceErrorSeek"
+		case ResourceErrorSettings: return "ResourceErrorSettings"
+		case ResourceErrorNotFound: return "ResourceErrorNotFound"
+		case ResourceErrorClose: return "ResourceErrorClose"
+		case ResourceErrorRead: return "ResourceErrorRead"
+		case ResourceErrorWrite: return "ResourceErrorWrite"
+		default: return fmt.Sprintf("ResourceError(%d)", e)
+	}
+}
+
 // SearchMode wraps GstSearchMode
 //
 // The different search modes.
@@ -2016,6 +2383,15 @@ var _ gobject.GoValueInitializer = SearchMode(0)
 func (e SearchMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeSearchMode)
 	v.SetEnum(int(e))
+}
+
+func (e SearchMode) String() string {
+	switch e {
+		case SearchModeBefore: return "SearchModeBefore"
+		case SearchModeAfter: return "SearchModeAfter"
+		case SearchModeExact: return "SearchModeExact"
+		default: return fmt.Sprintf("SearchMode(%d)", e)
+	}
 }
 
 // SeekType wraps GstSeekType
@@ -2048,6 +2424,15 @@ var _ gobject.GoValueInitializer = SeekType(0)
 func (e SeekType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeSeekType)
 	v.SetEnum(int(e))
+}
+
+func (e SeekType) String() string {
+	switch e {
+		case SeekTypeNone: return "SeekTypeNone"
+		case SeekTypeSet: return "SeekTypeSet"
+		case SeekTypeEnd: return "SeekTypeEnd"
+		default: return fmt.Sprintf("SeekType(%d)", e)
+	}
 }
 
 // State wraps GstState
@@ -2091,6 +2476,17 @@ var _ gobject.GoValueInitializer = State(0)
 func (e State) InitGoValue(v *gobject.Value) {
 	v.Init(TypeState)
 	v.SetEnum(int(e))
+}
+
+func (e State) String() string {
+	switch e {
+		case StateVoidPending: return "StateVoidPending"
+		case StateNull: return "StateNull"
+		case StateReady: return "StateReady"
+		case StatePaused: return "StatePaused"
+		case StatePlaying: return "StatePlaying"
+		default: return fmt.Sprintf("State(%d)", e)
+	}
 }
 
 // StateChange wraps GstStateChange
@@ -2206,6 +2602,22 @@ func (e StateChange) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e StateChange) String() string {
+	switch e {
+		case StateChangePausedToPaused: return "StateChangePausedToPaused"
+		case StateChangePlayingToPlaying: return "StateChangePlayingToPlaying"
+		case StateChangeReadyToPaused: return "StateChangeReadyToPaused"
+		case StateChangePausedToPlaying: return "StateChangePausedToPlaying"
+		case StateChangeNullToNull: return "StateChangeNullToNull"
+		case StateChangeNullToReady: return "StateChangeNullToReady"
+		case StateChangePlayingToPaused: return "StateChangePlayingToPaused"
+		case StateChangePausedToReady: return "StateChangePausedToReady"
+		case StateChangeReadyToNull: return "StateChangeReadyToNull"
+		case StateChangeReadyToReady: return "StateChangeReadyToReady"
+		default: return fmt.Sprintf("StateChange(%d)", e)
+	}
+}
+
 // StateChangeReturn wraps GstStateChangeReturn
 //
 // The possible return values from a state change function such as
@@ -2242,6 +2654,16 @@ var _ gobject.GoValueInitializer = StateChangeReturn(0)
 func (e StateChangeReturn) InitGoValue(v *gobject.Value) {
 	v.Init(TypeStateChangeReturn)
 	v.SetEnum(int(e))
+}
+
+func (e StateChangeReturn) String() string {
+	switch e {
+		case StateChangeFailure: return "StateChangeFailure"
+		case StateChangeSuccess: return "StateChangeSuccess"
+		case StateChangeAsync: return "StateChangeAsync"
+		case StateChangeNoPreroll: return "StateChangeNoPreroll"
+		default: return fmt.Sprintf("StateChangeReturn(%d)", e)
+	}
 }
 
 // StreamError wraps GstStreamError
@@ -2330,6 +2752,26 @@ func (e StreamError) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e StreamError) String() string {
+	switch e {
+		case StreamErrorCodecNotFound: return "StreamErrorCodecNotFound"
+		case StreamErrorDemux: return "StreamErrorDemux"
+		case StreamErrorMux: return "StreamErrorMux"
+		case StreamErrorFormat: return "StreamErrorFormat"
+		case StreamErrorDecrypt: return "StreamErrorDecrypt"
+		case StreamErrorFailed: return "StreamErrorFailed"
+		case StreamErrorTypeNotFound: return "StreamErrorTypeNotFound"
+		case StreamErrorDecode: return "StreamErrorDecode"
+		case StreamErrorEncode: return "StreamErrorEncode"
+		case StreamErrorDecryptNokey: return "StreamErrorDecryptNokey"
+		case StreamErrorNumErrors: return "StreamErrorNumErrors"
+		case StreamErrorTooLaZY: return "StreamErrorTooLaZY"
+		case StreamErrorNotImplemented: return "StreamErrorNotImplemented"
+		case StreamErrorWrongType: return "StreamErrorWrongType"
+		default: return fmt.Sprintf("StreamError(%d)", e)
+	}
+}
+
 // StreamStatusType wraps GstStreamStatusType
 //
 // The type of a %GST_MESSAGE_STREAM_STATUS. The stream status messages inform the
@@ -2378,6 +2820,19 @@ func (e StreamStatusType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e StreamStatusType) String() string {
+	switch e {
+		case StreamStatusTypeEnter: return "StreamStatusTypeEnter"
+		case StreamStatusTypeLeave: return "StreamStatusTypeLeave"
+		case StreamStatusTypeDestroy: return "StreamStatusTypeDestroy"
+		case StreamStatusTypeStart: return "StreamStatusTypeStart"
+		case StreamStatusTypePause: return "StreamStatusTypePause"
+		case StreamStatusTypeStop: return "StreamStatusTypeStop"
+		case StreamStatusTypeCreate: return "StreamStatusTypeCreate"
+		default: return fmt.Sprintf("StreamStatusType(%d)", e)
+	}
+}
+
 // StructureChangeType wraps GstStructureChangeType
 //
 // The type of a %GST_MESSAGE_STRUCTURE_CHANGE.
@@ -2403,6 +2858,14 @@ var _ gobject.GoValueInitializer = StructureChangeType(0)
 func (e StructureChangeType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeStructureChangeType)
 	v.SetEnum(int(e))
+}
+
+func (e StructureChangeType) String() string {
+	switch e {
+		case StructureChangeTypePadLink: return "StructureChangeTypePadLink"
+		case StructureChangeTypePadUnlink: return "StructureChangeTypePadUnlink"
+		default: return fmt.Sprintf("StructureChangeType(%d)", e)
+	}
 }
 
 // TagFlag wraps GstTagFlag
@@ -2442,6 +2905,17 @@ var _ gobject.GoValueInitializer = TagFlag(0)
 func (e TagFlag) InitGoValue(v *gobject.Value) {
 	v.Init(TypeTagFlag)
 	v.SetEnum(int(e))
+}
+
+func (e TagFlag) String() string {
+	switch e {
+		case TagFlagEncoded: return "TagFlagEncoded"
+		case TagFlagDecoded: return "TagFlagDecoded"
+		case TagFlagCount: return "TagFlagCount"
+		case TagFlagUndefined: return "TagFlagUndefined"
+		case TagFlagMeta: return "TagFlagMeta"
+		default: return fmt.Sprintf("TagFlag(%d)", e)
+	}
 }
 
 // TagMergeMode wraps GstTagMergeMode
@@ -2510,6 +2984,20 @@ func (e TagMergeMode) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e TagMergeMode) String() string {
+	switch e {
+		case TagMergePrepend: return "TagMergePrepend"
+		case TagMergeKeep: return "TagMergeKeep"
+		case TagMergeKeepAll: return "TagMergeKeepAll"
+		case TagMergeCount: return "TagMergeCount"
+		case TagMergeUndefined: return "TagMergeUndefined"
+		case TagMergeReplaceAll: return "TagMergeReplaceAll"
+		case TagMergeReplace: return "TagMergeReplace"
+		case TagMergeAppend: return "TagMergeAppend"
+		default: return fmt.Sprintf("TagMergeMode(%d)", e)
+	}
+}
+
 // TagScope wraps GstTagScope
 //
 // GstTagScope specifies if a taglist applies to the complete
@@ -2536,6 +3024,14 @@ var _ gobject.GoValueInitializer = TagScope(0)
 func (e TagScope) InitGoValue(v *gobject.Value) {
 	v.Init(TypeTagScope)
 	v.SetEnum(int(e))
+}
+
+func (e TagScope) String() string {
+	switch e {
+		case TagScopeStream: return "TagScopeStream"
+		case TagScopeGlobal: return "TagScopeGlobal"
+		default: return fmt.Sprintf("TagScope(%d)", e)
+	}
 }
 
 // TaskState wraps GstTaskState
@@ -2567,6 +3063,15 @@ var _ gobject.GoValueInitializer = TaskState(0)
 func (e TaskState) InitGoValue(v *gobject.Value) {
 	v.Init(TypeTaskState)
 	v.SetEnum(int(e))
+}
+
+func (e TaskState) String() string {
+	switch e {
+		case TaskStarted: return "TaskStarted"
+		case TaskStopped: return "TaskStopped"
+		case TaskPaused: return "TaskPaused"
+		default: return fmt.Sprintf("TaskState(%d)", e)
+	}
 }
 
 // TocEntryType wraps GstTocEntryType
@@ -2618,6 +3123,19 @@ func (e TocEntryType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e TocEntryType) String() string {
+	switch e {
+		case TocEntryTypeTrack: return "TocEntryTypeTrack"
+		case TocEntryTypeChapter: return "TocEntryTypeChapter"
+		case TocEntryTypeAngle: return "TocEntryTypeAngle"
+		case TocEntryTypeVersion: return "TocEntryTypeVersion"
+		case TocEntryTypeEdition: return "TocEntryTypeEdition"
+		case TocEntryTypeInvalid: return "TocEntryTypeInvalid"
+		case TocEntryTypeTitle: return "TocEntryTypeTitle"
+		default: return fmt.Sprintf("TocEntryType(%d)", e)
+	}
+}
+
 // TocLoopType wraps GstTocLoopType
 //
 // How a #GstTocEntry should be repeated. By default, entries are played a
@@ -2654,6 +3172,16 @@ func (e TocLoopType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e TocLoopType) String() string {
+	switch e {
+		case TocLoopNone: return "TocLoopNone"
+		case TocLoopForward: return "TocLoopForward"
+		case TocLoopReverse: return "TocLoopReverse"
+		case TocLoopPingPong: return "TocLoopPingPong"
+		default: return fmt.Sprintf("TocLoopType(%d)", e)
+	}
+}
+
 // TocScope wraps GstTocScope
 //
 // The scope of a TOC.
@@ -2685,6 +3213,14 @@ var _ gobject.GoValueInitializer = TocScope(0)
 func (e TocScope) InitGoValue(v *gobject.Value) {
 	v.Init(TypeTocScope)
 	v.SetEnum(int(e))
+}
+
+func (e TocScope) String() string {
+	switch e {
+		case TocScopeGlobal: return "TocScopeGlobal"
+		case TocScopeCurrent: return "TocScopeCurrent"
+		default: return fmt.Sprintf("TocScope(%d)", e)
+	}
 }
 
 // TracerValueScope wraps GstTracerValueScope
@@ -2724,6 +3260,16 @@ var _ gobject.GoValueInitializer = TracerValueScope(0)
 func (e TracerValueScope) InitGoValue(v *gobject.Value) {
 	v.Init(TypeTracerValueScope)
 	v.SetEnum(int(e))
+}
+
+func (e TracerValueScope) String() string {
+	switch e {
+		case TracerValueScopeElement: return "TracerValueScopeElement"
+		case TracerValueScopePad: return "TracerValueScopePad"
+		case TracerValueScopeProcess: return "TracerValueScopeProcess"
+		case TracerValueScopeThread: return "TracerValueScopeThread"
+		default: return fmt.Sprintf("TracerValueScope(%d)", e)
+	}
 }
 
 // TypeFindProbability wraps GstTypeFindProbability
@@ -2770,6 +3316,18 @@ func (e TypeFindProbability) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e TypeFindProbability) String() string {
+	switch e {
+		case TypeFindNearlyCertain: return "TypeFindNearlyCertain"
+		case TypeFindMaximum: return "TypeFindMaximum"
+		case TypeFindNone: return "TypeFindNone"
+		case TypeFindMinimum: return "TypeFindMinimum"
+		case TypeFindPossible: return "TypeFindPossible"
+		case TypeFindLikely: return "TypeFindLikely"
+		default: return fmt.Sprintf("TypeFindProbability(%d)", e)
+	}
+}
+
 // URIError wraps GstURIError
 //
 // Different URI-related errors that can occur.
@@ -2807,6 +3365,16 @@ func (e URIError) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e URIError) String() string {
+	switch e {
+		case URIErrorUnsupportedProtocol: return "URIErrorUnsupportedProtocol"
+		case URIErrorBadURI: return "URIErrorBadURI"
+		case URIErrorBadState: return "URIErrorBadState"
+		case URIErrorBadReference: return "URIErrorBadReference"
+		default: return fmt.Sprintf("URIError(%d)", e)
+	}
+}
+
 // URIType wraps GstURIType
 //
 // The different types of URI direction.
@@ -2836,6 +3404,15 @@ var _ gobject.GoValueInitializer = URIType(0)
 func (e URIType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeURIType)
 	v.SetEnum(int(e))
+}
+
+func (e URIType) String() string {
+	switch e {
+		case URIUnknown: return "URIUnknown"
+		case URISink: return "URISink"
+		case URISrc: return "URISrc"
+		default: return fmt.Sprintf("URIType(%d)", e)
+	}
 }
 
 // AllocatorFlags wraps GstAllocatorFlags
@@ -2879,6 +3456,24 @@ func (f AllocatorFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f AllocatorFlags) String() string {
+	if f == 0 {
+		return "AllocatorFlags(0)"
+	}
+
+	var parts []string
+	if (f & AllocatorFlagCustomAlloc) != 0 {
+		parts = append(parts, "AllocatorFlagCustomAlloc")
+	}
+	if (f & AllocatorFlagNoCopy) != 0 {
+		parts = append(parts, "AllocatorFlagNoCopy")
+	}
+	if (f & AllocatorFlagLast) != 0 {
+		parts = append(parts, "AllocatorFlagLast")
+	}
+	return "AllocatorFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // BinFlags wraps GstBinFlags
 //
 // GstBinFlags are a set of flags specific to bins. Most are set/used
@@ -2916,6 +3511,24 @@ var _ gobject.GoValueInitializer = BinFlags(0)
 func (f BinFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeBinFlags)
 	v.SetFlags(int(f))
+}
+
+func (f BinFlags) String() string {
+	if f == 0 {
+		return "BinFlags(0)"
+	}
+
+	var parts []string
+	if (f & BinFlagNoResync) != 0 {
+		parts = append(parts, "BinFlagNoResync")
+	}
+	if (f & BinFlagStreamsAware) != 0 {
+		parts = append(parts, "BinFlagStreamsAware")
+	}
+	if (f & BinFlagLast) != 0 {
+		parts = append(parts, "BinFlagLast")
+	}
+	return "BinFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // BufferCopyFlagsType wraps GstBufferCopyFlags
@@ -2976,6 +3589,36 @@ var _ gobject.GoValueInitializer = BufferCopyFlagsType(0)
 func (f BufferCopyFlagsType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeBufferCopyFlagsType)
 	v.SetFlags(int(f))
+}
+
+func (f BufferCopyFlagsType) String() string {
+	if f == 0 {
+		return "BufferCopyFlagsType(0)"
+	}
+
+	var parts []string
+	if (f & BufferCopyNone) != 0 {
+		parts = append(parts, "BufferCopyNone")
+	}
+	if (f & BufferCopyFlags) != 0 {
+		parts = append(parts, "BufferCopyFlags")
+	}
+	if (f & BufferCopyTimestamps) != 0 {
+		parts = append(parts, "BufferCopyTimestamps")
+	}
+	if (f & BufferCopyMeta) != 0 {
+		parts = append(parts, "BufferCopyMeta")
+	}
+	if (f & BufferCopyMemory) != 0 {
+		parts = append(parts, "BufferCopyMemory")
+	}
+	if (f & BufferCopyMerge) != 0 {
+		parts = append(parts, "BufferCopyMerge")
+	}
+	if (f & BufferCopyDeep) != 0 {
+		parts = append(parts, "BufferCopyDeep")
+	}
+	return "BufferCopyFlagsType(" + strings.Join(parts, "|") + ")"
 }
 
 // BufferFlags wraps GstBufferFlags
@@ -3081,6 +3724,57 @@ func (f BufferFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f BufferFlags) String() string {
+	if f == 0 {
+		return "BufferFlags(0)"
+	}
+
+	var parts []string
+	if (f & BufferFlagLive) != 0 {
+		parts = append(parts, "BufferFlagLive")
+	}
+	if (f & BufferFlagDecodeOnly) != 0 {
+		parts = append(parts, "BufferFlagDecodeOnly")
+	}
+	if (f & BufferFlagDiscont) != 0 {
+		parts = append(parts, "BufferFlagDiscont")
+	}
+	if (f & BufferFlagResync) != 0 {
+		parts = append(parts, "BufferFlagResync")
+	}
+	if (f & BufferFlagCorrupted) != 0 {
+		parts = append(parts, "BufferFlagCorrupted")
+	}
+	if (f & BufferFlagMarker) != 0 {
+		parts = append(parts, "BufferFlagMarker")
+	}
+	if (f & BufferFlagHeader) != 0 {
+		parts = append(parts, "BufferFlagHeader")
+	}
+	if (f & BufferFlagGap) != 0 {
+		parts = append(parts, "BufferFlagGap")
+	}
+	if (f & BufferFlagDroppable) != 0 {
+		parts = append(parts, "BufferFlagDroppable")
+	}
+	if (f & BufferFlagDeltaUnit) != 0 {
+		parts = append(parts, "BufferFlagDeltaUnit")
+	}
+	if (f & BufferFlagTagMemory) != 0 {
+		parts = append(parts, "BufferFlagTagMemory")
+	}
+	if (f & BufferFlagSyncAfter) != 0 {
+		parts = append(parts, "BufferFlagSyncAfter")
+	}
+	if (f & BufferFlagNonDroppable) != 0 {
+		parts = append(parts, "BufferFlagNonDroppable")
+	}
+	if (f & BufferFlagLast) != 0 {
+		parts = append(parts, "BufferFlagLast")
+	}
+	return "BufferFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // BufferPoolAcquireFlags wraps GstBufferPoolAcquireFlags
 //
 // Additional flags to control the allocation of a buffer
@@ -3127,6 +3821,30 @@ func (f BufferPoolAcquireFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f BufferPoolAcquireFlags) String() string {
+	if f == 0 {
+		return "BufferPoolAcquireFlags(0)"
+	}
+
+	var parts []string
+	if (f & BufferPoolAcquireFlagNone) != 0 {
+		parts = append(parts, "BufferPoolAcquireFlagNone")
+	}
+	if (f & BufferPoolAcquireFlagKeyUnit) != 0 {
+		parts = append(parts, "BufferPoolAcquireFlagKeyUnit")
+	}
+	if (f & BufferPoolAcquireFlagDontwait) != 0 {
+		parts = append(parts, "BufferPoolAcquireFlagDontwait")
+	}
+	if (f & BufferPoolAcquireFlagDiscont) != 0 {
+		parts = append(parts, "BufferPoolAcquireFlagDiscont")
+	}
+	if (f & BufferPoolAcquireFlagLast) != 0 {
+		parts = append(parts, "BufferPoolAcquireFlagLast")
+	}
+	return "BufferPoolAcquireFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // BusFlags wraps GstBusFlags
 //
 // The standard flags that a bus may have.
@@ -3158,6 +3876,21 @@ func (f BusFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f BusFlags) String() string {
+	if f == 0 {
+		return "BusFlags(0)"
+	}
+
+	var parts []string
+	if (f & BusFlushing) != 0 {
+		parts = append(parts, "BusFlushing")
+	}
+	if (f & BusFlagLast) != 0 {
+		parts = append(parts, "BusFlagLast")
+	}
+	return "BusFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // CapsFlags wraps GstCapsFlags
 //
 // Extra flags for a caps.
@@ -3184,6 +3917,18 @@ var _ gobject.GoValueInitializer = CapsFlags(0)
 func (f CapsFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeCapsFlags)
 	v.SetFlags(int(f))
+}
+
+func (f CapsFlags) String() string {
+	if f == 0 {
+		return "CapsFlags(0)"
+	}
+
+	var parts []string
+	if (f & CapsFlagAny) != 0 {
+		parts = append(parts, "CapsFlagAny")
+	}
+	return "CapsFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // ClockFlags wraps GstClockFlags
@@ -3239,6 +3984,39 @@ var _ gobject.GoValueInitializer = ClockFlags(0)
 func (f ClockFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeClockFlags)
 	v.SetFlags(int(f))
+}
+
+func (f ClockFlags) String() string {
+	if f == 0 {
+		return "ClockFlags(0)"
+	}
+
+	var parts []string
+	if (f & ClockFlagCanDoSingleSync) != 0 {
+		parts = append(parts, "ClockFlagCanDoSingleSync")
+	}
+	if (f & ClockFlagCanDoSingleAsync) != 0 {
+		parts = append(parts, "ClockFlagCanDoSingleAsync")
+	}
+	if (f & ClockFlagCanDoPeriodicSync) != 0 {
+		parts = append(parts, "ClockFlagCanDoPeriodicSync")
+	}
+	if (f & ClockFlagCanDoPeriodicAsync) != 0 {
+		parts = append(parts, "ClockFlagCanDoPeriodicAsync")
+	}
+	if (f & ClockFlagCanSetResolution) != 0 {
+		parts = append(parts, "ClockFlagCanSetResolution")
+	}
+	if (f & ClockFlagCanSetMaster) != 0 {
+		parts = append(parts, "ClockFlagCanSetMaster")
+	}
+	if (f & ClockFlagNeedsStartupSync) != 0 {
+		parts = append(parts, "ClockFlagNeedsStartupSync")
+	}
+	if (f & ClockFlagLast) != 0 {
+		parts = append(parts, "ClockFlagLast")
+	}
+	return "ClockFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // DebugColorFlags wraps GstDebugColorFlags
@@ -3337,6 +4115,69 @@ func (f DebugColorFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f DebugColorFlags) String() string {
+	if f == 0 {
+		return "DebugColorFlags(0)"
+	}
+
+	var parts []string
+	if (f & DebugFgBlack) != 0 {
+		parts = append(parts, "DebugFgBlack")
+	}
+	if (f & DebugFgRed) != 0 {
+		parts = append(parts, "DebugFgRed")
+	}
+	if (f & DebugFgGreen) != 0 {
+		parts = append(parts, "DebugFgGreen")
+	}
+	if (f & DebugFgYellow) != 0 {
+		parts = append(parts, "DebugFgYellow")
+	}
+	if (f & DebugFgBlue) != 0 {
+		parts = append(parts, "DebugFgBlue")
+	}
+	if (f & DebugFgMagenta) != 0 {
+		parts = append(parts, "DebugFgMagenta")
+	}
+	if (f & DebugFgCyan) != 0 {
+		parts = append(parts, "DebugFgCyan")
+	}
+	if (f & DebugFgWhite) != 0 {
+		parts = append(parts, "DebugFgWhite")
+	}
+	if (f & DebugBgBlack) != 0 {
+		parts = append(parts, "DebugBgBlack")
+	}
+	if (f & DebugBgRed) != 0 {
+		parts = append(parts, "DebugBgRed")
+	}
+	if (f & DebugBgGreen) != 0 {
+		parts = append(parts, "DebugBgGreen")
+	}
+	if (f & DebugBgYellow) != 0 {
+		parts = append(parts, "DebugBgYellow")
+	}
+	if (f & DebugBgBlue) != 0 {
+		parts = append(parts, "DebugBgBlue")
+	}
+	if (f & DebugBgMagenta) != 0 {
+		parts = append(parts, "DebugBgMagenta")
+	}
+	if (f & DebugBgCyan) != 0 {
+		parts = append(parts, "DebugBgCyan")
+	}
+	if (f & DebugBgWhite) != 0 {
+		parts = append(parts, "DebugBgWhite")
+	}
+	if (f & DebugBold) != 0 {
+		parts = append(parts, "DebugBold")
+	}
+	if (f & DebugUnderline) != 0 {
+		parts = append(parts, "DebugUnderline")
+	}
+	return "DebugColorFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // DebugGraphDetails wraps GstDebugGraphDetails
 //
 // Available details for pipeline graphs produced by GST_DEBUG_BIN_TO_DOT_FILE()
@@ -3392,6 +4233,36 @@ func (f DebugGraphDetails) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f DebugGraphDetails) String() string {
+	if f == 0 {
+		return "DebugGraphDetails(0)"
+	}
+
+	var parts []string
+	if (f & DebugGraphShowMediaType) != 0 {
+		parts = append(parts, "DebugGraphShowMediaType")
+	}
+	if (f & DebugGraphShowCapsDetails) != 0 {
+		parts = append(parts, "DebugGraphShowCapsDetails")
+	}
+	if (f & DebugGraphShowNonDefaultParams) != 0 {
+		parts = append(parts, "DebugGraphShowNonDefaultParams")
+	}
+	if (f & DebugGraphShowStates) != 0 {
+		parts = append(parts, "DebugGraphShowStates")
+	}
+	if (f & DebugGraphShowFullParams) != 0 {
+		parts = append(parts, "DebugGraphShowFullParams")
+	}
+	if (f & DebugGraphShowAll) != 0 {
+		parts = append(parts, "DebugGraphShowAll")
+	}
+	if (f & DebugGraphShowVerbose) != 0 {
+		parts = append(parts, "DebugGraphShowVerbose")
+	}
+	return "DebugGraphDetails(" + strings.Join(parts, "|") + ")"
+}
+
 // ElementFlags wraps GstElementFlags
 //
 // The standard flags that an element may have.
@@ -3443,6 +4314,36 @@ func (f ElementFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f ElementFlags) String() string {
+	if f == 0 {
+		return "ElementFlags(0)"
+	}
+
+	var parts []string
+	if (f & ElementFlagLockedState) != 0 {
+		parts = append(parts, "ElementFlagLockedState")
+	}
+	if (f & ElementFlagSink) != 0 {
+		parts = append(parts, "ElementFlagSink")
+	}
+	if (f & ElementFlagSource) != 0 {
+		parts = append(parts, "ElementFlagSource")
+	}
+	if (f & ElementFlagProvideClock) != 0 {
+		parts = append(parts, "ElementFlagProvideClock")
+	}
+	if (f & ElementFlagRequireClock) != 0 {
+		parts = append(parts, "ElementFlagRequireClock")
+	}
+	if (f & ElementFlagIndexable) != 0 {
+		parts = append(parts, "ElementFlagIndexable")
+	}
+	if (f & ElementFlagLast) != 0 {
+		parts = append(parts, "ElementFlagLast")
+	}
+	return "ElementFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // EventTypeFlags wraps GstEventTypeFlags
 //
 // #GstEventTypeFlags indicate the aspects of the different #GstEventType
@@ -3490,6 +4391,30 @@ func (f EventTypeFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f EventTypeFlags) String() string {
+	if f == 0 {
+		return "EventTypeFlags(0)"
+	}
+
+	var parts []string
+	if (f & EventTypeUpstream) != 0 {
+		parts = append(parts, "EventTypeUpstream")
+	}
+	if (f & EventTypeDownstream) != 0 {
+		parts = append(parts, "EventTypeDownstream")
+	}
+	if (f & EventTypeSerialized) != 0 {
+		parts = append(parts, "EventTypeSerialized")
+	}
+	if (f & EventTypeSticky) != 0 {
+		parts = append(parts, "EventTypeSticky")
+	}
+	if (f & EventTypeStickyMulti) != 0 {
+		parts = append(parts, "EventTypeStickyMulti")
+	}
+	return "EventTypeFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // GapFlags wraps GstGapFlags
 //
 // The different flags that can be set on #GST_EVENT_GAP events. See
@@ -3517,6 +4442,18 @@ var _ gobject.GoValueInitializer = GapFlags(0)
 func (f GapFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGapFlags)
 	v.SetFlags(int(f))
+}
+
+func (f GapFlags) String() string {
+	if f == 0 {
+		return "GapFlags(0)"
+	}
+
+	var parts []string
+	if (f & GapFlagMissingData) != 0 {
+		parts = append(parts, "GapFlagMissingData")
+	}
+	return "GapFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // LockFlags wraps GstLockFlags
@@ -3558,6 +4495,27 @@ func (f LockFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f LockFlags) String() string {
+	if f == 0 {
+		return "LockFlags(0)"
+	}
+
+	var parts []string
+	if (f & LockFlagRead) != 0 {
+		parts = append(parts, "LockFlagRead")
+	}
+	if (f & LockFlagWrite) != 0 {
+		parts = append(parts, "LockFlagWrite")
+	}
+	if (f & LockFlagExclusive) != 0 {
+		parts = append(parts, "LockFlagExclusive")
+	}
+	if (f & LockFlagLast) != 0 {
+		parts = append(parts, "LockFlagLast")
+	}
+	return "LockFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // MapFlags wraps GstMapFlags
 //
 // Flags used when mapping memory
@@ -3591,6 +4549,24 @@ var _ gobject.GoValueInitializer = MapFlags(0)
 func (f MapFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeMapFlags)
 	v.SetFlags(int(f))
+}
+
+func (f MapFlags) String() string {
+	if f == 0 {
+		return "MapFlags(0)"
+	}
+
+	var parts []string
+	if (f & MapRead) != 0 {
+		parts = append(parts, "MapRead")
+	}
+	if (f & MapWrite) != 0 {
+		parts = append(parts, "MapWrite")
+	}
+	if (f & MapFlagLast) != 0 {
+		parts = append(parts, "MapFlagLast")
+	}
+	return "MapFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // MemoryFlags wraps GstMemoryFlags
@@ -3649,6 +4625,36 @@ var _ gobject.GoValueInitializer = MemoryFlags(0)
 func (f MemoryFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeMemoryFlags)
 	v.SetFlags(int(f))
+}
+
+func (f MemoryFlags) String() string {
+	if f == 0 {
+		return "MemoryFlags(0)"
+	}
+
+	var parts []string
+	if (f & MemoryFlagReadonly) != 0 {
+		parts = append(parts, "MemoryFlagReadonly")
+	}
+	if (f & MemoryFlagNoShare) != 0 {
+		parts = append(parts, "MemoryFlagNoShare")
+	}
+	if (f & MemoryFlagZeroPrefixed) != 0 {
+		parts = append(parts, "MemoryFlagZeroPrefixed")
+	}
+	if (f & MemoryFlagZeroPadded) != 0 {
+		parts = append(parts, "MemoryFlagZeroPadded")
+	}
+	if (f & MemoryFlagPhysicallyContiguous) != 0 {
+		parts = append(parts, "MemoryFlagPhysicallyContiguous")
+	}
+	if (f & MemoryFlagNotMappable) != 0 {
+		parts = append(parts, "MemoryFlagNotMappable")
+	}
+	if (f & MemoryFlagLast) != 0 {
+		parts = append(parts, "MemoryFlagLast")
+	}
+	return "MemoryFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // MessageType wraps GstMessageType
@@ -3897,6 +4903,141 @@ func (f MessageType) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f MessageType) String() string {
+	if f == 0 {
+		return "MessageType(0)"
+	}
+
+	var parts []string
+	if (f & MessageUnknown) != 0 {
+		parts = append(parts, "MessageUnknown")
+	}
+	if (f & MessageEos) != 0 {
+		parts = append(parts, "MessageEos")
+	}
+	if (f & MessageError) != 0 {
+		parts = append(parts, "MessageError")
+	}
+	if (f & MessageWarning) != 0 {
+		parts = append(parts, "MessageWarning")
+	}
+	if (f & MessageInfo) != 0 {
+		parts = append(parts, "MessageInfo")
+	}
+	if (f & MessageTag) != 0 {
+		parts = append(parts, "MessageTag")
+	}
+	if (f & MessageBuffering) != 0 {
+		parts = append(parts, "MessageBuffering")
+	}
+	if (f & MessageStateChanged) != 0 {
+		parts = append(parts, "MessageStateChanged")
+	}
+	if (f & MessageStateDirty) != 0 {
+		parts = append(parts, "MessageStateDirty")
+	}
+	if (f & MessageStepDone) != 0 {
+		parts = append(parts, "MessageStepDone")
+	}
+	if (f & MessageClockProvide) != 0 {
+		parts = append(parts, "MessageClockProvide")
+	}
+	if (f & MessageClockLost) != 0 {
+		parts = append(parts, "MessageClockLost")
+	}
+	if (f & MessageNewClock) != 0 {
+		parts = append(parts, "MessageNewClock")
+	}
+	if (f & MessageStructureChange) != 0 {
+		parts = append(parts, "MessageStructureChange")
+	}
+	if (f & MessageStreamStatus) != 0 {
+		parts = append(parts, "MessageStreamStatus")
+	}
+	if (f & MessageApplication) != 0 {
+		parts = append(parts, "MessageApplication")
+	}
+	if (f & MessageElement) != 0 {
+		parts = append(parts, "MessageElement")
+	}
+	if (f & MessageSegmentStart) != 0 {
+		parts = append(parts, "MessageSegmentStart")
+	}
+	if (f & MessageSegmentDone) != 0 {
+		parts = append(parts, "MessageSegmentDone")
+	}
+	if (f & MessageDurationChanged) != 0 {
+		parts = append(parts, "MessageDurationChanged")
+	}
+	if (f & MessageLatency) != 0 {
+		parts = append(parts, "MessageLatency")
+	}
+	if (f & MessageAsyncStart) != 0 {
+		parts = append(parts, "MessageAsyncStart")
+	}
+	if (f & MessageAsyncDone) != 0 {
+		parts = append(parts, "MessageAsyncDone")
+	}
+	if (f & MessageRequestState) != 0 {
+		parts = append(parts, "MessageRequestState")
+	}
+	if (f & MessageStepStart) != 0 {
+		parts = append(parts, "MessageStepStart")
+	}
+	if (f & MessageQos) != 0 {
+		parts = append(parts, "MessageQos")
+	}
+	if (f & MessageProgress) != 0 {
+		parts = append(parts, "MessageProgress")
+	}
+	if (f & MessageToc) != 0 {
+		parts = append(parts, "MessageToc")
+	}
+	if (f & MessageResetTime) != 0 {
+		parts = append(parts, "MessageResetTime")
+	}
+	if (f & MessageStreamStart) != 0 {
+		parts = append(parts, "MessageStreamStart")
+	}
+	if (f & MessageNeedContext) != 0 {
+		parts = append(parts, "MessageNeedContext")
+	}
+	if (f & MessageHaveContext) != 0 {
+		parts = append(parts, "MessageHaveContext")
+	}
+	if (f & MessageExtended) != 0 {
+		parts = append(parts, "MessageExtended")
+	}
+	if (f & MessageDeviceAdded) != 0 {
+		parts = append(parts, "MessageDeviceAdded")
+	}
+	if (f & MessageDeviceRemoved) != 0 {
+		parts = append(parts, "MessageDeviceRemoved")
+	}
+	if (f & MessagePropertyNotify) != 0 {
+		parts = append(parts, "MessagePropertyNotify")
+	}
+	if (f & MessageStreamCollection) != 0 {
+		parts = append(parts, "MessageStreamCollection")
+	}
+	if (f & MessageStreamsSelected) != 0 {
+		parts = append(parts, "MessageStreamsSelected")
+	}
+	if (f & MessageRedirect) != 0 {
+		parts = append(parts, "MessageRedirect")
+	}
+	if (f & MessageDeviceChanged) != 0 {
+		parts = append(parts, "MessageDeviceChanged")
+	}
+	if (f & MessageInstantRateRequest) != 0 {
+		parts = append(parts, "MessageInstantRateRequest")
+	}
+	if (f & MessageAny) != 0 {
+		parts = append(parts, "MessageAny")
+	}
+	return "MessageType(" + strings.Join(parts, "|") + ")"
+}
+
 // MetaFlags wraps GstMetaFlags
 //
 // Extra metadata flags.
@@ -3938,6 +5079,30 @@ var _ gobject.GoValueInitializer = MetaFlags(0)
 func (f MetaFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeMetaFlags)
 	v.SetFlags(int(f))
+}
+
+func (f MetaFlags) String() string {
+	if f == 0 {
+		return "MetaFlags(0)"
+	}
+
+	var parts []string
+	if (f & MetaFlagNone) != 0 {
+		parts = append(parts, "MetaFlagNone")
+	}
+	if (f & MetaFlagReadonly) != 0 {
+		parts = append(parts, "MetaFlagReadonly")
+	}
+	if (f & MetaFlagPooled) != 0 {
+		parts = append(parts, "MetaFlagPooled")
+	}
+	if (f & MetaFlagLocked) != 0 {
+		parts = append(parts, "MetaFlagLocked")
+	}
+	if (f & MetaFlagLast) != 0 {
+		parts = append(parts, "MetaFlagLast")
+	}
+	return "MetaFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // MiniObjectFlags wraps GstMiniObjectFlags
@@ -3983,6 +5148,27 @@ func (f MiniObjectFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f MiniObjectFlags) String() string {
+	if f == 0 {
+		return "MiniObjectFlags(0)"
+	}
+
+	var parts []string
+	if (f & MiniObjectFlagLockable) != 0 {
+		parts = append(parts, "MiniObjectFlagLockable")
+	}
+	if (f & MiniObjectFlagLockReadonly) != 0 {
+		parts = append(parts, "MiniObjectFlagLockReadonly")
+	}
+	if (f & MiniObjectFlagMayBeLeaked) != 0 {
+		parts = append(parts, "MiniObjectFlagMayBeLeaked")
+	}
+	if (f & MiniObjectFlagLast) != 0 {
+		parts = append(parts, "MiniObjectFlagLast")
+	}
+	return "MiniObjectFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // ObjectFlags wraps GstObjectFlags
 //
 // The standard flags that an gstobject may have.
@@ -4023,6 +5209,24 @@ var _ gobject.GoValueInitializer = ObjectFlags(0)
 func (f ObjectFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeObjectFlags)
 	v.SetFlags(int(f))
+}
+
+func (f ObjectFlags) String() string {
+	if f == 0 {
+		return "ObjectFlags(0)"
+	}
+
+	var parts []string
+	if (f & ObjectFlagMayBeLeaked) != 0 {
+		parts = append(parts, "ObjectFlagMayBeLeaked")
+	}
+	if (f & ObjectFlagConstructed) != 0 {
+		parts = append(parts, "ObjectFlagConstructed")
+	}
+	if (f & ObjectFlagLast) != 0 {
+		parts = append(parts, "ObjectFlagLast")
+	}
+	return "ObjectFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // PadFlags wraps GstPadFlags
@@ -4121,6 +5325,57 @@ func (f PadFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f PadFlags) String() string {
+	if f == 0 {
+		return "PadFlags(0)"
+	}
+
+	var parts []string
+	if (f & PadFlagBlocked) != 0 {
+		parts = append(parts, "PadFlagBlocked")
+	}
+	if (f & PadFlagFlushing) != 0 {
+		parts = append(parts, "PadFlagFlushing")
+	}
+	if (f & PadFlagEos) != 0 {
+		parts = append(parts, "PadFlagEos")
+	}
+	if (f & PadFlagBlocking) != 0 {
+		parts = append(parts, "PadFlagBlocking")
+	}
+	if (f & PadFlagNeedParent) != 0 {
+		parts = append(parts, "PadFlagNeedParent")
+	}
+	if (f & PadFlagNeedReconfigure) != 0 {
+		parts = append(parts, "PadFlagNeedReconfigure")
+	}
+	if (f & PadFlagPendingEvents) != 0 {
+		parts = append(parts, "PadFlagPendingEvents")
+	}
+	if (f & PadFlagFixedCaps) != 0 {
+		parts = append(parts, "PadFlagFixedCaps")
+	}
+	if (f & PadFlagProxyCaps) != 0 {
+		parts = append(parts, "PadFlagProxyCaps")
+	}
+	if (f & PadFlagProxyAllocation) != 0 {
+		parts = append(parts, "PadFlagProxyAllocation")
+	}
+	if (f & PadFlagProxyScheduling) != 0 {
+		parts = append(parts, "PadFlagProxyScheduling")
+	}
+	if (f & PadFlagAcceptIntersect) != 0 {
+		parts = append(parts, "PadFlagAcceptIntersect")
+	}
+	if (f & PadFlagAcceptTemplate) != 0 {
+		parts = append(parts, "PadFlagAcceptTemplate")
+	}
+	if (f & PadFlagLast) != 0 {
+		parts = append(parts, "PadFlagLast")
+	}
+	return "PadFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // PadLinkCheck wraps GstPadLinkCheck
 //
 // The amount of checking to be done when linking pads. @GST_PAD_LINK_CHECK_CAPS
@@ -4180,6 +5435,33 @@ var _ gobject.GoValueInitializer = PadLinkCheck(0)
 func (f PadLinkCheck) InitGoValue(v *gobject.Value) {
 	v.Init(TypePadLinkCheck)
 	v.SetFlags(int(f))
+}
+
+func (f PadLinkCheck) String() string {
+	if f == 0 {
+		return "PadLinkCheck(0)"
+	}
+
+	var parts []string
+	if (f & PadLinkCheckNothing) != 0 {
+		parts = append(parts, "PadLinkCheckNothing")
+	}
+	if (f & PadLinkCheckHierarchy) != 0 {
+		parts = append(parts, "PadLinkCheckHierarchy")
+	}
+	if (f & PadLinkCheckTemplateCaps) != 0 {
+		parts = append(parts, "PadLinkCheckTemplateCaps")
+	}
+	if (f & PadLinkCheckCaps) != 0 {
+		parts = append(parts, "PadLinkCheckCaps")
+	}
+	if (f & PadLinkCheckNoReconfigure) != 0 {
+		parts = append(parts, "PadLinkCheckNoReconfigure")
+	}
+	if (f & PadLinkCheckDefault) != 0 {
+		parts = append(parts, "PadLinkCheckDefault")
+	}
+	return "PadLinkCheck(" + strings.Join(parts, "|") + ")"
 }
 
 // PadProbeType wraps GstPadProbeType
@@ -4298,6 +5580,81 @@ func (f PadProbeType) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f PadProbeType) String() string {
+	if f == 0 {
+		return "PadProbeType(0)"
+	}
+
+	var parts []string
+	if (f & PadProbeTypeInvalid) != 0 {
+		parts = append(parts, "PadProbeTypeInvalid")
+	}
+	if (f & PadProbeTypeIdle) != 0 {
+		parts = append(parts, "PadProbeTypeIdle")
+	}
+	if (f & PadProbeTypeBlock) != 0 {
+		parts = append(parts, "PadProbeTypeBlock")
+	}
+	if (f & PadProbeTypeBuffer) != 0 {
+		parts = append(parts, "PadProbeTypeBuffer")
+	}
+	if (f & PadProbeTypeBufferList) != 0 {
+		parts = append(parts, "PadProbeTypeBufferList")
+	}
+	if (f & PadProbeTypeEventDownstream) != 0 {
+		parts = append(parts, "PadProbeTypeEventDownstream")
+	}
+	if (f & PadProbeTypeEventUpstream) != 0 {
+		parts = append(parts, "PadProbeTypeEventUpstream")
+	}
+	if (f & PadProbeTypeEventFlush) != 0 {
+		parts = append(parts, "PadProbeTypeEventFlush")
+	}
+	if (f & PadProbeTypeQueryDownstream) != 0 {
+		parts = append(parts, "PadProbeTypeQueryDownstream")
+	}
+	if (f & PadProbeTypeQueryUpstream) != 0 {
+		parts = append(parts, "PadProbeTypeQueryUpstream")
+	}
+	if (f & PadProbeTypePush) != 0 {
+		parts = append(parts, "PadProbeTypePush")
+	}
+	if (f & PadProbeTypePull) != 0 {
+		parts = append(parts, "PadProbeTypePull")
+	}
+	if (f & PadProbeTypeBlocking) != 0 {
+		parts = append(parts, "PadProbeTypeBlocking")
+	}
+	if (f & PadProbeTypeDataDownstream) != 0 {
+		parts = append(parts, "PadProbeTypeDataDownstream")
+	}
+	if (f & PadProbeTypeDataUpstream) != 0 {
+		parts = append(parts, "PadProbeTypeDataUpstream")
+	}
+	if (f & PadProbeTypeDataBoth) != 0 {
+		parts = append(parts, "PadProbeTypeDataBoth")
+	}
+	if (f & PadProbeTypeBlockDownstream) != 0 {
+		parts = append(parts, "PadProbeTypeBlockDownstream")
+	}
+	if (f & PadProbeTypeBlockUpstream) != 0 {
+		parts = append(parts, "PadProbeTypeBlockUpstream")
+	}
+	if (f & PadProbeTypeEventBoth) != 0 {
+		parts = append(parts, "PadProbeTypeEventBoth")
+	}
+	if (f & PadProbeTypeQueryBoth) != 0 {
+		parts = append(parts, "PadProbeTypeQueryBoth")
+	}
+	if (f & PadProbeTypeAllBoth) != 0 {
+		parts = append(parts, "PadProbeTypeAllBoth")
+	}
+	if (f & PadProbeTypeScheduling) != 0 {
+		parts = append(parts, "PadProbeTypeScheduling")
+	}
+	return "PadProbeType(" + strings.Join(parts, "|") + ")"
+}
+
 // PadTemplateFlags wraps GstPadTemplateFlags
 //
 // Flags for the padtemplate
@@ -4323,6 +5680,18 @@ var _ gobject.GoValueInitializer = PadTemplateFlags(0)
 func (f PadTemplateFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypePadTemplateFlags)
 	v.SetFlags(int(f))
+}
+
+func (f PadTemplateFlags) String() string {
+	if f == 0 {
+		return "PadTemplateFlags(0)"
+	}
+
+	var parts []string
+	if (f & PadTemplateFlagLast) != 0 {
+		parts = append(parts, "PadTemplateFlagLast")
+	}
+	return "PadTemplateFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // ParseFlags wraps GstParseFlags
@@ -4369,6 +5738,27 @@ func (f ParseFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f ParseFlags) String() string {
+	if f == 0 {
+		return "ParseFlags(0)"
+	}
+
+	var parts []string
+	if (f & ParseFlagNone) != 0 {
+		parts = append(parts, "ParseFlagNone")
+	}
+	if (f & ParseFlagFatalErrors) != 0 {
+		parts = append(parts, "ParseFlagFatalErrors")
+	}
+	if (f & ParseFlagNoSingleElementBins) != 0 {
+		parts = append(parts, "ParseFlagNoSingleElementBins")
+	}
+	if (f & ParseFlagPlaceInBin) != 0 {
+		parts = append(parts, "ParseFlagPlaceInBin")
+	}
+	return "ParseFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // PipelineFlags wraps GstPipelineFlags
 //
 // Pipeline flags
@@ -4400,6 +5790,21 @@ func (f PipelineFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f PipelineFlags) String() string {
+	if f == 0 {
+		return "PipelineFlags(0)"
+	}
+
+	var parts []string
+	if (f & PipelineFlagFixedClock) != 0 {
+		parts = append(parts, "PipelineFlagFixedClock")
+	}
+	if (f & PipelineFlagLast) != 0 {
+		parts = append(parts, "PipelineFlagLast")
+	}
+	return "PipelineFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // PluginAPIFlags wraps GstPluginAPIFlags
 type PluginAPIFlags C.gint
 
@@ -4425,6 +5830,18 @@ var _ gobject.GoValueInitializer = PluginAPIFlags(0)
 func (f PluginAPIFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypePluginAPIFlags)
 	v.SetFlags(int(f))
+}
+
+func (f PluginAPIFlags) String() string {
+	if f == 0 {
+		return "PluginAPIFlags(0)"
+	}
+
+	var parts []string
+	if (f & PluginApiFlagIgnoreEnumMembers) != 0 {
+		parts = append(parts, "PluginApiFlagIgnoreEnumMembers")
+	}
+	return "PluginAPIFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // PluginDependencyFlags wraps GstPluginDependencyFlags
@@ -4481,6 +5898,33 @@ func (f PluginDependencyFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f PluginDependencyFlags) String() string {
+	if f == 0 {
+		return "PluginDependencyFlags(0)"
+	}
+
+	var parts []string
+	if (f & PluginDependencyFlagNone) != 0 {
+		parts = append(parts, "PluginDependencyFlagNone")
+	}
+	if (f & PluginDependencyFlagRecurse) != 0 {
+		parts = append(parts, "PluginDependencyFlagRecurse")
+	}
+	if (f & PluginDependencyFlagPathsAreDefaultOnly) != 0 {
+		parts = append(parts, "PluginDependencyFlagPathsAreDefaultOnly")
+	}
+	if (f & PluginDependencyFlagFileNameIsSuffix) != 0 {
+		parts = append(parts, "PluginDependencyFlagFileNameIsSuffix")
+	}
+	if (f & PluginDependencyFlagFileNameIsPrefix) != 0 {
+		parts = append(parts, "PluginDependencyFlagFileNameIsPrefix")
+	}
+	if (f & PluginDependencyFlagPathsAreRelativeToExe) != 0 {
+		parts = append(parts, "PluginDependencyFlagPathsAreRelativeToExe")
+	}
+	return "PluginDependencyFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // PluginFlags wraps GstPluginFlags
 //
 // The plugin loading state
@@ -4510,6 +5954,21 @@ var _ gobject.GoValueInitializer = PluginFlags(0)
 func (f PluginFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypePluginFlags)
 	v.SetFlags(int(f))
+}
+
+func (f PluginFlags) String() string {
+	if f == 0 {
+		return "PluginFlags(0)"
+	}
+
+	var parts []string
+	if (f & PluginFlagCached) != 0 {
+		parts = append(parts, "PluginFlagCached")
+	}
+	if (f & PluginFlagBlacklisted) != 0 {
+		parts = append(parts, "PluginFlagBlacklisted")
+	}
+	return "PluginFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // QueryTypeFlags wraps GstQueryTypeFlags
@@ -4550,6 +6009,24 @@ func (f QueryTypeFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f QueryTypeFlags) String() string {
+	if f == 0 {
+		return "QueryTypeFlags(0)"
+	}
+
+	var parts []string
+	if (f & QueryTypeUpstream) != 0 {
+		parts = append(parts, "QueryTypeUpstream")
+	}
+	if (f & QueryTypeDownstream) != 0 {
+		parts = append(parts, "QueryTypeDownstream")
+	}
+	if (f & QueryTypeSerialized) != 0 {
+		parts = append(parts, "QueryTypeSerialized")
+	}
+	return "QueryTypeFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // SchedulingFlags wraps GstSchedulingFlags
 //
 // The different scheduling flags.
@@ -4583,6 +6060,24 @@ var _ gobject.GoValueInitializer = SchedulingFlags(0)
 func (f SchedulingFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeSchedulingFlags)
 	v.SetFlags(int(f))
+}
+
+func (f SchedulingFlags) String() string {
+	if f == 0 {
+		return "SchedulingFlags(0)"
+	}
+
+	var parts []string
+	if (f & SchedulingFlagSeekable) != 0 {
+		parts = append(parts, "SchedulingFlagSeekable")
+	}
+	if (f & SchedulingFlagSequential) != 0 {
+		parts = append(parts, "SchedulingFlagSequential")
+	}
+	if (f & SchedulingFlagBandwidthLimited) != 0 {
+		parts = append(parts, "SchedulingFlagBandwidthLimited")
+	}
+	return "SchedulingFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // SeekFlags wraps GstSeekFlags
@@ -4738,6 +6233,57 @@ func (f SeekFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f SeekFlags) String() string {
+	if f == 0 {
+		return "SeekFlags(0)"
+	}
+
+	var parts []string
+	if (f & SeekFlagNone) != 0 {
+		parts = append(parts, "SeekFlagNone")
+	}
+	if (f & SeekFlagFlush) != 0 {
+		parts = append(parts, "SeekFlagFlush")
+	}
+	if (f & SeekFlagAccurate) != 0 {
+		parts = append(parts, "SeekFlagAccurate")
+	}
+	if (f & SeekFlagKeyUnit) != 0 {
+		parts = append(parts, "SeekFlagKeyUnit")
+	}
+	if (f & SeekFlagSegment) != 0 {
+		parts = append(parts, "SeekFlagSegment")
+	}
+	if (f & SeekFlagTrickmode) != 0 {
+		parts = append(parts, "SeekFlagTrickmode")
+	}
+	if (f & SeekFlagSkip) != 0 {
+		parts = append(parts, "SeekFlagSkip")
+	}
+	if (f & SeekFlagSnapBefore) != 0 {
+		parts = append(parts, "SeekFlagSnapBefore")
+	}
+	if (f & SeekFlagSnapAfter) != 0 {
+		parts = append(parts, "SeekFlagSnapAfter")
+	}
+	if (f & SeekFlagSnapNearest) != 0 {
+		parts = append(parts, "SeekFlagSnapNearest")
+	}
+	if (f & SeekFlagTrickmodeKeyUnits) != 0 {
+		parts = append(parts, "SeekFlagTrickmodeKeyUnits")
+	}
+	if (f & SeekFlagTrickmodeNoAudio) != 0 {
+		parts = append(parts, "SeekFlagTrickmodeNoAudio")
+	}
+	if (f & SeekFlagTrickmodeForwardPredicted) != 0 {
+		parts = append(parts, "SeekFlagTrickmodeForwardPredicted")
+	}
+	if (f & SeekFlagInstantRateChange) != 0 {
+		parts = append(parts, "SeekFlagInstantRateChange")
+	}
+	return "SeekFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // SegmentFlags wraps GstSegmentFlags
 //
 // Flags for the GstSegment structure. Currently mapped to the corresponding
@@ -4799,6 +6345,39 @@ func (f SegmentFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f SegmentFlags) String() string {
+	if f == 0 {
+		return "SegmentFlags(0)"
+	}
+
+	var parts []string
+	if (f & SegmentFlagNone) != 0 {
+		parts = append(parts, "SegmentFlagNone")
+	}
+	if (f & SegmentFlagReset) != 0 {
+		parts = append(parts, "SegmentFlagReset")
+	}
+	if (f & SegmentFlagTrickmode) != 0 {
+		parts = append(parts, "SegmentFlagTrickmode")
+	}
+	if (f & SegmentFlagSkip) != 0 {
+		parts = append(parts, "SegmentFlagSkip")
+	}
+	if (f & SegmentFlagSegment) != 0 {
+		parts = append(parts, "SegmentFlagSegment")
+	}
+	if (f & SegmentFlagTrickmodeKeyUnits) != 0 {
+		parts = append(parts, "SegmentFlagTrickmodeKeyUnits")
+	}
+	if (f & SegmentFlagTrickmodeForwardPredicted) != 0 {
+		parts = append(parts, "SegmentFlagTrickmodeForwardPredicted")
+	}
+	if (f & SegmentFlagTrickmodeNoAudio) != 0 {
+		parts = append(parts, "SegmentFlagTrickmodeNoAudio")
+	}
+	return "SegmentFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // SerializeFlags wraps GstSerializeFlags
 type SerializeFlags C.gint
 
@@ -4834,6 +6413,24 @@ func (f SerializeFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f SerializeFlags) String() string {
+	if f == 0 {
+		return "SerializeFlags(0)"
+	}
+
+	var parts []string
+	if (f & SerializeFlagNone) != 0 {
+		parts = append(parts, "SerializeFlagNone")
+	}
+	if (f & SerializeFlagBackwardCompat) != 0 {
+		parts = append(parts, "SerializeFlagBackwardCompat")
+	}
+	if (f & SerializeFlagStrict) != 0 {
+		parts = append(parts, "SerializeFlagStrict")
+	}
+	return "SerializeFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // StackTraceFlags wraps GstStackTraceFlags
 type StackTraceFlags C.gint
 
@@ -4865,6 +6462,21 @@ var _ gobject.GoValueInitializer = StackTraceFlags(0)
 func (f StackTraceFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeStackTraceFlags)
 	v.SetFlags(int(f))
+}
+
+func (f StackTraceFlags) String() string {
+	if f == 0 {
+		return "StackTraceFlags(0)"
+	}
+
+	var parts []string
+	if (f & StackTraceShowNone) != 0 {
+		parts = append(parts, "StackTraceShowNone")
+	}
+	if (f & StackTraceShowFull) != 0 {
+		parts = append(parts, "StackTraceShowFull")
+	}
+	return "StackTraceFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // StreamFlags wraps GstStreamFlags
@@ -4910,6 +6522,27 @@ var _ gobject.GoValueInitializer = StreamFlags(0)
 func (f StreamFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeStreamFlags)
 	v.SetFlags(int(f))
+}
+
+func (f StreamFlags) String() string {
+	if f == 0 {
+		return "StreamFlags(0)"
+	}
+
+	var parts []string
+	if (f & StreamFlagNone) != 0 {
+		parts = append(parts, "StreamFlagNone")
+	}
+	if (f & StreamFlagSparse) != 0 {
+		parts = append(parts, "StreamFlagSparse")
+	}
+	if (f & StreamFlagSelect) != 0 {
+		parts = append(parts, "StreamFlagSelect")
+	}
+	if (f & StreamFlagUnselect) != 0 {
+		parts = append(parts, "StreamFlagUnselect")
+	}
+	return "StreamFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // StreamType wraps GstStreamType
@@ -4960,6 +6593,30 @@ func (f StreamType) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f StreamType) String() string {
+	if f == 0 {
+		return "StreamType(0)"
+	}
+
+	var parts []string
+	if (f & StreamTypeUnknown) != 0 {
+		parts = append(parts, "StreamTypeUnknown")
+	}
+	if (f & StreamTypeAudio) != 0 {
+		parts = append(parts, "StreamTypeAudio")
+	}
+	if (f & StreamTypeVideo) != 0 {
+		parts = append(parts, "StreamTypeVideo")
+	}
+	if (f & StreamTypeContainer) != 0 {
+		parts = append(parts, "StreamTypeContainer")
+	}
+	if (f & StreamTypeText) != 0 {
+		parts = append(parts, "StreamTypeText")
+	}
+	return "StreamType(" + strings.Join(parts, "|") + ")"
+}
+
 // TracerValueFlags wraps GstTracerValueFlags
 //
 // Flag that describe the value. These flags help applications processing the
@@ -4997,6 +6654,24 @@ var _ gobject.GoValueInitializer = TracerValueFlags(0)
 func (f TracerValueFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeTracerValueFlags)
 	v.SetFlags(int(f))
+}
+
+func (f TracerValueFlags) String() string {
+	if f == 0 {
+		return "TracerValueFlags(0)"
+	}
+
+	var parts []string
+	if (f & TracerValueFlagsNone) != 0 {
+		parts = append(parts, "TracerValueFlagsNone")
+	}
+	if (f & TracerValueFlagsOptional) != 0 {
+		parts = append(parts, "TracerValueFlagsOptional")
+	}
+	if (f & TracerValueFlagsAggregated) != 0 {
+		parts = append(parts, "TracerValueFlagsAggregated")
+	}
+	return "TracerValueFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // BufferForEachMetaFunc wraps GstBufferForeachMetaFunc
@@ -9741,14 +11416,14 @@ func UnsafePresetToGlibFull(c Preset) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
-// PresetInstanceGetAppDir wraps gst_preset_get_app_dir
+// PresetGetAppDir wraps gst_preset_get_app_dir
 // The function returns the following values:
 // 
 // 	- goret string 
 //
 // Gets the directory for application specific presets if set by the
 // application.
-func PresetInstanceGetAppDir() string {
+func PresetGetAppDir() string {
 	var cret *C.gchar // return, none, string, casted *C.gchar
 
 	cret = C.gst_preset_get_app_dir()
@@ -9760,7 +11435,7 @@ func PresetInstanceGetAppDir() string {
 	return goret
 }
 
-// PresetInstanceSetAppDir wraps gst_preset_set_app_dir
+// PresetSetAppDir wraps gst_preset_set_app_dir
 // 
 // The function takes the following parameters:
 // 
@@ -9773,7 +11448,7 @@ func PresetInstanceGetAppDir() string {
 // Sets an extra directory as an absolute path that should be considered when
 // looking for presets. Any presets in the application dir will shadow the
 // system presets.
-func PresetInstanceSetAppDir(appDir string) bool {
+func PresetSetAppDir(appDir string) bool {
 	var carg1 *C.gchar   // in, none, string, casted *C.gchar
 	var cret  C.gboolean // return
 
@@ -12781,7 +14456,7 @@ func UnsafePadToGlibFull(c Pad) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPadInstance wraps gst_pad_new
+// NewPad wraps gst_pad_new
 // 
 // The function takes the following parameters:
 // 
@@ -12796,7 +14471,7 @@ func UnsafePadToGlibFull(c Pad) unsafe.Pointer {
 // If name is %NULL, a guaranteed unique name (across all pads)
 // will be assigned.
 // This function makes a copy of the name so you can safely free the name.
-func NewPadInstance(name string, direction PadDirection) Pad {
+func NewPad(name string, direction PadDirection) Pad {
 	var carg1 *C.gchar          // in, none, string, nullable-string
 	var carg2 C.GstPadDirection // in, none, casted
 	var cret  *C.GstPad         // return, none, converted
@@ -12818,7 +14493,7 @@ func NewPadInstance(name string, direction PadDirection) Pad {
 	return goret
 }
 
-// NewPadInstanceFromStaticTemplate wraps gst_pad_new_from_static_template
+// NewPadFromStaticTemplate wraps gst_pad_new_from_static_template
 // 
 // The function takes the following parameters:
 // 
@@ -12833,7 +14508,7 @@ func NewPadInstance(name string, direction PadDirection) Pad {
 // If name is %NULL, a guaranteed unique name (across all pads)
 // will be assigned.
 // This function makes a copy of the name so you can safely free the name.
-func NewPadInstanceFromStaticTemplate(templ *StaticPadTemplate, name string) Pad {
+func NewPadFromStaticTemplate(templ *StaticPadTemplate, name string) Pad {
 	var carg1 *C.GstStaticPadTemplate // in, none, converted
 	var carg2 *C.gchar                // in, none, string, casted *C.gchar
 	var cret  *C.GstPad               // return, none, converted
@@ -12853,7 +14528,7 @@ func NewPadInstanceFromStaticTemplate(templ *StaticPadTemplate, name string) Pad
 	return goret
 }
 
-// NewPadInstanceFromTemplate wraps gst_pad_new_from_template
+// NewPadFromTemplate wraps gst_pad_new_from_template
 // 
 // The function takes the following parameters:
 // 
@@ -12868,7 +14543,7 @@ func NewPadInstanceFromStaticTemplate(templ *StaticPadTemplate, name string) Pad
 // If name is %NULL, a guaranteed unique name (across all pads)
 // will be assigned.
 // This function makes a copy of the name so you can safely free the name.
-func NewPadInstanceFromTemplate(templ PadTemplate, name string) Pad {
+func NewPadFromTemplate(templ PadTemplate, name string) Pad {
 	var carg1 *C.GstPadTemplate // in, none, converted
 	var carg2 *C.gchar          // in, none, string, nullable-string
 	var cret  *C.GstPad         // return, none, converted
@@ -12890,7 +14565,7 @@ func NewPadInstanceFromTemplate(templ PadTemplate, name string) Pad {
 	return goret
 }
 
-// PadInstanceLinkGetName wraps gst_pad_link_get_name
+// PadLinkGetName wraps gst_pad_link_get_name
 // 
 // The function takes the following parameters:
 // 
@@ -12901,7 +14576,7 @@ func NewPadInstanceFromTemplate(templ PadTemplate, name string) Pad {
 // 	- goret string 
 //
 // Gets a string representing the given pad-link return.
-func PadInstanceLinkGetName(ret PadLinkReturn) string {
+func PadLinkGetName(ret PadLinkReturn) string {
 	var carg1 C.GstPadLinkReturn // in, none, casted
 	var cret  *C.gchar           // return, none, string, casted *C.gchar
 
@@ -15349,7 +17024,7 @@ func UnsafePadTemplateToGlibFull(c PadTemplate) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPadTemplateInstance wraps gst_pad_template_new
+// NewPadTemplate wraps gst_pad_template_new
 // 
 // The function takes the following parameters:
 // 
@@ -15364,7 +17039,7 @@ func UnsafePadTemplateToGlibFull(c PadTemplate) unsafe.Pointer {
 //
 // Creates a new pad template with a name according to the given template
 // and with the given arguments.
-func NewPadTemplateInstance(nameTemplate string, direction PadDirection, presence PadPresence, caps *Caps) PadTemplate {
+func NewPadTemplate(nameTemplate string, direction PadDirection, presence PadPresence, caps *Caps) PadTemplate {
 	var carg1 *C.gchar          // in, none, string, casted *C.gchar
 	var carg2 C.GstPadDirection // in, none, casted
 	var carg3 C.GstPadPresence  // in, none, casted
@@ -15390,7 +17065,7 @@ func NewPadTemplateInstance(nameTemplate string, direction PadDirection, presenc
 	return goret
 }
 
-// NewPadTemplateInstanceFromStaticPadTemplateWithGType wraps gst_pad_template_new_from_static_pad_template_with_gtype
+// NewPadTemplateFromStaticPadTemplateWithGType wraps gst_pad_template_new_from_static_pad_template_with_gtype
 // 
 // The function takes the following parameters:
 // 
@@ -15402,7 +17077,7 @@ func NewPadTemplateInstance(nameTemplate string, direction PadDirection, presenc
 // 	- goret PadTemplate 
 //
 // Converts a #GstStaticPadTemplate into a #GstPadTemplate with a type.
-func NewPadTemplateInstanceFromStaticPadTemplateWithGType(padTemplate *StaticPadTemplate, padType gobject.Type) PadTemplate {
+func NewPadTemplateFromStaticPadTemplateWithGType(padTemplate *StaticPadTemplate, padType gobject.Type) PadTemplate {
 	var carg1 *C.GstStaticPadTemplate // in, none, converted
 	var carg2 C.GType                 // in, none, casted, alias
 	var cret  *C.GstPadTemplate       // return, none, converted
@@ -15421,7 +17096,7 @@ func NewPadTemplateInstanceFromStaticPadTemplateWithGType(padTemplate *StaticPad
 	return goret
 }
 
-// NewPadTemplateInstanceWithGType wraps gst_pad_template_new_with_gtype
+// NewPadTemplateWithGType wraps gst_pad_template_new_with_gtype
 // 
 // The function takes the following parameters:
 // 
@@ -15437,7 +17112,7 @@ func NewPadTemplateInstanceFromStaticPadTemplateWithGType(padTemplate *StaticPad
 //
 // Creates a new pad template with a name according to the given template
 // and with the given arguments.
-func NewPadTemplateInstanceWithGType(nameTemplate string, direction PadDirection, presence PadPresence, caps *Caps, padType gobject.Type) PadTemplate {
+func NewPadTemplateWithGType(nameTemplate string, direction PadDirection, presence PadPresence, caps *Caps, padType gobject.Type) PadTemplate {
 	var carg1 *C.gchar          // in, none, string, casted *C.gchar
 	var carg2 C.GstPadDirection // in, none, casted
 	var carg3 C.GstPadPresence  // in, none, casted
@@ -15825,7 +17500,7 @@ func UnsafePluginToGlibFull(c Plugin) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// PluginInstanceLoadByName wraps gst_plugin_load_by_name
+// PluginLoadByName wraps gst_plugin_load_by_name
 // 
 // The function takes the following parameters:
 // 
@@ -15836,7 +17511,7 @@ func UnsafePluginToGlibFull(c Plugin) unsafe.Pointer {
 // 	- goret Plugin 
 //
 // Load the named plugin. Refs the plugin.
-func PluginInstanceLoadByName(name string) Plugin {
+func PluginLoadByName(name string) Plugin {
 	var carg1 *C.gchar     // in, none, string, casted *C.gchar
 	var cret  *C.GstPlugin // return, full, converted
 
@@ -15853,7 +17528,7 @@ func PluginInstanceLoadByName(name string) Plugin {
 	return goret
 }
 
-// PluginInstanceLoadFile wraps gst_plugin_load_file
+// PluginLoadFile wraps gst_plugin_load_file
 // 
 // The function takes the following parameters:
 // 
@@ -15865,7 +17540,7 @@ func PluginInstanceLoadByName(name string) Plugin {
 // 	- _goerr error (nullable): an error 
 //
 // Loads the given plugin and refs it.  Caller needs to unref after use.
-func PluginInstanceLoadFile(filename string) (Plugin, error) {
+func PluginLoadFile(filename string) (Plugin, error) {
 	var carg1 *C.gchar     // in, none, string, casted *C.gchar
 	var cret  *C.GstPlugin // return, full, converted
 	var _cerr *C.GError    // out, full, converted, nullable
@@ -15887,7 +17562,7 @@ func PluginInstanceLoadFile(filename string) (Plugin, error) {
 	return goret, _goerr
 }
 
-// PluginInstanceRegisterStaticFull wraps gst_plugin_register_static_full
+// PluginRegisterStaticFull wraps gst_plugin_register_static_full
 // 
 // The function takes the following parameters:
 // 
@@ -15920,7 +17595,7 @@ func PluginInstanceLoadFile(filename string) (Plugin, error) {
 // 
 // You must make sure that GStreamer has been initialised (with gst_init() or
 // via gst_init_get_option_group()) before calling this function.
-func PluginInstanceRegisterStaticFull(majorVersion int, minorVersion int, name string, description string, initFullFunc PluginInitFullFunc, version string, license string, source string, pkg string, origin string) bool {
+func PluginRegisterStaticFull(majorVersion int, minorVersion int, name string, description string, initFullFunc PluginInitFullFunc, version string, license string, source string, pkg string, origin string) bool {
 	var carg1  C.gint                  // in, none, casted
 	var carg2  C.gint                  // in, none, casted
 	var carg3  *C.gchar                // in, none, string, casted *C.gchar
@@ -16634,7 +18309,7 @@ func UnsafePluginFeatureToGlibFull(c PluginFeature) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// PluginFeatureInstanceRankCompareFunc wraps gst_plugin_feature_rank_compare_func
+// PluginFeatureRankCompareFunc wraps gst_plugin_feature_rank_compare_func
 // 
 // The function takes the following parameters:
 // 
@@ -16647,7 +18322,7 @@ func UnsafePluginFeatureToGlibFull(c PluginFeature) unsafe.Pointer {
 //
 // Compares the two given #GstPluginFeature instances. This function can be
 // used as a #GCompareFunc when sorting by rank and then by name.
-func PluginFeatureInstanceRankCompareFunc(p1 unsafe.Pointer, p2 unsafe.Pointer) int {
+func PluginFeatureRankCompareFunc(p1 unsafe.Pointer, p2 unsafe.Pointer) int {
 	var carg1 C.gconstpointer // in, none, casted, nullable
 	var carg2 C.gconstpointer // in, none, casted, nullable
 	var cret  C.gint          // return, none, casted
@@ -16900,7 +18575,7 @@ func UnsafeProxyPadToGlibFull(c ProxyPad) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// ProxyPadInstanceChainDefault wraps gst_proxy_pad_chain_default
+// ProxyPadChainDefault wraps gst_proxy_pad_chain_default
 // 
 // The function takes the following parameters:
 // 
@@ -16914,7 +18589,7 @@ func UnsafeProxyPadToGlibFull(c ProxyPad) unsafe.Pointer {
 // 	- goret FlowReturn 
 //
 // Invoke the default chain function of the proxy pad.
-func ProxyPadInstanceChainDefault(pad Pad, parent Object, buffer *Buffer) FlowReturn {
+func ProxyPadChainDefault(pad Pad, parent Object, buffer *Buffer) FlowReturn {
 	var carg1 *C.GstPad       // in, none, converted
 	var carg2 *C.GstObject    // in, none, converted, nullable
 	var carg3 *C.GstBuffer    // in, full, converted
@@ -16938,7 +18613,7 @@ func ProxyPadInstanceChainDefault(pad Pad, parent Object, buffer *Buffer) FlowRe
 	return goret
 }
 
-// ProxyPadInstanceChainListDefault wraps gst_proxy_pad_chain_list_default
+// ProxyPadChainListDefault wraps gst_proxy_pad_chain_list_default
 // 
 // The function takes the following parameters:
 // 
@@ -16952,7 +18627,7 @@ func ProxyPadInstanceChainDefault(pad Pad, parent Object, buffer *Buffer) FlowRe
 // 	- goret FlowReturn 
 //
 // Invoke the default chain list function of the proxy pad.
-func ProxyPadInstanceChainListDefault(pad Pad, parent Object, list *BufferList) FlowReturn {
+func ProxyPadChainListDefault(pad Pad, parent Object, list *BufferList) FlowReturn {
 	var carg1 *C.GstPad        // in, none, converted
 	var carg2 *C.GstObject     // in, none, converted, nullable
 	var carg3 *C.GstBufferList // in, full, converted
@@ -16976,7 +18651,7 @@ func ProxyPadInstanceChainListDefault(pad Pad, parent Object, list *BufferList) 
 	return goret
 }
 
-// ProxyPadInstanceGetrangeDefault wraps gst_proxy_pad_getrange_default
+// ProxyPadGetrangeDefault wraps gst_proxy_pad_getrange_default
 // 
 // The function takes the following parameters:
 // 
@@ -16992,7 +18667,7 @@ func ProxyPadInstanceChainListDefault(pad Pad, parent Object, list *BufferList) 
 // 	- goret FlowReturn 
 //
 // Invoke the default getrange function of the proxy pad.
-func ProxyPadInstanceGetrangeDefault(pad Pad, parent Object, offset uint64, size uint) (*Buffer, FlowReturn) {
+func ProxyPadGetrangeDefault(pad Pad, parent Object, offset uint64, size uint) (*Buffer, FlowReturn) {
 	var carg1 *C.GstPad       // in, none, converted
 	var carg2 *C.GstObject    // in, none, converted
 	var carg3 C.guint64       // in, none, casted
@@ -17020,7 +18695,7 @@ func ProxyPadInstanceGetrangeDefault(pad Pad, parent Object, offset uint64, size
 	return buffer, goret
 }
 
-// ProxyPadInstanceIterateInternalLinksDefault wraps gst_proxy_pad_iterate_internal_links_default
+// ProxyPadIterateInternalLinksDefault wraps gst_proxy_pad_iterate_internal_links_default
 // 
 // The function takes the following parameters:
 // 
@@ -17032,7 +18707,7 @@ func ProxyPadInstanceGetrangeDefault(pad Pad, parent Object, offset uint64, size
 // 	- goret *Iterator 
 //
 // Invoke the default iterate internal links function of the proxy pad.
-func ProxyPadInstanceIterateInternalLinksDefault(pad Pad, parent Object) *Iterator {
+func ProxyPadIterateInternalLinksDefault(pad Pad, parent Object) *Iterator {
 	var carg1 *C.GstPad      // in, none, converted
 	var carg2 *C.GstObject   // in, none, converted, nullable
 	var cret  *C.GstIterator // return, full, converted
@@ -17329,7 +19004,7 @@ func UnsafeRegistryToGlibFull(c Registry) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// RegistryInstanceForkIsEnabled wraps gst_registry_fork_is_enabled
+// RegistryForkIsEnabled wraps gst_registry_fork_is_enabled
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -17340,7 +19015,7 @@ func UnsafeRegistryToGlibFull(c Registry) unsafe.Pointer {
 // Applications might want to disable this behaviour with the
 // gst_registry_fork_set_enabled() function, in which case new plugins
 // are scanned (and loaded) into the application process.
-func RegistryInstanceForkIsEnabled() bool {
+func RegistryForkIsEnabled() bool {
 	var cret C.gboolean // return
 
 	cret = C.gst_registry_fork_is_enabled()
@@ -17354,7 +19029,7 @@ func RegistryInstanceForkIsEnabled() bool {
 	return goret
 }
 
-// RegistryInstanceForkSetEnabled wraps gst_registry_fork_set_enabled
+// RegistryForkSetEnabled wraps gst_registry_fork_set_enabled
 // 
 // The function takes the following parameters:
 // 
@@ -17363,7 +19038,7 @@ func RegistryInstanceForkIsEnabled() bool {
 // Applications might want to disable/enable spawning of a child helper process
 // when rebuilding the registry. See gst_registry_fork_is_enabled() for more
 // information.
-func RegistryInstanceForkSetEnabled(enabled bool) {
+func RegistryForkSetEnabled(enabled bool) {
 	var carg1 C.gboolean // in
 
 	if enabled {
@@ -17374,7 +19049,7 @@ func RegistryInstanceForkSetEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// RegistryInstanceGet wraps gst_registry_get
+// RegistryGet wraps gst_registry_get
 // The function returns the following values:
 // 
 // 	- goret Registry 
@@ -17382,7 +19057,7 @@ func RegistryInstanceForkSetEnabled(enabled bool) {
 // Retrieves the singleton plugin registry. The caller does not own a
 // reference on the registry, as it is alive as long as GStreamer is
 // initialized.
-func RegistryInstanceGet() Registry {
+func RegistryGet() Registry {
 	var cret *C.GstRegistry // return, none, converted
 
 	cret = C.gst_registry_get()
@@ -17873,7 +19548,7 @@ func UnsafeStreamToGlibFull(c Stream) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewStreamInstance wraps gst_stream_new
+// NewStream wraps gst_stream_new
 // 
 // The function takes the following parameters:
 // 
@@ -17889,7 +19564,7 @@ func UnsafeStreamToGlibFull(c Stream) unsafe.Pointer {
 //
 // Create a new #GstStream for the given @stream_id, @caps, @type
 // and @flags
-func NewStreamInstance(streamId string, caps *Caps, typ StreamType, flags StreamFlags) Stream {
+func NewStream(streamId string, caps *Caps, typ StreamType, flags StreamFlags) Stream {
 	var carg1 *C.gchar         // in, none, string, nullable-string
 	var carg2 *C.GstCaps       // in, none, converted, nullable
 	var carg3 C.GstStreamType  // in, none, casted
@@ -18219,7 +19894,7 @@ func UnsafeStreamCollectionToGlibFull(c StreamCollection) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewStreamCollectionInstance wraps gst_stream_collection_new
+// NewStreamCollection wraps gst_stream_collection_new
 // 
 // The function takes the following parameters:
 // 
@@ -18230,7 +19905,7 @@ func UnsafeStreamCollectionToGlibFull(c StreamCollection) unsafe.Pointer {
 // 	- goret StreamCollection 
 //
 // Create a new #GstStreamCollection.
-func NewStreamCollectionInstance(upstreamId string) StreamCollection {
+func NewStreamCollection(upstreamId string) StreamCollection {
 	var carg1 *C.gchar               // in, none, string, nullable-string
 	var cret  *C.GstStreamCollection // return, full, converted
 
@@ -18545,7 +20220,7 @@ func UnsafeTaskToGlibFull(c Task) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewTaskInstance wraps gst_task_new
+// NewTask wraps gst_task_new
 // 
 // The function takes the following parameters:
 // 
@@ -18568,7 +20243,7 @@ func UnsafeTaskToGlibFull(c Task) unsafe.Pointer {
 // Before the task can be used, a #GRecMutex must be configured using the
 // gst_task_set_lock() function. This lock will always be acquired while
 // @func is called.
-func NewTaskInstance(fn TaskFunction) Task {
+func NewTask(fn TaskFunction) Task {
 	var carg1 C.GstTaskFunction // callback, scope: notified, closure: carg2, destroy: carg3
 	var carg2 C.gpointer        // implicit
 	var carg3 C.GDestroyNotify  // implicit
@@ -18588,13 +20263,13 @@ func NewTaskInstance(fn TaskFunction) Task {
 	return goret
 }
 
-// TaskInstanceCleanupAll wraps gst_task_cleanup_all
+// TaskCleanupAll wraps gst_task_cleanup_all
 //
 // Wait for all tasks to be stopped. This is mainly used internally
 // to ensure proper cleanup of internal data structures in test suites.
 // 
 // MT safe.
-func TaskInstanceCleanupAll() {
+func TaskCleanupAll() {
 
 	C.gst_task_cleanup_all()
 }
@@ -18956,14 +20631,14 @@ func UnsafeTaskPoolToGlibFull(c TaskPool) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewTaskPoolInstance wraps gst_task_pool_new
+// NewTaskPool wraps gst_task_pool_new
 // The function returns the following values:
 // 
 // 	- goret TaskPool 
 //
 // Create a new default task pool. The default task pool will use a regular
 // GThreadPool for threads.
-func NewTaskPoolInstance() TaskPool {
+func NewTaskPool() TaskPool {
 	var cret *C.GstTaskPool // return, full, converted
 
 	cret = C.gst_task_pool_new()
@@ -19166,7 +20841,7 @@ func UnsafeTracerToGlibFull(c Tracer) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// TracerInstanceRegister wraps gst_tracer_register
+// TracerRegister wraps gst_tracer_register
 // 
 // The function takes the following parameters:
 // 
@@ -19180,7 +20855,7 @@ func UnsafeTracerToGlibFull(c Tracer) unsafe.Pointer {
 //
 // Create a new tracer-factory  capable of instantiating objects of the
 // @type and add the factory to @plugin.
-func TracerInstanceRegister(plugin Plugin, name string, typ gobject.Type) bool {
+func TracerRegister(plugin Plugin, name string, typ gobject.Type) bool {
 	var carg1 *C.GstPlugin // in, none, converted, nullable
 	var carg2 *C.gchar     // in, none, string, casted *C.gchar
 	var carg3 C.GType      // in, none, casted, alias
@@ -19692,7 +21367,7 @@ func UnsafeAllocatorToGlibFull(c Allocator) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// AllocatorInstanceFind wraps gst_allocator_find
+// AllocatorFind wraps gst_allocator_find
 // 
 // The function takes the following parameters:
 // 
@@ -19704,7 +21379,7 @@ func UnsafeAllocatorToGlibFull(c Allocator) unsafe.Pointer {
 //
 // Find a previously registered allocator with @name. When @name is %NULL, the
 // default allocator will be returned.
-func AllocatorInstanceFind(name string) Allocator {
+func AllocatorFind(name string) Allocator {
 	var carg1 *C.gchar        // in, none, string, nullable-string
 	var cret  *C.GstAllocator // return, full, converted
 
@@ -19723,7 +21398,7 @@ func AllocatorInstanceFind(name string) Allocator {
 	return goret
 }
 
-// AllocatorInstanceRegister wraps gst_allocator_register
+// AllocatorRegister wraps gst_allocator_register
 // 
 // The function takes the following parameters:
 // 
@@ -19731,7 +21406,7 @@ func AllocatorInstanceFind(name string) Allocator {
 // 	- allocator Allocator: #GstAllocator 
 //
 // Registers the memory @allocator with @name.
-func AllocatorInstanceRegister(name string, allocator Allocator) {
+func AllocatorRegister(name string, allocator Allocator) {
 	var carg1 *C.gchar        // in, none, string, casted *C.gchar
 	var carg2 *C.GstAllocator // in, full, converted
 
@@ -20036,13 +21711,13 @@ func UnsafeBufferPoolToGlibFull(c BufferPool) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewBufferPoolInstance wraps gst_buffer_pool_new
+// NewBufferPool wraps gst_buffer_pool_new
 // The function returns the following values:
 // 
 // 	- goret BufferPool 
 //
 // Creates a new #GstBufferPool instance.
-func NewBufferPoolInstance() BufferPool {
+func NewBufferPool() BufferPool {
 	var cret *C.GstBufferPool // return, full, converted
 
 	cret = C.gst_buffer_pool_new()
@@ -20054,7 +21729,7 @@ func NewBufferPoolInstance() BufferPool {
 	return goret
 }
 
-// BufferPoolInstanceConfigAddOption wraps gst_buffer_pool_config_add_option
+// BufferPoolConfigAddOption wraps gst_buffer_pool_config_add_option
 // 
 // The function takes the following parameters:
 // 
@@ -20065,7 +21740,7 @@ func NewBufferPoolInstance() BufferPool {
 // the specified option on the buffers that it allocates.
 // 
 // The options supported by @pool can be retrieved with gst_buffer_pool_get_options().
-func BufferPoolInstanceConfigAddOption(config *Structure, option string) {
+func BufferPoolConfigAddOption(config *Structure, option string) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 *C.gchar        // in, none, string, casted *C.gchar
 
@@ -20078,7 +21753,7 @@ func BufferPoolInstanceConfigAddOption(config *Structure, option string) {
 	runtime.KeepAlive(option)
 }
 
-// BufferPoolInstanceConfigGetAllocator wraps gst_buffer_pool_config_get_allocator
+// BufferPoolConfigGetAllocator wraps gst_buffer_pool_config_get_allocator
 // 
 // The function takes the following parameters:
 // 
@@ -20091,7 +21766,7 @@ func BufferPoolInstanceConfigAddOption(config *Structure, option string) {
 // 	- goret bool 
 //
 // Gets the @allocator and @params from @config.
-func BufferPoolInstanceConfigGetAllocator(config *Structure) (Allocator, AllocationParams, bool) {
+func BufferPoolConfigGetAllocator(config *Structure) (Allocator, AllocationParams, bool) {
 	var carg1 *C.GstStructure       // in, none, converted
 	var carg2 *C.GstAllocator       // out, none, converted, nullable
 	var carg3 C.GstAllocationParams // out, transfer: none, C Pointers: 0, Name: AllocationParams, optional, caller-allocates
@@ -20119,7 +21794,7 @@ func BufferPoolInstanceConfigGetAllocator(config *Structure) (Allocator, Allocat
 	return allocator, params, goret
 }
 
-// BufferPoolInstanceConfigGetOption wraps gst_buffer_pool_config_get_option
+// BufferPoolConfigGetOption wraps gst_buffer_pool_config_get_option
 // 
 // The function takes the following parameters:
 // 
@@ -20132,7 +21807,7 @@ func BufferPoolInstanceConfigGetAllocator(config *Structure) (Allocator, Allocat
 //
 // Parses an available @config and gets the option at @index of the options API
 // array.
-func BufferPoolInstanceConfigGetOption(config *Structure, index uint) string {
+func BufferPoolConfigGetOption(config *Structure, index uint) string {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.guint         // in, none, casted
 	var cret  *C.gchar        // return, none, string, casted *C.gchar
@@ -20151,7 +21826,7 @@ func BufferPoolInstanceConfigGetOption(config *Structure, index uint) string {
 	return goret
 }
 
-// BufferPoolInstanceConfigGetParams wraps gst_buffer_pool_config_get_params
+// BufferPoolConfigGetParams wraps gst_buffer_pool_config_get_params
 // 
 // The function takes the following parameters:
 // 
@@ -20166,7 +21841,7 @@ func BufferPoolInstanceConfigGetOption(config *Structure, index uint) string {
 // 	- goret bool 
 //
 // Gets the configuration values from @config.
-func BufferPoolInstanceConfigGetParams(config *Structure) (*Caps, uint, uint, uint, bool) {
+func BufferPoolConfigGetParams(config *Structure) (*Caps, uint, uint, uint, bool) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 *C.GstCaps      // out, none, converted, nullable
 	var carg3 C.guint         // out, full, casted
@@ -20198,7 +21873,7 @@ func BufferPoolInstanceConfigGetParams(config *Structure) (*Caps, uint, uint, ui
 	return caps, size, minBuffers, maxBuffers, goret
 }
 
-// BufferPoolInstanceConfigHasOption wraps gst_buffer_pool_config_has_option
+// BufferPoolConfigHasOption wraps gst_buffer_pool_config_has_option
 // 
 // The function takes the following parameters:
 // 
@@ -20210,7 +21885,7 @@ func BufferPoolInstanceConfigGetParams(config *Structure) (*Caps, uint, uint, ui
 // 	- goret bool 
 //
 // Checks if @config contains @option.
-func BufferPoolInstanceConfigHasOption(config *Structure, option string) bool {
+func BufferPoolConfigHasOption(config *Structure, option string) bool {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 *C.gchar        // in, none, string, casted *C.gchar
 	var cret  C.gboolean      // return
@@ -20232,7 +21907,7 @@ func BufferPoolInstanceConfigHasOption(config *Structure, option string) bool {
 	return goret
 }
 
-// BufferPoolInstanceConfigNOptions wraps gst_buffer_pool_config_n_options
+// BufferPoolConfigNOptions wraps gst_buffer_pool_config_n_options
 // 
 // The function takes the following parameters:
 // 
@@ -20244,7 +21919,7 @@ func BufferPoolInstanceConfigHasOption(config *Structure, option string) bool {
 //
 // Retrieves the number of values currently stored in the options array of the
 // @config structure.
-func BufferPoolInstanceConfigNOptions(config *Structure) uint {
+func BufferPoolConfigNOptions(config *Structure) uint {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.guint         // return, none, casted
 
@@ -20260,7 +21935,7 @@ func BufferPoolInstanceConfigNOptions(config *Structure) uint {
 	return goret
 }
 
-// BufferPoolInstanceConfigSetAllocator wraps gst_buffer_pool_config_set_allocator
+// BufferPoolConfigSetAllocator wraps gst_buffer_pool_config_set_allocator
 // 
 // The function takes the following parameters:
 // 
@@ -20280,7 +21955,7 @@ func BufferPoolInstanceConfigNOptions(config *Structure) uint {
 // to operate with different allocators or cannot allocate with the values
 // specified in @params. Use gst_buffer_pool_get_config() to get the currently
 // used values.
-func BufferPoolInstanceConfigSetAllocator(config *Structure, allocator Allocator, params *AllocationParams) {
+func BufferPoolConfigSetAllocator(config *Structure, allocator Allocator, params *AllocationParams) {
 	var carg1 *C.GstStructure        // in, none, converted
 	var carg2 *C.GstAllocator        // in, none, converted, nullable
 	var carg3 *C.GstAllocationParams // in, none, converted, nullable
@@ -20299,7 +21974,7 @@ func BufferPoolInstanceConfigSetAllocator(config *Structure, allocator Allocator
 	runtime.KeepAlive(params)
 }
 
-// BufferPoolInstanceConfigSetParams wraps gst_buffer_pool_config_set_params
+// BufferPoolConfigSetParams wraps gst_buffer_pool_config_set_params
 // 
 // The function takes the following parameters:
 // 
@@ -20310,7 +21985,7 @@ func BufferPoolInstanceConfigSetAllocator(config *Structure, allocator Allocator
 // 	- maxBuffers uint: the maximum amount of buffers to allocate or 0 for unlimited. 
 //
 // Configures @config with the given parameters.
-func BufferPoolInstanceConfigSetParams(config *Structure, caps *Caps, size uint, minBuffers uint, maxBuffers uint) {
+func BufferPoolConfigSetParams(config *Structure, caps *Caps, size uint, minBuffers uint, maxBuffers uint) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 *C.GstCaps      // in, none, converted, nullable
 	var carg3 C.guint         // in, none, casted
@@ -20333,7 +22008,7 @@ func BufferPoolInstanceConfigSetParams(config *Structure, caps *Caps, size uint,
 	runtime.KeepAlive(maxBuffers)
 }
 
-// BufferPoolInstanceConfigValidateParams wraps gst_buffer_pool_config_validate_params
+// BufferPoolConfigValidateParams wraps gst_buffer_pool_config_validate_params
 // 
 // The function takes the following parameters:
 // 
@@ -20355,7 +22030,7 @@ func BufferPoolInstanceConfigSetParams(config *Structure, caps *Caps, size uint,
 // This does not check if options or allocator parameters are still valid,
 // won't check if size have changed, since changing the size is valid to adapt
 // padding.
-func BufferPoolInstanceConfigValidateParams(config *Structure, caps *Caps, size uint, minBuffers uint, maxBuffers uint) bool {
+func BufferPoolConfigValidateParams(config *Structure, caps *Caps, size uint, minBuffers uint, maxBuffers uint) bool {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 *C.GstCaps      // in, none, converted, nullable
 	var carg3 C.guint         // in, none, casted
@@ -20721,6 +22396,7 @@ var _ Bus = (*BusInstance)(nil)
 // Note that a #GstPipeline will set its bus into flushing state when changing
 // from READY to NULL state.
 type Bus interface {
+	BusExtManual // handwritten functions
 	Object
 	upcastToGstBus() *BusInstance
 
@@ -21089,13 +22765,13 @@ func UnsafeBusToGlibFull(c Bus) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewBusInstance wraps gst_bus_new
+// NewBus wraps gst_bus_new
 // The function returns the following values:
 // 
 // 	- goret Bus 
 //
 // Creates a new #GstBus instance.
-func NewBusInstance() Bus {
+func NewBus() Bus {
 	var cret *C.GstBus // return, full, converted
 
 	cret = C.gst_bus_new()
@@ -22251,7 +23927,7 @@ func UnsafeClockToGlibFull(c Clock) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// ClockInstanceIDCompareFunc wraps gst_clock_id_compare_func
+// ClockIDCompareFunc wraps gst_clock_id_compare_func
 // 
 // The function takes the following parameters:
 // 
@@ -22264,7 +23940,7 @@ func UnsafeClockToGlibFull(c Clock) unsafe.Pointer {
 //
 // Compares the two #GstClockID instances. This function can be used
 // as a GCompareFunc when sorting ids.
-func ClockInstanceIDCompareFunc(id1 unsafe.Pointer, id2 unsafe.Pointer) int {
+func ClockIDCompareFunc(id1 unsafe.Pointer, id2 unsafe.Pointer) int {
 	var carg1 C.gconstpointer // in, none, casted, nullable
 	var carg2 C.gconstpointer // in, none, casted, nullable
 	var cret  C.gint          // return, none, casted
@@ -22287,7 +23963,7 @@ func ClockInstanceIDCompareFunc(id1 unsafe.Pointer, id2 unsafe.Pointer) int {
 	return goret
 }
 
-// ClockInstanceIDGetClock wraps gst_clock_id_get_clock
+// ClockIDGetClock wraps gst_clock_id_get_clock
 // 
 // The function takes the following parameters:
 // 
@@ -22298,7 +23974,7 @@ func ClockInstanceIDCompareFunc(id1 unsafe.Pointer, id2 unsafe.Pointer) int {
 // 	- goret Clock 
 //
 // This function returns the underlying clock.
-func ClockInstanceIDGetClock(id ClockID) Clock {
+func ClockIDGetClock(id ClockID) Clock {
 	var carg1 C.GstClockID // in, none, casted, alias
 	var cret  *C.GstClock  // return, full, converted
 
@@ -22314,7 +23990,7 @@ func ClockInstanceIDGetClock(id ClockID) Clock {
 	return goret
 }
 
-// ClockInstanceIDGetTime wraps gst_clock_id_get_time
+// ClockIDGetTime wraps gst_clock_id_get_time
 // 
 // The function takes the following parameters:
 // 
@@ -22325,7 +24001,7 @@ func ClockInstanceIDGetClock(id ClockID) Clock {
 // 	- goret ClockTime 
 //
 // Gets the time of the clock ID
-func ClockInstanceIDGetTime(id ClockID) ClockTime {
+func ClockIDGetTime(id ClockID) ClockTime {
 	var carg1 C.GstClockID   // in, none, casted, alias
 	var cret  C.GstClockTime // return, none, casted, alias
 
@@ -22341,7 +24017,7 @@ func ClockInstanceIDGetTime(id ClockID) ClockTime {
 	return goret
 }
 
-// ClockInstanceIDRef wraps gst_clock_id_ref
+// ClockIDRef wraps gst_clock_id_ref
 // 
 // The function takes the following parameters:
 // 
@@ -22352,7 +24028,7 @@ func ClockInstanceIDGetTime(id ClockID) ClockTime {
 // 	- goret ClockID 
 //
 // Increases the refcount of given @id.
-func ClockInstanceIDRef(id ClockID) ClockID {
+func ClockIDRef(id ClockID) ClockID {
 	var carg1 C.GstClockID // in, none, casted, alias
 	var cret  C.GstClockID // return, full, casted, alias
 
@@ -22368,7 +24044,7 @@ func ClockInstanceIDRef(id ClockID) ClockID {
 	return goret
 }
 
-// ClockInstanceIDUnref wraps gst_clock_id_unref
+// ClockIDUnref wraps gst_clock_id_unref
 // 
 // The function takes the following parameters:
 // 
@@ -22376,7 +24052,7 @@ func ClockInstanceIDRef(id ClockID) ClockID {
 //
 // Unrefs given @id. When the refcount reaches 0 the
 // #GstClockID will be freed.
-func ClockInstanceIDUnref(id ClockID) {
+func ClockIDUnref(id ClockID) {
 	var carg1 C.GstClockID // in, full, casted, alias
 
 	carg1 = C.GstClockID(id)
@@ -22385,7 +24061,7 @@ func ClockInstanceIDUnref(id ClockID) {
 	runtime.KeepAlive(id)
 }
 
-// ClockInstanceIDUnschedule wraps gst_clock_id_unschedule
+// ClockIDUnschedule wraps gst_clock_id_unschedule
 // 
 // The function takes the following parameters:
 // 
@@ -22395,7 +24071,7 @@ func ClockInstanceIDUnref(id ClockID) {
 // be an outstanding async notification or a pending sync notification.
 // After this call, @id cannot be used anymore to receive sync or
 // async notifications, you need to create a new #GstClockID.
-func ClockInstanceIDUnschedule(id ClockID) {
+func ClockIDUnschedule(id ClockID) {
 	var carg1 C.GstClockID // in, none, casted, alias
 
 	carg1 = C.GstClockID(id)
@@ -22404,7 +24080,7 @@ func ClockInstanceIDUnschedule(id ClockID) {
 	runtime.KeepAlive(id)
 }
 
-// ClockInstanceIDUsesClock wraps gst_clock_id_uses_clock
+// ClockIDUsesClock wraps gst_clock_id_uses_clock
 // 
 // The function takes the following parameters:
 // 
@@ -22419,7 +24095,7 @@ func ClockInstanceIDUnschedule(id ClockID) {
 // @clock can be NULL, in which case the return value indicates whether
 // the underlying clock has been freed.  If this is the case, the @id is
 // no longer usable and should be freed.
-func ClockInstanceIDUsesClock(id ClockID, clock Clock) bool {
+func ClockIDUsesClock(id ClockID, clock Clock) bool {
 	var carg1 C.GstClockID // in, none, casted, alias
 	var carg2 *C.GstClock  // in, none, converted
 	var cret  C.gboolean   // return
@@ -22440,7 +24116,7 @@ func ClockInstanceIDUsesClock(id ClockID, clock Clock) bool {
 	return goret
 }
 
-// ClockInstanceIDWait wraps gst_clock_id_wait
+// ClockIDWait wraps gst_clock_id_wait
 // 
 // The function takes the following parameters:
 // 
@@ -22465,7 +24141,7 @@ func ClockInstanceIDUsesClock(id ClockID, clock Clock) bool {
 // (in which case this function will return #GST_CLOCK_EARLY).
 // Negative values indicate how much time was spent waiting on the clock
 // before this function returned.
-func ClockInstanceIDWait(id ClockID) (ClockTimeDiff, ClockReturn) {
+func ClockIDWait(id ClockID) (ClockTimeDiff, ClockReturn) {
 	var carg1 C.GstClockID       // in, none, casted, alias
 	var carg2 C.GstClockTimeDiff // out, full, casted, alias
 	var cret  C.GstClockReturn   // return, none, casted
@@ -22484,7 +24160,7 @@ func ClockInstanceIDWait(id ClockID) (ClockTimeDiff, ClockReturn) {
 	return jitter, goret
 }
 
-// ClockInstanceIDWaitAsync wraps gst_clock_id_wait_async
+// ClockIDWaitAsync wraps gst_clock_id_wait_async
 // 
 // The function takes the following parameters:
 // 
@@ -22503,7 +24179,7 @@ func ClockInstanceIDWait(id ClockID) (ClockTimeDiff, ClockReturn) {
 // 
 // The callback @func can be invoked from any thread, either provided by the
 // core or from a streaming thread. The application should be prepared for this.
-func ClockInstanceIDWaitAsync(id ClockID, fn ClockCallback) ClockReturn {
+func ClockIDWaitAsync(id ClockID, fn ClockCallback) ClockReturn {
 	var carg1 C.GstClockID       // in, none, casted, alias
 	var carg2 C.GstClockCallback // callback, scope: notified, closure: carg3, destroy: carg4
 	var carg3 C.gpointer         // implicit
@@ -24284,13 +25960,13 @@ func UnsafeDeviceMonitorToGlibFull(c DeviceMonitor) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewDeviceMonitorInstance wraps gst_device_monitor_new
+// NewDeviceMonitor wraps gst_device_monitor_new
 // The function returns the following values:
 // 
 // 	- goret DeviceMonitor 
 //
 // Create a new #GstDeviceMonitor
-func NewDeviceMonitorInstance() DeviceMonitor {
+func NewDeviceMonitor() DeviceMonitor {
 	var cret *C.GstDeviceMonitor // return, full, converted
 
 	cret = C.gst_device_monitor_new()
@@ -24713,7 +26389,7 @@ func UnsafeDeviceProviderToGlibFull(c DeviceProvider) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// DeviceProviderInstanceRegister wraps gst_device_provider_register
+// DeviceProviderRegister wraps gst_device_provider_register
 // 
 // The function takes the following parameters:
 // 
@@ -24729,7 +26405,7 @@ func UnsafeDeviceProviderToGlibFull(c DeviceProvider) unsafe.Pointer {
 //
 // Create a new device providerfactory capable of instantiating objects of the
 // @type and add the factory to @plugin.
-func DeviceProviderInstanceRegister(plugin Plugin, name string, rank uint, typ gobject.Type) bool {
+func DeviceProviderRegister(plugin Plugin, name string, rank uint, typ gobject.Type) bool {
 	var carg1 *C.GstPlugin // in, none, converted, nullable
 	var carg2 *C.gchar     // in, none, string, casted *C.gchar
 	var carg3 C.guint      // in, none, casted
@@ -25203,7 +26879,7 @@ func UnsafeDeviceProviderFactoryToGlibFull(c DeviceProviderFactory) unsafe.Point
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// DeviceProviderFactoryInstanceFind wraps gst_device_provider_factory_find
+// DeviceProviderFactoryFind wraps gst_device_provider_factory_find
 // 
 // The function takes the following parameters:
 // 
@@ -25215,7 +26891,7 @@ func UnsafeDeviceProviderFactoryToGlibFull(c DeviceProviderFactory) unsafe.Point
 //
 // Search for an device provider factory of the given name. Refs the returned
 // device provider factory; caller is responsible for unreffing.
-func DeviceProviderFactoryInstanceFind(name string) DeviceProviderFactory {
+func DeviceProviderFactoryFind(name string) DeviceProviderFactory {
 	var carg1 *C.gchar                    // in, none, string, casted *C.gchar
 	var cret  *C.GstDeviceProviderFactory // return, full, converted
 
@@ -25232,7 +26908,7 @@ func DeviceProviderFactoryInstanceFind(name string) DeviceProviderFactory {
 	return goret
 }
 
-// DeviceProviderFactoryInstanceGetByName wraps gst_device_provider_factory_get_by_name
+// DeviceProviderFactoryGetByName wraps gst_device_provider_factory_get_by_name
 // 
 // The function takes the following parameters:
 // 
@@ -25244,7 +26920,7 @@ func DeviceProviderFactoryInstanceFind(name string) DeviceProviderFactory {
 //
 // Returns the device provider of the type defined by the given device
 // provider factory.
-func DeviceProviderFactoryInstanceGetByName(factoryname string) DeviceProvider {
+func DeviceProviderFactoryGetByName(factoryname string) DeviceProvider {
 	var carg1 *C.gchar             // in, none, string, casted *C.gchar
 	var cret  *C.GstDeviceProvider // return, full, converted
 
@@ -25508,7 +27184,7 @@ func UnsafeDynamicTypeFactoryToGlibFull(c DynamicTypeFactory) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// DynamicTypeFactoryInstanceLoad wraps gst_dynamic_type_factory_load
+// DynamicTypeFactoryLoad wraps gst_dynamic_type_factory_load
 // 
 // The function takes the following parameters:
 // 
@@ -25517,7 +27193,7 @@ func UnsafeDynamicTypeFactoryToGlibFull(c DynamicTypeFactory) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
-func DynamicTypeFactoryInstanceLoad(factoryname string) gobject.Type {
+func DynamicTypeFactoryLoad(factoryname string) gobject.Type {
 	var carg1 *C.gchar // in, none, string, casted *C.gchar
 	var cret  C.GType  // return, none, casted, alias
 
@@ -26673,7 +28349,7 @@ func UnsafeElementToGlibFull(c Element) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// ElementInstanceMakeFromURI wraps gst_element_make_from_uri
+// ElementMakeFromURI wraps gst_element_make_from_uri
 // 
 // The function takes the following parameters:
 // 
@@ -26687,7 +28363,7 @@ func UnsafeElementToGlibFull(c Element) unsafe.Pointer {
 // 	- _goerr error (nullable): an error 
 //
 // Creates an element for handling the given URI.
-func ElementInstanceMakeFromURI(typ URIType, uri string, elementname string) (Element, error) {
+func ElementMakeFromURI(typ URIType, uri string, elementname string) (Element, error) {
 	var carg1 C.GstURIType  // in, none, casted
 	var carg2 *C.gchar      // in, none, string, casted *C.gchar
 	var carg3 *C.gchar      // in, none, string, nullable-string
@@ -26718,7 +28394,7 @@ func ElementInstanceMakeFromURI(typ URIType, uri string, elementname string) (El
 	return goret, _goerr
 }
 
-// ElementInstanceRegister wraps gst_element_register
+// ElementRegister wraps gst_element_register
 // 
 // The function takes the following parameters:
 // 
@@ -26734,7 +28410,7 @@ func ElementInstanceMakeFromURI(typ URIType, uri string, elementname string) (El
 //
 // Create a new elementfactory capable of instantiating objects of the
 // @type and add the factory to @plugin.
-func ElementInstanceRegister(plugin Plugin, name string, rank uint, typ gobject.Type) bool {
+func ElementRegister(plugin Plugin, name string, rank uint, typ gobject.Type) bool {
 	var carg1 *C.GstPlugin // in, none, converted, nullable
 	var carg2 *C.gchar     // in, none, string, casted *C.gchar
 	var carg3 C.guint      // in, none, casted
@@ -26764,7 +28440,7 @@ func ElementInstanceRegister(plugin Plugin, name string, rank uint, typ gobject.
 	return goret
 }
 
-// ElementInstanceStateChangeReturnGetName wraps gst_element_state_change_return_get_name
+// ElementStateChangeReturnGetName wraps gst_element_state_change_return_get_name
 // 
 // The function takes the following parameters:
 // 
@@ -26775,7 +28451,7 @@ func ElementInstanceRegister(plugin Plugin, name string, rank uint, typ gobject.
 // 	- goret string 
 //
 // Gets a string representing the given state change result.
-func ElementInstanceStateChangeReturnGetName(stateRet StateChangeReturn) string {
+func ElementStateChangeReturnGetName(stateRet StateChangeReturn) string {
 	var carg1 C.GstStateChangeReturn // in, none, casted
 	var cret  *C.gchar               // return, none, string, casted *C.gchar
 
@@ -26791,7 +28467,7 @@ func ElementInstanceStateChangeReturnGetName(stateRet StateChangeReturn) string 
 	return goret
 }
 
-// ElementInstanceStateGetName wraps gst_element_state_get_name
+// ElementStateGetName wraps gst_element_state_get_name
 // 
 // The function takes the following parameters:
 // 
@@ -26802,7 +28478,7 @@ func ElementInstanceStateChangeReturnGetName(stateRet StateChangeReturn) string 
 // 	- goret string 
 //
 // Gets a string representing the given state.
-func ElementInstanceStateGetName(state State) string {
+func ElementStateGetName(state State) string {
 	var carg1 C.GstState // in, none, casted
 	var cret  *C.gchar   // return, none, string, casted *C.gchar
 
@@ -26818,7 +28494,7 @@ func ElementInstanceStateGetName(state State) string {
 	return goret
 }
 
-// ElementInstanceTypeSetSkipDocumentation wraps gst_element_type_set_skip_documentation
+// ElementTypeSetSkipDocumentation wraps gst_element_type_set_skip_documentation
 // 
 // The function takes the following parameters:
 // 
@@ -26841,7 +28517,7 @@ func ElementInstanceStateGetName(state State) string {
 // gst_element_type_set_skip_documentation (my_type);
 // gst_element_register (plugin, "my-plugin-feature-name", rank, my_type);
 // ```
-func ElementInstanceTypeSetSkipDocumentation(typ gobject.Type) {
+func ElementTypeSetSkipDocumentation(typ gobject.Type) {
 	var carg1 C.GType // in, none, casted, alias
 
 	carg1 = C.GType(typ)
@@ -29404,7 +31080,7 @@ func UnsafeElementFactoryToGlibFull(c ElementFactory) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// ElementFactoryInstanceFind wraps gst_element_factory_find
+// ElementFactoryFind wraps gst_element_factory_find
 // 
 // The function takes the following parameters:
 // 
@@ -29416,7 +31092,7 @@ func UnsafeElementFactoryToGlibFull(c ElementFactory) unsafe.Pointer {
 //
 // Search for an element factory of the given name. Refs the returned
 // element factory; caller is responsible for unreffing.
-func ElementFactoryInstanceFind(name string) ElementFactory {
+func ElementFactoryFind(name string) ElementFactory {
 	var carg1 *C.gchar             // in, none, string, casted *C.gchar
 	var cret  *C.GstElementFactory // return, full, converted
 
@@ -29433,7 +31109,7 @@ func ElementFactoryInstanceFind(name string) ElementFactory {
 	return goret
 }
 
-// ElementFactoryInstanceMake wraps gst_element_factory_make
+// ElementFactoryMake wraps gst_element_factory_make
 // 
 // The function takes the following parameters:
 // 
@@ -29449,7 +31125,7 @@ func ElementFactoryInstanceFind(name string) ElementFactory {
 // If name is %NULL, then the element will receive a guaranteed unique name,
 // consisting of the element factory name and a number.
 // If name is given, it will be given the name supplied.
-func ElementFactoryInstanceMake(factoryname string, name string) Element {
+func ElementFactoryMake(factoryname string, name string) Element {
 	var carg1 *C.gchar      // in, none, string, casted *C.gchar
 	var carg2 *C.gchar      // in, none, string, nullable-string
 	var cret  *C.GstElement // return, none, converted
@@ -30025,7 +31701,7 @@ func UnsafeGhostPadToGlibFull(c GhostPad) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGhostPadInstance wraps gst_ghost_pad_new
+// NewGhostPad wraps gst_ghost_pad_new
 // 
 // The function takes the following parameters:
 // 
@@ -30040,7 +31716,7 @@ func UnsafeGhostPadToGlibFull(c GhostPad) unsafe.Pointer {
 // from the target pad. @target must be unlinked.
 // 
 // Will ref the target.
-func NewGhostPadInstance(name string, target Pad) Pad {
+func NewGhostPad(name string, target Pad) Pad {
 	var carg1 *C.gchar  // in, none, string, nullable-string
 	var carg2 *C.GstPad // in, none, converted
 	var cret  *C.GstPad // return, none, converted
@@ -30062,7 +31738,7 @@ func NewGhostPadInstance(name string, target Pad) Pad {
 	return goret
 }
 
-// NewGhostPadInstanceFromTemplate wraps gst_ghost_pad_new_from_template
+// NewGhostPadFromTemplate wraps gst_ghost_pad_new_from_template
 // 
 // The function takes the following parameters:
 // 
@@ -30078,7 +31754,7 @@ func NewGhostPadInstance(name string, target Pad) Pad {
 // from the target pad. The template used on the ghostpad will be @template.
 // 
 // Will ref the target.
-func NewGhostPadInstanceFromTemplate(name string, target Pad, templ PadTemplate) Pad {
+func NewGhostPadFromTemplate(name string, target Pad, templ PadTemplate) Pad {
 	var carg1 *C.gchar          // in, none, string, nullable-string
 	var carg2 *C.GstPad         // in, none, converted
 	var carg3 *C.GstPadTemplate // in, none, converted
@@ -30103,7 +31779,7 @@ func NewGhostPadInstanceFromTemplate(name string, target Pad, templ PadTemplate)
 	return goret
 }
 
-// NewGhostPadInstanceNoTarget wraps gst_ghost_pad_new_no_target
+// NewGhostPadNoTarget wraps gst_ghost_pad_new_no_target
 // 
 // The function takes the following parameters:
 // 
@@ -30119,7 +31795,7 @@ func NewGhostPadInstanceFromTemplate(name string, target Pad, templ PadTemplate)
 // gst_ghost_pad_set_target() function.
 // 
 // The created ghostpad will not have a padtemplate.
-func NewGhostPadInstanceNoTarget(name string, dir PadDirection) Pad {
+func NewGhostPadNoTarget(name string, dir PadDirection) Pad {
 	var carg1 *C.gchar          // in, none, string, nullable-string
 	var carg2 C.GstPadDirection // in, none, casted
 	var cret  *C.GstPad         // return, none, converted
@@ -30141,7 +31817,7 @@ func NewGhostPadInstanceNoTarget(name string, dir PadDirection) Pad {
 	return goret
 }
 
-// NewGhostPadInstanceNoTargetFromTemplate wraps gst_ghost_pad_new_no_target_from_template
+// NewGhostPadNoTargetFromTemplate wraps gst_ghost_pad_new_no_target_from_template
 // 
 // The function takes the following parameters:
 // 
@@ -30154,7 +31830,7 @@ func NewGhostPadInstanceNoTarget(name string, dir PadDirection) Pad {
 //
 // Create a new ghostpad based on @templ, without setting a target. The
 // direction will be taken from the @templ.
-func NewGhostPadInstanceNoTargetFromTemplate(name string, templ PadTemplate) Pad {
+func NewGhostPadNoTargetFromTemplate(name string, templ PadTemplate) Pad {
 	var carg1 *C.gchar          // in, none, string, nullable-string
 	var carg2 *C.GstPadTemplate // in, none, converted
 	var cret  *C.GstPad         // return, none, converted
@@ -30176,7 +31852,7 @@ func NewGhostPadInstanceNoTargetFromTemplate(name string, templ PadTemplate) Pad
 	return goret
 }
 
-// GhostPadInstanceActivateModeDefault wraps gst_ghost_pad_activate_mode_default
+// GhostPadActivateModeDefault wraps gst_ghost_pad_activate_mode_default
 // 
 // The function takes the following parameters:
 // 
@@ -30190,7 +31866,7 @@ func NewGhostPadInstanceNoTargetFromTemplate(name string, templ PadTemplate) Pad
 // 	- goret bool 
 //
 // Invoke the default activate mode function of a ghost pad.
-func GhostPadInstanceActivateModeDefault(pad Pad, parent Object, mode PadMode, active bool) bool {
+func GhostPadActivateModeDefault(pad Pad, parent Object, mode PadMode, active bool) bool {
 	var carg1 *C.GstPad    // in, none, converted
 	var carg2 *C.GstObject // in, none, converted, nullable
 	var carg3 C.GstPadMode // in, none, casted
@@ -30221,7 +31897,7 @@ func GhostPadInstanceActivateModeDefault(pad Pad, parent Object, mode PadMode, a
 	return goret
 }
 
-// GhostPadInstanceInternalActivateModeDefault wraps gst_ghost_pad_internal_activate_mode_default
+// GhostPadInternalActivateModeDefault wraps gst_ghost_pad_internal_activate_mode_default
 // 
 // The function takes the following parameters:
 // 
@@ -30236,7 +31912,7 @@ func GhostPadInstanceActivateModeDefault(pad Pad, parent Object, mode PadMode, a
 //
 // Invoke the default activate mode function of a proxy pad that is
 // owned by a ghost pad.
-func GhostPadInstanceInternalActivateModeDefault(pad Pad, parent Object, mode PadMode, active bool) bool {
+func GhostPadInternalActivateModeDefault(pad Pad, parent Object, mode PadMode, active bool) bool {
 	var carg1 *C.GstPad    // in, none, converted
 	var carg2 *C.GstObject // in, none, converted, nullable
 	var carg3 C.GstPadMode // in, none, casted
@@ -30431,7 +32107,7 @@ func UnsafeSharedTaskPoolToGlibFull(c SharedTaskPool) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewSharedTaskPoolInstance wraps gst_shared_task_pool_new
+// NewSharedTaskPool wraps gst_shared_task_pool_new
 // The function returns the following values:
 // 
 // 	- goret TaskPool 
@@ -30442,7 +32118,7 @@ func UnsafeSharedTaskPoolToGlibFull(c SharedTaskPool) unsafe.Pointer {
 // Do not use a #GstSharedTaskPool to manage potentially inter-dependent tasks such
 // as pad tasks, as having one task waiting on another to return before returning
 // would cause obvious deadlocks if they happen to share the same thread.
-func NewSharedTaskPoolInstance() TaskPool {
+func NewSharedTaskPool() TaskPool {
 	var cret *C.GstTaskPool // return, full, converted
 
 	cret = C.gst_shared_task_pool_new()
@@ -30561,7 +32237,7 @@ func UnsafeSystemClockToGlibFull(c SystemClock) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// SystemClockInstanceObtain wraps gst_system_clock_obtain
+// SystemClockObtain wraps gst_system_clock_obtain
 // The function returns the following values:
 // 
 // 	- goret Clock 
@@ -30569,7 +32245,7 @@ func UnsafeSystemClockToGlibFull(c SystemClock) unsafe.Pointer {
 // Get a handle to the default system clock. The refcount of the
 // clock will be increased so you need to unref the clock after
 // usage.
-func SystemClockInstanceObtain() Clock {
+func SystemClockObtain() Clock {
 	var cret *C.GstClock // return, full, converted
 
 	cret = C.gst_system_clock_obtain()
@@ -30581,7 +32257,7 @@ func SystemClockInstanceObtain() Clock {
 	return goret
 }
 
-// SystemClockInstanceSetDefault wraps gst_system_clock_set_default
+// SystemClockSetDefault wraps gst_system_clock_set_default
 // 
 // The function takes the following parameters:
 // 
@@ -30595,7 +32271,7 @@ func SystemClockInstanceObtain() Clock {
 // clock.
 // 
 // MT safe.
-func SystemClockInstanceSetDefault(newClock Clock) {
+func SystemClockSetDefault(newClock Clock) {
 	var carg1 *C.GstClock // in, none, converted, nullable
 
 	if newClock != nil {
@@ -30983,7 +32659,7 @@ func UnsafeBinToGlibFull(c Bin) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewBinInstance wraps gst_bin_new
+// NewBin wraps gst_bin_new
 // 
 // The function takes the following parameters:
 // 
@@ -30994,7 +32670,7 @@ func UnsafeBinToGlibFull(c Bin) unsafe.Pointer {
 // 	- goret Element 
 //
 // Creates a new bin with the given name.
-func NewBinInstance(name string) Element {
+func NewBin(name string) Element {
 	var carg1 *C.gchar      // in, none, string, nullable-string
 	var cret  *C.GstElement // return, none, converted
 
@@ -31753,7 +33429,7 @@ func UnsafePipelineToGlibFull(c Pipeline) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPipelineInstance wraps gst_pipeline_new
+// NewPipeline wraps gst_pipeline_new
 // 
 // The function takes the following parameters:
 // 
@@ -31764,7 +33440,7 @@ func UnsafePipelineToGlibFull(c Pipeline) unsafe.Pointer {
 // 	- goret Element 
 //
 // Create a new pipeline with the given name.
-func NewPipelineInstance(name string) Element {
+func NewPipeline(name string) Element {
 	var carg1 *C.gchar      // in, none, string, nullable-string
 	var cret  *C.GstElement // return, none, converted
 
@@ -44492,6 +46168,28 @@ func (message *Message) AddRedirectEntry(location string, tagList *TagList, entr
 	runtime.KeepAlive(location)
 	runtime.KeepAlive(tagList)
 	runtime.KeepAlive(entryStruct)
+}
+
+// Copy wraps gst_message_copy
+// The function returns the following values:
+// 
+// 	- goret *Message 
+//
+// Creates a copy of the message. Returns a copy of the message.
+func (msg *Message) Copy() *Message {
+	var carg0 *C.GstMessage // in, none, converted
+	var cret  *C.GstMessage // return, full, converted
+
+	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(msg))
+
+	cret = C.gst_message_copy(carg0)
+	runtime.KeepAlive(msg)
+
+	var goret *Message
+
+	goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // GetNumRedirectEntries wraps gst_message_get_num_redirect_entries

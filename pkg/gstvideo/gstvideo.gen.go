@@ -3,7 +3,9 @@
 package gstvideo
 
 import (
+	"fmt"
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
@@ -246,6 +248,15 @@ func (e AncillaryMetaField) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AncillaryMetaField) String() string {
+	switch e {
+		case AncillaryMetaFieldProgressive: return "AncillaryMetaFieldProgressive"
+		case AncillaryMetaFieldInterlacedFirst: return "AncillaryMetaFieldInterlacedFirst"
+		case AncillaryMetaFieldInterlacedSecond: return "AncillaryMetaFieldInterlacedSecond"
+		default: return fmt.Sprintf("AncillaryMetaField(%d)", e)
+	}
+}
+
 // ColorBalanceType wraps GstColorBalanceType
 //
 // An enumeration indicating whether an element implements color balancing
@@ -276,6 +287,14 @@ var _ gobject.GoValueInitializer = ColorBalanceType(0)
 func (e ColorBalanceType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeColorBalanceType)
 	v.SetEnum(int(e))
+}
+
+func (e ColorBalanceType) String() string {
+	switch e {
+		case ColorBalanceHardware: return "ColorBalanceHardware"
+		case ColorBalanceSoftware: return "ColorBalanceSoftware"
+		default: return fmt.Sprintf("ColorBalanceType(%d)", e)
+	}
 }
 
 // NavigationCommand wraps GstNavigationCommand
@@ -382,6 +401,27 @@ func (e NavigationCommand) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e NavigationCommand) String() string {
+	switch e {
+		case NavigationCommandMenu5: return "NavigationCommandMenu5"
+		case NavigationCommandUp: return "NavigationCommandUp"
+		case NavigationCommandDown: return "NavigationCommandDown"
+		case NavigationCommandPrevAngle: return "NavigationCommandPrevAngle"
+		case NavigationCommandInvalid: return "NavigationCommandInvalid"
+		case NavigationCommandMenu2: return "NavigationCommandMenu2"
+		case NavigationCommandMenu4: return "NavigationCommandMenu4"
+		case NavigationCommandMenu6: return "NavigationCommandMenu6"
+		case NavigationCommandMenu7: return "NavigationCommandMenu7"
+		case NavigationCommandRight: return "NavigationCommandRight"
+		case NavigationCommandActivate: return "NavigationCommandActivate"
+		case NavigationCommandNextAngle: return "NavigationCommandNextAngle"
+		case NavigationCommandMenu1: return "NavigationCommandMenu1"
+		case NavigationCommandMenu3: return "NavigationCommandMenu3"
+		case NavigationCommandLeft: return "NavigationCommandLeft"
+		default: return fmt.Sprintf("NavigationCommand(%d)", e)
+	}
+}
+
 // NavigationEventType wraps GstNavigationEventType
 //
 // Enum values for the various events that an element implementing the
@@ -474,6 +514,25 @@ func (e NavigationEventType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e NavigationEventType) String() string {
+	switch e {
+		case NavigationEventInvalid: return "NavigationEventInvalid"
+		case NavigationEventMouseButtonPress: return "NavigationEventMouseButtonPress"
+		case NavigationEventMouseButtonRelease: return "NavigationEventMouseButtonRelease"
+		case NavigationEventCommand: return "NavigationEventCommand"
+		case NavigationEventMouseScroll: return "NavigationEventMouseScroll"
+		case NavigationEventTouchDown: return "NavigationEventTouchDown"
+		case NavigationEventTouchMotion: return "NavigationEventTouchMotion"
+		case NavigationEventTouchFrame: return "NavigationEventTouchFrame"
+		case NavigationEventKeyPress: return "NavigationEventKeyPress"
+		case NavigationEventKeyRelease: return "NavigationEventKeyRelease"
+		case NavigationEventMouseMove: return "NavigationEventMouseMove"
+		case NavigationEventTouchUp: return "NavigationEventTouchUp"
+		case NavigationEventTouchCancel: return "NavigationEventTouchCancel"
+		default: return fmt.Sprintf("NavigationEventType(%d)", e)
+	}
+}
+
 // NavigationMessageType wraps GstNavigationMessageType
 //
 // A set of notifications that may be received on the bus when navigation
@@ -521,6 +580,17 @@ func (e NavigationMessageType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e NavigationMessageType) String() string {
+	switch e {
+		case NavigationMessageInvalid: return "NavigationMessageInvalid"
+		case NavigationMessageMouseOver: return "NavigationMessageMouseOver"
+		case NavigationMessageCommandsChanged: return "NavigationMessageCommandsChanged"
+		case NavigationMessageAnglesChanged: return "NavigationMessageAnglesChanged"
+		case NavigationMessageEvent: return "NavigationMessageEvent"
+		default: return fmt.Sprintf("NavigationMessageType(%d)", e)
+	}
+}
+
 // NavigationQueryType wraps GstNavigationQueryType
 //
 // Types of navigation interface queries.
@@ -550,6 +620,15 @@ var _ gobject.GoValueInitializer = NavigationQueryType(0)
 func (e NavigationQueryType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeNavigationQueryType)
 	v.SetEnum(int(e))
+}
+
+func (e NavigationQueryType) String() string {
+	switch e {
+		case NavigationQueryAngles: return "NavigationQueryAngles"
+		case NavigationQueryInvalid: return "NavigationQueryInvalid"
+		case NavigationQueryCommands: return "NavigationQueryCommands"
+		default: return fmt.Sprintf("NavigationQueryType(%d)", e)
+	}
 }
 
 // VideoAFDSpec wraps GstVideoAFDSpec
@@ -587,6 +666,15 @@ var _ gobject.GoValueInitializer = VideoAFDSpec(0)
 func (e VideoAFDSpec) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoAFDSpec)
 	v.SetEnum(int(e))
+}
+
+func (e VideoAFDSpec) String() string {
+	switch e {
+		case VideoAfdSpecDvbEtsi: return "VideoAfdSpecDvbEtsi"
+		case VideoAfdSpecAtscA53: return "VideoAfdSpecAtscA53"
+		case VideoAfdSpecSmpteSt20161: return "VideoAfdSpecSmpteSt20161"
+		default: return fmt.Sprintf("VideoAFDSpec(%d)", e)
+	}
 }
 
 // VideoAFDValue wraps GstVideoAFDValue
@@ -700,6 +788,23 @@ func (e VideoAFDValue) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoAFDValue) String() string {
+	switch e {
+		case VideoAfd43_Full149_Center: return "VideoAfd43Full149Center"
+		case VideoAfd169_Letter149_Center: return "VideoAfd169Letter149Center"
+		case VideoAfd169_Letter43_Center: return "VideoAfd169Letter43Center"
+		case VideoAfd169_TopAligned: return "VideoAfd169TopAligned"
+		case VideoAfd149_TopAligned: return "VideoAfd149TopAligned"
+		case VideoAfdGreaterThan169: return "VideoAfdGreaterThan169"
+		case VideoAfd43_Full43_Pillar: return "VideoAfd43Full43Pillar"
+		case VideoAfd169_Letter169_Full: return "VideoAfd169Letter169Full"
+		case VideoAfd149_Letter149_Pillar: return "VideoAfd149Letter149Pillar"
+		case VideoAfdUnavailable: return "VideoAfdUnavailable"
+		case VideoAfd43_Full169_Full: return "VideoAfd43Full169Full"
+		default: return fmt.Sprintf("VideoAFDValue(%d)", e)
+	}
+}
+
 // VideoAlphaMode wraps GstVideoAlphaMode
 //
 // Different alpha modes.
@@ -735,6 +840,15 @@ var _ gobject.GoValueInitializer = VideoAlphaMode(0)
 func (e VideoAlphaMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoAlphaMode)
 	v.SetEnum(int(e))
+}
+
+func (e VideoAlphaMode) String() string {
+	switch e {
+		case VideoAlphaModeCopy: return "VideoAlphaModeCopy"
+		case VideoAlphaModeSet: return "VideoAlphaModeSet"
+		case VideoAlphaModeMult: return "VideoAlphaModeMult"
+		default: return fmt.Sprintf("VideoAlphaMode(%d)", e)
+	}
 }
 
 // VideoAncillaryDID wraps GstVideoAncillaryDID
@@ -778,6 +892,24 @@ func (e VideoAncillaryDID) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoAncillaryDID) String() string {
+	switch e {
+		case VideoAncillaryDidHancSdtvAudioData1Last: return "VideoAncillaryDidHancSdtvAudioData1Last"
+		case VideoAncillaryDidHancSdtvAudioData2First: return "VideoAncillaryDidHancSdtvAudioData2First"
+		case VideoAncillaryDidHancSdtvAudioData2Last: return "VideoAncillaryDidHancSdtvAudioData2Last"
+		case VideoAncillaryDidUndefined: return "VideoAncillaryDidUndefined"
+		case VideoAncillaryDidDeletion: return "VideoAncillaryDidDeletion"
+		case VideoAncillaryDidHancHdtvAudioDataFirst: return "VideoAncillaryDidHancHdtvAudioDataFirst"
+		case VideoAncillaryDidHancHdtvAudioDataLast: return "VideoAncillaryDidHancHdtvAudioDataLast"
+		case VideoAncillaryDidCameraPosition: return "VideoAncillaryDidCameraPosition"
+		case VideoAncillaryDidHancErrorDetection: return "VideoAncillaryDidHancErrorDetection"
+		case VideoAncillaryDidHanc3GAudioDataFirst: return "VideoAncillaryDidHanc3GAudioDataFirst"
+		case VideoAncillaryDidHanc3GAudioDataLast: return "VideoAncillaryDidHanc3GAudioDataLast"
+		case VideoAncillaryDidHancSdtvAudioData1First: return "VideoAncillaryDidHancSdtvAudioData1First"
+		default: return fmt.Sprintf("VideoAncillaryDID(%d)", e)
+	}
+}
+
 // VideoAncillaryDID16 wraps GstVideoAncillaryDID16
 //
 // Some know types of Ancillary Data identifiers.
@@ -807,6 +939,15 @@ var _ gobject.GoValueInitializer = VideoAncillaryDID16(0)
 func (e VideoAncillaryDID16) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoAncillaryDID16)
 	v.SetEnum(int(e))
+}
+
+func (e VideoAncillaryDID16) String() string {
+	switch e {
+		case VideoAncillaryDid16S334Eia708: return "VideoAncillaryDid16S334Eia708"
+		case VideoAncillaryDid16S334Eia608: return "VideoAncillaryDid16S334Eia608"
+		case VideoAncillaryDid16S20163AfdBar: return "VideoAncillaryDid16S20163AfdBar"
+		default: return fmt.Sprintf("VideoAncillaryDID16(%d)", e)
+	}
 }
 
 // VideoCaptionType wraps GstVideoCaptionType
@@ -865,6 +1006,17 @@ func (e VideoCaptionType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoCaptionType) String() string {
+	switch e {
+		case VideoCaptionTypeCea708Raw: return "VideoCaptionTypeCea708Raw"
+		case VideoCaptionTypeCea708Cdp: return "VideoCaptionTypeCea708Cdp"
+		case VideoCaptionTypeUnknown: return "VideoCaptionTypeUnknown"
+		case VideoCaptionTypeCea608Raw: return "VideoCaptionTypeCea608Raw"
+		case VideoCaptionTypeCea608S3341A: return "VideoCaptionTypeCea608S3341A"
+		default: return fmt.Sprintf("VideoCaptionType(%d)", e)
+	}
+}
+
 // VideoChromaMethod wraps GstVideoChromaMethod
 //
 // Different subsampling and upsampling methods
@@ -892,6 +1044,14 @@ var _ gobject.GoValueInitializer = VideoChromaMethod(0)
 func (e VideoChromaMethod) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoChromaMethod)
 	v.SetEnum(int(e))
+}
+
+func (e VideoChromaMethod) String() string {
+	switch e {
+		case VideoChromaMethodNearest: return "VideoChromaMethodNearest"
+		case VideoChromaMethodLinear: return "VideoChromaMethodLinear"
+		default: return fmt.Sprintf("VideoChromaMethod(%d)", e)
+	}
 }
 
 // VideoChromaMode wraps GstVideoChromaMode
@@ -927,6 +1087,16 @@ var _ gobject.GoValueInitializer = VideoChromaMode(0)
 func (e VideoChromaMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoChromaMode)
 	v.SetEnum(int(e))
+}
+
+func (e VideoChromaMode) String() string {
+	switch e {
+		case VideoChromaModeFull: return "VideoChromaModeFull"
+		case VideoChromaModeUpsampleOnly: return "VideoChromaModeUpsampleOnly"
+		case VideoChromaModeDownsampleOnly: return "VideoChromaModeDownsampleOnly"
+		case VideoChromaModeNone: return "VideoChromaModeNone"
+		default: return fmt.Sprintf("VideoChromaMode(%d)", e)
+	}
 }
 
 // VideoColorMatrix wraps GstVideoColorMatrix
@@ -977,6 +1147,19 @@ var _ gobject.GoValueInitializer = VideoColorMatrix(0)
 func (e VideoColorMatrix) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoColorMatrix)
 	v.SetEnum(int(e))
+}
+
+func (e VideoColorMatrix) String() string {
+	switch e {
+		case VideoColorMatrixBt2020: return "VideoColorMatrixBt2020"
+		case VideoColorMatrixUnknown: return "VideoColorMatrixUnknown"
+		case VideoColorMatrixRGB: return "VideoColorMatrixRGB"
+		case VideoColorMatrixFcc: return "VideoColorMatrixFcc"
+		case VideoColorMatrixBt709: return "VideoColorMatrixBt709"
+		case VideoColorMatrixBt601: return "VideoColorMatrixBt601"
+		case VideoColorMatrixSmpte240M: return "VideoColorMatrixSmpte240M"
+		default: return fmt.Sprintf("VideoColorMatrix(%d)", e)
+	}
 }
 
 // VideoColorPrimaries wraps GstVideoColorPrimaries
@@ -1060,6 +1243,25 @@ func (e VideoColorPrimaries) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoColorPrimaries) String() string {
+	switch e {
+		case VideoColorPrimariesUnknown: return "VideoColorPrimariesUnknown"
+		case VideoColorPrimariesBt709: return "VideoColorPrimariesBt709"
+		case VideoColorPrimariesBt470Bg: return "VideoColorPrimariesBt470Bg"
+		case VideoColorPrimariesSmpte170M: return "VideoColorPrimariesSmpte170M"
+		case VideoColorPrimariesSmpte240M: return "VideoColorPrimariesSmpte240M"
+		case VideoColorPrimariesBt2020: return "VideoColorPrimariesBt2020"
+		case VideoColorPrimariesSmptest428: return "VideoColorPrimariesSmptest428"
+		case VideoColorPrimariesSmpteeg432: return "VideoColorPrimariesSmpteeg432"
+		case VideoColorPrimariesBt470M: return "VideoColorPrimariesBt470M"
+		case VideoColorPrimariesFilm: return "VideoColorPrimariesFilm"
+		case VideoColorPrimariesAdobergb: return "VideoColorPrimariesAdobergb"
+		case VideoColorPrimariesSmpterp431: return "VideoColorPrimariesSmpterp431"
+		case VideoColorPrimariesEbu3213: return "VideoColorPrimariesEbu3213"
+		default: return fmt.Sprintf("VideoColorPrimaries(%d)", e)
+	}
+}
+
 // VideoColorRange wraps GstVideoColorRange
 //
 // Possible color range values. These constants are defined for 8 bit color
@@ -1091,6 +1293,15 @@ var _ gobject.GoValueInitializer = VideoColorRange(0)
 func (e VideoColorRange) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoColorRange)
 	v.SetEnum(int(e))
+}
+
+func (e VideoColorRange) String() string {
+	switch e {
+		case VideoColorRangeUnknown: return "VideoColorRangeUnknown"
+		case VideoColorRange0255: return "VideoColorRange0255"
+		case VideoColorRange16235: return "VideoColorRange16235"
+		default: return fmt.Sprintf("VideoColorRange(%d)", e)
+	}
 }
 
 // VideoDitherMethod wraps GstVideoDitherMethod
@@ -1132,6 +1343,17 @@ func (e VideoDitherMethod) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoDitherMethod) String() string {
+	switch e {
+		case VideoDitherVerterr: return "VideoDitherVerterr"
+		case VideoDitherFloydSteinberg: return "VideoDitherFloydSteinberg"
+		case VideoDitherSierraLite: return "VideoDitherSierraLite"
+		case VideoDitherBayer: return "VideoDitherBayer"
+		case VideoDitherNone: return "VideoDitherNone"
+		default: return fmt.Sprintf("VideoDitherMethod(%d)", e)
+	}
+}
+
 // VideoFieldOrder wraps GstVideoFieldOrder
 //
 // Field order of interlaced content. This is only valid for
@@ -1165,6 +1387,15 @@ var _ gobject.GoValueInitializer = VideoFieldOrder(0)
 func (e VideoFieldOrder) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoFieldOrder)
 	v.SetEnum(int(e))
+}
+
+func (e VideoFieldOrder) String() string {
+	switch e {
+		case VideoFieldOrderUnknown: return "VideoFieldOrderUnknown"
+		case VideoFieldOrderTopFieldFirst: return "VideoFieldOrderTopFieldFirst"
+		case VideoFieldOrderBottomFieldFirst: return "VideoFieldOrderBottomFieldFirst"
+		default: return fmt.Sprintf("VideoFieldOrder(%d)", e)
+	}
 }
 
 // VideoFormat wraps GstVideoFormat
@@ -1743,6 +1974,146 @@ func (e VideoFormat) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoFormat) String() string {
+	switch e {
+		case VideoFormatXrgb: return "VideoFormatXrgb"
+		case VideoFormatXbgr: return "VideoFormatXbgr"
+		case VideoFormatAbgr64LE: return "VideoFormatAbgr64LE"
+		case VideoFormatEncoded: return "VideoFormatEncoded"
+		case VideoFormatI42210Be: return "VideoFormatI42210Be"
+		case VideoFormatGray16LE: return "VideoFormatGray16LE"
+		case VideoFormatBgra64Be: return "VideoFormatBgra64Be"
+		case VideoFormatYuv9: return "VideoFormatYuv9"
+		case VideoFormatARGB64: return "VideoFormatARGB64"
+		case VideoFormatY44410LE: return "VideoFormatY44410LE"
+		case VideoFormatNv1216L32S: return "VideoFormatNv1216L32S"
+		case VideoFormatA44412LE: return "VideoFormatA44412LE"
+		case VideoFormatRGBA: return "VideoFormatRGBA"
+		case VideoFormatGbr10LE: return "VideoFormatGbr10LE"
+		case VideoFormatA42210LE: return "VideoFormatA42210LE"
+		case VideoFormatVuya: return "VideoFormatVuya"
+		case VideoFormatP012Be: return "VideoFormatP012Be"
+		case VideoFormatA44412Be: return "VideoFormatA44412Be"
+		case VideoFormatA42012LE: return "VideoFormatA42012LE"
+		case VideoFormatA44410Be: return "VideoFormatA44410Be"
+		case VideoFormatGbra10LE: return "VideoFormatGbra10LE"
+		case VideoFormatGbra12Be: return "VideoFormatGbra12Be"
+		case VideoFormatARGB64Be: return "VideoFormatARGB64Be"
+		case VideoFormatAbgr64Be: return "VideoFormatAbgr64Be"
+		case VideoFormatNv1210Be8L128: return "VideoFormatNv1210Be8L128"
+		case VideoFormatA44416LE: return "VideoFormatA44416LE"
+		case VideoFormatGbr10Be: return "VideoFormatGbr10Be"
+		case VideoFormatGbra: return "VideoFormatGbra"
+		case VideoFormatY212Be: return "VideoFormatY212Be"
+		case VideoFormatRgbp: return "VideoFormatRgbp"
+		case VideoFormatAv12: return "VideoFormatAv12"
+		case VideoFormatRGBA64LE: return "VideoFormatRGBA64LE"
+		case VideoFormatA42216Be: return "VideoFormatA42216Be"
+		case VideoFormatUnknown: return "VideoFormatUnknown"
+		case VideoFormatNv24: return "VideoFormatNv24"
+		case VideoFormatNv61: return "VideoFormatNv61"
+		case VideoFormatP01010LE: return "VideoFormatP01010LE"
+		case VideoFormatIyu2: return "VideoFormatIyu2"
+		case VideoFormatI42012LE: return "VideoFormatI42012LE"
+		case VideoFormatY412LE: return "VideoFormatY412LE"
+		case VideoFormatNv1210LE404L4: return "VideoFormatNv1210LE404L4"
+		case VideoFormatY42B: return "VideoFormatY42B"
+		case VideoFormatI42010Be: return "VideoFormatI42010Be"
+		case VideoFormatMt2110T: return "VideoFormatMt2110T"
+		case VideoFormatYV12: return "VideoFormatYV12"
+		case VideoFormatYuy2: return "VideoFormatYuy2"
+		case VideoFormatGbra10Be: return "VideoFormatGbra10Be"
+		case VideoFormatNv1210LE40: return "VideoFormatNv1210LE40"
+		case VideoFormatA44416Be: return "VideoFormatA44416Be"
+		case VideoFormatGbr16Be: return "VideoFormatGbr16Be"
+		case VideoFormatYvu9: return "VideoFormatYvu9"
+		case VideoFormatA42010LE: return "VideoFormatA42010LE"
+		case VideoFormatGbr12Be: return "VideoFormatGbr12Be"
+		case VideoFormatY44412Be: return "VideoFormatY44412Be"
+		case VideoFormatRGB10A2LE: return "VideoFormatRGB10A2LE"
+		case VideoFormatARGB64LE: return "VideoFormatARGB64LE"
+		case VideoFormatBGR16: return "VideoFormatBGR16"
+		case VideoFormatGbra12LE: return "VideoFormatGbra12LE"
+		case VideoFormatDmaDRM: return "VideoFormatDmaDRM"
+		case VideoFormatBgrx: return "VideoFormatBgrx"
+		case VideoFormatV210: return "VideoFormatV210"
+		case VideoFormatA420: return "VideoFormatA420"
+		case VideoFormatGbr: return "VideoFormatGbr"
+		case VideoFormatA42016LE: return "VideoFormatA42016LE"
+		case VideoFormatGbr16LE: return "VideoFormatGbr16LE"
+		case VideoFormatAyuv: return "VideoFormatAyuv"
+		case VideoFormatRGB8P: return "VideoFormatRGB8P"
+		case VideoFormatA44410LE: return "VideoFormatA44410LE"
+		case VideoFormatRGB: return "VideoFormatRGB"
+		case VideoFormatBGR15: return "VideoFormatBGR15"
+		case VideoFormatAyuv64: return "VideoFormatAyuv64"
+		case VideoFormatY44412LE: return "VideoFormatY44412LE"
+		case VideoFormatUyvp: return "VideoFormatUyvp"
+		case VideoFormatP01010Be: return "VideoFormatP01010Be"
+		case VideoFormatP016LE: return "VideoFormatP016LE"
+		case VideoFormatY412Be: return "VideoFormatY412Be"
+		case VideoFormatRGBA64Be: return "VideoFormatRGBA64Be"
+		case VideoFormatV216: return "VideoFormatV216"
+		case VideoFormatR210: return "VideoFormatR210"
+		case VideoFormatI42210LE: return "VideoFormatI42210LE"
+		case VideoFormatVyuy: return "VideoFormatVyuy"
+		case VideoFormatNv1210LE32: return "VideoFormatNv1210LE32"
+		case VideoFormatP012LE: return "VideoFormatP012LE"
+		case VideoFormatI420: return "VideoFormatI420"
+		case VideoFormatA444: return "VideoFormatA444"
+		case VideoFormatA42216LE: return "VideoFormatA42216LE"
+		case VideoFormatGray16Be: return "VideoFormatGray16Be"
+		case VideoFormatBgra: return "VideoFormatBgra"
+		case VideoFormatRGB15: return "VideoFormatRGB15"
+		case VideoFormatIyu1: return "VideoFormatIyu1"
+		case VideoFormatY410: return "VideoFormatY410"
+		case VideoFormatA42212LE: return "VideoFormatA42212LE"
+		case VideoFormatA42012Be: return "VideoFormatA42012Be"
+		case VideoFormatY444: return "VideoFormatY444"
+		case VideoFormatI42212Be: return "VideoFormatI42212Be"
+		case VideoFormatGray10LE32: return "VideoFormatGray10LE32"
+		case VideoFormatY210: return "VideoFormatY210"
+		case VideoFormatP016Be: return "VideoFormatP016Be"
+		case VideoFormatNv12: return "VideoFormatNv12"
+		case VideoFormatGbr12LE: return "VideoFormatGbr12LE"
+		case VideoFormatBgrp: return "VideoFormatBgrp"
+		case VideoFormatA422: return "VideoFormatA422"
+		case VideoFormatNv21: return "VideoFormatNv21"
+		case VideoFormatBGR: return "VideoFormatBGR"
+		case VideoFormatBGR10A2LE: return "VideoFormatBGR10A2LE"
+		case VideoFormatY44416Be: return "VideoFormatY44416Be"
+		case VideoFormatA42016Be: return "VideoFormatA42016Be"
+		case VideoFormatGray8: return "VideoFormatGray8"
+		case VideoFormatY44410Be: return "VideoFormatY44410Be"
+		case VideoFormatNv1232L32: return "VideoFormatNv1232L32"
+		case VideoFormatBgra64LE: return "VideoFormatBgra64LE"
+		case VideoFormatY44416LE: return "VideoFormatY44416LE"
+		case VideoFormatNv124L4: return "VideoFormatNv124L4"
+		case VideoFormatA42212Be: return "VideoFormatA42212Be"
+		case VideoFormatRbga: return "VideoFormatRbga"
+		case VideoFormatRgbx: return "VideoFormatRgbx"
+		case VideoFormatA42010Be: return "VideoFormatA42010Be"
+		case VideoFormatNv1610LE32: return "VideoFormatNv1610LE32"
+		case VideoFormatYvyu: return "VideoFormatYvyu"
+		case VideoFormatAbgr: return "VideoFormatAbgr"
+		case VideoFormatY41B: return "VideoFormatY41B"
+		case VideoFormatV308: return "VideoFormatV308"
+		case VideoFormatNv1264Z32: return "VideoFormatNv1264Z32"
+		case VideoFormatUyvy: return "VideoFormatUyvy"
+		case VideoFormatARGB: return "VideoFormatARGB"
+		case VideoFormatRGB16: return "VideoFormatRGB16"
+		case VideoFormatI42010LE: return "VideoFormatI42010LE"
+		case VideoFormatI42012Be: return "VideoFormatI42012Be"
+		case VideoFormatI42212LE: return "VideoFormatI42212LE"
+		case VideoFormatNv128L128: return "VideoFormatNv128L128"
+		case VideoFormatNv16: return "VideoFormatNv16"
+		case VideoFormatMt2110R: return "VideoFormatMt2110R"
+		case VideoFormatA42210Be: return "VideoFormatA42210Be"
+		case VideoFormatY212LE: return "VideoFormatY212LE"
+		default: return fmt.Sprintf("VideoFormat(%d)", e)
+	}
+}
+
 // VideoGLTextureOrientation wraps GstVideoGLTextureOrientation
 //
 // The orientation of the GL texture.
@@ -1776,6 +2147,16 @@ var _ gobject.GoValueInitializer = VideoGLTextureOrientation(0)
 func (e VideoGLTextureOrientation) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoGLTextureOrientation)
 	v.SetEnum(int(e))
+}
+
+func (e VideoGLTextureOrientation) String() string {
+	switch e {
+		case VideoGLTextureOrientationXNormalYNormal: return "VideoGLTextureOrientationXNormalYNormal"
+		case VideoGLTextureOrientationXNormalYFlip: return "VideoGLTextureOrientationXNormalYFlip"
+		case VideoGLTextureOrientationXFlipYNormal: return "VideoGLTextureOrientationXFlipYNormal"
+		case VideoGLTextureOrientationXFlipYFlip: return "VideoGLTextureOrientationXFlipYFlip"
+		default: return fmt.Sprintf("VideoGLTextureOrientation(%d)", e)
+	}
 }
 
 // VideoGLTextureType wraps GstVideoGLTextureType
@@ -1825,6 +2206,19 @@ func (e VideoGLTextureType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoGLTextureType) String() string {
+	switch e {
+		case VideoGLTextureTypeRGB: return "VideoGLTextureTypeRGB"
+		case VideoGLTextureTypeRGBA: return "VideoGLTextureTypeRGBA"
+		case VideoGLTextureTypeR: return "VideoGLTextureTypeR"
+		case VideoGLTextureTypeRg: return "VideoGLTextureTypeRg"
+		case VideoGLTextureTypeLuminance: return "VideoGLTextureTypeLuminance"
+		case VideoGLTextureTypeLuminanceAlpha: return "VideoGLTextureTypeLuminanceAlpha"
+		case VideoGLTextureTypeRGB16: return "VideoGLTextureTypeRGB16"
+		default: return fmt.Sprintf("VideoGLTextureType(%d)", e)
+	}
+}
+
 // VideoGammaMode wraps GstVideoGammaMode
 type VideoGammaMode C.int
 
@@ -1849,6 +2243,14 @@ var _ gobject.GoValueInitializer = VideoGammaMode(0)
 func (e VideoGammaMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoGammaMode)
 	v.SetEnum(int(e))
+}
+
+func (e VideoGammaMode) String() string {
+	switch e {
+		case VideoGammaModeNone: return "VideoGammaModeNone"
+		case VideoGammaModeRemap: return "VideoGammaModeRemap"
+		default: return fmt.Sprintf("VideoGammaMode(%d)", e)
+	}
 }
 
 // VideoInterlaceMode wraps GstVideoInterlaceMode
@@ -1903,6 +2305,17 @@ func (e VideoInterlaceMode) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoInterlaceMode) String() string {
+	switch e {
+		case VideoInterlaceModeFields: return "VideoInterlaceModeFields"
+		case VideoInterlaceModeAlternate: return "VideoInterlaceModeAlternate"
+		case VideoInterlaceModeProgressive: return "VideoInterlaceModeProgressive"
+		case VideoInterlaceModeInterleaved: return "VideoInterlaceModeInterleaved"
+		case VideoInterlaceModeMixed: return "VideoInterlaceModeMixed"
+		default: return fmt.Sprintf("VideoInterlaceMode(%d)", e)
+	}
+}
+
 // VideoMatrixMode wraps GstVideoMatrixMode
 //
 // Different color matrix conversion modes
@@ -1938,6 +2351,16 @@ var _ gobject.GoValueInitializer = VideoMatrixMode(0)
 func (e VideoMatrixMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoMatrixMode)
 	v.SetEnum(int(e))
+}
+
+func (e VideoMatrixMode) String() string {
+	switch e {
+		case VideoMatrixModeInputOnly: return "VideoMatrixModeInputOnly"
+		case VideoMatrixModeOutputOnly: return "VideoMatrixModeOutputOnly"
+		case VideoMatrixModeNone: return "VideoMatrixModeNone"
+		case VideoMatrixModeFull: return "VideoMatrixModeFull"
+		default: return fmt.Sprintf("VideoMatrixMode(%d)", e)
+	}
 }
 
 // VideoMultiviewFramePacking wraps GstVideoMultiviewFramePacking
@@ -2015,6 +2438,22 @@ var _ gobject.GoValueInitializer = VideoMultiviewFramePacking(0)
 func (e VideoMultiviewFramePacking) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoMultiviewFramePacking)
 	v.SetEnum(int(e))
+}
+
+func (e VideoMultiviewFramePacking) String() string {
+	switch e {
+		case VideoMultiviewFramePackingRight: return "VideoMultiviewFramePackingRight"
+		case VideoMultiviewFramePackingSideBySide: return "VideoMultiviewFramePackingSideBySide"
+		case VideoMultiviewFramePackingSideBySideQuincunx: return "VideoMultiviewFramePackingSideBySideQuincunx"
+		case VideoMultiviewFramePackingRowInterleaved: return "VideoMultiviewFramePackingRowInterleaved"
+		case VideoMultiviewFramePackingTopBottom: return "VideoMultiviewFramePackingTopBottom"
+		case VideoMultiviewFramePackingMono: return "VideoMultiviewFramePackingMono"
+		case VideoMultiviewFramePackingColumnInterleaved: return "VideoMultiviewFramePackingColumnInterleaved"
+		case VideoMultiviewFramePackingCheckerboard: return "VideoMultiviewFramePackingCheckerboard"
+		case VideoMultiviewFramePackingNone: return "VideoMultiviewFramePackingNone"
+		case VideoMultiviewFramePackingLeft: return "VideoMultiviewFramePackingLeft"
+		default: return fmt.Sprintf("VideoMultiviewFramePacking(%d)", e)
+	}
 }
 
 // VideoMultiviewMode wraps GstVideoMultiviewMode
@@ -2110,6 +2549,25 @@ func (e VideoMultiviewMode) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoMultiviewMode) String() string {
+	switch e {
+		case VideoMultiviewModeSideBySideQuincunx: return "VideoMultiviewModeSideBySideQuincunx"
+		case VideoMultiviewModeCheckerboard: return "VideoMultiviewModeCheckerboard"
+		case VideoMultiviewModeMultiviewFrameByFrame: return "VideoMultiviewModeMultiviewFrameByFrame"
+		case VideoMultiviewModeSideBySide: return "VideoMultiviewModeSideBySide"
+		case VideoMultiviewModeColumnInterleaved: return "VideoMultiviewModeColumnInterleaved"
+		case VideoMultiviewModeRowInterleaved: return "VideoMultiviewModeRowInterleaved"
+		case VideoMultiviewModeTopBottom: return "VideoMultiviewModeTopBottom"
+		case VideoMultiviewModeFrameByFrame: return "VideoMultiviewModeFrameByFrame"
+		case VideoMultiviewModeSeparated: return "VideoMultiviewModeSeparated"
+		case VideoMultiviewModeNone: return "VideoMultiviewModeNone"
+		case VideoMultiviewModeMono: return "VideoMultiviewModeMono"
+		case VideoMultiviewModeLeft: return "VideoMultiviewModeLeft"
+		case VideoMultiviewModeRight: return "VideoMultiviewModeRight"
+		default: return fmt.Sprintf("VideoMultiviewMode(%d)", e)
+	}
+}
+
 // VideoOrientationMethod wraps GstVideoOrientationMethod
 //
 // The different video orientation methods.
@@ -2169,6 +2627,22 @@ func (e VideoOrientationMethod) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoOrientationMethod) String() string {
+	switch e {
+		case VideoOrientation90R: return "VideoOrientation90R"
+		case VideoOrientation180: return "VideoOrientation180"
+		case VideoOrientationHoriz: return "VideoOrientationHoriz"
+		case VideoOrientationUlLr: return "VideoOrientationUlLr"
+		case VideoOrientationUrLl: return "VideoOrientationUrLl"
+		case VideoOrientationCustom: return "VideoOrientationCustom"
+		case VideoOrientationIdentity: return "VideoOrientationIdentity"
+		case VideoOrientation90L: return "VideoOrientation90L"
+		case VideoOrientationVert: return "VideoOrientationVert"
+		case VideoOrientationAuto: return "VideoOrientationAuto"
+		default: return fmt.Sprintf("VideoOrientationMethod(%d)", e)
+	}
+}
+
 // VideoPrimariesMode wraps GstVideoPrimariesMode
 //
 // Different primaries conversion modes
@@ -2199,6 +2673,15 @@ var _ gobject.GoValueInitializer = VideoPrimariesMode(0)
 func (e VideoPrimariesMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoPrimariesMode)
 	v.SetEnum(int(e))
+}
+
+func (e VideoPrimariesMode) String() string {
+	switch e {
+		case VideoPrimariesModeNone: return "VideoPrimariesModeNone"
+		case VideoPrimariesModeMergeOnly: return "VideoPrimariesModeMergeOnly"
+		case VideoPrimariesModeFast: return "VideoPrimariesModeFast"
+		default: return fmt.Sprintf("VideoPrimariesMode(%d)", e)
+	}
 }
 
 // VideoResamplerMethod wraps GstVideoResamplerMethod
@@ -2242,6 +2725,17 @@ func (e VideoResamplerMethod) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoResamplerMethod) String() string {
+	switch e {
+		case VideoResamplerMethodNearest: return "VideoResamplerMethodNearest"
+		case VideoResamplerMethodLinear: return "VideoResamplerMethodLinear"
+		case VideoResamplerMethodCubic: return "VideoResamplerMethodCubic"
+		case VideoResamplerMethodSinc: return "VideoResamplerMethodSinc"
+		case VideoResamplerMethodLanczos: return "VideoResamplerMethodLanczos"
+		default: return fmt.Sprintf("VideoResamplerMethod(%d)", e)
+	}
+}
+
 // VideoTileMode wraps GstVideoTileMode
 //
 // Enum value describing the available tiling modes.
@@ -2276,6 +2770,15 @@ func (e VideoTileMode) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoTileMode) String() string {
+	switch e {
+		case VideoTileModeUnknown: return "VideoTileModeUnknown"
+		case VideoTileModeZflipz2X2: return "VideoTileModeZflipz2X2"
+		case VideoTileModeLinear: return "VideoTileModeLinear"
+		default: return fmt.Sprintf("VideoTileMode(%d)", e)
+	}
+}
+
 // VideoTileType wraps GstVideoTileType
 //
 // Enum value describing the most common tiling types.
@@ -2299,6 +2802,13 @@ var _ gobject.GoValueInitializer = VideoTileType(0)
 func (e VideoTileType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoTileType)
 	v.SetEnum(int(e))
+}
+
+func (e VideoTileType) String() string {
+	switch e {
+		case VideoTileTypeIndexed: return "VideoTileTypeIndexed"
+		default: return fmt.Sprintf("VideoTileType(%d)", e)
+	}
 }
 
 // VideoTransferFunction wraps GstVideoTransferFunction
@@ -2404,6 +2914,29 @@ func (e VideoTransferFunction) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e VideoTransferFunction) String() string {
+	switch e {
+		case VideoTransferGamma20: return "VideoTransferGamma20"
+		case VideoTransferSmpte240M: return "VideoTransferSmpte240M"
+		case VideoTransferSrgb: return "VideoTransferSrgb"
+		case VideoTransferBt202012: return "VideoTransferBt202012"
+		case VideoTransferBt601: return "VideoTransferBt601"
+		case VideoTransferUnknown: return "VideoTransferUnknown"
+		case VideoTransferGamma28: return "VideoTransferGamma28"
+		case VideoTransferBt202010: return "VideoTransferBt202010"
+		case VideoTransferBt709: return "VideoTransferBt709"
+		case VideoTransferLog316: return "VideoTransferLog316"
+		case VideoTransferAdobergb: return "VideoTransferAdobergb"
+		case VideoTransferSmpte2084: return "VideoTransferSmpte2084"
+		case VideoTransferGamma18: return "VideoTransferGamma18"
+		case VideoTransferGamma22: return "VideoTransferGamma22"
+		case VideoTransferLog100: return "VideoTransferLog100"
+		case VideoTransferAribStdB67: return "VideoTransferAribStdB67"
+		case VideoTransferGamma10: return "VideoTransferGamma10"
+		default: return fmt.Sprintf("VideoTransferFunction(%d)", e)
+	}
+}
+
 // VideoVBIParserResult wraps GstVideoVBIParserResult
 //
 // Return values for #GstVideoVBIParser
@@ -2433,6 +2966,15 @@ var _ gobject.GoValueInitializer = VideoVBIParserResult(0)
 func (e VideoVBIParserResult) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoVBIParserResult)
 	v.SetEnum(int(e))
+}
+
+func (e VideoVBIParserResult) String() string {
+	switch e {
+		case VideoVbiParserResultError: return "VideoVbiParserResultError"
+		case VideoVbiParserResultDone: return "VideoVbiParserResultDone"
+		case VideoVbiParserResultOK: return "VideoVbiParserResultOK"
+		default: return fmt.Sprintf("VideoVBIParserResult(%d)", e)
+	}
 }
 
 // NavigationModifierType wraps GstNavigationModifierType
@@ -2530,6 +3072,69 @@ func (f NavigationModifierType) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f NavigationModifierType) String() string {
+	if f == 0 {
+		return "NavigationModifierType(0)"
+	}
+
+	var parts []string
+	if (f & NavigationModifierNone) != 0 {
+		parts = append(parts, "NavigationModifierNone")
+	}
+	if (f & NavigationModifierShiftMask) != 0 {
+		parts = append(parts, "NavigationModifierShiftMask")
+	}
+	if (f & NavigationModifierLockMask) != 0 {
+		parts = append(parts, "NavigationModifierLockMask")
+	}
+	if (f & NavigationModifierControlMask) != 0 {
+		parts = append(parts, "NavigationModifierControlMask")
+	}
+	if (f & NavigationModifierMod1Mask) != 0 {
+		parts = append(parts, "NavigationModifierMod1Mask")
+	}
+	if (f & NavigationModifierMod2Mask) != 0 {
+		parts = append(parts, "NavigationModifierMod2Mask")
+	}
+	if (f & NavigationModifierMod3Mask) != 0 {
+		parts = append(parts, "NavigationModifierMod3Mask")
+	}
+	if (f & NavigationModifierMod4Mask) != 0 {
+		parts = append(parts, "NavigationModifierMod4Mask")
+	}
+	if (f & NavigationModifierMod5Mask) != 0 {
+		parts = append(parts, "NavigationModifierMod5Mask")
+	}
+	if (f & NavigationModifierButton1Mask) != 0 {
+		parts = append(parts, "NavigationModifierButton1Mask")
+	}
+	if (f & NavigationModifierButton2Mask) != 0 {
+		parts = append(parts, "NavigationModifierButton2Mask")
+	}
+	if (f & NavigationModifierButton3Mask) != 0 {
+		parts = append(parts, "NavigationModifierButton3Mask")
+	}
+	if (f & NavigationModifierButton4Mask) != 0 {
+		parts = append(parts, "NavigationModifierButton4Mask")
+	}
+	if (f & NavigationModifierButton5Mask) != 0 {
+		parts = append(parts, "NavigationModifierButton5Mask")
+	}
+	if (f & NavigationModifierSuperMask) != 0 {
+		parts = append(parts, "NavigationModifierSuperMask")
+	}
+	if (f & NavigationModifierHyperMask) != 0 {
+		parts = append(parts, "NavigationModifierHyperMask")
+	}
+	if (f & NavigationModifierMetaMask) != 0 {
+		parts = append(parts, "NavigationModifierMetaMask")
+	}
+	if (f & NavigationModifierMask) != 0 {
+		parts = append(parts, "NavigationModifierMask")
+	}
+	return "NavigationModifierType(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoBufferFlags wraps GstVideoBufferFlags
 //
 // Additional video buffer flags. These flags can potentially be used on any
@@ -2619,6 +3224,45 @@ func (f VideoBufferFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f VideoBufferFlags) String() string {
+	if f == 0 {
+		return "VideoBufferFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoBufferFlagInterlaced) != 0 {
+		parts = append(parts, "VideoBufferFlagInterlaced")
+	}
+	if (f & VideoBufferFlagTff) != 0 {
+		parts = append(parts, "VideoBufferFlagTff")
+	}
+	if (f & VideoBufferFlagRff) != 0 {
+		parts = append(parts, "VideoBufferFlagRff")
+	}
+	if (f & VideoBufferFlagOnefield) != 0 {
+		parts = append(parts, "VideoBufferFlagOnefield")
+	}
+	if (f & VideoBufferFlagMultipleView) != 0 {
+		parts = append(parts, "VideoBufferFlagMultipleView")
+	}
+	if (f & VideoBufferFlagFirstInBundle) != 0 {
+		parts = append(parts, "VideoBufferFlagFirstInBundle")
+	}
+	if (f & VideoBufferFlagTopField) != 0 {
+		parts = append(parts, "VideoBufferFlagTopField")
+	}
+	if (f & VideoBufferFlagBottomField) != 0 {
+		parts = append(parts, "VideoBufferFlagBottomField")
+	}
+	if (f & VideoBufferFlagMarker) != 0 {
+		parts = append(parts, "VideoBufferFlagMarker")
+	}
+	if (f & VideoBufferFlagLast) != 0 {
+		parts = append(parts, "VideoBufferFlagLast")
+	}
+	return "VideoBufferFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoChromaFlags wraps GstVideoChromaFlags
 //
 // Extra flags that influence the result from gst_video_chroma_resample_new().
@@ -2648,6 +3292,21 @@ var _ gobject.GoValueInitializer = VideoChromaFlags(0)
 func (f VideoChromaFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoChromaFlags)
 	v.SetFlags(int(f))
+}
+
+func (f VideoChromaFlags) String() string {
+	if f == 0 {
+		return "VideoChromaFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoChromaFlagNone) != 0 {
+		parts = append(parts, "VideoChromaFlagNone")
+	}
+	if (f & VideoChromaFlagInterlaced) != 0 {
+		parts = append(parts, "VideoChromaFlagInterlaced")
+	}
+	return "VideoChromaFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // VideoChromaSite wraps GstVideoChromaSite
@@ -2709,6 +3368,42 @@ func (f VideoChromaSite) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f VideoChromaSite) String() string {
+	if f == 0 {
+		return "VideoChromaSite(0)"
+	}
+
+	var parts []string
+	if (f & VideoChromaSiteUnknown) != 0 {
+		parts = append(parts, "VideoChromaSiteUnknown")
+	}
+	if (f & VideoChromaSiteNone) != 0 {
+		parts = append(parts, "VideoChromaSiteNone")
+	}
+	if (f & VideoChromaSiteHCosited) != 0 {
+		parts = append(parts, "VideoChromaSiteHCosited")
+	}
+	if (f & VideoChromaSiteVCosited) != 0 {
+		parts = append(parts, "VideoChromaSiteVCosited")
+	}
+	if (f & VideoChromaSiteAltLine) != 0 {
+		parts = append(parts, "VideoChromaSiteAltLine")
+	}
+	if (f & VideoChromaSiteCosited) != 0 {
+		parts = append(parts, "VideoChromaSiteCosited")
+	}
+	if (f & VideoChromaSiteJPEG) != 0 {
+		parts = append(parts, "VideoChromaSiteJPEG")
+	}
+	if (f & VideoChromaSiteMpeg2) != 0 {
+		parts = append(parts, "VideoChromaSiteMpeg2")
+	}
+	if (f & VideoChromaSiteDv) != 0 {
+		parts = append(parts, "VideoChromaSiteDv")
+	}
+	return "VideoChromaSite(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoCodecFrameFlags wraps GstVideoCodecFrameFlags
 //
 // Flags for #GstVideoCodecFrame
@@ -2752,6 +3447,30 @@ func (f VideoCodecFrameFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f VideoCodecFrameFlags) String() string {
+	if f == 0 {
+		return "VideoCodecFrameFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoCodecFrameFlagDecodeOnly) != 0 {
+		parts = append(parts, "VideoCodecFrameFlagDecodeOnly")
+	}
+	if (f & VideoCodecFrameFlagSyncPoint) != 0 {
+		parts = append(parts, "VideoCodecFrameFlagSyncPoint")
+	}
+	if (f & VideoCodecFrameFlagForceKeyframe) != 0 {
+		parts = append(parts, "VideoCodecFrameFlagForceKeyframe")
+	}
+	if (f & VideoCodecFrameFlagForceKeyframeHeaders) != 0 {
+		parts = append(parts, "VideoCodecFrameFlagForceKeyframeHeaders")
+	}
+	if (f & VideoCodecFrameFlagCorrupted) != 0 {
+		parts = append(parts, "VideoCodecFrameFlagCorrupted")
+	}
+	return "VideoCodecFrameFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoDecoderRequestSyncPointFlags wraps GstVideoDecoderRequestSyncPointFlags
 //
 // Flags to be used in combination with gst_video_decoder_request_sync_point().
@@ -2784,6 +3503,21 @@ var _ gobject.GoValueInitializer = VideoDecoderRequestSyncPointFlags(0)
 func (f VideoDecoderRequestSyncPointFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoDecoderRequestSyncPointFlags)
 	v.SetFlags(int(f))
+}
+
+func (f VideoDecoderRequestSyncPointFlags) String() string {
+	if f == 0 {
+		return "VideoDecoderRequestSyncPointFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoDecoderRequestSyncPointDiscardInput) != 0 {
+		parts = append(parts, "VideoDecoderRequestSyncPointDiscardInput")
+	}
+	if (f & VideoDecoderRequestSyncPointCorruptOutput) != 0 {
+		parts = append(parts, "VideoDecoderRequestSyncPointCorruptOutput")
+	}
+	return "VideoDecoderRequestSyncPointFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // VideoDitherFlags wraps GstVideoDitherFlags
@@ -2821,6 +3555,24 @@ func (f VideoDitherFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f VideoDitherFlags) String() string {
+	if f == 0 {
+		return "VideoDitherFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoDitherFlagNone) != 0 {
+		parts = append(parts, "VideoDitherFlagNone")
+	}
+	if (f & VideoDitherFlagInterlaced) != 0 {
+		parts = append(parts, "VideoDitherFlagInterlaced")
+	}
+	if (f & VideoDitherFlagQuantize) != 0 {
+		parts = append(parts, "VideoDitherFlagQuantize")
+	}
+	return "VideoDitherFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoFlags wraps GstVideoFlags
 //
 // Extra video flags
@@ -2856,6 +3608,24 @@ var _ gobject.GoValueInitializer = VideoFlags(0)
 func (f VideoFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoFlags)
 	v.SetFlags(int(f))
+}
+
+func (f VideoFlags) String() string {
+	if f == 0 {
+		return "VideoFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoFlagNone) != 0 {
+		parts = append(parts, "VideoFlagNone")
+	}
+	if (f & VideoFlagVariableFPS) != 0 {
+		parts = append(parts, "VideoFlagVariableFPS")
+	}
+	if (f & VideoFlagPremultipliedAlpha) != 0 {
+		parts = append(parts, "VideoFlagPremultipliedAlpha")
+	}
+	return "VideoFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // VideoFormatFlags wraps GstVideoFormatFlags
@@ -2930,6 +3700,45 @@ func (f VideoFormatFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f VideoFormatFlags) String() string {
+	if f == 0 {
+		return "VideoFormatFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoFormatFlagYuv) != 0 {
+		parts = append(parts, "VideoFormatFlagYuv")
+	}
+	if (f & VideoFormatFlagRGB) != 0 {
+		parts = append(parts, "VideoFormatFlagRGB")
+	}
+	if (f & VideoFormatFlagGray) != 0 {
+		parts = append(parts, "VideoFormatFlagGray")
+	}
+	if (f & VideoFormatFlagAlpha) != 0 {
+		parts = append(parts, "VideoFormatFlagAlpha")
+	}
+	if (f & VideoFormatFlagLE) != 0 {
+		parts = append(parts, "VideoFormatFlagLE")
+	}
+	if (f & VideoFormatFlagPalette) != 0 {
+		parts = append(parts, "VideoFormatFlagPalette")
+	}
+	if (f & VideoFormatFlagComplex) != 0 {
+		parts = append(parts, "VideoFormatFlagComplex")
+	}
+	if (f & VideoFormatFlagUnpack) != 0 {
+		parts = append(parts, "VideoFormatFlagUnpack")
+	}
+	if (f & VideoFormatFlagTiled) != 0 {
+		parts = append(parts, "VideoFormatFlagTiled")
+	}
+	if (f & VideoFormatFlagSubtiles) != 0 {
+		parts = append(parts, "VideoFormatFlagSubtiles")
+	}
+	return "VideoFormatFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoFrameFlags wraps GstVideoFrameFlags
 //
 // Extra video frame flags
@@ -2997,6 +3806,42 @@ func (f VideoFrameFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f VideoFrameFlags) String() string {
+	if f == 0 {
+		return "VideoFrameFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoFrameFlagNone) != 0 {
+		parts = append(parts, "VideoFrameFlagNone")
+	}
+	if (f & VideoFrameFlagInterlaced) != 0 {
+		parts = append(parts, "VideoFrameFlagInterlaced")
+	}
+	if (f & VideoFrameFlagTff) != 0 {
+		parts = append(parts, "VideoFrameFlagTff")
+	}
+	if (f & VideoFrameFlagRff) != 0 {
+		parts = append(parts, "VideoFrameFlagRff")
+	}
+	if (f & VideoFrameFlagOnefield) != 0 {
+		parts = append(parts, "VideoFrameFlagOnefield")
+	}
+	if (f & VideoFrameFlagMultipleView) != 0 {
+		parts = append(parts, "VideoFrameFlagMultipleView")
+	}
+	if (f & VideoFrameFlagFirstInBundle) != 0 {
+		parts = append(parts, "VideoFrameFlagFirstInBundle")
+	}
+	if (f & VideoFrameFlagTopField) != 0 {
+		parts = append(parts, "VideoFrameFlagTopField")
+	}
+	if (f & VideoFrameFlagBottomField) != 0 {
+		parts = append(parts, "VideoFrameFlagBottomField")
+	}
+	return "VideoFrameFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoFrameMapFlags wraps GstVideoFrameMapFlags
 //
 // Additional mapping flags for gst_video_frame_map().
@@ -3029,6 +3874,21 @@ var _ gobject.GoValueInitializer = VideoFrameMapFlags(0)
 func (f VideoFrameMapFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoFrameMapFlags)
 	v.SetFlags(int(f))
+}
+
+func (f VideoFrameMapFlags) String() string {
+	if f == 0 {
+		return "VideoFrameMapFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoFrameMapFlagNoRef) != 0 {
+		parts = append(parts, "VideoFrameMapFlagNoRef")
+	}
+	if (f & VideoFrameMapFlagLast) != 0 {
+		parts = append(parts, "VideoFrameMapFlagLast")
+	}
+	return "VideoFrameMapFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // VideoMultiviewFlags wraps GstVideoMultiviewFlags
@@ -3104,6 +3964,39 @@ func (f VideoMultiviewFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f VideoMultiviewFlags) String() string {
+	if f == 0 {
+		return "VideoMultiviewFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoMultiviewFlagsNone) != 0 {
+		parts = append(parts, "VideoMultiviewFlagsNone")
+	}
+	if (f & VideoMultiviewFlagsRightViewFirst) != 0 {
+		parts = append(parts, "VideoMultiviewFlagsRightViewFirst")
+	}
+	if (f & VideoMultiviewFlagsLeftFlipped) != 0 {
+		parts = append(parts, "VideoMultiviewFlagsLeftFlipped")
+	}
+	if (f & VideoMultiviewFlagsLeftFlopped) != 0 {
+		parts = append(parts, "VideoMultiviewFlagsLeftFlopped")
+	}
+	if (f & VideoMultiviewFlagsRightFlipped) != 0 {
+		parts = append(parts, "VideoMultiviewFlagsRightFlipped")
+	}
+	if (f & VideoMultiviewFlagsRightFlopped) != 0 {
+		parts = append(parts, "VideoMultiviewFlagsRightFlopped")
+	}
+	if (f & VideoMultiviewFlagsHalfAspect) != 0 {
+		parts = append(parts, "VideoMultiviewFlagsHalfAspect")
+	}
+	if (f & VideoMultiviewFlagsMixedMono) != 0 {
+		parts = append(parts, "VideoMultiviewFlagsMixedMono")
+	}
+	return "VideoMultiviewFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoOverlayFormatFlags wraps GstVideoOverlayFormatFlags
 //
 // Overlay format flags.
@@ -3137,6 +4030,24 @@ var _ gobject.GoValueInitializer = VideoOverlayFormatFlags(0)
 func (f VideoOverlayFormatFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoOverlayFormatFlags)
 	v.SetFlags(int(f))
+}
+
+func (f VideoOverlayFormatFlags) String() string {
+	if f == 0 {
+		return "VideoOverlayFormatFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoOverlayFormatFlagNone) != 0 {
+		parts = append(parts, "VideoOverlayFormatFlagNone")
+	}
+	if (f & VideoOverlayFormatFlagPremultipliedAlpha) != 0 {
+		parts = append(parts, "VideoOverlayFormatFlagPremultipliedAlpha")
+	}
+	if (f & VideoOverlayFormatFlagGlobalAlpha) != 0 {
+		parts = append(parts, "VideoOverlayFormatFlagGlobalAlpha")
+	}
+	return "VideoOverlayFormatFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // VideoPackFlags wraps GstVideoPackFlags
@@ -3180,6 +4091,24 @@ func (f VideoPackFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f VideoPackFlags) String() string {
+	if f == 0 {
+		return "VideoPackFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoPackFlagNone) != 0 {
+		parts = append(parts, "VideoPackFlagNone")
+	}
+	if (f & VideoPackFlagTruncateRange) != 0 {
+		parts = append(parts, "VideoPackFlagTruncateRange")
+	}
+	if (f & VideoPackFlagInterlaced) != 0 {
+		parts = append(parts, "VideoPackFlagInterlaced")
+	}
+	return "VideoPackFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoResamplerFlags wraps GstVideoResamplerFlags
 //
 // Different resampler flags.
@@ -3213,6 +4142,21 @@ func (f VideoResamplerFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f VideoResamplerFlags) String() string {
+	if f == 0 {
+		return "VideoResamplerFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoResamplerFlagNone) != 0 {
+		parts = append(parts, "VideoResamplerFlagNone")
+	}
+	if (f & VideoResamplerFlagHalfTaps) != 0 {
+		parts = append(parts, "VideoResamplerFlagHalfTaps")
+	}
+	return "VideoResamplerFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // VideoScalerFlags wraps GstVideoScalerFlags
 //
 // Different scale flags.
@@ -3242,6 +4186,21 @@ var _ gobject.GoValueInitializer = VideoScalerFlags(0)
 func (f VideoScalerFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoScalerFlags)
 	v.SetFlags(int(f))
+}
+
+func (f VideoScalerFlags) String() string {
+	if f == 0 {
+		return "VideoScalerFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoScalerFlagNone) != 0 {
+		parts = append(parts, "VideoScalerFlagNone")
+	}
+	if (f & VideoScalerFlagInterlaced) != 0 {
+		parts = append(parts, "VideoScalerFlagInterlaced")
+	}
+	return "VideoScalerFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // VideoTimeCodeFlags wraps GstVideoTimeCodeFlags
@@ -3278,6 +4237,24 @@ var _ gobject.GoValueInitializer = VideoTimeCodeFlags(0)
 func (f VideoTimeCodeFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeVideoTimeCodeFlags)
 	v.SetFlags(int(f))
+}
+
+func (f VideoTimeCodeFlags) String() string {
+	if f == 0 {
+		return "VideoTimeCodeFlags(0)"
+	}
+
+	var parts []string
+	if (f & VideoTimeCodeFlagsNone) != 0 {
+		parts = append(parts, "VideoTimeCodeFlagsNone")
+	}
+	if (f & VideoTimeCodeFlagsDropFrame) != 0 {
+		parts = append(parts, "VideoTimeCodeFlagsDropFrame")
+	}
+	if (f & VideoTimeCodeFlagsInterlaced) != 0 {
+		parts = append(parts, "VideoTimeCodeFlagsInterlaced")
+	}
+	return "VideoTimeCodeFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // VideoConvertSampleCallback wraps GstVideoConvertSampleCallback
@@ -5941,7 +6918,7 @@ func UnsafeNavigationToGlibFull(c Navigation) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
-// NavigationInstanceEventGetCoordinates wraps gst_navigation_event_get_coordinates
+// NavigationEventGetCoordinates wraps gst_navigation_event_get_coordinates
 // 
 // The function takes the following parameters:
 // 
@@ -5956,7 +6933,7 @@ func UnsafeNavigationToGlibFull(c Navigation) unsafe.Pointer {
 // 	- goret bool 
 //
 // Try to retrieve x and y coordinates of a #GstNavigation event.
-func NavigationInstanceEventGetCoordinates(event *gst.Event) (float64, float64, bool) {
+func NavigationEventGetCoordinates(event *gst.Event) (float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // out, full, casted
 	var carg3 C.gdouble   // out, full, casted
@@ -5980,7 +6957,7 @@ func NavigationInstanceEventGetCoordinates(event *gst.Event) (float64, float64, 
 	return x, y, goret
 }
 
-// NavigationInstanceEventGetType wraps gst_navigation_event_get_type
+// NavigationEventGetType wraps gst_navigation_event_get_type
 // 
 // The function takes the following parameters:
 // 
@@ -5992,7 +6969,7 @@ func NavigationInstanceEventGetCoordinates(event *gst.Event) (float64, float64, 
 //
 // Inspect a #GstEvent and return the #GstNavigationEventType of the event, or
 // #GST_NAVIGATION_EVENT_INVALID if the event is not a #GstNavigation event.
-func NavigationInstanceEventGetType(event *gst.Event) NavigationEventType {
+func NavigationEventGetType(event *gst.Event) NavigationEventType {
 	var carg1 *C.GstEvent              // in, none, converted
 	var cret  C.GstNavigationEventType // return, none, casted
 
@@ -6008,7 +6985,7 @@ func NavigationInstanceEventGetType(event *gst.Event) NavigationEventType {
 	return goret
 }
 
-// NavigationInstanceEventNewCommand wraps gst_navigation_event_new_command
+// NavigationEventNewCommand wraps gst_navigation_event_new_command
 // 
 // The function takes the following parameters:
 // 
@@ -6019,7 +6996,7 @@ func NavigationInstanceEventGetType(event *gst.Event) NavigationEventType {
 // 	- goret *gst.Event 
 //
 // Create a new navigation event given navigation command..
-func NavigationInstanceEventNewCommand(command NavigationCommand) *gst.Event {
+func NavigationEventNewCommand(command NavigationCommand) *gst.Event {
 	var carg1 C.GstNavigationCommand // in, none, casted
 	var cret  *C.GstEvent            // return, full, converted
 
@@ -6035,7 +7012,7 @@ func NavigationInstanceEventNewCommand(command NavigationCommand) *gst.Event {
 	return goret
 }
 
-// NavigationInstanceEventNewKeyPress wraps gst_navigation_event_new_key_press
+// NavigationEventNewKeyPress wraps gst_navigation_event_new_key_press
 // 
 // The function takes the following parameters:
 // 
@@ -6048,7 +7025,7 @@ func NavigationInstanceEventNewCommand(command NavigationCommand) *gst.Event {
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for the given key press.
-func NavigationInstanceEventNewKeyPress(key string, state NavigationModifierType) *gst.Event {
+func NavigationEventNewKeyPress(key string, state NavigationModifierType) *gst.Event {
 	var carg1 *C.gchar                    // in, none, string, casted *C.gchar
 	var carg2 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
@@ -6068,7 +7045,7 @@ func NavigationInstanceEventNewKeyPress(key string, state NavigationModifierType
 	return goret
 }
 
-// NavigationInstanceEventNewKeyRelease wraps gst_navigation_event_new_key_release
+// NavigationEventNewKeyRelease wraps gst_navigation_event_new_key_release
 // 
 // The function takes the following parameters:
 // 
@@ -6081,7 +7058,7 @@ func NavigationInstanceEventNewKeyPress(key string, state NavigationModifierType
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for the given key release.
-func NavigationInstanceEventNewKeyRelease(key string, state NavigationModifierType) *gst.Event {
+func NavigationEventNewKeyRelease(key string, state NavigationModifierType) *gst.Event {
 	var carg1 *C.gchar                    // in, none, string, casted *C.gchar
 	var carg2 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
@@ -6101,7 +7078,7 @@ func NavigationInstanceEventNewKeyRelease(key string, state NavigationModifierTy
 	return goret
 }
 
-// NavigationInstanceEventNewMouseButtonPress wraps gst_navigation_event_new_mouse_button_press
+// NavigationEventNewMouseButtonPress wraps gst_navigation_event_new_mouse_button_press
 // 
 // The function takes the following parameters:
 // 
@@ -6116,7 +7093,7 @@ func NavigationInstanceEventNewKeyRelease(key string, state NavigationModifierTy
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for the given key mouse button press.
-func NavigationInstanceEventNewMouseButtonPress(button int, x float64, y float64, state NavigationModifierType) *gst.Event {
+func NavigationEventNewMouseButtonPress(button int, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
 	var carg3 C.gdouble                   // in, none, casted
@@ -6141,7 +7118,7 @@ func NavigationInstanceEventNewMouseButtonPress(button int, x float64, y float64
 	return goret
 }
 
-// NavigationInstanceEventNewMouseButtonRelease wraps gst_navigation_event_new_mouse_button_release
+// NavigationEventNewMouseButtonRelease wraps gst_navigation_event_new_mouse_button_release
 // 
 // The function takes the following parameters:
 // 
@@ -6156,7 +7133,7 @@ func NavigationInstanceEventNewMouseButtonPress(button int, x float64, y float64
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for the given key mouse button release.
-func NavigationInstanceEventNewMouseButtonRelease(button int, x float64, y float64, state NavigationModifierType) *gst.Event {
+func NavigationEventNewMouseButtonRelease(button int, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
 	var carg3 C.gdouble                   // in, none, casted
@@ -6181,7 +7158,7 @@ func NavigationInstanceEventNewMouseButtonRelease(button int, x float64, y float
 	return goret
 }
 
-// NavigationInstanceEventNewMouseMove wraps gst_navigation_event_new_mouse_move
+// NavigationEventNewMouseMove wraps gst_navigation_event_new_mouse_move
 // 
 // The function takes the following parameters:
 // 
@@ -6195,7 +7172,7 @@ func NavigationInstanceEventNewMouseButtonRelease(button int, x float64, y float
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for the new mouse location.
-func NavigationInstanceEventNewMouseMove(x float64, y float64, state NavigationModifierType) *gst.Event {
+func NavigationEventNewMouseMove(x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gdouble                   // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
 	var carg3 C.GstNavigationModifierType // in, none, casted
@@ -6217,7 +7194,7 @@ func NavigationInstanceEventNewMouseMove(x float64, y float64, state NavigationM
 	return goret
 }
 
-// NavigationInstanceEventNewMouseScroll wraps gst_navigation_event_new_mouse_scroll
+// NavigationEventNewMouseScroll wraps gst_navigation_event_new_mouse_scroll
 // 
 // The function takes the following parameters:
 // 
@@ -6233,7 +7210,7 @@ func NavigationInstanceEventNewMouseMove(x float64, y float64, state NavigationM
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for the mouse scroll.
-func NavigationInstanceEventNewMouseScroll(x float64, y float64, deltaX float64, deltaY float64, state NavigationModifierType) *gst.Event {
+func NavigationEventNewMouseScroll(x float64, y float64, deltaX float64, deltaY float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gdouble                   // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
 	var carg3 C.gdouble                   // in, none, casted
@@ -6261,7 +7238,7 @@ func NavigationInstanceEventNewMouseScroll(x float64, y float64, deltaX float64,
 	return goret
 }
 
-// NavigationInstanceEventNewTouchCancel wraps gst_navigation_event_new_touch_cancel
+// NavigationEventNewTouchCancel wraps gst_navigation_event_new_touch_cancel
 // 
 // The function takes the following parameters:
 // 
@@ -6276,7 +7253,7 @@ func NavigationInstanceEventNewMouseScroll(x float64, y float64, deltaX float64,
 // points are cancelled and should be discarded. For example, under Wayland
 // this event might be sent when a swipe passes the threshold to be recognized
 // as a gesture by the compositor.
-func NavigationInstanceEventNewTouchCancel(state NavigationModifierType) *gst.Event {
+func NavigationEventNewTouchCancel(state NavigationModifierType) *gst.Event {
 	var carg1 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
 
@@ -6292,7 +7269,7 @@ func NavigationInstanceEventNewTouchCancel(state NavigationModifierType) *gst.Ev
 	return goret
 }
 
-// NavigationInstanceEventNewTouchDown wraps gst_navigation_event_new_touch_down
+// NavigationEventNewTouchDown wraps gst_navigation_event_new_touch_down
 // 
 // The function takes the following parameters:
 // 
@@ -6311,7 +7288,7 @@ func NavigationInstanceEventNewTouchCancel(state NavigationModifierType) *gst.Ev
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for an added touch point.
-func NavigationInstanceEventNewTouchDown(identifier uint, x float64, y float64, pressure float64, state NavigationModifierType) *gst.Event {
+func NavigationEventNewTouchDown(identifier uint, x float64, y float64, pressure float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
 	var carg3 C.gdouble                   // in, none, casted
@@ -6339,7 +7316,7 @@ func NavigationInstanceEventNewTouchDown(identifier uint, x float64, y float64, 
 	return goret
 }
 
-// NavigationInstanceEventNewTouchFrame wraps gst_navigation_event_new_touch_frame
+// NavigationEventNewTouchFrame wraps gst_navigation_event_new_touch_frame
 // 
 // The function takes the following parameters:
 // 
@@ -6353,7 +7330,7 @@ func NavigationInstanceEventNewTouchDown(identifier uint, x float64, y float64, 
 // Create a new navigation event signalling the end of a touch frame. Touch
 // frames signal that all previous down, motion and up events not followed by
 // another touch frame event already should be considered simultaneous.
-func NavigationInstanceEventNewTouchFrame(state NavigationModifierType) *gst.Event {
+func NavigationEventNewTouchFrame(state NavigationModifierType) *gst.Event {
 	var carg1 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
 
@@ -6369,7 +7346,7 @@ func NavigationInstanceEventNewTouchFrame(state NavigationModifierType) *gst.Eve
 	return goret
 }
 
-// NavigationInstanceEventNewTouchMotion wraps gst_navigation_event_new_touch_motion
+// NavigationEventNewTouchMotion wraps gst_navigation_event_new_touch_motion
 // 
 // The function takes the following parameters:
 // 
@@ -6387,7 +7364,7 @@ func NavigationInstanceEventNewTouchFrame(state NavigationModifierType) *gst.Eve
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for a moved touch point.
-func NavigationInstanceEventNewTouchMotion(identifier uint, x float64, y float64, pressure float64, state NavigationModifierType) *gst.Event {
+func NavigationEventNewTouchMotion(identifier uint, x float64, y float64, pressure float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
 	var carg3 C.gdouble                   // in, none, casted
@@ -6415,7 +7392,7 @@ func NavigationInstanceEventNewTouchMotion(identifier uint, x float64, y float64
 	return goret
 }
 
-// NavigationInstanceEventNewTouchUp wraps gst_navigation_event_new_touch_up
+// NavigationEventNewTouchUp wraps gst_navigation_event_new_touch_up
 // 
 // The function takes the following parameters:
 // 
@@ -6432,7 +7409,7 @@ func NavigationInstanceEventNewTouchMotion(identifier uint, x float64, y float64
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for a removed touch point.
-func NavigationInstanceEventNewTouchUp(identifier uint, x float64, y float64, state NavigationModifierType) *gst.Event {
+func NavigationEventNewTouchUp(identifier uint, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
 	var carg3 C.gdouble                   // in, none, casted
@@ -6457,7 +7434,7 @@ func NavigationInstanceEventNewTouchUp(identifier uint, x float64, y float64, st
 	return goret
 }
 
-// NavigationInstanceEventParseCommand wraps gst_navigation_event_parse_command
+// NavigationEventParseCommand wraps gst_navigation_event_parse_command
 // 
 // The function takes the following parameters:
 // 
@@ -6471,7 +7448,7 @@ func NavigationInstanceEventNewTouchUp(identifier uint, x float64, y float64, st
 //
 // Inspect a #GstNavigation command event and retrieve the enum value of the
 // associated command.
-func NavigationInstanceEventParseCommand(event *gst.Event) (NavigationCommand, bool) {
+func NavigationEventParseCommand(event *gst.Event) (NavigationCommand, bool) {
 	var carg1 *C.GstEvent            // in, none, converted
 	var carg2 C.GstNavigationCommand // out, full, casted
 	var cret  C.gboolean             // return
@@ -6492,7 +7469,7 @@ func NavigationInstanceEventParseCommand(event *gst.Event) (NavigationCommand, b
 	return command, goret
 }
 
-// NavigationInstanceEventParseKeyEvent wraps gst_navigation_event_parse_key_event
+// NavigationEventParseKeyEvent wraps gst_navigation_event_parse_key_event
 // 
 // The function takes the following parameters:
 // 
@@ -6509,7 +7486,7 @@ func NavigationInstanceEventParseCommand(event *gst.Event) (NavigationCommand, b
 // [press](GST_NAVIGATION_EVENT_KEY_PRESS) and
 // [release](GST_NAVIGATION_KEY_PRESS) events are generated even if those states are
 // present on all other related events
-func NavigationInstanceEventParseKeyEvent(event *gst.Event) (string, bool) {
+func NavigationEventParseKeyEvent(event *gst.Event) (string, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 *C.gchar    // out, none, string, casted *C.gchar
 	var cret  C.gboolean  // return
@@ -6530,7 +7507,7 @@ func NavigationInstanceEventParseKeyEvent(event *gst.Event) (string, bool) {
 	return key, goret
 }
 
-// NavigationInstanceEventParseMouseButtonEvent wraps gst_navigation_event_parse_mouse_button_event
+// NavigationEventParseMouseButtonEvent wraps gst_navigation_event_parse_mouse_button_event
 // 
 // The function takes the following parameters:
 // 
@@ -6549,7 +7526,7 @@ func NavigationInstanceEventParseKeyEvent(event *gst.Event) (string, bool) {
 // Retrieve the details of either a #GstNavigation mouse button press event or
 // a mouse button release event. Determine which type the event is using
 // gst_navigation_event_get_type() to retrieve the #GstNavigationEventType.
-func NavigationInstanceEventParseMouseButtonEvent(event *gst.Event) (int, float64, float64, bool) {
+func NavigationEventParseMouseButtonEvent(event *gst.Event) (int, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gint      // out, full, casted
 	var carg3 C.gdouble   // out, full, casted
@@ -6576,7 +7553,7 @@ func NavigationInstanceEventParseMouseButtonEvent(event *gst.Event) (int, float6
 	return button, x, y, goret
 }
 
-// NavigationInstanceEventParseMouseMoveEvent wraps gst_navigation_event_parse_mouse_move_event
+// NavigationEventParseMouseMoveEvent wraps gst_navigation_event_parse_mouse_move_event
 // 
 // The function takes the following parameters:
 // 
@@ -6592,7 +7569,7 @@ func NavigationInstanceEventParseMouseButtonEvent(event *gst.Event) (int, float6
 //
 // Inspect a #GstNavigation mouse movement event and extract the coordinates
 // of the event.
-func NavigationInstanceEventParseMouseMoveEvent(event *gst.Event) (float64, float64, bool) {
+func NavigationEventParseMouseMoveEvent(event *gst.Event) (float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // out, full, casted
 	var carg3 C.gdouble   // out, full, casted
@@ -6616,7 +7593,7 @@ func NavigationInstanceEventParseMouseMoveEvent(event *gst.Event) (float64, floa
 	return x, y, goret
 }
 
-// NavigationInstanceEventParseMouseScrollEvent wraps gst_navigation_event_parse_mouse_scroll_event
+// NavigationEventParseMouseScrollEvent wraps gst_navigation_event_parse_mouse_scroll_event
 // 
 // The function takes the following parameters:
 // 
@@ -6636,7 +7613,7 @@ func NavigationInstanceEventParseMouseMoveEvent(event *gst.Event) (float64, floa
 //
 // Inspect a #GstNavigation mouse scroll event and extract the coordinates
 // of the event.
-func NavigationInstanceEventParseMouseScrollEvent(event *gst.Event) (float64, float64, float64, float64, bool) {
+func NavigationEventParseMouseScrollEvent(event *gst.Event) (float64, float64, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // out, full, casted
 	var carg3 C.gdouble   // out, full, casted
@@ -6666,7 +7643,7 @@ func NavigationInstanceEventParseMouseScrollEvent(event *gst.Event) (float64, fl
 	return x, y, deltaX, deltaY, goret
 }
 
-// NavigationInstanceEventParseTouchEvent wraps gst_navigation_event_parse_touch_event
+// NavigationEventParseTouchEvent wraps gst_navigation_event_parse_touch_event
 // 
 // The function takes the following parameters:
 // 
@@ -6688,7 +7665,7 @@ func NavigationInstanceEventParseMouseScrollEvent(event *gst.Event) (float64, fl
 // Retrieve the details of a #GstNavigation touch-down or touch-motion event.
 // Determine which type the event is using gst_navigation_event_get_type()
 // to retrieve the #GstNavigationEventType.
-func NavigationInstanceEventParseTouchEvent(event *gst.Event) (uint, float64, float64, float64, bool) {
+func NavigationEventParseTouchEvent(event *gst.Event) (uint, float64, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.guint     // out, full, casted
 	var carg3 C.gdouble   // out, full, casted
@@ -6718,7 +7695,7 @@ func NavigationInstanceEventParseTouchEvent(event *gst.Event) (uint, float64, fl
 	return identifier, x, y, pressure, goret
 }
 
-// NavigationInstanceEventParseTouchUpEvent wraps gst_navigation_event_parse_touch_up_event
+// NavigationEventParseTouchUpEvent wraps gst_navigation_event_parse_touch_up_event
 // 
 // The function takes the following parameters:
 // 
@@ -6735,7 +7712,7 @@ func NavigationInstanceEventParseTouchEvent(event *gst.Event) (uint, float64, fl
 // 	- goret bool 
 //
 // Retrieve the details of a #GstNavigation touch-up event.
-func NavigationInstanceEventParseTouchUpEvent(event *gst.Event) (uint, float64, float64, bool) {
+func NavigationEventParseTouchUpEvent(event *gst.Event) (uint, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.guint     // out, full, casted
 	var carg3 C.gdouble   // out, full, casted
@@ -6762,7 +7739,7 @@ func NavigationInstanceEventParseTouchUpEvent(event *gst.Event) (uint, float64, 
 	return identifier, x, y, goret
 }
 
-// NavigationInstanceEventSetCoordinates wraps gst_navigation_event_set_coordinates
+// NavigationEventSetCoordinates wraps gst_navigation_event_set_coordinates
 // 
 // The function takes the following parameters:
 // 
@@ -6776,7 +7753,7 @@ func NavigationInstanceEventParseTouchUpEvent(event *gst.Event) (uint, float64, 
 //
 // Try to set x and y coordinates on a #GstNavigation event. The event must
 // be writable.
-func NavigationInstanceEventSetCoordinates(event *gst.Event, x float64, y float64) bool {
+func NavigationEventSetCoordinates(event *gst.Event, x float64, y float64) bool {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // in, none, casted
 	var carg3 C.gdouble   // in, none, casted
@@ -6800,7 +7777,7 @@ func NavigationInstanceEventSetCoordinates(event *gst.Event, x float64, y float6
 	return goret
 }
 
-// NavigationInstanceMessageGetType wraps gst_navigation_message_get_type
+// NavigationMessageGetType wraps gst_navigation_message_get_type
 // 
 // The function takes the following parameters:
 // 
@@ -6812,7 +7789,7 @@ func NavigationInstanceEventSetCoordinates(event *gst.Event, x float64, y float6
 //
 // Check a bus message to see if it is a #GstNavigation event, and return
 // the #GstNavigationMessageType identifying the type of the message if so.
-func NavigationInstanceMessageGetType(message *gst.Message) NavigationMessageType {
+func NavigationMessageGetType(message *gst.Message) NavigationMessageType {
 	var carg1 *C.GstMessage              // in, none, converted
 	var cret  C.GstNavigationMessageType // return, none, casted
 
@@ -6828,7 +7805,7 @@ func NavigationInstanceMessageGetType(message *gst.Message) NavigationMessageTyp
 	return goret
 }
 
-// NavigationInstanceMessageNewAnglesChanged wraps gst_navigation_message_new_angles_changed
+// NavigationMessageNewAnglesChanged wraps gst_navigation_message_new_angles_changed
 // 
 // The function takes the following parameters:
 // 
@@ -6844,7 +7821,7 @@ func NavigationInstanceMessageGetType(message *gst.Message) NavigationMessageTyp
 // #GST_NAVIGATION_MESSAGE_ANGLES_CHANGED for notifying an application
 // that the current angle, or current number of angles available in a
 // multiangle video has changed.
-func NavigationInstanceMessageNewAnglesChanged(src gst.Object, curAngle uint, nAngles uint) *gst.Message {
+func NavigationMessageNewAnglesChanged(src gst.Object, curAngle uint, nAngles uint) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var carg2 C.guint       // in, none, casted
 	var carg3 C.guint       // in, none, casted
@@ -6866,7 +7843,7 @@ func NavigationInstanceMessageNewAnglesChanged(src gst.Object, curAngle uint, nA
 	return goret
 }
 
-// NavigationInstanceMessageNewCommandsChanged wraps gst_navigation_message_new_commands_changed
+// NavigationMessageNewCommandsChanged wraps gst_navigation_message_new_commands_changed
 // 
 // The function takes the following parameters:
 // 
@@ -6878,7 +7855,7 @@ func NavigationInstanceMessageNewAnglesChanged(src gst.Object, curAngle uint, nA
 //
 // Creates a new #GstNavigation message with type
 // #GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
-func NavigationInstanceMessageNewCommandsChanged(src gst.Object) *gst.Message {
+func NavigationMessageNewCommandsChanged(src gst.Object) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var cret  *C.GstMessage // return, full, converted
 
@@ -6894,7 +7871,7 @@ func NavigationInstanceMessageNewCommandsChanged(src gst.Object) *gst.Message {
 	return goret
 }
 
-// NavigationInstanceMessageNewEvent wraps gst_navigation_message_new_event
+// NavigationMessageNewEvent wraps gst_navigation_message_new_event
 // 
 // The function takes the following parameters:
 // 
@@ -6907,7 +7884,7 @@ func NavigationInstanceMessageNewCommandsChanged(src gst.Object) *gst.Message {
 //
 // Creates a new #GstNavigation message with type
 // #GST_NAVIGATION_MESSAGE_EVENT.
-func NavigationInstanceMessageNewEvent(src gst.Object, event *gst.Event) *gst.Message {
+func NavigationMessageNewEvent(src gst.Object, event *gst.Event) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var carg2 *C.GstEvent   // in, none, converted
 	var cret  *C.GstMessage // return, full, converted
@@ -6926,7 +7903,7 @@ func NavigationInstanceMessageNewEvent(src gst.Object, event *gst.Event) *gst.Me
 	return goret
 }
 
-// NavigationInstanceMessageNewMouseOver wraps gst_navigation_message_new_mouse_over
+// NavigationMessageNewMouseOver wraps gst_navigation_message_new_mouse_over
 // 
 // The function takes the following parameters:
 // 
@@ -6940,7 +7917,7 @@ func NavigationInstanceMessageNewEvent(src gst.Object, event *gst.Event) *gst.Me
 //
 // Creates a new #GstNavigation message with type
 // #GST_NAVIGATION_MESSAGE_MOUSE_OVER.
-func NavigationInstanceMessageNewMouseOver(src gst.Object, active bool) *gst.Message {
+func NavigationMessageNewMouseOver(src gst.Object, active bool) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var carg2 C.gboolean    // in
 	var cret  *C.GstMessage // return, full, converted
@@ -6961,7 +7938,7 @@ func NavigationInstanceMessageNewMouseOver(src gst.Object, active bool) *gst.Mes
 	return goret
 }
 
-// NavigationInstanceMessageParseAnglesChanged wraps gst_navigation_message_parse_angles_changed
+// NavigationMessageParseAnglesChanged wraps gst_navigation_message_parse_angles_changed
 // 
 // The function takes the following parameters:
 // 
@@ -6977,7 +7954,7 @@ func NavigationInstanceMessageNewMouseOver(src gst.Object, active bool) *gst.Mes
 //
 // Parse a #GstNavigation message of type GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
 // and extract the @cur_angle and @n_angles parameters.
-func NavigationInstanceMessageParseAnglesChanged(message *gst.Message) (uint, uint, bool) {
+func NavigationMessageParseAnglesChanged(message *gst.Message) (uint, uint, bool) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.guint       // out, full, casted
 	var carg3 C.guint       // out, full, casted
@@ -7001,7 +7978,7 @@ func NavigationInstanceMessageParseAnglesChanged(message *gst.Message) (uint, ui
 	return curAngle, nAngles, goret
 }
 
-// NavigationInstanceMessageParseEvent wraps gst_navigation_message_parse_event
+// NavigationMessageParseEvent wraps gst_navigation_message_parse_event
 // 
 // The function takes the following parameters:
 // 
@@ -7016,7 +7993,7 @@ func NavigationInstanceMessageParseAnglesChanged(message *gst.Message) (uint, ui
 // Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_EVENT
 // and extract contained #GstEvent. The caller must unref the @event when done
 // with it.
-func NavigationInstanceMessageParseEvent(message *gst.Message) (*gst.Event, bool) {
+func NavigationMessageParseEvent(message *gst.Message) (*gst.Event, bool) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 *C.GstEvent   // out, full, converted
 	var cret  C.gboolean    // return
@@ -7037,7 +8014,7 @@ func NavigationInstanceMessageParseEvent(message *gst.Message) (*gst.Event, bool
 	return event, goret
 }
 
-// NavigationInstanceMessageParseMouseOver wraps gst_navigation_message_parse_mouse_over
+// NavigationMessageParseMouseOver wraps gst_navigation_message_parse_mouse_over
 // 
 // The function takes the following parameters:
 // 
@@ -7052,7 +8029,7 @@ func NavigationInstanceMessageParseEvent(message *gst.Message) (*gst.Event, bool
 // Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_MOUSE_OVER
 // and extract the active/inactive flag. If the mouse over event is marked
 // active, it indicates that the mouse is over a clickable area.
-func NavigationInstanceMessageParseMouseOver(message *gst.Message) (bool, bool) {
+func NavigationMessageParseMouseOver(message *gst.Message) (bool, bool) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.gboolean    // out
 	var cret  C.gboolean    // return
@@ -7075,7 +8052,7 @@ func NavigationInstanceMessageParseMouseOver(message *gst.Message) (bool, bool) 
 	return active, goret
 }
 
-// NavigationInstanceQueryGetType wraps gst_navigation_query_get_type
+// NavigationQueryGetType wraps gst_navigation_query_get_type
 // 
 // The function takes the following parameters:
 // 
@@ -7087,7 +8064,7 @@ func NavigationInstanceMessageParseMouseOver(message *gst.Message) (bool, bool) 
 //
 // Inspect a #GstQuery and return the #GstNavigationQueryType associated with
 // it if it is a #GstNavigation query.
-func NavigationInstanceQueryGetType(query *gst.Query) NavigationQueryType {
+func NavigationQueryGetType(query *gst.Query) NavigationQueryType {
 	var carg1 *C.GstQuery              // in, none, converted
 	var cret  C.GstNavigationQueryType // return, none, casted
 
@@ -7103,7 +8080,7 @@ func NavigationInstanceQueryGetType(query *gst.Query) NavigationQueryType {
 	return goret
 }
 
-// NavigationInstanceQueryNewAngles wraps gst_navigation_query_new_angles
+// NavigationQueryNewAngles wraps gst_navigation_query_new_angles
 // The function returns the following values:
 // 
 // 	- goret *gst.Query 
@@ -7111,7 +8088,7 @@ func NavigationInstanceQueryGetType(query *gst.Query) NavigationQueryType {
 // Create a new #GstNavigation angles query. When executed, it will
 // query the pipeline for the set of currently available angles, which may be
 // greater than one in a multiangle video.
-func NavigationInstanceQueryNewAngles() *gst.Query {
+func NavigationQueryNewAngles() *gst.Query {
 	var cret *C.GstQuery // return, full, converted
 
 	cret = C.gst_navigation_query_new_angles()
@@ -7123,14 +8100,14 @@ func NavigationInstanceQueryNewAngles() *gst.Query {
 	return goret
 }
 
-// NavigationInstanceQueryNewCommands wraps gst_navigation_query_new_commands
+// NavigationQueryNewCommands wraps gst_navigation_query_new_commands
 // The function returns the following values:
 // 
 // 	- goret *gst.Query 
 //
 // Create a new #GstNavigation commands query. When executed, it will
 // query the pipeline for the set of currently available commands.
-func NavigationInstanceQueryNewCommands() *gst.Query {
+func NavigationQueryNewCommands() *gst.Query {
 	var cret *C.GstQuery // return, full, converted
 
 	cret = C.gst_navigation_query_new_commands()
@@ -7142,7 +8119,7 @@ func NavigationInstanceQueryNewCommands() *gst.Query {
 	return goret
 }
 
-// NavigationInstanceQueryParseAngles wraps gst_navigation_query_parse_angles
+// NavigationQueryParseAngles wraps gst_navigation_query_parse_angles
 // 
 // The function takes the following parameters:
 // 
@@ -7159,7 +8136,7 @@ func NavigationInstanceQueryNewCommands() *gst.Query {
 // Parse the current angle number in the #GstNavigation angles @query into the
 // #guint pointed to by the @cur_angle variable, and the number of available
 // angles into the #guint pointed to by the @n_angles variable.
-func NavigationInstanceQueryParseAngles(query *gst.Query) (uint, uint, bool) {
+func NavigationQueryParseAngles(query *gst.Query) (uint, uint, bool) {
 	var carg1 *C.GstQuery // in, none, converted
 	var carg2 C.guint     // out, full, casted
 	var carg3 C.guint     // out, full, casted
@@ -7183,7 +8160,7 @@ func NavigationInstanceQueryParseAngles(query *gst.Query) (uint, uint, bool) {
 	return curAngle, nAngles, goret
 }
 
-// NavigationInstanceQueryParseCommandsLength wraps gst_navigation_query_parse_commands_length
+// NavigationQueryParseCommandsLength wraps gst_navigation_query_parse_commands_length
 // 
 // The function takes the following parameters:
 // 
@@ -7195,7 +8172,7 @@ func NavigationInstanceQueryParseAngles(query *gst.Query) (uint, uint, bool) {
 // 	- goret bool 
 //
 // Parse the number of commands in the #GstNavigation commands @query.
-func NavigationInstanceQueryParseCommandsLength(query *gst.Query) (uint, bool) {
+func NavigationQueryParseCommandsLength(query *gst.Query) (uint, bool) {
 	var carg1 *C.GstQuery // in, none, converted
 	var carg2 C.guint     // out, full, casted
 	var cret  C.gboolean  // return
@@ -7216,7 +8193,7 @@ func NavigationInstanceQueryParseCommandsLength(query *gst.Query) (uint, bool) {
 	return nCmds, goret
 }
 
-// NavigationInstanceQueryParseCommandsNth wraps gst_navigation_query_parse_commands_nth
+// NavigationQueryParseCommandsNth wraps gst_navigation_query_parse_commands_nth
 // 
 // The function takes the following parameters:
 // 
@@ -7231,7 +8208,7 @@ func NavigationInstanceQueryParseCommandsLength(query *gst.Query) (uint, bool) {
 // Parse the #GstNavigation command query and retrieve the @nth command from
 // it into @cmd. If the list contains less elements than @nth, @cmd will be
 // set to #GST_NAVIGATION_COMMAND_INVALID.
-func NavigationInstanceQueryParseCommandsNth(query *gst.Query, nth uint) (NavigationCommand, bool) {
+func NavigationQueryParseCommandsNth(query *gst.Query, nth uint) (NavigationCommand, bool) {
 	var carg1 *C.GstQuery            // in, none, converted
 	var carg2 C.guint                // in, none, casted
 	var carg3 C.GstNavigationCommand // out, full, casted
@@ -7255,7 +8232,7 @@ func NavigationInstanceQueryParseCommandsNth(query *gst.Query, nth uint) (Naviga
 	return cmd, goret
 }
 
-// NavigationInstanceQuerySetAngles wraps gst_navigation_query_set_angles
+// NavigationQuerySetAngles wraps gst_navigation_query_set_angles
 // 
 // The function takes the following parameters:
 // 
@@ -7264,7 +8241,7 @@ func NavigationInstanceQueryParseCommandsNth(query *gst.Query, nth uint) (Naviga
 // 	- nAngles uint: the number of viewing angles to set. 
 //
 // Set the #GstNavigation angles query result field in @query.
-func NavigationInstanceQuerySetAngles(query *gst.Query, curAngle uint, nAngles uint) {
+func NavigationQuerySetAngles(query *gst.Query, curAngle uint, nAngles uint) {
 	var carg1 *C.GstQuery // in, none, converted
 	var carg2 C.guint     // in, none, casted
 	var carg3 C.guint     // in, none, casted
@@ -7279,7 +8256,7 @@ func NavigationInstanceQuerySetAngles(query *gst.Query, curAngle uint, nAngles u
 	runtime.KeepAlive(nAngles)
 }
 
-// NavigationInstanceQuerySetCommandsv wraps gst_navigation_query_set_commandsv
+// NavigationQuerySetCommandsv wraps gst_navigation_query_set_commandsv
 // 
 // The function takes the following parameters:
 // 
@@ -7289,7 +8266,7 @@ func NavigationInstanceQuerySetAngles(query *gst.Query, curAngle uint, nAngles u
 //
 // Set the #GstNavigation command query result fields in @query. The number
 // of commands passed must be equal to @n_commands.
-func NavigationInstanceQuerySetCommandsv(query *gst.Query, cmds []NavigationCommand) {
+func NavigationQuerySetCommandsv(query *gst.Query, cmds []NavigationCommand) {
 	var carg1 *C.GstQuery             // in, none, converted
 	var carg2 C.gint                  // implicit
 	var carg3 *C.GstNavigationCommand // in, transfer: none, C Pointers: 1, Name: array[NavigationCommand], array (inner: *typesystem.Enum, length-by: carg2)
@@ -7645,7 +8622,7 @@ func UnsafeVideoOrientationToGlibFull(c VideoOrientation) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
-// VideoOrientationInstanceFromTag wraps gst_video_orientation_from_tag
+// VideoOrientationFromTag wraps gst_video_orientation_from_tag
 // 
 // The function takes the following parameters:
 // 
@@ -7658,7 +8635,7 @@ func UnsafeVideoOrientationToGlibFull(c VideoOrientation) unsafe.Pointer {
 //
 // Parses the "image-orientation" tag and transforms it into the
 // #GstVideoOrientationMethod enum.
-func VideoOrientationInstanceFromTag(taglist *gst.TagList) (VideoOrientationMethod, bool) {
+func VideoOrientationFromTag(taglist *gst.TagList) (VideoOrientationMethod, bool) {
 	var carg1 *C.GstTagList               // in, none, converted
 	var carg2 C.GstVideoOrientationMethod // out, full, casted
 	var cret  C.gboolean                  // return
@@ -8309,7 +9286,7 @@ func UnsafeVideoOverlayToGlibFull(c VideoOverlay) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
-// VideoOverlayInstanceSetProperty wraps gst_video_overlay_set_property
+// VideoOverlaySetProperty wraps gst_video_overlay_set_property
 // 
 // The function takes the following parameters:
 // 
@@ -8326,7 +9303,7 @@ func UnsafeVideoOverlayToGlibFull(c VideoOverlay) unsafe.Pointer {
 // interface that want the render rectangle to be controllable using
 // properties. This helper will parse and set the render rectangle calling
 // gst_video_overlay_set_render_rectangle().
-func VideoOverlayInstanceSetProperty(object gobject.Object, lastPropId int, propertyId uint, value *gobject.Value) bool {
+func VideoOverlaySetProperty(object gobject.Object, lastPropId int, propertyId uint, value *gobject.Value) bool {
 	var carg1 *C.GObject // in, none, converted
 	var carg2 C.gint     // in, none, casted
 	var carg3 C.guint    // in, none, casted
@@ -8925,14 +9902,14 @@ func UnsafeVideoBufferPoolToGlibFull(c VideoBufferPool) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewVideoBufferPoolInstance wraps gst_video_buffer_pool_new
+// NewVideoBufferPool wraps gst_video_buffer_pool_new
 // The function returns the following values:
 // 
 // 	- goret gst.BufferPool 
 //
 // Create a new bufferpool that can allocate video frames. This bufferpool
 // supports all the video bufferpool options.
-func NewVideoBufferPoolInstance() gst.BufferPool {
+func NewVideoBufferPool() gst.BufferPool {
 	var cret *C.GstBufferPool // return, full, converted
 
 	cret = C.gst_video_buffer_pool_new()
@@ -11972,7 +12949,7 @@ func UnsafeVideoSinkToGlibFull(c VideoSink) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// VideoSinkInstanceCenterRect wraps gst_video_sink_center_rect
+// VideoSinkCenterRect wraps gst_video_sink_center_rect
 // 
 // The function takes the following parameters:
 // 
@@ -11986,7 +12963,7 @@ func UnsafeVideoSinkToGlibFull(c VideoSink) unsafe.Pointer {
 //
 //
 // Deprecated: (since 1.20.0) Use gst_video_center_rect() instead.
-func VideoSinkInstanceCenterRect(src VideoRectangle, dst VideoRectangle, scaling bool) VideoRectangle {
+func VideoSinkCenterRect(src VideoRectangle, dst VideoRectangle, scaling bool) VideoRectangle {
 	var carg1 C.GstVideoRectangle // in, transfer: none, C Pointers: 0, Name: VideoRectangle
 	var carg2 C.GstVideoRectangle // in, transfer: none, C Pointers: 0, Name: VideoRectangle
 	var carg4 C.gboolean          // in

@@ -3,6 +3,7 @@
 package gstsdp
 
 import (
+	"fmt"
 	"runtime"
 	"unsafe"
 
@@ -57,6 +58,15 @@ const (
 )
 
 
+func (e MIKEYCacheType) String() string {
+	switch e {
+		case MikeyCacheNone: return "MikeyCacheNone"
+		case MikeyCacheAlways: return "MikeyCacheAlways"
+		case MikeyCacheForCsb: return "MikeyCacheForCsb"
+		default: return fmt.Sprintf("MIKEYCacheType(%d)", e)
+	}
+}
+
 // MIKEYEncAlg wraps GstMIKEYEncAlg
 //
 // The encryption algorithm used to encrypt the Encr data field
@@ -82,6 +92,16 @@ const (
 )
 
 
+func (e MIKEYEncAlg) String() string {
+	switch e {
+		case MikeyEncAesKw128: return "MikeyEncAesKw128"
+		case MikeyEncAesGcm128: return "MikeyEncAesGcm128"
+		case MikeyEncNull: return "MikeyEncNull"
+		case MikeyEncAesCm128: return "MikeyEncAesCm128"
+		default: return fmt.Sprintf("MIKEYEncAlg(%d)", e)
+	}
+}
+
 // MIKEYKVType wraps GstMIKEYKVType
 //
 // The key validity type
@@ -103,6 +123,15 @@ const (
 )
 
 
+func (e MIKEYKVType) String() string {
+	switch e {
+		case MikeyKvInterval: return "MikeyKvInterval"
+		case MikeyKvNull: return "MikeyKvNull"
+		case MikeyKvSpi: return "MikeyKvSpi"
+		default: return fmt.Sprintf("MIKEYKVType(%d)", e)
+	}
+}
+
 // MIKEYKeyDataType wraps GstMIKEYKeyDataType
 //
 // The type of key.
@@ -119,6 +148,14 @@ const (
 	MikeyKdTek MIKEYKeyDataType = 2
 )
 
+
+func (e MIKEYKeyDataType) String() string {
+	switch e {
+		case MikeyKdTgk: return "MikeyKdTgk"
+		case MikeyKdTek: return "MikeyKdTek"
+		default: return fmt.Sprintf("MIKEYKeyDataType(%d)", e)
+	}
+}
 
 // MIKEYMacAlg wraps GstMIKEYMacAlg
 //
@@ -137,6 +174,14 @@ const (
 )
 
 
+func (e MIKEYMacAlg) String() string {
+	switch e {
+		case MikeyMacHMACSHA1160: return "MikeyMacHMACSHA1160"
+		case MikeyMacNull: return "MikeyMacNull"
+		default: return fmt.Sprintf("MIKEYMacAlg(%d)", e)
+	}
+}
+
 // MIKEYMapType wraps GstMIKEYMapType
 //
 // Specifies the method of uniquely mapping Crypto Sessions to the security
@@ -151,6 +196,13 @@ const (
 )
 
 
+func (e MIKEYMapType) String() string {
+	switch e {
+		case MikeyMapTypeSrtp: return "MikeyMapTypeSrtp"
+		default: return fmt.Sprintf("MIKEYMapType(%d)", e)
+	}
+}
+
 // MIKEYPRFFunc wraps GstMIKEYPRFFunc
 //
 // The PRF function that has been/will be used for key derivation
@@ -163,6 +215,13 @@ const (
 	MikeyPrfMikey1 MIKEYPRFFunc = 0
 )
 
+
+func (e MIKEYPRFFunc) String() string {
+	switch e {
+		case MikeyPrfMikey1: return "MikeyPrfMikey1"
+		default: return fmt.Sprintf("MIKEYPRFFunc(%d)", e)
+	}
+}
 
 // MIKEYPayloadType wraps GstMIKEYPayloadType
 //
@@ -233,6 +292,27 @@ const (
 )
 
 
+func (e MIKEYPayloadType) String() string {
+	switch e {
+		case MikeyPtPke: return "MikeyPtPke"
+		case MikeyPtT: return "MikeyPtT"
+		case MikeyPtChash: return "MikeyPtChash"
+		case MikeyPtLast: return "MikeyPtLast"
+		case MikeyPtKemac: return "MikeyPtKemac"
+		case MikeyPtRand: return "MikeyPtRand"
+		case MikeyPtSp: return "MikeyPtSp"
+		case MikeyPtErr: return "MikeyPtErr"
+		case MikeyPtKeyData: return "MikeyPtKeyData"
+		case MikeyPtDh: return "MikeyPtDh"
+		case MikeyPtSign: return "MikeyPtSign"
+		case MikeyPtID: return "MikeyPtID"
+		case MikeyPtCert: return "MikeyPtCert"
+		case MikeyPtV: return "MikeyPtV"
+		case MikeyPtGenExt: return "MikeyPtGenExt"
+		default: return fmt.Sprintf("MIKEYPayloadType(%d)", e)
+	}
+}
+
 // MIKEYSecProto wraps GstMIKEYSecProto
 //
 // Specifies the security protocol
@@ -245,6 +325,13 @@ const (
 	MikeySecProtoSrtp MIKEYSecProto = 0
 )
 
+
+func (e MIKEYSecProto) String() string {
+	switch e {
+		case MikeySecProtoSrtp: return "MikeySecProtoSrtp"
+		default: return fmt.Sprintf("MIKEYSecProto(%d)", e)
+	}
+}
 
 // MIKEYSecSRTP wraps GstMIKEYSecSRTP
 //
@@ -311,6 +398,26 @@ const (
 )
 
 
+func (e MIKEYSecSRTP) String() string {
+	switch e {
+		case MikeySpSrtpEncAlg: return "MikeySpSrtpEncAlg"
+		case MikeySpSrtpAuthAlg: return "MikeySpSrtpAuthAlg"
+		case MikeySpSrtpPrf: return "MikeySpSrtpPrf"
+		case MikeySpSrtpSrtpEnc: return "MikeySpSrtpSrtpEnc"
+		case MikeySpSrtpFecOrder: return "MikeySpSrtpFecOrder"
+		case MikeySpSrtpAuthTagLen: return "MikeySpSrtpAuthTagLen"
+		case MikeySpSrtpSrtpPrefixLen: return "MikeySpSrtpSrtpPrefixLen"
+		case MikeySpSrtpAeadAuthTagLen: return "MikeySpSrtpAeadAuthTagLen"
+		case MikeySpSrtpEncKeyLen: return "MikeySpSrtpEncKeyLen"
+		case MikeySpSrtpAuthKeyLen: return "MikeySpSrtpAuthKeyLen"
+		case MikeySpSrtpSaltKeyLen: return "MikeySpSrtpSaltKeyLen"
+		case MikeySpSrtpKeyDerivRate: return "MikeySpSrtpKeyDerivRate"
+		case MikeySpSrtpSrtcpEnc: return "MikeySpSrtpSrtcpEnc"
+		case MikeySpSrtpSrtpAuth: return "MikeySpSrtpSrtpAuth"
+		default: return fmt.Sprintf("MIKEYSecSRTP(%d)", e)
+	}
+}
+
 // MIKEYTSType wraps GstMIKEYTSType
 //
 // Specifies the timestamp type.
@@ -331,6 +438,15 @@ const (
 	MikeyTsTypeCounter MIKEYTSType = 2
 )
 
+
+func (e MIKEYTSType) String() string {
+	switch e {
+		case MikeyTsTypeNtpUTC: return "MikeyTsTypeNtpUTC"
+		case MikeyTsTypeNtp: return "MikeyTsTypeNtp"
+		case MikeyTsTypeCounter: return "MikeyTsTypeCounter"
+		default: return fmt.Sprintf("MIKEYTSType(%d)", e)
+	}
+}
 
 // MIKEYType wraps GstMIKEYType
 //
@@ -373,6 +489,20 @@ const (
 )
 
 
+func (e MIKEYType) String() string {
+	switch e {
+		case MikeyTypeDhResp: return "MikeyTypeDhResp"
+		case MikeyTypeError: return "MikeyTypeError"
+		case MikeyTypeInvalid: return "MikeyTypeInvalid"
+		case MikeyTypePskInit: return "MikeyTypePskInit"
+		case MikeyTypePskVerify: return "MikeyTypePskVerify"
+		case MikeyTypePkInit: return "MikeyTypePkInit"
+		case MikeyTypePkVerify: return "MikeyTypePkVerify"
+		case MikeyTypeDhInit: return "MikeyTypeDhInit"
+		default: return fmt.Sprintf("MIKEYType(%d)", e)
+	}
+}
+
 // SDPResult wraps GstSDPResult
 //
 // Return values for the SDP functions.
@@ -389,6 +519,14 @@ const (
 	SdpEinval SDPResult = -1
 )
 
+
+func (e SDPResult) String() string {
+	switch e {
+		case SdpOK: return "SdpOK"
+		case SdpEinval: return "SdpEinval"
+		default: return fmt.Sprintf("SDPResult(%d)", e)
+	}
+}
 
 // SdpAddressIsMulticast wraps gst_sdp_address_is_multicast
 // 

@@ -3,7 +3,9 @@
 package gsttag
 
 import (
+	"fmt"
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -70,6 +72,15 @@ var _ gobject.GoValueInitializer = TagDemuxResult(0)
 func (e TagDemuxResult) InitGoValue(v *gobject.Value) {
 	v.Init(TypeTagDemuxResult)
 	v.SetEnum(int(e))
+}
+
+func (e TagDemuxResult) String() string {
+	switch e {
+		case TagDemuxResultBrokenTag: return "TagDemuxResultBrokenTag"
+		case TagDemuxResultAgain: return "TagDemuxResultAgain"
+		case TagDemuxResultOK: return "TagDemuxResultOK"
+		default: return fmt.Sprintf("TagDemuxResult(%d)", e)
+	}
 }
 
 // TagImageType wraps GstTagImageType
@@ -174,6 +185,32 @@ func (e TagImageType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e TagImageType) String() string {
+	switch e {
+		case TagImageTypeBandOrchestra: return "TagImageTypeBandOrchestra"
+		case TagImageTypeComposer: return "TagImageTypeComposer"
+		case TagImageTypeDuringPerformance: return "TagImageTypeDuringPerformance"
+		case TagImageTypeVideoCapture: return "TagImageTypeVideoCapture"
+		case TagImageTypeFrontCover: return "TagImageTypeFrontCover"
+		case TagImageTypeMedium: return "TagImageTypeMedium"
+		case TagImageTypeLyricist: return "TagImageTypeLyricist"
+		case TagImageTypeFish: return "TagImageTypeFish"
+		case TagImageTypePublisherStudioLogo: return "TagImageTypePublisherStudioLogo"
+		case TagImageTypeDuringRecording: return "TagImageTypeDuringRecording"
+		case TagImageTypeUndefined: return "TagImageTypeUndefined"
+		case TagImageTypeLeafletPage: return "TagImageTypeLeafletPage"
+		case TagImageTypeLeadArtist: return "TagImageTypeLeadArtist"
+		case TagImageTypeArtist: return "TagImageTypeArtist"
+		case TagImageTypeRecordingLocation: return "TagImageTypeRecordingLocation"
+		case TagImageTypeIllustration: return "TagImageTypeIllustration"
+		case TagImageTypeBandArtistLogo: return "TagImageTypeBandArtistLogo"
+		case TagImageTypeNone: return "TagImageTypeNone"
+		case TagImageTypeConductor: return "TagImageTypeConductor"
+		case TagImageTypeBackCover: return "TagImageTypeBackCover"
+		default: return fmt.Sprintf("TagImageType(%d)", e)
+	}
+}
+
 // TagLicenseFlags wraps GstTagLicenseFlags
 //
 // See http://creativecommons.org/ns for more information.
@@ -269,6 +306,57 @@ var _ gobject.GoValueInitializer = TagLicenseFlags(0)
 func (f TagLicenseFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeTagLicenseFlags)
 	v.SetFlags(int(f))
+}
+
+func (f TagLicenseFlags) String() string {
+	if f == 0 {
+		return "TagLicenseFlags(0)"
+	}
+
+	var parts []string
+	if (f & TagLicensePermitsReproduction) != 0 {
+		parts = append(parts, "TagLicensePermitsReproduction")
+	}
+	if (f & TagLicensePermitsDistribution) != 0 {
+		parts = append(parts, "TagLicensePermitsDistribution")
+	}
+	if (f & TagLicensePermitsDerivativeWorks) != 0 {
+		parts = append(parts, "TagLicensePermitsDerivativeWorks")
+	}
+	if (f & TagLicensePermitsSharing) != 0 {
+		parts = append(parts, "TagLicensePermitsSharing")
+	}
+	if (f & TagLicenseRequiresNotice) != 0 {
+		parts = append(parts, "TagLicenseRequiresNotice")
+	}
+	if (f & TagLicenseRequiresAttribution) != 0 {
+		parts = append(parts, "TagLicenseRequiresAttribution")
+	}
+	if (f & TagLicenseRequiresShareAlike) != 0 {
+		parts = append(parts, "TagLicenseRequiresShareAlike")
+	}
+	if (f & TagLicenseRequiresSourceCode) != 0 {
+		parts = append(parts, "TagLicenseRequiresSourceCode")
+	}
+	if (f & TagLicenseRequiresCopyleft) != 0 {
+		parts = append(parts, "TagLicenseRequiresCopyleft")
+	}
+	if (f & TagLicenseRequiresLesserCopyleft) != 0 {
+		parts = append(parts, "TagLicenseRequiresLesserCopyleft")
+	}
+	if (f & TagLicenseProhibitsCommercialUse) != 0 {
+		parts = append(parts, "TagLicenseProhibitsCommercialUse")
+	}
+	if (f & TagLicenseProhibitsHighIncomeNationUse) != 0 {
+		parts = append(parts, "TagLicenseProhibitsHighIncomeNationUse")
+	}
+	if (f & TagLicenseCreativeCommonsLicense) != 0 {
+		parts = append(parts, "TagLicenseCreativeCommonsLicense")
+	}
+	if (f & TagLicenseFreeSoftwareFoundationLicense) != 0 {
+		parts = append(parts, "TagLicenseFreeSoftwareFoundationLicense")
+	}
+	return "TagLicenseFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // TagCheckLanguageCode wraps gst_tag_check_language_code

@@ -3,7 +3,9 @@
 package gstaudio
 
 import (
+	"fmt"
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
@@ -183,6 +185,18 @@ func (e AudioBaseSinkDiscontReason) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AudioBaseSinkDiscontReason) String() string {
+	switch e {
+		case AudioBaseSinkDiscontReasonNewCaps: return "AudioBaseSinkDiscontReasonNewCaps"
+		case AudioBaseSinkDiscontReasonFlush: return "AudioBaseSinkDiscontReasonFlush"
+		case AudioBaseSinkDiscontReasonSyncLatency: return "AudioBaseSinkDiscontReasonSyncLatency"
+		case AudioBaseSinkDiscontReasonAlignment: return "AudioBaseSinkDiscontReasonAlignment"
+		case AudioBaseSinkDiscontReasonDeviceFailure: return "AudioBaseSinkDiscontReasonDeviceFailure"
+		case AudioBaseSinkDiscontReasonNoDiscont: return "AudioBaseSinkDiscontReasonNoDiscont"
+		default: return fmt.Sprintf("AudioBaseSinkDiscontReason(%d)", e)
+	}
+}
+
 // AudioBaseSinkSlaveMethod wraps GstAudioBaseSinkSlaveMethod
 //
 // Different possible clock slaving algorithms used when the internal audio
@@ -218,6 +232,16 @@ var _ gobject.GoValueInitializer = AudioBaseSinkSlaveMethod(0)
 func (e AudioBaseSinkSlaveMethod) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioBaseSinkSlaveMethod)
 	v.SetEnum(int(e))
+}
+
+func (e AudioBaseSinkSlaveMethod) String() string {
+	switch e {
+		case AudioBaseSinkSlaveResample: return "AudioBaseSinkSlaveResample"
+		case AudioBaseSinkSlaveSkew: return "AudioBaseSinkSlaveSkew"
+		case AudioBaseSinkSlaveNone: return "AudioBaseSinkSlaveNone"
+		case AudioBaseSinkSlaveCustom: return "AudioBaseSinkSlaveCustom"
+		default: return fmt.Sprintf("AudioBaseSinkSlaveMethod(%d)", e)
+	}
 }
 
 // AudioBaseSrcSlaveMethod wraps GstAudioBaseSrcSlaveMethod
@@ -258,6 +282,16 @@ func (e AudioBaseSrcSlaveMethod) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AudioBaseSrcSlaveMethod) String() string {
+	switch e {
+		case AudioBaseSrcSlaveResample: return "AudioBaseSrcSlaveResample"
+		case AudioBaseSrcSlaveReTimestamp: return "AudioBaseSrcSlaveReTimestamp"
+		case AudioBaseSrcSlaveSkew: return "AudioBaseSrcSlaveSkew"
+		case AudioBaseSrcSlaveNone: return "AudioBaseSrcSlaveNone"
+		default: return fmt.Sprintf("AudioBaseSrcSlaveMethod(%d)", e)
+	}
+}
+
 // AudioCdSrcMode wraps GstAudioCdSrcMode
 //
 // Mode in which the CD audio source operates. Influences timestamping,
@@ -284,6 +318,14 @@ var _ gobject.GoValueInitializer = AudioCdSrcMode(0)
 func (e AudioCdSrcMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioCdSrcMode)
 	v.SetEnum(int(e))
+}
+
+func (e AudioCdSrcMode) String() string {
+	switch e {
+		case AudioCdSrcModeNormal: return "AudioCdSrcModeNormal"
+		case AudioCdSrcModeContinuous: return "AudioCdSrcModeContinuous"
+		default: return fmt.Sprintf("AudioCdSrcMode(%d)", e)
+	}
 }
 
 // AudioChannelPosition wraps GstAudioChannelPosition
@@ -455,6 +497,43 @@ func (e AudioChannelPosition) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AudioChannelPosition) String() string {
+	switch e {
+		case AudioChannelPositionFrontLeft: return "AudioChannelPositionFrontLeft"
+		case AudioChannelPositionFrontCenter: return "AudioChannelPositionFrontCenter"
+		case AudioChannelPositionTopFrontRight: return "AudioChannelPositionTopFrontRight"
+		case AudioChannelPositionWideRight: return "AudioChannelPositionWideRight"
+		case AudioChannelPositionTopSideRight: return "AudioChannelPositionTopSideRight"
+		case AudioChannelPositionInvalid: return "AudioChannelPositionInvalid"
+		case AudioChannelPositionRearLeft: return "AudioChannelPositionRearLeft"
+		case AudioChannelPositionRearRight: return "AudioChannelPositionRearRight"
+		case AudioChannelPositionFrontLeftOfCenter: return "AudioChannelPositionFrontLeftOfCenter"
+		case AudioChannelPositionSideRight: return "AudioChannelPositionSideRight"
+		case AudioChannelPositionTopRearLeft: return "AudioChannelPositionTopRearLeft"
+		case AudioChannelPositionTopSideLeft: return "AudioChannelPositionTopSideLeft"
+		case AudioChannelPositionRearCenter: return "AudioChannelPositionRearCenter"
+		case AudioChannelPositionLfe2: return "AudioChannelPositionLfe2"
+		case AudioChannelPositionFrontRight: return "AudioChannelPositionFrontRight"
+		case AudioChannelPositionLfe1: return "AudioChannelPositionLfe1"
+		case AudioChannelPositionTopFrontLeft: return "AudioChannelPositionTopFrontLeft"
+		case AudioChannelPositionBottomFrontRight: return "AudioChannelPositionBottomFrontRight"
+		case AudioChannelPositionSurroundRight: return "AudioChannelPositionSurroundRight"
+		case AudioChannelPositionTopFrontCenter: return "AudioChannelPositionTopFrontCenter"
+		case AudioChannelPositionTopCenter: return "AudioChannelPositionTopCenter"
+		case AudioChannelPositionBottomFrontCenter: return "AudioChannelPositionBottomFrontCenter"
+		case AudioChannelPositionWideLeft: return "AudioChannelPositionWideLeft"
+		case AudioChannelPositionSurroundLeft: return "AudioChannelPositionSurroundLeft"
+		case AudioChannelPositionTopRearCenter: return "AudioChannelPositionTopRearCenter"
+		case AudioChannelPositionBottomFrontLeft: return "AudioChannelPositionBottomFrontLeft"
+		case AudioChannelPositionSideLeft: return "AudioChannelPositionSideLeft"
+		case AudioChannelPositionTopRearRight: return "AudioChannelPositionTopRearRight"
+		case AudioChannelPositionMono: return "AudioChannelPositionMono"
+		case AudioChannelPositionFrontRightOfCenter: return "AudioChannelPositionFrontRightOfCenter"
+		case AudioChannelPositionNone: return "AudioChannelPositionNone"
+		default: return fmt.Sprintf("AudioChannelPosition(%d)", e)
+	}
+}
+
 // AudioDitherMethod wraps GstAudioDitherMethod
 //
 // Set of available dithering methods.
@@ -488,6 +567,16 @@ var _ gobject.GoValueInitializer = AudioDitherMethod(0)
 func (e AudioDitherMethod) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioDitherMethod)
 	v.SetEnum(int(e))
+}
+
+func (e AudioDitherMethod) String() string {
+	switch e {
+		case AudioDitherNone: return "AudioDitherNone"
+		case AudioDitherRpdf: return "AudioDitherRpdf"
+		case AudioDitherTpdf: return "AudioDitherTpdf"
+		case AudioDitherTpdfHf: return "AudioDitherTpdfHf"
+		default: return fmt.Sprintf("AudioDitherMethod(%d)", e)
+	}
 }
 
 // AudioFormat wraps GstAudioFormat
@@ -693,6 +782,44 @@ func (e AudioFormat) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AudioFormat) String() string {
+	switch e {
+		case AudioFormatU2432LE: return "AudioFormatU2432LE"
+		case AudioFormatS20Be: return "AudioFormatS20Be"
+		case AudioFormatS18LE: return "AudioFormatS18LE"
+		case AudioFormatF32LE: return "AudioFormatF32LE"
+		case AudioFormatS8: return "AudioFormatS8"
+		case AudioFormatU8: return "AudioFormatU8"
+		case AudioFormatU2432Be: return "AudioFormatU2432Be"
+		case AudioFormatF64LE: return "AudioFormatF64LE"
+		case AudioFormatUnknown: return "AudioFormatUnknown"
+		case AudioFormatS32Be: return "AudioFormatS32Be"
+		case AudioFormatU16LE: return "AudioFormatU16LE"
+		case AudioFormatU32Be: return "AudioFormatU32Be"
+		case AudioFormatF32Be: return "AudioFormatF32Be"
+		case AudioFormatS16Be: return "AudioFormatS16Be"
+		case AudioFormatS2432LE: return "AudioFormatS2432LE"
+		case AudioFormatS2432Be: return "AudioFormatS2432Be"
+		case AudioFormatS24LE: return "AudioFormatS24LE"
+		case AudioFormatU24LE: return "AudioFormatU24LE"
+		case AudioFormatU20Be: return "AudioFormatU20Be"
+		case AudioFormatF64Be: return "AudioFormatF64Be"
+		case AudioFormatEncoded: return "AudioFormatEncoded"
+		case AudioFormatS32LE: return "AudioFormatS32LE"
+		case AudioFormatS20LE: return "AudioFormatS20LE"
+		case AudioFormatS18Be: return "AudioFormatS18Be"
+		case AudioFormatS16LE: return "AudioFormatS16LE"
+		case AudioFormatU16Be: return "AudioFormatU16Be"
+		case AudioFormatU32LE: return "AudioFormatU32LE"
+		case AudioFormatS24Be: return "AudioFormatS24Be"
+		case AudioFormatU24Be: return "AudioFormatU24Be"
+		case AudioFormatU18Be: return "AudioFormatU18Be"
+		case AudioFormatU20LE: return "AudioFormatU20LE"
+		case AudioFormatU18LE: return "AudioFormatU18LE"
+		default: return fmt.Sprintf("AudioFormat(%d)", e)
+	}
+}
+
 // AudioLayout wraps GstAudioLayout
 //
 // Layout of the audio samples for the different channels.
@@ -718,6 +845,14 @@ var _ gobject.GoValueInitializer = AudioLayout(0)
 func (e AudioLayout) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioLayout)
 	v.SetEnum(int(e))
+}
+
+func (e AudioLayout) String() string {
+	switch e {
+		case AudioLayoutInterleaved: return "AudioLayoutInterleaved"
+		case AudioLayoutNonInterleaved: return "AudioLayoutNonInterleaved"
+		default: return fmt.Sprintf("AudioLayout(%d)", e)
+	}
 }
 
 // AudioNoiseShapingMethod wraps GstAudioNoiseShapingMethod
@@ -759,6 +894,17 @@ func (e AudioNoiseShapingMethod) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AudioNoiseShapingMethod) String() string {
+	switch e {
+		case AudioNoiseShapingMedium: return "AudioNoiseShapingMedium"
+		case AudioNoiseShapingHigh: return "AudioNoiseShapingHigh"
+		case AudioNoiseShapingNone: return "AudioNoiseShapingNone"
+		case AudioNoiseShapingErrorFeedback: return "AudioNoiseShapingErrorFeedback"
+		case AudioNoiseShapingSimple: return "AudioNoiseShapingSimple"
+		default: return fmt.Sprintf("AudioNoiseShapingMethod(%d)", e)
+	}
+}
+
 // AudioResamplerFilterInterpolation wraps GstAudioResamplerFilterInterpolation
 //
 // The different filter interpolation methods.
@@ -790,6 +936,15 @@ var _ gobject.GoValueInitializer = AudioResamplerFilterInterpolation(0)
 func (e AudioResamplerFilterInterpolation) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioResamplerFilterInterpolation)
 	v.SetEnum(int(e))
+}
+
+func (e AudioResamplerFilterInterpolation) String() string {
+	switch e {
+		case AudioResamplerFilterInterpolationNone: return "AudioResamplerFilterInterpolationNone"
+		case AudioResamplerFilterInterpolationLinear: return "AudioResamplerFilterInterpolationLinear"
+		case AudioResamplerFilterInterpolationCubic: return "AudioResamplerFilterInterpolationCubic"
+		default: return fmt.Sprintf("AudioResamplerFilterInterpolation(%d)", e)
+	}
 }
 
 // AudioResamplerFilterMode wraps GstAudioResamplerFilterMode
@@ -825,6 +980,15 @@ var _ gobject.GoValueInitializer = AudioResamplerFilterMode(0)
 func (e AudioResamplerFilterMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioResamplerFilterMode)
 	v.SetEnum(int(e))
+}
+
+func (e AudioResamplerFilterMode) String() string {
+	switch e {
+		case AudioResamplerFilterModeFull: return "AudioResamplerFilterModeFull"
+		case AudioResamplerFilterModeAuto: return "AudioResamplerFilterModeAuto"
+		case AudioResamplerFilterModeInterpolated: return "AudioResamplerFilterModeInterpolated"
+		default: return fmt.Sprintf("AudioResamplerFilterMode(%d)", e)
+	}
 }
 
 // AudioResamplerMethod wraps GstAudioResamplerMethod
@@ -866,6 +1030,17 @@ var _ gobject.GoValueInitializer = AudioResamplerMethod(0)
 func (e AudioResamplerMethod) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioResamplerMethod)
 	v.SetEnum(int(e))
+}
+
+func (e AudioResamplerMethod) String() string {
+	switch e {
+		case AudioResamplerMethodKaiser: return "AudioResamplerMethodKaiser"
+		case AudioResamplerMethodNearest: return "AudioResamplerMethodNearest"
+		case AudioResamplerMethodLinear: return "AudioResamplerMethodLinear"
+		case AudioResamplerMethodCubic: return "AudioResamplerMethodCubic"
+		case AudioResamplerMethodBlackmanNuttall: return "AudioResamplerMethodBlackmanNuttall"
+		default: return fmt.Sprintf("AudioResamplerMethod(%d)", e)
+	}
 }
 
 // AudioRingBufferFormatType wraps GstAudioRingBufferFormatType
@@ -951,6 +1126,28 @@ func (e AudioRingBufferFormatType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AudioRingBufferFormatType) String() string {
+	switch e {
+		case AudioRingBufferFormatTypeMuLaw: return "AudioRingBufferFormatTypeMuLaw"
+		case AudioRingBufferFormatTypeALaw: return "AudioRingBufferFormatTypeALaw"
+		case AudioRingBufferFormatTypeMpeg2Aac: return "AudioRingBufferFormatTypeMpeg2Aac"
+		case AudioRingBufferFormatTypeDsd: return "AudioRingBufferFormatTypeDsd"
+		case AudioRingBufferFormatTypeMpeg: return "AudioRingBufferFormatTypeMpeg"
+		case AudioRingBufferFormatTypeGsm: return "AudioRingBufferFormatTypeGsm"
+		case AudioRingBufferFormatTypeDts: return "AudioRingBufferFormatTypeDts"
+		case AudioRingBufferFormatTypeMpeg4Aac: return "AudioRingBufferFormatTypeMpeg4Aac"
+		case AudioRingBufferFormatTypeMpeg4AacRaw: return "AudioRingBufferFormatTypeMpeg4AacRaw"
+		case AudioRingBufferFormatTypeFlac: return "AudioRingBufferFormatTypeFlac"
+		case AudioRingBufferFormatTypeRaw: return "AudioRingBufferFormatTypeRaw"
+		case AudioRingBufferFormatTypeImaAdpcm: return "AudioRingBufferFormatTypeImaAdpcm"
+		case AudioRingBufferFormatTypeAc3: return "AudioRingBufferFormatTypeAc3"
+		case AudioRingBufferFormatTypeEac3: return "AudioRingBufferFormatTypeEac3"
+		case AudioRingBufferFormatTypeIec958: return "AudioRingBufferFormatTypeIec958"
+		case AudioRingBufferFormatTypeMpeg2AacRaw: return "AudioRingBufferFormatTypeMpeg2AacRaw"
+		default: return fmt.Sprintf("AudioRingBufferFormatType(%d)", e)
+	}
+}
+
 // AudioRingBufferState wraps GstAudioRingBufferState
 //
 // The state of the ringbuffer.
@@ -986,6 +1183,16 @@ var _ gobject.GoValueInitializer = AudioRingBufferState(0)
 func (e AudioRingBufferState) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioRingBufferState)
 	v.SetEnum(int(e))
+}
+
+func (e AudioRingBufferState) String() string {
+	switch e {
+		case AudioRingBufferStateStopped: return "AudioRingBufferStateStopped"
+		case AudioRingBufferStatePaused: return "AudioRingBufferStatePaused"
+		case AudioRingBufferStateStarted: return "AudioRingBufferStateStarted"
+		case AudioRingBufferStateError: return "AudioRingBufferStateError"
+		default: return fmt.Sprintf("AudioRingBufferState(%d)", e)
+	}
 }
 
 // DsdFormat wraps GstDsdFormat
@@ -1043,6 +1250,19 @@ func (e DsdFormat) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e DsdFormat) String() string {
+	switch e {
+		case DsdFormatU16LE: return "DsdFormatU16LE"
+		case DsdFormatU16Be: return "DsdFormatU16Be"
+		case DsdFormatU32LE: return "DsdFormatU32LE"
+		case DsdFormatU32Be: return "DsdFormatU32Be"
+		case NumDsdFormats: return "NumDsdFormats"
+		case DsdFormatUnknown: return "DsdFormatUnknown"
+		case DsdFormatU8: return "DsdFormatU8"
+		default: return fmt.Sprintf("DsdFormat(%d)", e)
+	}
+}
+
 // StreamVolumeFormat wraps GstStreamVolumeFormat
 //
 // Different representations of a stream volume. gst_stream_volume_convert_volume()
@@ -1067,6 +1287,15 @@ const (
 	StreamVolumeFormatDb StreamVolumeFormat = 2
 )
 
+
+func (e StreamVolumeFormat) String() string {
+	switch e {
+		case StreamVolumeFormatLinear: return "StreamVolumeFormatLinear"
+		case StreamVolumeFormatCubic: return "StreamVolumeFormatCubic"
+		case StreamVolumeFormatDb: return "StreamVolumeFormatDb"
+		default: return fmt.Sprintf("StreamVolumeFormat(%d)", e)
+	}
+}
 
 // AudioChannelMixerFlags wraps GstAudioChannelMixerFlags
 //
@@ -1111,6 +1340,30 @@ func (f AudioChannelMixerFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f AudioChannelMixerFlags) String() string {
+	if f == 0 {
+		return "AudioChannelMixerFlags(0)"
+	}
+
+	var parts []string
+	if (f & AudioChannelMixerFlagsNone) != 0 {
+		parts = append(parts, "AudioChannelMixerFlagsNone")
+	}
+	if (f & AudioChannelMixerFlagsNonInterleavedIn) != 0 {
+		parts = append(parts, "AudioChannelMixerFlagsNonInterleavedIn")
+	}
+	if (f & AudioChannelMixerFlagsNonInterleavedOut) != 0 {
+		parts = append(parts, "AudioChannelMixerFlagsNonInterleavedOut")
+	}
+	if (f & AudioChannelMixerFlagsUnpositionedIn) != 0 {
+		parts = append(parts, "AudioChannelMixerFlagsUnpositionedIn")
+	}
+	if (f & AudioChannelMixerFlagsUnpositionedOut) != 0 {
+		parts = append(parts, "AudioChannelMixerFlagsUnpositionedOut")
+	}
+	return "AudioChannelMixerFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // AudioConverterFlags wraps GstAudioConverterFlags
 //
 // Extra flags passed to gst_audio_converter_new() and gst_audio_converter_samples().
@@ -1148,6 +1401,24 @@ func (f AudioConverterFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f AudioConverterFlags) String() string {
+	if f == 0 {
+		return "AudioConverterFlags(0)"
+	}
+
+	var parts []string
+	if (f & AudioConverterFlagNone) != 0 {
+		parts = append(parts, "AudioConverterFlagNone")
+	}
+	if (f & AudioConverterFlagInWritable) != 0 {
+		parts = append(parts, "AudioConverterFlagInWritable")
+	}
+	if (f & AudioConverterFlagVariableRate) != 0 {
+		parts = append(parts, "AudioConverterFlagVariableRate")
+	}
+	return "AudioConverterFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // AudioFlags wraps GstAudioFlags
 //
 // Extra audio flags
@@ -1178,6 +1449,21 @@ var _ gobject.GoValueInitializer = AudioFlags(0)
 func (f AudioFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioFlags)
 	v.SetFlags(int(f))
+}
+
+func (f AudioFlags) String() string {
+	if f == 0 {
+		return "AudioFlags(0)"
+	}
+
+	var parts []string
+	if (f & AudioFlagNone) != 0 {
+		parts = append(parts, "AudioFlagNone")
+	}
+	if (f & AudioFlagUnpositioned) != 0 {
+		parts = append(parts, "AudioFlagUnpositioned")
+	}
+	return "AudioFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // AudioFormatFlags wraps GstAudioFormatFlags
@@ -1224,6 +1510,30 @@ func (f AudioFormatFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f AudioFormatFlags) String() string {
+	if f == 0 {
+		return "AudioFormatFlags(0)"
+	}
+
+	var parts []string
+	if (f & AudioFormatFlagInteger) != 0 {
+		parts = append(parts, "AudioFormatFlagInteger")
+	}
+	if (f & AudioFormatFlagFloat) != 0 {
+		parts = append(parts, "AudioFormatFlagFloat")
+	}
+	if (f & AudioFormatFlagSigned) != 0 {
+		parts = append(parts, "AudioFormatFlagSigned")
+	}
+	if (f & AudioFormatFlagComplex) != 0 {
+		parts = append(parts, "AudioFormatFlagComplex")
+	}
+	if (f & AudioFormatFlagUnpack) != 0 {
+		parts = append(parts, "AudioFormatFlagUnpack")
+	}
+	return "AudioFormatFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // AudioPackFlags wraps GstAudioPackFlags
 //
 // The different flags that can be used when packing and unpacking.
@@ -1259,6 +1569,21 @@ func (f AudioPackFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f AudioPackFlags) String() string {
+	if f == 0 {
+		return "AudioPackFlags(0)"
+	}
+
+	var parts []string
+	if (f & AudioPackFlagNone) != 0 {
+		parts = append(parts, "AudioPackFlagNone")
+	}
+	if (f & AudioPackFlagTruncateRange) != 0 {
+		parts = append(parts, "AudioPackFlagTruncateRange")
+	}
+	return "AudioPackFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // AudioQuantizeFlags wraps GstAudioQuantizeFlags
 //
 // Extra flags that can be passed to gst_audio_quantize_new()
@@ -1288,6 +1613,21 @@ var _ gobject.GoValueInitializer = AudioQuantizeFlags(0)
 func (f AudioQuantizeFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioQuantizeFlags)
 	v.SetFlags(int(f))
+}
+
+func (f AudioQuantizeFlags) String() string {
+	if f == 0 {
+		return "AudioQuantizeFlags(0)"
+	}
+
+	var parts []string
+	if (f & AudioQuantizeFlagNone) != 0 {
+		parts = append(parts, "AudioQuantizeFlagNone")
+	}
+	if (f & AudioQuantizeFlagNonInterleaved) != 0 {
+		parts = append(parts, "AudioQuantizeFlagNonInterleaved")
+	}
+	return "AudioQuantizeFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // AudioResamplerFlags wraps GstAudioResamplerFlags
@@ -1333,6 +1673,27 @@ var _ gobject.GoValueInitializer = AudioResamplerFlags(0)
 func (f AudioResamplerFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAudioResamplerFlags)
 	v.SetFlags(int(f))
+}
+
+func (f AudioResamplerFlags) String() string {
+	if f == 0 {
+		return "AudioResamplerFlags(0)"
+	}
+
+	var parts []string
+	if (f & AudioResamplerFlagNone) != 0 {
+		parts = append(parts, "AudioResamplerFlagNone")
+	}
+	if (f & AudioResamplerFlagNonInterleavedIn) != 0 {
+		parts = append(parts, "AudioResamplerFlagNonInterleavedIn")
+	}
+	if (f & AudioResamplerFlagNonInterleavedOut) != 0 {
+		parts = append(parts, "AudioResamplerFlagNonInterleavedOut")
+	}
+	if (f & AudioResamplerFlagVariableRate) != 0 {
+		parts = append(parts, "AudioResamplerFlagVariableRate")
+	}
+	return "AudioResamplerFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // AudioBaseSinkCustomSlavingCallback wraps GstAudioBaseSinkCustomSlavingCallback
@@ -2383,7 +2744,7 @@ func UnsafeStreamVolumeToGlibFull(c StreamVolume) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
-// StreamVolumeInstanceConvertVolume wraps gst_stream_volume_convert_volume
+// StreamVolumeConvertVolume wraps gst_stream_volume_convert_volume
 // 
 // The function takes the following parameters:
 // 
@@ -2394,7 +2755,7 @@ func UnsafeStreamVolumeToGlibFull(c StreamVolume) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret float64 
-func StreamVolumeInstanceConvertVolume(from StreamVolumeFormat, to StreamVolumeFormat, val float64) float64 {
+func StreamVolumeConvertVolume(from StreamVolumeFormat, to StreamVolumeFormat, val float64) float64 {
 	var carg1 C.GstStreamVolumeFormat // in, none, casted
 	var carg2 C.GstStreamVolumeFormat // in, none, casted
 	var carg3 C.gdouble               // in, none, casted
@@ -3628,7 +3989,7 @@ func UnsafeAudioClockToGlibFull(c AudioClock) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewAudioClockInstance wraps gst_audio_clock_new
+// NewAudioClock wraps gst_audio_clock_new
 // 
 // The function takes the following parameters:
 // 
@@ -3642,7 +4003,7 @@ func UnsafeAudioClockToGlibFull(c AudioClock) unsafe.Pointer {
 // Create a new #GstAudioClock instance. Whenever the clock time should be
 // calculated it will call @func with @user_data. When @func returns
 // #GST_CLOCK_TIME_NONE, the clock will return the last reported time.
-func NewAudioClockInstance(name string, fn AudioClockGetTimeFunc) gst.Clock {
+func NewAudioClock(name string, fn AudioClockGetTimeFunc) gst.Clock {
 	var carg1 *C.gchar                   // in, none, string, casted *C.gchar
 	var carg2 C.GstAudioClockGetTimeFunc // callback, scope: notified, closure: carg3, destroy: carg4
 	var carg3 C.gpointer                 // implicit
@@ -6735,14 +7096,14 @@ func UnsafeAudioRingBufferToGlibFull(c AudioRingBuffer) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// AudioRingBufferInstanceDebugSpecBuff wraps gst_audio_ring_buffer_debug_spec_buff
+// AudioRingBufferDebugSpecBuff wraps gst_audio_ring_buffer_debug_spec_buff
 // 
 // The function takes the following parameters:
 // 
 // 	- spec *AudioRingBufferSpec: the spec to debug 
 //
 // Print debug info about the buffer sized in @spec to the debug log.
-func AudioRingBufferInstanceDebugSpecBuff(spec *AudioRingBufferSpec) {
+func AudioRingBufferDebugSpecBuff(spec *AudioRingBufferSpec) {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 
 	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
@@ -6751,14 +7112,14 @@ func AudioRingBufferInstanceDebugSpecBuff(spec *AudioRingBufferSpec) {
 	runtime.KeepAlive(spec)
 }
 
-// AudioRingBufferInstanceDebugSpecCaps wraps gst_audio_ring_buffer_debug_spec_caps
+// AudioRingBufferDebugSpecCaps wraps gst_audio_ring_buffer_debug_spec_caps
 // 
 // The function takes the following parameters:
 // 
 // 	- spec *AudioRingBufferSpec: the spec to debug 
 //
 // Print debug info about the parsed caps in @spec to the debug log.
-func AudioRingBufferInstanceDebugSpecCaps(spec *AudioRingBufferSpec) {
+func AudioRingBufferDebugSpecCaps(spec *AudioRingBufferSpec) {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 
 	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
@@ -6767,7 +7128,7 @@ func AudioRingBufferInstanceDebugSpecCaps(spec *AudioRingBufferSpec) {
 	runtime.KeepAlive(spec)
 }
 
-// AudioRingBufferInstanceParseCaps wraps gst_audio_ring_buffer_parse_caps
+// AudioRingBufferParseCaps wraps gst_audio_ring_buffer_parse_caps
 // 
 // The function takes the following parameters:
 // 
@@ -6779,7 +7140,7 @@ func AudioRingBufferInstanceDebugSpecCaps(spec *AudioRingBufferSpec) {
 // 	- goret bool 
 //
 // Parse @caps into @spec.
-func AudioRingBufferInstanceParseCaps(spec *AudioRingBufferSpec, caps *gst.Caps) bool {
+func AudioRingBufferParseCaps(spec *AudioRingBufferSpec, caps *gst.Caps) bool {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 	var carg2 *C.GstCaps                // in, none, converted
 	var cret  C.gboolean                // return

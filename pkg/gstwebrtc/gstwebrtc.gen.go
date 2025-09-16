@@ -3,6 +3,7 @@
 package gstwebrtc
 
 import (
+	"fmt"
 	"log"
 	"runtime"
 	"unsafe"
@@ -127,6 +128,16 @@ func (e WebRTCBundlePolicy) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e WebRTCBundlePolicy) String() string {
+	switch e {
+		case WebrtcBundlePolicyNone: return "WebrtcBundlePolicyNone"
+		case WebrtcBundlePolicyBalanced: return "WebrtcBundlePolicyBalanced"
+		case WebrtcBundlePolicyMaxCompat: return "WebrtcBundlePolicyMaxCompat"
+		case WebrtcBundlePolicyMaxBundle: return "WebrtcBundlePolicyMaxBundle"
+		default: return fmt.Sprintf("WebRTCBundlePolicy(%d)", e)
+	}
+}
+
 // WebRTCDTLSSetup wraps GstWebRTCDTLSSetup
 type WebRTCDTLSSetup C.int
 
@@ -158,6 +169,16 @@ var _ gobject.GoValueInitializer = WebRTCDTLSSetup(0)
 func (e WebRTCDTLSSetup) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCDTLSSetup)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCDTLSSetup) String() string {
+	switch e {
+		case WebrtcDTLSSetupActive: return "WebrtcDTLSSetupActive"
+		case WebrtcDTLSSetupPassive: return "WebrtcDTLSSetupPassive"
+		case WebrtcDTLSSetupNone: return "WebrtcDTLSSetupNone"
+		case WebrtcDTLSSetupActpass: return "WebrtcDTLSSetupActpass"
+		default: return fmt.Sprintf("WebRTCDTLSSetup(%d)", e)
+	}
 }
 
 // WebRTCDTLSTransportState wraps GstWebRTCDTLSTransportState
@@ -197,6 +218,17 @@ func (e WebRTCDTLSTransportState) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e WebRTCDTLSTransportState) String() string {
+	switch e {
+		case NewWebrtcDTLSTransportState: return "NewWebrtcDTLSTransportState"
+		case WebrtcDTLSTransportStateClosed: return "WebrtcDTLSTransportStateClosed"
+		case WebrtcDTLSTransportStateFailed: return "WebrtcDTLSTransportStateFailed"
+		case WebrtcDTLSTransportStateConnecting: return "WebrtcDTLSTransportStateConnecting"
+		case WebrtcDTLSTransportStateConnected: return "WebrtcDTLSTransportStateConnected"
+		default: return fmt.Sprintf("WebRTCDTLSTransportState(%d)", e)
+	}
+}
+
 // WebRTCDataChannelState wraps GstWebRTCDataChannelState
 //
 // See &lt;http://w3c.github.io/webrtc-pc/#dom-rtcdatachannelstate&gt;
@@ -230,6 +262,16 @@ var _ gobject.GoValueInitializer = WebRTCDataChannelState(0)
 func (e WebRTCDataChannelState) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCDataChannelState)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCDataChannelState) String() string {
+	switch e {
+		case WebrtcDataChannelStateConnecting: return "WebrtcDataChannelStateConnecting"
+		case WebrtcDataChannelStateOpen: return "WebrtcDataChannelStateOpen"
+		case WebrtcDataChannelStateClosing: return "WebrtcDataChannelStateClosing"
+		case WebrtcDataChannelStateClosed: return "WebrtcDataChannelStateClosed"
+		default: return fmt.Sprintf("WebRTCDataChannelState(%d)", e)
+	}
 }
 
 // WebRTCError wraps GstWebRTCError
@@ -295,6 +337,23 @@ func (e WebRTCError) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e WebRTCError) String() string {
+	switch e {
+		case WebrtcErrorHardwareEncoderNotAvailable: return "WebrtcErrorHardwareEncoderNotAvailable"
+		case WebrtcErrorEncoderError: return "WebrtcErrorEncoderError"
+		case WebrtcErrorInvalidState: return "WebrtcErrorInvalidState"
+		case WebrtcErrorInternalFailure: return "WebrtcErrorInternalFailure"
+		case WebrtcErrorDataChannelFailure: return "WebrtcErrorDataChannelFailure"
+		case WebrtcErrorDTLSFailure: return "WebrtcErrorDTLSFailure"
+		case WebrtcErrorFingerprintFailure: return "WebrtcErrorFingerprintFailure"
+		case WebrtcErrorSdpSyntaxError: return "WebrtcErrorSdpSyntaxError"
+		case WebrtcErrorInvalidModification: return "WebrtcErrorInvalidModification"
+		case WebrtcErrorTypeError: return "WebrtcErrorTypeError"
+		case WebrtcErrorSCTPFailure: return "WebrtcErrorSCTPFailure"
+		default: return fmt.Sprintf("WebRTCError(%d)", e)
+	}
+}
+
 // WebRTCFECType wraps GstWebRTCFECType
 type WebRTCFECType C.int
 
@@ -320,6 +379,14 @@ func (e WebRTCFECType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e WebRTCFECType) String() string {
+	switch e {
+		case WebrtcFecTypeNone: return "WebrtcFecTypeNone"
+		case WebrtcFecTypeUlpRed: return "WebrtcFecTypeUlpRed"
+		default: return fmt.Sprintf("WebRTCFECType(%d)", e)
+	}
+}
+
 // WebRTCICEComponent wraps GstWebRTCICEComponent
 type WebRTCICEComponent C.int
 
@@ -343,6 +410,14 @@ var _ gobject.GoValueInitializer = WebRTCICEComponent(0)
 func (e WebRTCICEComponent) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCICEComponent)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCICEComponent) String() string {
+	switch e {
+		case WebrtcIceComponentRtp: return "WebrtcIceComponentRtp"
+		case WebrtcIceComponentRtcp: return "WebrtcIceComponentRtcp"
+		default: return fmt.Sprintf("WebRTCICEComponent(%d)", e)
+	}
 }
 
 // WebRTCICEConnectionState wraps GstWebRTCICEConnectionState
@@ -392,6 +467,19 @@ func (e WebRTCICEConnectionState) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e WebRTCICEConnectionState) String() string {
+	switch e {
+		case NewWebrtcIceConnectionState: return "NewWebrtcIceConnectionState"
+		case WebrtcIceConnectionStateChecking: return "WebrtcIceConnectionStateChecking"
+		case WebrtcIceConnectionStateConnected: return "WebrtcIceConnectionStateConnected"
+		case WebrtcIceConnectionStateCompleted: return "WebrtcIceConnectionStateCompleted"
+		case WebrtcIceConnectionStateFailed: return "WebrtcIceConnectionStateFailed"
+		case WebrtcIceConnectionStateDisconnected: return "WebrtcIceConnectionStateDisconnected"
+		case WebrtcIceConnectionStateClosed: return "WebrtcIceConnectionStateClosed"
+		default: return fmt.Sprintf("WebRTCICEConnectionState(%d)", e)
+	}
+}
+
 // WebRTCICEGatheringState wraps GstWebRTCICEGatheringState
 //
 // See &lt;http://w3c.github.io/webrtc-pc/#dom-rtcicegatheringstate&gt;
@@ -423,6 +511,15 @@ func (e WebRTCICEGatheringState) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e WebRTCICEGatheringState) String() string {
+	switch e {
+		case NewWebrtcIceGatheringState: return "NewWebrtcIceGatheringState"
+		case WebrtcIceGatheringStateGathering: return "WebrtcIceGatheringStateGathering"
+		case WebrtcIceGatheringStateComplete: return "WebrtcIceGatheringStateComplete"
+		default: return fmt.Sprintf("WebRTCICEGatheringState(%d)", e)
+	}
+}
+
 // WebRTCICERole wraps GstWebRTCICERole
 type WebRTCICERole C.int
 
@@ -446,6 +543,14 @@ var _ gobject.GoValueInitializer = WebRTCICERole(0)
 func (e WebRTCICERole) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCICERole)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCICERole) String() string {
+	switch e {
+		case WebrtcIceRoleControlled: return "WebrtcIceRoleControlled"
+		case WebrtcIceRoleControlling: return "WebrtcIceRoleControlling"
+		default: return fmt.Sprintf("WebRTCICERole(%d)", e)
+	}
 }
 
 // WebRTCICETransportPolicy wraps GstWebRTCICETransportPolicy
@@ -474,6 +579,14 @@ var _ gobject.GoValueInitializer = WebRTCICETransportPolicy(0)
 func (e WebRTCICETransportPolicy) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCICETransportPolicy)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCICETransportPolicy) String() string {
+	switch e {
+		case WebrtcIceTransportPolicyAll: return "WebrtcIceTransportPolicyAll"
+		case WebrtcIceTransportPolicyRelay: return "WebrtcIceTransportPolicyRelay"
+		default: return fmt.Sprintf("WebRTCICETransportPolicy(%d)", e)
+	}
 }
 
 // WebRTCKind wraps GstWebRTCKind
@@ -505,6 +618,15 @@ var _ gobject.GoValueInitializer = WebRTCKind(0)
 func (e WebRTCKind) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCKind)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCKind) String() string {
+	switch e {
+		case WebrtcKindUnknown: return "WebrtcKindUnknown"
+		case WebrtcKindAudio: return "WebrtcKindAudio"
+		case WebrtcKindVideo: return "WebrtcKindVideo"
+		default: return fmt.Sprintf("WebRTCKind(%d)", e)
+	}
 }
 
 // WebRTCPeerConnectionState wraps GstWebRTCPeerConnectionState
@@ -550,6 +672,18 @@ func (e WebRTCPeerConnectionState) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e WebRTCPeerConnectionState) String() string {
+	switch e {
+		case NewWebrtcPeerConnectionState: return "NewWebrtcPeerConnectionState"
+		case WebrtcPeerConnectionStateConnecting: return "WebrtcPeerConnectionStateConnecting"
+		case WebrtcPeerConnectionStateConnected: return "WebrtcPeerConnectionStateConnected"
+		case WebrtcPeerConnectionStateDisconnected: return "WebrtcPeerConnectionStateDisconnected"
+		case WebrtcPeerConnectionStateFailed: return "WebrtcPeerConnectionStateFailed"
+		case WebrtcPeerConnectionStateClosed: return "WebrtcPeerConnectionStateClosed"
+		default: return fmt.Sprintf("WebRTCPeerConnectionState(%d)", e)
+	}
+}
+
 // WebRTCPriorityType wraps GstWebRTCPriorityType
 //
 // See &lt;http://w3c.github.io/webrtc-pc/#dom-rtcprioritytype&gt;
@@ -583,6 +717,16 @@ var _ gobject.GoValueInitializer = WebRTCPriorityType(0)
 func (e WebRTCPriorityType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCPriorityType)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCPriorityType) String() string {
+	switch e {
+		case WebrtcPriorityTypeHigh: return "WebrtcPriorityTypeHigh"
+		case WebrtcPriorityTypeVeryLow: return "WebrtcPriorityTypeVeryLow"
+		case WebrtcPriorityTypeLow: return "WebrtcPriorityTypeLow"
+		case WebrtcPriorityTypeMedium: return "WebrtcPriorityTypeMedium"
+		default: return fmt.Sprintf("WebRTCPriorityType(%d)", e)
+	}
 }
 
 // WebRTCRTPTransceiverDirection wraps GstWebRTCRTPTransceiverDirection
@@ -622,6 +766,17 @@ func (e WebRTCRTPTransceiverDirection) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e WebRTCRTPTransceiverDirection) String() string {
+	switch e {
+		case WebrtcRtpTransceiverDirectionNone: return "WebrtcRtpTransceiverDirectionNone"
+		case WebrtcRtpTransceiverDirectionInactive: return "WebrtcRtpTransceiverDirectionInactive"
+		case WebrtcRtpTransceiverDirectionSendonly: return "WebrtcRtpTransceiverDirectionSendonly"
+		case WebrtcRtpTransceiverDirectionRecvonly: return "WebrtcRtpTransceiverDirectionRecvonly"
+		case WebrtcRtpTransceiverDirectionSendrecv: return "WebrtcRtpTransceiverDirectionSendrecv"
+		default: return fmt.Sprintf("WebRTCRTPTransceiverDirection(%d)", e)
+	}
+}
+
 // WebRTCSCTPTransportState wraps GstWebRTCSCTPTransportState
 //
 // See &lt;http://w3c.github.io/webrtc-pc/#dom-rtcsctptransportstate&gt;
@@ -657,6 +812,16 @@ func (e WebRTCSCTPTransportState) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e WebRTCSCTPTransportState) String() string {
+	switch e {
+		case NewWebrtcSCTPTransportState: return "NewWebrtcSCTPTransportState"
+		case WebrtcSCTPTransportStateConnecting: return "WebrtcSCTPTransportStateConnecting"
+		case WebrtcSCTPTransportStateConnected: return "WebrtcSCTPTransportStateConnected"
+		case WebrtcSCTPTransportStateClosed: return "WebrtcSCTPTransportStateClosed"
+		default: return fmt.Sprintf("WebRTCSCTPTransportState(%d)", e)
+	}
+}
+
 // WebRTCSDPType wraps GstWebRTCSDPType
 //
 // See &lt;http://w3c.github.io/webrtc-pc/#rtcsdptype&gt;
@@ -690,6 +855,16 @@ var _ gobject.GoValueInitializer = WebRTCSDPType(0)
 func (e WebRTCSDPType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCSDPType)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCSDPType) String() string {
+	switch e {
+		case WebrtcSdpTypeOffer: return "WebrtcSdpTypeOffer"
+		case WebrtcSdpTypePranswer: return "WebrtcSdpTypePranswer"
+		case WebrtcSdpTypeAnswer: return "WebrtcSdpTypeAnswer"
+		case WebrtcSdpTypeRollback: return "WebrtcSdpTypeRollback"
+		default: return fmt.Sprintf("WebRTCSDPType(%d)", e)
+	}
 }
 
 // WebRTCSignalingState wraps GstWebRTCSignalingState
@@ -733,6 +908,18 @@ var _ gobject.GoValueInitializer = WebRTCSignalingState(0)
 func (e WebRTCSignalingState) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCSignalingState)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCSignalingState) String() string {
+	switch e {
+		case WebrtcSignalingStateStable: return "WebrtcSignalingStateStable"
+		case WebrtcSignalingStateClosed: return "WebrtcSignalingStateClosed"
+		case WebrtcSignalingStateHaveLocalOffer: return "WebrtcSignalingStateHaveLocalOffer"
+		case WebrtcSignalingStateHaveRemoteOffer: return "WebrtcSignalingStateHaveRemoteOffer"
+		case WebrtcSignalingStateHaveLocalPranswer: return "WebrtcSignalingStateHaveLocalPranswer"
+		case WebrtcSignalingStateHaveRemotePranswer: return "WebrtcSignalingStateHaveRemotePranswer"
+		default: return fmt.Sprintf("WebRTCSignalingState(%d)", e)
+	}
 }
 
 // WebRTCStatsType wraps GstWebRTCStatsType
@@ -808,6 +995,26 @@ var _ gobject.GoValueInitializer = WebRTCStatsType(0)
 func (e WebRTCStatsType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeWebRTCStatsType)
 	v.SetEnum(int(e))
+}
+
+func (e WebRTCStatsType) String() string {
+	switch e {
+		case WebrtcStatsRemoteOutboundRtp: return "WebrtcStatsRemoteOutboundRtp"
+		case WebrtcStatsCsrc: return "WebrtcStatsCsrc"
+		case WebrtcStatsPeerConnection: return "WebrtcStatsPeerConnection"
+		case WebrtcStatsStream: return "WebrtcStatsStream"
+		case WebrtcStatsCandidatePair: return "WebrtcStatsCandidatePair"
+		case WebrtcStatsLocalCandidate: return "WebrtcStatsLocalCandidate"
+		case WebrtcStatsInboundRtp: return "WebrtcStatsInboundRtp"
+		case WebrtcStatsRemoteInboundRtp: return "WebrtcStatsRemoteInboundRtp"
+		case WebrtcStatsDataChannel: return "WebrtcStatsDataChannel"
+		case WebrtcStatsTransport: return "WebrtcStatsTransport"
+		case WebrtcStatsRemoteCandidate: return "WebrtcStatsRemoteCandidate"
+		case WebrtcStatsCertificate: return "WebrtcStatsCertificate"
+		case WebrtcStatsCodec: return "WebrtcStatsCodec"
+		case WebrtcStatsOutboundRtp: return "WebrtcStatsOutboundRtp"
+		default: return fmt.Sprintf("WebRTCStatsType(%d)", e)
+	}
 }
 
 // WebRTCICEOnCandidateFunc wraps GstWebRTCICEOnCandidateFunc

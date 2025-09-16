@@ -507,7 +507,7 @@ func UnsafeNetClientClockToGlibFull(c NetClientClock) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewNetClientClockInstance wraps gst_net_client_clock_new
+// NewNetClientClock wraps gst_net_client_clock_new
 // 
 // The function takes the following parameters:
 // 
@@ -523,7 +523,7 @@ func UnsafeNetClientClockToGlibFull(c NetClientClock) unsafe.Pointer {
 // Create a new #GstNetClientClock that will report the time
 // provided by the #GstNetTimeProvider on @remote_address and
 // @remote_port.
-func NewNetClientClockInstance(name string, remoteAddress string, remotePort int, baseTime gst.ClockTime) gst.Clock {
+func NewNetClientClock(name string, remoteAddress string, remotePort int, baseTime gst.ClockTime) gst.Clock {
 	var carg1 *C.gchar       // in, none, string, nullable-string
 	var carg2 *C.gchar       // in, none, string, casted *C.gchar
 	var carg3 C.gint         // in, none, casted
@@ -620,7 +620,7 @@ func UnsafeNetTimeProviderToGlibFull(c NetTimeProvider) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewNetTimeProviderInstance wraps gst_net_time_provider_new
+// NewNetTimeProvider wraps gst_net_time_provider_new
 // 
 // The function takes the following parameters:
 // 
@@ -634,7 +634,7 @@ func UnsafeNetTimeProviderToGlibFull(c NetTimeProvider) unsafe.Pointer {
 // 	- goret NetTimeProvider 
 //
 // Allows network clients to get the current time of @clock.
-func NewNetTimeProviderInstance(clock gst.Clock, address string, port int) NetTimeProvider {
+func NewNetTimeProvider(clock gst.Clock, address string, port int) NetTimeProvider {
 	var carg1 *C.GstClock           // in, none, converted
 	var carg2 *C.gchar              // in, none, string, nullable-string
 	var carg3 C.gint                // in, none, casted
@@ -717,7 +717,7 @@ func UnsafeNtpClockToGlibFull(c NtpClock) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewNtpClockInstance wraps gst_ntp_clock_new
+// NewNtpClock wraps gst_ntp_clock_new
 // 
 // The function takes the following parameters:
 // 
@@ -732,7 +732,7 @@ func UnsafeNtpClockToGlibFull(c NtpClock) unsafe.Pointer {
 //
 // Create a new #GstNtpClock that will report the time provided by
 // the NTPv4 server on @remote_address and @remote_port.
-func NewNtpClockInstance(name string, remoteAddress string, remotePort int, baseTime gst.ClockTime) gst.Clock {
+func NewNtpClock(name string, remoteAddress string, remotePort int, baseTime gst.ClockTime) gst.Clock {
 	var carg1 *C.gchar       // in, none, string, nullable-string
 	var carg2 *C.gchar       // in, none, string, casted *C.gchar
 	var carg3 C.gint         // in, none, casted
@@ -839,7 +839,7 @@ func UnsafePtpClockToGlibFull(c PtpClock) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPtpClockInstance wraps gst_ptp_clock_new
+// NewPtpClock wraps gst_ptp_clock_new
 // 
 // The function takes the following parameters:
 // 
@@ -861,7 +861,7 @@ func UnsafePtpClockToGlibFull(c PtpClock) unsafe.Pointer {
 // GstPtpClock::internal-clock property will become non-NULL. You can
 // check this with gst_clock_wait_for_sync(), the GstClock::synced signal and
 // gst_clock_is_synced().
-func NewPtpClockInstance(name string, domain uint) gst.Clock {
+func NewPtpClock(name string, domain uint) gst.Clock {
 	var carg1 *C.gchar    // in, none, string, casted *C.gchar
 	var carg2 C.guint     // in, none, casted
 	var cret  *C.GstClock // return, full, converted

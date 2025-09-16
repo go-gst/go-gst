@@ -3,6 +3,7 @@
 package gstapp
 
 import (
+	"fmt"
 	"runtime"
 	"unsafe"
 
@@ -65,6 +66,15 @@ func (e AppLeakyType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AppLeakyType) String() string {
+	switch e {
+		case AppLeakyTypeDownstream: return "AppLeakyTypeDownstream"
+		case AppLeakyTypeNone: return "AppLeakyTypeNone"
+		case AppLeakyTypeUpstream: return "AppLeakyTypeUpstream"
+		default: return fmt.Sprintf("AppLeakyType(%d)", e)
+	}
+}
+
 // AppStreamType wraps GstAppStreamType
 //
 // The stream type.
@@ -97,6 +107,15 @@ var _ gobject.GoValueInitializer = AppStreamType(0)
 func (e AppStreamType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeAppStreamType)
 	v.SetEnum(int(e))
+}
+
+func (e AppStreamType) String() string {
+	switch e {
+		case AppStreamTypeSeekable: return "AppStreamTypeSeekable"
+		case AppStreamTypeRandomAccess: return "AppStreamTypeRandomAccess"
+		case AppStreamTypeStream: return "AppStreamTypeStream"
+		default: return fmt.Sprintf("AppStreamType(%d)", e)
+	}
 }
 
 // AppSinkInstance is the instance type used by all types extending GstAppSink. It is used internally by the bindings. Users should use the interface [AppSink] instead.
