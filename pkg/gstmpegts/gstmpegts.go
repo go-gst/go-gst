@@ -17,6 +17,7 @@ import (
 
 // #cgo pkg-config: gstreamer-mpegts-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #define GST_USE_UNSTABLE_API // APIs in this package are unstable
 // #include <stdlib.h>
 // #include <glib-object.h>
 // #include <gst/mpegts/mpegts.h>
@@ -5458,7 +5459,6 @@ func (descriptor *Descriptor) ParseRegistration() (uint32, []byte, bool) {
 
 	_registrationId = uint32(_arg1)
 	if _arg2 != nil {
-		defer C.free(unsafe.Pointer(_arg2))
 		_additionalInfo = make([]byte, _arg3)
 		copy(_additionalInfo, unsafe.Slice((*byte)(unsafe.Pointer(_arg2)), _arg3))
 	}
