@@ -22,74 +22,6 @@ import (
 // #include <gst/video/video.h>
 // extern void _gotk4_gstvideo1_VideoConvertSampleCallback(GstSample*, GError*, gpointer);
 // extern void destroyUserdata(gpointer);
-// extern GstColorBalanceType _gotk4_gstvideo1_ColorBalance_get_balance_type(GstColorBalance*);
-// extern gint _gotk4_gstvideo1_ColorBalance_get_value(GstColorBalance*, GstColorBalanceChannel*);
-// extern const GList* _gotk4_gstvideo1_ColorBalance_list_channels(GstColorBalance*);
-// extern void _gotk4_gstvideo1_ColorBalance_set_value(GstColorBalance*, GstColorBalanceChannel*, gint);
-// extern void _gotk4_gstvideo1_ColorBalance_value_changed(GstColorBalance*, GstColorBalanceChannel*, gint);
-// GstColorBalanceType _gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(void* fnptr, GstColorBalance* carg0) {
-// 	return ((GstColorBalanceType (*) (GstColorBalance*))(fnptr))(carg0);
-// }
-// gint _gotk4_gstvideo1_ColorBalance_virtual_get_value(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1) {
-// 	return ((gint (*) (GstColorBalance*, GstColorBalanceChannel*))(fnptr))(carg0, carg1);
-// }
-// const GList* _gotk4_gstvideo1_ColorBalance_virtual_list_channels(void* fnptr, GstColorBalance* carg0) {
-// 	return ((const GList* (*) (GstColorBalance*))(fnptr))(carg0);
-// }
-// void _gotk4_gstvideo1_ColorBalance_virtual_set_value(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1, gint carg2) {
-// 	return ((void (*) (GstColorBalance*, GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1, carg2);
-// }
-// void _gotk4_gstvideo1_ColorBalance_virtual_value_changed(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1, gint carg2) {
-// 	return ((void (*) (GstColorBalance*, GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1, carg2);
-// }
-// extern void _gotk4_gstvideo1_Navigation_send_event_simple(GstNavigation*, GstEvent*);
-// void _gotk4_gstvideo1_Navigation_virtual_send_event_simple(void* fnptr, GstNavigation* carg0, GstEvent* carg1) {
-// 	return ((void (*) (GstNavigation*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_hcenter(GstVideoOrientation*, gint);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_hflip(GstVideoOrientation*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_vcenter(GstVideoOrientation*, gint);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_vflip(GstVideoOrientation*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_hcenter(GstVideoOrientation*, gint);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_hflip(GstVideoOrientation*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_vcenter(GstVideoOrientation*, gint);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_vflip(GstVideoOrientation*, gboolean);
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(void* fnptr, GstVideoOrientation* carg0, gint* carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gint*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(void* fnptr, GstVideoOrientation* carg0, gboolean* carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gboolean*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(void* fnptr, GstVideoOrientation* carg0, gint* carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gint*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(void* fnptr, GstVideoOrientation* carg0, gboolean* carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gboolean*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(void* fnptr, GstVideoOrientation* carg0, gint carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gint))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hflip(void* fnptr, GstVideoOrientation* carg0, gboolean carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gboolean))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(void* fnptr, GstVideoOrientation* carg0, gint carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gint))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vflip(void* fnptr, GstVideoOrientation* carg0, gboolean carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gboolean))(fnptr))(carg0, carg1);
-// }
-// extern void _gotk4_gstvideo1_VideoOverlay_expose(GstVideoOverlay*);
-// extern void _gotk4_gstvideo1_VideoOverlay_handle_events(GstVideoOverlay*, gboolean);
-// extern void _gotk4_gstvideo1_VideoOverlay_set_render_rectangle(GstVideoOverlay*, gint, gint, gint, gint);
-// void _gotk4_gstvideo1_VideoOverlay_virtual_expose(void* fnptr, GstVideoOverlay* carg0) {
-// 	return ((void (*) (GstVideoOverlay*))(fnptr))(carg0);
-// }
-// void _gotk4_gstvideo1_VideoOverlay_virtual_handle_events(void* fnptr, GstVideoOverlay* carg0, gboolean carg1) {
-// 	return ((void (*) (GstVideoOverlay*, gboolean))(fnptr))(carg0, carg1);
-// }
-// void _gotk4_gstvideo1_VideoOverlay_virtual_set_render_rectangle(void* fnptr, GstVideoOverlay* carg0, gint carg1, gint carg2, gint carg3, gint carg4) {
-// 	return ((void (*) (GstVideoOverlay*, gint, gint, gint, gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
-// }
 // extern void _gotk4_gstvideo1_ColorBalanceChannel_value_changed(GstColorBalanceChannel*, gint);
 // void _gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(void* fnptr, GstColorBalanceChannel* carg0, gint carg1) {
 // 	return ((void (*) (GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1);
@@ -7945,73 +7877,6 @@ type ColorBalance interface {
 	//
 	// Fired when the value of the indicated channel has changed.
 	ConnectValueChanged(func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle
-
-	// chain up virtual methods:
-
-	// ParentGetBalanceType calls the default implementations of the `GstColorBalance.get_balance_type` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret ColorBalanceType 
-	//
-	// Get the #GstColorBalanceType of this implementation.
-	ParentGetBalanceType() ColorBalanceType
-	// ParentGetValue calls the default implementations of the `GstColorBalance.get_value` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
-	//
-	// Retrieve the current value of the indicated channel, between min_value
-	// and max_value.
-	// 
-	// See Also: The #GstColorBalanceChannel.min_value and
-	//         #GstColorBalanceChannel.max_value members of the
-	//         #GstColorBalanceChannel object.
-	ParentGetValue(channel ColorBalanceChannel) int32
-	// ParentListChannels calls the default implementations of the `GstColorBalance.list_channels` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []ColorBalanceChannel 
-	//
-	// Retrieve a list of the available channels.
-	ParentListChannels() []ColorBalanceChannel
-	// ParentSetValue calls the default implementations of the `GstColorBalance.set_value` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-	// 	- value int32: The new value for the channel. 
-	//
-	// Sets the current value of the channel to the passed value, which must
-	// be between min_value and max_value.
-	// 
-	// See Also: The #GstColorBalanceChannel.min_value and
-	//         #GstColorBalanceChannel.max_value members of the
-	//         #GstColorBalanceChannel object.
-	ParentSetValue(channel ColorBalanceChannel, value int32)
-	// ParentValueChanged calls the default implementations of the `GstColorBalance.value_changed` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
-	// 	- value int32: The new value of the channel 
-	//
-	// A helper function called by implementations of the GstColorBalance
-	// interface. It fires the #GstColorBalance::value-changed signal on the
-	// instance, and the #GstColorBalanceChannel::value-changed signal on the
-	// channel object.
-	ParentValueChanged(channel ColorBalanceChannel, value int32)
 }
 
 var _ ColorBalance = (*ColorBalanceInstance)(nil)
@@ -8206,335 +8071,6 @@ func (o *ColorBalanceInstance) ConnectValueChanged(fn func(ColorBalance, ColorBa
 	return o.Instance.Connect("value-changed", fn)
 }
 
-// ColorBalanceOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type ColorBalanceOverrides[Instance ColorBalance] struct {
-	// // GetBalanceType allows you to override the implementation of the virtual method get_balance_type.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret ColorBalanceType 
-	//
-	// Get the #GstColorBalanceType of this implementation.
-	GetBalanceType func(Instance) ColorBalanceType
-	// // GetValue allows you to override the implementation of the virtual method get_value.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
-	//
-	// Retrieve the current value of the indicated channel, between min_value
-	// and max_value.
-	// 
-	// See Also: The #GstColorBalanceChannel.min_value and
-	//         #GstColorBalanceChannel.max_value members of the
-	//         #GstColorBalanceChannel object.
-	GetValue func(Instance, ColorBalanceChannel) int32
-	// // ListChannels allows you to override the implementation of the virtual method list_channels.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []ColorBalanceChannel 
-	//
-	// Retrieve a list of the available channels.
-	ListChannels func(Instance) []ColorBalanceChannel
-	// // SetValue allows you to override the implementation of the virtual method set_value.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-	// 	- value int32: The new value for the channel. 
-	//
-	// Sets the current value of the channel to the passed value, which must
-	// be between min_value and max_value.
-	// 
-	// See Also: The #GstColorBalanceChannel.min_value and
-	//         #GstColorBalanceChannel.max_value members of the
-	//         #GstColorBalanceChannel object.
-	SetValue func(Instance, ColorBalanceChannel, int32)
-	// // ValueChanged allows you to override the implementation of the virtual method value_changed.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
-	// 	- value int32: The new value of the channel 
-	//
-	// A helper function called by implementations of the GstColorBalance
-	// interface. It fires the #GstColorBalance::value-changed signal on the
-	// instance, and the #GstColorBalanceChannel::value-changed signal on the
-	// channel object.
-	ValueChanged func(Instance, ColorBalanceChannel, int32)
-}
-
-// UnsafeApplyColorBalanceOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Pointer, overrides ColorBalanceOverrides[Instance]) {
-	pclass := (*C.GstColorBalanceInterface)(gclass)
-
-	if overrides.GetBalanceType != nil {
-		pclass.get_balance_type = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_get_balance_type)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_ColorBalance_get_balance_type",
-			func(carg0 *C.GstColorBalance) (cret C.GstColorBalanceType) {
-				var balance Instance         // go GstColorBalance subclass
-				var goret   ColorBalanceType // return, none, casted
-
-				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				goret = overrides.GetBalanceType(balance)
-
-				cret = C.GstColorBalanceType(goret)
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetValue != nil {
-		pclass.get_value = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_get_value)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_ColorBalance_get_value",
-			func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel) (cret C.gint) {
-				var balance Instance            // go GstColorBalance subclass
-				var channel ColorBalanceChannel // in, none, converted
-				var goret   int32               // return, none, casted
-
-				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg1))
-
-				goret = overrides.GetValue(balance, channel)
-
-				cret = C.gint(goret)
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.ListChannels != nil {
-		pclass.list_channels = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_list_channels)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_ColorBalance_list_channels",
-			func(carg0 *C.GstColorBalance) (cret *C.GList) {
-				var balance Instance              // go GstColorBalance subclass
-				var goret   []ColorBalanceChannel // return, transfer: none, C Pointers: 1, Name: List, scope: 
-
-				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				goret = overrides.ListChannels(balance)
-
-				_ = goret
-				_ = cret
-				panic("unimplemented conversion of []ColorBalanceChannel (const GList*)")
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.SetValue != nil {
-		pclass.set_value = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_set_value)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_ColorBalance_set_value",
-			func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint) {
-				var balance Instance            // go GstColorBalance subclass
-				var channel ColorBalanceChannel // in, none, converted
-				var value   int32               // in, none, casted
-
-				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg1))
-				value = int32(carg2)
-
-				overrides.SetValue(balance, channel, value)
-			},
-		)
-	}
-
-	if overrides.ValueChanged != nil {
-		pclass.value_changed = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_value_changed)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_ColorBalance_value_changed",
-			func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint) {
-				var balance Instance            // go GstColorBalance subclass
-				var channel ColorBalanceChannel // in, none, converted
-				var value   int32               // in, none, casted
-
-				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg1))
-				value = int32(carg2)
-
-				overrides.ValueChanged(balance, channel, value)
-			},
-		)
-	}
-}
-
-// ParentGetBalanceType calls the default implementations of the `GstColorBalance.get_balance_type` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- goret ColorBalanceType 
-//
-// Get the #GstColorBalanceType of this implementation.
-func (balance *ColorBalanceInstance) ParentGetBalanceType() ColorBalanceType {
-	var carg0 *C.GstColorBalance
-	var cret  C.GstColorBalanceType // return, none, casted
-
-	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
-
-	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
-
-	cret = C._gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(unsafe.Pointer(parentclass.get_balance_type), carg0)
-	runtime.KeepAlive(balance)
-
-	var goret ColorBalanceType
-
-	goret = ColorBalanceType(cret)
-
-	return goret
-}
-
-// ParentGetValue calls the default implementations of the `GstColorBalance.get_value` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-// 
-// The function returns the following values:
-// 
-// 	- goret int32 
-//
-// Retrieve the current value of the indicated channel, between min_value
-// and max_value.
-// 
-// See Also: The #GstColorBalanceChannel.min_value and
-//         #GstColorBalanceChannel.max_value members of the
-//         #GstColorBalanceChannel object.
-func (balance *ColorBalanceInstance) ParentGetValue(channel ColorBalanceChannel) int32 {
-	var carg0 *C.GstColorBalance
-	var carg1 *C.GstColorBalanceChannel // in, none, converted
-	var cret  C.gint                    // return, none, casted
-
-	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
-
-	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
-	carg1 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
-
-	cret = C._gotk4_gstvideo1_ColorBalance_virtual_get_value(unsafe.Pointer(parentclass.get_value), carg0, carg1)
-	runtime.KeepAlive(balance)
-	runtime.KeepAlive(channel)
-
-	var goret int32
-
-	goret = int32(cret)
-
-	return goret
-}
-
-// ParentListChannels calls the default implementations of the `GstColorBalance.list_channels` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- goret []ColorBalanceChannel 
-//
-// Retrieve a list of the available channels.
-func (balance *ColorBalanceInstance) ParentListChannels() []ColorBalanceChannel {
-	var carg0 *C.GstColorBalance
-	var cret  *C.GList // container, transfer: none
-
-	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
-
-	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
-
-	cret = C._gotk4_gstvideo1_ColorBalance_virtual_list_channels(unsafe.Pointer(parentclass.list_channels), carg0)
-	runtime.KeepAlive(balance)
-
-	var goret []ColorBalanceChannel
-
-	goret = glib.UnsafeListFromGlibNone(
-		unsafe.Pointer(cret),
-		func(v unsafe.Pointer) ColorBalanceChannel {
-			var dst ColorBalanceChannel // converted
-			dst = UnsafeColorBalanceChannelFromGlibNone(v)
-			return dst
-		},
-	)
-
-	return goret
-}
-
-// ParentSetValue calls the default implementations of the `GstColorBalance.set_value` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-// 	- value int32: The new value for the channel. 
-//
-// Sets the current value of the channel to the passed value, which must
-// be between min_value and max_value.
-// 
-// See Also: The #GstColorBalanceChannel.min_value and
-//         #GstColorBalanceChannel.max_value members of the
-//         #GstColorBalanceChannel object.
-func (balance *ColorBalanceInstance) ParentSetValue(channel ColorBalanceChannel, value int32) {
-	var carg0 *C.GstColorBalance
-	var carg1 *C.GstColorBalanceChannel // in, none, converted
-	var carg2 C.gint                    // in, none, converted
-
-	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
-
-	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
-	carg1 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
-	carg2 = C.gint(value)
-
-	C._gotk4_gstvideo1_ColorBalance_virtual_set_value(unsafe.Pointer(parentclass.set_value), carg0, carg1, carg2)
-	runtime.KeepAlive(balance)
-	runtime.KeepAlive(channel)
-	runtime.KeepAlive(value)
-}
-
-// ParentValueChanged calls the default implementations of the `GstColorBalance.value_changed` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
-// 	- value int32: The new value of the channel 
-//
-// A helper function called by implementations of the GstColorBalance
-// interface. It fires the #GstColorBalance::value-changed signal on the
-// instance, and the #GstColorBalanceChannel::value-changed signal on the
-// channel object.
-func (balance *ColorBalanceInstance) ParentValueChanged(channel ColorBalanceChannel, value int32) {
-	var carg0 *C.GstColorBalance
-	var carg1 *C.GstColorBalanceChannel // in, none, converted
-	var carg2 C.gint                    // in, none, converted
-
-	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
-
-	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
-	carg1 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
-	carg2 = C.gint(value)
-
-	C._gotk4_gstvideo1_ColorBalance_virtual_value_changed(unsafe.Pointer(parentclass.value_changed), carg0, carg1, carg2)
-	runtime.KeepAlive(balance)
-	runtime.KeepAlive(channel)
-	runtime.KeepAlive(value)
-}
-
 // NavigationInstance is the instance type used by all types implementing GstNavigation. It is used internally by the bindings. Users should use the interface [Navigation] instead.
 type NavigationInstance struct {
 	_ [0]func() // equal guard
@@ -8632,18 +8168,6 @@ type Navigation interface {
 	// usually the size in pixels of the window associated with the element
 	// implementing the #GstNavigation interface.
 	SendMouseScrollEvent(float64, float64, float64, float64)
-
-	// chain up virtual methods:
-
-	// ParentSendEventSimple calls the default implementations of the `GstNavigation.send_event_simple` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event: The event to send 
-	//
-	// Sends an event to the navigation interface.
-	ParentSendEventSimple(event *gst.Event)
 }
 
 var _ Navigation = (*NavigationInstance)(nil)
@@ -10246,64 +9770,6 @@ func (navigation *NavigationInstance) SendMouseScrollEvent(x float64, y float64,
 	runtime.KeepAlive(deltaY)
 }
 
-// NavigationOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type NavigationOverrides[Instance Navigation] struct {
-	// // SendEventSimple allows you to override the implementation of the virtual method send_event_simple.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event: The event to send 
-	//
-	// Sends an event to the navigation interface.
-	SendEventSimple func(Instance, *gst.Event)
-}
-
-// UnsafeApplyNavigationOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, overrides NavigationOverrides[Instance]) {
-	pclass := (*C.GstNavigationInterface)(gclass)
-
-	if overrides.SendEventSimple != nil {
-		pclass.send_event_simple = (*[0]byte)(C._gotk4_gstvideo1_Navigation_send_event_simple)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_Navigation_send_event_simple",
-			func(carg0 *C.GstNavigation, carg1 *C.GstEvent) {
-				var navigation Instance   // go GstNavigation subclass
-				var event      *gst.Event // in, full, converted
-
-				navigation = UnsafeNavigationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				event = gst.UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
-
-				overrides.SendEventSimple(navigation, event)
-			},
-		)
-	}
-}
-
-// ParentSendEventSimple calls the default implementations of the `GstNavigation.send_event_simple` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: The event to send 
-//
-// Sends an event to the navigation interface.
-func (navigation *NavigationInstance) ParentSendEventSimple(event *gst.Event) {
-	var carg0 *C.GstNavigation
-	var carg1 *C.GstEvent // in, none, converted
-
-	parentclass := (*C.GstNavigationInterface)(classdata.PeekParentInterface(UnsafeNavigationToGlibNone(navigation), uint64(TypeNavigation)))
-
-	carg0 = (*C.GstNavigation)(UnsafeNavigationToGlibNone(navigation))
-	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
-
-	C._gotk4_gstvideo1_Navigation_virtual_send_event_simple(unsafe.Pointer(parentclass.send_event_simple), carg0, carg1)
-	runtime.KeepAlive(navigation)
-	runtime.KeepAlive(event)
-}
-
 // VideoDirectionInstance is the instance type used by all types implementing GstVideoDirection. It is used internally by the bindings. Users should use the interface [VideoDirection] instead.
 type VideoDirectionInstance struct {
 	_ [0]func() // equal guard
@@ -10318,8 +9784,6 @@ var _ VideoDirection = (*VideoDirectionInstance)(nil)
 // operations of video-sources or operators.
 type VideoDirection interface {
 	upcastToGstVideoDirection() *VideoDirectionInstance
-
-	// chain up virtual methods:
 }
 
 var _ VideoDirection = (*VideoDirectionInstance)(nil)
@@ -10363,16 +9827,6 @@ func UnsafeVideoDirectionToGlibNone(c VideoDirection) unsafe.Pointer {
 func UnsafeVideoDirectionToGlibFull(c VideoDirection) unsafe.Pointer {
 	i := c.upcastToGstVideoDirection()
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
-}
-
-// VideoDirectionOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type VideoDirectionOverrides[Instance VideoDirection] struct {
-}
-
-// UnsafeApplyVideoDirectionOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyVideoDirectionOverrides[Instance VideoDirection](gclass unsafe.Pointer, overrides VideoDirectionOverrides[Instance]) {
 }
 
 // VideoOrientationInstance is the instance type used by all types implementing GstVideoOrientation. It is used internally by the bindings. Users should use the interface [VideoOrientation] instead.
@@ -10474,101 +9928,6 @@ type VideoOrientation interface {
 	//
 	// Set the vertical flipping state (%TRUE for flipped) for the given object.
 	SetVflip(bool) bool
-
-	// chain up virtual methods:
-
-	// ParentGetHcenter calls the default implementations of the `GstVideoOrientation.get_hcenter` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- center int32: return location for the result 
-	// 	- goret bool 
-	//
-	// Get the horizontal centering offset from the given object.
-	ParentGetHcenter() (int32, bool)
-	// ParentGetHflip calls the default implementations of the `GstVideoOrientation.get_hflip` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- flip bool: return location for the result 
-	// 	- goret bool 
-	//
-	// Get the horizontal flipping state (%TRUE for flipped) from the given object.
-	ParentGetHflip() (bool, bool)
-	// ParentGetVcenter calls the default implementations of the `GstVideoOrientation.get_vcenter` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- center int32: return location for the result 
-	// 	- goret bool 
-	//
-	// Get the vertical centering offset from the given object.
-	ParentGetVcenter() (int32, bool)
-	// ParentGetVflip calls the default implementations of the `GstVideoOrientation.get_vflip` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- flip bool: return location for the result 
-	// 	- goret bool 
-	//
-	// Get the vertical flipping state (%TRUE for flipped) from the given object.
-	ParentGetVflip() (bool, bool)
-	// ParentSetHcenter calls the default implementations of the `GstVideoOrientation.set_hcenter` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- center int32: centering offset 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set the horizontal centering offset for the given object.
-	ParentSetHcenter(center int32) bool
-	// ParentSetHflip calls the default implementations of the `GstVideoOrientation.set_hflip` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flip bool: use flipping 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set the horizontal flipping state (%TRUE for flipped) for the given object.
-	ParentSetHflip(flip bool) bool
-	// ParentSetVcenter calls the default implementations of the `GstVideoOrientation.set_vcenter` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- center int32: centering offset 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set the vertical centering offset for the given object.
-	ParentSetVcenter(center int32) bool
-	// ParentSetVflip calls the default implementations of the `GstVideoOrientation.set_vflip` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flip bool: use flipping 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set the vertical flipping state (%TRUE for flipped) for the given object.
-	ParentSetVflip(flip bool) bool
 }
 
 var _ VideoOrientation = (*VideoOrientationInstance)(nil)
@@ -10888,577 +10247,6 @@ func (videoOrientation *VideoOrientationInstance) SetVflip(flip bool) bool {
 	}
 
 	cret = C.gst_video_orientation_set_vflip(carg0, carg1)
-	runtime.KeepAlive(videoOrientation)
-	runtime.KeepAlive(flip)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// VideoOrientationOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type VideoOrientationOverrides[Instance VideoOrientation] struct {
-	// // GetHcenter allows you to override the implementation of the virtual method get_hcenter.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- center int32: return location for the result 
-	// 	- goret bool 
-	//
-	// Get the horizontal centering offset from the given object.
-	GetHcenter func(Instance) (int32, bool)
-	// // GetHflip allows you to override the implementation of the virtual method get_hflip.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- flip bool: return location for the result 
-	// 	- goret bool 
-	//
-	// Get the horizontal flipping state (%TRUE for flipped) from the given object.
-	GetHflip func(Instance) (bool, bool)
-	// // GetVcenter allows you to override the implementation of the virtual method get_vcenter.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- center int32: return location for the result 
-	// 	- goret bool 
-	//
-	// Get the vertical centering offset from the given object.
-	GetVcenter func(Instance) (int32, bool)
-	// // GetVflip allows you to override the implementation of the virtual method get_vflip.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- flip bool: return location for the result 
-	// 	- goret bool 
-	//
-	// Get the vertical flipping state (%TRUE for flipped) from the given object.
-	GetVflip func(Instance) (bool, bool)
-	// // SetHcenter allows you to override the implementation of the virtual method set_hcenter.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- center int32: centering offset 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set the horizontal centering offset for the given object.
-	SetHcenter func(Instance, int32) bool
-	// // SetHflip allows you to override the implementation of the virtual method set_hflip.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flip bool: use flipping 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set the horizontal flipping state (%TRUE for flipped) for the given object.
-	SetHflip func(Instance, bool) bool
-	// // SetVcenter allows you to override the implementation of the virtual method set_vcenter.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- center int32: centering offset 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set the vertical centering offset for the given object.
-	SetVcenter func(Instance, int32) bool
-	// // SetVflip allows you to override the implementation of the virtual method set_vflip.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flip bool: use flipping 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set the vertical flipping state (%TRUE for flipped) for the given object.
-	SetVflip func(Instance, bool) bool
-}
-
-// UnsafeApplyVideoOrientationOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsafe.Pointer, overrides VideoOrientationOverrides[Instance]) {
-	pclass := (*C.GstVideoOrientationInterface)(gclass)
-
-	if overrides.GetHcenter != nil {
-		pclass.get_hcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_hcenter)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOrientation_get_hcenter",
-			func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean) {
-				var videoOrientation Instance // go GstVideoOrientation subclass
-				var center           int32    // out, full, casted
-				var goret            bool     // return
-
-				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				center, goret = overrides.GetHcenter(videoOrientation)
-
-				*carg1 = C.gint(center)
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetHflip != nil {
-		pclass.get_hflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_hflip)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOrientation_get_hflip",
-			func(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean) {
-				var videoOrientation Instance // go GstVideoOrientation subclass
-				var flip             bool     // out
-				var goret            bool     // return
-
-				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				flip, goret = overrides.GetHflip(videoOrientation)
-
-				if flip {
-					*carg1 = C.TRUE
-				}
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetVcenter != nil {
-		pclass.get_vcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_vcenter)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOrientation_get_vcenter",
-			func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean) {
-				var videoOrientation Instance // go GstVideoOrientation subclass
-				var center           int32    // out, full, casted
-				var goret            bool     // return
-
-				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				center, goret = overrides.GetVcenter(videoOrientation)
-
-				*carg1 = C.gint(center)
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetVflip != nil {
-		pclass.get_vflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_vflip)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOrientation_get_vflip",
-			func(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean) {
-				var videoOrientation Instance // go GstVideoOrientation subclass
-				var flip             bool     // out
-				var goret            bool     // return
-
-				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				flip, goret = overrides.GetVflip(videoOrientation)
-
-				if flip {
-					*carg1 = C.TRUE
-				}
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.SetHcenter != nil {
-		pclass.set_hcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_hcenter)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOrientation_set_hcenter",
-			func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean) {
-				var videoOrientation Instance // go GstVideoOrientation subclass
-				var center           int32    // in, none, casted
-				var goret            bool     // return
-
-				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				center = int32(carg1)
-
-				goret = overrides.SetHcenter(videoOrientation, center)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.SetHflip != nil {
-		pclass.set_hflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_hflip)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOrientation_set_hflip",
-			func(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean) {
-				var videoOrientation Instance // go GstVideoOrientation subclass
-				var flip             bool     // in
-				var goret            bool     // return
-
-				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				if carg1 != 0 {
-					flip = true
-				}
-
-				goret = overrides.SetHflip(videoOrientation, flip)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.SetVcenter != nil {
-		pclass.set_vcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_vcenter)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOrientation_set_vcenter",
-			func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean) {
-				var videoOrientation Instance // go GstVideoOrientation subclass
-				var center           int32    // in, none, casted
-				var goret            bool     // return
-
-				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				center = int32(carg1)
-
-				goret = overrides.SetVcenter(videoOrientation, center)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.SetVflip != nil {
-		pclass.set_vflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_vflip)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOrientation_set_vflip",
-			func(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean) {
-				var videoOrientation Instance // go GstVideoOrientation subclass
-				var flip             bool     // in
-				var goret            bool     // return
-
-				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				if carg1 != 0 {
-					flip = true
-				}
-
-				goret = overrides.SetVflip(videoOrientation, flip)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-}
-
-// ParentGetHcenter calls the default implementations of the `GstVideoOrientation.get_hcenter` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- center int32: return location for the result 
-// 	- goret bool 
-//
-// Get the horizontal centering offset from the given object.
-func (videoOrientation *VideoOrientationInstance) ParentGetHcenter() (int32, bool) {
-	var carg0 *C.GstVideoOrientation
-	var carg1 C.gint     // out, full, casted
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
-
-	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
-
-	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(unsafe.Pointer(parentclass.get_hcenter), carg0, &carg1)
-	runtime.KeepAlive(videoOrientation)
-
-	var center int32
-	var goret  bool
-
-	center = int32(carg1)
-	if cret != 0 {
-		goret = true
-	}
-
-	return center, goret
-}
-
-// ParentGetHflip calls the default implementations of the `GstVideoOrientation.get_hflip` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- flip bool: return location for the result 
-// 	- goret bool 
-//
-// Get the horizontal flipping state (%TRUE for flipped) from the given object.
-func (videoOrientation *VideoOrientationInstance) ParentGetHflip() (bool, bool) {
-	var carg0 *C.GstVideoOrientation
-	var carg1 C.gboolean // out
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
-
-	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
-
-	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(unsafe.Pointer(parentclass.get_hflip), carg0, &carg1)
-	runtime.KeepAlive(videoOrientation)
-
-	var flip  bool
-	var goret bool
-
-	if carg1 != 0 {
-		flip = true
-	}
-	if cret != 0 {
-		goret = true
-	}
-
-	return flip, goret
-}
-
-// ParentGetVcenter calls the default implementations of the `GstVideoOrientation.get_vcenter` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- center int32: return location for the result 
-// 	- goret bool 
-//
-// Get the vertical centering offset from the given object.
-func (videoOrientation *VideoOrientationInstance) ParentGetVcenter() (int32, bool) {
-	var carg0 *C.GstVideoOrientation
-	var carg1 C.gint     // out, full, casted
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
-
-	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
-
-	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(unsafe.Pointer(parentclass.get_vcenter), carg0, &carg1)
-	runtime.KeepAlive(videoOrientation)
-
-	var center int32
-	var goret  bool
-
-	center = int32(carg1)
-	if cret != 0 {
-		goret = true
-	}
-
-	return center, goret
-}
-
-// ParentGetVflip calls the default implementations of the `GstVideoOrientation.get_vflip` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- flip bool: return location for the result 
-// 	- goret bool 
-//
-// Get the vertical flipping state (%TRUE for flipped) from the given object.
-func (videoOrientation *VideoOrientationInstance) ParentGetVflip() (bool, bool) {
-	var carg0 *C.GstVideoOrientation
-	var carg1 C.gboolean // out
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
-
-	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
-
-	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(unsafe.Pointer(parentclass.get_vflip), carg0, &carg1)
-	runtime.KeepAlive(videoOrientation)
-
-	var flip  bool
-	var goret bool
-
-	if carg1 != 0 {
-		flip = true
-	}
-	if cret != 0 {
-		goret = true
-	}
-
-	return flip, goret
-}
-
-// ParentSetHcenter calls the default implementations of the `GstVideoOrientation.set_hcenter` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- center int32: centering offset 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Set the horizontal centering offset for the given object.
-func (videoOrientation *VideoOrientationInstance) ParentSetHcenter(center int32) bool {
-	var carg0 *C.GstVideoOrientation
-	var carg1 C.gint     // in, none, converted
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
-
-	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
-	carg1 = C.gint(center)
-
-	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(unsafe.Pointer(parentclass.set_hcenter), carg0, carg1)
-	runtime.KeepAlive(videoOrientation)
-	runtime.KeepAlive(center)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ParentSetHflip calls the default implementations of the `GstVideoOrientation.set_hflip` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- flip bool: use flipping 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Set the horizontal flipping state (%TRUE for flipped) for the given object.
-func (videoOrientation *VideoOrientationInstance) ParentSetHflip(flip bool) bool {
-	var carg0 *C.GstVideoOrientation
-	var carg1 C.gboolean // in, none, converted
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
-
-	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
-	if flip {
-		carg1 = C.TRUE
-	}
-
-	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_hflip(unsafe.Pointer(parentclass.set_hflip), carg0, carg1)
-	runtime.KeepAlive(videoOrientation)
-	runtime.KeepAlive(flip)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ParentSetVcenter calls the default implementations of the `GstVideoOrientation.set_vcenter` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- center int32: centering offset 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Set the vertical centering offset for the given object.
-func (videoOrientation *VideoOrientationInstance) ParentSetVcenter(center int32) bool {
-	var carg0 *C.GstVideoOrientation
-	var carg1 C.gint     // in, none, converted
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
-
-	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
-	carg1 = C.gint(center)
-
-	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(unsafe.Pointer(parentclass.set_vcenter), carg0, carg1)
-	runtime.KeepAlive(videoOrientation)
-	runtime.KeepAlive(center)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ParentSetVflip calls the default implementations of the `GstVideoOrientation.set_vflip` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- flip bool: use flipping 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Set the vertical flipping state (%TRUE for flipped) for the given object.
-func (videoOrientation *VideoOrientationInstance) ParentSetVflip(flip bool) bool {
-	var carg0 *C.GstVideoOrientation
-	var carg1 C.gboolean // in, none, converted
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
-
-	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
-	if flip {
-		carg1 = C.TRUE
-	}
-
-	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_vflip(unsafe.Pointer(parentclass.set_vflip), carg0, carg1)
 	runtime.KeepAlive(videoOrientation)
 	runtime.KeepAlive(flip)
 
@@ -11792,40 +10580,6 @@ type VideoOverlay interface {
 	// This method is needed for non fullscreen video overlay in UI toolkits that
 	// do not support subwindows.
 	SetRenderRectangle(int32, int32, int32, int32) bool
-
-	// chain up virtual methods:
-
-	// ParentExpose calls the default implementations of the `GstVideoOverlay.expose` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// Tell an overlay that it has been exposed. This will redraw the current frame
-	// in the drawable even if the pipeline is PAUSED.
-	ParentExpose()
-	// ParentHandleEvents calls the default implementations of the `GstVideoOverlay.handle_events` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
-	//
-	// Tell an overlay that it should handle events from the window system. These
-	// events are forwarded upstream as navigation events. In some window system,
-	// events are not propagated in the window hierarchy if a client is listening
-	// for them. This method allows you to disable events handling completely
-	// from the #GstVideoOverlay.
-	ParentHandleEvents(handleEvents bool)
-	// ParentSetRenderRectangle calls the default implementations of the `GstVideoOverlay.set_render_rectangle` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- x int32 
-	// 	- y int32 
-	// 	- width int32 
-	// 	- height int32 
-	//
-	// virtual method to set the render rectangle
-	ParentSetRenderRectangle(x int32, y int32, width int32, height int32)
 }
 
 var _ VideoOverlay = (*VideoOverlayInstance)(nil)
@@ -12023,180 +10777,6 @@ func (overlay *VideoOverlayInstance) SetRenderRectangle(x int32, y int32, width 
 	return goret
 }
 
-// VideoOverlayOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type VideoOverlayOverrides[Instance VideoOverlay] struct {
-	// // Expose allows you to override the implementation of the virtual method expose.
-	//
-	// Tell an overlay that it has been exposed. This will redraw the current frame
-	// in the drawable even if the pipeline is PAUSED.
-	Expose func(Instance)
-	// // HandleEvents allows you to override the implementation of the virtual method handle_events.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
-	//
-	// Tell an overlay that it should handle events from the window system. These
-	// events are forwarded upstream as navigation events. In some window system,
-	// events are not propagated in the window hierarchy if a client is listening
-	// for them. This method allows you to disable events handling completely
-	// from the #GstVideoOverlay.
-	HandleEvents func(Instance, bool)
-	// // SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- x int32 
-	// 	- y int32 
-	// 	- width int32 
-	// 	- height int32 
-	//
-	// virtual method to set the render rectangle
-	SetRenderRectangle func(Instance, int32, int32, int32, int32)
-}
-
-// UnsafeApplyVideoOverlayOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyVideoOverlayOverrides[Instance VideoOverlay](gclass unsafe.Pointer, overrides VideoOverlayOverrides[Instance]) {
-	pclass := (*C.GstVideoOverlayInterface)(gclass)
-
-	if overrides.Expose != nil {
-		pclass.expose = (*[0]byte)(C._gotk4_gstvideo1_VideoOverlay_expose)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOverlay_expose",
-			func(carg0 *C.GstVideoOverlay) {
-				var overlay Instance // go GstVideoOverlay subclass
-
-				overlay = UnsafeVideoOverlayFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				overrides.Expose(overlay)
-			},
-		)
-	}
-
-	if overrides.HandleEvents != nil {
-		pclass.handle_events = (*[0]byte)(C._gotk4_gstvideo1_VideoOverlay_handle_events)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOverlay_handle_events",
-			func(carg0 *C.GstVideoOverlay, carg1 C.gboolean) {
-				var overlay      Instance // go GstVideoOverlay subclass
-				var handleEvents bool     // in
-
-				overlay = UnsafeVideoOverlayFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				if carg1 != 0 {
-					handleEvents = true
-				}
-
-				overrides.HandleEvents(overlay, handleEvents)
-			},
-		)
-	}
-
-	if overrides.SetRenderRectangle != nil {
-		pclass.set_render_rectangle = (*[0]byte)(C._gotk4_gstvideo1_VideoOverlay_set_render_rectangle)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoOverlay_set_render_rectangle",
-			func(carg0 *C.GstVideoOverlay, carg1 C.gint, carg2 C.gint, carg3 C.gint, carg4 C.gint) {
-				var overlay Instance // go GstVideoOverlay subclass
-				var x       int32    // in, none, casted
-				var y       int32    // in, none, casted
-				var width   int32    // in, none, casted
-				var height  int32    // in, none, casted
-
-				overlay = UnsafeVideoOverlayFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				x = int32(carg1)
-				y = int32(carg2)
-				width = int32(carg3)
-				height = int32(carg4)
-
-				overrides.SetRenderRectangle(overlay, x, y, width, height)
-			},
-		)
-	}
-}
-
-// ParentExpose calls the default implementations of the `GstVideoOverlay.expose` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// Tell an overlay that it has been exposed. This will redraw the current frame
-// in the drawable even if the pipeline is PAUSED.
-func (overlay *VideoOverlayInstance) ParentExpose() {
-	var carg0 *C.GstVideoOverlay
-
-	parentclass := (*C.GstVideoOverlayInterface)(classdata.PeekParentInterface(UnsafeVideoOverlayToGlibNone(overlay), uint64(TypeVideoOverlay)))
-
-	carg0 = (*C.GstVideoOverlay)(UnsafeVideoOverlayToGlibNone(overlay))
-
-	C._gotk4_gstvideo1_VideoOverlay_virtual_expose(unsafe.Pointer(parentclass.expose), carg0)
-	runtime.KeepAlive(overlay)
-}
-
-// ParentHandleEvents calls the default implementations of the `GstVideoOverlay.handle_events` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
-//
-// Tell an overlay that it should handle events from the window system. These
-// events are forwarded upstream as navigation events. In some window system,
-// events are not propagated in the window hierarchy if a client is listening
-// for them. This method allows you to disable events handling completely
-// from the #GstVideoOverlay.
-func (overlay *VideoOverlayInstance) ParentHandleEvents(handleEvents bool) {
-	var carg0 *C.GstVideoOverlay
-	var carg1 C.gboolean // in, none, converted
-
-	parentclass := (*C.GstVideoOverlayInterface)(classdata.PeekParentInterface(UnsafeVideoOverlayToGlibNone(overlay), uint64(TypeVideoOverlay)))
-
-	carg0 = (*C.GstVideoOverlay)(UnsafeVideoOverlayToGlibNone(overlay))
-	if handleEvents {
-		carg1 = C.TRUE
-	}
-
-	C._gotk4_gstvideo1_VideoOverlay_virtual_handle_events(unsafe.Pointer(parentclass.handle_events), carg0, carg1)
-	runtime.KeepAlive(overlay)
-	runtime.KeepAlive(handleEvents)
-}
-
-// ParentSetRenderRectangle calls the default implementations of the `GstVideoOverlay.set_render_rectangle` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- x int32 
-// 	- y int32 
-// 	- width int32 
-// 	- height int32 
-//
-// virtual method to set the render rectangle
-func (overlay *VideoOverlayInstance) ParentSetRenderRectangle(x int32, y int32, width int32, height int32) {
-	var carg0 *C.GstVideoOverlay
-	var carg1 C.gint // in, none, converted
-	var carg2 C.gint // in, none, casted
-	var carg3 C.gint // in, none, casted
-	var carg4 C.gint // in, none, casted
-
-	parentclass := (*C.GstVideoOverlayInterface)(classdata.PeekParentInterface(UnsafeVideoOverlayToGlibNone(overlay), uint64(TypeVideoOverlay)))
-
-	carg0 = (*C.GstVideoOverlay)(UnsafeVideoOverlayToGlibNone(overlay))
-	carg1 = C.gint(x)
-	carg2 = C.gint(y)
-	carg3 = C.gint(width)
-	carg4 = C.gint(height)
-
-	C._gotk4_gstvideo1_VideoOverlay_virtual_set_render_rectangle(unsafe.Pointer(parentclass.set_render_rectangle), carg0, carg1, carg2, carg3, carg4)
-	runtime.KeepAlive(overlay)
-	runtime.KeepAlive(x)
-	runtime.KeepAlive(y)
-	runtime.KeepAlive(width)
-	runtime.KeepAlive(height)
-}
-
 // ColorBalanceChannelInstance is the instance type used by all types extending GstColorBalanceChannel. It is used internally by the bindings. Users should use the interface [ColorBalanceChannel] instead.
 type ColorBalanceChannelInstance struct {
 	_ [0]func() // equal guard
@@ -12319,7 +10899,7 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 				var channel Instance // go GstColorBalanceChannel subclass
 				var value   int32    // in, none, casted
 
-				channel = UnsafeColorBalanceChannelFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				channel = UnsafeColorBalanceChannelFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				value = int32(carg1)
 
 				overrides.ValueChanged(channel, value)
@@ -12611,7 +11191,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 				var outbuffer       *gst.Buffer    // in, none, converted
 				var goret           gst.FlowReturn // return, none, casted
 
-				videoaggregator = UnsafeVideoAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				videoaggregator = UnsafeVideoAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				outbuffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.AggregateFrames(videoaggregator, outbuffer)
@@ -12634,7 +11214,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 				var bestInfo        *VideoInfo // in, none, converted
 				var atLeastOneAlpha bool       // out
 
-				vagg = UnsafeVideoAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				vagg = UnsafeVideoAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				downstreamCaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				bestInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
 
@@ -12657,7 +11237,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 				var caps            *gst.Caps // in, none, converted
 				var goret           *gst.Caps // return, full, converted
 
-				videoaggregator = UnsafeVideoAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				videoaggregator = UnsafeVideoAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.UpdateCaps(videoaggregator, caps)
@@ -13176,7 +11756,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 				var videoaggregator VideoAggregator // in, none, converted
 				var preparedFrame   *VideoFrame     // in, none, converted
 
-				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
 
@@ -13197,7 +11777,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 				var preparedFrame   *VideoFrame     // in, none, converted
 				var goret           bool            // return
 
-				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg3))
@@ -13223,7 +11803,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 				var videoaggregator VideoAggregator // in, none, converted
 				var preparedFrame   *VideoFrame     // in, none, converted
 
-				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
 
@@ -13243,7 +11823,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 				var buffer          *gst.Buffer     // in, none, converted
 				var preparedFrame   *VideoFrame     // in, none, converted
 
-				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg3))
@@ -13261,7 +11841,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 			func(carg0 *C.GstVideoAggregatorPad) {
 				var pad Instance // go GstVideoAggregatorPad subclass
 
-				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.UpdateConversionInfo(pad)
 			},
@@ -16180,7 +14760,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Close(decoder)
 
@@ -16203,7 +14783,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(decoder, query)
@@ -16226,7 +14806,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance       // go GstVideoDecoder subclass
 				var goret   gst.FlowReturn // return, none, casted
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Drain(decoder)
 
@@ -16246,7 +14826,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance       // go GstVideoDecoder subclass
 				var goret   gst.FlowReturn // return, none, casted
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Finish(decoder)
 
@@ -16266,7 +14846,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Flush(decoder)
 
@@ -16289,7 +14869,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var filter  *gst.Caps // in, none, converted
 				var goret   *gst.Caps // return, full, converted
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Getcaps(decoder, filter)
@@ -16311,7 +14891,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var frame   *VideoCodecFrame // in, full, converted
 				var goret   gst.FlowReturn   // return, none, casted
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleFrame(decoder, frame)
@@ -16334,7 +14914,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var duration  gst.ClockTime // in, none, casted, alias
 				var goret     bool          // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				timestamp = gst.ClockTime(carg1)
 				duration = gst.ClockTime(carg2)
 
@@ -16358,7 +14938,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Negotiate(decoder)
 
@@ -16380,7 +14960,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Open(decoder)
 
@@ -16405,7 +14985,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var atEos   bool             // in
 				var goret   gst.FlowReturn   // return, none, casted
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 				adapter = gstbase.UnsafeAdapterFromGlibNone(unsafe.Pointer(carg2))
 				if carg3 != 0 {
@@ -16431,7 +15011,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProposeAllocation(decoder, query)
@@ -16455,7 +15035,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var hard    bool     // in
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
 					hard = true
 				}
@@ -16481,7 +15061,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var state   *VideoCodecState // in, none, converted
 				var goret   bool             // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				state = UnsafeVideoCodecStateFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetFormat(decoder, state)
@@ -16505,7 +15085,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(decoder, event)
@@ -16529,7 +15109,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkQuery(decoder, query)
@@ -16553,7 +15133,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(decoder, event)
@@ -16577,7 +15157,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(decoder, query)
@@ -16600,7 +15180,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Start(decoder)
 
@@ -16622,7 +15202,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Stop(decoder)
 
@@ -16646,7 +15226,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var meta    *gst.Meta        // in, none, converted
 				var goret   bool             // return
 
-				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
 
@@ -19136,7 +17716,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Close(encoder)
 
@@ -19159,7 +17739,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(encoder, query)
@@ -19182,7 +17762,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance       // go GstVideoEncoder subclass
 				var goret   gst.FlowReturn // return, none, casted
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Finish(encoder)
 
@@ -19202,7 +17782,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Flush(encoder)
 
@@ -19225,7 +17805,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var filter *gst.Caps // in, none, converted
 				var goret  *gst.Caps // return, full, converted
 
-				enc = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Getcaps(enc, filter)
@@ -19247,7 +17827,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var frame   *VideoCodecFrame // in, none, converted
 				var goret   gst.FlowReturn   // return, none, casted
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleFrame(encoder, frame)
@@ -19268,7 +17848,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Negotiate(encoder)
 
@@ -19290,7 +17870,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Open(encoder)
 
@@ -19313,7 +17893,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var frame   *VideoCodecFrame // in, none, converted
 				var goret   gst.FlowReturn   // return, none, casted
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.PrePush(encoder, frame)
@@ -19335,7 +17915,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProposeAllocation(encoder, query)
@@ -19359,7 +17939,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var hard    bool     // in
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
 					hard = true
 				}
@@ -19385,7 +17965,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var state   *VideoCodecState // in, none, converted
 				var goret   bool             // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				state = UnsafeVideoCodecStateFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetFormat(encoder, state)
@@ -19409,7 +17989,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(encoder, event)
@@ -19433,7 +18013,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkQuery(encoder, query)
@@ -19457,7 +18037,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(encoder, event)
@@ -19481,7 +18061,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(encoder, query)
@@ -19504,7 +18084,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Start(encoder)
 
@@ -19526,7 +18106,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Stop(encoder)
 
@@ -19550,7 +18130,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var meta    *gst.Meta        // in, none, converted
 				var goret   bool             // return
 
-				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
 
@@ -20451,7 +19031,7 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 				var outInfo *VideoInfo // in, none, converted
 				var goret   bool       // return
 
-				filter = UnsafeVideoFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeVideoFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				inInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
 				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg3))
@@ -20479,7 +19059,7 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 				var outframe *VideoFrame    // in, none, converted
 				var goret    gst.FlowReturn // return, none, casted
 
-				filter = UnsafeVideoFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeVideoFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				inframe = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg1))
 				outframe = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
 
@@ -20502,7 +19082,7 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 				var frame *VideoFrame    // in, none, converted
 				var goret gst.FlowReturn // return, none, casted
 
-				trans = UnsafeVideoFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeVideoFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				frame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.TransformFrameIp(trans, frame)
@@ -20821,7 +19401,7 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 				var info      *VideoInfo // in, none, converted
 				var goret     bool       // return
 
-				videoSink = UnsafeVideoSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				videoSink = UnsafeVideoSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				info = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
 
@@ -20846,7 +19426,7 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 				var buf       *gst.Buffer    // in, none, converted
 				var goret     gst.FlowReturn // return, none, casted
 
-				videoSink = UnsafeVideoSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				videoSink = UnsafeVideoSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ShowFrame(videoSink, buf)
@@ -21098,7 +19678,7 @@ func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConve
 				var agg            VideoAggregator // in, none, converted
 				var conversionInfo *VideoInfo      // in, none, converted
 
-				pad = UnsafeVideoAggregatorConvertPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorConvertPadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				agg = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				conversionInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
 

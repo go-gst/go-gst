@@ -1827,8 +1827,6 @@ type TagXmpWriter interface {
 	// 
 	// 	- goret *gst.Buffer 
 	TagListToXmpBuffer(*gst.TagList, bool) *gst.Buffer
-
-	// chain up virtual methods:
 }
 
 var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
@@ -2006,16 +2004,6 @@ func (config *TagXmpWriterInstance) TagListToXmpBuffer(taglist *gst.TagList, rea
 	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
-}
-
-// TagXmpWriterOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type TagXmpWriterOverrides[Instance TagXmpWriter] struct {
-}
-
-// UnsafeApplyTagXmpWriterOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyTagXmpWriterOverrides[Instance TagXmpWriter](gclass unsafe.Pointer, overrides TagXmpWriterOverrides[Instance]) {
 }
 
 // TagDemuxInstance is the instance type used by all types extending GstTagDemux. It is used internally by the bindings. Users should use the interface [TagDemux] instead.
@@ -2212,7 +2200,7 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 				var tagSize  *uint       // in, transfer: none, C Pointers: 1, Name: guint
 				var goret    bool        // return
 
-				demux = UnsafeTagDemuxFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				demux = UnsafeTagDemuxFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				if carg2 != 0 {
 					startTag = true
@@ -2243,7 +2231,7 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 				var endTags   *gst.TagList // in, none, converted
 				var goret     *gst.TagList // return, full, converted
 
-				demux = UnsafeTagDemuxFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				demux = UnsafeTagDemuxFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				startTags = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
 				endTags = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2543,7 +2531,7 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 				var tagList *gst.TagList // in, none, converted
 				var goret   *gst.Buffer  // return, full, converted
 
-				mux = UnsafeTagMuxFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				mux = UnsafeTagMuxFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				tagList = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.RenderEndTag(mux, tagList)
@@ -2565,7 +2553,7 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 				var tagList *gst.TagList // in, none, converted
 				var goret   *gst.Buffer  // return, full, converted
 
-				mux = UnsafeTagMuxFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				mux = UnsafeTagMuxFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				tagList = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.RenderStartTag(mux, tagList)

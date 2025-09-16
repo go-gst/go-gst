@@ -130,7 +130,6 @@ var Data = genmain.Data{
 					// Manually implemented:
 					typesystem.IgnoreMatching("Object.get_value"),
 					typesystem.IgnoreMatching("ControlBinding.get_value"), // TODO
-
 					typesystem.IgnoreMatching("ElementFactory.make_with_properties"),
 					typesystem.IgnoreMatching("Message.parse_property_notify"),
 					typesystem.IgnoreMatching("Message.new_property_notify"),
@@ -144,6 +143,8 @@ var Data = genmain.Data{
 					typesystem.IgnoreMatching("ChildProxy.get_property"),
 					typesystem.IgnoreMatching("Iterator.next"),
 					typesystem.IgnoreMatching("TagList.get_value_index"),
+					// BusSyncHandler has a borrowed message except when the user returns BUS_DROP.
+					typesystem.IgnoreMatching("BusSyncHandler"),
 
 					// we have bindings for parse_launch(_full), if we need the v variants,
 					// then manually implement them

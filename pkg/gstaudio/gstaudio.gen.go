@@ -3305,8 +3305,6 @@ type StreamVolume interface {
 	// 	- format StreamVolumeFormat: #GstStreamVolumeFormat of @val 
 	// 	- val float64: Linear volume factor that should be set 
 	SetVolume(StreamVolumeFormat, float64)
-
-	// chain up virtual methods:
 }
 
 var _ StreamVolume = (*StreamVolumeInstance)(nil)
@@ -3474,16 +3472,6 @@ func (volume *StreamVolumeInstance) SetVolume(format StreamVolumeFormat, val flo
 	runtime.KeepAlive(volume)
 	runtime.KeepAlive(format)
 	runtime.KeepAlive(val)
-}
-
-// StreamVolumeOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type StreamVolumeOverrides[Instance StreamVolume] struct {
-}
-
-// UnsafeApplyStreamVolumeOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyStreamVolumeOverrides[Instance StreamVolume](gclass unsafe.Pointer, overrides StreamVolumeOverrides[Instance]) {
 }
 
 // AudioAggregatorInstance is the instance type used by all types extending GstAudioAggregator. It is used internally by the bindings. Users should use the interface [AudioAggregator] instead.
@@ -3729,7 +3717,7 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 				var numFrames uint               // in, none, casted
 				var goret     bool               // return
 
-				aagg = UnsafeAudioAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				aagg = UnsafeAudioAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				pad = UnsafeAudioAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
 				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 				inOffset = uint(carg3)
@@ -3758,7 +3746,7 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 				var numFrames uint        // in, none, casted
 				var goret     *gst.Buffer // return, full, converted
 
-				aagg = UnsafeAudioAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				aagg = UnsafeAudioAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				numFrames = uint(carg1)
 
 				goret = overrides.CreateOutputBuffer(aagg, numFrames)
@@ -4030,7 +4018,7 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 				var buffer  *gst.Buffer // in, none, converted
 				var goret   *gst.Buffer // return, full, converted
 
-				pad = UnsafeAudioAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeAudioAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				inInfo = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg1))
 				outInfo = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg2))
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
@@ -4052,7 +4040,7 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 			func(carg0 *C.GstAudioAggregatorPad) {
 				var pad Instance // go GstAudioAggregatorPad subclass
 
-				pad = UnsafeAudioAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeAudioAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.UpdateConversionInfo(pad)
 			},
@@ -4705,7 +4693,7 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 				var sink  Instance        // go GstAudioBaseSink subclass
 				var goret AudioRingBuffer // return, none, converted, nullable
 
-				sink = UnsafeAudioBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.CreateRingbuffer(sink)
 
@@ -4728,7 +4716,7 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 				var buffer *gst.Buffer // in, none, converted
 				var goret  *gst.Buffer // return, full, converted
 
-				sink = UnsafeAudioBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Payload(sink, buffer)
@@ -5121,7 +5109,7 @@ func UnsafeApplyAudioBaseSrcOverrides[Instance AudioBaseSrc](gclass unsafe.Point
 				var src   Instance        // go GstAudioBaseSrc subclass
 				var goret AudioRingBuffer // return, none, converted, nullable
 
-				src = UnsafeAudioBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.CreateRingbuffer(src)
 
@@ -5449,7 +5437,7 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 			func(carg0 *C.GstAudioCdSrc) {
 				var src Instance // go GstAudioCdSrc subclass
 
-				src = UnsafeAudioCdSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioCdSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Close(src)
 			},
@@ -5466,7 +5454,7 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 				var device string   // in, none, string
 				var goret  bool     // return
 
-				src = UnsafeAudioCdSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioCdSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				device = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.Open(src, device)
@@ -5490,7 +5478,7 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 				var sector int32       // in, none, casted
 				var goret  *gst.Buffer // return, full, converted
 
-				src = UnsafeAudioCdSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioCdSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				sector = int32(carg1)
 
 				goret = overrides.ReadSector(src, sector)
@@ -7775,7 +7763,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Close(dec)
 
@@ -7798,7 +7786,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(dec, query)
@@ -7821,7 +7809,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec  Instance // go GstAudioDecoder subclass
 				var hard bool     // in
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
 					hard = true
 				}
@@ -7841,7 +7829,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var filter *gst.Caps // in, none, converted
 				var goret  *gst.Caps // return, full, converted
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Getcaps(dec, filter)
@@ -7863,7 +7851,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var buffer *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleFrame(dec, buffer)
@@ -7884,7 +7872,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Negotiate(dec)
 
@@ -7906,7 +7894,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Open(dec)
 
@@ -7931,7 +7919,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var length  int32           // out, full, casted
 				var goret   gst.FlowReturn  // return, none, casted
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				adapter = gstbase.UnsafeAdapterFromGlibNone(unsafe.Pointer(carg1))
 
 				offset, length, goret = overrides.Parse(dec, adapter)
@@ -7955,7 +7943,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProposeAllocation(dec, query)
@@ -7979,7 +7967,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetFormat(dec, caps)
@@ -8003,7 +7991,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(dec, event)
@@ -8027,7 +8015,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkQuery(dec, query)
@@ -8051,7 +8039,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(dec, event)
@@ -8075,7 +8063,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(dec, query)
@@ -8098,7 +8086,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Start(dec)
 
@@ -8120,7 +8108,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Stop(dec)
 
@@ -8145,7 +8133,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var inbuf  *gst.Buffer // in, none, converted
 				var goret  bool        // return
 
-				enc = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
 				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
@@ -10559,7 +10547,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Close(enc)
 
@@ -10582,7 +10570,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(enc, query)
@@ -10604,7 +10592,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 			func(carg0 *C.GstAudioEncoder) {
 				var enc Instance // go GstAudioEncoder subclass
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Flush(enc)
 			},
@@ -10621,7 +10609,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var filter *gst.Caps // in, none, converted
 				var goret  *gst.Caps // return, full, converted
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Getcaps(enc, filter)
@@ -10643,7 +10631,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var buffer *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleFrame(enc, buffer)
@@ -10664,7 +10652,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Negotiate(enc)
 
@@ -10686,7 +10674,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Open(enc)
 
@@ -10709,7 +10697,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProposeAllocation(enc, query)
@@ -10733,7 +10721,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var info  *AudioInfo // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				info = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetFormat(enc, info)
@@ -10757,7 +10745,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(enc, event)
@@ -10781,7 +10769,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkQuery(encoder, query)
@@ -10805,7 +10793,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(enc, event)
@@ -10829,7 +10817,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(encoder, query)
@@ -10852,7 +10840,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Start(enc)
 
@@ -10874,7 +10862,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Stop(enc)
 
@@ -10899,7 +10887,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var inbuf  *gst.Buffer // in, none, converted
 				var goret  bool        // return
 
-				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
 				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
@@ -11634,7 +11622,7 @@ func UnsafeApplyAudioFilterOverrides[Instance AudioFilter](gclass unsafe.Pointer
 				var info   *AudioInfo // in, none, converted
 				var goret  bool       // return
 
-				filter = UnsafeAudioFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeAudioFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				info = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Setup(filter, info)
@@ -13152,7 +13140,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var spec  *AudioRingBufferSpec // in, none, converted
 				var goret bool                 // return
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				spec = UnsafeAudioRingBufferSpecFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Acquire(buf, spec)
@@ -13176,7 +13164,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var active bool     // in
 				var goret  bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
 					active = true
 				}
@@ -13200,7 +13188,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 			func(carg0 *C.GstAudioRingBuffer) {
 				var buf Instance // go GstAudioRingBuffer subclass
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.ClearAll(buf)
 			},
@@ -13216,7 +13204,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.CloseDevice(buf)
 
@@ -13238,7 +13226,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret uint     // return, none, casted
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Delay(buf)
 
@@ -13258,7 +13246,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.OpenDevice(buf)
 
@@ -13280,7 +13268,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Pause(buf)
 
@@ -13302,7 +13290,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Release(buf)
 
@@ -13324,7 +13312,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Resume(buf)
 
@@ -13346,7 +13334,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Start(buf)
 
@@ -13368,7 +13356,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Stop(buf)
 
@@ -14003,7 +13991,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var sink  Instance // go GstAudioSink subclass
 				var goret bool     // return
 
-				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Close(sink)
 
@@ -14025,7 +14013,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var sink  Instance // go GstAudioSink subclass
 				var goret uint     // return, none, casted
 
-				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Delay(sink)
 
@@ -14045,7 +14033,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var sink  Instance // go GstAudioSink subclass
 				var goret bool     // return
 
-				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Open(sink)
 
@@ -14066,7 +14054,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
-				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Pause(sink)
 			},
@@ -14083,7 +14071,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var spec  *AudioRingBufferSpec // in, none, converted
 				var goret bool                 // return
 
-				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				spec = UnsafeAudioRingBufferSpecFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Prepare(sink, spec)
@@ -14105,7 +14093,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
-				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Reset(sink)
 			},
@@ -14120,7 +14108,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
-				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Resume(sink)
 			},
@@ -14135,7 +14123,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
-				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Stop(sink)
 			},
@@ -14151,7 +14139,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var sink  Instance // go GstAudioSink subclass
 				var goret bool     // return
 
-				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Unprepare(sink)
 
@@ -14623,7 +14611,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var src   Instance // go GstAudioSrc subclass
 				var goret bool     // return
 
-				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Close(src)
 
@@ -14645,7 +14633,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var src   Instance // go GstAudioSrc subclass
 				var goret uint     // return, none, casted
 
-				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Delay(src)
 
@@ -14665,7 +14653,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var src   Instance // go GstAudioSrc subclass
 				var goret bool     // return
 
-				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Open(src)
 
@@ -14688,7 +14676,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var spec  *AudioRingBufferSpec // in, none, converted
 				var goret bool                 // return
 
-				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				spec = UnsafeAudioRingBufferSpecFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Prepare(src, spec)
@@ -14710,7 +14698,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 			func(carg0 *C.GstAudioSrc) {
 				var src Instance // go GstAudioSrc subclass
 
-				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Reset(src)
 			},
@@ -14726,7 +14714,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var src   Instance // go GstAudioSrc subclass
 				var goret bool     // return
 
-				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Unprepare(src)
 

@@ -936,8 +936,6 @@ var _ PlayVideoRenderer = (*PlayVideoRendererInstance)(nil)
 // PlayVideoRenderer wraps GstPlayVideoRenderer
 type PlayVideoRenderer interface {
 	upcastToGstPlayVideoRenderer() *PlayVideoRendererInstance
-
-	// chain up virtual methods:
 }
 
 var _ PlayVideoRenderer = (*PlayVideoRendererInstance)(nil)
@@ -981,16 +979,6 @@ func UnsafePlayVideoRendererToGlibNone(c PlayVideoRenderer) unsafe.Pointer {
 func UnsafePlayVideoRendererToGlibFull(c PlayVideoRenderer) unsafe.Pointer {
 	i := c.upcastToGstPlayVideoRenderer()
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
-}
-
-// PlayVideoRendererOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type PlayVideoRendererOverrides[Instance PlayVideoRenderer] struct {
-}
-
-// UnsafeApplyPlayVideoRendererOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyPlayVideoRendererOverrides[Instance PlayVideoRenderer](gclass unsafe.Pointer, overrides PlayVideoRendererOverrides[Instance]) {
 }
 
 // PlayInstance is the instance type used by all types extending GstPlay. It is used internally by the bindings. Users should use the interface [Play] instead.
