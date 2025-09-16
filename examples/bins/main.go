@@ -28,7 +28,7 @@ func main() {
 	// handle messages
 	for msg := range pipeline.GetBus().Messages(ctx) {
 		switch msg.Type() {
-		case gst.MessageEos: // When end-of-stream is received stop
+		case gst.MessageEOS: // When end-of-stream is received stop
 			fmt.Println("End-of-stream reached")
 			bin.BlockSetState(gst.StateNull, gst.ClockTime(time.Second))
 			cancel()

@@ -154,77 +154,77 @@ func init() {
 type ATSCDescriptorType C.int
 
 const (
-	// MtsDescAtscStuffing wraps MTS_DESC_ATSC_STUFFING
-	MtsDescAtscStuffing ATSCDescriptorType = 128
-	// MtsDescAtscAc3 wraps MTS_DESC_ATSC_AC3
-	MtsDescAtscAc3 ATSCDescriptorType = 129
-	// MtsDescAtscCaptionService wraps MTS_DESC_ATSC_CAPTION_SERVICE
-	MtsDescAtscCaptionService ATSCDescriptorType = 134
-	// MtsDescAtscContentAdvisory wraps MTS_DESC_ATSC_CONTENT_ADVISORY
-	MtsDescAtscContentAdvisory ATSCDescriptorType = 135
-	// MtsDescAtscExtendedChannelName wraps MTS_DESC_ATSC_EXTENDED_CHANNEL_NAME
-	MtsDescAtscExtendedChannelName ATSCDescriptorType = 160
-	// MtsDescAtscServiceLocation wraps MTS_DESC_ATSC_SERVICE_LOCATION
-	MtsDescAtscServiceLocation ATSCDescriptorType = 161
-	// MtsDescAtscTimeShiftedService wraps MTS_DESC_ATSC_TIME_SHIFTED_SERVICE
-	MtsDescAtscTimeShiftedService ATSCDescriptorType = 162
-	// MtsDescAtscComponentName wraps MTS_DESC_ATSC_COMPONENT_NAME
-	MtsDescAtscComponentName ATSCDescriptorType = 163
-	// MtsDescAtscDccDepartingRequest wraps MTS_DESC_ATSC_DCC_DEPARTING_REQUEST
-	MtsDescAtscDccDepartingRequest ATSCDescriptorType = 168
-	// MtsDescAtscDccArrivingRequest wraps MTS_DESC_ATSC_DCC_ARRIVING_REQUEST
-	MtsDescAtscDccArrivingRequest ATSCDescriptorType = 169
-	// MtsDescAtscRedistributionControl wraps MTS_DESC_ATSC_REDISTRIBUTION_CONTROL
-	MtsDescAtscRedistributionControl ATSCDescriptorType = 170
-	// MtsDescAtscGenre wraps MTS_DESC_ATSC_GENRE
-	MtsDescAtscGenre ATSCDescriptorType = 171
-	// MtsDescAtscPrivateInformation wraps MTS_DESC_ATSC_PRIVATE_INFORMATION
-	MtsDescAtscPrivateInformation ATSCDescriptorType = 173
-	// MtsDescAtscEac3 wraps MTS_DESC_ATSC_EAC3
-	MtsDescAtscEac3 ATSCDescriptorType = 204
-	// MtsDescAtscEnhancedSignaling wraps MTS_DESC_ATSC_ENHANCED_SIGNALING
-	MtsDescAtscEnhancedSignaling ATSCDescriptorType = 178
-	// MtsDescAtscDataService wraps MTS_DESC_ATSC_DATA_SERVICE
-	MtsDescAtscDataService ATSCDescriptorType = 164
-	// MtsDescAtscPidCount wraps MTS_DESC_ATSC_PID_COUNT
-	MtsDescAtscPidCount ATSCDescriptorType = 165
-	// MtsDescAtscDownloadDescriptor wraps MTS_DESC_ATSC_DOWNLOAD_DESCRIPTOR
-	MtsDescAtscDownloadDescriptor ATSCDescriptorType = 166
-	// MtsDescAtscMultiprotocolEncapsulation wraps MTS_DESC_ATSC_MULTIPROTOCOL_ENCAPSULATION
-	MtsDescAtscMultiprotocolEncapsulation ATSCDescriptorType = 167
-	// MtsDescAtscModuleLink wraps MTS_DESC_ATSC_MODULE_LINK
-	MtsDescAtscModuleLink ATSCDescriptorType = 180
-	// MtsDescAtscCrc32 wraps MTS_DESC_ATSC_CRC32
-	MtsDescAtscCrc32 ATSCDescriptorType = 181
-	// MtsDescAtscGroupLink wraps MTS_DESC_ATSC_GROUP_LINK
-	MtsDescAtscGroupLink ATSCDescriptorType = 184
+	// GstMtsDescAtscStuffing wraps GST_MTS_DESC_ATSC_STUFFING
+	GstMtsDescAtscStuffing ATSCDescriptorType = 128
+	// GstMtsDescAtscAc3 wraps GST_MTS_DESC_ATSC_AC3
+	GstMtsDescAtscAc3 ATSCDescriptorType = 129
+	// GstMtsDescAtscCaptionService wraps GST_MTS_DESC_ATSC_CAPTION_SERVICE
+	GstMtsDescAtscCaptionService ATSCDescriptorType = 134
+	// GstMtsDescAtscContentAdvisory wraps GST_MTS_DESC_ATSC_CONTENT_ADVISORY
+	GstMtsDescAtscContentAdvisory ATSCDescriptorType = 135
+	// GstMtsDescAtscExtendedChannelName wraps GST_MTS_DESC_ATSC_EXTENDED_CHANNEL_NAME
+	GstMtsDescAtscExtendedChannelName ATSCDescriptorType = 160
+	// GstMtsDescAtscServiceLocation wraps GST_MTS_DESC_ATSC_SERVICE_LOCATION
+	GstMtsDescAtscServiceLocation ATSCDescriptorType = 161
+	// GstMtsDescAtscTimeShiftedService wraps GST_MTS_DESC_ATSC_TIME_SHIFTED_SERVICE
+	GstMtsDescAtscTimeShiftedService ATSCDescriptorType = 162
+	// GstMtsDescAtscComponentName wraps GST_MTS_DESC_ATSC_COMPONENT_NAME
+	GstMtsDescAtscComponentName ATSCDescriptorType = 163
+	// GstMtsDescAtscDccDepartingRequest wraps GST_MTS_DESC_ATSC_DCC_DEPARTING_REQUEST
+	GstMtsDescAtscDccDepartingRequest ATSCDescriptorType = 168
+	// GstMtsDescAtscDccArrivingRequest wraps GST_MTS_DESC_ATSC_DCC_ARRIVING_REQUEST
+	GstMtsDescAtscDccArrivingRequest ATSCDescriptorType = 169
+	// GstMtsDescAtscRedistributionControl wraps GST_MTS_DESC_ATSC_REDISTRIBUTION_CONTROL
+	GstMtsDescAtscRedistributionControl ATSCDescriptorType = 170
+	// GstMtsDescAtscGenre wraps GST_MTS_DESC_ATSC_GENRE
+	GstMtsDescAtscGenre ATSCDescriptorType = 171
+	// GstMtsDescAtscPrivateInformation wraps GST_MTS_DESC_ATSC_PRIVATE_INFORMATION
+	GstMtsDescAtscPrivateInformation ATSCDescriptorType = 173
+	// GstMtsDescAtscEac3 wraps GST_MTS_DESC_ATSC_EAC3
+	GstMtsDescAtscEac3 ATSCDescriptorType = 204
+	// GstMtsDescAtscEnhancedSignaling wraps GST_MTS_DESC_ATSC_ENHANCED_SIGNALING
+	GstMtsDescAtscEnhancedSignaling ATSCDescriptorType = 178
+	// GstMtsDescAtscDataService wraps GST_MTS_DESC_ATSC_DATA_SERVICE
+	GstMtsDescAtscDataService ATSCDescriptorType = 164
+	// GstMtsDescAtscPidCount wraps GST_MTS_DESC_ATSC_PID_COUNT
+	GstMtsDescAtscPidCount ATSCDescriptorType = 165
+	// GstMtsDescAtscDownloadDescriptor wraps GST_MTS_DESC_ATSC_DOWNLOAD_DESCRIPTOR
+	GstMtsDescAtscDownloadDescriptor ATSCDescriptorType = 166
+	// GstMtsDescAtscMultiprotocolEncapsulation wraps GST_MTS_DESC_ATSC_MULTIPROTOCOL_ENCAPSULATION
+	GstMtsDescAtscMultiprotocolEncapsulation ATSCDescriptorType = 167
+	// GstMtsDescAtscModuleLink wraps GST_MTS_DESC_ATSC_MODULE_LINK
+	GstMtsDescAtscModuleLink ATSCDescriptorType = 180
+	// GstMtsDescAtscCrc32 wraps GST_MTS_DESC_ATSC_CRC32
+	GstMtsDescAtscCrc32 ATSCDescriptorType = 181
+	// GstMtsDescAtscGroupLink wraps GST_MTS_DESC_ATSC_GROUP_LINK
+	GstMtsDescAtscGroupLink ATSCDescriptorType = 184
 )
 
 
 func (e ATSCDescriptorType) String() string {
 	switch e {
-		case MtsDescAtscAc3: return "MtsDescAtscAc3"
-		case MtsDescAtscCaptionService: return "MtsDescAtscCaptionService"
-		case MtsDescAtscComponentName: return "MtsDescAtscComponentName"
-		case MtsDescAtscContentAdvisory: return "MtsDescAtscContentAdvisory"
-		case MtsDescAtscCrc32: return "MtsDescAtscCrc32"
-		case MtsDescAtscDataService: return "MtsDescAtscDataService"
-		case MtsDescAtscDccArrivingRequest: return "MtsDescAtscDccArrivingRequest"
-		case MtsDescAtscDccDepartingRequest: return "MtsDescAtscDccDepartingRequest"
-		case MtsDescAtscDownloadDescriptor: return "MtsDescAtscDownloadDescriptor"
-		case MtsDescAtscEac3: return "MtsDescAtscEac3"
-		case MtsDescAtscEnhancedSignaling: return "MtsDescAtscEnhancedSignaling"
-		case MtsDescAtscExtendedChannelName: return "MtsDescAtscExtendedChannelName"
-		case MtsDescAtscGenre: return "MtsDescAtscGenre"
-		case MtsDescAtscGroupLink: return "MtsDescAtscGroupLink"
-		case MtsDescAtscModuleLink: return "MtsDescAtscModuleLink"
-		case MtsDescAtscMultiprotocolEncapsulation: return "MtsDescAtscMultiprotocolEncapsulation"
-		case MtsDescAtscPidCount: return "MtsDescAtscPidCount"
-		case MtsDescAtscPrivateInformation: return "MtsDescAtscPrivateInformation"
-		case MtsDescAtscRedistributionControl: return "MtsDescAtscRedistributionControl"
-		case MtsDescAtscServiceLocation: return "MtsDescAtscServiceLocation"
-		case MtsDescAtscStuffing: return "MtsDescAtscStuffing"
-		case MtsDescAtscTimeShiftedService: return "MtsDescAtscTimeShiftedService"
+		case GstMtsDescAtscAc3: return "GstMtsDescAtscAc3"
+		case GstMtsDescAtscCaptionService: return "GstMtsDescAtscCaptionService"
+		case GstMtsDescAtscComponentName: return "GstMtsDescAtscComponentName"
+		case GstMtsDescAtscContentAdvisory: return "GstMtsDescAtscContentAdvisory"
+		case GstMtsDescAtscCrc32: return "GstMtsDescAtscCrc32"
+		case GstMtsDescAtscDataService: return "GstMtsDescAtscDataService"
+		case GstMtsDescAtscDccArrivingRequest: return "GstMtsDescAtscDccArrivingRequest"
+		case GstMtsDescAtscDccDepartingRequest: return "GstMtsDescAtscDccDepartingRequest"
+		case GstMtsDescAtscDownloadDescriptor: return "GstMtsDescAtscDownloadDescriptor"
+		case GstMtsDescAtscEac3: return "GstMtsDescAtscEac3"
+		case GstMtsDescAtscEnhancedSignaling: return "GstMtsDescAtscEnhancedSignaling"
+		case GstMtsDescAtscExtendedChannelName: return "GstMtsDescAtscExtendedChannelName"
+		case GstMtsDescAtscGenre: return "GstMtsDescAtscGenre"
+		case GstMtsDescAtscGroupLink: return "GstMtsDescAtscGroupLink"
+		case GstMtsDescAtscModuleLink: return "GstMtsDescAtscModuleLink"
+		case GstMtsDescAtscMultiprotocolEncapsulation: return "GstMtsDescAtscMultiprotocolEncapsulation"
+		case GstMtsDescAtscPidCount: return "GstMtsDescAtscPidCount"
+		case GstMtsDescAtscPrivateInformation: return "GstMtsDescAtscPrivateInformation"
+		case GstMtsDescAtscRedistributionControl: return "GstMtsDescAtscRedistributionControl"
+		case GstMtsDescAtscServiceLocation: return "GstMtsDescAtscServiceLocation"
+		case GstMtsDescAtscStuffing: return "GstMtsDescAtscStuffing"
+		case GstMtsDescAtscTimeShiftedService: return "GstMtsDescAtscTimeShiftedService"
 		default: return fmt.Sprintf("ATSCDescriptorType(%d)", e)
 	}
 }
@@ -237,46 +237,46 @@ func (e ATSCDescriptorType) String() string {
 type ATSCStreamType C.int
 
 const (
-	// MpegtsStreamTypeAtscDciiVideo wraps MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
+	// StreamTypeAtscDciiVideo wraps GST_MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
 	//
 	// DigiCipher II video | Identical to ITU-T Rec. H.262 | ISO/IEC 13818-2 Video
-	MpegtsStreamTypeAtscDciiVideo ATSCStreamType = 128
-	// MpegtsStreamTypeAtscAudioAc3 wraps MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
+	StreamTypeAtscDciiVideo ATSCStreamType = 128
+	// StreamTypeAtscAudioAc3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
 	//
 	// ATSC A/53 Audio | AC-3
-	MpegtsStreamTypeAtscAudioAc3 ATSCStreamType = 129
-	// MpegtsStreamTypeAtscSubtitling wraps MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
+	StreamTypeAtscAudioAc3 ATSCStreamType = 129
+	// StreamTypeAtscSubtitling wraps GST_MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
 	//
 	// SCTE-27 Subtitling
-	MpegtsStreamTypeAtscSubtitling ATSCStreamType = 130
-	// MpegtsStreamTypeAtscIsochData wraps MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
+	StreamTypeAtscSubtitling ATSCStreamType = 130
+	// StreamTypeAtscIsochData wraps GST_MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
 	//
 	// SCTE-19 Isochronous data | Reserved
-	MpegtsStreamTypeAtscIsochData ATSCStreamType = 131
-	// MpegtsStreamTypeAtscSit wraps MPEGTS_STREAM_TYPE_ATSC_SIT
+	StreamTypeAtscIsochData ATSCStreamType = 131
+	// StreamTypeAtscSit wraps GST_MPEGTS_STREAM_TYPE_ATSC_SIT
 	//
 	// SCTE-35 Splice Information Table
-	MpegtsStreamTypeAtscSit ATSCStreamType = 134
-	// MpegtsStreamTypeAtscAudioEac3 wraps MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
+	StreamTypeAtscSit ATSCStreamType = 134
+	// StreamTypeAtscAudioEac3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
 	//
 	// E-AC-3 A/52:2018
-	MpegtsStreamTypeAtscAudioEac3 ATSCStreamType = 135
-	// MpegtsStreamTypeAtscAudioDtsHd wraps MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
+	StreamTypeAtscAudioEac3 ATSCStreamType = 135
+	// StreamTypeAtscAudioDtsHd wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
 	//
 	// E-AC-3 A/107 (ATSC 2.0)
-	MpegtsStreamTypeAtscAudioDtsHd ATSCStreamType = 136
+	StreamTypeAtscAudioDtsHd ATSCStreamType = 136
 )
 
 
 func (e ATSCStreamType) String() string {
 	switch e {
-		case MpegtsStreamTypeAtscAudioAc3: return "MpegtsStreamTypeAtscAudioAc3"
-		case MpegtsStreamTypeAtscAudioDtsHd: return "MpegtsStreamTypeAtscAudioDtsHd"
-		case MpegtsStreamTypeAtscAudioEac3: return "MpegtsStreamTypeAtscAudioEac3"
-		case MpegtsStreamTypeAtscDciiVideo: return "MpegtsStreamTypeAtscDciiVideo"
-		case MpegtsStreamTypeAtscIsochData: return "MpegtsStreamTypeAtscIsochData"
-		case MpegtsStreamTypeAtscSit: return "MpegtsStreamTypeAtscSit"
-		case MpegtsStreamTypeAtscSubtitling: return "MpegtsStreamTypeAtscSubtitling"
+		case StreamTypeAtscAudioAc3: return "StreamTypeAtscAudioAc3"
+		case StreamTypeAtscAudioDtsHd: return "StreamTypeAtscAudioDtsHd"
+		case StreamTypeAtscAudioEac3: return "StreamTypeAtscAudioEac3"
+		case StreamTypeAtscDciiVideo: return "StreamTypeAtscDciiVideo"
+		case StreamTypeAtscIsochData: return "StreamTypeAtscIsochData"
+		case StreamTypeAtscSit: return "StreamTypeAtscSit"
+		case StreamTypeAtscSubtitling: return "StreamTypeAtscSubtitling"
 		default: return fmt.Sprintf("ATSCStreamType(%d)", e)
 	}
 }
@@ -285,23 +285,23 @@ func (e ATSCStreamType) String() string {
 type AtscMGTTableType C.int
 
 const (
-	// MpegtsAtscMgtTableTypeEit0 wraps MPEGTS_ATSC_MGT_TABLE_TYPE_EIT0
-	MpegtsAtscMgtTableTypeEit0 AtscMGTTableType = 256
-	// MpegtsAtscMgtTableTypeEit127 wraps MPEGTS_ATSC_MGT_TABLE_TYPE_EIT127
-	MpegtsAtscMgtTableTypeEit127 AtscMGTTableType = 383
-	// MpegtsAtscMgtTableTypeEtt0 wraps MPEGTS_ATSC_MGT_TABLE_TYPE_ETT0
-	MpegtsAtscMgtTableTypeEtt0 AtscMGTTableType = 512
-	// MpegtsAtscMgtTableTypeEtt127 wraps MPEGTS_ATSC_MGT_TABLE_TYPE_ETT127
-	MpegtsAtscMgtTableTypeEtt127 AtscMGTTableType = 639
+	// AtscMgtTableTypeEit0 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT0
+	AtscMgtTableTypeEit0 AtscMGTTableType = 256
+	// AtscMgtTableTypeEit127 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT127
+	AtscMgtTableTypeEit127 AtscMGTTableType = 383
+	// AtscMgtTableTypeEtt0 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT0
+	AtscMgtTableTypeEtt0 AtscMGTTableType = 512
+	// AtscMgtTableTypeEtt127 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT127
+	AtscMgtTableTypeEtt127 AtscMGTTableType = 639
 )
 
 
 func (e AtscMGTTableType) String() string {
 	switch e {
-		case MpegtsAtscMgtTableTypeEit0: return "MpegtsAtscMgtTableTypeEit0"
-		case MpegtsAtscMgtTableTypeEit127: return "MpegtsAtscMgtTableTypeEit127"
-		case MpegtsAtscMgtTableTypeEtt0: return "MpegtsAtscMgtTableTypeEtt0"
-		case MpegtsAtscMgtTableTypeEtt127: return "MpegtsAtscMgtTableTypeEtt127"
+		case AtscMgtTableTypeEit0: return "AtscMgtTableTypeEit0"
+		case AtscMgtTableTypeEit127: return "AtscMgtTableTypeEit127"
+		case AtscMgtTableTypeEtt0: return "AtscMgtTableTypeEtt0"
+		case AtscMgtTableTypeEtt127: return "AtscMgtTableTypeEtt127"
 		default: return fmt.Sprintf("AtscMGTTableType(%d)", e)
 	}
 }
@@ -310,20 +310,20 @@ func (e AtscMGTTableType) String() string {
 type CableOuterFECScheme C.int
 
 const (
-	// MpegtsCableOuterFecUndefined wraps MPEGTS_CABLE_OUTER_FEC_UNDEFINED
-	MpegtsCableOuterFecUndefined CableOuterFECScheme = 0
-	// MpegtsCableOuterFecNone wraps MPEGTS_CABLE_OUTER_FEC_NONE
-	MpegtsCableOuterFecNone CableOuterFECScheme = 1
-	// MpegtsCableOuterFecRs204188 wraps MPEGTS_CABLE_OUTER_FEC_RS_204_188
-	MpegtsCableOuterFecRs204188 CableOuterFECScheme = 2
+	// CableOuterFecUndefined wraps GST_MPEGTS_CABLE_OUTER_FEC_UNDEFINED
+	CableOuterFecUndefined CableOuterFECScheme = 0
+	// CableOuterFecNone wraps GST_MPEGTS_CABLE_OUTER_FEC_NONE
+	CableOuterFecNone CableOuterFECScheme = 1
+	// CableOuterFecRs204188 wraps GST_MPEGTS_CABLE_OUTER_FEC_RS_204_188
+	CableOuterFecRs204188 CableOuterFECScheme = 2
 )
 
 
 func (e CableOuterFECScheme) String() string {
 	switch e {
-		case MpegtsCableOuterFecNone: return "MpegtsCableOuterFecNone"
-		case MpegtsCableOuterFecRs204188: return "MpegtsCableOuterFecRs204188"
-		case MpegtsCableOuterFecUndefined: return "MpegtsCableOuterFecUndefined"
+		case CableOuterFecNone: return "CableOuterFecNone"
+		case CableOuterFecRs204188: return "CableOuterFecRs204188"
+		case CableOuterFecUndefined: return "CableOuterFecUndefined"
 		default: return fmt.Sprintf("CableOuterFECScheme(%d)", e)
 	}
 }
@@ -332,35 +332,35 @@ func (e CableOuterFECScheme) String() string {
 type ComponentStreamContent C.int
 
 const (
-	// MpegtsStreamContentMpeg2Video wraps MPEGTS_STREAM_CONTENT_MPEG2_VIDEO
-	MpegtsStreamContentMpeg2Video ComponentStreamContent = 1
-	// MpegtsStreamContentMpeg1Layer2Audio wraps MPEGTS_STREAM_CONTENT_MPEG1_LAYER2_AUDIO
-	MpegtsStreamContentMpeg1Layer2Audio ComponentStreamContent = 2
-	// MpegtsStreamContentTeletextOrSubtitle wraps MPEGTS_STREAM_CONTENT_TELETEXT_OR_SUBTITLE
-	MpegtsStreamContentTeletextOrSubtitle ComponentStreamContent = 3
-	// MpegtsStreamContentAc3 wraps MPEGTS_STREAM_CONTENT_AC_3
-	MpegtsStreamContentAc3 ComponentStreamContent = 4
-	// MpegtsStreamContentAvc wraps MPEGTS_STREAM_CONTENT_AVC
-	MpegtsStreamContentAvc ComponentStreamContent = 5
-	// MpegtsStreamContentAac wraps MPEGTS_STREAM_CONTENT_AAC
-	MpegtsStreamContentAac ComponentStreamContent = 6
-	// MpegtsStreamContentDts wraps MPEGTS_STREAM_CONTENT_DTS
-	MpegtsStreamContentDts ComponentStreamContent = 7
-	// MpegtsStreamContentSrmCpcm wraps MPEGTS_STREAM_CONTENT_SRM_CPCM
-	MpegtsStreamContentSrmCpcm ComponentStreamContent = 8
+	// StreamContentMpeg2Video wraps GST_MPEGTS_STREAM_CONTENT_MPEG2_VIDEO
+	StreamContentMpeg2Video ComponentStreamContent = 1
+	// StreamContentMpeg1Layer2Audio wraps GST_MPEGTS_STREAM_CONTENT_MPEG1_LAYER2_AUDIO
+	StreamContentMpeg1Layer2Audio ComponentStreamContent = 2
+	// StreamContentTeletextOrSubtitle wraps GST_MPEGTS_STREAM_CONTENT_TELETEXT_OR_SUBTITLE
+	StreamContentTeletextOrSubtitle ComponentStreamContent = 3
+	// StreamContentAc3 wraps GST_MPEGTS_STREAM_CONTENT_AC_3
+	StreamContentAc3 ComponentStreamContent = 4
+	// StreamContentAvc wraps GST_MPEGTS_STREAM_CONTENT_AVC
+	StreamContentAvc ComponentStreamContent = 5
+	// StreamContentAac wraps GST_MPEGTS_STREAM_CONTENT_AAC
+	StreamContentAac ComponentStreamContent = 6
+	// StreamContentDts wraps GST_MPEGTS_STREAM_CONTENT_DTS
+	StreamContentDts ComponentStreamContent = 7
+	// StreamContentSrmCpcm wraps GST_MPEGTS_STREAM_CONTENT_SRM_CPCM
+	StreamContentSrmCpcm ComponentStreamContent = 8
 )
 
 
 func (e ComponentStreamContent) String() string {
 	switch e {
-		case MpegtsStreamContentAac: return "MpegtsStreamContentAac"
-		case MpegtsStreamContentAc3: return "MpegtsStreamContentAc3"
-		case MpegtsStreamContentAvc: return "MpegtsStreamContentAvc"
-		case MpegtsStreamContentDts: return "MpegtsStreamContentDts"
-		case MpegtsStreamContentMpeg1Layer2Audio: return "MpegtsStreamContentMpeg1Layer2Audio"
-		case MpegtsStreamContentMpeg2Video: return "MpegtsStreamContentMpeg2Video"
-		case MpegtsStreamContentSrmCpcm: return "MpegtsStreamContentSrmCpcm"
-		case MpegtsStreamContentTeletextOrSubtitle: return "MpegtsStreamContentTeletextOrSubtitle"
+		case StreamContentAac: return "StreamContentAac"
+		case StreamContentAc3: return "StreamContentAc3"
+		case StreamContentAvc: return "StreamContentAvc"
+		case StreamContentDts: return "StreamContentDts"
+		case StreamContentMpeg1Layer2Audio: return "StreamContentMpeg1Layer2Audio"
+		case StreamContentMpeg2Video: return "StreamContentMpeg2Video"
+		case StreamContentSrmCpcm: return "StreamContentSrmCpcm"
+		case StreamContentTeletextOrSubtitle: return "StreamContentTeletextOrSubtitle"
 		default: return fmt.Sprintf("ComponentStreamContent(%d)", e)
 	}
 }
@@ -369,44 +369,44 @@ func (e ComponentStreamContent) String() string {
 type ContentNibbleHi C.int
 
 const (
-	// MpegtsContentMovieDrama wraps MPEGTS_CONTENT_MOVIE_DRAMA
-	MpegtsContentMovieDrama ContentNibbleHi = 1
-	// MpegtsContentNewsCurrentAffairs wraps MPEGTS_CONTENT_NEWS_CURRENT_AFFAIRS
-	MpegtsContentNewsCurrentAffairs ContentNibbleHi = 2
-	// MpegtsContentShowGameShow wraps MPEGTS_CONTENT_SHOW_GAME_SHOW
-	MpegtsContentShowGameShow ContentNibbleHi = 3
-	// MpegtsContentSports wraps MPEGTS_CONTENT_SPORTS
-	MpegtsContentSports ContentNibbleHi = 4
-	// MpegtsContentChildrenYouthProgram wraps MPEGTS_CONTENT_CHILDREN_YOUTH_PROGRAM
-	MpegtsContentChildrenYouthProgram ContentNibbleHi = 5
-	// MpegtsContentMusicBalletDance wraps MPEGTS_CONTENT_MUSIC_BALLET_DANCE
-	MpegtsContentMusicBalletDance ContentNibbleHi = 6
-	// MpegtsContentArtsCulture wraps MPEGTS_CONTENT_ARTS_CULTURE
-	MpegtsContentArtsCulture ContentNibbleHi = 7
-	// MpegtsContentSocialPoliticalEconomics wraps MPEGTS_CONTENT_SOCIAL_POLITICAL_ECONOMICS
-	MpegtsContentSocialPoliticalEconomics ContentNibbleHi = 8
-	// MpegtsContentEducationScienceFactual wraps MPEGTS_CONTENT_EDUCATION_SCIENCE_FACTUAL
-	MpegtsContentEducationScienceFactual ContentNibbleHi = 9
-	// MpegtsContentLeisureHobbies wraps MPEGTS_CONTENT_LEISURE_HOBBIES
-	MpegtsContentLeisureHobbies ContentNibbleHi = 10
-	// MpegtsContentSpecialCharacteristics wraps MPEGTS_CONTENT_SPECIAL_CHARACTERISTICS
-	MpegtsContentSpecialCharacteristics ContentNibbleHi = 11
+	// ContentMovieDrama wraps GST_MPEGTS_CONTENT_MOVIE_DRAMA
+	ContentMovieDrama ContentNibbleHi = 1
+	// ContentNewsCurrentAffairs wraps GST_MPEGTS_CONTENT_NEWS_CURRENT_AFFAIRS
+	ContentNewsCurrentAffairs ContentNibbleHi = 2
+	// ContentShowGameShow wraps GST_MPEGTS_CONTENT_SHOW_GAME_SHOW
+	ContentShowGameShow ContentNibbleHi = 3
+	// ContentSports wraps GST_MPEGTS_CONTENT_SPORTS
+	ContentSports ContentNibbleHi = 4
+	// ContentChildrenYouthProgram wraps GST_MPEGTS_CONTENT_CHILDREN_YOUTH_PROGRAM
+	ContentChildrenYouthProgram ContentNibbleHi = 5
+	// ContentMusicBalletDance wraps GST_MPEGTS_CONTENT_MUSIC_BALLET_DANCE
+	ContentMusicBalletDance ContentNibbleHi = 6
+	// ContentArtsCulture wraps GST_MPEGTS_CONTENT_ARTS_CULTURE
+	ContentArtsCulture ContentNibbleHi = 7
+	// ContentSocialPoliticalEconomics wraps GST_MPEGTS_CONTENT_SOCIAL_POLITICAL_ECONOMICS
+	ContentSocialPoliticalEconomics ContentNibbleHi = 8
+	// ContentEducationScienceFactual wraps GST_MPEGTS_CONTENT_EDUCATION_SCIENCE_FACTUAL
+	ContentEducationScienceFactual ContentNibbleHi = 9
+	// ContentLeisureHobbies wraps GST_MPEGTS_CONTENT_LEISURE_HOBBIES
+	ContentLeisureHobbies ContentNibbleHi = 10
+	// ContentSpecialCharacteristics wraps GST_MPEGTS_CONTENT_SPECIAL_CHARACTERISTICS
+	ContentSpecialCharacteristics ContentNibbleHi = 11
 )
 
 
 func (e ContentNibbleHi) String() string {
 	switch e {
-		case MpegtsContentArtsCulture: return "MpegtsContentArtsCulture"
-		case MpegtsContentChildrenYouthProgram: return "MpegtsContentChildrenYouthProgram"
-		case MpegtsContentEducationScienceFactual: return "MpegtsContentEducationScienceFactual"
-		case MpegtsContentLeisureHobbies: return "MpegtsContentLeisureHobbies"
-		case MpegtsContentMovieDrama: return "MpegtsContentMovieDrama"
-		case MpegtsContentMusicBalletDance: return "MpegtsContentMusicBalletDance"
-		case MpegtsContentNewsCurrentAffairs: return "MpegtsContentNewsCurrentAffairs"
-		case MpegtsContentShowGameShow: return "MpegtsContentShowGameShow"
-		case MpegtsContentSocialPoliticalEconomics: return "MpegtsContentSocialPoliticalEconomics"
-		case MpegtsContentSpecialCharacteristics: return "MpegtsContentSpecialCharacteristics"
-		case MpegtsContentSports: return "MpegtsContentSports"
+		case ContentArtsCulture: return "ContentArtsCulture"
+		case ContentChildrenYouthProgram: return "ContentChildrenYouthProgram"
+		case ContentEducationScienceFactual: return "ContentEducationScienceFactual"
+		case ContentLeisureHobbies: return "ContentLeisureHobbies"
+		case ContentMovieDrama: return "ContentMovieDrama"
+		case ContentMusicBalletDance: return "ContentMusicBalletDance"
+		case ContentNewsCurrentAffairs: return "ContentNewsCurrentAffairs"
+		case ContentShowGameShow: return "ContentShowGameShow"
+		case ContentSocialPoliticalEconomics: return "ContentSocialPoliticalEconomics"
+		case ContentSpecialCharacteristics: return "ContentSpecialCharacteristics"
+		case ContentSports: return "ContentSports"
 		default: return fmt.Sprintf("ContentNibbleHi(%d)", e)
 	}
 }
@@ -415,50 +415,50 @@ func (e ContentNibbleHi) String() string {
 type DVBCodeRate C.int
 
 const (
-	// MpegtsFecNone wraps MPEGTS_FEC_NONE
-	MpegtsFecNone DVBCodeRate = 0
-	// MpegtsFec12 wraps MPEGTS_FEC_1_2
-	MpegtsFec12 DVBCodeRate = 1
-	// MpegtsFec23 wraps MPEGTS_FEC_2_3
-	MpegtsFec23 DVBCodeRate = 2
-	// MpegtsFec34 wraps MPEGTS_FEC_3_4
-	MpegtsFec34 DVBCodeRate = 3
-	// MpegtsFec45 wraps MPEGTS_FEC_4_5
-	MpegtsFec45 DVBCodeRate = 4
-	// MpegtsFec56 wraps MPEGTS_FEC_5_6
-	MpegtsFec56 DVBCodeRate = 5
-	// MpegtsFec67 wraps MPEGTS_FEC_6_7
-	MpegtsFec67 DVBCodeRate = 6
-	// MpegtsFec78 wraps MPEGTS_FEC_7_8
-	MpegtsFec78 DVBCodeRate = 7
-	// MpegtsFec89 wraps MPEGTS_FEC_8_9
-	MpegtsFec89 DVBCodeRate = 8
-	// MpegtsFecAuto wraps MPEGTS_FEC_AUTO
-	MpegtsFecAuto DVBCodeRate = 9
-	// MpegtsFec35 wraps MPEGTS_FEC_3_5
-	MpegtsFec35 DVBCodeRate = 10
-	// MpegtsFec910 wraps MPEGTS_FEC_9_10
-	MpegtsFec910 DVBCodeRate = 11
-	// MpegtsFec25 wraps MPEGTS_FEC_2_5
-	MpegtsFec25 DVBCodeRate = 12
+	// FecNone wraps GST_MPEGTS_FEC_NONE
+	FecNone DVBCodeRate = 0
+	// Fec12 wraps GST_MPEGTS_FEC_1_2
+	Fec12 DVBCodeRate = 1
+	// Fec23 wraps GST_MPEGTS_FEC_2_3
+	Fec23 DVBCodeRate = 2
+	// Fec34 wraps GST_MPEGTS_FEC_3_4
+	Fec34 DVBCodeRate = 3
+	// Fec45 wraps GST_MPEGTS_FEC_4_5
+	Fec45 DVBCodeRate = 4
+	// Fec56 wraps GST_MPEGTS_FEC_5_6
+	Fec56 DVBCodeRate = 5
+	// Fec67 wraps GST_MPEGTS_FEC_6_7
+	Fec67 DVBCodeRate = 6
+	// Fec78 wraps GST_MPEGTS_FEC_7_8
+	Fec78 DVBCodeRate = 7
+	// Fec89 wraps GST_MPEGTS_FEC_8_9
+	Fec89 DVBCodeRate = 8
+	// FecAuto wraps GST_MPEGTS_FEC_AUTO
+	FecAuto DVBCodeRate = 9
+	// Fec35 wraps GST_MPEGTS_FEC_3_5
+	Fec35 DVBCodeRate = 10
+	// Fec910 wraps GST_MPEGTS_FEC_9_10
+	Fec910 DVBCodeRate = 11
+	// Fec25 wraps GST_MPEGTS_FEC_2_5
+	Fec25 DVBCodeRate = 12
 )
 
 
 func (e DVBCodeRate) String() string {
 	switch e {
-		case MpegtsFec12: return "MpegtsFec12"
-		case MpegtsFec23: return "MpegtsFec23"
-		case MpegtsFec25: return "MpegtsFec25"
-		case MpegtsFec34: return "MpegtsFec34"
-		case MpegtsFec35: return "MpegtsFec35"
-		case MpegtsFec45: return "MpegtsFec45"
-		case MpegtsFec56: return "MpegtsFec56"
-		case MpegtsFec67: return "MpegtsFec67"
-		case MpegtsFec78: return "MpegtsFec78"
-		case MpegtsFec89: return "MpegtsFec89"
-		case MpegtsFec910: return "MpegtsFec910"
-		case MpegtsFecAuto: return "MpegtsFecAuto"
-		case MpegtsFecNone: return "MpegtsFecNone"
+		case Fec12: return "Fec12"
+		case Fec23: return "Fec23"
+		case Fec25: return "Fec25"
+		case Fec34: return "Fec34"
+		case Fec35: return "Fec35"
+		case Fec45: return "Fec45"
+		case Fec56: return "Fec56"
+		case Fec67: return "Fec67"
+		case Fec78: return "Fec78"
+		case Fec89: return "Fec89"
+		case Fec910: return "Fec910"
+		case FecAuto: return "FecAuto"
+		case FecNone: return "FecNone"
 		default: return fmt.Sprintf("DVBCodeRate(%d)", e)
 	}
 }
@@ -474,207 +474,207 @@ func (e DVBCodeRate) String() string {
 type DVBDescriptorType C.int
 
 const (
-	// MtsDescDvbNetworkName wraps MTS_DESC_DVB_NETWORK_NAME
-	MtsDescDvbNetworkName DVBDescriptorType = 64
-	// MtsDescDvbServiceList wraps MTS_DESC_DVB_SERVICE_LIST
-	MtsDescDvbServiceList DVBDescriptorType = 65
-	// MtsDescDvbStuffing wraps MTS_DESC_DVB_STUFFING
-	MtsDescDvbStuffing DVBDescriptorType = 66
-	// MtsDescDvbSatelliteDeliverySystem wraps MTS_DESC_DVB_SATELLITE_DELIVERY_SYSTEM
-	MtsDescDvbSatelliteDeliverySystem DVBDescriptorType = 67
-	// MtsDescDvbCableDeliverySystem wraps MTS_DESC_DVB_CABLE_DELIVERY_SYSTEM
-	MtsDescDvbCableDeliverySystem DVBDescriptorType = 68
-	// MtsDescDvbVbiData wraps MTS_DESC_DVB_VBI_DATA
-	MtsDescDvbVbiData DVBDescriptorType = 69
-	// MtsDescDvbVbiTeletext wraps MTS_DESC_DVB_VBI_TELETEXT
-	MtsDescDvbVbiTeletext DVBDescriptorType = 70
-	// MtsDescDvbBouquetName wraps MTS_DESC_DVB_BOUQUET_NAME
-	MtsDescDvbBouquetName DVBDescriptorType = 71
-	// MtsDescDvbService wraps MTS_DESC_DVB_SERVICE
-	MtsDescDvbService DVBDescriptorType = 72
-	// MtsDescDvbCountryAvailability wraps MTS_DESC_DVB_COUNTRY_AVAILABILITY
-	MtsDescDvbCountryAvailability DVBDescriptorType = 73
-	// MtsDescDvbLinkage wraps MTS_DESC_DVB_LINKAGE
-	MtsDescDvbLinkage DVBDescriptorType = 74
-	// MtsDescDvbNvodReference wraps MTS_DESC_DVB_NVOD_REFERENCE
-	MtsDescDvbNvodReference DVBDescriptorType = 75
-	// MtsDescDvbTimeShiftedService wraps MTS_DESC_DVB_TIME_SHIFTED_SERVICE
-	MtsDescDvbTimeShiftedService DVBDescriptorType = 76
-	// MtsDescDvbShortEvent wraps MTS_DESC_DVB_SHORT_EVENT
-	MtsDescDvbShortEvent DVBDescriptorType = 77
-	// MtsDescDvbExtendedEvent wraps MTS_DESC_DVB_EXTENDED_EVENT
-	MtsDescDvbExtendedEvent DVBDescriptorType = 78
-	// MtsDescDvbTimeShiftedEvent wraps MTS_DESC_DVB_TIME_SHIFTED_EVENT
-	MtsDescDvbTimeShiftedEvent DVBDescriptorType = 79
-	// MtsDescDvbComponent wraps MTS_DESC_DVB_COMPONENT
-	MtsDescDvbComponent DVBDescriptorType = 80
-	// MtsDescDvbMosaic wraps MTS_DESC_DVB_MOSAIC
-	MtsDescDvbMosaic DVBDescriptorType = 81
-	// MtsDescDvbStreamIdentifier wraps MTS_DESC_DVB_STREAM_IDENTIFIER
-	MtsDescDvbStreamIdentifier DVBDescriptorType = 82
-	// MtsDescDvbCaIdentifier wraps MTS_DESC_DVB_CA_IDENTIFIER
-	MtsDescDvbCaIdentifier DVBDescriptorType = 83
-	// MtsDescDvbContent wraps MTS_DESC_DVB_CONTENT
-	MtsDescDvbContent DVBDescriptorType = 84
-	// MtsDescDvbParentalRating wraps MTS_DESC_DVB_PARENTAL_RATING
-	MtsDescDvbParentalRating DVBDescriptorType = 85
-	// MtsDescDvbTeletext wraps MTS_DESC_DVB_TELETEXT
-	MtsDescDvbTeletext DVBDescriptorType = 86
-	// MtsDescDvbTelephone wraps MTS_DESC_DVB_TELEPHONE
-	MtsDescDvbTelephone DVBDescriptorType = 87
-	// MtsDescDvbLocalTimeOffset wraps MTS_DESC_DVB_LOCAL_TIME_OFFSET
-	MtsDescDvbLocalTimeOffset DVBDescriptorType = 88
-	// MtsDescDvbSubtitling wraps MTS_DESC_DVB_SUBTITLING
-	MtsDescDvbSubtitling DVBDescriptorType = 89
-	// MtsDescDvbTerrestrialDeliverySystem wraps MTS_DESC_DVB_TERRESTRIAL_DELIVERY_SYSTEM
-	MtsDescDvbTerrestrialDeliverySystem DVBDescriptorType = 90
-	// MtsDescDvbMultilingualNetworkName wraps MTS_DESC_DVB_MULTILINGUAL_NETWORK_NAME
-	MtsDescDvbMultilingualNetworkName DVBDescriptorType = 91
-	// MtsDescDvbMultilingualBouquetName wraps MTS_DESC_DVB_MULTILINGUAL_BOUQUET_NAME
-	MtsDescDvbMultilingualBouquetName DVBDescriptorType = 92
-	// MtsDescDvbMultilingualServiceName wraps MTS_DESC_DVB_MULTILINGUAL_SERVICE_NAME
-	MtsDescDvbMultilingualServiceName DVBDescriptorType = 93
-	// MtsDescDvbMultilingualComponent wraps MTS_DESC_DVB_MULTILINGUAL_COMPONENT
-	MtsDescDvbMultilingualComponent DVBDescriptorType = 94
-	// MtsDescDvbPrivateDataSpecifier wraps MTS_DESC_DVB_PRIVATE_DATA_SPECIFIER
-	MtsDescDvbPrivateDataSpecifier DVBDescriptorType = 95
-	// MtsDescDvbServiceMove wraps MTS_DESC_DVB_SERVICE_MOVE
-	MtsDescDvbServiceMove DVBDescriptorType = 96
-	// MtsDescDvbShortSmoothingBuffer wraps MTS_DESC_DVB_SHORT_SMOOTHING_BUFFER
-	MtsDescDvbShortSmoothingBuffer DVBDescriptorType = 97
-	// MtsDescDvbFrequencyList wraps MTS_DESC_DVB_FREQUENCY_LIST
-	MtsDescDvbFrequencyList DVBDescriptorType = 98
-	// MtsDescDvbPartialTransportStream wraps MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
+	// GstMtsDescDvbNetworkName wraps GST_MTS_DESC_DVB_NETWORK_NAME
+	GstMtsDescDvbNetworkName DVBDescriptorType = 64
+	// GstMtsDescDvbServiceList wraps GST_MTS_DESC_DVB_SERVICE_LIST
+	GstMtsDescDvbServiceList DVBDescriptorType = 65
+	// GstMtsDescDvbStuffing wraps GST_MTS_DESC_DVB_STUFFING
+	GstMtsDescDvbStuffing DVBDescriptorType = 66
+	// GstMtsDescDvbSatelliteDeliverySystem wraps GST_MTS_DESC_DVB_SATELLITE_DELIVERY_SYSTEM
+	GstMtsDescDvbSatelliteDeliverySystem DVBDescriptorType = 67
+	// GstMtsDescDvbCableDeliverySystem wraps GST_MTS_DESC_DVB_CABLE_DELIVERY_SYSTEM
+	GstMtsDescDvbCableDeliverySystem DVBDescriptorType = 68
+	// GstMtsDescDvbVbiData wraps GST_MTS_DESC_DVB_VBI_DATA
+	GstMtsDescDvbVbiData DVBDescriptorType = 69
+	// GstMtsDescDvbVbiTeletext wraps GST_MTS_DESC_DVB_VBI_TELETEXT
+	GstMtsDescDvbVbiTeletext DVBDescriptorType = 70
+	// GstMtsDescDvbBouquetName wraps GST_MTS_DESC_DVB_BOUQUET_NAME
+	GstMtsDescDvbBouquetName DVBDescriptorType = 71
+	// GstMtsDescDvbService wraps GST_MTS_DESC_DVB_SERVICE
+	GstMtsDescDvbService DVBDescriptorType = 72
+	// GstMtsDescDvbCountryAvailability wraps GST_MTS_DESC_DVB_COUNTRY_AVAILABILITY
+	GstMtsDescDvbCountryAvailability DVBDescriptorType = 73
+	// GstMtsDescDvbLinkage wraps GST_MTS_DESC_DVB_LINKAGE
+	GstMtsDescDvbLinkage DVBDescriptorType = 74
+	// GstMtsDescDvbNvodReference wraps GST_MTS_DESC_DVB_NVOD_REFERENCE
+	GstMtsDescDvbNvodReference DVBDescriptorType = 75
+	// GstMtsDescDvbTimeShiftedService wraps GST_MTS_DESC_DVB_TIME_SHIFTED_SERVICE
+	GstMtsDescDvbTimeShiftedService DVBDescriptorType = 76
+	// GstMtsDescDvbShortEvent wraps GST_MTS_DESC_DVB_SHORT_EVENT
+	GstMtsDescDvbShortEvent DVBDescriptorType = 77
+	// GstMtsDescDvbExtendedEvent wraps GST_MTS_DESC_DVB_EXTENDED_EVENT
+	GstMtsDescDvbExtendedEvent DVBDescriptorType = 78
+	// GstMtsDescDvbTimeShiftedEvent wraps GST_MTS_DESC_DVB_TIME_SHIFTED_EVENT
+	GstMtsDescDvbTimeShiftedEvent DVBDescriptorType = 79
+	// GstMtsDescDvbComponent wraps GST_MTS_DESC_DVB_COMPONENT
+	GstMtsDescDvbComponent DVBDescriptorType = 80
+	// GstMtsDescDvbMosaic wraps GST_MTS_DESC_DVB_MOSAIC
+	GstMtsDescDvbMosaic DVBDescriptorType = 81
+	// GstMtsDescDvbStreamIdentifier wraps GST_MTS_DESC_DVB_STREAM_IDENTIFIER
+	GstMtsDescDvbStreamIdentifier DVBDescriptorType = 82
+	// GstMtsDescDvbCaIdentifier wraps GST_MTS_DESC_DVB_CA_IDENTIFIER
+	GstMtsDescDvbCaIdentifier DVBDescriptorType = 83
+	// GstMtsDescDvbContent wraps GST_MTS_DESC_DVB_CONTENT
+	GstMtsDescDvbContent DVBDescriptorType = 84
+	// GstMtsDescDvbParentalRating wraps GST_MTS_DESC_DVB_PARENTAL_RATING
+	GstMtsDescDvbParentalRating DVBDescriptorType = 85
+	// GstMtsDescDvbTeletext wraps GST_MTS_DESC_DVB_TELETEXT
+	GstMtsDescDvbTeletext DVBDescriptorType = 86
+	// GstMtsDescDvbTelephone wraps GST_MTS_DESC_DVB_TELEPHONE
+	GstMtsDescDvbTelephone DVBDescriptorType = 87
+	// GstMtsDescDvbLocalTimeOffset wraps GST_MTS_DESC_DVB_LOCAL_TIME_OFFSET
+	GstMtsDescDvbLocalTimeOffset DVBDescriptorType = 88
+	// GstMtsDescDvbSubtitling wraps GST_MTS_DESC_DVB_SUBTITLING
+	GstMtsDescDvbSubtitling DVBDescriptorType = 89
+	// GstMtsDescDvbTerrestrialDeliverySystem wraps GST_MTS_DESC_DVB_TERRESTRIAL_DELIVERY_SYSTEM
+	GstMtsDescDvbTerrestrialDeliverySystem DVBDescriptorType = 90
+	// GstMtsDescDvbMultilingualNetworkName wraps GST_MTS_DESC_DVB_MULTILINGUAL_NETWORK_NAME
+	GstMtsDescDvbMultilingualNetworkName DVBDescriptorType = 91
+	// GstMtsDescDvbMultilingualBouquetName wraps GST_MTS_DESC_DVB_MULTILINGUAL_BOUQUET_NAME
+	GstMtsDescDvbMultilingualBouquetName DVBDescriptorType = 92
+	// GstMtsDescDvbMultilingualServiceName wraps GST_MTS_DESC_DVB_MULTILINGUAL_SERVICE_NAME
+	GstMtsDescDvbMultilingualServiceName DVBDescriptorType = 93
+	// GstMtsDescDvbMultilingualComponent wraps GST_MTS_DESC_DVB_MULTILINGUAL_COMPONENT
+	GstMtsDescDvbMultilingualComponent DVBDescriptorType = 94
+	// GstMtsDescDvbPrivateDataSpecifier wraps GST_MTS_DESC_DVB_PRIVATE_DATA_SPECIFIER
+	GstMtsDescDvbPrivateDataSpecifier DVBDescriptorType = 95
+	// GstMtsDescDvbServiceMove wraps GST_MTS_DESC_DVB_SERVICE_MOVE
+	GstMtsDescDvbServiceMove DVBDescriptorType = 96
+	// GstMtsDescDvbShortSmoothingBuffer wraps GST_MTS_DESC_DVB_SHORT_SMOOTHING_BUFFER
+	GstMtsDescDvbShortSmoothingBuffer DVBDescriptorType = 97
+	// GstMtsDescDvbFrequencyList wraps GST_MTS_DESC_DVB_FREQUENCY_LIST
+	GstMtsDescDvbFrequencyList DVBDescriptorType = 98
+	// GstMtsDescDvbPartialTransportStream wraps GST_MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
 	//
 	// Partial Transport Stream descriptor. Only present in SIT Sections.
 	// 
 	// See also: %GST_MPEGTS_SECTION_SIT, %GstMpegtsSIT
-	MtsDescDvbPartialTransportStream DVBDescriptorType = 99
-	// MtsDescDvbDataBroadcast wraps MTS_DESC_DVB_DATA_BROADCAST
-	MtsDescDvbDataBroadcast DVBDescriptorType = 100
-	// MtsDescDvbScrambling wraps MTS_DESC_DVB_SCRAMBLING
-	MtsDescDvbScrambling DVBDescriptorType = 101
-	// MtsDescDvbDataBroadcastID wraps MTS_DESC_DVB_DATA_BROADCAST_ID
-	MtsDescDvbDataBroadcastID DVBDescriptorType = 102
-	// MtsDescDvbTransportStream wraps MTS_DESC_DVB_TRANSPORT_STREAM
-	MtsDescDvbTransportStream DVBDescriptorType = 103
-	// MtsDescDvbDsng wraps MTS_DESC_DVB_DSNG
-	MtsDescDvbDsng DVBDescriptorType = 104
-	// MtsDescDvbPdc wraps MTS_DESC_DVB_PDC
-	MtsDescDvbPdc DVBDescriptorType = 105
-	// MtsDescDvbAc3 wraps MTS_DESC_DVB_AC3
-	MtsDescDvbAc3 DVBDescriptorType = 106
-	// MtsDescDvbAncillaryData wraps MTS_DESC_DVB_ANCILLARY_DATA
-	MtsDescDvbAncillaryData DVBDescriptorType = 107
-	// MtsDescDvbCellList wraps MTS_DESC_DVB_CELL_LIST
-	MtsDescDvbCellList DVBDescriptorType = 108
-	// MtsDescDvbCellFrequencyLink wraps MTS_DESC_DVB_CELL_FREQUENCY_LINK
-	MtsDescDvbCellFrequencyLink DVBDescriptorType = 109
-	// MtsDescDvbAnnouncementSupport wraps MTS_DESC_DVB_ANNOUNCEMENT_SUPPORT
-	MtsDescDvbAnnouncementSupport DVBDescriptorType = 110
-	// MtsDescDvbApplicationSignalling wraps MTS_DESC_DVB_APPLICATION_SIGNALLING
-	MtsDescDvbApplicationSignalling DVBDescriptorType = 111
-	// MtsDescDvbAdaptationFieldData wraps MTS_DESC_DVB_ADAPTATION_FIELD_DATA
-	MtsDescDvbAdaptationFieldData DVBDescriptorType = 112
-	// MtsDescDvbServiceIdentifier wraps MTS_DESC_DVB_SERVICE_IDENTIFIER
-	MtsDescDvbServiceIdentifier DVBDescriptorType = 113
-	// MtsDescDvbServiceAvailability wraps MTS_DESC_DVB_SERVICE_AVAILABILITY
-	MtsDescDvbServiceAvailability DVBDescriptorType = 114
-	// MtsDescDvbDefaultAuthority wraps MTS_DESC_DVB_DEFAULT_AUTHORITY
-	MtsDescDvbDefaultAuthority DVBDescriptorType = 115
-	// MtsDescDvbRelatedContent wraps MTS_DESC_DVB_RELATED_CONTENT
-	MtsDescDvbRelatedContent DVBDescriptorType = 116
-	// MtsDescDvbTvaID wraps MTS_DESC_DVB_TVA_ID
-	MtsDescDvbTvaID DVBDescriptorType = 117
-	// MtsDescDvbContentIdentifier wraps MTS_DESC_DVB_CONTENT_IDENTIFIER
-	MtsDescDvbContentIdentifier DVBDescriptorType = 118
-	// MtsDescDvbTimesliceFecIdentifier wraps MTS_DESC_DVB_TIMESLICE_FEC_IDENTIFIER
-	MtsDescDvbTimesliceFecIdentifier DVBDescriptorType = 119
-	// MtsDescDvbEcmRepetitionRate wraps MTS_DESC_DVB_ECM_REPETITION_RATE
-	MtsDescDvbEcmRepetitionRate DVBDescriptorType = 120
-	// MtsDescDvbS2SatelliteDeliverySystem wraps MTS_DESC_DVB_S2_SATELLITE_DELIVERY_SYSTEM
-	MtsDescDvbS2SatelliteDeliverySystem DVBDescriptorType = 121
-	// MtsDescDvbEnhancedAc3 wraps MTS_DESC_DVB_ENHANCED_AC3
-	MtsDescDvbEnhancedAc3 DVBDescriptorType = 122
-	// MtsDescDvbDts wraps MTS_DESC_DVB_DTS
-	MtsDescDvbDts DVBDescriptorType = 123
-	// MtsDescDvbAac wraps MTS_DESC_DVB_AAC
-	MtsDescDvbAac DVBDescriptorType = 124
-	// MtsDescDvbXaitLocation wraps MTS_DESC_DVB_XAIT_LOCATION
-	MtsDescDvbXaitLocation DVBDescriptorType = 125
-	// MtsDescDvbFtaContentManagement wraps MTS_DESC_DVB_FTA_CONTENT_MANAGEMENT
-	MtsDescDvbFtaContentManagement DVBDescriptorType = 126
-	// MtsDescDvbExtension wraps MTS_DESC_DVB_EXTENSION
-	MtsDescDvbExtension DVBDescriptorType = 127
+	GstMtsDescDvbPartialTransportStream DVBDescriptorType = 99
+	// GstMtsDescDvbDataBroadcast wraps GST_MTS_DESC_DVB_DATA_BROADCAST
+	GstMtsDescDvbDataBroadcast DVBDescriptorType = 100
+	// GstMtsDescDvbScrambling wraps GST_MTS_DESC_DVB_SCRAMBLING
+	GstMtsDescDvbScrambling DVBDescriptorType = 101
+	// GstMtsDescDvbDataBroadcastID wraps GST_MTS_DESC_DVB_DATA_BROADCAST_ID
+	GstMtsDescDvbDataBroadcastID DVBDescriptorType = 102
+	// GstMtsDescDvbTransportStream wraps GST_MTS_DESC_DVB_TRANSPORT_STREAM
+	GstMtsDescDvbTransportStream DVBDescriptorType = 103
+	// GstMtsDescDvbDsng wraps GST_MTS_DESC_DVB_DSNG
+	GstMtsDescDvbDsng DVBDescriptorType = 104
+	// GstMtsDescDvbPdc wraps GST_MTS_DESC_DVB_PDC
+	GstMtsDescDvbPdc DVBDescriptorType = 105
+	// GstMtsDescDvbAc3 wraps GST_MTS_DESC_DVB_AC3
+	GstMtsDescDvbAc3 DVBDescriptorType = 106
+	// GstMtsDescDvbAncillaryData wraps GST_MTS_DESC_DVB_ANCILLARY_DATA
+	GstMtsDescDvbAncillaryData DVBDescriptorType = 107
+	// GstMtsDescDvbCellList wraps GST_MTS_DESC_DVB_CELL_LIST
+	GstMtsDescDvbCellList DVBDescriptorType = 108
+	// GstMtsDescDvbCellFrequencyLink wraps GST_MTS_DESC_DVB_CELL_FREQUENCY_LINK
+	GstMtsDescDvbCellFrequencyLink DVBDescriptorType = 109
+	// GstMtsDescDvbAnnouncementSupport wraps GST_MTS_DESC_DVB_ANNOUNCEMENT_SUPPORT
+	GstMtsDescDvbAnnouncementSupport DVBDescriptorType = 110
+	// GstMtsDescDvbApplicationSignalling wraps GST_MTS_DESC_DVB_APPLICATION_SIGNALLING
+	GstMtsDescDvbApplicationSignalling DVBDescriptorType = 111
+	// GstMtsDescDvbAdaptationFieldData wraps GST_MTS_DESC_DVB_ADAPTATION_FIELD_DATA
+	GstMtsDescDvbAdaptationFieldData DVBDescriptorType = 112
+	// GstMtsDescDvbServiceIdentifier wraps GST_MTS_DESC_DVB_SERVICE_IDENTIFIER
+	GstMtsDescDvbServiceIdentifier DVBDescriptorType = 113
+	// GstMtsDescDvbServiceAvailability wraps GST_MTS_DESC_DVB_SERVICE_AVAILABILITY
+	GstMtsDescDvbServiceAvailability DVBDescriptorType = 114
+	// GstMtsDescDvbDefaultAuthority wraps GST_MTS_DESC_DVB_DEFAULT_AUTHORITY
+	GstMtsDescDvbDefaultAuthority DVBDescriptorType = 115
+	// GstMtsDescDvbRelatedContent wraps GST_MTS_DESC_DVB_RELATED_CONTENT
+	GstMtsDescDvbRelatedContent DVBDescriptorType = 116
+	// GstMtsDescDvbTvaID wraps GST_MTS_DESC_DVB_TVA_ID
+	GstMtsDescDvbTvaID DVBDescriptorType = 117
+	// GstMtsDescDvbContentIdentifier wraps GST_MTS_DESC_DVB_CONTENT_IDENTIFIER
+	GstMtsDescDvbContentIdentifier DVBDescriptorType = 118
+	// GstMtsDescDvbTimesliceFecIdentifier wraps GST_MTS_DESC_DVB_TIMESLICE_FEC_IDENTIFIER
+	GstMtsDescDvbTimesliceFecIdentifier DVBDescriptorType = 119
+	// GstMtsDescDvbEcmRepetitionRate wraps GST_MTS_DESC_DVB_ECM_REPETITION_RATE
+	GstMtsDescDvbEcmRepetitionRate DVBDescriptorType = 120
+	// GstMtsDescDvbS2SatelliteDeliverySystem wraps GST_MTS_DESC_DVB_S2_SATELLITE_DELIVERY_SYSTEM
+	GstMtsDescDvbS2SatelliteDeliverySystem DVBDescriptorType = 121
+	// GstMtsDescDvbEnhancedAc3 wraps GST_MTS_DESC_DVB_ENHANCED_AC3
+	GstMtsDescDvbEnhancedAc3 DVBDescriptorType = 122
+	// GstMtsDescDvbDts wraps GST_MTS_DESC_DVB_DTS
+	GstMtsDescDvbDts DVBDescriptorType = 123
+	// GstMtsDescDvbAac wraps GST_MTS_DESC_DVB_AAC
+	GstMtsDescDvbAac DVBDescriptorType = 124
+	// GstMtsDescDvbXaitLocation wraps GST_MTS_DESC_DVB_XAIT_LOCATION
+	GstMtsDescDvbXaitLocation DVBDescriptorType = 125
+	// GstMtsDescDvbFtaContentManagement wraps GST_MTS_DESC_DVB_FTA_CONTENT_MANAGEMENT
+	GstMtsDescDvbFtaContentManagement DVBDescriptorType = 126
+	// GstMtsDescDvbExtension wraps GST_MTS_DESC_DVB_EXTENSION
+	GstMtsDescDvbExtension DVBDescriptorType = 127
 )
 
 
 func (e DVBDescriptorType) String() string {
 	switch e {
-		case MtsDescDvbAac: return "MtsDescDvbAac"
-		case MtsDescDvbAc3: return "MtsDescDvbAc3"
-		case MtsDescDvbAdaptationFieldData: return "MtsDescDvbAdaptationFieldData"
-		case MtsDescDvbAncillaryData: return "MtsDescDvbAncillaryData"
-		case MtsDescDvbAnnouncementSupport: return "MtsDescDvbAnnouncementSupport"
-		case MtsDescDvbApplicationSignalling: return "MtsDescDvbApplicationSignalling"
-		case MtsDescDvbBouquetName: return "MtsDescDvbBouquetName"
-		case MtsDescDvbCaIdentifier: return "MtsDescDvbCaIdentifier"
-		case MtsDescDvbCableDeliverySystem: return "MtsDescDvbCableDeliverySystem"
-		case MtsDescDvbCellFrequencyLink: return "MtsDescDvbCellFrequencyLink"
-		case MtsDescDvbCellList: return "MtsDescDvbCellList"
-		case MtsDescDvbComponent: return "MtsDescDvbComponent"
-		case MtsDescDvbContent: return "MtsDescDvbContent"
-		case MtsDescDvbContentIdentifier: return "MtsDescDvbContentIdentifier"
-		case MtsDescDvbCountryAvailability: return "MtsDescDvbCountryAvailability"
-		case MtsDescDvbDataBroadcast: return "MtsDescDvbDataBroadcast"
-		case MtsDescDvbDataBroadcastID: return "MtsDescDvbDataBroadcastID"
-		case MtsDescDvbDefaultAuthority: return "MtsDescDvbDefaultAuthority"
-		case MtsDescDvbDsng: return "MtsDescDvbDsng"
-		case MtsDescDvbDts: return "MtsDescDvbDts"
-		case MtsDescDvbEcmRepetitionRate: return "MtsDescDvbEcmRepetitionRate"
-		case MtsDescDvbEnhancedAc3: return "MtsDescDvbEnhancedAc3"
-		case MtsDescDvbExtendedEvent: return "MtsDescDvbExtendedEvent"
-		case MtsDescDvbExtension: return "MtsDescDvbExtension"
-		case MtsDescDvbFrequencyList: return "MtsDescDvbFrequencyList"
-		case MtsDescDvbFtaContentManagement: return "MtsDescDvbFtaContentManagement"
-		case MtsDescDvbLinkage: return "MtsDescDvbLinkage"
-		case MtsDescDvbLocalTimeOffset: return "MtsDescDvbLocalTimeOffset"
-		case MtsDescDvbMosaic: return "MtsDescDvbMosaic"
-		case MtsDescDvbMultilingualBouquetName: return "MtsDescDvbMultilingualBouquetName"
-		case MtsDescDvbMultilingualComponent: return "MtsDescDvbMultilingualComponent"
-		case MtsDescDvbMultilingualNetworkName: return "MtsDescDvbMultilingualNetworkName"
-		case MtsDescDvbMultilingualServiceName: return "MtsDescDvbMultilingualServiceName"
-		case MtsDescDvbNetworkName: return "MtsDescDvbNetworkName"
-		case MtsDescDvbNvodReference: return "MtsDescDvbNvodReference"
-		case MtsDescDvbParentalRating: return "MtsDescDvbParentalRating"
-		case MtsDescDvbPartialTransportStream: return "MtsDescDvbPartialTransportStream"
-		case MtsDescDvbPdc: return "MtsDescDvbPdc"
-		case MtsDescDvbPrivateDataSpecifier: return "MtsDescDvbPrivateDataSpecifier"
-		case MtsDescDvbRelatedContent: return "MtsDescDvbRelatedContent"
-		case MtsDescDvbS2SatelliteDeliverySystem: return "MtsDescDvbS2SatelliteDeliverySystem"
-		case MtsDescDvbSatelliteDeliverySystem: return "MtsDescDvbSatelliteDeliverySystem"
-		case MtsDescDvbScrambling: return "MtsDescDvbScrambling"
-		case MtsDescDvbService: return "MtsDescDvbService"
-		case MtsDescDvbServiceAvailability: return "MtsDescDvbServiceAvailability"
-		case MtsDescDvbServiceIdentifier: return "MtsDescDvbServiceIdentifier"
-		case MtsDescDvbServiceList: return "MtsDescDvbServiceList"
-		case MtsDescDvbServiceMove: return "MtsDescDvbServiceMove"
-		case MtsDescDvbShortEvent: return "MtsDescDvbShortEvent"
-		case MtsDescDvbShortSmoothingBuffer: return "MtsDescDvbShortSmoothingBuffer"
-		case MtsDescDvbStreamIdentifier: return "MtsDescDvbStreamIdentifier"
-		case MtsDescDvbStuffing: return "MtsDescDvbStuffing"
-		case MtsDescDvbSubtitling: return "MtsDescDvbSubtitling"
-		case MtsDescDvbTelephone: return "MtsDescDvbTelephone"
-		case MtsDescDvbTeletext: return "MtsDescDvbTeletext"
-		case MtsDescDvbTerrestrialDeliverySystem: return "MtsDescDvbTerrestrialDeliverySystem"
-		case MtsDescDvbTimeShiftedEvent: return "MtsDescDvbTimeShiftedEvent"
-		case MtsDescDvbTimeShiftedService: return "MtsDescDvbTimeShiftedService"
-		case MtsDescDvbTimesliceFecIdentifier: return "MtsDescDvbTimesliceFecIdentifier"
-		case MtsDescDvbTransportStream: return "MtsDescDvbTransportStream"
-		case MtsDescDvbTvaID: return "MtsDescDvbTvaID"
-		case MtsDescDvbVbiData: return "MtsDescDvbVbiData"
-		case MtsDescDvbVbiTeletext: return "MtsDescDvbVbiTeletext"
-		case MtsDescDvbXaitLocation: return "MtsDescDvbXaitLocation"
+		case GstMtsDescDvbAac: return "GstMtsDescDvbAac"
+		case GstMtsDescDvbAc3: return "GstMtsDescDvbAc3"
+		case GstMtsDescDvbAdaptationFieldData: return "GstMtsDescDvbAdaptationFieldData"
+		case GstMtsDescDvbAncillaryData: return "GstMtsDescDvbAncillaryData"
+		case GstMtsDescDvbAnnouncementSupport: return "GstMtsDescDvbAnnouncementSupport"
+		case GstMtsDescDvbApplicationSignalling: return "GstMtsDescDvbApplicationSignalling"
+		case GstMtsDescDvbBouquetName: return "GstMtsDescDvbBouquetName"
+		case GstMtsDescDvbCaIdentifier: return "GstMtsDescDvbCaIdentifier"
+		case GstMtsDescDvbCableDeliverySystem: return "GstMtsDescDvbCableDeliverySystem"
+		case GstMtsDescDvbCellFrequencyLink: return "GstMtsDescDvbCellFrequencyLink"
+		case GstMtsDescDvbCellList: return "GstMtsDescDvbCellList"
+		case GstMtsDescDvbComponent: return "GstMtsDescDvbComponent"
+		case GstMtsDescDvbContent: return "GstMtsDescDvbContent"
+		case GstMtsDescDvbContentIdentifier: return "GstMtsDescDvbContentIdentifier"
+		case GstMtsDescDvbCountryAvailability: return "GstMtsDescDvbCountryAvailability"
+		case GstMtsDescDvbDataBroadcast: return "GstMtsDescDvbDataBroadcast"
+		case GstMtsDescDvbDataBroadcastID: return "GstMtsDescDvbDataBroadcastID"
+		case GstMtsDescDvbDefaultAuthority: return "GstMtsDescDvbDefaultAuthority"
+		case GstMtsDescDvbDsng: return "GstMtsDescDvbDsng"
+		case GstMtsDescDvbDts: return "GstMtsDescDvbDts"
+		case GstMtsDescDvbEcmRepetitionRate: return "GstMtsDescDvbEcmRepetitionRate"
+		case GstMtsDescDvbEnhancedAc3: return "GstMtsDescDvbEnhancedAc3"
+		case GstMtsDescDvbExtendedEvent: return "GstMtsDescDvbExtendedEvent"
+		case GstMtsDescDvbExtension: return "GstMtsDescDvbExtension"
+		case GstMtsDescDvbFrequencyList: return "GstMtsDescDvbFrequencyList"
+		case GstMtsDescDvbFtaContentManagement: return "GstMtsDescDvbFtaContentManagement"
+		case GstMtsDescDvbLinkage: return "GstMtsDescDvbLinkage"
+		case GstMtsDescDvbLocalTimeOffset: return "GstMtsDescDvbLocalTimeOffset"
+		case GstMtsDescDvbMosaic: return "GstMtsDescDvbMosaic"
+		case GstMtsDescDvbMultilingualBouquetName: return "GstMtsDescDvbMultilingualBouquetName"
+		case GstMtsDescDvbMultilingualComponent: return "GstMtsDescDvbMultilingualComponent"
+		case GstMtsDescDvbMultilingualNetworkName: return "GstMtsDescDvbMultilingualNetworkName"
+		case GstMtsDescDvbMultilingualServiceName: return "GstMtsDescDvbMultilingualServiceName"
+		case GstMtsDescDvbNetworkName: return "GstMtsDescDvbNetworkName"
+		case GstMtsDescDvbNvodReference: return "GstMtsDescDvbNvodReference"
+		case GstMtsDescDvbParentalRating: return "GstMtsDescDvbParentalRating"
+		case GstMtsDescDvbPartialTransportStream: return "GstMtsDescDvbPartialTransportStream"
+		case GstMtsDescDvbPdc: return "GstMtsDescDvbPdc"
+		case GstMtsDescDvbPrivateDataSpecifier: return "GstMtsDescDvbPrivateDataSpecifier"
+		case GstMtsDescDvbRelatedContent: return "GstMtsDescDvbRelatedContent"
+		case GstMtsDescDvbS2SatelliteDeliverySystem: return "GstMtsDescDvbS2SatelliteDeliverySystem"
+		case GstMtsDescDvbSatelliteDeliverySystem: return "GstMtsDescDvbSatelliteDeliverySystem"
+		case GstMtsDescDvbScrambling: return "GstMtsDescDvbScrambling"
+		case GstMtsDescDvbService: return "GstMtsDescDvbService"
+		case GstMtsDescDvbServiceAvailability: return "GstMtsDescDvbServiceAvailability"
+		case GstMtsDescDvbServiceIdentifier: return "GstMtsDescDvbServiceIdentifier"
+		case GstMtsDescDvbServiceList: return "GstMtsDescDvbServiceList"
+		case GstMtsDescDvbServiceMove: return "GstMtsDescDvbServiceMove"
+		case GstMtsDescDvbShortEvent: return "GstMtsDescDvbShortEvent"
+		case GstMtsDescDvbShortSmoothingBuffer: return "GstMtsDescDvbShortSmoothingBuffer"
+		case GstMtsDescDvbStreamIdentifier: return "GstMtsDescDvbStreamIdentifier"
+		case GstMtsDescDvbStuffing: return "GstMtsDescDvbStuffing"
+		case GstMtsDescDvbSubtitling: return "GstMtsDescDvbSubtitling"
+		case GstMtsDescDvbTelephone: return "GstMtsDescDvbTelephone"
+		case GstMtsDescDvbTeletext: return "GstMtsDescDvbTeletext"
+		case GstMtsDescDvbTerrestrialDeliverySystem: return "GstMtsDescDvbTerrestrialDeliverySystem"
+		case GstMtsDescDvbTimeShiftedEvent: return "GstMtsDescDvbTimeShiftedEvent"
+		case GstMtsDescDvbTimeShiftedService: return "GstMtsDescDvbTimeShiftedService"
+		case GstMtsDescDvbTimesliceFecIdentifier: return "GstMtsDescDvbTimesliceFecIdentifier"
+		case GstMtsDescDvbTransportStream: return "GstMtsDescDvbTransportStream"
+		case GstMtsDescDvbTvaID: return "GstMtsDescDvbTvaID"
+		case GstMtsDescDvbVbiData: return "GstMtsDescDvbVbiData"
+		case GstMtsDescDvbVbiTeletext: return "GstMtsDescDvbVbiTeletext"
+		case GstMtsDescDvbXaitLocation: return "GstMtsDescDvbXaitLocation"
 		default: return fmt.Sprintf("DVBDescriptorType(%d)", e)
 	}
 }
@@ -690,76 +690,76 @@ func (e DVBDescriptorType) String() string {
 type DVBExtendedDescriptorType C.int
 
 const (
-	// MtsDescExtDvbImageIcon wraps MTS_DESC_EXT_DVB_IMAGE_ICON
-	MtsDescExtDvbImageIcon DVBExtendedDescriptorType = 0
-	// MtsDescExtDvbCpcmDeliverySignalling wraps MTS_DESC_EXT_DVB_CPCM_DELIVERY_SIGNALLING
-	MtsDescExtDvbCpcmDeliverySignalling DVBExtendedDescriptorType = 1
-	// MtsDescExtDvbCp wraps MTS_DESC_EXT_DVB_CP
-	MtsDescExtDvbCp DVBExtendedDescriptorType = 2
-	// MtsDescExtDvbCpIdentifier wraps MTS_DESC_EXT_DVB_CP_IDENTIFIER
-	MtsDescExtDvbCpIdentifier DVBExtendedDescriptorType = 3
-	// MtsDescExtDvbT2DeliverySystem wraps MTS_DESC_EXT_DVB_T2_DELIVERY_SYSTEM
-	MtsDescExtDvbT2DeliverySystem DVBExtendedDescriptorType = 4
-	// MtsDescExtDvbShDeliverySystem wraps MTS_DESC_EXT_DVB_SH_DELIVERY_SYSTEM
-	MtsDescExtDvbShDeliverySystem DVBExtendedDescriptorType = 5
-	// MtsDescExtDvbSupplementaryAudio wraps MTS_DESC_EXT_DVB_SUPPLEMENTARY_AUDIO
-	MtsDescExtDvbSupplementaryAudio DVBExtendedDescriptorType = 6
-	// MtsDescExtDvbNetworkChangeNotify wraps MTS_DESC_EXT_DVB_NETWORK_CHANGE_NOTIFY
-	MtsDescExtDvbNetworkChangeNotify DVBExtendedDescriptorType = 7
-	// MtsDescExtDvbMessage wraps MTS_DESC_EXT_DVB_MESSAGE
-	MtsDescExtDvbMessage DVBExtendedDescriptorType = 8
-	// MtsDescExtDvbTargetRegion wraps MTS_DESC_EXT_DVB_TARGET_REGION
-	MtsDescExtDvbTargetRegion DVBExtendedDescriptorType = 9
-	// MtsDescExtDvbTargetRegionName wraps MTS_DESC_EXT_DVB_TARGET_REGION_NAME
-	MtsDescExtDvbTargetRegionName DVBExtendedDescriptorType = 10
-	// MtsDescExtDvbServiceRelocated wraps MTS_DESC_EXT_DVB_SERVICE_RELOCATED
-	MtsDescExtDvbServiceRelocated DVBExtendedDescriptorType = 11
-	// MtsDescExtDvbXaitPid wraps MTS_DESC_EXT_DVB_XAIT_PID
-	MtsDescExtDvbXaitPid DVBExtendedDescriptorType = 12
-	// MtsDescExtDvbC2DeliverySystem wraps MTS_DESC_EXT_DVB_C2_DELIVERY_SYSTEM
-	MtsDescExtDvbC2DeliverySystem DVBExtendedDescriptorType = 13
-	// MtsDescExtDvbDtsHdAudioStream wraps MTS_DESC_EXT_DVB_DTS_HD_AUDIO_STREAM
-	MtsDescExtDvbDtsHdAudioStream DVBExtendedDescriptorType = 14
-	// MtsDescExtDvbDtsNeutral wraps MTS_DESC_EXT_DVB_DTS_NEUTRAL
-	MtsDescExtDvbDtsNeutral DVBExtendedDescriptorType = 15
-	// MtsDescExtDvbVideoDepthRange wraps MTS_DESC_EXT_DVB_VIDEO_DEPTH_RANGE
-	MtsDescExtDvbVideoDepthRange DVBExtendedDescriptorType = 16
-	// MtsDescExtDvbT2Mi wraps MTS_DESC_EXT_DVB_T2MI
-	MtsDescExtDvbT2Mi DVBExtendedDescriptorType = 17
-	// MtsDescExtDvbURILinkage wraps MTS_DESC_EXT_DVB_URI_LINKAGE
-	MtsDescExtDvbURILinkage DVBExtendedDescriptorType = 19
-	// MtsDescExtDvbAc4 wraps MTS_DESC_EXT_DVB_AC4
-	MtsDescExtDvbAc4 DVBExtendedDescriptorType = 21
-	// MtsDescExtDvbAudioPreselection wraps MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
+	// GstMtsDescExtDvbImageIcon wraps GST_MTS_DESC_EXT_DVB_IMAGE_ICON
+	GstMtsDescExtDvbImageIcon DVBExtendedDescriptorType = 0
+	// GstMtsDescExtDvbCpcmDeliverySignalling wraps GST_MTS_DESC_EXT_DVB_CPCM_DELIVERY_SIGNALLING
+	GstMtsDescExtDvbCpcmDeliverySignalling DVBExtendedDescriptorType = 1
+	// GstMtsDescExtDvbCp wraps GST_MTS_DESC_EXT_DVB_CP
+	GstMtsDescExtDvbCp DVBExtendedDescriptorType = 2
+	// GstMtsDescExtDvbCpIdentifier wraps GST_MTS_DESC_EXT_DVB_CP_IDENTIFIER
+	GstMtsDescExtDvbCpIdentifier DVBExtendedDescriptorType = 3
+	// GstMtsDescExtDvbT2DeliverySystem wraps GST_MTS_DESC_EXT_DVB_T2_DELIVERY_SYSTEM
+	GstMtsDescExtDvbT2DeliverySystem DVBExtendedDescriptorType = 4
+	// GstMtsDescExtDvbShDeliverySystem wraps GST_MTS_DESC_EXT_DVB_SH_DELIVERY_SYSTEM
+	GstMtsDescExtDvbShDeliverySystem DVBExtendedDescriptorType = 5
+	// GstMtsDescExtDvbSupplementaryAudio wraps GST_MTS_DESC_EXT_DVB_SUPPLEMENTARY_AUDIO
+	GstMtsDescExtDvbSupplementaryAudio DVBExtendedDescriptorType = 6
+	// GstMtsDescExtDvbNetworkChangeNotify wraps GST_MTS_DESC_EXT_DVB_NETWORK_CHANGE_NOTIFY
+	GstMtsDescExtDvbNetworkChangeNotify DVBExtendedDescriptorType = 7
+	// GstMtsDescExtDvbMessage wraps GST_MTS_DESC_EXT_DVB_MESSAGE
+	GstMtsDescExtDvbMessage DVBExtendedDescriptorType = 8
+	// GstMtsDescExtDvbTargetRegion wraps GST_MTS_DESC_EXT_DVB_TARGET_REGION
+	GstMtsDescExtDvbTargetRegion DVBExtendedDescriptorType = 9
+	// GstMtsDescExtDvbTargetRegionName wraps GST_MTS_DESC_EXT_DVB_TARGET_REGION_NAME
+	GstMtsDescExtDvbTargetRegionName DVBExtendedDescriptorType = 10
+	// GstMtsDescExtDvbServiceRelocated wraps GST_MTS_DESC_EXT_DVB_SERVICE_RELOCATED
+	GstMtsDescExtDvbServiceRelocated DVBExtendedDescriptorType = 11
+	// GstMtsDescExtDvbXaitPid wraps GST_MTS_DESC_EXT_DVB_XAIT_PID
+	GstMtsDescExtDvbXaitPid DVBExtendedDescriptorType = 12
+	// GstMtsDescExtDvbC2DeliverySystem wraps GST_MTS_DESC_EXT_DVB_C2_DELIVERY_SYSTEM
+	GstMtsDescExtDvbC2DeliverySystem DVBExtendedDescriptorType = 13
+	// GstMtsDescExtDvbDtsHdAudioStream wraps GST_MTS_DESC_EXT_DVB_DTS_HD_AUDIO_STREAM
+	GstMtsDescExtDvbDtsHdAudioStream DVBExtendedDescriptorType = 14
+	// GstMtsDescExtDvbDtsNeutral wraps GST_MTS_DESC_EXT_DVB_DTS_NEUTRAL
+	GstMtsDescExtDvbDtsNeutral DVBExtendedDescriptorType = 15
+	// GstMtsDescExtDvbVideoDepthRange wraps GST_MTS_DESC_EXT_DVB_VIDEO_DEPTH_RANGE
+	GstMtsDescExtDvbVideoDepthRange DVBExtendedDescriptorType = 16
+	// GstMtsDescExtDvbT2mi wraps GST_MTS_DESC_EXT_DVB_T2MI
+	GstMtsDescExtDvbT2mi DVBExtendedDescriptorType = 17
+	// GstMtsDescExtDvbURILinkage wraps GST_MTS_DESC_EXT_DVB_URI_LINKAGE
+	GstMtsDescExtDvbURILinkage DVBExtendedDescriptorType = 19
+	// GstMtsDescExtDvbAc4 wraps GST_MTS_DESC_EXT_DVB_AC4
+	GstMtsDescExtDvbAc4 DVBExtendedDescriptorType = 21
+	// GstMtsDescExtDvbAudioPreselection wraps GST_MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
 	//
 	// Provide all avaliable audio programme for user selection
-	MtsDescExtDvbAudioPreselection DVBExtendedDescriptorType = 25
+	GstMtsDescExtDvbAudioPreselection DVBExtendedDescriptorType = 25
 )
 
 
 func (e DVBExtendedDescriptorType) String() string {
 	switch e {
-		case MtsDescExtDvbAc4: return "MtsDescExtDvbAc4"
-		case MtsDescExtDvbAudioPreselection: return "MtsDescExtDvbAudioPreselection"
-		case MtsDescExtDvbC2DeliverySystem: return "MtsDescExtDvbC2DeliverySystem"
-		case MtsDescExtDvbCp: return "MtsDescExtDvbCp"
-		case MtsDescExtDvbCpIdentifier: return "MtsDescExtDvbCpIdentifier"
-		case MtsDescExtDvbCpcmDeliverySignalling: return "MtsDescExtDvbCpcmDeliverySignalling"
-		case MtsDescExtDvbDtsHdAudioStream: return "MtsDescExtDvbDtsHdAudioStream"
-		case MtsDescExtDvbDtsNeutral: return "MtsDescExtDvbDtsNeutral"
-		case MtsDescExtDvbImageIcon: return "MtsDescExtDvbImageIcon"
-		case MtsDescExtDvbMessage: return "MtsDescExtDvbMessage"
-		case MtsDescExtDvbNetworkChangeNotify: return "MtsDescExtDvbNetworkChangeNotify"
-		case MtsDescExtDvbServiceRelocated: return "MtsDescExtDvbServiceRelocated"
-		case MtsDescExtDvbShDeliverySystem: return "MtsDescExtDvbShDeliverySystem"
-		case MtsDescExtDvbSupplementaryAudio: return "MtsDescExtDvbSupplementaryAudio"
-		case MtsDescExtDvbT2DeliverySystem: return "MtsDescExtDvbT2DeliverySystem"
-		case MtsDescExtDvbT2Mi: return "MtsDescExtDvbT2Mi"
-		case MtsDescExtDvbTargetRegion: return "MtsDescExtDvbTargetRegion"
-		case MtsDescExtDvbTargetRegionName: return "MtsDescExtDvbTargetRegionName"
-		case MtsDescExtDvbURILinkage: return "MtsDescExtDvbURILinkage"
-		case MtsDescExtDvbVideoDepthRange: return "MtsDescExtDvbVideoDepthRange"
-		case MtsDescExtDvbXaitPid: return "MtsDescExtDvbXaitPid"
+		case GstMtsDescExtDvbAc4: return "GstMtsDescExtDvbAc4"
+		case GstMtsDescExtDvbAudioPreselection: return "GstMtsDescExtDvbAudioPreselection"
+		case GstMtsDescExtDvbC2DeliverySystem: return "GstMtsDescExtDvbC2DeliverySystem"
+		case GstMtsDescExtDvbCp: return "GstMtsDescExtDvbCp"
+		case GstMtsDescExtDvbCpIdentifier: return "GstMtsDescExtDvbCpIdentifier"
+		case GstMtsDescExtDvbCpcmDeliverySignalling: return "GstMtsDescExtDvbCpcmDeliverySignalling"
+		case GstMtsDescExtDvbDtsHdAudioStream: return "GstMtsDescExtDvbDtsHdAudioStream"
+		case GstMtsDescExtDvbDtsNeutral: return "GstMtsDescExtDvbDtsNeutral"
+		case GstMtsDescExtDvbImageIcon: return "GstMtsDescExtDvbImageIcon"
+		case GstMtsDescExtDvbMessage: return "GstMtsDescExtDvbMessage"
+		case GstMtsDescExtDvbNetworkChangeNotify: return "GstMtsDescExtDvbNetworkChangeNotify"
+		case GstMtsDescExtDvbServiceRelocated: return "GstMtsDescExtDvbServiceRelocated"
+		case GstMtsDescExtDvbShDeliverySystem: return "GstMtsDescExtDvbShDeliverySystem"
+		case GstMtsDescExtDvbSupplementaryAudio: return "GstMtsDescExtDvbSupplementaryAudio"
+		case GstMtsDescExtDvbT2DeliverySystem: return "GstMtsDescExtDvbT2DeliverySystem"
+		case GstMtsDescExtDvbT2mi: return "GstMtsDescExtDvbT2mi"
+		case GstMtsDescExtDvbTargetRegion: return "GstMtsDescExtDvbTargetRegion"
+		case GstMtsDescExtDvbTargetRegionName: return "GstMtsDescExtDvbTargetRegionName"
+		case GstMtsDescExtDvbURILinkage: return "GstMtsDescExtDvbURILinkage"
+		case GstMtsDescExtDvbVideoDepthRange: return "GstMtsDescExtDvbVideoDepthRange"
+		case GstMtsDescExtDvbXaitPid: return "GstMtsDescExtDvbXaitPid"
 		default: return fmt.Sprintf("DVBExtendedDescriptorType(%d)", e)
 	}
 }
@@ -768,23 +768,23 @@ func (e DVBExtendedDescriptorType) String() string {
 type DVBLinkageHandOverType C.int
 
 const (
-	// MpegtsDvbLinkageHandOverReserved wraps MPEGTS_DVB_LINKAGE_HAND_OVER_RESERVED
-	MpegtsDvbLinkageHandOverReserved DVBLinkageHandOverType = 0
-	// MpegtsDvbLinkageHandOverIdentical wraps MPEGTS_DVB_LINKAGE_HAND_OVER_IDENTICAL
-	MpegtsDvbLinkageHandOverIdentical DVBLinkageHandOverType = 1
-	// MpegtsDvbLinkageHandOverLocalVariation wraps MPEGTS_DVB_LINKAGE_HAND_OVER_LOCAL_VARIATION
-	MpegtsDvbLinkageHandOverLocalVariation DVBLinkageHandOverType = 2
-	// MpegtsDvbLinkageHandOverAssociated wraps MPEGTS_DVB_LINKAGE_HAND_OVER_ASSOCIATED
-	MpegtsDvbLinkageHandOverAssociated DVBLinkageHandOverType = 3
+	// DvbLinkageHandOverReserved wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_RESERVED
+	DvbLinkageHandOverReserved DVBLinkageHandOverType = 0
+	// DvbLinkageHandOverIdentical wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_IDENTICAL
+	DvbLinkageHandOverIdentical DVBLinkageHandOverType = 1
+	// DvbLinkageHandOverLocalVariation wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_LOCAL_VARIATION
+	DvbLinkageHandOverLocalVariation DVBLinkageHandOverType = 2
+	// DvbLinkageHandOverAssociated wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_ASSOCIATED
+	DvbLinkageHandOverAssociated DVBLinkageHandOverType = 3
 )
 
 
 func (e DVBLinkageHandOverType) String() string {
 	switch e {
-		case MpegtsDvbLinkageHandOverAssociated: return "MpegtsDvbLinkageHandOverAssociated"
-		case MpegtsDvbLinkageHandOverIdentical: return "MpegtsDvbLinkageHandOverIdentical"
-		case MpegtsDvbLinkageHandOverLocalVariation: return "MpegtsDvbLinkageHandOverLocalVariation"
-		case MpegtsDvbLinkageHandOverReserved: return "MpegtsDvbLinkageHandOverReserved"
+		case DvbLinkageHandOverAssociated: return "DvbLinkageHandOverAssociated"
+		case DvbLinkageHandOverIdentical: return "DvbLinkageHandOverIdentical"
+		case DvbLinkageHandOverLocalVariation: return "DvbLinkageHandOverLocalVariation"
+		case DvbLinkageHandOverReserved: return "DvbLinkageHandOverReserved"
 		default: return fmt.Sprintf("DVBLinkageHandOverType(%d)", e)
 	}
 }
@@ -795,56 +795,56 @@ func (e DVBLinkageHandOverType) String() string {
 type DVBLinkageType C.int
 
 const (
-	// MpegtsDvbLinkageReserved00 wraps MPEGTS_DVB_LINKAGE_RESERVED_00
-	MpegtsDvbLinkageReserved00 DVBLinkageType = 0
-	// MpegtsDvbLinkageInformation wraps MPEGTS_DVB_LINKAGE_INFORMATION
-	MpegtsDvbLinkageInformation DVBLinkageType = 1
-	// MpegtsDvbLinkageEpg wraps MPEGTS_DVB_LINKAGE_EPG
-	MpegtsDvbLinkageEpg DVBLinkageType = 2
-	// MpegtsDvbLinkageCaReplacement wraps MPEGTS_DVB_LINKAGE_CA_REPLACEMENT
-	MpegtsDvbLinkageCaReplacement DVBLinkageType = 3
-	// MpegtsDvbLinkageTsContainingCompleteSi wraps MPEGTS_DVB_LINKAGE_TS_CONTAINING_COMPLETE_SI
-	MpegtsDvbLinkageTsContainingCompleteSi DVBLinkageType = 4
-	// MpegtsDvbLinkageServiceReplacement wraps MPEGTS_DVB_LINKAGE_SERVICE_REPLACEMENT
-	MpegtsDvbLinkageServiceReplacement DVBLinkageType = 5
-	// MpegtsDvbLinkageDataBroadcast wraps MPEGTS_DVB_LINKAGE_DATA_BROADCAST
-	MpegtsDvbLinkageDataBroadcast DVBLinkageType = 6
-	// MpegtsDvbLinkageRcsMap wraps MPEGTS_DVB_LINKAGE_RCS_MAP
-	MpegtsDvbLinkageRcsMap DVBLinkageType = 7
-	// MpegtsDvbLinkageMobileHandOver wraps MPEGTS_DVB_LINKAGE_MOBILE_HAND_OVER
-	MpegtsDvbLinkageMobileHandOver DVBLinkageType = 8
-	// MpegtsDvbLinkageSystemSoftwareUpdate wraps MPEGTS_DVB_LINKAGE_SYSTEM_SOFTWARE_UPDATE
-	MpegtsDvbLinkageSystemSoftwareUpdate DVBLinkageType = 9
-	// MpegtsDvbLinkageTsContainingSsu wraps MPEGTS_DVB_LINKAGE_TS_CONTAINING_SSU
-	MpegtsDvbLinkageTsContainingSsu DVBLinkageType = 10
-	// MpegtsDvbLinkageIPMacNotification wraps MPEGTS_DVB_LINKAGE_IP_MAC_NOTIFICATION
-	MpegtsDvbLinkageIPMacNotification DVBLinkageType = 11
-	// MpegtsDvbLinkageTsContainingInt wraps MPEGTS_DVB_LINKAGE_TS_CONTAINING_INT
-	MpegtsDvbLinkageTsContainingInt DVBLinkageType = 12
-	// MpegtsDvbLinkageEvent wraps MPEGTS_DVB_LINKAGE_EVENT
-	MpegtsDvbLinkageEvent DVBLinkageType = 13
-	// MpegtsDvbLinkageExtendedEvent wraps MPEGTS_DVB_LINKAGE_EXTENDED_EVENT
-	MpegtsDvbLinkageExtendedEvent DVBLinkageType = 14
+	// DvbLinkageReserved00 wraps GST_MPEGTS_DVB_LINKAGE_RESERVED_00
+	DvbLinkageReserved00 DVBLinkageType = 0
+	// DvbLinkageInformation wraps GST_MPEGTS_DVB_LINKAGE_INFORMATION
+	DvbLinkageInformation DVBLinkageType = 1
+	// DvbLinkageEpg wraps GST_MPEGTS_DVB_LINKAGE_EPG
+	DvbLinkageEpg DVBLinkageType = 2
+	// DvbLinkageCaReplacement wraps GST_MPEGTS_DVB_LINKAGE_CA_REPLACEMENT
+	DvbLinkageCaReplacement DVBLinkageType = 3
+	// DvbLinkageTsContainingCompleteSi wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_COMPLETE_SI
+	DvbLinkageTsContainingCompleteSi DVBLinkageType = 4
+	// DvbLinkageServiceReplacement wraps GST_MPEGTS_DVB_LINKAGE_SERVICE_REPLACEMENT
+	DvbLinkageServiceReplacement DVBLinkageType = 5
+	// DvbLinkageDataBroadcast wraps GST_MPEGTS_DVB_LINKAGE_DATA_BROADCAST
+	DvbLinkageDataBroadcast DVBLinkageType = 6
+	// DvbLinkageRcsMap wraps GST_MPEGTS_DVB_LINKAGE_RCS_MAP
+	DvbLinkageRcsMap DVBLinkageType = 7
+	// DvbLinkageMobileHandOver wraps GST_MPEGTS_DVB_LINKAGE_MOBILE_HAND_OVER
+	DvbLinkageMobileHandOver DVBLinkageType = 8
+	// DvbLinkageSystemSoftwareUpdate wraps GST_MPEGTS_DVB_LINKAGE_SYSTEM_SOFTWARE_UPDATE
+	DvbLinkageSystemSoftwareUpdate DVBLinkageType = 9
+	// DvbLinkageTsContainingSsu wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_SSU
+	DvbLinkageTsContainingSsu DVBLinkageType = 10
+	// DvbLinkageIpMacNotification wraps GST_MPEGTS_DVB_LINKAGE_IP_MAC_NOTIFICATION
+	DvbLinkageIpMacNotification DVBLinkageType = 11
+	// DvbLinkageTsContainingInt wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_INT
+	DvbLinkageTsContainingInt DVBLinkageType = 12
+	// DvbLinkageEvent wraps GST_MPEGTS_DVB_LINKAGE_EVENT
+	DvbLinkageEvent DVBLinkageType = 13
+	// DvbLinkageExtendedEvent wraps GST_MPEGTS_DVB_LINKAGE_EXTENDED_EVENT
+	DvbLinkageExtendedEvent DVBLinkageType = 14
 )
 
 
 func (e DVBLinkageType) String() string {
 	switch e {
-		case MpegtsDvbLinkageCaReplacement: return "MpegtsDvbLinkageCaReplacement"
-		case MpegtsDvbLinkageDataBroadcast: return "MpegtsDvbLinkageDataBroadcast"
-		case MpegtsDvbLinkageEpg: return "MpegtsDvbLinkageEpg"
-		case MpegtsDvbLinkageEvent: return "MpegtsDvbLinkageEvent"
-		case MpegtsDvbLinkageExtendedEvent: return "MpegtsDvbLinkageExtendedEvent"
-		case MpegtsDvbLinkageIPMacNotification: return "MpegtsDvbLinkageIPMacNotification"
-		case MpegtsDvbLinkageInformation: return "MpegtsDvbLinkageInformation"
-		case MpegtsDvbLinkageMobileHandOver: return "MpegtsDvbLinkageMobileHandOver"
-		case MpegtsDvbLinkageRcsMap: return "MpegtsDvbLinkageRcsMap"
-		case MpegtsDvbLinkageReserved00: return "MpegtsDvbLinkageReserved00"
-		case MpegtsDvbLinkageServiceReplacement: return "MpegtsDvbLinkageServiceReplacement"
-		case MpegtsDvbLinkageSystemSoftwareUpdate: return "MpegtsDvbLinkageSystemSoftwareUpdate"
-		case MpegtsDvbLinkageTsContainingCompleteSi: return "MpegtsDvbLinkageTsContainingCompleteSi"
-		case MpegtsDvbLinkageTsContainingInt: return "MpegtsDvbLinkageTsContainingInt"
-		case MpegtsDvbLinkageTsContainingSsu: return "MpegtsDvbLinkageTsContainingSsu"
+		case DvbLinkageCaReplacement: return "DvbLinkageCaReplacement"
+		case DvbLinkageDataBroadcast: return "DvbLinkageDataBroadcast"
+		case DvbLinkageEpg: return "DvbLinkageEpg"
+		case DvbLinkageEvent: return "DvbLinkageEvent"
+		case DvbLinkageExtendedEvent: return "DvbLinkageExtendedEvent"
+		case DvbLinkageInformation: return "DvbLinkageInformation"
+		case DvbLinkageIpMacNotification: return "DvbLinkageIpMacNotification"
+		case DvbLinkageMobileHandOver: return "DvbLinkageMobileHandOver"
+		case DvbLinkageRcsMap: return "DvbLinkageRcsMap"
+		case DvbLinkageReserved00: return "DvbLinkageReserved00"
+		case DvbLinkageServiceReplacement: return "DvbLinkageServiceReplacement"
+		case DvbLinkageSystemSoftwareUpdate: return "DvbLinkageSystemSoftwareUpdate"
+		case DvbLinkageTsContainingCompleteSi: return "DvbLinkageTsContainingCompleteSi"
+		case DvbLinkageTsContainingInt: return "DvbLinkageTsContainingInt"
+		case DvbLinkageTsContainingSsu: return "DvbLinkageTsContainingSsu"
 		default: return fmt.Sprintf("DVBLinkageType(%d)", e)
 	}
 }
@@ -853,38 +853,38 @@ func (e DVBLinkageType) String() string {
 type DVBScramblingModeType C.int
 
 const (
-	// MpegtsDvbScramblingModeReserved wraps MPEGTS_DVB_SCRAMBLING_MODE_RESERVED
-	MpegtsDvbScramblingModeReserved DVBScramblingModeType = 0
-	// MpegtsDvbScramblingModeCsa1 wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA1
-	MpegtsDvbScramblingModeCsa1 DVBScramblingModeType = 1
-	// MpegtsDvbScramblingModeCsa2 wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA2
-	MpegtsDvbScramblingModeCsa2 DVBScramblingModeType = 2
-	// MpegtsDvbScramblingModeCsa3Standard wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA3_STANDARD
-	MpegtsDvbScramblingModeCsa3Standard DVBScramblingModeType = 3
-	// MpegtsDvbScramblingModeCsa3MinimalEnhanced wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA3_MINIMAL_ENHANCED
-	MpegtsDvbScramblingModeCsa3MinimalEnhanced DVBScramblingModeType = 4
-	// MpegtsDvbScramblingModeCsa3FullEnhanced wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA3_FULL_ENHANCED
-	MpegtsDvbScramblingModeCsa3FullEnhanced DVBScramblingModeType = 5
-	// MpegtsDvbScramblingModeCissa wraps MPEGTS_DVB_SCRAMBLING_MODE_CISSA
-	MpegtsDvbScramblingModeCissa DVBScramblingModeType = 16
-	// MpegtsDvbScramblingModeAtis0 wraps MPEGTS_DVB_SCRAMBLING_MODE_ATIS_0
-	MpegtsDvbScramblingModeAtis0 DVBScramblingModeType = 112
-	// MpegtsDvbScramblingModeAtisF wraps MPEGTS_DVB_SCRAMBLING_MODE_ATIS_F
-	MpegtsDvbScramblingModeAtisF DVBScramblingModeType = 127
+	// DvbScramblingModeReserved wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_RESERVED
+	DvbScramblingModeReserved DVBScramblingModeType = 0
+	// DvbScramblingModeCsa1 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA1
+	DvbScramblingModeCsa1 DVBScramblingModeType = 1
+	// DvbScramblingModeCsa2 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA2
+	DvbScramblingModeCsa2 DVBScramblingModeType = 2
+	// DvbScramblingModeCsa3Standard wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_STANDARD
+	DvbScramblingModeCsa3Standard DVBScramblingModeType = 3
+	// DvbScramblingModeCsa3MinimalEnhanced wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_MINIMAL_ENHANCED
+	DvbScramblingModeCsa3MinimalEnhanced DVBScramblingModeType = 4
+	// DvbScramblingModeCsa3FullEnhanced wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_FULL_ENHANCED
+	DvbScramblingModeCsa3FullEnhanced DVBScramblingModeType = 5
+	// DvbScramblingModeCissa wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CISSA
+	DvbScramblingModeCissa DVBScramblingModeType = 16
+	// DvbScramblingModeAtis0 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_0
+	DvbScramblingModeAtis0 DVBScramblingModeType = 112
+	// DvbScramblingModeAtisF wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_F
+	DvbScramblingModeAtisF DVBScramblingModeType = 127
 )
 
 
 func (e DVBScramblingModeType) String() string {
 	switch e {
-		case MpegtsDvbScramblingModeAtis0: return "MpegtsDvbScramblingModeAtis0"
-		case MpegtsDvbScramblingModeAtisF: return "MpegtsDvbScramblingModeAtisF"
-		case MpegtsDvbScramblingModeCissa: return "MpegtsDvbScramblingModeCissa"
-		case MpegtsDvbScramblingModeCsa1: return "MpegtsDvbScramblingModeCsa1"
-		case MpegtsDvbScramblingModeCsa2: return "MpegtsDvbScramblingModeCsa2"
-		case MpegtsDvbScramblingModeCsa3FullEnhanced: return "MpegtsDvbScramblingModeCsa3FullEnhanced"
-		case MpegtsDvbScramblingModeCsa3MinimalEnhanced: return "MpegtsDvbScramblingModeCsa3MinimalEnhanced"
-		case MpegtsDvbScramblingModeCsa3Standard: return "MpegtsDvbScramblingModeCsa3Standard"
-		case MpegtsDvbScramblingModeReserved: return "MpegtsDvbScramblingModeReserved"
+		case DvbScramblingModeAtis0: return "DvbScramblingModeAtis0"
+		case DvbScramblingModeAtisF: return "DvbScramblingModeAtisF"
+		case DvbScramblingModeCissa: return "DvbScramblingModeCissa"
+		case DvbScramblingModeCsa1: return "DvbScramblingModeCsa1"
+		case DvbScramblingModeCsa2: return "DvbScramblingModeCsa2"
+		case DvbScramblingModeCsa3FullEnhanced: return "DvbScramblingModeCsa3FullEnhanced"
+		case DvbScramblingModeCsa3MinimalEnhanced: return "DvbScramblingModeCsa3MinimalEnhanced"
+		case DvbScramblingModeCsa3Standard: return "DvbScramblingModeCsa3Standard"
+		case DvbScramblingModeReserved: return "DvbScramblingModeReserved"
 		default: return fmt.Sprintf("DVBScramblingModeType(%d)", e)
 	}
 }
@@ -897,95 +897,95 @@ func (e DVBScramblingModeType) String() string {
 type DVBServiceType C.int
 
 const (
-	// DvbServiceReserved00 wraps DVB_SERVICE_RESERVED_00
-	DvbServiceReserved00 DVBServiceType = 0
-	// DvbServiceDigitalTelevision wraps DVB_SERVICE_DIGITAL_TELEVISION
-	DvbServiceDigitalTelevision DVBServiceType = 1
-	// DvbServiceDigitalRadioSound wraps DVB_SERVICE_DIGITAL_RADIO_SOUND
-	DvbServiceDigitalRadioSound DVBServiceType = 2
-	// DvbServiceTeletext wraps DVB_SERVICE_TELETEXT
-	DvbServiceTeletext DVBServiceType = 3
-	// DvbServiceNvodReference wraps DVB_SERVICE_NVOD_REFERENCE
-	DvbServiceNvodReference DVBServiceType = 4
-	// DvbServiceNvodTimeShifted wraps DVB_SERVICE_NVOD_TIME_SHIFTED
-	DvbServiceNvodTimeShifted DVBServiceType = 5
-	// DvbServiceMosaic wraps DVB_SERVICE_MOSAIC
-	DvbServiceMosaic DVBServiceType = 6
-	// DvbServiceFmRadio wraps DVB_SERVICE_FM_RADIO
-	DvbServiceFmRadio DVBServiceType = 7
-	// DvbServiceDvbSrm wraps DVB_SERVICE_DVB_SRM
-	DvbServiceDvbSrm DVBServiceType = 8
-	// DvbServiceReserved09 wraps DVB_SERVICE_RESERVED_09
-	DvbServiceReserved09 DVBServiceType = 9
-	// DvbServiceAdvancedCodecDigitalRadioSound wraps DVB_SERVICE_ADVANCED_CODEC_DIGITAL_RADIO_SOUND
-	DvbServiceAdvancedCodecDigitalRadioSound DVBServiceType = 10
-	// DvbServiceAdvancedCodecMosaic wraps DVB_SERVICE_ADVANCED_CODEC_MOSAIC
-	DvbServiceAdvancedCodecMosaic DVBServiceType = 11
-	// DvbServiceDataBroadcast wraps DVB_SERVICE_DATA_BROADCAST
-	DvbServiceDataBroadcast DVBServiceType = 12
-	// DvbServiceReserved0DCommonInterface wraps DVB_SERVICE_RESERVED_0D_COMMON_INTERFACE
-	DvbServiceReserved0DCommonInterface DVBServiceType = 13
-	// DvbServiceRcsMap wraps DVB_SERVICE_RCS_MAP
-	DvbServiceRcsMap DVBServiceType = 14
-	// DvbServiceRcsFls wraps DVB_SERVICE_RCS_FLS
-	DvbServiceRcsFls DVBServiceType = 15
-	// DvbServiceDvbMhp wraps DVB_SERVICE_DVB_MHP
-	DvbServiceDvbMhp DVBServiceType = 16
-	// DvbServiceMpeg2HdDigitalTelevision wraps DVB_SERVICE_MPEG2_HD_DIGITAL_TELEVISION
-	DvbServiceMpeg2HdDigitalTelevision DVBServiceType = 17
-	// DvbServiceAdvancedCodecSdDigitalTelevision wraps DVB_SERVICE_ADVANCED_CODEC_SD_DIGITAL_TELEVISION
-	DvbServiceAdvancedCodecSdDigitalTelevision DVBServiceType = 22
-	// DvbServiceAdvancedCodecSdNvodTimeShifted wraps DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_TIME_SHIFTED
-	DvbServiceAdvancedCodecSdNvodTimeShifted DVBServiceType = 23
-	// DvbServiceAdvancedCodecSdNvodReference wraps DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_REFERENCE
-	DvbServiceAdvancedCodecSdNvodReference DVBServiceType = 24
-	// DvbServiceAdvancedCodecHdDigitalTelevision wraps DVB_SERVICE_ADVANCED_CODEC_HD_DIGITAL_TELEVISION
-	DvbServiceAdvancedCodecHdDigitalTelevision DVBServiceType = 25
-	// DvbServiceAdvancedCodecHdNvodTimeShifted wraps DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_TIME_SHIFTED
-	DvbServiceAdvancedCodecHdNvodTimeShifted DVBServiceType = 26
-	// DvbServiceAdvancedCodecHdNvodReference wraps DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_REFERENCE
-	DvbServiceAdvancedCodecHdNvodReference DVBServiceType = 27
-	// DvbServiceAdvancedCodecStereoHdDigitalTelevision wraps DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_DIGITAL_TELEVISION
-	DvbServiceAdvancedCodecStereoHdDigitalTelevision DVBServiceType = 28
-	// DvbServiceAdvancedCodecStereoHdNvodTimeShifted wraps DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_TIME_SHIFTED
-	DvbServiceAdvancedCodecStereoHdNvodTimeShifted DVBServiceType = 29
-	// DvbServiceAdvancedCodecStereoHdNvodReference wraps DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE
-	DvbServiceAdvancedCodecStereoHdNvodReference DVBServiceType = 30
-	// DvbServiceReservedFf wraps DVB_SERVICE_RESERVED_FF
-	DvbServiceReservedFf DVBServiceType = 31
+	// GstDvbServiceReserved00 wraps GST_DVB_SERVICE_RESERVED_00
+	GstDvbServiceReserved00 DVBServiceType = 0
+	// GstDvbServiceDigitalTelevision wraps GST_DVB_SERVICE_DIGITAL_TELEVISION
+	GstDvbServiceDigitalTelevision DVBServiceType = 1
+	// GstDvbServiceDigitalRadioSound wraps GST_DVB_SERVICE_DIGITAL_RADIO_SOUND
+	GstDvbServiceDigitalRadioSound DVBServiceType = 2
+	// GstDvbServiceTeletext wraps GST_DVB_SERVICE_TELETEXT
+	GstDvbServiceTeletext DVBServiceType = 3
+	// GstDvbServiceNvodReference wraps GST_DVB_SERVICE_NVOD_REFERENCE
+	GstDvbServiceNvodReference DVBServiceType = 4
+	// GstDvbServiceNvodTimeShifted wraps GST_DVB_SERVICE_NVOD_TIME_SHIFTED
+	GstDvbServiceNvodTimeShifted DVBServiceType = 5
+	// GstDvbServiceMosaic wraps GST_DVB_SERVICE_MOSAIC
+	GstDvbServiceMosaic DVBServiceType = 6
+	// GstDvbServiceFmRadio wraps GST_DVB_SERVICE_FM_RADIO
+	GstDvbServiceFmRadio DVBServiceType = 7
+	// GstDvbServiceDvbSrm wraps GST_DVB_SERVICE_DVB_SRM
+	GstDvbServiceDvbSrm DVBServiceType = 8
+	// GstDvbServiceReserved09 wraps GST_DVB_SERVICE_RESERVED_09
+	GstDvbServiceReserved09 DVBServiceType = 9
+	// GstDvbServiceAdvancedCodecDigitalRadioSound wraps GST_DVB_SERVICE_ADVANCED_CODEC_DIGITAL_RADIO_SOUND
+	GstDvbServiceAdvancedCodecDigitalRadioSound DVBServiceType = 10
+	// GstDvbServiceAdvancedCodecMosaic wraps GST_DVB_SERVICE_ADVANCED_CODEC_MOSAIC
+	GstDvbServiceAdvancedCodecMosaic DVBServiceType = 11
+	// GstDvbServiceDataBroadcast wraps GST_DVB_SERVICE_DATA_BROADCAST
+	GstDvbServiceDataBroadcast DVBServiceType = 12
+	// GstDvbServiceReserved0dCommonInterface wraps GST_DVB_SERVICE_RESERVED_0D_COMMON_INTERFACE
+	GstDvbServiceReserved0dCommonInterface DVBServiceType = 13
+	// GstDvbServiceRcsMap wraps GST_DVB_SERVICE_RCS_MAP
+	GstDvbServiceRcsMap DVBServiceType = 14
+	// GstDvbServiceRcsFls wraps GST_DVB_SERVICE_RCS_FLS
+	GstDvbServiceRcsFls DVBServiceType = 15
+	// GstDvbServiceDvbMhp wraps GST_DVB_SERVICE_DVB_MHP
+	GstDvbServiceDvbMhp DVBServiceType = 16
+	// GstDvbServiceMpeg2HdDigitalTelevision wraps GST_DVB_SERVICE_MPEG2_HD_DIGITAL_TELEVISION
+	GstDvbServiceMpeg2HdDigitalTelevision DVBServiceType = 17
+	// GstDvbServiceAdvancedCodecSdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_DIGITAL_TELEVISION
+	GstDvbServiceAdvancedCodecSdDigitalTelevision DVBServiceType = 22
+	// GstDvbServiceAdvancedCodecSdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_TIME_SHIFTED
+	GstDvbServiceAdvancedCodecSdNvodTimeShifted DVBServiceType = 23
+	// GstDvbServiceAdvancedCodecSdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_REFERENCE
+	GstDvbServiceAdvancedCodecSdNvodReference DVBServiceType = 24
+	// GstDvbServiceAdvancedCodecHdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_DIGITAL_TELEVISION
+	GstDvbServiceAdvancedCodecHdDigitalTelevision DVBServiceType = 25
+	// GstDvbServiceAdvancedCodecHdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_TIME_SHIFTED
+	GstDvbServiceAdvancedCodecHdNvodTimeShifted DVBServiceType = 26
+	// GstDvbServiceAdvancedCodecHdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_REFERENCE
+	GstDvbServiceAdvancedCodecHdNvodReference DVBServiceType = 27
+	// GstDvbServiceAdvancedCodecStereoHdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_DIGITAL_TELEVISION
+	GstDvbServiceAdvancedCodecStereoHdDigitalTelevision DVBServiceType = 28
+	// GstDvbServiceAdvancedCodecStereoHdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_TIME_SHIFTED
+	GstDvbServiceAdvancedCodecStereoHdNvodTimeShifted DVBServiceType = 29
+	// GstDvbServiceAdvancedCodecStereoHdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE
+	GstDvbServiceAdvancedCodecStereoHdNvodReference DVBServiceType = 30
+	// GstDvbServiceReservedFf wraps GST_DVB_SERVICE_RESERVED_FF
+	GstDvbServiceReservedFf DVBServiceType = 31
 )
 
 
 func (e DVBServiceType) String() string {
 	switch e {
-		case DvbServiceAdvancedCodecDigitalRadioSound: return "DvbServiceAdvancedCodecDigitalRadioSound"
-		case DvbServiceAdvancedCodecHdDigitalTelevision: return "DvbServiceAdvancedCodecHdDigitalTelevision"
-		case DvbServiceAdvancedCodecHdNvodReference: return "DvbServiceAdvancedCodecHdNvodReference"
-		case DvbServiceAdvancedCodecHdNvodTimeShifted: return "DvbServiceAdvancedCodecHdNvodTimeShifted"
-		case DvbServiceAdvancedCodecMosaic: return "DvbServiceAdvancedCodecMosaic"
-		case DvbServiceAdvancedCodecSdDigitalTelevision: return "DvbServiceAdvancedCodecSdDigitalTelevision"
-		case DvbServiceAdvancedCodecSdNvodReference: return "DvbServiceAdvancedCodecSdNvodReference"
-		case DvbServiceAdvancedCodecSdNvodTimeShifted: return "DvbServiceAdvancedCodecSdNvodTimeShifted"
-		case DvbServiceAdvancedCodecStereoHdDigitalTelevision: return "DvbServiceAdvancedCodecStereoHdDigitalTelevision"
-		case DvbServiceAdvancedCodecStereoHdNvodReference: return "DvbServiceAdvancedCodecStereoHdNvodReference"
-		case DvbServiceAdvancedCodecStereoHdNvodTimeShifted: return "DvbServiceAdvancedCodecStereoHdNvodTimeShifted"
-		case DvbServiceDataBroadcast: return "DvbServiceDataBroadcast"
-		case DvbServiceDigitalRadioSound: return "DvbServiceDigitalRadioSound"
-		case DvbServiceDigitalTelevision: return "DvbServiceDigitalTelevision"
-		case DvbServiceDvbMhp: return "DvbServiceDvbMhp"
-		case DvbServiceDvbSrm: return "DvbServiceDvbSrm"
-		case DvbServiceFmRadio: return "DvbServiceFmRadio"
-		case DvbServiceMosaic: return "DvbServiceMosaic"
-		case DvbServiceMpeg2HdDigitalTelevision: return "DvbServiceMpeg2HdDigitalTelevision"
-		case DvbServiceNvodReference: return "DvbServiceNvodReference"
-		case DvbServiceNvodTimeShifted: return "DvbServiceNvodTimeShifted"
-		case DvbServiceRcsFls: return "DvbServiceRcsFls"
-		case DvbServiceRcsMap: return "DvbServiceRcsMap"
-		case DvbServiceReserved00: return "DvbServiceReserved00"
-		case DvbServiceReserved09: return "DvbServiceReserved09"
-		case DvbServiceReserved0DCommonInterface: return "DvbServiceReserved0DCommonInterface"
-		case DvbServiceReservedFf: return "DvbServiceReservedFf"
-		case DvbServiceTeletext: return "DvbServiceTeletext"
+		case GstDvbServiceAdvancedCodecDigitalRadioSound: return "GstDvbServiceAdvancedCodecDigitalRadioSound"
+		case GstDvbServiceAdvancedCodecHdDigitalTelevision: return "GstDvbServiceAdvancedCodecHdDigitalTelevision"
+		case GstDvbServiceAdvancedCodecHdNvodReference: return "GstDvbServiceAdvancedCodecHdNvodReference"
+		case GstDvbServiceAdvancedCodecHdNvodTimeShifted: return "GstDvbServiceAdvancedCodecHdNvodTimeShifted"
+		case GstDvbServiceAdvancedCodecMosaic: return "GstDvbServiceAdvancedCodecMosaic"
+		case GstDvbServiceAdvancedCodecSdDigitalTelevision: return "GstDvbServiceAdvancedCodecSdDigitalTelevision"
+		case GstDvbServiceAdvancedCodecSdNvodReference: return "GstDvbServiceAdvancedCodecSdNvodReference"
+		case GstDvbServiceAdvancedCodecSdNvodTimeShifted: return "GstDvbServiceAdvancedCodecSdNvodTimeShifted"
+		case GstDvbServiceAdvancedCodecStereoHdDigitalTelevision: return "GstDvbServiceAdvancedCodecStereoHdDigitalTelevision"
+		case GstDvbServiceAdvancedCodecStereoHdNvodReference: return "GstDvbServiceAdvancedCodecStereoHdNvodReference"
+		case GstDvbServiceAdvancedCodecStereoHdNvodTimeShifted: return "GstDvbServiceAdvancedCodecStereoHdNvodTimeShifted"
+		case GstDvbServiceDataBroadcast: return "GstDvbServiceDataBroadcast"
+		case GstDvbServiceDigitalRadioSound: return "GstDvbServiceDigitalRadioSound"
+		case GstDvbServiceDigitalTelevision: return "GstDvbServiceDigitalTelevision"
+		case GstDvbServiceDvbMhp: return "GstDvbServiceDvbMhp"
+		case GstDvbServiceDvbSrm: return "GstDvbServiceDvbSrm"
+		case GstDvbServiceFmRadio: return "GstDvbServiceFmRadio"
+		case GstDvbServiceMosaic: return "GstDvbServiceMosaic"
+		case GstDvbServiceMpeg2HdDigitalTelevision: return "GstDvbServiceMpeg2HdDigitalTelevision"
+		case GstDvbServiceNvodReference: return "GstDvbServiceNvodReference"
+		case GstDvbServiceNvodTimeShifted: return "GstDvbServiceNvodTimeShifted"
+		case GstDvbServiceRcsFls: return "GstDvbServiceRcsFls"
+		case GstDvbServiceRcsMap: return "GstDvbServiceRcsMap"
+		case GstDvbServiceReserved00: return "GstDvbServiceReserved00"
+		case GstDvbServiceReserved09: return "GstDvbServiceReserved09"
+		case GstDvbServiceReserved0dCommonInterface: return "GstDvbServiceReserved0dCommonInterface"
+		case GstDvbServiceReservedFf: return "GstDvbServiceReservedFf"
+		case GstDvbServiceTeletext: return "GstDvbServiceTeletext"
 		default: return fmt.Sprintf("DVBServiceType(%d)", e)
 	}
 }
@@ -998,26 +998,26 @@ func (e DVBServiceType) String() string {
 type DVBTeletextType C.int
 
 const (
-	// InitialPage wraps INITIAL_PAGE
-	InitialPage DVBTeletextType = 1
-	// SubtitlePage wraps SUBTITLE_PAGE
-	SubtitlePage DVBTeletextType = 2
-	// AdditionalInfoPage wraps ADDITIONAL_INFO_PAGE
-	AdditionalInfoPage DVBTeletextType = 3
-	// ProgrammeSchedulePage wraps PROGRAMME_SCHEDULE_PAGE
-	ProgrammeSchedulePage DVBTeletextType = 4
-	// HearingImpairedPage wraps HEARING_IMPAIRED_PAGE
-	HearingImpairedPage DVBTeletextType = 5
+	// GstInitialPage wraps gst_INITIAL_PAGE
+	GstInitialPage DVBTeletextType = 1
+	// GstSubtitlePage wraps gst_SUBTITLE_PAGE
+	GstSubtitlePage DVBTeletextType = 2
+	// GstAdditionalInfoPage wraps gst_ADDITIONAL_INFO_PAGE
+	GstAdditionalInfoPage DVBTeletextType = 3
+	// GstProgrammeSchedulePage wraps gst_PROGRAMME_SCHEDULE_PAGE
+	GstProgrammeSchedulePage DVBTeletextType = 4
+	// GstHearingImpairedPage wraps gst_HEARING_IMPAIRED_PAGE
+	GstHearingImpairedPage DVBTeletextType = 5
 )
 
 
 func (e DVBTeletextType) String() string {
 	switch e {
-		case AdditionalInfoPage: return "AdditionalInfoPage"
-		case HearingImpairedPage: return "HearingImpairedPage"
-		case InitialPage: return "InitialPage"
-		case ProgrammeSchedulePage: return "ProgrammeSchedulePage"
-		case SubtitlePage: return "SubtitlePage"
+		case GstAdditionalInfoPage: return "GstAdditionalInfoPage"
+		case GstHearingImpairedPage: return "GstHearingImpairedPage"
+		case GstInitialPage: return "GstInitialPage"
+		case GstProgrammeSchedulePage: return "GstProgrammeSchedulePage"
+		case GstSubtitlePage: return "GstSubtitlePage"
 		default: return fmt.Sprintf("DVBTeletextType(%d)", e)
 	}
 }
@@ -1033,178 +1033,178 @@ func (e DVBTeletextType) String() string {
 type DescriptorType C.int
 
 const (
-	// MtsDescReserved00 wraps MTS_DESC_RESERVED_00
-	MtsDescReserved00 DescriptorType = 0
-	// MtsDescReserved01 wraps MTS_DESC_RESERVED_01
-	MtsDescReserved01 DescriptorType = 1
-	// MtsDescVideoStream wraps MTS_DESC_VIDEO_STREAM
-	MtsDescVideoStream DescriptorType = 2
-	// MtsDescAudioStream wraps MTS_DESC_AUDIO_STREAM
-	MtsDescAudioStream DescriptorType = 3
-	// MtsDescHierarchy wraps MTS_DESC_HIERARCHY
-	MtsDescHierarchy DescriptorType = 4
-	// MtsDescRegistration wraps MTS_DESC_REGISTRATION
-	MtsDescRegistration DescriptorType = 5
-	// MtsDescDataStreamAlignment wraps MTS_DESC_DATA_STREAM_ALIGNMENT
-	MtsDescDataStreamAlignment DescriptorType = 6
-	// MtsDescTargetBackgroundGrid wraps MTS_DESC_TARGET_BACKGROUND_GRID
-	MtsDescTargetBackgroundGrid DescriptorType = 7
-	// MtsDescVideoWindow wraps MTS_DESC_VIDEO_WINDOW
-	MtsDescVideoWindow DescriptorType = 8
-	// MtsDescCa wraps MTS_DESC_CA
-	MtsDescCa DescriptorType = 9
-	// MtsDescISO639Language wraps MTS_DESC_ISO_639_LANGUAGE
-	MtsDescISO639Language DescriptorType = 10
-	// MtsDescSystemClock wraps MTS_DESC_SYSTEM_CLOCK
-	MtsDescSystemClock DescriptorType = 11
-	// MtsDescMultiplexBufferUtilisation wraps MTS_DESC_MULTIPLEX_BUFFER_UTILISATION
-	MtsDescMultiplexBufferUtilisation DescriptorType = 12
-	// MtsDescCopyright wraps MTS_DESC_COPYRIGHT
-	MtsDescCopyright DescriptorType = 13
-	// MtsDescMaximumBitrate wraps MTS_DESC_MAXIMUM_BITRATE
-	MtsDescMaximumBitrate DescriptorType = 14
-	// MtsDescPrivateDataIndicator wraps MTS_DESC_PRIVATE_DATA_INDICATOR
-	MtsDescPrivateDataIndicator DescriptorType = 15
-	// MtsDescSmoothingBuffer wraps MTS_DESC_SMOOTHING_BUFFER
-	MtsDescSmoothingBuffer DescriptorType = 16
-	// MtsDescStd wraps MTS_DESC_STD
-	MtsDescStd DescriptorType = 17
-	// MtsDescIbp wraps MTS_DESC_IBP
-	MtsDescIbp DescriptorType = 18
-	// MtsDescDsmccCarouselIdentifier wraps MTS_DESC_DSMCC_CAROUSEL_IDENTIFIER
-	MtsDescDsmccCarouselIdentifier DescriptorType = 19
-	// MtsDescDsmccAssociationTag wraps MTS_DESC_DSMCC_ASSOCIATION_TAG
-	MtsDescDsmccAssociationTag DescriptorType = 20
-	// MtsDescDsmccDeferredAssociationTag wraps MTS_DESC_DSMCC_DEFERRED_ASSOCIATION_TAG
-	MtsDescDsmccDeferredAssociationTag DescriptorType = 21
-	// MtsDescDsmccNptReference wraps MTS_DESC_DSMCC_NPT_REFERENCE
-	MtsDescDsmccNptReference DescriptorType = 23
-	// MtsDescDsmccNptEndpoint wraps MTS_DESC_DSMCC_NPT_ENDPOINT
-	MtsDescDsmccNptEndpoint DescriptorType = 24
-	// MtsDescDsmccStreamMode wraps MTS_DESC_DSMCC_STREAM_MODE
-	MtsDescDsmccStreamMode DescriptorType = 25
-	// MtsDescDsmccStreamEvent wraps MTS_DESC_DSMCC_STREAM_EVENT
-	MtsDescDsmccStreamEvent DescriptorType = 26
-	// MtsDescMpeg4Video wraps MTS_DESC_MPEG4_VIDEO
-	MtsDescMpeg4Video DescriptorType = 27
-	// MtsDescMpeg4Audio wraps MTS_DESC_MPEG4_AUDIO
-	MtsDescMpeg4Audio DescriptorType = 28
-	// MtsDescIod wraps MTS_DESC_IOD
-	MtsDescIod DescriptorType = 29
-	// MtsDescSl wraps MTS_DESC_SL
-	MtsDescSl DescriptorType = 30
-	// MtsDescFmc wraps MTS_DESC_FMC
-	MtsDescFmc DescriptorType = 31
-	// MtsDescExternalESID wraps MTS_DESC_EXTERNAL_ES_ID
-	MtsDescExternalESID DescriptorType = 32
-	// MtsDescMuxCode wraps MTS_DESC_MUX_CODE
-	MtsDescMuxCode DescriptorType = 33
-	// MtsDescFmxBufferSize wraps MTS_DESC_FMX_BUFFER_SIZE
-	MtsDescFmxBufferSize DescriptorType = 34
-	// MtsDescMultiplexBuffer wraps MTS_DESC_MULTIPLEX_BUFFER
-	MtsDescMultiplexBuffer DescriptorType = 35
-	// MtsDescContentLabeling wraps MTS_DESC_CONTENT_LABELING
-	MtsDescContentLabeling DescriptorType = 36
-	// MtsDescMetadataPointer wraps MTS_DESC_METADATA_POINTER
-	MtsDescMetadataPointer DescriptorType = 37
-	// MtsDescMetadata wraps MTS_DESC_METADATA
-	MtsDescMetadata DescriptorType = 38
-	// MtsDescMetadataStd wraps MTS_DESC_METADATA_STD
-	MtsDescMetadataStd DescriptorType = 39
-	// MtsDescAvcVideo wraps MTS_DESC_AVC_VIDEO
-	MtsDescAvcVideo DescriptorType = 40
-	// MtsDescIpmp wraps MTS_DESC_IPMP
-	MtsDescIpmp DescriptorType = 41
-	// MtsDescAvcTimingAndHrd wraps MTS_DESC_AVC_TIMING_AND_HRD
-	MtsDescAvcTimingAndHrd DescriptorType = 42
-	// MtsDescMpeg2AacAudio wraps MTS_DESC_MPEG2_AAC_AUDIO
-	MtsDescMpeg2AacAudio DescriptorType = 43
-	// MtsDescFlexMuxTiming wraps MTS_DESC_FLEX_MUX_TIMING
-	MtsDescFlexMuxTiming DescriptorType = 44
-	// MtsDescMpeg4Text wraps MTS_DESC_MPEG4_TEXT
-	MtsDescMpeg4Text DescriptorType = 45
-	// MtsDescMpeg4AudioExtension wraps MTS_DESC_MPEG4_AUDIO_EXTENSION
-	MtsDescMpeg4AudioExtension DescriptorType = 46
-	// MtsDescAuxiliaryVideoStream wraps MTS_DESC_AUXILIARY_VIDEO_STREAM
-	MtsDescAuxiliaryVideoStream DescriptorType = 47
-	// MtsDescSvcExtension wraps MTS_DESC_SVC_EXTENSION
-	MtsDescSvcExtension DescriptorType = 48
-	// MtsDescMvcExtension wraps MTS_DESC_MVC_EXTENSION
-	MtsDescMvcExtension DescriptorType = 49
-	// MtsDescJ2KVideo wraps MTS_DESC_J2K_VIDEO
-	MtsDescJ2KVideo DescriptorType = 50
-	// MtsDescMvcOperationPoint wraps MTS_DESC_MVC_OPERATION_POINT
-	MtsDescMvcOperationPoint DescriptorType = 51
-	// MtsDescMpeg2StereoscopicVideoFormat wraps MTS_DESC_MPEG2_STEREOSCOPIC_VIDEO_FORMAT
-	MtsDescMpeg2StereoscopicVideoFormat DescriptorType = 52
-	// MtsDescStereoscopicProgramInfo wraps MTS_DESC_STEREOSCOPIC_PROGRAM_INFO
-	MtsDescStereoscopicProgramInfo DescriptorType = 53
-	// MtsDescStereoscopicVideoInfo wraps MTS_DESC_STEREOSCOPIC_VIDEO_INFO
-	MtsDescStereoscopicVideoInfo DescriptorType = 54
-	// MtsDescExtension wraps MTS_DESC_EXTENSION
+	// GstMtsDescReserved00 wraps GST_MTS_DESC_RESERVED_00
+	GstMtsDescReserved00 DescriptorType = 0
+	// GstMtsDescReserved01 wraps GST_MTS_DESC_RESERVED_01
+	GstMtsDescReserved01 DescriptorType = 1
+	// GstMtsDescVideoStream wraps GST_MTS_DESC_VIDEO_STREAM
+	GstMtsDescVideoStream DescriptorType = 2
+	// GstMtsDescAudioStream wraps GST_MTS_DESC_AUDIO_STREAM
+	GstMtsDescAudioStream DescriptorType = 3
+	// GstMtsDescHierarchy wraps GST_MTS_DESC_HIERARCHY
+	GstMtsDescHierarchy DescriptorType = 4
+	// GstMtsDescRegistration wraps GST_MTS_DESC_REGISTRATION
+	GstMtsDescRegistration DescriptorType = 5
+	// GstMtsDescDataStreamAlignment wraps GST_MTS_DESC_DATA_STREAM_ALIGNMENT
+	GstMtsDescDataStreamAlignment DescriptorType = 6
+	// GstMtsDescTargetBackgroundGrid wraps GST_MTS_DESC_TARGET_BACKGROUND_GRID
+	GstMtsDescTargetBackgroundGrid DescriptorType = 7
+	// GstMtsDescVideoWindow wraps GST_MTS_DESC_VIDEO_WINDOW
+	GstMtsDescVideoWindow DescriptorType = 8
+	// GstMtsDescCa wraps GST_MTS_DESC_CA
+	GstMtsDescCa DescriptorType = 9
+	// GstMtsDescIso639Language wraps GST_MTS_DESC_ISO_639_LANGUAGE
+	GstMtsDescIso639Language DescriptorType = 10
+	// GstMtsDescSystemClock wraps GST_MTS_DESC_SYSTEM_CLOCK
+	GstMtsDescSystemClock DescriptorType = 11
+	// GstMtsDescMultiplexBufferUtilisation wraps GST_MTS_DESC_MULTIPLEX_BUFFER_UTILISATION
+	GstMtsDescMultiplexBufferUtilisation DescriptorType = 12
+	// GstMtsDescCopyright wraps GST_MTS_DESC_COPYRIGHT
+	GstMtsDescCopyright DescriptorType = 13
+	// GstMtsDescMaximumBitrate wraps GST_MTS_DESC_MAXIMUM_BITRATE
+	GstMtsDescMaximumBitrate DescriptorType = 14
+	// GstMtsDescPrivateDataIndicator wraps GST_MTS_DESC_PRIVATE_DATA_INDICATOR
+	GstMtsDescPrivateDataIndicator DescriptorType = 15
+	// GstMtsDescSmoothingBuffer wraps GST_MTS_DESC_SMOOTHING_BUFFER
+	GstMtsDescSmoothingBuffer DescriptorType = 16
+	// GstMtsDescStd wraps GST_MTS_DESC_STD
+	GstMtsDescStd DescriptorType = 17
+	// GstMtsDescIbp wraps GST_MTS_DESC_IBP
+	GstMtsDescIbp DescriptorType = 18
+	// GstMtsDescDsmccCarouselIdentifier wraps GST_MTS_DESC_DSMCC_CAROUSEL_IDENTIFIER
+	GstMtsDescDsmccCarouselIdentifier DescriptorType = 19
+	// GstMtsDescDsmccAssociationTag wraps GST_MTS_DESC_DSMCC_ASSOCIATION_TAG
+	GstMtsDescDsmccAssociationTag DescriptorType = 20
+	// GstMtsDescDsmccDeferredAssociationTag wraps GST_MTS_DESC_DSMCC_DEFERRED_ASSOCIATION_TAG
+	GstMtsDescDsmccDeferredAssociationTag DescriptorType = 21
+	// GstMtsDescDsmccNptReference wraps GST_MTS_DESC_DSMCC_NPT_REFERENCE
+	GstMtsDescDsmccNptReference DescriptorType = 23
+	// GstMtsDescDsmccNptEndpoint wraps GST_MTS_DESC_DSMCC_NPT_ENDPOINT
+	GstMtsDescDsmccNptEndpoint DescriptorType = 24
+	// GstMtsDescDsmccStreamMode wraps GST_MTS_DESC_DSMCC_STREAM_MODE
+	GstMtsDescDsmccStreamMode DescriptorType = 25
+	// GstMtsDescDsmccStreamEvent wraps GST_MTS_DESC_DSMCC_STREAM_EVENT
+	GstMtsDescDsmccStreamEvent DescriptorType = 26
+	// GstMtsDescMpeg4Video wraps GST_MTS_DESC_MPEG4_VIDEO
+	GstMtsDescMpeg4Video DescriptorType = 27
+	// GstMtsDescMpeg4Audio wraps GST_MTS_DESC_MPEG4_AUDIO
+	GstMtsDescMpeg4Audio DescriptorType = 28
+	// GstMtsDescIod wraps GST_MTS_DESC_IOD
+	GstMtsDescIod DescriptorType = 29
+	// GstMtsDescSl wraps GST_MTS_DESC_SL
+	GstMtsDescSl DescriptorType = 30
+	// GstMtsDescFmc wraps GST_MTS_DESC_FMC
+	GstMtsDescFmc DescriptorType = 31
+	// GstMtsDescExternalEsID wraps GST_MTS_DESC_EXTERNAL_ES_ID
+	GstMtsDescExternalEsID DescriptorType = 32
+	// GstMtsDescMuxCode wraps GST_MTS_DESC_MUX_CODE
+	GstMtsDescMuxCode DescriptorType = 33
+	// GstMtsDescFmxBufferSize wraps GST_MTS_DESC_FMX_BUFFER_SIZE
+	GstMtsDescFmxBufferSize DescriptorType = 34
+	// GstMtsDescMultiplexBuffer wraps GST_MTS_DESC_MULTIPLEX_BUFFER
+	GstMtsDescMultiplexBuffer DescriptorType = 35
+	// GstMtsDescContentLabeling wraps GST_MTS_DESC_CONTENT_LABELING
+	GstMtsDescContentLabeling DescriptorType = 36
+	// GstMtsDescMetadataPointer wraps GST_MTS_DESC_METADATA_POINTER
+	GstMtsDescMetadataPointer DescriptorType = 37
+	// GstMtsDescMetadata wraps GST_MTS_DESC_METADATA
+	GstMtsDescMetadata DescriptorType = 38
+	// GstMtsDescMetadataStd wraps GST_MTS_DESC_METADATA_STD
+	GstMtsDescMetadataStd DescriptorType = 39
+	// GstMtsDescAvcVideo wraps GST_MTS_DESC_AVC_VIDEO
+	GstMtsDescAvcVideo DescriptorType = 40
+	// GstMtsDescIpmp wraps GST_MTS_DESC_IPMP
+	GstMtsDescIpmp DescriptorType = 41
+	// GstMtsDescAvcTimingAndHrd wraps GST_MTS_DESC_AVC_TIMING_AND_HRD
+	GstMtsDescAvcTimingAndHrd DescriptorType = 42
+	// GstMtsDescMpeg2AacAudio wraps GST_MTS_DESC_MPEG2_AAC_AUDIO
+	GstMtsDescMpeg2AacAudio DescriptorType = 43
+	// GstMtsDescFlexMuxTiming wraps GST_MTS_DESC_FLEX_MUX_TIMING
+	GstMtsDescFlexMuxTiming DescriptorType = 44
+	// GstMtsDescMpeg4Text wraps GST_MTS_DESC_MPEG4_TEXT
+	GstMtsDescMpeg4Text DescriptorType = 45
+	// GstMtsDescMpeg4AudioExtension wraps GST_MTS_DESC_MPEG4_AUDIO_EXTENSION
+	GstMtsDescMpeg4AudioExtension DescriptorType = 46
+	// GstMtsDescAuxiliaryVideoStream wraps GST_MTS_DESC_AUXILIARY_VIDEO_STREAM
+	GstMtsDescAuxiliaryVideoStream DescriptorType = 47
+	// GstMtsDescSvcExtension wraps GST_MTS_DESC_SVC_EXTENSION
+	GstMtsDescSvcExtension DescriptorType = 48
+	// GstMtsDescMvcExtension wraps GST_MTS_DESC_MVC_EXTENSION
+	GstMtsDescMvcExtension DescriptorType = 49
+	// GstMtsDescJ2kVideo wraps GST_MTS_DESC_J2K_VIDEO
+	GstMtsDescJ2kVideo DescriptorType = 50
+	// GstMtsDescMvcOperationPoint wraps GST_MTS_DESC_MVC_OPERATION_POINT
+	GstMtsDescMvcOperationPoint DescriptorType = 51
+	// GstMtsDescMpeg2StereoscopicVideoFormat wraps GST_MTS_DESC_MPEG2_STEREOSCOPIC_VIDEO_FORMAT
+	GstMtsDescMpeg2StereoscopicVideoFormat DescriptorType = 52
+	// GstMtsDescStereoscopicProgramInfo wraps GST_MTS_DESC_STEREOSCOPIC_PROGRAM_INFO
+	GstMtsDescStereoscopicProgramInfo DescriptorType = 53
+	// GstMtsDescStereoscopicVideoInfo wraps GST_MTS_DESC_STEREOSCOPIC_VIDEO_INFO
+	GstMtsDescStereoscopicVideoInfo DescriptorType = 54
+	// GstMtsDescExtension wraps GST_MTS_DESC_EXTENSION
 	//
 	// Extension Descriptor.
-	MtsDescExtension DescriptorType = 63
+	GstMtsDescExtension DescriptorType = 63
 )
 
 
 func (e DescriptorType) String() string {
 	switch e {
-		case MtsDescAudioStream: return "MtsDescAudioStream"
-		case MtsDescAuxiliaryVideoStream: return "MtsDescAuxiliaryVideoStream"
-		case MtsDescAvcTimingAndHrd: return "MtsDescAvcTimingAndHrd"
-		case MtsDescAvcVideo: return "MtsDescAvcVideo"
-		case MtsDescCa: return "MtsDescCa"
-		case MtsDescContentLabeling: return "MtsDescContentLabeling"
-		case MtsDescCopyright: return "MtsDescCopyright"
-		case MtsDescDataStreamAlignment: return "MtsDescDataStreamAlignment"
-		case MtsDescDsmccAssociationTag: return "MtsDescDsmccAssociationTag"
-		case MtsDescDsmccCarouselIdentifier: return "MtsDescDsmccCarouselIdentifier"
-		case MtsDescDsmccDeferredAssociationTag: return "MtsDescDsmccDeferredAssociationTag"
-		case MtsDescDsmccNptEndpoint: return "MtsDescDsmccNptEndpoint"
-		case MtsDescDsmccNptReference: return "MtsDescDsmccNptReference"
-		case MtsDescDsmccStreamEvent: return "MtsDescDsmccStreamEvent"
-		case MtsDescDsmccStreamMode: return "MtsDescDsmccStreamMode"
-		case MtsDescExtension: return "MtsDescExtension"
-		case MtsDescExternalESID: return "MtsDescExternalESID"
-		case MtsDescFlexMuxTiming: return "MtsDescFlexMuxTiming"
-		case MtsDescFmc: return "MtsDescFmc"
-		case MtsDescFmxBufferSize: return "MtsDescFmxBufferSize"
-		case MtsDescHierarchy: return "MtsDescHierarchy"
-		case MtsDescISO639Language: return "MtsDescISO639Language"
-		case MtsDescIbp: return "MtsDescIbp"
-		case MtsDescIod: return "MtsDescIod"
-		case MtsDescIpmp: return "MtsDescIpmp"
-		case MtsDescJ2KVideo: return "MtsDescJ2KVideo"
-		case MtsDescMaximumBitrate: return "MtsDescMaximumBitrate"
-		case MtsDescMetadata: return "MtsDescMetadata"
-		case MtsDescMetadataPointer: return "MtsDescMetadataPointer"
-		case MtsDescMetadataStd: return "MtsDescMetadataStd"
-		case MtsDescMpeg2AacAudio: return "MtsDescMpeg2AacAudio"
-		case MtsDescMpeg2StereoscopicVideoFormat: return "MtsDescMpeg2StereoscopicVideoFormat"
-		case MtsDescMpeg4Audio: return "MtsDescMpeg4Audio"
-		case MtsDescMpeg4AudioExtension: return "MtsDescMpeg4AudioExtension"
-		case MtsDescMpeg4Text: return "MtsDescMpeg4Text"
-		case MtsDescMpeg4Video: return "MtsDescMpeg4Video"
-		case MtsDescMultiplexBuffer: return "MtsDescMultiplexBuffer"
-		case MtsDescMultiplexBufferUtilisation: return "MtsDescMultiplexBufferUtilisation"
-		case MtsDescMuxCode: return "MtsDescMuxCode"
-		case MtsDescMvcExtension: return "MtsDescMvcExtension"
-		case MtsDescMvcOperationPoint: return "MtsDescMvcOperationPoint"
-		case MtsDescPrivateDataIndicator: return "MtsDescPrivateDataIndicator"
-		case MtsDescRegistration: return "MtsDescRegistration"
-		case MtsDescReserved00: return "MtsDescReserved00"
-		case MtsDescReserved01: return "MtsDescReserved01"
-		case MtsDescSl: return "MtsDescSl"
-		case MtsDescSmoothingBuffer: return "MtsDescSmoothingBuffer"
-		case MtsDescStd: return "MtsDescStd"
-		case MtsDescStereoscopicProgramInfo: return "MtsDescStereoscopicProgramInfo"
-		case MtsDescStereoscopicVideoInfo: return "MtsDescStereoscopicVideoInfo"
-		case MtsDescSvcExtension: return "MtsDescSvcExtension"
-		case MtsDescSystemClock: return "MtsDescSystemClock"
-		case MtsDescTargetBackgroundGrid: return "MtsDescTargetBackgroundGrid"
-		case MtsDescVideoStream: return "MtsDescVideoStream"
-		case MtsDescVideoWindow: return "MtsDescVideoWindow"
+		case GstMtsDescAudioStream: return "GstMtsDescAudioStream"
+		case GstMtsDescAuxiliaryVideoStream: return "GstMtsDescAuxiliaryVideoStream"
+		case GstMtsDescAvcTimingAndHrd: return "GstMtsDescAvcTimingAndHrd"
+		case GstMtsDescAvcVideo: return "GstMtsDescAvcVideo"
+		case GstMtsDescCa: return "GstMtsDescCa"
+		case GstMtsDescContentLabeling: return "GstMtsDescContentLabeling"
+		case GstMtsDescCopyright: return "GstMtsDescCopyright"
+		case GstMtsDescDataStreamAlignment: return "GstMtsDescDataStreamAlignment"
+		case GstMtsDescDsmccAssociationTag: return "GstMtsDescDsmccAssociationTag"
+		case GstMtsDescDsmccCarouselIdentifier: return "GstMtsDescDsmccCarouselIdentifier"
+		case GstMtsDescDsmccDeferredAssociationTag: return "GstMtsDescDsmccDeferredAssociationTag"
+		case GstMtsDescDsmccNptEndpoint: return "GstMtsDescDsmccNptEndpoint"
+		case GstMtsDescDsmccNptReference: return "GstMtsDescDsmccNptReference"
+		case GstMtsDescDsmccStreamEvent: return "GstMtsDescDsmccStreamEvent"
+		case GstMtsDescDsmccStreamMode: return "GstMtsDescDsmccStreamMode"
+		case GstMtsDescExtension: return "GstMtsDescExtension"
+		case GstMtsDescExternalEsID: return "GstMtsDescExternalEsID"
+		case GstMtsDescFlexMuxTiming: return "GstMtsDescFlexMuxTiming"
+		case GstMtsDescFmc: return "GstMtsDescFmc"
+		case GstMtsDescFmxBufferSize: return "GstMtsDescFmxBufferSize"
+		case GstMtsDescHierarchy: return "GstMtsDescHierarchy"
+		case GstMtsDescIbp: return "GstMtsDescIbp"
+		case GstMtsDescIod: return "GstMtsDescIod"
+		case GstMtsDescIpmp: return "GstMtsDescIpmp"
+		case GstMtsDescIso639Language: return "GstMtsDescIso639Language"
+		case GstMtsDescJ2kVideo: return "GstMtsDescJ2kVideo"
+		case GstMtsDescMaximumBitrate: return "GstMtsDescMaximumBitrate"
+		case GstMtsDescMetadata: return "GstMtsDescMetadata"
+		case GstMtsDescMetadataPointer: return "GstMtsDescMetadataPointer"
+		case GstMtsDescMetadataStd: return "GstMtsDescMetadataStd"
+		case GstMtsDescMpeg2AacAudio: return "GstMtsDescMpeg2AacAudio"
+		case GstMtsDescMpeg2StereoscopicVideoFormat: return "GstMtsDescMpeg2StereoscopicVideoFormat"
+		case GstMtsDescMpeg4Audio: return "GstMtsDescMpeg4Audio"
+		case GstMtsDescMpeg4AudioExtension: return "GstMtsDescMpeg4AudioExtension"
+		case GstMtsDescMpeg4Text: return "GstMtsDescMpeg4Text"
+		case GstMtsDescMpeg4Video: return "GstMtsDescMpeg4Video"
+		case GstMtsDescMultiplexBuffer: return "GstMtsDescMultiplexBuffer"
+		case GstMtsDescMultiplexBufferUtilisation: return "GstMtsDescMultiplexBufferUtilisation"
+		case GstMtsDescMuxCode: return "GstMtsDescMuxCode"
+		case GstMtsDescMvcExtension: return "GstMtsDescMvcExtension"
+		case GstMtsDescMvcOperationPoint: return "GstMtsDescMvcOperationPoint"
+		case GstMtsDescPrivateDataIndicator: return "GstMtsDescPrivateDataIndicator"
+		case GstMtsDescRegistration: return "GstMtsDescRegistration"
+		case GstMtsDescReserved00: return "GstMtsDescReserved00"
+		case GstMtsDescReserved01: return "GstMtsDescReserved01"
+		case GstMtsDescSl: return "GstMtsDescSl"
+		case GstMtsDescSmoothingBuffer: return "GstMtsDescSmoothingBuffer"
+		case GstMtsDescStd: return "GstMtsDescStd"
+		case GstMtsDescStereoscopicProgramInfo: return "GstMtsDescStereoscopicProgramInfo"
+		case GstMtsDescStereoscopicVideoInfo: return "GstMtsDescStereoscopicVideoInfo"
+		case GstMtsDescSvcExtension: return "GstMtsDescSvcExtension"
+		case GstMtsDescSystemClock: return "GstMtsDescSystemClock"
+		case GstMtsDescTargetBackgroundGrid: return "GstMtsDescTargetBackgroundGrid"
+		case GstMtsDescVideoStream: return "GstMtsDescVideoStream"
+		case GstMtsDescVideoWindow: return "GstMtsDescVideoWindow"
 		default: return fmt.Sprintf("DescriptorType(%d)", e)
 	}
 }
@@ -1220,14 +1220,14 @@ func (e DescriptorType) String() string {
 type ExtendedDescriptorType C.int
 
 const (
-	// MtsDescExtJxsVideo wraps MTS_DESC_EXT_JXS_VIDEO
-	MtsDescExtJxsVideo ExtendedDescriptorType = 20
+	// GstMtsDescExtJxsVideo wraps GST_MTS_DESC_EXT_JXS_VIDEO
+	GstMtsDescExtJxsVideo ExtendedDescriptorType = 20
 )
 
 
 func (e ExtendedDescriptorType) String() string {
 	switch e {
-		case MtsDescExtJxsVideo: return "MtsDescExtJxsVideo"
+		case GstMtsDescExtJxsVideo: return "GstMtsDescExtJxsVideo"
 		default: return fmt.Sprintf("ExtendedDescriptorType(%d)", e)
 	}
 }
@@ -1239,50 +1239,50 @@ func (e ExtendedDescriptorType) String() string {
 type HdmvStreamType C.int
 
 const (
-	// MpegtsStreamTypeHdmvAudioLpcm wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_LPCM
-	MpegtsStreamTypeHdmvAudioLpcm HdmvStreamType = 128
-	// MpegtsStreamTypeHdmvAudioAc3 wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3
-	MpegtsStreamTypeHdmvAudioAc3 HdmvStreamType = 129
-	// MpegtsStreamTypeHdmvAudioDts wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS
-	MpegtsStreamTypeHdmvAudioDts HdmvStreamType = 130
-	// MpegtsStreamTypeHdmvAudioAc3TrueHd wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_TRUE_HD
-	MpegtsStreamTypeHdmvAudioAc3TrueHd HdmvStreamType = 131
-	// MpegtsStreamTypeHdmvAudioAc3Plus wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS
-	MpegtsStreamTypeHdmvAudioAc3Plus HdmvStreamType = 132
-	// MpegtsStreamTypeHdmvAudioDtsHd wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD
-	MpegtsStreamTypeHdmvAudioDtsHd HdmvStreamType = 133
-	// MpegtsStreamTypeHdmvAudioDtsHdMasterAudio wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_MASTER_AUDIO
-	MpegtsStreamTypeHdmvAudioDtsHdMasterAudio HdmvStreamType = 134
-	// MpegtsStreamTypeHdmvAudioEac3 wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_EAC3
-	MpegtsStreamTypeHdmvAudioEac3 HdmvStreamType = 135
-	// MpegtsStreamTypeHdmvSubpicturePgs wraps MPEGTS_STREAM_TYPE_HDMV_SUBPICTURE_PGS
-	MpegtsStreamTypeHdmvSubpicturePgs HdmvStreamType = 144
-	// MpegtsStreamTypeHdmvIgs wraps MPEGTS_STREAM_TYPE_HDMV_IGS
-	MpegtsStreamTypeHdmvIgs HdmvStreamType = 145
-	// MpegtsStreamTypeHdmvSubtitle wraps MPEGTS_STREAM_TYPE_HDMV_SUBTITLE
-	MpegtsStreamTypeHdmvSubtitle HdmvStreamType = 146
-	// MpegtsStreamTypeHdmvAudioAc3PlusSecondary wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS_SECONDARY
-	MpegtsStreamTypeHdmvAudioAc3PlusSecondary HdmvStreamType = 161
-	// MpegtsStreamTypeHdmvAudioDtsHdSecondary wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_SECONDARY
-	MpegtsStreamTypeHdmvAudioDtsHdSecondary HdmvStreamType = 162
+	// StreamTypeHdmvAudioLpcm wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_LPCM
+	StreamTypeHdmvAudioLpcm HdmvStreamType = 128
+	// StreamTypeHdmvAudioAc3 wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3
+	StreamTypeHdmvAudioAc3 HdmvStreamType = 129
+	// StreamTypeHdmvAudioDts wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS
+	StreamTypeHdmvAudioDts HdmvStreamType = 130
+	// StreamTypeHdmvAudioAc3TrueHd wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_TRUE_HD
+	StreamTypeHdmvAudioAc3TrueHd HdmvStreamType = 131
+	// StreamTypeHdmvAudioAc3Plus wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS
+	StreamTypeHdmvAudioAc3Plus HdmvStreamType = 132
+	// StreamTypeHdmvAudioDtsHd wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD
+	StreamTypeHdmvAudioDtsHd HdmvStreamType = 133
+	// StreamTypeHdmvAudioDtsHdMasterAudio wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_MASTER_AUDIO
+	StreamTypeHdmvAudioDtsHdMasterAudio HdmvStreamType = 134
+	// StreamTypeHdmvAudioEac3 wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_EAC3
+	StreamTypeHdmvAudioEac3 HdmvStreamType = 135
+	// StreamTypeHdmvSubpicturePgs wraps GST_MPEGTS_STREAM_TYPE_HDMV_SUBPICTURE_PGS
+	StreamTypeHdmvSubpicturePgs HdmvStreamType = 144
+	// StreamTypeHdmvIgs wraps GST_MPEGTS_STREAM_TYPE_HDMV_IGS
+	StreamTypeHdmvIgs HdmvStreamType = 145
+	// StreamTypeHdmvSubtitle wraps GST_MPEGTS_STREAM_TYPE_HDMV_SUBTITLE
+	StreamTypeHdmvSubtitle HdmvStreamType = 146
+	// StreamTypeHdmvAudioAc3PlusSecondary wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS_SECONDARY
+	StreamTypeHdmvAudioAc3PlusSecondary HdmvStreamType = 161
+	// StreamTypeHdmvAudioDtsHdSecondary wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_SECONDARY
+	StreamTypeHdmvAudioDtsHdSecondary HdmvStreamType = 162
 )
 
 
 func (e HdmvStreamType) String() string {
 	switch e {
-		case MpegtsStreamTypeHdmvAudioAc3: return "MpegtsStreamTypeHdmvAudioAc3"
-		case MpegtsStreamTypeHdmvAudioAc3Plus: return "MpegtsStreamTypeHdmvAudioAc3Plus"
-		case MpegtsStreamTypeHdmvAudioAc3PlusSecondary: return "MpegtsStreamTypeHdmvAudioAc3PlusSecondary"
-		case MpegtsStreamTypeHdmvAudioAc3TrueHd: return "MpegtsStreamTypeHdmvAudioAc3TrueHd"
-		case MpegtsStreamTypeHdmvAudioDts: return "MpegtsStreamTypeHdmvAudioDts"
-		case MpegtsStreamTypeHdmvAudioDtsHd: return "MpegtsStreamTypeHdmvAudioDtsHd"
-		case MpegtsStreamTypeHdmvAudioDtsHdMasterAudio: return "MpegtsStreamTypeHdmvAudioDtsHdMasterAudio"
-		case MpegtsStreamTypeHdmvAudioDtsHdSecondary: return "MpegtsStreamTypeHdmvAudioDtsHdSecondary"
-		case MpegtsStreamTypeHdmvAudioEac3: return "MpegtsStreamTypeHdmvAudioEac3"
-		case MpegtsStreamTypeHdmvAudioLpcm: return "MpegtsStreamTypeHdmvAudioLpcm"
-		case MpegtsStreamTypeHdmvIgs: return "MpegtsStreamTypeHdmvIgs"
-		case MpegtsStreamTypeHdmvSubpicturePgs: return "MpegtsStreamTypeHdmvSubpicturePgs"
-		case MpegtsStreamTypeHdmvSubtitle: return "MpegtsStreamTypeHdmvSubtitle"
+		case StreamTypeHdmvAudioAc3: return "StreamTypeHdmvAudioAc3"
+		case StreamTypeHdmvAudioAc3Plus: return "StreamTypeHdmvAudioAc3Plus"
+		case StreamTypeHdmvAudioAc3PlusSecondary: return "StreamTypeHdmvAudioAc3PlusSecondary"
+		case StreamTypeHdmvAudioAc3TrueHd: return "StreamTypeHdmvAudioAc3TrueHd"
+		case StreamTypeHdmvAudioDts: return "StreamTypeHdmvAudioDts"
+		case StreamTypeHdmvAudioDtsHd: return "StreamTypeHdmvAudioDtsHd"
+		case StreamTypeHdmvAudioDtsHdMasterAudio: return "StreamTypeHdmvAudioDtsHdMasterAudio"
+		case StreamTypeHdmvAudioDtsHdSecondary: return "StreamTypeHdmvAudioDtsHdSecondary"
+		case StreamTypeHdmvAudioEac3: return "StreamTypeHdmvAudioEac3"
+		case StreamTypeHdmvAudioLpcm: return "StreamTypeHdmvAudioLpcm"
+		case StreamTypeHdmvIgs: return "StreamTypeHdmvIgs"
+		case StreamTypeHdmvSubpicturePgs: return "StreamTypeHdmvSubpicturePgs"
+		case StreamTypeHdmvSubtitle: return "StreamTypeHdmvSubtitle"
 		default: return fmt.Sprintf("HdmvStreamType(%d)", e)
 	}
 }
@@ -1296,133 +1296,133 @@ func (e HdmvStreamType) String() string {
 type ISDBDescriptorType C.int
 
 const (
-	// MtsDescIsdbHierarchicalTransmission wraps MTS_DESC_ISDB_HIERARCHICAL_TRANSMISSION
-	MtsDescIsdbHierarchicalTransmission ISDBDescriptorType = 192
-	// MtsDescIsdbDigitalCopyControl wraps MTS_DESC_ISDB_DIGITAL_COPY_CONTROL
-	MtsDescIsdbDigitalCopyControl ISDBDescriptorType = 193
-	// MtsDescIsdbNetworkIdentification wraps MTS_DESC_ISDB_NETWORK_IDENTIFICATION
-	MtsDescIsdbNetworkIdentification ISDBDescriptorType = 194
-	// MtsDescIsdbPartialTsTime wraps MTS_DESC_ISDB_PARTIAL_TS_TIME
-	MtsDescIsdbPartialTsTime ISDBDescriptorType = 195
-	// MtsDescIsdbAudioComponent wraps MTS_DESC_ISDB_AUDIO_COMPONENT
-	MtsDescIsdbAudioComponent ISDBDescriptorType = 196
-	// MtsDescIsdbHyperlink wraps MTS_DESC_ISDB_HYPERLINK
-	MtsDescIsdbHyperlink ISDBDescriptorType = 197
-	// MtsDescIsdbTargetRegion wraps MTS_DESC_ISDB_TARGET_REGION
-	MtsDescIsdbTargetRegion ISDBDescriptorType = 198
-	// MtsDescIsdbDataContent wraps MTS_DESC_ISDB_DATA_CONTENT
-	MtsDescIsdbDataContent ISDBDescriptorType = 199
-	// MtsDescIsdbVideoDecodeControl wraps MTS_DESC_ISDB_VIDEO_DECODE_CONTROL
-	MtsDescIsdbVideoDecodeControl ISDBDescriptorType = 200
-	// MtsDescIsdbDownloadContent wraps MTS_DESC_ISDB_DOWNLOAD_CONTENT
-	MtsDescIsdbDownloadContent ISDBDescriptorType = 201
-	// MtsDescIsdbCaEmmTs wraps MTS_DESC_ISDB_CA_EMM_TS
-	MtsDescIsdbCaEmmTs ISDBDescriptorType = 202
-	// MtsDescIsdbCaContractInformation wraps MTS_DESC_ISDB_CA_CONTRACT_INFORMATION
-	MtsDescIsdbCaContractInformation ISDBDescriptorType = 203
-	// MtsDescIsdbCaService wraps MTS_DESC_ISDB_CA_SERVICE
-	MtsDescIsdbCaService ISDBDescriptorType = 204
-	// MtsDescIsdbTsInformation wraps MTS_DESC_ISDB_TS_INFORMATION
-	MtsDescIsdbTsInformation ISDBDescriptorType = 205
-	// MtsDescIsdbExtendedBroadcaster wraps MTS_DESC_ISDB_EXTENDED_BROADCASTER
-	MtsDescIsdbExtendedBroadcaster ISDBDescriptorType = 206
-	// MtsDescIsdbLogoTransmission wraps MTS_DESC_ISDB_LOGO_TRANSMISSION
-	MtsDescIsdbLogoTransmission ISDBDescriptorType = 207
-	// MtsDescIsdbBasicLocalEvent wraps MTS_DESC_ISDB_BASIC_LOCAL_EVENT
-	MtsDescIsdbBasicLocalEvent ISDBDescriptorType = 208
-	// MtsDescIsdbReference wraps MTS_DESC_ISDB_REFERENCE
-	MtsDescIsdbReference ISDBDescriptorType = 209
-	// MtsDescIsdbNodeRelation wraps MTS_DESC_ISDB_NODE_RELATION
-	MtsDescIsdbNodeRelation ISDBDescriptorType = 210
-	// MtsDescIsdbShortNodeInformation wraps MTS_DESC_ISDB_SHORT_NODE_INFORMATION
-	MtsDescIsdbShortNodeInformation ISDBDescriptorType = 211
-	// MtsDescIsdbStcReference wraps MTS_DESC_ISDB_STC_REFERENCE
-	MtsDescIsdbStcReference ISDBDescriptorType = 212
-	// MtsDescIsdbSeries wraps MTS_DESC_ISDB_SERIES
-	MtsDescIsdbSeries ISDBDescriptorType = 213
-	// MtsDescIsdbEventGroup wraps MTS_DESC_ISDB_EVENT_GROUP
-	MtsDescIsdbEventGroup ISDBDescriptorType = 214
-	// MtsDescIsdbSiParameter wraps MTS_DESC_ISDB_SI_PARAMETER
-	MtsDescIsdbSiParameter ISDBDescriptorType = 215
-	// MtsDescIsdbBroadcasterName wraps MTS_DESC_ISDB_BROADCASTER_NAME
-	MtsDescIsdbBroadcasterName ISDBDescriptorType = 216
-	// MtsDescIsdbComponentGroup wraps MTS_DESC_ISDB_COMPONENT_GROUP
-	MtsDescIsdbComponentGroup ISDBDescriptorType = 217
-	// MtsDescIsdbSiPrimeTs wraps MTS_DESC_ISDB_SI_PRIME_TS
-	MtsDescIsdbSiPrimeTs ISDBDescriptorType = 218
-	// MtsDescIsdbBoardInformation wraps MTS_DESC_ISDB_BOARD_INFORMATION
-	MtsDescIsdbBoardInformation ISDBDescriptorType = 219
-	// MtsDescIsdbLdtLinkage wraps MTS_DESC_ISDB_LDT_LINKAGE
-	MtsDescIsdbLdtLinkage ISDBDescriptorType = 220
-	// MtsDescIsdbConnectedTransmission wraps MTS_DESC_ISDB_CONNECTED_TRANSMISSION
-	MtsDescIsdbConnectedTransmission ISDBDescriptorType = 221
-	// MtsDescIsdbContentAvailability wraps MTS_DESC_ISDB_CONTENT_AVAILABILITY
-	MtsDescIsdbContentAvailability ISDBDescriptorType = 222
-	// MtsDescIsdbServiceGroup wraps MTS_DESC_ISDB_SERVICE_GROUP
-	MtsDescIsdbServiceGroup ISDBDescriptorType = 224
+	// GstMtsDescIsdbHierarchicalTransmission wraps GST_MTS_DESC_ISDB_HIERARCHICAL_TRANSMISSION
+	GstMtsDescIsdbHierarchicalTransmission ISDBDescriptorType = 192
+	// GstMtsDescIsdbDigitalCopyControl wraps GST_MTS_DESC_ISDB_DIGITAL_COPY_CONTROL
+	GstMtsDescIsdbDigitalCopyControl ISDBDescriptorType = 193
+	// GstMtsDescIsdbNetworkIdentification wraps GST_MTS_DESC_ISDB_NETWORK_IDENTIFICATION
+	GstMtsDescIsdbNetworkIdentification ISDBDescriptorType = 194
+	// GstMtsDescIsdbPartialTsTime wraps GST_MTS_DESC_ISDB_PARTIAL_TS_TIME
+	GstMtsDescIsdbPartialTsTime ISDBDescriptorType = 195
+	// GstMtsDescIsdbAudioComponent wraps GST_MTS_DESC_ISDB_AUDIO_COMPONENT
+	GstMtsDescIsdbAudioComponent ISDBDescriptorType = 196
+	// GstMtsDescIsdbHyperlink wraps GST_MTS_DESC_ISDB_HYPERLINK
+	GstMtsDescIsdbHyperlink ISDBDescriptorType = 197
+	// GstMtsDescIsdbTargetRegion wraps GST_MTS_DESC_ISDB_TARGET_REGION
+	GstMtsDescIsdbTargetRegion ISDBDescriptorType = 198
+	// GstMtsDescIsdbDataContent wraps GST_MTS_DESC_ISDB_DATA_CONTENT
+	GstMtsDescIsdbDataContent ISDBDescriptorType = 199
+	// GstMtsDescIsdbVideoDecodeControl wraps GST_MTS_DESC_ISDB_VIDEO_DECODE_CONTROL
+	GstMtsDescIsdbVideoDecodeControl ISDBDescriptorType = 200
+	// GstMtsDescIsdbDownloadContent wraps GST_MTS_DESC_ISDB_DOWNLOAD_CONTENT
+	GstMtsDescIsdbDownloadContent ISDBDescriptorType = 201
+	// GstMtsDescIsdbCaEmmTs wraps GST_MTS_DESC_ISDB_CA_EMM_TS
+	GstMtsDescIsdbCaEmmTs ISDBDescriptorType = 202
+	// GstMtsDescIsdbCaContractInformation wraps GST_MTS_DESC_ISDB_CA_CONTRACT_INFORMATION
+	GstMtsDescIsdbCaContractInformation ISDBDescriptorType = 203
+	// GstMtsDescIsdbCaService wraps GST_MTS_DESC_ISDB_CA_SERVICE
+	GstMtsDescIsdbCaService ISDBDescriptorType = 204
+	// GstMtsDescIsdbTsInformation wraps GST_MTS_DESC_ISDB_TS_INFORMATION
+	GstMtsDescIsdbTsInformation ISDBDescriptorType = 205
+	// GstMtsDescIsdbExtendedBroadcaster wraps GST_MTS_DESC_ISDB_EXTENDED_BROADCASTER
+	GstMtsDescIsdbExtendedBroadcaster ISDBDescriptorType = 206
+	// GstMtsDescIsdbLogoTransmission wraps GST_MTS_DESC_ISDB_LOGO_TRANSMISSION
+	GstMtsDescIsdbLogoTransmission ISDBDescriptorType = 207
+	// GstMtsDescIsdbBasicLocalEvent wraps GST_MTS_DESC_ISDB_BASIC_LOCAL_EVENT
+	GstMtsDescIsdbBasicLocalEvent ISDBDescriptorType = 208
+	// GstMtsDescIsdbReference wraps GST_MTS_DESC_ISDB_REFERENCE
+	GstMtsDescIsdbReference ISDBDescriptorType = 209
+	// GstMtsDescIsdbNodeRelation wraps GST_MTS_DESC_ISDB_NODE_RELATION
+	GstMtsDescIsdbNodeRelation ISDBDescriptorType = 210
+	// GstMtsDescIsdbShortNodeInformation wraps GST_MTS_DESC_ISDB_SHORT_NODE_INFORMATION
+	GstMtsDescIsdbShortNodeInformation ISDBDescriptorType = 211
+	// GstMtsDescIsdbStcReference wraps GST_MTS_DESC_ISDB_STC_REFERENCE
+	GstMtsDescIsdbStcReference ISDBDescriptorType = 212
+	// GstMtsDescIsdbSeries wraps GST_MTS_DESC_ISDB_SERIES
+	GstMtsDescIsdbSeries ISDBDescriptorType = 213
+	// GstMtsDescIsdbEventGroup wraps GST_MTS_DESC_ISDB_EVENT_GROUP
+	GstMtsDescIsdbEventGroup ISDBDescriptorType = 214
+	// GstMtsDescIsdbSiParameter wraps GST_MTS_DESC_ISDB_SI_PARAMETER
+	GstMtsDescIsdbSiParameter ISDBDescriptorType = 215
+	// GstMtsDescIsdbBroadcasterName wraps GST_MTS_DESC_ISDB_BROADCASTER_NAME
+	GstMtsDescIsdbBroadcasterName ISDBDescriptorType = 216
+	// GstMtsDescIsdbComponentGroup wraps GST_MTS_DESC_ISDB_COMPONENT_GROUP
+	GstMtsDescIsdbComponentGroup ISDBDescriptorType = 217
+	// GstMtsDescIsdbSiPrimeTs wraps GST_MTS_DESC_ISDB_SI_PRIME_TS
+	GstMtsDescIsdbSiPrimeTs ISDBDescriptorType = 218
+	// GstMtsDescIsdbBoardInformation wraps GST_MTS_DESC_ISDB_BOARD_INFORMATION
+	GstMtsDescIsdbBoardInformation ISDBDescriptorType = 219
+	// GstMtsDescIsdbLdtLinkage wraps GST_MTS_DESC_ISDB_LDT_LINKAGE
+	GstMtsDescIsdbLdtLinkage ISDBDescriptorType = 220
+	// GstMtsDescIsdbConnectedTransmission wraps GST_MTS_DESC_ISDB_CONNECTED_TRANSMISSION
+	GstMtsDescIsdbConnectedTransmission ISDBDescriptorType = 221
+	// GstMtsDescIsdbContentAvailability wraps GST_MTS_DESC_ISDB_CONTENT_AVAILABILITY
+	GstMtsDescIsdbContentAvailability ISDBDescriptorType = 222
+	// GstMtsDescIsdbServiceGroup wraps GST_MTS_DESC_ISDB_SERVICE_GROUP
+	GstMtsDescIsdbServiceGroup ISDBDescriptorType = 224
 )
 
 
 func (e ISDBDescriptorType) String() string {
 	switch e {
-		case MtsDescIsdbAudioComponent: return "MtsDescIsdbAudioComponent"
-		case MtsDescIsdbBasicLocalEvent: return "MtsDescIsdbBasicLocalEvent"
-		case MtsDescIsdbBoardInformation: return "MtsDescIsdbBoardInformation"
-		case MtsDescIsdbBroadcasterName: return "MtsDescIsdbBroadcasterName"
-		case MtsDescIsdbCaContractInformation: return "MtsDescIsdbCaContractInformation"
-		case MtsDescIsdbCaEmmTs: return "MtsDescIsdbCaEmmTs"
-		case MtsDescIsdbCaService: return "MtsDescIsdbCaService"
-		case MtsDescIsdbComponentGroup: return "MtsDescIsdbComponentGroup"
-		case MtsDescIsdbConnectedTransmission: return "MtsDescIsdbConnectedTransmission"
-		case MtsDescIsdbContentAvailability: return "MtsDescIsdbContentAvailability"
-		case MtsDescIsdbDataContent: return "MtsDescIsdbDataContent"
-		case MtsDescIsdbDigitalCopyControl: return "MtsDescIsdbDigitalCopyControl"
-		case MtsDescIsdbDownloadContent: return "MtsDescIsdbDownloadContent"
-		case MtsDescIsdbEventGroup: return "MtsDescIsdbEventGroup"
-		case MtsDescIsdbExtendedBroadcaster: return "MtsDescIsdbExtendedBroadcaster"
-		case MtsDescIsdbHierarchicalTransmission: return "MtsDescIsdbHierarchicalTransmission"
-		case MtsDescIsdbHyperlink: return "MtsDescIsdbHyperlink"
-		case MtsDescIsdbLdtLinkage: return "MtsDescIsdbLdtLinkage"
-		case MtsDescIsdbLogoTransmission: return "MtsDescIsdbLogoTransmission"
-		case MtsDescIsdbNetworkIdentification: return "MtsDescIsdbNetworkIdentification"
-		case MtsDescIsdbNodeRelation: return "MtsDescIsdbNodeRelation"
-		case MtsDescIsdbPartialTsTime: return "MtsDescIsdbPartialTsTime"
-		case MtsDescIsdbReference: return "MtsDescIsdbReference"
-		case MtsDescIsdbSeries: return "MtsDescIsdbSeries"
-		case MtsDescIsdbServiceGroup: return "MtsDescIsdbServiceGroup"
-		case MtsDescIsdbShortNodeInformation: return "MtsDescIsdbShortNodeInformation"
-		case MtsDescIsdbSiParameter: return "MtsDescIsdbSiParameter"
-		case MtsDescIsdbSiPrimeTs: return "MtsDescIsdbSiPrimeTs"
-		case MtsDescIsdbStcReference: return "MtsDescIsdbStcReference"
-		case MtsDescIsdbTargetRegion: return "MtsDescIsdbTargetRegion"
-		case MtsDescIsdbTsInformation: return "MtsDescIsdbTsInformation"
-		case MtsDescIsdbVideoDecodeControl: return "MtsDescIsdbVideoDecodeControl"
+		case GstMtsDescIsdbAudioComponent: return "GstMtsDescIsdbAudioComponent"
+		case GstMtsDescIsdbBasicLocalEvent: return "GstMtsDescIsdbBasicLocalEvent"
+		case GstMtsDescIsdbBoardInformation: return "GstMtsDescIsdbBoardInformation"
+		case GstMtsDescIsdbBroadcasterName: return "GstMtsDescIsdbBroadcasterName"
+		case GstMtsDescIsdbCaContractInformation: return "GstMtsDescIsdbCaContractInformation"
+		case GstMtsDescIsdbCaEmmTs: return "GstMtsDescIsdbCaEmmTs"
+		case GstMtsDescIsdbCaService: return "GstMtsDescIsdbCaService"
+		case GstMtsDescIsdbComponentGroup: return "GstMtsDescIsdbComponentGroup"
+		case GstMtsDescIsdbConnectedTransmission: return "GstMtsDescIsdbConnectedTransmission"
+		case GstMtsDescIsdbContentAvailability: return "GstMtsDescIsdbContentAvailability"
+		case GstMtsDescIsdbDataContent: return "GstMtsDescIsdbDataContent"
+		case GstMtsDescIsdbDigitalCopyControl: return "GstMtsDescIsdbDigitalCopyControl"
+		case GstMtsDescIsdbDownloadContent: return "GstMtsDescIsdbDownloadContent"
+		case GstMtsDescIsdbEventGroup: return "GstMtsDescIsdbEventGroup"
+		case GstMtsDescIsdbExtendedBroadcaster: return "GstMtsDescIsdbExtendedBroadcaster"
+		case GstMtsDescIsdbHierarchicalTransmission: return "GstMtsDescIsdbHierarchicalTransmission"
+		case GstMtsDescIsdbHyperlink: return "GstMtsDescIsdbHyperlink"
+		case GstMtsDescIsdbLdtLinkage: return "GstMtsDescIsdbLdtLinkage"
+		case GstMtsDescIsdbLogoTransmission: return "GstMtsDescIsdbLogoTransmission"
+		case GstMtsDescIsdbNetworkIdentification: return "GstMtsDescIsdbNetworkIdentification"
+		case GstMtsDescIsdbNodeRelation: return "GstMtsDescIsdbNodeRelation"
+		case GstMtsDescIsdbPartialTsTime: return "GstMtsDescIsdbPartialTsTime"
+		case GstMtsDescIsdbReference: return "GstMtsDescIsdbReference"
+		case GstMtsDescIsdbSeries: return "GstMtsDescIsdbSeries"
+		case GstMtsDescIsdbServiceGroup: return "GstMtsDescIsdbServiceGroup"
+		case GstMtsDescIsdbShortNodeInformation: return "GstMtsDescIsdbShortNodeInformation"
+		case GstMtsDescIsdbSiParameter: return "GstMtsDescIsdbSiParameter"
+		case GstMtsDescIsdbSiPrimeTs: return "GstMtsDescIsdbSiPrimeTs"
+		case GstMtsDescIsdbStcReference: return "GstMtsDescIsdbStcReference"
+		case GstMtsDescIsdbTargetRegion: return "GstMtsDescIsdbTargetRegion"
+		case GstMtsDescIsdbTsInformation: return "GstMtsDescIsdbTsInformation"
+		case GstMtsDescIsdbVideoDecodeControl: return "GstMtsDescIsdbVideoDecodeControl"
 		default: return fmt.Sprintf("ISDBDescriptorType(%d)", e)
 	}
 }
 
-// ISO639AudioType wraps GstMpegtsIso639AudioType
-type ISO639AudioType C.int
+// Iso639AudioType wraps GstMpegtsIso639AudioType
+type Iso639AudioType C.int
 
 const (
-	// MpegtsAudioTypeUndefined wraps MPEGTS_AUDIO_TYPE_UNDEFINED
-	MpegtsAudioTypeUndefined ISO639AudioType = 0
-	// MpegtsAudioTypeCleanEffects wraps MPEGTS_AUDIO_TYPE_CLEAN_EFFECTS
-	MpegtsAudioTypeCleanEffects ISO639AudioType = 1
-	// MpegtsAudioTypeHearingImpaired wraps MPEGTS_AUDIO_TYPE_HEARING_IMPAIRED
-	MpegtsAudioTypeHearingImpaired ISO639AudioType = 2
-	// MpegtsAudioTypeVisualImpairedCommentary wraps MPEGTS_AUDIO_TYPE_VISUAL_IMPAIRED_COMMENTARY
-	MpegtsAudioTypeVisualImpairedCommentary ISO639AudioType = 3
+	// AudioTypeUndefined wraps GST_MPEGTS_AUDIO_TYPE_UNDEFINED
+	AudioTypeUndefined Iso639AudioType = 0
+	// AudioTypeCleanEffects wraps GST_MPEGTS_AUDIO_TYPE_CLEAN_EFFECTS
+	AudioTypeCleanEffects Iso639AudioType = 1
+	// AudioTypeHearingImpaired wraps GST_MPEGTS_AUDIO_TYPE_HEARING_IMPAIRED
+	AudioTypeHearingImpaired Iso639AudioType = 2
+	// AudioTypeVisualImpairedCommentary wraps GST_MPEGTS_AUDIO_TYPE_VISUAL_IMPAIRED_COMMENTARY
+	AudioTypeVisualImpairedCommentary Iso639AudioType = 3
 )
 
 
-func (e ISO639AudioType) String() string {
+func (e Iso639AudioType) String() string {
 	switch e {
-		case MpegtsAudioTypeCleanEffects: return "MpegtsAudioTypeCleanEffects"
-		case MpegtsAudioTypeHearingImpaired: return "MpegtsAudioTypeHearingImpaired"
-		case MpegtsAudioTypeUndefined: return "MpegtsAudioTypeUndefined"
-		case MpegtsAudioTypeVisualImpairedCommentary: return "MpegtsAudioTypeVisualImpairedCommentary"
-		default: return fmt.Sprintf("ISO639AudioType(%d)", e)
+		case AudioTypeCleanEffects: return "AudioTypeCleanEffects"
+		case AudioTypeHearingImpaired: return "AudioTypeHearingImpaired"
+		case AudioTypeUndefined: return "AudioTypeUndefined"
+		case AudioTypeVisualImpairedCommentary: return "AudioTypeVisualImpairedCommentary"
+		default: return fmt.Sprintf("Iso639AudioType(%d)", e)
 	}
 }
 
@@ -1436,20 +1436,20 @@ func (e ISO639AudioType) String() string {
 type MetadataApplicationFormat C.int
 
 const (
-	// MpegtsMetadataApplicationFormatIsan wraps MPEGTS_METADATA_APPLICATION_FORMAT_ISAN
-	MpegtsMetadataApplicationFormatIsan MetadataApplicationFormat = 16
-	// MpegtsMetadataApplicationFormatVsan wraps MPEGTS_METADATA_APPLICATION_FORMAT_VSAN
-	MpegtsMetadataApplicationFormatVsan MetadataApplicationFormat = 17
-	// MpegtsMetadataApplicationFormatIdentifierField wraps MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD
-	MpegtsMetadataApplicationFormatIdentifierField MetadataApplicationFormat = 65535
+	// MetadataApplicationFormatIsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_ISAN
+	MetadataApplicationFormatIsan MetadataApplicationFormat = 16
+	// MetadataApplicationFormatVsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_VSAN
+	MetadataApplicationFormatVsan MetadataApplicationFormat = 17
+	// MetadataApplicationFormatIdentifierField wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD
+	MetadataApplicationFormatIdentifierField MetadataApplicationFormat = 65535
 )
 
 
 func (e MetadataApplicationFormat) String() string {
 	switch e {
-		case MpegtsMetadataApplicationFormatIdentifierField: return "MpegtsMetadataApplicationFormatIdentifierField"
-		case MpegtsMetadataApplicationFormatIsan: return "MpegtsMetadataApplicationFormatIsan"
-		case MpegtsMetadataApplicationFormatVsan: return "MpegtsMetadataApplicationFormatVsan"
+		case MetadataApplicationFormatIdentifierField: return "MetadataApplicationFormatIdentifierField"
+		case MetadataApplicationFormatIsan: return "MetadataApplicationFormatIsan"
+		case MetadataApplicationFormatVsan: return "MetadataApplicationFormatVsan"
 		default: return fmt.Sprintf("MetadataApplicationFormat(%d)", e)
 	}
 }
@@ -1460,31 +1460,31 @@ func (e MetadataApplicationFormat) String() string {
 type MetadataFormat C.int
 
 const (
-	// MpegtsMetadataFormatTem wraps MPEGTS_METADATA_FORMAT_TEM
+	// MetadataFormatTem wraps GST_MPEGTS_METADATA_FORMAT_TEM
 	//
 	// ISO/IEC 15938-1 TeM.
-	MpegtsMetadataFormatTem MetadataFormat = 16
-	// MpegtsMetadataFormatBim wraps MPEGTS_METADATA_FORMAT_BIM
+	MetadataFormatTem MetadataFormat = 16
+	// MetadataFormatBim wraps GST_MPEGTS_METADATA_FORMAT_BIM
 	//
 	// ISO/IEC 15938-1 BiM.
-	MpegtsMetadataFormatBim MetadataFormat = 17
-	// MpegtsMetadataFormatApplicationFormat wraps MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
+	MetadataFormatBim MetadataFormat = 17
+	// MetadataFormatApplicationFormat wraps GST_MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
 	//
 	// Defined by metadata application format.
-	MpegtsMetadataFormatApplicationFormat MetadataFormat = 63
-	// MpegtsMetadataFormatIdentifierField wraps MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
+	MetadataFormatApplicationFormat MetadataFormat = 63
+	// MetadataFormatIdentifierField wraps GST_MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
 	//
 	// Defined by metadata_format_identifier field.
-	MpegtsMetadataFormatIdentifierField MetadataFormat = 255
+	MetadataFormatIdentifierField MetadataFormat = 255
 )
 
 
 func (e MetadataFormat) String() string {
 	switch e {
-		case MpegtsMetadataFormatApplicationFormat: return "MpegtsMetadataFormatApplicationFormat"
-		case MpegtsMetadataFormatBim: return "MpegtsMetadataFormatBim"
-		case MpegtsMetadataFormatIdentifierField: return "MpegtsMetadataFormatIdentifierField"
-		case MpegtsMetadataFormatTem: return "MpegtsMetadataFormatTem"
+		case MetadataFormatApplicationFormat: return "MetadataFormatApplicationFormat"
+		case MetadataFormatBim: return "MetadataFormatBim"
+		case MetadataFormatIdentifierField: return "MetadataFormatIdentifierField"
+		case MetadataFormatTem: return "MetadataFormatTem"
 		default: return fmt.Sprintf("MetadataFormat(%d)", e)
 	}
 }
@@ -1498,14 +1498,14 @@ func (e MetadataFormat) String() string {
 type MiscDescriptorType C.int
 
 const (
-	// MtsDescDtgLogicalChannel wraps MTS_DESC_DTG_LOGICAL_CHANNEL
-	MtsDescDtgLogicalChannel MiscDescriptorType = 131
+	// GstMtsDescDtgLogicalChannel wraps GST_MTS_DESC_DTG_LOGICAL_CHANNEL
+	GstMtsDescDtgLogicalChannel MiscDescriptorType = 131
 )
 
 
 func (e MiscDescriptorType) String() string {
 	switch e {
-		case MtsDescDtgLogicalChannel: return "MtsDescDtgLogicalChannel"
+		case GstMtsDescDtgLogicalChannel: return "GstMtsDescDtgLogicalChannel"
 		default: return fmt.Sprintf("MiscDescriptorType(%d)", e)
 	}
 }
@@ -1514,56 +1514,56 @@ func (e MiscDescriptorType) String() string {
 type ModulationType C.int
 
 const (
-	// MpegtsModulationQpsk wraps MPEGTS_MODULATION_QPSK
-	MpegtsModulationQpsk ModulationType = 0
-	// MpegtsModulationQam16 wraps MPEGTS_MODULATION_QAM_16
-	MpegtsModulationQam16 ModulationType = 1
-	// MpegtsModulationQam32 wraps MPEGTS_MODULATION_QAM_32
-	MpegtsModulationQam32 ModulationType = 2
-	// MpegtsModulationQam64 wraps MPEGTS_MODULATION_QAM_64
-	MpegtsModulationQam64 ModulationType = 3
-	// MpegtsModulationQam128 wraps MPEGTS_MODULATION_QAM_128
-	MpegtsModulationQam128 ModulationType = 4
-	// MpegtsModulationQam256 wraps MPEGTS_MODULATION_QAM_256
-	MpegtsModulationQam256 ModulationType = 5
-	// MpegtsModulationQamAuto wraps MPEGTS_MODULATION_QAM_AUTO
-	MpegtsModulationQamAuto ModulationType = 6
-	// MpegtsModulationVsb8 wraps MPEGTS_MODULATION_VSB_8
-	MpegtsModulationVsb8 ModulationType = 7
-	// MpegtsModulationVsb16 wraps MPEGTS_MODULATION_VSB_16
-	MpegtsModulationVsb16 ModulationType = 8
-	// MpegtsModulationPsk8 wraps MPEGTS_MODULATION_PSK_8
-	MpegtsModulationPsk8 ModulationType = 9
-	// MpegtsModulationApsk16 wraps MPEGTS_MODULATION_APSK_16
-	MpegtsModulationApsk16 ModulationType = 10
-	// MpegtsModulationApsk32 wraps MPEGTS_MODULATION_APSK_32
-	MpegtsModulationApsk32 ModulationType = 11
-	// MpegtsModulationDqpsk wraps MPEGTS_MODULATION_DQPSK
-	MpegtsModulationDqpsk ModulationType = 12
-	// MpegtsModulationQam4Nr_ wraps MPEGTS_MODULATION_QAM_4_NR_
-	MpegtsModulationQam4Nr_ ModulationType = 13
-	// MpegtsModulationNone wraps MPEGTS_MODULATION_NONE
-	MpegtsModulationNone ModulationType = 14
+	// ModulationQpsk wraps GST_MPEGTS_MODULATION_QPSK
+	ModulationQpsk ModulationType = 0
+	// ModulationQam16 wraps GST_MPEGTS_MODULATION_QAM_16
+	ModulationQam16 ModulationType = 1
+	// ModulationQam32 wraps GST_MPEGTS_MODULATION_QAM_32
+	ModulationQam32 ModulationType = 2
+	// ModulationQam64 wraps GST_MPEGTS_MODULATION_QAM_64
+	ModulationQam64 ModulationType = 3
+	// ModulationQam128 wraps GST_MPEGTS_MODULATION_QAM_128
+	ModulationQam128 ModulationType = 4
+	// ModulationQam256 wraps GST_MPEGTS_MODULATION_QAM_256
+	ModulationQam256 ModulationType = 5
+	// ModulationQamAuto wraps GST_MPEGTS_MODULATION_QAM_AUTO
+	ModulationQamAuto ModulationType = 6
+	// ModulationVsb8 wraps GST_MPEGTS_MODULATION_VSB_8
+	ModulationVsb8 ModulationType = 7
+	// ModulationVsb16 wraps GST_MPEGTS_MODULATION_VSB_16
+	ModulationVsb16 ModulationType = 8
+	// ModulationPsk8 wraps GST_MPEGTS_MODULATION_PSK_8
+	ModulationPsk8 ModulationType = 9
+	// ModulationApsk16 wraps GST_MPEGTS_MODULATION_APSK_16
+	ModulationApsk16 ModulationType = 10
+	// ModulationApsk32 wraps GST_MPEGTS_MODULATION_APSK_32
+	ModulationApsk32 ModulationType = 11
+	// ModulationDqpsk wraps GST_MPEGTS_MODULATION_DQPSK
+	ModulationDqpsk ModulationType = 12
+	// ModulationQam4Nr wraps GST_MPEGTS_MODULATION_QAM_4_NR_
+	ModulationQam4Nr ModulationType = 13
+	// ModulationNone wraps GST_MPEGTS_MODULATION_NONE
+	ModulationNone ModulationType = 14
 )
 
 
 func (e ModulationType) String() string {
 	switch e {
-		case MpegtsModulationApsk16: return "MpegtsModulationApsk16"
-		case MpegtsModulationApsk32: return "MpegtsModulationApsk32"
-		case MpegtsModulationDqpsk: return "MpegtsModulationDqpsk"
-		case MpegtsModulationNone: return "MpegtsModulationNone"
-		case MpegtsModulationPsk8: return "MpegtsModulationPsk8"
-		case MpegtsModulationQam128: return "MpegtsModulationQam128"
-		case MpegtsModulationQam16: return "MpegtsModulationQam16"
-		case MpegtsModulationQam256: return "MpegtsModulationQam256"
-		case MpegtsModulationQam32: return "MpegtsModulationQam32"
-		case MpegtsModulationQam4Nr_: return "MpegtsModulationQam4Nr_"
-		case MpegtsModulationQam64: return "MpegtsModulationQam64"
-		case MpegtsModulationQamAuto: return "MpegtsModulationQamAuto"
-		case MpegtsModulationQpsk: return "MpegtsModulationQpsk"
-		case MpegtsModulationVsb16: return "MpegtsModulationVsb16"
-		case MpegtsModulationVsb8: return "MpegtsModulationVsb8"
+		case ModulationApsk16: return "ModulationApsk16"
+		case ModulationApsk32: return "ModulationApsk32"
+		case ModulationDqpsk: return "ModulationDqpsk"
+		case ModulationNone: return "ModulationNone"
+		case ModulationPsk8: return "ModulationPsk8"
+		case ModulationQam128: return "ModulationQam128"
+		case ModulationQam16: return "ModulationQam16"
+		case ModulationQam256: return "ModulationQam256"
+		case ModulationQam32: return "ModulationQam32"
+		case ModulationQam4Nr: return "ModulationQam4Nr"
+		case ModulationQam64: return "ModulationQam64"
+		case ModulationQamAuto: return "ModulationQamAuto"
+		case ModulationQpsk: return "ModulationQpsk"
+		case ModulationVsb16: return "ModulationVsb16"
+		case ModulationVsb8: return "ModulationVsb8"
 		default: return fmt.Sprintf("ModulationType(%d)", e)
 	}
 }
@@ -1576,29 +1576,29 @@ func (e ModulationType) String() string {
 type RunningStatus C.int
 
 const (
-	// MpegtsRunningStatusUndefined wraps MPEGTS_RUNNING_STATUS_UNDEFINED
-	MpegtsRunningStatusUndefined RunningStatus = 0
-	// MpegtsRunningStatusNotRunning wraps MPEGTS_RUNNING_STATUS_NOT_RUNNING
-	MpegtsRunningStatusNotRunning RunningStatus = 1
-	// MpegtsRunningStatusStartsInFewSeconds wraps MPEGTS_RUNNING_STATUS_STARTS_IN_FEW_SECONDS
-	MpegtsRunningStatusStartsInFewSeconds RunningStatus = 2
-	// MpegtsRunningStatusPausing wraps MPEGTS_RUNNING_STATUS_PAUSING
-	MpegtsRunningStatusPausing RunningStatus = 3
-	// MpegtsRunningStatusRunning wraps MPEGTS_RUNNING_STATUS_RUNNING
-	MpegtsRunningStatusRunning RunningStatus = 4
-	// MpegtsRunningStatusOffAir wraps MPEGTS_RUNNING_STATUS_OFF_AIR
-	MpegtsRunningStatusOffAir RunningStatus = 5
+	// RunningStatusUndefined wraps GST_MPEGTS_RUNNING_STATUS_UNDEFINED
+	RunningStatusUndefined RunningStatus = 0
+	// RunningStatusNotRunning wraps GST_MPEGTS_RUNNING_STATUS_NOT_RUNNING
+	RunningStatusNotRunning RunningStatus = 1
+	// RunningStatusStartsInFewSeconds wraps GST_MPEGTS_RUNNING_STATUS_STARTS_IN_FEW_SECONDS
+	RunningStatusStartsInFewSeconds RunningStatus = 2
+	// RunningStatusPausing wraps GST_MPEGTS_RUNNING_STATUS_PAUSING
+	RunningStatusPausing RunningStatus = 3
+	// RunningStatusRunning wraps GST_MPEGTS_RUNNING_STATUS_RUNNING
+	RunningStatusRunning RunningStatus = 4
+	// RunningStatusOffAir wraps GST_MPEGTS_RUNNING_STATUS_OFF_AIR
+	RunningStatusOffAir RunningStatus = 5
 )
 
 
 func (e RunningStatus) String() string {
 	switch e {
-		case MpegtsRunningStatusNotRunning: return "MpegtsRunningStatusNotRunning"
-		case MpegtsRunningStatusOffAir: return "MpegtsRunningStatusOffAir"
-		case MpegtsRunningStatusPausing: return "MpegtsRunningStatusPausing"
-		case MpegtsRunningStatusRunning: return "MpegtsRunningStatusRunning"
-		case MpegtsRunningStatusStartsInFewSeconds: return "MpegtsRunningStatusStartsInFewSeconds"
-		case MpegtsRunningStatusUndefined: return "MpegtsRunningStatusUndefined"
+		case RunningStatusNotRunning: return "RunningStatusNotRunning"
+		case RunningStatusOffAir: return "RunningStatusOffAir"
+		case RunningStatusPausing: return "RunningStatusPausing"
+		case RunningStatusRunning: return "RunningStatusRunning"
+		case RunningStatusStartsInFewSeconds: return "RunningStatusStartsInFewSeconds"
+		case RunningStatusUndefined: return "RunningStatusUndefined"
 		default: return fmt.Sprintf("RunningStatus(%d)", e)
 	}
 }
@@ -1609,35 +1609,35 @@ func (e RunningStatus) String() string {
 type SCTEDescriptorType C.int
 
 const (
-	// MtsDescScteStuffing wraps MTS_DESC_SCTE_STUFFING
-	MtsDescScteStuffing SCTEDescriptorType = 128
-	// MtsDescScteAc3 wraps MTS_DESC_SCTE_AC3
-	MtsDescScteAc3 SCTEDescriptorType = 129
-	// MtsDescScteFrameRate wraps MTS_DESC_SCTE_FRAME_RATE
-	MtsDescScteFrameRate SCTEDescriptorType = 130
-	// MtsDescScteExtendedVideo wraps MTS_DESC_SCTE_EXTENDED_VIDEO
-	MtsDescScteExtendedVideo SCTEDescriptorType = 131
-	// MtsDescScteComponentName wraps MTS_DESC_SCTE_COMPONENT_NAME
-	MtsDescScteComponentName SCTEDescriptorType = 132
-	// MtsDescScteFrequencySpec wraps MTS_DESC_SCTE_FREQUENCY_SPEC
-	MtsDescScteFrequencySpec SCTEDescriptorType = 144
-	// MtsDescScteModulationParams wraps MTS_DESC_SCTE_MODULATION_PARAMS
-	MtsDescScteModulationParams SCTEDescriptorType = 145
-	// MtsDescScteTransportStreamID wraps MTS_DESC_SCTE_TRANSPORT_STREAM_ID
-	MtsDescScteTransportStreamID SCTEDescriptorType = 146
+	// GstMtsDescScteStuffing wraps GST_MTS_DESC_SCTE_STUFFING
+	GstMtsDescScteStuffing SCTEDescriptorType = 128
+	// GstMtsDescScteAc3 wraps GST_MTS_DESC_SCTE_AC3
+	GstMtsDescScteAc3 SCTEDescriptorType = 129
+	// GstMtsDescScteFrameRate wraps GST_MTS_DESC_SCTE_FRAME_RATE
+	GstMtsDescScteFrameRate SCTEDescriptorType = 130
+	// GstMtsDescScteExtendedVideo wraps GST_MTS_DESC_SCTE_EXTENDED_VIDEO
+	GstMtsDescScteExtendedVideo SCTEDescriptorType = 131
+	// GstMtsDescScteComponentName wraps GST_MTS_DESC_SCTE_COMPONENT_NAME
+	GstMtsDescScteComponentName SCTEDescriptorType = 132
+	// GstMtsDescScteFrequencySpec wraps GST_MTS_DESC_SCTE_FREQUENCY_SPEC
+	GstMtsDescScteFrequencySpec SCTEDescriptorType = 144
+	// GstMtsDescScteModulationParams wraps GST_MTS_DESC_SCTE_MODULATION_PARAMS
+	GstMtsDescScteModulationParams SCTEDescriptorType = 145
+	// GstMtsDescScteTransportStreamID wraps GST_MTS_DESC_SCTE_TRANSPORT_STREAM_ID
+	GstMtsDescScteTransportStreamID SCTEDescriptorType = 146
 )
 
 
 func (e SCTEDescriptorType) String() string {
 	switch e {
-		case MtsDescScteAc3: return "MtsDescScteAc3"
-		case MtsDescScteComponentName: return "MtsDescScteComponentName"
-		case MtsDescScteExtendedVideo: return "MtsDescScteExtendedVideo"
-		case MtsDescScteFrameRate: return "MtsDescScteFrameRate"
-		case MtsDescScteFrequencySpec: return "MtsDescScteFrequencySpec"
-		case MtsDescScteModulationParams: return "MtsDescScteModulationParams"
-		case MtsDescScteStuffing: return "MtsDescScteStuffing"
-		case MtsDescScteTransportStreamID: return "MtsDescScteTransportStreamID"
+		case GstMtsDescScteAc3: return "GstMtsDescScteAc3"
+		case GstMtsDescScteComponentName: return "GstMtsDescScteComponentName"
+		case GstMtsDescScteExtendedVideo: return "GstMtsDescScteExtendedVideo"
+		case GstMtsDescScteFrameRate: return "GstMtsDescScteFrameRate"
+		case GstMtsDescScteFrequencySpec: return "GstMtsDescScteFrequencySpec"
+		case GstMtsDescScteModulationParams: return "GstMtsDescScteModulationParams"
+		case GstMtsDescScteStuffing: return "GstMtsDescScteStuffing"
+		case GstMtsDescScteTransportStreamID: return "GstMtsDescScteTransportStreamID"
 		default: return fmt.Sprintf("SCTEDescriptorType(%d)", e)
 	}
 }
@@ -1646,29 +1646,29 @@ func (e SCTEDescriptorType) String() string {
 type SCTESpliceCommandType C.int
 
 const (
-	// MtsScteSpliceCommandNull wraps MTS_SCTE_SPLICE_COMMAND_NULL
-	MtsScteSpliceCommandNull SCTESpliceCommandType = 0
-	// MtsScteSpliceCommandSchedule wraps MTS_SCTE_SPLICE_COMMAND_SCHEDULE
-	MtsScteSpliceCommandSchedule SCTESpliceCommandType = 4
-	// MtsScteSpliceCommandInsert wraps MTS_SCTE_SPLICE_COMMAND_INSERT
-	MtsScteSpliceCommandInsert SCTESpliceCommandType = 5
-	// MtsScteSpliceCommandTime wraps MTS_SCTE_SPLICE_COMMAND_TIME
-	MtsScteSpliceCommandTime SCTESpliceCommandType = 6
-	// MtsScteSpliceCommandBandwidth wraps MTS_SCTE_SPLICE_COMMAND_BANDWIDTH
-	MtsScteSpliceCommandBandwidth SCTESpliceCommandType = 7
-	// MtsScteSpliceCommandPrivate wraps MTS_SCTE_SPLICE_COMMAND_PRIVATE
-	MtsScteSpliceCommandPrivate SCTESpliceCommandType = 255
+	// GstMtsScteSpliceCommandNull wraps GST_MTS_SCTE_SPLICE_COMMAND_NULL
+	GstMtsScteSpliceCommandNull SCTESpliceCommandType = 0
+	// GstMtsScteSpliceCommandSchedule wraps GST_MTS_SCTE_SPLICE_COMMAND_SCHEDULE
+	GstMtsScteSpliceCommandSchedule SCTESpliceCommandType = 4
+	// GstMtsScteSpliceCommandInsert wraps GST_MTS_SCTE_SPLICE_COMMAND_INSERT
+	GstMtsScteSpliceCommandInsert SCTESpliceCommandType = 5
+	// GstMtsScteSpliceCommandTime wraps GST_MTS_SCTE_SPLICE_COMMAND_TIME
+	GstMtsScteSpliceCommandTime SCTESpliceCommandType = 6
+	// GstMtsScteSpliceCommandBandwidth wraps GST_MTS_SCTE_SPLICE_COMMAND_BANDWIDTH
+	GstMtsScteSpliceCommandBandwidth SCTESpliceCommandType = 7
+	// GstMtsScteSpliceCommandPrivate wraps GST_MTS_SCTE_SPLICE_COMMAND_PRIVATE
+	GstMtsScteSpliceCommandPrivate SCTESpliceCommandType = 255
 )
 
 
 func (e SCTESpliceCommandType) String() string {
 	switch e {
-		case MtsScteSpliceCommandBandwidth: return "MtsScteSpliceCommandBandwidth"
-		case MtsScteSpliceCommandInsert: return "MtsScteSpliceCommandInsert"
-		case MtsScteSpliceCommandNull: return "MtsScteSpliceCommandNull"
-		case MtsScteSpliceCommandPrivate: return "MtsScteSpliceCommandPrivate"
-		case MtsScteSpliceCommandSchedule: return "MtsScteSpliceCommandSchedule"
-		case MtsScteSpliceCommandTime: return "MtsScteSpliceCommandTime"
+		case GstMtsScteSpliceCommandBandwidth: return "GstMtsScteSpliceCommandBandwidth"
+		case GstMtsScteSpliceCommandInsert: return "GstMtsScteSpliceCommandInsert"
+		case GstMtsScteSpliceCommandNull: return "GstMtsScteSpliceCommandNull"
+		case GstMtsScteSpliceCommandPrivate: return "GstMtsScteSpliceCommandPrivate"
+		case GstMtsScteSpliceCommandSchedule: return "GstMtsScteSpliceCommandSchedule"
+		case GstMtsScteSpliceCommandTime: return "GstMtsScteSpliceCommandTime"
 		default: return fmt.Sprintf("SCTESpliceCommandType(%d)", e)
 	}
 }
@@ -1677,26 +1677,26 @@ func (e SCTESpliceCommandType) String() string {
 type SCTESpliceDescriptor C.int
 
 const (
-	// MtsScteDescAvail wraps MTS_SCTE_DESC_AVAIL
-	MtsScteDescAvail SCTESpliceDescriptor = 0
-	// MtsScteDescDtmf wraps MTS_SCTE_DESC_DTMF
-	MtsScteDescDtmf SCTESpliceDescriptor = 1
-	// MtsScteDescSegmentation wraps MTS_SCTE_DESC_SEGMENTATION
-	MtsScteDescSegmentation SCTESpliceDescriptor = 2
-	// MtsScteDescTime wraps MTS_SCTE_DESC_TIME
-	MtsScteDescTime SCTESpliceDescriptor = 3
-	// MtsScteDescAudio wraps MTS_SCTE_DESC_AUDIO
-	MtsScteDescAudio SCTESpliceDescriptor = 4
+	// GstMtsScteDescAvail wraps GST_MTS_SCTE_DESC_AVAIL
+	GstMtsScteDescAvail SCTESpliceDescriptor = 0
+	// GstMtsScteDescDtmf wraps GST_MTS_SCTE_DESC_DTMF
+	GstMtsScteDescDtmf SCTESpliceDescriptor = 1
+	// GstMtsScteDescSegmentation wraps GST_MTS_SCTE_DESC_SEGMENTATION
+	GstMtsScteDescSegmentation SCTESpliceDescriptor = 2
+	// GstMtsScteDescTime wraps GST_MTS_SCTE_DESC_TIME
+	GstMtsScteDescTime SCTESpliceDescriptor = 3
+	// GstMtsScteDescAudio wraps GST_MTS_SCTE_DESC_AUDIO
+	GstMtsScteDescAudio SCTESpliceDescriptor = 4
 )
 
 
 func (e SCTESpliceDescriptor) String() string {
 	switch e {
-		case MtsScteDescAudio: return "MtsScteDescAudio"
-		case MtsScteDescAvail: return "MtsScteDescAvail"
-		case MtsScteDescDtmf: return "MtsScteDescDtmf"
-		case MtsScteDescSegmentation: return "MtsScteDescSegmentation"
-		case MtsScteDescTime: return "MtsScteDescTime"
+		case GstMtsScteDescAudio: return "GstMtsScteDescAudio"
+		case GstMtsScteDescAvail: return "GstMtsScteDescAvail"
+		case GstMtsScteDescDtmf: return "GstMtsScteDescDtmf"
+		case GstMtsScteDescSegmentation: return "GstMtsScteDescSegmentation"
+		case GstMtsScteDescTime: return "GstMtsScteDescTime"
 		default: return fmt.Sprintf("SCTESpliceDescriptor(%d)", e)
 	}
 }
@@ -1705,23 +1705,23 @@ func (e SCTESpliceDescriptor) String() string {
 type SatellitePolarizationType C.int
 
 const (
-	// MpegtsPolarizationLinearHorizontal wraps MPEGTS_POLARIZATION_LINEAR_HORIZONTAL
-	MpegtsPolarizationLinearHorizontal SatellitePolarizationType = 0
-	// MpegtsPolarizationLinearVertical wraps MPEGTS_POLARIZATION_LINEAR_VERTICAL
-	MpegtsPolarizationLinearVertical SatellitePolarizationType = 1
-	// MpegtsPolarizationCircularLeft wraps MPEGTS_POLARIZATION_CIRCULAR_LEFT
-	MpegtsPolarizationCircularLeft SatellitePolarizationType = 2
-	// MpegtsPolarizationCircularRight wraps MPEGTS_POLARIZATION_CIRCULAR_RIGHT
-	MpegtsPolarizationCircularRight SatellitePolarizationType = 3
+	// PolarizationLinearHorizontal wraps GST_MPEGTS_POLARIZATION_LINEAR_HORIZONTAL
+	PolarizationLinearHorizontal SatellitePolarizationType = 0
+	// PolarizationLinearVertical wraps GST_MPEGTS_POLARIZATION_LINEAR_VERTICAL
+	PolarizationLinearVertical SatellitePolarizationType = 1
+	// PolarizationCircularLeft wraps GST_MPEGTS_POLARIZATION_CIRCULAR_LEFT
+	PolarizationCircularLeft SatellitePolarizationType = 2
+	// PolarizationCircularRight wraps GST_MPEGTS_POLARIZATION_CIRCULAR_RIGHT
+	PolarizationCircularRight SatellitePolarizationType = 3
 )
 
 
 func (e SatellitePolarizationType) String() string {
 	switch e {
-		case MpegtsPolarizationCircularLeft: return "MpegtsPolarizationCircularLeft"
-		case MpegtsPolarizationCircularRight: return "MpegtsPolarizationCircularRight"
-		case MpegtsPolarizationLinearHorizontal: return "MpegtsPolarizationLinearHorizontal"
-		case MpegtsPolarizationLinearVertical: return "MpegtsPolarizationLinearVertical"
+		case PolarizationCircularLeft: return "PolarizationCircularLeft"
+		case PolarizationCircularRight: return "PolarizationCircularRight"
+		case PolarizationLinearHorizontal: return "PolarizationLinearHorizontal"
+		case PolarizationLinearVertical: return "PolarizationLinearVertical"
 		default: return fmt.Sprintf("SatellitePolarizationType(%d)", e)
 	}
 }
@@ -1730,26 +1730,26 @@ func (e SatellitePolarizationType) String() string {
 type SatelliteRolloff C.int
 
 const (
-	// MpegtsRolloff35 wraps MPEGTS_ROLLOFF_35
-	MpegtsRolloff35 SatelliteRolloff = 0
-	// MpegtsRolloff20 wraps MPEGTS_ROLLOFF_20
-	MpegtsRolloff20 SatelliteRolloff = 1
-	// MpegtsRolloff25 wraps MPEGTS_ROLLOFF_25
-	MpegtsRolloff25 SatelliteRolloff = 2
-	// MpegtsRolloffReserved wraps MPEGTS_ROLLOFF_RESERVED
-	MpegtsRolloffReserved SatelliteRolloff = 3
-	// MpegtsRolloffAuto wraps MPEGTS_ROLLOFF_AUTO
-	MpegtsRolloffAuto SatelliteRolloff = 4
+	// Rolloff35 wraps GST_MPEGTS_ROLLOFF_35
+	Rolloff35 SatelliteRolloff = 0
+	// Rolloff20 wraps GST_MPEGTS_ROLLOFF_20
+	Rolloff20 SatelliteRolloff = 1
+	// Rolloff25 wraps GST_MPEGTS_ROLLOFF_25
+	Rolloff25 SatelliteRolloff = 2
+	// RolloffReserved wraps GST_MPEGTS_ROLLOFF_RESERVED
+	RolloffReserved SatelliteRolloff = 3
+	// RolloffAuto wraps GST_MPEGTS_ROLLOFF_AUTO
+	RolloffAuto SatelliteRolloff = 4
 )
 
 
 func (e SatelliteRolloff) String() string {
 	switch e {
-		case MpegtsRolloff20: return "MpegtsRolloff20"
-		case MpegtsRolloff25: return "MpegtsRolloff25"
-		case MpegtsRolloff35: return "MpegtsRolloff35"
-		case MpegtsRolloffAuto: return "MpegtsRolloffAuto"
-		case MpegtsRolloffReserved: return "MpegtsRolloffReserved"
+		case Rolloff20: return "Rolloff20"
+		case Rolloff25: return "Rolloff25"
+		case Rolloff35: return "Rolloff35"
+		case RolloffAuto: return "RolloffAuto"
+		case RolloffReserved: return "RolloffReserved"
 		default: return fmt.Sprintf("SatelliteRolloff(%d)", e)
 	}
 }
@@ -1761,54 +1761,54 @@ func (e SatelliteRolloff) String() string {
 type ScteStreamType C.int
 
 const (
-	// MpegtsStreamTypeScteSubtitling wraps MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
+	// StreamTypeScteSubtitling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
 	//
 	// SCTE-27 Subtitling
-	MpegtsStreamTypeScteSubtitling ScteStreamType = 130
-	// MpegtsStreamTypeScteIsochData wraps MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
+	StreamTypeScteSubtitling ScteStreamType = 130
+	// StreamTypeScteIsochData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
 	//
 	// SCTE-19 Isochronous data
-	MpegtsStreamTypeScteIsochData ScteStreamType = 131
-	// MpegtsStreamTypeScteSit wraps MPEGTS_STREAM_TYPE_SCTE_SIT
+	StreamTypeScteIsochData ScteStreamType = 131
+	// StreamTypeScteSit wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIT
 	//
 	// SCTE-35 Splice Information Table
-	MpegtsStreamTypeScteSit ScteStreamType = 134
-	// MpegtsStreamTypeScteDstNrt wraps MPEGTS_STREAM_TYPE_SCTE_DST_NRT
+	StreamTypeScteSit ScteStreamType = 134
+	// StreamTypeScteDstNrt wraps GST_MPEGTS_STREAM_TYPE_SCTE_DST_NRT
 	//
 	// SCTE-07 Data Service or
 	// Network Resource Table
-	MpegtsStreamTypeScteDstNrt ScteStreamType = 149
-	// MpegtsStreamTypeScteDsmccDcb wraps MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
+	StreamTypeScteDstNrt ScteStreamType = 149
+	// StreamTypeScteDsmccDcb wraps GST_MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
 	//
 	// Type B - DSM-CC Data Carousel
 	// [IEC 13818-6])
-	MpegtsStreamTypeScteDsmccDcb ScteStreamType = 176
-	// MpegtsStreamTypeScteSignaling wraps MPEGTS_STREAM_TYPE_SCTE_SIGNALING
+	StreamTypeScteDsmccDcb ScteStreamType = 176
+	// StreamTypeScteSignaling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIGNALING
 	//
 	// Enhanced Television Application
 	// Signaling (OC-SP-ETV-AM1.0.1-120614)
-	MpegtsStreamTypeScteSignaling ScteStreamType = 192
-	// MpegtsStreamTypeScteSyncData wraps MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
+	StreamTypeScteSignaling ScteStreamType = 192
+	// StreamTypeScteSyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
 	//
 	// SCTE-07 Synchronous data
-	MpegtsStreamTypeScteSyncData ScteStreamType = 194
-	// MpegtsStreamTypeScteAsyncData wraps MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
+	StreamTypeScteSyncData ScteStreamType = 194
+	// StreamTypeScteAsyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
 	//
 	// SCTE-53 Asynchronous data
-	MpegtsStreamTypeScteAsyncData ScteStreamType = 195
+	StreamTypeScteAsyncData ScteStreamType = 195
 )
 
 
 func (e ScteStreamType) String() string {
 	switch e {
-		case MpegtsStreamTypeScteAsyncData: return "MpegtsStreamTypeScteAsyncData"
-		case MpegtsStreamTypeScteDsmccDcb: return "MpegtsStreamTypeScteDsmccDcb"
-		case MpegtsStreamTypeScteDstNrt: return "MpegtsStreamTypeScteDstNrt"
-		case MpegtsStreamTypeScteIsochData: return "MpegtsStreamTypeScteIsochData"
-		case MpegtsStreamTypeScteSignaling: return "MpegtsStreamTypeScteSignaling"
-		case MpegtsStreamTypeScteSit: return "MpegtsStreamTypeScteSit"
-		case MpegtsStreamTypeScteSubtitling: return "MpegtsStreamTypeScteSubtitling"
-		case MpegtsStreamTypeScteSyncData: return "MpegtsStreamTypeScteSyncData"
+		case StreamTypeScteAsyncData: return "StreamTypeScteAsyncData"
+		case StreamTypeScteDsmccDcb: return "StreamTypeScteDsmccDcb"
+		case StreamTypeScteDstNrt: return "StreamTypeScteDstNrt"
+		case StreamTypeScteIsochData: return "StreamTypeScteIsochData"
+		case StreamTypeScteSignaling: return "StreamTypeScteSignaling"
+		case StreamTypeScteSit: return "StreamTypeScteSit"
+		case StreamTypeScteSubtitling: return "StreamTypeScteSubtitling"
+		case StreamTypeScteSyncData: return "StreamTypeScteSyncData"
 		default: return fmt.Sprintf("ScteStreamType(%d)", e)
 	}
 }
@@ -1824,95 +1824,95 @@ func (e ScteStreamType) String() string {
 type SectionATSCTableID C.int
 
 const (
-	// MtsTableIDAtscMasterGuide wraps MTS_TABLE_ID_ATSC_MASTER_GUIDE
+	// GstMtsTableIDAtscMasterGuide wraps GST_MTS_TABLE_ID_ATSC_MASTER_GUIDE
 	//
 	// Master Guide Table (MGT)
-	MtsTableIDAtscMasterGuide SectionATSCTableID = 199
-	// MtsTableIDAtscTerrestrialVirtualChannel wraps MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
+	GstMtsTableIDAtscMasterGuide SectionATSCTableID = 199
+	// GstMtsTableIDAtscTerrestrialVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
 	//
 	// Terrestrial Virtual Channel Table (TVCT)
-	MtsTableIDAtscTerrestrialVirtualChannel SectionATSCTableID = 200
-	// MtsTableIDAtscCableVirtualChannel wraps MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
+	GstMtsTableIDAtscTerrestrialVirtualChannel SectionATSCTableID = 200
+	// GstMtsTableIDAtscCableVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
 	//
 	// Cable Virtual Channel Table (CVCT)
-	MtsTableIDAtscCableVirtualChannel SectionATSCTableID = 201
-	// MtsTableIDAtscRatingRegion wraps MTS_TABLE_ID_ATSC_RATING_REGION
+	GstMtsTableIDAtscCableVirtualChannel SectionATSCTableID = 201
+	// GstMtsTableIDAtscRatingRegion wraps GST_MTS_TABLE_ID_ATSC_RATING_REGION
 	//
 	// Rating Region Table (RRT)
-	MtsTableIDAtscRatingRegion SectionATSCTableID = 202
-	// MtsTableIDAtscEventInformation wraps MTS_TABLE_ID_ATSC_EVENT_INFORMATION
+	GstMtsTableIDAtscRatingRegion SectionATSCTableID = 202
+	// GstMtsTableIDAtscEventInformation wraps GST_MTS_TABLE_ID_ATSC_EVENT_INFORMATION
 	//
 	// Event Information Table (EIT)
-	MtsTableIDAtscEventInformation SectionATSCTableID = 203
-	// MtsTableIDAtscChannelOrEventExtendedText wraps MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
+	GstMtsTableIDAtscEventInformation SectionATSCTableID = 203
+	// GstMtsTableIDAtscChannelOrEventExtendedText wraps GST_MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
 	//
 	// Extended Text Table (ETT)
-	MtsTableIDAtscChannelOrEventExtendedText SectionATSCTableID = 204
-	// MtsTableIDAtscSystemTime wraps MTS_TABLE_ID_ATSC_SYSTEM_TIME
+	GstMtsTableIDAtscChannelOrEventExtendedText SectionATSCTableID = 204
+	// GstMtsTableIDAtscSystemTime wraps GST_MTS_TABLE_ID_ATSC_SYSTEM_TIME
 	//
 	// System Time Table (STT)
-	MtsTableIDAtscSystemTime SectionATSCTableID = 205
-	// MtsTableIDAtscDataEvent wraps MTS_TABLE_ID_ATSC_DATA_EVENT
+	GstMtsTableIDAtscSystemTime SectionATSCTableID = 205
+	// GstMtsTableIDAtscDataEvent wraps GST_MTS_TABLE_ID_ATSC_DATA_EVENT
 	//
 	// A/90: Data Event Table (DET)
-	MtsTableIDAtscDataEvent SectionATSCTableID = 206
-	// MtsTableIDAtscDataService wraps MTS_TABLE_ID_ATSC_DATA_SERVICE
+	GstMtsTableIDAtscDataEvent SectionATSCTableID = 206
+	// GstMtsTableIDAtscDataService wraps GST_MTS_TABLE_ID_ATSC_DATA_SERVICE
 	//
 	// A/90: Data Service Table (DST)
-	MtsTableIDAtscDataService SectionATSCTableID = 207
-	// MtsTableIDAtscProgramIdentifier wraps MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
+	GstMtsTableIDAtscDataService SectionATSCTableID = 207
+	// GstMtsTableIDAtscProgramIdentifier wraps GST_MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
 	//
 	// A/57B: Program Identifier Table.
-	MtsTableIDAtscProgramIdentifier SectionATSCTableID = 208
-	// MtsTableIDAtscNetworkResource wraps MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
+	GstMtsTableIDAtscProgramIdentifier SectionATSCTableID = 208
+	// GstMtsTableIDAtscNetworkResource wraps GST_MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
 	//
 	// A/90: Network Resources Table (NRT)
-	MtsTableIDAtscNetworkResource SectionATSCTableID = 209
-	// MtsTableIDAtscLongTermService wraps MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
+	GstMtsTableIDAtscNetworkResource SectionATSCTableID = 209
+	// GstMtsTableIDAtscLongTermService wraps GST_MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
 	//
 	// A/90: Long Term Service Table (LTST)
-	MtsTableIDAtscLongTermService SectionATSCTableID = 210
-	// MtsTableIDAtscDirectedChannelChange wraps MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
+	GstMtsTableIDAtscLongTermService SectionATSCTableID = 210
+	// GstMtsTableIDAtscDirectedChannelChange wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
 	//
 	// Directed Channel Change Table (DCCT)
-	MtsTableIDAtscDirectedChannelChange SectionATSCTableID = 211
-	// MtsTableIDAtscDirectedChannelChangeSectionCode wraps MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
+	GstMtsTableIDAtscDirectedChannelChange SectionATSCTableID = 211
+	// GstMtsTableIDAtscDirectedChannelChangeSectionCode wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
 	//
 	// Directed Channel Change Selection Code Table (DCCSCT)
-	MtsTableIDAtscDirectedChannelChangeSectionCode SectionATSCTableID = 212
-	// MtsTableIDAtscAggregateEventInformation wraps MTS_TABLE_ID_ATSC_AGGREGATE_EVENT_INFORMATION
-	MtsTableIDAtscAggregateEventInformation SectionATSCTableID = 214
-	// MtsTableIDAtscAggregateExtendedText wraps MTS_TABLE_ID_ATSC_AGGREGATE_EXTENDED_TEXT
-	MtsTableIDAtscAggregateExtendedText SectionATSCTableID = 215
-	// MtsTableIDAtscAggregateDataEvent wraps MTS_TABLE_ID_ATSC_AGGREGATE_DATA_EVENT
-	MtsTableIDAtscAggregateDataEvent SectionATSCTableID = 217
-	// MtsTableIDAtscSatelliteVirtualChannel wraps MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
+	GstMtsTableIDAtscDirectedChannelChangeSectionCode SectionATSCTableID = 212
+	// GstMtsTableIDAtscAggregateEventInformation wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_EVENT_INFORMATION
+	GstMtsTableIDAtscAggregateEventInformation SectionATSCTableID = 214
+	// GstMtsTableIDAtscAggregateExtendedText wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_EXTENDED_TEXT
+	GstMtsTableIDAtscAggregateExtendedText SectionATSCTableID = 215
+	// GstMtsTableIDAtscAggregateDataEvent wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_DATA_EVENT
+	GstMtsTableIDAtscAggregateDataEvent SectionATSCTableID = 217
+	// GstMtsTableIDAtscSatelliteVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
 	//
 	// A/81: Satellite Virtual Channel Table
-	MtsTableIDAtscSatelliteVirtualChannel SectionATSCTableID = 218
+	GstMtsTableIDAtscSatelliteVirtualChannel SectionATSCTableID = 218
 )
 
 
 func (e SectionATSCTableID) String() string {
 	switch e {
-		case MtsTableIDAtscAggregateDataEvent: return "MtsTableIDAtscAggregateDataEvent"
-		case MtsTableIDAtscAggregateEventInformation: return "MtsTableIDAtscAggregateEventInformation"
-		case MtsTableIDAtscAggregateExtendedText: return "MtsTableIDAtscAggregateExtendedText"
-		case MtsTableIDAtscCableVirtualChannel: return "MtsTableIDAtscCableVirtualChannel"
-		case MtsTableIDAtscChannelOrEventExtendedText: return "MtsTableIDAtscChannelOrEventExtendedText"
-		case MtsTableIDAtscDataEvent: return "MtsTableIDAtscDataEvent"
-		case MtsTableIDAtscDataService: return "MtsTableIDAtscDataService"
-		case MtsTableIDAtscDirectedChannelChange: return "MtsTableIDAtscDirectedChannelChange"
-		case MtsTableIDAtscDirectedChannelChangeSectionCode: return "MtsTableIDAtscDirectedChannelChangeSectionCode"
-		case MtsTableIDAtscEventInformation: return "MtsTableIDAtscEventInformation"
-		case MtsTableIDAtscLongTermService: return "MtsTableIDAtscLongTermService"
-		case MtsTableIDAtscMasterGuide: return "MtsTableIDAtscMasterGuide"
-		case MtsTableIDAtscNetworkResource: return "MtsTableIDAtscNetworkResource"
-		case MtsTableIDAtscProgramIdentifier: return "MtsTableIDAtscProgramIdentifier"
-		case MtsTableIDAtscRatingRegion: return "MtsTableIDAtscRatingRegion"
-		case MtsTableIDAtscSatelliteVirtualChannel: return "MtsTableIDAtscSatelliteVirtualChannel"
-		case MtsTableIDAtscSystemTime: return "MtsTableIDAtscSystemTime"
-		case MtsTableIDAtscTerrestrialVirtualChannel: return "MtsTableIDAtscTerrestrialVirtualChannel"
+		case GstMtsTableIDAtscAggregateDataEvent: return "GstMtsTableIDAtscAggregateDataEvent"
+		case GstMtsTableIDAtscAggregateEventInformation: return "GstMtsTableIDAtscAggregateEventInformation"
+		case GstMtsTableIDAtscAggregateExtendedText: return "GstMtsTableIDAtscAggregateExtendedText"
+		case GstMtsTableIDAtscCableVirtualChannel: return "GstMtsTableIDAtscCableVirtualChannel"
+		case GstMtsTableIDAtscChannelOrEventExtendedText: return "GstMtsTableIDAtscChannelOrEventExtendedText"
+		case GstMtsTableIDAtscDataEvent: return "GstMtsTableIDAtscDataEvent"
+		case GstMtsTableIDAtscDataService: return "GstMtsTableIDAtscDataService"
+		case GstMtsTableIDAtscDirectedChannelChange: return "GstMtsTableIDAtscDirectedChannelChange"
+		case GstMtsTableIDAtscDirectedChannelChangeSectionCode: return "GstMtsTableIDAtscDirectedChannelChangeSectionCode"
+		case GstMtsTableIDAtscEventInformation: return "GstMtsTableIDAtscEventInformation"
+		case GstMtsTableIDAtscLongTermService: return "GstMtsTableIDAtscLongTermService"
+		case GstMtsTableIDAtscMasterGuide: return "GstMtsTableIDAtscMasterGuide"
+		case GstMtsTableIDAtscNetworkResource: return "GstMtsTableIDAtscNetworkResource"
+		case GstMtsTableIDAtscProgramIdentifier: return "GstMtsTableIDAtscProgramIdentifier"
+		case GstMtsTableIDAtscRatingRegion: return "GstMtsTableIDAtscRatingRegion"
+		case GstMtsTableIDAtscSatelliteVirtualChannel: return "GstMtsTableIDAtscSatelliteVirtualChannel"
+		case GstMtsTableIDAtscSystemTime: return "GstMtsTableIDAtscSystemTime"
+		case GstMtsTableIDAtscTerrestrialVirtualChannel: return "GstMtsTableIDAtscTerrestrialVirtualChannel"
 		default: return fmt.Sprintf("SectionATSCTableID(%d)", e)
 	}
 }
@@ -1928,196 +1928,196 @@ func (e SectionATSCTableID) String() string {
 type SectionDVBTableID C.int
 
 const (
-	// MtsTableIDNetworkInformationActualNetwork wraps MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
+	// GstMtsTableIDNetworkInformationActualNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
 	//
 	// Network Information Table (NIT), Actual Network
-	MtsTableIDNetworkInformationActualNetwork SectionDVBTableID = 64
-	// MtsTableIDNetworkInformationOtherNetwork wraps MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
+	GstMtsTableIDNetworkInformationActualNetwork SectionDVBTableID = 64
+	// GstMtsTableIDNetworkInformationOtherNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
 	//
 	// Network Information Table (NIT), Other Network
-	MtsTableIDNetworkInformationOtherNetwork SectionDVBTableID = 65
-	// MtsTableIDServiceDescriptionActualTs wraps MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
+	GstMtsTableIDNetworkInformationOtherNetwork SectionDVBTableID = 65
+	// GstMtsTableIDServiceDescriptionActualTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
 	//
 	// Service Description Table (SDT), Actual Transport Stream
-	MtsTableIDServiceDescriptionActualTs SectionDVBTableID = 66
-	// MtsTableIDServiceDescriptionOtherTs wraps MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
+	GstMtsTableIDServiceDescriptionActualTs SectionDVBTableID = 66
+	// GstMtsTableIDServiceDescriptionOtherTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
 	//
 	// Service Description Table (SDT), Other Transport Stream
-	MtsTableIDServiceDescriptionOtherTs SectionDVBTableID = 70
-	// MtsTableIDBouquetAssociation wraps MTS_TABLE_ID_BOUQUET_ASSOCIATION
+	GstMtsTableIDServiceDescriptionOtherTs SectionDVBTableID = 70
+	// GstMtsTableIDBouquetAssociation wraps GST_MTS_TABLE_ID_BOUQUET_ASSOCIATION
 	//
 	// Bouquet Association Table (BAT)
-	MtsTableIDBouquetAssociation SectionDVBTableID = 74
-	// MtsTableIDUpdateNotification wraps MTS_TABLE_ID_UPDATE_NOTIFICATION
+	GstMtsTableIDBouquetAssociation SectionDVBTableID = 74
+	// GstMtsTableIDUpdateNotification wraps GST_MTS_TABLE_ID_UPDATE_NOTIFICATION
 	//
 	// ETSI TS 102 006: Update Notification Table (UNT)
-	MtsTableIDUpdateNotification SectionDVBTableID = 75
-	// MtsTableIDDownloadableFontInfo wraps MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
+	GstMtsTableIDUpdateNotification SectionDVBTableID = 75
+	// GstMtsTableIDDownloadableFontInfo wraps GST_MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
 	//
 	// ETSI EN 303 560: Downloadable Font Info
-	MtsTableIDDownloadableFontInfo SectionDVBTableID = 76
-	// MtsTableIDEventInformationActualTsPresent wraps MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
+	GstMtsTableIDDownloadableFontInfo SectionDVBTableID = 76
+	// GstMtsTableIDEventInformationActualTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
 	//
 	// Event Information Table (EIT), Actual Transport Stream, present/following
-	MtsTableIDEventInformationActualTsPresent SectionDVBTableID = 78
-	// MtsTableIDEventInformationOtherTsPresent wraps MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
+	GstMtsTableIDEventInformationActualTsPresent SectionDVBTableID = 78
+	// GstMtsTableIDEventInformationOtherTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
 	//
 	// Event Information Table (EIT), Other Transport Stream, present/following
-	MtsTableIDEventInformationOtherTsPresent SectionDVBTableID = 79
-	// MtsTableIDEventInformationActualTsSchedule1 wraps MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
+	GstMtsTableIDEventInformationOtherTsPresent SectionDVBTableID = 79
+	// GstMtsTableIDEventInformationActualTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
 	//
 	// Event Information Table (EIT), Actual Transport Stream, Schedule (first)
-	MtsTableIDEventInformationActualTsSchedule1 SectionDVBTableID = 80
-	// MtsTableIDEventInformationActualTsScheduleN wraps MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
+	GstMtsTableIDEventInformationActualTsSchedule1 SectionDVBTableID = 80
+	// GstMtsTableIDEventInformationActualTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
 	//
 	// Event Information Table (EIT), Actual Transport Stream, Schedule (last)
-	MtsTableIDEventInformationActualTsScheduleN SectionDVBTableID = 95
-	// MtsTableIDEventInformationOtherTsSchedule1 wraps MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
+	GstMtsTableIDEventInformationActualTsScheduleN SectionDVBTableID = 95
+	// GstMtsTableIDEventInformationOtherTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
 	//
 	// Event Information Table (EIT), Other Transport Stream, Schedule (first)
-	MtsTableIDEventInformationOtherTsSchedule1 SectionDVBTableID = 96
-	// MtsTableIDEventInformationOtherTsScheduleN wraps MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
+	GstMtsTableIDEventInformationOtherTsSchedule1 SectionDVBTableID = 96
+	// GstMtsTableIDEventInformationOtherTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
 	//
 	// Event Information Table (EIT), Other Transport Stream, Schedule (last)
-	MtsTableIDEventInformationOtherTsScheduleN SectionDVBTableID = 111
-	// MtsTableIDTimeDate wraps MTS_TABLE_ID_TIME_DATE
+	GstMtsTableIDEventInformationOtherTsScheduleN SectionDVBTableID = 111
+	// GstMtsTableIDTimeDate wraps GST_MTS_TABLE_ID_TIME_DATE
 	//
 	// Time Date Table (TDT)
-	MtsTableIDTimeDate SectionDVBTableID = 112
-	// MtsTableIDRunningStatus wraps MTS_TABLE_ID_RUNNING_STATUS
+	GstMtsTableIDTimeDate SectionDVBTableID = 112
+	// GstMtsTableIDRunningStatus wraps GST_MTS_TABLE_ID_RUNNING_STATUS
 	//
 	// Running Status Table (RST)
-	MtsTableIDRunningStatus SectionDVBTableID = 113
-	// MtsTableIDStuffing wraps MTS_TABLE_ID_STUFFING
+	GstMtsTableIDRunningStatus SectionDVBTableID = 113
+	// GstMtsTableIDStuffing wraps GST_MTS_TABLE_ID_STUFFING
 	//
 	// Stuffing Table (ST)
-	MtsTableIDStuffing SectionDVBTableID = 114
-	// MtsTableIDTimeOffset wraps MTS_TABLE_ID_TIME_OFFSET
+	GstMtsTableIDStuffing SectionDVBTableID = 114
+	// GstMtsTableIDTimeOffset wraps GST_MTS_TABLE_ID_TIME_OFFSET
 	//
 	// Time Offset Table (TOT)
-	MtsTableIDTimeOffset SectionDVBTableID = 115
-	// MtsTableIDApplicationInformationTable wraps MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
+	GstMtsTableIDTimeOffset SectionDVBTableID = 115
+	// GstMtsTableIDApplicationInformationTable wraps GST_MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
 	//
 	// ETSI TS 102 323: Application Information Table (AIT)
-	MtsTableIDApplicationInformationTable SectionDVBTableID = 116
-	// MtsTableIDContainer wraps MTS_TABLE_ID_CONTAINER
+	GstMtsTableIDApplicationInformationTable SectionDVBTableID = 116
+	// GstMtsTableIDContainer wraps GST_MTS_TABLE_ID_CONTAINER
 	//
 	// ETSI TS 102 323: Container Section
-	MtsTableIDContainer SectionDVBTableID = 117
-	// MtsTableIDRelatedContent wraps MTS_TABLE_ID_RELATED_CONTENT
+	GstMtsTableIDContainer SectionDVBTableID = 117
+	// GstMtsTableIDRelatedContent wraps GST_MTS_TABLE_ID_RELATED_CONTENT
 	//
 	// ETSI TS 102 323: Related Content Table (RCT)
-	MtsTableIDRelatedContent SectionDVBTableID = 118
-	// MtsTableIDContentIdentifier wraps MTS_TABLE_ID_CONTENT_IDENTIFIER
+	GstMtsTableIDRelatedContent SectionDVBTableID = 118
+	// GstMtsTableIDContentIdentifier wraps GST_MTS_TABLE_ID_CONTENT_IDENTIFIER
 	//
 	// ETSI TS 102 323: Content Identifier Table (CIT)
-	MtsTableIDContentIdentifier SectionDVBTableID = 119
-	// MtsTableIDMpeFec wraps MTS_TABLE_ID_MPE_FEC
+	GstMtsTableIDContentIdentifier SectionDVBTableID = 119
+	// GstMtsTableIDMpeFec wraps GST_MTS_TABLE_ID_MPE_FEC
 	//
 	// ETSI TS 301 192: MPE-FEC Section
-	MtsTableIDMpeFec SectionDVBTableID = 120
-	// MtsTableIDResolutionNotification wraps MTS_TABLE_ID_RESOLUTION_NOTIFICATION
+	GstMtsTableIDMpeFec SectionDVBTableID = 120
+	// GstMtsTableIDResolutionNotification wraps GST_MTS_TABLE_ID_RESOLUTION_NOTIFICATION
 	//
 	// ETSI 103 323: Resolution Provider Notification Table (RNT)
-	MtsTableIDResolutionNotification SectionDVBTableID = 121
-	// MtsTableIDMpeIfec wraps MTS_TABLE_ID_MPE_IFEC
+	GstMtsTableIDResolutionNotification SectionDVBTableID = 121
+	// GstMtsTableIDMpeIfec wraps GST_MTS_TABLE_ID_MPE_IFEC
 	//
 	// ETSI TS 102 772: MPE-IFEC Section
-	MtsTableIDMpeIfec SectionDVBTableID = 122
-	// MtsTableIDProtectionMessage wraps MTS_TABLE_ID_PROTECTION_MESSAGE
+	GstMtsTableIDMpeIfec SectionDVBTableID = 122
+	// GstMtsTableIDProtectionMessage wraps GST_MTS_TABLE_ID_PROTECTION_MESSAGE
 	//
 	// ETSI TS 102 809: Protection Message Section
-	MtsTableIDProtectionMessage SectionDVBTableID = 123
-	// MtsTableIDDiscontinuityInformation wraps MTS_TABLE_ID_DISCONTINUITY_INFORMATION
+	GstMtsTableIDProtectionMessage SectionDVBTableID = 123
+	// GstMtsTableIDDiscontinuityInformation wraps GST_MTS_TABLE_ID_DISCONTINUITY_INFORMATION
 	//
 	// Discontinuity Information Table (DIT)
-	MtsTableIDDiscontinuityInformation SectionDVBTableID = 126
-	// MtsTableIDSelectionInformation wraps MTS_TABLE_ID_SELECTION_INFORMATION
+	GstMtsTableIDDiscontinuityInformation SectionDVBTableID = 126
+	// GstMtsTableIDSelectionInformation wraps GST_MTS_TABLE_ID_SELECTION_INFORMATION
 	//
 	// Selection Information Table (SIT)
-	MtsTableIDSelectionInformation SectionDVBTableID = 127
-	// MtsTableIDCaMessageEcm0 wraps MTS_TABLE_ID_CA_MESSAGE_ECM_0
+	GstMtsTableIDSelectionInformation SectionDVBTableID = 127
+	// GstMtsTableIDCaMessageEcm0 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_0
 	//
 	// ETSI TR 289: CA Message Table (CMT): ECM 0
-	MtsTableIDCaMessageEcm0 SectionDVBTableID = 128
-	// MtsTableIDCaMessageEcm1 wraps MTS_TABLE_ID_CA_MESSAGE_ECM_1
+	GstMtsTableIDCaMessageEcm0 SectionDVBTableID = 128
+	// GstMtsTableIDCaMessageEcm1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_1
 	//
 	// ETSI TR 289: CA Message Table (CMT): ECM 1
-	MtsTableIDCaMessageEcm1 SectionDVBTableID = 129
-	// MtsTableIDCaMessageSystemPrivate1 wraps MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
+	GstMtsTableIDCaMessageEcm1 SectionDVBTableID = 129
+	// GstMtsTableIDCaMessageSystemPrivate1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
 	//
 	// ETSI TR 289: CA Message Table (CMT): CA System Private (First)
-	MtsTableIDCaMessageSystemPrivate1 SectionDVBTableID = 130
-	// MtsTableIDCaMessageSystemPrivateN wraps MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
+	GstMtsTableIDCaMessageSystemPrivate1 SectionDVBTableID = 130
+	// GstMtsTableIDCaMessageSystemPrivateN wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
 	//
 	// ETSI TR 289: CA Message Table (CMT): CA System Private (Last)
-	MtsTableIDCaMessageSystemPrivateN SectionDVBTableID = 143
-	// MtsTableIDSct wraps MTS_TABLE_ID_SCT
-	MtsTableIDSct SectionDVBTableID = 160
-	// MtsTableIDFct wraps MTS_TABLE_ID_FCT
-	MtsTableIDFct SectionDVBTableID = 161
-	// MtsTableIDTct wraps MTS_TABLE_ID_TCT
-	MtsTableIDTct SectionDVBTableID = 162
-	// MtsTableIDSpt wraps MTS_TABLE_ID_SPT
-	MtsTableIDSpt SectionDVBTableID = 163
-	// MtsTableIDCmt wraps MTS_TABLE_ID_CMT
-	MtsTableIDCmt SectionDVBTableID = 164
-	// MtsTableIDTbtp wraps MTS_TABLE_ID_TBTP
-	MtsTableIDTbtp SectionDVBTableID = 165
-	// MtsTableIDPcrPacketPayload wraps MTS_TABLE_ID_PCR_PACKET_PAYLOAD
-	MtsTableIDPcrPacketPayload SectionDVBTableID = 166
-	// MtsTableIDTransmissionModeSupportPayload wraps MTS_TABLE_ID_TRANSMISSION_MODE_SUPPORT_PAYLOAD
-	MtsTableIDTransmissionModeSupportPayload SectionDVBTableID = 170
-	// MtsTableIDTim wraps MTS_TABLE_ID_TIM
-	MtsTableIDTim SectionDVBTableID = 176
-	// MtsTableIDLlFecParityDataTable wraps MTS_TABLE_ID_LL_FEC_PARITY_DATA_TABLE
-	MtsTableIDLlFecParityDataTable SectionDVBTableID = 177
+	GstMtsTableIDCaMessageSystemPrivateN SectionDVBTableID = 143
+	// GstMtsTableIDSct wraps GST_MTS_TABLE_ID_SCT
+	GstMtsTableIDSct SectionDVBTableID = 160
+	// GstMtsTableIDFct wraps GST_MTS_TABLE_ID_FCT
+	GstMtsTableIDFct SectionDVBTableID = 161
+	// GstMtsTableIDTct wraps GST_MTS_TABLE_ID_TCT
+	GstMtsTableIDTct SectionDVBTableID = 162
+	// GstMtsTableIDSpt wraps GST_MTS_TABLE_ID_SPT
+	GstMtsTableIDSpt SectionDVBTableID = 163
+	// GstMtsTableIDCmt wraps GST_MTS_TABLE_ID_CMT
+	GstMtsTableIDCmt SectionDVBTableID = 164
+	// GstMtsTableIDTbtp wraps GST_MTS_TABLE_ID_TBTP
+	GstMtsTableIDTbtp SectionDVBTableID = 165
+	// GstMtsTableIDPcrPacketPayload wraps GST_MTS_TABLE_ID_PCR_PACKET_PAYLOAD
+	GstMtsTableIDPcrPacketPayload SectionDVBTableID = 166
+	// GstMtsTableIDTransmissionModeSupportPayload wraps GST_MTS_TABLE_ID_TRANSMISSION_MODE_SUPPORT_PAYLOAD
+	GstMtsTableIDTransmissionModeSupportPayload SectionDVBTableID = 170
+	// GstMtsTableIDTim wraps GST_MTS_TABLE_ID_TIM
+	GstMtsTableIDTim SectionDVBTableID = 176
+	// GstMtsTableIDLlFecParityDataTable wraps GST_MTS_TABLE_ID_LL_FEC_PARITY_DATA_TABLE
+	GstMtsTableIDLlFecParityDataTable SectionDVBTableID = 177
 )
 
 
 func (e SectionDVBTableID) String() string {
 	switch e {
-		case MtsTableIDApplicationInformationTable: return "MtsTableIDApplicationInformationTable"
-		case MtsTableIDBouquetAssociation: return "MtsTableIDBouquetAssociation"
-		case MtsTableIDCaMessageEcm0: return "MtsTableIDCaMessageEcm0"
-		case MtsTableIDCaMessageEcm1: return "MtsTableIDCaMessageEcm1"
-		case MtsTableIDCaMessageSystemPrivate1: return "MtsTableIDCaMessageSystemPrivate1"
-		case MtsTableIDCaMessageSystemPrivateN: return "MtsTableIDCaMessageSystemPrivateN"
-		case MtsTableIDCmt: return "MtsTableIDCmt"
-		case MtsTableIDContainer: return "MtsTableIDContainer"
-		case MtsTableIDContentIdentifier: return "MtsTableIDContentIdentifier"
-		case MtsTableIDDiscontinuityInformation: return "MtsTableIDDiscontinuityInformation"
-		case MtsTableIDDownloadableFontInfo: return "MtsTableIDDownloadableFontInfo"
-		case MtsTableIDEventInformationActualTsPresent: return "MtsTableIDEventInformationActualTsPresent"
-		case MtsTableIDEventInformationActualTsSchedule1: return "MtsTableIDEventInformationActualTsSchedule1"
-		case MtsTableIDEventInformationActualTsScheduleN: return "MtsTableIDEventInformationActualTsScheduleN"
-		case MtsTableIDEventInformationOtherTsPresent: return "MtsTableIDEventInformationOtherTsPresent"
-		case MtsTableIDEventInformationOtherTsSchedule1: return "MtsTableIDEventInformationOtherTsSchedule1"
-		case MtsTableIDEventInformationOtherTsScheduleN: return "MtsTableIDEventInformationOtherTsScheduleN"
-		case MtsTableIDFct: return "MtsTableIDFct"
-		case MtsTableIDLlFecParityDataTable: return "MtsTableIDLlFecParityDataTable"
-		case MtsTableIDMpeFec: return "MtsTableIDMpeFec"
-		case MtsTableIDMpeIfec: return "MtsTableIDMpeIfec"
-		case MtsTableIDNetworkInformationActualNetwork: return "MtsTableIDNetworkInformationActualNetwork"
-		case MtsTableIDNetworkInformationOtherNetwork: return "MtsTableIDNetworkInformationOtherNetwork"
-		case MtsTableIDPcrPacketPayload: return "MtsTableIDPcrPacketPayload"
-		case MtsTableIDProtectionMessage: return "MtsTableIDProtectionMessage"
-		case MtsTableIDRelatedContent: return "MtsTableIDRelatedContent"
-		case MtsTableIDResolutionNotification: return "MtsTableIDResolutionNotification"
-		case MtsTableIDRunningStatus: return "MtsTableIDRunningStatus"
-		case MtsTableIDSct: return "MtsTableIDSct"
-		case MtsTableIDSelectionInformation: return "MtsTableIDSelectionInformation"
-		case MtsTableIDServiceDescriptionActualTs: return "MtsTableIDServiceDescriptionActualTs"
-		case MtsTableIDServiceDescriptionOtherTs: return "MtsTableIDServiceDescriptionOtherTs"
-		case MtsTableIDSpt: return "MtsTableIDSpt"
-		case MtsTableIDStuffing: return "MtsTableIDStuffing"
-		case MtsTableIDTbtp: return "MtsTableIDTbtp"
-		case MtsTableIDTct: return "MtsTableIDTct"
-		case MtsTableIDTim: return "MtsTableIDTim"
-		case MtsTableIDTimeDate: return "MtsTableIDTimeDate"
-		case MtsTableIDTimeOffset: return "MtsTableIDTimeOffset"
-		case MtsTableIDTransmissionModeSupportPayload: return "MtsTableIDTransmissionModeSupportPayload"
-		case MtsTableIDUpdateNotification: return "MtsTableIDUpdateNotification"
+		case GstMtsTableIDApplicationInformationTable: return "GstMtsTableIDApplicationInformationTable"
+		case GstMtsTableIDBouquetAssociation: return "GstMtsTableIDBouquetAssociation"
+		case GstMtsTableIDCaMessageEcm0: return "GstMtsTableIDCaMessageEcm0"
+		case GstMtsTableIDCaMessageEcm1: return "GstMtsTableIDCaMessageEcm1"
+		case GstMtsTableIDCaMessageSystemPrivate1: return "GstMtsTableIDCaMessageSystemPrivate1"
+		case GstMtsTableIDCaMessageSystemPrivateN: return "GstMtsTableIDCaMessageSystemPrivateN"
+		case GstMtsTableIDCmt: return "GstMtsTableIDCmt"
+		case GstMtsTableIDContainer: return "GstMtsTableIDContainer"
+		case GstMtsTableIDContentIdentifier: return "GstMtsTableIDContentIdentifier"
+		case GstMtsTableIDDiscontinuityInformation: return "GstMtsTableIDDiscontinuityInformation"
+		case GstMtsTableIDDownloadableFontInfo: return "GstMtsTableIDDownloadableFontInfo"
+		case GstMtsTableIDEventInformationActualTsPresent: return "GstMtsTableIDEventInformationActualTsPresent"
+		case GstMtsTableIDEventInformationActualTsSchedule1: return "GstMtsTableIDEventInformationActualTsSchedule1"
+		case GstMtsTableIDEventInformationActualTsScheduleN: return "GstMtsTableIDEventInformationActualTsScheduleN"
+		case GstMtsTableIDEventInformationOtherTsPresent: return "GstMtsTableIDEventInformationOtherTsPresent"
+		case GstMtsTableIDEventInformationOtherTsSchedule1: return "GstMtsTableIDEventInformationOtherTsSchedule1"
+		case GstMtsTableIDEventInformationOtherTsScheduleN: return "GstMtsTableIDEventInformationOtherTsScheduleN"
+		case GstMtsTableIDFct: return "GstMtsTableIDFct"
+		case GstMtsTableIDLlFecParityDataTable: return "GstMtsTableIDLlFecParityDataTable"
+		case GstMtsTableIDMpeFec: return "GstMtsTableIDMpeFec"
+		case GstMtsTableIDMpeIfec: return "GstMtsTableIDMpeIfec"
+		case GstMtsTableIDNetworkInformationActualNetwork: return "GstMtsTableIDNetworkInformationActualNetwork"
+		case GstMtsTableIDNetworkInformationOtherNetwork: return "GstMtsTableIDNetworkInformationOtherNetwork"
+		case GstMtsTableIDPcrPacketPayload: return "GstMtsTableIDPcrPacketPayload"
+		case GstMtsTableIDProtectionMessage: return "GstMtsTableIDProtectionMessage"
+		case GstMtsTableIDRelatedContent: return "GstMtsTableIDRelatedContent"
+		case GstMtsTableIDResolutionNotification: return "GstMtsTableIDResolutionNotification"
+		case GstMtsTableIDRunningStatus: return "GstMtsTableIDRunningStatus"
+		case GstMtsTableIDSct: return "GstMtsTableIDSct"
+		case GstMtsTableIDSelectionInformation: return "GstMtsTableIDSelectionInformation"
+		case GstMtsTableIDServiceDescriptionActualTs: return "GstMtsTableIDServiceDescriptionActualTs"
+		case GstMtsTableIDServiceDescriptionOtherTs: return "GstMtsTableIDServiceDescriptionOtherTs"
+		case GstMtsTableIDSpt: return "GstMtsTableIDSpt"
+		case GstMtsTableIDStuffing: return "GstMtsTableIDStuffing"
+		case GstMtsTableIDTbtp: return "GstMtsTableIDTbtp"
+		case GstMtsTableIDTct: return "GstMtsTableIDTct"
+		case GstMtsTableIDTim: return "GstMtsTableIDTim"
+		case GstMtsTableIDTimeDate: return "GstMtsTableIDTimeDate"
+		case GstMtsTableIDTimeOffset: return "GstMtsTableIDTimeOffset"
+		case GstMtsTableIDTransmissionModeSupportPayload: return "GstMtsTableIDTransmissionModeSupportPayload"
+		case GstMtsTableIDUpdateNotification: return "GstMtsTableIDUpdateNotification"
 		default: return fmt.Sprintf("SectionDVBTableID(%d)", e)
 	}
 }
@@ -2132,47 +2132,47 @@ func (e SectionDVBTableID) String() string {
 type SectionSCTETableID C.int
 
 const (
-	// MtsTableIDScteEas wraps MTS_TABLE_ID_SCTE_EAS
+	// GstMtsTableIDScteEas wraps GST_MTS_TABLE_ID_SCTE_EAS
 	//
 	// SCTE-18 Emergency Alert System
-	MtsTableIDScteEas SectionSCTETableID = 216
-	// MtsTableIDScteEbif wraps MTS_TABLE_ID_SCTE_EBIF
+	GstMtsTableIDScteEas SectionSCTETableID = 216
+	// GstMtsTableIDScteEbif wraps GST_MTS_TABLE_ID_SCTE_EBIF
 	//
 	// CL-SP-ETV-AM 1.0.1 EBIF message
-	MtsTableIDScteEbif SectionSCTETableID = 224
-	// MtsTableIDScteReserved wraps MTS_TABLE_ID_SCTE_RESERVED
-	MtsTableIDScteReserved SectionSCTETableID = 225
-	// MtsTableIDScteEiss wraps MTS_TABLE_ID_SCTE_EISS
+	GstMtsTableIDScteEbif SectionSCTETableID = 224
+	// GstMtsTableIDScteReserved wraps GST_MTS_TABLE_ID_SCTE_RESERVED
+	GstMtsTableIDScteReserved SectionSCTETableID = 225
+	// GstMtsTableIDScteEiss wraps GST_MTS_TABLE_ID_SCTE_EISS
 	//
 	// CL-SP-ETV-AM 1.0.1 EBIF Int. Signaling Sect.
-	MtsTableIDScteEiss SectionSCTETableID = 226
-	// MtsTableIDScteDii wraps MTS_TABLE_ID_SCTE_DII
+	GstMtsTableIDScteEiss SectionSCTETableID = 226
+	// GstMtsTableIDScteDii wraps GST_MTS_TABLE_ID_SCTE_DII
 	//
 	// CL-SP-ETV-AM 1.0.1 DSMCC DII message
-	MtsTableIDScteDii SectionSCTETableID = 227
-	// MtsTableIDScteDdb wraps MTS_TABLE_ID_SCTE_DDB
+	GstMtsTableIDScteDii SectionSCTETableID = 227
+	// GstMtsTableIDScteDdb wraps GST_MTS_TABLE_ID_SCTE_DDB
 	//
 	// CL-SP-ETV-AM 1.0.1 DSMCC Data Download Block
-	MtsTableIDScteDdb SectionSCTETableID = 228
-	// MtsTableIDScteSplice wraps MTS_TABLE_ID_SCTE_SPLICE
+	GstMtsTableIDScteDdb SectionSCTETableID = 228
+	// GstMtsTableIDScteSplice wraps GST_MTS_TABLE_ID_SCTE_SPLICE
 	//
 	// SCTE-35 splice information is carried in a
 	// section stream on a separate PID in the program&#x2019;s Map Table (PMT) allowing
 	// Splice Event notifications to remain associated with the program and pass
 	// through multiplexers.
-	MtsTableIDScteSplice SectionSCTETableID = 252
+	GstMtsTableIDScteSplice SectionSCTETableID = 252
 )
 
 
 func (e SectionSCTETableID) String() string {
 	switch e {
-		case MtsTableIDScteDdb: return "MtsTableIDScteDdb"
-		case MtsTableIDScteDii: return "MtsTableIDScteDii"
-		case MtsTableIDScteEas: return "MtsTableIDScteEas"
-		case MtsTableIDScteEbif: return "MtsTableIDScteEbif"
-		case MtsTableIDScteEiss: return "MtsTableIDScteEiss"
-		case MtsTableIDScteReserved: return "MtsTableIDScteReserved"
-		case MtsTableIDScteSplice: return "MtsTableIDScteSplice"
+		case GstMtsTableIDScteDdb: return "GstMtsTableIDScteDdb"
+		case GstMtsTableIDScteDii: return "GstMtsTableIDScteDii"
+		case GstMtsTableIDScteEas: return "GstMtsTableIDScteEas"
+		case GstMtsTableIDScteEbif: return "GstMtsTableIDScteEbif"
+		case GstMtsTableIDScteEiss: return "GstMtsTableIDScteEiss"
+		case GstMtsTableIDScteReserved: return "GstMtsTableIDScteReserved"
+		case GstMtsTableIDScteSplice: return "GstMtsTableIDScteSplice"
 		default: return fmt.Sprintf("SectionSCTETableID(%d)", e)
 	}
 }
@@ -2188,101 +2188,101 @@ func (e SectionSCTETableID) String() string {
 type SectionTableID C.int
 
 const (
-	// MtsTableIDProgramAssociation wraps MTS_TABLE_ID_PROGRAM_ASSOCIATION
+	// GstMtsTableIDProgramAssociation wraps GST_MTS_TABLE_ID_PROGRAM_ASSOCIATION
 	//
 	// Program Association Table (PAT)
-	MtsTableIDProgramAssociation SectionTableID = 0
-	// MtsTableIDConditionalAccess wraps MTS_TABLE_ID_CONDITIONAL_ACCESS
+	GstMtsTableIDProgramAssociation SectionTableID = 0
+	// GstMtsTableIDConditionalAccess wraps GST_MTS_TABLE_ID_CONDITIONAL_ACCESS
 	//
 	// Conditional Access Table (CAT)
-	MtsTableIDConditionalAccess SectionTableID = 1
-	// MtsTableIDTsProgramMap wraps MTS_TABLE_ID_TS_PROGRAM_MAP
+	GstMtsTableIDConditionalAccess SectionTableID = 1
+	// GstMtsTableIDTsProgramMap wraps GST_MTS_TABLE_ID_TS_PROGRAM_MAP
 	//
 	// Program Map Table (PMT)
-	MtsTableIDTsProgramMap SectionTableID = 2
-	// MtsTableIDTsDescription wraps MTS_TABLE_ID_TS_DESCRIPTION
+	GstMtsTableIDTsProgramMap SectionTableID = 2
+	// GstMtsTableIDTsDescription wraps GST_MTS_TABLE_ID_TS_DESCRIPTION
 	//
 	// Transport Stream Description Table
-	MtsTableIDTsDescription SectionTableID = 3
-	// MtsTableID14496SceneDescription wraps MTS_TABLE_ID_14496_SCENE_DESCRIPTION
+	GstMtsTableIDTsDescription SectionTableID = 3
+	// GstMtsTableID14496SceneDescription wraps GST_MTS_TABLE_ID_14496_SCENE_DESCRIPTION
 	//
 	// ISO/IEC 14496 Scene Description Table
-	MtsTableID14496SceneDescription SectionTableID = 4
-	// MtsTableID14496ObjetDescriptor wraps MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
+	GstMtsTableID14496SceneDescription SectionTableID = 4
+	// GstMtsTableID14496ObjetDescriptor wraps GST_MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
 	//
 	// ISO/IEC 14496 Object Descriptor Table
-	MtsTableID14496ObjetDescriptor SectionTableID = 5
-	// MtsTableIDMetadata wraps MTS_TABLE_ID_METADATA
+	GstMtsTableID14496ObjetDescriptor SectionTableID = 5
+	// GstMtsTableIDMetadata wraps GST_MTS_TABLE_ID_METADATA
 	//
 	// Metadata Section
-	MtsTableIDMetadata SectionTableID = 6
-	// MtsTableIDIpmpControlInformation wraps MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
+	GstMtsTableIDMetadata SectionTableID = 6
+	// GstMtsTableIDIpmpControlInformation wraps GST_MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
 	//
 	// IPMP Control Information
-	MtsTableIDIpmpControlInformation SectionTableID = 7
-	// MtsTableID14496Section wraps MTS_TABLE_ID_14496_SECTION
+	GstMtsTableIDIpmpControlInformation SectionTableID = 7
+	// GstMtsTableID14496Section wraps GST_MTS_TABLE_ID_14496_SECTION
 	//
 	// ISO/IEC 14496 Section.
-	MtsTableID14496Section SectionTableID = 8
-	// MtsTableID2300111_Section wraps MTS_TABLE_ID_23001_11_SECTION
+	GstMtsTableID14496Section SectionTableID = 8
+	// GstMtsTableID2300111Section wraps GST_MTS_TABLE_ID_23001_11_SECTION
 	//
 	// ISO/IEC 23001-11 (Green Access Unit) Section.
-	MtsTableID2300111_Section SectionTableID = 9
-	// MtsTableID2300110_Section wraps MTS_TABLE_ID_23001_10_SECTION
+	GstMtsTableID2300111Section SectionTableID = 9
+	// GstMtsTableID2300110Section wraps GST_MTS_TABLE_ID_23001_10_SECTION
 	//
 	// ISO/ISO 23001-10 (Quality Access Unit) Section.
-	MtsTableID2300110_Section SectionTableID = 10
-	// MtsTableIDDsmCcMultiprotoEncapsulatedData wraps MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
+	GstMtsTableID2300110Section SectionTableID = 10
+	// GstMtsTableIDDsmCcMultiprotoEncapsulatedData wraps GST_MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
 	//
 	// DSM-CC Multi-Protocol Encapsulated (MPE) Data
-	MtsTableIDDsmCcMultiprotoEncapsulatedData SectionTableID = 58
-	// MtsTableIDDsmCcUNMessages wraps MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
+	GstMtsTableIDDsmCcMultiprotoEncapsulatedData SectionTableID = 58
+	// GstMtsTableIDDsmCcUNMessages wraps GST_MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
 	//
 	// DSM-CC U-N Messages
-	MtsTableIDDsmCcUNMessages SectionTableID = 59
-	// MtsTableIDDsmCcDownloadDataMessages wraps MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
+	GstMtsTableIDDsmCcUNMessages SectionTableID = 59
+	// GstMtsTableIDDsmCcDownloadDataMessages wraps GST_MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
 	//
 	// DSM-CC Download Data Messages
-	MtsTableIDDsmCcDownloadDataMessages SectionTableID = 60
-	// MtsTableIDDsmCcStreamDescriptors wraps MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
+	GstMtsTableIDDsmCcDownloadDataMessages SectionTableID = 60
+	// GstMtsTableIDDsmCcStreamDescriptors wraps GST_MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
 	//
 	// DSM-CC Stream Descriptors
-	MtsTableIDDsmCcStreamDescriptors SectionTableID = 61
-	// MtsTableIDDsmCcPrivateData wraps MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
+	GstMtsTableIDDsmCcStreamDescriptors SectionTableID = 61
+	// GstMtsTableIDDsmCcPrivateData wraps GST_MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
 	//
 	// DSM-CC Private Data
-	MtsTableIDDsmCcPrivateData SectionTableID = 62
-	// MtsTableIDDsmCcAddressableSections wraps MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
+	GstMtsTableIDDsmCcPrivateData SectionTableID = 62
+	// GstMtsTableIDDsmCcAddressableSections wraps GST_MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
 	//
 	// DSM-CC Addressable Section
-	MtsTableIDDsmCcAddressableSections SectionTableID = 63
-	// MtsTableIDUnset wraps MTS_TABLE_ID_UNSET
+	GstMtsTableIDDsmCcAddressableSections SectionTableID = 63
+	// GstMtsTableIDUnset wraps GST_MTS_TABLE_ID_UNSET
 	//
 	// Unset section table_id (value is forbidden to use in actual sections)
-	MtsTableIDUnset SectionTableID = 255
+	GstMtsTableIDUnset SectionTableID = 255
 )
 
 
 func (e SectionTableID) String() string {
 	switch e {
-		case MtsTableID14496ObjetDescriptor: return "MtsTableID14496ObjetDescriptor"
-		case MtsTableID14496SceneDescription: return "MtsTableID14496SceneDescription"
-		case MtsTableID14496Section: return "MtsTableID14496Section"
-		case MtsTableID2300110_Section: return "MtsTableID2300110Section"
-		case MtsTableID2300111_Section: return "MtsTableID2300111Section"
-		case MtsTableIDConditionalAccess: return "MtsTableIDConditionalAccess"
-		case MtsTableIDDsmCcAddressableSections: return "MtsTableIDDsmCcAddressableSections"
-		case MtsTableIDDsmCcDownloadDataMessages: return "MtsTableIDDsmCcDownloadDataMessages"
-		case MtsTableIDDsmCcMultiprotoEncapsulatedData: return "MtsTableIDDsmCcMultiprotoEncapsulatedData"
-		case MtsTableIDDsmCcPrivateData: return "MtsTableIDDsmCcPrivateData"
-		case MtsTableIDDsmCcStreamDescriptors: return "MtsTableIDDsmCcStreamDescriptors"
-		case MtsTableIDDsmCcUNMessages: return "MtsTableIDDsmCcUNMessages"
-		case MtsTableIDIpmpControlInformation: return "MtsTableIDIpmpControlInformation"
-		case MtsTableIDMetadata: return "MtsTableIDMetadata"
-		case MtsTableIDProgramAssociation: return "MtsTableIDProgramAssociation"
-		case MtsTableIDTsDescription: return "MtsTableIDTsDescription"
-		case MtsTableIDTsProgramMap: return "MtsTableIDTsProgramMap"
-		case MtsTableIDUnset: return "MtsTableIDUnset"
+		case GstMtsTableID14496ObjetDescriptor: return "GstMtsTableID14496ObjetDescriptor"
+		case GstMtsTableID14496SceneDescription: return "GstMtsTableID14496SceneDescription"
+		case GstMtsTableID14496Section: return "GstMtsTableID14496Section"
+		case GstMtsTableID2300110Section: return "GstMtsTableID2300110Section"
+		case GstMtsTableID2300111Section: return "GstMtsTableID2300111Section"
+		case GstMtsTableIDConditionalAccess: return "GstMtsTableIDConditionalAccess"
+		case GstMtsTableIDDsmCcAddressableSections: return "GstMtsTableIDDsmCcAddressableSections"
+		case GstMtsTableIDDsmCcDownloadDataMessages: return "GstMtsTableIDDsmCcDownloadDataMessages"
+		case GstMtsTableIDDsmCcMultiprotoEncapsulatedData: return "GstMtsTableIDDsmCcMultiprotoEncapsulatedData"
+		case GstMtsTableIDDsmCcPrivateData: return "GstMtsTableIDDsmCcPrivateData"
+		case GstMtsTableIDDsmCcStreamDescriptors: return "GstMtsTableIDDsmCcStreamDescriptors"
+		case GstMtsTableIDDsmCcUNMessages: return "GstMtsTableIDDsmCcUNMessages"
+		case GstMtsTableIDIpmpControlInformation: return "GstMtsTableIDIpmpControlInformation"
+		case GstMtsTableIDMetadata: return "GstMtsTableIDMetadata"
+		case GstMtsTableIDProgramAssociation: return "GstMtsTableIDProgramAssociation"
+		case GstMtsTableIDTsDescription: return "GstMtsTableIDTsDescription"
+		case GstMtsTableIDTsProgramMap: return "GstMtsTableIDTsProgramMap"
+		case GstMtsTableIDUnset: return "GstMtsTableIDUnset"
 		default: return fmt.Sprintf("SectionTableID(%d)", e)
 	}
 }
@@ -2295,111 +2295,111 @@ func (e SectionTableID) String() string {
 type SectionType C.int
 
 const (
-	// MpegtsSectionUnknown wraps MPEGTS_SECTION_UNKNOWN
+	// SectionUnknown wraps GST_MPEGTS_SECTION_UNKNOWN
 	//
 	// Unknown section type
-	MpegtsSectionUnknown SectionType = 0
-	// MpegtsSectionPat wraps MPEGTS_SECTION_PAT
+	SectionUnknown SectionType = 0
+	// SectionPat wraps GST_MPEGTS_SECTION_PAT
 	//
 	// Program Association Table (ISO/IEC 13818-1)
-	MpegtsSectionPat SectionType = 1
-	// MpegtsSectionPmt wraps MPEGTS_SECTION_PMT
+	SectionPat SectionType = 1
+	// SectionPmt wraps GST_MPEGTS_SECTION_PMT
 	//
 	// Program Map Table (ISO/IEC 13818-1)
-	MpegtsSectionPmt SectionType = 2
-	// MpegtsSectionCat wraps MPEGTS_SECTION_CAT
+	SectionPmt SectionType = 2
+	// SectionCat wraps GST_MPEGTS_SECTION_CAT
 	//
 	// Conditional Access Table (ISO/IEC 13818-1)
-	MpegtsSectionCat SectionType = 3
-	// MpegtsSectionTsdt wraps MPEGTS_SECTION_TSDT
+	SectionCat SectionType = 3
+	// SectionTsdt wraps GST_MPEGTS_SECTION_TSDT
 	//
 	// Transport Stream Description Table (ISO/IEC 13818-1)
-	MpegtsSectionTsdt SectionType = 4
-	// MpegtsSectionEit wraps MPEGTS_SECTION_EIT
+	SectionTsdt SectionType = 4
+	// SectionEit wraps GST_MPEGTS_SECTION_EIT
 	//
 	// Event Information Table (EN 300 468)
-	MpegtsSectionEit SectionType = 5
-	// MpegtsSectionNit wraps MPEGTS_SECTION_NIT
+	SectionEit SectionType = 5
+	// SectionNit wraps GST_MPEGTS_SECTION_NIT
 	//
 	// Network Information Table (ISO/IEC 13818-1 / EN 300 468)
-	MpegtsSectionNit SectionType = 6
-	// MpegtsSectionBat wraps MPEGTS_SECTION_BAT
+	SectionNit SectionType = 6
+	// SectionBat wraps GST_MPEGTS_SECTION_BAT
 	//
 	// Bouquet Association Table ((EN 300 468)
-	MpegtsSectionBat SectionType = 7
-	// MpegtsSectionSdt wraps MPEGTS_SECTION_SDT
+	SectionBat SectionType = 7
+	// SectionSdt wraps GST_MPEGTS_SECTION_SDT
 	//
 	// Service Description Table (EN 300 468)
-	MpegtsSectionSdt SectionType = 8
-	// MpegtsSectionTdt wraps MPEGTS_SECTION_TDT
+	SectionSdt SectionType = 8
+	// SectionTdt wraps GST_MPEGTS_SECTION_TDT
 	//
 	// Time and Date Table (EN 300 468)
-	MpegtsSectionTdt SectionType = 9
-	// MpegtsSectionTot wraps MPEGTS_SECTION_TOT
+	SectionTdt SectionType = 9
+	// SectionTot wraps GST_MPEGTS_SECTION_TOT
 	//
 	// Time Offset Table (EN 300 468)
-	MpegtsSectionTot SectionType = 10
-	// MpegtsSectionSit wraps MPEGTS_SECTION_SIT
+	SectionTot SectionType = 10
+	// SectionSit wraps GST_MPEGTS_SECTION_SIT
 	//
 	// Selection Information Table (EN 300 468)
-	MpegtsSectionSit SectionType = 11
-	// MpegtsSectionAtscTvct wraps MPEGTS_SECTION_ATSC_TVCT
+	SectionSit SectionType = 11
+	// SectionAtscTvct wraps GST_MPEGTS_SECTION_ATSC_TVCT
 	//
 	// ATSC Terrestrial Virtual Channel Table (A65)
-	MpegtsSectionAtscTvct SectionType = 12
-	// MpegtsSectionAtscCvct wraps MPEGTS_SECTION_ATSC_CVCT
+	SectionAtscTvct SectionType = 12
+	// SectionAtscCvct wraps GST_MPEGTS_SECTION_ATSC_CVCT
 	//
 	// ATSC Cable Virtual Channel Table (A65)
-	MpegtsSectionAtscCvct SectionType = 13
-	// MpegtsSectionAtscMgt wraps MPEGTS_SECTION_ATSC_MGT
+	SectionAtscCvct SectionType = 13
+	// SectionAtscMgt wraps GST_MPEGTS_SECTION_ATSC_MGT
 	//
 	// ATSC Master Guide Table (A65)
-	MpegtsSectionAtscMgt SectionType = 14
-	// MpegtsSectionAtscEtt wraps MPEGTS_SECTION_ATSC_ETT
+	SectionAtscMgt SectionType = 14
+	// SectionAtscEtt wraps GST_MPEGTS_SECTION_ATSC_ETT
 	//
 	// ATSC Extended Text Table (A65)
-	MpegtsSectionAtscEtt SectionType = 15
-	// MpegtsSectionAtscEit wraps MPEGTS_SECTION_ATSC_EIT
+	SectionAtscEtt SectionType = 15
+	// SectionAtscEit wraps GST_MPEGTS_SECTION_ATSC_EIT
 	//
 	// ATSC Event Information Table (A65)
-	MpegtsSectionAtscEit SectionType = 16
-	// MpegtsSectionAtscStt wraps MPEGTS_SECTION_ATSC_STT
+	SectionAtscEit SectionType = 16
+	// SectionAtscStt wraps GST_MPEGTS_SECTION_ATSC_STT
 	//
 	// ATSC System Time Table (A65)
-	MpegtsSectionAtscStt SectionType = 17
-	// MpegtsSectionAtscRrt wraps MPEGTS_SECTION_ATSC_RRT
+	SectionAtscStt SectionType = 17
+	// SectionAtscRrt wraps GST_MPEGTS_SECTION_ATSC_RRT
 	//
 	// ATSC Rating Region Table (A65)
-	MpegtsSectionAtscRrt SectionType = 18
-	// MpegtsSectionScteSit wraps MPEGTS_SECTION_SCTE_SIT
+	SectionAtscRrt SectionType = 18
+	// SectionScteSit wraps GST_MPEGTS_SECTION_SCTE_SIT
 	//
 	// SCTE Splice Information Table (SCTE-35)
-	MpegtsSectionScteSit SectionType = 19
+	SectionScteSit SectionType = 19
 )
 
 
 func (e SectionType) String() string {
 	switch e {
-		case MpegtsSectionAtscCvct: return "MpegtsSectionAtscCvct"
-		case MpegtsSectionAtscEit: return "MpegtsSectionAtscEit"
-		case MpegtsSectionAtscEtt: return "MpegtsSectionAtscEtt"
-		case MpegtsSectionAtscMgt: return "MpegtsSectionAtscMgt"
-		case MpegtsSectionAtscRrt: return "MpegtsSectionAtscRrt"
-		case MpegtsSectionAtscStt: return "MpegtsSectionAtscStt"
-		case MpegtsSectionAtscTvct: return "MpegtsSectionAtscTvct"
-		case MpegtsSectionBat: return "MpegtsSectionBat"
-		case MpegtsSectionCat: return "MpegtsSectionCat"
-		case MpegtsSectionEit: return "MpegtsSectionEit"
-		case MpegtsSectionNit: return "MpegtsSectionNit"
-		case MpegtsSectionPat: return "MpegtsSectionPat"
-		case MpegtsSectionPmt: return "MpegtsSectionPmt"
-		case MpegtsSectionScteSit: return "MpegtsSectionScteSit"
-		case MpegtsSectionSdt: return "MpegtsSectionSdt"
-		case MpegtsSectionSit: return "MpegtsSectionSit"
-		case MpegtsSectionTdt: return "MpegtsSectionTdt"
-		case MpegtsSectionTot: return "MpegtsSectionTot"
-		case MpegtsSectionTsdt: return "MpegtsSectionTsdt"
-		case MpegtsSectionUnknown: return "MpegtsSectionUnknown"
+		case SectionAtscCvct: return "SectionAtscCvct"
+		case SectionAtscEit: return "SectionAtscEit"
+		case SectionAtscEtt: return "SectionAtscEtt"
+		case SectionAtscMgt: return "SectionAtscMgt"
+		case SectionAtscRrt: return "SectionAtscRrt"
+		case SectionAtscStt: return "SectionAtscStt"
+		case SectionAtscTvct: return "SectionAtscTvct"
+		case SectionBat: return "SectionBat"
+		case SectionCat: return "SectionCat"
+		case SectionEit: return "SectionEit"
+		case SectionNit: return "SectionNit"
+		case SectionPat: return "SectionPat"
+		case SectionPmt: return "SectionPmt"
+		case SectionScteSit: return "SectionScteSit"
+		case SectionSdt: return "SectionSdt"
+		case SectionSit: return "SectionSit"
+		case SectionTdt: return "SectionTdt"
+		case SectionTot: return "SectionTot"
+		case SectionTsdt: return "SectionTsdt"
+		case SectionUnknown: return "SectionUnknown"
 		default: return fmt.Sprintf("SectionType(%d)", e)
 	}
 }
@@ -2416,243 +2416,243 @@ func (e SectionType) String() string {
 type StreamType C.int
 
 const (
-	// MpegtsStreamTypeReserved00 wraps MPEGTS_STREAM_TYPE_RESERVED_00
+	// StreamTypeReserved00 wraps GST_MPEGTS_STREAM_TYPE_RESERVED_00
 	//
 	// ITU-T | ISO/IEC Reserved
-	MpegtsStreamTypeReserved00 StreamType = 0
-	// MpegtsStreamTypeVideoMpeg1 wraps MPEGTS_STREAM_TYPE_VIDEO_MPEG1
+	StreamTypeReserved00 StreamType = 0
+	// StreamTypeVideoMpeg1 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG1
 	//
 	// ISO/IEC 11172-2 Video (i.e. MPEG-1 Video)
-	MpegtsStreamTypeVideoMpeg1 StreamType = 1
-	// MpegtsStreamTypeVideoMpeg2 wraps MPEGTS_STREAM_TYPE_VIDEO_MPEG2
+	StreamTypeVideoMpeg1 StreamType = 1
+	// StreamTypeVideoMpeg2 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2
 	//
 	// Rec. ITU-T H.262 | ISO/IEC 13818-2
 	//       Video or ISO/IEC 11172-2 constrained parameter video stream (i.e.
 	//       MPEG-2 Video)
-	MpegtsStreamTypeVideoMpeg2 StreamType = 2
-	// MpegtsStreamTypeAudioMpeg1 wraps MPEGTS_STREAM_TYPE_AUDIO_MPEG1
+	StreamTypeVideoMpeg2 StreamType = 2
+	// StreamTypeAudioMpeg1 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG1
 	//
 	// ISO/IEC 11172-3 Audio
-	MpegtsStreamTypeAudioMpeg1 StreamType = 3
-	// MpegtsStreamTypeAudioMpeg2 wraps MPEGTS_STREAM_TYPE_AUDIO_MPEG2
+	StreamTypeAudioMpeg1 StreamType = 3
+	// StreamTypeAudioMpeg2 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG2
 	//
 	// ISO/IEC 13818-3 Audio
-	MpegtsStreamTypeAudioMpeg2 StreamType = 4
-	// MpegtsStreamTypePrivateSections wraps MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
+	StreamTypeAudioMpeg2 StreamType = 4
+	// StreamTypePrivateSections wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
 	//
 	// private sections
-	MpegtsStreamTypePrivateSections StreamType = 5
-	// MpegtsStreamTypePrivatePesPackets wraps MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
+	StreamTypePrivateSections StreamType = 5
+	// StreamTypePrivatePesPackets wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
 	//
 	// PES packets containing private data
-	MpegtsStreamTypePrivatePesPackets StreamType = 6
-	// MpegtsStreamTypeMheg wraps MPEGTS_STREAM_TYPE_MHEG
+	StreamTypePrivatePesPackets StreamType = 6
+	// StreamTypeMheg wraps GST_MPEGTS_STREAM_TYPE_MHEG
 	//
 	// ISO/IEC 13522 MHEG
-	MpegtsStreamTypeMheg StreamType = 7
-	// MpegtsStreamTypeDsmCc wraps MPEGTS_STREAM_TYPE_DSM_CC
+	StreamTypeMheg StreamType = 7
+	// StreamTypeDsmCc wraps GST_MPEGTS_STREAM_TYPE_DSM_CC
 	//
 	// Annex A DSM-CC
-	MpegtsStreamTypeDsmCc StreamType = 8
-	// MpegtsStreamTypeH2221 wraps MPEGTS_STREAM_TYPE_H_222_1
+	StreamTypeDsmCc StreamType = 8
+	// StreamTypeH2221 wraps GST_MPEGTS_STREAM_TYPE_H_222_1
 	//
 	// Rec. ITU-T H.222.1
-	MpegtsStreamTypeH2221 StreamType = 9
-	// MpegtsStreamTypeDsmccA wraps MPEGTS_STREAM_TYPE_DSMCC_A
+	StreamTypeH2221 StreamType = 9
+	// StreamTypeDsmccA wraps GST_MPEGTS_STREAM_TYPE_DSMCC_A
 	//
 	// ISO/IEC 13818-6 type A
-	MpegtsStreamTypeDsmccA StreamType = 10
-	// MpegtsStreamTypeDsmccB wraps MPEGTS_STREAM_TYPE_DSMCC_B
+	StreamTypeDsmccA StreamType = 10
+	// StreamTypeDsmccB wraps GST_MPEGTS_STREAM_TYPE_DSMCC_B
 	//
 	// ISO/IEC 13818-6 type B
-	MpegtsStreamTypeDsmccB StreamType = 11
-	// MpegtsStreamTypeDsmccC wraps MPEGTS_STREAM_TYPE_DSMCC_C
+	StreamTypeDsmccB StreamType = 11
+	// StreamTypeDsmccC wraps GST_MPEGTS_STREAM_TYPE_DSMCC_C
 	//
 	// ISO/IEC 13818-6 type C
-	MpegtsStreamTypeDsmccC StreamType = 12
-	// MpegtsStreamTypeDsmccD wraps MPEGTS_STREAM_TYPE_DSMCC_D
+	StreamTypeDsmccC StreamType = 12
+	// StreamTypeDsmccD wraps GST_MPEGTS_STREAM_TYPE_DSMCC_D
 	//
 	// ISO/IEC 13818-6 type D
-	MpegtsStreamTypeDsmccD StreamType = 13
-	// MpegtsStreamTypeAuxiliary wraps MPEGTS_STREAM_TYPE_AUXILIARY
+	StreamTypeDsmccD StreamType = 13
+	// StreamTypeAuxiliary wraps GST_MPEGTS_STREAM_TYPE_AUXILIARY
 	//
 	// auxiliary streams
-	MpegtsStreamTypeAuxiliary StreamType = 14
-	// MpegtsStreamTypeAudioAacAdts wraps MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
+	StreamTypeAuxiliary StreamType = 14
+	// StreamTypeAudioAacAdts wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
 	//
 	// ISO/IEC 13818-7 Audio (AAC) with ADTS
 	//       transport syntax
-	MpegtsStreamTypeAudioAacAdts StreamType = 15
-	// MpegtsStreamTypeVideoMpeg4 wraps MPEGTS_STREAM_TYPE_VIDEO_MPEG4
+	StreamTypeAudioAacAdts StreamType = 15
+	// StreamTypeVideoMpeg4 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG4
 	//
 	// ISO/IEC 14496-2 Visual (MPEG-4 Video)
-	MpegtsStreamTypeVideoMpeg4 StreamType = 16
-	// MpegtsStreamTypeAudioAacLatm wraps MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
+	StreamTypeVideoMpeg4 StreamType = 16
+	// StreamTypeAudioAacLatm wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
 	//
 	// ISO/IEC 14496-3 Audio (AAC) with the LATM
 	//       transport syntax as defined in ISO/IEC 14496-3
-	MpegtsStreamTypeAudioAacLatm StreamType = 17
-	// MpegtsStreamTypeSlFlexmuxPesPackets wraps MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
+	StreamTypeAudioAacLatm StreamType = 17
+	// StreamTypeSlFlexmuxPesPackets wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
 	//
 	// ISO/IEC 14496-1
 	//       SL-packetized stream or FlexMux stream carried in PES packets
-	MpegtsStreamTypeSlFlexmuxPesPackets StreamType = 18
-	// MpegtsStreamTypeSlFlexmuxSections wraps MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
+	StreamTypeSlFlexmuxPesPackets StreamType = 18
+	// StreamTypeSlFlexmuxSections wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
 	//
 	// ISO/IEC 14496-1 SL-packetized
 	//       stream or FlexMux stream carried in ISO/IEC 14496_sections
-	MpegtsStreamTypeSlFlexmuxSections StreamType = 19
-	// MpegtsStreamTypeSynchronizedDownload wraps MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
+	StreamTypeSlFlexmuxSections StreamType = 19
+	// StreamTypeSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
 	//
 	// ISO/IEC 13818-6 Synchronized
 	//       Download Protocol
-	MpegtsStreamTypeSynchronizedDownload StreamType = 20
-	// MpegtsStreamTypeMetadataPesPackets wraps MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
+	StreamTypeSynchronizedDownload StreamType = 20
+	// StreamTypeMetadataPesPackets wraps GST_MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
 	//
 	// Metadata carried in PES packets
-	MpegtsStreamTypeMetadataPesPackets StreamType = 21
-	// MpegtsStreamTypeMetadataSections wraps MPEGTS_STREAM_TYPE_METADATA_SECTIONS
+	StreamTypeMetadataPesPackets StreamType = 21
+	// StreamTypeMetadataSections wraps GST_MPEGTS_STREAM_TYPE_METADATA_SECTIONS
 	//
 	// Metadata carried in metadata_sections
-	MpegtsStreamTypeMetadataSections StreamType = 22
-	// MpegtsStreamTypeMetadataDataCarousel wraps MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
+	StreamTypeMetadataSections StreamType = 22
+	// StreamTypeMetadataDataCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
 	//
 	// Metadata carried in ISO/IEC
 	//       13818-6 Data Carousel
-	MpegtsStreamTypeMetadataDataCarousel StreamType = 23
-	// MpegtsStreamTypeMetadataObjectCarousel wraps MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
+	StreamTypeMetadataDataCarousel StreamType = 23
+	// StreamTypeMetadataObjectCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
 	//
 	// Metadata carried in
 	//       ISO/IEC 13818-6 Object Carousel
-	MpegtsStreamTypeMetadataObjectCarousel StreamType = 24
-	// MpegtsStreamTypeMetadataSynchronizedDownload wraps MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
+	StreamTypeMetadataObjectCarousel StreamType = 24
+	// StreamTypeMetadataSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
 	//
 	// Metadata carried in
 	//       ISO/IEC 13818-6 Synchronized Download Protocol
-	MpegtsStreamTypeMetadataSynchronizedDownload StreamType = 25
-	// MpegtsStreamTypeMpeg2Ipmp wraps MPEGTS_STREAM_TYPE_MPEG2_IPMP
+	StreamTypeMetadataSynchronizedDownload StreamType = 25
+	// StreamTypeMpeg2Ipmp wraps GST_MPEGTS_STREAM_TYPE_MPEG2_IPMP
 	//
 	// IPMP stream (defined in ISO/IEC 13818-11,
 	//       MPEG-2 IPMP)
-	MpegtsStreamTypeMpeg2Ipmp StreamType = 26
-	// MpegtsStreamTypeVideoH264 wraps MPEGTS_STREAM_TYPE_VIDEO_H264
+	StreamTypeMpeg2Ipmp StreamType = 26
+	// StreamTypeVideoH264 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264
 	//
 	// AVC video stream conforming to one or
 	// more profiles defined in Annex A of Rec. ITU-T H.264 | ISO/IEC 14496-10 or
 	// AVC video sub-bitstream of SVC as defined in 2.1.78 or MVC base view
 	// sub-bitstream, as defined in 2.1.85, or AVC video sub-bitstream of MVC, as
 	// defined in 2.1.88
-	MpegtsStreamTypeVideoH264 StreamType = 27
-	// MpegtsStreamTypeAudioAacClean wraps MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
+	StreamTypeVideoH264 StreamType = 27
+	// StreamTypeAudioAacClean wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
 	//
 	// ISO/IEC 14496-3 (AAC) Audio, without
 	//       using any additional transport syntax, such as DST, ALS and SLS
-	MpegtsStreamTypeAudioAacClean StreamType = 28
-	// MpegtsStreamTypeMpeg4TimedText wraps MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
+	StreamTypeAudioAacClean StreamType = 28
+	// StreamTypeMpeg4TimedText wraps GST_MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
 	//
 	// ISO/IEC 14496-17 Text
-	MpegtsStreamTypeMpeg4TimedText StreamType = 29
-	// MpegtsStreamTypeVideoRvc wraps MPEGTS_STREAM_TYPE_VIDEO_RVC
+	StreamTypeMpeg4TimedText StreamType = 29
+	// StreamTypeVideoRvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_RVC
 	//
 	// Auxiliary video stream as defined in
 	// ISO/IEC 23002-3
-	MpegtsStreamTypeVideoRvc StreamType = 30
-	// MpegtsStreamTypeVideoH264SvcSubBitstream wraps MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
+	StreamTypeVideoRvc StreamType = 30
+	// StreamTypeVideoH264SvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
 	//
 	// SVC video sub-bitstream
 	// of an AVC video stream conforming to one or more profiles defined in Annex G
 	// of Rec. ITU-T H.264 | ISO/IEC 14496-10
-	MpegtsStreamTypeVideoH264SvcSubBitstream StreamType = 31
-	// MpegtsStreamTypeVideoH264MvcSubBitstream wraps MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
+	StreamTypeVideoH264SvcSubBitstream StreamType = 31
+	// StreamTypeVideoH264MvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
 	//
 	// MVC video sub-bitstream
 	// of an AVC video stream conforming to one or more profiles defined in Annex H
 	// of Rec. ITU-T H.264 | ISO/IEC 14496-10
-	MpegtsStreamTypeVideoH264MvcSubBitstream StreamType = 32
-	// MpegtsStreamTypeVideoJp2K wraps MPEGTS_STREAM_TYPE_VIDEO_JP2K
+	StreamTypeVideoH264MvcSubBitstream StreamType = 32
+	// StreamTypeVideoJp2k wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JP2K
 	//
 	// Video stream conforming to one or more
 	//       profiles as defined in Rec. ITU-T T.800 | ISO/IEC 15444-1 (i.e. JPEG 2000)
-	MpegtsStreamTypeVideoJp2K StreamType = 33
-	// MpegtsStreamTypeVideoMpeg2StereoAdditionalView wraps MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
+	StreamTypeVideoJp2k StreamType = 33
+	// StreamTypeVideoMpeg2StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
 	//
 	// Additional view
 	// Rec. ITU-T H.262 | ISO/IEC 13818-2 video stream for service-compatible
 	// stereoscopic 3D services
-	MpegtsStreamTypeVideoMpeg2StereoAdditionalView StreamType = 34
-	// MpegtsStreamTypeVideoH264StereoAdditionalView wraps MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
+	StreamTypeVideoMpeg2StereoAdditionalView StreamType = 34
+	// StreamTypeVideoH264StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
 	//
 	// Additional view
 	// Rec. ITU-T H.264 | ISO/IEC 14496-10 video stream conforming to one or more
 	// profiles defined in Annex A for service-compatible stereoscopic 3D services
-	MpegtsStreamTypeVideoH264StereoAdditionalView StreamType = 35
-	// MpegtsStreamTypeVideoHevc wraps MPEGTS_STREAM_TYPE_VIDEO_HEVC
+	StreamTypeVideoH264StereoAdditionalView StreamType = 35
+	// StreamTypeVideoHevc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_HEVC
 	//
 	// Rec. ITU-T H.265 | ISO/IEC 23008-2 video
 	//      stream or an HEVC temporal video sub-bitstream
-	MpegtsStreamTypeVideoHevc StreamType = 36
-	// MpegtsStreamTypeVideoJPEGXS wraps MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
+	StreamTypeVideoHevc StreamType = 36
+	// StreamTypeVideoJpegXs wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
 	//
 	// JPEG-XS stream type
-	MpegtsStreamTypeVideoJPEGXS StreamType = 50
-	// MpegtsStreamTypeVideoVvc wraps MPEGTS_STREAM_TYPE_VIDEO_VVC
+	StreamTypeVideoJpegXs StreamType = 50
+	// StreamTypeVideoVvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_VVC
 	//
 	// VVC/H.266 video stream type
-	MpegtsStreamTypeVideoVvc StreamType = 51
-	// MpegtsStreamTypeIpmpStream wraps MPEGTS_STREAM_TYPE_IPMP_STREAM
+	StreamTypeVideoVvc StreamType = 51
+	// StreamTypeIpmpStream wraps GST_MPEGTS_STREAM_TYPE_IPMP_STREAM
 	//
 	// IPMP stream
-	MpegtsStreamTypeIpmpStream StreamType = 127
-	// MpegtsStreamTypeUserPrivateEa wraps MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
+	StreamTypeIpmpStream StreamType = 127
+	// StreamTypeUserPrivateEa wraps GST_MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
 	//
 	// User Private stream id (used for VC-1) as defined by SMPTE RP227.
-	MpegtsStreamTypeUserPrivateEa StreamType = 234
+	StreamTypeUserPrivateEa StreamType = 234
 )
 
 
 func (e StreamType) String() string {
 	switch e {
-		case MpegtsStreamTypeAudioAacAdts: return "MpegtsStreamTypeAudioAacAdts"
-		case MpegtsStreamTypeAudioAacClean: return "MpegtsStreamTypeAudioAacClean"
-		case MpegtsStreamTypeAudioAacLatm: return "MpegtsStreamTypeAudioAacLatm"
-		case MpegtsStreamTypeAudioMpeg1: return "MpegtsStreamTypeAudioMpeg1"
-		case MpegtsStreamTypeAudioMpeg2: return "MpegtsStreamTypeAudioMpeg2"
-		case MpegtsStreamTypeAuxiliary: return "MpegtsStreamTypeAuxiliary"
-		case MpegtsStreamTypeDsmCc: return "MpegtsStreamTypeDsmCc"
-		case MpegtsStreamTypeDsmccA: return "MpegtsStreamTypeDsmccA"
-		case MpegtsStreamTypeDsmccB: return "MpegtsStreamTypeDsmccB"
-		case MpegtsStreamTypeDsmccC: return "MpegtsStreamTypeDsmccC"
-		case MpegtsStreamTypeDsmccD: return "MpegtsStreamTypeDsmccD"
-		case MpegtsStreamTypeH2221: return "MpegtsStreamTypeH2221"
-		case MpegtsStreamTypeIpmpStream: return "MpegtsStreamTypeIpmpStream"
-		case MpegtsStreamTypeMetadataDataCarousel: return "MpegtsStreamTypeMetadataDataCarousel"
-		case MpegtsStreamTypeMetadataObjectCarousel: return "MpegtsStreamTypeMetadataObjectCarousel"
-		case MpegtsStreamTypeMetadataPesPackets: return "MpegtsStreamTypeMetadataPesPackets"
-		case MpegtsStreamTypeMetadataSections: return "MpegtsStreamTypeMetadataSections"
-		case MpegtsStreamTypeMetadataSynchronizedDownload: return "MpegtsStreamTypeMetadataSynchronizedDownload"
-		case MpegtsStreamTypeMheg: return "MpegtsStreamTypeMheg"
-		case MpegtsStreamTypeMpeg2Ipmp: return "MpegtsStreamTypeMpeg2Ipmp"
-		case MpegtsStreamTypeMpeg4TimedText: return "MpegtsStreamTypeMpeg4TimedText"
-		case MpegtsStreamTypePrivatePesPackets: return "MpegtsStreamTypePrivatePesPackets"
-		case MpegtsStreamTypePrivateSections: return "MpegtsStreamTypePrivateSections"
-		case MpegtsStreamTypeReserved00: return "MpegtsStreamTypeReserved00"
-		case MpegtsStreamTypeSlFlexmuxPesPackets: return "MpegtsStreamTypeSlFlexmuxPesPackets"
-		case MpegtsStreamTypeSlFlexmuxSections: return "MpegtsStreamTypeSlFlexmuxSections"
-		case MpegtsStreamTypeSynchronizedDownload: return "MpegtsStreamTypeSynchronizedDownload"
-		case MpegtsStreamTypeUserPrivateEa: return "MpegtsStreamTypeUserPrivateEa"
-		case MpegtsStreamTypeVideoH264: return "MpegtsStreamTypeVideoH264"
-		case MpegtsStreamTypeVideoH264MvcSubBitstream: return "MpegtsStreamTypeVideoH264MvcSubBitstream"
-		case MpegtsStreamTypeVideoH264StereoAdditionalView: return "MpegtsStreamTypeVideoH264StereoAdditionalView"
-		case MpegtsStreamTypeVideoH264SvcSubBitstream: return "MpegtsStreamTypeVideoH264SvcSubBitstream"
-		case MpegtsStreamTypeVideoHevc: return "MpegtsStreamTypeVideoHevc"
-		case MpegtsStreamTypeVideoJPEGXS: return "MpegtsStreamTypeVideoJPEGXS"
-		case MpegtsStreamTypeVideoJp2K: return "MpegtsStreamTypeVideoJp2K"
-		case MpegtsStreamTypeVideoMpeg1: return "MpegtsStreamTypeVideoMpeg1"
-		case MpegtsStreamTypeVideoMpeg2: return "MpegtsStreamTypeVideoMpeg2"
-		case MpegtsStreamTypeVideoMpeg2StereoAdditionalView: return "MpegtsStreamTypeVideoMpeg2StereoAdditionalView"
-		case MpegtsStreamTypeVideoMpeg4: return "MpegtsStreamTypeVideoMpeg4"
-		case MpegtsStreamTypeVideoRvc: return "MpegtsStreamTypeVideoRvc"
-		case MpegtsStreamTypeVideoVvc: return "MpegtsStreamTypeVideoVvc"
+		case StreamTypeAudioAacAdts: return "StreamTypeAudioAacAdts"
+		case StreamTypeAudioAacClean: return "StreamTypeAudioAacClean"
+		case StreamTypeAudioAacLatm: return "StreamTypeAudioAacLatm"
+		case StreamTypeAudioMpeg1: return "StreamTypeAudioMpeg1"
+		case StreamTypeAudioMpeg2: return "StreamTypeAudioMpeg2"
+		case StreamTypeAuxiliary: return "StreamTypeAuxiliary"
+		case StreamTypeDsmCc: return "StreamTypeDsmCc"
+		case StreamTypeDsmccA: return "StreamTypeDsmccA"
+		case StreamTypeDsmccB: return "StreamTypeDsmccB"
+		case StreamTypeDsmccC: return "StreamTypeDsmccC"
+		case StreamTypeDsmccD: return "StreamTypeDsmccD"
+		case StreamTypeH2221: return "StreamTypeH2221"
+		case StreamTypeIpmpStream: return "StreamTypeIpmpStream"
+		case StreamTypeMetadataDataCarousel: return "StreamTypeMetadataDataCarousel"
+		case StreamTypeMetadataObjectCarousel: return "StreamTypeMetadataObjectCarousel"
+		case StreamTypeMetadataPesPackets: return "StreamTypeMetadataPesPackets"
+		case StreamTypeMetadataSections: return "StreamTypeMetadataSections"
+		case StreamTypeMetadataSynchronizedDownload: return "StreamTypeMetadataSynchronizedDownload"
+		case StreamTypeMheg: return "StreamTypeMheg"
+		case StreamTypeMpeg2Ipmp: return "StreamTypeMpeg2Ipmp"
+		case StreamTypeMpeg4TimedText: return "StreamTypeMpeg4TimedText"
+		case StreamTypePrivatePesPackets: return "StreamTypePrivatePesPackets"
+		case StreamTypePrivateSections: return "StreamTypePrivateSections"
+		case StreamTypeReserved00: return "StreamTypeReserved00"
+		case StreamTypeSlFlexmuxPesPackets: return "StreamTypeSlFlexmuxPesPackets"
+		case StreamTypeSlFlexmuxSections: return "StreamTypeSlFlexmuxSections"
+		case StreamTypeSynchronizedDownload: return "StreamTypeSynchronizedDownload"
+		case StreamTypeUserPrivateEa: return "StreamTypeUserPrivateEa"
+		case StreamTypeVideoH264: return "StreamTypeVideoH264"
+		case StreamTypeVideoH264MvcSubBitstream: return "StreamTypeVideoH264MvcSubBitstream"
+		case StreamTypeVideoH264StereoAdditionalView: return "StreamTypeVideoH264StereoAdditionalView"
+		case StreamTypeVideoH264SvcSubBitstream: return "StreamTypeVideoH264SvcSubBitstream"
+		case StreamTypeVideoHevc: return "StreamTypeVideoHevc"
+		case StreamTypeVideoJp2k: return "StreamTypeVideoJp2k"
+		case StreamTypeVideoJpegXs: return "StreamTypeVideoJpegXs"
+		case StreamTypeVideoMpeg1: return "StreamTypeVideoMpeg1"
+		case StreamTypeVideoMpeg2: return "StreamTypeVideoMpeg2"
+		case StreamTypeVideoMpeg2StereoAdditionalView: return "StreamTypeVideoMpeg2StereoAdditionalView"
+		case StreamTypeVideoMpeg4: return "StreamTypeVideoMpeg4"
+		case StreamTypeVideoRvc: return "StreamTypeVideoRvc"
+		case StreamTypeVideoVvc: return "StreamTypeVideoVvc"
 		default: return fmt.Sprintf("StreamType(%d)", e)
 	}
 }
@@ -2661,44 +2661,44 @@ func (e StreamType) String() string {
 type TerrestrialGuardInterval C.int
 
 const (
-	// MpegtsGuardInterval132 wraps MPEGTS_GUARD_INTERVAL_1_32
-	MpegtsGuardInterval132 TerrestrialGuardInterval = 0
-	// MpegtsGuardInterval116 wraps MPEGTS_GUARD_INTERVAL_1_16
-	MpegtsGuardInterval116 TerrestrialGuardInterval = 1
-	// MpegtsGuardInterval18 wraps MPEGTS_GUARD_INTERVAL_1_8
-	MpegtsGuardInterval18 TerrestrialGuardInterval = 2
-	// MpegtsGuardInterval14 wraps MPEGTS_GUARD_INTERVAL_1_4
-	MpegtsGuardInterval14 TerrestrialGuardInterval = 3
-	// MpegtsGuardIntervalAuto wraps MPEGTS_GUARD_INTERVAL_AUTO
-	MpegtsGuardIntervalAuto TerrestrialGuardInterval = 4
-	// MpegtsGuardInterval1128 wraps MPEGTS_GUARD_INTERVAL_1_128
-	MpegtsGuardInterval1128 TerrestrialGuardInterval = 5
-	// MpegtsGuardInterval19128 wraps MPEGTS_GUARD_INTERVAL_19_128
-	MpegtsGuardInterval19128 TerrestrialGuardInterval = 6
-	// MpegtsGuardInterval19256 wraps MPEGTS_GUARD_INTERVAL_19_256
-	MpegtsGuardInterval19256 TerrestrialGuardInterval = 7
-	// MpegtsGuardIntervalPn420 wraps MPEGTS_GUARD_INTERVAL_PN420
-	MpegtsGuardIntervalPn420 TerrestrialGuardInterval = 8
-	// MpegtsGuardIntervalPn595 wraps MPEGTS_GUARD_INTERVAL_PN595
-	MpegtsGuardIntervalPn595 TerrestrialGuardInterval = 9
-	// MpegtsGuardIntervalPn945 wraps MPEGTS_GUARD_INTERVAL_PN945
-	MpegtsGuardIntervalPn945 TerrestrialGuardInterval = 10
+	// GuardInterval132 wraps GST_MPEGTS_GUARD_INTERVAL_1_32
+	GuardInterval132 TerrestrialGuardInterval = 0
+	// GuardInterval116 wraps GST_MPEGTS_GUARD_INTERVAL_1_16
+	GuardInterval116 TerrestrialGuardInterval = 1
+	// GuardInterval18 wraps GST_MPEGTS_GUARD_INTERVAL_1_8
+	GuardInterval18 TerrestrialGuardInterval = 2
+	// GuardInterval14 wraps GST_MPEGTS_GUARD_INTERVAL_1_4
+	GuardInterval14 TerrestrialGuardInterval = 3
+	// GuardIntervalAuto wraps GST_MPEGTS_GUARD_INTERVAL_AUTO
+	GuardIntervalAuto TerrestrialGuardInterval = 4
+	// GuardInterval1128 wraps GST_MPEGTS_GUARD_INTERVAL_1_128
+	GuardInterval1128 TerrestrialGuardInterval = 5
+	// GuardInterval19128 wraps GST_MPEGTS_GUARD_INTERVAL_19_128
+	GuardInterval19128 TerrestrialGuardInterval = 6
+	// GuardInterval19256 wraps GST_MPEGTS_GUARD_INTERVAL_19_256
+	GuardInterval19256 TerrestrialGuardInterval = 7
+	// GuardIntervalPn420 wraps GST_MPEGTS_GUARD_INTERVAL_PN420
+	GuardIntervalPn420 TerrestrialGuardInterval = 8
+	// GuardIntervalPn595 wraps GST_MPEGTS_GUARD_INTERVAL_PN595
+	GuardIntervalPn595 TerrestrialGuardInterval = 9
+	// GuardIntervalPn945 wraps GST_MPEGTS_GUARD_INTERVAL_PN945
+	GuardIntervalPn945 TerrestrialGuardInterval = 10
 )
 
 
 func (e TerrestrialGuardInterval) String() string {
 	switch e {
-		case MpegtsGuardInterval1128: return "MpegtsGuardInterval1128"
-		case MpegtsGuardInterval116: return "MpegtsGuardInterval116"
-		case MpegtsGuardInterval132: return "MpegtsGuardInterval132"
-		case MpegtsGuardInterval14: return "MpegtsGuardInterval14"
-		case MpegtsGuardInterval18: return "MpegtsGuardInterval18"
-		case MpegtsGuardInterval19128: return "MpegtsGuardInterval19128"
-		case MpegtsGuardInterval19256: return "MpegtsGuardInterval19256"
-		case MpegtsGuardIntervalAuto: return "MpegtsGuardIntervalAuto"
-		case MpegtsGuardIntervalPn420: return "MpegtsGuardIntervalPn420"
-		case MpegtsGuardIntervalPn595: return "MpegtsGuardIntervalPn595"
-		case MpegtsGuardIntervalPn945: return "MpegtsGuardIntervalPn945"
+		case GuardInterval1128: return "GuardInterval1128"
+		case GuardInterval116: return "GuardInterval116"
+		case GuardInterval132: return "GuardInterval132"
+		case GuardInterval14: return "GuardInterval14"
+		case GuardInterval18: return "GuardInterval18"
+		case GuardInterval19128: return "GuardInterval19128"
+		case GuardInterval19256: return "GuardInterval19256"
+		case GuardIntervalAuto: return "GuardIntervalAuto"
+		case GuardIntervalPn420: return "GuardIntervalPn420"
+		case GuardIntervalPn595: return "GuardIntervalPn595"
+		case GuardIntervalPn945: return "GuardIntervalPn945"
 		default: return fmt.Sprintf("TerrestrialGuardInterval(%d)", e)
 	}
 }
@@ -2707,26 +2707,26 @@ func (e TerrestrialGuardInterval) String() string {
 type TerrestrialHierarchy C.int
 
 const (
-	// MpegtsHierarchyNone wraps MPEGTS_HIERARCHY_NONE
-	MpegtsHierarchyNone TerrestrialHierarchy = 0
-	// MpegtsHierarchy1 wraps MPEGTS_HIERARCHY_1
-	MpegtsHierarchy1 TerrestrialHierarchy = 1
-	// MpegtsHierarchy2 wraps MPEGTS_HIERARCHY_2
-	MpegtsHierarchy2 TerrestrialHierarchy = 2
-	// MpegtsHierarchy4 wraps MPEGTS_HIERARCHY_4
-	MpegtsHierarchy4 TerrestrialHierarchy = 3
-	// MpegtsHierarchyAuto wraps MPEGTS_HIERARCHY_AUTO
-	MpegtsHierarchyAuto TerrestrialHierarchy = 4
+	// HierarchyNone wraps GST_MPEGTS_HIERARCHY_NONE
+	HierarchyNone TerrestrialHierarchy = 0
+	// Hierarchy1 wraps GST_MPEGTS_HIERARCHY_1
+	Hierarchy1 TerrestrialHierarchy = 1
+	// Hierarchy2 wraps GST_MPEGTS_HIERARCHY_2
+	Hierarchy2 TerrestrialHierarchy = 2
+	// Hierarchy4 wraps GST_MPEGTS_HIERARCHY_4
+	Hierarchy4 TerrestrialHierarchy = 3
+	// HierarchyAuto wraps GST_MPEGTS_HIERARCHY_AUTO
+	HierarchyAuto TerrestrialHierarchy = 4
 )
 
 
 func (e TerrestrialHierarchy) String() string {
 	switch e {
-		case MpegtsHierarchy1: return "MpegtsHierarchy1"
-		case MpegtsHierarchy2: return "MpegtsHierarchy2"
-		case MpegtsHierarchy4: return "MpegtsHierarchy4"
-		case MpegtsHierarchyAuto: return "MpegtsHierarchyAuto"
-		case MpegtsHierarchyNone: return "MpegtsHierarchyNone"
+		case Hierarchy1: return "Hierarchy1"
+		case Hierarchy2: return "Hierarchy2"
+		case Hierarchy4: return "Hierarchy4"
+		case HierarchyAuto: return "HierarchyAuto"
+		case HierarchyNone: return "HierarchyNone"
 		default: return fmt.Sprintf("TerrestrialHierarchy(%d)", e)
 	}
 }
@@ -2735,194 +2735,194 @@ func (e TerrestrialHierarchy) String() string {
 type TerrestrialTransmissionMode C.int
 
 const (
-	// MpegtsTransmissionMode2K wraps MPEGTS_TRANSMISSION_MODE_2K
-	MpegtsTransmissionMode2K TerrestrialTransmissionMode = 0
-	// MpegtsTransmissionMode8K wraps MPEGTS_TRANSMISSION_MODE_8K
-	MpegtsTransmissionMode8K TerrestrialTransmissionMode = 1
-	// MpegtsTransmissionModeAuto wraps MPEGTS_TRANSMISSION_MODE_AUTO
-	MpegtsTransmissionModeAuto TerrestrialTransmissionMode = 2
-	// MpegtsTransmissionMode4K wraps MPEGTS_TRANSMISSION_MODE_4K
-	MpegtsTransmissionMode4K TerrestrialTransmissionMode = 3
-	// MpegtsTransmissionMode1K wraps MPEGTS_TRANSMISSION_MODE_1K
-	MpegtsTransmissionMode1K TerrestrialTransmissionMode = 4
-	// MpegtsTransmissionMode16K wraps MPEGTS_TRANSMISSION_MODE_16K
-	MpegtsTransmissionMode16K TerrestrialTransmissionMode = 5
-	// MpegtsTransmissionMode32K wraps MPEGTS_TRANSMISSION_MODE_32K
-	MpegtsTransmissionMode32K TerrestrialTransmissionMode = 6
-	// MpegtsTransmissionModeC1 wraps MPEGTS_TRANSMISSION_MODE_C1
-	MpegtsTransmissionModeC1 TerrestrialTransmissionMode = 7
-	// MpegtsTransmissionModeC3780 wraps MPEGTS_TRANSMISSION_MODE_C3780
-	MpegtsTransmissionModeC3780 TerrestrialTransmissionMode = 8
+	// TransmissionMode2k wraps GST_MPEGTS_TRANSMISSION_MODE_2K
+	TransmissionMode2k TerrestrialTransmissionMode = 0
+	// TransmissionMode8k wraps GST_MPEGTS_TRANSMISSION_MODE_8K
+	TransmissionMode8k TerrestrialTransmissionMode = 1
+	// TransmissionModeAuto wraps GST_MPEGTS_TRANSMISSION_MODE_AUTO
+	TransmissionModeAuto TerrestrialTransmissionMode = 2
+	// TransmissionMode4k wraps GST_MPEGTS_TRANSMISSION_MODE_4K
+	TransmissionMode4k TerrestrialTransmissionMode = 3
+	// TransmissionMode1k wraps GST_MPEGTS_TRANSMISSION_MODE_1K
+	TransmissionMode1k TerrestrialTransmissionMode = 4
+	// TransmissionMode16k wraps GST_MPEGTS_TRANSMISSION_MODE_16K
+	TransmissionMode16k TerrestrialTransmissionMode = 5
+	// TransmissionMode32k wraps GST_MPEGTS_TRANSMISSION_MODE_32K
+	TransmissionMode32k TerrestrialTransmissionMode = 6
+	// TransmissionModeC1 wraps GST_MPEGTS_TRANSMISSION_MODE_C1
+	TransmissionModeC1 TerrestrialTransmissionMode = 7
+	// TransmissionModeC3780 wraps GST_MPEGTS_TRANSMISSION_MODE_C3780
+	TransmissionModeC3780 TerrestrialTransmissionMode = 8
 )
 
 
 func (e TerrestrialTransmissionMode) String() string {
 	switch e {
-		case MpegtsTransmissionMode16K: return "MpegtsTransmissionMode16K"
-		case MpegtsTransmissionMode1K: return "MpegtsTransmissionMode1K"
-		case MpegtsTransmissionMode2K: return "MpegtsTransmissionMode2K"
-		case MpegtsTransmissionMode32K: return "MpegtsTransmissionMode32K"
-		case MpegtsTransmissionMode4K: return "MpegtsTransmissionMode4K"
-		case MpegtsTransmissionMode8K: return "MpegtsTransmissionMode8K"
-		case MpegtsTransmissionModeAuto: return "MpegtsTransmissionModeAuto"
-		case MpegtsTransmissionModeC1: return "MpegtsTransmissionModeC1"
-		case MpegtsTransmissionModeC3780: return "MpegtsTransmissionModeC3780"
+		case TransmissionMode16k: return "TransmissionMode16k"
+		case TransmissionMode1k: return "TransmissionMode1k"
+		case TransmissionMode2k: return "TransmissionMode2k"
+		case TransmissionMode32k: return "TransmissionMode32k"
+		case TransmissionMode4k: return "TransmissionMode4k"
+		case TransmissionMode8k: return "TransmissionMode8k"
+		case TransmissionModeAuto: return "TransmissionModeAuto"
+		case TransmissionModeC1: return "TransmissionModeC1"
+		case TransmissionModeC3780: return "TransmissionModeC3780"
 		default: return fmt.Sprintf("TerrestrialTransmissionMode(%d)", e)
 	}
 }
 
-// RegistrationID wraps GstMpegtsRegistrationId
+// RegistrationId wraps GstMpegtsRegistrationId
 //
 // Well-known registration ids, expressed as native-endian 32bit integers. These
 // are used in descriptors of type %GST_MTS_DESC_REGISTRATION. Unless specified
 // otherwise (by use of the "OTHER" prefix), they are all registered by the
 // [SMPTE Registration Authority](https://smpte-ra.org/) or specified in
 // "official" documentation for the given format.
-type RegistrationID C.gint
+type RegistrationId C.gint
 
 const (
-	// MtsRegistration0 wraps MTS_REGISTRATION_0
+	// GstMtsRegistration0 wraps GST_MTS_REGISTRATION_0
 	//
 	// Undefined registration id
-	MtsRegistration0 RegistrationID = 0
-	// MtsRegistrationAc3 wraps MTS_REGISTRATION_AC_3
+	GstMtsRegistration0 RegistrationId = 0
+	// GstMtsRegistrationAc3 wraps GST_MTS_REGISTRATION_AC_3
 	//
 	// Audio AC-3, ATSC A/52
-	MtsRegistrationAc3 RegistrationID = 1094921523
-	// MtsRegistrationCuei wraps MTS_REGISTRATION_CUEI
+	GstMtsRegistrationAc3 RegistrationId = 1094921523
+	// GstMtsRegistrationCuei wraps GST_MTS_REGISTRATION_CUEI
 	//
 	// SCTE 35, "Digital Program Insertion Cueing Message"
-	MtsRegistrationCuei RegistrationID = 1129661769
-	// MtsRegistrationDrac wraps MTS_REGISTRATION_drac
+	GstMtsRegistrationCuei RegistrationId = 1129661769
+	// GstMtsRegistrationDrac wraps GST_MTS_REGISTRATION_drac
 	//
 	// Dirac Video codec
-	MtsRegistrationDrac RegistrationID = 1685217635
-	// MtsRegistrationDts1 wraps MTS_REGISTRATION_DTS1
+	GstMtsRegistrationDrac RegistrationId = 1685217635
+	// GstMtsRegistrationDts1 wraps GST_MTS_REGISTRATION_DTS1
 	//
 	// DTS Audio
-	MtsRegistrationDts1 RegistrationID = 1146377009
-	// MtsRegistrationDts2 wraps MTS_REGISTRATION_DTS2
+	GstMtsRegistrationDts1 RegistrationId = 1146377009
+	// GstMtsRegistrationDts2 wraps GST_MTS_REGISTRATION_DTS2
 	//
 	// DTS Audio
-	MtsRegistrationDts2 RegistrationID = 1146377010
-	// MtsRegistrationDts3 wraps MTS_REGISTRATION_DTS3
+	GstMtsRegistrationDts2 RegistrationId = 1146377010
+	// GstMtsRegistrationDts3 wraps GST_MTS_REGISTRATION_DTS3
 	//
 	// DTS Audio
-	MtsRegistrationDts3 RegistrationID = 1146377011
-	// MtsRegistrationBssd wraps MTS_REGISTRATION_BSSD
+	GstMtsRegistrationDts3 RegistrationId = 1146377011
+	// GstMtsRegistrationBssd wraps GST_MTS_REGISTRATION_BSSD
 	//
 	// SMPTE 302M, Mapping of AES3 Data in mpeg-ts
-	MtsRegistrationBssd RegistrationID = 1112757060
-	// MtsRegistrationEac3 wraps MTS_REGISTRATION_EAC3
+	GstMtsRegistrationBssd RegistrationId = 1112757060
+	// GstMtsRegistrationEac3 wraps GST_MTS_REGISTRATION_EAC3
 	//
 	// Enhanced AC-3 (i.e. EAC3)
-	MtsRegistrationEac3 RegistrationID = 1161904947
-	// MtsRegistrationEtv1 wraps MTS_REGISTRATION_ETV1
+	GstMtsRegistrationEac3 RegistrationId = 1161904947
+	// GstMtsRegistrationEtv1 wraps GST_MTS_REGISTRATION_ETV1
 	//
 	// Cablelabs ETV
-	MtsRegistrationEtv1 RegistrationID = 1163154993
-	// MtsRegistrationGa94 wraps MTS_REGISTRATION_GA94
+	GstMtsRegistrationEtv1 RegistrationId = 1163154993
+	// GstMtsRegistrationGa94 wraps GST_MTS_REGISTRATION_GA94
 	//
 	// ATSC A/53 compliant stream (i.e. ATSC)
-	MtsRegistrationGa94 RegistrationID = 1195456820
-	// MtsRegistrationHdmv wraps MTS_REGISTRATION_HDMV
+	GstMtsRegistrationGa94 RegistrationId = 1195456820
+	// GstMtsRegistrationHdmv wraps GST_MTS_REGISTRATION_HDMV
 	//
 	// Blu-ray, "System Description Blu-ray Disc
 	//             Read-Only Format part 3 Audio Visual Basic Specifications"
-	MtsRegistrationHdmv RegistrationID = 1212435798
-	// MtsRegistrationKlva wraps MTS_REGISTRATION_KLVA
+	GstMtsRegistrationHdmv RegistrationId = 1212435798
+	// GstMtsRegistrationKlva wraps GST_MTS_REGISTRATION_KLVA
 	//
 	// SMPTE RP217 : Non-synchronized Mapping of KLV
 	//             Packets in mpeg-ts
-	MtsRegistrationKlva RegistrationID = 1263294017
-	// MtsRegistrationOpus wraps MTS_REGISTRATION_OPUS
+	GstMtsRegistrationKlva RegistrationId = 1263294017
+	// GstMtsRegistrationOpus wraps GST_MTS_REGISTRATION_OPUS
 	//
 	// Opus Audio
-	MtsRegistrationOpus RegistrationID = 1330664787
-	// MtsRegistrationTshv wraps MTS_REGISTRATION_TSHV
+	GstMtsRegistrationOpus RegistrationId = 1330664787
+	// GstMtsRegistrationTshv wraps GST_MTS_REGISTRATION_TSHV
 	//
 	// HDV (Sony)
-	MtsRegistrationTshv RegistrationID = 1414744150
-	// MtsRegistrationVc1 wraps MTS_REGISTRATION_VC_1
+	GstMtsRegistrationTshv RegistrationId = 1414744150
+	// GstMtsRegistrationVc1 wraps GST_MTS_REGISTRATION_VC_1
 	//
 	// Video VC-1, SMPTE RP227 "VC-1 Bitstream Transport Encodings"
-	MtsRegistrationVc1 RegistrationID = 1447243057
-	// MtsRegistrationAc4 wraps MTS_REGISTRATION_AC_4
+	GstMtsRegistrationVc1 RegistrationId = 1447243057
+	// GstMtsRegistrationAc4 wraps GST_MTS_REGISTRATION_AC_4
 	//
 	// Audio AC-4, ETSI 103 190-2
-	MtsRegistrationAc4 RegistrationID = 1094921524
-	// MtsRegistrationOtherHevc wraps MTS_REGISTRATION_OTHER_HEVC
+	GstMtsRegistrationAc4 RegistrationId = 1094921524
+	// GstMtsRegistrationOtherHevc wraps GST_MTS_REGISTRATION_OTHER_HEVC
 	//
 	// HEVC / h265
-	MtsRegistrationOtherHevc RegistrationID = 1212503619
+	GstMtsRegistrationOtherHevc RegistrationId = 1212503619
 )
 
 // Has returns true if r contains other
-func (r RegistrationID) Has(other RegistrationID) bool {
+func (r RegistrationId) Has(other RegistrationId) bool {
 	return (r & other) == other
 }
 
-func (f RegistrationID) String() string {
+func (f RegistrationId) String() string {
 	if f == 0 {
-		return "RegistrationID(0)"
+		return "RegistrationId(0)"
 	}
 
 	var parts []string
-	if (f & MtsRegistration0) != 0 {
-		parts = append(parts, "MtsRegistration0")
+	if (f & GstMtsRegistration0) != 0 {
+		parts = append(parts, "GstMtsRegistration0")
 	}
-	if (f & MtsRegistrationAc3) != 0 {
-		parts = append(parts, "MtsRegistrationAc3")
+	if (f & GstMtsRegistrationAc3) != 0 {
+		parts = append(parts, "GstMtsRegistrationAc3")
 	}
-	if (f & MtsRegistrationCuei) != 0 {
-		parts = append(parts, "MtsRegistrationCuei")
+	if (f & GstMtsRegistrationCuei) != 0 {
+		parts = append(parts, "GstMtsRegistrationCuei")
 	}
-	if (f & MtsRegistrationDrac) != 0 {
-		parts = append(parts, "MtsRegistrationDrac")
+	if (f & GstMtsRegistrationDrac) != 0 {
+		parts = append(parts, "GstMtsRegistrationDrac")
 	}
-	if (f & MtsRegistrationDts1) != 0 {
-		parts = append(parts, "MtsRegistrationDts1")
+	if (f & GstMtsRegistrationDts1) != 0 {
+		parts = append(parts, "GstMtsRegistrationDts1")
 	}
-	if (f & MtsRegistrationDts2) != 0 {
-		parts = append(parts, "MtsRegistrationDts2")
+	if (f & GstMtsRegistrationDts2) != 0 {
+		parts = append(parts, "GstMtsRegistrationDts2")
 	}
-	if (f & MtsRegistrationDts3) != 0 {
-		parts = append(parts, "MtsRegistrationDts3")
+	if (f & GstMtsRegistrationDts3) != 0 {
+		parts = append(parts, "GstMtsRegistrationDts3")
 	}
-	if (f & MtsRegistrationBssd) != 0 {
-		parts = append(parts, "MtsRegistrationBssd")
+	if (f & GstMtsRegistrationBssd) != 0 {
+		parts = append(parts, "GstMtsRegistrationBssd")
 	}
-	if (f & MtsRegistrationEac3) != 0 {
-		parts = append(parts, "MtsRegistrationEac3")
+	if (f & GstMtsRegistrationEac3) != 0 {
+		parts = append(parts, "GstMtsRegistrationEac3")
 	}
-	if (f & MtsRegistrationEtv1) != 0 {
-		parts = append(parts, "MtsRegistrationEtv1")
+	if (f & GstMtsRegistrationEtv1) != 0 {
+		parts = append(parts, "GstMtsRegistrationEtv1")
 	}
-	if (f & MtsRegistrationGa94) != 0 {
-		parts = append(parts, "MtsRegistrationGa94")
+	if (f & GstMtsRegistrationGa94) != 0 {
+		parts = append(parts, "GstMtsRegistrationGa94")
 	}
-	if (f & MtsRegistrationHdmv) != 0 {
-		parts = append(parts, "MtsRegistrationHdmv")
+	if (f & GstMtsRegistrationHdmv) != 0 {
+		parts = append(parts, "GstMtsRegistrationHdmv")
 	}
-	if (f & MtsRegistrationKlva) != 0 {
-		parts = append(parts, "MtsRegistrationKlva")
+	if (f & GstMtsRegistrationKlva) != 0 {
+		parts = append(parts, "GstMtsRegistrationKlva")
 	}
-	if (f & MtsRegistrationOpus) != 0 {
-		parts = append(parts, "MtsRegistrationOpus")
+	if (f & GstMtsRegistrationOpus) != 0 {
+		parts = append(parts, "GstMtsRegistrationOpus")
 	}
-	if (f & MtsRegistrationTshv) != 0 {
-		parts = append(parts, "MtsRegistrationTshv")
+	if (f & GstMtsRegistrationTshv) != 0 {
+		parts = append(parts, "GstMtsRegistrationTshv")
 	}
-	if (f & MtsRegistrationVc1) != 0 {
-		parts = append(parts, "MtsRegistrationVc1")
+	if (f & GstMtsRegistrationVc1) != 0 {
+		parts = append(parts, "GstMtsRegistrationVc1")
 	}
-	if (f & MtsRegistrationAc4) != 0 {
-		parts = append(parts, "MtsRegistrationAc4")
+	if (f & GstMtsRegistrationAc4) != 0 {
+		parts = append(parts, "GstMtsRegistrationAc4")
 	}
-	if (f & MtsRegistrationOtherHevc) != 0 {
-		parts = append(parts, "MtsRegistrationOtherHevc")
+	if (f & GstMtsRegistrationOtherHevc) != 0 {
+		parts = append(parts, "GstMtsRegistrationOtherHevc")
 	}
-	return "RegistrationID(" + strings.Join(parts, "|") + ")"
+	return "RegistrationId(" + strings.Join(parts, "|") + ")"
 }
 
 // BufferAddMpegtsPesMetadataMeta wraps gst_buffer_add_mpegts_pes_metadata_meta
@@ -3093,14 +3093,14 @@ func MessageParseMpegtsSection(message *gst.Message) *Section {
 	return goret
 }
 
-// PesMetadataMetaApiGetType wraps gst_mpegts_pes_metadata_meta_api_get_type
+// PesMetadataMetaAPIGetType wraps gst_mpegts_pes_metadata_meta_api_get_type
 // 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
 //
 // Return the #GType associated with #GstMpegtsPESMetadataMeta
-func PesMetadataMetaApiGetType() gobject.Type {
+func PesMetadataMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
 	cret = C.gst_mpegts_pes_metadata_meta_api_get_type()
@@ -4095,12 +4095,12 @@ func NewAtscSTT() *AtscSTT {
 	return goret
 }
 
-// GetDatetimeUTC wraps gst_mpegts_atsc_stt_get_datetime_utc
+// GetDatetimeUtc wraps gst_mpegts_atsc_stt_get_datetime_utc
 // 
 // The function returns the following values:
 // 
 // 	- goret *gst.DateTime 
-func (stt *AtscSTT) GetDatetimeUTC() *gst.DateTime {
+func (stt *AtscSTT) GetDatetimeUtc() *gst.DateTime {
 	var carg0 *C.GstMpegtsAtscSTT // in, none, converted
 	var cret  *C.GstDateTime      // return, full, converted
 
@@ -4479,11 +4479,11 @@ func UnsafeAudioPreselectionDescriptorToGlibFull(a *AudioPreselectionDescriptor)
 //
 // DVB Bouquet Association Table (EN 300 468)
 type BAT struct {
-	*baT
+	*bAT
 }
 
-// baT is the struct that's finalized
-type baT struct {
+// bAT is the struct that's finalized
+type bAT struct {
 	native *C.GstMpegtsBAT
 }
 
@@ -4504,7 +4504,7 @@ func (r *BAT) SetGoValue(v *gobject.Value) {
 
 // UnsafeBATFromGlibBorrow is used to convert raw C.GstMpegtsBAT pointers to go. This is used by the bindings internally.
 func UnsafeBATFromGlibBorrow(p unsafe.Pointer) *BAT {
-	return &BAT{&baT{(*C.GstMpegtsBAT)(p)}}
+	return &BAT{&bAT{(*C.GstMpegtsBAT)(p)}}
 }
 
 // UnsafeBATFromGlibNone is used to convert raw C.GstMpegtsBAT pointers to go without transferring ownership. This is used by the bindings internally.
@@ -4512,8 +4512,8 @@ func UnsafeBATFromGlibNone(p unsafe.Pointer) *BAT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBATFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.baT,
-		func (intern *baT) {
+		wrapped.bAT,
+		func (intern *bAT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -4524,8 +4524,8 @@ func UnsafeBATFromGlibNone(p unsafe.Pointer) *BAT {
 func UnsafeBATFromGlibFull(p unsafe.Pointer) *BAT {
 	wrapped := UnsafeBATFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.baT,
-		func (intern *baT) {
+		wrapped.bAT,
+		func (intern *bAT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -4547,7 +4547,7 @@ func UnsafeBATToGlibNone(b *BAT) unsafe.Pointer {
 // UnsafeBATToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeBATToGlibFull(b *BAT) unsafe.Pointer {
-	runtime.SetFinalizer(b.baT, nil)
+	runtime.SetFinalizer(b.bAT, nil)
 	_p := unsafe.Pointer(b.native)
 	b.native = nil // BAT is invalid from here on
 	return _p
@@ -4555,11 +4555,11 @@ func UnsafeBATToGlibFull(b *BAT) unsafe.Pointer {
 
 // BATStream wraps GstMpegtsBATStream
 type BATStream struct {
-	*batStream
+	*bATStream
 }
 
-// batStream is the struct that's finalized
-type batStream struct {
+// bATStream is the struct that's finalized
+type bATStream struct {
 	native *C.GstMpegtsBATStream
 }
 
@@ -4580,7 +4580,7 @@ func (r *BATStream) SetGoValue(v *gobject.Value) {
 
 // UnsafeBATStreamFromGlibBorrow is used to convert raw C.GstMpegtsBATStream pointers to go. This is used by the bindings internally.
 func UnsafeBATStreamFromGlibBorrow(p unsafe.Pointer) *BATStream {
-	return &BATStream{&batStream{(*C.GstMpegtsBATStream)(p)}}
+	return &BATStream{&bATStream{(*C.GstMpegtsBATStream)(p)}}
 }
 
 // UnsafeBATStreamFromGlibNone is used to convert raw C.GstMpegtsBATStream pointers to go without transferring ownership. This is used by the bindings internally.
@@ -4588,8 +4588,8 @@ func UnsafeBATStreamFromGlibNone(p unsafe.Pointer) *BATStream {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBATStreamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.batStream,
-		func (intern *batStream) {
+		wrapped.bATStream,
+		func (intern *bATStream) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -4600,8 +4600,8 @@ func UnsafeBATStreamFromGlibNone(p unsafe.Pointer) *BATStream {
 func UnsafeBATStreamFromGlibFull(p unsafe.Pointer) *BATStream {
 	wrapped := UnsafeBATStreamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.batStream,
-		func (intern *batStream) {
+		wrapped.bATStream,
+		func (intern *bATStream) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -4623,7 +4623,7 @@ func UnsafeBATStreamToGlibNone(b *BATStream) unsafe.Pointer {
 // UnsafeBATStreamToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeBATStreamToGlibFull(b *BATStream) unsafe.Pointer {
-	runtime.SetFinalizer(b.batStream, nil)
+	runtime.SetFinalizer(b.bATStream, nil)
 	_p := unsafe.Pointer(b.native)
 	b.native = nil // BATStream is invalid from here on
 	return _p
@@ -4861,11 +4861,11 @@ func UnsafeContentToGlibFull(c *Content) unsafe.Pointer {
 
 // DVBLinkageDescriptor wraps GstMpegtsDVBLinkageDescriptor
 type DVBLinkageDescriptor struct {
-	*dvbLinkageDescriptor
+	*dVBLinkageDescriptor
 }
 
-// dvbLinkageDescriptor is the struct that's finalized
-type dvbLinkageDescriptor struct {
+// dVBLinkageDescriptor is the struct that's finalized
+type dVBLinkageDescriptor struct {
 	native *C.GstMpegtsDVBLinkageDescriptor
 }
 
@@ -4886,7 +4886,7 @@ func (r *DVBLinkageDescriptor) SetGoValue(v *gobject.Value) {
 
 // UnsafeDVBLinkageDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsDVBLinkageDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeDVBLinkageDescriptorFromGlibBorrow(p unsafe.Pointer) *DVBLinkageDescriptor {
-	return &DVBLinkageDescriptor{&dvbLinkageDescriptor{(*C.GstMpegtsDVBLinkageDescriptor)(p)}}
+	return &DVBLinkageDescriptor{&dVBLinkageDescriptor{(*C.GstMpegtsDVBLinkageDescriptor)(p)}}
 }
 
 // UnsafeDVBLinkageDescriptorFromGlibNone is used to convert raw C.GstMpegtsDVBLinkageDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
@@ -4894,8 +4894,8 @@ func UnsafeDVBLinkageDescriptorFromGlibNone(p unsafe.Pointer) *DVBLinkageDescrip
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBLinkageDescriptorFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbLinkageDescriptor,
-		func (intern *dvbLinkageDescriptor) {
+		wrapped.dVBLinkageDescriptor,
+		func (intern *dVBLinkageDescriptor) {
 			C.gst_mpegts_dvb_linkage_descriptor_free(intern.native)
 		},
 	)
@@ -4906,8 +4906,8 @@ func UnsafeDVBLinkageDescriptorFromGlibNone(p unsafe.Pointer) *DVBLinkageDescrip
 func UnsafeDVBLinkageDescriptorFromGlibFull(p unsafe.Pointer) *DVBLinkageDescriptor {
 	wrapped := UnsafeDVBLinkageDescriptorFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbLinkageDescriptor,
-		func (intern *dvbLinkageDescriptor) {
+		wrapped.dVBLinkageDescriptor,
+		func (intern *dVBLinkageDescriptor) {
 			C.gst_mpegts_dvb_linkage_descriptor_free(intern.native)
 		},
 	)
@@ -4929,7 +4929,7 @@ func UnsafeDVBLinkageDescriptorToGlibNone(d *DVBLinkageDescriptor) unsafe.Pointe
 // UnsafeDVBLinkageDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBLinkageDescriptorToGlibFull(d *DVBLinkageDescriptor) unsafe.Pointer {
-	runtime.SetFinalizer(d.dvbLinkageDescriptor, nil)
+	runtime.SetFinalizer(d.dVBLinkageDescriptor, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBLinkageDescriptor is invalid from here on
 	return _p
@@ -4983,11 +4983,11 @@ func (desc *DVBLinkageDescriptor) GetMobileHandOver() *DVBLinkageMobileHandOver 
 
 // DVBLinkageEvent wraps GstMpegtsDVBLinkageEvent
 type DVBLinkageEvent struct {
-	*dvbLinkageEvent
+	*dVBLinkageEvent
 }
 
-// dvbLinkageEvent is the struct that's finalized
-type dvbLinkageEvent struct {
+// dVBLinkageEvent is the struct that's finalized
+type dVBLinkageEvent struct {
 	native *C.GstMpegtsDVBLinkageEvent
 }
 
@@ -5008,7 +5008,7 @@ func (r *DVBLinkageEvent) SetGoValue(v *gobject.Value) {
 
 // UnsafeDVBLinkageEventFromGlibBorrow is used to convert raw C.GstMpegtsDVBLinkageEvent pointers to go. This is used by the bindings internally.
 func UnsafeDVBLinkageEventFromGlibBorrow(p unsafe.Pointer) *DVBLinkageEvent {
-	return &DVBLinkageEvent{&dvbLinkageEvent{(*C.GstMpegtsDVBLinkageEvent)(p)}}
+	return &DVBLinkageEvent{&dVBLinkageEvent{(*C.GstMpegtsDVBLinkageEvent)(p)}}
 }
 
 // UnsafeDVBLinkageEventFromGlibNone is used to convert raw C.GstMpegtsDVBLinkageEvent pointers to go without transferring ownership. This is used by the bindings internally.
@@ -5016,8 +5016,8 @@ func UnsafeDVBLinkageEventFromGlibNone(p unsafe.Pointer) *DVBLinkageEvent {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBLinkageEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbLinkageEvent,
-		func (intern *dvbLinkageEvent) {
+		wrapped.dVBLinkageEvent,
+		func (intern *dVBLinkageEvent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5028,8 +5028,8 @@ func UnsafeDVBLinkageEventFromGlibNone(p unsafe.Pointer) *DVBLinkageEvent {
 func UnsafeDVBLinkageEventFromGlibFull(p unsafe.Pointer) *DVBLinkageEvent {
 	wrapped := UnsafeDVBLinkageEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbLinkageEvent,
-		func (intern *dvbLinkageEvent) {
+		wrapped.dVBLinkageEvent,
+		func (intern *dVBLinkageEvent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5051,7 +5051,7 @@ func UnsafeDVBLinkageEventToGlibNone(d *DVBLinkageEvent) unsafe.Pointer {
 // UnsafeDVBLinkageEventToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBLinkageEventToGlibFull(d *DVBLinkageEvent) unsafe.Pointer {
-	runtime.SetFinalizer(d.dvbLinkageEvent, nil)
+	runtime.SetFinalizer(d.dVBLinkageEvent, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBLinkageEvent is invalid from here on
 	return _p
@@ -5059,11 +5059,11 @@ func UnsafeDVBLinkageEventToGlibFull(d *DVBLinkageEvent) unsafe.Pointer {
 
 // DVBLinkageExtendedEvent wraps GstMpegtsDVBLinkageExtendedEvent
 type DVBLinkageExtendedEvent struct {
-	*dvbLinkageExtendedEvent
+	*dVBLinkageExtendedEvent
 }
 
-// dvbLinkageExtendedEvent is the struct that's finalized
-type dvbLinkageExtendedEvent struct {
+// dVBLinkageExtendedEvent is the struct that's finalized
+type dVBLinkageExtendedEvent struct {
 	native *C.GstMpegtsDVBLinkageExtendedEvent
 }
 
@@ -5084,7 +5084,7 @@ func (r *DVBLinkageExtendedEvent) SetGoValue(v *gobject.Value) {
 
 // UnsafeDVBLinkageExtendedEventFromGlibBorrow is used to convert raw C.GstMpegtsDVBLinkageExtendedEvent pointers to go. This is used by the bindings internally.
 func UnsafeDVBLinkageExtendedEventFromGlibBorrow(p unsafe.Pointer) *DVBLinkageExtendedEvent {
-	return &DVBLinkageExtendedEvent{&dvbLinkageExtendedEvent{(*C.GstMpegtsDVBLinkageExtendedEvent)(p)}}
+	return &DVBLinkageExtendedEvent{&dVBLinkageExtendedEvent{(*C.GstMpegtsDVBLinkageExtendedEvent)(p)}}
 }
 
 // UnsafeDVBLinkageExtendedEventFromGlibNone is used to convert raw C.GstMpegtsDVBLinkageExtendedEvent pointers to go without transferring ownership. This is used by the bindings internally.
@@ -5092,8 +5092,8 @@ func UnsafeDVBLinkageExtendedEventFromGlibNone(p unsafe.Pointer) *DVBLinkageExte
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBLinkageExtendedEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbLinkageExtendedEvent,
-		func (intern *dvbLinkageExtendedEvent) {
+		wrapped.dVBLinkageExtendedEvent,
+		func (intern *dVBLinkageExtendedEvent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5104,8 +5104,8 @@ func UnsafeDVBLinkageExtendedEventFromGlibNone(p unsafe.Pointer) *DVBLinkageExte
 func UnsafeDVBLinkageExtendedEventFromGlibFull(p unsafe.Pointer) *DVBLinkageExtendedEvent {
 	wrapped := UnsafeDVBLinkageExtendedEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbLinkageExtendedEvent,
-		func (intern *dvbLinkageExtendedEvent) {
+		wrapped.dVBLinkageExtendedEvent,
+		func (intern *dVBLinkageExtendedEvent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5127,7 +5127,7 @@ func UnsafeDVBLinkageExtendedEventToGlibNone(d *DVBLinkageExtendedEvent) unsafe.
 // UnsafeDVBLinkageExtendedEventToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBLinkageExtendedEventToGlibFull(d *DVBLinkageExtendedEvent) unsafe.Pointer {
-	runtime.SetFinalizer(d.dvbLinkageExtendedEvent, nil)
+	runtime.SetFinalizer(d.dVBLinkageExtendedEvent, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBLinkageExtendedEvent is invalid from here on
 	return _p
@@ -5135,11 +5135,11 @@ func UnsafeDVBLinkageExtendedEventToGlibFull(d *DVBLinkageExtendedEvent) unsafe.
 
 // DVBLinkageMobileHandOver wraps GstMpegtsDVBLinkageMobileHandOver
 type DVBLinkageMobileHandOver struct {
-	*dvbLinkageMobileHandOver
+	*dVBLinkageMobileHandOver
 }
 
-// dvbLinkageMobileHandOver is the struct that's finalized
-type dvbLinkageMobileHandOver struct {
+// dVBLinkageMobileHandOver is the struct that's finalized
+type dVBLinkageMobileHandOver struct {
 	native *C.GstMpegtsDVBLinkageMobileHandOver
 }
 
@@ -5160,7 +5160,7 @@ func (r *DVBLinkageMobileHandOver) SetGoValue(v *gobject.Value) {
 
 // UnsafeDVBLinkageMobileHandOverFromGlibBorrow is used to convert raw C.GstMpegtsDVBLinkageMobileHandOver pointers to go. This is used by the bindings internally.
 func UnsafeDVBLinkageMobileHandOverFromGlibBorrow(p unsafe.Pointer) *DVBLinkageMobileHandOver {
-	return &DVBLinkageMobileHandOver{&dvbLinkageMobileHandOver{(*C.GstMpegtsDVBLinkageMobileHandOver)(p)}}
+	return &DVBLinkageMobileHandOver{&dVBLinkageMobileHandOver{(*C.GstMpegtsDVBLinkageMobileHandOver)(p)}}
 }
 
 // UnsafeDVBLinkageMobileHandOverFromGlibNone is used to convert raw C.GstMpegtsDVBLinkageMobileHandOver pointers to go without transferring ownership. This is used by the bindings internally.
@@ -5168,8 +5168,8 @@ func UnsafeDVBLinkageMobileHandOverFromGlibNone(p unsafe.Pointer) *DVBLinkageMob
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBLinkageMobileHandOverFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbLinkageMobileHandOver,
-		func (intern *dvbLinkageMobileHandOver) {
+		wrapped.dVBLinkageMobileHandOver,
+		func (intern *dVBLinkageMobileHandOver) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5180,8 +5180,8 @@ func UnsafeDVBLinkageMobileHandOverFromGlibNone(p unsafe.Pointer) *DVBLinkageMob
 func UnsafeDVBLinkageMobileHandOverFromGlibFull(p unsafe.Pointer) *DVBLinkageMobileHandOver {
 	wrapped := UnsafeDVBLinkageMobileHandOverFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbLinkageMobileHandOver,
-		func (intern *dvbLinkageMobileHandOver) {
+		wrapped.dVBLinkageMobileHandOver,
+		func (intern *dVBLinkageMobileHandOver) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5203,7 +5203,7 @@ func UnsafeDVBLinkageMobileHandOverToGlibNone(d *DVBLinkageMobileHandOver) unsaf
 // UnsafeDVBLinkageMobileHandOverToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBLinkageMobileHandOverToGlibFull(d *DVBLinkageMobileHandOver) unsafe.Pointer {
-	runtime.SetFinalizer(d.dvbLinkageMobileHandOver, nil)
+	runtime.SetFinalizer(d.dVBLinkageMobileHandOver, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBLinkageMobileHandOver is invalid from here on
 	return _p
@@ -5211,11 +5211,11 @@ func UnsafeDVBLinkageMobileHandOverToGlibFull(d *DVBLinkageMobileHandOver) unsaf
 
 // DVBParentalRatingItem wraps GstMpegtsDVBParentalRatingItem
 type DVBParentalRatingItem struct {
-	*dvbParentalRatingItem
+	*dVBParentalRatingItem
 }
 
-// dvbParentalRatingItem is the struct that's finalized
-type dvbParentalRatingItem struct {
+// dVBParentalRatingItem is the struct that's finalized
+type dVBParentalRatingItem struct {
 	native *C.GstMpegtsDVBParentalRatingItem
 }
 
@@ -5236,7 +5236,7 @@ func (r *DVBParentalRatingItem) SetGoValue(v *gobject.Value) {
 
 // UnsafeDVBParentalRatingItemFromGlibBorrow is used to convert raw C.GstMpegtsDVBParentalRatingItem pointers to go. This is used by the bindings internally.
 func UnsafeDVBParentalRatingItemFromGlibBorrow(p unsafe.Pointer) *DVBParentalRatingItem {
-	return &DVBParentalRatingItem{&dvbParentalRatingItem{(*C.GstMpegtsDVBParentalRatingItem)(p)}}
+	return &DVBParentalRatingItem{&dVBParentalRatingItem{(*C.GstMpegtsDVBParentalRatingItem)(p)}}
 }
 
 // UnsafeDVBParentalRatingItemFromGlibNone is used to convert raw C.GstMpegtsDVBParentalRatingItem pointers to go without transferring ownership. This is used by the bindings internally.
@@ -5244,8 +5244,8 @@ func UnsafeDVBParentalRatingItemFromGlibNone(p unsafe.Pointer) *DVBParentalRatin
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBParentalRatingItemFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbParentalRatingItem,
-		func (intern *dvbParentalRatingItem) {
+		wrapped.dVBParentalRatingItem,
+		func (intern *dVBParentalRatingItem) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5256,8 +5256,8 @@ func UnsafeDVBParentalRatingItemFromGlibNone(p unsafe.Pointer) *DVBParentalRatin
 func UnsafeDVBParentalRatingItemFromGlibFull(p unsafe.Pointer) *DVBParentalRatingItem {
 	wrapped := UnsafeDVBParentalRatingItemFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbParentalRatingItem,
-		func (intern *dvbParentalRatingItem) {
+		wrapped.dVBParentalRatingItem,
+		func (intern *dVBParentalRatingItem) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5279,7 +5279,7 @@ func UnsafeDVBParentalRatingItemToGlibNone(d *DVBParentalRatingItem) unsafe.Poin
 // UnsafeDVBParentalRatingItemToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBParentalRatingItemToGlibFull(d *DVBParentalRatingItem) unsafe.Pointer {
-	runtime.SetFinalizer(d.dvbParentalRatingItem, nil)
+	runtime.SetFinalizer(d.dVBParentalRatingItem, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBParentalRatingItem is invalid from here on
 	return _p
@@ -5287,11 +5287,11 @@ func UnsafeDVBParentalRatingItemToGlibFull(d *DVBParentalRatingItem) unsafe.Poin
 
 // DVBServiceListItem wraps GstMpegtsDVBServiceListItem
 type DVBServiceListItem struct {
-	*dvbServiceListItem
+	*dVBServiceListItem
 }
 
-// dvbServiceListItem is the struct that's finalized
-type dvbServiceListItem struct {
+// dVBServiceListItem is the struct that's finalized
+type dVBServiceListItem struct {
 	native *C.GstMpegtsDVBServiceListItem
 }
 
@@ -5312,7 +5312,7 @@ func (r *DVBServiceListItem) SetGoValue(v *gobject.Value) {
 
 // UnsafeDVBServiceListItemFromGlibBorrow is used to convert raw C.GstMpegtsDVBServiceListItem pointers to go. This is used by the bindings internally.
 func UnsafeDVBServiceListItemFromGlibBorrow(p unsafe.Pointer) *DVBServiceListItem {
-	return &DVBServiceListItem{&dvbServiceListItem{(*C.GstMpegtsDVBServiceListItem)(p)}}
+	return &DVBServiceListItem{&dVBServiceListItem{(*C.GstMpegtsDVBServiceListItem)(p)}}
 }
 
 // UnsafeDVBServiceListItemFromGlibNone is used to convert raw C.GstMpegtsDVBServiceListItem pointers to go without transferring ownership. This is used by the bindings internally.
@@ -5320,8 +5320,8 @@ func UnsafeDVBServiceListItemFromGlibNone(p unsafe.Pointer) *DVBServiceListItem 
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBServiceListItemFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbServiceListItem,
-		func (intern *dvbServiceListItem) {
+		wrapped.dVBServiceListItem,
+		func (intern *dVBServiceListItem) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5332,8 +5332,8 @@ func UnsafeDVBServiceListItemFromGlibNone(p unsafe.Pointer) *DVBServiceListItem 
 func UnsafeDVBServiceListItemFromGlibFull(p unsafe.Pointer) *DVBServiceListItem {
 	wrapped := UnsafeDVBServiceListItemFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.dvbServiceListItem,
-		func (intern *dvbServiceListItem) {
+		wrapped.dVBServiceListItem,
+		func (intern *dVBServiceListItem) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5355,7 +5355,7 @@ func UnsafeDVBServiceListItemToGlibNone(d *DVBServiceListItem) unsafe.Pointer {
 // UnsafeDVBServiceListItemToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBServiceListItemToGlibFull(d *DVBServiceListItem) unsafe.Pointer {
-	runtime.SetFinalizer(d.dvbServiceListItem, nil)
+	runtime.SetFinalizer(d.dVBServiceListItem, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBServiceListItem is invalid from here on
 	return _p
@@ -5709,7 +5709,7 @@ func DescriptorFromDvbSubtitling(lang string, typ uint8, composition uint16, anc
 	return goret
 }
 
-// DescriptorFromISO639Language wraps gst_mpegts_descriptor_from_iso_639_language
+// DescriptorFromIso639Language wraps gst_mpegts_descriptor_from_iso_639_language
 // 
 // The function takes the following parameters:
 // 
@@ -5721,7 +5721,7 @@ func DescriptorFromDvbSubtitling(lang string, typ uint8, composition uint16, anc
 //
 // Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
 // a single language
-func DescriptorFromISO639Language(language string) *Descriptor {
+func DescriptorFromIso639Language(language string) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var cret  *C.GstMpegtsDescriptor // return, full, converted
 
@@ -5738,7 +5738,7 @@ func DescriptorFromISO639Language(language string) *Descriptor {
 	return goret
 }
 
-// DescriptorFromJPEGXS wraps gst_mpegts_descriptor_from_jpeg_xs
+// DescriptorFromJpegXs wraps gst_mpegts_descriptor_from_jpeg_xs
 // 
 // The function takes the following parameters:
 // 
@@ -5749,7 +5749,7 @@ func DescriptorFromISO639Language(language string) *Descriptor {
 // 	- goret *Descriptor 
 //
 // Create a new #GstMpegtsDescriptor based on the information in @jpegxs
-func DescriptorFromJPEGXS(jpegxs *JpegXsDescriptor) *Descriptor {
+func DescriptorFromJpegXs(jpegxs *JpegXsDescriptor) *Descriptor {
 	var carg1 *C.GstMpegtsJpegXsDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDescriptor       // return, full, converted
 
@@ -6455,7 +6455,7 @@ func (descriptor *Descriptor) ParseDvbTeletextNb() uint {
 	return goret
 }
 
-// ParseISO639Language wraps gst_mpegts_descriptor_parse_iso_639_language
+// ParseIso639Language wraps gst_mpegts_descriptor_parse_iso_639_language
 // 
 // The function returns the following values:
 // 
@@ -6466,7 +6466,7 @@ func (descriptor *Descriptor) ParseDvbTeletextNb() uint {
 // 
 // Note: Use #gst_tag_get_language_code if you want to get the the
 // ISO 639-1 language code from the returned ISO 639-2 one.
-func (descriptor *Descriptor) ParseISO639Language() (*ISO639LanguageDescriptor, bool) {
+func (descriptor *Descriptor) ParseIso639Language() (*ISO639LanguageDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor               // in, none, converted
 	var carg1 *C.GstMpegtsISO639LanguageDescriptor // out, full, converted
 	var cret  C.gboolean                           // return
@@ -6487,7 +6487,7 @@ func (descriptor *Descriptor) ParseISO639Language() (*ISO639LanguageDescriptor, 
 	return res, goret
 }
 
-// ParseISO639LanguageIdx wraps gst_mpegts_descriptor_parse_iso_639_language_idx
+// ParseIso639LanguageIdx wraps gst_mpegts_descriptor_parse_iso_639_language_idx
 // 
 // The function takes the following parameters:
 // 
@@ -6496,14 +6496,14 @@ func (descriptor *Descriptor) ParseISO639Language() (*ISO639LanguageDescriptor, 
 // The function returns the following values:
 // 
 // 	- lang string: 4-byte gchar array to hold the language code 
-// 	- audioType ISO639AudioType: the #GstMpegtsIso639AudioType to set 
+// 	- audioType Iso639AudioType: the #GstMpegtsIso639AudioType to set 
 // 	- goret bool 
 //
 // Extracts the iso 639-2 language information from specific table id in @descriptor.
 // 
 // Note: Use #gst_tag_get_language_code if you want to get the the
 // ISO 639-1 language code from the returned ISO 639-2 one.
-func (descriptor *Descriptor) ParseISO639LanguageIdx(idx uint) (string, ISO639AudioType, bool) {
+func (descriptor *Descriptor) ParseIso639LanguageIdx(idx uint) (string, Iso639AudioType, bool) {
 	var carg0 *C.GstMpegtsDescriptor     // in, none, converted
 	var carg1 C.guint                    // in, none, casted
 	var carg2 *C.gchar                   // out, full, string
@@ -6518,12 +6518,12 @@ func (descriptor *Descriptor) ParseISO639LanguageIdx(idx uint) (string, ISO639Au
 	runtime.KeepAlive(idx)
 
 	var lang      string
-	var audioType ISO639AudioType
+	var audioType Iso639AudioType
 	var goret     bool
 
 	lang = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 	defer C.free(unsafe.Pointer(carg2))
-	audioType = ISO639AudioType(carg3)
+	audioType = Iso639AudioType(carg3)
 	if cret != 0 {
 		goret = true
 	}
@@ -6531,12 +6531,12 @@ func (descriptor *Descriptor) ParseISO639LanguageIdx(idx uint) (string, ISO639Au
 	return lang, audioType, goret
 }
 
-// ParseISO639LanguageNb wraps gst_mpegts_descriptor_parse_iso_639_language_nb
+// ParseIso639LanguageNb wraps gst_mpegts_descriptor_parse_iso_639_language_nb
 // 
 // The function returns the following values:
 // 
 // 	- goret uint 
-func (descriptor *Descriptor) ParseISO639LanguageNb() uint {
+func (descriptor *Descriptor) ParseIso639LanguageNb() uint {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var cret  C.guint                // return, none, casted
 
@@ -6552,7 +6552,7 @@ func (descriptor *Descriptor) ParseISO639LanguageNb() uint {
 	return goret
 }
 
-// ParseJPEGXS wraps gst_mpegts_descriptor_parse_jpeg_xs
+// ParseJpegXs wraps gst_mpegts_descriptor_parse_jpeg_xs
 // 
 // The function returns the following values:
 // 
@@ -6560,7 +6560,7 @@ func (descriptor *Descriptor) ParseISO639LanguageNb() uint {
 // 	- goret bool 
 //
 // Parses the JPEG-XS descriptor information from @descriptor:
-func (descriptor *Descriptor) ParseJPEGXS() (JpegXsDescriptor, bool) {
+func (descriptor *Descriptor) ParseJpegXs() (JpegXsDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor      // in, none, converted
 	var carg1 C.GstMpegtsJpegXsDescriptor // out, transfer: none, C Pointers: 0, Name: JpegXsDescriptor, caller-allocates
 	var cret  C.gboolean                  // return
@@ -7071,11 +7071,11 @@ func UnsafeDvbMultilingualServiceNameItemToGlibFull(d *DvbMultilingualServiceNam
 //
 // Event Information Table (EN 300 468)
 type EIT struct {
-	*eiT
+	*eIT
 }
 
-// eiT is the struct that's finalized
-type eiT struct {
+// eIT is the struct that's finalized
+type eIT struct {
 	native *C.GstMpegtsEIT
 }
 
@@ -7096,7 +7096,7 @@ func (r *EIT) SetGoValue(v *gobject.Value) {
 
 // UnsafeEITFromGlibBorrow is used to convert raw C.GstMpegtsEIT pointers to go. This is used by the bindings internally.
 func UnsafeEITFromGlibBorrow(p unsafe.Pointer) *EIT {
-	return &EIT{&eiT{(*C.GstMpegtsEIT)(p)}}
+	return &EIT{&eIT{(*C.GstMpegtsEIT)(p)}}
 }
 
 // UnsafeEITFromGlibNone is used to convert raw C.GstMpegtsEIT pointers to go without transferring ownership. This is used by the bindings internally.
@@ -7104,8 +7104,8 @@ func UnsafeEITFromGlibNone(p unsafe.Pointer) *EIT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeEITFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.eiT,
-		func (intern *eiT) {
+		wrapped.eIT,
+		func (intern *eIT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7116,8 +7116,8 @@ func UnsafeEITFromGlibNone(p unsafe.Pointer) *EIT {
 func UnsafeEITFromGlibFull(p unsafe.Pointer) *EIT {
 	wrapped := UnsafeEITFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.eiT,
-		func (intern *eiT) {
+		wrapped.eIT,
+		func (intern *eIT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7139,7 +7139,7 @@ func UnsafeEITToGlibNone(e *EIT) unsafe.Pointer {
 // UnsafeEITToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeEITToGlibFull(e *EIT) unsafe.Pointer {
-	runtime.SetFinalizer(e.eiT, nil)
+	runtime.SetFinalizer(e.eIT, nil)
 	_p := unsafe.Pointer(e.native)
 	e.native = nil // EIT is invalid from here on
 	return _p
@@ -7149,11 +7149,11 @@ func UnsafeEITToGlibFull(e *EIT) unsafe.Pointer {
 //
 // Event from a @GstMpegtsEIT
 type EITEvent struct {
-	*eitEvent
+	*eITEvent
 }
 
-// eitEvent is the struct that's finalized
-type eitEvent struct {
+// eITEvent is the struct that's finalized
+type eITEvent struct {
 	native *C.GstMpegtsEITEvent
 }
 
@@ -7174,7 +7174,7 @@ func (r *EITEvent) SetGoValue(v *gobject.Value) {
 
 // UnsafeEITEventFromGlibBorrow is used to convert raw C.GstMpegtsEITEvent pointers to go. This is used by the bindings internally.
 func UnsafeEITEventFromGlibBorrow(p unsafe.Pointer) *EITEvent {
-	return &EITEvent{&eitEvent{(*C.GstMpegtsEITEvent)(p)}}
+	return &EITEvent{&eITEvent{(*C.GstMpegtsEITEvent)(p)}}
 }
 
 // UnsafeEITEventFromGlibNone is used to convert raw C.GstMpegtsEITEvent pointers to go without transferring ownership. This is used by the bindings internally.
@@ -7182,8 +7182,8 @@ func UnsafeEITEventFromGlibNone(p unsafe.Pointer) *EITEvent {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeEITEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.eitEvent,
-		func (intern *eitEvent) {
+		wrapped.eITEvent,
+		func (intern *eITEvent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7194,8 +7194,8 @@ func UnsafeEITEventFromGlibNone(p unsafe.Pointer) *EITEvent {
 func UnsafeEITEventFromGlibFull(p unsafe.Pointer) *EITEvent {
 	wrapped := UnsafeEITEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.eitEvent,
-		func (intern *eitEvent) {
+		wrapped.eITEvent,
+		func (intern *eITEvent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7217,7 +7217,7 @@ func UnsafeEITEventToGlibNone(e *EITEvent) unsafe.Pointer {
 // UnsafeEITEventToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeEITEventToGlibFull(e *EITEvent) unsafe.Pointer {
-	runtime.SetFinalizer(e.eitEvent, nil)
+	runtime.SetFinalizer(e.eITEvent, nil)
 	_p := unsafe.Pointer(e.native)
 	e.native = nil // EITEvent is invalid from here on
 	return _p
@@ -7379,11 +7379,11 @@ func UnsafeExtendedEventItemToGlibFull(e *ExtendedEventItem) unsafe.Pointer {
 
 // ISO639LanguageDescriptor wraps GstMpegtsISO639LanguageDescriptor
 type ISO639LanguageDescriptor struct {
-	*isO639LanguageDescriptor
+	*iSO639LanguageDescriptor
 }
 
-// isO639LanguageDescriptor is the struct that's finalized
-type isO639LanguageDescriptor struct {
+// iSO639LanguageDescriptor is the struct that's finalized
+type iSO639LanguageDescriptor struct {
 	native *C.GstMpegtsISO639LanguageDescriptor
 }
 
@@ -7404,7 +7404,7 @@ func (r *ISO639LanguageDescriptor) SetGoValue(v *gobject.Value) {
 
 // UnsafeISO639LanguageDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsISO639LanguageDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeISO639LanguageDescriptorFromGlibBorrow(p unsafe.Pointer) *ISO639LanguageDescriptor {
-	return &ISO639LanguageDescriptor{&isO639LanguageDescriptor{(*C.GstMpegtsISO639LanguageDescriptor)(p)}}
+	return &ISO639LanguageDescriptor{&iSO639LanguageDescriptor{(*C.GstMpegtsISO639LanguageDescriptor)(p)}}
 }
 
 // UnsafeISO639LanguageDescriptorFromGlibNone is used to convert raw C.GstMpegtsISO639LanguageDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
@@ -7412,8 +7412,8 @@ func UnsafeISO639LanguageDescriptorFromGlibNone(p unsafe.Pointer) *ISO639Languag
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeISO639LanguageDescriptorFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.isO639LanguageDescriptor,
-		func (intern *isO639LanguageDescriptor) {
+		wrapped.iSO639LanguageDescriptor,
+		func (intern *iSO639LanguageDescriptor) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7424,8 +7424,8 @@ func UnsafeISO639LanguageDescriptorFromGlibNone(p unsafe.Pointer) *ISO639Languag
 func UnsafeISO639LanguageDescriptorFromGlibFull(p unsafe.Pointer) *ISO639LanguageDescriptor {
 	wrapped := UnsafeISO639LanguageDescriptorFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.isO639LanguageDescriptor,
-		func (intern *isO639LanguageDescriptor) {
+		wrapped.iSO639LanguageDescriptor,
+		func (intern *iSO639LanguageDescriptor) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7447,7 +7447,7 @@ func UnsafeISO639LanguageDescriptorToGlibNone(i *ISO639LanguageDescriptor) unsaf
 // UnsafeISO639LanguageDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeISO639LanguageDescriptorToGlibFull(i *ISO639LanguageDescriptor) unsafe.Pointer {
-	runtime.SetFinalizer(i.isO639LanguageDescriptor, nil)
+	runtime.SetFinalizer(i.iSO639LanguageDescriptor, nil)
 	_p := unsafe.Pointer(i.native)
 	i.native = nil // ISO639LanguageDescriptor is invalid from here on
 	return _p
@@ -7865,11 +7865,11 @@ func UnsafeMetadataPointerDescriptorToGlibFull(m *MetadataPointerDescriptor) uns
 //
 // Network Information Table (ISO/IEC 13818-1 / EN 300 468)
 type NIT struct {
-	*niT
+	*nIT
 }
 
-// niT is the struct that's finalized
-type niT struct {
+// nIT is the struct that's finalized
+type nIT struct {
 	native *C.GstMpegtsNIT
 }
 
@@ -7890,7 +7890,7 @@ func (r *NIT) SetGoValue(v *gobject.Value) {
 
 // UnsafeNITFromGlibBorrow is used to convert raw C.GstMpegtsNIT pointers to go. This is used by the bindings internally.
 func UnsafeNITFromGlibBorrow(p unsafe.Pointer) *NIT {
-	return &NIT{&niT{(*C.GstMpegtsNIT)(p)}}
+	return &NIT{&nIT{(*C.GstMpegtsNIT)(p)}}
 }
 
 // UnsafeNITFromGlibNone is used to convert raw C.GstMpegtsNIT pointers to go without transferring ownership. This is used by the bindings internally.
@@ -7898,8 +7898,8 @@ func UnsafeNITFromGlibNone(p unsafe.Pointer) *NIT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNITFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.niT,
-		func (intern *niT) {
+		wrapped.nIT,
+		func (intern *nIT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7910,8 +7910,8 @@ func UnsafeNITFromGlibNone(p unsafe.Pointer) *NIT {
 func UnsafeNITFromGlibFull(p unsafe.Pointer) *NIT {
 	wrapped := UnsafeNITFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.niT,
-		func (intern *niT) {
+		wrapped.nIT,
+		func (intern *nIT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7933,7 +7933,7 @@ func UnsafeNITToGlibNone(n *NIT) unsafe.Pointer {
 // UnsafeNITToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeNITToGlibFull(n *NIT) unsafe.Pointer {
-	runtime.SetFinalizer(n.niT, nil)
+	runtime.SetFinalizer(n.nIT, nil)
 	_p := unsafe.Pointer(n.native)
 	n.native = nil // NIT is invalid from here on
 	return _p
@@ -7960,11 +7960,11 @@ func NewNIT() *NIT {
 
 // NITStream wraps GstMpegtsNITStream
 type NITStream struct {
-	*nitStream
+	*nITStream
 }
 
-// nitStream is the struct that's finalized
-type nitStream struct {
+// nITStream is the struct that's finalized
+type nITStream struct {
 	native *C.GstMpegtsNITStream
 }
 
@@ -7985,7 +7985,7 @@ func (r *NITStream) SetGoValue(v *gobject.Value) {
 
 // UnsafeNITStreamFromGlibBorrow is used to convert raw C.GstMpegtsNITStream pointers to go. This is used by the bindings internally.
 func UnsafeNITStreamFromGlibBorrow(p unsafe.Pointer) *NITStream {
-	return &NITStream{&nitStream{(*C.GstMpegtsNITStream)(p)}}
+	return &NITStream{&nITStream{(*C.GstMpegtsNITStream)(p)}}
 }
 
 // UnsafeNITStreamFromGlibNone is used to convert raw C.GstMpegtsNITStream pointers to go without transferring ownership. This is used by the bindings internally.
@@ -7993,8 +7993,8 @@ func UnsafeNITStreamFromGlibNone(p unsafe.Pointer) *NITStream {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNITStreamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.nitStream,
-		func (intern *nitStream) {
+		wrapped.nITStream,
+		func (intern *nITStream) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8005,8 +8005,8 @@ func UnsafeNITStreamFromGlibNone(p unsafe.Pointer) *NITStream {
 func UnsafeNITStreamFromGlibFull(p unsafe.Pointer) *NITStream {
 	wrapped := UnsafeNITStreamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.nitStream,
-		func (intern *nitStream) {
+		wrapped.nITStream,
+		func (intern *nITStream) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8028,7 +8028,7 @@ func UnsafeNITStreamToGlibNone(n *NITStream) unsafe.Pointer {
 // UnsafeNITStreamToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeNITStreamToGlibFull(n *NITStream) unsafe.Pointer {
-	runtime.SetFinalizer(n.nitStream, nil)
+	runtime.SetFinalizer(n.nITStream, nil)
 	_p := unsafe.Pointer(n.native)
 	n.native = nil // NITStream is invalid from here on
 	return _p
@@ -8061,17 +8061,17 @@ func NewNITStream() *NITStream {
 // 
 // AU_cell_data_length is not provided, since it matches the length of the buffer
 type PESMetadataMeta struct {
-	*pesMetadataMeta
+	*pESMetadataMeta
 }
 
-// pesMetadataMeta is the struct that's finalized
-type pesMetadataMeta struct {
+// pESMetadataMeta is the struct that's finalized
+type pESMetadataMeta struct {
 	native *C.GstMpegtsPESMetadataMeta
 }
 
 // UnsafePESMetadataMetaFromGlibBorrow is used to convert raw C.GstMpegtsPESMetadataMeta pointers to go. This is used by the bindings internally.
 func UnsafePESMetadataMetaFromGlibBorrow(p unsafe.Pointer) *PESMetadataMeta {
-	return &PESMetadataMeta{&pesMetadataMeta{(*C.GstMpegtsPESMetadataMeta)(p)}}
+	return &PESMetadataMeta{&pESMetadataMeta{(*C.GstMpegtsPESMetadataMeta)(p)}}
 }
 
 // UnsafePESMetadataMetaFromGlibNone is used to convert raw C.GstMpegtsPESMetadataMeta pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8079,8 +8079,8 @@ func UnsafePESMetadataMetaFromGlibNone(p unsafe.Pointer) *PESMetadataMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePESMetadataMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.pesMetadataMeta,
-		func (intern *pesMetadataMeta) {
+		wrapped.pESMetadataMeta,
+		func (intern *pESMetadataMeta) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8091,8 +8091,8 @@ func UnsafePESMetadataMetaFromGlibNone(p unsafe.Pointer) *PESMetadataMeta {
 func UnsafePESMetadataMetaFromGlibFull(p unsafe.Pointer) *PESMetadataMeta {
 	wrapped := UnsafePESMetadataMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.pesMetadataMeta,
-		func (intern *pesMetadataMeta) {
+		wrapped.pESMetadataMeta,
+		func (intern *pESMetadataMeta) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8114,7 +8114,7 @@ func UnsafePESMetadataMetaToGlibNone(p *PESMetadataMeta) unsafe.Pointer {
 // UnsafePESMetadataMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePESMetadataMetaToGlibFull(p *PESMetadataMeta) unsafe.Pointer {
-	runtime.SetFinalizer(p.pesMetadataMeta, nil)
+	runtime.SetFinalizer(p.pESMetadataMeta, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PESMetadataMeta is invalid from here on
 	return _p
@@ -8147,11 +8147,11 @@ func PESMetadataMetaGetInfo() *gst.MetaInfo {
 // The program_number is contained in the subtable_extension field of the
 // container #GstMpegtsSection.
 type PMT struct {
-	*pmT
+	*pMT
 }
 
-// pmT is the struct that's finalized
-type pmT struct {
+// pMT is the struct that's finalized
+type pMT struct {
 	native *C.GstMpegtsPMT
 }
 
@@ -8172,7 +8172,7 @@ func (r *PMT) SetGoValue(v *gobject.Value) {
 
 // UnsafePMTFromGlibBorrow is used to convert raw C.GstMpegtsPMT pointers to go. This is used by the bindings internally.
 func UnsafePMTFromGlibBorrow(p unsafe.Pointer) *PMT {
-	return &PMT{&pmT{(*C.GstMpegtsPMT)(p)}}
+	return &PMT{&pMT{(*C.GstMpegtsPMT)(p)}}
 }
 
 // UnsafePMTFromGlibNone is used to convert raw C.GstMpegtsPMT pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8180,8 +8180,8 @@ func UnsafePMTFromGlibNone(p unsafe.Pointer) *PMT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePMTFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.pmT,
-		func (intern *pmT) {
+		wrapped.pMT,
+		func (intern *pMT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8192,8 +8192,8 @@ func UnsafePMTFromGlibNone(p unsafe.Pointer) *PMT {
 func UnsafePMTFromGlibFull(p unsafe.Pointer) *PMT {
 	wrapped := UnsafePMTFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.pmT,
-		func (intern *pmT) {
+		wrapped.pMT,
+		func (intern *pMT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8215,7 +8215,7 @@ func UnsafePMTToGlibNone(p *PMT) unsafe.Pointer {
 // UnsafePMTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePMTToGlibFull(p *PMT) unsafe.Pointer {
-	runtime.SetFinalizer(p.pmT, nil)
+	runtime.SetFinalizer(p.pMT, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PMT is invalid from here on
 	return _p
@@ -8246,11 +8246,11 @@ func NewPMT() *PMT {
 //
 // An individual stream definition of a #GstMpegtsPMT.
 type PMTStream struct {
-	*pmtStream
+	*pMTStream
 }
 
-// pmtStream is the struct that's finalized
-type pmtStream struct {
+// pMTStream is the struct that's finalized
+type pMTStream struct {
 	native *C.GstMpegtsPMTStream
 }
 
@@ -8271,7 +8271,7 @@ func (r *PMTStream) SetGoValue(v *gobject.Value) {
 
 // UnsafePMTStreamFromGlibBorrow is used to convert raw C.GstMpegtsPMTStream pointers to go. This is used by the bindings internally.
 func UnsafePMTStreamFromGlibBorrow(p unsafe.Pointer) *PMTStream {
-	return &PMTStream{&pmtStream{(*C.GstMpegtsPMTStream)(p)}}
+	return &PMTStream{&pMTStream{(*C.GstMpegtsPMTStream)(p)}}
 }
 
 // UnsafePMTStreamFromGlibNone is used to convert raw C.GstMpegtsPMTStream pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8279,8 +8279,8 @@ func UnsafePMTStreamFromGlibNone(p unsafe.Pointer) *PMTStream {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePMTStreamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.pmtStream,
-		func (intern *pmtStream) {
+		wrapped.pMTStream,
+		func (intern *pMTStream) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8291,8 +8291,8 @@ func UnsafePMTStreamFromGlibNone(p unsafe.Pointer) *PMTStream {
 func UnsafePMTStreamFromGlibFull(p unsafe.Pointer) *PMTStream {
 	wrapped := UnsafePMTStreamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.pmtStream,
-		func (intern *pmtStream) {
+		wrapped.pMTStream,
+		func (intern *pMTStream) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8314,7 +8314,7 @@ func UnsafePMTStreamToGlibNone(p *PMTStream) unsafe.Pointer {
 // UnsafePMTStreamToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePMTStreamToGlibFull(p *PMTStream) unsafe.Pointer {
-	runtime.SetFinalizer(p.pmtStream, nil)
+	runtime.SetFinalizer(p.pMTStream, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PMTStream is invalid from here on
 	return _p
@@ -8438,11 +8438,11 @@ func NewPatProgram() *PatProgram {
 
 // SCTESIT wraps GstMpegtsSCTESIT
 type SCTESIT struct {
-	*sctesiT
+	*sCTESIT
 }
 
-// sctesiT is the struct that's finalized
-type sctesiT struct {
+// sCTESIT is the struct that's finalized
+type sCTESIT struct {
 	native *C.GstMpegtsSCTESIT
 }
 
@@ -8463,7 +8463,7 @@ func (r *SCTESIT) SetGoValue(v *gobject.Value) {
 
 // UnsafeSCTESITFromGlibBorrow is used to convert raw C.GstMpegtsSCTESIT pointers to go. This is used by the bindings internally.
 func UnsafeSCTESITFromGlibBorrow(p unsafe.Pointer) *SCTESIT {
-	return &SCTESIT{&sctesiT{(*C.GstMpegtsSCTESIT)(p)}}
+	return &SCTESIT{&sCTESIT{(*C.GstMpegtsSCTESIT)(p)}}
 }
 
 // UnsafeSCTESITFromGlibNone is used to convert raw C.GstMpegtsSCTESIT pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8471,8 +8471,8 @@ func UnsafeSCTESITFromGlibNone(p unsafe.Pointer) *SCTESIT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSCTESITFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sctesiT,
-		func (intern *sctesiT) {
+		wrapped.sCTESIT,
+		func (intern *sCTESIT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8483,8 +8483,8 @@ func UnsafeSCTESITFromGlibNone(p unsafe.Pointer) *SCTESIT {
 func UnsafeSCTESITFromGlibFull(p unsafe.Pointer) *SCTESIT {
 	wrapped := UnsafeSCTESITFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sctesiT,
-		func (intern *sctesiT) {
+		wrapped.sCTESIT,
+		func (intern *sCTESIT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8506,7 +8506,7 @@ func UnsafeSCTESITToGlibNone(s *SCTESIT) unsafe.Pointer {
 // UnsafeSCTESITToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSCTESITToGlibFull(s *SCTESIT) unsafe.Pointer {
-	runtime.SetFinalizer(s.sctesiT, nil)
+	runtime.SetFinalizer(s.sCTESIT, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SCTESIT is invalid from here on
 	return _p
@@ -8535,11 +8535,11 @@ func NewSCTESIT() *SCTESIT {
 //
 // Per-PID splice information.
 type SCTESpliceComponent struct {
-	*scteSpliceComponent
+	*sCTESpliceComponent
 }
 
-// scteSpliceComponent is the struct that's finalized
-type scteSpliceComponent struct {
+// sCTESpliceComponent is the struct that's finalized
+type sCTESpliceComponent struct {
 	native *C.GstMpegtsSCTESpliceComponent
 }
 
@@ -8560,7 +8560,7 @@ func (r *SCTESpliceComponent) SetGoValue(v *gobject.Value) {
 
 // UnsafeSCTESpliceComponentFromGlibBorrow is used to convert raw C.GstMpegtsSCTESpliceComponent pointers to go. This is used by the bindings internally.
 func UnsafeSCTESpliceComponentFromGlibBorrow(p unsafe.Pointer) *SCTESpliceComponent {
-	return &SCTESpliceComponent{&scteSpliceComponent{(*C.GstMpegtsSCTESpliceComponent)(p)}}
+	return &SCTESpliceComponent{&sCTESpliceComponent{(*C.GstMpegtsSCTESpliceComponent)(p)}}
 }
 
 // UnsafeSCTESpliceComponentFromGlibNone is used to convert raw C.GstMpegtsSCTESpliceComponent pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8568,8 +8568,8 @@ func UnsafeSCTESpliceComponentFromGlibNone(p unsafe.Pointer) *SCTESpliceComponen
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSCTESpliceComponentFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.scteSpliceComponent,
-		func (intern *scteSpliceComponent) {
+		wrapped.sCTESpliceComponent,
+		func (intern *sCTESpliceComponent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8580,8 +8580,8 @@ func UnsafeSCTESpliceComponentFromGlibNone(p unsafe.Pointer) *SCTESpliceComponen
 func UnsafeSCTESpliceComponentFromGlibFull(p unsafe.Pointer) *SCTESpliceComponent {
 	wrapped := UnsafeSCTESpliceComponentFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.scteSpliceComponent,
-		func (intern *scteSpliceComponent) {
+		wrapped.sCTESpliceComponent,
+		func (intern *sCTESpliceComponent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8603,7 +8603,7 @@ func UnsafeSCTESpliceComponentToGlibNone(s *SCTESpliceComponent) unsafe.Pointer 
 // UnsafeSCTESpliceComponentToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSCTESpliceComponentToGlibFull(s *SCTESpliceComponent) unsafe.Pointer {
-	runtime.SetFinalizer(s.scteSpliceComponent, nil)
+	runtime.SetFinalizer(s.sCTESpliceComponent, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SCTESpliceComponent is invalid from here on
 	return _p
@@ -8638,11 +8638,11 @@ func NewSCTESpliceComponent(tag uint8) *SCTESpliceComponent {
 
 // SCTESpliceEvent wraps GstMpegtsSCTESpliceEvent
 type SCTESpliceEvent struct {
-	*scteSpliceEvent
+	*sCTESpliceEvent
 }
 
-// scteSpliceEvent is the struct that's finalized
-type scteSpliceEvent struct {
+// sCTESpliceEvent is the struct that's finalized
+type sCTESpliceEvent struct {
 	native *C.GstMpegtsSCTESpliceEvent
 }
 
@@ -8663,7 +8663,7 @@ func (r *SCTESpliceEvent) SetGoValue(v *gobject.Value) {
 
 // UnsafeSCTESpliceEventFromGlibBorrow is used to convert raw C.GstMpegtsSCTESpliceEvent pointers to go. This is used by the bindings internally.
 func UnsafeSCTESpliceEventFromGlibBorrow(p unsafe.Pointer) *SCTESpliceEvent {
-	return &SCTESpliceEvent{&scteSpliceEvent{(*C.GstMpegtsSCTESpliceEvent)(p)}}
+	return &SCTESpliceEvent{&sCTESpliceEvent{(*C.GstMpegtsSCTESpliceEvent)(p)}}
 }
 
 // UnsafeSCTESpliceEventFromGlibNone is used to convert raw C.GstMpegtsSCTESpliceEvent pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8671,8 +8671,8 @@ func UnsafeSCTESpliceEventFromGlibNone(p unsafe.Pointer) *SCTESpliceEvent {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSCTESpliceEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.scteSpliceEvent,
-		func (intern *scteSpliceEvent) {
+		wrapped.sCTESpliceEvent,
+		func (intern *sCTESpliceEvent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8683,8 +8683,8 @@ func UnsafeSCTESpliceEventFromGlibNone(p unsafe.Pointer) *SCTESpliceEvent {
 func UnsafeSCTESpliceEventFromGlibFull(p unsafe.Pointer) *SCTESpliceEvent {
 	wrapped := UnsafeSCTESpliceEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.scteSpliceEvent,
-		func (intern *scteSpliceEvent) {
+		wrapped.sCTESpliceEvent,
+		func (intern *sCTESpliceEvent) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8706,7 +8706,7 @@ func UnsafeSCTESpliceEventToGlibNone(s *SCTESpliceEvent) unsafe.Pointer {
 // UnsafeSCTESpliceEventToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSCTESpliceEventToGlibFull(s *SCTESpliceEvent) unsafe.Pointer {
-	runtime.SetFinalizer(s.scteSpliceEvent, nil)
+	runtime.SetFinalizer(s.sCTESpliceEvent, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SCTESpliceEvent is invalid from here on
 	return _p
@@ -8735,11 +8735,11 @@ func NewSCTESpliceEvent() *SCTESpliceEvent {
 //
 // Service Description Table (EN 300 468)
 type SDT struct {
-	*sdT
+	*sDT
 }
 
-// sdT is the struct that's finalized
-type sdT struct {
+// sDT is the struct that's finalized
+type sDT struct {
 	native *C.GstMpegtsSDT
 }
 
@@ -8760,7 +8760,7 @@ func (r *SDT) SetGoValue(v *gobject.Value) {
 
 // UnsafeSDTFromGlibBorrow is used to convert raw C.GstMpegtsSDT pointers to go. This is used by the bindings internally.
 func UnsafeSDTFromGlibBorrow(p unsafe.Pointer) *SDT {
-	return &SDT{&sdT{(*C.GstMpegtsSDT)(p)}}
+	return &SDT{&sDT{(*C.GstMpegtsSDT)(p)}}
 }
 
 // UnsafeSDTFromGlibNone is used to convert raw C.GstMpegtsSDT pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8768,8 +8768,8 @@ func UnsafeSDTFromGlibNone(p unsafe.Pointer) *SDT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDTFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdT,
-		func (intern *sdT) {
+		wrapped.sDT,
+		func (intern *sDT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8780,8 +8780,8 @@ func UnsafeSDTFromGlibNone(p unsafe.Pointer) *SDT {
 func UnsafeSDTFromGlibFull(p unsafe.Pointer) *SDT {
 	wrapped := UnsafeSDTFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdT,
-		func (intern *sdT) {
+		wrapped.sDT,
+		func (intern *sDT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8803,7 +8803,7 @@ func UnsafeSDTToGlibNone(s *SDT) unsafe.Pointer {
 // UnsafeSDTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDTToGlibFull(s *SDT) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdT, nil)
+	runtime.SetFinalizer(s.sDT, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDT is invalid from here on
 	return _p
@@ -8830,11 +8830,11 @@ func NewSDT() *SDT {
 
 // SDTService wraps GstMpegtsSDTService
 type SDTService struct {
-	*sdtService
+	*sDTService
 }
 
-// sdtService is the struct that's finalized
-type sdtService struct {
+// sDTService is the struct that's finalized
+type sDTService struct {
 	native *C.GstMpegtsSDTService
 }
 
@@ -8855,7 +8855,7 @@ func (r *SDTService) SetGoValue(v *gobject.Value) {
 
 // UnsafeSDTServiceFromGlibBorrow is used to convert raw C.GstMpegtsSDTService pointers to go. This is used by the bindings internally.
 func UnsafeSDTServiceFromGlibBorrow(p unsafe.Pointer) *SDTService {
-	return &SDTService{&sdtService{(*C.GstMpegtsSDTService)(p)}}
+	return &SDTService{&sDTService{(*C.GstMpegtsSDTService)(p)}}
 }
 
 // UnsafeSDTServiceFromGlibNone is used to convert raw C.GstMpegtsSDTService pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8863,8 +8863,8 @@ func UnsafeSDTServiceFromGlibNone(p unsafe.Pointer) *SDTService {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDTServiceFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdtService,
-		func (intern *sdtService) {
+		wrapped.sDTService,
+		func (intern *sDTService) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8875,8 +8875,8 @@ func UnsafeSDTServiceFromGlibNone(p unsafe.Pointer) *SDTService {
 func UnsafeSDTServiceFromGlibFull(p unsafe.Pointer) *SDTService {
 	wrapped := UnsafeSDTServiceFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdtService,
-		func (intern *sdtService) {
+		wrapped.sDTService,
+		func (intern *sDTService) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8898,7 +8898,7 @@ func UnsafeSDTServiceToGlibNone(s *SDTService) unsafe.Pointer {
 // UnsafeSDTServiceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDTServiceToGlibFull(s *SDTService) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdtService, nil)
+	runtime.SetFinalizer(s.sDTService, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDTService is invalid from here on
 	return _p
@@ -8927,11 +8927,11 @@ func NewSDTService() *SDTService {
 //
 // Selection Information Table (EN 300 468)
 type SIT struct {
-	*siT
+	*sIT
 }
 
-// siT is the struct that's finalized
-type siT struct {
+// sIT is the struct that's finalized
+type sIT struct {
 	native *C.GstMpegtsSIT
 }
 
@@ -8952,7 +8952,7 @@ func (r *SIT) SetGoValue(v *gobject.Value) {
 
 // UnsafeSITFromGlibBorrow is used to convert raw C.GstMpegtsSIT pointers to go. This is used by the bindings internally.
 func UnsafeSITFromGlibBorrow(p unsafe.Pointer) *SIT {
-	return &SIT{&siT{(*C.GstMpegtsSIT)(p)}}
+	return &SIT{&sIT{(*C.GstMpegtsSIT)(p)}}
 }
 
 // UnsafeSITFromGlibNone is used to convert raw C.GstMpegtsSIT pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8960,8 +8960,8 @@ func UnsafeSITFromGlibNone(p unsafe.Pointer) *SIT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSITFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.siT,
-		func (intern *siT) {
+		wrapped.sIT,
+		func (intern *sIT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8972,8 +8972,8 @@ func UnsafeSITFromGlibNone(p unsafe.Pointer) *SIT {
 func UnsafeSITFromGlibFull(p unsafe.Pointer) *SIT {
 	wrapped := UnsafeSITFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.siT,
-		func (intern *siT) {
+		wrapped.sIT,
+		func (intern *sIT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8995,7 +8995,7 @@ func UnsafeSITToGlibNone(s *SIT) unsafe.Pointer {
 // UnsafeSITToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSITToGlibFull(s *SIT) unsafe.Pointer {
-	runtime.SetFinalizer(s.siT, nil)
+	runtime.SetFinalizer(s.sIT, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SIT is invalid from here on
 	return _p
@@ -9005,11 +9005,11 @@ func UnsafeSITToGlibFull(s *SIT) unsafe.Pointer {
 //
 // SIT Service entry
 type SITService struct {
-	*sitService
+	*sITService
 }
 
-// sitService is the struct that's finalized
-type sitService struct {
+// sITService is the struct that's finalized
+type sITService struct {
 	native *C.GstMpegtsSITService
 }
 
@@ -9030,7 +9030,7 @@ func (r *SITService) SetGoValue(v *gobject.Value) {
 
 // UnsafeSITServiceFromGlibBorrow is used to convert raw C.GstMpegtsSITService pointers to go. This is used by the bindings internally.
 func UnsafeSITServiceFromGlibBorrow(p unsafe.Pointer) *SITService {
-	return &SITService{&sitService{(*C.GstMpegtsSITService)(p)}}
+	return &SITService{&sITService{(*C.GstMpegtsSITService)(p)}}
 }
 
 // UnsafeSITServiceFromGlibNone is used to convert raw C.GstMpegtsSITService pointers to go without transferring ownership. This is used by the bindings internally.
@@ -9038,8 +9038,8 @@ func UnsafeSITServiceFromGlibNone(p unsafe.Pointer) *SITService {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSITServiceFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sitService,
-		func (intern *sitService) {
+		wrapped.sITService,
+		func (intern *sITService) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -9050,8 +9050,8 @@ func UnsafeSITServiceFromGlibNone(p unsafe.Pointer) *SITService {
 func UnsafeSITServiceFromGlibFull(p unsafe.Pointer) *SITService {
 	wrapped := UnsafeSITServiceFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sitService,
-		func (intern *sitService) {
+		wrapped.sITService,
+		func (intern *sITService) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -9073,7 +9073,7 @@ func UnsafeSITServiceToGlibNone(s *SITService) unsafe.Pointer {
 // UnsafeSITServiceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSITServiceToGlibFull(s *SITService) unsafe.Pointer {
-	runtime.SetFinalizer(s.sitService, nil)
+	runtime.SetFinalizer(s.sITService, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SITService is invalid from here on
 	return _p
@@ -10235,11 +10235,11 @@ func UnsafeT2DeliverySystemDescriptorToGlibFull(t *T2DeliverySystemDescriptor) u
 //
 // Time Offset Table (EN 300 468)
 type TOT struct {
-	*toT
+	*tOT
 }
 
-// toT is the struct that's finalized
-type toT struct {
+// tOT is the struct that's finalized
+type tOT struct {
 	native *C.GstMpegtsTOT
 }
 
@@ -10260,7 +10260,7 @@ func (r *TOT) SetGoValue(v *gobject.Value) {
 
 // UnsafeTOTFromGlibBorrow is used to convert raw C.GstMpegtsTOT pointers to go. This is used by the bindings internally.
 func UnsafeTOTFromGlibBorrow(p unsafe.Pointer) *TOT {
-	return &TOT{&toT{(*C.GstMpegtsTOT)(p)}}
+	return &TOT{&tOT{(*C.GstMpegtsTOT)(p)}}
 }
 
 // UnsafeTOTFromGlibNone is used to convert raw C.GstMpegtsTOT pointers to go without transferring ownership. This is used by the bindings internally.
@@ -10268,8 +10268,8 @@ func UnsafeTOTFromGlibNone(p unsafe.Pointer) *TOT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTOTFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.toT,
-		func (intern *toT) {
+		wrapped.tOT,
+		func (intern *tOT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -10280,8 +10280,8 @@ func UnsafeTOTFromGlibNone(p unsafe.Pointer) *TOT {
 func UnsafeTOTFromGlibFull(p unsafe.Pointer) *TOT {
 	wrapped := UnsafeTOTFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.toT,
-		func (intern *toT) {
+		wrapped.tOT,
+		func (intern *tOT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -10303,7 +10303,7 @@ func UnsafeTOTToGlibNone(t *TOT) unsafe.Pointer {
 // UnsafeTOTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeTOTToGlibFull(t *TOT) unsafe.Pointer {
-	runtime.SetFinalizer(t.toT, nil)
+	runtime.SetFinalizer(t.tOT, nil)
 	_p := unsafe.Pointer(t.native)
 	t.native = nil // TOT is invalid from here on
 	return _p

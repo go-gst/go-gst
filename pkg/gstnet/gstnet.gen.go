@@ -188,12 +188,12 @@ func BufferGetNetAddressMeta(buffer *gst.Buffer) *NetAddressMeta {
 	return goret
 }
 
-// NetAddressMetaApiGetType wraps gst_net_address_meta_api_get_type
+// NetAddressMetaAPIGetType wraps gst_net_address_meta_api_get_type
 // 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
-func NetAddressMetaApiGetType() gobject.Type {
+func NetAddressMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
 	cret = C.gst_net_address_meta_api_get_type()
@@ -205,12 +205,12 @@ func NetAddressMetaApiGetType() gobject.Type {
 	return goret
 }
 
-// NetControlMessageMetaApiGetType wraps gst_net_control_message_meta_api_get_type
+// NetControlMessageMetaAPIGetType wraps gst_net_control_message_meta_api_get_type
 // 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
-func NetControlMessageMetaApiGetType() gobject.Type {
+func NetControlMessageMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
 	cret = C.gst_net_control_message_meta_api_get_type()

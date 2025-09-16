@@ -82,7 +82,7 @@ func tagsetter() error {
 			// fmt.Println(msg)
 
 		// End of stream
-		case gst.MessageEos:
+		case gst.MessageEOS:
 			// Errors from any elements
 		case gst.MessageError:
 			debug, gerr := msg.ParseError()

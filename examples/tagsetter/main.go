@@ -79,7 +79,7 @@ func handleMessage(msg *gst.Message) (bool, error) {
 	switch msg.Type() {
 	case gst.MessageTag:
 		fmt.Println(msg) // Prirnt our tags
-	case gst.MessageEos:
+	case gst.MessageEOS:
 		return false, nil
 	case gst.MessageError:
 		_, err := msg.ParseError()

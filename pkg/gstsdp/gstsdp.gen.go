@@ -42,15 +42,15 @@ const MIKEY_VERSION = 1
 type MIKEYCacheType C.int
 
 const (
-	// MikeyCacheNone wraps MIKEY_CACHE_NONE
+	// MikeyCacheNone wraps GST_MIKEY_CACHE_NONE
 	//
 	// The envelope key MUST NOT be cached
 	MikeyCacheNone MIKEYCacheType = 0
-	// MikeyCacheAlways wraps MIKEY_CACHE_ALWAYS
+	// MikeyCacheAlways wraps GST_MIKEY_CACHE_ALWAYS
 	//
 	// The envelope key MUST be cached
 	MikeyCacheAlways MIKEYCacheType = 1
-	// MikeyCacheForCsb wraps MIKEY_CACHE_FOR_CSB
+	// MikeyCacheForCsb wraps GST_MIKEY_CACHE_FOR_CSB
 	//
 	// The envelope key MUST be cached, but only
 	//                           to be used for the specific CSB.
@@ -73,19 +73,19 @@ func (e MIKEYCacheType) String() string {
 type MIKEYEncAlg C.int
 
 const (
-	// MikeyEncNull wraps MIKEY_ENC_NULL
+	// MikeyEncNull wraps GST_MIKEY_ENC_NULL
 	//
 	// no encryption
 	MikeyEncNull MIKEYEncAlg = 0
-	// MikeyEncAesCm128 wraps MIKEY_ENC_AES_CM_128
+	// MikeyEncAesCm128 wraps GST_MIKEY_ENC_AES_CM_128
 	//
 	// AES-CM using a 128-bit key
 	MikeyEncAesCm128 MIKEYEncAlg = 1
-	// MikeyEncAesKw128 wraps MIKEY_ENC_AES_KW_128
+	// MikeyEncAesKw128 wraps GST_MIKEY_ENC_AES_KW_128
 	//
 	// AES Key Wrap using a 128-bit key
 	MikeyEncAesKw128 MIKEYEncAlg = 2
-	// MikeyEncAesGcm128 wraps MIKEY_ENC_AES_GCM_128
+	// MikeyEncAesGcm128 wraps GST_MIKEY_ENC_AES_GCM_128
 	//
 	// AES-GCM using a 128-bit key (Since: 1.16)
 	MikeyEncAesGcm128 MIKEYEncAlg = 6
@@ -108,15 +108,15 @@ func (e MIKEYEncAlg) String() string {
 type MIKEYKVType C.int
 
 const (
-	// MikeyKvNull wraps MIKEY_KV_NULL
+	// MikeyKvNull wraps GST_MIKEY_KV_NULL
 	//
 	// No specific usage rule
 	MikeyKvNull MIKEYKVType = 0
-	// MikeyKvSpi wraps MIKEY_KV_SPI
+	// MikeyKvSpi wraps GST_MIKEY_KV_SPI
 	//
 	// The key is associated with the SPI/MKI
 	MikeyKvSpi MIKEYKVType = 1
-	// MikeyKvInterval wraps MIKEY_KV_INTERVAL
+	// MikeyKvInterval wraps GST_MIKEY_KV_INTERVAL
 	//
 	// The key has a start and expiration time
 	MikeyKvInterval MIKEYKVType = 2
@@ -138,11 +138,11 @@ func (e MIKEYKVType) String() string {
 type MIKEYKeyDataType C.int
 
 const (
-	// MikeyKdTgk wraps MIKEY_KD_TGK
+	// MikeyKdTgk wraps GST_MIKEY_KD_TGK
 	//
 	// a TEK Generation Key
 	MikeyKdTgk MIKEYKeyDataType = 0
-	// MikeyKdTek wraps MIKEY_KD_TEK
+	// MikeyKdTek wraps GST_MIKEY_KD_TEK
 	//
 	// Traffic-Encrypting Key
 	MikeyKdTek MIKEYKeyDataType = 2
@@ -163,20 +163,20 @@ func (e MIKEYKeyDataType) String() string {
 type MIKEYMacAlg C.int
 
 const (
-	// MikeyMacNull wraps MIKEY_MAC_NULL
+	// MikeyMacNull wraps GST_MIKEY_MAC_NULL
 	//
 	// no authentication
 	MikeyMacNull MIKEYMacAlg = 0
-	// MikeyMacHMACSHA1160 wraps MIKEY_MAC_HMAC_SHA_1_160
+	// MikeyMacHmacSha1160 wraps GST_MIKEY_MAC_HMAC_SHA_1_160
 	//
 	// HMAC-SHA-1-160
-	MikeyMacHMACSHA1160 MIKEYMacAlg = 1
+	MikeyMacHmacSha1160 MIKEYMacAlg = 1
 )
 
 
 func (e MIKEYMacAlg) String() string {
 	switch e {
-		case MikeyMacHMACSHA1160: return "MikeyMacHMACSHA1160"
+		case MikeyMacHmacSha1160: return "MikeyMacHmacSha1160"
 		case MikeyMacNull: return "MikeyMacNull"
 		default: return fmt.Sprintf("MIKEYMacAlg(%d)", e)
 	}
@@ -189,7 +189,7 @@ func (e MIKEYMacAlg) String() string {
 type MIKEYMapType C.int
 
 const (
-	// MikeyMapTypeSrtp wraps MIKEY_MAP_TYPE_SRTP
+	// MikeyMapTypeSrtp wraps GST_MIKEY_MAP_TYPE_SRTP
 	//
 	// SRTP
 	MikeyMapTypeSrtp MIKEYMapType = 0
@@ -209,7 +209,7 @@ func (e MIKEYMapType) String() string {
 type MIKEYPRFFunc C.int
 
 const (
-	// MikeyPrfMikey1 wraps MIKEY_PRF_MIKEY_1
+	// MikeyPrfMikey1 wraps GST_MIKEY_PRF_MIKEY_1
 	//
 	// MIKEY-1 PRF function
 	MikeyPrfMikey1 MIKEYPRFFunc = 0
@@ -229,63 +229,63 @@ func (e MIKEYPRFFunc) String() string {
 type MIKEYPayloadType C.int
 
 const (
-	// MikeyPtLast wraps MIKEY_PT_LAST
+	// MikeyPtLast wraps GST_MIKEY_PT_LAST
 	//
 	// Last payload
 	MikeyPtLast MIKEYPayloadType = 0
-	// MikeyPtKemac wraps MIKEY_PT_KEMAC
+	// MikeyPtKemac wraps GST_MIKEY_PT_KEMAC
 	//
 	// Key data transport payload
 	MikeyPtKemac MIKEYPayloadType = 1
-	// MikeyPtPke wraps MIKEY_PT_PKE
+	// MikeyPtPke wraps GST_MIKEY_PT_PKE
 	//
 	// Envelope data payload
 	MikeyPtPke MIKEYPayloadType = 2
-	// MikeyPtDh wraps MIKEY_PT_DH
+	// MikeyPtDh wraps GST_MIKEY_PT_DH
 	//
 	// DH data payload
 	MikeyPtDh MIKEYPayloadType = 3
-	// MikeyPtSign wraps MIKEY_PT_SIGN
+	// MikeyPtSign wraps GST_MIKEY_PT_SIGN
 	//
 	// Signature payload
 	MikeyPtSign MIKEYPayloadType = 4
-	// MikeyPtT wraps MIKEY_PT_T
+	// MikeyPtT wraps GST_MIKEY_PT_T
 	//
 	// Timestamp payload
 	MikeyPtT MIKEYPayloadType = 5
-	// MikeyPtID wraps MIKEY_PT_ID
+	// MikeyPtID wraps GST_MIKEY_PT_ID
 	//
 	// ID payload
 	MikeyPtID MIKEYPayloadType = 6
-	// MikeyPtCert wraps MIKEY_PT_CERT
+	// MikeyPtCert wraps GST_MIKEY_PT_CERT
 	//
 	// Certificate Payload
 	MikeyPtCert MIKEYPayloadType = 7
-	// MikeyPtChash wraps MIKEY_PT_CHASH
+	// MikeyPtChash wraps GST_MIKEY_PT_CHASH
 	//
 	// Cert hash payload
 	MikeyPtChash MIKEYPayloadType = 8
-	// MikeyPtV wraps MIKEY_PT_V
+	// MikeyPtV wraps GST_MIKEY_PT_V
 	//
 	// Verification message payload
 	MikeyPtV MIKEYPayloadType = 9
-	// MikeyPtSp wraps MIKEY_PT_SP
+	// MikeyPtSp wraps GST_MIKEY_PT_SP
 	//
 	// Security Policy payload
 	MikeyPtSp MIKEYPayloadType = 10
-	// MikeyPtRand wraps MIKEY_PT_RAND
+	// MikeyPtRand wraps GST_MIKEY_PT_RAND
 	//
 	// RAND payload
 	MikeyPtRand MIKEYPayloadType = 11
-	// MikeyPtErr wraps MIKEY_PT_ERR
+	// MikeyPtErr wraps GST_MIKEY_PT_ERR
 	//
 	// Error payload
 	MikeyPtErr MIKEYPayloadType = 12
-	// MikeyPtKeyData wraps MIKEY_PT_KEY_DATA
+	// MikeyPtKeyData wraps GST_MIKEY_PT_KEY_DATA
 	//
 	// Key data sub-payload
 	MikeyPtKeyData MIKEYPayloadType = 20
-	// MikeyPtGenExt wraps MIKEY_PT_GEN_EXT
+	// MikeyPtGenExt wraps GST_MIKEY_PT_GEN_EXT
 	//
 	// General Extension Payload
 	MikeyPtGenExt MIKEYPayloadType = 21
@@ -319,7 +319,7 @@ func (e MIKEYPayloadType) String() string {
 type MIKEYSecProto C.int
 
 const (
-	// MikeySecProtoSrtp wraps MIKEY_SEC_PROTO_SRTP
+	// MikeySecProtoSrtp wraps GST_MIKEY_SEC_PROTO_SRTP
 	//
 	// SRTP
 	MikeySecProtoSrtp MIKEYSecProto = 0
@@ -339,59 +339,59 @@ func (e MIKEYSecProto) String() string {
 type MIKEYSecSRTP C.int
 
 const (
-	// MikeySpSrtpEncAlg wraps MIKEY_SP_SRTP_ENC_ALG
+	// MikeySpSrtpEncAlg wraps GST_MIKEY_SP_SRTP_ENC_ALG
 	//
 	// Encryption algorithm
 	MikeySpSrtpEncAlg MIKEYSecSRTP = 0
-	// MikeySpSrtpEncKeyLen wraps MIKEY_SP_SRTP_ENC_KEY_LEN
+	// MikeySpSrtpEncKeyLen wraps GST_MIKEY_SP_SRTP_ENC_KEY_LEN
 	//
 	// Session Encr. key length
 	MikeySpSrtpEncKeyLen MIKEYSecSRTP = 1
-	// MikeySpSrtpAuthAlg wraps MIKEY_SP_SRTP_AUTH_ALG
+	// MikeySpSrtpAuthAlg wraps GST_MIKEY_SP_SRTP_AUTH_ALG
 	//
 	// Authentication algorithm
 	MikeySpSrtpAuthAlg MIKEYSecSRTP = 2
-	// MikeySpSrtpAuthKeyLen wraps MIKEY_SP_SRTP_AUTH_KEY_LEN
+	// MikeySpSrtpAuthKeyLen wraps GST_MIKEY_SP_SRTP_AUTH_KEY_LEN
 	//
 	// Session Auth. key length
 	MikeySpSrtpAuthKeyLen MIKEYSecSRTP = 3
-	// MikeySpSrtpSaltKeyLen wraps MIKEY_SP_SRTP_SALT_KEY_LEN
+	// MikeySpSrtpSaltKeyLen wraps GST_MIKEY_SP_SRTP_SALT_KEY_LEN
 	//
 	// Session Salt key length
 	MikeySpSrtpSaltKeyLen MIKEYSecSRTP = 4
-	// MikeySpSrtpPrf wraps MIKEY_SP_SRTP_PRF
+	// MikeySpSrtpPrf wraps GST_MIKEY_SP_SRTP_PRF
 	//
 	// SRTP Pseudo Random Function
 	MikeySpSrtpPrf MIKEYSecSRTP = 5
-	// MikeySpSrtpKeyDerivRate wraps MIKEY_SP_SRTP_KEY_DERIV_RATE
+	// MikeySpSrtpKeyDerivRate wraps GST_MIKEY_SP_SRTP_KEY_DERIV_RATE
 	//
 	// Key derivation rate
 	MikeySpSrtpKeyDerivRate MIKEYSecSRTP = 6
-	// MikeySpSrtpSrtpEnc wraps MIKEY_SP_SRTP_SRTP_ENC
+	// MikeySpSrtpSrtpEnc wraps GST_MIKEY_SP_SRTP_SRTP_ENC
 	//
 	// SRTP encryption off/on, 0 if off, 1 if on
 	MikeySpSrtpSrtpEnc MIKEYSecSRTP = 7
-	// MikeySpSrtpSrtcpEnc wraps MIKEY_SP_SRTP_SRTCP_ENC
+	// MikeySpSrtpSrtcpEnc wraps GST_MIKEY_SP_SRTP_SRTCP_ENC
 	//
 	// SRTCP encryption off/on, 0 if off, 1 if on
 	MikeySpSrtpSrtcpEnc MIKEYSecSRTP = 8
-	// MikeySpSrtpFecOrder wraps MIKEY_SP_SRTP_FEC_ORDER
+	// MikeySpSrtpFecOrder wraps GST_MIKEY_SP_SRTP_FEC_ORDER
 	//
 	// sender's FEC order
 	MikeySpSrtpFecOrder MIKEYSecSRTP = 9
-	// MikeySpSrtpSrtpAuth wraps MIKEY_SP_SRTP_SRTP_AUTH
+	// MikeySpSrtpSrtpAuth wraps GST_MIKEY_SP_SRTP_SRTP_AUTH
 	//
 	// SRTP authentication off/on, 0 if off, 1 if on
 	MikeySpSrtpSrtpAuth MIKEYSecSRTP = 10
-	// MikeySpSrtpAuthTagLen wraps MIKEY_SP_SRTP_AUTH_TAG_LEN
+	// MikeySpSrtpAuthTagLen wraps GST_MIKEY_SP_SRTP_AUTH_TAG_LEN
 	//
 	// Authentication tag length
 	MikeySpSrtpAuthTagLen MIKEYSecSRTP = 11
-	// MikeySpSrtpSrtpPrefixLen wraps MIKEY_SP_SRTP_SRTP_PREFIX_LEN
+	// MikeySpSrtpSrtpPrefixLen wraps GST_MIKEY_SP_SRTP_SRTP_PREFIX_LEN
 	//
 	// SRTP prefix length
 	MikeySpSrtpSrtpPrefixLen MIKEYSecSRTP = 12
-	// MikeySpSrtpAeadAuthTagLen wraps MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN
+	// MikeySpSrtpAeadAuthTagLen wraps GST_MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN
 	//
 	// AEAD authentication tag length (Since: 1.16)
 	MikeySpSrtpAeadAuthTagLen MIKEYSecSRTP = 20
@@ -424,15 +424,15 @@ func (e MIKEYSecSRTP) String() string {
 type MIKEYTSType C.int
 
 const (
-	// MikeyTsTypeNtpUTC wraps MIKEY_TS_TYPE_NTP_UTC
+	// MikeyTsTypeNtpUtc wraps GST_MIKEY_TS_TYPE_NTP_UTC
 	//
 	// an NTP time in UTC timezone
-	MikeyTsTypeNtpUTC MIKEYTSType = 0
-	// MikeyTsTypeNtp wraps MIKEY_TS_TYPE_NTP
+	MikeyTsTypeNtpUtc MIKEYTSType = 0
+	// MikeyTsTypeNtp wraps GST_MIKEY_TS_TYPE_NTP
 	//
 	// an NTP time
 	MikeyTsTypeNtp MIKEYTSType = 1
-	// MikeyTsTypeCounter wraps MIKEY_TS_TYPE_COUNTER
+	// MikeyTsTypeCounter wraps GST_MIKEY_TS_TYPE_COUNTER
 	//
 	// a counter
 	MikeyTsTypeCounter MIKEYTSType = 2
@@ -443,7 +443,7 @@ func (e MIKEYTSType) String() string {
 	switch e {
 		case MikeyTsTypeCounter: return "MikeyTsTypeCounter"
 		case MikeyTsTypeNtp: return "MikeyTsTypeNtp"
-		case MikeyTsTypeNtpUTC: return "MikeyTsTypeNtpUTC"
+		case MikeyTsTypeNtpUtc: return "MikeyTsTypeNtpUtc"
 		default: return fmt.Sprintf("MIKEYTSType(%d)", e)
 	}
 }
@@ -454,35 +454,35 @@ func (e MIKEYTSType) String() string {
 type MIKEYType C.int
 
 const (
-	// MikeyTypeInvalid wraps MIKEY_TYPE_INVALID
+	// MikeyTypeInvalid wraps GST_MIKEY_TYPE_INVALID
 	//
 	// Invalid type
 	MikeyTypeInvalid MIKEYType = -1
-	// MikeyTypePskInit wraps MIKEY_TYPE_PSK_INIT
+	// MikeyTypePskInit wraps GST_MIKEY_TYPE_PSK_INIT
 	//
 	// Initiator's pre-shared key message
 	MikeyTypePskInit MIKEYType = 0
-	// MikeyTypePskVerify wraps MIKEY_TYPE_PSK_VERIFY
+	// MikeyTypePskVerify wraps GST_MIKEY_TYPE_PSK_VERIFY
 	//
 	// Verification message of a Pre-shared key message
 	MikeyTypePskVerify MIKEYType = 1
-	// MikeyTypePkInit wraps MIKEY_TYPE_PK_INIT
+	// MikeyTypePkInit wraps GST_MIKEY_TYPE_PK_INIT
 	//
 	// Initiator's public-key transport message
 	MikeyTypePkInit MIKEYType = 2
-	// MikeyTypePkVerify wraps MIKEY_TYPE_PK_VERIFY
+	// MikeyTypePkVerify wraps GST_MIKEY_TYPE_PK_VERIFY
 	//
 	// Verification message of a public-key message
 	MikeyTypePkVerify MIKEYType = 3
-	// MikeyTypeDhInit wraps MIKEY_TYPE_DH_INIT
+	// MikeyTypeDhInit wraps GST_MIKEY_TYPE_DH_INIT
 	//
 	// Initiator's DH exchange message
 	MikeyTypeDhInit MIKEYType = 4
-	// MikeyTypeDhResp wraps MIKEY_TYPE_DH_RESP
+	// MikeyTypeDhResp wraps GST_MIKEY_TYPE_DH_RESP
 	//
 	// Responder's DH exchange message
 	MikeyTypeDhResp MIKEYType = 5
-	// MikeyTypeError wraps MIKEY_TYPE_ERROR
+	// MikeyTypeError wraps GST_MIKEY_TYPE_ERROR
 	//
 	// Error message
 	MikeyTypeError MIKEYType = 6
@@ -509,11 +509,11 @@ func (e MIKEYType) String() string {
 type SDPResult C.int
 
 const (
-	// SdpOK wraps SDP_OK
+	// SdpOK wraps GST_SDP_OK
 	//
 	// A successful return value
 	SdpOK SDPResult = 0
-	// SdpEinval wraps SDP_EINVAL
+	// SdpEinval wraps GST_SDP_EINVAL
 	//
 	// a function was given invalid parameters
 	SdpEinval SDPResult = -1
@@ -604,17 +604,17 @@ func SdpMakeKeymgmt(uri string, base64 string) string {
 
 // MIKEYDecryptInfo wraps GstMIKEYDecryptInfo
 type MIKEYDecryptInfo struct {
-	*mikeyDecryptInfo
+	*mIKEYDecryptInfo
 }
 
-// mikeyDecryptInfo is the struct that's finalized
-type mikeyDecryptInfo struct {
+// mIKEYDecryptInfo is the struct that's finalized
+type mIKEYDecryptInfo struct {
 	native *C.GstMIKEYDecryptInfo
 }
 
 // UnsafeMIKEYDecryptInfoFromGlibBorrow is used to convert raw C.GstMIKEYDecryptInfo pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYDecryptInfoFromGlibBorrow(p unsafe.Pointer) *MIKEYDecryptInfo {
-	return &MIKEYDecryptInfo{&mikeyDecryptInfo{(*C.GstMIKEYDecryptInfo)(p)}}
+	return &MIKEYDecryptInfo{&mIKEYDecryptInfo{(*C.GstMIKEYDecryptInfo)(p)}}
 }
 
 // UnsafeMIKEYDecryptInfoFromGlibNone is used to convert raw C.GstMIKEYDecryptInfo pointers to go without transferring ownership. This is used by the bindings internally.
@@ -622,8 +622,8 @@ func UnsafeMIKEYDecryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYDecryptInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYDecryptInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyDecryptInfo,
-		func (intern *mikeyDecryptInfo) {
+		wrapped.mIKEYDecryptInfo,
+		func (intern *mIKEYDecryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -634,8 +634,8 @@ func UnsafeMIKEYDecryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYDecryptInfo {
 func UnsafeMIKEYDecryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYDecryptInfo {
 	wrapped := UnsafeMIKEYDecryptInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyDecryptInfo,
-		func (intern *mikeyDecryptInfo) {
+		wrapped.mIKEYDecryptInfo,
+		func (intern *mIKEYDecryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -657,7 +657,7 @@ func UnsafeMIKEYDecryptInfoToGlibNone(m *MIKEYDecryptInfo) unsafe.Pointer {
 // UnsafeMIKEYDecryptInfoToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYDecryptInfoToGlibFull(m *MIKEYDecryptInfo) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyDecryptInfo, nil)
+	runtime.SetFinalizer(m.mIKEYDecryptInfo, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYDecryptInfo is invalid from here on
 	return _p
@@ -665,17 +665,17 @@ func UnsafeMIKEYDecryptInfoToGlibFull(m *MIKEYDecryptInfo) unsafe.Pointer {
 
 // MIKEYEncryptInfo wraps GstMIKEYEncryptInfo
 type MIKEYEncryptInfo struct {
-	*mikeyEncryptInfo
+	*mIKEYEncryptInfo
 }
 
-// mikeyEncryptInfo is the struct that's finalized
-type mikeyEncryptInfo struct {
+// mIKEYEncryptInfo is the struct that's finalized
+type mIKEYEncryptInfo struct {
 	native *C.GstMIKEYEncryptInfo
 }
 
 // UnsafeMIKEYEncryptInfoFromGlibBorrow is used to convert raw C.GstMIKEYEncryptInfo pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYEncryptInfoFromGlibBorrow(p unsafe.Pointer) *MIKEYEncryptInfo {
-	return &MIKEYEncryptInfo{&mikeyEncryptInfo{(*C.GstMIKEYEncryptInfo)(p)}}
+	return &MIKEYEncryptInfo{&mIKEYEncryptInfo{(*C.GstMIKEYEncryptInfo)(p)}}
 }
 
 // UnsafeMIKEYEncryptInfoFromGlibNone is used to convert raw C.GstMIKEYEncryptInfo pointers to go without transferring ownership. This is used by the bindings internally.
@@ -683,8 +683,8 @@ func UnsafeMIKEYEncryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYEncryptInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYEncryptInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyEncryptInfo,
-		func (intern *mikeyEncryptInfo) {
+		wrapped.mIKEYEncryptInfo,
+		func (intern *mIKEYEncryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -695,8 +695,8 @@ func UnsafeMIKEYEncryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYEncryptInfo {
 func UnsafeMIKEYEncryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYEncryptInfo {
 	wrapped := UnsafeMIKEYEncryptInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyEncryptInfo,
-		func (intern *mikeyEncryptInfo) {
+		wrapped.mIKEYEncryptInfo,
+		func (intern *mIKEYEncryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -718,7 +718,7 @@ func UnsafeMIKEYEncryptInfoToGlibNone(m *MIKEYEncryptInfo) unsafe.Pointer {
 // UnsafeMIKEYEncryptInfoToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYEncryptInfoToGlibFull(m *MIKEYEncryptInfo) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyEncryptInfo, nil)
+	runtime.SetFinalizer(m.mIKEYEncryptInfo, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYEncryptInfo is invalid from here on
 	return _p
@@ -728,17 +728,17 @@ func UnsafeMIKEYEncryptInfoToGlibFull(m *MIKEYEncryptInfo) unsafe.Pointer {
 //
 // The Security policy Map item for SRTP
 type MIKEYMapSRTP struct {
-	*mikeyMapSRTP
+	*mIKEYMapSRTP
 }
 
-// mikeyMapSRTP is the struct that's finalized
-type mikeyMapSRTP struct {
+// mIKEYMapSRTP is the struct that's finalized
+type mIKEYMapSRTP struct {
 	native *C.GstMIKEYMapSRTP
 }
 
 // UnsafeMIKEYMapSRTPFromGlibBorrow is used to convert raw C.GstMIKEYMapSRTP pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYMapSRTPFromGlibBorrow(p unsafe.Pointer) *MIKEYMapSRTP {
-	return &MIKEYMapSRTP{&mikeyMapSRTP{(*C.GstMIKEYMapSRTP)(p)}}
+	return &MIKEYMapSRTP{&mIKEYMapSRTP{(*C.GstMIKEYMapSRTP)(p)}}
 }
 
 // UnsafeMIKEYMapSRTPFromGlibNone is used to convert raw C.GstMIKEYMapSRTP pointers to go without transferring ownership. This is used by the bindings internally.
@@ -746,8 +746,8 @@ func UnsafeMIKEYMapSRTPFromGlibNone(p unsafe.Pointer) *MIKEYMapSRTP {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYMapSRTPFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyMapSRTP,
-		func (intern *mikeyMapSRTP) {
+		wrapped.mIKEYMapSRTP,
+		func (intern *mIKEYMapSRTP) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -758,8 +758,8 @@ func UnsafeMIKEYMapSRTPFromGlibNone(p unsafe.Pointer) *MIKEYMapSRTP {
 func UnsafeMIKEYMapSRTPFromGlibFull(p unsafe.Pointer) *MIKEYMapSRTP {
 	wrapped := UnsafeMIKEYMapSRTPFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyMapSRTP,
-		func (intern *mikeyMapSRTP) {
+		wrapped.mIKEYMapSRTP,
+		func (intern *mIKEYMapSRTP) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -781,7 +781,7 @@ func UnsafeMIKEYMapSRTPToGlibNone(m *MIKEYMapSRTP) unsafe.Pointer {
 // UnsafeMIKEYMapSRTPToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYMapSRTPToGlibFull(m *MIKEYMapSRTP) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyMapSRTP, nil)
+	runtime.SetFinalizer(m.mIKEYMapSRTP, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYMapSRTP is invalid from here on
 	return _p
@@ -791,11 +791,11 @@ func UnsafeMIKEYMapSRTPToGlibFull(m *MIKEYMapSRTP) unsafe.Pointer {
 //
 // Structure holding the information of the MIKEY message
 type MIKEYMessage struct {
-	*mikeyMessage
+	*mIKEYMessage
 }
 
-// mikeyMessage is the struct that's finalized
-type mikeyMessage struct {
+// mIKEYMessage is the struct that's finalized
+type mIKEYMessage struct {
 	native *C.GstMIKEYMessage
 }
 
@@ -816,7 +816,7 @@ func (r *MIKEYMessage) SetGoValue(v *gobject.Value) {
 
 // UnsafeMIKEYMessageFromGlibBorrow is used to convert raw C.GstMIKEYMessage pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYMessageFromGlibBorrow(p unsafe.Pointer) *MIKEYMessage {
-	return &MIKEYMessage{&mikeyMessage{(*C.GstMIKEYMessage)(p)}}
+	return &MIKEYMessage{&mIKEYMessage{(*C.GstMIKEYMessage)(p)}}
 }
 
 // UnsafeMIKEYMessageFromGlibNone is used to convert raw C.GstMIKEYMessage pointers to go without transferring ownership. This is used by the bindings internally.
@@ -824,8 +824,8 @@ func UnsafeMIKEYMessageFromGlibNone(p unsafe.Pointer) *MIKEYMessage {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyMessage,
-		func (intern *mikeyMessage) {
+		wrapped.mIKEYMessage,
+		func (intern *mIKEYMessage) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -836,8 +836,8 @@ func UnsafeMIKEYMessageFromGlibNone(p unsafe.Pointer) *MIKEYMessage {
 func UnsafeMIKEYMessageFromGlibFull(p unsafe.Pointer) *MIKEYMessage {
 	wrapped := UnsafeMIKEYMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyMessage,
-		func (intern *mikeyMessage) {
+		wrapped.mIKEYMessage,
+		func (intern *mIKEYMessage) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -859,7 +859,7 @@ func UnsafeMIKEYMessageToGlibNone(m *MIKEYMessage) unsafe.Pointer {
 // UnsafeMIKEYMessageToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYMessageToGlibFull(m *MIKEYMessage) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyMessage, nil)
+	runtime.SetFinalizer(m.mIKEYMessage, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYMessage is invalid from here on
 	return _p
@@ -1029,7 +1029,7 @@ func (msg *MIKEYMessage) AddPayload(payload *MIKEYPayload) bool {
 // 
 // The function takes the following parameters:
 // 
-// 	- C MIKEYCacheType: envelope key cache indicator 
+// 	- c MIKEYCacheType: envelope key cache indicator 
 // 	- data []uint8: the encrypted envelope key 
 // 
 // The function returns the following values:
@@ -1037,7 +1037,7 @@ func (msg *MIKEYMessage) AddPayload(payload *MIKEYPayload) bool {
 // 	- goret bool 
 //
 // Add a new PKE payload to @msg with the given parameters.
-func (msg *MIKEYMessage) AddPke(C MIKEYCacheType, data []uint8) bool {
+func (msg *MIKEYMessage) AddPke(c MIKEYCacheType, data []uint8) bool {
 	var carg0 *C.GstMIKEYMessage  // in, none, converted
 	var carg1 C.GstMIKEYCacheType // in, none, casted
 	var carg2 C.guint16           // implicit
@@ -1045,7 +1045,7 @@ func (msg *MIKEYMessage) AddPke(C MIKEYCacheType, data []uint8) bool {
 	var cret  C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
-	carg1 = C.GstMIKEYCacheType(C)
+	carg1 = C.GstMIKEYCacheType(c)
 	_ = data
 	_ = carg3
 	_ = carg2
@@ -1053,7 +1053,7 @@ func (msg *MIKEYMessage) AddPke(C MIKEYCacheType, data []uint8) bool {
 
 	cret = C.gst_mikey_message_add_pke(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(msg)
-	runtime.KeepAlive(C)
+	runtime.KeepAlive(c)
 	runtime.KeepAlive(data)
 
 	var goret bool
@@ -1133,7 +1133,7 @@ func (msg *MIKEYMessage) AddRandLen(len uint8) bool {
 	return goret
 }
 
-// AddTNowNtpUTC wraps gst_mikey_message_add_t_now_ntp_utc
+// AddTNowNtpUtc wraps gst_mikey_message_add_t_now_ntp_utc
 // 
 // The function returns the following values:
 // 
@@ -1141,7 +1141,7 @@ func (msg *MIKEYMessage) AddRandLen(len uint8) bool {
 //
 // Add a new T payload to @msg that contains the current time
 // in NTP-UTC format.
-func (msg *MIKEYMessage) AddTNowNtpUTC() bool {
+func (msg *MIKEYMessage) AddTNowNtpUtc() bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var cret  C.gboolean         // return
 
@@ -1544,9 +1544,9 @@ func (msg *MIKEYMessage) ReplacePayload(idx uint, payload *MIKEYPayload) bool {
 // 
 // 	- version uint8: a version 
 // 	- typ MIKEYType: a #GstMIKEYType 
-// 	- V bool: verify flag 
+// 	- v bool: verify flag 
 // 	- prfFunc MIKEYPRFFunc: the #GstMIKEYPRFFunc function to use 
-// 	- CSBId uint32: the Crypto Session Bundle id 
+// 	- csbId uint32: the Crypto Session Bundle id 
 // 	- mapType MIKEYMapType: the #GstMIKEYMapType 
 // 
 // The function returns the following values:
@@ -1554,7 +1554,7 @@ func (msg *MIKEYMessage) ReplacePayload(idx uint, payload *MIKEYPayload) bool {
 // 	- goret bool 
 //
 // Set the information in @msg.
-func (msg *MIKEYMessage) SetInfo(version uint8, typ MIKEYType, V bool, prfFunc MIKEYPRFFunc, CSBId uint32, mapType MIKEYMapType) bool {
+func (msg *MIKEYMessage) SetInfo(version uint8, typ MIKEYType, v bool, prfFunc MIKEYPRFFunc, csbId uint32, mapType MIKEYMapType) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint8           // in, none, casted
 	var carg2 C.GstMIKEYType     // in, none, casted
@@ -1567,20 +1567,20 @@ func (msg *MIKEYMessage) SetInfo(version uint8, typ MIKEYType, V bool, prfFunc M
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint8(version)
 	carg2 = C.GstMIKEYType(typ)
-	if V {
+	if v {
 		carg3 = C.TRUE
 	}
 	carg4 = C.GstMIKEYPRFFunc(prfFunc)
-	carg5 = C.guint32(CSBId)
+	carg5 = C.guint32(csbId)
 	carg6 = C.GstMIKEYMapType(mapType)
 
 	cret = C.gst_mikey_message_set_info(carg0, carg1, carg2, carg3, carg4, carg5, carg6)
 	runtime.KeepAlive(msg)
 	runtime.KeepAlive(version)
 	runtime.KeepAlive(typ)
-	runtime.KeepAlive(V)
+	runtime.KeepAlive(v)
 	runtime.KeepAlive(prfFunc)
-	runtime.KeepAlive(CSBId)
+	runtime.KeepAlive(csbId)
 	runtime.KeepAlive(mapType)
 
 	var goret bool
@@ -1662,11 +1662,11 @@ func (msg *MIKEYMessage) ToCaps(caps *gst.Caps) bool {
 //
 // Hold the common fields for all payloads
 type MIKEYPayload struct {
-	*mikeyPayload
+	*mIKEYPayload
 }
 
-// mikeyPayload is the struct that's finalized
-type mikeyPayload struct {
+// mIKEYPayload is the struct that's finalized
+type mIKEYPayload struct {
 	native *C.GstMIKEYPayload
 }
 
@@ -1687,7 +1687,7 @@ func (r *MIKEYPayload) SetGoValue(v *gobject.Value) {
 
 // UnsafeMIKEYPayloadFromGlibBorrow is used to convert raw C.GstMIKEYPayload pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYPayloadFromGlibBorrow(p unsafe.Pointer) *MIKEYPayload {
-	return &MIKEYPayload{&mikeyPayload{(*C.GstMIKEYPayload)(p)}}
+	return &MIKEYPayload{&mIKEYPayload{(*C.GstMIKEYPayload)(p)}}
 }
 
 // UnsafeMIKEYPayloadFromGlibNone is used to convert raw C.GstMIKEYPayload pointers to go without transferring ownership. This is used by the bindings internally.
@@ -1695,8 +1695,8 @@ func UnsafeMIKEYPayloadFromGlibNone(p unsafe.Pointer) *MIKEYPayload {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayload,
-		func (intern *mikeyPayload) {
+		wrapped.mIKEYPayload,
+		func (intern *mIKEYPayload) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -1707,8 +1707,8 @@ func UnsafeMIKEYPayloadFromGlibNone(p unsafe.Pointer) *MIKEYPayload {
 func UnsafeMIKEYPayloadFromGlibFull(p unsafe.Pointer) *MIKEYPayload {
 	wrapped := UnsafeMIKEYPayloadFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayload,
-		func (intern *mikeyPayload) {
+		wrapped.mIKEYPayload,
+		func (intern *mIKEYPayload) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -1730,7 +1730,7 @@ func UnsafeMIKEYPayloadToGlibNone(m *MIKEYPayload) unsafe.Pointer {
 // UnsafeMIKEYPayloadToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYPayloadToGlibFull(m *MIKEYPayload) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyPayload, nil)
+	runtime.SetFinalizer(m.mIKEYPayload, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYPayload is invalid from here on
 	return _p
@@ -2085,7 +2085,7 @@ func (payload *MIKEYPayload) KeyDataSetSpi(spiData []uint8) bool {
 // 
 // The function takes the following parameters:
 // 
-// 	- C MIKEYCacheType: envelope key cache indicator 
+// 	- c MIKEYCacheType: envelope key cache indicator 
 // 	- data []uint8: the encrypted envelope key 
 // 
 // The function returns the following values:
@@ -2094,7 +2094,7 @@ func (payload *MIKEYPayload) KeyDataSetSpi(spiData []uint8) bool {
 //
 // Set the PKE values in @payload. @payload must be of type
 // %GST_MIKEY_PT_PKE.
-func (payload *MIKEYPayload) PkeSet(C MIKEYCacheType, data []uint8) bool {
+func (payload *MIKEYPayload) PkeSet(c MIKEYCacheType, data []uint8) bool {
 	var carg0 *C.GstMIKEYPayload  // in, none, converted
 	var carg1 C.GstMIKEYCacheType // in, none, casted
 	var carg2 C.guint16           // implicit
@@ -2102,7 +2102,7 @@ func (payload *MIKEYPayload) PkeSet(C MIKEYCacheType, data []uint8) bool {
 	var cret  C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
-	carg1 = C.GstMIKEYCacheType(C)
+	carg1 = C.GstMIKEYCacheType(c)
 	_ = data
 	_ = carg3
 	_ = carg2
@@ -2110,7 +2110,7 @@ func (payload *MIKEYPayload) PkeSet(C MIKEYCacheType, data []uint8) bool {
 
 	cret = C.gst_mikey_payload_pke_set(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(payload)
-	runtime.KeepAlive(C)
+	runtime.KeepAlive(c)
 	runtime.KeepAlive(data)
 
 	var goret bool
@@ -2329,17 +2329,17 @@ func (payload *MIKEYPayload) SpSet(policy uint, proto MIKEYSecProto) bool {
 //
 // A structure holding the KEMAC payload
 type MIKEYPayloadKEMAC struct {
-	*mikeyPayloadKEMAC
+	*mIKEYPayloadKEMAC
 }
 
-// mikeyPayloadKEMAC is the struct that's finalized
-type mikeyPayloadKEMAC struct {
+// mIKEYPayloadKEMAC is the struct that's finalized
+type mIKEYPayloadKEMAC struct {
 	native *C.GstMIKEYPayloadKEMAC
 }
 
 // UnsafeMIKEYPayloadKEMACFromGlibBorrow is used to convert raw C.GstMIKEYPayloadKEMAC pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYPayloadKEMACFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadKEMAC {
-	return &MIKEYPayloadKEMAC{&mikeyPayloadKEMAC{(*C.GstMIKEYPayloadKEMAC)(p)}}
+	return &MIKEYPayloadKEMAC{&mIKEYPayloadKEMAC{(*C.GstMIKEYPayloadKEMAC)(p)}}
 }
 
 // UnsafeMIKEYPayloadKEMACFromGlibNone is used to convert raw C.GstMIKEYPayloadKEMAC pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2347,8 +2347,8 @@ func UnsafeMIKEYPayloadKEMACFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadKEMACFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadKEMAC,
-		func (intern *mikeyPayloadKEMAC) {
+		wrapped.mIKEYPayloadKEMAC,
+		func (intern *mIKEYPayloadKEMAC) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2359,8 +2359,8 @@ func UnsafeMIKEYPayloadKEMACFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 func UnsafeMIKEYPayloadKEMACFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 	wrapped := UnsafeMIKEYPayloadKEMACFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadKEMAC,
-		func (intern *mikeyPayloadKEMAC) {
+		wrapped.mIKEYPayloadKEMAC,
+		func (intern *mIKEYPayloadKEMAC) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2382,7 +2382,7 @@ func UnsafeMIKEYPayloadKEMACToGlibNone(m *MIKEYPayloadKEMAC) unsafe.Pointer {
 // UnsafeMIKEYPayloadKEMACToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYPayloadKEMACToGlibFull(m *MIKEYPayloadKEMAC) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyPayloadKEMAC, nil)
+	runtime.SetFinalizer(m.mIKEYPayloadKEMAC, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYPayloadKEMAC is invalid from here on
 	return _p
@@ -2393,17 +2393,17 @@ func UnsafeMIKEYPayloadKEMACToGlibFull(m *MIKEYPayloadKEMAC) unsafe.Pointer {
 // The Key data payload contains key material. It should be added as sub
 // payload to the KEMAC.
 type MIKEYPayloadKeyData struct {
-	*mikeyPayloadKeyData
+	*mIKEYPayloadKeyData
 }
 
-// mikeyPayloadKeyData is the struct that's finalized
-type mikeyPayloadKeyData struct {
+// mIKEYPayloadKeyData is the struct that's finalized
+type mIKEYPayloadKeyData struct {
 	native *C.GstMIKEYPayloadKeyData
 }
 
 // UnsafeMIKEYPayloadKeyDataFromGlibBorrow is used to convert raw C.GstMIKEYPayloadKeyData pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYPayloadKeyDataFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadKeyData {
-	return &MIKEYPayloadKeyData{&mikeyPayloadKeyData{(*C.GstMIKEYPayloadKeyData)(p)}}
+	return &MIKEYPayloadKeyData{&mIKEYPayloadKeyData{(*C.GstMIKEYPayloadKeyData)(p)}}
 }
 
 // UnsafeMIKEYPayloadKeyDataFromGlibNone is used to convert raw C.GstMIKEYPayloadKeyData pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2411,8 +2411,8 @@ func UnsafeMIKEYPayloadKeyDataFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKeyDat
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadKeyDataFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadKeyData,
-		func (intern *mikeyPayloadKeyData) {
+		wrapped.mIKEYPayloadKeyData,
+		func (intern *mIKEYPayloadKeyData) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2423,8 +2423,8 @@ func UnsafeMIKEYPayloadKeyDataFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKeyDat
 func UnsafeMIKEYPayloadKeyDataFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKeyData {
 	wrapped := UnsafeMIKEYPayloadKeyDataFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadKeyData,
-		func (intern *mikeyPayloadKeyData) {
+		wrapped.mIKEYPayloadKeyData,
+		func (intern *mIKEYPayloadKeyData) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2446,7 +2446,7 @@ func UnsafeMIKEYPayloadKeyDataToGlibNone(m *MIKEYPayloadKeyData) unsafe.Pointer 
 // UnsafeMIKEYPayloadKeyDataToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYPayloadKeyDataToGlibFull(m *MIKEYPayloadKeyData) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyPayloadKeyData, nil)
+	runtime.SetFinalizer(m.mIKEYPayloadKeyData, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYPayloadKeyData is invalid from here on
 	return _p
@@ -2459,17 +2459,17 @@ func UnsafeMIKEYPayloadKeyDataToGlibFull(m *MIKEYPayloadKeyData) unsafe.Pointer 
 // transport payload.  The encryption algorithm used is implicit from
 // the certificate/public key used.
 type MIKEYPayloadPKE struct {
-	*mikeyPayloadPKE
+	*mIKEYPayloadPKE
 }
 
-// mikeyPayloadPKE is the struct that's finalized
-type mikeyPayloadPKE struct {
+// mIKEYPayloadPKE is the struct that's finalized
+type mIKEYPayloadPKE struct {
 	native *C.GstMIKEYPayloadPKE
 }
 
 // UnsafeMIKEYPayloadPKEFromGlibBorrow is used to convert raw C.GstMIKEYPayloadPKE pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYPayloadPKEFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadPKE {
-	return &MIKEYPayloadPKE{&mikeyPayloadPKE{(*C.GstMIKEYPayloadPKE)(p)}}
+	return &MIKEYPayloadPKE{&mIKEYPayloadPKE{(*C.GstMIKEYPayloadPKE)(p)}}
 }
 
 // UnsafeMIKEYPayloadPKEFromGlibNone is used to convert raw C.GstMIKEYPayloadPKE pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2477,8 +2477,8 @@ func UnsafeMIKEYPayloadPKEFromGlibNone(p unsafe.Pointer) *MIKEYPayloadPKE {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadPKEFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadPKE,
-		func (intern *mikeyPayloadPKE) {
+		wrapped.mIKEYPayloadPKE,
+		func (intern *mIKEYPayloadPKE) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2489,8 +2489,8 @@ func UnsafeMIKEYPayloadPKEFromGlibNone(p unsafe.Pointer) *MIKEYPayloadPKE {
 func UnsafeMIKEYPayloadPKEFromGlibFull(p unsafe.Pointer) *MIKEYPayloadPKE {
 	wrapped := UnsafeMIKEYPayloadPKEFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadPKE,
-		func (intern *mikeyPayloadPKE) {
+		wrapped.mIKEYPayloadPKE,
+		func (intern *mIKEYPayloadPKE) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2512,7 +2512,7 @@ func UnsafeMIKEYPayloadPKEToGlibNone(m *MIKEYPayloadPKE) unsafe.Pointer {
 // UnsafeMIKEYPayloadPKEToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYPayloadPKEToGlibFull(m *MIKEYPayloadPKE) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyPayloadPKE, nil)
+	runtime.SetFinalizer(m.mIKEYPayloadPKE, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYPayloadPKE is invalid from here on
 	return _p
@@ -2522,17 +2522,17 @@ func UnsafeMIKEYPayloadPKEToGlibFull(m *MIKEYPayloadPKE) unsafe.Pointer {
 //
 // The RAND payload consists of a (pseudo-)random bit-string
 type MIKEYPayloadRAND struct {
-	*mikeyPayloadRAND
+	*mIKEYPayloadRAND
 }
 
-// mikeyPayloadRAND is the struct that's finalized
-type mikeyPayloadRAND struct {
+// mIKEYPayloadRAND is the struct that's finalized
+type mIKEYPayloadRAND struct {
 	native *C.GstMIKEYPayloadRAND
 }
 
 // UnsafeMIKEYPayloadRANDFromGlibBorrow is used to convert raw C.GstMIKEYPayloadRAND pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYPayloadRANDFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadRAND {
-	return &MIKEYPayloadRAND{&mikeyPayloadRAND{(*C.GstMIKEYPayloadRAND)(p)}}
+	return &MIKEYPayloadRAND{&mIKEYPayloadRAND{(*C.GstMIKEYPayloadRAND)(p)}}
 }
 
 // UnsafeMIKEYPayloadRANDFromGlibNone is used to convert raw C.GstMIKEYPayloadRAND pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2540,8 +2540,8 @@ func UnsafeMIKEYPayloadRANDFromGlibNone(p unsafe.Pointer) *MIKEYPayloadRAND {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadRANDFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadRAND,
-		func (intern *mikeyPayloadRAND) {
+		wrapped.mIKEYPayloadRAND,
+		func (intern *mIKEYPayloadRAND) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2552,8 +2552,8 @@ func UnsafeMIKEYPayloadRANDFromGlibNone(p unsafe.Pointer) *MIKEYPayloadRAND {
 func UnsafeMIKEYPayloadRANDFromGlibFull(p unsafe.Pointer) *MIKEYPayloadRAND {
 	wrapped := UnsafeMIKEYPayloadRANDFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadRAND,
-		func (intern *mikeyPayloadRAND) {
+		wrapped.mIKEYPayloadRAND,
+		func (intern *mIKEYPayloadRAND) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2575,7 +2575,7 @@ func UnsafeMIKEYPayloadRANDToGlibNone(m *MIKEYPayloadRAND) unsafe.Pointer {
 // UnsafeMIKEYPayloadRANDToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYPayloadRANDToGlibFull(m *MIKEYPayloadRAND) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyPayloadRAND, nil)
+	runtime.SetFinalizer(m.mIKEYPayloadRAND, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYPayloadRAND is invalid from here on
 	return _p
@@ -2586,17 +2586,17 @@ func UnsafeMIKEYPayloadRANDToGlibFull(m *MIKEYPayloadRAND) unsafe.Pointer {
 // The Security Policy payload defines a set of policies that apply to a
 // specific security protocol
 type MIKEYPayloadSP struct {
-	*mikeyPayloadSP
+	*mIKEYPayloadSP
 }
 
-// mikeyPayloadSP is the struct that's finalized
-type mikeyPayloadSP struct {
+// mIKEYPayloadSP is the struct that's finalized
+type mIKEYPayloadSP struct {
 	native *C.GstMIKEYPayloadSP
 }
 
 // UnsafeMIKEYPayloadSPFromGlibBorrow is used to convert raw C.GstMIKEYPayloadSP pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYPayloadSPFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadSP {
-	return &MIKEYPayloadSP{&mikeyPayloadSP{(*C.GstMIKEYPayloadSP)(p)}}
+	return &MIKEYPayloadSP{&mIKEYPayloadSP{(*C.GstMIKEYPayloadSP)(p)}}
 }
 
 // UnsafeMIKEYPayloadSPFromGlibNone is used to convert raw C.GstMIKEYPayloadSP pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2604,8 +2604,8 @@ func UnsafeMIKEYPayloadSPFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSP {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadSPFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadSP,
-		func (intern *mikeyPayloadSP) {
+		wrapped.mIKEYPayloadSP,
+		func (intern *mIKEYPayloadSP) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2616,8 +2616,8 @@ func UnsafeMIKEYPayloadSPFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSP {
 func UnsafeMIKEYPayloadSPFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSP {
 	wrapped := UnsafeMIKEYPayloadSPFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadSP,
-		func (intern *mikeyPayloadSP) {
+		wrapped.mIKEYPayloadSP,
+		func (intern *mIKEYPayloadSP) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2639,7 +2639,7 @@ func UnsafeMIKEYPayloadSPToGlibNone(m *MIKEYPayloadSP) unsafe.Pointer {
 // UnsafeMIKEYPayloadSPToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYPayloadSPToGlibFull(m *MIKEYPayloadSP) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyPayloadSP, nil)
+	runtime.SetFinalizer(m.mIKEYPayloadSP, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYPayloadSP is invalid from here on
 	return _p
@@ -2649,17 +2649,17 @@ func UnsafeMIKEYPayloadSPToGlibFull(m *MIKEYPayloadSP) unsafe.Pointer {
 //
 // A Type/Length/Value field for security parameters
 type MIKEYPayloadSPParam struct {
-	*mikeyPayloadSPParam
+	*mIKEYPayloadSPParam
 }
 
-// mikeyPayloadSPParam is the struct that's finalized
-type mikeyPayloadSPParam struct {
+// mIKEYPayloadSPParam is the struct that's finalized
+type mIKEYPayloadSPParam struct {
 	native *C.GstMIKEYPayloadSPParam
 }
 
 // UnsafeMIKEYPayloadSPParamFromGlibBorrow is used to convert raw C.GstMIKEYPayloadSPParam pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYPayloadSPParamFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadSPParam {
-	return &MIKEYPayloadSPParam{&mikeyPayloadSPParam{(*C.GstMIKEYPayloadSPParam)(p)}}
+	return &MIKEYPayloadSPParam{&mIKEYPayloadSPParam{(*C.GstMIKEYPayloadSPParam)(p)}}
 }
 
 // UnsafeMIKEYPayloadSPParamFromGlibNone is used to convert raw C.GstMIKEYPayloadSPParam pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2667,8 +2667,8 @@ func UnsafeMIKEYPayloadSPParamFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSPPara
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadSPParamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadSPParam,
-		func (intern *mikeyPayloadSPParam) {
+		wrapped.mIKEYPayloadSPParam,
+		func (intern *mIKEYPayloadSPParam) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2679,8 +2679,8 @@ func UnsafeMIKEYPayloadSPParamFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSPPara
 func UnsafeMIKEYPayloadSPParamFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSPParam {
 	wrapped := UnsafeMIKEYPayloadSPParamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadSPParam,
-		func (intern *mikeyPayloadSPParam) {
+		wrapped.mIKEYPayloadSPParam,
+		func (intern *mIKEYPayloadSPParam) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2702,7 +2702,7 @@ func UnsafeMIKEYPayloadSPParamToGlibNone(m *MIKEYPayloadSPParam) unsafe.Pointer 
 // UnsafeMIKEYPayloadSPParamToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYPayloadSPParamToGlibFull(m *MIKEYPayloadSPParam) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyPayloadSPParam, nil)
+	runtime.SetFinalizer(m.mIKEYPayloadSPParam, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYPayloadSPParam is invalid from here on
 	return _p
@@ -2712,17 +2712,17 @@ func UnsafeMIKEYPayloadSPParamToGlibFull(m *MIKEYPayloadSPParam) unsafe.Pointer 
 //
 // The timestamp payload carries the timestamp information
 type MIKEYPayloadT struct {
-	*mikeyPayloadT
+	*mIKEYPayloadT
 }
 
-// mikeyPayloadT is the struct that's finalized
-type mikeyPayloadT struct {
+// mIKEYPayloadT is the struct that's finalized
+type mIKEYPayloadT struct {
 	native *C.GstMIKEYPayloadT
 }
 
 // UnsafeMIKEYPayloadTFromGlibBorrow is used to convert raw C.GstMIKEYPayloadT pointers to go. This is used by the bindings internally.
 func UnsafeMIKEYPayloadTFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadT {
-	return &MIKEYPayloadT{&mikeyPayloadT{(*C.GstMIKEYPayloadT)(p)}}
+	return &MIKEYPayloadT{&mIKEYPayloadT{(*C.GstMIKEYPayloadT)(p)}}
 }
 
 // UnsafeMIKEYPayloadTFromGlibNone is used to convert raw C.GstMIKEYPayloadT pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2730,8 +2730,8 @@ func UnsafeMIKEYPayloadTFromGlibNone(p unsafe.Pointer) *MIKEYPayloadT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadTFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadT,
-		func (intern *mikeyPayloadT) {
+		wrapped.mIKEYPayloadT,
+		func (intern *mIKEYPayloadT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2742,8 +2742,8 @@ func UnsafeMIKEYPayloadTFromGlibNone(p unsafe.Pointer) *MIKEYPayloadT {
 func UnsafeMIKEYPayloadTFromGlibFull(p unsafe.Pointer) *MIKEYPayloadT {
 	wrapped := UnsafeMIKEYPayloadTFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.mikeyPayloadT,
-		func (intern *mikeyPayloadT) {
+		wrapped.mIKEYPayloadT,
+		func (intern *mIKEYPayloadT) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2765,7 +2765,7 @@ func UnsafeMIKEYPayloadTToGlibNone(m *MIKEYPayloadT) unsafe.Pointer {
 // UnsafeMIKEYPayloadTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMIKEYPayloadTToGlibFull(m *MIKEYPayloadT) unsafe.Pointer {
-	runtime.SetFinalizer(m.mikeyPayloadT, nil)
+	runtime.SetFinalizer(m.mIKEYPayloadT, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MIKEYPayloadT is invalid from here on
 	return _p
@@ -2775,17 +2775,17 @@ func UnsafeMIKEYPayloadTToGlibFull(m *MIKEYPayloadT) unsafe.Pointer {
 //
 // The contents of the SDP "a=" field which contains a key/value pair.
 type SDPAttribute struct {
-	*sdpAttribute
+	*sDPAttribute
 }
 
-// sdpAttribute is the struct that's finalized
-type sdpAttribute struct {
+// sDPAttribute is the struct that's finalized
+type sDPAttribute struct {
 	native *C.GstSDPAttribute
 }
 
 // UnsafeSDPAttributeFromGlibBorrow is used to convert raw C.GstSDPAttribute pointers to go. This is used by the bindings internally.
 func UnsafeSDPAttributeFromGlibBorrow(p unsafe.Pointer) *SDPAttribute {
-	return &SDPAttribute{&sdpAttribute{(*C.GstSDPAttribute)(p)}}
+	return &SDPAttribute{&sDPAttribute{(*C.GstSDPAttribute)(p)}}
 }
 
 // UnsafeSDPAttributeFromGlibNone is used to convert raw C.GstSDPAttribute pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2793,8 +2793,8 @@ func UnsafeSDPAttributeFromGlibNone(p unsafe.Pointer) *SDPAttribute {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPAttributeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpAttribute,
-		func (intern *sdpAttribute) {
+		wrapped.sDPAttribute,
+		func (intern *sDPAttribute) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2805,8 +2805,8 @@ func UnsafeSDPAttributeFromGlibNone(p unsafe.Pointer) *SDPAttribute {
 func UnsafeSDPAttributeFromGlibFull(p unsafe.Pointer) *SDPAttribute {
 	wrapped := UnsafeSDPAttributeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpAttribute,
-		func (intern *sdpAttribute) {
+		wrapped.sDPAttribute,
+		func (intern *sDPAttribute) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2828,7 +2828,7 @@ func UnsafeSDPAttributeToGlibNone(s *SDPAttribute) unsafe.Pointer {
 // UnsafeSDPAttributeToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDPAttributeToGlibFull(s *SDPAttribute) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdpAttribute, nil)
+	runtime.SetFinalizer(s.sDPAttribute, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDPAttribute is invalid from here on
 	return _p
@@ -2900,17 +2900,17 @@ func (attr *SDPAttribute) Set(key string, value string) SDPResult {
 // The contents of the SDP "b=" field which specifies the proposed bandwidth to
 // be used by the session or media.
 type SDPBandwidth struct {
-	*sdpBandwidth
+	*sDPBandwidth
 }
 
-// sdpBandwidth is the struct that's finalized
-type sdpBandwidth struct {
+// sDPBandwidth is the struct that's finalized
+type sDPBandwidth struct {
 	native *C.GstSDPBandwidth
 }
 
 // UnsafeSDPBandwidthFromGlibBorrow is used to convert raw C.GstSDPBandwidth pointers to go. This is used by the bindings internally.
 func UnsafeSDPBandwidthFromGlibBorrow(p unsafe.Pointer) *SDPBandwidth {
-	return &SDPBandwidth{&sdpBandwidth{(*C.GstSDPBandwidth)(p)}}
+	return &SDPBandwidth{&sDPBandwidth{(*C.GstSDPBandwidth)(p)}}
 }
 
 // UnsafeSDPBandwidthFromGlibNone is used to convert raw C.GstSDPBandwidth pointers to go without transferring ownership. This is used by the bindings internally.
@@ -2918,8 +2918,8 @@ func UnsafeSDPBandwidthFromGlibNone(p unsafe.Pointer) *SDPBandwidth {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPBandwidthFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpBandwidth,
-		func (intern *sdpBandwidth) {
+		wrapped.sDPBandwidth,
+		func (intern *sDPBandwidth) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2930,8 +2930,8 @@ func UnsafeSDPBandwidthFromGlibNone(p unsafe.Pointer) *SDPBandwidth {
 func UnsafeSDPBandwidthFromGlibFull(p unsafe.Pointer) *SDPBandwidth {
 	wrapped := UnsafeSDPBandwidthFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpBandwidth,
-		func (intern *sdpBandwidth) {
+		wrapped.sDPBandwidth,
+		func (intern *sDPBandwidth) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -2953,7 +2953,7 @@ func UnsafeSDPBandwidthToGlibNone(s *SDPBandwidth) unsafe.Pointer {
 // UnsafeSDPBandwidthToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDPBandwidthToGlibFull(s *SDPBandwidth) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdpBandwidth, nil)
+	runtime.SetFinalizer(s.sDPBandwidth, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDPBandwidth is invalid from here on
 	return _p
@@ -3021,17 +3021,17 @@ func (bw *SDPBandwidth) Set(bwtype string, bandwidth uint) SDPResult {
 //
 // The contents of the SDP "c=" field which contains connection data.
 type SDPConnection struct {
-	*sdpConnection
+	*sDPConnection
 }
 
-// sdpConnection is the struct that's finalized
-type sdpConnection struct {
+// sDPConnection is the struct that's finalized
+type sDPConnection struct {
 	native *C.GstSDPConnection
 }
 
 // UnsafeSDPConnectionFromGlibBorrow is used to convert raw C.GstSDPConnection pointers to go. This is used by the bindings internally.
 func UnsafeSDPConnectionFromGlibBorrow(p unsafe.Pointer) *SDPConnection {
-	return &SDPConnection{&sdpConnection{(*C.GstSDPConnection)(p)}}
+	return &SDPConnection{&sDPConnection{(*C.GstSDPConnection)(p)}}
 }
 
 // UnsafeSDPConnectionFromGlibNone is used to convert raw C.GstSDPConnection pointers to go without transferring ownership. This is used by the bindings internally.
@@ -3039,8 +3039,8 @@ func UnsafeSDPConnectionFromGlibNone(p unsafe.Pointer) *SDPConnection {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPConnectionFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpConnection,
-		func (intern *sdpConnection) {
+		wrapped.sDPConnection,
+		func (intern *sDPConnection) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -3051,8 +3051,8 @@ func UnsafeSDPConnectionFromGlibNone(p unsafe.Pointer) *SDPConnection {
 func UnsafeSDPConnectionFromGlibFull(p unsafe.Pointer) *SDPConnection {
 	wrapped := UnsafeSDPConnectionFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpConnection,
-		func (intern *sdpConnection) {
+		wrapped.sDPConnection,
+		func (intern *sDPConnection) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -3074,7 +3074,7 @@ func UnsafeSDPConnectionToGlibNone(s *SDPConnection) unsafe.Pointer {
 // UnsafeSDPConnectionToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDPConnectionToGlibFull(s *SDPConnection) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdpConnection, nil)
+	runtime.SetFinalizer(s.sDPConnection, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDPConnection is invalid from here on
 	return _p
@@ -3158,17 +3158,17 @@ func (conn *SDPConnection) Set(nettype string, addrtype string, address string, 
 // The contents of the SDP "k=" field which is used to convey encryption
 // keys.
 type SDPKey struct {
-	*sdpKey
+	*sDPKey
 }
 
-// sdpKey is the struct that's finalized
-type sdpKey struct {
+// sDPKey is the struct that's finalized
+type sDPKey struct {
 	native *C.GstSDPKey
 }
 
 // UnsafeSDPKeyFromGlibBorrow is used to convert raw C.GstSDPKey pointers to go. This is used by the bindings internally.
 func UnsafeSDPKeyFromGlibBorrow(p unsafe.Pointer) *SDPKey {
-	return &SDPKey{&sdpKey{(*C.GstSDPKey)(p)}}
+	return &SDPKey{&sDPKey{(*C.GstSDPKey)(p)}}
 }
 
 // UnsafeSDPKeyFromGlibNone is used to convert raw C.GstSDPKey pointers to go without transferring ownership. This is used by the bindings internally.
@@ -3176,8 +3176,8 @@ func UnsafeSDPKeyFromGlibNone(p unsafe.Pointer) *SDPKey {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPKeyFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpKey,
-		func (intern *sdpKey) {
+		wrapped.sDPKey,
+		func (intern *sDPKey) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -3188,8 +3188,8 @@ func UnsafeSDPKeyFromGlibNone(p unsafe.Pointer) *SDPKey {
 func UnsafeSDPKeyFromGlibFull(p unsafe.Pointer) *SDPKey {
 	wrapped := UnsafeSDPKeyFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpKey,
-		func (intern *sdpKey) {
+		wrapped.sDPKey,
+		func (intern *sDPKey) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -3211,7 +3211,7 @@ func UnsafeSDPKeyToGlibNone(s *SDPKey) unsafe.Pointer {
 // UnsafeSDPKeyToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDPKeyToGlibFull(s *SDPKey) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdpKey, nil)
+	runtime.SetFinalizer(s.sDPKey, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDPKey is invalid from here on
 	return _p
@@ -3221,17 +3221,17 @@ func UnsafeSDPKeyToGlibFull(s *SDPKey) unsafe.Pointer {
 //
 // The contents of the SDP "m=" field with all related fields.
 type SDPMedia struct {
-	*sdpMedia
+	*sDPMedia
 }
 
-// sdpMedia is the struct that's finalized
-type sdpMedia struct {
+// sDPMedia is the struct that's finalized
+type sDPMedia struct {
 	native *C.GstSDPMedia
 }
 
 // UnsafeSDPMediaFromGlibBorrow is used to convert raw C.GstSDPMedia pointers to go. This is used by the bindings internally.
 func UnsafeSDPMediaFromGlibBorrow(p unsafe.Pointer) *SDPMedia {
-	return &SDPMedia{&sdpMedia{(*C.GstSDPMedia)(p)}}
+	return &SDPMedia{&sDPMedia{(*C.GstSDPMedia)(p)}}
 }
 
 // UnsafeSDPMediaFromGlibNone is used to convert raw C.GstSDPMedia pointers to go without transferring ownership. This is used by the bindings internally.
@@ -3239,8 +3239,8 @@ func UnsafeSDPMediaFromGlibNone(p unsafe.Pointer) *SDPMedia {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPMediaFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpMedia,
-		func (intern *sdpMedia) {
+		wrapped.sDPMedia,
+		func (intern *sDPMedia) {
 			C.gst_sdp_media_free(intern.native)
 		},
 	)
@@ -3251,8 +3251,8 @@ func UnsafeSDPMediaFromGlibNone(p unsafe.Pointer) *SDPMedia {
 func UnsafeSDPMediaFromGlibFull(p unsafe.Pointer) *SDPMedia {
 	wrapped := UnsafeSDPMediaFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpMedia,
-		func (intern *sdpMedia) {
+		wrapped.sDPMedia,
+		func (intern *sDPMedia) {
 			C.gst_sdp_media_free(intern.native)
 		},
 	)
@@ -3274,7 +3274,7 @@ func UnsafeSDPMediaToGlibNone(s *SDPMedia) unsafe.Pointer {
 // UnsafeSDPMediaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDPMediaToGlibFull(s *SDPMedia) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdpMedia, nil)
+	runtime.SetFinalizer(s.sDPMedia, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDPMedia is invalid from here on
 	return _p
@@ -4691,11 +4691,11 @@ func (media *SDPMedia) Uninit() SDPResult {
 // The GstSDPMessage helper functions makes it easy to parse and create SDP
 // messages.
 type SDPMessage struct {
-	*sdpMessage
+	*sDPMessage
 }
 
-// sdpMessage is the struct that's finalized
-type sdpMessage struct {
+// sDPMessage is the struct that's finalized
+type sDPMessage struct {
 	native *C.GstSDPMessage
 }
 
@@ -4716,7 +4716,7 @@ func (r *SDPMessage) SetGoValue(v *gobject.Value) {
 
 // UnsafeSDPMessageFromGlibBorrow is used to convert raw C.GstSDPMessage pointers to go. This is used by the bindings internally.
 func UnsafeSDPMessageFromGlibBorrow(p unsafe.Pointer) *SDPMessage {
-	return &SDPMessage{&sdpMessage{(*C.GstSDPMessage)(p)}}
+	return &SDPMessage{&sDPMessage{(*C.GstSDPMessage)(p)}}
 }
 
 // UnsafeSDPMessageFromGlibNone is used to convert raw C.GstSDPMessage pointers to go without transferring ownership. This is used by the bindings internally.
@@ -4724,8 +4724,8 @@ func UnsafeSDPMessageFromGlibNone(p unsafe.Pointer) *SDPMessage {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpMessage,
-		func (intern *sdpMessage) {
+		wrapped.sDPMessage,
+		func (intern *sDPMessage) {
 			C.gst_sdp_message_free(intern.native)
 		},
 	)
@@ -4736,8 +4736,8 @@ func UnsafeSDPMessageFromGlibNone(p unsafe.Pointer) *SDPMessage {
 func UnsafeSDPMessageFromGlibFull(p unsafe.Pointer) *SDPMessage {
 	wrapped := UnsafeSDPMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpMessage,
-		func (intern *sdpMessage) {
+		wrapped.sDPMessage,
+		func (intern *sDPMessage) {
 			C.gst_sdp_message_free(intern.native)
 		},
 	)
@@ -4759,7 +4759,7 @@ func UnsafeSDPMessageToGlibNone(s *SDPMessage) unsafe.Pointer {
 // UnsafeSDPMessageToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDPMessageToGlibFull(s *SDPMessage) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdpMessage, nil)
+	runtime.SetFinalizer(s.sDPMessage, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDPMessage is invalid from here on
 	return _p
@@ -6872,17 +6872,17 @@ func (msg *SDPMessage) ZonesLen() uint {
 // (their username and the address of the user's host) plus a session id and
 // session version number.
 type SDPOrigin struct {
-	*sdpOrigin
+	*sDPOrigin
 }
 
-// sdpOrigin is the struct that's finalized
-type sdpOrigin struct {
+// sDPOrigin is the struct that's finalized
+type sDPOrigin struct {
 	native *C.GstSDPOrigin
 }
 
 // UnsafeSDPOriginFromGlibBorrow is used to convert raw C.GstSDPOrigin pointers to go. This is used by the bindings internally.
 func UnsafeSDPOriginFromGlibBorrow(p unsafe.Pointer) *SDPOrigin {
-	return &SDPOrigin{&sdpOrigin{(*C.GstSDPOrigin)(p)}}
+	return &SDPOrigin{&sDPOrigin{(*C.GstSDPOrigin)(p)}}
 }
 
 // UnsafeSDPOriginFromGlibNone is used to convert raw C.GstSDPOrigin pointers to go without transferring ownership. This is used by the bindings internally.
@@ -6890,8 +6890,8 @@ func UnsafeSDPOriginFromGlibNone(p unsafe.Pointer) *SDPOrigin {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPOriginFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpOrigin,
-		func (intern *sdpOrigin) {
+		wrapped.sDPOrigin,
+		func (intern *sDPOrigin) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6902,8 +6902,8 @@ func UnsafeSDPOriginFromGlibNone(p unsafe.Pointer) *SDPOrigin {
 func UnsafeSDPOriginFromGlibFull(p unsafe.Pointer) *SDPOrigin {
 	wrapped := UnsafeSDPOriginFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpOrigin,
-		func (intern *sdpOrigin) {
+		wrapped.sDPOrigin,
+		func (intern *sDPOrigin) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6925,7 +6925,7 @@ func UnsafeSDPOriginToGlibNone(s *SDPOrigin) unsafe.Pointer {
 // UnsafeSDPOriginToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDPOriginToGlibFull(s *SDPOrigin) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdpOrigin, nil)
+	runtime.SetFinalizer(s.sDPOrigin, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDPOrigin is invalid from here on
 	return _p
@@ -6936,17 +6936,17 @@ func UnsafeSDPOriginToGlibFull(s *SDPOrigin) unsafe.Pointer {
 // The contents of the SDP "t=" field which specify the start and stop times for
 // a conference session.
 type SDPTime struct {
-	*sdpTime
+	*sDPTime
 }
 
-// sdpTime is the struct that's finalized
-type sdpTime struct {
+// sDPTime is the struct that's finalized
+type sDPTime struct {
 	native *C.GstSDPTime
 }
 
 // UnsafeSDPTimeFromGlibBorrow is used to convert raw C.GstSDPTime pointers to go. This is used by the bindings internally.
 func UnsafeSDPTimeFromGlibBorrow(p unsafe.Pointer) *SDPTime {
-	return &SDPTime{&sdpTime{(*C.GstSDPTime)(p)}}
+	return &SDPTime{&sDPTime{(*C.GstSDPTime)(p)}}
 }
 
 // UnsafeSDPTimeFromGlibNone is used to convert raw C.GstSDPTime pointers to go without transferring ownership. This is used by the bindings internally.
@@ -6954,8 +6954,8 @@ func UnsafeSDPTimeFromGlibNone(p unsafe.Pointer) *SDPTime {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPTimeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpTime,
-		func (intern *sdpTime) {
+		wrapped.sDPTime,
+		func (intern *sDPTime) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6966,8 +6966,8 @@ func UnsafeSDPTimeFromGlibNone(p unsafe.Pointer) *SDPTime {
 func UnsafeSDPTimeFromGlibFull(p unsafe.Pointer) *SDPTime {
 	wrapped := UnsafeSDPTimeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpTime,
-		func (intern *sdpTime) {
+		wrapped.sDPTime,
+		func (intern *sDPTime) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6989,7 +6989,7 @@ func UnsafeSDPTimeToGlibNone(s *SDPTime) unsafe.Pointer {
 // UnsafeSDPTimeToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDPTimeToGlibFull(s *SDPTime) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdpTime, nil)
+	runtime.SetFinalizer(s.sDPTime, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDPTime is invalid from here on
 	return _p
@@ -7066,17 +7066,17 @@ func (t *SDPTime) Set(start string, stop string, repeat []string) SDPResult {
 // specify a list of time zone adjustments and offsets from the base
 // time.
 type SDPZone struct {
-	*sdpZone
+	*sDPZone
 }
 
-// sdpZone is the struct that's finalized
-type sdpZone struct {
+// sDPZone is the struct that's finalized
+type sDPZone struct {
 	native *C.GstSDPZone
 }
 
 // UnsafeSDPZoneFromGlibBorrow is used to convert raw C.GstSDPZone pointers to go. This is used by the bindings internally.
 func UnsafeSDPZoneFromGlibBorrow(p unsafe.Pointer) *SDPZone {
-	return &SDPZone{&sdpZone{(*C.GstSDPZone)(p)}}
+	return &SDPZone{&sDPZone{(*C.GstSDPZone)(p)}}
 }
 
 // UnsafeSDPZoneFromGlibNone is used to convert raw C.GstSDPZone pointers to go without transferring ownership. This is used by the bindings internally.
@@ -7084,8 +7084,8 @@ func UnsafeSDPZoneFromGlibNone(p unsafe.Pointer) *SDPZone {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPZoneFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpZone,
-		func (intern *sdpZone) {
+		wrapped.sDPZone,
+		func (intern *sDPZone) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7096,8 +7096,8 @@ func UnsafeSDPZoneFromGlibNone(p unsafe.Pointer) *SDPZone {
 func UnsafeSDPZoneFromGlibFull(p unsafe.Pointer) *SDPZone {
 	wrapped := UnsafeSDPZoneFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.sdpZone,
-		func (intern *sdpZone) {
+		wrapped.sDPZone,
+		func (intern *sDPZone) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7119,7 +7119,7 @@ func UnsafeSDPZoneToGlibNone(s *SDPZone) unsafe.Pointer {
 // UnsafeSDPZoneToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDPZoneToGlibFull(s *SDPZone) unsafe.Pointer {
-	runtime.SetFinalizer(s.sdpZone, nil)
+	runtime.SetFinalizer(s.sDPZone, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDPZone is invalid from here on
 	return _p

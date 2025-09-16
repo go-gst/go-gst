@@ -83,7 +83,7 @@ func queries() error {
 
 	for msg := range bus.Messages(ctx) {
 		switch msg.Type() {
-		case gst.MessageEos:
+		case gst.MessageEOS:
 			return nil
 		case gst.MessageError:
 			debug, gstErr := msg.ParseError()

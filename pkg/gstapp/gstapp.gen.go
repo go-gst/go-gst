@@ -98,15 +98,15 @@ func init() {
 type AppLeakyType C.int
 
 const (
-	// AppLeakyTypeNone wraps APP_LEAKY_TYPE_NONE
+	// AppLeakyTypeNone wraps GST_APP_LEAKY_TYPE_NONE
 	//
 	// Not Leaky
 	AppLeakyTypeNone AppLeakyType = 0
-	// AppLeakyTypeUpstream wraps APP_LEAKY_TYPE_UPSTREAM
+	// AppLeakyTypeUpstream wraps GST_APP_LEAKY_TYPE_UPSTREAM
 	//
 	// Leaky on upstream (new buffers)
 	AppLeakyTypeUpstream AppLeakyType = 1
-	// AppLeakyTypeDownstream wraps APP_LEAKY_TYPE_DOWNSTREAM
+	// AppLeakyTypeDownstream wraps GST_APP_LEAKY_TYPE_DOWNSTREAM
 	//
 	// Leaky on downstream (old buffers)
 	AppLeakyTypeDownstream AppLeakyType = 2
@@ -141,17 +141,17 @@ func (e AppLeakyType) String() string {
 type AppStreamType C.int
 
 const (
-	// AppStreamTypeStream wraps APP_STREAM_TYPE_STREAM
+	// AppStreamTypeStream wraps GST_APP_STREAM_TYPE_STREAM
 	//
 	// No seeking is supported in the stream, such as a
 	// live stream.
 	AppStreamTypeStream AppStreamType = 0
-	// AppStreamTypeSeekable wraps APP_STREAM_TYPE_SEEKABLE
+	// AppStreamTypeSeekable wraps GST_APP_STREAM_TYPE_SEEKABLE
 	//
 	// The stream is seekable but seeking might not
 	// be very fast, such as data from a webserver.
 	AppStreamTypeSeekable AppStreamType = 1
-	// AppStreamTypeRandomAccess wraps APP_STREAM_TYPE_RANDOM_ACCESS
+	// AppStreamTypeRandomAccess wraps GST_APP_STREAM_TYPE_RANDOM_ACCESS
 	//
 	// The stream is seekable and seeking is fast,
 	// such as in a local file.
@@ -293,7 +293,7 @@ type AppSink interface {
 	//
 	// Get the maximum total duration that can be queued in @appsink.
 	GetMaxTime() gst.ClockTime
-	// GetWaitOnEos wraps gst_app_sink_get_wait_on_eos
+	// GetWaitOnEOS wraps gst_app_sink_get_wait_on_eos
 	// 
 	// The function returns the following values:
 	// 
@@ -301,8 +301,8 @@ type AppSink interface {
 	//
 	// Check if @appsink will wait for all buffers to be consumed when an EOS is
 	// received.
-	GetWaitOnEos() bool
-	// IsEos wraps gst_app_sink_is_eos
+	GetWaitOnEOS() bool
+	// IsEOS wraps gst_app_sink_is_eos
 	// 
 	// The function returns the following values:
 	// 
@@ -313,7 +313,7 @@ type AppSink interface {
 	// 
 	// This function also returns %TRUE when the appsink is not in the PAUSED or
 	// PLAYING state.
-	IsEos() bool
+	IsEOS() bool
 	// PullPreroll wraps gst_app_sink_pull_preroll
 	// 
 	// The function returns the following values:
@@ -433,14 +433,14 @@ type AppSink interface {
 	// elements until a sample is pulled from @appsink, unless 'drop' is set, in which
 	// case new buffers will be discarded.
 	SetMaxTime(gst.ClockTime)
-	// SetWaitOnEos wraps gst_app_sink_set_wait_on_eos
+	// SetWaitOnEOS wraps gst_app_sink_set_wait_on_eos
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- wait bool: the new state 
 	//
 	// Instruct @appsink to wait for all buffers to be consumed when an EOS is received.
-	SetWaitOnEos(bool)
+	SetWaitOnEOS(bool)
 	// TryPullPreroll wraps gst_app_sink_try_pull_preroll
 	// 
 	// The function takes the following parameters:
@@ -494,11 +494,11 @@ type AppSink interface {
 	// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
 	// condition.
 	TryPullSample(gst.ClockTime) *gst.Sample
-	// ConnectEos connects the provided callback to the "eos" signal
+	// ConnectEOS connects the provided callback to the "eos" signal
 	//
 	// Signal that the end-of-stream has been reached. This signal is emitted from
 	// the streaming thread.
-	ConnectEos(func(AppSink)) gobject.SignalHandle
+	ConnectEOS(func(AppSink)) gobject.SignalHandle
 	// ConnectNewPreroll connects the provided callback to the "new-preroll" signal
 	//
 	// Signal that a new preroll sample is available.
@@ -660,9 +660,9 @@ type AppSink interface {
 
 	// chain up virtual methods:
 
-	// ParentEos calls the default implementations of the eos virtual method.
+	// ParentEOS calls the default implementations of the eos virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	ParentEos()
+	ParentEOS()
 	// ParentNewPreroll calls the default implementations of the new_preroll virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -1010,7 +1010,7 @@ func (appsink *AppSinkInstance) GetMaxTime() gst.ClockTime {
 	return goret
 }
 
-// GetWaitOnEos wraps gst_app_sink_get_wait_on_eos
+// GetWaitOnEOS wraps gst_app_sink_get_wait_on_eos
 // 
 // The function returns the following values:
 // 
@@ -1018,7 +1018,7 @@ func (appsink *AppSinkInstance) GetMaxTime() gst.ClockTime {
 //
 // Check if @appsink will wait for all buffers to be consumed when an EOS is
 // received.
-func (appsink *AppSinkInstance) GetWaitOnEos() bool {
+func (appsink *AppSinkInstance) GetWaitOnEOS() bool {
 	var carg0 *C.GstAppSink // in, none, converted
 	var cret  C.gboolean    // return
 
@@ -1036,7 +1036,7 @@ func (appsink *AppSinkInstance) GetWaitOnEos() bool {
 	return goret
 }
 
-// IsEos wraps gst_app_sink_is_eos
+// IsEOS wraps gst_app_sink_is_eos
 // 
 // The function returns the following values:
 // 
@@ -1047,7 +1047,7 @@ func (appsink *AppSinkInstance) GetWaitOnEos() bool {
 // 
 // This function also returns %TRUE when the appsink is not in the PAUSED or
 // PLAYING state.
-func (appsink *AppSinkInstance) IsEos() bool {
+func (appsink *AppSinkInstance) IsEOS() bool {
 	var carg0 *C.GstAppSink // in, none, converted
 	var cret  C.gboolean    // return
 
@@ -1303,14 +1303,14 @@ func (appsink *AppSinkInstance) SetMaxTime(max gst.ClockTime) {
 	runtime.KeepAlive(max)
 }
 
-// SetWaitOnEos wraps gst_app_sink_set_wait_on_eos
+// SetWaitOnEOS wraps gst_app_sink_set_wait_on_eos
 // 
 // The function takes the following parameters:
 // 
 // 	- wait bool: the new state 
 //
 // Instruct @appsink to wait for all buffers to be consumed when an EOS is received.
-func (appsink *AppSinkInstance) SetWaitOnEos(wait bool) {
+func (appsink *AppSinkInstance) SetWaitOnEOS(wait bool) {
 	var carg0 *C.GstAppSink // in, none, converted
 	var carg1 C.gboolean    // in
 
@@ -1417,11 +1417,11 @@ func (appsink *AppSinkInstance) TryPullSample(timeout gst.ClockTime) *gst.Sample
 	return goret
 }
 
-// ConnectEos connects the provided callback to the "eos" signal
+// ConnectEOS connects the provided callback to the "eos" signal
 //
 // Signal that the end-of-stream has been reached. This signal is emitted from
 // the streaming thread.
-func (o *AppSinkInstance) ConnectEos(fn func(AppSink)) gobject.SignalHandle {
+func (o *AppSinkInstance) ConnectEOS(fn func(AppSink)) gobject.SignalHandle {
 	return o.Connect("eos", fn)
 }
 
@@ -1616,8 +1616,8 @@ type AppSinkOverrides[Instance AppSink] struct {
 	// gstbase.BaseSinkOverrides allows you to override virtual methods from the parent class gstbase.BaseSink
 	gstbase.BaseSinkOverrides[Instance]
 
-	// // Eos allows you to override the implementation of the virtual method eos.
-	Eos func(Instance)
+	// // EOS allows you to override the implementation of the virtual method eos.
+	EOS func(Instance)
 	// // NewPreroll allows you to override the implementation of the virtual method new_preroll.
 	// 
 	// The function returns the following values:
@@ -1735,7 +1735,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 
 	pclass := (*C.GstAppSinkClass)(gclass)
 
-	if overrides.Eos != nil {
+	if overrides.EOS != nil {
 		pclass.eos = (*[0]byte)(C._gotk4_gstapp1_AppSink_eos)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -1745,7 +1745,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 
 				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				overrides.Eos(appsink)
+				overrides.EOS(appsink)
 			},
 		)
 	}
@@ -1883,9 +1883,9 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 	}
 }
 
-// ParentEos calls the default implementations of the eos virtual method.
+// ParentEOS calls the default implementations of the eos virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-func (appsink *AppSinkInstance) ParentEos() {
+func (appsink *AppSinkInstance) ParentEOS() {
 	var carg0 *C.GstAppSink
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))

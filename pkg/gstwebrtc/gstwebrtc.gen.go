@@ -182,19 +182,19 @@ func init() {
 type WebRTCBundlePolicy C.int
 
 const (
-	// WebrtcBundlePolicyNone wraps WEBRTC_BUNDLE_POLICY_NONE
+	// WebrtcBundlePolicyNone wraps GST_WEBRTC_BUNDLE_POLICY_NONE
 	//
 	// none
 	WebrtcBundlePolicyNone WebRTCBundlePolicy = 0
-	// WebrtcBundlePolicyBalanced wraps WEBRTC_BUNDLE_POLICY_BALANCED
+	// WebrtcBundlePolicyBalanced wraps GST_WEBRTC_BUNDLE_POLICY_BALANCED
 	//
 	// balanced
 	WebrtcBundlePolicyBalanced WebRTCBundlePolicy = 1
-	// WebrtcBundlePolicyMaxCompat wraps WEBRTC_BUNDLE_POLICY_MAX_COMPAT
+	// WebrtcBundlePolicyMaxCompat wraps GST_WEBRTC_BUNDLE_POLICY_MAX_COMPAT
 	//
 	// max-compat
 	WebrtcBundlePolicyMaxCompat WebRTCBundlePolicy = 2
-	// WebrtcBundlePolicyMaxBundle wraps WEBRTC_BUNDLE_POLICY_MAX_BUNDLE
+	// WebrtcBundlePolicyMaxBundle wraps GST_WEBRTC_BUNDLE_POLICY_MAX_BUNDLE
 	//
 	// max-bundle
 	WebrtcBundlePolicyMaxBundle WebRTCBundlePolicy = 3
@@ -228,22 +228,22 @@ func (e WebRTCBundlePolicy) String() string {
 type WebRTCDTLSSetup C.int
 
 const (
-	// WebrtcDTLSSetupNone wraps WEBRTC_DTLS_SETUP_NONE
+	// WebrtcDtlsSetupNone wraps GST_WEBRTC_DTLS_SETUP_NONE
 	//
 	// none
-	WebrtcDTLSSetupNone WebRTCDTLSSetup = 0
-	// WebrtcDTLSSetupActpass wraps WEBRTC_DTLS_SETUP_ACTPASS
+	WebrtcDtlsSetupNone WebRTCDTLSSetup = 0
+	// WebrtcDtlsSetupActpass wraps GST_WEBRTC_DTLS_SETUP_ACTPASS
 	//
 	// actpass
-	WebrtcDTLSSetupActpass WebRTCDTLSSetup = 1
-	// WebrtcDTLSSetupActive wraps WEBRTC_DTLS_SETUP_ACTIVE
+	WebrtcDtlsSetupActpass WebRTCDTLSSetup = 1
+	// WebrtcDtlsSetupActive wraps GST_WEBRTC_DTLS_SETUP_ACTIVE
 	//
 	// sendonly
-	WebrtcDTLSSetupActive WebRTCDTLSSetup = 2
-	// WebrtcDTLSSetupPassive wraps WEBRTC_DTLS_SETUP_PASSIVE
+	WebrtcDtlsSetupActive WebRTCDTLSSetup = 2
+	// WebrtcDtlsSetupPassive wraps GST_WEBRTC_DTLS_SETUP_PASSIVE
 	//
 	// recvonly
-	WebrtcDTLSSetupPassive WebRTCDTLSSetup = 3
+	WebrtcDtlsSetupPassive WebRTCDTLSSetup = 3
 )
 
 func marshalWebRTCDTLSSetup(p unsafe.Pointer) (any, error) {
@@ -262,10 +262,10 @@ func (e WebRTCDTLSSetup) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCDTLSSetup) String() string {
 	switch e {
-		case WebrtcDTLSSetupActive: return "WebrtcDTLSSetupActive"
-		case WebrtcDTLSSetupActpass: return "WebrtcDTLSSetupActpass"
-		case WebrtcDTLSSetupNone: return "WebrtcDTLSSetupNone"
-		case WebrtcDTLSSetupPassive: return "WebrtcDTLSSetupPassive"
+		case WebrtcDtlsSetupActive: return "WebrtcDtlsSetupActive"
+		case WebrtcDtlsSetupActpass: return "WebrtcDtlsSetupActpass"
+		case WebrtcDtlsSetupNone: return "WebrtcDtlsSetupNone"
+		case WebrtcDtlsSetupPassive: return "WebrtcDtlsSetupPassive"
 		default: return fmt.Sprintf("WebRTCDTLSSetup(%d)", e)
 	}
 }
@@ -274,26 +274,26 @@ func (e WebRTCDTLSSetup) String() string {
 type WebRTCDTLSTransportState C.int
 
 const (
-	// WebrtcDTLSTransportStateNew wraps WEBRTC_DTLS_TRANSPORT_STATE_NEW
+	// WebrtcDtlsTransportStateNew wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_NEW
 	//
 	// new
-	WebrtcDTLSTransportStateNew WebRTCDTLSTransportState = 0
-	// WebrtcDTLSTransportStateClosed wraps WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
+	WebrtcDtlsTransportStateNew WebRTCDTLSTransportState = 0
+	// WebrtcDtlsTransportStateClosed wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
 	//
 	// closed
-	WebrtcDTLSTransportStateClosed WebRTCDTLSTransportState = 1
-	// WebrtcDTLSTransportStateFailed wraps WEBRTC_DTLS_TRANSPORT_STATE_FAILED
+	WebrtcDtlsTransportStateClosed WebRTCDTLSTransportState = 1
+	// WebrtcDtlsTransportStateFailed wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_FAILED
 	//
 	// failed
-	WebrtcDTLSTransportStateFailed WebRTCDTLSTransportState = 2
-	// WebrtcDTLSTransportStateConnecting wraps WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING
+	WebrtcDtlsTransportStateFailed WebRTCDTLSTransportState = 2
+	// WebrtcDtlsTransportStateConnecting wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING
 	//
 	// connecting
-	WebrtcDTLSTransportStateConnecting WebRTCDTLSTransportState = 3
-	// WebrtcDTLSTransportStateConnected wraps WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED
+	WebrtcDtlsTransportStateConnecting WebRTCDTLSTransportState = 3
+	// WebrtcDtlsTransportStateConnected wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED
 	//
 	// connected
-	WebrtcDTLSTransportStateConnected WebRTCDTLSTransportState = 4
+	WebrtcDtlsTransportStateConnected WebRTCDTLSTransportState = 4
 )
 
 func marshalWebRTCDTLSTransportState(p unsafe.Pointer) (any, error) {
@@ -312,11 +312,11 @@ func (e WebRTCDTLSTransportState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCDTLSTransportState) String() string {
 	switch e {
-		case WebrtcDTLSTransportStateClosed: return "WebrtcDTLSTransportStateClosed"
-		case WebrtcDTLSTransportStateConnected: return "WebrtcDTLSTransportStateConnected"
-		case WebrtcDTLSTransportStateConnecting: return "WebrtcDTLSTransportStateConnecting"
-		case WebrtcDTLSTransportStateFailed: return "WebrtcDTLSTransportStateFailed"
-		case WebrtcDTLSTransportStateNew: return "WebrtcDTLSTransportStateNew"
+		case WebrtcDtlsTransportStateClosed: return "WebrtcDtlsTransportStateClosed"
+		case WebrtcDtlsTransportStateConnected: return "WebrtcDtlsTransportStateConnected"
+		case WebrtcDtlsTransportStateConnecting: return "WebrtcDtlsTransportStateConnecting"
+		case WebrtcDtlsTransportStateFailed: return "WebrtcDtlsTransportStateFailed"
+		case WebrtcDtlsTransportStateNew: return "WebrtcDtlsTransportStateNew"
 		default: return fmt.Sprintf("WebRTCDTLSTransportState(%d)", e)
 	}
 }
@@ -327,19 +327,19 @@ func (e WebRTCDTLSTransportState) String() string {
 type WebRTCDataChannelState C.int
 
 const (
-	// WebrtcDataChannelStateConnecting wraps WEBRTC_DATA_CHANNEL_STATE_CONNECTING
+	// WebrtcDataChannelStateConnecting wraps GST_WEBRTC_DATA_CHANNEL_STATE_CONNECTING
 	//
 	// connecting
 	WebrtcDataChannelStateConnecting WebRTCDataChannelState = 1
-	// WebrtcDataChannelStateOpen wraps WEBRTC_DATA_CHANNEL_STATE_OPEN
+	// WebrtcDataChannelStateOpen wraps GST_WEBRTC_DATA_CHANNEL_STATE_OPEN
 	//
 	// open
 	WebrtcDataChannelStateOpen WebRTCDataChannelState = 2
-	// WebrtcDataChannelStateClosing wraps WEBRTC_DATA_CHANNEL_STATE_CLOSING
+	// WebrtcDataChannelStateClosing wraps GST_WEBRTC_DATA_CHANNEL_STATE_CLOSING
 	//
 	// closing
 	WebrtcDataChannelStateClosing WebRTCDataChannelState = 3
-	// WebrtcDataChannelStateClosed wraps WEBRTC_DATA_CHANNEL_STATE_CLOSED
+	// WebrtcDataChannelStateClosed wraps GST_WEBRTC_DATA_CHANNEL_STATE_CLOSED
 	//
 	// closed
 	WebrtcDataChannelStateClosed WebRTCDataChannelState = 4
@@ -375,47 +375,47 @@ func (e WebRTCDataChannelState) String() string {
 type WebRTCError C.int
 
 const (
-	// WebrtcErrorDataChannelFailure wraps WEBRTC_ERROR_DATA_CHANNEL_FAILURE
+	// WebrtcErrorDataChannelFailure wraps GST_WEBRTC_ERROR_DATA_CHANNEL_FAILURE
 	//
 	// data-channel-failure
 	WebrtcErrorDataChannelFailure WebRTCError = 0
-	// WebrtcErrorDTLSFailure wraps WEBRTC_ERROR_DTLS_FAILURE
+	// WebrtcErrorDtlsFailure wraps GST_WEBRTC_ERROR_DTLS_FAILURE
 	//
 	// dtls-failure
-	WebrtcErrorDTLSFailure WebRTCError = 1
-	// WebrtcErrorFingerprintFailure wraps WEBRTC_ERROR_FINGERPRINT_FAILURE
+	WebrtcErrorDtlsFailure WebRTCError = 1
+	// WebrtcErrorFingerprintFailure wraps GST_WEBRTC_ERROR_FINGERPRINT_FAILURE
 	//
 	// fingerprint-failure
 	WebrtcErrorFingerprintFailure WebRTCError = 2
-	// WebrtcErrorSCTPFailure wraps WEBRTC_ERROR_SCTP_FAILURE
+	// WebrtcErrorSctpFailure wraps GST_WEBRTC_ERROR_SCTP_FAILURE
 	//
 	// sctp-failure
-	WebrtcErrorSCTPFailure WebRTCError = 3
-	// WebrtcErrorSdpSyntaxError wraps WEBRTC_ERROR_SDP_SYNTAX_ERROR
+	WebrtcErrorSctpFailure WebRTCError = 3
+	// WebrtcErrorSdpSyntaxError wraps GST_WEBRTC_ERROR_SDP_SYNTAX_ERROR
 	//
 	// sdp-syntax-error
 	WebrtcErrorSdpSyntaxError WebRTCError = 4
-	// WebrtcErrorHardwareEncoderNotAvailable wraps WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE
+	// WebrtcErrorHardwareEncoderNotAvailable wraps GST_WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE
 	//
 	// hardware-encoder-not-available
 	WebrtcErrorHardwareEncoderNotAvailable WebRTCError = 5
-	// WebrtcErrorEncoderError wraps WEBRTC_ERROR_ENCODER_ERROR
+	// WebrtcErrorEncoderError wraps GST_WEBRTC_ERROR_ENCODER_ERROR
 	//
 	// encoder-error
 	WebrtcErrorEncoderError WebRTCError = 6
-	// WebrtcErrorInvalidState wraps WEBRTC_ERROR_INVALID_STATE
+	// WebrtcErrorInvalidState wraps GST_WEBRTC_ERROR_INVALID_STATE
 	//
 	// invalid-state (part of WebIDL specification)
 	WebrtcErrorInvalidState WebRTCError = 7
-	// WebrtcErrorInternalFailure wraps WEBRTC_ERROR_INTERNAL_FAILURE
+	// WebrtcErrorInternalFailure wraps GST_WEBRTC_ERROR_INTERNAL_FAILURE
 	//
 	// GStreamer-specific failure, not matching any other value from the specification
 	WebrtcErrorInternalFailure WebRTCError = 8
-	// WebrtcErrorInvalidModification wraps WEBRTC_ERROR_INVALID_MODIFICATION
+	// WebrtcErrorInvalidModification wraps GST_WEBRTC_ERROR_INVALID_MODIFICATION
 	//
 	// invalid-modification (part of WebIDL specification)
 	WebrtcErrorInvalidModification WebRTCError = 9
-	// WebrtcErrorTypeError wraps WEBRTC_ERROR_TYPE_ERROR
+	// WebrtcErrorTypeError wraps GST_WEBRTC_ERROR_TYPE_ERROR
 	//
 	// type-error (maps to JavaScript TypeError)
 	WebrtcErrorTypeError WebRTCError = 10
@@ -437,15 +437,15 @@ func (e WebRTCError) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCError) String() string {
 	switch e {
-		case WebrtcErrorDTLSFailure: return "WebrtcErrorDTLSFailure"
 		case WebrtcErrorDataChannelFailure: return "WebrtcErrorDataChannelFailure"
+		case WebrtcErrorDtlsFailure: return "WebrtcErrorDtlsFailure"
 		case WebrtcErrorEncoderError: return "WebrtcErrorEncoderError"
 		case WebrtcErrorFingerprintFailure: return "WebrtcErrorFingerprintFailure"
 		case WebrtcErrorHardwareEncoderNotAvailable: return "WebrtcErrorHardwareEncoderNotAvailable"
 		case WebrtcErrorInternalFailure: return "WebrtcErrorInternalFailure"
 		case WebrtcErrorInvalidModification: return "WebrtcErrorInvalidModification"
 		case WebrtcErrorInvalidState: return "WebrtcErrorInvalidState"
-		case WebrtcErrorSCTPFailure: return "WebrtcErrorSCTPFailure"
+		case WebrtcErrorSctpFailure: return "WebrtcErrorSctpFailure"
 		case WebrtcErrorSdpSyntaxError: return "WebrtcErrorSdpSyntaxError"
 		case WebrtcErrorTypeError: return "WebrtcErrorTypeError"
 		default: return fmt.Sprintf("WebRTCError(%d)", e)
@@ -473,11 +473,11 @@ func WebRTCErrorQuark() glib.Quark {
 type WebRTCFECType C.int
 
 const (
-	// WebrtcFecTypeNone wraps WEBRTC_FEC_TYPE_NONE
+	// WebrtcFecTypeNone wraps GST_WEBRTC_FEC_TYPE_NONE
 	//
 	// none
 	WebrtcFecTypeNone WebRTCFECType = 0
-	// WebrtcFecTypeUlpRed wraps WEBRTC_FEC_TYPE_ULP_RED
+	// WebrtcFecTypeUlpRed wraps GST_WEBRTC_FEC_TYPE_ULP_RED
 	//
 	// ulpfec + red
 	WebrtcFecTypeUlpRed WebRTCFECType = 1
@@ -509,11 +509,11 @@ func (e WebRTCFECType) String() string {
 type WebRTCICEComponent C.int
 
 const (
-	// WebrtcIceComponentRtp wraps WEBRTC_ICE_COMPONENT_RTP
+	// WebrtcIceComponentRtp wraps GST_WEBRTC_ICE_COMPONENT_RTP
 	//
 	// RTP component
 	WebrtcIceComponentRtp WebRTCICEComponent = 0
-	// WebrtcIceComponentRtcp wraps WEBRTC_ICE_COMPONENT_RTCP
+	// WebrtcIceComponentRtcp wraps GST_WEBRTC_ICE_COMPONENT_RTCP
 	//
 	// RTCP component
 	WebrtcIceComponentRtcp WebRTCICEComponent = 1
@@ -547,31 +547,31 @@ func (e WebRTCICEComponent) String() string {
 type WebRTCICEConnectionState C.int
 
 const (
-	// WebrtcIceConnectionStateNew wraps WEBRTC_ICE_CONNECTION_STATE_NEW
+	// WebrtcIceConnectionStateNew wraps GST_WEBRTC_ICE_CONNECTION_STATE_NEW
 	//
 	// new
 	WebrtcIceConnectionStateNew WebRTCICEConnectionState = 0
-	// WebrtcIceConnectionStateChecking wraps WEBRTC_ICE_CONNECTION_STATE_CHECKING
+	// WebrtcIceConnectionStateChecking wraps GST_WEBRTC_ICE_CONNECTION_STATE_CHECKING
 	//
 	// checking
 	WebrtcIceConnectionStateChecking WebRTCICEConnectionState = 1
-	// WebrtcIceConnectionStateConnected wraps WEBRTC_ICE_CONNECTION_STATE_CONNECTED
+	// WebrtcIceConnectionStateConnected wraps GST_WEBRTC_ICE_CONNECTION_STATE_CONNECTED
 	//
 	// connected
 	WebrtcIceConnectionStateConnected WebRTCICEConnectionState = 2
-	// WebrtcIceConnectionStateCompleted wraps WEBRTC_ICE_CONNECTION_STATE_COMPLETED
+	// WebrtcIceConnectionStateCompleted wraps GST_WEBRTC_ICE_CONNECTION_STATE_COMPLETED
 	//
 	// completed
 	WebrtcIceConnectionStateCompleted WebRTCICEConnectionState = 3
-	// WebrtcIceConnectionStateFailed wraps WEBRTC_ICE_CONNECTION_STATE_FAILED
+	// WebrtcIceConnectionStateFailed wraps GST_WEBRTC_ICE_CONNECTION_STATE_FAILED
 	//
 	// failed
 	WebrtcIceConnectionStateFailed WebRTCICEConnectionState = 4
-	// WebrtcIceConnectionStateDisconnected wraps WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED
+	// WebrtcIceConnectionStateDisconnected wraps GST_WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED
 	//
 	// disconnected
 	WebrtcIceConnectionStateDisconnected WebRTCICEConnectionState = 5
-	// WebrtcIceConnectionStateClosed wraps WEBRTC_ICE_CONNECTION_STATE_CLOSED
+	// WebrtcIceConnectionStateClosed wraps GST_WEBRTC_ICE_CONNECTION_STATE_CLOSED
 	//
 	// closed
 	WebrtcIceConnectionStateClosed WebRTCICEConnectionState = 6
@@ -610,15 +610,15 @@ func (e WebRTCICEConnectionState) String() string {
 type WebRTCICEGatheringState C.int
 
 const (
-	// WebrtcIceGatheringStateNew wraps WEBRTC_ICE_GATHERING_STATE_NEW
+	// WebrtcIceGatheringStateNew wraps GST_WEBRTC_ICE_GATHERING_STATE_NEW
 	//
 	// new
 	WebrtcIceGatheringStateNew WebRTCICEGatheringState = 0
-	// WebrtcIceGatheringStateGathering wraps WEBRTC_ICE_GATHERING_STATE_GATHERING
+	// WebrtcIceGatheringStateGathering wraps GST_WEBRTC_ICE_GATHERING_STATE_GATHERING
 	//
 	// gathering
 	WebrtcIceGatheringStateGathering WebRTCICEGatheringState = 1
-	// WebrtcIceGatheringStateComplete wraps WEBRTC_ICE_GATHERING_STATE_COMPLETE
+	// WebrtcIceGatheringStateComplete wraps GST_WEBRTC_ICE_GATHERING_STATE_COMPLETE
 	//
 	// complete
 	WebrtcIceGatheringStateComplete WebRTCICEGatheringState = 2
@@ -651,11 +651,11 @@ func (e WebRTCICEGatheringState) String() string {
 type WebRTCICERole C.int
 
 const (
-	// WebrtcIceRoleControlled wraps WEBRTC_ICE_ROLE_CONTROLLED
+	// WebrtcIceRoleControlled wraps GST_WEBRTC_ICE_ROLE_CONTROLLED
 	//
 	// controlled
 	WebrtcIceRoleControlled WebRTCICERole = 0
-	// WebrtcIceRoleControlling wraps WEBRTC_ICE_ROLE_CONTROLLING
+	// WebrtcIceRoleControlling wraps GST_WEBRTC_ICE_ROLE_CONTROLLING
 	//
 	// controlling
 	WebrtcIceRoleControlling WebRTCICERole = 1
@@ -690,11 +690,11 @@ func (e WebRTCICERole) String() string {
 type WebRTCICETransportPolicy C.int
 
 const (
-	// WebrtcIceTransportPolicyAll wraps WEBRTC_ICE_TRANSPORT_POLICY_ALL
+	// WebrtcIceTransportPolicyAll wraps GST_WEBRTC_ICE_TRANSPORT_POLICY_ALL
 	//
 	// all
 	WebrtcIceTransportPolicyAll WebRTCICETransportPolicy = 0
-	// WebrtcIceTransportPolicyRelay wraps WEBRTC_ICE_TRANSPORT_POLICY_RELAY
+	// WebrtcIceTransportPolicyRelay wraps GST_WEBRTC_ICE_TRANSPORT_POLICY_RELAY
 	//
 	// relay
 	WebrtcIceTransportPolicyRelay WebRTCICETransportPolicy = 1
@@ -728,15 +728,15 @@ func (e WebRTCICETransportPolicy) String() string {
 type WebRTCKind C.int
 
 const (
-	// WebrtcKindUnknown wraps WEBRTC_KIND_UNKNOWN
+	// WebrtcKindUnknown wraps GST_WEBRTC_KIND_UNKNOWN
 	//
 	// Kind has not yet been set
 	WebrtcKindUnknown WebRTCKind = 0
-	// WebrtcKindAudio wraps WEBRTC_KIND_AUDIO
+	// WebrtcKindAudio wraps GST_WEBRTC_KIND_AUDIO
 	//
 	// Kind is audio
 	WebrtcKindAudio WebRTCKind = 1
-	// WebrtcKindVideo wraps WEBRTC_KIND_VIDEO
+	// WebrtcKindVideo wraps GST_WEBRTC_KIND_VIDEO
 	//
 	// Kind is video
 	WebrtcKindVideo WebRTCKind = 2
@@ -771,27 +771,27 @@ func (e WebRTCKind) String() string {
 type WebRTCPeerConnectionState C.int
 
 const (
-	// WebrtcPeerConnectionStateNew wraps WEBRTC_PEER_CONNECTION_STATE_NEW
+	// WebrtcPeerConnectionStateNew wraps GST_WEBRTC_PEER_CONNECTION_STATE_NEW
 	//
 	// new
 	WebrtcPeerConnectionStateNew WebRTCPeerConnectionState = 0
-	// WebrtcPeerConnectionStateConnecting wraps WEBRTC_PEER_CONNECTION_STATE_CONNECTING
+	// WebrtcPeerConnectionStateConnecting wraps GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTING
 	//
 	// connecting
 	WebrtcPeerConnectionStateConnecting WebRTCPeerConnectionState = 1
-	// WebrtcPeerConnectionStateConnected wraps WEBRTC_PEER_CONNECTION_STATE_CONNECTED
+	// WebrtcPeerConnectionStateConnected wraps GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTED
 	//
 	// connected
 	WebrtcPeerConnectionStateConnected WebRTCPeerConnectionState = 2
-	// WebrtcPeerConnectionStateDisconnected wraps WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED
+	// WebrtcPeerConnectionStateDisconnected wraps GST_WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED
 	//
 	// disconnected
 	WebrtcPeerConnectionStateDisconnected WebRTCPeerConnectionState = 3
-	// WebrtcPeerConnectionStateFailed wraps WEBRTC_PEER_CONNECTION_STATE_FAILED
+	// WebrtcPeerConnectionStateFailed wraps GST_WEBRTC_PEER_CONNECTION_STATE_FAILED
 	//
 	// failed
 	WebrtcPeerConnectionStateFailed WebRTCPeerConnectionState = 4
-	// WebrtcPeerConnectionStateClosed wraps WEBRTC_PEER_CONNECTION_STATE_CLOSED
+	// WebrtcPeerConnectionStateClosed wraps GST_WEBRTC_PEER_CONNECTION_STATE_CLOSED
 	//
 	// closed
 	WebrtcPeerConnectionStateClosed WebRTCPeerConnectionState = 5
@@ -829,19 +829,19 @@ func (e WebRTCPeerConnectionState) String() string {
 type WebRTCPriorityType C.int
 
 const (
-	// WebrtcPriorityTypeVeryLow wraps WEBRTC_PRIORITY_TYPE_VERY_LOW
+	// WebrtcPriorityTypeVeryLow wraps GST_WEBRTC_PRIORITY_TYPE_VERY_LOW
 	//
 	// very-low
 	WebrtcPriorityTypeVeryLow WebRTCPriorityType = 1
-	// WebrtcPriorityTypeLow wraps WEBRTC_PRIORITY_TYPE_LOW
+	// WebrtcPriorityTypeLow wraps GST_WEBRTC_PRIORITY_TYPE_LOW
 	//
 	// low
 	WebrtcPriorityTypeLow WebRTCPriorityType = 2
-	// WebrtcPriorityTypeMedium wraps WEBRTC_PRIORITY_TYPE_MEDIUM
+	// WebrtcPriorityTypeMedium wraps GST_WEBRTC_PRIORITY_TYPE_MEDIUM
 	//
 	// medium
 	WebrtcPriorityTypeMedium WebRTCPriorityType = 3
-	// WebrtcPriorityTypeHigh wraps WEBRTC_PRIORITY_TYPE_HIGH
+	// WebrtcPriorityTypeHigh wraps GST_WEBRTC_PRIORITY_TYPE_HIGH
 	//
 	// high
 	WebrtcPriorityTypeHigh WebRTCPriorityType = 4
@@ -875,23 +875,23 @@ func (e WebRTCPriorityType) String() string {
 type WebRTCRTPTransceiverDirection C.int
 
 const (
-	// WebrtcRtpTransceiverDirectionNone wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE
+	// WebrtcRtpTransceiverDirectionNone wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE
 	//
 	// none
 	WebrtcRtpTransceiverDirectionNone WebRTCRTPTransceiverDirection = 0
-	// WebrtcRtpTransceiverDirectionInactive wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE
+	// WebrtcRtpTransceiverDirectionInactive wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE
 	//
 	// inactive
 	WebrtcRtpTransceiverDirectionInactive WebRTCRTPTransceiverDirection = 1
-	// WebrtcRtpTransceiverDirectionSendonly wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY
+	// WebrtcRtpTransceiverDirectionSendonly wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY
 	//
 	// sendonly
 	WebrtcRtpTransceiverDirectionSendonly WebRTCRTPTransceiverDirection = 2
-	// WebrtcRtpTransceiverDirectionRecvonly wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY
+	// WebrtcRtpTransceiverDirectionRecvonly wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY
 	//
 	// recvonly
 	WebrtcRtpTransceiverDirectionRecvonly WebRTCRTPTransceiverDirection = 3
-	// WebrtcRtpTransceiverDirectionSendrecv wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV
+	// WebrtcRtpTransceiverDirectionSendrecv wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV
 	//
 	// sendrecv
 	WebrtcRtpTransceiverDirectionSendrecv WebRTCRTPTransceiverDirection = 4
@@ -928,22 +928,22 @@ func (e WebRTCRTPTransceiverDirection) String() string {
 type WebRTCSCTPTransportState C.int
 
 const (
-	// WebrtcSCTPTransportStateNew wraps WEBRTC_SCTP_TRANSPORT_STATE_NEW
+	// WebrtcSctpTransportStateNew wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_NEW
 	//
 	// new
-	WebrtcSCTPTransportStateNew WebRTCSCTPTransportState = 0
-	// WebrtcSCTPTransportStateConnecting wraps WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
+	WebrtcSctpTransportStateNew WebRTCSCTPTransportState = 0
+	// WebrtcSctpTransportStateConnecting wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
 	//
 	// connecting
-	WebrtcSCTPTransportStateConnecting WebRTCSCTPTransportState = 1
-	// WebrtcSCTPTransportStateConnected wraps WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED
+	WebrtcSctpTransportStateConnecting WebRTCSCTPTransportState = 1
+	// WebrtcSctpTransportStateConnected wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED
 	//
 	// connected
-	WebrtcSCTPTransportStateConnected WebRTCSCTPTransportState = 2
-	// WebrtcSCTPTransportStateClosed wraps WEBRTC_SCTP_TRANSPORT_STATE_CLOSED
+	WebrtcSctpTransportStateConnected WebRTCSCTPTransportState = 2
+	// WebrtcSctpTransportStateClosed wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CLOSED
 	//
 	// closed
-	WebrtcSCTPTransportStateClosed WebRTCSCTPTransportState = 3
+	WebrtcSctpTransportStateClosed WebRTCSCTPTransportState = 3
 )
 
 func marshalWebRTCSCTPTransportState(p unsafe.Pointer) (any, error) {
@@ -962,10 +962,10 @@ func (e WebRTCSCTPTransportState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCSCTPTransportState) String() string {
 	switch e {
-		case WebrtcSCTPTransportStateClosed: return "WebrtcSCTPTransportStateClosed"
-		case WebrtcSCTPTransportStateConnected: return "WebrtcSCTPTransportStateConnected"
-		case WebrtcSCTPTransportStateConnecting: return "WebrtcSCTPTransportStateConnecting"
-		case WebrtcSCTPTransportStateNew: return "WebrtcSCTPTransportStateNew"
+		case WebrtcSctpTransportStateClosed: return "WebrtcSctpTransportStateClosed"
+		case WebrtcSctpTransportStateConnected: return "WebrtcSctpTransportStateConnected"
+		case WebrtcSctpTransportStateConnecting: return "WebrtcSctpTransportStateConnecting"
+		case WebrtcSctpTransportStateNew: return "WebrtcSctpTransportStateNew"
 		default: return fmt.Sprintf("WebRTCSCTPTransportState(%d)", e)
 	}
 }
@@ -976,19 +976,19 @@ func (e WebRTCSCTPTransportState) String() string {
 type WebRTCSDPType C.int
 
 const (
-	// WebrtcSdpTypeOffer wraps WEBRTC_SDP_TYPE_OFFER
+	// WebrtcSdpTypeOffer wraps GST_WEBRTC_SDP_TYPE_OFFER
 	//
 	// offer
 	WebrtcSdpTypeOffer WebRTCSDPType = 1
-	// WebrtcSdpTypePranswer wraps WEBRTC_SDP_TYPE_PRANSWER
+	// WebrtcSdpTypePranswer wraps GST_WEBRTC_SDP_TYPE_PRANSWER
 	//
 	// pranswer
 	WebrtcSdpTypePranswer WebRTCSDPType = 2
-	// WebrtcSdpTypeAnswer wraps WEBRTC_SDP_TYPE_ANSWER
+	// WebrtcSdpTypeAnswer wraps GST_WEBRTC_SDP_TYPE_ANSWER
 	//
 	// answer
 	WebrtcSdpTypeAnswer WebRTCSDPType = 3
-	// WebrtcSdpTypeRollback wraps WEBRTC_SDP_TYPE_ROLLBACK
+	// WebrtcSdpTypeRollback wraps GST_WEBRTC_SDP_TYPE_ROLLBACK
 	//
 	// rollback
 	WebrtcSdpTypeRollback WebRTCSDPType = 4
@@ -1018,7 +1018,7 @@ func (e WebRTCSDPType) String() string {
 	}
 }
 
-// WebRTCSDPTypeToString wraps gst_webrtc_sdp_type_to_string
+// String wraps gst_webrtc_sdp_type_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1027,7 +1027,7 @@ func (e WebRTCSDPType) String() string {
 // The function returns the following values:
 // 
 // 	- goret string 
-func WebRTCSDPTypeToString(typ WebRTCSDPType) string {
+func String(typ WebRTCSDPType) string {
 	var carg1 C.GstWebRTCSDPType // in, none, casted
 	var cret  *C.gchar           // return, none, string
 
@@ -1049,27 +1049,27 @@ func WebRTCSDPTypeToString(typ WebRTCSDPType) string {
 type WebRTCSignalingState C.int
 
 const (
-	// WebrtcSignalingStateStable wraps WEBRTC_SIGNALING_STATE_STABLE
+	// WebrtcSignalingStateStable wraps GST_WEBRTC_SIGNALING_STATE_STABLE
 	//
 	// stable
 	WebrtcSignalingStateStable WebRTCSignalingState = 0
-	// WebrtcSignalingStateClosed wraps WEBRTC_SIGNALING_STATE_CLOSED
+	// WebrtcSignalingStateClosed wraps GST_WEBRTC_SIGNALING_STATE_CLOSED
 	//
 	// closed
 	WebrtcSignalingStateClosed WebRTCSignalingState = 1
-	// WebrtcSignalingStateHaveLocalOffer wraps WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER
+	// WebrtcSignalingStateHaveLocalOffer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER
 	//
 	// have-local-offer
 	WebrtcSignalingStateHaveLocalOffer WebRTCSignalingState = 2
-	// WebrtcSignalingStateHaveRemoteOffer wraps WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER
+	// WebrtcSignalingStateHaveRemoteOffer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER
 	//
 	// have-remote-offer
 	WebrtcSignalingStateHaveRemoteOffer WebRTCSignalingState = 3
-	// WebrtcSignalingStateHaveLocalPranswer wraps WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER
+	// WebrtcSignalingStateHaveLocalPranswer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER
 	//
 	// have-local-pranswer
 	WebrtcSignalingStateHaveLocalPranswer WebRTCSignalingState = 4
-	// WebrtcSignalingStateHaveRemotePranswer wraps WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER
+	// WebrtcSignalingStateHaveRemotePranswer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER
 	//
 	// have-remote-pranswer
 	WebrtcSignalingStateHaveRemotePranswer WebRTCSignalingState = 5
@@ -1107,59 +1107,59 @@ func (e WebRTCSignalingState) String() string {
 type WebRTCStatsType C.int
 
 const (
-	// WebrtcStatsCodec wraps WEBRTC_STATS_CODEC
+	// WebrtcStatsCodec wraps GST_WEBRTC_STATS_CODEC
 	//
 	// codec
 	WebrtcStatsCodec WebRTCStatsType = 1
-	// WebrtcStatsInboundRtp wraps WEBRTC_STATS_INBOUND_RTP
+	// WebrtcStatsInboundRtp wraps GST_WEBRTC_STATS_INBOUND_RTP
 	//
 	// inbound-rtp
 	WebrtcStatsInboundRtp WebRTCStatsType = 2
-	// WebrtcStatsOutboundRtp wraps WEBRTC_STATS_OUTBOUND_RTP
+	// WebrtcStatsOutboundRtp wraps GST_WEBRTC_STATS_OUTBOUND_RTP
 	//
 	// outbound-rtp
 	WebrtcStatsOutboundRtp WebRTCStatsType = 3
-	// WebrtcStatsRemoteInboundRtp wraps WEBRTC_STATS_REMOTE_INBOUND_RTP
+	// WebrtcStatsRemoteInboundRtp wraps GST_WEBRTC_STATS_REMOTE_INBOUND_RTP
 	//
 	// remote-inbound-rtp
 	WebrtcStatsRemoteInboundRtp WebRTCStatsType = 4
-	// WebrtcStatsRemoteOutboundRtp wraps WEBRTC_STATS_REMOTE_OUTBOUND_RTP
+	// WebrtcStatsRemoteOutboundRtp wraps GST_WEBRTC_STATS_REMOTE_OUTBOUND_RTP
 	//
 	// remote-outbound-rtp
 	WebrtcStatsRemoteOutboundRtp WebRTCStatsType = 5
-	// WebrtcStatsCsrc wraps WEBRTC_STATS_CSRC
+	// WebrtcStatsCsrc wraps GST_WEBRTC_STATS_CSRC
 	//
 	// csrc
 	WebrtcStatsCsrc WebRTCStatsType = 6
-	// WebrtcStatsPeerConnection wraps WEBRTC_STATS_PEER_CONNECTION
+	// WebrtcStatsPeerConnection wraps GST_WEBRTC_STATS_PEER_CONNECTION
 	//
 	// peer-connection
 	WebrtcStatsPeerConnection WebRTCStatsType = 7
-	// WebrtcStatsDataChannel wraps WEBRTC_STATS_DATA_CHANNEL
+	// WebrtcStatsDataChannel wraps GST_WEBRTC_STATS_DATA_CHANNEL
 	//
 	// data-channel
 	WebrtcStatsDataChannel WebRTCStatsType = 8
-	// WebrtcStatsStream wraps WEBRTC_STATS_STREAM
+	// WebrtcStatsStream wraps GST_WEBRTC_STATS_STREAM
 	//
 	// stream
 	WebrtcStatsStream WebRTCStatsType = 9
-	// WebrtcStatsTransport wraps WEBRTC_STATS_TRANSPORT
+	// WebrtcStatsTransport wraps GST_WEBRTC_STATS_TRANSPORT
 	//
 	// transport
 	WebrtcStatsTransport WebRTCStatsType = 10
-	// WebrtcStatsCandidatePair wraps WEBRTC_STATS_CANDIDATE_PAIR
+	// WebrtcStatsCandidatePair wraps GST_WEBRTC_STATS_CANDIDATE_PAIR
 	//
 	// candidate-pair
 	WebrtcStatsCandidatePair WebRTCStatsType = 11
-	// WebrtcStatsLocalCandidate wraps WEBRTC_STATS_LOCAL_CANDIDATE
+	// WebrtcStatsLocalCandidate wraps GST_WEBRTC_STATS_LOCAL_CANDIDATE
 	//
 	// local-candidate
 	WebrtcStatsLocalCandidate WebRTCStatsType = 12
-	// WebrtcStatsRemoteCandidate wraps WEBRTC_STATS_REMOTE_CANDIDATE
+	// WebrtcStatsRemoteCandidate wraps GST_WEBRTC_STATS_REMOTE_CANDIDATE
 	//
 	// remote-candidate
 	WebrtcStatsRemoteCandidate WebRTCStatsType = 13
-	// WebrtcStatsCertificate wraps WEBRTC_STATS_CERTIFICATE
+	// WebrtcStatsCertificate wraps GST_WEBRTC_STATS_CERTIFICATE
 	//
 	// certificate
 	WebrtcStatsCertificate WebRTCStatsType = 14
@@ -1595,12 +1595,12 @@ type WebRTCICE interface {
 	// 
 	// 	- goret bool 
 	GatherCandidates(WebRTCICEStream) bool
-	// GetHTTPProxy wraps gst_webrtc_ice_get_http_proxy
+	// GetHttpProxy wraps gst_webrtc_ice_get_http_proxy
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
-	GetHTTPProxy() string
+	GetHttpProxy() string
 	// GetIsController wraps gst_webrtc_ice_get_is_controller
 	// 
 	// The function returns the following values:
@@ -1657,7 +1657,7 @@ type WebRTCICE interface {
 	// 
 	// 	- forceRelay bool: TRUE to enable force relay 
 	SetForceRelay(bool)
-	// SetHTTPProxy wraps gst_webrtc_ice_set_http_proxy
+	// SetHttpProxy wraps gst_webrtc_ice_set_http_proxy
 	// 
 	// The function takes the following parameters:
 	// 
@@ -1665,7 +1665,7 @@ type WebRTCICE interface {
 	//   http://[username:password@]hostname[:port][?alpn=&lt;alpn&gt;] 
 	//
 	// Set HTTP Proxy to be used when connecting to TURN server.
-	SetHTTPProxy(string)
+	SetHttpProxy(string)
 	// SetIsController wraps gst_webrtc_ice_set_is_controller
 	// 
 	// The function takes the following parameters:
@@ -1721,12 +1721,12 @@ type WebRTCICE interface {
 	// 
 	// 	- uri string (nullable): URI of the TURN sever 
 	SetTurnServer(string)
-	// EmitAddLocalIPAddress emits the "add-local-ip-address" signal
+	// EmitAddLocalIpAddress emits the "add-local-ip-address" signal
 	//
 	// Add a local IP address to use for ICE candidate gathering.  If none
 	// are supplied, they will be discovered automatically. Calling this signal
 	// stops automatic ICE gathering.
-	EmitAddLocalIPAddress(string) bool
+	EmitAddLocalIpAddress(string) bool
 
 	// chain up virtual methods:
 
@@ -1784,7 +1784,7 @@ type WebRTCICE interface {
 	// 
 	// 	- goret bool 
 	ParentGatherCandidates(stream WebRTCICEStream) bool
-	// ParentGetHTTPProxy calls the default implementations of the get_http_proxy virtual method.
+	// ParentGetHttpProxy calls the default implementations of the get_http_proxy virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -1792,7 +1792,7 @@ type WebRTCICE interface {
 	// 	- goret string 
 	//
 	// Get HTTP Proxy to be used when connecting to TURN server.
-	ParentGetHTTPProxy() string
+	ParentGetHttpProxy() string
 	// ParentGetIsController calls the default implementations of the get_is_controller virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -1834,7 +1834,7 @@ type WebRTCICE interface {
 	// 
 	// 	- forceRelay bool: TRUE to enable force relay 
 	ParentSetForceRelay(forceRelay bool)
-	// ParentSetHTTPProxy calls the default implementations of the set_http_proxy virtual method.
+	// ParentSetHttpProxy calls the default implementations of the set_http_proxy virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1843,7 +1843,7 @@ type WebRTCICE interface {
 	//   http://[username:password@]hostname[:port][?alpn=&lt;alpn&gt;] 
 	//
 	// Set HTTP Proxy to be used when connecting to TURN server.
-	ParentSetHTTPProxy(uri string)
+	ParentSetHttpProxy(uri string)
 	// ParentSetIsController calls the default implementations of the set_is_controller virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -2106,12 +2106,12 @@ func (ice *WebRTCICEInstance) GatherCandidates(stream WebRTCICEStream) bool {
 	return goret
 }
 
-// GetHTTPProxy wraps gst_webrtc_ice_get_http_proxy
+// GetHttpProxy wraps gst_webrtc_ice_get_http_proxy
 // 
 // The function returns the following values:
 // 
 // 	- goret string 
-func (ice *WebRTCICEInstance) GetHTTPProxy() string {
+func (ice *WebRTCICEInstance) GetHttpProxy() string {
 	var carg0 *C.GstWebRTCICE // in, none, converted
 	var cret  *C.gchar        // return, full, string
 
@@ -2316,7 +2316,7 @@ func (ice *WebRTCICEInstance) SetForceRelay(forceRelay bool) {
 	runtime.KeepAlive(forceRelay)
 }
 
-// SetHTTPProxy wraps gst_webrtc_ice_set_http_proxy
+// SetHttpProxy wraps gst_webrtc_ice_set_http_proxy
 // 
 // The function takes the following parameters:
 // 
@@ -2324,7 +2324,7 @@ func (ice *WebRTCICEInstance) SetForceRelay(forceRelay bool) {
 //   http://[username:password@]hostname[:port][?alpn=&lt;alpn&gt;] 
 //
 // Set HTTP Proxy to be used when connecting to TURN server.
-func (ice *WebRTCICEInstance) SetHTTPProxy(uri string) {
+func (ice *WebRTCICEInstance) SetHttpProxy(uri string) {
 	var carg0 *C.GstWebRTCICE // in, none, converted
 	var carg1 *C.gchar        // in, none, string
 
@@ -2518,12 +2518,12 @@ func (ice *WebRTCICEInstance) SetTurnServer(uri string) {
 	runtime.KeepAlive(uri)
 }
 
-// EmitAddLocalIPAddress emits the "add-local-ip-address" signal
+// EmitAddLocalIpAddress emits the "add-local-ip-address" signal
 //
 // Add a local IP address to use for ICE candidate gathering.  If none
 // are supplied, they will be discovered automatically. Calling this signal
 // stops automatic ICE gathering.
-func (o *WebRTCICEInstance) EmitAddLocalIPAddress(arg0 string) bool {
+func (o *WebRTCICEInstance) EmitAddLocalIpAddress(arg0 string) bool {
 	return o.Emit("add-local-ip-address", arg0).(bool)
 }
 
@@ -2582,14 +2582,14 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// 	- goret bool 
 	GatherCandidates func(Instance, WebRTCICEStream) bool
-	// // GetHTTPProxy allows you to override the implementation of the virtual method get_http_proxy.
+	// // GetHttpProxy allows you to override the implementation of the virtual method get_http_proxy.
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	//
 	// Get HTTP Proxy to be used when connecting to TURN server.
-	GetHTTPProxy func(Instance) string
+	GetHttpProxy func(Instance) string
 	// // GetIsController allows you to override the implementation of the virtual method get_is_controller.
 	// 
 	// The function returns the following values:
@@ -2626,7 +2626,7 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// 	- forceRelay bool: TRUE to enable force relay 
 	SetForceRelay func(Instance, bool)
-	// // SetHTTPProxy allows you to override the implementation of the virtual method set_http_proxy.
+	// // SetHttpProxy allows you to override the implementation of the virtual method set_http_proxy.
 	// 
 	// The function takes the following parameters:
 	// 
@@ -2634,7 +2634,7 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	//   http://[username:password@]hostname[:port][?alpn=&lt;alpn&gt;] 
 	//
 	// Set HTTP Proxy to be used when connecting to TURN server.
-	SetHTTPProxy func(Instance, string)
+	SetHttpProxy func(Instance, string)
 	// // SetIsController allows you to override the implementation of the virtual method set_is_controller.
 	// 
 	// The function takes the following parameters:
@@ -2814,7 +2814,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 		)
 	}
 
-	if overrides.GetHTTPProxy != nil {
+	if overrides.GetHttpProxy != nil {
 		pclass.get_http_proxy = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_http_proxy)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -2825,7 +2825,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				goret = overrides.GetHTTPProxy(ice)
+				goret = overrides.GetHttpProxy(ice)
 
 				cret = (*C.gchar)(unsafe.Pointer(C.CString(goret)))
 
@@ -2947,7 +2947,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 		)
 	}
 
-	if overrides.SetHTTPProxy != nil {
+	if overrides.SetHttpProxy != nil {
 		pclass.set_http_proxy = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_http_proxy)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -2959,7 +2959,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
-				overrides.SetHTTPProxy(ice, uri)
+				overrides.SetHttpProxy(ice, uri)
 			},
 		)
 	}
@@ -3265,7 +3265,7 @@ func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) boo
 	return goret
 }
 
-// ParentGetHTTPProxy calls the default implementations of the get_http_proxy virtual method.
+// ParentGetHttpProxy calls the default implementations of the get_http_proxy virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -3273,7 +3273,7 @@ func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) boo
 // 	- goret string 
 //
 // Get HTTP Proxy to be used when connecting to TURN server.
-func (ice *WebRTCICEInstance) ParentGetHTTPProxy() string {
+func (ice *WebRTCICEInstance) ParentGetHttpProxy() string {
 	var carg0 *C.GstWebRTCICE
 	var cret  *C.gchar // return, full, string
 
@@ -3435,7 +3435,7 @@ func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
 	runtime.KeepAlive(forceRelay)
 }
 
-// ParentSetHTTPProxy calls the default implementations of the set_http_proxy virtual method.
+// ParentSetHttpProxy calls the default implementations of the set_http_proxy virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3444,7 +3444,7 @@ func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
 //   http://[username:password@]hostname[:port][?alpn=&lt;alpn&gt;] 
 //
 // Set HTTP Proxy to be used when connecting to TURN server.
-func (ice *WebRTCICEInstance) ParentSetHTTPProxy(uri string) {
+func (ice *WebRTCICEInstance) ParentSetHttpProxy(uri string) {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.gchar // in, none, converted
 

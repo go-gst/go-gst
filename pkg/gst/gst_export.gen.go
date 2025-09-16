@@ -14,15 +14,15 @@ import (
 // #include <gst/gst.h>
 import "C"
 
-//export _gotk4_gst1_BufferForEachMetaFunc
-func _gotk4_gst1_BufferForEachMetaFunc(carg1 *C.GstBuffer, carg2 **C.GstMeta, carg3 C.gpointer) (cret C.gboolean) {
-	var fn BufferForEachMetaFunc
+//export _gotk4_gst1_BufferForeachMetaFunc
+func _gotk4_gst1_BufferForeachMetaFunc(carg1 *C.GstBuffer, carg2 **C.GstMeta, carg3 C.gpointer) (cret C.gboolean) {
+	var fn BufferForeachMetaFunc
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))
 		if v == nil {
 			panic(`callback not found`)
 		}
-		fn = v.(BufferForEachMetaFunc)
+		fn = v.(BufferForeachMetaFunc)
 	}
 
 	var buffer *Buffer // in, none, converted
@@ -95,15 +95,15 @@ func _gotk4_gst1_CapsFilterMapFunc(carg1 *C.GstCapsFeatures, carg2 *C.GstStructu
 	return cret
 }
 
-//export _gotk4_gst1_CapsForEachFunc
-func _gotk4_gst1_CapsForEachFunc(carg1 *C.GstCapsFeatures, carg2 *C.GstStructure, carg3 C.gpointer) (cret C.gboolean) {
-	var fn CapsForEachFunc
+//export _gotk4_gst1_CapsForeachFunc
+func _gotk4_gst1_CapsForeachFunc(carg1 *C.GstCapsFeatures, carg2 *C.GstStructure, carg3 C.gpointer) (cret C.gboolean) {
+	var fn CapsForeachFunc
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))
 		if v == nil {
 			panic(`callback not found`)
 		}
-		fn = v.(CapsForEachFunc)
+		fn = v.(CapsForeachFunc)
 	}
 
 	var features  *CapsFeatures // in, none, converted
@@ -176,15 +176,15 @@ func _gotk4_gst1_IteratorFoldFunction(carg1 *C.GValue, carg2 *C.GValue, carg3 C.
 	return cret
 }
 
-//export _gotk4_gst1_IteratorForEachFunction
-func _gotk4_gst1_IteratorForEachFunction(carg1 *C.GValue, carg2 C.gpointer) {
-	var fn IteratorForEachFunction
+//export _gotk4_gst1_IteratorForeachFunction
+func _gotk4_gst1_IteratorForeachFunction(carg1 *C.GValue, carg2 C.gpointer) {
+	var fn IteratorForeachFunction
 	{
 		v := userdata.Load(unsafe.Pointer(carg2))
 		if v == nil {
 			panic(`callback not found`)
 		}
-		fn = v.(IteratorForEachFunction)
+		fn = v.(IteratorForeachFunction)
 	}
 
 	var item *gobject.Value // in, none, converted
@@ -412,15 +412,15 @@ func _gotk4_gst1_StructureFilterMapFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C
 	return cret
 }
 
-//export _gotk4_gst1_StructureFilterMapIDStrFunc
-func _gotk4_gst1_StructureFilterMapIDStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
-	var fn StructureFilterMapIDStrFunc
+//export _gotk4_gst1_StructureFilterMapIdStrFunc
+func _gotk4_gst1_StructureFilterMapIdStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
+	var fn StructureFilterMapIdStrFunc
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))
 		if v == nil {
 			panic(`callback not found`)
 		}
-		fn = v.(StructureFilterMapIDStrFunc)
+		fn = v.(StructureFilterMapIdStrFunc)
 	}
 
 	var fieldname *IdStr         // in, none, converted
@@ -439,15 +439,15 @@ func _gotk4_gst1_StructureFilterMapIDStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue,
 	return cret
 }
 
-//export _gotk4_gst1_StructureForEachFunc
-func _gotk4_gst1_StructureForEachFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
-	var fn StructureForEachFunc
+//export _gotk4_gst1_StructureForeachFunc
+func _gotk4_gst1_StructureForeachFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
+	var fn StructureForeachFunc
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))
 		if v == nil {
 			panic(`callback not found`)
 		}
-		fn = v.(StructureForEachFunc)
+		fn = v.(StructureForeachFunc)
 	}
 
 	var fieldId glib.Quark     // in, none, casted, alias
@@ -466,15 +466,15 @@ func _gotk4_gst1_StructureForEachFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.g
 	return cret
 }
 
-//export _gotk4_gst1_StructureForEachIDStrFunc
-func _gotk4_gst1_StructureForEachIDStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
-	var fn StructureForEachIDStrFunc
+//export _gotk4_gst1_StructureForeachIdStrFunc
+func _gotk4_gst1_StructureForeachIdStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
+	var fn StructureForeachIdStrFunc
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))
 		if v == nil {
 			panic(`callback not found`)
 		}
-		fn = v.(StructureForEachIDStrFunc)
+		fn = v.(StructureForeachIdStrFunc)
 	}
 
 	var fieldname *IdStr         // in, none, converted
@@ -520,15 +520,15 @@ func _gotk4_gst1_StructureMapFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.gpoin
 	return cret
 }
 
-//export _gotk4_gst1_StructureMapIDStrFunc
-func _gotk4_gst1_StructureMapIDStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
-	var fn StructureMapIDStrFunc
+//export _gotk4_gst1_StructureMapIdStrFunc
+func _gotk4_gst1_StructureMapIdStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
+	var fn StructureMapIdStrFunc
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))
 		if v == nil {
 			panic(`callback not found`)
 		}
-		fn = v.(StructureMapIDStrFunc)
+		fn = v.(StructureMapIdStrFunc)
 	}
 
 	var fieldname *IdStr         // in, none, converted
@@ -547,15 +547,15 @@ func _gotk4_gst1_StructureMapIDStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3
 	return cret
 }
 
-//export _gotk4_gst1_TagForEachFunc
-func _gotk4_gst1_TagForEachFunc(carg1 *C.GstTagList, carg2 *C.gchar, carg3 C.gpointer) {
-	var fn TagForEachFunc
+//export _gotk4_gst1_TagForeachFunc
+func _gotk4_gst1_TagForeachFunc(carg1 *C.GstTagList, carg2 *C.gchar, carg3 C.gpointer) {
+	var fn TagForeachFunc
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))
 		if v == nil {
 			panic(`callback not found`)
 		}
-		fn = v.(TagForEachFunc)
+		fn = v.(TagForeachFunc)
 	}
 
 	var list *TagList // in, none, converted
@@ -732,15 +732,15 @@ func _gotk4_gst1_ElementCallAsyncFunc(carg1 *C.GstElement, carg2 C.gpointer) {
 	fn(element)
 }
 
-//export _gotk4_gst1_ElementForEachPadFunc
-func _gotk4_gst1_ElementForEachPadFunc(carg1 *C.GstElement, carg2 *C.GstPad, carg3 C.gpointer) (cret C.gboolean) {
-	var fn ElementForEachPadFunc
+//export _gotk4_gst1_ElementForeachPadFunc
+func _gotk4_gst1_ElementForeachPadFunc(carg1 *C.GstElement, carg2 *C.GstPad, carg3 C.gpointer) (cret C.gboolean) {
+	var fn ElementForeachPadFunc
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))
 		if v == nil {
 			panic(`callback not found`)
 		}
-		fn = v.(ElementForEachPadFunc)
+		fn = v.(ElementForeachPadFunc)
 	}
 
 	var element Element // in, none, converted

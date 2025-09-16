@@ -48,7 +48,7 @@ func playbin() error {
 
 	for msg := range bus.Messages(ctx) {
 		switch msg.Type() {
-		case gst.MessageEos:
+		case gst.MessageEOS:
 			return nil
 		case gst.MessageError:
 			debug, err := msg.ParseError()

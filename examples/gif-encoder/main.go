@@ -124,7 +124,7 @@ func encodeGif() error {
 			}
 			// Signal the pipeline that we've completed EOS.
 			// (this should not be required, need to investigate)
-			pipeline.GetBus().Post(gst.NewMessageEos(appSink))
+			pipeline.GetBus().Post(gst.NewMessageEOS(appSink))
 		})
 
 		appSink.ConnectNewSample(func(sink gstapp.AppSink) gst.FlowReturn {
@@ -190,7 +190,7 @@ func encodeGif() error {
 
 	for msg := range pipeline.GetBus().Messages(context.Background()) {
 		switch msg.Type() {
-		case gst.MessageEos:
+		case gst.MessageEOS:
 			return nil
 		case gst.MessageError:
 			debug, gerr := msg.ParseError()

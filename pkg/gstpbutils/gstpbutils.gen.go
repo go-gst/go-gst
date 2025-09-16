@@ -124,43 +124,43 @@ const PLUGINS_BASE_VERSION_NANO = 1
 type AudioVisualizerShader C.int
 
 const (
-	// AudioVisualizerShaderNone wraps AUDIO_VISUALIZER_SHADER_NONE
+	// AudioVisualizerShaderNone wraps GST_AUDIO_VISUALIZER_SHADER_NONE
 	//
 	// no shading
 	AudioVisualizerShaderNone AudioVisualizerShader = 0
-	// AudioVisualizerShaderFade wraps AUDIO_VISUALIZER_SHADER_FADE
+	// AudioVisualizerShaderFade wraps GST_AUDIO_VISUALIZER_SHADER_FADE
 	//
 	// plain fading
 	AudioVisualizerShaderFade AudioVisualizerShader = 1
-	// AudioVisualizerShaderFadeAndMoveUp wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_UP
+	// AudioVisualizerShaderFadeAndMoveUp wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_UP
 	//
 	// fade and move up
 	AudioVisualizerShaderFadeAndMoveUp AudioVisualizerShader = 2
-	// AudioVisualizerShaderFadeAndMoveDown wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_DOWN
+	// AudioVisualizerShaderFadeAndMoveDown wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_DOWN
 	//
 	// fade and move down
 	AudioVisualizerShaderFadeAndMoveDown AudioVisualizerShader = 3
-	// AudioVisualizerShaderFadeAndMoveLeft wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_LEFT
+	// AudioVisualizerShaderFadeAndMoveLeft wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_LEFT
 	//
 	// fade and move left
 	AudioVisualizerShaderFadeAndMoveLeft AudioVisualizerShader = 4
-	// AudioVisualizerShaderFadeAndMoveRight wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_RIGHT
+	// AudioVisualizerShaderFadeAndMoveRight wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_RIGHT
 	//
 	// fade and move right
 	AudioVisualizerShaderFadeAndMoveRight AudioVisualizerShader = 5
-	// AudioVisualizerShaderFadeAndMoveHorizOut wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_OUT
+	// AudioVisualizerShaderFadeAndMoveHorizOut wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_OUT
 	//
 	// fade and move horizontally out
 	AudioVisualizerShaderFadeAndMoveHorizOut AudioVisualizerShader = 6
-	// AudioVisualizerShaderFadeAndMoveHorizIn wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_IN
+	// AudioVisualizerShaderFadeAndMoveHorizIn wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_IN
 	//
 	// fade and move horizontally in
 	AudioVisualizerShaderFadeAndMoveHorizIn AudioVisualizerShader = 7
-	// AudioVisualizerShaderFadeAndMoveVertOut wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_OUT
+	// AudioVisualizerShaderFadeAndMoveVertOut wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_OUT
 	//
 	// fade and move vertically out
 	AudioVisualizerShaderFadeAndMoveVertOut AudioVisualizerShader = 8
-	// AudioVisualizerShaderFadeAndMoveVertIn wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_IN
+	// AudioVisualizerShaderFadeAndMoveVertIn wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_IN
 	//
 	// fade and move vertically in
 	AudioVisualizerShaderFadeAndMoveVertIn AudioVisualizerShader = 9
@@ -202,27 +202,27 @@ func (e AudioVisualizerShader) String() string {
 type DiscovererResult C.int
 
 const (
-	// DiscovererOK wraps DISCOVERER_OK
+	// DiscovererOK wraps GST_DISCOVERER_OK
 	//
 	// The discovery was successful
 	DiscovererOK DiscovererResult = 0
-	// DiscovererURIInvalid wraps DISCOVERER_URI_INVALID
+	// DiscovererURIInvalid wraps GST_DISCOVERER_URI_INVALID
 	//
 	// the URI is invalid
 	DiscovererURIInvalid DiscovererResult = 1
-	// DiscovererError wraps DISCOVERER_ERROR
+	// DiscovererError wraps GST_DISCOVERER_ERROR
 	//
 	// an error happened and the GError is set
 	DiscovererError DiscovererResult = 2
-	// DiscovererTimeout wraps DISCOVERER_TIMEOUT
+	// DiscovererTimeout wraps GST_DISCOVERER_TIMEOUT
 	//
 	// the discovery timed-out
 	DiscovererTimeout DiscovererResult = 3
-	// DiscovererBusy wraps DISCOVERER_BUSY
+	// DiscovererBusy wraps GST_DISCOVERER_BUSY
 	//
 	// the discoverer was already discovering a file
 	DiscovererBusy DiscovererResult = 4
-	// DiscovererMissingPlugins wraps DISCOVERER_MISSING_PLUGINS
+	// DiscovererMissingPlugins wraps GST_DISCOVERER_MISSING_PLUGINS
 	//
 	// Some plugins are missing for full discovery
 	DiscovererMissingPlugins DiscovererResult = 5
@@ -265,59 +265,59 @@ func (e DiscovererResult) String() string {
 type InstallPluginsReturn C.int
 
 const (
-	// InstallPluginsSuccess wraps INSTALL_PLUGINS_SUCCESS
+	// InstallPluginsSuccess wraps GST_INSTALL_PLUGINS_SUCCESS
 	//
 	// all of the requested plugins could be
 	//     installed
 	InstallPluginsSuccess InstallPluginsReturn = 0
-	// InstallPluginsNotFound wraps INSTALL_PLUGINS_NOT_FOUND
+	// InstallPluginsNotFound wraps GST_INSTALL_PLUGINS_NOT_FOUND
 	//
 	// no appropriate installation candidate for
 	//     any of the requested plugins could be found. Only return this if nothing
 	//     has been installed. Return #GST_INSTALL_PLUGINS_PARTIAL_SUCCESS if
 	//     some (but not all) of the requested plugins could be installed.
 	InstallPluginsNotFound InstallPluginsReturn = 1
-	// InstallPluginsError wraps INSTALL_PLUGINS_ERROR
+	// InstallPluginsError wraps GST_INSTALL_PLUGINS_ERROR
 	//
 	// an error occurred during the installation. If
 	//     this happens, the  user has already seen an error message and another
 	//     one should not be displayed
 	InstallPluginsError InstallPluginsReturn = 2
-	// InstallPluginsPartialSuccess wraps INSTALL_PLUGINS_PARTIAL_SUCCESS
+	// InstallPluginsPartialSuccess wraps GST_INSTALL_PLUGINS_PARTIAL_SUCCESS
 	//
 	// some of the requested plugins could
 	//     be installed, but not all
 	InstallPluginsPartialSuccess InstallPluginsReturn = 3
-	// InstallPluginsUserAbort wraps INSTALL_PLUGINS_USER_ABORT
+	// InstallPluginsUserAbort wraps GST_INSTALL_PLUGINS_USER_ABORT
 	//
 	// the user has aborted the installation
 	InstallPluginsUserAbort InstallPluginsReturn = 4
-	// InstallPluginsCrashed wraps INSTALL_PLUGINS_CRASHED
+	// InstallPluginsCrashed wraps GST_INSTALL_PLUGINS_CRASHED
 	//
 	// the installer had an unclean exit code
 	//     (ie. death by signal)
 	InstallPluginsCrashed InstallPluginsReturn = 100
-	// InstallPluginsInvalid wraps INSTALL_PLUGINS_INVALID
+	// InstallPluginsInvalid wraps GST_INSTALL_PLUGINS_INVALID
 	//
 	// the helper returned an invalid status code
 	InstallPluginsInvalid InstallPluginsReturn = 101
-	// InstallPluginsStartedOK wraps INSTALL_PLUGINS_STARTED_OK
+	// InstallPluginsStartedOK wraps GST_INSTALL_PLUGINS_STARTED_OK
 	//
 	// returned by gst_install_plugins_async() to
 	//     indicate that everything went fine so far and the provided callback
 	//     will be called with the result of the installation later
 	InstallPluginsStartedOK InstallPluginsReturn = 200
-	// InstallPluginsInternalFailure wraps INSTALL_PLUGINS_INTERNAL_FAILURE
+	// InstallPluginsInternalFailure wraps GST_INSTALL_PLUGINS_INTERNAL_FAILURE
 	//
 	// some internal failure has
 	//     occurred when trying to start the installer
 	InstallPluginsInternalFailure InstallPluginsReturn = 201
-	// InstallPluginsHelperMissing wraps INSTALL_PLUGINS_HELPER_MISSING
+	// InstallPluginsHelperMissing wraps GST_INSTALL_PLUGINS_HELPER_MISSING
 	//
 	// the helper script to call the
 	//     actual installer is not installed
 	InstallPluginsHelperMissing InstallPluginsReturn = 202
-	// InstallPluginsInstallInProgress wraps INSTALL_PLUGINS_INSTALL_IN_PROGRESS
+	// InstallPluginsInstallInProgress wraps GST_INSTALL_PLUGINS_INSTALL_IN_PROGRESS
 	//
 	// a previously-started plugin
 	//     installation is still in progress, try again later
@@ -392,24 +392,24 @@ func InstallPluginsReturnGetName(ret InstallPluginsReturn) string {
 type DiscovererSerializeFlags C.gint
 
 const (
-	// DiscovererSerializeBasic wraps DISCOVERER_SERIALIZE_BASIC
+	// DiscovererSerializeBasic wraps GST_DISCOVERER_SERIALIZE_BASIC
 	//
 	// Serialize only basic information, excluding
 	// caps, tags and miscellaneous information
 	DiscovererSerializeBasic DiscovererSerializeFlags = 0
-	// DiscovererSerializeCaps wraps DISCOVERER_SERIALIZE_CAPS
+	// DiscovererSerializeCaps wraps GST_DISCOVERER_SERIALIZE_CAPS
 	//
 	// Serialize the caps for each stream
 	DiscovererSerializeCaps DiscovererSerializeFlags = 1
-	// DiscovererSerializeTags wraps DISCOVERER_SERIALIZE_TAGS
+	// DiscovererSerializeTags wraps GST_DISCOVERER_SERIALIZE_TAGS
 	//
 	// Serialize the tags for each stream
 	DiscovererSerializeTags DiscovererSerializeFlags = 2
-	// DiscovererSerializeMisc wraps DISCOVERER_SERIALIZE_MISC
+	// DiscovererSerializeMisc wraps GST_DISCOVERER_SERIALIZE_MISC
 	//
 	// Serialize miscellaneous information for each stream
 	DiscovererSerializeMisc DiscovererSerializeFlags = 4
-	// DiscovererSerializeAll wraps DISCOVERER_SERIALIZE_ALL
+	// DiscovererSerializeAll wraps GST_DISCOVERER_SERIALIZE_ALL
 	//
 	// Serialize all the available info, including
 	// caps, tags and miscellaneous information
@@ -465,40 +465,40 @@ func (f DiscovererSerializeFlags) String() string {
 type PbUtilsCapsDescriptionFlags C.gint
 
 const (
-	// PbutilsCapsDescriptionFlagContainer wraps PBUTILS_CAPS_DESCRIPTION_FLAG_CONTAINER
+	// PbutilsCapsDescriptionFlagContainer wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_CONTAINER
 	//
 	// Caps describe a container format.
 	PbutilsCapsDescriptionFlagContainer PbUtilsCapsDescriptionFlags = 1
-	// PbutilsCapsDescriptionFlagAudio wraps PBUTILS_CAPS_DESCRIPTION_FLAG_AUDIO
+	// PbutilsCapsDescriptionFlagAudio wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_AUDIO
 	//
 	// Caps describe an audio format, or a
 	//     container format that can store audio.
 	PbutilsCapsDescriptionFlagAudio PbUtilsCapsDescriptionFlags = 2
-	// PbutilsCapsDescriptionFlagVideo wraps PBUTILS_CAPS_DESCRIPTION_FLAG_VIDEO
+	// PbutilsCapsDescriptionFlagVideo wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_VIDEO
 	//
 	// Caps describe an video format, or a
 	//     container format that can store video.
 	PbutilsCapsDescriptionFlagVideo PbUtilsCapsDescriptionFlags = 4
-	// PbutilsCapsDescriptionFlagImage wraps PBUTILS_CAPS_DESCRIPTION_FLAG_IMAGE
+	// PbutilsCapsDescriptionFlagImage wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_IMAGE
 	//
 	// Caps describe an image format, or a
 	//     container format that can store image.
 	PbutilsCapsDescriptionFlagImage PbUtilsCapsDescriptionFlags = 8
-	// PbutilsCapsDescriptionFlagSubtitle wraps PBUTILS_CAPS_DESCRIPTION_FLAG_SUBTITLE
+	// PbutilsCapsDescriptionFlagSubtitle wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_SUBTITLE
 	//
 	// Caps describe an subtitle format, or a
 	//     container format that can store subtitles.
 	PbutilsCapsDescriptionFlagSubtitle PbUtilsCapsDescriptionFlags = 16
-	// PbutilsCapsDescriptionFlagTag wraps PBUTILS_CAPS_DESCRIPTION_FLAG_TAG
+	// PbutilsCapsDescriptionFlagTag wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_TAG
 	//
 	// Container format is a tags container.
 	PbutilsCapsDescriptionFlagTag PbUtilsCapsDescriptionFlags = 32
-	// PbutilsCapsDescriptionFlagGeneric wraps PBUTILS_CAPS_DESCRIPTION_FLAG_GENERIC
+	// PbutilsCapsDescriptionFlagGeneric wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_GENERIC
 	//
 	// Container format can store any kind of
 	//     stream type.
 	PbutilsCapsDescriptionFlagGeneric PbUtilsCapsDescriptionFlags = 64
-	// PbutilsCapsDescriptionFlagMetadata wraps PBUTILS_CAPS_DESCRIPTION_FLAG_METADATA
+	// PbutilsCapsDescriptionFlagMetadata wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_METADATA
 	//
 	// Caps describe a metadata format, or a container format that can store
 	// metadata.
@@ -817,7 +817,7 @@ func CodecUtilsAacGetSampleRateFromIndex(srIdx uint) uint {
 	return goret
 }
 
-// CodecUtilsAv1CreateAv1CFromCaps wraps gst_codec_utils_av1_create_av1c_from_caps
+// CodecUtilsAv1CreateAv1cFromCaps wraps gst_codec_utils_av1_create_av1c_from_caps
 // 
 // The function takes the following parameters:
 // 
@@ -828,7 +828,7 @@ func CodecUtilsAacGetSampleRateFromIndex(srIdx uint) uint {
 // 	- goret *gst.Buffer (nullable) 
 //
 // Creates the corresponding AV1 Codec Configuration Record
-func CodecUtilsAv1CreateAv1CFromCaps(caps *gst.Caps) *gst.Buffer {
+func CodecUtilsAv1CreateAv1cFromCaps(caps *gst.Caps) *gst.Buffer {
 	var carg1 *C.GstCaps   // in, none, converted
 	var cret  *C.GstBuffer // return, full, converted, nullable
 
@@ -846,25 +846,25 @@ func CodecUtilsAv1CreateAv1CFromCaps(caps *gst.Caps) *gst.Buffer {
 	return goret
 }
 
-// CodecUtilsAv1CreateCapsFromAv1C wraps gst_codec_utils_av1_create_caps_from_av1c
+// CodecUtilsAv1CreateCapsFromAv1c wraps gst_codec_utils_av1_create_caps_from_av1c
 // 
 // The function takes the following parameters:
 // 
-// 	- av1C *gst.Buffer: a #GstBuffer containing a AV1CodecConfigurationRecord 
+// 	- av1c *gst.Buffer: a #GstBuffer containing a AV1CodecConfigurationRecord 
 // 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps (nullable) 
 //
 // Parses the provided @av1c and returns the corresponding caps
-func CodecUtilsAv1CreateCapsFromAv1C(av1C *gst.Buffer) *gst.Caps {
+func CodecUtilsAv1CreateCapsFromAv1c(av1c *gst.Buffer) *gst.Caps {
 	var carg1 *C.GstBuffer // in, none, converted
 	var cret  *C.GstCaps   // return, full, converted, nullable
 
-	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(av1C))
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(av1c))
 
 	cret = C.gst_codec_utils_av1_create_caps_from_av1c(carg1)
-	runtime.KeepAlive(av1C)
+	runtime.KeepAlive(av1c)
 
 	var goret *gst.Caps
 
@@ -932,7 +932,7 @@ func CodecUtilsAv1GetSeqLevelIdx(level string) uint8 {
 	return goret
 }
 
-// CodecUtilsCapsFromMIMECodec wraps gst_codec_utils_caps_from_mime_codec
+// CodecUtilsCapsFromMimeCodec wraps gst_codec_utils_caps_from_mime_codec
 // 
 // The function takes the following parameters:
 // 
@@ -946,7 +946,7 @@ func CodecUtilsAv1GetSeqLevelIdx(level string) uint8 {
 // string can be present (separated by `,`).
 // 
 // Registered codecs can be found at http://mp4ra.org/#/codecs
-func CodecUtilsCapsFromMIMECodec(codecsField string) *gst.Caps {
+func CodecUtilsCapsFromMimeCodec(codecsField string) *gst.Caps {
 	var carg1 *C.gchar   // in, none, string
 	var cret  *C.GstCaps // return, full, converted, nullable
 
@@ -965,7 +965,7 @@ func CodecUtilsCapsFromMIMECodec(codecsField string) *gst.Caps {
 	return goret
 }
 
-// CodecUtilsCapsGetMIMECodec wraps gst_codec_utils_caps_get_mime_codec
+// CodecUtilsCapsGetMimeCodec wraps gst_codec_utils_caps_get_mime_codec
 // 
 // The function takes the following parameters:
 // 
@@ -981,7 +981,7 @@ func CodecUtilsCapsFromMIMECodec(codecsField string) *gst.Caps {
 // header for containerized formats, such as mp4 or matroska.
 // 
 // Registered codecs can be found at http://mp4ra.org/#/codecs
-func CodecUtilsCapsGetMIMECodec(caps *gst.Caps) string {
+func CodecUtilsCapsGetMimeCodec(caps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.gchar   // return, full, string, nullable-string
 
@@ -1559,7 +1559,7 @@ func CodecUtilsH266GetTier(ptlRecord []uint8) string {
 	return goret
 }
 
-// CodecUtilsMpeg4VideoCapsSetLevelAndProfile wraps gst_codec_utils_mpeg4video_caps_set_level_and_profile
+// CodecUtilsMpeg4videoCapsSetLevelAndProfile wraps gst_codec_utils_mpeg4video_caps_set_level_and_profile
 // 
 // The function takes the following parameters:
 // 
@@ -1575,7 +1575,7 @@ func CodecUtilsH266GetTier(ptlRecord []uint8) string {
 // @vis_obj_seq. See gst_codec_utils_mpeg4video_get_level() and
 // gst_codec_utils_mpeg4video_get_profile() for more details on the
 // parameters.
-func CodecUtilsMpeg4VideoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint8) bool {
+func CodecUtilsMpeg4videoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
 	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
 	var carg3 C.guint    // implicit
@@ -1600,7 +1600,7 @@ func CodecUtilsMpeg4VideoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint
 	return goret
 }
 
-// CodecUtilsMpeg4VideoGetLevel wraps gst_codec_utils_mpeg4video_get_level
+// CodecUtilsMpeg4videoGetLevel wraps gst_codec_utils_mpeg4video_get_level
 // 
 // The function takes the following parameters:
 // 
@@ -1615,7 +1615,7 @@ func CodecUtilsMpeg4VideoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint
 // a string. @vis_obj_seq is expected to be the data following the visual
 // object sequence start code. Only the first byte
 // (profile_and_level_indication) is used.
-func CodecUtilsMpeg4VideoGetLevel(visObjSeq []uint8) string {
+func CodecUtilsMpeg4videoGetLevel(visObjSeq []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
@@ -1637,7 +1637,7 @@ func CodecUtilsMpeg4VideoGetLevel(visObjSeq []uint8) string {
 	return goret
 }
 
-// CodecUtilsMpeg4VideoGetProfile wraps gst_codec_utils_mpeg4video_get_profile
+// CodecUtilsMpeg4videoGetProfile wraps gst_codec_utils_mpeg4video_get_profile
 // 
 // The function takes the following parameters:
 // 
@@ -1652,7 +1652,7 @@ func CodecUtilsMpeg4VideoGetLevel(visObjSeq []uint8) string {
 // a string. @vis_obj_seq is expected to be the data following the visual
 // object sequence start code. Only the first byte
 // (profile_and_level_indication) is used.
-func CodecUtilsMpeg4VideoGetProfile(visObjSeq []uint8) string {
+func CodecUtilsMpeg4videoGetProfile(visObjSeq []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
@@ -5375,7 +5375,7 @@ type EncodingProfile interface {
 	// &gt; *NOTE*: Single segment is not property supported when using
 	// &gt; #encodebin:avoid-reencoding
 	SetSingleSegment(bool)
-	// ToString wraps gst_encoding_profile_to_string
+	// String wraps gst_encoding_profile_to_string
 	// 
 	// The function returns the following values:
 	// 
@@ -5383,7 +5383,7 @@ type EncodingProfile interface {
 	//
 	// Converts a GstEncodingProfile to a string in the "Encoding Profile
 	// serialization format".
-	ToString() string
+	String() string
 }
 
 func unsafeWrapEncodingProfile(base *gobject.ObjectInstance) *EncodingProfileInstance {
@@ -6194,7 +6194,7 @@ func (profile *EncodingProfileInstance) SetSingleSegment(singleSegment bool) {
 	runtime.KeepAlive(singleSegment)
 }
 
-// ToString wraps gst_encoding_profile_to_string
+// String wraps gst_encoding_profile_to_string
 // 
 // The function returns the following values:
 // 
@@ -6202,7 +6202,7 @@ func (profile *EncodingProfileInstance) SetSingleSegment(singleSegment bool) {
 //
 // Converts a GstEncodingProfile to a string in the "Encoding Profile
 // serialization format".
-func (profile *EncodingProfileInstance) ToString() string {
+func (profile *EncodingProfileInstance) String() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.gchar              // return, full, string
 

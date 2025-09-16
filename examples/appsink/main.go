@@ -77,7 +77,7 @@ func createPipeline() (gst.Pipeline, error) {
 
 func handleMessage(msg *gst.Message) error {
 	switch msg.Type() {
-	case gst.MessageEos:
+	case gst.MessageEOS:
 		return fmt.Errorf("end of stream")
 	case gst.MessageError:
 		debug, gerr := msg.ParseError()
