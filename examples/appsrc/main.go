@@ -43,10 +43,11 @@ func createPipeline() (gst.Pipeline, error) {
 
 	videoInfo.SetFramerate(2, 1)
 
-	ok = src.SetCaps(videoInfo.ToCaps())
-	if !ok {
-		return nil, fmt.Errorf("failed to set caps on appsrc")
-	}
+	caps := videoInfo.ToCaps()
+
+	fmt.Println("Caps:", caps.String())
+
+	src.SetObjectProperty("caps", caps)
 	src.SetObjectProperty("format", gst.FormatTime)
 
 	// Initialize a frame counter
