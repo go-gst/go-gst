@@ -5424,26 +5424,26 @@ func UnsafeRTSPWatchToGlibFull(r *RTSPWatch) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context *glib.MainContext (nullable): a GMainContext (if NULL, the default context will be used) 
+// 	- _context *glib.MainContext (nullable): a GMainContext (if NULL, the default context will be used) 
 // 
 // The function returns the following values:
 // 
 // 	- goret uint 
 //
 // Adds a #GstRTSPWatch to a context so that it will be executed within that context.
-func (watch *RTSPWatch) Attach(context *glib.MainContext) uint {
+func (watch *RTSPWatch) Attach(_context *glib.MainContext) uint {
 	var carg0 *C.GstRTSPWatch // in, none, converted
 	var carg1 *C.GMainContext // in, none, converted, nullable
 	var cret  C.guint         // return, none, casted
 
 	carg0 = (*C.GstRTSPWatch)(UnsafeRTSPWatchToGlibNone(watch))
-	if context != nil {
-		carg1 = (*C.GMainContext)(glib.UnsafeMainContextToGlibNone(context))
+	if _context != nil {
+		carg1 = (*C.GMainContext)(glib.UnsafeMainContextToGlibNone(_context))
 	}
 
 	cret = C.gst_rtsp_watch_attach(carg0, carg1)
 	runtime.KeepAlive(watch)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret uint
 
