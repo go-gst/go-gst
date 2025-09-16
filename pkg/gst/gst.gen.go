@@ -17,322 +17,322 @@ import (
 // #cgo pkg-config: gstreamer-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/gst.h>
-// extern GstBusSyncReply _gotk4_gst1_BusSyncHandler(GstBus*, GstMessage*, gpointer);
-// extern GstPadProbeReturn _gotk4_gst1_PadProbeCallback(GstPad*, GstPadProbeInfo*, gpointer);
-// extern gboolean _gotk4_gst1_BufferForEachMetaFunc(GstBuffer*, GstMeta*, gpointer);
-// extern gboolean _gotk4_gst1_BufferListFunc(GstBuffer*, guint, gpointer);
-// extern gboolean _gotk4_gst1_BusFunc(GstBus*, GstMessage*, gpointer);
-// extern gboolean _gotk4_gst1_CapsFilterMapFunc(GstCapsFeatures*, GstStructure*, gpointer);
-// extern gboolean _gotk4_gst1_CapsForEachFunc(GstCapsFeatures*, GstStructure*, gpointer);
-// extern gboolean _gotk4_gst1_CapsMapFunc(GstCapsFeatures*, GstStructure*, gpointer);
-// extern gboolean _gotk4_gst1_ClockCallback(GstClock*, GstClockTime, GstClockID, gpointer);
-// extern gboolean _gotk4_gst1_ElementForEachPadFunc(GstElement*, GstPad*, gpointer);
-// extern gboolean _gotk4_gst1_IteratorFoldFunction(GValue*, GValue*, gpointer);
-// extern gboolean _gotk4_gst1_PadForwardFunction(GstPad*, gpointer);
-// extern gboolean _gotk4_gst1_PluginFeatureFilter(GstPluginFeature*, gpointer);
-// extern gboolean _gotk4_gst1_PluginFilter(GstPlugin*, gpointer);
-// extern gboolean _gotk4_gst1_PluginInitFullFunc(GstPlugin*, gpointer);
-// extern gboolean _gotk4_gst1_StructureFilterMapFunc(GQuark, GValue*, gpointer);
-// extern gboolean _gotk4_gst1_StructureFilterMapIDStrFunc(GstIdStr*, GValue*, gpointer);
-// extern gboolean _gotk4_gst1_StructureForEachFunc(GQuark, GValue*, gpointer);
-// extern gboolean _gotk4_gst1_StructureForEachIDStrFunc(GstIdStr*, GValue*, gpointer);
-// extern gboolean _gotk4_gst1_StructureMapFunc(GQuark, GValue*, gpointer);
-// extern gboolean _gotk4_gst1_StructureMapIDStrFunc(GstIdStr*, GValue*, gpointer);
-// extern void _gotk4_gst1_ElementCallAsyncFunc(GstElement*, gpointer);
-// extern void _gotk4_gst1_IteratorForEachFunction(GValue*, gpointer);
-// extern void _gotk4_gst1_LogFunction(GstDebugCategory*, GstDebugLevel, gchar*, gchar*, gint, GObject*, GstDebugMessage*, gpointer);
-// extern void _gotk4_gst1_PromiseChangeFunc(GstPromise*, gpointer);
-// extern void _gotk4_gst1_TagForEachFunc(GstTagList*, gchar*, gpointer);
-// extern void _gotk4_gst1_TaskFunction(gpointer);
-// extern void _gotk4_gst1_TypeFindFunction(GstTypeFind*, gpointer);
+// extern C.GstBusSyncReply _gotk4_gst1_BusSyncHandler(*C.GstBus, *C.GstMessage, C.gpointer);
+// extern C.GstPadProbeReturn _gotk4_gst1_PadProbeCallback(*C.GstPad, *C.GstPadProbeInfo, C.gpointer);
+// extern C.gboolean _gotk4_gst1_BufferForEachMetaFunc(*C.GstBuffer, *C.GstMeta, C.gpointer);
+// extern C.gboolean _gotk4_gst1_BufferListFunc(*C.GstBuffer, C.guint, C.gpointer);
+// extern C.gboolean _gotk4_gst1_BusFunc(*C.GstBus, *C.GstMessage, C.gpointer);
+// extern C.gboolean _gotk4_gst1_CapsFilterMapFunc(*C.GstCapsFeatures, *C.GstStructure, C.gpointer);
+// extern C.gboolean _gotk4_gst1_CapsForEachFunc(*C.GstCapsFeatures, *C.GstStructure, C.gpointer);
+// extern C.gboolean _gotk4_gst1_CapsMapFunc(*C.GstCapsFeatures, *C.GstStructure, C.gpointer);
+// extern C.gboolean _gotk4_gst1_ClockCallback(*C.GstClock, C.GstClockTime, C.GstClockID, C.gpointer);
+// extern C.gboolean _gotk4_gst1_ElementForEachPadFunc(*C.GstElement, *C.GstPad, C.gpointer);
+// extern C.gboolean _gotk4_gst1_IteratorFoldFunction(*C.GValue, *C.GValue, C.gpointer);
+// extern C.gboolean _gotk4_gst1_PadForwardFunction(*C.GstPad, C.gpointer);
+// extern C.gboolean _gotk4_gst1_PluginFeatureFilter(*C.GstPluginFeature, C.gpointer);
+// extern C.gboolean _gotk4_gst1_PluginFilter(*C.GstPlugin, C.gpointer);
+// extern C.gboolean _gotk4_gst1_PluginInitFullFunc(*C.GstPlugin, C.gpointer);
+// extern C.gboolean _gotk4_gst1_StructureFilterMapFunc(C.GQuark, *C.GValue, C.gpointer);
+// extern C.gboolean _gotk4_gst1_StructureFilterMapIDStrFunc(*C.GstIdStr, *C.GValue, C.gpointer);
+// extern C.gboolean _gotk4_gst1_StructureForEachFunc(C.GQuark, *C.GValue, C.gpointer);
+// extern C.gboolean _gotk4_gst1_StructureForEachIDStrFunc(*C.GstIdStr, *C.GValue, C.gpointer);
+// extern C.gboolean _gotk4_gst1_StructureMapFunc(C.GQuark, *C.GValue, C.gpointer);
+// extern C.gboolean _gotk4_gst1_StructureMapIDStrFunc(*C.GstIdStr, *C.GValue, C.gpointer);
+// extern C.void _gotk4_gst1_ElementCallAsyncFunc(*C.GstElement, C.gpointer);
+// extern C.void _gotk4_gst1_IteratorForEachFunction(*C.GValue, C.gpointer);
+// extern C.void _gotk4_gst1_LogFunction(*C.GstDebugCategory, C.GstDebugLevel, *C.gchar, *C.gchar, C.gint, *C.GObject, *C.GstDebugMessage, C.gpointer);
+// extern C.void _gotk4_gst1_PromiseChangeFunc(*C.GstPromise, C.gpointer);
+// extern C.void _gotk4_gst1_TagForEachFunc(*C.GstTagList, *C.gchar, C.gpointer);
+// extern C.void _gotk4_gst1_TaskFunction(C.gpointer);
+// extern C.void _gotk4_gst1_TypeFindFunction(*C.GstTypeFind, C.gpointer);
 // extern void destroyUserdata(gpointer);
-// extern void _gotk4_gst1_ChildProxy_child_added(GstChildProxy*, GObject*, gchar*);
-// extern void _gotk4_gst1_ChildProxy_child_removed(GstChildProxy*, GObject*, gchar*);
-// extern GObject* _gotk4_gst1_ChildProxy_get_child_by_index(GstChildProxy*, guint);
-// extern GObject* _gotk4_gst1_ChildProxy_get_child_by_name(GstChildProxy*, gchar*);
-// extern guint _gotk4_gst1_ChildProxy_get_children_count(GstChildProxy*);
-// void _gotk4_gst1_ChildProxy_virtual_child_added(void* fnptr, GstChildProxy* carg0, GObject* carg1, gchar* carg2) {
-// 	return ((void (*) (GstChildProxy*, GObject*, gchar*))(fnptr))(carg0, carg1, carg2);
-// }
-// void _gotk4_gst1_ChildProxy_virtual_child_removed(void* fnptr, GstChildProxy* carg0, GObject* carg1, gchar* carg2) {
-// 	return ((void (*) (GstChildProxy*, GObject*, gchar*))(fnptr))(carg0, carg1, carg2);
-// }
-// GObject* _gotk4_gst1_ChildProxy_virtual_get_child_by_index(void* fnptr, GstChildProxy* carg0, guint carg1) {
-// 	return ((GObject* (*) (GstChildProxy*, guint))(fnptr))(carg0, carg1);
-// }
-// GObject* _gotk4_gst1_ChildProxy_virtual_get_child_by_name(void* fnptr, GstChildProxy* carg0, gchar* carg1) {
-// 	return ((GObject* (*) (GstChildProxy*, gchar*))(fnptr))(carg0, carg1);
-// }
-// guint _gotk4_gst1_ChildProxy_virtual_get_children_count(void* fnptr, GstChildProxy* carg0) {
-// 	return ((guint (*) (GstChildProxy*))(fnptr))(carg0);
-// }
-// extern gboolean _gotk4_gst1_Preset_delete_preset(GstPreset*, gchar*);
-// extern gboolean _gotk4_gst1_Preset_get_meta(GstPreset*, gchar*, gchar*, gchar*);
-// extern gchar** _gotk4_gst1_Preset_get_preset_names(GstPreset*);
-// extern gchar** _gotk4_gst1_Preset_get_property_names(GstPreset*);
-// extern gboolean _gotk4_gst1_Preset_load_preset(GstPreset*, gchar*);
-// extern gboolean _gotk4_gst1_Preset_rename_preset(GstPreset*, gchar*, gchar*);
-// extern gboolean _gotk4_gst1_Preset_save_preset(GstPreset*, gchar*);
-// extern gboolean _gotk4_gst1_Preset_set_meta(GstPreset*, gchar*, gchar*, gchar*);
-// gboolean _gotk4_gst1_Preset_virtual_delete_preset(void* fnptr, GstPreset* carg0, gchar* carg1) {
-// 	return ((gboolean (*) (GstPreset*, gchar*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gst1_Preset_virtual_get_meta(void* fnptr, GstPreset* carg0, gchar* carg1, gchar* carg2, gchar** carg3) {
-// 	return ((gboolean (*) (GstPreset*, gchar*, gchar*, gchar**))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// gchar** _gotk4_gst1_Preset_virtual_get_preset_names(void* fnptr, GstPreset* carg0) {
-// 	return ((gchar** (*) (GstPreset*))(fnptr))(carg0);
-// }
-// gchar** _gotk4_gst1_Preset_virtual_get_property_names(void* fnptr, GstPreset* carg0) {
-// 	return ((gchar** (*) (GstPreset*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gst1_Preset_virtual_load_preset(void* fnptr, GstPreset* carg0, gchar* carg1) {
-// 	return ((gboolean (*) (GstPreset*, gchar*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gst1_Preset_virtual_rename_preset(void* fnptr, GstPreset* carg0, gchar* carg1, gchar* carg2) {
-// 	return ((gboolean (*) (GstPreset*, gchar*, gchar*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gst1_Preset_virtual_save_preset(void* fnptr, GstPreset* carg0, gchar* carg1) {
-// 	return ((gboolean (*) (GstPreset*, gchar*))(fnptr))(carg0, carg1);
+// extern C.void _gotk4_gst1_ChildProxy_child_added(*C.GstChildProxy, *C.GObject, *C.gchar);
+// extern C.void _gotk4_gst1_ChildProxy_child_removed(*C.GstChildProxy, *C.GObject, *C.gchar);
+// extern *C.GObject _gotk4_gst1_ChildProxy_get_child_by_index(*C.GstChildProxy, C.guint);
+// extern *C.GObject _gotk4_gst1_ChildProxy_get_child_by_name(*C.GstChildProxy, *C.gchar);
+// extern C.guint _gotk4_gst1_ChildProxy_get_children_count(*C.GstChildProxy);
+// C.void _gotk4_gst1_ChildProxy_virtual_child_added(void* fnptr, *C.GstChildProxy carg0, *C.GObject carg1, *C.gchar carg2) {
+// 	return ((C.void (*) (*C.GstChildProxy, *C.GObject, *C.gchar))(fnptr))(carg0, carg1, carg2);
+// }
+// C.void _gotk4_gst1_ChildProxy_virtual_child_removed(void* fnptr, *C.GstChildProxy carg0, *C.GObject carg1, *C.gchar carg2) {
+// 	return ((C.void (*) (*C.GstChildProxy, *C.GObject, *C.gchar))(fnptr))(carg0, carg1, carg2);
+// }
+// *C.GObject _gotk4_gst1_ChildProxy_virtual_get_child_by_index(void* fnptr, *C.GstChildProxy carg0, C.guint carg1) {
+// 	return ((*C.GObject (*) (*C.GstChildProxy, C.guint))(fnptr))(carg0, carg1);
+// }
+// *C.GObject _gotk4_gst1_ChildProxy_virtual_get_child_by_name(void* fnptr, *C.GstChildProxy carg0, *C.gchar carg1) {
+// 	return ((*C.GObject (*) (*C.GstChildProxy, *C.gchar))(fnptr))(carg0, carg1);
+// }
+// C.guint _gotk4_gst1_ChildProxy_virtual_get_children_count(void* fnptr, *C.GstChildProxy carg0) {
+// 	return ((C.guint (*) (*C.GstChildProxy))(fnptr))(carg0);
+// }
+// extern C.gboolean _gotk4_gst1_Preset_delete_preset(*C.GstPreset, *C.gchar);
+// extern C.gboolean _gotk4_gst1_Preset_get_meta(*C.GstPreset, *C.gchar, *C.gchar, *C.gchar);
+// extern **C.gchar _gotk4_gst1_Preset_get_preset_names(*C.GstPreset);
+// extern **C.gchar _gotk4_gst1_Preset_get_property_names(*C.GstPreset);
+// extern C.gboolean _gotk4_gst1_Preset_load_preset(*C.GstPreset, *C.gchar);
+// extern C.gboolean _gotk4_gst1_Preset_rename_preset(*C.GstPreset, *C.gchar, *C.gchar);
+// extern C.gboolean _gotk4_gst1_Preset_save_preset(*C.GstPreset, *C.gchar);
+// extern C.gboolean _gotk4_gst1_Preset_set_meta(*C.GstPreset, *C.gchar, *C.gchar, *C.gchar);
+// C.gboolean _gotk4_gst1_Preset_virtual_delete_preset(void* fnptr, *C.GstPreset carg0, *C.gchar carg1) {
+// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gst1_Preset_virtual_get_meta(void* fnptr, *C.GstPreset carg0, *C.gchar carg1, *C.gchar carg2, *C.gchar* carg3) {
+// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar, *C.gchar, *C.gchar*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// **C.gchar _gotk4_gst1_Preset_virtual_get_preset_names(void* fnptr, *C.GstPreset carg0) {
+// 	return ((**C.gchar (*) (*C.GstPreset))(fnptr))(carg0);
+// }
+// **C.gchar _gotk4_gst1_Preset_virtual_get_property_names(void* fnptr, *C.GstPreset carg0) {
+// 	return ((**C.gchar (*) (*C.GstPreset))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gst1_Preset_virtual_load_preset(void* fnptr, *C.GstPreset carg0, *C.gchar carg1) {
+// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gst1_Preset_virtual_rename_preset(void* fnptr, *C.GstPreset carg0, *C.gchar carg1, *C.gchar carg2) {
+// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar, *C.gchar))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gst1_Preset_virtual_save_preset(void* fnptr, *C.GstPreset carg0, *C.gchar carg1) {
+// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gst1_Preset_virtual_set_meta(void* fnptr, GstPreset* carg0, gchar* carg1, gchar* carg2, gchar* carg3) {
-// 	return ((gboolean (*) (GstPreset*, gchar*, gchar*, gchar*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// extern gchar* _gotk4_gst1_URIHandler_get_uri(GstURIHandler*);
-// extern gboolean _gotk4_gst1_URIHandler_set_uri(GstURIHandler*, gchar*, GError*);
-// gchar* _gotk4_gst1_URIHandler_virtual_get_uri(void* fnptr, GstURIHandler* carg0) {
-// 	return ((gchar* (*) (GstURIHandler*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gst1_URIHandler_virtual_set_uri(void* fnptr, GstURIHandler* carg0, gchar* carg1, GError** _cerr) {
-// 	return ((gboolean (*) (GstURIHandler*, gchar*, GError**))(fnptr))(carg0, carg1, _cerr);
-// }
-// extern void _gotk4_gst1_Object_deep_notify(GstObject*, GstObject*, GParamSpec*);
-// void _gotk4_gst1_Object_virtual_deep_notify(void* fnptr, GstObject* carg0, GstObject* carg1, GParamSpec* carg2) {
-// 	return ((void (*) (GstObject*, GstObject*, GParamSpec*))(fnptr))(carg0, carg1, carg2);
-// }
-// extern void _gotk4_gst1_Pad_linked(GstPad*, GstPad*);
-// extern void _gotk4_gst1_Pad_unlinked(GstPad*, GstPad*);
-// void _gotk4_gst1_Pad_virtual_linked(void* fnptr, GstPad* carg0, GstPad* carg1) {
-// 	return ((void (*) (GstPad*, GstPad*))(fnptr))(carg0, carg1);
-// }
-// void _gotk4_gst1_Pad_virtual_unlinked(void* fnptr, GstPad* carg0, GstPad* carg1) {
-// 	return ((void (*) (GstPad*, GstPad*))(fnptr))(carg0, carg1);
-// }
-// extern void _gotk4_gst1_PadTemplate_pad_created(GstPadTemplate*, GstPad*);
-// void _gotk4_gst1_PadTemplate_virtual_pad_created(void* fnptr, GstPadTemplate* carg0, GstPad* carg1) {
-// 	return ((void (*) (GstPadTemplate*, GstPad*))(fnptr))(carg0, carg1);
-// }
-// extern void _gotk4_gst1_StreamCollection_stream_notify(GstStreamCollection*, GstStream*, GParamSpec*);
-// void _gotk4_gst1_StreamCollection_virtual_stream_notify(void* fnptr, GstStreamCollection* carg0, GstStream* carg1, GParamSpec* carg2) {
-// 	return ((void (*) (GstStreamCollection*, GstStream*, GParamSpec*))(fnptr))(carg0, carg1, carg2);
-// }
-// extern void _gotk4_gst1_TaskPool_cleanup(GstTaskPool*);
-// extern void _gotk4_gst1_TaskPool_prepare(GstTaskPool*, GError*);
-// void _gotk4_gst1_TaskPool_virtual_cleanup(void* fnptr, GstTaskPool* carg0) {
-// 	return ((void (*) (GstTaskPool*))(fnptr))(carg0);
+// C.gboolean _gotk4_gst1_Preset_virtual_set_meta(void* fnptr, *C.GstPreset carg0, *C.gchar carg1, *C.gchar carg2, *C.gchar carg3) {
+// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar, *C.gchar, *C.gchar))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern *C.gchar _gotk4_gst1_URIHandler_get_uri(*C.GstURIHandler);
+// extern C.gboolean _gotk4_gst1_URIHandler_set_uri(*C.GstURIHandler, *C.gchar, GError*);
+// *C.gchar _gotk4_gst1_URIHandler_virtual_get_uri(void* fnptr, *C.GstURIHandler carg0) {
+// 	return ((*C.gchar (*) (*C.GstURIHandler))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gst1_URIHandler_virtual_set_uri(void* fnptr, *C.GstURIHandler carg0, *C.gchar carg1, GError** _cerr) {
+// 	return ((C.gboolean (*) (*C.GstURIHandler, *C.gchar, GError**))(fnptr))(carg0, carg1, _cerr);
+// }
+// extern C.void _gotk4_gst1_Object_deep_notify(*C.GstObject, *C.GstObject, *C.GParamSpec);
+// C.void _gotk4_gst1_Object_virtual_deep_notify(void* fnptr, *C.GstObject carg0, *C.GstObject carg1, *C.GParamSpec carg2) {
+// 	return ((C.void (*) (*C.GstObject, *C.GstObject, *C.GParamSpec))(fnptr))(carg0, carg1, carg2);
+// }
+// extern C.void _gotk4_gst1_Pad_linked(*C.GstPad, *C.GstPad);
+// extern C.void _gotk4_gst1_Pad_unlinked(*C.GstPad, *C.GstPad);
+// C.void _gotk4_gst1_Pad_virtual_linked(void* fnptr, *C.GstPad carg0, *C.GstPad carg1) {
+// 	return ((C.void (*) (*C.GstPad, *C.GstPad))(fnptr))(carg0, carg1);
+// }
+// C.void _gotk4_gst1_Pad_virtual_unlinked(void* fnptr, *C.GstPad carg0, *C.GstPad carg1) {
+// 	return ((C.void (*) (*C.GstPad, *C.GstPad))(fnptr))(carg0, carg1);
+// }
+// extern C.void _gotk4_gst1_PadTemplate_pad_created(*C.GstPadTemplate, *C.GstPad);
+// C.void _gotk4_gst1_PadTemplate_virtual_pad_created(void* fnptr, *C.GstPadTemplate carg0, *C.GstPad carg1) {
+// 	return ((C.void (*) (*C.GstPadTemplate, *C.GstPad))(fnptr))(carg0, carg1);
+// }
+// extern C.void _gotk4_gst1_StreamCollection_stream_notify(*C.GstStreamCollection, *C.GstStream, *C.GParamSpec);
+// C.void _gotk4_gst1_StreamCollection_virtual_stream_notify(void* fnptr, *C.GstStreamCollection carg0, *C.GstStream carg1, *C.GParamSpec carg2) {
+// 	return ((C.void (*) (*C.GstStreamCollection, *C.GstStream, *C.GParamSpec))(fnptr))(carg0, carg1, carg2);
+// }
+// extern C.void _gotk4_gst1_TaskPool_cleanup(*C.GstTaskPool);
+// extern C.void _gotk4_gst1_TaskPool_prepare(*C.GstTaskPool, GError*);
+// C.void _gotk4_gst1_TaskPool_virtual_cleanup(void* fnptr, *C.GstTaskPool carg0) {
+// 	return ((C.void (*) (*C.GstTaskPool))(fnptr))(carg0);
 // }
-// void _gotk4_gst1_TaskPool_virtual_prepare(void* fnptr, GstTaskPool* carg0, GError** _cerr) {
-// 	return ((void (*) (GstTaskPool*, GError**))(fnptr))(carg0, _cerr);
-// }
-// extern GstMemory* _gotk4_gst1_Allocator_alloc(GstAllocator*, gsize, GstAllocationParams*);
-// extern void _gotk4_gst1_Allocator_free(GstAllocator*, GstMemory*);
-// GstMemory* _gotk4_gst1_Allocator_virtual_alloc(void* fnptr, GstAllocator* carg0, gsize carg1, GstAllocationParams* carg2) {
-// 	return ((GstMemory* (*) (GstAllocator*, gsize, GstAllocationParams*))(fnptr))(carg0, carg1, carg2);
+// C.void _gotk4_gst1_TaskPool_virtual_prepare(void* fnptr, *C.GstTaskPool carg0, GError** _cerr) {
+// 	return ((C.void (*) (*C.GstTaskPool, GError**))(fnptr))(carg0, _cerr);
+// }
+// extern *C.GstMemory _gotk4_gst1_Allocator_alloc(*C.GstAllocator, C.gsize, *C.GstAllocationParams);
+// extern C.void _gotk4_gst1_Allocator_free(*C.GstAllocator, *C.GstMemory);
+// *C.GstMemory _gotk4_gst1_Allocator_virtual_alloc(void* fnptr, *C.GstAllocator carg0, C.gsize carg1, *C.GstAllocationParams carg2) {
+// 	return ((*C.GstMemory (*) (*C.GstAllocator, C.gsize, *C.GstAllocationParams))(fnptr))(carg0, carg1, carg2);
 // }
-// void _gotk4_gst1_Allocator_virtual_free(void* fnptr, GstAllocator* carg0, GstMemory* carg1) {
-// 	return ((void (*) (GstAllocator*, GstMemory*))(fnptr))(carg0, carg1);
-// }
-// extern GstFlowReturn _gotk4_gst1_BufferPool_acquire_buffer(GstBufferPool*, GstBuffer*, GstBufferPoolAcquireParams*);
-// extern GstFlowReturn _gotk4_gst1_BufferPool_alloc_buffer(GstBufferPool*, GstBuffer*, GstBufferPoolAcquireParams*);
-// extern void _gotk4_gst1_BufferPool_flush_start(GstBufferPool*);
-// extern void _gotk4_gst1_BufferPool_flush_stop(GstBufferPool*);
-// extern void _gotk4_gst1_BufferPool_free_buffer(GstBufferPool*, GstBuffer*);
-// extern const gchar** _gotk4_gst1_BufferPool_get_options(GstBufferPool*);
-// extern void _gotk4_gst1_BufferPool_release_buffer(GstBufferPool*, GstBuffer*);
-// extern void _gotk4_gst1_BufferPool_reset_buffer(GstBufferPool*, GstBuffer*);
-// extern gboolean _gotk4_gst1_BufferPool_set_config(GstBufferPool*, GstStructure*);
-// extern gboolean _gotk4_gst1_BufferPool_start(GstBufferPool*);
-// extern gboolean _gotk4_gst1_BufferPool_stop(GstBufferPool*);
-// GstFlowReturn _gotk4_gst1_BufferPool_virtual_acquire_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer** carg1, GstBufferPoolAcquireParams* carg2) {
-// 	return ((GstFlowReturn (*) (GstBufferPool*, GstBuffer**, GstBufferPoolAcquireParams*))(fnptr))(carg0, carg1, carg2);
-// }
-// GstFlowReturn _gotk4_gst1_BufferPool_virtual_alloc_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer** carg1, GstBufferPoolAcquireParams* carg2) {
-// 	return ((GstFlowReturn (*) (GstBufferPool*, GstBuffer**, GstBufferPoolAcquireParams*))(fnptr))(carg0, carg1, carg2);
-// }
-// void _gotk4_gst1_BufferPool_virtual_flush_start(void* fnptr, GstBufferPool* carg0) {
-// 	return ((void (*) (GstBufferPool*))(fnptr))(carg0);
-// }
-// void _gotk4_gst1_BufferPool_virtual_flush_stop(void* fnptr, GstBufferPool* carg0) {
-// 	return ((void (*) (GstBufferPool*))(fnptr))(carg0);
-// }
-// void _gotk4_gst1_BufferPool_virtual_free_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer* carg1) {
-// 	return ((void (*) (GstBufferPool*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// const gchar** _gotk4_gst1_BufferPool_virtual_get_options(void* fnptr, GstBufferPool* carg0) {
-// 	return ((const gchar** (*) (GstBufferPool*))(fnptr))(carg0);
-// }
-// void _gotk4_gst1_BufferPool_virtual_release_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer* carg1) {
-// 	return ((void (*) (GstBufferPool*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// void _gotk4_gst1_BufferPool_virtual_reset_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer* carg1) {
-// 	return ((void (*) (GstBufferPool*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gst1_BufferPool_virtual_set_config(void* fnptr, GstBufferPool* carg0, GstStructure* carg1) {
-// 	return ((gboolean (*) (GstBufferPool*, GstStructure*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gst1_BufferPool_virtual_start(void* fnptr, GstBufferPool* carg0) {
-// 	return ((gboolean (*) (GstBufferPool*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gst1_BufferPool_virtual_stop(void* fnptr, GstBufferPool* carg0) {
-// 	return ((gboolean (*) (GstBufferPool*))(fnptr))(carg0);
-// }
-// extern void _gotk4_gst1_Bus_message(GstBus*, GstMessage*);
-// extern void _gotk4_gst1_Bus_sync_message(GstBus*, GstMessage*);
-// void _gotk4_gst1_Bus_virtual_message(void* fnptr, GstBus* carg0, GstMessage* carg1) {
-// 	return ((void (*) (GstBus*, GstMessage*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Allocator_virtual_free(void* fnptr, *C.GstAllocator carg0, *C.GstMemory carg1) {
+// 	return ((C.void (*) (*C.GstAllocator, *C.GstMemory))(fnptr))(carg0, carg1);
+// }
+// extern C.GstFlowReturn _gotk4_gst1_BufferPool_acquire_buffer(*C.GstBufferPool, *C.GstBuffer, *C.GstBufferPoolAcquireParams);
+// extern C.GstFlowReturn _gotk4_gst1_BufferPool_alloc_buffer(*C.GstBufferPool, *C.GstBuffer, *C.GstBufferPoolAcquireParams);
+// extern C.void _gotk4_gst1_BufferPool_flush_start(*C.GstBufferPool);
+// extern C.void _gotk4_gst1_BufferPool_flush_stop(*C.GstBufferPool);
+// extern C.void _gotk4_gst1_BufferPool_free_buffer(*C.GstBufferPool, *C.GstBuffer);
+// extern **C.gchar _gotk4_gst1_BufferPool_get_options(*C.GstBufferPool);
+// extern C.void _gotk4_gst1_BufferPool_release_buffer(*C.GstBufferPool, *C.GstBuffer);
+// extern C.void _gotk4_gst1_BufferPool_reset_buffer(*C.GstBufferPool, *C.GstBuffer);
+// extern C.gboolean _gotk4_gst1_BufferPool_set_config(*C.GstBufferPool, *C.GstStructure);
+// extern C.gboolean _gotk4_gst1_BufferPool_start(*C.GstBufferPool);
+// extern C.gboolean _gotk4_gst1_BufferPool_stop(*C.GstBufferPool);
+// C.GstFlowReturn _gotk4_gst1_BufferPool_virtual_acquire_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer* carg1, *C.GstBufferPoolAcquireParams carg2) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBufferPool, *C.GstBuffer*, *C.GstBufferPoolAcquireParams))(fnptr))(carg0, carg1, carg2);
+// }
+// C.GstFlowReturn _gotk4_gst1_BufferPool_virtual_alloc_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer* carg1, *C.GstBufferPoolAcquireParams carg2) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBufferPool, *C.GstBuffer*, *C.GstBufferPoolAcquireParams))(fnptr))(carg0, carg1, carg2);
+// }
+// C.void _gotk4_gst1_BufferPool_virtual_flush_start(void* fnptr, *C.GstBufferPool carg0) {
+// 	return ((C.void (*) (*C.GstBufferPool))(fnptr))(carg0);
+// }
+// C.void _gotk4_gst1_BufferPool_virtual_flush_stop(void* fnptr, *C.GstBufferPool carg0) {
+// 	return ((C.void (*) (*C.GstBufferPool))(fnptr))(carg0);
+// }
+// C.void _gotk4_gst1_BufferPool_virtual_free_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer carg1) {
+// 	return ((C.void (*) (*C.GstBufferPool, *C.GstBuffer))(fnptr))(carg0, carg1);
+// }
+// **C.gchar _gotk4_gst1_BufferPool_virtual_get_options(void* fnptr, *C.GstBufferPool carg0) {
+// 	return ((**C.gchar (*) (*C.GstBufferPool))(fnptr))(carg0);
+// }
+// C.void _gotk4_gst1_BufferPool_virtual_release_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer carg1) {
+// 	return ((C.void (*) (*C.GstBufferPool, *C.GstBuffer))(fnptr))(carg0, carg1);
+// }
+// C.void _gotk4_gst1_BufferPool_virtual_reset_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer carg1) {
+// 	return ((C.void (*) (*C.GstBufferPool, *C.GstBuffer))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gst1_BufferPool_virtual_set_config(void* fnptr, *C.GstBufferPool carg0, *C.GstStructure carg1) {
+// 	return ((C.gboolean (*) (*C.GstBufferPool, *C.GstStructure))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gst1_BufferPool_virtual_start(void* fnptr, *C.GstBufferPool carg0) {
+// 	return ((C.gboolean (*) (*C.GstBufferPool))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gst1_BufferPool_virtual_stop(void* fnptr, *C.GstBufferPool carg0) {
+// 	return ((C.gboolean (*) (*C.GstBufferPool))(fnptr))(carg0);
+// }
+// extern C.void _gotk4_gst1_Bus_message(*C.GstBus, *C.GstMessage);
+// extern C.void _gotk4_gst1_Bus_sync_message(*C.GstBus, *C.GstMessage);
+// C.void _gotk4_gst1_Bus_virtual_message(void* fnptr, *C.GstBus carg0, *C.GstMessage carg1) {
+// 	return ((C.void (*) (*C.GstBus, *C.GstMessage))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gst1_Bus_virtual_sync_message(void* fnptr, GstBus* carg0, GstMessage* carg1) {
-// 	return ((void (*) (GstBus*, GstMessage*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Bus_virtual_sync_message(void* fnptr, *C.GstBus carg0, *C.GstMessage carg1) {
+// 	return ((C.void (*) (*C.GstBus, *C.GstMessage))(fnptr))(carg0, carg1);
 // }
-// extern GstClockTime _gotk4_gst1_Clock_change_resolution(GstClock*, GstClockTime, GstClockTime);
-// extern GstClockTime _gotk4_gst1_Clock_get_internal_time(GstClock*);
-// extern GstClockTime _gotk4_gst1_Clock_get_resolution(GstClock*);
-// extern void _gotk4_gst1_Clock_unschedule(GstClock*, GstClockEntry*);
-// extern GstClockReturn _gotk4_gst1_Clock_wait(GstClock*, GstClockEntry*, GstClockTimeDiff);
-// extern GstClockReturn _gotk4_gst1_Clock_wait_async(GstClock*, GstClockEntry*);
-// GstClockTime _gotk4_gst1_Clock_virtual_change_resolution(void* fnptr, GstClock* carg0, GstClockTime carg1, GstClockTime carg2) {
-// 	return ((GstClockTime (*) (GstClock*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2);
+// extern C.GstClockTime _gotk4_gst1_Clock_change_resolution(*C.GstClock, C.GstClockTime, C.GstClockTime);
+// extern C.GstClockTime _gotk4_gst1_Clock_get_internal_time(*C.GstClock);
+// extern C.GstClockTime _gotk4_gst1_Clock_get_resolution(*C.GstClock);
+// extern C.void _gotk4_gst1_Clock_unschedule(*C.GstClock, *C.GstClockEntry);
+// extern C.GstClockReturn _gotk4_gst1_Clock_wait(*C.GstClock, *C.GstClockEntry, C.GstClockTimeDiff);
+// extern C.GstClockReturn _gotk4_gst1_Clock_wait_async(*C.GstClock, *C.GstClockEntry);
+// C.GstClockTime _gotk4_gst1_Clock_virtual_change_resolution(void* fnptr, *C.GstClock carg0, C.GstClockTime carg1, C.GstClockTime carg2) {
+// 	return ((C.GstClockTime (*) (*C.GstClock, C.GstClockTime, C.GstClockTime))(fnptr))(carg0, carg1, carg2);
 // }
-// GstClockTime _gotk4_gst1_Clock_virtual_get_internal_time(void* fnptr, GstClock* carg0) {
-// 	return ((GstClockTime (*) (GstClock*))(fnptr))(carg0);
+// C.GstClockTime _gotk4_gst1_Clock_virtual_get_internal_time(void* fnptr, *C.GstClock carg0) {
+// 	return ((C.GstClockTime (*) (*C.GstClock))(fnptr))(carg0);
 // }
-// GstClockTime _gotk4_gst1_Clock_virtual_get_resolution(void* fnptr, GstClock* carg0) {
-// 	return ((GstClockTime (*) (GstClock*))(fnptr))(carg0);
-// }
-// void _gotk4_gst1_Clock_virtual_unschedule(void* fnptr, GstClock* carg0, GstClockEntry* carg1) {
-// 	return ((void (*) (GstClock*, GstClockEntry*))(fnptr))(carg0, carg1);
-// }
-// GstClockReturn _gotk4_gst1_Clock_virtual_wait(void* fnptr, GstClock* carg0, GstClockEntry* carg1, GstClockTimeDiff* carg2) {
-// 	return ((GstClockReturn (*) (GstClock*, GstClockEntry*, GstClockTimeDiff*))(fnptr))(carg0, carg1, carg2);
-// }
-// GstClockReturn _gotk4_gst1_Clock_virtual_wait_async(void* fnptr, GstClock* carg0, GstClockEntry* carg1) {
-// 	return ((GstClockReturn (*) (GstClock*, GstClockEntry*))(fnptr))(carg0, carg1);
-// }
-// extern gboolean _gotk4_gst1_ControlBinding_sync_values(GstControlBinding*, GstObject*, GstClockTime, GstClockTime);
-// gboolean _gotk4_gst1_ControlBinding_virtual_sync_values(void* fnptr, GstControlBinding* carg0, GstObject* carg1, GstClockTime carg2, GstClockTime carg3) {
-// 	return ((gboolean (*) (GstControlBinding*, GstObject*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// extern GstElement* _gotk4_gst1_Device_create_element(GstDevice*, gchar*);
-// extern gboolean _gotk4_gst1_Device_reconfigure_element(GstDevice*, GstElement*);
-// GstElement* _gotk4_gst1_Device_virtual_create_element(void* fnptr, GstDevice* carg0, gchar* carg1) {
-// 	return ((GstElement* (*) (GstDevice*, gchar*))(fnptr))(carg0, carg1);
+// C.GstClockTime _gotk4_gst1_Clock_virtual_get_resolution(void* fnptr, *C.GstClock carg0) {
+// 	return ((C.GstClockTime (*) (*C.GstClock))(fnptr))(carg0);
+// }
+// C.void _gotk4_gst1_Clock_virtual_unschedule(void* fnptr, *C.GstClock carg0, *C.GstClockEntry carg1) {
+// 	return ((C.void (*) (*C.GstClock, *C.GstClockEntry))(fnptr))(carg0, carg1);
+// }
+// C.GstClockReturn _gotk4_gst1_Clock_virtual_wait(void* fnptr, *C.GstClock carg0, *C.GstClockEntry carg1, C.GstClockTimeDiff* carg2) {
+// 	return ((C.GstClockReturn (*) (*C.GstClock, *C.GstClockEntry, C.GstClockTimeDiff*))(fnptr))(carg0, carg1, carg2);
+// }
+// C.GstClockReturn _gotk4_gst1_Clock_virtual_wait_async(void* fnptr, *C.GstClock carg0, *C.GstClockEntry carg1) {
+// 	return ((C.GstClockReturn (*) (*C.GstClock, *C.GstClockEntry))(fnptr))(carg0, carg1);
+// }
+// extern C.gboolean _gotk4_gst1_ControlBinding_sync_values(*C.GstControlBinding, *C.GstObject, C.GstClockTime, C.GstClockTime);
+// C.gboolean _gotk4_gst1_ControlBinding_virtual_sync_values(void* fnptr, *C.GstControlBinding carg0, *C.GstObject carg1, C.GstClockTime carg2, C.GstClockTime carg3) {
+// 	return ((C.gboolean (*) (*C.GstControlBinding, *C.GstObject, C.GstClockTime, C.GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern *C.GstElement _gotk4_gst1_Device_create_element(*C.GstDevice, *C.gchar);
+// extern C.gboolean _gotk4_gst1_Device_reconfigure_element(*C.GstDevice, *C.GstElement);
+// *C.GstElement _gotk4_gst1_Device_virtual_create_element(void* fnptr, *C.GstDevice carg0, *C.gchar carg1) {
+// 	return ((*C.GstElement (*) (*C.GstDevice, *C.gchar))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gst1_Device_virtual_reconfigure_element(void* fnptr, GstDevice* carg0, GstElement* carg1) {
-// 	return ((gboolean (*) (GstDevice*, GstElement*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gst1_Device_virtual_reconfigure_element(void* fnptr, *C.GstDevice carg0, *C.GstElement carg1) {
+// 	return ((C.gboolean (*) (*C.GstDevice, *C.GstElement))(fnptr))(carg0, carg1);
 // }
-// extern gboolean _gotk4_gst1_DeviceProvider_start(GstDeviceProvider*);
-// extern void _gotk4_gst1_DeviceProvider_stop(GstDeviceProvider*);
-// gboolean _gotk4_gst1_DeviceProvider_virtual_start(void* fnptr, GstDeviceProvider* carg0) {
-// 	return ((gboolean (*) (GstDeviceProvider*))(fnptr))(carg0);
+// extern C.gboolean _gotk4_gst1_DeviceProvider_start(*C.GstDeviceProvider);
+// extern C.void _gotk4_gst1_DeviceProvider_stop(*C.GstDeviceProvider);
+// C.gboolean _gotk4_gst1_DeviceProvider_virtual_start(void* fnptr, *C.GstDeviceProvider carg0) {
+// 	return ((C.gboolean (*) (*C.GstDeviceProvider))(fnptr))(carg0);
 // }
-// void _gotk4_gst1_DeviceProvider_virtual_stop(void* fnptr, GstDeviceProvider* carg0) {
-// 	return ((void (*) (GstDeviceProvider*))(fnptr))(carg0);
+// C.void _gotk4_gst1_DeviceProvider_virtual_stop(void* fnptr, *C.GstDeviceProvider carg0) {
+// 	return ((C.void (*) (*C.GstDeviceProvider))(fnptr))(carg0);
 // }
-// extern GstStateChangeReturn _gotk4_gst1_Element_change_state(GstElement*, GstStateChange);
-// extern GstStateChangeReturn _gotk4_gst1_Element_get_state(GstElement*, GstState, GstState, GstClockTime);
-// extern void _gotk4_gst1_Element_no_more_pads(GstElement*);
-// extern void _gotk4_gst1_Element_pad_added(GstElement*, GstPad*);
-// extern void _gotk4_gst1_Element_pad_removed(GstElement*, GstPad*);
-// extern gboolean _gotk4_gst1_Element_post_message(GstElement*, GstMessage*);
-// extern GstClock* _gotk4_gst1_Element_provide_clock(GstElement*);
-// extern gboolean _gotk4_gst1_Element_query(GstElement*, GstQuery*);
-// extern void _gotk4_gst1_Element_release_pad(GstElement*, GstPad*);
-// extern GstPad* _gotk4_gst1_Element_request_new_pad(GstElement*, GstPadTemplate*, gchar*, GstCaps*);
-// extern gboolean _gotk4_gst1_Element_send_event(GstElement*, GstEvent*);
-// extern void _gotk4_gst1_Element_set_bus(GstElement*, GstBus*);
-// extern gboolean _gotk4_gst1_Element_set_clock(GstElement*, GstClock*);
-// extern void _gotk4_gst1_Element_set_context(GstElement*, GstContext*);
-// extern GstStateChangeReturn _gotk4_gst1_Element_set_state(GstElement*, GstState);
-// extern void _gotk4_gst1_Element_state_changed(GstElement*, GstState, GstState, GstState);
-// GstStateChangeReturn _gotk4_gst1_Element_virtual_change_state(void* fnptr, GstElement* carg0, GstStateChange carg1) {
-// 	return ((GstStateChangeReturn (*) (GstElement*, GstStateChange))(fnptr))(carg0, carg1);
+// extern C.GstStateChangeReturn _gotk4_gst1_Element_change_state(*C.GstElement, C.GstStateChange);
+// extern C.GstStateChangeReturn _gotk4_gst1_Element_get_state(*C.GstElement, C.GstState, C.GstState, C.GstClockTime);
+// extern C.void _gotk4_gst1_Element_no_more_pads(*C.GstElement);
+// extern C.void _gotk4_gst1_Element_pad_added(*C.GstElement, *C.GstPad);
+// extern C.void _gotk4_gst1_Element_pad_removed(*C.GstElement, *C.GstPad);
+// extern C.gboolean _gotk4_gst1_Element_post_message(*C.GstElement, *C.GstMessage);
+// extern *C.GstClock _gotk4_gst1_Element_provide_clock(*C.GstElement);
+// extern C.gboolean _gotk4_gst1_Element_query(*C.GstElement, *C.GstQuery);
+// extern C.void _gotk4_gst1_Element_release_pad(*C.GstElement, *C.GstPad);
+// extern *C.GstPad _gotk4_gst1_Element_request_new_pad(*C.GstElement, *C.GstPadTemplate, *C.gchar, *C.GstCaps);
+// extern C.gboolean _gotk4_gst1_Element_send_event(*C.GstElement, *C.GstEvent);
+// extern C.void _gotk4_gst1_Element_set_bus(*C.GstElement, *C.GstBus);
+// extern C.gboolean _gotk4_gst1_Element_set_clock(*C.GstElement, *C.GstClock);
+// extern C.void _gotk4_gst1_Element_set_context(*C.GstElement, *C.GstContext);
+// extern C.GstStateChangeReturn _gotk4_gst1_Element_set_state(*C.GstElement, C.GstState);
+// extern C.void _gotk4_gst1_Element_state_changed(*C.GstElement, C.GstState, C.GstState, C.GstState);
+// C.GstStateChangeReturn _gotk4_gst1_Element_virtual_change_state(void* fnptr, *C.GstElement carg0, C.GstStateChange carg1) {
+// 	return ((C.GstStateChangeReturn (*) (*C.GstElement, C.GstStateChange))(fnptr))(carg0, carg1);
 // }
-// GstStateChangeReturn _gotk4_gst1_Element_virtual_get_state(void* fnptr, GstElement* carg0, GstState* carg1, GstState* carg2, GstClockTime carg3) {
-// 	return ((GstStateChangeReturn (*) (GstElement*, GstState*, GstState*, GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
+// C.GstStateChangeReturn _gotk4_gst1_Element_virtual_get_state(void* fnptr, *C.GstElement carg0, C.GstState* carg1, C.GstState* carg2, C.GstClockTime carg3) {
+// 	return ((C.GstStateChangeReturn (*) (*C.GstElement, C.GstState*, C.GstState*, C.GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// void _gotk4_gst1_Element_virtual_no_more_pads(void* fnptr, GstElement* carg0) {
-// 	return ((void (*) (GstElement*))(fnptr))(carg0);
+// C.void _gotk4_gst1_Element_virtual_no_more_pads(void* fnptr, *C.GstElement carg0) {
+// 	return ((C.void (*) (*C.GstElement))(fnptr))(carg0);
 // }
-// void _gotk4_gst1_Element_virtual_pad_added(void* fnptr, GstElement* carg0, GstPad* carg1) {
-// 	return ((void (*) (GstElement*, GstPad*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Element_virtual_pad_added(void* fnptr, *C.GstElement carg0, *C.GstPad carg1) {
+// 	return ((C.void (*) (*C.GstElement, *C.GstPad))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gst1_Element_virtual_pad_removed(void* fnptr, GstElement* carg0, GstPad* carg1) {
-// 	return ((void (*) (GstElement*, GstPad*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Element_virtual_pad_removed(void* fnptr, *C.GstElement carg0, *C.GstPad carg1) {
+// 	return ((C.void (*) (*C.GstElement, *C.GstPad))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gst1_Element_virtual_post_message(void* fnptr, GstElement* carg0, GstMessage* carg1) {
-// 	return ((gboolean (*) (GstElement*, GstMessage*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gst1_Element_virtual_post_message(void* fnptr, *C.GstElement carg0, *C.GstMessage carg1) {
+// 	return ((C.gboolean (*) (*C.GstElement, *C.GstMessage))(fnptr))(carg0, carg1);
 // }
-// GstClock* _gotk4_gst1_Element_virtual_provide_clock(void* fnptr, GstElement* carg0) {
-// 	return ((GstClock* (*) (GstElement*))(fnptr))(carg0);
+// *C.GstClock _gotk4_gst1_Element_virtual_provide_clock(void* fnptr, *C.GstElement carg0) {
+// 	return ((*C.GstClock (*) (*C.GstElement))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gst1_Element_virtual_query(void* fnptr, GstElement* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstElement*, GstQuery*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gst1_Element_virtual_query(void* fnptr, *C.GstElement carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstElement, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gst1_Element_virtual_release_pad(void* fnptr, GstElement* carg0, GstPad* carg1) {
-// 	return ((void (*) (GstElement*, GstPad*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Element_virtual_release_pad(void* fnptr, *C.GstElement carg0, *C.GstPad carg1) {
+// 	return ((C.void (*) (*C.GstElement, *C.GstPad))(fnptr))(carg0, carg1);
 // }
-// GstPad* _gotk4_gst1_Element_virtual_request_new_pad(void* fnptr, GstElement* carg0, GstPadTemplate* carg1, gchar* carg2, GstCaps* carg3) {
-// 	return ((GstPad* (*) (GstElement*, GstPadTemplate*, gchar*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
+// *C.GstPad _gotk4_gst1_Element_virtual_request_new_pad(void* fnptr, *C.GstElement carg0, *C.GstPadTemplate carg1, *C.gchar carg2, *C.GstCaps carg3) {
+// 	return ((*C.GstPad (*) (*C.GstElement, *C.GstPadTemplate, *C.gchar, *C.GstCaps))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gboolean _gotk4_gst1_Element_virtual_send_event(void* fnptr, GstElement* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstElement*, GstEvent*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gst1_Element_virtual_send_event(void* fnptr, *C.GstElement carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstElement, *C.GstEvent))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gst1_Element_virtual_set_bus(void* fnptr, GstElement* carg0, GstBus* carg1) {
-// 	return ((void (*) (GstElement*, GstBus*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Element_virtual_set_bus(void* fnptr, *C.GstElement carg0, *C.GstBus carg1) {
+// 	return ((C.void (*) (*C.GstElement, *C.GstBus))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gst1_Element_virtual_set_clock(void* fnptr, GstElement* carg0, GstClock* carg1) {
-// 	return ((gboolean (*) (GstElement*, GstClock*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gst1_Element_virtual_set_clock(void* fnptr, *C.GstElement carg0, *C.GstClock carg1) {
+// 	return ((C.gboolean (*) (*C.GstElement, *C.GstClock))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gst1_Element_virtual_set_context(void* fnptr, GstElement* carg0, GstContext* carg1) {
-// 	return ((void (*) (GstElement*, GstContext*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Element_virtual_set_context(void* fnptr, *C.GstElement carg0, *C.GstContext carg1) {
+// 	return ((C.void (*) (*C.GstElement, *C.GstContext))(fnptr))(carg0, carg1);
 // }
-// GstStateChangeReturn _gotk4_gst1_Element_virtual_set_state(void* fnptr, GstElement* carg0, GstState carg1) {
-// 	return ((GstStateChangeReturn (*) (GstElement*, GstState))(fnptr))(carg0, carg1);
+// C.GstStateChangeReturn _gotk4_gst1_Element_virtual_set_state(void* fnptr, *C.GstElement carg0, C.GstState carg1) {
+// 	return ((C.GstStateChangeReturn (*) (*C.GstElement, C.GstState))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gst1_Element_virtual_state_changed(void* fnptr, GstElement* carg0, GstState carg1, GstState carg2, GstState carg3) {
-// 	return ((void (*) (GstElement*, GstState, GstState, GstState))(fnptr))(carg0, carg1, carg2, carg3);
+// C.void _gotk4_gst1_Element_virtual_state_changed(void* fnptr, *C.GstElement carg0, C.GstState carg1, C.GstState carg2, C.GstState carg3) {
+// 	return ((C.void (*) (*C.GstElement, C.GstState, C.GstState, C.GstState))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// extern gboolean _gotk4_gst1_Bin_add_element(GstBin*, GstElement*);
-// extern void _gotk4_gst1_Bin_deep_element_added(GstBin*, GstBin*, GstElement*);
-// extern void _gotk4_gst1_Bin_deep_element_removed(GstBin*, GstBin*, GstElement*);
-// extern gboolean _gotk4_gst1_Bin_do_latency(GstBin*);
-// extern void _gotk4_gst1_Bin_element_added(GstBin*, GstElement*);
-// extern void _gotk4_gst1_Bin_element_removed(GstBin*, GstElement*);
-// extern void _gotk4_gst1_Bin_handle_message(GstBin*, GstMessage*);
-// extern gboolean _gotk4_gst1_Bin_remove_element(GstBin*, GstElement*);
-// gboolean _gotk4_gst1_Bin_virtual_add_element(void* fnptr, GstBin* carg0, GstElement* carg1) {
-// 	return ((gboolean (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
+// extern C.gboolean _gotk4_gst1_Bin_add_element(*C.GstBin, *C.GstElement);
+// extern C.void _gotk4_gst1_Bin_deep_element_added(*C.GstBin, *C.GstBin, *C.GstElement);
+// extern C.void _gotk4_gst1_Bin_deep_element_removed(*C.GstBin, *C.GstBin, *C.GstElement);
+// extern C.gboolean _gotk4_gst1_Bin_do_latency(*C.GstBin);
+// extern C.void _gotk4_gst1_Bin_element_added(*C.GstBin, *C.GstElement);
+// extern C.void _gotk4_gst1_Bin_element_removed(*C.GstBin, *C.GstElement);
+// extern C.void _gotk4_gst1_Bin_handle_message(*C.GstBin, *C.GstMessage);
+// extern C.gboolean _gotk4_gst1_Bin_remove_element(*C.GstBin, *C.GstElement);
+// C.gboolean _gotk4_gst1_Bin_virtual_add_element(void* fnptr, *C.GstBin carg0, *C.GstElement carg1) {
+// 	return ((C.gboolean (*) (*C.GstBin, *C.GstElement))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gst1_Bin_virtual_deep_element_added(void* fnptr, GstBin* carg0, GstBin* carg1, GstElement* carg2) {
-// 	return ((void (*) (GstBin*, GstBin*, GstElement*))(fnptr))(carg0, carg1, carg2);
+// C.void _gotk4_gst1_Bin_virtual_deep_element_added(void* fnptr, *C.GstBin carg0, *C.GstBin carg1, *C.GstElement carg2) {
+// 	return ((C.void (*) (*C.GstBin, *C.GstBin, *C.GstElement))(fnptr))(carg0, carg1, carg2);
 // }
-// void _gotk4_gst1_Bin_virtual_deep_element_removed(void* fnptr, GstBin* carg0, GstBin* carg1, GstElement* carg2) {
-// 	return ((void (*) (GstBin*, GstBin*, GstElement*))(fnptr))(carg0, carg1, carg2);
+// C.void _gotk4_gst1_Bin_virtual_deep_element_removed(void* fnptr, *C.GstBin carg0, *C.GstBin carg1, *C.GstElement carg2) {
+// 	return ((C.void (*) (*C.GstBin, *C.GstBin, *C.GstElement))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gst1_Bin_virtual_do_latency(void* fnptr, GstBin* carg0) {
-// 	return ((gboolean (*) (GstBin*))(fnptr))(carg0);
+// C.gboolean _gotk4_gst1_Bin_virtual_do_latency(void* fnptr, *C.GstBin carg0) {
+// 	return ((C.gboolean (*) (*C.GstBin))(fnptr))(carg0);
 // }
-// void _gotk4_gst1_Bin_virtual_element_added(void* fnptr, GstBin* carg0, GstElement* carg1) {
-// 	return ((void (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Bin_virtual_element_added(void* fnptr, *C.GstBin carg0, *C.GstElement carg1) {
+// 	return ((C.void (*) (*C.GstBin, *C.GstElement))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gst1_Bin_virtual_element_removed(void* fnptr, GstBin* carg0, GstElement* carg1) {
-// 	return ((void (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Bin_virtual_element_removed(void* fnptr, *C.GstBin carg0, *C.GstElement carg1) {
+// 	return ((C.void (*) (*C.GstBin, *C.GstElement))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gst1_Bin_virtual_handle_message(void* fnptr, GstBin* carg0, GstMessage* carg1) {
-// 	return ((void (*) (GstBin*, GstMessage*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gst1_Bin_virtual_handle_message(void* fnptr, *C.GstBin carg0, *C.GstMessage carg1) {
+// 	return ((C.void (*) (*C.GstBin, *C.GstMessage))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gst1_Bin_virtual_remove_element(void* fnptr, GstBin* carg0, GstElement* carg1) {
-// 	return ((gboolean (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gst1_Bin_virtual_remove_element(void* fnptr, *C.GstBin carg0, *C.GstElement carg1) {
+// 	return ((C.gboolean (*) (*C.GstBin, *C.GstElement))(fnptr))(carg0, carg1);
 // }
 import "C"
 
@@ -8886,7 +8886,7 @@ func DebugRingBufferLoggerGetLogs() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -9255,7 +9255,7 @@ func FormatsContains(formats []Format, format Format) bool {
 
 	_ = formats
 	_ = carg1
-	panic("unimplemented conversion of []Format (const GstFormat*)")
+	panic("unimplemented conversion of []Format (*C.GstFormat)")
 	carg2 = C.GstFormat(format)
 
 	cret = C.gst_formats_contains(carg1, carg2)
@@ -9482,7 +9482,7 @@ func ParentBufferMetaApiGetType() gobject.Type {
 func ParseBinFromDescription(binDescription string, ghostUnlinkedPads bool) (Bin, error) {
 	var carg1 *C.gchar      // in, none, string
 	var carg2 C.gboolean    // in
-	var cret  *C.GstElement // return, none, converted, casted *C.GstBin
+	var cret  *C.GstElement // return, none, converted
 	var _cerr *C.GError     // out, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(binDescription)))
@@ -9677,7 +9677,7 @@ func ProtectionFilterSystemsByAvailableDecryptors(systemIdentifiers []string) []
 
 	_ = systemIdentifiers
 	_ = carg1
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_protection_filter_systems_by_available_decryptors(carg1)
 	runtime.KeepAlive(systemIdentifiers)
@@ -9686,7 +9686,7 @@ func ProtectionFilterSystemsByAvailableDecryptors(systemIdentifiers []string) []
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -9729,7 +9729,7 @@ func ProtectionSelectSystem(systemIdentifiers []string) string {
 
 	_ = systemIdentifiers
 	_ = carg1
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_protection_select_system(carg1)
 	runtime.KeepAlive(systemIdentifiers)
@@ -10007,7 +10007,7 @@ func TagMergeStringsWithComma(src *gobject.Value) gobject.Value {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue)")
+	panic("unimplemented conversion of gobject.Value (C.GValue)")
 
 	return dest
 }
@@ -10037,7 +10037,7 @@ func TagMergeUseFirst(src *gobject.Value) gobject.Value {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue)")
+	panic("unimplemented conversion of gobject.Value (C.GValue)")
 
 	return dest
 }
@@ -10257,7 +10257,7 @@ func UtilDumpMem(mem []byte) {
 	_ = mem
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []byte (const guchar*)")
+	panic("unimplemented conversion of []byte (*C.guchar)")
 
 	C.gst_util_dump_mem(carg1, carg2)
 	runtime.KeepAlive(mem)
@@ -10817,10 +10817,10 @@ func UtilSimplifyFraction(numerator *int32, denominator *int32, nTerms uint, thr
 
 	_ = numerator
 	_ = carg1
-	panic("unimplemented conversion of *int32 (gint*)")
+	panic("unimplemented conversion of *int32 (*C.gint)")
 	_ = denominator
 	_ = carg2
-	panic("unimplemented conversion of *int32 (gint*)")
+	panic("unimplemented conversion of *int32 (*C.gint)")
 	carg3 = C.guint(nTerms)
 	carg4 = C.guint(threshold)
 
@@ -11264,7 +11264,7 @@ func ValueDeserialize(src string) (gobject.Value, bool) {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue)")
+	panic("unimplemented conversion of gobject.Value (C.GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -11309,7 +11309,7 @@ func ValueDeserializeWithPspec(src string, pspec *gobject.ParamSpec) (gobject.Va
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue)")
+	panic("unimplemented conversion of gobject.Value (C.GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -11945,7 +11945,7 @@ func ValueInitAndCopy(src *gobject.Value) gobject.Value {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue)")
+	panic("unimplemented conversion of gobject.Value (C.GValue)")
 
 	return dest
 }
@@ -11987,7 +11987,7 @@ func ValueIntersect(value1 *gobject.Value, value2 *gobject.Value) (gobject.Value
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue)")
+	panic("unimplemented conversion of gobject.Value (C.GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -12463,7 +12463,7 @@ func ValueSubtract(minuend *gobject.Value, subtrahend *gobject.Value) (gobject.V
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue)")
+	panic("unimplemented conversion of gobject.Value (C.GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -12502,7 +12502,7 @@ func ValueUnion(value1 *gobject.Value, value2 *gobject.Value) (gobject.Value, bo
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue)")
+	panic("unimplemented conversion of gobject.Value (C.GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -12565,7 +12565,7 @@ func VersionString() string {
 // ChildProxyInstance is the instance type used by all types implementing GstChildProxy. It is used internally by the bindings. Users should use the interface [ChildProxy] instead.
 type ChildProxyInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ ChildProxy = (*ChildProxyInstance)(nil)
@@ -12587,7 +12587,6 @@ var _ ChildProxy = (*ChildProxyInstance)(nil)
 // `child1` and `child2` implement the #GstChildProxy interface.
 type ChildProxy interface {
 	ChildProxyExtManual // handwritten functions
-	gobject.Object
 	upcastToGstChildProxy() *ChildProxyInstance
 
 	// ChildAdded wraps gst_child_proxy_child_added
@@ -12691,7 +12690,8 @@ type ChildProxy interface {
 	// chain up virtual methods:
 
 	// ParentChildAdded calls the default implementations of the child_added virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- child gobject.Object: the newly added child 
@@ -12700,7 +12700,8 @@ type ChildProxy interface {
 	// Emits the #GstChildProxy::child-added signal.
 	ParentChildAdded(child gobject.Object, name string)
 	// ParentChildRemoved calls the default implementations of the child_removed virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- child gobject.Object: the removed child 
@@ -12709,7 +12710,8 @@ type ChildProxy interface {
 	// Emits the #GstChildProxy::child-removed signal.
 	ParentChildRemoved(child gobject.Object, name string)
 	// ParentGetChildByIndex calls the default implementations of the get_child_by_index virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- index uint: the child's position in the child list 
@@ -12721,7 +12723,8 @@ type ChildProxy interface {
 	// Fetches a child by its number.
 	ParentGetChildByIndex(index uint) gobject.Object
 	// ParentGetChildByName calls the default implementations of the get_child_by_name virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: the child's name 
@@ -12737,7 +12740,8 @@ type ChildProxy interface {
 	// #GObjects, this methods needs to be overridden.
 	ParentGetChildByName(name string) gobject.Object
 	// ParentGetChildrenCount calls the default implementations of the get_children_count virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -12750,7 +12754,7 @@ var _ ChildProxy = (*ChildProxyInstance)(nil)
 
 func unsafeWrapChildProxy(base *gobject.ObjectInstance) *ChildProxyInstance {
 	return &ChildProxyInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -12780,13 +12784,13 @@ func UnsafeChildProxyFromGlibBorrow(c unsafe.Pointer) ChildProxy {
 // UnsafeChildProxyToGlibNone is used to convert the instance to it's C value GstChildProxy. This is used by the bindings internally.
 func UnsafeChildProxyToGlibNone(c ChildProxy) unsafe.Pointer {
 	i := c.upcastToGstChildProxy()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeChildProxyToGlibFull is used to convert the instance to it's C value GstChildProxy, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeChildProxyToGlibFull(c ChildProxy) unsafe.Pointer {
 	i := c.upcastToGstChildProxy()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // ChildAdded wraps gst_child_proxy_child_added
@@ -13016,20 +13020,21 @@ func (object *ChildProxyInstance) Lookup(name string) (gobject.Object, *gobject.
 //
 // Will be emitted after the @object was added to the @child_proxy.
 func (o *ChildProxyInstance) ConnectChildAdded(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
-	return o.Connect("child-added", fn)
+	return o.Instance.Connect("child-added", fn)
 }
 
 // ConnectChildRemoved connects the provided callback to the "child-removed" signal
 //
 // Will be emitted after the @object was removed from the @child_proxy.
 func (o *ChildProxyInstance) ConnectChildRemoved(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
-	return o.Connect("child-removed", fn)
+	return o.Instance.Connect("child-removed", fn)
 }
 
 // ChildProxyOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type ChildProxyOverrides[Instance ChildProxy] struct {
-	// ChildAdded allows you to override the implementation of the virtual method child_added.
+	// // ChildAdded allows you to override the implementation of the virtual method child_added.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- child gobject.Object: the newly added child 
@@ -13037,7 +13042,8 @@ type ChildProxyOverrides[Instance ChildProxy] struct {
 	//
 	// Emits the #GstChildProxy::child-added signal.
 	ChildAdded func(Instance, gobject.Object, string)
-	// ChildRemoved allows you to override the implementation of the virtual method child_removed.
+	// // ChildRemoved allows you to override the implementation of the virtual method child_removed.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- child gobject.Object: the removed child 
@@ -13045,7 +13051,8 @@ type ChildProxyOverrides[Instance ChildProxy] struct {
 	//
 	// Emits the #GstChildProxy::child-removed signal.
 	ChildRemoved func(Instance, gobject.Object, string)
-	// GetChildByIndex allows you to override the implementation of the virtual method get_child_by_index.
+	// // GetChildByIndex allows you to override the implementation of the virtual method get_child_by_index.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- index uint: the child's position in the child list 
@@ -13056,7 +13063,8 @@ type ChildProxyOverrides[Instance ChildProxy] struct {
 	//
 	// Fetches a child by its number.
 	GetChildByIndex func(Instance, uint) gobject.Object
-	// GetChildByName allows you to override the implementation of the virtual method get_child_by_name.
+	// // GetChildByName allows you to override the implementation of the virtual method get_child_by_name.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: the child's name 
@@ -13071,7 +13079,8 @@ type ChildProxyOverrides[Instance ChildProxy] struct {
 	// together with gst_object_get_name(). If the interface is to be used with
 	// #GObjects, this methods needs to be overridden.
 	GetChildByName func(Instance, string) gobject.Object
-	// GetChildrenCount allows you to override the implementation of the virtual method get_children_count.
+	// // GetChildrenCount allows you to override the implementation of the virtual method get_children_count.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -13193,7 +13202,8 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 }
 
 // ParentChildAdded calls the default implementations of the child_added virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- child gobject.Object: the newly added child 
@@ -13218,7 +13228,8 @@ func (parent *ChildProxyInstance) ParentChildAdded(child gobject.Object, name st
 }
 
 // ParentChildRemoved calls the default implementations of the child_removed virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- child gobject.Object: the removed child 
@@ -13243,7 +13254,8 @@ func (parent *ChildProxyInstance) ParentChildRemoved(child gobject.Object, name 
 }
 
 // ParentGetChildByIndex calls the default implementations of the get_child_by_index virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- index uint: the child's position in the child list 
@@ -13276,7 +13288,8 @@ func (parent *ChildProxyInstance) ParentGetChildByIndex(index uint) gobject.Obje
 }
 
 // ParentGetChildByName calls the default implementations of the get_child_by_name virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- name string: the child's name 
@@ -13314,7 +13327,8 @@ func (parent *ChildProxyInstance) ParentGetChildByName(name string) gobject.Obje
 }
 
 // ParentGetChildrenCount calls the default implementations of the get_children_count virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -13339,7 +13353,7 @@ func (parent *ChildProxyInstance) ParentGetChildrenCount() uint {
 // PresetInstance is the instance type used by all types implementing GstPreset. It is used internally by the bindings. Users should use the interface [Preset] instead.
 type PresetInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ Preset = (*PresetInstance)(nil)
@@ -13370,7 +13384,6 @@ var _ Preset = (*PresetInstance)(nil)
 // where to find presets through the GST_PRESET_PATH environment variable.
 // Presets found in those paths will be considered as "app presets".
 type Preset interface {
-	gobject.Object
 	upcastToGstPreset() *PresetInstance
 
 	// DeletePreset wraps gst_preset_delete_preset
@@ -13483,7 +13496,8 @@ type Preset interface {
 	// chain up virtual methods:
 
 	// ParentDeletePreset calls the default implementations of the delete_preset virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name to remove 
@@ -13495,7 +13509,8 @@ type Preset interface {
 	// Delete the given preset.
 	ParentDeletePreset(name string) bool
 	// ParentGetMeta calls the default implementations of the get_meta virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name 
@@ -13510,7 +13525,8 @@ type Preset interface {
 	// something like e.g. "comment". Returned values need to be released when done.
 	ParentGetMeta(name string, tag string) (string, bool)
 	// ParentGetPresetNames calls the default implementations of the get_preset_names virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -13518,7 +13534,8 @@ type Preset interface {
 	// Get a copy of preset names as a %NULL terminated string array.
 	ParentGetPresetNames() []string
 	// ParentGetPropertyNames calls the default implementations of the get_property_names virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -13526,7 +13543,8 @@ type Preset interface {
 	// Get a the names of the GObject properties that can be used for presets.
 	ParentGetPropertyNames() []string
 	// ParentLoadPreset calls the default implementations of the load_preset virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name to load 
@@ -13538,7 +13556,8 @@ type Preset interface {
 	// Load the given preset.
 	ParentLoadPreset(name string) bool
 	// ParentRenamePreset calls the default implementations of the rename_preset virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- oldName string: current preset name 
@@ -13552,7 +13571,8 @@ type Preset interface {
 	// overwritten.
 	ParentRenamePreset(oldName string, newName string) bool
 	// ParentSavePreset calls the default implementations of the save_preset virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name to save 
@@ -13565,7 +13585,8 @@ type Preset interface {
 	// is already a preset by this @name it will be overwritten.
 	ParentSavePreset(name string) bool
 	// ParentSetMeta calls the default implementations of the set_meta virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name 
@@ -13586,7 +13607,7 @@ var _ Preset = (*PresetInstance)(nil)
 
 func unsafeWrapPreset(base *gobject.ObjectInstance) *PresetInstance {
 	return &PresetInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -13616,13 +13637,13 @@ func UnsafePresetFromGlibBorrow(c unsafe.Pointer) Preset {
 // UnsafePresetToGlibNone is used to convert the instance to it's C value GstPreset. This is used by the bindings internally.
 func UnsafePresetToGlibNone(c Preset) unsafe.Pointer {
 	i := c.upcastToGstPreset()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafePresetToGlibFull is used to convert the instance to it's C value GstPreset, while removeing the finalizer. This is used by the bindings internally.
 func UnsafePresetToGlibFull(c Preset) unsafe.Pointer {
 	i := c.upcastToGstPreset()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // PresetGetAppDir wraps gst_preset_get_app_dir
@@ -13776,7 +13797,7 @@ func (preset *PresetInstance) GetPresetNames() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -13801,7 +13822,7 @@ func (preset *PresetInstance) GetPropertyNames() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -13987,7 +14008,8 @@ func (preset *PresetInstance) SetMeta(name string, tag string, value string) boo
 // PresetOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type PresetOverrides[Instance Preset] struct {
-	// DeletePreset allows you to override the implementation of the virtual method delete_preset.
+	// // DeletePreset allows you to override the implementation of the virtual method delete_preset.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name to remove 
@@ -13998,7 +14020,8 @@ type PresetOverrides[Instance Preset] struct {
 	//
 	// Delete the given preset.
 	DeletePreset func(Instance, string) bool
-	// GetMeta allows you to override the implementation of the virtual method get_meta.
+	// // GetMeta allows you to override the implementation of the virtual method get_meta.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name 
@@ -14012,21 +14035,24 @@ type PresetOverrides[Instance Preset] struct {
 	// Gets the @value for an existing meta data @tag. Meta data @tag names can be
 	// something like e.g. "comment". Returned values need to be released when done.
 	GetMeta func(Instance, string, string) (string, bool)
-	// GetPresetNames allows you to override the implementation of the virtual method get_preset_names.
+	// // GetPresetNames allows you to override the implementation of the virtual method get_preset_names.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
 	//
 	// Get a copy of preset names as a %NULL terminated string array.
 	GetPresetNames func(Instance) []string
-	// GetPropertyNames allows you to override the implementation of the virtual method get_property_names.
+	// // GetPropertyNames allows you to override the implementation of the virtual method get_property_names.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
 	//
 	// Get a the names of the GObject properties that can be used for presets.
 	GetPropertyNames func(Instance) []string
-	// LoadPreset allows you to override the implementation of the virtual method load_preset.
+	// // LoadPreset allows you to override the implementation of the virtual method load_preset.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name to load 
@@ -14037,7 +14063,8 @@ type PresetOverrides[Instance Preset] struct {
 	//
 	// Load the given preset.
 	LoadPreset func(Instance, string) bool
-	// RenamePreset allows you to override the implementation of the virtual method rename_preset.
+	// // RenamePreset allows you to override the implementation of the virtual method rename_preset.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- oldName string: current preset name 
@@ -14050,7 +14077,8 @@ type PresetOverrides[Instance Preset] struct {
 	// Renames a preset. If there is already a preset by the @new_name it will be
 	// overwritten.
 	RenamePreset func(Instance, string, string) bool
-	// SavePreset allows you to override the implementation of the virtual method save_preset.
+	// // SavePreset allows you to override the implementation of the virtual method save_preset.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name to save 
@@ -14062,7 +14090,8 @@ type PresetOverrides[Instance Preset] struct {
 	// Save the current object settings as a preset under the given name. If there
 	// is already a preset by this @name it will be overwritten.
 	SavePreset func(Instance, string) bool
-	// SetMeta allows you to override the implementation of the virtual method set_meta.
+	// // SetMeta allows you to override the implementation of the virtual method set_meta.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string: preset name 
@@ -14151,7 +14180,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 
 				_ = goret
 				_ = cret
-				panic("unimplemented conversion of []string (gchar**)")
+				panic("unimplemented conversion of []string (**C.gchar)")
 
 				return cret
 			},
@@ -14173,7 +14202,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 
 				_ = goret
 				_ = cret
-				panic("unimplemented conversion of []string (gchar**)")
+				panic("unimplemented conversion of []string (**C.gchar)")
 
 				return cret
 			},
@@ -14286,7 +14315,8 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 }
 
 // ParentDeletePreset calls the default implementations of the delete_preset virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- name string: preset name to remove 
@@ -14320,7 +14350,8 @@ func (preset *PresetInstance) ParentDeletePreset(name string) bool {
 }
 
 // ParentGetMeta calls the default implementations of the get_meta virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- name string: preset name 
@@ -14365,7 +14396,8 @@ func (preset *PresetInstance) ParentGetMeta(name string, tag string) (string, bo
 }
 
 // ParentGetPresetNames calls the default implementations of the get_preset_names virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -14384,13 +14416,14 @@ func (preset *PresetInstance) ParentGetPresetNames() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
 
 // ParentGetPropertyNames calls the default implementations of the get_property_names virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -14409,13 +14442,14 @@ func (preset *PresetInstance) ParentGetPropertyNames() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
 
 // ParentLoadPreset calls the default implementations of the load_preset virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- name string: preset name to load 
@@ -14449,7 +14483,8 @@ func (preset *PresetInstance) ParentLoadPreset(name string) bool {
 }
 
 // ParentRenamePreset calls the default implementations of the rename_preset virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- oldName string: current preset name 
@@ -14489,7 +14524,8 @@ func (preset *PresetInstance) ParentRenamePreset(oldName string, newName string)
 }
 
 // ParentSavePreset calls the default implementations of the save_preset virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- name string: preset name to save 
@@ -14524,7 +14560,8 @@ func (preset *PresetInstance) ParentSavePreset(name string) bool {
 }
 
 // ParentSetMeta calls the default implementations of the set_meta virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- name string: preset name 
@@ -14574,7 +14611,7 @@ func (preset *PresetInstance) ParentSetMeta(name string, tag string, value strin
 // URIHandlerInstance is the instance type used by all types implementing GstURIHandler. It is used internally by the bindings. Users should use the interface [URIHandler] instead.
 type URIHandlerInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ URIHandler = (*URIHandlerInstance)(nil)
@@ -14590,7 +14627,6 @@ var _ URIHandler = (*URIHandlerInstance)(nil)
 // 
 // Source and Sink plugins should implement this interface when possible.
 type URIHandler interface {
-	gobject.Object
 	upcastToGstURIHandler() *URIHandlerInstance
 
 	// GetProtocols wraps gst_uri_handler_get_protocols
@@ -14635,7 +14671,8 @@ type URIHandler interface {
 	// chain up virtual methods:
 
 	// ParentGetURI calls the default implementations of the get_uri virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -14643,7 +14680,8 @@ type URIHandler interface {
 	// Gets the currently handled URI.
 	ParentGetURI() string
 	// ParentSetURI calls the default implementations of the set_uri virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string: URI to set 
@@ -14661,7 +14699,7 @@ var _ URIHandler = (*URIHandlerInstance)(nil)
 
 func unsafeWrapURIHandler(base *gobject.ObjectInstance) *URIHandlerInstance {
 	return &URIHandlerInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -14691,13 +14729,13 @@ func UnsafeURIHandlerFromGlibBorrow(c unsafe.Pointer) URIHandler {
 // UnsafeURIHandlerToGlibNone is used to convert the instance to it's C value GstURIHandler. This is used by the bindings internally.
 func UnsafeURIHandlerToGlibNone(c URIHandler) unsafe.Pointer {
 	i := c.upcastToGstURIHandler()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeURIHandlerToGlibFull is used to convert the instance to it's C value GstURIHandler, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeURIHandlerToGlibFull(c URIHandler) unsafe.Pointer {
 	i := c.upcastToGstURIHandler()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // GetProtocols wraps gst_uri_handler_get_protocols
@@ -14721,7 +14759,7 @@ func (handler *URIHandlerInstance) GetProtocols() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (const gchar* const*)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -14817,14 +14855,16 @@ func (handler *URIHandlerInstance) SetURI(uri string) (bool, error) {
 // URIHandlerOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type URIHandlerOverrides[Instance URIHandler] struct {
-	// GetURI allows you to override the implementation of the virtual method get_uri.
+	// // GetURI allows you to override the implementation of the virtual method get_uri.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	//
 	// Gets the currently handled URI.
 	GetURI func(Instance) string
-	// SetURI allows you to override the implementation of the virtual method set_uri.
+	// // SetURI allows you to override the implementation of the virtual method set_uri.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string: URI to set 
@@ -14893,7 +14933,8 @@ func UnsafeApplyURIHandlerOverrides[Instance URIHandler](gclass unsafe.Pointer, 
 }
 
 // ParentGetURI calls the default implementations of the get_uri virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -14919,7 +14960,8 @@ func (handler *URIHandlerInstance) ParentGetURI() string {
 }
 
 // ParentSetURI calls the default implementations of the set_uri virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- uri string: URI to set 
@@ -14961,7 +15003,7 @@ func (handler *URIHandlerInstance) ParentSetURI(uri string) (bool, error) {
 // TagSetterInstance is the instance type used by all types implementing GstTagSetter. It is used internally by the bindings. Users should use the interface [TagSetter] instead.
 type TagSetterInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ TagSetter = (*TagSetterInstance)(nil)
@@ -15010,7 +15052,6 @@ var _ TagSetter = (*TagSetterInstance)(nil)
 // ]|
 type TagSetter interface {
 	TagSetterExtManual // handwritten functions
-	gobject.Object
 	upcastToGstTagSetter() *TagSetterInstance
 
 	// GetTagList wraps gst_tag_setter_get_tag_list
@@ -15065,7 +15106,7 @@ var _ TagSetter = (*TagSetterInstance)(nil)
 
 func unsafeWrapTagSetter(base *gobject.ObjectInstance) *TagSetterInstance {
 	return &TagSetterInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -15095,13 +15136,13 @@ func UnsafeTagSetterFromGlibBorrow(c unsafe.Pointer) TagSetter {
 // UnsafeTagSetterToGlibNone is used to convert the instance to it's C value GstTagSetter. This is used by the bindings internally.
 func UnsafeTagSetterToGlibNone(c TagSetter) unsafe.Pointer {
 	i := c.upcastToGstTagSetter()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeTagSetterToGlibFull is used to convert the instance to it's C value GstTagSetter, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeTagSetterToGlibFull(c TagSetter) unsafe.Pointer {
 	i := c.upcastToGstTagSetter()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // GetTagList wraps gst_tag_setter_get_tag_list
@@ -15226,7 +15267,7 @@ func UnsafeApplyTagSetterOverrides[Instance TagSetter](gclass unsafe.Pointer, ov
 // TocSetterInstance is the instance type used by all types implementing GstTocSetter. It is used internally by the bindings. Users should use the interface [TocSetter] instead.
 type TocSetterInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ TocSetter = (*TocSetterInstance)(nil)
@@ -15248,7 +15289,6 @@ var _ TocSetter = (*TocSetterInstance)(nil)
 // by getting extend UID for that (you can use gst_toc_find_entry() to retrieve it)
 // with any TOC entries received from downstream.
 type TocSetter interface {
-	gobject.Object
 	upcastToGstTocSetter() *TocSetterInstance
 
 	// GetToc wraps gst_toc_setter_get_toc
@@ -15282,7 +15322,7 @@ var _ TocSetter = (*TocSetterInstance)(nil)
 
 func unsafeWrapTocSetter(base *gobject.ObjectInstance) *TocSetterInstance {
 	return &TocSetterInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -15312,13 +15352,13 @@ func UnsafeTocSetterFromGlibBorrow(c unsafe.Pointer) TocSetter {
 // UnsafeTocSetterToGlibNone is used to convert the instance to it's C value GstTocSetter. This is used by the bindings internally.
 func UnsafeTocSetterToGlibNone(c TocSetter) unsafe.Pointer {
 	i := c.upcastToGstTocSetter()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeTocSetterToGlibFull is used to convert the instance to it's C value GstTocSetter, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeTocSetterToGlibFull(c TocSetter) unsafe.Pointer {
 	i := c.upcastToGstTocSetter()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // GetToc wraps gst_toc_setter_get_toc
@@ -15717,7 +15757,8 @@ type Object interface {
 	// chain up virtual methods:
 
 	// ParentDeepNotify calls the default implementations of the deep_notify virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- orig Object 
@@ -15797,7 +15838,7 @@ func ObjectDefaultDeepNotify(object gobject.Object, orig Object, pspec *gobject.
 	carg3 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(pspec))
 	_ = excludedProps
 	_ = carg4
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	C.gst_object_default_deep_notify(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(object)
@@ -16420,7 +16461,8 @@ type ObjectOverrides[Instance Object] struct {
 	// gobject.InitiallyUnownedOverrides allows you to override virtual methods from the parent class gobject.InitiallyUnowned
 	gobject.InitiallyUnownedOverrides[Instance]
 
-	// DeepNotify allows you to override the implementation of the virtual method deep_notify.
+	// // DeepNotify allows you to override the implementation of the virtual method deep_notify.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- orig Object 
@@ -16458,7 +16500,8 @@ func UnsafeApplyObjectOverrides[Instance Object](gclass unsafe.Pointer, override
 }
 
 // ParentDeepNotify calls the default implementations of the deep_notify virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- orig Object 
@@ -17610,13 +17653,15 @@ type Pad interface {
 	// chain up virtual methods:
 
 	// ParentLinked calls the default implementations of the linked virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- peer Pad 
 	ParentLinked(peer Pad)
 	// ParentUnlinked calls the default implementations of the unlinked virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- peer Pad 
@@ -20109,12 +20154,14 @@ type PadOverrides[Instance Pad] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// Linked allows you to override the implementation of the virtual method linked.
+	// // Linked allows you to override the implementation of the virtual method linked.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- peer Pad 
 	Linked func(Instance, Pad)
-	// Unlinked allows you to override the implementation of the virtual method unlinked.
+	// // Unlinked allows you to override the implementation of the virtual method unlinked.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- peer Pad 
@@ -20164,7 +20211,8 @@ func UnsafeApplyPadOverrides[Instance Pad](gclass unsafe.Pointer, overrides PadO
 }
 
 // ParentLinked calls the default implementations of the linked virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- peer Pad 
@@ -20182,7 +20230,8 @@ func (pad *PadInstance) ParentLinked(peer Pad) {
 }
 
 // ParentUnlinked calls the default implementations of the unlinked virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- peer Pad 
@@ -20342,7 +20391,8 @@ type PadTemplate interface {
 	// chain up virtual methods:
 
 	// ParentPadCreated calls the default implementations of the pad_created virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad: the #GstPad that created it 
@@ -20617,7 +20667,8 @@ type PadTemplateOverrides[Instance PadTemplate] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// PadCreated allows you to override the implementation of the virtual method pad_created.
+	// // PadCreated allows you to override the implementation of the virtual method pad_created.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad: the #GstPad that created it 
@@ -20652,7 +20703,8 @@ func UnsafeApplyPadTemplateOverrides[Instance PadTemplate](gclass unsafe.Pointer
 }
 
 // ParentPadCreated calls the default implementations of the pad_created virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- pad Pad: the #GstPad that created it 
@@ -21180,13 +21232,13 @@ func (plugin *PluginInstance) AddDependency(envVars []string, paths []string, na
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 	_ = envVars
 	_ = carg1
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 	_ = paths
 	_ = carg2
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 	_ = names
 	_ = carg3
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 	carg4 = C.GstPluginDependencyFlags(flags)
 
 	C.gst_plugin_add_dependency(carg0, carg1, carg2, carg3, carg4)
@@ -21547,7 +21599,7 @@ func (plugin *PluginInstance) GetStatusErrors() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -21570,7 +21622,7 @@ func (plugin *PluginInstance) GetStatusInfos() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -21593,7 +21645,7 @@ func (plugin *PluginInstance) GetStatusWarnings() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -23088,7 +23140,7 @@ func (registry *RegistryInstance) GetPluginList() []Plugin {
 // If found, plugin is reffed.
 func (registry *RegistryInstance) Lookup(filename string) Plugin {
 	var carg0 *C.GstRegistry // in, none, converted
-	var carg1 *C.char        // in, none, string, casted *C.gchar
+	var carg1 *C.char        // in, none, string
 	var cret  *C.GstPlugin   // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
@@ -23121,7 +23173,7 @@ func (registry *RegistryInstance) Lookup(filename string) Plugin {
 // Find a #GstPluginFeature with @name in @registry.
 func (registry *RegistryInstance) LookupFeature(name string) PluginFeature {
 	var carg0 *C.GstRegistry      // in, none, converted
-	var carg1 *C.char             // in, none, string, casted *C.gchar
+	var carg1 *C.char             // in, none, string
 	var cret  *C.GstPluginFeature // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
@@ -23836,7 +23888,8 @@ type StreamCollection interface {
 	// chain up virtual methods:
 
 	// ParentStreamNotify calls the default implementations of the stream_notify virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream Stream 
@@ -24047,7 +24100,8 @@ type StreamCollectionOverrides[Instance StreamCollection] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// StreamNotify allows you to override the implementation of the virtual method stream_notify.
+	// // StreamNotify allows you to override the implementation of the virtual method stream_notify.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream Stream 
@@ -24085,7 +24139,8 @@ func UnsafeApplyStreamCollectionOverrides[Instance StreamCollection](gclass unsa
 }
 
 // ParentStreamNotify calls the default implementations of the stream_notify virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- stream Stream 
@@ -24717,7 +24772,7 @@ type TaskPool interface {
 	// chain up virtual methods:
 
 	// ParentCleanup calls the default implementations of the cleanup virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Wait for all tasks to be stopped. This is mainly used internally
 	// to ensure proper cleanup of internal data structures in test suites.
@@ -24725,7 +24780,8 @@ type TaskPool interface {
 	// MT safe.
 	ParentCleanup()
 	// ParentPrepare calls the default implementations of the prepare virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- _goerr error (nullable): an error 
@@ -24847,14 +24903,15 @@ type TaskPoolOverrides[Instance TaskPool] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// Cleanup allows you to override the implementation of the virtual method cleanup.
+	// // Cleanup allows you to override the implementation of the virtual method cleanup.
 	//
 	// Wait for all tasks to be stopped. This is mainly used internally
 	// to ensure proper cleanup of internal data structures in test suites.
 	// 
 	// MT safe.
 	Cleanup func(Instance)
-	// Prepare allows you to override the implementation of the virtual method prepare.
+	// // Prepare allows you to override the implementation of the virtual method prepare.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- _goerr error (nullable): an error 
@@ -24907,7 +24964,7 @@ func UnsafeApplyTaskPoolOverrides[Instance TaskPool](gclass unsafe.Pointer, over
 }
 
 // ParentCleanup calls the default implementations of the cleanup virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Wait for all tasks to be stopped. This is mainly used internally
 // to ensure proper cleanup of internal data structures in test suites.
@@ -24923,7 +24980,8 @@ func (pool *TaskPoolInstance) ParentCleanup() {
 }
 
 // ParentPrepare calls the default implementations of the prepare virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- _goerr error (nullable): an error 
@@ -25557,7 +25615,7 @@ func (factory *TypeFindFactoryInstance) GetExtensions() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (const gchar* const*)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -25657,7 +25715,8 @@ type Allocator interface {
 	// chain up virtual methods:
 
 	// ParentAlloc calls the default implementations of the alloc virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- size uint: size of the visible memory area 
@@ -25684,7 +25743,8 @@ type Allocator interface {
 	// use an alignment of 7.
 	ParentAlloc(size uint, params *AllocationParams) *Memory
 	// ParentFree calls the default implementations of the free virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- memory *Memory: the memory to free 
@@ -25879,7 +25939,8 @@ type AllocatorOverrides[Instance Allocator] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// Alloc allows you to override the implementation of the virtual method alloc.
+	// // Alloc allows you to override the implementation of the virtual method alloc.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- size uint: size of the visible memory area 
@@ -25905,7 +25966,8 @@ type AllocatorOverrides[Instance Allocator] struct {
 	// the amount of bytes to align to. For example, to align to 8 bytes,
 	// use an alignment of 7.
 	Alloc func(Instance, uint, *AllocationParams) *Memory
-	// Free allows you to override the implementation of the virtual method free.
+	// // Free allows you to override the implementation of the virtual method free.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- memory *Memory: the memory to free 
@@ -25968,7 +26030,8 @@ func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, ov
 }
 
 // ParentAlloc calls the default implementations of the alloc virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- size uint: size of the visible memory area 
@@ -26021,7 +26084,8 @@ func (allocator *AllocatorInstance) ParentAlloc(size uint, params *AllocationPar
 }
 
 // ParentFree calls the default implementations of the free virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- memory *Memory: the memory to free 
@@ -26244,7 +26308,8 @@ type BufferPool interface {
 	// chain up virtual methods:
 
 	// ParentAcquireBuffer calls the default implementations of the acquire_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- params *BufferPoolAcquireParams (nullable): parameters. 
@@ -26262,7 +26327,8 @@ type BufferPool interface {
 	// @params can contain optional parameters to influence the allocation.
 	ParentAcquireBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn)
 	// ParentAllocBuffer calls the default implementations of the alloc_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- params *BufferPoolAcquireParams (nullable): parameters. 
@@ -26280,17 +26346,18 @@ type BufferPool interface {
 	// The buffer should have the #GST_BUFFER_FLAG_TAG_MEMORY cleared.
 	ParentAllocBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn)
 	// ParentFlushStart calls the default implementations of the flush_start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Enter the flushing state.
 	ParentFlushStart()
 	// ParentFlushStop calls the default implementations of the flush_stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Leave the flushing state.
 	ParentFlushStop()
 	// ParentFreeBuffer calls the default implementations of the free_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *Buffer: the #GstBuffer to free 
@@ -26298,7 +26365,8 @@ type BufferPool interface {
 	// Free a buffer. The default implementation unrefs the buffer.
 	ParentFreeBuffer(buffer *Buffer)
 	// ParentGetOptions calls the default implementations of the get_options virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -26308,7 +26376,8 @@ type BufferPool interface {
 	// gst_buffer_pool_config_add_option().
 	ParentGetOptions() []string
 	// ParentReleaseBuffer calls the default implementations of the release_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *Buffer: a #GstBuffer 
@@ -26320,7 +26389,8 @@ type BufferPool interface {
 	// disappears.
 	ParentReleaseBuffer(buffer *Buffer)
 	// ParentResetBuffer calls the default implementations of the reset_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *Buffer: the #GstBuffer to reset 
@@ -26333,7 +26403,8 @@ type BufferPool interface {
 	// restore the memory and clear the #GST_BUFFER_FLAG_TAG_MEMORY again.
 	ParentResetBuffer(buffer *Buffer)
 	// ParentSetConfig calls the default implementations of the set_config virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- config *Structure: a #GstStructure 
@@ -26360,7 +26431,8 @@ type BufferPool interface {
 	// This function takes ownership of @config.
 	ParentSetConfig(config *Structure) bool
 	// ParentStart calls the default implementations of the start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -26372,7 +26444,8 @@ type BufferPool interface {
 	// if they don't want min-buffers based preallocation.
 	ParentStart() bool
 	// ParentStop calls the default implementations of the stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -26502,7 +26575,7 @@ func BufferPoolConfigGetAllocator(config *Structure) (Allocator, AllocationParam
 	}
 	_ = params
 	_ = carg3
-	panic("unimplemented conversion of AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of AllocationParams (C.GstAllocationParams)")
 	if cret != 0 {
 		goret = true
 	}
@@ -26869,7 +26942,7 @@ func (pool *BufferPoolInstance) GetOptions() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -27073,7 +27146,8 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// AcquireBuffer allows you to override the implementation of the virtual method acquire_buffer.
+	// // AcquireBuffer allows you to override the implementation of the virtual method acquire_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- params *BufferPoolAcquireParams (nullable): parameters. 
@@ -27090,7 +27164,8 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// 
 	// @params can contain optional parameters to influence the allocation.
 	AcquireBuffer func(Instance, *BufferPoolAcquireParams) (*Buffer, FlowReturn)
-	// AllocBuffer allows you to override the implementation of the virtual method alloc_buffer.
+	// // AllocBuffer allows you to override the implementation of the virtual method alloc_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- params *BufferPoolAcquireParams (nullable): parameters. 
@@ -27107,22 +27182,24 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// not be removed from the buffer in #GstBufferPoolClass::reset_buffer.
 	// The buffer should have the #GST_BUFFER_FLAG_TAG_MEMORY cleared.
 	AllocBuffer func(Instance, *BufferPoolAcquireParams) (*Buffer, FlowReturn)
-	// FlushStart allows you to override the implementation of the virtual method flush_start.
+	// // FlushStart allows you to override the implementation of the virtual method flush_start.
 	//
 	// Enter the flushing state.
 	FlushStart func(Instance)
-	// FlushStop allows you to override the implementation of the virtual method flush_stop.
+	// // FlushStop allows you to override the implementation of the virtual method flush_stop.
 	//
 	// Leave the flushing state.
 	FlushStop func(Instance)
-	// FreeBuffer allows you to override the implementation of the virtual method free_buffer.
+	// // FreeBuffer allows you to override the implementation of the virtual method free_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *Buffer: the #GstBuffer to free 
 	//
 	// Free a buffer. The default implementation unrefs the buffer.
 	FreeBuffer func(Instance, *Buffer)
-	// GetOptions allows you to override the implementation of the virtual method get_options.
+	// // GetOptions allows you to override the implementation of the virtual method get_options.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -27131,7 +27208,8 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// @pool. An option would typically be enabled with
 	// gst_buffer_pool_config_add_option().
 	GetOptions func(Instance) []string
-	// ReleaseBuffer allows you to override the implementation of the virtual method release_buffer.
+	// // ReleaseBuffer allows you to override the implementation of the virtual method release_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *Buffer: a #GstBuffer 
@@ -27142,7 +27220,8 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// This function is usually called automatically when the last ref on @buffer
 	// disappears.
 	ReleaseBuffer func(Instance, *Buffer)
-	// ResetBuffer allows you to override the implementation of the virtual method reset_buffer.
+	// // ResetBuffer allows you to override the implementation of the virtual method reset_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *Buffer: the #GstBuffer to reset 
@@ -27154,7 +27233,8 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// #GST_BUFFER_FLAG_TAG_MEMORY was set, this function can also try to
 	// restore the memory and clear the #GST_BUFFER_FLAG_TAG_MEMORY again.
 	ResetBuffer func(Instance, *Buffer)
-	// SetConfig allows you to override the implementation of the virtual method set_config.
+	// // SetConfig allows you to override the implementation of the virtual method set_config.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- config *Structure: a #GstStructure 
@@ -27180,7 +27260,8 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// 
 	// This function takes ownership of @config.
 	SetConfig func(Instance, *Structure) bool
-	// Start allows you to override the implementation of the virtual method start.
+	// // Start allows you to override the implementation of the virtual method start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -27191,7 +27272,8 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// Subclasses do not need to chain up to the parent's default implementation
 	// if they don't want min-buffers based preallocation.
 	Start func(Instance) bool
-	// Stop allows you to override the implementation of the virtual method stop.
+	// // Stop allows you to override the implementation of the virtual method stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -27323,7 +27405,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 
 				_ = goret
 				_ = cret
-				panic("unimplemented conversion of []string (const gchar**)")
+				panic("unimplemented conversion of []string (**C.gchar)")
 
 				return cret
 			},
@@ -27434,7 +27516,8 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 }
 
 // ParentAcquireBuffer calls the default implementations of the acquire_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- params *BufferPoolAcquireParams (nullable): parameters. 
@@ -27478,7 +27561,8 @@ func (pool *BufferPoolInstance) ParentAcquireBuffer(params *BufferPoolAcquirePar
 }
 
 // ParentAllocBuffer calls the default implementations of the alloc_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- params *BufferPoolAcquireParams (nullable): parameters. 
@@ -27522,7 +27606,7 @@ func (pool *BufferPoolInstance) ParentAllocBuffer(params *BufferPoolAcquireParam
 }
 
 // ParentFlushStart calls the default implementations of the flush_start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Enter the flushing state.
 func (pool *BufferPoolInstance) ParentFlushStart() {
@@ -27535,7 +27619,7 @@ func (pool *BufferPoolInstance) ParentFlushStart() {
 }
 
 // ParentFlushStop calls the default implementations of the flush_stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Leave the flushing state.
 func (pool *BufferPoolInstance) ParentFlushStop() {
@@ -27548,7 +27632,8 @@ func (pool *BufferPoolInstance) ParentFlushStop() {
 }
 
 // ParentFreeBuffer calls the default implementations of the free_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *Buffer: the #GstBuffer to free 
@@ -27568,7 +27653,8 @@ func (pool *BufferPoolInstance) ParentFreeBuffer(buffer *Buffer) {
 }
 
 // ParentGetOptions calls the default implementations of the get_options virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -27589,13 +27675,14 @@ func (pool *BufferPoolInstance) ParentGetOptions() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
 
 // ParentReleaseBuffer calls the default implementations of the release_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *Buffer: a #GstBuffer 
@@ -27619,7 +27706,8 @@ func (pool *BufferPoolInstance) ParentReleaseBuffer(buffer *Buffer) {
 }
 
 // ParentResetBuffer calls the default implementations of the reset_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *Buffer: the #GstBuffer to reset 
@@ -27644,7 +27732,8 @@ func (pool *BufferPoolInstance) ParentResetBuffer(buffer *Buffer) {
 }
 
 // ParentSetConfig calls the default implementations of the set_config virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- config *Structure: a #GstStructure 
@@ -27692,7 +27781,8 @@ func (pool *BufferPoolInstance) ParentSetConfig(config *Structure) bool {
 }
 
 // ParentStart calls the default implementations of the start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -27721,7 +27811,8 @@ func (pool *BufferPoolInstance) ParentStart() bool {
 }
 
 // ParentStop calls the default implementations of the stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -28148,7 +28239,8 @@ type Bus interface {
 	// chain up virtual methods:
 
 	// ParentMessage calls the default implementations of the message virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: the message that has been posted asynchronously 
@@ -28156,7 +28248,8 @@ type Bus interface {
 	// A message has been posted on the bus.
 	ParentMessage(message *Message)
 	// ParentSyncMessage calls the default implementations of the sync_message virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: the message that has been posted synchronously 
@@ -28444,7 +28537,7 @@ func (bus *BusInstance) GetPollfd() glib.PollFD {
 
 	_ = fd
 	_ = carg1
-	panic("unimplemented conversion of glib.PollFD (GPollFD)")
+	panic("unimplemented conversion of glib.PollFD (C.GPollFD)")
 
 	return fd
 }
@@ -28862,14 +28955,16 @@ type BusOverrides[Instance Bus] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// Message allows you to override the implementation of the virtual method message.
+	// // Message allows you to override the implementation of the virtual method message.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: the message that has been posted asynchronously 
 	//
 	// A message has been posted on the bus.
 	Message func(Instance, *Message)
-	// SyncMessage allows you to override the implementation of the virtual method sync_message.
+	// // SyncMessage allows you to override the implementation of the virtual method sync_message.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: the message that has been posted synchronously 
@@ -28921,7 +29016,8 @@ func UnsafeApplyBusOverrides[Instance Bus](gclass unsafe.Pointer, overrides BusO
 }
 
 // ParentMessage calls the default implementations of the message virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- message *Message: the message that has been posted asynchronously 
@@ -28941,7 +29037,8 @@ func (bus *BusInstance) ParentMessage(message *Message) {
 }
 
 // ParentSyncMessage calls the default implementations of the sync_message virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- message *Message: the message that has been posted synchronously 
@@ -29445,7 +29542,8 @@ type Clock interface {
 	// chain up virtual methods:
 
 	// ParentChangeResolution calls the default implementations of the change_resolution virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- oldResolution ClockTime: the previous resolution 
@@ -29459,7 +29557,8 @@ type Clock interface {
 	// be acceptable.
 	ParentChangeResolution(oldResolution ClockTime, newResolution ClockTime) ClockTime
 	// ParentGetInternalTime calls the default implementations of the get_internal_time virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -29468,7 +29567,8 @@ type Clock interface {
 	// unadjusted for the offset and the rate.
 	ParentGetInternalTime() ClockTime
 	// ParentGetResolution calls the default implementations of the get_resolution virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -29477,7 +29577,8 @@ type Clock interface {
 	// of the values returned by gst_clock_get_time().
 	ParentGetResolution() ClockTime
 	// ParentUnschedule calls the default implementations of the unschedule virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- entry *ClockEntry: the entry to unschedule 
@@ -29485,7 +29586,8 @@ type Clock interface {
 	// Unblock a blocking or async wait operation.
 	ParentUnschedule(entry *ClockEntry)
 	// ParentWait calls the default implementations of the wait virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- entry *ClockEntry: the entry to wait on 
@@ -29499,7 +29601,8 @@ type Clock interface {
 	// the jitter.
 	ParentWait(entry *ClockEntry) (ClockTimeDiff, ClockReturn)
 	// ParentWaitAsync calls the default implementations of the wait_async virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- entry *ClockEntry: the entry to wait on 
@@ -30644,7 +30747,8 @@ type ClockOverrides[Instance Clock] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// ChangeResolution allows you to override the implementation of the virtual method change_resolution.
+	// // ChangeResolution allows you to override the implementation of the virtual method change_resolution.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- oldResolution ClockTime: the previous resolution 
@@ -30657,7 +30761,8 @@ type ClockOverrides[Instance Clock] struct {
 	// Change the resolution of the clock. Not all values might
 	// be acceptable.
 	ChangeResolution func(Instance, ClockTime, ClockTime) ClockTime
-	// GetInternalTime allows you to override the implementation of the virtual method get_internal_time.
+	// // GetInternalTime allows you to override the implementation of the virtual method get_internal_time.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -30665,7 +30770,8 @@ type ClockOverrides[Instance Clock] struct {
 	// Gets the current internal time of the given clock. The time is returned
 	// unadjusted for the offset and the rate.
 	GetInternalTime func(Instance) ClockTime
-	// GetResolution allows you to override the implementation of the virtual method get_resolution.
+	// // GetResolution allows you to override the implementation of the virtual method get_resolution.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -30673,14 +30779,16 @@ type ClockOverrides[Instance Clock] struct {
 	// Gets the accuracy of the clock. The accuracy of the clock is the granularity
 	// of the values returned by gst_clock_get_time().
 	GetResolution func(Instance) ClockTime
-	// Unschedule allows you to override the implementation of the virtual method unschedule.
+	// // Unschedule allows you to override the implementation of the virtual method unschedule.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- entry *ClockEntry: the entry to unschedule 
 	//
 	// Unblock a blocking or async wait operation.
 	Unschedule func(Instance, *ClockEntry)
-	// Wait allows you to override the implementation of the virtual method wait.
+	// // Wait allows you to override the implementation of the virtual method wait.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- entry *ClockEntry: the entry to wait on 
@@ -30693,7 +30801,8 @@ type ClockOverrides[Instance Clock] struct {
 	// Perform a blocking wait on the given #GstClockEntry and return
 	// the jitter.
 	Wait func(Instance, *ClockEntry) (ClockTimeDiff, ClockReturn)
-	// WaitAsync allows you to override the implementation of the virtual method wait_async.
+	// // WaitAsync allows you to override the implementation of the virtual method wait_async.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- entry *ClockEntry: the entry to wait on 
@@ -30842,7 +30951,8 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 }
 
 // ParentChangeResolution calls the default implementations of the change_resolution virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- oldResolution ClockTime: the previous resolution 
@@ -30878,7 +30988,8 @@ func (clock *ClockInstance) ParentChangeResolution(oldResolution ClockTime, newR
 }
 
 // ParentGetInternalTime calls the default implementations of the get_internal_time virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -30902,7 +31013,8 @@ func (clock *ClockInstance) ParentGetInternalTime() ClockTime {
 }
 
 // ParentGetResolution calls the default implementations of the get_resolution virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -30926,7 +31038,8 @@ func (clock *ClockInstance) ParentGetResolution() ClockTime {
 }
 
 // ParentUnschedule calls the default implementations of the unschedule virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- entry *ClockEntry: the entry to unschedule 
@@ -30946,7 +31059,8 @@ func (clock *ClockInstance) ParentUnschedule(entry *ClockEntry) {
 }
 
 // ParentWait calls the default implementations of the wait virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- entry *ClockEntry: the entry to wait on 
@@ -30982,7 +31096,8 @@ func (clock *ClockInstance) ParentWait(entry *ClockEntry) (ClockTimeDiff, ClockR
 }
 
 // ParentWaitAsync calls the default implementations of the wait_async virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- entry *ClockEntry: the entry to wait on 
@@ -31096,7 +31211,8 @@ type ControlBinding interface {
 	// chain up virtual methods:
 
 	// ParentSyncValues calls the default implementations of the sync_values virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- object Object: the object that has controlled properties 
@@ -31256,7 +31372,8 @@ type ControlBindingOverrides[Instance ControlBinding] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// SyncValues allows you to override the implementation of the virtual method sync_values.
+	// // SyncValues allows you to override the implementation of the virtual method sync_values.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- object Object: the object that has controlled properties 
@@ -31312,7 +31429,8 @@ func UnsafeApplyControlBindingOverrides[Instance ControlBinding](gclass unsafe.P
 }
 
 // ParentSyncValues calls the default implementations of the sync_values virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- object Object: the object that has controlled properties 
@@ -31548,7 +31666,7 @@ func (self *ControlSourceInstance) ControlSourceGetValueArray(timestamp ClockTim
 	_ = values
 	_ = carg4
 	_ = carg3
-	panic("unimplemented conversion of []float64 (gdouble*)")
+	panic("unimplemented conversion of []float64 (*C.gdouble)")
 
 	cret = C.gst_control_source_get_value_array(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(self)
@@ -31722,7 +31840,8 @@ type Device interface {
 	// chain up virtual methods:
 
 	// ParentCreateElement calls the default implementations of the create_element virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string (nullable): name of new element, or %NULL to automatically
@@ -31736,7 +31855,8 @@ type Device interface {
 	// this device.
 	ParentCreateElement(name string) Element
 	// ParentReconfigureElement calls the default implementations of the reconfigure_element virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- element Element: a #GstElement 
@@ -31988,7 +32108,7 @@ func (device *DeviceInstance) HasClassesv(classes []string) bool {
 	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
 	_ = classes
 	_ = carg1
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_device_has_classesv(carg0, carg1)
 	runtime.KeepAlive(device)
@@ -32051,7 +32171,8 @@ type DeviceOverrides[Instance Device] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// CreateElement allows you to override the implementation of the virtual method create_element.
+	// // CreateElement allows you to override the implementation of the virtual method create_element.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- name string (nullable): name of new element, or %NULL to automatically
@@ -32064,7 +32185,8 @@ type DeviceOverrides[Instance Device] struct {
 	// Creates the element with all of the required parameters set to use
 	// this device.
 	CreateElement func(Instance, string) Element
-	// ReconfigureElement allows you to override the implementation of the virtual method reconfigure_element.
+	// // ReconfigureElement allows you to override the implementation of the virtual method reconfigure_element.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- element Element: a #GstElement 
@@ -32141,7 +32263,8 @@ func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, override
 }
 
 // ParentCreateElement calls the default implementations of the create_element virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- name string (nullable): name of new element, or %NULL to automatically
@@ -32179,7 +32302,8 @@ func (device *DeviceInstance) ParentCreateElement(name string) Element {
 }
 
 // ParentReconfigureElement calls the default implementations of the reconfigure_element virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- element Element: a #GstElement 
@@ -32603,7 +32727,7 @@ func (monitor *DeviceMonitorInstance) GetProviders() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -32950,7 +33074,8 @@ type DeviceProvider interface {
 	// chain up virtual methods:
 
 	// ParentStart calls the default implementations of the start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -32969,7 +33094,7 @@ type DeviceProvider interface {
 	// #GST_MESSAGE_DEVICE_ADDED messages and will no longer probe.
 	ParentStart() bool
 	// ParentStop calls the default implementations of the stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Decreases the use-count by one. If the use count reaches zero, this
 	// #GstDeviceProvider will stop providering the devices. This needs to be
@@ -33266,7 +33391,7 @@ func (provider *DeviceProviderInstance) GetHiddenProviders() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -33442,7 +33567,8 @@ type DeviceProviderOverrides[Instance DeviceProvider] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// Start allows you to override the implementation of the virtual method start.
+	// // Start allows you to override the implementation of the virtual method start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -33460,7 +33586,7 @@ type DeviceProviderOverrides[Instance DeviceProvider] struct {
 	// return the same objects that have been received from the
 	// #GST_MESSAGE_DEVICE_ADDED messages and will no longer probe.
 	Start func(Instance) bool
-	// Stop allows you to override the implementation of the virtual method stop.
+	// // Stop allows you to override the implementation of the virtual method stop.
 	//
 	// Decreases the use-count by one. If the use count reaches zero, this
 	// #GstDeviceProvider will stop providering the devices. This needs to be
@@ -33514,7 +33640,8 @@ func UnsafeApplyDeviceProviderOverrides[Instance DeviceProvider](gclass unsafe.P
 }
 
 // ParentStart calls the default implementations of the start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -33550,7 +33677,7 @@ func (provider *DeviceProviderInstance) ParentStart() bool {
 }
 
 // ParentStop calls the default implementations of the stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Decreases the use-count by one. If the use count reaches zero, this
 // #GstDeviceProvider will stop providering the devices. This needs to be
@@ -33925,7 +34052,7 @@ func (factory *DeviceProviderFactoryInstance) GetMetadataKeys() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -33986,7 +34113,7 @@ func (factory *DeviceProviderFactoryInstance) HasClassesv(classes []string) bool
 	carg0 = (*C.GstDeviceProviderFactory)(UnsafeDeviceProviderFactoryToGlibNone(factory))
 	_ = classes
 	_ = carg1
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_device_provider_factory_has_classesv(carg0, carg1)
 	runtime.KeepAlive(factory)
@@ -35259,7 +35386,8 @@ type Element interface {
 	// chain up virtual methods:
 
 	// ParentChangeState calls the default implementations of the change_state virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- transition StateChange: the requested transition 
@@ -35274,7 +35402,8 @@ type Element interface {
 	// internally.
 	ParentChangeState(transition StateChange) StateChangeReturn
 	// ParentGetState calls the default implementations of the get_state virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timeout ClockTime: a #GstClockTime to specify the timeout for an async
@@ -35310,7 +35439,7 @@ type Element interface {
 	// element to playing, the preroll will complete and playback will start.
 	ParentGetState(timeout ClockTime) (State, State, StateChangeReturn)
 	// ParentNoMorePads calls the default implementations of the no_more_pads virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Use this function to signal that the element does not expect any more pads
 	// to show up in the current pipeline. This function should be called whenever
@@ -35323,19 +35452,22 @@ type Element interface {
 	// MT safe.
 	ParentNoMorePads()
 	// ParentPadAdded calls the default implementations of the pad_added virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad 
 	ParentPadAdded(pad Pad)
 	// ParentPadRemoved calls the default implementations of the pad_removed virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad 
 	ParentPadRemoved(pad Pad)
 	// ParentPostMessage calls the default implementations of the post_message virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: a #GstMessage to post 
@@ -35349,7 +35481,8 @@ type Element interface {
 	// additional reference before calling.
 	ParentPostMessage(message *Message) bool
 	// ParentProvideClock calls the default implementations of the provide_clock virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Clock (nullable) 
@@ -35359,7 +35492,8 @@ type Element interface {
 	// &gt; state. Some elements can provide a clock in other states.
 	ParentProvideClock() Clock
 	// ParentQuery calls the default implementations of the query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *Query: the #GstQuery. 
@@ -35377,7 +35511,8 @@ type Element interface {
 	// Please note that some queries might need a running pipeline to work.
 	ParentQuery(query *Query) bool
 	// ParentReleasePad calls the default implementations of the release_pad virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad 
@@ -35385,7 +35520,8 @@ type Element interface {
 	// called when a request pad is to be released
 	ParentReleasePad(pad Pad)
 	// ParentRequestNewPad calls the default implementations of the request_new_pad virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- templ PadTemplate: a #GstPadTemplate of which we want a pad of. 
@@ -35405,7 +35541,8 @@ type Element interface {
 	// The pad should be released with gst_element_release_request_pad().
 	ParentRequestNewPad(templ PadTemplate, name string, caps *Caps) Pad
 	// ParentSendEvent calls the default implementations of the send_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *Event: the #GstEvent to send to the element. 
@@ -35424,7 +35561,8 @@ type Element interface {
 	// MT safe.
 	ParentSendEvent(event *Event) bool
 	// ParentSetBus calls the default implementations of the set_bus virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bus Bus (nullable): the #GstBus to set. 
@@ -35435,7 +35573,8 @@ type Element interface {
 	// MT safe.
 	ParentSetBus(bus Bus)
 	// ParentSetClock calls the default implementations of the set_clock virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- clock Clock (nullable): the #GstClock to set for the element. 
@@ -35449,7 +35588,8 @@ type Element interface {
 	// is unreffed.
 	ParentSetClock(clock Clock) bool
 	// ParentSetContext calls the default implementations of the set_context virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- _context *Context: the #GstContext to set. 
@@ -35459,7 +35599,8 @@ type Element interface {
 	// MT safe.
 	ParentSetContext(_context *Context)
 	// ParentSetState calls the default implementations of the set_state virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- state State: the element's new #GstState. 
@@ -35483,7 +35624,8 @@ type Element interface {
 	// #GST_STATE_CHANGE_ASYNC.
 	ParentSetState(state State) StateChangeReturn
 	// ParentStateChanged calls the default implementations of the state_changed virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- oldstate State 
@@ -38161,7 +38303,8 @@ type ElementOverrides[Instance Element] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
-	// ChangeState allows you to override the implementation of the virtual method change_state.
+	// // ChangeState allows you to override the implementation of the virtual method change_state.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- transition StateChange: the requested transition 
@@ -38175,7 +38318,8 @@ type ElementOverrides[Instance Element] struct {
 	// This function must be called with STATE_LOCK held and is mainly used
 	// internally.
 	ChangeState func(Instance, StateChange) StateChangeReturn
-	// GetState allows you to override the implementation of the virtual method get_state.
+	// // GetState allows you to override the implementation of the virtual method get_state.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timeout ClockTime: a #GstClockTime to specify the timeout for an async
@@ -38210,7 +38354,7 @@ type ElementOverrides[Instance Element] struct {
 	// an element is not producing data to complete the preroll. When setting the
 	// element to playing, the preroll will complete and playback will start.
 	GetState func(Instance, ClockTime) (State, State, StateChangeReturn)
-	// NoMorePads allows you to override the implementation of the virtual method no_more_pads.
+	// // NoMorePads allows you to override the implementation of the virtual method no_more_pads.
 	//
 	// Use this function to signal that the element does not expect any more pads
 	// to show up in the current pipeline. This function should be called whenever
@@ -38222,17 +38366,20 @@ type ElementOverrides[Instance Element] struct {
 	// 
 	// MT safe.
 	NoMorePads func(Instance)
-	// PadAdded allows you to override the implementation of the virtual method pad_added.
+	// // PadAdded allows you to override the implementation of the virtual method pad_added.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad 
 	PadAdded func(Instance, Pad)
-	// PadRemoved allows you to override the implementation of the virtual method pad_removed.
+	// // PadRemoved allows you to override the implementation of the virtual method pad_removed.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad 
 	PadRemoved func(Instance, Pad)
-	// PostMessage allows you to override the implementation of the virtual method post_message.
+	// // PostMessage allows you to override the implementation of the virtual method post_message.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: a #GstMessage to post 
@@ -38245,7 +38392,8 @@ type ElementOverrides[Instance Element] struct {
 	// message; if you want to access the message after this call, you should add an
 	// additional reference before calling.
 	PostMessage func(Instance, *Message) bool
-	// ProvideClock allows you to override the implementation of the virtual method provide_clock.
+	// // ProvideClock allows you to override the implementation of the virtual method provide_clock.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Clock (nullable) 
@@ -38254,7 +38402,8 @@ type ElementOverrides[Instance Element] struct {
 	// &gt; An element is only required to provide a clock in the PAUSED
 	// &gt; state. Some elements can provide a clock in other states.
 	ProvideClock func(Instance) Clock
-	// Query allows you to override the implementation of the virtual method query.
+	// // Query allows you to override the implementation of the virtual method query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *Query: the #GstQuery. 
@@ -38271,14 +38420,16 @@ type ElementOverrides[Instance Element] struct {
 	// 
 	// Please note that some queries might need a running pipeline to work.
 	Query func(Instance, *Query) bool
-	// ReleasePad allows you to override the implementation of the virtual method release_pad.
+	// // ReleasePad allows you to override the implementation of the virtual method release_pad.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad 
 	//
 	// called when a request pad is to be released
 	ReleasePad func(Instance, Pad)
-	// RequestNewPad allows you to override the implementation of the virtual method request_new_pad.
+	// // RequestNewPad allows you to override the implementation of the virtual method request_new_pad.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- templ PadTemplate: a #GstPadTemplate of which we want a pad of. 
@@ -38297,7 +38448,8 @@ type ElementOverrides[Instance Element] struct {
 	// 
 	// The pad should be released with gst_element_release_request_pad().
 	RequestNewPad func(Instance, PadTemplate, string, *Caps) Pad
-	// SendEvent allows you to override the implementation of the virtual method send_event.
+	// // SendEvent allows you to override the implementation of the virtual method send_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *Event: the #GstEvent to send to the element. 
@@ -38315,7 +38467,8 @@ type ElementOverrides[Instance Element] struct {
 	// 
 	// MT safe.
 	SendEvent func(Instance, *Event) bool
-	// SetBus allows you to override the implementation of the virtual method set_bus.
+	// // SetBus allows you to override the implementation of the virtual method set_bus.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bus Bus (nullable): the #GstBus to set. 
@@ -38325,7 +38478,8 @@ type ElementOverrides[Instance Element] struct {
 	// 
 	// MT safe.
 	SetBus func(Instance, Bus)
-	// SetClock allows you to override the implementation of the virtual method set_clock.
+	// // SetClock allows you to override the implementation of the virtual method set_clock.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- clock Clock (nullable): the #GstClock to set for the element. 
@@ -38338,7 +38492,8 @@ type ElementOverrides[Instance Element] struct {
 	// refcount on the clock. Any previously set clock on the object
 	// is unreffed.
 	SetClock func(Instance, Clock) bool
-	// SetContext allows you to override the implementation of the virtual method set_context.
+	// // SetContext allows you to override the implementation of the virtual method set_context.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- _context *Context: the #GstContext to set. 
@@ -38347,7 +38502,8 @@ type ElementOverrides[Instance Element] struct {
 	// 
 	// MT safe.
 	SetContext func(Instance, *Context)
-	// SetState allows you to override the implementation of the virtual method set_state.
+	// // SetState allows you to override the implementation of the virtual method set_state.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- state State: the element's new #GstState. 
@@ -38370,7 +38526,8 @@ type ElementOverrides[Instance Element] struct {
 	// State changes to %GST_STATE_READY or %GST_STATE_NULL never return
 	// #GST_STATE_CHANGE_ASYNC.
 	SetState func(Instance, State) StateChangeReturn
-	// StateChanged allows you to override the implementation of the virtual method state_changed.
+	// // StateChanged allows you to override the implementation of the virtual method state_changed.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- oldstate State 
@@ -38735,7 +38892,8 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 }
 
 // ParentChangeState calls the default implementations of the change_state virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- transition StateChange: the requested transition 
@@ -38769,7 +38927,8 @@ func (element *ElementInstance) ParentChangeState(transition StateChange) StateC
 }
 
 // ParentGetState calls the default implementations of the get_state virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- timeout ClockTime: a #GstClockTime to specify the timeout for an async
@@ -38830,7 +38989,7 @@ func (element *ElementInstance) ParentGetState(timeout ClockTime) (State, State,
 }
 
 // ParentNoMorePads calls the default implementations of the no_more_pads virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Use this function to signal that the element does not expect any more pads
 // to show up in the current pipeline. This function should be called whenever
@@ -38851,7 +39010,8 @@ func (element *ElementInstance) ParentNoMorePads() {
 }
 
 // ParentPadAdded calls the default implementations of the pad_added virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- pad Pad 
@@ -38869,7 +39029,8 @@ func (element *ElementInstance) ParentPadAdded(pad Pad) {
 }
 
 // ParentPadRemoved calls the default implementations of the pad_removed virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- pad Pad 
@@ -38887,7 +39048,8 @@ func (element *ElementInstance) ParentPadRemoved(pad Pad) {
 }
 
 // ParentPostMessage calls the default implementations of the post_message virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- message *Message: a #GstMessage to post 
@@ -38922,7 +39084,8 @@ func (element *ElementInstance) ParentPostMessage(message *Message) bool {
 }
 
 // ParentProvideClock calls the default implementations of the provide_clock virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret Clock (nullable) 
@@ -38949,7 +39112,8 @@ func (element *ElementInstance) ParentProvideClock() Clock {
 }
 
 // ParentQuery calls the default implementations of the query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *Query: the #GstQuery. 
@@ -38988,7 +39152,8 @@ func (element *ElementInstance) ParentQuery(query *Query) bool {
 }
 
 // ParentReleasePad calls the default implementations of the release_pad virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- pad Pad 
@@ -39008,7 +39173,8 @@ func (element *ElementInstance) ParentReleasePad(pad Pad) {
 }
 
 // ParentRequestNewPad calls the default implementations of the request_new_pad virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- templ PadTemplate: a #GstPadTemplate of which we want a pad of. 
@@ -39060,7 +39226,8 @@ func (element *ElementInstance) ParentRequestNewPad(templ PadTemplate, name stri
 }
 
 // ParentSendEvent calls the default implementations of the send_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *Event: the #GstEvent to send to the element. 
@@ -39100,7 +39267,8 @@ func (element *ElementInstance) ParentSendEvent(event *Event) bool {
 }
 
 // ParentSetBus calls the default implementations of the set_bus virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- bus Bus (nullable): the #GstBus to set. 
@@ -39125,7 +39293,8 @@ func (element *ElementInstance) ParentSetBus(bus Bus) {
 }
 
 // ParentSetClock calls the default implementations of the set_clock virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- clock Clock (nullable): the #GstClock to set for the element. 
@@ -39162,7 +39331,8 @@ func (element *ElementInstance) ParentSetClock(clock Clock) bool {
 }
 
 // ParentSetContext calls the default implementations of the set_context virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- _context *Context: the #GstContext to set. 
@@ -39184,7 +39354,8 @@ func (element *ElementInstance) ParentSetContext(_context *Context) {
 }
 
 // ParentSetState calls the default implementations of the set_state virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- state State: the element's new #GstState. 
@@ -39227,7 +39398,8 @@ func (element *ElementInstance) ParentSetState(state State) StateChangeReturn {
 }
 
 // ParentStateChanged calls the default implementations of the state_changed virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- oldstate State 
@@ -39843,11 +40015,11 @@ func (factory *ElementFactoryInstance) CreateWithProperties(names []string, valu
 	_ = names
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 	_ = values
 	_ = carg3
 	_ = carg1
-	panic("unimplemented conversion of []gobject.Value (const GValue*)")
+	panic("unimplemented conversion of []gobject.Value (*C.GValue)")
 
 	cret = C.gst_element_factory_create_with_properties(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(factory)
@@ -39941,7 +40113,7 @@ func (factory *ElementFactoryInstance) GetMetadataKeys() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -40048,7 +40220,7 @@ func (factory *ElementFactoryInstance) GetURIProtocols() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (const gchar* const*)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -41362,7 +41534,8 @@ type Bin interface {
 	// chain up virtual methods:
 
 	// ParentAddElement calls the default implementations of the add_element virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- element Element: the element to be added 
@@ -41374,7 +41547,8 @@ type Bin interface {
 	// Method to add an element to the bin.
 	ParentAddElement(element Element) bool
 	// ParentDeepElementAdded calls the default implementations of the deep_element_added virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- subBin Bin: the #GstBin to which the element was added 
@@ -41383,7 +41557,8 @@ type Bin interface {
 	// Method called when an element was added somewhere in the bin hierarchy.
 	ParentDeepElementAdded(subBin Bin, child Element)
 	// ParentDeepElementRemoved calls the default implementations of the deep_element_removed virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- subBin Bin: the #GstBin from which the element was removed 
@@ -41392,13 +41567,15 @@ type Bin interface {
 	// Method called when an element was removed somewhere in the bin hierarchy.
 	ParentDeepElementRemoved(subBin Bin, child Element)
 	// ParentDoLatency calls the default implementations of the do_latency virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	ParentDoLatency() bool
 	// ParentElementAdded calls the default implementations of the element_added virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- child Element: the element that was added 
@@ -41406,7 +41583,8 @@ type Bin interface {
 	// Method called when an element was added to the bin.
 	ParentElementAdded(child Element)
 	// ParentElementRemoved calls the default implementations of the element_removed virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- child Element: the element that was removed 
@@ -41414,7 +41592,8 @@ type Bin interface {
 	// Method called when an element was removed from the bin.
 	ParentElementRemoved(child Element)
 	// ParentHandleMessage calls the default implementations of the handle_message virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: the message to be handled 
@@ -41422,7 +41601,8 @@ type Bin interface {
 	// Method to handle a message from the children.
 	ParentHandleMessage(message *Message)
 	// ParentRemoveElement calls the default implementations of the remove_element virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- element Element: the element to be removed 
@@ -41445,7 +41625,7 @@ func unsafeWrapBin(base *gobject.ObjectInstance) *BinInstance {
 			},
 		},
 		ChildProxyInstance: ChildProxyInstance{
-			ObjectInstance: *base,
+			Instance: *base,
 		},
 	}
 }
@@ -42090,7 +42270,8 @@ type BinOverrides[Instance Bin] struct {
 	// ElementOverrides allows you to override virtual methods from the parent class Element
 	ElementOverrides[Instance]
 
-	// AddElement allows you to override the implementation of the virtual method add_element.
+	// // AddElement allows you to override the implementation of the virtual method add_element.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- element Element: the element to be added 
@@ -42101,7 +42282,8 @@ type BinOverrides[Instance Bin] struct {
 	//
 	// Method to add an element to the bin.
 	AddElement func(Instance, Element) bool
-	// DeepElementAdded allows you to override the implementation of the virtual method deep_element_added.
+	// // DeepElementAdded allows you to override the implementation of the virtual method deep_element_added.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- subBin Bin: the #GstBin to which the element was added 
@@ -42109,7 +42291,8 @@ type BinOverrides[Instance Bin] struct {
 	//
 	// Method called when an element was added somewhere in the bin hierarchy.
 	DeepElementAdded func(Instance, Bin, Element)
-	// DeepElementRemoved allows you to override the implementation of the virtual method deep_element_removed.
+	// // DeepElementRemoved allows you to override the implementation of the virtual method deep_element_removed.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- subBin Bin: the #GstBin from which the element was removed 
@@ -42117,33 +42300,38 @@ type BinOverrides[Instance Bin] struct {
 	//
 	// Method called when an element was removed somewhere in the bin hierarchy.
 	DeepElementRemoved func(Instance, Bin, Element)
-	// DoLatency allows you to override the implementation of the virtual method do_latency.
+	// // DoLatency allows you to override the implementation of the virtual method do_latency.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	DoLatency func(Instance) bool
-	// ElementAdded allows you to override the implementation of the virtual method element_added.
+	// // ElementAdded allows you to override the implementation of the virtual method element_added.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- child Element: the element that was added 
 	//
 	// Method called when an element was added to the bin.
 	ElementAdded func(Instance, Element)
-	// ElementRemoved allows you to override the implementation of the virtual method element_removed.
+	// // ElementRemoved allows you to override the implementation of the virtual method element_removed.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- child Element: the element that was removed 
 	//
 	// Method called when an element was removed from the bin.
 	ElementRemoved func(Instance, Element)
-	// HandleMessage allows you to override the implementation of the virtual method handle_message.
+	// // HandleMessage allows you to override the implementation of the virtual method handle_message.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: the message to be handled 
 	//
 	// Method to handle a message from the children.
 	HandleMessage func(Instance, *Message)
-	// RemoveElement allows you to override the implementation of the virtual method remove_element.
+	// // RemoveElement allows you to override the implementation of the virtual method remove_element.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- element Element: the element to be removed 
@@ -42324,7 +42512,8 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 }
 
 // ParentAddElement calls the default implementations of the add_element virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- element Element: the element to be added 
@@ -42357,7 +42546,8 @@ func (bin *BinInstance) ParentAddElement(element Element) bool {
 }
 
 // ParentDeepElementAdded calls the default implementations of the deep_element_added virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- subBin Bin: the #GstBin to which the element was added 
@@ -42381,7 +42571,8 @@ func (bin *BinInstance) ParentDeepElementAdded(subBin Bin, child Element) {
 }
 
 // ParentDeepElementRemoved calls the default implementations of the deep_element_removed virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- subBin Bin: the #GstBin from which the element was removed 
@@ -42405,7 +42596,8 @@ func (bin *BinInstance) ParentDeepElementRemoved(subBin Bin, child Element) {
 }
 
 // ParentDoLatency calls the default implementations of the do_latency virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -42428,7 +42620,8 @@ func (bin *BinInstance) ParentDoLatency() bool {
 }
 
 // ParentElementAdded calls the default implementations of the element_added virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- child Element: the element that was added 
@@ -42448,7 +42641,8 @@ func (bin *BinInstance) ParentElementAdded(child Element) {
 }
 
 // ParentElementRemoved calls the default implementations of the element_removed virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- child Element: the element that was removed 
@@ -42468,7 +42662,8 @@ func (bin *BinInstance) ParentElementRemoved(child Element) {
 }
 
 // ParentHandleMessage calls the default implementations of the handle_message virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- message *Message: the message to be handled 
@@ -42488,7 +42683,8 @@ func (bin *BinInstance) ParentHandleMessage(message *Message) {
 }
 
 // ParentRemoveElement calls the default implementations of the remove_element virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- element Element: the element to be removed 
@@ -42765,7 +42961,7 @@ func unsafeWrapPipeline(base *gobject.ObjectInstance) *PipelineInstance {
 				},
 			},
 			ChildProxyInstance: ChildProxyInstance{
-				ObjectInstance: *base,
+				Instance: *base,
 			},
 		},
 	}
@@ -45955,7 +46151,7 @@ func NewCapsEmpty() *Caps {
 // Creates a new #GstCaps that contains one #GstStructure with name
 // @media_type.
 func NewCapsEmptySimple(mediaType string) *Caps {
-	var carg1 *C.char    // in, none, string, casted *C.gchar
+	var carg1 *C.char    // in, none, string
 	var cret  *C.GstCaps // return, full, converted
 
 	carg1 = (*C.char)(unsafe.Pointer(C.CString(mediaType)))
@@ -46015,7 +46211,7 @@ func NewCapsIDStrEmptySimple(mediaType *IdStr) *Caps {
 // @media_type needs to be valid for the remaining lifetime of the process, e.g.
 // has to be a static string.
 func NewCapsStaticStrEmptySimple(mediaType string) *Caps {
-	var carg1 *C.char    // in, none, string, casted *C.gchar
+	var carg1 *C.char    // in, none, string
 	var cret  *C.GstCaps // return, full, converted
 
 	carg1 = (*C.char)(unsafe.Pointer(C.CString(mediaType)))
@@ -47111,7 +47307,7 @@ func (caps *Caps) SetFeaturesSimple(features *CapsFeatures) {
 // all structures of @caps.
 func (caps *Caps) SetValue(field string, value *gobject.Value) {
 	var carg0 *C.GstCaps // in, none, converted
-	var carg1 *C.char    // in, none, string, casted *C.gchar
+	var carg1 *C.char    // in, none, string
 	var carg2 *C.GValue  // in, none, converted
 
 	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
@@ -47140,7 +47336,7 @@ func (caps *Caps) SetValue(field string, value *gobject.Value) {
 // has to be a static string.
 func (caps *Caps) SetValueStaticStr(field string, value *gobject.Value) {
 	var carg0 *C.GstCaps // in, none, converted
-	var carg1 *C.char    // in, none, string, casted *C.gchar
+	var carg1 *C.char    // in, none, string
 	var carg2 *C.GValue  // in, none, converted
 
 	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
@@ -48004,7 +48200,7 @@ func (features *CapsFeatures) SetParentRefcount(refcount *int32) bool {
 	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
 	_ = refcount
 	_ = carg1
-	panic("unimplemented conversion of *int32 (gint*)")
+	panic("unimplemented conversion of *int32 (*C.gint)")
 
 	cret = C.gst_caps_features_set_parent_refcount(carg0, carg1)
 	runtime.KeepAlive(features)
@@ -57827,7 +58023,7 @@ func MetaApiTypeGetTags(api gobject.Type) []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (const gchar* const*)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -57887,7 +58083,7 @@ func MetaApiTypeRegister(api string, tags []string) gobject.Type {
 	defer C.free(unsafe.Pointer(carg1))
 	_ = tags
 	_ = carg2
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_meta_api_type_register(carg1, carg2)
 	runtime.KeepAlive(api)
@@ -57932,7 +58128,7 @@ func MetaDeserialize(buffer *Buffer, data *uint8, size uint) (uint32, *Meta) {
 	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	_ = data
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (*C.guint8)")
 	carg3 = C.gsize(size)
 
 	cret = C.gst_meta_deserialize(carg1, carg2, carg3, &carg4)
@@ -59035,7 +59231,7 @@ func (_context *ParseContext) GetMissingElements() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -61965,7 +62161,7 @@ func (query *Query) ParseNthAllocationParam(index uint) (Allocator, AllocationPa
 	}
 	_ = params
 	_ = carg3
-	panic("unimplemented conversion of AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of AllocationParams (C.GstAllocationParams)")
 
 	return allocator, params
 }
@@ -62677,7 +62873,7 @@ func (query *Query) SetFormatsv(formats []Format) {
 	_ = formats
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []Format (const GstFormat*)")
+	panic("unimplemented conversion of []Format (*C.GstFormat)")
 
 	C.gst_query_set_formatsv(carg0, carg1, carg2)
 	runtime.KeepAlive(query)
@@ -65281,7 +65477,7 @@ func (structure *Structure) Fixate() {
 // Fixates a #GstStructure by changing the given field with its fixated value.
 func (structure *Structure) FixateField(fieldName string) bool {
 	var carg0 *C.GstStructure // in, none, converted
-	var carg1 *C.char         // in, none, string, casted *C.gchar
+	var carg1 *C.char         // in, none, string
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
@@ -65316,7 +65512,7 @@ func (structure *Structure) FixateField(fieldName string) bool {
 // @target boolean if that field is not fixed yet.
 func (structure *Structure) FixateFieldBoolean(fieldName string, target bool) bool {
 	var carg0 *C.GstStructure // in, none, converted
-	var carg1 *C.char         // in, none, string, casted *C.gchar
+	var carg1 *C.char         // in, none, string
 	var carg2 C.gboolean      // in
 	var cret  C.gboolean      // return
 
@@ -65356,8 +65552,8 @@ func (structure *Structure) FixateFieldBoolean(fieldName string, target bool) bo
 // double to @target that is a subset of the existing field.
 func (structure *Structure) FixateFieldNearestDouble(fieldName string, target float64) bool {
 	var carg0 *C.GstStructure // in, none, converted
-	var carg1 *C.char         // in, none, string, casted *C.gchar
-	var carg2 C.double        // in, none, casted, casted C.gdouble
+	var carg1 *C.char         // in, none, string
+	var carg2 C.double        // in, none, casted
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
@@ -65396,7 +65592,7 @@ func (structure *Structure) FixateFieldNearestDouble(fieldName string, target fl
 // of the existing field.
 func (structure *Structure) FixateFieldNearestFraction(fieldName string, targetNumerator int32, targetDenominator int32) bool {
 	var carg0 *C.GstStructure // in, none, converted
-	var carg1 *C.char         // in, none, string, casted *C.gchar
+	var carg1 *C.char         // in, none, string
 	var carg2 C.gint          // in, none, casted
 	var carg3 C.gint          // in, none, casted
 	var cret  C.gboolean      // return
@@ -65437,8 +65633,8 @@ func (structure *Structure) FixateFieldNearestFraction(fieldName string, targetN
 // integer to @target that is a subset of the existing field.
 func (structure *Structure) FixateFieldNearestInt(fieldName string, target int32) bool {
 	var carg0 *C.GstStructure // in, none, converted
-	var carg1 *C.char         // in, none, string, casted *C.gchar
-	var carg2 C.int           // in, none, casted, casted C.gint
+	var carg1 *C.char         // in, none, string
+	var carg2 C.int           // in, none, casted
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
@@ -65475,7 +65671,7 @@ func (structure *Structure) FixateFieldNearestInt(fieldName string, target int32
 // @target string if that field is not fixed yet.
 func (structure *Structure) FixateFieldString(fieldName string, target string) bool {
 	var carg0 *C.GstStructure // in, none, converted
-	var carg1 *C.char         // in, none, string, casted *C.gchar
+	var carg1 *C.char         // in, none, string
 	var carg2 *C.gchar        // in, none, string
 	var cret  C.gboolean      // return
 
@@ -67070,7 +67266,7 @@ func (structure *Structure) SetParentRefcount(refcount *int32) bool {
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
 	_ = refcount
 	_ = carg1
-	panic("unimplemented conversion of *int32 (gint*)")
+	panic("unimplemented conversion of *int32 (*C.gint)")
 
 	cret = C.gst_structure_set_parent_refcount(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -67383,7 +67579,7 @@ func TagListCopyValue(list *TagList, tag string) (gobject.Value, bool) {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (GValue)")
+	panic("unimplemented conversion of gobject.Value (C.GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -70109,7 +70305,7 @@ func (find *TypeFind) Peek(offset int64, size uint) *uint8 {
 	if cret != nil {
 		_ = goret
 		_ = cret
-		panic("unimplemented conversion of *uint8 (guint8*)")
+		panic("unimplemented conversion of *uint8 (*C.guint8)")
 	}
 
 	return goret
@@ -70156,7 +70352,7 @@ func (find *TypeFind) Suggest(probability uint, caps *Caps) {
 func (find *TypeFind) SuggestEmptySimple(probability uint, mediaType string) {
 	var carg0 *C.GstTypeFind // in, none, converted
 	var carg1 C.guint        // in, none, casted
-	var carg2 *C.char        // in, none, string, casted *C.gchar
+	var carg2 *C.char        // in, none, string
 
 	carg0 = (*C.GstTypeFind)(UnsafeTypeFindToGlibNone(find))
 	carg1 = C.guint(probability)

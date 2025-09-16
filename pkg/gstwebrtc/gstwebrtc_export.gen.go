@@ -10,7 +10,6 @@ import (
 )
 
 // #include <gst/webrtc/webrtc.h>
-// #include <gst/webrtc/sctptransport.h>
 import "C"
 
 //export _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc
@@ -201,18 +200,6 @@ func _gotk4_gstwebrtc1_WebRTCICE_set_local_credentials(carg0 *C.GstWebRTCICE, ca
 		}
 	}
 	return fn(carg0, carg1, carg2, carg3)
-}
-
-//export _gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate
-func _gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate(carg0 *C.GstWebRTCICE, carg1 C.GstWebRTCICEOnCandidateFunc, carg2 C.gpointer, carg3 C.GDestroyNotify) {
-	var fn func(carg0 *C.GstWebRTCICE, carg1 C.GstWebRTCICEOnCandidateFunc, carg2 C.gpointer, carg3 C.GDestroyNotify)
-	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate").(func(carg0 *C.GstWebRTCICE, carg1 C.GstWebRTCICEOnCandidateFunc, carg2 C.gpointer, carg3 C.GDestroyNotify))
-		if fn == nil {
-			panic("_gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate: no function pointer found")
-		}
-	}
-	fn(carg0, carg1, carg2, carg3)
 }
 
 //export _gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials

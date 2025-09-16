@@ -18,404 +18,404 @@ import (
 // #cgo pkg-config: gstreamer-base-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/base/base.h>
-// extern GstFlowReturn _gotk4_gstbase1_CollectPadsBufferFunction(GstCollectPads*, GstCollectData*, GstBuffer*, gpointer);
-// extern GstFlowReturn _gotk4_gstbase1_CollectPadsClipFunction(GstCollectPads*, GstCollectData*, GstBuffer*, GstBuffer*, gpointer);
-// extern GstFlowReturn _gotk4_gstbase1_CollectPadsFunction(GstCollectPads*, gpointer);
-// extern gboolean _gotk4_gstbase1_CollectPadsEventFunction(GstCollectPads*, GstCollectData*, GstEvent*, gpointer);
-// extern gboolean _gotk4_gstbase1_CollectPadsQueryFunction(GstCollectPads*, GstCollectData*, GstQuery*, gpointer);
-// extern gint _gotk4_gstbase1_CollectPadsCompareFunction(GstCollectPads*, GstCollectData*, GstClockTime, GstCollectData*, GstClockTime, gpointer);
-// extern void _gotk4_gstbase1_CollectPadsFlushFunction(GstCollectPads*, gpointer);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_aggregate(GstAggregator*, gboolean);
-// extern GstBuffer* _gotk4_gstbase1_Aggregator_clip(GstAggregator*, GstAggregatorPad*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_Aggregator_decide_allocation(GstAggregator*, GstQuery*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_finish_buffer(GstAggregator*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_finish_buffer_list(GstAggregator*, GstBufferList*);
-// extern GstCaps* _gotk4_gstbase1_Aggregator_fixate_src_caps(GstAggregator*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_flush(GstAggregator*);
-// extern GstClockTime _gotk4_gstbase1_Aggregator_get_next_time(GstAggregator*);
-// extern gboolean _gotk4_gstbase1_Aggregator_negotiate(GstAggregator*);
-// extern gboolean _gotk4_gstbase1_Aggregator_negotiated_src_caps(GstAggregator*, GstCaps*);
-// extern GstSample* _gotk4_gstbase1_Aggregator_peek_next_sample(GstAggregator*, GstAggregatorPad*);
-// extern gboolean _gotk4_gstbase1_Aggregator_propose_allocation(GstAggregator*, GstAggregatorPad*, GstQuery*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_Aggregator_sink_event(GstAggregator*, GstAggregatorPad*, GstEvent*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_sink_event_pre_queue(GstAggregator*, GstAggregatorPad*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_Aggregator_sink_query(GstAggregator*, GstAggregatorPad*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_Aggregator_sink_query_pre_queue(GstAggregator*, GstAggregatorPad*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_Aggregator_src_activate(GstAggregator*, GstPadMode, gboolean);
-// extern gboolean _gotk4_gstbase1_Aggregator_src_event(GstAggregator*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_Aggregator_src_query(GstAggregator*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_Aggregator_start(GstAggregator*);
-// extern gboolean _gotk4_gstbase1_Aggregator_stop(GstAggregator*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_update_src_caps(GstAggregator*, GstCaps*, GstCaps*);
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_aggregate(void* fnptr, GstAggregator* carg0, gboolean carg1) {
-// 	return ((GstFlowReturn (*) (GstAggregator*, gboolean))(fnptr))(carg0, carg1);
-// }
-// GstBuffer* _gotk4_gstbase1_Aggregator_virtual_clip(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstBuffer* carg2) {
-// 	return ((GstBuffer* (*) (GstAggregator*, GstAggregatorPad*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_decide_allocation(void* fnptr, GstAggregator* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstAggregator*, GstQuery*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_finish_buffer(void* fnptr, GstAggregator* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstAggregator*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_finish_buffer_list(void* fnptr, GstAggregator* carg0, GstBufferList* carg1) {
-// 	return ((GstFlowReturn (*) (GstAggregator*, GstBufferList*))(fnptr))(carg0, carg1);
-// }
-// GstCaps* _gotk4_gstbase1_Aggregator_virtual_fixate_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1) {
-// 	return ((GstCaps* (*) (GstAggregator*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_flush(void* fnptr, GstAggregator* carg0) {
-// 	return ((GstFlowReturn (*) (GstAggregator*))(fnptr))(carg0);
-// }
-// GstClockTime _gotk4_gstbase1_Aggregator_virtual_get_next_time(void* fnptr, GstAggregator* carg0) {
-// 	return ((GstClockTime (*) (GstAggregator*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_negotiate(void* fnptr, GstAggregator* carg0) {
-// 	return ((gboolean (*) (GstAggregator*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_negotiated_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1) {
-// 	return ((gboolean (*) (GstAggregator*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// GstSample* _gotk4_gstbase1_Aggregator_virtual_peek_next_sample(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1) {
-// 	return ((GstSample* (*) (GstAggregator*, GstAggregatorPad*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_propose_allocation(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2, GstQuery* carg3) {
-// 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstQuery*, GstQuery*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_sink_event(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstEvent* carg2) {
-// 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstEvent*))(fnptr))(carg0, carg1, carg2);
-// }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_sink_event_pre_queue(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstEvent* carg2) {
-// 	return ((GstFlowReturn (*) (GstAggregator*, GstAggregatorPad*, GstEvent*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_sink_query(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2) {
-// 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstQuery*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_sink_query_pre_queue(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2) {
-// 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstQuery*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_src_activate(void* fnptr, GstAggregator* carg0, GstPadMode carg1, gboolean carg2) {
-// 	return ((gboolean (*) (GstAggregator*, GstPadMode, gboolean))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_src_event(void* fnptr, GstAggregator* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstAggregator*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_src_query(void* fnptr, GstAggregator* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstAggregator*, GstQuery*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_start(void* fnptr, GstAggregator* carg0) {
-// 	return ((gboolean (*) (GstAggregator*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_stop(void* fnptr, GstAggregator* carg0) {
-// 	return ((gboolean (*) (GstAggregator*))(fnptr))(carg0);
-// }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_update_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1, GstCaps** carg2) {
-// 	return ((GstFlowReturn (*) (GstAggregator*, GstCaps*, GstCaps**))(fnptr))(carg0, carg1, carg2);
-// }
-// extern GstFlowReturn _gotk4_gstbase1_AggregatorPad_flush(GstAggregatorPad*, GstAggregator*);
-// extern gboolean _gotk4_gstbase1_AggregatorPad_skip_buffer(GstAggregatorPad*, GstAggregator*, GstBuffer*);
-// GstFlowReturn _gotk4_gstbase1_AggregatorPad_virtual_flush(void* fnptr, GstAggregatorPad* carg0, GstAggregator* carg1) {
-// 	return ((GstFlowReturn (*) (GstAggregatorPad*, GstAggregator*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_AggregatorPad_virtual_skip_buffer(void* fnptr, GstAggregatorPad* carg0, GstAggregator* carg1, GstBuffer* carg2) {
-// 	return ((gboolean (*) (GstAggregatorPad*, GstAggregator*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
-// }
-// extern gboolean _gotk4_gstbase1_BaseParse_convert(GstBaseParse*, GstFormat, gint64, GstFormat, gint64*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseParse_detect(GstBaseParse*, GstBuffer*);
-// extern GstCaps* _gotk4_gstbase1_BaseParse_get_sink_caps(GstBaseParse*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseParse_handle_frame(GstBaseParse*, GstBaseParseFrame*, gint);
-// extern GstFlowReturn _gotk4_gstbase1_BaseParse_pre_push_frame(GstBaseParse*, GstBaseParseFrame*);
-// extern gboolean _gotk4_gstbase1_BaseParse_set_sink_caps(GstBaseParse*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseParse_sink_event(GstBaseParse*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_BaseParse_sink_query(GstBaseParse*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseParse_src_event(GstBaseParse*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_BaseParse_src_query(GstBaseParse*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseParse_start(GstBaseParse*);
-// extern gboolean _gotk4_gstbase1_BaseParse_stop(GstBaseParse*);
-// gboolean _gotk4_gstbase1_BaseParse_virtual_convert(void* fnptr, GstBaseParse* carg0, GstFormat carg1, gint64 carg2, GstFormat carg3, gint64* carg4) {
-// 	return ((gboolean (*) (GstBaseParse*, GstFormat, gint64, GstFormat, gint64*))(fnptr))(carg0, carg1, carg2, carg3, carg4);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_detect(void* fnptr, GstBaseParse* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseParse*, GstBuffer*))(fnptr))(carg0, carg1);
+// extern C.GstFlowReturn _gotk4_gstbase1_CollectPadsBufferFunction(*C.GstCollectPads, *C.GstCollectData, *C.GstBuffer, C.gpointer);
+// extern C.GstFlowReturn _gotk4_gstbase1_CollectPadsClipFunction(*C.GstCollectPads, *C.GstCollectData, *C.GstBuffer, *C.GstBuffer, C.gpointer);
+// extern C.GstFlowReturn _gotk4_gstbase1_CollectPadsFunction(*C.GstCollectPads, C.gpointer);
+// extern C.gboolean _gotk4_gstbase1_CollectPadsEventFunction(*C.GstCollectPads, *C.GstCollectData, *C.GstEvent, C.gpointer);
+// extern C.gboolean _gotk4_gstbase1_CollectPadsQueryFunction(*C.GstCollectPads, *C.GstCollectData, *C.GstQuery, C.gpointer);
+// extern C.gint _gotk4_gstbase1_CollectPadsCompareFunction(*C.GstCollectPads, *C.GstCollectData, C.GstClockTime, *C.GstCollectData, C.GstClockTime, C.gpointer);
+// extern C.void _gotk4_gstbase1_CollectPadsFlushFunction(*C.GstCollectPads, C.gpointer);
+// extern C.GstFlowReturn _gotk4_gstbase1_Aggregator_aggregate(*C.GstAggregator, C.gboolean);
+// extern *C.GstBuffer _gotk4_gstbase1_Aggregator_clip(*C.GstAggregator, *C.GstAggregatorPad, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_decide_allocation(*C.GstAggregator, *C.GstQuery);
+// extern C.GstFlowReturn _gotk4_gstbase1_Aggregator_finish_buffer(*C.GstAggregator, *C.GstBuffer);
+// extern C.GstFlowReturn _gotk4_gstbase1_Aggregator_finish_buffer_list(*C.GstAggregator, *C.GstBufferList);
+// extern *C.GstCaps _gotk4_gstbase1_Aggregator_fixate_src_caps(*C.GstAggregator, *C.GstCaps);
+// extern C.GstFlowReturn _gotk4_gstbase1_Aggregator_flush(*C.GstAggregator);
+// extern C.GstClockTime _gotk4_gstbase1_Aggregator_get_next_time(*C.GstAggregator);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_negotiate(*C.GstAggregator);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_negotiated_src_caps(*C.GstAggregator, *C.GstCaps);
+// extern *C.GstSample _gotk4_gstbase1_Aggregator_peek_next_sample(*C.GstAggregator, *C.GstAggregatorPad);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_propose_allocation(*C.GstAggregator, *C.GstAggregatorPad, *C.GstQuery, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_sink_event(*C.GstAggregator, *C.GstAggregatorPad, *C.GstEvent);
+// extern C.GstFlowReturn _gotk4_gstbase1_Aggregator_sink_event_pre_queue(*C.GstAggregator, *C.GstAggregatorPad, *C.GstEvent);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_sink_query(*C.GstAggregator, *C.GstAggregatorPad, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_sink_query_pre_queue(*C.GstAggregator, *C.GstAggregatorPad, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_src_activate(*C.GstAggregator, C.GstPadMode, C.gboolean);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_src_event(*C.GstAggregator, *C.GstEvent);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_src_query(*C.GstAggregator, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_start(*C.GstAggregator);
+// extern C.gboolean _gotk4_gstbase1_Aggregator_stop(*C.GstAggregator);
+// extern C.GstFlowReturn _gotk4_gstbase1_Aggregator_update_src_caps(*C.GstAggregator, *C.GstCaps, *C.GstCaps);
+// C.GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_aggregate(void* fnptr, *C.GstAggregator carg0, C.gboolean carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAggregator, C.gboolean))(fnptr))(carg0, carg1);
+// }
+// *C.GstBuffer _gotk4_gstbase1_Aggregator_virtual_clip(void* fnptr, *C.GstAggregator carg0, *C.GstAggregatorPad carg1, *C.GstBuffer carg2) {
+// 	return ((*C.GstBuffer (*) (*C.GstAggregator, *C.GstAggregatorPad, *C.GstBuffer))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_decide_allocation(void* fnptr, *C.GstAggregator carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstAggregator, *C.GstQuery))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_finish_buffer(void* fnptr, *C.GstAggregator carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAggregator, *C.GstBuffer))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_finish_buffer_list(void* fnptr, *C.GstAggregator carg0, *C.GstBufferList carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAggregator, *C.GstBufferList))(fnptr))(carg0, carg1);
+// }
+// *C.GstCaps _gotk4_gstbase1_Aggregator_virtual_fixate_src_caps(void* fnptr, *C.GstAggregator carg0, *C.GstCaps carg1) {
+// 	return ((*C.GstCaps (*) (*C.GstAggregator, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_flush(void* fnptr, *C.GstAggregator carg0) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAggregator))(fnptr))(carg0);
+// }
+// C.GstClockTime _gotk4_gstbase1_Aggregator_virtual_get_next_time(void* fnptr, *C.GstAggregator carg0) {
+// 	return ((C.GstClockTime (*) (*C.GstAggregator))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_negotiate(void* fnptr, *C.GstAggregator carg0) {
+// 	return ((C.gboolean (*) (*C.GstAggregator))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_negotiated_src_caps(void* fnptr, *C.GstAggregator carg0, *C.GstCaps carg1) {
+// 	return ((C.gboolean (*) (*C.GstAggregator, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// *C.GstSample _gotk4_gstbase1_Aggregator_virtual_peek_next_sample(void* fnptr, *C.GstAggregator carg0, *C.GstAggregatorPad carg1) {
+// 	return ((*C.GstSample (*) (*C.GstAggregator, *C.GstAggregatorPad))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_propose_allocation(void* fnptr, *C.GstAggregator carg0, *C.GstAggregatorPad carg1, *C.GstQuery carg2, *C.GstQuery carg3) {
+// 	return ((C.gboolean (*) (*C.GstAggregator, *C.GstAggregatorPad, *C.GstQuery, *C.GstQuery))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_sink_event(void* fnptr, *C.GstAggregator carg0, *C.GstAggregatorPad carg1, *C.GstEvent carg2) {
+// 	return ((C.gboolean (*) (*C.GstAggregator, *C.GstAggregatorPad, *C.GstEvent))(fnptr))(carg0, carg1, carg2);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_sink_event_pre_queue(void* fnptr, *C.GstAggregator carg0, *C.GstAggregatorPad carg1, *C.GstEvent carg2) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAggregator, *C.GstAggregatorPad, *C.GstEvent))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_sink_query(void* fnptr, *C.GstAggregator carg0, *C.GstAggregatorPad carg1, *C.GstQuery carg2) {
+// 	return ((C.gboolean (*) (*C.GstAggregator, *C.GstAggregatorPad, *C.GstQuery))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_sink_query_pre_queue(void* fnptr, *C.GstAggregator carg0, *C.GstAggregatorPad carg1, *C.GstQuery carg2) {
+// 	return ((C.gboolean (*) (*C.GstAggregator, *C.GstAggregatorPad, *C.GstQuery))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_src_activate(void* fnptr, *C.GstAggregator carg0, C.GstPadMode carg1, C.gboolean carg2) {
+// 	return ((C.gboolean (*) (*C.GstAggregator, C.GstPadMode, C.gboolean))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_src_event(void* fnptr, *C.GstAggregator carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstAggregator, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_src_query(void* fnptr, *C.GstAggregator carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstAggregator, *C.GstQuery))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_start(void* fnptr, *C.GstAggregator carg0) {
+// 	return ((C.gboolean (*) (*C.GstAggregator))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_Aggregator_virtual_stop(void* fnptr, *C.GstAggregator carg0) {
+// 	return ((C.gboolean (*) (*C.GstAggregator))(fnptr))(carg0);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_update_src_caps(void* fnptr, *C.GstAggregator carg0, *C.GstCaps carg1, *C.GstCaps* carg2) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAggregator, *C.GstCaps, *C.GstCaps*))(fnptr))(carg0, carg1, carg2);
+// }
+// extern C.GstFlowReturn _gotk4_gstbase1_AggregatorPad_flush(*C.GstAggregatorPad, *C.GstAggregator);
+// extern C.gboolean _gotk4_gstbase1_AggregatorPad_skip_buffer(*C.GstAggregatorPad, *C.GstAggregator, *C.GstBuffer);
+// C.GstFlowReturn _gotk4_gstbase1_AggregatorPad_virtual_flush(void* fnptr, *C.GstAggregatorPad carg0, *C.GstAggregator carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAggregatorPad, *C.GstAggregator))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_AggregatorPad_virtual_skip_buffer(void* fnptr, *C.GstAggregatorPad carg0, *C.GstAggregator carg1, *C.GstBuffer carg2) {
+// 	return ((C.gboolean (*) (*C.GstAggregatorPad, *C.GstAggregator, *C.GstBuffer))(fnptr))(carg0, carg1, carg2);
+// }
+// extern C.gboolean _gotk4_gstbase1_BaseParse_convert(*C.GstBaseParse, C.GstFormat, C.gint64, C.GstFormat, *C.gint64);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseParse_detect(*C.GstBaseParse, *C.GstBuffer);
+// extern *C.GstCaps _gotk4_gstbase1_BaseParse_get_sink_caps(*C.GstBaseParse, *C.GstCaps);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseParse_handle_frame(*C.GstBaseParse, *C.GstBaseParseFrame, C.gint);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseParse_pre_push_frame(*C.GstBaseParse, *C.GstBaseParseFrame);
+// extern C.gboolean _gotk4_gstbase1_BaseParse_set_sink_caps(*C.GstBaseParse, *C.GstCaps);
+// extern C.gboolean _gotk4_gstbase1_BaseParse_sink_event(*C.GstBaseParse, *C.GstEvent);
+// extern C.gboolean _gotk4_gstbase1_BaseParse_sink_query(*C.GstBaseParse, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_BaseParse_src_event(*C.GstBaseParse, *C.GstEvent);
+// extern C.gboolean _gotk4_gstbase1_BaseParse_src_query(*C.GstBaseParse, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_BaseParse_start(*C.GstBaseParse);
+// extern C.gboolean _gotk4_gstbase1_BaseParse_stop(*C.GstBaseParse);
+// C.gboolean _gotk4_gstbase1_BaseParse_virtual_convert(void* fnptr, *C.GstBaseParse carg0, C.GstFormat carg1, C.gint64 carg2, C.GstFormat carg3, *C.gint64 carg4) {
+// 	return ((C.gboolean (*) (*C.GstBaseParse, C.GstFormat, C.gint64, C.GstFormat, *C.gint64))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_detect(void* fnptr, *C.GstBaseParse carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseParse, *C.GstBuffer))(fnptr))(carg0, carg1);
 // }
-// GstCaps* _gotk4_gstbase1_BaseParse_virtual_get_sink_caps(void* fnptr, GstBaseParse* carg0, GstCaps* carg1) {
-// 	return ((GstCaps* (*) (GstBaseParse*, GstCaps*))(fnptr))(carg0, carg1);
+// *C.GstCaps _gotk4_gstbase1_BaseParse_virtual_get_sink_caps(void* fnptr, *C.GstBaseParse carg0, *C.GstCaps carg1) {
+// 	return ((*C.GstCaps (*) (*C.GstBaseParse, *C.GstCaps))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_handle_frame(void* fnptr, GstBaseParse* carg0, GstBaseParseFrame* carg1, gint* carg2) {
-// 	return ((GstFlowReturn (*) (GstBaseParse*, GstBaseParseFrame*, gint*))(fnptr))(carg0, carg1, carg2);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_pre_push_frame(void* fnptr, GstBaseParse* carg0, GstBaseParseFrame* carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseParse*, GstBaseParseFrame*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_set_sink_caps(void* fnptr, GstBaseParse* carg0, GstCaps* carg1) {
-// 	return ((gboolean (*) (GstBaseParse*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_sink_event(void* fnptr, GstBaseParse* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstBaseParse*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_sink_query(void* fnptr, GstBaseParse* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstBaseParse*, GstQuery*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_src_event(void* fnptr, GstBaseParse* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstBaseParse*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_src_query(void* fnptr, GstBaseParse* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstBaseParse*, GstQuery*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_start(void* fnptr, GstBaseParse* carg0) {
-// 	return ((gboolean (*) (GstBaseParse*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_stop(void* fnptr, GstBaseParse* carg0) {
-// 	return ((gboolean (*) (GstBaseParse*))(fnptr))(carg0);
-// }
-// extern gboolean _gotk4_gstbase1_BaseSink_activate_pull(GstBaseSink*, gboolean);
-// extern gboolean _gotk4_gstbase1_BaseSink_event(GstBaseSink*, GstEvent*);
-// extern GstCaps* _gotk4_gstbase1_BaseSink_fixate(GstBaseSink*, GstCaps*);
-// extern GstCaps* _gotk4_gstbase1_BaseSink_get_caps(GstBaseSink*, GstCaps*);
-// extern void _gotk4_gstbase1_BaseSink_get_times(GstBaseSink*, GstBuffer*, GstClockTime, GstClockTime);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_prepare(GstBaseSink*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_prepare_list(GstBaseSink*, GstBufferList*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_preroll(GstBaseSink*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseSink_propose_allocation(GstBaseSink*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseSink_query(GstBaseSink*, GstQuery*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_render(GstBaseSink*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_render_list(GstBaseSink*, GstBufferList*);
-// extern gboolean _gotk4_gstbase1_BaseSink_set_caps(GstBaseSink*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseSink_start(GstBaseSink*);
-// extern gboolean _gotk4_gstbase1_BaseSink_stop(GstBaseSink*);
-// extern gboolean _gotk4_gstbase1_BaseSink_unlock(GstBaseSink*);
-// extern gboolean _gotk4_gstbase1_BaseSink_unlock_stop(GstBaseSink*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_wait_event(GstBaseSink*, GstEvent*);
-// gboolean _gotk4_gstbase1_BaseSink_virtual_activate_pull(void* fnptr, GstBaseSink* carg0, gboolean carg1) {
-// 	return ((gboolean (*) (GstBaseSink*, gboolean))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_event(void* fnptr, GstBaseSink* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstBaseSink*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// GstCaps* _gotk4_gstbase1_BaseSink_virtual_fixate(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
-// 	return ((GstCaps* (*) (GstBaseSink*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// GstCaps* _gotk4_gstbase1_BaseSink_virtual_get_caps(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
-// 	return ((GstCaps* (*) (GstBaseSink*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// void _gotk4_gstbase1_BaseSink_virtual_get_times(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1, GstClockTime* carg2, GstClockTime* carg3) {
-// 	return ((void (*) (GstBaseSink*, GstBuffer*, GstClockTime*, GstClockTime*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_prepare(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_prepare_list(void* fnptr, GstBaseSink* carg0, GstBufferList* carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBufferList*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_preroll(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
+// C.GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_handle_frame(void* fnptr, *C.GstBaseParse carg0, *C.GstBaseParseFrame carg1, C.gint* carg2) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseParse, *C.GstBaseParseFrame, C.gint*))(fnptr))(carg0, carg1, carg2);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_pre_push_frame(void* fnptr, *C.GstBaseParse carg0, *C.GstBaseParseFrame carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseParse, *C.GstBaseParseFrame))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseParse_virtual_set_sink_caps(void* fnptr, *C.GstBaseParse carg0, *C.GstCaps carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseParse, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseParse_virtual_sink_event(void* fnptr, *C.GstBaseParse carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseParse, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseParse_virtual_sink_query(void* fnptr, *C.GstBaseParse carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseParse, *C.GstQuery))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseParse_virtual_src_event(void* fnptr, *C.GstBaseParse carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseParse, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseParse_virtual_src_query(void* fnptr, *C.GstBaseParse carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseParse, *C.GstQuery))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseParse_virtual_start(void* fnptr, *C.GstBaseParse carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseParse))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_BaseParse_virtual_stop(void* fnptr, *C.GstBaseParse carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseParse))(fnptr))(carg0);
+// }
+// extern C.gboolean _gotk4_gstbase1_BaseSink_activate_pull(*C.GstBaseSink, C.gboolean);
+// extern C.gboolean _gotk4_gstbase1_BaseSink_event(*C.GstBaseSink, *C.GstEvent);
+// extern *C.GstCaps _gotk4_gstbase1_BaseSink_fixate(*C.GstBaseSink, *C.GstCaps);
+// extern *C.GstCaps _gotk4_gstbase1_BaseSink_get_caps(*C.GstBaseSink, *C.GstCaps);
+// extern C.void _gotk4_gstbase1_BaseSink_get_times(*C.GstBaseSink, *C.GstBuffer, C.GstClockTime, C.GstClockTime);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseSink_prepare(*C.GstBaseSink, *C.GstBuffer);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseSink_prepare_list(*C.GstBaseSink, *C.GstBufferList);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseSink_preroll(*C.GstBaseSink, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstbase1_BaseSink_propose_allocation(*C.GstBaseSink, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_BaseSink_query(*C.GstBaseSink, *C.GstQuery);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseSink_render(*C.GstBaseSink, *C.GstBuffer);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseSink_render_list(*C.GstBaseSink, *C.GstBufferList);
+// extern C.gboolean _gotk4_gstbase1_BaseSink_set_caps(*C.GstBaseSink, *C.GstCaps);
+// extern C.gboolean _gotk4_gstbase1_BaseSink_start(*C.GstBaseSink);
+// extern C.gboolean _gotk4_gstbase1_BaseSink_stop(*C.GstBaseSink);
+// extern C.gboolean _gotk4_gstbase1_BaseSink_unlock(*C.GstBaseSink);
+// extern C.gboolean _gotk4_gstbase1_BaseSink_unlock_stop(*C.GstBaseSink);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseSink_wait_event(*C.GstBaseSink, *C.GstEvent);
+// C.gboolean _gotk4_gstbase1_BaseSink_virtual_activate_pull(void* fnptr, *C.GstBaseSink carg0, C.gboolean carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSink, C.gboolean))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSink_virtual_event(void* fnptr, *C.GstBaseSink carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSink, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// *C.GstCaps _gotk4_gstbase1_BaseSink_virtual_fixate(void* fnptr, *C.GstBaseSink carg0, *C.GstCaps carg1) {
+// 	return ((*C.GstCaps (*) (*C.GstBaseSink, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// *C.GstCaps _gotk4_gstbase1_BaseSink_virtual_get_caps(void* fnptr, *C.GstBaseSink carg0, *C.GstCaps carg1) {
+// 	return ((*C.GstCaps (*) (*C.GstBaseSink, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// C.void _gotk4_gstbase1_BaseSink_virtual_get_times(void* fnptr, *C.GstBaseSink carg0, *C.GstBuffer carg1, C.GstClockTime* carg2, C.GstClockTime* carg3) {
+// 	return ((C.void (*) (*C.GstBaseSink, *C.GstBuffer, C.GstClockTime*, C.GstClockTime*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_prepare(void* fnptr, *C.GstBaseSink carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseSink, *C.GstBuffer))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_prepare_list(void* fnptr, *C.GstBaseSink carg0, *C.GstBufferList carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseSink, *C.GstBufferList))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_preroll(void* fnptr, *C.GstBaseSink carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseSink, *C.GstBuffer))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_propose_allocation(void* fnptr, GstBaseSink* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstBaseSink*, GstQuery*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstbase1_BaseSink_virtual_propose_allocation(void* fnptr, *C.GstBaseSink carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSink, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_query(void* fnptr, GstBaseSink* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstBaseSink*, GstQuery*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_render(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_render_list(void* fnptr, GstBaseSink* carg0, GstBufferList* carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBufferList*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_set_caps(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
-// 	return ((gboolean (*) (GstBaseSink*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_start(void* fnptr, GstBaseSink* carg0) {
-// 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_stop(void* fnptr, GstBaseSink* carg0) {
-// 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_unlock(void* fnptr, GstBaseSink* carg0) {
-// 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_unlock_stop(void* fnptr, GstBaseSink* carg0) {
-// 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_wait_event(void* fnptr, GstBaseSink* carg0, GstEvent* carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseSink*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// extern GstFlowReturn _gotk4_gstbase1_BaseSrc_alloc(GstBaseSrc*, guint64, guint, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_decide_allocation(GstBaseSrc*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_do_seek(GstBaseSrc*, GstSegment*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_event(GstBaseSrc*, GstEvent*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSrc_fill(GstBaseSrc*, guint64, guint, GstBuffer*);
-// extern GstCaps* _gotk4_gstbase1_BaseSrc_fixate(GstBaseSrc*, GstCaps*);
-// extern GstCaps* _gotk4_gstbase1_BaseSrc_get_caps(GstBaseSrc*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_get_size(GstBaseSrc*, guint64);
-// extern void _gotk4_gstbase1_BaseSrc_get_times(GstBaseSrc*, GstBuffer*, GstClockTime, GstClockTime);
-// extern gboolean _gotk4_gstbase1_BaseSrc_is_seekable(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_negotiate(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_prepare_seek_segment(GstBaseSrc*, GstEvent*, GstSegment*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_query(GstBaseSrc*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_set_caps(GstBaseSrc*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_start(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_stop(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_unlock(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_unlock_stop(GstBaseSrc*);
-// GstFlowReturn _gotk4_gstbase1_BaseSrc_virtual_alloc(void* fnptr, GstBaseSrc* carg0, guint64 carg1, guint carg2, GstBuffer** carg3) {
-// 	return ((GstFlowReturn (*) (GstBaseSrc*, guint64, guint, GstBuffer**))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_decide_allocation(void* fnptr, GstBaseSrc* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstBaseSrc*, GstQuery*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_do_seek(void* fnptr, GstBaseSrc* carg0, GstSegment* carg1) {
-// 	return ((gboolean (*) (GstBaseSrc*, GstSegment*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_event(void* fnptr, GstBaseSrc* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstBaseSrc*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseSrc_virtual_fill(void* fnptr, GstBaseSrc* carg0, guint64 carg1, guint carg2, GstBuffer* carg3) {
-// 	return ((GstFlowReturn (*) (GstBaseSrc*, guint64, guint, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// GstCaps* _gotk4_gstbase1_BaseSrc_virtual_fixate(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
-// 	return ((GstCaps* (*) (GstBaseSrc*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// GstCaps* _gotk4_gstbase1_BaseSrc_virtual_get_caps(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
-// 	return ((GstCaps* (*) (GstBaseSrc*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_get_size(void* fnptr, GstBaseSrc* carg0, guint64* carg1) {
-// 	return ((gboolean (*) (GstBaseSrc*, guint64*))(fnptr))(carg0, carg1);
-// }
-// void _gotk4_gstbase1_BaseSrc_virtual_get_times(void* fnptr, GstBaseSrc* carg0, GstBuffer* carg1, GstClockTime* carg2, GstClockTime* carg3) {
-// 	return ((void (*) (GstBaseSrc*, GstBuffer*, GstClockTime*, GstClockTime*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_is_seekable(void* fnptr, GstBaseSrc* carg0) {
-// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_negotiate(void* fnptr, GstBaseSrc* carg0) {
-// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_prepare_seek_segment(void* fnptr, GstBaseSrc* carg0, GstEvent* carg1, GstSegment* carg2) {
-// 	return ((gboolean (*) (GstBaseSrc*, GstEvent*, GstSegment*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_query(void* fnptr, GstBaseSrc* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstBaseSrc*, GstQuery*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_set_caps(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
-// 	return ((gboolean (*) (GstBaseSrc*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_start(void* fnptr, GstBaseSrc* carg0) {
-// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_stop(void* fnptr, GstBaseSrc* carg0) {
-// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstbase1_BaseSink_virtual_query(void* fnptr, *C.GstBaseSink carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSink, *C.GstQuery))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_render(void* fnptr, *C.GstBaseSink carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseSink, *C.GstBuffer))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_render_list(void* fnptr, *C.GstBaseSink carg0, *C.GstBufferList carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseSink, *C.GstBufferList))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSink_virtual_set_caps(void* fnptr, *C.GstBaseSink carg0, *C.GstCaps carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSink, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSink_virtual_start(void* fnptr, *C.GstBaseSink carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSink))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSink_virtual_stop(void* fnptr, *C.GstBaseSink carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSink))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSink_virtual_unlock(void* fnptr, *C.GstBaseSink carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSink))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSink_virtual_unlock_stop(void* fnptr, *C.GstBaseSink carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSink))(fnptr))(carg0);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_wait_event(void* fnptr, *C.GstBaseSink carg0, *C.GstEvent carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseSink, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseSrc_alloc(*C.GstBaseSrc, C.guint64, C.guint, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_decide_allocation(*C.GstBaseSrc, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_do_seek(*C.GstBaseSrc, *C.GstSegment);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_event(*C.GstBaseSrc, *C.GstEvent);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseSrc_fill(*C.GstBaseSrc, C.guint64, C.guint, *C.GstBuffer);
+// extern *C.GstCaps _gotk4_gstbase1_BaseSrc_fixate(*C.GstBaseSrc, *C.GstCaps);
+// extern *C.GstCaps _gotk4_gstbase1_BaseSrc_get_caps(*C.GstBaseSrc, *C.GstCaps);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_get_size(*C.GstBaseSrc, C.guint64);
+// extern C.void _gotk4_gstbase1_BaseSrc_get_times(*C.GstBaseSrc, *C.GstBuffer, C.GstClockTime, C.GstClockTime);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_is_seekable(*C.GstBaseSrc);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_negotiate(*C.GstBaseSrc);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_prepare_seek_segment(*C.GstBaseSrc, *C.GstEvent, *C.GstSegment);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_query(*C.GstBaseSrc, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_set_caps(*C.GstBaseSrc, *C.GstCaps);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_start(*C.GstBaseSrc);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_stop(*C.GstBaseSrc);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_unlock(*C.GstBaseSrc);
+// extern C.gboolean _gotk4_gstbase1_BaseSrc_unlock_stop(*C.GstBaseSrc);
+// C.GstFlowReturn _gotk4_gstbase1_BaseSrc_virtual_alloc(void* fnptr, *C.GstBaseSrc carg0, C.guint64 carg1, C.guint carg2, *C.GstBuffer* carg3) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseSrc, C.guint64, C.guint, *C.GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_decide_allocation(void* fnptr, *C.GstBaseSrc carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc, *C.GstQuery))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_do_seek(void* fnptr, *C.GstBaseSrc carg0, *C.GstSegment carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc, *C.GstSegment))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_event(void* fnptr, *C.GstBaseSrc carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseSrc_virtual_fill(void* fnptr, *C.GstBaseSrc carg0, C.guint64 carg1, C.guint carg2, *C.GstBuffer carg3) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseSrc, C.guint64, C.guint, *C.GstBuffer))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// *C.GstCaps _gotk4_gstbase1_BaseSrc_virtual_fixate(void* fnptr, *C.GstBaseSrc carg0, *C.GstCaps carg1) {
+// 	return ((*C.GstCaps (*) (*C.GstBaseSrc, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// *C.GstCaps _gotk4_gstbase1_BaseSrc_virtual_get_caps(void* fnptr, *C.GstBaseSrc carg0, *C.GstCaps carg1) {
+// 	return ((*C.GstCaps (*) (*C.GstBaseSrc, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_get_size(void* fnptr, *C.GstBaseSrc carg0, C.guint64* carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc, C.guint64*))(fnptr))(carg0, carg1);
+// }
+// C.void _gotk4_gstbase1_BaseSrc_virtual_get_times(void* fnptr, *C.GstBaseSrc carg0, *C.GstBuffer carg1, C.GstClockTime* carg2, C.GstClockTime* carg3) {
+// 	return ((C.void (*) (*C.GstBaseSrc, *C.GstBuffer, C.GstClockTime*, C.GstClockTime*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_is_seekable(void* fnptr, *C.GstBaseSrc carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_negotiate(void* fnptr, *C.GstBaseSrc carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_prepare_seek_segment(void* fnptr, *C.GstBaseSrc carg0, *C.GstEvent carg1, *C.GstSegment carg2) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc, *C.GstEvent, *C.GstSegment))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_query(void* fnptr, *C.GstBaseSrc carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc, *C.GstQuery))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_set_caps(void* fnptr, *C.GstBaseSrc carg0, *C.GstCaps carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_start(void* fnptr, *C.GstBaseSrc carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_stop(void* fnptr, *C.GstBaseSrc carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_unlock(void* fnptr, GstBaseSrc* carg0) {
-// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_unlock(void* fnptr, *C.GstBaseSrc carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_unlock_stop(void* fnptr, GstBaseSrc* carg0) {
-// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
-// }
-// extern gboolean _gotk4_gstbase1_BaseTransform_accept_caps(GstBaseTransform*, GstPadDirection, GstCaps*);
-// extern void _gotk4_gstbase1_BaseTransform_before_transform(GstBaseTransform*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_copy_metadata(GstBaseTransform*, GstBuffer*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_decide_allocation(GstBaseTransform*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_filter_meta(GstBaseTransform*, GstQuery*, GType, GstStructure*);
-// extern GstCaps* _gotk4_gstbase1_BaseTransform_fixate_caps(GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_generate_output(GstBaseTransform*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_get_unit_size(GstBaseTransform*, GstCaps*, gsize);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_prepare_output_buffer(GstBaseTransform*, GstBuffer*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_propose_allocation(GstBaseTransform*, GstQuery*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_query(GstBaseTransform*, GstPadDirection, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_set_caps(GstBaseTransform*, GstCaps*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_sink_event(GstBaseTransform*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_src_event(GstBaseTransform*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_start(GstBaseTransform*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_stop(GstBaseTransform*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_submit_input_buffer(GstBaseTransform*, gboolean, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_transform(GstBaseTransform*, GstBuffer*, GstBuffer*);
-// extern GstCaps* _gotk4_gstbase1_BaseTransform_transform_caps(GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_transform_ip(GstBaseTransform*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_transform_meta(GstBaseTransform*, GstBuffer*, GstMeta*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_transform_size(GstBaseTransform*, GstPadDirection, GstCaps*, gsize, GstCaps*, gsize);
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_accept_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstPadDirection, GstCaps*))(fnptr))(carg0, carg1, carg2);
-// }
-// void _gotk4_gstbase1_BaseTransform_virtual_before_transform(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1) {
-// 	return ((void (*) (GstBaseTransform*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_copy_metadata(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer* carg2) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_decide_allocation(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstQuery*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_filter_meta(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1, GType carg2, GstStructure* carg3) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstQuery*, GType, GstStructure*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// GstCaps* _gotk4_gstbase1_BaseTransform_virtual_fixate_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
-// 	return ((GstCaps* (*) (GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_generate_output(void* fnptr, GstBaseTransform* carg0, GstBuffer** carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer**))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_get_unit_size(void* fnptr, GstBaseTransform* carg0, GstCaps* carg1, gsize* carg2) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstCaps*, gsize*))(fnptr))(carg0, carg1, carg2);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_prepare_output_buffer(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer** carg2) {
-// 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer*, GstBuffer**))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_propose_allocation(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1, GstQuery* carg2) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstQuery*, GstQuery*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_query(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstQuery* carg2) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstPadDirection, GstQuery*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_set_caps(void* fnptr, GstBaseTransform* carg0, GstCaps* carg1, GstCaps* carg2) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_sink_event(void* fnptr, GstBaseTransform* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_src_event(void* fnptr, GstBaseTransform* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_start(void* fnptr, GstBaseTransform* carg0) {
-// 	return ((gboolean (*) (GstBaseTransform*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_stop(void* fnptr, GstBaseTransform* carg0) {
-// 	return ((gboolean (*) (GstBaseTransform*))(fnptr))(carg0);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_submit_input_buffer(void* fnptr, GstBaseTransform* carg0, gboolean carg1, GstBuffer* carg2) {
-// 	return ((GstFlowReturn (*) (GstBaseTransform*, gboolean, GstBuffer*))(fnptr))(carg0, carg1, carg2);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_transform(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer* carg2) {
-// 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
-// }
-// GstCaps* _gotk4_gstbase1_BaseTransform_virtual_transform_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
-// 	return ((GstCaps* (*) (GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_transform_ip(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_transform_meta(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstBuffer*, GstMeta*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_transform_size(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, gsize carg3, GstCaps* carg4, gsize* carg5) {
-// 	return ((gboolean (*) (GstBaseTransform*, GstPadDirection, GstCaps*, gsize, GstCaps*, gsize*))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5);
-// }
-// extern void _gotk4_gstbase1_DataQueue_empty(GstDataQueue*);
-// extern void _gotk4_gstbase1_DataQueue_full(GstDataQueue*);
-// void _gotk4_gstbase1_DataQueue_virtual_empty(void* fnptr, GstDataQueue* carg0) {
-// 	return ((void (*) (GstDataQueue*))(fnptr))(carg0);
-// }
-// void _gotk4_gstbase1_DataQueue_virtual_full(void* fnptr, GstDataQueue* carg0) {
-// 	return ((void (*) (GstDataQueue*))(fnptr))(carg0);
-// }
-// extern GstFlowReturn _gotk4_gstbase1_PushSrc_alloc(GstPushSrc*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_PushSrc_fill(GstPushSrc*, GstBuffer*);
-// GstFlowReturn _gotk4_gstbase1_PushSrc_virtual_alloc(void* fnptr, GstPushSrc* carg0, GstBuffer** carg1) {
-// 	return ((GstFlowReturn (*) (GstPushSrc*, GstBuffer**))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstbase1_PushSrc_virtual_fill(void* fnptr, GstPushSrc* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstPushSrc*, GstBuffer*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstbase1_BaseSrc_virtual_unlock_stop(void* fnptr, *C.GstBaseSrc carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseSrc))(fnptr))(carg0);
+// }
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_accept_caps(*C.GstBaseTransform, C.GstPadDirection, *C.GstCaps);
+// extern C.void _gotk4_gstbase1_BaseTransform_before_transform(*C.GstBaseTransform, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_copy_metadata(*C.GstBaseTransform, *C.GstBuffer, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_decide_allocation(*C.GstBaseTransform, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_filter_meta(*C.GstBaseTransform, *C.GstQuery, C.GType, *C.GstStructure);
+// extern *C.GstCaps _gotk4_gstbase1_BaseTransform_fixate_caps(*C.GstBaseTransform, C.GstPadDirection, *C.GstCaps, *C.GstCaps);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseTransform_generate_output(*C.GstBaseTransform, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_get_unit_size(*C.GstBaseTransform, *C.GstCaps, C.gsize);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseTransform_prepare_output_buffer(*C.GstBaseTransform, *C.GstBuffer, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_propose_allocation(*C.GstBaseTransform, *C.GstQuery, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_query(*C.GstBaseTransform, C.GstPadDirection, *C.GstQuery);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_set_caps(*C.GstBaseTransform, *C.GstCaps, *C.GstCaps);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_sink_event(*C.GstBaseTransform, *C.GstEvent);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_src_event(*C.GstBaseTransform, *C.GstEvent);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_start(*C.GstBaseTransform);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_stop(*C.GstBaseTransform);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseTransform_submit_input_buffer(*C.GstBaseTransform, C.gboolean, *C.GstBuffer);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseTransform_transform(*C.GstBaseTransform, *C.GstBuffer, *C.GstBuffer);
+// extern *C.GstCaps _gotk4_gstbase1_BaseTransform_transform_caps(*C.GstBaseTransform, C.GstPadDirection, *C.GstCaps, *C.GstCaps);
+// extern C.GstFlowReturn _gotk4_gstbase1_BaseTransform_transform_ip(*C.GstBaseTransform, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_transform_meta(*C.GstBaseTransform, *C.GstBuffer, *C.GstMeta, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstbase1_BaseTransform_transform_size(*C.GstBaseTransform, C.GstPadDirection, *C.GstCaps, C.gsize, *C.GstCaps, C.gsize);
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_accept_caps(void* fnptr, *C.GstBaseTransform carg0, C.GstPadDirection carg1, *C.GstCaps carg2) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, C.GstPadDirection, *C.GstCaps))(fnptr))(carg0, carg1, carg2);
+// }
+// C.void _gotk4_gstbase1_BaseTransform_virtual_before_transform(void* fnptr, *C.GstBaseTransform carg0, *C.GstBuffer carg1) {
+// 	return ((C.void (*) (*C.GstBaseTransform, *C.GstBuffer))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_copy_metadata(void* fnptr, *C.GstBaseTransform carg0, *C.GstBuffer carg1, *C.GstBuffer carg2) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, *C.GstBuffer, *C.GstBuffer))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_decide_allocation(void* fnptr, *C.GstBaseTransform carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, *C.GstQuery))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_filter_meta(void* fnptr, *C.GstBaseTransform carg0, *C.GstQuery carg1, C.GType carg2, *C.GstStructure carg3) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, *C.GstQuery, C.GType, *C.GstStructure))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// *C.GstCaps _gotk4_gstbase1_BaseTransform_virtual_fixate_caps(void* fnptr, *C.GstBaseTransform carg0, C.GstPadDirection carg1, *C.GstCaps carg2, *C.GstCaps carg3) {
+// 	return ((*C.GstCaps (*) (*C.GstBaseTransform, C.GstPadDirection, *C.GstCaps, *C.GstCaps))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_generate_output(void* fnptr, *C.GstBaseTransform carg0, *C.GstBuffer* carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseTransform, *C.GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_get_unit_size(void* fnptr, *C.GstBaseTransform carg0, *C.GstCaps carg1, C.gsize* carg2) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, *C.GstCaps, C.gsize*))(fnptr))(carg0, carg1, carg2);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_prepare_output_buffer(void* fnptr, *C.GstBaseTransform carg0, *C.GstBuffer carg1, *C.GstBuffer* carg2) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseTransform, *C.GstBuffer, *C.GstBuffer*))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_propose_allocation(void* fnptr, *C.GstBaseTransform carg0, *C.GstQuery carg1, *C.GstQuery carg2) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, *C.GstQuery, *C.GstQuery))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_query(void* fnptr, *C.GstBaseTransform carg0, C.GstPadDirection carg1, *C.GstQuery carg2) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, C.GstPadDirection, *C.GstQuery))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_set_caps(void* fnptr, *C.GstBaseTransform carg0, *C.GstCaps carg1, *C.GstCaps carg2) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, *C.GstCaps, *C.GstCaps))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_sink_event(void* fnptr, *C.GstBaseTransform carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_src_event(void* fnptr, *C.GstBaseTransform carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_start(void* fnptr, *C.GstBaseTransform carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_stop(void* fnptr, *C.GstBaseTransform carg0) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform))(fnptr))(carg0);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_submit_input_buffer(void* fnptr, *C.GstBaseTransform carg0, C.gboolean carg1, *C.GstBuffer carg2) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseTransform, C.gboolean, *C.GstBuffer))(fnptr))(carg0, carg1, carg2);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_transform(void* fnptr, *C.GstBaseTransform carg0, *C.GstBuffer carg1, *C.GstBuffer carg2) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseTransform, *C.GstBuffer, *C.GstBuffer))(fnptr))(carg0, carg1, carg2);
+// }
+// *C.GstCaps _gotk4_gstbase1_BaseTransform_virtual_transform_caps(void* fnptr, *C.GstBaseTransform carg0, C.GstPadDirection carg1, *C.GstCaps carg2, *C.GstCaps carg3) {
+// 	return ((*C.GstCaps (*) (*C.GstBaseTransform, C.GstPadDirection, *C.GstCaps, *C.GstCaps))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_transform_ip(void* fnptr, *C.GstBaseTransform carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstBaseTransform, *C.GstBuffer))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_transform_meta(void* fnptr, *C.GstBaseTransform carg0, *C.GstBuffer carg1, *C.GstMeta carg2, *C.GstBuffer carg3) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, *C.GstBuffer, *C.GstMeta, *C.GstBuffer))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.gboolean _gotk4_gstbase1_BaseTransform_virtual_transform_size(void* fnptr, *C.GstBaseTransform carg0, C.GstPadDirection carg1, *C.GstCaps carg2, C.gsize carg3, *C.GstCaps carg4, C.gsize* carg5) {
+// 	return ((C.gboolean (*) (*C.GstBaseTransform, C.GstPadDirection, *C.GstCaps, C.gsize, *C.GstCaps, C.gsize*))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5);
+// }
+// extern C.void _gotk4_gstbase1_DataQueue_empty(*C.GstDataQueue);
+// extern C.void _gotk4_gstbase1_DataQueue_full(*C.GstDataQueue);
+// C.void _gotk4_gstbase1_DataQueue_virtual_empty(void* fnptr, *C.GstDataQueue carg0) {
+// 	return ((C.void (*) (*C.GstDataQueue))(fnptr))(carg0);
+// }
+// C.void _gotk4_gstbase1_DataQueue_virtual_full(void* fnptr, *C.GstDataQueue carg0) {
+// 	return ((C.void (*) (*C.GstDataQueue))(fnptr))(carg0);
+// }
+// extern C.GstFlowReturn _gotk4_gstbase1_PushSrc_alloc(*C.GstPushSrc, *C.GstBuffer);
+// extern C.GstFlowReturn _gotk4_gstbase1_PushSrc_fill(*C.GstPushSrc, *C.GstBuffer);
+// C.GstFlowReturn _gotk4_gstbase1_PushSrc_virtual_alloc(void* fnptr, *C.GstPushSrc carg0, *C.GstBuffer* carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstPushSrc, *C.GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstbase1_PushSrc_virtual_fill(void* fnptr, *C.GstPushSrc carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstPushSrc, *C.GstBuffer))(fnptr))(carg0, carg1);
 // }
 import "C"
 
@@ -1038,7 +1038,7 @@ func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbabilit
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_type_find_helper_for_data(carg1, carg2, carg3, &carg4)
 	runtime.KeepAlive(obj)
@@ -1092,7 +1092,7 @@ func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps)
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 	carg4 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C.gst_type_find_helper_for_data_with_caps(carg1, carg2, carg3, carg4, &carg5)
@@ -1155,7 +1155,7 @@ func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension 
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 	if extension != "" {
 		carg4 = (*C.gchar)(unsafe.Pointer(C.CString(extension)))
 		defer C.free(unsafe.Pointer(carg4))
@@ -3046,7 +3046,8 @@ type Aggregator interface {
 	// chain up virtual methods:
 
 	// ParentAggregate calls the default implementations of the aggregate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timeout bool 
@@ -3064,7 +3065,8 @@ type Aggregator interface {
 	//                  aggregated buffers, the subclass should call _finish_buffer.
 	ParentAggregate(timeout bool) gst.FlowReturn
 	// ParentClip calls the default implementations of the clip virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -3084,7 +3086,8 @@ type Aggregator interface {
 	//                  if the buffer should be dropped.
 	ParentClip(aggregatorPad AggregatorPad, buf *gst.Buffer) *gst.Buffer
 	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -3100,7 +3103,8 @@ type Aggregator interface {
 	//                     downstream allocation query.
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFinishBuffer calls the default implementations of the finish_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer: the #GstBuffer to push. 
@@ -3114,7 +3118,8 @@ type Aggregator interface {
 	// sent before pushing the buffer.
 	ParentFinishBuffer(buffer *gst.Buffer) gst.FlowReturn
 	// ParentFinishBufferList calls the default implementations of the finish_buffer_list virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
@@ -3128,7 +3133,8 @@ type Aggregator interface {
 	// sent before pushing the buffer.
 	ParentFinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn
 	// ParentFixateSrcCaps calls the default implementations of the fixate_src_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -3143,7 +3149,8 @@ type Aggregator interface {
 	//                   @caps. @caps is not guaranteed to be writable.
 	ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps
 	// ParentFlush calls the default implementations of the flush virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -3154,7 +3161,8 @@ type Aggregator interface {
 	//                  #GstAggregatorPad-&gt;flush.
 	ParentFlush() gst.FlowReturn
 	// ParentGetNextTime calls the default implementations of the get_next_time virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -3167,7 +3175,8 @@ type Aggregator interface {
 	//                  on all sink pads before aggregating.
 	ParentGetNextTime() gst.ClockTime
 	// ParentNegotiate calls the default implementations of the negotiate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3177,7 +3186,8 @@ type Aggregator interface {
 	// if #GstAggregatorClass::negotiate fails.
 	ParentNegotiate() bool
 	// ParentNegotiatedSrcCaps calls the default implementations of the negotiated_src_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -3190,7 +3200,8 @@ type Aggregator interface {
 	//                       Notifies subclasses what caps format has been negotiated
 	ParentNegotiatedSrcCaps(caps *gst.Caps) bool
 	// ParentPeekNextSample calls the default implementations of the peek_next_sample virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -3205,7 +3216,8 @@ type Aggregator interface {
 	// control aggregating parameters for a given set of input samples.
 	ParentPeekNextSample(aggregatorPad AggregatorPad) *gst.Sample
 	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad AggregatorPad 
@@ -3220,7 +3232,8 @@ type Aggregator interface {
 	//                     Allows the subclass to handle the allocation query from upstream.
 	ParentProposeAllocation(pad AggregatorPad, decideQuery *gst.Query, query *gst.Query) bool
 	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -3235,7 +3248,8 @@ type Aggregator interface {
 	//                  should always chain up.
 	ParentSinkEvent(aggregatorPad AggregatorPad, event *gst.Event) bool
 	// ParentSinkEventPreQueue calls the default implementations of the sink_event_pre_queue virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -3250,7 +3264,8 @@ type Aggregator interface {
 	//                        serialized events. The subclass should always chain up (Since: 1.18).
 	ParentSinkEventPreQueue(aggregatorPad AggregatorPad, event *gst.Event) gst.FlowReturn
 	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -3265,7 +3280,8 @@ type Aggregator interface {
 	//                  should always chain up.
 	ParentSinkQuery(aggregatorPad AggregatorPad, query *gst.Query) bool
 	// ParentSinkQueryPreQueue calls the default implementations of the sink_query_pre_queue virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -3280,7 +3296,8 @@ type Aggregator interface {
 	//                        serialized queries. The subclass should always chain up (Since: 1.18).
 	ParentSinkQueryPreQueue(aggregatorPad AggregatorPad, query *gst.Query) bool
 	// ParentSrcActivate calls the default implementations of the src_activate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- mode gst.PadMode 
@@ -3295,7 +3312,8 @@ type Aggregator interface {
 	//                  pad task right after that call.
 	ParentSrcActivate(mode gst.PadMode, active bool) bool
 	// ParentSrcEvent calls the default implementations of the src_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -3309,7 +3327,8 @@ type Aggregator interface {
 	//                  should always chain up.
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the src_query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -3323,7 +3342,8 @@ type Aggregator interface {
 	//                  should always chain up.
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3334,7 +3354,8 @@ type Aggregator interface {
 	//                  aggregated buffers.
 	ParentStart() bool
 	// ParentStop calls the default implementations of the stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3344,7 +3365,8 @@ type Aggregator interface {
 	//                  The subclass should free all resources and reset its state.
 	ParentStop() bool
 	// ParentUpdateSrcCaps calls the default implementations of the update_src_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -3496,7 +3518,7 @@ func (self *AggregatorInstance) GetAllocator() (gst.Allocator, gst.AllocationPar
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
 
 	return allocator, params
 }
@@ -3901,7 +3923,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// Aggregate allows you to override the implementation of the virtual method aggregate.
+	// // Aggregate allows you to override the implementation of the virtual method aggregate.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timeout bool 
@@ -3918,7 +3941,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  of. Once / if a buffer has been constructed from the
 	//                  aggregated buffers, the subclass should call _finish_buffer.
 	Aggregate func(Instance, bool) gst.FlowReturn
-	// Clip allows you to override the implementation of the virtual method clip.
+	// // Clip allows you to override the implementation of the virtual method clip.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -3937,7 +3961,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  buf and should output a buffer or return NULL in
 	//                  if the buffer should be dropped.
 	Clip func(Instance, AggregatorPad, *gst.Buffer) *gst.Buffer
-	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -3952,7 +3977,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                     buffers. The passed in query contains the result of the
 	//                     downstream allocation query.
 	DecideAllocation func(Instance, *gst.Query) bool
-	// FinishBuffer allows you to override the implementation of the virtual method finish_buffer.
+	// // FinishBuffer allows you to override the implementation of the virtual method finish_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer: the #GstBuffer to push. 
@@ -3965,7 +3991,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// mandatory events such as stream-start, caps, and segment events will be
 	// sent before pushing the buffer.
 	FinishBuffer func(Instance, *gst.Buffer) gst.FlowReturn
-	// FinishBufferList allows you to override the implementation of the virtual method finish_buffer_list.
+	// // FinishBufferList allows you to override the implementation of the virtual method finish_buffer_list.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
@@ -3978,7 +4005,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// mandatory events such as stream-start, caps, and segment events will be
 	// sent before pushing the buffer.
 	FinishBufferList func(Instance, *gst.BufferList) gst.FlowReturn
-	// FixateSrcCaps allows you to override the implementation of the virtual method fixate_src_caps.
+	// // FixateSrcCaps allows you to override the implementation of the virtual method fixate_src_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -3992,7 +4020,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                   ownership of @caps and returns a fixated version of
 	//                   @caps. @caps is not guaranteed to be writable.
 	FixateSrcCaps func(Instance, *gst.Caps) *gst.Caps
-	// Flush allows you to override the implementation of the virtual method flush.
+	// // Flush allows you to override the implementation of the virtual method flush.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -4002,7 +4031,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  stops have been received. Flush pad-specific data in
 	//                  #GstAggregatorPad-&gt;flush.
 	Flush func(Instance) gst.FlowReturn
-	// GetNextTime allows you to override the implementation of the virtual method get_next_time.
+	// // GetNextTime allows you to override the implementation of the virtual method get_next_time.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -4014,7 +4044,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  GST_CLOCK_TIME_NONE causing the element to wait for buffers
 	//                  on all sink pads before aggregating.
 	GetNextTime func(Instance) gst.ClockTime
-	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// // Negotiate allows you to override the implementation of the virtual method negotiate.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4023,7 +4054,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
 	// if #GstAggregatorClass::negotiate fails.
 	Negotiate func(Instance) bool
-	// NegotiatedSrcCaps allows you to override the implementation of the virtual method negotiated_src_caps.
+	// // NegotiatedSrcCaps allows you to override the implementation of the virtual method negotiated_src_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -4035,7 +4067,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// Optional.
 	//                       Notifies subclasses what caps format has been negotiated
 	NegotiatedSrcCaps func(Instance, *gst.Caps) bool
-	// PeekNextSample allows you to override the implementation of the virtual method peek_next_sample.
+	// // PeekNextSample allows you to override the implementation of the virtual method peek_next_sample.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -4049,7 +4082,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// a #GstAggregator::samples-selected handler, and can be used to precisely
 	// control aggregating parameters for a given set of input samples.
 	PeekNextSample func(Instance, AggregatorPad) *gst.Sample
-	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad AggregatorPad 
@@ -4063,7 +4097,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// Optional.
 	//                     Allows the subclass to handle the allocation query from upstream.
 	ProposeAllocation func(Instance, AggregatorPad, *gst.Query, *gst.Query) bool
-	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -4077,7 +4112,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  Called when an event is received on a sink pad, the subclass
 	//                  should always chain up.
 	SinkEvent func(Instance, AggregatorPad, *gst.Event) bool
-	// SinkEventPreQueue allows you to override the implementation of the virtual method sink_event_pre_queue.
+	// // SinkEventPreQueue allows you to override the implementation of the virtual method sink_event_pre_queue.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -4091,7 +4127,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                        Called when an event is received on a sink pad before queueing up
 	//                        serialized events. The subclass should always chain up (Since: 1.18).
 	SinkEventPreQueue func(Instance, AggregatorPad, *gst.Event) gst.FlowReturn
-	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -4105,7 +4142,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  Called when a query is received on a sink pad, the subclass
 	//                  should always chain up.
 	SinkQuery func(Instance, AggregatorPad, *gst.Query) bool
-	// SinkQueryPreQueue allows you to override the implementation of the virtual method sink_query_pre_queue.
+	// // SinkQueryPreQueue allows you to override the implementation of the virtual method sink_query_pre_queue.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregatorPad AggregatorPad 
@@ -4119,7 +4157,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                        Called when a query is received on a sink pad before queueing up
 	//                        serialized queries. The subclass should always chain up (Since: 1.18).
 	SinkQueryPreQueue func(Instance, AggregatorPad, *gst.Query) bool
-	// SrcActivate allows you to override the implementation of the virtual method src_activate.
+	// // SrcActivate allows you to override the implementation of the virtual method src_activate.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- mode gst.PadMode 
@@ -4133,7 +4172,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  Called when the src pad is activated, it will start/stop its
 	//                  pad task right after that call.
 	SrcActivate func(Instance, gst.PadMode, bool) bool
-	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// // SrcEvent allows you to override the implementation of the virtual method src_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -4146,7 +4186,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  Called when an event is received on the src pad, the subclass
 	//                  should always chain up.
 	SrcEvent func(Instance, *gst.Event) bool
-	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// // SrcQuery allows you to override the implementation of the virtual method src_query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -4159,7 +4200,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  Called when a query is received on the src pad, the subclass
 	//                  should always chain up.
 	SrcQuery func(Instance, *gst.Query) bool
-	// Start allows you to override the implementation of the virtual method start.
+	// // Start allows you to override the implementation of the virtual method start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4169,7 +4211,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  The subclass should get ready to process
 	//                  aggregated buffers.
 	Start func(Instance) bool
-	// Stop allows you to override the implementation of the virtual method stop.
+	// // Stop allows you to override the implementation of the virtual method stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4178,7 +4221,8 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	//                  Called when the element goes from PAUSED to READY.
 	//                  The subclass should free all resources and reset its state.
 	Stop func(Instance) bool
-	// UpdateSrcCaps allows you to override the implementation of the virtual method update_src_caps.
+	// // UpdateSrcCaps allows you to override the implementation of the virtual method update_src_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -4721,7 +4765,8 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 }
 
 // ParentAggregate calls the default implementations of the aggregate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- timeout bool 
@@ -4760,7 +4805,8 @@ func (aggregator *AggregatorInstance) ParentAggregate(timeout bool) gst.FlowRetu
 }
 
 // ParentClip calls the default implementations of the clip virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- aggregatorPad AggregatorPad 
@@ -4802,7 +4848,8 @@ func (aggregator *AggregatorInstance) ParentClip(aggregatorPad AggregatorPad, bu
 }
 
 // ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -4839,7 +4886,8 @@ func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
 }
 
 // ParentFinishBuffer calls the default implementations of the finish_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer: the #GstBuffer to push. 
@@ -4872,7 +4920,8 @@ func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst
 }
 
 // ParentFinishBufferList calls the default implementations of the finish_buffer_list virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
@@ -4905,7 +4954,8 @@ func (aggregator *AggregatorInstance) ParentFinishBufferList(bufferlist *gst.Buf
 }
 
 // ParentFixateSrcCaps calls the default implementations of the fixate_src_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -4939,7 +4989,8 @@ func (self *AggregatorInstance) ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps {
 }
 
 // ParentFlush calls the default implementations of the flush virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -4965,7 +5016,8 @@ func (aggregator *AggregatorInstance) ParentFlush() gst.FlowReturn {
 }
 
 // ParentGetNextTime calls the default implementations of the get_next_time virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -4993,7 +5045,8 @@ func (aggregator *AggregatorInstance) ParentGetNextTime() gst.ClockTime {
 }
 
 // ParentNegotiate calls the default implementations of the negotiate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5020,7 +5073,8 @@ func (self *AggregatorInstance) ParentNegotiate() bool {
 }
 
 // ParentNegotiatedSrcCaps calls the default implementations of the negotiated_src_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -5054,7 +5108,8 @@ func (self *AggregatorInstance) ParentNegotiatedSrcCaps(caps *gst.Caps) bool {
 }
 
 // ParentPeekNextSample calls the default implementations of the peek_next_sample virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- aggregatorPad AggregatorPad 
@@ -5090,7 +5145,8 @@ func (aggregator *AggregatorInstance) ParentPeekNextSample(aggregatorPad Aggrega
 }
 
 // ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- pad AggregatorPad 
@@ -5132,7 +5188,8 @@ func (self *AggregatorInstance) ParentProposeAllocation(pad AggregatorPad, decid
 }
 
 // ParentSinkEvent calls the default implementations of the sink_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- aggregatorPad AggregatorPad 
@@ -5171,7 +5228,8 @@ func (aggregator *AggregatorInstance) ParentSinkEvent(aggregatorPad AggregatorPa
 }
 
 // ParentSinkEventPreQueue calls the default implementations of the sink_event_pre_queue virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- aggregatorPad AggregatorPad 
@@ -5208,7 +5266,8 @@ func (aggregator *AggregatorInstance) ParentSinkEventPreQueue(aggregatorPad Aggr
 }
 
 // ParentSinkQuery calls the default implementations of the sink_query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- aggregatorPad AggregatorPad 
@@ -5247,7 +5306,8 @@ func (aggregator *AggregatorInstance) ParentSinkQuery(aggregatorPad AggregatorPa
 }
 
 // ParentSinkQueryPreQueue calls the default implementations of the sink_query_pre_queue virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- aggregatorPad AggregatorPad 
@@ -5286,7 +5346,8 @@ func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad Aggr
 }
 
 // ParentSrcActivate calls the default implementations of the src_activate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- mode gst.PadMode 
@@ -5327,7 +5388,8 @@ func (aggregator *AggregatorInstance) ParentSrcActivate(mode gst.PadMode, active
 }
 
 // ParentSrcEvent calls the default implementations of the src_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -5362,7 +5424,8 @@ func (aggregator *AggregatorInstance) ParentSrcEvent(event *gst.Event) bool {
 }
 
 // ParentSrcQuery calls the default implementations of the src_query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -5397,7 +5460,8 @@ func (aggregator *AggregatorInstance) ParentSrcQuery(query *gst.Query) bool {
 }
 
 // ParentStart calls the default implementations of the start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5425,7 +5489,8 @@ func (aggregator *AggregatorInstance) ParentStart() bool {
 }
 
 // ParentStop calls the default implementations of the stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5452,7 +5517,8 @@ func (aggregator *AggregatorInstance) ParentStop() bool {
 }
 
 // ParentUpdateSrcCaps calls the default implementations of the update_src_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -5579,7 +5645,8 @@ type AggregatorPad interface {
 	// chain up virtual methods:
 
 	// ParentFlush calls the default implementations of the flush virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregator Aggregator 
@@ -5594,7 +5661,8 @@ type AggregatorPad interface {
 	//               pads to be flushed while others might not be.
 	ParentFlush(aggregator Aggregator) gst.FlowReturn
 	// ParentSkipBuffer calls the default implementations of the skip_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregator Aggregator 
@@ -5814,7 +5882,8 @@ type AggregatorPadOverrides[Instance AggregatorPad] struct {
 	// gst.PadOverrides allows you to override virtual methods from the parent class gst.Pad
 	gst.PadOverrides[Instance]
 
-	// Flush allows you to override the implementation of the virtual method flush.
+	// // Flush allows you to override the implementation of the virtual method flush.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregator Aggregator 
@@ -5828,7 +5897,8 @@ type AggregatorPadOverrides[Instance AggregatorPad] struct {
 	//               to flush any information specific to the pad, it allows for individual
 	//               pads to be flushed while others might not be.
 	Flush func(Instance, Aggregator) gst.FlowReturn
-	// SkipBuffer allows you to override the implementation of the virtual method skip_buffer.
+	// // SkipBuffer allows you to override the implementation of the virtual method skip_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- aggregator Aggregator 
@@ -5901,7 +5971,8 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 }
 
 // ParentFlush calls the default implementations of the flush virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- aggregator Aggregator 
@@ -5935,7 +6006,8 @@ func (aggpad *AggregatorPadInstance) ParentFlush(aggregator Aggregator) gst.Flow
 }
 
 // ParentSkipBuffer calls the default implementations of the skip_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- aggregator Aggregator 
@@ -6387,7 +6459,8 @@ type BaseParse interface {
 	// chain up virtual methods:
 
 	// ParentConvert calls the default implementations of the convert virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- srcFormat gst.Format 
@@ -6403,7 +6476,8 @@ type BaseParse interface {
 	//                  Convert between formats.
 	ParentConvert(srcFormat gst.Format, srcValue int64, destFormat gst.Format, destValue *int64) bool
 	// ParentDetect calls the default implementations of the detect virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -6418,7 +6492,8 @@ type BaseParse interface {
 	//                   the stream format.
 	ParentDetect(buffer *gst.Buffer) gst.FlowReturn
 	// ParentGetSinkCaps calls the default implementations of the get_sink_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps 
@@ -6431,7 +6506,8 @@ type BaseParse interface {
 	//                  Allows the subclass to do its own sink get caps if needed.
 	ParentGetSinkCaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *BaseParseFrame 
@@ -6453,7 +6529,8 @@ type BaseParse interface {
 	// if desired.
 	ParentHandleFrame(frame *BaseParseFrame) (int32, gst.FlowReturn)
 	// ParentPrePushFrame calls the default implementations of the pre_push_frame virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *BaseParseFrame 
@@ -6470,7 +6547,8 @@ type BaseParse interface {
 	//                   (e.g. custom segment clipping).
 	ParentPrePushFrame(frame *BaseParseFrame) gst.FlowReturn
 	// ParentSetSinkCaps calls the default implementations of the set_sink_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -6483,7 +6561,8 @@ type BaseParse interface {
 	//                  Allows the subclass to be notified of the actual caps set.
 	ParentSetSinkCaps(caps *gst.Caps) bool
 	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -6498,7 +6577,8 @@ type BaseParse interface {
 	//                  run.
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -6513,7 +6593,8 @@ type BaseParse interface {
 	//                   run (Since: 1.2)
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the src_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -6527,7 +6608,8 @@ type BaseParse interface {
 	//                  parent to let the default handler run.
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the src_query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -6541,7 +6623,8 @@ type BaseParse interface {
 	//                   parent to let the default handler run (Since: 1.2)
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -6551,7 +6634,8 @@ type BaseParse interface {
 	//                  Allows opening external resources.
 	ParentStart() bool
 	// ParentStop calls the default implementations of the stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7122,7 +7206,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// Convert allows you to override the implementation of the virtual method convert.
+	// // Convert allows you to override the implementation of the virtual method convert.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- srcFormat gst.Format 
@@ -7137,7 +7222,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// Optional.
 	//                  Convert between formats.
 	Convert func(Instance, gst.Format, int64, gst.Format, *int64) bool
-	// Detect allows you to override the implementation of the virtual method detect.
+	// // Detect allows you to override the implementation of the virtual method detect.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -7151,7 +7237,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	//                   the first buffers. Can be used by the subclass to detect
 	//                   the stream format.
 	Detect func(Instance, *gst.Buffer) gst.FlowReturn
-	// GetSinkCaps allows you to override the implementation of the virtual method get_sink_caps.
+	// // GetSinkCaps allows you to override the implementation of the virtual method get_sink_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps 
@@ -7163,7 +7250,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// Optional.
 	//                  Allows the subclass to do its own sink get caps if needed.
 	GetSinkCaps func(Instance, *gst.Caps) *gst.Caps
-	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *BaseParseFrame 
@@ -7184,7 +7272,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// though subclass may still set buffer timestamp and duration
 	// if desired.
 	HandleFrame func(Instance, *BaseParseFrame) (int32, gst.FlowReturn)
-	// PrePushFrame allows you to override the implementation of the virtual method pre_push_frame.
+	// // PrePushFrame allows you to override the implementation of the virtual method pre_push_frame.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *BaseParseFrame 
@@ -7200,7 +7289,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	//                   decide whether this buffer should be dropped or not
 	//                   (e.g. custom segment clipping).
 	PrePushFrame func(Instance, *BaseParseFrame) gst.FlowReturn
-	// SetSinkCaps allows you to override the implementation of the virtual method set_sink_caps.
+	// // SetSinkCaps allows you to override the implementation of the virtual method set_sink_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -7212,7 +7302,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// Optional.
 	//                  Allows the subclass to be notified of the actual caps set.
 	SetSinkCaps func(Instance, *gst.Caps) bool
-	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -7226,7 +7317,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	//                  up to the parent implementation to let the default handler
 	//                  run.
 	SinkEvent func(Instance, *gst.Event) bool
-	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -7240,7 +7332,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	//                   up to the parent implementation to let the default handler
 	//                   run (Since: 1.2)
 	SinkQuery func(Instance, *gst.Query) bool
-	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// // SrcEvent allows you to override the implementation of the virtual method src_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -7253,7 +7346,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	//                  Event handler on the source pad. Should chain up to the
 	//                  parent to let the default handler run.
 	SrcEvent func(Instance, *gst.Event) bool
-	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// // SrcQuery allows you to override the implementation of the virtual method src_query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -7266,7 +7360,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	//                   Query handler on the source pad. Should chain up to the
 	//                   parent to let the default handler run (Since: 1.2)
 	SrcQuery func(Instance, *gst.Query) bool
-	// Start allows you to override the implementation of the virtual method start.
+	// // Start allows you to override the implementation of the virtual method start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7275,7 +7370,8 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	//                  Called when the element starts processing.
 	//                  Allows opening external resources.
 	Start func(Instance) bool
-	// Stop allows you to override the implementation of the virtual method stop.
+	// // Stop allows you to override the implementation of the virtual method stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7312,7 +7408,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				destFormat = gst.Format(carg3)
 				_ = destValue
 				_ = carg4
-				panic("unimplemented conversion of *int64 (gint64*)")
+				panic("unimplemented conversion of *int64 (*C.gint64)")
 
 				goret = overrides.Convert(parse, srcFormat, srcValue, destFormat, destValue)
 
@@ -7581,7 +7677,8 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 }
 
 // ParentConvert calls the default implementations of the convert virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- srcFormat gst.Format 
@@ -7610,7 +7707,7 @@ func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int
 	carg3 = C.GstFormat(destFormat)
 	_ = destValue
 	_ = carg4
-	panic("unimplemented conversion of *int64 (gint64*)")
+	panic("unimplemented conversion of *int64 (*C.gint64)")
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_convert(unsafe.Pointer(parentclass.convert), carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(parse)
@@ -7629,7 +7726,8 @@ func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int
 }
 
 // ParentDetect calls the default implementations of the detect virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer 
@@ -7663,7 +7761,8 @@ func (parse *BaseParseInstance) ParentDetect(buffer *gst.Buffer) gst.FlowReturn 
 }
 
 // ParentGetSinkCaps calls the default implementations of the get_sink_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- filter *gst.Caps 
@@ -7695,7 +7794,8 @@ func (parse *BaseParseInstance) ParentGetSinkCaps(filter *gst.Caps) *gst.Caps {
 }
 
 // ParentHandleFrame calls the default implementations of the handle_frame virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- frame *BaseParseFrame 
@@ -7739,7 +7839,8 @@ func (parse *BaseParseInstance) ParentHandleFrame(frame *BaseParseFrame) (int32,
 }
 
 // ParentPrePushFrame calls the default implementations of the pre_push_frame virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- frame *BaseParseFrame 
@@ -7775,7 +7876,8 @@ func (parse *BaseParseInstance) ParentPrePushFrame(frame *BaseParseFrame) gst.Fl
 }
 
 // ParentSetSinkCaps calls the default implementations of the set_sink_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -7809,7 +7911,8 @@ func (parse *BaseParseInstance) ParentSetSinkCaps(caps *gst.Caps) bool {
 }
 
 // ParentSinkEvent calls the default implementations of the sink_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -7845,7 +7948,8 @@ func (parse *BaseParseInstance) ParentSinkEvent(event *gst.Event) bool {
 }
 
 // ParentSinkQuery calls the default implementations of the sink_query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -7881,7 +7985,8 @@ func (parse *BaseParseInstance) ParentSinkQuery(query *gst.Query) bool {
 }
 
 // ParentSrcEvent calls the default implementations of the src_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -7916,7 +8021,8 @@ func (parse *BaseParseInstance) ParentSrcEvent(event *gst.Event) bool {
 }
 
 // ParentSrcQuery calls the default implementations of the src_query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -7951,7 +8057,8 @@ func (parse *BaseParseInstance) ParentSrcQuery(query *gst.Query) bool {
 }
 
 // ParentStart calls the default implementations of the start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7978,7 +8085,8 @@ func (parse *BaseParseInstance) ParentStart() bool {
 }
 
 // ParentStop calls the default implementations of the stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -8540,7 +8648,8 @@ type BaseSink interface {
 	// chain up virtual methods:
 
 	// ParentActivatePull calls the default implementations of the activate_pull virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- active bool 
@@ -8556,7 +8665,8 @@ type BaseSink interface {
 	//     mode. The default implementation starts a task on the sink pad.
 	ParentActivatePull(active bool) bool
 	// ParentEvent calls the default implementations of the event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -8568,7 +8678,8 @@ type BaseSink interface {
 	// Override this to handle events arriving on the sink pad
 	ParentEvent(event *gst.Event) bool
 	// ParentFixate calls the default implementations of the fixate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -8581,7 +8692,8 @@ type BaseSink interface {
 	//     ideas about what should be the default values for the caps you support.
 	ParentFixate(caps *gst.Caps) *gst.Caps
 	// ParentGetCaps calls the default implementations of the get_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps (nullable) 
@@ -8593,7 +8705,8 @@ type BaseSink interface {
 	// Called to get sink pad caps from the subclass.
 	ParentGetCaps(filter *gst.Caps) *gst.Caps
 	// ParentGetTimes calls the default implementations of the get_times virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -8606,7 +8719,8 @@ type BaseSink interface {
 	// Get the start and end times for syncing on this buffer.
 	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// ParentPrepare calls the default implementations of the prepare virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -8619,7 +8733,8 @@ type BaseSink interface {
 	//     function is called before synchronisation is performed.
 	ParentPrepare(buffer *gst.Buffer) gst.FlowReturn
 	// ParentPrepareList calls the default implementations of the prepare_list virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bufferList *gst.BufferList 
@@ -8632,7 +8747,8 @@ type BaseSink interface {
 	//     function is called before synchronisation is performed.
 	ParentPrepareList(bufferList *gst.BufferList) gst.FlowReturn
 	// ParentPreroll calls the default implementations of the preroll virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -8644,7 +8760,8 @@ type BaseSink interface {
 	// Called to present the preroll buffer if desired.
 	ParentPreroll(buffer *gst.Buffer) gst.FlowReturn
 	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -8656,7 +8773,8 @@ type BaseSink interface {
 	// configure the allocation query
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentQuery calls the default implementations of the query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -8668,7 +8786,8 @@ type BaseSink interface {
 	// perform a #GstQuery on the element.
 	ParentQuery(query *gst.Query) bool
 	// ParentRender calls the default implementations of the render virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -8681,7 +8800,8 @@ type BaseSink interface {
 	//     correct moment if the #GstBaseSink has been set to sync to the clock.
 	ParentRender(buffer *gst.Buffer) gst.FlowReturn
 	// ParentRenderList calls the default implementations of the render_list virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bufferList *gst.BufferList 
@@ -8694,7 +8814,8 @@ type BaseSink interface {
 	//     buffers.
 	ParentRenderList(bufferList *gst.BufferList) gst.FlowReturn
 	// ParentSetCaps calls the default implementations of the set_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -8706,7 +8827,8 @@ type BaseSink interface {
 	// Notify subclass of changed caps
 	ParentSetCaps(caps *gst.Caps) bool
 	// ParentStart calls the default implementations of the start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -8714,7 +8836,8 @@ type BaseSink interface {
 	// Start processing. Ideal for opening resources in the subclass
 	ParentStart() bool
 	// ParentStop calls the default implementations of the stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -8722,7 +8845,8 @@ type BaseSink interface {
 	// Stop processing. Subclasses should use this to close resources.
 	ParentStop() bool
 	// ParentUnlock calls the default implementations of the unlock virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -8731,7 +8855,8 @@ type BaseSink interface {
 	//     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
 	ParentUnlock() bool
 	// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -8743,7 +8868,8 @@ type BaseSink interface {
 	//     #GstBaseSinkClass::render is called again.
 	ParentUnlockStop() bool
 	// ParentWaitEvent calls the default implementations of the wait_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -9675,7 +9801,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// ActivatePull allows you to override the implementation of the virtual method activate_pull.
+	// // ActivatePull allows you to override the implementation of the virtual method activate_pull.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- active bool 
@@ -9690,7 +9817,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	//     "active" argument. Called after actually activating the sink pad in pull
 	//     mode. The default implementation starts a task on the sink pad.
 	ActivatePull func(Instance, bool) bool
-	// Event allows you to override the implementation of the virtual method event.
+	// // Event allows you to override the implementation of the virtual method event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -9701,7 +9829,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	//
 	// Override this to handle events arriving on the sink pad
 	Event func(Instance, *gst.Event) bool
-	// Fixate allows you to override the implementation of the virtual method fixate.
+	// // Fixate allows you to override the implementation of the virtual method fixate.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -9713,7 +9842,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// Only useful in pull mode. Implement if you have
 	//     ideas about what should be the default values for the caps you support.
 	Fixate func(Instance, *gst.Caps) *gst.Caps
-	// GetCaps allows you to override the implementation of the virtual method get_caps.
+	// // GetCaps allows you to override the implementation of the virtual method get_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps (nullable) 
@@ -9724,7 +9854,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	//
 	// Called to get sink pad caps from the subclass.
 	GetCaps func(Instance, *gst.Caps) *gst.Caps
-	// GetTimes allows you to override the implementation of the virtual method get_times.
+	// // GetTimes allows you to override the implementation of the virtual method get_times.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -9736,7 +9867,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	//
 	// Get the start and end times for syncing on this buffer.
 	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
-	// Prepare allows you to override the implementation of the virtual method prepare.
+	// // Prepare allows you to override the implementation of the virtual method prepare.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -9748,7 +9880,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// Called to prepare the buffer for @render and @preroll. This
 	//     function is called before synchronisation is performed.
 	Prepare func(Instance, *gst.Buffer) gst.FlowReturn
-	// PrepareList allows you to override the implementation of the virtual method prepare_list.
+	// // PrepareList allows you to override the implementation of the virtual method prepare_list.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bufferList *gst.BufferList 
@@ -9760,7 +9893,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// Called to prepare the buffer list for @render_list. This
 	//     function is called before synchronisation is performed.
 	PrepareList func(Instance, *gst.BufferList) gst.FlowReturn
-	// Preroll allows you to override the implementation of the virtual method preroll.
+	// // Preroll allows you to override the implementation of the virtual method preroll.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -9771,7 +9905,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	//
 	// Called to present the preroll buffer if desired.
 	Preroll func(Instance, *gst.Buffer) gst.FlowReturn
-	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -9782,7 +9917,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	//
 	// configure the allocation query
 	ProposeAllocation func(Instance, *gst.Query) bool
-	// Query allows you to override the implementation of the virtual method query.
+	// // Query allows you to override the implementation of the virtual method query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -9793,7 +9929,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	//
 	// perform a #GstQuery on the element.
 	Query func(Instance, *gst.Query) bool
-	// Render allows you to override the implementation of the virtual method render.
+	// // Render allows you to override the implementation of the virtual method render.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -9805,7 +9942,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// Called when a buffer should be presented or output, at the
 	//     correct moment if the #GstBaseSink has been set to sync to the clock.
 	Render func(Instance, *gst.Buffer) gst.FlowReturn
-	// RenderList allows you to override the implementation of the virtual method render_list.
+	// // RenderList allows you to override the implementation of the virtual method render_list.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bufferList *gst.BufferList 
@@ -9817,7 +9955,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// Same as @render but used with buffer lists instead of
 	//     buffers.
 	RenderList func(Instance, *gst.BufferList) gst.FlowReturn
-	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// // SetCaps allows you to override the implementation of the virtual method set_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -9828,21 +9967,24 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	//
 	// Notify subclass of changed caps
 	SetCaps func(Instance, *gst.Caps) bool
-	// Start allows you to override the implementation of the virtual method start.
+	// // Start allows you to override the implementation of the virtual method start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// Start processing. Ideal for opening resources in the subclass
 	Start func(Instance) bool
-	// Stop allows you to override the implementation of the virtual method stop.
+	// // Stop allows you to override the implementation of the virtual method stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// Stop processing. Subclasses should use this to close resources.
 	Stop func(Instance) bool
-	// Unlock allows you to override the implementation of the virtual method unlock.
+	// // Unlock allows you to override the implementation of the virtual method unlock.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -9850,7 +9992,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// Unlock any pending access to the resource. Subclasses should
 	//     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
 	Unlock func(Instance) bool
-	// UnlockStop allows you to override the implementation of the virtual method unlock_stop.
+	// // UnlockStop allows you to override the implementation of the virtual method unlock_stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -9861,7 +10004,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	//     gst_base_sink_wait() or gst_wait_sink_wait_clock() return or
 	//     #GstBaseSinkClass::render is called again.
 	UnlockStop func(Instance) bool
-	// WaitEvent allows you to override the implementation of the virtual method wait_event.
+	// // WaitEvent allows you to override the implementation of the virtual method wait_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -10295,7 +10439,8 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 }
 
 // ParentActivatePull calls the default implementations of the activate_pull virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- active bool 
@@ -10334,7 +10479,8 @@ func (sink *BaseSinkInstance) ParentActivatePull(active bool) bool {
 }
 
 // ParentEvent calls the default implementations of the event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -10367,7 +10513,8 @@ func (sink *BaseSinkInstance) ParentEvent(event *gst.Event) bool {
 }
 
 // ParentFixate calls the default implementations of the fixate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -10399,7 +10546,8 @@ func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 }
 
 // ParentGetCaps calls the default implementations of the get_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- filter *gst.Caps (nullable) 
@@ -10432,7 +10580,8 @@ func (sink *BaseSinkInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 }
 
 // ParentGetTimes calls the default implementations of the get_times virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer 
@@ -10467,7 +10616,8 @@ func (sink *BaseSinkInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime,
 }
 
 // ParentPrepare calls the default implementations of the prepare virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer 
@@ -10499,7 +10649,8 @@ func (sink *BaseSinkInstance) ParentPrepare(buffer *gst.Buffer) gst.FlowReturn {
 }
 
 // ParentPrepareList calls the default implementations of the prepare_list virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- bufferList *gst.BufferList 
@@ -10531,7 +10682,8 @@ func (sink *BaseSinkInstance) ParentPrepareList(bufferList *gst.BufferList) gst.
 }
 
 // ParentPreroll calls the default implementations of the preroll virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer 
@@ -10562,7 +10714,8 @@ func (sink *BaseSinkInstance) ParentPreroll(buffer *gst.Buffer) gst.FlowReturn {
 }
 
 // ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -10595,7 +10748,8 @@ func (sink *BaseSinkInstance) ParentProposeAllocation(query *gst.Query) bool {
 }
 
 // ParentQuery calls the default implementations of the query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -10628,7 +10782,8 @@ func (sink *BaseSinkInstance) ParentQuery(query *gst.Query) bool {
 }
 
 // ParentRender calls the default implementations of the render virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer 
@@ -10660,7 +10815,8 @@ func (sink *BaseSinkInstance) ParentRender(buffer *gst.Buffer) gst.FlowReturn {
 }
 
 // ParentRenderList calls the default implementations of the render_list virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- bufferList *gst.BufferList 
@@ -10692,7 +10848,8 @@ func (sink *BaseSinkInstance) ParentRenderList(bufferList *gst.BufferList) gst.F
 }
 
 // ParentSetCaps calls the default implementations of the set_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -10725,7 +10882,8 @@ func (sink *BaseSinkInstance) ParentSetCaps(caps *gst.Caps) bool {
 }
 
 // ParentStart calls the default implementations of the start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -10750,7 +10908,8 @@ func (sink *BaseSinkInstance) ParentStart() bool {
 }
 
 // ParentStop calls the default implementations of the stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -10775,7 +10934,8 @@ func (sink *BaseSinkInstance) ParentStop() bool {
 }
 
 // ParentUnlock calls the default implementations of the unlock virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -10801,7 +10961,8 @@ func (sink *BaseSinkInstance) ParentUnlock() bool {
 }
 
 // ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -10830,7 +10991,8 @@ func (sink *BaseSinkInstance) ParentUnlockStop() bool {
 }
 
 // ParentWaitEvent calls the default implementations of the wait_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -11320,7 +11482,8 @@ type BaseSrc interface {
 	// chain up virtual methods:
 
 	// ParentAlloc calls the default implementations of the alloc virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- offset uint64 
@@ -11335,7 +11498,8 @@ type BaseSrc interface {
 	// implementation will use the negotiated allocator.
 	ParentAlloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn)
 	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -11347,7 +11511,8 @@ type BaseSrc interface {
 	// configure the allocation query
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentDoSeek calls the default implementations of the do_seek virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- segment *gst.Segment 
@@ -11359,7 +11524,8 @@ type BaseSrc interface {
 	// Perform seeking on the resource to the indicated segment.
 	ParentDoSeek(segment *gst.Segment) bool
 	// ParentEvent calls the default implementations of the event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -11371,7 +11537,8 @@ type BaseSrc interface {
 	// Override this to implement custom event handling.
 	ParentEvent(event *gst.Event) bool
 	// ParentFill calls the default implementations of the fill virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- offset uint64 
@@ -11386,7 +11553,8 @@ type BaseSrc interface {
 	//   passed buffer is guaranteed to hold the requested amount of bytes.
 	ParentFill(offset uint64, size uint, buf *gst.Buffer) gst.FlowReturn
 	// ParentFixate calls the default implementations of the fixate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -11398,7 +11566,8 @@ type BaseSrc interface {
 	// Called if, in negotiation, caps need fixating.
 	ParentFixate(caps *gst.Caps) *gst.Caps
 	// ParentGetCaps calls the default implementations of the get_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps (nullable) 
@@ -11410,7 +11579,8 @@ type BaseSrc interface {
 	// Called to get the caps to report.
 	ParentGetCaps(filter *gst.Caps) *gst.Caps
 	// ParentGetSize calls the default implementations of the get_size virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- size uint64 
@@ -11420,7 +11590,8 @@ type BaseSrc interface {
 	// gst_base_src_set_format().
 	ParentGetSize() (uint64, bool)
 	// ParentGetTimes calls the default implementations of the get_times virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -11434,7 +11605,8 @@ type BaseSrc interface {
 	// out. The base class will sync on the clock using these times.
 	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// ParentIsSeekable calls the default implementations of the is_seekable virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11442,7 +11614,8 @@ type BaseSrc interface {
 	// Check if the source can seek
 	ParentIsSeekable() bool
 	// ParentNegotiate calls the default implementations of the negotiate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11456,7 +11629,8 @@ type BaseSrc interface {
 	// buffer is allocated.
 	ParentNegotiate() bool
 	// ParentPrepareSeekSegment calls the default implementations of the prepare_seek_segment virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- seek *gst.Event 
@@ -11474,7 +11648,8 @@ type BaseSrc interface {
 	//   segment in that format.
 	ParentPrepareSeekSegment(seek *gst.Event, segment *gst.Segment) bool
 	// ParentQuery calls the default implementations of the query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -11486,7 +11661,8 @@ type BaseSrc interface {
 	// Handle a requested query.
 	ParentQuery(query *gst.Query) bool
 	// ParentSetCaps calls the default implementations of the set_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps: a #GstCaps 
@@ -11498,7 +11674,8 @@ type BaseSrc interface {
 	// Set new caps on the basesrc source pad.
 	ParentSetCaps(caps *gst.Caps) bool
 	// ParentStart calls the default implementations of the start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11509,7 +11686,8 @@ type BaseSrc interface {
 	//    thread that finishes the start operation asynchronously.
 	ParentStart() bool
 	// ParentStop calls the default implementations of the stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11517,7 +11695,8 @@ type BaseSrc interface {
 	// Stop processing. Subclasses should use this to close resources.
 	ParentStop() bool
 	// ParentUnlock calls the default implementations of the unlock virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11530,7 +11709,8 @@ type BaseSrc interface {
 	//    been called.
 	ParentUnlock() bool
 	// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11616,7 +11796,7 @@ func (src *BaseSrcInstance) GetAllocator() (gst.Allocator, gst.AllocationParams)
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
 
 	return allocator, params
 }
@@ -12269,7 +12449,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// Alloc allows you to override the implementation of the virtual method alloc.
+	// // Alloc allows you to override the implementation of the virtual method alloc.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- offset uint64 
@@ -12283,7 +12464,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// Ask the subclass to allocate an output buffer with @offset and @size, the default
 	// implementation will use the negotiated allocator.
 	Alloc func(Instance, uint64, uint) (*gst.Buffer, gst.FlowReturn)
-	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -12294,7 +12476,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//
 	// configure the allocation query
 	DecideAllocation func(Instance, *gst.Query) bool
-	// DoSeek allows you to override the implementation of the virtual method do_seek.
+	// // DoSeek allows you to override the implementation of the virtual method do_seek.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- segment *gst.Segment 
@@ -12305,7 +12488,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//
 	// Perform seeking on the resource to the indicated segment.
 	DoSeek func(Instance, *gst.Segment) bool
-	// Event allows you to override the implementation of the virtual method event.
+	// // Event allows you to override the implementation of the virtual method event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -12316,7 +12500,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//
 	// Override this to implement custom event handling.
 	Event func(Instance, *gst.Event) bool
-	// Fill allows you to override the implementation of the virtual method fill.
+	// // Fill allows you to override the implementation of the virtual method fill.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- offset uint64 
@@ -12330,7 +12515,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// Ask the subclass to fill the buffer with data for offset and size. The
 	//   passed buffer is guaranteed to hold the requested amount of bytes.
 	Fill func(Instance, uint64, uint, *gst.Buffer) gst.FlowReturn
-	// Fixate allows you to override the implementation of the virtual method fixate.
+	// // Fixate allows you to override the implementation of the virtual method fixate.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -12341,7 +12527,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//
 	// Called if, in negotiation, caps need fixating.
 	Fixate func(Instance, *gst.Caps) *gst.Caps
-	// GetCaps allows you to override the implementation of the virtual method get_caps.
+	// // GetCaps allows you to override the implementation of the virtual method get_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps (nullable) 
@@ -12352,7 +12539,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//
 	// Called to get the caps to report.
 	GetCaps func(Instance, *gst.Caps) *gst.Caps
-	// GetSize allows you to override the implementation of the virtual method get_size.
+	// // GetSize allows you to override the implementation of the virtual method get_size.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- size uint64 
@@ -12361,7 +12549,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// Get the total size of the resource in the format set by
 	// gst_base_src_set_format().
 	GetSize func(Instance) (uint64, bool)
-	// GetTimes allows you to override the implementation of the virtual method get_times.
+	// // GetTimes allows you to override the implementation of the virtual method get_times.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -12374,14 +12563,16 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// Given @buffer, return @start and @end time when it should be pushed
 	// out. The base class will sync on the clock using these times.
 	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
-	// IsSeekable allows you to override the implementation of the virtual method is_seekable.
+	// // IsSeekable allows you to override the implementation of the virtual method is_seekable.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// Check if the source can seek
 	IsSeekable func(Instance) bool
-	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// // Negotiate allows you to override the implementation of the virtual method negotiate.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -12394,7 +12585,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
 	// buffer is allocated.
 	Negotiate func(Instance) bool
-	// PrepareSeekSegment allows you to override the implementation of the virtual method prepare_seek_segment.
+	// // PrepareSeekSegment allows you to override the implementation of the virtual method prepare_seek_segment.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- seek *gst.Event 
@@ -12411,7 +12603,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//   convert the seek arguments to the configured native format and prepare a
 	//   segment in that format.
 	PrepareSeekSegment func(Instance, *gst.Event, *gst.Segment) bool
-	// Query allows you to override the implementation of the virtual method query.
+	// // Query allows you to override the implementation of the virtual method query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -12422,7 +12615,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//
 	// Handle a requested query.
 	Query func(Instance, *gst.Query) bool
-	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// // SetCaps allows you to override the implementation of the virtual method set_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps: a #GstCaps 
@@ -12433,7 +12627,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//
 	// Set new caps on the basesrc source pad.
 	SetCaps func(Instance, *gst.Caps) bool
-	// Start allows you to override the implementation of the virtual method start.
+	// // Start allows you to override the implementation of the virtual method start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -12443,14 +12638,16 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//    when the operation completes, either from the current thread or any other
 	//    thread that finishes the start operation asynchronously.
 	Start func(Instance) bool
-	// Stop allows you to override the implementation of the virtual method stop.
+	// // Stop allows you to override the implementation of the virtual method stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// Stop processing. Subclasses should use this to close resources.
 	Stop func(Instance) bool
-	// Unlock allows you to override the implementation of the virtual method unlock.
+	// // Unlock allows you to override the implementation of the virtual method unlock.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -12462,7 +12659,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	//    GST_FLOW_FLUSHING until the #GstBaseSrcClass::unlock_stop function has
 	//    been called.
 	Unlock func(Instance) bool
-	// UnlockStop allows you to override the implementation of the virtual method unlock_stop.
+	// // UnlockStop allows you to override the implementation of the virtual method unlock_stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -12904,7 +13102,8 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 }
 
 // ParentAlloc calls the default implementations of the alloc virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- offset uint64 
@@ -12946,7 +13145,8 @@ func (src *BaseSrcInstance) ParentAlloc(offset uint64, size uint) (*gst.Buffer, 
 }
 
 // ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -12979,7 +13179,8 @@ func (src *BaseSrcInstance) ParentDecideAllocation(query *gst.Query) bool {
 }
 
 // ParentDoSeek calls the default implementations of the do_seek virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- segment *gst.Segment 
@@ -13012,7 +13213,8 @@ func (src *BaseSrcInstance) ParentDoSeek(segment *gst.Segment) bool {
 }
 
 // ParentEvent calls the default implementations of the event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -13045,7 +13247,8 @@ func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
 }
 
 // ParentFill calls the default implementations of the fill virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- offset uint64 
@@ -13085,7 +13288,8 @@ func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer
 }
 
 // ParentFixate calls the default implementations of the fixate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -13116,7 +13320,8 @@ func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 }
 
 // ParentGetCaps calls the default implementations of the get_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- filter *gst.Caps (nullable) 
@@ -13149,7 +13354,8 @@ func (src *BaseSrcInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 }
 
 // ParentGetSize calls the default implementations of the get_size virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- size uint64 
@@ -13179,7 +13385,8 @@ func (src *BaseSrcInstance) ParentGetSize() (uint64, bool) {
 }
 
 // ParentGetTimes calls the default implementations of the get_times virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer 
@@ -13215,7 +13422,8 @@ func (src *BaseSrcInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, g
 }
 
 // ParentIsSeekable calls the default implementations of the is_seekable virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13240,7 +13448,8 @@ func (src *BaseSrcInstance) ParentIsSeekable() bool {
 }
 
 // ParentNegotiate calls the default implementations of the negotiate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13271,7 +13480,8 @@ func (src *BaseSrcInstance) ParentNegotiate() bool {
 }
 
 // ParentPrepareSeekSegment calls the default implementations of the prepare_seek_segment virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- seek *gst.Event 
@@ -13313,7 +13523,8 @@ func (src *BaseSrcInstance) ParentPrepareSeekSegment(seek *gst.Event, segment *g
 }
 
 // ParentQuery calls the default implementations of the query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -13346,7 +13557,8 @@ func (src *BaseSrcInstance) ParentQuery(query *gst.Query) bool {
 }
 
 // ParentSetCaps calls the default implementations of the set_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps: a #GstCaps 
@@ -13379,7 +13591,8 @@ func (src *BaseSrcInstance) ParentSetCaps(caps *gst.Caps) bool {
 }
 
 // ParentStart calls the default implementations of the start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13407,7 +13620,8 @@ func (src *BaseSrcInstance) ParentStart() bool {
 }
 
 // ParentStop calls the default implementations of the stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13432,7 +13646,8 @@ func (src *BaseSrcInstance) ParentStop() bool {
 }
 
 // ParentUnlock calls the default implementations of the unlock virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13462,7 +13677,8 @@ func (src *BaseSrcInstance) ParentUnlock() bool {
 }
 
 // ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13816,7 +14032,8 @@ type BaseTransform interface {
 	// chain up virtual methods:
 
 	// ParentAcceptCaps calls the default implementations of the accept_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -13832,7 +14049,8 @@ type BaseTransform interface {
 	//                  the most optimal way to check this in all cases.
 	ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool
 	// ParentBeforeTransform calls the default implementations of the before_transform virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -13843,7 +14061,8 @@ type BaseTransform interface {
 	//                    configuration could be performed in this method.
 	ParentBeforeTransform(buffer *gst.Buffer)
 	// ParentCopyMetadata calls the default implementations of the copy_metadata virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- input *gst.Buffer 
@@ -13859,7 +14078,8 @@ type BaseTransform interface {
 	//                 offsets of the buffer.
 	ParentCopyMetadata(input *gst.Buffer, outbuf *gst.Buffer) bool
 	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -13878,7 +14098,8 @@ type BaseTransform interface {
 	//                    otherwise the metadata API is removed.
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFilterMeta calls the default implementations of the filter_meta virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -13894,7 +14115,8 @@ type BaseTransform interface {
 	//               and will cause all metadata to be removed.
 	ParentFilterMeta(query *gst.Query, api gobject.Type, params *gst.Structure) bool
 	// ParentFixateCaps calls the default implementations of the fixate_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -13906,14 +14128,16 @@ type BaseTransform interface {
 	// 	- goret *gst.Caps 
 	ParentFixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps
 	// ParentGenerateOutput calls the default implementations of the generate_output virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- outbuf *gst.Buffer 
 	// 	- goret gst.FlowReturn 
 	ParentGenerateOutput() (*gst.Buffer, gst.FlowReturn)
 	// ParentGetUnitSize calls the default implementations of the get_unit_size virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -13924,7 +14148,8 @@ type BaseTransform interface {
 	// 	- goret bool 
 	ParentGetUnitSize(caps *gst.Caps) (uint, bool)
 	// ParentPrepareOutputBuffer calls the default implementations of the prepare_output_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- input *gst.Buffer 
@@ -13935,7 +14160,8 @@ type BaseTransform interface {
 	// 	- goret gst.FlowReturn 
 	ParentPrepareOutputBuffer(input *gst.Buffer) (*gst.Buffer, gst.FlowReturn)
 	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- decideQuery *gst.Query 
@@ -13954,8 +14180,9 @@ type BaseTransform interface {
 	//                      passthrough mode and will copy all the filtered metadata
 	//                      API in non-passthrough mode.
 	ParentProposeAllocation(decideQuery *gst.Query, query *gst.Query) bool
-	// ParentQuery calls the default implementations of the query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// ParentQueryBaseTransform calls the default implementations of the query virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -13969,9 +14196,10 @@ type BaseTransform interface {
 	//                  Handle a requested query. Subclasses that implement this
 	//                  must chain up to the parent if they didn't handle the
 	//                  query
-	ParentQuery(direction gst.PadDirection, query *gst.Query) bool
+	ParentQueryBaseTransform(direction gst.PadDirection, query *gst.Query) bool
 	// ParentSetCaps calls the default implementations of the set_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- incaps *gst.Caps 
@@ -13984,7 +14212,8 @@ type BaseTransform interface {
 	// Allows the subclass to be notified of the actual caps set.
 	ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
 	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -13994,7 +14223,8 @@ type BaseTransform interface {
 	// 	- goret bool 
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSrcEvent calls the default implementations of the src_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -14004,7 +14234,8 @@ type BaseTransform interface {
 	// 	- goret bool 
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentStart calls the default implementations of the start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14014,7 +14245,8 @@ type BaseTransform interface {
 	//                  Allows opening external resources.
 	ParentStart() bool
 	// ParentStop calls the default implementations of the stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14024,7 +14256,8 @@ type BaseTransform interface {
 	//                  Allows closing external resources.
 	ParentStop() bool
 	// ParentSubmitInputBuffer calls the default implementations of the submit_input_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- isDiscont bool 
@@ -14043,7 +14276,8 @@ type BaseTransform interface {
 	//                  is set to %TRUE. (Since: 1.6)
 	ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn
 	// ParentTransform calls the default implementations of the transform virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- inbuf *gst.Buffer 
@@ -14059,7 +14293,8 @@ type BaseTransform interface {
 	//                  of the outgoing buffer.
 	ParentTransform(inbuf *gst.Buffer, outbuf *gst.Buffer) gst.FlowReturn
 	// ParentTransformCaps calls the default implementations of the transform_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -14075,7 +14310,8 @@ type BaseTransform interface {
 	//                  element ?
 	ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps
 	// ParentTransformIP calls the default implementations of the transform_ip virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buf *gst.Buffer 
@@ -14088,7 +14324,8 @@ type BaseTransform interface {
 	//                  Transform the incoming buffer in-place.
 	ParentTransformIP(buf *gst.Buffer) gst.FlowReturn
 	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- outbuf *gst.Buffer 
@@ -14105,7 +14342,8 @@ type BaseTransform interface {
 	//                  the metadata is to be copied.
 	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 	// ParentTransformSize calls the default implementations of the transform_size virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -14195,7 +14433,7 @@ func (trans *BaseTransformInstance) GetAllocator() (gst.Allocator, gst.Allocatio
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
 
 	return allocator, params
 }
@@ -14576,7 +14814,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// AcceptCaps allows you to override the implementation of the virtual method accept_caps.
+	// // AcceptCaps allows you to override the implementation of the virtual method accept_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -14591,7 +14830,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                  handled by the element. The default implementation might not be
 	//                  the most optimal way to check this in all cases.
 	AcceptCaps func(Instance, gst.PadDirection, *gst.Caps) bool
-	// BeforeTransform allows you to override the implementation of the virtual method before_transform.
+	// // BeforeTransform allows you to override the implementation of the virtual method before_transform.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -14601,7 +14841,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                    start processing. Dynamic properties or other delayed
 	//                    configuration could be performed in this method.
 	BeforeTransform func(Instance, *gst.Buffer)
-	// CopyMetadata allows you to override the implementation of the virtual method copy_metadata.
+	// // CopyMetadata allows you to override the implementation of the virtual method copy_metadata.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- input *gst.Buffer 
@@ -14616,7 +14857,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                 The default implementation will copy the flags, timestamps and
 	//                 offsets of the buffer.
 	CopyMetadata func(Instance, *gst.Buffer, *gst.Buffer) bool
-	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -14634,7 +14876,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                    be called for all metadata API in the downstream query,
 	//                    otherwise the metadata API is removed.
 	DecideAllocation func(Instance, *gst.Query) bool
-	// FilterMeta allows you to override the implementation of the virtual method filter_meta.
+	// // FilterMeta allows you to override the implementation of the virtual method filter_meta.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -14649,7 +14892,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//               upstream allocation query. The default implementation is %NULL
 	//               and will cause all metadata to be removed.
 	FilterMeta func(Instance, *gst.Query, gobject.Type, *gst.Structure) bool
-	// FixateCaps allows you to override the implementation of the virtual method fixate_caps.
+	// // FixateCaps allows you to override the implementation of the virtual method fixate_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -14660,13 +14904,15 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// 
 	// 	- goret *gst.Caps 
 	FixateCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
-	// GenerateOutput allows you to override the implementation of the virtual method generate_output.
+	// // GenerateOutput allows you to override the implementation of the virtual method generate_output.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- outbuf *gst.Buffer 
 	// 	- goret gst.FlowReturn 
 	GenerateOutput func(Instance) (*gst.Buffer, gst.FlowReturn)
-	// GetUnitSize allows you to override the implementation of the virtual method get_unit_size.
+	// // GetUnitSize allows you to override the implementation of the virtual method get_unit_size.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -14676,7 +14922,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// 	- size uint 
 	// 	- goret bool 
 	GetUnitSize func(Instance, *gst.Caps) (uint, bool)
-	// PrepareOutputBuffer allows you to override the implementation of the virtual method prepare_output_buffer.
+	// // PrepareOutputBuffer allows you to override the implementation of the virtual method prepare_output_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- input *gst.Buffer 
@@ -14686,7 +14933,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// 	- outbuf *gst.Buffer 
 	// 	- goret gst.FlowReturn 
 	PrepareOutputBuffer func(Instance, *gst.Buffer) (*gst.Buffer, gst.FlowReturn)
-	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- decideQuery *gst.Query 
@@ -14705,7 +14953,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                      passthrough mode and will copy all the filtered metadata
 	//                      API in non-passthrough mode.
 	ProposeAllocation func(Instance, *gst.Query, *gst.Query) bool
-	// Query allows you to override the implementation of the virtual method query.
+	// // Query allows you to override the implementation of the virtual method query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -14720,7 +14969,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                  must chain up to the parent if they didn't handle the
 	//                  query
 	Query func(Instance, gst.PadDirection, *gst.Query) bool
-	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// // SetCaps allows you to override the implementation of the virtual method set_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- incaps *gst.Caps 
@@ -14732,7 +14982,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//
 	// Allows the subclass to be notified of the actual caps set.
 	SetCaps func(Instance, *gst.Caps, *gst.Caps) bool
-	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -14741,7 +14992,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// 
 	// 	- goret bool 
 	SinkEvent func(Instance, *gst.Event) bool
-	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// // SrcEvent allows you to override the implementation of the virtual method src_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -14750,7 +15002,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// 
 	// 	- goret bool 
 	SrcEvent func(Instance, *gst.Event) bool
-	// Start allows you to override the implementation of the virtual method start.
+	// // Start allows you to override the implementation of the virtual method start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14759,7 +15012,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                  Called when the element starts processing.
 	//                  Allows opening external resources.
 	Start func(Instance) bool
-	// Stop allows you to override the implementation of the virtual method stop.
+	// // Stop allows you to override the implementation of the virtual method stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14768,7 +15022,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                  Called when the element stops processing.
 	//                  Allows closing external resources.
 	Stop func(Instance) bool
-	// SubmitInputBuffer allows you to override the implementation of the virtual method submit_input_buffer.
+	// // SubmitInputBuffer allows you to override the implementation of the virtual method submit_input_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- isDiscont bool 
@@ -14786,7 +15041,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                  contiguous with any previous input buffer, then @is_discont
 	//                  is set to %TRUE. (Since: 1.6)
 	SubmitInputBuffer func(Instance, bool, *gst.Buffer) gst.FlowReturn
-	// Transform allows you to override the implementation of the virtual method transform.
+	// // Transform allows you to override the implementation of the virtual method transform.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- inbuf *gst.Buffer 
@@ -14801,7 +15057,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                  The function is allowed to change size/timestamp/duration
 	//                  of the outgoing buffer.
 	Transform func(Instance, *gst.Buffer, *gst.Buffer) gst.FlowReturn
-	// TransformCaps allows you to override the implementation of the virtual method transform_caps.
+	// // TransformCaps allows you to override the implementation of the virtual method transform_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -14816,7 +15073,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                  caps, what caps are allowed on the other pad in this
 	//                  element ?
 	TransformCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
-	// TransformIP allows you to override the implementation of the virtual method transform_ip.
+	// // TransformIP allows you to override the implementation of the virtual method transform_ip.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buf *gst.Buffer 
@@ -14828,7 +15086,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// Required if the element operates in-place.
 	//                  Transform the incoming buffer in-place.
 	TransformIP func(Instance, *gst.Buffer) gst.FlowReturn
-	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- outbuf *gst.Buffer 
@@ -14844,7 +15103,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                  tags. Subclasses can implement this method and return %TRUE if
 	//                  the metadata is to be copied.
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
-	// TransformSize allows you to override the implementation of the virtual method transform_size.
+	// // TransformSize allows you to override the implementation of the virtual method transform_size.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -15415,7 +15675,8 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 }
 
 // ParentAcceptCaps calls the default implementations of the accept_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- direction gst.PadDirection 
@@ -15455,7 +15716,8 @@ func (trans *BaseTransformInstance) ParentAcceptCaps(direction gst.PadDirection,
 }
 
 // ParentBeforeTransform calls the default implementations of the before_transform virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer 
@@ -15478,7 +15740,8 @@ func (trans *BaseTransformInstance) ParentBeforeTransform(buffer *gst.Buffer) {
 }
 
 // ParentCopyMetadata calls the default implementations of the copy_metadata virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- input *gst.Buffer 
@@ -15518,7 +15781,8 @@ func (trans *BaseTransformInstance) ParentCopyMetadata(input *gst.Buffer, outbuf
 }
 
 // ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -15558,7 +15822,8 @@ func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) boo
 }
 
 // ParentFilterMeta calls the default implementations of the filter_meta virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -15601,7 +15866,8 @@ func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobje
 }
 
 // ParentFixateCaps calls the default implementations of the fixate_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- direction gst.PadDirection 
@@ -15638,7 +15904,8 @@ func (trans *BaseTransformInstance) ParentFixateCaps(direction gst.PadDirection,
 }
 
 // ParentGenerateOutput calls the default implementations of the generate_output virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- outbuf *gst.Buffer 
@@ -15663,7 +15930,8 @@ func (trans *BaseTransformInstance) ParentGenerateOutput() (*gst.Buffer, gst.Flo
 }
 
 // ParentGetUnitSize calls the default implementations of the get_unit_size virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -15698,7 +15966,8 @@ func (trans *BaseTransformInstance) ParentGetUnitSize(caps *gst.Caps) (uint, boo
 }
 
 // ParentPrepareOutputBuffer calls the default implementations of the prepare_output_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- input *gst.Buffer 
@@ -15731,7 +16000,8 @@ func (trans *BaseTransformInstance) ParentPrepareOutputBuffer(input *gst.Buffer)
 }
 
 // ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- decideQuery *gst.Query 
@@ -15774,8 +16044,9 @@ func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Que
 	return goret
 }
 
-// ParentQuery calls the default implementations of the query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// ParentQueryBaseTransform calls the default implementations of the query virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- direction gst.PadDirection 
@@ -15789,7 +16060,7 @@ func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Que
 //                  Handle a requested query. Subclasses that implement this
 //                  must chain up to the parent if they didn't handle the
 //                  query
-func (trans *BaseTransformInstance) ParentQuery(direction gst.PadDirection, query *gst.Query) bool {
+func (trans *BaseTransformInstance) ParentQueryBaseTransform(direction gst.PadDirection, query *gst.Query) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, casted
 	var carg2 *C.GstQuery       // in, none, converted
@@ -15815,7 +16086,8 @@ func (trans *BaseTransformInstance) ParentQuery(direction gst.PadDirection, quer
 }
 
 // ParentSetCaps calls the default implementations of the set_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- incaps *gst.Caps 
@@ -15852,7 +16124,8 @@ func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst
 }
 
 // ParentSinkEvent calls the default implementations of the sink_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -15883,7 +16156,8 @@ func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
 }
 
 // ParentSrcEvent calls the default implementations of the src_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -15914,7 +16188,8 @@ func (trans *BaseTransformInstance) ParentSrcEvent(event *gst.Event) bool {
 }
 
 // ParentStart calls the default implementations of the start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -15941,7 +16216,8 @@ func (trans *BaseTransformInstance) ParentStart() bool {
 }
 
 // ParentStop calls the default implementations of the stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -15968,7 +16244,8 @@ func (trans *BaseTransformInstance) ParentStop() bool {
 }
 
 // ParentSubmitInputBuffer calls the default implementations of the submit_input_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- isDiscont bool 
@@ -16011,7 +16288,8 @@ func (trans *BaseTransformInstance) ParentSubmitInputBuffer(isDiscont bool, inpu
 }
 
 // ParentTransform calls the default implementations of the transform virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- inbuf *gst.Buffer 
@@ -16049,7 +16327,8 @@ func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *g
 }
 
 // ParentTransformCaps calls the default implementations of the transform_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- direction gst.PadDirection 
@@ -16090,7 +16369,8 @@ func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirecti
 }
 
 // ParentTransformIP calls the default implementations of the transform_ip virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buf *gst.Buffer 
@@ -16122,7 +16402,8 @@ func (trans *BaseTransformInstance) ParentTransformIP(buf *gst.Buffer) gst.FlowR
 }
 
 // ParentTransformMeta calls the default implementations of the transform_meta virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- outbuf *gst.Buffer 
@@ -16166,7 +16447,8 @@ func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta
 }
 
 // ParentTransformSize calls the default implementations of the transform_size virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- direction gst.PadDirection 
@@ -17397,10 +17679,10 @@ type DataQueue interface {
 	// chain up virtual methods:
 
 	// ParentEmpty calls the default implementations of the empty virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentEmpty()
 	// ParentFull calls the default implementations of the full virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentFull()
 }
 
@@ -17469,9 +17751,9 @@ type DataQueueOverrides[Instance DataQueue] struct {
 	// gobject.ObjectOverrides allows you to override virtual methods from the parent class gobject.Object
 	gobject.ObjectOverrides[Instance]
 
-	// Empty allows you to override the implementation of the virtual method empty.
+	// // Empty allows you to override the implementation of the virtual method empty.
 	Empty func(Instance)
-	// Full allows you to override the implementation of the virtual method full.
+	// // Full allows you to override the implementation of the virtual method full.
 	Full func(Instance)
 }
 
@@ -17514,7 +17796,7 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 }
 
 // ParentEmpty calls the default implementations of the empty virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 func (queue *DataQueueInstance) ParentEmpty() {
 	var carg0 *C.GstDataQueue
 
@@ -17525,7 +17807,7 @@ func (queue *DataQueueInstance) ParentEmpty() {
 }
 
 // ParentFull calls the default implementations of the full virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 func (queue *DataQueueInstance) ParentFull() {
 	var carg0 *C.GstDataQueue
 
@@ -17596,17 +17878,19 @@ type PushSrc interface {
 
 	// chain up virtual methods:
 
-	// ParentAlloc calls the default implementations of the alloc virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// ParentAllocPushSrc calls the default implementations of the alloc virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- buf *gst.Buffer (nullable) 
 	// 	- goret gst.FlowReturn 
 	//
 	// Allocate memory for a buffer.
-	ParentAlloc() (*gst.Buffer, gst.FlowReturn)
-	// ParentFill calls the default implementations of the fill virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn)
+	// ParentFillPushSrc calls the default implementations of the fill virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buf *gst.Buffer 
@@ -17616,7 +17900,7 @@ type PushSrc interface {
 	// 	- goret gst.FlowReturn 
 	//
 	// Ask the subclass to fill the buffer with data.
-	ParentFill(buf *gst.Buffer) gst.FlowReturn
+	ParentFillPushSrc(buf *gst.Buffer) gst.FlowReturn
 }
 
 func unsafeWrapPushSrc(base *gobject.ObjectInstance) *PushSrcInstance {
@@ -17672,7 +17956,8 @@ type PushSrcOverrides[Instance PushSrc] struct {
 	// BaseSrcOverrides allows you to override virtual methods from the parent class BaseSrc
 	BaseSrcOverrides[Instance]
 
-	// Alloc allows you to override the implementation of the virtual method alloc.
+	// // Alloc allows you to override the implementation of the virtual method alloc.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- buf *gst.Buffer (nullable) 
@@ -17680,7 +17965,8 @@ type PushSrcOverrides[Instance PushSrc] struct {
 	//
 	// Allocate memory for a buffer.
 	Alloc func(Instance) (*gst.Buffer, gst.FlowReturn)
-	// Fill allows you to override the implementation of the virtual method fill.
+	// // Fill allows you to override the implementation of the virtual method fill.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buf *gst.Buffer 
@@ -17745,15 +18031,16 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 	}
 }
 
-// ParentAlloc calls the default implementations of the alloc virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// ParentAllocPushSrc calls the default implementations of the alloc virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- buf *gst.Buffer (nullable) 
 // 	- goret gst.FlowReturn 
 //
 // Allocate memory for a buffer.
-func (src *PushSrcInstance) ParentAlloc() (*gst.Buffer, gst.FlowReturn) {
+func (src *PushSrcInstance) ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstPushSrc
 	var carg1 *C.GstBuffer    // out, full, converted, nullable
 	var cret  C.GstFlowReturn // return, none, casted
@@ -17774,8 +18061,9 @@ func (src *PushSrcInstance) ParentAlloc() (*gst.Buffer, gst.FlowReturn) {
 	return buf, goret
 }
 
-// ParentFill calls the default implementations of the fill virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// ParentFillPushSrc calls the default implementations of the fill virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buf *gst.Buffer 
@@ -17785,7 +18073,7 @@ func (src *PushSrcInstance) ParentAlloc() (*gst.Buffer, gst.FlowReturn) {
 // 	- goret gst.FlowReturn 
 //
 // Ask the subclass to fill the buffer with data.
-func (src *PushSrcInstance) ParentFill(buf *gst.Buffer) gst.FlowReturn {
+func (src *PushSrcInstance) ParentFillPushSrc(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstPushSrc
 	var carg1 *C.GstBuffer    // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -18580,7 +18868,7 @@ func (reader *BitReader) Init(data []uint8) {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	C.gst_bit_reader_init(carg0, carg1, carg2)
 	runtime.KeepAlive(reader)
@@ -19298,7 +19586,7 @@ func (reader *ByteReader) DupStringUTF8() (string, bool) {
 
 	_ = str
 	_ = carg1
-	panic("unimplemented conversion of string (gchar*)")
+	panic("unimplemented conversion of string (*C.gchar)")
 	if cret != 0 {
 		goret = true
 	}
@@ -19796,7 +20084,7 @@ func (reader *ByteReader) GetStringUTF8() (string, bool) {
 
 	_ = str
 	_ = carg1
-	panic("unimplemented conversion of string (const gchar*)")
+	panic("unimplemented conversion of string (*C.gchar)")
 	if cret != 0 {
 		goret = true
 	}
@@ -20091,7 +20379,7 @@ func (reader *ByteReader) Init(data []uint8) {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	C.gst_byte_reader_init(carg0, carg1, carg2)
 	runtime.KeepAlive(reader)
@@ -20627,7 +20915,7 @@ func (reader *ByteReader) PeekStringUTF8() (string, bool) {
 
 	_ = str
 	_ = carg1
-	panic("unimplemented conversion of string (const gchar*)")
+	panic("unimplemented conversion of string (*C.gchar)")
 	if cret != 0 {
 		goret = true
 	}
@@ -21244,7 +21532,7 @@ func (writer *ByteWriter) FreeAndGetData() *uint8 {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (*C.guint8)")
 
 	return goret
 }
@@ -21305,7 +21593,7 @@ func (writer *ByteWriter) InitWithData(data []uint8, initialized bool) {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 	if initialized {
 		carg3 = C.TRUE
 	}
@@ -21402,7 +21690,7 @@ func (writer *ByteWriter) PutData(data []uint8) bool {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_byte_writer_put_data(carg0, carg1, carg2)
 	runtime.KeepAlive(writer)
@@ -21852,7 +22140,7 @@ func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 	carg0 = (*C.GstByteWriter)(UnsafeByteWriterToGlibNone(writer))
 	_ = data
 	_ = carg1
-	panic("unimplemented conversion of []uint16 (const guint16*)")
+	panic("unimplemented conversion of []uint16 (*C.guint16)")
 
 	cret = C.gst_byte_writer_put_string_utf16(carg0, carg1)
 	runtime.KeepAlive(writer)
@@ -21886,7 +22174,7 @@ func (writer *ByteWriter) PutStringUTF32(data []uint32) bool {
 	carg0 = (*C.GstByteWriter)(UnsafeByteWriterToGlibNone(writer))
 	_ = data
 	_ = carg1
-	panic("unimplemented conversion of []uint32 (const guint32*)")
+	panic("unimplemented conversion of []uint32 (*C.guint32)")
 
 	cret = C.gst_byte_writer_put_string_utf32(carg0, carg1)
 	runtime.KeepAlive(writer)

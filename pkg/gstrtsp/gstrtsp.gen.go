@@ -21,43 +21,43 @@ import (
 // #cgo pkg-config: gstreamer-rtsp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/rtsp/rtsp.h>
-// extern gboolean _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(GTlsConnection*, GTlsCertificate*, GTlsCertificateFlags, gpointer);
+// extern C.gboolean _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(*C.GTlsConnection, *C.GTlsCertificate, C.GTlsCertificateFlags, C.gpointer);
 // extern void destroyUserdata(gpointer);
-// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_after_send(GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*);
-// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_before_send(GstRTSPExtension*, GstRTSPMessage*);
-// extern gboolean _gotk4_gstrtsp1_RTSPExtension_configure_stream(GstRTSPExtension*, GstCaps*);
-// extern gboolean _gotk4_gstrtsp1_RTSPExtension_detect_server(GstRTSPExtension*, GstRTSPMessage*);
-// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_parse_sdp(GstRTSPExtension*, GstSDPMessage*, GstStructure*);
-// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_receive_request(GstRTSPExtension*, GstRTSPMessage*);
-// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_send(GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*);
-// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_setup_media(GstRTSPExtension*, GstSDPMedia*);
-// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_stream_select(GstRTSPExtension*, GstRTSPUrl*);
-// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_after_send(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1, GstRTSPMessage* carg2) {
-// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*))(fnptr))(carg0, carg1, carg2);
+// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_after_send(*C.GstRTSPExtension, *C.GstRTSPMessage, *C.GstRTSPMessage);
+// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_before_send(*C.GstRTSPExtension, *C.GstRTSPMessage);
+// extern C.gboolean _gotk4_gstrtsp1_RTSPExtension_configure_stream(*C.GstRTSPExtension, *C.GstCaps);
+// extern C.gboolean _gotk4_gstrtsp1_RTSPExtension_detect_server(*C.GstRTSPExtension, *C.GstRTSPMessage);
+// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_parse_sdp(*C.GstRTSPExtension, *C.GstSDPMessage, *C.GstStructure);
+// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_receive_request(*C.GstRTSPExtension, *C.GstRTSPMessage);
+// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_send(*C.GstRTSPExtension, *C.GstRTSPMessage, *C.GstRTSPMessage);
+// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_setup_media(*C.GstRTSPExtension, *C.GstSDPMedia);
+// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_stream_select(*C.GstRTSPExtension, *C.GstRTSPUrl);
+// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_after_send(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1, *C.GstRTSPMessage carg2) {
+// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPMessage, *C.GstRTSPMessage))(fnptr))(carg0, carg1, carg2);
 // }
-// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_before_send(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1) {
-// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*))(fnptr))(carg0, carg1);
+// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_before_send(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1) {
+// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPMessage))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_configure_stream(void* fnptr, GstRTSPExtension* carg0, GstCaps* carg1) {
-// 	return ((gboolean (*) (GstRTSPExtension*, GstCaps*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_configure_stream(void* fnptr, *C.GstRTSPExtension carg0, *C.GstCaps carg1) {
+// 	return ((C.gboolean (*) (*C.GstRTSPExtension, *C.GstCaps))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_detect_server(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1) {
-// 	return ((gboolean (*) (GstRTSPExtension*, GstRTSPMessage*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_detect_server(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1) {
+// 	return ((C.gboolean (*) (*C.GstRTSPExtension, *C.GstRTSPMessage))(fnptr))(carg0, carg1);
 // }
-// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_parse_sdp(void* fnptr, GstRTSPExtension* carg0, GstSDPMessage* carg1, GstStructure* carg2) {
-// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstSDPMessage*, GstStructure*))(fnptr))(carg0, carg1, carg2);
+// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_parse_sdp(void* fnptr, *C.GstRTSPExtension carg0, *C.GstSDPMessage carg1, *C.GstStructure carg2) {
+// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstSDPMessage, *C.GstStructure))(fnptr))(carg0, carg1, carg2);
 // }
-// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_receive_request(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1) {
-// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*))(fnptr))(carg0, carg1);
+// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_receive_request(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1) {
+// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPMessage))(fnptr))(carg0, carg1);
 // }
-// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_send(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1, GstRTSPMessage* carg2) {
-// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*))(fnptr))(carg0, carg1, carg2);
+// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_send(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1, *C.GstRTSPMessage carg2) {
+// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPMessage, *C.GstRTSPMessage))(fnptr))(carg0, carg1, carg2);
 // }
-// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_setup_media(void* fnptr, GstRTSPExtension* carg0, GstSDPMedia* carg1) {
-// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstSDPMedia*))(fnptr))(carg0, carg1);
+// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_setup_media(void* fnptr, *C.GstRTSPExtension carg0, *C.GstSDPMedia carg1) {
+// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstSDPMedia))(fnptr))(carg0, carg1);
 // }
-// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_stream_select(void* fnptr, GstRTSPExtension* carg0, GstRTSPUrl* carg1) {
-// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPUrl*))(fnptr))(carg0, carg1);
+// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_stream_select(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPUrl carg1) {
+// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPUrl))(fnptr))(carg0, carg1);
 // }
 import "C"
 
@@ -2017,7 +2017,7 @@ func RtspStrresult(result RTSPResult) string {
 // RTSPExtensionInstance is the instance type used by all types implementing GstRTSPExtension. It is used internally by the bindings. Users should use the interface [RTSPExtension] instead.
 type RTSPExtensionInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ RTSPExtension = (*RTSPExtensionInstance)(nil)
@@ -2027,7 +2027,6 @@ var _ RTSPExtension = (*RTSPExtensionInstance)(nil)
 // This interface is implemented e.g. by the Windows Media Streaming RTSP
 //  exentension (rtspwms) and the RealMedia RTSP extension (rtspreal).
 type RTSPExtension interface {
-	gobject.Object
 	upcastToGstRTSPExtension() *RTSPExtensionInstance
 
 	// AfterSend wraps gst_rtsp_extension_after_send
@@ -2129,7 +2128,8 @@ type RTSPExtension interface {
 	// chain up virtual methods:
 
 	// ParentAfterSend calls the default implementations of the after_send virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- req *RTSPMessage 
@@ -2140,7 +2140,8 @@ type RTSPExtension interface {
 	// 	- goret RTSPResult 
 	ParentAfterSend(req *RTSPMessage, resp *RTSPMessage) RTSPResult
 	// ParentBeforeSend calls the default implementations of the before_send virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- req *RTSPMessage 
@@ -2150,7 +2151,8 @@ type RTSPExtension interface {
 	// 	- goret RTSPResult 
 	ParentBeforeSend(req *RTSPMessage) RTSPResult
 	// ParentConfigureStream calls the default implementations of the configure_stream virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -2160,7 +2162,8 @@ type RTSPExtension interface {
 	// 	- goret bool 
 	ParentConfigureStream(caps *gst.Caps) bool
 	// ParentDetectServer calls the default implementations of the detect_server virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- resp *RTSPMessage 
@@ -2170,7 +2173,8 @@ type RTSPExtension interface {
 	// 	- goret bool 
 	ParentDetectServer(resp *RTSPMessage) bool
 	// ParentParseSdp calls the default implementations of the parse_sdp virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- sdp *gstsdp.SDPMessage 
@@ -2181,7 +2185,8 @@ type RTSPExtension interface {
 	// 	- goret RTSPResult 
 	ParentParseSdp(sdp *gstsdp.SDPMessage, s *gst.Structure) RTSPResult
 	// ParentReceiveRequest calls the default implementations of the receive_request virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- req *RTSPMessage 
@@ -2191,7 +2196,8 @@ type RTSPExtension interface {
 	// 	- goret RTSPResult 
 	ParentReceiveRequest(req *RTSPMessage) RTSPResult
 	// ParentSend calls the default implementations of the send virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- req *RTSPMessage 
@@ -2202,7 +2208,8 @@ type RTSPExtension interface {
 	// 	- goret RTSPResult 
 	ParentSend(req *RTSPMessage, resp *RTSPMessage) RTSPResult
 	// ParentSetupMedia calls the default implementations of the setup_media virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- media *gstsdp.SDPMedia 
@@ -2212,7 +2219,8 @@ type RTSPExtension interface {
 	// 	- goret RTSPResult 
 	ParentSetupMedia(media *gstsdp.SDPMedia) RTSPResult
 	// ParentStreamSelect calls the default implementations of the stream_select virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- url *RTSPUrl 
@@ -2227,7 +2235,7 @@ var _ RTSPExtension = (*RTSPExtensionInstance)(nil)
 
 func unsafeWrapRTSPExtension(base *gobject.ObjectInstance) *RTSPExtensionInstance {
 	return &RTSPExtensionInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -2257,13 +2265,13 @@ func UnsafeRTSPExtensionFromGlibBorrow(c unsafe.Pointer) RTSPExtension {
 // UnsafeRTSPExtensionToGlibNone is used to convert the instance to it's C value GstRTSPExtension. This is used by the bindings internally.
 func UnsafeRTSPExtensionToGlibNone(c RTSPExtension) unsafe.Pointer {
 	i := c.upcastToGstRTSPExtension()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeRTSPExtensionToGlibFull is used to convert the instance to it's C value GstRTSPExtension, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeRTSPExtensionToGlibFull(c RTSPExtension) unsafe.Pointer {
 	i := c.upcastToGstRTSPExtension()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // AfterSend wraps gst_rtsp_extension_after_send
@@ -2536,13 +2544,14 @@ func (ext *RTSPExtensionInstance) StreamSelect(url *RTSPUrl) RTSPResult {
 
 // ConnectSend connects the provided callback to the "send" signal
 func (o *RTSPExtensionInstance) ConnectSend(fn func(RTSPExtension, unsafe.Pointer, unsafe.Pointer) RTSPResult) gobject.SignalHandle {
-	return o.Connect("send", fn)
+	return o.Instance.Connect("send", fn)
 }
 
 // RTSPExtensionOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type RTSPExtensionOverrides[Instance RTSPExtension] struct {
-	// AfterSend allows you to override the implementation of the virtual method after_send.
+	// // AfterSend allows you to override the implementation of the virtual method after_send.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- req *RTSPMessage 
@@ -2552,7 +2561,8 @@ type RTSPExtensionOverrides[Instance RTSPExtension] struct {
 	// 
 	// 	- goret RTSPResult 
 	AfterSend func(Instance, *RTSPMessage, *RTSPMessage) RTSPResult
-	// BeforeSend allows you to override the implementation of the virtual method before_send.
+	// // BeforeSend allows you to override the implementation of the virtual method before_send.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- req *RTSPMessage 
@@ -2561,7 +2571,8 @@ type RTSPExtensionOverrides[Instance RTSPExtension] struct {
 	// 
 	// 	- goret RTSPResult 
 	BeforeSend func(Instance, *RTSPMessage) RTSPResult
-	// ConfigureStream allows you to override the implementation of the virtual method configure_stream.
+	// // ConfigureStream allows you to override the implementation of the virtual method configure_stream.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -2570,7 +2581,8 @@ type RTSPExtensionOverrides[Instance RTSPExtension] struct {
 	// 
 	// 	- goret bool 
 	ConfigureStream func(Instance, *gst.Caps) bool
-	// DetectServer allows you to override the implementation of the virtual method detect_server.
+	// // DetectServer allows you to override the implementation of the virtual method detect_server.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- resp *RTSPMessage 
@@ -2579,7 +2591,8 @@ type RTSPExtensionOverrides[Instance RTSPExtension] struct {
 	// 
 	// 	- goret bool 
 	DetectServer func(Instance, *RTSPMessage) bool
-	// ParseSdp allows you to override the implementation of the virtual method parse_sdp.
+	// // ParseSdp allows you to override the implementation of the virtual method parse_sdp.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- sdp *gstsdp.SDPMessage 
@@ -2589,7 +2602,8 @@ type RTSPExtensionOverrides[Instance RTSPExtension] struct {
 	// 
 	// 	- goret RTSPResult 
 	ParseSdp func(Instance, *gstsdp.SDPMessage, *gst.Structure) RTSPResult
-	// ReceiveRequest allows you to override the implementation of the virtual method receive_request.
+	// // ReceiveRequest allows you to override the implementation of the virtual method receive_request.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- req *RTSPMessage 
@@ -2598,7 +2612,8 @@ type RTSPExtensionOverrides[Instance RTSPExtension] struct {
 	// 
 	// 	- goret RTSPResult 
 	ReceiveRequest func(Instance, *RTSPMessage) RTSPResult
-	// Send allows you to override the implementation of the virtual method send.
+	// // Send allows you to override the implementation of the virtual method send.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- req *RTSPMessage 
@@ -2608,7 +2623,8 @@ type RTSPExtensionOverrides[Instance RTSPExtension] struct {
 	// 
 	// 	- goret RTSPResult 
 	Send func(Instance, *RTSPMessage, *RTSPMessage) RTSPResult
-	// SetupMedia allows you to override the implementation of the virtual method setup_media.
+	// // SetupMedia allows you to override the implementation of the virtual method setup_media.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- media *gstsdp.SDPMedia 
@@ -2617,7 +2633,8 @@ type RTSPExtensionOverrides[Instance RTSPExtension] struct {
 	// 
 	// 	- goret RTSPResult 
 	SetupMedia func(Instance, *gstsdp.SDPMedia) RTSPResult
-	// StreamSelect allows you to override the implementation of the virtual method stream_select.
+	// // StreamSelect allows you to override the implementation of the virtual method stream_select.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- url *RTSPUrl 
@@ -2843,7 +2860,8 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 }
 
 // ParentAfterSend calls the default implementations of the after_send virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- req *RTSPMessage 
@@ -2876,7 +2894,8 @@ func (ext *RTSPExtensionInstance) ParentAfterSend(req *RTSPMessage, resp *RTSPMe
 }
 
 // ParentBeforeSend calls the default implementations of the before_send virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- req *RTSPMessage 
@@ -2905,7 +2924,8 @@ func (ext *RTSPExtensionInstance) ParentBeforeSend(req *RTSPMessage) RTSPResult 
 }
 
 // ParentConfigureStream calls the default implementations of the configure_stream virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -2936,7 +2956,8 @@ func (ext *RTSPExtensionInstance) ParentConfigureStream(caps *gst.Caps) bool {
 }
 
 // ParentDetectServer calls the default implementations of the detect_server virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- resp *RTSPMessage 
@@ -2967,7 +2988,8 @@ func (ext *RTSPExtensionInstance) ParentDetectServer(resp *RTSPMessage) bool {
 }
 
 // ParentParseSdp calls the default implementations of the parse_sdp virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- sdp *gstsdp.SDPMessage 
@@ -3000,7 +3022,8 @@ func (ext *RTSPExtensionInstance) ParentParseSdp(sdp *gstsdp.SDPMessage, s *gst.
 }
 
 // ParentReceiveRequest calls the default implementations of the receive_request virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- req *RTSPMessage 
@@ -3029,7 +3052,8 @@ func (ext *RTSPExtensionInstance) ParentReceiveRequest(req *RTSPMessage) RTSPRes
 }
 
 // ParentSend calls the default implementations of the send virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- req *RTSPMessage 
@@ -3062,7 +3086,8 @@ func (ext *RTSPExtensionInstance) ParentSend(req *RTSPMessage, resp *RTSPMessage
 }
 
 // ParentSetupMedia calls the default implementations of the setup_media virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- media *gstsdp.SDPMedia 
@@ -3091,7 +3116,8 @@ func (ext *RTSPExtensionInstance) ParentSetupMedia(media *gstsdp.SDPMedia) RTSPR
 }
 
 // ParentStreamSelect calls the default implementations of the stream_select virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- url *RTSPUrl 
@@ -4078,7 +4104,7 @@ func (conn *RTSPConnection) PollUsec(events RTSPEvent, timeout int64) (RTSPEvent
 
 	_ = revents
 	_ = carg2
-	panic("unimplemented conversion of RTSPEvent (GstRTSPEvent)")
+	panic("unimplemented conversion of RTSPEvent (C.GstRTSPEvent)")
 	goret = RTSPResult(cret)
 
 	return revents, goret
@@ -4111,7 +4137,7 @@ func (conn *RTSPConnection) ReadUsec(data []uint8, timeout int64) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 	carg3 = C.gint64(timeout)
 
 	cret = C.gst_rtsp_connection_read_usec(carg0, carg1, carg2, carg3)
@@ -4214,7 +4240,7 @@ func (conn *RTSPConnection) SendMessagesUsec(messages []RTSPMessage, timeout int
 	_ = messages
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*)")
+	panic("unimplemented conversion of []RTSPMessage (*C.GstRTSPMessage)")
 	carg3 = C.gint64(timeout)
 
 	cret = C.gst_rtsp_connection_send_messages_usec(carg0, carg1, carg2, carg3)
@@ -4678,7 +4704,7 @@ func (conn *RTSPConnection) WriteUsec(data []uint8, timeout int64) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 	carg3 = C.gint64(timeout)
 
 	cret = C.gst_rtsp_connection_write_usec(carg0, carg1, carg2, carg3)
@@ -5288,7 +5314,7 @@ func (msg *RTSPMessage) ParseAuthCredentials(field RTSPHeaderField) []*RTSPAuthC
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []*RTSPAuthCredential (GstRTSPAuthCredential**)")
+	panic("unimplemented conversion of []*RTSPAuthCredential (**C.GstRTSPAuthCredential)")
 
 	return goret
 }
@@ -5491,7 +5517,7 @@ func (msg *RTSPMessage) SetBody(data []uint8) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_rtsp_message_set_body(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -5589,7 +5615,7 @@ func (msg *RTSPMessage) TakeBody(data []uint8) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_rtsp_message_take_body(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -6297,7 +6323,7 @@ func RTSPTransportInit() (RTSPTransport, RTSPResult) {
 
 	_ = transport
 	_ = carg1
-	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport)")
+	panic("unimplemented conversion of RTSPTransport (C.GstRTSPTransport)")
 	goret = RTSPResult(cret)
 
 	return transport, goret
@@ -6355,7 +6381,7 @@ func RTSPTransportParse(str string) (RTSPTransport, RTSPResult) {
 
 	_ = transport
 	_ = carg2
-	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport)")
+	panic("unimplemented conversion of RTSPTransport (C.GstRTSPTransport)")
 	goret = RTSPResult(cret)
 
 	return transport, goret
@@ -6582,7 +6608,7 @@ func (url *RTSPUrl) DecodePathComponents() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -6906,7 +6932,7 @@ func (watch *RTSPWatch) SendMessages(messages []RTSPMessage) (uint, RTSPResult) 
 	_ = messages
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*)")
+	panic("unimplemented conversion of []RTSPMessage (*C.GstRTSPMessage)")
 
 	cret = C.gst_rtsp_watch_send_messages(carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(watch)
@@ -7044,7 +7070,7 @@ func (watch *RTSPWatch) WriteData(data []uint8) (uint, RTSPResult) {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_rtsp_watch_write_data(carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(watch)

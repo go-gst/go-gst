@@ -16,61 +16,61 @@ import (
 // #cgo pkg-config: gstreamer-app-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/app/app.h>
-// extern void _gotk4_gstapp1_AppSink_eos(GstAppSink*);
-// extern GstFlowReturn _gotk4_gstapp1_AppSink_new_preroll(GstAppSink*);
-// extern GstFlowReturn _gotk4_gstapp1_AppSink_new_sample(GstAppSink*);
-// extern GstSample* _gotk4_gstapp1_AppSink_pull_preroll(GstAppSink*);
-// extern GstSample* _gotk4_gstapp1_AppSink_pull_sample(GstAppSink*);
-// extern GstSample* _gotk4_gstapp1_AppSink_try_pull_preroll(GstAppSink*, GstClockTime);
-// extern GstSample* _gotk4_gstapp1_AppSink_try_pull_sample(GstAppSink*, GstClockTime);
-// void _gotk4_gstapp1_AppSink_virtual_eos(void* fnptr, GstAppSink* carg0) {
-// 	return ((void (*) (GstAppSink*))(fnptr))(carg0);
+// extern C.void _gotk4_gstapp1_AppSink_eos(*C.GstAppSink);
+// extern C.GstFlowReturn _gotk4_gstapp1_AppSink_new_preroll(*C.GstAppSink);
+// extern C.GstFlowReturn _gotk4_gstapp1_AppSink_new_sample(*C.GstAppSink);
+// extern *C.GstSample _gotk4_gstapp1_AppSink_pull_preroll(*C.GstAppSink);
+// extern *C.GstSample _gotk4_gstapp1_AppSink_pull_sample(*C.GstAppSink);
+// extern *C.GstSample _gotk4_gstapp1_AppSink_try_pull_preroll(*C.GstAppSink, C.GstClockTime);
+// extern *C.GstSample _gotk4_gstapp1_AppSink_try_pull_sample(*C.GstAppSink, C.GstClockTime);
+// C.void _gotk4_gstapp1_AppSink_virtual_eos(void* fnptr, *C.GstAppSink carg0) {
+// 	return ((C.void (*) (*C.GstAppSink))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_preroll(void* fnptr, GstAppSink* carg0) {
-// 	return ((GstFlowReturn (*) (GstAppSink*))(fnptr))(carg0);
+// C.GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_preroll(void* fnptr, *C.GstAppSink carg0) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAppSink))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_sample(void* fnptr, GstAppSink* carg0) {
-// 	return ((GstFlowReturn (*) (GstAppSink*))(fnptr))(carg0);
+// C.GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_sample(void* fnptr, *C.GstAppSink carg0) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAppSink))(fnptr))(carg0);
 // }
-// GstSample* _gotk4_gstapp1_AppSink_virtual_pull_preroll(void* fnptr, GstAppSink* carg0) {
-// 	return ((GstSample* (*) (GstAppSink*))(fnptr))(carg0);
+// *C.GstSample _gotk4_gstapp1_AppSink_virtual_pull_preroll(void* fnptr, *C.GstAppSink carg0) {
+// 	return ((*C.GstSample (*) (*C.GstAppSink))(fnptr))(carg0);
 // }
-// GstSample* _gotk4_gstapp1_AppSink_virtual_pull_sample(void* fnptr, GstAppSink* carg0) {
-// 	return ((GstSample* (*) (GstAppSink*))(fnptr))(carg0);
+// *C.GstSample _gotk4_gstapp1_AppSink_virtual_pull_sample(void* fnptr, *C.GstAppSink carg0) {
+// 	return ((*C.GstSample (*) (*C.GstAppSink))(fnptr))(carg0);
 // }
-// GstSample* _gotk4_gstapp1_AppSink_virtual_try_pull_preroll(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
-// 	return ((GstSample* (*) (GstAppSink*, GstClockTime))(fnptr))(carg0, carg1);
+// *C.GstSample _gotk4_gstapp1_AppSink_virtual_try_pull_preroll(void* fnptr, *C.GstAppSink carg0, C.GstClockTime carg1) {
+// 	return ((*C.GstSample (*) (*C.GstAppSink, C.GstClockTime))(fnptr))(carg0, carg1);
 // }
-// GstSample* _gotk4_gstapp1_AppSink_virtual_try_pull_sample(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
-// 	return ((GstSample* (*) (GstAppSink*, GstClockTime))(fnptr))(carg0, carg1);
+// *C.GstSample _gotk4_gstapp1_AppSink_virtual_try_pull_sample(void* fnptr, *C.GstAppSink carg0, C.GstClockTime carg1) {
+// 	return ((*C.GstSample (*) (*C.GstAppSink, C.GstClockTime))(fnptr))(carg0, carg1);
 // }
-// extern GstFlowReturn _gotk4_gstapp1_AppSrc_end_of_stream(GstAppSrc*);
-// extern void _gotk4_gstapp1_AppSrc_enough_data(GstAppSrc*);
-// extern void _gotk4_gstapp1_AppSrc_need_data(GstAppSrc*, guint);
-// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer(GstAppSrc*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer_list(GstAppSrc*, GstBufferList*);
-// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_sample(GstAppSrc*, GstSample*);
-// extern gboolean _gotk4_gstapp1_AppSrc_seek_data(GstAppSrc*, guint64);
-// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_end_of_stream(void* fnptr, GstAppSrc* carg0) {
-// 	return ((GstFlowReturn (*) (GstAppSrc*))(fnptr))(carg0);
+// extern C.GstFlowReturn _gotk4_gstapp1_AppSrc_end_of_stream(*C.GstAppSrc);
+// extern C.void _gotk4_gstapp1_AppSrc_enough_data(*C.GstAppSrc);
+// extern C.void _gotk4_gstapp1_AppSrc_need_data(*C.GstAppSrc, C.guint);
+// extern C.GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer(*C.GstAppSrc, *C.GstBuffer);
+// extern C.GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer_list(*C.GstAppSrc, *C.GstBufferList);
+// extern C.GstFlowReturn _gotk4_gstapp1_AppSrc_push_sample(*C.GstAppSrc, *C.GstSample);
+// extern C.gboolean _gotk4_gstapp1_AppSrc_seek_data(*C.GstAppSrc, C.guint64);
+// C.GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_end_of_stream(void* fnptr, *C.GstAppSrc carg0) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAppSrc))(fnptr))(carg0);
 // }
-// void _gotk4_gstapp1_AppSrc_virtual_enough_data(void* fnptr, GstAppSrc* carg0) {
-// 	return ((void (*) (GstAppSrc*))(fnptr))(carg0);
+// C.void _gotk4_gstapp1_AppSrc_virtual_enough_data(void* fnptr, *C.GstAppSrc carg0) {
+// 	return ((C.void (*) (*C.GstAppSrc))(fnptr))(carg0);
 // }
-// void _gotk4_gstapp1_AppSrc_virtual_need_data(void* fnptr, GstAppSrc* carg0, guint carg1) {
-// 	return ((void (*) (GstAppSrc*, guint))(fnptr))(carg0, carg1);
+// C.void _gotk4_gstapp1_AppSrc_virtual_need_data(void* fnptr, *C.GstAppSrc carg0, C.guint carg1) {
+// 	return ((C.void (*) (*C.GstAppSrc, C.guint))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer(void* fnptr, GstAppSrc* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstAppSrc*, GstBuffer*))(fnptr))(carg0, carg1);
+// C.GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer(void* fnptr, *C.GstAppSrc carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAppSrc, *C.GstBuffer))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer_list(void* fnptr, GstAppSrc* carg0, GstBufferList* carg1) {
-// 	return ((GstFlowReturn (*) (GstAppSrc*, GstBufferList*))(fnptr))(carg0, carg1);
+// C.GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer_list(void* fnptr, *C.GstAppSrc carg0, *C.GstBufferList carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAppSrc, *C.GstBufferList))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_sample(void* fnptr, GstAppSrc* carg0, GstSample* carg1) {
-// 	return ((GstFlowReturn (*) (GstAppSrc*, GstSample*))(fnptr))(carg0, carg1);
+// C.GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_sample(void* fnptr, *C.GstAppSrc carg0, *C.GstSample carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstAppSrc, *C.GstSample))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstapp1_AppSrc_virtual_seek_data(void* fnptr, GstAppSrc* carg0, guint64 carg1) {
-// 	return ((gboolean (*) (GstAppSrc*, guint64))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstapp1_AppSrc_virtual_seek_data(void* fnptr, *C.GstAppSrc carg0, C.guint64 carg1) {
+// 	return ((C.gboolean (*) (*C.GstAppSrc, C.guint64))(fnptr))(carg0, carg1);
 // }
 import "C"
 
@@ -657,22 +657,25 @@ type AppSink interface {
 	// chain up virtual methods:
 
 	// ParentEos calls the default implementations of the eos virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentEos()
 	// ParentNewPreroll calls the default implementations of the new_preroll virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
 	ParentNewPreroll() gst.FlowReturn
 	// ParentNewSample calls the default implementations of the new_sample virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
 	ParentNewSample() gst.FlowReturn
 	// ParentPullPreroll calls the default implementations of the pull_preroll virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
@@ -697,7 +700,8 @@ type AppSink interface {
 	// element is set to the READY/NULL state.
 	ParentPullPreroll() *gst.Sample
 	// ParentPullSample calls the default implementations of the pull_sample virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
@@ -715,7 +719,8 @@ type AppSink interface {
 	// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
 	ParentPullSample() *gst.Sample
 	// ParentTryPullPreroll calls the default implementations of the try_pull_preroll virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timeout gst.ClockTime: the maximum amount of time to wait for the preroll sample 
@@ -745,7 +750,8 @@ type AppSink interface {
 	// element is set to the READY/NULL state, or the timeout expires.
 	ParentTryPullPreroll(timeout gst.ClockTime) *gst.Sample
 	// ParentTryPullSample calls the default implementations of the try_pull_sample virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timeout gst.ClockTime: the maximum amount of time to wait for a sample 
@@ -781,7 +787,7 @@ func unsafeWrapAppSink(base *gobject.ObjectInstance) *AppSinkInstance {
 			},
 		},
 		URIHandlerInstance: gst.URIHandlerInstance{
-			ObjectInstance: *base,
+			Instance: *base,
 		},
 	}
 }
@@ -1593,19 +1599,22 @@ type AppSinkOverrides[Instance AppSink] struct {
 	// gstbase.BaseSinkOverrides allows you to override virtual methods from the parent class gstbase.BaseSink
 	gstbase.BaseSinkOverrides[Instance]
 
-	// Eos allows you to override the implementation of the virtual method eos.
+	// // Eos allows you to override the implementation of the virtual method eos.
 	Eos func(Instance)
-	// NewPreroll allows you to override the implementation of the virtual method new_preroll.
+	// // NewPreroll allows you to override the implementation of the virtual method new_preroll.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
 	NewPreroll func(Instance) gst.FlowReturn
-	// NewSample allows you to override the implementation of the virtual method new_sample.
+	// // NewSample allows you to override the implementation of the virtual method new_sample.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
 	NewSample func(Instance) gst.FlowReturn
-	// PullPreroll allows you to override the implementation of the virtual method pull_preroll.
+	// // PullPreroll allows you to override the implementation of the virtual method pull_preroll.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
@@ -1629,7 +1638,8 @@ type AppSinkOverrides[Instance AppSink] struct {
 	// This function blocks until a preroll sample or EOS is received or the appsink
 	// element is set to the READY/NULL state.
 	PullPreroll func(Instance) *gst.Sample
-	// PullSample allows you to override the implementation of the virtual method pull_sample.
+	// // PullSample allows you to override the implementation of the virtual method pull_sample.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
@@ -1646,7 +1656,8 @@ type AppSinkOverrides[Instance AppSink] struct {
 	// If an EOS event was received before any buffers, this function returns
 	// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
 	PullSample func(Instance) *gst.Sample
-	// TryPullPreroll allows you to override the implementation of the virtual method try_pull_preroll.
+	// // TryPullPreroll allows you to override the implementation of the virtual method try_pull_preroll.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timeout gst.ClockTime: the maximum amount of time to wait for the preroll sample 
@@ -1675,7 +1686,8 @@ type AppSinkOverrides[Instance AppSink] struct {
 	// This function blocks until a preroll sample or EOS is received, the appsink
 	// element is set to the READY/NULL state, or the timeout expires.
 	TryPullPreroll func(Instance, gst.ClockTime) *gst.Sample
-	// TryPullSample allows you to override the implementation of the virtual method try_pull_sample.
+	// // TryPullSample allows you to override the implementation of the virtual method try_pull_sample.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timeout gst.ClockTime: the maximum amount of time to wait for a sample 
@@ -1855,7 +1867,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 }
 
 // ParentEos calls the default implementations of the eos virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 func (appsink *AppSinkInstance) ParentEos() {
 	var carg0 *C.GstAppSink
 
@@ -1866,7 +1878,8 @@ func (appsink *AppSinkInstance) ParentEos() {
 }
 
 // ParentNewPreroll calls the default implementations of the new_preroll virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -1887,7 +1900,8 @@ func (appsink *AppSinkInstance) ParentNewPreroll() gst.FlowReturn {
 }
 
 // ParentNewSample calls the default implementations of the new_sample virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -1908,7 +1922,8 @@ func (appsink *AppSinkInstance) ParentNewSample() gst.FlowReturn {
 }
 
 // ParentPullPreroll calls the default implementations of the pull_preroll virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Sample (nullable) 
@@ -1950,7 +1965,8 @@ func (appsink *AppSinkInstance) ParentPullPreroll() *gst.Sample {
 }
 
 // ParentPullSample calls the default implementations of the pull_sample virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Sample (nullable) 
@@ -1985,7 +2001,8 @@ func (appsink *AppSinkInstance) ParentPullSample() *gst.Sample {
 }
 
 // ParentTryPullPreroll calls the default implementations of the try_pull_preroll virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- timeout gst.ClockTime: the maximum amount of time to wait for the preroll sample 
@@ -2036,7 +2053,8 @@ func (appsink *AppSinkInstance) ParentTryPullPreroll(timeout gst.ClockTime) *gst
 }
 
 // ParentTryPullSample calls the default implementations of the try_pull_sample virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- timeout gst.ClockTime: the maximum amount of time to wait for a sample 
@@ -2532,7 +2550,8 @@ type AppSrc interface {
 	// chain up virtual methods:
 
 	// ParentEndOfStream calls the default implementations of the end_of_stream virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -2541,16 +2560,18 @@ type AppSrc interface {
 	// element is the last buffer of the stream.
 	ParentEndOfStream() gst.FlowReturn
 	// ParentEnoughData calls the default implementations of the enough_data virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentEnoughData()
 	// ParentNeedData calls the default implementations of the need_data virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- length uint 
 	ParentNeedData(length uint)
 	// ParentPushBuffer calls the default implementations of the push_buffer virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer: a #GstBuffer to push 
@@ -2566,7 +2587,8 @@ type AppSrc interface {
 	// space becomes available in the queue.
 	ParentPushBuffer(buffer *gst.Buffer) gst.FlowReturn
 	// ParentPushBufferList calls the default implementations of the push_buffer_list virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bufferList *gst.BufferList: a #GstBufferList to push 
@@ -2583,7 +2605,8 @@ type AppSrc interface {
 	// space becomes available in the queue.
 	ParentPushBufferList(bufferList *gst.BufferList) gst.FlowReturn
 	// ParentPushSample calls the default implementations of the push_sample virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- sample *gst.Sample: a #GstSample from which buffer and caps may be
@@ -2605,7 +2628,8 @@ type AppSrc interface {
 	// space becomes available in the queue.
 	ParentPushSample(sample *gst.Sample) gst.FlowReturn
 	// ParentSeekData calls the default implementations of the seek_data virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- offset uint64 
@@ -2628,7 +2652,7 @@ func unsafeWrapAppSrc(base *gobject.ObjectInstance) *AppSrcInstance {
 			},
 		},
 		URIHandlerInstance: gst.URIHandlerInstance{
-			ObjectInstance: *base,
+			Instance: *base,
 		},
 	}
 }
@@ -3422,7 +3446,8 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// gstbase.BaseSrcOverrides allows you to override virtual methods from the parent class gstbase.BaseSrc
 	gstbase.BaseSrcOverrides[Instance]
 
-	// EndOfStream allows you to override the implementation of the virtual method end_of_stream.
+	// // EndOfStream allows you to override the implementation of the virtual method end_of_stream.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -3430,14 +3455,16 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// Indicates to the appsrc element that the last buffer queued in the
 	// element is the last buffer of the stream.
 	EndOfStream func(Instance) gst.FlowReturn
-	// EnoughData allows you to override the implementation of the virtual method enough_data.
+	// // EnoughData allows you to override the implementation of the virtual method enough_data.
 	EnoughData func(Instance)
-	// NeedData allows you to override the implementation of the virtual method need_data.
+	// // NeedData allows you to override the implementation of the virtual method need_data.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- length uint 
 	NeedData func(Instance, uint)
-	// PushBuffer allows you to override the implementation of the virtual method push_buffer.
+	// // PushBuffer allows you to override the implementation of the virtual method push_buffer.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer: a #GstBuffer to push 
@@ -3452,7 +3479,8 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// When the block property is TRUE, this function can block until free
 	// space becomes available in the queue.
 	PushBuffer func(Instance, *gst.Buffer) gst.FlowReturn
-	// PushBufferList allows you to override the implementation of the virtual method push_buffer_list.
+	// // PushBufferList allows you to override the implementation of the virtual method push_buffer_list.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- bufferList *gst.BufferList: a #GstBufferList to push 
@@ -3468,7 +3496,8 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// When the block property is TRUE, this function can block until free
 	// space becomes available in the queue.
 	PushBufferList func(Instance, *gst.BufferList) gst.FlowReturn
-	// PushSample allows you to override the implementation of the virtual method push_sample.
+	// // PushSample allows you to override the implementation of the virtual method push_sample.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- sample *gst.Sample: a #GstSample from which buffer and caps may be
@@ -3489,7 +3518,8 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// When the block property is TRUE, this function can block until free
 	// space becomes available in the queue.
 	PushSample func(Instance, *gst.Sample) gst.FlowReturn
-	// SeekData allows you to override the implementation of the virtual method seek_data.
+	// // SeekData allows you to override the implementation of the virtual method seek_data.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- offset uint64 
@@ -3651,7 +3681,8 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 }
 
 // ParentEndOfStream calls the default implementations of the end_of_stream virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -3675,7 +3706,7 @@ func (appsrc *AppSrcInstance) ParentEndOfStream() gst.FlowReturn {
 }
 
 // ParentEnoughData calls the default implementations of the enough_data virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 func (appsrc *AppSrcInstance) ParentEnoughData() {
 	var carg0 *C.GstAppSrc
 
@@ -3686,7 +3717,8 @@ func (appsrc *AppSrcInstance) ParentEnoughData() {
 }
 
 // ParentNeedData calls the default implementations of the need_data virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- length uint 
@@ -3704,7 +3736,8 @@ func (appsrc *AppSrcInstance) ParentNeedData(length uint) {
 }
 
 // ParentPushBuffer calls the default implementations of the push_buffer virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer: a #GstBuffer to push 
@@ -3739,7 +3772,8 @@ func (appsrc *AppSrcInstance) ParentPushBuffer(buffer *gst.Buffer) gst.FlowRetur
 }
 
 // ParentPushBufferList calls the default implementations of the push_buffer_list virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- bufferList *gst.BufferList: a #GstBufferList to push 
@@ -3775,7 +3809,8 @@ func (appsrc *AppSrcInstance) ParentPushBufferList(bufferList *gst.BufferList) g
 }
 
 // ParentPushSample calls the default implementations of the push_sample virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- sample *gst.Sample: a #GstSample from which buffer and caps may be
@@ -3816,7 +3851,8 @@ func (appsrc *AppSrcInstance) ParentPushSample(sample *gst.Sample) gst.FlowRetur
 }
 
 // ParentSeekData calls the default implementations of the seek_data virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- offset uint64 

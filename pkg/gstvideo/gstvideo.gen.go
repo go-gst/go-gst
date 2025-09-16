@@ -19,299 +19,299 @@ import (
 // #cgo pkg-config: gstreamer-video-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/video/video.h>
-// extern void _gotk4_gstvideo1_VideoConvertSampleCallback(GstSample*, GError*, gpointer);
+// extern C.void _gotk4_gstvideo1_VideoConvertSampleCallback(*C.GstSample, *C.GError, C.gpointer);
 // extern void destroyUserdata(gpointer);
-// extern GstColorBalanceType _gotk4_gstvideo1_ColorBalance_get_balance_type(GstColorBalance*);
-// extern gint _gotk4_gstvideo1_ColorBalance_get_value(GstColorBalance*, GstColorBalanceChannel*);
-// extern GList* _gotk4_gstvideo1_ColorBalance_list_channels(GstColorBalance*);
-// extern void _gotk4_gstvideo1_ColorBalance_set_value(GstColorBalance*, GstColorBalanceChannel*, gint);
-// extern void _gotk4_gstvideo1_ColorBalance_value_changed(GstColorBalance*, GstColorBalanceChannel*, gint);
-// GstColorBalanceType _gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(void* fnptr, GstColorBalance* carg0) {
-// 	return ((GstColorBalanceType (*) (GstColorBalance*))(fnptr))(carg0);
-// }
-// gint _gotk4_gstvideo1_ColorBalance_virtual_get_value(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1) {
-// 	return ((gint (*) (GstColorBalance*, GstColorBalanceChannel*))(fnptr))(carg0, carg1);
-// }
-// GList* _gotk4_gstvideo1_ColorBalance_virtual_list_channels(void* fnptr, GstColorBalance* carg0) {
-// 	return ((GList* (*) (GstColorBalance*))(fnptr))(carg0);
-// }
-// void _gotk4_gstvideo1_ColorBalance_virtual_set_value(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1, gint carg2) {
-// 	return ((void (*) (GstColorBalance*, GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1, carg2);
-// }
-// void _gotk4_gstvideo1_ColorBalance_virtual_value_changed(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1, gint carg2) {
-// 	return ((void (*) (GstColorBalance*, GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1, carg2);
-// }
-// extern void _gotk4_gstvideo1_Navigation_send_event(GstNavigation*, GstStructure*);
-// extern void _gotk4_gstvideo1_Navigation_send_event_simple(GstNavigation*, GstEvent*);
-// void _gotk4_gstvideo1_Navigation_virtual_send_event(void* fnptr, GstNavigation* carg0, GstStructure* carg1) {
-// 	return ((void (*) (GstNavigation*, GstStructure*))(fnptr))(carg0, carg1);
-// }
-// void _gotk4_gstvideo1_Navigation_virtual_send_event_simple(void* fnptr, GstNavigation* carg0, GstEvent* carg1) {
-// 	return ((void (*) (GstNavigation*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_hcenter(GstVideoOrientation*, gint);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_hflip(GstVideoOrientation*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_vcenter(GstVideoOrientation*, gint);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_vflip(GstVideoOrientation*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_hcenter(GstVideoOrientation*, gint);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_hflip(GstVideoOrientation*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_vcenter(GstVideoOrientation*, gint);
-// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_vflip(GstVideoOrientation*, gboolean);
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(void* fnptr, GstVideoOrientation* carg0, gint* carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gint*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(void* fnptr, GstVideoOrientation* carg0, gboolean* carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gboolean*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(void* fnptr, GstVideoOrientation* carg0, gint* carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gint*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(void* fnptr, GstVideoOrientation* carg0, gboolean* carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gboolean*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(void* fnptr, GstVideoOrientation* carg0, gint carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gint))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hflip(void* fnptr, GstVideoOrientation* carg0, gboolean carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gboolean))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(void* fnptr, GstVideoOrientation* carg0, gint carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gint))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vflip(void* fnptr, GstVideoOrientation* carg0, gboolean carg1) {
-// 	return ((gboolean (*) (GstVideoOrientation*, gboolean))(fnptr))(carg0, carg1);
-// }
-// extern void _gotk4_gstvideo1_VideoOverlay_expose(GstVideoOverlay*);
-// extern void _gotk4_gstvideo1_VideoOverlay_handle_events(GstVideoOverlay*, gboolean);
-// extern void _gotk4_gstvideo1_VideoOverlay_set_render_rectangle(GstVideoOverlay*, gint, gint, gint, gint);
-// void _gotk4_gstvideo1_VideoOverlay_virtual_expose(void* fnptr, GstVideoOverlay* carg0) {
-// 	return ((void (*) (GstVideoOverlay*))(fnptr))(carg0);
-// }
-// void _gotk4_gstvideo1_VideoOverlay_virtual_handle_events(void* fnptr, GstVideoOverlay* carg0, gboolean carg1) {
-// 	return ((void (*) (GstVideoOverlay*, gboolean))(fnptr))(carg0, carg1);
-// }
-// void _gotk4_gstvideo1_VideoOverlay_virtual_set_render_rectangle(void* fnptr, GstVideoOverlay* carg0, gint carg1, gint carg2, gint carg3, gint carg4) {
-// 	return ((void (*) (GstVideoOverlay*, gint, gint, gint, gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
-// }
-// extern void _gotk4_gstvideo1_ColorBalanceChannel_value_changed(GstColorBalanceChannel*, gint);
-// void _gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(void* fnptr, GstColorBalanceChannel* carg0, gint carg1) {
-// 	return ((void (*) (GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1);
-// }
-// extern GstFlowReturn _gotk4_gstvideo1_VideoAggregator_aggregate_frames(GstVideoAggregator*, GstBuffer*);
-// extern void _gotk4_gstvideo1_VideoAggregator_find_best_format(GstVideoAggregator*, GstCaps*, GstVideoInfo*, gboolean);
-// extern GstCaps* _gotk4_gstvideo1_VideoAggregator_update_caps(GstVideoAggregator*, GstCaps*);
-// GstFlowReturn _gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(void* fnptr, GstVideoAggregator* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstVideoAggregator*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// void _gotk4_gstvideo1_VideoAggregator_virtual_find_best_format(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1, GstVideoInfo* carg2, gboolean* carg3) {
-// 	return ((void (*) (GstVideoAggregator*, GstCaps*, GstVideoInfo*, gboolean*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// GstCaps* _gotk4_gstvideo1_VideoAggregator_virtual_update_caps(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1) {
-// 	return ((GstCaps* (*) (GstVideoAggregator*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// extern void _gotk4_gstvideo1_VideoAggregatorPad_clean_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
-// extern gboolean _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
-// extern void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
-// extern void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
-// extern void _gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info(GstVideoAggregatorPad*);
-// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_clean_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
-// 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
-// 	return ((gboolean (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
-// 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
-// }
-// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
-// 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(void* fnptr, GstVideoAggregatorPad* carg0) {
-// 	return ((void (*) (GstVideoAggregatorPad*))(fnptr))(carg0);
-// }
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_close(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_decide_allocation(GstVideoDecoder*, GstQuery*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_drain(GstVideoDecoder*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_finish(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_flush(GstVideoDecoder*);
-// extern GstCaps* _gotk4_gstvideo1_VideoDecoder_getcaps(GstVideoDecoder*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_handle_frame(GstVideoDecoder*, GstVideoCodecFrame*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_handle_missing_data(GstVideoDecoder*, GstClockTime, GstClockTime);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_negotiate(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_open(GstVideoDecoder*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_parse(GstVideoDecoder*, GstVideoCodecFrame*, GstAdapter*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_propose_allocation(GstVideoDecoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_reset(GstVideoDecoder*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_set_format(GstVideoDecoder*, GstVideoCodecState*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_sink_event(GstVideoDecoder*, GstEvent*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_sink_query(GstVideoDecoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_src_event(GstVideoDecoder*, GstEvent*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_src_query(GstVideoDecoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_start(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_stop(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_transform_meta(GstVideoDecoder*, GstVideoCodecFrame*, GstMeta*);
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_close(void* fnptr, GstVideoDecoder* carg0) {
-// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_drain(void* fnptr, GstVideoDecoder* carg0) {
-// 	return ((GstFlowReturn (*) (GstVideoDecoder*))(fnptr))(carg0);
-// }
-// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_finish(void* fnptr, GstVideoDecoder* carg0) {
-// 	return ((GstFlowReturn (*) (GstVideoDecoder*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_flush(void* fnptr, GstVideoDecoder* carg0) {
-// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
-// }
-// GstCaps* _gotk4_gstvideo1_VideoDecoder_virtual_getcaps(void* fnptr, GstVideoDecoder* carg0, GstCaps* carg1) {
-// 	return ((GstCaps* (*) (GstVideoDecoder*, GstCaps*))(fnptr))(carg0, carg1);
-// }
-// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1) {
-// 	return ((GstFlowReturn (*) (GstVideoDecoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_handle_missing_data(void* fnptr, GstVideoDecoder* carg0, GstClockTime carg1, GstClockTime carg2) {
-// 	return ((gboolean (*) (GstVideoDecoder*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_negotiate(void* fnptr, GstVideoDecoder* carg0) {
-// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_open(void* fnptr, GstVideoDecoder* carg0) {
-// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
-// }
-// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_parse(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstAdapter* carg2, gboolean carg3) {
-// 	return ((GstFlowReturn (*) (GstVideoDecoder*, GstVideoCodecFrame*, GstAdapter*, gboolean))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// extern C.GstColorBalanceType _gotk4_gstvideo1_ColorBalance_get_balance_type(*C.GstColorBalance);
+// extern C.gint _gotk4_gstvideo1_ColorBalance_get_value(*C.GstColorBalance, *C.GstColorBalanceChannel);
+// extern *C.GList _gotk4_gstvideo1_ColorBalance_list_channels(*C.GstColorBalance);
+// extern C.void _gotk4_gstvideo1_ColorBalance_set_value(*C.GstColorBalance, *C.GstColorBalanceChannel, C.gint);
+// extern C.void _gotk4_gstvideo1_ColorBalance_value_changed(*C.GstColorBalance, *C.GstColorBalanceChannel, C.gint);
+// C.GstColorBalanceType _gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(void* fnptr, *C.GstColorBalance carg0) {
+// 	return ((C.GstColorBalanceType (*) (*C.GstColorBalance))(fnptr))(carg0);
+// }
+// C.gint _gotk4_gstvideo1_ColorBalance_virtual_get_value(void* fnptr, *C.GstColorBalance carg0, *C.GstColorBalanceChannel carg1) {
+// 	return ((C.gint (*) (*C.GstColorBalance, *C.GstColorBalanceChannel))(fnptr))(carg0, carg1);
+// }
+// *C.GList _gotk4_gstvideo1_ColorBalance_virtual_list_channels(void* fnptr, *C.GstColorBalance carg0) {
+// 	return ((*C.GList (*) (*C.GstColorBalance))(fnptr))(carg0);
+// }
+// C.void _gotk4_gstvideo1_ColorBalance_virtual_set_value(void* fnptr, *C.GstColorBalance carg0, *C.GstColorBalanceChannel carg1, C.gint carg2) {
+// 	return ((C.void (*) (*C.GstColorBalance, *C.GstColorBalanceChannel, C.gint))(fnptr))(carg0, carg1, carg2);
+// }
+// C.void _gotk4_gstvideo1_ColorBalance_virtual_value_changed(void* fnptr, *C.GstColorBalance carg0, *C.GstColorBalanceChannel carg1, C.gint carg2) {
+// 	return ((C.void (*) (*C.GstColorBalance, *C.GstColorBalanceChannel, C.gint))(fnptr))(carg0, carg1, carg2);
+// }
+// extern C.void _gotk4_gstvideo1_Navigation_send_event(*C.GstNavigation, *C.GstStructure);
+// extern C.void _gotk4_gstvideo1_Navigation_send_event_simple(*C.GstNavigation, *C.GstEvent);
+// C.void _gotk4_gstvideo1_Navigation_virtual_send_event(void* fnptr, *C.GstNavigation carg0, *C.GstStructure carg1) {
+// 	return ((C.void (*) (*C.GstNavigation, *C.GstStructure))(fnptr))(carg0, carg1);
+// }
+// C.void _gotk4_gstvideo1_Navigation_virtual_send_event_simple(void* fnptr, *C.GstNavigation carg0, *C.GstEvent carg1) {
+// 	return ((C.void (*) (*C.GstNavigation, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_get_hcenter(*C.GstVideoOrientation, C.gint);
+// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_get_hflip(*C.GstVideoOrientation, C.gboolean);
+// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_get_vcenter(*C.GstVideoOrientation, C.gint);
+// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_get_vflip(*C.GstVideoOrientation, C.gboolean);
+// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_set_hcenter(*C.GstVideoOrientation, C.gint);
+// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_set_hflip(*C.GstVideoOrientation, C.gboolean);
+// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_set_vcenter(*C.GstVideoOrientation, C.gint);
+// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_set_vflip(*C.GstVideoOrientation, C.gboolean);
+// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(void* fnptr, *C.GstVideoOrientation carg0, C.gint* carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gint*))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(void* fnptr, *C.GstVideoOrientation carg0, C.gboolean* carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gboolean*))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(void* fnptr, *C.GstVideoOrientation carg0, C.gint* carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gint*))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(void* fnptr, *C.GstVideoOrientation carg0, C.gboolean* carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gboolean*))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(void* fnptr, *C.GstVideoOrientation carg0, C.gint carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gint))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hflip(void* fnptr, *C.GstVideoOrientation carg0, C.gboolean carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gboolean))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(void* fnptr, *C.GstVideoOrientation carg0, C.gint carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gint))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vflip(void* fnptr, *C.GstVideoOrientation carg0, C.gboolean carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gboolean))(fnptr))(carg0, carg1);
+// }
+// extern C.void _gotk4_gstvideo1_VideoOverlay_expose(*C.GstVideoOverlay);
+// extern C.void _gotk4_gstvideo1_VideoOverlay_handle_events(*C.GstVideoOverlay, C.gboolean);
+// extern C.void _gotk4_gstvideo1_VideoOverlay_set_render_rectangle(*C.GstVideoOverlay, C.gint, C.gint, C.gint, C.gint);
+// C.void _gotk4_gstvideo1_VideoOverlay_virtual_expose(void* fnptr, *C.GstVideoOverlay carg0) {
+// 	return ((C.void (*) (*C.GstVideoOverlay))(fnptr))(carg0);
+// }
+// C.void _gotk4_gstvideo1_VideoOverlay_virtual_handle_events(void* fnptr, *C.GstVideoOverlay carg0, C.gboolean carg1) {
+// 	return ((C.void (*) (*C.GstVideoOverlay, C.gboolean))(fnptr))(carg0, carg1);
+// }
+// C.void _gotk4_gstvideo1_VideoOverlay_virtual_set_render_rectangle(void* fnptr, *C.GstVideoOverlay carg0, C.gint carg1, C.gint carg2, C.gint carg3, C.gint carg4) {
+// 	return ((C.void (*) (*C.GstVideoOverlay, C.gint, C.gint, C.gint, C.gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// }
+// extern C.void _gotk4_gstvideo1_ColorBalanceChannel_value_changed(*C.GstColorBalanceChannel, C.gint);
+// C.void _gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(void* fnptr, *C.GstColorBalanceChannel carg0, C.gint carg1) {
+// 	return ((C.void (*) (*C.GstColorBalanceChannel, C.gint))(fnptr))(carg0, carg1);
+// }
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoAggregator_aggregate_frames(*C.GstVideoAggregator, *C.GstBuffer);
+// extern C.void _gotk4_gstvideo1_VideoAggregator_find_best_format(*C.GstVideoAggregator, *C.GstCaps, *C.GstVideoInfo, C.gboolean);
+// extern *C.GstCaps _gotk4_gstvideo1_VideoAggregator_update_caps(*C.GstVideoAggregator, *C.GstCaps);
+// C.GstFlowReturn _gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(void* fnptr, *C.GstVideoAggregator carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoAggregator, *C.GstBuffer))(fnptr))(carg0, carg1);
+// }
+// C.void _gotk4_gstvideo1_VideoAggregator_virtual_find_best_format(void* fnptr, *C.GstVideoAggregator carg0, *C.GstCaps carg1, *C.GstVideoInfo carg2, C.gboolean* carg3) {
+// 	return ((C.void (*) (*C.GstVideoAggregator, *C.GstCaps, *C.GstVideoInfo, C.gboolean*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// *C.GstCaps _gotk4_gstvideo1_VideoAggregator_virtual_update_caps(void* fnptr, *C.GstVideoAggregator carg0, *C.GstCaps carg1) {
+// 	return ((*C.GstCaps (*) (*C.GstVideoAggregator, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// extern C.void _gotk4_gstvideo1_VideoAggregatorPad_clean_frame(*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstVideoFrame);
+// extern C.gboolean _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame(*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstBuffer, *C.GstVideoFrame);
+// extern C.void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish(*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstVideoFrame);
+// extern C.void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start(*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstBuffer, *C.GstVideoFrame);
+// extern C.void _gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info(*C.GstVideoAggregatorPad);
+// C.void _gotk4_gstvideo1_VideoAggregatorPad_virtual_clean_frame(void* fnptr, *C.GstVideoAggregatorPad carg0, *C.GstVideoAggregator carg1, *C.GstVideoFrame carg2) {
+// 	return ((C.void (*) (*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(void* fnptr, *C.GstVideoAggregatorPad carg0, *C.GstVideoAggregator carg1, *C.GstBuffer carg2, *C.GstVideoFrame carg3) {
+// 	return ((C.gboolean (*) (*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstBuffer, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(void* fnptr, *C.GstVideoAggregatorPad carg0, *C.GstVideoAggregator carg1, *C.GstVideoFrame carg2) {
+// 	return ((C.void (*) (*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2);
+// }
+// C.void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(void* fnptr, *C.GstVideoAggregatorPad carg0, *C.GstVideoAggregator carg1, *C.GstBuffer carg2, *C.GstVideoFrame carg3) {
+// 	return ((C.void (*) (*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstBuffer, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.void _gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(void* fnptr, *C.GstVideoAggregatorPad carg0) {
+// 	return ((C.void (*) (*C.GstVideoAggregatorPad))(fnptr))(carg0);
+// }
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_close(*C.GstVideoDecoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_decide_allocation(*C.GstVideoDecoder, *C.GstQuery);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_drain(*C.GstVideoDecoder);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_finish(*C.GstVideoDecoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_flush(*C.GstVideoDecoder);
+// extern *C.GstCaps _gotk4_gstvideo1_VideoDecoder_getcaps(*C.GstVideoDecoder, *C.GstCaps);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_handle_frame(*C.GstVideoDecoder, *C.GstVideoCodecFrame);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_handle_missing_data(*C.GstVideoDecoder, C.GstClockTime, C.GstClockTime);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_negotiate(*C.GstVideoDecoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_open(*C.GstVideoDecoder);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_parse(*C.GstVideoDecoder, *C.GstVideoCodecFrame, *C.GstAdapter, C.gboolean);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_propose_allocation(*C.GstVideoDecoder, *C.GstQuery);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_reset(*C.GstVideoDecoder, C.gboolean);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_set_format(*C.GstVideoDecoder, *C.GstVideoCodecState);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_sink_event(*C.GstVideoDecoder, *C.GstEvent);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_sink_query(*C.GstVideoDecoder, *C.GstQuery);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_src_event(*C.GstVideoDecoder, *C.GstEvent);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_src_query(*C.GstVideoDecoder, *C.GstQuery);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_start(*C.GstVideoDecoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_stop(*C.GstVideoDecoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_transform_meta(*C.GstVideoDecoder, *C.GstVideoCodecFrame, *C.GstMeta);
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_close(void* fnptr, *C.GstVideoDecoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(void* fnptr, *C.GstVideoDecoder carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_drain(void* fnptr, *C.GstVideoDecoder carg0) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoDecoder))(fnptr))(carg0);
+// }
+// C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_finish(void* fnptr, *C.GstVideoDecoder carg0) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoDecoder))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_flush(void* fnptr, *C.GstVideoDecoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
+// }
+// *C.GstCaps _gotk4_gstvideo1_VideoDecoder_virtual_getcaps(void* fnptr, *C.GstVideoDecoder carg0, *C.GstCaps carg1) {
+// 	return ((*C.GstCaps (*) (*C.GstVideoDecoder, *C.GstCaps))(fnptr))(carg0, carg1);
+// }
+// C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(void* fnptr, *C.GstVideoDecoder carg0, *C.GstVideoCodecFrame carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoDecoder, *C.GstVideoCodecFrame))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_handle_missing_data(void* fnptr, *C.GstVideoDecoder carg0, C.GstClockTime carg1, C.GstClockTime carg2) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, C.GstClockTime, C.GstClockTime))(fnptr))(carg0, carg1, carg2);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_negotiate(void* fnptr, *C.GstVideoDecoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_open(void* fnptr, *C.GstVideoDecoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
+// }
+// C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_parse(void* fnptr, *C.GstVideoDecoder carg0, *C.GstVideoCodecFrame carg1, *C.GstAdapter carg2, C.gboolean carg3) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoDecoder, *C.GstVideoCodecFrame, *C.GstAdapter, C.gboolean))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(void* fnptr, *C.GstVideoDecoder carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_reset(void* fnptr, GstVideoDecoder* carg0, gboolean carg1) {
-// 	return ((gboolean (*) (GstVideoDecoder*, gboolean))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_reset(void* fnptr, *C.GstVideoDecoder carg0, C.gboolean carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, C.gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_set_format(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecState* carg1) {
-// 	return ((gboolean (*) (GstVideoDecoder*, GstVideoCodecState*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_set_format(void* fnptr, *C.GstVideoDecoder carg0, *C.GstVideoCodecState carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstVideoCodecState))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstVideoDecoder*, GstEvent*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_event(void* fnptr, *C.GstVideoDecoder carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstEvent))(fnptr))(carg0, carg1);
+// }
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_query(void* fnptr, *C.GstVideoDecoder carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstVideoDecoder*, GstEvent*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_event(void* fnptr, *C.GstVideoDecoder carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstEvent))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_query(void* fnptr, *C.GstVideoDecoder carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_start(void* fnptr, GstVideoDecoder* carg0) {
-// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_start(void* fnptr, *C.GstVideoDecoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_stop(void* fnptr, GstVideoDecoder* carg0) {
-// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_stop(void* fnptr, *C.GstVideoDecoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_transform_meta(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
-// 	return ((gboolean (*) (GstVideoDecoder*, GstVideoCodecFrame*, GstMeta*))(fnptr))(carg0, carg1, carg2);
+// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_transform_meta(void* fnptr, *C.GstVideoDecoder carg0, *C.GstVideoCodecFrame carg1, *C.GstMeta carg2) {
+// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstVideoCodecFrame, *C.GstMeta))(fnptr))(carg0, carg1, carg2);
 // }
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_close(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_decide_allocation(GstVideoEncoder*, GstQuery*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_finish(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_flush(GstVideoEncoder*);
-// extern GstCaps* _gotk4_gstvideo1_VideoEncoder_getcaps(GstVideoEncoder*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_handle_frame(GstVideoEncoder*, GstVideoCodecFrame*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_negotiate(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_open(GstVideoEncoder*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_pre_push(GstVideoEncoder*, GstVideoCodecFrame*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_propose_allocation(GstVideoEncoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_reset(GstVideoEncoder*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_set_format(GstVideoEncoder*, GstVideoCodecState*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_sink_event(GstVideoEncoder*, GstEvent*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_sink_query(GstVideoEncoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_src_event(GstVideoEncoder*, GstEvent*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_src_query(GstVideoEncoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_start(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_stop(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_transform_meta(GstVideoEncoder*, GstVideoCodecFrame*, GstMeta*);
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_close(void* fnptr, GstVideoEncoder* carg0) {
-// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_close(*C.GstVideoEncoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_decide_allocation(*C.GstVideoEncoder, *C.GstQuery);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_finish(*C.GstVideoEncoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_flush(*C.GstVideoEncoder);
+// extern *C.GstCaps _gotk4_gstvideo1_VideoEncoder_getcaps(*C.GstVideoEncoder, *C.GstCaps);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_handle_frame(*C.GstVideoEncoder, *C.GstVideoCodecFrame);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_negotiate(*C.GstVideoEncoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_open(*C.GstVideoEncoder);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_pre_push(*C.GstVideoEncoder, *C.GstVideoCodecFrame);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_propose_allocation(*C.GstVideoEncoder, *C.GstQuery);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_reset(*C.GstVideoEncoder, C.gboolean);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_set_format(*C.GstVideoEncoder, *C.GstVideoCodecState);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_sink_event(*C.GstVideoEncoder, *C.GstEvent);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_sink_query(*C.GstVideoEncoder, *C.GstQuery);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_src_event(*C.GstVideoEncoder, *C.GstEvent);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_src_query(*C.GstVideoEncoder, *C.GstQuery);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_start(*C.GstVideoEncoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_stop(*C.GstVideoEncoder);
+// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_transform_meta(*C.GstVideoEncoder, *C.GstVideoCodecFrame, *C.GstMeta);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_close(void* fnptr, *C.GstVideoEncoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(void* fnptr, *C.GstVideoEncoder carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_finish(void* fnptr, GstVideoEncoder* carg0) {
-// 	return ((GstFlowReturn (*) (GstVideoEncoder*))(fnptr))(carg0);
+// C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_finish(void* fnptr, *C.GstVideoEncoder carg0) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoEncoder))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_flush(void* fnptr, GstVideoEncoder* carg0) {
-// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_flush(void* fnptr, *C.GstVideoEncoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
 // }
-// GstCaps* _gotk4_gstvideo1_VideoEncoder_virtual_getcaps(void* fnptr, GstVideoEncoder* carg0, GstCaps* carg1) {
-// 	return ((GstCaps* (*) (GstVideoEncoder*, GstCaps*))(fnptr))(carg0, carg1);
+// *C.GstCaps _gotk4_gstvideo1_VideoEncoder_virtual_getcaps(void* fnptr, *C.GstVideoEncoder carg0, *C.GstCaps carg1) {
+// 	return ((*C.GstCaps (*) (*C.GstVideoEncoder, *C.GstCaps))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
-// 	return ((GstFlowReturn (*) (GstVideoEncoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
+// C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(void* fnptr, *C.GstVideoEncoder carg0, *C.GstVideoCodecFrame carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoEncoder, *C.GstVideoCodecFrame))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_negotiate(void* fnptr, GstVideoEncoder* carg0) {
-// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_negotiate(void* fnptr, *C.GstVideoEncoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_open(void* fnptr, GstVideoEncoder* carg0) {
-// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_open(void* fnptr, *C.GstVideoEncoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_pre_push(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
-// 	return ((GstFlowReturn (*) (GstVideoEncoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
+// C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_pre_push(void* fnptr, *C.GstVideoEncoder carg0, *C.GstVideoCodecFrame carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoEncoder, *C.GstVideoCodecFrame))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(void* fnptr, *C.GstVideoEncoder carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_reset(void* fnptr, GstVideoEncoder* carg0, gboolean carg1) {
-// 	return ((gboolean (*) (GstVideoEncoder*, gboolean))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_reset(void* fnptr, *C.GstVideoEncoder carg0, C.gboolean carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder, C.gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_set_format(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecState* carg1) {
-// 	return ((gboolean (*) (GstVideoEncoder*, GstVideoCodecState*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_set_format(void* fnptr, *C.GstVideoEncoder carg0, *C.GstVideoCodecState carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstVideoCodecState))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstVideoEncoder*, GstEvent*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_event(void* fnptr, *C.GstVideoEncoder carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstEvent))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_query(void* fnptr, *C.GstVideoEncoder carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
-// 	return ((gboolean (*) (GstVideoEncoder*, GstEvent*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_event(void* fnptr, *C.GstVideoEncoder carg0, *C.GstEvent carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstEvent))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_query(void* fnptr, *C.GstVideoEncoder carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_start(void* fnptr, GstVideoEncoder* carg0) {
-// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_start(void* fnptr, *C.GstVideoEncoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_stop(void* fnptr, GstVideoEncoder* carg0) {
-// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_stop(void* fnptr, *C.GstVideoEncoder carg0) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_transform_meta(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
-// 	return ((gboolean (*) (GstVideoEncoder*, GstVideoCodecFrame*, GstMeta*))(fnptr))(carg0, carg1, carg2);
+// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_transform_meta(void* fnptr, *C.GstVideoEncoder carg0, *C.GstVideoCodecFrame carg1, *C.GstMeta carg2) {
+// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstVideoCodecFrame, *C.GstMeta))(fnptr))(carg0, carg1, carg2);
 // }
-// extern gboolean _gotk4_gstvideo1_VideoFilter_set_info(GstVideoFilter*, GstCaps*, GstVideoInfo*, GstCaps*, GstVideoInfo*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame(GstVideoFilter*, GstVideoFrame*, GstVideoFrame*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame_ip(GstVideoFilter*, GstVideoFrame*);
-// gboolean _gotk4_gstvideo1_VideoFilter_virtual_set_info(void* fnptr, GstVideoFilter* carg0, GstCaps* carg1, GstVideoInfo* carg2, GstCaps* carg3, GstVideoInfo* carg4) {
-// 	return ((gboolean (*) (GstVideoFilter*, GstCaps*, GstVideoInfo*, GstCaps*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// extern C.gboolean _gotk4_gstvideo1_VideoFilter_set_info(*C.GstVideoFilter, *C.GstCaps, *C.GstVideoInfo, *C.GstCaps, *C.GstVideoInfo);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame(*C.GstVideoFilter, *C.GstVideoFrame, *C.GstVideoFrame);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame_ip(*C.GstVideoFilter, *C.GstVideoFrame);
+// C.gboolean _gotk4_gstvideo1_VideoFilter_virtual_set_info(void* fnptr, *C.GstVideoFilter carg0, *C.GstCaps carg1, *C.GstVideoInfo carg2, *C.GstCaps carg3, *C.GstVideoInfo carg4) {
+// 	return ((C.gboolean (*) (*C.GstVideoFilter, *C.GstCaps, *C.GstVideoInfo, *C.GstCaps, *C.GstVideoInfo))(fnptr))(carg0, carg1, carg2, carg3, carg4);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1, GstVideoFrame* carg2) {
-// 	return ((GstFlowReturn (*) (GstVideoFilter*, GstVideoFrame*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
+// C.GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame(void* fnptr, *C.GstVideoFilter carg0, *C.GstVideoFrame carg1, *C.GstVideoFrame carg2) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoFilter, *C.GstVideoFrame, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1) {
-// 	return ((GstFlowReturn (*) (GstVideoFilter*, GstVideoFrame*))(fnptr))(carg0, carg1);
+// C.GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(void* fnptr, *C.GstVideoFilter carg0, *C.GstVideoFrame carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoFilter, *C.GstVideoFrame))(fnptr))(carg0, carg1);
 // }
-// extern gboolean _gotk4_gstvideo1_VideoSink_set_info(GstVideoSink*, GstCaps*, GstVideoInfo*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoSink_show_frame(GstVideoSink*, GstBuffer*);
-// gboolean _gotk4_gstvideo1_VideoSink_virtual_set_info(void* fnptr, GstVideoSink* carg0, GstCaps* carg1, GstVideoInfo* carg2) {
-// 	return ((gboolean (*) (GstVideoSink*, GstCaps*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2);
+// extern C.gboolean _gotk4_gstvideo1_VideoSink_set_info(*C.GstVideoSink, *C.GstCaps, *C.GstVideoInfo);
+// extern C.GstFlowReturn _gotk4_gstvideo1_VideoSink_show_frame(*C.GstVideoSink, *C.GstBuffer);
+// C.gboolean _gotk4_gstvideo1_VideoSink_virtual_set_info(void* fnptr, *C.GstVideoSink carg0, *C.GstCaps carg1, *C.GstVideoInfo carg2) {
+// 	return ((C.gboolean (*) (*C.GstVideoSink, *C.GstCaps, *C.GstVideoInfo))(fnptr))(carg0, carg1, carg2);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoSink_virtual_show_frame(void* fnptr, GstVideoSink* carg0, GstBuffer* carg1) {
-// 	return ((GstFlowReturn (*) (GstVideoSink*, GstBuffer*))(fnptr))(carg0, carg1);
+// C.GstFlowReturn _gotk4_gstvideo1_VideoSink_virtual_show_frame(void* fnptr, *C.GstVideoSink carg0, *C.GstBuffer carg1) {
+// 	return ((C.GstFlowReturn (*) (*C.GstVideoSink, *C.GstBuffer))(fnptr))(carg0, carg1);
 // }
-// extern void _gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info(GstVideoAggregatorConvertPad*, GstVideoAggregator*, GstVideoInfo*);
-// void _gotk4_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(void* fnptr, GstVideoAggregatorConvertPad* carg0, GstVideoAggregator* carg1, GstVideoInfo* carg2) {
-// 	return ((void (*) (GstVideoAggregatorConvertPad*, GstVideoAggregator*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2);
+// extern C.void _gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info(*C.GstVideoAggregatorConvertPad, *C.GstVideoAggregator, *C.GstVideoInfo);
+// C.void _gotk4_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(void* fnptr, *C.GstVideoAggregatorConvertPad carg0, *C.GstVideoAggregator carg1, *C.GstVideoInfo carg2) {
+// 	return ((C.void (*) (*C.GstVideoAggregatorConvertPad, *C.GstVideoAggregator, *C.GstVideoInfo))(fnptr))(carg0, carg1, carg2);
 // }
 import "C"
 
@@ -5840,7 +5840,7 @@ func BufferAddVideoCaptionMeta(buffer *gst.Buffer, captionType VideoCaptionType,
 	_ = data
 	_ = carg3
 	_ = carg4
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_buffer_add_video_caption_meta(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(buffer)
@@ -5970,10 +5970,10 @@ func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format Vi
 	carg6 = C.guint(nPlanes)
 	_ = offset
 	_ = carg7
-	panic("unimplemented conversion of [4]uint (const gsize*)")
+	panic("unimplemented conversion of [4]uint (*C.gsize)")
 	_ = stride
 	_ = carg8
-	panic("unimplemented conversion of [4]int32 (const gint*)")
+	panic("unimplemented conversion of [4]int32 (*C.gint)")
 
 	cret = C.gst_buffer_add_video_meta_full(carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8)
 	runtime.KeepAlive(buffer)
@@ -6149,11 +6149,11 @@ func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	_ = uuid
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (*C.guint8)")
 	if data != nil {
 		_ = data
 		_ = carg3
-		panic("unimplemented conversion of *uint8 (guint8*)")
+		panic("unimplemented conversion of *uint8 (*C.guint8)")
 	}
 	carg4 = C.gsize(size)
 
@@ -6600,7 +6600,7 @@ func VideoBlendScaleLinearRGBA(src *VideoInfo, srcBuffer *gst.Buffer, destHeight
 
 	_ = dest
 	_ = carg5
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (C.GstVideoInfo)")
 	destBuffer = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg6))
 
 	return dest, destBuffer
@@ -6718,7 +6718,7 @@ func VideoCenterRect(src *VideoRectangle, dst *VideoRectangle, scaling bool) Vid
 
 	_ = result
 	_ = carg3
-	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
+	panic("unimplemented conversion of VideoRectangle (C.GstVideoRectangle)")
 
 	return result
 }
@@ -6994,7 +6994,7 @@ func VideoDmaDRMFormatFromGstFormat(format VideoFormat, modifier *uint64) uint32
 	if modifier != nil {
 		_ = modifier
 		_ = carg2
-		panic("unimplemented conversion of *uint64 (guint64*)")
+		panic("unimplemented conversion of *uint64 (*C.guint64)")
 	}
 
 	cret = C.gst_video_dma_drm_format_from_gst_format(carg1, carg2)
@@ -7497,7 +7497,7 @@ func VideoFormatsAny() (uint, []VideoFormat) {
 	len = uint(carg1)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
+	panic("unimplemented conversion of []VideoFormat (*C.GstVideoFormat)")
 
 	return len, goret
 }
@@ -7522,7 +7522,7 @@ func VideoFormatsRaw() (uint, []VideoFormat) {
 	len = uint(carg1)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
+	panic("unimplemented conversion of []VideoFormat (*C.GstVideoFormat)")
 
 	return len, goret
 }
@@ -7682,7 +7682,7 @@ func VideoMakeRawCaps(formats []VideoFormat) *gst.Caps {
 	_ = formats
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
+	panic("unimplemented conversion of []VideoFormat (*C.GstVideoFormat)")
 
 	cret = C.gst_video_make_raw_caps(carg1, carg2)
 	runtime.KeepAlive(formats)
@@ -7718,7 +7718,7 @@ func VideoMakeRawCapsWithFeatures(formats []VideoFormat, features *gst.CapsFeatu
 	_ = formats
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
+	panic("unimplemented conversion of []VideoFormat (*C.GstVideoFormat)")
 	if features != nil {
 		carg3 = (*C.GstCapsFeatures)(gst.UnsafeCapsFeaturesToGlibFull(features))
 	}
@@ -8059,7 +8059,7 @@ func VideoTimeCodeMetaApiGetType() gobject.Type {
 // ColorBalanceInstance is the instance type used by all types implementing GstColorBalance. It is used internally by the bindings. Users should use the interface [ColorBalance] instead.
 type ColorBalanceInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ ColorBalance = (*ColorBalanceInstance)(nil)
@@ -8072,7 +8072,6 @@ var _ ColorBalance = (*ColorBalanceInstance)(nil)
 // 
 // Example elements are 'xvimagesink' and 'colorbalance'
 type ColorBalance interface {
-	gobject.Object
 	upcastToGstColorBalance() *ColorBalanceInstance
 
 	// GetBalanceType wraps gst_color_balance_get_balance_type
@@ -8142,7 +8141,8 @@ type ColorBalance interface {
 	// chain up virtual methods:
 
 	// ParentGetBalanceType calls the default implementations of the get_balance_type virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ColorBalanceType 
@@ -8150,7 +8150,8 @@ type ColorBalance interface {
 	// Get the #GstColorBalanceType of this implementation.
 	ParentGetBalanceType() ColorBalanceType
 	// ParentGetValue calls the default implementations of the get_value virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
@@ -8167,7 +8168,8 @@ type ColorBalance interface {
 	//         #GstColorBalanceChannel object.
 	ParentGetValue(channel ColorBalanceChannel) int32
 	// ParentListChannels calls the default implementations of the list_channels virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []ColorBalanceChannel 
@@ -8175,7 +8177,8 @@ type ColorBalance interface {
 	// Retrieve a list of the available channels.
 	ParentListChannels() []ColorBalanceChannel
 	// ParentSetValue calls the default implementations of the set_value virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
@@ -8189,7 +8192,8 @@ type ColorBalance interface {
 	//         #GstColorBalanceChannel object.
 	ParentSetValue(channel ColorBalanceChannel, value int32)
 	// ParentValueChanged calls the default implementations of the value_changed virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
@@ -8206,7 +8210,7 @@ var _ ColorBalance = (*ColorBalanceInstance)(nil)
 
 func unsafeWrapColorBalance(base *gobject.ObjectInstance) *ColorBalanceInstance {
 	return &ColorBalanceInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -8236,13 +8240,13 @@ func UnsafeColorBalanceFromGlibBorrow(c unsafe.Pointer) ColorBalance {
 // UnsafeColorBalanceToGlibNone is used to convert the instance to it's C value GstColorBalance. This is used by the bindings internally.
 func UnsafeColorBalanceToGlibNone(c ColorBalance) unsafe.Pointer {
 	i := c.upcastToGstColorBalance()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeColorBalanceToGlibFull is used to convert the instance to it's C value GstColorBalance, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeColorBalanceToGlibFull(c ColorBalance) unsafe.Pointer {
 	i := c.upcastToGstColorBalance()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // GetBalanceType wraps gst_color_balance_get_balance_type
@@ -8391,20 +8395,22 @@ func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, v
 //
 // Fired when the value of the indicated channel has changed.
 func (o *ColorBalanceInstance) ConnectValueChanged(fn func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle {
-	return o.Connect("value-changed", fn)
+	return o.Instance.Connect("value-changed", fn)
 }
 
 // ColorBalanceOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type ColorBalanceOverrides[Instance ColorBalance] struct {
-	// GetBalanceType allows you to override the implementation of the virtual method get_balance_type.
+	// // GetBalanceType allows you to override the implementation of the virtual method get_balance_type.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ColorBalanceType 
 	//
 	// Get the #GstColorBalanceType of this implementation.
 	GetBalanceType func(Instance) ColorBalanceType
-	// GetValue allows you to override the implementation of the virtual method get_value.
+	// // GetValue allows you to override the implementation of the virtual method get_value.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
@@ -8420,14 +8426,16 @@ type ColorBalanceOverrides[Instance ColorBalance] struct {
 	//         #GstColorBalanceChannel.max_value members of the
 	//         #GstColorBalanceChannel object.
 	GetValue func(Instance, ColorBalanceChannel) int32
-	// ListChannels allows you to override the implementation of the virtual method list_channels.
+	// // ListChannels allows you to override the implementation of the virtual method list_channels.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []ColorBalanceChannel 
 	//
 	// Retrieve a list of the available channels.
 	ListChannels func(Instance) []ColorBalanceChannel
-	// SetValue allows you to override the implementation of the virtual method set_value.
+	// // SetValue allows you to override the implementation of the virtual method set_value.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
@@ -8440,7 +8448,8 @@ type ColorBalanceOverrides[Instance ColorBalance] struct {
 	//         #GstColorBalanceChannel.max_value members of the
 	//         #GstColorBalanceChannel object.
 	SetValue func(Instance, ColorBalanceChannel, int32)
-	// ValueChanged allows you to override the implementation of the virtual method value_changed.
+	// // ValueChanged allows you to override the implementation of the virtual method value_changed.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
@@ -8515,7 +8524,7 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 
 				_ = goret
 				_ = cret
-				panic("unimplemented conversion of []ColorBalanceChannel (GList*)")
+				panic("unimplemented conversion of []ColorBalanceChannel (*C.GList)")
 
 				return cret
 			},
@@ -8562,7 +8571,8 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 }
 
 // ParentGetBalanceType calls the default implementations of the get_balance_type virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret ColorBalanceType 
@@ -8585,7 +8595,8 @@ func (balance *ColorBalanceInstance) ParentGetBalanceType() ColorBalanceType {
 }
 
 // ParentGetValue calls the default implementations of the get_value virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
@@ -8621,7 +8632,8 @@ func (balance *ColorBalanceInstance) ParentGetValue(channel ColorBalanceChannel)
 }
 
 // ParentListChannels calls the default implementations of the list_channels virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret []ColorBalanceChannel 
@@ -8651,7 +8663,8 @@ func (balance *ColorBalanceInstance) ParentListChannels() []ColorBalanceChannel 
 }
 
 // ParentSetValue calls the default implementations of the set_value virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
@@ -8680,7 +8693,8 @@ func (balance *ColorBalanceInstance) ParentSetValue(channel ColorBalanceChannel,
 }
 
 // ParentValueChanged calls the default implementations of the value_changed virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
@@ -8709,7 +8723,7 @@ func (balance *ColorBalanceInstance) ParentValueChanged(channel ColorBalanceChan
 // NavigationInstance is the instance type used by all types implementing GstNavigation. It is used internally by the bindings. Users should use the interface [Navigation] instead.
 type NavigationInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ Navigation = (*NavigationInstance)(nil)
@@ -8740,7 +8754,6 @@ var _ Navigation = (*NavigationInstance)(nil)
 // The GstNavigation message functions provide functions for creating and
 // parsing custom bus messages for signaling GstNavigation changes.
 type Navigation interface {
-	gobject.Object
 	upcastToGstNavigation() *NavigationInstance
 
 	// SendCommand wraps gst_navigation_send_command
@@ -8808,7 +8821,8 @@ type Navigation interface {
 	// chain up virtual methods:
 
 	// ParentSendEvent calls the default implementations of the send_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- structure *gst.Structure 
@@ -8818,7 +8832,8 @@ type Navigation interface {
 	// Deprecated: (since 1.22.0) Use #GstNavigationInterface.send_event_simple() instead.
 	ParentSendEvent(structure *gst.Structure)
 	// ParentSendEventSimple calls the default implementations of the send_event_simple virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event: The event to send 
@@ -8831,7 +8846,7 @@ var _ Navigation = (*NavigationInstance)(nil)
 
 func unsafeWrapNavigation(base *gobject.ObjectInstance) *NavigationInstance {
 	return &NavigationInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -8861,13 +8876,13 @@ func UnsafeNavigationFromGlibBorrow(c unsafe.Pointer) Navigation {
 // UnsafeNavigationToGlibNone is used to convert the instance to it's C value GstNavigation. This is used by the bindings internally.
 func UnsafeNavigationToGlibNone(c Navigation) unsafe.Pointer {
 	i := c.upcastToGstNavigation()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeNavigationToGlibFull is used to convert the instance to it's C value GstNavigation, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeNavigationToGlibFull(c Navigation) unsafe.Pointer {
 	i := c.upcastToGstNavigation()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // NavigationEventGetCoordinates wraps gst_navigation_event_get_coordinates
@@ -10269,7 +10284,7 @@ func NavigationQuerySetCommandsv(query *gst.Query, cmds []NavigationCommand) {
 	_ = cmds
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []NavigationCommand (GstNavigationCommand*)")
+	panic("unimplemented conversion of []NavigationCommand (*C.GstNavigationCommand)")
 
 	C.gst_navigation_query_set_commandsv(carg1, carg2, carg3)
 	runtime.KeepAlive(query)
@@ -10341,8 +10356,8 @@ func (navigation *NavigationInstance) SendEventSimple(event *gst.Event) {
 // by XKeysymToString. 
 func (navigation *NavigationInstance) SendKeyEvent(event string, key string) {
 	var carg0 *C.GstNavigation // in, none, converted
-	var carg1 *C.char          // in, none, string, casted *C.gchar
-	var carg2 *C.char          // in, none, string, casted *C.gchar
+	var carg1 *C.char          // in, none, string
+	var carg2 *C.char          // in, none, string
 
 	carg0 = (*C.GstNavigation)(UnsafeNavigationToGlibNone(navigation))
 	carg1 = (*C.char)(unsafe.Pointer(C.CString(event)))
@@ -10373,10 +10388,10 @@ func (navigation *NavigationInstance) SendKeyEvent(event string, key string) {
 // implementing the #GstNavigation interface.
 func (navigation *NavigationInstance) SendMouseEvent(event string, button int32, x float64, y float64) {
 	var carg0 *C.GstNavigation // in, none, converted
-	var carg1 *C.char          // in, none, string, casted *C.gchar
-	var carg2 C.int            // in, none, casted, casted C.gint
-	var carg3 C.double         // in, none, casted, casted C.gdouble
-	var carg4 C.double         // in, none, casted, casted C.gdouble
+	var carg1 *C.char          // in, none, string
+	var carg2 C.int            // in, none, casted
+	var carg3 C.double         // in, none, casted
+	var carg4 C.double         // in, none, casted
 
 	carg0 = (*C.GstNavigation)(UnsafeNavigationToGlibNone(navigation))
 	carg1 = (*C.char)(unsafe.Pointer(C.CString(event)))
@@ -10408,10 +10423,10 @@ func (navigation *NavigationInstance) SendMouseEvent(event string, button int32,
 // implementing the #GstNavigation interface.
 func (navigation *NavigationInstance) SendMouseScrollEvent(x float64, y float64, deltaX float64, deltaY float64) {
 	var carg0 *C.GstNavigation // in, none, converted
-	var carg1 C.double         // in, none, casted, casted C.gdouble
-	var carg2 C.double         // in, none, casted, casted C.gdouble
-	var carg3 C.double         // in, none, casted, casted C.gdouble
-	var carg4 C.double         // in, none, casted, casted C.gdouble
+	var carg1 C.double         // in, none, casted
+	var carg2 C.double         // in, none, casted
+	var carg3 C.double         // in, none, casted
+	var carg4 C.double         // in, none, casted
 
 	carg0 = (*C.GstNavigation)(UnsafeNavigationToGlibNone(navigation))
 	carg1 = C.double(x)
@@ -10430,7 +10445,8 @@ func (navigation *NavigationInstance) SendMouseScrollEvent(x float64, y float64,
 // NavigationOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type NavigationOverrides[Instance Navigation] struct {
-	// SendEvent allows you to override the implementation of the virtual method send_event.
+	// // SendEvent allows you to override the implementation of the virtual method send_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- structure *gst.Structure 
@@ -10439,7 +10455,8 @@ type NavigationOverrides[Instance Navigation] struct {
 	//
 	// Deprecated: (since 1.22.0) Use #GstNavigationInterface.send_event_simple() instead.
 	SendEvent func(Instance, *gst.Structure)
-	// SendEventSimple allows you to override the implementation of the virtual method send_event_simple.
+	// // SendEventSimple allows you to override the implementation of the virtual method send_event_simple.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event: The event to send 
@@ -10489,7 +10506,8 @@ func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, 
 }
 
 // ParentSendEvent calls the default implementations of the send_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- structure *gst.Structure 
@@ -10511,7 +10529,8 @@ func (navigation *NavigationInstance) ParentSendEvent(structure *gst.Structure) 
 }
 
 // ParentSendEventSimple calls the default implementations of the send_event_simple virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event: The event to send 
@@ -10533,7 +10552,7 @@ func (navigation *NavigationInstance) ParentSendEventSimple(event *gst.Event) {
 // VideoDirectionInstance is the instance type used by all types implementing GstVideoDirection. It is used internally by the bindings. Users should use the interface [VideoDirection] instead.
 type VideoDirectionInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ VideoDirection = (*VideoDirectionInstance)(nil)
@@ -10543,7 +10562,6 @@ var _ VideoDirection = (*VideoDirectionInstance)(nil)
 // The interface allows unified access to control flipping and rotation
 // operations of video-sources or operators.
 type VideoDirection interface {
-	gobject.Object
 	upcastToGstVideoDirection() *VideoDirectionInstance
 
 	// chain up virtual methods:
@@ -10553,7 +10571,7 @@ var _ VideoDirection = (*VideoDirectionInstance)(nil)
 
 func unsafeWrapVideoDirection(base *gobject.ObjectInstance) *VideoDirectionInstance {
 	return &VideoDirectionInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -10583,13 +10601,13 @@ func UnsafeVideoDirectionFromGlibBorrow(c unsafe.Pointer) VideoDirection {
 // UnsafeVideoDirectionToGlibNone is used to convert the instance to it's C value GstVideoDirection. This is used by the bindings internally.
 func UnsafeVideoDirectionToGlibNone(c VideoDirection) unsafe.Pointer {
 	i := c.upcastToGstVideoDirection()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeVideoDirectionToGlibFull is used to convert the instance to it's C value GstVideoDirection, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeVideoDirectionToGlibFull(c VideoDirection) unsafe.Pointer {
 	i := c.upcastToGstVideoDirection()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // VideoDirectionOverrides is the struct used to override the default implementation of virtual methods.
@@ -10605,7 +10623,7 @@ func UnsafeApplyVideoDirectionOverrides[Instance VideoDirection](gclass unsafe.P
 // VideoOrientationInstance is the instance type used by all types implementing GstVideoOrientation. It is used internally by the bindings. Users should use the interface [VideoOrientation] instead.
 type VideoOrientationInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ VideoOrientation = (*VideoOrientationInstance)(nil)
@@ -10615,7 +10633,6 @@ var _ VideoOrientation = (*VideoOrientationInstance)(nil)
 // The interface allows unified access to control flipping and autocenter
 // operation of video-sources or operators.
 type VideoOrientation interface {
-	gobject.Object
 	upcastToGstVideoOrientation() *VideoOrientationInstance
 
 	// GetHcenter wraps gst_video_orientation_get_hcenter
@@ -10706,7 +10723,8 @@ type VideoOrientation interface {
 	// chain up virtual methods:
 
 	// ParentGetHcenter calls the default implementations of the get_hcenter virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- center int32: return location for the result 
@@ -10715,7 +10733,8 @@ type VideoOrientation interface {
 	// Get the horizontal centering offset from the given object.
 	ParentGetHcenter() (int32, bool)
 	// ParentGetHflip calls the default implementations of the get_hflip virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- flip bool: return location for the result 
@@ -10724,7 +10743,8 @@ type VideoOrientation interface {
 	// Get the horizontal flipping state (%TRUE for flipped) from the given object.
 	ParentGetHflip() (bool, bool)
 	// ParentGetVcenter calls the default implementations of the get_vcenter virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- center int32: return location for the result 
@@ -10733,7 +10753,8 @@ type VideoOrientation interface {
 	// Get the vertical centering offset from the given object.
 	ParentGetVcenter() (int32, bool)
 	// ParentGetVflip calls the default implementations of the get_vflip virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- flip bool: return location for the result 
@@ -10742,7 +10763,8 @@ type VideoOrientation interface {
 	// Get the vertical flipping state (%TRUE for flipped) from the given object.
 	ParentGetVflip() (bool, bool)
 	// ParentSetHcenter calls the default implementations of the set_hcenter virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- center int32: centering offset 
@@ -10754,7 +10776,8 @@ type VideoOrientation interface {
 	// Set the horizontal centering offset for the given object.
 	ParentSetHcenter(center int32) bool
 	// ParentSetHflip calls the default implementations of the set_hflip virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- flip bool: use flipping 
@@ -10766,7 +10789,8 @@ type VideoOrientation interface {
 	// Set the horizontal flipping state (%TRUE for flipped) for the given object.
 	ParentSetHflip(flip bool) bool
 	// ParentSetVcenter calls the default implementations of the set_vcenter virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- center int32: centering offset 
@@ -10778,7 +10802,8 @@ type VideoOrientation interface {
 	// Set the vertical centering offset for the given object.
 	ParentSetVcenter(center int32) bool
 	// ParentSetVflip calls the default implementations of the set_vflip virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- flip bool: use flipping 
@@ -10795,7 +10820,7 @@ var _ VideoOrientation = (*VideoOrientationInstance)(nil)
 
 func unsafeWrapVideoOrientation(base *gobject.ObjectInstance) *VideoOrientationInstance {
 	return &VideoOrientationInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -10825,13 +10850,13 @@ func UnsafeVideoOrientationFromGlibBorrow(c unsafe.Pointer) VideoOrientation {
 // UnsafeVideoOrientationToGlibNone is used to convert the instance to it's C value GstVideoOrientation. This is used by the bindings internally.
 func UnsafeVideoOrientationToGlibNone(c VideoOrientation) unsafe.Pointer {
 	i := c.upcastToGstVideoOrientation()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeVideoOrientationToGlibFull is used to convert the instance to it's C value GstVideoOrientation, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeVideoOrientationToGlibFull(c VideoOrientation) unsafe.Pointer {
 	i := c.upcastToGstVideoOrientation()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // VideoOrientationFromTag wraps gst_video_orientation_from_tag
@@ -11123,7 +11148,8 @@ func (videoOrientation *VideoOrientationInstance) SetVflip(flip bool) bool {
 // VideoOrientationOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type VideoOrientationOverrides[Instance VideoOrientation] struct {
-	// GetHcenter allows you to override the implementation of the virtual method get_hcenter.
+	// // GetHcenter allows you to override the implementation of the virtual method get_hcenter.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- center int32: return location for the result 
@@ -11131,7 +11157,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	//
 	// Get the horizontal centering offset from the given object.
 	GetHcenter func(Instance) (int32, bool)
-	// GetHflip allows you to override the implementation of the virtual method get_hflip.
+	// // GetHflip allows you to override the implementation of the virtual method get_hflip.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- flip bool: return location for the result 
@@ -11139,7 +11166,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	//
 	// Get the horizontal flipping state (%TRUE for flipped) from the given object.
 	GetHflip func(Instance) (bool, bool)
-	// GetVcenter allows you to override the implementation of the virtual method get_vcenter.
+	// // GetVcenter allows you to override the implementation of the virtual method get_vcenter.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- center int32: return location for the result 
@@ -11147,7 +11175,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	//
 	// Get the vertical centering offset from the given object.
 	GetVcenter func(Instance) (int32, bool)
-	// GetVflip allows you to override the implementation of the virtual method get_vflip.
+	// // GetVflip allows you to override the implementation of the virtual method get_vflip.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- flip bool: return location for the result 
@@ -11155,7 +11184,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	//
 	// Get the vertical flipping state (%TRUE for flipped) from the given object.
 	GetVflip func(Instance) (bool, bool)
-	// SetHcenter allows you to override the implementation of the virtual method set_hcenter.
+	// // SetHcenter allows you to override the implementation of the virtual method set_hcenter.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- center int32: centering offset 
@@ -11166,7 +11196,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	//
 	// Set the horizontal centering offset for the given object.
 	SetHcenter func(Instance, int32) bool
-	// SetHflip allows you to override the implementation of the virtual method set_hflip.
+	// // SetHflip allows you to override the implementation of the virtual method set_hflip.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- flip bool: use flipping 
@@ -11177,7 +11208,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	//
 	// Set the horizontal flipping state (%TRUE for flipped) for the given object.
 	SetHflip func(Instance, bool) bool
-	// SetVcenter allows you to override the implementation of the virtual method set_vcenter.
+	// // SetVcenter allows you to override the implementation of the virtual method set_vcenter.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- center int32: centering offset 
@@ -11188,7 +11220,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	//
 	// Set the vertical centering offset for the given object.
 	SetVcenter func(Instance, int32) bool
-	// SetVflip allows you to override the implementation of the virtual method set_vflip.
+	// // SetVflip allows you to override the implementation of the virtual method set_vflip.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- flip bool: use flipping 
@@ -11245,7 +11278,7 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 				flip, goret = overrides.GetHflip(videoOrientation)
 
 				if flip {
-					carg1 = C.TRUE
+					*carg1 = C.TRUE
 				}
 				if goret {
 					cret = C.TRUE
@@ -11295,7 +11328,7 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 				flip, goret = overrides.GetVflip(videoOrientation)
 
 				if flip {
-					carg1 = C.TRUE
+					*carg1 = C.TRUE
 				}
 				if goret {
 					cret = C.TRUE
@@ -11408,7 +11441,8 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 }
 
 // ParentGetHcenter calls the default implementations of the get_hcenter virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- center int32: return location for the result 
@@ -11437,7 +11471,8 @@ func (videoOrientation *VideoOrientationInstance) ParentGetHcenter() (int32, boo
 }
 
 // ParentGetHflip calls the default implementations of the get_hflip virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- flip bool: return location for the result 
@@ -11468,7 +11503,8 @@ func (videoOrientation *VideoOrientationInstance) ParentGetHflip() (bool, bool) 
 }
 
 // ParentGetVcenter calls the default implementations of the get_vcenter virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- center int32: return location for the result 
@@ -11497,7 +11533,8 @@ func (videoOrientation *VideoOrientationInstance) ParentGetVcenter() (int32, boo
 }
 
 // ParentGetVflip calls the default implementations of the get_vflip virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- flip bool: return location for the result 
@@ -11528,7 +11565,8 @@ func (videoOrientation *VideoOrientationInstance) ParentGetVflip() (bool, bool) 
 }
 
 // ParentSetHcenter calls the default implementations of the set_hcenter virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- center int32: centering offset 
@@ -11561,7 +11599,8 @@ func (videoOrientation *VideoOrientationInstance) ParentSetHcenter(center int32)
 }
 
 // ParentSetHflip calls the default implementations of the set_hflip virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- flip bool: use flipping 
@@ -11596,7 +11635,8 @@ func (videoOrientation *VideoOrientationInstance) ParentSetHflip(flip bool) bool
 }
 
 // ParentSetVcenter calls the default implementations of the set_vcenter virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- center int32: centering offset 
@@ -11629,7 +11669,8 @@ func (videoOrientation *VideoOrientationInstance) ParentSetVcenter(center int32)
 }
 
 // ParentSetVflip calls the default implementations of the set_vflip virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- flip bool: use flipping 
@@ -11666,7 +11707,7 @@ func (videoOrientation *VideoOrientationInstance) ParentSetVflip(flip bool) bool
 // VideoOverlayInstance is the instance type used by all types implementing GstVideoOverlay. It is used internally by the bindings. Users should use the interface [VideoOverlay] instead.
 type VideoOverlayInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ VideoOverlay = (*VideoOverlayInstance)(nil)
@@ -11932,7 +11973,6 @@ var _ VideoOverlay = (*VideoOverlayInstance)(nil)
 // }
 // ]|
 type VideoOverlay interface {
-	gobject.Object
 	upcastToGstVideoOverlay() *VideoOverlayInstance
 
 	// Expose wraps gst_video_overlay_expose
@@ -11989,13 +12029,14 @@ type VideoOverlay interface {
 	// chain up virtual methods:
 
 	// ParentExpose calls the default implementations of the expose virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Tell an overlay that it has been exposed. This will redraw the current frame
 	// in the drawable even if the pipeline is PAUSED.
 	ParentExpose()
 	// ParentHandleEvents calls the default implementations of the handle_events virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
@@ -12007,7 +12048,8 @@ type VideoOverlay interface {
 	// from the #GstVideoOverlay.
 	ParentHandleEvents(handleEvents bool)
 	// ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- x int32 
@@ -12023,7 +12065,7 @@ var _ VideoOverlay = (*VideoOverlayInstance)(nil)
 
 func unsafeWrapVideoOverlay(base *gobject.ObjectInstance) *VideoOverlayInstance {
 	return &VideoOverlayInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -12053,13 +12095,13 @@ func UnsafeVideoOverlayFromGlibBorrow(c unsafe.Pointer) VideoOverlay {
 // UnsafeVideoOverlayToGlibNone is used to convert the instance to it's C value GstVideoOverlay. This is used by the bindings internally.
 func UnsafeVideoOverlayToGlibNone(c VideoOverlay) unsafe.Pointer {
 	i := c.upcastToGstVideoOverlay()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeVideoOverlayToGlibFull is used to convert the instance to it's C value GstVideoOverlay, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeVideoOverlayToGlibFull(c VideoOverlay) unsafe.Pointer {
 	i := c.upcastToGstVideoOverlay()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // VideoOverlaySetProperty wraps gst_video_overlay_set_property
@@ -12217,12 +12259,13 @@ func (overlay *VideoOverlayInstance) SetRenderRectangle(x int32, y int32, width 
 // VideoOverlayOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type VideoOverlayOverrides[Instance VideoOverlay] struct {
-	// Expose allows you to override the implementation of the virtual method expose.
+	// // Expose allows you to override the implementation of the virtual method expose.
 	//
 	// Tell an overlay that it has been exposed. This will redraw the current frame
 	// in the drawable even if the pipeline is PAUSED.
 	Expose func(Instance)
-	// HandleEvents allows you to override the implementation of the virtual method handle_events.
+	// // HandleEvents allows you to override the implementation of the virtual method handle_events.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
@@ -12233,7 +12276,8 @@ type VideoOverlayOverrides[Instance VideoOverlay] struct {
 	// for them. This method allows you to disable events handling completely
 	// from the #GstVideoOverlay.
 	HandleEvents func(Instance, bool)
-	// SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
+	// // SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- x int32 
@@ -12309,7 +12353,7 @@ func UnsafeApplyVideoOverlayOverrides[Instance VideoOverlay](gclass unsafe.Point
 }
 
 // ParentExpose calls the default implementations of the expose virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Tell an overlay that it has been exposed. This will redraw the current frame
 // in the drawable even if the pipeline is PAUSED.
@@ -12323,7 +12367,8 @@ func (overlay *VideoOverlayInstance) ParentExpose() {
 }
 
 // ParentHandleEvents calls the default implementations of the handle_events virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
@@ -12349,7 +12394,8 @@ func (overlay *VideoOverlayInstance) ParentHandleEvents(handleEvents bool) {
 }
 
 // ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- x int32 
@@ -12405,7 +12451,8 @@ type ColorBalanceChannel interface {
 	// chain up virtual methods:
 
 	// ParentValueChanged calls the default implementations of the value_changed virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- value int32 
@@ -12466,7 +12513,8 @@ type ColorBalanceChannelOverrides[Instance ColorBalanceChannel] struct {
 	// gobject.ObjectOverrides allows you to override virtual methods from the parent class gobject.Object
 	gobject.ObjectOverrides[Instance]
 
-	// ValueChanged allows you to override the implementation of the virtual method value_changed.
+	// // ValueChanged allows you to override the implementation of the virtual method value_changed.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- value int32 
@@ -12501,7 +12549,8 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 }
 
 // ParentValueChanged calls the default implementations of the value_changed virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- value int32 
@@ -12585,7 +12634,8 @@ type VideoAggregator interface {
 	// chain up virtual methods:
 
 	// ParentAggregateFrames calls the default implementations of the aggregate_frames virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- outbuffer *gst.Buffer 
@@ -12602,7 +12652,8 @@ type VideoAggregator interface {
 	//                            aggregation should land in @outbuffer.
 	ParentAggregateFrames(outbuffer *gst.Buffer) gst.FlowReturn
 	// ParentFindBestFormat calls the default implementations of the find_best_format virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- downstreamCaps *gst.Caps 
@@ -12613,7 +12664,8 @@ type VideoAggregator interface {
 	// 	- atLeastOneAlpha bool 
 	ParentFindBestFormat(downstreamCaps *gst.Caps, bestInfo *VideoInfo) bool
 	// ParentUpdateCaps calls the default implementations of the update_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -12708,7 +12760,8 @@ type VideoAggregatorOverrides[Instance VideoAggregator] struct {
 	// gstbase.AggregatorOverrides allows you to override virtual methods from the parent class gstbase.Aggregator
 	gstbase.AggregatorOverrides[Instance]
 
-	// AggregateFrames allows you to override the implementation of the virtual method aggregate_frames.
+	// // AggregateFrames allows you to override the implementation of the virtual method aggregate_frames.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- outbuffer *gst.Buffer 
@@ -12724,7 +12777,8 @@ type VideoAggregatorOverrides[Instance VideoAggregator] struct {
 	//                            if it needs to map the buffer in a special way. The result of the
 	//                            aggregation should land in @outbuffer.
 	AggregateFrames func(Instance, *gst.Buffer) gst.FlowReturn
-	// FindBestFormat allows you to override the implementation of the virtual method find_best_format.
+	// // FindBestFormat allows you to override the implementation of the virtual method find_best_format.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- downstreamCaps *gst.Caps 
@@ -12734,7 +12788,8 @@ type VideoAggregatorOverrides[Instance VideoAggregator] struct {
 	// 
 	// 	- atLeastOneAlpha bool 
 	FindBestFormat func(Instance, *gst.Caps, *VideoInfo) bool
-	// UpdateCaps allows you to override the implementation of the virtual method update_caps.
+	// // UpdateCaps allows you to override the implementation of the virtual method update_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps 
@@ -12796,7 +12851,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 				atLeastOneAlpha = overrides.FindBestFormat(vagg, downstreamCaps, bestInfo)
 
 				if atLeastOneAlpha {
-					carg3 = C.TRUE
+					*carg3 = C.TRUE
 				}
 			},
 		)
@@ -12826,7 +12881,8 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 }
 
 // ParentAggregateFrames calls the default implementations of the aggregate_frames virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- outbuffer *gst.Buffer 
@@ -12862,7 +12918,8 @@ func (videoaggregator *VideoAggregatorInstance) ParentAggregateFrames(outbuffer 
 }
 
 // ParentFindBestFormat calls the default implementations of the find_best_format virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- downstreamCaps *gst.Caps 
@@ -12897,7 +12954,8 @@ func (vagg *VideoAggregatorInstance) ParentFindBestFormat(downstreamCaps *gst.Ca
 }
 
 // ParentUpdateCaps calls the default implementations of the update_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps 
@@ -13022,7 +13080,8 @@ type VideoAggregatorPad interface {
 	// chain up virtual methods:
 
 	// ParentCleanFrame calls the default implementations of the clean_frame virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- videoaggregator VideoAggregator 
@@ -13031,7 +13090,8 @@ type VideoAggregatorPad interface {
 	// clean the frame previously prepared in prepare_frame
 	ParentCleanFrame(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
 	// ParentPrepareFrame calls the default implementations of the prepare_frame virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- videoaggregator VideoAggregator 
@@ -13047,7 +13107,8 @@ type VideoAggregatorPad interface {
 	//      iteration over subsequent pads.
 	ParentPrepareFrame(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) bool
 	// ParentPrepareFrameFinish calls the default implementations of the prepare_frame_finish virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
@@ -13058,7 +13119,8 @@ type VideoAggregatorPad interface {
 	// If overriden, `prepare_frame_start` must also be overriden.
 	ParentPrepareFrameFinish(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
 	// ParentPrepareFrameStart calls the default implementations of the prepare_frame_start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
@@ -13070,7 +13132,7 @@ type VideoAggregatorPad interface {
 	// If overriden, `prepare_frame_finish` must also be overriden.
 	ParentPrepareFrameStart(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame)
 	// ParentUpdateConversionInfo calls the default implementations of the update_conversion_info virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Called when either the input or output formats
 	//                          have changed.
@@ -13240,7 +13302,8 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 	// gstbase.AggregatorPadOverrides allows you to override virtual methods from the parent class gstbase.AggregatorPad
 	gstbase.AggregatorPadOverrides[Instance]
 
-	// CleanFrame allows you to override the implementation of the virtual method clean_frame.
+	// // CleanFrame allows you to override the implementation of the virtual method clean_frame.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- videoaggregator VideoAggregator 
@@ -13248,7 +13311,8 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 	//
 	// clean the frame previously prepared in prepare_frame
 	CleanFrame func(Instance, VideoAggregator, *VideoFrame)
-	// PrepareFrame allows you to override the implementation of the virtual method prepare_frame.
+	// // PrepareFrame allows you to override the implementation of the virtual method prepare_frame.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- videoaggregator VideoAggregator 
@@ -13263,7 +13327,8 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 	//      Implementations should always return TRUE.  Returning FALSE will cease
 	//      iteration over subsequent pads.
 	PrepareFrame func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame) bool
-	// PrepareFrameFinish allows you to override the implementation of the virtual method prepare_frame_finish.
+	// // PrepareFrameFinish allows you to override the implementation of the virtual method prepare_frame_finish.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
@@ -13273,7 +13338,8 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 	// 
 	// If overriden, `prepare_frame_start` must also be overriden.
 	PrepareFrameFinish func(Instance, VideoAggregator, *VideoFrame)
-	// PrepareFrameStart allows you to override the implementation of the virtual method prepare_frame_start.
+	// // PrepareFrameStart allows you to override the implementation of the virtual method prepare_frame_start.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
@@ -13284,7 +13350,7 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 	// 
 	// If overriden, `prepare_frame_finish` must also be overriden.
 	PrepareFrameStart func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame)
-	// UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
+	// // UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
 	//
 	// Called when either the input or output formats
 	//                          have changed.
@@ -13402,7 +13468,8 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 }
 
 // ParentCleanFrame calls the default implementations of the clean_frame virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- videoaggregator VideoAggregator 
@@ -13426,7 +13493,8 @@ func (pad *VideoAggregatorPadInstance) ParentCleanFrame(videoaggregator VideoAgg
 }
 
 // ParentPrepareFrame calls the default implementations of the prepare_frame virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- videoaggregator VideoAggregator 
@@ -13469,7 +13537,8 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrame(videoaggregator VideoA
 }
 
 // ParentPrepareFrameFinish calls the default implementations of the prepare_frame_finish virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
@@ -13495,7 +13564,8 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameFinish(videoaggregator 
 }
 
 // ParentPrepareFrameStart calls the default implementations of the prepare_frame_start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
@@ -13525,7 +13595,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameStart(videoaggregator V
 }
 
 // ParentUpdateConversionInfo calls the default implementations of the update_conversion_info virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Called when either the input or output formats
 //                          have changed.
@@ -14362,7 +14432,8 @@ type VideoDecoder interface {
 	// chain up virtual methods:
 
 	// ParentClose calls the default implementations of the close virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14372,7 +14443,8 @@ type VideoDecoder interface {
 	//                  Allows closing external resources.
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -14389,7 +14461,8 @@ type VideoDecoder interface {
 	//                     invoke the default handler.
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentDrain calls the default implementations of the drain virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -14401,7 +14474,8 @@ type VideoDecoder interface {
 	//                  or seamless segment processing will break. Since: 1.6
 	ParentDrain() gst.FlowReturn
 	// ParentFinish calls the default implementations of the finish virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -14411,7 +14485,8 @@ type VideoDecoder interface {
 	//                  data at EOS. Sub-classes can refuse to decode new data after.
 	ParentFinish() gst.FlowReturn
 	// ParentFlush calls the default implementations of the flush virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14421,7 +14496,8 @@ type VideoDecoder interface {
 	//                      pushing it downstream. Since: 1.2
 	ParentFlush() bool
 	// ParentGetcaps calls the default implementations of the getcaps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps 
@@ -14437,7 +14513,8 @@ type VideoDecoder interface {
 	//                  applied to sink template caps.
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame: The frame to handle 
@@ -14447,7 +14524,8 @@ type VideoDecoder interface {
 	// 	- goret gst.FlowReturn 
 	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
 	// ParentHandleMissingData calls the default implementations of the handle_missing_data virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timestamp gst.ClockTime: Timestamp of the missing data 
@@ -14458,7 +14536,8 @@ type VideoDecoder interface {
 	// 	- goret bool 
 	ParentHandleMissingData(timestamp gst.ClockTime, duration gst.ClockTime) bool
 	// ParentNegotiate calls the default implementations of the negotiate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14468,7 +14547,8 @@ type VideoDecoder interface {
 	// negotiate fails.
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the open virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14478,7 +14558,8 @@ type VideoDecoder interface {
 	//                  Allows opening external resources.
 	ParentOpen() bool
 	// ParentParse calls the default implementations of the parse virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -14494,7 +14575,8 @@ type VideoDecoder interface {
 	//                  for subsequent decoding.
 	ParentParse(frame *VideoCodecFrame, adapter gstbase.Adapter, atEos bool) gst.FlowReturn
 	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -14509,7 +14591,8 @@ type VideoDecoder interface {
 	//                      invoke the default handler.
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentReset calls the default implementations of the reset virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- hard bool 
@@ -14523,7 +14606,8 @@ type VideoDecoder interface {
 	//                  Deprecated.
 	ParentReset(hard bool) bool
 	// ParentSetFormat calls the default implementations of the set_format virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- state *VideoCodecState 
@@ -14535,7 +14619,8 @@ type VideoDecoder interface {
 	// Notifies subclass of incoming data format (caps).
 	ParentSetFormat(state *VideoCodecState) bool
 	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -14552,7 +14637,8 @@ type VideoDecoder interface {
 	//                  invoke the default handler.
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -14568,7 +14654,8 @@ type VideoDecoder interface {
 	//                  default handler. Since: 1.4
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the src_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -14585,7 +14672,8 @@ type VideoDecoder interface {
 	//                  invoke the default handler.
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the src_query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -14601,7 +14689,8 @@ type VideoDecoder interface {
 	//                  default handler. Since: 1.4
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14611,7 +14700,8 @@ type VideoDecoder interface {
 	//                  Allows opening external resources.
 	ParentStart() bool
 	// ParentStop calls the default implementations of the stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14621,7 +14711,8 @@ type VideoDecoder interface {
 	//                  Allows closing external resources.
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -14693,7 +14784,7 @@ func UnsafeVideoDecoderToGlibFull(c VideoDecoder) unsafe.Pointer {
 // Removes next @n_bytes of input data and adds it to currently parsed frame.
 func (decoder *VideoDecoderInstance) AddToFrame(nBytes int32) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
-	var carg1 C.int              // in, none, casted, casted C.gint
+	var carg1 C.int              // in, none, casted
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = C.int(nBytes)
@@ -14967,7 +15058,7 @@ func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
 
 	return allocator, params
 }
@@ -15029,7 +15120,7 @@ func (dec *VideoDecoderInstance) GetEstimateRate() int32 {
 // Get a pending unfinished #GstVideoCodecFrame
 func (decoder *VideoDecoderInstance) GetFrame(frameNumber int32) *VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
-	var carg1 C.int                 // in, none, casted, casted C.gint
+	var carg1 C.int                 // in, none, casted
 	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
@@ -15969,7 +16060,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// Close allows you to override the implementation of the virtual method close.
+	// // Close allows you to override the implementation of the virtual method close.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -15978,7 +16070,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Called when the element changes to GST_STATE_NULL.
 	//                  Allows closing external resources.
 	Close func(Instance) bool
-	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -15994,7 +16087,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                     Subclasses should chain up to the parent implementation to
 	//                     invoke the default handler.
 	DecideAllocation func(Instance, *gst.Query) bool
-	// Drain allows you to override the implementation of the virtual method drain.
+	// // Drain allows you to override the implementation of the virtual method drain.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -16005,7 +16099,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Sub-classes should be prepared to handle new data afterward,
 	//                  or seamless segment processing will break. Since: 1.6
 	Drain func(Instance) gst.FlowReturn
-	// Finish allows you to override the implementation of the virtual method finish.
+	// // Finish allows you to override the implementation of the virtual method finish.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -16014,7 +16109,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Called to request subclass to dispatch any pending remaining
 	//                  data at EOS. Sub-classes can refuse to decode new data after.
 	Finish func(Instance) gst.FlowReturn
-	// Flush allows you to override the implementation of the virtual method flush.
+	// // Flush allows you to override the implementation of the virtual method flush.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -16023,7 +16119,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                      Flush all remaining data from the decoder without
 	//                      pushing it downstream. Since: 1.2
 	Flush func(Instance) bool
-	// Getcaps allows you to override the implementation of the virtual method getcaps.
+	// // Getcaps allows you to override the implementation of the virtual method getcaps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps 
@@ -16038,7 +16135,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  gst_video_decoder_proxy_getcaps
 	//                  applied to sink template caps.
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
-	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame: The frame to handle 
@@ -16047,7 +16145,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// 
 	// 	- goret gst.FlowReturn 
 	HandleFrame func(Instance, *VideoCodecFrame) gst.FlowReturn
-	// HandleMissingData allows you to override the implementation of the virtual method handle_missing_data.
+	// // HandleMissingData allows you to override the implementation of the virtual method handle_missing_data.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- timestamp gst.ClockTime: Timestamp of the missing data 
@@ -16057,7 +16156,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// 
 	// 	- goret bool 
 	HandleMissingData func(Instance, gst.ClockTime, gst.ClockTime) bool
-	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// // Negotiate allows you to override the implementation of the virtual method negotiate.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -16066,7 +16166,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
 	// negotiate fails.
 	Negotiate func(Instance) bool
-	// Open allows you to override the implementation of the virtual method open.
+	// // Open allows you to override the implementation of the virtual method open.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -16075,7 +16176,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Called when the element changes to GST_STATE_READY.
 	//                  Allows opening external resources.
 	Open func(Instance) bool
-	// Parse allows you to override the implementation of the virtual method parse.
+	// // Parse allows you to override the implementation of the virtual method parse.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -16090,7 +16192,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Allows chopping incoming data into manageable units (frames)
 	//                  for subsequent decoding.
 	Parse func(Instance, *VideoCodecFrame, gstbase.Adapter, bool) gst.FlowReturn
-	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -16104,7 +16207,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                      Subclasses should chain up to the parent implementation to
 	//                      invoke the default handler.
 	ProposeAllocation func(Instance, *gst.Query) bool
-	// Reset allows you to override the implementation of the virtual method reset.
+	// // Reset allows you to override the implementation of the virtual method reset.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- hard bool 
@@ -16117,7 +16221,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Allows subclass (decoder) to perform post-seek semantics reset.
 	//                  Deprecated.
 	Reset func(Instance, bool) bool
-	// SetFormat allows you to override the implementation of the virtual method set_format.
+	// // SetFormat allows you to override the implementation of the virtual method set_format.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- state *VideoCodecState 
@@ -16128,7 +16233,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//
 	// Notifies subclass of incoming data format (caps).
 	SetFormat func(Instance, *VideoCodecState) bool
-	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -16144,7 +16250,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Subclasses should chain up to the parent implementation to
 	//                  invoke the default handler.
 	SinkEvent func(Instance, *gst.Event) bool
-	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -16159,7 +16266,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  should chain up to the parent implementation to invoke the
 	//                  default handler. Since: 1.4
 	SinkQuery func(Instance, *gst.Query) bool
-	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// // SrcEvent allows you to override the implementation of the virtual method src_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -16175,7 +16283,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Subclasses should chain up to the parent implementation to
 	//                  invoke the default handler.
 	SrcEvent func(Instance, *gst.Event) bool
-	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// // SrcQuery allows you to override the implementation of the virtual method src_query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -16190,7 +16299,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  should chain up to the parent implementation to invoke the
 	//                  default handler. Since: 1.4
 	SrcQuery func(Instance, *gst.Query) bool
-	// Start allows you to override the implementation of the virtual method start.
+	// // Start allows you to override the implementation of the virtual method start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -16199,7 +16309,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Called when the element starts processing.
 	//                  Allows opening external resources.
 	Start func(Instance) bool
-	// Stop allows you to override the implementation of the virtual method stop.
+	// // Stop allows you to override the implementation of the virtual method stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -16208,7 +16319,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	//                  Called when the element stops processing.
 	//                  Allows closing external resources.
 	Stop func(Instance) bool
-	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -16725,7 +16837,8 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 }
 
 // ParentClose calls the default implementations of the close virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -16752,7 +16865,8 @@ func (decoder *VideoDecoderInstance) ParentClose() bool {
 }
 
 // ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -16790,7 +16904,8 @@ func (decoder *VideoDecoderInstance) ParentDecideAllocation(query *gst.Query) bo
 }
 
 // ParentDrain calls the default implementations of the drain virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -16817,7 +16932,8 @@ func (decoder *VideoDecoderInstance) ParentDrain() gst.FlowReturn {
 }
 
 // ParentFinish calls the default implementations of the finish virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -16842,7 +16958,8 @@ func (decoder *VideoDecoderInstance) ParentFinish() gst.FlowReturn {
 }
 
 // ParentFlush calls the default implementations of the flush virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -16869,7 +16986,8 @@ func (decoder *VideoDecoderInstance) ParentFlush() bool {
 }
 
 // ParentGetcaps calls the default implementations of the getcaps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- filter *gst.Caps 
@@ -16904,7 +17022,8 @@ func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 }
 
 // ParentHandleFrame calls the default implementations of the handle_frame virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- frame *VideoCodecFrame: The frame to handle 
@@ -16933,7 +17052,8 @@ func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 }
 
 // ParentHandleMissingData calls the default implementations of the handle_missing_data virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- timestamp gst.ClockTime: Timestamp of the missing data 
@@ -16968,7 +17088,8 @@ func (decoder *VideoDecoderInstance) ParentHandleMissingData(timestamp gst.Clock
 }
 
 // ParentNegotiate calls the default implementations of the negotiate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -16995,7 +17116,8 @@ func (decoder *VideoDecoderInstance) ParentNegotiate() bool {
 }
 
 // ParentOpen calls the default implementations of the open virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -17022,7 +17144,8 @@ func (decoder *VideoDecoderInstance) ParentOpen() bool {
 }
 
 // ParentParse calls the default implementations of the parse virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- frame *VideoCodecFrame 
@@ -17065,7 +17188,8 @@ func (decoder *VideoDecoderInstance) ParentParse(frame *VideoCodecFrame, adapter
 }
 
 // ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -17101,7 +17225,8 @@ func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) b
 }
 
 // ParentReset calls the default implementations of the reset virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- hard bool 
@@ -17138,7 +17263,8 @@ func (decoder *VideoDecoderInstance) ParentReset(hard bool) bool {
 }
 
 // ParentSetFormat calls the default implementations of the set_format virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- state *VideoCodecState 
@@ -17171,7 +17297,8 @@ func (decoder *VideoDecoderInstance) ParentSetFormat(state *VideoCodecState) boo
 }
 
 // ParentSinkEvent calls the default implementations of the sink_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -17209,7 +17336,8 @@ func (decoder *VideoDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 }
 
 // ParentSinkQuery calls the default implementations of the sink_query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -17246,7 +17374,8 @@ func (decoder *VideoDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 }
 
 // ParentSrcEvent calls the default implementations of the src_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -17284,7 +17413,8 @@ func (decoder *VideoDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 }
 
 // ParentSrcQuery calls the default implementations of the src_query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -17321,7 +17451,8 @@ func (decoder *VideoDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 }
 
 // ParentStart calls the default implementations of the start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -17348,7 +17479,8 @@ func (decoder *VideoDecoderInstance) ParentStart() bool {
 }
 
 // ParentStop calls the default implementations of the stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -17375,7 +17507,8 @@ func (decoder *VideoDecoderInstance) ParentStop() bool {
 }
 
 // ParentTransformMeta calls the default implementations of the transform_meta virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- frame *VideoCodecFrame 
@@ -17829,7 +17962,8 @@ type VideoEncoder interface {
 	// chain up virtual methods:
 
 	// ParentClose calls the default implementations of the close virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -17839,7 +17973,8 @@ type VideoEncoder interface {
 	//                  Allows closing external resources.
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -17856,7 +17991,8 @@ type VideoEncoder interface {
 	//                     invoke the default handler.
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFinish calls the default implementations of the finish virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -17866,7 +18002,8 @@ type VideoEncoder interface {
 	//                  data (e.g. at EOS).
 	ParentFinish() gst.FlowReturn
 	// ParentFlush calls the default implementations of the flush virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -17876,7 +18013,8 @@ type VideoEncoder interface {
 	//                      pushing it downstream. Since: 1.2
 	ParentFlush() bool
 	// ParentGetcaps calls the default implementations of the getcaps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps 
@@ -17892,7 +18030,8 @@ type VideoEncoder interface {
 	//                  applied to sink template caps.
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -17904,7 +18043,8 @@ type VideoEncoder interface {
 	// Provides input frame to subclass.
 	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
 	// ParentNegotiate calls the default implementations of the negotiate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -17914,7 +18054,8 @@ type VideoEncoder interface {
 	// negotiate fails.
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the open virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -17924,7 +18065,8 @@ type VideoEncoder interface {
 	//                  Allows opening external resources.
 	ParentOpen() bool
 	// ParentPrePush calls the default implementations of the pre_push virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -17939,7 +18081,8 @@ type VideoEncoder interface {
 	//                  provided encoded frame data is simply pushed downstream.
 	ParentPrePush(frame *VideoCodecFrame) gst.FlowReturn
 	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -17954,7 +18097,8 @@ type VideoEncoder interface {
 	//                      invoke the default handler.
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentReset calls the default implementations of the reset virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- hard bool 
@@ -17968,7 +18112,8 @@ type VideoEncoder interface {
 	//                  Deprecated.
 	ParentReset(hard bool) bool
 	// ParentSetFormat calls the default implementations of the set_format virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- state *VideoCodecState 
@@ -17983,7 +18128,8 @@ type VideoEncoder interface {
 	//                  set according to provided caps.
 	ParentSetFormat(state *VideoCodecState) bool
 	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -18000,7 +18146,8 @@ type VideoEncoder interface {
 	//                  invoke the default handler.
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -18016,7 +18163,8 @@ type VideoEncoder interface {
 	//                  default handler. Since: 1.4
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the src_event virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -18033,7 +18181,8 @@ type VideoEncoder interface {
 	//                  invoke the default handler.
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the src_query virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -18049,7 +18198,8 @@ type VideoEncoder interface {
 	//                  default handler. Since: 1.4
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -18059,7 +18209,8 @@ type VideoEncoder interface {
 	//                  Allows opening external resources.
 	ParentStart() bool
 	// ParentStop calls the default implementations of the stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -18069,7 +18220,8 @@ type VideoEncoder interface {
 	//                  Allows closing external resources.
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -18097,7 +18249,7 @@ func unsafeWrapVideoEncoder(base *gobject.ObjectInstance) *VideoEncoderInstance 
 			},
 		},
 		PresetInstance: gst.PresetInstance{
-			ObjectInstance: *base,
+			Instance: *base,
 		},
 	}
 }
@@ -18340,7 +18492,7 @@ func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
 
 	return allocator, params
 }
@@ -18358,7 +18510,7 @@ func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 // Get a pending unfinished #GstVideoCodecFrame
 func (encoder *VideoEncoderInstance) GetFrame(frameNumber int32) *VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
-	var carg1 C.int                 // in, none, casted, casted C.gint
+	var carg1 C.int                 // in, none, casted
 	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
@@ -18845,7 +18997,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// Close allows you to override the implementation of the virtual method close.
+	// // Close allows you to override the implementation of the virtual method close.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -18854,7 +19007,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  Called when the element changes to GST_STATE_NULL.
 	//                  Allows closing external resources.
 	Close func(Instance) bool
-	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -18870,7 +19024,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                     Subclasses should chain up to the parent implementation to
 	//                     invoke the default handler.
 	DecideAllocation func(Instance, *gst.Query) bool
-	// Finish allows you to override the implementation of the virtual method finish.
+	// // Finish allows you to override the implementation of the virtual method finish.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -18879,7 +19034,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  Called to request subclass to dispatch any pending remaining
 	//                  data (e.g. at EOS).
 	Finish func(Instance) gst.FlowReturn
-	// Flush allows you to override the implementation of the virtual method flush.
+	// // Flush allows you to override the implementation of the virtual method flush.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -18888,7 +19044,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                      Flush all remaining data from the encoder without
 	//                      pushing it downstream. Since: 1.2
 	Flush func(Instance) bool
-	// Getcaps allows you to override the implementation of the virtual method getcaps.
+	// // Getcaps allows you to override the implementation of the virtual method getcaps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- filter *gst.Caps 
@@ -18903,7 +19060,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  default returns gst_video_encoder_proxy_getcaps
 	//                  applied to sink template caps.
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
-	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -18914,7 +19072,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//
 	// Provides input frame to subclass.
 	HandleFrame func(Instance, *VideoCodecFrame) gst.FlowReturn
-	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// // Negotiate allows you to override the implementation of the virtual method negotiate.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -18923,7 +19082,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
 	// negotiate fails.
 	Negotiate func(Instance) bool
-	// Open allows you to override the implementation of the virtual method open.
+	// // Open allows you to override the implementation of the virtual method open.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -18932,7 +19092,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  Called when the element changes to GST_STATE_READY.
 	//                  Allows opening external resources.
 	Open func(Instance) bool
-	// PrePush allows you to override the implementation of the virtual method pre_push.
+	// // PrePush allows you to override the implementation of the virtual method pre_push.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -18946,7 +19107,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  shape or form it deems appropriate.  If not provided,
 	//                  provided encoded frame data is simply pushed downstream.
 	PrePush func(Instance, *VideoCodecFrame) gst.FlowReturn
-	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -18960,7 +19122,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                      Subclasses should chain up to the parent implementation to
 	//                      invoke the default handler.
 	ProposeAllocation func(Instance, *gst.Query) bool
-	// Reset allows you to override the implementation of the virtual method reset.
+	// // Reset allows you to override the implementation of the virtual method reset.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- hard bool 
@@ -18973,7 +19136,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  Allows subclass (encoder) to perform post-seek semantics reset.
 	//                  Deprecated.
 	Reset func(Instance, bool) bool
-	// SetFormat allows you to override the implementation of the virtual method set_format.
+	// // SetFormat allows you to override the implementation of the virtual method set_format.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- state *VideoCodecState 
@@ -18987,7 +19151,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  GstVideoCodecState fields have already been
 	//                  set according to provided caps.
 	SetFormat func(Instance, *VideoCodecState) bool
-	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -19003,7 +19168,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  Subclasses should chain up to the parent implementation to
 	//                  invoke the default handler.
 	SinkEvent func(Instance, *gst.Event) bool
-	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -19018,7 +19184,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  should chain up to the parent implementation to invoke the
 	//                  default handler. Since: 1.4
 	SinkQuery func(Instance, *gst.Query) bool
-	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// // SrcEvent allows you to override the implementation of the virtual method src_event.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event 
@@ -19034,7 +19201,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  Subclasses should chain up to the parent implementation to
 	//                  invoke the default handler.
 	SrcEvent func(Instance, *gst.Event) bool
-	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// // SrcQuery allows you to override the implementation of the virtual method src_query.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -19049,7 +19217,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  should chain up to the parent implementation to invoke the
 	//                  default handler. Since: 1.4
 	SrcQuery func(Instance, *gst.Query) bool
-	// Start allows you to override the implementation of the virtual method start.
+	// // Start allows you to override the implementation of the virtual method start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -19058,7 +19227,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  Called when the element starts processing.
 	//                  Allows opening external resources.
 	Start func(Instance) bool
-	// Stop allows you to override the implementation of the virtual method stop.
+	// // Stop allows you to override the implementation of the virtual method stop.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -19067,7 +19237,8 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	//                  Called when the element stops processing.
 	//                  Allows closing external resources.
 	Stop func(Instance) bool
-	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoCodecFrame 
@@ -19532,7 +19703,8 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 }
 
 // ParentClose calls the default implementations of the close virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -19559,7 +19731,8 @@ func (encoder *VideoEncoderInstance) ParentClose() bool {
 }
 
 // ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -19597,7 +19770,8 @@ func (encoder *VideoEncoderInstance) ParentDecideAllocation(query *gst.Query) bo
 }
 
 // ParentFinish calls the default implementations of the finish virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -19622,7 +19796,8 @@ func (encoder *VideoEncoderInstance) ParentFinish() gst.FlowReturn {
 }
 
 // ParentFlush calls the default implementations of the flush virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -19649,7 +19824,8 @@ func (encoder *VideoEncoderInstance) ParentFlush() bool {
 }
 
 // ParentGetcaps calls the default implementations of the getcaps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- filter *gst.Caps 
@@ -19684,7 +19860,8 @@ func (enc *VideoEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 }
 
 // ParentHandleFrame calls the default implementations of the handle_frame virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- frame *VideoCodecFrame 
@@ -19715,7 +19892,8 @@ func (encoder *VideoEncoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 }
 
 // ParentNegotiate calls the default implementations of the negotiate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -19742,7 +19920,8 @@ func (encoder *VideoEncoderInstance) ParentNegotiate() bool {
 }
 
 // ParentOpen calls the default implementations of the open virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -19769,7 +19948,8 @@ func (encoder *VideoEncoderInstance) ParentOpen() bool {
 }
 
 // ParentPrePush calls the default implementations of the pre_push virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- frame *VideoCodecFrame 
@@ -19803,7 +19983,8 @@ func (encoder *VideoEncoderInstance) ParentPrePush(frame *VideoCodecFrame) gst.F
 }
 
 // ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -19839,7 +20020,8 @@ func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) b
 }
 
 // ParentReset calls the default implementations of the reset virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- hard bool 
@@ -19876,7 +20058,8 @@ func (encoder *VideoEncoderInstance) ParentReset(hard bool) bool {
 }
 
 // ParentSetFormat calls the default implementations of the set_format virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- state *VideoCodecState 
@@ -19912,7 +20095,8 @@ func (encoder *VideoEncoderInstance) ParentSetFormat(state *VideoCodecState) boo
 }
 
 // ParentSinkEvent calls the default implementations of the sink_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -19950,7 +20134,8 @@ func (encoder *VideoEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 }
 
 // ParentSinkQuery calls the default implementations of the sink_query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -19987,7 +20172,8 @@ func (encoder *VideoEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 }
 
 // ParentSrcEvent calls the default implementations of the src_event virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- event *gst.Event 
@@ -20025,7 +20211,8 @@ func (encoder *VideoEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 }
 
 // ParentSrcQuery calls the default implementations of the src_query virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -20062,7 +20249,8 @@ func (encoder *VideoEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 }
 
 // ParentStart calls the default implementations of the start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -20089,7 +20277,8 @@ func (encoder *VideoEncoderInstance) ParentStart() bool {
 }
 
 // ParentStop calls the default implementations of the stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -20116,7 +20305,8 @@ func (encoder *VideoEncoderInstance) ParentStop() bool {
 }
 
 // ParentTransformMeta calls the default implementations of the transform_meta virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- frame *VideoCodecFrame 
@@ -20203,7 +20393,8 @@ type VideoFilter interface {
 	// chain up virtual methods:
 
 	// ParentSetInfo calls the default implementations of the set_info virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- incaps *gst.Caps 
@@ -20218,7 +20409,8 @@ type VideoFilter interface {
 	// function to be called with the negotiated caps and video infos
 	ParentSetInfo(incaps *gst.Caps, inInfo *VideoInfo, outcaps *gst.Caps, outInfo *VideoInfo) bool
 	// ParentTransformFrame calls the default implementations of the transform_frame virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- inframe *VideoFrame 
@@ -20231,7 +20423,8 @@ type VideoFilter interface {
 	// transform a video frame
 	ParentTransformFrame(inframe *VideoFrame, outframe *VideoFrame) gst.FlowReturn
 	// ParentTransformFrameIP calls the default implementations of the transform_frame_ip virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoFrame 
@@ -20297,7 +20490,8 @@ type VideoFilterOverrides[Instance VideoFilter] struct {
 	// gstbase.BaseTransformOverrides allows you to override virtual methods from the parent class gstbase.BaseTransform
 	gstbase.BaseTransformOverrides[Instance]
 
-	// SetInfo allows you to override the implementation of the virtual method set_info.
+	// // SetInfo allows you to override the implementation of the virtual method set_info.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- incaps *gst.Caps 
@@ -20311,7 +20505,8 @@ type VideoFilterOverrides[Instance VideoFilter] struct {
 	//
 	// function to be called with the negotiated caps and video infos
 	SetInfo func(Instance, *gst.Caps, *VideoInfo, *gst.Caps, *VideoInfo) bool
-	// TransformFrame allows you to override the implementation of the virtual method transform_frame.
+	// // TransformFrame allows you to override the implementation of the virtual method transform_frame.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- inframe *VideoFrame 
@@ -20323,7 +20518,8 @@ type VideoFilterOverrides[Instance VideoFilter] struct {
 	//
 	// transform a video frame
 	TransformFrame func(Instance, *VideoFrame, *VideoFrame) gst.FlowReturn
-	// TransformFrameIP allows you to override the implementation of the virtual method transform_frame_ip.
+	// // TransformFrameIP allows you to override the implementation of the virtual method transform_frame_ip.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- frame *VideoFrame 
@@ -20421,7 +20617,8 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 }
 
 // ParentSetInfo calls the default implementations of the set_info virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- incaps *gst.Caps 
@@ -20466,7 +20663,8 @@ func (filter *VideoFilterInstance) ParentSetInfo(incaps *gst.Caps, inInfo *Video
 }
 
 // ParentTransformFrame calls the default implementations of the transform_frame virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- inframe *VideoFrame 
@@ -20501,7 +20699,8 @@ func (filter *VideoFilterInstance) ParentTransformFrame(inframe *VideoFrame, out
 }
 
 // ParentTransformFrameIP calls the default implementations of the transform_frame_ip virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- frame *VideoFrame 
@@ -20579,7 +20778,8 @@ type VideoSink interface {
 	// chain up virtual methods:
 
 	// ParentSetInfo calls the default implementations of the set_info virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps: A #GstCaps. 
@@ -20592,7 +20792,8 @@ type VideoSink interface {
 	// Notifies the subclass of changed #GstVideoInfo.
 	ParentSetInfo(caps *gst.Caps, info *VideoInfo) bool
 	// ParentShowFrame calls the default implementations of the show_frame virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buf *gst.Buffer 
@@ -20677,10 +20878,10 @@ func VideoSinkCenterRect(src VideoRectangle, dst VideoRectangle, scaling bool) V
 
 	_ = src
 	_ = carg1
-	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
+	panic("unimplemented conversion of VideoRectangle (C.GstVideoRectangle)")
 	_ = dst
 	_ = carg2
-	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
+	panic("unimplemented conversion of VideoRectangle (C.GstVideoRectangle)")
 	if scaling {
 		carg4 = C.TRUE
 	}
@@ -20694,7 +20895,7 @@ func VideoSinkCenterRect(src VideoRectangle, dst VideoRectangle, scaling bool) V
 
 	_ = result
 	_ = carg3
-	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
+	panic("unimplemented conversion of VideoRectangle (C.GstVideoRectangle)")
 
 	return result
 }
@@ -20705,7 +20906,8 @@ type VideoSinkOverrides[Instance VideoSink] struct {
 	// gstbase.BaseSinkOverrides allows you to override virtual methods from the parent class gstbase.BaseSink
 	gstbase.BaseSinkOverrides[Instance]
 
-	// SetInfo allows you to override the implementation of the virtual method set_info.
+	// // SetInfo allows you to override the implementation of the virtual method set_info.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- caps *gst.Caps: A #GstCaps. 
@@ -20717,7 +20919,8 @@ type VideoSinkOverrides[Instance VideoSink] struct {
 	//
 	// Notifies the subclass of changed #GstVideoInfo.
 	SetInfo func(Instance, *gst.Caps, *VideoInfo) bool
-	// ShowFrame allows you to override the implementation of the virtual method show_frame.
+	// // ShowFrame allows you to override the implementation of the virtual method show_frame.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buf *gst.Buffer 
@@ -20790,7 +20993,8 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 }
 
 // ParentSetInfo calls the default implementations of the set_info virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- caps *gst.Caps: A #GstCaps. 
@@ -20827,7 +21031,8 @@ func (videoSink *VideoSinkInstance) ParentSetInfo(caps *gst.Caps, info *VideoInf
 }
 
 // ParentShowFrame calls the default implementations of the show_frame virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buf *gst.Buffer 
@@ -20912,7 +21117,8 @@ type VideoAggregatorConvertPad interface {
 	// chain up virtual methods:
 
 	// ParentCreateConversionInfo calls the default implementations of the create_conversion_info virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- agg VideoAggregator 
@@ -20988,7 +21194,8 @@ type VideoAggregatorConvertPadOverrides[Instance VideoAggregatorConvertPad] stru
 	// VideoAggregatorPadOverrides allows you to override virtual methods from the parent class VideoAggregatorPad
 	VideoAggregatorPadOverrides[Instance]
 
-	// CreateConversionInfo allows you to override the implementation of the virtual method create_conversion_info.
+	// // CreateConversionInfo allows you to override the implementation of the virtual method create_conversion_info.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- agg VideoAggregator 
@@ -21024,7 +21231,8 @@ func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConve
 }
 
 // ParentCreateConversionInfo calls the default implementations of the create_conversion_info virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- agg VideoAggregator 
@@ -21626,7 +21834,7 @@ func (meta *VideoAffineTransformationMeta) ApplyMatrix(matrix [16]float32) {
 	carg0 = (*C.GstVideoAffineTransformationMeta)(UnsafeVideoAffineTransformationMetaToGlibNone(meta))
 	_ = matrix
 	_ = carg1
-	panic("unimplemented conversion of [16]float32 (const gfloat*)")
+	panic("unimplemented conversion of [16]float32 (*C.gfloat)")
 
 	C.gst_video_affine_transformation_meta_apply_matrix(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -23796,7 +24004,7 @@ func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (Vid
 
 	_ = frame
 	_ = carg1
-	panic("unimplemented conversion of VideoFrame (GstVideoFrame)")
+	panic("unimplemented conversion of VideoFrame (C.GstVideoFrame)")
 	if cret != 0 {
 		goret = true
 	}
@@ -23850,7 +24058,7 @@ func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int32, flags gst.Ma
 
 	_ = frame
 	_ = carg1
-	panic("unimplemented conversion of VideoFrame (GstVideoFrame)")
+	panic("unimplemented conversion of VideoFrame (C.GstVideoFrame)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24046,7 +24254,7 @@ func (meta *VideoGLTextureUploadMeta) Upload(textureId *uint) bool {
 	carg0 = (*C.GstVideoGLTextureUploadMeta)(UnsafeVideoGLTextureUploadMetaToGlibNone(meta))
 	_ = textureId
 	_ = carg1
-	panic("unimplemented conversion of *uint (guint*)")
+	panic("unimplemented conversion of *uint (*C.guint)")
 
 	cret = C.gst_video_gl_texture_upload_meta_upload(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -24220,7 +24428,7 @@ func VideoInfoFromCaps(caps *gst.Caps) (VideoInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (C.GstVideoInfo)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24244,7 +24452,7 @@ func VideoInfoInit() VideoInfo {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (C.GstVideoInfo)")
 
 	return info
 }
@@ -24703,7 +24911,7 @@ func VideoInfoDmaDrmFromCaps(caps *gst.Caps) (VideoInfoDmaDrm, bool) {
 
 	_ = drmInfo
 	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm)")
+	panic("unimplemented conversion of VideoInfoDmaDrm (C.GstVideoInfoDmaDrm)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24743,7 +24951,7 @@ func VideoInfoDmaDrmFromVideoInfo(info *VideoInfo, modifier uint64) (VideoInfoDm
 
 	_ = drmInfo
 	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm)")
+	panic("unimplemented conversion of VideoInfoDmaDrm (C.GstVideoInfoDmaDrm)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24767,7 +24975,7 @@ func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 
 	_ = drmInfo
 	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm)")
+	panic("unimplemented conversion of VideoInfoDmaDrm (C.GstVideoInfoDmaDrm)")
 
 	return drmInfo
 }
@@ -24827,7 +25035,7 @@ func (drmInfo *VideoInfoDmaDrm) ToVideoInfo() (VideoInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (C.GstVideoInfo)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24927,7 +25135,7 @@ func VideoMasteringDisplayInfoFromString(mastering string) (VideoMasteringDispla
 
 	_ = minfo
 	_ = carg1
-	panic("unimplemented conversion of VideoMasteringDisplayInfo (GstVideoMasteringDisplayInfo)")
+	panic("unimplemented conversion of VideoMasteringDisplayInfo (C.GstVideoMasteringDisplayInfo)")
 	if cret != 0 {
 		goret = true
 	}
@@ -25254,7 +25462,7 @@ func (meta *VideoMeta) SetAlignment(alignment VideoAlignment) bool {
 	carg0 = (*C.GstVideoMeta)(UnsafeVideoMetaToGlibNone(meta))
 	_ = alignment
 	_ = carg1
-	panic("unimplemented conversion of VideoAlignment (GstVideoAlignment)")
+	panic("unimplemented conversion of VideoAlignment (C.GstVideoAlignment)")
 
 	cret = C.gst_video_meta_set_alignment(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -26969,7 +27177,7 @@ func (scale *VideoScaler) GetCoeff(outOffset uint) (uint, uint, *float64) {
 	nTaps = uint(carg3)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of *float64 (gdouble*)")
+	panic("unimplemented conversion of *float64 (*C.gdouble)")
 
 	return inOffset, nTaps, goret
 }
@@ -28276,7 +28484,7 @@ func (encoder *VideoVBIEncoder) AddAncillary(composite bool, DID uint8, SDIDBloc
 	_ = data
 	_ = carg4
 	_ = carg5
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_video_vbi_encoder_add_ancillary(carg0, carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(encoder)
@@ -28327,7 +28535,7 @@ func (encoder *VideoVBIEncoder) WriteLine(data *uint8) {
 	carg0 = (*C.GstVideoVBIEncoder)(UnsafeVideoVBIEncoderToGlibNone(encoder))
 	_ = data
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (*C.guint8)")
 
 	C.gst_video_vbi_encoder_write_line(carg0, carg1)
 	runtime.KeepAlive(encoder)
@@ -28490,7 +28698,7 @@ func (parser *VideoVBIParser) GetAncillary() (VideoAncillary, VideoVBIParserResu
 
 	_ = anc
 	_ = carg1
-	panic("unimplemented conversion of VideoAncillary (GstVideoAncillary)")
+	panic("unimplemented conversion of VideoAncillary (C.GstVideoAncillary)")
 	goret = VideoVBIParserResult(cret)
 
 	return anc, goret

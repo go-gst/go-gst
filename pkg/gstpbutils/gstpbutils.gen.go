@@ -19,38 +19,38 @@ import (
 // #cgo pkg-config: gstreamer-pbutils-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/pbutils/pbutils.h>
-// extern void _gotk4_gstpbutils1_InstallPluginsResultFunc(GstInstallPluginsReturn, gpointer);
-// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_decide_allocation(GstAudioVisualizer*, GstQuery*);
-// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_render(GstAudioVisualizer*, GstBuffer*, GstVideoFrame*);
-// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_setup(GstAudioVisualizer*);
-// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(void* fnptr, GstAudioVisualizer* carg0, GstQuery* carg1) {
-// 	return ((gboolean (*) (GstAudioVisualizer*, GstQuery*))(fnptr))(carg0, carg1);
+// extern C.void _gotk4_gstpbutils1_InstallPluginsResultFunc(C.GstInstallPluginsReturn, C.gpointer);
+// extern C.gboolean _gotk4_gstpbutils1_AudioVisualizer_decide_allocation(*C.GstAudioVisualizer, *C.GstQuery);
+// extern C.gboolean _gotk4_gstpbutils1_AudioVisualizer_render(*C.GstAudioVisualizer, *C.GstBuffer, *C.GstVideoFrame);
+// extern C.gboolean _gotk4_gstpbutils1_AudioVisualizer_setup(*C.GstAudioVisualizer);
+// C.gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(void* fnptr, *C.GstAudioVisualizer carg0, *C.GstQuery carg1) {
+// 	return ((C.gboolean (*) (*C.GstAudioVisualizer, *C.GstQuery))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_render(void* fnptr, GstAudioVisualizer* carg0, GstBuffer* carg1, GstVideoFrame* carg2) {
-// 	return ((gboolean (*) (GstAudioVisualizer*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
+// C.gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_render(void* fnptr, *C.GstAudioVisualizer carg0, *C.GstBuffer carg1, *C.GstVideoFrame carg2) {
+// 	return ((C.gboolean (*) (*C.GstAudioVisualizer, *C.GstBuffer, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_setup(void* fnptr, GstAudioVisualizer* carg0) {
-// 	return ((gboolean (*) (GstAudioVisualizer*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_setup(void* fnptr, *C.GstAudioVisualizer carg0) {
+// 	return ((C.gboolean (*) (*C.GstAudioVisualizer))(fnptr))(carg0);
 // }
-// extern void _gotk4_gstpbutils1_Discoverer_discovered(GstDiscoverer*, GstDiscovererInfo*, GError*);
-// extern void _gotk4_gstpbutils1_Discoverer_finished(GstDiscoverer*);
-// extern GstDiscovererInfo* _gotk4_gstpbutils1_Discoverer_load_serialize_info(GstDiscoverer*, gchar*);
-// extern void _gotk4_gstpbutils1_Discoverer_source_setup(GstDiscoverer*, GstElement*);
-// extern void _gotk4_gstpbutils1_Discoverer_starting(GstDiscoverer*);
-// void _gotk4_gstpbutils1_Discoverer_virtual_discovered(void* fnptr, GstDiscoverer* carg0, GstDiscovererInfo* carg1, GError* carg2) {
-// 	return ((void (*) (GstDiscoverer*, GstDiscovererInfo*, GError*))(fnptr))(carg0, carg1, carg2);
+// extern C.void _gotk4_gstpbutils1_Discoverer_discovered(*C.GstDiscoverer, *C.GstDiscovererInfo, *C.GError);
+// extern C.void _gotk4_gstpbutils1_Discoverer_finished(*C.GstDiscoverer);
+// extern *C.GstDiscovererInfo _gotk4_gstpbutils1_Discoverer_load_serialize_info(*C.GstDiscoverer, *C.gchar);
+// extern C.void _gotk4_gstpbutils1_Discoverer_source_setup(*C.GstDiscoverer, *C.GstElement);
+// extern C.void _gotk4_gstpbutils1_Discoverer_starting(*C.GstDiscoverer);
+// C.void _gotk4_gstpbutils1_Discoverer_virtual_discovered(void* fnptr, *C.GstDiscoverer carg0, *C.GstDiscovererInfo carg1, *C.GError carg2) {
+// 	return ((C.void (*) (*C.GstDiscoverer, *C.GstDiscovererInfo, *C.GError))(fnptr))(carg0, carg1, carg2);
 // }
-// void _gotk4_gstpbutils1_Discoverer_virtual_finished(void* fnptr, GstDiscoverer* carg0) {
-// 	return ((void (*) (GstDiscoverer*))(fnptr))(carg0);
+// C.void _gotk4_gstpbutils1_Discoverer_virtual_finished(void* fnptr, *C.GstDiscoverer carg0) {
+// 	return ((C.void (*) (*C.GstDiscoverer))(fnptr))(carg0);
 // }
-// GstDiscovererInfo* _gotk4_gstpbutils1_Discoverer_virtual_load_serialize_info(void* fnptr, GstDiscoverer* carg0, gchar* carg1) {
-// 	return ((GstDiscovererInfo* (*) (GstDiscoverer*, gchar*))(fnptr))(carg0, carg1);
+// *C.GstDiscovererInfo _gotk4_gstpbutils1_Discoverer_virtual_load_serialize_info(void* fnptr, *C.GstDiscoverer carg0, *C.gchar carg1) {
+// 	return ((*C.GstDiscovererInfo (*) (*C.GstDiscoverer, *C.gchar))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstpbutils1_Discoverer_virtual_source_setup(void* fnptr, GstDiscoverer* carg0, GstElement* carg1) {
-// 	return ((void (*) (GstDiscoverer*, GstElement*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gstpbutils1_Discoverer_virtual_source_setup(void* fnptr, *C.GstDiscoverer carg0, *C.GstElement carg1) {
+// 	return ((C.void (*) (*C.GstDiscoverer, *C.GstElement))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstpbutils1_Discoverer_virtual_starting(void* fnptr, GstDiscoverer* carg0) {
-// 	return ((void (*) (GstDiscoverer*))(fnptr))(carg0);
+// C.void _gotk4_gstpbutils1_Discoverer_virtual_starting(void* fnptr, *C.GstDiscoverer carg0) {
+// 	return ((C.void (*) (*C.GstDiscoverer))(fnptr))(carg0);
 // }
 import "C"
 
@@ -595,7 +595,7 @@ func CodecUtilsAacCapsSetLevelAndProfile(caps *gst.Caps, audioConfig []uint8) bo
 	_ = audioConfig
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_aac_caps_set_level_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -631,7 +631,7 @@ func CodecUtilsAacGetChannels(audioConfig []uint8) uint {
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_aac_get_channels(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -703,7 +703,7 @@ func CodecUtilsAacGetLevel(audioConfig []uint8) string {
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_aac_get_level(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -740,7 +740,7 @@ func CodecUtilsAacGetProfile(audioConfig []uint8) string {
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_aac_get_profile(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -776,7 +776,7 @@ func CodecUtilsAacGetSampleRate(audioConfig []uint8) uint {
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_aac_get_sample_rate(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -1024,7 +1024,7 @@ func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []uint8) bool {
 	_ = sps
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h264_caps_set_level_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1060,7 +1060,7 @@ func CodecUtilsH264GetLevel(sps []uint8) string {
 	_ = sps
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h264_get_level(carg1, carg2)
 	runtime.KeepAlive(sps)
@@ -1134,7 +1134,7 @@ func CodecUtilsH264GetProfile(sps []uint8) string {
 	_ = sps
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h264_get_profile(carg1, carg2)
 	runtime.KeepAlive(sps)
@@ -1179,7 +1179,7 @@ func CodecUtilsH264GetProfileFlagsLevel(codecData []uint8) (uint8, uint8, uint8,
 	_ = codecData
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h264_get_profile_flags_level(carg1, carg2, &carg3, &carg4, &carg5)
 	runtime.KeepAlive(codecData)
@@ -1225,7 +1225,7 @@ func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel [
 	_ = profileTierLevel
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h265_caps_set_level_tier_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1262,7 +1262,7 @@ func CodecUtilsH265GetLevel(profileTierLevel []uint8) string {
 	_ = profileTierLevel
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h265_get_level(carg1, carg2)
 	runtime.KeepAlive(profileTierLevel)
@@ -1339,7 +1339,7 @@ func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
 	_ = profileTierLevel
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h265_get_profile(carg1, carg2)
 	runtime.KeepAlive(profileTierLevel)
@@ -1375,7 +1375,7 @@ func CodecUtilsH265GetTier(profileTierLevel []uint8) string {
 	_ = profileTierLevel
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h265_get_tier(carg1, carg2)
 	runtime.KeepAlive(profileTierLevel)
@@ -1414,7 +1414,7 @@ func CodecUtilsH266CapsSetLevelTierAndProfile(caps *gst.Caps, decoderConfigurati
 	_ = decoderConfiguration
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h266_caps_set_level_tier_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1449,7 +1449,7 @@ func CodecUtilsH266GetLevel(ptlRecord []uint8) string {
 	_ = ptlRecord
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h266_get_level(carg1, carg2)
 	runtime.KeepAlive(ptlRecord)
@@ -1511,7 +1511,7 @@ func CodecUtilsH266GetProfile(ptlRecord []uint8) string {
 	_ = ptlRecord
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h266_get_profile(carg1, carg2)
 	runtime.KeepAlive(ptlRecord)
@@ -1545,7 +1545,7 @@ func CodecUtilsH266GetTier(ptlRecord []uint8) string {
 	_ = ptlRecord
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_h266_get_tier(carg1, carg2)
 	runtime.KeepAlive(ptlRecord)
@@ -1585,7 +1585,7 @@ func CodecUtilsMpeg4VideoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint
 	_ = visObjSeq
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_mpeg4video_caps_set_level_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1623,7 +1623,7 @@ func CodecUtilsMpeg4VideoGetLevel(visObjSeq []uint8) string {
 	_ = visObjSeq
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_mpeg4video_get_level(carg1, carg2)
 	runtime.KeepAlive(visObjSeq)
@@ -1660,7 +1660,7 @@ func CodecUtilsMpeg4VideoGetProfile(visObjSeq []uint8) string {
 	_ = visObjSeq
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_codec_utils_mpeg4video_get_profile(carg1, carg2)
 	runtime.KeepAlive(visObjSeq)
@@ -1815,7 +1815,7 @@ func InstallPluginsAsync(details []string, ctx *InstallPluginsContext, fn Instal
 
 	_ = details
 	_ = carg1
-	panic("unimplemented conversion of []string (const gchar* const*)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 	if ctx != nil {
 		carg2 = (*C.GstInstallPluginsContext)(UnsafeInstallPluginsContextToGlibNone(ctx))
 	}
@@ -1907,7 +1907,7 @@ func InstallPluginsSync(details []string, ctx *InstallPluginsContext) InstallPlu
 
 	_ = details
 	_ = carg1
-	panic("unimplemented conversion of []string (const gchar* const*)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 	if ctx != nil {
 		carg2 = (*C.GstInstallPluginsContext)(UnsafeInstallPluginsContextToGlibNone(ctx))
 	}
@@ -2818,7 +2818,8 @@ type AudioVisualizer interface {
 	// chain up virtual methods:
 
 	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -2828,7 +2829,8 @@ type AudioVisualizer interface {
 	// 	- goret bool 
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentRender calls the default implementations of the render virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- audio *gst.Buffer 
@@ -2839,7 +2841,8 @@ type AudioVisualizer interface {
 	// 	- goret bool 
 	ParentRender(audio *gst.Buffer, video *gstvideo.VideoFrame) bool
 	// ParentSetup calls the default implementations of the setup virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -2897,7 +2900,8 @@ type AudioVisualizerOverrides[Instance AudioVisualizer] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- query *gst.Query 
@@ -2906,7 +2910,8 @@ type AudioVisualizerOverrides[Instance AudioVisualizer] struct {
 	// 
 	// 	- goret bool 
 	DecideAllocation func(Instance, *gst.Query) bool
-	// Render allows you to override the implementation of the virtual method render.
+	// // Render allows you to override the implementation of the virtual method render.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- audio *gst.Buffer 
@@ -2916,7 +2921,8 @@ type AudioVisualizerOverrides[Instance AudioVisualizer] struct {
 	// 
 	// 	- goret bool 
 	Render func(Instance, *gst.Buffer, *gstvideo.VideoFrame) bool
-	// Setup allows you to override the implementation of the virtual method setup.
+	// // Setup allows you to override the implementation of the virtual method setup.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3004,7 +3010,8 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 }
 
 // ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- query *gst.Query 
@@ -3035,7 +3042,8 @@ func (scope *AudioVisualizerInstance) ParentDecideAllocation(query *gst.Query) b
 }
 
 // ParentRender calls the default implementations of the render virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- audio *gst.Buffer 
@@ -3070,7 +3078,8 @@ func (scope *AudioVisualizerInstance) ParentRender(audio *gst.Buffer, video *gst
 }
 
 // ParentSetup calls the default implementations of the setup virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3228,17 +3237,19 @@ type Discoverer interface {
 	// chain up virtual methods:
 
 	// ParentDiscovered calls the default implementations of the discovered virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- info DiscovererInfo 
 	// 	- err error 
 	ParentDiscovered(info DiscovererInfo, err error)
 	// ParentFinished calls the default implementations of the finished virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentFinished()
 	// ParentLoadSerializeInfo calls the default implementations of the load_serialize_info virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string: the uri to load the info from 
@@ -3250,13 +3261,14 @@ type Discoverer interface {
 	// Loads the serialized info from the given uri.
 	ParentLoadSerializeInfo(uri string) DiscovererInfo
 	// ParentSourceSetup calls the default implementations of the source_setup virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- source gst.Element 
 	ParentSourceSetup(source gst.Element)
 	// ParentStarting calls the default implementations of the starting virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentStarting()
 }
 
@@ -3491,15 +3503,17 @@ type DiscovererOverrides[Instance Discoverer] struct {
 	// gobject.ObjectOverrides allows you to override virtual methods from the parent class gobject.Object
 	gobject.ObjectOverrides[Instance]
 
-	// Discovered allows you to override the implementation of the virtual method discovered.
+	// // Discovered allows you to override the implementation of the virtual method discovered.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- info DiscovererInfo 
 	// 	- err error 
 	Discovered func(Instance, DiscovererInfo, error)
-	// Finished allows you to override the implementation of the virtual method finished.
+	// // Finished allows you to override the implementation of the virtual method finished.
 	Finished func(Instance)
-	// LoadSerializeInfo allows you to override the implementation of the virtual method load_serialize_info.
+	// // LoadSerializeInfo allows you to override the implementation of the virtual method load_serialize_info.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string: the uri to load the info from 
@@ -3510,12 +3524,13 @@ type DiscovererOverrides[Instance Discoverer] struct {
 	//
 	// Loads the serialized info from the given uri.
 	LoadSerializeInfo func(Instance, string) DiscovererInfo
-	// SourceSetup allows you to override the implementation of the virtual method source_setup.
+	// // SourceSetup allows you to override the implementation of the virtual method source_setup.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- source gst.Element 
 	SourceSetup func(Instance, gst.Element)
-	// Starting allows you to override the implementation of the virtual method starting.
+	// // Starting allows you to override the implementation of the virtual method starting.
 	Starting func(Instance)
 }
 
@@ -3616,7 +3631,8 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 }
 
 // ParentDiscovered calls the default implementations of the discovered virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- info DiscovererInfo 
@@ -3638,7 +3654,7 @@ func (discoverer *DiscovererInstance) ParentDiscovered(info DiscovererInfo, err 
 }
 
 // ParentFinished calls the default implementations of the finished virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 func (discoverer *DiscovererInstance) ParentFinished() {
 	var carg0 *C.GstDiscoverer
 
@@ -3649,7 +3665,8 @@ func (discoverer *DiscovererInstance) ParentFinished() {
 }
 
 // ParentLoadSerializeInfo calls the default implementations of the load_serialize_info virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- uri string: the uri to load the info from 
@@ -3681,7 +3698,8 @@ func (dc *DiscovererInstance) ParentLoadSerializeInfo(uri string) DiscovererInfo
 }
 
 // ParentSourceSetup calls the default implementations of the source_setup virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- source gst.Element 
@@ -3699,7 +3717,7 @@ func (discoverer *DiscovererInstance) ParentSourceSetup(source gst.Element) {
 }
 
 // ParentStarting calls the default implementations of the starting virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 func (discoverer *DiscovererInstance) ParentStarting() {
 	var carg0 *C.GstDiscoverer
 
@@ -4089,7 +4107,7 @@ func (info *DiscovererInfoInstance) GetMissingElementsInstallerDetails() []strin
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
