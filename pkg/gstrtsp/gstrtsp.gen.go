@@ -140,8 +140,11 @@ func marshalRTSPAuthMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPAuthMethod(0)
 
-func (e RTSPAuthMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPAuthMethod)
+func (e RTSPAuthMethod) GoValueType() gobject.Type {
+	return TypeRTSPAuthMethod
+}
+
+func (e RTSPAuthMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -180,8 +183,11 @@ func marshalRTSPFamily(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPFamily(0)
 
-func (e RTSPFamily) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPFamily)
+func (e RTSPFamily) GoValueType() gobject.Type {
+	return TypeRTSPFamily
+}
+
+func (e RTSPFamily) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -388,8 +394,11 @@ func marshalRTSPHeaderField(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPHeaderField(0)
 
-func (e RTSPHeaderField) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPHeaderField)
+func (e RTSPHeaderField) GoValueType() gobject.Type {
+	return TypeRTSPHeaderField
+}
+
+func (e RTSPHeaderField) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -527,8 +536,11 @@ func marshalRTSPMsgType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPMsgType(0)
 
-func (e RTSPMsgType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPMsgType)
+func (e RTSPMsgType) GoValueType() gobject.Type {
+	return TypeRTSPMsgType
+}
+
+func (e RTSPMsgType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -578,8 +590,11 @@ func marshalRTSPRangeUnit(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPRangeUnit(0)
 
-func (e RTSPRangeUnit) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPRangeUnit)
+func (e RTSPRangeUnit) GoValueType() gobject.Type {
+	return TypeRTSPRangeUnit
+}
+
+func (e RTSPRangeUnit) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -684,8 +699,11 @@ func marshalRTSPResult(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPResult(0)
 
-func (e RTSPResult) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPResult)
+func (e RTSPResult) GoValueType() gobject.Type {
+	return TypeRTSPResult
+}
+
+func (e RTSPResult) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -752,8 +770,11 @@ func marshalRTSPState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPState(0)
 
-func (e RTSPState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPState)
+func (e RTSPState) GoValueType() gobject.Type {
+	return TypeRTSPState
+}
+
+func (e RTSPState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -883,8 +904,11 @@ func marshalRTSPStatusCode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPStatusCode(0)
 
-func (e RTSPStatusCode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPStatusCode)
+func (e RTSPStatusCode) GoValueType() gobject.Type {
+	return TypeRTSPStatusCode
+}
+
+func (e RTSPStatusCode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -976,8 +1000,11 @@ func marshalRTSPTimeType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPTimeType(0)
 
-func (e RTSPTimeType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPTimeType)
+func (e RTSPTimeType) GoValueType() gobject.Type {
+	return TypeRTSPTimeType
+}
+
+func (e RTSPTimeType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1022,8 +1049,11 @@ func marshalRTSPVersion(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTSPVersion(0)
 
-func (e RTSPVersion) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPVersion)
+func (e RTSPVersion) GoValueType() gobject.Type {
+	return TypeRTSPVersion
+}
+
+func (e RTSPVersion) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1090,8 +1120,11 @@ func (r RTSPEvent) Has(other RTSPEvent) bool {
 
 var _ gobject.GoValueInitializer = RTSPEvent(0)
 
-func (f RTSPEvent) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPEvent)
+func (f RTSPEvent) GoValueType() gobject.Type {
+	return TypeRTSPEvent
+}
+
+func (f RTSPEvent) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -1152,8 +1185,11 @@ func (r RTSPLowerTrans) Has(other RTSPLowerTrans) bool {
 
 var _ gobject.GoValueInitializer = RTSPLowerTrans(0)
 
-func (f RTSPLowerTrans) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPLowerTrans)
+func (f RTSPLowerTrans) GoValueType() gobject.Type {
+	return TypeRTSPLowerTrans
+}
+
+func (f RTSPLowerTrans) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -1258,8 +1294,11 @@ func (r RTSPMethod) Has(other RTSPMethod) bool {
 
 var _ gobject.GoValueInitializer = RTSPMethod(0)
 
-func (f RTSPMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPMethod)
+func (f RTSPMethod) GoValueType() gobject.Type {
+	return TypeRTSPMethod
+}
+
+func (f RTSPMethod) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -1381,8 +1420,11 @@ func (r RTSPProfile) Has(other RTSPProfile) bool {
 
 var _ gobject.GoValueInitializer = RTSPProfile(0)
 
-func (f RTSPProfile) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPProfile)
+func (f RTSPProfile) GoValueType() gobject.Type {
+	return TypeRTSPProfile
+}
+
+func (f RTSPProfile) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -1440,8 +1482,11 @@ func (r RTSPTransMode) Has(other RTSPTransMode) bool {
 
 var _ gobject.GoValueInitializer = RTSPTransMode(0)
 
-func (f RTSPTransMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPTransMode)
+func (f RTSPTransMode) GoValueType() gobject.Type {
+	return TypeRTSPTransMode
+}
+
+func (f RTSPTransMode) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -2097,6 +2142,11 @@ func UnsafeRTSPExtensionFromGlibFull(c unsafe.Pointer) RTSPExtension {
 	return gobject.UnsafeObjectFromGlibFull(c).(RTSPExtension)
 }
 
+// UnsafeRTSPExtensionFromGlibBorrow is used to convert raw GstRTSPExtension pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeRTSPExtensionFromGlibBorrow(c unsafe.Pointer) RTSPExtension {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(RTSPExtension)
+}
+
 // UnsafeRTSPExtensionToGlibNone is used to convert the instance to it's C value GstRTSPExtension. This is used by the bindings internally.
 func UnsafeRTSPExtensionToGlibNone(c RTSPExtension) unsafe.Pointer {
 	i := c.upcastToGstRTSPExtension()
@@ -2487,7 +2537,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 				var resp  *RTSPMessage // in, none, converted
 				var goret RTSPResult   // return, none, casted
 
-				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTSPExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				req = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
 				resp = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2510,7 +2560,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 				var req   *RTSPMessage // in, none, converted
 				var goret RTSPResult   // return, none, casted
 
-				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTSPExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				req = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.BeforeSend(ext, req)
@@ -2532,7 +2582,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTSPExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ConfigureStream(ext, caps)
@@ -2556,7 +2606,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 				var resp  *RTSPMessage // in, none, converted
 				var goret bool         // return
 
-				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTSPExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				resp = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DetectServer(ext, resp)
@@ -2581,7 +2631,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 				var s     *gst.Structure     // in, none, converted
 				var goret RTSPResult         // return, none, casted
 
-				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTSPExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				sdp = gstsdp.UnsafeSDPMessageFromGlibNone(unsafe.Pointer(carg1))
 				s = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2604,7 +2654,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 				var req   *RTSPMessage // in, none, converted
 				var goret RTSPResult   // return, none, casted
 
-				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTSPExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				req = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ReceiveRequest(ext, req)
@@ -2627,7 +2677,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 				var resp  *RTSPMessage // in, none, converted
 				var goret RTSPResult   // return, none, casted
 
-				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTSPExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				req = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
 				resp = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2650,7 +2700,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 				var media *gstsdp.SDPMedia // in, none, converted
 				var goret RTSPResult       // return, none, casted
 
-				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTSPExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				media = gstsdp.UnsafeSDPMediaFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetupMedia(ext, media)
@@ -2672,7 +2722,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 				var url   *RTSPUrl   // in, none, converted
 				var goret RTSPResult // return, none, casted
 
-				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTSPExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				url = UnsafeRTSPUrlFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.StreamSelect(ext, url)
@@ -2704,8 +2754,11 @@ func marshalRTSPAuthCredential(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeRTSPAuthCredentialFromGlibBorrow(b), nil
 }
 
-func (r *RTSPAuthCredential) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPAuthCredential)
+func (r *RTSPAuthCredential) GoValueType() gobject.Type {
+	return TypeRTSPAuthCredential
+}
+
+func (r *RTSPAuthCredential) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -2779,8 +2832,11 @@ func marshalRTSPAuthParam(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeRTSPAuthParamFromGlibBorrow(b), nil
 }
 
-func (r *RTSPAuthParam) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPAuthParam)
+func (r *RTSPAuthParam) GoValueType() gobject.Type {
+	return TypeRTSPAuthParam
+}
+
+func (r *RTSPAuthParam) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4335,8 +4391,11 @@ func marshalRTSPMessage(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeRTSPMessageFromGlibBorrow(b), nil
 }
 
-func (r *RTSPMessage) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPMessage)
+func (r *RTSPMessage) GoValueType() gobject.Type {
+	return TypeRTSPMessage
+}
+
+func (r *RTSPMessage) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4554,7 +4613,7 @@ func (msg *RTSPMessage) GetBodyBuffer() (*gst.Buffer, RTSPResult) {
 // The function takes the following parameters:
 // 
 // 	- field RTSPHeaderField: a #GstRTSPHeaderField 
-// 	- indx int: the index of the header 
+// 	- indx int32: the index of the header 
 // 
 // The function returns the following values:
 // 
@@ -4563,7 +4622,7 @@ func (msg *RTSPMessage) GetBodyBuffer() (*gst.Buffer, RTSPResult) {
 //
 // Get the @indx header value with key @field from @msg. The result in @value
 // stays valid as long as it remains present in @msg.
-func (msg *RTSPMessage) GetHeader(field RTSPHeaderField, indx int) (string, RTSPResult) {
+func (msg *RTSPMessage) GetHeader(field RTSPHeaderField, indx int32) (string, RTSPResult) {
 	var carg0 *C.GstRTSPMessage    // in, none, converted
 	var carg1 C.GstRTSPHeaderField // in, none, casted
 	var carg3 C.gint               // in, none, casted
@@ -4595,7 +4654,7 @@ func (msg *RTSPMessage) GetHeader(field RTSPHeaderField, indx int) (string, RTSP
 // The function takes the following parameters:
 // 
 // 	- header string: a #GstRTSPHeaderField 
-// 	- index int: the index of the header 
+// 	- index int32: the index of the header 
 // 
 // The function returns the following values:
 // 
@@ -4604,7 +4663,7 @@ func (msg *RTSPMessage) GetHeader(field RTSPHeaderField, indx int) (string, RTSP
 //
 // Get the @index header value with key @header from @msg. The result in @value
 // stays valid as long as it remains present in @msg.
-func (msg *RTSPMessage) GetHeaderByName(header string, index int) (string, RTSPResult) {
+func (msg *RTSPMessage) GetHeaderByName(header string, index int32) (string, RTSPResult) {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.gchar          // in, none, string
 	var carg3 C.gint            // in, none, casted
@@ -4960,7 +5019,7 @@ func (msg *RTSPMessage) ParseResponse() (RTSPStatusCode, string, RTSPVersion, RT
 // The function takes the following parameters:
 // 
 // 	- field RTSPHeaderField: a #GstRTSPHeaderField 
-// 	- indx int: the index of the header 
+// 	- indx int32: the index of the header 
 // 
 // The function returns the following values:
 // 
@@ -4968,7 +5027,7 @@ func (msg *RTSPMessage) ParseResponse() (RTSPStatusCode, string, RTSPVersion, RT
 //
 // Remove the @indx header with key @field from @msg. If @indx equals -1, all
 // headers will be removed.
-func (msg *RTSPMessage) RemoveHeader(field RTSPHeaderField, indx int) RTSPResult {
+func (msg *RTSPMessage) RemoveHeader(field RTSPHeaderField, indx int32) RTSPResult {
 	var carg0 *C.GstRTSPMessage    // in, none, converted
 	var carg1 C.GstRTSPHeaderField // in, none, casted
 	var carg2 C.gint               // in, none, casted
@@ -4995,7 +5054,7 @@ func (msg *RTSPMessage) RemoveHeader(field RTSPHeaderField, indx int) RTSPResult
 // The function takes the following parameters:
 // 
 // 	- header string: the header string 
-// 	- index int: the index of the header 
+// 	- index int32: the index of the header 
 // 
 // The function returns the following values:
 // 
@@ -5003,7 +5062,7 @@ func (msg *RTSPMessage) RemoveHeader(field RTSPHeaderField, indx int) RTSPResult
 //
 // Remove the @index header with key @header from @msg. If @index equals -1,
 // all matching headers will be removed.
-func (msg *RTSPMessage) RemoveHeaderByName(header string, index int) RTSPResult {
+func (msg *RTSPMessage) RemoveHeaderByName(header string, index int32) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.gchar          // in, none, string
 	var carg2 C.gint            // in, none, casted
@@ -5992,8 +6051,11 @@ func marshalRTSPUrl(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeRTSPUrlFromGlibBorrow(b), nil
 }
 
-func (r *RTSPUrl) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTSPUrl)
+func (r *RTSPUrl) GoValueType() gobject.Type {
+	return TypeRTSPUrl
+}
+
+func (r *RTSPUrl) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 

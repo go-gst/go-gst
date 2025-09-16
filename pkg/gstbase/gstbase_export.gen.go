@@ -85,7 +85,7 @@ func _gotk4_gstbase1_CollectPadsCompareFunction(carg1 *C.GstCollectPads, carg2 *
 	var timestamp1 gst.ClockTime // in, none, casted, alias
 	var data2      *CollectData  // in, none, converted
 	var timestamp2 gst.ClockTime // in, none, casted, alias
-	var goret      int           // return, none, casted
+	var goret      int32         // return, none, casted
 
 	pads = UnsafeCollectPadsFromGlibNone(unsafe.Pointer(carg1))
 	data1 = UnsafeCollectDataFromGlibNone(unsafe.Pointer(carg2))

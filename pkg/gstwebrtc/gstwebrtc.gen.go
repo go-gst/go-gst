@@ -213,8 +213,11 @@ func marshalWebRTCBundlePolicy(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCBundlePolicy(0)
 
-func (e WebRTCBundlePolicy) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCBundlePolicy)
+func (e WebRTCBundlePolicy) GoValueType() gobject.Type {
+	return TypeWebRTCBundlePolicy
+}
+
+func (e WebRTCBundlePolicy) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -256,8 +259,11 @@ func marshalWebRTCDTLSSetup(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCDTLSSetup(0)
 
-func (e WebRTCDTLSSetup) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCDTLSSetup)
+func (e WebRTCDTLSSetup) GoValueType() gobject.Type {
+	return TypeWebRTCDTLSSetup
+}
+
+func (e WebRTCDTLSSetup) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -303,8 +309,11 @@ func marshalWebRTCDTLSTransportState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCDTLSTransportState(0)
 
-func (e WebRTCDTLSTransportState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCDTLSTransportState)
+func (e WebRTCDTLSTransportState) GoValueType() gobject.Type {
+	return TypeWebRTCDTLSTransportState
+}
+
+func (e WebRTCDTLSTransportState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -349,8 +358,11 @@ func marshalWebRTCDataChannelState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCDataChannelState(0)
 
-func (e WebRTCDataChannelState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCDataChannelState)
+func (e WebRTCDataChannelState) GoValueType() gobject.Type {
+	return TypeWebRTCDataChannelState
+}
+
+func (e WebRTCDataChannelState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -422,8 +434,11 @@ func marshalWebRTCError(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCError(0)
 
-func (e WebRTCError) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCError)
+func (e WebRTCError) GoValueType() gobject.Type {
+	return TypeWebRTCError
+}
+
+func (e WebRTCError) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -481,8 +496,11 @@ func marshalWebRTCFECType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCFECType(0)
 
-func (e WebRTCFECType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCFECType)
+func (e WebRTCFECType) GoValueType() gobject.Type {
+	return TypeWebRTCFECType
+}
+
+func (e WebRTCFECType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -514,8 +532,11 @@ func marshalWebRTCICEComponent(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCICEComponent(0)
 
-func (e WebRTCICEComponent) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCICEComponent)
+func (e WebRTCICEComponent) GoValueType() gobject.Type {
+	return TypeWebRTCICEComponent
+}
+
+func (e WebRTCICEComponent) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -569,8 +590,11 @@ func marshalWebRTCICEConnectionState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCICEConnectionState(0)
 
-func (e WebRTCICEConnectionState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCICEConnectionState)
+func (e WebRTCICEConnectionState) GoValueType() gobject.Type {
+	return TypeWebRTCICEConnectionState
+}
+
+func (e WebRTCICEConnectionState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -613,8 +637,11 @@ func marshalWebRTCICEGatheringState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCICEGatheringState(0)
 
-func (e WebRTCICEGatheringState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCICEGatheringState)
+func (e WebRTCICEGatheringState) GoValueType() gobject.Type {
+	return TypeWebRTCICEGatheringState
+}
+
+func (e WebRTCICEGatheringState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -647,8 +674,11 @@ func marshalWebRTCICERole(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCICERole(0)
 
-func (e WebRTCICERole) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCICERole)
+func (e WebRTCICERole) GoValueType() gobject.Type {
+	return TypeWebRTCICERole
+}
+
+func (e WebRTCICERole) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -683,8 +713,11 @@ func marshalWebRTCICETransportPolicy(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCICETransportPolicy(0)
 
-func (e WebRTCICETransportPolicy) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCICETransportPolicy)
+func (e WebRTCICETransportPolicy) GoValueType() gobject.Type {
+	return TypeWebRTCICETransportPolicy
+}
+
+func (e WebRTCICETransportPolicy) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -712,7 +745,7 @@ const (
 	WebrtcKindAudio WebRTCKind = 1
 	// WebrtcKindVideo wraps GST_WEBRTC_KIND_VIDEO
 	//
-	// Kind is audio
+	// Kind is video
 	WebrtcKindVideo WebRTCKind = 2
 )
 
@@ -722,8 +755,11 @@ func marshalWebRTCKind(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCKind(0)
 
-func (e WebRTCKind) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCKind)
+func (e WebRTCKind) GoValueType() gobject.Type {
+	return TypeWebRTCKind
+}
+
+func (e WebRTCKind) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -774,8 +810,11 @@ func marshalWebRTCPeerConnectionState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCPeerConnectionState(0)
 
-func (e WebRTCPeerConnectionState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCPeerConnectionState)
+func (e WebRTCPeerConnectionState) GoValueType() gobject.Type {
+	return TypeWebRTCPeerConnectionState
+}
+
+func (e WebRTCPeerConnectionState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -821,8 +860,11 @@ func marshalWebRTCPriorityType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCPriorityType(0)
 
-func (e WebRTCPriorityType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCPriorityType)
+func (e WebRTCPriorityType) GoValueType() gobject.Type {
+	return TypeWebRTCPriorityType
+}
+
+func (e WebRTCPriorityType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -868,8 +910,11 @@ func marshalWebRTCRTPTransceiverDirection(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCRTPTransceiverDirection(0)
 
-func (e WebRTCRTPTransceiverDirection) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCRTPTransceiverDirection)
+func (e WebRTCRTPTransceiverDirection) GoValueType() gobject.Type {
+	return TypeWebRTCRTPTransceiverDirection
+}
+
+func (e WebRTCRTPTransceiverDirection) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -914,8 +959,11 @@ func marshalWebRTCSCTPTransportState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCSCTPTransportState(0)
 
-func (e WebRTCSCTPTransportState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCSCTPTransportState)
+func (e WebRTCSCTPTransportState) GoValueType() gobject.Type {
+	return TypeWebRTCSCTPTransportState
+}
+
+func (e WebRTCSCTPTransportState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -959,8 +1007,11 @@ func marshalWebRTCSDPType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCSDPType(0)
 
-func (e WebRTCSDPType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCSDPType)
+func (e WebRTCSDPType) GoValueType() gobject.Type {
+	return TypeWebRTCSDPType
+}
+
+func (e WebRTCSDPType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1037,8 +1088,11 @@ func marshalWebRTCSignalingState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCSignalingState(0)
 
-func (e WebRTCSignalingState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCSignalingState)
+func (e WebRTCSignalingState) GoValueType() gobject.Type {
+	return TypeWebRTCSignalingState
+}
+
+func (e WebRTCSignalingState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1124,8 +1178,11 @@ func marshalWebRTCStatsType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = WebRTCStatsType(0)
 
-func (e WebRTCStatsType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCStatsType)
+func (e WebRTCStatsType) GoValueType() gobject.Type {
+	return TypeWebRTCStatsType
+}
+
+func (e WebRTCStatsType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1190,6 +1247,11 @@ func UnsafeWebRTCDTLSTransportFromGlibNone(c unsafe.Pointer) WebRTCDTLSTransport
 // UnsafeWebRTCDTLSTransportFromGlibFull is used to convert raw GstWebRTCDTLSTransport pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeWebRTCDTLSTransportFromGlibFull(c unsafe.Pointer) WebRTCDTLSTransport {
 	return gobject.UnsafeObjectFromGlibFull(c).(WebRTCDTLSTransport)
+}
+
+// UnsafeWebRTCDTLSTransportFromGlibBorrow is used to convert raw GstWebRTCDTLSTransport pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeWebRTCDTLSTransportFromGlibBorrow(c unsafe.Pointer) WebRTCDTLSTransport {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(WebRTCDTLSTransport)
 }
 
 func (w *WebRTCDTLSTransportInstance) upcastToGstWebRTCDTLSTransport() *WebRTCDTLSTransportInstance {
@@ -1305,6 +1367,11 @@ func UnsafeWebRTCDataChannelFromGlibNone(c unsafe.Pointer) WebRTCDataChannel {
 // UnsafeWebRTCDataChannelFromGlibFull is used to convert raw GstWebRTCDataChannel pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeWebRTCDataChannelFromGlibFull(c unsafe.Pointer) WebRTCDataChannel {
 	return gobject.UnsafeObjectFromGlibFull(c).(WebRTCDataChannel)
+}
+
+// UnsafeWebRTCDataChannelFromGlibBorrow is used to convert raw GstWebRTCDataChannel pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeWebRTCDataChannelFromGlibBorrow(c unsafe.Pointer) WebRTCDataChannel {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(WebRTCDataChannel)
 }
 
 func (w *WebRTCDataChannelInstance) upcastToGstWebRTCDataChannel() *WebRTCDataChannelInstance {
@@ -1722,6 +1789,11 @@ func UnsafeWebRTCICEFromGlibNone(c unsafe.Pointer) WebRTCICE {
 // UnsafeWebRTCICEFromGlibFull is used to convert raw GstWebRTCICE pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeWebRTCICEFromGlibFull(c unsafe.Pointer) WebRTCICE {
 	return gobject.UnsafeObjectFromGlibFull(c).(WebRTCICE)
+}
+
+// UnsafeWebRTCICEFromGlibBorrow is used to convert raw GstWebRTCICE pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeWebRTCICEFromGlibBorrow(c unsafe.Pointer) WebRTCICE {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(WebRTCICE)
 }
 
 func (w *WebRTCICEInstance) upcastToGstWebRTCICE() *WebRTCICEInstance {
@@ -2472,7 +2544,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var candidate string          // in, none, string
 				var promise   *gst.Promise    // in, none, converted, nullable
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				candidate = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 				if carg3 != nil {
@@ -2494,7 +2566,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var sessionId uint            // in, none, casted
 				var goret     WebRTCICEStream // return, full, converted, nullable
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				sessionId = uint(carg1)
 
 				goret = overrides.AddStream(ice, sessionId)
@@ -2518,7 +2590,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var uri   string   // in, none, string
 				var goret bool     // return
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.AddTurnServer(ice, uri)
@@ -2543,7 +2615,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var component WebRTCICEComponent // in, none, casted
 				var goret     WebRTCICETransport // return, full, converted, nullable
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				component = WebRTCICEComponent(carg2)
 
@@ -2568,7 +2640,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var stream WebRTCICEStream // in, none, converted
 				var goret  bool            // return
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.GatherCandidates(ice, stream)
@@ -2591,7 +2663,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret string   // return, full, string
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetHTTPProxy(ice)
 
@@ -2611,7 +2683,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret bool     // return
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetIsController(ice)
 
@@ -2636,7 +2708,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var remoteStats *WebRTCICECandidateStats // out, full, converted
 				var goret       bool                     // return
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 
 				localStats, remoteStats, goret = overrides.GetSelectedPair(ice, stream)
@@ -2661,7 +2733,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret string   // return, full, string, nullable-string
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetStunServer(ice)
 
@@ -2683,7 +2755,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret string   // return, full, string, nullable-string
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetTurnServer(ice)
 
@@ -2705,7 +2777,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice        Instance // go GstWebRTCICE subclass
 				var forceRelay bool     // in
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					forceRelay = true
 				}
@@ -2724,7 +2796,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice Instance // go GstWebRTCICE subclass
 				var uri string   // in, none, string
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				overrides.SetHTTPProxy(ice, uri)
@@ -2741,7 +2813,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice        Instance // go GstWebRTCICE subclass
 				var controller bool     // in
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					controller = true
 				}
@@ -2763,7 +2835,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var pwd    string          // in, none, string
 				var goret  bool            // return
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				ufrag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 				pwd = C.GoString((*C.char)(unsafe.Pointer(carg3)))
@@ -2788,7 +2860,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice Instance                 // go GstWebRTCICE subclass
 				var fn  WebRTCICEOnCandidateFunc // in, transfer: none, C Pointers: 0, Name: WebRTCICEOnCandidateFunc, scope: notified, closure: carg2, destroy: carg3
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				_ = fn
 				_ = carg1
 				_ = carg2
@@ -2812,7 +2884,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var pwd    string          // in, none, string
 				var goret  bool            // return
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				ufrag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 				pwd = C.GoString((*C.char)(unsafe.Pointer(carg3)))
@@ -2837,7 +2909,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice Instance // go GstWebRTCICE subclass
 				var uri string   // in, none, string, nullable-string
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != nil {
 					uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 				}
@@ -2857,7 +2929,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var stream WebRTCICEStream // in, none, converted
 				var tos    uint            // in, none, casted
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				tos = uint(carg2)
 
@@ -2875,7 +2947,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice Instance // go GstWebRTCICE subclass
 				var uri string   // in, none, string, nullable-string
 
-				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != nil {
 					uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 				}
@@ -2965,6 +3037,11 @@ func UnsafeWebRTCICEStreamFromGlibNone(c unsafe.Pointer) WebRTCICEStream {
 // UnsafeWebRTCICEStreamFromGlibFull is used to convert raw GstWebRTCICEStream pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeWebRTCICEStreamFromGlibFull(c unsafe.Pointer) WebRTCICEStream {
 	return gobject.UnsafeObjectFromGlibFull(c).(WebRTCICEStream)
+}
+
+// UnsafeWebRTCICEStreamFromGlibBorrow is used to convert raw GstWebRTCICEStream pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeWebRTCICEStreamFromGlibBorrow(c unsafe.Pointer) WebRTCICEStream {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(WebRTCICEStream)
 }
 
 func (w *WebRTCICEStreamInstance) upcastToGstWebRTCICEStream() *WebRTCICEStreamInstance {
@@ -3073,7 +3150,7 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 				var component WebRTCICEComponent // in, none, casted
 				var goret     WebRTCICETransport // return, full, converted, nullable
 
-				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeWebRTCICEStreamFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				component = WebRTCICEComponent(carg1)
 
 				goret = overrides.FindTransport(stream, component)
@@ -3096,7 +3173,7 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 				var ice   Instance // go GstWebRTCICEStream subclass
 				var goret bool     // return
 
-				ice = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEStreamFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GatherCandidates(ice)
 
@@ -3199,6 +3276,11 @@ func UnsafeWebRTCICETransportFromGlibNone(c unsafe.Pointer) WebRTCICETransport {
 // UnsafeWebRTCICETransportFromGlibFull is used to convert raw GstWebRTCICETransport pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeWebRTCICETransportFromGlibFull(c unsafe.Pointer) WebRTCICETransport {
 	return gobject.UnsafeObjectFromGlibFull(c).(WebRTCICETransport)
+}
+
+// UnsafeWebRTCICETransportFromGlibBorrow is used to convert raw GstWebRTCICETransport pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeWebRTCICETransportFromGlibBorrow(c unsafe.Pointer) WebRTCICETransport {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(WebRTCICETransport)
 }
 
 func (w *WebRTCICETransportInstance) upcastToGstWebRTCICETransport() *WebRTCICETransportInstance {
@@ -3324,7 +3406,7 @@ func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass 
 				var transport Instance // go GstWebRTCICETransport subclass
 				var goret     bool     // return
 
-				transport = UnsafeWebRTCICETransportFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				transport = UnsafeWebRTCICETransportFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GatherCandidates(transport)
 
@@ -3406,6 +3488,11 @@ func UnsafeWebRTCRTPReceiverFromGlibFull(c unsafe.Pointer) WebRTCRTPReceiver {
 	return gobject.UnsafeObjectFromGlibFull(c).(WebRTCRTPReceiver)
 }
 
+// UnsafeWebRTCRTPReceiverFromGlibBorrow is used to convert raw GstWebRTCRTPReceiver pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeWebRTCRTPReceiverFromGlibBorrow(c unsafe.Pointer) WebRTCRTPReceiver {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(WebRTCRTPReceiver)
+}
+
 func (w *WebRTCRTPReceiverInstance) upcastToGstWebRTCRTPReceiver() *WebRTCRTPReceiverInstance {
 	return w
 }
@@ -3471,6 +3558,11 @@ func UnsafeWebRTCRTPSenderFromGlibNone(c unsafe.Pointer) WebRTCRTPSender {
 // UnsafeWebRTCRTPSenderFromGlibFull is used to convert raw GstWebRTCRTPSender pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeWebRTCRTPSenderFromGlibFull(c unsafe.Pointer) WebRTCRTPSender {
 	return gobject.UnsafeObjectFromGlibFull(c).(WebRTCRTPSender)
+}
+
+// UnsafeWebRTCRTPSenderFromGlibBorrow is used to convert raw GstWebRTCRTPSender pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeWebRTCRTPSenderFromGlibBorrow(c unsafe.Pointer) WebRTCRTPSender {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(WebRTCRTPSender)
 }
 
 func (w *WebRTCRTPSenderInstance) upcastToGstWebRTCRTPSender() *WebRTCRTPSenderInstance {
@@ -3548,6 +3640,11 @@ func UnsafeWebRTCRTPTransceiverFromGlibFull(c unsafe.Pointer) WebRTCRTPTransceiv
 	return gobject.UnsafeObjectFromGlibFull(c).(WebRTCRTPTransceiver)
 }
 
+// UnsafeWebRTCRTPTransceiverFromGlibBorrow is used to convert raw GstWebRTCRTPTransceiver pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeWebRTCRTPTransceiverFromGlibBorrow(c unsafe.Pointer) WebRTCRTPTransceiver {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(WebRTCRTPTransceiver)
+}
+
 func (w *WebRTCRTPTransceiverInstance) upcastToGstWebRTCRTPTransceiver() *WebRTCRTPTransceiverInstance {
 	return w
 }
@@ -3598,6 +3695,11 @@ func UnsafeWebRTCSCTPTransportFromGlibNone(c unsafe.Pointer) WebRTCSCTPTransport
 // UnsafeWebRTCSCTPTransportFromGlibFull is used to convert raw GstWebRTCSCTPTransport pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeWebRTCSCTPTransportFromGlibFull(c unsafe.Pointer) WebRTCSCTPTransport {
 	return gobject.UnsafeObjectFromGlibFull(c).(WebRTCSCTPTransport)
+}
+
+// UnsafeWebRTCSCTPTransportFromGlibBorrow is used to convert raw GstWebRTCSCTPTransport pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeWebRTCSCTPTransportFromGlibBorrow(c unsafe.Pointer) WebRTCSCTPTransport {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(WebRTCSCTPTransport)
 }
 
 func (w *WebRTCSCTPTransportInstance) upcastToGstWebRTCSCTPTransport() *WebRTCSCTPTransportInstance {
@@ -3707,8 +3809,11 @@ func marshalWebRTCICECandidateStats(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeWebRTCICECandidateStatsFromGlibBorrow(b), nil
 }
 
-func (r *WebRTCICECandidateStats) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCICECandidateStats)
+func (r *WebRTCICECandidateStats) GoValueType() gobject.Type {
+	return TypeWebRTCICECandidateStats
+}
+
+func (r *WebRTCICECandidateStats) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4069,8 +4174,11 @@ func marshalWebRTCSessionDescription(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeWebRTCSessionDescriptionFromGlibBorrow(b), nil
 }
 
-func (r *WebRTCSessionDescription) InitGoValue(v *gobject.Value) {
-	v.Init(TypeWebRTCSessionDescription)
+func (r *WebRTCSessionDescription) GoValueType() gobject.Type {
+	return TypeWebRTCSessionDescription
+}
+
+func (r *WebRTCSessionDescription) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 

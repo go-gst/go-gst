@@ -1,8 +1,6 @@
 package customsrc
 
 import (
-	"math"
-
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
@@ -12,25 +10,7 @@ import (
 func Register() bool {
 	registered := gst.RegisterBinSubClass[*customSrc](
 		"gocustomsrc",
-		func(class *gst.BinClass) {
-			class.ParentClass().SetStaticMetadata(
-				"custom test source",
-				"Src/Test",
-				"Demo source bin with volume",
-				"Wilhelm Bartel <bartel.wilhelm@gmail.com>",
-			)
-
-			class.ParentClass().ParentClass().ParentClass().ParentClass().InstallProperties([]*gobject.ParamSpec{
-				gobject.ParamSpecInt(
-					"duration",
-					"Duration",
-					"Duration of the source in nanoseconds",
-					0,
-					math.MaxInt64,
-					0,
-					gobject.ParamWritable|gobject.ParamReadable|gst.ParamMutableReady),
-			})
-		},
+		classInit,
 		nil,
 		gst.BinOverrides[*customSrc]{
 			ElementOverrides: gst.ElementOverrides[*customSrc]{

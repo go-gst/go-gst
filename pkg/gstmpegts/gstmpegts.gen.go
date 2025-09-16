@@ -57,9 +57,11 @@ var (
 	TypeExtendedEventDescriptor             = gobject.Type(C.gst_mpegts_extended_event_descriptor_get_type())
 	TypeExtendedEventItem                   = gobject.Type(C.gst_mpegts_extended_event_item_get_type())
 	TypeISO639LanguageDescriptor            = gobject.Type(C.gst_mpegts_iso_639_language_get_type())
+	TypeJpegXsDescriptor                    = gobject.Type(C.gst_mpegts_jpeg_xs_descriptor_get_type())
 	TypeLogicalChannel                      = gobject.Type(C.gst_mpegts_logical_channel_get_type())
 	TypeLogicalChannelDescriptor            = gobject.Type(C.gst_mpegts_logical_channel_descriptor_get_type())
 	TypeMetadataDescriptor                  = gobject.Type(C.gst_mpegts_metadata_descriptor_get_type())
+	TypeMetadataPointerDescriptor           = gobject.Type(C.gst_mpegts_metadata_pointer_descriptor_get_type())
 	TypeNIT                                 = gobject.Type(C.gst_mpegts_nit_get_type())
 	TypeNITStream                           = gobject.Type(C.gst_mpegts_nit_stream_get_type())
 	TypePMT                                 = gobject.Type(C.gst_mpegts_pmt_get_type())
@@ -118,9 +120,11 @@ func init() {
 		gobject.TypeMarshaler{T: TypeExtendedEventDescriptor, F: marshalExtendedEventDescriptor},
 		gobject.TypeMarshaler{T: TypeExtendedEventItem, F: marshalExtendedEventItem},
 		gobject.TypeMarshaler{T: TypeISO639LanguageDescriptor, F: marshalISO639LanguageDescriptor},
+		gobject.TypeMarshaler{T: TypeJpegXsDescriptor, F: marshalJpegXsDescriptor},
 		gobject.TypeMarshaler{T: TypeLogicalChannel, F: marshalLogicalChannel},
 		gobject.TypeMarshaler{T: TypeLogicalChannelDescriptor, F: marshalLogicalChannelDescriptor},
 		gobject.TypeMarshaler{T: TypeMetadataDescriptor, F: marshalMetadataDescriptor},
+		gobject.TypeMarshaler{T: TypeMetadataPointerDescriptor, F: marshalMetadataPointerDescriptor},
 		gobject.TypeMarshaler{T: TypeNIT, F: marshalNIT},
 		gobject.TypeMarshaler{T: TypeNITStream, F: marshalNITStream},
 		gobject.TypeMarshaler{T: TypePMT, F: marshalPMT},
@@ -1139,6 +1143,10 @@ const (
 	MtsDescStereoscopicProgramInfo DescriptorType = 53
 	// MtsDescStereoscopicVideoInfo wraps GST_MTS_DESC_STEREOSCOPIC_VIDEO_INFO
 	MtsDescStereoscopicVideoInfo DescriptorType = 54
+	// MtsDescExtension wraps GST_MTS_DESC_EXTENSION
+	//
+	// Extension Descriptor.
+	MtsDescExtension DescriptorType = 63
 )
 
 
@@ -1159,6 +1167,7 @@ func (e DescriptorType) String() string {
 		case MtsDescDsmccNptReference: return "MtsDescDsmccNptReference"
 		case MtsDescDsmccStreamEvent: return "MtsDescDsmccStreamEvent"
 		case MtsDescDsmccStreamMode: return "MtsDescDsmccStreamMode"
+		case MtsDescExtension: return "MtsDescExtension"
 		case MtsDescExternalESID: return "MtsDescExternalESID"
 		case MtsDescFlexMuxTiming: return "MtsDescFlexMuxTiming"
 		case MtsDescFmc: return "MtsDescFmc"
@@ -1199,6 +1208,29 @@ func (e DescriptorType) String() string {
 		case MtsDescVideoStream: return "MtsDescVideoStream"
 		case MtsDescVideoWindow: return "MtsDescVideoWindow"
 		default: return fmt.Sprintf("DescriptorType(%d)", e)
+	}
+}
+
+// ExtendedDescriptorType wraps GstMpegtsExtendedDescriptorType
+//
+// The type of an extended descriptor
+// 
+// The values correpond to the registered extended descriptor types from the
+// base ISO 13818 / ITU H.222.0 specifications
+// 
+// Consult the specification for more details
+type ExtendedDescriptorType C.int
+
+const (
+	// MtsDescExtJxsVideo wraps GST_MTS_DESC_EXT_JXS_VIDEO
+	MtsDescExtJxsVideo ExtendedDescriptorType = 20
+)
+
+
+func (e ExtendedDescriptorType) String() string {
+	switch e {
+		case MtsDescExtJxsVideo: return "MtsDescExtJxsVideo"
+		default: return fmt.Sprintf("ExtendedDescriptorType(%d)", e)
 	}
 }
 
@@ -1393,6 +1425,34 @@ func (e ISO639AudioType) String() string {
 		case MpegtsAudioTypeUndefined: return "MpegtsAudioTypeUndefined"
 		case MpegtsAudioTypeVisualImpairedCommentary: return "MpegtsAudioTypeVisualImpairedCommentary"
 		default: return fmt.Sprintf("ISO639AudioType(%d)", e)
+	}
+}
+
+// MetadataApplicationFormat wraps GstMpegtsMetadataApplicationFormat
+//
+// @GST_MPEGTS_METADATA_APPLICATION_FORMAT_ISAN ISO 15706-1 (ISAN) encoded in its binary form
+// @GST_MPEGTS_METADATA_APPLICATION_FORMAT_VSAN ISO 15706-2 (V-ISAN) encoded in its binary form
+// @GST_MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD Defined by the metadata_application_format_identifier field
+// 
+// metadata_application_format valid values. See ISO/IEC 13818-1:2023(E) Table 2-84.
+type MetadataApplicationFormat C.int
+
+const (
+	// MpegtsMetadataApplicationFormatIsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_ISAN
+	MpegtsMetadataApplicationFormatIsan MetadataApplicationFormat = 16
+	// MpegtsMetadataApplicationFormatVsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_VSAN
+	MpegtsMetadataApplicationFormatVsan MetadataApplicationFormat = 17
+	// MpegtsMetadataApplicationFormatIdentifierField wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD
+	MpegtsMetadataApplicationFormatIdentifierField MetadataApplicationFormat = 65535
+)
+
+
+func (e MetadataApplicationFormat) String() string {
+	switch e {
+		case MpegtsMetadataApplicationFormatIdentifierField: return "MpegtsMetadataApplicationFormatIdentifierField"
+		case MpegtsMetadataApplicationFormatIsan: return "MpegtsMetadataApplicationFormatIsan"
+		case MpegtsMetadataApplicationFormatVsan: return "MpegtsMetadataApplicationFormatVsan"
+		default: return fmt.Sprintf("MetadataApplicationFormat(%d)", e)
 	}
 }
 
@@ -2533,6 +2593,14 @@ const (
 	// Rec. ITU-T H.265 | ISO/IEC 23008-2 video
 	//      stream or an HEVC temporal video sub-bitstream
 	MpegtsStreamTypeVideoHevc StreamType = 36
+	// MpegtsStreamTypeVideoJPEGXS wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
+	//
+	// JPEG-XS stream type
+	MpegtsStreamTypeVideoJPEGXS StreamType = 50
+	// MpegtsStreamTypeVideoVvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_VVC
+	//
+	// VVC/H.266 video stream type
+	MpegtsStreamTypeVideoVvc StreamType = 51
 	// MpegtsStreamTypeIpmpStream wraps GST_MPEGTS_STREAM_TYPE_IPMP_STREAM
 	//
 	// IPMP stream
@@ -2579,12 +2647,14 @@ func (e StreamType) String() string {
 		case MpegtsStreamTypeVideoH264StereoAdditionalView: return "MpegtsStreamTypeVideoH264StereoAdditionalView"
 		case MpegtsStreamTypeVideoH264SvcSubBitstream: return "MpegtsStreamTypeVideoH264SvcSubBitstream"
 		case MpegtsStreamTypeVideoHevc: return "MpegtsStreamTypeVideoHevc"
+		case MpegtsStreamTypeVideoJPEGXS: return "MpegtsStreamTypeVideoJPEGXS"
 		case MpegtsStreamTypeVideoJp2K: return "MpegtsStreamTypeVideoJp2K"
 		case MpegtsStreamTypeVideoMpeg1: return "MpegtsStreamTypeVideoMpeg1"
 		case MpegtsStreamTypeVideoMpeg2: return "MpegtsStreamTypeVideoMpeg2"
 		case MpegtsStreamTypeVideoMpeg2StereoAdditionalView: return "MpegtsStreamTypeVideoMpeg2StereoAdditionalView"
 		case MpegtsStreamTypeVideoMpeg4: return "MpegtsStreamTypeVideoMpeg4"
 		case MpegtsStreamTypeVideoRvc: return "MpegtsStreamTypeVideoRvc"
+		case MpegtsStreamTypeVideoVvc: return "MpegtsStreamTypeVideoVvc"
 		default: return fmt.Sprintf("StreamType(%d)", e)
 	}
 }
@@ -2933,12 +3003,12 @@ func EventNewMpegtsSection(section *Section) *gst.Event {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Section 
+// 	- goret *Section (nullable) 
 //
 // Extracts the #GstMpegtsSection contained in the @event #GstEvent
 func EventParseMpegtsSection(event *gst.Event) *Section {
 	var carg1 *C.GstEvent         // in, none, converted
-	var cret  *C.GstMpegtsSection // return, full, converted
+	var cret  *C.GstMpegtsSection // return, full, converted, nullable
 
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
@@ -2947,7 +3017,9 @@ func EventParseMpegtsSection(event *gst.Event) *Section {
 
 	var goret *Section
 
-	goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2970,13 +3042,13 @@ func Initialize() {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Message 
+// 	- goret *gst.Message (nullable) 
 //
 // Creates a new #GstMessage for a @GstMpegtsSection.
 func MessageNewMpegtsSection(parent gst.Object, section *Section) *gst.Message {
 	var carg1 *C.GstObject        // in, none, converted
 	var carg2 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMessage       // return, full, converted
+	var cret  *C.GstMessage       // return, full, converted, nullable
 
 	carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(parent))
 	carg2 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
@@ -2987,7 +3059,9 @@ func MessageNewMpegtsSection(parent gst.Object, section *Section) *gst.Message {
 
 	var goret *gst.Message
 
-	goret = gst.UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3000,12 +3074,12 @@ func MessageNewMpegtsSection(parent gst.Object, section *Section) *gst.Message {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Section 
+// 	- goret *Section (nullable) 
 //
 // Returns the #GstMpegtsSection contained in a message.
 func MessageParseMpegtsSection(message *gst.Message) *Section {
 	var carg1 *C.GstMessage       // in, none, converted
-	var cret  *C.GstMpegtsSection // return, full, converted
+	var cret  *C.GstMpegtsSection // return, full, converted, nullable
 
 	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(message))
 
@@ -3014,7 +3088,9 @@ func MessageParseMpegtsSection(message *gst.Message) *Section {
 
 	var goret *Section
 
-	goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3181,8 +3257,11 @@ func marshalAtscEIT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscEITFromGlibBorrow(b), nil
 }
 
-func (r *AtscEIT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscEIT)
+func (r *AtscEIT) GoValueType() gobject.Type {
+	return TypeAtscEIT
+}
+
+func (r *AtscEIT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3256,8 +3335,11 @@ func marshalAtscEITEvent(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscEITEventFromGlibBorrow(b), nil
 }
 
-func (r *AtscEITEvent) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscEITEvent)
+func (r *AtscEITEvent) GoValueType() gobject.Type {
+	return TypeAtscEITEvent
+}
+
+func (r *AtscEITEvent) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3331,8 +3413,11 @@ func marshalAtscETT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscETTFromGlibBorrow(b), nil
 }
 
-func (r *AtscETT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscETT)
+func (r *AtscETT) GoValueType() gobject.Type {
+	return TypeAtscETT
+}
+
+func (r *AtscETT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3406,8 +3491,11 @@ func marshalAtscMGT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscMGTFromGlibBorrow(b), nil
 }
 
-func (r *AtscMGT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscMGT)
+func (r *AtscMGT) GoValueType() gobject.Type {
+	return TypeAtscMGT
+}
+
+func (r *AtscMGT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3498,8 +3586,11 @@ func marshalAtscMGTTable(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscMGTTableFromGlibBorrow(b), nil
 }
 
-func (r *AtscMGTTable) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscMGTTable)
+func (r *AtscMGTTable) GoValueType() gobject.Type {
+	return TypeAtscMGTTable
+}
+
+func (r *AtscMGTTable) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3571,8 +3662,11 @@ func marshalAtscMultString(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscMultStringFromGlibBorrow(b), nil
 }
 
-func (r *AtscMultString) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscMultString)
+func (r *AtscMultString) GoValueType() gobject.Type {
+	return TypeAtscMultString
+}
+
+func (r *AtscMultString) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3646,8 +3740,11 @@ func marshalAtscRRT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscRRTFromGlibBorrow(b), nil
 }
 
-func (r *AtscRRT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscRRT)
+func (r *AtscRRT) GoValueType() gobject.Type {
+	return TypeAtscRRT
+}
+
+func (r *AtscRRT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3736,8 +3833,11 @@ func marshalAtscRRTDimension(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscRRTDimensionFromGlibBorrow(b), nil
 }
 
-func (r *AtscRRTDimension) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscRRTDimension)
+func (r *AtscRRTDimension) GoValueType() gobject.Type {
+	return TypeAtscRRTDimension
+}
+
+func (r *AtscRRTDimension) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3826,8 +3926,11 @@ func marshalAtscRRTDimensionValue(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscRRTDimensionValueFromGlibBorrow(b), nil
 }
 
-func (r *AtscRRTDimensionValue) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscRRTDimensionValue)
+func (r *AtscRRTDimensionValue) GoValueType() gobject.Type {
+	return TypeAtscRRTDimensionValue
+}
+
+func (r *AtscRRTDimensionValue) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3918,8 +4021,11 @@ func marshalAtscSTT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscSTTFromGlibBorrow(b), nil
 }
 
-func (r *AtscSTT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscSTT)
+func (r *AtscSTT) GoValueType() gobject.Type {
+	return TypeAtscSTT
+}
+
+func (r *AtscSTT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4031,8 +4137,11 @@ func marshalAtscStringSegment(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscStringSegmentFromGlibBorrow(b), nil
 }
 
-func (r *AtscStringSegment) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscStringSegment)
+func (r *AtscStringSegment) GoValueType() gobject.Type {
+	return TypeAtscStringSegment
+}
+
+func (r *AtscStringSegment) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4168,8 +4277,11 @@ func marshalAtscVCT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscVCTFromGlibBorrow(b), nil
 }
 
-func (r *AtscVCT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscVCT)
+func (r *AtscVCT) GoValueType() gobject.Type {
+	return TypeAtscVCT
+}
+
+func (r *AtscVCT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4243,8 +4355,11 @@ func marshalAtscVCTSource(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtscVCTSourceFromGlibBorrow(b), nil
 }
 
-func (r *AtscVCTSource) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtscVCTSource)
+func (r *AtscVCTSource) GoValueType() gobject.Type {
+	return TypeAtscVCTSource
+}
+
+func (r *AtscVCTSource) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4381,8 +4496,11 @@ func marshalBAT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeBATFromGlibBorrow(b), nil
 }
 
-func (r *BAT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBAT)
+func (r *BAT) GoValueType() gobject.Type {
+	return TypeBAT
+}
+
+func (r *BAT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4454,8 +4572,11 @@ func marshalBATStream(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeBATStreamFromGlibBorrow(b), nil
 }
 
-func (r *BATStream) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBATStream)
+func (r *BATStream) GoValueType() gobject.Type {
+	return TypeBATStream
+}
+
+func (r *BATStream) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4529,8 +4650,11 @@ func marshalCableDeliverySystemDescriptor(p unsafe.Pointer) (interface{}, error)
 	return UnsafeCableDeliverySystemDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *CableDeliverySystemDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeCableDeliverySystemDescriptor)
+func (r *CableDeliverySystemDescriptor) GoValueType() gobject.Type {
+	return TypeCableDeliverySystemDescriptor
+}
+
+func (r *CableDeliverySystemDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4602,8 +4726,11 @@ func marshalComponentDescriptor(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeComponentDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *ComponentDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeComponentDescriptor)
+func (r *ComponentDescriptor) GoValueType() gobject.Type {
+	return TypeComponentDescriptor
+}
+
+func (r *ComponentDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4675,8 +4802,11 @@ func marshalContent(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeContentFromGlibBorrow(b), nil
 }
 
-func (r *Content) InitGoValue(v *gobject.Value) {
-	v.Init(TypeContent)
+func (r *Content) GoValueType() gobject.Type {
+	return TypeContent
+}
+
+func (r *Content) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4748,8 +4878,11 @@ func marshalDVBLinkageDescriptor(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDVBLinkageDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *DVBLinkageDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDVBLinkageDescriptor)
+func (r *DVBLinkageDescriptor) GoValueType() gobject.Type {
+	return TypeDVBLinkageDescriptor
+}
+
+func (r *DVBLinkageDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4808,10 +4941,10 @@ func UnsafeDVBLinkageDescriptorToGlibFull(d *DVBLinkageDescriptor) unsafe.Pointe
 // 
 // The function returns the following values:
 // 
-// 	- goret *DVBLinkageEvent 
+// 	- goret *DVBLinkageEvent (nullable) 
 func (desc *DVBLinkageDescriptor) GetEvent() *DVBLinkageEvent {
 	var carg0 *C.GstMpegtsDVBLinkageDescriptor // in, none, converted
-	var cret  *C.GstMpegtsDVBLinkageEvent      // return, none, converted
+	var cret  *C.GstMpegtsDVBLinkageEvent      // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsDVBLinkageDescriptor)(UnsafeDVBLinkageDescriptorToGlibNone(desc))
 
@@ -4820,7 +4953,9 @@ func (desc *DVBLinkageDescriptor) GetEvent() *DVBLinkageEvent {
 
 	var goret *DVBLinkageEvent
 
-	goret = UnsafeDVBLinkageEventFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDVBLinkageEventFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4829,10 +4964,10 @@ func (desc *DVBLinkageDescriptor) GetEvent() *DVBLinkageEvent {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DVBLinkageMobileHandOver 
+// 	- goret *DVBLinkageMobileHandOver (nullable) 
 func (desc *DVBLinkageDescriptor) GetMobileHandOver() *DVBLinkageMobileHandOver {
 	var carg0 *C.GstMpegtsDVBLinkageDescriptor     // in, none, converted
-	var cret  *C.GstMpegtsDVBLinkageMobileHandOver // return, none, converted
+	var cret  *C.GstMpegtsDVBLinkageMobileHandOver // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsDVBLinkageDescriptor)(UnsafeDVBLinkageDescriptorToGlibNone(desc))
 
@@ -4841,7 +4976,9 @@ func (desc *DVBLinkageDescriptor) GetMobileHandOver() *DVBLinkageMobileHandOver 
 
 	var goret *DVBLinkageMobileHandOver
 
-	goret = UnsafeDVBLinkageMobileHandOverFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDVBLinkageMobileHandOverFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4863,8 +5000,11 @@ func marshalDVBLinkageEvent(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDVBLinkageEventFromGlibBorrow(b), nil
 }
 
-func (r *DVBLinkageEvent) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDVBLinkageEvent)
+func (r *DVBLinkageEvent) GoValueType() gobject.Type {
+	return TypeDVBLinkageEvent
+}
+
+func (r *DVBLinkageEvent) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -4936,8 +5076,11 @@ func marshalDVBLinkageExtendedEvent(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDVBLinkageExtendedEventFromGlibBorrow(b), nil
 }
 
-func (r *DVBLinkageExtendedEvent) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDVBLinkageExtendedEvent)
+func (r *DVBLinkageExtendedEvent) GoValueType() gobject.Type {
+	return TypeDVBLinkageExtendedEvent
+}
+
+func (r *DVBLinkageExtendedEvent) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -5009,8 +5152,11 @@ func marshalDVBLinkageMobileHandOver(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDVBLinkageMobileHandOverFromGlibBorrow(b), nil
 }
 
-func (r *DVBLinkageMobileHandOver) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDVBLinkageMobileHandOver)
+func (r *DVBLinkageMobileHandOver) GoValueType() gobject.Type {
+	return TypeDVBLinkageMobileHandOver
+}
+
+func (r *DVBLinkageMobileHandOver) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -5082,8 +5228,11 @@ func marshalDVBParentalRatingItem(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDVBParentalRatingItemFromGlibBorrow(b), nil
 }
 
-func (r *DVBParentalRatingItem) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDVBParentalRatingItem)
+func (r *DVBParentalRatingItem) GoValueType() gobject.Type {
+	return TypeDVBParentalRatingItem
+}
+
+func (r *DVBParentalRatingItem) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -5155,8 +5304,11 @@ func marshalDVBServiceListItem(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDVBServiceListItemFromGlibBorrow(b), nil
 }
 
-func (r *DVBServiceListItem) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDVBServiceListItem)
+func (r *DVBServiceListItem) GoValueType() gobject.Type {
+	return TypeDVBServiceListItem
+}
+
+func (r *DVBServiceListItem) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -5228,8 +5380,11 @@ func marshalDataBroadcastDescriptor(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDataBroadcastDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *DataBroadcastDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDataBroadcastDescriptor)
+func (r *DataBroadcastDescriptor) GoValueType() gobject.Type {
+	return TypeDataBroadcastDescriptor
+}
+
+func (r *DataBroadcastDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -5306,8 +5461,11 @@ func marshalDescriptor(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *Descriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDescriptor)
+func (r *Descriptor) GoValueType() gobject.Type {
+	return TypeDescriptor
+}
+
+func (r *Descriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -5371,14 +5529,14 @@ func UnsafeDescriptorToGlibFull(d *Descriptor) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Descriptor 
+// 	- goret *Descriptor (nullable) 
 //
 // Creates a #GstMpegtsDescriptor with custom @tag and @data
 func DescriptorFromCustom(tag uint8, data []uint8) *Descriptor {
 	var carg1 C.guint8               // in, none, casted
 	var carg2 *C.guint8              // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
 	var carg3 C.gsize                // implicit
-	var cret  *C.GstMpegtsDescriptor // return, full, converted
+	var cret  *C.GstMpegtsDescriptor // return, full, converted, nullable
 
 	carg1 = C.guint8(tag)
 	_ = data
@@ -5392,7 +5550,9 @@ func DescriptorFromCustom(tag uint8, data []uint8) *Descriptor {
 
 	var goret *Descriptor
 
-	goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -5444,14 +5604,14 @@ func DescriptorFromCustomWithExtension(tag uint8, tagExtension uint8, data []uin
 // 
 // The function returns the following values:
 // 
-// 	- goret *Descriptor 
+// 	- goret *Descriptor (nullable) 
 //
 // Creates a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_NETWORK_NAME,
 // with the network name @name. The data field of the #GstMpegtsDescriptor
 // will be allocated, and transferred to the caller.
 func DescriptorFromDvbNetworkName(name string) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
-	var cret  *C.GstMpegtsDescriptor // return, full, converted
+	var cret  *C.GstMpegtsDescriptor // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -5461,7 +5621,9 @@ func DescriptorFromDvbNetworkName(name string) *Descriptor {
 
 	var goret *Descriptor
 
-	goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -5476,7 +5638,7 @@ func DescriptorFromDvbNetworkName(name string) *Descriptor {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Descriptor 
+// 	- goret *Descriptor (nullable) 
 //
 // Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
 // The data field of the #GstMpegtsDescriptor will be allocated,
@@ -5485,7 +5647,7 @@ func DescriptorFromDvbService(serviceType DVBServiceType, serviceName string, se
 	var carg1 C.GstMpegtsDVBServiceType // in, none, casted
 	var carg2 *C.gchar                  // in, none, string, nullable-string
 	var carg3 *C.gchar                  // in, none, string, nullable-string
-	var cret  *C.GstMpegtsDescriptor    // return, full, converted
+	var cret  *C.GstMpegtsDescriptor    // return, full, converted, nullable
 
 	carg1 = C.GstMpegtsDVBServiceType(serviceType)
 	if serviceName != "" {
@@ -5504,7 +5666,9 @@ func DescriptorFromDvbService(serviceType DVBServiceType, serviceName string, se
 
 	var goret *Descriptor
 
-	goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -5576,6 +5740,83 @@ func DescriptorFromISO639Language(language string) *Descriptor {
 	return goret
 }
 
+// DescriptorFromJPEGXS wraps gst_mpegts_descriptor_from_jpeg_xs
+// 
+// The function takes the following parameters:
+// 
+// 	- jpegxs *JpegXsDescriptor: A #GstMpegtsJpegXsDescriptor 
+// 
+// The function returns the following values:
+// 
+// 	- goret *Descriptor 
+//
+// Create a new #GstMpegtsDescriptor based on the information in @jpegxs
+func DescriptorFromJPEGXS(jpegxs *JpegXsDescriptor) *Descriptor {
+	var carg1 *C.GstMpegtsJpegXsDescriptor // in, none, converted
+	var cret  *C.GstMpegtsDescriptor       // return, full, converted
+
+	carg1 = (*C.GstMpegtsJpegXsDescriptor)(UnsafeJpegXsDescriptorToGlibNone(jpegxs))
+
+	cret = C.gst_mpegts_descriptor_from_jpeg_xs(carg1)
+	runtime.KeepAlive(jpegxs)
+
+	var goret *Descriptor
+
+	goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// DescriptorFromMetadata wraps gst_mpegts_descriptor_from_metadata
+// 
+// The function takes the following parameters:
+// 
+// 	- metadataDescriptor *MetadataDescriptor 
+// 
+// The function returns the following values:
+// 
+// 	- goret *Descriptor 
+func DescriptorFromMetadata(metadataDescriptor *MetadataDescriptor) *Descriptor {
+	var carg1 *C.GstMpegtsMetadataDescriptor // in, none, converted
+	var cret  *C.GstMpegtsDescriptor         // return, full, converted
+
+	carg1 = (*C.GstMpegtsMetadataDescriptor)(UnsafeMetadataDescriptorToGlibNone(metadataDescriptor))
+
+	cret = C.gst_mpegts_descriptor_from_metadata(carg1)
+	runtime.KeepAlive(metadataDescriptor)
+
+	var goret *Descriptor
+
+	goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// DescriptorFromMetadataPointer wraps gst_mpegts_descriptor_from_metadata_pointer
+// 
+// The function takes the following parameters:
+// 
+// 	- metadataPointerDescriptor *MetadataPointerDescriptor: a #GstMpegtsMetadataPointerDescriptor 
+// 
+// The function returns the following values:
+// 
+// 	- goret *Descriptor 
+func DescriptorFromMetadataPointer(metadataPointerDescriptor *MetadataPointerDescriptor) *Descriptor {
+	var carg1 *C.GstMpegtsMetadataPointerDescriptor // in, none, converted
+	var cret  *C.GstMpegtsDescriptor                // return, full, converted
+
+	carg1 = (*C.GstMpegtsMetadataPointerDescriptor)(UnsafeMetadataPointerDescriptorToGlibNone(metadataPointerDescriptor))
+
+	cret = C.gst_mpegts_descriptor_from_metadata_pointer(carg1)
+	runtime.KeepAlive(metadataPointerDescriptor)
+
+	var goret *Descriptor
+
+	goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
 // DescriptorFromRegistration wraps gst_mpegts_descriptor_from_registration
 // 
 // The function takes the following parameters:
@@ -5638,6 +5879,29 @@ func DescriptorParseAudioPreselectionFree(source *AudioPreselectionDescriptor) {
 
 	C.gst_mpegts_descriptor_parse_audio_preselection_free(carg1)
 	runtime.KeepAlive(source)
+}
+
+// Copy wraps gst_mpegts_descriptor_copy
+// 
+// The function returns the following values:
+// 
+// 	- goret *Descriptor 
+//
+// Copy the given descriptor.
+func (desc *Descriptor) Copy() *Descriptor {
+	var carg0 *C.GstMpegtsDescriptor // in, none, converted
+	var cret  *C.GstMpegtsDescriptor // return, full, converted
+
+	carg0 = (*C.GstMpegtsDescriptor)(UnsafeDescriptorToGlibNone(desc))
+
+	cret = C.gst_mpegts_descriptor_copy(carg0)
+	runtime.KeepAlive(desc)
+
+	var goret *Descriptor
+
+	goret = UnsafeDescriptorFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // ParseCableDeliverySystem wraps gst_mpegts_descriptor_parse_cable_delivery_system
@@ -6290,6 +6554,37 @@ func (descriptor *Descriptor) ParseISO639LanguageNb() uint {
 	return goret
 }
 
+// ParseJPEGXS wraps gst_mpegts_descriptor_parse_jpeg_xs
+// 
+// The function returns the following values:
+// 
+// 	- res JpegXsDescriptor: A parsed #GstMpegtsJpegXsDescriptor 
+// 	- goret bool 
+//
+// Parses the JPEG-XS descriptor information from @descriptor:
+func (descriptor *Descriptor) ParseJPEGXS() (JpegXsDescriptor, bool) {
+	var carg0 *C.GstMpegtsDescriptor      // in, none, converted
+	var carg1 C.GstMpegtsJpegXsDescriptor // out, transfer: none, C Pointers: 0, Name: JpegXsDescriptor, caller-allocates
+	var cret  C.gboolean                  // return
+
+	carg0 = (*C.GstMpegtsDescriptor)(UnsafeDescriptorToGlibNone(descriptor))
+
+	cret = C.gst_mpegts_descriptor_parse_jpeg_xs(carg0, &carg1)
+	runtime.KeepAlive(descriptor)
+
+	var res   JpegXsDescriptor
+	var goret bool
+
+	_ = res
+	_ = carg1
+	panic("unimplemented conversion of JpegXsDescriptor (GstMpegtsJpegXsDescriptor)")
+	if cret != 0 {
+		goret = true
+	}
+
+	return res, goret
+}
+
 // ParseLogicalChannel wraps gst_mpegts_descriptor_parse_logical_channel
 // 
 // The function returns the following values:
@@ -6483,8 +6778,11 @@ func marshalDvbMultilingualBouquetNameItem(p unsafe.Pointer) (interface{}, error
 	return UnsafeDvbMultilingualBouquetNameItemFromGlibBorrow(b), nil
 }
 
-func (r *DvbMultilingualBouquetNameItem) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDvbMultilingualBouquetNameItem)
+func (r *DvbMultilingualBouquetNameItem) GoValueType() gobject.Type {
+	return TypeDvbMultilingualBouquetNameItem
+}
+
+func (r *DvbMultilingualBouquetNameItem) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -6556,8 +6854,11 @@ func marshalDvbMultilingualComponentItem(p unsafe.Pointer) (interface{}, error) 
 	return UnsafeDvbMultilingualComponentItemFromGlibBorrow(b), nil
 }
 
-func (r *DvbMultilingualComponentItem) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDvbMultilingualComponentItem)
+func (r *DvbMultilingualComponentItem) GoValueType() gobject.Type {
+	return TypeDvbMultilingualComponentItem
+}
+
+func (r *DvbMultilingualComponentItem) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -6631,8 +6932,11 @@ func marshalDvbMultilingualNetworkNameItem(p unsafe.Pointer) (interface{}, error
 	return UnsafeDvbMultilingualNetworkNameItemFromGlibBorrow(b), nil
 }
 
-func (r *DvbMultilingualNetworkNameItem) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDvbMultilingualNetworkNameItem)
+func (r *DvbMultilingualNetworkNameItem) GoValueType() gobject.Type {
+	return TypeDvbMultilingualNetworkNameItem
+}
+
+func (r *DvbMultilingualNetworkNameItem) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -6706,8 +7010,11 @@ func marshalDvbMultilingualServiceNameItem(p unsafe.Pointer) (interface{}, error
 	return UnsafeDvbMultilingualServiceNameItemFromGlibBorrow(b), nil
 }
 
-func (r *DvbMultilingualServiceNameItem) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDvbMultilingualServiceNameItem)
+func (r *DvbMultilingualServiceNameItem) GoValueType() gobject.Type {
+	return TypeDvbMultilingualServiceNameItem
+}
+
+func (r *DvbMultilingualServiceNameItem) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -6781,8 +7088,11 @@ func marshalEIT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeEITFromGlibBorrow(b), nil
 }
 
-func (r *EIT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeEIT)
+func (r *EIT) GoValueType() gobject.Type {
+	return TypeEIT
+}
+
+func (r *EIT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -6856,8 +7166,11 @@ func marshalEITEvent(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeEITEventFromGlibBorrow(b), nil
 }
 
-func (r *EITEvent) InitGoValue(v *gobject.Value) {
-	v.Init(TypeEITEvent)
+func (r *EITEvent) GoValueType() gobject.Type {
+	return TypeEITEvent
+}
+
+func (r *EITEvent) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -6931,8 +7244,11 @@ func marshalExtendedEventDescriptor(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeExtendedEventDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *ExtendedEventDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeExtendedEventDescriptor)
+func (r *ExtendedEventDescriptor) GoValueType() gobject.Type {
+	return TypeExtendedEventDescriptor
+}
+
+func (r *ExtendedEventDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7004,8 +7320,11 @@ func marshalExtendedEventItem(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeExtendedEventItemFromGlibBorrow(b), nil
 }
 
-func (r *ExtendedEventItem) InitGoValue(v *gobject.Value) {
-	v.Init(TypeExtendedEventItem)
+func (r *ExtendedEventItem) GoValueType() gobject.Type {
+	return TypeExtendedEventItem
+}
+
+func (r *ExtendedEventItem) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7077,8 +7396,11 @@ func marshalISO639LanguageDescriptor(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeISO639LanguageDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *ISO639LanguageDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeISO639LanguageDescriptor)
+func (r *ISO639LanguageDescriptor) GoValueType() gobject.Type {
+	return TypeISO639LanguageDescriptor
+}
+
+func (r *ISO639LanguageDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7143,6 +7465,84 @@ func (desc *ISO639LanguageDescriptor) DescriptorFree() {
 	runtime.KeepAlive(desc)
 }
 
+// JpegXsDescriptor wraps GstMpegtsJpegXsDescriptor
+//
+// JPEG-XS descriptor
+type JpegXsDescriptor struct {
+	*jpegXsDescriptor
+}
+
+// jpegXsDescriptor is the struct that's finalized
+type jpegXsDescriptor struct {
+	native *C.GstMpegtsJpegXsDescriptor
+}
+
+var _ gobject.GoValueInitializer = (*JpegXsDescriptor)(nil)
+
+func marshalJpegXsDescriptor(p unsafe.Pointer) (interface{}, error) {
+	b := gobject.ValueFromNative(p).Boxed()
+	return UnsafeJpegXsDescriptorFromGlibBorrow(b), nil
+}
+
+func (r *JpegXsDescriptor) GoValueType() gobject.Type {
+	return TypeJpegXsDescriptor
+}
+
+func (r *JpegXsDescriptor) SetGoValue(v *gobject.Value) {
+	v.SetBoxed(unsafe.Pointer(r.native))
+}
+
+// UnsafeJpegXsDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsJpegXsDescriptor pointers to go. This is used by the bindings internally.
+func UnsafeJpegXsDescriptorFromGlibBorrow(p unsafe.Pointer) *JpegXsDescriptor {
+	return &JpegXsDescriptor{&jpegXsDescriptor{(*C.GstMpegtsJpegXsDescriptor)(p)}}
+}
+
+// UnsafeJpegXsDescriptorFromGlibNone is used to convert raw C.GstMpegtsJpegXsDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
+func UnsafeJpegXsDescriptorFromGlibNone(p unsafe.Pointer) *JpegXsDescriptor {
+	// FIXME: this has no ref function, what should we do here?
+	wrapped := UnsafeJpegXsDescriptorFromGlibBorrow(p)
+	runtime.SetFinalizer(
+		wrapped.jpegXsDescriptor,
+		func (intern *jpegXsDescriptor) {
+			C.free(unsafe.Pointer(intern.native))
+		},
+	)
+	return wrapped
+}
+
+// UnsafeJpegXsDescriptorFromGlibFull is used to convert raw C.GstMpegtsJpegXsDescriptor pointers to go while taking ownership. This is used by the bindings internally.
+func UnsafeJpegXsDescriptorFromGlibFull(p unsafe.Pointer) *JpegXsDescriptor {
+	wrapped := UnsafeJpegXsDescriptorFromGlibBorrow(p)
+	runtime.SetFinalizer(
+		wrapped.jpegXsDescriptor,
+		func (intern *jpegXsDescriptor) {
+			C.free(unsafe.Pointer(intern.native))
+		},
+	)
+	return wrapped
+}
+
+// UnsafeJpegXsDescriptorFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// 
+// After this is called, no other method on [JpegXsDescriptor] is expected to work anymore.
+func UnsafeJpegXsDescriptorFree(j *JpegXsDescriptor) {
+	C.free(unsafe.Pointer(j.native))
+}
+
+// UnsafeJpegXsDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func UnsafeJpegXsDescriptorToGlibNone(j *JpegXsDescriptor) unsafe.Pointer {
+	return unsafe.Pointer(j.native)
+}
+
+// UnsafeJpegXsDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
+// This is used by the bindings internally.
+func UnsafeJpegXsDescriptorToGlibFull(j *JpegXsDescriptor) unsafe.Pointer {
+	runtime.SetFinalizer(j.jpegXsDescriptor, nil)
+	_p := unsafe.Pointer(j.native)
+	j.native = nil // JpegXsDescriptor is invalid from here on
+	return _p
+}
+
 // LogicalChannel wraps GstMpegtsLogicalChannel
 type LogicalChannel struct {
 	*logicalChannel
@@ -7160,8 +7560,11 @@ func marshalLogicalChannel(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeLogicalChannelFromGlibBorrow(b), nil
 }
 
-func (r *LogicalChannel) InitGoValue(v *gobject.Value) {
-	v.Init(TypeLogicalChannel)
+func (r *LogicalChannel) GoValueType() gobject.Type {
+	return TypeLogicalChannel
+}
+
+func (r *LogicalChannel) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7233,8 +7636,11 @@ func marshalLogicalChannelDescriptor(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeLogicalChannelDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *LogicalChannelDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeLogicalChannelDescriptor)
+func (r *LogicalChannelDescriptor) GoValueType() gobject.Type {
+	return TypeLogicalChannelDescriptor
+}
+
+func (r *LogicalChannelDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7313,8 +7719,11 @@ func marshalMetadataDescriptor(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeMetadataDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *MetadataDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMetadataDescriptor)
+func (r *MetadataDescriptor) GoValueType() gobject.Type {
+	return TypeMetadataDescriptor
+}
+
+func (r *MetadataDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7369,6 +7778,91 @@ func UnsafeMetadataDescriptorToGlibFull(m *MetadataDescriptor) unsafe.Pointer {
 	return _p
 }
 
+// MetadataPointerDescriptor wraps GstMpegtsMetadataPointerDescriptor
+//
+// This structure is not complete. The following fields are missing in comparison to the standard (ISO/IEC 13818-1:2023 Section 2.6.58):
+// * metadata_locator_record_flag: hardcoded to 0. Indicating no metadata_locator_record present in the descriptor.
+// * MPEG_carriage_flags: hardcoded to 0b00, indicating the metadata is carried in the same transport steam.
+// * metadata_locator_record_length.
+// * transport_stream_location.
+// * transport_stream_id.
+// 
+// See also: gst_mpegts_descriptor_from_metadata_pointer
+type MetadataPointerDescriptor struct {
+	*metadataPointerDescriptor
+}
+
+// metadataPointerDescriptor is the struct that's finalized
+type metadataPointerDescriptor struct {
+	native *C.GstMpegtsMetadataPointerDescriptor
+}
+
+var _ gobject.GoValueInitializer = (*MetadataPointerDescriptor)(nil)
+
+func marshalMetadataPointerDescriptor(p unsafe.Pointer) (interface{}, error) {
+	b := gobject.ValueFromNative(p).Boxed()
+	return UnsafeMetadataPointerDescriptorFromGlibBorrow(b), nil
+}
+
+func (r *MetadataPointerDescriptor) GoValueType() gobject.Type {
+	return TypeMetadataPointerDescriptor
+}
+
+func (r *MetadataPointerDescriptor) SetGoValue(v *gobject.Value) {
+	v.SetBoxed(unsafe.Pointer(r.native))
+}
+
+// UnsafeMetadataPointerDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsMetadataPointerDescriptor pointers to go. This is used by the bindings internally.
+func UnsafeMetadataPointerDescriptorFromGlibBorrow(p unsafe.Pointer) *MetadataPointerDescriptor {
+	return &MetadataPointerDescriptor{&metadataPointerDescriptor{(*C.GstMpegtsMetadataPointerDescriptor)(p)}}
+}
+
+// UnsafeMetadataPointerDescriptorFromGlibNone is used to convert raw C.GstMpegtsMetadataPointerDescriptor pointers to go without transferring ownership. This is used by the bindings internally.
+func UnsafeMetadataPointerDescriptorFromGlibNone(p unsafe.Pointer) *MetadataPointerDescriptor {
+	// FIXME: this has no ref function, what should we do here?
+	wrapped := UnsafeMetadataPointerDescriptorFromGlibBorrow(p)
+	runtime.SetFinalizer(
+		wrapped.metadataPointerDescriptor,
+		func (intern *metadataPointerDescriptor) {
+			C.free(unsafe.Pointer(intern.native))
+		},
+	)
+	return wrapped
+}
+
+// UnsafeMetadataPointerDescriptorFromGlibFull is used to convert raw C.GstMpegtsMetadataPointerDescriptor pointers to go while taking ownership. This is used by the bindings internally.
+func UnsafeMetadataPointerDescriptorFromGlibFull(p unsafe.Pointer) *MetadataPointerDescriptor {
+	wrapped := UnsafeMetadataPointerDescriptorFromGlibBorrow(p)
+	runtime.SetFinalizer(
+		wrapped.metadataPointerDescriptor,
+		func (intern *metadataPointerDescriptor) {
+			C.free(unsafe.Pointer(intern.native))
+		},
+	)
+	return wrapped
+}
+
+// UnsafeMetadataPointerDescriptorFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// 
+// After this is called, no other method on [MetadataPointerDescriptor] is expected to work anymore.
+func UnsafeMetadataPointerDescriptorFree(m *MetadataPointerDescriptor) {
+	C.free(unsafe.Pointer(m.native))
+}
+
+// UnsafeMetadataPointerDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func UnsafeMetadataPointerDescriptorToGlibNone(m *MetadataPointerDescriptor) unsafe.Pointer {
+	return unsafe.Pointer(m.native)
+}
+
+// UnsafeMetadataPointerDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
+// This is used by the bindings internally.
+func UnsafeMetadataPointerDescriptorToGlibFull(m *MetadataPointerDescriptor) unsafe.Pointer {
+	runtime.SetFinalizer(m.metadataPointerDescriptor, nil)
+	_p := unsafe.Pointer(m.native)
+	m.native = nil // MetadataPointerDescriptor is invalid from here on
+	return _p
+}
+
 // NIT wraps GstMpegtsNIT
 //
 // Network Information Table (ISO/IEC 13818-1 / EN 300 468)
@@ -7388,8 +7882,11 @@ func marshalNIT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeNITFromGlibBorrow(b), nil
 }
 
-func (r *NIT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeNIT)
+func (r *NIT) GoValueType() gobject.Type {
+	return TypeNIT
+}
+
+func (r *NIT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7480,8 +7977,11 @@ func marshalNITStream(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeNITStreamFromGlibBorrow(b), nil
 }
 
-func (r *NITStream) InitGoValue(v *gobject.Value) {
-	v.Init(TypeNITStream)
+func (r *NITStream) GoValueType() gobject.Type {
+	return TypeNITStream
+}
+
+func (r *NITStream) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7664,8 +8164,11 @@ func marshalPMT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafePMTFromGlibBorrow(b), nil
 }
 
-func (r *PMT) InitGoValue(v *gobject.Value) {
-	v.Init(TypePMT)
+func (r *PMT) GoValueType() gobject.Type {
+	return TypePMT
+}
+
+func (r *PMT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7760,8 +8263,11 @@ func marshalPMTStream(p unsafe.Pointer) (interface{}, error) {
 	return UnsafePMTStreamFromGlibBorrow(b), nil
 }
 
-func (r *PMTStream) InitGoValue(v *gobject.Value) {
-	v.Init(TypePMTStream)
+func (r *PMTStream) GoValueType() gobject.Type {
+	return TypePMTStream
+}
+
+func (r *PMTStream) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7854,8 +8360,11 @@ func marshalPatProgram(p unsafe.Pointer) (interface{}, error) {
 	return UnsafePatProgramFromGlibBorrow(b), nil
 }
 
-func (r *PatProgram) InitGoValue(v *gobject.Value) {
-	v.Init(TypePatProgram)
+func (r *PatProgram) GoValueType() gobject.Type {
+	return TypePatProgram
+}
+
+func (r *PatProgram) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -7946,8 +8455,11 @@ func marshalSCTESIT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSCTESITFromGlibBorrow(b), nil
 }
 
-func (r *SCTESIT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSCTESIT)
+func (r *SCTESIT) GoValueType() gobject.Type {
+	return TypeSCTESIT
+}
+
+func (r *SCTESIT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -8040,8 +8552,11 @@ func marshalSCTESpliceComponent(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSCTESpliceComponentFromGlibBorrow(b), nil
 }
 
-func (r *SCTESpliceComponent) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSCTESpliceComponent)
+func (r *SCTESpliceComponent) GoValueType() gobject.Type {
+	return TypeSCTESpliceComponent
+}
+
+func (r *SCTESpliceComponent) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -8140,8 +8655,11 @@ func marshalSCTESpliceEvent(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSCTESpliceEventFromGlibBorrow(b), nil
 }
 
-func (r *SCTESpliceEvent) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSCTESpliceEvent)
+func (r *SCTESpliceEvent) GoValueType() gobject.Type {
+	return TypeSCTESpliceEvent
+}
+
+func (r *SCTESpliceEvent) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -8234,8 +8752,11 @@ func marshalSDT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSDTFromGlibBorrow(b), nil
 }
 
-func (r *SDT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSDT)
+func (r *SDT) GoValueType() gobject.Type {
+	return TypeSDT
+}
+
+func (r *SDT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -8326,8 +8847,11 @@ func marshalSDTService(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSDTServiceFromGlibBorrow(b), nil
 }
 
-func (r *SDTService) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSDTService)
+func (r *SDTService) GoValueType() gobject.Type {
+	return TypeSDTService
+}
+
+func (r *SDTService) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -8420,8 +8944,11 @@ func marshalSIT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSITFromGlibBorrow(b), nil
 }
 
-func (r *SIT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSIT)
+func (r *SIT) GoValueType() gobject.Type {
+	return TypeSIT
+}
+
+func (r *SIT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -8495,8 +9022,11 @@ func marshalSITService(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSITServiceFromGlibBorrow(b), nil
 }
 
-func (r *SITService) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSITService)
+func (r *SITService) GoValueType() gobject.Type {
+	return TypeSITService
+}
+
+func (r *SITService) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -8570,8 +9100,11 @@ func marshalSatelliteDeliverySystemDescriptor(p unsafe.Pointer) (interface{}, er
 	return UnsafeSatelliteDeliverySystemDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *SatelliteDeliverySystemDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSatelliteDeliverySystemDescriptor)
+func (r *SatelliteDeliverySystemDescriptor) GoValueType() gobject.Type {
+	return TypeSatelliteDeliverySystemDescriptor
+}
+
+func (r *SatelliteDeliverySystemDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -8688,8 +9221,11 @@ func marshalSection(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSectionFromGlibBorrow(b), nil
 }
 
-func (r *Section) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSection)
+func (r *Section) GoValueType() gobject.Type {
+	return TypeSection
+}
+
+func (r *Section) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -8795,10 +9331,10 @@ func NewSection(pid uint16, data []uint8) *Section {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Section 
+// 	- goret *Section (nullable) 
 func SectionFromAtscMgt(mgt *AtscMGT) *Section {
 	var carg1 *C.GstMpegtsAtscMGT // in, full, converted
-	var cret  *C.GstMpegtsSection // return, full, converted
+	var cret  *C.GstMpegtsSection // return, full, converted, nullable
 
 	carg1 = (*C.GstMpegtsAtscMGT)(UnsafeAtscMGTToGlibFull(mgt))
 
@@ -8807,7 +9343,9 @@ func SectionFromAtscMgt(mgt *AtscMGT) *Section {
 
 	var goret *Section
 
-	goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8870,12 +9408,12 @@ func SectionFromAtscStt(stt *AtscSTT) *Section {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Section 
+// 	- goret *Section (nullable) 
 //
 // Ownership of @nit is taken. The data in @nit is managed by the #GstMpegtsSection
 func SectionFromNit(nit *NIT) *Section {
 	var carg1 *C.GstMpegtsNIT     // in, full, converted
-	var cret  *C.GstMpegtsSection // return, full, converted
+	var cret  *C.GstMpegtsSection // return, full, converted, nullable
 
 	carg1 = (*C.GstMpegtsNIT)(UnsafeNITToGlibFull(nit))
 
@@ -8884,7 +9422,9 @@ func SectionFromNit(nit *NIT) *Section {
 
 	var goret *Section
 
-	goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8898,13 +9438,13 @@ func SectionFromNit(nit *NIT) *Section {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Section 
+// 	- goret *Section (nullable) 
 //
 // Creates a #GstMpegtsSection from @pmt that is bound to @pid
 func SectionFromPmt(pmt *PMT, pid uint16) *Section {
 	var carg1 *C.GstMpegtsPMT     // in, full, converted
 	var carg2 C.guint16           // in, none, casted
-	var cret  *C.GstMpegtsSection // return, full, converted
+	var cret  *C.GstMpegtsSection // return, full, converted, nullable
 
 	carg1 = (*C.GstMpegtsPMT)(UnsafePMTToGlibFull(pmt))
 	carg2 = C.guint16(pid)
@@ -8915,7 +9455,9 @@ func SectionFromPmt(pmt *PMT, pid uint16) *Section {
 
 	var goret *Section
 
-	goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8929,13 +9471,13 @@ func SectionFromPmt(pmt *PMT, pid uint16) *Section {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Section 
+// 	- goret *Section (nullable) 
 //
 // Ownership of @sit is taken. The data in @sit is managed by the #GstMpegtsSection
 func SectionFromScteSit(sit *SCTESIT, pid uint16) *Section {
 	var carg1 *C.GstMpegtsSCTESIT // in, full, converted
 	var carg2 C.guint16           // in, none, casted
-	var cret  *C.GstMpegtsSection // return, full, converted
+	var cret  *C.GstMpegtsSection // return, full, converted, nullable
 
 	carg1 = (*C.GstMpegtsSCTESIT)(UnsafeSCTESITToGlibFull(sit))
 	carg2 = C.guint16(pid)
@@ -8946,7 +9488,9 @@ func SectionFromScteSit(sit *SCTESIT, pid uint16) *Section {
 
 	var goret *Section
 
-	goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8959,12 +9503,12 @@ func SectionFromScteSit(sit *SCTESIT, pid uint16) *Section {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Section 
+// 	- goret *Section (nullable) 
 //
 // Ownership of @sdt is taken. The data in @sdt is managed by the #GstMpegtsSection
 func SectionFromSdt(sdt *SDT) *Section {
 	var carg1 *C.GstMpegtsSDT     // in, full, converted
-	var cret  *C.GstMpegtsSection // return, full, converted
+	var cret  *C.GstMpegtsSection // return, full, converted, nullable
 
 	carg1 = (*C.GstMpegtsSDT)(UnsafeSDTToGlibFull(sdt))
 
@@ -8973,7 +9517,9 @@ func SectionFromSdt(sdt *SDT) *Section {
 
 	var goret *Section
 
-	goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSectionFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8982,12 +9528,12 @@ func SectionFromSdt(sdt *SDT) *Section {
 // 
 // The function returns the following values:
 // 
-// 	- goret *AtscVCT 
+// 	- goret *AtscVCT (nullable) 
 //
 // Returns the #GstMpegtsAtscVCT contained in the @section
 func (section *Section) GetAtscCvct() *AtscVCT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsAtscVCT // return, none, converted
+	var cret  *C.GstMpegtsAtscVCT // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -8996,7 +9542,9 @@ func (section *Section) GetAtscCvct() *AtscVCT {
 
 	var goret *AtscVCT
 
-	goret = UnsafeAtscVCTFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAtscVCTFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9051,12 +9599,12 @@ func (section *Section) GetAtscEtt() *AtscETT {
 // 
 // The function returns the following values:
 // 
-// 	- goret *AtscMGT 
+// 	- goret *AtscMGT (nullable) 
 //
 // Returns the #GstMpegtsAtscMGT contained in the @section.
 func (section *Section) GetAtscMgt() *AtscMGT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsAtscMGT // return, none, converted
+	var cret  *C.GstMpegtsAtscMGT // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9065,7 +9613,9 @@ func (section *Section) GetAtscMgt() *AtscMGT {
 
 	var goret *AtscMGT
 
-	goret = UnsafeAtscMGTFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAtscMGTFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9120,12 +9670,12 @@ func (section *Section) GetAtscStt() *AtscSTT {
 // 
 // The function returns the following values:
 // 
-// 	- goret *AtscVCT 
+// 	- goret *AtscVCT (nullable) 
 //
 // Returns the #GstMpegtsAtscVCT contained in the @section
 func (section *Section) GetAtscTvct() *AtscVCT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsAtscVCT // return, none, converted
+	var cret  *C.GstMpegtsAtscVCT // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9134,7 +9684,9 @@ func (section *Section) GetAtscTvct() *AtscVCT {
 
 	var goret *AtscVCT
 
-	goret = UnsafeAtscVCTFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAtscVCTFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9143,12 +9695,12 @@ func (section *Section) GetAtscTvct() *AtscVCT {
 // 
 // The function returns the following values:
 // 
-// 	- goret *BAT 
+// 	- goret *BAT (nullable) 
 //
 // Returns the #GstMpegtsBAT contained in the @section.
 func (section *Section) GetBat() *BAT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsBAT     // return, none, converted
+	var cret  *C.GstMpegtsBAT     // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9157,7 +9709,9 @@ func (section *Section) GetBat() *BAT {
 
 	var goret *BAT
 
-	goret = UnsafeBATFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeBATFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9189,12 +9743,12 @@ func (section *Section) GetData() *glib.Bytes {
 // 
 // The function returns the following values:
 // 
-// 	- goret *EIT 
+// 	- goret *EIT (nullable) 
 //
 // Returns the #GstMpegtsEIT contained in the @section.
 func (section *Section) GetEit() *EIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsEIT     // return, none, converted
+	var cret  *C.GstMpegtsEIT     // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9203,7 +9757,9 @@ func (section *Section) GetEit() *EIT {
 
 	var goret *EIT
 
-	goret = UnsafeEITFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeEITFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9212,12 +9768,12 @@ func (section *Section) GetEit() *EIT {
 // 
 // The function returns the following values:
 // 
-// 	- goret *NIT 
+// 	- goret *NIT (nullable) 
 //
 // Returns the #GstMpegtsNIT contained in the @section.
 func (section *Section) GetNit() *NIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsNIT     // return, none, converted
+	var cret  *C.GstMpegtsNIT     // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9226,7 +9782,9 @@ func (section *Section) GetNit() *NIT {
 
 	var goret *NIT
 
-	goret = UnsafeNITFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeNITFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9235,12 +9793,12 @@ func (section *Section) GetNit() *NIT {
 // 
 // The function returns the following values:
 // 
-// 	- goret *PMT 
+// 	- goret *PMT (nullable) 
 //
 // Parses the Program Map Table contained in the @section.
 func (section *Section) GetPmt() *PMT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsPMT     // return, none, converted
+	var cret  *C.GstMpegtsPMT     // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9249,7 +9807,9 @@ func (section *Section) GetPmt() *PMT {
 
 	var goret *PMT
 
-	goret = UnsafePMTFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePMTFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9258,12 +9818,12 @@ func (section *Section) GetPmt() *PMT {
 // 
 // The function returns the following values:
 // 
-// 	- goret *SCTESIT 
+// 	- goret *SCTESIT (nullable) 
 //
 // Returns the #GstMpegtsSCTESIT contained in the @section.
 func (section *Section) GetScteSit() *SCTESIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsSCTESIT // return, none, converted
+	var cret  *C.GstMpegtsSCTESIT // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9272,7 +9832,9 @@ func (section *Section) GetScteSit() *SCTESIT {
 
 	var goret *SCTESIT
 
-	goret = UnsafeSCTESITFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSCTESITFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9281,12 +9843,12 @@ func (section *Section) GetScteSit() *SCTESIT {
 // 
 // The function returns the following values:
 // 
-// 	- goret *SDT 
+// 	- goret *SDT (nullable) 
 //
 // Returns the #GstMpegtsSDT contained in the @section.
 func (section *Section) GetSdt() *SDT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsSDT     // return, none, converted
+	var cret  *C.GstMpegtsSDT     // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9295,7 +9857,9 @@ func (section *Section) GetSdt() *SDT {
 
 	var goret *SDT
 
-	goret = UnsafeSDTFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSDTFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9304,12 +9868,12 @@ func (section *Section) GetSdt() *SDT {
 // 
 // The function returns the following values:
 // 
-// 	- goret *SIT 
+// 	- goret *SIT (nullable) 
 //
 // Returns the #GstMpegtsSIT contained in the @section.
 func (section *Section) GetSit() *SIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsSIT     // return, none, converted
+	var cret  *C.GstMpegtsSIT     // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9318,7 +9882,9 @@ func (section *Section) GetSit() *SIT {
 
 	var goret *SIT
 
-	goret = UnsafeSITFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeSITFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9327,12 +9893,12 @@ func (section *Section) GetSit() *SIT {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.DateTime 
+// 	- goret *gst.DateTime (nullable) 
 //
 // Returns the #GstDateTime of the TDT
 func (section *Section) GetTdt() *gst.DateTime {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstDateTime      // return, full, converted
+	var cret  *C.GstDateTime      // return, full, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9341,7 +9907,9 @@ func (section *Section) GetTdt() *gst.DateTime {
 
 	var goret *gst.DateTime
 
-	goret = gst.UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9350,12 +9918,12 @@ func (section *Section) GetTdt() *gst.DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *TOT 
+// 	- goret *TOT (nullable) 
 //
 // Returns the #GstMpegtsTOT contained in the @section.
 func (section *Section) GetTot() *TOT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
-	var cret  *C.GstMpegtsTOT     // return, none, converted
+	var cret  *C.GstMpegtsTOT     // return, none, converted, nullable
 
 	carg0 = (*C.GstMpegtsSection)(UnsafeSectionToGlibNone(section))
 
@@ -9364,7 +9932,9 @@ func (section *Section) GetTot() *TOT {
 
 	var goret *TOT
 
-	goret = UnsafeTOTFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTOTFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9450,8 +10020,11 @@ func marshalT2DeliverySystemCell(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeT2DeliverySystemCellFromGlibBorrow(b), nil
 }
 
-func (r *T2DeliverySystemCell) InitGoValue(v *gobject.Value) {
-	v.Init(TypeT2DeliverySystemCell)
+func (r *T2DeliverySystemCell) GoValueType() gobject.Type {
+	return TypeT2DeliverySystemCell
+}
+
+func (r *T2DeliverySystemCell) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -9523,8 +10096,11 @@ func marshalT2DeliverySystemCellExtension(p unsafe.Pointer) (interface{}, error)
 	return UnsafeT2DeliverySystemCellExtensionFromGlibBorrow(b), nil
 }
 
-func (r *T2DeliverySystemCellExtension) InitGoValue(v *gobject.Value) {
-	v.Init(TypeT2DeliverySystemCellExtension)
+func (r *T2DeliverySystemCellExtension) GoValueType() gobject.Type {
+	return TypeT2DeliverySystemCellExtension
+}
+
+func (r *T2DeliverySystemCellExtension) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -9598,8 +10174,11 @@ func marshalT2DeliverySystemDescriptor(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeT2DeliverySystemDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *T2DeliverySystemDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeT2DeliverySystemDescriptor)
+func (r *T2DeliverySystemDescriptor) GoValueType() gobject.Type {
+	return TypeT2DeliverySystemDescriptor
+}
+
+func (r *T2DeliverySystemDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -9673,8 +10252,11 @@ func marshalTOT(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeTOTFromGlibBorrow(b), nil
 }
 
-func (r *TOT) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTOT)
+func (r *TOT) GoValueType() gobject.Type {
+	return TypeTOT
+}
+
+func (r *TOT) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -9748,8 +10330,11 @@ func marshalTerrestrialDeliverySystemDescriptor(p unsafe.Pointer) (interface{}, 
 	return UnsafeTerrestrialDeliverySystemDescriptorFromGlibBorrow(b), nil
 }
 
-func (r *TerrestrialDeliverySystemDescriptor) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTerrestrialDeliverySystemDescriptor)
+func (r *TerrestrialDeliverySystemDescriptor) GoValueType() gobject.Type {
+	return TypeTerrestrialDeliverySystemDescriptor
+}
+
+func (r *TerrestrialDeliverySystemDescriptor) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 

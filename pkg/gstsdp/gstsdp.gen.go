@@ -806,8 +806,11 @@ func marshalMIKEYMessage(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeMIKEYMessageFromGlibBorrow(b), nil
 }
 
-func (r *MIKEYMessage) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMIKEYMessage)
+func (r *MIKEYMessage) GoValueType() gobject.Type {
+	return TypeMIKEYMessage
+}
+
+func (r *MIKEYMessage) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -1328,7 +1331,7 @@ func (msg *MIKEYMessage) GetPayload(idx uint) *MIKEYPayload {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: the index to insert at 
+// 	- idx int32: the index to insert at 
 // 	- _map *MIKEYMapSRTP: the map info 
 // 
 // The function returns the following values:
@@ -1338,7 +1341,7 @@ func (msg *MIKEYMessage) GetPayload(idx uint) *MIKEYPayload {
 // Insert a Crypto Session map for SRTP in @msg at @idx
 // 
 // When @idx is -1, the policy will be appended.
-func (msg *MIKEYMessage) InsertCsSrtp(idx int, _map *MIKEYMapSRTP) bool {
+func (msg *MIKEYMessage) InsertCsSrtp(idx int32, _map *MIKEYMapSRTP) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstMIKEYMapSRTP // in, none, converted
@@ -1403,14 +1406,14 @@ func (msg *MIKEYMessage) InsertPayload(idx uint, payload *MIKEYPayload) bool {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: the index to remove 
+// 	- idx int32: the index to remove 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
 //
 // Remove the SRTP policy at @idx.
-func (msg *MIKEYMessage) RemoveCsSrtp(idx int) bool {
+func (msg *MIKEYMessage) RemoveCsSrtp(idx int32) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var cret  C.gboolean         // return
@@ -1467,7 +1470,7 @@ func (msg *MIKEYMessage) RemovePayload(idx uint) bool {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: the index to insert at 
+// 	- idx int32: the index to insert at 
 // 	- _map *MIKEYMapSRTP: the map info 
 // 
 // The function returns the following values:
@@ -1475,7 +1478,7 @@ func (msg *MIKEYMessage) RemovePayload(idx uint) bool {
 // 	- goret bool 
 //
 // Replace a Crypto Session map for SRTP in @msg at @idx with @map.
-func (msg *MIKEYMessage) ReplaceCsSrtp(idx int, _map *MIKEYMapSRTP) bool {
+func (msg *MIKEYMessage) ReplaceCsSrtp(idx int32, _map *MIKEYMapSRTP) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstMIKEYMapSRTP // in, none, converted
@@ -1674,8 +1677,11 @@ func marshalMIKEYPayload(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeMIKEYPayloadFromGlibBorrow(b), nil
 }
 
-func (r *MIKEYPayload) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMIKEYPayload)
+func (r *MIKEYPayload) GoValueType() gobject.Type {
+	return TypeMIKEYPayload
+}
+
+func (r *MIKEYPayload) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -3832,7 +3838,7 @@ func (media *SDPMedia) GetBandwidth(idx uint) *SDPBandwidth {
 // 
 // The function takes the following parameters:
 // 
-// 	- pt int: a payload type 
+// 	- pt int32: a payload type 
 // 
 // The function returns the following values:
 // 
@@ -3847,7 +3853,7 @@ func (media *SDPMedia) GetBandwidth(idx uint) *SDPBandwidth {
 // a=fmtp:(payload) (param)[=(value)];...
 // 
 // Note that the extmap, ssrc and rid attributes are set only by gst_sdp_media_attributes_to_caps().
-func (media *SDPMedia) GetCapsFromMedia(pt int) *gst.Caps {
+func (media *SDPMedia) GetCapsFromMedia(pt int32) *gst.Caps {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.gint         // in, none, casted
 	var cret  *C.GstCaps     // return, full, converted, nullable
@@ -4070,7 +4076,7 @@ func (media *SDPMedia) GetProto() string {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: an index 
+// 	- idx int32: an index 
 // 	- attr *SDPAttribute: a #GstSDPAttribute 
 // 
 // The function returns the following values:
@@ -4079,7 +4085,7 @@ func (media *SDPMedia) GetProto() string {
 //
 // Insert the attribute to @media at @idx. When @idx is -1,
 // the attribute is appended.
-func (media *SDPMedia) InsertAttribute(idx int, attr *SDPAttribute) SDPResult {
+func (media *SDPMedia) InsertAttribute(idx int32, attr *SDPAttribute) SDPResult {
 	var carg0 *C.GstSDPMedia     // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstSDPAttribute // in, none, converted
@@ -4105,7 +4111,7 @@ func (media *SDPMedia) InsertAttribute(idx int, attr *SDPAttribute) SDPResult {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: an index 
+// 	- idx int32: an index 
 // 	- bw *SDPBandwidth: a #GstSDPBandwidth 
 // 
 // The function returns the following values:
@@ -4114,7 +4120,7 @@ func (media *SDPMedia) InsertAttribute(idx int, attr *SDPAttribute) SDPResult {
 //
 // Insert the bandwidth information to @media at @idx. When @idx is -1,
 // the bandwidth is appended.
-func (media *SDPMedia) InsertBandwidth(idx int, bw *SDPBandwidth) SDPResult {
+func (media *SDPMedia) InsertBandwidth(idx int32, bw *SDPBandwidth) SDPResult {
 	var carg0 *C.GstSDPMedia     // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstSDPBandwidth // in, none, converted
@@ -4140,7 +4146,7 @@ func (media *SDPMedia) InsertBandwidth(idx int, bw *SDPBandwidth) SDPResult {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: an index 
+// 	- idx int32: an index 
 // 	- conn *SDPConnection: a #GstSDPConnection 
 // 
 // The function returns the following values:
@@ -4149,7 +4155,7 @@ func (media *SDPMedia) InsertBandwidth(idx int, bw *SDPBandwidth) SDPResult {
 //
 // Insert the connection information to @media at @idx. When @idx is -1,
 // the connection is appended.
-func (media *SDPMedia) InsertConnection(idx int, conn *SDPConnection) SDPResult {
+func (media *SDPMedia) InsertConnection(idx int32, conn *SDPConnection) SDPResult {
 	var carg0 *C.GstSDPMedia      // in, none, converted
 	var carg1 C.gint              // in, none, casted
 	var carg2 *C.GstSDPConnection // in, none, converted
@@ -4175,7 +4181,7 @@ func (media *SDPMedia) InsertConnection(idx int, conn *SDPConnection) SDPResult 
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: an index 
+// 	- idx int32: an index 
 // 	- format string: the format 
 // 
 // The function returns the following values:
@@ -4184,7 +4190,7 @@ func (media *SDPMedia) InsertConnection(idx int, conn *SDPConnection) SDPResult 
 //
 // Insert the format information to @media at @idx. When @idx is -1,
 // the format is appended.
-func (media *SDPMedia) InsertFormat(idx int, format string) SDPResult {
+func (media *SDPMedia) InsertFormat(idx int32, format string) SDPResult {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.gint         // in, none, casted
 	var carg2 *C.gchar       // in, none, string
@@ -4700,8 +4706,11 @@ func marshalSDPMessage(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSDPMessageFromGlibBorrow(b), nil
 }
 
-func (r *SDPMessage) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSDPMessage)
+func (r *SDPMessage) GoValueType() gobject.Type {
+	return TypeSDPMessage
+}
+
+func (r *SDPMessage) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -5818,7 +5827,7 @@ func (msg *SDPMessage) GetZone(idx uint) *SDPZone {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: an index 
+// 	- idx int32: an index 
 // 	- attr *SDPAttribute: a #GstSDPAttribute 
 // 
 // The function returns the following values:
@@ -5828,7 +5837,7 @@ func (msg *SDPMessage) GetZone(idx uint) *SDPZone {
 // Insert attribute into the array of attributes in @msg
 // at index @idx.
 // When -1 is given as @idx, the attribute is inserted at the end.
-func (msg *SDPMessage) InsertAttribute(idx int, attr *SDPAttribute) SDPResult {
+func (msg *SDPMessage) InsertAttribute(idx int32, attr *SDPAttribute) SDPResult {
 	var carg0 *C.GstSDPMessage   // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstSDPAttribute // in, none, converted
@@ -5854,7 +5863,7 @@ func (msg *SDPMessage) InsertAttribute(idx int, attr *SDPAttribute) SDPResult {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: an index 
+// 	- idx int32: an index 
 // 	- bw *SDPBandwidth: the bandwidth 
 // 
 // The function returns the following values:
@@ -5864,7 +5873,7 @@ func (msg *SDPMessage) InsertAttribute(idx int, attr *SDPAttribute) SDPResult {
 // Insert bandwidth parameters into the array of bandwidths in @msg
 // at index @idx.
 // When -1 is given as @idx, the bandwidth is inserted at the end.
-func (msg *SDPMessage) InsertBandwidth(idx int, bw *SDPBandwidth) SDPResult {
+func (msg *SDPMessage) InsertBandwidth(idx int32, bw *SDPBandwidth) SDPResult {
 	var carg0 *C.GstSDPMessage   // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 *C.GstSDPBandwidth // in, none, converted
@@ -5890,7 +5899,7 @@ func (msg *SDPMessage) InsertBandwidth(idx int, bw *SDPBandwidth) SDPResult {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: an index 
+// 	- idx int32: an index 
 // 	- email string: an email 
 // 
 // The function returns the following values:
@@ -5899,7 +5908,7 @@ func (msg *SDPMessage) InsertBandwidth(idx int, bw *SDPBandwidth) SDPResult {
 //
 // Insert @email into the array of emails in @msg at index @idx.
 // When -1 is given as @idx, the email is inserted at the end.
-func (msg *SDPMessage) InsertEmail(idx int, email string) SDPResult {
+func (msg *SDPMessage) InsertEmail(idx int32, email string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 *C.gchar         // in, none, string
@@ -5926,7 +5935,7 @@ func (msg *SDPMessage) InsertEmail(idx int, email string) SDPResult {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: a phone index 
+// 	- idx int32: a phone index 
 // 	- phone string: a phone 
 // 
 // The function returns the following values:
@@ -5935,7 +5944,7 @@ func (msg *SDPMessage) InsertEmail(idx int, email string) SDPResult {
 //
 // Insert @phone into the array of phone numbers in @msg at index @idx.
 // When -1 is given as @idx, the phone is inserted at the end.
-func (msg *SDPMessage) InsertPhone(idx int, phone string) SDPResult {
+func (msg *SDPMessage) InsertPhone(idx int32, phone string) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 *C.gchar         // in, none, string
@@ -5962,7 +5971,7 @@ func (msg *SDPMessage) InsertPhone(idx int, phone string) SDPResult {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: an index 
+// 	- idx int32: an index 
 // 	- t *SDPTime: a #GstSDPTime 
 // 
 // The function returns the following values:
@@ -5972,7 +5981,7 @@ func (msg *SDPMessage) InsertPhone(idx int, phone string) SDPResult {
 // Insert time parameters into the array of times in @msg
 // at index @idx.
 // When -1 is given as @idx, the times are inserted at the end.
-func (msg *SDPMessage) InsertTime(idx int, t *SDPTime) SDPResult {
+func (msg *SDPMessage) InsertTime(idx int32, t *SDPTime) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 *C.GstSDPTime    // in, none, converted
@@ -5998,7 +6007,7 @@ func (msg *SDPMessage) InsertTime(idx int, t *SDPTime) SDPResult {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: an index 
+// 	- idx int32: an index 
 // 	- zone *SDPZone: a #GstSDPZone 
 // 
 // The function returns the following values:
@@ -6008,7 +6017,7 @@ func (msg *SDPMessage) InsertTime(idx int, t *SDPTime) SDPResult {
 // Insert zone parameters into the array of zones in @msg
 // at index @idx.
 // When -1 is given as @idx, the zone is inserted at the end.
-func (msg *SDPMessage) InsertZone(idx int, zone *SDPZone) SDPResult {
+func (msg *SDPMessage) InsertZone(idx int32, zone *SDPZone) SDPResult {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 *C.GstSDPZone    // in, none, converted

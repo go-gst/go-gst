@@ -1,6 +1,8 @@
 package customsrc
 
 import (
+	"fmt"
+	"log"
 	"math"
 	"time"
 
@@ -13,6 +15,33 @@ const samplesperbuffer = 4800
 
 const samplerate = 48000
 
+func classInit(class *gst.BinClass) {
+	class.ParentClass().SetStaticMetadata(
+		"custom test source",
+		"Src/Test",
+		"Demo source bin with volume",
+		"Wilhelm Bartel <bartel.wilhelm@gmail.com>",
+	)
+
+	class.ParentClass().AddPadTemplate(gst.NewPadTemplate(
+		"src",
+		gst.PadSrc,
+		gst.PadAlways,
+		gst.CapsFromString(fmt.Sprintf("audio/x-raw,channels=2,rate=%d", samplerate)),
+	))
+
+	class.ParentClass().ParentClass().ParentClass().ParentClass().InstallProperties([]*gobject.ParamSpec{
+		gobject.ParamSpecInt64(
+			"duration",
+			"duration",
+			"Duration of the source in nanoseconds",
+			0,
+			math.MaxInt64,
+			0,
+			gobject.ParamReadwrite|gobject.ParamConstruct),
+	})
+}
+
 type customSrc struct {
 	gst.BinInstance // parent must be embedded as the first field
 
@@ -24,7 +53,9 @@ type customSrc struct {
 
 // InstanceInit should initialize the element. Keep in mind that the properties are not yet present. When this is called.
 func (bin *customSrc) init() {
-	bin.source = gst.ElementFactoryMake("audiotestsrc", "")
+	bin.source = gst.ElementFactoryMakeWithProperties("audiotestsrc", map[string]any{
+		"samplesperbuffer": samplesperbuffer,
+	})
 	bin.volume = gst.ElementFactoryMake("volume", "")
 
 	bin.AddMany(
@@ -49,7 +80,8 @@ func (bin *customSrc) init() {
 func (bin *customSrc) setProperty(_ uint, value any, pspec *gobject.ParamSpec) {
 	switch pspec.Name() {
 	case "duration":
-		bin.Duration = value.(time.Duration)
+		bin.Duration = time.Duration(value.(int64)) // declared as int64 property in classInit
+		log.Printf("set duration to %s", bin.Duration)
 		bin.updateSource()
 	default:
 		panic("unknown property")
@@ -59,7 +91,7 @@ func (bin *customSrc) setProperty(_ uint, value any, pspec *gobject.ParamSpec) {
 func (bin *customSrc) getProperty(_ uint, pspec *gobject.ParamSpec) any {
 	switch pspec.Name() {
 	case "duration":
-		return bin.Duration
+		return int64(bin.Duration) // declared as int64 property in classInit
 	default:
 		panic("unknown property")
 	}
@@ -67,9 +99,14 @@ func (bin *customSrc) getProperty(_ uint, pspec *gobject.ParamSpec) any {
 
 // updateSource will get called to update the audiotestsrc when a property changes
 func (s *customSrc) updateSource() {
-	if s.source != nil {
-		numBuffers := (float64(s.Duration / time.Second)) / (float64(samplesperbuffer) / float64(samplerate))
-
-		s.source.SetObjectProperty("num-buffers", int(math.Ceil(numBuffers)))
+	if s.source == nil {
+		// the construct param may be set before we initialized the source
+		return
 	}
+
+	numBuffers := (float64(s.Duration / time.Second)) / (float64(samplesperbuffer) / float64(samplerate))
+
+	s.source.SetObjectProperty("num-buffers", int32(math.Ceil(numBuffers)))
+
+	log.Printf("set num-buffers to %d", int(math.Ceil(numBuffers)))
 }

@@ -218,14 +218,14 @@ func NetControlMessageMetaApiGetType() gobject.Type {
 // The function takes the following parameters:
 // 
 // 	- socket gio.Socket: Socket to configure 
-// 	- qosDscp int: QoS DSCP value 
+// 	- qosDscp int32: QoS DSCP value 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
 //
 // Configures IP_TOS value of socket, i.e. sets QoS DSCP.
-func NetUtilsSetSocketTos(socket gio.Socket, qosDscp int) bool {
+func NetUtilsSetSocketTos(socket gio.Socket, qosDscp int32) bool {
 	var carg1 *C.GSocket // in, none, converted
 	var carg2 C.gint     // in, none, casted
 	var cret  C.gboolean // return
@@ -499,6 +499,11 @@ func UnsafeNetClientClockFromGlibFull(c unsafe.Pointer) NetClientClock {
 	return gobject.UnsafeObjectFromGlibFull(c).(NetClientClock)
 }
 
+// UnsafeNetClientClockFromGlibBorrow is used to convert raw GstNetClientClock pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeNetClientClockFromGlibBorrow(c unsafe.Pointer) NetClientClock {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(NetClientClock)
+}
+
 func (n *NetClientClockInstance) upcastToGstNetClientClock() *NetClientClockInstance {
 	return n
 }
@@ -519,7 +524,7 @@ func UnsafeNetClientClockToGlibFull(c NetClientClock) unsafe.Pointer {
 // 
 // 	- name string (nullable): a name for the clock 
 // 	- remoteAddress string: the address or hostname of the remote clock provider 
-// 	- remotePort int: the port of the remote clock provider 
+// 	- remotePort int32: the port of the remote clock provider 
 // 	- baseTime gst.ClockTime: initial time of the clock 
 // 
 // The function returns the following values:
@@ -529,7 +534,7 @@ func UnsafeNetClientClockToGlibFull(c NetClientClock) unsafe.Pointer {
 // Create a new #GstNetClientClock that will report the time
 // provided by the #GstNetTimeProvider on @remote_address and
 // @remote_port.
-func NewNetClientClock(name string, remoteAddress string, remotePort int, baseTime gst.ClockTime) gst.Clock {
+func NewNetClientClock(name string, remoteAddress string, remotePort int32, baseTime gst.ClockTime) gst.Clock {
 	var carg1 *C.gchar       // in, none, string, nullable-string
 	var carg2 *C.gchar       // in, none, string
 	var carg3 C.gint         // in, none, casted
@@ -652,6 +657,11 @@ func UnsafeNetTimeProviderFromGlibFull(c unsafe.Pointer) NetTimeProvider {
 	return gobject.UnsafeObjectFromGlibFull(c).(NetTimeProvider)
 }
 
+// UnsafeNetTimeProviderFromGlibBorrow is used to convert raw GstNetTimeProvider pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeNetTimeProviderFromGlibBorrow(c unsafe.Pointer) NetTimeProvider {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(NetTimeProvider)
+}
+
 func (n *NetTimeProviderInstance) upcastToGstNetTimeProvider() *NetTimeProviderInstance {
 	return n
 }
@@ -673,14 +683,14 @@ func UnsafeNetTimeProviderToGlibFull(c NetTimeProvider) unsafe.Pointer {
 // 	- clock gst.Clock: a #GstClock to export over the network 
 // 	- address string (nullable): an address to bind on as a dotted quad
 //           (xxx.xxx.xxx.xxx), IPv6 address, or NULL to bind to all addresses 
-// 	- port int: a port to bind on, or 0 to let the kernel choose 
+// 	- port int32: a port to bind on, or 0 to let the kernel choose 
 // 
 // The function returns the following values:
 // 
 // 	- goret NetTimeProvider (nullable) 
 //
 // Allows network clients to get the current time of @clock.
-func NewNetTimeProvider(clock gst.Clock, address string, port int) NetTimeProvider {
+func NewNetTimeProvider(clock gst.Clock, address string, port int32) NetTimeProvider {
 	var carg1 *C.GstClock           // in, none, converted
 	var carg2 *C.gchar              // in, none, string, nullable-string
 	var carg3 C.gint                // in, none, casted
@@ -791,6 +801,11 @@ func UnsafeNtpClockFromGlibFull(c unsafe.Pointer) NtpClock {
 	return gobject.UnsafeObjectFromGlibFull(c).(NtpClock)
 }
 
+// UnsafeNtpClockFromGlibBorrow is used to convert raw GstNtpClock pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeNtpClockFromGlibBorrow(c unsafe.Pointer) NtpClock {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(NtpClock)
+}
+
 func (n *NtpClockInstance) upcastToGstNtpClock() *NtpClockInstance {
 	return n
 }
@@ -811,7 +826,7 @@ func UnsafeNtpClockToGlibFull(c NtpClock) unsafe.Pointer {
 // 
 // 	- name string (nullable): a name for the clock 
 // 	- remoteAddress string: the address or hostname of the remote clock provider 
-// 	- remotePort int: the port of the remote clock provider 
+// 	- remotePort int32: the port of the remote clock provider 
 // 	- baseTime gst.ClockTime: initial time of the clock 
 // 
 // The function returns the following values:
@@ -820,7 +835,7 @@ func UnsafeNtpClockToGlibFull(c NtpClock) unsafe.Pointer {
 //
 // Create a new #GstNtpClock that will report the time provided by
 // the NTPv4 server on @remote_address and @remote_port.
-func NewNtpClock(name string, remoteAddress string, remotePort int, baseTime gst.ClockTime) gst.Clock {
+func NewNtpClock(name string, remoteAddress string, remotePort int32, baseTime gst.ClockTime) gst.Clock {
 	var carg1 *C.gchar       // in, none, string, nullable-string
 	var carg2 *C.gchar       // in, none, string
 	var carg3 C.gint         // in, none, casted
@@ -953,6 +968,11 @@ func UnsafePtpClockFromGlibFull(c unsafe.Pointer) PtpClock {
 	return gobject.UnsafeObjectFromGlibFull(c).(PtpClock)
 }
 
+// UnsafePtpClockFromGlibBorrow is used to convert raw GstPtpClock pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePtpClockFromGlibBorrow(c unsafe.Pointer) PtpClock {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PtpClock)
+}
+
 func (p *PtpClockInstance) upcastToGstPtpClock() *PtpClockInstance {
 	return p
 }
@@ -971,12 +991,12 @@ func UnsafePtpClockToGlibFull(c PtpClock) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- name string: Name of the clock 
+// 	- name string (nullable): Name of the clock 
 // 	- domain uint: PTP domain 
 // 
 // The function returns the following values:
 // 
-// 	- goret gst.Clock 
+// 	- goret gst.Clock (nullable) 
 //
 // Creates a new PTP clock instance that exports the PTP time of the master
 // clock in @domain. This clock can be slaved to other clocks as needed.
@@ -990,12 +1010,14 @@ func UnsafePtpClockToGlibFull(c PtpClock) unsafe.Pointer {
 // check this with gst_clock_wait_for_sync(), the GstClock::synced signal and
 // gst_clock_is_synced().
 func NewPtpClock(name string, domain uint) gst.Clock {
-	var carg1 *C.gchar    // in, none, string
+	var carg1 *C.gchar    // in, none, string, nullable-string
 	var carg2 C.guint     // in, none, casted
-	var cret  *C.GstClock // return, full, converted
+	var cret  *C.GstClock // return, full, converted, nullable
 
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
+	if name != "" {
+		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+		defer C.free(unsafe.Pointer(carg1))
+	}
 	carg2 = C.guint(domain)
 
 	cret = C.gst_ptp_clock_new(carg1, carg2)
@@ -1004,7 +1026,9 @@ func NewPtpClock(name string, domain uint) gst.Clock {
 
 	var goret gst.Clock
 
-	goret = gst.UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1273,8 +1297,11 @@ func marshalNetTimePacket(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeNetTimePacketFromGlibBorrow(b), nil
 }
 
-func (r *NetTimePacket) InitGoValue(v *gobject.Value) {
-	v.Init(TypeNetTimePacket)
+func (r *NetTimePacket) GoValueType() gobject.Type {
+	return TypeNetTimePacket
+}
+
+func (r *NetTimePacket) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 

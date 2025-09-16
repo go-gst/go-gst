@@ -33,8 +33,11 @@ import (
 // extern gboolean _gotk4_gst1_PluginFilter(GstPlugin*, gpointer);
 // extern gboolean _gotk4_gst1_PluginInitFullFunc(GstPlugin*, gpointer);
 // extern gboolean _gotk4_gst1_StructureFilterMapFunc(GQuark, GValue*, gpointer);
+// extern gboolean _gotk4_gst1_StructureFilterMapIDStrFunc(GstIdStr*, GValue*, gpointer);
 // extern gboolean _gotk4_gst1_StructureForEachFunc(GQuark, GValue*, gpointer);
+// extern gboolean _gotk4_gst1_StructureForEachIDStrFunc(GstIdStr*, GValue*, gpointer);
 // extern gboolean _gotk4_gst1_StructureMapFunc(GQuark, GValue*, gpointer);
+// extern gboolean _gotk4_gst1_StructureMapIDStrFunc(GstIdStr*, GValue*, gpointer);
 // extern void _gotk4_gst1_ElementCallAsyncFunc(GstElement*, gpointer);
 // extern void _gotk4_gst1_IteratorForEachFunction(GValue*, gpointer);
 // extern void _gotk4_gst1_LogFunction(GstDebugCategory*, GstDebugLevel, gchar*, gchar*, gint, GObject*, GstDebugMessage*, gpointer);
@@ -467,6 +470,7 @@ var (
 	TypeContext                = gobject.Type(C.gst_context_get_type())
 	TypeDateTime               = gobject.Type(C.gst_date_time_get_type())
 	TypeEvent                  = gobject.Type(C.gst_event_get_type())
+	TypeIdStr                  = gobject.Type(C.gst_id_str_get_type())
 	TypeIterator               = gobject.Type(C.gst_iterator_get_type())
 	TypeMemory                 = gobject.Type(C.gst_memory_get_type())
 	TypeMessage                = gobject.Type(C.gst_message_get_type())
@@ -620,6 +624,7 @@ func init() {
 		gobject.TypeMarshaler{T: TypeContext, F: marshalContext},
 		gobject.TypeMarshaler{T: TypeDateTime, F: marshalDateTime},
 		gobject.TypeMarshaler{T: TypeEvent, F: marshalEvent},
+		gobject.TypeMarshaler{T: TypeIdStr, F: marshalIdStr},
 		gobject.TypeMarshaler{T: TypeIterator, F: marshalIterator},
 		gobject.TypeMarshaler{T: TypeMemory, F: marshalMemory},
 		gobject.TypeMarshaler{T: TypeMessage, F: marshalMessage},
@@ -762,11 +767,11 @@ const VERSION_MAJOR = 1
 // VERSION_MICRO wraps GST_VERSION_MICRO
 //
 // The micro version of GStreamer at compile time:
-const VERSION_MICRO = 10
+const VERSION_MICRO = 0
 // VERSION_MINOR wraps GST_VERSION_MINOR
 //
 // The minor version of GStreamer at compile time:
-const VERSION_MINOR = 24
+const VERSION_MINOR = 26
 // VERSION_NANO wraps GST_VERSION_NANO
 //
 // The nano version of GStreamer at compile time:
@@ -814,8 +819,11 @@ func marshalBufferingMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = BufferingMode(0)
 
-func (e BufferingMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBufferingMode)
+func (e BufferingMode) GoValueType() gobject.Type {
+	return TypeBufferingMode
+}
+
+func (e BufferingMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -855,8 +863,11 @@ func marshalBusSyncReply(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = BusSyncReply(0)
 
-func (e BusSyncReply) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBusSyncReply)
+func (e BusSyncReply) GoValueType() gobject.Type {
+	return TypeBusSyncReply
+}
+
+func (e BusSyncReply) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -911,8 +922,11 @@ func marshalCapsIntersectMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = CapsIntersectMode(0)
 
-func (e CapsIntersectMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeCapsIntersectMode)
+func (e CapsIntersectMode) GoValueType() gobject.Type {
+	return TypeCapsIntersectMode
+}
+
+func (e CapsIntersectMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -946,8 +960,11 @@ func marshalClockEntryType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = ClockEntryType(0)
 
-func (e ClockEntryType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeClockEntryType)
+func (e ClockEntryType) GoValueType() gobject.Type {
+	return TypeClockEntryType
+}
+
+func (e ClockEntryType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1005,8 +1022,11 @@ func marshalClockReturn(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = ClockReturn(0)
 
-func (e ClockReturn) InitGoValue(v *gobject.Value) {
-	v.Init(TypeClockReturn)
+func (e ClockReturn) GoValueType() gobject.Type {
+	return TypeClockReturn
+}
+
+func (e ClockReturn) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1056,8 +1076,11 @@ func marshalClockType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = ClockType(0)
 
-func (e ClockType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeClockType)
+func (e ClockType) GoValueType() gobject.Type {
+	return TypeClockType
+}
+
+func (e ClockType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1149,8 +1172,11 @@ func marshalCoreError(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = CoreError(0)
 
-func (e CoreError) InitGoValue(v *gobject.Value) {
-	v.Init(TypeCoreError)
+func (e CoreError) GoValueType() gobject.Type {
+	return TypeCoreError
+}
+
+func (e CoreError) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1217,8 +1243,11 @@ func marshalDebugColorMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = DebugColorMode(0)
 
-func (e DebugColorMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDebugColorMode)
+func (e DebugColorMode) GoValueType() gobject.Type {
+	return TypeDebugColorMode
+}
+
+func (e DebugColorMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1313,8 +1342,11 @@ func marshalDebugLevel(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = DebugLevel(0)
 
-func (e DebugLevel) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDebugLevel)
+func (e DebugLevel) GoValueType() gobject.Type {
+	return TypeDebugLevel
+}
+
+func (e DebugLevel) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1537,8 +1569,11 @@ func marshalEventType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = EventType(0)
 
-func (e EventType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeEventType)
+func (e EventType) GoValueType() gobject.Type {
+	return TypeEventType
+}
+
+func (e EventType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1768,8 +1803,11 @@ func marshalFlowReturn(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = FlowReturn(0)
 
-func (e FlowReturn) InitGoValue(v *gobject.Value) {
-	v.Init(TypeFlowReturn)
+func (e FlowReturn) GoValueType() gobject.Type {
+	return TypeFlowReturn
+}
+
+func (e FlowReturn) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1835,8 +1873,11 @@ func marshalFormat(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = Format(0)
 
-func (e Format) InitGoValue(v *gobject.Value) {
-	v.Init(TypeFormat)
+func (e Format) GoValueType() gobject.Type {
+	return TypeFormat
+}
+
+func (e Format) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2045,8 +2086,11 @@ func marshalIteratorItem(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = IteratorItem(0)
 
-func (e IteratorItem) InitGoValue(v *gobject.Value) {
-	v.Init(TypeIteratorItem)
+func (e IteratorItem) GoValueType() gobject.Type {
+	return TypeIteratorItem
+}
+
+func (e IteratorItem) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2089,8 +2133,11 @@ func marshalIteratorResult(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = IteratorResult(0)
 
-func (e IteratorResult) InitGoValue(v *gobject.Value) {
-	v.Init(TypeIteratorResult)
+func (e IteratorResult) GoValueType() gobject.Type {
+	return TypeIteratorResult
+}
+
+func (e IteratorResult) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2149,8 +2196,11 @@ func marshalLibraryError(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = LibraryError(0)
 
-func (e LibraryError) InitGoValue(v *gobject.Value) {
-	v.Init(TypeLibraryError)
+func (e LibraryError) GoValueType() gobject.Type {
+	return TypeLibraryError
+}
+
+func (e LibraryError) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2210,8 +2260,11 @@ func marshalPadDirection(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PadDirection(0)
 
-func (e PadDirection) InitGoValue(v *gobject.Value) {
-	v.Init(TypePadDirection)
+func (e PadDirection) GoValueType() gobject.Type {
+	return TypePadDirection
+}
+
+func (e PadDirection) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2266,8 +2319,11 @@ func marshalPadLinkReturn(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PadLinkReturn(0)
 
-func (e PadLinkReturn) InitGoValue(v *gobject.Value) {
-	v.Init(TypePadLinkReturn)
+func (e PadLinkReturn) GoValueType() gobject.Type {
+	return TypePadLinkReturn
+}
+
+func (e PadLinkReturn) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2312,8 +2368,11 @@ func marshalPadMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PadMode(0)
 
-func (e PadMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypePadMode)
+func (e PadMode) GoValueType() gobject.Type {
+	return TypePadMode
+}
+
+func (e PadMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2380,8 +2439,11 @@ func marshalPadPresence(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PadPresence(0)
 
-func (e PadPresence) InitGoValue(v *gobject.Value) {
-	v.Init(TypePadPresence)
+func (e PadPresence) GoValueType() gobject.Type {
+	return TypePadPresence
+}
+
+func (e PadPresence) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2447,8 +2509,11 @@ func marshalPadProbeReturn(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PadProbeReturn(0)
 
-func (e PadProbeReturn) InitGoValue(v *gobject.Value) {
-	v.Init(TypePadProbeReturn)
+func (e PadProbeReturn) GoValueType() gobject.Type {
+	return TypePadProbeReturn
+}
+
+func (e PadProbeReturn) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2509,8 +2574,11 @@ func marshalParseError(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = ParseError(0)
 
-func (e ParseError) InitGoValue(v *gobject.Value) {
-	v.Init(TypeParseError)
+func (e ParseError) GoValueType() gobject.Type {
+	return TypeParseError
+}
+
+func (e ParseError) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2573,8 +2641,11 @@ func marshalPluginError(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PluginError(0)
 
-func (e PluginError) InitGoValue(v *gobject.Value) {
-	v.Init(TypePluginError)
+func (e PluginError) GoValueType() gobject.Type {
+	return TypePluginError
+}
+
+func (e PluginError) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2642,8 +2713,11 @@ func marshalProgressType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = ProgressType(0)
 
-func (e ProgressType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeProgressType)
+func (e ProgressType) GoValueType() gobject.Type {
+	return TypeProgressType
+}
+
+func (e ProgressType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2691,8 +2765,11 @@ func marshalPromiseResult(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PromiseResult(0)
 
-func (e PromiseResult) InitGoValue(v *gobject.Value) {
-	v.Init(TypePromiseResult)
+func (e PromiseResult) GoValueType() gobject.Type {
+	return TypePromiseResult
+}
+
+func (e PromiseResult) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2739,8 +2816,11 @@ func marshalQOSType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = QOSType(0)
 
-func (e QOSType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeQOSType)
+func (e QOSType) GoValueType() gobject.Type {
+	return TypeQOSType
+}
+
+func (e QOSType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2852,8 +2932,11 @@ func marshalQueryType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = QueryType(0)
 
-func (e QueryType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeQueryType)
+func (e QueryType) GoValueType() gobject.Type {
+	return TypeQueryType
+}
+
+func (e QueryType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3001,8 +3084,11 @@ func marshalRank(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = Rank(0)
 
-func (e Rank) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRank)
+func (e Rank) GoValueType() gobject.Type {
+	return TypeRank
+}
+
+func (e Rank) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3101,8 +3187,11 @@ func marshalResourceError(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = ResourceError(0)
 
-func (e ResourceError) InitGoValue(v *gobject.Value) {
-	v.Init(TypeResourceError)
+func (e ResourceError) GoValueType() gobject.Type {
+	return TypeResourceError
+}
+
+func (e ResourceError) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3171,8 +3260,11 @@ func marshalSearchMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = SearchMode(0)
 
-func (e SearchMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSearchMode)
+func (e SearchMode) GoValueType() gobject.Type {
+	return TypeSearchMode
+}
+
+func (e SearchMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3212,8 +3304,11 @@ func marshalSeekType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = SeekType(0)
 
-func (e SeekType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSeekType)
+func (e SeekType) GoValueType() gobject.Type {
+	return TypeSeekType
+}
+
+func (e SeekType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3264,8 +3359,11 @@ func marshalState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = State(0)
 
-func (e State) InitGoValue(v *gobject.Value) {
-	v.Init(TypeState)
+func (e State) GoValueType() gobject.Type {
+	return TypeState
+}
+
+func (e State) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3388,8 +3486,11 @@ func marshalStateChange(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = StateChange(0)
 
-func (e StateChange) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStateChange)
+func (e StateChange) GoValueType() gobject.Type {
+	return TypeStateChange
+}
+
+func (e StateChange) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3469,8 +3570,11 @@ func marshalStateChangeReturn(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = StateChangeReturn(0)
 
-func (e StateChangeReturn) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStateChangeReturn)
+func (e StateChangeReturn) GoValueType() gobject.Type {
+	return TypeStateChangeReturn
+}
+
+func (e StateChangeReturn) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3565,8 +3669,11 @@ func marshalStreamError(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = StreamError(0)
 
-func (e StreamError) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStreamError)
+func (e StreamError) GoValueType() gobject.Type {
+	return TypeStreamError
+}
+
+func (e StreamError) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3650,8 +3757,11 @@ func marshalStreamStatusType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = StreamStatusType(0)
 
-func (e StreamStatusType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStreamStatusType)
+func (e StreamStatusType) GoValueType() gobject.Type {
+	return TypeStreamStatusType
+}
+
+func (e StreamStatusType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3690,8 +3800,11 @@ func marshalStructureChangeType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = StructureChangeType(0)
 
-func (e StructureChangeType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStructureChangeType)
+func (e StructureChangeType) GoValueType() gobject.Type {
+	return TypeStructureChangeType
+}
+
+func (e StructureChangeType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3737,8 +3850,11 @@ func marshalTagFlag(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TagFlag(0)
 
-func (e TagFlag) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTagFlag)
+func (e TagFlag) GoValueType() gobject.Type {
+	return TypeTagFlag
+}
+
+func (e TagFlag) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3814,8 +3930,11 @@ func marshalTagMergeMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TagMergeMode(0)
 
-func (e TagMergeMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTagMergeMode)
+func (e TagMergeMode) GoValueType() gobject.Type {
+	return TypeTagMergeMode
+}
+
+func (e TagMergeMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3856,8 +3975,11 @@ func marshalTagScope(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TagScope(0)
 
-func (e TagScope) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTagScope)
+func (e TagScope) GoValueType() gobject.Type {
+	return TypeTagScope
+}
+
+func (e TagScope) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3895,8 +4017,11 @@ func marshalTaskState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TaskState(0)
 
-func (e TaskState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTaskState)
+func (e TaskState) GoValueType() gobject.Type {
+	return TypeTaskState
+}
+
+func (e TaskState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3953,8 +4078,11 @@ func marshalTocEntryType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TocEntryType(0)
 
-func (e TocEntryType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTocEntryType)
+func (e TocEntryType) GoValueType() gobject.Type {
+	return TypeTocEntryType
+}
+
+func (e TocEntryType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -4029,8 +4157,11 @@ func marshalTocLoopType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TocLoopType(0)
 
-func (e TocLoopType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTocLoopType)
+func (e TocLoopType) GoValueType() gobject.Type {
+	return TypeTocLoopType
+}
+
+func (e TocLoopType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -4072,8 +4203,11 @@ func marshalTocScope(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TocScope(0)
 
-func (e TocScope) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTocScope)
+func (e TocScope) GoValueType() gobject.Type {
+	return TypeTocScope
+}
+
+func (e TocScope) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -4119,8 +4253,11 @@ func marshalTracerValueScope(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TracerValueScope(0)
 
-func (e TracerValueScope) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTracerValueScope)
+func (e TracerValueScope) GoValueType() gobject.Type {
+	return TypeTracerValueScope
+}
+
+func (e TracerValueScope) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -4173,8 +4310,11 @@ func marshalTypeFindProbability(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TypeFindProbability(0)
 
-func (e TypeFindProbability) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTypeFindProbability)
+func (e TypeFindProbability) GoValueType() gobject.Type {
+	return TypeTypeFindProbability
+}
+
+func (e TypeFindProbability) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -4222,8 +4362,11 @@ func marshalURIError(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = URIError(0)
 
-func (e URIError) InitGoValue(v *gobject.Value) {
-	v.Init(TypeURIError)
+func (e URIError) GoValueType() gobject.Type {
+	return TypeURIError
+}
+
+func (e URIError) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -4280,8 +4423,11 @@ func marshalURIType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = URIType(0)
 
-func (e URIType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeURIType)
+func (e URIType) GoValueType() gobject.Type {
+	return TypeURIType
+}
+
+func (e URIType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -4330,8 +4476,11 @@ func (a AllocatorFlags) Has(other AllocatorFlags) bool {
 
 var _ gobject.GoValueInitializer = AllocatorFlags(0)
 
-func (f AllocatorFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAllocatorFlags)
+func (f AllocatorFlags) GoValueType() gobject.Type {
+	return TypeAllocatorFlags
+}
+
+func (f AllocatorFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4387,8 +4536,11 @@ func (b BinFlags) Has(other BinFlags) bool {
 
 var _ gobject.GoValueInitializer = BinFlags(0)
 
-func (f BinFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBinFlags)
+func (f BinFlags) GoValueType() gobject.Type {
+	return TypeBinFlags
+}
+
+func (f BinFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4465,8 +4617,11 @@ func (b BufferCopyFlagsType) Has(other BufferCopyFlagsType) bool {
 
 var _ gobject.GoValueInitializer = BufferCopyFlagsType(0)
 
-func (f BufferCopyFlagsType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBufferCopyFlagsType)
+func (f BufferCopyFlagsType) GoValueType() gobject.Type {
+	return TypeBufferCopyFlagsType
+}
+
+func (f BufferCopyFlagsType) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4598,8 +4753,11 @@ func (b BufferFlags) Has(other BufferFlags) bool {
 
 var _ gobject.GoValueInitializer = BufferFlags(0)
 
-func (f BufferFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBufferFlags)
+func (f BufferFlags) GoValueType() gobject.Type {
+	return TypeBufferFlags
+}
+
+func (f BufferFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4695,8 +4853,11 @@ func (b BufferPoolAcquireFlags) Has(other BufferPoolAcquireFlags) bool {
 
 var _ gobject.GoValueInitializer = BufferPoolAcquireFlags(0)
 
-func (f BufferPoolAcquireFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBufferPoolAcquireFlags)
+func (f BufferPoolAcquireFlags) GoValueType() gobject.Type {
+	return TypeBufferPoolAcquireFlags
+}
+
+func (f BufferPoolAcquireFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4750,8 +4911,11 @@ func (b BusFlags) Has(other BusFlags) bool {
 
 var _ gobject.GoValueInitializer = BusFlags(0)
 
-func (f BusFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBusFlags)
+func (f BusFlags) GoValueType() gobject.Type {
+	return TypeBusFlags
+}
+
+func (f BusFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4793,8 +4957,11 @@ func (c CapsFlags) Has(other CapsFlags) bool {
 
 var _ gobject.GoValueInitializer = CapsFlags(0)
 
-func (f CapsFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeCapsFlags)
+func (f CapsFlags) GoValueType() gobject.Type {
+	return TypeCapsFlags
+}
+
+func (f CapsFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4860,8 +5027,11 @@ func (c ClockFlags) Has(other ClockFlags) bool {
 
 var _ gobject.GoValueInitializer = ClockFlags(0)
 
-func (f ClockFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeClockFlags)
+func (f ClockFlags) GoValueType() gobject.Type {
+	return TypeClockFlags
+}
+
+func (f ClockFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4989,8 +5159,11 @@ func (d DebugColorFlags) Has(other DebugColorFlags) bool {
 
 var _ gobject.GoValueInitializer = DebugColorFlags(0)
 
-func (f DebugColorFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDebugColorFlags)
+func (f DebugColorFlags) GoValueType() gobject.Type {
+	return TypeDebugColorFlags
+}
+
+func (f DebugColorFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5107,8 +5280,11 @@ func (d DebugGraphDetails) Has(other DebugGraphDetails) bool {
 
 var _ gobject.GoValueInitializer = DebugGraphDetails(0)
 
-func (f DebugGraphDetails) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDebugGraphDetails)
+func (f DebugGraphDetails) GoValueType() gobject.Type {
+	return TypeDebugGraphDetails
+}
+
+func (f DebugGraphDetails) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5188,8 +5364,11 @@ func (e ElementFlags) Has(other ElementFlags) bool {
 
 var _ gobject.GoValueInitializer = ElementFlags(0)
 
-func (f ElementFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeElementFlags)
+func (f ElementFlags) GoValueType() gobject.Type {
+	return TypeElementFlags
+}
+
+func (f ElementFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5265,8 +5444,11 @@ func (e EventTypeFlags) Has(other EventTypeFlags) bool {
 
 var _ gobject.GoValueInitializer = EventTypeFlags(0)
 
-func (f EventTypeFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeEventTypeFlags)
+func (f EventTypeFlags) GoValueType() gobject.Type {
+	return TypeEventTypeFlags
+}
+
+func (f EventTypeFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5318,8 +5500,11 @@ func (g GapFlags) Has(other GapFlags) bool {
 
 var _ gobject.GoValueInitializer = GapFlags(0)
 
-func (f GapFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeGapFlags)
+func (f GapFlags) GoValueType() gobject.Type {
+	return TypeGapFlags
+}
+
+func (f GapFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5369,8 +5554,11 @@ func (l LockFlags) Has(other LockFlags) bool {
 
 var _ gobject.GoValueInitializer = LockFlags(0)
 
-func (f LockFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeLockFlags)
+func (f LockFlags) GoValueType() gobject.Type {
+	return TypeLockFlags
+}
+
+func (f LockFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5425,8 +5613,11 @@ func (m MapFlags) Has(other MapFlags) bool {
 
 var _ gobject.GoValueInitializer = MapFlags(0)
 
-func (f MapFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMapFlags)
+func (f MapFlags) GoValueType() gobject.Type {
+	return TypeMapFlags
+}
+
+func (f MapFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5501,8 +5692,11 @@ func (m MemoryFlags) Has(other MemoryFlags) bool {
 
 var _ gobject.GoValueInitializer = MemoryFlags(0)
 
-func (f MemoryFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMemoryFlags)
+func (f MemoryFlags) GoValueType() gobject.Type {
+	return TypeMemoryFlags
+}
+
+func (f MemoryFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5777,8 +5971,11 @@ func (m MessageType) Has(other MessageType) bool {
 
 var _ gobject.GoValueInitializer = MessageType(0)
 
-func (f MessageType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMessageType)
+func (f MessageType) GoValueType() gobject.Type {
+	return TypeMessageType
+}
+
+func (f MessageType) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6009,8 +6206,11 @@ func (m MetaFlags) Has(other MetaFlags) bool {
 
 var _ gobject.GoValueInitializer = MetaFlags(0)
 
-func (f MetaFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMetaFlags)
+func (f MetaFlags) GoValueType() gobject.Type {
+	return TypeMetaFlags
+}
+
+func (f MetaFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6076,8 +6276,11 @@ func (m MiniObjectFlags) Has(other MiniObjectFlags) bool {
 
 var _ gobject.GoValueInitializer = MiniObjectFlags(0)
 
-func (f MiniObjectFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMiniObjectFlags)
+func (f MiniObjectFlags) GoValueType() gobject.Type {
+	return TypeMiniObjectFlags
+}
+
+func (f MiniObjectFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6139,8 +6342,11 @@ func (o ObjectFlags) Has(other ObjectFlags) bool {
 
 var _ gobject.GoValueInitializer = ObjectFlags(0)
 
-func (f ObjectFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeObjectFlags)
+func (f ObjectFlags) GoValueType() gobject.Type {
+	return TypeObjectFlags
+}
+
+func (f ObjectFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6253,8 +6459,11 @@ func (p PadFlags) Has(other PadFlags) bool {
 
 var _ gobject.GoValueInitializer = PadFlags(0)
 
-func (f PadFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypePadFlags)
+func (f PadFlags) GoValueType() gobject.Type {
+	return TypePadFlags
+}
+
+func (f PadFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6365,8 +6574,11 @@ func (p PadLinkCheck) Has(other PadLinkCheck) bool {
 
 var _ gobject.GoValueInitializer = PadLinkCheck(0)
 
-func (f PadLinkCheck) InitGoValue(v *gobject.Value) {
-	v.Init(TypePadLinkCheck)
+func (f PadLinkCheck) GoValueType() gobject.Type {
+	return TypePadLinkCheck
+}
+
+func (f PadLinkCheck) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6508,8 +6720,11 @@ func (p PadProbeType) Has(other PadProbeType) bool {
 
 var _ gobject.GoValueInitializer = PadProbeType(0)
 
-func (f PadProbeType) InitGoValue(v *gobject.Value) {
-	v.Init(TypePadProbeType)
+func (f PadProbeType) GoValueType() gobject.Type {
+	return TypePadProbeType
+}
+
+func (f PadProbeType) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6610,8 +6825,11 @@ func (p PadTemplateFlags) Has(other PadTemplateFlags) bool {
 
 var _ gobject.GoValueInitializer = PadTemplateFlags(0)
 
-func (f PadTemplateFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypePadTemplateFlags)
+func (f PadTemplateFlags) GoValueType() gobject.Type {
+	return TypePadTemplateFlags
+}
+
+func (f PadTemplateFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6666,8 +6884,11 @@ func (p ParseFlags) Has(other ParseFlags) bool {
 
 var _ gobject.GoValueInitializer = ParseFlags(0)
 
-func (f ParseFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeParseFlags)
+func (f ParseFlags) GoValueType() gobject.Type {
+	return TypeParseFlags
+}
+
+func (f ParseFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6718,8 +6939,11 @@ func (p PipelineFlags) Has(other PipelineFlags) bool {
 
 var _ gobject.GoValueInitializer = PipelineFlags(0)
 
-func (f PipelineFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypePipelineFlags)
+func (f PipelineFlags) GoValueType() gobject.Type {
+	return TypePipelineFlags
+}
+
+func (f PipelineFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6760,8 +6984,11 @@ func (p PluginAPIFlags) Has(other PluginAPIFlags) bool {
 
 var _ gobject.GoValueInitializer = PluginAPIFlags(0)
 
-func (f PluginAPIFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypePluginAPIFlags)
+func (f PluginAPIFlags) GoValueType() gobject.Type {
+	return TypePluginAPIFlags
+}
+
+func (f PluginAPIFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6826,8 +7053,11 @@ func (p PluginDependencyFlags) Has(other PluginDependencyFlags) bool {
 
 var _ gobject.GoValueInitializer = PluginDependencyFlags(0)
 
-func (f PluginDependencyFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypePluginDependencyFlags)
+func (f PluginDependencyFlags) GoValueType() gobject.Type {
+	return TypePluginDependencyFlags
+}
+
+func (f PluginDependencyFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6884,8 +7114,11 @@ func (p PluginFlags) Has(other PluginFlags) bool {
 
 var _ gobject.GoValueInitializer = PluginFlags(0)
 
-func (f PluginFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypePluginFlags)
+func (f PluginFlags) GoValueType() gobject.Type {
+	return TypePluginFlags
+}
+
+func (f PluginFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6937,8 +7170,11 @@ func (q QueryTypeFlags) Has(other QueryTypeFlags) bool {
 
 var _ gobject.GoValueInitializer = QueryTypeFlags(0)
 
-func (f QueryTypeFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeQueryTypeFlags)
+func (f QueryTypeFlags) GoValueType() gobject.Type {
+	return TypeQueryTypeFlags
+}
+
+func (f QueryTypeFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -6990,8 +7226,11 @@ func (s SchedulingFlags) Has(other SchedulingFlags) bool {
 
 var _ gobject.GoValueInitializer = SchedulingFlags(0)
 
-func (f SchedulingFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSchedulingFlags)
+func (f SchedulingFlags) GoValueType() gobject.Type {
+	return TypeSchedulingFlags
+}
+
+func (f SchedulingFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -7161,8 +7400,11 @@ func (s SeekFlags) Has(other SeekFlags) bool {
 
 var _ gobject.GoValueInitializer = SeekFlags(0)
 
-func (f SeekFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSeekFlags)
+func (f SeekFlags) GoValueType() gobject.Type {
+	return TypeSeekFlags
+}
+
+func (f SeekFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -7273,8 +7515,11 @@ func (s SegmentFlags) Has(other SegmentFlags) bool {
 
 var _ gobject.GoValueInitializer = SegmentFlags(0)
 
-func (f SegmentFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSegmentFlags)
+func (f SegmentFlags) GoValueType() gobject.Type {
+	return TypeSegmentFlags
+}
+
+func (f SegmentFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -7341,8 +7586,11 @@ func (s SerializeFlags) Has(other SerializeFlags) bool {
 
 var _ gobject.GoValueInitializer = SerializeFlags(0)
 
-func (f SerializeFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSerializeFlags)
+func (f SerializeFlags) GoValueType() gobject.Type {
+	return TypeSerializeFlags
+}
+
+func (f SerializeFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -7392,8 +7640,11 @@ func (s StackTraceFlags) Has(other StackTraceFlags) bool {
 
 var _ gobject.GoValueInitializer = StackTraceFlags(0)
 
-func (f StackTraceFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStackTraceFlags)
+func (f StackTraceFlags) GoValueType() gobject.Type {
+	return TypeStackTraceFlags
+}
+
+func (f StackTraceFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -7452,8 +7703,11 @@ func (s StreamFlags) Has(other StreamFlags) bool {
 
 var _ gobject.GoValueInitializer = StreamFlags(0)
 
-func (f StreamFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStreamFlags)
+func (f StreamFlags) GoValueType() gobject.Type {
+	return TypeStreamFlags
+}
+
+func (f StreamFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -7521,8 +7775,11 @@ func (s StreamType) Has(other StreamType) bool {
 
 var _ gobject.GoValueInitializer = StreamType(0)
 
-func (f StreamType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStreamType)
+func (f StreamType) GoValueType() gobject.Type {
+	return TypeStreamType
+}
+
+func (f StreamType) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -7611,8 +7868,11 @@ func (t TracerValueFlags) Has(other TracerValueFlags) bool {
 
 var _ gobject.GoValueInitializer = TracerValueFlags(0)
 
-func (f TracerValueFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTracerValueFlags)
+func (f TracerValueFlags) GoValueType() gobject.Type {
+	return TypeTracerValueFlags
+}
+
+func (f TracerValueFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -7695,7 +7955,7 @@ type IteratorForEachFunction func(item *gobject.Value)
 // Function prototype for a logging function that can be registered with
 // gst_debug_add_log_function().
 // Use G_GNUC_NO_INSTRUMENT on that function.
-type LogFunction func(category *DebugCategory, level DebugLevel, file string, function string, line int, object gobject.Object, message *DebugMessage)
+type LogFunction func(category *DebugCategory, level DebugLevel, file string, function string, line int32, object gobject.Object, message *DebugMessage)
 
 // MiniObjectNotify wraps GstMiniObjectNotify
 //
@@ -7749,17 +8009,36 @@ type PromiseChangeFunc func(promise *Promise)
 // the structure if %FALSE is returned.
 type StructureFilterMapFunc func(fieldId glib.Quark, value *gobject.Value) (goret bool)
 
+// StructureFilterMapIDStrFunc wraps GstStructureFilterMapIdStrFunc
+//
+// A function that will be called in gst_structure_filter_and_map_in_place_id_str().
+// The function may modify @value, and the value will be removed from the
+// structure if %FALSE is returned.
+type StructureFilterMapIDStrFunc func(fieldname *IdStr, value *gobject.Value) (goret bool)
+
 // StructureForEachFunc wraps GstStructureForeachFunc
 //
 // A function that will be called in gst_structure_foreach(). The function may
 // not modify @value.
 type StructureForEachFunc func(fieldId glib.Quark, value *gobject.Value) (goret bool)
 
+// StructureForEachIDStrFunc wraps GstStructureForeachIdStrFunc
+//
+// A function that will be called in gst_structure_foreach_id_str(). The
+// function may not modify @value.
+type StructureForEachIDStrFunc func(fieldname *IdStr, value *gobject.Value) (goret bool)
+
 // StructureMapFunc wraps GstStructureMapFunc
 //
 // A function that will be called in gst_structure_map_in_place(). The function
 // may modify @value.
 type StructureMapFunc func(fieldId glib.Quark, value *gobject.Value) (goret bool)
+
+// StructureMapIDStrFunc wraps GstStructureMapIdStrFunc
+//
+// A function that will be called in gst_structure_map_in_place_id_str(). The
+// function may modify @value.
+type StructureMapIDStrFunc func(fieldname *IdStr, value *gobject.Value) (goret bool)
 
 // TagForEachFunc wraps GstTagForeachFunc
 //
@@ -7998,14 +8277,14 @@ func DebugConstructTermColor(colorinfo uint) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Constructs an integer that can be used for getting the desired color in
 // windows' terminals (cmd.exe). As there is no mean to underline, we simply
 // ignore this attribute.
 // 
 // This function returns 0 on non-windows machines.
-func DebugConstructWinColor(colorinfo uint) int {
+func DebugConstructWinColor(colorinfo uint) int32 {
 	var carg1 C.guint // in, none, casted
 	var cret  C.gint  // return, none, casted
 
@@ -8014,9 +8293,9 @@ func DebugConstructWinColor(colorinfo uint) int {
 	cret = C.gst_debug_construct_win_color(carg1)
 	runtime.KeepAlive(colorinfo)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -8166,7 +8445,7 @@ func DebugIsColored() bool {
 // 	- level DebugLevel: level of the message 
 // 	- file string: the file that emitted the message, usually the __FILE__ identifier 
 // 	- function string: the function that emitted the message 
-// 	- line int: the line from that the message was emitted, usually __LINE__ 
+// 	- line int32: the line from that the message was emitted, usually __LINE__ 
 // 	- object gobject.Object (nullable): the object this message relates to,
 //     or %NULL if none 
 // 	- message *DebugMessage: the actual message 
@@ -8180,7 +8459,7 @@ func DebugIsColored() bool {
 // without color. The purpose is to make it easy for custom log output
 // handlers to get a log output that is identical to what the default handler
 // would write out.
-func DebugLogGetLine(category *DebugCategory, level DebugLevel, file string, function string, line int, object gobject.Object, message *DebugMessage) string {
+func DebugLogGetLine(category *DebugCategory, level DebugLevel, file string, function string, line int32, object gobject.Object, message *DebugMessage) string {
 	var carg1 *C.GstDebugCategory // in, none, converted
 	var carg2 C.GstDebugLevel     // in, none, casted
 	var carg3 *C.gchar            // in, none, string
@@ -8227,13 +8506,13 @@ func DebugLogGetLine(category *DebugCategory, level DebugLevel, file string, fun
 // 	- level DebugLevel: level of the message is in 
 // 	- file string: the file that emitted the message, usually the __FILE__ identifier 
 // 	- function string: the function that emitted the message 
-// 	- line int: the line from that the message was emitted, usually __LINE__ 
+// 	- line int32: the line from that the message was emitted, usually __LINE__ 
 // 	- id string (nullable): the identifier of the object this message relates to
 //    or %NULL if none 
 // 	- messageString string: a message string 
 //
 // Logs the given message using the currently registered debugging handlers.
-func DebugLogIDLiteral(category *DebugCategory, level DebugLevel, file string, function string, line int, id string, messageString string) {
+func DebugLogIDLiteral(category *DebugCategory, level DebugLevel, file string, function string, line int32, id string, messageString string) {
 	var carg1 *C.GstDebugCategory // in, none, converted
 	var carg2 C.GstDebugLevel     // in, none, casted
 	var carg3 *C.gchar            // in, none, string
@@ -8274,13 +8553,13 @@ func DebugLogIDLiteral(category *DebugCategory, level DebugLevel, file string, f
 // 	- level DebugLevel: level of the message is in 
 // 	- file string: the file that emitted the message, usually the __FILE__ identifier 
 // 	- function string: the function that emitted the message 
-// 	- line int: the line from that the message was emitted, usually __LINE__ 
+// 	- line int32: the line from that the message was emitted, usually __LINE__ 
 // 	- object gobject.Object (nullable): the object this message relates to,
 //     or %NULL if none 
 // 	- messageString string: a message string 
 //
 // Logs the given message using the currently registered debugging handlers.
-func DebugLogLiteral(category *DebugCategory, level DebugLevel, file string, function string, line int, object gobject.Object, messageString string) {
+func DebugLogLiteral(category *DebugCategory, level DebugLevel, file string, function string, line int32, object gobject.Object, messageString string) {
 	var carg1 *C.GstDebugCategory // in, none, converted
 	var carg2 C.GstDebugLevel     // in, none, casted
 	var carg3 *C.gchar            // in, none, string
@@ -8310,6 +8589,39 @@ func DebugLogLiteral(category *DebugCategory, level DebugLevel, file string, fun
 	runtime.KeepAlive(line)
 	runtime.KeepAlive(object)
 	runtime.KeepAlive(messageString)
+}
+
+// DebugPrintSegment wraps gst_debug_print_segment
+// 
+// The function takes the following parameters:
+// 
+// 	- segment *Segment (nullable): the %GstSegment 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Returns a string that represents @segments.
+// 
+// The string representation is meant to be used for debugging purposes and
+// might change between GStreamer versions.
+func DebugPrintSegment(segment *Segment) string {
+	var carg1 *C.GstSegment // in, none, converted, nullable
+	var cret  *C.gchar      // return, full, string
+
+	if segment != nil {
+		carg1 = (*C.GstSegment)(UnsafeSegmentToGlibNone(segment))
+	}
+
+	cret = C.gst_debug_print_segment(carg1)
+	runtime.KeepAlive(segment)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	defer C.free(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // DebugPrintStackTrace wraps gst_debug_print_stack_trace
@@ -8574,14 +8886,14 @@ func DynamicTypeRegister(plugin Plugin, typ gobject.Type) bool {
 // The function takes the following parameters:
 // 
 // 	- domain glib.Quark: the GStreamer error domain this error belongs to. 
-// 	- code int: the error code belonging to the domain. 
+// 	- code int32: the error code belonging to the domain. 
 // 
 // The function returns the following values:
 // 
 // 	- goret string 
 //
 // Get a string describing the error message in the current locale.
-func ErrorGetMessage(domain glib.Quark, code int) string {
+func ErrorGetMessage(domain glib.Quark, code int32) string {
 	var carg1 C.GQuark // in, none, casted, alias
 	var carg2 C.gint   // in, none, casted
 	var cret  *C.gchar // return, full, string
@@ -8759,37 +9071,6 @@ func GetMainExecutablePath() string {
 	return goret
 }
 
-// IsCapsFeatures wraps gst_is_caps_features
-// 
-// The function takes the following parameters:
-// 
-// 	- obj unsafe.Pointer (nullable) 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Checks if @obj is a #GstCapsFeatures
-func IsCapsFeatures(obj unsafe.Pointer) bool {
-	var carg1 C.gconstpointer // in, none, casted, nullable
-	var cret  C.gboolean      // return
-
-	if obj != nil {
-		carg1 = C.gconstpointer(obj)
-	}
-
-	cret = C.gst_is_caps_features(carg1)
-	runtime.KeepAlive(obj)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
 // IsInitialized wraps gst_is_initialized
 // 
 // The function returns the following values:
@@ -8868,12 +9149,12 @@ func ParamSpecArray(name string, nick string, blurb string, elementSpec *gobject
 // 	- name string: canonical name of the property specified 
 // 	- nick string: nick name for the property specified 
 // 	- blurb string: description of the property specified 
-// 	- minNum int: minimum value (fraction numerator) 
-// 	- minDenom int: minimum value (fraction denominator) 
-// 	- maxNum int: maximum value (fraction numerator) 
-// 	- maxDenom int: maximum value (fraction denominator) 
-// 	- defaultNum int: default value (fraction numerator) 
-// 	- defaultDenom int: default value (fraction denominator) 
+// 	- minNum int32: minimum value (fraction numerator) 
+// 	- minDenom int32: minimum value (fraction denominator) 
+// 	- maxNum int32: maximum value (fraction numerator) 
+// 	- maxDenom int32: maximum value (fraction denominator) 
+// 	- defaultNum int32: default value (fraction numerator) 
+// 	- defaultDenom int32: default value (fraction denominator) 
 // 	- flags gobject.ParamFlags: flags for the property specified 
 // 
 // The function returns the following values:
@@ -8884,7 +9165,7 @@ func ParamSpecArray(name string, nick string, blurb string, elementSpec *gobject
 // that want to expose properties of fraction type. This function is typically
 // used in connection with g_object_class_install_property() in a GObjects's
 // instance_init function.
-func ParamSpecFraction(name string, nick string, blurb string, minNum int, minDenom int, maxNum int, maxDenom int, defaultNum int, defaultDenom int, flags gobject.ParamFlags) *gobject.ParamSpec {
+func ParamSpecFraction(name string, nick string, blurb string, minNum int32, minDenom int32, maxNum int32, maxDenom int32, defaultNum int32, defaultDenom int32, flags gobject.ParamFlags) *gobject.ParamSpec {
 	var carg1  *C.gchar      // in, none, string
 	var carg2  *C.gchar      // in, none, string
 	var carg3  *C.gchar      // in, none, string
@@ -9695,12 +9976,12 @@ func UtilCeilLog2(v uint32) uint {
 // 
 // The function returns the following values:
 // 
-// 	- destN int: pointer to a #gint to hold the result numerator 
-// 	- destD int: pointer to a #gint to hold the result denominator 
+// 	- destN int32: pointer to a #gint to hold the result numerator 
+// 	- destD int32: pointer to a #gint to hold the result denominator 
 //
 // Transforms a #gdouble to a fraction and simplifies
 // the result.
-func UtilDoubleToFraction(src float64) (int, int) {
+func UtilDoubleToFraction(src float64) (int32, int32) {
 	var carg1 C.gdouble // in, none, casted
 	var carg2 C.gint    // out, full, casted
 	var carg3 C.gint    // out, full, casted
@@ -9710,11 +9991,11 @@ func UtilDoubleToFraction(src float64) (int, int) {
 	C.gst_util_double_to_fraction(carg1, &carg2, &carg3)
 	runtime.KeepAlive(src)
 
-	var destN int
-	var destD int
+	var destN int32
+	var destD int32
 
-	destN = int(carg2)
-	destD = int(carg3)
+	destN = int32(carg2)
+	destD = int32(carg3)
 
 	return destN, destD
 }
@@ -9764,10 +10045,10 @@ func UtilDumpMem(mem []byte) {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Compares the given filenames using natural ordering.
-func UtilFilenameCompare(a string, b string) int {
+func UtilFilenameCompare(a string, b string) int32 {
 	var carg1 *C.gchar // in, none, string
 	var carg2 *C.gchar // in, none, string
 	var cret  C.gint   // return, none, casted
@@ -9781,9 +10062,36 @@ func UtilFilenameCompare(a string, b string) int {
 	runtime.KeepAlive(a)
 	runtime.KeepAlive(b)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
+
+	return goret
+}
+
+// UtilFloorLog2 wraps gst_util_floor_log2
+// 
+// The function takes the following parameters:
+// 
+// 	- v uint32: a #guint32 value. 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// Returns smallest integral value not bigger than log2(v).
+func UtilFloorLog2(v uint32) uint {
+	var carg1 C.guint32 // in, none, casted
+	var cret  C.guint   // return, none, casted
+
+	carg1 = C.guint32(v)
+
+	cret = C.gst_util_floor_log2(carg1)
+	runtime.KeepAlive(v)
+
+	var goret uint
+
+	goret = uint(cret)
 
 	return goret
 }
@@ -9792,20 +10100,20 @@ func UtilFilenameCompare(a string, b string) int {
 // 
 // The function takes the following parameters:
 // 
-// 	- aN int: Numerator of first value 
-// 	- aD int: Denominator of first value 
-// 	- bN int: Numerator of second value 
-// 	- bD int: Denominator of second value 
+// 	- aN int32: Numerator of first value 
+// 	- aD int32: Denominator of first value 
+// 	- bN int32: Numerator of second value 
+// 	- bD int32: Denominator of second value 
 // 
 // The function returns the following values:
 // 
-// 	- resN int: Pointer to #gint to hold the result numerator 
-// 	- resD int: Pointer to #gint to hold the result denominator 
+// 	- resN int32: Pointer to #gint to hold the result numerator 
+// 	- resD int32: Pointer to #gint to hold the result denominator 
 // 	- goret bool 
 //
 // Adds the fractions @a_n/@a_d and @b_n/@b_d and stores
 // the result in @res_n and @res_d.
-func UtilFractionAdd(aN int, aD int, bN int, bD int) (int, int, bool) {
+func UtilFractionAdd(aN int32, aD int32, bN int32, bD int32) (int32, int32, bool) {
 	var carg1 C.gint     // in, none, casted
 	var carg2 C.gint     // in, none, casted
 	var carg3 C.gint     // in, none, casted
@@ -9825,12 +10133,12 @@ func UtilFractionAdd(aN int, aD int, bN int, bD int) (int, int, bool) {
 	runtime.KeepAlive(bN)
 	runtime.KeepAlive(bD)
 
-	var resN  int
-	var resD  int
+	var resN  int32
+	var resD  int32
 	var goret bool
 
-	resN = int(carg5)
-	resD = int(carg6)
+	resN = int32(carg5)
+	resD = int32(carg6)
 	if cret != 0 {
 		goret = true
 	}
@@ -9842,18 +10150,18 @@ func UtilFractionAdd(aN int, aD int, bN int, bD int) (int, int, bool) {
 // 
 // The function takes the following parameters:
 // 
-// 	- aN int: Numerator of first value 
-// 	- aD int: Denominator of first value 
-// 	- bN int: Numerator of second value 
-// 	- bD int: Denominator of second value 
+// 	- aN int32: Numerator of first value 
+// 	- aD int32: Denominator of first value 
+// 	- bN int32: Numerator of second value 
+// 	- bD int32: Denominator of second value 
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Compares the fractions @a_n/@a_d and @b_n/@b_d and returns
 // -1 if a &lt; b, 0 if a = b and 1 if a &gt; b.
-func UtilFractionCompare(aN int, aD int, bN int, bD int) int {
+func UtilFractionCompare(aN int32, aD int32, bN int32, bD int32) int32 {
 	var carg1 C.gint // in, none, casted
 	var carg2 C.gint // in, none, casted
 	var carg3 C.gint // in, none, casted
@@ -9871,9 +10179,9 @@ func UtilFractionCompare(aN int, aD int, bN int, bD int) int {
 	runtime.KeepAlive(bN)
 	runtime.KeepAlive(bD)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -9882,20 +10190,20 @@ func UtilFractionCompare(aN int, aD int, bN int, bD int) int {
 // 
 // The function takes the following parameters:
 // 
-// 	- aN int: Numerator of first value 
-// 	- aD int: Denominator of first value 
-// 	- bN int: Numerator of second value 
-// 	- bD int: Denominator of second value 
+// 	- aN int32: Numerator of first value 
+// 	- aD int32: Denominator of first value 
+// 	- bN int32: Numerator of second value 
+// 	- bD int32: Denominator of second value 
 // 
 // The function returns the following values:
 // 
-// 	- resN int: Pointer to #gint to hold the result numerator 
-// 	- resD int: Pointer to #gint to hold the result denominator 
+// 	- resN int32: Pointer to #gint to hold the result numerator 
+// 	- resD int32: Pointer to #gint to hold the result denominator 
 // 	- goret bool 
 //
 // Multiplies the fractions @a_n/@a_d and @b_n/@b_d and stores
 // the result in @res_n and @res_d.
-func UtilFractionMultiply(aN int, aD int, bN int, bD int) (int, int, bool) {
+func UtilFractionMultiply(aN int32, aD int32, bN int32, bD int32) (int32, int32, bool) {
 	var carg1 C.gint     // in, none, casted
 	var carg2 C.gint     // in, none, casted
 	var carg3 C.gint     // in, none, casted
@@ -9915,12 +10223,62 @@ func UtilFractionMultiply(aN int, aD int, bN int, bD int) (int, int, bool) {
 	runtime.KeepAlive(bN)
 	runtime.KeepAlive(bD)
 
-	var resN  int
-	var resD  int
+	var resN  int32
+	var resD  int32
 	var goret bool
 
-	resN = int(carg5)
-	resD = int(carg6)
+	resN = int32(carg5)
+	resD = int32(carg6)
+	if cret != 0 {
+		goret = true
+	}
+
+	return resN, resD, goret
+}
+
+// UtilFractionMultiplyInt64 wraps gst_util_fraction_multiply_int64
+// 
+// The function takes the following parameters:
+// 
+// 	- aN int64: Numerator of first value 
+// 	- aD int64: Denominator of first value 
+// 	- bN int64: Numerator of second value 
+// 	- bD int64: Denominator of second value 
+// 
+// The function returns the following values:
+// 
+// 	- resN int64: Pointer to #gint to hold the result numerator 
+// 	- resD int64: Pointer to #gint to hold the result denominator 
+// 	- goret bool 
+//
+// Multiplies the fractions @a_n/@a_d and @b_n/@b_d and stores
+// the result in @res_n and @res_d.
+func UtilFractionMultiplyInt64(aN int64, aD int64, bN int64, bD int64) (int64, int64, bool) {
+	var carg1 C.gint64   // in, none, casted
+	var carg2 C.gint64   // in, none, casted
+	var carg3 C.gint64   // in, none, casted
+	var carg4 C.gint64   // in, none, casted
+	var carg5 C.gint64   // out, full, casted
+	var carg6 C.gint64   // out, full, casted
+	var cret  C.gboolean // return
+
+	carg1 = C.gint64(aN)
+	carg2 = C.gint64(aD)
+	carg3 = C.gint64(bN)
+	carg4 = C.gint64(bD)
+
+	cret = C.gst_util_fraction_multiply_int64(carg1, carg2, carg3, carg4, &carg5, &carg6)
+	runtime.KeepAlive(aN)
+	runtime.KeepAlive(aD)
+	runtime.KeepAlive(bN)
+	runtime.KeepAlive(bD)
+
+	var resN  int64
+	var resD  int64
+	var goret bool
+
+	resN = int64(carg5)
+	resD = int64(carg6)
 	if cret != 0 {
 		goret = true
 	}
@@ -9932,15 +10290,15 @@ func UtilFractionMultiply(aN int, aD int, bN int, bD int) (int, int, bool) {
 // 
 // The function takes the following parameters:
 // 
-// 	- srcN int: Fraction numerator as #gint 
-// 	- srcD int: Fraction denominator #gint 
+// 	- srcN int32: Fraction numerator as #gint 
+// 	- srcD int32: Fraction denominator #gint 
 // 
 // The function returns the following values:
 // 
 // 	- dest float64: pointer to a #gdouble for the result 
 //
 // Transforms a fraction to a #gdouble.
-func UtilFractionToDouble(srcN int, srcD int) float64 {
+func UtilFractionToDouble(srcN int32, srcD int32) float64 {
 	var carg1 C.gint    // in, none, casted
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gdouble // out, full, casted
@@ -10008,16 +10366,16 @@ func UtilGetTimestamp() ClockTime {
 // 
 // The function takes the following parameters:
 // 
-// 	- a int: First value as #gint 
-// 	- b int: Second value as #gint 
+// 	- a int32: First value as #gint 
+// 	- b int32: Second value as #gint 
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Calculates the greatest common divisor of @a
 // and @b.
-func UtilGreatestCommonDivisor(a int, b int) int {
+func UtilGreatestCommonDivisor(a int32, b int32) int32 {
 	var carg1 C.gint // in, none, casted
 	var carg2 C.gint // in, none, casted
 	var cret  C.gint // return, none, casted
@@ -10029,9 +10387,9 @@ func UtilGreatestCommonDivisor(a int, b int) int {
 	runtime.KeepAlive(a)
 	runtime.KeepAlive(b)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -10210,8 +10568,8 @@ func UtilSetObjectArg(object gobject.Object, name string, value string) {
 // 
 // The function takes the following parameters:
 // 
-// 	- numerator *int: First value as #gint 
-// 	- denominator *int: Second value as #gint 
+// 	- numerator *int32: First value as #gint 
+// 	- denominator *int32: Second value as #gint 
 // 	- nTerms uint: non-significative terms (typical value: 8) 
 // 	- threshold uint: threshold (typical value: 333) 
 //
@@ -10224,7 +10582,7 @@ func UtilSetObjectArg(object gobject.Object, name string, value string) {
 // upon two arbitrary parameters to remove non-significative terms from
 // the simple continued fraction decomposition. Using 8 and 333 for
 // @n_terms and @threshold respectively seems to give nice results.
-func UtilSimplifyFraction(numerator *int, denominator *int, nTerms uint, threshold uint) {
+func UtilSimplifyFraction(numerator *int32, denominator *int32, nTerms uint, threshold uint) {
 	var carg1 *C.gint // in, transfer: none, C Pointers: 1, Name: gint
 	var carg2 *C.gint // in, transfer: none, C Pointers: 1, Name: gint
 	var carg3 C.guint // in, none, casted
@@ -10232,10 +10590,10 @@ func UtilSimplifyFraction(numerator *int, denominator *int, nTerms uint, thresho
 
 	_ = numerator
 	_ = carg1
-	panic("unimplemented conversion of *int (gint*)")
+	panic("unimplemented conversion of *int32 (gint*)")
 	_ = denominator
 	_ = carg2
-	panic("unimplemented conversion of *int (gint*)")
+	panic("unimplemented conversion of *int32 (gint*)")
 	carg3 = C.guint(nTerms)
 	carg4 = C.guint(threshold)
 
@@ -10329,8 +10687,8 @@ func UtilUint64ScaleCeil(val uint64, num uint64, denom uint64) uint64 {
 // The function takes the following parameters:
 // 
 // 	- val uint64: guint64 (such as a #GstClockTime) to scale. 
-// 	- num int: numerator of the scale factor. 
-// 	- denom int: denominator of the scale factor. 
+// 	- num int32: numerator of the scale factor. 
+// 	- denom int32: denominator of the scale factor. 
 // 
 // The function returns the following values:
 // 
@@ -10339,7 +10697,7 @@ func UtilUint64ScaleCeil(val uint64, num uint64, denom uint64) uint64 {
 // Scale @val by the rational number @num / @denom, avoiding overflows and
 // underflows and without loss of precision.  @num must be non-negative and
 // @denom must be positive.
-func UtilUint64ScaleInt(val uint64, num int, denom int) uint64 {
+func UtilUint64ScaleInt(val uint64, num int32, denom int32) uint64 {
 	var carg1 C.guint64 // in, none, casted
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gint    // in, none, casted
@@ -10366,8 +10724,8 @@ func UtilUint64ScaleInt(val uint64, num int, denom int) uint64 {
 // The function takes the following parameters:
 // 
 // 	- val uint64: guint64 (such as a #GstClockTime) to scale. 
-// 	- num int: numerator of the scale factor. 
-// 	- denom int: denominator of the scale factor. 
+// 	- num int32: numerator of the scale factor. 
+// 	- denom int32: denominator of the scale factor. 
 // 
 // The function returns the following values:
 // 
@@ -10376,7 +10734,7 @@ func UtilUint64ScaleInt(val uint64, num int, denom int) uint64 {
 // Scale @val by the rational number @num / @denom, avoiding overflows and
 // underflows and without loss of precision.  @num must be non-negative and
 // @denom must be positive.
-func UtilUint64ScaleIntCeil(val uint64, num int, denom int) uint64 {
+func UtilUint64ScaleIntCeil(val uint64, num int32, denom int32) uint64 {
 	var carg1 C.guint64 // in, none, casted
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gint    // in, none, casted
@@ -10403,8 +10761,8 @@ func UtilUint64ScaleIntCeil(val uint64, num int, denom int) uint64 {
 // The function takes the following parameters:
 // 
 // 	- val uint64: guint64 (such as a #GstClockTime) to scale. 
-// 	- num int: numerator of the scale factor. 
-// 	- denom int: denominator of the scale factor. 
+// 	- num int32: numerator of the scale factor. 
+// 	- denom int32: denominator of the scale factor. 
 // 
 // The function returns the following values:
 // 
@@ -10413,7 +10771,7 @@ func UtilUint64ScaleIntCeil(val uint64, num int, denom int) uint64 {
 // Scale @val by the rational number @num / @denom, avoiding overflows and
 // underflows and without loss of precision.  @num must be non-negative and
 // @denom must be positive.
-func UtilUint64ScaleIntRound(val uint64, num int, denom int) uint64 {
+func UtilUint64ScaleIntRound(val uint64, num int32, denom int32) uint64 {
 	var carg1 C.guint64 // in, none, casted
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gint    // in, none, casted
@@ -10623,14 +10981,14 @@ func ValueCanUnion(value1 *gobject.Value, value2 *gobject.Value) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Compares @value1 and @value2.  If @value1 and @value2 cannot be
 // compared, the function returns GST_VALUE_UNORDERED.  Otherwise,
 // if @value1 is greater than @value2, GST_VALUE_GREATER_THAN is returned.
 // If @value1 is less than @value2, GST_VALUE_LESS_THAN is returned.
 // If the values are equal, GST_VALUE_EQUAL is returned.
-func ValueCompare(value1 *gobject.Value, value2 *gobject.Value) int {
+func ValueCompare(value1 *gobject.Value, value2 *gobject.Value) int32 {
 	var carg1 *C.GValue // in, none, converted
 	var carg2 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
@@ -10642,9 +11000,9 @@ func ValueCompare(value1 *gobject.Value, value2 *gobject.Value) int {
 	runtime.KeepAlive(value1)
 	runtime.KeepAlive(value2)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -11042,10 +11400,10 @@ func ValueGetFlagsetMask(value *gobject.Value) uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Gets the denominator of the fraction specified by @value.
-func ValueGetFractionDenominator(value *gobject.Value) int {
+func ValueGetFractionDenominator(value *gobject.Value) int32 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
@@ -11054,9 +11412,9 @@ func ValueGetFractionDenominator(value *gobject.Value) int {
 	cret = C.gst_value_get_fraction_denominator(carg1)
 	runtime.KeepAlive(value)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -11069,10 +11427,10 @@ func ValueGetFractionDenominator(value *gobject.Value) int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Gets the numerator of the fraction specified by @value.
-func ValueGetFractionNumerator(value *gobject.Value) int {
+func ValueGetFractionNumerator(value *gobject.Value) int32 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
@@ -11081,9 +11439,9 @@ func ValueGetFractionNumerator(value *gobject.Value) int {
 	cret = C.gst_value_get_fraction_numerator(carg1)
 	runtime.KeepAlive(value)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -11235,10 +11593,10 @@ func ValueGetInt64RangeStep(value *gobject.Value) int64 {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Gets the maximum of the range specified by @value.
-func ValueGetIntRangeMax(value *gobject.Value) int {
+func ValueGetIntRangeMax(value *gobject.Value) int32 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
@@ -11247,9 +11605,9 @@ func ValueGetIntRangeMax(value *gobject.Value) int {
 	cret = C.gst_value_get_int_range_max(carg1)
 	runtime.KeepAlive(value)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -11262,10 +11620,10 @@ func ValueGetIntRangeMax(value *gobject.Value) int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Gets the minimum of the range specified by @value.
-func ValueGetIntRangeMin(value *gobject.Value) int {
+func ValueGetIntRangeMin(value *gobject.Value) int32 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
@@ -11274,9 +11632,9 @@ func ValueGetIntRangeMin(value *gobject.Value) int {
 	cret = C.gst_value_get_int_range_min(carg1)
 	runtime.KeepAlive(value)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -11289,10 +11647,10 @@ func ValueGetIntRangeMin(value *gobject.Value) int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Gets the step of the range specified by @value.
-func ValueGetIntRangeStep(value *gobject.Value) int {
+func ValueGetIntRangeStep(value *gobject.Value) int32 {
 	var carg1 *C.GValue // in, none, converted
 	var cret  C.gint    // return, none, casted
 
@@ -11301,9 +11659,9 @@ func ValueGetIntRangeStep(value *gobject.Value) int {
 	cret = C.gst_value_get_int_range_step(carg1)
 	runtime.KeepAlive(value)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -11641,13 +11999,13 @@ func ValueSetFlagset(value *gobject.Value, flags uint, mask uint) {
 // The function takes the following parameters:
 // 
 // 	- value *gobject.Value: a GValue initialized to #GST_TYPE_FRACTION 
-// 	- numerator int: the numerator of the fraction 
-// 	- denominator int: the denominator of the fraction 
+// 	- numerator int32: the numerator of the fraction 
+// 	- denominator int32: the denominator of the fraction 
 //
 // Sets @value to the fraction specified by @numerator over @denominator.
 // The fraction gets reduced to the smallest numerator and denominator,
 // and if necessary the sign is moved to the numerator.
-func ValueSetFraction(value *gobject.Value, numerator int, denominator int) {
+func ValueSetFraction(value *gobject.Value, numerator int32, denominator int32) {
 	var carg1 *C.GValue // in, none, converted
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gint    // in, none, casted
@@ -11691,14 +12049,14 @@ func ValueSetFractionRange(value *gobject.Value, start *gobject.Value, end *gobj
 // The function takes the following parameters:
 // 
 // 	- value *gobject.Value: a GValue initialized to GST_TYPE_FRACTION_RANGE 
-// 	- numeratorStart int: the numerator start of the range 
-// 	- denominatorStart int: the denominator start of the range 
-// 	- numeratorEnd int: the numerator end of the range 
-// 	- denominatorEnd int: the denominator end of the range 
+// 	- numeratorStart int32: the numerator start of the range 
+// 	- denominatorStart int32: the denominator start of the range 
+// 	- numeratorEnd int32: the numerator end of the range 
+// 	- denominatorEnd int32: the denominator end of the range 
 //
 // Sets @value to the range specified by @numerator_start/@denominator_start
 // and @numerator_end/@denominator_end.
-func ValueSetFractionRangeFull(value *gobject.Value, numeratorStart int, denominatorStart int, numeratorEnd int, denominatorEnd int) {
+func ValueSetFractionRangeFull(value *gobject.Value, numeratorStart int32, denominatorStart int32, numeratorEnd int32, denominatorEnd int32) {
 	var carg1 *C.GValue // in, none, converted
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gint    // in, none, casted
@@ -11776,11 +12134,11 @@ func ValueSetInt64RangeStep(value *gobject.Value, start int64, end int64, step i
 // The function takes the following parameters:
 // 
 // 	- value *gobject.Value: a GValue initialized to GST_TYPE_INT_RANGE 
-// 	- start int: the start of the range 
-// 	- end int: the end of the range 
+// 	- start int32: the start of the range 
+// 	- end int32: the end of the range 
 //
 // Sets @value to the range specified by @start and @end.
-func ValueSetIntRange(value *gobject.Value, start int, end int) {
+func ValueSetIntRange(value *gobject.Value, start int32, end int32) {
 	var carg1 *C.GValue // in, none, converted
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gint    // in, none, casted
@@ -11800,12 +12158,12 @@ func ValueSetIntRange(value *gobject.Value, start int, end int) {
 // The function takes the following parameters:
 // 
 // 	- value *gobject.Value: a GValue initialized to GST_TYPE_INT_RANGE 
-// 	- start int: the start of the range 
-// 	- end int: the end of the range 
-// 	- step int: the step of the range 
+// 	- start int32: the start of the range 
+// 	- end int32: the end of the range 
+// 	- step int32: the step of the range 
 //
 // Sets @value to the range specified by @start, @end and @step.
-func ValueSetIntRangeStep(value *gobject.Value, start int, end int, step int) {
+func ValueSetIntRangeStep(value *gobject.Value, start int32, end int32, step int32) {
 	var carg1 *C.GValue // in, none, converted
 	var carg2 C.gint    // in, none, casted
 	var carg3 C.gint    // in, none, casted
@@ -12129,6 +12487,11 @@ func UnsafeChildProxyFromGlibFull(c unsafe.Pointer) ChildProxy {
 	return gobject.UnsafeObjectFromGlibFull(c).(ChildProxy)
 }
 
+// UnsafeChildProxyFromGlibBorrow is used to convert raw GstChildProxy pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeChildProxyFromGlibBorrow(c unsafe.Pointer) ChildProxy {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ChildProxy)
+}
+
 // UnsafeChildProxyToGlibNone is used to convert the instance to it's C value GstChildProxy. This is used by the bindings internally.
 func UnsafeChildProxyToGlibNone(c ChildProxy) unsafe.Pointer {
 	i := c.upcastToGstChildProxy()
@@ -12433,7 +12796,7 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 				var child  gobject.Object // in, none, converted
 				var name   string         // in, none, string
 
-				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				child = gobject.UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
 				name = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 
@@ -12452,7 +12815,7 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 				var child  gobject.Object // in, none, converted
 				var name   string         // in, none, string
 
-				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				child = gobject.UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
 				name = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 
@@ -12471,7 +12834,7 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 				var index  uint           // in, none, casted
 				var goret  gobject.Object // return, full, converted, nullable
 
-				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				index = uint(carg1)
 
 				goret = overrides.GetChildByIndex(parent, index)
@@ -12495,7 +12858,7 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 				var name   string         // in, none, string
 				var goret  gobject.Object // return, full, converted, nullable
 
-				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.GetChildByName(parent, name)
@@ -12518,7 +12881,7 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 				var parent Instance // go GstChildProxy subclass
 				var goret  uint     // return, none, casted
 
-				parent = UnsafeChildProxyFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetChildrenCount(parent)
 
@@ -12698,6 +13061,11 @@ func UnsafePresetFromGlibNone(c unsafe.Pointer) Preset {
 // UnsafePresetFromGlibFull is used to convert raw GstPreset pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePresetFromGlibFull(c unsafe.Pointer) Preset {
 	return gobject.UnsafeObjectFromGlibFull(c).(Preset)
+}
+
+// UnsafePresetFromGlibBorrow is used to convert raw GstPreset pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePresetFromGlibBorrow(c unsafe.Pointer) Preset {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Preset)
 }
 
 // UnsafePresetToGlibNone is used to convert the instance to it's C value GstPreset. This is used by the bindings internally.
@@ -13160,7 +13528,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 				var name   string   // in, none, string
 				var goret  bool     // return
 
-				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.DeletePreset(preset, name)
@@ -13186,7 +13554,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 				var value  string   // out, full, string
 				var goret  bool     // return
 
-				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 				tag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 
@@ -13211,7 +13579,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 				var preset Instance // go GstPreset subclass
 				var goret  []string // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
 
-				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetPresetNames(preset)
 
@@ -13233,7 +13601,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 				var preset Instance // go GstPreset subclass
 				var goret  []string // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
 
-				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetPropertyNames(preset)
 
@@ -13256,7 +13624,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 				var name   string   // in, none, string
 				var goret  bool     // return
 
-				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.LoadPreset(preset, name)
@@ -13281,7 +13649,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 				var newName string   // in, none, string
 				var goret   bool     // return
 
-				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				oldName = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 				newName = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 
@@ -13306,7 +13674,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 				var name   string   // in, none, string
 				var goret  bool     // return
 
-				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.SavePreset(preset, name)
@@ -13332,7 +13700,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 				var value  string   // in, none, string, nullable-string
 				var goret  bool     // return
 
-				preset = UnsafePresetFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 				tag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 				if carg3 != nil {
@@ -13436,6 +13804,11 @@ func UnsafeURIHandlerFromGlibNone(c unsafe.Pointer) URIHandler {
 // UnsafeURIHandlerFromGlibFull is used to convert raw GstURIHandler pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeURIHandlerFromGlibFull(c unsafe.Pointer) URIHandler {
 	return gobject.UnsafeObjectFromGlibFull(c).(URIHandler)
+}
+
+// UnsafeURIHandlerFromGlibBorrow is used to convert raw GstURIHandler pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeURIHandlerFromGlibBorrow(c unsafe.Pointer) URIHandler {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(URIHandler)
 }
 
 // UnsafeURIHandlerToGlibNone is used to convert the instance to it's C value GstURIHandler. This is used by the bindings internally.
@@ -13598,7 +13971,7 @@ func UnsafeApplyURIHandlerOverrides[Instance URIHandler](gclass unsafe.Pointer, 
 				var handler Instance // go GstURIHandler subclass
 				var goret   string   // return, full, string, nullable-string
 
-				handler = UnsafeURIHandlerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				handler = UnsafeURIHandlerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetURI(handler)
 
@@ -13622,7 +13995,7 @@ func UnsafeApplyURIHandlerOverrides[Instance URIHandler](gclass unsafe.Pointer, 
 				var goret   bool     // return
 				var _goerr  error    // out, full, converted
 
-				handler = UnsafeURIHandlerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				handler = UnsafeURIHandlerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret, _goerr = overrides.SetURI(handler, uri)
@@ -13762,6 +14135,11 @@ func UnsafeTagSetterFromGlibNone(c unsafe.Pointer) TagSetter {
 // UnsafeTagSetterFromGlibFull is used to convert raw GstTagSetter pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeTagSetterFromGlibFull(c unsafe.Pointer) TagSetter {
 	return gobject.UnsafeObjectFromGlibFull(c).(TagSetter)
+}
+
+// UnsafeTagSetterFromGlibBorrow is used to convert raw GstTagSetter pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTagSetterFromGlibBorrow(c unsafe.Pointer) TagSetter {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TagSetter)
 }
 
 // UnsafeTagSetterToGlibNone is used to convert the instance to it's C value GstTagSetter. This is used by the bindings internally.
@@ -13971,6 +14349,11 @@ func UnsafeTocSetterFromGlibNone(c unsafe.Pointer) TocSetter {
 // UnsafeTocSetterFromGlibFull is used to convert raw GstTocSetter pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeTocSetterFromGlibFull(c unsafe.Pointer) TocSetter {
 	return gobject.UnsafeObjectFromGlibFull(c).(TocSetter)
+}
+
+// UnsafeTocSetterFromGlibBorrow is used to convert raw GstTocSetter pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTocSetterFromGlibBorrow(c unsafe.Pointer) TocSetter {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TocSetter)
 }
 
 // UnsafeTocSetterToGlibNone is used to convert the instance to it's C value GstTocSetter. This is used by the bindings internally.
@@ -14399,6 +14782,11 @@ func UnsafeObjectFromGlibNone(c unsafe.Pointer) Object {
 // UnsafeObjectFromGlibFull is used to convert raw GstObject pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeObjectFromGlibFull(c unsafe.Pointer) Object {
 	return gobject.UnsafeObjectFromGlibFull(c).(Object)
+}
+
+// UnsafeObjectFromGlibBorrow is used to convert raw GstObject pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeObjectFromGlibBorrow(c unsafe.Pointer) Object {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Object)
 }
 
 func (o *ObjectInstance) upcastToGstObject() *ObjectInstance {
@@ -15092,7 +15480,7 @@ func UnsafeApplyObjectOverrides[Instance Object](gclass unsafe.Pointer, override
 				var orig   Object             // in, none, converted
 				var pspec  *gobject.ParamSpec // in, none, converted
 
-				object = UnsafeObjectFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				object = UnsafeObjectFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				orig = UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
 				pspec = gobject.UnsafeParamSpecFromGlibNone(unsafe.Pointer(carg2))
 
@@ -15222,8 +15610,8 @@ type Pad interface {
 	// The function takes the following parameters:
 	// 
 	// 	- mask PadProbeType: the probe mask 
-	// 	- callback PadProbeCallback: #GstPadProbeCallback that will be called with notifications of
-	//           the pad state 
+	// 	- callback PadProbeCallback: #GstPadProbeCallback that will be called with
+	//           notifications of the pad state 
 	// 
 	// The function returns the following values:
 	// 
@@ -16148,7 +16536,10 @@ type Pad interface {
 	// 
 	// 	- offset int64: the offset 
 	//
-	// Set the offset that will be applied to the running time of @pad.
+	// Set the offset that will be applied to the running time of @pad. Upon next
+	// buffer, every sticky events (notably segment) will be pushed again with
+	// their running time adjusted. For that reason this is only reliable on
+	// source pads.
 	SetOffset(int64)
 	// StartTask wraps gst_pad_start_task
 	// 
@@ -16248,6 +16639,11 @@ func UnsafePadFromGlibNone(c unsafe.Pointer) Pad {
 // UnsafePadFromGlibFull is used to convert raw GstPad pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePadFromGlibFull(c unsafe.Pointer) Pad {
 	return gobject.UnsafeObjectFromGlibFull(c).(Pad)
+}
+
+// UnsafePadFromGlibBorrow is used to convert raw GstPad pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePadFromGlibBorrow(c unsafe.Pointer) Pad {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Pad)
 }
 
 func (p *PadInstance) upcastToGstPad() *PadInstance {
@@ -16446,8 +16842,8 @@ func (pad *PadInstance) ActivateMode(mode PadMode, active bool) bool {
 // The function takes the following parameters:
 // 
 // 	- mask PadProbeType: the probe mask 
-// 	- callback PadProbeCallback: #GstPadProbeCallback that will be called with notifications of
-//           the pad state 
+// 	- callback PadProbeCallback: #GstPadProbeCallback that will be called with
+//           notifications of the pad state 
 // 
 // The function returns the following values:
 // 
@@ -18518,7 +18914,10 @@ func (pad *PadInstance) SetActive(active bool) bool {
 // 
 // 	- offset int64: the offset 
 //
-// Set the offset that will be applied to the running time of @pad.
+// Set the offset that will be applied to the running time of @pad. Upon next
+// buffer, every sticky events (notably segment) will be pushed again with
+// their running time adjusted. For that reason this is only reliable on
+// source pads.
 func (pad *PadInstance) SetOffset(offset int64) {
 	var carg0 *C.GstPad // in, none, converted
 	var carg1 C.gint64  // in, none, casted
@@ -18732,7 +19131,7 @@ func UnsafeApplyPadOverrides[Instance Pad](gclass unsafe.Pointer, overrides PadO
 				var pad  Instance // go GstPad subclass
 				var peer Pad      // in, none, converted
 
-				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafePadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				peer = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.Linked(pad, peer)
@@ -18749,7 +19148,7 @@ func UnsafeApplyPadOverrides[Instance Pad](gclass unsafe.Pointer, overrides PadO
 				var pad  Instance // go GstPad subclass
 				var peer Pad      // in, none, converted
 
-				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafePadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				peer = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.Unlinked(pad, peer)
@@ -18921,6 +19320,11 @@ func UnsafePadTemplateFromGlibNone(c unsafe.Pointer) PadTemplate {
 // UnsafePadTemplateFromGlibFull is used to convert raw GstPadTemplate pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePadTemplateFromGlibFull(c unsafe.Pointer) PadTemplate {
 	return gobject.UnsafeObjectFromGlibFull(c).(PadTemplate)
+}
+
+// UnsafePadTemplateFromGlibBorrow is used to convert raw GstPadTemplate pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePadTemplateFromGlibBorrow(c unsafe.Pointer) PadTemplate {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PadTemplate)
 }
 
 func (p *PadTemplateInstance) upcastToGstPadTemplate() *PadTemplateInstance {
@@ -19183,7 +19587,7 @@ func UnsafeApplyPadTemplateOverrides[Instance PadTemplate](gclass unsafe.Pointer
 				var templ Instance // go GstPadTemplate subclass
 				var pad   Pad      // in, none, converted
 
-				templ = UnsafePadTemplateFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				templ = UnsafePadTemplateFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.PadCreated(templ, pad)
@@ -19493,6 +19897,11 @@ func UnsafePluginFromGlibFull(c unsafe.Pointer) Plugin {
 	return gobject.UnsafeObjectFromGlibFull(c).(Plugin)
 }
 
+// UnsafePluginFromGlibBorrow is used to convert raw GstPlugin pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePluginFromGlibBorrow(c unsafe.Pointer) Plugin {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Plugin)
+}
+
 func (p *PluginInstance) upcastToGstPlugin() *PluginInstance {
 	return p
 }
@@ -19575,9 +19984,9 @@ func PluginLoadFile(filename string) (Plugin, error) {
 // 
 // The function takes the following parameters:
 // 
-// 	- majorVersion int: the major version number of the GStreamer core that the
+// 	- majorVersion int32: the major version number of the GStreamer core that the
 //     plugin was compiled for, you can just use GST_VERSION_MAJOR here 
-// 	- minorVersion int: the minor version number of the GStreamer core that the
+// 	- minorVersion int32: the minor version number of the GStreamer core that the
 //     plugin was compiled for, you can just use GST_VERSION_MINOR here 
 // 	- name string: a unique name of the plugin (ideally prefixed with an application- or
 //     library-specific namespace prefix in order to avoid name conflicts in
@@ -19604,7 +20013,7 @@ func PluginLoadFile(filename string) (Plugin, error) {
 // 
 // You must make sure that GStreamer has been initialised (with gst_init() or
 // via gst_init_get_option_group()) before calling this function.
-func PluginRegisterStaticFull(majorVersion int, minorVersion int, name string, description string, initFullFunc PluginInitFullFunc, version string, license string, source string, pkg string, origin string) bool {
+func PluginRegisterStaticFull(majorVersion int32, minorVersion int32, name string, description string, initFullFunc PluginInitFullFunc, version string, license string, source string, pkg string, origin string) bool {
 	var carg1  C.gint                  // in, none, casted
 	var carg2  C.gint                  // in, none, casted
 	var carg3  *C.gchar                // in, none, string
@@ -20331,6 +20740,11 @@ func UnsafePluginFeatureFromGlibFull(c unsafe.Pointer) PluginFeature {
 	return gobject.UnsafeObjectFromGlibFull(c).(PluginFeature)
 }
 
+// UnsafePluginFeatureFromGlibBorrow is used to convert raw GstPluginFeature pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePluginFeatureFromGlibBorrow(c unsafe.Pointer) PluginFeature {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PluginFeature)
+}
+
 func (p *PluginFeatureInstance) upcastToGstPluginFeature() *PluginFeatureInstance {
 	return p
 }
@@ -20343,42 +20757,6 @@ func UnsafePluginFeatureToGlibNone(c PluginFeature) unsafe.Pointer {
 // UnsafePluginFeatureToGlibFull is used to convert the instance to it's C value GstPluginFeature, while removeing the finalizer. This is used by the bindings internally.
 func UnsafePluginFeatureToGlibFull(c PluginFeature) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// PluginFeatureRankCompareFunc wraps gst_plugin_feature_rank_compare_func
-// 
-// The function takes the following parameters:
-// 
-// 	- p1 unsafe.Pointer (nullable): a #GstPluginFeature 
-// 	- p2 unsafe.Pointer (nullable): a #GstPluginFeature 
-// 
-// The function returns the following values:
-// 
-// 	- goret int 
-//
-// Compares the two given #GstPluginFeature instances. This function can be
-// used as a #GCompareFunc when sorting by rank and then by name.
-func PluginFeatureRankCompareFunc(p1 unsafe.Pointer, p2 unsafe.Pointer) int {
-	var carg1 C.gconstpointer // in, none, casted, nullable
-	var carg2 C.gconstpointer // in, none, casted, nullable
-	var cret  C.gint          // return, none, casted
-
-	if p1 != nil {
-		carg1 = C.gconstpointer(p1)
-	}
-	if p2 != nil {
-		carg2 = C.gconstpointer(p2)
-	}
-
-	cret = C.gst_plugin_feature_rank_compare_func(carg1, carg2)
-	runtime.KeepAlive(p1)
-	runtime.KeepAlive(p2)
-
-	var goret int
-
-	goret = int(cret)
-
-	return goret
 }
 
 // CheckVersion wraps gst_plugin_feature_check_version
@@ -20606,6 +20984,11 @@ func UnsafeProxyPadFromGlibNone(c unsafe.Pointer) ProxyPad {
 // UnsafeProxyPadFromGlibFull is used to convert raw GstProxyPad pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeProxyPadFromGlibFull(c unsafe.Pointer) ProxyPad {
 	return gobject.UnsafeObjectFromGlibFull(c).(ProxyPad)
+}
+
+// UnsafeProxyPadFromGlibBorrow is used to convert raw GstProxyPad pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeProxyPadFromGlibBorrow(c unsafe.Pointer) ProxyPad {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ProxyPad)
 }
 
 func (p *ProxyPadInstance) upcastToGstProxyPad() *ProxyPadInstance {
@@ -21157,6 +21540,11 @@ func UnsafeRegistryFromGlibNone(c unsafe.Pointer) Registry {
 // UnsafeRegistryFromGlibFull is used to convert raw GstRegistry pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeRegistryFromGlibFull(c unsafe.Pointer) Registry {
 	return gobject.UnsafeObjectFromGlibFull(c).(Registry)
+}
+
+// UnsafeRegistryFromGlibBorrow is used to convert raw GstRegistry pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeRegistryFromGlibBorrow(c unsafe.Pointer) Registry {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Registry)
 }
 
 func (r *RegistryInstance) upcastToGstRegistry() *RegistryInstance {
@@ -21980,6 +22368,11 @@ func UnsafeStreamFromGlibFull(c unsafe.Pointer) Stream {
 	return gobject.UnsafeObjectFromGlibFull(c).(Stream)
 }
 
+// UnsafeStreamFromGlibBorrow is used to convert raw GstStream pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeStreamFromGlibBorrow(c unsafe.Pointer) Stream {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Stream)
+}
+
 func (s *StreamInstance) upcastToGstStream() *StreamInstance {
 	return s
 }
@@ -22384,6 +22777,11 @@ func UnsafeStreamCollectionFromGlibFull(c unsafe.Pointer) StreamCollection {
 	return gobject.UnsafeObjectFromGlibFull(c).(StreamCollection)
 }
 
+// UnsafeStreamCollectionFromGlibBorrow is used to convert raw GstStreamCollection pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeStreamCollectionFromGlibBorrow(c unsafe.Pointer) StreamCollection {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(StreamCollection)
+}
+
 func (s *StreamCollectionInstance) upcastToGstStreamCollection() *StreamCollectionInstance {
 	return s
 }
@@ -22581,7 +22979,7 @@ func UnsafeApplyStreamCollectionOverrides[Instance StreamCollection](gclass unsa
 				var stream     Stream             // in, none, converted
 				var pspec      *gobject.ParamSpec // in, none, converted
 
-				collection = UnsafeStreamCollectionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				collection = UnsafeStreamCollectionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				stream = UnsafeStreamFromGlibNone(unsafe.Pointer(carg1))
 				pspec = gobject.UnsafeParamSpecFromGlibNone(unsafe.Pointer(carg2))
 
@@ -22796,6 +23194,11 @@ func UnsafeTaskFromGlibNone(c unsafe.Pointer) Task {
 // UnsafeTaskFromGlibFull is used to convert raw GstTask pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeTaskFromGlibFull(c unsafe.Pointer) Task {
 	return gobject.UnsafeObjectFromGlibFull(c).(Task)
+}
+
+// UnsafeTaskFromGlibBorrow is used to convert raw GstTask pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTaskFromGlibBorrow(c unsafe.Pointer) Task {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Task)
 }
 
 func (t *TaskInstance) upcastToGstTask() *TaskInstance {
@@ -23215,6 +23618,11 @@ func UnsafeTaskPoolFromGlibFull(c unsafe.Pointer) TaskPool {
 	return gobject.UnsafeObjectFromGlibFull(c).(TaskPool)
 }
 
+// UnsafeTaskPoolFromGlibBorrow is used to convert raw GstTaskPool pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTaskPoolFromGlibBorrow(c unsafe.Pointer) TaskPool {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TaskPool)
+}
+
 func (t *TaskPoolInstance) upcastToGstTaskPool() *TaskPoolInstance {
 	return t
 }
@@ -23321,7 +23729,7 @@ func UnsafeApplyTaskPoolOverrides[Instance TaskPool](gclass unsafe.Pointer, over
 			func(carg0 *C.GstTaskPool) {
 				var pool Instance // go GstTaskPool subclass
 
-				pool = UnsafeTaskPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeTaskPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Cleanup(pool)
 			},
@@ -23337,7 +23745,7 @@ func UnsafeApplyTaskPoolOverrides[Instance TaskPool](gclass unsafe.Pointer, over
 				var pool   Instance // go GstTaskPool subclass
 				var _goerr error    // out, full, converted
 
-				pool = UnsafeTaskPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeTaskPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				_goerr = overrides.Prepare(pool)
 
@@ -23414,6 +23822,11 @@ func UnsafeTracerFromGlibNone(c unsafe.Pointer) Tracer {
 // UnsafeTracerFromGlibFull is used to convert raw GstTracer pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeTracerFromGlibFull(c unsafe.Pointer) Tracer {
 	return gobject.UnsafeObjectFromGlibFull(c).(Tracer)
+}
+
+// UnsafeTracerFromGlibBorrow is used to convert raw GstTracer pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTracerFromGlibBorrow(c unsafe.Pointer) Tracer {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Tracer)
 }
 
 func (t *TracerInstance) upcastToGstTracer() *TracerInstance {
@@ -23565,6 +23978,11 @@ func UnsafeTracerFactoryFromGlibFull(c unsafe.Pointer) TracerFactory {
 	return gobject.UnsafeObjectFromGlibFull(c).(TracerFactory)
 }
 
+// UnsafeTracerFactoryFromGlibBorrow is used to convert raw GstTracerFactory pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTracerFactoryFromGlibBorrow(c unsafe.Pointer) TracerFactory {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TracerFactory)
+}
+
 func (t *TracerFactoryInstance) upcastToGstTracerFactory() *TracerFactoryInstance {
 	return t
 }
@@ -23674,6 +24092,11 @@ func UnsafeTracerRecordFromGlibNone(c unsafe.Pointer) TracerRecord {
 // UnsafeTracerRecordFromGlibFull is used to convert raw GstTracerRecord pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeTracerRecordFromGlibFull(c unsafe.Pointer) TracerRecord {
 	return gobject.UnsafeObjectFromGlibFull(c).(TracerRecord)
+}
+
+// UnsafeTracerRecordFromGlibBorrow is used to convert raw GstTracerRecord pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTracerRecordFromGlibBorrow(c unsafe.Pointer) TracerRecord {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TracerRecord)
 }
 
 func (t *TracerRecordInstance) upcastToGstTracerRecord() *TracerRecordInstance {
@@ -23817,6 +24240,11 @@ func UnsafeTypeFindFactoryFromGlibNone(c unsafe.Pointer) TypeFindFactory {
 // UnsafeTypeFindFactoryFromGlibFull is used to convert raw GstTypeFindFactory pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeTypeFindFactoryFromGlibFull(c unsafe.Pointer) TypeFindFactory {
 	return gobject.UnsafeObjectFromGlibFull(c).(TypeFindFactory)
+}
+
+// UnsafeTypeFindFactoryFromGlibBorrow is used to convert raw GstTypeFindFactory pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTypeFindFactoryFromGlibBorrow(c unsafe.Pointer) TypeFindFactory {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TypeFindFactory)
 }
 
 func (t *TypeFindFactoryInstance) upcastToGstTypeFindFactory() *TypeFindFactoryInstance {
@@ -24055,6 +24483,11 @@ func UnsafeAllocatorFromGlibFull(c unsafe.Pointer) Allocator {
 	return gobject.UnsafeObjectFromGlibFull(c).(Allocator)
 }
 
+// UnsafeAllocatorFromGlibBorrow is used to convert raw GstAllocator pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAllocatorFromGlibBorrow(c unsafe.Pointer) Allocator {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Allocator)
+}
+
 func (a *AllocatorInstance) upcastToGstAllocator() *AllocatorInstance {
 	return a
 }
@@ -24247,7 +24680,7 @@ func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, ov
 				var params    *AllocationParams // in, none, converted, nullable
 				var goret     *Memory           // return, full, converted, nullable
 
-				allocator = UnsafeAllocatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				allocator = UnsafeAllocatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				size = uint(carg1)
 				if carg2 != nil {
 					params = UnsafeAllocationParamsFromGlibNone(unsafe.Pointer(carg2))
@@ -24273,7 +24706,7 @@ func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, ov
 				var allocator Instance // go GstAllocator subclass
 				var memory    *Memory  // in, full, converted
 
-				allocator = UnsafeAllocatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				allocator = UnsafeAllocatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				memory = UnsafeMemoryFromGlibFull(unsafe.Pointer(carg1))
 
 				overrides.Free(allocator, memory)
@@ -24506,6 +24939,11 @@ func UnsafeBufferPoolFromGlibNone(c unsafe.Pointer) BufferPool {
 // UnsafeBufferPoolFromGlibFull is used to convert raw GstBufferPool pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeBufferPoolFromGlibFull(c unsafe.Pointer) BufferPool {
 	return gobject.UnsafeObjectFromGlibFull(c).(BufferPool)
+}
+
+// UnsafeBufferPoolFromGlibBorrow is used to convert raw GstBufferPool pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeBufferPoolFromGlibBorrow(c unsafe.Pointer) BufferPool {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(BufferPool)
 }
 
 func (b *BufferPoolInstance) upcastToGstBufferPool() *BufferPoolInstance {
@@ -25252,7 +25690,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var buffer *Buffer                  // out, full, converted
 				var goret  FlowReturn               // return, none, casted
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg2 != nil {
 					params = UnsafeBufferPoolAcquireParamsFromGlibNone(unsafe.Pointer(carg2))
 				}
@@ -25278,7 +25716,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var buffer *Buffer                  // out, full, converted
 				var goret  FlowReturn               // return, none, casted
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg2 != nil {
 					params = UnsafeBufferPoolAcquireParamsFromGlibNone(unsafe.Pointer(carg2))
 				}
@@ -25301,7 +25739,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 			func(carg0 *C.GstBufferPool) {
 				var pool Instance // go GstBufferPool subclass
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.FlushStart(pool)
 			},
@@ -25316,7 +25754,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 			func(carg0 *C.GstBufferPool) {
 				var pool Instance // go GstBufferPool subclass
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.FlushStop(pool)
 			},
@@ -25332,7 +25770,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool   Instance // go GstBufferPool subclass
 				var buffer *Buffer  // in, none, converted
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.FreeBuffer(pool, buffer)
@@ -25349,7 +25787,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool  Instance // go GstBufferPool subclass
 				var goret []string // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetOptions(pool)
 
@@ -25371,7 +25809,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool   Instance // go GstBufferPool subclass
 				var buffer *Buffer  // in, full, converted
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
 
 				overrides.ReleaseBuffer(pool, buffer)
@@ -25388,7 +25826,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool   Instance // go GstBufferPool subclass
 				var buffer *Buffer  // in, none, converted
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.ResetBuffer(pool, buffer)
@@ -25406,7 +25844,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var config *Structure // in, full, converted
 				var goret  bool       // return
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				config = UnsafeStructureFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.SetConfig(pool, config)
@@ -25429,7 +25867,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool  Instance // go GstBufferPool subclass
 				var goret bool     // return
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(pool)
 
@@ -25451,7 +25889,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool  Instance // go GstBufferPool subclass
 				var goret bool     // return
 
-				pool = UnsafeBufferPoolFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(pool)
 
@@ -25564,7 +26002,7 @@ type Bus interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- priority int: The priority of the watch. 
+	// 	- priority int32: The priority of the watch. 
 	//
 	// Adds a bus signal watch to the default main context with the given @priority
 	// (e.g. %G_PRIORITY_DEFAULT). It is also possible to use a non-default main
@@ -25581,12 +26019,12 @@ type Bus interface {
 	// 
 	// There can only be a single bus watch per bus, you must remove any signal
 	// watch before you can set another type of watch.
-	AddSignalWatchFull(int)
+	AddSignalWatchFull(int32)
 	// AddWatchFull wraps gst_bus_add_watch_full
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- priority int: The priority of the watch. 
+	// 	- priority int32: The priority of the watch. 
 	// 	- fn BusFunc: A function to call when a message is received. 
 	// 
 	// The function returns the following values:
@@ -25614,7 +26052,7 @@ type Bus interface {
 	// 
 	// The bus watch will take its own reference to the @bus, so it is safe to unref
 	// @bus using gst_object_unref() after setting the bus watch.
-	AddWatchFull(int, BusFunc) uint
+	AddWatchFull(int32, BusFunc) uint
 	// CreateWatch wraps gst_bus_create_watch
 	// 
 	// The function returns the following values:
@@ -25888,6 +26326,11 @@ func UnsafeBusFromGlibFull(c unsafe.Pointer) Bus {
 	return gobject.UnsafeObjectFromGlibFull(c).(Bus)
 }
 
+// UnsafeBusFromGlibBorrow is used to convert raw GstBus pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeBusFromGlibBorrow(c unsafe.Pointer) Bus {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Bus)
+}
+
 func (b *BusInstance) upcastToGstBus() *BusInstance {
 	return b
 }
@@ -25948,7 +26391,7 @@ func (bus *BusInstance) AddSignalWatch() {
 // 
 // The function takes the following parameters:
 // 
-// 	- priority int: The priority of the watch. 
+// 	- priority int32: The priority of the watch. 
 //
 // Adds a bus signal watch to the default main context with the given @priority
 // (e.g. %G_PRIORITY_DEFAULT). It is also possible to use a non-default main
@@ -25965,7 +26408,7 @@ func (bus *BusInstance) AddSignalWatch() {
 // 
 // There can only be a single bus watch per bus, you must remove any signal
 // watch before you can set another type of watch.
-func (bus *BusInstance) AddSignalWatchFull(priority int) {
+func (bus *BusInstance) AddSignalWatchFull(priority int32) {
 	var carg0 *C.GstBus // in, none, converted
 	var carg1 C.gint    // in, none, casted
 
@@ -25981,7 +26424,7 @@ func (bus *BusInstance) AddSignalWatchFull(priority int) {
 // 
 // The function takes the following parameters:
 // 
-// 	- priority int: The priority of the watch. 
+// 	- priority int32: The priority of the watch. 
 // 	- fn BusFunc: A function to call when a message is received. 
 // 
 // The function returns the following values:
@@ -26009,7 +26452,7 @@ func (bus *BusInstance) AddSignalWatchFull(priority int) {
 // 
 // The bus watch will take its own reference to the @bus, so it is safe to unref
 // @bus using gst_object_unref() after setting the bus watch.
-func (bus *BusInstance) AddWatchFull(priority int, fn BusFunc) uint {
+func (bus *BusInstance) AddWatchFull(priority int32, fn BusFunc) uint {
 	var carg0 *C.GstBus        // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 C.GstBusFunc     // callback, scope: notified, closure: carg3, destroy: carg4
@@ -26584,7 +27027,7 @@ func UnsafeApplyBusOverrides[Instance Bus](gclass unsafe.Pointer, overrides BusO
 				var bus     Instance // go GstBus subclass
 				var message *Message // in, none, converted
 
-				bus = UnsafeBusFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bus = UnsafeBusFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				message = UnsafeMessageFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.Message(bus, message)
@@ -26601,7 +27044,7 @@ func UnsafeApplyBusOverrides[Instance Bus](gclass unsafe.Pointer, overrides BusO
 				var bus     Instance // go GstBus subclass
 				var message *Message // in, none, converted
 
-				bus = UnsafeBusFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bus = UnsafeBusFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				message = UnsafeMessageFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.SyncMessage(bus, message)
@@ -26726,18 +27169,18 @@ type Clock interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- slave ClockTime: a time on the slave 
-	// 	- master ClockTime: a time on the master 
+	// 	- observationInternal ClockTime: a time on the internal clock 
+	// 	- observationExternal ClockTime: a time on the external clock 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- rSquared float64: a pointer to hold the result 
 	// 	- goret bool 
 	//
-	// The time @master of the master clock and the time @slave of the slave
-	// clock are added to the list of observations. If enough observations
-	// are available, a linear regression algorithm is run on the
-	// observations and @clock is recalibrated.
+	// The time @observation_external of the external or master clock and the time
+	// @observation_internal of the internal or slave clock are added to the list of
+	// observations. If enough observations are available, a linear regression
+	// algorithm is run on the observations and @clock is recalibrated.
 	// 
 	// If this functions returns %TRUE, @r_squared will contain the
 	// correlation coefficient of the interpolation. A value of 1.0
@@ -26749,8 +27192,8 @@ type Clock interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- slave ClockTime: a time on the slave 
-	// 	- master ClockTime: a time on the master 
+	// 	- observationInternal ClockTime: a time on the internal clock 
+	// 	- observationExternal ClockTime: a time on the external clock 
 	// 
 	// The function returns the following values:
 	// 
@@ -26762,8 +27205,8 @@ type Clock interface {
 	// 	- goret bool 
 	//
 	// Add a clock observation to the internal slaving algorithm the same as
-	// gst_clock_add_observation(), and return the result of the master clock
-	// estimation, without updating the internal calibration.
+	// gst_clock_add_observation(), and return the result of the external or master
+	// clock estimation, without updating the internal calibration.
 	// 
 	// The caller can then take the results and call gst_clock_set_calibration()
 	// with the values, or some modified version of them.
@@ -27117,6 +27560,11 @@ func UnsafeClockFromGlibFull(c unsafe.Pointer) Clock {
 	return gobject.UnsafeObjectFromGlibFull(c).(Clock)
 }
 
+// UnsafeClockFromGlibBorrow is used to convert raw GstClock pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeClockFromGlibBorrow(c unsafe.Pointer) Clock {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Clock)
+}
+
 func (c *ClockInstance) upcastToGstClock() *ClockInstance {
 	return c
 }
@@ -27129,42 +27577,6 @@ func UnsafeClockToGlibNone(c Clock) unsafe.Pointer {
 // UnsafeClockToGlibFull is used to convert the instance to it's C value GstClock, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeClockToGlibFull(c Clock) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// ClockIDCompareFunc wraps gst_clock_id_compare_func
-// 
-// The function takes the following parameters:
-// 
-// 	- id1 unsafe.Pointer (nullable): A #GstClockID 
-// 	- id2 unsafe.Pointer (nullable): A #GstClockID to compare with 
-// 
-// The function returns the following values:
-// 
-// 	- goret int 
-//
-// Compares the two #GstClockID instances. This function can be used
-// as a GCompareFunc when sorting ids.
-func ClockIDCompareFunc(id1 unsafe.Pointer, id2 unsafe.Pointer) int {
-	var carg1 C.gconstpointer // in, none, casted, nullable
-	var carg2 C.gconstpointer // in, none, casted, nullable
-	var cret  C.gint          // return, none, casted
-
-	if id1 != nil {
-		carg1 = C.gconstpointer(id1)
-	}
-	if id2 != nil {
-		carg2 = C.gconstpointer(id2)
-	}
-
-	cret = C.gst_clock_id_compare_func(carg1, carg2)
-	runtime.KeepAlive(id1)
-	runtime.KeepAlive(id2)
-
-	var goret int
-
-	goret = int(cret)
-
-	return goret
 }
 
 // ClockIDGetClock wraps gst_clock_id_get_clock
@@ -27412,25 +27824,25 @@ func ClockIDWaitAsync(id ClockID, fn ClockCallback) ClockReturn {
 // 
 // The function takes the following parameters:
 // 
-// 	- slave ClockTime: a time on the slave 
-// 	- master ClockTime: a time on the master 
+// 	- observationInternal ClockTime: a time on the internal clock 
+// 	- observationExternal ClockTime: a time on the external clock 
 // 
 // The function returns the following values:
 // 
 // 	- rSquared float64: a pointer to hold the result 
 // 	- goret bool 
 //
-// The time @master of the master clock and the time @slave of the slave
-// clock are added to the list of observations. If enough observations
-// are available, a linear regression algorithm is run on the
-// observations and @clock is recalibrated.
+// The time @observation_external of the external or master clock and the time
+// @observation_internal of the internal or slave clock are added to the list of
+// observations. If enough observations are available, a linear regression
+// algorithm is run on the observations and @clock is recalibrated.
 // 
 // If this functions returns %TRUE, @r_squared will contain the
 // correlation coefficient of the interpolation. A value of 1.0
 // means a perfect regression was performed. This value can
 // be used to control the sampling frequency of the master and slave
 // clocks.
-func (clock *ClockInstance) AddObservation(slave ClockTime, master ClockTime) (float64, bool) {
+func (clock *ClockInstance) AddObservation(observationInternal ClockTime, observationExternal ClockTime) (float64, bool) {
 	var carg0 *C.GstClock    // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var carg2 C.GstClockTime // in, none, casted, alias
@@ -27438,13 +27850,13 @@ func (clock *ClockInstance) AddObservation(slave ClockTime, master ClockTime) (f
 	var cret  C.gboolean     // return
 
 	carg0 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
-	carg1 = C.GstClockTime(slave)
-	carg2 = C.GstClockTime(master)
+	carg1 = C.GstClockTime(observationInternal)
+	carg2 = C.GstClockTime(observationExternal)
 
 	cret = C.gst_clock_add_observation(carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(clock)
-	runtime.KeepAlive(slave)
-	runtime.KeepAlive(master)
+	runtime.KeepAlive(observationInternal)
+	runtime.KeepAlive(observationExternal)
 
 	var rSquared float64
 	var goret    bool
@@ -27461,8 +27873,8 @@ func (clock *ClockInstance) AddObservation(slave ClockTime, master ClockTime) (f
 // 
 // The function takes the following parameters:
 // 
-// 	- slave ClockTime: a time on the slave 
-// 	- master ClockTime: a time on the master 
+// 	- observationInternal ClockTime: a time on the internal clock 
+// 	- observationExternal ClockTime: a time on the external clock 
 // 
 // The function returns the following values:
 // 
@@ -27474,12 +27886,12 @@ func (clock *ClockInstance) AddObservation(slave ClockTime, master ClockTime) (f
 // 	- goret bool 
 //
 // Add a clock observation to the internal slaving algorithm the same as
-// gst_clock_add_observation(), and return the result of the master clock
-// estimation, without updating the internal calibration.
+// gst_clock_add_observation(), and return the result of the external or master
+// clock estimation, without updating the internal calibration.
 // 
 // The caller can then take the results and call gst_clock_set_calibration()
 // with the values, or some modified version of them.
-func (clock *ClockInstance) AddObservationUnapplied(slave ClockTime, master ClockTime) (float64, ClockTime, ClockTime, ClockTime, ClockTime, bool) {
+func (clock *ClockInstance) AddObservationUnapplied(observationInternal ClockTime, observationExternal ClockTime) (float64, ClockTime, ClockTime, ClockTime, ClockTime, bool) {
 	var carg0 *C.GstClock    // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var carg2 C.GstClockTime // in, none, casted, alias
@@ -27491,13 +27903,13 @@ func (clock *ClockInstance) AddObservationUnapplied(slave ClockTime, master Cloc
 	var cret  C.gboolean     // return
 
 	carg0 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
-	carg1 = C.GstClockTime(slave)
-	carg2 = C.GstClockTime(master)
+	carg1 = C.GstClockTime(observationInternal)
+	carg2 = C.GstClockTime(observationExternal)
 
 	cret = C.gst_clock_add_observation_unapplied(carg0, carg1, carg2, &carg3, &carg4, &carg5, &carg6, &carg7)
 	runtime.KeepAlive(clock)
-	runtime.KeepAlive(slave)
-	runtime.KeepAlive(master)
+	runtime.KeepAlive(observationInternal)
+	runtime.KeepAlive(observationExternal)
 
 	var rSquared  float64
 	var internal  ClockTime
@@ -28320,7 +28732,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var newResolution ClockTime // in, none, casted, alias
 				var goret         ClockTime // return, none, casted, alias
 
-				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				oldResolution = ClockTime(carg1)
 				newResolution = ClockTime(carg2)
 
@@ -28342,7 +28754,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var clock Instance  // go GstClock subclass
 				var goret ClockTime // return, none, casted, alias
 
-				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetInternalTime(clock)
 
@@ -28362,7 +28774,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var clock Instance  // go GstClock subclass
 				var goret ClockTime // return, none, casted, alias
 
-				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetResolution(clock)
 
@@ -28382,7 +28794,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var clock Instance    // go GstClock subclass
 				var entry *ClockEntry // in, none, converted
 
-				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				entry = UnsafeClockEntryFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.Unschedule(clock, entry)
@@ -28401,7 +28813,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var jitter ClockTimeDiff // out, full, casted, alias
 				var goret  ClockReturn   // return, none, casted
 
-				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				entry = UnsafeClockEntryFromGlibNone(unsafe.Pointer(carg1))
 
 				jitter, goret = overrides.Wait(clock, entry)
@@ -28424,7 +28836,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var entry *ClockEntry // in, none, converted
 				var goret ClockReturn // return, none, casted
 
-				clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				entry = UnsafeClockEntryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.WaitAsync(clock, entry)
@@ -28541,6 +28953,11 @@ func UnsafeControlBindingFromGlibNone(c unsafe.Pointer) ControlBinding {
 // UnsafeControlBindingFromGlibFull is used to convert raw GstControlBinding pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeControlBindingFromGlibFull(c unsafe.Pointer) ControlBinding {
 	return gobject.UnsafeObjectFromGlibFull(c).(ControlBinding)
+}
+
+// UnsafeControlBindingFromGlibBorrow is used to convert raw GstControlBinding pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeControlBindingFromGlibBorrow(c unsafe.Pointer) ControlBinding {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ControlBinding)
 }
 
 func (c *ControlBindingInstance) upcastToGstControlBinding() *ControlBindingInstance {
@@ -28687,7 +29104,7 @@ func UnsafeApplyControlBindingOverrides[Instance ControlBinding](gclass unsafe.P
 				var lastSync  ClockTime // in, none, casted, alias
 				var goret     bool      // return
 
-				binding = UnsafeControlBindingFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				binding = UnsafeControlBindingFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				object = UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
 				timestamp = ClockTime(carg2)
 				lastSync = ClockTime(carg3)
@@ -28809,6 +29226,11 @@ func UnsafeControlSourceFromGlibNone(c unsafe.Pointer) ControlSource {
 // UnsafeControlSourceFromGlibFull is used to convert raw GstControlSource pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeControlSourceFromGlibFull(c unsafe.Pointer) ControlSource {
 	return gobject.UnsafeObjectFromGlibFull(c).(ControlSource)
+}
+
+// UnsafeControlSourceFromGlibBorrow is used to convert raw GstControlSource pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeControlSourceFromGlibBorrow(c unsafe.Pointer) ControlSource {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ControlSource)
 }
 
 func (c *ControlSourceInstance) upcastToGstControlSource() *ControlSourceInstance {
@@ -29083,6 +29505,11 @@ func UnsafeDeviceFromGlibNone(c unsafe.Pointer) Device {
 // UnsafeDeviceFromGlibFull is used to convert raw GstDevice pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDeviceFromGlibFull(c unsafe.Pointer) Device {
 	return gobject.UnsafeObjectFromGlibFull(c).(Device)
+}
+
+// UnsafeDeviceFromGlibBorrow is used to convert raw GstDevice pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDeviceFromGlibBorrow(c unsafe.Pointer) Device {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Device)
 }
 
 func (d *DeviceInstance) upcastToGstDevice() *DeviceInstance {
@@ -29391,7 +29818,7 @@ func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, override
 				var name   string   // in, none, string, nullable-string
 				var goret  Element  // return, none, converted, nullable
 
-				device = UnsafeDeviceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				device = UnsafeDeviceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != nil {
 					name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 				}
@@ -29417,7 +29844,7 @@ func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, override
 				var element Element  // in, none, converted
 				var goret   bool     // return
 
-				device = UnsafeDeviceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				device = UnsafeDeviceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ReconfigureElement(device, element)
@@ -29652,6 +30079,11 @@ func UnsafeDeviceMonitorFromGlibNone(c unsafe.Pointer) DeviceMonitor {
 // UnsafeDeviceMonitorFromGlibFull is used to convert raw GstDeviceMonitor pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDeviceMonitorFromGlibFull(c unsafe.Pointer) DeviceMonitor {
 	return gobject.UnsafeObjectFromGlibFull(c).(DeviceMonitor)
+}
+
+// UnsafeDeviceMonitorFromGlibBorrow is used to convert raw GstDeviceMonitor pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDeviceMonitorFromGlibBorrow(c unsafe.Pointer) DeviceMonitor {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DeviceMonitor)
 }
 
 func (d *DeviceMonitorInstance) upcastToGstDeviceMonitor() *DeviceMonitorInstance {
@@ -30181,6 +30613,11 @@ func UnsafeDeviceProviderFromGlibFull(c unsafe.Pointer) DeviceProvider {
 	return gobject.UnsafeObjectFromGlibFull(c).(DeviceProvider)
 }
 
+// UnsafeDeviceProviderFromGlibBorrow is used to convert raw GstDeviceProvider pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDeviceProviderFromGlibBorrow(c unsafe.Pointer) DeviceProvider {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DeviceProvider)
+}
+
 func (d *DeviceProviderInstance) upcastToGstDeviceProvider() *DeviceProviderInstance {
 	return d
 }
@@ -30642,7 +31079,7 @@ func UnsafeApplyDeviceProviderOverrides[Instance DeviceProvider](gclass unsafe.P
 				var provider Instance // go GstDeviceProvider subclass
 				var goret    bool     // return
 
-				provider = UnsafeDeviceProviderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				provider = UnsafeDeviceProviderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(provider)
 
@@ -30663,7 +31100,7 @@ func UnsafeApplyDeviceProviderOverrides[Instance DeviceProvider](gclass unsafe.P
 			func(carg0 *C.GstDeviceProvider) {
 				var provider Instance // go GstDeviceProvider subclass
 
-				provider = UnsafeDeviceProviderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				provider = UnsafeDeviceProviderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Stop(provider)
 			},
@@ -30810,6 +31247,11 @@ func UnsafeDeviceProviderFactoryFromGlibNone(c unsafe.Pointer) DeviceProviderFac
 // UnsafeDeviceProviderFactoryFromGlibFull is used to convert raw GstDeviceProviderFactory pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDeviceProviderFactoryFromGlibFull(c unsafe.Pointer) DeviceProviderFactory {
 	return gobject.UnsafeObjectFromGlibFull(c).(DeviceProviderFactory)
+}
+
+// UnsafeDeviceProviderFactoryFromGlibBorrow is used to convert raw GstDeviceProviderFactory pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDeviceProviderFactoryFromGlibBorrow(c unsafe.Pointer) DeviceProviderFactory {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DeviceProviderFactory)
 }
 
 func (d *DeviceProviderFactoryInstance) upcastToGstDeviceProviderFactory() *DeviceProviderFactoryInstance {
@@ -31161,6 +31603,11 @@ func UnsafeDynamicTypeFactoryFromGlibNone(c unsafe.Pointer) DynamicTypeFactory {
 // UnsafeDynamicTypeFactoryFromGlibFull is used to convert raw GstDynamicTypeFactory pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDynamicTypeFactoryFromGlibFull(c unsafe.Pointer) DynamicTypeFactory {
 	return gobject.UnsafeObjectFromGlibFull(c).(DynamicTypeFactory)
+}
+
+// UnsafeDynamicTypeFactoryFromGlibBorrow is used to convert raw GstDynamicTypeFactory pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDynamicTypeFactoryFromGlibBorrow(c unsafe.Pointer) DynamicTypeFactory {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DynamicTypeFactory)
 }
 
 func (d *DynamicTypeFactoryInstance) upcastToGstDynamicTypeFactory() *DynamicTypeFactoryInstance {
@@ -31879,7 +32326,7 @@ type Element interface {
 	// 
 	// 	- typ MessageType: the #GstMessageType 
 	// 	- domain glib.Quark: the GStreamer GError domain this message belongs to 
-	// 	- code int: the GError code belonging to the domain 
+	// 	- code int32: the GError code belonging to the domain 
 	// 	- text string (nullable): an allocated text string to be used
 	//            as a replacement for the default message connected to code,
 	//            or %NULL 
@@ -31888,7 +32335,7 @@ type Element interface {
 	//            or %NULL 
 	// 	- file string: the source code file where the error was generated 
 	// 	- function string: the source code function where the error was generated 
-	// 	- line int: the source code line where the error was generated 
+	// 	- line int32: the source code line where the error was generated 
 	//
 	// Post an error, warning or info message on the bus from inside an element.
 	// 
@@ -31896,14 +32343,14 @@ type Element interface {
 	// #GST_MESSAGE_INFO.
 	// 
 	// MT safe.
-	MessageFull(MessageType, glib.Quark, int, string, string, string, string, int)
+	MessageFull(MessageType, glib.Quark, int32, string, string, string, string, int32)
 	// MessageFullWithDetails wraps gst_element_message_full_with_details
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- typ MessageType: the #GstMessageType 
 	// 	- domain glib.Quark: the GStreamer GError domain this message belongs to 
-	// 	- code int: the GError code belonging to the domain 
+	// 	- code int32: the GError code belonging to the domain 
 	// 	- text string (nullable): an allocated text string to be used
 	//            as a replacement for the default message connected to code,
 	//            or %NULL 
@@ -31912,14 +32359,14 @@ type Element interface {
 	//            or %NULL 
 	// 	- file string: the source code file where the error was generated 
 	// 	- function string: the source code function where the error was generated 
-	// 	- line int: the source code line where the error was generated 
+	// 	- line int32: the source code line where the error was generated 
 	// 	- structure *Structure: optional details structure 
 	//
 	// Post an error, warning or info message on the bus from inside an element.
 	// 
 	// @type must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
 	// #GST_MESSAGE_INFO.
-	MessageFullWithDetails(MessageType, glib.Quark, int, string, string, string, string, int, *Structure)
+	MessageFullWithDetails(MessageType, glib.Quark, int32, string, string, string, string, int32, *Structure)
 	// NoMorePads wraps gst_element_no_more_pads
 	//
 	// Use this function to signal that the element does not expect any more pads
@@ -32376,6 +32823,11 @@ func UnsafeElementFromGlibNone(c unsafe.Pointer) Element {
 // UnsafeElementFromGlibFull is used to convert raw GstElement pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeElementFromGlibFull(c unsafe.Pointer) Element {
 	return gobject.UnsafeObjectFromGlibFull(c).(Element)
+}
+
+// UnsafeElementFromGlibBorrow is used to convert raw GstElement pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeElementFromGlibBorrow(c unsafe.Pointer) Element {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Element)
 }
 
 func (e *ElementInstance) upcastToGstElement() *ElementInstance {
@@ -33976,7 +34428,7 @@ func (element *ElementInstance) LostState() {
 // 
 // 	- typ MessageType: the #GstMessageType 
 // 	- domain glib.Quark: the GStreamer GError domain this message belongs to 
-// 	- code int: the GError code belonging to the domain 
+// 	- code int32: the GError code belonging to the domain 
 // 	- text string (nullable): an allocated text string to be used
 //            as a replacement for the default message connected to code,
 //            or %NULL 
@@ -33985,7 +34437,7 @@ func (element *ElementInstance) LostState() {
 //            or %NULL 
 // 	- file string: the source code file where the error was generated 
 // 	- function string: the source code function where the error was generated 
-// 	- line int: the source code line where the error was generated 
+// 	- line int32: the source code line where the error was generated 
 //
 // Post an error, warning or info message on the bus from inside an element.
 // 
@@ -33993,7 +34445,7 @@ func (element *ElementInstance) LostState() {
 // #GST_MESSAGE_INFO.
 // 
 // MT safe.
-func (element *ElementInstance) MessageFull(typ MessageType, domain glib.Quark, code int, text string, debug string, file string, function string, line int) {
+func (element *ElementInstance) MessageFull(typ MessageType, domain glib.Quark, code int32, text string, debug string, file string, function string, line int32) {
 	var carg0 *C.GstElement    // in, none, converted
 	var carg1 C.GstMessageType // in, none, casted
 	var carg2 C.GQuark         // in, none, casted, alias
@@ -34038,7 +34490,7 @@ func (element *ElementInstance) MessageFull(typ MessageType, domain glib.Quark, 
 // 
 // 	- typ MessageType: the #GstMessageType 
 // 	- domain glib.Quark: the GStreamer GError domain this message belongs to 
-// 	- code int: the GError code belonging to the domain 
+// 	- code int32: the GError code belonging to the domain 
 // 	- text string (nullable): an allocated text string to be used
 //            as a replacement for the default message connected to code,
 //            or %NULL 
@@ -34047,14 +34499,14 @@ func (element *ElementInstance) MessageFull(typ MessageType, domain glib.Quark, 
 //            or %NULL 
 // 	- file string: the source code file where the error was generated 
 // 	- function string: the source code function where the error was generated 
-// 	- line int: the source code line where the error was generated 
+// 	- line int32: the source code line where the error was generated 
 // 	- structure *Structure: optional details structure 
 //
 // Post an error, warning or info message on the bus from inside an element.
 // 
 // @type must be of #GST_MESSAGE_ERROR, #GST_MESSAGE_WARNING or
 // #GST_MESSAGE_INFO.
-func (element *ElementInstance) MessageFullWithDetails(typ MessageType, domain glib.Quark, code int, text string, debug string, file string, function string, line int, structure *Structure) {
+func (element *ElementInstance) MessageFullWithDetails(typ MessageType, domain glib.Quark, code int32, text string, debug string, file string, function string, line int32, structure *Structure) {
 	var carg0 *C.GstElement    // in, none, converted
 	var carg1 C.GstMessageType // in, none, casted
 	var carg2 C.GQuark         // in, none, casted, alias
@@ -35155,7 +35607,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var transition StateChange       // in, none, casted
 				var goret      StateChangeReturn // return, none, casted
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				transition = StateChange(carg1)
 
 				goret = overrides.ChangeState(element, transition)
@@ -35179,7 +35631,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var pending State             // out, full, casted
 				var goret   StateChangeReturn // return, none, casted
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				timeout = ClockTime(carg3)
 
 				state, pending, goret = overrides.GetState(element, timeout)
@@ -35201,7 +35653,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 			func(carg0 *C.GstElement) {
 				var element Instance // go GstElement subclass
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.NoMorePads(element)
 			},
@@ -35217,7 +35669,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var pad     Pad      // in, none, converted
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.PadAdded(element, pad)
@@ -35234,7 +35686,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var pad     Pad      // in, none, converted
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.PadRemoved(element, pad)
@@ -35252,7 +35704,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var message *Message // in, full, converted
 				var goret   bool     // return
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				message = UnsafeMessageFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.PostMessage(element, message)
@@ -35275,7 +35727,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var goret   Clock    // return, full, converted, nullable
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.ProvideClock(element)
 
@@ -35298,7 +35750,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var query   *Query   // in, none, converted
 				var goret   bool     // return
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Query(element, query)
@@ -35321,7 +35773,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var pad     Pad      // in, none, converted
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.ReleasePad(element, pad)
@@ -35341,7 +35793,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var caps    *Caps       // in, none, converted, nullable
 				var goret   Pad         // return, full, converted, nullable
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				templ = UnsafePadTemplateFromGlibNone(unsafe.Pointer(carg1))
 				if carg2 != nil {
 					name = C.GoString((*C.char)(unsafe.Pointer(carg2)))
@@ -35371,7 +35823,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var event   *Event   // in, full, converted
 				var goret   bool     // return
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.SendEvent(element, event)
@@ -35394,7 +35846,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var bus     Bus      // in, none, converted, nullable
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != nil {
 					bus = UnsafeBusFromGlibNone(unsafe.Pointer(carg1))
 				}
@@ -35414,7 +35866,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var clock   Clock    // in, none, converted, nullable
 				var goret   bool     // return
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != nil {
 					clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg1))
 				}
@@ -35439,7 +35891,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element  Instance // go GstElement subclass
 				var _context *Context // in, none, converted
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				_context = UnsafeContextFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.SetContext(element, _context)
@@ -35457,7 +35909,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var state   State             // in, none, casted
 				var goret   StateChangeReturn // return, none, casted
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				state = State(carg1)
 
 				goret = overrides.SetState(element, state)
@@ -35480,7 +35932,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var newstate State    // in, none, casted
 				var pending  State    // in, none, casted
 
-				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				oldstate = State(carg1)
 				newstate = State(carg2)
 				pending = State(carg3)
@@ -35757,6 +36209,11 @@ func UnsafeElementFactoryFromGlibNone(c unsafe.Pointer) ElementFactory {
 // UnsafeElementFactoryFromGlibFull is used to convert raw GstElementFactory pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeElementFactoryFromGlibFull(c unsafe.Pointer) ElementFactory {
 	return gobject.UnsafeObjectFromGlibFull(c).(ElementFactory)
+}
+
+// UnsafeElementFactoryFromGlibBorrow is used to convert raw GstElementFactory pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeElementFactoryFromGlibBorrow(c unsafe.Pointer) ElementFactory {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ElementFactory)
 }
 
 func (e *ElementFactoryInstance) upcastToGstElementFactory() *ElementFactoryInstance {
@@ -36468,6 +36925,11 @@ func UnsafeGhostPadFromGlibFull(c unsafe.Pointer) GhostPad {
 	return gobject.UnsafeObjectFromGlibFull(c).(GhostPad)
 }
 
+// UnsafeGhostPadFromGlibBorrow is used to convert raw GstGhostPad pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeGhostPadFromGlibBorrow(c unsafe.Pointer) GhostPad {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(GhostPad)
+}
+
 func (g *GhostPadInstance) upcastToGstGhostPad() *GhostPadInstance {
 	return g
 }
@@ -36927,6 +37389,11 @@ func UnsafeSharedTaskPoolFromGlibFull(c unsafe.Pointer) SharedTaskPool {
 	return gobject.UnsafeObjectFromGlibFull(c).(SharedTaskPool)
 }
 
+// UnsafeSharedTaskPoolFromGlibBorrow is used to convert raw GstSharedTaskPool pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeSharedTaskPoolFromGlibBorrow(c unsafe.Pointer) SharedTaskPool {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(SharedTaskPool)
+}
+
 func (s *SharedTaskPoolInstance) upcastToGstSharedTaskPool() *SharedTaskPoolInstance {
 	return s
 }
@@ -37097,6 +37564,11 @@ func UnsafeSystemClockFromGlibNone(c unsafe.Pointer) SystemClock {
 // UnsafeSystemClockFromGlibFull is used to convert raw GstSystemClock pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeSystemClockFromGlibFull(c unsafe.Pointer) SystemClock {
 	return gobject.UnsafeObjectFromGlibFull(c).(SystemClock)
+}
+
+// UnsafeSystemClockFromGlibBorrow is used to convert raw GstSystemClock pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeSystemClockFromGlibBorrow(c unsafe.Pointer) SystemClock {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(SystemClock)
 }
 
 func (s *SystemClockInstance) upcastToGstSystemClock() *SystemClockInstance {
@@ -37598,6 +38070,11 @@ func UnsafeBinFromGlibNone(c unsafe.Pointer) Bin {
 // UnsafeBinFromGlibFull is used to convert raw GstBin pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeBinFromGlibFull(c unsafe.Pointer) Bin {
 	return gobject.UnsafeObjectFromGlibFull(c).(Bin)
+}
+
+// UnsafeBinFromGlibBorrow is used to convert raw GstBin pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeBinFromGlibBorrow(c unsafe.Pointer) Bin {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Bin)
 }
 
 func (b *BinInstance) upcastToGstBin() *BinInstance {
@@ -38290,7 +38767,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var element Element  // in, none, converted
 				var goret   bool     // return
 
-				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.AddElement(bin, element)
@@ -38314,7 +38791,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var subBin Bin      // in, none, converted
 				var child  Element  // in, none, converted
 
-				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				subBin = UnsafeBinFromGlibNone(unsafe.Pointer(carg1))
 				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg2))
 
@@ -38333,7 +38810,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var subBin Bin      // in, none, converted
 				var child  Element  // in, none, converted
 
-				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				subBin = UnsafeBinFromGlibNone(unsafe.Pointer(carg1))
 				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg2))
 
@@ -38351,7 +38828,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var bin   Instance // go GstBin subclass
 				var goret bool     // return
 
-				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.DoLatency(bin)
 
@@ -38373,7 +38850,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var bin   Instance // go GstBin subclass
 				var child Element  // in, none, converted
 
-				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.ElementAdded(bin, child)
@@ -38390,7 +38867,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var bin   Instance // go GstBin subclass
 				var child Element  // in, none, converted
 
-				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.ElementRemoved(bin, child)
@@ -38407,7 +38884,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var bin     Instance // go GstBin subclass
 				var message *Message // in, full, converted
 
-				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				message = UnsafeMessageFromGlibFull(unsafe.Pointer(carg1))
 
 				overrides.HandleMessage(bin, message)
@@ -38425,7 +38902,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var element Element  // in, none, converted
 				var goret   bool     // return
 
-				bin = UnsafeBinFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.RemoveElement(bin, element)
@@ -38701,6 +39178,11 @@ func UnsafePipelineFromGlibNone(c unsafe.Pointer) Pipeline {
 // UnsafePipelineFromGlibFull is used to convert raw GstPipeline pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePipelineFromGlibFull(c unsafe.Pointer) Pipeline {
 	return gobject.UnsafeObjectFromGlibFull(c).(Pipeline)
+}
+
+// UnsafePipelineFromGlibBorrow is used to convert raw GstPipeline pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePipelineFromGlibBorrow(c unsafe.Pointer) Pipeline {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Pipeline)
 }
 
 func (p *PipelineInstance) upcastToGstPipeline() *PipelineInstance {
@@ -39112,8 +39594,11 @@ func marshalAllocationParams(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAllocationParamsFromGlibBorrow(b), nil
 }
 
-func (r *AllocationParams) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAllocationParams)
+func (r *AllocationParams) GoValueType() gobject.Type {
+	return TypeAllocationParams
+}
+
+func (r *AllocationParams) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -39290,8 +39775,11 @@ func marshalAtomicQueue(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAtomicQueueFromGlibBorrow(b), nil
 }
 
-func (r *AtomicQueue) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAtomicQueue)
+func (r *AtomicQueue) GoValueType() gobject.Type {
+	return TypeAtomicQueue
+}
+
+func (r *AtomicQueue) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -39561,8 +40049,11 @@ func marshalBuffer(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeBufferFromGlibBorrow(b), nil
 }
 
-func (r *Buffer) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBuffer)
+func (r *Buffer) GoValueType() gobject.Type {
+	return TypeBuffer
+}
+
+func (r *Buffer) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -40309,7 +40800,7 @@ func (buffer *Buffer) GetMemory(idx uint) *Memory {
 // The function takes the following parameters:
 // 
 // 	- idx uint: an index 
-// 	- length int: a length 
+// 	- length int32: a length 
 // 
 // The function returns the following values:
 // 
@@ -40319,7 +40810,7 @@ func (buffer *Buffer) GetMemory(idx uint) *Memory {
 // be merged into one large #GstMemory.
 // 
 // If @length is -1, all memory starting from @idx is merged.
-func (buffer *Buffer) GetMemoryRange(idx uint, length int) *Memory {
+func (buffer *Buffer) GetMemoryRange(idx uint, length int32) *Memory {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.guint      // in, none, casted
 	var carg2 C.gint       // in, none, casted
@@ -40510,7 +41001,7 @@ func (buffer *Buffer) GetSizes() (uint, uint, uint) {
 // The function takes the following parameters:
 // 
 // 	- idx uint: an index 
-// 	- length int: a length 
+// 	- length int32: a length 
 // 
 // The function returns the following values:
 // 
@@ -40526,7 +41017,7 @@ func (buffer *Buffer) GetSizes() (uint, uint, uint) {
 // @length -1.
 // @offset and @maxsize can be used to resize the buffer memory blocks with
 // gst_buffer_resize_range().
-func (buffer *Buffer) GetSizesRange(idx uint, length int) (uint, uint, uint) {
+func (buffer *Buffer) GetSizesRange(idx uint, length int32) (uint, uint, uint) {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.guint      // in, none, casted
 	var carg2 C.gint       // in, none, casted
@@ -40590,7 +41081,7 @@ func (buffer *Buffer) HasFlags(flags BufferFlags) bool {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: the index to add the memory at, or -1 to append it to the end 
+// 	- idx int32: the index to add the memory at, or -1 to append it to the end 
 // 	- mem *Memory: a #GstMemory. 
 //
 // Inserts the memory block @mem into @buffer at @idx. This function takes ownership
@@ -40599,7 +41090,7 @@ func (buffer *Buffer) HasFlags(flags BufferFlags) bool {
 // Only gst_buffer_get_max_memory() can be added to a buffer. If more memory is
 // added, existing memory blocks will automatically be merged to make room for
 // the new memory.
-func (buffer *Buffer) InsertMemory(idx int, mem *Memory) {
+func (buffer *Buffer) InsertMemory(idx int32, mem *Memory) {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.gint       // in, none, casted
 	var carg2 *C.GstMemory // in, full, converted
@@ -40647,7 +41138,7 @@ func (buffer *Buffer) IsAllMemoryWritable() bool {
 // The function takes the following parameters:
 // 
 // 	- idx uint: an index 
-// 	- length int: a length, should not be 0 
+// 	- length int32: a length, should not be 0 
 // 
 // The function returns the following values:
 // 
@@ -40659,7 +41150,7 @@ func (buffer *Buffer) IsAllMemoryWritable() bool {
 // 
 // Note that this function does not check if @buffer is writable, use
 // gst_buffer_is_writable() to check that if needed.
-func (buffer *Buffer) IsMemoryRangeWritable(idx uint, length int) bool {
+func (buffer *Buffer) IsMemoryRangeWritable(idx uint, length int32) bool {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.guint      // in, none, casted
 	var carg2 C.gint       // in, none, casted
@@ -40839,12 +41330,12 @@ func (buffer *Buffer) RemoveMemory(idx uint) {
 // The function takes the following parameters:
 // 
 // 	- idx uint: an index 
-// 	- length int: a length 
+// 	- length int32: a length 
 //
 // Removes @length memory blocks in @buffer starting from @idx.
 // 
 // @length can be -1, in which case all memory starting from @idx is removed.
-func (buffer *Buffer) RemoveMemoryRange(idx uint, length int) {
+func (buffer *Buffer) RemoveMemoryRange(idx uint, length int32) {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.guint      // in, none, casted
 	var carg2 C.gint       // in, none, casted
@@ -40938,7 +41429,7 @@ func (buffer *Buffer) ReplaceMemory(idx uint, mem *Memory) {
 // The function takes the following parameters:
 // 
 // 	- idx uint: an index 
-// 	- length int: a length, should not be 0 
+// 	- length int32: a length, should not be 0 
 // 	- mem *Memory: a #GstMemory 
 //
 // Replaces @length memory blocks in @buffer starting at @idx with @mem.
@@ -40947,7 +41438,7 @@ func (buffer *Buffer) ReplaceMemory(idx uint, mem *Memory) {
 // replaced with @mem.
 // 
 // @buffer should be writable.
-func (buffer *Buffer) ReplaceMemoryRange(idx uint, length int, mem *Memory) {
+func (buffer *Buffer) ReplaceMemoryRange(idx uint, length int32, mem *Memory) {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.guint      // in, none, casted
 	var carg2 C.gint       // in, none, casted
@@ -40993,7 +41484,7 @@ func (buffer *Buffer) Resize(offset int, size int) {
 // The function takes the following parameters:
 // 
 // 	- idx uint: an index 
-// 	- length int: a length 
+// 	- length int32: a length 
 // 	- offset int: the offset adjustment 
 // 	- size int: the new size or -1 to just adjust the offset 
 // 
@@ -41003,7 +41494,7 @@ func (buffer *Buffer) Resize(offset int, size int) {
 //
 // Sets the total size of the @length memory blocks starting at @idx in
 // @buffer
-func (buffer *Buffer) ResizeRange(idx uint, length int, offset int, size int) bool {
+func (buffer *Buffer) ResizeRange(idx uint, length int32, offset int, size int) bool {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.guint      // in, none, casted
 	var carg2 C.gint       // in, none, casted
@@ -41142,8 +41633,11 @@ func marshalBufferList(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeBufferListFromGlibBorrow(b), nil
 }
 
-func (r *BufferList) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBufferList)
+func (r *BufferList) GoValueType() gobject.Type {
+	return TypeBufferList
+}
+
+func (r *BufferList) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -41340,7 +41834,7 @@ func (list *BufferList) ForEach(fn BufferListFunc) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Buffer (nullable) 
+// 	- goret *Buffer 
 //
 // Gets the buffer at @idx.
 // 
@@ -41349,7 +41843,7 @@ func (list *BufferList) ForEach(fn BufferListFunc) bool {
 func (list *BufferList) Get(idx uint) *Buffer {
 	var carg0 *C.GstBufferList // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstBuffer     // return, borrow, converted, nullable
+	var cret  *C.GstBuffer     // return, borrow, converted
 
 	carg0 = (*C.GstBufferList)(UnsafeBufferListToGlibNone(list))
 	carg1 = C.guint(idx)
@@ -41360,10 +41854,8 @@ func (list *BufferList) Get(idx uint) *Buffer {
 
 	var goret *Buffer
 
-	if cret != nil {
-		goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
-		runtime.AddCleanup(goret, func(_ *BufferList) {}, list)
-	}
+	goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *BufferList) {}, list)
 
 	return goret
 }
@@ -41376,7 +41868,7 @@ func (list *BufferList) Get(idx uint) *Buffer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Buffer (nullable) 
+// 	- goret *Buffer 
 //
 // Gets the buffer at @idx, ensuring it is a writable buffer.
 // 
@@ -41385,7 +41877,7 @@ func (list *BufferList) Get(idx uint) *Buffer {
 func (list *BufferList) GetWritable(idx uint) *Buffer {
 	var carg0 *C.GstBufferList // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstBuffer     // return, borrow, converted, nullable
+	var cret  *C.GstBuffer     // return, borrow, converted
 
 	carg0 = (*C.GstBufferList)(UnsafeBufferListToGlibNone(list))
 	carg1 = C.guint(idx)
@@ -41396,10 +41888,8 @@ func (list *BufferList) GetWritable(idx uint) *Buffer {
 
 	var goret *Buffer
 
-	if cret != nil {
-		goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
-		runtime.AddCleanup(goret, func(_ *BufferList) {}, list)
-	}
+	goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *BufferList) {}, list)
 
 	return goret
 }
@@ -41408,14 +41898,14 @@ func (list *BufferList) GetWritable(idx uint) *Buffer {
 // 
 // The function takes the following parameters:
 // 
-// 	- idx int: the index 
+// 	- idx int32: the index 
 // 	- buffer *Buffer: a #GstBuffer 
 //
 // Inserts @buffer at @idx in @list. Other buffers are moved to make room for
 // this new buffer.
 // 
 // A -1 value for @idx will append the buffer at the end.
-func (list *BufferList) Insert(idx int, buffer *Buffer) {
+func (list *BufferList) Insert(idx int32, buffer *Buffer) {
 	var carg0 *C.GstBufferList // in, none, converted
 	var carg1 C.gint           // in, none, casted
 	var carg2 *C.GstBuffer     // in, full, converted
@@ -41747,8 +42237,11 @@ func marshalCaps(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeCapsFromGlibBorrow(b), nil
 }
 
-func (r *Caps) InitGoValue(v *gobject.Value) {
-	v.Init(TypeCaps)
+func (r *Caps) GoValueType() gobject.Type {
+	return TypeCaps
+}
+
+func (r *Caps) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -41864,6 +42357,66 @@ func NewCapsEmptySimple(mediaType string) *Caps {
 	defer C.free(unsafe.Pointer(carg1))
 
 	cret = C.gst_caps_new_empty_simple(carg1)
+	runtime.KeepAlive(mediaType)
+
+	var goret *Caps
+
+	goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// NewCapsIDStrEmptySimple wraps gst_caps_new_id_str_empty_simple
+// 
+// The function takes the following parameters:
+// 
+// 	- mediaType *IdStr: the media type of the structure 
+// 
+// The function returns the following values:
+// 
+// 	- goret *Caps 
+//
+// Creates a new #GstCaps that contains one #GstStructure with name
+// @media_type.
+func NewCapsIDStrEmptySimple(mediaType *IdStr) *Caps {
+	var carg1 *C.GstIdStr // in, none, converted
+	var cret  *C.GstCaps  // return, full, converted
+
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(mediaType))
+
+	cret = C.gst_caps_new_id_str_empty_simple(carg1)
+	runtime.KeepAlive(mediaType)
+
+	var goret *Caps
+
+	goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// NewCapsStaticStrEmptySimple wraps gst_caps_new_static_str_empty_simple
+// 
+// The function takes the following parameters:
+// 
+// 	- mediaType string: the media type of the structure 
+// 
+// The function returns the following values:
+// 
+// 	- goret *Caps 
+//
+// Creates a new #GstCaps that contains one #GstStructure with name
+// @media_type.
+// 
+// @media_type needs to be valid for the remaining lifetime of the process, e.g.
+// has to be a static string.
+func NewCapsStaticStrEmptySimple(mediaType string) *Caps {
+	var carg1 *C.char    // in, none, string, casted *C.gchar
+	var cret  *C.GstCaps // return, full, converted
+
+	carg1 = (*C.char)(unsafe.Pointer(C.CString(mediaType)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_caps_new_static_str_empty_simple(carg1)
 	runtime.KeepAlive(mediaType)
 
 	var goret *Caps
@@ -42265,6 +42818,31 @@ func (caps *Caps) GetStructure(index uint) *Structure {
 	runtime.AddCleanup(goret, func(_ *Caps) {}, caps)
 
 	return goret
+}
+
+// IDStrSetValue wraps gst_caps_id_str_set_value
+// 
+// The function takes the following parameters:
+// 
+// 	- field *IdStr: name of the field to set 
+// 	- value *gobject.Value: value to set the field to 
+//
+// Sets the given @field on all structures of @caps to the given @value.
+// This is a convenience function for calling gst_structure_set_value() on
+// all structures of @caps.
+func (caps *Caps) IDStrSetValue(field *IdStr, value *gobject.Value) {
+	var carg0 *C.GstCaps  // in, none, converted
+	var carg1 *C.GstIdStr // in, none, converted
+	var carg2 *C.GValue   // in, none, converted
+
+	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(field))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
+
+	C.gst_caps_id_str_set_value(carg0, carg1, carg2)
+	runtime.KeepAlive(caps)
+	runtime.KeepAlive(field)
+	runtime.KeepAlive(value)
 }
 
 // Intersect wraps gst_caps_intersect
@@ -42942,6 +43520,35 @@ func (caps *Caps) SetValue(field string, value *gobject.Value) {
 	runtime.KeepAlive(value)
 }
 
+// SetValueStaticStr wraps gst_caps_set_value_static_str
+// 
+// The function takes the following parameters:
+// 
+// 	- field string: name of the field to set 
+// 	- value *gobject.Value: value to set the field to 
+//
+// Sets the given @field on all structures of @caps to the given @value.
+// This is a convenience function for calling gst_structure_set_value() on
+// all structures of @caps.
+// 
+// @field needs to be valid for the remaining lifetime of the process, e.g.
+// has to be a static string.
+func (caps *Caps) SetValueStaticStr(field string, value *gobject.Value) {
+	var carg0 *C.GstCaps // in, none, converted
+	var carg1 *C.char    // in, none, string, casted *C.gchar
+	var carg2 *C.GValue  // in, none, converted
+
+	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
+	carg1 = (*C.char)(unsafe.Pointer(C.CString(field)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
+
+	C.gst_caps_set_value_static_str(carg0, carg1, carg2)
+	runtime.KeepAlive(caps)
+	runtime.KeepAlive(field)
+	runtime.KeepAlive(value)
+}
+
 // Simplify wraps gst_caps_simplify
 // 
 // The function returns the following values:
@@ -43143,8 +43750,11 @@ func marshalCapsFeatures(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeCapsFeaturesFromGlibBorrow(b), nil
 }
 
-func (r *CapsFeatures) InitGoValue(v *gobject.Value) {
-	v.Init(TypeCapsFeatures)
+func (r *CapsFeatures) GoValueType() gobject.Type {
+	return TypeCapsFeatures
+}
+
+func (r *CapsFeatures) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -43267,6 +43877,37 @@ func NewCapsFeaturesSingle(feature string) *CapsFeatures {
 	return goret
 }
 
+// NewCapsFeaturesSingleStaticStr wraps gst_caps_features_new_single_static_str
+// 
+// The function takes the following parameters:
+// 
+// 	- feature string: The feature 
+// 
+// The function returns the following values:
+// 
+// 	- goret *CapsFeatures 
+//
+// Creates a new #GstCapsFeatures with a single feature.
+// 
+// @feature needs to be valid for the remaining lifetime of the process, e.g. has
+// to be a static string.
+func NewCapsFeaturesSingleStaticStr(feature string) *CapsFeatures {
+	var carg1 *C.gchar           // in, none, string
+	var cret  *C.GstCapsFeatures // return, full, converted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_caps_features_new_single_static_str(carg1)
+	runtime.KeepAlive(feature)
+
+	var goret *CapsFeatures
+
+	goret = UnsafeCapsFeaturesFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
 // CapsFeaturesFromString wraps gst_caps_features_from_string
 // 
 // The function takes the following parameters:
@@ -43324,6 +43965,8 @@ func (features *CapsFeatures) Add(feature string) {
 // 	- feature glib.Quark: a feature. 
 //
 // Adds @feature to @features.
+//
+// Deprecated: (since 1.26.0) Use gst_caps_features_add_id_str().
 func (features *CapsFeatures) AddID(feature glib.Quark) {
 	var carg0 *C.GstCapsFeatures // in, none, converted
 	var carg1 C.GQuark           // in, none, casted, alias
@@ -43332,6 +43975,48 @@ func (features *CapsFeatures) AddID(feature glib.Quark) {
 	carg1 = C.GQuark(feature)
 
 	C.gst_caps_features_add_id(carg0, carg1)
+	runtime.KeepAlive(features)
+	runtime.KeepAlive(feature)
+}
+
+// AddIDStr wraps gst_caps_features_add_id_str
+// 
+// The function takes the following parameters:
+// 
+// 	- feature *IdStr: a feature. 
+//
+// Adds @feature to @features.
+func (features *CapsFeatures) AddIDStr(feature *IdStr) {
+	var carg0 *C.GstCapsFeatures // in, none, converted
+	var carg1 *C.GstIdStr        // in, none, converted
+
+	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(feature))
+
+	C.gst_caps_features_add_id_str(carg0, carg1)
+	runtime.KeepAlive(features)
+	runtime.KeepAlive(feature)
+}
+
+// AddStaticStr wraps gst_caps_features_add_static_str
+// 
+// The function takes the following parameters:
+// 
+// 	- feature string: a feature. 
+//
+// Adds @feature to @features.
+// 
+// @feature needs to be valid for the remaining lifetime of the process, e.g. has
+// to be a static string.
+func (features *CapsFeatures) AddStaticStr(feature string) {
+	var carg0 *C.GstCapsFeatures // in, none, converted
+	var carg1 *C.gchar           // in, none, string
+
+	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	C.gst_caps_features_add_static_str(carg0, carg1)
 	runtime.KeepAlive(features)
 	runtime.KeepAlive(feature)
 }
@@ -43380,6 +44065,8 @@ func (features *CapsFeatures) Contains(feature string) bool {
 // 	- goret bool 
 //
 // Checks if @features contains @feature.
+//
+// Deprecated: (since 1.26.0) Use gst_caps_features_contains_id_str().
 func (features *CapsFeatures) ContainsID(feature glib.Quark) bool {
 	var carg0 *C.GstCapsFeatures // in, none, converted
 	var carg1 C.GQuark           // in, none, casted, alias
@@ -43389,6 +44076,38 @@ func (features *CapsFeatures) ContainsID(feature glib.Quark) bool {
 	carg1 = C.GQuark(feature)
 
 	cret = C.gst_caps_features_contains_id(carg0, carg1)
+	runtime.KeepAlive(features)
+	runtime.KeepAlive(feature)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ContainsIDStr wraps gst_caps_features_contains_id_str
+// 
+// The function takes the following parameters:
+// 
+// 	- feature *IdStr: a feature 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Checks if @features contains @feature.
+func (features *CapsFeatures) ContainsIDStr(feature *IdStr) bool {
+	var carg0 *C.GstCapsFeatures // in, none, converted
+	var carg1 *C.GstIdStr        // in, none, converted
+	var cret  C.gboolean         // return
+
+	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(feature))
+
+	cret = C.gst_caps_features_contains_id_str(carg0, carg1)
 	runtime.KeepAlive(features)
 	runtime.KeepAlive(feature)
 
@@ -43467,6 +44186,8 @@ func (features *CapsFeatures) GetNth(i uint) string {
 // 	- goret glib.Quark 
 //
 // Returns the @i-th feature of @features.
+//
+// Deprecated: (since 1.26.0) Use gst_caps_features_get_nth_id_str().
 func (features *CapsFeatures) GetNthID(i uint) glib.Quark {
 	var carg0 *C.GstCapsFeatures // in, none, converted
 	var carg1 C.guint            // in, none, casted
@@ -43482,6 +44203,36 @@ func (features *CapsFeatures) GetNthID(i uint) glib.Quark {
 	var goret glib.Quark
 
 	goret = glib.Quark(cret)
+
+	return goret
+}
+
+// GetNthIDStr wraps gst_caps_features_get_nth_id_str
+// 
+// The function takes the following parameters:
+// 
+// 	- i uint: index of the feature 
+// 
+// The function returns the following values:
+// 
+// 	- goret *IdStr 
+//
+// Returns the @i-th feature of @features.
+func (features *CapsFeatures) GetNthIDStr(i uint) *IdStr {
+	var carg0 *C.GstCapsFeatures // in, none, converted
+	var carg1 C.guint            // in, none, casted
+	var cret  *C.GstIdStr        // return, none, converted
+
+	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
+	carg1 = C.guint(i)
+
+	cret = C.gst_caps_features_get_nth_id_str(carg0, carg1)
+	runtime.KeepAlive(features)
+	runtime.KeepAlive(i)
+
+	var goret *IdStr
+
+	goret = UnsafeIdStrFromGlibNone(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -43593,6 +44344,8 @@ func (features *CapsFeatures) Remove(feature string) {
 // 	- feature glib.Quark: a feature. 
 //
 // Removes @feature from @features.
+//
+// Deprecated: (since 1.26.0) Use gst_caps_features_remove_id_str().
 func (features *CapsFeatures) RemoveID(feature glib.Quark) {
 	var carg0 *C.GstCapsFeatures // in, none, converted
 	var carg1 C.GQuark           // in, none, casted, alias
@@ -43605,11 +44358,30 @@ func (features *CapsFeatures) RemoveID(feature glib.Quark) {
 	runtime.KeepAlive(feature)
 }
 
+// RemoveIDStr wraps gst_caps_features_remove_id_str
+// 
+// The function takes the following parameters:
+// 
+// 	- feature *IdStr: a feature. 
+//
+// Removes @feature from @features.
+func (features *CapsFeatures) RemoveIDStr(feature *IdStr) {
+	var carg0 *C.GstCapsFeatures // in, none, converted
+	var carg1 *C.GstIdStr        // in, none, converted
+
+	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(feature))
+
+	C.gst_caps_features_remove_id_str(carg0, carg1)
+	runtime.KeepAlive(features)
+	runtime.KeepAlive(feature)
+}
+
 // SetParentRefcount wraps gst_caps_features_set_parent_refcount
 // 
 // The function takes the following parameters:
 // 
-// 	- refcount *int: a pointer to the parent's refcount 
+// 	- refcount *int32: a pointer to the parent's refcount 
 // 
 // The function returns the following values:
 // 
@@ -43619,7 +44391,7 @@ func (features *CapsFeatures) RemoveID(feature glib.Quark) {
 // determine whether a caps features is mutable or not. This function should only be
 // called by code implementing parent objects of #GstCapsFeatures, as described in
 // [the MT refcounting design document](additional/design/MT-refcounting.md).
-func (features *CapsFeatures) SetParentRefcount(refcount *int) bool {
+func (features *CapsFeatures) SetParentRefcount(refcount *int32) bool {
 	var carg0 *C.GstCapsFeatures // in, none, converted
 	var carg1 *C.gint            // in, transfer: none, C Pointers: 1, Name: gint
 	var cret  C.gboolean         // return
@@ -43627,7 +44399,7 @@ func (features *CapsFeatures) SetParentRefcount(refcount *int) bool {
 	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
 	_ = refcount
 	_ = carg1
-	panic("unimplemented conversion of *int (gint*)")
+	panic("unimplemented conversion of *int32 (gint*)")
 
 	cret = C.gst_caps_features_set_parent_refcount(carg0, carg1)
 	runtime.KeepAlive(features)
@@ -43891,8 +44663,11 @@ func marshalContext(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeContextFromGlibBorrow(b), nil
 }
 
-func (r *Context) InitGoValue(v *gobject.Value) {
-	v.Init(TypeContext)
+func (r *Context) GoValueType() gobject.Type {
+	return TypeContext
+}
+
+func (r *Context) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -44339,8 +45114,11 @@ func marshalDateTime(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDateTimeFromGlibBorrow(b), nil
 }
 
-func (r *DateTime) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDateTime)
+func (r *DateTime) GoValueType() gobject.Type {
+	return TypeDateTime
+}
+
+func (r *DateTime) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -44407,11 +45185,11 @@ func UnsafeDateTimeToGlibFull(d *DateTime) unsafe.Pointer {
 // The function takes the following parameters:
 // 
 // 	- tzoffset float32: Offset from UTC in hours. 
-// 	- year int: the gregorian year 
-// 	- month int: the gregorian month 
-// 	- day int: the day of the gregorian month 
-// 	- hour int: the hour of the day 
-// 	- minute int: the minute of the hour 
+// 	- year int32: the gregorian year 
+// 	- month int32: the gregorian month 
+// 	- day int32: the day of the gregorian month 
+// 	- hour int32: the hour of the day 
+// 	- minute int32: the minute of the hour 
 // 	- seconds float64: the second of the minute 
 // 
 // The function returns the following values:
@@ -44432,7 +45210,7 @@ func UnsafeDateTimeToGlibFull(d *DateTime) unsafe.Pointer {
 // if @month == -1, then #GstDateTime will be created only for @year. If
 // @day == -1, then #GstDateTime will be created for @year and @month and
 // so on.
-func NewDateTime(tzoffset float32, year int, month int, day int, hour int, minute int, seconds float64) *DateTime {
+func NewDateTime(tzoffset float32, year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
 	var carg1 C.gfloat       // in, none, casted
 	var carg2 C.gint         // in, none, casted
 	var carg3 C.gint         // in, none, casted
@@ -44660,11 +45438,11 @@ func NewDateTimeFromUnixEpochUTCUsecs(usecs int64) *DateTime {
 // 
 // The function takes the following parameters:
 // 
-// 	- year int: the gregorian year 
-// 	- month int: the gregorian month, or -1 
-// 	- day int: the day of the gregorian month, or -1 
-// 	- hour int: the hour of the day, or -1 
-// 	- minute int: the minute of the hour, or -1 
+// 	- year int32: the gregorian year 
+// 	- month int32: the gregorian month, or -1 
+// 	- day int32: the day of the gregorian month, or -1 
+// 	- hour int32: the hour of the day, or -1 
+// 	- minute int32: the minute of the hour, or -1 
 // 	- seconds float64: the second of the minute, or -1 
 // 
 // The function returns the following values:
@@ -44686,7 +45464,7 @@ func NewDateTimeFromUnixEpochUTCUsecs(usecs int64) *DateTime {
 // If @hour is -1, then the #GstDateTime created will only contain @year and
 // @month and @day, and the time fields will be considered not set. In this
 // case @minute and @seconds should also be -1.
-func NewDateTimeLocalTime(year int, month int, day int, hour int, minute int, seconds float64) *DateTime {
+func NewDateTimeLocalTime(year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
 	var carg1 C.gint         // in, none, casted
 	var carg2 C.gint         // in, none, casted
 	var carg3 C.gint         // in, none, casted
@@ -44766,7 +45544,7 @@ func NewDateTimeNowUTC() *DateTime {
 // 
 // The function takes the following parameters:
 // 
-// 	- year int: the gregorian year 
+// 	- year int32: the gregorian year 
 // 
 // The function returns the following values:
 // 
@@ -44776,7 +45554,7 @@ func NewDateTimeNowUTC() *DateTime {
 // in the local timezone.
 // 
 // @year should be from 1 to 9999.
-func NewDateTimeY(year int) *DateTime {
+func NewDateTimeY(year int32) *DateTime {
 	var carg1 C.gint         // in, none, casted
 	var cret  *C.GstDateTime // return, full, converted, nullable
 
@@ -44798,8 +45576,8 @@ func NewDateTimeY(year int) *DateTime {
 // 
 // The function takes the following parameters:
 // 
-// 	- year int: the gregorian year 
-// 	- month int: the gregorian month 
+// 	- year int32: the gregorian year 
+// 	- month int32: the gregorian month 
 // 
 // The function returns the following values:
 // 
@@ -44812,7 +45590,7 @@ func NewDateTimeY(year int) *DateTime {
 // 
 // If value is -1 then all over value will be ignored. For example
 // if @month == -1, then #GstDateTime will created only for @year.
-func NewDateTimeYM(year int, month int) *DateTime {
+func NewDateTimeYM(year int32, month int32) *DateTime {
 	var carg1 C.gint         // in, none, casted
 	var carg2 C.gint         // in, none, casted
 	var cret  *C.GstDateTime // return, full, converted, nullable
@@ -44837,9 +45615,9 @@ func NewDateTimeYM(year int, month int) *DateTime {
 // 
 // The function takes the following parameters:
 // 
-// 	- year int: the gregorian year 
-// 	- month int: the gregorian month 
-// 	- day int: the day of the gregorian month 
+// 	- year int32: the gregorian year 
+// 	- month int32: the gregorian month 
+// 	- day int32: the day of the gregorian month 
 // 
 // The function returns the following values:
 // 
@@ -44855,7 +45633,7 @@ func NewDateTimeYM(year int, month int) *DateTime {
 // if @month == -1, then #GstDateTime will created only for @year. If
 // @day == -1, then #GstDateTime will created for @year and @month and
 // so on.
-func NewDateTimeYmd(year int, month int, day int) *DateTime {
+func NewDateTimeYmd(year int32, month int32, day int32) *DateTime {
 	var carg1 C.gint         // in, none, casted
 	var carg2 C.gint         // in, none, casted
 	var carg3 C.gint         // in, none, casted
@@ -44883,10 +45661,10 @@ func NewDateTimeYmd(year int, month int, day int) *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Returns the day of the month of this #GstDateTime.
-func (datetime *DateTime) GetDay() int {
+func (datetime *DateTime) GetDay() int32 {
 	var carg0 *C.GstDateTime // in, none, converted
 	var cret  C.gint         // return, none, casted
 
@@ -44895,9 +45673,9 @@ func (datetime *DateTime) GetDay() int {
 	cret = C.gst_date_time_get_day(carg0)
 	runtime.KeepAlive(datetime)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -44906,11 +45684,11 @@ func (datetime *DateTime) GetDay() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Retrieves the hour of the day represented by @datetime in the gregorian
 // calendar. The return is in the range of 0 to 23.
-func (datetime *DateTime) GetHour() int {
+func (datetime *DateTime) GetHour() int32 {
 	var carg0 *C.GstDateTime // in, none, converted
 	var cret  C.gint         // return, none, casted
 
@@ -44919,9 +45697,9 @@ func (datetime *DateTime) GetHour() int {
 	cret = C.gst_date_time_get_hour(carg0)
 	runtime.KeepAlive(datetime)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -44930,11 +45708,11 @@ func (datetime *DateTime) GetHour() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Retrieves the fractional part of the seconds in microseconds represented by
 // @datetime in the gregorian calendar.
-func (datetime *DateTime) GetMicrosecond() int {
+func (datetime *DateTime) GetMicrosecond() int32 {
 	var carg0 *C.GstDateTime // in, none, converted
 	var cret  C.gint         // return, none, casted
 
@@ -44943,9 +45721,9 @@ func (datetime *DateTime) GetMicrosecond() int {
 	cret = C.gst_date_time_get_microsecond(carg0)
 	runtime.KeepAlive(datetime)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -44954,11 +45732,11 @@ func (datetime *DateTime) GetMicrosecond() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Retrieves the minute of the hour represented by @datetime in the gregorian
 // calendar.
-func (datetime *DateTime) GetMinute() int {
+func (datetime *DateTime) GetMinute() int32 {
 	var carg0 *C.GstDateTime // in, none, converted
 	var cret  C.gint         // return, none, casted
 
@@ -44967,9 +45745,9 @@ func (datetime *DateTime) GetMinute() int {
 	cret = C.gst_date_time_get_minute(carg0)
 	runtime.KeepAlive(datetime)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -44978,10 +45756,10 @@ func (datetime *DateTime) GetMinute() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Returns the month of this #GstDateTime. January is 1, February is 2, etc..
-func (datetime *DateTime) GetMonth() int {
+func (datetime *DateTime) GetMonth() int32 {
 	var carg0 *C.GstDateTime // in, none, converted
 	var cret  C.gint         // return, none, casted
 
@@ -44990,9 +45768,9 @@ func (datetime *DateTime) GetMonth() int {
 	cret = C.gst_date_time_get_month(carg0)
 	runtime.KeepAlive(datetime)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -45001,11 +45779,11 @@ func (datetime *DateTime) GetMonth() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Retrieves the second of the minute represented by @datetime in the gregorian
 // calendar.
-func (datetime *DateTime) GetSecond() int {
+func (datetime *DateTime) GetSecond() int32 {
 	var carg0 *C.GstDateTime // in, none, converted
 	var cret  C.gint         // return, none, casted
 
@@ -45014,9 +45792,9 @@ func (datetime *DateTime) GetSecond() int {
 	cret = C.gst_date_time_get_second(carg0)
 	runtime.KeepAlive(datetime)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -45051,11 +45829,11 @@ func (datetime *DateTime) GetTimeZoneOffset() float32 {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Returns the year of this #GstDateTime.
 // Call gst_date_time_has_year() before, to avoid warnings.
-func (datetime *DateTime) GetYear() int {
+func (datetime *DateTime) GetYear() int32 {
 	var carg0 *C.GstDateTime // in, none, converted
 	var cret  C.gint         // return, none, casted
 
@@ -45064,9 +45842,9 @@ func (datetime *DateTime) GetYear() int {
 	cret = C.gst_date_time_get_year(carg0)
 	runtime.KeepAlive(datetime)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -46371,8 +47149,11 @@ func marshalEvent(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeEventFromGlibBorrow(b), nil
 }
 
-func (r *Event) InitGoValue(v *gobject.Value) {
-	v.Init(TypeEvent)
+func (r *Event) GoValueType() gobject.Type {
+	return TypeEvent
+}
+
+func (r *Event) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -47631,6 +48412,8 @@ func (event *Event) HasName(name string) bool {
 //
 // Checks if @event has the given @name. This function is usually used to
 // check the name of a custom event.
+//
+// Deprecated: (since 1.26.0) Use gst_event_has_name().
 func (event *Event) HasNameID(name glib.Quark) bool {
 	var carg0 *C.GstEvent // in, none, converted
 	var carg1 C.GQuark    // in, none, casted, alias
@@ -48638,6 +49421,447 @@ func (g *GhostPadClass) ParentClass() *ProxyPadClass {
 	return parent
 }
 
+// IdStr wraps GstIdStr
+//
+// A #GstIdStr is string type optimized for short strings and used for structure
+// names, structure field names and in other places.
+// 
+// Strings up to 16 bytes (including NUL terminator) are stored inline, other
+// strings are stored on the heap.
+// 
+// ```cpp
+// GstIdStr s = GST_ID_STR_INIT;
+// 
+// gst_id_str_set (&amp;s, "Hello, World!");
+// g_print ("%s\n", gst_id_str_as_str (&amp;s));
+// 
+// gst_id_str_clear (&amp;s);
+// ```
+type IdStr struct {
+	*idStr
+}
+
+// idStr is the struct that's finalized
+type idStr struct {
+	native *C.GstIdStr
+}
+
+var _ gobject.GoValueInitializer = (*IdStr)(nil)
+
+func marshalIdStr(p unsafe.Pointer) (interface{}, error) {
+	b := gobject.ValueFromNative(p).Boxed()
+	return UnsafeIdStrFromGlibBorrow(b), nil
+}
+
+func (r *IdStr) GoValueType() gobject.Type {
+	return TypeIdStr
+}
+
+func (r *IdStr) SetGoValue(v *gobject.Value) {
+	v.SetBoxed(unsafe.Pointer(r.native))
+}
+
+// UnsafeIdStrFromGlibBorrow is used to convert raw C.GstIdStr pointers to go. This is used by the bindings internally.
+func UnsafeIdStrFromGlibBorrow(p unsafe.Pointer) *IdStr {
+	return &IdStr{&idStr{(*C.GstIdStr)(p)}}
+}
+
+// UnsafeIdStrFromGlibNone is used to convert raw C.GstIdStr pointers to go without transferring ownership. This is used by the bindings internally.
+func UnsafeIdStrFromGlibNone(p unsafe.Pointer) *IdStr {
+	// FIXME: this has no ref function, what should we do here?
+	wrapped := UnsafeIdStrFromGlibBorrow(p)
+	runtime.SetFinalizer(
+		wrapped.idStr,
+		func (intern *idStr) {
+			C.gst_id_str_free(intern.native)
+		},
+	)
+	return wrapped
+}
+
+// UnsafeIdStrFromGlibFull is used to convert raw C.GstIdStr pointers to go while taking ownership. This is used by the bindings internally.
+func UnsafeIdStrFromGlibFull(p unsafe.Pointer) *IdStr {
+	wrapped := UnsafeIdStrFromGlibBorrow(p)
+	runtime.SetFinalizer(
+		wrapped.idStr,
+		func (intern *idStr) {
+			C.gst_id_str_free(intern.native)
+		},
+	)
+	return wrapped
+}
+
+// UnsafeIdStrFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// 
+// After this is called, no other method on [IdStr] is expected to work anymore.
+func UnsafeIdStrFree(i *IdStr) {
+	C.gst_id_str_free(i.native)
+}
+
+// UnsafeIdStrToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func UnsafeIdStrToGlibNone(i *IdStr) unsafe.Pointer {
+	return unsafe.Pointer(i.native)
+}
+
+// UnsafeIdStrToGlibFull returns the underlying C pointer and gives up ownership.
+// This is used by the bindings internally.
+func UnsafeIdStrToGlibFull(i *IdStr) unsafe.Pointer {
+	runtime.SetFinalizer(i.idStr, nil)
+	_p := unsafe.Pointer(i.native)
+	i.native = nil // IdStr is invalid from here on
+	return _p
+}
+
+// NewIdStr wraps gst_id_str_new
+// 
+// The function returns the following values:
+// 
+// 	- goret *IdStr 
+//
+// Returns a newly heap allocated empty string.
+func NewIdStr() *IdStr {
+	var cret *C.GstIdStr // return, full, converted
+
+	cret = C.gst_id_str_new()
+
+	var goret *IdStr
+
+	goret = UnsafeIdStrFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// AsStr wraps gst_id_str_as_str
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+func (s *IdStr) AsStr() string {
+	var carg0 *C.GstIdStr // in, none, converted
+	var cret  *C.gchar    // return, none, string
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+
+	cret = C.gst_id_str_as_str(carg0)
+	runtime.KeepAlive(s)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
+// Clear wraps gst_id_str_clear
+//
+// Clears @s and sets it to the empty string.
+func (s *IdStr) Clear() {
+	var carg0 *C.GstIdStr // in, none, converted
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+
+	C.gst_id_str_clear(carg0)
+	runtime.KeepAlive(s)
+}
+
+// Copy wraps gst_id_str_copy
+// 
+// The function returns the following values:
+// 
+// 	- goret *IdStr 
+//
+// Copies @s into newly allocated heap memory.
+func (s *IdStr) Copy() *IdStr {
+	var carg0 *C.GstIdStr // in, none, converted
+	var cret  *C.GstIdStr // return, full, converted
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+
+	cret = C.gst_id_str_copy(carg0)
+	runtime.KeepAlive(s)
+
+	var goret *IdStr
+
+	goret = UnsafeIdStrFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// CopyInto wraps gst_id_str_copy_into
+// 
+// The function takes the following parameters:
+// 
+// 	- s *IdStr: The source %GstIdStr 
+//
+// Copies @s into @d.
+func (d *IdStr) CopyInto(s *IdStr) {
+	var carg0 *C.GstIdStr // in, none, converted
+	var carg1 *C.GstIdStr // in, none, converted
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(d))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+
+	C.gst_id_str_copy_into(carg0, carg1)
+	runtime.KeepAlive(d)
+	runtime.KeepAlive(s)
+}
+
+// GetLen wraps gst_id_str_get_len
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// Returns the length of @s, exluding the NUL-terminator. This is equivalent to
+// calling `strcmp()` but potentially faster.
+func (s *IdStr) GetLen() uint {
+	var carg0 *C.GstIdStr // in, none, converted
+	var cret  C.gsize     // return, none, casted
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+
+	cret = C.gst_id_str_get_len(carg0)
+	runtime.KeepAlive(s)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
+// Init wraps gst_id_str_init
+//
+// Initializes a (usually stack-allocated) id string @s. The newly-initialized
+// id string will contain an empty string by default as value.
+func (s *IdStr) Init() {
+	var carg0 *C.GstIdStr // in, none, converted
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+
+	C.gst_id_str_init(carg0)
+	runtime.KeepAlive(s)
+}
+
+// IsEqual wraps gst_id_str_is_equal
+// 
+// The function takes the following parameters:
+// 
+// 	- s2 *IdStr: A %GstIdStr 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Compares @s1 and @s2 for equality.
+func (s1 *IdStr) IsEqual(s2 *IdStr) bool {
+	var carg0 *C.GstIdStr // in, none, converted
+	var carg1 *C.GstIdStr // in, none, converted
+	var cret  C.gboolean  // return
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s1))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s2))
+
+	cret = C.gst_id_str_is_equal(carg0, carg1)
+	runtime.KeepAlive(s1)
+	runtime.KeepAlive(s2)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// IsEqualToStr wraps gst_id_str_is_equal_to_str
+// 
+// The function takes the following parameters:
+// 
+// 	- s2 string: A string 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Compares @s1 and @s2 for equality.
+func (s1 *IdStr) IsEqualToStr(s2 string) bool {
+	var carg0 *C.GstIdStr // in, none, converted
+	var carg1 *C.gchar    // in, none, string
+	var cret  C.gboolean  // return
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s1))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(s2)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_id_str_is_equal_to_str(carg0, carg1)
+	runtime.KeepAlive(s1)
+	runtime.KeepAlive(s2)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// IsEqualToStrWithLen wraps gst_id_str_is_equal_to_str_with_len
+// 
+// The function takes the following parameters:
+// 
+// 	- s2 string: A string 
+// 	- len uint: Length of @s2. 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Compares @s1 and @s2 with length @len for equality. @s2 does not have to be
+// NUL-terminated and @len should not include the NUL-terminator.
+// 
+// This is generally faster than gst_id_str_is_equal_to_str() if the length is
+// already known.
+func (s1 *IdStr) IsEqualToStrWithLen(s2 string, len uint) bool {
+	var carg0 *C.GstIdStr // in, none, converted
+	var carg1 *C.gchar    // in, none, string
+	var carg2 C.gsize     // in, none, casted
+	var cret  C.gboolean  // return
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s1))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(s2)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = C.gsize(len)
+
+	cret = C.gst_id_str_is_equal_to_str_with_len(carg0, carg1, carg2)
+	runtime.KeepAlive(s1)
+	runtime.KeepAlive(s2)
+	runtime.KeepAlive(len)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// Move wraps gst_id_str_move
+// 
+// The function takes the following parameters:
+// 
+// 	- s *IdStr: The source %GstIdStr 
+//
+// Moves @s into @d and resets @s.
+func (d *IdStr) Move(s *IdStr) {
+	var carg0 *C.GstIdStr // in, none, converted
+	var carg1 *C.GstIdStr // in, none, converted
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(d))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+
+	C.gst_id_str_move(carg0, carg1)
+	runtime.KeepAlive(d)
+	runtime.KeepAlive(s)
+}
+
+// Set wraps gst_id_str_set
+// 
+// The function takes the following parameters:
+// 
+// 	- value string: A NUL-terminated string 
+//
+// Sets @s to the string @value.
+func (s *IdStr) Set(value string) {
+	var carg0 *C.GstIdStr // in, none, converted
+	var carg1 *C.gchar    // in, none, string
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	C.gst_id_str_set(carg0, carg1)
+	runtime.KeepAlive(s)
+	runtime.KeepAlive(value)
+}
+
+// SetStaticStr wraps gst_id_str_set_static_str
+// 
+// The function takes the following parameters:
+// 
+// 	- value string: A NUL-terminated string 
+//
+// Sets @s to the string @value. @value needs to be valid for the remaining
+// lifetime of the process, e.g. has to be a static string.
+func (s *IdStr) SetStaticStr(value string) {
+	var carg0 *C.GstIdStr // in, none, converted
+	var carg1 *C.gchar    // in, none, string
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	C.gst_id_str_set_static_str(carg0, carg1)
+	runtime.KeepAlive(s)
+	runtime.KeepAlive(value)
+}
+
+// SetStaticStrWithLen wraps gst_id_str_set_static_str_with_len
+// 
+// The function takes the following parameters:
+// 
+// 	- value string: A string 
+// 	- len uint: Length of the string 
+//
+// Sets @s to the string @value of length @len. @value needs to be valid for the
+// remaining lifetime of the process, e.g. has to be a static string.
+// 
+// @value must be NUL-terminated and @len should not include the
+// NUL-terminator.
+func (s *IdStr) SetStaticStrWithLen(value string, len uint) {
+	var carg0 *C.GstIdStr // in, none, converted
+	var carg1 *C.gchar    // in, none, string
+	var carg2 C.gsize     // in, none, casted
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = C.gsize(len)
+
+	C.gst_id_str_set_static_str_with_len(carg0, carg1, carg2)
+	runtime.KeepAlive(s)
+	runtime.KeepAlive(value)
+	runtime.KeepAlive(len)
+}
+
+// SetWithLen wraps gst_id_str_set_with_len
+// 
+// The function takes the following parameters:
+// 
+// 	- value string: A string 
+// 	- len uint: Length of the string 
+//
+// Sets @s to the string @value of length @len. @value does not have to be
+// NUL-terminated and @len should not include the NUL-terminator.
+func (s *IdStr) SetWithLen(value string, len uint) {
+	var carg0 *C.GstIdStr // in, none, converted
+	var carg1 *C.gchar    // in, none, string
+	var carg2 C.gsize     // in, none, casted
+
+	carg0 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(s))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = C.gsize(len)
+
+	C.gst_id_str_set_with_len(carg0, carg1, carg2)
+	runtime.KeepAlive(s)
+	runtime.KeepAlive(value)
+	runtime.KeepAlive(len)
+}
+
 // Iterator wraps GstIterator
 //
 // A GstIterator is used to retrieve multiple objects from another object in
@@ -48694,8 +49918,11 @@ func marshalIterator(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeIteratorFromGlibBorrow(b), nil
 }
 
-func (r *Iterator) InitGoValue(v *gobject.Value) {
-	v.Init(TypeIterator)
+func (r *Iterator) GoValueType() gobject.Type {
+	return TypeIterator
+}
+
+func (r *Iterator) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -48993,8 +50220,11 @@ func marshalMemory(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeMemoryFromGlibBorrow(b), nil
 }
 
-func (r *Memory) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMemory)
+func (r *Memory) GoValueType() gobject.Type {
+	return TypeMemory
+}
+
+func (r *Memory) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -49289,8 +50519,11 @@ func marshalMessage(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeMessageFromGlibBorrow(b), nil
 }
 
-func (r *Message) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMessage)
+func (r *Message) GoValueType() gobject.Type {
+	return TypeMessage
+}
+
+func (r *Message) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -49451,7 +50684,7 @@ func NewMessageAsyncStart(src Object) *Message {
 // The function takes the following parameters:
 // 
 // 	- src Object (nullable): The object originating the message. 
-// 	- percent int: The buffering percent 
+// 	- percent int32: The buffering percent 
 // 
 // The function returns the following values:
 // 
@@ -49469,7 +50702,7 @@ func NewMessageAsyncStart(src Object) *Message {
 // completed prerolling.
 // 
 // MT safe.
-func NewMessageBuffering(src Object, percent int) *Message {
+func NewMessageBuffering(src Object, percent int32) *Message {
 	var carg1 *C.GstObject  // in, none, converted, nullable
 	var carg2 C.gint        // in, none, casted
 	var cret  *C.GstMessage // return, full, converted
@@ -51110,6 +52343,34 @@ func (msg *Message) Copy() *Message {
 	return goret
 }
 
+// GetDetails wraps gst_message_get_details
+// 
+// The function returns the following values:
+// 
+// 	- goret *Structure (nullable) 
+//
+// Returns the optional details structure of the message. May be NULL if none.
+// 
+// The returned structure must not be freed.
+func (message *Message) GetDetails() *Structure {
+	var carg0 *C.GstMessage   // in, none, converted
+	var cret  *C.GstStructure // return, borrow, converted, nullable
+
+	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
+
+	cret = C.gst_message_get_details(carg0)
+	runtime.KeepAlive(message)
+
+	var goret *Structure
+
+	if cret != nil {
+		goret = UnsafeStructureFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Message) {}, message)
+	}
+
+	return goret
+}
+
 // GetNumRedirectEntries wraps gst_message_get_num_redirect_entries
 // 
 // The function returns the following values:
@@ -51254,13 +52515,13 @@ func (message *Message) ParseAsyncDone() ClockTime {
 // 
 // The function returns the following values:
 // 
-// 	- percent int: Return location for the percent. 
+// 	- percent int32: Return location for the percent. 
 //
 // Extracts the buffering percent from the GstMessage. see also
 // gst_message_new_buffering().
 // 
 // MT safe.
-func (message *Message) ParseBuffering() int {
+func (message *Message) ParseBuffering() int32 {
 	var carg0 *C.GstMessage // in, none, converted
 	var carg1 C.gint        // out, full, casted
 
@@ -51269,9 +52530,9 @@ func (message *Message) ParseBuffering() int {
 	C.gst_message_parse_buffering(carg0, &carg1)
 	runtime.KeepAlive(message)
 
-	var percent int
+	var percent int32
 
-	percent = int(carg1)
+	percent = int32(carg1)
 
 	return percent
 }
@@ -51281,13 +52542,13 @@ func (message *Message) ParseBuffering() int {
 // The function returns the following values:
 // 
 // 	- mode BufferingMode: a buffering mode, or %NULL 
-// 	- avgIn int: the average input rate, or %NULL 
-// 	- avgOut int: the average output rate, or %NULL 
+// 	- avgIn int32: the average input rate, or %NULL 
+// 	- avgOut int32: the average output rate, or %NULL 
 // 	- bufferingLeft int64: amount of buffering time left in
 //     milliseconds, or %NULL 
 //
 // Extracts the buffering stats values from @message.
-func (message *Message) ParseBufferingStats() (BufferingMode, int, int, int64) {
+func (message *Message) ParseBufferingStats() (BufferingMode, int32, int32, int64) {
 	var carg0 *C.GstMessage      // in, none, converted
 	var carg1 C.GstBufferingMode // out, full, casted
 	var carg2 C.gint             // out, full, casted
@@ -51300,13 +52561,13 @@ func (message *Message) ParseBufferingStats() (BufferingMode, int, int, int64) {
 	runtime.KeepAlive(message)
 
 	var mode          BufferingMode
-	var avgIn         int
-	var avgOut        int
+	var avgIn         int32
+	var avgOut        int32
 	var bufferingLeft int64
 
 	mode = BufferingMode(carg1)
-	avgIn = int(carg2)
-	avgOut = int(carg3)
+	avgIn = int32(carg2)
+	avgOut = int32(carg3)
 	bufferingLeft = int64(carg4)
 
 	return mode, avgIn, avgOut, bufferingLeft
@@ -51565,6 +52826,32 @@ func (message *Message) ParseErrorDetails() *Structure {
 	return structure
 }
 
+// ParseErrorWritableDetails wraps gst_message_parse_error_writable_details
+// 
+// The function returns the following values:
+// 
+// 	- structure *Structure (nullable): A pointer to the returned details 
+//
+// Returns the details structure if present or will create one if not present.
+// The returned structure must not be freed.
+func (message *Message) ParseErrorWritableDetails() *Structure {
+	var carg0 *C.GstMessage   // in, none, converted
+	var carg1 *C.GstStructure // out, none, converted, nullable
+
+	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
+
+	C.gst_message_parse_error_writable_details(carg0, &carg1)
+	runtime.KeepAlive(message)
+
+	var structure *Structure
+
+	if carg1 != nil {
+		structure = UnsafeStructureFromGlibNone(unsafe.Pointer(carg1))
+	}
+
+	return structure
+}
+
 // ParseGroupID wraps gst_message_parse_group_id
 // 
 // The function returns the following values:
@@ -51670,6 +52957,32 @@ func (message *Message) ParseInfoDetails() *Structure {
 	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
 
 	C.gst_message_parse_info_details(carg0, &carg1)
+	runtime.KeepAlive(message)
+
+	var structure *Structure
+
+	if carg1 != nil {
+		structure = UnsafeStructureFromGlibNone(unsafe.Pointer(carg1))
+	}
+
+	return structure
+}
+
+// ParseInfoWritableDetails wraps gst_message_parse_info_writable_details
+// 
+// The function returns the following values:
+// 
+// 	- structure *Structure (nullable): A pointer to the returned details 
+//
+// Returns the details structure if present or will create one if not present.
+// The returned structure must not be freed.
+func (message *Message) ParseInfoWritableDetails() *Structure {
+	var carg0 *C.GstMessage   // in, none, converted
+	var carg1 *C.GstStructure // out, none, converted, nullable
+
+	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
+
+	C.gst_message_parse_info_writable_details(carg0, &carg1)
 	runtime.KeepAlive(message)
 
 	var structure *Structure
@@ -51865,14 +53178,14 @@ func (message *Message) ParseQosStats() (Format, uint64, uint64) {
 //     the deadline. 
 // 	- proportion float64: Long term prediction of the ideal rate
 //     relative to normal rate to get optimal quality. 
-// 	- quality int: An element dependent integer value that
+// 	- quality int32: An element dependent integer value that
 //     specifies the current quality level of the element. The default
 //     maximum quality is 1000000. 
 //
 // Extract the QoS values that have been calculated/analysed from the QoS data
 // 
 // MT safe.
-func (message *Message) ParseQosValues() (int64, float64, int) {
+func (message *Message) ParseQosValues() (int64, float64, int32) {
 	var carg0 *C.GstMessage // in, none, converted
 	var carg1 C.gint64      // out, full, casted
 	var carg2 C.gdouble     // out, full, casted
@@ -51885,11 +53198,11 @@ func (message *Message) ParseQosValues() (int64, float64, int) {
 
 	var jitter     int64
 	var proportion float64
-	var quality    int
+	var quality    int32
 
 	jitter = int64(carg1)
 	proportion = float64(carg2)
-	quality = int(carg3)
+	quality = int32(carg3)
 
 	return jitter, proportion, quality
 }
@@ -52461,17 +53774,43 @@ func (message *Message) ParseWarningDetails() *Structure {
 	return structure
 }
 
+// ParseWarningWritableDetails wraps gst_message_parse_warning_writable_details
+// 
+// The function returns the following values:
+// 
+// 	- structure *Structure (nullable): A pointer to the returned details 
+//
+// Returns the details structure if present or will create one if not present.
+// The returned structure must not be freed.
+func (message *Message) ParseWarningWritableDetails() *Structure {
+	var carg0 *C.GstMessage   // in, none, converted
+	var carg1 *C.GstStructure // out, none, converted, nullable
+
+	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
+
+	C.gst_message_parse_warning_writable_details(carg0, &carg1)
+	runtime.KeepAlive(message)
+
+	var structure *Structure
+
+	if carg1 != nil {
+		structure = UnsafeStructureFromGlibNone(unsafe.Pointer(carg1))
+	}
+
+	return structure
+}
+
 // SetBufferingStats wraps gst_message_set_buffering_stats
 // 
 // The function takes the following parameters:
 // 
 // 	- mode BufferingMode: a buffering mode 
-// 	- avgIn int: the average input rate 
-// 	- avgOut int: the average output rate 
+// 	- avgIn int32: the average input rate 
+// 	- avgOut int32: the average output rate 
 // 	- bufferingLeft int64: amount of buffering time left in milliseconds 
 //
 // Configures the buffering stats values in @message.
-func (message *Message) SetBufferingStats(mode BufferingMode, avgIn int, avgOut int, bufferingLeft int64) {
+func (message *Message) SetBufferingStats(mode BufferingMode, avgIn int32, avgOut int32, bufferingLeft int64) {
 	var carg0 *C.GstMessage      // in, none, converted
 	var carg1 C.GstBufferingMode // in, none, casted
 	var carg2 C.gint             // in, none, casted
@@ -52490,6 +53829,28 @@ func (message *Message) SetBufferingStats(mode BufferingMode, avgIn int, avgOut 
 	runtime.KeepAlive(avgIn)
 	runtime.KeepAlive(avgOut)
 	runtime.KeepAlive(bufferingLeft)
+}
+
+// SetDetails wraps gst_message_set_details
+// 
+// The function takes the following parameters:
+// 
+// 	- details *Structure (nullable): A GstStructure with details 
+//
+// Add @details to @message. Will fail if the message already has details set on
+// it or if it is not writable.
+func (message *Message) SetDetails(details *Structure) {
+	var carg0 *C.GstMessage   // in, none, converted
+	var carg1 *C.GstStructure // in, full, converted, nullable
+
+	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
+	if details != nil {
+		carg1 = (*C.GstStructure)(UnsafeStructureToGlibFull(details))
+	}
+
+	C.gst_message_set_details(carg0, carg1)
+	runtime.KeepAlive(message)
+	runtime.KeepAlive(details)
 }
 
 // SetGroupID wraps gst_message_set_group_id
@@ -52563,13 +53924,13 @@ func (message *Message) SetQosStats(format Format, processed uint64, dropped uin
 // 	- jitter int64: The difference of the running-time against the deadline. 
 // 	- proportion float64: Long term prediction of the ideal rate relative to normal rate
 // to get optimal quality. 
-// 	- quality int: An element dependent integer value that specifies the current
+// 	- quality int32: An element dependent integer value that specifies the current
 // quality level of the element. The default maximum quality is 1000000. 
 //
 // Set the QoS values that have been calculated/analysed from the QoS data
 // 
 // MT safe.
-func (message *Message) SetQosValues(jitter int64, proportion float64, quality int) {
+func (message *Message) SetQosValues(jitter int64, proportion float64, quality int32) {
 	var carg0 *C.GstMessage // in, none, converted
 	var carg1 C.gint64      // in, none, casted
 	var carg2 C.gdouble     // in, none, casted
@@ -52702,6 +54063,34 @@ func (message *Message) StreamsSelectedGetStream(idx uint) Stream {
 	if cret != nil {
 		goret = UnsafeStreamFromGlibFull(unsafe.Pointer(cret))
 	}
+
+	return goret
+}
+
+// WritableDetails wraps gst_message_writable_details
+// 
+// The function returns the following values:
+// 
+// 	- goret *Structure 
+//
+// Returns the details structure of the @message. If not present it will be
+// created. Use this function (instead of gst_message_get_details()) if you
+// want to write to the @details structure.
+// 
+// The returned structure must not be freed.
+func (message *Message) WritableDetails() *Structure {
+	var carg0 *C.GstMessage   // in, none, converted
+	var cret  *C.GstStructure // return, borrow, converted
+
+	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
+
+	cret = C.gst_message_writable_details(carg0)
+	runtime.KeepAlive(message)
+
+	var goret *Structure
+
+	goret = UnsafeStructureFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *Message) {}, message)
 
 	return goret
 }
@@ -53025,11 +54414,11 @@ func MetaRegisterCustomSimple(name string) *MetaInfo {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Meta sequence number compare function. Can be used as #GCompareFunc
 // or a #GCompareDataFunc.
-func (meta1 *Meta) CompareSeqnum(meta2 *Meta) int {
+func (meta1 *Meta) CompareSeqnum(meta2 *Meta) int32 {
 	var carg0 *C.GstMeta // in, none, converted
 	var carg1 *C.GstMeta // in, none, converted
 	var cret  C.gint     // return, none, casted
@@ -53041,9 +54430,9 @@ func (meta1 *Meta) CompareSeqnum(meta2 *Meta) int {
 	runtime.KeepAlive(meta1)
 	runtime.KeepAlive(meta2)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -53335,8 +54724,11 @@ func marshalMiniObject(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeMiniObjectFromGlibBorrow(b), nil
 }
 
-func (r *MiniObject) InitGoValue(v *gobject.Value) {
-	v.Init(TypeMiniObject)
+func (r *MiniObject) GoValueType() gobject.Type {
+	return TypeMiniObject
+}
+
+func (r *MiniObject) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -53908,8 +55300,11 @@ func marshalParseContext(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeParseContextFromGlibBorrow(b), nil
 }
 
-func (r *ParseContext) InitGoValue(v *gobject.Value) {
-	v.Init(TypeParseContext)
+func (r *ParseContext) GoValueType() gobject.Type {
+	return TypeParseContext
+}
+
+func (r *ParseContext) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -54817,7 +56212,7 @@ func (set *Poll) SetFlushing(flushing bool) {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Wait for activity on the file descriptors in @set. This function waits up to
 // the specified @timeout.  A timeout of #GST_CLOCK_TIME_NONE waits forever.
@@ -54829,7 +56224,7 @@ func (set *Poll) SetFlushing(flushing bool) {
 // This is not true for timer #GstPoll objects created with
 // gst_poll_new_timer(), where it is allowed to have multiple threads waiting
 // simultaneously.
-func (set *Poll) Wait(timeout ClockTime) int {
+func (set *Poll) Wait(timeout ClockTime) int32 {
 	var carg0 *C.GstPoll     // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var cret  C.gint         // return, none, casted
@@ -54841,9 +56236,9 @@ func (set *Poll) Wait(timeout ClockTime) int {
 	runtime.KeepAlive(set)
 	runtime.KeepAlive(timeout)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -55093,8 +56488,11 @@ func marshalPromise(p unsafe.Pointer) (interface{}, error) {
 	return UnsafePromiseFromGlibBorrow(b), nil
 }
 
-func (r *Promise) InitGoValue(v *gobject.Value) {
-	v.Init(TypePromise)
+func (r *Promise) GoValueType() gobject.Type {
+	return TypePromise
+}
+
+func (r *Promise) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -55464,8 +56862,11 @@ func marshalQuery(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeQueryFromGlibBorrow(b), nil
 }
 
-func (r *Query) InitGoValue(v *gobject.Value) {
-	v.Init(TypeQuery)
+func (r *Query) GoValueType() gobject.Type {
+	return TypeQuery
+}
+
+func (r *Query) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -56561,11 +57962,11 @@ func (query *Query) ParseBitrate() uint {
 // The function returns the following values:
 // 
 // 	- busy bool: if buffering is busy, or %NULL 
-// 	- percent int: a buffering percent, or %NULL 
+// 	- percent int32: a buffering percent, or %NULL 
 //
 // Get the percentage of buffered data. This is a value between 0 and 100.
 // The @busy indicator is %TRUE when the buffering is in progress.
-func (query *Query) ParseBufferingPercent() (bool, int) {
+func (query *Query) ParseBufferingPercent() (bool, int32) {
 	var carg0 *C.GstQuery // in, none, converted
 	var carg1 C.gboolean  // out
 	var carg2 C.gint      // out, full, casted
@@ -56576,12 +57977,12 @@ func (query *Query) ParseBufferingPercent() (bool, int) {
 	runtime.KeepAlive(query)
 
 	var busy    bool
-	var percent int
+	var percent int32
 
 	if carg1 != 0 {
 		busy = true
 	}
-	percent = int(carg2)
+	percent = int32(carg2)
 
 	return busy, percent
 }
@@ -56630,13 +58031,13 @@ func (query *Query) ParseBufferingRange() (Format, int64, int64, int64) {
 // The function returns the following values:
 // 
 // 	- mode BufferingMode: a buffering mode, or %NULL 
-// 	- avgIn int: the average input rate, or %NULL 
-// 	- avgOut int: the average output rat, or %NULL 
+// 	- avgIn int32: the average input rate, or %NULL 
+// 	- avgOut int32: the average output rat, or %NULL 
 // 	- bufferingLeft int64: amount of buffering time left in
 //     milliseconds, or %NULL 
 //
 // Extracts the buffering stats values from @query.
-func (query *Query) ParseBufferingStats() (BufferingMode, int, int, int64) {
+func (query *Query) ParseBufferingStats() (BufferingMode, int32, int32, int64) {
 	var carg0 *C.GstQuery        // in, none, converted
 	var carg1 C.GstBufferingMode // out, full, casted
 	var carg2 C.gint             // out, full, casted
@@ -56649,13 +58050,13 @@ func (query *Query) ParseBufferingStats() (BufferingMode, int, int, int64) {
 	runtime.KeepAlive(query)
 
 	var mode          BufferingMode
-	var avgIn         int
-	var avgOut        int
+	var avgIn         int32
+	var avgOut        int32
 	var bufferingLeft int64
 
 	mode = BufferingMode(carg1)
-	avgIn = int(carg2)
-	avgOut = int(carg3)
+	avgIn = int32(carg2)
+	avgOut = int32(carg3)
 	bufferingLeft = int64(carg4)
 
 	return mode, avgIn, avgOut, bufferingLeft
@@ -57148,12 +58549,12 @@ func (query *Query) ParsePosition() (Format, int64) {
 // The function returns the following values:
 // 
 // 	- flags SchedulingFlags: #GstSchedulingFlags 
-// 	- minsize int: the suggested minimum size of pull requests 
-// 	- maxsize int: the suggested maximum size of pull requests: 
-// 	- align int: the suggested alignment of pull requests 
+// 	- minsize int32: the suggested minimum size of pull requests 
+// 	- maxsize int32: the suggested maximum size of pull requests: 
+// 	- align int32: the suggested alignment of pull requests 
 //
 // Set the scheduling properties.
-func (query *Query) ParseScheduling() (SchedulingFlags, int, int, int) {
+func (query *Query) ParseScheduling() (SchedulingFlags, int32, int32, int32) {
 	var carg0 *C.GstQuery          // in, none, converted
 	var carg1 C.GstSchedulingFlags // out, full, casted
 	var carg2 C.gint               // out, full, casted
@@ -57166,14 +58567,14 @@ func (query *Query) ParseScheduling() (SchedulingFlags, int, int, int) {
 	runtime.KeepAlive(query)
 
 	var flags   SchedulingFlags
-	var minsize int
-	var maxsize int
-	var align   int
+	var minsize int32
+	var maxsize int32
+	var align   int32
 
 	flags = SchedulingFlags(carg1)
-	minsize = int(carg2)
-	maxsize = int(carg3)
-	align = int(carg4)
+	minsize = int32(carg2)
+	maxsize = int32(carg3)
+	align = int32(carg4)
 
 	return flags, minsize, maxsize, align
 }
@@ -57473,11 +58874,11 @@ func (query *Query) SetBitrate(nominalBitrate uint) {
 // The function takes the following parameters:
 // 
 // 	- busy bool: if buffering is busy 
-// 	- percent int: a buffering percent 
+// 	- percent int32: a buffering percent 
 //
 // Set the percentage of buffered data. This is a value between 0 and 100.
 // The @busy indicator is %TRUE when the buffering is in progress.
-func (query *Query) SetBufferingPercent(busy bool, percent int) {
+func (query *Query) SetBufferingPercent(busy bool, percent int32) {
 	var carg0 *C.GstQuery // in, none, converted
 	var carg1 C.gboolean  // in
 	var carg2 C.gint      // in, none, casted
@@ -57531,12 +58932,12 @@ func (query *Query) SetBufferingRange(format Format, start int64, stop int64, es
 // The function takes the following parameters:
 // 
 // 	- mode BufferingMode: a buffering mode 
-// 	- avgIn int: the average input rate 
-// 	- avgOut int: the average output rate 
+// 	- avgIn int32: the average input rate 
+// 	- avgOut int32: the average output rate 
 // 	- bufferingLeft int64: amount of buffering time left in milliseconds 
 //
 // Configures the buffering stats values in @query.
-func (query *Query) SetBufferingStats(mode BufferingMode, avgIn int, avgOut int, bufferingLeft int64) {
+func (query *Query) SetBufferingStats(mode BufferingMode, avgIn int32, avgOut int32, bufferingLeft int64) {
 	var carg0 *C.GstQuery        // in, none, converted
 	var carg1 C.GstBufferingMode // in, none, casted
 	var carg2 C.gint             // in, none, casted
@@ -57804,12 +59205,12 @@ func (query *Query) SetPosition(format Format, cur int64) {
 // The function takes the following parameters:
 // 
 // 	- flags SchedulingFlags: #GstSchedulingFlags 
-// 	- minsize int: the suggested minimum size of pull requests 
-// 	- maxsize int: the suggested maximum size of pull requests 
-// 	- align int: the suggested alignment of pull requests 
+// 	- minsize int32: the suggested minimum size of pull requests 
+// 	- maxsize int32: the suggested maximum size of pull requests 
+// 	- align int32: the suggested alignment of pull requests 
 //
 // Set the scheduling properties.
-func (query *Query) SetScheduling(flags SchedulingFlags, minsize int, maxsize int, align int) {
+func (query *Query) SetScheduling(flags SchedulingFlags, minsize int32, maxsize int32, align int32) {
 	var carg0 *C.GstQuery          // in, none, converted
 	var carg1 C.GstSchedulingFlags // in, none, casted
 	var carg2 C.gint               // in, none, casted
@@ -58177,8 +59578,11 @@ func marshalSample(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSampleFromGlibBorrow(b), nil
 }
 
-func (r *Sample) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSample)
+func (r *Sample) GoValueType() gobject.Type {
+	return TypeSample
+}
+
+func (r *Sample) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -58582,8 +59986,11 @@ func marshalSegment(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeSegmentFromGlibBorrow(b), nil
 }
 
-func (r *Segment) InitGoValue(v *gobject.Value) {
-	v.Init(TypeSegment)
+func (r *Segment) GoValueType() gobject.Type {
+	return TypeSegment
+}
+
+func (r *Segment) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -58990,7 +60397,7 @@ func (segment *Segment) PositionFromRunningTime(format Format, runningTime uint6
 // The function returns the following values:
 // 
 // 	- position uint64: the resulting position in the segment 
-// 	- goret int 
+// 	- goret int32 
 //
 // Translate @running_time to the segment position using the currently configured
 // segment. Compared to gst_segment_position_from_running_time() this function can
@@ -59008,7 +60415,7 @@ func (segment *Segment) PositionFromRunningTime(format Format, runningTime uint6
 // When this function returns -1, the returned @position was &lt; 0, and the value
 // in the position variable should be negated to get the real negative segment
 // position.
-func (segment *Segment) PositionFromRunningTimeFull(format Format, runningTime uint64) (uint64, int) {
+func (segment *Segment) PositionFromRunningTimeFull(format Format, runningTime uint64) (uint64, int32) {
 	var carg0 *C.GstSegment // in, none, converted
 	var carg1 C.GstFormat   // in, none, casted
 	var carg2 C.guint64     // in, none, casted
@@ -59025,10 +60432,10 @@ func (segment *Segment) PositionFromRunningTimeFull(format Format, runningTime u
 	runtime.KeepAlive(runningTime)
 
 	var position uint64
-	var goret    int
+	var goret    int32
 
 	position = uint64(carg3)
-	goret = int(cret)
+	goret = int32(cret)
 
 	return position, goret
 }
@@ -59078,7 +60485,7 @@ func (segment *Segment) PositionFromStreamTime(format Format, streamTime uint64)
 // The function returns the following values:
 // 
 // 	- position uint64: the resulting position in the segment 
-// 	- goret int 
+// 	- goret int32 
 //
 // Translate @stream_time to the segment position using the currently configured
 // segment. Compared to gst_segment_position_from_stream_time() this function can
@@ -59095,7 +60502,7 @@ func (segment *Segment) PositionFromStreamTime(format Format, streamTime uint64)
 // 
 // When this function returns -1, the returned @position should be negated
 // to get the real negative segment position.
-func (segment *Segment) PositionFromStreamTimeFull(format Format, streamTime uint64) (uint64, int) {
+func (segment *Segment) PositionFromStreamTimeFull(format Format, streamTime uint64) (uint64, int32) {
 	var carg0 *C.GstSegment // in, none, converted
 	var carg1 C.GstFormat   // in, none, casted
 	var carg2 C.guint64     // in, none, casted
@@ -59112,10 +60519,10 @@ func (segment *Segment) PositionFromStreamTimeFull(format Format, streamTime uin
 	runtime.KeepAlive(streamTime)
 
 	var position uint64
-	var goret    int
+	var goret    int32
 
 	position = uint64(carg3)
-	goret = int(cret)
+	goret = int32(cret)
 
 	return position, goret
 }
@@ -59246,7 +60653,7 @@ func (segment *Segment) ToRunningTime(format Format, position uint64) uint64 {
 // The function returns the following values:
 // 
 // 	- runningTime uint64: result running-time 
-// 	- goret int 
+// 	- goret int32 
 //
 // Translate @position to the total running time using the currently configured
 // segment. Compared to gst_segment_to_running_time() this function can return
@@ -59263,7 +60670,7 @@ func (segment *Segment) ToRunningTime(format Format, position uint64) uint64 {
 // 
 // When this function returns -1, the returned @running_time should be negated
 // to get the real negative running time.
-func (segment *Segment) ToRunningTimeFull(format Format, position uint64) (uint64, int) {
+func (segment *Segment) ToRunningTimeFull(format Format, position uint64) (uint64, int32) {
 	var carg0 *C.GstSegment // in, none, converted
 	var carg1 C.GstFormat   // in, none, casted
 	var carg2 C.guint64     // in, none, casted
@@ -59280,10 +60687,10 @@ func (segment *Segment) ToRunningTimeFull(format Format, position uint64) (uint6
 	runtime.KeepAlive(position)
 
 	var runningTime uint64
-	var goret       int
+	var goret       int32
 
 	runningTime = uint64(carg3)
-	goret = int(cret)
+	goret = int32(cret)
 
 	return runningTime, goret
 }
@@ -59341,7 +60748,7 @@ func (segment *Segment) ToStreamTime(format Format, position uint64) uint64 {
 // The function returns the following values:
 // 
 // 	- streamTime uint64: result stream-time 
-// 	- goret int 
+// 	- goret int32 
 //
 // Translate @position to the total stream time using the currently configured
 // segment. Compared to gst_segment_to_stream_time() this function can return
@@ -59358,7 +60765,7 @@ func (segment *Segment) ToStreamTime(format Format, position uint64) uint64 {
 // 
 // When this function returns -1, the returned @stream_time should be negated
 // to get the real negative stream time.
-func (segment *Segment) ToStreamTimeFull(format Format, position uint64) (uint64, int) {
+func (segment *Segment) ToStreamTimeFull(format Format, position uint64) (uint64, int32) {
 	var carg0 *C.GstSegment // in, none, converted
 	var carg1 C.GstFormat   // in, none, casted
 	var carg2 C.guint64     // in, none, casted
@@ -59375,10 +60782,10 @@ func (segment *Segment) ToStreamTimeFull(format Format, position uint64) (uint64
 	runtime.KeepAlive(position)
 
 	var streamTime uint64
-	var goret      int
+	var goret      int32
 
 	streamTime = uint64(carg3)
-	goret = int(cret)
+	goret = int32(cret)
 
 	return streamTime, goret
 }
@@ -59444,8 +60851,11 @@ func marshalStaticCaps(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeStaticCapsFromGlibBorrow(b), nil
 }
 
-func (r *StaticCaps) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStaticCaps)
+func (r *StaticCaps) GoValueType() gobject.Type {
+	return TypeStaticCaps
+}
+
+func (r *StaticCaps) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -59556,8 +60966,11 @@ func marshalStaticPadTemplate(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeStaticPadTemplateFromGlibBorrow(b), nil
 }
 
-func (r *StaticPadTemplate) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStaticPadTemplate)
+func (r *StaticPadTemplate) GoValueType() gobject.Type {
+	return TypeStaticPadTemplate
+}
+
+func (r *StaticPadTemplate) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -59807,14 +61220,17 @@ func (s *StreamCollectionClass) ParentClass() *ObjectClass {
 // 
 // Some types have special delimiters:
 // 
-// - [GstValueArray](GST_TYPE_ARRAY) are inside curly brackets (`{` and `}`).
-//   For example `a-structure, array={1, 2, 3}`
+// - [GstValueArray](GST_TYPE_ARRAY) are inside "less and greater than" (`&lt;` and
+//   `&gt;`). For example `a-structure, array=&lt;1, 2, 3&gt;
 // - Ranges are inside brackets (`[` and `]`). For example `a-structure,
 //   range=[1, 6, 2]` 1 being the min value, 6 the maximum and 2 the step. To
 //   specify a #GST_TYPE_INT64_RANGE you need to explicitly specify it like:
 //   `a-structure, a-int64-range=(gint64) [1, 5]`
-// - [GstValueList](GST_TYPE_LIST) are inside "less and greater than" (`&lt;` and
-//   `&gt;`). For example `a-structure, list=&lt;1, 2, 3&gt;
+// - [GstValueList](GST_TYPE_LIST) are inside curly brackets (`{` and `}`).
+//   For example `a-structure, list={1, 2, 3}`
+// - [GStrv](G_TYPE_STRV) are inside "less and greater than" (`&lt;` and
+//   `&gt;`) and each string is double-quoted.
+//   For example `a-structure, strv=(GStrv)&lt;"foo", "bar"&gt;`. Since 1.26.0.
 // 
 // Structures are delimited either by a null character `\0` or a semicolon `;`
 // the latter allowing to store multiple structures in the same string (see
@@ -59862,8 +61278,11 @@ func marshalStructure(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeStructureFromGlibBorrow(b), nil
 }
 
-func (r *Structure) InitGoValue(v *gobject.Value) {
-	v.Init(TypeStructure)
+func (r *Structure) GoValueType() gobject.Type {
+	return TypeStructure
+}
+
+func (r *Structure) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -60037,6 +61456,8 @@ func NewStructureFromString(str string) *Structure {
 // Creates a new, empty #GstStructure with the given name as a GQuark.
 // 
 // Free-function: gst_structure_free
+//
+// Deprecated: (since 1.26.0) Use gst_structure_new_id_str_empty().
 func NewStructureIDEmpty(quark glib.Quark) *Structure {
 	var carg1 C.GQuark        // in, none, casted, alias
 	var cret  *C.GstStructure // return, full, converted
@@ -60045,6 +61466,70 @@ func NewStructureIDEmpty(quark glib.Quark) *Structure {
 
 	cret = C.gst_structure_new_id_empty(carg1)
 	runtime.KeepAlive(quark)
+
+	var goret *Structure
+
+	goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// NewStructureIDStrEmpty wraps gst_structure_new_id_str_empty
+// 
+// The function takes the following parameters:
+// 
+// 	- name *IdStr: name of new structure 
+// 
+// The function returns the following values:
+// 
+// 	- goret *Structure 
+//
+// Creates a new, empty #GstStructure with the given name.
+// 
+// Free-function: gst_structure_free
+func NewStructureIDStrEmpty(name *IdStr) *Structure {
+	var carg1 *C.GstIdStr     // in, none, converted
+	var cret  *C.GstStructure // return, full, converted
+
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(name))
+
+	cret = C.gst_structure_new_id_str_empty(carg1)
+	runtime.KeepAlive(name)
+
+	var goret *Structure
+
+	goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// NewStructureStaticStrEmpty wraps gst_structure_new_static_str_empty
+// 
+// The function takes the following parameters:
+// 
+// 	- name string: name of new structure 
+// 
+// The function returns the following values:
+// 
+// 	- goret *Structure 
+//
+// Creates a new, empty #GstStructure with the given @name.
+// 
+// See gst_structure_set_name() for constraints on the @name parameter.
+// 
+// @name needs to be valid for the remaining lifetime of the process, e.g. has
+// to be a static string.
+// 
+// Free-function: gst_structure_free
+func NewStructureStaticStrEmpty(name string) *Structure {
+	var carg1 *C.gchar        // in, none, string
+	var cret  *C.GstStructure // return, full, converted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_structure_new_static_str_empty(carg1)
+	runtime.KeepAlive(name)
 
 	var goret *Structure
 
@@ -60122,6 +61607,8 @@ func (structure *Structure) Copy() *Structure {
 // In contrast to gst_structure_map_in_place(), the field is removed from
 // the structure if %FALSE is returned from the function.
 // The structure must be mutable.
+//
+// Deprecated: (since 1.26.0) Use gst_structure_filter_and_map_in_place_id_str().
 func (structure *Structure) FilterAndMapInPlace(fn StructureFilterMapFunc) {
 	var carg0 *C.GstStructure             // in, none, converted
 	var carg1 C.GstStructureFilterMapFunc // callback, scope: call, closure: carg2
@@ -60133,6 +61620,32 @@ func (structure *Structure) FilterAndMapInPlace(fn StructureFilterMapFunc) {
 	defer userdata.Delete(unsafe.Pointer(carg2))
 
 	C.gst_structure_filter_and_map_in_place(carg0, carg1, carg2)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fn)
+}
+
+// FilterAndMapInPlaceIDStr wraps gst_structure_filter_and_map_in_place_id_str
+// 
+// The function takes the following parameters:
+// 
+// 	- fn StructureFilterMapIDStrFunc: a function to call for each field 
+//
+// Calls the provided function once for each field in the #GstStructure. In
+// contrast to gst_structure_foreach_id_str(), the function may modify the fields.
+// In contrast to gst_structure_map_in_place_id_str(), the field is removed from
+// the structure if %FALSE is returned from the function.
+// The structure must be mutable.
+func (structure *Structure) FilterAndMapInPlaceIDStr(fn StructureFilterMapIDStrFunc) {
+	var carg0 *C.GstStructure                  // in, none, converted
+	var carg1 C.GstStructureFilterMapIdStrFunc // callback, scope: call, closure: carg2
+	var carg2 C.gpointer                       // implicit
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*[0]byte)(C._gotk4_gst1_StructureFilterMapIDStrFunc)
+	carg2 = C.gpointer(userdata.Register(fn))
+	defer userdata.Delete(unsafe.Pointer(carg2))
+
+	C.gst_structure_filter_and_map_in_place_id_str(carg0, carg1, carg2)
 	runtime.KeepAlive(structure)
 	runtime.KeepAlive(fn)
 }
@@ -60266,8 +61779,8 @@ func (structure *Structure) FixateFieldNearestDouble(fieldName string, target fl
 // The function takes the following parameters:
 // 
 // 	- fieldName string: a field in @structure 
-// 	- targetNumerator int: The numerator of the target value of the fixation 
-// 	- targetDenominator int: The denominator of the target value of the fixation 
+// 	- targetNumerator int32: The numerator of the target value of the fixation 
+// 	- targetDenominator int32: The denominator of the target value of the fixation 
 // 
 // The function returns the following values:
 // 
@@ -60276,7 +61789,7 @@ func (structure *Structure) FixateFieldNearestDouble(fieldName string, target fl
 // Fixates a #GstStructure by changing the given field to the nearest
 // fraction to @target_numerator/@target_denominator that is a subset
 // of the existing field.
-func (structure *Structure) FixateFieldNearestFraction(fieldName string, targetNumerator int, targetDenominator int) bool {
+func (structure *Structure) FixateFieldNearestFraction(fieldName string, targetNumerator int32, targetDenominator int32) bool {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.char         // in, none, string, casted *C.gchar
 	var carg2 C.gint          // in, none, casted
@@ -60309,7 +61822,7 @@ func (structure *Structure) FixateFieldNearestFraction(fieldName string, targetN
 // The function takes the following parameters:
 // 
 // 	- fieldName string: a field in @structure 
-// 	- target int: the target value of the fixation 
+// 	- target int32: the target value of the fixation 
 // 
 // The function returns the following values:
 // 
@@ -60317,7 +61830,7 @@ func (structure *Structure) FixateFieldNearestFraction(fieldName string, targetN
 //
 // Fixates a #GstStructure by changing the given field to the nearest
 // integer to @target that is a subset of the existing field.
-func (structure *Structure) FixateFieldNearestInt(fieldName string, target int) bool {
+func (structure *Structure) FixateFieldNearestInt(fieldName string, target int32) bool {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.char         // in, none, string, casted *C.gchar
 	var carg2 C.int           // in, none, casted, casted C.gint
@@ -60394,6 +61907,8 @@ func (structure *Structure) FixateFieldString(fieldName string, target string) b
 // Calls the provided function once for each field in the #GstStructure. The
 // function must not modify the fields. Also see gst_structure_map_in_place()
 // and gst_structure_filter_and_map_in_place().
+//
+// Deprecated: (since 1.26.0) Use gst_structure_foreach_id_str().
 func (structure *Structure) ForEach(fn StructureForEachFunc) bool {
 	var carg0 *C.GstStructure           // in, none, converted
 	var carg1 C.GstStructureForeachFunc // callback, scope: call, closure: carg2
@@ -60406,6 +61921,43 @@ func (structure *Structure) ForEach(fn StructureForEachFunc) bool {
 	defer userdata.Delete(unsafe.Pointer(carg2))
 
 	cret = C.gst_structure_foreach(carg0, carg1, carg2)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fn)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ForEachIDStr wraps gst_structure_foreach_id_str
+// 
+// The function takes the following parameters:
+// 
+// 	- fn StructureForEachIDStrFunc: a function to call for each field 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Calls the provided function once for each field in the #GstStructure. The
+// function must not modify the fields. Also see gst_structure_map_in_place_id_str()
+// and gst_structure_filter_and_map_in_place_id_str().
+func (structure *Structure) ForEachIDStr(fn StructureForEachIDStrFunc) bool {
+	var carg0 *C.GstStructure                // in, none, converted
+	var carg1 C.GstStructureForeachIdStrFunc // callback, scope: call, closure: carg2
+	var carg2 C.gpointer                     // implicit
+	var cret  C.gboolean                     // return
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*[0]byte)(C._gotk4_gst1_StructureForEachIDStrFunc)
+	carg2 = C.gpointer(userdata.Register(fn))
+	defer userdata.Delete(unsafe.Pointer(carg2))
+
+	cret = C.gst_structure_foreach_id_str(carg0, carg1, carg2)
 	runtime.KeepAlive(structure)
 	runtime.KeepAlive(fn)
 
@@ -60590,13 +62142,13 @@ func (structure *Structure) GetDouble(fieldname string) (float64, bool) {
 // 
 // The function returns the following values:
 // 
-// 	- value int: a pointer to an int to set 
+// 	- value int32: a pointer to an int to set 
 // 	- goret bool 
 //
 // Sets the int pointed to by @value corresponding to the value of the
 // given field.  Caller is responsible for making sure the field exists,
 // has the correct type and that the enumtype is correct.
-func (structure *Structure) GetEnum(fieldname string, enumtype gobject.Type) (int, bool) {
+func (structure *Structure) GetEnum(fieldname string, enumtype gobject.Type) (int32, bool) {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.gchar        // in, none, string
 	var carg2 C.GType         // in, none, casted, alias
@@ -60613,10 +62165,10 @@ func (structure *Structure) GetEnum(fieldname string, enumtype gobject.Type) (in
 	runtime.KeepAlive(fieldname)
 	runtime.KeepAlive(enumtype)
 
-	var value int
+	var value int32
 	var goret bool
 
-	value = int(carg3)
+	value = int32(carg3)
 	if cret != 0 {
 		goret = true
 	}
@@ -60750,14 +62302,14 @@ func (structure *Structure) GetFlagset(fieldname string) (uint, uint, bool) {
 // 
 // The function returns the following values:
 // 
-// 	- valueNumerator int: a pointer to an int to set 
-// 	- valueDenominator int: a pointer to an int to set 
+// 	- valueNumerator int32: a pointer to an int to set 
+// 	- valueDenominator int32: a pointer to an int to set 
 // 	- goret bool 
 //
 // Sets the integers pointed to by @value_numerator and @value_denominator
 // corresponding to the value of the given field.  Caller is responsible
 // for making sure the field exists and has the correct type.
-func (structure *Structure) GetFraction(fieldname string) (int, int, bool) {
+func (structure *Structure) GetFraction(fieldname string) (int32, int32, bool) {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.gchar        // in, none, string
 	var carg2 C.gint          // out, full, casted
@@ -60772,12 +62324,12 @@ func (structure *Structure) GetFraction(fieldname string) (int, int, bool) {
 	runtime.KeepAlive(structure)
 	runtime.KeepAlive(fieldname)
 
-	var valueNumerator   int
-	var valueDenominator int
+	var valueNumerator   int32
+	var valueDenominator int32
 	var goret            bool
 
-	valueNumerator = int(carg2)
-	valueDenominator = int(carg3)
+	valueNumerator = int32(carg2)
+	valueDenominator = int32(carg3)
 	if cret != 0 {
 		goret = true
 	}
@@ -60793,13 +62345,13 @@ func (structure *Structure) GetFraction(fieldname string) (int, int, bool) {
 // 
 // The function returns the following values:
 // 
-// 	- value int: a pointer to an int to set 
+// 	- value int32: a pointer to an int to set 
 // 	- goret bool 
 //
 // Sets the int pointed to by @value corresponding to the value of the
 // given field.  Caller is responsible for making sure the field exists
 // and has the correct type.
-func (structure *Structure) GetInt(fieldname string) (int, bool) {
+func (structure *Structure) GetInt(fieldname string) (int32, bool) {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.gchar        // in, none, string
 	var carg2 C.gint          // out, full, casted
@@ -60813,10 +62365,10 @@ func (structure *Structure) GetInt(fieldname string) (int, bool) {
 	runtime.KeepAlive(structure)
 	runtime.KeepAlive(fieldname)
 
-	var value int
+	var value int32
 	var goret bool
 
-	value = int(carg2)
+	value = int32(carg2)
 	if cret != 0 {
 		goret = true
 	}
@@ -60893,6 +62445,8 @@ func (structure *Structure) GetName() string {
 // 	- goret glib.Quark 
 //
 // Get the name of @structure as a GQuark.
+//
+// Deprecated: (since 1.26.0) Use gst_structure_get_name_id_str().
 func (structure *Structure) GetNameID() glib.Quark {
 	var carg0 *C.GstStructure // in, none, converted
 	var cret  C.GQuark        // return, none, casted, alias
@@ -60905,6 +62459,29 @@ func (structure *Structure) GetNameID() glib.Quark {
 	var goret glib.Quark
 
 	goret = glib.Quark(cret)
+
+	return goret
+}
+
+// GetNameIDStr wraps gst_structure_get_name_id_str
+// 
+// The function returns the following values:
+// 
+// 	- goret *IdStr 
+//
+// Get the name of @structure as a GstIdStr.
+func (structure *Structure) GetNameIDStr() *IdStr {
+	var carg0 *C.GstStructure // in, none, converted
+	var cret  *C.GstIdStr     // return, none, converted
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+
+	cret = C.gst_structure_get_name_id_str(carg0)
+	runtime.KeepAlive(structure)
+
+	var goret *IdStr
+
+	goret = UnsafeIdStrFromGlibNone(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -61139,6 +62716,8 @@ func (structure *Structure) HasName(name string) bool {
 // 	- goret bool 
 //
 // Check if @structure contains a field named @field.
+//
+// Deprecated: (since 1.26.0) Use gst_structure_id_str_has_field().
 func (structure *Structure) IDHasField(field glib.Quark) bool {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 C.GQuark        // in, none, casted, alias
@@ -61172,6 +62751,8 @@ func (structure *Structure) IDHasField(field glib.Quark) bool {
 // 	- goret bool 
 //
 // Check if @structure contains a field named @field and with GType @type.
+//
+// Deprecated: (since 1.26.0) Use gst_structure_id_str_has_field_typed().
 func (structure *Structure) IDHasFieldTyped(field glib.Quark, typ gobject.Type) bool {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 C.GQuark        // in, none, casted, alias
@@ -61206,6 +62787,8 @@ func (structure *Structure) IDHasFieldTyped(field glib.Quark, typ gobject.Type) 
 // Sets the field with the given GQuark @field to @value.  If the field
 // does not exist, it is created.  If the field exists, the previous
 // value is replaced and freed.
+//
+// Deprecated: (since 1.26.0) Use gst_structure_id_str_set_value().
 func (structure *Structure) IDSetValue(field glib.Quark, value *gobject.Value) {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 C.GQuark        // in, none, casted, alias
@@ -61218,6 +62801,239 @@ func (structure *Structure) IDSetValue(field glib.Quark, value *gobject.Value) {
 	C.gst_structure_id_set_value(carg0, carg1, carg2)
 	runtime.KeepAlive(structure)
 	runtime.KeepAlive(field)
+	runtime.KeepAlive(value)
+}
+
+// IDStrGetFieldType wraps gst_structure_id_str_get_field_type
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the name of the field 
+// 
+// The function returns the following values:
+// 
+// 	- goret gobject.Type 
+//
+// Finds the field with the given name, and returns the type of the
+// value it contains.  If the field is not found, G_TYPE_INVALID is
+// returned.
+func (structure *Structure) IDStrGetFieldType(fieldname *IdStr) gobject.Type {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.GstIdStr     // in, none, converted
+	var cret  C.GType         // return, none, casted, alias
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(fieldname))
+
+	cret = C.gst_structure_id_str_get_field_type(carg0, carg1)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
+
+	var goret gobject.Type
+
+	goret = gobject.Type(cret)
+
+	return goret
+}
+
+// IDStrGetValue wraps gst_structure_id_str_get_value
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the name of the field to get 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gobject.Value (nullable) 
+//
+// Get the value of the field with name @fieldname.
+func (structure *Structure) IDStrGetValue(fieldname *IdStr) *gobject.Value {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.GstIdStr     // in, none, converted
+	var cret  *C.GValue       // return, none, converted, nullable
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(fieldname))
+
+	cret = C.gst_structure_id_str_get_value(carg0, carg1)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
+
+	var goret *gobject.Value
+
+	if cret != nil {
+		goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// IDStrHasField wraps gst_structure_id_str_has_field
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the name of a field 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Check if @structure contains a field named @fieldname.
+func (structure *Structure) IDStrHasField(fieldname *IdStr) bool {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.GstIdStr     // in, none, converted
+	var cret  C.gboolean      // return
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(fieldname))
+
+	cret = C.gst_structure_id_str_has_field(carg0, carg1)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// IDStrHasFieldTyped wraps gst_structure_id_str_has_field_typed
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the name of a field 
+// 	- typ gobject.Type: the type of a value 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Check if @structure contains a field named @fieldname and with GType @type.
+func (structure *Structure) IDStrHasFieldTyped(fieldname *IdStr, typ gobject.Type) bool {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.GstIdStr     // in, none, converted
+	var carg2 C.GType         // in, none, casted, alias
+	var cret  C.gboolean      // return
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(fieldname))
+	carg2 = C.GType(typ)
+
+	cret = C.gst_structure_id_str_has_field_typed(carg0, carg1, carg2)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
+	runtime.KeepAlive(typ)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// IDStrNthFieldName wraps gst_structure_id_str_nth_field_name
+// 
+// The function takes the following parameters:
+// 
+// 	- index uint: the index to get the name of 
+// 
+// The function returns the following values:
+// 
+// 	- goret *IdStr 
+//
+// Get the name (as a GstIdStr) of the given field number,
+// counting from 0 onwards.
+func (structure *Structure) IDStrNthFieldName(index uint) *IdStr {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 C.guint         // in, none, casted
+	var cret  *C.GstIdStr     // return, none, converted
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = C.guint(index)
+
+	cret = C.gst_structure_id_str_nth_field_name(carg0, carg1)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(index)
+
+	var goret *IdStr
+
+	goret = UnsafeIdStrFromGlibNone(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// IDStrRemoveField wraps gst_structure_id_str_remove_field
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the name of the field to remove 
+//
+// Removes the field with the given name.  If the field with the given
+// name does not exist, the structure is unchanged.
+func (structure *Structure) IDStrRemoveField(fieldname *IdStr) {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.GstIdStr     // in, none, converted
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(fieldname))
+
+	C.gst_structure_id_str_remove_field(carg0, carg1)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
+}
+
+// IDStrSetValue wraps gst_structure_id_str_set_value
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the name of the field to set 
+// 	- value *gobject.Value: the new value of the field 
+//
+// Sets the field with the given name @field to @value.  If the field
+// does not exist, it is created.  If the field exists, the previous
+// value is replaced and freed.
+func (structure *Structure) IDStrSetValue(fieldname *IdStr, value *gobject.Value) {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.GstIdStr     // in, none, converted
+	var carg2 *C.GValue       // in, none, converted
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(fieldname))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
+
+	C.gst_structure_id_str_set_value(carg0, carg1, carg2)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
+	runtime.KeepAlive(value)
+}
+
+// IDStrTakeValue wraps gst_structure_id_str_take_value
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the name of the field to set 
+// 	- value *gobject.Value: the new value of the field 
+//
+// Sets the field with the given GstIdStr @field to @value.  If the field
+// does not exist, it is created.  If the field exists, the previous
+// value is replaced and freed.
+func (structure *Structure) IDStrTakeValue(fieldname *IdStr, value *gobject.Value) {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.GstIdStr     // in, none, converted
+	var carg2 *C.GValue       // in, full, converted
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(fieldname))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
+
+	C.gst_structure_id_str_take_value(carg0, carg1, carg2)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
 	runtime.KeepAlive(value)
 }
 
@@ -61332,6 +63148,8 @@ func (subset *Structure) IsSubset(superset *Structure) bool {
 // Calls the provided function once for each field in the #GstStructure. In
 // contrast to gst_structure_foreach(), the function may modify but not delete the
 // fields. The structure must be mutable.
+//
+// Deprecated: (since 1.26.0) Use gst_structure_map_in_place_id_str().
 func (structure *Structure) MapInPlace(fn StructureMapFunc) bool {
 	var carg0 *C.GstStructure       // in, none, converted
 	var carg1 C.GstStructureMapFunc // callback, scope: call, closure: carg2
@@ -61356,14 +63174,51 @@ func (structure *Structure) MapInPlace(fn StructureMapFunc) bool {
 	return goret
 }
 
+// MapInPlaceIDStr wraps gst_structure_map_in_place_id_str
+// 
+// The function takes the following parameters:
+// 
+// 	- fn StructureMapIDStrFunc: a function to call for each field 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Calls the provided function once for each field in the #GstStructure. In
+// contrast to gst_structure_foreach_id_str(), the function may modify but not delete the
+// fields. The structure must be mutable.
+func (structure *Structure) MapInPlaceIDStr(fn StructureMapIDStrFunc) bool {
+	var carg0 *C.GstStructure            // in, none, converted
+	var carg1 C.GstStructureMapIdStrFunc // callback, scope: call, closure: carg2
+	var carg2 C.gpointer                 // implicit
+	var cret  C.gboolean                 // return
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*[0]byte)(C._gotk4_gst1_StructureMapIDStrFunc)
+	carg2 = C.gpointer(userdata.Register(fn))
+	defer userdata.Delete(unsafe.Pointer(carg2))
+
+	cret = C.gst_structure_map_in_place_id_str(carg0, carg1, carg2)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fn)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // NFields wraps gst_structure_n_fields
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Get the number of fields in the structure.
-func (structure *Structure) NFields() int {
+func (structure *Structure) NFields() int32 {
 	var carg0 *C.GstStructure // in, none, converted
 	var cret  C.gint          // return, none, casted
 
@@ -61372,9 +63227,9 @@ func (structure *Structure) NFields() int {
 	cret = C.gst_structure_n_fields(carg0)
 	runtime.KeepAlive(structure)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -61542,11 +63397,57 @@ func (structure *Structure) SetName(name string) {
 	runtime.KeepAlive(name)
 }
 
+// SetNameIDStr wraps gst_structure_set_name_id_str
+// 
+// The function takes the following parameters:
+// 
+// 	- name *IdStr: the new name of the structure 
+//
+// Sets the name of the structure to the given @name.  The string
+// provided is copied before being used. It must not be empty, start with a
+// letter and can be followed by letters, numbers and any of "/-_.:".
+func (structure *Structure) SetNameIDStr(name *IdStr) {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.GstIdStr     // in, none, converted
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.GstIdStr)(UnsafeIdStrToGlibNone(name))
+
+	C.gst_structure_set_name_id_str(carg0, carg1)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(name)
+}
+
+// SetNameStaticStr wraps gst_structure_set_name_static_str
+// 
+// The function takes the following parameters:
+// 
+// 	- name string: the new name of the structure 
+//
+// Sets the name of the structure to the given @name.  The string
+// provided is copied before being used. It must not be empty, start with a
+// letter and can be followed by letters, numbers and any of "/-_.:".
+// 
+// @name needs to be valid for the remaining lifetime of the process, e.g. has
+// to be a static string.
+func (structure *Structure) SetNameStaticStr(name string) {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.gchar        // in, none, string
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	C.gst_structure_set_name_static_str(carg0, carg1)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(name)
+}
+
 // SetParentRefcount wraps gst_structure_set_parent_refcount
 // 
 // The function takes the following parameters:
 // 
-// 	- refcount *int: a pointer to the parent's refcount 
+// 	- refcount *int32: a pointer to the parent's refcount 
 // 
 // The function returns the following values:
 // 
@@ -61556,7 +63457,7 @@ func (structure *Structure) SetName(name string) {
 // determine whether a structure is mutable or not. This function should only be
 // called by code implementing parent objects of #GstStructure, as described in
 // the MT Refcounting section of the design documents.
-func (structure *Structure) SetParentRefcount(refcount *int) bool {
+func (structure *Structure) SetParentRefcount(refcount *int32) bool {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.gint         // in, transfer: none, C Pointers: 1, Name: gint
 	var cret  C.gboolean      // return
@@ -61564,7 +63465,7 @@ func (structure *Structure) SetParentRefcount(refcount *int) bool {
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
 	_ = refcount
 	_ = carg1
-	panic("unimplemented conversion of *int (gint*)")
+	panic("unimplemented conversion of *int32 (gint*)")
 
 	cret = C.gst_structure_set_parent_refcount(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -61577,6 +63478,64 @@ func (structure *Structure) SetParentRefcount(refcount *int) bool {
 	}
 
 	return goret
+}
+
+// SetValueStaticStr wraps gst_structure_set_value_static_str
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname string: the name of the field to set 
+// 	- value *gobject.Value: the new value of the field 
+//
+// Sets the field with the given name @field to @value.  If the field
+// does not exist, it is created.  If the field exists, the previous
+// value is replaced and freed.
+// 
+// @fieldname needs to be valid for the remaining lifetime of the process, e.g.
+// has to be a static string.
+func (structure *Structure) SetValueStaticStr(fieldname string, value *gobject.Value) {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.gchar        // in, none, string
+	var carg2 *C.GValue       // in, none, converted
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
+
+	C.gst_structure_set_value_static_str(carg0, carg1, carg2)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
+	runtime.KeepAlive(value)
+}
+
+// TakeValueStaticStr wraps gst_structure_take_value_static_str
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname string: the name of the field to set 
+// 	- value *gobject.Value: the new value of the field 
+//
+// Sets the field with the given name @field to @value.  If the field
+// does not exist, it is created.  If the field exists, the previous
+// value is replaced and freed. The function will take ownership of @value.
+// 
+// @fieldname needs to be valid for the remaining lifetime of the process, e.g.
+// has to be a static string.
+func (structure *Structure) TakeValueStaticStr(fieldname string, value *gobject.Value) {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.gchar        // in, none, string
+	var carg2 *C.GValue       // in, full, converted
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
+
+	C.gst_structure_take_value_static_str(carg0, carg1, carg2)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
+	runtime.KeepAlive(value)
 }
 
 // ToString wraps gst_structure_to_string
@@ -61674,8 +63633,11 @@ func marshalTagList(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeTagListFromGlibBorrow(b), nil
 }
 
-func (r *TagList) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTagList)
+func (r *TagList) GoValueType() gobject.Type {
+	return TypeTagList
+}
+
+func (r *TagList) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -62245,12 +64207,12 @@ func (list *TagList) GetFloatIndex(tag string, index uint) (float32, bool) {
 // 
 // The function returns the following values:
 // 
-// 	- value int: location for the result 
+// 	- value int32: location for the result 
 // 	- goret bool 
 //
 // Copies the contents for the given tag into the value, merging multiple values
 // into one if multiple values are associated with the tag.
-func (list *TagList) GetInt(tag string) (int, bool) {
+func (list *TagList) GetInt(tag string) (int32, bool) {
 	var carg0 *C.GstTagList // in, none, converted
 	var carg1 *C.gchar      // in, none, string
 	var carg2 C.gint        // out, full, casted
@@ -62264,10 +64226,10 @@ func (list *TagList) GetInt(tag string) (int, bool) {
 	runtime.KeepAlive(list)
 	runtime.KeepAlive(tag)
 
-	var value int
+	var value int32
 	var goret bool
 
-	value = int(carg2)
+	value = int32(carg2)
 	if cret != 0 {
 		goret = true
 	}
@@ -62364,12 +64326,12 @@ func (list *TagList) GetInt64Index(tag string, index uint) (int64, bool) {
 // 
 // The function returns the following values:
 // 
-// 	- value int: location for the result 
+// 	- value int32: location for the result 
 // 	- goret bool 
 //
 // Gets the value that is at the given index for the given tag in the given
 // list.
-func (list *TagList) GetIntIndex(tag string, index uint) (int, bool) {
+func (list *TagList) GetIntIndex(tag string, index uint) (int32, bool) {
 	var carg0 *C.GstTagList // in, none, converted
 	var carg1 *C.gchar      // in, none, string
 	var carg2 C.guint       // in, none, casted
@@ -62386,10 +64348,10 @@ func (list *TagList) GetIntIndex(tag string, index uint) (int, bool) {
 	runtime.KeepAlive(tag)
 	runtime.KeepAlive(index)
 
-	var value int
+	var value int32
 	var goret bool
 
-	value = int(carg3)
+	value = int32(carg3)
 	if cret != 0 {
 		goret = true
 	}
@@ -62925,10 +64887,10 @@ func (list1 *TagList) Merge(list2 *TagList, mode TagMergeMode) *TagList {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Get the number of tags in @list.
-func (list *TagList) NTags() int {
+func (list *TagList) NTags() int32 {
 	var carg0 *C.GstTagList // in, none, converted
 	var cret  C.gint        // return, none, casted
 
@@ -62937,9 +64899,9 @@ func (list *TagList) NTags() int {
 	cret = C.gst_tag_list_n_tags(carg0)
 	runtime.KeepAlive(list)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -63351,8 +65313,11 @@ func marshalToc(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeTocFromGlibBorrow(b), nil
 }
 
-func (r *Toc) InitGoValue(v *gobject.Value) {
-	v.Init(TypeToc)
+func (r *Toc) GoValueType() gobject.Type {
+	return TypeToc
+}
+
+func (r *Toc) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -63635,8 +65600,11 @@ func marshalTocEntry(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeTocEntryFromGlibBorrow(b), nil
 }
 
-func (r *TocEntry) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTocEntry)
+func (r *TocEntry) GoValueType() gobject.Type {
+	return TypeTocEntry
+}
+
+func (r *TocEntry) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -63769,7 +65737,7 @@ func (entry *TocEntry) GetEntryType() TocEntryType {
 // 
 // 	- loopType TocLoopType: the storage for the loop_type
 //             value, leave %NULL if not need. 
-// 	- repeatCount int: the storage for the repeat_count
+// 	- repeatCount int32: the storage for the repeat_count
 //                value, leave %NULL if not need. 
 // 	- goret bool 
 //
@@ -63777,7 +65745,7 @@ func (entry *TocEntry) GetEntryType() TocEntryType {
 // appropriate storages. Loops are e.g. used by sampled instruments. GStreamer
 // is not automatically applying the loop. The application can process this
 // meta data and use it e.g. to send a seek-event to loop a section.
-func (entry *TocEntry) GetLoop() (TocLoopType, int, bool) {
+func (entry *TocEntry) GetLoop() (TocLoopType, int32, bool) {
 	var carg0 *C.GstTocEntry   // in, none, converted
 	var carg1 C.GstTocLoopType // out, full, casted
 	var carg2 C.gint           // out, full, casted
@@ -63789,11 +65757,11 @@ func (entry *TocEntry) GetLoop() (TocLoopType, int, bool) {
 	runtime.KeepAlive(entry)
 
 	var loopType    TocLoopType
-	var repeatCount int
+	var repeatCount int32
 	var goret       bool
 
 	loopType = TocLoopType(carg1)
-	repeatCount = int(carg2)
+	repeatCount = int32(carg2)
 	if cret != 0 {
 		goret = true
 	}
@@ -64041,10 +66009,10 @@ func (entry *TocEntry) MergeTags(tags *TagList, mode TagMergeMode) {
 // The function takes the following parameters:
 // 
 // 	- loopType TocLoopType: loop_type value to set. 
-// 	- repeatCount int: repeat_count value to set. 
+// 	- repeatCount int32: repeat_count value to set. 
 //
 // Set @loop_type and @repeat_count values for the @entry.
-func (entry *TocEntry) SetLoop(loopType TocLoopType, repeatCount int) {
+func (entry *TocEntry) SetLoop(loopType TocLoopType, repeatCount int32) {
 	var carg0 *C.GstTocEntry   // in, none, converted
 	var carg1 C.GstTocLoopType // in, none, casted
 	var carg2 C.gint           // in, none, casted
@@ -64204,6 +66172,59 @@ func (t *TracerClass) ParentClass() *ObjectClass {
 	return parent
 }
 
+// SetUseStructureParams wraps gst_tracer_class_set_use_structure_params
+// 
+// The function takes the following parameters:
+// 
+// 	- useStructureParams bool: %TRUE to use structure parameters, %FALSE otherwise 
+//
+// Sets whether the tracer should use structure parameters for configuration.
+// This function configures how parameters should be passed when instantiating
+// the tracer.
+// 
+// This is typically called in the tracer's class initialization function to
+// indicate its parameter handling preference.
+func (tracerClass *TracerClass) SetUseStructureParams(useStructureParams bool) {
+	var carg0 *C.GstTracerClass // in, none, converted
+	var carg1 C.gboolean        // in
+
+	carg0 = (*C.GstTracerClass)(UnsafeTracerClassToGlibNone(tracerClass))
+	if useStructureParams {
+		carg1 = C.TRUE
+	}
+
+	C.gst_tracer_class_set_use_structure_params(carg0, carg1)
+	runtime.KeepAlive(tracerClass)
+	runtime.KeepAlive(useStructureParams)
+}
+
+// UsesStructureParams wraps gst_tracer_class_uses_structure_params
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// If set, the tracer subsystem will consider parameters passed to the
+// `GST_TRACERS` environment variable as a #GstStructure and use its
+// fields as properties to instanciate the tracer.
+func (tracerClass *TracerClass) UsesStructureParams() bool {
+	var carg0 *C.GstTracerClass // in, none, converted
+	var cret  C.gboolean        // return
+
+	carg0 = (*C.GstTracerClass)(UnsafeTracerClassToGlibNone(tracerClass))
+
+	cret = C.gst_tracer_class_uses_structure_params(carg0)
+	runtime.KeepAlive(tracerClass)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // TracerFactoryClass wraps GstTracerFactoryClass
 // 
 // TracerFactoryClass is the type struct for [TracerFactory]
@@ -64300,8 +66321,11 @@ func marshalTypeFind(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeTypeFindFromGlibBorrow(b), nil
 }
 
-func (r *TypeFind) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTypeFind)
+func (r *TypeFind) GoValueType() gobject.Type {
+	return TypeTypeFind
+}
+
+func (r *TypeFind) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -64662,8 +66686,11 @@ func marshalUri(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeUriFromGlibBorrow(b), nil
 }
 
-func (r *Uri) InitGoValue(v *gobject.Value) {
-	v.Init(TypeUri)
+func (r *Uri) GoValueType() gobject.Type {
+	return TypeUri
+}
+
+func (r *Uri) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 

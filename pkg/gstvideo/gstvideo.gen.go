@@ -496,6 +496,10 @@ const VIDEO_COMP_Y = 0
 //
 // Default maximum number of errors tolerated before signaling error.
 const VIDEO_DECODER_MAX_ERRORS = -1
+// VIDEO_FORMAT_LAST wraps GST_VIDEO_FORMAT_LAST
+//
+// Number of video formats in #GstVideoFormat.
+const VIDEO_FORMAT_LAST = 139
 // VIDEO_MAX_COMPONENTS wraps GST_VIDEO_MAX_COMPONENTS
 const VIDEO_MAX_COMPONENTS = 4
 // VIDEO_MAX_PLANES wraps GST_VIDEO_MAX_PLANES
@@ -534,8 +538,11 @@ func marshalAncillaryMetaField(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AncillaryMetaField(0)
 
-func (e AncillaryMetaField) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAncillaryMetaField)
+func (e AncillaryMetaField) GoValueType() gobject.Type {
+	return TypeAncillaryMetaField
+}
+
+func (e AncillaryMetaField) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -575,8 +582,11 @@ func marshalColorBalanceType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = ColorBalanceType(0)
 
-func (e ColorBalanceType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeColorBalanceType)
+func (e ColorBalanceType) GoValueType() gobject.Type {
+	return TypeColorBalanceType
+}
+
+func (e ColorBalanceType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -687,8 +697,11 @@ func marshalNavigationCommand(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = NavigationCommand(0)
 
-func (e NavigationCommand) InitGoValue(v *gobject.Value) {
-	v.Init(TypeNavigationCommand)
+func (e NavigationCommand) GoValueType() gobject.Type {
+	return TypeNavigationCommand
+}
+
+func (e NavigationCommand) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -792,6 +805,12 @@ const (
 	//
 	// An event cancelling all currently active touch points.
 	NavigationEventTouchCancel NavigationEventType = 12
+	// NavigationEventMouseDoubleClick wraps GST_NAVIGATION_EVENT_MOUSE_DOUBLE_CLICK
+	//
+	// A mouse button double click event.
+	// Use gst_navigation_event_parse_mouse_button_event() to extract the details
+	// from the event.
+	NavigationEventMouseDoubleClick NavigationEventType = 13
 )
 
 func marshalNavigationEventType(p unsafe.Pointer) (any, error) {
@@ -800,8 +819,11 @@ func marshalNavigationEventType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = NavigationEventType(0)
 
-func (e NavigationEventType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeNavigationEventType)
+func (e NavigationEventType) GoValueType() gobject.Type {
+	return TypeNavigationEventType
+}
+
+func (e NavigationEventType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -813,6 +835,7 @@ func (e NavigationEventType) String() string {
 		case NavigationEventKeyRelease: return "NavigationEventKeyRelease"
 		case NavigationEventMouseButtonPress: return "NavigationEventMouseButtonPress"
 		case NavigationEventMouseButtonRelease: return "NavigationEventMouseButtonRelease"
+		case NavigationEventMouseDoubleClick: return "NavigationEventMouseDoubleClick"
 		case NavigationEventMouseMove: return "NavigationEventMouseMove"
 		case NavigationEventMouseScroll: return "NavigationEventMouseScroll"
 		case NavigationEventTouchCancel: return "NavigationEventTouchCancel"
@@ -866,8 +889,11 @@ func marshalNavigationMessageType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = NavigationMessageType(0)
 
-func (e NavigationMessageType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeNavigationMessageType)
+func (e NavigationMessageType) GoValueType() gobject.Type {
+	return TypeNavigationMessageType
+}
+
+func (e NavigationMessageType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -908,8 +934,11 @@ func marshalNavigationQueryType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = NavigationQueryType(0)
 
-func (e NavigationQueryType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeNavigationQueryType)
+func (e NavigationQueryType) GoValueType() gobject.Type {
+	return TypeNavigationQueryType
+}
+
+func (e NavigationQueryType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -954,8 +983,11 @@ func marshalVideoAFDSpec(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoAFDSpec(0)
 
-func (e VideoAFDSpec) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoAFDSpec)
+func (e VideoAFDSpec) GoValueType() gobject.Type {
+	return TypeVideoAFDSpec
+}
+
+func (e VideoAFDSpec) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1074,8 +1106,11 @@ func marshalVideoAFDValue(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoAFDValue(0)
 
-func (e VideoAFDValue) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoAFDValue)
+func (e VideoAFDValue) GoValueType() gobject.Type {
+	return TypeVideoAFDValue
+}
+
+func (e VideoAFDValue) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1128,8 +1163,11 @@ func marshalVideoAlphaMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoAlphaMode(0)
 
-func (e VideoAlphaMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoAlphaMode)
+func (e VideoAlphaMode) GoValueType() gobject.Type {
+	return TypeVideoAlphaMode
+}
+
+func (e VideoAlphaMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1178,8 +1216,11 @@ func marshalVideoAncillaryDID(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoAncillaryDID(0)
 
-func (e VideoAncillaryDID) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoAncillaryDID)
+func (e VideoAncillaryDID) GoValueType() gobject.Type {
+	return TypeVideoAncillaryDID
+}
+
+func (e VideoAncillaryDID) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1227,8 +1268,11 @@ func marshalVideoAncillaryDID16(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoAncillaryDID16(0)
 
-func (e VideoAncillaryDID16) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoAncillaryDID16)
+func (e VideoAncillaryDID16) GoValueType() gobject.Type {
+	return TypeVideoAncillaryDID16
+}
+
+func (e VideoAncillaryDID16) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1292,8 +1336,11 @@ func marshalVideoCaptionType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoCaptionType(0)
 
-func (e VideoCaptionType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoCaptionType)
+func (e VideoCaptionType) GoValueType() gobject.Type {
+	return TypeVideoCaptionType
+}
+
+func (e VideoCaptionType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1387,8 +1434,11 @@ func marshalVideoChromaMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoChromaMethod(0)
 
-func (e VideoChromaMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoChromaMethod)
+func (e VideoChromaMethod) GoValueType() gobject.Type {
+	return TypeVideoChromaMethod
+}
+
+func (e VideoChromaMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1430,8 +1480,11 @@ func marshalVideoChromaMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoChromaMode(0)
 
-func (e VideoChromaMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoChromaMode)
+func (e VideoChromaMode) GoValueType() gobject.Type {
+	return TypeVideoChromaMode
+}
+
+func (e VideoChromaMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1490,8 +1543,11 @@ func marshalVideoColorMatrix(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoColorMatrix(0)
 
-func (e VideoColorMatrix) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoColorMatrix)
+func (e VideoColorMatrix) GoValueType() gobject.Type {
+	return TypeVideoColorMatrix
+}
+
+func (e VideoColorMatrix) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1705,8 +1761,11 @@ func marshalVideoColorPrimaries(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoColorPrimaries(0)
 
-func (e VideoColorPrimaries) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoColorPrimaries)
+func (e VideoColorPrimaries) GoValueType() gobject.Type {
+	return TypeVideoColorPrimaries
+}
+
+func (e VideoColorPrimaries) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1877,8 +1936,11 @@ func marshalVideoColorRange(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoColorRange(0)
 
-func (e VideoColorRange) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoColorRange)
+func (e VideoColorRange) GoValueType() gobject.Type {
+	return TypeVideoColorRange
+}
+
+func (e VideoColorRange) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1925,8 +1987,11 @@ func marshalVideoDitherMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoDitherMethod(0)
 
-func (e VideoDitherMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoDitherMethod)
+func (e VideoDitherMethod) GoValueType() gobject.Type {
+	return TypeVideoDitherMethod
+}
+
+func (e VideoDitherMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1971,8 +2036,11 @@ func marshalVideoFieldOrder(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoFieldOrder(0)
 
-func (e VideoFieldOrder) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoFieldOrder)
+func (e VideoFieldOrder) GoValueType() gobject.Type {
+	return TypeVideoFieldOrder
+}
+
+func (e VideoFieldOrder) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2603,6 +2671,26 @@ const (
 	//
 	// packed RGB with alpha, 8 bits per channel
 	VideoFormatRbga VideoFormat = 133
+	// VideoFormatY216LE wraps GST_VIDEO_FORMAT_Y216_LE
+	//
+	// packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
+	VideoFormatY216LE VideoFormat = 134
+	// VideoFormatY216Be wraps GST_VIDEO_FORMAT_Y216_BE
+	//
+	// packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
+	VideoFormatY216Be VideoFormat = 135
+	// VideoFormatY416LE wraps GST_VIDEO_FORMAT_Y416_LE
+	//
+	// packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
+	VideoFormatY416LE VideoFormat = 136
+	// VideoFormatY416Be wraps GST_VIDEO_FORMAT_Y416_BE
+	//
+	// packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
+	VideoFormatY416Be VideoFormat = 137
+	// VideoFormatGray10LE16 wraps GST_VIDEO_FORMAT_GRAY10_LE16
+	//
+	// 10-bit grayscale, packed into 16bit words (6 bits left padding)
+	VideoFormatGray10LE16 VideoFormat = 138
 )
 
 func marshalVideoFormat(p unsafe.Pointer) (any, error) {
@@ -2611,8 +2699,11 @@ func marshalVideoFormat(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoFormat(0)
 
-func (e VideoFormat) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoFormat)
+func (e VideoFormat) GoValueType() gobject.Type {
+	return TypeVideoFormat
+}
+
+func (e VideoFormat) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -2672,6 +2763,7 @@ func (e VideoFormat) String() string {
 		case VideoFormatGbra10LE: return "VideoFormatGbra10LE"
 		case VideoFormatGbra12Be: return "VideoFormatGbra12Be"
 		case VideoFormatGbra12LE: return "VideoFormatGbra12LE"
+		case VideoFormatGray10LE16: return "VideoFormatGray10LE16"
 		case VideoFormatGray10LE32: return "VideoFormatGray10LE32"
 		case VideoFormatGray16Be: return "VideoFormatGray16Be"
 		case VideoFormatGray16LE: return "VideoFormatGray16LE"
@@ -2735,9 +2827,13 @@ func (e VideoFormat) String() string {
 		case VideoFormatY210: return "VideoFormatY210"
 		case VideoFormatY212Be: return "VideoFormatY212Be"
 		case VideoFormatY212LE: return "VideoFormatY212LE"
+		case VideoFormatY216Be: return "VideoFormatY216Be"
+		case VideoFormatY216LE: return "VideoFormatY216LE"
 		case VideoFormatY410: return "VideoFormatY410"
 		case VideoFormatY412Be: return "VideoFormatY412Be"
 		case VideoFormatY412LE: return "VideoFormatY412LE"
+		case VideoFormatY416Be: return "VideoFormatY416Be"
+		case VideoFormatY416LE: return "VideoFormatY416LE"
 		case VideoFormatY41B: return "VideoFormatY41B"
 		case VideoFormatY42B: return "VideoFormatY42B"
 		case VideoFormatY444: return "VideoFormatY444"
@@ -2789,10 +2885,10 @@ func VideoFormatFromFourcc(fourcc uint32) VideoFormat {
 // 
 // The function takes the following parameters:
 // 
-// 	- depth int: the amount of bits used for a pixel 
-// 	- bpp int: the amount of bits used to store a pixel. This value is bigger than
+// 	- depth int32: the amount of bits used for a pixel 
+// 	- bpp int32: the amount of bits used to store a pixel. This value is bigger than
 //   @depth 
-// 	- endianness int: the endianness of the masks, #G_LITTLE_ENDIAN or #G_BIG_ENDIAN 
+// 	- endianness int32: the endianness of the masks, #G_LITTLE_ENDIAN or #G_BIG_ENDIAN 
 // 	- redMask uint: the red mask 
 // 	- greenMask uint: the green mask 
 // 	- blueMask uint: the blue mask 
@@ -2803,7 +2899,7 @@ func VideoFormatFromFourcc(fourcc uint32) VideoFormat {
 // 	- goret VideoFormat 
 //
 // Find the #GstVideoFormat for the given parameters.
-func VideoFormatFromMasks(depth int, bpp int, endianness int, redMask uint, greenMask uint, blueMask uint, alphaMask uint) VideoFormat {
+func VideoFormatFromMasks(depth int32, bpp int32, endianness int32, redMask uint, greenMask uint, blueMask uint, alphaMask uint) VideoFormat {
 	var carg1 C.gint           // in, none, casted
 	var carg2 C.gint           // in, none, casted
 	var carg3 C.gint           // in, none, casted
@@ -2931,8 +3027,10 @@ func VideoFormatToFourcc(format VideoFormat) uint32 {
 // 
 // 	- goret string 
 //
-// Returns a string containing a descriptive name for
-// the #GstVideoFormat if there is one, or NULL otherwise.
+// Returns a string containing a descriptive name for the #GstVideoFormat.
+// 
+// Since 1.26 this can also be used with %GST_VIDEO_FORMAT_UNKNOWN, previous
+// versions were printing a critical warning and returned %NULL.
 func VideoFormatToString(format VideoFormat) string {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -2979,8 +3077,11 @@ func marshalVideoGLTextureOrientation(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoGLTextureOrientation(0)
 
-func (e VideoGLTextureOrientation) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoGLTextureOrientation)
+func (e VideoGLTextureOrientation) GoValueType() gobject.Type {
+	return TypeVideoGLTextureOrientation
+}
+
+func (e VideoGLTextureOrientation) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3036,8 +3137,11 @@ func marshalVideoGLTextureType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoGLTextureType(0)
 
-func (e VideoGLTextureType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoGLTextureType)
+func (e VideoGLTextureType) GoValueType() gobject.Type {
+	return TypeVideoGLTextureType
+}
+
+func (e VideoGLTextureType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3075,8 +3179,11 @@ func marshalVideoGammaMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoGammaMode(0)
 
-func (e VideoGammaMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoGammaMode)
+func (e VideoGammaMode) GoValueType() gobject.Type {
+	return TypeVideoGammaMode
+}
+
+func (e VideoGammaMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3135,8 +3242,11 @@ func marshalVideoInterlaceMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoInterlaceMode(0)
 
-func (e VideoInterlaceMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoInterlaceMode)
+func (e VideoInterlaceMode) GoValueType() gobject.Type {
+	return TypeVideoInterlaceMode
+}
+
+func (e VideoInterlaceMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3238,8 +3348,11 @@ func marshalVideoMatrixMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoMatrixMode(0)
 
-func (e VideoMatrixMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoMatrixMode)
+func (e VideoMatrixMode) GoValueType() gobject.Type {
+	return TypeVideoMatrixMode
+}
+
+func (e VideoMatrixMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3325,8 +3438,11 @@ func marshalVideoMultiviewFramePacking(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoMultiviewFramePacking(0)
 
-func (e VideoMultiviewFramePacking) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoMultiviewFramePacking)
+func (e VideoMultiviewFramePacking) GoValueType() gobject.Type {
+	return TypeVideoMultiviewFramePacking
+}
+
+func (e VideoMultiviewFramePacking) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3434,8 +3550,11 @@ func marshalVideoMultiviewMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoMultiviewMode(0)
 
-func (e VideoMultiviewMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoMultiviewMode)
+func (e VideoMultiviewMode) GoValueType() gobject.Type {
+	return TypeVideoMultiviewMode
+}
+
+func (e VideoMultiviewMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3546,11 +3665,11 @@ const (
 	VideoOrientationVert VideoOrientationMethod = 5
 	// VideoOrientationUlLr wraps GST_VIDEO_ORIENTATION_UL_LR
 	//
-	// Flip across upper left/lower right diagonal
+	// Rotate counter-clockwise 90 degrees and flip vertically
 	VideoOrientationUlLr VideoOrientationMethod = 6
 	// VideoOrientationUrLl wraps GST_VIDEO_ORIENTATION_UR_LL
 	//
-	// Flip across upper right/lower left diagonal
+	// Rotate clockwise 90 degrees and flip vertically
 	VideoOrientationUrLl VideoOrientationMethod = 7
 	// VideoOrientationAuto wraps GST_VIDEO_ORIENTATION_AUTO
 	//
@@ -3568,8 +3687,11 @@ func marshalVideoOrientationMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoOrientationMethod(0)
 
-func (e VideoOrientationMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoOrientationMethod)
+func (e VideoOrientationMethod) GoValueType() gobject.Type {
+	return TypeVideoOrientationMethod
+}
+
+func (e VideoOrientationMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3616,8 +3738,11 @@ func marshalVideoPrimariesMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoPrimariesMode(0)
 
-func (e VideoPrimariesMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoPrimariesMode)
+func (e VideoPrimariesMode) GoValueType() gobject.Type {
+	return TypeVideoPrimariesMode
+}
+
+func (e VideoPrimariesMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3666,8 +3791,11 @@ func marshalVideoResamplerMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoResamplerMethod(0)
 
-func (e VideoResamplerMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoResamplerMethod)
+func (e VideoResamplerMethod) GoValueType() gobject.Type {
+	return TypeVideoResamplerMethod
+}
+
+func (e VideoResamplerMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3711,8 +3839,11 @@ func marshalVideoTileMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoTileMode(0)
 
-func (e VideoTileMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoTileMode)
+func (e VideoTileMode) GoValueType() gobject.Type {
+	return TypeVideoTileMode
+}
+
+func (e VideoTileMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3745,8 +3876,11 @@ func marshalVideoTileType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoTileType(0)
 
-func (e VideoTileType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoTileType)
+func (e VideoTileType) GoValueType() gobject.Type {
+	return TypeVideoTileType
+}
+
+func (e VideoTileType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -3855,8 +3989,11 @@ func marshalVideoTransferFunction(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoTransferFunction(0)
 
-func (e VideoTransferFunction) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoTransferFunction)
+func (e VideoTransferFunction) GoValueType() gobject.Type {
+	return TypeVideoTransferFunction
+}
+
+func (e VideoTransferFunction) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -4098,8 +4235,11 @@ func marshalVideoVBIParserResult(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = VideoVBIParserResult(0)
 
-func (e VideoVBIParserResult) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoVBIParserResult)
+func (e VideoVBIParserResult) GoValueType() gobject.Type {
+	return TypeVideoVBIParserResult
+}
+
+func (e VideoVBIParserResult) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -4202,8 +4342,11 @@ func (n NavigationModifierType) Has(other NavigationModifierType) bool {
 
 var _ gobject.GoValueInitializer = NavigationModifierType(0)
 
-func (f NavigationModifierType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeNavigationModifierType)
+func (f NavigationModifierType) GoValueType() gobject.Type {
+	return TypeNavigationModifierType
+}
+
+func (f NavigationModifierType) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4354,8 +4497,11 @@ func (v VideoBufferFlags) Has(other VideoBufferFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoBufferFlags(0)
 
-func (f VideoBufferFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoBufferFlags)
+func (f VideoBufferFlags) GoValueType() gobject.Type {
+	return TypeVideoBufferFlags
+}
+
+func (f VideoBufferFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4424,8 +4570,11 @@ func (v VideoChromaFlags) Has(other VideoChromaFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoChromaFlags(0)
 
-func (f VideoChromaFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoChromaFlags)
+func (f VideoChromaFlags) GoValueType() gobject.Type {
+	return TypeVideoChromaFlags
+}
+
+func (f VideoChromaFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4468,7 +4617,7 @@ const (
 	VideoChromaSiteVCosited VideoChromaSite = 4
 	// VideoChromaSiteAltLine wraps GST_VIDEO_CHROMA_SITE_ALT_LINE
 	//
-	// choma samples are sited on alternate lines
+	// chroma samples are sited on alternate lines
 	VideoChromaSiteAltLine VideoChromaSite = 8
 	// VideoChromaSiteCosited wraps GST_VIDEO_CHROMA_SITE_COSITED
 	//
@@ -4498,8 +4647,11 @@ func (v VideoChromaSite) Has(other VideoChromaSite) bool {
 
 var _ gobject.GoValueInitializer = VideoChromaSite(0)
 
-func (f VideoChromaSite) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoChromaSite)
+func (f VideoChromaSite) GoValueType() gobject.Type {
+	return TypeVideoChromaSite
+}
+
+func (f VideoChromaSite) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4635,8 +4787,11 @@ func (v VideoCodecFrameFlags) Has(other VideoCodecFrameFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoCodecFrameFlags(0)
 
-func (f VideoCodecFrameFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoCodecFrameFlags)
+func (f VideoCodecFrameFlags) GoValueType() gobject.Type {
+	return TypeVideoCodecFrameFlags
+}
+
+func (f VideoCodecFrameFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4693,8 +4848,11 @@ func (v VideoDecoderRequestSyncPointFlags) Has(other VideoDecoderRequestSyncPoin
 
 var _ gobject.GoValueInitializer = VideoDecoderRequestSyncPointFlags(0)
 
-func (f VideoDecoderRequestSyncPointFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoDecoderRequestSyncPointFlags)
+func (f VideoDecoderRequestSyncPointFlags) GoValueType() gobject.Type {
+	return TypeVideoDecoderRequestSyncPointFlags
+}
+
+func (f VideoDecoderRequestSyncPointFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4743,8 +4901,11 @@ func (v VideoDitherFlags) Has(other VideoDitherFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoDitherFlags(0)
 
-func (f VideoDitherFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoDitherFlags)
+func (f VideoDitherFlags) GoValueType() gobject.Type {
+	return TypeVideoDitherFlags
+}
+
+func (f VideoDitherFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4798,8 +4959,11 @@ func (v VideoFlags) Has(other VideoFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoFlags(0)
 
-func (f VideoFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoFlags)
+func (f VideoFlags) GoValueType() gobject.Type {
+	return TypeVideoFlags
+}
+
+func (f VideoFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4888,8 +5052,11 @@ func (v VideoFormatFlags) Has(other VideoFormatFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoFormatFlags(0)
 
-func (f VideoFormatFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoFormatFlags)
+func (f VideoFormatFlags) GoValueType() gobject.Type {
+	return TypeVideoFormatFlags
+}
+
+func (f VideoFormatFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -4994,8 +5161,11 @@ func (v VideoFrameFlags) Has(other VideoFrameFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoFrameFlags(0)
 
-func (f VideoFrameFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoFrameFlags)
+func (f VideoFrameFlags) GoValueType() gobject.Type {
+	return TypeVideoFrameFlags
+}
+
+func (f VideoFrameFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5064,8 +5234,11 @@ func (v VideoFrameMapFlags) Has(other VideoFrameMapFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoFrameMapFlags(0)
 
-func (f VideoFrameMapFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoFrameMapFlags)
+func (f VideoFrameMapFlags) GoValueType() gobject.Type {
+	return TypeVideoFrameMapFlags
+}
+
+func (f VideoFrameMapFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5152,8 +5325,11 @@ func (v VideoMultiviewFlags) Has(other VideoMultiviewFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoMultiviewFlags(0)
 
-func (f VideoMultiviewFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoMultiviewFlags)
+func (f VideoMultiviewFlags) GoValueType() gobject.Type {
+	return TypeVideoMultiviewFlags
+}
+
+func (f VideoMultiviewFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5220,8 +5396,11 @@ func (v VideoOverlayFormatFlags) Has(other VideoOverlayFormatFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoOverlayFormatFlags(0)
 
-func (f VideoOverlayFormatFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoOverlayFormatFlags)
+func (f VideoOverlayFormatFlags) GoValueType() gobject.Type {
+	return TypeVideoOverlayFormatFlags
+}
+
+func (f VideoOverlayFormatFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5279,8 +5458,11 @@ func (v VideoPackFlags) Has(other VideoPackFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoPackFlags(0)
 
-func (f VideoPackFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoPackFlags)
+func (f VideoPackFlags) GoValueType() gobject.Type {
+	return TypeVideoPackFlags
+}
+
+func (f VideoPackFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5330,8 +5512,11 @@ func (v VideoResamplerFlags) Has(other VideoResamplerFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoResamplerFlags(0)
 
-func (f VideoResamplerFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoResamplerFlags)
+func (f VideoResamplerFlags) GoValueType() gobject.Type {
+	return TypeVideoResamplerFlags
+}
+
+func (f VideoResamplerFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5376,8 +5561,11 @@ func (v VideoScalerFlags) Has(other VideoScalerFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoScalerFlags(0)
 
-func (f VideoScalerFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoScalerFlags)
+func (f VideoScalerFlags) GoValueType() gobject.Type {
+	return TypeVideoScalerFlags
+}
+
+func (f VideoScalerFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5427,8 +5615,11 @@ func (v VideoTimeCodeFlags) Has(other VideoTimeCodeFlags) bool {
 
 var _ gobject.GoValueInitializer = VideoTimeCodeFlags(0)
 
-func (f VideoTimeCodeFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoTimeCodeFlags)
+func (f VideoTimeCodeFlags) GoValueType() gobject.Type {
+	return TypeVideoTimeCodeFlags
+}
+
+func (f VideoTimeCodeFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -5748,14 +5939,14 @@ func BufferAddVideoMeta(buffer *gst.Buffer, flags VideoFrameFlags, format VideoF
 // 	- height uint: the height 
 // 	- nPlanes uint: number of planes 
 // 	- offset [4]uint: offset of each plane 
-// 	- stride [4]int: stride of each plane 
+// 	- stride [4]int32: stride of each plane 
 // 
 // The function returns the following values:
 // 
 // 	- goret *VideoMeta 
 //
 // Attaches GstVideoMeta metadata to @buffer with the given parameters.
-func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format VideoFormat, width uint, height uint, nPlanes uint, offset [4]uint, stride [4]int) *VideoMeta {
+func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format VideoFormat, width uint, height uint, nPlanes uint, offset [4]uint, stride [4]int32) *VideoMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var carg2 C.GstVideoFrameFlags // in, none, casted
 	var carg3 C.GstVideoFormat     // in, none, casted
@@ -5777,7 +5968,7 @@ func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format Vi
 	panic("unimplemented conversion of [4]uint (const gsize*)")
 	_ = stride
 	_ = carg8
-	panic("unimplemented conversion of [4]int (const gint*)")
+	panic("unimplemented conversion of [4]int32 (const gint*)")
 
 	cret = C.gst_buffer_add_video_meta_full(carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8)
 	runtime.KeepAlive(buffer)
@@ -5934,7 +6125,7 @@ func BufferAddVideoRegionOfInterestMetaID(buffer *gst.Buffer, roiType glib.Quark
 // 
 // 	- buffer *gst.Buffer: a #GstBuffer 
 // 	- uuid *uint8: User Data Unregistered UUID 
-// 	- data *uint8: SEI User Data Unregistered buffer 
+// 	- data *uint8 (nullable): SEI User Data Unregistered buffer 
 // 	- size uint: size of the data buffer 
 // 
 // The function returns the following values:
@@ -5946,7 +6137,7 @@ func BufferAddVideoRegionOfInterestMetaID(buffer *gst.Buffer, roiType glib.Quark
 func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, data *uint8, size uint) *VideoSEIUserDataUnregisteredMeta {
 	var carg1 *C.GstBuffer                           // in, none, converted
 	var carg2 *C.guint8                              // in, transfer: none, C Pointers: 1, Name: guint8
-	var carg3 *C.guint8                              // in, transfer: none, C Pointers: 1, Name: guint8
+	var carg3 *C.guint8                              // in, transfer: none, C Pointers: 1, Name: guint8, nullable, nullable
 	var carg4 C.gsize                                // in, none, casted
 	var cret  *C.GstVideoSEIUserDataUnregisteredMeta // return, none, converted
 
@@ -5954,9 +6145,11 @@ func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, 
 	_ = uuid
 	_ = carg2
 	panic("unimplemented conversion of *uint8 (guint8*)")
-	_ = data
-	_ = carg3
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	if data != nil {
+		_ = data
+		_ = carg3
+		panic("unimplemented conversion of *uint8 (guint8*)")
+	}
 	carg4 = C.gsize(size)
 
 	cret = C.gst_buffer_add_video_sei_user_data_unregistered_meta(carg1, carg2, carg3, carg4)
@@ -6109,7 +6302,7 @@ func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- id int: a metadata id 
+// 	- id int32: a metadata id 
 // 
 // The function returns the following values:
 // 
@@ -6119,7 +6312,7 @@ func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 // 
 // Buffers can contain multiple #GstVideoMeta metadata items when dealing with
 // multiview buffers.
-func BufferGetVideoMetaID(buffer *gst.Buffer, id int) *VideoMeta {
+func BufferGetVideoMetaID(buffer *gst.Buffer, id int32) *VideoMeta {
 	var carg1 *C.GstBuffer    // in, none, converted
 	var carg2 C.gint          // in, none, casted
 	var cret  *C.GstVideoMeta // return, none, converted, nullable
@@ -6145,7 +6338,7 @@ func BufferGetVideoMetaID(buffer *gst.Buffer, id int) *VideoMeta {
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- id int: a metadata id 
+// 	- id int32: a metadata id 
 // 
 // The function returns the following values:
 // 
@@ -6155,7 +6348,7 @@ func BufferGetVideoMetaID(buffer *gst.Buffer, id int) *VideoMeta {
 // 
 // Buffers can contain multiple #GstVideoRegionOfInterestMeta metadata items if
 // multiple regions of interests are marked on a frame.
-func BufferGetVideoRegionOfInterestMetaID(buffer *gst.Buffer, id int) *VideoRegionOfInterestMeta {
+func BufferGetVideoRegionOfInterestMetaID(buffer *gst.Buffer, id int32) *VideoRegionOfInterestMeta {
 	var carg1 *C.GstBuffer                    // in, none, converted
 	var carg2 C.gint                          // in, none, casted
 	var cret  *C.GstVideoRegionOfInterestMeta // return, none, converted, nullable
@@ -6318,8 +6511,8 @@ func VideoBarMetaApiGetType() gobject.Type {
 // 
 // 	- dest *VideoFrame: The #GstVideoFrame where to blend @src in 
 // 	- src *VideoFrame: the #GstVideoFrame that we want to blend into 
-// 	- x int: The x offset in pixel where the @src image should be blended 
-// 	- y int: the y offset in pixel where the @src image should be blended 
+// 	- x int32: The x offset in pixel where the @src image should be blended 
+// 	- y int32: the y offset in pixel where the @src image should be blended 
 // 	- globalAlpha float32: the global_alpha each per-pixel alpha value is multiplied
 //                with 
 // 
@@ -6328,7 +6521,7 @@ func VideoBarMetaApiGetType() gobject.Type {
 // 	- goret bool 
 //
 // Lets you blend the @src image into the @dest image
-func VideoBlend(dest *VideoFrame, src *VideoFrame, x int, y int, globalAlpha float32) bool {
+func VideoBlend(dest *VideoFrame, src *VideoFrame, x int32, y int32, globalAlpha float32) bool {
 	var carg1 *C.GstVideoFrame // in, none, converted
 	var carg2 *C.GstVideoFrame // in, none, converted
 	var carg3 C.gint           // in, none, casted
@@ -6364,8 +6557,8 @@ func VideoBlend(dest *VideoFrame, src *VideoFrame, x int, y int, globalAlpha flo
 // 
 // 	- src *VideoInfo: the #GstVideoInfo describing the video data in @src_buffer 
 // 	- srcBuffer *gst.Buffer: the source buffer containing video pixels to scale 
-// 	- destHeight int: the height in pixels to scale the video data in @src_buffer to 
-// 	- destWidth int: the width in pixels to scale the video data in @src_buffer to 
+// 	- destHeight int32: the height in pixels to scale the video data in @src_buffer to 
+// 	- destWidth int32: the width in pixels to scale the video data in @src_buffer to 
 // 
 // The function returns the following values:
 // 
@@ -6378,7 +6571,7 @@ func VideoBlend(dest *VideoFrame, src *VideoFrame, x int, y int, globalAlpha flo
 // helper function which is used to scale subtitle overlays, and may be
 // deprecated in the near future. Use #GstVideoScaler to scale video buffers
 // instead.
-func VideoBlendScaleLinearRGBA(src *VideoInfo, srcBuffer *gst.Buffer, destHeight int, destWidth int) (VideoInfo, *gst.Buffer) {
+func VideoBlendScaleLinearRGBA(src *VideoInfo, srcBuffer *gst.Buffer, destHeight int32, destWidth int32) (VideoInfo, *gst.Buffer) {
 	var carg1 *C.GstVideoInfo // in, none, converted
 	var carg2 *C.GstBuffer    // in, none, converted
 	var carg3 C.gint          // in, none, casted
@@ -6769,6 +6962,75 @@ func VideoCropMetaApiGetType() gobject.Type {
 	var goret gobject.Type
 
 	goret = gobject.Type(cret)
+
+	return goret
+}
+
+// VideoDmaDRMFormatFromGstFormat wraps gst_video_dma_drm_format_from_gst_format
+// 
+// The function takes the following parameters:
+// 
+// 	- format VideoFormat: a #GstVideoFormat 
+// 	- modifier *uint64 (nullable): return location for the modifier 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint32 
+//
+// Converting the video format into dma drm fourcc/modifier pair.
+// If no matching fourcc found, then DRM_FORMAT_INVALID is returned
+// and @modifier will be set to DRM_FORMAT_MOD_INVALID.
+func VideoDmaDRMFormatFromGstFormat(format VideoFormat, modifier *uint64) uint32 {
+	var carg1 C.GstVideoFormat // in, none, casted
+	var carg2 *C.guint64       // in, transfer: none, C Pointers: 1, Name: guint64, nullable, nullable
+	var cret  C.guint32        // return, none, casted
+
+	carg1 = C.GstVideoFormat(format)
+	if modifier != nil {
+		_ = modifier
+		_ = carg2
+		panic("unimplemented conversion of *uint64 (guint64*)")
+	}
+
+	cret = C.gst_video_dma_drm_format_from_gst_format(carg1, carg2)
+	runtime.KeepAlive(format)
+	runtime.KeepAlive(modifier)
+
+	var goret uint32
+
+	goret = uint32(cret)
+
+	return goret
+}
+
+// VideoDmaDRMFormatToGstFormat wraps gst_video_dma_drm_format_to_gst_format
+// 
+// The function takes the following parameters:
+// 
+// 	- fourcc uint32: the dma drm fourcc value. 
+// 	- modifier uint64: the dma drm modifier. 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoFormat 
+//
+// Converting a dma drm fourcc and modifier pair into a #GstVideoFormat. If
+// no matching video format is found, then GST_VIDEO_FORMAT_UNKNOWN is returned.
+func VideoDmaDRMFormatToGstFormat(fourcc uint32, modifier uint64) VideoFormat {
+	var carg1 C.guint32        // in, none, casted
+	var carg2 C.guint64        // in, none, casted
+	var cret  C.GstVideoFormat // return, none, casted
+
+	carg1 = C.guint32(fourcc)
+	carg2 = C.guint64(modifier)
+
+	cret = C.gst_video_dma_drm_format_to_gst_format(carg1, carg2)
+	runtime.KeepAlive(fourcc)
+	runtime.KeepAlive(modifier)
+
+	var goret VideoFormat
+
+	goret = VideoFormat(cret)
 
 	return goret
 }
@@ -7285,8 +7547,8 @@ func VideoGLTextureUploadMetaApiGetType() gobject.Type {
 // 
 // The function returns the following values:
 // 
-// 	- destN int: Numerator of the calculated framerate 
-// 	- destD int: Denominator of the calculated framerate 
+// 	- destN int32: Numerator of the calculated framerate 
+// 	- destD int32: Denominator of the calculated framerate 
 // 	- goret bool 
 //
 // Given the nominal duration of one video frame,
@@ -7297,7 +7559,7 @@ func VideoGLTextureUploadMetaApiGetType() gobject.Type {
 // match was found, and return %FALSE.
 // 
 // It returns %FALSE if a duration of 0 is passed.
-func VideoGuessFramerate(duration gst.ClockTime) (int, int, bool) {
+func VideoGuessFramerate(duration gst.ClockTime) (int32, int32, bool) {
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var carg2 C.gint         // out, full, casted
 	var carg3 C.gint         // out, full, casted
@@ -7308,12 +7570,12 @@ func VideoGuessFramerate(duration gst.ClockTime) (int, int, bool) {
 	cret = C.gst_video_guess_framerate(carg1, &carg2, &carg3)
 	runtime.KeepAlive(duration)
 
-	var destN int
-	var destD int
+	var destN int32
+	var destD int32
 	var goret bool
 
-	destN = int(carg2)
-	destD = int(carg3)
+	destN = int32(carg2)
+	destD = int32(carg3)
 	if cret != 0 {
 		goret = true
 	}
@@ -7325,10 +7587,10 @@ func VideoGuessFramerate(duration gst.ClockTime) (int, int, bool) {
 // 
 // The function takes the following parameters:
 // 
-// 	- width int: Width of the video frame 
-// 	- height int: Height of the video frame 
-// 	- parN int: Pixel aspect ratio numerator 
-// 	- parD int: Pixel aspect ratio denominator 
+// 	- width int32: Width of the video frame 
+// 	- height int32: Height of the video frame 
+// 	- parN int32: Pixel aspect ratio numerator 
+// 	- parD int32: Pixel aspect ratio denominator 
 // 
 // The function returns the following values:
 // 
@@ -7337,7 +7599,7 @@ func VideoGuessFramerate(duration gst.ClockTime) (int, int, bool) {
 // Given a frame's dimensions and pixel aspect ratio, this function will
 // calculate the frame's aspect ratio and compare it against a set of
 // common well-known "standard" aspect ratios.
-func VideoIsCommonAspectRatio(width int, height int, parN int, parD int) bool {
+func VideoIsCommonAspectRatio(width int32, height int32, parN int32, parD int32) bool {
 	var carg1 C.gint     // in, none, casted
 	var carg2 C.gint     // in, none, casted
 	var carg3 C.gint     // in, none, casted
@@ -7731,10 +7993,10 @@ func VideoSeiUserDataUnregisteredParsePrecisionTimeStamp(userData *VideoSEIUserD
 // The function takes the following parameters:
 // 
 // 	- mode VideoTileMode: a #GstVideoTileMode 
-// 	- x int: x coordinate 
-// 	- y int: y coordinate 
-// 	- xTiles int: number of horizintal tiles 
-// 	- yTiles int: number of vertical tiles 
+// 	- x int32: x coordinate 
+// 	- y int32: y coordinate 
+// 	- xTiles int32: number of horizintal tiles 
+// 	- yTiles int32: number of vertical tiles 
 // 
 // The function returns the following values:
 // 
@@ -7744,7 +8006,7 @@ func VideoSeiUserDataUnregisteredParsePrecisionTimeStamp(userData *VideoSEIUserD
 // image of @x_tiles by @y_tiles.
 // 
 // Use this method when @mode is of type %GST_VIDEO_TILE_TYPE_INDEXED.
-func VideoTileGetIndex(mode VideoTileMode, x int, y int, xTiles int, yTiles int) uint {
+func VideoTileGetIndex(mode VideoTileMode, x int32, y int32, xTiles int32, yTiles int32) uint {
 	var carg1 C.GstVideoTileMode // in, none, casted
 	var carg2 C.gint             // in, none, casted
 	var carg3 C.gint             // in, none, casted
@@ -7823,7 +8085,7 @@ type ColorBalance interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
+	// 	- goret int32 
 	//
 	// Retrieve the current value of the indicated channel, between min_value
 	// and max_value.
@@ -7831,7 +8093,7 @@ type ColorBalance interface {
 	// See Also: The #GstColorBalanceChannel.min_value and
 	//         #GstColorBalanceChannel.max_value members of the
 	//         #GstColorBalanceChannel object.
-	GetValue(ColorBalanceChannel) int
+	GetValue(ColorBalanceChannel) int32
 	// ListChannels wraps gst_color_balance_list_channels
 	// 
 	// The function returns the following values:
@@ -7845,7 +8107,7 @@ type ColorBalance interface {
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-	// 	- value int: The new value for the channel. 
+	// 	- value int32: The new value for the channel. 
 	//
 	// Sets the current value of the channel to the passed value, which must
 	// be between min_value and max_value.
@@ -7853,23 +8115,23 @@ type ColorBalance interface {
 	// See Also: The #GstColorBalanceChannel.min_value and
 	//         #GstColorBalanceChannel.max_value members of the
 	//         #GstColorBalanceChannel object.
-	SetValue(ColorBalanceChannel, int)
+	SetValue(ColorBalanceChannel, int32)
 	// ValueChanged wraps gst_color_balance_value_changed
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
-	// 	- value int: The new value of the channel 
+	// 	- value int32: The new value of the channel 
 	//
 	// A helper function called by implementations of the GstColorBalance
 	// interface. It fires the #GstColorBalance::value-changed signal on the
 	// instance, and the #GstColorBalanceChannel::value-changed signal on the
 	// channel object.
-	ValueChanged(ColorBalanceChannel, int)
+	ValueChanged(ColorBalanceChannel, int32)
 	// ConnectValueChanged connects the provided callback to the "value-changed" signal
 	//
 	// Fired when the value of the indicated channel has changed.
-	ConnectValueChanged(func(ColorBalance, ColorBalanceChannel, int)) gobject.SignalHandle
+	ConnectValueChanged(func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle
 }
 
 var _ ColorBalance = (*ColorBalanceInstance)(nil)
@@ -7896,6 +8158,11 @@ func UnsafeColorBalanceFromGlibNone(c unsafe.Pointer) ColorBalance {
 // UnsafeColorBalanceFromGlibFull is used to convert raw GstColorBalance pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeColorBalanceFromGlibFull(c unsafe.Pointer) ColorBalance {
 	return gobject.UnsafeObjectFromGlibFull(c).(ColorBalance)
+}
+
+// UnsafeColorBalanceFromGlibBorrow is used to convert raw GstColorBalance pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeColorBalanceFromGlibBorrow(c unsafe.Pointer) ColorBalance {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ColorBalance)
 }
 
 // UnsafeColorBalanceToGlibNone is used to convert the instance to it's C value GstColorBalance. This is used by the bindings internally.
@@ -7941,7 +8208,7 @@ func (balance *ColorBalanceInstance) GetBalanceType() ColorBalanceType {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Retrieve the current value of the indicated channel, between min_value
 // and max_value.
@@ -7949,7 +8216,7 @@ func (balance *ColorBalanceInstance) GetBalanceType() ColorBalanceType {
 // See Also: The #GstColorBalanceChannel.min_value and
 //         #GstColorBalanceChannel.max_value members of the
 //         #GstColorBalanceChannel object.
-func (balance *ColorBalanceInstance) GetValue(channel ColorBalanceChannel) int {
+func (balance *ColorBalanceInstance) GetValue(channel ColorBalanceChannel) int32 {
 	var carg0 *C.GstColorBalance        // in, none, converted
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
 	var cret  C.gint                    // return, none, casted
@@ -7961,9 +8228,9 @@ func (balance *ColorBalanceInstance) GetValue(channel ColorBalanceChannel) int {
 	runtime.KeepAlive(balance)
 	runtime.KeepAlive(channel)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -8003,7 +8270,7 @@ func (balance *ColorBalanceInstance) ListChannels() []ColorBalanceChannel {
 // The function takes the following parameters:
 // 
 // 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-// 	- value int: The new value for the channel. 
+// 	- value int32: The new value for the channel. 
 //
 // Sets the current value of the channel to the passed value, which must
 // be between min_value and max_value.
@@ -8011,7 +8278,7 @@ func (balance *ColorBalanceInstance) ListChannels() []ColorBalanceChannel {
 // See Also: The #GstColorBalanceChannel.min_value and
 //         #GstColorBalanceChannel.max_value members of the
 //         #GstColorBalanceChannel object.
-func (balance *ColorBalanceInstance) SetValue(channel ColorBalanceChannel, value int) {
+func (balance *ColorBalanceInstance) SetValue(channel ColorBalanceChannel, value int32) {
 	var carg0 *C.GstColorBalance        // in, none, converted
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
 	var carg2 C.gint                    // in, none, casted
@@ -8031,13 +8298,13 @@ func (balance *ColorBalanceInstance) SetValue(channel ColorBalanceChannel, value
 // The function takes the following parameters:
 // 
 // 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
-// 	- value int: The new value of the channel 
+// 	- value int32: The new value of the channel 
 //
 // A helper function called by implementations of the GstColorBalance
 // interface. It fires the #GstColorBalance::value-changed signal on the
 // instance, and the #GstColorBalanceChannel::value-changed signal on the
 // channel object.
-func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, value int) {
+func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, value int32) {
 	var carg0 *C.GstColorBalance        // in, none, converted
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
 	var carg2 C.gint                    // in, none, casted
@@ -8055,7 +8322,7 @@ func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, v
 // ConnectValueChanged connects the provided callback to the "value-changed" signal
 //
 // Fired when the value of the indicated channel has changed.
-func (o *ColorBalanceInstance) ConnectValueChanged(fn func(ColorBalance, ColorBalanceChannel, int)) gobject.SignalHandle {
+func (o *ColorBalanceInstance) ConnectValueChanged(fn func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle {
 	return o.Instance.Connect("value-changed", fn)
 }
 
@@ -8074,8 +8341,8 @@ type ColorBalanceOverrides[Instance ColorBalance] struct {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetValue func(Instance, ColorBalanceChannel) int
+	// 	- goret int32 
+	GetValue func(Instance, ColorBalanceChannel) int32
 	// ListChannels allows you to override the implementation of the virtual method list_channels.
 	// The function returns the following values:
 	// 
@@ -8085,14 +8352,14 @@ type ColorBalanceOverrides[Instance ColorBalance] struct {
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-	// 	- value int: The new value for the channel. 
-	SetValue func(Instance, ColorBalanceChannel, int)
+	// 	- value int32: The new value for the channel. 
+	SetValue func(Instance, ColorBalanceChannel, int32)
 	// ValueChanged allows you to override the implementation of the virtual method value_changed.
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
-	// 	- value int: The new value of the channel 
-	ValueChanged func(Instance, ColorBalanceChannel, int)
+	// 	- value int32: The new value of the channel 
+	ValueChanged func(Instance, ColorBalanceChannel, int32)
 }
 
 // UnsafeApplyColorBalanceOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -8109,7 +8376,7 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 				var balance Instance         // go GstColorBalance subclass
 				var goret   ColorBalanceType // return, none, casted
 
-				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetBalanceType(balance)
 
@@ -8128,9 +8395,9 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 			func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel) (cret C.gint) {
 				var balance Instance            // go GstColorBalance subclass
 				var channel ColorBalanceChannel // in, none, converted
-				var goret   int                 // return, none, casted
+				var goret   int32               // return, none, casted
 
-				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.GetValue(balance, channel)
@@ -8151,7 +8418,7 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 				var balance Instance              // go GstColorBalance subclass
 				var goret   []ColorBalanceChannel // return, transfer: none, C Pointers: 1, Name: List, scope: 
 
-				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.ListChannels(balance)
 
@@ -8172,11 +8439,11 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 			func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint) {
 				var balance Instance            // go GstColorBalance subclass
 				var channel ColorBalanceChannel // in, none, converted
-				var value   int                 // in, none, casted
+				var value   int32               // in, none, casted
 
-				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg1))
-				value = int(carg2)
+				value = int32(carg2)
 
 				overrides.SetValue(balance, channel, value)
 			},
@@ -8191,11 +8458,11 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 			func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint) {
 				var balance Instance            // go GstColorBalance subclass
 				var channel ColorBalanceChannel // in, none, converted
-				var value   int                 // in, none, casted
+				var value   int32               // in, none, casted
 
-				balance = UnsafeColorBalanceFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				balance = UnsafeColorBalanceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg1))
-				value = int(carg2)
+				value = int32(carg2)
 
 				overrides.ValueChanged(balance, channel, value)
 			},
@@ -8275,8 +8542,8 @@ type Navigation interface {
 	// The function takes the following parameters:
 	// 
 	// 	- event string: The type of mouse event, as a text string. Recognised values are
-	// "mouse-button-press", "mouse-button-release" and "mouse-move". 
-	// 	- button int: The button number of the button being pressed or released. Pass 0
+	// "mouse-button-press", "mouse-button-release", "mouse-move" and "mouse-double-click". 
+	// 	- button int32: The button number of the button being pressed or released. Pass 0
 	// for mouse-move events. 
 	// 	- x float64: The x coordinate of the mouse event. 
 	// 	- y float64: The y coordinate of the mouse event. 
@@ -8285,7 +8552,7 @@ type Navigation interface {
 	// are sent relative to the display space of the related output area. This is
 	// usually the size in pixels of the window associated with the element
 	// implementing the #GstNavigation interface.
-	SendMouseEvent(string, int, float64, float64)
+	SendMouseEvent(string, int32, float64, float64)
 	// SendMouseScrollEvent wraps gst_navigation_send_mouse_scroll_event
 	// 
 	// The function takes the following parameters:
@@ -8326,6 +8593,11 @@ func UnsafeNavigationFromGlibNone(c unsafe.Pointer) Navigation {
 // UnsafeNavigationFromGlibFull is used to convert raw GstNavigation pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeNavigationFromGlibFull(c unsafe.Pointer) Navigation {
 	return gobject.UnsafeObjectFromGlibFull(c).(Navigation)
+}
+
+// UnsafeNavigationFromGlibBorrow is used to convert raw GstNavigation pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeNavigationFromGlibBorrow(c unsafe.Pointer) Navigation {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Navigation)
 }
 
 // UnsafeNavigationToGlibNone is used to convert the instance to it's C value GstNavigation. This is used by the bindings internally.
@@ -8504,7 +8776,7 @@ func NavigationEventNewKeyRelease(key string, state NavigationModifierType) *gst
 // 
 // The function takes the following parameters:
 // 
-// 	- button int: The number of the pressed mouse button. 
+// 	- button int32: The number of the pressed mouse button. 
 // 	- x float64: The x coordinate of the mouse cursor. 
 // 	- y float64: The y coordinate of the mouse cursor. 
 // 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
@@ -8515,7 +8787,7 @@ func NavigationEventNewKeyRelease(key string, state NavigationModifierType) *gst
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for the given key mouse button press.
-func NavigationEventNewMouseButtonPress(button int, x float64, y float64, state NavigationModifierType) *gst.Event {
+func NavigationEventNewMouseButtonPress(button int32, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
 	var carg3 C.gdouble                   // in, none, casted
@@ -8544,7 +8816,7 @@ func NavigationEventNewMouseButtonPress(button int, x float64, y float64, state 
 // 
 // The function takes the following parameters:
 // 
-// 	- button int: The number of the released mouse button. 
+// 	- button int32: The number of the released mouse button. 
 // 	- x float64: The x coordinate of the mouse cursor. 
 // 	- y float64: The y coordinate of the mouse cursor. 
 // 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
@@ -8555,7 +8827,7 @@ func NavigationEventNewMouseButtonPress(button int, x float64, y float64, state 
 // 	- goret *gst.Event 
 //
 // Create a new navigation event for the given key mouse button release.
-func NavigationEventNewMouseButtonRelease(button int, x float64, y float64, state NavigationModifierType) *gst.Event {
+func NavigationEventNewMouseButtonRelease(button int32, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
 	var carg3 C.gdouble                   // in, none, casted
@@ -8568,6 +8840,46 @@ func NavigationEventNewMouseButtonRelease(button int, x float64, y float64, stat
 	carg4 = C.GstNavigationModifierType(state)
 
 	cret = C.gst_navigation_event_new_mouse_button_release(carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(button)
+	runtime.KeepAlive(x)
+	runtime.KeepAlive(y)
+	runtime.KeepAlive(state)
+
+	var goret *gst.Event
+
+	goret = gst.UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// NavigationEventNewMouseDoubleClick wraps gst_navigation_event_new_mouse_double_click
+// 
+// The function takes the following parameters:
+// 
+// 	- button int32: The number of the pressed mouse button. 
+// 	- x float64: The x coordinate of the mouse cursor. 
+// 	- y float64: The y coordinate of the mouse cursor. 
+// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
+// Shift and Alt). 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Event 
+//
+// Create a new navigation event for the given key mouse double click.
+func NavigationEventNewMouseDoubleClick(button int32, x float64, y float64, state NavigationModifierType) *gst.Event {
+	var carg1 C.gint                      // in, none, casted
+	var carg2 C.gdouble                   // in, none, casted
+	var carg3 C.gdouble                   // in, none, casted
+	var carg4 C.GstNavigationModifierType // in, none, casted
+	var cret  *C.GstEvent                 // return, full, converted
+
+	carg1 = C.gint(button)
+	carg2 = C.gdouble(x)
+	carg3 = C.gdouble(y)
+	carg4 = C.GstNavigationModifierType(state)
+
+	cret = C.gst_navigation_event_new_mouse_double_click(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(button)
 	runtime.KeepAlive(x)
 	runtime.KeepAlive(y)
@@ -8937,7 +9249,7 @@ func NavigationEventParseKeyEvent(event *gst.Event) (string, bool) {
 // 
 // The function returns the following values:
 // 
-// 	- button int: Pointer to a gint that will receive the button
+// 	- button int32: Pointer to a gint that will receive the button
 //     number associated with the event. 
 // 	- x float64: Pointer to a gdouble to receive the x coordinate of the
 //     mouse button event. 
@@ -8948,7 +9260,7 @@ func NavigationEventParseKeyEvent(event *gst.Event) (string, bool) {
 // Retrieve the details of either a #GstNavigation mouse button press event or
 // a mouse button release event. Determine which type the event is using
 // gst_navigation_event_get_type() to retrieve the #GstNavigationEventType.
-func NavigationEventParseMouseButtonEvent(event *gst.Event) (int, float64, float64, bool) {
+func NavigationEventParseMouseButtonEvent(event *gst.Event) (int32, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gint      // out, full, casted
 	var carg3 C.gdouble   // out, full, casted
@@ -8960,12 +9272,12 @@ func NavigationEventParseMouseButtonEvent(event *gst.Event) (int, float64, float
 	cret = C.gst_navigation_event_parse_mouse_button_event(carg1, &carg2, &carg3, &carg4)
 	runtime.KeepAlive(event)
 
-	var button int
+	var button int32
 	var x      float64
 	var y      float64
 	var goret  bool
 
-	button = int(carg2)
+	button = int32(carg2)
 	x = float64(carg3)
 	y = float64(carg4)
 	if cret != 0 {
@@ -9791,8 +10103,8 @@ func (navigation *NavigationInstance) SendKeyEvent(event string, key string) {
 // The function takes the following parameters:
 // 
 // 	- event string: The type of mouse event, as a text string. Recognised values are
-// "mouse-button-press", "mouse-button-release" and "mouse-move". 
-// 	- button int: The button number of the button being pressed or released. Pass 0
+// "mouse-button-press", "mouse-button-release", "mouse-move" and "mouse-double-click". 
+// 	- button int32: The button number of the button being pressed or released. Pass 0
 // for mouse-move events. 
 // 	- x float64: The x coordinate of the mouse event. 
 // 	- y float64: The y coordinate of the mouse event. 
@@ -9801,7 +10113,7 @@ func (navigation *NavigationInstance) SendKeyEvent(event string, key string) {
 // are sent relative to the display space of the related output area. This is
 // usually the size in pixels of the window associated with the element
 // implementing the #GstNavigation interface.
-func (navigation *NavigationInstance) SendMouseEvent(event string, button int, x float64, y float64) {
+func (navigation *NavigationInstance) SendMouseEvent(event string, button int32, x float64, y float64) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 *C.char          // in, none, string, casted *C.gchar
 	var carg2 C.int            // in, none, casted, casted C.gint
@@ -9886,7 +10198,7 @@ func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, 
 				var navigation Instance       // go GstNavigation subclass
 				var structure  *gst.Structure // in, none, converted
 
-				navigation = UnsafeNavigationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				navigation = UnsafeNavigationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				structure = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.SendEvent(navigation, structure)
@@ -9903,7 +10215,7 @@ func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, 
 				var navigation Instance   // go GstNavigation subclass
 				var event      *gst.Event // in, full, converted
 
-				navigation = UnsafeNavigationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				navigation = UnsafeNavigationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
 
 				overrides.SendEventSimple(navigation, event)
@@ -9954,6 +10266,11 @@ func UnsafeVideoDirectionFromGlibFull(c unsafe.Pointer) VideoDirection {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoDirection)
 }
 
+// UnsafeVideoDirectionFromGlibBorrow is used to convert raw GstVideoDirection pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoDirectionFromGlibBorrow(c unsafe.Pointer) VideoDirection {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoDirection)
+}
+
 // UnsafeVideoDirectionToGlibNone is used to convert the instance to it's C value GstVideoDirection. This is used by the bindings internally.
 func UnsafeVideoDirectionToGlibNone(c VideoDirection) unsafe.Pointer {
 	i := c.upcastToGstVideoDirection()
@@ -9995,11 +10312,11 @@ type VideoOrientation interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- center int: return location for the result 
+	// 	- center int32: return location for the result 
 	// 	- goret bool 
 	//
 	// Get the horizontal centering offset from the given object.
-	GetHcenter() (int, bool)
+	GetHcenter() (int32, bool)
 	// GetHflip wraps gst_video_orientation_get_hflip
 	// 
 	// The function returns the following values:
@@ -10013,11 +10330,11 @@ type VideoOrientation interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- center int: return location for the result 
+	// 	- center int32: return location for the result 
 	// 	- goret bool 
 	//
 	// Get the vertical centering offset from the given object.
-	GetVcenter() (int, bool)
+	GetVcenter() (int32, bool)
 	// GetVflip wraps gst_video_orientation_get_vflip
 	// 
 	// The function returns the following values:
@@ -10031,14 +10348,14 @@ type VideoOrientation interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- center int: centering offset 
+	// 	- center int32: centering offset 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// Set the horizontal centering offset for the given object.
-	SetHcenter(int) bool
+	SetHcenter(int32) bool
 	// SetHflip wraps gst_video_orientation_set_hflip
 	// 
 	// The function takes the following parameters:
@@ -10055,14 +10372,14 @@ type VideoOrientation interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- center int: centering offset 
+	// 	- center int32: centering offset 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// Set the vertical centering offset for the given object.
-	SetVcenter(int) bool
+	SetVcenter(int32) bool
 	// SetVflip wraps gst_video_orientation_set_vflip
 	// 
 	// The function takes the following parameters:
@@ -10101,6 +10418,11 @@ func UnsafeVideoOrientationFromGlibNone(c unsafe.Pointer) VideoOrientation {
 // UnsafeVideoOrientationFromGlibFull is used to convert raw GstVideoOrientation pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeVideoOrientationFromGlibFull(c unsafe.Pointer) VideoOrientation {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoOrientation)
+}
+
+// UnsafeVideoOrientationFromGlibBorrow is used to convert raw GstVideoOrientation pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoOrientationFromGlibBorrow(c unsafe.Pointer) VideoOrientation {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoOrientation)
 }
 
 // UnsafeVideoOrientationToGlibNone is used to convert the instance to it's C value GstVideoOrientation. This is used by the bindings internally.
@@ -10153,11 +10475,11 @@ func VideoOrientationFromTag(taglist *gst.TagList) (VideoOrientationMethod, bool
 // 
 // The function returns the following values:
 // 
-// 	- center int: return location for the result 
+// 	- center int32: return location for the result 
 // 	- goret bool 
 //
 // Get the horizontal centering offset from the given object.
-func (videoOrientation *VideoOrientationInstance) GetHcenter() (int, bool) {
+func (videoOrientation *VideoOrientationInstance) GetHcenter() (int32, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // out, full, casted
 	var cret  C.gboolean             // return
@@ -10167,10 +10489,10 @@ func (videoOrientation *VideoOrientationInstance) GetHcenter() (int, bool) {
 	cret = C.gst_video_orientation_get_hcenter(carg0, &carg1)
 	runtime.KeepAlive(videoOrientation)
 
-	var center int
+	var center int32
 	var goret  bool
 
-	center = int(carg1)
+	center = int32(carg1)
 	if cret != 0 {
 		goret = true
 	}
@@ -10213,11 +10535,11 @@ func (videoOrientation *VideoOrientationInstance) GetHflip() (bool, bool) {
 // 
 // The function returns the following values:
 // 
-// 	- center int: return location for the result 
+// 	- center int32: return location for the result 
 // 	- goret bool 
 //
 // Get the vertical centering offset from the given object.
-func (videoOrientation *VideoOrientationInstance) GetVcenter() (int, bool) {
+func (videoOrientation *VideoOrientationInstance) GetVcenter() (int32, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // out, full, casted
 	var cret  C.gboolean             // return
@@ -10227,10 +10549,10 @@ func (videoOrientation *VideoOrientationInstance) GetVcenter() (int, bool) {
 	cret = C.gst_video_orientation_get_vcenter(carg0, &carg1)
 	runtime.KeepAlive(videoOrientation)
 
-	var center int
+	var center int32
 	var goret  bool
 
-	center = int(carg1)
+	center = int32(carg1)
 	if cret != 0 {
 		goret = true
 	}
@@ -10273,14 +10595,14 @@ func (videoOrientation *VideoOrientationInstance) GetVflip() (bool, bool) {
 // 
 // The function takes the following parameters:
 // 
-// 	- center int: centering offset 
+// 	- center int32: centering offset 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
 //
 // Set the horizontal centering offset for the given object.
-func (videoOrientation *VideoOrientationInstance) SetHcenter(center int) bool {
+func (videoOrientation *VideoOrientationInstance) SetHcenter(center int32) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // in, none, casted
 	var cret  C.gboolean             // return
@@ -10339,14 +10661,14 @@ func (videoOrientation *VideoOrientationInstance) SetHflip(flip bool) bool {
 // 
 // The function takes the following parameters:
 // 
-// 	- center int: centering offset 
+// 	- center int32: centering offset 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
 //
 // Set the vertical centering offset for the given object.
-func (videoOrientation *VideoOrientationInstance) SetVcenter(center int) bool {
+func (videoOrientation *VideoOrientationInstance) SetVcenter(center int32) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // in, none, casted
 	var cret  C.gboolean             // return
@@ -10407,9 +10729,9 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	// GetHcenter allows you to override the implementation of the virtual method get_hcenter.
 	// The function returns the following values:
 	// 
-	// 	- center int: return location for the result 
+	// 	- center int32: return location for the result 
 	// 	- goret bool 
-	GetHcenter func(Instance) (int, bool)
+	GetHcenter func(Instance) (int32, bool)
 	// GetHflip allows you to override the implementation of the virtual method get_hflip.
 	// The function returns the following values:
 	// 
@@ -10419,9 +10741,9 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	// GetVcenter allows you to override the implementation of the virtual method get_vcenter.
 	// The function returns the following values:
 	// 
-	// 	- center int: return location for the result 
+	// 	- center int32: return location for the result 
 	// 	- goret bool 
-	GetVcenter func(Instance) (int, bool)
+	GetVcenter func(Instance) (int32, bool)
 	// GetVflip allows you to override the implementation of the virtual method get_vflip.
 	// The function returns the following values:
 	// 
@@ -10431,12 +10753,12 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	// SetHcenter allows you to override the implementation of the virtual method set_hcenter.
 	// The function takes the following parameters:
 	// 
-	// 	- center int: centering offset 
+	// 	- center int32: centering offset 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
-	SetHcenter func(Instance, int) bool
+	SetHcenter func(Instance, int32) bool
 	// SetHflip allows you to override the implementation of the virtual method set_hflip.
 	// The function takes the following parameters:
 	// 
@@ -10449,12 +10771,12 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	// SetVcenter allows you to override the implementation of the virtual method set_vcenter.
 	// The function takes the following parameters:
 	// 
-	// 	- center int: centering offset 
+	// 	- center int32: centering offset 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
-	SetVcenter func(Instance, int) bool
+	SetVcenter func(Instance, int32) bool
 	// SetVflip allows you to override the implementation of the virtual method set_vflip.
 	// The function takes the following parameters:
 	// 
@@ -10478,10 +10800,10 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 			"_gotk4_gstvideo1_VideoOrientation_get_hcenter",
 			func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean) {
 				var videoOrientation Instance // go GstVideoOrientation subclass
-				var center           int      // out, full, casted
+				var center           int32    // out, full, casted
 				var goret            bool     // return
 
-				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				center, goret = overrides.GetHcenter(videoOrientation)
 
@@ -10505,7 +10827,7 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 				var flip             bool     // out
 				var goret            bool     // return
 
-				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				flip, goret = overrides.GetHflip(videoOrientation)
 
@@ -10528,10 +10850,10 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 			"_gotk4_gstvideo1_VideoOrientation_get_vcenter",
 			func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean) {
 				var videoOrientation Instance // go GstVideoOrientation subclass
-				var center           int      // out, full, casted
+				var center           int32    // out, full, casted
 				var goret            bool     // return
 
-				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				center, goret = overrides.GetVcenter(videoOrientation)
 
@@ -10555,7 +10877,7 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 				var flip             bool     // out
 				var goret            bool     // return
 
-				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				flip, goret = overrides.GetVflip(videoOrientation)
 
@@ -10578,11 +10900,11 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 			"_gotk4_gstvideo1_VideoOrientation_set_hcenter",
 			func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean) {
 				var videoOrientation Instance // go GstVideoOrientation subclass
-				var center           int      // in, none, casted
+				var center           int32    // in, none, casted
 				var goret            bool     // return
 
-				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
-				center = int(carg1)
+				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				center = int32(carg1)
 
 				goret = overrides.SetHcenter(videoOrientation, center)
 
@@ -10605,7 +10927,7 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 				var flip             bool     // in
 				var goret            bool     // return
 
-				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					flip = true
 				}
@@ -10628,11 +10950,11 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 			"_gotk4_gstvideo1_VideoOrientation_set_vcenter",
 			func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean) {
 				var videoOrientation Instance // go GstVideoOrientation subclass
-				var center           int      // in, none, casted
+				var center           int32    // in, none, casted
 				var goret            bool     // return
 
-				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
-				center = int(carg1)
+				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				center = int32(carg1)
 
 				goret = overrides.SetVcenter(videoOrientation, center)
 
@@ -10655,7 +10977,7 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 				var flip             bool     // in
 				var goret            bool     // return
 
-				videoOrientation = UnsafeVideoOrientationFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoOrientation = UnsafeVideoOrientationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					flip = true
 				}
@@ -10973,10 +11295,10 @@ type VideoOverlay interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- x int: the horizontal offset of the render area inside the window 
-	// 	- y int: the vertical offset of the render area inside the window 
-	// 	- width int: the width of the render area inside the window 
-	// 	- height int: the height of the render area inside the window 
+	// 	- x int32: the horizontal offset of the render area inside the window 
+	// 	- y int32: the vertical offset of the render area inside the window 
+	// 	- width int32: the width of the render area inside the window 
+	// 	- height int32: the height of the render area inside the window 
 	// 
 	// The function returns the following values:
 	// 
@@ -10992,7 +11314,7 @@ type VideoOverlay interface {
 	// 
 	// This method is needed for non fullscreen video overlay in UI toolkits that
 	// do not support subwindows.
-	SetRenderRectangle(int, int, int, int) bool
+	SetRenderRectangle(int32, int32, int32, int32) bool
 }
 
 var _ VideoOverlay = (*VideoOverlayInstance)(nil)
@@ -11021,6 +11343,11 @@ func UnsafeVideoOverlayFromGlibFull(c unsafe.Pointer) VideoOverlay {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoOverlay)
 }
 
+// UnsafeVideoOverlayFromGlibBorrow is used to convert raw GstVideoOverlay pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoOverlayFromGlibBorrow(c unsafe.Pointer) VideoOverlay {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoOverlay)
+}
+
 // UnsafeVideoOverlayToGlibNone is used to convert the instance to it's C value GstVideoOverlay. This is used by the bindings internally.
 func UnsafeVideoOverlayToGlibNone(c VideoOverlay) unsafe.Pointer {
 	i := c.upcastToGstVideoOverlay()
@@ -11038,7 +11365,7 @@ func UnsafeVideoOverlayToGlibFull(c VideoOverlay) unsafe.Pointer {
 // The function takes the following parameters:
 // 
 // 	- object gobject.Object: The instance on which the property is set 
-// 	- lastPropId int: The highest property ID. 
+// 	- lastPropId int32: The highest property ID. 
 // 	- propertyId uint: The property ID 
 // 	- value *gobject.Value: The #GValue to be set 
 // 
@@ -11050,7 +11377,7 @@ func UnsafeVideoOverlayToGlibFull(c VideoOverlay) unsafe.Pointer {
 // interface that want the render rectangle to be controllable using
 // properties. This helper will parse and set the render rectangle calling
 // gst_video_overlay_set_render_rectangle().
-func VideoOverlaySetProperty(object gobject.Object, lastPropId int, propertyId uint, value *gobject.Value) bool {
+func VideoOverlaySetProperty(object gobject.Object, lastPropId int32, propertyId uint, value *gobject.Value) bool {
 	var carg1 *C.GObject // in, none, converted
 	var carg2 C.gint     // in, none, casted
 	var carg3 C.guint    // in, none, casted
@@ -11136,10 +11463,10 @@ func (overlay *VideoOverlayInstance) PrepareWindowHandle() {
 // 
 // The function takes the following parameters:
 // 
-// 	- x int: the horizontal offset of the render area inside the window 
-// 	- y int: the vertical offset of the render area inside the window 
-// 	- width int: the width of the render area inside the window 
-// 	- height int: the height of the render area inside the window 
+// 	- x int32: the horizontal offset of the render area inside the window 
+// 	- y int32: the vertical offset of the render area inside the window 
+// 	- width int32: the width of the render area inside the window 
+// 	- height int32: the height of the render area inside the window 
 // 
 // The function returns the following values:
 // 
@@ -11155,7 +11482,7 @@ func (overlay *VideoOverlayInstance) PrepareWindowHandle() {
 // 
 // This method is needed for non fullscreen video overlay in UI toolkits that
 // do not support subwindows.
-func (overlay *VideoOverlayInstance) SetRenderRectangle(x int, y int, width int, height int) bool {
+func (overlay *VideoOverlayInstance) SetRenderRectangle(x int32, y int32, width int32, height int32) bool {
 	var carg0 *C.GstVideoOverlay // in, none, converted
 	var carg1 C.gint             // in, none, casted
 	var carg2 C.gint             // in, none, casted
@@ -11198,11 +11525,11 @@ type VideoOverlayOverrides[Instance VideoOverlay] struct {
 	// SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
 	// The function takes the following parameters:
 	// 
-	// 	- x int 
-	// 	- y int 
-	// 	- width int 
-	// 	- height int 
-	SetRenderRectangle func(Instance, int, int, int, int)
+	// 	- x int32 
+	// 	- y int32 
+	// 	- width int32 
+	// 	- height int32 
+	SetRenderRectangle func(Instance, int32, int32, int32, int32)
 }
 
 // UnsafeApplyVideoOverlayOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -11218,7 +11545,7 @@ func UnsafeApplyVideoOverlayOverrides[Instance VideoOverlay](gclass unsafe.Point
 			func(carg0 *C.GstVideoOverlay) {
 				var overlay Instance // go GstVideoOverlay subclass
 
-				overlay = UnsafeVideoOverlayFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				overlay = UnsafeVideoOverlayFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Expose(overlay)
 			},
@@ -11234,7 +11561,7 @@ func UnsafeApplyVideoOverlayOverrides[Instance VideoOverlay](gclass unsafe.Point
 				var overlay      Instance // go GstVideoOverlay subclass
 				var handleEvents bool     // in
 
-				overlay = UnsafeVideoOverlayFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				overlay = UnsafeVideoOverlayFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					handleEvents = true
 				}
@@ -11251,16 +11578,16 @@ func UnsafeApplyVideoOverlayOverrides[Instance VideoOverlay](gclass unsafe.Point
 			"_gotk4_gstvideo1_VideoOverlay_set_render_rectangle",
 			func(carg0 *C.GstVideoOverlay, carg1 C.gint, carg2 C.gint, carg3 C.gint, carg4 C.gint) {
 				var overlay Instance // go GstVideoOverlay subclass
-				var x       int      // in, none, casted
-				var y       int      // in, none, casted
-				var width   int      // in, none, casted
-				var height  int      // in, none, casted
+				var x       int32    // in, none, casted
+				var y       int32    // in, none, casted
+				var width   int32    // in, none, casted
+				var height  int32    // in, none, casted
 
-				overlay = UnsafeVideoOverlayFromGlibNone(unsafe.Pointer(carg0)).(Instance)
-				x = int(carg1)
-				y = int(carg2)
-				width = int(carg3)
-				height = int(carg4)
+				overlay = UnsafeVideoOverlayFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				x = int32(carg1)
+				y = int32(carg2)
+				width = int32(carg3)
+				height = int32(carg4)
 
 				overrides.SetRenderRectangle(overlay, x, y, width, height)
 			},
@@ -11288,7 +11615,7 @@ type ColorBalanceChannel interface {
 	// ConnectValueChanged connects the provided callback to the "value-changed" signal
 	//
 	// Fired when the value of the indicated channel has changed.
-	ConnectValueChanged(func(ColorBalanceChannel, int)) gobject.SignalHandle
+	ConnectValueChanged(func(ColorBalanceChannel, int32)) gobject.SignalHandle
 }
 
 func unsafeWrapColorBalanceChannel(base *gobject.ObjectInstance) *ColorBalanceChannelInstance {
@@ -11311,6 +11638,11 @@ func UnsafeColorBalanceChannelFromGlibFull(c unsafe.Pointer) ColorBalanceChannel
 	return gobject.UnsafeObjectFromGlibFull(c).(ColorBalanceChannel)
 }
 
+// UnsafeColorBalanceChannelFromGlibBorrow is used to convert raw GstColorBalanceChannel pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeColorBalanceChannelFromGlibBorrow(c unsafe.Pointer) ColorBalanceChannel {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ColorBalanceChannel)
+}
+
 func (c *ColorBalanceChannelInstance) upcastToGstColorBalanceChannel() *ColorBalanceChannelInstance {
 	return c
 }
@@ -11328,7 +11660,7 @@ func UnsafeColorBalanceChannelToGlibFull(c ColorBalanceChannel) unsafe.Pointer {
 // ConnectValueChanged connects the provided callback to the "value-changed" signal
 //
 // Fired when the value of the indicated channel has changed.
-func (o *ColorBalanceChannelInstance) ConnectValueChanged(fn func(ColorBalanceChannel, int)) gobject.SignalHandle {
+func (o *ColorBalanceChannelInstance) ConnectValueChanged(fn func(ColorBalanceChannel, int32)) gobject.SignalHandle {
 	return o.Connect("value-changed", fn)
 }
 
@@ -11341,8 +11673,8 @@ type ColorBalanceChannelOverrides[Instance ColorBalanceChannel] struct {
 	// ValueChanged allows you to override the implementation of the virtual method value_changed.
 	// The function takes the following parameters:
 	// 
-	// 	- value int 
-	ValueChanged func(Instance, int)
+	// 	- value int32 
+	ValueChanged func(Instance, int32)
 }
 
 // UnsafeApplyColorBalanceChannelOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -11359,10 +11691,10 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 			"_gotk4_gstvideo1_ColorBalanceChannel_value_changed",
 			func(carg0 *C.GstColorBalanceChannel, carg1 C.gint) {
 				var channel Instance // go GstColorBalanceChannel subclass
-				var value   int      // in, none, casted
+				var value   int32    // in, none, casted
 
-				channel = UnsafeColorBalanceChannelFromGlibNone(unsafe.Pointer(carg0)).(Instance)
-				value = int(carg1)
+				channel = UnsafeColorBalanceChannelFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				value = int32(carg1)
 
 				overrides.ValueChanged(channel, value)
 			},
@@ -11461,6 +11793,11 @@ func UnsafeVideoAggregatorFromGlibFull(c unsafe.Pointer) VideoAggregator {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoAggregator)
 }
 
+// UnsafeVideoAggregatorFromGlibBorrow is used to convert raw GstVideoAggregator pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoAggregatorFromGlibBorrow(c unsafe.Pointer) VideoAggregator {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoAggregator)
+}
+
 func (v *VideoAggregatorInstance) upcastToGstVideoAggregator() *VideoAggregatorInstance {
 	return v
 }
@@ -11555,7 +11892,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 				var outbuffer       *gst.Buffer    // in, none, converted
 				var goret           gst.FlowReturn // return, none, casted
 
-				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoaggregator = UnsafeVideoAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				outbuffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.AggregateFrames(videoaggregator, outbuffer)
@@ -11578,7 +11915,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 				var bestInfo        *VideoInfo // in, none, converted
 				var atLeastOneAlpha bool       // out
 
-				vagg = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				vagg = UnsafeVideoAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				downstreamCaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				bestInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
 
@@ -11601,7 +11938,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 				var caps            *gst.Caps // in, none, converted
 				var goret           *gst.Caps // return, full, converted
 
-				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoaggregator = UnsafeVideoAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.UpdateCaps(videoaggregator, caps)
@@ -11731,6 +12068,11 @@ func UnsafeVideoAggregatorPadFromGlibNone(c unsafe.Pointer) VideoAggregatorPad {
 // UnsafeVideoAggregatorPadFromGlibFull is used to convert raw GstVideoAggregatorPad pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeVideoAggregatorPadFromGlibFull(c unsafe.Pointer) VideoAggregatorPad {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoAggregatorPad)
+}
+
+// UnsafeVideoAggregatorPadFromGlibBorrow is used to convert raw GstVideoAggregatorPad pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoAggregatorPadFromGlibBorrow(c unsafe.Pointer) VideoAggregatorPad {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoAggregatorPad)
 }
 
 func (v *VideoAggregatorPadInstance) upcastToGstVideoAggregatorPad() *VideoAggregatorPadInstance {
@@ -11914,7 +12256,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 				var videoaggregator VideoAggregator // in, none, converted
 				var preparedFrame   *VideoFrame     // in, none, converted
 
-				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
 
@@ -11935,7 +12277,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 				var preparedFrame   *VideoFrame     // in, none, converted
 				var goret           bool            // return
 
-				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg3))
@@ -11961,7 +12303,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 				var videoaggregator VideoAggregator // in, none, converted
 				var preparedFrame   *VideoFrame     // in, none, converted
 
-				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
 
@@ -11981,7 +12323,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 				var buffer          *gst.Buffer     // in, none, converted
 				var preparedFrame   *VideoFrame     // in, none, converted
 
-				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				videoaggregator = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 				preparedFrame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg3))
@@ -11999,7 +12341,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 			func(carg0 *C.GstVideoAggregatorPad) {
 				var pad Instance // go GstVideoAggregatorPad subclass
 
-				pad = UnsafeVideoAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.UpdateConversionInfo(pad)
 			},
@@ -12071,6 +12413,11 @@ func UnsafeVideoBufferPoolFromGlibNone(c unsafe.Pointer) VideoBufferPool {
 // UnsafeVideoBufferPoolFromGlibFull is used to convert raw GstVideoBufferPool pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeVideoBufferPoolFromGlibFull(c unsafe.Pointer) VideoBufferPool {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoBufferPool)
+}
+
+// UnsafeVideoBufferPoolFromGlibBorrow is used to convert raw GstVideoBufferPool pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoBufferPoolFromGlibBorrow(c unsafe.Pointer) VideoBufferPool {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoBufferPool)
 }
 
 func (v *VideoBufferPoolInstance) upcastToGstVideoBufferPool() *VideoBufferPoolInstance {
@@ -12283,10 +12630,10 @@ type VideoDecoder interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- nBytes int: the number of bytes to add 
+	// 	- nBytes int32: the number of bytes to add 
 	//
 	// Removes next @n_bytes of input data and adds it to currently parsed frame.
-	AddToFrame(int)
+	AddToFrame(int32)
 	// AllocateOutputBuffer wraps gst_video_decoder_allocate_output_buffer
 	// 
 	// The function returns the following values:
@@ -12416,20 +12763,20 @@ type VideoDecoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetEstimateRate() int
+	// 	- goret int32 
+	GetEstimateRate() int32
 	// GetFrame wraps gst_video_decoder_get_frame
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- frameNumber int: system_frame_number of a frame 
+	// 	- frameNumber int32: system_frame_number of a frame 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *VideoCodecFrame (nullable) 
 	//
 	// Get a pending unfinished #GstVideoCodecFrame
-	GetFrame(int) *VideoCodecFrame
+	GetFrame(int32) *VideoCodecFrame
 	// GetFrames wraps gst_video_decoder_get_frames
 	// 
 	// The function returns the following values:
@@ -12482,8 +12829,8 @@ type VideoDecoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetMaxErrors() int
+	// 	- goret int32 
+	GetMaxErrors() int32
 	// GetNeedsFormat wraps gst_video_decoder_get_needs_format
 	// 
 	// The function returns the following values:
@@ -12712,7 +13059,7 @@ type VideoDecoder interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- num int: max tolerated errors 
+	// 	- num int32: max tolerated errors 
 	//
 	// Sets numbers of tolerated decoder errors, where a tolerated one is then only
 	// warned about, but more than tolerated will lead to fatal error.  You can set
@@ -12720,7 +13067,7 @@ type VideoDecoder interface {
 	// GST_VIDEO_DECODER_MAX_ERRORS.
 	// 
 	// The '-1' option was added in 1.4
-	SetMaxErrors(int)
+	SetMaxErrors(int32)
 	// SetNeedsFormat wraps gst_video_decoder_set_needs_format
 	// 
 	// The function takes the following parameters:
@@ -12848,6 +13195,11 @@ func UnsafeVideoDecoderFromGlibFull(c unsafe.Pointer) VideoDecoder {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoDecoder)
 }
 
+// UnsafeVideoDecoderFromGlibBorrow is used to convert raw GstVideoDecoder pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoDecoderFromGlibBorrow(c unsafe.Pointer) VideoDecoder {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoDecoder)
+}
+
 func (v *VideoDecoderInstance) upcastToGstVideoDecoder() *VideoDecoderInstance {
 	return v
 }
@@ -12866,10 +13218,10 @@ func UnsafeVideoDecoderToGlibFull(c VideoDecoder) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- nBytes int: the number of bytes to add 
+// 	- nBytes int32: the number of bytes to add 
 //
 // Removes next @n_bytes of input data and adds it to currently parsed frame.
-func (decoder *VideoDecoderInstance) AddToFrame(nBytes int) {
+func (decoder *VideoDecoderInstance) AddToFrame(nBytes int32) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.int              // in, none, casted, casted C.gint
 
@@ -13177,8 +13529,8 @@ func (decoder *VideoDecoderInstance) GetBufferPool() gst.BufferPool {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (dec *VideoDecoderInstance) GetEstimateRate() int {
+// 	- goret int32 
+func (dec *VideoDecoderInstance) GetEstimateRate() int32 {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -13187,9 +13539,9 @@ func (dec *VideoDecoderInstance) GetEstimateRate() int {
 	cret = C.gst_video_decoder_get_estimate_rate(carg0)
 	runtime.KeepAlive(dec)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -13198,14 +13550,14 @@ func (dec *VideoDecoderInstance) GetEstimateRate() int {
 // 
 // The function takes the following parameters:
 // 
-// 	- frameNumber int: system_frame_number of a frame 
+// 	- frameNumber int32: system_frame_number of a frame 
 // 
 // The function returns the following values:
 // 
 // 	- goret *VideoCodecFrame (nullable) 
 //
 // Get a pending unfinished #GstVideoCodecFrame
-func (decoder *VideoDecoderInstance) GetFrame(frameNumber int) *VideoCodecFrame {
+func (decoder *VideoDecoderInstance) GetFrame(frameNumber int32) *VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 C.int                 // in, none, casted, casted C.gint
 	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
@@ -13354,8 +13706,8 @@ func (decoder *VideoDecoderInstance) GetMaxDecodeTime(frame *VideoCodecFrame) gs
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (dec *VideoDecoderInstance) GetMaxErrors() int {
+// 	- goret int32 
+func (dec *VideoDecoderInstance) GetMaxErrors() int32 {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -13364,9 +13716,9 @@ func (dec *VideoDecoderInstance) GetMaxErrors() int {
 	cret = C.gst_video_decoder_get_max_errors(carg0)
 	runtime.KeepAlive(dec)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -13926,7 +14278,7 @@ func (decoder *VideoDecoderInstance) SetLatency(minLatency gst.ClockTime, maxLat
 // 
 // The function takes the following parameters:
 // 
-// 	- num int: max tolerated errors 
+// 	- num int32: max tolerated errors 
 //
 // Sets numbers of tolerated decoder errors, where a tolerated one is then only
 // warned about, but more than tolerated will lead to fatal error.  You can set
@@ -13934,7 +14286,7 @@ func (decoder *VideoDecoderInstance) SetLatency(minLatency gst.ClockTime, maxLat
 // GST_VIDEO_DECODER_MAX_ERRORS.
 // 
 // The '-1' option was added in 1.4
-func (dec *VideoDecoderInstance) SetMaxErrors(num int) {
+func (dec *VideoDecoderInstance) SetMaxErrors(num int32) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
 
@@ -14326,7 +14678,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Close(decoder)
 
@@ -14349,7 +14701,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(decoder, query)
@@ -14372,7 +14724,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance       // go GstVideoDecoder subclass
 				var goret   gst.FlowReturn // return, none, casted
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Drain(decoder)
 
@@ -14392,7 +14744,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance       // go GstVideoDecoder subclass
 				var goret   gst.FlowReturn // return, none, casted
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Finish(decoder)
 
@@ -14412,7 +14764,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Flush(decoder)
 
@@ -14435,7 +14787,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var filter  *gst.Caps // in, none, converted
 				var goret   *gst.Caps // return, full, converted
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Getcaps(decoder, filter)
@@ -14457,7 +14809,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var frame   *VideoCodecFrame // in, full, converted
 				var goret   gst.FlowReturn   // return, none, casted
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleFrame(decoder, frame)
@@ -14480,7 +14832,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var duration  gst.ClockTime // in, none, casted, alias
 				var goret     bool          // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				timestamp = gst.ClockTime(carg1)
 				duration = gst.ClockTime(carg2)
 
@@ -14504,7 +14856,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Negotiate(decoder)
 
@@ -14526,7 +14878,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Open(decoder)
 
@@ -14551,7 +14903,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var atEos   bool             // in
 				var goret   gst.FlowReturn   // return, none, casted
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 				adapter = gstbase.UnsafeAdapterFromGlibNone(unsafe.Pointer(carg2))
 				if carg3 != 0 {
@@ -14577,7 +14929,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProposeAllocation(decoder, query)
@@ -14601,7 +14953,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var hard    bool     // in
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					hard = true
 				}
@@ -14627,7 +14979,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var state   *VideoCodecState // in, none, converted
 				var goret   bool             // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				state = UnsafeVideoCodecStateFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetFormat(decoder, state)
@@ -14651,7 +15003,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(decoder, event)
@@ -14675,7 +15027,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkQuery(decoder, query)
@@ -14699,7 +15051,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(decoder, event)
@@ -14723,7 +15075,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(decoder, query)
@@ -14746,7 +15098,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(decoder)
 
@@ -14768,7 +15120,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(decoder)
 
@@ -14792,7 +15144,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 				var meta    *gst.Meta        // in, none, converted
 				var goret   bool             // return
 
-				decoder = UnsafeVideoDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				decoder = UnsafeVideoDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
 
@@ -14940,6 +15292,19 @@ type VideoEncoder interface {
 	// The buffer allocated here is owned by the frame and you should only
 	// keep references to the frame, not the buffer.
 	AllocateOutputFrame(*VideoCodecFrame, uint) gst.FlowReturn
+	// DropFrame wraps gst_video_encoder_drop_frame
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
+	//
+	// Removes @frame from the list of pending frames, releases it
+	// and posts a QoS message with the frame's details on the bus.
+	// Similar to calling gst_video_encoder_finish_frame() without a buffer
+	// attached to @frame, but this function additionally stores events
+	// from @frame as pending, to be pushed out alongside the next frame
+	// submitted via gst_video_encoder_finish_frame().
+	DropFrame(*VideoCodecFrame)
 	// FinishFrame wraps gst_video_encoder_finish_frame
 	// 
 	// The function takes the following parameters:
@@ -14955,6 +15320,10 @@ type VideoEncoder interface {
 	// all if the frame should be dropped.
 	// It is subsequently pushed downstream or provided to @pre_push.
 	// In any case, the frame is considered finished and released.
+	// 
+	// If @frame does not have a buffer attached, it will be dropped, and
+	// a QoS message will be posted on the bus. Events from @frame will be
+	// pushed out immediately.
 	// 
 	// After calling this function the output buffer of the frame is to be
 	// considered read-only. This function will also change the metadata
@@ -14998,14 +15367,14 @@ type VideoEncoder interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- frameNumber int: system_frame_number of a frame 
+	// 	- frameNumber int32: system_frame_number of a frame 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *VideoCodecFrame (nullable) 
 	//
 	// Get a pending unfinished #GstVideoCodecFrame
-	GetFrame(int) *VideoCodecFrame
+	GetFrame(int32) *VideoCodecFrame
 	// GetFrames wraps gst_video_encoder_get_frames
 	// 
 	// The function returns the following values:
@@ -15120,6 +15489,17 @@ type VideoEncoder interface {
 	// restricted to resolution/format/... combinations supported by downstream
 	// elements (e.g. muxers).
 	ProxyGetcaps(*gst.Caps, *gst.Caps) *gst.Caps
+	// ReleaseFrame wraps gst_video_encoder_release_frame
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
+	//
+	// Removes @frame from list of pending frames and releases it, similar
+	// to calling gst_video_encoder_finish_frame() without a buffer attached
+	// to the frame, but does not post a QoS message or do any additional
+	// processing. Events from @frame are moved to the pending events list.
+	ReleaseFrame(*VideoCodecFrame)
 	// SetLatency wraps gst_video_encoder_set_latency
 	// 
 	// The function takes the following parameters:
@@ -15221,6 +15601,11 @@ func UnsafeVideoEncoderFromGlibFull(c unsafe.Pointer) VideoEncoder {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoEncoder)
 }
 
+// UnsafeVideoEncoderFromGlibBorrow is used to convert raw GstVideoEncoder pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoEncoderFromGlibBorrow(c unsafe.Pointer) VideoEncoder {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoEncoder)
+}
+
 func (v *VideoEncoderInstance) upcastToGstVideoEncoder() *VideoEncoderInstance {
 	return v
 }
@@ -15305,6 +15690,30 @@ func (encoder *VideoEncoderInstance) AllocateOutputFrame(frame *VideoCodecFrame,
 	return goret
 }
 
+// DropFrame wraps gst_video_encoder_drop_frame
+// 
+// The function takes the following parameters:
+// 
+// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
+//
+// Removes @frame from the list of pending frames, releases it
+// and posts a QoS message with the frame's details on the bus.
+// Similar to calling gst_video_encoder_finish_frame() without a buffer
+// attached to @frame, but this function additionally stores events
+// from @frame as pending, to be pushed out alongside the next frame
+// submitted via gst_video_encoder_finish_frame().
+func (encoder *VideoEncoderInstance) DropFrame(frame *VideoCodecFrame) {
+	var carg0 *C.GstVideoEncoder    // in, none, converted
+	var carg1 *C.GstVideoCodecFrame // in, full, converted
+
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
+	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibFull(frame))
+
+	C.gst_video_encoder_drop_frame(carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(frame)
+}
+
 // FinishFrame wraps gst_video_encoder_finish_frame
 // 
 // The function takes the following parameters:
@@ -15320,6 +15729,10 @@ func (encoder *VideoEncoderInstance) AllocateOutputFrame(frame *VideoCodecFrame,
 // all if the frame should be dropped.
 // It is subsequently pushed downstream or provided to @pre_push.
 // In any case, the frame is considered finished and released.
+// 
+// If @frame does not have a buffer attached, it will be dropped, and
+// a QoS message will be posted on the bus. Events from @frame will be
+// pushed out immediately.
 // 
 // After calling this function the output buffer of the frame is to be
 // considered read-only. This function will also change the metadata
@@ -15421,14 +15834,14 @@ func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 // 
 // The function takes the following parameters:
 // 
-// 	- frameNumber int: system_frame_number of a frame 
+// 	- frameNumber int32: system_frame_number of a frame 
 // 
 // The function returns the following values:
 // 
 // 	- goret *VideoCodecFrame (nullable) 
 //
 // Get a pending unfinished #GstVideoCodecFrame
-func (encoder *VideoEncoderInstance) GetFrame(frameNumber int) *VideoCodecFrame {
+func (encoder *VideoEncoderInstance) GetFrame(frameNumber int32) *VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 C.int                 // in, none, casted, casted C.gint
 	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
@@ -15745,6 +16158,28 @@ func (enc *VideoEncoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) 
 	return goret
 }
 
+// ReleaseFrame wraps gst_video_encoder_release_frame
+// 
+// The function takes the following parameters:
+// 
+// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
+//
+// Removes @frame from list of pending frames and releases it, similar
+// to calling gst_video_encoder_finish_frame() without a buffer attached
+// to the frame, but does not post a QoS message or do any additional
+// processing. Events from @frame are moved to the pending events list.
+func (encoder *VideoEncoderInstance) ReleaseFrame(frame *VideoCodecFrame) {
+	var carg0 *C.GstVideoEncoder    // in, none, converted
+	var carg1 *C.GstVideoCodecFrame // in, full, converted
+
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
+	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibFull(frame))
+
+	C.gst_video_encoder_release_frame(carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(frame)
+}
+
 // SetLatency wraps gst_video_encoder_set_latency
 // 
 // The function takes the following parameters:
@@ -16057,7 +16492,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Close(encoder)
 
@@ -16080,7 +16515,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(encoder, query)
@@ -16103,7 +16538,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance       // go GstVideoEncoder subclass
 				var goret   gst.FlowReturn // return, none, casted
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Finish(encoder)
 
@@ -16123,7 +16558,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Flush(encoder)
 
@@ -16146,7 +16581,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var filter *gst.Caps // in, none, converted
 				var goret  *gst.Caps // return, full, converted
 
-				enc = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Getcaps(enc, filter)
@@ -16168,7 +16603,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var frame   *VideoCodecFrame // in, none, converted
 				var goret   gst.FlowReturn   // return, none, casted
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleFrame(encoder, frame)
@@ -16189,7 +16624,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Negotiate(encoder)
 
@@ -16211,7 +16646,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Open(encoder)
 
@@ -16234,7 +16669,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var frame   *VideoCodecFrame // in, none, converted
 				var goret   gst.FlowReturn   // return, none, casted
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.PrePush(encoder, frame)
@@ -16256,7 +16691,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProposeAllocation(encoder, query)
@@ -16280,7 +16715,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var hard    bool     // in
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					hard = true
 				}
@@ -16306,7 +16741,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var state   *VideoCodecState // in, none, converted
 				var goret   bool             // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				state = UnsafeVideoCodecStateFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetFormat(encoder, state)
@@ -16330,7 +16765,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(encoder, event)
@@ -16354,7 +16789,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkQuery(encoder, query)
@@ -16378,7 +16813,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(encoder, event)
@@ -16402,7 +16837,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(encoder, query)
@@ -16425,7 +16860,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(encoder)
 
@@ -16447,7 +16882,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(encoder)
 
@@ -16471,7 +16906,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 				var meta    *gst.Meta        // in, none, converted
 				var goret   bool             // return
 
-				encoder = UnsafeVideoEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeVideoEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				frame = UnsafeVideoCodecFrameFromGlibNone(unsafe.Pointer(carg1))
 				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
 
@@ -16560,6 +16995,11 @@ func UnsafeVideoFilterFromGlibFull(c unsafe.Pointer) VideoFilter {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoFilter)
 }
 
+// UnsafeVideoFilterFromGlibBorrow is used to convert raw GstVideoFilter pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoFilterFromGlibBorrow(c unsafe.Pointer) VideoFilter {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoFilter)
+}
+
 func (v *VideoFilterInstance) upcastToGstVideoFilter() *VideoFilterInstance {
 	return v
 }
@@ -16633,7 +17073,7 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 				var outInfo *VideoInfo // in, none, converted
 				var goret   bool       // return
 
-				filter = UnsafeVideoFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeVideoFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				inInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
 				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg3))
@@ -16661,7 +17101,7 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 				var outframe *VideoFrame    // in, none, converted
 				var goret    gst.FlowReturn // return, none, casted
 
-				filter = UnsafeVideoFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeVideoFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				inframe = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg1))
 				outframe = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
 
@@ -16684,7 +17124,7 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 				var frame *VideoFrame    // in, none, converted
 				var goret gst.FlowReturn // return, none, casted
 
-				trans = UnsafeVideoFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeVideoFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				frame = UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.TransformFrameIP(trans, frame)
@@ -16769,6 +17209,11 @@ func UnsafeVideoSinkFromGlibNone(c unsafe.Pointer) VideoSink {
 // UnsafeVideoSinkFromGlibFull is used to convert raw GstVideoSink pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeVideoSinkFromGlibFull(c unsafe.Pointer) VideoSink {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoSink)
+}
+
+// UnsafeVideoSinkFromGlibBorrow is used to convert raw GstVideoSink pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoSinkFromGlibBorrow(c unsafe.Pointer) VideoSink {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoSink)
 }
 
 func (v *VideoSinkInstance) upcastToGstVideoSink() *VideoSinkInstance {
@@ -16874,7 +17319,7 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 				var info      *VideoInfo // in, none, converted
 				var goret     bool       // return
 
-				videoSink = UnsafeVideoSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoSink = UnsafeVideoSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				info = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
 
@@ -16899,7 +17344,7 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 				var buf       *gst.Buffer    // in, none, converted
 				var goret     gst.FlowReturn // return, none, casted
 
-				videoSink = UnsafeVideoSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				videoSink = UnsafeVideoSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ShowFrame(videoSink, buf)
@@ -16992,6 +17437,11 @@ func UnsafeVideoAggregatorConvertPadFromGlibFull(c unsafe.Pointer) VideoAggregat
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoAggregatorConvertPad)
 }
 
+// UnsafeVideoAggregatorConvertPadFromGlibBorrow is used to convert raw GstVideoAggregatorConvertPad pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoAggregatorConvertPadFromGlibBorrow(c unsafe.Pointer) VideoAggregatorConvertPad {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoAggregatorConvertPad)
+}
+
 func (v *VideoAggregatorConvertPadInstance) upcastToGstVideoAggregatorConvertPad() *VideoAggregatorConvertPadInstance {
 	return v
 }
@@ -17050,7 +17500,7 @@ func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConve
 				var agg            VideoAggregator // in, none, converted
 				var conversionInfo *VideoInfo      // in, none, converted
 
-				pad = UnsafeVideoAggregatorConvertPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeVideoAggregatorConvertPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				agg = UnsafeVideoAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				conversionInfo = UnsafeVideoInfoFromGlibNone(unsafe.Pointer(carg2))
 
@@ -17134,6 +17584,11 @@ func UnsafeVideoAggregatorParallelConvertPadFromGlibNone(c unsafe.Pointer) Video
 // UnsafeVideoAggregatorParallelConvertPadFromGlibFull is used to convert raw GstVideoAggregatorParallelConvertPad pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeVideoAggregatorParallelConvertPadFromGlibFull(c unsafe.Pointer) VideoAggregatorParallelConvertPad {
 	return gobject.UnsafeObjectFromGlibFull(c).(VideoAggregatorParallelConvertPad)
+}
+
+// UnsafeVideoAggregatorParallelConvertPadFromGlibBorrow is used to convert raw GstVideoAggregatorParallelConvertPad pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeVideoAggregatorParallelConvertPadFromGlibBorrow(c unsafe.Pointer) VideoAggregatorParallelConvertPad {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(VideoAggregatorParallelConvertPad)
 }
 
 func (v *VideoAggregatorParallelConvertPadInstance) upcastToGstVideoAggregatorParallelConvertPad() *VideoAggregatorParallelConvertPadInstance {
@@ -18311,8 +18766,11 @@ func marshalVideoCodecFrame(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeVideoCodecFrameFromGlibBorrow(b), nil
 }
 
-func (r *VideoCodecFrame) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoCodecFrame)
+func (r *VideoCodecFrame) GoValueType() gobject.Type {
+	return TypeVideoCodecFrame
+}
+
+func (r *VideoCodecFrame) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -18401,8 +18859,11 @@ func marshalVideoCodecState(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeVideoCodecStateFromGlibBorrow(b), nil
 }
 
-func (r *VideoCodecState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoCodecState)
+func (r *VideoCodecState) GoValueType() gobject.Type {
+	return TypeVideoCodecState
+}
+
+func (r *VideoCodecState) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -19599,12 +20060,12 @@ func UnsafeVideoFormatInfoToGlibFull(v *VideoFormatInfo) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- components int: array used to store component numbers 
+// 	- components int32: array used to store component numbers 
 //
 // Fill @components with the number of all the components packed in plane @p
 // for the format @info. A value of -1 in @components indicates that no more
 // components are packed in the plane.
-func (info *VideoFormatInfo) Component(plane uint) int {
+func (info *VideoFormatInfo) Component(plane uint) int32 {
 	var carg0 *C.GstVideoFormatInfo // in, none, converted
 	var carg1 C.guint               // in, none, casted
 	var carg2 C.gint                // out, full, casted
@@ -19616,9 +20077,9 @@ func (info *VideoFormatInfo) Component(plane uint) int {
 	runtime.KeepAlive(info)
 	runtime.KeepAlive(plane)
 
-	var components int
+	var components int32
 
-	components = int(carg2)
+	components = int32(carg2)
 
 	return components
 }
@@ -19627,16 +20088,16 @@ func (info *VideoFormatInfo) Component(plane uint) int {
 // 
 // The function takes the following parameters:
 // 
-// 	- plane int: a plane number 
-// 	- stride int: The fist plane stride 
+// 	- plane int32: a plane number 
+// 	- stride int32: The fist plane stride 
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Extrapolate @plane stride from the first stride of an image. This helper is
 // useful to support legacy API were only one stride is supported.
-func (finfo *VideoFormatInfo) ExtrapolateStride(plane int, stride int) int {
+func (finfo *VideoFormatInfo) ExtrapolateStride(plane int32, stride int32) int32 {
 	var carg0 *C.GstVideoFormatInfo // in, none, converted
 	var carg1 C.gint                // in, none, casted
 	var carg2 C.gint                // in, none, casted
@@ -19651,9 +20112,9 @@ func (finfo *VideoFormatInfo) ExtrapolateStride(plane int, stride int) int {
 	runtime.KeepAlive(plane)
 	runtime.KeepAlive(stride)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -19812,7 +20273,7 @@ func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (Vid
 // 
 // 	- info *VideoInfo: a #GstVideoInfo 
 // 	- buffer *gst.Buffer: the buffer to map 
-// 	- id int: the frame id to map 
+// 	- id int32: the frame id to map 
 // 	- flags gst.MapFlags: #GstMapFlags 
 // 
 // The function returns the following values:
@@ -19828,7 +20289,7 @@ func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (Vid
 // 
 // All video planes of @buffer will be mapped and the pointers will be set in
 // @frame-&gt;data.
-func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int, flags gst.MapFlags) (VideoFrame, bool) {
+func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int32, flags gst.MapFlags) (VideoFrame, bool) {
 	var carg2 *C.GstVideoInfo // in, none, converted
 	var carg3 *C.GstBuffer    // in, none, converted
 	var carg4 C.gint          // in, none, casted
@@ -20087,8 +20548,11 @@ func marshalVideoInfo(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeVideoInfoFromGlibBorrow(b), nil
 }
 
-func (r *VideoInfo) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoInfo)
+func (r *VideoInfo) GoValueType() gobject.Type {
+	return TypeVideoInfo
+}
+
+func (r *VideoInfo) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -20563,8 +21027,11 @@ func marshalVideoInfoDmaDrm(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeVideoInfoDmaDrmFromGlibBorrow(b), nil
 }
 
-func (r *VideoInfoDmaDrm) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoInfoDmaDrm)
+func (r *VideoInfoDmaDrm) GoValueType() gobject.Type {
+	return TypeVideoInfoDmaDrm
+}
+
+func (r *VideoInfoDmaDrm) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -21143,8 +21610,12 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesToGlibFull(v *VideoMasteringDispl
 // - padding-bottom (uint): extra pixels on the bottom
 // - padding-left (uint): extra pixels on the left side
 // - padding-right (uint): extra pixels on the right side
-// The padding fields have the same semantic as #GstVideoMeta.alignment
-// and so represent the paddings requested on produced video buffers.
+// - stride-align0 (uint): stride align requirements for plane 0
+// - stride-align1 (uint): stride align requirements for plane 1
+// - stride-align2 (uint): stride align requirements for plane 2
+// - stride-align3 (uint): stride align requirements for plane 3
+// The padding and stride-align fields have the same semantic as #GstVideoMeta.alignment
+// and so represent the paddings and stride-align requested on produced video buffers.
 // 
 // Since 1.24 it can be serialized using gst_meta_serialize() and
 // gst_meta_deserialize().
@@ -21447,8 +21918,11 @@ func marshalVideoOverlayComposition(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeVideoOverlayCompositionFromGlibBorrow(b), nil
 }
 
-func (r *VideoOverlayComposition) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoOverlayComposition)
+func (r *VideoOverlayComposition) GoValueType() gobject.Type {
+	return TypeVideoOverlayComposition
+}
+
+func (r *VideoOverlayComposition) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -21893,8 +22367,11 @@ func marshalVideoOverlayRectangle(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeVideoOverlayRectangleFromGlibBorrow(b), nil
 }
 
-func (r *VideoOverlayRectangle) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoOverlayRectangle)
+func (r *VideoOverlayRectangle) GoValueType() gobject.Type {
+	return TypeVideoOverlayRectangle
+}
+
+func (r *VideoOverlayRectangle) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -21954,9 +22431,9 @@ func UnsafeVideoOverlayRectangleToGlibFull(v *VideoOverlayRectangle) unsafe.Poin
 // The function takes the following parameters:
 // 
 // 	- pixels *gst.Buffer: a #GstBuffer pointing to the pixel memory 
-// 	- renderX int: the X co-ordinate on the video where the top-left corner of this
+// 	- renderX int32: the X co-ordinate on the video where the top-left corner of this
 //     overlay rectangle should be rendered to 
-// 	- renderY int: the Y co-ordinate on the video where the top-left corner of this
+// 	- renderY int32: the Y co-ordinate on the video where the top-left corner of this
 //     overlay rectangle should be rendered to 
 // 	- renderWidth uint: the render width of this rectangle on the video 
 // 	- renderHeight uint: the render height of this rectangle on the video 
@@ -21977,7 +22454,7 @@ func UnsafeVideoOverlayRectangleToGlibFull(v *VideoOverlayRectangle) unsafe.Poin
 // non-premultiplied. This is the format that is used by most hardware,
 // and also many rendering libraries such as Cairo, for example.
 // The pixel data buffer must have #GstVideoMeta set.
-func NewVideoOverlayRectangleRaw(pixels *gst.Buffer, renderX int, renderY int, renderWidth uint, renderHeight uint, flags VideoOverlayFormatFlags) *VideoOverlayRectangle {
+func NewVideoOverlayRectangleRaw(pixels *gst.Buffer, renderX int32, renderY int32, renderWidth uint, renderHeight uint, flags VideoOverlayFormatFlags) *VideoOverlayRectangle {
 	var carg1 *C.GstBuffer                 // in, none, converted
 	var carg2 C.gint                       // in, none, casted
 	var carg3 C.gint                       // in, none, casted
@@ -22295,15 +22772,15 @@ func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledRaw(flags VideoOverlayF
 // 
 // The function returns the following values:
 // 
-// 	- renderX int: address where to store the X render offset 
-// 	- renderY int: address where to store the Y render offset 
+// 	- renderX int32: address where to store the X render offset 
+// 	- renderY int32: address where to store the Y render offset 
 // 	- renderWidth uint: address where to store the render width 
 // 	- renderHeight uint: address where to store the render height 
 // 	- goret bool 
 //
 // Retrieves the render position and render dimension of the overlay
 // rectangle on the video.
-func (rectangle *VideoOverlayRectangle) GetRenderRectangle() (int, int, uint, uint, bool) {
+func (rectangle *VideoOverlayRectangle) GetRenderRectangle() (int32, int32, uint, uint, bool) {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var carg1 C.gint                      // out, full, casted
 	var carg2 C.gint                      // out, full, casted
@@ -22316,14 +22793,14 @@ func (rectangle *VideoOverlayRectangle) GetRenderRectangle() (int, int, uint, ui
 	cret = C.gst_video_overlay_rectangle_get_render_rectangle(carg0, &carg1, &carg2, &carg3, &carg4)
 	runtime.KeepAlive(rectangle)
 
-	var renderX      int
-	var renderY      int
+	var renderX      int32
+	var renderY      int32
 	var renderWidth  uint
 	var renderHeight uint
 	var goret        bool
 
-	renderX = int(carg1)
-	renderY = int(carg2)
+	renderX = int32(carg1)
+	renderY = int32(carg2)
 	renderWidth = uint(carg3)
 	renderHeight = uint(carg4)
 	if cret != 0 {
@@ -22399,8 +22876,8 @@ func (rectangle *VideoOverlayRectangle) SetGlobalAlpha(globalAlpha float32) {
 // 
 // The function takes the following parameters:
 // 
-// 	- renderX int: render X position of rectangle on video 
-// 	- renderY int: render Y position of rectangle on video 
+// 	- renderX int32: render X position of rectangle on video 
+// 	- renderY int32: render Y position of rectangle on video 
 // 	- renderWidth uint: render width of rectangle 
 // 	- renderHeight uint: render height of rectangle 
 //
@@ -22413,7 +22890,7 @@ func (rectangle *VideoOverlayRectangle) SetGlobalAlpha(globalAlpha float32) {
 // make the rectangles inside a #GstVideoOverlayComposition writable using
 // gst_video_overlay_composition_make_writable() or
 // gst_video_overlay_composition_copy().
-func (rectangle *VideoOverlayRectangle) SetRenderRectangle(renderX int, renderY int, renderWidth uint, renderHeight uint) {
+func (rectangle *VideoOverlayRectangle) SetRenderRectangle(renderX int32, renderY int32, renderWidth uint, renderHeight uint) {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gint                      // in, none, casted
@@ -23439,12 +23916,12 @@ func (tc *VideoTimeCode) Clear() {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Compares @tc1 and @tc2. If both have latest daily jam information, it is
 // taken into account. Otherwise, it is assumed that the daily jam of both
 // @tc1 and @tc2 was at the same time. Both time codes must be valid.
-func (tc1 *VideoTimeCode) Compare(tc2 *VideoTimeCode) int {
+func (tc1 *VideoTimeCode) Compare(tc2 *VideoTimeCode) int32 {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var carg1 *C.GstVideoTimeCode // in, none, converted
 	var cret  C.gint              // return, none, casted
@@ -23456,9 +23933,9 @@ func (tc1 *VideoTimeCode) Compare(tc2 *VideoTimeCode) int {
 	runtime.KeepAlive(tc1)
 	runtime.KeepAlive(tc2)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -23840,8 +24317,11 @@ func marshalVideoTimeCodeInterval(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeVideoTimeCodeIntervalFromGlibBorrow(b), nil
 }
 
-func (r *VideoTimeCodeInterval) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoTimeCodeInterval)
+func (r *VideoTimeCodeInterval) GoValueType() gobject.Type {
+	return TypeVideoTimeCodeInterval
+}
+
+func (r *VideoTimeCodeInterval) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -24130,8 +24610,11 @@ func marshalVideoVBIEncoder(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeVideoVBIEncoderFromGlibBorrow(b), nil
 }
 
-func (r *VideoVBIEncoder) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoVBIEncoder)
+func (r *VideoVBIEncoder) GoValueType() gobject.Type {
+	return TypeVideoVBIEncoder
+}
+
+func (r *VideoVBIEncoder) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -24334,8 +24817,11 @@ func marshalVideoVBIParser(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeVideoVBIParserFromGlibBorrow(b), nil
 }
 
-func (r *VideoVBIParser) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoVBIParser)
+func (r *VideoVBIParser) GoValueType() gobject.Type {
+	return TypeVideoVBIParser
+}
+
+func (r *VideoVBIParser) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 

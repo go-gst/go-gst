@@ -484,8 +484,11 @@ func marshalAggregatorStartTimeSelection(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AggregatorStartTimeSelection(0)
 
-func (e AggregatorStartTimeSelection) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAggregatorStartTimeSelection)
+func (e AggregatorStartTimeSelection) GoValueType() gobject.Type {
+	return TypeAggregatorStartTimeSelection
+}
+
+func (e AggregatorStartTimeSelection) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -696,7 +699,7 @@ type CollectPadsClipFunction func(pads CollectPads, data *CollectData, inbuffer 
 // CollectPadsCompareFunction wraps GstCollectPadsCompareFunction
 //
 // A function for comparing two timestamps of buffers or newsegments collected on one pad.
-type CollectPadsCompareFunction func(pads CollectPads, data1 *CollectData, timestamp1 gst.ClockTime, data2 *CollectData, timestamp2 gst.ClockTime) (goret int)
+type CollectPadsCompareFunction func(pads CollectPads, data1 *CollectData, timestamp1 gst.ClockTime, data2 *CollectData, timestamp2 gst.ClockTime) (goret int32)
 
 // CollectPadsEventFunction wraps GstCollectPadsEventFunction
 //
@@ -1317,6 +1320,10 @@ type Adapter interface {
 	// Gets the maximum amount of bytes available, that is it returns the maximum
 	// value that can be supplied to gst_adapter_map() without that function
 	// returning %NULL.
+	// 
+	// Calling gst_adapter_map() with the amount of bytes returned by this function
+	// may require expensive operations (like copying the data into a temporary
+	// buffer) in some cases.
 	Available() uint
 	// AvailableFast wraps gst_adapter_available_fast
 	// 
@@ -1324,8 +1331,11 @@ type Adapter interface {
 	// 
 	// 	- goret uint 
 	//
-	// Gets the maximum number of bytes that are immediately available without
-	// requiring any expensive operations (like copying the data into a
+	// Gets the maximum number of bytes that can be retrieved in a single map
+	// operation without merging buffers.
+	// 
+	// Calling gst_adapter_map() with the amount of bytes returned by this function
+	// will never require any expensive operations (like copying the data into a
 	// temporary buffer).
 	AvailableFast() uint
 	// Clear wraps gst_adapter_clear
@@ -1528,7 +1538,7 @@ type Adapter interface {
 	// 
 	// The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
 	// the adapter is first created or when it is cleared. This also means that before
-	// the first byte with a dts is removed from the adapter, the dts
+	// the first byte with a dts is added to the adapter, the dts
 	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevDts() (uint64, gst.ClockTime)
 	// PrevDtsAtOffset wraps gst_adapter_prev_dts_at_offset
@@ -1548,7 +1558,7 @@ type Adapter interface {
 	// 
 	// The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
 	// the adapter is first created or when it is cleared. This also means that before
-	// the first byte with a dts is removed from the adapter, the dts
+	// the first byte with a dts is added to the adapter, the dts
 	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevDtsAtOffset(uint) (uint64, gst.ClockTime)
 	// PrevOffset wraps gst_adapter_prev_offset
@@ -1564,7 +1574,7 @@ type Adapter interface {
 	// 
 	// The offset is reset to GST_BUFFER_OFFSET_NONE and the distance is set to 0
 	// when the adapter is first created or when it is cleared. This also means that
-	// before the first byte with an offset is removed from the adapter, the offset
+	// before the first byte with an offset is added to the adapter, the offset
 	// and distance returned are GST_BUFFER_OFFSET_NONE and 0 respectively.
 	PrevOffset() (uint64, uint64)
 	// PrevPts wraps gst_adapter_prev_pts
@@ -1580,7 +1590,7 @@ type Adapter interface {
 	// 
 	// The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
 	// the adapter is first created or when it is cleared. This also means that before
-	// the first byte with a pts is removed from the adapter, the pts
+	// the first byte with a pts is added to the adapter, the pts
 	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevPts() (uint64, gst.ClockTime)
 	// PrevPtsAtOffset wraps gst_adapter_prev_pts_at_offset
@@ -1600,7 +1610,7 @@ type Adapter interface {
 	// 
 	// The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
 	// the adapter is first created or when it is cleared. This also means that before
-	// the first byte with a pts is removed from the adapter, the pts
+	// the first byte with a pts is added to the adapter, the pts
 	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevPtsAtOffset(uint) (uint64, gst.ClockTime)
 	// PtsAtDiscont wraps gst_adapter_pts_at_discont
@@ -1747,6 +1757,11 @@ func UnsafeAdapterFromGlibFull(c unsafe.Pointer) Adapter {
 	return gobject.UnsafeObjectFromGlibFull(c).(Adapter)
 }
 
+// UnsafeAdapterFromGlibBorrow is used to convert raw GstAdapter pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAdapterFromGlibBorrow(c unsafe.Pointer) Adapter {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Adapter)
+}
+
 func (a *AdapterInstance) upcastToGstAdapter() *AdapterInstance {
 	return a
 }
@@ -1789,6 +1804,10 @@ func NewAdapter() Adapter {
 // Gets the maximum amount of bytes available, that is it returns the maximum
 // value that can be supplied to gst_adapter_map() without that function
 // returning %NULL.
+// 
+// Calling gst_adapter_map() with the amount of bytes returned by this function
+// may require expensive operations (like copying the data into a temporary
+// buffer) in some cases.
 func (adapter *AdapterInstance) Available() uint {
 	var carg0 *C.GstAdapter // in, none, converted
 	var cret  C.gsize       // return, none, casted
@@ -1811,8 +1830,11 @@ func (adapter *AdapterInstance) Available() uint {
 // 
 // 	- goret uint 
 //
-// Gets the maximum number of bytes that are immediately available without
-// requiring any expensive operations (like copying the data into a
+// Gets the maximum number of bytes that can be retrieved in a single map
+// operation without merging buffers.
+// 
+// Calling gst_adapter_map() with the amount of bytes returned by this function
+// will never require any expensive operations (like copying the data into a
 // temporary buffer).
 func (adapter *AdapterInstance) AvailableFast() uint {
 	var carg0 *C.GstAdapter // in, none, converted
@@ -2257,7 +2279,7 @@ func (adapter *AdapterInstance) OffsetAtDiscont() uint64 {
 // 
 // The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
 // the adapter is first created or when it is cleared. This also means that before
-// the first byte with a dts is removed from the adapter, the dts
+// the first byte with a dts is added to the adapter, the dts
 // and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevDts() (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
@@ -2295,7 +2317,7 @@ func (adapter *AdapterInstance) PrevDts() (uint64, gst.ClockTime) {
 // 
 // The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
 // the adapter is first created or when it is cleared. This also means that before
-// the first byte with a dts is removed from the adapter, the dts
+// the first byte with a dts is added to the adapter, the dts
 // and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevDtsAtOffset(offset uint) (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
@@ -2332,7 +2354,7 @@ func (adapter *AdapterInstance) PrevDtsAtOffset(offset uint) (uint64, gst.ClockT
 // 
 // The offset is reset to GST_BUFFER_OFFSET_NONE and the distance is set to 0
 // when the adapter is first created or when it is cleared. This also means that
-// before the first byte with an offset is removed from the adapter, the offset
+// before the first byte with an offset is added to the adapter, the offset
 // and distance returned are GST_BUFFER_OFFSET_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevOffset() (uint64, uint64) {
 	var carg0 *C.GstAdapter // in, none, converted
@@ -2366,7 +2388,7 @@ func (adapter *AdapterInstance) PrevOffset() (uint64, uint64) {
 // 
 // The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
 // the adapter is first created or when it is cleared. This also means that before
-// the first byte with a pts is removed from the adapter, the pts
+// the first byte with a pts is added to the adapter, the pts
 // and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevPts() (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
@@ -2404,7 +2426,7 @@ func (adapter *AdapterInstance) PrevPts() (uint64, gst.ClockTime) {
 // 
 // The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
 // the adapter is first created or when it is cleared. This also means that before
-// the first byte with a pts is removed from the adapter, the pts
+// the first byte with a pts is added to the adapter, the pts
 // and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevPtsAtOffset(offset uint) (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
@@ -2844,6 +2866,23 @@ type Aggregator interface {
 	// a #GstAggregator::samples-selected handler, and can be used to precisely
 	// control aggregating parameters for a given set of input samples.
 	PeekNextSample(AggregatorPad) *gst.Sample
+	// PushSrcEvent wraps gst_aggregator_push_src_event
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event: the #GstEvent to push. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// This method will push the provided event downstream. If needed, mandatory
+	// events such as stream-start, caps, and segment events will be sent before
+	// pushing the event.
+	// 
+	// This API does not allow pushing stream-start, caps, segment and EOS events.
+	// Specific API like gst_aggregator_set_src_caps() should be used for these.
+	PushSrcEvent(*gst.Event) bool
 	// SelectedSamples wraps gst_aggregator_selected_samples
 	// 
 	// The function takes the following parameters:
@@ -2964,6 +3003,11 @@ func UnsafeAggregatorFromGlibNone(c unsafe.Pointer) Aggregator {
 // UnsafeAggregatorFromGlibFull is used to convert raw GstAggregator pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeAggregatorFromGlibFull(c unsafe.Pointer) Aggregator {
 	return gobject.UnsafeObjectFromGlibFull(c).(Aggregator)
+}
+
+// UnsafeAggregatorFromGlibBorrow is used to convert raw GstAggregator pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAggregatorFromGlibBorrow(c unsafe.Pointer) Aggregator {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Aggregator)
 }
 
 func (a *AggregatorInstance) upcastToGstAggregator() *AggregatorInstance {
@@ -3236,6 +3280,43 @@ func (self *AggregatorInstance) PeekNextSample(pad AggregatorPad) *gst.Sample {
 
 	if cret != nil {
 		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// PushSrcEvent wraps gst_aggregator_push_src_event
+// 
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event: the #GstEvent to push. 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// This method will push the provided event downstream. If needed, mandatory
+// events such as stream-start, caps, and segment events will be sent before
+// pushing the event.
+// 
+// This API does not allow pushing stream-start, caps, segment and EOS events.
+// Specific API like gst_aggregator_set_src_caps() should be used for these.
+func (aggregator *AggregatorInstance) PushSrcEvent(event *gst.Event) bool {
+	var carg0 *C.GstAggregator // in, none, converted
+	var carg1 *C.GstEvent      // in, full, converted
+	var cret  C.gboolean       // return
+
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
+
+	cret = C.gst_aggregator_push_src_event(carg0, carg1)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
 	}
 
 	return goret
@@ -3649,7 +3730,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var timeout    bool           // in
 				var goret      gst.FlowReturn // return, none, casted
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					timeout = true
 				}
@@ -3674,7 +3755,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var buf           *gst.Buffer   // in, none, converted
 				var goret         *gst.Buffer   // return, full, converted
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
 				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 
@@ -3697,7 +3778,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				self = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(self, query)
@@ -3721,7 +3802,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var buffer     *gst.Buffer    // in, full, converted
 				var goret      gst.FlowReturn // return, none, casted
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.FinishBuffer(aggregator, buffer)
@@ -3743,7 +3824,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var bufferlist *gst.BufferList // in, full, converted
 				var goret      gst.FlowReturn  // return, none, casted
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				bufferlist = gst.UnsafeBufferListFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.FinishBufferList(aggregator, bufferlist)
@@ -3765,7 +3846,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var caps  *gst.Caps // in, none, converted
 				var goret *gst.Caps // return, full, converted
 
-				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				self = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.FixateSrcCaps(self, caps)
@@ -3786,7 +3867,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var aggregator Instance       // go GstAggregator subclass
 				var goret      gst.FlowReturn // return, none, casted
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Flush(aggregator)
 
@@ -3806,7 +3887,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var aggregator Instance      // go GstAggregator subclass
 				var goret      gst.ClockTime // return, none, casted, alias
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetNextTime(aggregator)
 
@@ -3826,7 +3907,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var self  Instance // go GstAggregator subclass
 				var goret bool     // return
 
-				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				self = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Negotiate(self)
 
@@ -3849,7 +3930,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				self = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.NegotiatedSrcCaps(self, caps)
@@ -3873,7 +3954,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var aggregatorPad AggregatorPad // in, none, converted
 				var goret         *gst.Sample   // return, full, converted, nullable
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.PeekNextSample(aggregator, aggregatorPad)
@@ -3899,7 +3980,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var query       *gst.Query    // in, none, converted
 				var goret       bool          // return
 
-				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				self = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				pad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
 				decideQuery = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg3))
@@ -3926,7 +4007,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var event         *gst.Event    // in, none, converted
 				var goret         bool          // return
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg2))
 
@@ -3952,7 +4033,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var event         *gst.Event     // in, none, converted
 				var goret         gst.FlowReturn // return, none, casted
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg2))
 
@@ -3976,7 +4057,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var query         *gst.Query    // in, none, converted
 				var goret         bool          // return
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
 
@@ -4002,7 +4083,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var query         *gst.Query    // in, none, converted
 				var goret         bool          // return
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				aggregatorPad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
 
@@ -4028,7 +4109,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var active     bool        // in
 				var goret      bool        // return
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				mode = gst.PadMode(carg1)
 				if carg2 != 0 {
 					active = true
@@ -4055,7 +4136,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var event      *gst.Event // in, none, converted
 				var goret      bool       // return
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(aggregator, event)
@@ -4079,7 +4160,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var query      *gst.Query // in, none, converted
 				var goret      bool       // return
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(aggregator, query)
@@ -4102,7 +4183,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var aggregator Instance // go GstAggregator subclass
 				var goret      bool     // return
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(aggregator)
 
@@ -4124,7 +4205,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var aggregator Instance // go GstAggregator subclass
 				var goret      bool     // return
 
-				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggregator = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(aggregator)
 
@@ -4148,7 +4229,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 				var ret   *gst.Caps      // out, full, converted
 				var goret gst.FlowReturn // return, none, casted
 
-				self = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				self = UnsafeAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				ret, goret = overrides.UpdateSrcCaps(self, caps)
@@ -4279,6 +4360,11 @@ func UnsafeAggregatorPadFromGlibNone(c unsafe.Pointer) AggregatorPad {
 // UnsafeAggregatorPadFromGlibFull is used to convert raw GstAggregatorPad pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeAggregatorPadFromGlibFull(c unsafe.Pointer) AggregatorPad {
 	return gobject.UnsafeObjectFromGlibFull(c).(AggregatorPad)
+}
+
+// UnsafeAggregatorPadFromGlibBorrow is used to convert raw GstAggregatorPad pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAggregatorPadFromGlibBorrow(c unsafe.Pointer) AggregatorPad {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AggregatorPad)
 }
 
 func (a *AggregatorPadInstance) upcastToGstAggregatorPad() *AggregatorPadInstance {
@@ -4492,7 +4578,7 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 				var aggregator Aggregator     // in, none, converted
 				var goret      gst.FlowReturn // return, none, casted
 
-				aggpad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggpad = UnsafeAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Flush(aggpad, aggregator)
@@ -4515,7 +4601,7 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 				var buffer     *gst.Buffer // in, none, converted
 				var goret      bool        // return
 
-				aggpad = UnsafeAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aggpad = UnsafeAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				aggregator = UnsafeAggregatorFromGlibNone(unsafe.Pointer(carg1))
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 
@@ -4750,7 +4836,7 @@ type BaseParse interface {
 	// The function takes the following parameters:
 	// 
 	// 	- frame *BaseParseFrame: a #GstBaseParseFrame 
-	// 	- size int: consumed input data represented by frame 
+	// 	- size int32: consumed input data represented by frame 
 	// 
 	// The function returns the following values:
 	// 
@@ -4770,7 +4856,7 @@ type BaseParse interface {
 	// 
 	// Note that the latter buffer is invalidated by this call, whereas the
 	// caller retains ownership of @frame.
-	FinishFrame(*BaseParseFrame, int) gst.FlowReturn
+	FinishFrame(*BaseParseFrame, int32) gst.FlowReturn
 	// MergeTags wraps gst_base_parse_merge_tags
 	// 
 	// The function takes the following parameters:
@@ -4822,14 +4908,14 @@ type BaseParse interface {
 	// 
 	// 	- _fmt gst.Format: #GstFormat. 
 	// 	- duration int64: duration value. 
-	// 	- interval int: how often to update the duration estimate based on bitrate, or 0. 
+	// 	- interval int32: how often to update the duration estimate based on bitrate, or 0. 
 	//
 	// Sets the duration of the currently playing media. Subclass can use this
 	// when it is able to determine duration and/or notices a change in the media
 	// duration.  Alternatively, if @interval is non-zero (default), then stream
 	// duration is determined based on estimated bitrate, and updated every @interval
 	// frames.
-	SetDuration(gst.Format, int64, int)
+	SetDuration(gst.Format, int64, int32)
 	// SetFrameRate wraps gst_base_parse_set_frame_rate
 	// 
 	// The function takes the following parameters:
@@ -4969,6 +5055,11 @@ func UnsafeBaseParseFromGlibFull(c unsafe.Pointer) BaseParse {
 	return gobject.UnsafeObjectFromGlibFull(c).(BaseParse)
 }
 
+// UnsafeBaseParseFromGlibBorrow is used to convert raw GstBaseParse pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeBaseParseFromGlibBorrow(c unsafe.Pointer) BaseParse {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(BaseParse)
+}
+
 func (b *BaseParseInstance) upcastToGstBaseParse() *BaseParseInstance {
 	return b
 }
@@ -5097,7 +5188,7 @@ func (parse *BaseParseInstance) Drain() {
 // The function takes the following parameters:
 // 
 // 	- frame *BaseParseFrame: a #GstBaseParseFrame 
-// 	- size int: consumed input data represented by frame 
+// 	- size int32: consumed input data represented by frame 
 // 
 // The function returns the following values:
 // 
@@ -5117,7 +5208,7 @@ func (parse *BaseParseInstance) Drain() {
 // 
 // Note that the latter buffer is invalidated by this call, whereas the
 // caller retains ownership of @frame.
-func (parse *BaseParseInstance) FinishFrame(frame *BaseParseFrame, size int) gst.FlowReturn {
+func (parse *BaseParseInstance) FinishFrame(frame *BaseParseFrame, size int32) gst.FlowReturn {
 	var carg0 *C.GstBaseParse      // in, none, converted
 	var carg1 *C.GstBaseParseFrame // in, none, converted
 	var carg2 C.gint               // in, none, casted
@@ -5235,14 +5326,14 @@ func (parse *BaseParseInstance) SetAverageBitrate(bitrate uint) {
 // 
 // 	- _fmt gst.Format: #GstFormat. 
 // 	- duration int64: duration value. 
-// 	- interval int: how often to update the duration estimate based on bitrate, or 0. 
+// 	- interval int32: how often to update the duration estimate based on bitrate, or 0. 
 //
 // Sets the duration of the currently playing media. Subclass can use this
 // when it is able to determine duration and/or notices a change in the media
 // duration.  Alternatively, if @interval is non-zero (default), then stream
 // duration is determined based on estimated bitrate, and updated every @interval
 // frames.
-func (parse *BaseParseInstance) SetDuration(_fmt gst.Format, duration int64, interval int) {
+func (parse *BaseParseInstance) SetDuration(_fmt gst.Format, duration int64, interval int32) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
 	var carg2 C.gint64        // in, none, casted
@@ -5535,9 +5626,9 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- skipsize int 
+	// 	- skipsize int32 
 	// 	- goret gst.FlowReturn 
-	HandleFrame func(Instance, *BaseParseFrame) (int, gst.FlowReturn)
+	HandleFrame func(Instance, *BaseParseFrame) (int32, gst.FlowReturn)
 	// PrePushFrame allows you to override the implementation of the virtual method pre_push_frame.
 	// The function takes the following parameters:
 	// 
@@ -5624,7 +5715,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var destValue  *int64     // in, transfer: none, C Pointers: 1, Name: gint64
 				var goret      bool       // return
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				srcFormat = gst.Format(carg1)
 				srcValue = int64(carg2)
 				destFormat = gst.Format(carg3)
@@ -5653,7 +5744,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var buffer *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Detect(parse, buffer)
@@ -5675,7 +5766,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var filter *gst.Caps // in, none, converted
 				var goret  *gst.Caps // return, full, converted
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.GetSinkCaps(parse, filter)
@@ -5695,10 +5786,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstBaseParse, carg1 *C.GstBaseParseFrame, carg2 *C.gint) (cret C.GstFlowReturn) {
 				var parse    Instance        // go GstBaseParse subclass
 				var frame    *BaseParseFrame // in, none, converted
-				var skipsize int             // out, full, casted
+				var skipsize int32           // out, full, casted
 				var goret    gst.FlowReturn  // return, none, casted
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				frame = UnsafeBaseParseFrameFromGlibNone(unsafe.Pointer(carg1))
 
 				skipsize, goret = overrides.HandleFrame(parse, frame)
@@ -5721,7 +5812,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var frame *BaseParseFrame // in, none, converted
 				var goret gst.FlowReturn  // return, none, casted
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				frame = UnsafeBaseParseFrameFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.PrePushFrame(parse, frame)
@@ -5743,7 +5834,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetSinkCaps(parse, caps)
@@ -5767,7 +5858,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(parse, event)
@@ -5791,7 +5882,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkQuery(parse, query)
@@ -5815,7 +5906,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(parse, event)
@@ -5839,7 +5930,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(parse, query)
@@ -5862,7 +5953,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var parse Instance // go GstBaseParse subclass
 				var goret bool     // return
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(parse)
 
@@ -5884,7 +5975,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				var parse Instance // go GstBaseParse subclass
 				var goret bool     // return
 
-				parse = UnsafeBaseParseFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				parse = UnsafeBaseParseFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(parse)
 
@@ -6456,6 +6547,11 @@ func UnsafeBaseSinkFromGlibNone(c unsafe.Pointer) BaseSink {
 // UnsafeBaseSinkFromGlibFull is used to convert raw GstBaseSink pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeBaseSinkFromGlibFull(c unsafe.Pointer) BaseSink {
 	return gobject.UnsafeObjectFromGlibFull(c).(BaseSink)
+}
+
+// UnsafeBaseSinkFromGlibBorrow is used to convert raw GstBaseSink pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeBaseSinkFromGlibBorrow(c unsafe.Pointer) BaseSink {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(BaseSink)
 }
 
 func (b *BaseSinkInstance) upcastToGstBaseSink() *BaseSinkInstance {
@@ -7510,7 +7606,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var active bool     // in
 				var goret  bool     // return
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					active = true
 				}
@@ -7536,7 +7632,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Event(sink, event)
@@ -7560,7 +7656,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var caps  *gst.Caps // in, none, converted
 				var goret *gst.Caps // return, full, converted
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Fixate(sink, caps)
@@ -7582,7 +7678,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var filter *gst.Caps // in, none, converted, nullable
 				var goret  *gst.Caps // return, full, converted
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != nil {
 					filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				}
@@ -7607,7 +7703,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var start  gst.ClockTime // out, full, casted, alias
 				var end    gst.ClockTime // out, full, casted, alias
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				start, end = overrides.GetTimes(sink, buffer)
@@ -7628,7 +7724,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var buffer *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Prepare(sink, buffer)
@@ -7650,7 +7746,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var bufferList *gst.BufferList // in, none, converted
 				var goret      gst.FlowReturn  // return, none, casted
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				bufferList = gst.UnsafeBufferListFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.PrepareList(sink, bufferList)
@@ -7672,7 +7768,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var buffer *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Preroll(sink, buffer)
@@ -7694,7 +7790,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProposeAllocation(sink, query)
@@ -7718,7 +7814,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Query(sink, query)
@@ -7742,7 +7838,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var buffer *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Render(sink, buffer)
@@ -7764,7 +7860,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var bufferList *gst.BufferList // in, none, converted
 				var goret      gst.FlowReturn  // return, none, casted
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				bufferList = gst.UnsafeBufferListFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.RenderList(sink, bufferList)
@@ -7786,7 +7882,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetCaps(sink, caps)
@@ -7809,7 +7905,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var sink  Instance // go GstBaseSink subclass
 				var goret bool     // return
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(sink)
 
@@ -7831,7 +7927,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var sink  Instance // go GstBaseSink subclass
 				var goret bool     // return
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(sink)
 
@@ -7853,7 +7949,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var sink  Instance // go GstBaseSink subclass
 				var goret bool     // return
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Unlock(sink)
 
@@ -7875,7 +7971,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var sink  Instance // go GstBaseSink subclass
 				var goret bool     // return
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.UnlockStop(sink)
 
@@ -7898,7 +7994,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 				var event *gst.Event     // in, none, converted
 				var goret gst.FlowReturn // return, none, casted
 
-				sink = UnsafeBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.WaitEvent(sink, event)
@@ -8391,6 +8487,11 @@ func UnsafeBaseSrcFromGlibNone(c unsafe.Pointer) BaseSrc {
 // UnsafeBaseSrcFromGlibFull is used to convert raw GstBaseSrc pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeBaseSrcFromGlibFull(c unsafe.Pointer) BaseSrc {
 	return gobject.UnsafeObjectFromGlibFull(c).(BaseSrc)
+}
+
+// UnsafeBaseSrcFromGlibBorrow is used to convert raw GstBaseSrc pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeBaseSrcFromGlibBorrow(c unsafe.Pointer) BaseSrc {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(BaseSrc)
 }
 
 func (b *BaseSrcInstance) upcastToGstBaseSrc() *BaseSrcInstance {
@@ -9252,7 +9353,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var buf    *gst.Buffer    // out, full, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				offset = uint64(carg1)
 				size = uint(carg2)
 
@@ -9276,7 +9377,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(src, query)
@@ -9300,7 +9401,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var segment *gst.Segment // in, none, converted
 				var goret   bool         // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				segment = gst.UnsafeSegmentFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DoSeek(src, segment)
@@ -9324,7 +9425,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Event(src, event)
@@ -9350,7 +9451,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var buf    *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				offset = uint64(carg1)
 				size = uint(carg2)
 				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
@@ -9374,7 +9475,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var caps  *gst.Caps // in, full, converted
 				var goret *gst.Caps // return, full, converted
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.Fixate(src, caps)
@@ -9396,7 +9497,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var filter *gst.Caps // in, none, converted, nullable
 				var goret  *gst.Caps // return, full, converted
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != nil {
 					filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				}
@@ -9420,7 +9521,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var size  uint64   // out, full, casted
 				var goret bool     // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				size, goret = overrides.GetSize(src)
 
@@ -9445,7 +9546,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var start  gst.ClockTime // out, full, casted, alias
 				var end    gst.ClockTime // out, full, casted, alias
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				start, end = overrides.GetTimes(src, buffer)
@@ -9465,7 +9566,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.IsSeekable(src)
 
@@ -9487,7 +9588,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Negotiate(src)
 
@@ -9511,7 +9612,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var segment *gst.Segment // in, none, converted
 				var goret   bool         // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				seek = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 				segment = gst.UnsafeSegmentFromGlibNone(unsafe.Pointer(carg2))
 
@@ -9536,7 +9637,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Query(src, query)
@@ -9560,7 +9661,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetCaps(src, caps)
@@ -9583,7 +9684,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(src)
 
@@ -9605,7 +9706,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(src)
 
@@ -9627,7 +9728,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Unlock(src)
 
@@ -9649,7 +9750,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
 
-				src = UnsafeBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.UnlockStop(src)
 
@@ -10013,6 +10114,11 @@ func UnsafeBaseTransformFromGlibNone(c unsafe.Pointer) BaseTransform {
 // UnsafeBaseTransformFromGlibFull is used to convert raw GstBaseTransform pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeBaseTransformFromGlibFull(c unsafe.Pointer) BaseTransform {
 	return gobject.UnsafeObjectFromGlibFull(c).(BaseTransform)
+}
+
+// UnsafeBaseTransformFromGlibBorrow is used to convert raw GstBaseTransform pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeBaseTransformFromGlibBorrow(c unsafe.Pointer) BaseTransform {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(BaseTransform)
 }
 
 func (b *BaseTransformInstance) upcastToGstBaseTransform() *BaseTransformInstance {
@@ -10664,7 +10770,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var caps      *gst.Caps        // in, none, converted
 				var goret     bool             // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				direction = gst.PadDirection(carg1)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 
@@ -10688,7 +10794,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var trans  Instance    // go GstBaseTransform subclass
 				var buffer *gst.Buffer // in, none, converted
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.BeforeTransform(trans, buffer)
@@ -10707,7 +10813,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var outbuf *gst.Buffer // in, none, converted
 				var goret  bool        // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				input = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 
@@ -10732,7 +10838,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(trans, query)
@@ -10758,7 +10864,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var params *gst.Structure // in, none, converted
 				var goret  bool           // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 				api = gobject.Type(carg2)
 				params = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(carg3))
@@ -10786,7 +10892,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var othercaps *gst.Caps        // in, full, converted
 				var goret     *gst.Caps        // return, full, converted
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				direction = gst.PadDirection(carg1)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 				othercaps = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(carg3))
@@ -10810,7 +10916,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var outbuf *gst.Buffer    // out, full, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				outbuf, goret = overrides.GenerateOutput(trans)
 
@@ -10833,7 +10939,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var size  uint      // out, full, casted
 				var goret bool      // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				size, goret = overrides.GetUnitSize(trans, caps)
@@ -10859,7 +10965,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var outbuf *gst.Buffer    // out, full, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				input = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				outbuf, goret = overrides.PrepareOutputBuffer(trans, input)
@@ -10883,7 +10989,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var query       *gst.Query // in, none, converted
 				var goret       bool       // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				decideQuery = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
 
@@ -10909,7 +11015,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var query     *gst.Query       // in, none, converted
 				var goret     bool             // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				direction = gst.PadDirection(carg1)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
 
@@ -10935,7 +11041,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var outcaps *gst.Caps // in, none, converted
 				var goret   bool      // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 
@@ -10960,7 +11066,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var event *gst.Event // in, full, converted
 				var goret bool       // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(trans, event)
@@ -10984,7 +11090,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var event *gst.Event // in, full, converted
 				var goret bool       // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(trans, event)
@@ -11007,7 +11113,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var trans Instance // go GstBaseTransform subclass
 				var goret bool     // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(trans)
 
@@ -11029,7 +11135,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var trans Instance // go GstBaseTransform subclass
 				var goret bool     // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(trans)
 
@@ -11053,7 +11159,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var input     *gst.Buffer    // in, none, converted
 				var goret     gst.FlowReturn // return, none, casted
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					isDiscont = true
 				}
@@ -11079,7 +11185,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var outbuf *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 
@@ -11104,7 +11210,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var filter    *gst.Caps        // in, none, converted
 				var goret     *gst.Caps        // return, full, converted
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				direction = gst.PadDirection(carg1)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg3))
@@ -11128,7 +11234,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var buf   *gst.Buffer    // in, none, converted
 				var goret gst.FlowReturn // return, none, casted
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.TransformIP(trans, buf)
@@ -11152,7 +11258,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var inbuf  *gst.Buffer // in, none, converted
 				var goret  bool        // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
 				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
@@ -11182,7 +11288,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				var othersize uint             // out, full, casted
 				var goret     bool             // return
 
-				trans = UnsafeBaseTransformFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				direction = gst.PadDirection(carg1)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 				size = uint(carg3)
@@ -11602,6 +11708,11 @@ func UnsafeCollectPadsFromGlibNone(c unsafe.Pointer) CollectPads {
 // UnsafeCollectPadsFromGlibFull is used to convert raw GstCollectPads pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeCollectPadsFromGlibFull(c unsafe.Pointer) CollectPads {
 	return gobject.UnsafeObjectFromGlibFull(c).(CollectPads)
+}
+
+// UnsafeCollectPadsFromGlibBorrow is used to convert raw GstCollectPads pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeCollectPadsFromGlibBorrow(c unsafe.Pointer) CollectPads {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(CollectPads)
 }
 
 func (c *CollectPadsInstance) upcastToGstCollectPads() *CollectPadsInstance {
@@ -12397,6 +12508,11 @@ func UnsafeDataQueueFromGlibFull(c unsafe.Pointer) DataQueue {
 	return gobject.UnsafeObjectFromGlibFull(c).(DataQueue)
 }
 
+// UnsafeDataQueueFromGlibBorrow is used to convert raw GstDataQueue pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDataQueueFromGlibBorrow(c unsafe.Pointer) DataQueue {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DataQueue)
+}
+
 func (d *DataQueueInstance) upcastToGstDataQueue() *DataQueueInstance {
 	return d
 }
@@ -12458,7 +12574,7 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstDataQueue) {
 				var queue Instance // go GstDataQueue subclass
 
-				queue = UnsafeDataQueueFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				queue = UnsafeDataQueueFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Empty(queue)
 			},
@@ -12473,7 +12589,7 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstDataQueue) {
 				var queue Instance // go GstDataQueue subclass
 
-				queue = UnsafeDataQueueFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				queue = UnsafeDataQueueFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Full(queue)
 			},
@@ -12569,6 +12685,11 @@ func UnsafePushSrcFromGlibFull(c unsafe.Pointer) PushSrc {
 	return gobject.UnsafeObjectFromGlibFull(c).(PushSrc)
 }
 
+// UnsafePushSrcFromGlibBorrow is used to convert raw GstPushSrc pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePushSrcFromGlibBorrow(c unsafe.Pointer) PushSrc {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PushSrc)
+}
+
 func (p *PushSrcInstance) upcastToGstPushSrc() *PushSrcInstance {
 	return p
 }
@@ -12623,7 +12744,7 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 				var buf   *gst.Buffer    // out, full, converted
 				var goret gst.FlowReturn // return, none, casted
 
-				src = UnsafePushSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafePushSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				buf, goret = overrides.Alloc(src)
 
@@ -12645,7 +12766,7 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 				var buf   *gst.Buffer    // in, none, converted
 				var goret gst.FlowReturn // return, none, casted
 
-				src = UnsafePushSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafePushSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Fill(src, buf)
@@ -12874,8 +12995,11 @@ func marshalBaseParseFrame(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeBaseParseFrameFromGlibBorrow(b), nil
 }
 
-func (r *BaseParseFrame) InitGoValue(v *gobject.Value) {
-	v.Init(TypeBaseParseFrame)
+func (r *BaseParseFrame) GoValueType() gobject.Type {
+	return TypeBaseParseFrame
+}
+
+func (r *BaseParseFrame) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -12936,7 +13060,7 @@ func UnsafeBaseParseFrameToGlibFull(b *BaseParseFrame) unsafe.Pointer {
 // 
 // 	- buffer *gst.Buffer: a #GstBuffer 
 // 	- flags BaseParseFrameFlags: the flags 
-// 	- overhead int: number of bytes in this frame which should be counted as
+// 	- overhead int32: number of bytes in this frame which should be counted as
 //     metadata overhead, ie. not used to calculate the average bitrate.
 //     Set to -1 to mark the entire frame as metadata. If in doubt, set to 0. 
 // 
@@ -12947,7 +13071,7 @@ func UnsafeBaseParseFrameToGlibFull(b *BaseParseFrame) unsafe.Pointer {
 // Allocates a new #GstBaseParseFrame. This function is mainly for bindings,
 // elements written in C should usually allocate the frame on the stack and
 // then use gst_base_parse_frame_init() to initialise it.
-func NewBaseParseFrame(buffer *gst.Buffer, flags BaseParseFrameFlags, overhead int) *BaseParseFrame {
+func NewBaseParseFrame(buffer *gst.Buffer, flags BaseParseFrameFlags, overhead int32) *BaseParseFrame {
 	var carg1 *C.GstBuffer             // in, none, converted
 	var carg2 C.GstBaseParseFrameFlags // in, none, casted
 	var carg3 C.gint                   // in, none, casted
@@ -17298,8 +17422,11 @@ func marshalFlowCombiner(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeFlowCombinerFromGlibBorrow(b), nil
 }
 
-func (r *FlowCombiner) InitGoValue(v *gobject.Value) {
-	v.Init(TypeFlowCombiner)
+func (r *FlowCombiner) GoValueType() gobject.Type {
+	return TypeFlowCombiner
+}
+
+func (r *FlowCombiner) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
