@@ -946,8 +946,19 @@ type harness struct {
 	native *C.GstHarness
 }
 
+// UnsafeHarnessToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (h *Harness) instance() *C.GstHarness {
+	if h == nil {
+		return nil
+	}
+	return h.native
+}
+
 // UnsafeHarnessFromGlibBorrow is used to convert raw C.GstHarness pointers to go. This is used by the bindings internally.
 func UnsafeHarnessFromGlibBorrow(p unsafe.Pointer) *Harness {
+	if p == nil {
+		return nil
+	}
 	return &Harness{&harness{(*C.GstHarness)(p)}}
 }
 
@@ -955,6 +966,9 @@ func UnsafeHarnessFromGlibBorrow(p unsafe.Pointer) *Harness {
 func UnsafeHarnessFromGlibNone(p unsafe.Pointer) *Harness {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeHarnessFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.harness)), 1)
 	runtime.SetFinalizer(
 		wrapped.harness,
@@ -969,6 +983,9 @@ func UnsafeHarnessFromGlibNone(p unsafe.Pointer) *Harness {
 // UnsafeHarnessFromGlibFull is used to convert raw C.GstHarness pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeHarnessFromGlibFull(p unsafe.Pointer) *Harness {
 	wrapped := UnsafeHarnessFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.harness)), 1)
 	runtime.SetFinalizer(
 		wrapped.harness,
@@ -989,12 +1006,18 @@ func UnsafeHarnessFree(h *Harness) {
 
 // UnsafeHarnessToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeHarnessToGlibNone(h *Harness) unsafe.Pointer {
+	if h == nil {
+		return nil
+	}
 	return unsafe.Pointer(h.native)
 }
 
 // UnsafeHarnessToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeHarnessToGlibFull(h *Harness) unsafe.Pointer {
+	if h == nil {
+		return nil
+	}
 	runtime.SetFinalizer(h.harness, nil)
 	_p := unsafe.Pointer(h.native)
 	h.native = nil // Harness is invalid from here on
@@ -2737,8 +2760,19 @@ type harnessThread struct {
 	native *C.GstHarnessThread
 }
 
+// UnsafeHarnessThreadToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (h *HarnessThread) instance() *C.GstHarnessThread {
+	if h == nil {
+		return nil
+	}
+	return h.native
+}
+
 // UnsafeHarnessThreadFromGlibBorrow is used to convert raw C.GstHarnessThread pointers to go. This is used by the bindings internally.
 func UnsafeHarnessThreadFromGlibBorrow(p unsafe.Pointer) *HarnessThread {
+	if p == nil {
+		return nil
+	}
 	return &HarnessThread{&harnessThread{(*C.GstHarnessThread)(p)}}
 }
 
@@ -2746,6 +2780,9 @@ func UnsafeHarnessThreadFromGlibBorrow(p unsafe.Pointer) *HarnessThread {
 func UnsafeHarnessThreadFromGlibNone(p unsafe.Pointer) *HarnessThread {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeHarnessThreadFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.harnessThread)), 1)
 	runtime.SetFinalizer(
 		wrapped.harnessThread,
@@ -2760,6 +2797,9 @@ func UnsafeHarnessThreadFromGlibNone(p unsafe.Pointer) *HarnessThread {
 // UnsafeHarnessThreadFromGlibFull is used to convert raw C.GstHarnessThread pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeHarnessThreadFromGlibFull(p unsafe.Pointer) *HarnessThread {
 	wrapped := UnsafeHarnessThreadFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.harnessThread)), 1)
 	runtime.SetFinalizer(
 		wrapped.harnessThread,
@@ -2780,12 +2820,18 @@ func UnsafeHarnessThreadFree(h *HarnessThread) {
 
 // UnsafeHarnessThreadToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeHarnessThreadToGlibNone(h *HarnessThread) unsafe.Pointer {
+	if h == nil {
+		return nil
+	}
 	return unsafe.Pointer(h.native)
 }
 
 // UnsafeHarnessThreadToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeHarnessThreadToGlibFull(h *HarnessThread) unsafe.Pointer {
+	if h == nil {
+		return nil
+	}
 	runtime.SetFinalizer(h.harnessThread, nil)
 	_p := unsafe.Pointer(h.native)
 	h.native = nil // HarnessThread is invalid from here on
@@ -2804,8 +2850,19 @@ type streamConsistency struct {
 	native *C.GstStreamConsistency
 }
 
+// UnsafeStreamConsistencyToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *StreamConsistency) instance() *C.GstStreamConsistency {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 // UnsafeStreamConsistencyFromGlibBorrow is used to convert raw C.GstStreamConsistency pointers to go. This is used by the bindings internally.
 func UnsafeStreamConsistencyFromGlibBorrow(p unsafe.Pointer) *StreamConsistency {
+	if p == nil {
+		return nil
+	}
 	return &StreamConsistency{&streamConsistency{(*C.GstStreamConsistency)(p)}}
 }
 
@@ -2813,6 +2870,9 @@ func UnsafeStreamConsistencyFromGlibBorrow(p unsafe.Pointer) *StreamConsistency 
 func UnsafeStreamConsistencyFromGlibNone(p unsafe.Pointer) *StreamConsistency {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeStreamConsistencyFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.streamConsistency)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamConsistency,
@@ -2827,6 +2887,9 @@ func UnsafeStreamConsistencyFromGlibNone(p unsafe.Pointer) *StreamConsistency {
 // UnsafeStreamConsistencyFromGlibFull is used to convert raw C.GstStreamConsistency pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeStreamConsistencyFromGlibFull(p unsafe.Pointer) *StreamConsistency {
 	wrapped := UnsafeStreamConsistencyFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.streamConsistency)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamConsistency,
@@ -2847,12 +2910,18 @@ func UnsafeStreamConsistencyFree(s *StreamConsistency) {
 
 // UnsafeStreamConsistencyToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeStreamConsistencyToGlibNone(s *StreamConsistency) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeStreamConsistencyToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeStreamConsistencyToGlibFull(s *StreamConsistency) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.streamConsistency, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // StreamConsistency is invalid from here on
@@ -2873,8 +2942,19 @@ type testClockClass struct {
 	native *C.GstTestClockClass
 }
 
+// UnsafeTestClockClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *TestClockClass) instance() *C.GstTestClockClass {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 // UnsafeTestClockClassFromGlibBorrow is used to convert raw C.GstTestClockClass pointers to go. This is used by the bindings internally.
 func UnsafeTestClockClassFromGlibBorrow(p unsafe.Pointer) *TestClockClass {
+	if p == nil {
+		return nil
+	}
 	return &TestClockClass{&testClockClass{(*C.GstTestClockClass)(p)}}
 }
 
@@ -2887,6 +2967,9 @@ func UnsafeTestClockClassFree(t *TestClockClass) {
 
 // UnsafeTestClockClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeTestClockClassToGlibNone(t *TestClockClass) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 

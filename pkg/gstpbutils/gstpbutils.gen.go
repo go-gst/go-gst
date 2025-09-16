@@ -7716,8 +7716,19 @@ type audioVisualizerClass struct {
 	native *C.GstAudioVisualizerClass
 }
 
+// UnsafeAudioVisualizerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioVisualizerClass) instance() *C.GstAudioVisualizerClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioVisualizerClassFromGlibBorrow is used to convert raw C.GstAudioVisualizerClass pointers to go. This is used by the bindings internally.
 func UnsafeAudioVisualizerClassFromGlibBorrow(p unsafe.Pointer) *AudioVisualizerClass {
+	if p == nil {
+		return nil
+	}
 	return &AudioVisualizerClass{&audioVisualizerClass{(*C.GstAudioVisualizerClass)(p)}}
 }
 
@@ -7730,6 +7741,9 @@ func UnsafeAudioVisualizerClassFree(a *AudioVisualizerClass) {
 
 // UnsafeAudioVisualizerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioVisualizerClassToGlibNone(a *AudioVisualizerClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -7754,8 +7768,19 @@ type discovererClass struct {
 	native *C.GstDiscovererClass
 }
 
+// UnsafeDiscovererClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DiscovererClass) instance() *C.GstDiscovererClass {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 // UnsafeDiscovererClassFromGlibBorrow is used to convert raw C.GstDiscovererClass pointers to go. This is used by the bindings internally.
 func UnsafeDiscovererClassFromGlibBorrow(p unsafe.Pointer) *DiscovererClass {
+	if p == nil {
+		return nil
+	}
 	return &DiscovererClass{&discovererClass{(*C.GstDiscovererClass)(p)}}
 }
 
@@ -7768,6 +7793,9 @@ func UnsafeDiscovererClassFree(d *DiscovererClass) {
 
 // UnsafeDiscovererClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDiscovererClassToGlibNone(d *DiscovererClass) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
@@ -7792,8 +7820,19 @@ type encodingAudioProfileClass struct {
 	native *C.GstEncodingAudioProfileClass
 }
 
+// UnsafeEncodingAudioProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (e *EncodingAudioProfileClass) instance() *C.GstEncodingAudioProfileClass {
+	if e == nil {
+		return nil
+	}
+	return e.native
+}
+
 // UnsafeEncodingAudioProfileClassFromGlibBorrow is used to convert raw C.GstEncodingAudioProfileClass pointers to go. This is used by the bindings internally.
 func UnsafeEncodingAudioProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingAudioProfileClass {
+	if p == nil {
+		return nil
+	}
 	return &EncodingAudioProfileClass{&encodingAudioProfileClass{(*C.GstEncodingAudioProfileClass)(p)}}
 }
 
@@ -7806,6 +7845,9 @@ func UnsafeEncodingAudioProfileClassFree(e *EncodingAudioProfileClass) {
 
 // UnsafeEncodingAudioProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeEncodingAudioProfileClassToGlibNone(e *EncodingAudioProfileClass) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	return unsafe.Pointer(e.native)
 }
 
@@ -7830,8 +7872,19 @@ type encodingContainerProfileClass struct {
 	native *C.GstEncodingContainerProfileClass
 }
 
+// UnsafeEncodingContainerProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (e *EncodingContainerProfileClass) instance() *C.GstEncodingContainerProfileClass {
+	if e == nil {
+		return nil
+	}
+	return e.native
+}
+
 // UnsafeEncodingContainerProfileClassFromGlibBorrow is used to convert raw C.GstEncodingContainerProfileClass pointers to go. This is used by the bindings internally.
 func UnsafeEncodingContainerProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingContainerProfileClass {
+	if p == nil {
+		return nil
+	}
 	return &EncodingContainerProfileClass{&encodingContainerProfileClass{(*C.GstEncodingContainerProfileClass)(p)}}
 }
 
@@ -7844,6 +7897,9 @@ func UnsafeEncodingContainerProfileClassFree(e *EncodingContainerProfileClass) {
 
 // UnsafeEncodingContainerProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeEncodingContainerProfileClassToGlibNone(e *EncodingContainerProfileClass) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	return unsafe.Pointer(e.native)
 }
 
@@ -7868,8 +7924,19 @@ type encodingProfileClass struct {
 	native *C.GstEncodingProfileClass
 }
 
+// UnsafeEncodingProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (e *EncodingProfileClass) instance() *C.GstEncodingProfileClass {
+	if e == nil {
+		return nil
+	}
+	return e.native
+}
+
 // UnsafeEncodingProfileClassFromGlibBorrow is used to convert raw C.GstEncodingProfileClass pointers to go. This is used by the bindings internally.
 func UnsafeEncodingProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingProfileClass {
+	if p == nil {
+		return nil
+	}
 	return &EncodingProfileClass{&encodingProfileClass{(*C.GstEncodingProfileClass)(p)}}
 }
 
@@ -7882,6 +7949,9 @@ func UnsafeEncodingProfileClassFree(e *EncodingProfileClass) {
 
 // UnsafeEncodingProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeEncodingProfileClassToGlibNone(e *EncodingProfileClass) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	return unsafe.Pointer(e.native)
 }
 
@@ -7906,8 +7976,19 @@ type encodingVideoProfileClass struct {
 	native *C.GstEncodingVideoProfileClass
 }
 
+// UnsafeEncodingVideoProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (e *EncodingVideoProfileClass) instance() *C.GstEncodingVideoProfileClass {
+	if e == nil {
+		return nil
+	}
+	return e.native
+}
+
 // UnsafeEncodingVideoProfileClassFromGlibBorrow is used to convert raw C.GstEncodingVideoProfileClass pointers to go. This is used by the bindings internally.
 func UnsafeEncodingVideoProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingVideoProfileClass {
+	if p == nil {
+		return nil
+	}
 	return &EncodingVideoProfileClass{&encodingVideoProfileClass{(*C.GstEncodingVideoProfileClass)(p)}}
 }
 
@@ -7920,6 +8001,9 @@ func UnsafeEncodingVideoProfileClassFree(e *EncodingVideoProfileClass) {
 
 // UnsafeEncodingVideoProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeEncodingVideoProfileClassToGlibNone(e *EncodingVideoProfileClass) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	return unsafe.Pointer(e.native)
 }
 
@@ -7945,11 +8029,19 @@ type installPluginsContext struct {
 	native *C.GstInstallPluginsContext
 }
 
+// UnsafeInstallPluginsContextToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (i *InstallPluginsContext) instance() *C.GstInstallPluginsContext {
+	if i == nil {
+		return nil
+	}
+	return i.native
+}
+
 var _ gobject.GoValueInitializer = (*InstallPluginsContext)(nil)
 
 func marshalInstallPluginsContext(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeInstallPluginsContextFromGlibBorrow(b), nil
+	return UnsafeInstallPluginsContextFromGlibNone(b), nil
 }
 
 func (r *InstallPluginsContext) GoValueType() gobject.Type {
@@ -7957,11 +8049,14 @@ func (r *InstallPluginsContext) GoValueType() gobject.Type {
 }
 
 func (r *InstallPluginsContext) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeInstallPluginsContextFromGlibBorrow is used to convert raw C.GstInstallPluginsContext pointers to go. This is used by the bindings internally.
 func UnsafeInstallPluginsContextFromGlibBorrow(p unsafe.Pointer) *InstallPluginsContext {
+	if p == nil {
+		return nil
+	}
 	return &InstallPluginsContext{&installPluginsContext{(*C.GstInstallPluginsContext)(p)}}
 }
 
@@ -7969,6 +8064,9 @@ func UnsafeInstallPluginsContextFromGlibBorrow(p unsafe.Pointer) *InstallPlugins
 func UnsafeInstallPluginsContextFromGlibNone(p unsafe.Pointer) *InstallPluginsContext {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeInstallPluginsContextFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.installPluginsContext)), 1)
 	runtime.SetFinalizer(
 		wrapped.installPluginsContext,
@@ -7983,6 +8081,9 @@ func UnsafeInstallPluginsContextFromGlibNone(p unsafe.Pointer) *InstallPluginsCo
 // UnsafeInstallPluginsContextFromGlibFull is used to convert raw C.GstInstallPluginsContext pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeInstallPluginsContextFromGlibFull(p unsafe.Pointer) *InstallPluginsContext {
 	wrapped := UnsafeInstallPluginsContextFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.installPluginsContext)), 1)
 	runtime.SetFinalizer(
 		wrapped.installPluginsContext,
@@ -8003,12 +8104,18 @@ func UnsafeInstallPluginsContextFree(i *InstallPluginsContext) {
 
 // UnsafeInstallPluginsContextToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeInstallPluginsContextToGlibNone(i *InstallPluginsContext) unsafe.Pointer {
+	if i == nil {
+		return nil
+	}
 	return unsafe.Pointer(i.native)
 }
 
 // UnsafeInstallPluginsContextToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeInstallPluginsContextToGlibFull(i *InstallPluginsContext) unsafe.Pointer {
+	if i == nil {
+		return nil
+	}
 	runtime.SetFinalizer(i.installPluginsContext, nil)
 	_p := unsafe.Pointer(i.native)
 	i.native = nil // InstallPluginsContext is invalid from here on

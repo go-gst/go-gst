@@ -14426,11 +14426,19 @@ type gLAllocationParams struct {
 	native *C.GstGLAllocationParams
 }
 
+// UnsafeGLAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLAllocationParams) instance() *C.GstGLAllocationParams {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 var _ gobject.GoValueInitializer = (*GLAllocationParams)(nil)
 
 func marshalGLAllocationParams(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeGLAllocationParamsFromGlibBorrow(b), nil
+	return UnsafeGLAllocationParamsFromGlibNone(b), nil
 }
 
 func (r *GLAllocationParams) GoValueType() gobject.Type {
@@ -14438,11 +14446,14 @@ func (r *GLAllocationParams) GoValueType() gobject.Type {
 }
 
 func (r *GLAllocationParams) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeGLAllocationParamsFromGlibBorrow is used to convert raw C.GstGLAllocationParams pointers to go. This is used by the bindings internally.
 func UnsafeGLAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLAllocationParams {
+	if p == nil {
+		return nil
+	}
 	return &GLAllocationParams{&gLAllocationParams{(*C.GstGLAllocationParams)(p)}}
 }
 
@@ -14450,6 +14461,9 @@ func UnsafeGLAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLAllocationParam
 func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLAllocationParamsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAllocationParams,
@@ -14464,6 +14478,9 @@ func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams 
 // UnsafeGLAllocationParamsFromGlibFull is used to convert raw C.GstGLAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLAllocationParamsFromGlibFull(p unsafe.Pointer) *GLAllocationParams {
 	wrapped := UnsafeGLAllocationParamsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAllocationParams,
@@ -14484,12 +14501,18 @@ func UnsafeGLAllocationParamsFree(g *GLAllocationParams) {
 
 // UnsafeGLAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLAllocationParamsToGlibNone(g *GLAllocationParams) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLAllocationParamsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLAllocationParamsToGlibFull(g *GLAllocationParams) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLAllocationParams, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLAllocationParams is invalid from here on
@@ -14563,8 +14586,19 @@ type gLAsyncDebug struct {
 	native *C.GstGLAsyncDebug
 }
 
+// UnsafeGLAsyncDebugToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLAsyncDebug) instance() *C.GstGLAsyncDebug {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLAsyncDebugFromGlibBorrow is used to convert raw C.GstGLAsyncDebug pointers to go. This is used by the bindings internally.
 func UnsafeGLAsyncDebugFromGlibBorrow(p unsafe.Pointer) *GLAsyncDebug {
+	if p == nil {
+		return nil
+	}
 	return &GLAsyncDebug{&gLAsyncDebug{(*C.GstGLAsyncDebug)(p)}}
 }
 
@@ -14572,6 +14606,9 @@ func UnsafeGLAsyncDebugFromGlibBorrow(p unsafe.Pointer) *GLAsyncDebug {
 func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLAsyncDebugFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAsyncDebug)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAsyncDebug,
@@ -14586,6 +14623,9 @@ func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
 // UnsafeGLAsyncDebugFromGlibFull is used to convert raw C.GstGLAsyncDebug pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLAsyncDebugFromGlibFull(p unsafe.Pointer) *GLAsyncDebug {
 	wrapped := UnsafeGLAsyncDebugFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAsyncDebug)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAsyncDebug,
@@ -14606,12 +14646,18 @@ func UnsafeGLAsyncDebugFree(g *GLAsyncDebug) {
 
 // UnsafeGLAsyncDebugToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLAsyncDebugToGlibNone(g *GLAsyncDebug) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLAsyncDebugToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLAsyncDebugToGlibFull(g *GLAsyncDebug) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLAsyncDebug, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLAsyncDebug is invalid from here on
@@ -14697,8 +14743,19 @@ type gLBaseFilterClass struct {
 	native *C.GstGLBaseFilterClass
 }
 
+// UnsafeGLBaseFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBaseFilterClass) instance() *C.GstGLBaseFilterClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLBaseFilterClassFromGlibBorrow is used to convert raw C.GstGLBaseFilterClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseFilterClassFromGlibBorrow(p unsafe.Pointer) *GLBaseFilterClass {
+	if p == nil {
+		return nil
+	}
 	return &GLBaseFilterClass{&gLBaseFilterClass{(*C.GstGLBaseFilterClass)(p)}}
 }
 
@@ -14711,6 +14768,9 @@ func UnsafeGLBaseFilterClassFree(g *GLBaseFilterClass) {
 
 // UnsafeGLBaseFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBaseFilterClassToGlibNone(g *GLBaseFilterClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -14738,11 +14798,19 @@ type gLBaseMemory struct {
 	native *C.GstGLBaseMemory
 }
 
+// UnsafeGLBaseMemoryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBaseMemory) instance() *C.GstGLBaseMemory {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 var _ gobject.GoValueInitializer = (*GLBaseMemory)(nil)
 
 func marshalGLBaseMemory(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeGLBaseMemoryFromGlibBorrow(b), nil
+	return UnsafeGLBaseMemoryFromGlibNone(b), nil
 }
 
 func (r *GLBaseMemory) GoValueType() gobject.Type {
@@ -14750,11 +14818,14 @@ func (r *GLBaseMemory) GoValueType() gobject.Type {
 }
 
 func (r *GLBaseMemory) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeGLBaseMemoryFromGlibBorrow is used to convert raw C.GstGLBaseMemory pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseMemoryFromGlibBorrow(p unsafe.Pointer) *GLBaseMemory {
+	if p == nil {
+		return nil
+	}
 	return &GLBaseMemory{&gLBaseMemory{(*C.GstGLBaseMemory)(p)}}
 }
 
@@ -14762,6 +14833,9 @@ func UnsafeGLBaseMemoryFromGlibBorrow(p unsafe.Pointer) *GLBaseMemory {
 func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBaseMemoryFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBaseMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBaseMemory,
@@ -14776,6 +14850,9 @@ func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
 // UnsafeGLBaseMemoryFromGlibFull is used to convert raw C.GstGLBaseMemory pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLBaseMemoryFromGlibFull(p unsafe.Pointer) *GLBaseMemory {
 	wrapped := UnsafeGLBaseMemoryFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBaseMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBaseMemory,
@@ -14796,12 +14873,18 @@ func UnsafeGLBaseMemoryFree(g *GLBaseMemory) {
 
 // UnsafeGLBaseMemoryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBaseMemoryToGlibNone(g *GLBaseMemory) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLBaseMemoryToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLBaseMemoryToGlibFull(g *GLBaseMemory) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLBaseMemory, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLBaseMemory is invalid from here on
@@ -14925,8 +15008,19 @@ type gLBaseMemoryAllocatorClass struct {
 	native *C.GstGLBaseMemoryAllocatorClass
 }
 
+// UnsafeGLBaseMemoryAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBaseMemoryAllocatorClass) instance() *C.GstGLBaseMemoryAllocatorClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow is used to convert raw C.GstGLBaseMemoryAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMemoryAllocatorClass {
+	if p == nil {
+		return nil
+	}
 	return &GLBaseMemoryAllocatorClass{&gLBaseMemoryAllocatorClass{(*C.GstGLBaseMemoryAllocatorClass)(p)}}
 }
 
@@ -14939,6 +15033,9 @@ func UnsafeGLBaseMemoryAllocatorClassFree(g *GLBaseMemoryAllocatorClass) {
 
 // UnsafeGLBaseMemoryAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBaseMemoryAllocatorClassToGlibNone(g *GLBaseMemoryAllocatorClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -14963,8 +15060,19 @@ type gLBaseMixerClass struct {
 	native *C.GstGLBaseMixerClass
 }
 
+// UnsafeGLBaseMixerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBaseMixerClass) instance() *C.GstGLBaseMixerClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLBaseMixerClassFromGlibBorrow is used to convert raw C.GstGLBaseMixerClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseMixerClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMixerClass {
+	if p == nil {
+		return nil
+	}
 	return &GLBaseMixerClass{&gLBaseMixerClass{(*C.GstGLBaseMixerClass)(p)}}
 }
 
@@ -14977,6 +15085,9 @@ func UnsafeGLBaseMixerClassFree(g *GLBaseMixerClass) {
 
 // UnsafeGLBaseMixerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBaseMixerClassToGlibNone(g *GLBaseMixerClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15001,8 +15112,19 @@ type gLBaseMixerPadClass struct {
 	native *C.GstGLBaseMixerPadClass
 }
 
+// UnsafeGLBaseMixerPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBaseMixerPadClass) instance() *C.GstGLBaseMixerPadClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLBaseMixerPadClassFromGlibBorrow is used to convert raw C.GstGLBaseMixerPadClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseMixerPadClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMixerPadClass {
+	if p == nil {
+		return nil
+	}
 	return &GLBaseMixerPadClass{&gLBaseMixerPadClass{(*C.GstGLBaseMixerPadClass)(p)}}
 }
 
@@ -15015,6 +15137,9 @@ func UnsafeGLBaseMixerPadClassFree(g *GLBaseMixerPadClass) {
 
 // UnsafeGLBaseMixerPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBaseMixerPadClassToGlibNone(g *GLBaseMixerPadClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15041,8 +15166,19 @@ type gLBaseSrcClass struct {
 	native *C.GstGLBaseSrcClass
 }
 
+// UnsafeGLBaseSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBaseSrcClass) instance() *C.GstGLBaseSrcClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLBaseSrcClassFromGlibBorrow is used to convert raw C.GstGLBaseSrcClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseSrcClassFromGlibBorrow(p unsafe.Pointer) *GLBaseSrcClass {
+	if p == nil {
+		return nil
+	}
 	return &GLBaseSrcClass{&gLBaseSrcClass{(*C.GstGLBaseSrcClass)(p)}}
 }
 
@@ -15055,6 +15191,9 @@ func UnsafeGLBaseSrcClassFree(g *GLBaseSrcClass) {
 
 // UnsafeGLBaseSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBaseSrcClassToGlibNone(g *GLBaseSrcClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15082,11 +15221,19 @@ type gLBuffer struct {
 	native *C.GstGLBuffer
 }
 
+// UnsafeGLBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBuffer) instance() *C.GstGLBuffer {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 var _ gobject.GoValueInitializer = (*GLBuffer)(nil)
 
 func marshalGLBuffer(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeGLBufferFromGlibBorrow(b), nil
+	return UnsafeGLBufferFromGlibNone(b), nil
 }
 
 func (r *GLBuffer) GoValueType() gobject.Type {
@@ -15094,11 +15241,14 @@ func (r *GLBuffer) GoValueType() gobject.Type {
 }
 
 func (r *GLBuffer) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeGLBufferFromGlibBorrow is used to convert raw C.GstGLBuffer pointers to go. This is used by the bindings internally.
 func UnsafeGLBufferFromGlibBorrow(p unsafe.Pointer) *GLBuffer {
+	if p == nil {
+		return nil
+	}
 	return &GLBuffer{&gLBuffer{(*C.GstGLBuffer)(p)}}
 }
 
@@ -15106,6 +15256,9 @@ func UnsafeGLBufferFromGlibBorrow(p unsafe.Pointer) *GLBuffer {
 func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBuffer,
@@ -15120,6 +15273,9 @@ func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
 // UnsafeGLBufferFromGlibFull is used to convert raw C.GstGLBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLBufferFromGlibFull(p unsafe.Pointer) *GLBuffer {
 	wrapped := UnsafeGLBufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBuffer,
@@ -15140,12 +15296,18 @@ func UnsafeGLBufferFree(g *GLBuffer) {
 
 // UnsafeGLBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBufferToGlibNone(g *GLBuffer) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLBufferToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLBufferToGlibFull(g *GLBuffer) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLBuffer, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLBuffer is invalid from here on
@@ -15171,11 +15333,19 @@ type gLBufferAllocationParams struct {
 	native *C.GstGLBufferAllocationParams
 }
 
+// UnsafeGLBufferAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBufferAllocationParams) instance() *C.GstGLBufferAllocationParams {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 var _ gobject.GoValueInitializer = (*GLBufferAllocationParams)(nil)
 
 func marshalGLBufferAllocationParams(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeGLBufferAllocationParamsFromGlibBorrow(b), nil
+	return UnsafeGLBufferAllocationParamsFromGlibNone(b), nil
 }
 
 func (r *GLBufferAllocationParams) GoValueType() gobject.Type {
@@ -15183,11 +15353,14 @@ func (r *GLBufferAllocationParams) GoValueType() gobject.Type {
 }
 
 func (r *GLBufferAllocationParams) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeGLBufferAllocationParamsFromGlibBorrow is used to convert raw C.GstGLBufferAllocationParams pointers to go. This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLBufferAllocationParams {
+	if p == nil {
+		return nil
+	}
 	return &GLBufferAllocationParams{&gLBufferAllocationParams{(*C.GstGLBufferAllocationParams)(p)}}
 }
 
@@ -15195,6 +15368,9 @@ func UnsafeGLBufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLBufferAll
 func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBufferAllocationParamsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBufferAllocationParams,
@@ -15209,6 +15385,9 @@ func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAlloc
 // UnsafeGLBufferAllocationParamsFromGlibFull is used to convert raw C.GstGLBufferAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLBufferAllocationParams {
 	wrapped := UnsafeGLBufferAllocationParamsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBufferAllocationParams,
@@ -15229,12 +15408,18 @@ func UnsafeGLBufferAllocationParamsFree(g *GLBufferAllocationParams) {
 
 // UnsafeGLBufferAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsToGlibNone(g *GLBufferAllocationParams) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLBufferAllocationParamsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsToGlibFull(g *GLBufferAllocationParams) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLBufferAllocationParams, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLBufferAllocationParams is invalid from here on
@@ -15298,8 +15483,19 @@ type gLBufferAllocatorClass struct {
 	native *C.GstGLBufferAllocatorClass
 }
 
+// UnsafeGLBufferAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBufferAllocatorClass) instance() *C.GstGLBufferAllocatorClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLBufferAllocatorClassFromGlibBorrow is used to convert raw C.GstGLBufferAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBufferAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLBufferAllocatorClass {
+	if p == nil {
+		return nil
+	}
 	return &GLBufferAllocatorClass{&gLBufferAllocatorClass{(*C.GstGLBufferAllocatorClass)(p)}}
 }
 
@@ -15312,6 +15508,9 @@ func UnsafeGLBufferAllocatorClassFree(g *GLBufferAllocatorClass) {
 
 // UnsafeGLBufferAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBufferAllocatorClassToGlibNone(g *GLBufferAllocatorClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15338,8 +15537,19 @@ type gLBufferPoolClass struct {
 	native *C.GstGLBufferPoolClass
 }
 
+// UnsafeGLBufferPoolClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLBufferPoolClass) instance() *C.GstGLBufferPoolClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLBufferPoolClassFromGlibBorrow is used to convert raw C.GstGLBufferPoolClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBufferPoolClassFromGlibBorrow(p unsafe.Pointer) *GLBufferPoolClass {
+	if p == nil {
+		return nil
+	}
 	return &GLBufferPoolClass{&gLBufferPoolClass{(*C.GstGLBufferPoolClass)(p)}}
 }
 
@@ -15352,6 +15562,9 @@ func UnsafeGLBufferPoolClassFree(g *GLBufferPoolClass) {
 
 // UnsafeGLBufferPoolClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBufferPoolClassToGlibNone(g *GLBufferPoolClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15378,8 +15591,19 @@ type gLColorConvertClass struct {
 	native *C.GstGLColorConvertClass
 }
 
+// UnsafeGLColorConvertClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLColorConvertClass) instance() *C.GstGLColorConvertClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLColorConvertClassFromGlibBorrow is used to convert raw C.GstGLColorConvertClass pointers to go. This is used by the bindings internally.
 func UnsafeGLColorConvertClassFromGlibBorrow(p unsafe.Pointer) *GLColorConvertClass {
+	if p == nil {
+		return nil
+	}
 	return &GLColorConvertClass{&gLColorConvertClass{(*C.GstGLColorConvertClass)(p)}}
 }
 
@@ -15392,6 +15616,9 @@ func UnsafeGLColorConvertClassFree(g *GLColorConvertClass) {
 
 // UnsafeGLColorConvertClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLColorConvertClassToGlibNone(g *GLColorConvertClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15416,8 +15643,19 @@ type gLContextClass struct {
 	native *C.GstGLContextClass
 }
 
+// UnsafeGLContextClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLContextClass) instance() *C.GstGLContextClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLContextClassFromGlibBorrow is used to convert raw C.GstGLContextClass pointers to go. This is used by the bindings internally.
 func UnsafeGLContextClassFromGlibBorrow(p unsafe.Pointer) *GLContextClass {
+	if p == nil {
+		return nil
+	}
 	return &GLContextClass{&gLContextClass{(*C.GstGLContextClass)(p)}}
 }
 
@@ -15430,6 +15668,9 @@ func UnsafeGLContextClassFree(g *GLContextClass) {
 
 // UnsafeGLContextClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLContextClassToGlibNone(g *GLContextClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15454,8 +15695,19 @@ type gLDisplayClass struct {
 	native *C.GstGLDisplayClass
 }
 
+// UnsafeGLDisplayClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLDisplayClass) instance() *C.GstGLDisplayClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLDisplayClassFromGlibBorrow is used to convert raw C.GstGLDisplayClass pointers to go. This is used by the bindings internally.
 func UnsafeGLDisplayClassFromGlibBorrow(p unsafe.Pointer) *GLDisplayClass {
+	if p == nil {
+		return nil
+	}
 	return &GLDisplayClass{&gLDisplayClass{(*C.GstGLDisplayClass)(p)}}
 }
 
@@ -15468,6 +15720,9 @@ func UnsafeGLDisplayClassFree(g *GLDisplayClass) {
 
 // UnsafeGLDisplayClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLDisplayClassToGlibNone(g *GLDisplayClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15492,8 +15747,19 @@ type gLFilterClass struct {
 	native *C.GstGLFilterClass
 }
 
+// UnsafeGLFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLFilterClass) instance() *C.GstGLFilterClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLFilterClassFromGlibBorrow is used to convert raw C.GstGLFilterClass pointers to go. This is used by the bindings internally.
 func UnsafeGLFilterClassFromGlibBorrow(p unsafe.Pointer) *GLFilterClass {
+	if p == nil {
+		return nil
+	}
 	return &GLFilterClass{&gLFilterClass{(*C.GstGLFilterClass)(p)}}
 }
 
@@ -15506,6 +15772,9 @@ func UnsafeGLFilterClassFree(g *GLFilterClass) {
 
 // UnsafeGLFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLFilterClassToGlibNone(g *GLFilterClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15532,8 +15801,19 @@ type gLFramebufferClass struct {
 	native *C.GstGLFramebufferClass
 }
 
+// UnsafeGLFramebufferClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLFramebufferClass) instance() *C.GstGLFramebufferClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLFramebufferClassFromGlibBorrow is used to convert raw C.GstGLFramebufferClass pointers to go. This is used by the bindings internally.
 func UnsafeGLFramebufferClassFromGlibBorrow(p unsafe.Pointer) *GLFramebufferClass {
+	if p == nil {
+		return nil
+	}
 	return &GLFramebufferClass{&gLFramebufferClass{(*C.GstGLFramebufferClass)(p)}}
 }
 
@@ -15546,6 +15826,9 @@ func UnsafeGLFramebufferClassFree(g *GLFramebufferClass) {
 
 // UnsafeGLFramebufferClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLFramebufferClassToGlibNone(g *GLFramebufferClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15573,8 +15856,19 @@ type gLFuncs struct {
 	native *C.GstGLFuncs
 }
 
+// UnsafeGLFuncsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLFuncs) instance() *C.GstGLFuncs {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLFuncsFromGlibBorrow is used to convert raw C.GstGLFuncs pointers to go. This is used by the bindings internally.
 func UnsafeGLFuncsFromGlibBorrow(p unsafe.Pointer) *GLFuncs {
+	if p == nil {
+		return nil
+	}
 	return &GLFuncs{&gLFuncs{(*C.GstGLFuncs)(p)}}
 }
 
@@ -15582,6 +15876,9 @@ func UnsafeGLFuncsFromGlibBorrow(p unsafe.Pointer) *GLFuncs {
 func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLFuncsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLFuncs,
@@ -15596,6 +15893,9 @@ func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
 // UnsafeGLFuncsFromGlibFull is used to convert raw C.GstGLFuncs pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLFuncsFromGlibFull(p unsafe.Pointer) *GLFuncs {
 	wrapped := UnsafeGLFuncsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLFuncs,
@@ -15616,12 +15916,18 @@ func UnsafeGLFuncsFree(g *GLFuncs) {
 
 // UnsafeGLFuncsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLFuncsToGlibNone(g *GLFuncs) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLFuncsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLFuncsToGlibFull(g *GLFuncs) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLFuncs, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLFuncs is invalid from here on
@@ -15652,11 +15958,19 @@ type gLMemory struct {
 	native *C.GstGLMemory
 }
 
+// UnsafeGLMemoryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLMemory) instance() *C.GstGLMemory {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 var _ gobject.GoValueInitializer = (*GLMemory)(nil)
 
 func marshalGLMemory(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeGLMemoryFromGlibBorrow(b), nil
+	return UnsafeGLMemoryFromGlibNone(b), nil
 }
 
 func (r *GLMemory) GoValueType() gobject.Type {
@@ -15664,11 +15978,14 @@ func (r *GLMemory) GoValueType() gobject.Type {
 }
 
 func (r *GLMemory) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeGLMemoryFromGlibBorrow is used to convert raw C.GstGLMemory pointers to go. This is used by the bindings internally.
 func UnsafeGLMemoryFromGlibBorrow(p unsafe.Pointer) *GLMemory {
+	if p == nil {
+		return nil
+	}
 	return &GLMemory{&gLMemory{(*C.GstGLMemory)(p)}}
 }
 
@@ -15676,6 +15993,9 @@ func UnsafeGLMemoryFromGlibBorrow(p unsafe.Pointer) *GLMemory {
 func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLMemoryFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemory,
@@ -15690,6 +16010,9 @@ func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
 // UnsafeGLMemoryFromGlibFull is used to convert raw C.GstGLMemory pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLMemoryFromGlibFull(p unsafe.Pointer) *GLMemory {
 	wrapped := UnsafeGLMemoryFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemory,
@@ -15710,12 +16033,18 @@ func UnsafeGLMemoryFree(g *GLMemory) {
 
 // UnsafeGLMemoryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLMemoryToGlibNone(g *GLMemory) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLMemoryToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLMemoryToGlibFull(g *GLMemory) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLMemory, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLMemory is invalid from here on
@@ -15946,8 +16275,19 @@ type gLMemoryAllocatorClass struct {
 	native *C.GstGLMemoryAllocatorClass
 }
 
+// UnsafeGLMemoryAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLMemoryAllocatorClass) instance() *C.GstGLMemoryAllocatorClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLMemoryAllocatorClassFromGlibBorrow is used to convert raw C.GstGLMemoryAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLMemoryAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLMemoryAllocatorClass {
+	if p == nil {
+		return nil
+	}
 	return &GLMemoryAllocatorClass{&gLMemoryAllocatorClass{(*C.GstGLMemoryAllocatorClass)(p)}}
 }
 
@@ -15960,6 +16300,9 @@ func UnsafeGLMemoryAllocatorClassFree(g *GLMemoryAllocatorClass) {
 
 // UnsafeGLMemoryAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLMemoryAllocatorClassToGlibNone(g *GLMemoryAllocatorClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -15987,11 +16330,19 @@ type gLMemoryPBO struct {
 	native *C.GstGLMemoryPBO
 }
 
+// UnsafeGLMemoryPBOToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLMemoryPBO) instance() *C.GstGLMemoryPBO {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 var _ gobject.GoValueInitializer = (*GLMemoryPBO)(nil)
 
 func marshalGLMemoryPBO(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeGLMemoryPBOFromGlibBorrow(b), nil
+	return UnsafeGLMemoryPBOFromGlibNone(b), nil
 }
 
 func (r *GLMemoryPBO) GoValueType() gobject.Type {
@@ -15999,11 +16350,14 @@ func (r *GLMemoryPBO) GoValueType() gobject.Type {
 }
 
 func (r *GLMemoryPBO) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeGLMemoryPBOFromGlibBorrow is used to convert raw C.GstGLMemoryPBO pointers to go. This is used by the bindings internally.
 func UnsafeGLMemoryPBOFromGlibBorrow(p unsafe.Pointer) *GLMemoryPBO {
+	if p == nil {
+		return nil
+	}
 	return &GLMemoryPBO{&gLMemoryPBO{(*C.GstGLMemoryPBO)(p)}}
 }
 
@@ -16011,6 +16365,9 @@ func UnsafeGLMemoryPBOFromGlibBorrow(p unsafe.Pointer) *GLMemoryPBO {
 func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLMemoryPBOFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemoryPBO)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemoryPBO,
@@ -16025,6 +16382,9 @@ func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
 // UnsafeGLMemoryPBOFromGlibFull is used to convert raw C.GstGLMemoryPBO pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLMemoryPBOFromGlibFull(p unsafe.Pointer) *GLMemoryPBO {
 	wrapped := UnsafeGLMemoryPBOFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemoryPBO)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemoryPBO,
@@ -16045,12 +16405,18 @@ func UnsafeGLMemoryPBOFree(g *GLMemoryPBO) {
 
 // UnsafeGLMemoryPBOToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLMemoryPBOToGlibNone(g *GLMemoryPBO) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLMemoryPBOToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLMemoryPBOToGlibFull(g *GLMemoryPBO) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLMemoryPBO, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLMemoryPBO is invalid from here on
@@ -16171,8 +16537,19 @@ type gLMemoryPBOAllocatorClass struct {
 	native *C.GstGLMemoryPBOAllocatorClass
 }
 
+// UnsafeGLMemoryPBOAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLMemoryPBOAllocatorClass) instance() *C.GstGLMemoryPBOAllocatorClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLMemoryPBOAllocatorClassFromGlibBorrow is used to convert raw C.GstGLMemoryPBOAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLMemoryPBOAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLMemoryPBOAllocatorClass {
+	if p == nil {
+		return nil
+	}
 	return &GLMemoryPBOAllocatorClass{&gLMemoryPBOAllocatorClass{(*C.GstGLMemoryPBOAllocatorClass)(p)}}
 }
 
@@ -16185,6 +16562,9 @@ func UnsafeGLMemoryPBOAllocatorClassFree(g *GLMemoryPBOAllocatorClass) {
 
 // UnsafeGLMemoryPBOAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLMemoryPBOAllocatorClassToGlibNone(g *GLMemoryPBOAllocatorClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -16209,8 +16589,19 @@ type gLMixerClass struct {
 	native *C.GstGLMixerClass
 }
 
+// UnsafeGLMixerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLMixerClass) instance() *C.GstGLMixerClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLMixerClassFromGlibBorrow is used to convert raw C.GstGLMixerClass pointers to go. This is used by the bindings internally.
 func UnsafeGLMixerClassFromGlibBorrow(p unsafe.Pointer) *GLMixerClass {
+	if p == nil {
+		return nil
+	}
 	return &GLMixerClass{&gLMixerClass{(*C.GstGLMixerClass)(p)}}
 }
 
@@ -16223,6 +16614,9 @@ func UnsafeGLMixerClassFree(g *GLMixerClass) {
 
 // UnsafeGLMixerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLMixerClassToGlibNone(g *GLMixerClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -16262,8 +16656,19 @@ type gLMixerPadClass struct {
 	native *C.GstGLMixerPadClass
 }
 
+// UnsafeGLMixerPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLMixerPadClass) instance() *C.GstGLMixerPadClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLMixerPadClassFromGlibBorrow is used to convert raw C.GstGLMixerPadClass pointers to go. This is used by the bindings internally.
 func UnsafeGLMixerPadClassFromGlibBorrow(p unsafe.Pointer) *GLMixerPadClass {
+	if p == nil {
+		return nil
+	}
 	return &GLMixerPadClass{&gLMixerPadClass{(*C.GstGLMixerPadClass)(p)}}
 }
 
@@ -16276,6 +16681,9 @@ func UnsafeGLMixerPadClassFree(g *GLMixerPadClass) {
 
 // UnsafeGLMixerPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLMixerPadClassToGlibNone(g *GLMixerPadClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -16300,8 +16708,19 @@ type gLOverlayCompositorClass struct {
 	native *C.GstGLOverlayCompositorClass
 }
 
+// UnsafeGLOverlayCompositorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLOverlayCompositorClass) instance() *C.GstGLOverlayCompositorClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLOverlayCompositorClassFromGlibBorrow is used to convert raw C.GstGLOverlayCompositorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLOverlayCompositorClassFromGlibBorrow(p unsafe.Pointer) *GLOverlayCompositorClass {
+	if p == nil {
+		return nil
+	}
 	return &GLOverlayCompositorClass{&gLOverlayCompositorClass{(*C.GstGLOverlayCompositorClass)(p)}}
 }
 
@@ -16314,6 +16733,9 @@ func UnsafeGLOverlayCompositorClassFree(g *GLOverlayCompositorClass) {
 
 // UnsafeGLOverlayCompositorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLOverlayCompositorClassToGlibNone(g *GLOverlayCompositorClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -16339,8 +16761,19 @@ type gLQuery struct {
 	native *C.GstGLQuery
 }
 
+// UnsafeGLQueryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLQuery) instance() *C.GstGLQuery {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLQueryFromGlibBorrow is used to convert raw C.GstGLQuery pointers to go. This is used by the bindings internally.
 func UnsafeGLQueryFromGlibBorrow(p unsafe.Pointer) *GLQuery {
+	if p == nil {
+		return nil
+	}
 	return &GLQuery{&gLQuery{(*C.GstGLQuery)(p)}}
 }
 
@@ -16348,6 +16781,9 @@ func UnsafeGLQueryFromGlibBorrow(p unsafe.Pointer) *GLQuery {
 func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLQueryFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLQuery)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLQuery,
@@ -16362,6 +16798,9 @@ func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
 // UnsafeGLQueryFromGlibFull is used to convert raw C.GstGLQuery pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLQueryFromGlibFull(p unsafe.Pointer) *GLQuery {
 	wrapped := UnsafeGLQueryFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLQuery)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLQuery,
@@ -16382,12 +16821,18 @@ func UnsafeGLQueryFree(g *GLQuery) {
 
 // UnsafeGLQueryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLQueryToGlibNone(g *GLQuery) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLQueryToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLQueryToGlibFull(g *GLQuery) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLQuery, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLQuery is invalid from here on
@@ -16500,11 +16945,19 @@ type gLRenderbuffer struct {
 	native *C.GstGLRenderbuffer
 }
 
+// UnsafeGLRenderbufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLRenderbuffer) instance() *C.GstGLRenderbuffer {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 var _ gobject.GoValueInitializer = (*GLRenderbuffer)(nil)
 
 func marshalGLRenderbuffer(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeGLRenderbufferFromGlibBorrow(b), nil
+	return UnsafeGLRenderbufferFromGlibNone(b), nil
 }
 
 func (r *GLRenderbuffer) GoValueType() gobject.Type {
@@ -16512,11 +16965,14 @@ func (r *GLRenderbuffer) GoValueType() gobject.Type {
 }
 
 func (r *GLRenderbuffer) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeGLRenderbufferFromGlibBorrow is used to convert raw C.GstGLRenderbuffer pointers to go. This is used by the bindings internally.
 func UnsafeGLRenderbufferFromGlibBorrow(p unsafe.Pointer) *GLRenderbuffer {
+	if p == nil {
+		return nil
+	}
 	return &GLRenderbuffer{&gLRenderbuffer{(*C.GstGLRenderbuffer)(p)}}
 }
 
@@ -16524,6 +16980,9 @@ func UnsafeGLRenderbufferFromGlibBorrow(p unsafe.Pointer) *GLRenderbuffer {
 func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLRenderbufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbuffer,
@@ -16538,6 +16997,9 @@ func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
 // UnsafeGLRenderbufferFromGlibFull is used to convert raw C.GstGLRenderbuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferFromGlibFull(p unsafe.Pointer) *GLRenderbuffer {
 	wrapped := UnsafeGLRenderbufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbuffer,
@@ -16558,12 +17020,18 @@ func UnsafeGLRenderbufferFree(g *GLRenderbuffer) {
 
 // UnsafeGLRenderbufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLRenderbufferToGlibNone(g *GLRenderbuffer) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLRenderbufferToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLRenderbufferToGlibFull(g *GLRenderbuffer) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLRenderbuffer, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLRenderbuffer is invalid from here on
@@ -16675,11 +17143,19 @@ type gLRenderbufferAllocationParams struct {
 	native *C.GstGLRenderbufferAllocationParams
 }
 
+// UnsafeGLRenderbufferAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLRenderbufferAllocationParams) instance() *C.GstGLRenderbufferAllocationParams {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 var _ gobject.GoValueInitializer = (*GLRenderbufferAllocationParams)(nil)
 
 func marshalGLRenderbufferAllocationParams(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(b), nil
+	return UnsafeGLRenderbufferAllocationParamsFromGlibNone(b), nil
 }
 
 func (r *GLRenderbufferAllocationParams) GoValueType() gobject.Type {
@@ -16687,11 +17163,14 @@ func (r *GLRenderbufferAllocationParams) GoValueType() gobject.Type {
 }
 
 func (r *GLRenderbufferAllocationParams) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeGLRenderbufferAllocationParamsFromGlibBorrow is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLRenderbufferAllocationParams {
+	if p == nil {
+		return nil
+	}
 	return &GLRenderbufferAllocationParams{&gLRenderbufferAllocationParams{(*C.GstGLRenderbufferAllocationParams)(p)}}
 }
 
@@ -16699,6 +17178,9 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLRen
 func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRenderbufferAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbufferAllocationParams,
@@ -16713,6 +17195,9 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRende
 // UnsafeGLRenderbufferAllocationParamsFromGlibFull is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLRenderbufferAllocationParams {
 	wrapped := UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbufferAllocationParams,
@@ -16733,12 +17218,18 @@ func UnsafeGLRenderbufferAllocationParamsFree(g *GLRenderbufferAllocationParams)
 
 // UnsafeGLRenderbufferAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsToGlibNone(g *GLRenderbufferAllocationParams) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLRenderbufferAllocationParamsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsToGlibFull(g *GLRenderbufferAllocationParams) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLRenderbufferAllocationParams, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLRenderbufferAllocationParams is invalid from here on
@@ -16802,8 +17293,19 @@ type gLRenderbufferAllocatorClass struct {
 	native *C.GstGLRenderbufferAllocatorClass
 }
 
+// UnsafeGLRenderbufferAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLRenderbufferAllocatorClass) instance() *C.GstGLRenderbufferAllocatorClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLRenderbufferAllocatorClassFromGlibBorrow is used to convert raw C.GstGLRenderbufferAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLRenderbufferAllocatorClass {
+	if p == nil {
+		return nil
+	}
 	return &GLRenderbufferAllocatorClass{&gLRenderbufferAllocatorClass{(*C.GstGLRenderbufferAllocatorClass)(p)}}
 }
 
@@ -16816,6 +17318,9 @@ func UnsafeGLRenderbufferAllocatorClassFree(g *GLRenderbufferAllocatorClass) {
 
 // UnsafeGLRenderbufferAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocatorClassToGlibNone(g *GLRenderbufferAllocatorClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -16842,8 +17347,19 @@ type gLSLStageClass struct {
 	native *C.GstGLSLStageClass
 }
 
+// UnsafeGLSLStageClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLSLStageClass) instance() *C.GstGLSLStageClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLSLStageClassFromGlibBorrow is used to convert raw C.GstGLSLStageClass pointers to go. This is used by the bindings internally.
 func UnsafeGLSLStageClassFromGlibBorrow(p unsafe.Pointer) *GLSLStageClass {
+	if p == nil {
+		return nil
+	}
 	return &GLSLStageClass{&gLSLStageClass{(*C.GstGLSLStageClass)(p)}}
 }
 
@@ -16856,6 +17372,9 @@ func UnsafeGLSLStageClassFree(g *GLSLStageClass) {
 
 // UnsafeGLSLStageClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLSLStageClassToGlibNone(g *GLSLStageClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -16880,8 +17399,19 @@ type gLShaderClass struct {
 	native *C.GstGLShaderClass
 }
 
+// UnsafeGLShaderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLShaderClass) instance() *C.GstGLShaderClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLShaderClassFromGlibBorrow is used to convert raw C.GstGLShaderClass pointers to go. This is used by the bindings internally.
 func UnsafeGLShaderClassFromGlibBorrow(p unsafe.Pointer) *GLShaderClass {
+	if p == nil {
+		return nil
+	}
 	return &GLShaderClass{&gLShaderClass{(*C.GstGLShaderClass)(p)}}
 }
 
@@ -16894,6 +17424,9 @@ func UnsafeGLShaderClassFree(g *GLShaderClass) {
 
 // UnsafeGLShaderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLShaderClassToGlibNone(g *GLShaderClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -16919,8 +17452,19 @@ type gLSyncMeta struct {
 	native *C.GstGLSyncMeta
 }
 
+// UnsafeGLSyncMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLSyncMeta) instance() *C.GstGLSyncMeta {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLSyncMetaFromGlibBorrow is used to convert raw C.GstGLSyncMeta pointers to go. This is used by the bindings internally.
 func UnsafeGLSyncMetaFromGlibBorrow(p unsafe.Pointer) *GLSyncMeta {
+	if p == nil {
+		return nil
+	}
 	return &GLSyncMeta{&gLSyncMeta{(*C.GstGLSyncMeta)(p)}}
 }
 
@@ -16928,6 +17472,9 @@ func UnsafeGLSyncMetaFromGlibBorrow(p unsafe.Pointer) *GLSyncMeta {
 func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLSyncMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLSyncMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLSyncMeta,
@@ -16942,6 +17489,9 @@ func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
 // UnsafeGLSyncMetaFromGlibFull is used to convert raw C.GstGLSyncMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLSyncMetaFromGlibFull(p unsafe.Pointer) *GLSyncMeta {
 	wrapped := UnsafeGLSyncMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLSyncMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLSyncMeta,
@@ -16962,12 +17512,18 @@ func UnsafeGLSyncMetaFree(g *GLSyncMeta) {
 
 // UnsafeGLSyncMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLSyncMetaToGlibNone(g *GLSyncMeta) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLSyncMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLSyncMetaToGlibFull(g *GLSyncMeta) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLSyncMeta, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLSyncMeta is invalid from here on
@@ -17065,8 +17621,19 @@ type gLUploadClass struct {
 	native *C.GstGLUploadClass
 }
 
+// UnsafeGLUploadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLUploadClass) instance() *C.GstGLUploadClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLUploadClassFromGlibBorrow is used to convert raw C.GstGLUploadClass pointers to go. This is used by the bindings internally.
 func UnsafeGLUploadClassFromGlibBorrow(p unsafe.Pointer) *GLUploadClass {
+	if p == nil {
+		return nil
+	}
 	return &GLUploadClass{&gLUploadClass{(*C.GstGLUploadClass)(p)}}
 }
 
@@ -17079,6 +17646,9 @@ func UnsafeGLUploadClassFree(g *GLUploadClass) {
 
 // UnsafeGLUploadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLUploadClassToGlibNone(g *GLUploadClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -17101,11 +17671,19 @@ type gLVideoAllocationParams struct {
 	native *C.GstGLVideoAllocationParams
 }
 
+// UnsafeGLVideoAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLVideoAllocationParams) instance() *C.GstGLVideoAllocationParams {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 var _ gobject.GoValueInitializer = (*GLVideoAllocationParams)(nil)
 
 func marshalGLVideoAllocationParams(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeGLVideoAllocationParamsFromGlibBorrow(b), nil
+	return UnsafeGLVideoAllocationParamsFromGlibNone(b), nil
 }
 
 func (r *GLVideoAllocationParams) GoValueType() gobject.Type {
@@ -17113,11 +17691,14 @@ func (r *GLVideoAllocationParams) GoValueType() gobject.Type {
 }
 
 func (r *GLVideoAllocationParams) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeGLVideoAllocationParamsFromGlibBorrow is used to convert raw C.GstGLVideoAllocationParams pointers to go. This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLVideoAllocationParams {
+	if p == nil {
+		return nil
+	}
 	return &GLVideoAllocationParams{&gLVideoAllocationParams{(*C.GstGLVideoAllocationParams)(p)}}
 }
 
@@ -17125,6 +17706,9 @@ func UnsafeGLVideoAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLVideoAlloc
 func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLVideoAllocationParamsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLVideoAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLVideoAllocationParams,
@@ -17139,6 +17723,9 @@ func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocat
 // UnsafeGLVideoAllocationParamsFromGlibFull is used to convert raw C.GstGLVideoAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsFromGlibFull(p unsafe.Pointer) *GLVideoAllocationParams {
 	wrapped := UnsafeGLVideoAllocationParamsFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.gLVideoAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLVideoAllocationParams,
@@ -17159,12 +17746,18 @@ func UnsafeGLVideoAllocationParamsFree(g *GLVideoAllocationParams) {
 
 // UnsafeGLVideoAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsToGlibNone(g *GLVideoAllocationParams) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
 // UnsafeGLVideoAllocationParamsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsToGlibFull(g *GLVideoAllocationParams) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	runtime.SetFinalizer(g.gLVideoAllocationParams, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLVideoAllocationParams is invalid from here on
@@ -17271,8 +17864,19 @@ type gLViewConvertClass struct {
 	native *C.GstGLViewConvertClass
 }
 
+// UnsafeGLViewConvertClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLViewConvertClass) instance() *C.GstGLViewConvertClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLViewConvertClassFromGlibBorrow is used to convert raw C.GstGLViewConvertClass pointers to go. This is used by the bindings internally.
 func UnsafeGLViewConvertClassFromGlibBorrow(p unsafe.Pointer) *GLViewConvertClass {
+	if p == nil {
+		return nil
+	}
 	return &GLViewConvertClass{&gLViewConvertClass{(*C.GstGLViewConvertClass)(p)}}
 }
 
@@ -17285,6 +17889,9 @@ func UnsafeGLViewConvertClassFree(g *GLViewConvertClass) {
 
 // UnsafeGLViewConvertClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLViewConvertClassToGlibNone(g *GLViewConvertClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 
@@ -17309,8 +17916,19 @@ type gLWindowClass struct {
 	native *C.GstGLWindowClass
 }
 
+// UnsafeGLWindowClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (g *GLWindowClass) instance() *C.GstGLWindowClass {
+	if g == nil {
+		return nil
+	}
+	return g.native
+}
+
 // UnsafeGLWindowClassFromGlibBorrow is used to convert raw C.GstGLWindowClass pointers to go. This is used by the bindings internally.
 func UnsafeGLWindowClassFromGlibBorrow(p unsafe.Pointer) *GLWindowClass {
+	if p == nil {
+		return nil
+	}
 	return &GLWindowClass{&gLWindowClass{(*C.GstGLWindowClass)(p)}}
 }
 
@@ -17323,6 +17941,9 @@ func UnsafeGLWindowClassFree(g *GLWindowClass) {
 
 // UnsafeGLWindowClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLWindowClassToGlibNone(g *GLWindowClass) unsafe.Pointer {
+	if g == nil {
+		return nil
+	}
 	return unsafe.Pointer(g.native)
 }
 

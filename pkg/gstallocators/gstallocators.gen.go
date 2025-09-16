@@ -1187,8 +1187,19 @@ type dRMDumbAllocatorClass struct {
 	native *C.GstDRMDumbAllocatorClass
 }
 
+// UnsafeDRMDumbAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DRMDumbAllocatorClass) instance() *C.GstDRMDumbAllocatorClass {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 // UnsafeDRMDumbAllocatorClassFromGlibBorrow is used to convert raw C.GstDRMDumbAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeDRMDumbAllocatorClassFromGlibBorrow(p unsafe.Pointer) *DRMDumbAllocatorClass {
+	if p == nil {
+		return nil
+	}
 	return &DRMDumbAllocatorClass{&dRMDumbAllocatorClass{(*C.GstDRMDumbAllocatorClass)(p)}}
 }
 
@@ -1201,6 +1212,9 @@ func UnsafeDRMDumbAllocatorClassFree(d *DRMDumbAllocatorClass) {
 
 // UnsafeDRMDumbAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDRMDumbAllocatorClassToGlibNone(d *DRMDumbAllocatorClass) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
@@ -1225,8 +1239,19 @@ type dmaBufAllocatorClass struct {
 	native *C.GstDmaBufAllocatorClass
 }
 
+// UnsafeDmaBufAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DmaBufAllocatorClass) instance() *C.GstDmaBufAllocatorClass {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 // UnsafeDmaBufAllocatorClassFromGlibBorrow is used to convert raw C.GstDmaBufAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeDmaBufAllocatorClassFromGlibBorrow(p unsafe.Pointer) *DmaBufAllocatorClass {
+	if p == nil {
+		return nil
+	}
 	return &DmaBufAllocatorClass{&dmaBufAllocatorClass{(*C.GstDmaBufAllocatorClass)(p)}}
 }
 
@@ -1239,6 +1264,9 @@ func UnsafeDmaBufAllocatorClassFree(d *DmaBufAllocatorClass) {
 
 // UnsafeDmaBufAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDmaBufAllocatorClassToGlibNone(d *DmaBufAllocatorClass) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
@@ -1263,8 +1291,19 @@ type fdAllocatorClass struct {
 	native *C.GstFdAllocatorClass
 }
 
+// UnsafeFdAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (f *FdAllocatorClass) instance() *C.GstFdAllocatorClass {
+	if f == nil {
+		return nil
+	}
+	return f.native
+}
+
 // UnsafeFdAllocatorClassFromGlibBorrow is used to convert raw C.GstFdAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeFdAllocatorClassFromGlibBorrow(p unsafe.Pointer) *FdAllocatorClass {
+	if p == nil {
+		return nil
+	}
 	return &FdAllocatorClass{&fdAllocatorClass{(*C.GstFdAllocatorClass)(p)}}
 }
 
@@ -1277,6 +1316,9 @@ func UnsafeFdAllocatorClassFree(f *FdAllocatorClass) {
 
 // UnsafeFdAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeFdAllocatorClassToGlibNone(f *FdAllocatorClass) unsafe.Pointer {
+	if f == nil {
+		return nil
+	}
 	return unsafe.Pointer(f.native)
 }
 
@@ -1301,8 +1343,19 @@ type physMemoryAllocatorInterface struct {
 	native *C.GstPhysMemoryAllocatorInterface
 }
 
+// UnsafePhysMemoryAllocatorInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PhysMemoryAllocatorInterface) instance() *C.GstPhysMemoryAllocatorInterface {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow is used to convert raw C.GstPhysMemoryAllocatorInterface pointers to go. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p unsafe.Pointer) *PhysMemoryAllocatorInterface {
+	if p == nil {
+		return nil
+	}
 	return &PhysMemoryAllocatorInterface{&physMemoryAllocatorInterface{(*C.GstPhysMemoryAllocatorInterface)(p)}}
 }
 
@@ -1310,6 +1363,9 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p unsafe.Pointer) *PhysMem
 func UnsafePhysMemoryAllocatorInterfaceFromGlibNone(p unsafe.Pointer) *PhysMemoryAllocatorInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.physMemoryAllocatorInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.physMemoryAllocatorInterface,
@@ -1324,6 +1380,9 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibNone(p unsafe.Pointer) *PhysMemor
 // UnsafePhysMemoryAllocatorInterfaceFromGlibFull is used to convert raw C.GstPhysMemoryAllocatorInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorInterfaceFromGlibFull(p unsafe.Pointer) *PhysMemoryAllocatorInterface {
 	wrapped := UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.physMemoryAllocatorInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.physMemoryAllocatorInterface,
@@ -1344,12 +1403,18 @@ func UnsafePhysMemoryAllocatorInterfaceFree(p *PhysMemoryAllocatorInterface) {
 
 // UnsafePhysMemoryAllocatorInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorInterfaceToGlibNone(p *PhysMemoryAllocatorInterface) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
 // UnsafePhysMemoryAllocatorInterfaceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorInterfaceToGlibFull(p *PhysMemoryAllocatorInterface) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	runtime.SetFinalizer(p.physMemoryAllocatorInterface, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PhysMemoryAllocatorInterface is invalid from here on
@@ -1368,8 +1433,19 @@ type shmAllocatorClass struct {
 	native *C.GstShmAllocatorClass
 }
 
+// UnsafeShmAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *ShmAllocatorClass) instance() *C.GstShmAllocatorClass {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 // UnsafeShmAllocatorClassFromGlibBorrow is used to convert raw C.GstShmAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeShmAllocatorClassFromGlibBorrow(p unsafe.Pointer) *ShmAllocatorClass {
+	if p == nil {
+		return nil
+	}
 	return &ShmAllocatorClass{&shmAllocatorClass{(*C.GstShmAllocatorClass)(p)}}
 }
 
@@ -1382,6 +1458,9 @@ func UnsafeShmAllocatorClassFree(s *ShmAllocatorClass) {
 
 // UnsafeShmAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeShmAllocatorClassToGlibNone(s *ShmAllocatorClass) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 

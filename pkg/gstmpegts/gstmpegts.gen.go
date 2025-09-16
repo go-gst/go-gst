@@ -3249,11 +3249,19 @@ type atscEIT struct {
 	native *C.GstMpegtsAtscEIT
 }
 
+// UnsafeAtscEITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscEIT) instance() *C.GstMpegtsAtscEIT {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscEIT)(nil)
 
 func marshalAtscEIT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscEITFromGlibBorrow(b), nil
+	return UnsafeAtscEITFromGlibNone(b), nil
 }
 
 func (r *AtscEIT) GoValueType() gobject.Type {
@@ -3261,11 +3269,14 @@ func (r *AtscEIT) GoValueType() gobject.Type {
 }
 
 func (r *AtscEIT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscEITFromGlibBorrow is used to convert raw C.GstMpegtsAtscEIT pointers to go. This is used by the bindings internally.
 func UnsafeAtscEITFromGlibBorrow(p unsafe.Pointer) *AtscEIT {
+	if p == nil {
+		return nil
+	}
 	return &AtscEIT{&atscEIT{(*C.GstMpegtsAtscEIT)(p)}}
 }
 
@@ -3273,6 +3284,9 @@ func UnsafeAtscEITFromGlibBorrow(p unsafe.Pointer) *AtscEIT {
 func UnsafeAtscEITFromGlibNone(p unsafe.Pointer) *AtscEIT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscEITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscEIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscEIT,
@@ -3287,6 +3301,9 @@ func UnsafeAtscEITFromGlibNone(p unsafe.Pointer) *AtscEIT {
 // UnsafeAtscEITFromGlibFull is used to convert raw C.GstMpegtsAtscEIT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscEITFromGlibFull(p unsafe.Pointer) *AtscEIT {
 	wrapped := UnsafeAtscEITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscEIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscEIT,
@@ -3307,12 +3324,18 @@ func UnsafeAtscEITFree(a *AtscEIT) {
 
 // UnsafeAtscEITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscEITToGlibNone(a *AtscEIT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscEITToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscEITToGlibFull(a *AtscEIT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscEIT, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscEIT is invalid from here on
@@ -3331,11 +3354,19 @@ type atscEITEvent struct {
 	native *C.GstMpegtsAtscEITEvent
 }
 
+// UnsafeAtscEITEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscEITEvent) instance() *C.GstMpegtsAtscEITEvent {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscEITEvent)(nil)
 
 func marshalAtscEITEvent(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscEITEventFromGlibBorrow(b), nil
+	return UnsafeAtscEITEventFromGlibNone(b), nil
 }
 
 func (r *AtscEITEvent) GoValueType() gobject.Type {
@@ -3343,11 +3374,14 @@ func (r *AtscEITEvent) GoValueType() gobject.Type {
 }
 
 func (r *AtscEITEvent) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscEITEventFromGlibBorrow is used to convert raw C.GstMpegtsAtscEITEvent pointers to go. This is used by the bindings internally.
 func UnsafeAtscEITEventFromGlibBorrow(p unsafe.Pointer) *AtscEITEvent {
+	if p == nil {
+		return nil
+	}
 	return &AtscEITEvent{&atscEITEvent{(*C.GstMpegtsAtscEITEvent)(p)}}
 }
 
@@ -3355,6 +3389,9 @@ func UnsafeAtscEITEventFromGlibBorrow(p unsafe.Pointer) *AtscEITEvent {
 func UnsafeAtscEITEventFromGlibNone(p unsafe.Pointer) *AtscEITEvent {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscEITEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscEITEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscEITEvent,
@@ -3369,6 +3406,9 @@ func UnsafeAtscEITEventFromGlibNone(p unsafe.Pointer) *AtscEITEvent {
 // UnsafeAtscEITEventFromGlibFull is used to convert raw C.GstMpegtsAtscEITEvent pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscEITEventFromGlibFull(p unsafe.Pointer) *AtscEITEvent {
 	wrapped := UnsafeAtscEITEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscEITEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscEITEvent,
@@ -3389,12 +3429,18 @@ func UnsafeAtscEITEventFree(a *AtscEITEvent) {
 
 // UnsafeAtscEITEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscEITEventToGlibNone(a *AtscEITEvent) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscEITEventToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscEITEventToGlibFull(a *AtscEITEvent) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscEITEvent, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscEITEvent is invalid from here on
@@ -3413,11 +3459,19 @@ type atscETT struct {
 	native *C.GstMpegtsAtscETT
 }
 
+// UnsafeAtscETTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscETT) instance() *C.GstMpegtsAtscETT {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscETT)(nil)
 
 func marshalAtscETT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscETTFromGlibBorrow(b), nil
+	return UnsafeAtscETTFromGlibNone(b), nil
 }
 
 func (r *AtscETT) GoValueType() gobject.Type {
@@ -3425,11 +3479,14 @@ func (r *AtscETT) GoValueType() gobject.Type {
 }
 
 func (r *AtscETT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscETTFromGlibBorrow is used to convert raw C.GstMpegtsAtscETT pointers to go. This is used by the bindings internally.
 func UnsafeAtscETTFromGlibBorrow(p unsafe.Pointer) *AtscETT {
+	if p == nil {
+		return nil
+	}
 	return &AtscETT{&atscETT{(*C.GstMpegtsAtscETT)(p)}}
 }
 
@@ -3437,6 +3494,9 @@ func UnsafeAtscETTFromGlibBorrow(p unsafe.Pointer) *AtscETT {
 func UnsafeAtscETTFromGlibNone(p unsafe.Pointer) *AtscETT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscETTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscETT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscETT,
@@ -3451,6 +3511,9 @@ func UnsafeAtscETTFromGlibNone(p unsafe.Pointer) *AtscETT {
 // UnsafeAtscETTFromGlibFull is used to convert raw C.GstMpegtsAtscETT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscETTFromGlibFull(p unsafe.Pointer) *AtscETT {
 	wrapped := UnsafeAtscETTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscETT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscETT,
@@ -3471,12 +3534,18 @@ func UnsafeAtscETTFree(a *AtscETT) {
 
 // UnsafeAtscETTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscETTToGlibNone(a *AtscETT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscETTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscETTToGlibFull(a *AtscETT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscETT, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscETT is invalid from here on
@@ -3495,11 +3564,19 @@ type atscMGT struct {
 	native *C.GstMpegtsAtscMGT
 }
 
+// UnsafeAtscMGTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscMGT) instance() *C.GstMpegtsAtscMGT {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscMGT)(nil)
 
 func marshalAtscMGT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscMGTFromGlibBorrow(b), nil
+	return UnsafeAtscMGTFromGlibNone(b), nil
 }
 
 func (r *AtscMGT) GoValueType() gobject.Type {
@@ -3507,11 +3584,14 @@ func (r *AtscMGT) GoValueType() gobject.Type {
 }
 
 func (r *AtscMGT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscMGTFromGlibBorrow is used to convert raw C.GstMpegtsAtscMGT pointers to go. This is used by the bindings internally.
 func UnsafeAtscMGTFromGlibBorrow(p unsafe.Pointer) *AtscMGT {
+	if p == nil {
+		return nil
+	}
 	return &AtscMGT{&atscMGT{(*C.GstMpegtsAtscMGT)(p)}}
 }
 
@@ -3519,6 +3599,9 @@ func UnsafeAtscMGTFromGlibBorrow(p unsafe.Pointer) *AtscMGT {
 func UnsafeAtscMGTFromGlibNone(p unsafe.Pointer) *AtscMGT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscMGTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscMGT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscMGT,
@@ -3533,6 +3616,9 @@ func UnsafeAtscMGTFromGlibNone(p unsafe.Pointer) *AtscMGT {
 // UnsafeAtscMGTFromGlibFull is used to convert raw C.GstMpegtsAtscMGT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscMGTFromGlibFull(p unsafe.Pointer) *AtscMGT {
 	wrapped := UnsafeAtscMGTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscMGT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscMGT,
@@ -3553,12 +3639,18 @@ func UnsafeAtscMGTFree(a *AtscMGT) {
 
 // UnsafeAtscMGTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscMGTToGlibNone(a *AtscMGT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscMGTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscMGTToGlibFull(a *AtscMGT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscMGT, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscMGT is invalid from here on
@@ -3594,11 +3686,19 @@ type atscMGTTable struct {
 	native *C.GstMpegtsAtscMGTTable
 }
 
+// UnsafeAtscMGTTableToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscMGTTable) instance() *C.GstMpegtsAtscMGTTable {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscMGTTable)(nil)
 
 func marshalAtscMGTTable(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscMGTTableFromGlibBorrow(b), nil
+	return UnsafeAtscMGTTableFromGlibNone(b), nil
 }
 
 func (r *AtscMGTTable) GoValueType() gobject.Type {
@@ -3606,11 +3706,14 @@ func (r *AtscMGTTable) GoValueType() gobject.Type {
 }
 
 func (r *AtscMGTTable) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscMGTTableFromGlibBorrow is used to convert raw C.GstMpegtsAtscMGTTable pointers to go. This is used by the bindings internally.
 func UnsafeAtscMGTTableFromGlibBorrow(p unsafe.Pointer) *AtscMGTTable {
+	if p == nil {
+		return nil
+	}
 	return &AtscMGTTable{&atscMGTTable{(*C.GstMpegtsAtscMGTTable)(p)}}
 }
 
@@ -3618,6 +3721,9 @@ func UnsafeAtscMGTTableFromGlibBorrow(p unsafe.Pointer) *AtscMGTTable {
 func UnsafeAtscMGTTableFromGlibNone(p unsafe.Pointer) *AtscMGTTable {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscMGTTableFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscMGTTable)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscMGTTable,
@@ -3632,6 +3738,9 @@ func UnsafeAtscMGTTableFromGlibNone(p unsafe.Pointer) *AtscMGTTable {
 // UnsafeAtscMGTTableFromGlibFull is used to convert raw C.GstMpegtsAtscMGTTable pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscMGTTableFromGlibFull(p unsafe.Pointer) *AtscMGTTable {
 	wrapped := UnsafeAtscMGTTableFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscMGTTable)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscMGTTable,
@@ -3652,12 +3761,18 @@ func UnsafeAtscMGTTableFree(a *AtscMGTTable) {
 
 // UnsafeAtscMGTTableToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscMGTTableToGlibNone(a *AtscMGTTable) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscMGTTableToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscMGTTableToGlibFull(a *AtscMGTTable) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscMGTTable, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscMGTTable is invalid from here on
@@ -3674,11 +3789,19 @@ type atscMultString struct {
 	native *C.GstMpegtsAtscMultString
 }
 
+// UnsafeAtscMultStringToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscMultString) instance() *C.GstMpegtsAtscMultString {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscMultString)(nil)
 
 func marshalAtscMultString(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscMultStringFromGlibBorrow(b), nil
+	return UnsafeAtscMultStringFromGlibNone(b), nil
 }
 
 func (r *AtscMultString) GoValueType() gobject.Type {
@@ -3686,11 +3809,14 @@ func (r *AtscMultString) GoValueType() gobject.Type {
 }
 
 func (r *AtscMultString) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscMultStringFromGlibBorrow is used to convert raw C.GstMpegtsAtscMultString pointers to go. This is used by the bindings internally.
 func UnsafeAtscMultStringFromGlibBorrow(p unsafe.Pointer) *AtscMultString {
+	if p == nil {
+		return nil
+	}
 	return &AtscMultString{&atscMultString{(*C.GstMpegtsAtscMultString)(p)}}
 }
 
@@ -3698,6 +3824,9 @@ func UnsafeAtscMultStringFromGlibBorrow(p unsafe.Pointer) *AtscMultString {
 func UnsafeAtscMultStringFromGlibNone(p unsafe.Pointer) *AtscMultString {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscMultStringFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscMultString)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscMultString,
@@ -3712,6 +3841,9 @@ func UnsafeAtscMultStringFromGlibNone(p unsafe.Pointer) *AtscMultString {
 // UnsafeAtscMultStringFromGlibFull is used to convert raw C.GstMpegtsAtscMultString pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscMultStringFromGlibFull(p unsafe.Pointer) *AtscMultString {
 	wrapped := UnsafeAtscMultStringFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscMultString)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscMultString,
@@ -3732,12 +3864,18 @@ func UnsafeAtscMultStringFree(a *AtscMultString) {
 
 // UnsafeAtscMultStringToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscMultStringToGlibNone(a *AtscMultString) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscMultStringToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscMultStringToGlibFull(a *AtscMultString) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscMultString, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscMultString is invalid from here on
@@ -3756,11 +3894,19 @@ type atscRRT struct {
 	native *C.GstMpegtsAtscRRT
 }
 
+// UnsafeAtscRRTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscRRT) instance() *C.GstMpegtsAtscRRT {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscRRT)(nil)
 
 func marshalAtscRRT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscRRTFromGlibBorrow(b), nil
+	return UnsafeAtscRRTFromGlibNone(b), nil
 }
 
 func (r *AtscRRT) GoValueType() gobject.Type {
@@ -3768,11 +3914,14 @@ func (r *AtscRRT) GoValueType() gobject.Type {
 }
 
 func (r *AtscRRT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscRRTFromGlibBorrow is used to convert raw C.GstMpegtsAtscRRT pointers to go. This is used by the bindings internally.
 func UnsafeAtscRRTFromGlibBorrow(p unsafe.Pointer) *AtscRRT {
+	if p == nil {
+		return nil
+	}
 	return &AtscRRT{&atscRRT{(*C.GstMpegtsAtscRRT)(p)}}
 }
 
@@ -3780,6 +3929,9 @@ func UnsafeAtscRRTFromGlibBorrow(p unsafe.Pointer) *AtscRRT {
 func UnsafeAtscRRTFromGlibNone(p unsafe.Pointer) *AtscRRT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscRRTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscRRT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscRRT,
@@ -3794,6 +3946,9 @@ func UnsafeAtscRRTFromGlibNone(p unsafe.Pointer) *AtscRRT {
 // UnsafeAtscRRTFromGlibFull is used to convert raw C.GstMpegtsAtscRRT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscRRTFromGlibFull(p unsafe.Pointer) *AtscRRT {
 	wrapped := UnsafeAtscRRTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscRRT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscRRT,
@@ -3814,12 +3969,18 @@ func UnsafeAtscRRTFree(a *AtscRRT) {
 
 // UnsafeAtscRRTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscRRTToGlibNone(a *AtscRRT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscRRTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscRRTToGlibFull(a *AtscRRT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscRRT, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscRRT is invalid from here on
@@ -3853,11 +4014,19 @@ type atscRRTDimension struct {
 	native *C.GstMpegtsAtscRRTDimension
 }
 
+// UnsafeAtscRRTDimensionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscRRTDimension) instance() *C.GstMpegtsAtscRRTDimension {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscRRTDimension)(nil)
 
 func marshalAtscRRTDimension(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscRRTDimensionFromGlibBorrow(b), nil
+	return UnsafeAtscRRTDimensionFromGlibNone(b), nil
 }
 
 func (r *AtscRRTDimension) GoValueType() gobject.Type {
@@ -3865,11 +4034,14 @@ func (r *AtscRRTDimension) GoValueType() gobject.Type {
 }
 
 func (r *AtscRRTDimension) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscRRTDimensionFromGlibBorrow is used to convert raw C.GstMpegtsAtscRRTDimension pointers to go. This is used by the bindings internally.
 func UnsafeAtscRRTDimensionFromGlibBorrow(p unsafe.Pointer) *AtscRRTDimension {
+	if p == nil {
+		return nil
+	}
 	return &AtscRRTDimension{&atscRRTDimension{(*C.GstMpegtsAtscRRTDimension)(p)}}
 }
 
@@ -3877,6 +4049,9 @@ func UnsafeAtscRRTDimensionFromGlibBorrow(p unsafe.Pointer) *AtscRRTDimension {
 func UnsafeAtscRRTDimensionFromGlibNone(p unsafe.Pointer) *AtscRRTDimension {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscRRTDimensionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscRRTDimension)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscRRTDimension,
@@ -3891,6 +4066,9 @@ func UnsafeAtscRRTDimensionFromGlibNone(p unsafe.Pointer) *AtscRRTDimension {
 // UnsafeAtscRRTDimensionFromGlibFull is used to convert raw C.GstMpegtsAtscRRTDimension pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscRRTDimensionFromGlibFull(p unsafe.Pointer) *AtscRRTDimension {
 	wrapped := UnsafeAtscRRTDimensionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscRRTDimension)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscRRTDimension,
@@ -3911,12 +4089,18 @@ func UnsafeAtscRRTDimensionFree(a *AtscRRTDimension) {
 
 // UnsafeAtscRRTDimensionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscRRTDimensionToGlibNone(a *AtscRRTDimension) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscRRTDimensionToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscRRTDimensionToGlibFull(a *AtscRRTDimension) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscRRTDimension, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscRRTDimension is invalid from here on
@@ -3950,11 +4134,19 @@ type atscRRTDimensionValue struct {
 	native *C.GstMpegtsAtscRRTDimensionValue
 }
 
+// UnsafeAtscRRTDimensionValueToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscRRTDimensionValue) instance() *C.GstMpegtsAtscRRTDimensionValue {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscRRTDimensionValue)(nil)
 
 func marshalAtscRRTDimensionValue(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscRRTDimensionValueFromGlibBorrow(b), nil
+	return UnsafeAtscRRTDimensionValueFromGlibNone(b), nil
 }
 
 func (r *AtscRRTDimensionValue) GoValueType() gobject.Type {
@@ -3962,11 +4154,14 @@ func (r *AtscRRTDimensionValue) GoValueType() gobject.Type {
 }
 
 func (r *AtscRRTDimensionValue) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscRRTDimensionValueFromGlibBorrow is used to convert raw C.GstMpegtsAtscRRTDimensionValue pointers to go. This is used by the bindings internally.
 func UnsafeAtscRRTDimensionValueFromGlibBorrow(p unsafe.Pointer) *AtscRRTDimensionValue {
+	if p == nil {
+		return nil
+	}
 	return &AtscRRTDimensionValue{&atscRRTDimensionValue{(*C.GstMpegtsAtscRRTDimensionValue)(p)}}
 }
 
@@ -3974,6 +4169,9 @@ func UnsafeAtscRRTDimensionValueFromGlibBorrow(p unsafe.Pointer) *AtscRRTDimensi
 func UnsafeAtscRRTDimensionValueFromGlibNone(p unsafe.Pointer) *AtscRRTDimensionValue {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscRRTDimensionValueFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscRRTDimensionValue)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscRRTDimensionValue,
@@ -3988,6 +4186,9 @@ func UnsafeAtscRRTDimensionValueFromGlibNone(p unsafe.Pointer) *AtscRRTDimension
 // UnsafeAtscRRTDimensionValueFromGlibFull is used to convert raw C.GstMpegtsAtscRRTDimensionValue pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscRRTDimensionValueFromGlibFull(p unsafe.Pointer) *AtscRRTDimensionValue {
 	wrapped := UnsafeAtscRRTDimensionValueFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscRRTDimensionValue)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscRRTDimensionValue,
@@ -4008,12 +4209,18 @@ func UnsafeAtscRRTDimensionValueFree(a *AtscRRTDimensionValue) {
 
 // UnsafeAtscRRTDimensionValueToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscRRTDimensionValueToGlibNone(a *AtscRRTDimensionValue) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscRRTDimensionValueToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscRRTDimensionValueToGlibFull(a *AtscRRTDimensionValue) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscRRTDimensionValue, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscRRTDimensionValue is invalid from here on
@@ -4049,11 +4256,19 @@ type atscSTT struct {
 	native *C.GstMpegtsAtscSTT
 }
 
+// UnsafeAtscSTTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscSTT) instance() *C.GstMpegtsAtscSTT {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscSTT)(nil)
 
 func marshalAtscSTT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscSTTFromGlibBorrow(b), nil
+	return UnsafeAtscSTTFromGlibNone(b), nil
 }
 
 func (r *AtscSTT) GoValueType() gobject.Type {
@@ -4061,11 +4276,14 @@ func (r *AtscSTT) GoValueType() gobject.Type {
 }
 
 func (r *AtscSTT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscSTTFromGlibBorrow is used to convert raw C.GstMpegtsAtscSTT pointers to go. This is used by the bindings internally.
 func UnsafeAtscSTTFromGlibBorrow(p unsafe.Pointer) *AtscSTT {
+	if p == nil {
+		return nil
+	}
 	return &AtscSTT{&atscSTT{(*C.GstMpegtsAtscSTT)(p)}}
 }
 
@@ -4073,6 +4291,9 @@ func UnsafeAtscSTTFromGlibBorrow(p unsafe.Pointer) *AtscSTT {
 func UnsafeAtscSTTFromGlibNone(p unsafe.Pointer) *AtscSTT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscSTTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscSTT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscSTT,
@@ -4087,6 +4308,9 @@ func UnsafeAtscSTTFromGlibNone(p unsafe.Pointer) *AtscSTT {
 // UnsafeAtscSTTFromGlibFull is used to convert raw C.GstMpegtsAtscSTT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscSTTFromGlibFull(p unsafe.Pointer) *AtscSTT {
 	wrapped := UnsafeAtscSTTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscSTT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscSTT,
@@ -4107,12 +4331,18 @@ func UnsafeAtscSTTFree(a *AtscSTT) {
 
 // UnsafeAtscSTTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscSTTToGlibNone(a *AtscSTT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscSTTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscSTTToGlibFull(a *AtscSTT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscSTT, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscSTT is invalid from here on
@@ -4169,11 +4399,19 @@ type atscStringSegment struct {
 	native *C.GstMpegtsAtscStringSegment
 }
 
+// UnsafeAtscStringSegmentToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscStringSegment) instance() *C.GstMpegtsAtscStringSegment {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscStringSegment)(nil)
 
 func marshalAtscStringSegment(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscStringSegmentFromGlibBorrow(b), nil
+	return UnsafeAtscStringSegmentFromGlibNone(b), nil
 }
 
 func (r *AtscStringSegment) GoValueType() gobject.Type {
@@ -4181,11 +4419,14 @@ func (r *AtscStringSegment) GoValueType() gobject.Type {
 }
 
 func (r *AtscStringSegment) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscStringSegmentFromGlibBorrow is used to convert raw C.GstMpegtsAtscStringSegment pointers to go. This is used by the bindings internally.
 func UnsafeAtscStringSegmentFromGlibBorrow(p unsafe.Pointer) *AtscStringSegment {
+	if p == nil {
+		return nil
+	}
 	return &AtscStringSegment{&atscStringSegment{(*C.GstMpegtsAtscStringSegment)(p)}}
 }
 
@@ -4193,6 +4434,9 @@ func UnsafeAtscStringSegmentFromGlibBorrow(p unsafe.Pointer) *AtscStringSegment 
 func UnsafeAtscStringSegmentFromGlibNone(p unsafe.Pointer) *AtscStringSegment {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscStringSegmentFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscStringSegment)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscStringSegment,
@@ -4207,6 +4451,9 @@ func UnsafeAtscStringSegmentFromGlibNone(p unsafe.Pointer) *AtscStringSegment {
 // UnsafeAtscStringSegmentFromGlibFull is used to convert raw C.GstMpegtsAtscStringSegment pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscStringSegmentFromGlibFull(p unsafe.Pointer) *AtscStringSegment {
 	wrapped := UnsafeAtscStringSegmentFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscStringSegment)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscStringSegment,
@@ -4227,12 +4474,18 @@ func UnsafeAtscStringSegmentFree(a *AtscStringSegment) {
 
 // UnsafeAtscStringSegmentToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscStringSegmentToGlibNone(a *AtscStringSegment) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscStringSegmentToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscStringSegmentToGlibFull(a *AtscStringSegment) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscStringSegment, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscStringSegment is invalid from here on
@@ -4313,11 +4566,19 @@ type atscVCT struct {
 	native *C.GstMpegtsAtscVCT
 }
 
+// UnsafeAtscVCTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscVCT) instance() *C.GstMpegtsAtscVCT {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscVCT)(nil)
 
 func marshalAtscVCT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscVCTFromGlibBorrow(b), nil
+	return UnsafeAtscVCTFromGlibNone(b), nil
 }
 
 func (r *AtscVCT) GoValueType() gobject.Type {
@@ -4325,11 +4586,14 @@ func (r *AtscVCT) GoValueType() gobject.Type {
 }
 
 func (r *AtscVCT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscVCTFromGlibBorrow is used to convert raw C.GstMpegtsAtscVCT pointers to go. This is used by the bindings internally.
 func UnsafeAtscVCTFromGlibBorrow(p unsafe.Pointer) *AtscVCT {
+	if p == nil {
+		return nil
+	}
 	return &AtscVCT{&atscVCT{(*C.GstMpegtsAtscVCT)(p)}}
 }
 
@@ -4337,6 +4601,9 @@ func UnsafeAtscVCTFromGlibBorrow(p unsafe.Pointer) *AtscVCT {
 func UnsafeAtscVCTFromGlibNone(p unsafe.Pointer) *AtscVCT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscVCTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscVCT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscVCT,
@@ -4351,6 +4618,9 @@ func UnsafeAtscVCTFromGlibNone(p unsafe.Pointer) *AtscVCT {
 // UnsafeAtscVCTFromGlibFull is used to convert raw C.GstMpegtsAtscVCT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscVCTFromGlibFull(p unsafe.Pointer) *AtscVCT {
 	wrapped := UnsafeAtscVCTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscVCT)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscVCT,
@@ -4371,12 +4641,18 @@ func UnsafeAtscVCTFree(a *AtscVCT) {
 
 // UnsafeAtscVCTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscVCTToGlibNone(a *AtscVCT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscVCTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscVCTToGlibFull(a *AtscVCT) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscVCT, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscVCT is invalid from here on
@@ -4395,11 +4671,19 @@ type atscVCTSource struct {
 	native *C.GstMpegtsAtscVCTSource
 }
 
+// UnsafeAtscVCTSourceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AtscVCTSource) instance() *C.GstMpegtsAtscVCTSource {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 var _ gobject.GoValueInitializer = (*AtscVCTSource)(nil)
 
 func marshalAtscVCTSource(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAtscVCTSourceFromGlibBorrow(b), nil
+	return UnsafeAtscVCTSourceFromGlibNone(b), nil
 }
 
 func (r *AtscVCTSource) GoValueType() gobject.Type {
@@ -4407,11 +4691,14 @@ func (r *AtscVCTSource) GoValueType() gobject.Type {
 }
 
 func (r *AtscVCTSource) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAtscVCTSourceFromGlibBorrow is used to convert raw C.GstMpegtsAtscVCTSource pointers to go. This is used by the bindings internally.
 func UnsafeAtscVCTSourceFromGlibBorrow(p unsafe.Pointer) *AtscVCTSource {
+	if p == nil {
+		return nil
+	}
 	return &AtscVCTSource{&atscVCTSource{(*C.GstMpegtsAtscVCTSource)(p)}}
 }
 
@@ -4419,6 +4706,9 @@ func UnsafeAtscVCTSourceFromGlibBorrow(p unsafe.Pointer) *AtscVCTSource {
 func UnsafeAtscVCTSourceFromGlibNone(p unsafe.Pointer) *AtscVCTSource {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAtscVCTSourceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscVCTSource)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscVCTSource,
@@ -4433,6 +4723,9 @@ func UnsafeAtscVCTSourceFromGlibNone(p unsafe.Pointer) *AtscVCTSource {
 // UnsafeAtscVCTSourceFromGlibFull is used to convert raw C.GstMpegtsAtscVCTSource pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtscVCTSourceFromGlibFull(p unsafe.Pointer) *AtscVCTSource {
 	wrapped := UnsafeAtscVCTSourceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.atscVCTSource)), 1)
 	runtime.SetFinalizer(
 		wrapped.atscVCTSource,
@@ -4453,12 +4746,18 @@ func UnsafeAtscVCTSourceFree(a *AtscVCTSource) {
 
 // UnsafeAtscVCTSourceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAtscVCTSourceToGlibNone(a *AtscVCTSource) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAtscVCTSourceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAtscVCTSourceToGlibFull(a *AtscVCTSource) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.atscVCTSource, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AtscVCTSource is invalid from here on
@@ -4477,8 +4776,19 @@ type audioPreselectionDescriptor struct {
 	native *C.GstMpegtsAudioPreselectionDescriptor
 }
 
+// UnsafeAudioPreselectionDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AudioPreselectionDescriptor) instance() *C.GstMpegtsAudioPreselectionDescriptor {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAudioPreselectionDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsAudioPreselectionDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeAudioPreselectionDescriptorFromGlibBorrow(p unsafe.Pointer) *AudioPreselectionDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &AudioPreselectionDescriptor{&audioPreselectionDescriptor{(*C.GstMpegtsAudioPreselectionDescriptor)(p)}}
 }
 
@@ -4486,6 +4796,9 @@ func UnsafeAudioPreselectionDescriptorFromGlibBorrow(p unsafe.Pointer) *AudioPre
 func UnsafeAudioPreselectionDescriptorFromGlibNone(p unsafe.Pointer) *AudioPreselectionDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioPreselectionDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioPreselectionDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioPreselectionDescriptor,
@@ -4500,6 +4813,9 @@ func UnsafeAudioPreselectionDescriptorFromGlibNone(p unsafe.Pointer) *AudioPrese
 // UnsafeAudioPreselectionDescriptorFromGlibFull is used to convert raw C.GstMpegtsAudioPreselectionDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioPreselectionDescriptorFromGlibFull(p unsafe.Pointer) *AudioPreselectionDescriptor {
 	wrapped := UnsafeAudioPreselectionDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.audioPreselectionDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioPreselectionDescriptor,
@@ -4520,12 +4836,18 @@ func UnsafeAudioPreselectionDescriptorFree(a *AudioPreselectionDescriptor) {
 
 // UnsafeAudioPreselectionDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAudioPreselectionDescriptorToGlibNone(a *AudioPreselectionDescriptor) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
 // UnsafeAudioPreselectionDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeAudioPreselectionDescriptorToGlibFull(a *AudioPreselectionDescriptor) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	runtime.SetFinalizer(a.audioPreselectionDescriptor, nil)
 	_p := unsafe.Pointer(a.native)
 	a.native = nil // AudioPreselectionDescriptor is invalid from here on
@@ -4544,11 +4866,19 @@ type bAT struct {
 	native *C.GstMpegtsBAT
 }
 
+// UnsafeBATToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (b *BAT) instance() *C.GstMpegtsBAT {
+	if b == nil {
+		return nil
+	}
+	return b.native
+}
+
 var _ gobject.GoValueInitializer = (*BAT)(nil)
 
 func marshalBAT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeBATFromGlibBorrow(b), nil
+	return UnsafeBATFromGlibNone(b), nil
 }
 
 func (r *BAT) GoValueType() gobject.Type {
@@ -4556,11 +4886,14 @@ func (r *BAT) GoValueType() gobject.Type {
 }
 
 func (r *BAT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeBATFromGlibBorrow is used to convert raw C.GstMpegtsBAT pointers to go. This is used by the bindings internally.
 func UnsafeBATFromGlibBorrow(p unsafe.Pointer) *BAT {
+	if p == nil {
+		return nil
+	}
 	return &BAT{&bAT{(*C.GstMpegtsBAT)(p)}}
 }
 
@@ -4568,6 +4901,9 @@ func UnsafeBATFromGlibBorrow(p unsafe.Pointer) *BAT {
 func UnsafeBATFromGlibNone(p unsafe.Pointer) *BAT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBATFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.bAT)), 1)
 	runtime.SetFinalizer(
 		wrapped.bAT,
@@ -4582,6 +4918,9 @@ func UnsafeBATFromGlibNone(p unsafe.Pointer) *BAT {
 // UnsafeBATFromGlibFull is used to convert raw C.GstMpegtsBAT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBATFromGlibFull(p unsafe.Pointer) *BAT {
 	wrapped := UnsafeBATFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.bAT)), 1)
 	runtime.SetFinalizer(
 		wrapped.bAT,
@@ -4602,12 +4941,18 @@ func UnsafeBATFree(b *BAT) {
 
 // UnsafeBATToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeBATToGlibNone(b *BAT) unsafe.Pointer {
+	if b == nil {
+		return nil
+	}
 	return unsafe.Pointer(b.native)
 }
 
 // UnsafeBATToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeBATToGlibFull(b *BAT) unsafe.Pointer {
+	if b == nil {
+		return nil
+	}
 	runtime.SetFinalizer(b.bAT, nil)
 	_p := unsafe.Pointer(b.native)
 	b.native = nil // BAT is invalid from here on
@@ -4624,11 +4969,19 @@ type bATStream struct {
 	native *C.GstMpegtsBATStream
 }
 
+// UnsafeBATStreamToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (b *BATStream) instance() *C.GstMpegtsBATStream {
+	if b == nil {
+		return nil
+	}
+	return b.native
+}
+
 var _ gobject.GoValueInitializer = (*BATStream)(nil)
 
 func marshalBATStream(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeBATStreamFromGlibBorrow(b), nil
+	return UnsafeBATStreamFromGlibNone(b), nil
 }
 
 func (r *BATStream) GoValueType() gobject.Type {
@@ -4636,11 +4989,14 @@ func (r *BATStream) GoValueType() gobject.Type {
 }
 
 func (r *BATStream) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeBATStreamFromGlibBorrow is used to convert raw C.GstMpegtsBATStream pointers to go. This is used by the bindings internally.
 func UnsafeBATStreamFromGlibBorrow(p unsafe.Pointer) *BATStream {
+	if p == nil {
+		return nil
+	}
 	return &BATStream{&bATStream{(*C.GstMpegtsBATStream)(p)}}
 }
 
@@ -4648,6 +5004,9 @@ func UnsafeBATStreamFromGlibBorrow(p unsafe.Pointer) *BATStream {
 func UnsafeBATStreamFromGlibNone(p unsafe.Pointer) *BATStream {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBATStreamFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.bATStream)), 1)
 	runtime.SetFinalizer(
 		wrapped.bATStream,
@@ -4662,6 +5021,9 @@ func UnsafeBATStreamFromGlibNone(p unsafe.Pointer) *BATStream {
 // UnsafeBATStreamFromGlibFull is used to convert raw C.GstMpegtsBATStream pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBATStreamFromGlibFull(p unsafe.Pointer) *BATStream {
 	wrapped := UnsafeBATStreamFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.bATStream)), 1)
 	runtime.SetFinalizer(
 		wrapped.bATStream,
@@ -4682,12 +5044,18 @@ func UnsafeBATStreamFree(b *BATStream) {
 
 // UnsafeBATStreamToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeBATStreamToGlibNone(b *BATStream) unsafe.Pointer {
+	if b == nil {
+		return nil
+	}
 	return unsafe.Pointer(b.native)
 }
 
 // UnsafeBATStreamToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeBATStreamToGlibFull(b *BATStream) unsafe.Pointer {
+	if b == nil {
+		return nil
+	}
 	runtime.SetFinalizer(b.bATStream, nil)
 	_p := unsafe.Pointer(b.native)
 	b.native = nil // BATStream is invalid from here on
@@ -4706,11 +5074,19 @@ type cableDeliverySystemDescriptor struct {
 	native *C.GstMpegtsCableDeliverySystemDescriptor
 }
 
+// UnsafeCableDeliverySystemDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (c *CableDeliverySystemDescriptor) instance() *C.GstMpegtsCableDeliverySystemDescriptor {
+	if c == nil {
+		return nil
+	}
+	return c.native
+}
+
 var _ gobject.GoValueInitializer = (*CableDeliverySystemDescriptor)(nil)
 
 func marshalCableDeliverySystemDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeCableDeliverySystemDescriptorFromGlibBorrow(b), nil
+	return UnsafeCableDeliverySystemDescriptorFromGlibNone(b), nil
 }
 
 func (r *CableDeliverySystemDescriptor) GoValueType() gobject.Type {
@@ -4718,11 +5094,14 @@ func (r *CableDeliverySystemDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *CableDeliverySystemDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeCableDeliverySystemDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsCableDeliverySystemDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeCableDeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *CableDeliverySystemDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &CableDeliverySystemDescriptor{&cableDeliverySystemDescriptor{(*C.GstMpegtsCableDeliverySystemDescriptor)(p)}}
 }
 
@@ -4730,6 +5109,9 @@ func UnsafeCableDeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *CableD
 func UnsafeCableDeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *CableDeliverySystemDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeCableDeliverySystemDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.cableDeliverySystemDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.cableDeliverySystemDescriptor,
@@ -4744,6 +5126,9 @@ func UnsafeCableDeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *CableDel
 // UnsafeCableDeliverySystemDescriptorFromGlibFull is used to convert raw C.GstMpegtsCableDeliverySystemDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeCableDeliverySystemDescriptorFromGlibFull(p unsafe.Pointer) *CableDeliverySystemDescriptor {
 	wrapped := UnsafeCableDeliverySystemDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.cableDeliverySystemDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.cableDeliverySystemDescriptor,
@@ -4764,12 +5149,18 @@ func UnsafeCableDeliverySystemDescriptorFree(c *CableDeliverySystemDescriptor) {
 
 // UnsafeCableDeliverySystemDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeCableDeliverySystemDescriptorToGlibNone(c *CableDeliverySystemDescriptor) unsafe.Pointer {
+	if c == nil {
+		return nil
+	}
 	return unsafe.Pointer(c.native)
 }
 
 // UnsafeCableDeliverySystemDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeCableDeliverySystemDescriptorToGlibFull(c *CableDeliverySystemDescriptor) unsafe.Pointer {
+	if c == nil {
+		return nil
+	}
 	runtime.SetFinalizer(c.cableDeliverySystemDescriptor, nil)
 	_p := unsafe.Pointer(c.native)
 	c.native = nil // CableDeliverySystemDescriptor is invalid from here on
@@ -4786,11 +5177,19 @@ type componentDescriptor struct {
 	native *C.GstMpegtsComponentDescriptor
 }
 
+// UnsafeComponentDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (c *ComponentDescriptor) instance() *C.GstMpegtsComponentDescriptor {
+	if c == nil {
+		return nil
+	}
+	return c.native
+}
+
 var _ gobject.GoValueInitializer = (*ComponentDescriptor)(nil)
 
 func marshalComponentDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeComponentDescriptorFromGlibBorrow(b), nil
+	return UnsafeComponentDescriptorFromGlibNone(b), nil
 }
 
 func (r *ComponentDescriptor) GoValueType() gobject.Type {
@@ -4798,11 +5197,14 @@ func (r *ComponentDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *ComponentDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeComponentDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsComponentDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeComponentDescriptorFromGlibBorrow(p unsafe.Pointer) *ComponentDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &ComponentDescriptor{&componentDescriptor{(*C.GstMpegtsComponentDescriptor)(p)}}
 }
 
@@ -4810,6 +5212,9 @@ func UnsafeComponentDescriptorFromGlibBorrow(p unsafe.Pointer) *ComponentDescrip
 func UnsafeComponentDescriptorFromGlibNone(p unsafe.Pointer) *ComponentDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeComponentDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.componentDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.componentDescriptor,
@@ -4824,6 +5229,9 @@ func UnsafeComponentDescriptorFromGlibNone(p unsafe.Pointer) *ComponentDescripto
 // UnsafeComponentDescriptorFromGlibFull is used to convert raw C.GstMpegtsComponentDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeComponentDescriptorFromGlibFull(p unsafe.Pointer) *ComponentDescriptor {
 	wrapped := UnsafeComponentDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.componentDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.componentDescriptor,
@@ -4844,12 +5252,18 @@ func UnsafeComponentDescriptorFree(c *ComponentDescriptor) {
 
 // UnsafeComponentDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeComponentDescriptorToGlibNone(c *ComponentDescriptor) unsafe.Pointer {
+	if c == nil {
+		return nil
+	}
 	return unsafe.Pointer(c.native)
 }
 
 // UnsafeComponentDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeComponentDescriptorToGlibFull(c *ComponentDescriptor) unsafe.Pointer {
+	if c == nil {
+		return nil
+	}
 	runtime.SetFinalizer(c.componentDescriptor, nil)
 	_p := unsafe.Pointer(c.native)
 	c.native = nil // ComponentDescriptor is invalid from here on
@@ -4866,11 +5280,19 @@ type content struct {
 	native *C.GstMpegtsContent
 }
 
+// UnsafeContentToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (c *Content) instance() *C.GstMpegtsContent {
+	if c == nil {
+		return nil
+	}
+	return c.native
+}
+
 var _ gobject.GoValueInitializer = (*Content)(nil)
 
 func marshalContent(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeContentFromGlibBorrow(b), nil
+	return UnsafeContentFromGlibNone(b), nil
 }
 
 func (r *Content) GoValueType() gobject.Type {
@@ -4878,11 +5300,14 @@ func (r *Content) GoValueType() gobject.Type {
 }
 
 func (r *Content) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeContentFromGlibBorrow is used to convert raw C.GstMpegtsContent pointers to go. This is used by the bindings internally.
 func UnsafeContentFromGlibBorrow(p unsafe.Pointer) *Content {
+	if p == nil {
+		return nil
+	}
 	return &Content{&content{(*C.GstMpegtsContent)(p)}}
 }
 
@@ -4890,6 +5315,9 @@ func UnsafeContentFromGlibBorrow(p unsafe.Pointer) *Content {
 func UnsafeContentFromGlibNone(p unsafe.Pointer) *Content {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeContentFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.content)), 1)
 	runtime.SetFinalizer(
 		wrapped.content,
@@ -4904,6 +5332,9 @@ func UnsafeContentFromGlibNone(p unsafe.Pointer) *Content {
 // UnsafeContentFromGlibFull is used to convert raw C.GstMpegtsContent pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeContentFromGlibFull(p unsafe.Pointer) *Content {
 	wrapped := UnsafeContentFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.content)), 1)
 	runtime.SetFinalizer(
 		wrapped.content,
@@ -4924,12 +5355,18 @@ func UnsafeContentFree(c *Content) {
 
 // UnsafeContentToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeContentToGlibNone(c *Content) unsafe.Pointer {
+	if c == nil {
+		return nil
+	}
 	return unsafe.Pointer(c.native)
 }
 
 // UnsafeContentToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeContentToGlibFull(c *Content) unsafe.Pointer {
+	if c == nil {
+		return nil
+	}
 	runtime.SetFinalizer(c.content, nil)
 	_p := unsafe.Pointer(c.native)
 	c.native = nil // Content is invalid from here on
@@ -4946,11 +5383,19 @@ type dVBLinkageDescriptor struct {
 	native *C.GstMpegtsDVBLinkageDescriptor
 }
 
+// UnsafeDVBLinkageDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DVBLinkageDescriptor) instance() *C.GstMpegtsDVBLinkageDescriptor {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DVBLinkageDescriptor)(nil)
 
 func marshalDVBLinkageDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDVBLinkageDescriptorFromGlibBorrow(b), nil
+	return UnsafeDVBLinkageDescriptorFromGlibNone(b), nil
 }
 
 func (r *DVBLinkageDescriptor) GoValueType() gobject.Type {
@@ -4958,11 +5403,14 @@ func (r *DVBLinkageDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *DVBLinkageDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDVBLinkageDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsDVBLinkageDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeDVBLinkageDescriptorFromGlibBorrow(p unsafe.Pointer) *DVBLinkageDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &DVBLinkageDescriptor{&dVBLinkageDescriptor{(*C.GstMpegtsDVBLinkageDescriptor)(p)}}
 }
 
@@ -4970,6 +5418,9 @@ func UnsafeDVBLinkageDescriptorFromGlibBorrow(p unsafe.Pointer) *DVBLinkageDescr
 func UnsafeDVBLinkageDescriptorFromGlibNone(p unsafe.Pointer) *DVBLinkageDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBLinkageDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBLinkageDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageDescriptor,
@@ -4984,6 +5435,9 @@ func UnsafeDVBLinkageDescriptorFromGlibNone(p unsafe.Pointer) *DVBLinkageDescrip
 // UnsafeDVBLinkageDescriptorFromGlibFull is used to convert raw C.GstMpegtsDVBLinkageDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDVBLinkageDescriptorFromGlibFull(p unsafe.Pointer) *DVBLinkageDescriptor {
 	wrapped := UnsafeDVBLinkageDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBLinkageDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageDescriptor,
@@ -5004,12 +5458,18 @@ func UnsafeDVBLinkageDescriptorFree(d *DVBLinkageDescriptor) {
 
 // UnsafeDVBLinkageDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDVBLinkageDescriptorToGlibNone(d *DVBLinkageDescriptor) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDVBLinkageDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBLinkageDescriptorToGlibFull(d *DVBLinkageDescriptor) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dVBLinkageDescriptor, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBLinkageDescriptor is invalid from here on
@@ -5072,11 +5532,19 @@ type dVBLinkageEvent struct {
 	native *C.GstMpegtsDVBLinkageEvent
 }
 
+// UnsafeDVBLinkageEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DVBLinkageEvent) instance() *C.GstMpegtsDVBLinkageEvent {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DVBLinkageEvent)(nil)
 
 func marshalDVBLinkageEvent(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDVBLinkageEventFromGlibBorrow(b), nil
+	return UnsafeDVBLinkageEventFromGlibNone(b), nil
 }
 
 func (r *DVBLinkageEvent) GoValueType() gobject.Type {
@@ -5084,11 +5552,14 @@ func (r *DVBLinkageEvent) GoValueType() gobject.Type {
 }
 
 func (r *DVBLinkageEvent) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDVBLinkageEventFromGlibBorrow is used to convert raw C.GstMpegtsDVBLinkageEvent pointers to go. This is used by the bindings internally.
 func UnsafeDVBLinkageEventFromGlibBorrow(p unsafe.Pointer) *DVBLinkageEvent {
+	if p == nil {
+		return nil
+	}
 	return &DVBLinkageEvent{&dVBLinkageEvent{(*C.GstMpegtsDVBLinkageEvent)(p)}}
 }
 
@@ -5096,6 +5567,9 @@ func UnsafeDVBLinkageEventFromGlibBorrow(p unsafe.Pointer) *DVBLinkageEvent {
 func UnsafeDVBLinkageEventFromGlibNone(p unsafe.Pointer) *DVBLinkageEvent {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBLinkageEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBLinkageEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageEvent,
@@ -5110,6 +5584,9 @@ func UnsafeDVBLinkageEventFromGlibNone(p unsafe.Pointer) *DVBLinkageEvent {
 // UnsafeDVBLinkageEventFromGlibFull is used to convert raw C.GstMpegtsDVBLinkageEvent pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDVBLinkageEventFromGlibFull(p unsafe.Pointer) *DVBLinkageEvent {
 	wrapped := UnsafeDVBLinkageEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBLinkageEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageEvent,
@@ -5130,12 +5607,18 @@ func UnsafeDVBLinkageEventFree(d *DVBLinkageEvent) {
 
 // UnsafeDVBLinkageEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDVBLinkageEventToGlibNone(d *DVBLinkageEvent) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDVBLinkageEventToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBLinkageEventToGlibFull(d *DVBLinkageEvent) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dVBLinkageEvent, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBLinkageEvent is invalid from here on
@@ -5152,11 +5635,19 @@ type dVBLinkageExtendedEvent struct {
 	native *C.GstMpegtsDVBLinkageExtendedEvent
 }
 
+// UnsafeDVBLinkageExtendedEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DVBLinkageExtendedEvent) instance() *C.GstMpegtsDVBLinkageExtendedEvent {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DVBLinkageExtendedEvent)(nil)
 
 func marshalDVBLinkageExtendedEvent(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDVBLinkageExtendedEventFromGlibBorrow(b), nil
+	return UnsafeDVBLinkageExtendedEventFromGlibNone(b), nil
 }
 
 func (r *DVBLinkageExtendedEvent) GoValueType() gobject.Type {
@@ -5164,11 +5655,14 @@ func (r *DVBLinkageExtendedEvent) GoValueType() gobject.Type {
 }
 
 func (r *DVBLinkageExtendedEvent) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDVBLinkageExtendedEventFromGlibBorrow is used to convert raw C.GstMpegtsDVBLinkageExtendedEvent pointers to go. This is used by the bindings internally.
 func UnsafeDVBLinkageExtendedEventFromGlibBorrow(p unsafe.Pointer) *DVBLinkageExtendedEvent {
+	if p == nil {
+		return nil
+	}
 	return &DVBLinkageExtendedEvent{&dVBLinkageExtendedEvent{(*C.GstMpegtsDVBLinkageExtendedEvent)(p)}}
 }
 
@@ -5176,6 +5670,9 @@ func UnsafeDVBLinkageExtendedEventFromGlibBorrow(p unsafe.Pointer) *DVBLinkageEx
 func UnsafeDVBLinkageExtendedEventFromGlibNone(p unsafe.Pointer) *DVBLinkageExtendedEvent {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBLinkageExtendedEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBLinkageExtendedEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageExtendedEvent,
@@ -5190,6 +5687,9 @@ func UnsafeDVBLinkageExtendedEventFromGlibNone(p unsafe.Pointer) *DVBLinkageExte
 // UnsafeDVBLinkageExtendedEventFromGlibFull is used to convert raw C.GstMpegtsDVBLinkageExtendedEvent pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDVBLinkageExtendedEventFromGlibFull(p unsafe.Pointer) *DVBLinkageExtendedEvent {
 	wrapped := UnsafeDVBLinkageExtendedEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBLinkageExtendedEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageExtendedEvent,
@@ -5210,12 +5710,18 @@ func UnsafeDVBLinkageExtendedEventFree(d *DVBLinkageExtendedEvent) {
 
 // UnsafeDVBLinkageExtendedEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDVBLinkageExtendedEventToGlibNone(d *DVBLinkageExtendedEvent) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDVBLinkageExtendedEventToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBLinkageExtendedEventToGlibFull(d *DVBLinkageExtendedEvent) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dVBLinkageExtendedEvent, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBLinkageExtendedEvent is invalid from here on
@@ -5232,11 +5738,19 @@ type dVBLinkageMobileHandOver struct {
 	native *C.GstMpegtsDVBLinkageMobileHandOver
 }
 
+// UnsafeDVBLinkageMobileHandOverToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DVBLinkageMobileHandOver) instance() *C.GstMpegtsDVBLinkageMobileHandOver {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DVBLinkageMobileHandOver)(nil)
 
 func marshalDVBLinkageMobileHandOver(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDVBLinkageMobileHandOverFromGlibBorrow(b), nil
+	return UnsafeDVBLinkageMobileHandOverFromGlibNone(b), nil
 }
 
 func (r *DVBLinkageMobileHandOver) GoValueType() gobject.Type {
@@ -5244,11 +5758,14 @@ func (r *DVBLinkageMobileHandOver) GoValueType() gobject.Type {
 }
 
 func (r *DVBLinkageMobileHandOver) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDVBLinkageMobileHandOverFromGlibBorrow is used to convert raw C.GstMpegtsDVBLinkageMobileHandOver pointers to go. This is used by the bindings internally.
 func UnsafeDVBLinkageMobileHandOverFromGlibBorrow(p unsafe.Pointer) *DVBLinkageMobileHandOver {
+	if p == nil {
+		return nil
+	}
 	return &DVBLinkageMobileHandOver{&dVBLinkageMobileHandOver{(*C.GstMpegtsDVBLinkageMobileHandOver)(p)}}
 }
 
@@ -5256,6 +5773,9 @@ func UnsafeDVBLinkageMobileHandOverFromGlibBorrow(p unsafe.Pointer) *DVBLinkageM
 func UnsafeDVBLinkageMobileHandOverFromGlibNone(p unsafe.Pointer) *DVBLinkageMobileHandOver {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBLinkageMobileHandOverFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBLinkageMobileHandOver)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageMobileHandOver,
@@ -5270,6 +5790,9 @@ func UnsafeDVBLinkageMobileHandOverFromGlibNone(p unsafe.Pointer) *DVBLinkageMob
 // UnsafeDVBLinkageMobileHandOverFromGlibFull is used to convert raw C.GstMpegtsDVBLinkageMobileHandOver pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDVBLinkageMobileHandOverFromGlibFull(p unsafe.Pointer) *DVBLinkageMobileHandOver {
 	wrapped := UnsafeDVBLinkageMobileHandOverFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBLinkageMobileHandOver)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBLinkageMobileHandOver,
@@ -5290,12 +5813,18 @@ func UnsafeDVBLinkageMobileHandOverFree(d *DVBLinkageMobileHandOver) {
 
 // UnsafeDVBLinkageMobileHandOverToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDVBLinkageMobileHandOverToGlibNone(d *DVBLinkageMobileHandOver) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDVBLinkageMobileHandOverToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBLinkageMobileHandOverToGlibFull(d *DVBLinkageMobileHandOver) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dVBLinkageMobileHandOver, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBLinkageMobileHandOver is invalid from here on
@@ -5312,11 +5841,19 @@ type dVBParentalRatingItem struct {
 	native *C.GstMpegtsDVBParentalRatingItem
 }
 
+// UnsafeDVBParentalRatingItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DVBParentalRatingItem) instance() *C.GstMpegtsDVBParentalRatingItem {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DVBParentalRatingItem)(nil)
 
 func marshalDVBParentalRatingItem(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDVBParentalRatingItemFromGlibBorrow(b), nil
+	return UnsafeDVBParentalRatingItemFromGlibNone(b), nil
 }
 
 func (r *DVBParentalRatingItem) GoValueType() gobject.Type {
@@ -5324,11 +5861,14 @@ func (r *DVBParentalRatingItem) GoValueType() gobject.Type {
 }
 
 func (r *DVBParentalRatingItem) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDVBParentalRatingItemFromGlibBorrow is used to convert raw C.GstMpegtsDVBParentalRatingItem pointers to go. This is used by the bindings internally.
 func UnsafeDVBParentalRatingItemFromGlibBorrow(p unsafe.Pointer) *DVBParentalRatingItem {
+	if p == nil {
+		return nil
+	}
 	return &DVBParentalRatingItem{&dVBParentalRatingItem{(*C.GstMpegtsDVBParentalRatingItem)(p)}}
 }
 
@@ -5336,6 +5876,9 @@ func UnsafeDVBParentalRatingItemFromGlibBorrow(p unsafe.Pointer) *DVBParentalRat
 func UnsafeDVBParentalRatingItemFromGlibNone(p unsafe.Pointer) *DVBParentalRatingItem {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBParentalRatingItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBParentalRatingItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBParentalRatingItem,
@@ -5350,6 +5893,9 @@ func UnsafeDVBParentalRatingItemFromGlibNone(p unsafe.Pointer) *DVBParentalRatin
 // UnsafeDVBParentalRatingItemFromGlibFull is used to convert raw C.GstMpegtsDVBParentalRatingItem pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDVBParentalRatingItemFromGlibFull(p unsafe.Pointer) *DVBParentalRatingItem {
 	wrapped := UnsafeDVBParentalRatingItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBParentalRatingItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBParentalRatingItem,
@@ -5370,12 +5916,18 @@ func UnsafeDVBParentalRatingItemFree(d *DVBParentalRatingItem) {
 
 // UnsafeDVBParentalRatingItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDVBParentalRatingItemToGlibNone(d *DVBParentalRatingItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDVBParentalRatingItemToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBParentalRatingItemToGlibFull(d *DVBParentalRatingItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dVBParentalRatingItem, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBParentalRatingItem is invalid from here on
@@ -5392,11 +5944,19 @@ type dVBServiceListItem struct {
 	native *C.GstMpegtsDVBServiceListItem
 }
 
+// UnsafeDVBServiceListItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DVBServiceListItem) instance() *C.GstMpegtsDVBServiceListItem {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DVBServiceListItem)(nil)
 
 func marshalDVBServiceListItem(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDVBServiceListItemFromGlibBorrow(b), nil
+	return UnsafeDVBServiceListItemFromGlibNone(b), nil
 }
 
 func (r *DVBServiceListItem) GoValueType() gobject.Type {
@@ -5404,11 +5964,14 @@ func (r *DVBServiceListItem) GoValueType() gobject.Type {
 }
 
 func (r *DVBServiceListItem) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDVBServiceListItemFromGlibBorrow is used to convert raw C.GstMpegtsDVBServiceListItem pointers to go. This is used by the bindings internally.
 func UnsafeDVBServiceListItemFromGlibBorrow(p unsafe.Pointer) *DVBServiceListItem {
+	if p == nil {
+		return nil
+	}
 	return &DVBServiceListItem{&dVBServiceListItem{(*C.GstMpegtsDVBServiceListItem)(p)}}
 }
 
@@ -5416,6 +5979,9 @@ func UnsafeDVBServiceListItemFromGlibBorrow(p unsafe.Pointer) *DVBServiceListIte
 func UnsafeDVBServiceListItemFromGlibNone(p unsafe.Pointer) *DVBServiceListItem {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDVBServiceListItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBServiceListItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBServiceListItem,
@@ -5430,6 +5996,9 @@ func UnsafeDVBServiceListItemFromGlibNone(p unsafe.Pointer) *DVBServiceListItem 
 // UnsafeDVBServiceListItemFromGlibFull is used to convert raw C.GstMpegtsDVBServiceListItem pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDVBServiceListItemFromGlibFull(p unsafe.Pointer) *DVBServiceListItem {
 	wrapped := UnsafeDVBServiceListItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dVBServiceListItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dVBServiceListItem,
@@ -5450,12 +6019,18 @@ func UnsafeDVBServiceListItemFree(d *DVBServiceListItem) {
 
 // UnsafeDVBServiceListItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDVBServiceListItemToGlibNone(d *DVBServiceListItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDVBServiceListItemToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDVBServiceListItemToGlibFull(d *DVBServiceListItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dVBServiceListItem, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DVBServiceListItem is invalid from here on
@@ -5472,11 +6047,19 @@ type dataBroadcastDescriptor struct {
 	native *C.GstMpegtsDataBroadcastDescriptor
 }
 
+// UnsafeDataBroadcastDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DataBroadcastDescriptor) instance() *C.GstMpegtsDataBroadcastDescriptor {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DataBroadcastDescriptor)(nil)
 
 func marshalDataBroadcastDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDataBroadcastDescriptorFromGlibBorrow(b), nil
+	return UnsafeDataBroadcastDescriptorFromGlibNone(b), nil
 }
 
 func (r *DataBroadcastDescriptor) GoValueType() gobject.Type {
@@ -5484,11 +6067,14 @@ func (r *DataBroadcastDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *DataBroadcastDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDataBroadcastDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsDataBroadcastDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeDataBroadcastDescriptorFromGlibBorrow(p unsafe.Pointer) *DataBroadcastDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &DataBroadcastDescriptor{&dataBroadcastDescriptor{(*C.GstMpegtsDataBroadcastDescriptor)(p)}}
 }
 
@@ -5496,6 +6082,9 @@ func UnsafeDataBroadcastDescriptorFromGlibBorrow(p unsafe.Pointer) *DataBroadcas
 func UnsafeDataBroadcastDescriptorFromGlibNone(p unsafe.Pointer) *DataBroadcastDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDataBroadcastDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dataBroadcastDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.dataBroadcastDescriptor,
@@ -5510,6 +6099,9 @@ func UnsafeDataBroadcastDescriptorFromGlibNone(p unsafe.Pointer) *DataBroadcastD
 // UnsafeDataBroadcastDescriptorFromGlibFull is used to convert raw C.GstMpegtsDataBroadcastDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDataBroadcastDescriptorFromGlibFull(p unsafe.Pointer) *DataBroadcastDescriptor {
 	wrapped := UnsafeDataBroadcastDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dataBroadcastDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.dataBroadcastDescriptor,
@@ -5530,12 +6122,18 @@ func UnsafeDataBroadcastDescriptorFree(d *DataBroadcastDescriptor) {
 
 // UnsafeDataBroadcastDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDataBroadcastDescriptorToGlibNone(d *DataBroadcastDescriptor) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDataBroadcastDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDataBroadcastDescriptorToGlibFull(d *DataBroadcastDescriptor) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dataBroadcastDescriptor, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DataBroadcastDescriptor is invalid from here on
@@ -5557,11 +6155,19 @@ type descriptor struct {
 	native *C.GstMpegtsDescriptor
 }
 
+// UnsafeDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *Descriptor) instance() *C.GstMpegtsDescriptor {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*Descriptor)(nil)
 
 func marshalDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDescriptorFromGlibBorrow(b), nil
+	return UnsafeDescriptorFromGlibNone(b), nil
 }
 
 func (r *Descriptor) GoValueType() gobject.Type {
@@ -5569,11 +6175,14 @@ func (r *Descriptor) GoValueType() gobject.Type {
 }
 
 func (r *Descriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeDescriptorFromGlibBorrow(p unsafe.Pointer) *Descriptor {
+	if p == nil {
+		return nil
+	}
 	return &Descriptor{&descriptor{(*C.GstMpegtsDescriptor)(p)}}
 }
 
@@ -5581,6 +6190,9 @@ func UnsafeDescriptorFromGlibBorrow(p unsafe.Pointer) *Descriptor {
 func UnsafeDescriptorFromGlibNone(p unsafe.Pointer) *Descriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.descriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.descriptor,
@@ -5595,6 +6207,9 @@ func UnsafeDescriptorFromGlibNone(p unsafe.Pointer) *Descriptor {
 // UnsafeDescriptorFromGlibFull is used to convert raw C.GstMpegtsDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDescriptorFromGlibFull(p unsafe.Pointer) *Descriptor {
 	wrapped := UnsafeDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.descriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.descriptor,
@@ -5615,12 +6230,18 @@ func UnsafeDescriptorFree(d *Descriptor) {
 
 // UnsafeDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDescriptorToGlibNone(d *Descriptor) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDescriptorToGlibFull(d *Descriptor) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.descriptor, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // Descriptor is invalid from here on
@@ -6878,11 +7499,19 @@ type dvbMultilingualBouquetNameItem struct {
 	native *C.GstMpegtsDvbMultilingualBouquetNameItem
 }
 
+// UnsafeDvbMultilingualBouquetNameItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DvbMultilingualBouquetNameItem) instance() *C.GstMpegtsDvbMultilingualBouquetNameItem {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DvbMultilingualBouquetNameItem)(nil)
 
 func marshalDvbMultilingualBouquetNameItem(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDvbMultilingualBouquetNameItemFromGlibBorrow(b), nil
+	return UnsafeDvbMultilingualBouquetNameItemFromGlibNone(b), nil
 }
 
 func (r *DvbMultilingualBouquetNameItem) GoValueType() gobject.Type {
@@ -6890,11 +7519,14 @@ func (r *DvbMultilingualBouquetNameItem) GoValueType() gobject.Type {
 }
 
 func (r *DvbMultilingualBouquetNameItem) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDvbMultilingualBouquetNameItemFromGlibBorrow is used to convert raw C.GstMpegtsDvbMultilingualBouquetNameItem pointers to go. This is used by the bindings internally.
 func UnsafeDvbMultilingualBouquetNameItemFromGlibBorrow(p unsafe.Pointer) *DvbMultilingualBouquetNameItem {
+	if p == nil {
+		return nil
+	}
 	return &DvbMultilingualBouquetNameItem{&dvbMultilingualBouquetNameItem{(*C.GstMpegtsDvbMultilingualBouquetNameItem)(p)}}
 }
 
@@ -6902,6 +7534,9 @@ func UnsafeDvbMultilingualBouquetNameItemFromGlibBorrow(p unsafe.Pointer) *DvbMu
 func UnsafeDvbMultilingualBouquetNameItemFromGlibNone(p unsafe.Pointer) *DvbMultilingualBouquetNameItem {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDvbMultilingualBouquetNameItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dvbMultilingualBouquetNameItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualBouquetNameItem,
@@ -6916,6 +7551,9 @@ func UnsafeDvbMultilingualBouquetNameItemFromGlibNone(p unsafe.Pointer) *DvbMult
 // UnsafeDvbMultilingualBouquetNameItemFromGlibFull is used to convert raw C.GstMpegtsDvbMultilingualBouquetNameItem pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDvbMultilingualBouquetNameItemFromGlibFull(p unsafe.Pointer) *DvbMultilingualBouquetNameItem {
 	wrapped := UnsafeDvbMultilingualBouquetNameItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dvbMultilingualBouquetNameItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualBouquetNameItem,
@@ -6936,12 +7574,18 @@ func UnsafeDvbMultilingualBouquetNameItemFree(d *DvbMultilingualBouquetNameItem)
 
 // UnsafeDvbMultilingualBouquetNameItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDvbMultilingualBouquetNameItemToGlibNone(d *DvbMultilingualBouquetNameItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDvbMultilingualBouquetNameItemToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDvbMultilingualBouquetNameItemToGlibFull(d *DvbMultilingualBouquetNameItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dvbMultilingualBouquetNameItem, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DvbMultilingualBouquetNameItem is invalid from here on
@@ -6958,11 +7602,19 @@ type dvbMultilingualComponentItem struct {
 	native *C.GstMpegtsDvbMultilingualComponentItem
 }
 
+// UnsafeDvbMultilingualComponentItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DvbMultilingualComponentItem) instance() *C.GstMpegtsDvbMultilingualComponentItem {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DvbMultilingualComponentItem)(nil)
 
 func marshalDvbMultilingualComponentItem(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDvbMultilingualComponentItemFromGlibBorrow(b), nil
+	return UnsafeDvbMultilingualComponentItemFromGlibNone(b), nil
 }
 
 func (r *DvbMultilingualComponentItem) GoValueType() gobject.Type {
@@ -6970,11 +7622,14 @@ func (r *DvbMultilingualComponentItem) GoValueType() gobject.Type {
 }
 
 func (r *DvbMultilingualComponentItem) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDvbMultilingualComponentItemFromGlibBorrow is used to convert raw C.GstMpegtsDvbMultilingualComponentItem pointers to go. This is used by the bindings internally.
 func UnsafeDvbMultilingualComponentItemFromGlibBorrow(p unsafe.Pointer) *DvbMultilingualComponentItem {
+	if p == nil {
+		return nil
+	}
 	return &DvbMultilingualComponentItem{&dvbMultilingualComponentItem{(*C.GstMpegtsDvbMultilingualComponentItem)(p)}}
 }
 
@@ -6982,6 +7637,9 @@ func UnsafeDvbMultilingualComponentItemFromGlibBorrow(p unsafe.Pointer) *DvbMult
 func UnsafeDvbMultilingualComponentItemFromGlibNone(p unsafe.Pointer) *DvbMultilingualComponentItem {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDvbMultilingualComponentItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dvbMultilingualComponentItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualComponentItem,
@@ -6996,6 +7654,9 @@ func UnsafeDvbMultilingualComponentItemFromGlibNone(p unsafe.Pointer) *DvbMultil
 // UnsafeDvbMultilingualComponentItemFromGlibFull is used to convert raw C.GstMpegtsDvbMultilingualComponentItem pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDvbMultilingualComponentItemFromGlibFull(p unsafe.Pointer) *DvbMultilingualComponentItem {
 	wrapped := UnsafeDvbMultilingualComponentItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dvbMultilingualComponentItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualComponentItem,
@@ -7016,12 +7677,18 @@ func UnsafeDvbMultilingualComponentItemFree(d *DvbMultilingualComponentItem) {
 
 // UnsafeDvbMultilingualComponentItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDvbMultilingualComponentItemToGlibNone(d *DvbMultilingualComponentItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDvbMultilingualComponentItemToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDvbMultilingualComponentItemToGlibFull(d *DvbMultilingualComponentItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dvbMultilingualComponentItem, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DvbMultilingualComponentItem is invalid from here on
@@ -7040,11 +7707,19 @@ type dvbMultilingualNetworkNameItem struct {
 	native *C.GstMpegtsDvbMultilingualNetworkNameItem
 }
 
+// UnsafeDvbMultilingualNetworkNameItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DvbMultilingualNetworkNameItem) instance() *C.GstMpegtsDvbMultilingualNetworkNameItem {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DvbMultilingualNetworkNameItem)(nil)
 
 func marshalDvbMultilingualNetworkNameItem(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDvbMultilingualNetworkNameItemFromGlibBorrow(b), nil
+	return UnsafeDvbMultilingualNetworkNameItemFromGlibNone(b), nil
 }
 
 func (r *DvbMultilingualNetworkNameItem) GoValueType() gobject.Type {
@@ -7052,11 +7727,14 @@ func (r *DvbMultilingualNetworkNameItem) GoValueType() gobject.Type {
 }
 
 func (r *DvbMultilingualNetworkNameItem) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDvbMultilingualNetworkNameItemFromGlibBorrow is used to convert raw C.GstMpegtsDvbMultilingualNetworkNameItem pointers to go. This is used by the bindings internally.
 func UnsafeDvbMultilingualNetworkNameItemFromGlibBorrow(p unsafe.Pointer) *DvbMultilingualNetworkNameItem {
+	if p == nil {
+		return nil
+	}
 	return &DvbMultilingualNetworkNameItem{&dvbMultilingualNetworkNameItem{(*C.GstMpegtsDvbMultilingualNetworkNameItem)(p)}}
 }
 
@@ -7064,6 +7742,9 @@ func UnsafeDvbMultilingualNetworkNameItemFromGlibBorrow(p unsafe.Pointer) *DvbMu
 func UnsafeDvbMultilingualNetworkNameItemFromGlibNone(p unsafe.Pointer) *DvbMultilingualNetworkNameItem {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDvbMultilingualNetworkNameItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dvbMultilingualNetworkNameItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualNetworkNameItem,
@@ -7078,6 +7759,9 @@ func UnsafeDvbMultilingualNetworkNameItemFromGlibNone(p unsafe.Pointer) *DvbMult
 // UnsafeDvbMultilingualNetworkNameItemFromGlibFull is used to convert raw C.GstMpegtsDvbMultilingualNetworkNameItem pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDvbMultilingualNetworkNameItemFromGlibFull(p unsafe.Pointer) *DvbMultilingualNetworkNameItem {
 	wrapped := UnsafeDvbMultilingualNetworkNameItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dvbMultilingualNetworkNameItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualNetworkNameItem,
@@ -7098,12 +7782,18 @@ func UnsafeDvbMultilingualNetworkNameItemFree(d *DvbMultilingualNetworkNameItem)
 
 // UnsafeDvbMultilingualNetworkNameItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDvbMultilingualNetworkNameItemToGlibNone(d *DvbMultilingualNetworkNameItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDvbMultilingualNetworkNameItemToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDvbMultilingualNetworkNameItemToGlibFull(d *DvbMultilingualNetworkNameItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dvbMultilingualNetworkNameItem, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DvbMultilingualNetworkNameItem is invalid from here on
@@ -7122,11 +7812,19 @@ type dvbMultilingualServiceNameItem struct {
 	native *C.GstMpegtsDvbMultilingualServiceNameItem
 }
 
+// UnsafeDvbMultilingualServiceNameItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (d *DvbMultilingualServiceNameItem) instance() *C.GstMpegtsDvbMultilingualServiceNameItem {
+	if d == nil {
+		return nil
+	}
+	return d.native
+}
+
 var _ gobject.GoValueInitializer = (*DvbMultilingualServiceNameItem)(nil)
 
 func marshalDvbMultilingualServiceNameItem(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeDvbMultilingualServiceNameItemFromGlibBorrow(b), nil
+	return UnsafeDvbMultilingualServiceNameItemFromGlibNone(b), nil
 }
 
 func (r *DvbMultilingualServiceNameItem) GoValueType() gobject.Type {
@@ -7134,11 +7832,14 @@ func (r *DvbMultilingualServiceNameItem) GoValueType() gobject.Type {
 }
 
 func (r *DvbMultilingualServiceNameItem) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeDvbMultilingualServiceNameItemFromGlibBorrow is used to convert raw C.GstMpegtsDvbMultilingualServiceNameItem pointers to go. This is used by the bindings internally.
 func UnsafeDvbMultilingualServiceNameItemFromGlibBorrow(p unsafe.Pointer) *DvbMultilingualServiceNameItem {
+	if p == nil {
+		return nil
+	}
 	return &DvbMultilingualServiceNameItem{&dvbMultilingualServiceNameItem{(*C.GstMpegtsDvbMultilingualServiceNameItem)(p)}}
 }
 
@@ -7146,6 +7847,9 @@ func UnsafeDvbMultilingualServiceNameItemFromGlibBorrow(p unsafe.Pointer) *DvbMu
 func UnsafeDvbMultilingualServiceNameItemFromGlibNone(p unsafe.Pointer) *DvbMultilingualServiceNameItem {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDvbMultilingualServiceNameItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dvbMultilingualServiceNameItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualServiceNameItem,
@@ -7160,6 +7864,9 @@ func UnsafeDvbMultilingualServiceNameItemFromGlibNone(p unsafe.Pointer) *DvbMult
 // UnsafeDvbMultilingualServiceNameItemFromGlibFull is used to convert raw C.GstMpegtsDvbMultilingualServiceNameItem pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDvbMultilingualServiceNameItemFromGlibFull(p unsafe.Pointer) *DvbMultilingualServiceNameItem {
 	wrapped := UnsafeDvbMultilingualServiceNameItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.dvbMultilingualServiceNameItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.dvbMultilingualServiceNameItem,
@@ -7180,12 +7887,18 @@ func UnsafeDvbMultilingualServiceNameItemFree(d *DvbMultilingualServiceNameItem)
 
 // UnsafeDvbMultilingualServiceNameItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeDvbMultilingualServiceNameItemToGlibNone(d *DvbMultilingualServiceNameItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	return unsafe.Pointer(d.native)
 }
 
 // UnsafeDvbMultilingualServiceNameItemToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeDvbMultilingualServiceNameItemToGlibFull(d *DvbMultilingualServiceNameItem) unsafe.Pointer {
+	if d == nil {
+		return nil
+	}
 	runtime.SetFinalizer(d.dvbMultilingualServiceNameItem, nil)
 	_p := unsafe.Pointer(d.native)
 	d.native = nil // DvbMultilingualServiceNameItem is invalid from here on
@@ -7204,11 +7917,19 @@ type eIT struct {
 	native *C.GstMpegtsEIT
 }
 
+// UnsafeEITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (e *EIT) instance() *C.GstMpegtsEIT {
+	if e == nil {
+		return nil
+	}
+	return e.native
+}
+
 var _ gobject.GoValueInitializer = (*EIT)(nil)
 
 func marshalEIT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeEITFromGlibBorrow(b), nil
+	return UnsafeEITFromGlibNone(b), nil
 }
 
 func (r *EIT) GoValueType() gobject.Type {
@@ -7216,11 +7937,14 @@ func (r *EIT) GoValueType() gobject.Type {
 }
 
 func (r *EIT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeEITFromGlibBorrow is used to convert raw C.GstMpegtsEIT pointers to go. This is used by the bindings internally.
 func UnsafeEITFromGlibBorrow(p unsafe.Pointer) *EIT {
+	if p == nil {
+		return nil
+	}
 	return &EIT{&eIT{(*C.GstMpegtsEIT)(p)}}
 }
 
@@ -7228,6 +7952,9 @@ func UnsafeEITFromGlibBorrow(p unsafe.Pointer) *EIT {
 func UnsafeEITFromGlibNone(p unsafe.Pointer) *EIT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeEITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.eIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.eIT,
@@ -7242,6 +7969,9 @@ func UnsafeEITFromGlibNone(p unsafe.Pointer) *EIT {
 // UnsafeEITFromGlibFull is used to convert raw C.GstMpegtsEIT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeEITFromGlibFull(p unsafe.Pointer) *EIT {
 	wrapped := UnsafeEITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.eIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.eIT,
@@ -7262,12 +7992,18 @@ func UnsafeEITFree(e *EIT) {
 
 // UnsafeEITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeEITToGlibNone(e *EIT) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	return unsafe.Pointer(e.native)
 }
 
 // UnsafeEITToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeEITToGlibFull(e *EIT) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	runtime.SetFinalizer(e.eIT, nil)
 	_p := unsafe.Pointer(e.native)
 	e.native = nil // EIT is invalid from here on
@@ -7286,11 +8022,19 @@ type eITEvent struct {
 	native *C.GstMpegtsEITEvent
 }
 
+// UnsafeEITEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (e *EITEvent) instance() *C.GstMpegtsEITEvent {
+	if e == nil {
+		return nil
+	}
+	return e.native
+}
+
 var _ gobject.GoValueInitializer = (*EITEvent)(nil)
 
 func marshalEITEvent(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeEITEventFromGlibBorrow(b), nil
+	return UnsafeEITEventFromGlibNone(b), nil
 }
 
 func (r *EITEvent) GoValueType() gobject.Type {
@@ -7298,11 +8042,14 @@ func (r *EITEvent) GoValueType() gobject.Type {
 }
 
 func (r *EITEvent) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeEITEventFromGlibBorrow is used to convert raw C.GstMpegtsEITEvent pointers to go. This is used by the bindings internally.
 func UnsafeEITEventFromGlibBorrow(p unsafe.Pointer) *EITEvent {
+	if p == nil {
+		return nil
+	}
 	return &EITEvent{&eITEvent{(*C.GstMpegtsEITEvent)(p)}}
 }
 
@@ -7310,6 +8057,9 @@ func UnsafeEITEventFromGlibBorrow(p unsafe.Pointer) *EITEvent {
 func UnsafeEITEventFromGlibNone(p unsafe.Pointer) *EITEvent {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeEITEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.eITEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.eITEvent,
@@ -7324,6 +8074,9 @@ func UnsafeEITEventFromGlibNone(p unsafe.Pointer) *EITEvent {
 // UnsafeEITEventFromGlibFull is used to convert raw C.GstMpegtsEITEvent pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeEITEventFromGlibFull(p unsafe.Pointer) *EITEvent {
 	wrapped := UnsafeEITEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.eITEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.eITEvent,
@@ -7344,12 +8097,18 @@ func UnsafeEITEventFree(e *EITEvent) {
 
 // UnsafeEITEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeEITEventToGlibNone(e *EITEvent) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	return unsafe.Pointer(e.native)
 }
 
 // UnsafeEITEventToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeEITEventToGlibFull(e *EITEvent) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	runtime.SetFinalizer(e.eITEvent, nil)
 	_p := unsafe.Pointer(e.native)
 	e.native = nil // EITEvent is invalid from here on
@@ -7368,11 +8127,19 @@ type extendedEventDescriptor struct {
 	native *C.GstMpegtsExtendedEventDescriptor
 }
 
+// UnsafeExtendedEventDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (e *ExtendedEventDescriptor) instance() *C.GstMpegtsExtendedEventDescriptor {
+	if e == nil {
+		return nil
+	}
+	return e.native
+}
+
 var _ gobject.GoValueInitializer = (*ExtendedEventDescriptor)(nil)
 
 func marshalExtendedEventDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeExtendedEventDescriptorFromGlibBorrow(b), nil
+	return UnsafeExtendedEventDescriptorFromGlibNone(b), nil
 }
 
 func (r *ExtendedEventDescriptor) GoValueType() gobject.Type {
@@ -7380,11 +8147,14 @@ func (r *ExtendedEventDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *ExtendedEventDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeExtendedEventDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsExtendedEventDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeExtendedEventDescriptorFromGlibBorrow(p unsafe.Pointer) *ExtendedEventDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &ExtendedEventDescriptor{&extendedEventDescriptor{(*C.GstMpegtsExtendedEventDescriptor)(p)}}
 }
 
@@ -7392,6 +8162,9 @@ func UnsafeExtendedEventDescriptorFromGlibBorrow(p unsafe.Pointer) *ExtendedEven
 func UnsafeExtendedEventDescriptorFromGlibNone(p unsafe.Pointer) *ExtendedEventDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeExtendedEventDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.extendedEventDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.extendedEventDescriptor,
@@ -7406,6 +8179,9 @@ func UnsafeExtendedEventDescriptorFromGlibNone(p unsafe.Pointer) *ExtendedEventD
 // UnsafeExtendedEventDescriptorFromGlibFull is used to convert raw C.GstMpegtsExtendedEventDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeExtendedEventDescriptorFromGlibFull(p unsafe.Pointer) *ExtendedEventDescriptor {
 	wrapped := UnsafeExtendedEventDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.extendedEventDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.extendedEventDescriptor,
@@ -7426,12 +8202,18 @@ func UnsafeExtendedEventDescriptorFree(e *ExtendedEventDescriptor) {
 
 // UnsafeExtendedEventDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeExtendedEventDescriptorToGlibNone(e *ExtendedEventDescriptor) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	return unsafe.Pointer(e.native)
 }
 
 // UnsafeExtendedEventDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeExtendedEventDescriptorToGlibFull(e *ExtendedEventDescriptor) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	runtime.SetFinalizer(e.extendedEventDescriptor, nil)
 	_p := unsafe.Pointer(e.native)
 	e.native = nil // ExtendedEventDescriptor is invalid from here on
@@ -7448,11 +8230,19 @@ type extendedEventItem struct {
 	native *C.GstMpegtsExtendedEventItem
 }
 
+// UnsafeExtendedEventItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (e *ExtendedEventItem) instance() *C.GstMpegtsExtendedEventItem {
+	if e == nil {
+		return nil
+	}
+	return e.native
+}
+
 var _ gobject.GoValueInitializer = (*ExtendedEventItem)(nil)
 
 func marshalExtendedEventItem(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeExtendedEventItemFromGlibBorrow(b), nil
+	return UnsafeExtendedEventItemFromGlibNone(b), nil
 }
 
 func (r *ExtendedEventItem) GoValueType() gobject.Type {
@@ -7460,11 +8250,14 @@ func (r *ExtendedEventItem) GoValueType() gobject.Type {
 }
 
 func (r *ExtendedEventItem) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeExtendedEventItemFromGlibBorrow is used to convert raw C.GstMpegtsExtendedEventItem pointers to go. This is used by the bindings internally.
 func UnsafeExtendedEventItemFromGlibBorrow(p unsafe.Pointer) *ExtendedEventItem {
+	if p == nil {
+		return nil
+	}
 	return &ExtendedEventItem{&extendedEventItem{(*C.GstMpegtsExtendedEventItem)(p)}}
 }
 
@@ -7472,6 +8265,9 @@ func UnsafeExtendedEventItemFromGlibBorrow(p unsafe.Pointer) *ExtendedEventItem 
 func UnsafeExtendedEventItemFromGlibNone(p unsafe.Pointer) *ExtendedEventItem {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeExtendedEventItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.extendedEventItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.extendedEventItem,
@@ -7486,6 +8282,9 @@ func UnsafeExtendedEventItemFromGlibNone(p unsafe.Pointer) *ExtendedEventItem {
 // UnsafeExtendedEventItemFromGlibFull is used to convert raw C.GstMpegtsExtendedEventItem pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeExtendedEventItemFromGlibFull(p unsafe.Pointer) *ExtendedEventItem {
 	wrapped := UnsafeExtendedEventItemFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.extendedEventItem)), 1)
 	runtime.SetFinalizer(
 		wrapped.extendedEventItem,
@@ -7506,12 +8305,18 @@ func UnsafeExtendedEventItemFree(e *ExtendedEventItem) {
 
 // UnsafeExtendedEventItemToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeExtendedEventItemToGlibNone(e *ExtendedEventItem) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	return unsafe.Pointer(e.native)
 }
 
 // UnsafeExtendedEventItemToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeExtendedEventItemToGlibFull(e *ExtendedEventItem) unsafe.Pointer {
+	if e == nil {
+		return nil
+	}
 	runtime.SetFinalizer(e.extendedEventItem, nil)
 	_p := unsafe.Pointer(e.native)
 	e.native = nil // ExtendedEventItem is invalid from here on
@@ -7528,11 +8333,19 @@ type iSO639LanguageDescriptor struct {
 	native *C.GstMpegtsISO639LanguageDescriptor
 }
 
+// UnsafeISO639LanguageDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (i *ISO639LanguageDescriptor) instance() *C.GstMpegtsISO639LanguageDescriptor {
+	if i == nil {
+		return nil
+	}
+	return i.native
+}
+
 var _ gobject.GoValueInitializer = (*ISO639LanguageDescriptor)(nil)
 
 func marshalISO639LanguageDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeISO639LanguageDescriptorFromGlibBorrow(b), nil
+	return UnsafeISO639LanguageDescriptorFromGlibNone(b), nil
 }
 
 func (r *ISO639LanguageDescriptor) GoValueType() gobject.Type {
@@ -7540,11 +8353,14 @@ func (r *ISO639LanguageDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *ISO639LanguageDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeISO639LanguageDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsISO639LanguageDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeISO639LanguageDescriptorFromGlibBorrow(p unsafe.Pointer) *ISO639LanguageDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &ISO639LanguageDescriptor{&iSO639LanguageDescriptor{(*C.GstMpegtsISO639LanguageDescriptor)(p)}}
 }
 
@@ -7552,6 +8368,9 @@ func UnsafeISO639LanguageDescriptorFromGlibBorrow(p unsafe.Pointer) *ISO639Langu
 func UnsafeISO639LanguageDescriptorFromGlibNone(p unsafe.Pointer) *ISO639LanguageDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeISO639LanguageDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.iSO639LanguageDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.iSO639LanguageDescriptor,
@@ -7566,6 +8385,9 @@ func UnsafeISO639LanguageDescriptorFromGlibNone(p unsafe.Pointer) *ISO639Languag
 // UnsafeISO639LanguageDescriptorFromGlibFull is used to convert raw C.GstMpegtsISO639LanguageDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeISO639LanguageDescriptorFromGlibFull(p unsafe.Pointer) *ISO639LanguageDescriptor {
 	wrapped := UnsafeISO639LanguageDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.iSO639LanguageDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.iSO639LanguageDescriptor,
@@ -7586,12 +8408,18 @@ func UnsafeISO639LanguageDescriptorFree(i *ISO639LanguageDescriptor) {
 
 // UnsafeISO639LanguageDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeISO639LanguageDescriptorToGlibNone(i *ISO639LanguageDescriptor) unsafe.Pointer {
+	if i == nil {
+		return nil
+	}
 	return unsafe.Pointer(i.native)
 }
 
 // UnsafeISO639LanguageDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeISO639LanguageDescriptorToGlibFull(i *ISO639LanguageDescriptor) unsafe.Pointer {
+	if i == nil {
+		return nil
+	}
 	runtime.SetFinalizer(i.iSO639LanguageDescriptor, nil)
 	_p := unsafe.Pointer(i.native)
 	i.native = nil // ISO639LanguageDescriptor is invalid from here on
@@ -7620,11 +8448,19 @@ type jpegXsDescriptor struct {
 	native *C.GstMpegtsJpegXsDescriptor
 }
 
+// UnsafeJpegXsDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (j *JpegXsDescriptor) instance() *C.GstMpegtsJpegXsDescriptor {
+	if j == nil {
+		return nil
+	}
+	return j.native
+}
+
 var _ gobject.GoValueInitializer = (*JpegXsDescriptor)(nil)
 
 func marshalJpegXsDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeJpegXsDescriptorFromGlibBorrow(b), nil
+	return UnsafeJpegXsDescriptorFromGlibNone(b), nil
 }
 
 func (r *JpegXsDescriptor) GoValueType() gobject.Type {
@@ -7632,11 +8468,14 @@ func (r *JpegXsDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *JpegXsDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeJpegXsDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsJpegXsDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeJpegXsDescriptorFromGlibBorrow(p unsafe.Pointer) *JpegXsDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &JpegXsDescriptor{&jpegXsDescriptor{(*C.GstMpegtsJpegXsDescriptor)(p)}}
 }
 
@@ -7644,6 +8483,9 @@ func UnsafeJpegXsDescriptorFromGlibBorrow(p unsafe.Pointer) *JpegXsDescriptor {
 func UnsafeJpegXsDescriptorFromGlibNone(p unsafe.Pointer) *JpegXsDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeJpegXsDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.jpegXsDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.jpegXsDescriptor,
@@ -7658,6 +8500,9 @@ func UnsafeJpegXsDescriptorFromGlibNone(p unsafe.Pointer) *JpegXsDescriptor {
 // UnsafeJpegXsDescriptorFromGlibFull is used to convert raw C.GstMpegtsJpegXsDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeJpegXsDescriptorFromGlibFull(p unsafe.Pointer) *JpegXsDescriptor {
 	wrapped := UnsafeJpegXsDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.jpegXsDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.jpegXsDescriptor,
@@ -7678,12 +8523,18 @@ func UnsafeJpegXsDescriptorFree(j *JpegXsDescriptor) {
 
 // UnsafeJpegXsDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeJpegXsDescriptorToGlibNone(j *JpegXsDescriptor) unsafe.Pointer {
+	if j == nil {
+		return nil
+	}
 	return unsafe.Pointer(j.native)
 }
 
 // UnsafeJpegXsDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeJpegXsDescriptorToGlibFull(j *JpegXsDescriptor) unsafe.Pointer {
+	if j == nil {
+		return nil
+	}
 	runtime.SetFinalizer(j.jpegXsDescriptor, nil)
 	_p := unsafe.Pointer(j.native)
 	j.native = nil // JpegXsDescriptor is invalid from here on
@@ -7700,11 +8551,19 @@ type logicalChannel struct {
 	native *C.GstMpegtsLogicalChannel
 }
 
+// UnsafeLogicalChannelToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (l *LogicalChannel) instance() *C.GstMpegtsLogicalChannel {
+	if l == nil {
+		return nil
+	}
+	return l.native
+}
+
 var _ gobject.GoValueInitializer = (*LogicalChannel)(nil)
 
 func marshalLogicalChannel(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeLogicalChannelFromGlibBorrow(b), nil
+	return UnsafeLogicalChannelFromGlibNone(b), nil
 }
 
 func (r *LogicalChannel) GoValueType() gobject.Type {
@@ -7712,11 +8571,14 @@ func (r *LogicalChannel) GoValueType() gobject.Type {
 }
 
 func (r *LogicalChannel) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeLogicalChannelFromGlibBorrow is used to convert raw C.GstMpegtsLogicalChannel pointers to go. This is used by the bindings internally.
 func UnsafeLogicalChannelFromGlibBorrow(p unsafe.Pointer) *LogicalChannel {
+	if p == nil {
+		return nil
+	}
 	return &LogicalChannel{&logicalChannel{(*C.GstMpegtsLogicalChannel)(p)}}
 }
 
@@ -7724,6 +8586,9 @@ func UnsafeLogicalChannelFromGlibBorrow(p unsafe.Pointer) *LogicalChannel {
 func UnsafeLogicalChannelFromGlibNone(p unsafe.Pointer) *LogicalChannel {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeLogicalChannelFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.logicalChannel)), 1)
 	runtime.SetFinalizer(
 		wrapped.logicalChannel,
@@ -7738,6 +8603,9 @@ func UnsafeLogicalChannelFromGlibNone(p unsafe.Pointer) *LogicalChannel {
 // UnsafeLogicalChannelFromGlibFull is used to convert raw C.GstMpegtsLogicalChannel pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeLogicalChannelFromGlibFull(p unsafe.Pointer) *LogicalChannel {
 	wrapped := UnsafeLogicalChannelFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.logicalChannel)), 1)
 	runtime.SetFinalizer(
 		wrapped.logicalChannel,
@@ -7758,12 +8626,18 @@ func UnsafeLogicalChannelFree(l *LogicalChannel) {
 
 // UnsafeLogicalChannelToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeLogicalChannelToGlibNone(l *LogicalChannel) unsafe.Pointer {
+	if l == nil {
+		return nil
+	}
 	return unsafe.Pointer(l.native)
 }
 
 // UnsafeLogicalChannelToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeLogicalChannelToGlibFull(l *LogicalChannel) unsafe.Pointer {
+	if l == nil {
+		return nil
+	}
 	runtime.SetFinalizer(l.logicalChannel, nil)
 	_p := unsafe.Pointer(l.native)
 	l.native = nil // LogicalChannel is invalid from here on
@@ -7780,11 +8654,19 @@ type logicalChannelDescriptor struct {
 	native *C.GstMpegtsLogicalChannelDescriptor
 }
 
+// UnsafeLogicalChannelDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (l *LogicalChannelDescriptor) instance() *C.GstMpegtsLogicalChannelDescriptor {
+	if l == nil {
+		return nil
+	}
+	return l.native
+}
+
 var _ gobject.GoValueInitializer = (*LogicalChannelDescriptor)(nil)
 
 func marshalLogicalChannelDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeLogicalChannelDescriptorFromGlibBorrow(b), nil
+	return UnsafeLogicalChannelDescriptorFromGlibNone(b), nil
 }
 
 func (r *LogicalChannelDescriptor) GoValueType() gobject.Type {
@@ -7792,11 +8674,14 @@ func (r *LogicalChannelDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *LogicalChannelDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeLogicalChannelDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsLogicalChannelDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeLogicalChannelDescriptorFromGlibBorrow(p unsafe.Pointer) *LogicalChannelDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &LogicalChannelDescriptor{&logicalChannelDescriptor{(*C.GstMpegtsLogicalChannelDescriptor)(p)}}
 }
 
@@ -7804,6 +8689,9 @@ func UnsafeLogicalChannelDescriptorFromGlibBorrow(p unsafe.Pointer) *LogicalChan
 func UnsafeLogicalChannelDescriptorFromGlibNone(p unsafe.Pointer) *LogicalChannelDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeLogicalChannelDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.logicalChannelDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.logicalChannelDescriptor,
@@ -7818,6 +8706,9 @@ func UnsafeLogicalChannelDescriptorFromGlibNone(p unsafe.Pointer) *LogicalChanne
 // UnsafeLogicalChannelDescriptorFromGlibFull is used to convert raw C.GstMpegtsLogicalChannelDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeLogicalChannelDescriptorFromGlibFull(p unsafe.Pointer) *LogicalChannelDescriptor {
 	wrapped := UnsafeLogicalChannelDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.logicalChannelDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.logicalChannelDescriptor,
@@ -7838,12 +8729,18 @@ func UnsafeLogicalChannelDescriptorFree(l *LogicalChannelDescriptor) {
 
 // UnsafeLogicalChannelDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeLogicalChannelDescriptorToGlibNone(l *LogicalChannelDescriptor) unsafe.Pointer {
+	if l == nil {
+		return nil
+	}
 	return unsafe.Pointer(l.native)
 }
 
 // UnsafeLogicalChannelDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeLogicalChannelDescriptorToGlibFull(l *LogicalChannelDescriptor) unsafe.Pointer {
+	if l == nil {
+		return nil
+	}
 	runtime.SetFinalizer(l.logicalChannelDescriptor, nil)
 	_p := unsafe.Pointer(l.native)
 	l.native = nil // LogicalChannelDescriptor is invalid from here on
@@ -7867,11 +8764,19 @@ type metadataDescriptor struct {
 	native *C.GstMpegtsMetadataDescriptor
 }
 
+// UnsafeMetadataDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (m *MetadataDescriptor) instance() *C.GstMpegtsMetadataDescriptor {
+	if m == nil {
+		return nil
+	}
+	return m.native
+}
+
 var _ gobject.GoValueInitializer = (*MetadataDescriptor)(nil)
 
 func marshalMetadataDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeMetadataDescriptorFromGlibBorrow(b), nil
+	return UnsafeMetadataDescriptorFromGlibNone(b), nil
 }
 
 func (r *MetadataDescriptor) GoValueType() gobject.Type {
@@ -7879,11 +8784,14 @@ func (r *MetadataDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *MetadataDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeMetadataDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsMetadataDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeMetadataDescriptorFromGlibBorrow(p unsafe.Pointer) *MetadataDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &MetadataDescriptor{&metadataDescriptor{(*C.GstMpegtsMetadataDescriptor)(p)}}
 }
 
@@ -7891,6 +8799,9 @@ func UnsafeMetadataDescriptorFromGlibBorrow(p unsafe.Pointer) *MetadataDescripto
 func UnsafeMetadataDescriptorFromGlibNone(p unsafe.Pointer) *MetadataDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMetadataDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.metadataDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.metadataDescriptor,
@@ -7905,6 +8816,9 @@ func UnsafeMetadataDescriptorFromGlibNone(p unsafe.Pointer) *MetadataDescriptor 
 // UnsafeMetadataDescriptorFromGlibFull is used to convert raw C.GstMpegtsMetadataDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMetadataDescriptorFromGlibFull(p unsafe.Pointer) *MetadataDescriptor {
 	wrapped := UnsafeMetadataDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.metadataDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.metadataDescriptor,
@@ -7925,12 +8839,18 @@ func UnsafeMetadataDescriptorFree(m *MetadataDescriptor) {
 
 // UnsafeMetadataDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeMetadataDescriptorToGlibNone(m *MetadataDescriptor) unsafe.Pointer {
+	if m == nil {
+		return nil
+	}
 	return unsafe.Pointer(m.native)
 }
 
 // UnsafeMetadataDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMetadataDescriptorToGlibFull(m *MetadataDescriptor) unsafe.Pointer {
+	if m == nil {
+		return nil
+	}
 	runtime.SetFinalizer(m.metadataDescriptor, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MetadataDescriptor is invalid from here on
@@ -7956,11 +8876,19 @@ type metadataPointerDescriptor struct {
 	native *C.GstMpegtsMetadataPointerDescriptor
 }
 
+// UnsafeMetadataPointerDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (m *MetadataPointerDescriptor) instance() *C.GstMpegtsMetadataPointerDescriptor {
+	if m == nil {
+		return nil
+	}
+	return m.native
+}
+
 var _ gobject.GoValueInitializer = (*MetadataPointerDescriptor)(nil)
 
 func marshalMetadataPointerDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeMetadataPointerDescriptorFromGlibBorrow(b), nil
+	return UnsafeMetadataPointerDescriptorFromGlibNone(b), nil
 }
 
 func (r *MetadataPointerDescriptor) GoValueType() gobject.Type {
@@ -7968,11 +8896,14 @@ func (r *MetadataPointerDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *MetadataPointerDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeMetadataPointerDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsMetadataPointerDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeMetadataPointerDescriptorFromGlibBorrow(p unsafe.Pointer) *MetadataPointerDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &MetadataPointerDescriptor{&metadataPointerDescriptor{(*C.GstMpegtsMetadataPointerDescriptor)(p)}}
 }
 
@@ -7980,6 +8911,9 @@ func UnsafeMetadataPointerDescriptorFromGlibBorrow(p unsafe.Pointer) *MetadataPo
 func UnsafeMetadataPointerDescriptorFromGlibNone(p unsafe.Pointer) *MetadataPointerDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMetadataPointerDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.metadataPointerDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.metadataPointerDescriptor,
@@ -7994,6 +8928,9 @@ func UnsafeMetadataPointerDescriptorFromGlibNone(p unsafe.Pointer) *MetadataPoin
 // UnsafeMetadataPointerDescriptorFromGlibFull is used to convert raw C.GstMpegtsMetadataPointerDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMetadataPointerDescriptorFromGlibFull(p unsafe.Pointer) *MetadataPointerDescriptor {
 	wrapped := UnsafeMetadataPointerDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.metadataPointerDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.metadataPointerDescriptor,
@@ -8014,12 +8951,18 @@ func UnsafeMetadataPointerDescriptorFree(m *MetadataPointerDescriptor) {
 
 // UnsafeMetadataPointerDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeMetadataPointerDescriptorToGlibNone(m *MetadataPointerDescriptor) unsafe.Pointer {
+	if m == nil {
+		return nil
+	}
 	return unsafe.Pointer(m.native)
 }
 
 // UnsafeMetadataPointerDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeMetadataPointerDescriptorToGlibFull(m *MetadataPointerDescriptor) unsafe.Pointer {
+	if m == nil {
+		return nil
+	}
 	runtime.SetFinalizer(m.metadataPointerDescriptor, nil)
 	_p := unsafe.Pointer(m.native)
 	m.native = nil // MetadataPointerDescriptor is invalid from here on
@@ -8038,11 +8981,19 @@ type nIT struct {
 	native *C.GstMpegtsNIT
 }
 
+// UnsafeNITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (n *NIT) instance() *C.GstMpegtsNIT {
+	if n == nil {
+		return nil
+	}
+	return n.native
+}
+
 var _ gobject.GoValueInitializer = (*NIT)(nil)
 
 func marshalNIT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeNITFromGlibBorrow(b), nil
+	return UnsafeNITFromGlibNone(b), nil
 }
 
 func (r *NIT) GoValueType() gobject.Type {
@@ -8050,11 +9001,14 @@ func (r *NIT) GoValueType() gobject.Type {
 }
 
 func (r *NIT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeNITFromGlibBorrow is used to convert raw C.GstMpegtsNIT pointers to go. This is used by the bindings internally.
 func UnsafeNITFromGlibBorrow(p unsafe.Pointer) *NIT {
+	if p == nil {
+		return nil
+	}
 	return &NIT{&nIT{(*C.GstMpegtsNIT)(p)}}
 }
 
@@ -8062,6 +9016,9 @@ func UnsafeNITFromGlibBorrow(p unsafe.Pointer) *NIT {
 func UnsafeNITFromGlibNone(p unsafe.Pointer) *NIT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.nIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.nIT,
@@ -8076,6 +9033,9 @@ func UnsafeNITFromGlibNone(p unsafe.Pointer) *NIT {
 // UnsafeNITFromGlibFull is used to convert raw C.GstMpegtsNIT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNITFromGlibFull(p unsafe.Pointer) *NIT {
 	wrapped := UnsafeNITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.nIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.nIT,
@@ -8096,12 +9056,18 @@ func UnsafeNITFree(n *NIT) {
 
 // UnsafeNITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeNITToGlibNone(n *NIT) unsafe.Pointer {
+	if n == nil {
+		return nil
+	}
 	return unsafe.Pointer(n.native)
 }
 
 // UnsafeNITToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeNITToGlibFull(n *NIT) unsafe.Pointer {
+	if n == nil {
+		return nil
+	}
 	runtime.SetFinalizer(n.nIT, nil)
 	_p := unsafe.Pointer(n.native)
 	n.native = nil // NIT is invalid from here on
@@ -8137,11 +9103,19 @@ type nITStream struct {
 	native *C.GstMpegtsNITStream
 }
 
+// UnsafeNITStreamToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (n *NITStream) instance() *C.GstMpegtsNITStream {
+	if n == nil {
+		return nil
+	}
+	return n.native
+}
+
 var _ gobject.GoValueInitializer = (*NITStream)(nil)
 
 func marshalNITStream(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeNITStreamFromGlibBorrow(b), nil
+	return UnsafeNITStreamFromGlibNone(b), nil
 }
 
 func (r *NITStream) GoValueType() gobject.Type {
@@ -8149,11 +9123,14 @@ func (r *NITStream) GoValueType() gobject.Type {
 }
 
 func (r *NITStream) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeNITStreamFromGlibBorrow is used to convert raw C.GstMpegtsNITStream pointers to go. This is used by the bindings internally.
 func UnsafeNITStreamFromGlibBorrow(p unsafe.Pointer) *NITStream {
+	if p == nil {
+		return nil
+	}
 	return &NITStream{&nITStream{(*C.GstMpegtsNITStream)(p)}}
 }
 
@@ -8161,6 +9138,9 @@ func UnsafeNITStreamFromGlibBorrow(p unsafe.Pointer) *NITStream {
 func UnsafeNITStreamFromGlibNone(p unsafe.Pointer) *NITStream {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNITStreamFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.nITStream)), 1)
 	runtime.SetFinalizer(
 		wrapped.nITStream,
@@ -8175,6 +9155,9 @@ func UnsafeNITStreamFromGlibNone(p unsafe.Pointer) *NITStream {
 // UnsafeNITStreamFromGlibFull is used to convert raw C.GstMpegtsNITStream pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNITStreamFromGlibFull(p unsafe.Pointer) *NITStream {
 	wrapped := UnsafeNITStreamFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.nITStream)), 1)
 	runtime.SetFinalizer(
 		wrapped.nITStream,
@@ -8195,12 +9178,18 @@ func UnsafeNITStreamFree(n *NITStream) {
 
 // UnsafeNITStreamToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeNITStreamToGlibNone(n *NITStream) unsafe.Pointer {
+	if n == nil {
+		return nil
+	}
 	return unsafe.Pointer(n.native)
 }
 
 // UnsafeNITStreamToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeNITStreamToGlibFull(n *NITStream) unsafe.Pointer {
+	if n == nil {
+		return nil
+	}
 	runtime.SetFinalizer(n.nITStream, nil)
 	_p := unsafe.Pointer(n.native)
 	n.native = nil // NITStream is invalid from here on
@@ -8242,8 +9231,19 @@ type pESMetadataMeta struct {
 	native *C.GstMpegtsPESMetadataMeta
 }
 
+// UnsafePESMetadataMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PESMetadataMeta) instance() *C.GstMpegtsPESMetadataMeta {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 // UnsafePESMetadataMetaFromGlibBorrow is used to convert raw C.GstMpegtsPESMetadataMeta pointers to go. This is used by the bindings internally.
 func UnsafePESMetadataMetaFromGlibBorrow(p unsafe.Pointer) *PESMetadataMeta {
+	if p == nil {
+		return nil
+	}
 	return &PESMetadataMeta{&pESMetadataMeta{(*C.GstMpegtsPESMetadataMeta)(p)}}
 }
 
@@ -8251,6 +9251,9 @@ func UnsafePESMetadataMetaFromGlibBorrow(p unsafe.Pointer) *PESMetadataMeta {
 func UnsafePESMetadataMetaFromGlibNone(p unsafe.Pointer) *PESMetadataMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePESMetadataMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.pESMetadataMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.pESMetadataMeta,
@@ -8265,6 +9268,9 @@ func UnsafePESMetadataMetaFromGlibNone(p unsafe.Pointer) *PESMetadataMeta {
 // UnsafePESMetadataMetaFromGlibFull is used to convert raw C.GstMpegtsPESMetadataMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePESMetadataMetaFromGlibFull(p unsafe.Pointer) *PESMetadataMeta {
 	wrapped := UnsafePESMetadataMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.pESMetadataMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.pESMetadataMeta,
@@ -8285,12 +9291,18 @@ func UnsafePESMetadataMetaFree(p *PESMetadataMeta) {
 
 // UnsafePESMetadataMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePESMetadataMetaToGlibNone(p *PESMetadataMeta) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
 // UnsafePESMetadataMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePESMetadataMetaToGlibFull(p *PESMetadataMeta) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	runtime.SetFinalizer(p.pESMetadataMeta, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PESMetadataMeta is invalid from here on
@@ -8332,11 +9344,19 @@ type pMT struct {
 	native *C.GstMpegtsPMT
 }
 
+// UnsafePMTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PMT) instance() *C.GstMpegtsPMT {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 var _ gobject.GoValueInitializer = (*PMT)(nil)
 
 func marshalPMT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafePMTFromGlibBorrow(b), nil
+	return UnsafePMTFromGlibNone(b), nil
 }
 
 func (r *PMT) GoValueType() gobject.Type {
@@ -8344,11 +9364,14 @@ func (r *PMT) GoValueType() gobject.Type {
 }
 
 func (r *PMT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafePMTFromGlibBorrow is used to convert raw C.GstMpegtsPMT pointers to go. This is used by the bindings internally.
 func UnsafePMTFromGlibBorrow(p unsafe.Pointer) *PMT {
+	if p == nil {
+		return nil
+	}
 	return &PMT{&pMT{(*C.GstMpegtsPMT)(p)}}
 }
 
@@ -8356,6 +9379,9 @@ func UnsafePMTFromGlibBorrow(p unsafe.Pointer) *PMT {
 func UnsafePMTFromGlibNone(p unsafe.Pointer) *PMT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePMTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.pMT)), 1)
 	runtime.SetFinalizer(
 		wrapped.pMT,
@@ -8370,6 +9396,9 @@ func UnsafePMTFromGlibNone(p unsafe.Pointer) *PMT {
 // UnsafePMTFromGlibFull is used to convert raw C.GstMpegtsPMT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePMTFromGlibFull(p unsafe.Pointer) *PMT {
 	wrapped := UnsafePMTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.pMT)), 1)
 	runtime.SetFinalizer(
 		wrapped.pMT,
@@ -8390,12 +9419,18 @@ func UnsafePMTFree(p *PMT) {
 
 // UnsafePMTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePMTToGlibNone(p *PMT) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
 // UnsafePMTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePMTToGlibFull(p *PMT) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	runtime.SetFinalizer(p.pMT, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PMT is invalid from here on
@@ -8435,11 +9470,19 @@ type pMTStream struct {
 	native *C.GstMpegtsPMTStream
 }
 
+// UnsafePMTStreamToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PMTStream) instance() *C.GstMpegtsPMTStream {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 var _ gobject.GoValueInitializer = (*PMTStream)(nil)
 
 func marshalPMTStream(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafePMTStreamFromGlibBorrow(b), nil
+	return UnsafePMTStreamFromGlibNone(b), nil
 }
 
 func (r *PMTStream) GoValueType() gobject.Type {
@@ -8447,11 +9490,14 @@ func (r *PMTStream) GoValueType() gobject.Type {
 }
 
 func (r *PMTStream) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafePMTStreamFromGlibBorrow is used to convert raw C.GstMpegtsPMTStream pointers to go. This is used by the bindings internally.
 func UnsafePMTStreamFromGlibBorrow(p unsafe.Pointer) *PMTStream {
+	if p == nil {
+		return nil
+	}
 	return &PMTStream{&pMTStream{(*C.GstMpegtsPMTStream)(p)}}
 }
 
@@ -8459,6 +9505,9 @@ func UnsafePMTStreamFromGlibBorrow(p unsafe.Pointer) *PMTStream {
 func UnsafePMTStreamFromGlibNone(p unsafe.Pointer) *PMTStream {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePMTStreamFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.pMTStream)), 1)
 	runtime.SetFinalizer(
 		wrapped.pMTStream,
@@ -8473,6 +9522,9 @@ func UnsafePMTStreamFromGlibNone(p unsafe.Pointer) *PMTStream {
 // UnsafePMTStreamFromGlibFull is used to convert raw C.GstMpegtsPMTStream pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePMTStreamFromGlibFull(p unsafe.Pointer) *PMTStream {
 	wrapped := UnsafePMTStreamFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.pMTStream)), 1)
 	runtime.SetFinalizer(
 		wrapped.pMTStream,
@@ -8493,12 +9545,18 @@ func UnsafePMTStreamFree(p *PMTStream) {
 
 // UnsafePMTStreamToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePMTStreamToGlibNone(p *PMTStream) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
 // UnsafePMTStreamToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePMTStreamToGlibFull(p *PMTStream) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	runtime.SetFinalizer(p.pMTStream, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PMTStream is invalid from here on
@@ -8536,11 +9594,19 @@ type patProgram struct {
 	native *C.GstMpegtsPatProgram
 }
 
+// UnsafePatProgramToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (p *PatProgram) instance() *C.GstMpegtsPatProgram {
+	if p == nil {
+		return nil
+	}
+	return p.native
+}
+
 var _ gobject.GoValueInitializer = (*PatProgram)(nil)
 
 func marshalPatProgram(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafePatProgramFromGlibBorrow(b), nil
+	return UnsafePatProgramFromGlibNone(b), nil
 }
 
 func (r *PatProgram) GoValueType() gobject.Type {
@@ -8548,11 +9614,14 @@ func (r *PatProgram) GoValueType() gobject.Type {
 }
 
 func (r *PatProgram) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafePatProgramFromGlibBorrow is used to convert raw C.GstMpegtsPatProgram pointers to go. This is used by the bindings internally.
 func UnsafePatProgramFromGlibBorrow(p unsafe.Pointer) *PatProgram {
+	if p == nil {
+		return nil
+	}
 	return &PatProgram{&patProgram{(*C.GstMpegtsPatProgram)(p)}}
 }
 
@@ -8560,6 +9629,9 @@ func UnsafePatProgramFromGlibBorrow(p unsafe.Pointer) *PatProgram {
 func UnsafePatProgramFromGlibNone(p unsafe.Pointer) *PatProgram {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePatProgramFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.patProgram)), 1)
 	runtime.SetFinalizer(
 		wrapped.patProgram,
@@ -8574,6 +9646,9 @@ func UnsafePatProgramFromGlibNone(p unsafe.Pointer) *PatProgram {
 // UnsafePatProgramFromGlibFull is used to convert raw C.GstMpegtsPatProgram pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePatProgramFromGlibFull(p unsafe.Pointer) *PatProgram {
 	wrapped := UnsafePatProgramFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.patProgram)), 1)
 	runtime.SetFinalizer(
 		wrapped.patProgram,
@@ -8594,12 +9669,18 @@ func UnsafePatProgramFree(p *PatProgram) {
 
 // UnsafePatProgramToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePatProgramToGlibNone(p *PatProgram) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
 // UnsafePatProgramToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePatProgramToGlibFull(p *PatProgram) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	runtime.SetFinalizer(p.patProgram, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // PatProgram is invalid from here on
@@ -8635,11 +9716,19 @@ type sCTESIT struct {
 	native *C.GstMpegtsSCTESIT
 }
 
+// UnsafeSCTESITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *SCTESIT) instance() *C.GstMpegtsSCTESIT {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 var _ gobject.GoValueInitializer = (*SCTESIT)(nil)
 
 func marshalSCTESIT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeSCTESITFromGlibBorrow(b), nil
+	return UnsafeSCTESITFromGlibNone(b), nil
 }
 
 func (r *SCTESIT) GoValueType() gobject.Type {
@@ -8647,11 +9736,14 @@ func (r *SCTESIT) GoValueType() gobject.Type {
 }
 
 func (r *SCTESIT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeSCTESITFromGlibBorrow is used to convert raw C.GstMpegtsSCTESIT pointers to go. This is used by the bindings internally.
 func UnsafeSCTESITFromGlibBorrow(p unsafe.Pointer) *SCTESIT {
+	if p == nil {
+		return nil
+	}
 	return &SCTESIT{&sCTESIT{(*C.GstMpegtsSCTESIT)(p)}}
 }
 
@@ -8659,6 +9751,9 @@ func UnsafeSCTESITFromGlibBorrow(p unsafe.Pointer) *SCTESIT {
 func UnsafeSCTESITFromGlibNone(p unsafe.Pointer) *SCTESIT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSCTESITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sCTESIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.sCTESIT,
@@ -8673,6 +9768,9 @@ func UnsafeSCTESITFromGlibNone(p unsafe.Pointer) *SCTESIT {
 // UnsafeSCTESITFromGlibFull is used to convert raw C.GstMpegtsSCTESIT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSCTESITFromGlibFull(p unsafe.Pointer) *SCTESIT {
 	wrapped := UnsafeSCTESITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sCTESIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.sCTESIT,
@@ -8693,12 +9791,18 @@ func UnsafeSCTESITFree(s *SCTESIT) {
 
 // UnsafeSCTESITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeSCTESITToGlibNone(s *SCTESIT) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeSCTESITToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSCTESITToGlibFull(s *SCTESIT) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.sCTESIT, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SCTESIT is invalid from here on
@@ -8736,11 +9840,19 @@ type sCTESpliceComponent struct {
 	native *C.GstMpegtsSCTESpliceComponent
 }
 
+// UnsafeSCTESpliceComponentToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *SCTESpliceComponent) instance() *C.GstMpegtsSCTESpliceComponent {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 var _ gobject.GoValueInitializer = (*SCTESpliceComponent)(nil)
 
 func marshalSCTESpliceComponent(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeSCTESpliceComponentFromGlibBorrow(b), nil
+	return UnsafeSCTESpliceComponentFromGlibNone(b), nil
 }
 
 func (r *SCTESpliceComponent) GoValueType() gobject.Type {
@@ -8748,11 +9860,14 @@ func (r *SCTESpliceComponent) GoValueType() gobject.Type {
 }
 
 func (r *SCTESpliceComponent) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeSCTESpliceComponentFromGlibBorrow is used to convert raw C.GstMpegtsSCTESpliceComponent pointers to go. This is used by the bindings internally.
 func UnsafeSCTESpliceComponentFromGlibBorrow(p unsafe.Pointer) *SCTESpliceComponent {
+	if p == nil {
+		return nil
+	}
 	return &SCTESpliceComponent{&sCTESpliceComponent{(*C.GstMpegtsSCTESpliceComponent)(p)}}
 }
 
@@ -8760,6 +9875,9 @@ func UnsafeSCTESpliceComponentFromGlibBorrow(p unsafe.Pointer) *SCTESpliceCompon
 func UnsafeSCTESpliceComponentFromGlibNone(p unsafe.Pointer) *SCTESpliceComponent {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSCTESpliceComponentFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sCTESpliceComponent)), 1)
 	runtime.SetFinalizer(
 		wrapped.sCTESpliceComponent,
@@ -8774,6 +9892,9 @@ func UnsafeSCTESpliceComponentFromGlibNone(p unsafe.Pointer) *SCTESpliceComponen
 // UnsafeSCTESpliceComponentFromGlibFull is used to convert raw C.GstMpegtsSCTESpliceComponent pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSCTESpliceComponentFromGlibFull(p unsafe.Pointer) *SCTESpliceComponent {
 	wrapped := UnsafeSCTESpliceComponentFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sCTESpliceComponent)), 1)
 	runtime.SetFinalizer(
 		wrapped.sCTESpliceComponent,
@@ -8794,12 +9915,18 @@ func UnsafeSCTESpliceComponentFree(s *SCTESpliceComponent) {
 
 // UnsafeSCTESpliceComponentToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeSCTESpliceComponentToGlibNone(s *SCTESpliceComponent) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeSCTESpliceComponentToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSCTESpliceComponentToGlibFull(s *SCTESpliceComponent) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.sCTESpliceComponent, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SCTESpliceComponent is invalid from here on
@@ -8843,11 +9970,19 @@ type sCTESpliceEvent struct {
 	native *C.GstMpegtsSCTESpliceEvent
 }
 
+// UnsafeSCTESpliceEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *SCTESpliceEvent) instance() *C.GstMpegtsSCTESpliceEvent {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 var _ gobject.GoValueInitializer = (*SCTESpliceEvent)(nil)
 
 func marshalSCTESpliceEvent(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeSCTESpliceEventFromGlibBorrow(b), nil
+	return UnsafeSCTESpliceEventFromGlibNone(b), nil
 }
 
 func (r *SCTESpliceEvent) GoValueType() gobject.Type {
@@ -8855,11 +9990,14 @@ func (r *SCTESpliceEvent) GoValueType() gobject.Type {
 }
 
 func (r *SCTESpliceEvent) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeSCTESpliceEventFromGlibBorrow is used to convert raw C.GstMpegtsSCTESpliceEvent pointers to go. This is used by the bindings internally.
 func UnsafeSCTESpliceEventFromGlibBorrow(p unsafe.Pointer) *SCTESpliceEvent {
+	if p == nil {
+		return nil
+	}
 	return &SCTESpliceEvent{&sCTESpliceEvent{(*C.GstMpegtsSCTESpliceEvent)(p)}}
 }
 
@@ -8867,6 +10005,9 @@ func UnsafeSCTESpliceEventFromGlibBorrow(p unsafe.Pointer) *SCTESpliceEvent {
 func UnsafeSCTESpliceEventFromGlibNone(p unsafe.Pointer) *SCTESpliceEvent {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSCTESpliceEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sCTESpliceEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.sCTESpliceEvent,
@@ -8881,6 +10022,9 @@ func UnsafeSCTESpliceEventFromGlibNone(p unsafe.Pointer) *SCTESpliceEvent {
 // UnsafeSCTESpliceEventFromGlibFull is used to convert raw C.GstMpegtsSCTESpliceEvent pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSCTESpliceEventFromGlibFull(p unsafe.Pointer) *SCTESpliceEvent {
 	wrapped := UnsafeSCTESpliceEventFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sCTESpliceEvent)), 1)
 	runtime.SetFinalizer(
 		wrapped.sCTESpliceEvent,
@@ -8901,12 +10045,18 @@ func UnsafeSCTESpliceEventFree(s *SCTESpliceEvent) {
 
 // UnsafeSCTESpliceEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeSCTESpliceEventToGlibNone(s *SCTESpliceEvent) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeSCTESpliceEventToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSCTESpliceEventToGlibFull(s *SCTESpliceEvent) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.sCTESpliceEvent, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SCTESpliceEvent is invalid from here on
@@ -8944,11 +10094,19 @@ type sDT struct {
 	native *C.GstMpegtsSDT
 }
 
+// UnsafeSDTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *SDT) instance() *C.GstMpegtsSDT {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 var _ gobject.GoValueInitializer = (*SDT)(nil)
 
 func marshalSDT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeSDTFromGlibBorrow(b), nil
+	return UnsafeSDTFromGlibNone(b), nil
 }
 
 func (r *SDT) GoValueType() gobject.Type {
@@ -8956,11 +10114,14 @@ func (r *SDT) GoValueType() gobject.Type {
 }
 
 func (r *SDT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeSDTFromGlibBorrow is used to convert raw C.GstMpegtsSDT pointers to go. This is used by the bindings internally.
 func UnsafeSDTFromGlibBorrow(p unsafe.Pointer) *SDT {
+	if p == nil {
+		return nil
+	}
 	return &SDT{&sDT{(*C.GstMpegtsSDT)(p)}}
 }
 
@@ -8968,6 +10129,9 @@ func UnsafeSDTFromGlibBorrow(p unsafe.Pointer) *SDT {
 func UnsafeSDTFromGlibNone(p unsafe.Pointer) *SDT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sDT)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDT,
@@ -8982,6 +10146,9 @@ func UnsafeSDTFromGlibNone(p unsafe.Pointer) *SDT {
 // UnsafeSDTFromGlibFull is used to convert raw C.GstMpegtsSDT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDTFromGlibFull(p unsafe.Pointer) *SDT {
 	wrapped := UnsafeSDTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sDT)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDT,
@@ -9002,12 +10169,18 @@ func UnsafeSDTFree(s *SDT) {
 
 // UnsafeSDTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeSDTToGlibNone(s *SDT) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeSDTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDTToGlibFull(s *SDT) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.sDT, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDT is invalid from here on
@@ -9043,11 +10216,19 @@ type sDTService struct {
 	native *C.GstMpegtsSDTService
 }
 
+// UnsafeSDTServiceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *SDTService) instance() *C.GstMpegtsSDTService {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 var _ gobject.GoValueInitializer = (*SDTService)(nil)
 
 func marshalSDTService(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeSDTServiceFromGlibBorrow(b), nil
+	return UnsafeSDTServiceFromGlibNone(b), nil
 }
 
 func (r *SDTService) GoValueType() gobject.Type {
@@ -9055,11 +10236,14 @@ func (r *SDTService) GoValueType() gobject.Type {
 }
 
 func (r *SDTService) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeSDTServiceFromGlibBorrow is used to convert raw C.GstMpegtsSDTService pointers to go. This is used by the bindings internally.
 func UnsafeSDTServiceFromGlibBorrow(p unsafe.Pointer) *SDTService {
+	if p == nil {
+		return nil
+	}
 	return &SDTService{&sDTService{(*C.GstMpegtsSDTService)(p)}}
 }
 
@@ -9067,6 +10251,9 @@ func UnsafeSDTServiceFromGlibBorrow(p unsafe.Pointer) *SDTService {
 func UnsafeSDTServiceFromGlibNone(p unsafe.Pointer) *SDTService {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDTServiceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sDTService)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDTService,
@@ -9081,6 +10268,9 @@ func UnsafeSDTServiceFromGlibNone(p unsafe.Pointer) *SDTService {
 // UnsafeSDTServiceFromGlibFull is used to convert raw C.GstMpegtsSDTService pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDTServiceFromGlibFull(p unsafe.Pointer) *SDTService {
 	wrapped := UnsafeSDTServiceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sDTService)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDTService,
@@ -9101,12 +10291,18 @@ func UnsafeSDTServiceFree(s *SDTService) {
 
 // UnsafeSDTServiceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeSDTServiceToGlibNone(s *SDTService) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeSDTServiceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSDTServiceToGlibFull(s *SDTService) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.sDTService, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SDTService is invalid from here on
@@ -9144,11 +10340,19 @@ type sIT struct {
 	native *C.GstMpegtsSIT
 }
 
+// UnsafeSITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *SIT) instance() *C.GstMpegtsSIT {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 var _ gobject.GoValueInitializer = (*SIT)(nil)
 
 func marshalSIT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeSITFromGlibBorrow(b), nil
+	return UnsafeSITFromGlibNone(b), nil
 }
 
 func (r *SIT) GoValueType() gobject.Type {
@@ -9156,11 +10360,14 @@ func (r *SIT) GoValueType() gobject.Type {
 }
 
 func (r *SIT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeSITFromGlibBorrow is used to convert raw C.GstMpegtsSIT pointers to go. This is used by the bindings internally.
 func UnsafeSITFromGlibBorrow(p unsafe.Pointer) *SIT {
+	if p == nil {
+		return nil
+	}
 	return &SIT{&sIT{(*C.GstMpegtsSIT)(p)}}
 }
 
@@ -9168,6 +10375,9 @@ func UnsafeSITFromGlibBorrow(p unsafe.Pointer) *SIT {
 func UnsafeSITFromGlibNone(p unsafe.Pointer) *SIT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.sIT,
@@ -9182,6 +10392,9 @@ func UnsafeSITFromGlibNone(p unsafe.Pointer) *SIT {
 // UnsafeSITFromGlibFull is used to convert raw C.GstMpegtsSIT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSITFromGlibFull(p unsafe.Pointer) *SIT {
 	wrapped := UnsafeSITFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sIT)), 1)
 	runtime.SetFinalizer(
 		wrapped.sIT,
@@ -9202,12 +10415,18 @@ func UnsafeSITFree(s *SIT) {
 
 // UnsafeSITToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeSITToGlibNone(s *SIT) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeSITToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSITToGlibFull(s *SIT) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.sIT, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SIT is invalid from here on
@@ -9226,11 +10445,19 @@ type sITService struct {
 	native *C.GstMpegtsSITService
 }
 
+// UnsafeSITServiceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *SITService) instance() *C.GstMpegtsSITService {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 var _ gobject.GoValueInitializer = (*SITService)(nil)
 
 func marshalSITService(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeSITServiceFromGlibBorrow(b), nil
+	return UnsafeSITServiceFromGlibNone(b), nil
 }
 
 func (r *SITService) GoValueType() gobject.Type {
@@ -9238,11 +10465,14 @@ func (r *SITService) GoValueType() gobject.Type {
 }
 
 func (r *SITService) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeSITServiceFromGlibBorrow is used to convert raw C.GstMpegtsSITService pointers to go. This is used by the bindings internally.
 func UnsafeSITServiceFromGlibBorrow(p unsafe.Pointer) *SITService {
+	if p == nil {
+		return nil
+	}
 	return &SITService{&sITService{(*C.GstMpegtsSITService)(p)}}
 }
 
@@ -9250,6 +10480,9 @@ func UnsafeSITServiceFromGlibBorrow(p unsafe.Pointer) *SITService {
 func UnsafeSITServiceFromGlibNone(p unsafe.Pointer) *SITService {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSITServiceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sITService)), 1)
 	runtime.SetFinalizer(
 		wrapped.sITService,
@@ -9264,6 +10497,9 @@ func UnsafeSITServiceFromGlibNone(p unsafe.Pointer) *SITService {
 // UnsafeSITServiceFromGlibFull is used to convert raw C.GstMpegtsSITService pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSITServiceFromGlibFull(p unsafe.Pointer) *SITService {
 	wrapped := UnsafeSITServiceFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.sITService)), 1)
 	runtime.SetFinalizer(
 		wrapped.sITService,
@@ -9284,12 +10520,18 @@ func UnsafeSITServiceFree(s *SITService) {
 
 // UnsafeSITServiceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeSITServiceToGlibNone(s *SITService) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeSITServiceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSITServiceToGlibFull(s *SITService) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.sITService, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SITService is invalid from here on
@@ -9308,11 +10550,19 @@ type satelliteDeliverySystemDescriptor struct {
 	native *C.GstMpegtsSatelliteDeliverySystemDescriptor
 }
 
+// UnsafeSatelliteDeliverySystemDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *SatelliteDeliverySystemDescriptor) instance() *C.GstMpegtsSatelliteDeliverySystemDescriptor {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 var _ gobject.GoValueInitializer = (*SatelliteDeliverySystemDescriptor)(nil)
 
 func marshalSatelliteDeliverySystemDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeSatelliteDeliverySystemDescriptorFromGlibBorrow(b), nil
+	return UnsafeSatelliteDeliverySystemDescriptorFromGlibNone(b), nil
 }
 
 func (r *SatelliteDeliverySystemDescriptor) GoValueType() gobject.Type {
@@ -9320,11 +10570,14 @@ func (r *SatelliteDeliverySystemDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *SatelliteDeliverySystemDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeSatelliteDeliverySystemDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsSatelliteDeliverySystemDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeSatelliteDeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *SatelliteDeliverySystemDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &SatelliteDeliverySystemDescriptor{&satelliteDeliverySystemDescriptor{(*C.GstMpegtsSatelliteDeliverySystemDescriptor)(p)}}
 }
 
@@ -9332,6 +10585,9 @@ func UnsafeSatelliteDeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *Sa
 func UnsafeSatelliteDeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *SatelliteDeliverySystemDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSatelliteDeliverySystemDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.satelliteDeliverySystemDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.satelliteDeliverySystemDescriptor,
@@ -9346,6 +10602,9 @@ func UnsafeSatelliteDeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *Sate
 // UnsafeSatelliteDeliverySystemDescriptorFromGlibFull is used to convert raw C.GstMpegtsSatelliteDeliverySystemDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSatelliteDeliverySystemDescriptorFromGlibFull(p unsafe.Pointer) *SatelliteDeliverySystemDescriptor {
 	wrapped := UnsafeSatelliteDeliverySystemDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.satelliteDeliverySystemDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.satelliteDeliverySystemDescriptor,
@@ -9366,12 +10625,18 @@ func UnsafeSatelliteDeliverySystemDescriptorFree(s *SatelliteDeliverySystemDescr
 
 // UnsafeSatelliteDeliverySystemDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeSatelliteDeliverySystemDescriptorToGlibNone(s *SatelliteDeliverySystemDescriptor) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeSatelliteDeliverySystemDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSatelliteDeliverySystemDescriptorToGlibFull(s *SatelliteDeliverySystemDescriptor) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.satelliteDeliverySystemDescriptor, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // SatelliteDeliverySystemDescriptor is invalid from here on
@@ -9433,11 +10698,19 @@ type section struct {
 	native *C.GstMpegtsSection
 }
 
+// UnsafeSectionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (s *Section) instance() *C.GstMpegtsSection {
+	if s == nil {
+		return nil
+	}
+	return s.native
+}
+
 var _ gobject.GoValueInitializer = (*Section)(nil)
 
 func marshalSection(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeSectionFromGlibBorrow(b), nil
+	return UnsafeSectionFromGlibNone(b), nil
 }
 
 func (r *Section) GoValueType() gobject.Type {
@@ -9445,11 +10718,14 @@ func (r *Section) GoValueType() gobject.Type {
 }
 
 func (r *Section) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeSectionFromGlibBorrow is used to convert raw C.GstMpegtsSection pointers to go. This is used by the bindings internally.
 func UnsafeSectionFromGlibBorrow(p unsafe.Pointer) *Section {
+	if p == nil {
+		return nil
+	}
 	return &Section{&section{(*C.GstMpegtsSection)(p)}}
 }
 
@@ -9457,6 +10733,9 @@ func UnsafeSectionFromGlibBorrow(p unsafe.Pointer) *Section {
 func UnsafeSectionFromGlibNone(p unsafe.Pointer) *Section {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSectionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.section)), 1)
 	runtime.SetFinalizer(
 		wrapped.section,
@@ -9471,6 +10750,9 @@ func UnsafeSectionFromGlibNone(p unsafe.Pointer) *Section {
 // UnsafeSectionFromGlibFull is used to convert raw C.GstMpegtsSection pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSectionFromGlibFull(p unsafe.Pointer) *Section {
 	wrapped := UnsafeSectionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.section)), 1)
 	runtime.SetFinalizer(
 		wrapped.section,
@@ -9491,12 +10773,18 @@ func UnsafeSectionFree(s *Section) {
 
 // UnsafeSectionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeSectionToGlibNone(s *Section) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	return unsafe.Pointer(s.native)
 }
 
 // UnsafeSectionToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeSectionToGlibFull(s *Section) unsafe.Pointer {
+	if s == nil {
+		return nil
+	}
 	runtime.SetFinalizer(s.section, nil)
 	_p := unsafe.Pointer(s.native)
 	s.native = nil // Section is invalid from here on
@@ -10236,11 +11524,19 @@ type t2DeliverySystemCell struct {
 	native *C.GstMpegtsT2DeliverySystemCell
 }
 
+// UnsafeT2DeliverySystemCellToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *T2DeliverySystemCell) instance() *C.GstMpegtsT2DeliverySystemCell {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 var _ gobject.GoValueInitializer = (*T2DeliverySystemCell)(nil)
 
 func marshalT2DeliverySystemCell(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeT2DeliverySystemCellFromGlibBorrow(b), nil
+	return UnsafeT2DeliverySystemCellFromGlibNone(b), nil
 }
 
 func (r *T2DeliverySystemCell) GoValueType() gobject.Type {
@@ -10248,11 +11544,14 @@ func (r *T2DeliverySystemCell) GoValueType() gobject.Type {
 }
 
 func (r *T2DeliverySystemCell) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeT2DeliverySystemCellFromGlibBorrow is used to convert raw C.GstMpegtsT2DeliverySystemCell pointers to go. This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellFromGlibBorrow(p unsafe.Pointer) *T2DeliverySystemCell {
+	if p == nil {
+		return nil
+	}
 	return &T2DeliverySystemCell{&t2DeliverySystemCell{(*C.GstMpegtsT2DeliverySystemCell)(p)}}
 }
 
@@ -10260,6 +11559,9 @@ func UnsafeT2DeliverySystemCellFromGlibBorrow(p unsafe.Pointer) *T2DeliverySyste
 func UnsafeT2DeliverySystemCellFromGlibNone(p unsafe.Pointer) *T2DeliverySystemCell {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeT2DeliverySystemCellFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.t2DeliverySystemCell)), 1)
 	runtime.SetFinalizer(
 		wrapped.t2DeliverySystemCell,
@@ -10274,6 +11576,9 @@ func UnsafeT2DeliverySystemCellFromGlibNone(p unsafe.Pointer) *T2DeliverySystemC
 // UnsafeT2DeliverySystemCellFromGlibFull is used to convert raw C.GstMpegtsT2DeliverySystemCell pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellFromGlibFull(p unsafe.Pointer) *T2DeliverySystemCell {
 	wrapped := UnsafeT2DeliverySystemCellFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.t2DeliverySystemCell)), 1)
 	runtime.SetFinalizer(
 		wrapped.t2DeliverySystemCell,
@@ -10294,12 +11599,18 @@ func UnsafeT2DeliverySystemCellFree(t *T2DeliverySystemCell) {
 
 // UnsafeT2DeliverySystemCellToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellToGlibNone(t *T2DeliverySystemCell) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 
 // UnsafeT2DeliverySystemCellToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellToGlibFull(t *T2DeliverySystemCell) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	runtime.SetFinalizer(t.t2DeliverySystemCell, nil)
 	_p := unsafe.Pointer(t.native)
 	t.native = nil // T2DeliverySystemCell is invalid from here on
@@ -10316,11 +11627,19 @@ type t2DeliverySystemCellExtension struct {
 	native *C.GstMpegtsT2DeliverySystemCellExtension
 }
 
+// UnsafeT2DeliverySystemCellExtensionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *T2DeliverySystemCellExtension) instance() *C.GstMpegtsT2DeliverySystemCellExtension {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 var _ gobject.GoValueInitializer = (*T2DeliverySystemCellExtension)(nil)
 
 func marshalT2DeliverySystemCellExtension(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeT2DeliverySystemCellExtensionFromGlibBorrow(b), nil
+	return UnsafeT2DeliverySystemCellExtensionFromGlibNone(b), nil
 }
 
 func (r *T2DeliverySystemCellExtension) GoValueType() gobject.Type {
@@ -10328,11 +11647,14 @@ func (r *T2DeliverySystemCellExtension) GoValueType() gobject.Type {
 }
 
 func (r *T2DeliverySystemCellExtension) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeT2DeliverySystemCellExtensionFromGlibBorrow is used to convert raw C.GstMpegtsT2DeliverySystemCellExtension pointers to go. This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellExtensionFromGlibBorrow(p unsafe.Pointer) *T2DeliverySystemCellExtension {
+	if p == nil {
+		return nil
+	}
 	return &T2DeliverySystemCellExtension{&t2DeliverySystemCellExtension{(*C.GstMpegtsT2DeliverySystemCellExtension)(p)}}
 }
 
@@ -10340,6 +11662,9 @@ func UnsafeT2DeliverySystemCellExtensionFromGlibBorrow(p unsafe.Pointer) *T2Deli
 func UnsafeT2DeliverySystemCellExtensionFromGlibNone(p unsafe.Pointer) *T2DeliverySystemCellExtension {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeT2DeliverySystemCellExtensionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.t2DeliverySystemCellExtension)), 1)
 	runtime.SetFinalizer(
 		wrapped.t2DeliverySystemCellExtension,
@@ -10354,6 +11679,9 @@ func UnsafeT2DeliverySystemCellExtensionFromGlibNone(p unsafe.Pointer) *T2Delive
 // UnsafeT2DeliverySystemCellExtensionFromGlibFull is used to convert raw C.GstMpegtsT2DeliverySystemCellExtension pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellExtensionFromGlibFull(p unsafe.Pointer) *T2DeliverySystemCellExtension {
 	wrapped := UnsafeT2DeliverySystemCellExtensionFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.t2DeliverySystemCellExtension)), 1)
 	runtime.SetFinalizer(
 		wrapped.t2DeliverySystemCellExtension,
@@ -10374,12 +11702,18 @@ func UnsafeT2DeliverySystemCellExtensionFree(t *T2DeliverySystemCellExtension) {
 
 // UnsafeT2DeliverySystemCellExtensionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellExtensionToGlibNone(t *T2DeliverySystemCellExtension) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 
 // UnsafeT2DeliverySystemCellExtensionToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeT2DeliverySystemCellExtensionToGlibFull(t *T2DeliverySystemCellExtension) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	runtime.SetFinalizer(t.t2DeliverySystemCellExtension, nil)
 	_p := unsafe.Pointer(t.native)
 	t.native = nil // T2DeliverySystemCellExtension is invalid from here on
@@ -10398,11 +11732,19 @@ type t2DeliverySystemDescriptor struct {
 	native *C.GstMpegtsT2DeliverySystemDescriptor
 }
 
+// UnsafeT2DeliverySystemDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *T2DeliverySystemDescriptor) instance() *C.GstMpegtsT2DeliverySystemDescriptor {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 var _ gobject.GoValueInitializer = (*T2DeliverySystemDescriptor)(nil)
 
 func marshalT2DeliverySystemDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeT2DeliverySystemDescriptorFromGlibBorrow(b), nil
+	return UnsafeT2DeliverySystemDescriptorFromGlibNone(b), nil
 }
 
 func (r *T2DeliverySystemDescriptor) GoValueType() gobject.Type {
@@ -10410,11 +11752,14 @@ func (r *T2DeliverySystemDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *T2DeliverySystemDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeT2DeliverySystemDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsT2DeliverySystemDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeT2DeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *T2DeliverySystemDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &T2DeliverySystemDescriptor{&t2DeliverySystemDescriptor{(*C.GstMpegtsT2DeliverySystemDescriptor)(p)}}
 }
 
@@ -10422,6 +11767,9 @@ func UnsafeT2DeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *T2Deliver
 func UnsafeT2DeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *T2DeliverySystemDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeT2DeliverySystemDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.t2DeliverySystemDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.t2DeliverySystemDescriptor,
@@ -10436,6 +11784,9 @@ func UnsafeT2DeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *T2DeliveryS
 // UnsafeT2DeliverySystemDescriptorFromGlibFull is used to convert raw C.GstMpegtsT2DeliverySystemDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeT2DeliverySystemDescriptorFromGlibFull(p unsafe.Pointer) *T2DeliverySystemDescriptor {
 	wrapped := UnsafeT2DeliverySystemDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.t2DeliverySystemDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.t2DeliverySystemDescriptor,
@@ -10456,12 +11807,18 @@ func UnsafeT2DeliverySystemDescriptorFree(t *T2DeliverySystemDescriptor) {
 
 // UnsafeT2DeliverySystemDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeT2DeliverySystemDescriptorToGlibNone(t *T2DeliverySystemDescriptor) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 
 // UnsafeT2DeliverySystemDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeT2DeliverySystemDescriptorToGlibFull(t *T2DeliverySystemDescriptor) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	runtime.SetFinalizer(t.t2DeliverySystemDescriptor, nil)
 	_p := unsafe.Pointer(t.native)
 	t.native = nil // T2DeliverySystemDescriptor is invalid from here on
@@ -10480,11 +11837,19 @@ type tOT struct {
 	native *C.GstMpegtsTOT
 }
 
+// UnsafeTOTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *TOT) instance() *C.GstMpegtsTOT {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 var _ gobject.GoValueInitializer = (*TOT)(nil)
 
 func marshalTOT(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeTOTFromGlibBorrow(b), nil
+	return UnsafeTOTFromGlibNone(b), nil
 }
 
 func (r *TOT) GoValueType() gobject.Type {
@@ -10492,11 +11857,14 @@ func (r *TOT) GoValueType() gobject.Type {
 }
 
 func (r *TOT) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeTOTFromGlibBorrow is used to convert raw C.GstMpegtsTOT pointers to go. This is used by the bindings internally.
 func UnsafeTOTFromGlibBorrow(p unsafe.Pointer) *TOT {
+	if p == nil {
+		return nil
+	}
 	return &TOT{&tOT{(*C.GstMpegtsTOT)(p)}}
 }
 
@@ -10504,6 +11872,9 @@ func UnsafeTOTFromGlibBorrow(p unsafe.Pointer) *TOT {
 func UnsafeTOTFromGlibNone(p unsafe.Pointer) *TOT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTOTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.tOT)), 1)
 	runtime.SetFinalizer(
 		wrapped.tOT,
@@ -10518,6 +11889,9 @@ func UnsafeTOTFromGlibNone(p unsafe.Pointer) *TOT {
 // UnsafeTOTFromGlibFull is used to convert raw C.GstMpegtsTOT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTOTFromGlibFull(p unsafe.Pointer) *TOT {
 	wrapped := UnsafeTOTFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.tOT)), 1)
 	runtime.SetFinalizer(
 		wrapped.tOT,
@@ -10538,12 +11912,18 @@ func UnsafeTOTFree(t *TOT) {
 
 // UnsafeTOTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeTOTToGlibNone(t *TOT) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 
 // UnsafeTOTToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeTOTToGlibFull(t *TOT) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	runtime.SetFinalizer(t.tOT, nil)
 	_p := unsafe.Pointer(t.native)
 	t.native = nil // TOT is invalid from here on
@@ -10562,11 +11942,19 @@ type terrestrialDeliverySystemDescriptor struct {
 	native *C.GstMpegtsTerrestrialDeliverySystemDescriptor
 }
 
+// UnsafeTerrestrialDeliverySystemDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (t *TerrestrialDeliverySystemDescriptor) instance() *C.GstMpegtsTerrestrialDeliverySystemDescriptor {
+	if t == nil {
+		return nil
+	}
+	return t.native
+}
+
 var _ gobject.GoValueInitializer = (*TerrestrialDeliverySystemDescriptor)(nil)
 
 func marshalTerrestrialDeliverySystemDescriptor(p unsafe.Pointer) (interface{}, error) {
 	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeTerrestrialDeliverySystemDescriptorFromGlibBorrow(b), nil
+	return UnsafeTerrestrialDeliverySystemDescriptorFromGlibNone(b), nil
 }
 
 func (r *TerrestrialDeliverySystemDescriptor) GoValueType() gobject.Type {
@@ -10574,11 +11962,14 @@ func (r *TerrestrialDeliverySystemDescriptor) GoValueType() gobject.Type {
 }
 
 func (r *TerrestrialDeliverySystemDescriptor) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeTerrestrialDeliverySystemDescriptorFromGlibBorrow is used to convert raw C.GstMpegtsTerrestrialDeliverySystemDescriptor pointers to go. This is used by the bindings internally.
 func UnsafeTerrestrialDeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *TerrestrialDeliverySystemDescriptor {
+	if p == nil {
+		return nil
+	}
 	return &TerrestrialDeliverySystemDescriptor{&terrestrialDeliverySystemDescriptor{(*C.GstMpegtsTerrestrialDeliverySystemDescriptor)(p)}}
 }
 
@@ -10586,6 +11977,9 @@ func UnsafeTerrestrialDeliverySystemDescriptorFromGlibBorrow(p unsafe.Pointer) *
 func UnsafeTerrestrialDeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *TerrestrialDeliverySystemDescriptor {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTerrestrialDeliverySystemDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.terrestrialDeliverySystemDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.terrestrialDeliverySystemDescriptor,
@@ -10600,6 +11994,9 @@ func UnsafeTerrestrialDeliverySystemDescriptorFromGlibNone(p unsafe.Pointer) *Te
 // UnsafeTerrestrialDeliverySystemDescriptorFromGlibFull is used to convert raw C.GstMpegtsTerrestrialDeliverySystemDescriptor pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTerrestrialDeliverySystemDescriptorFromGlibFull(p unsafe.Pointer) *TerrestrialDeliverySystemDescriptor {
 	wrapped := UnsafeTerrestrialDeliverySystemDescriptorFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.terrestrialDeliverySystemDescriptor)), 1)
 	runtime.SetFinalizer(
 		wrapped.terrestrialDeliverySystemDescriptor,
@@ -10620,12 +12017,18 @@ func UnsafeTerrestrialDeliverySystemDescriptorFree(t *TerrestrialDeliverySystemD
 
 // UnsafeTerrestrialDeliverySystemDescriptorToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeTerrestrialDeliverySystemDescriptorToGlibNone(t *TerrestrialDeliverySystemDescriptor) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	return unsafe.Pointer(t.native)
 }
 
 // UnsafeTerrestrialDeliverySystemDescriptorToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeTerrestrialDeliverySystemDescriptorToGlibFull(t *TerrestrialDeliverySystemDescriptor) unsafe.Pointer {
+	if t == nil {
+		return nil
+	}
 	runtime.SetFinalizer(t.terrestrialDeliverySystemDescriptor, nil)
 	_p := unsafe.Pointer(t.native)
 	t.native = nil // TerrestrialDeliverySystemDescriptor is invalid from here on

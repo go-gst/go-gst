@@ -5332,8 +5332,19 @@ type rTCPBuffer struct {
 	native *C.GstRTCPBuffer
 }
 
+// UnsafeRTCPBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (r *RTCPBuffer) instance() *C.GstRTCPBuffer {
+	if r == nil {
+		return nil
+	}
+	return r.native
+}
+
 // UnsafeRTCPBufferFromGlibBorrow is used to convert raw C.GstRTCPBuffer pointers to go. This is used by the bindings internally.
 func UnsafeRTCPBufferFromGlibBorrow(p unsafe.Pointer) *RTCPBuffer {
+	if p == nil {
+		return nil
+	}
 	return &RTCPBuffer{&rTCPBuffer{(*C.GstRTCPBuffer)(p)}}
 }
 
@@ -5341,6 +5352,9 @@ func UnsafeRTCPBufferFromGlibBorrow(p unsafe.Pointer) *RTCPBuffer {
 func UnsafeRTCPBufferFromGlibNone(p unsafe.Pointer) *RTCPBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTCPBufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTCPBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTCPBuffer,
@@ -5355,6 +5369,9 @@ func UnsafeRTCPBufferFromGlibNone(p unsafe.Pointer) *RTCPBuffer {
 // UnsafeRTCPBufferFromGlibFull is used to convert raw C.GstRTCPBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTCPBufferFromGlibFull(p unsafe.Pointer) *RTCPBuffer {
 	wrapped := UnsafeRTCPBufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTCPBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTCPBuffer,
@@ -5375,12 +5392,18 @@ func UnsafeRTCPBufferFree(r *RTCPBuffer) {
 
 // UnsafeRTCPBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeRTCPBufferToGlibNone(r *RTCPBuffer) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	return unsafe.Pointer(r.native)
 }
 
 // UnsafeRTCPBufferToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTCPBufferToGlibFull(r *RTCPBuffer) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	runtime.SetFinalizer(r.rTCPBuffer, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTCPBuffer is invalid from here on
@@ -5723,8 +5746,19 @@ type rTCPPacket struct {
 	native *C.GstRTCPPacket
 }
 
+// UnsafeRTCPPacketToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (r *RTCPPacket) instance() *C.GstRTCPPacket {
+	if r == nil {
+		return nil
+	}
+	return r.native
+}
+
 // UnsafeRTCPPacketFromGlibBorrow is used to convert raw C.GstRTCPPacket pointers to go. This is used by the bindings internally.
 func UnsafeRTCPPacketFromGlibBorrow(p unsafe.Pointer) *RTCPPacket {
+	if p == nil {
+		return nil
+	}
 	return &RTCPPacket{&rTCPPacket{(*C.GstRTCPPacket)(p)}}
 }
 
@@ -5732,6 +5766,9 @@ func UnsafeRTCPPacketFromGlibBorrow(p unsafe.Pointer) *RTCPPacket {
 func UnsafeRTCPPacketFromGlibNone(p unsafe.Pointer) *RTCPPacket {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTCPPacketFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTCPPacket)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTCPPacket,
@@ -5746,6 +5783,9 @@ func UnsafeRTCPPacketFromGlibNone(p unsafe.Pointer) *RTCPPacket {
 // UnsafeRTCPPacketFromGlibFull is used to convert raw C.GstRTCPPacket pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTCPPacketFromGlibFull(p unsafe.Pointer) *RTCPPacket {
 	wrapped := UnsafeRTCPPacketFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTCPPacket)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTCPPacket,
@@ -5766,12 +5806,18 @@ func UnsafeRTCPPacketFree(r *RTCPPacket) {
 
 // UnsafeRTCPPacketToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeRTCPPacketToGlibNone(r *RTCPPacket) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	return unsafe.Pointer(r.native)
 }
 
 // UnsafeRTCPPacketToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTCPPacketToGlibFull(r *RTCPPacket) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	runtime.SetFinalizer(r.rTCPPacket, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTCPPacket is invalid from here on
@@ -8057,8 +8103,19 @@ type rTPBaseAudioPayloadClass struct {
 	native *C.GstRTPBaseAudioPayloadClass
 }
 
+// UnsafeRTPBaseAudioPayloadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (r *RTPBaseAudioPayloadClass) instance() *C.GstRTPBaseAudioPayloadClass {
+	if r == nil {
+		return nil
+	}
+	return r.native
+}
+
 // UnsafeRTPBaseAudioPayloadClassFromGlibBorrow is used to convert raw C.GstRTPBaseAudioPayloadClass pointers to go. This is used by the bindings internally.
 func UnsafeRTPBaseAudioPayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBaseAudioPayloadClass {
+	if p == nil {
+		return nil
+	}
 	return &RTPBaseAudioPayloadClass{&rTPBaseAudioPayloadClass{(*C.GstRTPBaseAudioPayloadClass)(p)}}
 }
 
@@ -8071,6 +8128,9 @@ func UnsafeRTPBaseAudioPayloadClassFree(r *RTPBaseAudioPayloadClass) {
 
 // UnsafeRTPBaseAudioPayloadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeRTPBaseAudioPayloadClassToGlibNone(r *RTPBaseAudioPayloadClass) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	return unsafe.Pointer(r.native)
 }
 
@@ -8097,8 +8157,19 @@ type rTPBaseDepayloadClass struct {
 	native *C.GstRTPBaseDepayloadClass
 }
 
+// UnsafeRTPBaseDepayloadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (r *RTPBaseDepayloadClass) instance() *C.GstRTPBaseDepayloadClass {
+	if r == nil {
+		return nil
+	}
+	return r.native
+}
+
 // UnsafeRTPBaseDepayloadClassFromGlibBorrow is used to convert raw C.GstRTPBaseDepayloadClass pointers to go. This is used by the bindings internally.
 func UnsafeRTPBaseDepayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBaseDepayloadClass {
+	if p == nil {
+		return nil
+	}
 	return &RTPBaseDepayloadClass{&rTPBaseDepayloadClass{(*C.GstRTPBaseDepayloadClass)(p)}}
 }
 
@@ -8111,6 +8182,9 @@ func UnsafeRTPBaseDepayloadClassFree(r *RTPBaseDepayloadClass) {
 
 // UnsafeRTPBaseDepayloadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeRTPBaseDepayloadClassToGlibNone(r *RTPBaseDepayloadClass) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	return unsafe.Pointer(r.native)
 }
 
@@ -8137,8 +8211,19 @@ type rTPBasePayloadClass struct {
 	native *C.GstRTPBasePayloadClass
 }
 
+// UnsafeRTPBasePayloadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (r *RTPBasePayloadClass) instance() *C.GstRTPBasePayloadClass {
+	if r == nil {
+		return nil
+	}
+	return r.native
+}
+
 // UnsafeRTPBasePayloadClassFromGlibBorrow is used to convert raw C.GstRTPBasePayloadClass pointers to go. This is used by the bindings internally.
 func UnsafeRTPBasePayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBasePayloadClass {
+	if p == nil {
+		return nil
+	}
 	return &RTPBasePayloadClass{&rTPBasePayloadClass{(*C.GstRTPBasePayloadClass)(p)}}
 }
 
@@ -8151,6 +8236,9 @@ func UnsafeRTPBasePayloadClassFree(r *RTPBasePayloadClass) {
 
 // UnsafeRTPBasePayloadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeRTPBasePayloadClassToGlibNone(r *RTPBasePayloadClass) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	return unsafe.Pointer(r.native)
 }
 
@@ -8177,8 +8265,19 @@ type rTPBuffer struct {
 	native *C.GstRTPBuffer
 }
 
+// UnsafeRTPBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (r *RTPBuffer) instance() *C.GstRTPBuffer {
+	if r == nil {
+		return nil
+	}
+	return r.native
+}
+
 // UnsafeRTPBufferFromGlibBorrow is used to convert raw C.GstRTPBuffer pointers to go. This is used by the bindings internally.
 func UnsafeRTPBufferFromGlibBorrow(p unsafe.Pointer) *RTPBuffer {
+	if p == nil {
+		return nil
+	}
 	return &RTPBuffer{&rTPBuffer{(*C.GstRTPBuffer)(p)}}
 }
 
@@ -8186,6 +8285,9 @@ func UnsafeRTPBufferFromGlibBorrow(p unsafe.Pointer) *RTPBuffer {
 func UnsafeRTPBufferFromGlibNone(p unsafe.Pointer) *RTPBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTPBufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPBuffer,
@@ -8200,6 +8302,9 @@ func UnsafeRTPBufferFromGlibNone(p unsafe.Pointer) *RTPBuffer {
 // UnsafeRTPBufferFromGlibFull is used to convert raw C.GstRTPBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTPBufferFromGlibFull(p unsafe.Pointer) *RTPBuffer {
 	wrapped := UnsafeRTPBufferFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPBuffer,
@@ -8220,12 +8325,18 @@ func UnsafeRTPBufferFree(r *RTPBuffer) {
 
 // UnsafeRTPBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeRTPBufferToGlibNone(r *RTPBuffer) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	return unsafe.Pointer(r.native)
 }
 
 // UnsafeRTPBufferToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTPBufferToGlibFull(r *RTPBuffer) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	runtime.SetFinalizer(r.rTPBuffer, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTPBuffer is invalid from here on
@@ -9281,8 +9392,19 @@ type rTPHeaderExtensionClass struct {
 	native *C.GstRTPHeaderExtensionClass
 }
 
+// UnsafeRTPHeaderExtensionClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (r *RTPHeaderExtensionClass) instance() *C.GstRTPHeaderExtensionClass {
+	if r == nil {
+		return nil
+	}
+	return r.native
+}
+
 // UnsafeRTPHeaderExtensionClassFromGlibBorrow is used to convert raw C.GstRTPHeaderExtensionClass pointers to go. This is used by the bindings internally.
 func UnsafeRTPHeaderExtensionClassFromGlibBorrow(p unsafe.Pointer) *RTPHeaderExtensionClass {
+	if p == nil {
+		return nil
+	}
 	return &RTPHeaderExtensionClass{&rTPHeaderExtensionClass{(*C.GstRTPHeaderExtensionClass)(p)}}
 }
 
@@ -9295,6 +9417,9 @@ func UnsafeRTPHeaderExtensionClassFree(r *RTPHeaderExtensionClass) {
 
 // UnsafeRTPHeaderExtensionClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeRTPHeaderExtensionClassToGlibNone(r *RTPHeaderExtensionClass) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	return unsafe.Pointer(r.native)
 }
 
@@ -9339,8 +9464,19 @@ type rTPPayloadInfo struct {
 	native *C.GstRTPPayloadInfo
 }
 
+// UnsafeRTPPayloadInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (r *RTPPayloadInfo) instance() *C.GstRTPPayloadInfo {
+	if r == nil {
+		return nil
+	}
+	return r.native
+}
+
 // UnsafeRTPPayloadInfoFromGlibBorrow is used to convert raw C.GstRTPPayloadInfo pointers to go. This is used by the bindings internally.
 func UnsafeRTPPayloadInfoFromGlibBorrow(p unsafe.Pointer) *RTPPayloadInfo {
+	if p == nil {
+		return nil
+	}
 	return &RTPPayloadInfo{&rTPPayloadInfo{(*C.GstRTPPayloadInfo)(p)}}
 }
 
@@ -9348,6 +9484,9 @@ func UnsafeRTPPayloadInfoFromGlibBorrow(p unsafe.Pointer) *RTPPayloadInfo {
 func UnsafeRTPPayloadInfoFromGlibNone(p unsafe.Pointer) *RTPPayloadInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTPPayloadInfoFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPPayloadInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPPayloadInfo,
@@ -9362,6 +9501,9 @@ func UnsafeRTPPayloadInfoFromGlibNone(p unsafe.Pointer) *RTPPayloadInfo {
 // UnsafeRTPPayloadInfoFromGlibFull is used to convert raw C.GstRTPPayloadInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTPPayloadInfoFromGlibFull(p unsafe.Pointer) *RTPPayloadInfo {
 	wrapped := UnsafeRTPPayloadInfoFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPPayloadInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPPayloadInfo,
@@ -9382,12 +9524,18 @@ func UnsafeRTPPayloadInfoFree(r *RTPPayloadInfo) {
 
 // UnsafeRTPPayloadInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeRTPPayloadInfoToGlibNone(r *RTPPayloadInfo) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	return unsafe.Pointer(r.native)
 }
 
 // UnsafeRTPPayloadInfoToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTPPayloadInfoToGlibFull(r *RTPPayloadInfo) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	runtime.SetFinalizer(r.rTPPayloadInfo, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTPPayloadInfo is invalid from here on
@@ -9476,8 +9624,19 @@ type rTPSourceMeta struct {
 	native *C.GstRTPSourceMeta
 }
 
+// UnsafeRTPSourceMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (r *RTPSourceMeta) instance() *C.GstRTPSourceMeta {
+	if r == nil {
+		return nil
+	}
+	return r.native
+}
+
 // UnsafeRTPSourceMetaFromGlibBorrow is used to convert raw C.GstRTPSourceMeta pointers to go. This is used by the bindings internally.
 func UnsafeRTPSourceMetaFromGlibBorrow(p unsafe.Pointer) *RTPSourceMeta {
+	if p == nil {
+		return nil
+	}
 	return &RTPSourceMeta{&rTPSourceMeta{(*C.GstRTPSourceMeta)(p)}}
 }
 
@@ -9485,6 +9644,9 @@ func UnsafeRTPSourceMetaFromGlibBorrow(p unsafe.Pointer) *RTPSourceMeta {
 func UnsafeRTPSourceMetaFromGlibNone(p unsafe.Pointer) *RTPSourceMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTPSourceMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPSourceMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPSourceMeta,
@@ -9499,6 +9661,9 @@ func UnsafeRTPSourceMetaFromGlibNone(p unsafe.Pointer) *RTPSourceMeta {
 // UnsafeRTPSourceMetaFromGlibFull is used to convert raw C.GstRTPSourceMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTPSourceMetaFromGlibFull(p unsafe.Pointer) *RTPSourceMeta {
 	wrapped := UnsafeRTPSourceMetaFromGlibBorrow(p)
+	if wrapped == nil {
+		return nil
+	}
 	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPSourceMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPSourceMeta,
@@ -9519,12 +9684,18 @@ func UnsafeRTPSourceMetaFree(r *RTPSourceMeta) {
 
 // UnsafeRTPSourceMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeRTPSourceMetaToGlibNone(r *RTPSourceMeta) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	return unsafe.Pointer(r.native)
 }
 
 // UnsafeRTPSourceMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTPSourceMetaToGlibFull(r *RTPSourceMeta) unsafe.Pointer {
+	if r == nil {
+		return nil
+	}
 	runtime.SetFinalizer(r.rTPSourceMeta, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTPSourceMeta is invalid from here on

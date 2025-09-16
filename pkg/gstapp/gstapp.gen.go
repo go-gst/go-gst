@@ -3967,8 +3967,19 @@ type appSinkClass struct {
 	native *C.GstAppSinkClass
 }
 
+// UnsafeAppSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AppSinkClass) instance() *C.GstAppSinkClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAppSinkClassFromGlibBorrow is used to convert raw C.GstAppSinkClass pointers to go. This is used by the bindings internally.
 func UnsafeAppSinkClassFromGlibBorrow(p unsafe.Pointer) *AppSinkClass {
+	if p == nil {
+		return nil
+	}
 	return &AppSinkClass{&appSinkClass{(*C.GstAppSinkClass)(p)}}
 }
 
@@ -3981,6 +3992,9 @@ func UnsafeAppSinkClassFree(a *AppSinkClass) {
 
 // UnsafeAppSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAppSinkClassToGlibNone(a *AppSinkClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 
@@ -4005,8 +4019,19 @@ type appSrcClass struct {
 	native *C.GstAppSrcClass
 }
 
+// UnsafeAppSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
+func (a *AppSrcClass) instance() *C.GstAppSrcClass {
+	if a == nil {
+		return nil
+	}
+	return a.native
+}
+
 // UnsafeAppSrcClassFromGlibBorrow is used to convert raw C.GstAppSrcClass pointers to go. This is used by the bindings internally.
 func UnsafeAppSrcClassFromGlibBorrow(p unsafe.Pointer) *AppSrcClass {
+	if p == nil {
+		return nil
+	}
 	return &AppSrcClass{&appSrcClass{(*C.GstAppSrcClass)(p)}}
 }
 
@@ -4019,6 +4044,9 @@ func UnsafeAppSrcClassFree(a *AppSrcClass) {
 
 // UnsafeAppSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeAppSrcClassToGlibNone(a *AppSrcClass) unsafe.Pointer {
+	if a == nil {
+		return nil
+	}
 	return unsafe.Pointer(a.native)
 }
 

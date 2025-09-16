@@ -108,11 +108,21 @@ func (r *Promise) GoValueType() gobject.Type {
 }
 
 func (r *Promise) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
+	v.SetBoxed(unsafe.Pointer(r.instance()))
+}
+
+func (r *Promise) instance() *C.GstPromise {
+	if r == nil {
+		return nil
+	}
+	return r.native
 }
 
 // UnsafePromiseFromGlibBorrow is used to convert raw C.GstPromise pointers to go. This is used by the bindings internally.
 func UnsafePromiseFromGlibBorrow(p unsafe.Pointer) *Promise {
+	if p == nil {
+		return nil
+	}
 	return &Promise{
 		promise: &promise{(*C.GstPromise)(p)},
 		done:    nil, // this will stay nil if the promise is received from C code
@@ -121,6 +131,9 @@ func UnsafePromiseFromGlibBorrow(p unsafe.Pointer) *Promise {
 
 // UnsafePromiseFromGlibNone is used to convert raw C.GstPromise pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePromiseFromGlibNone(p unsafe.Pointer) *Promise {
+	if p == nil {
+		return nil
+	}
 	C.gst_promise_ref((*C.GstPromise)(p))
 	wrapped := UnsafePromiseFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -134,6 +147,9 @@ func UnsafePromiseFromGlibNone(p unsafe.Pointer) *Promise {
 
 // UnsafePromiseFromGlibFull is used to convert raw C.GstPromise pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePromiseFromGlibFull(p unsafe.Pointer) *Promise {
+	if p == nil {
+		return nil
+	}
 	wrapped := UnsafePromiseFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.promise,
@@ -146,12 +162,18 @@ func UnsafePromiseFromGlibFull(p unsafe.Pointer) *Promise {
 
 // UnsafePromiseToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafePromiseToGlibNone(p *Promise) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	return unsafe.Pointer(p.native)
 }
 
 // UnsafePromiseToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafePromiseToGlibFull(p *Promise) unsafe.Pointer {
+	if p == nil {
+		return nil
+	}
 	runtime.SetFinalizer(p.promise, nil)
 	_p := unsafe.Pointer(p.native)
 	p.native = nil // Promise is invalid from here on
