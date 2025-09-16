@@ -86,10 +86,10 @@ func (e InterpolationMode) InitGoValue(v *gobject.Value) {
 
 func (e InterpolationMode) String() string {
 	switch e {
-		case InterpolationModeNone: return "InterpolationModeNone"
-		case InterpolationModeLinear: return "InterpolationModeLinear"
 		case InterpolationModeCubic: return "InterpolationModeCubic"
 		case InterpolationModeCubicMonotonic: return "InterpolationModeCubicMonotonic"
+		case InterpolationModeLinear: return "InterpolationModeLinear"
+		case InterpolationModeNone: return "InterpolationModeNone"
 		default: return fmt.Sprintf("InterpolationMode(%d)", e)
 	}
 }
@@ -136,10 +136,10 @@ func (e LFOWaveform) InitGoValue(v *gobject.Value) {
 func (e LFOWaveform) String() string {
 	switch e {
 		case LfoWaveformReverseSaw: return "LfoWaveformReverseSaw"
-		case LfoWaveformTriangle: return "LfoWaveformTriangle"
+		case LfoWaveformSaw: return "LfoWaveformSaw"
 		case LfoWaveformSine: return "LfoWaveformSine"
 		case LfoWaveformSquare: return "LfoWaveformSquare"
-		case LfoWaveformSaw: return "LfoWaveformSaw"
+		case LfoWaveformTriangle: return "LfoWaveformTriangle"
 		default: return fmt.Sprintf("LFOWaveform(%d)", e)
 	}
 }

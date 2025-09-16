@@ -165,11 +165,20 @@ var Data = genmain.Overlay(
 			},
 		},
 		Postprocessors: []typesystem.PostProcessor{
-			typesystem.MarkAsManuallyExtended("Gst", 1, "Object"),
-			typesystem.MarkAsManuallyExtended("Gst", 1, "Element"),
-			typesystem.MarkAsManuallyExtended("Gst", 1, "Bin"),
-			typesystem.MarkAsManuallyExtended("Gst", 1, "Bus"),
-			typesystem.MarkAsManuallyExtended("Gst", 1, "ChildProxy"),
+			typesystem.MarkAsManuallyExtended("Gst-1", "Object"),
+			typesystem.MarkAsManuallyExtended("Gst-1", "Element"),
+			typesystem.MarkAsManuallyExtended("Gst-1", "Bin"),
+			typesystem.MarkAsManuallyExtended("Gst-1", "Bus"),
+			typesystem.MarkAsManuallyExtended("Gst-1", "ChildProxy"),
+			func(r *typesystem.Registry) error {
+				// this is needed to fix gstreamer <= 1.24.10. Remove once upgraded in the flake
+				webrtc := r.FindNamespaceByName("GstWebRTC-1")
+
+				webrtc.Packages = append(webrtc.Packages, "gstreamer-sdp-1.0")
+				webrtc.CIncludes = append(webrtc.CIncludes, "gst/webrtc/sctptransport.h")
+
+				return nil
+			},
 		},
 		GeneratorHooks: []genmain.GeneratorHook{
 			genmain.AddGeneratorToPackage("gstmpegts", &GstUseUnstableAPI{}),

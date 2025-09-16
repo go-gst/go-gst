@@ -15,10 +15,11 @@ import (
 	"github.com/go-gst/go-gst/pkg/gstsdp"
 )
 
-// #cgo pkg-config: gstreamer-webrtc-1.0
+// #cgo pkg-config: gstreamer-webrtc-1.0 gstreamer-sdp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #define GST_USE_UNSTABLE_API // APIs in this package are unstable
 // #include <gst/webrtc/webrtc.h>
+// #include <gst/webrtc/sctptransport.h>
 // extern void _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc(GstWebRTCICE*, guint, gchar*, gpointer);
 // extern void destroyUserdata(gpointer);
 import "C"
@@ -130,10 +131,10 @@ func (e WebRTCBundlePolicy) InitGoValue(v *gobject.Value) {
 
 func (e WebRTCBundlePolicy) String() string {
 	switch e {
-		case WebrtcBundlePolicyNone: return "WebrtcBundlePolicyNone"
 		case WebrtcBundlePolicyBalanced: return "WebrtcBundlePolicyBalanced"
-		case WebrtcBundlePolicyMaxCompat: return "WebrtcBundlePolicyMaxCompat"
 		case WebrtcBundlePolicyMaxBundle: return "WebrtcBundlePolicyMaxBundle"
+		case WebrtcBundlePolicyMaxCompat: return "WebrtcBundlePolicyMaxCompat"
+		case WebrtcBundlePolicyNone: return "WebrtcBundlePolicyNone"
 		default: return fmt.Sprintf("WebRTCBundlePolicy(%d)", e)
 	}
 }
@@ -174,9 +175,9 @@ func (e WebRTCDTLSSetup) InitGoValue(v *gobject.Value) {
 func (e WebRTCDTLSSetup) String() string {
 	switch e {
 		case WebrtcDTLSSetupActive: return "WebrtcDTLSSetupActive"
-		case WebrtcDTLSSetupPassive: return "WebrtcDTLSSetupPassive"
-		case WebrtcDTLSSetupNone: return "WebrtcDTLSSetupNone"
 		case WebrtcDTLSSetupActpass: return "WebrtcDTLSSetupActpass"
+		case WebrtcDTLSSetupNone: return "WebrtcDTLSSetupNone"
+		case WebrtcDTLSSetupPassive: return "WebrtcDTLSSetupPassive"
 		default: return fmt.Sprintf("WebRTCDTLSSetup(%d)", e)
 	}
 }
@@ -222,9 +223,9 @@ func (e WebRTCDTLSTransportState) String() string {
 	switch e {
 		case NewWebrtcDTLSTransportState: return "NewWebrtcDTLSTransportState"
 		case WebrtcDTLSTransportStateClosed: return "WebrtcDTLSTransportStateClosed"
-		case WebrtcDTLSTransportStateFailed: return "WebrtcDTLSTransportStateFailed"
-		case WebrtcDTLSTransportStateConnecting: return "WebrtcDTLSTransportStateConnecting"
 		case WebrtcDTLSTransportStateConnected: return "WebrtcDTLSTransportStateConnected"
+		case WebrtcDTLSTransportStateConnecting: return "WebrtcDTLSTransportStateConnecting"
+		case WebrtcDTLSTransportStateFailed: return "WebrtcDTLSTransportStateFailed"
 		default: return fmt.Sprintf("WebRTCDTLSTransportState(%d)", e)
 	}
 }
@@ -266,10 +267,10 @@ func (e WebRTCDataChannelState) InitGoValue(v *gobject.Value) {
 
 func (e WebRTCDataChannelState) String() string {
 	switch e {
+		case WebrtcDataChannelStateClosed: return "WebrtcDataChannelStateClosed"
+		case WebrtcDataChannelStateClosing: return "WebrtcDataChannelStateClosing"
 		case WebrtcDataChannelStateConnecting: return "WebrtcDataChannelStateConnecting"
 		case WebrtcDataChannelStateOpen: return "WebrtcDataChannelStateOpen"
-		case WebrtcDataChannelStateClosing: return "WebrtcDataChannelStateClosing"
-		case WebrtcDataChannelStateClosed: return "WebrtcDataChannelStateClosed"
 		default: return fmt.Sprintf("WebRTCDataChannelState(%d)", e)
 	}
 }
@@ -339,17 +340,17 @@ func (e WebRTCError) InitGoValue(v *gobject.Value) {
 
 func (e WebRTCError) String() string {
 	switch e {
-		case WebrtcErrorHardwareEncoderNotAvailable: return "WebrtcErrorHardwareEncoderNotAvailable"
-		case WebrtcErrorEncoderError: return "WebrtcErrorEncoderError"
-		case WebrtcErrorInvalidState: return "WebrtcErrorInvalidState"
-		case WebrtcErrorInternalFailure: return "WebrtcErrorInternalFailure"
-		case WebrtcErrorDataChannelFailure: return "WebrtcErrorDataChannelFailure"
 		case WebrtcErrorDTLSFailure: return "WebrtcErrorDTLSFailure"
+		case WebrtcErrorDataChannelFailure: return "WebrtcErrorDataChannelFailure"
+		case WebrtcErrorEncoderError: return "WebrtcErrorEncoderError"
 		case WebrtcErrorFingerprintFailure: return "WebrtcErrorFingerprintFailure"
-		case WebrtcErrorSdpSyntaxError: return "WebrtcErrorSdpSyntaxError"
+		case WebrtcErrorHardwareEncoderNotAvailable: return "WebrtcErrorHardwareEncoderNotAvailable"
+		case WebrtcErrorInternalFailure: return "WebrtcErrorInternalFailure"
 		case WebrtcErrorInvalidModification: return "WebrtcErrorInvalidModification"
-		case WebrtcErrorTypeError: return "WebrtcErrorTypeError"
+		case WebrtcErrorInvalidState: return "WebrtcErrorInvalidState"
 		case WebrtcErrorSCTPFailure: return "WebrtcErrorSCTPFailure"
+		case WebrtcErrorSdpSyntaxError: return "WebrtcErrorSdpSyntaxError"
+		case WebrtcErrorTypeError: return "WebrtcErrorTypeError"
 		default: return fmt.Sprintf("WebRTCError(%d)", e)
 	}
 }
@@ -414,8 +415,8 @@ func (e WebRTCICEComponent) InitGoValue(v *gobject.Value) {
 
 func (e WebRTCICEComponent) String() string {
 	switch e {
-		case WebrtcIceComponentRtp: return "WebrtcIceComponentRtp"
 		case WebrtcIceComponentRtcp: return "WebrtcIceComponentRtcp"
+		case WebrtcIceComponentRtp: return "WebrtcIceComponentRtp"
 		default: return fmt.Sprintf("WebRTCICEComponent(%d)", e)
 	}
 }
@@ -471,11 +472,11 @@ func (e WebRTCICEConnectionState) String() string {
 	switch e {
 		case NewWebrtcIceConnectionState: return "NewWebrtcIceConnectionState"
 		case WebrtcIceConnectionStateChecking: return "WebrtcIceConnectionStateChecking"
-		case WebrtcIceConnectionStateConnected: return "WebrtcIceConnectionStateConnected"
-		case WebrtcIceConnectionStateCompleted: return "WebrtcIceConnectionStateCompleted"
-		case WebrtcIceConnectionStateFailed: return "WebrtcIceConnectionStateFailed"
-		case WebrtcIceConnectionStateDisconnected: return "WebrtcIceConnectionStateDisconnected"
 		case WebrtcIceConnectionStateClosed: return "WebrtcIceConnectionStateClosed"
+		case WebrtcIceConnectionStateCompleted: return "WebrtcIceConnectionStateCompleted"
+		case WebrtcIceConnectionStateConnected: return "WebrtcIceConnectionStateConnected"
+		case WebrtcIceConnectionStateDisconnected: return "WebrtcIceConnectionStateDisconnected"
+		case WebrtcIceConnectionStateFailed: return "WebrtcIceConnectionStateFailed"
 		default: return fmt.Sprintf("WebRTCICEConnectionState(%d)", e)
 	}
 }
@@ -514,8 +515,8 @@ func (e WebRTCICEGatheringState) InitGoValue(v *gobject.Value) {
 func (e WebRTCICEGatheringState) String() string {
 	switch e {
 		case NewWebrtcIceGatheringState: return "NewWebrtcIceGatheringState"
-		case WebrtcIceGatheringStateGathering: return "WebrtcIceGatheringStateGathering"
 		case WebrtcIceGatheringStateComplete: return "WebrtcIceGatheringStateComplete"
+		case WebrtcIceGatheringStateGathering: return "WebrtcIceGatheringStateGathering"
 		default: return fmt.Sprintf("WebRTCICEGatheringState(%d)", e)
 	}
 }
@@ -622,8 +623,8 @@ func (e WebRTCKind) InitGoValue(v *gobject.Value) {
 
 func (e WebRTCKind) String() string {
 	switch e {
-		case WebrtcKindUnknown: return "WebrtcKindUnknown"
 		case WebrtcKindAudio: return "WebrtcKindAudio"
+		case WebrtcKindUnknown: return "WebrtcKindUnknown"
 		case WebrtcKindVideo: return "WebrtcKindVideo"
 		default: return fmt.Sprintf("WebRTCKind(%d)", e)
 	}
@@ -675,11 +676,11 @@ func (e WebRTCPeerConnectionState) InitGoValue(v *gobject.Value) {
 func (e WebRTCPeerConnectionState) String() string {
 	switch e {
 		case NewWebrtcPeerConnectionState: return "NewWebrtcPeerConnectionState"
-		case WebrtcPeerConnectionStateConnecting: return "WebrtcPeerConnectionStateConnecting"
+		case WebrtcPeerConnectionStateClosed: return "WebrtcPeerConnectionStateClosed"
 		case WebrtcPeerConnectionStateConnected: return "WebrtcPeerConnectionStateConnected"
+		case WebrtcPeerConnectionStateConnecting: return "WebrtcPeerConnectionStateConnecting"
 		case WebrtcPeerConnectionStateDisconnected: return "WebrtcPeerConnectionStateDisconnected"
 		case WebrtcPeerConnectionStateFailed: return "WebrtcPeerConnectionStateFailed"
-		case WebrtcPeerConnectionStateClosed: return "WebrtcPeerConnectionStateClosed"
 		default: return fmt.Sprintf("WebRTCPeerConnectionState(%d)", e)
 	}
 }
@@ -722,9 +723,9 @@ func (e WebRTCPriorityType) InitGoValue(v *gobject.Value) {
 func (e WebRTCPriorityType) String() string {
 	switch e {
 		case WebrtcPriorityTypeHigh: return "WebrtcPriorityTypeHigh"
-		case WebrtcPriorityTypeVeryLow: return "WebrtcPriorityTypeVeryLow"
 		case WebrtcPriorityTypeLow: return "WebrtcPriorityTypeLow"
 		case WebrtcPriorityTypeMedium: return "WebrtcPriorityTypeMedium"
+		case WebrtcPriorityTypeVeryLow: return "WebrtcPriorityTypeVeryLow"
 		default: return fmt.Sprintf("WebRTCPriorityType(%d)", e)
 	}
 }
@@ -768,10 +769,10 @@ func (e WebRTCRTPTransceiverDirection) InitGoValue(v *gobject.Value) {
 
 func (e WebRTCRTPTransceiverDirection) String() string {
 	switch e {
-		case WebrtcRtpTransceiverDirectionNone: return "WebrtcRtpTransceiverDirectionNone"
 		case WebrtcRtpTransceiverDirectionInactive: return "WebrtcRtpTransceiverDirectionInactive"
-		case WebrtcRtpTransceiverDirectionSendonly: return "WebrtcRtpTransceiverDirectionSendonly"
+		case WebrtcRtpTransceiverDirectionNone: return "WebrtcRtpTransceiverDirectionNone"
 		case WebrtcRtpTransceiverDirectionRecvonly: return "WebrtcRtpTransceiverDirectionRecvonly"
+		case WebrtcRtpTransceiverDirectionSendonly: return "WebrtcRtpTransceiverDirectionSendonly"
 		case WebrtcRtpTransceiverDirectionSendrecv: return "WebrtcRtpTransceiverDirectionSendrecv"
 		default: return fmt.Sprintf("WebRTCRTPTransceiverDirection(%d)", e)
 	}
@@ -815,9 +816,9 @@ func (e WebRTCSCTPTransportState) InitGoValue(v *gobject.Value) {
 func (e WebRTCSCTPTransportState) String() string {
 	switch e {
 		case NewWebrtcSCTPTransportState: return "NewWebrtcSCTPTransportState"
-		case WebrtcSCTPTransportStateConnecting: return "WebrtcSCTPTransportStateConnecting"
-		case WebrtcSCTPTransportStateConnected: return "WebrtcSCTPTransportStateConnected"
 		case WebrtcSCTPTransportStateClosed: return "WebrtcSCTPTransportStateClosed"
+		case WebrtcSCTPTransportStateConnected: return "WebrtcSCTPTransportStateConnected"
+		case WebrtcSCTPTransportStateConnecting: return "WebrtcSCTPTransportStateConnecting"
 		default: return fmt.Sprintf("WebRTCSCTPTransportState(%d)", e)
 	}
 }
@@ -859,9 +860,9 @@ func (e WebRTCSDPType) InitGoValue(v *gobject.Value) {
 
 func (e WebRTCSDPType) String() string {
 	switch e {
+		case WebrtcSdpTypeAnswer: return "WebrtcSdpTypeAnswer"
 		case WebrtcSdpTypeOffer: return "WebrtcSdpTypeOffer"
 		case WebrtcSdpTypePranswer: return "WebrtcSdpTypePranswer"
-		case WebrtcSdpTypeAnswer: return "WebrtcSdpTypeAnswer"
 		case WebrtcSdpTypeRollback: return "WebrtcSdpTypeRollback"
 		default: return fmt.Sprintf("WebRTCSDPType(%d)", e)
 	}
@@ -912,12 +913,12 @@ func (e WebRTCSignalingState) InitGoValue(v *gobject.Value) {
 
 func (e WebRTCSignalingState) String() string {
 	switch e {
-		case WebrtcSignalingStateStable: return "WebrtcSignalingStateStable"
 		case WebrtcSignalingStateClosed: return "WebrtcSignalingStateClosed"
 		case WebrtcSignalingStateHaveLocalOffer: return "WebrtcSignalingStateHaveLocalOffer"
-		case WebrtcSignalingStateHaveRemoteOffer: return "WebrtcSignalingStateHaveRemoteOffer"
 		case WebrtcSignalingStateHaveLocalPranswer: return "WebrtcSignalingStateHaveLocalPranswer"
+		case WebrtcSignalingStateHaveRemoteOffer: return "WebrtcSignalingStateHaveRemoteOffer"
 		case WebrtcSignalingStateHaveRemotePranswer: return "WebrtcSignalingStateHaveRemotePranswer"
+		case WebrtcSignalingStateStable: return "WebrtcSignalingStateStable"
 		default: return fmt.Sprintf("WebRTCSignalingState(%d)", e)
 	}
 }
@@ -999,20 +1000,20 @@ func (e WebRTCStatsType) InitGoValue(v *gobject.Value) {
 
 func (e WebRTCStatsType) String() string {
 	switch e {
-		case WebrtcStatsRemoteOutboundRtp: return "WebrtcStatsRemoteOutboundRtp"
-		case WebrtcStatsCsrc: return "WebrtcStatsCsrc"
-		case WebrtcStatsPeerConnection: return "WebrtcStatsPeerConnection"
-		case WebrtcStatsStream: return "WebrtcStatsStream"
 		case WebrtcStatsCandidatePair: return "WebrtcStatsCandidatePair"
-		case WebrtcStatsLocalCandidate: return "WebrtcStatsLocalCandidate"
-		case WebrtcStatsInboundRtp: return "WebrtcStatsInboundRtp"
-		case WebrtcStatsRemoteInboundRtp: return "WebrtcStatsRemoteInboundRtp"
-		case WebrtcStatsDataChannel: return "WebrtcStatsDataChannel"
-		case WebrtcStatsTransport: return "WebrtcStatsTransport"
-		case WebrtcStatsRemoteCandidate: return "WebrtcStatsRemoteCandidate"
 		case WebrtcStatsCertificate: return "WebrtcStatsCertificate"
 		case WebrtcStatsCodec: return "WebrtcStatsCodec"
+		case WebrtcStatsCsrc: return "WebrtcStatsCsrc"
+		case WebrtcStatsDataChannel: return "WebrtcStatsDataChannel"
+		case WebrtcStatsInboundRtp: return "WebrtcStatsInboundRtp"
+		case WebrtcStatsLocalCandidate: return "WebrtcStatsLocalCandidate"
 		case WebrtcStatsOutboundRtp: return "WebrtcStatsOutboundRtp"
+		case WebrtcStatsPeerConnection: return "WebrtcStatsPeerConnection"
+		case WebrtcStatsRemoteCandidate: return "WebrtcStatsRemoteCandidate"
+		case WebrtcStatsRemoteInboundRtp: return "WebrtcStatsRemoteInboundRtp"
+		case WebrtcStatsRemoteOutboundRtp: return "WebrtcStatsRemoteOutboundRtp"
+		case WebrtcStatsStream: return "WebrtcStatsStream"
+		case WebrtcStatsTransport: return "WebrtcStatsTransport"
 		default: return fmt.Sprintf("WebRTCStatsType(%d)", e)
 	}
 }

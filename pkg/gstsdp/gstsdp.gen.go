@@ -60,9 +60,9 @@ const (
 
 func (e MIKEYCacheType) String() string {
 	switch e {
-		case MikeyCacheNone: return "MikeyCacheNone"
 		case MikeyCacheAlways: return "MikeyCacheAlways"
 		case MikeyCacheForCsb: return "MikeyCacheForCsb"
+		case MikeyCacheNone: return "MikeyCacheNone"
 		default: return fmt.Sprintf("MIKEYCacheType(%d)", e)
 	}
 }
@@ -94,10 +94,10 @@ const (
 
 func (e MIKEYEncAlg) String() string {
 	switch e {
-		case MikeyEncAesKw128: return "MikeyEncAesKw128"
-		case MikeyEncAesGcm128: return "MikeyEncAesGcm128"
-		case MikeyEncNull: return "MikeyEncNull"
 		case MikeyEncAesCm128: return "MikeyEncAesCm128"
+		case MikeyEncAesGcm128: return "MikeyEncAesGcm128"
+		case MikeyEncAesKw128: return "MikeyEncAesKw128"
+		case MikeyEncNull: return "MikeyEncNull"
 		default: return fmt.Sprintf("MIKEYEncAlg(%d)", e)
 	}
 }
@@ -151,8 +151,8 @@ const (
 
 func (e MIKEYKeyDataType) String() string {
 	switch e {
-		case MikeyKdTgk: return "MikeyKdTgk"
 		case MikeyKdTek: return "MikeyKdTek"
+		case MikeyKdTgk: return "MikeyKdTgk"
 		default: return fmt.Sprintf("MIKEYKeyDataType(%d)", e)
 	}
 }
@@ -294,21 +294,21 @@ const (
 
 func (e MIKEYPayloadType) String() string {
 	switch e {
-		case MikeyPtPke: return "MikeyPtPke"
-		case MikeyPtT: return "MikeyPtT"
-		case MikeyPtChash: return "MikeyPtChash"
-		case MikeyPtLast: return "MikeyPtLast"
-		case MikeyPtKemac: return "MikeyPtKemac"
-		case MikeyPtRand: return "MikeyPtRand"
-		case MikeyPtSp: return "MikeyPtSp"
-		case MikeyPtErr: return "MikeyPtErr"
-		case MikeyPtKeyData: return "MikeyPtKeyData"
-		case MikeyPtDh: return "MikeyPtDh"
-		case MikeyPtSign: return "MikeyPtSign"
-		case MikeyPtID: return "MikeyPtID"
 		case MikeyPtCert: return "MikeyPtCert"
-		case MikeyPtV: return "MikeyPtV"
+		case MikeyPtChash: return "MikeyPtChash"
+		case MikeyPtDh: return "MikeyPtDh"
+		case MikeyPtErr: return "MikeyPtErr"
 		case MikeyPtGenExt: return "MikeyPtGenExt"
+		case MikeyPtID: return "MikeyPtID"
+		case MikeyPtKemac: return "MikeyPtKemac"
+		case MikeyPtKeyData: return "MikeyPtKeyData"
+		case MikeyPtLast: return "MikeyPtLast"
+		case MikeyPtPke: return "MikeyPtPke"
+		case MikeyPtRand: return "MikeyPtRand"
+		case MikeyPtSign: return "MikeyPtSign"
+		case MikeyPtSp: return "MikeyPtSp"
+		case MikeyPtT: return "MikeyPtT"
+		case MikeyPtV: return "MikeyPtV"
 		default: return fmt.Sprintf("MIKEYPayloadType(%d)", e)
 	}
 }
@@ -400,20 +400,20 @@ const (
 
 func (e MIKEYSecSRTP) String() string {
 	switch e {
-		case MikeySpSrtpEncAlg: return "MikeySpSrtpEncAlg"
-		case MikeySpSrtpAuthAlg: return "MikeySpSrtpAuthAlg"
-		case MikeySpSrtpPrf: return "MikeySpSrtpPrf"
-		case MikeySpSrtpSrtpEnc: return "MikeySpSrtpSrtpEnc"
-		case MikeySpSrtpFecOrder: return "MikeySpSrtpFecOrder"
-		case MikeySpSrtpAuthTagLen: return "MikeySpSrtpAuthTagLen"
-		case MikeySpSrtpSrtpPrefixLen: return "MikeySpSrtpSrtpPrefixLen"
 		case MikeySpSrtpAeadAuthTagLen: return "MikeySpSrtpAeadAuthTagLen"
-		case MikeySpSrtpEncKeyLen: return "MikeySpSrtpEncKeyLen"
+		case MikeySpSrtpAuthAlg: return "MikeySpSrtpAuthAlg"
 		case MikeySpSrtpAuthKeyLen: return "MikeySpSrtpAuthKeyLen"
-		case MikeySpSrtpSaltKeyLen: return "MikeySpSrtpSaltKeyLen"
+		case MikeySpSrtpAuthTagLen: return "MikeySpSrtpAuthTagLen"
+		case MikeySpSrtpEncAlg: return "MikeySpSrtpEncAlg"
+		case MikeySpSrtpEncKeyLen: return "MikeySpSrtpEncKeyLen"
+		case MikeySpSrtpFecOrder: return "MikeySpSrtpFecOrder"
 		case MikeySpSrtpKeyDerivRate: return "MikeySpSrtpKeyDerivRate"
+		case MikeySpSrtpPrf: return "MikeySpSrtpPrf"
+		case MikeySpSrtpSaltKeyLen: return "MikeySpSrtpSaltKeyLen"
 		case MikeySpSrtpSrtcpEnc: return "MikeySpSrtpSrtcpEnc"
 		case MikeySpSrtpSrtpAuth: return "MikeySpSrtpSrtpAuth"
+		case MikeySpSrtpSrtpEnc: return "MikeySpSrtpSrtpEnc"
+		case MikeySpSrtpSrtpPrefixLen: return "MikeySpSrtpSrtpPrefixLen"
 		default: return fmt.Sprintf("MIKEYSecSRTP(%d)", e)
 	}
 }
@@ -441,9 +441,9 @@ const (
 
 func (e MIKEYTSType) String() string {
 	switch e {
-		case MikeyTsTypeNtpUTC: return "MikeyTsTypeNtpUTC"
-		case MikeyTsTypeNtp: return "MikeyTsTypeNtp"
 		case MikeyTsTypeCounter: return "MikeyTsTypeCounter"
+		case MikeyTsTypeNtp: return "MikeyTsTypeNtp"
+		case MikeyTsTypeNtpUTC: return "MikeyTsTypeNtpUTC"
 		default: return fmt.Sprintf("MIKEYTSType(%d)", e)
 	}
 }
@@ -491,14 +491,14 @@ const (
 
 func (e MIKEYType) String() string {
 	switch e {
+		case MikeyTypeDhInit: return "MikeyTypeDhInit"
 		case MikeyTypeDhResp: return "MikeyTypeDhResp"
 		case MikeyTypeError: return "MikeyTypeError"
 		case MikeyTypeInvalid: return "MikeyTypeInvalid"
-		case MikeyTypePskInit: return "MikeyTypePskInit"
-		case MikeyTypePskVerify: return "MikeyTypePskVerify"
 		case MikeyTypePkInit: return "MikeyTypePkInit"
 		case MikeyTypePkVerify: return "MikeyTypePkVerify"
-		case MikeyTypeDhInit: return "MikeyTypeDhInit"
+		case MikeyTypePskInit: return "MikeyTypePskInit"
+		case MikeyTypePskVerify: return "MikeyTypePskVerify"
 		default: return fmt.Sprintf("MIKEYType(%d)", e)
 	}
 }
@@ -522,8 +522,8 @@ const (
 
 func (e SDPResult) String() string {
 	switch e {
-		case SdpOK: return "SdpOK"
 		case SdpEinval: return "SdpEinval"
+		case SdpOK: return "SdpOK"
 		default: return fmt.Sprintf("SDPResult(%d)", e)
 	}
 }

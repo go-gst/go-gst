@@ -531,10 +531,10 @@ func (e BufferingMode) InitGoValue(v *gobject.Value) {
 
 func (e BufferingMode) String() string {
 	switch e {
-		case BufferingStream: return "BufferingStream"
 		case BufferingDownload: return "BufferingDownload"
-		case BufferingTimeshift: return "BufferingTimeshift"
 		case BufferingLive: return "BufferingLive"
+		case BufferingStream: return "BufferingStream"
+		case BufferingTimeshift: return "BufferingTimeshift"
 		default: return fmt.Sprintf("BufferingMode(%d)", e)
 	}
 }
@@ -628,8 +628,8 @@ func (e CapsIntersectMode) InitGoValue(v *gobject.Value) {
 
 func (e CapsIntersectMode) String() string {
 	switch e {
-		case CapsIntersectZigZag: return "CapsIntersectZigZag"
 		case CapsIntersectFirst: return "CapsIntersectFirst"
+		case CapsIntersectZigZag: return "CapsIntersectZigZag"
 		default: return fmt.Sprintf("CapsIntersectMode(%d)", e)
 	}
 }
@@ -722,14 +722,14 @@ func (e ClockReturn) InitGoValue(v *gobject.Value) {
 
 func (e ClockReturn) String() string {
 	switch e {
-		case ClockUnscheduled: return "ClockUnscheduled"
-		case ClockBusy: return "ClockBusy"
 		case ClockBadtime: return "ClockBadtime"
-		case ClockError: return "ClockError"
-		case ClockUnsupported: return "ClockUnsupported"
+		case ClockBusy: return "ClockBusy"
 		case ClockDone: return "ClockDone"
-		case ClockOK: return "ClockOK"
 		case ClockEarly: return "ClockEarly"
+		case ClockError: return "ClockError"
+		case ClockOK: return "ClockOK"
+		case ClockUnscheduled: return "ClockUnscheduled"
+		case ClockUnsupported: return "ClockUnsupported"
 		default: return fmt.Sprintf("ClockReturn(%d)", e)
 	}
 }
@@ -773,9 +773,9 @@ func (e ClockType) InitGoValue(v *gobject.Value) {
 
 func (e ClockType) String() string {
 	switch e {
-		case ClockTypeRealtime: return "ClockTypeRealtime"
 		case ClockTypeMonotonic: return "ClockTypeMonotonic"
 		case ClockTypeOther: return "ClockTypeOther"
+		case ClockTypeRealtime: return "ClockTypeRealtime"
 		case ClockTypeTai: return "ClockTypeTai"
 		default: return fmt.Sprintf("ClockType(%d)", e)
 	}
@@ -866,21 +866,21 @@ func (e CoreError) InitGoValue(v *gobject.Value) {
 
 func (e CoreError) String() string {
 	switch e {
-		case CoreErrorClock: return "CoreErrorClock"
-		case CoreErrorTooLaZY: return "CoreErrorTooLaZY"
-		case CoreErrorNegotiation: return "CoreErrorNegotiation"
-		case CoreErrorSeek: return "CoreErrorSeek"
-		case CoreErrorMissingPlugin: return "CoreErrorMissingPlugin"
-		case CoreErrorFailed: return "CoreErrorFailed"
 		case CoreErrorCaps: return "CoreErrorCaps"
-		case CoreErrorTag: return "CoreErrorTag"
+		case CoreErrorClock: return "CoreErrorClock"
 		case CoreErrorDisabled: return "CoreErrorDisabled"
-		case CoreErrorNotImplemented: return "CoreErrorNotImplemented"
-		case CoreErrorStateChange: return "CoreErrorStateChange"
-		case CoreErrorThread: return "CoreErrorThread"
 		case CoreErrorEvent: return "CoreErrorEvent"
+		case CoreErrorFailed: return "CoreErrorFailed"
+		case CoreErrorMissingPlugin: return "CoreErrorMissingPlugin"
+		case CoreErrorNegotiation: return "CoreErrorNegotiation"
+		case CoreErrorNotImplemented: return "CoreErrorNotImplemented"
 		case CoreErrorNumErrors: return "CoreErrorNumErrors"
 		case CoreErrorPad: return "CoreErrorPad"
+		case CoreErrorSeek: return "CoreErrorSeek"
+		case CoreErrorStateChange: return "CoreErrorStateChange"
+		case CoreErrorTag: return "CoreErrorTag"
+		case CoreErrorThread: return "CoreErrorThread"
+		case CoreErrorTooLaZY: return "CoreErrorTooLaZY"
 		default: return fmt.Sprintf("CoreError(%d)", e)
 	}
 }
@@ -1013,16 +1013,16 @@ func (e DebugLevel) InitGoValue(v *gobject.Value) {
 
 func (e DebugLevel) String() string {
 	switch e {
-		case LevelNone: return "LevelNone"
-		case LevelWarning: return "LevelWarning"
+		case LevelCount: return "LevelCount"
+		case LevelDebug: return "LevelDebug"
+		case LevelError: return "LevelError"
+		case LevelFixme: return "LevelFixme"
 		case LevelInfo: return "LevelInfo"
 		case LevelLog: return "LevelLog"
 		case LevelMemdump: return "LevelMemdump"
-		case LevelError: return "LevelError"
-		case LevelFixme: return "LevelFixme"
-		case LevelDebug: return "LevelDebug"
+		case LevelNone: return "LevelNone"
 		case LevelTrace: return "LevelTrace"
-		case LevelCount: return "LevelCount"
+		case LevelWarning: return "LevelWarning"
 		default: return fmt.Sprintf("DebugLevel(%d)", e)
 	}
 }
@@ -1210,37 +1210,37 @@ func (e EventType) InitGoValue(v *gobject.Value) {
 
 func (e EventType) String() string {
 	switch e {
-		case EventFlushStop: return "EventFlushStop"
-		case EventStreamStart: return "EventStreamStart"
-		case EventCustomDownstreamOob: return "EventCustomDownstreamOob"
+		case EventBuffersize: return "EventBuffersize"
+		case EventCaps: return "EventCaps"
 		case EventCustomBoth: return "EventCustomBoth"
 		case EventCustomBothOob: return "EventCustomBothOob"
-		case EventProtection: return "EventProtection"
-		case EventLatency: return "EventLatency"
-		case EventTocSelect: return "EventTocSelect"
 		case EventCustomDownstream: return "EventCustomDownstream"
-		case EventSegment: return "EventSegment"
-		case EventStreamCollection: return "EventStreamCollection"
-		case EventBuffersize: return "EventBuffersize"
-		case EventNavigation: return "EventNavigation"
-		case EventCaps: return "EventCaps"
-		case EventQos: return "EventQos"
-		case EventCustomUpstream: return "EventCustomUpstream"
-		case EventToc: return "EventToc"
-		case EventTag: return "EventTag"
-		case EventStreamGroupDone: return "EventStreamGroupDone"
-		case EventGap: return "EventGap"
+		case EventCustomDownstreamOob: return "EventCustomDownstreamOob"
 		case EventCustomDownstreamSticky: return "EventCustomDownstreamSticky"
-		case EventSeek: return "EventSeek"
-		case EventSelectStreams: return "EventSelectStreams"
-		case EventSegmentDone: return "EventSegmentDone"
-		case EventStep: return "EventStep"
-		case EventInstantRateSyncTime: return "EventInstantRateSyncTime"
-		case EventFlushStart: return "EventFlushStart"
-		case EventSinkMessage: return "EventSinkMessage"
-		case EventInstantRateChange: return "EventInstantRateChange"
-		case EventReconfigure: return "EventReconfigure"
+		case EventCustomUpstream: return "EventCustomUpstream"
 		case EventEos: return "EventEos"
+		case EventFlushStart: return "EventFlushStart"
+		case EventFlushStop: return "EventFlushStop"
+		case EventGap: return "EventGap"
+		case EventInstantRateChange: return "EventInstantRateChange"
+		case EventInstantRateSyncTime: return "EventInstantRateSyncTime"
+		case EventLatency: return "EventLatency"
+		case EventNavigation: return "EventNavigation"
+		case EventProtection: return "EventProtection"
+		case EventQos: return "EventQos"
+		case EventReconfigure: return "EventReconfigure"
+		case EventSeek: return "EventSeek"
+		case EventSegment: return "EventSegment"
+		case EventSegmentDone: return "EventSegmentDone"
+		case EventSelectStreams: return "EventSelectStreams"
+		case EventSinkMessage: return "EventSinkMessage"
+		case EventStep: return "EventStep"
+		case EventStreamCollection: return "EventStreamCollection"
+		case EventStreamGroupDone: return "EventStreamGroupDone"
+		case EventStreamStart: return "EventStreamStart"
+		case EventTag: return "EventTag"
+		case EventToc: return "EventToc"
+		case EventTocSelect: return "EventTocSelect"
 		case EventUnknown: return "EventUnknown"
 		default: return fmt.Sprintf("EventType(%d)", e)
 	}
@@ -1331,19 +1331,19 @@ func (e FlowReturn) InitGoValue(v *gobject.Value) {
 
 func (e FlowReturn) String() string {
 	switch e {
-		case FlowCustomSuccess2: return "FlowCustomSuccess2"
-		case FlowCustomSuccess: return "FlowCustomSuccess"
-		case FlowNotLinked: return "FlowNotLinked"
-		case FlowFlushing: return "FlowFlushing"
-		case FlowEos: return "FlowEos"
-		case FlowNotNegotiated: return "FlowNotNegotiated"
-		case FlowCustomError2: return "FlowCustomError2"
-		case FlowCustomSuccess1: return "FlowCustomSuccess1"
-		case FlowOK: return "FlowOK"
-		case FlowError: return "FlowError"
-		case FlowNotSupported: return "FlowNotSupported"
 		case FlowCustomError: return "FlowCustomError"
 		case FlowCustomError1: return "FlowCustomError1"
+		case FlowCustomError2: return "FlowCustomError2"
+		case FlowCustomSuccess: return "FlowCustomSuccess"
+		case FlowCustomSuccess1: return "FlowCustomSuccess1"
+		case FlowCustomSuccess2: return "FlowCustomSuccess2"
+		case FlowEos: return "FlowEos"
+		case FlowError: return "FlowError"
+		case FlowFlushing: return "FlowFlushing"
+		case FlowNotLinked: return "FlowNotLinked"
+		case FlowNotNegotiated: return "FlowNotNegotiated"
+		case FlowNotSupported: return "FlowNotSupported"
+		case FlowOK: return "FlowOK"
 		default: return fmt.Sprintf("FlowReturn(%d)", e)
 	}
 }
@@ -1398,12 +1398,12 @@ func (e Format) InitGoValue(v *gobject.Value) {
 
 func (e Format) String() string {
 	switch e {
-		case FormatBytes: return "FormatBytes"
-		case FormatTime: return "FormatTime"
 		case FormatBuffers: return "FormatBuffers"
-		case FormatPercent: return "FormatPercent"
-		case FormatUndefined: return "FormatUndefined"
+		case FormatBytes: return "FormatBytes"
 		case FormatDefault: return "FormatDefault"
+		case FormatPercent: return "FormatPercent"
+		case FormatTime: return "FormatTime"
+		case FormatUndefined: return "FormatUndefined"
 		default: return fmt.Sprintf("Format(%d)", e)
 	}
 }
@@ -1441,9 +1441,9 @@ func (e IteratorItem) InitGoValue(v *gobject.Value) {
 
 func (e IteratorItem) String() string {
 	switch e {
-		case IteratorItemSkip: return "IteratorItemSkip"
-		case IteratorItemPass: return "IteratorItemPass"
 		case IteratorItemEnd: return "IteratorItemEnd"
+		case IteratorItemPass: return "IteratorItemPass"
+		case IteratorItemSkip: return "IteratorItemSkip"
 		default: return fmt.Sprintf("IteratorItem(%d)", e)
 	}
 }
@@ -1486,9 +1486,9 @@ func (e IteratorResult) InitGoValue(v *gobject.Value) {
 func (e IteratorResult) String() string {
 	switch e {
 		case IteratorDone: return "IteratorDone"
+		case IteratorError: return "IteratorError"
 		case IteratorOK: return "IteratorOK"
 		case IteratorResync: return "IteratorResync"
-		case IteratorError: return "IteratorError"
 		default: return fmt.Sprintf("IteratorResult(%d)", e)
 	}
 }
@@ -1546,12 +1546,12 @@ func (e LibraryError) InitGoValue(v *gobject.Value) {
 func (e LibraryError) String() string {
 	switch e {
 		case LibraryErrorEncode: return "LibraryErrorEncode"
-		case LibraryErrorNumErrors: return "LibraryErrorNumErrors"
 		case LibraryErrorFailed: return "LibraryErrorFailed"
-		case LibraryErrorTooLaZY: return "LibraryErrorTooLaZY"
 		case LibraryErrorInit: return "LibraryErrorInit"
-		case LibraryErrorShutdown: return "LibraryErrorShutdown"
+		case LibraryErrorNumErrors: return "LibraryErrorNumErrors"
 		case LibraryErrorSettings: return "LibraryErrorSettings"
+		case LibraryErrorShutdown: return "LibraryErrorShutdown"
+		case LibraryErrorTooLaZY: return "LibraryErrorTooLaZY"
 		default: return fmt.Sprintf("LibraryError(%d)", e)
 	}
 }
@@ -1589,9 +1589,9 @@ func (e PadDirection) InitGoValue(v *gobject.Value) {
 
 func (e PadDirection) String() string {
 	switch e {
-		case PadUnknown: return "PadUnknown"
-		case PadSrc: return "PadSrc"
 		case PadSink: return "PadSink"
+		case PadSrc: return "PadSrc"
+		case PadUnknown: return "PadUnknown"
 		default: return fmt.Sprintf("PadDirection(%d)", e)
 	}
 }
@@ -1647,11 +1647,11 @@ func (e PadLinkReturn) String() string {
 	switch e {
 		case PadLinkNoformat: return "PadLinkNoformat"
 		case PadLinkNosched: return "PadLinkNosched"
-		case PadLinkRefused: return "PadLinkRefused"
 		case PadLinkOK: return "PadLinkOK"
-		case PadLinkWrongHierarchy: return "PadLinkWrongHierarchy"
+		case PadLinkRefused: return "PadLinkRefused"
 		case PadLinkWasLinked: return "PadLinkWasLinked"
 		case PadLinkWrongDirection: return "PadLinkWrongDirection"
+		case PadLinkWrongHierarchy: return "PadLinkWrongHierarchy"
 		default: return fmt.Sprintf("PadLinkReturn(%d)", e)
 	}
 }
@@ -1691,9 +1691,9 @@ func (e PadMode) InitGoValue(v *gobject.Value) {
 
 func (e PadMode) String() string {
 	switch e {
-		case PadModePush: return "PadModePush"
-		case PadModePull: return "PadModePull"
 		case PadModeNone: return "PadModeNone"
+		case PadModePull: return "PadModePull"
+		case PadModePush: return "PadModePush"
 		default: return fmt.Sprintf("PadMode(%d)", e)
 	}
 }
@@ -1733,8 +1733,8 @@ func (e PadPresence) InitGoValue(v *gobject.Value) {
 func (e PadPresence) String() string {
 	switch e {
 		case PadAlways: return "PadAlways"
-		case PadSometimes: return "PadSometimes"
 		case PadRequest: return "PadRequest"
+		case PadSometimes: return "PadSometimes"
 		default: return fmt.Sprintf("PadPresence(%d)", e)
 	}
 }
@@ -1799,11 +1799,11 @@ func (e PadProbeReturn) InitGoValue(v *gobject.Value) {
 
 func (e PadProbeReturn) String() string {
 	switch e {
-		case PadProbeRemove: return "PadProbeRemove"
-		case PadProbePass: return "PadProbePass"
-		case PadProbeHandled: return "PadProbeHandled"
 		case PadProbeDrop: return "PadProbeDrop"
+		case PadProbeHandled: return "PadProbeHandled"
 		case PadProbeOK: return "PadProbeOK"
+		case PadProbePass: return "PadProbePass"
+		case PadProbeRemove: return "PadProbeRemove"
 		default: return fmt.Sprintf("PadProbeReturn(%d)", e)
 	}
 }
@@ -1861,13 +1861,13 @@ func (e ParseError) InitGoValue(v *gobject.Value) {
 
 func (e ParseError) String() string {
 	switch e {
+		case ParseErrorCouldNotSetProperty: return "ParseErrorCouldNotSetProperty"
+		case ParseErrorDelayedLink: return "ParseErrorDelayedLink"
+		case ParseErrorEmpty: return "ParseErrorEmpty"
+		case ParseErrorEmptyBin: return "ParseErrorEmptyBin"
+		case ParseErrorLink: return "ParseErrorLink"
 		case ParseErrorNoSuchElement: return "ParseErrorNoSuchElement"
 		case ParseErrorNoSuchProperty: return "ParseErrorNoSuchProperty"
-		case ParseErrorLink: return "ParseErrorLink"
-		case ParseErrorCouldNotSetProperty: return "ParseErrorCouldNotSetProperty"
-		case ParseErrorEmptyBin: return "ParseErrorEmptyBin"
-		case ParseErrorEmpty: return "ParseErrorEmpty"
-		case ParseErrorDelayedLink: return "ParseErrorDelayedLink"
 		case ParseErrorSyntax: return "ParseErrorSyntax"
 		default: return fmt.Sprintf("ParseError(%d)", e)
 	}
@@ -1906,8 +1906,8 @@ func (e PluginError) InitGoValue(v *gobject.Value) {
 
 func (e PluginError) String() string {
 	switch e {
-		case PluginErrorModule: return "PluginErrorModule"
 		case PluginErrorDependencies: return "PluginErrorDependencies"
+		case PluginErrorModule: return "PluginErrorModule"
 		case PluginErrorNameMismatch: return "PluginErrorNameMismatch"
 		default: return fmt.Sprintf("PluginError(%d)", e)
 	}
@@ -1957,10 +1957,10 @@ func (e ProgressType) InitGoValue(v *gobject.Value) {
 func (e ProgressType) String() string {
 	switch e {
 		case ProgressTypeCanceled: return "ProgressTypeCanceled"
+		case ProgressTypeComplete: return "ProgressTypeComplete"
+		case ProgressTypeContinue: return "ProgressTypeContinue"
 		case ProgressTypeError: return "ProgressTypeError"
 		case ProgressTypeStart: return "ProgressTypeStart"
-		case ProgressTypeContinue: return "ProgressTypeContinue"
-		case ProgressTypeComplete: return "ProgressTypeComplete"
 		default: return fmt.Sprintf("ProgressType(%d)", e)
 	}
 }
@@ -2005,10 +2005,10 @@ func (e PromiseResult) InitGoValue(v *gobject.Value) {
 
 func (e PromiseResult) String() string {
 	switch e {
-		case PromiseResultReplied: return "PromiseResultReplied"
 		case PromiseResultExpired: return "PromiseResultExpired"
-		case PromiseResultPending: return "PromiseResultPending"
 		case PromiseResultInterrupted: return "PromiseResultInterrupted"
+		case PromiseResultPending: return "PromiseResultPending"
+		case PromiseResultReplied: return "PromiseResultReplied"
 		default: return fmt.Sprintf("PromiseResult(%d)", e)
 	}
 }
@@ -2053,8 +2053,8 @@ func (e QOSType) InitGoValue(v *gobject.Value) {
 
 func (e QOSType) String() string {
 	switch e {
-		case QosTypeThrottle: return "QosTypeThrottle"
 		case QosTypeOverflow: return "QosTypeOverflow"
+		case QosTypeThrottle: return "QosTypeThrottle"
 		case QosTypeUnderflow: return "QosTypeUnderflow"
 		default: return fmt.Sprintf("QOSType(%d)", e)
 	}
@@ -2166,27 +2166,27 @@ func (e QueryType) InitGoValue(v *gobject.Value) {
 
 func (e QueryType) String() string {
 	switch e {
-		case QueryPosition: return "QueryPosition"
+		case QueryAcceptCaps: return "QueryAcceptCaps"
+		case QueryAllocation: return "QueryAllocation"
+		case QueryBitrate: return "QueryBitrate"
+		case QueryBuffering: return "QueryBuffering"
+		case QueryCaps: return "QueryCaps"
+		case QueryContext: return "QueryContext"
+		case QueryConvert: return "QueryConvert"
+		case QueryCustom: return "QueryCustom"
+		case QueryDrain: return "QueryDrain"
+		case QueryDuration: return "QueryDuration"
+		case QueryFormats: return "QueryFormats"
 		case QueryJitter: return "QueryJitter"
+		case QueryLatency: return "QueryLatency"
+		case QueryPosition: return "QueryPosition"
+		case QueryRate: return "QueryRate"
+		case QueryScheduling: return "QueryScheduling"
 		case QuerySeeking: return "QuerySeeking"
 		case QuerySegment: return "QuerySegment"
-		case QueryFormats: return "QueryFormats"
-		case QueryCustom: return "QueryCustom"
-		case QueryScheduling: return "QueryScheduling"
-		case QueryCaps: return "QueryCaps"
-		case QueryUnknown: return "QueryUnknown"
-		case QueryLatency: return "QueryLatency"
-		case QueryConvert: return "QueryConvert"
-		case QueryBuffering: return "QueryBuffering"
-		case QueryAllocation: return "QueryAllocation"
-		case QueryDrain: return "QueryDrain"
-		case QueryContext: return "QueryContext"
 		case QuerySelectable: return "QuerySelectable"
-		case QueryRate: return "QueryRate"
 		case QueryURI: return "QueryURI"
-		case QueryDuration: return "QueryDuration"
-		case QueryAcceptCaps: return "QueryAcceptCaps"
-		case QueryBitrate: return "QueryBitrate"
+		case QueryUnknown: return "QueryUnknown"
 		default: return fmt.Sprintf("QueryType(%d)", e)
 	}
 }
@@ -2234,10 +2234,10 @@ func (e Rank) InitGoValue(v *gobject.Value) {
 
 func (e Rank) String() string {
 	switch e {
-		case RankNone: return "RankNone"
 		case RankMarginal: return "RankMarginal"
-		case RankSecondary: return "RankSecondary"
+		case RankNone: return "RankNone"
 		case RankPrimary: return "RankPrimary"
+		case RankSecondary: return "RankSecondary"
 		default: return fmt.Sprintf("Rank(%d)", e)
 	}
 }
@@ -2334,21 +2334,21 @@ func (e ResourceError) InitGoValue(v *gobject.Value) {
 
 func (e ResourceError) String() string {
 	switch e {
-		case ResourceErrorFailed: return "ResourceErrorFailed"
-		case ResourceErrorTooLaZY: return "ResourceErrorTooLaZY"
-		case ResourceErrorOpenRead: return "ResourceErrorOpenRead"
-		case ResourceErrorSync: return "ResourceErrorSync"
-		case ResourceErrorOpenReadWrite: return "ResourceErrorOpenReadWrite"
-		case ResourceErrorNotAuthorized: return "ResourceErrorNotAuthorized"
-		case ResourceErrorNumErrors: return "ResourceErrorNumErrors"
-		case ResourceErrorNoSpaceLeft: return "ResourceErrorNoSpaceLeft"
 		case ResourceErrorBusy: return "ResourceErrorBusy"
+		case ResourceErrorClose: return "ResourceErrorClose"
+		case ResourceErrorFailed: return "ResourceErrorFailed"
+		case ResourceErrorNoSpaceLeft: return "ResourceErrorNoSpaceLeft"
+		case ResourceErrorNotAuthorized: return "ResourceErrorNotAuthorized"
+		case ResourceErrorNotFound: return "ResourceErrorNotFound"
+		case ResourceErrorNumErrors: return "ResourceErrorNumErrors"
+		case ResourceErrorOpenRead: return "ResourceErrorOpenRead"
+		case ResourceErrorOpenReadWrite: return "ResourceErrorOpenReadWrite"
 		case ResourceErrorOpenWrite: return "ResourceErrorOpenWrite"
+		case ResourceErrorRead: return "ResourceErrorRead"
 		case ResourceErrorSeek: return "ResourceErrorSeek"
 		case ResourceErrorSettings: return "ResourceErrorSettings"
-		case ResourceErrorNotFound: return "ResourceErrorNotFound"
-		case ResourceErrorClose: return "ResourceErrorClose"
-		case ResourceErrorRead: return "ResourceErrorRead"
+		case ResourceErrorSync: return "ResourceErrorSync"
+		case ResourceErrorTooLaZY: return "ResourceErrorTooLaZY"
 		case ResourceErrorWrite: return "ResourceErrorWrite"
 		default: return fmt.Sprintf("ResourceError(%d)", e)
 	}
@@ -2387,8 +2387,8 @@ func (e SearchMode) InitGoValue(v *gobject.Value) {
 
 func (e SearchMode) String() string {
 	switch e {
-		case SearchModeBefore: return "SearchModeBefore"
 		case SearchModeAfter: return "SearchModeAfter"
+		case SearchModeBefore: return "SearchModeBefore"
 		case SearchModeExact: return "SearchModeExact"
 		default: return fmt.Sprintf("SearchMode(%d)", e)
 	}
@@ -2428,9 +2428,9 @@ func (e SeekType) InitGoValue(v *gobject.Value) {
 
 func (e SeekType) String() string {
 	switch e {
+		case SeekTypeEnd: return "SeekTypeEnd"
 		case SeekTypeNone: return "SeekTypeNone"
 		case SeekTypeSet: return "SeekTypeSet"
-		case SeekTypeEnd: return "SeekTypeEnd"
 		default: return fmt.Sprintf("SeekType(%d)", e)
 	}
 }
@@ -2480,11 +2480,11 @@ func (e State) InitGoValue(v *gobject.Value) {
 
 func (e State) String() string {
 	switch e {
-		case StateVoidPending: return "StateVoidPending"
 		case StateNull: return "StateNull"
-		case StateReady: return "StateReady"
 		case StatePaused: return "StatePaused"
 		case StatePlaying: return "StatePlaying"
+		case StateReady: return "StateReady"
+		case StateVoidPending: return "StateVoidPending"
 		default: return fmt.Sprintf("State(%d)", e)
 	}
 }
@@ -2604,15 +2604,15 @@ func (e StateChange) InitGoValue(v *gobject.Value) {
 
 func (e StateChange) String() string {
 	switch e {
-		case StateChangePausedToPaused: return "StateChangePausedToPaused"
-		case StateChangePlayingToPlaying: return "StateChangePlayingToPlaying"
-		case StateChangeReadyToPaused: return "StateChangeReadyToPaused"
-		case StateChangePausedToPlaying: return "StateChangePausedToPlaying"
 		case StateChangeNullToNull: return "StateChangeNullToNull"
 		case StateChangeNullToReady: return "StateChangeNullToReady"
-		case StateChangePlayingToPaused: return "StateChangePlayingToPaused"
+		case StateChangePausedToPaused: return "StateChangePausedToPaused"
+		case StateChangePausedToPlaying: return "StateChangePausedToPlaying"
 		case StateChangePausedToReady: return "StateChangePausedToReady"
+		case StateChangePlayingToPaused: return "StateChangePlayingToPaused"
+		case StateChangePlayingToPlaying: return "StateChangePlayingToPlaying"
 		case StateChangeReadyToNull: return "StateChangeReadyToNull"
+		case StateChangeReadyToPaused: return "StateChangeReadyToPaused"
 		case StateChangeReadyToReady: return "StateChangeReadyToReady"
 		default: return fmt.Sprintf("StateChange(%d)", e)
 	}
@@ -2658,10 +2658,10 @@ func (e StateChangeReturn) InitGoValue(v *gobject.Value) {
 
 func (e StateChangeReturn) String() string {
 	switch e {
-		case StateChangeFailure: return "StateChangeFailure"
-		case StateChangeSuccess: return "StateChangeSuccess"
 		case StateChangeAsync: return "StateChangeAsync"
+		case StateChangeFailure: return "StateChangeFailure"
 		case StateChangeNoPreroll: return "StateChangeNoPreroll"
+		case StateChangeSuccess: return "StateChangeSuccess"
 		default: return fmt.Sprintf("StateChangeReturn(%d)", e)
 	}
 }
@@ -2755,18 +2755,18 @@ func (e StreamError) InitGoValue(v *gobject.Value) {
 func (e StreamError) String() string {
 	switch e {
 		case StreamErrorCodecNotFound: return "StreamErrorCodecNotFound"
-		case StreamErrorDemux: return "StreamErrorDemux"
-		case StreamErrorMux: return "StreamErrorMux"
-		case StreamErrorFormat: return "StreamErrorFormat"
-		case StreamErrorDecrypt: return "StreamErrorDecrypt"
-		case StreamErrorFailed: return "StreamErrorFailed"
-		case StreamErrorTypeNotFound: return "StreamErrorTypeNotFound"
 		case StreamErrorDecode: return "StreamErrorDecode"
-		case StreamErrorEncode: return "StreamErrorEncode"
+		case StreamErrorDecrypt: return "StreamErrorDecrypt"
 		case StreamErrorDecryptNokey: return "StreamErrorDecryptNokey"
+		case StreamErrorDemux: return "StreamErrorDemux"
+		case StreamErrorEncode: return "StreamErrorEncode"
+		case StreamErrorFailed: return "StreamErrorFailed"
+		case StreamErrorFormat: return "StreamErrorFormat"
+		case StreamErrorMux: return "StreamErrorMux"
+		case StreamErrorNotImplemented: return "StreamErrorNotImplemented"
 		case StreamErrorNumErrors: return "StreamErrorNumErrors"
 		case StreamErrorTooLaZY: return "StreamErrorTooLaZY"
-		case StreamErrorNotImplemented: return "StreamErrorNotImplemented"
+		case StreamErrorTypeNotFound: return "StreamErrorTypeNotFound"
 		case StreamErrorWrongType: return "StreamErrorWrongType"
 		default: return fmt.Sprintf("StreamError(%d)", e)
 	}
@@ -2822,13 +2822,13 @@ func (e StreamStatusType) InitGoValue(v *gobject.Value) {
 
 func (e StreamStatusType) String() string {
 	switch e {
+		case StreamStatusTypeCreate: return "StreamStatusTypeCreate"
+		case StreamStatusTypeDestroy: return "StreamStatusTypeDestroy"
 		case StreamStatusTypeEnter: return "StreamStatusTypeEnter"
 		case StreamStatusTypeLeave: return "StreamStatusTypeLeave"
-		case StreamStatusTypeDestroy: return "StreamStatusTypeDestroy"
-		case StreamStatusTypeStart: return "StreamStatusTypeStart"
 		case StreamStatusTypePause: return "StreamStatusTypePause"
+		case StreamStatusTypeStart: return "StreamStatusTypeStart"
 		case StreamStatusTypeStop: return "StreamStatusTypeStop"
-		case StreamStatusTypeCreate: return "StreamStatusTypeCreate"
 		default: return fmt.Sprintf("StreamStatusType(%d)", e)
 	}
 }
@@ -2909,11 +2909,11 @@ func (e TagFlag) InitGoValue(v *gobject.Value) {
 
 func (e TagFlag) String() string {
 	switch e {
-		case TagFlagEncoded: return "TagFlagEncoded"
-		case TagFlagDecoded: return "TagFlagDecoded"
 		case TagFlagCount: return "TagFlagCount"
-		case TagFlagUndefined: return "TagFlagUndefined"
+		case TagFlagDecoded: return "TagFlagDecoded"
+		case TagFlagEncoded: return "TagFlagEncoded"
 		case TagFlagMeta: return "TagFlagMeta"
+		case TagFlagUndefined: return "TagFlagUndefined"
 		default: return fmt.Sprintf("TagFlag(%d)", e)
 	}
 }
@@ -2986,14 +2986,14 @@ func (e TagMergeMode) InitGoValue(v *gobject.Value) {
 
 func (e TagMergeMode) String() string {
 	switch e {
-		case TagMergePrepend: return "TagMergePrepend"
+		case TagMergeAppend: return "TagMergeAppend"
+		case TagMergeCount: return "TagMergeCount"
 		case TagMergeKeep: return "TagMergeKeep"
 		case TagMergeKeepAll: return "TagMergeKeepAll"
-		case TagMergeCount: return "TagMergeCount"
-		case TagMergeUndefined: return "TagMergeUndefined"
-		case TagMergeReplaceAll: return "TagMergeReplaceAll"
+		case TagMergePrepend: return "TagMergePrepend"
 		case TagMergeReplace: return "TagMergeReplace"
-		case TagMergeAppend: return "TagMergeAppend"
+		case TagMergeReplaceAll: return "TagMergeReplaceAll"
+		case TagMergeUndefined: return "TagMergeUndefined"
 		default: return fmt.Sprintf("TagMergeMode(%d)", e)
 	}
 }
@@ -3028,8 +3028,8 @@ func (e TagScope) InitGoValue(v *gobject.Value) {
 
 func (e TagScope) String() string {
 	switch e {
-		case TagScopeStream: return "TagScopeStream"
 		case TagScopeGlobal: return "TagScopeGlobal"
+		case TagScopeStream: return "TagScopeStream"
 		default: return fmt.Sprintf("TagScope(%d)", e)
 	}
 }
@@ -3067,9 +3067,9 @@ func (e TaskState) InitGoValue(v *gobject.Value) {
 
 func (e TaskState) String() string {
 	switch e {
+		case TaskPaused: return "TaskPaused"
 		case TaskStarted: return "TaskStarted"
 		case TaskStopped: return "TaskStopped"
-		case TaskPaused: return "TaskPaused"
 		default: return fmt.Sprintf("TaskState(%d)", e)
 	}
 }
@@ -3125,13 +3125,13 @@ func (e TocEntryType) InitGoValue(v *gobject.Value) {
 
 func (e TocEntryType) String() string {
 	switch e {
-		case TocEntryTypeTrack: return "TocEntryTypeTrack"
-		case TocEntryTypeChapter: return "TocEntryTypeChapter"
 		case TocEntryTypeAngle: return "TocEntryTypeAngle"
-		case TocEntryTypeVersion: return "TocEntryTypeVersion"
+		case TocEntryTypeChapter: return "TocEntryTypeChapter"
 		case TocEntryTypeEdition: return "TocEntryTypeEdition"
 		case TocEntryTypeInvalid: return "TocEntryTypeInvalid"
 		case TocEntryTypeTitle: return "TocEntryTypeTitle"
+		case TocEntryTypeTrack: return "TocEntryTypeTrack"
+		case TocEntryTypeVersion: return "TocEntryTypeVersion"
 		default: return fmt.Sprintf("TocEntryType(%d)", e)
 	}
 }
@@ -3174,10 +3174,10 @@ func (e TocLoopType) InitGoValue(v *gobject.Value) {
 
 func (e TocLoopType) String() string {
 	switch e {
-		case TocLoopNone: return "TocLoopNone"
 		case TocLoopForward: return "TocLoopForward"
-		case TocLoopReverse: return "TocLoopReverse"
+		case TocLoopNone: return "TocLoopNone"
 		case TocLoopPingPong: return "TocLoopPingPong"
+		case TocLoopReverse: return "TocLoopReverse"
 		default: return fmt.Sprintf("TocLoopType(%d)", e)
 	}
 }
@@ -3217,8 +3217,8 @@ func (e TocScope) InitGoValue(v *gobject.Value) {
 
 func (e TocScope) String() string {
 	switch e {
-		case TocScopeGlobal: return "TocScopeGlobal"
 		case TocScopeCurrent: return "TocScopeCurrent"
+		case TocScopeGlobal: return "TocScopeGlobal"
 		default: return fmt.Sprintf("TocScope(%d)", e)
 	}
 }
@@ -3318,12 +3318,12 @@ func (e TypeFindProbability) InitGoValue(v *gobject.Value) {
 
 func (e TypeFindProbability) String() string {
 	switch e {
-		case TypeFindNearlyCertain: return "TypeFindNearlyCertain"
-		case TypeFindMaximum: return "TypeFindMaximum"
-		case TypeFindNone: return "TypeFindNone"
-		case TypeFindMinimum: return "TypeFindMinimum"
-		case TypeFindPossible: return "TypeFindPossible"
 		case TypeFindLikely: return "TypeFindLikely"
+		case TypeFindMaximum: return "TypeFindMaximum"
+		case TypeFindMinimum: return "TypeFindMinimum"
+		case TypeFindNearlyCertain: return "TypeFindNearlyCertain"
+		case TypeFindNone: return "TypeFindNone"
+		case TypeFindPossible: return "TypeFindPossible"
 		default: return fmt.Sprintf("TypeFindProbability(%d)", e)
 	}
 }
@@ -3367,10 +3367,10 @@ func (e URIError) InitGoValue(v *gobject.Value) {
 
 func (e URIError) String() string {
 	switch e {
-		case URIErrorUnsupportedProtocol: return "URIErrorUnsupportedProtocol"
-		case URIErrorBadURI: return "URIErrorBadURI"
-		case URIErrorBadState: return "URIErrorBadState"
 		case URIErrorBadReference: return "URIErrorBadReference"
+		case URIErrorBadState: return "URIErrorBadState"
+		case URIErrorBadURI: return "URIErrorBadURI"
+		case URIErrorUnsupportedProtocol: return "URIErrorUnsupportedProtocol"
 		default: return fmt.Sprintf("URIError(%d)", e)
 	}
 }
@@ -3408,9 +3408,9 @@ func (e URIType) InitGoValue(v *gobject.Value) {
 
 func (e URIType) String() string {
 	switch e {
-		case URIUnknown: return "URIUnknown"
 		case URISink: return "URISink"
 		case URISrc: return "URISrc"
+		case URIUnknown: return "URIUnknown"
 		default: return fmt.Sprintf("URIType(%d)", e)
 	}
 }

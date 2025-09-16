@@ -91,10 +91,10 @@ func (e PlayColorBalanceType) InitGoValue(v *gobject.Value) {
 
 func (e PlayColorBalanceType) String() string {
 	switch e {
-		case PlayColorBalanceHue: return "PlayColorBalanceHue"
 		case PlayColorBalanceBrightness: return "PlayColorBalanceBrightness"
-		case PlayColorBalanceSaturation: return "PlayColorBalanceSaturation"
 		case PlayColorBalanceContrast: return "PlayColorBalanceContrast"
+		case PlayColorBalanceHue: return "PlayColorBalanceHue"
+		case PlayColorBalanceSaturation: return "PlayColorBalanceSaturation"
 		default: return fmt.Sprintf("PlayColorBalanceType(%d)", e)
 	}
 }
@@ -198,19 +198,19 @@ func (e PlayMessage) InitGoValue(v *gobject.Value) {
 
 func (e PlayMessage) String() string {
 	switch e {
-		case PlayMessageStateChanged: return "PlayMessageStateChanged"
 		case PlayMessageBuffering: return "PlayMessageBuffering"
-		case PlayMessageError: return "PlayMessageError"
-		case PlayMessageVideoDimensionsChanged: return "PlayMessageVideoDimensionsChanged"
-		case PlayMessageMuteChanged: return "PlayMessageMuteChanged"
-		case PlayMessageURILoaded: return "PlayMessageURILoaded"
-		case PlayMessageEndOfStream: return "PlayMessageEndOfStream"
-		case PlayMessageWarning: return "PlayMessageWarning"
-		case PlayMessageMediaInfoUpdated: return "PlayMessageMediaInfoUpdated"
-		case PlayMessageVolumeChanged: return "PlayMessageVolumeChanged"
-		case PlayMessageSeekDone: return "PlayMessageSeekDone"
-		case PlayMessagePositionUpdated: return "PlayMessagePositionUpdated"
 		case PlayMessageDurationChanged: return "PlayMessageDurationChanged"
+		case PlayMessageEndOfStream: return "PlayMessageEndOfStream"
+		case PlayMessageError: return "PlayMessageError"
+		case PlayMessageMediaInfoUpdated: return "PlayMessageMediaInfoUpdated"
+		case PlayMessageMuteChanged: return "PlayMessageMuteChanged"
+		case PlayMessagePositionUpdated: return "PlayMessagePositionUpdated"
+		case PlayMessageSeekDone: return "PlayMessageSeekDone"
+		case PlayMessageStateChanged: return "PlayMessageStateChanged"
+		case PlayMessageURILoaded: return "PlayMessageURILoaded"
+		case PlayMessageVideoDimensionsChanged: return "PlayMessageVideoDimensionsChanged"
+		case PlayMessageVolumeChanged: return "PlayMessageVolumeChanged"
+		case PlayMessageWarning: return "PlayMessageWarning"
 		default: return fmt.Sprintf("PlayMessage(%d)", e)
 	}
 }
@@ -244,11 +244,11 @@ const (
 
 func (e PlaySnapshotFormat) String() string {
 	switch e {
-		case PlayThumbnailRawNative: return "PlayThumbnailRawNative"
-		case PlayThumbnailRawXrgb: return "PlayThumbnailRawXrgb"
-		case PlayThumbnailRawBgrx: return "PlayThumbnailRawBgrx"
 		case PlayThumbnailJPG: return "PlayThumbnailJPG"
 		case PlayThumbnailPNG: return "PlayThumbnailPNG"
+		case PlayThumbnailRawBgrx: return "PlayThumbnailRawBgrx"
+		case PlayThumbnailRawNative: return "PlayThumbnailRawNative"
+		case PlayThumbnailRawXrgb: return "PlayThumbnailRawXrgb"
 		default: return fmt.Sprintf("PlaySnapshotFormat(%d)", e)
 	}
 }
@@ -289,10 +289,10 @@ func (e PlayState) InitGoValue(v *gobject.Value) {
 
 func (e PlayState) String() string {
 	switch e {
-		case PlayStateStopped: return "PlayStateStopped"
 		case PlayStateBuffering: return "PlayStateBuffering"
 		case PlayStatePaused: return "PlayStatePaused"
 		case PlayStatePlaying: return "PlayStatePlaying"
+		case PlayStateStopped: return "PlayStateStopped"
 		default: return fmt.Sprintf("PlayState(%d)", e)
 	}
 }

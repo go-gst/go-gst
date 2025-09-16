@@ -187,12 +187,12 @@ func (e AudioBaseSinkDiscontReason) InitGoValue(v *gobject.Value) {
 
 func (e AudioBaseSinkDiscontReason) String() string {
 	switch e {
-		case AudioBaseSinkDiscontReasonNewCaps: return "AudioBaseSinkDiscontReasonNewCaps"
-		case AudioBaseSinkDiscontReasonFlush: return "AudioBaseSinkDiscontReasonFlush"
-		case AudioBaseSinkDiscontReasonSyncLatency: return "AudioBaseSinkDiscontReasonSyncLatency"
 		case AudioBaseSinkDiscontReasonAlignment: return "AudioBaseSinkDiscontReasonAlignment"
 		case AudioBaseSinkDiscontReasonDeviceFailure: return "AudioBaseSinkDiscontReasonDeviceFailure"
+		case AudioBaseSinkDiscontReasonFlush: return "AudioBaseSinkDiscontReasonFlush"
+		case AudioBaseSinkDiscontReasonNewCaps: return "AudioBaseSinkDiscontReasonNewCaps"
 		case AudioBaseSinkDiscontReasonNoDiscont: return "AudioBaseSinkDiscontReasonNoDiscont"
+		case AudioBaseSinkDiscontReasonSyncLatency: return "AudioBaseSinkDiscontReasonSyncLatency"
 		default: return fmt.Sprintf("AudioBaseSinkDiscontReason(%d)", e)
 	}
 }
@@ -236,10 +236,10 @@ func (e AudioBaseSinkSlaveMethod) InitGoValue(v *gobject.Value) {
 
 func (e AudioBaseSinkSlaveMethod) String() string {
 	switch e {
+		case AudioBaseSinkSlaveCustom: return "AudioBaseSinkSlaveCustom"
+		case AudioBaseSinkSlaveNone: return "AudioBaseSinkSlaveNone"
 		case AudioBaseSinkSlaveResample: return "AudioBaseSinkSlaveResample"
 		case AudioBaseSinkSlaveSkew: return "AudioBaseSinkSlaveSkew"
-		case AudioBaseSinkSlaveNone: return "AudioBaseSinkSlaveNone"
-		case AudioBaseSinkSlaveCustom: return "AudioBaseSinkSlaveCustom"
 		default: return fmt.Sprintf("AudioBaseSinkSlaveMethod(%d)", e)
 	}
 }
@@ -284,10 +284,10 @@ func (e AudioBaseSrcSlaveMethod) InitGoValue(v *gobject.Value) {
 
 func (e AudioBaseSrcSlaveMethod) String() string {
 	switch e {
-		case AudioBaseSrcSlaveResample: return "AudioBaseSrcSlaveResample"
-		case AudioBaseSrcSlaveReTimestamp: return "AudioBaseSrcSlaveReTimestamp"
-		case AudioBaseSrcSlaveSkew: return "AudioBaseSrcSlaveSkew"
 		case AudioBaseSrcSlaveNone: return "AudioBaseSrcSlaveNone"
+		case AudioBaseSrcSlaveReTimestamp: return "AudioBaseSrcSlaveReTimestamp"
+		case AudioBaseSrcSlaveResample: return "AudioBaseSrcSlaveResample"
+		case AudioBaseSrcSlaveSkew: return "AudioBaseSrcSlaveSkew"
 		default: return fmt.Sprintf("AudioBaseSrcSlaveMethod(%d)", e)
 	}
 }
@@ -322,8 +322,8 @@ func (e AudioCdSrcMode) InitGoValue(v *gobject.Value) {
 
 func (e AudioCdSrcMode) String() string {
 	switch e {
-		case AudioCdSrcModeNormal: return "AudioCdSrcModeNormal"
 		case AudioCdSrcModeContinuous: return "AudioCdSrcModeContinuous"
+		case AudioCdSrcModeNormal: return "AudioCdSrcModeNormal"
 		default: return fmt.Sprintf("AudioCdSrcMode(%d)", e)
 	}
 }
@@ -499,37 +499,37 @@ func (e AudioChannelPosition) InitGoValue(v *gobject.Value) {
 
 func (e AudioChannelPosition) String() string {
 	switch e {
-		case AudioChannelPositionFrontLeft: return "AudioChannelPositionFrontLeft"
+		case AudioChannelPositionBottomFrontCenter: return "AudioChannelPositionBottomFrontCenter"
+		case AudioChannelPositionBottomFrontLeft: return "AudioChannelPositionBottomFrontLeft"
+		case AudioChannelPositionBottomFrontRight: return "AudioChannelPositionBottomFrontRight"
 		case AudioChannelPositionFrontCenter: return "AudioChannelPositionFrontCenter"
-		case AudioChannelPositionTopFrontRight: return "AudioChannelPositionTopFrontRight"
-		case AudioChannelPositionWideRight: return "AudioChannelPositionWideRight"
-		case AudioChannelPositionTopSideRight: return "AudioChannelPositionTopSideRight"
+		case AudioChannelPositionFrontLeft: return "AudioChannelPositionFrontLeft"
+		case AudioChannelPositionFrontLeftOfCenter: return "AudioChannelPositionFrontLeftOfCenter"
+		case AudioChannelPositionFrontRight: return "AudioChannelPositionFrontRight"
+		case AudioChannelPositionFrontRightOfCenter: return "AudioChannelPositionFrontRightOfCenter"
 		case AudioChannelPositionInvalid: return "AudioChannelPositionInvalid"
+		case AudioChannelPositionLfe1: return "AudioChannelPositionLfe1"
+		case AudioChannelPositionLfe2: return "AudioChannelPositionLfe2"
+		case AudioChannelPositionMono: return "AudioChannelPositionMono"
+		case AudioChannelPositionNone: return "AudioChannelPositionNone"
+		case AudioChannelPositionRearCenter: return "AudioChannelPositionRearCenter"
 		case AudioChannelPositionRearLeft: return "AudioChannelPositionRearLeft"
 		case AudioChannelPositionRearRight: return "AudioChannelPositionRearRight"
-		case AudioChannelPositionFrontLeftOfCenter: return "AudioChannelPositionFrontLeftOfCenter"
-		case AudioChannelPositionSideRight: return "AudioChannelPositionSideRight"
-		case AudioChannelPositionTopRearLeft: return "AudioChannelPositionTopRearLeft"
-		case AudioChannelPositionTopSideLeft: return "AudioChannelPositionTopSideLeft"
-		case AudioChannelPositionRearCenter: return "AudioChannelPositionRearCenter"
-		case AudioChannelPositionLfe2: return "AudioChannelPositionLfe2"
-		case AudioChannelPositionFrontRight: return "AudioChannelPositionFrontRight"
-		case AudioChannelPositionLfe1: return "AudioChannelPositionLfe1"
-		case AudioChannelPositionTopFrontLeft: return "AudioChannelPositionTopFrontLeft"
-		case AudioChannelPositionBottomFrontRight: return "AudioChannelPositionBottomFrontRight"
-		case AudioChannelPositionSurroundRight: return "AudioChannelPositionSurroundRight"
-		case AudioChannelPositionTopFrontCenter: return "AudioChannelPositionTopFrontCenter"
-		case AudioChannelPositionTopCenter: return "AudioChannelPositionTopCenter"
-		case AudioChannelPositionBottomFrontCenter: return "AudioChannelPositionBottomFrontCenter"
-		case AudioChannelPositionWideLeft: return "AudioChannelPositionWideLeft"
-		case AudioChannelPositionSurroundLeft: return "AudioChannelPositionSurroundLeft"
-		case AudioChannelPositionTopRearCenter: return "AudioChannelPositionTopRearCenter"
-		case AudioChannelPositionBottomFrontLeft: return "AudioChannelPositionBottomFrontLeft"
 		case AudioChannelPositionSideLeft: return "AudioChannelPositionSideLeft"
+		case AudioChannelPositionSideRight: return "AudioChannelPositionSideRight"
+		case AudioChannelPositionSurroundLeft: return "AudioChannelPositionSurroundLeft"
+		case AudioChannelPositionSurroundRight: return "AudioChannelPositionSurroundRight"
+		case AudioChannelPositionTopCenter: return "AudioChannelPositionTopCenter"
+		case AudioChannelPositionTopFrontCenter: return "AudioChannelPositionTopFrontCenter"
+		case AudioChannelPositionTopFrontLeft: return "AudioChannelPositionTopFrontLeft"
+		case AudioChannelPositionTopFrontRight: return "AudioChannelPositionTopFrontRight"
+		case AudioChannelPositionTopRearCenter: return "AudioChannelPositionTopRearCenter"
+		case AudioChannelPositionTopRearLeft: return "AudioChannelPositionTopRearLeft"
 		case AudioChannelPositionTopRearRight: return "AudioChannelPositionTopRearRight"
-		case AudioChannelPositionMono: return "AudioChannelPositionMono"
-		case AudioChannelPositionFrontRightOfCenter: return "AudioChannelPositionFrontRightOfCenter"
-		case AudioChannelPositionNone: return "AudioChannelPositionNone"
+		case AudioChannelPositionTopSideLeft: return "AudioChannelPositionTopSideLeft"
+		case AudioChannelPositionTopSideRight: return "AudioChannelPositionTopSideRight"
+		case AudioChannelPositionWideLeft: return "AudioChannelPositionWideLeft"
+		case AudioChannelPositionWideRight: return "AudioChannelPositionWideRight"
 		default: return fmt.Sprintf("AudioChannelPosition(%d)", e)
 	}
 }
@@ -784,38 +784,38 @@ func (e AudioFormat) InitGoValue(v *gobject.Value) {
 
 func (e AudioFormat) String() string {
 	switch e {
-		case AudioFormatU2432LE: return "AudioFormatU2432LE"
-		case AudioFormatS20Be: return "AudioFormatS20Be"
-		case AudioFormatS18LE: return "AudioFormatS18LE"
-		case AudioFormatF32LE: return "AudioFormatF32LE"
-		case AudioFormatS8: return "AudioFormatS8"
-		case AudioFormatU8: return "AudioFormatU8"
-		case AudioFormatU2432Be: return "AudioFormatU2432Be"
-		case AudioFormatF64LE: return "AudioFormatF64LE"
-		case AudioFormatUnknown: return "AudioFormatUnknown"
-		case AudioFormatS32Be: return "AudioFormatS32Be"
-		case AudioFormatU16LE: return "AudioFormatU16LE"
-		case AudioFormatU32Be: return "AudioFormatU32Be"
-		case AudioFormatF32Be: return "AudioFormatF32Be"
-		case AudioFormatS16Be: return "AudioFormatS16Be"
-		case AudioFormatS2432LE: return "AudioFormatS2432LE"
-		case AudioFormatS2432Be: return "AudioFormatS2432Be"
-		case AudioFormatS24LE: return "AudioFormatS24LE"
-		case AudioFormatU24LE: return "AudioFormatU24LE"
-		case AudioFormatU20Be: return "AudioFormatU20Be"
-		case AudioFormatF64Be: return "AudioFormatF64Be"
 		case AudioFormatEncoded: return "AudioFormatEncoded"
-		case AudioFormatS32LE: return "AudioFormatS32LE"
-		case AudioFormatS20LE: return "AudioFormatS20LE"
-		case AudioFormatS18Be: return "AudioFormatS18Be"
+		case AudioFormatF32Be: return "AudioFormatF32Be"
+		case AudioFormatF32LE: return "AudioFormatF32LE"
+		case AudioFormatF64Be: return "AudioFormatF64Be"
+		case AudioFormatF64LE: return "AudioFormatF64LE"
+		case AudioFormatS16Be: return "AudioFormatS16Be"
 		case AudioFormatS16LE: return "AudioFormatS16LE"
-		case AudioFormatU16Be: return "AudioFormatU16Be"
-		case AudioFormatU32LE: return "AudioFormatU32LE"
+		case AudioFormatS18Be: return "AudioFormatS18Be"
+		case AudioFormatS18LE: return "AudioFormatS18LE"
+		case AudioFormatS20Be: return "AudioFormatS20Be"
+		case AudioFormatS20LE: return "AudioFormatS20LE"
+		case AudioFormatS2432Be: return "AudioFormatS2432Be"
+		case AudioFormatS2432LE: return "AudioFormatS2432LE"
 		case AudioFormatS24Be: return "AudioFormatS24Be"
-		case AudioFormatU24Be: return "AudioFormatU24Be"
+		case AudioFormatS24LE: return "AudioFormatS24LE"
+		case AudioFormatS32Be: return "AudioFormatS32Be"
+		case AudioFormatS32LE: return "AudioFormatS32LE"
+		case AudioFormatS8: return "AudioFormatS8"
+		case AudioFormatU16Be: return "AudioFormatU16Be"
+		case AudioFormatU16LE: return "AudioFormatU16LE"
 		case AudioFormatU18Be: return "AudioFormatU18Be"
-		case AudioFormatU20LE: return "AudioFormatU20LE"
 		case AudioFormatU18LE: return "AudioFormatU18LE"
+		case AudioFormatU20Be: return "AudioFormatU20Be"
+		case AudioFormatU20LE: return "AudioFormatU20LE"
+		case AudioFormatU2432Be: return "AudioFormatU2432Be"
+		case AudioFormatU2432LE: return "AudioFormatU2432LE"
+		case AudioFormatU24Be: return "AudioFormatU24Be"
+		case AudioFormatU24LE: return "AudioFormatU24LE"
+		case AudioFormatU32Be: return "AudioFormatU32Be"
+		case AudioFormatU32LE: return "AudioFormatU32LE"
+		case AudioFormatU8: return "AudioFormatU8"
+		case AudioFormatUnknown: return "AudioFormatUnknown"
 		default: return fmt.Sprintf("AudioFormat(%d)", e)
 	}
 }
@@ -896,10 +896,10 @@ func (e AudioNoiseShapingMethod) InitGoValue(v *gobject.Value) {
 
 func (e AudioNoiseShapingMethod) String() string {
 	switch e {
-		case AudioNoiseShapingMedium: return "AudioNoiseShapingMedium"
-		case AudioNoiseShapingHigh: return "AudioNoiseShapingHigh"
-		case AudioNoiseShapingNone: return "AudioNoiseShapingNone"
 		case AudioNoiseShapingErrorFeedback: return "AudioNoiseShapingErrorFeedback"
+		case AudioNoiseShapingHigh: return "AudioNoiseShapingHigh"
+		case AudioNoiseShapingMedium: return "AudioNoiseShapingMedium"
+		case AudioNoiseShapingNone: return "AudioNoiseShapingNone"
 		case AudioNoiseShapingSimple: return "AudioNoiseShapingSimple"
 		default: return fmt.Sprintf("AudioNoiseShapingMethod(%d)", e)
 	}
@@ -940,9 +940,9 @@ func (e AudioResamplerFilterInterpolation) InitGoValue(v *gobject.Value) {
 
 func (e AudioResamplerFilterInterpolation) String() string {
 	switch e {
-		case AudioResamplerFilterInterpolationNone: return "AudioResamplerFilterInterpolationNone"
-		case AudioResamplerFilterInterpolationLinear: return "AudioResamplerFilterInterpolationLinear"
 		case AudioResamplerFilterInterpolationCubic: return "AudioResamplerFilterInterpolationCubic"
+		case AudioResamplerFilterInterpolationLinear: return "AudioResamplerFilterInterpolationLinear"
+		case AudioResamplerFilterInterpolationNone: return "AudioResamplerFilterInterpolationNone"
 		default: return fmt.Sprintf("AudioResamplerFilterInterpolation(%d)", e)
 	}
 }
@@ -984,8 +984,8 @@ func (e AudioResamplerFilterMode) InitGoValue(v *gobject.Value) {
 
 func (e AudioResamplerFilterMode) String() string {
 	switch e {
-		case AudioResamplerFilterModeFull: return "AudioResamplerFilterModeFull"
 		case AudioResamplerFilterModeAuto: return "AudioResamplerFilterModeAuto"
+		case AudioResamplerFilterModeFull: return "AudioResamplerFilterModeFull"
 		case AudioResamplerFilterModeInterpolated: return "AudioResamplerFilterModeInterpolated"
 		default: return fmt.Sprintf("AudioResamplerFilterMode(%d)", e)
 	}
@@ -1034,11 +1034,11 @@ func (e AudioResamplerMethod) InitGoValue(v *gobject.Value) {
 
 func (e AudioResamplerMethod) String() string {
 	switch e {
-		case AudioResamplerMethodKaiser: return "AudioResamplerMethodKaiser"
-		case AudioResamplerMethodNearest: return "AudioResamplerMethodNearest"
-		case AudioResamplerMethodLinear: return "AudioResamplerMethodLinear"
-		case AudioResamplerMethodCubic: return "AudioResamplerMethodCubic"
 		case AudioResamplerMethodBlackmanNuttall: return "AudioResamplerMethodBlackmanNuttall"
+		case AudioResamplerMethodCubic: return "AudioResamplerMethodCubic"
+		case AudioResamplerMethodKaiser: return "AudioResamplerMethodKaiser"
+		case AudioResamplerMethodLinear: return "AudioResamplerMethodLinear"
+		case AudioResamplerMethodNearest: return "AudioResamplerMethodNearest"
 		default: return fmt.Sprintf("AudioResamplerMethod(%d)", e)
 	}
 }
@@ -1128,22 +1128,22 @@ func (e AudioRingBufferFormatType) InitGoValue(v *gobject.Value) {
 
 func (e AudioRingBufferFormatType) String() string {
 	switch e {
-		case AudioRingBufferFormatTypeMuLaw: return "AudioRingBufferFormatTypeMuLaw"
 		case AudioRingBufferFormatTypeALaw: return "AudioRingBufferFormatTypeALaw"
-		case AudioRingBufferFormatTypeMpeg2Aac: return "AudioRingBufferFormatTypeMpeg2Aac"
+		case AudioRingBufferFormatTypeAc3: return "AudioRingBufferFormatTypeAc3"
 		case AudioRingBufferFormatTypeDsd: return "AudioRingBufferFormatTypeDsd"
-		case AudioRingBufferFormatTypeMpeg: return "AudioRingBufferFormatTypeMpeg"
-		case AudioRingBufferFormatTypeGsm: return "AudioRingBufferFormatTypeGsm"
 		case AudioRingBufferFormatTypeDts: return "AudioRingBufferFormatTypeDts"
+		case AudioRingBufferFormatTypeEac3: return "AudioRingBufferFormatTypeEac3"
+		case AudioRingBufferFormatTypeFlac: return "AudioRingBufferFormatTypeFlac"
+		case AudioRingBufferFormatTypeGsm: return "AudioRingBufferFormatTypeGsm"
+		case AudioRingBufferFormatTypeIec958: return "AudioRingBufferFormatTypeIec958"
+		case AudioRingBufferFormatTypeImaAdpcm: return "AudioRingBufferFormatTypeImaAdpcm"
+		case AudioRingBufferFormatTypeMpeg: return "AudioRingBufferFormatTypeMpeg"
+		case AudioRingBufferFormatTypeMpeg2Aac: return "AudioRingBufferFormatTypeMpeg2Aac"
+		case AudioRingBufferFormatTypeMpeg2AacRaw: return "AudioRingBufferFormatTypeMpeg2AacRaw"
 		case AudioRingBufferFormatTypeMpeg4Aac: return "AudioRingBufferFormatTypeMpeg4Aac"
 		case AudioRingBufferFormatTypeMpeg4AacRaw: return "AudioRingBufferFormatTypeMpeg4AacRaw"
-		case AudioRingBufferFormatTypeFlac: return "AudioRingBufferFormatTypeFlac"
+		case AudioRingBufferFormatTypeMuLaw: return "AudioRingBufferFormatTypeMuLaw"
 		case AudioRingBufferFormatTypeRaw: return "AudioRingBufferFormatTypeRaw"
-		case AudioRingBufferFormatTypeImaAdpcm: return "AudioRingBufferFormatTypeImaAdpcm"
-		case AudioRingBufferFormatTypeAc3: return "AudioRingBufferFormatTypeAc3"
-		case AudioRingBufferFormatTypeEac3: return "AudioRingBufferFormatTypeEac3"
-		case AudioRingBufferFormatTypeIec958: return "AudioRingBufferFormatTypeIec958"
-		case AudioRingBufferFormatTypeMpeg2AacRaw: return "AudioRingBufferFormatTypeMpeg2AacRaw"
 		default: return fmt.Sprintf("AudioRingBufferFormatType(%d)", e)
 	}
 }
@@ -1187,10 +1187,10 @@ func (e AudioRingBufferState) InitGoValue(v *gobject.Value) {
 
 func (e AudioRingBufferState) String() string {
 	switch e {
-		case AudioRingBufferStateStopped: return "AudioRingBufferStateStopped"
+		case AudioRingBufferStateError: return "AudioRingBufferStateError"
 		case AudioRingBufferStatePaused: return "AudioRingBufferStatePaused"
 		case AudioRingBufferStateStarted: return "AudioRingBufferStateStarted"
-		case AudioRingBufferStateError: return "AudioRingBufferStateError"
+		case AudioRingBufferStateStopped: return "AudioRingBufferStateStopped"
 		default: return fmt.Sprintf("AudioRingBufferState(%d)", e)
 	}
 }
@@ -1252,13 +1252,13 @@ func (e DsdFormat) InitGoValue(v *gobject.Value) {
 
 func (e DsdFormat) String() string {
 	switch e {
-		case DsdFormatU16LE: return "DsdFormatU16LE"
 		case DsdFormatU16Be: return "DsdFormatU16Be"
-		case DsdFormatU32LE: return "DsdFormatU32LE"
+		case DsdFormatU16LE: return "DsdFormatU16LE"
 		case DsdFormatU32Be: return "DsdFormatU32Be"
-		case NumDsdFormats: return "NumDsdFormats"
-		case DsdFormatUnknown: return "DsdFormatUnknown"
+		case DsdFormatU32LE: return "DsdFormatU32LE"
 		case DsdFormatU8: return "DsdFormatU8"
+		case DsdFormatUnknown: return "DsdFormatUnknown"
+		case NumDsdFormats: return "NumDsdFormats"
 		default: return fmt.Sprintf("DsdFormat(%d)", e)
 	}
 }
@@ -1290,9 +1290,9 @@ const (
 
 func (e StreamVolumeFormat) String() string {
 	switch e {
-		case StreamVolumeFormatLinear: return "StreamVolumeFormatLinear"
 		case StreamVolumeFormatCubic: return "StreamVolumeFormatCubic"
 		case StreamVolumeFormatDb: return "StreamVolumeFormatDb"
+		case StreamVolumeFormatLinear: return "StreamVolumeFormatLinear"
 		default: return fmt.Sprintf("StreamVolumeFormat(%d)", e)
 	}
 }

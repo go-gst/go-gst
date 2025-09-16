@@ -91,10 +91,10 @@ func (e PlayerColorBalanceType) InitGoValue(v *gobject.Value) {
 
 func (e PlayerColorBalanceType) String() string {
 	switch e {
-		case PlayerColorBalanceHue: return "PlayerColorBalanceHue"
 		case PlayerColorBalanceBrightness: return "PlayerColorBalanceBrightness"
-		case PlayerColorBalanceSaturation: return "PlayerColorBalanceSaturation"
 		case PlayerColorBalanceContrast: return "PlayerColorBalanceContrast"
+		case PlayerColorBalanceHue: return "PlayerColorBalanceHue"
+		case PlayerColorBalanceSaturation: return "PlayerColorBalanceSaturation"
 		default: return fmt.Sprintf("PlayerColorBalanceType(%d)", e)
 	}
 }
@@ -146,11 +146,11 @@ const (
 
 func (e PlayerSnapshotFormat) String() string {
 	switch e {
-		case PlayerThumbnailRawNative: return "PlayerThumbnailRawNative"
-		case PlayerThumbnailRawXrgb: return "PlayerThumbnailRawXrgb"
-		case PlayerThumbnailRawBgrx: return "PlayerThumbnailRawBgrx"
 		case PlayerThumbnailJPG: return "PlayerThumbnailJPG"
 		case PlayerThumbnailPNG: return "PlayerThumbnailPNG"
+		case PlayerThumbnailRawBgrx: return "PlayerThumbnailRawBgrx"
+		case PlayerThumbnailRawNative: return "PlayerThumbnailRawNative"
+		case PlayerThumbnailRawXrgb: return "PlayerThumbnailRawXrgb"
 		default: return fmt.Sprintf("PlayerSnapshotFormat(%d)", e)
 	}
 }
