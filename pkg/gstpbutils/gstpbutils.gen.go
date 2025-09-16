@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -2541,15 +2542,101 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 
 	if overrides.DecideAllocation != nil {
 		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstpbutils1_AudioVisualizer_decide_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstpbutils1_AudioVisualizer_decide_allocation",
+			func(carg0 *C.GstAudioVisualizer, carg1 *C.GstQuery) (cret C.gboolean) {
+				var scope Instance   // go GstAudioVisualizer subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				scope = UnsafeAudioVisualizerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DecideAllocation(scope, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Render != nil {
 		pclass.render = (*[0]byte)(C._gotk4_gstpbutils1_AudioVisualizer_render)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstpbutils1_AudioVisualizer_render",
+			func(carg0 *C.GstAudioVisualizer, carg1 *C.GstBuffer, carg2 *C.GstVideoFrame) (cret C.gboolean) {
+				var scope Instance             // go GstAudioVisualizer subclass
+				var audio *gst.Buffer          // in, none, converted
+				var video *gstvideo.VideoFrame // in, none, converted
+				var goret bool                 // return
+
+				scope = UnsafeAudioVisualizerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				audio = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+				video = gstvideo.UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.Render(scope, audio, video)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Setup != nil {
 		pclass.setup = (*[0]byte)(C._gotk4_gstpbutils1_AudioVisualizer_setup)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstpbutils1_AudioVisualizer_setup",
+			func(carg0 *C.GstAudioVisualizer) (cret C.gboolean) {
+				var scope Instance // go GstAudioVisualizer subclass
+				var goret bool     // return
+
+				scope = UnsafeAudioVisualizerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Setup(scope)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioVisualizerSubClass is used to register a go subclass of GstAudioVisualizer. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioVisualizerSubClass[InstanceT AudioVisualizer](
+		name string,
+		classInit func(class *AudioVisualizerClass),
+		constructor func() InstanceT,
+		overrides AudioVisualizerOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioVisualizer,
+		UnsafeAudioVisualizerClassFromGlibBorrow,
+		UnsafeApplyAudioVisualizerOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioVisualizer(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // DiscovererInstance is the instance type used by all types extending GstDiscoverer. It is used internally by the bindings. Users should use the interface [Discoverer] instead.
@@ -2921,23 +3008,117 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 
 	if overrides.Discovered != nil {
 		pclass.discovered = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_discovered)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstpbutils1_Discoverer_discovered",
+			func(carg0 *C.GstDiscoverer, carg1 *C.GstDiscovererInfo, carg2 *C.GError) {
+				var discoverer Instance       // go GstDiscoverer subclass
+				var info       DiscovererInfo // in, none, converted
+				var err        error          // in, none, converted
+
+				discoverer = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				info = UnsafeDiscovererInfoFromGlibNone(unsafe.Pointer(carg1))
+				err = glib.UnsafeErrorFromGlibNone(unsafe.Pointer(carg2))
+
+				overrides.Discovered(discoverer, info, err)
+			},
+		)
 	}
 
 	if overrides.Finished != nil {
 		pclass.finished = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_finished)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstpbutils1_Discoverer_finished",
+			func(carg0 *C.GstDiscoverer) {
+				var discoverer Instance // go GstDiscoverer subclass
+
+				discoverer = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Finished(discoverer)
+			},
+		)
 	}
 
 	if overrides.LoadSerializeInfo != nil {
 		pclass.load_serialize_info = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_load_serialize_info)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstpbutils1_Discoverer_load_serialize_info",
+			func(carg0 *C.GstDiscoverer, carg1 *C.gchar) (cret *C.GstDiscovererInfo) {
+				var dc    Instance       // go GstDiscoverer subclass
+				var uri   string         // in, none, string
+				var goret DiscovererInfo // return, full, converted
+
+				dc = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				goret = overrides.LoadSerializeInfo(dc, uri)
+
+				cret = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SourceSetup != nil {
 		pclass.source_setup = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_source_setup)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstpbutils1_Discoverer_source_setup",
+			func(carg0 *C.GstDiscoverer, carg1 *C.GstElement) {
+				var discoverer Instance    // go GstDiscoverer subclass
+				var source     gst.Element // in, none, converted
+
+				discoverer = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				source = gst.UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
+
+				overrides.SourceSetup(discoverer, source)
+			},
+		)
 	}
 
 	if overrides.Starting != nil {
 		pclass.starting = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_starting)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstpbutils1_Discoverer_starting",
+			func(carg0 *C.GstDiscoverer) {
+				var discoverer Instance // go GstDiscoverer subclass
+
+				discoverer = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Starting(discoverer)
+			},
+		)
 	}
+}
+
+// RegisterDiscovererSubClass is used to register a go subclass of GstDiscoverer. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterDiscovererSubClass[InstanceT Discoverer](
+		name string,
+		classInit func(class *DiscovererClass),
+		constructor func() InstanceT,
+		overrides DiscovererOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeDiscoverer,
+		UnsafeDiscovererClassFromGlibBorrow,
+		UnsafeApplyDiscovererOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDiscoverer(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // DiscovererInfoInstance is the instance type used by all types extending GstDiscovererInfo. It is used internally by the bindings. Users should use the interface [DiscovererInfo] instead.

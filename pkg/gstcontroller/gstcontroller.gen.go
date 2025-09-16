@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -281,6 +282,32 @@ func UnsafeApplyARGBControlBindingOverrides[Instance ARGBControlBinding](gclass 
 	gst.UnsafeApplyControlBindingOverrides(gclass, overrides.ControlBindingOverrides)
 }
 
+// RegisterARGBControlBindingSubClass is used to register a go subclass of GstARGBControlBinding. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterARGBControlBindingSubClass[InstanceT ARGBControlBinding](
+		name string,
+		classInit func(class *ARGBControlBindingClass),
+		constructor func() InstanceT,
+		overrides ARGBControlBindingOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeARGBControlBinding,
+		UnsafeARGBControlBindingClassFromGlibBorrow,
+		UnsafeApplyARGBControlBindingOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapARGBControlBinding(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // DirectControlBindingInstance is the instance type used by all types extending GstDirectControlBinding. It is used internally by the bindings. Users should use the interface [DirectControlBinding] instead.
 type DirectControlBindingInstance struct {
 	_ [0]func() // equal guard
@@ -432,6 +459,32 @@ func UnsafeApplyDirectControlBindingOverrides[Instance DirectControlBinding](gcl
 	gst.UnsafeApplyControlBindingOverrides(gclass, overrides.ControlBindingOverrides)
 }
 
+// RegisterDirectControlBindingSubClass is used to register a go subclass of GstDirectControlBinding. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterDirectControlBindingSubClass[InstanceT DirectControlBinding](
+		name string,
+		classInit func(class *DirectControlBindingClass),
+		constructor func() InstanceT,
+		overrides DirectControlBindingOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeDirectControlBinding,
+		UnsafeDirectControlBindingClassFromGlibBorrow,
+		UnsafeApplyDirectControlBindingOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDirectControlBinding(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // LFOControlSourceInstance is the instance type used by all types extending GstLFOControlSource. It is used internally by the bindings. Users should use the interface [LFOControlSource] instead.
 type LFOControlSourceInstance struct {
 	_ [0]func() // equal guard
@@ -526,6 +579,32 @@ type LFOControlSourceOverrides[Instance LFOControlSource] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyLFOControlSourceOverrides[Instance LFOControlSource](gclass unsafe.Pointer, overrides LFOControlSourceOverrides[Instance]) {
 	gst.UnsafeApplyControlSourceOverrides(gclass, overrides.ControlSourceOverrides)
+}
+
+// RegisterLFOControlSourceSubClass is used to register a go subclass of GstLFOControlSource. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterLFOControlSourceSubClass[InstanceT LFOControlSource](
+		name string,
+		classInit func(class *LFOControlSourceClass),
+		constructor func() InstanceT,
+		overrides LFOControlSourceOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeLFOControlSource,
+		UnsafeLFOControlSourceClassFromGlibBorrow,
+		UnsafeApplyLFOControlSourceOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapLFOControlSource(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // ProxyControlBindingInstance is the instance type used by all types extending GstProxyControlBinding. It is used internally by the bindings. Users should use the interface [ProxyControlBinding] instead.
@@ -640,6 +719,32 @@ type ProxyControlBindingOverrides[Instance ProxyControlBinding] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyProxyControlBindingOverrides[Instance ProxyControlBinding](gclass unsafe.Pointer, overrides ProxyControlBindingOverrides[Instance]) {
 	gst.UnsafeApplyControlBindingOverrides(gclass, overrides.ControlBindingOverrides)
+}
+
+// RegisterProxyControlBindingSubClass is used to register a go subclass of GstProxyControlBinding. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterProxyControlBindingSubClass[InstanceT ProxyControlBinding](
+		name string,
+		classInit func(class *ProxyControlBindingClass),
+		constructor func() InstanceT,
+		overrides ProxyControlBindingOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeProxyControlBinding,
+		UnsafeProxyControlBindingClassFromGlibBorrow,
+		UnsafeApplyProxyControlBindingOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapProxyControlBinding(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // TimedValueControlSourceInstance is the instance type used by all types extending GstTimedValueControlSource. It is used internally by the bindings. Users should use the interface [TimedValueControlSource] instead.
@@ -985,6 +1090,32 @@ func UnsafeApplyTimedValueControlSourceOverrides[Instance TimedValueControlSourc
 	gst.UnsafeApplyControlSourceOverrides(gclass, overrides.ControlSourceOverrides)
 }
 
+// RegisterTimedValueControlSourceSubClass is used to register a go subclass of GstTimedValueControlSource. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterTimedValueControlSourceSubClass[InstanceT TimedValueControlSource](
+		name string,
+		classInit func(class *TimedValueControlSourceClass),
+		constructor func() InstanceT,
+		overrides TimedValueControlSourceOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeTimedValueControlSource,
+		UnsafeTimedValueControlSourceClassFromGlibBorrow,
+		UnsafeApplyTimedValueControlSourceOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTimedValueControlSource(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // TriggerControlSourceInstance is the instance type used by all types extending GstTriggerControlSource. It is used internally by the bindings. Users should use the interface [TriggerControlSource] instead.
 type TriggerControlSourceInstance struct {
 	_ [0]func() // equal guard
@@ -1083,6 +1214,32 @@ func UnsafeApplyTriggerControlSourceOverrides[Instance TriggerControlSource](gcl
 	UnsafeApplyTimedValueControlSourceOverrides(gclass, overrides.TimedValueControlSourceOverrides)
 }
 
+// RegisterTriggerControlSourceSubClass is used to register a go subclass of GstTriggerControlSource. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterTriggerControlSourceSubClass[InstanceT TriggerControlSource](
+		name string,
+		classInit func(class *TriggerControlSourceClass),
+		constructor func() InstanceT,
+		overrides TriggerControlSourceOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeTriggerControlSource,
+		UnsafeTriggerControlSourceClassFromGlibBorrow,
+		UnsafeApplyTriggerControlSourceOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTriggerControlSource(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // InterpolationControlSourceInstance is the instance type used by all types extending GstInterpolationControlSource. It is used internally by the bindings. Users should use the interface [InterpolationControlSource] instead.
 type InterpolationControlSourceInstance struct {
 	_ [0]func() // equal guard
@@ -1179,6 +1336,32 @@ type InterpolationControlSourceOverrides[Instance InterpolationControlSource] st
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyInterpolationControlSourceOverrides[Instance InterpolationControlSource](gclass unsafe.Pointer, overrides InterpolationControlSourceOverrides[Instance]) {
 	UnsafeApplyTimedValueControlSourceOverrides(gclass, overrides.TimedValueControlSourceOverrides)
+}
+
+// RegisterInterpolationControlSourceSubClass is used to register a go subclass of GstInterpolationControlSource. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterInterpolationControlSourceSubClass[InstanceT InterpolationControlSource](
+		name string,
+		classInit func(class *InterpolationControlSourceClass),
+		constructor func() InstanceT,
+		overrides InterpolationControlSourceOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeInterpolationControlSource,
+		UnsafeInterpolationControlSourceClassFromGlibBorrow,
+		UnsafeApplyInterpolationControlSourceOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapInterpolationControlSource(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // ARGBControlBindingClass wraps GstARGBControlBindingClass

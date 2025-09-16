@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -3541,11 +3542,85 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 
 	if overrides.AggregateOneBuffer != nil {
 		pclass.aggregate_one_buffer = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer",
+			func(carg0 *C.GstAudioAggregator, carg1 *C.GstAudioAggregatorPad, carg2 *C.GstBuffer, carg3 C.guint, carg4 *C.GstBuffer, carg5 C.guint, carg6 C.guint) (cret C.gboolean) {
+				var aagg      Instance           // go GstAudioAggregator subclass
+				var pad       AudioAggregatorPad // in, none, converted
+				var inbuf     *gst.Buffer        // in, none, converted
+				var inOffset  uint               // in, none, casted
+				var outbuf    *gst.Buffer        // in, none, converted
+				var outOffset uint               // in, none, casted
+				var numFrames uint               // in, none, casted
+				var goret     bool               // return
+
+				aagg = UnsafeAudioAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeAudioAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
+				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
+				inOffset = uint(carg3)
+				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg4))
+				outOffset = uint(carg5)
+				numFrames = uint(carg6)
+
+				goret = overrides.AggregateOneBuffer(aagg, pad, inbuf, inOffset, outbuf, outOffset, numFrames)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.CreateOutputBuffer != nil {
 		pclass.create_output_buffer = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregator_create_output_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioAggregator_create_output_buffer",
+			func(carg0 *C.GstAudioAggregator, carg1 C.guint) (cret *C.GstBuffer) {
+				var aagg      Instance    // go GstAudioAggregator subclass
+				var numFrames uint        // in, none, casted
+				var goret     *gst.Buffer // return, full, converted
+
+				aagg = UnsafeAudioAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				numFrames = uint(carg1)
+
+				goret = overrides.CreateOutputBuffer(aagg, numFrames)
+
+				cret = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioAggregatorSubClass is used to register a go subclass of GstAudioAggregator. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioAggregatorSubClass[InstanceT AudioAggregator](
+		name string,
+		classInit func(class *AudioAggregatorClass),
+		constructor func() InstanceT,
+		overrides AudioAggregatorOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioAggregator,
+		UnsafeAudioAggregatorClassFromGlibBorrow,
+		UnsafeApplyAudioAggregatorOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioAggregator(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioAggregatorPadInstance is the instance type used by all types extending GstAudioAggregatorPad. It is used internally by the bindings. Users should use the interface [AudioAggregatorPad] instead.
@@ -3636,11 +3711,70 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 
 	if overrides.ConvertBuffer != nil {
 		pclass.convert_buffer = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregatorPad_convert_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioAggregatorPad_convert_buffer",
+			func(carg0 *C.GstAudioAggregatorPad, carg1 *C.GstAudioInfo, carg2 *C.GstAudioInfo, carg3 *C.GstBuffer) (cret *C.GstBuffer) {
+				var pad     Instance    // go GstAudioAggregatorPad subclass
+				var inInfo  *AudioInfo  // in, none, converted
+				var outInfo *AudioInfo  // in, none, converted
+				var buffer  *gst.Buffer // in, none, converted
+				var goret   *gst.Buffer // return, full, converted
+
+				pad = UnsafeAudioAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				inInfo = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg1))
+				outInfo = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg2))
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.ConvertBuffer(pad, inInfo, outInfo, buffer)
+
+				cret = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.UpdateConversionInfo != nil {
 		pclass.update_conversion_info = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info",
+			func(carg0 *C.GstAudioAggregatorPad) {
+				var pad Instance // go GstAudioAggregatorPad subclass
+
+				pad = UnsafeAudioAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.UpdateConversionInfo(pad)
+			},
+		)
 	}
+}
+
+// RegisterAudioAggregatorPadSubClass is used to register a go subclass of GstAudioAggregatorPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioAggregatorPadSubClass[InstanceT AudioAggregatorPad](
+		name string,
+		classInit func(class *AudioAggregatorPadClass),
+		constructor func() InstanceT,
+		overrides AudioAggregatorPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioAggregatorPad,
+		UnsafeAudioAggregatorPadClassFromGlibBorrow,
+		UnsafeApplyAudioAggregatorPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioAggregatorPad(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioBaseSinkInstance is the instance type used by all types extending GstAudioBaseSink. It is used internally by the bindings. Users should use the interface [AudioBaseSink] instead.
@@ -4143,11 +4277,73 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 
 	if overrides.CreateRingbuffer != nil {
 		pclass.create_ringbuffer = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSink_create_ringbuffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioBaseSink_create_ringbuffer",
+			func(carg0 *C.GstAudioBaseSink) (cret *C.GstAudioRingBuffer) {
+				var sink  Instance        // go GstAudioBaseSink subclass
+				var goret AudioRingBuffer // return, none, converted, nullable
+
+				sink = UnsafeAudioBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.CreateRingbuffer(sink)
+
+				if goret != nil {
+					cret = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Payload != nil {
 		pclass.payload = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSink_payload)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioBaseSink_payload",
+			func(carg0 *C.GstAudioBaseSink, carg1 *C.GstBuffer) (cret *C.GstBuffer) {
+				var sink   Instance    // go GstAudioBaseSink subclass
+				var buffer *gst.Buffer // in, none, converted
+				var goret  *gst.Buffer // return, full, converted
+
+				sink = UnsafeAudioBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Payload(sink, buffer)
+
+				cret = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioBaseSinkSubClass is used to register a go subclass of GstAudioBaseSink. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioBaseSinkSubClass[InstanceT AudioBaseSink](
+		name string,
+		classInit func(class *AudioBaseSinkClass),
+		constructor func() InstanceT,
+		overrides AudioBaseSinkOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioBaseSink,
+		UnsafeAudioBaseSinkClassFromGlibBorrow,
+		UnsafeApplyAudioBaseSinkOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioBaseSink(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioBaseSrcInstance is the instance type used by all types extending GstAudioBaseSrc. It is used internally by the bindings. Users should use the interface [AudioBaseSrc] instead.
@@ -4398,7 +4594,51 @@ func UnsafeApplyAudioBaseSrcOverrides[Instance AudioBaseSrc](gclass unsafe.Point
 
 	if overrides.CreateRingbuffer != nil {
 		pclass.create_ringbuffer = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer",
+			func(carg0 *C.GstAudioBaseSrc) (cret *C.GstAudioRingBuffer) {
+				var src   Instance        // go GstAudioBaseSrc subclass
+				var goret AudioRingBuffer // return, none, converted, nullable
+
+				src = UnsafeAudioBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.CreateRingbuffer(src)
+
+				if goret != nil {
+					cret = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(goret))
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioBaseSrcSubClass is used to register a go subclass of GstAudioBaseSrc. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioBaseSrcSubClass[InstanceT AudioBaseSrc](
+		name string,
+		classInit func(class *AudioBaseSrcClass),
+		constructor func() InstanceT,
+		overrides AudioBaseSrcOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioBaseSrc,
+		UnsafeAudioBaseSrcClassFromGlibBorrow,
+		UnsafeApplyAudioBaseSrcOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioBaseSrc(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioCdSrcInstance is the instance type used by all types extending GstAudioCdSrc. It is used internally by the bindings. Users should use the interface [AudioCdSrc] instead.
@@ -4597,15 +4837,90 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 
 	if overrides.Close != nil {
 		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioCdSrc_close)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioCdSrc_close",
+			func(carg0 *C.GstAudioCdSrc) {
+				var src Instance // go GstAudioCdSrc subclass
+
+				src = UnsafeAudioCdSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Close(src)
+			},
+		)
 	}
 
 	if overrides.Open != nil {
 		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioCdSrc_open)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioCdSrc_open",
+			func(carg0 *C.GstAudioCdSrc, carg1 *C.gchar) (cret C.gboolean) {
+				var src    Instance // go GstAudioCdSrc subclass
+				var device string   // in, none, string
+				var goret  bool     // return
+
+				src = UnsafeAudioCdSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				device = C.GoString((*C.char)(unsafe.Pointer(carg1)))
+
+				goret = overrides.Open(src, device)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ReadSector != nil {
 		pclass.read_sector = (*[0]byte)(C._gotk4_gstaudio1_AudioCdSrc_read_sector)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioCdSrc_read_sector",
+			func(carg0 *C.GstAudioCdSrc, carg1 C.gint) (cret *C.GstBuffer) {
+				var src    Instance    // go GstAudioCdSrc subclass
+				var sector int         // in, none, casted
+				var goret  *gst.Buffer // return, full, converted
+
+				src = UnsafeAudioCdSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sector = int(carg1)
+
+				goret = overrides.ReadSector(src, sector)
+
+				cret = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioCdSrcSubClass is used to register a go subclass of GstAudioCdSrc. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioCdSrcSubClass[InstanceT AudioCdSrc](
+		name string,
+		classInit func(class *AudioCdSrcClass),
+		constructor func() InstanceT,
+		overrides AudioCdSrcOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioCdSrc,
+		UnsafeAudioCdSrcClassFromGlibBorrow,
+		UnsafeApplyAudioCdSrcOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioCdSrc(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioClockInstance is the instance type used by all types extending GstAudioClock. It is used internally by the bindings. Users should use the interface [AudioClock] instead.
@@ -4854,6 +5169,32 @@ type AudioClockOverrides[Instance AudioClock] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyAudioClockOverrides[Instance AudioClock](gclass unsafe.Pointer, overrides AudioClockOverrides[Instance]) {
 	gst.UnsafeApplySystemClockOverrides(gclass, overrides.SystemClockOverrides)
+}
+
+// RegisterAudioClockSubClass is used to register a go subclass of GstAudioClock. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioClockSubClass[InstanceT AudioClock](
+		name string,
+		classInit func(class *AudioClockClass),
+		constructor func() InstanceT,
+		overrides AudioClockOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioClock,
+		UnsafeAudioClockClassFromGlibBorrow,
+		UnsafeApplyAudioClockOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioClock(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioDecoderInstance is the instance type used by all types extending GstAudioDecoder. It is used internally by the bindings. Users should use the interface [AudioDecoder] instead.
@@ -6364,71 +6705,424 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 
 	if overrides.Close != nil {
 		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_close)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_close",
+			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
+				var dec   Instance // go GstAudioDecoder subclass
+				var goret bool     // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Close(dec)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DecideAllocation != nil {
 		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_decide_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_decide_allocation",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var dec   Instance   // go GstAudioDecoder subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DecideAllocation(dec, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Flush != nil {
 		pclass.flush = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_flush)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_flush",
+			func(carg0 *C.GstAudioDecoder, carg1 C.gboolean) {
+				var dec  Instance // go GstAudioDecoder subclass
+				var hard bool     // in
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					hard = true
+				}
+
+				overrides.Flush(dec, hard)
+			},
+		)
 	}
 
 	if overrides.Getcaps != nil {
 		pclass.getcaps = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_getcaps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_getcaps",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var dec    Instance  // go GstAudioDecoder subclass
+				var filter *gst.Caps // in, none, converted
+				var goret  *gst.Caps // return, full, converted
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Getcaps(dec, filter)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.HandleFrame != nil {
 		pclass.handle_frame = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_handle_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_handle_frame",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var dec    Instance       // go GstAudioDecoder subclass
+				var buffer *gst.Buffer    // in, none, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.HandleFrame(dec, buffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Negotiate != nil {
 		pclass.negotiate = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_negotiate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_negotiate",
+			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
+				var dec   Instance // go GstAudioDecoder subclass
+				var goret bool     // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Negotiate(dec)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Open != nil {
 		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_open)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_open",
+			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
+				var dec   Instance // go GstAudioDecoder subclass
+				var goret bool     // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Open(dec)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Parse != nil {
 		pclass.parse = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_parse)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_parse",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstAdapter, carg2 *C.gint, carg3 *C.gint) (cret C.GstFlowReturn) {
+				var dec     Instance        // go GstAudioDecoder subclass
+				var adapter gstbase.Adapter // in, none, converted
+				var offset  int             // out, full, casted
+				var length  int             // out, full, casted
+				var goret   gst.FlowReturn  // return, none, casted
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				adapter = gstbase.UnsafeAdapterFromGlibNone(unsafe.Pointer(carg1))
+
+				offset, length, goret = overrides.Parse(dec, adapter)
+
+				*carg2 = C.gint(offset)
+				*carg3 = C.gint(length)
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProposeAllocation != nil {
 		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_propose_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_propose_allocation",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var dec   Instance   // go GstAudioDecoder subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ProposeAllocation(dec, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetFormat != nil {
 		pclass.set_format = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_set_format)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_set_format",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret C.gboolean) {
+				var dec   Instance  // go GstAudioDecoder subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret bool      // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetFormat(dec, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkEvent != nil {
 		pclass.sink_event = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_sink_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_sink_event",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
+				var dec   Instance   // go GstAudioDecoder subclass
+				var event *gst.Event // in, none, converted
+				var goret bool       // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkEvent(dec, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkQuery != nil {
 		pclass.sink_query = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_sink_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_sink_query",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var dec   Instance   // go GstAudioDecoder subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkQuery(dec, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcEvent != nil {
 		pclass.src_event = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_src_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_src_event",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
+				var dec   Instance   // go GstAudioDecoder subclass
+				var event *gst.Event // in, none, converted
+				var goret bool       // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcEvent(dec, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcQuery != nil {
 		pclass.src_query = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_src_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_src_query",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var dec   Instance   // go GstAudioDecoder subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcQuery(dec, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_start",
+			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
+				var dec   Instance // go GstAudioDecoder subclass
+				var goret bool     // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(dec)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_stop",
+			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
+				var dec   Instance // go GstAudioDecoder subclass
+				var goret bool     // return
+
+				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(dec)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformMeta != nil {
 		pclass.transform_meta = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_transform_meta)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioDecoder_transform_meta",
+			func(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean) {
+				var enc    Instance    // go GstAudioDecoder subclass
+				var outbuf *gst.Buffer // in, none, converted
+				var meta   *gst.Meta   // in, none, converted
+				var inbuf  *gst.Buffer // in, none, converted
+				var goret  bool        // return
+
+				enc = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
+				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.TransformMeta(enc, outbuf, meta, inbuf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioDecoderSubClass is used to register a go subclass of GstAudioDecoder. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioDecoderSubClass[InstanceT AudioDecoder](
+		name string,
+		classInit func(class *AudioDecoderClass),
+		constructor func() InstanceT,
+		overrides AudioDecoderOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioDecoder,
+		UnsafeAudioDecoderClassFromGlibBorrow,
+		UnsafeApplyAudioDecoderOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioDecoder(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioEncoderInstance is the instance type used by all types extending GstAudioEncoder. It is used internally by the bindings. Users should use the interface [AudioEncoder] instead.
@@ -7854,67 +8548,394 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 
 	if overrides.Close != nil {
 		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_close)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_close",
+			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
+				var enc   Instance // go GstAudioEncoder subclass
+				var goret bool     // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Close(enc)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DecideAllocation != nil {
 		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_decide_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_decide_allocation",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var enc   Instance   // go GstAudioEncoder subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DecideAllocation(enc, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Flush != nil {
 		pclass.flush = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_flush)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_flush",
+			func(carg0 *C.GstAudioEncoder) {
+				var enc Instance // go GstAudioEncoder subclass
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Flush(enc)
+			},
+		)
 	}
 
 	if overrides.Getcaps != nil {
 		pclass.getcaps = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_getcaps)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_getcaps",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
+				var enc    Instance  // go GstAudioEncoder subclass
+				var filter *gst.Caps // in, none, converted
+				var goret  *gst.Caps // return, full, converted
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Getcaps(enc, filter)
+
+				cret = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.HandleFrame != nil {
 		pclass.handle_frame = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_handle_frame)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_handle_frame",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var enc    Instance       // go GstAudioEncoder subclass
+				var buffer *gst.Buffer    // in, none, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.HandleFrame(enc, buffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Negotiate != nil {
 		pclass.negotiate = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_negotiate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_negotiate",
+			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
+				var enc   Instance // go GstAudioEncoder subclass
+				var goret bool     // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Negotiate(enc)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Open != nil {
 		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_open)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_open",
+			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
+				var enc   Instance // go GstAudioEncoder subclass
+				var goret bool     // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Open(enc)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ProposeAllocation != nil {
 		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_propose_allocation)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_propose_allocation",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var enc   Instance   // go GstAudioEncoder subclass
+				var query *gst.Query // in, none, converted
+				var goret bool       // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ProposeAllocation(enc, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetFormat != nil {
 		pclass.set_format = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_set_format)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_set_format",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstAudioInfo) (cret C.gboolean) {
+				var enc   Instance   // go GstAudioEncoder subclass
+				var info  *AudioInfo // in, none, converted
+				var goret bool       // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				info = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetFormat(enc, info)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkEvent != nil {
 		pclass.sink_event = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_sink_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_sink_event",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
+				var enc   Instance   // go GstAudioEncoder subclass
+				var event *gst.Event // in, none, converted
+				var goret bool       // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkEvent(enc, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SinkQuery != nil {
 		pclass.sink_query = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_sink_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_sink_query",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var encoder Instance   // go GstAudioEncoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				encoder = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SinkQuery(encoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcEvent != nil {
 		pclass.src_event = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_src_event)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_src_event",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
+				var enc   Instance   // go GstAudioEncoder subclass
+				var event *gst.Event // in, none, converted
+				var goret bool       // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcEvent(enc, event)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SrcQuery != nil {
 		pclass.src_query = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_src_query)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_src_query",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
+				var encoder Instance   // go GstAudioEncoder subclass
+				var query   *gst.Query // in, none, converted
+				var goret   bool       // return
+
+				encoder = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SrcQuery(encoder, query)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_start",
+			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
+				var enc   Instance // go GstAudioEncoder subclass
+				var goret bool     // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(enc)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_stop",
+			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
+				var enc   Instance // go GstAudioEncoder subclass
+				var goret bool     // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(enc)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TransformMeta != nil {
 		pclass.transform_meta = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_transform_meta)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioEncoder_transform_meta",
+			func(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean) {
+				var enc    Instance    // go GstAudioEncoder subclass
+				var outbuf *gst.Buffer // in, none, converted
+				var meta   *gst.Meta   // in, none, converted
+				var inbuf  *gst.Buffer // in, none, converted
+				var goret  bool        // return
+
+				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
+				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
+
+				goret = overrides.TransformMeta(enc, outbuf, meta, inbuf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioEncoderSubClass is used to register a go subclass of GstAudioEncoder. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioEncoderSubClass[InstanceT AudioEncoder](
+		name string,
+		classInit func(class *AudioEncoderClass),
+		constructor func() InstanceT,
+		overrides AudioEncoderOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioEncoder,
+		UnsafeAudioEncoderClassFromGlibBorrow,
+		UnsafeApplyAudioEncoderOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioEncoder(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioFilterInstance is the instance type used by all types extending GstAudioFilter. It is used internally by the bindings. Users should use the interface [AudioFilter] instead.
@@ -8013,7 +9034,53 @@ func UnsafeApplyAudioFilterOverrides[Instance AudioFilter](gclass unsafe.Pointer
 
 	if overrides.Setup != nil {
 		pclass.setup = (*[0]byte)(C._gotk4_gstaudio1_AudioFilter_setup)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioFilter_setup",
+			func(carg0 *C.GstAudioFilter, carg1 *C.GstAudioInfo) (cret C.gboolean) {
+				var filter Instance   // go GstAudioFilter subclass
+				var info   *AudioInfo // in, none, converted
+				var goret  bool       // return
+
+				filter = UnsafeAudioFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				info = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Setup(filter, info)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioFilterSubClass is used to register a go subclass of GstAudioFilter. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioFilterSubClass[InstanceT AudioFilter](
+		name string,
+		classInit func(class *AudioFilterClass),
+		constructor func() InstanceT,
+		overrides AudioFilterOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioFilter,
+		UnsafeAudioFilterClassFromGlibBorrow,
+		UnsafeApplyAudioFilterOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioFilter(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioRingBufferInstance is the instance type used by all types extending GstAudioRingBuffer. It is used internally by the bindings. Users should use the interface [AudioRingBuffer] instead.
@@ -9161,47 +10228,268 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 
 	if overrides.Acquire != nil {
 		pclass.acquire = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_acquire)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_acquire",
+			func(carg0 *C.GstAudioRingBuffer, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean) {
+				var buf   Instance             // go GstAudioRingBuffer subclass
+				var spec  *AudioRingBufferSpec // in, none, converted
+				var goret bool                 // return
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				spec = UnsafeAudioRingBufferSpecFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Acquire(buf, spec)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Activate != nil {
 		pclass.activate = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_activate)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_activate",
+			func(carg0 *C.GstAudioRingBuffer, carg1 C.gboolean) (cret C.gboolean) {
+				var buf    Instance // go GstAudioRingBuffer subclass
+				var active bool     // in
+				var goret  bool     // return
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				if carg1 != 0 {
+					active = true
+				}
+
+				goret = overrides.Activate(buf, active)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ClearAll != nil {
 		pclass.clear_all = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_clear_all)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_clear_all",
+			func(carg0 *C.GstAudioRingBuffer) {
+				var buf Instance // go GstAudioRingBuffer subclass
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.ClearAll(buf)
+			},
+		)
 	}
 
 	if overrides.CloseDevice != nil {
 		pclass.close_device = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_close_device)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_close_device",
+			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
+				var buf   Instance // go GstAudioRingBuffer subclass
+				var goret bool     // return
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.CloseDevice(buf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Delay != nil {
 		pclass.delay = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_delay)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_delay",
+			func(carg0 *C.GstAudioRingBuffer) (cret C.guint) {
+				var buf   Instance // go GstAudioRingBuffer subclass
+				var goret uint     // return, none, casted
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Delay(buf)
+
+				cret = C.guint(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.OpenDevice != nil {
 		pclass.open_device = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_open_device)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_open_device",
+			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
+				var buf   Instance // go GstAudioRingBuffer subclass
+				var goret bool     // return
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.OpenDevice(buf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Pause != nil {
 		pclass.pause = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_pause)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_pause",
+			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
+				var buf   Instance // go GstAudioRingBuffer subclass
+				var goret bool     // return
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Pause(buf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Release != nil {
 		pclass.release = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_release)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_release",
+			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
+				var buf   Instance // go GstAudioRingBuffer subclass
+				var goret bool     // return
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Release(buf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Resume != nil {
 		pclass.resume = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_resume)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_resume",
+			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
+				var buf   Instance // go GstAudioRingBuffer subclass
+				var goret bool     // return
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Resume(buf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Start != nil {
 		pclass.start = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_start)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_start",
+			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
+				var buf   Instance // go GstAudioRingBuffer subclass
+				var goret bool     // return
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Start(buf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioRingBuffer_stop",
+			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
+				var buf   Instance // go GstAudioRingBuffer subclass
+				var goret bool     // return
+
+				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Stop(buf)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioRingBufferSubClass is used to register a go subclass of GstAudioRingBuffer. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioRingBufferSubClass[InstanceT AudioRingBuffer](
+		name string,
+		classInit func(class *AudioRingBufferClass),
+		constructor func() InstanceT,
+		overrides AudioRingBufferOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioRingBuffer,
+		UnsafeAudioRingBufferClassFromGlibBorrow,
+		UnsafeApplyAudioRingBufferOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioRingBuffer(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioSinkInstance is the instance type used by all types extending GstAudioSink. It is used internally by the bindings. Users should use the interface [AudioSink] instead.
@@ -9338,39 +10626,199 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 
 	if overrides.Close != nil {
 		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_close)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSink_close",
+			func(carg0 *C.GstAudioSink) (cret C.gboolean) {
+				var sink  Instance // go GstAudioSink subclass
+				var goret bool     // return
+
+				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Close(sink)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Delay != nil {
 		pclass.delay = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_delay)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSink_delay",
+			func(carg0 *C.GstAudioSink) (cret C.guint) {
+				var sink  Instance // go GstAudioSink subclass
+				var goret uint     // return, none, casted
+
+				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Delay(sink)
+
+				cret = C.guint(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Open != nil {
 		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_open)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSink_open",
+			func(carg0 *C.GstAudioSink) (cret C.gboolean) {
+				var sink  Instance // go GstAudioSink subclass
+				var goret bool     // return
+
+				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Open(sink)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Pause != nil {
 		pclass.pause = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_pause)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSink_pause",
+			func(carg0 *C.GstAudioSink) {
+				var sink Instance // go GstAudioSink subclass
+
+				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Pause(sink)
+			},
+		)
 	}
 
 	if overrides.Prepare != nil {
 		pclass.prepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_prepare)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSink_prepare",
+			func(carg0 *C.GstAudioSink, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean) {
+				var sink  Instance             // go GstAudioSink subclass
+				var spec  *AudioRingBufferSpec // in, none, converted
+				var goret bool                 // return
+
+				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				spec = UnsafeAudioRingBufferSpecFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Prepare(sink, spec)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Reset != nil {
 		pclass.reset = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_reset)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSink_reset",
+			func(carg0 *C.GstAudioSink) {
+				var sink Instance // go GstAudioSink subclass
+
+				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Reset(sink)
+			},
+		)
 	}
 
 	if overrides.Resume != nil {
 		pclass.resume = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_resume)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSink_resume",
+			func(carg0 *C.GstAudioSink) {
+				var sink Instance // go GstAudioSink subclass
+
+				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Resume(sink)
+			},
+		)
 	}
 
 	if overrides.Stop != nil {
 		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_stop)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSink_stop",
+			func(carg0 *C.GstAudioSink) {
+				var sink Instance // go GstAudioSink subclass
+
+				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Stop(sink)
+			},
+		)
 	}
 
 	if overrides.Unprepare != nil {
 		pclass.unprepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_unprepare)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSink_unprepare",
+			func(carg0 *C.GstAudioSink) (cret C.gboolean) {
+				var sink  Instance // go GstAudioSink subclass
+				var goret bool     // return
+
+				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Unprepare(sink)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioSinkSubClass is used to register a go subclass of GstAudioSink. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioSinkSubClass[InstanceT AudioSink](
+		name string,
+		classInit func(class *AudioSinkClass),
+		constructor func() InstanceT,
+		overrides AudioSinkOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioSink,
+		UnsafeAudioSinkClassFromGlibBorrow,
+		UnsafeApplyAudioSinkOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioSink(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioSrcInstance is the instance type used by all types extending GstAudioSrc. It is used internally by the bindings. Users should use the interface [AudioSrc] instead.
@@ -9496,27 +10944,154 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 
 	if overrides.Close != nil {
 		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_close)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSrc_close",
+			func(carg0 *C.GstAudioSrc) (cret C.gboolean) {
+				var src   Instance // go GstAudioSrc subclass
+				var goret bool     // return
+
+				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Close(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Delay != nil {
 		pclass.delay = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_delay)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSrc_delay",
+			func(carg0 *C.GstAudioSrc) (cret C.guint) {
+				var src   Instance // go GstAudioSrc subclass
+				var goret uint     // return, none, casted
+
+				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Delay(src)
+
+				cret = C.guint(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Open != nil {
 		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_open)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSrc_open",
+			func(carg0 *C.GstAudioSrc) (cret C.gboolean) {
+				var src   Instance // go GstAudioSrc subclass
+				var goret bool     // return
+
+				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Open(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Prepare != nil {
 		pclass.prepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_prepare)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSrc_prepare",
+			func(carg0 *C.GstAudioSrc, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean) {
+				var src   Instance             // go GstAudioSrc subclass
+				var spec  *AudioRingBufferSpec // in, none, converted
+				var goret bool                 // return
+
+				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				spec = UnsafeAudioRingBufferSpecFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Prepare(src, spec)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Reset != nil {
 		pclass.reset = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_reset)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSrc_reset",
+			func(carg0 *C.GstAudioSrc) {
+				var src Instance // go GstAudioSrc subclass
+
+				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Reset(src)
+			},
+		)
 	}
 
 	if overrides.Unprepare != nil {
 		pclass.unprepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_unprepare)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstaudio1_AudioSrc_unprepare",
+			func(carg0 *C.GstAudioSrc) (cret C.gboolean) {
+				var src   Instance // go GstAudioSrc subclass
+				var goret bool     // return
+
+				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.Unprepare(src)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAudioSrcSubClass is used to register a go subclass of GstAudioSrc. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioSrcSubClass[InstanceT AudioSrc](
+		name string,
+		classInit func(class *AudioSrcClass),
+		constructor func() InstanceT,
+		overrides AudioSrcOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioSrc,
+		UnsafeAudioSrcClassFromGlibBorrow,
+		UnsafeApplyAudioSrcOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioSrc(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioAggregatorConvertPadInstance is the instance type used by all types extending GstAudioAggregatorConvertPad. It is used internally by the bindings. Users should use the interface [AudioAggregatorConvertPad] instead.
@@ -9593,6 +11168,32 @@ type AudioAggregatorConvertPadOverrides[Instance AudioAggregatorConvertPad] stru
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyAudioAggregatorConvertPadOverrides[Instance AudioAggregatorConvertPad](gclass unsafe.Pointer, overrides AudioAggregatorConvertPadOverrides[Instance]) {
 	UnsafeApplyAudioAggregatorPadOverrides(gclass, overrides.AudioAggregatorPadOverrides)
+}
+
+// RegisterAudioAggregatorConvertPadSubClass is used to register a go subclass of GstAudioAggregatorConvertPad. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAudioAggregatorConvertPadSubClass[InstanceT AudioAggregatorConvertPad](
+		name string,
+		classInit func(class *AudioAggregatorConvertPadClass),
+		constructor func() InstanceT,
+		overrides AudioAggregatorConvertPadOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAudioAggregatorConvertPad,
+		UnsafeAudioAggregatorConvertPadClassFromGlibBorrow,
+		UnsafeApplyAudioAggregatorConvertPadOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioAggregatorConvertPad(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AudioAggregatorClass wraps GstAudioAggregatorClass

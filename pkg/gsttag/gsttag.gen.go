@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -2122,11 +2123,85 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 
 	if overrides.IdentifyTag != nil {
 		pclass.identify_tag = (*[0]byte)(C._gotk4_gsttag1_TagDemux_identify_tag)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gsttag1_TagDemux_identify_tag",
+			func(carg0 *C.GstTagDemux, carg1 *C.GstBuffer, carg2 C.gboolean, carg3 *C.guint) (cret C.gboolean) {
+				var demux    Instance    // go GstTagDemux subclass
+				var buffer   *gst.Buffer // in, none, converted
+				var startTag bool        // in
+				var tagSize  *uint       // in, transfer: none, C Pointers: 1, Name: guint
+				var goret    bool        // return
+
+				demux = UnsafeTagDemuxFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
+				if carg2 != 0 {
+					startTag = true
+				}
+				_ = tagSize
+				_ = carg3
+				panic("unimplemented conversion of *uint (guint*)")
+
+				goret = overrides.IdentifyTag(demux, buffer, startTag, tagSize)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.MergeTags != nil {
 		pclass.merge_tags = (*[0]byte)(C._gotk4_gsttag1_TagDemux_merge_tags)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gsttag1_TagDemux_merge_tags",
+			func(carg0 *C.GstTagDemux, carg1 *C.GstTagList, carg2 *C.GstTagList) (cret *C.GstTagList) {
+				var demux     Instance     // go GstTagDemux subclass
+				var startTags *gst.TagList // in, none, converted
+				var endTags   *gst.TagList // in, none, converted
+				var goret     *gst.TagList // return, full, converted
+
+				demux = UnsafeTagDemuxFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				startTags = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
+				endTags = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.MergeTags(demux, startTags, endTags)
+
+				cret = (*C.GstTagList)(gst.UnsafeTagListToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterTagDemuxSubClass is used to register a go subclass of GstTagDemux. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterTagDemuxSubClass[InstanceT TagDemux](
+		name string,
+		classInit func(class *TagDemuxClass),
+		constructor func() InstanceT,
+		overrides TagDemuxOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeTagDemux,
+		UnsafeTagDemuxClassFromGlibBorrow,
+		UnsafeApplyTagDemuxOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTagDemux(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // TagMuxInstance is the instance type used by all types extending GstTagMux. It is used internally by the bindings. Users should use the interface [TagMux] instead.
@@ -2239,11 +2314,73 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 
 	if overrides.RenderEndTag != nil {
 		pclass.render_end_tag = (*[0]byte)(C._gotk4_gsttag1_TagMux_render_end_tag)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gsttag1_TagMux_render_end_tag",
+			func(carg0 *C.GstTagMux, carg1 *C.GstTagList) (cret *C.GstBuffer) {
+				var mux     Instance     // go GstTagMux subclass
+				var tagList *gst.TagList // in, none, converted
+				var goret   *gst.Buffer  // return, full, converted
+
+				mux = UnsafeTagMuxFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				tagList = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.RenderEndTag(mux, tagList)
+
+				cret = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.RenderStartTag != nil {
 		pclass.render_start_tag = (*[0]byte)(C._gotk4_gsttag1_TagMux_render_start_tag)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gsttag1_TagMux_render_start_tag",
+			func(carg0 *C.GstTagMux, carg1 *C.GstTagList) (cret *C.GstBuffer) {
+				var mux     Instance     // go GstTagMux subclass
+				var tagList *gst.TagList // in, none, converted
+				var goret   *gst.Buffer  // return, full, converted
+
+				mux = UnsafeTagMuxFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				tagList = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.RenderStartTag(mux, tagList)
+
+				cret = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(goret))
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterTagMuxSubClass is used to register a go subclass of GstTagMux. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterTagMuxSubClass[InstanceT TagMux](
+		name string,
+		classInit func(class *TagMuxClass),
+		constructor func() InstanceT,
+		overrides TagMuxOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeTagMux,
+		UnsafeTagMuxClassFromGlibBorrow,
+		UnsafeApplyTagMuxOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTagMux(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // TagDemuxClass wraps GstTagDemuxClass

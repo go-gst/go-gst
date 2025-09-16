@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstbase"
@@ -1518,31 +1519,176 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 
 	if overrides.Eos != nil {
 		pclass.eos = (*[0]byte)(C._gotk4_gstapp1_AppSink_eos)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSink_eos",
+			func(carg0 *C.GstAppSink) {
+				var appsink Instance // go GstAppSink subclass
+
+				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.Eos(appsink)
+			},
+		)
 	}
 
 	if overrides.NewPreroll != nil {
 		pclass.new_preroll = (*[0]byte)(C._gotk4_gstapp1_AppSink_new_preroll)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSink_new_preroll",
+			func(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
+				var appsink Instance       // go GstAppSink subclass
+				var goret   gst.FlowReturn // return, none, casted
+
+				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.NewPreroll(appsink)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.NewSample != nil {
 		pclass.new_sample = (*[0]byte)(C._gotk4_gstapp1_AppSink_new_sample)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSink_new_sample",
+			func(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
+				var appsink Instance       // go GstAppSink subclass
+				var goret   gst.FlowReturn // return, none, casted
+
+				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.NewSample(appsink)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PullPreroll != nil {
 		pclass.pull_preroll = (*[0]byte)(C._gotk4_gstapp1_AppSink_pull_preroll)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSink_pull_preroll",
+			func(carg0 *C.GstAppSink) (cret *C.GstSample) {
+				var appsink Instance    // go GstAppSink subclass
+				var goret   *gst.Sample // return, full, converted, nullable
+
+				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.PullPreroll(appsink)
+
+				if goret != nil {
+					cret = (*C.GstSample)(gst.UnsafeSampleToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PullSample != nil {
 		pclass.pull_sample = (*[0]byte)(C._gotk4_gstapp1_AppSink_pull_sample)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSink_pull_sample",
+			func(carg0 *C.GstAppSink) (cret *C.GstSample) {
+				var appsink Instance    // go GstAppSink subclass
+				var goret   *gst.Sample // return, full, converted, nullable
+
+				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.PullSample(appsink)
+
+				if goret != nil {
+					cret = (*C.GstSample)(gst.UnsafeSampleToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TryPullPreroll != nil {
 		pclass.try_pull_preroll = (*[0]byte)(C._gotk4_gstapp1_AppSink_try_pull_preroll)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSink_try_pull_preroll",
+			func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
+				var appsink Instance      // go GstAppSink subclass
+				var timeout gst.ClockTime // in, none, casted, alias
+				var goret   *gst.Sample   // return, full, converted, nullable
+
+				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				timeout = gst.ClockTime(carg1)
+
+				goret = overrides.TryPullPreroll(appsink, timeout)
+
+				if goret != nil {
+					cret = (*C.GstSample)(gst.UnsafeSampleToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.TryPullSample != nil {
 		pclass.try_pull_sample = (*[0]byte)(C._gotk4_gstapp1_AppSink_try_pull_sample)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSink_try_pull_sample",
+			func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
+				var appsink Instance      // go GstAppSink subclass
+				var timeout gst.ClockTime // in, none, casted, alias
+				var goret   *gst.Sample   // return, full, converted, nullable
+
+				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				timeout = gst.ClockTime(carg1)
+
+				goret = overrides.TryPullSample(appsink, timeout)
+
+				if goret != nil {
+					cret = (*C.GstSample)(gst.UnsafeSampleToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAppSinkSubClass is used to register a go subclass of GstAppSink. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAppSinkSubClass[InstanceT AppSink](
+		name string,
+		classInit func(class *AppSinkClass),
+		constructor func() InstanceT,
+		overrides AppSinkOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAppSink,
+		UnsafeAppSinkClassFromGlibBorrow,
+		UnsafeApplyAppSinkOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAppSink(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AppSrcInstance is the instance type used by all types extending GstAppSrc. It is used internally by the bindings. Users should use the interface [AppSrc] instead.
@@ -2831,31 +2977,171 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 
 	if overrides.EndOfStream != nil {
 		pclass.end_of_stream = (*[0]byte)(C._gotk4_gstapp1_AppSrc_end_of_stream)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSrc_end_of_stream",
+			func(carg0 *C.GstAppSrc) (cret C.GstFlowReturn) {
+				var appsrc Instance       // go GstAppSrc subclass
+				var goret  gst.FlowReturn // return, none, casted
+
+				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				goret = overrides.EndOfStream(appsrc)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.EnoughData != nil {
 		pclass.enough_data = (*[0]byte)(C._gotk4_gstapp1_AppSrc_enough_data)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSrc_enough_data",
+			func(carg0 *C.GstAppSrc) {
+				var appsrc Instance // go GstAppSrc subclass
+
+				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+
+				overrides.EnoughData(appsrc)
+			},
+		)
 	}
 
 	if overrides.NeedData != nil {
 		pclass.need_data = (*[0]byte)(C._gotk4_gstapp1_AppSrc_need_data)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSrc_need_data",
+			func(carg0 *C.GstAppSrc, carg1 C.guint) {
+				var appsrc Instance // go GstAppSrc subclass
+				var length uint     // in, none, casted
+
+				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				length = uint(carg1)
+
+				overrides.NeedData(appsrc, length)
+			},
+		)
 	}
 
 	if overrides.PushBuffer != nil {
 		pclass.push_buffer = (*[0]byte)(C._gotk4_gstapp1_AppSrc_push_buffer)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSrc_push_buffer",
+			func(carg0 *C.GstAppSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+				var appsrc Instance       // go GstAppSrc subclass
+				var buffer *gst.Buffer    // in, full, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buffer = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.PushBuffer(appsrc, buffer)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PushBufferList != nil {
 		pclass.push_buffer_list = (*[0]byte)(C._gotk4_gstapp1_AppSrc_push_buffer_list)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSrc_push_buffer_list",
+			func(carg0 *C.GstAppSrc, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
+				var appsrc     Instance        // go GstAppSrc subclass
+				var bufferList *gst.BufferList // in, full, converted
+				var goret      gst.FlowReturn  // return, none, casted
+
+				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				bufferList = gst.UnsafeBufferListFromGlibFull(unsafe.Pointer(carg1))
+
+				goret = overrides.PushBufferList(appsrc, bufferList)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.PushSample != nil {
 		pclass.push_sample = (*[0]byte)(C._gotk4_gstapp1_AppSrc_push_sample)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSrc_push_sample",
+			func(carg0 *C.GstAppSrc, carg1 *C.GstSample) (cret C.GstFlowReturn) {
+				var appsrc Instance       // go GstAppSrc subclass
+				var sample *gst.Sample    // in, none, converted
+				var goret  gst.FlowReturn // return, none, casted
+
+				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sample = gst.UnsafeSampleFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.PushSample(appsrc, sample)
+
+				cret = C.GstFlowReturn(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SeekData != nil {
 		pclass.seek_data = (*[0]byte)(C._gotk4_gstapp1_AppSrc_seek_data)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstapp1_AppSrc_seek_data",
+			func(carg0 *C.GstAppSrc, carg1 C.guint64) (cret C.gboolean) {
+				var appsrc Instance // go GstAppSrc subclass
+				var offset uint64   // in, none, casted
+				var goret  bool     // return
+
+				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				offset = uint64(carg1)
+
+				goret = overrides.SeekData(appsrc, offset)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
+}
+
+// RegisterAppSrcSubClass is used to register a go subclass of GstAppSrc. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterAppSrcSubClass[InstanceT AppSrc](
+		name string,
+		classInit func(class *AppSrcClass),
+		constructor func() InstanceT,
+		overrides AppSrcOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeAppSrc,
+		UnsafeAppSrcClassFromGlibBorrow,
+		UnsafeApplyAppSrcOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAppSrc(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // AppSinkClass wraps GstAppSinkClass

@@ -5,6 +5,7 @@ package gstvideo
 import (
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -35,366 +36,877 @@ func _gotk4_gstvideo1_VideoConvertSampleCallback(carg1 *C.GstSample, carg2 *C.GE
 
 //export _gotk4_gstvideo1_ColorBalance_get_balance_type
 func _gotk4_gstvideo1_ColorBalance_get_balance_type(carg0 *C.GstColorBalance) (cret C.GstColorBalanceType) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstColorBalance) (cret C.GstColorBalanceType)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_ColorBalance_get_balance_type").(func(carg0 *C.GstColorBalance) (cret C.GstColorBalanceType))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_ColorBalance_get_balance_type: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_ColorBalance_get_value
 func _gotk4_gstvideo1_ColorBalance_get_value(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel) (cret C.gint) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel) (cret C.gint)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_ColorBalance_get_value").(func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel) (cret C.gint))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_ColorBalance_get_value: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_ColorBalance_list_channels
 func _gotk4_gstvideo1_ColorBalance_list_channels(carg0 *C.GstColorBalance) (cret *C.GList) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstColorBalance) (cret *C.GList)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_ColorBalance_list_channels").(func(carg0 *C.GstColorBalance) (cret *C.GList))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_ColorBalance_list_channels: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_ColorBalance_set_value
 func _gotk4_gstvideo1_ColorBalance_set_value(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_ColorBalance_set_value").(func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_ColorBalance_set_value: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gstvideo1_ColorBalance_value_changed
 func _gotk4_gstvideo1_ColorBalance_value_changed(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_ColorBalance_value_changed").(func(carg0 *C.GstColorBalance, carg1 *C.GstColorBalanceChannel, carg2 C.gint))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_ColorBalance_value_changed: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gstvideo1_Navigation_send_event
 func _gotk4_gstvideo1_Navigation_send_event(carg0 *C.GstNavigation, carg1 *C.GstStructure) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstNavigation, carg1 *C.GstStructure)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_Navigation_send_event").(func(carg0 *C.GstNavigation, carg1 *C.GstStructure))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_Navigation_send_event: no function pointer found")
+		}
+	}
+	fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_Navigation_send_event_simple
 func _gotk4_gstvideo1_Navigation_send_event_simple(carg0 *C.GstNavigation, carg1 *C.GstEvent) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstNavigation, carg1 *C.GstEvent)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_Navigation_send_event_simple").(func(carg0 *C.GstNavigation, carg1 *C.GstEvent))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_Navigation_send_event_simple: no function pointer found")
+		}
+	}
+	fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOrientation_get_hcenter
 func _gotk4_gstvideo1_VideoOrientation_get_hcenter(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOrientation_get_hcenter").(func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOrientation_get_hcenter: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOrientation_get_hflip
 func _gotk4_gstvideo1_VideoOrientation_get_hflip(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOrientation_get_hflip").(func(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOrientation_get_hflip: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOrientation_get_vcenter
 func _gotk4_gstvideo1_VideoOrientation_get_vcenter(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOrientation_get_vcenter").(func(carg0 *C.GstVideoOrientation, carg1 *C.gint) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOrientation_get_vcenter: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOrientation_get_vflip
 func _gotk4_gstvideo1_VideoOrientation_get_vflip(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOrientation_get_vflip").(func(carg0 *C.GstVideoOrientation, carg1 *C.gboolean) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOrientation_get_vflip: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOrientation_set_hcenter
 func _gotk4_gstvideo1_VideoOrientation_set_hcenter(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOrientation_set_hcenter").(func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOrientation_set_hcenter: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOrientation_set_hflip
 func _gotk4_gstvideo1_VideoOrientation_set_hflip(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOrientation_set_hflip").(func(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOrientation_set_hflip: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOrientation_set_vcenter
 func _gotk4_gstvideo1_VideoOrientation_set_vcenter(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOrientation_set_vcenter").(func(carg0 *C.GstVideoOrientation, carg1 C.gint) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOrientation_set_vcenter: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOrientation_set_vflip
 func _gotk4_gstvideo1_VideoOrientation_set_vflip(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOrientation_set_vflip").(func(carg0 *C.GstVideoOrientation, carg1 C.gboolean) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOrientation_set_vflip: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOverlay_expose
 func _gotk4_gstvideo1_VideoOverlay_expose(carg0 *C.GstVideoOverlay) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOverlay)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOverlay_expose").(func(carg0 *C.GstVideoOverlay))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOverlay_expose: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoOverlay_handle_events
 func _gotk4_gstvideo1_VideoOverlay_handle_events(carg0 *C.GstVideoOverlay, carg1 C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOverlay, carg1 C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOverlay_handle_events").(func(carg0 *C.GstVideoOverlay, carg1 C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOverlay_handle_events: no function pointer found")
+		}
+	}
+	fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoOverlay_set_render_rectangle
 func _gotk4_gstvideo1_VideoOverlay_set_render_rectangle(carg0 *C.GstVideoOverlay, carg1 C.gint, carg2 C.gint, carg3 C.gint, carg4 C.gint) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoOverlay, carg1 C.gint, carg2 C.gint, carg3 C.gint, carg4 C.gint)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoOverlay_set_render_rectangle").(func(carg0 *C.GstVideoOverlay, carg1 C.gint, carg2 C.gint, carg3 C.gint, carg4 C.gint))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoOverlay_set_render_rectangle: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2, carg3, carg4)
 }
 
 //export _gotk4_gstvideo1_ColorBalanceChannel_value_changed
 func _gotk4_gstvideo1_ColorBalanceChannel_value_changed(carg0 *C.GstColorBalanceChannel, carg1 C.gint) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstColorBalanceChannel, carg1 C.gint)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_ColorBalanceChannel_value_changed").(func(carg0 *C.GstColorBalanceChannel, carg1 C.gint))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_ColorBalanceChannel_value_changed: no function pointer found")
+		}
+	}
+	fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoAggregator_aggregate_frames
 func _gotk4_gstvideo1_VideoAggregator_aggregate_frames(carg0 *C.GstVideoAggregator, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoAggregator, carg1 *C.GstBuffer) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoAggregator_aggregate_frames").(func(carg0 *C.GstVideoAggregator, carg1 *C.GstBuffer) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoAggregator_aggregate_frames: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoAggregator_find_best_format
 func _gotk4_gstvideo1_VideoAggregator_find_best_format(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoAggregator_find_best_format").(func(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoAggregator_find_best_format: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2, carg3)
 }
 
 //export _gotk4_gstvideo1_VideoAggregator_update_caps
 func _gotk4_gstvideo1_VideoAggregator_update_caps(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps) (cret *C.GstCaps) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps) (cret *C.GstCaps)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoAggregator_update_caps").(func(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps) (cret *C.GstCaps))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoAggregator_update_caps: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoAggregatorPad_clean_frame
 func _gotk4_gstvideo1_VideoAggregatorPad_clean_frame(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoAggregatorPad_clean_frame").(func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoAggregatorPad_clean_frame: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame
 func _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame").(func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2, carg3)
 }
 
 //export _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish
 func _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish").(func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start
 func _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start").(func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2, carg3)
 }
 
 //export _gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info
 func _gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info(carg0 *C.GstVideoAggregatorPad) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoAggregatorPad)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info").(func(carg0 *C.GstVideoAggregatorPad))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info: no function pointer found")
+		}
+	}
+	fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_close
 func _gotk4_gstvideo1_VideoDecoder_close(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_close").(func(carg0 *C.GstVideoDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_close: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_decide_allocation
 func _gotk4_gstvideo1_VideoDecoder_decide_allocation(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_decide_allocation").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_decide_allocation: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_drain
 func _gotk4_gstvideo1_VideoDecoder_drain(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_drain").(func(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_drain: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_finish
 func _gotk4_gstvideo1_VideoDecoder_finish(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_finish").(func(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_finish: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_flush
 func _gotk4_gstvideo1_VideoDecoder_flush(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_flush").(func(carg0 *C.GstVideoDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_flush: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_getcaps
 func _gotk4_gstvideo1_VideoDecoder_getcaps(carg0 *C.GstVideoDecoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstCaps) (cret *C.GstCaps)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_getcaps").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstCaps) (cret *C.GstCaps))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_getcaps: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_handle_frame
 func _gotk4_gstvideo1_VideoDecoder_handle_frame(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_handle_frame").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_handle_frame: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_handle_missing_data
 func _gotk4_gstvideo1_VideoDecoder_handle_missing_data(carg0 *C.GstVideoDecoder, carg1 C.GstClockTime, carg2 C.GstClockTime) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 C.GstClockTime, carg2 C.GstClockTime) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_handle_missing_data").(func(carg0 *C.GstVideoDecoder, carg1 C.GstClockTime, carg2 C.GstClockTime) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_handle_missing_data: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_negotiate
 func _gotk4_gstvideo1_VideoDecoder_negotiate(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_negotiate").(func(carg0 *C.GstVideoDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_negotiate: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_open
 func _gotk4_gstvideo1_VideoDecoder_open(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_open").(func(carg0 *C.GstVideoDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_open: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_parse
 func _gotk4_gstvideo1_VideoDecoder_parse(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstAdapter, carg3 C.gboolean) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstAdapter, carg3 C.gboolean) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_parse").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstAdapter, carg3 C.gboolean) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_parse: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2, carg3)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_propose_allocation
 func _gotk4_gstvideo1_VideoDecoder_propose_allocation(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_propose_allocation").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_propose_allocation: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_reset
 func _gotk4_gstvideo1_VideoDecoder_reset(carg0 *C.GstVideoDecoder, carg1 C.gboolean) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 C.gboolean) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_reset").(func(carg0 *C.GstVideoDecoder, carg1 C.gboolean) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_reset: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_set_format
 func _gotk4_gstvideo1_VideoDecoder_set_format(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecState) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecState) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_set_format").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecState) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_set_format: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_sink_event
 func _gotk4_gstvideo1_VideoDecoder_sink_event(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_sink_event").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_sink_event: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_sink_query
 func _gotk4_gstvideo1_VideoDecoder_sink_query(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_sink_query").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_sink_query: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_src_event
 func _gotk4_gstvideo1_VideoDecoder_src_event(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_src_event").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_src_event: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_src_query
 func _gotk4_gstvideo1_VideoDecoder_src_query(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_src_query").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_src_query: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_start
 func _gotk4_gstvideo1_VideoDecoder_start(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_start").(func(carg0 *C.GstVideoDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_start: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_stop
 func _gotk4_gstvideo1_VideoDecoder_stop(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_stop").(func(carg0 *C.GstVideoDecoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_stop: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoDecoder_transform_meta
 func _gotk4_gstvideo1_VideoDecoder_transform_meta(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoDecoder_transform_meta").(func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoDecoder_transform_meta: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_close
 func _gotk4_gstvideo1_VideoEncoder_close(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_close").(func(carg0 *C.GstVideoEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_close: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_decide_allocation
 func _gotk4_gstvideo1_VideoEncoder_decide_allocation(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_decide_allocation").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_decide_allocation: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_finish
 func _gotk4_gstvideo1_VideoEncoder_finish(carg0 *C.GstVideoEncoder) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_finish").(func(carg0 *C.GstVideoEncoder) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_finish: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_flush
 func _gotk4_gstvideo1_VideoEncoder_flush(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_flush").(func(carg0 *C.GstVideoEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_flush: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_getcaps
 func _gotk4_gstvideo1_VideoEncoder_getcaps(carg0 *C.GstVideoEncoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstCaps) (cret *C.GstCaps)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_getcaps").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstCaps) (cret *C.GstCaps))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_getcaps: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_handle_frame
 func _gotk4_gstvideo1_VideoEncoder_handle_frame(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_handle_frame").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_handle_frame: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_negotiate
 func _gotk4_gstvideo1_VideoEncoder_negotiate(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_negotiate").(func(carg0 *C.GstVideoEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_negotiate: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_open
 func _gotk4_gstvideo1_VideoEncoder_open(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_open").(func(carg0 *C.GstVideoEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_open: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_pre_push
 func _gotk4_gstvideo1_VideoEncoder_pre_push(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_pre_push").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_pre_push: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_propose_allocation
 func _gotk4_gstvideo1_VideoEncoder_propose_allocation(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_propose_allocation").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_propose_allocation: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_reset
 func _gotk4_gstvideo1_VideoEncoder_reset(carg0 *C.GstVideoEncoder, carg1 C.gboolean) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 C.gboolean) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_reset").(func(carg0 *C.GstVideoEncoder, carg1 C.gboolean) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_reset: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_set_format
 func _gotk4_gstvideo1_VideoEncoder_set_format(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecState) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecState) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_set_format").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecState) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_set_format: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_sink_event
 func _gotk4_gstvideo1_VideoEncoder_sink_event(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_sink_event").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_sink_event: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_sink_query
 func _gotk4_gstvideo1_VideoEncoder_sink_query(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_sink_query").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_sink_query: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_src_event
 func _gotk4_gstvideo1_VideoEncoder_src_event(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_src_event").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_src_event: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_src_query
 func _gotk4_gstvideo1_VideoEncoder_src_query(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_src_query").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_src_query: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_start
 func _gotk4_gstvideo1_VideoEncoder_start(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_start").(func(carg0 *C.GstVideoEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_start: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_stop
 func _gotk4_gstvideo1_VideoEncoder_stop(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_stop").(func(carg0 *C.GstVideoEncoder) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_stop: no function pointer found")
+		}
+	}
+	return fn(carg0)
 }
 
 //export _gotk4_gstvideo1_VideoEncoder_transform_meta
 func _gotk4_gstvideo1_VideoEncoder_transform_meta(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoEncoder_transform_meta").(func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoEncoder_transform_meta: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gstvideo1_VideoFilter_set_info
 func _gotk4_gstvideo1_VideoFilter_set_info(carg0 *C.GstVideoFilter, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.GstCaps, carg4 *C.GstVideoInfo) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoFilter, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.GstCaps, carg4 *C.GstVideoInfo) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoFilter_set_info").(func(carg0 *C.GstVideoFilter, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.GstCaps, carg4 *C.GstVideoInfo) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoFilter_set_info: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2, carg3, carg4)
 }
 
 //export _gotk4_gstvideo1_VideoFilter_transform_frame
 func _gotk4_gstvideo1_VideoFilter_transform_frame(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame, carg2 *C.GstVideoFrame) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame, carg2 *C.GstVideoFrame) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoFilter_transform_frame").(func(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame, carg2 *C.GstVideoFrame) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoFilter_transform_frame: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gstvideo1_VideoFilter_transform_frame_ip
 func _gotk4_gstvideo1_VideoFilter_transform_frame_ip(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoFilter_transform_frame_ip").(func(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoFilter_transform_frame_ip: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoSink_set_info
 func _gotk4_gstvideo1_VideoSink_set_info(carg0 *C.GstVideoSink, carg1 *C.GstCaps, carg2 *C.GstVideoInfo) (cret C.gboolean) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoSink, carg1 *C.GstCaps, carg2 *C.GstVideoInfo) (cret C.gboolean)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoSink_set_info").(func(carg0 *C.GstVideoSink, carg1 *C.GstCaps, carg2 *C.GstVideoInfo) (cret C.gboolean))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoSink_set_info: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gstvideo1_VideoSink_show_frame
 func _gotk4_gstvideo1_VideoSink_show_frame(carg0 *C.GstVideoSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoSink_show_frame").(func(carg0 *C.GstVideoSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoSink_show_frame: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info
 func _gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info(carg0 *C.GstVideoAggregatorConvertPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoInfo) {
-	panic("unimplemented")
+	var fn func(carg0 *C.GstVideoAggregatorConvertPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoInfo)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info").(func(carg0 *C.GstVideoAggregatorConvertPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoInfo))
+		if fn == nil {
+			panic("_gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2)
 }
 

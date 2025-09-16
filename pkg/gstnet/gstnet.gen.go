@@ -6,6 +6,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
@@ -572,6 +573,32 @@ func UnsafeApplyNetClientClockOverrides[Instance NetClientClock](gclass unsafe.P
 	gst.UnsafeApplySystemClockOverrides(gclass, overrides.SystemClockOverrides)
 }
 
+// RegisterNetClientClockSubClass is used to register a go subclass of GstNetClientClock. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterNetClientClockSubClass[InstanceT NetClientClock](
+		name string,
+		classInit func(class *NetClientClockClass),
+		constructor func() InstanceT,
+		overrides NetClientClockOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeNetClientClock,
+		UnsafeNetClientClockClassFromGlibBorrow,
+		UnsafeApplyNetClientClockOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapNetClientClock(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // NetTimeProviderInstance is the instance type used by all types extending GstNetTimeProvider. It is used internally by the bindings. Users should use the interface [NetTimeProvider] instead.
 type NetTimeProviderInstance struct {
 	_ [0]func() // equal guard
@@ -695,6 +722,32 @@ func UnsafeApplyNetTimeProviderOverrides[Instance NetTimeProvider](gclass unsafe
 	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
+// RegisterNetTimeProviderSubClass is used to register a go subclass of GstNetTimeProvider. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterNetTimeProviderSubClass[InstanceT NetTimeProvider](
+		name string,
+		classInit func(class *NetTimeProviderClass),
+		constructor func() InstanceT,
+		overrides NetTimeProviderOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeNetTimeProvider,
+		UnsafeNetTimeProviderClassFromGlibBorrow,
+		UnsafeApplyNetTimeProviderOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapNetTimeProvider(obj)
+		},
+		interfaceInits...,
+	)
+}
+
 // NtpClockInstance is the instance type used by all types extending GstNtpClock. It is used internally by the bindings. Users should use the interface [NtpClock] instead.
 type NtpClockInstance struct {
 	_ [0]func() // equal guard
@@ -809,6 +862,32 @@ type NtpClockOverrides[Instance NtpClock] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyNtpClockOverrides[Instance NtpClock](gclass unsafe.Pointer, overrides NtpClockOverrides[Instance]) {
 	UnsafeApplyNetClientClockOverrides(gclass, overrides.NetClientClockOverrides)
+}
+
+// RegisterNtpClockSubClass is used to register a go subclass of GstNtpClock. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterNtpClockSubClass[InstanceT NtpClock](
+		name string,
+		classInit func(class *NtpClockClass),
+		constructor func() InstanceT,
+		overrides NtpClockOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypeNtpClock,
+		UnsafeNtpClockClassFromGlibBorrow,
+		UnsafeApplyNtpClockOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapNtpClock(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // PtpClockInstance is the instance type used by all types extending GstPtpClock. It is used internally by the bindings. Users should use the interface [PtpClock] instead.
@@ -943,6 +1022,32 @@ type PtpClockOverrides[Instance PtpClock] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyPtpClockOverrides[Instance PtpClock](gclass unsafe.Pointer, overrides PtpClockOverrides[Instance]) {
 	gst.UnsafeApplySystemClockOverrides(gclass, overrides.SystemClockOverrides)
+}
+
+// RegisterPtpClockSubClass is used to register a go subclass of GstPtpClock. For this to work safely please implement the
+// virtual methods required by the implementation.
+func RegisterPtpClockSubClass[InstanceT PtpClock](
+		name string,
+		classInit func(class *PtpClockClass),
+		constructor func() InstanceT,
+		overrides PtpClockOverrides[InstanceT],
+		signals map[string]gobject.SignalDefinition,
+		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
+) gobject.Type {
+	return gobject.UnsafeRegisterSubClass(
+		name,
+		classInit,
+		constructor,
+		overrides,
+		signals,
+		TypePtpClock,
+		UnsafePtpClockClassFromGlibBorrow,
+		UnsafeApplyPtpClockOverrides,
+		func (obj *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPtpClock(obj)
+		},
+		interfaceInits...,
+	)
 }
 
 // NetAddressMeta wraps GstNetAddressMeta

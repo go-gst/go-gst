@@ -9,6 +9,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
@@ -2477,38 +2478,210 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 
 	if overrides.AfterSend != nil {
 		pclass.after_send = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_after_send)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtsp1_RTSPExtension_after_send",
+			func(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage, carg2 *C.GstRTSPMessage) (cret C.GstRTSPResult) {
+				var ext   Instance     // go GstRTSPExtension subclass
+				var req   *RTSPMessage // in, none, converted
+				var resp  *RTSPMessage // in, none, converted
+				var goret RTSPResult   // return, none, casted
+
+				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				req = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
+				resp = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.AfterSend(ext, req, resp)
+
+				cret = C.GstRTSPResult(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.BeforeSend != nil {
 		pclass.before_send = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_before_send)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtsp1_RTSPExtension_before_send",
+			func(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage) (cret C.GstRTSPResult) {
+				var ext   Instance     // go GstRTSPExtension subclass
+				var req   *RTSPMessage // in, none, converted
+				var goret RTSPResult   // return, none, casted
+
+				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				req = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.BeforeSend(ext, req)
+
+				cret = C.GstRTSPResult(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ConfigureStream != nil {
 		pclass.configure_stream = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_configure_stream)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtsp1_RTSPExtension_configure_stream",
+			func(carg0 *C.GstRTSPExtension, carg1 *C.GstCaps) (cret C.gboolean) {
+				var ext   Instance  // go GstRTSPExtension subclass
+				var caps  *gst.Caps // in, none, converted
+				var goret bool      // return
+
+				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ConfigureStream(ext, caps)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.DetectServer != nil {
 		pclass.detect_server = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_detect_server)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtsp1_RTSPExtension_detect_server",
+			func(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage) (cret C.gboolean) {
+				var ext   Instance     // go GstRTSPExtension subclass
+				var resp  *RTSPMessage // in, none, converted
+				var goret bool         // return
+
+				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				resp = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.DetectServer(ext, resp)
+
+				if goret {
+					cret = C.TRUE
+				}
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ParseSdp != nil {
 		pclass.parse_sdp = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_parse_sdp)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtsp1_RTSPExtension_parse_sdp",
+			func(carg0 *C.GstRTSPExtension, carg1 *C.GstSDPMessage, carg2 *C.GstStructure) (cret C.GstRTSPResult) {
+				var ext   Instance           // go GstRTSPExtension subclass
+				var sdp   *gstsdp.SDPMessage // in, none, converted
+				var s     *gst.Structure     // in, none, converted
+				var goret RTSPResult         // return, none, casted
+
+				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sdp = gstsdp.UnsafeSDPMessageFromGlibNone(unsafe.Pointer(carg1))
+				s = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.ParseSdp(ext, sdp, s)
+
+				cret = C.GstRTSPResult(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.ReceiveRequest != nil {
 		pclass.receive_request = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_receive_request)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtsp1_RTSPExtension_receive_request",
+			func(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage) (cret C.GstRTSPResult) {
+				var ext   Instance     // go GstRTSPExtension subclass
+				var req   *RTSPMessage // in, none, converted
+				var goret RTSPResult   // return, none, casted
+
+				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				req = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.ReceiveRequest(ext, req)
+
+				cret = C.GstRTSPResult(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.Send != nil {
 		pclass.send = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_send)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtsp1_RTSPExtension_send",
+			func(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage, carg2 *C.GstRTSPMessage) (cret C.GstRTSPResult) {
+				var ext   Instance     // go GstRTSPExtension subclass
+				var req   *RTSPMessage // in, none, converted
+				var resp  *RTSPMessage // in, none, converted
+				var goret RTSPResult   // return, none, casted
+
+				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				req = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg1))
+				resp = UnsafeRTSPMessageFromGlibNone(unsafe.Pointer(carg2))
+
+				goret = overrides.Send(ext, req, resp)
+
+				cret = C.GstRTSPResult(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.SetupMedia != nil {
 		pclass.setup_media = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_setup_media)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtsp1_RTSPExtension_setup_media",
+			func(carg0 *C.GstRTSPExtension, carg1 *C.GstSDPMedia) (cret C.GstRTSPResult) {
+				var ext   Instance         // go GstRTSPExtension subclass
+				var media *gstsdp.SDPMedia // in, none, converted
+				var goret RTSPResult       // return, none, casted
+
+				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				media = gstsdp.UnsafeSDPMediaFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.SetupMedia(ext, media)
+
+				cret = C.GstRTSPResult(goret)
+
+				return cret
+			},
+		)
 	}
 
 	if overrides.StreamSelect != nil {
 		pclass.stream_select = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_stream_select)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstrtsp1_RTSPExtension_stream_select",
+			func(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPUrl) (cret C.GstRTSPResult) {
+				var ext   Instance   // go GstRTSPExtension subclass
+				var url   *RTSPUrl   // in, none, converted
+				var goret RTSPResult // return, none, casted
+
+				ext = UnsafeRTSPExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				url = UnsafeRTSPUrlFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.StreamSelect(ext, url)
+
+				cret = C.GstRTSPResult(goret)
+
+				return cret
+			},
+		)
 	}
 }
 
