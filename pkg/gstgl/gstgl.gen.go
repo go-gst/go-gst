@@ -20,6 +20,162 @@ import (
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/gl/gl.h>
 // extern gboolean _gotk4_gstgl1_GLFilterRenderFunc(GstGLFilter*, GstGLMemory*, gpointer);
+// extern gboolean _gotk4_gstgl1_GLBaseFilter_gl_set_caps(GstGLBaseFilter*, GstCaps*, GstCaps*);
+// extern gboolean _gotk4_gstgl1_GLBaseFilter_gl_start(GstGLBaseFilter*);
+// extern void _gotk4_gstgl1_GLBaseFilter_gl_stop(GstGLBaseFilter*);
+// gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_set_caps(void* fnptr, GstGLBaseFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
+// 	return ((gboolean (*) (GstGLBaseFilter*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_start(void* fnptr, GstGLBaseFilter* carg0) {
+// 	return ((gboolean (*) (GstGLBaseFilter*))(fnptr))(carg0);
+// }
+// void _gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(void* fnptr, GstGLBaseFilter* carg0) {
+// 	return ((void (*) (GstGLBaseFilter*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstgl1_GLBaseMixer_gl_start(GstGLBaseMixer*);
+// extern void _gotk4_gstgl1_GLBaseMixer_gl_stop(GstGLBaseMixer*);
+// gboolean _gotk4_gstgl1_GLBaseMixer_virtual_gl_start(void* fnptr, GstGLBaseMixer* carg0) {
+// 	return ((gboolean (*) (GstGLBaseMixer*))(fnptr))(carg0);
+// }
+// void _gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(void* fnptr, GstGLBaseMixer* carg0) {
+// 	return ((void (*) (GstGLBaseMixer*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstgl1_GLBaseSrc_fill_gl_memory(GstGLBaseSrc*, GstGLMemory*);
+// extern gboolean _gotk4_gstgl1_GLBaseSrc_gl_start(GstGLBaseSrc*);
+// extern void _gotk4_gstgl1_GLBaseSrc_gl_stop(GstGLBaseSrc*);
+// gboolean _gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(void* fnptr, GstGLBaseSrc* carg0, GstGLMemory* carg1) {
+// 	return ((gboolean (*) (GstGLBaseSrc*, GstGLMemory*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstgl1_GLBaseSrc_virtual_gl_start(void* fnptr, GstGLBaseSrc* carg0) {
+// 	return ((gboolean (*) (GstGLBaseSrc*))(fnptr))(carg0);
+// }
+// void _gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(void* fnptr, GstGLBaseSrc* carg0) {
+// 	return ((void (*) (GstGLBaseSrc*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstgl1_GLContext_activate(GstGLContext*, gboolean);
+// extern gboolean _gotk4_gstgl1_GLContext_check_feature(GstGLContext*, gchar*);
+// extern gboolean _gotk4_gstgl1_GLContext_choose_format(GstGLContext*, GError*);
+// extern gboolean _gotk4_gstgl1_GLContext_create_context(GstGLContext*, GstGLAPI, GstGLContext*, GError*);
+// extern void _gotk4_gstgl1_GLContext_destroy_context(GstGLContext*);
+// extern GstStructure* _gotk4_gstgl1_GLContext_get_config(GstGLContext*);
+// extern GstGLAPI _gotk4_gstgl1_GLContext_get_gl_api(GstGLContext*);
+// extern GstGLPlatform _gotk4_gstgl1_GLContext_get_gl_platform(GstGLContext*);
+// extern void _gotk4_gstgl1_GLContext_get_gl_platform_version(GstGLContext*, gint, gint);
+// extern gboolean _gotk4_gstgl1_GLContext_request_config(GstGLContext*, GstStructure*);
+// extern void _gotk4_gstgl1_GLContext_swap_buffers(GstGLContext*);
+// gboolean _gotk4_gstgl1_GLContext_virtual_activate(void* fnptr, GstGLContext* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstGLContext*, gboolean))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstgl1_GLContext_virtual_check_feature(void* fnptr, GstGLContext* carg0, gchar* carg1) {
+// 	return ((gboolean (*) (GstGLContext*, gchar*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstgl1_GLContext_virtual_choose_format(void* fnptr, GstGLContext* carg0, GError** _cerr) {
+// 	return ((gboolean (*) (GstGLContext*, GError**))(fnptr))(carg0, _cerr);
+// }
+// gboolean _gotk4_gstgl1_GLContext_virtual_create_context(void* fnptr, GstGLContext* carg0, GstGLAPI carg1, GstGLContext* carg2, GError** _cerr) {
+// 	return ((gboolean (*) (GstGLContext*, GstGLAPI, GstGLContext*, GError**))(fnptr))(carg0, carg1, carg2, _cerr);
+// }
+// void _gotk4_gstgl1_GLContext_virtual_destroy_context(void* fnptr, GstGLContext* carg0) {
+// 	return ((void (*) (GstGLContext*))(fnptr))(carg0);
+// }
+// GstStructure* _gotk4_gstgl1_GLContext_virtual_get_config(void* fnptr, GstGLContext* carg0) {
+// 	return ((GstStructure* (*) (GstGLContext*))(fnptr))(carg0);
+// }
+// GstGLAPI _gotk4_gstgl1_GLContext_virtual_get_gl_api(void* fnptr, GstGLContext* carg0) {
+// 	return ((GstGLAPI (*) (GstGLContext*))(fnptr))(carg0);
+// }
+// GstGLPlatform _gotk4_gstgl1_GLContext_virtual_get_gl_platform(void* fnptr, GstGLContext* carg0) {
+// 	return ((GstGLPlatform (*) (GstGLContext*))(fnptr))(carg0);
+// }
+// void _gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(void* fnptr, GstGLContext* carg0, gint* carg1, gint* carg2) {
+// 	return ((void (*) (GstGLContext*, gint*, gint*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstgl1_GLContext_virtual_request_config(void* fnptr, GstGLContext* carg0, GstStructure* carg1) {
+// 	return ((gboolean (*) (GstGLContext*, GstStructure*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstgl1_GLContext_virtual_swap_buffers(void* fnptr, GstGLContext* carg0) {
+// 	return ((void (*) (GstGLContext*))(fnptr))(carg0);
+// }
+// extern GstGLWindow* _gotk4_gstgl1_GLDisplay_create_window(GstGLDisplay*);
+// GstGLWindow* _gotk4_gstgl1_GLDisplay_virtual_create_window(void* fnptr, GstGLDisplay* carg0) {
+// 	return ((GstGLWindow* (*) (GstGLDisplay*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstgl1_GLFilter_filter(GstGLFilter*, GstBuffer*, GstBuffer*);
+// extern gboolean _gotk4_gstgl1_GLFilter_filter_texture(GstGLFilter*, GstGLMemory*, GstGLMemory*);
+// extern gboolean _gotk4_gstgl1_GLFilter_init_fbo(GstGLFilter*);
+// extern gboolean _gotk4_gstgl1_GLFilter_set_caps(GstGLFilter*, GstCaps*, GstCaps*);
+// extern GstCaps* _gotk4_gstgl1_GLFilter_transform_internal_caps(GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*);
+// gboolean _gotk4_gstgl1_GLFilter_virtual_filter(void* fnptr, GstGLFilter* carg0, GstBuffer* carg1, GstBuffer* carg2) {
+// 	return ((gboolean (*) (GstGLFilter*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstgl1_GLFilter_virtual_filter_texture(void* fnptr, GstGLFilter* carg0, GstGLMemory* carg1, GstGLMemory* carg2) {
+// 	return ((gboolean (*) (GstGLFilter*, GstGLMemory*, GstGLMemory*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstgl1_GLFilter_virtual_init_fbo(void* fnptr, GstGLFilter* carg0) {
+// 	return ((gboolean (*) (GstGLFilter*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstgl1_GLFilter_virtual_set_caps(void* fnptr, GstGLFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
+// 	return ((gboolean (*) (GstGLFilter*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstCaps* _gotk4_gstgl1_GLFilter_virtual_transform_internal_caps(void* fnptr, GstGLFilter* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
+// 	return ((GstCaps* (*) (GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern gboolean _gotk4_gstgl1_GLMixer_process_buffers(GstGLMixer*, GstBuffer*);
+// extern gboolean _gotk4_gstgl1_GLMixer_process_textures(GstGLMixer*, GstGLMemory*);
+// gboolean _gotk4_gstgl1_GLMixer_virtual_process_buffers(void* fnptr, GstGLMixer* carg0, GstBuffer* carg1) {
+// 	return ((gboolean (*) (GstGLMixer*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstgl1_GLMixer_virtual_process_textures(void* fnptr, GstGLMixer* carg0, GstGLMemory* carg1) {
+// 	return ((gboolean (*) (GstGLMixer*, GstGLMemory*))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gstgl1_GLWindow_close(GstGLWindow*);
+// extern gboolean _gotk4_gstgl1_GLWindow_controls_viewport(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_draw(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_handle_events(GstGLWindow*, gboolean);
+// extern gboolean _gotk4_gstgl1_GLWindow_has_output_surface(GstGLWindow*);
+// extern gboolean _gotk4_gstgl1_GLWindow_open(GstGLWindow*, GError*);
+// extern void _gotk4_gstgl1_GLWindow_queue_resize(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_quit(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_run(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_set_preferred_size(GstGLWindow*, gint, gint);
+// extern gboolean _gotk4_gstgl1_GLWindow_set_render_rectangle(GstGLWindow*, gint, gint, gint, gint);
+// extern void _gotk4_gstgl1_GLWindow_show(GstGLWindow*);
+// void _gotk4_gstgl1_GLWindow_virtual_close(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstgl1_GLWindow_virtual_controls_viewport(void* fnptr, GstGLWindow* carg0) {
+// 	return ((gboolean (*) (GstGLWindow*))(fnptr))(carg0);
+// }
+// void _gotk4_gstgl1_GLWindow_virtual_draw(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// }
+// void _gotk4_gstgl1_GLWindow_virtual_handle_events(void* fnptr, GstGLWindow* carg0, gboolean carg1) {
+// 	return ((void (*) (GstGLWindow*, gboolean))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstgl1_GLWindow_virtual_has_output_surface(void* fnptr, GstGLWindow* carg0) {
+// 	return ((gboolean (*) (GstGLWindow*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstgl1_GLWindow_virtual_open(void* fnptr, GstGLWindow* carg0, GError** _cerr) {
+// 	return ((gboolean (*) (GstGLWindow*, GError**))(fnptr))(carg0, _cerr);
+// }
+// void _gotk4_gstgl1_GLWindow_virtual_queue_resize(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// }
+// void _gotk4_gstgl1_GLWindow_virtual_quit(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// }
+// void _gotk4_gstgl1_GLWindow_virtual_run(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// }
+// void _gotk4_gstgl1_GLWindow_virtual_set_preferred_size(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2) {
+// 	return ((void (*) (GstGLWindow*, gint, gint))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstgl1_GLWindow_virtual_set_render_rectangle(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2, gint carg3, gint carg4) {
+// 	return ((gboolean (*) (GstGLWindow*, gint, gint, gint, gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// }
+// void _gotk4_gstgl1_GLWindow_virtual_show(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// }
 import "C"
 
 // GType values.
@@ -203,6 +359,7 @@ func (e GLBaseMemoryError) String() string {
 }
 
 // GLBaseMemoryErrorQuark wraps gst_gl_base_memory_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -339,6 +496,7 @@ func (e GLContextError) String() string {
 }
 
 // GLContextErrorQuark wraps gst_gl_context_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -707,6 +865,7 @@ func (e GLSLError) String() string {
 }
 
 // GLSLErrorQuark wraps gst_glsl_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -1264,6 +1423,7 @@ func (e GLWindowError) String() string {
 }
 
 // GLWindowErrorQuark wraps gst_gl_window_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -2389,6 +2549,7 @@ func GLSizedGLFormatFromGLFormatType(_context GLContext, format uint, typ uint) 
 }
 
 // GLStereoDownmixModeGetType wraps gst_gl_stereo_downmix_mode_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -2405,6 +2566,7 @@ func GLStereoDownmixModeGetType() gobject.Type {
 }
 
 // GLSyncMetaApiGetType wraps gst_gl_sync_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -2738,11 +2900,13 @@ type GLBaseFilter interface {
 	upcastToGstGLBaseFilter() *GLBaseFilterInstance
 
 	// FindGLContext wraps gst_gl_base_filter_find_gl_context
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	FindGLContext() bool
 	// GetGLContext wraps gst_gl_base_filter_get_gl_context
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLContext (nullable) 
@@ -2792,6 +2956,7 @@ func UnsafeGLBaseFilterToGlibFull(c GLBaseFilter) unsafe.Pointer {
 }
 
 // FindGLContext wraps gst_gl_base_filter_find_gl_context
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2814,6 +2979,7 @@ func (filter *GLBaseFilterInstance) FindGLContext() bool {
 }
 
 // GetGLContext wraps gst_gl_base_filter_get_gl_context
+// 
 // The function returns the following values:
 // 
 // 	- goret GLContext (nullable) 
@@ -2833,6 +2999,51 @@ func (filter *GLBaseFilterInstance) GetGLContext() GLContext {
 	}
 
 	return goret
+}
+
+// GLBaseFilterOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLBaseFilterOverrides[Instance GLBaseFilter] struct {
+	// gstbase.BaseTransformOverrides allows you to override virtual methods from the parent class gstbase.BaseTransform
+	gstbase.BaseTransformOverrides[Instance]
+
+	// GLSetCaps allows you to override the implementation of the virtual method gl_set_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- incaps *gst.Caps 
+	// 	- outcaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	GLSetCaps func(Instance, *gst.Caps, *gst.Caps) bool
+	// GLStart allows you to override the implementation of the virtual method gl_start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	GLStart func(Instance) bool
+	// GLStop allows you to override the implementation of the virtual method gl_stop.
+	GLStop func(Instance)
+}
+
+// UnsafeApplyGLBaseFilterOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Pointer, overrides GLBaseFilterOverrides[Instance]) {
+	gstbase.UnsafeApplyBaseTransformOverrides(gclass, overrides.BaseTransformOverrides)
+
+	pclass := (*C.GstGLBaseFilterClass)(gclass)
+
+	if overrides.GLSetCaps != nil {
+		pclass.gl_set_caps = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_set_caps)
+	}
+
+	if overrides.GLStart != nil {
+		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_start)
+	}
+
+	if overrides.GLStop != nil {
+		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_stop)
+	}
 }
 
 // GLBaseMemoryAllocatorInstance is the instance type used by all types extending GstGLBaseMemoryAllocator. It is used internally by the bindings. Users should use the interface [GLBaseMemoryAllocator] instead.
@@ -2891,6 +3102,20 @@ func UnsafeGLBaseMemoryAllocatorToGlibFull(c GLBaseMemoryAllocator) unsafe.Point
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// GLBaseMemoryAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator] struct {
+	// gst.AllocatorOverrides allows you to override virtual methods from the parent class gst.Allocator
+	gst.AllocatorOverrides[Instance]
+
+}
+
+// UnsafeApplyGLBaseMemoryAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator](gclass unsafe.Pointer, overrides GLBaseMemoryAllocatorOverrides[Instance]) {
+	gst.UnsafeApplyAllocatorOverrides(gclass, overrides.AllocatorOverrides)
+}
+
 // GLBaseMixerInstance is the instance type used by all types extending GstGLBaseMixer. It is used internally by the bindings. Users should use the interface [GLBaseMixer] instead.
 type GLBaseMixerInstance struct {
 	_ [0]func() // equal guard
@@ -2909,6 +3134,7 @@ type GLBaseMixer interface {
 	upcastToGstGLBaseMixer() *GLBaseMixerInstance
 
 	// GetGLContext wraps gst_gl_base_mixer_get_gl_context
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLContext (nullable) 
@@ -2960,6 +3186,7 @@ func UnsafeGLBaseMixerToGlibFull(c GLBaseMixer) unsafe.Pointer {
 }
 
 // GetGLContext wraps gst_gl_base_mixer_get_gl_context
+// 
 // The function returns the following values:
 // 
 // 	- goret GLContext (nullable) 
@@ -2979,6 +3206,37 @@ func (mix *GLBaseMixerInstance) GetGLContext() GLContext {
 	}
 
 	return goret
+}
+
+// GLBaseMixerOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLBaseMixerOverrides[Instance GLBaseMixer] struct {
+	// gstvideo.VideoAggregatorOverrides allows you to override virtual methods from the parent class gstvideo.VideoAggregator
+	gstvideo.VideoAggregatorOverrides[Instance]
+
+	// GLStart allows you to override the implementation of the virtual method gl_start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	GLStart func(Instance) bool
+	// GLStop allows you to override the implementation of the virtual method gl_stop.
+	GLStop func(Instance)
+}
+
+// UnsafeApplyGLBaseMixerOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer, overrides GLBaseMixerOverrides[Instance]) {
+	gstvideo.UnsafeApplyVideoAggregatorOverrides(gclass, overrides.VideoAggregatorOverrides)
+
+	pclass := (*C.GstGLBaseMixerClass)(gclass)
+
+	if overrides.GLStart != nil {
+		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_start)
+	}
+
+	if overrides.GLStop != nil {
+		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_stop)
+	}
 }
 
 // GLBaseMixerPadInstance is the instance type used by all types extending GstGLBaseMixerPad. It is used internally by the bindings. Users should use the interface [GLBaseMixerPad] instead.
@@ -3037,6 +3295,20 @@ func UnsafeGLBaseMixerPadToGlibNone(c GLBaseMixerPad) unsafe.Pointer {
 // UnsafeGLBaseMixerPadToGlibFull is used to convert the instance to it's C value GstGLBaseMixerPad, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeGLBaseMixerPadToGlibFull(c GLBaseMixerPad) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
+}
+
+// GLBaseMixerPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLBaseMixerPadOverrides[Instance GLBaseMixerPad] struct {
+	// gstvideo.VideoAggregatorPadOverrides allows you to override virtual methods from the parent class gstvideo.VideoAggregatorPad
+	gstvideo.VideoAggregatorPadOverrides[Instance]
+
+}
+
+// UnsafeApplyGLBaseMixerPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLBaseMixerPadOverrides[Instance GLBaseMixerPad](gclass unsafe.Pointer, overrides GLBaseMixerPadOverrides[Instance]) {
+	gstvideo.UnsafeApplyVideoAggregatorPadOverrides(gclass, overrides.VideoAggregatorPadOverrides)
 }
 
 // GLBaseSrcInstance is the instance type used by all types extending GstGLBaseSrc. It is used internally by the bindings. Users should use the interface [GLBaseSrc] instead.
@@ -3102,6 +3374,50 @@ func UnsafeGLBaseSrcToGlibFull(c GLBaseSrc) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// GLBaseSrcOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLBaseSrcOverrides[Instance GLBaseSrc] struct {
+	// gstbase.PushSrcOverrides allows you to override virtual methods from the parent class gstbase.PushSrc
+	gstbase.PushSrcOverrides[Instance]
+
+	// FillGLMemory allows you to override the implementation of the virtual method fill_gl_memory.
+	// The function takes the following parameters:
+	// 
+	// 	- mem *GLMemory 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	FillGLMemory func(Instance, *GLMemory) bool
+	// GLStart allows you to override the implementation of the virtual method gl_start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	GLStart func(Instance) bool
+	// GLStop allows you to override the implementation of the virtual method gl_stop.
+	GLStop func(Instance)
+}
+
+// UnsafeApplyGLBaseSrcOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, overrides GLBaseSrcOverrides[Instance]) {
+	gstbase.UnsafeApplyPushSrcOverrides(gclass, overrides.PushSrcOverrides)
+
+	pclass := (*C.GstGLBaseSrcClass)(gclass)
+
+	if overrides.FillGLMemory != nil {
+		pclass.fill_gl_memory = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_fill_gl_memory)
+	}
+
+	if overrides.GLStart != nil {
+		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_gl_start)
+	}
+
+	if overrides.GLStop != nil {
+		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_gl_stop)
+	}
+}
+
 // GLBufferAllocatorInstance is the instance type used by all types extending GstGLBufferAllocator. It is used internally by the bindings. Users should use the interface [GLBufferAllocator] instead.
 type GLBufferAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -3160,6 +3476,20 @@ func UnsafeGLBufferAllocatorToGlibFull(c GLBufferAllocator) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// GLBufferAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLBufferAllocatorOverrides[Instance GLBufferAllocator] struct {
+	// GLBaseMemoryAllocatorOverrides allows you to override virtual methods from the parent class GLBaseMemoryAllocator
+	GLBaseMemoryAllocatorOverrides[Instance]
+
+}
+
+// UnsafeApplyGLBufferAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLBufferAllocatorOverrides[Instance GLBufferAllocator](gclass unsafe.Pointer, overrides GLBufferAllocatorOverrides[Instance]) {
+	UnsafeApplyGLBaseMemoryAllocatorOverrides(gclass, overrides.GLBaseMemoryAllocatorOverrides)
+}
+
 // GLBufferPoolInstance is the instance type used by all types extending GstGLBufferPool. It is used internally by the bindings. Users should use the interface [GLBufferPool] instead.
 type GLBufferPoolInstance struct {
 	_ [0]func() // equal guard
@@ -3183,6 +3513,7 @@ type GLBufferPool interface {
 	upcastToGstGLBufferPool() *GLBufferPoolInstance
 
 	// GetGLAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *GLAllocationParams (nullable) 
@@ -3260,6 +3591,7 @@ func NewGLBufferPool(_context GLContext) gst.BufferPool {
 }
 
 // GetGLAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
+// 
 // The function returns the following values:
 // 
 // 	- goret *GLAllocationParams (nullable) 
@@ -3284,6 +3616,20 @@ func (pool *GLBufferPoolInstance) GetGLAllocationParams() *GLAllocationParams {
 	}
 
 	return goret
+}
+
+// GLBufferPoolOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLBufferPoolOverrides[Instance GLBufferPool] struct {
+	// gst.BufferPoolOverrides allows you to override virtual methods from the parent class gst.BufferPool
+	gst.BufferPoolOverrides[Instance]
+
+}
+
+// UnsafeApplyGLBufferPoolOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLBufferPoolOverrides[Instance GLBufferPool](gclass unsafe.Pointer, overrides GLBufferPoolOverrides[Instance]) {
+	gst.UnsafeApplyBufferPoolOverrides(gclass, overrides.BufferPoolOverrides)
 }
 
 // GLColorConvertInstance is the instance type used by all types extending GstGLColorConvert. It is used internally by the bindings. Users should use the interface [GLColorConvert] instead.
@@ -3651,6 +3997,20 @@ func (convert *GLColorConvertInstance) SetCaps(inCaps *gst.Caps, outCaps *gst.Ca
 	return goret
 }
 
+// GLColorConvertOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLColorConvertOverrides[Instance GLColorConvert] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyGLColorConvertOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLColorConvertOverrides[Instance GLColorConvert](gclass unsafe.Pointer, overrides GLColorConvertOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // GLContextInstance is the instance type used by all types extending GstGLContext. It is used internally by the bindings. Users should use the interface [GLContext] instead.
 type GLContextInstance struct {
 	_ [0]func() // equal guard
@@ -3801,6 +4161,7 @@ type GLContext interface {
 	// called for this context.
 	Destroy()
 	// FillInfo wraps gst_gl_context_fill_info
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3811,6 +4172,7 @@ type GLContext interface {
 	// allow wrapped contexts to be used as regular #GstGLContext's.
 	FillInfo() (bool, error)
 	// GetConfig wraps gst_gl_context_get_config
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Structure (nullable) 
@@ -3822,11 +4184,13 @@ type GLContext interface {
 	// return %NULL when not supported.
 	GetConfig() *gst.Structure
 	// GetDisplay wraps gst_gl_context_get_display
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLDisplay 
 	GetDisplay() GLDisplay
 	// GetGLApi wraps gst_gl_context_get_gl_api
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLAPI 
@@ -3837,6 +4201,7 @@ type GLContext interface {
 	// the #GstGLWindow chosen.
 	GetGLApi() GLAPI
 	// GetGLPlatform wraps gst_gl_context_get_gl_platform
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLPlatform 
@@ -3844,6 +4209,7 @@ type GLContext interface {
 	// Gets the OpenGL platform that used by @context.
 	GetGLPlatform() GLPlatform
 	// GetGLPlatformVersion wraps gst_gl_context_get_gl_platform_version
+	// 
 	// The function returns the following values:
 	// 
 	// 	- major int: return for the major version 
@@ -3853,6 +4219,7 @@ type GLContext interface {
 	// after a call to gst_gl_context_create().
 	GetGLPlatformVersion() (int, int)
 	// GetGLVersion wraps gst_gl_context_get_gl_version
+	// 
 	// The function returns the following values:
 	// 
 	// 	- maj int: resulting major version 
@@ -3863,11 +4230,13 @@ type GLContext interface {
 	// @context.
 	GetGLVersion() (int, int)
 	// GetWindow wraps gst_gl_context_get_window
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLWindow (nullable) 
 	GetWindow() GLWindow
 	// IsShared wraps gst_gl_context_is_shared
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4024,6 +4393,7 @@ func NewGLContext(display GLDisplay) GLContext {
 }
 
 // GLContextGetCurrent wraps gst_gl_context_get_current
+// 
 // The function returns the following values:
 // 
 // 	- goret GLContext (nullable) 
@@ -4356,6 +4726,7 @@ func (_context *GLContextInstance) Destroy() {
 }
 
 // FillInfo wraps gst_gl_context_fill_info
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4388,6 +4759,7 @@ func (_context *GLContextInstance) FillInfo() (bool, error) {
 }
 
 // GetConfig wraps gst_gl_context_get_config
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Structure (nullable) 
@@ -4416,6 +4788,7 @@ func (_context *GLContextInstance) GetConfig() *gst.Structure {
 }
 
 // GetDisplay wraps gst_gl_context_get_display
+// 
 // The function returns the following values:
 // 
 // 	- goret GLDisplay 
@@ -4436,6 +4809,7 @@ func (_context *GLContextInstance) GetDisplay() GLDisplay {
 }
 
 // GetGLApi wraps gst_gl_context_get_gl_api
+// 
 // The function returns the following values:
 // 
 // 	- goret GLAPI 
@@ -4461,6 +4835,7 @@ func (_context *GLContextInstance) GetGLApi() GLAPI {
 }
 
 // GetGLPlatform wraps gst_gl_context_get_gl_platform
+// 
 // The function returns the following values:
 // 
 // 	- goret GLPlatform 
@@ -4483,6 +4858,7 @@ func (_context *GLContextInstance) GetGLPlatform() GLPlatform {
 }
 
 // GetGLPlatformVersion wraps gst_gl_context_get_gl_platform_version
+// 
 // The function returns the following values:
 // 
 // 	- major int: return for the major version 
@@ -4510,6 +4886,7 @@ func (_context *GLContextInstance) GetGLPlatformVersion() (int, int) {
 }
 
 // GetGLVersion wraps gst_gl_context_get_gl_version
+// 
 // The function returns the following values:
 // 
 // 	- maj int: resulting major version 
@@ -4538,6 +4915,7 @@ func (_context *GLContextInstance) GetGLVersion() (int, int) {
 }
 
 // GetWindow wraps gst_gl_context_get_window
+// 
 // The function returns the following values:
 // 
 // 	- goret GLWindow (nullable) 
@@ -4560,6 +4938,7 @@ func (_context *GLContextInstance) GetWindow() GLWindow {
 }
 
 // IsShared wraps gst_gl_context_is_shared
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4795,6 +5174,136 @@ func (_context *GLContextInstance) SwapBuffers() {
 	runtime.KeepAlive(_context)
 }
 
+// GLContextOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLContextOverrides[Instance GLContext] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+	// Activate allows you to override the implementation of the virtual method activate.
+	// The function takes the following parameters:
+	// 
+	// 	- activate bool: %TRUE to activate, %FALSE to deactivate 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Activate func(Instance, bool) bool
+	// CheckFeature allows you to override the implementation of the virtual method check_feature.
+	// The function takes the following parameters:
+	// 
+	// 	- feature string: a platform specific feature 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	CheckFeature func(Instance, string) bool
+	// ChooseFormat allows you to override the implementation of the virtual method choose_format.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	// 	- _goerr error (nullable): an error 
+	ChooseFormat func(Instance) (bool, error)
+	// CreateContext allows you to override the implementation of the virtual method create_context.
+	// The function takes the following parameters:
+	// 
+	// 	- glApi GLAPI 
+	// 	- otherContext GLContext 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	// 	- _goerr error (nullable): an error 
+	CreateContext func(Instance, GLAPI, GLContext) (bool, error)
+	// DestroyContext allows you to override the implementation of the virtual method destroy_context.
+	DestroyContext func(Instance)
+	// GetConfig allows you to override the implementation of the virtual method get_config.
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Structure (nullable) 
+	GetConfig func(Instance) *gst.Structure
+	// GetGLApi allows you to override the implementation of the virtual method get_gl_api.
+	// The function returns the following values:
+	// 
+	// 	- goret GLAPI 
+	GetGLApi func(Instance) GLAPI
+	// GetGLPlatform allows you to override the implementation of the virtual method get_gl_platform.
+	// The function returns the following values:
+	// 
+	// 	- goret GLPlatform 
+	GetGLPlatform func(Instance) GLPlatform
+	// GetGLPlatformVersion allows you to override the implementation of the virtual method get_gl_platform_version.
+	// The function returns the following values:
+	// 
+	// 	- major int: return for the major version 
+	// 	- minor int: return for the minor version 
+	GetGLPlatformVersion func(Instance) (int, int)
+	// RequestConfig allows you to override the implementation of the virtual method request_config.
+	// The function takes the following parameters:
+	// 
+	// 	- glConfig *gst.Structure (nullable): a configuration structure for
+	//             configuring the OpenGL context 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	RequestConfig func(Instance, *gst.Structure) bool
+	// SwapBuffers allows you to override the implementation of the virtual method swap_buffers.
+	SwapBuffers func(Instance)
+}
+
+// UnsafeApplyGLContextOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, overrides GLContextOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstGLContextClass)(gclass)
+
+	if overrides.Activate != nil {
+		pclass.activate = (*[0]byte)(C._gotk4_gstgl1_GLContext_activate)
+	}
+
+	if overrides.CheckFeature != nil {
+		pclass.check_feature = (*[0]byte)(C._gotk4_gstgl1_GLContext_check_feature)
+	}
+
+	if overrides.ChooseFormat != nil {
+		pclass.choose_format = (*[0]byte)(C._gotk4_gstgl1_GLContext_choose_format)
+	}
+
+	if overrides.CreateContext != nil {
+		pclass.create_context = (*[0]byte)(C._gotk4_gstgl1_GLContext_create_context)
+	}
+
+	if overrides.DestroyContext != nil {
+		pclass.destroy_context = (*[0]byte)(C._gotk4_gstgl1_GLContext_destroy_context)
+	}
+
+	if overrides.GetConfig != nil {
+		pclass.get_config = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_config)
+	}
+
+	if overrides.GetGLApi != nil {
+		pclass.get_gl_api = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_api)
+	}
+
+	if overrides.GetGLPlatform != nil {
+		pclass.get_gl_platform = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_platform)
+	}
+
+	if overrides.GetGLPlatformVersion != nil {
+		pclass.get_gl_platform_version = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_platform_version)
+	}
+
+	if overrides.RequestConfig != nil {
+		pclass.request_config = (*[0]byte)(C._gotk4_gstgl1_GLContext_request_config)
+	}
+
+	if overrides.SwapBuffers != nil {
+		pclass.swap_buffers = (*[0]byte)(C._gotk4_gstgl1_GLContext_swap_buffers)
+	}
+}
+
 // GLDisplayInstance is the instance type used by all types extending GstGLDisplay. It is used internally by the bindings. Users should use the interface [GLDisplay] instead.
 type GLDisplayInstance struct {
 	_ [0]func() // equal guard
@@ -4854,6 +5363,7 @@ type GLDisplay interface {
 	// It requires the display's object lock to be held.
 	CreateContext(GLContext) (GLContext, bool, error)
 	// CreateWindow wraps gst_gl_display_create_window
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLWindow (nullable) 
@@ -4870,6 +5380,7 @@ type GLDisplay interface {
 	// API supported by a #GstGLContext.
 	FilterGLApi(GLAPI)
 	// GetGLApi wraps gst_gl_display_get_gl_api
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLAPI 
@@ -4877,11 +5388,13 @@ type GLDisplay interface {
 	// see gst_gl_display_filter_gl_api() for what the returned value represents
 	GetGLApi() GLAPI
 	// GetGLApiUnlocked wraps gst_gl_display_get_gl_api_unlocked
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLAPI 
 	GetGLApiUnlocked() GLAPI
 	// GetHandleType wraps gst_gl_display_get_handle_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLDisplayType 
@@ -4951,6 +5464,7 @@ func UnsafeGLDisplayToGlibFull(c GLDisplay) unsafe.Pointer {
 }
 
 // NewGLDisplay wraps gst_gl_display_new
+// 
 // The function returns the following values:
 // 
 // 	- goret GLDisplay 
@@ -5073,6 +5587,7 @@ func (display *GLDisplayInstance) CreateContext(otherContext GLContext) (GLConte
 }
 
 // CreateWindow wraps gst_gl_display_create_window
+// 
 // The function returns the following values:
 // 
 // 	- goret GLWindow (nullable) 
@@ -5117,6 +5632,7 @@ func (display *GLDisplayInstance) FilterGLApi(glApi GLAPI) {
 }
 
 // GetGLApi wraps gst_gl_display_get_gl_api
+// 
 // The function returns the following values:
 // 
 // 	- goret GLAPI 
@@ -5139,6 +5655,7 @@ func (display *GLDisplayInstance) GetGLApi() GLAPI {
 }
 
 // GetGLApiUnlocked wraps gst_gl_display_get_gl_api_unlocked
+// 
 // The function returns the following values:
 // 
 // 	- goret GLAPI 
@@ -5159,6 +5676,7 @@ func (display *GLDisplayInstance) GetGLApiUnlocked() GLAPI {
 }
 
 // GetHandleType wraps gst_gl_display_get_handle_type
+// 
 // The function returns the following values:
 // 
 // 	- goret GLDisplayType 
@@ -5235,6 +5753,32 @@ func (display *GLDisplayInstance) RemoveWindow(window GLWindow) bool {
 func (o *GLDisplayInstance) ConnectCreateContext(fn func(GLDisplay, GLContext) GLContextInstance) gobject.SignalHandle {
 	return o.Connect("create-context", fn)
 }
+
+// GLDisplayOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLDisplayOverrides[Instance GLDisplay] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+	// CreateWindow allows you to override the implementation of the virtual method create_window.
+	// The function returns the following values:
+	// 
+	// 	- goret GLWindow (nullable) 
+	CreateWindow func(Instance) GLWindow
+}
+
+// UnsafeApplyGLDisplayOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLDisplayOverrides[Instance GLDisplay](gclass unsafe.Pointer, overrides GLDisplayOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstGLDisplayClass)(gclass)
+
+	if overrides.CreateWindow != nil {
+		pclass.create_window = (*[0]byte)(C._gotk4_gstgl1_GLDisplay_create_window)
+	}
+}
+
 // GLFilterInstance is the instance type used by all types extending GstGLFilter. It is used internally by the bindings. Users should use the interface [GLFilter] instead.
 type GLFilterInstance struct {
 	_ [0]func() // equal guard
@@ -5480,6 +6024,88 @@ func (filter *GLFilterInstance) RenderToTargetWithShader(input *GLMemory, output
 	runtime.KeepAlive(shader)
 }
 
+// GLFilterOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLFilterOverrides[Instance GLFilter] struct {
+	// GLBaseFilterOverrides allows you to override virtual methods from the parent class GLBaseFilter
+	GLBaseFilterOverrides[Instance]
+
+	// Filter allows you to override the implementation of the virtual method filter.
+	// The function takes the following parameters:
+	// 
+	// 	- inbuf *gst.Buffer 
+	// 	- outbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Filter func(Instance, *gst.Buffer, *gst.Buffer) bool
+	// FilterTexture allows you to override the implementation of the virtual method filter_texture.
+	// The function takes the following parameters:
+	// 
+	// 	- input *GLMemory: an input buffer 
+	// 	- output *GLMemory: an output buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	FilterTexture func(Instance, *GLMemory, *GLMemory) bool
+	// InitFbo allows you to override the implementation of the virtual method init_fbo.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	InitFbo func(Instance) bool
+	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- incaps *gst.Caps 
+	// 	- outcaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetCaps func(Instance, *gst.Caps, *gst.Caps) bool
+	// TransformInternalCaps allows you to override the implementation of the virtual method transform_internal_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 	- filterCaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	TransformInternalCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
+}
+
+// UnsafeApplyGLFilterOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, overrides GLFilterOverrides[Instance]) {
+	UnsafeApplyGLBaseFilterOverrides(gclass, overrides.GLBaseFilterOverrides)
+
+	pclass := (*C.GstGLFilterClass)(gclass)
+
+	if overrides.Filter != nil {
+		pclass.filter = (*[0]byte)(C._gotk4_gstgl1_GLFilter_filter)
+	}
+
+	if overrides.FilterTexture != nil {
+		pclass.filter_texture = (*[0]byte)(C._gotk4_gstgl1_GLFilter_filter_texture)
+	}
+
+	if overrides.InitFbo != nil {
+		pclass.init_fbo = (*[0]byte)(C._gotk4_gstgl1_GLFilter_init_fbo)
+	}
+
+	if overrides.SetCaps != nil {
+		pclass.set_caps = (*[0]byte)(C._gotk4_gstgl1_GLFilter_set_caps)
+	}
+
+	if overrides.TransformInternalCaps != nil {
+		pclass.transform_internal_caps = (*[0]byte)(C._gotk4_gstgl1_GLFilter_transform_internal_caps)
+	}
+}
+
 // GLFramebufferInstance is the instance type used by all types extending GstGLFramebuffer. It is used internally by the bindings. Users should use the interface [GLFramebuffer] instead.
 type GLFramebufferInstance struct {
 	_ [0]func() // equal guard
@@ -5524,6 +6150,7 @@ type GLFramebuffer interface {
 	// with.
 	Bind()
 	// GetEffectiveDimensions wraps gst_gl_framebuffer_get_effective_dimensions
+	// 
 	// The function returns the following values:
 	// 
 	// 	- width uint: output width 
@@ -5533,6 +6160,7 @@ type GLFramebuffer interface {
 	// @fb.
 	GetEffectiveDimensions() (uint, uint)
 	// GetID wraps gst_gl_framebuffer_get_id
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -5683,6 +6311,7 @@ func (fb *GLFramebufferInstance) Bind() {
 }
 
 // GetEffectiveDimensions wraps gst_gl_framebuffer_get_effective_dimensions
+// 
 // The function returns the following values:
 // 
 // 	- width uint: output width 
@@ -5710,6 +6339,7 @@ func (fb *GLFramebufferInstance) GetEffectiveDimensions() (uint, uint) {
 }
 
 // GetID wraps gst_gl_framebuffer_get_id
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -5727,6 +6357,20 @@ func (fb *GLFramebufferInstance) GetID() uint {
 	goret = uint(cret)
 
 	return goret
+}
+
+// GLFramebufferOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLFramebufferOverrides[Instance GLFramebuffer] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyGLFramebufferOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLFramebufferOverrides[Instance GLFramebuffer](gclass unsafe.Pointer, overrides GLFramebufferOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
 // GLMemoryAllocatorInstance is the instance type used by all types extending GstGLMemoryAllocator. It is used internally by the bindings. Users should use the interface [GLMemoryAllocator] instead.
@@ -5812,6 +6456,20 @@ func GLMemoryAllocatorGetDefault(_context GLContext) GLMemoryAllocator {
 	return goret
 }
 
+// GLMemoryAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLMemoryAllocatorOverrides[Instance GLMemoryAllocator] struct {
+	// GLBaseMemoryAllocatorOverrides allows you to override virtual methods from the parent class GLBaseMemoryAllocator
+	GLBaseMemoryAllocatorOverrides[Instance]
+
+}
+
+// UnsafeApplyGLMemoryAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLMemoryAllocatorOverrides[Instance GLMemoryAllocator](gclass unsafe.Pointer, overrides GLMemoryAllocatorOverrides[Instance]) {
+	UnsafeApplyGLBaseMemoryAllocatorOverrides(gclass, overrides.GLBaseMemoryAllocatorOverrides)
+}
+
 // GLMemoryPBOAllocatorInstance is the instance type used by all types extending GstGLMemoryPBOAllocator. It is used internally by the bindings. Users should use the interface [GLMemoryPBOAllocator] instead.
 type GLMemoryPBOAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -5872,6 +6530,20 @@ func UnsafeGLMemoryPBOAllocatorToGlibFull(c GLMemoryPBOAllocator) unsafe.Pointer
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// GLMemoryPBOAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLMemoryPBOAllocatorOverrides[Instance GLMemoryPBOAllocator] struct {
+	// GLMemoryAllocatorOverrides allows you to override virtual methods from the parent class GLMemoryAllocator
+	GLMemoryAllocatorOverrides[Instance]
+
+}
+
+// UnsafeApplyGLMemoryPBOAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLMemoryPBOAllocatorOverrides[Instance GLMemoryPBOAllocator](gclass unsafe.Pointer, overrides GLMemoryPBOAllocatorOverrides[Instance]) {
+	UnsafeApplyGLMemoryAllocatorOverrides(gclass, overrides.GLMemoryAllocatorOverrides)
+}
+
 // GLMixerInstance is the instance type used by all types extending GstGLMixer. It is used internally by the bindings. Users should use the interface [GLMixer] instead.
 type GLMixerInstance struct {
 	_ [0]func() // equal guard
@@ -5888,6 +6560,7 @@ type GLMixer interface {
 	upcastToGstGLMixer() *GLMixerInstance
 
 	// GetFramebuffer wraps gst_gl_mixer_get_framebuffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLFramebuffer 
@@ -5955,6 +6628,7 @@ func UnsafeGLMixerToGlibFull(c GLMixer) unsafe.Pointer {
 }
 
 // GetFramebuffer wraps gst_gl_mixer_get_framebuffer
+// 
 // The function returns the following values:
 // 
 // 	- goret GLFramebuffer 
@@ -6006,6 +6680,48 @@ func (mix *GLMixerInstance) ProcessTextures(outbuf *gst.Buffer) bool {
 	}
 
 	return goret
+}
+
+// GLMixerOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLMixerOverrides[Instance GLMixer] struct {
+	// GLBaseMixerOverrides allows you to override virtual methods from the parent class GLBaseMixer
+	GLBaseMixerOverrides[Instance]
+
+	// ProcessBuffers allows you to override the implementation of the virtual method process_buffers.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ProcessBuffers func(Instance, *gst.Buffer) bool
+	// ProcessTextures allows you to override the implementation of the virtual method process_textures.
+	// The function takes the following parameters:
+	// 
+	// 	- outTex *GLMemory 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ProcessTextures func(Instance, *GLMemory) bool
+}
+
+// UnsafeApplyGLMixerOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overrides GLMixerOverrides[Instance]) {
+	UnsafeApplyGLBaseMixerOverrides(gclass, overrides.GLBaseMixerOverrides)
+
+	pclass := (*C.GstGLMixerClass)(gclass)
+
+	if overrides.ProcessBuffers != nil {
+		pclass.process_buffers = (*[0]byte)(C._gotk4_gstgl1_GLMixer_process_buffers)
+	}
+
+	if overrides.ProcessTextures != nil {
+		pclass.process_textures = (*[0]byte)(C._gotk4_gstgl1_GLMixer_process_textures)
+	}
 }
 
 // GLMixerPadInstance is the instance type used by all types extending GstGLMixerPad. It is used internally by the bindings. Users should use the interface [GLMixerPad] instead.
@@ -6066,6 +6782,20 @@ func UnsafeGLMixerPadToGlibNone(c GLMixerPad) unsafe.Pointer {
 // UnsafeGLMixerPadToGlibFull is used to convert the instance to it's C value GstGLMixerPad, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeGLMixerPadToGlibFull(c GLMixerPad) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
+}
+
+// GLMixerPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLMixerPadOverrides[Instance GLMixerPad] struct {
+	// GLBaseMixerPadOverrides allows you to override virtual methods from the parent class GLBaseMixerPad
+	GLBaseMixerPadOverrides[Instance]
+
+}
+
+// UnsafeApplyGLMixerPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLMixerPadOverrides[Instance GLMixerPad](gclass unsafe.Pointer, overrides GLMixerPadOverrides[Instance]) {
+	UnsafeApplyGLBaseMixerPadOverrides(gclass, overrides.GLBaseMixerPadOverrides)
 }
 
 // GLOverlayCompositorInstance is the instance type used by all types extending GstGLOverlayCompositor. It is used internally by the bindings. Users should use the interface [GLOverlayCompositor] instead.
@@ -6220,6 +6950,20 @@ func (compositor *GLOverlayCompositorInstance) UploadOverlays(buf *gst.Buffer) {
 	runtime.KeepAlive(buf)
 }
 
+// GLOverlayCompositorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLOverlayCompositorOverrides[Instance GLOverlayCompositor] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyGLOverlayCompositorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLOverlayCompositorOverrides[Instance GLOverlayCompositor](gclass unsafe.Pointer, overrides GLOverlayCompositorOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // GLRenderbufferAllocatorInstance is the instance type used by all types extending GstGLRenderbufferAllocator. It is used internally by the bindings. Users should use the interface [GLRenderbufferAllocator] instead.
 type GLRenderbufferAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -6278,6 +7022,20 @@ func UnsafeGLRenderbufferAllocatorToGlibFull(c GLRenderbufferAllocator) unsafe.P
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// GLRenderbufferAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLRenderbufferAllocatorOverrides[Instance GLRenderbufferAllocator] struct {
+	// GLBaseMemoryAllocatorOverrides allows you to override virtual methods from the parent class GLBaseMemoryAllocator
+	GLBaseMemoryAllocatorOverrides[Instance]
+
+}
+
+// UnsafeApplyGLRenderbufferAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLRenderbufferAllocatorOverrides[Instance GLRenderbufferAllocator](gclass unsafe.Pointer, overrides GLRenderbufferAllocatorOverrides[Instance]) {
+	UnsafeApplyGLBaseMemoryAllocatorOverrides(gclass, overrides.GLBaseMemoryAllocatorOverrides)
+}
+
 // GLSLStageInstance is the instance type used by all types extending GstGLSLStage. It is used internally by the bindings. Users should use the interface [GLSLStage] instead.
 type GLSLStageInstance struct {
 	_ [0]func() // equal guard
@@ -6294,27 +7052,32 @@ type GLSLStage interface {
 	upcastToGstGLSLStage() *GLSLStageInstance
 
 	// Compile wraps gst_glsl_stage_compile
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	// 	- _goerr error (nullable): an error 
 	Compile() (bool, error)
 	// GetHandle wraps gst_glsl_stage_get_handle
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetHandle() uint
 	// GetProfile wraps gst_glsl_stage_get_profile
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLSLProfile 
 	GetProfile() GLSLProfile
 	// GetShaderType wraps gst_glsl_stage_get_shader_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetShaderType() uint
 	// GetVersion wraps gst_glsl_stage_get_version
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLSLVersion 
@@ -6541,6 +7304,7 @@ func NewGLSLStageWithStrings(_context GLContext, typ uint, version GLSLVersion, 
 }
 
 // Compile wraps gst_glsl_stage_compile
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6569,6 +7333,7 @@ func (stage *GLSLStageInstance) Compile() (bool, error) {
 }
 
 // GetHandle wraps gst_glsl_stage_get_handle
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -6589,6 +7354,7 @@ func (stage *GLSLStageInstance) GetHandle() uint {
 }
 
 // GetProfile wraps gst_glsl_stage_get_profile
+// 
 // The function returns the following values:
 // 
 // 	- goret GLSLProfile 
@@ -6609,6 +7375,7 @@ func (stage *GLSLStageInstance) GetProfile() GLSLProfile {
 }
 
 // GetShaderType wraps gst_glsl_stage_get_shader_type
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -6629,6 +7396,7 @@ func (stage *GLSLStageInstance) GetShaderType() uint {
 }
 
 // GetVersion wraps gst_glsl_stage_get_version
+// 
 // The function returns the following values:
 // 
 // 	- goret GLSLVersion 
@@ -6690,6 +7458,20 @@ func (stage *GLSLStageInstance) SetStrings(version GLSLVersion, profile GLSLProf
 	}
 
 	return goret
+}
+
+// GLSLStageOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLSLStageOverrides[Instance GLSLStage] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyGLSLStageOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLSLStageOverrides[Instance GLSLStage](gclass unsafe.Pointer, overrides GLSLStageOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
 // GLShaderInstance is the instance type used by all types extending GstGLShader. It is used internally by the bindings. Users should use the interface [GLShader] instead.
@@ -6803,11 +7585,13 @@ type GLShader interface {
 	// 	- goret int 
 	GetAttributeLocation(string) int
 	// GetProgramHandle wraps gst_gl_shader_get_program_handle
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetProgramHandle() int
 	// IsLinked wraps gst_gl_shader_is_linked
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -6815,6 +7599,7 @@ type GLShader interface {
 	// Note: must be called in the GL thread
 	IsLinked() bool
 	// Link wraps gst_gl_shader_link
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7540,6 +8325,7 @@ func (shader *GLShaderInstance) GetAttributeLocation(name string) int {
 }
 
 // GetProgramHandle wraps gst_gl_shader_get_program_handle
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -7560,6 +8346,7 @@ func (shader *GLShaderInstance) GetProgramHandle() int {
 }
 
 // IsLinked wraps gst_gl_shader_is_linked
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7584,6 +8371,7 @@ func (shader *GLShaderInstance) IsLinked() bool {
 }
 
 // Link wraps gst_gl_shader_link
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -8445,6 +9233,20 @@ func (shader *GLShaderInstance) Use() {
 	runtime.KeepAlive(shader)
 }
 
+// GLShaderOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLShaderOverrides[Instance GLShader] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyGLShaderOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLShaderOverrides[Instance GLShader](gclass unsafe.Pointer, overrides GLShaderOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // GLUploadInstance is the instance type used by all types extending GstGLUpload. It is used internally by the bindings. Users should use the interface [GLUpload] instead.
 type GLUploadInstance struct {
 	_ [0]func() // equal guard
@@ -8477,6 +9279,7 @@ type GLUpload interface {
 	// Fixate the @othercaps based on the information of the @caps.
 	FixateCaps(gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 	// GetCaps wraps gst_gl_upload_get_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- inCaps *gst.Caps: the input #GstCaps 
@@ -8603,6 +9406,7 @@ func NewGLUpload(_context GLContext) GLUpload {
 }
 
 // GLUploadGetInputTemplateCaps wraps gst_gl_upload_get_input_template_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps 
@@ -8657,6 +9461,7 @@ func (upload *GLUploadInstance) FixateCaps(direction gst.PadDirection, caps *gst
 }
 
 // GetCaps wraps gst_gl_upload_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- inCaps *gst.Caps: the input #GstCaps 
@@ -8833,6 +9638,20 @@ func (upload *GLUploadInstance) TransformCaps(_context GLContext, direction gst.
 	return goret
 }
 
+// GLUploadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLUploadOverrides[Instance GLUpload] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyGLUploadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLUploadOverrides[Instance GLUpload](gclass unsafe.Pointer, overrides GLUploadOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // GLViewConvertInstance is the instance type used by all types extending GstGLViewConvert. It is used internally by the bindings. Users should use the interface [GLViewConvert] instead.
 type GLViewConvertInstance struct {
 	_ [0]func() // equal guard
@@ -8863,6 +9682,7 @@ type GLViewConvert interface {
 	// Provides an implementation of #GstBaseTransformClass.fixate_caps()
 	FixateCaps(gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 	// GetOutput wraps gst_gl_view_convert_get_output
+	// 
 	// The function returns the following values:
 	// 
 	// 	- outbufPtr *gst.Buffer: a #GstBuffer 
@@ -8977,6 +9797,7 @@ func UnsafeGLViewConvertToGlibFull(c GLViewConvert) unsafe.Pointer {
 }
 
 // NewGLViewConvert wraps gst_gl_view_convert_new
+// 
 // The function returns the following values:
 // 
 // 	- goret GLViewConvert 
@@ -9031,6 +9852,7 @@ func (viewconvert *GLViewConvertInstance) FixateCaps(direction gst.PadDirection,
 }
 
 // GetOutput wraps gst_gl_view_convert_get_output
+// 
 // The function returns the following values:
 // 
 // 	- outbufPtr *gst.Buffer: a #GstBuffer 
@@ -9231,6 +10053,20 @@ func (viewconvert *GLViewConvertInstance) TransformCaps(direction gst.PadDirecti
 	return goret
 }
 
+// GLViewConvertOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLViewConvertOverrides[Instance GLViewConvert] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyGLViewConvertOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLViewConvertOverrides[Instance GLViewConvert](gclass unsafe.Pointer, overrides GLViewConvertOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // GLWindowInstance is the instance type used by all types extending GstGLWindow. It is used internally by the bindings. Users should use the interface [GLWindow] instead.
 type GLWindowInstance struct {
 	_ [0]func() // equal guard
@@ -9248,6 +10084,7 @@ type GLWindow interface {
 	upcastToGstGLWindow() *GLWindowInstance
 
 	// ControlsViewport wraps gst_gl_window_controls_viewport
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -9259,11 +10096,13 @@ type GLWindow interface {
 	// Redraw the window contents.  Implementations should invoke the draw callback.
 	Draw()
 	// GetContext wraps gst_gl_window_get_context
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLContext 
 	GetContext() GLContext
 	// GetSurfaceDimensions wraps gst_gl_window_get_surface_dimensions
+	// 
 	// The function returns the following values:
 	// 
 	// 	- width uint: resulting surface width 
@@ -9282,6 +10121,7 @@ type GLWindow interface {
 	// from the @window.
 	HandleEvents(bool)
 	// HasOutputSurface wraps gst_gl_window_has_output_surface
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -9452,6 +10292,7 @@ func NewGLWindow(display GLDisplay) GLWindow {
 }
 
 // ControlsViewport wraps gst_gl_window_controls_viewport
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -9488,6 +10329,7 @@ func (window *GLWindowInstance) Draw() {
 }
 
 // GetContext wraps gst_gl_window_get_context
+// 
 // The function returns the following values:
 // 
 // 	- goret GLContext 
@@ -9508,6 +10350,7 @@ func (window *GLWindowInstance) GetContext() GLContext {
 }
 
 // GetSurfaceDimensions wraps gst_gl_window_get_surface_dimensions
+// 
 // The function returns the following values:
 // 
 // 	- width uint: resulting surface width 
@@ -9557,6 +10400,7 @@ func (window *GLWindowInstance) HandleEvents(handleEvents bool) {
 }
 
 // HasOutputSurface wraps gst_gl_window_has_output_surface
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -9811,18 +10655,21 @@ func (window *GLWindowInstance) Show() {
 func (o *GLWindowInstance) ConnectKeyEvent(fn func(GLWindow, string, string)) gobject.SignalHandle {
 	return o.Connect("key-event", fn)
 }
+
 // ConnectMouseEvent connects the provided callback to the "mouse-event" signal
 //
 // Will be emitted when a mouse event is received by the GstGLwindow.
 func (o *GLWindowInstance) ConnectMouseEvent(fn func(GLWindow, string, int, float64, float64)) gobject.SignalHandle {
 	return o.Connect("mouse-event", fn)
 }
+
 // ConnectScrollEvent connects the provided callback to the "scroll-event" signal
 //
 // Will be emitted when a mouse scroll event is received by the GstGLwindow.
 func (o *GLWindowInstance) ConnectScrollEvent(fn func(GLWindow, float64, float64, float64, float64)) gobject.SignalHandle {
 	return o.Connect("scroll-event", fn)
 }
+
 // ConnectWindowHandleChanged connects the provided callback to the "window-handle-changed" signal
 //
 // Will be emitted when the window handle has been set into the native
@@ -9832,6 +10679,122 @@ func (o *GLWindowInstance) ConnectScrollEvent(fn func(GLWindow, float64, float64
 func (o *GLWindowInstance) ConnectWindowHandleChanged(fn func(GLWindow)) gobject.SignalHandle {
 	return o.Connect("window-handle-changed", fn)
 }
+
+// GLWindowOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GLWindowOverrides[Instance GLWindow] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+	// Close allows you to override the implementation of the virtual method close.
+	Close func(Instance)
+	// ControlsViewport allows you to override the implementation of the virtual method controls_viewport.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ControlsViewport func(Instance) bool
+	// Draw allows you to override the implementation of the virtual method draw.
+	Draw func(Instance)
+	// HandleEvents allows you to override the implementation of the virtual method handle_events.
+	// The function takes the following parameters:
+	// 
+	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+	HandleEvents func(Instance, bool)
+	// HasOutputSurface allows you to override the implementation of the virtual method has_output_surface.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	HasOutputSurface func(Instance) bool
+	// Open allows you to override the implementation of the virtual method open.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	// 	- _goerr error (nullable): an error 
+	Open func(Instance) (bool, error)
+	// QueueResize allows you to override the implementation of the virtual method queue_resize.
+	QueueResize func(Instance)
+	// Quit allows you to override the implementation of the virtual method quit.
+	Quit func(Instance)
+	// Run allows you to override the implementation of the virtual method run.
+	Run func(Instance)
+	// SetPreferredSize allows you to override the implementation of the virtual method set_preferred_size.
+	// The function takes the following parameters:
+	// 
+	// 	- width int: new preferred width 
+	// 	- height int: new preferred height 
+	SetPreferredSize func(Instance, int, int)
+	// SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
+	// The function takes the following parameters:
+	// 
+	// 	- x int: x position 
+	// 	- y int: y position 
+	// 	- width int: width 
+	// 	- height int: height 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetRenderRectangle func(Instance, int, int, int, int) bool
+	// Show allows you to override the implementation of the virtual method show.
+	Show func(Instance)
+}
+
+// UnsafeApplyGLWindowOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, overrides GLWindowOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstGLWindowClass)(gclass)
+
+	if overrides.Close != nil {
+		pclass.close = (*[0]byte)(C._gotk4_gstgl1_GLWindow_close)
+	}
+
+	if overrides.ControlsViewport != nil {
+		pclass.controls_viewport = (*[0]byte)(C._gotk4_gstgl1_GLWindow_controls_viewport)
+	}
+
+	if overrides.Draw != nil {
+		pclass.draw = (*[0]byte)(C._gotk4_gstgl1_GLWindow_draw)
+	}
+
+	if overrides.HandleEvents != nil {
+		pclass.handle_events = (*[0]byte)(C._gotk4_gstgl1_GLWindow_handle_events)
+	}
+
+	if overrides.HasOutputSurface != nil {
+		pclass.has_output_surface = (*[0]byte)(C._gotk4_gstgl1_GLWindow_has_output_surface)
+	}
+
+	if overrides.Open != nil {
+		pclass.open = (*[0]byte)(C._gotk4_gstgl1_GLWindow_open)
+	}
+
+	if overrides.QueueResize != nil {
+		pclass.queue_resize = (*[0]byte)(C._gotk4_gstgl1_GLWindow_queue_resize)
+	}
+
+	if overrides.Quit != nil {
+		pclass.quit = (*[0]byte)(C._gotk4_gstgl1_GLWindow_quit)
+	}
+
+	if overrides.Run != nil {
+		pclass.run = (*[0]byte)(C._gotk4_gstgl1_GLWindow_run)
+	}
+
+	if overrides.SetPreferredSize != nil {
+		pclass.set_preferred_size = (*[0]byte)(C._gotk4_gstgl1_GLWindow_set_preferred_size)
+	}
+
+	if overrides.SetRenderRectangle != nil {
+		pclass.set_render_rectangle = (*[0]byte)(C._gotk4_gstgl1_GLWindow_set_render_rectangle)
+	}
+
+	if overrides.Show != nil {
+		pclass.show = (*[0]byte)(C._gotk4_gstgl1_GLWindow_show)
+	}
+}
+
 // GLAllocationParams wraps GstGLAllocationParams
 type GLAllocationParams struct {
 	*glAllocationParams
@@ -9859,7 +10822,7 @@ func UnsafeGLAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLAllocationParam
 	return &GLAllocationParams{&glAllocationParams{(*C.GstGLAllocationParams)(p)}}
 }
 
-// UnsafeGLAllocationParamsFromGlibNone is used to convert raw C.GstGLAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLAllocationParamsFromGlibNone is used to convert raw C.GstGLAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLAllocationParamsFromGlibBorrow(p)
@@ -9872,7 +10835,7 @@ func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams 
 	return wrapped
 }
 
-// UnsafeGLAllocationParamsFromGlibFull is used to convert raw C.GstGLAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLAllocationParamsFromGlibFull is used to convert raw C.GstGLAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLAllocationParamsFromGlibFull(p unsafe.Pointer) *GLAllocationParams {
 	wrapped := UnsafeGLAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -9904,7 +10867,9 @@ func UnsafeGLAllocationParamsToGlibFull(g *GLAllocationParams) unsafe.Pointer {
 	g.native = nil // GLAllocationParams is invalid from here on
 	return _p
 }
+
 // Copy wraps gst_gl_allocation_params_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *GLAllocationParams 
@@ -9975,7 +10940,7 @@ func UnsafeGLAsyncDebugFromGlibBorrow(p unsafe.Pointer) *GLAsyncDebug {
 	return &GLAsyncDebug{&glAsyncDebug{(*C.GstGLAsyncDebug)(p)}}
 }
 
-// UnsafeGLAsyncDebugFromGlibNone is used to convert raw C.GstGLAsyncDebug pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLAsyncDebugFromGlibNone is used to convert raw C.GstGLAsyncDebug pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLAsyncDebugFromGlibBorrow(p)
@@ -9988,7 +10953,7 @@ func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
 	return wrapped
 }
 
-// UnsafeGLAsyncDebugFromGlibFull is used to convert raw C.GstGLAsyncDebug pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLAsyncDebugFromGlibFull is used to convert raw C.GstGLAsyncDebug pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLAsyncDebugFromGlibFull(p unsafe.Pointer) *GLAsyncDebug {
 	wrapped := UnsafeGLAsyncDebugFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10020,6 +10985,7 @@ func UnsafeGLAsyncDebugToGlibFull(g *GLAsyncDebug) unsafe.Pointer {
 	g.native = nil // GLAsyncDebug is invalid from here on
 	return _p
 }
+
 // Freeze wraps gst_gl_async_debug_freeze
 //
 // freeze the debug output.  While frozen, any call to
@@ -10088,6 +11054,8 @@ func (ad *GLAsyncDebug) Unset() {
 // GLBaseFilterClass wraps GstGLBaseFilterClass
 //
 // The base class for GStreamer GL Filter.
+// 
+// GLBaseFilterClass is the type struct for [GLBaseFilter]
 type GLBaseFilterClass struct {
 	*glBaseFilterClass
 }
@@ -10102,31 +11070,6 @@ func UnsafeGLBaseFilterClassFromGlibBorrow(p unsafe.Pointer) *GLBaseFilterClass 
 	return &GLBaseFilterClass{&glBaseFilterClass{(*C.GstGLBaseFilterClass)(p)}}
 }
 
-// UnsafeGLBaseFilterClassFromGlibNone is used to convert raw C.GstGLBaseFilterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseFilterClassFromGlibNone(p unsafe.Pointer) *GLBaseFilterClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLBaseFilterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseFilterClass,
-		func (intern *glBaseFilterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLBaseFilterClassFromGlibFull is used to convert raw C.GstGLBaseFilterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseFilterClassFromGlibFull(p unsafe.Pointer) *GLBaseFilterClass {
-	wrapped := UnsafeGLBaseFilterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseFilterClass,
-		func (intern *glBaseFilterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLBaseFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLBaseFilterClass] is expected to work anymore.
@@ -10139,14 +11082,15 @@ func UnsafeGLBaseFilterClassToGlibNone(g *GLBaseFilterClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLBaseFilterClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLBaseFilterClassToGlibFull(g *GLBaseFilterClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBaseFilterClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLBaseFilterClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLBaseFilterClass) ParentClass() *gstbase.BaseTransformClass {
+	parent := gstbase.UnsafeBaseTransformClassFromGlibBorrow(UnsafeGLBaseFilterClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLBaseFilterClass) {}, g)
+	return parent
 }
+
 // GLBaseMemory wraps GstGLBaseMemory
 //
 // GstGLBaseMemory is a #GstMemory subclass providing the basis of support
@@ -10179,7 +11123,7 @@ func UnsafeGLBaseMemoryFromGlibBorrow(p unsafe.Pointer) *GLBaseMemory {
 	return &GLBaseMemory{&glBaseMemory{(*C.GstGLBaseMemory)(p)}}
 }
 
-// UnsafeGLBaseMemoryFromGlibNone is used to convert raw C.GstGLBaseMemory pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLBaseMemoryFromGlibNone is used to convert raw C.GstGLBaseMemory pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBaseMemoryFromGlibBorrow(p)
@@ -10192,7 +11136,7 @@ func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
 	return wrapped
 }
 
-// UnsafeGLBaseMemoryFromGlibFull is used to convert raw C.GstGLBaseMemory pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLBaseMemoryFromGlibFull is used to convert raw C.GstGLBaseMemory pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLBaseMemoryFromGlibFull(p unsafe.Pointer) *GLBaseMemory {
 	wrapped := UnsafeGLBaseMemoryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10224,6 +11168,7 @@ func UnsafeGLBaseMemoryToGlibFull(g *GLBaseMemory) unsafe.Pointer {
 	g.native = nil // GLBaseMemory is invalid from here on
 	return _p
 }
+
 // GLBaseMemoryAlloc wraps gst_gl_base_memory_alloc
 // 
 // The function takes the following parameters:
@@ -10265,6 +11210,7 @@ func GLBaseMemoryInitOnce() {
 }
 
 // AllocData wraps gst_gl_base_memory_alloc_data
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -10329,6 +11275,8 @@ func (src *GLBaseMemory) Memcpy(dest *GLBaseMemory, offset int, size int) bool {
 }
 
 // GLBaseMemoryAllocatorClass wraps GstGLBaseMemoryAllocatorClass
+// 
+// GLBaseMemoryAllocatorClass is the type struct for [GLBaseMemoryAllocator]
 type GLBaseMemoryAllocatorClass struct {
 	*glBaseMemoryAllocatorClass
 }
@@ -10343,31 +11291,6 @@ func UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMem
 	return &GLBaseMemoryAllocatorClass{&glBaseMemoryAllocatorClass{(*C.GstGLBaseMemoryAllocatorClass)(p)}}
 }
 
-// UnsafeGLBaseMemoryAllocatorClassFromGlibNone is used to convert raw C.GstGLBaseMemoryAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseMemoryAllocatorClassFromGlibNone(p unsafe.Pointer) *GLBaseMemoryAllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseMemoryAllocatorClass,
-		func (intern *glBaseMemoryAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLBaseMemoryAllocatorClassFromGlibFull is used to convert raw C.GstGLBaseMemoryAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseMemoryAllocatorClassFromGlibFull(p unsafe.Pointer) *GLBaseMemoryAllocatorClass {
-	wrapped := UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseMemoryAllocatorClass,
-		func (intern *glBaseMemoryAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLBaseMemoryAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLBaseMemoryAllocatorClass] is expected to work anymore.
@@ -10380,15 +11303,18 @@ func UnsafeGLBaseMemoryAllocatorClassToGlibNone(g *GLBaseMemoryAllocatorClass) u
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLBaseMemoryAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLBaseMemoryAllocatorClassToGlibFull(g *GLBaseMemoryAllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBaseMemoryAllocatorClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLBaseMemoryAllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLBaseMemoryAllocatorClass) ParentClass() *gst.AllocatorClass {
+	parent := gst.UnsafeAllocatorClassFromGlibBorrow(UnsafeGLBaseMemoryAllocatorClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLBaseMemoryAllocatorClass) {}, g)
+	return parent
 }
+
 // GLBaseMixerClass wraps GstGLBaseMixerClass
+// 
+// GLBaseMixerClass is the type struct for [GLBaseMixer]
 type GLBaseMixerClass struct {
 	*glBaseMixerClass
 }
@@ -10403,31 +11329,6 @@ func UnsafeGLBaseMixerClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMixerClass {
 	return &GLBaseMixerClass{&glBaseMixerClass{(*C.GstGLBaseMixerClass)(p)}}
 }
 
-// UnsafeGLBaseMixerClassFromGlibNone is used to convert raw C.GstGLBaseMixerClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseMixerClassFromGlibNone(p unsafe.Pointer) *GLBaseMixerClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLBaseMixerClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseMixerClass,
-		func (intern *glBaseMixerClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLBaseMixerClassFromGlibFull is used to convert raw C.GstGLBaseMixerClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseMixerClassFromGlibFull(p unsafe.Pointer) *GLBaseMixerClass {
-	wrapped := UnsafeGLBaseMixerClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseMixerClass,
-		func (intern *glBaseMixerClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLBaseMixerClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLBaseMixerClass] is expected to work anymore.
@@ -10440,15 +11341,18 @@ func UnsafeGLBaseMixerClassToGlibNone(g *GLBaseMixerClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLBaseMixerClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLBaseMixerClassToGlibFull(g *GLBaseMixerClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBaseMixerClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLBaseMixerClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLBaseMixerClass) ParentClass() *gstvideo.VideoAggregatorClass {
+	parent := gstvideo.UnsafeVideoAggregatorClassFromGlibBorrow(UnsafeGLBaseMixerClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLBaseMixerClass) {}, g)
+	return parent
 }
+
 // GLBaseMixerPadClass wraps GstGLBaseMixerPadClass
+// 
+// GLBaseMixerPadClass is the type struct for [GLBaseMixerPad]
 type GLBaseMixerPadClass struct {
 	*glBaseMixerPadClass
 }
@@ -10463,31 +11367,6 @@ func UnsafeGLBaseMixerPadClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMixerPadCl
 	return &GLBaseMixerPadClass{&glBaseMixerPadClass{(*C.GstGLBaseMixerPadClass)(p)}}
 }
 
-// UnsafeGLBaseMixerPadClassFromGlibNone is used to convert raw C.GstGLBaseMixerPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseMixerPadClassFromGlibNone(p unsafe.Pointer) *GLBaseMixerPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLBaseMixerPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseMixerPadClass,
-		func (intern *glBaseMixerPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLBaseMixerPadClassFromGlibFull is used to convert raw C.GstGLBaseMixerPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseMixerPadClassFromGlibFull(p unsafe.Pointer) *GLBaseMixerPadClass {
-	wrapped := UnsafeGLBaseMixerPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseMixerPadClass,
-		func (intern *glBaseMixerPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLBaseMixerPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLBaseMixerPadClass] is expected to work anymore.
@@ -10500,17 +11379,20 @@ func UnsafeGLBaseMixerPadClassToGlibNone(g *GLBaseMixerPadClass) unsafe.Pointer 
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLBaseMixerPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLBaseMixerPadClassToGlibFull(g *GLBaseMixerPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBaseMixerPadClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLBaseMixerPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLBaseMixerPadClass) ParentClass() *gstvideo.VideoAggregatorPadClass {
+	parent := gstvideo.UnsafeVideoAggregatorPadClassFromGlibBorrow(UnsafeGLBaseMixerPadClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLBaseMixerPadClass) {}, g)
+	return parent
 }
+
 // GLBaseSrcClass wraps GstGLBaseSrcClass
 //
 // The base class for GStreamer GL Video sources.
+// 
+// GLBaseSrcClass is the type struct for [GLBaseSrc]
 type GLBaseSrcClass struct {
 	*glBaseSrcClass
 }
@@ -10525,31 +11407,6 @@ func UnsafeGLBaseSrcClassFromGlibBorrow(p unsafe.Pointer) *GLBaseSrcClass {
 	return &GLBaseSrcClass{&glBaseSrcClass{(*C.GstGLBaseSrcClass)(p)}}
 }
 
-// UnsafeGLBaseSrcClassFromGlibNone is used to convert raw C.GstGLBaseSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseSrcClassFromGlibNone(p unsafe.Pointer) *GLBaseSrcClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLBaseSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseSrcClass,
-		func (intern *glBaseSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLBaseSrcClassFromGlibFull is used to convert raw C.GstGLBaseSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBaseSrcClassFromGlibFull(p unsafe.Pointer) *GLBaseSrcClass {
-	wrapped := UnsafeGLBaseSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBaseSrcClass,
-		func (intern *glBaseSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLBaseSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLBaseSrcClass] is expected to work anymore.
@@ -10562,14 +11419,15 @@ func UnsafeGLBaseSrcClassToGlibNone(g *GLBaseSrcClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLBaseSrcClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLBaseSrcClassToGlibFull(g *GLBaseSrcClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBaseSrcClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLBaseSrcClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLBaseSrcClass) ParentClass() *gstbase.PushSrcClass {
+	parent := gstbase.UnsafePushSrcClassFromGlibBorrow(UnsafeGLBaseSrcClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLBaseSrcClass) {}, g)
+	return parent
 }
+
 // GLBuffer wraps GstGLBuffer
 //
 // GstGLBuffer is a #GstMemory subclass providing support for the mapping of
@@ -10602,7 +11460,7 @@ func UnsafeGLBufferFromGlibBorrow(p unsafe.Pointer) *GLBuffer {
 	return &GLBuffer{&glBuffer{(*C.GstGLBuffer)(p)}}
 }
 
-// UnsafeGLBufferFromGlibNone is used to convert raw C.GstGLBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLBufferFromGlibNone is used to convert raw C.GstGLBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBufferFromGlibBorrow(p)
@@ -10615,7 +11473,7 @@ func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
 	return wrapped
 }
 
-// UnsafeGLBufferFromGlibFull is used to convert raw C.GstGLBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLBufferFromGlibFull is used to convert raw C.GstGLBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLBufferFromGlibFull(p unsafe.Pointer) *GLBuffer {
 	wrapped := UnsafeGLBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10647,6 +11505,7 @@ func UnsafeGLBufferToGlibFull(g *GLBuffer) unsafe.Pointer {
 	g.native = nil // GLBuffer is invalid from here on
 	return _p
 }
+
 // GLBufferInitOnce wraps gst_gl_buffer_init_once
 //
 // Initializes the GL Buffer allocator. It is safe to call this function
@@ -10683,7 +11542,7 @@ func UnsafeGLBufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLBufferAll
 	return &GLBufferAllocationParams{&glBufferAllocationParams{(*C.GstGLBufferAllocationParams)(p)}}
 }
 
-// UnsafeGLBufferAllocationParamsFromGlibNone is used to convert raw C.GstGLBufferAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLBufferAllocationParamsFromGlibNone is used to convert raw C.GstGLBufferAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBufferAllocationParamsFromGlibBorrow(p)
@@ -10696,7 +11555,7 @@ func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAlloc
 	return wrapped
 }
 
-// UnsafeGLBufferAllocationParamsFromGlibFull is used to convert raw C.GstGLBufferAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLBufferAllocationParamsFromGlibFull is used to convert raw C.GstGLBufferAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLBufferAllocationParams {
 	wrapped := UnsafeGLBufferAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10728,6 +11587,7 @@ func UnsafeGLBufferAllocationParamsToGlibFull(g *GLBufferAllocationParams) unsaf
 	g.native = nil // GLBufferAllocationParams is invalid from here on
 	return _p
 }
+
 // NewGLBufferAllocationParams wraps gst_gl_buffer_allocation_params_new
 // 
 // The function takes the following parameters:
@@ -10774,6 +11634,8 @@ func NewGLBufferAllocationParams(_context GLContext, allocSize uint, allocParams
 // GLBufferAllocatorClass wraps GstGLBufferAllocatorClass
 //
 // The #GstGLBufferAllocatorClass only contains private data
+// 
+// GLBufferAllocatorClass is the type struct for [GLBufferAllocator]
 type GLBufferAllocatorClass struct {
 	*glBufferAllocatorClass
 }
@@ -10788,31 +11650,6 @@ func UnsafeGLBufferAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLBufferAlloc
 	return &GLBufferAllocatorClass{&glBufferAllocatorClass{(*C.GstGLBufferAllocatorClass)(p)}}
 }
 
-// UnsafeGLBufferAllocatorClassFromGlibNone is used to convert raw C.GstGLBufferAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBufferAllocatorClassFromGlibNone(p unsafe.Pointer) *GLBufferAllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLBufferAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBufferAllocatorClass,
-		func (intern *glBufferAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLBufferAllocatorClassFromGlibFull is used to convert raw C.GstGLBufferAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBufferAllocatorClassFromGlibFull(p unsafe.Pointer) *GLBufferAllocatorClass {
-	wrapped := UnsafeGLBufferAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBufferAllocatorClass,
-		func (intern *glBufferAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLBufferAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLBufferAllocatorClass] is expected to work anymore.
@@ -10825,17 +11662,20 @@ func UnsafeGLBufferAllocatorClassToGlibNone(g *GLBufferAllocatorClass) unsafe.Po
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLBufferAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLBufferAllocatorClassToGlibFull(g *GLBufferAllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBufferAllocatorClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLBufferAllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLBufferAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass {
+	parent := UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow(UnsafeGLBufferAllocatorClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLBufferAllocatorClass) {}, g)
+	return parent
 }
+
 // GLBufferPoolClass wraps GstGLBufferPoolClass
 //
 // The #GstGLBufferPoolClass structure contains only private data
+// 
+// GLBufferPoolClass is the type struct for [GLBufferPool]
 type GLBufferPoolClass struct {
 	*glBufferPoolClass
 }
@@ -10850,31 +11690,6 @@ func UnsafeGLBufferPoolClassFromGlibBorrow(p unsafe.Pointer) *GLBufferPoolClass 
 	return &GLBufferPoolClass{&glBufferPoolClass{(*C.GstGLBufferPoolClass)(p)}}
 }
 
-// UnsafeGLBufferPoolClassFromGlibNone is used to convert raw C.GstGLBufferPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBufferPoolClassFromGlibNone(p unsafe.Pointer) *GLBufferPoolClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLBufferPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBufferPoolClass,
-		func (intern *glBufferPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLBufferPoolClassFromGlibFull is used to convert raw C.GstGLBufferPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLBufferPoolClassFromGlibFull(p unsafe.Pointer) *GLBufferPoolClass {
-	wrapped := UnsafeGLBufferPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glBufferPoolClass,
-		func (intern *glBufferPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLBufferPoolClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLBufferPoolClass] is expected to work anymore.
@@ -10887,17 +11702,20 @@ func UnsafeGLBufferPoolClassToGlibNone(g *GLBufferPoolClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLBufferPoolClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLBufferPoolClassToGlibFull(g *GLBufferPoolClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBufferPoolClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLBufferPoolClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLBufferPoolClass) ParentClass() *gst.BufferPoolClass {
+	parent := gst.UnsafeBufferPoolClassFromGlibBorrow(UnsafeGLBufferPoolClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLBufferPoolClass) {}, g)
+	return parent
 }
+
 // GLColorConvertClass wraps GstGLColorConvertClass
 //
 // The #GstGLColorConvertClass struct only contains private data
+// 
+// GLColorConvertClass is the type struct for [GLColorConvert]
 type GLColorConvertClass struct {
 	*glColorConvertClass
 }
@@ -10912,31 +11730,6 @@ func UnsafeGLColorConvertClassFromGlibBorrow(p unsafe.Pointer) *GLColorConvertCl
 	return &GLColorConvertClass{&glColorConvertClass{(*C.GstGLColorConvertClass)(p)}}
 }
 
-// UnsafeGLColorConvertClassFromGlibNone is used to convert raw C.GstGLColorConvertClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLColorConvertClassFromGlibNone(p unsafe.Pointer) *GLColorConvertClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLColorConvertClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glColorConvertClass,
-		func (intern *glColorConvertClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLColorConvertClassFromGlibFull is used to convert raw C.GstGLColorConvertClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLColorConvertClassFromGlibFull(p unsafe.Pointer) *GLColorConvertClass {
-	wrapped := UnsafeGLColorConvertClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glColorConvertClass,
-		func (intern *glColorConvertClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLColorConvertClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLColorConvertClass] is expected to work anymore.
@@ -10949,15 +11742,18 @@ func UnsafeGLColorConvertClassToGlibNone(g *GLColorConvertClass) unsafe.Pointer 
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLColorConvertClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLColorConvertClassToGlibFull(g *GLColorConvertClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glColorConvertClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLColorConvertClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLColorConvertClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLColorConvertClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLColorConvertClass) {}, g)
+	return parent
 }
+
 // GLContextClass wraps GstGLContextClass
+// 
+// GLContextClass is the type struct for [GLContext]
 type GLContextClass struct {
 	*glContextClass
 }
@@ -10972,31 +11768,6 @@ func UnsafeGLContextClassFromGlibBorrow(p unsafe.Pointer) *GLContextClass {
 	return &GLContextClass{&glContextClass{(*C.GstGLContextClass)(p)}}
 }
 
-// UnsafeGLContextClassFromGlibNone is used to convert raw C.GstGLContextClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLContextClassFromGlibNone(p unsafe.Pointer) *GLContextClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLContextClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glContextClass,
-		func (intern *glContextClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLContextClassFromGlibFull is used to convert raw C.GstGLContextClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLContextClassFromGlibFull(p unsafe.Pointer) *GLContextClass {
-	wrapped := UnsafeGLContextClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glContextClass,
-		func (intern *glContextClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLContextClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLContextClass] is expected to work anymore.
@@ -11009,15 +11780,18 @@ func UnsafeGLContextClassToGlibNone(g *GLContextClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLContextClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLContextClassToGlibFull(g *GLContextClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glContextClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLContextClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLContextClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLContextClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLContextClass) {}, g)
+	return parent
 }
+
 // GLDisplayClass wraps GstGLDisplayClass
+// 
+// GLDisplayClass is the type struct for [GLDisplay]
 type GLDisplayClass struct {
 	*glDisplayClass
 }
@@ -11032,31 +11806,6 @@ func UnsafeGLDisplayClassFromGlibBorrow(p unsafe.Pointer) *GLDisplayClass {
 	return &GLDisplayClass{&glDisplayClass{(*C.GstGLDisplayClass)(p)}}
 }
 
-// UnsafeGLDisplayClassFromGlibNone is used to convert raw C.GstGLDisplayClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLDisplayClassFromGlibNone(p unsafe.Pointer) *GLDisplayClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLDisplayClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glDisplayClass,
-		func (intern *glDisplayClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLDisplayClassFromGlibFull is used to convert raw C.GstGLDisplayClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLDisplayClassFromGlibFull(p unsafe.Pointer) *GLDisplayClass {
-	wrapped := UnsafeGLDisplayClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glDisplayClass,
-		func (intern *glDisplayClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLDisplayClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLDisplayClass] is expected to work anymore.
@@ -11069,15 +11818,18 @@ func UnsafeGLDisplayClassToGlibNone(g *GLDisplayClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLDisplayClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLDisplayClassToGlibFull(g *GLDisplayClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glDisplayClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLDisplayClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLDisplayClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLDisplayClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLDisplayClass) {}, g)
+	return parent
 }
+
 // GLFilterClass wraps GstGLFilterClass
+// 
+// GLFilterClass is the type struct for [GLFilter]
 type GLFilterClass struct {
 	*glFilterClass
 }
@@ -11092,31 +11844,6 @@ func UnsafeGLFilterClassFromGlibBorrow(p unsafe.Pointer) *GLFilterClass {
 	return &GLFilterClass{&glFilterClass{(*C.GstGLFilterClass)(p)}}
 }
 
-// UnsafeGLFilterClassFromGlibNone is used to convert raw C.GstGLFilterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLFilterClassFromGlibNone(p unsafe.Pointer) *GLFilterClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLFilterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glFilterClass,
-		func (intern *glFilterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLFilterClassFromGlibFull is used to convert raw C.GstGLFilterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLFilterClassFromGlibFull(p unsafe.Pointer) *GLFilterClass {
-	wrapped := UnsafeGLFilterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glFilterClass,
-		func (intern *glFilterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLFilterClass] is expected to work anymore.
@@ -11129,17 +11856,20 @@ func UnsafeGLFilterClassToGlibNone(g *GLFilterClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLFilterClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLFilterClassToGlibFull(g *GLFilterClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glFilterClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLFilterClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLFilterClass) ParentClass() *GLBaseFilterClass {
+	parent := UnsafeGLBaseFilterClassFromGlibBorrow(UnsafeGLFilterClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLFilterClass) {}, g)
+	return parent
 }
+
 // GLFramebufferClass wraps GstGLFramebufferClass
 //
 // Opaque #GstGLFramebufferClass struct
+// 
+// GLFramebufferClass is the type struct for [GLFramebuffer]
 type GLFramebufferClass struct {
 	*glFramebufferClass
 }
@@ -11154,31 +11884,6 @@ func UnsafeGLFramebufferClassFromGlibBorrow(p unsafe.Pointer) *GLFramebufferClas
 	return &GLFramebufferClass{&glFramebufferClass{(*C.GstGLFramebufferClass)(p)}}
 }
 
-// UnsafeGLFramebufferClassFromGlibNone is used to convert raw C.GstGLFramebufferClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLFramebufferClassFromGlibNone(p unsafe.Pointer) *GLFramebufferClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLFramebufferClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glFramebufferClass,
-		func (intern *glFramebufferClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLFramebufferClassFromGlibFull is used to convert raw C.GstGLFramebufferClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLFramebufferClassFromGlibFull(p unsafe.Pointer) *GLFramebufferClass {
-	wrapped := UnsafeGLFramebufferClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glFramebufferClass,
-		func (intern *glFramebufferClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLFramebufferClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLFramebufferClass] is expected to work anymore.
@@ -11191,14 +11896,15 @@ func UnsafeGLFramebufferClassToGlibNone(g *GLFramebufferClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLFramebufferClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLFramebufferClassToGlibFull(g *GLFramebufferClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glFramebufferClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLFramebufferClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLFramebufferClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLFramebufferClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLFramebufferClass) {}, g)
+	return parent
 }
+
 // GLFuncs wraps GstGLFuncs
 //
 // Structure containing function pointers to OpenGL functions.
@@ -11219,7 +11925,7 @@ func UnsafeGLFuncsFromGlibBorrow(p unsafe.Pointer) *GLFuncs {
 	return &GLFuncs{&glFuncs{(*C.GstGLFuncs)(p)}}
 }
 
-// UnsafeGLFuncsFromGlibNone is used to convert raw C.GstGLFuncs pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLFuncsFromGlibNone is used to convert raw C.GstGLFuncs pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLFuncsFromGlibBorrow(p)
@@ -11232,7 +11938,7 @@ func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
 	return wrapped
 }
 
-// UnsafeGLFuncsFromGlibFull is used to convert raw C.GstGLFuncs pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLFuncsFromGlibFull is used to convert raw C.GstGLFuncs pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLFuncsFromGlibFull(p unsafe.Pointer) *GLFuncs {
 	wrapped := UnsafeGLFuncsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -11264,6 +11970,7 @@ func UnsafeGLFuncsToGlibFull(g *GLFuncs) unsafe.Pointer {
 	g.native = nil // GLFuncs is invalid from here on
 	return _p
 }
+
 // GLMemory wraps GstGLMemory
 //
 // GstGLMemory is a #GstGLBaseMemory subclass providing support for the mapping of
@@ -11305,7 +12012,7 @@ func UnsafeGLMemoryFromGlibBorrow(p unsafe.Pointer) *GLMemory {
 	return &GLMemory{&glMemory{(*C.GstGLMemory)(p)}}
 }
 
-// UnsafeGLMemoryFromGlibNone is used to convert raw C.GstGLMemory pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLMemoryFromGlibNone is used to convert raw C.GstGLMemory pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLMemoryFromGlibBorrow(p)
@@ -11318,7 +12025,7 @@ func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
 	return wrapped
 }
 
-// UnsafeGLMemoryFromGlibFull is used to convert raw C.GstGLMemory pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLMemoryFromGlibFull is used to convert raw C.GstGLMemory pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLMemoryFromGlibFull(p unsafe.Pointer) *GLMemory {
 	wrapped := UnsafeGLMemoryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -11350,6 +12057,7 @@ func UnsafeGLMemoryToGlibFull(g *GLMemory) unsafe.Pointer {
 	g.native = nil // GLMemory is invalid from here on
 	return _p
 }
+
 // GLMemoryInitOnce wraps gst_gl_memory_init_once
 //
 // Initializes the GL Base Texture allocator. It is safe to call this function
@@ -11458,6 +12166,7 @@ func (src *GLMemory) CopyTeximage(texId uint, outTarget GLTextureTarget, outTexF
 }
 
 // GetTextureFormat wraps gst_gl_memory_get_texture_format
+// 
 // The function returns the following values:
 // 
 // 	- goret GLFormat 
@@ -11478,6 +12187,7 @@ func (glMem *GLMemory) GetTextureFormat() GLFormat {
 }
 
 // GetTextureHeight wraps gst_gl_memory_get_texture_height
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -11498,6 +12208,7 @@ func (glMem *GLMemory) GetTextureHeight() int {
 }
 
 // GetTextureID wraps gst_gl_memory_get_texture_id
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -11518,6 +12229,7 @@ func (glMem *GLMemory) GetTextureID() uint {
 }
 
 // GetTextureTarget wraps gst_gl_memory_get_texture_target
+// 
 // The function returns the following values:
 // 
 // 	- goret GLTextureTarget 
@@ -11538,6 +12250,7 @@ func (glMem *GLMemory) GetTextureTarget() GLTextureTarget {
 }
 
 // GetTextureWidth wraps gst_gl_memory_get_texture_width
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -11558,6 +12271,8 @@ func (glMem *GLMemory) GetTextureWidth() int {
 }
 
 // GLMemoryAllocatorClass wraps GstGLMemoryAllocatorClass
+// 
+// GLMemoryAllocatorClass is the type struct for [GLMemoryAllocator]
 type GLMemoryAllocatorClass struct {
 	*glMemoryAllocatorClass
 }
@@ -11572,31 +12287,6 @@ func UnsafeGLMemoryAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLMemoryAlloc
 	return &GLMemoryAllocatorClass{&glMemoryAllocatorClass{(*C.GstGLMemoryAllocatorClass)(p)}}
 }
 
-// UnsafeGLMemoryAllocatorClassFromGlibNone is used to convert raw C.GstGLMemoryAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLMemoryAllocatorClassFromGlibNone(p unsafe.Pointer) *GLMemoryAllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLMemoryAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glMemoryAllocatorClass,
-		func (intern *glMemoryAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLMemoryAllocatorClassFromGlibFull is used to convert raw C.GstGLMemoryAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLMemoryAllocatorClassFromGlibFull(p unsafe.Pointer) *GLMemoryAllocatorClass {
-	wrapped := UnsafeGLMemoryAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glMemoryAllocatorClass,
-		func (intern *glMemoryAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLMemoryAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLMemoryAllocatorClass] is expected to work anymore.
@@ -11609,14 +12299,15 @@ func UnsafeGLMemoryAllocatorClassToGlibNone(g *GLMemoryAllocatorClass) unsafe.Po
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLMemoryAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLMemoryAllocatorClassToGlibFull(g *GLMemoryAllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glMemoryAllocatorClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLMemoryAllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLMemoryAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass {
+	parent := UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow(UnsafeGLMemoryAllocatorClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLMemoryAllocatorClass) {}, g)
+	return parent
 }
+
 // GLMemoryPBO wraps GstGLMemoryPBO
 //
 // #GstGLMemoryPBO is created or wrapped through gst_gl_base_memory_alloc()
@@ -11649,7 +12340,7 @@ func UnsafeGLMemoryPBOFromGlibBorrow(p unsafe.Pointer) *GLMemoryPBO {
 	return &GLMemoryPBO{&glMemoryPBO{(*C.GstGLMemoryPBO)(p)}}
 }
 
-// UnsafeGLMemoryPBOFromGlibNone is used to convert raw C.GstGLMemoryPBO pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLMemoryPBOFromGlibNone is used to convert raw C.GstGLMemoryPBO pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLMemoryPBOFromGlibBorrow(p)
@@ -11662,7 +12353,7 @@ func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
 	return wrapped
 }
 
-// UnsafeGLMemoryPBOFromGlibFull is used to convert raw C.GstGLMemoryPBO pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLMemoryPBOFromGlibFull is used to convert raw C.GstGLMemoryPBO pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLMemoryPBOFromGlibFull(p unsafe.Pointer) *GLMemoryPBO {
 	wrapped := UnsafeGLMemoryPBOFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -11694,6 +12385,7 @@ func UnsafeGLMemoryPBOToGlibFull(g *GLMemoryPBO) unsafe.Pointer {
 	g.native = nil // GLMemoryPBO is invalid from here on
 	return _p
 }
+
 // GLMemoryPBOInitOnce wraps gst_gl_memory_pbo_init_once
 func GLMemoryPBOInitOnce() {
 
@@ -11797,6 +12489,8 @@ func (glMem *GLMemoryPBO) UploadTransfer() {
 // GLMemoryPBOAllocatorClass wraps GstGLMemoryPBOAllocatorClass
 //
 // Only contains private data
+// 
+// GLMemoryPBOAllocatorClass is the type struct for [GLMemoryPBOAllocator]
 type GLMemoryPBOAllocatorClass struct {
 	*glMemoryPBOAllocatorClass
 }
@@ -11811,31 +12505,6 @@ func UnsafeGLMemoryPBOAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLMemoryPB
 	return &GLMemoryPBOAllocatorClass{&glMemoryPBOAllocatorClass{(*C.GstGLMemoryPBOAllocatorClass)(p)}}
 }
 
-// UnsafeGLMemoryPBOAllocatorClassFromGlibNone is used to convert raw C.GstGLMemoryPBOAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLMemoryPBOAllocatorClassFromGlibNone(p unsafe.Pointer) *GLMemoryPBOAllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLMemoryPBOAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glMemoryPBOAllocatorClass,
-		func (intern *glMemoryPBOAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLMemoryPBOAllocatorClassFromGlibFull is used to convert raw C.GstGLMemoryPBOAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLMemoryPBOAllocatorClassFromGlibFull(p unsafe.Pointer) *GLMemoryPBOAllocatorClass {
-	wrapped := UnsafeGLMemoryPBOAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glMemoryPBOAllocatorClass,
-		func (intern *glMemoryPBOAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLMemoryPBOAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLMemoryPBOAllocatorClass] is expected to work anymore.
@@ -11848,15 +12517,18 @@ func UnsafeGLMemoryPBOAllocatorClassToGlibNone(g *GLMemoryPBOAllocatorClass) uns
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLMemoryPBOAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLMemoryPBOAllocatorClassToGlibFull(g *GLMemoryPBOAllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glMemoryPBOAllocatorClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLMemoryPBOAllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLMemoryPBOAllocatorClass) ParentClass() *GLMemoryAllocatorClass {
+	parent := UnsafeGLMemoryAllocatorClassFromGlibBorrow(UnsafeGLMemoryPBOAllocatorClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLMemoryPBOAllocatorClass) {}, g)
+	return parent
 }
+
 // GLMixerClass wraps GstGLMixerClass
+// 
+// GLMixerClass is the type struct for [GLMixer]
 type GLMixerClass struct {
 	*glMixerClass
 }
@@ -11871,31 +12543,6 @@ func UnsafeGLMixerClassFromGlibBorrow(p unsafe.Pointer) *GLMixerClass {
 	return &GLMixerClass{&glMixerClass{(*C.GstGLMixerClass)(p)}}
 }
 
-// UnsafeGLMixerClassFromGlibNone is used to convert raw C.GstGLMixerClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLMixerClassFromGlibNone(p unsafe.Pointer) *GLMixerClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLMixerClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glMixerClass,
-		func (intern *glMixerClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLMixerClassFromGlibFull is used to convert raw C.GstGLMixerClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLMixerClassFromGlibFull(p unsafe.Pointer) *GLMixerClass {
-	wrapped := UnsafeGLMixerClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glMixerClass,
-		func (intern *glMixerClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLMixerClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLMixerClass] is expected to work anymore.
@@ -11908,14 +12555,15 @@ func UnsafeGLMixerClassToGlibNone(g *GLMixerClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLMixerClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLMixerClassToGlibFull(g *GLMixerClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glMixerClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLMixerClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLMixerClass) ParentClass() *GLBaseMixerClass {
+	parent := UnsafeGLBaseMixerClassFromGlibBorrow(UnsafeGLMixerClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLMixerClass) {}, g)
+	return parent
 }
+
 // AddRGBAPadTemplates wraps gst_gl_mixer_class_add_rgba_pad_templates
 //
 // Adds the default RGBA pad templates to this class.  If you have any special
@@ -11932,6 +12580,8 @@ func (klass *GLMixerClass) AddRGBAPadTemplates() {
 }
 
 // GLMixerPadClass wraps GstGLMixerPadClass
+// 
+// GLMixerPadClass is the type struct for [GLMixerPad]
 type GLMixerPadClass struct {
 	*glMixerPadClass
 }
@@ -11946,31 +12596,6 @@ func UnsafeGLMixerPadClassFromGlibBorrow(p unsafe.Pointer) *GLMixerPadClass {
 	return &GLMixerPadClass{&glMixerPadClass{(*C.GstGLMixerPadClass)(p)}}
 }
 
-// UnsafeGLMixerPadClassFromGlibNone is used to convert raw C.GstGLMixerPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLMixerPadClassFromGlibNone(p unsafe.Pointer) *GLMixerPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLMixerPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glMixerPadClass,
-		func (intern *glMixerPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLMixerPadClassFromGlibFull is used to convert raw C.GstGLMixerPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLMixerPadClassFromGlibFull(p unsafe.Pointer) *GLMixerPadClass {
-	wrapped := UnsafeGLMixerPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glMixerPadClass,
-		func (intern *glMixerPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLMixerPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLMixerPadClass] is expected to work anymore.
@@ -11983,15 +12608,18 @@ func UnsafeGLMixerPadClassToGlibNone(g *GLMixerPadClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLMixerPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLMixerPadClassToGlibFull(g *GLMixerPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glMixerPadClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLMixerPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLMixerPadClass) ParentClass() *GLBaseMixerPadClass {
+	parent := UnsafeGLBaseMixerPadClassFromGlibBorrow(UnsafeGLMixerPadClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLMixerPadClass) {}, g)
+	return parent
 }
+
 // GLOverlayCompositorClass wraps GstGLOverlayCompositorClass
+// 
+// GLOverlayCompositorClass is the type struct for [GLOverlayCompositor]
 type GLOverlayCompositorClass struct {
 	*glOverlayCompositorClass
 }
@@ -12006,31 +12634,6 @@ func UnsafeGLOverlayCompositorClassFromGlibBorrow(p unsafe.Pointer) *GLOverlayCo
 	return &GLOverlayCompositorClass{&glOverlayCompositorClass{(*C.GstGLOverlayCompositorClass)(p)}}
 }
 
-// UnsafeGLOverlayCompositorClassFromGlibNone is used to convert raw C.GstGLOverlayCompositorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLOverlayCompositorClassFromGlibNone(p unsafe.Pointer) *GLOverlayCompositorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLOverlayCompositorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glOverlayCompositorClass,
-		func (intern *glOverlayCompositorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLOverlayCompositorClassFromGlibFull is used to convert raw C.GstGLOverlayCompositorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLOverlayCompositorClassFromGlibFull(p unsafe.Pointer) *GLOverlayCompositorClass {
-	wrapped := UnsafeGLOverlayCompositorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glOverlayCompositorClass,
-		func (intern *glOverlayCompositorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLOverlayCompositorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLOverlayCompositorClass] is expected to work anymore.
@@ -12043,14 +12646,15 @@ func UnsafeGLOverlayCompositorClassToGlibNone(g *GLOverlayCompositorClass) unsaf
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLOverlayCompositorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLOverlayCompositorClassToGlibFull(g *GLOverlayCompositorClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glOverlayCompositorClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLOverlayCompositorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLOverlayCompositorClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLOverlayCompositorClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLOverlayCompositorClass) {}, g)
+	return parent
 }
+
 // GLQuery wraps GstGLQuery
 //
 // A #GstGLQuery represents and holds an OpenGL query object.  Various types of
@@ -12069,7 +12673,7 @@ func UnsafeGLQueryFromGlibBorrow(p unsafe.Pointer) *GLQuery {
 	return &GLQuery{&glQuery{(*C.GstGLQuery)(p)}}
 }
 
-// UnsafeGLQueryFromGlibNone is used to convert raw C.GstGLQuery pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLQueryFromGlibNone is used to convert raw C.GstGLQuery pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLQueryFromGlibBorrow(p)
@@ -12082,7 +12686,7 @@ func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
 	return wrapped
 }
 
-// UnsafeGLQueryFromGlibFull is used to convert raw C.GstGLQuery pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLQueryFromGlibFull is used to convert raw C.GstGLQuery pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLQueryFromGlibFull(p unsafe.Pointer) *GLQuery {
 	wrapped := UnsafeGLQueryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -12114,6 +12718,7 @@ func UnsafeGLQueryToGlibFull(g *GLQuery) unsafe.Pointer {
 	g.native = nil // GLQuery is invalid from here on
 	return _p
 }
+
 // Counter wraps gst_gl_query_counter
 //
 // Record the result of a counter
@@ -12160,6 +12765,7 @@ func (query *GLQuery) Init(_context GLContext, queryType GLQueryType) {
 }
 
 // Result wraps gst_gl_query_result
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -12236,7 +12842,7 @@ func UnsafeGLRenderbufferFromGlibBorrow(p unsafe.Pointer) *GLRenderbuffer {
 	return &GLRenderbuffer{&glRenderbuffer{(*C.GstGLRenderbuffer)(p)}}
 }
 
-// UnsafeGLRenderbufferFromGlibNone is used to convert raw C.GstGLRenderbuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLRenderbufferFromGlibNone is used to convert raw C.GstGLRenderbuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLRenderbufferFromGlibBorrow(p)
@@ -12249,7 +12855,7 @@ func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
 	return wrapped
 }
 
-// UnsafeGLRenderbufferFromGlibFull is used to convert raw C.GstGLRenderbuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLRenderbufferFromGlibFull is used to convert raw C.GstGLRenderbuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferFromGlibFull(p unsafe.Pointer) *GLRenderbuffer {
 	wrapped := UnsafeGLRenderbufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -12281,6 +12887,7 @@ func UnsafeGLRenderbufferToGlibFull(g *GLRenderbuffer) unsafe.Pointer {
 	g.native = nil // GLRenderbuffer is invalid from here on
 	return _p
 }
+
 // GLRenderbufferInitOnce wraps gst_gl_renderbuffer_init_once
 //
 // Initializes the GL Base Texture allocator. It is safe to call this function
@@ -12291,6 +12898,7 @@ func GLRenderbufferInitOnce() {
 }
 
 // GetFormat wraps gst_gl_renderbuffer_get_format
+// 
 // The function returns the following values:
 // 
 // 	- goret GLFormat 
@@ -12311,6 +12919,7 @@ func (glMem *GLRenderbuffer) GetFormat() GLFormat {
 }
 
 // GetHeight wraps gst_gl_renderbuffer_get_height
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -12331,6 +12940,7 @@ func (glMem *GLRenderbuffer) GetHeight() int {
 }
 
 // GetID wraps gst_gl_renderbuffer_get_id
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -12351,6 +12961,7 @@ func (glMem *GLRenderbuffer) GetID() uint {
 }
 
 // GetWidth wraps gst_gl_renderbuffer_get_width
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -12399,7 +13010,7 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLRen
 	return &GLRenderbufferAllocationParams{&glRenderbufferAllocationParams{(*C.GstGLRenderbufferAllocationParams)(p)}}
 }
 
-// UnsafeGLRenderbufferAllocationParamsFromGlibNone is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLRenderbufferAllocationParamsFromGlibNone is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRenderbufferAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p)
@@ -12412,7 +13023,7 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRende
 	return wrapped
 }
 
-// UnsafeGLRenderbufferAllocationParamsFromGlibFull is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLRenderbufferAllocationParamsFromGlibFull is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLRenderbufferAllocationParams {
 	wrapped := UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -12444,6 +13055,7 @@ func UnsafeGLRenderbufferAllocationParamsToGlibFull(g *GLRenderbufferAllocationP
 	g.native = nil // GLRenderbufferAllocationParams is invalid from here on
 	return _p
 }
+
 // NewGLRenderbufferAllocationParams wraps gst_gl_renderbuffer_allocation_params_new
 // 
 // The function takes the following parameters:
@@ -12490,6 +13102,8 @@ func NewGLRenderbufferAllocationParams(_context GLContext, allocParams *gst.Allo
 // GLRenderbufferAllocatorClass wraps GstGLRenderbufferAllocatorClass
 //
 // The #GstGLRenderbufferAllocatorClass only contains private data
+// 
+// GLRenderbufferAllocatorClass is the type struct for [GLRenderbufferAllocator]
 type GLRenderbufferAllocatorClass struct {
 	*glRenderbufferAllocatorClass
 }
@@ -12504,31 +13118,6 @@ func UnsafeGLRenderbufferAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLRende
 	return &GLRenderbufferAllocatorClass{&glRenderbufferAllocatorClass{(*C.GstGLRenderbufferAllocatorClass)(p)}}
 }
 
-// UnsafeGLRenderbufferAllocatorClassFromGlibNone is used to convert raw C.GstGLRenderbufferAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLRenderbufferAllocatorClassFromGlibNone(p unsafe.Pointer) *GLRenderbufferAllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLRenderbufferAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glRenderbufferAllocatorClass,
-		func (intern *glRenderbufferAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLRenderbufferAllocatorClassFromGlibFull is used to convert raw C.GstGLRenderbufferAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLRenderbufferAllocatorClassFromGlibFull(p unsafe.Pointer) *GLRenderbufferAllocatorClass {
-	wrapped := UnsafeGLRenderbufferAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glRenderbufferAllocatorClass,
-		func (intern *glRenderbufferAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLRenderbufferAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLRenderbufferAllocatorClass] is expected to work anymore.
@@ -12541,17 +13130,20 @@ func UnsafeGLRenderbufferAllocatorClassToGlibNone(g *GLRenderbufferAllocatorClas
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLRenderbufferAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLRenderbufferAllocatorClassToGlibFull(g *GLRenderbufferAllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glRenderbufferAllocatorClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLRenderbufferAllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLRenderbufferAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass {
+	parent := UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow(UnsafeGLRenderbufferAllocatorClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLRenderbufferAllocatorClass) {}, g)
+	return parent
 }
+
 // GLSLStageClass wraps GstGLSLStageClass
 //
 // Opaque #GstGLSLStageClass struct
+// 
+// GLSLStageClass is the type struct for [GLSLStage]
 type GLSLStageClass struct {
 	*glslStageClass
 }
@@ -12566,31 +13158,6 @@ func UnsafeGLSLStageClassFromGlibBorrow(p unsafe.Pointer) *GLSLStageClass {
 	return &GLSLStageClass{&glslStageClass{(*C.GstGLSLStageClass)(p)}}
 }
 
-// UnsafeGLSLStageClassFromGlibNone is used to convert raw C.GstGLSLStageClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLSLStageClassFromGlibNone(p unsafe.Pointer) *GLSLStageClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLSLStageClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glslStageClass,
-		func (intern *glslStageClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLSLStageClassFromGlibFull is used to convert raw C.GstGLSLStageClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLSLStageClassFromGlibFull(p unsafe.Pointer) *GLSLStageClass {
-	wrapped := UnsafeGLSLStageClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glslStageClass,
-		func (intern *glslStageClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLSLStageClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLSLStageClass] is expected to work anymore.
@@ -12603,15 +13170,18 @@ func UnsafeGLSLStageClassToGlibNone(g *GLSLStageClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLSLStageClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLSLStageClassToGlibFull(g *GLSLStageClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glslStageClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLSLStageClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLSLStageClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLSLStageClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLSLStageClass) {}, g)
+	return parent
 }
+
 // GLShaderClass wraps GstGLShaderClass
+// 
+// GLShaderClass is the type struct for [GLShader]
 type GLShaderClass struct {
 	*glShaderClass
 }
@@ -12626,31 +13196,6 @@ func UnsafeGLShaderClassFromGlibBorrow(p unsafe.Pointer) *GLShaderClass {
 	return &GLShaderClass{&glShaderClass{(*C.GstGLShaderClass)(p)}}
 }
 
-// UnsafeGLShaderClassFromGlibNone is used to convert raw C.GstGLShaderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLShaderClassFromGlibNone(p unsafe.Pointer) *GLShaderClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLShaderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glShaderClass,
-		func (intern *glShaderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLShaderClassFromGlibFull is used to convert raw C.GstGLShaderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLShaderClassFromGlibFull(p unsafe.Pointer) *GLShaderClass {
-	wrapped := UnsafeGLShaderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glShaderClass,
-		func (intern *glShaderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLShaderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLShaderClass] is expected to work anymore.
@@ -12663,14 +13208,15 @@ func UnsafeGLShaderClassToGlibNone(g *GLShaderClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLShaderClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLShaderClassToGlibFull(g *GLShaderClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glShaderClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLShaderClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLShaderClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLShaderClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLShaderClass) {}, g)
+	return parent
 }
+
 // GLSyncMeta wraps GstGLSyncMeta
 //
 // #GstGLSyncMeta provides the ability to synchronize the OpenGL command stream
@@ -12689,7 +13235,7 @@ func UnsafeGLSyncMetaFromGlibBorrow(p unsafe.Pointer) *GLSyncMeta {
 	return &GLSyncMeta{&glSyncMeta{(*C.GstGLSyncMeta)(p)}}
 }
 
-// UnsafeGLSyncMetaFromGlibNone is used to convert raw C.GstGLSyncMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLSyncMetaFromGlibNone is used to convert raw C.GstGLSyncMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLSyncMetaFromGlibBorrow(p)
@@ -12702,7 +13248,7 @@ func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
 	return wrapped
 }
 
-// UnsafeGLSyncMetaFromGlibFull is used to convert raw C.GstGLSyncMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLSyncMetaFromGlibFull is used to convert raw C.GstGLSyncMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLSyncMetaFromGlibFull(p unsafe.Pointer) *GLSyncMeta {
 	wrapped := UnsafeGLSyncMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -12734,7 +13280,9 @@ func UnsafeGLSyncMetaToGlibFull(g *GLSyncMeta) unsafe.Pointer {
 	g.native = nil // GLSyncMeta is invalid from here on
 	return _p
 }
+
 // GLSyncMetaGetInfo wraps gst_gl_sync_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -12813,6 +13361,8 @@ func (syncMeta *GLSyncMeta) WaitCpu(_context GLContext) {
 // GLUploadClass wraps GstGLUploadClass
 //
 // The #GstGLUploadClass struct only contains private data
+// 
+// GLUploadClass is the type struct for [GLUpload]
 type GLUploadClass struct {
 	*glUploadClass
 }
@@ -12827,31 +13377,6 @@ func UnsafeGLUploadClassFromGlibBorrow(p unsafe.Pointer) *GLUploadClass {
 	return &GLUploadClass{&glUploadClass{(*C.GstGLUploadClass)(p)}}
 }
 
-// UnsafeGLUploadClassFromGlibNone is used to convert raw C.GstGLUploadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLUploadClassFromGlibNone(p unsafe.Pointer) *GLUploadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLUploadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glUploadClass,
-		func (intern *glUploadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLUploadClassFromGlibFull is used to convert raw C.GstGLUploadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLUploadClassFromGlibFull(p unsafe.Pointer) *GLUploadClass {
-	wrapped := UnsafeGLUploadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glUploadClass,
-		func (intern *glUploadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLUploadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLUploadClass] is expected to work anymore.
@@ -12864,14 +13389,15 @@ func UnsafeGLUploadClassToGlibNone(g *GLUploadClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLUploadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLUploadClassToGlibFull(g *GLUploadClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glUploadClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLUploadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLUploadClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLUploadClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLUploadClass) {}, g)
+	return parent
 }
+
 // GLVideoAllocationParams wraps GstGLVideoAllocationParams
 type GLVideoAllocationParams struct {
 	*glVideoAllocationParams
@@ -12899,7 +13425,7 @@ func UnsafeGLVideoAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLVideoAlloc
 	return &GLVideoAllocationParams{&glVideoAllocationParams{(*C.GstGLVideoAllocationParams)(p)}}
 }
 
-// UnsafeGLVideoAllocationParamsFromGlibNone is used to convert raw C.GstGLVideoAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLVideoAllocationParamsFromGlibNone is used to convert raw C.GstGLVideoAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLVideoAllocationParamsFromGlibBorrow(p)
@@ -12912,7 +13438,7 @@ func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocat
 	return wrapped
 }
 
-// UnsafeGLVideoAllocationParamsFromGlibFull is used to convert raw C.GstGLVideoAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeGLVideoAllocationParamsFromGlibFull is used to convert raw C.GstGLVideoAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsFromGlibFull(p unsafe.Pointer) *GLVideoAllocationParams {
 	wrapped := UnsafeGLVideoAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -12944,6 +13470,7 @@ func UnsafeGLVideoAllocationParamsToGlibFull(g *GLVideoAllocationParams) unsafe.
 	g.native = nil // GLVideoAllocationParams is invalid from here on
 	return _p
 }
+
 // NewGLVideoAllocationParams wraps gst_gl_video_allocation_params_new
 // 
 // The function takes the following parameters:
@@ -13033,6 +13560,8 @@ func (params *GLVideoAllocationParams) FreeData() {
 // GLViewConvertClass wraps GstGLViewConvertClass
 //
 // Opaque #GstGLViewConvertClass struct
+// 
+// GLViewConvertClass is the type struct for [GLViewConvert]
 type GLViewConvertClass struct {
 	*glViewConvertClass
 }
@@ -13047,31 +13576,6 @@ func UnsafeGLViewConvertClassFromGlibBorrow(p unsafe.Pointer) *GLViewConvertClas
 	return &GLViewConvertClass{&glViewConvertClass{(*C.GstGLViewConvertClass)(p)}}
 }
 
-// UnsafeGLViewConvertClassFromGlibNone is used to convert raw C.GstGLViewConvertClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLViewConvertClassFromGlibNone(p unsafe.Pointer) *GLViewConvertClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLViewConvertClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glViewConvertClass,
-		func (intern *glViewConvertClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLViewConvertClassFromGlibFull is used to convert raw C.GstGLViewConvertClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLViewConvertClassFromGlibFull(p unsafe.Pointer) *GLViewConvertClass {
-	wrapped := UnsafeGLViewConvertClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glViewConvertClass,
-		func (intern *glViewConvertClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLViewConvertClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLViewConvertClass] is expected to work anymore.
@@ -13084,15 +13588,18 @@ func UnsafeGLViewConvertClassToGlibNone(g *GLViewConvertClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLViewConvertClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLViewConvertClassToGlibFull(g *GLViewConvertClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glViewConvertClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLViewConvertClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLViewConvertClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLViewConvertClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLViewConvertClass) {}, g)
+	return parent
 }
+
 // GLWindowClass wraps GstGLWindowClass
+// 
+// GLWindowClass is the type struct for [GLWindow]
 type GLWindowClass struct {
 	*glWindowClass
 }
@@ -13107,31 +13614,6 @@ func UnsafeGLWindowClassFromGlibBorrow(p unsafe.Pointer) *GLWindowClass {
 	return &GLWindowClass{&glWindowClass{(*C.GstGLWindowClass)(p)}}
 }
 
-// UnsafeGLWindowClassFromGlibNone is used to convert raw C.GstGLWindowClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLWindowClassFromGlibNone(p unsafe.Pointer) *GLWindowClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGLWindowClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glWindowClass,
-		func (intern *glWindowClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGLWindowClassFromGlibFull is used to convert raw C.GstGLWindowClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGLWindowClassFromGlibFull(p unsafe.Pointer) *GLWindowClass {
-	wrapped := UnsafeGLWindowClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.glWindowClass,
-		func (intern *glWindowClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGLWindowClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GLWindowClass] is expected to work anymore.
@@ -13144,11 +13626,12 @@ func UnsafeGLWindowClassToGlibNone(g *GLWindowClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGLWindowClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGLWindowClassToGlibFull(g *GLWindowClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.glWindowClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GLWindowClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GLWindowClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeGLWindowClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GLWindowClass) {}, g)
+	return parent
 }
+

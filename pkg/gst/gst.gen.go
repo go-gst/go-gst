@@ -42,6 +42,286 @@ import (
 // extern void _gotk4_gst1_TaskFunction(gpointer);
 // extern void _gotk4_gst1_TypeFindFunction(GstTypeFind*, gpointer);
 // extern void destroyUserdata(gpointer);
+// extern void _gotk4_gst1_ChildProxy_child_added(GstChildProxy*, GObject*, gchar*);
+// extern void _gotk4_gst1_ChildProxy_child_removed(GstChildProxy*, GObject*, gchar*);
+// extern GObject* _gotk4_gst1_ChildProxy_get_child_by_index(GstChildProxy*, guint);
+// extern GObject* _gotk4_gst1_ChildProxy_get_child_by_name(GstChildProxy*, gchar*);
+// extern guint _gotk4_gst1_ChildProxy_get_children_count(GstChildProxy*);
+// void _gotk4_gst1_ChildProxy_virtual_child_added(void* fnptr, GstChildProxy* carg0, GObject* carg1, gchar* carg2) {
+// 	return ((void (*) (GstChildProxy*, GObject*, gchar*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gst1_ChildProxy_virtual_child_removed(void* fnptr, GstChildProxy* carg0, GObject* carg1, gchar* carg2) {
+// 	return ((void (*) (GstChildProxy*, GObject*, gchar*))(fnptr))(carg0, carg1, carg2);
+// }
+// GObject* _gotk4_gst1_ChildProxy_virtual_get_child_by_index(void* fnptr, GstChildProxy* carg0, guint carg1) {
+// 	return ((GObject* (*) (GstChildProxy*, guint))(fnptr))(carg0, carg1);
+// }
+// GObject* _gotk4_gst1_ChildProxy_virtual_get_child_by_name(void* fnptr, GstChildProxy* carg0, gchar* carg1) {
+// 	return ((GObject* (*) (GstChildProxy*, gchar*))(fnptr))(carg0, carg1);
+// }
+// guint _gotk4_gst1_ChildProxy_virtual_get_children_count(void* fnptr, GstChildProxy* carg0) {
+// 	return ((guint (*) (GstChildProxy*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gst1_Preset_delete_preset(GstPreset*, gchar*);
+// extern gboolean _gotk4_gst1_Preset_get_meta(GstPreset*, gchar*, gchar*, gchar*);
+// extern gchar** _gotk4_gst1_Preset_get_preset_names(GstPreset*);
+// extern gchar** _gotk4_gst1_Preset_get_property_names(GstPreset*);
+// extern gboolean _gotk4_gst1_Preset_load_preset(GstPreset*, gchar*);
+// extern gboolean _gotk4_gst1_Preset_rename_preset(GstPreset*, gchar*, gchar*);
+// extern gboolean _gotk4_gst1_Preset_save_preset(GstPreset*, gchar*);
+// extern gboolean _gotk4_gst1_Preset_set_meta(GstPreset*, gchar*, gchar*, gchar*);
+// gboolean _gotk4_gst1_Preset_virtual_delete_preset(void* fnptr, GstPreset* carg0, gchar* carg1) {
+// 	return ((gboolean (*) (GstPreset*, gchar*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_Preset_virtual_get_meta(void* fnptr, GstPreset* carg0, gchar* carg1, gchar* carg2, gchar** carg3) {
+// 	return ((gboolean (*) (GstPreset*, gchar*, gchar*, gchar**))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gchar** _gotk4_gst1_Preset_virtual_get_preset_names(void* fnptr, GstPreset* carg0) {
+// 	return ((gchar** (*) (GstPreset*))(fnptr))(carg0);
+// }
+// gchar** _gotk4_gst1_Preset_virtual_get_property_names(void* fnptr, GstPreset* carg0) {
+// 	return ((gchar** (*) (GstPreset*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gst1_Preset_virtual_load_preset(void* fnptr, GstPreset* carg0, gchar* carg1) {
+// 	return ((gboolean (*) (GstPreset*, gchar*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_Preset_virtual_rename_preset(void* fnptr, GstPreset* carg0, gchar* carg1, gchar* carg2) {
+// 	return ((gboolean (*) (GstPreset*, gchar*, gchar*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gst1_Preset_virtual_save_preset(void* fnptr, GstPreset* carg0, gchar* carg1) {
+// 	return ((gboolean (*) (GstPreset*, gchar*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_Preset_virtual_set_meta(void* fnptr, GstPreset* carg0, gchar* carg1, gchar* carg2, gchar* carg3) {
+// 	return ((gboolean (*) (GstPreset*, gchar*, gchar*, gchar*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern gchar* _gotk4_gst1_URIHandler_get_uri(GstURIHandler*);
+// extern gboolean _gotk4_gst1_URIHandler_set_uri(GstURIHandler*, gchar*, GError*);
+// gchar* _gotk4_gst1_URIHandler_virtual_get_uri(void* fnptr, GstURIHandler* carg0) {
+// 	return ((gchar* (*) (GstURIHandler*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gst1_URIHandler_virtual_set_uri(void* fnptr, GstURIHandler* carg0, gchar* carg1, GError** _cerr) {
+// 	return ((gboolean (*) (GstURIHandler*, gchar*, GError**))(fnptr))(carg0, carg1, _cerr);
+// }
+// extern void _gotk4_gst1_Pad_linked(GstPad*, GstPad*);
+// extern void _gotk4_gst1_Pad_unlinked(GstPad*, GstPad*);
+// void _gotk4_gst1_Pad_virtual_linked(void* fnptr, GstPad* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstPad*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Pad_virtual_unlinked(void* fnptr, GstPad* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstPad*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gst1_PadTemplate_pad_created(GstPadTemplate*, GstPad*);
+// void _gotk4_gst1_PadTemplate_virtual_pad_created(void* fnptr, GstPadTemplate* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstPadTemplate*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gst1_TaskPool_cleanup(GstTaskPool*);
+// extern void _gotk4_gst1_TaskPool_prepare(GstTaskPool*, GError*);
+// void _gotk4_gst1_TaskPool_virtual_cleanup(void* fnptr, GstTaskPool* carg0) {
+// 	return ((void (*) (GstTaskPool*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_TaskPool_virtual_prepare(void* fnptr, GstTaskPool* carg0, GError** _cerr) {
+// 	return ((void (*) (GstTaskPool*, GError**))(fnptr))(carg0, _cerr);
+// }
+// extern GstMemory* _gotk4_gst1_Allocator_alloc(GstAllocator*, gsize, GstAllocationParams*);
+// extern void _gotk4_gst1_Allocator_free(GstAllocator*, GstMemory*);
+// GstMemory* _gotk4_gst1_Allocator_virtual_alloc(void* fnptr, GstAllocator* carg0, gsize carg1, GstAllocationParams* carg2) {
+// 	return ((GstMemory* (*) (GstAllocator*, gsize, GstAllocationParams*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gst1_Allocator_virtual_free(void* fnptr, GstAllocator* carg0, GstMemory* carg1) {
+// 	return ((void (*) (GstAllocator*, GstMemory*))(fnptr))(carg0, carg1);
+// }
+// extern GstFlowReturn _gotk4_gst1_BufferPool_acquire_buffer(GstBufferPool*, GstBuffer*, GstBufferPoolAcquireParams*);
+// extern GstFlowReturn _gotk4_gst1_BufferPool_alloc_buffer(GstBufferPool*, GstBuffer*, GstBufferPoolAcquireParams*);
+// extern void _gotk4_gst1_BufferPool_flush_start(GstBufferPool*);
+// extern void _gotk4_gst1_BufferPool_flush_stop(GstBufferPool*);
+// extern void _gotk4_gst1_BufferPool_free_buffer(GstBufferPool*, GstBuffer*);
+// extern const gchar** _gotk4_gst1_BufferPool_get_options(GstBufferPool*);
+// extern void _gotk4_gst1_BufferPool_release_buffer(GstBufferPool*, GstBuffer*);
+// extern void _gotk4_gst1_BufferPool_reset_buffer(GstBufferPool*, GstBuffer*);
+// extern gboolean _gotk4_gst1_BufferPool_set_config(GstBufferPool*, GstStructure*);
+// extern gboolean _gotk4_gst1_BufferPool_start(GstBufferPool*);
+// extern gboolean _gotk4_gst1_BufferPool_stop(GstBufferPool*);
+// GstFlowReturn _gotk4_gst1_BufferPool_virtual_acquire_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer** carg1, GstBufferPoolAcquireParams* carg2) {
+// 	return ((GstFlowReturn (*) (GstBufferPool*, GstBuffer**, GstBufferPoolAcquireParams*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstFlowReturn _gotk4_gst1_BufferPool_virtual_alloc_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer** carg1, GstBufferPoolAcquireParams* carg2) {
+// 	return ((GstFlowReturn (*) (GstBufferPool*, GstBuffer**, GstBufferPoolAcquireParams*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gst1_BufferPool_virtual_flush_start(void* fnptr, GstBufferPool* carg0) {
+// 	return ((void (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_BufferPool_virtual_flush_stop(void* fnptr, GstBufferPool* carg0) {
+// 	return ((void (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_BufferPool_virtual_free_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer* carg1) {
+// 	return ((void (*) (GstBufferPool*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// const gchar** _gotk4_gst1_BufferPool_virtual_get_options(void* fnptr, GstBufferPool* carg0) {
+// 	return ((const gchar** (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_BufferPool_virtual_release_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer* carg1) {
+// 	return ((void (*) (GstBufferPool*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_BufferPool_virtual_reset_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer* carg1) {
+// 	return ((void (*) (GstBufferPool*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_BufferPool_virtual_set_config(void* fnptr, GstBufferPool* carg0, GstStructure* carg1) {
+// 	return ((gboolean (*) (GstBufferPool*, GstStructure*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_BufferPool_virtual_start(void* fnptr, GstBufferPool* carg0) {
+// 	return ((gboolean (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gst1_BufferPool_virtual_stop(void* fnptr, GstBufferPool* carg0) {
+// 	return ((gboolean (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// extern void _gotk4_gst1_Bus_message(GstBus*, GstMessage*);
+// extern void _gotk4_gst1_Bus_sync_message(GstBus*, GstMessage*);
+// void _gotk4_gst1_Bus_virtual_message(void* fnptr, GstBus* carg0, GstMessage* carg1) {
+// 	return ((void (*) (GstBus*, GstMessage*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Bus_virtual_sync_message(void* fnptr, GstBus* carg0, GstMessage* carg1) {
+// 	return ((void (*) (GstBus*, GstMessage*))(fnptr))(carg0, carg1);
+// }
+// extern GstClockTime _gotk4_gst1_Clock_change_resolution(GstClock*, GstClockTime, GstClockTime);
+// extern GstClockTime _gotk4_gst1_Clock_get_internal_time(GstClock*);
+// extern GstClockTime _gotk4_gst1_Clock_get_resolution(GstClock*);
+// extern void _gotk4_gst1_Clock_unschedule(GstClock*, GstClockEntry*);
+// extern GstClockReturn _gotk4_gst1_Clock_wait(GstClock*, GstClockEntry*, GstClockTimeDiff);
+// extern GstClockReturn _gotk4_gst1_Clock_wait_async(GstClock*, GstClockEntry*);
+// GstClockTime _gotk4_gst1_Clock_virtual_change_resolution(void* fnptr, GstClock* carg0, GstClockTime carg1, GstClockTime carg2) {
+// 	return ((GstClockTime (*) (GstClock*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2);
+// }
+// GstClockTime _gotk4_gst1_Clock_virtual_get_internal_time(void* fnptr, GstClock* carg0) {
+// 	return ((GstClockTime (*) (GstClock*))(fnptr))(carg0);
+// }
+// GstClockTime _gotk4_gst1_Clock_virtual_get_resolution(void* fnptr, GstClock* carg0) {
+// 	return ((GstClockTime (*) (GstClock*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_Clock_virtual_unschedule(void* fnptr, GstClock* carg0, GstClockEntry* carg1) {
+// 	return ((void (*) (GstClock*, GstClockEntry*))(fnptr))(carg0, carg1);
+// }
+// GstClockReturn _gotk4_gst1_Clock_virtual_wait(void* fnptr, GstClock* carg0, GstClockEntry* carg1, GstClockTimeDiff* carg2) {
+// 	return ((GstClockReturn (*) (GstClock*, GstClockEntry*, GstClockTimeDiff*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstClockReturn _gotk4_gst1_Clock_virtual_wait_async(void* fnptr, GstClock* carg0, GstClockEntry* carg1) {
+// 	return ((GstClockReturn (*) (GstClock*, GstClockEntry*))(fnptr))(carg0, carg1);
+// }
+// extern gboolean _gotk4_gst1_ControlBinding_sync_values(GstControlBinding*, GstObject*, GstClockTime, GstClockTime);
+// gboolean _gotk4_gst1_ControlBinding_virtual_sync_values(void* fnptr, GstControlBinding* carg0, GstObject* carg1, GstClockTime carg2, GstClockTime carg3) {
+// 	return ((gboolean (*) (GstControlBinding*, GstObject*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern GstElement* _gotk4_gst1_Device_create_element(GstDevice*, gchar*);
+// extern gboolean _gotk4_gst1_Device_reconfigure_element(GstDevice*, GstElement*);
+// GstElement* _gotk4_gst1_Device_virtual_create_element(void* fnptr, GstDevice* carg0, gchar* carg1) {
+// 	return ((GstElement* (*) (GstDevice*, gchar*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_Device_virtual_reconfigure_element(void* fnptr, GstDevice* carg0, GstElement* carg1) {
+// 	return ((gboolean (*) (GstDevice*, GstElement*))(fnptr))(carg0, carg1);
+// }
+// extern gboolean _gotk4_gst1_DeviceProvider_start(GstDeviceProvider*);
+// extern void _gotk4_gst1_DeviceProvider_stop(GstDeviceProvider*);
+// gboolean _gotk4_gst1_DeviceProvider_virtual_start(void* fnptr, GstDeviceProvider* carg0) {
+// 	return ((gboolean (*) (GstDeviceProvider*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_DeviceProvider_virtual_stop(void* fnptr, GstDeviceProvider* carg0) {
+// 	return ((void (*) (GstDeviceProvider*))(fnptr))(carg0);
+// }
+// extern GstStateChangeReturn _gotk4_gst1_Element_change_state(GstElement*, GstStateChange);
+// extern GstStateChangeReturn _gotk4_gst1_Element_get_state(GstElement*, GstState, GstState, GstClockTime);
+// extern void _gotk4_gst1_Element_no_more_pads(GstElement*);
+// extern void _gotk4_gst1_Element_pad_added(GstElement*, GstPad*);
+// extern void _gotk4_gst1_Element_pad_removed(GstElement*, GstPad*);
+// extern gboolean _gotk4_gst1_Element_post_message(GstElement*, GstMessage*);
+// extern GstClock* _gotk4_gst1_Element_provide_clock(GstElement*);
+// extern gboolean _gotk4_gst1_Element_query(GstElement*, GstQuery*);
+// extern void _gotk4_gst1_Element_release_pad(GstElement*, GstPad*);
+// extern GstPad* _gotk4_gst1_Element_request_new_pad(GstElement*, GstPadTemplate*, gchar*, GstCaps*);
+// extern gboolean _gotk4_gst1_Element_send_event(GstElement*, GstEvent*);
+// extern void _gotk4_gst1_Element_set_bus(GstElement*, GstBus*);
+// extern gboolean _gotk4_gst1_Element_set_clock(GstElement*, GstClock*);
+// extern void _gotk4_gst1_Element_set_context(GstElement*, GstContext*);
+// extern GstStateChangeReturn _gotk4_gst1_Element_set_state(GstElement*, GstState);
+// extern void _gotk4_gst1_Element_state_changed(GstElement*, GstState, GstState, GstState);
+// GstStateChangeReturn _gotk4_gst1_Element_virtual_change_state(void* fnptr, GstElement* carg0, GstStateChange carg1) {
+// 	return ((GstStateChangeReturn (*) (GstElement*, GstStateChange))(fnptr))(carg0, carg1);
+// }
+// GstStateChangeReturn _gotk4_gst1_Element_virtual_get_state(void* fnptr, GstElement* carg0, GstState* carg1, GstState* carg2, GstClockTime carg3) {
+// 	return ((GstStateChangeReturn (*) (GstElement*, GstState*, GstState*, GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// void _gotk4_gst1_Element_virtual_no_more_pads(void* fnptr, GstElement* carg0) {
+// 	return ((void (*) (GstElement*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_Element_virtual_pad_added(void* fnptr, GstElement* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstElement*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Element_virtual_pad_removed(void* fnptr, GstElement* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstElement*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_Element_virtual_post_message(void* fnptr, GstElement* carg0, GstMessage* carg1) {
+// 	return ((gboolean (*) (GstElement*, GstMessage*))(fnptr))(carg0, carg1);
+// }
+// GstClock* _gotk4_gst1_Element_virtual_provide_clock(void* fnptr, GstElement* carg0) {
+// 	return ((GstClock* (*) (GstElement*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gst1_Element_virtual_query(void* fnptr, GstElement* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstElement*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Element_virtual_release_pad(void* fnptr, GstElement* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstElement*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// GstPad* _gotk4_gst1_Element_virtual_request_new_pad(void* fnptr, GstElement* carg0, GstPadTemplate* carg1, gchar* carg2, GstCaps* carg3) {
+// 	return ((GstPad* (*) (GstElement*, GstPadTemplate*, gchar*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gst1_Element_virtual_send_event(void* fnptr, GstElement* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstElement*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Element_virtual_set_bus(void* fnptr, GstElement* carg0, GstBus* carg1) {
+// 	return ((void (*) (GstElement*, GstBus*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_Element_virtual_set_clock(void* fnptr, GstElement* carg0, GstClock* carg1) {
+// 	return ((gboolean (*) (GstElement*, GstClock*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Element_virtual_set_context(void* fnptr, GstElement* carg0, GstContext* carg1) {
+// 	return ((void (*) (GstElement*, GstContext*))(fnptr))(carg0, carg1);
+// }
+// GstStateChangeReturn _gotk4_gst1_Element_virtual_set_state(void* fnptr, GstElement* carg0, GstState carg1) {
+// 	return ((GstStateChangeReturn (*) (GstElement*, GstState))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Element_virtual_state_changed(void* fnptr, GstElement* carg0, GstState carg1, GstState carg2, GstState carg3) {
+// 	return ((void (*) (GstElement*, GstState, GstState, GstState))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern gboolean _gotk4_gst1_Bin_add_element(GstBin*, GstElement*);
+// extern void _gotk4_gst1_Bin_deep_element_added(GstBin*, GstBin*, GstElement*);
+// extern void _gotk4_gst1_Bin_deep_element_removed(GstBin*, GstBin*, GstElement*);
+// extern gboolean _gotk4_gst1_Bin_do_latency(GstBin*);
+// extern void _gotk4_gst1_Bin_element_added(GstBin*, GstElement*);
+// extern void _gotk4_gst1_Bin_element_removed(GstBin*, GstElement*);
+// extern void _gotk4_gst1_Bin_handle_message(GstBin*, GstMessage*);
+// extern gboolean _gotk4_gst1_Bin_remove_element(GstBin*, GstElement*);
+// gboolean _gotk4_gst1_Bin_virtual_add_element(void* fnptr, GstBin* carg0, GstElement* carg1) {
+// 	return ((gboolean (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Bin_virtual_deep_element_added(void* fnptr, GstBin* carg0, GstBin* carg1, GstElement* carg2) {
+// 	return ((void (*) (GstBin*, GstBin*, GstElement*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gst1_Bin_virtual_deep_element_removed(void* fnptr, GstBin* carg0, GstBin* carg1, GstElement* carg2) {
+// 	return ((void (*) (GstBin*, GstBin*, GstElement*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gst1_Bin_virtual_do_latency(void* fnptr, GstBin* carg0) {
+// 	return ((gboolean (*) (GstBin*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_Bin_virtual_element_added(void* fnptr, GstBin* carg0, GstElement* carg1) {
+// 	return ((void (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Bin_virtual_element_removed(void* fnptr, GstBin* carg0, GstElement* carg1) {
+// 	return ((void (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Bin_virtual_handle_message(void* fnptr, GstBin* carg0, GstMessage* carg1) {
+// 	return ((void (*) (GstBin*, GstMessage*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_Bin_virtual_remove_element(void* fnptr, GstBin* carg0, GstElement* carg1) {
+// 	return ((gboolean (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
+// }
 import "C"
 
 // GType values.
@@ -887,6 +1167,7 @@ func (e CoreError) String() string {
 }
 
 // CoreErrorQuark wraps gst_core_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -1649,6 +1930,7 @@ func FormatGetName(format Format) string {
 }
 
 // FormatIterateDefinitions wraps gst_format_iterate_definitions
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator 
@@ -1877,6 +2159,7 @@ func (e LibraryError) String() string {
 }
 
 // LibraryErrorQuark wraps gst_library_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -2237,6 +2520,7 @@ func (e ParseError) String() string {
 }
 
 // ParseErrorQuark wraps gst_parse_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -2295,6 +2579,7 @@ func (e PluginError) String() string {
 }
 
 // PluginErrorQuark wraps gst_plugin_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -2835,6 +3120,7 @@ func (e ResourceError) String() string {
 }
 
 // ResourceErrorQuark wraps gst_resource_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -3296,6 +3582,7 @@ func (e StreamError) String() string {
 }
 
 // StreamErrorQuark wraps gst_stream_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -3942,6 +4229,7 @@ func (e URIError) String() string {
 }
 
 // URIErrorQuark wraps gst_uri_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -7725,6 +8013,7 @@ func DebugConstructWinColor(colorinfo uint) int {
 }
 
 // DebugGetAllCategories wraps gst_debug_get_all_categories
+// 
 // The function returns the following values:
 // 
 // 	- goret []*DebugCategory 
@@ -7752,6 +8041,7 @@ func DebugGetAllCategories() []*DebugCategory {
 }
 
 // DebugGetColorMode wraps gst_debug_get_color_mode
+// 
 // The function returns the following values:
 // 
 // 	- goret DebugColorMode 
@@ -7770,6 +8060,7 @@ func DebugGetColorMode() DebugColorMode {
 }
 
 // DebugGetDefaultThreshold wraps gst_debug_get_default_threshold
+// 
 // The function returns the following values:
 // 
 // 	- goret DebugLevel 
@@ -7817,6 +8108,7 @@ func DebugGetStackTrace(flags StackTraceFlags) string {
 }
 
 // DebugIsActive wraps gst_debug_is_active
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7837,6 +8129,7 @@ func DebugIsActive() bool {
 }
 
 // DebugIsColored wraps gst_debug_is_colored
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -8029,6 +8322,7 @@ func DebugRemoveRingBufferLogger() {
 }
 
 // DebugRingBufferLoggerGetLogs wraps gst_debug_ring_buffer_logger_get_logs
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -8430,6 +8724,7 @@ func FormatsContains(formats []Format, format Format) bool {
 }
 
 // GetMainExecutablePath wraps gst_get_main_executable_path
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -8487,6 +8782,7 @@ func IsCapsFeatures(obj unsafe.Pointer) bool {
 }
 
 // IsInitialized wraps gst_is_initialized
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -8508,6 +8804,7 @@ func IsInitialized() bool {
 }
 
 // ParentBufferMetaApiGetType wraps gst_parent_buffer_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -8758,6 +9055,7 @@ func ProtectionFilterSystemsByAvailableDecryptors(systemIdentifiers []string) []
 }
 
 // ProtectionMetaApiGetType wraps gst_protection_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -8809,6 +9107,7 @@ func ProtectionSelectSystem(systemIdentifiers []string) string {
 }
 
 // ReferenceTimestampMetaApiGetType wraps gst_reference_timestamp_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -8825,6 +9124,7 @@ func ReferenceTimestampMetaApiGetType() gobject.Type {
 }
 
 // SegtrapIsEnabled wraps gst_segtrap_is_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -9106,6 +9406,7 @@ func TagMergeUseFirst(src *gobject.Value) gobject.Value {
 }
 
 // TracingGetActiveTracers wraps gst_tracing_get_active_tracers
+// 
 // The function returns the following values:
 // 
 // 	- goret []Tracer 
@@ -9195,6 +9496,7 @@ func TypeMarkAsPluginApi(typ gobject.Type, flags PluginAPIFlags) {
 }
 
 // UpdateRegistry wraps gst_update_registry
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -9554,6 +9856,7 @@ func UtilGdoubleToGuint64(value float64) uint64 {
 }
 
 // UtilGetTimestamp wraps gst_util_get_timestamp
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -9637,6 +9940,7 @@ func UtilGreatestCommonDivisorInt64(a int64, b int64) int64 {
 }
 
 // UtilGroupIDNext wraps gst_util_group_id_next
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -9718,6 +10022,7 @@ func UtilSeqnumCompare(s1 uint32, s2 uint32) int32 {
 }
 
 // UtilSeqnumNext wraps gst_util_seqnum_next
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -11447,6 +11752,7 @@ func ValueUnion(value1 *gobject.Value, value2 *gobject.Value) (gobject.Value, bo
 }
 
 // Version wraps gst_version
+// 
 // The function returns the following values:
 // 
 // 	- major uint: pointer to a guint to store the major version number 
@@ -11477,6 +11783,7 @@ func Version() (uint, uint, uint, uint) {
 }
 
 // VersionString wraps gst_version_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -11589,6 +11896,7 @@ type ChildProxy interface {
 	// element names only and should not contain any property names.
 	GetChildByNameRecurse(string) gobject.Object
 	// GetChildrenCount wraps gst_child_proxy_get_children_count
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -11801,6 +12109,7 @@ func (childProxy *ChildProxyInstance) GetChildByNameRecurse(name string) gobject
 }
 
 // GetChildrenCount wraps gst_child_proxy_get_children_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -11828,12 +12137,80 @@ func (parent *ChildProxyInstance) GetChildrenCount() uint {
 func (o *ChildProxyInstance) ConnectChildAdded(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
 	return o.Instance.Connect("child-added", fn)
 }
+
 // ConnectChildRemoved connects the provided callback to the "child-removed" signal
 //
 // Will be emitted after the @object was removed from the @child_proxy.
 func (o *ChildProxyInstance) ConnectChildRemoved(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
 	return o.Instance.Connect("child-removed", fn)
 }
+
+// ChildProxyOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ChildProxyOverrides[Instance ChildProxy] struct {
+	// ChildAdded allows you to override the implementation of the virtual method child_added.
+	// The function takes the following parameters:
+	// 
+	// 	- child gobject.Object: the newly added child 
+	// 	- name string: the name of the new child 
+	ChildAdded func(Instance, gobject.Object, string)
+	// ChildRemoved allows you to override the implementation of the virtual method child_removed.
+	// The function takes the following parameters:
+	// 
+	// 	- child gobject.Object: the removed child 
+	// 	- name string: the name of the old child 
+	ChildRemoved func(Instance, gobject.Object, string)
+	// GetChildByIndex allows you to override the implementation of the virtual method get_child_by_index.
+	// The function takes the following parameters:
+	// 
+	// 	- index uint: the child's position in the child list 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gobject.Object (nullable) 
+	GetChildByIndex func(Instance, uint) gobject.Object
+	// GetChildByName allows you to override the implementation of the virtual method get_child_by_name.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: the child's name 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gobject.Object (nullable) 
+	GetChildByName func(Instance, string) gobject.Object
+	// GetChildrenCount allows you to override the implementation of the virtual method get_children_count.
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	GetChildrenCount func(Instance) uint
+}
+
+// UnsafeApplyChildProxyOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, overrides ChildProxyOverrides[Instance]) {
+	pclass := (*C.GstChildProxyInterface)(gclass)
+
+	if overrides.ChildAdded != nil {
+		pclass.child_added = (*[0]byte)(C._gotk4_gst1_ChildProxy_child_added)
+	}
+
+	if overrides.ChildRemoved != nil {
+		pclass.child_removed = (*[0]byte)(C._gotk4_gst1_ChildProxy_child_removed)
+	}
+
+	if overrides.GetChildByIndex != nil {
+		pclass.get_child_by_index = (*[0]byte)(C._gotk4_gst1_ChildProxy_get_child_by_index)
+	}
+
+	if overrides.GetChildByName != nil {
+		pclass.get_child_by_name = (*[0]byte)(C._gotk4_gst1_ChildProxy_get_child_by_name)
+	}
+
+	if overrides.GetChildrenCount != nil {
+		pclass.get_children_count = (*[0]byte)(C._gotk4_gst1_ChildProxy_get_children_count)
+	}
+}
+
 // PresetInstance is the instance type used by all types implementing GstPreset. It is used internally by the bindings. Users should use the interface [Preset] instead.
 type PresetInstance struct {
 	_ [0]func() // equal guard
@@ -11898,6 +12275,7 @@ type Preset interface {
 	// something like e.g. "comment". Returned values need to be released when done.
 	GetMeta(string, string) (string, bool)
 	// GetPresetNames wraps gst_preset_get_preset_names
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -11905,6 +12283,7 @@ type Preset interface {
 	// Get a copy of preset names as a %NULL terminated string array.
 	GetPresetNames() []string
 	// GetPropertyNames wraps gst_preset_get_property_names
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -11912,6 +12291,7 @@ type Preset interface {
 	// Get a the names of the GObject properties that can be used for presets.
 	GetPropertyNames() []string
 	// IsEditable wraps gst_preset_is_editable
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -12014,6 +12394,7 @@ func UnsafePresetToGlibFull(c Preset) unsafe.Pointer {
 }
 
 // PresetGetAppDir wraps gst_preset_get_app_dir
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -12144,6 +12525,7 @@ func (preset *PresetInstance) GetMeta(name string, tag string) (string, bool) {
 }
 
 // GetPresetNames wraps gst_preset_get_preset_names
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -12168,6 +12550,7 @@ func (preset *PresetInstance) GetPresetNames() []string {
 }
 
 // GetPropertyNames wraps gst_preset_get_property_names
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -12192,6 +12575,7 @@ func (preset *PresetInstance) GetPropertyNames() []string {
 }
 
 // IsEditable wraps gst_preset_is_editable
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -12368,6 +12752,118 @@ func (preset *PresetInstance) SetMeta(name string, tag string, value string) boo
 	return goret
 }
 
+// PresetOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type PresetOverrides[Instance Preset] struct {
+	// DeletePreset allows you to override the implementation of the virtual method delete_preset.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name to remove 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DeletePreset func(Instance, string) bool
+	// GetMeta allows you to override the implementation of the virtual method get_meta.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name 
+	// 	- tag string: meta data item name 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- value string: value 
+	// 	- goret bool 
+	GetMeta func(Instance, string, string) (string, bool)
+	// GetPresetNames allows you to override the implementation of the virtual method get_preset_names.
+	// The function returns the following values:
+	// 
+	// 	- goret []string 
+	GetPresetNames func(Instance) []string
+	// GetPropertyNames allows you to override the implementation of the virtual method get_property_names.
+	// The function returns the following values:
+	// 
+	// 	- goret []string 
+	GetPropertyNames func(Instance) []string
+	// LoadPreset allows you to override the implementation of the virtual method load_preset.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name to load 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	LoadPreset func(Instance, string) bool
+	// RenamePreset allows you to override the implementation of the virtual method rename_preset.
+	// The function takes the following parameters:
+	// 
+	// 	- oldName string: current preset name 
+	// 	- newName string: new preset name 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	RenamePreset func(Instance, string, string) bool
+	// SavePreset allows you to override the implementation of the virtual method save_preset.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name to save 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SavePreset func(Instance, string) bool
+	// SetMeta allows you to override the implementation of the virtual method set_meta.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name 
+	// 	- tag string: meta data item name 
+	// 	- value string (nullable): new value 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetMeta func(Instance, string, string, string) bool
+}
+
+// UnsafeApplyPresetOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, overrides PresetOverrides[Instance]) {
+	pclass := (*C.GstPresetInterface)(gclass)
+
+	if overrides.DeletePreset != nil {
+		pclass.delete_preset = (*[0]byte)(C._gotk4_gst1_Preset_delete_preset)
+	}
+
+	if overrides.GetMeta != nil {
+		pclass.get_meta = (*[0]byte)(C._gotk4_gst1_Preset_get_meta)
+	}
+
+	if overrides.GetPresetNames != nil {
+		pclass.get_preset_names = (*[0]byte)(C._gotk4_gst1_Preset_get_preset_names)
+	}
+
+	if overrides.GetPropertyNames != nil {
+		pclass.get_property_names = (*[0]byte)(C._gotk4_gst1_Preset_get_property_names)
+	}
+
+	if overrides.LoadPreset != nil {
+		pclass.load_preset = (*[0]byte)(C._gotk4_gst1_Preset_load_preset)
+	}
+
+	if overrides.RenamePreset != nil {
+		pclass.rename_preset = (*[0]byte)(C._gotk4_gst1_Preset_rename_preset)
+	}
+
+	if overrides.SavePreset != nil {
+		pclass.save_preset = (*[0]byte)(C._gotk4_gst1_Preset_save_preset)
+	}
+
+	if overrides.SetMeta != nil {
+		pclass.set_meta = (*[0]byte)(C._gotk4_gst1_Preset_set_meta)
+	}
+}
+
 // URIHandlerInstance is the instance type used by all types implementing GstURIHandler. It is used internally by the bindings. Users should use the interface [URIHandler] instead.
 type URIHandlerInstance struct {
 	_ [0]func() // equal guard
@@ -12390,6 +12886,7 @@ type URIHandler interface {
 	upcastToGstURIHandler() *URIHandlerInstance
 
 	// GetProtocols wraps gst_uri_handler_get_protocols
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string (nullable) 
@@ -12398,6 +12895,7 @@ type URIHandler interface {
 	// modified.
 	GetProtocols() []string
 	// GetURI wraps gst_uri_handler_get_uri
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -12405,6 +12903,7 @@ type URIHandler interface {
 	// Gets the currently handled URI.
 	GetURI() string
 	// GetURIType wraps gst_uri_handler_get_uri_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret URIType 
@@ -12465,6 +12964,7 @@ func UnsafeURIHandlerToGlibFull(c URIHandler) unsafe.Pointer {
 }
 
 // GetProtocols wraps gst_uri_handler_get_protocols
+// 
 // The function returns the following values:
 // 
 // 	- goret []string (nullable) 
@@ -12490,6 +12990,7 @@ func (handler *URIHandlerInstance) GetProtocols() []string {
 }
 
 // GetURI wraps gst_uri_handler_get_uri
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -12515,6 +13016,7 @@ func (handler *URIHandlerInstance) GetURI() string {
 }
 
 // GetURIType wraps gst_uri_handler_get_uri_type
+// 
 // The function returns the following values:
 // 
 // 	- goret URIType 
@@ -12575,6 +13077,40 @@ func (handler *URIHandlerInstance) SetURI(uri string) (bool, error) {
 	return goret, _goerr
 }
 
+// URIHandlerOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type URIHandlerOverrides[Instance URIHandler] struct {
+	// GetURI allows you to override the implementation of the virtual method get_uri.
+	// The function returns the following values:
+	// 
+	// 	- goret string (nullable) 
+	GetURI func(Instance) string
+	// SetURI allows you to override the implementation of the virtual method set_uri.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string: URI to set 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	// 	- _goerr error (nullable): an error 
+	SetURI func(Instance, string) (bool, error)
+}
+
+// UnsafeApplyURIHandlerOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyURIHandlerOverrides[Instance URIHandler](gclass unsafe.Pointer, overrides URIHandlerOverrides[Instance]) {
+	pclass := (*C.GstURIHandlerInterface)(gclass)
+
+	if overrides.GetURI != nil {
+		pclass.get_uri = (*[0]byte)(C._gotk4_gst1_URIHandler_get_uri)
+	}
+
+	if overrides.SetURI != nil {
+		pclass.set_uri = (*[0]byte)(C._gotk4_gst1_URIHandler_set_uri)
+	}
+}
+
 // TagSetterInstance is the instance type used by all types implementing GstTagSetter. It is used internally by the bindings. Users should use the interface [TagSetter] instead.
 type TagSetterInstance struct {
 	_ [0]func() // equal guard
@@ -12630,6 +13166,7 @@ type TagSetter interface {
 	upcastToGstTagSetter() *TagSetterInstance
 
 	// GetTagList wraps gst_tag_setter_get_tag_list
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *TagList (nullable) 
@@ -12640,6 +13177,7 @@ type TagSetter interface {
 	// This function is not thread-safe.
 	GetTagList() *TagList
 	// GetTagMergeMode wraps gst_tag_setter_get_tag_merge_mode
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret TagMergeMode 
@@ -12712,6 +13250,7 @@ func UnsafeTagSetterToGlibFull(c TagSetter) unsafe.Pointer {
 }
 
 // GetTagList wraps gst_tag_setter_get_tag_list
+// 
 // The function returns the following values:
 // 
 // 	- goret *TagList (nullable) 
@@ -12739,6 +13278,7 @@ func (setter *TagSetterInstance) GetTagList() *TagList {
 }
 
 // GetTagMergeMode wraps gst_tag_setter_get_tag_merge_mode
+// 
 // The function returns the following values:
 // 
 // 	- goret TagMergeMode 
@@ -12818,6 +13358,16 @@ func (setter *TagSetterInstance) SetTagMergeMode(mode TagMergeMode) {
 	runtime.KeepAlive(mode)
 }
 
+// TagSetterOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TagSetterOverrides[Instance TagSetter] struct {
+}
+
+// UnsafeApplyTagSetterOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTagSetterOverrides[Instance TagSetter](gclass unsafe.Pointer, overrides TagSetterOverrides[Instance]) {
+}
+
 // TocSetterInstance is the instance type used by all types implementing GstTocSetter. It is used internally by the bindings. Users should use the interface [TocSetter] instead.
 type TocSetterInstance struct {
 	_ [0]func() // equal guard
@@ -12846,6 +13396,7 @@ type TocSetter interface {
 	upcastToGstTocSetter() *TocSetterInstance
 
 	// GetToc wraps gst_toc_setter_get_toc
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Toc (nullable) 
@@ -12908,6 +13459,7 @@ func UnsafeTocSetterToGlibFull(c TocSetter) unsafe.Pointer {
 }
 
 // GetToc wraps gst_toc_setter_get_toc
+// 
 // The function returns the following values:
 // 
 // 	- goret *Toc (nullable) 
@@ -12965,6 +13517,16 @@ func (setter *TocSetterInstance) SetToc(toc *Toc) {
 	C.gst_toc_setter_set_toc(carg0, carg1)
 	runtime.KeepAlive(setter)
 	runtime.KeepAlive(toc)
+}
+
+// TocSetterOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TocSetterOverrides[Instance TocSetter] struct {
+}
+
+// UnsafeApplyTocSetterOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTocSetterOverrides[Instance TocSetter](gclass unsafe.Pointer, overrides TocSetterOverrides[Instance]) {
 }
 
 // ObjectInstance is the instance type used by all types extending GstObject. It is used internally by the bindings. Users should use the interface [Object] instead.
@@ -13073,6 +13635,7 @@ type Object interface {
 	// unreferenced again after use.
 	CurrentControlBinding(string) ControlBinding
 	// GetControlRate wraps gst_object_get_control_rate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -13089,6 +13652,7 @@ type Object interface {
 	// %GST_STATE_PAUSED or %GST_STATE_PLAYING.
 	GetControlRate() ClockTime
 	// GetName wraps gst_object_get_name
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -13101,6 +13665,7 @@ type Object interface {
 	// Free-function: g_free
 	GetName() string
 	// GetParent wraps gst_object_get_parent
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Object (nullable) 
@@ -13109,6 +13674,7 @@ type Object interface {
 	// of the parent object so you should gst_object_unref() it after usage.
 	GetParent() Object
 	// GetPathString wraps gst_object_get_path_string
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -13119,6 +13685,7 @@ type Object interface {
 	// Free-function: g_free
 	GetPathString() string
 	// HasActiveControlBindings wraps gst_object_has_active_control_bindings
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -13246,6 +13813,7 @@ type Object interface {
 	// be incremented, and any floating reference will be removed (see gst_object_ref_sink()).
 	SetParent(Object) bool
 	// SuggestNextSync wraps gst_object_suggest_next_sync
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -13414,6 +13982,7 @@ func (object *ObjectInstance) CurrentControlBinding(propertyName string) Control
 }
 
 // GetControlRate wraps gst_object_get_control_rate
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -13445,6 +14014,7 @@ func (object *ObjectInstance) GetControlRate() ClockTime {
 }
 
 // GetName wraps gst_object_get_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -13475,6 +14045,7 @@ func (object *ObjectInstance) GetName() string {
 }
 
 // GetParent wraps gst_object_get_parent
+// 
 // The function returns the following values:
 // 
 // 	- goret Object (nullable) 
@@ -13500,6 +14071,7 @@ func (object *ObjectInstance) GetParent() Object {
 }
 
 // GetPathString wraps gst_object_get_path_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -13526,6 +14098,7 @@ func (object *ObjectInstance) GetPathString() string {
 }
 
 // HasActiveControlBindings wraps gst_object_has_active_control_bindings
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13834,6 +14407,7 @@ func (object *ObjectInstance) SetParent(parent Object) bool {
 }
 
 // SuggestNextSync wraps gst_object_suggest_next_sync
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -13905,6 +14479,20 @@ func (object *ObjectInstance) Unparent() {
 
 	C.gst_object_unparent(carg0)
 	runtime.KeepAlive(object)
+}
+
+// ObjectOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ObjectOverrides[Instance Object] struct {
+	// gobject.InitiallyUnownedOverrides allows you to override virtual methods from the parent class gobject.InitiallyUnowned
+	gobject.InitiallyUnownedOverrides[Instance]
+
+}
+
+// UnsafeApplyObjectOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyObjectOverrides[Instance Object](gclass unsafe.Pointer, overrides ObjectOverrides[Instance]) {
+	gobject.UnsafeApplyInitiallyUnownedOverrides(gclass, overrides.InitiallyUnownedOverrides)
 }
 
 // PadInstance is the instance type used by all types extending GstPad. It is used internally by the bindings. Users should use the interface [Pad] instead.
@@ -14087,6 +14675,7 @@ type Pad interface {
 	// MT safe.
 	ChainList(*BufferList) FlowReturn
 	// CheckReconfigure wraps gst_pad_check_reconfigure
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14159,6 +14748,7 @@ type Pad interface {
 	// When @forward returns %TRUE, no further pads will be processed.
 	Forward(PadForwardFunction) bool
 	// GetAllowedCaps wraps gst_pad_get_allowed_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Caps (nullable) 
@@ -14171,6 +14761,7 @@ type Pad interface {
 	// on the resulting caps.
 	GetAllowedCaps() *Caps
 	// GetCurrentCaps wraps gst_pad_get_current_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Caps (nullable) 
@@ -14179,6 +14770,7 @@ type Pad interface {
 	// #GST_EVENT_CAPS event.
 	GetCurrentCaps() *Caps
 	// GetDirection wraps gst_pad_get_direction
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret PadDirection 
@@ -14188,6 +14780,7 @@ type Pad interface {
 	// the LOCK.
 	GetDirection() PadDirection
 	// GetLastFlowReturn wraps gst_pad_get_last_flow_return
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret FlowReturn 
@@ -14195,6 +14788,7 @@ type Pad interface {
 	// Gets the #GstFlowReturn return from the last data passed by this pad.
 	GetLastFlowReturn() FlowReturn
 	// GetOffset wraps gst_pad_get_offset
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int64 
@@ -14203,6 +14797,7 @@ type Pad interface {
 	// pad.
 	GetOffset() int64
 	// GetPadTemplate wraps gst_pad_get_pad_template
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret PadTemplate (nullable) 
@@ -14210,6 +14805,7 @@ type Pad interface {
 	// Gets the template for @pad.
 	GetPadTemplate() PadTemplate
 	// GetPadTemplateCaps wraps gst_pad_get_pad_template_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Caps 
@@ -14217,6 +14813,7 @@ type Pad interface {
 	// Gets the capabilities for @pad's template.
 	GetPadTemplateCaps() *Caps
 	// GetParentElement wraps gst_pad_get_parent_element
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Element (nullable) 
@@ -14225,6 +14822,7 @@ type Pad interface {
 	// its parent is not an element, return %NULL.
 	GetParentElement() Element
 	// GetPeer wraps gst_pad_get_peer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Pad (nullable) 
@@ -14273,6 +14871,7 @@ type Pad interface {
 	// This is a lowlevel function. Usually gst_pad_pull_range() is used.
 	GetRange(uint64, uint) (*Buffer, FlowReturn)
 	// GetSingleInternalLink wraps gst_pad_get_single_internal_link
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Pad (nullable) 
@@ -14295,6 +14894,7 @@ type Pad interface {
 	// from the event.
 	GetStickyEvent(EventType, uint) *Event
 	// GetStream wraps gst_pad_get_stream
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Stream (nullable) 
@@ -14306,6 +14906,7 @@ type Pad interface {
 	// gst_event_parse_stream().
 	GetStream() Stream
 	// GetStreamID wraps gst_pad_get_stream_id
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -14320,6 +14921,7 @@ type Pad interface {
 	// contents should not be interpreted.
 	GetStreamID() string
 	// GetTaskState wraps gst_pad_get_task_state
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret TaskState 
@@ -14328,6 +14930,7 @@ type Pad interface {
 	// set, #GST_TASK_STOPPED is returned.
 	GetTaskState() TaskState
 	// HasCurrentCaps wraps gst_pad_has_current_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14335,6 +14938,7 @@ type Pad interface {
 	// Check if @pad has caps set on it with a #GST_EVENT_CAPS event.
 	HasCurrentCaps() bool
 	// IsActive wraps gst_pad_is_active
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14342,6 +14946,7 @@ type Pad interface {
 	// Query if a pad is active
 	IsActive() bool
 	// IsBlocked wraps gst_pad_is_blocked
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14351,6 +14956,7 @@ type Pad interface {
 	// is actually blocking at this point (see gst_pad_is_blocking()).
 	IsBlocked() bool
 	// IsBlocking wraps gst_pad_is_blocking
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14359,6 +14965,7 @@ type Pad interface {
 	// of whether the pad is actually blocking on a #GstBuffer or a #GstEvent.
 	IsBlocking() bool
 	// IsLinked wraps gst_pad_is_linked
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14366,6 +14973,7 @@ type Pad interface {
 	// Checks if a @pad is linked to another pad or not.
 	IsLinked() bool
 	// IterateInternalLinks wraps gst_pad_iterate_internal_links
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Iterator (nullable) 
@@ -14475,6 +15083,7 @@ type Pad interface {
 	// gst_pad_check_reconfigure() will return %TRUE after this call.
 	MarkReconfigure()
 	// NeedsReconfigure wraps gst_pad_needs_reconfigure
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14483,6 +15092,7 @@ type Pad interface {
 	// if the flag was set.
 	NeedsReconfigure() bool
 	// PauseTask wraps gst_pad_pause_task
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -14923,6 +15533,7 @@ type Pad interface {
 	// before @func is called.
 	StartTask(TaskFunction) bool
 	// StopTask wraps gst_pad_stop_task
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -15369,6 +15980,7 @@ func (pad *PadInstance) ChainList(list *BufferList) FlowReturn {
 }
 
 // CheckReconfigure wraps gst_pad_check_reconfigure
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -15531,6 +16143,7 @@ func (pad *PadInstance) Forward(forward PadForwardFunction) bool {
 }
 
 // GetAllowedCaps wraps gst_pad_get_allowed_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps (nullable) 
@@ -15560,6 +16173,7 @@ func (pad *PadInstance) GetAllowedCaps() *Caps {
 }
 
 // GetCurrentCaps wraps gst_pad_get_current_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps (nullable) 
@@ -15585,6 +16199,7 @@ func (pad *PadInstance) GetCurrentCaps() *Caps {
 }
 
 // GetDirection wraps gst_pad_get_direction
+// 
 // The function returns the following values:
 // 
 // 	- goret PadDirection 
@@ -15609,6 +16224,7 @@ func (pad *PadInstance) GetDirection() PadDirection {
 }
 
 // GetLastFlowReturn wraps gst_pad_get_last_flow_return
+// 
 // The function returns the following values:
 // 
 // 	- goret FlowReturn 
@@ -15631,6 +16247,7 @@ func (pad *PadInstance) GetLastFlowReturn() FlowReturn {
 }
 
 // GetOffset wraps gst_pad_get_offset
+// 
 // The function returns the following values:
 // 
 // 	- goret int64 
@@ -15654,6 +16271,7 @@ func (pad *PadInstance) GetOffset() int64 {
 }
 
 // GetPadTemplate wraps gst_pad_get_pad_template
+// 
 // The function returns the following values:
 // 
 // 	- goret PadTemplate (nullable) 
@@ -15678,6 +16296,7 @@ func (pad *PadInstance) GetPadTemplate() PadTemplate {
 }
 
 // GetPadTemplateCaps wraps gst_pad_get_pad_template_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -15700,6 +16319,7 @@ func (pad *PadInstance) GetPadTemplateCaps() *Caps {
 }
 
 // GetParentElement wraps gst_pad_get_parent_element
+// 
 // The function returns the following values:
 // 
 // 	- goret Element (nullable) 
@@ -15725,6 +16345,7 @@ func (pad *PadInstance) GetParentElement() Element {
 }
 
 // GetPeer wraps gst_pad_get_peer
+// 
 // The function returns the following values:
 // 
 // 	- goret Pad (nullable) 
@@ -15814,6 +16435,7 @@ func (pad *PadInstance) GetRange(offset uint64, size uint) (*Buffer, FlowReturn)
 }
 
 // GetSingleInternalLink wraps gst_pad_get_single_internal_link
+// 
 // The function returns the following values:
 // 
 // 	- goret Pad (nullable) 
@@ -15876,6 +16498,7 @@ func (pad *PadInstance) GetStickyEvent(eventType EventType, idx uint) *Event {
 }
 
 // GetStream wraps gst_pad_get_stream
+// 
 // The function returns the following values:
 // 
 // 	- goret Stream (nullable) 
@@ -15904,6 +16527,7 @@ func (pad *PadInstance) GetStream() Stream {
 }
 
 // GetStreamID wraps gst_pad_get_stream_id
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -15936,6 +16560,7 @@ func (pad *PadInstance) GetStreamID() string {
 }
 
 // GetTaskState wraps gst_pad_get_task_state
+// 
 // The function returns the following values:
 // 
 // 	- goret TaskState 
@@ -15959,6 +16584,7 @@ func (pad *PadInstance) GetTaskState() TaskState {
 }
 
 // HasCurrentCaps wraps gst_pad_has_current_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -15983,6 +16609,7 @@ func (pad *PadInstance) HasCurrentCaps() bool {
 }
 
 // IsActive wraps gst_pad_is_active
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -16007,6 +16634,7 @@ func (pad *PadInstance) IsActive() bool {
 }
 
 // IsBlocked wraps gst_pad_is_blocked
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -16033,6 +16661,7 @@ func (pad *PadInstance) IsBlocked() bool {
 }
 
 // IsBlocking wraps gst_pad_is_blocking
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -16058,6 +16687,7 @@ func (pad *PadInstance) IsBlocking() bool {
 }
 
 // IsLinked wraps gst_pad_is_linked
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -16082,6 +16712,7 @@ func (pad *PadInstance) IsLinked() bool {
 }
 
 // IterateInternalLinks wraps gst_pad_iterate_internal_links
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator (nullable) 
@@ -16320,6 +16951,7 @@ func (pad *PadInstance) MarkReconfigure() {
 }
 
 // NeedsReconfigure wraps gst_pad_needs_reconfigure
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -16345,6 +16977,7 @@ func (pad *PadInstance) NeedsReconfigure() bool {
 }
 
 // PauseTask wraps gst_pad_pause_task
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -17305,6 +17938,7 @@ func (pad *PadInstance) StartTask(fn TaskFunction) bool {
 }
 
 // StopTask wraps gst_pad_stop_task
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -17423,12 +18057,48 @@ func (pad *PadInstance) UseFixedCaps() {
 func (o *PadInstance) ConnectLinked(fn func(Pad, Pad)) gobject.SignalHandle {
 	return o.Connect("linked", fn)
 }
+
 // ConnectUnlinked connects the provided callback to the "unlinked" signal
 //
 // Signals that a pad has been unlinked from the peer pad.
 func (o *PadInstance) ConnectUnlinked(fn func(Pad, Pad)) gobject.SignalHandle {
 	return o.Connect("unlinked", fn)
 }
+
+// PadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type PadOverrides[Instance Pad] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// Linked allows you to override the implementation of the virtual method linked.
+	// The function takes the following parameters:
+	// 
+	// 	- peer Pad 
+	Linked func(Instance, Pad)
+	// Unlinked allows you to override the implementation of the virtual method unlinked.
+	// The function takes the following parameters:
+	// 
+	// 	- peer Pad 
+	Unlinked func(Instance, Pad)
+}
+
+// UnsafeApplyPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyPadOverrides[Instance Pad](gclass unsafe.Pointer, overrides PadOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstPadClass)(gclass)
+
+	if overrides.Linked != nil {
+		pclass.linked = (*[0]byte)(C._gotk4_gst1_Pad_linked)
+	}
+
+	if overrides.Unlinked != nil {
+		pclass.unlinked = (*[0]byte)(C._gotk4_gst1_Pad_unlinked)
+	}
+}
+
 // PadTemplateInstance is the instance type used by all types extending GstPadTemplate. It is used internally by the bindings. Users should use the interface [PadTemplate] instead.
 type PadTemplateInstance struct {
 	_ [0]func() // equal guard
@@ -17504,6 +18174,7 @@ type PadTemplate interface {
 	upcastToGstPadTemplate() *PadTemplateInstance
 
 	// GetCaps wraps gst_pad_template_get_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Caps 
@@ -17511,6 +18182,7 @@ type PadTemplate interface {
 	// Gets the capabilities of the pad template.
 	GetCaps() *Caps
 	// GetDocumentationCaps wraps gst_pad_template_get_documentation_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Caps 
@@ -17704,6 +18376,7 @@ func NewPadTemplateWithGType(nameTemplate string, direction PadDirection, presen
 }
 
 // GetCaps wraps gst_pad_template_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -17726,6 +18399,7 @@ func (templ *PadTemplateInstance) GetCaps() *Caps {
 }
 
 // GetDocumentationCaps wraps gst_pad_template_get_documentation_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -17794,6 +18468,32 @@ func (templ *PadTemplateInstance) SetDocumentationCaps(caps *Caps) {
 func (o *PadTemplateInstance) ConnectPadCreated(fn func(PadTemplate, Pad)) gobject.SignalHandle {
 	return o.Connect("pad-created", fn)
 }
+
+// PadTemplateOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type PadTemplateOverrides[Instance PadTemplate] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// PadCreated allows you to override the implementation of the virtual method pad_created.
+	// The function takes the following parameters:
+	// 
+	// 	- pad Pad: the #GstPad that created it 
+	PadCreated func(Instance, Pad)
+}
+
+// UnsafeApplyPadTemplateOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyPadTemplateOverrides[Instance PadTemplate](gclass unsafe.Pointer, overrides PadTemplateOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstPadTemplateClass)(gclass)
+
+	if overrides.PadCreated != nil {
+		pclass.pad_created = (*[0]byte)(C._gotk4_gst1_PadTemplate_pad_created)
+	}
+}
+
 // PluginInstance is the instance type used by all types extending GstPlugin. It is used internally by the bindings. Users should use the interface [Plugin] instead.
 type PluginInstance struct {
 	_ [0]func() // equal guard
@@ -17902,6 +18602,7 @@ type Plugin interface {
 	// 	- message string: the status warning message 
 	AddStatusWarning(string)
 	// GetCacheData wraps gst_plugin_get_cache_data
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Structure (nullable) 
@@ -17910,6 +18611,7 @@ type Plugin interface {
 	// stored. This is the case when the registry is getting rebuilt.
 	GetCacheData() *Structure
 	// GetDescription wraps gst_plugin_get_description
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -17917,6 +18619,7 @@ type Plugin interface {
 	// Get the long descriptive name of the plugin
 	GetDescription() string
 	// GetFilename wraps gst_plugin_get_filename
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -17924,6 +18627,7 @@ type Plugin interface {
 	// get the filename of the plugin
 	GetFilename() string
 	// GetLicense wraps gst_plugin_get_license
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -17931,6 +18635,7 @@ type Plugin interface {
 	// get the license of the plugin
 	GetLicense() string
 	// GetName wraps gst_plugin_get_name
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -17938,6 +18643,7 @@ type Plugin interface {
 	// Get the short name of the plugin
 	GetName() string
 	// GetOrigin wraps gst_plugin_get_origin
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -17945,6 +18651,7 @@ type Plugin interface {
 	// get the URL where the plugin comes from
 	GetOrigin() string
 	// GetPackage wraps gst_plugin_get_package
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -17952,6 +18659,7 @@ type Plugin interface {
 	// get the package the plugin belongs to.
 	GetPackage() string
 	// GetReleaseDateString wraps gst_plugin_get_release_date_string
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -17966,6 +18674,7 @@ type Plugin interface {
 	// There may be plugins that do not have a valid release date set on them.
 	GetReleaseDateString() string
 	// GetSource wraps gst_plugin_get_source
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -17973,21 +18682,25 @@ type Plugin interface {
 	// get the source module the plugin belongs to.
 	GetSource() string
 	// GetStatusErrors wraps gst_plugin_get_status_errors
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string (nullable) 
 	GetStatusErrors() []string
 	// GetStatusInfos wraps gst_plugin_get_status_infos
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string (nullable) 
 	GetStatusInfos() []string
 	// GetStatusWarnings wraps gst_plugin_get_status_warnings
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string (nullable) 
 	GetStatusWarnings() []string
 	// GetVersion wraps gst_plugin_get_version
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -17995,6 +18708,7 @@ type Plugin interface {
 	// get the version of the plugin
 	GetVersion() string
 	// IsLoaded wraps gst_plugin_is_loaded
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -18002,6 +18716,7 @@ type Plugin interface {
 	// queries if the plugin is loaded into memory
 	IsLoaded() bool
 	// Load wraps gst_plugin_load
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Plugin (nullable) 
@@ -18386,6 +19101,7 @@ func (plugin *PluginInstance) AddStatusWarning(message string) {
 }
 
 // GetCacheData wraps gst_plugin_get_cache_data
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure (nullable) 
@@ -18411,6 +19127,7 @@ func (plugin *PluginInstance) GetCacheData() *Structure {
 }
 
 // GetDescription wraps gst_plugin_get_description
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -18433,6 +19150,7 @@ func (plugin *PluginInstance) GetDescription() string {
 }
 
 // GetFilename wraps gst_plugin_get_filename
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -18457,6 +19175,7 @@ func (plugin *PluginInstance) GetFilename() string {
 }
 
 // GetLicense wraps gst_plugin_get_license
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -18479,6 +19198,7 @@ func (plugin *PluginInstance) GetLicense() string {
 }
 
 // GetName wraps gst_plugin_get_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -18501,6 +19221,7 @@ func (plugin *PluginInstance) GetName() string {
 }
 
 // GetOrigin wraps gst_plugin_get_origin
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -18523,6 +19244,7 @@ func (plugin *PluginInstance) GetOrigin() string {
 }
 
 // GetPackage wraps gst_plugin_get_package
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -18545,6 +19267,7 @@ func (plugin *PluginInstance) GetPackage() string {
 }
 
 // GetReleaseDateString wraps gst_plugin_get_release_date_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -18576,6 +19299,7 @@ func (plugin *PluginInstance) GetReleaseDateString() string {
 }
 
 // GetSource wraps gst_plugin_get_source
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -18598,6 +19322,7 @@ func (plugin *PluginInstance) GetSource() string {
 }
 
 // GetStatusErrors wraps gst_plugin_get_status_errors
+// 
 // The function returns the following values:
 // 
 // 	- goret []string (nullable) 
@@ -18620,6 +19345,7 @@ func (plugin *PluginInstance) GetStatusErrors() []string {
 }
 
 // GetStatusInfos wraps gst_plugin_get_status_infos
+// 
 // The function returns the following values:
 // 
 // 	- goret []string (nullable) 
@@ -18642,6 +19368,7 @@ func (plugin *PluginInstance) GetStatusInfos() []string {
 }
 
 // GetStatusWarnings wraps gst_plugin_get_status_warnings
+// 
 // The function returns the following values:
 // 
 // 	- goret []string (nullable) 
@@ -18664,6 +19391,7 @@ func (plugin *PluginInstance) GetStatusWarnings() []string {
 }
 
 // GetVersion wraps gst_plugin_get_version
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -18686,6 +19414,7 @@ func (plugin *PluginInstance) GetVersion() string {
 }
 
 // IsLoaded wraps gst_plugin_is_loaded
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -18710,6 +19439,7 @@ func (plugin *PluginInstance) IsLoaded() bool {
 }
 
 // Load wraps gst_plugin_load
+// 
 // The function returns the following values:
 // 
 // 	- goret Plugin (nullable) 
@@ -18800,6 +19530,7 @@ type PluginFeature interface {
 	// the nano version from the string and do this check that way if needed.
 	CheckVersion(uint, uint, uint) bool
 	// GetPlugin wraps gst_plugin_feature_get_plugin
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Plugin (nullable) 
@@ -18807,6 +19538,7 @@ type PluginFeature interface {
 	// Get the plugin that provides this feature.
 	GetPlugin() Plugin
 	// GetPluginName wraps gst_plugin_feature_get_plugin_name
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -18814,6 +19546,7 @@ type PluginFeature interface {
 	// Get the name of the plugin that provides this feature.
 	GetPluginName() string
 	// GetRank wraps gst_plugin_feature_get_rank
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -18821,6 +19554,7 @@ type PluginFeature interface {
 	// Gets the rank of a plugin feature.
 	GetRank() uint
 	// Load wraps gst_plugin_feature_load
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret PluginFeature (nullable) 
@@ -18970,6 +19704,7 @@ func (feature *PluginFeatureInstance) CheckVersion(minMajor uint, minMinor uint,
 }
 
 // GetPlugin wraps gst_plugin_feature_get_plugin
+// 
 // The function returns the following values:
 // 
 // 	- goret Plugin (nullable) 
@@ -18994,6 +19729,7 @@ func (feature *PluginFeatureInstance) GetPlugin() Plugin {
 }
 
 // GetPluginName wraps gst_plugin_feature_get_plugin_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -19018,6 +19754,7 @@ func (feature *PluginFeatureInstance) GetPluginName() string {
 }
 
 // GetRank wraps gst_plugin_feature_get_rank
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -19040,6 +19777,7 @@ func (feature *PluginFeatureInstance) GetRank() uint {
 }
 
 // Load wraps gst_plugin_feature_load
+// 
 // The function returns the following values:
 // 
 // 	- goret PluginFeature (nullable) 
@@ -19108,6 +19846,7 @@ type ProxyPad interface {
 	upcastToGstProxyPad() *ProxyPadInstance
 
 	// GetInternal wraps gst_proxy_pad_get_internal
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ProxyPad (nullable) 
@@ -19315,6 +20054,7 @@ func ProxyPadIterateInternalLinksDefault(pad Pad, parent Object) *Iterator {
 }
 
 // GetInternal wraps gst_proxy_pad_get_internal
+// 
 // The function returns the following values:
 // 
 // 	- goret ProxyPad (nullable) 
@@ -19339,6 +20079,20 @@ func (pad *ProxyPadInstance) GetInternal() ProxyPad {
 	}
 
 	return goret
+}
+
+// ProxyPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ProxyPadOverrides[Instance ProxyPad] struct {
+	// PadOverrides allows you to override virtual methods from the parent class Pad
+	PadOverrides[Instance]
+
+}
+
+// UnsafeApplyProxyPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyProxyPadOverrides[Instance ProxyPad](gclass unsafe.Pointer, overrides ProxyPadOverrides[Instance]) {
+	UnsafeApplyPadOverrides(gclass, overrides.PadOverrides)
 }
 
 // RegistryInstance is the instance type used by all types extending GstRegistry. It is used internally by the bindings. Users should use the interface [Registry] instead.
@@ -19527,6 +20281,7 @@ type Registry interface {
 	// Retrieves a #GList of features of the plugin with name @name.
 	GetFeatureListByPlugin(string) []PluginFeature
 	// GetFeatureListCookie wraps gst_registry_get_feature_list_cookie
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint32 
@@ -19535,6 +20290,7 @@ type Registry interface {
 	// every time a feature is added or removed from the registry.
 	GetFeatureListCookie() uint32
 	// GetPluginList wraps gst_registry_get_plugin_list
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []Plugin 
@@ -19668,6 +20424,7 @@ func UnsafeRegistryToGlibFull(c Registry) unsafe.Pointer {
 }
 
 // RegistryForkIsEnabled wraps gst_registry_fork_is_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -19713,6 +20470,7 @@ func RegistryForkSetEnabled(enabled bool) {
 }
 
 // RegistryGet wraps gst_registry_get
+// 
 // The function returns the following values:
 // 
 // 	- goret Registry 
@@ -20045,6 +20803,7 @@ func (registry *RegistryInstance) GetFeatureListByPlugin(name string) []PluginFe
 }
 
 // GetFeatureListCookie wraps gst_registry_get_feature_list_cookie
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -20068,6 +20827,7 @@ func (registry *RegistryInstance) GetFeatureListCookie() uint32 {
 }
 
 // GetPluginList wraps gst_registry_get_plugin_list
+// 
 // The function returns the following values:
 // 
 // 	- goret []Plugin 
@@ -20297,6 +21057,7 @@ func (registry *RegistryInstance) ScanPath(path string) bool {
 func (o *RegistryInstance) ConnectFeatureAdded(fn func(Registry, PluginFeature)) gobject.SignalHandle {
 	return o.Connect("feature-added", fn)
 }
+
 // ConnectPluginAdded connects the provided callback to the "plugin-added" signal
 //
 // Signals that a plugin has been added to the registry (possibly
@@ -20304,6 +21065,21 @@ func (o *RegistryInstance) ConnectFeatureAdded(fn func(Registry, PluginFeature))
 func (o *RegistryInstance) ConnectPluginAdded(fn func(Registry, Plugin)) gobject.SignalHandle {
 	return o.Connect("plugin-added", fn)
 }
+
+// RegistryOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type RegistryOverrides[Instance Registry] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyRegistryOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyRegistryOverrides[Instance Registry](gclass unsafe.Pointer, overrides RegistryOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // StreamInstance is the instance type used by all types extending GstStream. It is used internally by the bindings. Users should use the interface [Stream] instead.
 type StreamInstance struct {
 	_ [0]func() // equal guard
@@ -20331,6 +21107,7 @@ type Stream interface {
 	upcastToGstStream() *StreamInstance
 
 	// GetCaps wraps gst_stream_get_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Caps (nullable) 
@@ -20338,6 +21115,7 @@ type Stream interface {
 	// Retrieve the caps for @stream, if any
 	GetCaps() *Caps
 	// GetStreamFlags wraps gst_stream_get_stream_flags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret StreamFlags 
@@ -20345,6 +21123,7 @@ type Stream interface {
 	// Retrieve the current stream flags for @stream
 	GetStreamFlags() StreamFlags
 	// GetStreamID wraps gst_stream_get_stream_id
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -20352,6 +21131,7 @@ type Stream interface {
 	// Returns the stream ID of @stream.
 	GetStreamID() string
 	// GetStreamType wraps gst_stream_get_stream_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret StreamType 
@@ -20359,6 +21139,7 @@ type Stream interface {
 	// Retrieve the stream type for @stream
 	GetStreamType() StreamType
 	// GetTags wraps gst_stream_get_tags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *TagList (nullable) 
@@ -20484,6 +21265,7 @@ func NewStream(streamId string, caps *Caps, typ StreamType, flags StreamFlags) S
 }
 
 // GetCaps wraps gst_stream_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps (nullable) 
@@ -20508,6 +21290,7 @@ func (stream *StreamInstance) GetCaps() *Caps {
 }
 
 // GetStreamFlags wraps gst_stream_get_stream_flags
+// 
 // The function returns the following values:
 // 
 // 	- goret StreamFlags 
@@ -20530,6 +21313,7 @@ func (stream *StreamInstance) GetStreamFlags() StreamFlags {
 }
 
 // GetStreamID wraps gst_stream_get_stream_id
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -20554,6 +21338,7 @@ func (stream *StreamInstance) GetStreamID() string {
 }
 
 // GetStreamType wraps gst_stream_get_stream_type
+// 
 // The function returns the following values:
 // 
 // 	- goret StreamType 
@@ -20576,6 +21361,7 @@ func (stream *StreamInstance) GetStreamType() StreamType {
 }
 
 // GetTags wraps gst_stream_get_tags
+// 
 // The function returns the following values:
 // 
 // 	- goret *TagList (nullable) 
@@ -20679,6 +21465,20 @@ func (stream *StreamInstance) SetTags(tags *TagList) {
 	runtime.KeepAlive(tags)
 }
 
+// StreamOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type StreamOverrides[Instance Stream] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyStreamOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyStreamOverrides[Instance Stream](gclass unsafe.Pointer, overrides StreamOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // StreamCollectionInstance is the instance type used by all types extending GstStreamCollection. It is used internally by the bindings. Users should use the interface [StreamCollection] instead.
 type StreamCollectionInstance struct {
 	_ [0]func() // equal guard
@@ -20722,6 +21522,7 @@ type StreamCollection interface {
 	// Add the given @stream to the @collection.
 	AddStream(Stream) bool
 	// GetSize wraps gst_stream_collection_get_size
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -20743,6 +21544,7 @@ type StreamCollection interface {
 	// The caller should not modify the returned #GstStream
 	GetStream(uint) Stream
 	// GetUpstreamID wraps gst_stream_collection_get_upstream_id
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -20852,6 +21654,7 @@ func (collection *StreamCollectionInstance) AddStream(stream Stream) bool {
 }
 
 // GetSize wraps gst_stream_collection_get_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -20908,6 +21711,7 @@ func (collection *StreamCollectionInstance) GetStream(index uint) Stream {
 }
 
 // GetUpstreamID wraps gst_stream_collection_get_upstream_id
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -20929,6 +21733,20 @@ func (collection *StreamCollectionInstance) GetUpstreamID() string {
 	}
 
 	return goret
+}
+
+// StreamCollectionOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type StreamCollectionOverrides[Instance StreamCollection] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyStreamCollectionOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyStreamCollectionOverrides[Instance StreamCollection](gclass unsafe.Pointer, overrides StreamCollectionOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
 // TaskInstance is the instance type used by all types extending GstTask. It is used internally by the bindings. Users should use the interface [Task] instead.
@@ -20985,6 +21803,7 @@ type Task interface {
 	upcastToGstTask() *TaskInstance
 
 	// GetPool wraps gst_task_get_pool
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret TaskPool 
@@ -20995,6 +21814,7 @@ type Task interface {
 	// MT safe.
 	GetPool() TaskPool
 	// GetState wraps gst_task_get_state
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret TaskState 
@@ -21002,6 +21822,7 @@ type Task interface {
 	// Get the current state of the task.
 	GetState() TaskState
 	// Join wraps gst_task_join
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -21016,6 +21837,7 @@ type Task interface {
 	// g_warning.
 	Join() bool
 	// Pause wraps gst_task_pause
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -21026,6 +21848,7 @@ type Task interface {
 	// the paused state.
 	Pause() bool
 	// Resume wraps gst_task_resume
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -21063,6 +21886,7 @@ type Task interface {
 	// MT safe.
 	SetState(TaskState) bool
 	// Start wraps gst_task_start
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -21071,6 +21895,7 @@ type Task interface {
 	// gst_task_set_lock() or this function will return %FALSE.
 	Start() bool
 	// Stop wraps gst_task_stop
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -21174,6 +21999,7 @@ func TaskCleanupAll() {
 }
 
 // GetPool wraps gst_task_get_pool
+// 
 // The function returns the following values:
 // 
 // 	- goret TaskPool 
@@ -21199,6 +22025,7 @@ func (task *TaskInstance) GetPool() TaskPool {
 }
 
 // GetState wraps gst_task_get_state
+// 
 // The function returns the following values:
 // 
 // 	- goret TaskState 
@@ -21221,6 +22048,7 @@ func (task *TaskInstance) GetState() TaskState {
 }
 
 // Join wraps gst_task_join
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -21252,6 +22080,7 @@ func (task *TaskInstance) Join() bool {
 }
 
 // Pause wraps gst_task_pause
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -21279,6 +22108,7 @@ func (task *TaskInstance) Pause() bool {
 }
 
 // Resume wraps gst_task_resume
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -21364,6 +22194,7 @@ func (task *TaskInstance) SetState(state TaskState) bool {
 }
 
 // Start wraps gst_task_start
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -21389,6 +22220,7 @@ func (task *TaskInstance) Start() bool {
 }
 
 // Stop wraps gst_task_stop
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -21412,6 +22244,20 @@ func (task *TaskInstance) Stop() bool {
 	}
 
 	return goret
+}
+
+// TaskOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TaskOverrides[Instance Task] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyTaskOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTaskOverrides[Instance Task](gclass unsafe.Pointer, overrides TaskOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
 }
 
 // TaskPoolInstance is the instance type used by all types extending GstTaskPool. It is used internally by the bindings. Users should use the interface [TaskPool] instead.
@@ -21440,6 +22286,7 @@ type TaskPool interface {
 	// MT safe.
 	Cleanup()
 	// Prepare wraps gst_task_pool_prepare
+	// 
 	// The function returns the following values:
 	// 
 	// 	- _goerr error (nullable): an error 
@@ -21489,6 +22336,7 @@ func UnsafeTaskPoolToGlibFull(c TaskPool) unsafe.Pointer {
 }
 
 // NewTaskPool wraps gst_task_pool_new
+// 
 // The function returns the following values:
 // 
 // 	- goret TaskPool 
@@ -21523,6 +22371,7 @@ func (pool *TaskPoolInstance) Cleanup() {
 }
 
 // Prepare wraps gst_task_pool_prepare
+// 
 // The function returns the following values:
 // 
 // 	- _goerr error (nullable): an error 
@@ -21546,6 +22395,37 @@ func (pool *TaskPoolInstance) Prepare() error {
 	}
 
 	return _goerr
+}
+
+// TaskPoolOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TaskPoolOverrides[Instance TaskPool] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// Cleanup allows you to override the implementation of the virtual method cleanup.
+	Cleanup func(Instance)
+	// Prepare allows you to override the implementation of the virtual method prepare.
+	// The function returns the following values:
+	// 
+	// 	- _goerr error (nullable): an error 
+	Prepare func(Instance) error
+}
+
+// UnsafeApplyTaskPoolOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTaskPoolOverrides[Instance TaskPool](gclass unsafe.Pointer, overrides TaskPoolOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstTaskPoolClass)(gclass)
+
+	if overrides.Cleanup != nil {
+		pclass.cleanup = (*[0]byte)(C._gotk4_gst1_TaskPool_cleanup)
+	}
+
+	if overrides.Prepare != nil {
+		pclass.prepare = (*[0]byte)(C._gotk4_gst1_TaskPool_prepare)
+	}
 }
 
 // TracerInstance is the instance type used by all types extending GstTracer. It is used internally by the bindings. Users should use the interface [Tracer] instead.
@@ -21646,6 +22526,20 @@ func TracerRegister(plugin Plugin, name string, typ gobject.Type) bool {
 	return goret
 }
 
+// TracerOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TracerOverrides[Instance Tracer] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyTracerOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTracerOverrides[Instance Tracer](gclass unsafe.Pointer, overrides TracerOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // TracerFactoryInstance is the instance type used by all types extending GstTracerFactory. It is used internally by the bindings. Users should use the interface [TracerFactory] instead.
 type TracerFactoryInstance struct {
 	_ [0]func() // equal guard
@@ -21663,6 +22557,7 @@ type TracerFactory interface {
 	upcastToGstTracerFactory() *TracerFactoryInstance
 
 	// GetTracerType wraps gst_tracer_factory_get_tracer_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gobject.Type 
@@ -21714,6 +22609,7 @@ func UnsafeTracerFactoryToGlibFull(c TracerFactory) unsafe.Pointer {
 }
 
 // TracerFactoryGetList wraps gst_tracer_factory_get_list
+// 
 // The function returns the following values:
 // 
 // 	- goret []TracerFactory 
@@ -21744,6 +22640,7 @@ func TracerFactoryGetList() []TracerFactory {
 }
 
 // GetTracerType wraps gst_tracer_factory_get_tracer_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -21895,6 +22792,7 @@ type TypeFindFactory interface {
 	// Calls the #GstTypeFindFunction associated with this factory.
 	CallFunction(*TypeFind)
 	// GetCaps wraps gst_type_find_factory_get_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Caps (nullable) 
@@ -21902,6 +22800,7 @@ type TypeFindFactory interface {
 	// Gets the #GstCaps associated with a typefind factory.
 	GetCaps() *Caps
 	// GetExtensions wraps gst_type_find_factory_get_extensions
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string (nullable) 
@@ -21912,6 +22811,7 @@ type TypeFindFactory interface {
 	// a 0-length list.
 	GetExtensions() []string
 	// HasFunction wraps gst_type_find_factory_has_function
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -21963,6 +22863,7 @@ func UnsafeTypeFindFactoryToGlibFull(c TypeFindFactory) unsafe.Pointer {
 }
 
 // TypeFindFactoryGetList wraps gst_type_find_factory_get_list
+// 
 // The function returns the following values:
 // 
 // 	- goret []TypeFindFactory 
@@ -22014,6 +22915,7 @@ func (factory *TypeFindFactoryInstance) CallFunction(find *TypeFind) {
 }
 
 // GetCaps wraps gst_type_find_factory_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps (nullable) 
@@ -22038,6 +22940,7 @@ func (factory *TypeFindFactoryInstance) GetCaps() *Caps {
 }
 
 // GetExtensions wraps gst_type_find_factory_get_extensions
+// 
 // The function returns the following values:
 // 
 // 	- goret []string (nullable) 
@@ -22065,6 +22968,7 @@ func (factory *TypeFindFactoryInstance) GetExtensions() []string {
 }
 
 // HasFunction wraps gst_type_find_factory_has_function
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -22331,6 +23235,45 @@ func (allocator *AllocatorInstance) SetDefault() {
 	runtime.KeepAlive(allocator)
 }
 
+// AllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AllocatorOverrides[Instance Allocator] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// Alloc allows you to override the implementation of the virtual method alloc.
+	// The function takes the following parameters:
+	// 
+	// 	- size uint: size of the visible memory area 
+	// 	- params *AllocationParams (nullable): optional parameters 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *Memory (nullable) 
+	Alloc func(Instance, uint, *AllocationParams) *Memory
+	// Free allows you to override the implementation of the virtual method free.
+	// The function takes the following parameters:
+	// 
+	// 	- memory *Memory: the memory to free 
+	Free func(Instance, *Memory)
+}
+
+// UnsafeApplyAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, overrides AllocatorOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstAllocatorClass)(gclass)
+
+	if overrides.Alloc != nil {
+		pclass.alloc = (*[0]byte)(C._gotk4_gst1_Allocator_alloc)
+	}
+
+	if overrides.Free != nil {
+		pclass.free = (*[0]byte)(C._gotk4_gst1_Allocator_free)
+	}
+}
+
 // BufferPoolInstance is the instance type used by all types extending GstBufferPool. It is used internally by the bindings. Users should use the interface [BufferPool] instead.
 type BufferPoolInstance struct {
 	_ [0]func() // equal guard
@@ -22398,6 +23341,7 @@ type BufferPool interface {
 	// @params can contain optional parameters to influence the allocation.
 	AcquireBuffer(*BufferPoolAcquireParams) (*Buffer, FlowReturn)
 	// GetConfig wraps gst_buffer_pool_get_config
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Structure 
@@ -22406,6 +23350,7 @@ type BufferPool interface {
 	// can be modified and used for the gst_buffer_pool_set_config() call.
 	GetConfig() *Structure
 	// GetOptions wraps gst_buffer_pool_get_options
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -22427,6 +23372,7 @@ type BufferPool interface {
 	// Checks if the bufferpool supports @option.
 	HasOption(string) bool
 	// IsActive wraps gst_buffer_pool_is_active
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -22543,6 +23489,7 @@ func UnsafeBufferPoolToGlibFull(c BufferPool) unsafe.Pointer {
 }
 
 // NewBufferPool wraps gst_buffer_pool_new
+// 
 // The function returns the following values:
 // 
 // 	- goret BufferPool 
@@ -22939,6 +23886,7 @@ func (pool *BufferPoolInstance) AcquireBuffer(params *BufferPoolAcquireParams) (
 }
 
 // GetConfig wraps gst_buffer_pool_get_config
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure 
@@ -22962,6 +23910,7 @@ func (pool *BufferPoolInstance) GetConfig() *Structure {
 }
 
 // GetOptions wraps gst_buffer_pool_get_options
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -23021,6 +23970,7 @@ func (pool *BufferPoolInstance) HasOption(option string) bool {
 }
 
 // IsActive wraps gst_buffer_pool_is_active
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -23179,6 +24129,129 @@ func (pool *BufferPoolInstance) SetFlushing(flushing bool) {
 	runtime.KeepAlive(flushing)
 }
 
+// BufferPoolOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type BufferPoolOverrides[Instance BufferPool] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// AcquireBuffer allows you to override the implementation of the virtual method acquire_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- params *BufferPoolAcquireParams (nullable): parameters. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- buffer *Buffer (nullable): a location for a #GstBuffer 
+	// 	- goret FlowReturn 
+	AcquireBuffer func(Instance, *BufferPoolAcquireParams) (*Buffer, FlowReturn)
+	// AllocBuffer allows you to override the implementation of the virtual method alloc_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- params *BufferPoolAcquireParams (nullable): parameters. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- buffer *Buffer (nullable): a location for a #GstBuffer 
+	// 	- goret FlowReturn 
+	AllocBuffer func(Instance, *BufferPoolAcquireParams) (*Buffer, FlowReturn)
+	// FlushStart allows you to override the implementation of the virtual method flush_start.
+	FlushStart func(Instance)
+	// FlushStop allows you to override the implementation of the virtual method flush_stop.
+	FlushStop func(Instance)
+	// FreeBuffer allows you to override the implementation of the virtual method free_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *Buffer: the #GstBuffer to free 
+	FreeBuffer func(Instance, *Buffer)
+	// GetOptions allows you to override the implementation of the virtual method get_options.
+	// The function returns the following values:
+	// 
+	// 	- goret []string 
+	GetOptions func(Instance) []string
+	// ReleaseBuffer allows you to override the implementation of the virtual method release_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *Buffer: a #GstBuffer 
+	ReleaseBuffer func(Instance, *Buffer)
+	// ResetBuffer allows you to override the implementation of the virtual method reset_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *Buffer: the #GstBuffer to reset 
+	ResetBuffer func(Instance, *Buffer)
+	// SetConfig allows you to override the implementation of the virtual method set_config.
+	// The function takes the following parameters:
+	// 
+	// 	- config *Structure: a #GstStructure 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetConfig func(Instance, *Structure) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+}
+
+// UnsafeApplyBufferPoolOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, overrides BufferPoolOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstBufferPoolClass)(gclass)
+
+	if overrides.AcquireBuffer != nil {
+		pclass.acquire_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_acquire_buffer)
+	}
+
+	if overrides.AllocBuffer != nil {
+		pclass.alloc_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_alloc_buffer)
+	}
+
+	if overrides.FlushStart != nil {
+		pclass.flush_start = (*[0]byte)(C._gotk4_gst1_BufferPool_flush_start)
+	}
+
+	if overrides.FlushStop != nil {
+		pclass.flush_stop = (*[0]byte)(C._gotk4_gst1_BufferPool_flush_stop)
+	}
+
+	if overrides.FreeBuffer != nil {
+		pclass.free_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_free_buffer)
+	}
+
+	if overrides.GetOptions != nil {
+		pclass.get_options = (*[0]byte)(C._gotk4_gst1_BufferPool_get_options)
+	}
+
+	if overrides.ReleaseBuffer != nil {
+		pclass.release_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_release_buffer)
+	}
+
+	if overrides.ResetBuffer != nil {
+		pclass.reset_buffer = (*[0]byte)(C._gotk4_gst1_BufferPool_reset_buffer)
+	}
+
+	if overrides.SetConfig != nil {
+		pclass.set_config = (*[0]byte)(C._gotk4_gst1_BufferPool_set_config)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gst1_BufferPool_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gst1_BufferPool_stop)
+	}
+}
+
 // BusInstance is the instance type used by all types extending GstBus. It is used internally by the bindings. Users should use the interface [Bus] instead.
 type BusInstance struct {
 	_ [0]func() // equal guard
@@ -23304,6 +24377,7 @@ type Bus interface {
 	// @bus using gst_object_unref() after setting the bus watch.
 	AddWatchFull(int, BusFunc) uint
 	// CreateWatch wraps gst_bus_create_watch
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *glib.Source (nullable) 
@@ -23346,6 +24420,7 @@ type Bus interface {
 	// signal is marshalled to the main thread via the #GMainLoop.
 	EnableSyncMessageEmission()
 	// GetPollfd wraps gst_bus_get_pollfd
+	// 
 	// The function returns the following values:
 	// 
 	// 	- fd glib.PollFD: A GPollFD to fill 
@@ -23360,6 +24435,7 @@ type Bus interface {
 	// GstBus API, e.g. gst_bus_pop().
 	GetPollfd() glib.PollFD
 	// HavePending wraps gst_bus_have_pending
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -23368,6 +24444,7 @@ type Bus interface {
 	// should be handled.
 	HavePending() bool
 	// Peek wraps gst_bus_peek
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Message (nullable) 
@@ -23423,6 +24500,7 @@ type Bus interface {
 	// from there.
 	Poll(MessageType, ClockTime) *Message
 	// Pop wraps gst_bus_pop
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Message (nullable) 
@@ -23463,6 +24541,7 @@ type Bus interface {
 	// Removes a signal watch previously added with gst_bus_add_signal_watch().
 	RemoveSignalWatch()
 	// RemoveWatch wraps gst_bus_remove_watch
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -23585,6 +24664,7 @@ func UnsafeBusToGlibFull(c Bus) unsafe.Pointer {
 }
 
 // NewBus wraps gst_bus_new
+// 
 // The function returns the following values:
 // 
 // 	- goret Bus 
@@ -23717,6 +24797,7 @@ func (bus *BusInstance) AddWatchFull(priority int, fn BusFunc) uint {
 }
 
 // CreateWatch wraps gst_bus_create_watch
+// 
 // The function returns the following values:
 // 
 // 	- goret *glib.Source (nullable) 
@@ -23792,6 +24873,7 @@ func (bus *BusInstance) EnableSyncMessageEmission() {
 }
 
 // GetPollfd wraps gst_bus_get_pollfd
+// 
 // The function returns the following values:
 // 
 // 	- fd glib.PollFD: A GPollFD to fill 
@@ -23823,6 +24905,7 @@ func (bus *BusInstance) GetPollfd() glib.PollFD {
 }
 
 // HavePending wraps gst_bus_have_pending
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -23848,6 +24931,7 @@ func (bus *BusInstance) HavePending() bool {
 }
 
 // Peek wraps gst_bus_peek
+// 
 // The function returns the following values:
 // 
 // 	- goret *Message (nullable) 
@@ -23943,6 +25027,7 @@ func (bus *BusInstance) Poll(events MessageType, timeout ClockTime) *Message {
 }
 
 // Pop wraps gst_bus_pop
+// 
 // The function returns the following values:
 // 
 // 	- goret *Message (nullable) 
@@ -24048,6 +25133,7 @@ func (bus *BusInstance) RemoveSignalWatch() {
 }
 
 // RemoveWatch wraps gst_bus_remove_watch
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -24213,6 +25299,7 @@ func (bus *BusInstance) TimedPopFiltered(timeout ClockTime, types MessageType) *
 func (o *BusInstance) ConnectMessage(fn func(Bus, Message)) gobject.SignalHandle {
 	return o.Connect("message", fn)
 }
+
 // ConnectSyncMessage connects the provided callback to the "sync-message" signal
 //
 // A message has been posted on the bus. This signal is emitted from the
@@ -24223,6 +25310,41 @@ func (o *BusInstance) ConnectMessage(fn func(Bus, Message)) gobject.SignalHandle
 func (o *BusInstance) ConnectSyncMessage(fn func(Bus, Message)) gobject.SignalHandle {
 	return o.Connect("sync-message", fn)
 }
+
+// BusOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type BusOverrides[Instance Bus] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// Message allows you to override the implementation of the virtual method message.
+	// The function takes the following parameters:
+	// 
+	// 	- message *Message: the message that has been posted asynchronously 
+	Message func(Instance, *Message)
+	// SyncMessage allows you to override the implementation of the virtual method sync_message.
+	// The function takes the following parameters:
+	// 
+	// 	- message *Message: the message that has been posted synchronously 
+	SyncMessage func(Instance, *Message)
+}
+
+// UnsafeApplyBusOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyBusOverrides[Instance Bus](gclass unsafe.Pointer, overrides BusOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstBusClass)(gclass)
+
+	if overrides.Message != nil {
+		pclass.message = (*[0]byte)(C._gotk4_gst1_Bus_message)
+	}
+
+	if overrides.SyncMessage != nil {
+		pclass.sync_message = (*[0]byte)(C._gotk4_gst1_Bus_sync_message)
+	}
+}
+
 // ClockInstance is the instance type used by all types extending GstClock. It is used internally by the bindings. Users should use the interface [Clock] instead.
 type ClockInstance struct {
 	_ [0]func() // equal guard
@@ -24396,6 +25518,7 @@ type Clock interface {
 	// Note: The @clock parameter is unused and can be NULL
 	AdjustWithCalibration(ClockTime, ClockTime, ClockTime, ClockTime, ClockTime) ClockTime
 	// GetCalibration wraps gst_clock_get_calibration
+	// 
 	// The function returns the following values:
 	// 
 	// 	- internal ClockTime: a location to store the internal time 
@@ -24410,6 +25533,7 @@ type Clock interface {
 	// caller is not interested in the values.
 	GetCalibration() (ClockTime, ClockTime, ClockTime, ClockTime)
 	// GetInternalTime wraps gst_clock_get_internal_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -24418,6 +25542,7 @@ type Clock interface {
 	// unadjusted for the offset and the rate.
 	GetInternalTime() ClockTime
 	// GetMaster wraps gst_clock_get_master
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Clock (nullable) 
@@ -24426,6 +25551,7 @@ type Clock interface {
 	// not slaved to any master clock.
 	GetMaster() Clock
 	// GetResolution wraps gst_clock_get_resolution
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -24434,6 +25560,7 @@ type Clock interface {
 	// of the values returned by gst_clock_get_time().
 	GetResolution() ClockTime
 	// GetTime wraps gst_clock_get_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -24443,6 +25570,7 @@ type Clock interface {
 	// offset and rate.
 	GetTime() ClockTime
 	// GetTimeout wraps gst_clock_get_timeout
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -24450,6 +25578,7 @@ type Clock interface {
 	// Gets the amount of time that master and slave clocks are sampled.
 	GetTimeout() ClockTime
 	// IsSynced wraps gst_clock_is_synced
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -25187,6 +26316,7 @@ func (clock *ClockInstance) AdjustWithCalibration(internalTarget ClockTime, cint
 }
 
 // GetCalibration wraps gst_clock_get_calibration
+// 
 // The function returns the following values:
 // 
 // 	- internal ClockTime: a location to store the internal time 
@@ -25225,6 +26355,7 @@ func (clock *ClockInstance) GetCalibration() (ClockTime, ClockTime, ClockTime, C
 }
 
 // GetInternalTime wraps gst_clock_get_internal_time
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -25248,6 +26379,7 @@ func (clock *ClockInstance) GetInternalTime() ClockTime {
 }
 
 // GetMaster wraps gst_clock_get_master
+// 
 // The function returns the following values:
 // 
 // 	- goret Clock (nullable) 
@@ -25273,6 +26405,7 @@ func (clock *ClockInstance) GetMaster() Clock {
 }
 
 // GetResolution wraps gst_clock_get_resolution
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -25296,6 +26429,7 @@ func (clock *ClockInstance) GetResolution() ClockTime {
 }
 
 // GetTime wraps gst_clock_get_time
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -25320,6 +26454,7 @@ func (clock *ClockInstance) GetTime() ClockTime {
 }
 
 // GetTimeout wraps gst_clock_get_timeout
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -25342,6 +26477,7 @@ func (clock *ClockInstance) GetTimeout() ClockTime {
 }
 
 // IsSynced wraps gst_clock_is_synced
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -25822,6 +26958,91 @@ func (clock *ClockInstance) WaitForSync(timeout ClockTime) bool {
 func (o *ClockInstance) ConnectSynced(fn func(Clock, bool)) gobject.SignalHandle {
 	return o.Connect("synced", fn)
 }
+
+// ClockOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ClockOverrides[Instance Clock] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// ChangeResolution allows you to override the implementation of the virtual method change_resolution.
+	// The function takes the following parameters:
+	// 
+	// 	- oldResolution ClockTime: the previous resolution 
+	// 	- newResolution ClockTime: the new resolution 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret ClockTime 
+	ChangeResolution func(Instance, ClockTime, ClockTime) ClockTime
+	// GetInternalTime allows you to override the implementation of the virtual method get_internal_time.
+	// The function returns the following values:
+	// 
+	// 	- goret ClockTime 
+	GetInternalTime func(Instance) ClockTime
+	// GetResolution allows you to override the implementation of the virtual method get_resolution.
+	// The function returns the following values:
+	// 
+	// 	- goret ClockTime 
+	GetResolution func(Instance) ClockTime
+	// Unschedule allows you to override the implementation of the virtual method unschedule.
+	// The function takes the following parameters:
+	// 
+	// 	- entry *ClockEntry: the entry to unschedule 
+	Unschedule func(Instance, *ClockEntry)
+	// Wait allows you to override the implementation of the virtual method wait.
+	// The function takes the following parameters:
+	// 
+	// 	- entry *ClockEntry: the entry to wait on 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- jitter ClockTimeDiff: a pointer that will contain the jitter 
+	// 	- goret ClockReturn 
+	Wait func(Instance, *ClockEntry) (ClockTimeDiff, ClockReturn)
+	// WaitAsync allows you to override the implementation of the virtual method wait_async.
+	// The function takes the following parameters:
+	// 
+	// 	- entry *ClockEntry: the entry to wait on 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret ClockReturn 
+	WaitAsync func(Instance, *ClockEntry) ClockReturn
+}
+
+// UnsafeApplyClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides ClockOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstClockClass)(gclass)
+
+	if overrides.ChangeResolution != nil {
+		pclass.change_resolution = (*[0]byte)(C._gotk4_gst1_Clock_change_resolution)
+	}
+
+	if overrides.GetInternalTime != nil {
+		pclass.get_internal_time = (*[0]byte)(C._gotk4_gst1_Clock_get_internal_time)
+	}
+
+	if overrides.GetResolution != nil {
+		pclass.get_resolution = (*[0]byte)(C._gotk4_gst1_Clock_get_resolution)
+	}
+
+	if overrides.Unschedule != nil {
+		pclass.unschedule = (*[0]byte)(C._gotk4_gst1_Clock_unschedule)
+	}
+
+	if overrides.Wait != nil {
+		pclass.wait = (*[0]byte)(C._gotk4_gst1_Clock_wait)
+	}
+
+	if overrides.WaitAsync != nil {
+		pclass.wait_async = (*[0]byte)(C._gotk4_gst1_Clock_wait_async)
+	}
+}
+
 // ControlBindingInstance is the instance type used by all types extending GstControlBinding. It is used internally by the bindings. Users should use the interface [ControlBinding] instead.
 type ControlBindingInstance struct {
 	_ [0]func() // equal guard
@@ -25841,6 +27062,7 @@ type ControlBinding interface {
 	upcastToGstControlBinding() *ControlBindingInstance
 
 	// IsDisabled wraps gst_control_binding_is_disabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -25916,6 +27138,7 @@ func UnsafeControlBindingToGlibFull(c ControlBinding) unsafe.Pointer {
 }
 
 // IsDisabled wraps gst_control_binding_is_disabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -26004,6 +27227,37 @@ func (binding *ControlBindingInstance) SyncControlBindingValues(object Object, t
 	}
 
 	return goret
+}
+
+// ControlBindingOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ControlBindingOverrides[Instance ControlBinding] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// SyncValues allows you to override the implementation of the virtual method sync_values.
+	// The function takes the following parameters:
+	// 
+	// 	- object Object: the object that has controlled properties 
+	// 	- timestamp ClockTime: the time that should be processed 
+	// 	- lastSync ClockTime: the last time this was called 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SyncValues func(Instance, Object, ClockTime, ClockTime) bool
+}
+
+// UnsafeApplyControlBindingOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyControlBindingOverrides[Instance ControlBinding](gclass unsafe.Pointer, overrides ControlBindingOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstControlBindingClass)(gclass)
+
+	if overrides.SyncValues != nil {
+		pclass.sync_values = (*[0]byte)(C._gotk4_gst1_ControlBinding_sync_values)
+	}
 }
 
 // ControlSourceInstance is the instance type used by all types extending GstControlSource. It is used internally by the bindings. Users should use the interface [ControlSource] instead.
@@ -26182,6 +27436,20 @@ func (self *ControlSourceInstance) ControlSourceGetValueArray(timestamp ClockTim
 	return goret
 }
 
+// ControlSourceOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ControlSourceOverrides[Instance ControlSource] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyControlSourceOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyControlSourceOverrides[Instance ControlSource](gclass unsafe.Pointer, overrides ControlSourceOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // DeviceInstance is the instance type used by all types extending GstDevice. It is used internally by the bindings. Users should use the interface [Device] instead.
 type DeviceInstance struct {
 	_ [0]func() // equal guard
@@ -26217,6 +27485,7 @@ type Device interface {
 	// this device.
 	CreateElement(string) Element
 	// GetCaps wraps gst_device_get_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Caps (nullable) 
@@ -26224,6 +27493,7 @@ type Device interface {
 	// Getter for the #GstCaps that this device supports.
 	GetCaps() *Caps
 	// GetDeviceClass wraps gst_device_get_device_class
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -26233,6 +27503,7 @@ type Device interface {
 	// classes of the #GstDeviceProvider that produced this device.
 	GetDeviceClass() string
 	// GetDisplayName wraps gst_device_get_display_name
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -26240,6 +27511,7 @@ type Device interface {
 	// Gets the user-friendly name of the device.
 	GetDisplayName() string
 	// GetProperties wraps gst_device_get_properties
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Structure (nullable) 
@@ -26369,6 +27641,7 @@ func (device *DeviceInstance) CreateElement(name string) Element {
 }
 
 // GetCaps wraps gst_device_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps (nullable) 
@@ -26393,6 +27666,7 @@ func (device *DeviceInstance) GetCaps() *Caps {
 }
 
 // GetDeviceClass wraps gst_device_get_device_class
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -26418,6 +27692,7 @@ func (device *DeviceInstance) GetDeviceClass() string {
 }
 
 // GetDisplayName wraps gst_device_get_display_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -26441,6 +27716,7 @@ func (device *DeviceInstance) GetDisplayName() string {
 }
 
 // GetProperties wraps gst_device_get_properties
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure (nullable) 
@@ -26574,6 +27850,50 @@ func (device *DeviceInstance) ReconfigureElement(element Element) bool {
 func (o *DeviceInstance) ConnectRemoved(fn func(Device)) gobject.SignalHandle {
 	return o.Connect("removed", fn)
 }
+
+// DeviceOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type DeviceOverrides[Instance Device] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// CreateElement allows you to override the implementation of the virtual method create_element.
+	// The function takes the following parameters:
+	// 
+	// 	- name string (nullable): name of new element, or %NULL to automatically
+	// create a unique name. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret Element (nullable) 
+	CreateElement func(Instance, string) Element
+	// ReconfigureElement allows you to override the implementation of the virtual method reconfigure_element.
+	// The function takes the following parameters:
+	// 
+	// 	- element Element: a #GstElement 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ReconfigureElement func(Instance, Element) bool
+}
+
+// UnsafeApplyDeviceOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, overrides DeviceOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstDeviceClass)(gclass)
+
+	if overrides.CreateElement != nil {
+		pclass.create_element = (*[0]byte)(C._gotk4_gst1_Device_create_element)
+	}
+
+	if overrides.ReconfigureElement != nil {
+		pclass.reconfigure_element = (*[0]byte)(C._gotk4_gst1_Device_reconfigure_element)
+	}
+}
+
 // DeviceMonitorInstance is the instance type used by all types extending GstDeviceMonitor. It is used internally by the bindings. Users should use the interface [DeviceMonitor] instead.
 type DeviceMonitorInstance struct {
 	_ [0]func() // equal guard
@@ -26673,6 +27993,7 @@ type DeviceMonitor interface {
 	// Filters must be added before the #GstDeviceMonitor is started.
 	AddFilter(string, *Caps) uint
 	// GetBus wraps gst_device_monitor_get_bus
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Bus 
@@ -26680,6 +28001,7 @@ type DeviceMonitor interface {
 	// Gets the #GstBus of this #GstDeviceMonitor
 	GetBus() Bus
 	// GetDevices wraps gst_device_monitor_get_devices
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []Device (nullable) 
@@ -26688,6 +28010,7 @@ type DeviceMonitor interface {
 	// probe the hardware if the monitor is not currently started.
 	GetDevices() []Device
 	// GetProviders wraps gst_device_monitor_get_providers
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -26697,6 +28020,7 @@ type DeviceMonitor interface {
 	// This
 	GetProviders() []string
 	// GetShowAllDevices wraps gst_device_monitor_get_show_all_devices
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -26727,6 +28051,7 @@ type DeviceMonitor interface {
 	// providers. Setting @show_all to true might show some devices multiple times.
 	SetShowAllDevices(bool)
 	// Start wraps gst_device_monitor_start
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -26780,6 +28105,7 @@ func UnsafeDeviceMonitorToGlibFull(c DeviceMonitor) unsafe.Pointer {
 }
 
 // NewDeviceMonitor wraps gst_device_monitor_new
+// 
 // The function returns the following values:
 // 
 // 	- goret DeviceMonitor 
@@ -26847,6 +28173,7 @@ func (monitor *DeviceMonitorInstance) AddFilter(classes string, caps *Caps) uint
 }
 
 // GetBus wraps gst_device_monitor_get_bus
+// 
 // The function returns the following values:
 // 
 // 	- goret Bus 
@@ -26869,6 +28196,7 @@ func (monitor *DeviceMonitorInstance) GetBus() Bus {
 }
 
 // GetDevices wraps gst_device_monitor_get_devices
+// 
 // The function returns the following values:
 // 
 // 	- goret []Device (nullable) 
@@ -26899,6 +28227,7 @@ func (monitor *DeviceMonitorInstance) GetDevices() []Device {
 }
 
 // GetProviders wraps gst_device_monitor_get_providers
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -26925,6 +28254,7 @@ func (monitor *DeviceMonitorInstance) GetProviders() []string {
 }
 
 // GetShowAllDevices wraps gst_device_monitor_get_show_all_devices
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -27005,6 +28335,7 @@ func (monitor *DeviceMonitorInstance) SetShowAllDevices(showAll bool) {
 }
 
 // Start wraps gst_device_monitor_start
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -27042,6 +28373,20 @@ func (monitor *DeviceMonitorInstance) Stop() {
 	runtime.KeepAlive(monitor)
 }
 
+// DeviceMonitorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type DeviceMonitorOverrides[Instance DeviceMonitor] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyDeviceMonitorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyDeviceMonitorOverrides[Instance DeviceMonitor](gclass unsafe.Pointer, overrides DeviceMonitorOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // DeviceProviderInstance is the instance type used by all types extending GstDeviceProvider. It is used internally by the bindings. Users should use the interface [DeviceProvider] instead.
 type DeviceProviderInstance struct {
 	_ [0]func() // equal guard
@@ -27066,6 +28411,7 @@ type DeviceProvider interface {
 	upcastToGstDeviceProvider() *DeviceProviderInstance
 
 	// CanMonitor wraps gst_device_provider_can_monitor
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -27109,6 +28455,7 @@ type DeviceProvider interface {
 	// This is for use by subclasses.
 	DeviceRemove(Device)
 	// GetBus wraps gst_device_provider_get_bus
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Bus 
@@ -27116,6 +28463,7 @@ type DeviceProvider interface {
 	// Gets the #GstBus of this #GstDeviceProvider
 	GetBus() Bus
 	// GetDevices wraps gst_device_provider_get_devices
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []Device 
@@ -27127,6 +28475,7 @@ type DeviceProvider interface {
 	// objedcts that have been returned by the #GST_MESSAGE_DEVICE_ADDED messages.
 	GetDevices() []Device
 	// GetFactory wraps gst_device_provider_get_factory
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret DeviceProviderFactory (nullable) 
@@ -27134,6 +28483,7 @@ type DeviceProvider interface {
 	// Retrieves the factory that was used to create this device provider.
 	GetFactory() DeviceProviderFactory
 	// GetHiddenProviders wraps gst_device_provider_get_hidden_providers
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -27166,6 +28516,7 @@ type DeviceProvider interface {
 	// device provider with @name to avoid duplicate devices.
 	HideProvider(string)
 	// IsStarted wraps gst_device_provider_is_started
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -27173,6 +28524,7 @@ type DeviceProvider interface {
 	// This function can be used to know if the @provider was successfully started.
 	IsStarted() bool
 	// Start wraps gst_device_provider_start
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -27300,6 +28652,7 @@ func DeviceProviderRegister(plugin Plugin, name string, rank uint, typ gobject.T
 }
 
 // CanMonitor wraps gst_device_provider_can_monitor
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -27396,6 +28749,7 @@ func (provider *DeviceProviderInstance) DeviceRemove(device Device) {
 }
 
 // GetBus wraps gst_device_provider_get_bus
+// 
 // The function returns the following values:
 // 
 // 	- goret Bus 
@@ -27418,6 +28772,7 @@ func (provider *DeviceProviderInstance) GetBus() Bus {
 }
 
 // GetDevices wraps gst_device_provider_get_devices
+// 
 // The function returns the following values:
 // 
 // 	- goret []Device 
@@ -27451,6 +28806,7 @@ func (provider *DeviceProviderInstance) GetDevices() []Device {
 }
 
 // GetFactory wraps gst_device_provider_get_factory
+// 
 // The function returns the following values:
 // 
 // 	- goret DeviceProviderFactory (nullable) 
@@ -27475,6 +28831,7 @@ func (provider *DeviceProviderInstance) GetFactory() DeviceProviderFactory {
 }
 
 // GetHiddenProviders wraps gst_device_provider_get_hidden_providers
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -27555,6 +28912,7 @@ func (provider *DeviceProviderInstance) HideProvider(name string) {
 }
 
 // IsStarted wraps gst_device_provider_is_started
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -27579,6 +28937,7 @@ func (provider *DeviceProviderInstance) IsStarted() bool {
 }
 
 // Start wraps gst_device_provider_start
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -27656,10 +29015,43 @@ func (provider *DeviceProviderInstance) UnhideProvider(name string) {
 func (o *DeviceProviderInstance) ConnectProviderHidden(fn func(DeviceProvider, string)) gobject.SignalHandle {
 	return o.Connect("provider-hidden", fn)
 }
+
 // ConnectProviderUnhidden connects the provided callback to the "provider-unhidden" signal
 func (o *DeviceProviderInstance) ConnectProviderUnhidden(fn func(DeviceProvider, string)) gobject.SignalHandle {
 	return o.Connect("provider-unhidden", fn)
 }
+
+// DeviceProviderOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type DeviceProviderOverrides[Instance DeviceProvider] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	Stop func(Instance)
+}
+
+// UnsafeApplyDeviceProviderOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyDeviceProviderOverrides[Instance DeviceProvider](gclass unsafe.Pointer, overrides DeviceProviderOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstDeviceProviderClass)(gclass)
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gst1_DeviceProvider_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gst1_DeviceProvider_stop)
+	}
+}
+
 // DeviceProviderFactoryInstance is the instance type used by all types extending GstDeviceProviderFactory. It is used internally by the bindings. Users should use the interface [DeviceProviderFactory] instead.
 type DeviceProviderFactoryInstance struct {
 	_ [0]func() // equal guard
@@ -27683,6 +29075,7 @@ type DeviceProviderFactory interface {
 	upcastToGstDeviceProviderFactory() *DeviceProviderFactoryInstance
 
 	// Get wraps gst_device_provider_factory_get
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret DeviceProvider (nullable) 
@@ -27691,6 +29084,7 @@ type DeviceProviderFactory interface {
 	// providerfactory.
 	Get() DeviceProvider
 	// GetDeviceProviderType wraps gst_device_provider_factory_get_device_provider_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gobject.Type 
@@ -27712,6 +29106,7 @@ type DeviceProviderFactory interface {
 	// Get the metadata on @factory with @key.
 	GetMetadata(string) string
 	// GetMetadataKeys wraps gst_device_provider_factory_get_metadata_keys
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string (nullable) 
@@ -27884,6 +29279,7 @@ func DeviceProviderFactoryListGetDeviceProviders(minrank Rank) []DeviceProviderF
 }
 
 // Get wraps gst_device_provider_factory_get
+// 
 // The function returns the following values:
 // 
 // 	- goret DeviceProvider (nullable) 
@@ -27909,6 +29305,7 @@ func (factory *DeviceProviderFactoryInstance) Get() DeviceProvider {
 }
 
 // GetDeviceProviderType wraps gst_device_provider_factory_get_device_provider_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -27966,6 +29363,7 @@ func (factory *DeviceProviderFactoryInstance) GetMetadata(key string) string {
 }
 
 // GetMetadataKeys wraps gst_device_provider_factory_get_metadata_keys
+// 
 // The function returns the following values:
 // 
 // 	- goret []string (nullable) 
@@ -28416,6 +29814,7 @@ type Element interface {
 	// into account until next time this function is used.
 	ForEachSrcPad(ElementForEachPadFunc) bool
 	// GetBaseTime wraps gst_element_get_base_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -28426,6 +29825,7 @@ type Element interface {
 	// the running time of the element.
 	GetBaseTime() ClockTime
 	// GetBus wraps gst_element_get_bus
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Bus (nullable) 
@@ -28434,6 +29834,7 @@ type Element interface {
 	// bus for the application.
 	GetBus() Bus
 	// GetClock wraps gst_element_get_clock
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Clock (nullable) 
@@ -28504,6 +29905,7 @@ type Element interface {
 	// Gets the context with @context_type set on the element or NULL.
 	GetContextUnlocked(string) *Context
 	// GetContexts wraps gst_element_get_contexts
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []*Context 
@@ -28513,6 +29915,7 @@ type Element interface {
 	// MT safe.
 	GetContexts() []*Context
 	// GetCurrentClockTime wraps gst_element_get_current_clock_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -28521,6 +29924,7 @@ type Element interface {
 	// element's clock, or GST_CLOCK_TIME_NONE if there is no clock.
 	GetCurrentClockTime() ClockTime
 	// GetCurrentRunningTime wraps gst_element_get_current_running_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -28530,6 +29934,7 @@ type Element interface {
 	// if the element has no clock, or if its base time has not been set.
 	GetCurrentRunningTime() ClockTime
 	// GetFactory wraps gst_element_get_factory
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ElementFactory (nullable) 
@@ -28561,6 +29966,7 @@ type Element interface {
 	// Retrieves a padtemplate from @element with the given name.
 	GetPadTemplate(string) PadTemplate
 	// GetPadTemplateList wraps gst_element_get_pad_template_list
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []PadTemplate 
@@ -28586,6 +29992,7 @@ type Element interface {
 	// provides the exact same functionality.
 	GetRequestPad(string) Pad
 	// GetStartTime wraps gst_element_get_start_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -28648,6 +30055,7 @@ type Element interface {
 	// already-existing (i.e. 'static') pads.
 	GetStaticPad(string) Pad
 	// IsLockedState wraps gst_element_is_locked_state
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -28661,6 +30069,7 @@ type Element interface {
 	// MT safe.
 	IsLockedState() bool
 	// IteratePads wraps gst_element_iterate_pads
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Iterator 
@@ -28673,6 +30082,7 @@ type Element interface {
 	// the pads were added to the element.
 	IteratePads() *Iterator
 	// IterateSinkPads wraps gst_element_iterate_sink_pads
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Iterator 
@@ -28683,6 +30093,7 @@ type Element interface {
 	// the pads were added to the element.
 	IterateSinkPads() *Iterator
 	// IterateSrcPads wraps gst_element_iterate_src_pads
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Iterator 
@@ -28891,6 +30302,7 @@ type Element interface {
 	// additional reference before calling.
 	PostMessage(*Message) bool
 	// ProvidedClock wraps gst_element_provide_clock
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Clock (nullable) 
@@ -29245,6 +30657,7 @@ type Element interface {
 	// #GST_STATE_CHANGE_ASYNC.
 	SetState(State) StateChangeReturn
 	// SyncStateWithParent wraps gst_element_sync_state_with_parent
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -29931,6 +31344,7 @@ func (element *ElementInstance) ForEachSrcPad(fn ElementForEachPadFunc) bool {
 }
 
 // GetBaseTime wraps gst_element_get_base_time
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -29956,6 +31370,7 @@ func (element *ElementInstance) GetBaseTime() ClockTime {
 }
 
 // GetBus wraps gst_element_get_bus
+// 
 // The function returns the following values:
 // 
 // 	- goret Bus (nullable) 
@@ -29981,6 +31396,7 @@ func (element *ElementInstance) GetBus() Bus {
 }
 
 // GetClock wraps gst_element_get_clock
+// 
 // The function returns the following values:
 // 
 // 	- goret Clock (nullable) 
@@ -30155,6 +31571,7 @@ func (element *ElementInstance) GetContextUnlocked(contextType string) *Context 
 }
 
 // GetContexts wraps gst_element_get_contexts
+// 
 // The function returns the following values:
 // 
 // 	- goret []*Context 
@@ -30186,6 +31603,7 @@ func (element *ElementInstance) GetContexts() []*Context {
 }
 
 // GetCurrentClockTime wraps gst_element_get_current_clock_time
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -30209,6 +31627,7 @@ func (element *ElementInstance) GetCurrentClockTime() ClockTime {
 }
 
 // GetCurrentRunningTime wraps gst_element_get_current_running_time
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -30233,6 +31652,7 @@ func (element *ElementInstance) GetCurrentRunningTime() ClockTime {
 }
 
 // GetFactory wraps gst_element_get_factory
+// 
 // The function returns the following values:
 // 
 // 	- goret ElementFactory (nullable) 
@@ -30321,6 +31741,7 @@ func (element *ElementInstance) GetPadTemplate(name string) PadTemplate {
 }
 
 // GetPadTemplateList wraps gst_element_get_pad_template_list
+// 
 // The function returns the following values:
 // 
 // 	- goret []PadTemplate 
@@ -30389,6 +31810,7 @@ func (element *ElementInstance) GetRequestPad(name string) Pad {
 }
 
 // GetStartTime wraps gst_element_get_start_time
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -30511,6 +31933,7 @@ func (element *ElementInstance) GetStaticPad(name string) Pad {
 }
 
 // IsLockedState wraps gst_element_is_locked_state
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -30541,6 +31964,7 @@ func (element *ElementInstance) IsLockedState() bool {
 }
 
 // IteratePads wraps gst_element_iterate_pads
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator 
@@ -30568,6 +31992,7 @@ func (element *ElementInstance) IteratePads() *Iterator {
 }
 
 // IterateSinkPads wraps gst_element_iterate_sink_pads
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator 
@@ -30593,6 +32018,7 @@ func (element *ElementInstance) IterateSinkPads() *Iterator {
 }
 
 // IterateSrcPads wraps gst_element_iterate_src_pads
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator 
@@ -31080,6 +32506,7 @@ func (element *ElementInstance) PostMessage(message *Message) bool {
 }
 
 // ProvidedClock wraps gst_element_provide_clock
+// 
 // The function returns the following values:
 // 
 // 	- goret Clock (nullable) 
@@ -31832,6 +33259,7 @@ func (element *ElementInstance) SetState(state State) StateChangeReturn {
 }
 
 // SyncStateWithParent wraps gst_element_sync_state_with_parent
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -31918,6 +33346,7 @@ func (src *ElementInstance) UnlinkPads(srcpadname string, dest Element, destpadn
 func (o *ElementInstance) ConnectNoMorePads(fn func(Element)) gobject.SignalHandle {
 	return o.Connect("no-more-pads", fn)
 }
+
 // ConnectPadAdded connects the provided callback to the "pad-added" signal
 //
 // a new #GstPad has been added to the element. Note that this signal will
@@ -31928,12 +33357,214 @@ func (o *ElementInstance) ConnectNoMorePads(fn func(Element)) gobject.SignalHand
 func (o *ElementInstance) ConnectPadAdded(fn func(Element, Pad)) gobject.SignalHandle {
 	return o.Connect("pad-added", fn)
 }
+
 // ConnectPadRemoved connects the provided callback to the "pad-removed" signal
 //
 // a #GstPad has been removed from the element
 func (o *ElementInstance) ConnectPadRemoved(fn func(Element, Pad)) gobject.SignalHandle {
 	return o.Connect("pad-removed", fn)
 }
+
+// ElementOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ElementOverrides[Instance Element] struct {
+	// ObjectOverrides allows you to override virtual methods from the parent class Object
+	ObjectOverrides[Instance]
+
+	// ChangeState allows you to override the implementation of the virtual method change_state.
+	// The function takes the following parameters:
+	// 
+	// 	- transition StateChange: the requested transition 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret StateChangeReturn 
+	ChangeState func(Instance, StateChange) StateChangeReturn
+	// GetState allows you to override the implementation of the virtual method get_state.
+	// The function takes the following parameters:
+	// 
+	// 	- timeout ClockTime: a #GstClockTime to specify the timeout for an async
+	//           state change or %GST_CLOCK_TIME_NONE for infinite timeout. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- state State: a pointer to #GstState to hold the state.
+	//     Can be %NULL. 
+	// 	- pending State: a pointer to #GstState to hold the pending
+	//     state. Can be %NULL. 
+	// 	- goret StateChangeReturn 
+	GetState func(Instance, ClockTime) (State, State, StateChangeReturn)
+	// NoMorePads allows you to override the implementation of the virtual method no_more_pads.
+	NoMorePads func(Instance)
+	// PadAdded allows you to override the implementation of the virtual method pad_added.
+	// The function takes the following parameters:
+	// 
+	// 	- pad Pad 
+	PadAdded func(Instance, Pad)
+	// PadRemoved allows you to override the implementation of the virtual method pad_removed.
+	// The function takes the following parameters:
+	// 
+	// 	- pad Pad 
+	PadRemoved func(Instance, Pad)
+	// PostMessage allows you to override the implementation of the virtual method post_message.
+	// The function takes the following parameters:
+	// 
+	// 	- message *Message: a #GstMessage to post 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	PostMessage func(Instance, *Message) bool
+	// ProvideClock allows you to override the implementation of the virtual method provide_clock.
+	// The function returns the following values:
+	// 
+	// 	- goret Clock (nullable) 
+	ProvideClock func(Instance) Clock
+	// Query allows you to override the implementation of the virtual method query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *Query: the #GstQuery. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Query func(Instance, *Query) bool
+	// ReleasePad allows you to override the implementation of the virtual method release_pad.
+	// The function takes the following parameters:
+	// 
+	// 	- pad Pad 
+	ReleasePad func(Instance, Pad)
+	// RequestNewPad allows you to override the implementation of the virtual method request_new_pad.
+	// The function takes the following parameters:
+	// 
+	// 	- templ PadTemplate: a #GstPadTemplate of which we want a pad of. 
+	// 	- name string (nullable): the name of the request #GstPad
+	// to retrieve. Can be %NULL. 
+	// 	- caps *Caps (nullable): the caps of the pad we want to
+	// request. Can be %NULL. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret Pad (nullable) 
+	RequestNewPad func(Instance, PadTemplate, string, *Caps) Pad
+	// SendEvent allows you to override the implementation of the virtual method send_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *Event: the #GstEvent to send to the element. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SendEvent func(Instance, *Event) bool
+	// SetBus allows you to override the implementation of the virtual method set_bus.
+	// The function takes the following parameters:
+	// 
+	// 	- bus Bus (nullable): the #GstBus to set. 
+	SetBus func(Instance, Bus)
+	// SetClock allows you to override the implementation of the virtual method set_clock.
+	// The function takes the following parameters:
+	// 
+	// 	- clock Clock (nullable): the #GstClock to set for the element. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetClock func(Instance, Clock) bool
+	// SetContext allows you to override the implementation of the virtual method set_context.
+	// The function takes the following parameters:
+	// 
+	// 	- _context *Context: the #GstContext to set. 
+	SetContext func(Instance, *Context)
+	// SetState allows you to override the implementation of the virtual method set_state.
+	// The function takes the following parameters:
+	// 
+	// 	- state State: the element's new #GstState. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret StateChangeReturn 
+	SetState func(Instance, State) StateChangeReturn
+	// StateChanged allows you to override the implementation of the virtual method state_changed.
+	// The function takes the following parameters:
+	// 
+	// 	- oldstate State 
+	// 	- newstate State 
+	// 	- pending State 
+	StateChanged func(Instance, State, State, State)
+}
+
+// UnsafeApplyElementOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overrides ElementOverrides[Instance]) {
+	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstElementClass)(gclass)
+
+	if overrides.ChangeState != nil {
+		pclass.change_state = (*[0]byte)(C._gotk4_gst1_Element_change_state)
+	}
+
+	if overrides.GetState != nil {
+		pclass.get_state = (*[0]byte)(C._gotk4_gst1_Element_get_state)
+	}
+
+	if overrides.NoMorePads != nil {
+		pclass.no_more_pads = (*[0]byte)(C._gotk4_gst1_Element_no_more_pads)
+	}
+
+	if overrides.PadAdded != nil {
+		pclass.pad_added = (*[0]byte)(C._gotk4_gst1_Element_pad_added)
+	}
+
+	if overrides.PadRemoved != nil {
+		pclass.pad_removed = (*[0]byte)(C._gotk4_gst1_Element_pad_removed)
+	}
+
+	if overrides.PostMessage != nil {
+		pclass.post_message = (*[0]byte)(C._gotk4_gst1_Element_post_message)
+	}
+
+	if overrides.ProvideClock != nil {
+		pclass.provide_clock = (*[0]byte)(C._gotk4_gst1_Element_provide_clock)
+	}
+
+	if overrides.Query != nil {
+		pclass.query = (*[0]byte)(C._gotk4_gst1_Element_query)
+	}
+
+	if overrides.ReleasePad != nil {
+		pclass.release_pad = (*[0]byte)(C._gotk4_gst1_Element_release_pad)
+	}
+
+	if overrides.RequestNewPad != nil {
+		pclass.request_new_pad = (*[0]byte)(C._gotk4_gst1_Element_request_new_pad)
+	}
+
+	if overrides.SendEvent != nil {
+		pclass.send_event = (*[0]byte)(C._gotk4_gst1_Element_send_event)
+	}
+
+	if overrides.SetBus != nil {
+		pclass.set_bus = (*[0]byte)(C._gotk4_gst1_Element_set_bus)
+	}
+
+	if overrides.SetClock != nil {
+		pclass.set_clock = (*[0]byte)(C._gotk4_gst1_Element_set_clock)
+	}
+
+	if overrides.SetContext != nil {
+		pclass.set_context = (*[0]byte)(C._gotk4_gst1_Element_set_context)
+	}
+
+	if overrides.SetState != nil {
+		pclass.set_state = (*[0]byte)(C._gotk4_gst1_Element_set_state)
+	}
+
+	if overrides.StateChanged != nil {
+		pclass.state_changed = (*[0]byte)(C._gotk4_gst1_Element_state_changed)
+	}
+}
+
 // ElementFactoryInstance is the instance type used by all types extending GstElementFactory. It is used internally by the bindings. Users should use the interface [ElementFactory] instead.
 type ElementFactoryInstance struct {
 	_ [0]func() // equal guard
@@ -32051,6 +33682,7 @@ type ElementFactory interface {
 	// The supplied list of properties, will be passed at object construction.
 	CreateWithProperties([]string, []gobject.Value) Element
 	// GetElementType wraps gst_element_factory_get_element_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gobject.Type 
@@ -32072,6 +33704,7 @@ type ElementFactory interface {
 	// Get the metadata on @factory with @key.
 	GetMetadata(string) string
 	// GetMetadataKeys wraps gst_element_factory_get_metadata_keys
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string (nullable) 
@@ -32079,6 +33712,7 @@ type ElementFactory interface {
 	// Get the available keys for the metadata on @factory.
 	GetMetadataKeys() []string
 	// GetNumPadTemplates wraps gst_element_factory_get_num_pad_templates
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -32086,6 +33720,7 @@ type ElementFactory interface {
 	// Gets the number of pad_templates in this factory.
 	GetNumPadTemplates() uint
 	// GetSkipDocumentation wraps gst_element_factory_get_skip_documentation
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -32094,6 +33729,7 @@ type ElementFactory interface {
 	// be excluded from documentation system or not.
 	GetSkipDocumentation() bool
 	// GetStaticPadTemplates wraps gst_element_factory_get_static_pad_templates
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []*StaticPadTemplate 
@@ -32101,6 +33737,7 @@ type ElementFactory interface {
 	// Gets the #GList of #GstStaticPadTemplate for this factory.
 	GetStaticPadTemplates() []*StaticPadTemplate
 	// GetURIProtocols wraps gst_element_factory_get_uri_protocols
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -32111,6 +33748,7 @@ type ElementFactory interface {
 	// make a copy of the protocol string array if you need to.
 	GetURIProtocols() []string
 	// GetURIType wraps gst_element_factory_get_uri_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret URIType 
@@ -32506,6 +34144,7 @@ func (factory *ElementFactoryInstance) CreateWithProperties(names []string, valu
 }
 
 // GetElementType wraps gst_element_factory_get_element_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -32563,6 +34202,7 @@ func (factory *ElementFactoryInstance) GetMetadata(key string) string {
 }
 
 // GetMetadataKeys wraps gst_element_factory_get_metadata_keys
+// 
 // The function returns the following values:
 // 
 // 	- goret []string (nullable) 
@@ -32587,6 +34227,7 @@ func (factory *ElementFactoryInstance) GetMetadataKeys() []string {
 }
 
 // GetNumPadTemplates wraps gst_element_factory_get_num_pad_templates
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -32609,6 +34250,7 @@ func (factory *ElementFactoryInstance) GetNumPadTemplates() uint {
 }
 
 // GetSkipDocumentation wraps gst_element_factory_get_skip_documentation
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -32634,6 +34276,7 @@ func (factory *ElementFactoryInstance) GetSkipDocumentation() bool {
 }
 
 // GetStaticPadTemplates wraps gst_element_factory_get_static_pad_templates
+// 
 // The function returns the following values:
 // 
 // 	- goret []*StaticPadTemplate 
@@ -32663,6 +34306,7 @@ func (factory *ElementFactoryInstance) GetStaticPadTemplates() []*StaticPadTempl
 }
 
 // GetURIProtocols wraps gst_element_factory_get_uri_protocols
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -32690,6 +34334,7 @@ func (factory *ElementFactoryInstance) GetURIProtocols() []string {
 }
 
 // GetURIType wraps gst_element_factory_get_uri_type
+// 
 // The function returns the following values:
 // 
 // 	- goret URIType 
@@ -32804,6 +34449,7 @@ type GhostPad interface {
 	upcastToGstGhostPad() *GhostPadInstance
 
 	// Construct wraps gst_ghost_pad_construct
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -32819,6 +34465,7 @@ type GhostPad interface {
 	// anymore.
 	Construct() bool
 	// GetTarget wraps gst_ghost_pad_get_target
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Pad (nullable) 
@@ -33134,6 +34781,7 @@ func GhostPadInternalActivateModeDefault(pad Pad, parent Object, mode PadMode, a
 }
 
 // Construct wraps gst_ghost_pad_construct
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -33166,6 +34814,7 @@ func (gpad *GhostPadInstance) Construct() bool {
 }
 
 // GetTarget wraps gst_ghost_pad_get_target
+// 
 // The function returns the following values:
 // 
 // 	- goret Pad (nullable) 
@@ -33225,6 +34874,20 @@ func (gpad *GhostPadInstance) SetTarget(newtarget Pad) bool {
 	return goret
 }
 
+// GhostPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type GhostPadOverrides[Instance GhostPad] struct {
+	// ProxyPadOverrides allows you to override virtual methods from the parent class ProxyPad
+	ProxyPadOverrides[Instance]
+
+}
+
+// UnsafeApplyGhostPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyGhostPadOverrides[Instance GhostPad](gclass unsafe.Pointer, overrides GhostPadOverrides[Instance]) {
+	UnsafeApplyProxyPadOverrides(gclass, overrides.ProxyPadOverrides)
+}
+
 // SharedTaskPoolInstance is the instance type used by all types extending GstSharedTaskPool. It is used internally by the bindings. Users should use the interface [SharedTaskPool] instead.
 type SharedTaskPoolInstance struct {
 	_ [0]func() // equal guard
@@ -33241,6 +34904,7 @@ type SharedTaskPool interface {
 	upcastToGstSharedTaskPool() *SharedTaskPoolInstance
 
 	// GetMaxThreads wraps gst_shared_task_pool_get_max_threads
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -33300,6 +34964,7 @@ func UnsafeSharedTaskPoolToGlibFull(c SharedTaskPool) unsafe.Pointer {
 }
 
 // NewSharedTaskPool wraps gst_shared_task_pool_new
+// 
 // The function returns the following values:
 // 
 // 	- goret TaskPool 
@@ -33323,6 +34988,7 @@ func NewSharedTaskPool() TaskPool {
 }
 
 // GetMaxThreads wraps gst_shared_task_pool_get_max_threads
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -33363,6 +35029,20 @@ func (pool *SharedTaskPoolInstance) SetMaxThreads(maxThreads uint) {
 	C.gst_shared_task_pool_set_max_threads(carg0, carg1)
 	runtime.KeepAlive(pool)
 	runtime.KeepAlive(maxThreads)
+}
+
+// SharedTaskPoolOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type SharedTaskPoolOverrides[Instance SharedTaskPool] struct {
+	// TaskPoolOverrides allows you to override virtual methods from the parent class TaskPool
+	TaskPoolOverrides[Instance]
+
+}
+
+// UnsafeApplySharedTaskPoolOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplySharedTaskPoolOverrides[Instance SharedTaskPool](gclass unsafe.Pointer, overrides SharedTaskPoolOverrides[Instance]) {
+	UnsafeApplyTaskPoolOverrides(gclass, overrides.TaskPoolOverrides)
 }
 
 // SystemClockInstance is the instance type used by all types extending GstSystemClock. It is used internally by the bindings. Users should use the interface [SystemClock] instead.
@@ -33430,6 +35110,7 @@ func UnsafeSystemClockToGlibFull(c SystemClock) unsafe.Pointer {
 }
 
 // SystemClockObtain wraps gst_system_clock_obtain
+// 
 // The function returns the following values:
 // 
 // 	- goret Clock 
@@ -33472,6 +35153,20 @@ func SystemClockSetDefault(newClock Clock) {
 
 	C.gst_system_clock_set_default(carg1)
 	runtime.KeepAlive(newClock)
+}
+
+// SystemClockOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type SystemClockOverrides[Instance SystemClock] struct {
+	// ClockOverrides allows you to override virtual methods from the parent class Clock
+	ClockOverrides[Instance]
+
+}
+
+// UnsafeApplySystemClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplySystemClockOverrides[Instance SystemClock](gclass unsafe.Pointer, overrides SystemClockOverrides[Instance]) {
+	UnsafeApplyClockOverrides(gclass, overrides.ClockOverrides)
 }
 
 // BinInstance is the instance type used by all types extending GstBin. It is used internally by the bindings. Users should use the interface [Bin] instead.
@@ -33677,6 +35372,7 @@ type Bin interface {
 	// element is not found, a recursion is performed on the parent bin.
 	GetByNameRecurseUp(string) Element
 	// GetSuppressedFlags wraps gst_bin_get_suppressed_flags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ElementFlags 
@@ -33711,6 +35407,7 @@ type Bin interface {
 	// of #GstElement.
 	IterateAllByInterface(gobject.Type) *Iterator
 	// IterateElements wraps gst_bin_iterate_elements
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Iterator (nullable) 
@@ -33718,6 +35415,7 @@ type Bin interface {
 	// Gets an iterator for the elements in this bin.
 	IterateElements() *Iterator
 	// IterateRecurse wraps gst_bin_iterate_recurse
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Iterator (nullable) 
@@ -33726,6 +35424,7 @@ type Bin interface {
 	// This iterator recurses into GstBin children.
 	IterateRecurse() *Iterator
 	// IterateSinks wraps gst_bin_iterate_sinks
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Iterator (nullable) 
@@ -33734,6 +35433,7 @@ type Bin interface {
 	// #GST_ELEMENT_FLAG_SINK flag set.
 	IterateSinks() *Iterator
 	// IterateSorted wraps gst_bin_iterate_sorted
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Iterator (nullable) 
@@ -33746,6 +35446,7 @@ type Bin interface {
 	// of the bin elements and for clock selection.
 	IterateSorted() *Iterator
 	// IterateSources wraps gst_bin_iterate_sources
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *Iterator (nullable) 
@@ -33754,6 +35455,7 @@ type Bin interface {
 	// #GST_ELEMENT_FLAG_SOURCE flag set.
 	IterateSources() *Iterator
 	// RecalculateLatency wraps gst_bin_recalculate_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -33799,6 +35501,7 @@ type Bin interface {
 	// not be propagated to the bin.
 	SetSuppressedFlags(ElementFlags)
 	// SyncChildrenStates wraps gst_bin_sync_children_states
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -34094,6 +35797,7 @@ func (bin *BinInstance) GetByNameRecurseUp(name string) Element {
 }
 
 // GetSuppressedFlags wraps gst_bin_get_suppressed_flags
+// 
 // The function returns the following values:
 // 
 // 	- goret ElementFlags 
@@ -34184,6 +35888,7 @@ func (bin *BinInstance) IterateAllByInterface(iface gobject.Type) *Iterator {
 }
 
 // IterateElements wraps gst_bin_iterate_elements
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator (nullable) 
@@ -34208,6 +35913,7 @@ func (bin *BinInstance) IterateElements() *Iterator {
 }
 
 // IterateRecurse wraps gst_bin_iterate_recurse
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator (nullable) 
@@ -34233,6 +35939,7 @@ func (bin *BinInstance) IterateRecurse() *Iterator {
 }
 
 // IterateSinks wraps gst_bin_iterate_sinks
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator (nullable) 
@@ -34258,6 +35965,7 @@ func (bin *BinInstance) IterateSinks() *Iterator {
 }
 
 // IterateSorted wraps gst_bin_iterate_sorted
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator (nullable) 
@@ -34287,6 +35995,7 @@ func (bin *BinInstance) IterateSorted() *Iterator {
 }
 
 // IterateSources wraps gst_bin_iterate_sources
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator (nullable) 
@@ -34312,6 +36021,7 @@ func (bin *BinInstance) IterateSources() *Iterator {
 }
 
 // RecalculateLatency wraps gst_bin_recalculate_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -34405,6 +36115,7 @@ func (bin *BinInstance) SetSuppressedFlags(flags ElementFlags) {
 }
 
 // SyncChildrenStates wraps gst_bin_sync_children_states
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -34435,12 +36146,14 @@ func (bin *BinInstance) SyncChildrenStates() bool {
 func (o *BinInstance) ConnectDeepElementAdded(fn func(Bin, Bin, Element)) gobject.SignalHandle {
 	return o.Connect("deep-element-added", fn)
 }
+
 // ConnectDeepElementRemoved connects the provided callback to the "deep-element-removed" signal
 //
 // Will be emitted after the element was removed from @sub_bin.
 func (o *BinInstance) ConnectDeepElementRemoved(fn func(Bin, Bin, Element)) gobject.SignalHandle {
 	return o.Connect("deep-element-removed", fn)
 }
+
 // ConnectDoLatency connects the provided callback to the "do-latency" signal
 //
 // Will be emitted when the bin needs to perform latency calculations. This
@@ -34457,18 +36170,119 @@ func (o *BinInstance) ConnectDeepElementRemoved(fn func(Bin, Bin, Element)) gobj
 func (o *BinInstance) ConnectDoLatency(fn func(Bin) bool) gobject.SignalHandle {
 	return o.Connect("do-latency", fn)
 }
+
 // ConnectElementAdded connects the provided callback to the "element-added" signal
 //
 // Will be emitted after the element was added to the bin.
 func (o *BinInstance) ConnectElementAdded(fn func(Bin, Element)) gobject.SignalHandle {
 	return o.Connect("element-added", fn)
 }
+
 // ConnectElementRemoved connects the provided callback to the "element-removed" signal
 //
 // Will be emitted after the element was removed from the bin.
 func (o *BinInstance) ConnectElementRemoved(fn func(Bin, Element)) gobject.SignalHandle {
 	return o.Connect("element-removed", fn)
 }
+
+// BinOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type BinOverrides[Instance Bin] struct {
+	// ElementOverrides allows you to override virtual methods from the parent class Element
+	ElementOverrides[Instance]
+
+	// AddElement allows you to override the implementation of the virtual method add_element.
+	// The function takes the following parameters:
+	// 
+	// 	- element Element: the element to be added 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	AddElement func(Instance, Element) bool
+	// DeepElementAdded allows you to override the implementation of the virtual method deep_element_added.
+	// The function takes the following parameters:
+	// 
+	// 	- subBin Bin: the #GstBin to which the element was added 
+	// 	- child Element: the element that was added 
+	DeepElementAdded func(Instance, Bin, Element)
+	// DeepElementRemoved allows you to override the implementation of the virtual method deep_element_removed.
+	// The function takes the following parameters:
+	// 
+	// 	- subBin Bin: the #GstBin from which the element was removed 
+	// 	- child Element: the element that was removed 
+	DeepElementRemoved func(Instance, Bin, Element)
+	// DoLatency allows you to override the implementation of the virtual method do_latency.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DoLatency func(Instance) bool
+	// ElementAdded allows you to override the implementation of the virtual method element_added.
+	// The function takes the following parameters:
+	// 
+	// 	- child Element: the element that was added 
+	ElementAdded func(Instance, Element)
+	// ElementRemoved allows you to override the implementation of the virtual method element_removed.
+	// The function takes the following parameters:
+	// 
+	// 	- child Element: the element that was removed 
+	ElementRemoved func(Instance, Element)
+	// HandleMessage allows you to override the implementation of the virtual method handle_message.
+	// The function takes the following parameters:
+	// 
+	// 	- message *Message: the message to be handled 
+	HandleMessage func(Instance, *Message)
+	// RemoveElement allows you to override the implementation of the virtual method remove_element.
+	// The function takes the following parameters:
+	// 
+	// 	- element Element: the element to be removed 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	RemoveElement func(Instance, Element) bool
+}
+
+// UnsafeApplyBinOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinOverrides[Instance]) {
+	UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstBinClass)(gclass)
+
+	if overrides.AddElement != nil {
+		pclass.add_element = (*[0]byte)(C._gotk4_gst1_Bin_add_element)
+	}
+
+	if overrides.DeepElementAdded != nil {
+		pclass.deep_element_added = (*[0]byte)(C._gotk4_gst1_Bin_deep_element_added)
+	}
+
+	if overrides.DeepElementRemoved != nil {
+		pclass.deep_element_removed = (*[0]byte)(C._gotk4_gst1_Bin_deep_element_removed)
+	}
+
+	if overrides.DoLatency != nil {
+		pclass.do_latency = (*[0]byte)(C._gotk4_gst1_Bin_do_latency)
+	}
+
+	if overrides.ElementAdded != nil {
+		pclass.element_added = (*[0]byte)(C._gotk4_gst1_Bin_element_added)
+	}
+
+	if overrides.ElementRemoved != nil {
+		pclass.element_removed = (*[0]byte)(C._gotk4_gst1_Bin_element_removed)
+	}
+
+	if overrides.HandleMessage != nil {
+		pclass.handle_message = (*[0]byte)(C._gotk4_gst1_Bin_handle_message)
+	}
+
+	if overrides.RemoveElement != nil {
+		pclass.remove_element = (*[0]byte)(C._gotk4_gst1_Bin_remove_element)
+	}
+}
+
 // PipelineInstance is the instance type used by all types extending GstPipeline. It is used internally by the bindings. Users should use the interface [Pipeline] instead.
 type PipelineInstance struct {
 	_ [0]func() // equal guard
@@ -34544,6 +36358,7 @@ type Pipeline interface {
 	// MT safe.
 	AutoClock()
 	// GetAutoFlushBus wraps gst_pipeline_get_auto_flush_bus
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -34552,6 +36367,7 @@ type Pipeline interface {
 	// the NULL state.
 	GetAutoFlushBus() bool
 	// GetBus wraps gst_pipeline_get_bus
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Bus 
@@ -34560,6 +36376,7 @@ type Pipeline interface {
 	// #GstMessage packets.
 	GetBus() Bus
 	// GetConfiguredLatency wraps gst_pipeline_get_configured_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -34567,6 +36384,7 @@ type Pipeline interface {
 	// Return the configured latency on @pipeline.
 	GetConfiguredLatency() ClockTime
 	// GetDelay wraps gst_pipeline_get_delay
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -34574,6 +36392,7 @@ type Pipeline interface {
 	// Get the configured delay (see gst_pipeline_set_delay()).
 	GetDelay() ClockTime
 	// GetLatency wraps gst_pipeline_get_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
@@ -34582,6 +36401,7 @@ type Pipeline interface {
 	// gst_pipeline_set_latency().
 	GetLatency() ClockTime
 	// GetPipelineClock wraps gst_pipeline_get_pipeline_clock
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Clock 
@@ -34592,6 +36412,7 @@ type Pipeline interface {
 	// clock, even if the pipeline is not in the PLAYING state.
 	GetPipelineClock() Clock
 	// IsLive wraps gst_pipeline_is_live
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -34763,6 +36584,7 @@ func (pipeline *PipelineInstance) AutoClock() {
 }
 
 // GetAutoFlushBus wraps gst_pipeline_get_auto_flush_bus
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -34788,6 +36610,7 @@ func (pipeline *PipelineInstance) GetAutoFlushBus() bool {
 }
 
 // GetBus wraps gst_pipeline_get_bus
+// 
 // The function returns the following values:
 // 
 // 	- goret Bus 
@@ -34811,6 +36634,7 @@ func (pipeline *PipelineInstance) GetBus() Bus {
 }
 
 // GetConfiguredLatency wraps gst_pipeline_get_configured_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -34833,6 +36657,7 @@ func (pipeline *PipelineInstance) GetConfiguredLatency() ClockTime {
 }
 
 // GetDelay wraps gst_pipeline_get_delay
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -34855,6 +36680,7 @@ func (pipeline *PipelineInstance) GetDelay() ClockTime {
 }
 
 // GetLatency wraps gst_pipeline_get_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret ClockTime 
@@ -34878,6 +36704,7 @@ func (pipeline *PipelineInstance) GetLatency() ClockTime {
 }
 
 // GetPipelineClock wraps gst_pipeline_get_pipeline_clock
+// 
 // The function returns the following values:
 // 
 // 	- goret Clock 
@@ -34903,6 +36730,7 @@ func (pipeline *PipelineInstance) GetPipelineClock() Clock {
 }
 
 // IsLive wraps gst_pipeline_is_live
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -35042,6 +36870,20 @@ func (pipeline *PipelineInstance) UseClock(clock Clock) {
 	runtime.KeepAlive(clock)
 }
 
+// PipelineOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type PipelineOverrides[Instance Pipeline] struct {
+	// BinOverrides allows you to override virtual methods from the parent class Bin
+	BinOverrides[Instance]
+
+}
+
+// UnsafeApplyPipelineOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyPipelineOverrides[Instance Pipeline](gclass unsafe.Pointer, overrides PipelineOverrides[Instance]) {
+	UnsafeApplyBinOverrides(gclass, overrides.BinOverrides)
+}
+
 // AllocationParams wraps GstAllocationParams
 //
 // Parameters to control the allocation of memory
@@ -35071,7 +36913,7 @@ func UnsafeAllocationParamsFromGlibBorrow(p unsafe.Pointer) *AllocationParams {
 	return &AllocationParams{&allocationParams{(*C.GstAllocationParams)(p)}}
 }
 
-// UnsafeAllocationParamsFromGlibNone is used to convert raw C.GstAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAllocationParamsFromGlibNone is used to convert raw C.GstAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAllocationParamsFromGlibNone(p unsafe.Pointer) *AllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAllocationParamsFromGlibBorrow(p)
@@ -35084,7 +36926,7 @@ func UnsafeAllocationParamsFromGlibNone(p unsafe.Pointer) *AllocationParams {
 	return wrapped
 }
 
-// UnsafeAllocationParamsFromGlibFull is used to convert raw C.GstAllocationParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAllocationParamsFromGlibFull is used to convert raw C.GstAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAllocationParamsFromGlibFull(p unsafe.Pointer) *AllocationParams {
 	wrapped := UnsafeAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -35116,7 +36958,9 @@ func UnsafeAllocationParamsToGlibFull(a *AllocationParams) unsafe.Pointer {
 	a.native = nil // AllocationParams is invalid from here on
 	return _p
 }
+
 // NewAllocationParams wraps gst_allocation_params_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *AllocationParams 
@@ -35141,6 +36985,7 @@ func NewAllocationParams() *AllocationParams {
 }
 
 // Copy wraps gst_allocation_params_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *AllocationParams (nullable) 
@@ -35179,6 +37024,8 @@ func (params *AllocationParams) Init() {
 // AllocatorClass wraps GstAllocatorClass
 //
 // The #GstAllocator is used to create new memory.
+// 
+// AllocatorClass is the type struct for [Allocator]
 type AllocatorClass struct {
 	*allocatorClass
 }
@@ -35193,31 +37040,6 @@ func UnsafeAllocatorClassFromGlibBorrow(p unsafe.Pointer) *AllocatorClass {
 	return &AllocatorClass{&allocatorClass{(*C.GstAllocatorClass)(p)}}
 }
 
-// UnsafeAllocatorClassFromGlibNone is used to convert raw C.GstAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAllocatorClassFromGlibNone(p unsafe.Pointer) *AllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.allocatorClass,
-		func (intern *allocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAllocatorClassFromGlibFull is used to convert raw C.GstAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAllocatorClassFromGlibFull(p unsafe.Pointer) *AllocatorClass {
-	wrapped := UnsafeAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.allocatorClass,
-		func (intern *allocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AllocatorClass] is expected to work anymore.
@@ -35230,14 +37052,15 @@ func UnsafeAllocatorClassToGlibNone(a *AllocatorClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAllocatorClassToGlibFull(a *AllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.allocatorClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AllocatorClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeAllocatorClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AllocatorClass) {}, a)
+	return parent
 }
+
 // AtomicQueue wraps GstAtomicQueue
 //
 // The #GstAtomicQueue object implements a queue that can be used from multiple
@@ -35268,7 +37091,7 @@ func UnsafeAtomicQueueFromGlibBorrow(p unsafe.Pointer) *AtomicQueue {
 	return &AtomicQueue{&atomicQueue{(*C.GstAtomicQueue)(p)}}
 }
 
-// UnsafeAtomicQueueFromGlibNone is used to convert raw C.GstAtomicQueue pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAtomicQueueFromGlibNone is used to convert raw C.GstAtomicQueue pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAtomicQueueFromGlibNone(p unsafe.Pointer) *AtomicQueue {
 	C.gst_atomic_queue_ref((*C.GstAtomicQueue)(p))
 	wrapped := UnsafeAtomicQueueFromGlibBorrow(p)
@@ -35281,7 +37104,7 @@ func UnsafeAtomicQueueFromGlibNone(p unsafe.Pointer) *AtomicQueue {
 	return wrapped
 }
 
-// UnsafeAtomicQueueFromGlibFull is used to convert raw C.GstAtomicQueue pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAtomicQueueFromGlibFull is used to convert raw C.GstAtomicQueue pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAtomicQueueFromGlibFull(p unsafe.Pointer) *AtomicQueue {
 	wrapped := UnsafeAtomicQueueFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -35320,6 +37143,7 @@ func UnsafeAtomicQueueToGlibFull(a *AtomicQueue) unsafe.Pointer {
 	a.native = nil // AtomicQueue is invalid from here on
 	return _p
 }
+
 // NewAtomicQueue wraps gst_atomic_queue_new
 // 
 // The function takes the following parameters:
@@ -35349,6 +37173,7 @@ func NewAtomicQueue(initialSize uint) *AtomicQueue {
 }
 
 // Length wraps gst_atomic_queue_length
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -35383,6 +37208,8 @@ func (queue *AtomicQueue) Length() uint {
 // was added to a sub-bin of this bin. #GstBin implementations that override
 // this message should chain up to the parent class implementation so the
 // #GstBin::deep-element-added signal is emitted on all parents.
+// 
+// BinClass is the type struct for [Bin]
 type BinClass struct {
 	*binClass
 }
@@ -35397,31 +37224,6 @@ func UnsafeBinClassFromGlibBorrow(p unsafe.Pointer) *BinClass {
 	return &BinClass{&binClass{(*C.GstBinClass)(p)}}
 }
 
-// UnsafeBinClassFromGlibNone is used to convert raw C.GstBinClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBinClassFromGlibNone(p unsafe.Pointer) *BinClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeBinClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.binClass,
-		func (intern *binClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeBinClassFromGlibFull is used to convert raw C.GstBinClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBinClassFromGlibFull(p unsafe.Pointer) *BinClass {
-	wrapped := UnsafeBinClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.binClass,
-		func (intern *binClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeBinClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [BinClass] is expected to work anymore.
@@ -35434,14 +37236,15 @@ func UnsafeBinClassToGlibNone(b *BinClass) unsafe.Pointer {
 	return unsafe.Pointer(b.native)
 }
 
-// UnsafeBinClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeBinClassToGlibFull(b *BinClass) unsafe.Pointer {
-	runtime.SetFinalizer(b.binClass, nil)
-	_p := unsafe.Pointer(b.native)
-	b.native = nil // BinClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (b *BinClass) ParentClass() *ElementClass {
+	parent := UnsafeElementClassFromGlibBorrow(UnsafeBinClassToGlibNone(b))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *BinClass) {}, b)
+	return parent
 }
+
 // Buffer wraps GstBuffer
 //
 // Buffers are the basic unit of data transfer in GStreamer. They contain the
@@ -35559,7 +37362,7 @@ func UnsafeBufferFromGlibBorrow(p unsafe.Pointer) *Buffer {
 	return &Buffer{&buffer{(*C.GstBuffer)(p)}}
 }
 
-// UnsafeBufferFromGlibNone is used to convert raw C.GstBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBufferFromGlibNone is used to convert raw C.GstBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBufferFromGlibNone(p unsafe.Pointer) *Buffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBufferFromGlibBorrow(p)
@@ -35572,7 +37375,7 @@ func UnsafeBufferFromGlibNone(p unsafe.Pointer) *Buffer {
 	return wrapped
 }
 
-// UnsafeBufferFromGlibFull is used to convert raw C.GstBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBufferFromGlibFull is used to convert raw C.GstBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBufferFromGlibFull(p unsafe.Pointer) *Buffer {
 	wrapped := UnsafeBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -35604,7 +37407,9 @@ func UnsafeBufferToGlibFull(b *Buffer) unsafe.Pointer {
 	b.native = nil // Buffer is invalid from here on
 	return _p
 }
+
 // NewBuffer wraps gst_buffer_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *Buffer 
@@ -35699,6 +37504,7 @@ func NewBufferWrappedBytes(bytes *glib.Bytes) *Buffer {
 }
 
 // BufferGetMaxMemory wraps gst_buffer_get_max_memory
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -35956,6 +37762,7 @@ func (buf1 *Buffer) AppendRegion(buf2 *Buffer, offset int, size int) *Buffer {
 }
 
 // CopyDeep wraps gst_buffer_copy_deep
+// 
 // The function returns the following values:
 // 
 // 	- goret *Buffer (nullable) 
@@ -36175,6 +37982,7 @@ func (buffer *Buffer) ForEachMeta(fn BufferForEachMetaFunc) bool {
 }
 
 // GetAllMemory wraps gst_buffer_get_all_memory
+// 
 // The function returns the following values:
 // 
 // 	- goret *Memory (nullable) 
@@ -36233,6 +38041,7 @@ func (buffer *Buffer) GetCustomMeta(name string) *CustomMeta {
 }
 
 // GetFlags wraps gst_buffer_get_flags
+// 
 // The function returns the following values:
 // 
 // 	- goret BufferFlags 
@@ -36428,6 +38237,7 @@ func (buffer *Buffer) GetReferenceTimestampMeta(reference *Caps) *ReferenceTimes
 }
 
 // GetSize wraps gst_buffer_get_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -36450,6 +38260,7 @@ func (buffer *Buffer) GetSize() uint {
 }
 
 // GetSizes wraps gst_buffer_get_sizes
+// 
 // The function returns the following values:
 // 
 // 	- offset uint: a pointer to the offset 
@@ -36595,6 +38406,7 @@ func (buffer *Buffer) InsertMemory(idx int, mem *Memory) {
 }
 
 // IsAllMemoryWritable wraps gst_buffer_is_all_memory_writable
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -36701,6 +38513,7 @@ func (buffer *Buffer) Memset(offset uint, val uint8, size uint) uint {
 }
 
 // NMemory wraps gst_buffer_n_memory
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -37130,7 +38943,7 @@ func UnsafeBufferListFromGlibBorrow(p unsafe.Pointer) *BufferList {
 	return &BufferList{&bufferList{(*C.GstBufferList)(p)}}
 }
 
-// UnsafeBufferListFromGlibNone is used to convert raw C.GstBufferList pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBufferListFromGlibNone is used to convert raw C.GstBufferList pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBufferListFromGlibNone(p unsafe.Pointer) *BufferList {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBufferListFromGlibBorrow(p)
@@ -37143,7 +38956,7 @@ func UnsafeBufferListFromGlibNone(p unsafe.Pointer) *BufferList {
 	return wrapped
 }
 
-// UnsafeBufferListFromGlibFull is used to convert raw C.GstBufferList pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBufferListFromGlibFull is used to convert raw C.GstBufferList pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBufferListFromGlibFull(p unsafe.Pointer) *BufferList {
 	wrapped := UnsafeBufferListFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -37175,7 +38988,9 @@ func UnsafeBufferListToGlibFull(b *BufferList) unsafe.Pointer {
 	b.native = nil // BufferList is invalid from here on
 	return _p
 }
+
 // NewBufferList wraps gst_buffer_list_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *BufferList 
@@ -37222,6 +39037,7 @@ func NewBufferListSized(size uint) *BufferList {
 }
 
 // CalculateSize wraps gst_buffer_list_calculate_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -37245,6 +39061,7 @@ func (list *BufferList) CalculateSize() uint {
 }
 
 // CopyDeep wraps gst_buffer_list_copy_deep
+// 
 // The function returns the following values:
 // 
 // 	- goret *BufferList 
@@ -37405,6 +39222,7 @@ func (list *BufferList) Insert(idx int, buffer *Buffer) {
 }
 
 // Length wraps gst_buffer_list_length
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -37472,7 +39290,7 @@ func UnsafeBufferPoolAcquireParamsFromGlibBorrow(p unsafe.Pointer) *BufferPoolAc
 	return &BufferPoolAcquireParams{&bufferPoolAcquireParams{(*C.GstBufferPoolAcquireParams)(p)}}
 }
 
-// UnsafeBufferPoolAcquireParamsFromGlibNone is used to convert raw C.GstBufferPoolAcquireParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBufferPoolAcquireParamsFromGlibNone is used to convert raw C.GstBufferPoolAcquireParams pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBufferPoolAcquireParamsFromGlibNone(p unsafe.Pointer) *BufferPoolAcquireParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBufferPoolAcquireParamsFromGlibBorrow(p)
@@ -37485,7 +39303,7 @@ func UnsafeBufferPoolAcquireParamsFromGlibNone(p unsafe.Pointer) *BufferPoolAcqu
 	return wrapped
 }
 
-// UnsafeBufferPoolAcquireParamsFromGlibFull is used to convert raw C.GstBufferPoolAcquireParams pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBufferPoolAcquireParamsFromGlibFull is used to convert raw C.GstBufferPoolAcquireParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBufferPoolAcquireParamsFromGlibFull(p unsafe.Pointer) *BufferPoolAcquireParams {
 	wrapped := UnsafeBufferPoolAcquireParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -37517,9 +39335,12 @@ func UnsafeBufferPoolAcquireParamsToGlibFull(b *BufferPoolAcquireParams) unsafe.
 	b.native = nil // BufferPoolAcquireParams is invalid from here on
 	return _p
 }
+
 // BufferPoolClass wraps GstBufferPoolClass
 //
 // The #GstBufferPool class.
+// 
+// BufferPoolClass is the type struct for [BufferPool]
 type BufferPoolClass struct {
 	*bufferPoolClass
 }
@@ -37534,31 +39355,6 @@ func UnsafeBufferPoolClassFromGlibBorrow(p unsafe.Pointer) *BufferPoolClass {
 	return &BufferPoolClass{&bufferPoolClass{(*C.GstBufferPoolClass)(p)}}
 }
 
-// UnsafeBufferPoolClassFromGlibNone is used to convert raw C.GstBufferPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBufferPoolClassFromGlibNone(p unsafe.Pointer) *BufferPoolClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeBufferPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.bufferPoolClass,
-		func (intern *bufferPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeBufferPoolClassFromGlibFull is used to convert raw C.GstBufferPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBufferPoolClassFromGlibFull(p unsafe.Pointer) *BufferPoolClass {
-	wrapped := UnsafeBufferPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.bufferPoolClass,
-		func (intern *bufferPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeBufferPoolClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [BufferPoolClass] is expected to work anymore.
@@ -37571,17 +39367,20 @@ func UnsafeBufferPoolClassToGlibNone(b *BufferPoolClass) unsafe.Pointer {
 	return unsafe.Pointer(b.native)
 }
 
-// UnsafeBufferPoolClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeBufferPoolClassToGlibFull(b *BufferPoolClass) unsafe.Pointer {
-	runtime.SetFinalizer(b.bufferPoolClass, nil)
-	_p := unsafe.Pointer(b.native)
-	b.native = nil // BufferPoolClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (b *BufferPoolClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeBufferPoolClassToGlibNone(b))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *BufferPoolClass) {}, b)
+	return parent
 }
+
 // BusClass wraps GstBusClass
 //
 // GStreamer bus class.
+// 
+// BusClass is the type struct for [Bus]
 type BusClass struct {
 	*busClass
 }
@@ -37596,31 +39395,6 @@ func UnsafeBusClassFromGlibBorrow(p unsafe.Pointer) *BusClass {
 	return &BusClass{&busClass{(*C.GstBusClass)(p)}}
 }
 
-// UnsafeBusClassFromGlibNone is used to convert raw C.GstBusClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBusClassFromGlibNone(p unsafe.Pointer) *BusClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeBusClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.busClass,
-		func (intern *busClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeBusClassFromGlibFull is used to convert raw C.GstBusClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBusClassFromGlibFull(p unsafe.Pointer) *BusClass {
-	wrapped := UnsafeBusClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.busClass,
-		func (intern *busClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeBusClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [BusClass] is expected to work anymore.
@@ -37633,14 +39407,15 @@ func UnsafeBusClassToGlibNone(b *BusClass) unsafe.Pointer {
 	return unsafe.Pointer(b.native)
 }
 
-// UnsafeBusClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeBusClassToGlibFull(b *BusClass) unsafe.Pointer {
-	runtime.SetFinalizer(b.busClass, nil)
-	_p := unsafe.Pointer(b.native)
-	b.native = nil // BusClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (b *BusClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeBusClassToGlibNone(b))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *BusClass) {}, b)
+	return parent
 }
+
 // ByteArrayInterface wraps GstByteArrayInterface
 //
 // Interface for an array of bytes. It is expected to be subclassed to implement
@@ -37664,7 +39439,7 @@ func UnsafeByteArrayInterfaceFromGlibBorrow(p unsafe.Pointer) *ByteArrayInterfac
 	return &ByteArrayInterface{&byteArrayInterface{(*C.GstByteArrayInterface)(p)}}
 }
 
-// UnsafeByteArrayInterfaceFromGlibNone is used to convert raw C.GstByteArrayInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeByteArrayInterfaceFromGlibNone is used to convert raw C.GstByteArrayInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeByteArrayInterfaceFromGlibNone(p unsafe.Pointer) *ByteArrayInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeByteArrayInterfaceFromGlibBorrow(p)
@@ -37677,7 +39452,7 @@ func UnsafeByteArrayInterfaceFromGlibNone(p unsafe.Pointer) *ByteArrayInterface 
 	return wrapped
 }
 
-// UnsafeByteArrayInterfaceFromGlibFull is used to convert raw C.GstByteArrayInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeByteArrayInterfaceFromGlibFull is used to convert raw C.GstByteArrayInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeByteArrayInterfaceFromGlibFull(p unsafe.Pointer) *ByteArrayInterface {
 	wrapped := UnsafeByteArrayInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -37709,6 +39484,7 @@ func UnsafeByteArrayInterfaceToGlibFull(b *ByteArrayInterface) unsafe.Pointer {
 	b.native = nil // ByteArrayInterface is invalid from here on
 	return _p
 }
+
 // Caps wraps GstCaps
 //
 // Caps (capabilities) are lightweight refcounted objects describing media types.
@@ -37772,7 +39548,7 @@ func UnsafeCapsFromGlibBorrow(p unsafe.Pointer) *Caps {
 	return &Caps{&caps{(*C.GstCaps)(p)}}
 }
 
-// UnsafeCapsFromGlibNone is used to convert raw C.GstCaps pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCapsFromGlibNone is used to convert raw C.GstCaps pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCapsFromGlibNone(p unsafe.Pointer) *Caps {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeCapsFromGlibBorrow(p)
@@ -37785,7 +39561,7 @@ func UnsafeCapsFromGlibNone(p unsafe.Pointer) *Caps {
 	return wrapped
 }
 
-// UnsafeCapsFromGlibFull is used to convert raw C.GstCaps pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCapsFromGlibFull is used to convert raw C.GstCaps pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeCapsFromGlibFull(p unsafe.Pointer) *Caps {
 	wrapped := UnsafeCapsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -37817,7 +39593,9 @@ func UnsafeCapsToGlibFull(c *Caps) unsafe.Pointer {
 	c.native = nil // Caps is invalid from here on
 	return _p
 }
+
 // NewCapsAny wraps gst_caps_new_any
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -37837,6 +39615,7 @@ func NewCapsAny() *Caps {
 }
 
 // NewCapsEmpty wraps gst_caps_new_empty
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -38019,6 +39798,7 @@ func (caps1 *Caps) CanIntersect(caps2 *Caps) bool {
 }
 
 // Copy wraps gst_caps_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -38103,6 +39883,7 @@ func (caps *Caps) FilterAndMapInPlace(fn CapsFilterMapFunc) {
 }
 
 // Fixate wraps gst_caps_fixate
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -38215,6 +39996,7 @@ func (caps *Caps) GetFeatures(index uint) *CapsFeatures {
 }
 
 // GetSize wraps gst_caps_get_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -38378,6 +40160,7 @@ func (caps1 *Caps) IsAlwaysCompatible(caps2 *Caps) bool {
 }
 
 // IsAny wraps gst_caps_is_any
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -38402,6 +40185,7 @@ func (caps *Caps) IsAny() bool {
 }
 
 // IsEmpty wraps gst_caps_is_empty
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -38491,6 +40275,7 @@ func (caps1 *Caps) IsEqualFixed(caps2 *Caps) bool {
 }
 
 // IsFixed wraps gst_caps_is_fixed
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -38789,6 +40574,7 @@ func (caps *Caps) MergeStructureFull(structure *Structure, features *CapsFeature
 }
 
 // Normalize wraps gst_caps_normalize
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -38948,6 +40734,7 @@ func (caps *Caps) SetValue(field string, value *gobject.Value) {
 }
 
 // Simplify wraps gst_caps_simplify
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -39044,6 +40831,7 @@ func (minuend *Caps) Subtract(subtrahend *Caps) *Caps {
 }
 
 // ToString wraps gst_caps_to_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -39079,6 +40867,7 @@ func (caps *Caps) ToString() string {
 }
 
 // Truncate wraps gst_caps_truncate
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -39155,7 +40944,7 @@ func UnsafeCapsFeaturesFromGlibBorrow(p unsafe.Pointer) *CapsFeatures {
 	return &CapsFeatures{&capsFeatures{(*C.GstCapsFeatures)(p)}}
 }
 
-// UnsafeCapsFeaturesFromGlibNone is used to convert raw C.GstCapsFeatures pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCapsFeaturesFromGlibNone is used to convert raw C.GstCapsFeatures pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCapsFeaturesFromGlibNone(p unsafe.Pointer) *CapsFeatures {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeCapsFeaturesFromGlibBorrow(p)
@@ -39168,7 +40957,7 @@ func UnsafeCapsFeaturesFromGlibNone(p unsafe.Pointer) *CapsFeatures {
 	return wrapped
 }
 
-// UnsafeCapsFeaturesFromGlibFull is used to convert raw C.GstCapsFeatures pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCapsFeaturesFromGlibFull is used to convert raw C.GstCapsFeatures pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeCapsFeaturesFromGlibFull(p unsafe.Pointer) *CapsFeatures {
 	wrapped := UnsafeCapsFeaturesFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -39200,7 +40989,9 @@ func UnsafeCapsFeaturesToGlibFull(c *CapsFeatures) unsafe.Pointer {
 	c.native = nil // CapsFeatures is invalid from here on
 	return _p
 }
+
 // NewCapsFeaturesAny wraps gst_caps_features_new_any
+// 
 // The function returns the following values:
 // 
 // 	- goret *CapsFeatures 
@@ -39221,6 +41012,7 @@ func NewCapsFeaturesAny() *CapsFeatures {
 }
 
 // NewCapsFeaturesEmpty wraps gst_caps_features_new_empty
+// 
 // The function returns the following values:
 // 
 // 	- goret *CapsFeatures 
@@ -39401,6 +41193,7 @@ func (features *CapsFeatures) ContainsID(feature glib.Quark) bool {
 }
 
 // Copy wraps gst_caps_features_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *CapsFeatures 
@@ -39485,6 +41278,7 @@ func (features *CapsFeatures) GetNthID(i uint) glib.Quark {
 }
 
 // GetSize wraps gst_caps_features_get_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -39507,6 +41301,7 @@ func (features *CapsFeatures) GetSize() uint {
 }
 
 // IsAny wraps gst_caps_features_is_any
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -39639,6 +41434,7 @@ func (features *CapsFeatures) SetParentRefcount(refcount *int) bool {
 }
 
 // ToString wraps gst_caps_features_to_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -39686,7 +41482,7 @@ func UnsafeChildProxyInterfaceFromGlibBorrow(p unsafe.Pointer) *ChildProxyInterf
 	return &ChildProxyInterface{&childProxyInterface{(*C.GstChildProxyInterface)(p)}}
 }
 
-// UnsafeChildProxyInterfaceFromGlibNone is used to convert raw C.GstChildProxyInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeChildProxyInterfaceFromGlibNone is used to convert raw C.GstChildProxyInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeChildProxyInterfaceFromGlibNone(p unsafe.Pointer) *ChildProxyInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeChildProxyInterfaceFromGlibBorrow(p)
@@ -39699,7 +41495,7 @@ func UnsafeChildProxyInterfaceFromGlibNone(p unsafe.Pointer) *ChildProxyInterfac
 	return wrapped
 }
 
-// UnsafeChildProxyInterfaceFromGlibFull is used to convert raw C.GstChildProxyInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeChildProxyInterfaceFromGlibFull is used to convert raw C.GstChildProxyInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeChildProxyInterfaceFromGlibFull(p unsafe.Pointer) *ChildProxyInterface {
 	wrapped := UnsafeChildProxyInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -39731,10 +41527,13 @@ func UnsafeChildProxyInterfaceToGlibFull(c *ChildProxyInterface) unsafe.Pointer 
 	c.native = nil // ChildProxyInterface is invalid from here on
 	return _p
 }
+
 // ClockClass wraps GstClockClass
 //
 // GStreamer clock class. Override the vmethods to implement the clock
 // functionality.
+// 
+// ClockClass is the type struct for [Clock]
 type ClockClass struct {
 	*clockClass
 }
@@ -39749,31 +41548,6 @@ func UnsafeClockClassFromGlibBorrow(p unsafe.Pointer) *ClockClass {
 	return &ClockClass{&clockClass{(*C.GstClockClass)(p)}}
 }
 
-// UnsafeClockClassFromGlibNone is used to convert raw C.GstClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeClockClassFromGlibNone(p unsafe.Pointer) *ClockClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.clockClass,
-		func (intern *clockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeClockClassFromGlibFull is used to convert raw C.GstClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeClockClassFromGlibFull(p unsafe.Pointer) *ClockClass {
-	wrapped := UnsafeClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.clockClass,
-		func (intern *clockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ClockClass] is expected to work anymore.
@@ -39786,14 +41560,15 @@ func UnsafeClockClassToGlibNone(c *ClockClass) unsafe.Pointer {
 	return unsafe.Pointer(c.native)
 }
 
-// UnsafeClockClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeClockClassToGlibFull(c *ClockClass) unsafe.Pointer {
-	runtime.SetFinalizer(c.clockClass, nil)
-	_p := unsafe.Pointer(c.native)
-	c.native = nil // ClockClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (c *ClockClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeClockClassToGlibNone(c))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ClockClass) {}, c)
+	return parent
 }
+
 // ClockEntry wraps GstClockEntry
 //
 // All pending timeouts or periodic notifies are converted into
@@ -39814,7 +41589,7 @@ func UnsafeClockEntryFromGlibBorrow(p unsafe.Pointer) *ClockEntry {
 	return &ClockEntry{&clockEntry{(*C.GstClockEntry)(p)}}
 }
 
-// UnsafeClockEntryFromGlibNone is used to convert raw C.GstClockEntry pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeClockEntryFromGlibNone is used to convert raw C.GstClockEntry pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeClockEntryFromGlibNone(p unsafe.Pointer) *ClockEntry {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeClockEntryFromGlibBorrow(p)
@@ -39827,7 +41602,7 @@ func UnsafeClockEntryFromGlibNone(p unsafe.Pointer) *ClockEntry {
 	return wrapped
 }
 
-// UnsafeClockEntryFromGlibFull is used to convert raw C.GstClockEntry pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeClockEntryFromGlibFull is used to convert raw C.GstClockEntry pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeClockEntryFromGlibFull(p unsafe.Pointer) *ClockEntry {
 	wrapped := UnsafeClockEntryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -39859,6 +41634,7 @@ func UnsafeClockEntryToGlibFull(c *ClockEntry) unsafe.Pointer {
 	c.native = nil // ClockEntry is invalid from here on
 	return _p
 }
+
 // Context wraps GstContext
 //
 // #GstContext is a container object used to store contexts like a device
@@ -39916,7 +41692,7 @@ func UnsafeContextFromGlibBorrow(p unsafe.Pointer) *Context {
 	return &Context{&_context{(*C.GstContext)(p)}}
 }
 
-// UnsafeContextFromGlibNone is used to convert raw C.GstContext pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeContextFromGlibNone is used to convert raw C.GstContext pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeContextFromGlibNone(p unsafe.Pointer) *Context {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeContextFromGlibBorrow(p)
@@ -39929,7 +41705,7 @@ func UnsafeContextFromGlibNone(p unsafe.Pointer) *Context {
 	return wrapped
 }
 
-// UnsafeContextFromGlibFull is used to convert raw C.GstContext pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeContextFromGlibFull is used to convert raw C.GstContext pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeContextFromGlibFull(p unsafe.Pointer) *Context {
 	wrapped := UnsafeContextFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -39961,6 +41737,7 @@ func UnsafeContextToGlibFull(c *Context) unsafe.Pointer {
 	c.native = nil // Context is invalid from here on
 	return _p
 }
+
 // NewContext wraps gst_context_new
 // 
 // The function takes the following parameters:
@@ -39996,6 +41773,7 @@ func NewContext(contextType string, persistent bool) *Context {
 }
 
 // GetContextType wraps gst_context_get_context_type
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -40018,6 +41796,7 @@ func (_context *Context) GetContextType() string {
 }
 
 // GetStructure wraps gst_context_get_structure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure 
@@ -40073,6 +41852,7 @@ func (_context *Context) HasContextType(contextType string) bool {
 }
 
 // IsPersistent wraps gst_context_is_persistent
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -40097,6 +41877,7 @@ func (_context *Context) IsPersistent() bool {
 }
 
 // WritableStructure wraps gst_context_writable_structure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure 
@@ -40121,6 +41902,8 @@ func (_context *Context) WritableStructure() *Structure {
 // ControlBindingClass wraps GstControlBindingClass
 //
 // The class structure of #GstControlBinding.
+// 
+// ControlBindingClass is the type struct for [ControlBinding]
 type ControlBindingClass struct {
 	*controlBindingClass
 }
@@ -40135,31 +41918,6 @@ func UnsafeControlBindingClassFromGlibBorrow(p unsafe.Pointer) *ControlBindingCl
 	return &ControlBindingClass{&controlBindingClass{(*C.GstControlBindingClass)(p)}}
 }
 
-// UnsafeControlBindingClassFromGlibNone is used to convert raw C.GstControlBindingClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeControlBindingClassFromGlibNone(p unsafe.Pointer) *ControlBindingClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeControlBindingClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.controlBindingClass,
-		func (intern *controlBindingClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeControlBindingClassFromGlibFull is used to convert raw C.GstControlBindingClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeControlBindingClassFromGlibFull(p unsafe.Pointer) *ControlBindingClass {
-	wrapped := UnsafeControlBindingClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.controlBindingClass,
-		func (intern *controlBindingClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeControlBindingClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ControlBindingClass] is expected to work anymore.
@@ -40172,17 +41930,20 @@ func UnsafeControlBindingClassToGlibNone(c *ControlBindingClass) unsafe.Pointer 
 	return unsafe.Pointer(c.native)
 }
 
-// UnsafeControlBindingClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeControlBindingClassToGlibFull(c *ControlBindingClass) unsafe.Pointer {
-	runtime.SetFinalizer(c.controlBindingClass, nil)
-	_p := unsafe.Pointer(c.native)
-	c.native = nil // ControlBindingClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (c *ControlBindingClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeControlBindingClassToGlibNone(c))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ControlBindingClass) {}, c)
+	return parent
 }
+
 // ControlSourceClass wraps GstControlSourceClass
 //
 // The class structure of #GstControlSource.
+// 
+// ControlSourceClass is the type struct for [ControlSource]
 type ControlSourceClass struct {
 	*controlSourceClass
 }
@@ -40197,31 +41958,6 @@ func UnsafeControlSourceClassFromGlibBorrow(p unsafe.Pointer) *ControlSourceClas
 	return &ControlSourceClass{&controlSourceClass{(*C.GstControlSourceClass)(p)}}
 }
 
-// UnsafeControlSourceClassFromGlibNone is used to convert raw C.GstControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeControlSourceClassFromGlibNone(p unsafe.Pointer) *ControlSourceClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.controlSourceClass,
-		func (intern *controlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeControlSourceClassFromGlibFull is used to convert raw C.GstControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeControlSourceClassFromGlibFull(p unsafe.Pointer) *ControlSourceClass {
-	wrapped := UnsafeControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.controlSourceClass,
-		func (intern *controlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ControlSourceClass] is expected to work anymore.
@@ -40234,14 +41970,15 @@ func UnsafeControlSourceClassToGlibNone(c *ControlSourceClass) unsafe.Pointer {
 	return unsafe.Pointer(c.native)
 }
 
-// UnsafeControlSourceClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeControlSourceClassToGlibFull(c *ControlSourceClass) unsafe.Pointer {
-	runtime.SetFinalizer(c.controlSourceClass, nil)
-	_p := unsafe.Pointer(c.native)
-	c.native = nil // ControlSourceClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (c *ControlSourceClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeControlSourceClassToGlibNone(c))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ControlSourceClass) {}, c)
+	return parent
 }
+
 // CustomMeta wraps GstCustomMeta
 //
 // Extra custom metadata. The @structure field is the same as returned by
@@ -40264,7 +42001,7 @@ func UnsafeCustomMetaFromGlibBorrow(p unsafe.Pointer) *CustomMeta {
 	return &CustomMeta{&customMeta{(*C.GstCustomMeta)(p)}}
 }
 
-// UnsafeCustomMetaFromGlibNone is used to convert raw C.GstCustomMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCustomMetaFromGlibNone is used to convert raw C.GstCustomMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCustomMetaFromGlibNone(p unsafe.Pointer) *CustomMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeCustomMetaFromGlibBorrow(p)
@@ -40277,7 +42014,7 @@ func UnsafeCustomMetaFromGlibNone(p unsafe.Pointer) *CustomMeta {
 	return wrapped
 }
 
-// UnsafeCustomMetaFromGlibFull is used to convert raw C.GstCustomMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCustomMetaFromGlibFull is used to convert raw C.GstCustomMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeCustomMetaFromGlibFull(p unsafe.Pointer) *CustomMeta {
 	wrapped := UnsafeCustomMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -40309,7 +42046,9 @@ func UnsafeCustomMetaToGlibFull(c *CustomMeta) unsafe.Pointer {
 	c.native = nil // CustomMeta is invalid from here on
 	return _p
 }
+
 // GetStructure wraps gst_custom_meta_get_structure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure 
@@ -40401,7 +42140,7 @@ func UnsafeDateTimeFromGlibBorrow(p unsafe.Pointer) *DateTime {
 	return &DateTime{&dateTime{(*C.GstDateTime)(p)}}
 }
 
-// UnsafeDateTimeFromGlibNone is used to convert raw C.GstDateTime pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDateTimeFromGlibNone is used to convert raw C.GstDateTime pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDateTimeFromGlibNone(p unsafe.Pointer) *DateTime {
 	C.gst_date_time_ref((*C.GstDateTime)(p))
 	wrapped := UnsafeDateTimeFromGlibBorrow(p)
@@ -40414,7 +42153,7 @@ func UnsafeDateTimeFromGlibNone(p unsafe.Pointer) *DateTime {
 	return wrapped
 }
 
-// UnsafeDateTimeFromGlibFull is used to convert raw C.GstDateTime pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDateTimeFromGlibFull is used to convert raw C.GstDateTime pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDateTimeFromGlibFull(p unsafe.Pointer) *DateTime {
 	wrapped := UnsafeDateTimeFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -40453,6 +42192,7 @@ func UnsafeDateTimeToGlibFull(d *DateTime) unsafe.Pointer {
 	d.native = nil // DateTime is invalid from here on
 	return _p
 }
+
 // NewDateTime wraps gst_date_time_new
 // 
 // The function takes the following parameters:
@@ -40771,6 +42511,7 @@ func NewDateTimeLocalTime(year int, month int, day int, hour int, minute int, se
 }
 
 // NewDateTimeNowLocalTime wraps gst_date_time_new_now_local_time
+// 
 // The function returns the following values:
 // 
 // 	- goret *DateTime (nullable) 
@@ -40791,6 +42532,7 @@ func NewDateTimeNowLocalTime() *DateTime {
 }
 
 // NewDateTimeNowUTC wraps gst_date_time_new_now_utc
+// 
 // The function returns the following values:
 // 
 // 	- goret *DateTime (nullable) 
@@ -40929,6 +42671,7 @@ func NewDateTimeYmd(year int, month int, day int) *DateTime {
 }
 
 // GetDay wraps gst_date_time_get_day
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -40951,6 +42694,7 @@ func (datetime *DateTime) GetDay() int {
 }
 
 // GetHour wraps gst_date_time_get_hour
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -40974,6 +42718,7 @@ func (datetime *DateTime) GetHour() int {
 }
 
 // GetMicrosecond wraps gst_date_time_get_microsecond
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -40997,6 +42742,7 @@ func (datetime *DateTime) GetMicrosecond() int {
 }
 
 // GetMinute wraps gst_date_time_get_minute
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -41020,6 +42766,7 @@ func (datetime *DateTime) GetMinute() int {
 }
 
 // GetMonth wraps gst_date_time_get_month
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -41042,6 +42789,7 @@ func (datetime *DateTime) GetMonth() int {
 }
 
 // GetSecond wraps gst_date_time_get_second
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -41065,6 +42813,7 @@ func (datetime *DateTime) GetSecond() int {
 }
 
 // GetTimeZoneOffset wraps gst_date_time_get_time_zone_offset
+// 
 // The function returns the following values:
 // 
 // 	- goret float32 
@@ -41090,6 +42839,7 @@ func (datetime *DateTime) GetTimeZoneOffset() float32 {
 }
 
 // GetYear wraps gst_date_time_get_year
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -41113,6 +42863,7 @@ func (datetime *DateTime) GetYear() int {
 }
 
 // HasDay wraps gst_date_time_has_day
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -41135,6 +42886,7 @@ func (datetime *DateTime) HasDay() bool {
 }
 
 // HasMonth wraps gst_date_time_has_month
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -41157,6 +42909,7 @@ func (datetime *DateTime) HasMonth() bool {
 }
 
 // HasSecond wraps gst_date_time_has_second
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -41179,6 +42932,7 @@ func (datetime *DateTime) HasSecond() bool {
 }
 
 // HasTime wraps gst_date_time_has_time
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -41201,6 +42955,7 @@ func (datetime *DateTime) HasTime() bool {
 }
 
 // HasYear wraps gst_date_time_has_year
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -41223,6 +42978,7 @@ func (datetime *DateTime) HasYear() bool {
 }
 
 // ToGDateTime wraps gst_date_time_to_g_date_time
+// 
 // The function returns the following values:
 // 
 // 	- goret *glib.DateTime (nullable) 
@@ -41247,6 +43003,7 @@ func (datetime *DateTime) ToGDateTime() *glib.DateTime {
 }
 
 // ToISO8601String wraps gst_date_time_to_iso8601_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -41291,7 +43048,7 @@ func UnsafeDebugCategoryFromGlibBorrow(p unsafe.Pointer) *DebugCategory {
 	return &DebugCategory{&debugCategory{(*C.GstDebugCategory)(p)}}
 }
 
-// UnsafeDebugCategoryFromGlibNone is used to convert raw C.GstDebugCategory pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDebugCategoryFromGlibNone is used to convert raw C.GstDebugCategory pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDebugCategoryFromGlibNone(p unsafe.Pointer) *DebugCategory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDebugCategoryFromGlibBorrow(p)
@@ -41304,7 +43061,7 @@ func UnsafeDebugCategoryFromGlibNone(p unsafe.Pointer) *DebugCategory {
 	return wrapped
 }
 
-// UnsafeDebugCategoryFromGlibFull is used to convert raw C.GstDebugCategory pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDebugCategoryFromGlibFull is used to convert raw C.GstDebugCategory pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDebugCategoryFromGlibFull(p unsafe.Pointer) *DebugCategory {
 	wrapped := UnsafeDebugCategoryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -41336,7 +43093,9 @@ func UnsafeDebugCategoryToGlibFull(d *DebugCategory) unsafe.Pointer {
 	d.native = nil // DebugCategory is invalid from here on
 	return _p
 }
+
 // GetColor wraps gst_debug_category_get_color
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -41360,6 +43119,7 @@ func (category *DebugCategory) GetColor() uint {
 }
 
 // GetDescription wraps gst_debug_category_get_description
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -41382,6 +43142,7 @@ func (category *DebugCategory) GetDescription() string {
 }
 
 // GetName wraps gst_debug_category_get_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -41404,6 +43165,7 @@ func (category *DebugCategory) GetName() string {
 }
 
 // GetThreshold wraps gst_debug_category_get_threshold
+// 
 // The function returns the following values:
 // 
 // 	- goret DebugLevel 
@@ -41480,7 +43242,7 @@ func UnsafeDebugMessageFromGlibBorrow(p unsafe.Pointer) *DebugMessage {
 	return &DebugMessage{&debugMessage{(*C.GstDebugMessage)(p)}}
 }
 
-// UnsafeDebugMessageFromGlibNone is used to convert raw C.GstDebugMessage pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDebugMessageFromGlibNone is used to convert raw C.GstDebugMessage pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDebugMessageFromGlibNone(p unsafe.Pointer) *DebugMessage {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDebugMessageFromGlibBorrow(p)
@@ -41493,7 +43255,7 @@ func UnsafeDebugMessageFromGlibNone(p unsafe.Pointer) *DebugMessage {
 	return wrapped
 }
 
-// UnsafeDebugMessageFromGlibFull is used to convert raw C.GstDebugMessage pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDebugMessageFromGlibFull is used to convert raw C.GstDebugMessage pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDebugMessageFromGlibFull(p unsafe.Pointer) *DebugMessage {
 	wrapped := UnsafeDebugMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -41525,7 +43287,9 @@ func UnsafeDebugMessageToGlibFull(d *DebugMessage) unsafe.Pointer {
 	d.native = nil // DebugMessage is invalid from here on
 	return _p
 }
+
 // Get wraps gst_debug_message_get
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -41551,6 +43315,7 @@ func (message *DebugMessage) Get() string {
 }
 
 // GetID wraps gst_debug_message_get_id
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -41578,6 +43343,8 @@ func (message *DebugMessage) GetID() string {
 // DeviceClass wraps GstDeviceClass
 //
 // The class structure for a #GstDevice object.
+// 
+// DeviceClass is the type struct for [Device]
 type DeviceClass struct {
 	*deviceClass
 }
@@ -41592,31 +43359,6 @@ func UnsafeDeviceClassFromGlibBorrow(p unsafe.Pointer) *DeviceClass {
 	return &DeviceClass{&deviceClass{(*C.GstDeviceClass)(p)}}
 }
 
-// UnsafeDeviceClassFromGlibNone is used to convert raw C.GstDeviceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDeviceClassFromGlibNone(p unsafe.Pointer) *DeviceClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDeviceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.deviceClass,
-		func (intern *deviceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDeviceClassFromGlibFull is used to convert raw C.GstDeviceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDeviceClassFromGlibFull(p unsafe.Pointer) *DeviceClass {
-	wrapped := UnsafeDeviceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.deviceClass,
-		func (intern *deviceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDeviceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DeviceClass] is expected to work anymore.
@@ -41629,17 +43371,20 @@ func UnsafeDeviceClassToGlibNone(d *DeviceClass) unsafe.Pointer {
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDeviceClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDeviceClassToGlibFull(d *DeviceClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.deviceClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DeviceClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DeviceClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeDeviceClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DeviceClass) {}, d)
+	return parent
 }
+
 // DeviceMonitorClass wraps GstDeviceMonitorClass
 //
 // Opaque device monitor class structure.
+// 
+// DeviceMonitorClass is the type struct for [DeviceMonitor]
 type DeviceMonitorClass struct {
 	*deviceMonitorClass
 }
@@ -41654,31 +43399,6 @@ func UnsafeDeviceMonitorClassFromGlibBorrow(p unsafe.Pointer) *DeviceMonitorClas
 	return &DeviceMonitorClass{&deviceMonitorClass{(*C.GstDeviceMonitorClass)(p)}}
 }
 
-// UnsafeDeviceMonitorClassFromGlibNone is used to convert raw C.GstDeviceMonitorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDeviceMonitorClassFromGlibNone(p unsafe.Pointer) *DeviceMonitorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDeviceMonitorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.deviceMonitorClass,
-		func (intern *deviceMonitorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDeviceMonitorClassFromGlibFull is used to convert raw C.GstDeviceMonitorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDeviceMonitorClassFromGlibFull(p unsafe.Pointer) *DeviceMonitorClass {
-	wrapped := UnsafeDeviceMonitorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.deviceMonitorClass,
-		func (intern *deviceMonitorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDeviceMonitorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DeviceMonitorClass] is expected to work anymore.
@@ -41691,17 +43411,20 @@ func UnsafeDeviceMonitorClassToGlibNone(d *DeviceMonitorClass) unsafe.Pointer {
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDeviceMonitorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDeviceMonitorClassToGlibFull(d *DeviceMonitorClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.deviceMonitorClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DeviceMonitorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DeviceMonitorClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeDeviceMonitorClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DeviceMonitorClass) {}, d)
+	return parent
 }
+
 // DeviceProviderClass wraps GstDeviceProviderClass
 //
 // The structure of the base #GstDeviceProviderClass
+// 
+// DeviceProviderClass is the type struct for [DeviceProvider]
 type DeviceProviderClass struct {
 	*deviceProviderClass
 }
@@ -41716,31 +43439,6 @@ func UnsafeDeviceProviderClassFromGlibBorrow(p unsafe.Pointer) *DeviceProviderCl
 	return &DeviceProviderClass{&deviceProviderClass{(*C.GstDeviceProviderClass)(p)}}
 }
 
-// UnsafeDeviceProviderClassFromGlibNone is used to convert raw C.GstDeviceProviderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDeviceProviderClassFromGlibNone(p unsafe.Pointer) *DeviceProviderClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDeviceProviderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.deviceProviderClass,
-		func (intern *deviceProviderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDeviceProviderClassFromGlibFull is used to convert raw C.GstDeviceProviderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDeviceProviderClassFromGlibFull(p unsafe.Pointer) *DeviceProviderClass {
-	wrapped := UnsafeDeviceProviderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.deviceProviderClass,
-		func (intern *deviceProviderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDeviceProviderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DeviceProviderClass] is expected to work anymore.
@@ -41753,14 +43451,15 @@ func UnsafeDeviceProviderClassToGlibNone(d *DeviceProviderClass) unsafe.Pointer 
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDeviceProviderClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDeviceProviderClassToGlibFull(d *DeviceProviderClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.deviceProviderClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DeviceProviderClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DeviceProviderClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeDeviceProviderClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DeviceProviderClass) {}, d)
+	return parent
 }
+
 // AddMetadata wraps gst_device_provider_class_add_metadata
 // 
 // The function takes the following parameters:
@@ -41936,6 +43635,8 @@ func (klass *DeviceProviderClass) SetStaticMetadata(longname string, classificat
 // DeviceProviderFactoryClass wraps GstDeviceProviderFactoryClass
 //
 // The opaque #GstDeviceProviderFactoryClass data structure.
+// 
+// DeviceProviderFactoryClass is the type struct for [DeviceProviderFactory]
 type DeviceProviderFactoryClass struct {
 	*deviceProviderFactoryClass
 }
@@ -41950,31 +43651,6 @@ func UnsafeDeviceProviderFactoryClassFromGlibBorrow(p unsafe.Pointer) *DevicePro
 	return &DeviceProviderFactoryClass{&deviceProviderFactoryClass{(*C.GstDeviceProviderFactoryClass)(p)}}
 }
 
-// UnsafeDeviceProviderFactoryClassFromGlibNone is used to convert raw C.GstDeviceProviderFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDeviceProviderFactoryClassFromGlibNone(p unsafe.Pointer) *DeviceProviderFactoryClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDeviceProviderFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.deviceProviderFactoryClass,
-		func (intern *deviceProviderFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDeviceProviderFactoryClassFromGlibFull is used to convert raw C.GstDeviceProviderFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDeviceProviderFactoryClassFromGlibFull(p unsafe.Pointer) *DeviceProviderFactoryClass {
-	wrapped := UnsafeDeviceProviderFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.deviceProviderFactoryClass,
-		func (intern *deviceProviderFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDeviceProviderFactoryClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DeviceProviderFactoryClass] is expected to work anymore.
@@ -41987,15 +43663,18 @@ func UnsafeDeviceProviderFactoryClassToGlibNone(d *DeviceProviderFactoryClass) u
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDeviceProviderFactoryClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDeviceProviderFactoryClassToGlibFull(d *DeviceProviderFactoryClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.deviceProviderFactoryClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DeviceProviderFactoryClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DeviceProviderFactoryClass) ParentClass() *PluginFeatureClass {
+	parent := UnsafePluginFeatureClassFromGlibBorrow(UnsafeDeviceProviderFactoryClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DeviceProviderFactoryClass) {}, d)
+	return parent
 }
+
 // DynamicTypeFactoryClass wraps GstDynamicTypeFactoryClass
+// 
+// DynamicTypeFactoryClass is the type struct for [DynamicTypeFactory]
 type DynamicTypeFactoryClass struct {
 	*dynamicTypeFactoryClass
 }
@@ -42010,31 +43689,6 @@ func UnsafeDynamicTypeFactoryClassFromGlibBorrow(p unsafe.Pointer) *DynamicTypeF
 	return &DynamicTypeFactoryClass{&dynamicTypeFactoryClass{(*C.GstDynamicTypeFactoryClass)(p)}}
 }
 
-// UnsafeDynamicTypeFactoryClassFromGlibNone is used to convert raw C.GstDynamicTypeFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDynamicTypeFactoryClassFromGlibNone(p unsafe.Pointer) *DynamicTypeFactoryClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDynamicTypeFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.dynamicTypeFactoryClass,
-		func (intern *dynamicTypeFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDynamicTypeFactoryClassFromGlibFull is used to convert raw C.GstDynamicTypeFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDynamicTypeFactoryClassFromGlibFull(p unsafe.Pointer) *DynamicTypeFactoryClass {
-	wrapped := UnsafeDynamicTypeFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.dynamicTypeFactoryClass,
-		func (intern *dynamicTypeFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDynamicTypeFactoryClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DynamicTypeFactoryClass] is expected to work anymore.
@@ -42047,18 +43701,21 @@ func UnsafeDynamicTypeFactoryClassToGlibNone(d *DynamicTypeFactoryClass) unsafe.
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDynamicTypeFactoryClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDynamicTypeFactoryClassToGlibFull(d *DynamicTypeFactoryClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.dynamicTypeFactoryClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DynamicTypeFactoryClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DynamicTypeFactoryClass) ParentClass() *PluginFeatureClass {
+	parent := UnsafePluginFeatureClassFromGlibBorrow(UnsafeDynamicTypeFactoryClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DynamicTypeFactoryClass) {}, d)
+	return parent
 }
+
 // ElementClass wraps GstElementClass
 //
 // GStreamer element class. Override the vmethods to implement the element
 // functionality.
+// 
+// ElementClass is the type struct for [Element]
 type ElementClass struct {
 	*elementClass
 }
@@ -42073,31 +43730,6 @@ func UnsafeElementClassFromGlibBorrow(p unsafe.Pointer) *ElementClass {
 	return &ElementClass{&elementClass{(*C.GstElementClass)(p)}}
 }
 
-// UnsafeElementClassFromGlibNone is used to convert raw C.GstElementClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeElementClassFromGlibNone(p unsafe.Pointer) *ElementClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeElementClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.elementClass,
-		func (intern *elementClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeElementClassFromGlibFull is used to convert raw C.GstElementClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeElementClassFromGlibFull(p unsafe.Pointer) *ElementClass {
-	wrapped := UnsafeElementClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.elementClass,
-		func (intern *elementClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeElementClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ElementClass] is expected to work anymore.
@@ -42110,14 +43742,15 @@ func UnsafeElementClassToGlibNone(e *ElementClass) unsafe.Pointer {
 	return unsafe.Pointer(e.native)
 }
 
-// UnsafeElementClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeElementClassToGlibFull(e *ElementClass) unsafe.Pointer {
-	runtime.SetFinalizer(e.elementClass, nil)
-	_p := unsafe.Pointer(e.native)
-	e.native = nil // ElementClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (e *ElementClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeElementClassToGlibNone(e))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ElementClass) {}, e)
+	return parent
 }
+
 // AddMetadata wraps gst_element_class_add_metadata
 // 
 // The function takes the following parameters:
@@ -42313,6 +43946,7 @@ func (elementClass *ElementClass) GetPadTemplate(name string) PadTemplate {
 }
 
 // GetPadTemplateList wraps gst_element_class_get_pad_template_list
+// 
 // The function returns the following values:
 // 
 // 	- goret []PadTemplate 
@@ -42432,6 +44066,8 @@ func (klass *ElementClass) SetStaticMetadata(longname string, classification str
 }
 
 // ElementFactoryClass wraps GstElementFactoryClass
+// 
+// ElementFactoryClass is the type struct for [ElementFactory]
 type ElementFactoryClass struct {
 	*elementFactoryClass
 }
@@ -42446,31 +44082,6 @@ func UnsafeElementFactoryClassFromGlibBorrow(p unsafe.Pointer) *ElementFactoryCl
 	return &ElementFactoryClass{&elementFactoryClass{(*C.GstElementFactoryClass)(p)}}
 }
 
-// UnsafeElementFactoryClassFromGlibNone is used to convert raw C.GstElementFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeElementFactoryClassFromGlibNone(p unsafe.Pointer) *ElementFactoryClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeElementFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.elementFactoryClass,
-		func (intern *elementFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeElementFactoryClassFromGlibFull is used to convert raw C.GstElementFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeElementFactoryClassFromGlibFull(p unsafe.Pointer) *ElementFactoryClass {
-	wrapped := UnsafeElementFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.elementFactoryClass,
-		func (intern *elementFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeElementFactoryClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ElementFactoryClass] is expected to work anymore.
@@ -42483,14 +44094,15 @@ func UnsafeElementFactoryClassToGlibNone(e *ElementFactoryClass) unsafe.Pointer 
 	return unsafe.Pointer(e.native)
 }
 
-// UnsafeElementFactoryClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeElementFactoryClassToGlibFull(e *ElementFactoryClass) unsafe.Pointer {
-	runtime.SetFinalizer(e.elementFactoryClass, nil)
-	_p := unsafe.Pointer(e.native)
-	e.native = nil // ElementFactoryClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (e *ElementFactoryClass) ParentClass() *PluginFeatureClass {
+	parent := UnsafePluginFeatureClassFromGlibBorrow(UnsafeElementFactoryClassToGlibNone(e))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ElementFactoryClass) {}, e)
+	return parent
 }
+
 // Event wraps GstEvent
 //
 // The event class provides factory methods to construct events for sending
@@ -42560,7 +44172,7 @@ func UnsafeEventFromGlibBorrow(p unsafe.Pointer) *Event {
 	return &Event{&event{(*C.GstEvent)(p)}}
 }
 
-// UnsafeEventFromGlibNone is used to convert raw C.GstEvent pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeEventFromGlibNone is used to convert raw C.GstEvent pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeEventFromGlibNone(p unsafe.Pointer) *Event {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeEventFromGlibBorrow(p)
@@ -42573,7 +44185,7 @@ func UnsafeEventFromGlibNone(p unsafe.Pointer) *Event {
 	return wrapped
 }
 
-// UnsafeEventFromGlibFull is used to convert raw C.GstEvent pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeEventFromGlibFull is used to convert raw C.GstEvent pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeEventFromGlibFull(p unsafe.Pointer) *Event {
 	wrapped := UnsafeEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -42605,6 +44217,7 @@ func UnsafeEventToGlibFull(e *Event) unsafe.Pointer {
 	e.native = nil // Event is invalid from here on
 	return _p
 }
+
 // NewEventBufferSize wraps gst_event_new_buffer_size
 // 
 // The function takes the following parameters:
@@ -42720,6 +44333,7 @@ func NewEventCustom(typ EventType, structure *Structure) *Event {
 }
 
 // NewEventEos wraps gst_event_new_eos
+// 
 // The function returns the following values:
 // 
 // 	- goret *Event 
@@ -42750,6 +44364,7 @@ func NewEventEos() *Event {
 }
 
 // NewEventFlushStart wraps gst_event_new_flush_start
+// 
 // The function returns the following values:
 // 
 // 	- goret *Event 
@@ -43150,6 +44765,7 @@ func NewEventQos(typ QOSType, proportion float64, diff ClockTimeDiff, timestamp 
 }
 
 // NewEventReconfigure wraps gst_event_new_reconfigure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Event 
@@ -43671,6 +45287,7 @@ func (event *Event) CopySegment(segment *Segment) {
 }
 
 // GetRunningTimeOffset wraps gst_event_get_running_time_offset
+// 
 // The function returns the following values:
 // 
 // 	- goret int64 
@@ -43701,6 +45318,7 @@ func (event *Event) GetRunningTimeOffset() int64 {
 }
 
 // GetSeqnum wraps gst_event_get_seqnum
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -43734,6 +45352,7 @@ func (event *Event) GetSeqnum() uint32 {
 }
 
 // GetStructure wraps gst_event_get_structure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure (nullable) 
@@ -43825,6 +45444,7 @@ func (event *Event) HasNameID(name glib.Quark) bool {
 }
 
 // ParseBufferSize wraps gst_event_parse_buffer_size
+// 
 // The function returns the following values:
 // 
 // 	- format Format: A pointer to store the format in 
@@ -43861,6 +45481,7 @@ func (event *Event) ParseBufferSize() (Format, int64, int64, bool) {
 }
 
 // ParseCaps wraps gst_event_parse_caps
+// 
 // The function returns the following values:
 // 
 // 	- caps *Caps: A pointer to the caps 
@@ -43884,6 +45505,7 @@ func (event *Event) ParseCaps() *Caps {
 }
 
 // ParseFlushStop wraps gst_event_parse_flush_stop
+// 
 // The function returns the following values:
 // 
 // 	- resetTime bool: if time should be reset 
@@ -43908,6 +45530,7 @@ func (event *Event) ParseFlushStop() bool {
 }
 
 // ParseGap wraps gst_event_parse_gap
+// 
 // The function returns the following values:
 // 
 // 	- timestamp ClockTime: location where to store the
@@ -43936,6 +45559,7 @@ func (event *Event) ParseGap() (ClockTime, ClockTime) {
 }
 
 // ParseGapFlags wraps gst_event_parse_gap_flags
+// 
 // The function returns the following values:
 // 
 // 	- flags GapFlags: a #GstGapFlags or %NULL 
@@ -43959,6 +45583,7 @@ func (event *Event) ParseGapFlags() GapFlags {
 }
 
 // ParseGroupID wraps gst_event_parse_group_id
+// 
 // The function returns the following values:
 // 
 // 	- groupId uint: address of variable where to store the group id 
@@ -43985,6 +45610,7 @@ func (event *Event) ParseGroupID() (uint, bool) {
 }
 
 // ParseInstantRateChange wraps gst_event_parse_instant_rate_change
+// 
 // The function returns the following values:
 // 
 // 	- rateMultiplier float64: location in which to store the rate
@@ -44013,6 +45639,7 @@ func (event *Event) ParseInstantRateChange() (float64, SegmentFlags) {
 }
 
 // ParseInstantRateSyncTime wraps gst_event_parse_instant_rate_sync_time
+// 
 // The function returns the following values:
 // 
 // 	- rateMultiplier float64: location where to store the rate of
@@ -44046,6 +45673,7 @@ func (event *Event) ParseInstantRateSyncTime() (float64, ClockTime, ClockTime) {
 }
 
 // ParseLatency wraps gst_event_parse_latency
+// 
 // The function returns the following values:
 // 
 // 	- latency ClockTime: A pointer to store the latency in. 
@@ -44068,6 +45696,7 @@ func (event *Event) ParseLatency() ClockTime {
 }
 
 // ParseProtection wraps gst_event_parse_protection
+// 
 // The function returns the following values:
 // 
 // 	- systemId string: pointer to store the UUID
@@ -44104,6 +45733,7 @@ func (event *Event) ParseProtection() (string, *Buffer, string) {
 }
 
 // ParseQos wraps gst_event_parse_qos
+// 
 // The function returns the following values:
 // 
 // 	- typ QOSType: A pointer to store the QoS type in 
@@ -44141,6 +45771,7 @@ func (event *Event) ParseQos() (QOSType, float64, ClockTimeDiff, ClockTime) {
 }
 
 // ParseSeek wraps gst_event_parse_seek
+// 
 // The function returns the following values:
 // 
 // 	- rate float64: result location for the rate 
@@ -44187,6 +45818,7 @@ func (event *Event) ParseSeek() (float64, Format, SeekFlags, SeekType, int64, Se
 }
 
 // ParseSeekTrickmodeInterval wraps gst_event_parse_seek_trickmode_interval
+// 
 // The function returns the following values:
 // 
 // 	- interval ClockTime: interval 
@@ -44210,6 +45842,7 @@ func (event *Event) ParseSeekTrickmodeInterval() ClockTime {
 }
 
 // ParseSegment wraps gst_event_parse_segment
+// 
 // The function returns the following values:
 // 
 // 	- segment *Segment: a pointer to a #GstSegment 
@@ -44234,6 +45867,7 @@ func (event *Event) ParseSegment() *Segment {
 }
 
 // ParseSegmentDone wraps gst_event_parse_segment_done
+// 
 // The function returns the following values:
 // 
 // 	- format Format: Result location for the format, or %NULL 
@@ -44260,6 +45894,7 @@ func (event *Event) ParseSegmentDone() (Format, int64) {
 }
 
 // ParseSinkMessage wraps gst_event_parse_sink_message
+// 
 // The function returns the following values:
 // 
 // 	- msg *Message: a pointer to store the #GstMessage in. 
@@ -44282,6 +45917,7 @@ func (event *Event) ParseSinkMessage() *Message {
 }
 
 // ParseStep wraps gst_event_parse_step
+// 
 // The function returns the following values:
 // 
 // 	- format Format: a pointer to store the format in 
@@ -44325,6 +45961,7 @@ func (event *Event) ParseStep() (Format, uint64, float64, bool, bool) {
 }
 
 // ParseStream wraps gst_event_parse_stream
+// 
 // The function returns the following values:
 // 
 // 	- stream Stream: address of variable to store the stream 
@@ -44347,6 +45984,7 @@ func (event *Event) ParseStream() Stream {
 }
 
 // ParseStreamCollection wraps gst_event_parse_stream_collection
+// 
 // The function returns the following values:
 // 
 // 	- collection StreamCollection: pointer to store the collection. 
@@ -44369,6 +46007,7 @@ func (event *Event) ParseStreamCollection() StreamCollection {
 }
 
 // ParseStreamFlags wraps gst_event_parse_stream_flags
+// 
 // The function returns the following values:
 // 
 // 	- flags StreamFlags: address of variable where to store the stream flags 
@@ -44389,6 +46028,7 @@ func (event *Event) ParseStreamFlags() StreamFlags {
 }
 
 // ParseStreamGroupDone wraps gst_event_parse_stream_group_done
+// 
 // The function returns the following values:
 // 
 // 	- groupId uint: address of variable to store the group id into 
@@ -44412,6 +46052,7 @@ func (event *Event) ParseStreamGroupDone() uint {
 }
 
 // ParseStreamStart wraps gst_event_parse_stream_start
+// 
 // The function returns the following values:
 // 
 // 	- streamId string: pointer to store the stream-id 
@@ -44437,6 +46078,7 @@ func (event *Event) ParseStreamStart() string {
 }
 
 // ParseTag wraps gst_event_parse_tag
+// 
 // The function returns the following values:
 // 
 // 	- taglist *TagList: pointer to metadata list 
@@ -44462,6 +46104,7 @@ func (event *Event) ParseTag() *TagList {
 }
 
 // ParseToc wraps gst_event_parse_toc
+// 
 // The function returns the following values:
 // 
 // 	- toc *Toc: pointer to #GstToc structure. 
@@ -44490,6 +46133,7 @@ func (event *Event) ParseToc() (*Toc, bool) {
 }
 
 // ParseTocSelect wraps gst_event_parse_toc_select
+// 
 // The function returns the following values:
 // 
 // 	- uid string: storage for the selection UID. 
@@ -44662,6 +46306,7 @@ func (event *Event) SetStreamFlags(flags StreamFlags) {
 }
 
 // WritableStructure wraps gst_event_writable_structure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure 
@@ -44700,7 +46345,7 @@ func UnsafeFormatDefinitionFromGlibBorrow(p unsafe.Pointer) *FormatDefinition {
 	return &FormatDefinition{&formatDefinition{(*C.GstFormatDefinition)(p)}}
 }
 
-// UnsafeFormatDefinitionFromGlibNone is used to convert raw C.GstFormatDefinition pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeFormatDefinitionFromGlibNone is used to convert raw C.GstFormatDefinition pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeFormatDefinitionFromGlibNone(p unsafe.Pointer) *FormatDefinition {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeFormatDefinitionFromGlibBorrow(p)
@@ -44713,7 +46358,7 @@ func UnsafeFormatDefinitionFromGlibNone(p unsafe.Pointer) *FormatDefinition {
 	return wrapped
 }
 
-// UnsafeFormatDefinitionFromGlibFull is used to convert raw C.GstFormatDefinition pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeFormatDefinitionFromGlibFull is used to convert raw C.GstFormatDefinition pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeFormatDefinitionFromGlibFull(p unsafe.Pointer) *FormatDefinition {
 	wrapped := UnsafeFormatDefinitionFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -44745,7 +46390,10 @@ func UnsafeFormatDefinitionToGlibFull(f *FormatDefinition) unsafe.Pointer {
 	f.native = nil // FormatDefinition is invalid from here on
 	return _p
 }
+
 // GhostPadClass wraps GstGhostPadClass
+// 
+// GhostPadClass is the type struct for [GhostPad]
 type GhostPadClass struct {
 	*ghostPadClass
 }
@@ -44760,31 +46408,6 @@ func UnsafeGhostPadClassFromGlibBorrow(p unsafe.Pointer) *GhostPadClass {
 	return &GhostPadClass{&ghostPadClass{(*C.GstGhostPadClass)(p)}}
 }
 
-// UnsafeGhostPadClassFromGlibNone is used to convert raw C.GstGhostPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGhostPadClassFromGlibNone(p unsafe.Pointer) *GhostPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeGhostPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.ghostPadClass,
-		func (intern *ghostPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeGhostPadClassFromGlibFull is used to convert raw C.GstGhostPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeGhostPadClassFromGlibFull(p unsafe.Pointer) *GhostPadClass {
-	wrapped := UnsafeGhostPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.ghostPadClass,
-		func (intern *ghostPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeGhostPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [GhostPadClass] is expected to work anymore.
@@ -44797,14 +46420,15 @@ func UnsafeGhostPadClassToGlibNone(g *GhostPadClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// UnsafeGhostPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeGhostPadClassToGlibFull(g *GhostPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(g.ghostPadClass, nil)
-	_p := unsafe.Pointer(g.native)
-	g.native = nil // GhostPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (g *GhostPadClass) ParentClass() *ProxyPadClass {
+	parent := UnsafeProxyPadClassFromGlibBorrow(UnsafeGhostPadClassToGlibNone(g))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *GhostPadClass) {}, g)
+	return parent
 }
+
 // Iterator wraps GstIterator
 //
 // A GstIterator is used to retrieve multiple objects from another object in
@@ -44871,7 +46495,7 @@ func UnsafeIteratorFromGlibBorrow(p unsafe.Pointer) *Iterator {
 	return &Iterator{&iterator{(*C.GstIterator)(p)}}
 }
 
-// UnsafeIteratorFromGlibNone is used to convert raw C.GstIterator pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeIteratorFromGlibNone is used to convert raw C.GstIterator pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeIteratorFromGlibNone(p unsafe.Pointer) *Iterator {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeIteratorFromGlibBorrow(p)
@@ -44884,7 +46508,7 @@ func UnsafeIteratorFromGlibNone(p unsafe.Pointer) *Iterator {
 	return wrapped
 }
 
-// UnsafeIteratorFromGlibFull is used to convert raw C.GstIterator pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeIteratorFromGlibFull is used to convert raw C.GstIterator pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeIteratorFromGlibFull(p unsafe.Pointer) *Iterator {
 	wrapped := UnsafeIteratorFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -44916,6 +46540,7 @@ func UnsafeIteratorToGlibFull(i *Iterator) unsafe.Pointer {
 	i.native = nil // Iterator is invalid from here on
 	return _p
 }
+
 // NewIteratorSingle wraps gst_iterator_new_single
 // 
 // The function takes the following parameters:
@@ -44951,6 +46576,7 @@ func NewIteratorSingle(typ gobject.Type, object *gobject.Value) *Iterator {
 }
 
 // Copy wraps gst_iterator_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *Iterator 
@@ -45168,7 +46794,7 @@ func UnsafeMemoryFromGlibBorrow(p unsafe.Pointer) *Memory {
 	return &Memory{&memory{(*C.GstMemory)(p)}}
 }
 
-// UnsafeMemoryFromGlibNone is used to convert raw C.GstMemory pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMemoryFromGlibNone is used to convert raw C.GstMemory pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMemoryFromGlibNone(p unsafe.Pointer) *Memory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMemoryFromGlibBorrow(p)
@@ -45181,7 +46807,7 @@ func UnsafeMemoryFromGlibNone(p unsafe.Pointer) *Memory {
 	return wrapped
 }
 
-// UnsafeMemoryFromGlibFull is used to convert raw C.GstMemory pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMemoryFromGlibFull is used to convert raw C.GstMemory pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMemoryFromGlibFull(p unsafe.Pointer) *Memory {
 	wrapped := UnsafeMemoryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -45213,6 +46839,7 @@ func UnsafeMemoryToGlibFull(m *Memory) unsafe.Pointer {
 	m.native = nil // Memory is invalid from here on
 	return _p
 }
+
 // Copy wraps gst_memory_copy
 // 
 // The function takes the following parameters:
@@ -45252,6 +46879,7 @@ func (mem *Memory) Copy(offset int, size int) *Memory {
 }
 
 // GetSizes wraps gst_memory_get_sizes
+// 
 // The function returns the following values:
 // 
 // 	- offset uint: pointer to offset 
@@ -45462,7 +47090,7 @@ func UnsafeMessageFromGlibBorrow(p unsafe.Pointer) *Message {
 	return &Message{&message{(*C.GstMessage)(p)}}
 }
 
-// UnsafeMessageFromGlibNone is used to convert raw C.GstMessage pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMessageFromGlibNone is used to convert raw C.GstMessage pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMessageFromGlibNone(p unsafe.Pointer) *Message {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMessageFromGlibBorrow(p)
@@ -45475,7 +47103,7 @@ func UnsafeMessageFromGlibNone(p unsafe.Pointer) *Message {
 	return wrapped
 }
 
-// UnsafeMessageFromGlibFull is used to convert raw C.GstMessage pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMessageFromGlibFull is used to convert raw C.GstMessage pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMessageFromGlibFull(p unsafe.Pointer) *Message {
 	wrapped := UnsafeMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -45507,6 +47135,7 @@ func UnsafeMessageToGlibFull(m *Message) unsafe.Pointer {
 	m.native = nil // Message is invalid from here on
 	return _p
 }
+
 // NewMessageApplication wraps gst_message_new_application
 // 
 // The function takes the following parameters:
@@ -47250,6 +48879,7 @@ func (message *Message) AddRedirectEntry(location string, tagList *TagList, entr
 }
 
 // Copy wraps gst_message_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *Message 
@@ -47272,6 +48902,7 @@ func (msg *Message) Copy() *Message {
 }
 
 // GetNumRedirectEntries wraps gst_message_get_num_redirect_entries
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -47292,6 +48923,7 @@ func (message *Message) GetNumRedirectEntries() uint {
 }
 
 // GetSeqnum wraps gst_message_get_seqnum
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -47325,6 +48957,7 @@ func (message *Message) GetSeqnum() uint32 {
 }
 
 // GetStructure wraps gst_message_get_structure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure (nullable) 
@@ -47384,6 +49017,7 @@ func (message *Message) HasName(name string) bool {
 }
 
 // ParseAsyncDone wraps gst_message_parse_async_done
+// 
 // The function returns the following values:
 // 
 // 	- runningTime ClockTime: Result location for the running_time or %NULL 
@@ -47408,6 +49042,7 @@ func (message *Message) ParseAsyncDone() ClockTime {
 }
 
 // ParseBuffering wraps gst_message_parse_buffering
+// 
 // The function returns the following values:
 // 
 // 	- percent int: Return location for the percent. 
@@ -47433,6 +49068,7 @@ func (message *Message) ParseBuffering() int {
 }
 
 // ParseBufferingStats wraps gst_message_parse_buffering_stats
+// 
 // The function returns the following values:
 // 
 // 	- mode BufferingMode: a buffering mode, or %NULL 
@@ -47468,6 +49104,7 @@ func (message *Message) ParseBufferingStats() (BufferingMode, int, int, int64) {
 }
 
 // ParseClockLost wraps gst_message_parse_clock_lost
+// 
 // The function returns the following values:
 // 
 // 	- clock Clock: a pointer to hold the lost clock 
@@ -47493,6 +49130,7 @@ func (message *Message) ParseClockLost() Clock {
 }
 
 // ParseClockProvide wraps gst_message_parse_clock_provide
+// 
 // The function returns the following values:
 // 
 // 	- clock Clock: a pointer to  hold a clock
@@ -47525,6 +49163,7 @@ func (message *Message) ParseClockProvide() (Clock, bool) {
 }
 
 // ParseContextType wraps gst_message_parse_context_type
+// 
 // The function returns the following values:
 // 
 // 	- contextType string: the context type, or %NULL 
@@ -47553,6 +49192,7 @@ func (message *Message) ParseContextType() (string, bool) {
 }
 
 // ParseDeviceAdded wraps gst_message_parse_device_added
+// 
 // The function returns the following values:
 // 
 // 	- device Device: A location where to store a
@@ -47578,6 +49218,7 @@ func (message *Message) ParseDeviceAdded() Device {
 }
 
 // ParseDeviceChanged wraps gst_message_parse_device_changed
+// 
 // The function returns the following values:
 // 
 // 	- device Device: A location where to store a
@@ -47609,6 +49250,7 @@ func (message *Message) ParseDeviceChanged() (Device, Device) {
 }
 
 // ParseDeviceRemoved wraps gst_message_parse_device_removed
+// 
 // The function returns the following values:
 // 
 // 	- device Device: A location where to store a
@@ -47634,6 +49276,7 @@ func (message *Message) ParseDeviceRemoved() Device {
 }
 
 // ParseError wraps gst_message_parse_error
+// 
 // The function returns the following values:
 // 
 // 	- debug string (nullable): location for the debug message,
@@ -47688,6 +49331,7 @@ func (message *Message) ParseError() (string, error) {
 }
 
 // ParseErrorDetails wraps gst_message_parse_error_details
+// 
 // The function returns the following values:
 // 
 // 	- structure *Structure (nullable): A pointer to the returned details 
@@ -47713,6 +49357,7 @@ func (message *Message) ParseErrorDetails() *Structure {
 }
 
 // ParseGroupID wraps gst_message_parse_group_id
+// 
 // The function returns the following values:
 // 
 // 	- groupId uint: Result location for the group id or
@@ -47742,6 +49387,7 @@ func (message *Message) ParseGroupID() (uint, bool) {
 }
 
 // ParseHaveContext wraps gst_message_parse_have_context
+// 
 // The function returns the following values:
 // 
 // 	- _context *Context: Result location for the
@@ -47767,6 +49413,7 @@ func (message *Message) ParseHaveContext() *Context {
 }
 
 // ParseInfo wraps gst_message_parse_info
+// 
 // The function returns the following values:
 // 
 // 	- debug string (nullable): location for the debug message,
@@ -47800,6 +49447,7 @@ func (message *Message) ParseInfo() (string, error) {
 }
 
 // ParseInfoDetails wraps gst_message_parse_info_details
+// 
 // The function returns the following values:
 // 
 // 	- structure *Structure (nullable): A pointer to the returned details 
@@ -47825,6 +49473,7 @@ func (message *Message) ParseInfoDetails() *Structure {
 }
 
 // ParseInstantRateRequest wraps gst_message_parse_instant_rate_request
+// 
 // The function returns the following values:
 // 
 // 	- rateMultiplier float64: return location for the rate, or %NULL 
@@ -47847,6 +49496,7 @@ func (message *Message) ParseInstantRateRequest() float64 {
 }
 
 // ParseNewClock wraps gst_message_parse_new_clock
+// 
 // The function returns the following values:
 // 
 // 	- clock Clock: a pointer to hold the selected
@@ -47873,6 +49523,7 @@ func (message *Message) ParseNewClock() Clock {
 }
 
 // ParseProgress wraps gst_message_parse_progress
+// 
 // The function returns the following values:
 // 
 // 	- typ ProgressType: location for the type 
@@ -47905,6 +49556,7 @@ func (message *Message) ParseProgress() (ProgressType, string, string) {
 }
 
 // ParseQos wraps gst_message_parse_qos
+// 
 // The function returns the following values:
 // 
 // 	- live bool: if the message was generated by a live element 
@@ -47955,6 +49607,7 @@ func (message *Message) ParseQos() (bool, uint64, uint64, uint64, uint64) {
 }
 
 // ParseQosStats wraps gst_message_parse_qos_stats
+// 
 // The function returns the following values:
 // 
 // 	- format Format: Units of the 'processed' and 'dropped' fields.
@@ -47996,6 +49649,7 @@ func (message *Message) ParseQosStats() (Format, uint64, uint64) {
 }
 
 // ParseQosValues wraps gst_message_parse_qos_values
+// 
 // The function returns the following values:
 // 
 // 	- jitter int64: The difference of the running-time against
@@ -48079,6 +49733,7 @@ func (message *Message) ParseRedirectEntry(entryIndex uint) (string, *TagList, *
 }
 
 // ParseRequestState wraps gst_message_parse_request_state
+// 
 // The function returns the following values:
 // 
 // 	- state State: Result location for the requested state or %NULL 
@@ -48103,6 +49758,7 @@ func (message *Message) ParseRequestState() State {
 }
 
 // ParseResetTime wraps gst_message_parse_reset_time
+// 
 // The function returns the following values:
 // 
 // 	- runningTime ClockTime: Result location for the running_time or
@@ -48128,6 +49784,7 @@ func (message *Message) ParseResetTime() ClockTime {
 }
 
 // ParseSegmentDone wraps gst_message_parse_segment_done
+// 
 // The function returns the following values:
 // 
 // 	- format Format: Result location for the format, or %NULL 
@@ -48156,6 +49813,7 @@ func (message *Message) ParseSegmentDone() (Format, int64) {
 }
 
 // ParseSegmentStart wraps gst_message_parse_segment_start
+// 
 // The function returns the following values:
 // 
 // 	- format Format: Result location for the format, or %NULL 
@@ -48184,6 +49842,7 @@ func (message *Message) ParseSegmentStart() (Format, int64) {
 }
 
 // ParseStateChanged wraps gst_message_parse_state_changed
+// 
 // The function returns the following values:
 // 
 // 	- oldstate State: the previous state, or %NULL 
@@ -48235,6 +49894,7 @@ func (message *Message) ParseStateChanged() (State, State, State) {
 }
 
 // ParseStepDone wraps gst_message_parse_step_done
+// 
 // The function returns the following values:
 // 
 // 	- format Format: result location for the format 
@@ -48289,6 +49949,7 @@ func (message *Message) ParseStepDone() (Format, uint64, float64, bool, bool, ui
 }
 
 // ParseStepStart wraps gst_message_parse_step_start
+// 
 // The function returns the following values:
 // 
 // 	- active bool: result location for the active flag 
@@ -48339,6 +50000,7 @@ func (message *Message) ParseStepStart() (bool, Format, uint64, float64, bool, b
 }
 
 // ParseStreamCollection wraps gst_message_parse_stream_collection
+// 
 // The function returns the following values:
 // 
 // 	- collection StreamCollection: A location where to store a
@@ -48362,6 +50024,7 @@ func (message *Message) ParseStreamCollection() StreamCollection {
 }
 
 // ParseStreamStatus wraps gst_message_parse_stream_status
+// 
 // The function returns the following values:
 // 
 // 	- typ StreamStatusType: A pointer to hold the status type 
@@ -48392,6 +50055,7 @@ func (message *Message) ParseStreamStatus() (StreamStatusType, Element) {
 }
 
 // ParseStreamsSelected wraps gst_message_parse_streams_selected
+// 
 // The function returns the following values:
 // 
 // 	- collection StreamCollection: A location where to store a
@@ -48415,6 +50079,7 @@ func (message *Message) ParseStreamsSelected() StreamCollection {
 }
 
 // ParseStructureChange wraps gst_message_parse_structure_change
+// 
 // The function returns the following values:
 // 
 // 	- typ StructureChangeType: A pointer to hold the change type 
@@ -48451,6 +50116,7 @@ func (message *Message) ParseStructureChange() (StructureChangeType, Element, bo
 }
 
 // ParseTag wraps gst_message_parse_tag
+// 
 // The function returns the following values:
 // 
 // 	- tagList *TagList: return location for the tag-list. 
@@ -48494,6 +50160,7 @@ func (message *Message) ParseTag() *TagList {
 }
 
 // ParseToc wraps gst_message_parse_toc
+// 
 // The function returns the following values:
 // 
 // 	- toc *Toc: return location for the TOC. 
@@ -48526,6 +50193,7 @@ func (message *Message) ParseToc() (*Toc, bool) {
 }
 
 // ParseWarning wraps gst_message_parse_warning
+// 
 // The function returns the following values:
 // 
 // 	- debug string (nullable): location for the debug message,
@@ -48559,6 +50227,7 @@ func (message *Message) ParseWarning() (string, error) {
 }
 
 // ParseWarningDetails wraps gst_message_parse_warning_details
+// 
 // The function returns the following values:
 // 
 // 	- structure *Structure (nullable): A pointer to the returned details 
@@ -48774,6 +50443,7 @@ func (message *Message) StreamsSelectedAdd(stream Stream) {
 }
 
 // StreamsSelectedGetSize wraps gst_message_streams_selected_get_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -48828,6 +50498,7 @@ func (message *Message) StreamsSelectedGetStream(idx uint) Stream {
 }
 
 // WritableStructure wraps gst_message_writable_structure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure 
@@ -48885,7 +50556,7 @@ func UnsafeMetaFromGlibBorrow(p unsafe.Pointer) *Meta {
 	return &Meta{&meta{(*C.GstMeta)(p)}}
 }
 
-// UnsafeMetaFromGlibNone is used to convert raw C.GstMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMetaFromGlibNone is used to convert raw C.GstMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMetaFromGlibNone(p unsafe.Pointer) *Meta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMetaFromGlibBorrow(p)
@@ -48898,7 +50569,7 @@ func UnsafeMetaFromGlibNone(p unsafe.Pointer) *Meta {
 	return wrapped
 }
 
-// UnsafeMetaFromGlibFull is used to convert raw C.GstMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMetaFromGlibFull is used to convert raw C.GstMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMetaFromGlibFull(p unsafe.Pointer) *Meta {
 	wrapped := UnsafeMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -48930,6 +50601,7 @@ func UnsafeMetaToGlibFull(m *Meta) unsafe.Pointer {
 	m.native = nil // Meta is invalid from here on
 	return _p
 }
+
 // MetaApiTypeGetTags wraps gst_meta_api_type_get_tags
 // 
 // The function takes the following parameters:
@@ -49168,6 +50840,7 @@ func (meta1 *Meta) CompareSeqnum(meta2 *Meta) int {
 }
 
 // GetSeqnum wraps gst_meta_get_seqnum
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -49250,7 +50923,7 @@ func UnsafeMetaInfoFromGlibBorrow(p unsafe.Pointer) *MetaInfo {
 	return &MetaInfo{&metaInfo{(*C.GstMetaInfo)(p)}}
 }
 
-// UnsafeMetaInfoFromGlibNone is used to convert raw C.GstMetaInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMetaInfoFromGlibNone is used to convert raw C.GstMetaInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMetaInfoFromGlibNone(p unsafe.Pointer) *MetaInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMetaInfoFromGlibBorrow(p)
@@ -49263,7 +50936,7 @@ func UnsafeMetaInfoFromGlibNone(p unsafe.Pointer) *MetaInfo {
 	return wrapped
 }
 
-// UnsafeMetaInfoFromGlibFull is used to convert raw C.GstMetaInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMetaInfoFromGlibFull is used to convert raw C.GstMetaInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMetaInfoFromGlibFull(p unsafe.Pointer) *MetaInfo {
 	wrapped := UnsafeMetaInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -49295,7 +50968,9 @@ func UnsafeMetaInfoToGlibFull(m *MetaInfo) unsafe.Pointer {
 	m.native = nil // MetaInfo is invalid from here on
 	return _p
 }
+
 // IsCustom wraps gst_meta_info_is_custom
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -49318,6 +50993,7 @@ func (info *MetaInfo) IsCustom() bool {
 }
 
 // Register wraps gst_meta_info_register
+// 
 // The function returns the following values:
 // 
 // 	- goret *MetaInfo 
@@ -49360,7 +51036,7 @@ func UnsafeMetaTransformCopyFromGlibBorrow(p unsafe.Pointer) *MetaTransformCopy 
 	return &MetaTransformCopy{&metaTransformCopy{(*C.GstMetaTransformCopy)(p)}}
 }
 
-// UnsafeMetaTransformCopyFromGlibNone is used to convert raw C.GstMetaTransformCopy pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMetaTransformCopyFromGlibNone is used to convert raw C.GstMetaTransformCopy pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMetaTransformCopyFromGlibNone(p unsafe.Pointer) *MetaTransformCopy {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMetaTransformCopyFromGlibBorrow(p)
@@ -49373,7 +51049,7 @@ func UnsafeMetaTransformCopyFromGlibNone(p unsafe.Pointer) *MetaTransformCopy {
 	return wrapped
 }
 
-// UnsafeMetaTransformCopyFromGlibFull is used to convert raw C.GstMetaTransformCopy pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMetaTransformCopyFromGlibFull is used to convert raw C.GstMetaTransformCopy pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMetaTransformCopyFromGlibFull(p unsafe.Pointer) *MetaTransformCopy {
 	wrapped := UnsafeMetaTransformCopyFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -49405,6 +51081,7 @@ func UnsafeMetaTransformCopyToGlibFull(m *MetaTransformCopy) unsafe.Pointer {
 	m.native = nil // MetaTransformCopy is invalid from here on
 	return _p
 }
+
 // MiniObject wraps GstMiniObject
 //
 // #GstMiniObject is a simple structure that can be used to implement refcounted
@@ -49459,7 +51136,7 @@ func UnsafeMiniObjectFromGlibBorrow(p unsafe.Pointer) *MiniObject {
 	return &MiniObject{&miniObject{(*C.GstMiniObject)(p)}}
 }
 
-// UnsafeMiniObjectFromGlibNone is used to convert raw C.GstMiniObject pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMiniObjectFromGlibNone is used to convert raw C.GstMiniObject pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMiniObjectFromGlibNone(p unsafe.Pointer) *MiniObject {
 	C.gst_mini_object_ref((*C.GstMiniObject)(p))
 	wrapped := UnsafeMiniObjectFromGlibBorrow(p)
@@ -49472,7 +51149,7 @@ func UnsafeMiniObjectFromGlibNone(p unsafe.Pointer) *MiniObject {
 	return wrapped
 }
 
-// UnsafeMiniObjectFromGlibFull is used to convert raw C.GstMiniObject pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeMiniObjectFromGlibFull is used to convert raw C.GstMiniObject pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMiniObjectFromGlibFull(p unsafe.Pointer) *MiniObject {
 	wrapped := UnsafeMiniObjectFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -49511,6 +51188,7 @@ func UnsafeMiniObjectToGlibFull(m *MiniObject) unsafe.Pointer {
 	m.native = nil // MiniObject is invalid from here on
 	return _p
 }
+
 // AddParent wraps gst_mini_object_add_parent
 // 
 // The function takes the following parameters:
@@ -49538,6 +51216,7 @@ func (object *MiniObject) AddParent(parent *MiniObject) {
 }
 
 // IsWritable wraps gst_mini_object_is_writable
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -49644,6 +51323,8 @@ func (object *MiniObject) Unlock(flags LockFlags) {
 // ObjectClass wraps GstObjectClass
 //
 // GStreamer base object class.
+// 
+// ObjectClass is the type struct for [Object]
 type ObjectClass struct {
 	*objectClass
 }
@@ -49658,31 +51339,6 @@ func UnsafeObjectClassFromGlibBorrow(p unsafe.Pointer) *ObjectClass {
 	return &ObjectClass{&objectClass{(*C.GstObjectClass)(p)}}
 }
 
-// UnsafeObjectClassFromGlibNone is used to convert raw C.GstObjectClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeObjectClassFromGlibNone(p unsafe.Pointer) *ObjectClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeObjectClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.objectClass,
-		func (intern *objectClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeObjectClassFromGlibFull is used to convert raw C.GstObjectClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeObjectClassFromGlibFull(p unsafe.Pointer) *ObjectClass {
-	wrapped := UnsafeObjectClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.objectClass,
-		func (intern *objectClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeObjectClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ObjectClass] is expected to work anymore.
@@ -49695,15 +51351,18 @@ func UnsafeObjectClassToGlibNone(o *ObjectClass) unsafe.Pointer {
 	return unsafe.Pointer(o.native)
 }
 
-// UnsafeObjectClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeObjectClassToGlibFull(o *ObjectClass) unsafe.Pointer {
-	runtime.SetFinalizer(o.objectClass, nil)
-	_p := unsafe.Pointer(o.native)
-	o.native = nil // ObjectClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (o *ObjectClass) ParentClass() *gobject.InitiallyUnownedClass {
+	parent := gobject.UnsafeInitiallyUnownedClassFromGlibBorrow(UnsafeObjectClassToGlibNone(o))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ObjectClass) {}, o)
+	return parent
 }
+
 // PadClass wraps GstPadClass
+// 
+// PadClass is the type struct for [Pad]
 type PadClass struct {
 	*padClass
 }
@@ -49718,31 +51377,6 @@ func UnsafePadClassFromGlibBorrow(p unsafe.Pointer) *PadClass {
 	return &PadClass{&padClass{(*C.GstPadClass)(p)}}
 }
 
-// UnsafePadClassFromGlibNone is used to convert raw C.GstPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePadClassFromGlibNone(p unsafe.Pointer) *PadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.padClass,
-		func (intern *padClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePadClassFromGlibFull is used to convert raw C.GstPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePadClassFromGlibFull(p unsafe.Pointer) *PadClass {
-	wrapped := UnsafePadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.padClass,
-		func (intern *padClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PadClass] is expected to work anymore.
@@ -49755,14 +51389,15 @@ func UnsafePadClassToGlibNone(p *PadClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePadClassToGlibFull(p *PadClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.padClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PadClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafePadClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PadClass) {}, p)
+	return parent
 }
+
 // PadProbeInfo wraps GstPadProbeInfo
 //
 // Info passed in the #GstPadProbeCallback.
@@ -49780,7 +51415,7 @@ func UnsafePadProbeInfoFromGlibBorrow(p unsafe.Pointer) *PadProbeInfo {
 	return &PadProbeInfo{&padProbeInfo{(*C.GstPadProbeInfo)(p)}}
 }
 
-// UnsafePadProbeInfoFromGlibNone is used to convert raw C.GstPadProbeInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePadProbeInfoFromGlibNone is used to convert raw C.GstPadProbeInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePadProbeInfoFromGlibNone(p unsafe.Pointer) *PadProbeInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePadProbeInfoFromGlibBorrow(p)
@@ -49793,7 +51428,7 @@ func UnsafePadProbeInfoFromGlibNone(p unsafe.Pointer) *PadProbeInfo {
 	return wrapped
 }
 
-// UnsafePadProbeInfoFromGlibFull is used to convert raw C.GstPadProbeInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePadProbeInfoFromGlibFull is used to convert raw C.GstPadProbeInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePadProbeInfoFromGlibFull(p unsafe.Pointer) *PadProbeInfo {
 	wrapped := UnsafePadProbeInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -49825,7 +51460,9 @@ func UnsafePadProbeInfoToGlibFull(p *PadProbeInfo) unsafe.Pointer {
 	p.native = nil // PadProbeInfo is invalid from here on
 	return _p
 }
+
 // GetBuffer wraps gst_pad_probe_info_get_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *Buffer (nullable) 
@@ -49848,6 +51485,7 @@ func (info *PadProbeInfo) GetBuffer() *Buffer {
 }
 
 // GetBufferList wraps gst_pad_probe_info_get_buffer_list
+// 
 // The function returns the following values:
 // 
 // 	- goret *BufferList (nullable) 
@@ -49870,6 +51508,7 @@ func (info *PadProbeInfo) GetBufferList() *BufferList {
 }
 
 // GetEvent wraps gst_pad_probe_info_get_event
+// 
 // The function returns the following values:
 // 
 // 	- goret *Event (nullable) 
@@ -49892,6 +51531,7 @@ func (info *PadProbeInfo) GetEvent() *Event {
 }
 
 // GetQuery wraps gst_pad_probe_info_get_query
+// 
 // The function returns the following values:
 // 
 // 	- goret *Query (nullable) 
@@ -49914,6 +51554,8 @@ func (info *PadProbeInfo) GetQuery() *Query {
 }
 
 // PadTemplateClass wraps GstPadTemplateClass
+// 
+// PadTemplateClass is the type struct for [PadTemplate]
 type PadTemplateClass struct {
 	*padTemplateClass
 }
@@ -49928,31 +51570,6 @@ func UnsafePadTemplateClassFromGlibBorrow(p unsafe.Pointer) *PadTemplateClass {
 	return &PadTemplateClass{&padTemplateClass{(*C.GstPadTemplateClass)(p)}}
 }
 
-// UnsafePadTemplateClassFromGlibNone is used to convert raw C.GstPadTemplateClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePadTemplateClassFromGlibNone(p unsafe.Pointer) *PadTemplateClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePadTemplateClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.padTemplateClass,
-		func (intern *padTemplateClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePadTemplateClassFromGlibFull is used to convert raw C.GstPadTemplateClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePadTemplateClassFromGlibFull(p unsafe.Pointer) *PadTemplateClass {
-	wrapped := UnsafePadTemplateClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.padTemplateClass,
-		func (intern *padTemplateClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePadTemplateClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PadTemplateClass] is expected to work anymore.
@@ -49965,14 +51582,15 @@ func UnsafePadTemplateClassToGlibNone(p *PadTemplateClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePadTemplateClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePadTemplateClassToGlibFull(p *PadTemplateClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.padTemplateClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PadTemplateClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PadTemplateClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafePadTemplateClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PadTemplateClass) {}, p)
+	return parent
 }
+
 // ParamSpecArray wraps GstParamSpecArray
 //
 // A GParamSpec derived structure for arrays of values.
@@ -49990,7 +51608,7 @@ func UnsafeParamSpecArrayFromGlibBorrow(p unsafe.Pointer) *ParamSpecArray {
 	return &ParamSpecArray{&paramSpecArray{(*C.GstParamSpecArray)(p)}}
 }
 
-// UnsafeParamSpecArrayFromGlibNone is used to convert raw C.GstParamSpecArray pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeParamSpecArrayFromGlibNone is used to convert raw C.GstParamSpecArray pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeParamSpecArrayFromGlibNone(p unsafe.Pointer) *ParamSpecArray {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeParamSpecArrayFromGlibBorrow(p)
@@ -50003,7 +51621,7 @@ func UnsafeParamSpecArrayFromGlibNone(p unsafe.Pointer) *ParamSpecArray {
 	return wrapped
 }
 
-// UnsafeParamSpecArrayFromGlibFull is used to convert raw C.GstParamSpecArray pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeParamSpecArrayFromGlibFull is used to convert raw C.GstParamSpecArray pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeParamSpecArrayFromGlibFull(p unsafe.Pointer) *ParamSpecArray {
 	wrapped := UnsafeParamSpecArrayFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -50035,6 +51653,7 @@ func UnsafeParamSpecArrayToGlibFull(p *ParamSpecArray) unsafe.Pointer {
 	p.native = nil // ParamSpecArray is invalid from here on
 	return _p
 }
+
 // ParamSpecFraction wraps GstParamSpecFraction
 //
 // A GParamSpec derived structure that contains the meta data for fractional
@@ -50053,7 +51672,7 @@ func UnsafeParamSpecFractionFromGlibBorrow(p unsafe.Pointer) *ParamSpecFraction 
 	return &ParamSpecFraction{&paramSpecFraction{(*C.GstParamSpecFraction)(p)}}
 }
 
-// UnsafeParamSpecFractionFromGlibNone is used to convert raw C.GstParamSpecFraction pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeParamSpecFractionFromGlibNone is used to convert raw C.GstParamSpecFraction pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeParamSpecFractionFromGlibNone(p unsafe.Pointer) *ParamSpecFraction {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeParamSpecFractionFromGlibBorrow(p)
@@ -50066,7 +51685,7 @@ func UnsafeParamSpecFractionFromGlibNone(p unsafe.Pointer) *ParamSpecFraction {
 	return wrapped
 }
 
-// UnsafeParamSpecFractionFromGlibFull is used to convert raw C.GstParamSpecFraction pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeParamSpecFractionFromGlibFull is used to convert raw C.GstParamSpecFraction pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeParamSpecFractionFromGlibFull(p unsafe.Pointer) *ParamSpecFraction {
 	wrapped := UnsafeParamSpecFractionFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -50098,6 +51717,7 @@ func UnsafeParamSpecFractionToGlibFull(p *ParamSpecFraction) unsafe.Pointer {
 	p.native = nil // ParamSpecFraction is invalid from here on
 	return _p
 }
+
 // ParentBufferMeta wraps GstParentBufferMeta
 //
 // The #GstParentBufferMeta is a #GstMeta which can be attached to a #GstBuffer
@@ -50122,7 +51742,7 @@ func UnsafeParentBufferMetaFromGlibBorrow(p unsafe.Pointer) *ParentBufferMeta {
 	return &ParentBufferMeta{&parentBufferMeta{(*C.GstParentBufferMeta)(p)}}
 }
 
-// UnsafeParentBufferMetaFromGlibNone is used to convert raw C.GstParentBufferMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeParentBufferMetaFromGlibNone is used to convert raw C.GstParentBufferMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeParentBufferMetaFromGlibNone(p unsafe.Pointer) *ParentBufferMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeParentBufferMetaFromGlibBorrow(p)
@@ -50135,7 +51755,7 @@ func UnsafeParentBufferMetaFromGlibNone(p unsafe.Pointer) *ParentBufferMeta {
 	return wrapped
 }
 
-// UnsafeParentBufferMetaFromGlibFull is used to convert raw C.GstParentBufferMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeParentBufferMetaFromGlibFull is used to convert raw C.GstParentBufferMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeParentBufferMetaFromGlibFull(p unsafe.Pointer) *ParentBufferMeta {
 	wrapped := UnsafeParentBufferMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -50167,7 +51787,9 @@ func UnsafeParentBufferMetaToGlibFull(p *ParentBufferMeta) unsafe.Pointer {
 	p.native = nil // ParentBufferMeta is invalid from here on
 	return _p
 }
+
 // ParentBufferMetaGetInfo wraps gst_parent_buffer_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *MetaInfo 
@@ -50214,7 +51836,7 @@ func UnsafeParseContextFromGlibBorrow(p unsafe.Pointer) *ParseContext {
 	return &ParseContext{&parseContext{(*C.GstParseContext)(p)}}
 }
 
-// UnsafeParseContextFromGlibNone is used to convert raw C.GstParseContext pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeParseContextFromGlibNone is used to convert raw C.GstParseContext pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeParseContextFromGlibNone(p unsafe.Pointer) *ParseContext {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeParseContextFromGlibBorrow(p)
@@ -50227,7 +51849,7 @@ func UnsafeParseContextFromGlibNone(p unsafe.Pointer) *ParseContext {
 	return wrapped
 }
 
-// UnsafeParseContextFromGlibFull is used to convert raw C.GstParseContext pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeParseContextFromGlibFull is used to convert raw C.GstParseContext pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeParseContextFromGlibFull(p unsafe.Pointer) *ParseContext {
 	wrapped := UnsafeParseContextFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -50259,7 +51881,9 @@ func UnsafeParseContextToGlibFull(p *ParseContext) unsafe.Pointer {
 	p.native = nil // ParseContext is invalid from here on
 	return _p
 }
+
 // NewParseContext wraps gst_parse_context_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *ParseContext (nullable) 
@@ -50283,6 +51907,7 @@ func NewParseContext() *ParseContext {
 }
 
 // Copy wraps gst_parse_context_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *ParseContext (nullable) 
@@ -50307,6 +51932,7 @@ func (_context *ParseContext) Copy() *ParseContext {
 }
 
 // GetMissingElements wraps gst_parse_context_get_missing_elements
+// 
 // The function returns the following values:
 // 
 // 	- goret []string (nullable) 
@@ -50333,6 +51959,8 @@ func (_context *ParseContext) GetMissingElements() []string {
 }
 
 // PipelineClass wraps GstPipelineClass
+// 
+// PipelineClass is the type struct for [Pipeline]
 type PipelineClass struct {
 	*pipelineClass
 }
@@ -50347,31 +51975,6 @@ func UnsafePipelineClassFromGlibBorrow(p unsafe.Pointer) *PipelineClass {
 	return &PipelineClass{&pipelineClass{(*C.GstPipelineClass)(p)}}
 }
 
-// UnsafePipelineClassFromGlibNone is used to convert raw C.GstPipelineClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePipelineClassFromGlibNone(p unsafe.Pointer) *PipelineClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePipelineClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.pipelineClass,
-		func (intern *pipelineClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePipelineClassFromGlibFull is used to convert raw C.GstPipelineClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePipelineClassFromGlibFull(p unsafe.Pointer) *PipelineClass {
-	wrapped := UnsafePipelineClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.pipelineClass,
-		func (intern *pipelineClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePipelineClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PipelineClass] is expected to work anymore.
@@ -50384,15 +51987,18 @@ func UnsafePipelineClassToGlibNone(p *PipelineClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePipelineClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePipelineClassToGlibFull(p *PipelineClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.pipelineClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PipelineClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PipelineClass) ParentClass() *BinClass {
+	parent := UnsafeBinClassFromGlibBorrow(UnsafePipelineClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PipelineClass) {}, p)
+	return parent
 }
+
 // PluginClass wraps GstPluginClass
+// 
+// PluginClass is the type struct for [Plugin]
 type PluginClass struct {
 	*pluginClass
 }
@@ -50407,31 +52013,6 @@ func UnsafePluginClassFromGlibBorrow(p unsafe.Pointer) *PluginClass {
 	return &PluginClass{&pluginClass{(*C.GstPluginClass)(p)}}
 }
 
-// UnsafePluginClassFromGlibNone is used to convert raw C.GstPluginClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePluginClassFromGlibNone(p unsafe.Pointer) *PluginClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePluginClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.pluginClass,
-		func (intern *pluginClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePluginClassFromGlibFull is used to convert raw C.GstPluginClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePluginClassFromGlibFull(p unsafe.Pointer) *PluginClass {
-	wrapped := UnsafePluginClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.pluginClass,
-		func (intern *pluginClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePluginClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PluginClass] is expected to work anymore.
@@ -50444,14 +52025,15 @@ func UnsafePluginClassToGlibNone(p *PluginClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePluginClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePluginClassToGlibFull(p *PluginClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.pluginClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PluginClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PluginClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafePluginClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PluginClass) {}, p)
+	return parent
 }
+
 // PluginDesc wraps GstPluginDesc
 //
 // A plugin should export a variable of this type called plugin_desc. The plugin
@@ -50473,7 +52055,7 @@ func UnsafePluginDescFromGlibBorrow(p unsafe.Pointer) *PluginDesc {
 	return &PluginDesc{&pluginDesc{(*C.GstPluginDesc)(p)}}
 }
 
-// UnsafePluginDescFromGlibNone is used to convert raw C.GstPluginDesc pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePluginDescFromGlibNone is used to convert raw C.GstPluginDesc pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePluginDescFromGlibNone(p unsafe.Pointer) *PluginDesc {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePluginDescFromGlibBorrow(p)
@@ -50486,7 +52068,7 @@ func UnsafePluginDescFromGlibNone(p unsafe.Pointer) *PluginDesc {
 	return wrapped
 }
 
-// UnsafePluginDescFromGlibFull is used to convert raw C.GstPluginDesc pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePluginDescFromGlibFull is used to convert raw C.GstPluginDesc pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePluginDescFromGlibFull(p unsafe.Pointer) *PluginDesc {
 	wrapped := UnsafePluginDescFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -50518,7 +52100,10 @@ func UnsafePluginDescToGlibFull(p *PluginDesc) unsafe.Pointer {
 	p.native = nil // PluginDesc is invalid from here on
 	return _p
 }
+
 // PluginFeatureClass wraps GstPluginFeatureClass
+// 
+// PluginFeatureClass is the type struct for [PluginFeature]
 type PluginFeatureClass struct {
 	*pluginFeatureClass
 }
@@ -50533,31 +52118,6 @@ func UnsafePluginFeatureClassFromGlibBorrow(p unsafe.Pointer) *PluginFeatureClas
 	return &PluginFeatureClass{&pluginFeatureClass{(*C.GstPluginFeatureClass)(p)}}
 }
 
-// UnsafePluginFeatureClassFromGlibNone is used to convert raw C.GstPluginFeatureClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePluginFeatureClassFromGlibNone(p unsafe.Pointer) *PluginFeatureClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePluginFeatureClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.pluginFeatureClass,
-		func (intern *pluginFeatureClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePluginFeatureClassFromGlibFull is used to convert raw C.GstPluginFeatureClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePluginFeatureClassFromGlibFull(p unsafe.Pointer) *PluginFeatureClass {
-	wrapped := UnsafePluginFeatureClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.pluginFeatureClass,
-		func (intern *pluginFeatureClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePluginFeatureClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PluginFeatureClass] is expected to work anymore.
@@ -50570,14 +52130,15 @@ func UnsafePluginFeatureClassToGlibNone(p *PluginFeatureClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePluginFeatureClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePluginFeatureClassToGlibFull(p *PluginFeatureClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.pluginFeatureClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PluginFeatureClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PluginFeatureClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafePluginFeatureClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PluginFeatureClass) {}, p)
+	return parent
 }
+
 // Poll wraps GstPoll
 //
 // A #GstPoll keeps track of file descriptors much like fd_set (used with
@@ -50617,7 +52178,7 @@ func UnsafePollFromGlibBorrow(p unsafe.Pointer) *Poll {
 	return &Poll{&poll{(*C.GstPoll)(p)}}
 }
 
-// UnsafePollFromGlibNone is used to convert raw C.GstPoll pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePollFromGlibNone is used to convert raw C.GstPoll pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePollFromGlibNone(p unsafe.Pointer) *Poll {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePollFromGlibBorrow(p)
@@ -50630,7 +52191,7 @@ func UnsafePollFromGlibNone(p unsafe.Pointer) *Poll {
 	return wrapped
 }
 
-// UnsafePollFromGlibFull is used to convert raw C.GstPoll pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePollFromGlibFull is used to convert raw C.GstPoll pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePollFromGlibFull(p unsafe.Pointer) *Poll {
 	wrapped := UnsafePollFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -50662,6 +52223,7 @@ func UnsafePollToGlibFull(p *Poll) unsafe.Pointer {
 	p.native = nil // Poll is invalid from here on
 	return _p
 }
+
 // AddFd wraps gst_poll_add_fd
 // 
 // The function takes the following parameters:
@@ -51022,6 +52584,7 @@ func (set *Poll) GetReadGpollfd(fd *glib.PollFD) {
 }
 
 // ReadControl wraps gst_poll_read_control
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -51204,6 +52767,7 @@ func (set *Poll) Wait(timeout ClockTime) int {
 }
 
 // WriteControl wraps gst_poll_write_control
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -51254,7 +52818,7 @@ func UnsafePollFDFromGlibBorrow(p unsafe.Pointer) *PollFD {
 	return &PollFD{&pollFD{(*C.GstPollFD)(p)}}
 }
 
-// UnsafePollFDFromGlibNone is used to convert raw C.GstPollFD pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePollFDFromGlibNone is used to convert raw C.GstPollFD pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePollFDFromGlibNone(p unsafe.Pointer) *PollFD {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePollFDFromGlibBorrow(p)
@@ -51267,7 +52831,7 @@ func UnsafePollFDFromGlibNone(p unsafe.Pointer) *PollFD {
 	return wrapped
 }
 
-// UnsafePollFDFromGlibFull is used to convert raw C.GstPollFD pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePollFDFromGlibFull is used to convert raw C.GstPollFD pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePollFDFromGlibFull(p unsafe.Pointer) *PollFD {
 	wrapped := UnsafePollFDFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -51299,6 +52863,7 @@ func UnsafePollFDToGlibFull(p *PollFD) unsafe.Pointer {
 	p.native = nil // PollFD is invalid from here on
 	return _p
 }
+
 // Init wraps gst_poll_fd_init
 //
 // Initializes @fd. Alternatively you can initialize it with
@@ -51329,7 +52894,7 @@ func UnsafePresetInterfaceFromGlibBorrow(p unsafe.Pointer) *PresetInterface {
 	return &PresetInterface{&presetInterface{(*C.GstPresetInterface)(p)}}
 }
 
-// UnsafePresetInterfaceFromGlibNone is used to convert raw C.GstPresetInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePresetInterfaceFromGlibNone is used to convert raw C.GstPresetInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePresetInterfaceFromGlibNone(p unsafe.Pointer) *PresetInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePresetInterfaceFromGlibBorrow(p)
@@ -51342,7 +52907,7 @@ func UnsafePresetInterfaceFromGlibNone(p unsafe.Pointer) *PresetInterface {
 	return wrapped
 }
 
-// UnsafePresetInterfaceFromGlibFull is used to convert raw C.GstPresetInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePresetInterfaceFromGlibFull is used to convert raw C.GstPresetInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePresetInterfaceFromGlibFull(p unsafe.Pointer) *PresetInterface {
 	wrapped := UnsafePresetInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -51374,6 +52939,7 @@ func UnsafePresetInterfaceToGlibFull(p *PresetInterface) unsafe.Pointer {
 	p.native = nil // PresetInterface is invalid from here on
 	return _p
 }
+
 // Promise wraps GstPromise
 //
 // The #GstPromise object implements the container for values that may
@@ -51455,7 +53021,7 @@ func UnsafePromiseFromGlibBorrow(p unsafe.Pointer) *Promise {
 	return &Promise{&promise{(*C.GstPromise)(p)}}
 }
 
-// UnsafePromiseFromGlibNone is used to convert raw C.GstPromise pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePromiseFromGlibNone is used to convert raw C.GstPromise pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePromiseFromGlibNone(p unsafe.Pointer) *Promise {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePromiseFromGlibBorrow(p)
@@ -51468,7 +53034,7 @@ func UnsafePromiseFromGlibNone(p unsafe.Pointer) *Promise {
 	return wrapped
 }
 
-// UnsafePromiseFromGlibFull is used to convert raw C.GstPromise pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePromiseFromGlibFull is used to convert raw C.GstPromise pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePromiseFromGlibFull(p unsafe.Pointer) *Promise {
 	wrapped := UnsafePromiseFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -51500,7 +53066,9 @@ func UnsafePromiseToGlibFull(p *Promise) unsafe.Pointer {
 	p.native = nil // Promise is invalid from here on
 	return _p
 }
+
 // NewPromise wraps gst_promise_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *Promise 
@@ -51564,6 +53132,7 @@ func (promise *Promise) Expire() {
 }
 
 // GetReply wraps gst_promise_get_reply
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure (nullable) 
@@ -51629,6 +53198,7 @@ func (promise *Promise) Reply(s *Structure) {
 }
 
 // Wait wraps gst_promise_wait
+// 
 // The function returns the following values:
 // 
 // 	- goret PromiseResult 
@@ -51670,7 +53240,7 @@ func UnsafeProtectionMetaFromGlibBorrow(p unsafe.Pointer) *ProtectionMeta {
 	return &ProtectionMeta{&protectionMeta{(*C.GstProtectionMeta)(p)}}
 }
 
-// UnsafeProtectionMetaFromGlibNone is used to convert raw C.GstProtectionMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeProtectionMetaFromGlibNone is used to convert raw C.GstProtectionMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeProtectionMetaFromGlibNone(p unsafe.Pointer) *ProtectionMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeProtectionMetaFromGlibBorrow(p)
@@ -51683,7 +53253,7 @@ func UnsafeProtectionMetaFromGlibNone(p unsafe.Pointer) *ProtectionMeta {
 	return wrapped
 }
 
-// UnsafeProtectionMetaFromGlibFull is used to convert raw C.GstProtectionMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeProtectionMetaFromGlibFull is used to convert raw C.GstProtectionMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeProtectionMetaFromGlibFull(p unsafe.Pointer) *ProtectionMeta {
 	wrapped := UnsafeProtectionMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -51715,7 +53285,9 @@ func UnsafeProtectionMetaToGlibFull(p *ProtectionMeta) unsafe.Pointer {
 	p.native = nil // ProtectionMeta is invalid from here on
 	return _p
 }
+
 // ProtectionMetaGetInfo wraps gst_protection_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *MetaInfo 
@@ -51732,6 +53304,8 @@ func ProtectionMetaGetInfo() *MetaInfo {
 }
 
 // ProxyPadClass wraps GstProxyPadClass
+// 
+// ProxyPadClass is the type struct for [ProxyPad]
 type ProxyPadClass struct {
 	*proxyPadClass
 }
@@ -51746,31 +53320,6 @@ func UnsafeProxyPadClassFromGlibBorrow(p unsafe.Pointer) *ProxyPadClass {
 	return &ProxyPadClass{&proxyPadClass{(*C.GstProxyPadClass)(p)}}
 }
 
-// UnsafeProxyPadClassFromGlibNone is used to convert raw C.GstProxyPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeProxyPadClassFromGlibNone(p unsafe.Pointer) *ProxyPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeProxyPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.proxyPadClass,
-		func (intern *proxyPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeProxyPadClassFromGlibFull is used to convert raw C.GstProxyPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeProxyPadClassFromGlibFull(p unsafe.Pointer) *ProxyPadClass {
-	wrapped := UnsafeProxyPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.proxyPadClass,
-		func (intern *proxyPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeProxyPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ProxyPadClass] is expected to work anymore.
@@ -51783,14 +53332,15 @@ func UnsafeProxyPadClassToGlibNone(p *ProxyPadClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafeProxyPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeProxyPadClassToGlibFull(p *ProxyPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.proxyPadClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // ProxyPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *ProxyPadClass) ParentClass() *PadClass {
+	parent := UnsafePadClassFromGlibBorrow(UnsafeProxyPadClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ProxyPadClass) {}, p)
+	return parent
 }
+
 // Query wraps GstQuery
 //
 // Queries can be performed on pads (gst_pad_query()) and elements
@@ -51842,7 +53392,7 @@ func UnsafeQueryFromGlibBorrow(p unsafe.Pointer) *Query {
 	return &Query{&query{(*C.GstQuery)(p)}}
 }
 
-// UnsafeQueryFromGlibNone is used to convert raw C.GstQuery pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeQueryFromGlibNone is used to convert raw C.GstQuery pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeQueryFromGlibNone(p unsafe.Pointer) *Query {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeQueryFromGlibBorrow(p)
@@ -51855,7 +53405,7 @@ func UnsafeQueryFromGlibNone(p unsafe.Pointer) *Query {
 	return wrapped
 }
 
-// UnsafeQueryFromGlibFull is used to convert raw C.GstQuery pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeQueryFromGlibFull is used to convert raw C.GstQuery pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeQueryFromGlibFull(p unsafe.Pointer) *Query {
 	wrapped := UnsafeQueryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -51887,6 +53437,7 @@ func UnsafeQueryToGlibFull(q *Query) unsafe.Pointer {
 	q.native = nil // Query is invalid from here on
 	return _p
 }
+
 // NewQueryAcceptCaps wraps gst_query_new_accept_caps
 // 
 // The function takes the following parameters:
@@ -51954,6 +53505,7 @@ func NewQueryAllocation(caps *Caps, needPool bool) *Query {
 }
 
 // NewQueryBitrate wraps gst_query_new_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret *Query 
@@ -52155,6 +53707,7 @@ func NewQueryCustom(typ QueryType, structure *Structure) *Query {
 }
 
 // NewQueryDrain wraps gst_query_new_drain
+// 
 // The function returns the following values:
 // 
 // 	- goret *Query 
@@ -52206,6 +53759,7 @@ func NewQueryDuration(format Format) *Query {
 }
 
 // NewQueryFormats wraps gst_query_new_formats
+// 
 // The function returns the following values:
 // 
 // 	- goret *Query 
@@ -52227,6 +53781,7 @@ func NewQueryFormats() *Query {
 }
 
 // NewQueryLatency wraps gst_query_new_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret *Query 
@@ -52281,6 +53836,7 @@ func NewQueryPosition(format Format) *Query {
 }
 
 // NewQueryScheduling wraps gst_query_new_scheduling
+// 
 // The function returns the following values:
 // 
 // 	- goret *Query 
@@ -52362,6 +53918,7 @@ func NewQuerySegment(format Format) *Query {
 }
 
 // NewQuerySelectable wraps gst_query_new_selectable
+// 
 // The function returns the following values:
 // 
 // 	- goret *Query 
@@ -52382,6 +53939,7 @@ func NewQuerySelectable() *Query {
 }
 
 // NewQueryURI wraps gst_query_new_uri
+// 
 // The function returns the following values:
 // 
 // 	- goret *Query 
@@ -52583,6 +54141,7 @@ func (query *Query) FindAllocationMeta(api gobject.Type) (uint, bool) {
 }
 
 // GetNAllocationMetas wraps gst_query_get_n_allocation_metas
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -52606,6 +54165,7 @@ func (query *Query) GetNAllocationMetas() uint {
 }
 
 // GetNAllocationParams wraps gst_query_get_n_allocation_params
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -52634,6 +54194,7 @@ func (query *Query) GetNAllocationParams() uint {
 }
 
 // GetNAllocationPools wraps gst_query_get_n_allocation_pools
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -52657,6 +54218,7 @@ func (query *Query) GetNAllocationPools() uint {
 }
 
 // GetNBufferingRanges wraps gst_query_get_n_buffering_ranges
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -52680,6 +54242,7 @@ func (query *Query) GetNBufferingRanges() uint {
 }
 
 // GetNSchedulingModes wraps gst_query_get_n_scheduling_modes
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -52703,6 +54266,7 @@ func (query *Query) GetNSchedulingModes() uint {
 }
 
 // GetStructure wraps gst_query_get_structure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure (nullable) 
@@ -52803,6 +54367,7 @@ func (query *Query) HasSchedulingModeWithFlags(mode PadMode, flags SchedulingFla
 }
 
 // ParseAcceptCaps wraps gst_query_parse_accept_caps
+// 
 // The function returns the following values:
 // 
 // 	- caps *Caps: A pointer to the caps 
@@ -52826,6 +54391,7 @@ func (query *Query) ParseAcceptCaps() *Caps {
 }
 
 // ParseAcceptCapsResult wraps gst_query_parse_accept_caps_result
+// 
 // The function returns the following values:
 // 
 // 	- result bool: location for the result 
@@ -52850,6 +54416,7 @@ func (query *Query) ParseAcceptCapsResult() bool {
 }
 
 // ParseAllocation wraps gst_query_parse_allocation
+// 
 // The function returns the following values:
 // 
 // 	- caps *Caps (nullable): The #GstCaps 
@@ -52885,6 +54452,7 @@ func (query *Query) ParseAllocation() (*Caps, bool) {
 }
 
 // ParseBitrate wraps gst_query_parse_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- nominalBitrate uint: The resulting bitrate in bits per second 
@@ -52907,6 +54475,7 @@ func (query *Query) ParseBitrate() uint {
 }
 
 // ParseBufferingPercent wraps gst_query_parse_buffering_percent
+// 
 // The function returns the following values:
 // 
 // 	- busy bool: if buffering is busy, or %NULL 
@@ -52936,6 +54505,7 @@ func (query *Query) ParseBufferingPercent() (bool, int) {
 }
 
 // ParseBufferingRange wraps gst_query_parse_buffering_range
+// 
 // The function returns the following values:
 // 
 // 	- format Format: the format to set for the @segment_start
@@ -52974,6 +54544,7 @@ func (query *Query) ParseBufferingRange() (Format, int64, int64, int64) {
 }
 
 // ParseBufferingStats wraps gst_query_parse_buffering_stats
+// 
 // The function returns the following values:
 // 
 // 	- mode BufferingMode: a buffering mode, or %NULL 
@@ -53009,6 +54580,7 @@ func (query *Query) ParseBufferingStats() (BufferingMode, int, int, int64) {
 }
 
 // ParseCaps wraps gst_query_parse_caps
+// 
 // The function returns the following values:
 // 
 // 	- filter *Caps: A pointer to the caps filter 
@@ -53032,6 +54604,7 @@ func (query *Query) ParseCaps() *Caps {
 }
 
 // ParseCapsResult wraps gst_query_parse_caps_result
+// 
 // The function returns the following values:
 // 
 // 	- caps *Caps (nullable): A pointer to the caps 
@@ -53057,6 +54630,7 @@ func (query *Query) ParseCapsResult() *Caps {
 }
 
 // ParseContext wraps gst_query_parse_context
+// 
 // The function returns the following values:
 // 
 // 	- _context *Context (nullable): A pointer to store the #GstContext 
@@ -53082,6 +54656,7 @@ func (query *Query) ParseContext() *Context {
 }
 
 // ParseContextType wraps gst_query_parse_context_type
+// 
 // The function returns the following values:
 // 
 // 	- contextType string: the context type, or %NULL 
@@ -53110,6 +54685,7 @@ func (query *Query) ParseContextType() (string, bool) {
 }
 
 // ParseConvert wraps gst_query_parse_convert
+// 
 // The function returns the following values:
 // 
 // 	- srcFormat Format: the storage for the #GstFormat of the
@@ -53148,6 +54724,7 @@ func (query *Query) ParseConvert() (Format, int64, Format, int64) {
 }
 
 // ParseDuration wraps gst_query_parse_duration
+// 
 // The function returns the following values:
 // 
 // 	- format Format: the storage for the #GstFormat of the duration
@@ -53176,6 +54753,7 @@ func (query *Query) ParseDuration() (Format, int64) {
 }
 
 // ParseLatency wraps gst_query_parse_latency
+// 
 // The function returns the following values:
 // 
 // 	- live bool: storage for live or %NULL 
@@ -53208,6 +54786,7 @@ func (query *Query) ParseLatency() (bool, ClockTime, ClockTime) {
 }
 
 // ParseNFormats wraps gst_query_parse_n_formats
+// 
 // The function returns the following values:
 // 
 // 	- nFormats uint: the number of formats in this query. 
@@ -53454,6 +55033,7 @@ func (query *Query) ParseNthSchedulingMode(index uint) PadMode {
 }
 
 // ParsePosition wraps gst_query_parse_position
+// 
 // The function returns the following values:
 // 
 // 	- format Format: the storage for the #GstFormat of the
@@ -53482,6 +55062,7 @@ func (query *Query) ParsePosition() (Format, int64) {
 }
 
 // ParseScheduling wraps gst_query_parse_scheduling
+// 
 // The function returns the following values:
 // 
 // 	- flags SchedulingFlags: #GstSchedulingFlags 
@@ -53516,6 +55097,7 @@ func (query *Query) ParseScheduling() (SchedulingFlags, int, int, int) {
 }
 
 // ParseSeeking wraps gst_query_parse_seeking
+// 
 // The function returns the following values:
 // 
 // 	- format Format: the format to set for the @segment_start
@@ -53555,6 +55137,7 @@ func (query *Query) ParseSeeking() (Format, bool, int64, int64) {
 }
 
 // ParseSegment wraps gst_query_parse_segment
+// 
 // The function returns the following values:
 // 
 // 	- rate float64: the storage for the rate of the segment, or %NULL 
@@ -53593,6 +55176,7 @@ func (query *Query) ParseSegment() (float64, Format, int64, int64) {
 }
 
 // ParseSelectable wraps gst_query_parse_selectable
+// 
 // The function returns the following values:
 // 
 // 	- selectable bool: The resulting stream selection capability 
@@ -53617,6 +55201,7 @@ func (query *Query) ParseSelectable() bool {
 }
 
 // ParseURI wraps gst_query_parse_uri
+// 
 // The function returns the following values:
 // 
 // 	- uri string (nullable): the storage for the current URI
@@ -53645,6 +55230,7 @@ func (query *Query) ParseURI() string {
 }
 
 // ParseURIRedirection wraps gst_query_parse_uri_redirection
+// 
 // The function returns the following values:
 // 
 // 	- uri string (nullable): the storage for the redirect URI
@@ -53673,6 +55259,7 @@ func (query *Query) ParseURIRedirection() string {
 }
 
 // ParseURIRedirectionPermanent wraps gst_query_parse_uri_redirection_permanent
+// 
 // The function returns the following values:
 // 
 // 	- permanent bool: if the URI redirection is permanent
@@ -54324,6 +55911,7 @@ func (query *Query) SetURIRedirectionPermanent(permanent bool) {
 }
 
 // WritableStructure wraps gst_query_writable_structure
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure 
@@ -54384,7 +55972,7 @@ func UnsafeReferenceTimestampMetaFromGlibBorrow(p unsafe.Pointer) *ReferenceTime
 	return &ReferenceTimestampMeta{&referenceTimestampMeta{(*C.GstReferenceTimestampMeta)(p)}}
 }
 
-// UnsafeReferenceTimestampMetaFromGlibNone is used to convert raw C.GstReferenceTimestampMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeReferenceTimestampMetaFromGlibNone is used to convert raw C.GstReferenceTimestampMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeReferenceTimestampMetaFromGlibNone(p unsafe.Pointer) *ReferenceTimestampMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeReferenceTimestampMetaFromGlibBorrow(p)
@@ -54397,7 +55985,7 @@ func UnsafeReferenceTimestampMetaFromGlibNone(p unsafe.Pointer) *ReferenceTimest
 	return wrapped
 }
 
-// UnsafeReferenceTimestampMetaFromGlibFull is used to convert raw C.GstReferenceTimestampMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeReferenceTimestampMetaFromGlibFull is used to convert raw C.GstReferenceTimestampMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeReferenceTimestampMetaFromGlibFull(p unsafe.Pointer) *ReferenceTimestampMeta {
 	wrapped := UnsafeReferenceTimestampMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -54429,7 +56017,9 @@ func UnsafeReferenceTimestampMetaToGlibFull(r *ReferenceTimestampMeta) unsafe.Po
 	r.native = nil // ReferenceTimestampMeta is invalid from here on
 	return _p
 }
+
 // ReferenceTimestampMetaGetInfo wraps gst_reference_timestamp_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *MetaInfo 
@@ -54448,6 +56038,8 @@ func ReferenceTimestampMetaGetInfo() *MetaInfo {
 }
 
 // RegistryClass wraps GstRegistryClass
+// 
+// RegistryClass is the type struct for [Registry]
 type RegistryClass struct {
 	*registryClass
 }
@@ -54462,31 +56054,6 @@ func UnsafeRegistryClassFromGlibBorrow(p unsafe.Pointer) *RegistryClass {
 	return &RegistryClass{&registryClass{(*C.GstRegistryClass)(p)}}
 }
 
-// UnsafeRegistryClassFromGlibNone is used to convert raw C.GstRegistryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRegistryClassFromGlibNone(p unsafe.Pointer) *RegistryClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeRegistryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.registryClass,
-		func (intern *registryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeRegistryClassFromGlibFull is used to convert raw C.GstRegistryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRegistryClassFromGlibFull(p unsafe.Pointer) *RegistryClass {
-	wrapped := UnsafeRegistryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.registryClass,
-		func (intern *registryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeRegistryClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [RegistryClass] is expected to work anymore.
@@ -54499,14 +56066,15 @@ func UnsafeRegistryClassToGlibNone(r *RegistryClass) unsafe.Pointer {
 	return unsafe.Pointer(r.native)
 }
 
-// UnsafeRegistryClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeRegistryClassToGlibFull(r *RegistryClass) unsafe.Pointer {
-	runtime.SetFinalizer(r.registryClass, nil)
-	_p := unsafe.Pointer(r.native)
-	r.native = nil // RegistryClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (r *RegistryClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeRegistryClassToGlibNone(r))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *RegistryClass) {}, r)
+	return parent
 }
+
 // Sample wraps GstSample
 //
 // A #GstSample is a small object containing data, a type, timing and
@@ -54537,7 +56105,7 @@ func UnsafeSampleFromGlibBorrow(p unsafe.Pointer) *Sample {
 	return &Sample{&sample{(*C.GstSample)(p)}}
 }
 
-// UnsafeSampleFromGlibNone is used to convert raw C.GstSample pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeSampleFromGlibNone is used to convert raw C.GstSample pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSampleFromGlibNone(p unsafe.Pointer) *Sample {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSampleFromGlibBorrow(p)
@@ -54550,7 +56118,7 @@ func UnsafeSampleFromGlibNone(p unsafe.Pointer) *Sample {
 	return wrapped
 }
 
-// UnsafeSampleFromGlibFull is used to convert raw C.GstSample pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeSampleFromGlibFull is used to convert raw C.GstSample pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSampleFromGlibFull(p unsafe.Pointer) *Sample {
 	wrapped := UnsafeSampleFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -54582,6 +56150,7 @@ func UnsafeSampleToGlibFull(s *Sample) unsafe.Pointer {
 	s.native = nil // Sample is invalid from here on
 	return _p
 }
+
 // NewSample wraps gst_sample_new
 // 
 // The function takes the following parameters:
@@ -54632,6 +56201,7 @@ func NewSample(buffer *Buffer, caps *Caps, segment *Segment, info *Structure) *S
 }
 
 // GetBuffer wraps gst_sample_get_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *Buffer (nullable) 
@@ -54657,6 +56227,7 @@ func (sample *Sample) GetBuffer() *Buffer {
 }
 
 // GetBufferList wraps gst_sample_get_buffer_list
+// 
 // The function returns the following values:
 // 
 // 	- goret *BufferList (nullable) 
@@ -54682,6 +56253,7 @@ func (sample *Sample) GetBufferList() *BufferList {
 }
 
 // GetCaps wraps gst_sample_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps (nullable) 
@@ -54707,6 +56279,7 @@ func (sample *Sample) GetCaps() *Caps {
 }
 
 // GetInfo wraps gst_sample_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure (nullable) 
@@ -54732,6 +56305,7 @@ func (sample *Sample) GetInfo() *Structure {
 }
 
 // GetSegment wraps gst_sample_get_segment
+// 
 // The function returns the following values:
 // 
 // 	- goret *Segment 
@@ -54936,7 +56510,7 @@ func UnsafeSegmentFromGlibBorrow(p unsafe.Pointer) *Segment {
 	return &Segment{&segment{(*C.GstSegment)(p)}}
 }
 
-// UnsafeSegmentFromGlibNone is used to convert raw C.GstSegment pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeSegmentFromGlibNone is used to convert raw C.GstSegment pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSegmentFromGlibNone(p unsafe.Pointer) *Segment {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSegmentFromGlibBorrow(p)
@@ -54949,7 +56523,7 @@ func UnsafeSegmentFromGlibNone(p unsafe.Pointer) *Segment {
 	return wrapped
 }
 
-// UnsafeSegmentFromGlibFull is used to convert raw C.GstSegment pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeSegmentFromGlibFull is used to convert raw C.GstSegment pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSegmentFromGlibFull(p unsafe.Pointer) *Segment {
 	wrapped := UnsafeSegmentFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -54981,7 +56555,9 @@ func UnsafeSegmentToGlibFull(s *Segment) unsafe.Pointer {
 	s.native = nil // Segment is invalid from here on
 	return _p
 }
+
 // NewSegment wraps gst_segment_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *Segment 
@@ -55063,6 +56639,7 @@ func (segment *Segment) Clip(format Format, start uint64, stop uint64) (uint64, 
 }
 
 // Copy wraps gst_segment_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *Segment 
@@ -55727,6 +57304,8 @@ func (segment *Segment) ToStreamTimeFull(format Format, position uint64) (uint64
 // SharedTaskPoolClass wraps GstSharedTaskPoolClass
 //
 // The #GstSharedTaskPoolClass object.
+// 
+// SharedTaskPoolClass is the type struct for [SharedTaskPool]
 type SharedTaskPoolClass struct {
 	*sharedTaskPoolClass
 }
@@ -55741,31 +57320,6 @@ func UnsafeSharedTaskPoolClassFromGlibBorrow(p unsafe.Pointer) *SharedTaskPoolCl
 	return &SharedTaskPoolClass{&sharedTaskPoolClass{(*C.GstSharedTaskPoolClass)(p)}}
 }
 
-// UnsafeSharedTaskPoolClassFromGlibNone is used to convert raw C.GstSharedTaskPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeSharedTaskPoolClassFromGlibNone(p unsafe.Pointer) *SharedTaskPoolClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeSharedTaskPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.sharedTaskPoolClass,
-		func (intern *sharedTaskPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeSharedTaskPoolClassFromGlibFull is used to convert raw C.GstSharedTaskPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeSharedTaskPoolClassFromGlibFull(p unsafe.Pointer) *SharedTaskPoolClass {
-	wrapped := UnsafeSharedTaskPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.sharedTaskPoolClass,
-		func (intern *sharedTaskPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeSharedTaskPoolClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [SharedTaskPoolClass] is expected to work anymore.
@@ -55778,14 +57332,15 @@ func UnsafeSharedTaskPoolClassToGlibNone(s *SharedTaskPoolClass) unsafe.Pointer 
 	return unsafe.Pointer(s.native)
 }
 
-// UnsafeSharedTaskPoolClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeSharedTaskPoolClassToGlibFull(s *SharedTaskPoolClass) unsafe.Pointer {
-	runtime.SetFinalizer(s.sharedTaskPoolClass, nil)
-	_p := unsafe.Pointer(s.native)
-	s.native = nil // SharedTaskPoolClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (s *SharedTaskPoolClass) ParentClass() *TaskPoolClass {
+	parent := UnsafeTaskPoolClassFromGlibBorrow(UnsafeSharedTaskPoolClassToGlibNone(s))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *SharedTaskPoolClass) {}, s)
+	return parent
 }
+
 // StaticCaps wraps GstStaticCaps
 //
 // Data structure to initialize #GstCaps from a string description usually
@@ -55817,7 +57372,7 @@ func UnsafeStaticCapsFromGlibBorrow(p unsafe.Pointer) *StaticCaps {
 	return &StaticCaps{&staticCaps{(*C.GstStaticCaps)(p)}}
 }
 
-// UnsafeStaticCapsFromGlibNone is used to convert raw C.GstStaticCaps pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStaticCapsFromGlibNone is used to convert raw C.GstStaticCaps pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeStaticCapsFromGlibNone(p unsafe.Pointer) *StaticCaps {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeStaticCapsFromGlibBorrow(p)
@@ -55830,7 +57385,7 @@ func UnsafeStaticCapsFromGlibNone(p unsafe.Pointer) *StaticCaps {
 	return wrapped
 }
 
-// UnsafeStaticCapsFromGlibFull is used to convert raw C.GstStaticCaps pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStaticCapsFromGlibFull is used to convert raw C.GstStaticCaps pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeStaticCapsFromGlibFull(p unsafe.Pointer) *StaticCaps {
 	wrapped := UnsafeStaticCapsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -55862,6 +57417,7 @@ func UnsafeStaticCapsToGlibFull(s *StaticCaps) unsafe.Pointer {
 	s.native = nil // StaticCaps is invalid from here on
 	return _p
 }
+
 // Cleanup wraps gst_static_caps_cleanup
 //
 // Cleans up the cached caps contained in @static_caps.
@@ -55875,6 +57431,7 @@ func (staticCaps *StaticCaps) Cleanup() {
 }
 
 // Get wraps gst_static_caps_get
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps (nullable) 
@@ -55927,7 +57484,7 @@ func UnsafeStaticPadTemplateFromGlibBorrow(p unsafe.Pointer) *StaticPadTemplate 
 	return &StaticPadTemplate{&staticPadTemplate{(*C.GstStaticPadTemplate)(p)}}
 }
 
-// UnsafeStaticPadTemplateFromGlibNone is used to convert raw C.GstStaticPadTemplate pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStaticPadTemplateFromGlibNone is used to convert raw C.GstStaticPadTemplate pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeStaticPadTemplateFromGlibNone(p unsafe.Pointer) *StaticPadTemplate {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeStaticPadTemplateFromGlibBorrow(p)
@@ -55940,7 +57497,7 @@ func UnsafeStaticPadTemplateFromGlibNone(p unsafe.Pointer) *StaticPadTemplate {
 	return wrapped
 }
 
-// UnsafeStaticPadTemplateFromGlibFull is used to convert raw C.GstStaticPadTemplate pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStaticPadTemplateFromGlibFull is used to convert raw C.GstStaticPadTemplate pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeStaticPadTemplateFromGlibFull(p unsafe.Pointer) *StaticPadTemplate {
 	wrapped := UnsafeStaticPadTemplateFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -55972,7 +57529,9 @@ func UnsafeStaticPadTemplateToGlibFull(s *StaticPadTemplate) unsafe.Pointer {
 	s.native = nil // StaticPadTemplate is invalid from here on
 	return _p
 }
+
 // Get wraps gst_static_pad_template_get
+// 
 // The function returns the following values:
 // 
 // 	- goret PadTemplate (nullable) 
@@ -55997,6 +57556,7 @@ func (padTemplate *StaticPadTemplate) Get() PadTemplate {
 }
 
 // GetCaps wraps gst_static_pad_template_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *Caps 
@@ -56021,6 +57581,8 @@ func (templ *StaticPadTemplate) GetCaps() *Caps {
 // StreamClass wraps GstStreamClass
 //
 // GstStream class structure
+// 
+// StreamClass is the type struct for [Stream]
 type StreamClass struct {
 	*streamClass
 }
@@ -56035,31 +57597,6 @@ func UnsafeStreamClassFromGlibBorrow(p unsafe.Pointer) *StreamClass {
 	return &StreamClass{&streamClass{(*C.GstStreamClass)(p)}}
 }
 
-// UnsafeStreamClassFromGlibNone is used to convert raw C.GstStreamClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeStreamClassFromGlibNone(p unsafe.Pointer) *StreamClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeStreamClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.streamClass,
-		func (intern *streamClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeStreamClassFromGlibFull is used to convert raw C.GstStreamClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeStreamClassFromGlibFull(p unsafe.Pointer) *StreamClass {
-	wrapped := UnsafeStreamClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.streamClass,
-		func (intern *streamClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeStreamClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [StreamClass] is expected to work anymore.
@@ -56072,17 +57609,20 @@ func UnsafeStreamClassToGlibNone(s *StreamClass) unsafe.Pointer {
 	return unsafe.Pointer(s.native)
 }
 
-// UnsafeStreamClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeStreamClassToGlibFull(s *StreamClass) unsafe.Pointer {
-	runtime.SetFinalizer(s.streamClass, nil)
-	_p := unsafe.Pointer(s.native)
-	s.native = nil // StreamClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (s *StreamClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeStreamClassToGlibNone(s))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *StreamClass) {}, s)
+	return parent
 }
+
 // StreamCollectionClass wraps GstStreamCollectionClass
 //
 // GstStreamCollection class structure
+// 
+// StreamCollectionClass is the type struct for [StreamCollection]
 type StreamCollectionClass struct {
 	*streamCollectionClass
 }
@@ -56097,31 +57637,6 @@ func UnsafeStreamCollectionClassFromGlibBorrow(p unsafe.Pointer) *StreamCollecti
 	return &StreamCollectionClass{&streamCollectionClass{(*C.GstStreamCollectionClass)(p)}}
 }
 
-// UnsafeStreamCollectionClassFromGlibNone is used to convert raw C.GstStreamCollectionClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeStreamCollectionClassFromGlibNone(p unsafe.Pointer) *StreamCollectionClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeStreamCollectionClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.streamCollectionClass,
-		func (intern *streamCollectionClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeStreamCollectionClassFromGlibFull is used to convert raw C.GstStreamCollectionClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeStreamCollectionClassFromGlibFull(p unsafe.Pointer) *StreamCollectionClass {
-	wrapped := UnsafeStreamCollectionClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.streamCollectionClass,
-		func (intern *streamCollectionClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeStreamCollectionClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [StreamCollectionClass] is expected to work anymore.
@@ -56134,14 +57649,15 @@ func UnsafeStreamCollectionClassToGlibNone(s *StreamCollectionClass) unsafe.Poin
 	return unsafe.Pointer(s.native)
 }
 
-// UnsafeStreamCollectionClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeStreamCollectionClassToGlibFull(s *StreamCollectionClass) unsafe.Pointer {
-	runtime.SetFinalizer(s.streamCollectionClass, nil)
-	_p := unsafe.Pointer(s.native)
-	s.native = nil // StreamCollectionClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (s *StreamCollectionClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeStreamCollectionClassToGlibNone(s))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *StreamCollectionClass) {}, s)
+	return parent
 }
+
 // Structure wraps GstStructure
 //
 // A #GstStructure is a collection of key/value pairs. The keys are expressed as
@@ -56274,7 +57790,7 @@ func UnsafeStructureFromGlibBorrow(p unsafe.Pointer) *Structure {
 	return &Structure{&structure{(*C.GstStructure)(p)}}
 }
 
-// UnsafeStructureFromGlibNone is used to convert raw C.GstStructure pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStructureFromGlibNone is used to convert raw C.GstStructure pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeStructureFromGlibNone(p unsafe.Pointer) *Structure {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeStructureFromGlibBorrow(p)
@@ -56287,7 +57803,7 @@ func UnsafeStructureFromGlibNone(p unsafe.Pointer) *Structure {
 	return wrapped
 }
 
-// UnsafeStructureFromGlibFull is used to convert raw C.GstStructure pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStructureFromGlibFull is used to convert raw C.GstStructure pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeStructureFromGlibFull(p unsafe.Pointer) *Structure {
 	wrapped := UnsafeStructureFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -56319,6 +57835,7 @@ func UnsafeStructureToGlibFull(s *Structure) unsafe.Pointer {
 	s.native = nil // Structure is invalid from here on
 	return _p
 }
+
 // StructureFromString wraps gst_structure_from_string
 // 
 // The function takes the following parameters:
@@ -56488,6 +58005,7 @@ func (struct1 *Structure) CanIntersect(struct2 *Structure) bool {
 }
 
 // Copy wraps gst_structure_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *Structure 
@@ -57264,6 +58782,7 @@ func (structure *Structure) GetInt64(fieldname string) (int64, bool) {
 }
 
 // GetName wraps gst_structure_get_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -57286,6 +58805,7 @@ func (structure *Structure) GetName() string {
 }
 
 // GetNameID wraps gst_structure_get_name_id
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -57755,6 +59275,7 @@ func (structure *Structure) MapInPlace(fn StructureMapFunc) bool {
 }
 
 // NFields wraps gst_structure_n_fields
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -57977,6 +59498,7 @@ func (structure *Structure) SetParentRefcount(refcount *int) bool {
 }
 
 // ToString wraps gst_structure_to_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -58011,6 +59533,8 @@ func (structure *Structure) ToString() string {
 }
 
 // SystemClockClass wraps GstSystemClockClass
+// 
+// SystemClockClass is the type struct for [SystemClock]
 type SystemClockClass struct {
 	*systemClockClass
 }
@@ -58025,31 +59549,6 @@ func UnsafeSystemClockClassFromGlibBorrow(p unsafe.Pointer) *SystemClockClass {
 	return &SystemClockClass{&systemClockClass{(*C.GstSystemClockClass)(p)}}
 }
 
-// UnsafeSystemClockClassFromGlibNone is used to convert raw C.GstSystemClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeSystemClockClassFromGlibNone(p unsafe.Pointer) *SystemClockClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeSystemClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.systemClockClass,
-		func (intern *systemClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeSystemClockClassFromGlibFull is used to convert raw C.GstSystemClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeSystemClockClassFromGlibFull(p unsafe.Pointer) *SystemClockClass {
-	wrapped := UnsafeSystemClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.systemClockClass,
-		func (intern *systemClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeSystemClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [SystemClockClass] is expected to work anymore.
@@ -58062,14 +59561,15 @@ func UnsafeSystemClockClassToGlibNone(s *SystemClockClass) unsafe.Pointer {
 	return unsafe.Pointer(s.native)
 }
 
-// UnsafeSystemClockClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeSystemClockClassToGlibFull(s *SystemClockClass) unsafe.Pointer {
-	runtime.SetFinalizer(s.systemClockClass, nil)
-	_p := unsafe.Pointer(s.native)
-	s.native = nil // SystemClockClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (s *SystemClockClass) ParentClass() *ClockClass {
+	parent := UnsafeClockClassFromGlibBorrow(UnsafeSystemClockClassToGlibNone(s))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *SystemClockClass) {}, s)
+	return parent
 }
+
 // TagList wraps GstTagList
 //
 // List of tags and values used to describe media metadata.
@@ -58102,7 +59602,7 @@ func UnsafeTagListFromGlibBorrow(p unsafe.Pointer) *TagList {
 	return &TagList{&tagList{(*C.GstTagList)(p)}}
 }
 
-// UnsafeTagListFromGlibNone is used to convert raw C.GstTagList pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTagListFromGlibNone is used to convert raw C.GstTagList pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTagListFromGlibNone(p unsafe.Pointer) *TagList {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTagListFromGlibBorrow(p)
@@ -58115,7 +59615,7 @@ func UnsafeTagListFromGlibNone(p unsafe.Pointer) *TagList {
 	return wrapped
 }
 
-// UnsafeTagListFromGlibFull is used to convert raw C.GstTagList pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTagListFromGlibFull is used to convert raw C.GstTagList pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTagListFromGlibFull(p unsafe.Pointer) *TagList {
 	wrapped := UnsafeTagListFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -58147,7 +59647,9 @@ func UnsafeTagListToGlibFull(t *TagList) unsafe.Pointer {
 	t.native = nil // TagList is invalid from here on
 	return _p
 }
+
 // NewTagListEmpty wraps gst_tag_list_new_empty
+// 
 // The function returns the following values:
 // 
 // 	- goret *TagList 
@@ -58269,6 +59771,7 @@ func (list *TagList) AddValue(mode TagMergeMode, tag string, value *gobject.Valu
 }
 
 // Copy wraps gst_tag_list_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *TagList 
@@ -58905,6 +60408,7 @@ func (list *TagList) GetSampleIndex(tag string, index uint) (*Sample, bool) {
 }
 
 // GetScope wraps gst_tag_list_get_scope
+// 
 // The function returns the following values:
 // 
 // 	- goret TagScope 
@@ -59238,6 +60742,7 @@ func (into *TagList) Insert(from *TagList, mode TagMergeMode) {
 }
 
 // IsEmpty wraps gst_tag_list_is_empty
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -59335,6 +60840,7 @@ func (list1 *TagList) Merge(list2 *TagList, mode TagMergeMode) *TagList {
 }
 
 // NTags wraps gst_tag_list_n_tags
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -59473,6 +60979,7 @@ func (list *TagList) SetScope(scope TagScope) {
 }
 
 // ToString wraps gst_tag_list_to_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -59512,7 +61019,7 @@ func UnsafeTagSetterInterfaceFromGlibBorrow(p unsafe.Pointer) *TagSetterInterfac
 	return &TagSetterInterface{&tagSetterInterface{(*C.GstTagSetterInterface)(p)}}
 }
 
-// UnsafeTagSetterInterfaceFromGlibNone is used to convert raw C.GstTagSetterInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTagSetterInterfaceFromGlibNone is used to convert raw C.GstTagSetterInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTagSetterInterfaceFromGlibNone(p unsafe.Pointer) *TagSetterInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTagSetterInterfaceFromGlibBorrow(p)
@@ -59525,7 +61032,7 @@ func UnsafeTagSetterInterfaceFromGlibNone(p unsafe.Pointer) *TagSetterInterface 
 	return wrapped
 }
 
-// UnsafeTagSetterInterfaceFromGlibFull is used to convert raw C.GstTagSetterInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTagSetterInterfaceFromGlibFull is used to convert raw C.GstTagSetterInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTagSetterInterfaceFromGlibFull(p unsafe.Pointer) *TagSetterInterface {
 	wrapped := UnsafeTagSetterInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -59557,7 +61064,10 @@ func UnsafeTagSetterInterfaceToGlibFull(t *TagSetterInterface) unsafe.Pointer {
 	t.native = nil // TagSetterInterface is invalid from here on
 	return _p
 }
+
 // TaskClass wraps GstTaskClass
+// 
+// TaskClass is the type struct for [Task]
 type TaskClass struct {
 	*taskClass
 }
@@ -59572,31 +61082,6 @@ func UnsafeTaskClassFromGlibBorrow(p unsafe.Pointer) *TaskClass {
 	return &TaskClass{&taskClass{(*C.GstTaskClass)(p)}}
 }
 
-// UnsafeTaskClassFromGlibNone is used to convert raw C.GstTaskClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTaskClassFromGlibNone(p unsafe.Pointer) *TaskClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTaskClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.taskClass,
-		func (intern *taskClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTaskClassFromGlibFull is used to convert raw C.GstTaskClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTaskClassFromGlibFull(p unsafe.Pointer) *TaskClass {
-	wrapped := UnsafeTaskClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.taskClass,
-		func (intern *taskClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTaskClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TaskClass] is expected to work anymore.
@@ -59609,17 +61094,20 @@ func UnsafeTaskClassToGlibNone(t *TaskClass) unsafe.Pointer {
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTaskClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTaskClassToGlibFull(t *TaskClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.taskClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TaskClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TaskClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeTaskClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TaskClass) {}, t)
+	return parent
 }
+
 // TaskPoolClass wraps GstTaskPoolClass
 //
 // The #GstTaskPoolClass object.
+// 
+// TaskPoolClass is the type struct for [TaskPool]
 type TaskPoolClass struct {
 	*taskPoolClass
 }
@@ -59634,31 +61122,6 @@ func UnsafeTaskPoolClassFromGlibBorrow(p unsafe.Pointer) *TaskPoolClass {
 	return &TaskPoolClass{&taskPoolClass{(*C.GstTaskPoolClass)(p)}}
 }
 
-// UnsafeTaskPoolClassFromGlibNone is used to convert raw C.GstTaskPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTaskPoolClassFromGlibNone(p unsafe.Pointer) *TaskPoolClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTaskPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.taskPoolClass,
-		func (intern *taskPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTaskPoolClassFromGlibFull is used to convert raw C.GstTaskPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTaskPoolClassFromGlibFull(p unsafe.Pointer) *TaskPoolClass {
-	wrapped := UnsafeTaskPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.taskPoolClass,
-		func (intern *taskPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTaskPoolClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TaskPoolClass] is expected to work anymore.
@@ -59671,14 +61134,15 @@ func UnsafeTaskPoolClassToGlibNone(t *TaskPoolClass) unsafe.Pointer {
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTaskPoolClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTaskPoolClassToGlibFull(t *TaskPoolClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.taskPoolClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TaskPoolClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TaskPoolClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeTaskPoolClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TaskPoolClass) {}, t)
+	return parent
 }
+
 // TimedValue wraps GstTimedValue
 //
 // Structure for storing a timestamp and a value.
@@ -59696,7 +61160,7 @@ func UnsafeTimedValueFromGlibBorrow(p unsafe.Pointer) *TimedValue {
 	return &TimedValue{&timedValue{(*C.GstTimedValue)(p)}}
 }
 
-// UnsafeTimedValueFromGlibNone is used to convert raw C.GstTimedValue pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTimedValueFromGlibNone is used to convert raw C.GstTimedValue pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTimedValueFromGlibNone(p unsafe.Pointer) *TimedValue {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTimedValueFromGlibBorrow(p)
@@ -59709,7 +61173,7 @@ func UnsafeTimedValueFromGlibNone(p unsafe.Pointer) *TimedValue {
 	return wrapped
 }
 
-// UnsafeTimedValueFromGlibFull is used to convert raw C.GstTimedValue pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTimedValueFromGlibFull is used to convert raw C.GstTimedValue pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTimedValueFromGlibFull(p unsafe.Pointer) *TimedValue {
 	wrapped := UnsafeTimedValueFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -59741,6 +61205,7 @@ func UnsafeTimedValueToGlibFull(t *TimedValue) unsafe.Pointer {
 	t.native = nil // TimedValue is invalid from here on
 	return _p
 }
+
 // Toc wraps GstToc
 //
 // #GstToc functions are used to create/free #GstToc and #GstTocEntry structures.
@@ -59814,7 +61279,7 @@ func UnsafeTocFromGlibBorrow(p unsafe.Pointer) *Toc {
 	return &Toc{&toc{(*C.GstToc)(p)}}
 }
 
-// UnsafeTocFromGlibNone is used to convert raw C.GstToc pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTocFromGlibNone is used to convert raw C.GstToc pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTocFromGlibNone(p unsafe.Pointer) *Toc {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTocFromGlibBorrow(p)
@@ -59827,7 +61292,7 @@ func UnsafeTocFromGlibNone(p unsafe.Pointer) *Toc {
 	return wrapped
 }
 
-// UnsafeTocFromGlibFull is used to convert raw C.GstToc pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTocFromGlibFull is used to convert raw C.GstToc pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTocFromGlibFull(p unsafe.Pointer) *Toc {
 	wrapped := UnsafeTocFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -59859,6 +61324,7 @@ func UnsafeTocToGlibFull(t *Toc) unsafe.Pointer {
 	t.native = nil // Toc is invalid from here on
 	return _p
 }
+
 // NewToc wraps gst_toc_new
 // 
 // The function takes the following parameters:
@@ -59949,6 +61415,7 @@ func (toc *Toc) FindEntry(uid string) *TocEntry {
 }
 
 // GetEntries wraps gst_toc_get_entries
+// 
 // The function returns the following values:
 // 
 // 	- goret []*TocEntry 
@@ -59978,6 +61445,7 @@ func (toc *Toc) GetEntries() []*TocEntry {
 }
 
 // GetScope wraps gst_toc_get_scope
+// 
 // The function returns the following values:
 // 
 // 	- goret TocScope 
@@ -59998,6 +61466,7 @@ func (toc *Toc) GetScope() TocScope {
 }
 
 // GetTags wraps gst_toc_get_tags
+// 
 // The function returns the following values:
 // 
 // 	- goret *TagList (nullable) 
@@ -60094,7 +61563,7 @@ func UnsafeTocEntryFromGlibBorrow(p unsafe.Pointer) *TocEntry {
 	return &TocEntry{&tocEntry{(*C.GstTocEntry)(p)}}
 }
 
-// UnsafeTocEntryFromGlibNone is used to convert raw C.GstTocEntry pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTocEntryFromGlibNone is used to convert raw C.GstTocEntry pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTocEntryFromGlibNone(p unsafe.Pointer) *TocEntry {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTocEntryFromGlibBorrow(p)
@@ -60107,7 +61576,7 @@ func UnsafeTocEntryFromGlibNone(p unsafe.Pointer) *TocEntry {
 	return wrapped
 }
 
-// UnsafeTocEntryFromGlibFull is used to convert raw C.GstTocEntry pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTocEntryFromGlibFull is used to convert raw C.GstTocEntry pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTocEntryFromGlibFull(p unsafe.Pointer) *TocEntry {
 	wrapped := UnsafeTocEntryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -60139,6 +61608,7 @@ func UnsafeTocEntryToGlibFull(t *TocEntry) unsafe.Pointer {
 	t.native = nil // TocEntry is invalid from here on
 	return _p
 }
+
 // NewTocEntry wraps gst_toc_entry_new
 // 
 // The function takes the following parameters:
@@ -60191,6 +61661,7 @@ func (entry *TocEntry) AppendSubEntry(subentry *TocEntry) {
 }
 
 // GetEntryType wraps gst_toc_entry_get_entry_type
+// 
 // The function returns the following values:
 // 
 // 	- goret TocEntryType 
@@ -60211,6 +61682,7 @@ func (entry *TocEntry) GetEntryType() TocEntryType {
 }
 
 // GetLoop wraps gst_toc_entry_get_loop
+// 
 // The function returns the following values:
 // 
 // 	- loopType TocLoopType: the storage for the loop_type
@@ -60248,6 +61720,7 @@ func (entry *TocEntry) GetLoop() (TocLoopType, int, bool) {
 }
 
 // GetParent wraps gst_toc_entry_get_parent
+// 
 // The function returns the following values:
 // 
 // 	- goret *TocEntry (nullable) 
@@ -60272,6 +61745,7 @@ func (entry *TocEntry) GetParent() *TocEntry {
 }
 
 // GetStartStopTimes wraps gst_toc_entry_get_start_stop_times
+// 
 // The function returns the following values:
 // 
 // 	- start int64: the storage for the start value, leave
@@ -60307,6 +61781,7 @@ func (entry *TocEntry) GetStartStopTimes() (int64, int64, bool) {
 }
 
 // GetSubEntries wraps gst_toc_entry_get_sub_entries
+// 
 // The function returns the following values:
 // 
 // 	- goret []*TocEntry 
@@ -60336,6 +61811,7 @@ func (entry *TocEntry) GetSubEntries() []*TocEntry {
 }
 
 // GetTags wraps gst_toc_entry_get_tags
+// 
 // The function returns the following values:
 // 
 // 	- goret *TagList (nullable) 
@@ -60360,6 +61836,7 @@ func (entry *TocEntry) GetTags() *TagList {
 }
 
 // GetToc wraps gst_toc_entry_get_toc
+// 
 // The function returns the following values:
 // 
 // 	- goret *Toc (nullable) 
@@ -60384,6 +61861,7 @@ func (entry *TocEntry) GetToc() *Toc {
 }
 
 // GetUid wraps gst_toc_entry_get_uid
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -60406,6 +61884,7 @@ func (entry *TocEntry) GetUid() string {
 }
 
 // IsAlternative wraps gst_toc_entry_is_alternative
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -60428,6 +61907,7 @@ func (entry *TocEntry) IsAlternative() bool {
 }
 
 // IsSequence wraps gst_toc_entry_is_sequence
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -60558,7 +62038,7 @@ func UnsafeTocSetterInterfaceFromGlibBorrow(p unsafe.Pointer) *TocSetterInterfac
 	return &TocSetterInterface{&tocSetterInterface{(*C.GstTocSetterInterface)(p)}}
 }
 
-// UnsafeTocSetterInterfaceFromGlibNone is used to convert raw C.GstTocSetterInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTocSetterInterfaceFromGlibNone is used to convert raw C.GstTocSetterInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTocSetterInterfaceFromGlibNone(p unsafe.Pointer) *TocSetterInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTocSetterInterfaceFromGlibBorrow(p)
@@ -60571,7 +62051,7 @@ func UnsafeTocSetterInterfaceFromGlibNone(p unsafe.Pointer) *TocSetterInterface 
 	return wrapped
 }
 
-// UnsafeTocSetterInterfaceFromGlibFull is used to convert raw C.GstTocSetterInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTocSetterInterfaceFromGlibFull is used to convert raw C.GstTocSetterInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTocSetterInterfaceFromGlibFull(p unsafe.Pointer) *TocSetterInterface {
 	wrapped := UnsafeTocSetterInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -60603,7 +62083,10 @@ func UnsafeTocSetterInterfaceToGlibFull(t *TocSetterInterface) unsafe.Pointer {
 	t.native = nil // TocSetterInterface is invalid from here on
 	return _p
 }
+
 // TracerClass wraps GstTracerClass
+// 
+// TracerClass is the type struct for [Tracer]
 type TracerClass struct {
 	*tracerClass
 }
@@ -60618,31 +62101,6 @@ func UnsafeTracerClassFromGlibBorrow(p unsafe.Pointer) *TracerClass {
 	return &TracerClass{&tracerClass{(*C.GstTracerClass)(p)}}
 }
 
-// UnsafeTracerClassFromGlibNone is used to convert raw C.GstTracerClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTracerClassFromGlibNone(p unsafe.Pointer) *TracerClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTracerClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tracerClass,
-		func (intern *tracerClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTracerClassFromGlibFull is used to convert raw C.GstTracerClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTracerClassFromGlibFull(p unsafe.Pointer) *TracerClass {
-	wrapped := UnsafeTracerClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tracerClass,
-		func (intern *tracerClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTracerClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TracerClass] is expected to work anymore.
@@ -60655,15 +62113,18 @@ func UnsafeTracerClassToGlibNone(t *TracerClass) unsafe.Pointer {
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTracerClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTracerClassToGlibFull(t *TracerClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.tracerClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TracerClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TracerClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeTracerClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TracerClass) {}, t)
+	return parent
 }
+
 // TracerFactoryClass wraps GstTracerFactoryClass
+// 
+// TracerFactoryClass is the type struct for [TracerFactory]
 type TracerFactoryClass struct {
 	*tracerFactoryClass
 }
@@ -60678,31 +62139,6 @@ func UnsafeTracerFactoryClassFromGlibBorrow(p unsafe.Pointer) *TracerFactoryClas
 	return &TracerFactoryClass{&tracerFactoryClass{(*C.GstTracerFactoryClass)(p)}}
 }
 
-// UnsafeTracerFactoryClassFromGlibNone is used to convert raw C.GstTracerFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTracerFactoryClassFromGlibNone(p unsafe.Pointer) *TracerFactoryClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTracerFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tracerFactoryClass,
-		func (intern *tracerFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTracerFactoryClassFromGlibFull is used to convert raw C.GstTracerFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTracerFactoryClassFromGlibFull(p unsafe.Pointer) *TracerFactoryClass {
-	wrapped := UnsafeTracerFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tracerFactoryClass,
-		func (intern *tracerFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTracerFactoryClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TracerFactoryClass] is expected to work anymore.
@@ -60715,15 +62151,18 @@ func UnsafeTracerFactoryClassToGlibNone(t *TracerFactoryClass) unsafe.Pointer {
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTracerFactoryClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTracerFactoryClassToGlibFull(t *TracerFactoryClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.tracerFactoryClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TracerFactoryClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TracerFactoryClass) ParentClass() *PluginFeatureClass {
+	parent := UnsafePluginFeatureClassFromGlibBorrow(UnsafeTracerFactoryClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TracerFactoryClass) {}, t)
+	return parent
 }
+
 // TracerRecordClass wraps GstTracerRecordClass
+// 
+// TracerRecordClass is the type struct for [TracerRecord]
 type TracerRecordClass struct {
 	*tracerRecordClass
 }
@@ -60738,31 +62177,6 @@ func UnsafeTracerRecordClassFromGlibBorrow(p unsafe.Pointer) *TracerRecordClass 
 	return &TracerRecordClass{&tracerRecordClass{(*C.GstTracerRecordClass)(p)}}
 }
 
-// UnsafeTracerRecordClassFromGlibNone is used to convert raw C.GstTracerRecordClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTracerRecordClassFromGlibNone(p unsafe.Pointer) *TracerRecordClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTracerRecordClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tracerRecordClass,
-		func (intern *tracerRecordClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTracerRecordClassFromGlibFull is used to convert raw C.GstTracerRecordClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTracerRecordClassFromGlibFull(p unsafe.Pointer) *TracerRecordClass {
-	wrapped := UnsafeTracerRecordClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tracerRecordClass,
-		func (intern *tracerRecordClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTracerRecordClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TracerRecordClass] is expected to work anymore.
@@ -60775,14 +62189,15 @@ func UnsafeTracerRecordClassToGlibNone(t *TracerRecordClass) unsafe.Pointer {
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTracerRecordClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTracerRecordClassToGlibFull(t *TracerRecordClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.tracerRecordClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TracerRecordClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TracerRecordClass) ParentClass() *ObjectClass {
+	parent := UnsafeObjectClassFromGlibBorrow(UnsafeTracerRecordClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TracerRecordClass) {}, t)
+	return parent
 }
+
 // TypeFind wraps GstTypeFind
 //
 // The following functions allow you to detect the media type of an unknown
@@ -60813,7 +62228,7 @@ func UnsafeTypeFindFromGlibBorrow(p unsafe.Pointer) *TypeFind {
 	return &TypeFind{&typeFind{(*C.GstTypeFind)(p)}}
 }
 
-// UnsafeTypeFindFromGlibNone is used to convert raw C.GstTypeFind pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTypeFindFromGlibNone is used to convert raw C.GstTypeFind pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTypeFindFromGlibNone(p unsafe.Pointer) *TypeFind {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTypeFindFromGlibBorrow(p)
@@ -60826,7 +62241,7 @@ func UnsafeTypeFindFromGlibNone(p unsafe.Pointer) *TypeFind {
 	return wrapped
 }
 
-// UnsafeTypeFindFromGlibFull is used to convert raw C.GstTypeFind pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTypeFindFromGlibFull is used to convert raw C.GstTypeFind pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTypeFindFromGlibFull(p unsafe.Pointer) *TypeFind {
 	wrapped := UnsafeTypeFindFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -60858,6 +62273,7 @@ func UnsafeTypeFindToGlibFull(t *TypeFind) unsafe.Pointer {
 	t.native = nil // TypeFind is invalid from here on
 	return _p
 }
+
 // TypeFindRegister wraps gst_type_find_register
 // 
 // The function takes the following parameters:
@@ -60924,6 +62340,7 @@ func TypeFindRegister(plugin Plugin, name string, rank uint, fn TypeFindFunction
 }
 
 // GetLength wraps gst_type_find_get_length
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -61042,6 +62459,8 @@ func (find *TypeFind) SuggestEmptySimple(probability uint, mediaType string) {
 }
 
 // TypeFindFactoryClass wraps GstTypeFindFactoryClass
+// 
+// TypeFindFactoryClass is the type struct for [TypeFindFactory]
 type TypeFindFactoryClass struct {
 	*typeFindFactoryClass
 }
@@ -61056,31 +62475,6 @@ func UnsafeTypeFindFactoryClassFromGlibBorrow(p unsafe.Pointer) *TypeFindFactory
 	return &TypeFindFactoryClass{&typeFindFactoryClass{(*C.GstTypeFindFactoryClass)(p)}}
 }
 
-// UnsafeTypeFindFactoryClassFromGlibNone is used to convert raw C.GstTypeFindFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTypeFindFactoryClassFromGlibNone(p unsafe.Pointer) *TypeFindFactoryClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTypeFindFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.typeFindFactoryClass,
-		func (intern *typeFindFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTypeFindFactoryClassFromGlibFull is used to convert raw C.GstTypeFindFactoryClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTypeFindFactoryClassFromGlibFull(p unsafe.Pointer) *TypeFindFactoryClass {
-	wrapped := UnsafeTypeFindFactoryClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.typeFindFactoryClass,
-		func (intern *typeFindFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTypeFindFactoryClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TypeFindFactoryClass] is expected to work anymore.
@@ -61093,14 +62487,15 @@ func UnsafeTypeFindFactoryClassToGlibNone(t *TypeFindFactoryClass) unsafe.Pointe
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTypeFindFactoryClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTypeFindFactoryClassToGlibFull(t *TypeFindFactoryClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.typeFindFactoryClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TypeFindFactoryClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TypeFindFactoryClass) ParentClass() *PluginFeatureClass {
+	parent := UnsafePluginFeatureClassFromGlibBorrow(UnsafeTypeFindFactoryClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TypeFindFactoryClass) {}, t)
+	return parent
 }
+
 // URIHandlerInterface wraps GstURIHandlerInterface
 //
 // Any #GstElement using this interface should implement these methods.
@@ -61118,7 +62513,7 @@ func UnsafeURIHandlerInterfaceFromGlibBorrow(p unsafe.Pointer) *URIHandlerInterf
 	return &URIHandlerInterface{&uriHandlerInterface{(*C.GstURIHandlerInterface)(p)}}
 }
 
-// UnsafeURIHandlerInterfaceFromGlibNone is used to convert raw C.GstURIHandlerInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeURIHandlerInterfaceFromGlibNone is used to convert raw C.GstURIHandlerInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeURIHandlerInterfaceFromGlibNone(p unsafe.Pointer) *URIHandlerInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeURIHandlerInterfaceFromGlibBorrow(p)
@@ -61131,7 +62526,7 @@ func UnsafeURIHandlerInterfaceFromGlibNone(p unsafe.Pointer) *URIHandlerInterfac
 	return wrapped
 }
 
-// UnsafeURIHandlerInterfaceFromGlibFull is used to convert raw C.GstURIHandlerInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeURIHandlerInterfaceFromGlibFull is used to convert raw C.GstURIHandlerInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeURIHandlerInterfaceFromGlibFull(p unsafe.Pointer) *URIHandlerInterface {
 	wrapped := UnsafeURIHandlerInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -61163,6 +62558,7 @@ func UnsafeURIHandlerInterfaceToGlibFull(u *URIHandlerInterface) unsafe.Pointer 
 	u.native = nil // URIHandlerInterface is invalid from here on
 	return _p
 }
+
 // Uri wraps GstUri
 //
 // A #GstUri object can be used to parse and split a URI string into its
@@ -61194,7 +62590,7 @@ func UnsafeUriFromGlibBorrow(p unsafe.Pointer) *Uri {
 	return &Uri{&uri{(*C.GstUri)(p)}}
 }
 
-// UnsafeUriFromGlibNone is used to convert raw C.GstUri pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeUriFromGlibNone is used to convert raw C.GstUri pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeUriFromGlibNone(p unsafe.Pointer) *Uri {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeUriFromGlibBorrow(p)
@@ -61207,7 +62603,7 @@ func UnsafeUriFromGlibNone(p unsafe.Pointer) *Uri {
 	return wrapped
 }
 
-// UnsafeUriFromGlibFull is used to convert raw C.GstUri pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeUriFromGlibFull is used to convert raw C.GstUri pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeUriFromGlibFull(p unsafe.Pointer) *Uri {
 	wrapped := UnsafeUriFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -61239,6 +62635,7 @@ func UnsafeUriToGlibFull(u *Uri) unsafe.Pointer {
 	u.native = nil // Uri is invalid from here on
 	return _p
 }
+
 // NewUri wraps gst_uri_new
 // 
 // The function takes the following parameters:
@@ -61801,6 +63198,7 @@ func (base *Uri) FromStringWithBase(uri string) *Uri {
 }
 
 // GetFragment wraps gst_uri_get_fragment
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -61826,6 +63224,7 @@ func (uri *Uri) GetFragment() string {
 }
 
 // GetHost wraps gst_uri_get_host
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -61851,6 +63250,7 @@ func (uri *Uri) GetHost() string {
 }
 
 // GetPath wraps gst_uri_get_path
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -61876,6 +63276,7 @@ func (uri *Uri) GetPath() string {
 }
 
 // GetPathSegments wraps gst_uri_get_path_segments
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -61906,6 +63307,7 @@ func (uri *Uri) GetPathSegments() []string {
 }
 
 // GetPathString wraps gst_uri_get_path_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -61931,6 +63333,7 @@ func (uri *Uri) GetPathString() string {
 }
 
 // GetPort wraps gst_uri_get_port
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -61954,6 +63357,7 @@ func (uri *Uri) GetPort() uint {
 }
 
 // GetQueryKeys wraps gst_uri_get_query_keys
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -61983,6 +63387,7 @@ func (uri *Uri) GetQueryKeys() []string {
 }
 
 // GetQueryString wraps gst_uri_get_query_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -62045,6 +63450,7 @@ func (uri *Uri) GetQueryValue(queryKey string) string {
 }
 
 // GetScheme wraps gst_uri_get_scheme
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -62070,6 +63476,7 @@ func (uri *Uri) GetScheme() string {
 }
 
 // GetUserinfo wraps gst_uri_get_userinfo
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -62095,6 +63502,7 @@ func (uri *Uri) GetUserinfo() string {
 }
 
 // IsNormalized wraps gst_uri_is_normalized
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -62120,6 +63528,7 @@ func (uri *Uri) IsNormalized() bool {
 }
 
 // IsWritable wraps gst_uri_is_writable
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -62187,6 +63596,7 @@ func (baseUri *Uri) Join(refUri *Uri) *Uri {
 }
 
 // MakeWritable wraps gst_uri_make_writable
+// 
 // The function returns the following values:
 // 
 // 	- goret *Uri 
@@ -62289,6 +63699,7 @@ func (base *Uri) NewWithBase(scheme string, userinfo string, host string, port u
 }
 
 // Normalize wraps gst_uri_normalize
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -62699,6 +64110,7 @@ func (uri *Uri) SetUserinfo(userinfo string) bool {
 }
 
 // ToString wraps gst_uri_to_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -62742,7 +64154,7 @@ func UnsafeValueTableFromGlibBorrow(p unsafe.Pointer) *ValueTable {
 	return &ValueTable{&valueTable{(*C.GstValueTable)(p)}}
 }
 
-// UnsafeValueTableFromGlibNone is used to convert raw C.GstValueTable pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeValueTableFromGlibNone is used to convert raw C.GstValueTable pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeValueTableFromGlibNone(p unsafe.Pointer) *ValueTable {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeValueTableFromGlibBorrow(p)
@@ -62755,7 +64167,7 @@ func UnsafeValueTableFromGlibNone(p unsafe.Pointer) *ValueTable {
 	return wrapped
 }
 
-// UnsafeValueTableFromGlibFull is used to convert raw C.GstValueTable pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeValueTableFromGlibFull is used to convert raw C.GstValueTable pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeValueTableFromGlibFull(p unsafe.Pointer) *ValueTable {
 	wrapped := UnsafeValueTableFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -62787,3 +64199,4 @@ func UnsafeValueTableToGlibFull(v *ValueTable) unsafe.Pointer {
 	v.native = nil // ValueTable is invalid from here on
 	return _p
 }
+

@@ -657,3 +657,353 @@ func _gotk4_gst1_ElementForEachPadFunc(carg1 *C.GstElement, carg2 *C.GstPad, car
 	return cret
 }
 
+//export _gotk4_gst1_ChildProxy_child_added
+func _gotk4_gst1_ChildProxy_child_added(carg0 *C.GstChildProxy, carg1 *C.GObject, carg2 *C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_ChildProxy_child_removed
+func _gotk4_gst1_ChildProxy_child_removed(carg0 *C.GstChildProxy, carg1 *C.GObject, carg2 *C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_ChildProxy_get_child_by_index
+func _gotk4_gst1_ChildProxy_get_child_by_index(carg0 *C.GstChildProxy, carg1 C.guint) (cret *C.GObject) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_ChildProxy_get_child_by_name
+func _gotk4_gst1_ChildProxy_get_child_by_name(carg0 *C.GstChildProxy, carg1 *C.gchar) (cret *C.GObject) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_ChildProxy_get_children_count
+func _gotk4_gst1_ChildProxy_get_children_count(carg0 *C.GstChildProxy) (cret C.guint) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Preset_delete_preset
+func _gotk4_gst1_Preset_delete_preset(carg0 *C.GstPreset, carg1 *C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Preset_get_meta
+func _gotk4_gst1_Preset_get_meta(carg0 *C.GstPreset, carg1 *C.gchar, carg2 *C.gchar, carg3 **C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Preset_get_preset_names
+func _gotk4_gst1_Preset_get_preset_names(carg0 *C.GstPreset) (cret **C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Preset_get_property_names
+func _gotk4_gst1_Preset_get_property_names(carg0 *C.GstPreset) (cret **C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Preset_load_preset
+func _gotk4_gst1_Preset_load_preset(carg0 *C.GstPreset, carg1 *C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Preset_rename_preset
+func _gotk4_gst1_Preset_rename_preset(carg0 *C.GstPreset, carg1 *C.gchar, carg2 *C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Preset_save_preset
+func _gotk4_gst1_Preset_save_preset(carg0 *C.GstPreset, carg1 *C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Preset_set_meta
+func _gotk4_gst1_Preset_set_meta(carg0 *C.GstPreset, carg1 *C.gchar, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_URIHandler_get_uri
+func _gotk4_gst1_URIHandler_get_uri(carg0 *C.GstURIHandler) (cret *C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_URIHandler_set_uri
+func _gotk4_gst1_URIHandler_set_uri(carg0 *C.GstURIHandler, carg1 *C.gchar, _cerr **C.GError) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Pad_linked
+func _gotk4_gst1_Pad_linked(carg0 *C.GstPad, carg1 *C.GstPad) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Pad_unlinked
+func _gotk4_gst1_Pad_unlinked(carg0 *C.GstPad, carg1 *C.GstPad) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_PadTemplate_pad_created
+func _gotk4_gst1_PadTemplate_pad_created(carg0 *C.GstPadTemplate, carg1 *C.GstPad) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_TaskPool_cleanup
+func _gotk4_gst1_TaskPool_cleanup(carg0 *C.GstTaskPool) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_TaskPool_prepare
+func _gotk4_gst1_TaskPool_prepare(carg0 *C.GstTaskPool, _cerr **C.GError) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Allocator_alloc
+func _gotk4_gst1_Allocator_alloc(carg0 *C.GstAllocator, carg1 C.gsize, carg2 *C.GstAllocationParams) (cret *C.GstMemory) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Allocator_free
+func _gotk4_gst1_Allocator_free(carg0 *C.GstAllocator, carg1 *C.GstMemory) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_acquire_buffer
+func _gotk4_gst1_BufferPool_acquire_buffer(carg0 *C.GstBufferPool, carg1 **C.GstBuffer, carg2 *C.GstBufferPoolAcquireParams) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_alloc_buffer
+func _gotk4_gst1_BufferPool_alloc_buffer(carg0 *C.GstBufferPool, carg1 **C.GstBuffer, carg2 *C.GstBufferPoolAcquireParams) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_flush_start
+func _gotk4_gst1_BufferPool_flush_start(carg0 *C.GstBufferPool) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_flush_stop
+func _gotk4_gst1_BufferPool_flush_stop(carg0 *C.GstBufferPool) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_free_buffer
+func _gotk4_gst1_BufferPool_free_buffer(carg0 *C.GstBufferPool, carg1 *C.GstBuffer) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_get_options
+func _gotk4_gst1_BufferPool_get_options(carg0 *C.GstBufferPool) (cret **C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_release_buffer
+func _gotk4_gst1_BufferPool_release_buffer(carg0 *C.GstBufferPool, carg1 *C.GstBuffer) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_reset_buffer
+func _gotk4_gst1_BufferPool_reset_buffer(carg0 *C.GstBufferPool, carg1 *C.GstBuffer) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_set_config
+func _gotk4_gst1_BufferPool_set_config(carg0 *C.GstBufferPool, carg1 *C.GstStructure) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_start
+func _gotk4_gst1_BufferPool_start(carg0 *C.GstBufferPool) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_BufferPool_stop
+func _gotk4_gst1_BufferPool_stop(carg0 *C.GstBufferPool) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bus_message
+func _gotk4_gst1_Bus_message(carg0 *C.GstBus, carg1 *C.GstMessage) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bus_sync_message
+func _gotk4_gst1_Bus_sync_message(carg0 *C.GstBus, carg1 *C.GstMessage) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Clock_change_resolution
+func _gotk4_gst1_Clock_change_resolution(carg0 *C.GstClock, carg1 C.GstClockTime, carg2 C.GstClockTime) (cret C.GstClockTime) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Clock_get_internal_time
+func _gotk4_gst1_Clock_get_internal_time(carg0 *C.GstClock) (cret C.GstClockTime) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Clock_get_resolution
+func _gotk4_gst1_Clock_get_resolution(carg0 *C.GstClock) (cret C.GstClockTime) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Clock_unschedule
+func _gotk4_gst1_Clock_unschedule(carg0 *C.GstClock, carg1 *C.GstClockEntry) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Clock_wait
+func _gotk4_gst1_Clock_wait(carg0 *C.GstClock, carg1 *C.GstClockEntry, carg2 *C.GstClockTimeDiff) (cret C.GstClockReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Clock_wait_async
+func _gotk4_gst1_Clock_wait_async(carg0 *C.GstClock, carg1 *C.GstClockEntry) (cret C.GstClockReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_ControlBinding_sync_values
+func _gotk4_gst1_ControlBinding_sync_values(carg0 *C.GstControlBinding, carg1 *C.GstObject, carg2 C.GstClockTime, carg3 C.GstClockTime) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Device_create_element
+func _gotk4_gst1_Device_create_element(carg0 *C.GstDevice, carg1 *C.gchar) (cret *C.GstElement) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Device_reconfigure_element
+func _gotk4_gst1_Device_reconfigure_element(carg0 *C.GstDevice, carg1 *C.GstElement) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_DeviceProvider_start
+func _gotk4_gst1_DeviceProvider_start(carg0 *C.GstDeviceProvider) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_DeviceProvider_stop
+func _gotk4_gst1_DeviceProvider_stop(carg0 *C.GstDeviceProvider) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_change_state
+func _gotk4_gst1_Element_change_state(carg0 *C.GstElement, carg1 C.GstStateChange) (cret C.GstStateChangeReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_get_state
+func _gotk4_gst1_Element_get_state(carg0 *C.GstElement, carg1 *C.GstState, carg2 *C.GstState, carg3 C.GstClockTime) (cret C.GstStateChangeReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_no_more_pads
+func _gotk4_gst1_Element_no_more_pads(carg0 *C.GstElement) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_pad_added
+func _gotk4_gst1_Element_pad_added(carg0 *C.GstElement, carg1 *C.GstPad) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_pad_removed
+func _gotk4_gst1_Element_pad_removed(carg0 *C.GstElement, carg1 *C.GstPad) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_post_message
+func _gotk4_gst1_Element_post_message(carg0 *C.GstElement, carg1 *C.GstMessage) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_provide_clock
+func _gotk4_gst1_Element_provide_clock(carg0 *C.GstElement) (cret *C.GstClock) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_query
+func _gotk4_gst1_Element_query(carg0 *C.GstElement, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_release_pad
+func _gotk4_gst1_Element_release_pad(carg0 *C.GstElement, carg1 *C.GstPad) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_request_new_pad
+func _gotk4_gst1_Element_request_new_pad(carg0 *C.GstElement, carg1 *C.GstPadTemplate, carg2 *C.gchar, carg3 *C.GstCaps) (cret *C.GstPad) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_send_event
+func _gotk4_gst1_Element_send_event(carg0 *C.GstElement, carg1 *C.GstEvent) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_set_bus
+func _gotk4_gst1_Element_set_bus(carg0 *C.GstElement, carg1 *C.GstBus) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_set_clock
+func _gotk4_gst1_Element_set_clock(carg0 *C.GstElement, carg1 *C.GstClock) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_set_context
+func _gotk4_gst1_Element_set_context(carg0 *C.GstElement, carg1 *C.GstContext) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_set_state
+func _gotk4_gst1_Element_set_state(carg0 *C.GstElement, carg1 C.GstState) (cret C.GstStateChangeReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Element_state_changed
+func _gotk4_gst1_Element_state_changed(carg0 *C.GstElement, carg1 C.GstState, carg2 C.GstState, carg3 C.GstState) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bin_add_element
+func _gotk4_gst1_Bin_add_element(carg0 *C.GstBin, carg1 *C.GstElement) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bin_deep_element_added
+func _gotk4_gst1_Bin_deep_element_added(carg0 *C.GstBin, carg1 *C.GstBin, carg2 *C.GstElement) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bin_deep_element_removed
+func _gotk4_gst1_Bin_deep_element_removed(carg0 *C.GstBin, carg1 *C.GstBin, carg2 *C.GstElement) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bin_do_latency
+func _gotk4_gst1_Bin_do_latency(carg0 *C.GstBin) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bin_element_added
+func _gotk4_gst1_Bin_element_added(carg0 *C.GstBin, carg1 *C.GstElement) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bin_element_removed
+func _gotk4_gst1_Bin_element_removed(carg0 *C.GstBin, carg1 *C.GstElement) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bin_handle_message
+func _gotk4_gst1_Bin_handle_message(carg0 *C.GstBin, carg1 *C.GstMessage) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gst1_Bin_remove_element
+func _gotk4_gst1_Bin_remove_element(carg0 *C.GstBin, carg1 *C.GstElement) (cret C.gboolean) {
+	panic("unimplemented")
+}
+

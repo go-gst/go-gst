@@ -182,6 +182,7 @@ func PlayErrorGetName(err PlayError) string {
 }
 
 // PlayErrorQuark wraps gst_play_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -785,6 +786,16 @@ func UnsafePlayVideoRendererToGlibFull(c PlayVideoRenderer) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
+// PlayVideoRendererOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type PlayVideoRendererOverrides[Instance PlayVideoRenderer] struct {
+}
+
+// UnsafeApplyPlayVideoRendererOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyPlayVideoRendererOverrides[Instance PlayVideoRenderer](gclass unsafe.Pointer, overrides PlayVideoRendererOverrides[Instance]) {
+}
+
 // PlayInstance is the instance type used by all types extending GstPlay. It is used internally by the bindings. Users should use the interface [Play] instead.
 type PlayInstance struct {
 	_ [0]func() // equal guard
@@ -833,6 +844,7 @@ type Play interface {
 	upcastToGstPlay() *PlayInstance
 
 	// GetAudioVideoOffset wraps gst_play_get_audio_video_offset
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int64 
@@ -852,6 +864,7 @@ type Play interface {
 	// Retrieve the current value of the indicated @type.
 	GetColorBalance(PlayColorBalanceType) float64
 	// GetConfig wraps gst_play_get_config
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Structure 
@@ -861,6 +874,7 @@ type Play interface {
 	// or it must be freed after usage.
 	GetConfig() *gst.Structure
 	// GetCurrentAudioTrack wraps gst_play_get_current_audio_track
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret PlayAudioInfo (nullable) 
@@ -868,6 +882,7 @@ type Play interface {
 	// A Function to get current audio #GstPlayAudioInfo instance.
 	GetCurrentAudioTrack() PlayAudioInfo
 	// GetCurrentSubtitleTrack wraps gst_play_get_current_subtitle_track
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret PlaySubtitleInfo (nullable) 
@@ -875,6 +890,7 @@ type Play interface {
 	// A Function to get current subtitle #GstPlaySubtitleInfo instance.
 	GetCurrentSubtitleTrack() PlaySubtitleInfo
 	// GetCurrentVideoTrack wraps gst_play_get_current_video_track
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret PlayVideoInfo (nullable) 
@@ -882,11 +898,13 @@ type Play interface {
 	// A Function to get current video #GstPlayVideoInfo instance.
 	GetCurrentVideoTrack() PlayVideoInfo
 	// GetCurrentVisualization wraps gst_play_get_current_visualization
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetCurrentVisualization() string
 	// GetDuration wraps gst_play_get_duration
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -894,6 +912,7 @@ type Play interface {
 	// Retrieves the duration of the media stream that self represents.
 	GetDuration() gst.ClockTime
 	// GetMediaInfo wraps gst_play_get_media_info
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret PlayMediaInfo (nullable) 
@@ -901,6 +920,7 @@ type Play interface {
 	// A Function to get the current media info #GstPlayMediaInfo instance.
 	GetMediaInfo() PlayMediaInfo
 	// GetMessageBus wraps gst_play_get_message_bus
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.Bus 
@@ -919,6 +939,7 @@ type Play interface {
 	// fill memory. To avoid that, the bus has to be set "flushing".
 	GetMessageBus() gst.Bus
 	// GetMultiviewFlags wraps gst_play_get_multiview_flags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gstvideo.VideoMultiviewFlags 
@@ -926,6 +947,7 @@ type Play interface {
 	// Retrieve the current value of the indicated @type.
 	GetMultiviewFlags() gstvideo.VideoMultiviewFlags
 	// GetMultiviewMode wraps gst_play_get_multiview_mode
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gstvideo.VideoMultiviewFramePacking 
@@ -933,26 +955,31 @@ type Play interface {
 	// Retrieve the current value of the indicated @type.
 	GetMultiviewMode() gstvideo.VideoMultiviewFramePacking
 	// GetMute wraps gst_play_get_mute
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	GetMute() bool
 	// GetPipeline wraps gst_play_get_pipeline
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.Element 
 	GetPipeline() gst.Element
 	// GetPosition wraps gst_play_get_position
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
 	GetPosition() gst.ClockTime
 	// GetRate wraps gst_play_get_rate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret float64 
 	GetRate() float64
 	// GetSubtitleURI wraps gst_play_get_subtitle_uri
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -960,6 +987,7 @@ type Play interface {
 	// Current subtitle URI
 	GetSubtitleURI() string
 	// GetSubtitleVideoOffset wraps gst_play_get_subtitle_video_offset
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int64 
@@ -967,6 +995,7 @@ type Play interface {
 	// Retrieve the current value of subtitle-video-offset property
 	GetSubtitleVideoOffset() int64
 	// GetURI wraps gst_play_get_uri
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -992,6 +1021,7 @@ type Play interface {
 	//  Except for GST_PLAY_THUMBNAIL_RAW_NATIVE format, if no config is set, pixel-aspect-ratio would be 1/1
 	GetVideoSnapshot(PlaySnapshotFormat, *gst.Structure) *gst.Sample
 	// GetVolume wraps gst_play_get_volume
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret float64 
@@ -999,6 +1029,7 @@ type Play interface {
 	// Returns the current volume level, as a percentage between 0 and 1.
 	GetVolume() float64
 	// HasColorBalance wraps gst_play_has_color_balance
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -1618,6 +1649,7 @@ func PlayIsPlayMessage(msg *gst.Message) bool {
 }
 
 // GetAudioVideoOffset wraps gst_play_get_audio_video_offset
+// 
 // The function returns the following values:
 // 
 // 	- goret int64 
@@ -1670,6 +1702,7 @@ func (play *PlayInstance) GetColorBalance(typ PlayColorBalanceType) float64 {
 }
 
 // GetConfig wraps gst_play_get_config
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Structure 
@@ -1694,6 +1727,7 @@ func (play *PlayInstance) GetConfig() *gst.Structure {
 }
 
 // GetCurrentAudioTrack wraps gst_play_get_current_audio_track
+// 
 // The function returns the following values:
 // 
 // 	- goret PlayAudioInfo (nullable) 
@@ -1718,6 +1752,7 @@ func (play *PlayInstance) GetCurrentAudioTrack() PlayAudioInfo {
 }
 
 // GetCurrentSubtitleTrack wraps gst_play_get_current_subtitle_track
+// 
 // The function returns the following values:
 // 
 // 	- goret PlaySubtitleInfo (nullable) 
@@ -1742,6 +1777,7 @@ func (play *PlayInstance) GetCurrentSubtitleTrack() PlaySubtitleInfo {
 }
 
 // GetCurrentVideoTrack wraps gst_play_get_current_video_track
+// 
 // The function returns the following values:
 // 
 // 	- goret PlayVideoInfo (nullable) 
@@ -1766,6 +1802,7 @@ func (play *PlayInstance) GetCurrentVideoTrack() PlayVideoInfo {
 }
 
 // GetCurrentVisualization wraps gst_play_get_current_visualization
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -1789,6 +1826,7 @@ func (play *PlayInstance) GetCurrentVisualization() string {
 }
 
 // GetDuration wraps gst_play_get_duration
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -1811,6 +1849,7 @@ func (play *PlayInstance) GetDuration() gst.ClockTime {
 }
 
 // GetMediaInfo wraps gst_play_get_media_info
+// 
 // The function returns the following values:
 // 
 // 	- goret PlayMediaInfo (nullable) 
@@ -1835,6 +1874,7 @@ func (play *PlayInstance) GetMediaInfo() PlayMediaInfo {
 }
 
 // GetMessageBus wraps gst_play_get_message_bus
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.Bus 
@@ -1868,6 +1908,7 @@ func (play *PlayInstance) GetMessageBus() gst.Bus {
 }
 
 // GetMultiviewFlags wraps gst_play_get_multiview_flags
+// 
 // The function returns the following values:
 // 
 // 	- goret gstvideo.VideoMultiviewFlags 
@@ -1890,6 +1931,7 @@ func (play *PlayInstance) GetMultiviewFlags() gstvideo.VideoMultiviewFlags {
 }
 
 // GetMultiviewMode wraps gst_play_get_multiview_mode
+// 
 // The function returns the following values:
 // 
 // 	- goret gstvideo.VideoMultiviewFramePacking 
@@ -1912,6 +1954,7 @@ func (play *PlayInstance) GetMultiviewMode() gstvideo.VideoMultiviewFramePacking
 }
 
 // GetMute wraps gst_play_get_mute
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -1934,6 +1977,7 @@ func (play *PlayInstance) GetMute() bool {
 }
 
 // GetPipeline wraps gst_play_get_pipeline
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.Element 
@@ -1954,6 +1998,7 @@ func (play *PlayInstance) GetPipeline() gst.Element {
 }
 
 // GetPosition wraps gst_play_get_position
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -1974,6 +2019,7 @@ func (play *PlayInstance) GetPosition() gst.ClockTime {
 }
 
 // GetRate wraps gst_play_get_rate
+// 
 // The function returns the following values:
 // 
 // 	- goret float64 
@@ -1994,6 +2040,7 @@ func (play *PlayInstance) GetRate() float64 {
 }
 
 // GetSubtitleURI wraps gst_play_get_subtitle_uri
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -2019,6 +2066,7 @@ func (play *PlayInstance) GetSubtitleURI() string {
 }
 
 // GetSubtitleVideoOffset wraps gst_play_get_subtitle_video_offset
+// 
 // The function returns the following values:
 // 
 // 	- goret int64 
@@ -2041,6 +2089,7 @@ func (play *PlayInstance) GetSubtitleVideoOffset() int64 {
 }
 
 // GetURI wraps gst_play_get_uri
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -2109,6 +2158,7 @@ func (play *PlayInstance) GetVideoSnapshot(format PlaySnapshotFormat, config *gs
 }
 
 // GetVolume wraps gst_play_get_volume
+// 
 // The function returns the following values:
 // 
 // 	- goret float64 
@@ -2131,6 +2181,7 @@ func (play *PlayInstance) GetVolume() float64 {
 }
 
 // HasColorBalance wraps gst_play_has_color_balance
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2682,21 +2733,25 @@ type PlayMediaInfo interface {
 	upcastToGstPlayMediaInfo() *PlayMediaInfoInstance
 
 	// GetAudioStreams wraps gst_play_media_info_get_audio_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []PlayAudioInfo 
 	GetAudioStreams() []PlayAudioInfo
 	// GetContainerFormat wraps gst_play_media_info_get_container_format
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetContainerFormat() string
 	// GetDuration wraps gst_play_media_info_get_duration
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
 	GetDuration() gst.ClockTime
 	// GetImageSample wraps gst_play_media_info_get_image_sample
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
@@ -2705,61 +2760,73 @@ type PlayMediaInfo interface {
 	// Application can use `gst_sample_*_()` API's to get caps, buffer etc.
 	GetImageSample() *gst.Sample
 	// GetNumberOfAudioStreams wraps gst_play_media_info_get_number_of_audio_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetNumberOfAudioStreams() uint
 	// GetNumberOfStreams wraps gst_play_media_info_get_number_of_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetNumberOfStreams() uint
 	// GetNumberOfSubtitleStreams wraps gst_play_media_info_get_number_of_subtitle_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetNumberOfSubtitleStreams() uint
 	// GetNumberOfVideoStreams wraps gst_play_media_info_get_number_of_video_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetNumberOfVideoStreams() uint
 	// GetStreamList wraps gst_play_media_info_get_stream_list
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []PlayStreamInfo 
 	GetStreamList() []PlayStreamInfo
 	// GetSubtitleStreams wraps gst_play_media_info_get_subtitle_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []PlaySubtitleInfo 
 	GetSubtitleStreams() []PlaySubtitleInfo
 	// GetTags wraps gst_play_media_info_get_tags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.TagList (nullable) 
 	GetTags() *gst.TagList
 	// GetTitle wraps gst_play_media_info_get_title
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetTitle() string
 	// GetURI wraps gst_play_media_info_get_uri
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	GetURI() string
 	// GetVideoStreams wraps gst_play_media_info_get_video_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []PlayVideoInfo 
 	GetVideoStreams() []PlayVideoInfo
 	// IsLive wraps gst_play_media_info_is_live
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	IsLive() bool
 	// IsSeekable wraps gst_play_media_info_is_seekable
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -2801,6 +2868,7 @@ func UnsafePlayMediaInfoToGlibFull(c PlayMediaInfo) unsafe.Pointer {
 }
 
 // GetAudioStreams wraps gst_play_media_info_get_audio_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret []PlayAudioInfo 
@@ -2828,6 +2896,7 @@ func (info *PlayMediaInfoInstance) GetAudioStreams() []PlayAudioInfo {
 }
 
 // GetContainerFormat wraps gst_play_media_info_get_container_format
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -2850,6 +2919,7 @@ func (info *PlayMediaInfoInstance) GetContainerFormat() string {
 }
 
 // GetDuration wraps gst_play_media_info_get_duration
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -2870,6 +2940,7 @@ func (info *PlayMediaInfoInstance) GetDuration() gst.ClockTime {
 }
 
 // GetImageSample wraps gst_play_media_info_get_image_sample
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Sample (nullable) 
@@ -2895,6 +2966,7 @@ func (info *PlayMediaInfoInstance) GetImageSample() *gst.Sample {
 }
 
 // GetNumberOfAudioStreams wraps gst_play_media_info_get_number_of_audio_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -2915,6 +2987,7 @@ func (info *PlayMediaInfoInstance) GetNumberOfAudioStreams() uint {
 }
 
 // GetNumberOfStreams wraps gst_play_media_info_get_number_of_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -2935,6 +3008,7 @@ func (info *PlayMediaInfoInstance) GetNumberOfStreams() uint {
 }
 
 // GetNumberOfSubtitleStreams wraps gst_play_media_info_get_number_of_subtitle_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -2955,6 +3029,7 @@ func (info *PlayMediaInfoInstance) GetNumberOfSubtitleStreams() uint {
 }
 
 // GetNumberOfVideoStreams wraps gst_play_media_info_get_number_of_video_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -2975,6 +3050,7 @@ func (info *PlayMediaInfoInstance) GetNumberOfVideoStreams() uint {
 }
 
 // GetStreamList wraps gst_play_media_info_get_stream_list
+// 
 // The function returns the following values:
 // 
 // 	- goret []PlayStreamInfo 
@@ -3002,6 +3078,7 @@ func (info *PlayMediaInfoInstance) GetStreamList() []PlayStreamInfo {
 }
 
 // GetSubtitleStreams wraps gst_play_media_info_get_subtitle_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret []PlaySubtitleInfo 
@@ -3029,6 +3106,7 @@ func (info *PlayMediaInfoInstance) GetSubtitleStreams() []PlaySubtitleInfo {
 }
 
 // GetTags wraps gst_play_media_info_get_tags
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.TagList (nullable) 
@@ -3051,6 +3129,7 @@ func (info *PlayMediaInfoInstance) GetTags() *gst.TagList {
 }
 
 // GetTitle wraps gst_play_media_info_get_title
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -3073,6 +3152,7 @@ func (info *PlayMediaInfoInstance) GetTitle() string {
 }
 
 // GetURI wraps gst_play_media_info_get_uri
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -3093,6 +3173,7 @@ func (info *PlayMediaInfoInstance) GetURI() string {
 }
 
 // GetVideoStreams wraps gst_play_media_info_get_video_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret []PlayVideoInfo 
@@ -3120,6 +3201,7 @@ func (info *PlayMediaInfoInstance) GetVideoStreams() []PlayVideoInfo {
 }
 
 // IsLive wraps gst_play_media_info_is_live
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3142,6 +3224,7 @@ func (info *PlayMediaInfoInstance) IsLive() bool {
 }
 
 // IsSeekable wraps gst_play_media_info_is_seekable
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3177,6 +3260,7 @@ type PlaySignalAdapter interface {
 	upcastToGstPlaySignalAdapter() *PlaySignalAdapterInstance
 
 	// GetPlay wraps gst_play_signal_adapter_get_play
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret Play 
@@ -3340,6 +3424,7 @@ func NewPlaySignalAdapterWithMainContext(play Play, _context *glib.MainContext) 
 }
 
 // GetPlay wraps gst_play_signal_adapter_get_play
+// 
 // The function returns the following values:
 // 
 // 	- goret Play 
@@ -3363,58 +3448,71 @@ func (adapter *PlaySignalAdapterInstance) GetPlay() Play {
 func (o *PlaySignalAdapterInstance) ConnectBuffering(fn func(PlaySignalAdapter, int)) gobject.SignalHandle {
 	return o.Connect("buffering", fn)
 }
+
 // ConnectDurationChanged connects the provided callback to the "duration-changed" signal
 func (o *PlaySignalAdapterInstance) ConnectDurationChanged(fn func(PlaySignalAdapter, uint64)) gobject.SignalHandle {
 	return o.Connect("duration-changed", fn)
 }
+
 // ConnectEndOfStream connects the provided callback to the "end-of-stream" signal
 func (o *PlaySignalAdapterInstance) ConnectEndOfStream(fn func(PlaySignalAdapter)) gobject.SignalHandle {
 	return o.Connect("end-of-stream", fn)
 }
+
 // ConnectError connects the provided callback to the "error" signal
 //
 // Emitted on errors.
 func (o *PlaySignalAdapterInstance) ConnectError(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("error", fn)
 }
+
 // ConnectMediaInfoUpdated connects the provided callback to the "media-info-updated" signal
 func (o *PlaySignalAdapterInstance) ConnectMediaInfoUpdated(fn func(PlaySignalAdapter, PlayMediaInfo)) gobject.SignalHandle {
 	return o.Connect("media-info-updated", fn)
 }
+
 // ConnectMuteChanged connects the provided callback to the "mute-changed" signal
 func (o *PlaySignalAdapterInstance) ConnectMuteChanged(fn func(PlaySignalAdapter, bool)) gobject.SignalHandle {
 	return o.Connect("mute-changed", fn)
 }
+
 // ConnectPositionUpdated connects the provided callback to the "position-updated" signal
 func (o *PlaySignalAdapterInstance) ConnectPositionUpdated(fn func(PlaySignalAdapter, uint64)) gobject.SignalHandle {
 	return o.Connect("position-updated", fn)
 }
+
 // ConnectSeekDone connects the provided callback to the "seek-done" signal
 func (o *PlaySignalAdapterInstance) ConnectSeekDone(fn func(PlaySignalAdapter, uint64)) gobject.SignalHandle {
 	return o.Connect("seek-done", fn)
 }
+
 // ConnectStateChanged connects the provided callback to the "state-changed" signal
 func (o *PlaySignalAdapterInstance) ConnectStateChanged(fn func(PlaySignalAdapter, PlayState)) gobject.SignalHandle {
 	return o.Connect("state-changed", fn)
 }
+
 // ConnectURILoaded connects the provided callback to the "uri-loaded" signal
 func (o *PlaySignalAdapterInstance) ConnectURILoaded(fn func(PlaySignalAdapter, string)) gobject.SignalHandle {
 	return o.Connect("uri-loaded", fn)
 }
+
 // ConnectVideoDimensionsChanged connects the provided callback to the "video-dimensions-changed" signal
 func (o *PlaySignalAdapterInstance) ConnectVideoDimensionsChanged(fn func(PlaySignalAdapter, uint, uint)) gobject.SignalHandle {
 	return o.Connect("video-dimensions-changed", fn)
 }
+
 // ConnectVolumeChanged connects the provided callback to the "volume-changed" signal
 func (o *PlaySignalAdapterInstance) ConnectVolumeChanged(fn func(PlaySignalAdapter, float64)) gobject.SignalHandle {
 	return o.Connect("volume-changed", fn)
 }
+
 // ConnectWarning connects the provided callback to the "warning" signal
 //
 // Emitted on warnings.
 func (o *PlaySignalAdapterInstance) ConnectWarning(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("warning", fn)
 }
+
 // PlayStreamInfoInstance is the instance type used by all types extending GstPlayStreamInfo. It is used internally by the bindings. Users should use the interface [PlayStreamInfo] instead.
 type PlayStreamInfoInstance struct {
 	_ [0]func() // equal guard
@@ -3433,11 +3531,13 @@ type PlayStreamInfo interface {
 	upcastToGstPlayStreamInfo() *PlayStreamInfoInstance
 
 	// GetCaps wraps gst_play_stream_info_get_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps (nullable) 
 	GetCaps() *gst.Caps
 	// GetCodec wraps gst_play_stream_info_get_codec
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -3445,6 +3545,7 @@ type PlayStreamInfo interface {
 	// A string describing codec used in #GstPlayStreamInfo.
 	GetCodec() string
 	// GetIndex wraps gst_play_stream_info_get_index
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
@@ -3453,6 +3554,7 @@ type PlayStreamInfo interface {
 	// unknown.
 	GetIndex() int
 	// GetStreamType wraps gst_play_stream_info_get_stream_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -3461,6 +3563,7 @@ type PlayStreamInfo interface {
 	// of the given @info (ex: "audio", "video", "subtitle")
 	GetStreamType() string
 	// GetTags wraps gst_play_stream_info_get_tags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.TagList (nullable) 
@@ -3502,6 +3605,7 @@ func UnsafePlayStreamInfoToGlibFull(c PlayStreamInfo) unsafe.Pointer {
 }
 
 // GetCaps wraps gst_play_stream_info_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps (nullable) 
@@ -3524,6 +3628,7 @@ func (info *PlayStreamInfoInstance) GetCaps() *gst.Caps {
 }
 
 // GetCodec wraps gst_play_stream_info_get_codec
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -3548,6 +3653,7 @@ func (info *PlayStreamInfoInstance) GetCodec() string {
 }
 
 // GetIndex wraps gst_play_stream_info_get_index
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -3571,6 +3677,7 @@ func (info *PlayStreamInfoInstance) GetIndex() int {
 }
 
 // GetStreamType wraps gst_play_stream_info_get_stream_type
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -3594,6 +3701,7 @@ func (info *PlayStreamInfoInstance) GetStreamType() string {
 }
 
 // GetTags wraps gst_play_stream_info_get_tags
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.TagList (nullable) 
@@ -3631,6 +3739,7 @@ type PlaySubtitleInfo interface {
 	upcastToGstPlaySubtitleInfo() *PlaySubtitleInfoInstance
 
 	// GetLanguage wraps gst_play_subtitle_info_get_language
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -3674,6 +3783,7 @@ func UnsafePlaySubtitleInfoToGlibFull(c PlaySubtitleInfo) unsafe.Pointer {
 }
 
 // GetLanguage wraps gst_play_subtitle_info_get_language
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -3711,27 +3821,32 @@ type PlayVideoInfo interface {
 	upcastToGstPlayVideoInfo() *PlayVideoInfoInstance
 
 	// GetBitrate wraps gst_play_video_info_get_bitrate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetBitrate() int
 	// GetFramerate wraps gst_play_video_info_get_framerate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- fpsN int: Numerator of frame rate 
 	// 	- fpsD int: Denominator of frame rate 
 	GetFramerate() (int, int)
 	// GetHeight wraps gst_play_video_info_get_height
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetHeight() int
 	// GetMaxBitrate wraps gst_play_video_info_get_max_bitrate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetMaxBitrate() int
 	// GetPixelAspectRatio wraps gst_play_video_info_get_pixel_aspect_ratio
+	// 
 	// The function returns the following values:
 	// 
 	// 	- parN uint: numerator 
@@ -3740,6 +3855,7 @@ type PlayVideoInfo interface {
 	// Returns the pixel aspect ratio in @par_n and @par_d
 	GetPixelAspectRatio() (uint, uint)
 	// GetWidth wraps gst_play_video_info_get_width
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
@@ -3783,6 +3899,7 @@ func UnsafePlayVideoInfoToGlibFull(c PlayVideoInfo) unsafe.Pointer {
 }
 
 // GetBitrate wraps gst_play_video_info_get_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -3803,6 +3920,7 @@ func (info *PlayVideoInfoInstance) GetBitrate() int {
 }
 
 // GetFramerate wraps gst_play_video_info_get_framerate
+// 
 // The function returns the following values:
 // 
 // 	- fpsN int: Numerator of frame rate 
@@ -3827,6 +3945,7 @@ func (info *PlayVideoInfoInstance) GetFramerate() (int, int) {
 }
 
 // GetHeight wraps gst_play_video_info_get_height
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -3847,6 +3966,7 @@ func (info *PlayVideoInfoInstance) GetHeight() int {
 }
 
 // GetMaxBitrate wraps gst_play_video_info_get_max_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -3867,6 +3987,7 @@ func (info *PlayVideoInfoInstance) GetMaxBitrate() int {
 }
 
 // GetPixelAspectRatio wraps gst_play_video_info_get_pixel_aspect_ratio
+// 
 // The function returns the following values:
 // 
 // 	- parN uint: numerator 
@@ -3893,6 +4014,7 @@ func (info *PlayVideoInfoInstance) GetPixelAspectRatio() (uint, uint) {
 }
 
 // GetWidth wraps gst_play_video_info_get_width
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -3931,6 +4053,7 @@ type PlayVideoOverlayVideoRenderer interface {
 	// in the drawable even if the pipeline is PAUSED.
 	Expose()
 	// GetRenderRectangle wraps gst_play_video_overlay_video_renderer_get_render_rectangle
+	// 
 	// The function returns the following values:
 	// 
 	// 	- x int: the horizontal offset of the render area inside the window 
@@ -4011,6 +4134,7 @@ func (self *PlayVideoOverlayVideoRendererInstance) Expose() {
 }
 
 // GetRenderRectangle wraps gst_play_video_overlay_video_renderer_get_render_rectangle
+// 
 // The function returns the following values:
 // 
 // 	- x int: the horizontal offset of the render area inside the window 
@@ -4101,26 +4225,31 @@ type PlayAudioInfo interface {
 	upcastToGstPlayAudioInfo() *PlayAudioInfoInstance
 
 	// GetBitrate wraps gst_play_audio_info_get_bitrate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetBitrate() int
 	// GetChannels wraps gst_play_audio_info_get_channels
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetChannels() int
 	// GetLanguage wraps gst_play_audio_info_get_language
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetLanguage() string
 	// GetMaxBitrate wraps gst_play_audio_info_get_max_bitrate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetMaxBitrate() int
 	// GetSampleRate wraps gst_play_audio_info_get_sample_rate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
@@ -4164,6 +4293,7 @@ func UnsafePlayAudioInfoToGlibFull(c PlayAudioInfo) unsafe.Pointer {
 }
 
 // GetBitrate wraps gst_play_audio_info_get_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -4184,6 +4314,7 @@ func (info *PlayAudioInfoInstance) GetBitrate() int {
 }
 
 // GetChannels wraps gst_play_audio_info_get_channels
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -4204,6 +4335,7 @@ func (info *PlayAudioInfoInstance) GetChannels() int {
 }
 
 // GetLanguage wraps gst_play_audio_info_get_language
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -4226,6 +4358,7 @@ func (info *PlayAudioInfoInstance) GetLanguage() string {
 }
 
 // GetMaxBitrate wraps gst_play_audio_info_get_max_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -4246,6 +4379,7 @@ func (info *PlayAudioInfoInstance) GetMaxBitrate() int {
 }
 
 // GetSampleRate wraps gst_play_audio_info_get_sample_rate
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -4266,6 +4400,8 @@ func (info *PlayAudioInfoInstance) GetSampleRate() int {
 }
 
 // PlayAudioInfoClass wraps GstPlayAudioInfoClass
+// 
+// PlayAudioInfoClass is the type struct for [PlayAudioInfo]
 type PlayAudioInfoClass struct {
 	*playAudioInfoClass
 }
@@ -4280,31 +4416,6 @@ func UnsafePlayAudioInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayAudioInfoClas
 	return &PlayAudioInfoClass{&playAudioInfoClass{(*C.GstPlayAudioInfoClass)(p)}}
 }
 
-// UnsafePlayAudioInfoClassFromGlibNone is used to convert raw C.GstPlayAudioInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayAudioInfoClassFromGlibNone(p unsafe.Pointer) *PlayAudioInfoClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePlayAudioInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playAudioInfoClass,
-		func (intern *playAudioInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePlayAudioInfoClassFromGlibFull is used to convert raw C.GstPlayAudioInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayAudioInfoClassFromGlibFull(p unsafe.Pointer) *PlayAudioInfoClass {
-	wrapped := UnsafePlayAudioInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playAudioInfoClass,
-		func (intern *playAudioInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePlayAudioInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PlayAudioInfoClass] is expected to work anymore.
@@ -4317,15 +4428,18 @@ func UnsafePlayAudioInfoClassToGlibNone(p *PlayAudioInfoClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePlayAudioInfoClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePlayAudioInfoClassToGlibFull(p *PlayAudioInfoClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.playAudioInfoClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PlayAudioInfoClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PlayAudioInfoClass) ParentClass() *PlayStreamInfoClass {
+	parent := UnsafePlayStreamInfoClassFromGlibBorrow(UnsafePlayAudioInfoClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PlayAudioInfoClass) {}, p)
+	return parent
 }
+
 // PlayClass wraps GstPlayClass
+// 
+// PlayClass is the type struct for [Play]
 type PlayClass struct {
 	*playClass
 }
@@ -4340,31 +4454,6 @@ func UnsafePlayClassFromGlibBorrow(p unsafe.Pointer) *PlayClass {
 	return &PlayClass{&playClass{(*C.GstPlayClass)(p)}}
 }
 
-// UnsafePlayClassFromGlibNone is used to convert raw C.GstPlayClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayClassFromGlibNone(p unsafe.Pointer) *PlayClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePlayClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playClass,
-		func (intern *playClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePlayClassFromGlibFull is used to convert raw C.GstPlayClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayClassFromGlibFull(p unsafe.Pointer) *PlayClass {
-	wrapped := UnsafePlayClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playClass,
-		func (intern *playClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePlayClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PlayClass] is expected to work anymore.
@@ -4377,15 +4466,18 @@ func UnsafePlayClassToGlibNone(p *PlayClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePlayClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePlayClassToGlibFull(p *PlayClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.playClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PlayClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PlayClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafePlayClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PlayClass) {}, p)
+	return parent
 }
+
 // PlayMediaInfoClass wraps GstPlayMediaInfoClass
+// 
+// PlayMediaInfoClass is the type struct for [PlayMediaInfo]
 type PlayMediaInfoClass struct {
 	*playMediaInfoClass
 }
@@ -4400,31 +4492,6 @@ func UnsafePlayMediaInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayMediaInfoClas
 	return &PlayMediaInfoClass{&playMediaInfoClass{(*C.GstPlayMediaInfoClass)(p)}}
 }
 
-// UnsafePlayMediaInfoClassFromGlibNone is used to convert raw C.GstPlayMediaInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayMediaInfoClassFromGlibNone(p unsafe.Pointer) *PlayMediaInfoClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePlayMediaInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playMediaInfoClass,
-		func (intern *playMediaInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePlayMediaInfoClassFromGlibFull is used to convert raw C.GstPlayMediaInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayMediaInfoClassFromGlibFull(p unsafe.Pointer) *PlayMediaInfoClass {
-	wrapped := UnsafePlayMediaInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playMediaInfoClass,
-		func (intern *playMediaInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePlayMediaInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PlayMediaInfoClass] is expected to work anymore.
@@ -4437,15 +4504,18 @@ func UnsafePlayMediaInfoClassToGlibNone(p *PlayMediaInfoClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePlayMediaInfoClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePlayMediaInfoClassToGlibFull(p *PlayMediaInfoClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.playMediaInfoClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PlayMediaInfoClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PlayMediaInfoClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafePlayMediaInfoClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PlayMediaInfoClass) {}, p)
+	return parent
 }
+
 // PlaySignalAdapterClass wraps GstPlaySignalAdapterClass
+// 
+// PlaySignalAdapterClass is the type struct for [PlaySignalAdapter]
 type PlaySignalAdapterClass struct {
 	*playSignalAdapterClass
 }
@@ -4460,31 +4530,6 @@ func UnsafePlaySignalAdapterClassFromGlibBorrow(p unsafe.Pointer) *PlaySignalAda
 	return &PlaySignalAdapterClass{&playSignalAdapterClass{(*C.GstPlaySignalAdapterClass)(p)}}
 }
 
-// UnsafePlaySignalAdapterClassFromGlibNone is used to convert raw C.GstPlaySignalAdapterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlaySignalAdapterClassFromGlibNone(p unsafe.Pointer) *PlaySignalAdapterClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePlaySignalAdapterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playSignalAdapterClass,
-		func (intern *playSignalAdapterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePlaySignalAdapterClassFromGlibFull is used to convert raw C.GstPlaySignalAdapterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlaySignalAdapterClassFromGlibFull(p unsafe.Pointer) *PlaySignalAdapterClass {
-	wrapped := UnsafePlaySignalAdapterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playSignalAdapterClass,
-		func (intern *playSignalAdapterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePlaySignalAdapterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PlaySignalAdapterClass] is expected to work anymore.
@@ -4497,15 +4542,18 @@ func UnsafePlaySignalAdapterClassToGlibNone(p *PlaySignalAdapterClass) unsafe.Po
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePlaySignalAdapterClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePlaySignalAdapterClassToGlibFull(p *PlaySignalAdapterClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.playSignalAdapterClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PlaySignalAdapterClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PlaySignalAdapterClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafePlaySignalAdapterClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PlaySignalAdapterClass) {}, p)
+	return parent
 }
+
 // PlayStreamInfoClass wraps GstPlayStreamInfoClass
+// 
+// PlayStreamInfoClass is the type struct for [PlayStreamInfo]
 type PlayStreamInfoClass struct {
 	*playStreamInfoClass
 }
@@ -4520,31 +4568,6 @@ func UnsafePlayStreamInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayStreamInfoCl
 	return &PlayStreamInfoClass{&playStreamInfoClass{(*C.GstPlayStreamInfoClass)(p)}}
 }
 
-// UnsafePlayStreamInfoClassFromGlibNone is used to convert raw C.GstPlayStreamInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayStreamInfoClassFromGlibNone(p unsafe.Pointer) *PlayStreamInfoClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePlayStreamInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playStreamInfoClass,
-		func (intern *playStreamInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePlayStreamInfoClassFromGlibFull is used to convert raw C.GstPlayStreamInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayStreamInfoClassFromGlibFull(p unsafe.Pointer) *PlayStreamInfoClass {
-	wrapped := UnsafePlayStreamInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playStreamInfoClass,
-		func (intern *playStreamInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePlayStreamInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PlayStreamInfoClass] is expected to work anymore.
@@ -4557,15 +4580,18 @@ func UnsafePlayStreamInfoClassToGlibNone(p *PlayStreamInfoClass) unsafe.Pointer 
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePlayStreamInfoClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePlayStreamInfoClassToGlibFull(p *PlayStreamInfoClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.playStreamInfoClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PlayStreamInfoClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PlayStreamInfoClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafePlayStreamInfoClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PlayStreamInfoClass) {}, p)
+	return parent
 }
+
 // PlaySubtitleInfoClass wraps GstPlaySubtitleInfoClass
+// 
+// PlaySubtitleInfoClass is the type struct for [PlaySubtitleInfo]
 type PlaySubtitleInfoClass struct {
 	*playSubtitleInfoClass
 }
@@ -4580,31 +4606,6 @@ func UnsafePlaySubtitleInfoClassFromGlibBorrow(p unsafe.Pointer) *PlaySubtitleIn
 	return &PlaySubtitleInfoClass{&playSubtitleInfoClass{(*C.GstPlaySubtitleInfoClass)(p)}}
 }
 
-// UnsafePlaySubtitleInfoClassFromGlibNone is used to convert raw C.GstPlaySubtitleInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlaySubtitleInfoClassFromGlibNone(p unsafe.Pointer) *PlaySubtitleInfoClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePlaySubtitleInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playSubtitleInfoClass,
-		func (intern *playSubtitleInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePlaySubtitleInfoClassFromGlibFull is used to convert raw C.GstPlaySubtitleInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlaySubtitleInfoClassFromGlibFull(p unsafe.Pointer) *PlaySubtitleInfoClass {
-	wrapped := UnsafePlaySubtitleInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playSubtitleInfoClass,
-		func (intern *playSubtitleInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePlaySubtitleInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PlaySubtitleInfoClass] is expected to work anymore.
@@ -4617,15 +4618,18 @@ func UnsafePlaySubtitleInfoClassToGlibNone(p *PlaySubtitleInfoClass) unsafe.Poin
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePlaySubtitleInfoClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePlaySubtitleInfoClassToGlibFull(p *PlaySubtitleInfoClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.playSubtitleInfoClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PlaySubtitleInfoClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PlaySubtitleInfoClass) ParentClass() *PlayStreamInfoClass {
+	parent := UnsafePlayStreamInfoClassFromGlibBorrow(UnsafePlaySubtitleInfoClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PlaySubtitleInfoClass) {}, p)
+	return parent
 }
+
 // PlayVideoInfoClass wraps GstPlayVideoInfoClass
+// 
+// PlayVideoInfoClass is the type struct for [PlayVideoInfo]
 type PlayVideoInfoClass struct {
 	*playVideoInfoClass
 }
@@ -4640,31 +4644,6 @@ func UnsafePlayVideoInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayVideoInfoClas
 	return &PlayVideoInfoClass{&playVideoInfoClass{(*C.GstPlayVideoInfoClass)(p)}}
 }
 
-// UnsafePlayVideoInfoClassFromGlibNone is used to convert raw C.GstPlayVideoInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayVideoInfoClassFromGlibNone(p unsafe.Pointer) *PlayVideoInfoClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePlayVideoInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playVideoInfoClass,
-		func (intern *playVideoInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePlayVideoInfoClassFromGlibFull is used to convert raw C.GstPlayVideoInfoClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayVideoInfoClassFromGlibFull(p unsafe.Pointer) *PlayVideoInfoClass {
-	wrapped := UnsafePlayVideoInfoClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playVideoInfoClass,
-		func (intern *playVideoInfoClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePlayVideoInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PlayVideoInfoClass] is expected to work anymore.
@@ -4677,15 +4656,18 @@ func UnsafePlayVideoInfoClassToGlibNone(p *PlayVideoInfoClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePlayVideoInfoClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePlayVideoInfoClassToGlibFull(p *PlayVideoInfoClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.playVideoInfoClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PlayVideoInfoClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PlayVideoInfoClass) ParentClass() *PlayStreamInfoClass {
+	parent := UnsafePlayStreamInfoClassFromGlibBorrow(UnsafePlayVideoInfoClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PlayVideoInfoClass) {}, p)
+	return parent
 }
+
 // PlayVideoOverlayVideoRendererClass wraps GstPlayVideoOverlayVideoRendererClass
+// 
+// PlayVideoOverlayVideoRendererClass is the type struct for [PlayVideoOverlayVideoRenderer]
 type PlayVideoOverlayVideoRendererClass struct {
 	*playVideoOverlayVideoRendererClass
 }
@@ -4700,31 +4682,6 @@ func UnsafePlayVideoOverlayVideoRendererClassFromGlibBorrow(p unsafe.Pointer) *P
 	return &PlayVideoOverlayVideoRendererClass{&playVideoOverlayVideoRendererClass{(*C.GstPlayVideoOverlayVideoRendererClass)(p)}}
 }
 
-// UnsafePlayVideoOverlayVideoRendererClassFromGlibNone is used to convert raw C.GstPlayVideoOverlayVideoRendererClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayVideoOverlayVideoRendererClassFromGlibNone(p unsafe.Pointer) *PlayVideoOverlayVideoRendererClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePlayVideoOverlayVideoRendererClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playVideoOverlayVideoRendererClass,
-		func (intern *playVideoOverlayVideoRendererClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePlayVideoOverlayVideoRendererClassFromGlibFull is used to convert raw C.GstPlayVideoOverlayVideoRendererClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePlayVideoOverlayVideoRendererClassFromGlibFull(p unsafe.Pointer) *PlayVideoOverlayVideoRendererClass {
-	wrapped := UnsafePlayVideoOverlayVideoRendererClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.playVideoOverlayVideoRendererClass,
-		func (intern *playVideoOverlayVideoRendererClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePlayVideoOverlayVideoRendererClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PlayVideoOverlayVideoRendererClass] is expected to work anymore.
@@ -4737,14 +4694,15 @@ func UnsafePlayVideoOverlayVideoRendererClassToGlibNone(p *PlayVideoOverlayVideo
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePlayVideoOverlayVideoRendererClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePlayVideoOverlayVideoRendererClassToGlibFull(p *PlayVideoOverlayVideoRendererClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.playVideoOverlayVideoRendererClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PlayVideoOverlayVideoRendererClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PlayVideoOverlayVideoRendererClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafePlayVideoOverlayVideoRendererClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PlayVideoOverlayVideoRendererClass) {}, p)
+	return parent
 }
+
 // PlayVideoRendererInterface wraps GstPlayVideoRendererInterface
 type PlayVideoRendererInterface struct {
 	*playVideoRendererInterface
@@ -4760,7 +4718,7 @@ func UnsafePlayVideoRendererInterfaceFromGlibBorrow(p unsafe.Pointer) *PlayVideo
 	return &PlayVideoRendererInterface{&playVideoRendererInterface{(*C.GstPlayVideoRendererInterface)(p)}}
 }
 
-// UnsafePlayVideoRendererInterfaceFromGlibNone is used to convert raw C.GstPlayVideoRendererInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePlayVideoRendererInterfaceFromGlibNone is used to convert raw C.GstPlayVideoRendererInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayVideoRendererInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePlayVideoRendererInterfaceFromGlibBorrow(p)
@@ -4773,7 +4731,7 @@ func UnsafePlayVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayVideoRe
 	return wrapped
 }
 
-// UnsafePlayVideoRendererInterfaceFromGlibFull is used to convert raw C.GstPlayVideoRendererInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePlayVideoRendererInterfaceFromGlibFull is used to convert raw C.GstPlayVideoRendererInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePlayVideoRendererInterfaceFromGlibFull(p unsafe.Pointer) *PlayVideoRendererInterface {
 	wrapped := UnsafePlayVideoRendererInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -4805,6 +4763,7 @@ func UnsafePlayVideoRendererInterfaceToGlibFull(p *PlayVideoRendererInterface) u
 	p.native = nil // PlayVideoRendererInterface is invalid from here on
 	return _p
 }
+
 // PlayVisualization wraps GstPlayVisualization
 //
 // A #GstPlayVisualization descriptor.
@@ -4834,7 +4793,7 @@ func UnsafePlayVisualizationFromGlibBorrow(p unsafe.Pointer) *PlayVisualization 
 	return &PlayVisualization{&playVisualization{(*C.GstPlayVisualization)(p)}}
 }
 
-// UnsafePlayVisualizationFromGlibNone is used to convert raw C.GstPlayVisualization pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePlayVisualizationFromGlibNone is used to convert raw C.GstPlayVisualization pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayVisualizationFromGlibNone(p unsafe.Pointer) *PlayVisualization {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePlayVisualizationFromGlibBorrow(p)
@@ -4847,7 +4806,7 @@ func UnsafePlayVisualizationFromGlibNone(p unsafe.Pointer) *PlayVisualization {
 	return wrapped
 }
 
-// UnsafePlayVisualizationFromGlibFull is used to convert raw C.GstPlayVisualization pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePlayVisualizationFromGlibFull is used to convert raw C.GstPlayVisualization pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePlayVisualizationFromGlibFull(p unsafe.Pointer) *PlayVisualization {
 	wrapped := UnsafePlayVisualizationFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -4879,7 +4838,9 @@ func UnsafePlayVisualizationToGlibFull(p *PlayVisualization) unsafe.Pointer {
 	p.native = nil // PlayVisualization is invalid from here on
 	return _p
 }
+
 // Copy wraps gst_play_visualization_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *PlayVisualization 

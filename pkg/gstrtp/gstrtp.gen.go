@@ -17,6 +17,82 @@ import (
 // #cgo pkg-config: gstreamer-rtp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/rtp/rtp.h>
+// extern gboolean _gotk4_gstrtp1_RTPBaseDepayload_handle_event(GstRTPBaseDepayload*, GstEvent*);
+// extern gboolean _gotk4_gstrtp1_RTPBaseDepayload_packet_lost(GstRTPBaseDepayload*, GstEvent*);
+// extern GstBuffer* _gotk4_gstrtp1_RTPBaseDepayload_process(GstRTPBaseDepayload*, GstBuffer*);
+// extern GstBuffer* _gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet(GstRTPBaseDepayload*, GstRTPBuffer*);
+// extern gboolean _gotk4_gstrtp1_RTPBaseDepayload_set_caps(GstRTPBaseDepayload*, GstCaps*);
+// gboolean _gotk4_gstrtp1_RTPBaseDepayload_virtual_handle_event(void* fnptr, GstRTPBaseDepayload* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstRTPBaseDepayload*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstrtp1_RTPBaseDepayload_virtual_packet_lost(void* fnptr, GstRTPBaseDepayload* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstRTPBaseDepayload*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// GstBuffer* _gotk4_gstrtp1_RTPBaseDepayload_virtual_process(void* fnptr, GstRTPBaseDepayload* carg0, GstBuffer* carg1) {
+// 	return ((GstBuffer* (*) (GstRTPBaseDepayload*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// GstBuffer* _gotk4_gstrtp1_RTPBaseDepayload_virtual_process_rtp_packet(void* fnptr, GstRTPBaseDepayload* carg0, GstRTPBuffer* carg1) {
+// 	return ((GstBuffer* (*) (GstRTPBaseDepayload*, GstRTPBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstrtp1_RTPBaseDepayload_virtual_set_caps(void* fnptr, GstRTPBaseDepayload* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstRTPBaseDepayload*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// extern GstCaps* _gotk4_gstrtp1_RTPBasePayload_get_caps(GstRTPBasePayload*, GstPad*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstrtp1_RTPBasePayload_handle_buffer(GstRTPBasePayload*, GstBuffer*);
+// extern gboolean _gotk4_gstrtp1_RTPBasePayload_query(GstRTPBasePayload*, GstPad*, GstQuery*);
+// extern gboolean _gotk4_gstrtp1_RTPBasePayload_set_caps(GstRTPBasePayload*, GstCaps*);
+// extern gboolean _gotk4_gstrtp1_RTPBasePayload_sink_event(GstRTPBasePayload*, GstEvent*);
+// extern gboolean _gotk4_gstrtp1_RTPBasePayload_src_event(GstRTPBasePayload*, GstEvent*);
+// GstCaps* _gotk4_gstrtp1_RTPBasePayload_virtual_get_caps(void* fnptr, GstRTPBasePayload* carg0, GstPad* carg1, GstCaps* carg2) {
+// 	return ((GstCaps* (*) (GstRTPBasePayload*, GstPad*, GstCaps*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstFlowReturn _gotk4_gstrtp1_RTPBasePayload_virtual_handle_buffer(void* fnptr, GstRTPBasePayload* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstRTPBasePayload*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstrtp1_RTPBasePayload_virtual_query(void* fnptr, GstRTPBasePayload* carg0, GstPad* carg1, GstQuery* carg2) {
+// 	return ((gboolean (*) (GstRTPBasePayload*, GstPad*, GstQuery*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstrtp1_RTPBasePayload_virtual_set_caps(void* fnptr, GstRTPBasePayload* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstRTPBasePayload*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstrtp1_RTPBasePayload_virtual_sink_event(void* fnptr, GstRTPBasePayload* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstRTPBasePayload*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstrtp1_RTPBasePayload_virtual_src_event(void* fnptr, GstRTPBasePayload* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstRTPBasePayload*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// extern gsize _gotk4_gstrtp1_RTPHeaderExtension_get_max_size(GstRTPHeaderExtension*, GstBuffer*);
+// extern GstRTPHeaderExtensionFlags _gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags(GstRTPHeaderExtension*);
+// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_read(GstRTPHeaderExtension*, GstRTPHeaderExtensionFlags, const guint8*, gsize, GstBuffer*);
+// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_set_attributes(GstRTPHeaderExtension*, GstRTPHeaderExtensionDirection, gchar*);
+// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes(GstRTPHeaderExtension*, GstCaps*);
+// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps(GstRTPHeaderExtension*, GstCaps*);
+// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps(GstRTPHeaderExtension*, GstCaps*);
+// extern gssize _gotk4_gstrtp1_RTPHeaderExtension_write(GstRTPHeaderExtension*, GstBuffer*, GstRTPHeaderExtensionFlags, GstBuffer*, guint8*, gsize);
+// gsize _gotk4_gstrtp1_RTPHeaderExtension_virtual_get_max_size(void* fnptr, GstRTPHeaderExtension* carg0, GstBuffer* carg1) {
+// 	return ((gsize (*) (GstRTPHeaderExtension*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// GstRTPHeaderExtensionFlags _gotk4_gstrtp1_RTPHeaderExtension_virtual_get_supported_flags(void* fnptr, GstRTPHeaderExtension* carg0) {
+// 	return ((GstRTPHeaderExtensionFlags (*) (GstRTPHeaderExtension*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_read(void* fnptr, GstRTPHeaderExtension* carg0, GstRTPHeaderExtensionFlags carg1, const guint8* carg2, gsize carg3, GstBuffer* carg4) {
+// 	return ((gboolean (*) (GstRTPHeaderExtension*, GstRTPHeaderExtensionFlags, const guint8*, gsize, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// }
+// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_set_attributes(void* fnptr, GstRTPHeaderExtension* carg0, GstRTPHeaderExtensionDirection carg1, gchar* carg2) {
+// 	return ((gboolean (*) (GstRTPHeaderExtension*, GstRTPHeaderExtensionDirection, gchar*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_set_caps_from_attributes(void* fnptr, GstRTPHeaderExtension* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstRTPHeaderExtension*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_set_non_rtp_sink_caps(void* fnptr, GstRTPHeaderExtension* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstRTPHeaderExtension*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_update_non_rtp_src_caps(void* fnptr, GstRTPHeaderExtension* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstRTPHeaderExtension*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gssize _gotk4_gstrtp1_RTPHeaderExtension_virtual_write(void* fnptr, GstRTPHeaderExtension* carg0, GstBuffer* carg1, GstRTPHeaderExtensionFlags carg2, GstBuffer* carg3, guint8* carg4, gsize carg5) {
+// 	return ((gssize (*) (GstRTPHeaderExtension*, GstBuffer*, GstRTPHeaderExtensionFlags, GstBuffer*, guint8*, gsize))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5);
+// }
 import "C"
 
 // GType values.
@@ -1080,6 +1156,7 @@ func RtcpUnixToNtp(unixtime uint64) uint64 {
 }
 
 // RtpGetHeaderExtensionList wraps gst_rtp_get_header_extension_list
+// 
 // The function returns the following values:
 // 
 // 	- goret []gst.ElementFactory 
@@ -1107,6 +1184,7 @@ func RtpGetHeaderExtensionList() []gst.ElementFactory {
 }
 
 // RtpSourceMetaApiGetType wraps gst_rtp_source_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -1223,6 +1301,7 @@ type RTPBaseDepayload interface {
 	// Must be called with the stream lock held.
 	Flush(bool)
 	// IsAggregateHdrextEnabled wraps gst_rtp_base_depayload_is_aggregate_hdrext_enabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -1230,6 +1309,7 @@ type RTPBaseDepayload interface {
 	// Queries whether header extensions will be aggregated per depayloaded buffers.
 	IsAggregateHdrextEnabled() bool
 	// IsSourceInfoEnabled wraps gst_rtp_base_depayload_is_source_info_enabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -1420,6 +1500,7 @@ func (depayload *RTPBaseDepayloadInstance) Flush(keepCurrent bool) {
 }
 
 // IsAggregateHdrextEnabled wraps gst_rtp_base_depayload_is_aggregate_hdrext_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -1444,6 +1525,7 @@ func (depayload *RTPBaseDepayloadInstance) IsAggregateHdrextEnabled() bool {
 }
 
 // IsSourceInfoEnabled wraps gst_rtp_base_depayload_is_source_info_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -1581,12 +1663,14 @@ func (depayload *RTPBaseDepayloadInstance) SetSourceInfoEnabled(enable bool) {
 func (o *RTPBaseDepayloadInstance) EmitAddExtension(arg0 RTPHeaderExtension) {
 	o.Emit("add-extension", arg0)
 }
+
 // EmitClearExtensions emits the "clear-extensions" signal
 //
 // Clear all RTP header extensions used by this depayloader.
 func (o *RTPBaseDepayloadInstance) EmitClearExtensions() {
 	o.Emit("clear-extensions")
 }
+
 // ConnectRequestExtension connects the provided callback to the "request-extension" signal
 //
 // The returned @ext must be configured with the correct @ext_id and with the
@@ -1594,6 +1678,88 @@ func (o *RTPBaseDepayloadInstance) EmitClearExtensions() {
 func (o *RTPBaseDepayloadInstance) ConnectRequestExtension(fn func(RTPBaseDepayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle {
 	return o.Connect("request-extension", fn)
 }
+
+// RTPBaseDepayloadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type RTPBaseDepayloadOverrides[Instance RTPBaseDepayload] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// HandleEvent allows you to override the implementation of the virtual method handle_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	HandleEvent func(Instance, *gst.Event) bool
+	// PacketLost allows you to override the implementation of the virtual method packet_lost.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	PacketLost func(Instance, *gst.Event) bool
+	// Process allows you to override the implementation of the virtual method process.
+	// The function takes the following parameters:
+	// 
+	// 	- in *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	Process func(Instance, *gst.Buffer) *gst.Buffer
+	// ProcessRtpPacket allows you to override the implementation of the virtual method process_rtp_packet.
+	// The function takes the following parameters:
+	// 
+	// 	- rtpBuffer *RTPBuffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	ProcessRtpPacket func(Instance, *RTPBuffer) *gst.Buffer
+	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetCaps func(Instance, *gst.Caps) bool
+}
+
+// UnsafeApplyRTPBaseDepayloadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsafe.Pointer, overrides RTPBaseDepayloadOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstRTPBaseDepayloadClass)(gclass)
+
+	if overrides.HandleEvent != nil {
+		pclass.handle_event = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_handle_event)
+	}
+
+	if overrides.PacketLost != nil {
+		pclass.packet_lost = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_packet_lost)
+	}
+
+	if overrides.Process != nil {
+		pclass.process = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_process)
+	}
+
+	if overrides.ProcessRtpPacket != nil {
+		pclass.process_rtp_packet = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet)
+	}
+
+	if overrides.SetCaps != nil {
+		pclass.set_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_set_caps)
+	}
+}
+
 // RTPBasePayloadInstance is the instance type used by all types extending GstRTPBasePayload. It is used internally by the bindings. Users should use the interface [RTPBasePayload] instead.
 type RTPBasePayloadInstance struct {
 	_ [0]func() // equal guard
@@ -1655,6 +1821,7 @@ type RTPBasePayload interface {
 	// maximum size.
 	IsFilled(uint, gst.ClockTime) bool
 	// IsSourceInfoEnabled wraps gst_rtp_base_payload_is_source_info_enabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -1893,6 +2060,7 @@ func (payload *RTPBasePayloadInstance) IsFilled(size uint, duration gst.ClockTim
 }
 
 // IsSourceInfoEnabled wraps gst_rtp_base_payload_is_source_info_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2083,12 +2251,14 @@ func (payload *RTPBasePayloadInstance) SetSourceInfoEnabled(enable bool) {
 func (o *RTPBasePayloadInstance) EmitAddExtension(arg0 RTPHeaderExtension) {
 	o.Emit("add-extension", arg0)
 }
+
 // EmitClearExtensions emits the "clear-extensions" signal
 //
 // Clear all RTP header extensions used by this payloader.
 func (o *RTPBasePayloadInstance) EmitClearExtensions() {
 	o.Emit("clear-extensions")
 }
+
 // ConnectRequestExtension connects the provided callback to the "request-extension" signal
 //
 // The returned @ext must be configured with the correct @ext_id and with the
@@ -2096,6 +2266,103 @@ func (o *RTPBasePayloadInstance) EmitClearExtensions() {
 func (o *RTPBasePayloadInstance) ConnectRequestExtension(fn func(RTPBasePayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle {
 	return o.Connect("request-extension", fn)
 }
+
+// RTPBasePayloadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type RTPBasePayloadOverrides[Instance RTPBasePayload] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// GetCaps allows you to override the implementation of the virtual method get_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- pad gst.Pad 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	GetCaps func(Instance, gst.Pad, *gst.Caps) *gst.Caps
+	// HandleBuffer allows you to override the implementation of the virtual method handle_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	HandleBuffer func(Instance, *gst.Buffer) gst.FlowReturn
+	// Query allows you to override the implementation of the virtual method query.
+	// The function takes the following parameters:
+	// 
+	// 	- pad gst.Pad 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Query func(Instance, gst.Pad, *gst.Query) bool
+	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetCaps func(Instance, *gst.Caps) bool
+	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkEvent func(Instance, *gst.Event) bool
+	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcEvent func(Instance, *gst.Event) bool
+}
+
+// UnsafeApplyRTPBasePayloadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.Pointer, overrides RTPBasePayloadOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstRTPBasePayloadClass)(gclass)
+
+	if overrides.GetCaps != nil {
+		pclass.get_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_get_caps)
+	}
+
+	if overrides.HandleBuffer != nil {
+		pclass.handle_buffer = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_handle_buffer)
+	}
+
+	if overrides.Query != nil {
+		pclass.query = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_query)
+	}
+
+	if overrides.SetCaps != nil {
+		pclass.set_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_set_caps)
+	}
+
+	if overrides.SinkEvent != nil {
+		pclass.sink_event = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_sink_event)
+	}
+
+	if overrides.SrcEvent != nil {
+		pclass.src_event = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_src_event)
+	}
+}
+
 // RTPHeaderExtensionInstance is the instance type used by all types extending GstRTPHeaderExtension. It is used internally by the bindings. Users should use the interface [RTPHeaderExtension] instead.
 type RTPHeaderExtensionInstance struct {
 	_ [0]func() // equal guard
@@ -2112,6 +2379,7 @@ type RTPHeaderExtension interface {
 	upcastToGstRTPHeaderExtension() *RTPHeaderExtensionInstance
 
 	// GetDirection wraps gst_rtp_header_extension_get_direction
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret RTPHeaderExtensionDirection 
@@ -2119,6 +2387,7 @@ type RTPHeaderExtension interface {
 	// Retrieve the direction
 	GetDirection() RTPHeaderExtensionDirection
 	// GetID wraps gst_rtp_header_extension_get_id
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -2141,16 +2410,19 @@ type RTPHeaderExtension interface {
 	// information given in the input @buffer.
 	GetMaxSize(*gst.Buffer) uint
 	// GetSdpCapsFieldName wraps gst_rtp_header_extension_get_sdp_caps_field_name
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	GetSdpCapsFieldName() string
 	// GetSupportedFlags wraps gst_rtp_header_extension_get_supported_flags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret RTPHeaderExtensionFlags 
 	GetSupportedFlags() RTPHeaderExtensionFlags
 	// GetURI wraps gst_rtp_header_extension_get_uri
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -2279,6 +2551,7 @@ type RTPHeaderExtension interface {
 	// @caps must be writable as this function may modify them.
 	UpdateNonRtpSrcCaps(*gst.Caps) bool
 	// WantsUpdateNonRtpSrcCaps wraps gst_rtp_header_extension_wants_update_non_rtp_src_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -2376,6 +2649,7 @@ func RTPHeaderExtensionCreateFromURI(uri string) RTPHeaderExtension {
 }
 
 // GetDirection wraps gst_rtp_header_extension_get_direction
+// 
 // The function returns the following values:
 // 
 // 	- goret RTPHeaderExtensionDirection 
@@ -2398,6 +2672,7 @@ func (ext *RTPHeaderExtensionInstance) GetDirection() RTPHeaderExtensionDirectio
 }
 
 // GetID wraps gst_rtp_header_extension_get_id
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -2453,6 +2728,7 @@ func (ext *RTPHeaderExtensionInstance) GetMaxSize(inputMeta *gst.Buffer) uint {
 }
 
 // GetSdpCapsFieldName wraps gst_rtp_header_extension_get_sdp_caps_field_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -2474,6 +2750,7 @@ func (ext *RTPHeaderExtensionInstance) GetSdpCapsFieldName() string {
 }
 
 // GetSupportedFlags wraps gst_rtp_header_extension_get_supported_flags
+// 
 // The function returns the following values:
 // 
 // 	- goret RTPHeaderExtensionFlags 
@@ -2494,6 +2771,7 @@ func (ext *RTPHeaderExtensionInstance) GetSupportedFlags() RTPHeaderExtensionFla
 }
 
 // GetURI wraps gst_rtp_header_extension_get_uri
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -2808,6 +3086,7 @@ func (ext *RTPHeaderExtensionInstance) UpdateNonRtpSrcCaps(caps *gst.Caps) bool 
 }
 
 // WantsUpdateNonRtpSrcCaps wraps gst_rtp_header_extension_wants_update_non_rtp_src_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2882,6 +3161,130 @@ func (ext *RTPHeaderExtensionInstance) Write(inputMeta *gst.Buffer, writeFlags R
 	return goret
 }
 
+// RTPHeaderExtensionOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type RTPHeaderExtensionOverrides[Instance RTPHeaderExtension] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// GetMaxSize allows you to override the implementation of the virtual method get_max_size.
+	// The function takes the following parameters:
+	// 
+	// 	- inputMeta *gst.Buffer: a #GstBuffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	GetMaxSize func(Instance, *gst.Buffer) uint
+	// GetSupportedFlags allows you to override the implementation of the virtual method get_supported_flags.
+	// The function returns the following values:
+	// 
+	// 	- goret RTPHeaderExtensionFlags 
+	GetSupportedFlags func(Instance) RTPHeaderExtensionFlags
+	// Read allows you to override the implementation of the virtual method read.
+	// The function takes the following parameters:
+	// 
+	// 	- readFlags RTPHeaderExtensionFlags: #GstRTPHeaderExtensionFlags for how the extension should
+	//               be written 
+	// 	- data []uint8: location to read the rtp header extension from 
+	// 	- buffer *gst.Buffer: a #GstBuffer to modify if necessary 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Read func(Instance, RTPHeaderExtensionFlags, []uint8, *gst.Buffer) bool
+	// SetAttributes allows you to override the implementation of the virtual method set_attributes.
+	// The function takes the following parameters:
+	// 
+	// 	- direction RTPHeaderExtensionDirection 
+	// 	- attributes string 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetAttributes func(Instance, RTPHeaderExtensionDirection, string) bool
+	// SetCapsFromAttributes allows you to override the implementation of the virtual method set_caps_from_attributes.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: writable #GstCaps to modify 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetCapsFromAttributes func(Instance, *gst.Caps) bool
+	// SetNonRtpSinkCaps allows you to override the implementation of the virtual method set_non_rtp_sink_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: sink #GstCaps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetNonRtpSinkCaps func(Instance, *gst.Caps) bool
+	// UpdateNonRtpSrcCaps allows you to override the implementation of the virtual method update_non_rtp_src_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: src #GstCaps to modify 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	UpdateNonRtpSrcCaps func(Instance, *gst.Caps) bool
+	// Write allows you to override the implementation of the virtual method write.
+	// The function takes the following parameters:
+	// 
+	// 	- inputMeta *gst.Buffer: the input #GstBuffer to read information from if necessary 
+	// 	- writeFlags RTPHeaderExtensionFlags: #GstRTPHeaderExtensionFlags for how the extension should
+	//               be written 
+	// 	- output *gst.Buffer: output RTP #GstBuffer 
+	// 	- data []uint8: location to write the rtp header extension into 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret int 
+	Write func(Instance, *gst.Buffer, RTPHeaderExtensionFlags, *gst.Buffer, []uint8) int
+}
+
+// UnsafeApplyRTPHeaderExtensionOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass unsafe.Pointer, overrides RTPHeaderExtensionOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstRTPHeaderExtensionClass)(gclass)
+
+	if overrides.GetMaxSize != nil {
+		pclass.get_max_size = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_get_max_size)
+	}
+
+	if overrides.GetSupportedFlags != nil {
+		pclass.get_supported_flags = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags)
+	}
+
+	if overrides.Read != nil {
+		pclass.read = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_read)
+	}
+
+	if overrides.SetAttributes != nil {
+		pclass.set_attributes = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_set_attributes)
+	}
+
+	if overrides.SetCapsFromAttributes != nil {
+		pclass.set_caps_from_attributes = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes)
+	}
+
+	if overrides.SetNonRtpSinkCaps != nil {
+		pclass.set_non_rtp_sink_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps)
+	}
+
+	if overrides.UpdateNonRtpSrcCaps != nil {
+		pclass.update_non_rtp_src_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps)
+	}
+
+	if overrides.Write != nil {
+		pclass.write = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_write)
+	}
+}
+
 // RTPBaseAudioPayloadInstance is the instance type used by all types extending GstRTPBaseAudioPayload. It is used internally by the bindings. Users should use the interface [RTPBaseAudioPayload] instead.
 type RTPBaseAudioPayloadInstance struct {
 	_ [0]func() // equal guard
@@ -2943,6 +3346,7 @@ type RTPBaseAudioPayload interface {
 	// -1, the timestamp will be calculated automatically.
 	Flush(uint, gst.ClockTime) gst.FlowReturn
 	// GetAdapter wraps gst_rtp_base_audio_payload_get_adapter
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gstbase.Adapter 
@@ -3083,6 +3487,7 @@ func (baseaudiopayload *RTPBaseAudioPayloadInstance) Flush(payloadLen uint, time
 }
 
 // GetAdapter wraps gst_rtp_base_audio_payload_get_adapter
+// 
 // The function returns the following values:
 // 
 // 	- goret gstbase.Adapter 
@@ -3231,6 +3636,20 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSamplebitsOptions(sam
 	runtime.KeepAlive(sampleSize)
 }
 
+// RTPBaseAudioPayloadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type RTPBaseAudioPayloadOverrides[Instance RTPBaseAudioPayload] struct {
+	// RTPBasePayloadOverrides allows you to override virtual methods from the parent class RTPBasePayload
+	RTPBasePayloadOverrides[Instance]
+
+}
+
+// UnsafeApplyRTPBaseAudioPayloadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyRTPBaseAudioPayloadOverrides[Instance RTPBaseAudioPayload](gclass unsafe.Pointer, overrides RTPBaseAudioPayloadOverrides[Instance]) {
+	UnsafeApplyRTPBasePayloadOverrides(gclass, overrides.RTPBasePayloadOverrides)
+}
+
 // RTCPBuffer wraps GstRTCPBuffer
 //
 // Note: The API in this module is not yet declared stable.
@@ -3257,7 +3676,7 @@ func UnsafeRTCPBufferFromGlibBorrow(p unsafe.Pointer) *RTCPBuffer {
 	return &RTCPBuffer{&rtcpBuffer{(*C.GstRTCPBuffer)(p)}}
 }
 
-// UnsafeRTCPBufferFromGlibNone is used to convert raw C.GstRTCPBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTCPBufferFromGlibNone is used to convert raw C.GstRTCPBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTCPBufferFromGlibNone(p unsafe.Pointer) *RTCPBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTCPBufferFromGlibBorrow(p)
@@ -3270,7 +3689,7 @@ func UnsafeRTCPBufferFromGlibNone(p unsafe.Pointer) *RTCPBuffer {
 	return wrapped
 }
 
-// UnsafeRTCPBufferFromGlibFull is used to convert raw C.GstRTCPBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTCPBufferFromGlibFull is used to convert raw C.GstRTCPBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTCPBufferFromGlibFull(p unsafe.Pointer) *RTCPBuffer {
 	wrapped := UnsafeRTCPBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -3302,6 +3721,7 @@ func UnsafeRTCPBufferToGlibFull(r *RTCPBuffer) unsafe.Pointer {
 	r.native = nil // RTCPBuffer is invalid from here on
 	return _p
 }
+
 // RTCPBufferMap wraps gst_rtcp_buffer_map
 // 
 // The function takes the following parameters:
@@ -3574,6 +3994,7 @@ func (rtcp *RTCPBuffer) GetFirstPacket(packet *RTCPPacket) bool {
 }
 
 // GetPacketCount wraps gst_rtcp_buffer_get_packet_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -3596,6 +4017,7 @@ func (rtcp *RTCPBuffer) GetPacketCount() uint {
 }
 
 // Unmap wraps gst_rtcp_buffer_unmap
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3641,7 +4063,7 @@ func UnsafeRTCPPacketFromGlibBorrow(p unsafe.Pointer) *RTCPPacket {
 	return &RTCPPacket{&rtcpPacket{(*C.GstRTCPPacket)(p)}}
 }
 
-// UnsafeRTCPPacketFromGlibNone is used to convert raw C.GstRTCPPacket pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTCPPacketFromGlibNone is used to convert raw C.GstRTCPPacket pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTCPPacketFromGlibNone(p unsafe.Pointer) *RTCPPacket {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTCPPacketFromGlibBorrow(p)
@@ -3654,7 +4076,7 @@ func UnsafeRTCPPacketFromGlibNone(p unsafe.Pointer) *RTCPPacket {
 	return wrapped
 }
 
-// UnsafeRTCPPacketFromGlibFull is used to convert raw C.GstRTCPPacket pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTCPPacketFromGlibFull is used to convert raw C.GstRTCPPacket pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTCPPacketFromGlibFull(p unsafe.Pointer) *RTCPPacket {
 	wrapped := UnsafeRTCPPacketFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -3686,6 +4108,7 @@ func UnsafeRTCPPacketToGlibFull(r *RTCPPacket) unsafe.Pointer {
 	r.native = nil // RTCPPacket is invalid from here on
 	return _p
 }
+
 // AddProfileSpecificExt wraps gst_rtcp_packet_add_profile_specific_ext
 // 
 // The function takes the following parameters:
@@ -3781,6 +4204,7 @@ func (packet *RTCPPacket) AddRb(ssrc uint32, fractionlost uint8, packetslost int
 }
 
 // AppGetData wraps gst_rtcp_packet_app_get_data
+// 
 // The function returns the following values:
 // 
 // 	- goret *uint8 
@@ -3805,6 +4229,7 @@ func (packet *RTCPPacket) AppGetData() *uint8 {
 }
 
 // AppGetDataLength wraps gst_rtcp_packet_app_get_data_length
+// 
 // The function returns the following values:
 // 
 // 	- goret uint16 
@@ -3828,6 +4253,7 @@ func (packet *RTCPPacket) AppGetDataLength() uint16 {
 }
 
 // AppGetName wraps gst_rtcp_packet_app_get_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -3850,6 +4276,7 @@ func (packet *RTCPPacket) AppGetName() string {
 }
 
 // AppGetSsrc wraps gst_rtcp_packet_app_get_ssrc
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -3872,6 +4299,7 @@ func (packet *RTCPPacket) AppGetSsrc() uint32 {
 }
 
 // AppGetSubtype wraps gst_rtcp_packet_app_get_subtype
+// 
 // The function returns the following values:
 // 
 // 	- goret uint8 
@@ -4083,6 +4511,7 @@ func (packet *RTCPPacket) ByeGetNthSsrc(nth uint) uint32 {
 }
 
 // ByeGetReason wraps gst_rtcp_packet_bye_get_reason
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -4108,6 +4537,7 @@ func (packet *RTCPPacket) ByeGetReason() string {
 }
 
 // ByeGetReasonLen wraps gst_rtcp_packet_bye_get_reason_len
+// 
 // The function returns the following values:
 // 
 // 	- goret uint8 
@@ -4130,6 +4560,7 @@ func (packet *RTCPPacket) ByeGetReasonLen() uint8 {
 }
 
 // ByeGetSsrcCount wraps gst_rtcp_packet_bye_get_ssrc_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -4185,6 +4616,7 @@ func (packet *RTCPPacket) ByeSetReason(reason string) bool {
 }
 
 // FbGetFci wraps gst_rtcp_packet_fb_get_fci
+// 
 // The function returns the following values:
 // 
 // 	- goret *uint8 
@@ -4209,6 +4641,7 @@ func (packet *RTCPPacket) FbGetFci() *uint8 {
 }
 
 // FbGetFciLength wraps gst_rtcp_packet_fb_get_fci_length
+// 
 // The function returns the following values:
 // 
 // 	- goret uint16 
@@ -4232,6 +4665,7 @@ func (packet *RTCPPacket) FbGetFciLength() uint16 {
 }
 
 // FbGetMediaSsrc wraps gst_rtcp_packet_fb_get_media_ssrc
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -4254,6 +4688,7 @@ func (packet *RTCPPacket) FbGetMediaSsrc() uint32 {
 }
 
 // FbGetSenderSsrc wraps gst_rtcp_packet_fb_get_sender_ssrc
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -4276,6 +4711,7 @@ func (packet *RTCPPacket) FbGetSenderSsrc() uint32 {
 }
 
 // FbGetType wraps gst_rtcp_packet_fb_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret RTCPFBType 
@@ -4388,6 +4824,7 @@ func (packet *RTCPPacket) FbSetType(typ RTCPFBType) {
 }
 
 // GetCount wraps gst_rtcp_packet_get_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint8 
@@ -4410,6 +4847,7 @@ func (packet *RTCPPacket) GetCount() uint8 {
 }
 
 // GetLength wraps gst_rtcp_packet_get_length
+// 
 // The function returns the following values:
 // 
 // 	- goret uint16 
@@ -4433,6 +4871,7 @@ func (packet *RTCPPacket) GetLength() uint16 {
 }
 
 // GetPadding wraps gst_rtcp_packet_get_padding
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4457,6 +4896,7 @@ func (packet *RTCPPacket) GetPadding() bool {
 }
 
 // GetProfileSpecificExtLength wraps gst_rtcp_packet_get_profile_specific_ext_length
+// 
 // The function returns the following values:
 // 
 // 	- goret uint16 
@@ -4532,6 +4972,7 @@ func (packet *RTCPPacket) GetRb(nth uint) (uint32, uint8, int32, uint32, uint32,
 }
 
 // GetRbCount wraps gst_rtcp_packet_get_rb_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -4554,6 +4995,7 @@ func (packet *RTCPPacket) GetRbCount() uint {
 }
 
 // GetType wraps gst_rtcp_packet_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret RTCPType 
@@ -4576,6 +5018,7 @@ func (packet *RTCPPacket) GetType() RTCPType {
 }
 
 // MoveToNext wraps gst_rtcp_packet_move_to_next
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4601,6 +5044,7 @@ func (packet *RTCPPacket) MoveToNext() bool {
 }
 
 // Remove wraps gst_rtcp_packet_remove
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4625,6 +5069,7 @@ func (packet *RTCPPacket) Remove() bool {
 }
 
 // RrGetSsrc wraps gst_rtcp_packet_rr_get_ssrc
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -4738,6 +5183,7 @@ func (packet *RTCPPacket) SdesAddItem(ssrc uint32) bool {
 }
 
 // SdesFirstEntry wraps gst_rtcp_packet_sdes_first_entry
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4762,6 +5208,7 @@ func (packet *RTCPPacket) SdesFirstEntry() bool {
 }
 
 // SdesFirstItem wraps gst_rtcp_packet_sdes_first_item
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4786,6 +5233,7 @@ func (packet *RTCPPacket) SdesFirstItem() bool {
 }
 
 // SdesGetItemCount wraps gst_rtcp_packet_sdes_get_item_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -4808,6 +5256,7 @@ func (packet *RTCPPacket) SdesGetItemCount() uint {
 }
 
 // SdesGetSsrc wraps gst_rtcp_packet_sdes_get_ssrc
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -4830,6 +5279,7 @@ func (packet *RTCPPacket) SdesGetSsrc() uint32 {
 }
 
 // SdesNextEntry wraps gst_rtcp_packet_sdes_next_entry
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4854,6 +5304,7 @@ func (packet *RTCPPacket) SdesNextEntry() bool {
 }
 
 // SdesNextItem wraps gst_rtcp_packet_sdes_next_item
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4927,6 +5378,7 @@ func (packet *RTCPPacket) SetRb(nth uint, ssrc uint32, fractionlost uint8, packe
 }
 
 // SrGetSenderInfo wraps gst_rtcp_packet_sr_get_sender_info
+// 
 // The function returns the following values:
 // 
 // 	- ssrc uint32: result SSRC 
@@ -5000,6 +5452,7 @@ func (packet *RTCPPacket) SrSetSenderInfo(ssrc uint32, ntptime uint64, rtptime u
 }
 
 // XRFirstRb wraps gst_rtcp_packet_xr_first_rb
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5024,6 +5477,7 @@ func (packet *RTCPPacket) XRFirstRb() bool {
 }
 
 // XRGetBlockLength wraps gst_rtcp_packet_xr_get_block_length
+// 
 // The function returns the following values:
 // 
 // 	- goret uint16 
@@ -5044,6 +5498,7 @@ func (packet *RTCPPacket) XRGetBlockLength() uint16 {
 }
 
 // XRGetBlockType wraps gst_rtcp_packet_xr_get_block_type
+// 
 // The function returns the following values:
 // 
 // 	- goret RTCPXRType 
@@ -5334,6 +5789,7 @@ func (packet *RTCPPacket) XRGetRrt(timestamp *uint64) bool {
 }
 
 // XRGetSsrc wraps gst_rtcp_packet_xr_get_ssrc
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -5894,6 +6350,7 @@ func (packet *RTCPPacket) XRGetVoipSignalMetrics(signalLevel *uint8, noiseLevel 
 }
 
 // XRNextRb wraps gst_rtcp_packet_xr_next_rb
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5920,6 +6377,8 @@ func (packet *RTCPPacket) XRNextRb() bool {
 // RTPBaseAudioPayloadClass wraps GstRTPBaseAudioPayloadClass
 //
 // Base class for audio RTP payloader.
+// 
+// RTPBaseAudioPayloadClass is the type struct for [RTPBaseAudioPayload]
 type RTPBaseAudioPayloadClass struct {
 	*rtpBaseAudioPayloadClass
 }
@@ -5934,31 +6393,6 @@ func UnsafeRTPBaseAudioPayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBaseAudi
 	return &RTPBaseAudioPayloadClass{&rtpBaseAudioPayloadClass{(*C.GstRTPBaseAudioPayloadClass)(p)}}
 }
 
-// UnsafeRTPBaseAudioPayloadClassFromGlibNone is used to convert raw C.GstRTPBaseAudioPayloadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRTPBaseAudioPayloadClassFromGlibNone(p unsafe.Pointer) *RTPBaseAudioPayloadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeRTPBaseAudioPayloadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.rtpBaseAudioPayloadClass,
-		func (intern *rtpBaseAudioPayloadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeRTPBaseAudioPayloadClassFromGlibFull is used to convert raw C.GstRTPBaseAudioPayloadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRTPBaseAudioPayloadClassFromGlibFull(p unsafe.Pointer) *RTPBaseAudioPayloadClass {
-	wrapped := UnsafeRTPBaseAudioPayloadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.rtpBaseAudioPayloadClass,
-		func (intern *rtpBaseAudioPayloadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeRTPBaseAudioPayloadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [RTPBaseAudioPayloadClass] is expected to work anymore.
@@ -5971,17 +6405,20 @@ func UnsafeRTPBaseAudioPayloadClassToGlibNone(r *RTPBaseAudioPayloadClass) unsaf
 	return unsafe.Pointer(r.native)
 }
 
-// UnsafeRTPBaseAudioPayloadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeRTPBaseAudioPayloadClassToGlibFull(r *RTPBaseAudioPayloadClass) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtpBaseAudioPayloadClass, nil)
-	_p := unsafe.Pointer(r.native)
-	r.native = nil // RTPBaseAudioPayloadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (r *RTPBaseAudioPayloadClass) ParentClass() *RTPBasePayloadClass {
+	parent := UnsafeRTPBasePayloadClassFromGlibBorrow(UnsafeRTPBaseAudioPayloadClassToGlibNone(r))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *RTPBaseAudioPayloadClass) {}, r)
+	return parent
 }
+
 // RTPBaseDepayloadClass wraps GstRTPBaseDepayloadClass
 //
 // Base class for RTP depayloaders.
+// 
+// RTPBaseDepayloadClass is the type struct for [RTPBaseDepayload]
 type RTPBaseDepayloadClass struct {
 	*rtpBaseDepayloadClass
 }
@@ -5996,31 +6433,6 @@ func UnsafeRTPBaseDepayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBaseDepaylo
 	return &RTPBaseDepayloadClass{&rtpBaseDepayloadClass{(*C.GstRTPBaseDepayloadClass)(p)}}
 }
 
-// UnsafeRTPBaseDepayloadClassFromGlibNone is used to convert raw C.GstRTPBaseDepayloadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRTPBaseDepayloadClassFromGlibNone(p unsafe.Pointer) *RTPBaseDepayloadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeRTPBaseDepayloadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.rtpBaseDepayloadClass,
-		func (intern *rtpBaseDepayloadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeRTPBaseDepayloadClassFromGlibFull is used to convert raw C.GstRTPBaseDepayloadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRTPBaseDepayloadClassFromGlibFull(p unsafe.Pointer) *RTPBaseDepayloadClass {
-	wrapped := UnsafeRTPBaseDepayloadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.rtpBaseDepayloadClass,
-		func (intern *rtpBaseDepayloadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeRTPBaseDepayloadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [RTPBaseDepayloadClass] is expected to work anymore.
@@ -6033,17 +6445,20 @@ func UnsafeRTPBaseDepayloadClassToGlibNone(r *RTPBaseDepayloadClass) unsafe.Poin
 	return unsafe.Pointer(r.native)
 }
 
-// UnsafeRTPBaseDepayloadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeRTPBaseDepayloadClassToGlibFull(r *RTPBaseDepayloadClass) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtpBaseDepayloadClass, nil)
-	_p := unsafe.Pointer(r.native)
-	r.native = nil // RTPBaseDepayloadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (r *RTPBaseDepayloadClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeRTPBaseDepayloadClassToGlibNone(r))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *RTPBaseDepayloadClass) {}, r)
+	return parent
 }
+
 // RTPBasePayloadClass wraps GstRTPBasePayloadClass
 //
 // Base class for audio RTP payloader.
+// 
+// RTPBasePayloadClass is the type struct for [RTPBasePayload]
 type RTPBasePayloadClass struct {
 	*rtpBasePayloadClass
 }
@@ -6058,31 +6473,6 @@ func UnsafeRTPBasePayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBasePayloadCl
 	return &RTPBasePayloadClass{&rtpBasePayloadClass{(*C.GstRTPBasePayloadClass)(p)}}
 }
 
-// UnsafeRTPBasePayloadClassFromGlibNone is used to convert raw C.GstRTPBasePayloadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRTPBasePayloadClassFromGlibNone(p unsafe.Pointer) *RTPBasePayloadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeRTPBasePayloadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.rtpBasePayloadClass,
-		func (intern *rtpBasePayloadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeRTPBasePayloadClassFromGlibFull is used to convert raw C.GstRTPBasePayloadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRTPBasePayloadClassFromGlibFull(p unsafe.Pointer) *RTPBasePayloadClass {
-	wrapped := UnsafeRTPBasePayloadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.rtpBasePayloadClass,
-		func (intern *rtpBasePayloadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeRTPBasePayloadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [RTPBasePayloadClass] is expected to work anymore.
@@ -6095,14 +6485,15 @@ func UnsafeRTPBasePayloadClassToGlibNone(r *RTPBasePayloadClass) unsafe.Pointer 
 	return unsafe.Pointer(r.native)
 }
 
-// UnsafeRTPBasePayloadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeRTPBasePayloadClassToGlibFull(r *RTPBasePayloadClass) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtpBasePayloadClass, nil)
-	_p := unsafe.Pointer(r.native)
-	r.native = nil // RTPBasePayloadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (r *RTPBasePayloadClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeRTPBasePayloadClassToGlibNone(r))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *RTPBasePayloadClass) {}, r)
+	return parent
 }
+
 // RTPBuffer wraps GstRTPBuffer
 //
 // The GstRTPBuffer helper functions makes it easy to parse and create regular
@@ -6122,7 +6513,7 @@ func UnsafeRTPBufferFromGlibBorrow(p unsafe.Pointer) *RTPBuffer {
 	return &RTPBuffer{&rtpBuffer{(*C.GstRTPBuffer)(p)}}
 }
 
-// UnsafeRTPBufferFromGlibNone is used to convert raw C.GstRTPBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTPBufferFromGlibNone is used to convert raw C.GstRTPBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTPBufferFromGlibNone(p unsafe.Pointer) *RTPBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTPBufferFromGlibBorrow(p)
@@ -6135,7 +6526,7 @@ func UnsafeRTPBufferFromGlibNone(p unsafe.Pointer) *RTPBuffer {
 	return wrapped
 }
 
-// UnsafeRTPBufferFromGlibFull is used to convert raw C.GstRTPBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTPBufferFromGlibFull is used to convert raw C.GstRTPBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTPBufferFromGlibFull(p unsafe.Pointer) *RTPBuffer {
 	wrapped := UnsafeRTPBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -6167,6 +6558,7 @@ func UnsafeRTPBufferToGlibFull(r *RTPBuffer) unsafe.Pointer {
 	r.native = nil // RTPBuffer is invalid from here on
 	return _p
 }
+
 // RTPBufferAllocateData wraps gst_rtp_buffer_allocate_data
 // 
 // The function takes the following parameters:
@@ -6503,6 +6895,7 @@ func (rtp *RTPBuffer) GetCsrc(idx uint8) uint32 {
 }
 
 // GetCsrcCount wraps gst_rtp_buffer_get_csrc_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint8 
@@ -6525,6 +6918,7 @@ func (rtp *RTPBuffer) GetCsrcCount() uint8 {
 }
 
 // GetExtension wraps gst_rtp_buffer_get_extension
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6549,6 +6943,7 @@ func (rtp *RTPBuffer) GetExtension() bool {
 }
 
 // GetExtensionBytes wraps gst_rtp_buffer_get_extension_bytes
+// 
 // The function returns the following values:
 // 
 // 	- bits uint16: location for header bits 
@@ -6584,6 +6979,7 @@ func (rtp *RTPBuffer) GetExtensionBytes() (uint16, *glib.Bytes) {
 }
 
 // GetHeaderLen wraps gst_rtp_buffer_get_header_len
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -6607,6 +7003,7 @@ func (rtp *RTPBuffer) GetHeaderLen() uint {
 }
 
 // GetMarker wraps gst_rtp_buffer_get_marker
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6631,6 +7028,7 @@ func (rtp *RTPBuffer) GetMarker() bool {
 }
 
 // GetPacketLen wraps gst_rtp_buffer_get_packet_len
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -6653,6 +7051,7 @@ func (rtp *RTPBuffer) GetPacketLen() uint {
 }
 
 // GetPadding wraps gst_rtp_buffer_get_padding
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6677,6 +7076,7 @@ func (rtp *RTPBuffer) GetPadding() bool {
 }
 
 // GetPayloadBuffer wraps gst_rtp_buffer_get_payload_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer 
@@ -6701,6 +7101,7 @@ func (rtp *RTPBuffer) GetPayloadBuffer() *gst.Buffer {
 }
 
 // GetPayloadBytes wraps gst_rtp_buffer_get_payload_bytes
+// 
 // The function returns the following values:
 // 
 // 	- goret *glib.Bytes (nullable) 
@@ -6727,6 +7128,7 @@ func (rtp *RTPBuffer) GetPayloadBytes() *glib.Bytes {
 }
 
 // GetPayloadLen wraps gst_rtp_buffer_get_payload_len
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -6785,6 +7187,7 @@ func (rtp *RTPBuffer) GetPayloadSubbuffer(offset uint, len uint) *gst.Buffer {
 }
 
 // GetPayloadType wraps gst_rtp_buffer_get_payload_type
+// 
 // The function returns the following values:
 // 
 // 	- goret uint8 
@@ -6807,6 +7210,7 @@ func (rtp *RTPBuffer) GetPayloadType() uint8 {
 }
 
 // GetSeq wraps gst_rtp_buffer_get_seq
+// 
 // The function returns the following values:
 // 
 // 	- goret uint16 
@@ -6829,6 +7233,7 @@ func (rtp *RTPBuffer) GetSeq() uint16 {
 }
 
 // GetSsrc wraps gst_rtp_buffer_get_ssrc
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -6851,6 +7256,7 @@ func (rtp *RTPBuffer) GetSsrc() uint32 {
 }
 
 // GetTimestamp wraps gst_rtp_buffer_get_timestamp
+// 
 // The function returns the following values:
 // 
 // 	- goret uint32 
@@ -6873,6 +7279,7 @@ func (rtp *RTPBuffer) GetTimestamp() uint32 {
 }
 
 // GetVersion wraps gst_rtp_buffer_get_version
+// 
 // The function returns the following values:
 // 
 // 	- goret uint8 
@@ -7190,6 +7597,8 @@ func (rtp *RTPBuffer) Unmap() {
 // RTPHeaderExtensionClass wraps GstRTPHeaderExtensionClass
 //
 // Base class for RTP Header extensions.
+// 
+// RTPHeaderExtensionClass is the type struct for [RTPHeaderExtension]
 type RTPHeaderExtensionClass struct {
 	*rtpHeaderExtensionClass
 }
@@ -7204,31 +7613,6 @@ func UnsafeRTPHeaderExtensionClassFromGlibBorrow(p unsafe.Pointer) *RTPHeaderExt
 	return &RTPHeaderExtensionClass{&rtpHeaderExtensionClass{(*C.GstRTPHeaderExtensionClass)(p)}}
 }
 
-// UnsafeRTPHeaderExtensionClassFromGlibNone is used to convert raw C.GstRTPHeaderExtensionClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRTPHeaderExtensionClassFromGlibNone(p unsafe.Pointer) *RTPHeaderExtensionClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeRTPHeaderExtensionClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.rtpHeaderExtensionClass,
-		func (intern *rtpHeaderExtensionClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeRTPHeaderExtensionClassFromGlibFull is used to convert raw C.GstRTPHeaderExtensionClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeRTPHeaderExtensionClassFromGlibFull(p unsafe.Pointer) *RTPHeaderExtensionClass {
-	wrapped := UnsafeRTPHeaderExtensionClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.rtpHeaderExtensionClass,
-		func (intern *rtpHeaderExtensionClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeRTPHeaderExtensionClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [RTPHeaderExtensionClass] is expected to work anymore.
@@ -7241,14 +7625,15 @@ func UnsafeRTPHeaderExtensionClassToGlibNone(r *RTPHeaderExtensionClass) unsafe.
 	return unsafe.Pointer(r.native)
 }
 
-// UnsafeRTPHeaderExtensionClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeRTPHeaderExtensionClassToGlibFull(r *RTPHeaderExtensionClass) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtpHeaderExtensionClass, nil)
-	_p := unsafe.Pointer(r.native)
-	r.native = nil // RTPHeaderExtensionClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (r *RTPHeaderExtensionClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeRTPHeaderExtensionClassToGlibNone(r))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *RTPHeaderExtensionClass) {}, r)
+	return parent
 }
+
 // SetURI wraps gst_rtp_header_extension_class_set_uri
 // 
 // The function takes the following parameters:
@@ -7286,7 +7671,7 @@ func UnsafeRTPPayloadInfoFromGlibBorrow(p unsafe.Pointer) *RTPPayloadInfo {
 	return &RTPPayloadInfo{&rtpPayloadInfo{(*C.GstRTPPayloadInfo)(p)}}
 }
 
-// UnsafeRTPPayloadInfoFromGlibNone is used to convert raw C.GstRTPPayloadInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTPPayloadInfoFromGlibNone is used to convert raw C.GstRTPPayloadInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTPPayloadInfoFromGlibNone(p unsafe.Pointer) *RTPPayloadInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTPPayloadInfoFromGlibBorrow(p)
@@ -7299,7 +7684,7 @@ func UnsafeRTPPayloadInfoFromGlibNone(p unsafe.Pointer) *RTPPayloadInfo {
 	return wrapped
 }
 
-// UnsafeRTPPayloadInfoFromGlibFull is used to convert raw C.GstRTPPayloadInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTPPayloadInfoFromGlibFull is used to convert raw C.GstRTPPayloadInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTPPayloadInfoFromGlibFull(p unsafe.Pointer) *RTPPayloadInfo {
 	wrapped := UnsafeRTPPayloadInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -7331,6 +7716,7 @@ func UnsafeRTPPayloadInfoToGlibFull(r *RTPPayloadInfo) unsafe.Pointer {
 	r.native = nil // RTPPayloadInfo is invalid from here on
 	return _p
 }
+
 // RTPPayloadInfoForName wraps gst_rtp_payload_info_for_name
 // 
 // The function takes the following parameters:
@@ -7418,7 +7804,7 @@ func UnsafeRTPSourceMetaFromGlibBorrow(p unsafe.Pointer) *RTPSourceMeta {
 	return &RTPSourceMeta{&rtpSourceMeta{(*C.GstRTPSourceMeta)(p)}}
 }
 
-// UnsafeRTPSourceMetaFromGlibNone is used to convert raw C.GstRTPSourceMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTPSourceMetaFromGlibNone is used to convert raw C.GstRTPSourceMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTPSourceMetaFromGlibNone(p unsafe.Pointer) *RTPSourceMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTPSourceMetaFromGlibBorrow(p)
@@ -7431,7 +7817,7 @@ func UnsafeRTPSourceMetaFromGlibNone(p unsafe.Pointer) *RTPSourceMeta {
 	return wrapped
 }
 
-// UnsafeRTPSourceMetaFromGlibFull is used to convert raw C.GstRTPSourceMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTPSourceMetaFromGlibFull is used to convert raw C.GstRTPSourceMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTPSourceMetaFromGlibFull(p unsafe.Pointer) *RTPSourceMeta {
 	wrapped := UnsafeRTPSourceMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -7463,7 +7849,9 @@ func UnsafeRTPSourceMetaToGlibFull(r *RTPSourceMeta) unsafe.Pointer {
 	r.native = nil // RTPSourceMeta is invalid from here on
 	return _p
 }
+
 // RTPSourceMetaGetInfo wraps gst_rtp_source_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -7516,6 +7904,7 @@ func (meta *RTPSourceMeta) AppendCsrc(csrc []uint32) bool {
 }
 
 // GetSourceCount wraps gst_rtp_source_meta_get_source_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 

@@ -16,6 +16,22 @@ import (
 // #cgo pkg-config: gstreamer-tag-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/tag/tag.h>
+// extern gboolean _gotk4_gsttag1_TagDemux_identify_tag(GstTagDemux*, GstBuffer*, gboolean, guint*);
+// extern GstTagList* _gotk4_gsttag1_TagDemux_merge_tags(GstTagDemux*, GstTagList*, GstTagList*);
+// gboolean _gotk4_gsttag1_TagDemux_virtual_identify_tag(void* fnptr, GstTagDemux* carg0, GstBuffer* carg1, gboolean carg2, guint* carg3) {
+// 	return ((gboolean (*) (GstTagDemux*, GstBuffer*, gboolean, guint*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// GstTagList* _gotk4_gsttag1_TagDemux_virtual_merge_tags(void* fnptr, GstTagDemux* carg0, GstTagList* carg1, GstTagList* carg2) {
+// 	return ((GstTagList* (*) (GstTagDemux*, GstTagList*, GstTagList*))(fnptr))(carg0, carg1, carg2);
+// }
+// extern GstBuffer* _gotk4_gsttag1_TagMux_render_end_tag(GstTagMux*, GstTagList*);
+// extern GstBuffer* _gotk4_gsttag1_TagMux_render_start_tag(GstTagMux*, GstTagList*);
+// GstBuffer* _gotk4_gsttag1_TagMux_virtual_render_end_tag(void* fnptr, GstTagMux* carg0, GstTagList* carg1) {
+// 	return ((GstBuffer* (*) (GstTagMux*, GstTagList*))(fnptr))(carg0, carg1);
+// }
+// GstBuffer* _gotk4_gsttag1_TagMux_virtual_render_start_tag(void* fnptr, GstTagMux* carg0, GstTagList* carg1) {
+// 	return ((GstBuffer* (*) (GstTagMux*, GstTagList*))(fnptr))(carg0, carg1);
+// }
 import "C"
 
 // GType values.
@@ -678,6 +694,7 @@ func TagGetLanguageCodeISO6392T(langCode string) string {
 }
 
 // TagGetLanguageCodes wraps gst_tag_get_language_codes
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -930,6 +947,7 @@ func TagGetLicenseVersion(licenseRef string) string {
 }
 
 // TagGetLicenses wraps gst_tag_get_licenses
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -953,6 +971,7 @@ func TagGetLicenses() []string {
 }
 
 // TagID3GenreCount wraps gst_tag_id3_genre_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -1677,6 +1696,7 @@ func TagToVorbisTag(gstTag string) string {
 }
 
 // TagXmpListSchemas wraps gst_tag_xmp_list_schemas
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -1970,6 +1990,16 @@ func (config *TagXmpWriterInstance) TagListToXmpBuffer(taglist *gst.TagList, rea
 	return goret
 }
 
+// TagXmpWriterOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TagXmpWriterOverrides[Instance TagXmpWriter] struct {
+}
+
+// UnsafeApplyTagXmpWriterOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTagXmpWriterOverrides[Instance TagXmpWriter](gclass unsafe.Pointer, overrides TagXmpWriterOverrides[Instance]) {
+}
+
 // TagDemuxInstance is the instance type used by all types extending GstTagDemux. It is used internally by the bindings. Users should use the interface [TagDemux] instead.
 type TagDemuxInstance struct {
 	_ [0]func() // equal guard
@@ -2054,6 +2084,51 @@ func UnsafeTagDemuxToGlibFull(c TagDemux) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// TagDemuxOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TagDemuxOverrides[Instance TagDemux] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// IdentifyTag allows you to override the implementation of the virtual method identify_tag.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 	- startTag bool 
+	// 	- tagSize *uint 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	IdentifyTag func(Instance, *gst.Buffer, bool, *uint) bool
+	// MergeTags allows you to override the implementation of the virtual method merge_tags.
+	// The function takes the following parameters:
+	// 
+	// 	- startTags *gst.TagList 
+	// 	- endTags *gst.TagList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.TagList 
+	MergeTags func(Instance, *gst.TagList, *gst.TagList) *gst.TagList
+}
+
+// UnsafeApplyTagDemuxOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, overrides TagDemuxOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstTagDemuxClass)(gclass)
+
+	if overrides.IdentifyTag != nil {
+		pclass.identify_tag = (*[0]byte)(C._gotk4_gsttag1_TagDemux_identify_tag)
+	}
+
+	if overrides.MergeTags != nil {
+		pclass.merge_tags = (*[0]byte)(C._gotk4_gsttag1_TagDemux_merge_tags)
+	}
+}
+
 // TagMuxInstance is the instance type used by all types extending GstTagMux. It is used internally by the bindings. Users should use the interface [TagMux] instead.
 type TagMuxInstance struct {
 	_ [0]func() // equal guard
@@ -2129,10 +2204,54 @@ func UnsafeTagMuxToGlibFull(c TagMux) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// TagMuxOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TagMuxOverrides[Instance TagMux] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// RenderEndTag allows you to override the implementation of the virtual method render_end_tag.
+	// The function takes the following parameters:
+	// 
+	// 	- tagList *gst.TagList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	RenderEndTag func(Instance, *gst.TagList) *gst.Buffer
+	// RenderStartTag allows you to override the implementation of the virtual method render_start_tag.
+	// The function takes the following parameters:
+	// 
+	// 	- tagList *gst.TagList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	RenderStartTag func(Instance, *gst.TagList) *gst.Buffer
+}
+
+// UnsafeApplyTagMuxOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, overrides TagMuxOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstTagMuxClass)(gclass)
+
+	if overrides.RenderEndTag != nil {
+		pclass.render_end_tag = (*[0]byte)(C._gotk4_gsttag1_TagMux_render_end_tag)
+	}
+
+	if overrides.RenderStartTag != nil {
+		pclass.render_start_tag = (*[0]byte)(C._gotk4_gsttag1_TagMux_render_start_tag)
+	}
+}
+
 // TagDemuxClass wraps GstTagDemuxClass
 //
 // The #GstTagDemuxClass structure.  See documentation at beginning of section
 // for details about what subclasses need to override and do.
+// 
+// TagDemuxClass is the type struct for [TagDemux]
 type TagDemuxClass struct {
 	*tagDemuxClass
 }
@@ -2147,31 +2266,6 @@ func UnsafeTagDemuxClassFromGlibBorrow(p unsafe.Pointer) *TagDemuxClass {
 	return &TagDemuxClass{&tagDemuxClass{(*C.GstTagDemuxClass)(p)}}
 }
 
-// UnsafeTagDemuxClassFromGlibNone is used to convert raw C.GstTagDemuxClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTagDemuxClassFromGlibNone(p unsafe.Pointer) *TagDemuxClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTagDemuxClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tagDemuxClass,
-		func (intern *tagDemuxClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTagDemuxClassFromGlibFull is used to convert raw C.GstTagDemuxClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTagDemuxClassFromGlibFull(p unsafe.Pointer) *TagDemuxClass {
-	wrapped := UnsafeTagDemuxClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tagDemuxClass,
-		func (intern *tagDemuxClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTagDemuxClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TagDemuxClass] is expected to work anymore.
@@ -2184,18 +2278,21 @@ func UnsafeTagDemuxClassToGlibNone(t *TagDemuxClass) unsafe.Pointer {
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTagDemuxClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTagDemuxClassToGlibFull(t *TagDemuxClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.tagDemuxClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TagDemuxClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TagDemuxClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeTagDemuxClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TagDemuxClass) {}, t)
+	return parent
 }
+
 // TagMuxClass wraps GstTagMuxClass
 //
 // The #GstTagMuxClass structure. Subclasses need to override at least one
 // of the two render vfuncs.
+// 
+// TagMuxClass is the type struct for [TagMux]
 type TagMuxClass struct {
 	*tagMuxClass
 }
@@ -2210,31 +2307,6 @@ func UnsafeTagMuxClassFromGlibBorrow(p unsafe.Pointer) *TagMuxClass {
 	return &TagMuxClass{&tagMuxClass{(*C.GstTagMuxClass)(p)}}
 }
 
-// UnsafeTagMuxClassFromGlibNone is used to convert raw C.GstTagMuxClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTagMuxClassFromGlibNone(p unsafe.Pointer) *TagMuxClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTagMuxClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tagMuxClass,
-		func (intern *tagMuxClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTagMuxClassFromGlibFull is used to convert raw C.GstTagMuxClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTagMuxClassFromGlibFull(p unsafe.Pointer) *TagMuxClass {
-	wrapped := UnsafeTagMuxClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.tagMuxClass,
-		func (intern *tagMuxClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTagMuxClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TagMuxClass] is expected to work anymore.
@@ -2247,14 +2319,15 @@ func UnsafeTagMuxClassToGlibNone(t *TagMuxClass) unsafe.Pointer {
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTagMuxClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTagMuxClassToGlibFull(t *TagMuxClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.tagMuxClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TagMuxClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TagMuxClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeTagMuxClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TagMuxClass) {}, t)
+	return parent
 }
+
 // TagXmpWriterInterface wraps GstTagXmpWriterInterface
 type TagXmpWriterInterface struct {
 	*tagXmpWriterInterface
@@ -2270,7 +2343,7 @@ func UnsafeTagXmpWriterInterfaceFromGlibBorrow(p unsafe.Pointer) *TagXmpWriterIn
 	return &TagXmpWriterInterface{&tagXmpWriterInterface{(*C.GstTagXmpWriterInterface)(p)}}
 }
 
-// UnsafeTagXmpWriterInterfaceFromGlibNone is used to convert raw C.GstTagXmpWriterInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTagXmpWriterInterfaceFromGlibNone is used to convert raw C.GstTagXmpWriterInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTagXmpWriterInterfaceFromGlibNone(p unsafe.Pointer) *TagXmpWriterInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTagXmpWriterInterfaceFromGlibBorrow(p)
@@ -2283,7 +2356,7 @@ func UnsafeTagXmpWriterInterfaceFromGlibNone(p unsafe.Pointer) *TagXmpWriterInte
 	return wrapped
 }
 
-// UnsafeTagXmpWriterInterfaceFromGlibFull is used to convert raw C.GstTagXmpWriterInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeTagXmpWriterInterfaceFromGlibFull is used to convert raw C.GstTagXmpWriterInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTagXmpWriterInterfaceFromGlibFull(p unsafe.Pointer) *TagXmpWriterInterface {
 	wrapped := UnsafeTagXmpWriterInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -2315,3 +2388,4 @@ func UnsafeTagXmpWriterInterfaceToGlibFull(t *TagXmpWriterInterface) unsafe.Poin
 	t.native = nil // TagXmpWriterInterface is invalid from here on
 	return _p
 }
+

@@ -267,6 +267,20 @@ func NewARGBControlBinding(object gst.Object, propertyName string, csA gst.Contr
 	return goret
 }
 
+// ARGBControlBindingOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ARGBControlBindingOverrides[Instance ARGBControlBinding] struct {
+	// gst.ControlBindingOverrides allows you to override virtual methods from the parent class gst.ControlBinding
+	gst.ControlBindingOverrides[Instance]
+
+}
+
+// UnsafeApplyARGBControlBindingOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyARGBControlBindingOverrides[Instance ARGBControlBinding](gclass unsafe.Pointer, overrides ARGBControlBindingOverrides[Instance]) {
+	gst.UnsafeApplyControlBindingOverrides(gclass, overrides.ControlBindingOverrides)
+}
+
 // DirectControlBindingInstance is the instance type used by all types extending GstDirectControlBinding. It is used internally by the bindings. Users should use the interface [DirectControlBinding] instead.
 type DirectControlBindingInstance struct {
 	_ [0]func() // equal guard
@@ -404,6 +418,20 @@ func NewDirectControlBindingAbsolute(object gst.Object, propertyName string, cs 
 	return goret
 }
 
+// DirectControlBindingOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type DirectControlBindingOverrides[Instance DirectControlBinding] struct {
+	// gst.ControlBindingOverrides allows you to override virtual methods from the parent class gst.ControlBinding
+	gst.ControlBindingOverrides[Instance]
+
+}
+
+// UnsafeApplyDirectControlBindingOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyDirectControlBindingOverrides[Instance DirectControlBinding](gclass unsafe.Pointer, overrides DirectControlBindingOverrides[Instance]) {
+	gst.UnsafeApplyControlBindingOverrides(gclass, overrides.ControlBindingOverrides)
+}
+
 // LFOControlSourceInstance is the instance type used by all types extending GstLFOControlSource. It is used internally by the bindings. Users should use the interface [LFOControlSource] instead.
 type LFOControlSourceInstance struct {
 	_ [0]func() // equal guard
@@ -468,6 +496,7 @@ func UnsafeLFOControlSourceToGlibFull(c LFOControlSource) unsafe.Pointer {
 }
 
 // NewLFOControlSource wraps gst_lfo_control_source_new
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ControlSource 
@@ -483,6 +512,20 @@ func NewLFOControlSource() gst.ControlSource {
 	goret = gst.UnsafeControlSourceFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
+}
+
+// LFOControlSourceOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type LFOControlSourceOverrides[Instance LFOControlSource] struct {
+	// gst.ControlSourceOverrides allows you to override virtual methods from the parent class gst.ControlSource
+	gst.ControlSourceOverrides[Instance]
+
+}
+
+// UnsafeApplyLFOControlSourceOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyLFOControlSourceOverrides[Instance LFOControlSource](gclass unsafe.Pointer, overrides LFOControlSourceOverrides[Instance]) {
+	gst.UnsafeApplyControlSourceOverrides(gclass, overrides.ControlSourceOverrides)
 }
 
 // ProxyControlBindingInstance is the instance type used by all types extending GstProxyControlBinding. It is used internally by the bindings. Users should use the interface [ProxyControlBinding] instead.
@@ -585,6 +628,20 @@ func NewProxyControlBinding(object gst.Object, propertyName string, refObject gs
 	return goret
 }
 
+// ProxyControlBindingOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ProxyControlBindingOverrides[Instance ProxyControlBinding] struct {
+	// gst.ControlBindingOverrides allows you to override virtual methods from the parent class gst.ControlBinding
+	gst.ControlBindingOverrides[Instance]
+
+}
+
+// UnsafeApplyProxyControlBindingOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyProxyControlBindingOverrides[Instance ProxyControlBinding](gclass unsafe.Pointer, overrides ProxyControlBindingOverrides[Instance]) {
+	gst.UnsafeApplyControlBindingOverrides(gclass, overrides.ControlBindingOverrides)
+}
+
 // TimedValueControlSourceInstance is the instance type used by all types extending GstTimedValueControlSource. It is used internally by the bindings. Users should use the interface [TimedValueControlSource] instead.
 type TimedValueControlSourceInstance struct {
 	_ [0]func() // equal guard
@@ -622,6 +679,7 @@ type TimedValueControlSource interface {
 	// For use in control source implementations.
 	FindControlPointIter(gst.ClockTime) *glib.SequenceIter
 	// GetAll wraps gst_timed_value_control_source_get_all
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []*gst.TimedValue 
@@ -630,6 +688,7 @@ type TimedValueControlSource interface {
 	// Free the list after done with it.
 	GetAll() []*gst.TimedValue
 	// GetCount wraps gst_timed_value_control_source_get_count
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
@@ -757,6 +816,7 @@ func (self *TimedValueControlSourceInstance) FindControlPointIter(timestamp gst.
 }
 
 // GetAll wraps gst_timed_value_control_source_get_all
+// 
 // The function returns the following values:
 // 
 // 	- goret []*gst.TimedValue 
@@ -787,6 +847,7 @@ func (self *TimedValueControlSourceInstance) GetAll() []*gst.TimedValue {
 }
 
 // GetCount wraps gst_timed_value_control_source_get_count
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -895,18 +956,35 @@ func (self *TimedValueControlSourceInstance) UnsetAll() {
 func (o *TimedValueControlSourceInstance) ConnectValueAdded(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
 	return o.Connect("value-added", fn)
 }
+
 // ConnectValueChanged connects the provided callback to the "value-changed" signal
 //
 // Emitted right after the new value has been set on @timed_signals
 func (o *TimedValueControlSourceInstance) ConnectValueChanged(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
 	return o.Connect("value-changed", fn)
 }
+
 // ConnectValueRemoved connects the provided callback to the "value-removed" signal
 //
 // Emitted when @timed_value is removed from @self
 func (o *TimedValueControlSourceInstance) ConnectValueRemoved(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
 	return o.Connect("value-removed", fn)
 }
+
+// TimedValueControlSourceOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TimedValueControlSourceOverrides[Instance TimedValueControlSource] struct {
+	// gst.ControlSourceOverrides allows you to override virtual methods from the parent class gst.ControlSource
+	gst.ControlSourceOverrides[Instance]
+
+}
+
+// UnsafeApplyTimedValueControlSourceOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTimedValueControlSourceOverrides[Instance TimedValueControlSource](gclass unsafe.Pointer, overrides TimedValueControlSourceOverrides[Instance]) {
+	gst.UnsafeApplyControlSourceOverrides(gclass, overrides.ControlSourceOverrides)
+}
+
 // TriggerControlSourceInstance is the instance type used by all types extending GstTriggerControlSource. It is used internally by the bindings. Users should use the interface [TriggerControlSource] instead.
 type TriggerControlSourceInstance struct {
 	_ [0]func() // equal guard
@@ -973,6 +1051,7 @@ func UnsafeTriggerControlSourceToGlibFull(c TriggerControlSource) unsafe.Pointer
 }
 
 // NewTriggerControlSource wraps gst_trigger_control_source_new
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ControlSource 
@@ -988,6 +1067,20 @@ func NewTriggerControlSource() gst.ControlSource {
 	goret = gst.UnsafeControlSourceFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
+}
+
+// TriggerControlSourceOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TriggerControlSourceOverrides[Instance TriggerControlSource] struct {
+	// TimedValueControlSourceOverrides allows you to override virtual methods from the parent class TimedValueControlSource
+	TimedValueControlSourceOverrides[Instance]
+
+}
+
+// UnsafeApplyTriggerControlSourceOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTriggerControlSourceOverrides[Instance TriggerControlSource](gclass unsafe.Pointer, overrides TriggerControlSourceOverrides[Instance]) {
+	UnsafeApplyTimedValueControlSourceOverrides(gclass, overrides.TimedValueControlSourceOverrides)
 }
 
 // InterpolationControlSourceInstance is the instance type used by all types extending GstInterpolationControlSource. It is used internally by the bindings. Users should use the interface [InterpolationControlSource] instead.
@@ -1056,6 +1149,7 @@ func UnsafeInterpolationControlSourceToGlibFull(c InterpolationControlSource) un
 }
 
 // NewInterpolationControlSource wraps gst_interpolation_control_source_new
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ControlSource 
@@ -1073,9 +1167,25 @@ func NewInterpolationControlSource() gst.ControlSource {
 	return goret
 }
 
+// InterpolationControlSourceOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type InterpolationControlSourceOverrides[Instance InterpolationControlSource] struct {
+	// TimedValueControlSourceOverrides allows you to override virtual methods from the parent class TimedValueControlSource
+	TimedValueControlSourceOverrides[Instance]
+
+}
+
+// UnsafeApplyInterpolationControlSourceOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyInterpolationControlSourceOverrides[Instance InterpolationControlSource](gclass unsafe.Pointer, overrides InterpolationControlSourceOverrides[Instance]) {
+	UnsafeApplyTimedValueControlSourceOverrides(gclass, overrides.TimedValueControlSourceOverrides)
+}
+
 // ARGBControlBindingClass wraps GstARGBControlBindingClass
 //
 // The class structure of #GstARGBControlBinding.
+// 
+// ARGBControlBindingClass is the type struct for [ARGBControlBinding]
 type ARGBControlBindingClass struct {
 	*argbControlBindingClass
 }
@@ -1090,31 +1200,6 @@ func UnsafeARGBControlBindingClassFromGlibBorrow(p unsafe.Pointer) *ARGBControlB
 	return &ARGBControlBindingClass{&argbControlBindingClass{(*C.GstARGBControlBindingClass)(p)}}
 }
 
-// UnsafeARGBControlBindingClassFromGlibNone is used to convert raw C.GstARGBControlBindingClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeARGBControlBindingClassFromGlibNone(p unsafe.Pointer) *ARGBControlBindingClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeARGBControlBindingClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.argbControlBindingClass,
-		func (intern *argbControlBindingClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeARGBControlBindingClassFromGlibFull is used to convert raw C.GstARGBControlBindingClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeARGBControlBindingClassFromGlibFull(p unsafe.Pointer) *ARGBControlBindingClass {
-	wrapped := UnsafeARGBControlBindingClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.argbControlBindingClass,
-		func (intern *argbControlBindingClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeARGBControlBindingClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ARGBControlBindingClass] is expected to work anymore.
@@ -1127,14 +1212,15 @@ func UnsafeARGBControlBindingClassToGlibNone(a *ARGBControlBindingClass) unsafe.
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeARGBControlBindingClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeARGBControlBindingClassToGlibFull(a *ARGBControlBindingClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.argbControlBindingClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // ARGBControlBindingClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *ARGBControlBindingClass) ParentClass() *gst.ControlBindingClass {
+	parent := gst.UnsafeControlBindingClassFromGlibBorrow(UnsafeARGBControlBindingClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ARGBControlBindingClass) {}, a)
+	return parent
 }
+
 // ControlPoint wraps GstControlPoint
 //
 // An internal structure for value+time and various temporary
@@ -1166,7 +1252,7 @@ func UnsafeControlPointFromGlibBorrow(p unsafe.Pointer) *ControlPoint {
 	return &ControlPoint{&controlPoint{(*C.GstControlPoint)(p)}}
 }
 
-// UnsafeControlPointFromGlibNone is used to convert raw C.GstControlPoint pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeControlPointFromGlibNone is used to convert raw C.GstControlPoint pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeControlPointFromGlibNone(p unsafe.Pointer) *ControlPoint {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeControlPointFromGlibBorrow(p)
@@ -1179,7 +1265,7 @@ func UnsafeControlPointFromGlibNone(p unsafe.Pointer) *ControlPoint {
 	return wrapped
 }
 
-// UnsafeControlPointFromGlibFull is used to convert raw C.GstControlPoint pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeControlPointFromGlibFull is used to convert raw C.GstControlPoint pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeControlPointFromGlibFull(p unsafe.Pointer) *ControlPoint {
 	wrapped := UnsafeControlPointFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -1211,7 +1297,9 @@ func UnsafeControlPointToGlibFull(c *ControlPoint) unsafe.Pointer {
 	c.native = nil // ControlPoint is invalid from here on
 	return _p
 }
+
 // Copy wraps gst_control_point_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *ControlPoint 
@@ -1236,6 +1324,8 @@ func (cp *ControlPoint) Copy() *ControlPoint {
 // DirectControlBindingClass wraps GstDirectControlBindingClass
 //
 // The class structure of #GstDirectControlBinding.
+// 
+// DirectControlBindingClass is the type struct for [DirectControlBinding]
 type DirectControlBindingClass struct {
 	*directControlBindingClass
 }
@@ -1250,31 +1340,6 @@ func UnsafeDirectControlBindingClassFromGlibBorrow(p unsafe.Pointer) *DirectCont
 	return &DirectControlBindingClass{&directControlBindingClass{(*C.GstDirectControlBindingClass)(p)}}
 }
 
-// UnsafeDirectControlBindingClassFromGlibNone is used to convert raw C.GstDirectControlBindingClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDirectControlBindingClassFromGlibNone(p unsafe.Pointer) *DirectControlBindingClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDirectControlBindingClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.directControlBindingClass,
-		func (intern *directControlBindingClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDirectControlBindingClassFromGlibFull is used to convert raw C.GstDirectControlBindingClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDirectControlBindingClassFromGlibFull(p unsafe.Pointer) *DirectControlBindingClass {
-	wrapped := UnsafeDirectControlBindingClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.directControlBindingClass,
-		func (intern *directControlBindingClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDirectControlBindingClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DirectControlBindingClass] is expected to work anymore.
@@ -1287,15 +1352,18 @@ func UnsafeDirectControlBindingClassToGlibNone(d *DirectControlBindingClass) uns
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDirectControlBindingClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDirectControlBindingClassToGlibFull(d *DirectControlBindingClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.directControlBindingClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DirectControlBindingClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DirectControlBindingClass) ParentClass() *gst.ControlBindingClass {
+	parent := gst.UnsafeControlBindingClassFromGlibBorrow(UnsafeDirectControlBindingClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DirectControlBindingClass) {}, d)
+	return parent
 }
+
 // InterpolationControlSourceClass wraps GstInterpolationControlSourceClass
+// 
+// InterpolationControlSourceClass is the type struct for [InterpolationControlSource]
 type InterpolationControlSourceClass struct {
 	*interpolationControlSourceClass
 }
@@ -1310,31 +1378,6 @@ func UnsafeInterpolationControlSourceClassFromGlibBorrow(p unsafe.Pointer) *Inte
 	return &InterpolationControlSourceClass{&interpolationControlSourceClass{(*C.GstInterpolationControlSourceClass)(p)}}
 }
 
-// UnsafeInterpolationControlSourceClassFromGlibNone is used to convert raw C.GstInterpolationControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeInterpolationControlSourceClassFromGlibNone(p unsafe.Pointer) *InterpolationControlSourceClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeInterpolationControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.interpolationControlSourceClass,
-		func (intern *interpolationControlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeInterpolationControlSourceClassFromGlibFull is used to convert raw C.GstInterpolationControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeInterpolationControlSourceClassFromGlibFull(p unsafe.Pointer) *InterpolationControlSourceClass {
-	wrapped := UnsafeInterpolationControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.interpolationControlSourceClass,
-		func (intern *interpolationControlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeInterpolationControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [InterpolationControlSourceClass] is expected to work anymore.
@@ -1347,15 +1390,18 @@ func UnsafeInterpolationControlSourceClassToGlibNone(i *InterpolationControlSour
 	return unsafe.Pointer(i.native)
 }
 
-// UnsafeInterpolationControlSourceClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeInterpolationControlSourceClassToGlibFull(i *InterpolationControlSourceClass) unsafe.Pointer {
-	runtime.SetFinalizer(i.interpolationControlSourceClass, nil)
-	_p := unsafe.Pointer(i.native)
-	i.native = nil // InterpolationControlSourceClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (i *InterpolationControlSourceClass) ParentClass() *TimedValueControlSourceClass {
+	parent := UnsafeTimedValueControlSourceClassFromGlibBorrow(UnsafeInterpolationControlSourceClassToGlibNone(i))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *InterpolationControlSourceClass) {}, i)
+	return parent
 }
+
 // LFOControlSourceClass wraps GstLFOControlSourceClass
+// 
+// LFOControlSourceClass is the type struct for [LFOControlSource]
 type LFOControlSourceClass struct {
 	*lfoControlSourceClass
 }
@@ -1370,31 +1416,6 @@ func UnsafeLFOControlSourceClassFromGlibBorrow(p unsafe.Pointer) *LFOControlSour
 	return &LFOControlSourceClass{&lfoControlSourceClass{(*C.GstLFOControlSourceClass)(p)}}
 }
 
-// UnsafeLFOControlSourceClassFromGlibNone is used to convert raw C.GstLFOControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeLFOControlSourceClassFromGlibNone(p unsafe.Pointer) *LFOControlSourceClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeLFOControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.lfoControlSourceClass,
-		func (intern *lfoControlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeLFOControlSourceClassFromGlibFull is used to convert raw C.GstLFOControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeLFOControlSourceClassFromGlibFull(p unsafe.Pointer) *LFOControlSourceClass {
-	wrapped := UnsafeLFOControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.lfoControlSourceClass,
-		func (intern *lfoControlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeLFOControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [LFOControlSourceClass] is expected to work anymore.
@@ -1407,17 +1428,20 @@ func UnsafeLFOControlSourceClassToGlibNone(l *LFOControlSourceClass) unsafe.Poin
 	return unsafe.Pointer(l.native)
 }
 
-// UnsafeLFOControlSourceClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeLFOControlSourceClassToGlibFull(l *LFOControlSourceClass) unsafe.Pointer {
-	runtime.SetFinalizer(l.lfoControlSourceClass, nil)
-	_p := unsafe.Pointer(l.native)
-	l.native = nil // LFOControlSourceClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (l *LFOControlSourceClass) ParentClass() *gst.ControlSourceClass {
+	parent := gst.UnsafeControlSourceClassFromGlibBorrow(UnsafeLFOControlSourceClassToGlibNone(l))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *LFOControlSourceClass) {}, l)
+	return parent
 }
+
 // ProxyControlBindingClass wraps GstProxyControlBindingClass
 //
 // Opaque #GstProxyControlBindingClass struct
+// 
+// ProxyControlBindingClass is the type struct for [ProxyControlBinding]
 type ProxyControlBindingClass struct {
 	*proxyControlBindingClass
 }
@@ -1432,31 +1456,6 @@ func UnsafeProxyControlBindingClassFromGlibBorrow(p unsafe.Pointer) *ProxyContro
 	return &ProxyControlBindingClass{&proxyControlBindingClass{(*C.GstProxyControlBindingClass)(p)}}
 }
 
-// UnsafeProxyControlBindingClassFromGlibNone is used to convert raw C.GstProxyControlBindingClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeProxyControlBindingClassFromGlibNone(p unsafe.Pointer) *ProxyControlBindingClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeProxyControlBindingClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.proxyControlBindingClass,
-		func (intern *proxyControlBindingClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeProxyControlBindingClassFromGlibFull is used to convert raw C.GstProxyControlBindingClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeProxyControlBindingClassFromGlibFull(p unsafe.Pointer) *ProxyControlBindingClass {
-	wrapped := UnsafeProxyControlBindingClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.proxyControlBindingClass,
-		func (intern *proxyControlBindingClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeProxyControlBindingClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ProxyControlBindingClass] is expected to work anymore.
@@ -1469,15 +1468,18 @@ func UnsafeProxyControlBindingClassToGlibNone(p *ProxyControlBindingClass) unsaf
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafeProxyControlBindingClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeProxyControlBindingClassToGlibFull(p *ProxyControlBindingClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.proxyControlBindingClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // ProxyControlBindingClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *ProxyControlBindingClass) ParentClass() *gst.ControlBindingClass {
+	parent := gst.UnsafeControlBindingClassFromGlibBorrow(UnsafeProxyControlBindingClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ProxyControlBindingClass) {}, p)
+	return parent
 }
+
 // TimedValueControlSourceClass wraps GstTimedValueControlSourceClass
+// 
+// TimedValueControlSourceClass is the type struct for [TimedValueControlSource]
 type TimedValueControlSourceClass struct {
 	*timedValueControlSourceClass
 }
@@ -1492,31 +1494,6 @@ func UnsafeTimedValueControlSourceClassFromGlibBorrow(p unsafe.Pointer) *TimedVa
 	return &TimedValueControlSourceClass{&timedValueControlSourceClass{(*C.GstTimedValueControlSourceClass)(p)}}
 }
 
-// UnsafeTimedValueControlSourceClassFromGlibNone is used to convert raw C.GstTimedValueControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTimedValueControlSourceClassFromGlibNone(p unsafe.Pointer) *TimedValueControlSourceClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTimedValueControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.timedValueControlSourceClass,
-		func (intern *timedValueControlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTimedValueControlSourceClassFromGlibFull is used to convert raw C.GstTimedValueControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTimedValueControlSourceClassFromGlibFull(p unsafe.Pointer) *TimedValueControlSourceClass {
-	wrapped := UnsafeTimedValueControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.timedValueControlSourceClass,
-		func (intern *timedValueControlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTimedValueControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TimedValueControlSourceClass] is expected to work anymore.
@@ -1529,15 +1506,18 @@ func UnsafeTimedValueControlSourceClassToGlibNone(t *TimedValueControlSourceClas
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTimedValueControlSourceClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTimedValueControlSourceClassToGlibFull(t *TimedValueControlSourceClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.timedValueControlSourceClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TimedValueControlSourceClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TimedValueControlSourceClass) ParentClass() *gst.ControlSourceClass {
+	parent := gst.UnsafeControlSourceClassFromGlibBorrow(UnsafeTimedValueControlSourceClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TimedValueControlSourceClass) {}, t)
+	return parent
 }
+
 // TriggerControlSourceClass wraps GstTriggerControlSourceClass
+// 
+// TriggerControlSourceClass is the type struct for [TriggerControlSource]
 type TriggerControlSourceClass struct {
 	*triggerControlSourceClass
 }
@@ -1552,31 +1532,6 @@ func UnsafeTriggerControlSourceClassFromGlibBorrow(p unsafe.Pointer) *TriggerCon
 	return &TriggerControlSourceClass{&triggerControlSourceClass{(*C.GstTriggerControlSourceClass)(p)}}
 }
 
-// UnsafeTriggerControlSourceClassFromGlibNone is used to convert raw C.GstTriggerControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTriggerControlSourceClassFromGlibNone(p unsafe.Pointer) *TriggerControlSourceClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTriggerControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.triggerControlSourceClass,
-		func (intern *triggerControlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTriggerControlSourceClassFromGlibFull is used to convert raw C.GstTriggerControlSourceClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTriggerControlSourceClassFromGlibFull(p unsafe.Pointer) *TriggerControlSourceClass {
-	wrapped := UnsafeTriggerControlSourceClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.triggerControlSourceClass,
-		func (intern *triggerControlSourceClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTriggerControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TriggerControlSourceClass] is expected to work anymore.
@@ -1589,11 +1544,12 @@ func UnsafeTriggerControlSourceClassToGlibNone(t *TriggerControlSourceClass) uns
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTriggerControlSourceClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTriggerControlSourceClassToGlibFull(t *TriggerControlSourceClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.triggerControlSourceClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TriggerControlSourceClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TriggerControlSourceClass) ParentClass() *TimedValueControlSourceClass {
+	parent := UnsafeTimedValueControlSourceClassFromGlibBorrow(UnsafeTriggerControlSourceClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TriggerControlSourceClass) {}, t)
+	return parent
 }
+

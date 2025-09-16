@@ -29,3 +29,43 @@ func _gotk4_gstpbutils1_InstallPluginsResultFunc(carg1 C.GstInstallPluginsReturn
 	fn(result)
 }
 
+//export _gotk4_gstpbutils1_AudioVisualizer_decide_allocation
+func _gotk4_gstpbutils1_AudioVisualizer_decide_allocation(carg0 *C.GstAudioVisualizer, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstpbutils1_AudioVisualizer_render
+func _gotk4_gstpbutils1_AudioVisualizer_render(carg0 *C.GstAudioVisualizer, carg1 *C.GstBuffer, carg2 *C.GstVideoFrame) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstpbutils1_AudioVisualizer_setup
+func _gotk4_gstpbutils1_AudioVisualizer_setup(carg0 *C.GstAudioVisualizer) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstpbutils1_Discoverer_discovered
+func _gotk4_gstpbutils1_Discoverer_discovered(carg0 *C.GstDiscoverer, carg1 *C.GstDiscovererInfo, carg2 *C.GError) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstpbutils1_Discoverer_finished
+func _gotk4_gstpbutils1_Discoverer_finished(carg0 *C.GstDiscoverer) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstpbutils1_Discoverer_load_serialize_info
+func _gotk4_gstpbutils1_Discoverer_load_serialize_info(carg0 *C.GstDiscoverer, carg1 *C.gchar) (cret *C.GstDiscovererInfo) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstpbutils1_Discoverer_source_setup
+func _gotk4_gstpbutils1_Discoverer_source_setup(carg0 *C.GstDiscoverer, carg1 *C.GstElement) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstpbutils1_Discoverer_starting
+func _gotk4_gstpbutils1_Discoverer_starting(carg0 *C.GstDiscoverer) {
+	panic("unimplemented")
+}
+

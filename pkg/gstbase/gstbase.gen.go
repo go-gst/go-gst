@@ -24,6 +24,398 @@ import (
 // extern gboolean _gotk4_gstbase1_CollectPadsQueryFunction(GstCollectPads*, GstCollectData*, GstQuery*, gpointer);
 // extern gint _gotk4_gstbase1_CollectPadsCompareFunction(GstCollectPads*, GstCollectData*, GstClockTime, GstCollectData*, GstClockTime, gpointer);
 // extern void _gotk4_gstbase1_CollectPadsFlushFunction(GstCollectPads*, gpointer);
+// extern GstFlowReturn _gotk4_gstbase1_Aggregator_aggregate(GstAggregator*, gboolean);
+// extern GstBuffer* _gotk4_gstbase1_Aggregator_clip(GstAggregator*, GstAggregatorPad*, GstBuffer*);
+// extern gboolean _gotk4_gstbase1_Aggregator_decide_allocation(GstAggregator*, GstQuery*);
+// extern GstFlowReturn _gotk4_gstbase1_Aggregator_finish_buffer(GstAggregator*, GstBuffer*);
+// extern GstFlowReturn _gotk4_gstbase1_Aggregator_finish_buffer_list(GstAggregator*, GstBufferList*);
+// extern GstCaps* _gotk4_gstbase1_Aggregator_fixate_src_caps(GstAggregator*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstbase1_Aggregator_flush(GstAggregator*);
+// extern GstClockTime _gotk4_gstbase1_Aggregator_get_next_time(GstAggregator*);
+// extern gboolean _gotk4_gstbase1_Aggregator_negotiate(GstAggregator*);
+// extern gboolean _gotk4_gstbase1_Aggregator_negotiated_src_caps(GstAggregator*, GstCaps*);
+// extern GstSample* _gotk4_gstbase1_Aggregator_peek_next_sample(GstAggregator*, GstAggregatorPad*);
+// extern gboolean _gotk4_gstbase1_Aggregator_propose_allocation(GstAggregator*, GstAggregatorPad*, GstQuery*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_Aggregator_sink_event(GstAggregator*, GstAggregatorPad*, GstEvent*);
+// extern GstFlowReturn _gotk4_gstbase1_Aggregator_sink_event_pre_queue(GstAggregator*, GstAggregatorPad*, GstEvent*);
+// extern gboolean _gotk4_gstbase1_Aggregator_sink_query(GstAggregator*, GstAggregatorPad*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_Aggregator_sink_query_pre_queue(GstAggregator*, GstAggregatorPad*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_Aggregator_src_activate(GstAggregator*, GstPadMode, gboolean);
+// extern gboolean _gotk4_gstbase1_Aggregator_src_event(GstAggregator*, GstEvent*);
+// extern gboolean _gotk4_gstbase1_Aggregator_src_query(GstAggregator*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_Aggregator_start(GstAggregator*);
+// extern gboolean _gotk4_gstbase1_Aggregator_stop(GstAggregator*);
+// extern GstFlowReturn _gotk4_gstbase1_Aggregator_update_src_caps(GstAggregator*, GstCaps*, GstCaps*);
+// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_aggregate(void* fnptr, GstAggregator* carg0, gboolean carg1) {
+// 	return ((GstFlowReturn (*) (GstAggregator*, gboolean))(fnptr))(carg0, carg1);
+// }
+// GstBuffer* _gotk4_gstbase1_Aggregator_virtual_clip(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstBuffer* carg2) {
+// 	return ((GstBuffer* (*) (GstAggregator*, GstAggregatorPad*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_decide_allocation(void* fnptr, GstAggregator* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAggregator*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_finish_buffer(void* fnptr, GstAggregator* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstAggregator*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_finish_buffer_list(void* fnptr, GstAggregator* carg0, GstBufferList* carg1) {
+// 	return ((GstFlowReturn (*) (GstAggregator*, GstBufferList*))(fnptr))(carg0, carg1);
+// }
+// GstCaps* _gotk4_gstbase1_Aggregator_virtual_fixate_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstAggregator*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_flush(void* fnptr, GstAggregator* carg0) {
+// 	return ((GstFlowReturn (*) (GstAggregator*))(fnptr))(carg0);
+// }
+// GstClockTime _gotk4_gstbase1_Aggregator_virtual_get_next_time(void* fnptr, GstAggregator* carg0) {
+// 	return ((GstClockTime (*) (GstAggregator*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_negotiate(void* fnptr, GstAggregator* carg0) {
+// 	return ((gboolean (*) (GstAggregator*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_negotiated_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstAggregator*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstSample* _gotk4_gstbase1_Aggregator_virtual_peek_next_sample(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1) {
+// 	return ((GstSample* (*) (GstAggregator*, GstAggregatorPad*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_propose_allocation(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2, GstQuery* carg3) {
+// 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstQuery*, GstQuery*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_sink_event(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstEvent* carg2) {
+// 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstEvent*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_sink_event_pre_queue(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstEvent* carg2) {
+// 	return ((GstFlowReturn (*) (GstAggregator*, GstAggregatorPad*, GstEvent*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_sink_query(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2) {
+// 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstQuery*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_sink_query_pre_queue(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2) {
+// 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstQuery*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_src_activate(void* fnptr, GstAggregator* carg0, GstPadMode carg1, gboolean carg2) {
+// 	return ((gboolean (*) (GstAggregator*, GstPadMode, gboolean))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_src_event(void* fnptr, GstAggregator* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstAggregator*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_src_query(void* fnptr, GstAggregator* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAggregator*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_start(void* fnptr, GstAggregator* carg0) {
+// 	return ((gboolean (*) (GstAggregator*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_Aggregator_virtual_stop(void* fnptr, GstAggregator* carg0) {
+// 	return ((gboolean (*) (GstAggregator*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_update_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1, GstCaps** carg2) {
+// 	return ((GstFlowReturn (*) (GstAggregator*, GstCaps*, GstCaps**))(fnptr))(carg0, carg1, carg2);
+// }
+// extern GstFlowReturn _gotk4_gstbase1_AggregatorPad_flush(GstAggregatorPad*, GstAggregator*);
+// extern gboolean _gotk4_gstbase1_AggregatorPad_skip_buffer(GstAggregatorPad*, GstAggregator*, GstBuffer*);
+// GstFlowReturn _gotk4_gstbase1_AggregatorPad_virtual_flush(void* fnptr, GstAggregatorPad* carg0, GstAggregator* carg1) {
+// 	return ((GstFlowReturn (*) (GstAggregatorPad*, GstAggregator*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_AggregatorPad_virtual_skip_buffer(void* fnptr, GstAggregatorPad* carg0, GstAggregator* carg1, GstBuffer* carg2) {
+// 	return ((gboolean (*) (GstAggregatorPad*, GstAggregator*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
+// }
+// extern gboolean _gotk4_gstbase1_BaseParse_convert(GstBaseParse*, GstFormat, gint64, GstFormat, gint64*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseParse_detect(GstBaseParse*, GstBuffer*);
+// extern GstCaps* _gotk4_gstbase1_BaseParse_get_sink_caps(GstBaseParse*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseParse_handle_frame(GstBaseParse*, GstBaseParseFrame*, gint);
+// extern GstFlowReturn _gotk4_gstbase1_BaseParse_pre_push_frame(GstBaseParse*, GstBaseParseFrame*);
+// extern gboolean _gotk4_gstbase1_BaseParse_set_sink_caps(GstBaseParse*, GstCaps*);
+// extern gboolean _gotk4_gstbase1_BaseParse_sink_event(GstBaseParse*, GstEvent*);
+// extern gboolean _gotk4_gstbase1_BaseParse_sink_query(GstBaseParse*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_BaseParse_src_event(GstBaseParse*, GstEvent*);
+// extern gboolean _gotk4_gstbase1_BaseParse_src_query(GstBaseParse*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_BaseParse_start(GstBaseParse*);
+// extern gboolean _gotk4_gstbase1_BaseParse_stop(GstBaseParse*);
+// gboolean _gotk4_gstbase1_BaseParse_virtual_convert(void* fnptr, GstBaseParse* carg0, GstFormat carg1, gint64 carg2, GstFormat carg3, gint64* carg4) {
+// 	return ((gboolean (*) (GstBaseParse*, GstFormat, gint64, GstFormat, gint64*))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_detect(void* fnptr, GstBaseParse* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseParse*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// GstCaps* _gotk4_gstbase1_BaseParse_virtual_get_sink_caps(void* fnptr, GstBaseParse* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstBaseParse*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_handle_frame(void* fnptr, GstBaseParse* carg0, GstBaseParseFrame* carg1, gint* carg2) {
+// 	return ((GstFlowReturn (*) (GstBaseParse*, GstBaseParseFrame*, gint*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_pre_push_frame(void* fnptr, GstBaseParse* carg0, GstBaseParseFrame* carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseParse*, GstBaseParseFrame*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseParse_virtual_set_sink_caps(void* fnptr, GstBaseParse* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstBaseParse*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseParse_virtual_sink_event(void* fnptr, GstBaseParse* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstBaseParse*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseParse_virtual_sink_query(void* fnptr, GstBaseParse* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstBaseParse*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseParse_virtual_src_event(void* fnptr, GstBaseParse* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstBaseParse*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseParse_virtual_src_query(void* fnptr, GstBaseParse* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstBaseParse*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseParse_virtual_start(void* fnptr, GstBaseParse* carg0) {
+// 	return ((gboolean (*) (GstBaseParse*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseParse_virtual_stop(void* fnptr, GstBaseParse* carg0) {
+// 	return ((gboolean (*) (GstBaseParse*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstbase1_BaseSink_activate_pull(GstBaseSink*, gboolean);
+// extern gboolean _gotk4_gstbase1_BaseSink_event(GstBaseSink*, GstEvent*);
+// extern GstCaps* _gotk4_gstbase1_BaseSink_fixate(GstBaseSink*, GstCaps*);
+// extern GstCaps* _gotk4_gstbase1_BaseSink_get_caps(GstBaseSink*, GstCaps*);
+// extern void _gotk4_gstbase1_BaseSink_get_times(GstBaseSink*, GstBuffer*, GstClockTime, GstClockTime);
+// extern GstFlowReturn _gotk4_gstbase1_BaseSink_prepare(GstBaseSink*, GstBuffer*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseSink_prepare_list(GstBaseSink*, GstBufferList*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseSink_preroll(GstBaseSink*, GstBuffer*);
+// extern gboolean _gotk4_gstbase1_BaseSink_propose_allocation(GstBaseSink*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_BaseSink_query(GstBaseSink*, GstQuery*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseSink_render(GstBaseSink*, GstBuffer*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseSink_render_list(GstBaseSink*, GstBufferList*);
+// extern gboolean _gotk4_gstbase1_BaseSink_set_caps(GstBaseSink*, GstCaps*);
+// extern gboolean _gotk4_gstbase1_BaseSink_start(GstBaseSink*);
+// extern gboolean _gotk4_gstbase1_BaseSink_stop(GstBaseSink*);
+// extern gboolean _gotk4_gstbase1_BaseSink_unlock(GstBaseSink*);
+// extern gboolean _gotk4_gstbase1_BaseSink_unlock_stop(GstBaseSink*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseSink_wait_event(GstBaseSink*, GstEvent*);
+// gboolean _gotk4_gstbase1_BaseSink_virtual_activate_pull(void* fnptr, GstBaseSink* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstBaseSink*, gboolean))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSink_virtual_event(void* fnptr, GstBaseSink* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstBaseSink*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// GstCaps* _gotk4_gstbase1_BaseSink_virtual_fixate(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstBaseSink*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstCaps* _gotk4_gstbase1_BaseSink_virtual_get_caps(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstBaseSink*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstbase1_BaseSink_virtual_get_times(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1, GstClockTime* carg2, GstClockTime* carg3) {
+// 	return ((void (*) (GstBaseSink*, GstBuffer*, GstClockTime*, GstClockTime*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_prepare(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_prepare_list(void* fnptr, GstBaseSink* carg0, GstBufferList* carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBufferList*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_preroll(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSink_virtual_propose_allocation(void* fnptr, GstBaseSink* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstBaseSink*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSink_virtual_query(void* fnptr, GstBaseSink* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstBaseSink*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_render(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_render_list(void* fnptr, GstBaseSink* carg0, GstBufferList* carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseSink*, GstBufferList*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSink_virtual_set_caps(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstBaseSink*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSink_virtual_start(void* fnptr, GstBaseSink* carg0) {
+// 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseSink_virtual_stop(void* fnptr, GstBaseSink* carg0) {
+// 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseSink_virtual_unlock(void* fnptr, GstBaseSink* carg0) {
+// 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseSink_virtual_unlock_stop(void* fnptr, GstBaseSink* carg0) {
+// 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_wait_event(void* fnptr, GstBaseSink* carg0, GstEvent* carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseSink*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// extern GstFlowReturn _gotk4_gstbase1_BaseSrc_alloc(GstBaseSrc*, guint64, guint, GstBuffer*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_decide_allocation(GstBaseSrc*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_do_seek(GstBaseSrc*, GstSegment*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_event(GstBaseSrc*, GstEvent*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseSrc_fill(GstBaseSrc*, guint64, guint, GstBuffer*);
+// extern GstCaps* _gotk4_gstbase1_BaseSrc_fixate(GstBaseSrc*, GstCaps*);
+// extern GstCaps* _gotk4_gstbase1_BaseSrc_get_caps(GstBaseSrc*, GstCaps*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_get_size(GstBaseSrc*, guint64);
+// extern void _gotk4_gstbase1_BaseSrc_get_times(GstBaseSrc*, GstBuffer*, GstClockTime, GstClockTime);
+// extern gboolean _gotk4_gstbase1_BaseSrc_is_seekable(GstBaseSrc*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_negotiate(GstBaseSrc*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_prepare_seek_segment(GstBaseSrc*, GstEvent*, GstSegment*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_query(GstBaseSrc*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_set_caps(GstBaseSrc*, GstCaps*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_start(GstBaseSrc*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_stop(GstBaseSrc*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_unlock(GstBaseSrc*);
+// extern gboolean _gotk4_gstbase1_BaseSrc_unlock_stop(GstBaseSrc*);
+// GstFlowReturn _gotk4_gstbase1_BaseSrc_virtual_alloc(void* fnptr, GstBaseSrc* carg0, guint64 carg1, guint carg2, GstBuffer** carg3) {
+// 	return ((GstFlowReturn (*) (GstBaseSrc*, guint64, guint, GstBuffer**))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_decide_allocation(void* fnptr, GstBaseSrc* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstBaseSrc*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_do_seek(void* fnptr, GstBaseSrc* carg0, GstSegment* carg1) {
+// 	return ((gboolean (*) (GstBaseSrc*, GstSegment*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_event(void* fnptr, GstBaseSrc* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstBaseSrc*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseSrc_virtual_fill(void* fnptr, GstBaseSrc* carg0, guint64 carg1, guint carg2, GstBuffer* carg3) {
+// 	return ((GstFlowReturn (*) (GstBaseSrc*, guint64, guint, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// GstCaps* _gotk4_gstbase1_BaseSrc_virtual_fixate(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstBaseSrc*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstCaps* _gotk4_gstbase1_BaseSrc_virtual_get_caps(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstBaseSrc*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_get_size(void* fnptr, GstBaseSrc* carg0, guint64* carg1) {
+// 	return ((gboolean (*) (GstBaseSrc*, guint64*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstbase1_BaseSrc_virtual_get_times(void* fnptr, GstBaseSrc* carg0, GstBuffer* carg1, GstClockTime* carg2, GstClockTime* carg3) {
+// 	return ((void (*) (GstBaseSrc*, GstBuffer*, GstClockTime*, GstClockTime*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_is_seekable(void* fnptr, GstBaseSrc* carg0) {
+// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_negotiate(void* fnptr, GstBaseSrc* carg0) {
+// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_prepare_seek_segment(void* fnptr, GstBaseSrc* carg0, GstEvent* carg1, GstSegment* carg2) {
+// 	return ((gboolean (*) (GstBaseSrc*, GstEvent*, GstSegment*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_query(void* fnptr, GstBaseSrc* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstBaseSrc*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_set_caps(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstBaseSrc*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_start(void* fnptr, GstBaseSrc* carg0) {
+// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_stop(void* fnptr, GstBaseSrc* carg0) {
+// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_unlock(void* fnptr, GstBaseSrc* carg0) {
+// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseSrc_virtual_unlock_stop(void* fnptr, GstBaseSrc* carg0) {
+// 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstbase1_BaseTransform_accept_caps(GstBaseTransform*, GstPadDirection, GstCaps*);
+// extern void _gotk4_gstbase1_BaseTransform_before_transform(GstBaseTransform*, GstBuffer*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_copy_metadata(GstBaseTransform*, GstBuffer*, GstBuffer*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_decide_allocation(GstBaseTransform*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_filter_meta(GstBaseTransform*, GstQuery*, GType, GstStructure*);
+// extern GstCaps* _gotk4_gstbase1_BaseTransform_fixate_caps(GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_generate_output(GstBaseTransform*, GstBuffer*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_get_unit_size(GstBaseTransform*, GstCaps*, gsize);
+// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_prepare_output_buffer(GstBaseTransform*, GstBuffer*, GstBuffer*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_propose_allocation(GstBaseTransform*, GstQuery*, GstQuery*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_query(GstBaseTransform*, GstPadDirection, GstQuery*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_set_caps(GstBaseTransform*, GstCaps*, GstCaps*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_sink_event(GstBaseTransform*, GstEvent*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_src_event(GstBaseTransform*, GstEvent*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_start(GstBaseTransform*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_stop(GstBaseTransform*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_submit_input_buffer(GstBaseTransform*, gboolean, GstBuffer*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_transform(GstBaseTransform*, GstBuffer*, GstBuffer*);
+// extern GstCaps* _gotk4_gstbase1_BaseTransform_transform_caps(GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_transform_ip(GstBaseTransform*, GstBuffer*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_transform_meta(GstBaseTransform*, GstBuffer*, GstMeta*, GstBuffer*);
+// extern gboolean _gotk4_gstbase1_BaseTransform_transform_size(GstBaseTransform*, GstPadDirection, GstCaps*, gsize, GstCaps*, gsize);
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_accept_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstPadDirection, GstCaps*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gstbase1_BaseTransform_virtual_before_transform(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1) {
+// 	return ((void (*) (GstBaseTransform*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_copy_metadata(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer* carg2) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_decide_allocation(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_filter_meta(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1, GType carg2, GstStructure* carg3) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstQuery*, GType, GstStructure*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// GstCaps* _gotk4_gstbase1_BaseTransform_virtual_fixate_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
+// 	return ((GstCaps* (*) (GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_generate_output(void* fnptr, GstBaseTransform* carg0, GstBuffer** carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer**))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_get_unit_size(void* fnptr, GstBaseTransform* carg0, GstCaps* carg1, gsize* carg2) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstCaps*, gsize*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_prepare_output_buffer(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer** carg2) {
+// 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer*, GstBuffer**))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_propose_allocation(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1, GstQuery* carg2) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstQuery*, GstQuery*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_query(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstQuery* carg2) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstPadDirection, GstQuery*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_set_caps(void* fnptr, GstBaseTransform* carg0, GstCaps* carg1, GstCaps* carg2) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_sink_event(void* fnptr, GstBaseTransform* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_src_event(void* fnptr, GstBaseTransform* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_start(void* fnptr, GstBaseTransform* carg0) {
+// 	return ((gboolean (*) (GstBaseTransform*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_stop(void* fnptr, GstBaseTransform* carg0) {
+// 	return ((gboolean (*) (GstBaseTransform*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_submit_input_buffer(void* fnptr, GstBaseTransform* carg0, gboolean carg1, GstBuffer* carg2) {
+// 	return ((GstFlowReturn (*) (GstBaseTransform*, gboolean, GstBuffer*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_transform(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer* carg2) {
+// 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstCaps* _gotk4_gstbase1_BaseTransform_virtual_transform_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
+// 	return ((GstCaps* (*) (GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_transform_ip(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_transform_meta(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstBuffer*, GstMeta*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gstbase1_BaseTransform_virtual_transform_size(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, gsize carg3, GstCaps* carg4, gsize* carg5) {
+// 	return ((gboolean (*) (GstBaseTransform*, GstPadDirection, GstCaps*, gsize, GstCaps*, gsize*))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5);
+// }
+// extern void _gotk4_gstbase1_DataQueue_empty(GstDataQueue*);
+// extern void _gotk4_gstbase1_DataQueue_full(GstDataQueue*);
+// void _gotk4_gstbase1_DataQueue_virtual_empty(void* fnptr, GstDataQueue* carg0) {
+// 	return ((void (*) (GstDataQueue*))(fnptr))(carg0);
+// }
+// void _gotk4_gstbase1_DataQueue_virtual_full(void* fnptr, GstDataQueue* carg0) {
+// 	return ((void (*) (GstDataQueue*))(fnptr))(carg0);
+// }
+// extern GstFlowReturn _gotk4_gstbase1_PushSrc_alloc(GstPushSrc*, GstBuffer*);
+// extern GstFlowReturn _gotk4_gstbase1_PushSrc_fill(GstPushSrc*, GstBuffer*);
+// GstFlowReturn _gotk4_gstbase1_PushSrc_virtual_alloc(void* fnptr, GstPushSrc* carg0, GstBuffer** carg1) {
+// 	return ((GstFlowReturn (*) (GstPushSrc*, GstBuffer**))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstbase1_PushSrc_virtual_fill(void* fnptr, GstPushSrc* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstPushSrc*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
 import "C"
 
 // GType values.
@@ -916,6 +1308,7 @@ type Adapter interface {
 	upcastToGstAdapter() *AdapterInstance
 
 	// Available wraps gst_adapter_available
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -925,6 +1318,7 @@ type Adapter interface {
 	// returning %NULL.
 	Available() uint
 	// AvailableFast wraps gst_adapter_available_fast
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -954,6 +1348,7 @@ type Adapter interface {
 	// the value of the @size argument an empty #GBytes structure may be returned.
 	CopyBytes(uint, uint) *glib.Bytes
 	// DistanceFromDiscont wraps gst_adapter_distance_from_discont
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -966,6 +1361,7 @@ type Adapter interface {
 	// following buffers based on their size.
 	DistanceFromDiscont() uint64
 	// DtsAtDiscont wraps gst_adapter_dts_at_discont
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -1110,6 +1506,7 @@ type Adapter interface {
 	// enough data (offset+size bytes) in the adapter.
 	MaskedScanUint32Peek(uint32, uint32, uint, uint) (uint32, int)
 	// OffsetAtDiscont wraps gst_adapter_offset_at_discont
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -1118,6 +1515,7 @@ type Adapter interface {
 	// flag, or GST_BUFFER_OFFSET_NONE.
 	OffsetAtDiscont() uint64
 	// PrevDts wraps gst_adapter_prev_dts
+	// 
 	// The function returns the following values:
 	// 
 	// 	- distance uint64: pointer to location for distance, or %NULL 
@@ -1153,6 +1551,7 @@ type Adapter interface {
 	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevDtsAtOffset(uint) (uint64, gst.ClockTime)
 	// PrevOffset wraps gst_adapter_prev_offset
+	// 
 	// The function returns the following values:
 	// 
 	// 	- distance uint64: pointer to a location for distance, or %NULL 
@@ -1168,6 +1567,7 @@ type Adapter interface {
 	// and distance returned are GST_BUFFER_OFFSET_NONE and 0 respectively.
 	PrevOffset() (uint64, uint64)
 	// PrevPts wraps gst_adapter_prev_pts
+	// 
 	// The function returns the following values:
 	// 
 	// 	- distance uint64: pointer to location for distance, or %NULL 
@@ -1203,6 +1603,7 @@ type Adapter interface {
 	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevPtsAtOffset(uint) (uint64, gst.ClockTime)
 	// PtsAtDiscont wraps gst_adapter_pts_at_discont
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -1360,6 +1761,7 @@ func UnsafeAdapterToGlibFull(c Adapter) unsafe.Pointer {
 }
 
 // NewAdapter wraps gst_adapter_new
+// 
 // The function returns the following values:
 // 
 // 	- goret Adapter 
@@ -1378,6 +1780,7 @@ func NewAdapter() Adapter {
 }
 
 // Available wraps gst_adapter_available
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -1402,6 +1805,7 @@ func (adapter *AdapterInstance) Available() uint {
 }
 
 // AvailableFast wraps gst_adapter_available_fast
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -1475,6 +1879,7 @@ func (adapter *AdapterInstance) CopyBytes(offset uint, size uint) *glib.Bytes {
 }
 
 // DistanceFromDiscont wraps gst_adapter_distance_from_discont
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -1502,6 +1907,7 @@ func (adapter *AdapterInstance) DistanceFromDiscont() uint64 {
 }
 
 // DtsAtDiscont wraps gst_adapter_dts_at_discont
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -1814,6 +2220,7 @@ func (adapter *AdapterInstance) MaskedScanUint32Peek(mask uint32, pattern uint32
 }
 
 // OffsetAtDiscont wraps gst_adapter_offset_at_discont
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -1837,6 +2244,7 @@ func (adapter *AdapterInstance) OffsetAtDiscont() uint64 {
 }
 
 // PrevDts wraps gst_adapter_prev_dts
+// 
 // The function returns the following values:
 // 
 // 	- distance uint64: pointer to location for distance, or %NULL 
@@ -1911,6 +2319,7 @@ func (adapter *AdapterInstance) PrevDtsAtOffset(offset uint) (uint64, gst.ClockT
 }
 
 // PrevOffset wraps gst_adapter_prev_offset
+// 
 // The function returns the following values:
 // 
 // 	- distance uint64: pointer to a location for distance, or %NULL 
@@ -1944,6 +2353,7 @@ func (adapter *AdapterInstance) PrevOffset() (uint64, uint64) {
 }
 
 // PrevPts wraps gst_adapter_prev_pts
+// 
 // The function returns the following values:
 // 
 // 	- distance uint64: pointer to location for distance, or %NULL 
@@ -2018,6 +2428,7 @@ func (adapter *AdapterInstance) PrevPtsAtOffset(offset uint) (uint64, gst.ClockT
 }
 
 // PtsAtDiscont wraps gst_adapter_pts_at_discont
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -2361,6 +2772,7 @@ type Aggregator interface {
 	// sent before pushing the buffer.
 	FinishBufferList(*gst.BufferList) gst.FlowReturn
 	// GetAllocator wraps gst_aggregator_get_allocator
+	// 
 	// The function returns the following values:
 	// 
 	// 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -2374,11 +2786,13 @@ type Aggregator interface {
 	// Unref the @allocator after use it.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_aggregator_get_buffer_pool
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.BufferPool (nullable) 
 	GetBufferPool() gst.BufferPool
 	// GetForceLive wraps gst_aggregator_get_force_live
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -2387,11 +2801,13 @@ type Aggregator interface {
 	// %GST_FLOW_EOS from their aggregate implementation.
 	GetForceLive() bool
 	// GetIgnoreInactivePads wraps gst_aggregator_get_ignore_inactive_pads
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	GetIgnoreInactivePads() bool
 	// GetLatency wraps gst_aggregator_get_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -2403,6 +2819,7 @@ type Aggregator interface {
 	// Typically only called by subclasses.
 	GetLatency() gst.ClockTime
 	// Negotiate wraps gst_aggregator_negotiate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -2489,6 +2906,7 @@ type Aggregator interface {
 	// Sets the caps to be used on the src pad.
 	SetSrcCaps(*gst.Caps)
 	// SimpleGetNextTime wraps gst_aggregator_simple_get_next_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -2626,6 +3044,7 @@ func (aggregator *AggregatorInstance) FinishBufferList(bufferlist *gst.BufferLis
 }
 
 // GetAllocator wraps gst_aggregator_get_allocator
+// 
 // The function returns the following values:
 // 
 // 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -2661,6 +3080,7 @@ func (self *AggregatorInstance) GetAllocator() (gst.Allocator, gst.AllocationPar
 }
 
 // GetBufferPool wraps gst_aggregator_get_buffer_pool
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.BufferPool (nullable) 
@@ -2683,6 +3103,7 @@ func (self *AggregatorInstance) GetBufferPool() gst.BufferPool {
 }
 
 // GetForceLive wraps gst_aggregator_get_force_live
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2708,6 +3129,7 @@ func (self *AggregatorInstance) GetForceLive() bool {
 }
 
 // GetIgnoreInactivePads wraps gst_aggregator_get_ignore_inactive_pads
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2730,6 +3152,7 @@ func (self *AggregatorInstance) GetIgnoreInactivePads() bool {
 }
 
 // GetLatency wraps gst_aggregator_get_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -2756,6 +3179,7 @@ func (self *AggregatorInstance) GetLatency() gst.ClockTime {
 }
 
 // Negotiate wraps gst_aggregator_negotiate
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2952,6 +3376,7 @@ func (self *AggregatorInstance) SetSrcCaps(caps *gst.Caps) {
 }
 
 // SimpleGetNextTime wraps gst_aggregator_simple_get_next_time
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -3010,6 +3435,298 @@ func (self *AggregatorInstance) UpdateSegment(segment *gst.Segment) {
 func (o *AggregatorInstance) ConnectSamplesSelected(fn func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("samples-selected", fn)
 }
+
+// AggregatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AggregatorOverrides[Instance Aggregator] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// Aggregate allows you to override the implementation of the virtual method aggregate.
+	// The function takes the following parameters:
+	// 
+	// 	- timeout bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Aggregate func(Instance, bool) gst.FlowReturn
+	// Clip allows you to override the implementation of the virtual method clip.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	Clip func(Instance, AggregatorPad, *gst.Buffer) *gst.Buffer
+	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DecideAllocation func(Instance, *gst.Query) bool
+	// FinishBuffer allows you to override the implementation of the virtual method finish_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer: the #GstBuffer to push. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	FinishBuffer func(Instance, *gst.Buffer) gst.FlowReturn
+	// FinishBufferList allows you to override the implementation of the virtual method finish_buffer_list.
+	// The function takes the following parameters:
+	// 
+	// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	FinishBufferList func(Instance, *gst.BufferList) gst.FlowReturn
+	// FixateSrcCaps allows you to override the implementation of the virtual method fixate_src_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	FixateSrcCaps func(Instance, *gst.Caps) *gst.Caps
+	// Flush allows you to override the implementation of the virtual method flush.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Flush func(Instance) gst.FlowReturn
+	// GetNextTime allows you to override the implementation of the virtual method get_next_time.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.ClockTime 
+	GetNextTime func(Instance) gst.ClockTime
+	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Negotiate func(Instance) bool
+	// NegotiatedSrcCaps allows you to override the implementation of the virtual method negotiated_src_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	NegotiatedSrcCaps func(Instance, *gst.Caps) bool
+	// PeekNextSample allows you to override the implementation of the virtual method peek_next_sample.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	PeekNextSample func(Instance, AggregatorPad) *gst.Sample
+	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- pad AggregatorPad 
+	// 	- decideQuery *gst.Query 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ProposeAllocation func(Instance, AggregatorPad, *gst.Query, *gst.Query) bool
+	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkEvent func(Instance, AggregatorPad, *gst.Event) bool
+	// SinkEventPreQueue allows you to override the implementation of the virtual method sink_event_pre_queue.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	SinkEventPreQueue func(Instance, AggregatorPad, *gst.Event) gst.FlowReturn
+	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkQuery func(Instance, AggregatorPad, *gst.Query) bool
+	// SinkQueryPreQueue allows you to override the implementation of the virtual method sink_query_pre_queue.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkQueryPreQueue func(Instance, AggregatorPad, *gst.Query) bool
+	// SrcActivate allows you to override the implementation of the virtual method src_activate.
+	// The function takes the following parameters:
+	// 
+	// 	- mode gst.PadMode 
+	// 	- active bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcActivate func(Instance, gst.PadMode, bool) bool
+	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcEvent func(Instance, *gst.Event) bool
+	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcQuery func(Instance, *gst.Query) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+	// UpdateSrcCaps allows you to override the implementation of the virtual method update_src_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- ret *gst.Caps 
+	// 	- goret gst.FlowReturn 
+	UpdateSrcCaps func(Instance, *gst.Caps) (*gst.Caps, gst.FlowReturn)
+}
+
+// UnsafeApplyAggregatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, overrides AggregatorOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstAggregatorClass)(gclass)
+
+	if overrides.Aggregate != nil {
+		pclass.aggregate = (*[0]byte)(C._gotk4_gstbase1_Aggregator_aggregate)
+	}
+
+	if overrides.Clip != nil {
+		pclass.clip = (*[0]byte)(C._gotk4_gstbase1_Aggregator_clip)
+	}
+
+	if overrides.DecideAllocation != nil {
+		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstbase1_Aggregator_decide_allocation)
+	}
+
+	if overrides.FinishBuffer != nil {
+		pclass.finish_buffer = (*[0]byte)(C._gotk4_gstbase1_Aggregator_finish_buffer)
+	}
+
+	if overrides.FinishBufferList != nil {
+		pclass.finish_buffer_list = (*[0]byte)(C._gotk4_gstbase1_Aggregator_finish_buffer_list)
+	}
+
+	if overrides.FixateSrcCaps != nil {
+		pclass.fixate_src_caps = (*[0]byte)(C._gotk4_gstbase1_Aggregator_fixate_src_caps)
+	}
+
+	if overrides.Flush != nil {
+		pclass.flush = (*[0]byte)(C._gotk4_gstbase1_Aggregator_flush)
+	}
+
+	if overrides.GetNextTime != nil {
+		pclass.get_next_time = (*[0]byte)(C._gotk4_gstbase1_Aggregator_get_next_time)
+	}
+
+	if overrides.Negotiate != nil {
+		pclass.negotiate = (*[0]byte)(C._gotk4_gstbase1_Aggregator_negotiate)
+	}
+
+	if overrides.NegotiatedSrcCaps != nil {
+		pclass.negotiated_src_caps = (*[0]byte)(C._gotk4_gstbase1_Aggregator_negotiated_src_caps)
+	}
+
+	if overrides.PeekNextSample != nil {
+		pclass.peek_next_sample = (*[0]byte)(C._gotk4_gstbase1_Aggregator_peek_next_sample)
+	}
+
+	if overrides.ProposeAllocation != nil {
+		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstbase1_Aggregator_propose_allocation)
+	}
+
+	if overrides.SinkEvent != nil {
+		pclass.sink_event = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_event)
+	}
+
+	if overrides.SinkEventPreQueue != nil {
+		pclass.sink_event_pre_queue = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_event_pre_queue)
+	}
+
+	if overrides.SinkQuery != nil {
+		pclass.sink_query = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_query)
+	}
+
+	if overrides.SinkQueryPreQueue != nil {
+		pclass.sink_query_pre_queue = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_query_pre_queue)
+	}
+
+	if overrides.SrcActivate != nil {
+		pclass.src_activate = (*[0]byte)(C._gotk4_gstbase1_Aggregator_src_activate)
+	}
+
+	if overrides.SrcEvent != nil {
+		pclass.src_event = (*[0]byte)(C._gotk4_gstbase1_Aggregator_src_event)
+	}
+
+	if overrides.SrcQuery != nil {
+		pclass.src_query = (*[0]byte)(C._gotk4_gstbase1_Aggregator_src_query)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstbase1_Aggregator_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_Aggregator_stop)
+	}
+
+	if overrides.UpdateSrcCaps != nil {
+		pclass.update_src_caps = (*[0]byte)(C._gotk4_gstbase1_Aggregator_update_src_caps)
+	}
+}
+
 // AggregatorPadInstance is the instance type used by all types extending GstAggregatorPad. It is used internally by the bindings. Users should use the interface [AggregatorPad] instead.
 type AggregatorPadInstance struct {
 	_ [0]func() // equal guard
@@ -3028,6 +3745,7 @@ type AggregatorPad interface {
 	upcastToGstAggregatorPad() *AggregatorPadInstance
 
 	// DropBuffer wraps gst_aggregator_pad_drop_buffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3035,6 +3753,7 @@ type AggregatorPad interface {
 	// Drop the buffer currently queued in @pad.
 	DropBuffer() bool
 	// HasBuffer wraps gst_aggregator_pad_has_buffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3044,11 +3763,13 @@ type AggregatorPad interface {
 	// gst_aggregator_pad_pop_buffer().
 	HasBuffer() bool
 	// IsEos wraps gst_aggregator_pad_is_eos
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	IsEos() bool
 	// IsInactive wraps gst_aggregator_pad_is_inactive
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3056,11 +3777,13 @@ type AggregatorPad interface {
 	// It is only valid to call this method from #GstAggregatorClass::aggregate()
 	IsInactive() bool
 	// PeekBuffer wraps gst_aggregator_pad_peek_buffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer (nullable) 
 	PeekBuffer() *gst.Buffer
 	// PopBuffer wraps gst_aggregator_pad_pop_buffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer (nullable) 
@@ -3112,6 +3835,7 @@ func UnsafeAggregatorPadToGlibFull(c AggregatorPad) unsafe.Pointer {
 }
 
 // DropBuffer wraps gst_aggregator_pad_drop_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3136,6 +3860,7 @@ func (pad *AggregatorPadInstance) DropBuffer() bool {
 }
 
 // HasBuffer wraps gst_aggregator_pad_has_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3162,6 +3887,7 @@ func (pad *AggregatorPadInstance) HasBuffer() bool {
 }
 
 // IsEos wraps gst_aggregator_pad_is_eos
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3184,6 +3910,7 @@ func (pad *AggregatorPadInstance) IsEos() bool {
 }
 
 // IsInactive wraps gst_aggregator_pad_is_inactive
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3208,6 +3935,7 @@ func (pad *AggregatorPadInstance) IsInactive() bool {
 }
 
 // PeekBuffer wraps gst_aggregator_pad_peek_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer (nullable) 
@@ -3230,6 +3958,7 @@ func (pad *AggregatorPadInstance) PeekBuffer() *gst.Buffer {
 }
 
 // PopBuffer wraps gst_aggregator_pad_pop_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer (nullable) 
@@ -3257,6 +3986,50 @@ func (pad *AggregatorPadInstance) PopBuffer() *gst.Buffer {
 func (o *AggregatorPadInstance) ConnectBufferConsumed(fn func(AggregatorPad, gst.Buffer)) gobject.SignalHandle {
 	return o.Connect("buffer-consumed", fn)
 }
+
+// AggregatorPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AggregatorPadOverrides[Instance AggregatorPad] struct {
+	// gst.PadOverrides allows you to override virtual methods from the parent class gst.Pad
+	gst.PadOverrides[Instance]
+
+	// Flush allows you to override the implementation of the virtual method flush.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregator Aggregator 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Flush func(Instance, Aggregator) gst.FlowReturn
+	// SkipBuffer allows you to override the implementation of the virtual method skip_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregator Aggregator 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SkipBuffer func(Instance, Aggregator, *gst.Buffer) bool
+}
+
+// UnsafeApplyAggregatorPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Pointer, overrides AggregatorPadOverrides[Instance]) {
+	gst.UnsafeApplyPadOverrides(gclass, overrides.PadOverrides)
+
+	pclass := (*C.GstAggregatorPadClass)(gclass)
+
+	if overrides.Flush != nil {
+		pclass.flush = (*[0]byte)(C._gotk4_gstbase1_AggregatorPad_flush)
+	}
+
+	if overrides.SkipBuffer != nil {
+		pclass.skip_buffer = (*[0]byte)(C._gotk4_gstbase1_AggregatorPad_skip_buffer)
+	}
+}
+
 // BaseParseInstance is the instance type used by all types extending GstBaseParse. It is used internally by the bindings. Users should use the interface [BaseParse] instead.
 type BaseParseInstance struct {
 	_ [0]func() // equal guard
@@ -4192,6 +4965,174 @@ func (parse *BaseParseInstance) SetTsAtOffset(offset uint) {
 	runtime.KeepAlive(offset)
 }
 
+// BaseParseOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type BaseParseOverrides[Instance BaseParse] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// Convert allows you to override the implementation of the virtual method convert.
+	// The function takes the following parameters:
+	// 
+	// 	- srcFormat gst.Format 
+	// 	- srcValue int64 
+	// 	- destFormat gst.Format 
+	// 	- destValue *int64 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Convert func(Instance, gst.Format, int64, gst.Format, *int64) bool
+	// Detect allows you to override the implementation of the virtual method detect.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Detect func(Instance, *gst.Buffer) gst.FlowReturn
+	// GetSinkCaps allows you to override the implementation of the virtual method get_sink_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	GetSinkCaps func(Instance, *gst.Caps) *gst.Caps
+	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *BaseParseFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- skipsize int 
+	// 	- goret gst.FlowReturn 
+	HandleFrame func(Instance, *BaseParseFrame) (int, gst.FlowReturn)
+	// PrePushFrame allows you to override the implementation of the virtual method pre_push_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *BaseParseFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	PrePushFrame func(Instance, *BaseParseFrame) gst.FlowReturn
+	// SetSinkCaps allows you to override the implementation of the virtual method set_sink_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetSinkCaps func(Instance, *gst.Caps) bool
+	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkEvent func(Instance, *gst.Event) bool
+	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkQuery func(Instance, *gst.Query) bool
+	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcEvent func(Instance, *gst.Event) bool
+	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcQuery func(Instance, *gst.Query) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+}
+
+// UnsafeApplyBaseParseOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, overrides BaseParseOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstBaseParseClass)(gclass)
+
+	if overrides.Convert != nil {
+		pclass.convert = (*[0]byte)(C._gotk4_gstbase1_BaseParse_convert)
+	}
+
+	if overrides.Detect != nil {
+		pclass.detect = (*[0]byte)(C._gotk4_gstbase1_BaseParse_detect)
+	}
+
+	if overrides.GetSinkCaps != nil {
+		pclass.get_sink_caps = (*[0]byte)(C._gotk4_gstbase1_BaseParse_get_sink_caps)
+	}
+
+	if overrides.HandleFrame != nil {
+		pclass.handle_frame = (*[0]byte)(C._gotk4_gstbase1_BaseParse_handle_frame)
+	}
+
+	if overrides.PrePushFrame != nil {
+		pclass.pre_push_frame = (*[0]byte)(C._gotk4_gstbase1_BaseParse_pre_push_frame)
+	}
+
+	if overrides.SetSinkCaps != nil {
+		pclass.set_sink_caps = (*[0]byte)(C._gotk4_gstbase1_BaseParse_set_sink_caps)
+	}
+
+	if overrides.SinkEvent != nil {
+		pclass.sink_event = (*[0]byte)(C._gotk4_gstbase1_BaseParse_sink_event)
+	}
+
+	if overrides.SinkQuery != nil {
+		pclass.sink_query = (*[0]byte)(C._gotk4_gstbase1_BaseParse_sink_query)
+	}
+
+	if overrides.SrcEvent != nil {
+		pclass.src_event = (*[0]byte)(C._gotk4_gstbase1_BaseParse_src_event)
+	}
+
+	if overrides.SrcQuery != nil {
+		pclass.src_query = (*[0]byte)(C._gotk4_gstbase1_BaseParse_src_query)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseParse_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseParse_stop)
+	}
+}
+
 // BaseSinkInstance is the instance type used by all types extending GstBaseSink. It is used internally by the bindings. Users should use the interface [BaseSink] instead.
 type BaseSinkInstance struct {
 	_ [0]func() // equal guard
@@ -4337,6 +5278,7 @@ type BaseSink interface {
 	// This function should be called with the PREROLL_LOCK held.
 	DoPreroll(*gst.MiniObject) gst.FlowReturn
 	// GetBlocksize wraps gst_base_sink_get_blocksize
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -4345,6 +5287,7 @@ type BaseSink interface {
 	// mode.
 	GetBlocksize() uint
 	// GetDropOutOfSegment wraps gst_base_sink_get_drop_out_of_segment
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4353,6 +5296,7 @@ type BaseSink interface {
 	// the current segment
 	GetDropOutOfSegment() bool
 	// GetLastSample wraps gst_base_sink_get_last_sample
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
@@ -4365,6 +5309,7 @@ type BaseSink interface {
 	// Free-function: gst_sample_unref
 	GetLastSample() *gst.Sample
 	// GetLatency wraps gst_base_sink_get_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -4372,6 +5317,7 @@ type BaseSink interface {
 	// Get the currently configured latency.
 	GetLatency() gst.ClockTime
 	// GetMaxBitrate wraps gst_base_sink_get_max_bitrate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -4379,6 +5325,7 @@ type BaseSink interface {
 	// Get the maximum amount of bits per second that the sink will render.
 	GetMaxBitrate() uint64
 	// GetMaxLateness wraps gst_base_sink_get_max_lateness
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int64 
@@ -4387,6 +5334,7 @@ type BaseSink interface {
 	// more details.
 	GetMaxLateness() int64
 	// GetProcessingDeadline wraps gst_base_sink_get_processing_deadline
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -4396,6 +5344,7 @@ type BaseSink interface {
 	// the processing deadline.
 	GetProcessingDeadline() gst.ClockTime
 	// GetRenderDelay wraps gst_base_sink_get_render_delay
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -4404,6 +5353,7 @@ type BaseSink interface {
 	// information about the render delay.
 	GetRenderDelay() gst.ClockTime
 	// GetStats wraps gst_base_sink_get_stats
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Structure 
@@ -4416,6 +5366,7 @@ type BaseSink interface {
 	// - "rendered" G_TYPE_UINT64   Number of rendered frames
 	GetStats() *gst.Structure
 	// GetSync wraps gst_base_sink_get_sync
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4424,6 +5375,7 @@ type BaseSink interface {
 	// clock.
 	GetSync() bool
 	// GetThrottleTime wraps gst_base_sink_get_throttle_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -4432,6 +5384,7 @@ type BaseSink interface {
 	// maximum buffers per second.
 	GetThrottleTime() uint64
 	// GetTsOffset wraps gst_base_sink_get_ts_offset
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTimeDiff 
@@ -4439,6 +5392,7 @@ type BaseSink interface {
 	// Get the synchronisation offset of @sink.
 	GetTsOffset() gst.ClockTimeDiff
 	// IsAsyncEnabled wraps gst_base_sink_is_async_enabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4447,6 +5401,7 @@ type BaseSink interface {
 	// changes to PAUSED.
 	IsAsyncEnabled() bool
 	// IsLastSampleEnabled wraps gst_base_sink_is_last_sample_enabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4455,6 +5410,7 @@ type BaseSink interface {
 	// the last-sample property.
 	IsLastSampleEnabled() bool
 	// IsQosEnabled wraps gst_base_sink_is_qos_enabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4463,6 +5419,7 @@ type BaseSink interface {
 	// upstream.
 	IsQosEnabled() bool
 	// QueryLatency wraps gst_base_sink_query_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- live bool: if the sink is live 
@@ -4658,6 +5615,7 @@ type BaseSink interface {
 	// sink.
 	WaitClock(gst.ClockTime) (gst.ClockTimeDiff, gst.ClockReturn)
 	// WaitPreroll wraps gst_base_sink_wait_preroll
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -4759,6 +5717,7 @@ func (sink *BaseSinkInstance) DoPreroll(obj *gst.MiniObject) gst.FlowReturn {
 }
 
 // GetBlocksize wraps gst_base_sink_get_blocksize
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -4782,6 +5741,7 @@ func (sink *BaseSinkInstance) GetBlocksize() uint {
 }
 
 // GetDropOutOfSegment wraps gst_base_sink_get_drop_out_of_segment
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4807,6 +5767,7 @@ func (sink *BaseSinkInstance) GetDropOutOfSegment() bool {
 }
 
 // GetLastSample wraps gst_base_sink_get_last_sample
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Sample (nullable) 
@@ -4836,6 +5797,7 @@ func (sink *BaseSinkInstance) GetLastSample() *gst.Sample {
 }
 
 // GetLatency wraps gst_base_sink_get_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -4858,6 +5820,7 @@ func (sink *BaseSinkInstance) GetLatency() gst.ClockTime {
 }
 
 // GetMaxBitrate wraps gst_base_sink_get_max_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -4880,6 +5843,7 @@ func (sink *BaseSinkInstance) GetMaxBitrate() uint64 {
 }
 
 // GetMaxLateness wraps gst_base_sink_get_max_lateness
+// 
 // The function returns the following values:
 // 
 // 	- goret int64 
@@ -4903,6 +5867,7 @@ func (sink *BaseSinkInstance) GetMaxLateness() int64 {
 }
 
 // GetProcessingDeadline wraps gst_base_sink_get_processing_deadline
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -4927,6 +5892,7 @@ func (sink *BaseSinkInstance) GetProcessingDeadline() gst.ClockTime {
 }
 
 // GetRenderDelay wraps gst_base_sink_get_render_delay
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -4950,6 +5916,7 @@ func (sink *BaseSinkInstance) GetRenderDelay() gst.ClockTime {
 }
 
 // GetStats wraps gst_base_sink_get_stats
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Structure 
@@ -4977,6 +5944,7 @@ func (sink *BaseSinkInstance) GetStats() *gst.Structure {
 }
 
 // GetSync wraps gst_base_sink_get_sync
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5002,6 +5970,7 @@ func (sink *BaseSinkInstance) GetSync() bool {
 }
 
 // GetThrottleTime wraps gst_base_sink_get_throttle_time
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -5025,6 +5994,7 @@ func (sink *BaseSinkInstance) GetThrottleTime() uint64 {
 }
 
 // GetTsOffset wraps gst_base_sink_get_ts_offset
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTimeDiff 
@@ -5047,6 +6017,7 @@ func (sink *BaseSinkInstance) GetTsOffset() gst.ClockTimeDiff {
 }
 
 // IsAsyncEnabled wraps gst_base_sink_is_async_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5072,6 +6043,7 @@ func (sink *BaseSinkInstance) IsAsyncEnabled() bool {
 }
 
 // IsLastSampleEnabled wraps gst_base_sink_is_last_sample_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5097,6 +6069,7 @@ func (sink *BaseSinkInstance) IsLastSampleEnabled() bool {
 }
 
 // IsQosEnabled wraps gst_base_sink_is_qos_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5122,6 +6095,7 @@ func (sink *BaseSinkInstance) IsQosEnabled() bool {
 }
 
 // QueryLatency wraps gst_base_sink_query_latency
+// 
 // The function returns the following values:
 // 
 // 	- live bool: if the sink is live 
@@ -5534,6 +6508,7 @@ func (sink *BaseSinkInstance) WaitClock(time gst.ClockTime) (gst.ClockTimeDiff, 
 }
 
 // WaitPreroll wraps gst_base_sink_wait_preroll
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -5570,6 +6545,241 @@ func (sink *BaseSinkInstance) WaitPreroll() gst.FlowReturn {
 	goret = gst.FlowReturn(cret)
 
 	return goret
+}
+
+// BaseSinkOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type BaseSinkOverrides[Instance BaseSink] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// ActivatePull allows you to override the implementation of the virtual method activate_pull.
+	// The function takes the following parameters:
+	// 
+	// 	- active bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ActivatePull func(Instance, bool) bool
+	// Event allows you to override the implementation of the virtual method event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Event func(Instance, *gst.Event) bool
+	// Fixate allows you to override the implementation of the virtual method fixate.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	Fixate func(Instance, *gst.Caps) *gst.Caps
+	// GetCaps allows you to override the implementation of the virtual method get_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps (nullable) 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	GetCaps func(Instance, *gst.Caps) *gst.Caps
+	// GetTimes allows you to override the implementation of the virtual method get_times.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- start gst.ClockTime: the start #GstClockTime 
+	// 	- end gst.ClockTime: the end #GstClockTime 
+	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
+	// Prepare allows you to override the implementation of the virtual method prepare.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Prepare func(Instance, *gst.Buffer) gst.FlowReturn
+	// PrepareList allows you to override the implementation of the virtual method prepare_list.
+	// The function takes the following parameters:
+	// 
+	// 	- bufferList *gst.BufferList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	PrepareList func(Instance, *gst.BufferList) gst.FlowReturn
+	// Preroll allows you to override the implementation of the virtual method preroll.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Preroll func(Instance, *gst.Buffer) gst.FlowReturn
+	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ProposeAllocation func(Instance, *gst.Query) bool
+	// Query allows you to override the implementation of the virtual method query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Query func(Instance, *gst.Query) bool
+	// Render allows you to override the implementation of the virtual method render.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Render func(Instance, *gst.Buffer) gst.FlowReturn
+	// RenderList allows you to override the implementation of the virtual method render_list.
+	// The function takes the following parameters:
+	// 
+	// 	- bufferList *gst.BufferList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	RenderList func(Instance, *gst.BufferList) gst.FlowReturn
+	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetCaps func(Instance, *gst.Caps) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+	// Unlock allows you to override the implementation of the virtual method unlock.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Unlock func(Instance) bool
+	// UnlockStop allows you to override the implementation of the virtual method unlock_stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	UnlockStop func(Instance) bool
+	// WaitEvent allows you to override the implementation of the virtual method wait_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	WaitEvent func(Instance, *gst.Event) gst.FlowReturn
+}
+
+// UnsafeApplyBaseSinkOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, overrides BaseSinkOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstBaseSinkClass)(gclass)
+
+	if overrides.ActivatePull != nil {
+		pclass.activate_pull = (*[0]byte)(C._gotk4_gstbase1_BaseSink_activate_pull)
+	}
+
+	if overrides.Event != nil {
+		pclass.event = (*[0]byte)(C._gotk4_gstbase1_BaseSink_event)
+	}
+
+	if overrides.Fixate != nil {
+		pclass.fixate = (*[0]byte)(C._gotk4_gstbase1_BaseSink_fixate)
+	}
+
+	if overrides.GetCaps != nil {
+		pclass.get_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSink_get_caps)
+	}
+
+	if overrides.GetTimes != nil {
+		pclass.get_times = (*[0]byte)(C._gotk4_gstbase1_BaseSink_get_times)
+	}
+
+	if overrides.Prepare != nil {
+		pclass.prepare = (*[0]byte)(C._gotk4_gstbase1_BaseSink_prepare)
+	}
+
+	if overrides.PrepareList != nil {
+		pclass.prepare_list = (*[0]byte)(C._gotk4_gstbase1_BaseSink_prepare_list)
+	}
+
+	if overrides.Preroll != nil {
+		pclass.preroll = (*[0]byte)(C._gotk4_gstbase1_BaseSink_preroll)
+	}
+
+	if overrides.ProposeAllocation != nil {
+		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseSink_propose_allocation)
+	}
+
+	if overrides.Query != nil {
+		pclass.query = (*[0]byte)(C._gotk4_gstbase1_BaseSink_query)
+	}
+
+	if overrides.Render != nil {
+		pclass.render = (*[0]byte)(C._gotk4_gstbase1_BaseSink_render)
+	}
+
+	if overrides.RenderList != nil {
+		pclass.render_list = (*[0]byte)(C._gotk4_gstbase1_BaseSink_render_list)
+	}
+
+	if overrides.SetCaps != nil {
+		pclass.set_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSink_set_caps)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseSink_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseSink_stop)
+	}
+
+	if overrides.Unlock != nil {
+		pclass.unlock = (*[0]byte)(C._gotk4_gstbase1_BaseSink_unlock)
+	}
+
+	if overrides.UnlockStop != nil {
+		pclass.unlock_stop = (*[0]byte)(C._gotk4_gstbase1_BaseSink_unlock_stop)
+	}
+
+	if overrides.WaitEvent != nil {
+		pclass.wait_event = (*[0]byte)(C._gotk4_gstbase1_BaseSink_wait_event)
+	}
 }
 
 // BaseSrcInstance is the instance type used by all types extending GstBaseSrc. It is used internally by the bindings. Users should use the interface [BaseSrc] instead.
@@ -5699,6 +6909,7 @@ type BaseSrc interface {
 	upcastToGstBaseSrc() *BaseSrcInstance
 
 	// GetAllocator wraps gst_base_src_get_allocator
+	// 
 	// The function returns the following values:
 	// 
 	// 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -5711,6 +6922,7 @@ type BaseSrc interface {
 	// Unref the @allocator after usage.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBlocksize wraps gst_base_src_get_blocksize
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -5718,11 +6930,13 @@ type BaseSrc interface {
 	// Get the number of bytes that @src will push out with each buffer.
 	GetBlocksize() uint
 	// GetBufferPool wraps gst_base_src_get_buffer_pool
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.BufferPool (nullable) 
 	GetBufferPool() gst.BufferPool
 	// GetDoTimestamp wraps gst_base_src_get_do_timestamp
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5730,6 +6944,7 @@ type BaseSrc interface {
 	// Query if @src timestamps outgoing buffers based on the current running_time.
 	GetDoTimestamp() bool
 	// IsAsync wraps gst_base_src_is_async
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5737,6 +6952,7 @@ type BaseSrc interface {
 	// Get the current async behaviour of @src. See also gst_base_src_set_async().
 	IsAsync() bool
 	// IsLive wraps gst_base_src_is_live
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5744,6 +6960,7 @@ type BaseSrc interface {
 	// Check if an element is in live mode.
 	IsLive() bool
 	// Negotiate wraps gst_base_src_negotiate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5823,6 +7040,7 @@ type BaseSrc interface {
 	// which can be useful to ensure events ordering.
 	PushSegment(*gst.Segment) bool
 	// QueryLatency wraps gst_base_src_query_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- live bool: if the source is live 
@@ -5947,6 +7165,7 @@ type BaseSrc interface {
 	// helper thread.
 	StartComplete(gst.FlowReturn)
 	// StartWait wraps gst_base_src_start_wait
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -5977,6 +7196,7 @@ type BaseSrc interface {
 	// mode.
 	SubmitBufferList(*gst.BufferList)
 	// WaitPlaying wraps gst_base_src_wait_playing
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -6033,6 +7253,7 @@ func UnsafeBaseSrcToGlibFull(c BaseSrc) unsafe.Pointer {
 }
 
 // GetAllocator wraps gst_base_src_get_allocator
+// 
 // The function returns the following values:
 // 
 // 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -6067,6 +7288,7 @@ func (src *BaseSrcInstance) GetAllocator() (gst.Allocator, gst.AllocationParams)
 }
 
 // GetBlocksize wraps gst_base_src_get_blocksize
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -6089,6 +7311,7 @@ func (src *BaseSrcInstance) GetBlocksize() uint {
 }
 
 // GetBufferPool wraps gst_base_src_get_buffer_pool
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.BufferPool (nullable) 
@@ -6111,6 +7334,7 @@ func (src *BaseSrcInstance) GetBufferPool() gst.BufferPool {
 }
 
 // GetDoTimestamp wraps gst_base_src_get_do_timestamp
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6135,6 +7359,7 @@ func (src *BaseSrcInstance) GetDoTimestamp() bool {
 }
 
 // IsAsync wraps gst_base_src_is_async
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6159,6 +7384,7 @@ func (src *BaseSrcInstance) IsAsync() bool {
 }
 
 // IsLive wraps gst_base_src_is_live
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6183,6 +7409,7 @@ func (src *BaseSrcInstance) IsLive() bool {
 }
 
 // Negotiate wraps gst_base_src_negotiate
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6345,6 +7572,7 @@ func (src *BaseSrcInstance) PushSegment(segment *gst.Segment) bool {
 }
 
 // QueryLatency wraps gst_base_src_query_latency
+// 
 // The function returns the following values:
 // 
 // 	- live bool: if the source is live 
@@ -6615,6 +7843,7 @@ func (basesrc *BaseSrcInstance) StartComplete(ret gst.FlowReturn) {
 }
 
 // StartWait wraps gst_base_src_start_wait
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -6671,6 +7900,7 @@ func (src *BaseSrcInstance) SubmitBufferList(bufferList *gst.BufferList) {
 }
 
 // WaitPlaying wraps gst_base_src_wait_playing
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -6697,6 +7927,235 @@ func (src *BaseSrcInstance) WaitPlaying() gst.FlowReturn {
 	goret = gst.FlowReturn(cret)
 
 	return goret
+}
+
+// BaseSrcOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type BaseSrcOverrides[Instance BaseSrc] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// Alloc allows you to override the implementation of the virtual method alloc.
+	// The function takes the following parameters:
+	// 
+	// 	- offset uint64 
+	// 	- size uint 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- buf *gst.Buffer (nullable) 
+	// 	- goret gst.FlowReturn 
+	Alloc func(Instance, uint64, uint) (*gst.Buffer, gst.FlowReturn)
+	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DecideAllocation func(Instance, *gst.Query) bool
+	// DoSeek allows you to override the implementation of the virtual method do_seek.
+	// The function takes the following parameters:
+	// 
+	// 	- segment *gst.Segment 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DoSeek func(Instance, *gst.Segment) bool
+	// Event allows you to override the implementation of the virtual method event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Event func(Instance, *gst.Event) bool
+	// Fill allows you to override the implementation of the virtual method fill.
+	// The function takes the following parameters:
+	// 
+	// 	- offset uint64 
+	// 	- size uint 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Fill func(Instance, uint64, uint, *gst.Buffer) gst.FlowReturn
+	// Fixate allows you to override the implementation of the virtual method fixate.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	Fixate func(Instance, *gst.Caps) *gst.Caps
+	// GetCaps allows you to override the implementation of the virtual method get_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps (nullable) 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	GetCaps func(Instance, *gst.Caps) *gst.Caps
+	// GetSize allows you to override the implementation of the virtual method get_size.
+	// The function returns the following values:
+	// 
+	// 	- size uint64 
+	// 	- goret bool 
+	GetSize func(Instance) (uint64, bool)
+	// GetTimes allows you to override the implementation of the virtual method get_times.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- start gst.ClockTime 
+	// 	- end gst.ClockTime 
+	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
+	// IsSeekable allows you to override the implementation of the virtual method is_seekable.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	IsSeekable func(Instance) bool
+	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Negotiate func(Instance) bool
+	// PrepareSeekSegment allows you to override the implementation of the virtual method prepare_seek_segment.
+	// The function takes the following parameters:
+	// 
+	// 	- seek *gst.Event 
+	// 	- segment *gst.Segment 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	PrepareSeekSegment func(Instance, *gst.Event, *gst.Segment) bool
+	// Query allows you to override the implementation of the virtual method query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Query func(Instance, *gst.Query) bool
+	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: a #GstCaps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetCaps func(Instance, *gst.Caps) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+	// Unlock allows you to override the implementation of the virtual method unlock.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Unlock func(Instance) bool
+	// UnlockStop allows you to override the implementation of the virtual method unlock_stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	UnlockStop func(Instance) bool
+}
+
+// UnsafeApplyBaseSrcOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overrides BaseSrcOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstBaseSrcClass)(gclass)
+
+	if overrides.Alloc != nil {
+		pclass.alloc = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_alloc)
+	}
+
+	if overrides.DecideAllocation != nil {
+		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_decide_allocation)
+	}
+
+	if overrides.DoSeek != nil {
+		pclass.do_seek = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_do_seek)
+	}
+
+	if overrides.Event != nil {
+		pclass.event = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_event)
+	}
+
+	if overrides.Fill != nil {
+		pclass.fill = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_fill)
+	}
+
+	if overrides.Fixate != nil {
+		pclass.fixate = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_fixate)
+	}
+
+	if overrides.GetCaps != nil {
+		pclass.get_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_get_caps)
+	}
+
+	if overrides.GetSize != nil {
+		pclass.get_size = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_get_size)
+	}
+
+	if overrides.GetTimes != nil {
+		pclass.get_times = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_get_times)
+	}
+
+	if overrides.IsSeekable != nil {
+		pclass.is_seekable = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_is_seekable)
+	}
+
+	if overrides.Negotiate != nil {
+		pclass.negotiate = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_negotiate)
+	}
+
+	if overrides.PrepareSeekSegment != nil {
+		pclass.prepare_seek_segment = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_prepare_seek_segment)
+	}
+
+	if overrides.Query != nil {
+		pclass.query = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_query)
+	}
+
+	if overrides.SetCaps != nil {
+		pclass.set_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_set_caps)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_stop)
+	}
+
+	if overrides.Unlock != nil {
+		pclass.unlock = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_unlock)
+	}
+
+	if overrides.UnlockStop != nil {
+		pclass.unlock_stop = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_unlock_stop)
+	}
 }
 
 // BaseTransformInstance is the instance type used by all types extending GstBaseTransform. It is used internally by the bindings. Users should use the interface [BaseTransform] instead.
@@ -6818,6 +8277,7 @@ type BaseTransform interface {
 	upcastToGstBaseTransform() *BaseTransformInstance
 
 	// GetAllocator wraps gst_base_transform_get_allocator
+	// 
 	// The function returns the following values:
 	// 
 	// 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -6830,11 +8290,13 @@ type BaseTransform interface {
 	// Unref the @allocator after use.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_base_transform_get_buffer_pool
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.BufferPool (nullable) 
 	GetBufferPool() gst.BufferPool
 	// IsInPlace wraps gst_base_transform_is_in_place
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -6842,6 +8304,7 @@ type BaseTransform interface {
 	// See if @trans is configured as a in_place transform.
 	IsInPlace() bool
 	// IsPassthrough wraps gst_base_transform_is_passthrough
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -6849,6 +8312,7 @@ type BaseTransform interface {
 	// See if @trans is configured as a passthrough transform.
 	IsPassthrough() bool
 	// IsQosEnabled wraps gst_base_transform_is_qos_enabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -6856,6 +8320,7 @@ type BaseTransform interface {
 	// Queries if the transform will handle QoS.
 	IsQosEnabled() bool
 	// Reconfigure wraps gst_base_transform_reconfigure
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7034,6 +8499,7 @@ func UnsafeBaseTransformToGlibFull(c BaseTransform) unsafe.Pointer {
 }
 
 // GetAllocator wraps gst_base_transform_get_allocator
+// 
 // The function returns the following values:
 // 
 // 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -7068,6 +8534,7 @@ func (trans *BaseTransformInstance) GetAllocator() (gst.Allocator, gst.Allocatio
 }
 
 // GetBufferPool wraps gst_base_transform_get_buffer_pool
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.BufferPool (nullable) 
@@ -7090,6 +8557,7 @@ func (trans *BaseTransformInstance) GetBufferPool() gst.BufferPool {
 }
 
 // IsInPlace wraps gst_base_transform_is_in_place
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7114,6 +8582,7 @@ func (trans *BaseTransformInstance) IsInPlace() bool {
 }
 
 // IsPassthrough wraps gst_base_transform_is_passthrough
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7138,6 +8607,7 @@ func (trans *BaseTransformInstance) IsPassthrough() bool {
 }
 
 // IsQosEnabled wraps gst_base_transform_is_qos_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7162,6 +8632,7 @@ func (trans *BaseTransformInstance) IsQosEnabled() bool {
 }
 
 // Reconfigure wraps gst_base_transform_reconfigure
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7432,6 +8903,314 @@ func (trans *BaseTransformInstance) UpdateSrcCaps(updatedCaps *gst.Caps) bool {
 	return goret
 }
 
+// BaseTransformOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type BaseTransformOverrides[Instance BaseTransform] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// AcceptCaps allows you to override the implementation of the virtual method accept_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	AcceptCaps func(Instance, gst.PadDirection, *gst.Caps) bool
+	// BeforeTransform allows you to override the implementation of the virtual method before_transform.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	BeforeTransform func(Instance, *gst.Buffer)
+	// CopyMetadata allows you to override the implementation of the virtual method copy_metadata.
+	// The function takes the following parameters:
+	// 
+	// 	- input *gst.Buffer 
+	// 	- outbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	CopyMetadata func(Instance, *gst.Buffer, *gst.Buffer) bool
+	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DecideAllocation func(Instance, *gst.Query) bool
+	// FilterMeta allows you to override the implementation of the virtual method filter_meta.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 	- api gobject.Type 
+	// 	- params *gst.Structure 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	FilterMeta func(Instance, *gst.Query, gobject.Type, *gst.Structure) bool
+	// FixateCaps allows you to override the implementation of the virtual method fixate_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 	- othercaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	FixateCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
+	// GenerateOutput allows you to override the implementation of the virtual method generate_output.
+	// The function returns the following values:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- goret gst.FlowReturn 
+	GenerateOutput func(Instance) (*gst.Buffer, gst.FlowReturn)
+	// GetUnitSize allows you to override the implementation of the virtual method get_unit_size.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- size uint 
+	// 	- goret bool 
+	GetUnitSize func(Instance, *gst.Caps) (uint, bool)
+	// PrepareOutputBuffer allows you to override the implementation of the virtual method prepare_output_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- input *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- goret gst.FlowReturn 
+	PrepareOutputBuffer func(Instance, *gst.Buffer) (*gst.Buffer, gst.FlowReturn)
+	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- decideQuery *gst.Query 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ProposeAllocation func(Instance, *gst.Query, *gst.Query) bool
+	// Query allows you to override the implementation of the virtual method query.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Query func(Instance, gst.PadDirection, *gst.Query) bool
+	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- incaps *gst.Caps 
+	// 	- outcaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetCaps func(Instance, *gst.Caps, *gst.Caps) bool
+	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkEvent func(Instance, *gst.Event) bool
+	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcEvent func(Instance, *gst.Event) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+	// SubmitInputBuffer allows you to override the implementation of the virtual method submit_input_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- isDiscont bool 
+	// 	- input *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	SubmitInputBuffer func(Instance, bool, *gst.Buffer) gst.FlowReturn
+	// Transform allows you to override the implementation of the virtual method transform.
+	// The function takes the following parameters:
+	// 
+	// 	- inbuf *gst.Buffer 
+	// 	- outbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Transform func(Instance, *gst.Buffer, *gst.Buffer) gst.FlowReturn
+	// TransformCaps allows you to override the implementation of the virtual method transform_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	TransformCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
+	// TransformIP allows you to override the implementation of the virtual method transform_ip.
+	// The function takes the following parameters:
+	// 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	TransformIP func(Instance, *gst.Buffer) gst.FlowReturn
+	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- meta *gst.Meta 
+	// 	- inbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
+	// TransformSize allows you to override the implementation of the virtual method transform_size.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 	- size uint 
+	// 	- othercaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- othersize uint 
+	// 	- goret bool 
+	TransformSize func(Instance, gst.PadDirection, *gst.Caps, uint, *gst.Caps) (uint, bool)
+}
+
+// UnsafeApplyBaseTransformOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Pointer, overrides BaseTransformOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstBaseTransformClass)(gclass)
+
+	if overrides.AcceptCaps != nil {
+		pclass.accept_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_accept_caps)
+	}
+
+	if overrides.BeforeTransform != nil {
+		pclass.before_transform = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_before_transform)
+	}
+
+	if overrides.CopyMetadata != nil {
+		pclass.copy_metadata = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_copy_metadata)
+	}
+
+	if overrides.DecideAllocation != nil {
+		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_decide_allocation)
+	}
+
+	if overrides.FilterMeta != nil {
+		pclass.filter_meta = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_filter_meta)
+	}
+
+	if overrides.FixateCaps != nil {
+		pclass.fixate_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_fixate_caps)
+	}
+
+	if overrides.GenerateOutput != nil {
+		pclass.generate_output = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_generate_output)
+	}
+
+	if overrides.GetUnitSize != nil {
+		pclass.get_unit_size = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_get_unit_size)
+	}
+
+	if overrides.PrepareOutputBuffer != nil {
+		pclass.prepare_output_buffer = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_prepare_output_buffer)
+	}
+
+	if overrides.ProposeAllocation != nil {
+		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_propose_allocation)
+	}
+
+	if overrides.Query != nil {
+		pclass.query = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_query)
+	}
+
+	if overrides.SetCaps != nil {
+		pclass.set_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_set_caps)
+	}
+
+	if overrides.SinkEvent != nil {
+		pclass.sink_event = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_sink_event)
+	}
+
+	if overrides.SrcEvent != nil {
+		pclass.src_event = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_src_event)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_stop)
+	}
+
+	if overrides.SubmitInputBuffer != nil {
+		pclass.submit_input_buffer = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_submit_input_buffer)
+	}
+
+	if overrides.Transform != nil {
+		pclass.transform = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform)
+	}
+
+	if overrides.TransformCaps != nil {
+		pclass.transform_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_caps)
+	}
+
+	if overrides.TransformIP != nil {
+		pclass.transform_ip = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_ip)
+	}
+
+	if overrides.TransformMeta != nil {
+		pclass.transform_meta = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_meta)
+	}
+
+	if overrides.TransformSize != nil {
+		pclass.transform_size = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_size)
+	}
+}
+
 // CollectPadsInstance is the instance type used by all types extending GstCollectPads. It is used internally by the bindings. Users should use the interface [CollectPads] instead.
 type CollectPadsInstance struct {
 	_ [0]func() // equal guard
@@ -7483,6 +9262,7 @@ type CollectPads interface {
 	upcastToGstCollectPads() *CollectPadsInstance
 
 	// Available wraps gst_collect_pads_available
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -7823,6 +9603,7 @@ func UnsafeCollectPadsToGlibFull(c CollectPads) unsafe.Pointer {
 }
 
 // NewCollectPads wraps gst_collect_pads_new
+// 
 // The function returns the following values:
 // 
 // 	- goret CollectPads 
@@ -7843,6 +9624,7 @@ func NewCollectPads() CollectPads {
 }
 
 // Available wraps gst_collect_pads_available
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -8506,6 +10288,20 @@ func (pads *CollectPadsInstance) TakeBuffer(data *CollectData, size uint) *gst.B
 	return goret
 }
 
+// CollectPadsOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type CollectPadsOverrides[Instance CollectPads] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyCollectPadsOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyCollectPadsOverrides[Instance CollectPads](gclass unsafe.Pointer, overrides CollectPadsOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // DataQueueInstance is the instance type used by all types extending GstDataQueue. It is used internally by the bindings. Users should use the interface [DataQueue] instead.
 type DataQueueInstance struct {
 	_ [0]func() // equal guard
@@ -8582,6 +10378,7 @@ func UnsafeDataQueueToGlibFull(c DataQueue) unsafe.Pointer {
 func (o *DataQueueInstance) ConnectEmpty(fn func(DataQueue)) gobject.SignalHandle {
 	return o.Connect("empty", fn)
 }
+
 // ConnectFull connects the provided callback to the "full" signal
 //
 // Reports that the queue became full (full).
@@ -8591,6 +10388,35 @@ func (o *DataQueueInstance) ConnectEmpty(fn func(DataQueue)) gobject.SignalHandl
 func (o *DataQueueInstance) ConnectFull(fn func(DataQueue)) gobject.SignalHandle {
 	return o.Connect("full", fn)
 }
+
+// DataQueueOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type DataQueueOverrides[Instance DataQueue] struct {
+	// gobject.ObjectOverrides allows you to override virtual methods from the parent class gobject.Object
+	gobject.ObjectOverrides[Instance]
+
+	// Empty allows you to override the implementation of the virtual method empty.
+	Empty func(Instance)
+	// Full allows you to override the implementation of the virtual method full.
+	Full func(Instance)
+}
+
+// UnsafeApplyDataQueueOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, overrides DataQueueOverrides[Instance]) {
+	gobject.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstDataQueueClass)(gclass)
+
+	if overrides.Empty != nil {
+		pclass.empty = (*[0]byte)(C._gotk4_gstbase1_DataQueue_empty)
+	}
+
+	if overrides.Full != nil {
+		pclass.full = (*[0]byte)(C._gotk4_gstbase1_DataQueue_full)
+	}
+}
+
 // PushSrcInstance is the instance type used by all types extending GstPushSrc. It is used internally by the bindings. Users should use the interface [PushSrc] instead.
 type PushSrcInstance struct {
 	_ [0]func() // equal guard
@@ -8667,7 +10493,48 @@ func UnsafePushSrcToGlibFull(c PushSrc) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// PushSrcOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type PushSrcOverrides[Instance PushSrc] struct {
+	// BaseSrcOverrides allows you to override virtual methods from the parent class BaseSrc
+	BaseSrcOverrides[Instance]
+
+	// Alloc allows you to override the implementation of the virtual method alloc.
+	// The function returns the following values:
+	// 
+	// 	- buf *gst.Buffer (nullable) 
+	// 	- goret gst.FlowReturn 
+	Alloc func(Instance) (*gst.Buffer, gst.FlowReturn)
+	// Fill allows you to override the implementation of the virtual method fill.
+	// The function takes the following parameters:
+	// 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Fill func(Instance, *gst.Buffer) gst.FlowReturn
+}
+
+// UnsafeApplyPushSrcOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overrides PushSrcOverrides[Instance]) {
+	UnsafeApplyBaseSrcOverrides(gclass, overrides.BaseSrcOverrides)
+
+	pclass := (*C.GstPushSrcClass)(gclass)
+
+	if overrides.Alloc != nil {
+		pclass.alloc = (*[0]byte)(C._gotk4_gstbase1_PushSrc_alloc)
+	}
+
+	if overrides.Fill != nil {
+		pclass.fill = (*[0]byte)(C._gotk4_gstbase1_PushSrc_fill)
+	}
+}
+
 // AdapterClass wraps GstAdapterClass
+// 
+// AdapterClass is the type struct for [Adapter]
 type AdapterClass struct {
 	*adapterClass
 }
@@ -8682,31 +10549,6 @@ func UnsafeAdapterClassFromGlibBorrow(p unsafe.Pointer) *AdapterClass {
 	return &AdapterClass{&adapterClass{(*C.GstAdapterClass)(p)}}
 }
 
-// UnsafeAdapterClassFromGlibNone is used to convert raw C.GstAdapterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAdapterClassFromGlibNone(p unsafe.Pointer) *AdapterClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAdapterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.adapterClass,
-		func (intern *adapterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAdapterClassFromGlibFull is used to convert raw C.GstAdapterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAdapterClassFromGlibFull(p unsafe.Pointer) *AdapterClass {
-	wrapped := UnsafeAdapterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.adapterClass,
-		func (intern *adapterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAdapterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AdapterClass] is expected to work anymore.
@@ -8719,14 +10561,15 @@ func UnsafeAdapterClassToGlibNone(a *AdapterClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAdapterClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAdapterClassToGlibFull(a *AdapterClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.adapterClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AdapterClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AdapterClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafeAdapterClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AdapterClass) {}, a)
+	return parent
 }
+
 // AggregatorClass wraps GstAggregatorClass
 //
 // The aggregator base class will handle in a thread-safe way all manners of
@@ -8738,6 +10581,8 @@ func UnsafeAdapterClassToGlibFull(a *AdapterClass) unsafe.Pointer {
 // 
 // Basically, a simple implementation will override @aggregate, and call
 // _finish_buffer from inside that function.
+// 
+// AggregatorClass is the type struct for [Aggregator]
 type AggregatorClass struct {
 	*aggregatorClass
 }
@@ -8752,31 +10597,6 @@ func UnsafeAggregatorClassFromGlibBorrow(p unsafe.Pointer) *AggregatorClass {
 	return &AggregatorClass{&aggregatorClass{(*C.GstAggregatorClass)(p)}}
 }
 
-// UnsafeAggregatorClassFromGlibNone is used to convert raw C.GstAggregatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAggregatorClassFromGlibNone(p unsafe.Pointer) *AggregatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAggregatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.aggregatorClass,
-		func (intern *aggregatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAggregatorClassFromGlibFull is used to convert raw C.GstAggregatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAggregatorClassFromGlibFull(p unsafe.Pointer) *AggregatorClass {
-	wrapped := UnsafeAggregatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.aggregatorClass,
-		func (intern *aggregatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAggregatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AggregatorClass] is expected to work anymore.
@@ -8789,15 +10609,18 @@ func UnsafeAggregatorClassToGlibNone(a *AggregatorClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAggregatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAggregatorClassToGlibFull(a *AggregatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.aggregatorClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AggregatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AggregatorClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeAggregatorClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AggregatorClass) {}, a)
+	return parent
 }
+
 // AggregatorPadClass wraps GstAggregatorPadClass
+// 
+// AggregatorPadClass is the type struct for [AggregatorPad]
 type AggregatorPadClass struct {
 	*aggregatorPadClass
 }
@@ -8812,31 +10635,6 @@ func UnsafeAggregatorPadClassFromGlibBorrow(p unsafe.Pointer) *AggregatorPadClas
 	return &AggregatorPadClass{&aggregatorPadClass{(*C.GstAggregatorPadClass)(p)}}
 }
 
-// UnsafeAggregatorPadClassFromGlibNone is used to convert raw C.GstAggregatorPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAggregatorPadClassFromGlibNone(p unsafe.Pointer) *AggregatorPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAggregatorPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.aggregatorPadClass,
-		func (intern *aggregatorPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAggregatorPadClassFromGlibFull is used to convert raw C.GstAggregatorPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAggregatorPadClassFromGlibFull(p unsafe.Pointer) *AggregatorPadClass {
-	wrapped := UnsafeAggregatorPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.aggregatorPadClass,
-		func (intern *aggregatorPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAggregatorPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AggregatorPadClass] is expected to work anymore.
@@ -8849,18 +10647,21 @@ func UnsafeAggregatorPadClassToGlibNone(a *AggregatorPadClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAggregatorPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAggregatorPadClassToGlibFull(a *AggregatorPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.aggregatorPadClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AggregatorPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AggregatorPadClass) ParentClass() *gst.PadClass {
+	parent := gst.UnsafePadClassFromGlibBorrow(UnsafeAggregatorPadClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AggregatorPadClass) {}, a)
+	return parent
 }
+
 // BaseParseClass wraps GstBaseParseClass
 //
 // Subclasses can override any of the available virtual methods or not, as
 // needed. At minimum @handle_frame needs to be overridden.
+// 
+// BaseParseClass is the type struct for [BaseParse]
 type BaseParseClass struct {
 	*baseParseClass
 }
@@ -8875,31 +10676,6 @@ func UnsafeBaseParseClassFromGlibBorrow(p unsafe.Pointer) *BaseParseClass {
 	return &BaseParseClass{&baseParseClass{(*C.GstBaseParseClass)(p)}}
 }
 
-// UnsafeBaseParseClassFromGlibNone is used to convert raw C.GstBaseParseClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBaseParseClassFromGlibNone(p unsafe.Pointer) *BaseParseClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeBaseParseClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.baseParseClass,
-		func (intern *baseParseClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeBaseParseClassFromGlibFull is used to convert raw C.GstBaseParseClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBaseParseClassFromGlibFull(p unsafe.Pointer) *BaseParseClass {
-	wrapped := UnsafeBaseParseClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.baseParseClass,
-		func (intern *baseParseClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeBaseParseClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [BaseParseClass] is expected to work anymore.
@@ -8912,14 +10688,15 @@ func UnsafeBaseParseClassToGlibNone(b *BaseParseClass) unsafe.Pointer {
 	return unsafe.Pointer(b.native)
 }
 
-// UnsafeBaseParseClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeBaseParseClassToGlibFull(b *BaseParseClass) unsafe.Pointer {
-	runtime.SetFinalizer(b.baseParseClass, nil)
-	_p := unsafe.Pointer(b.native)
-	b.native = nil // BaseParseClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (b *BaseParseClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeBaseParseClassToGlibNone(b))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *BaseParseClass) {}, b)
+	return parent
 }
+
 // BaseParseFrame wraps GstBaseParseFrame
 //
 // Frame (context) data passed to each frame parsing virtual methods.  In
@@ -8955,7 +10732,7 @@ func UnsafeBaseParseFrameFromGlibBorrow(p unsafe.Pointer) *BaseParseFrame {
 	return &BaseParseFrame{&baseParseFrame{(*C.GstBaseParseFrame)(p)}}
 }
 
-// UnsafeBaseParseFrameFromGlibNone is used to convert raw C.GstBaseParseFrame pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBaseParseFrameFromGlibNone is used to convert raw C.GstBaseParseFrame pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBaseParseFrameFromGlibNone(p unsafe.Pointer) *BaseParseFrame {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBaseParseFrameFromGlibBorrow(p)
@@ -8968,7 +10745,7 @@ func UnsafeBaseParseFrameFromGlibNone(p unsafe.Pointer) *BaseParseFrame {
 	return wrapped
 }
 
-// UnsafeBaseParseFrameFromGlibFull is used to convert raw C.GstBaseParseFrame pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBaseParseFrameFromGlibFull is used to convert raw C.GstBaseParseFrame pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBaseParseFrameFromGlibFull(p unsafe.Pointer) *BaseParseFrame {
 	wrapped := UnsafeBaseParseFrameFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -9000,6 +10777,7 @@ func UnsafeBaseParseFrameToGlibFull(b *BaseParseFrame) unsafe.Pointer {
 	b.native = nil // BaseParseFrame is invalid from here on
 	return _p
 }
+
 // NewBaseParseFrame wraps gst_base_parse_frame_new
 // 
 // The function takes the following parameters:
@@ -9040,6 +10818,7 @@ func NewBaseParseFrame(buffer *gst.Buffer, flags BaseParseFrameFlags, overhead i
 }
 
 // Copy wraps gst_base_parse_frame_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *BaseParseFrame 
@@ -9082,6 +10861,8 @@ func (frame *BaseParseFrame) Init() {
 // Subclasses can override any of the available virtual methods or not, as
 // needed. At the minimum, the @render method should be overridden to
 // output/present buffers.
+// 
+// BaseSinkClass is the type struct for [BaseSink]
 type BaseSinkClass struct {
 	*baseSinkClass
 }
@@ -9096,31 +10877,6 @@ func UnsafeBaseSinkClassFromGlibBorrow(p unsafe.Pointer) *BaseSinkClass {
 	return &BaseSinkClass{&baseSinkClass{(*C.GstBaseSinkClass)(p)}}
 }
 
-// UnsafeBaseSinkClassFromGlibNone is used to convert raw C.GstBaseSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBaseSinkClassFromGlibNone(p unsafe.Pointer) *BaseSinkClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeBaseSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.baseSinkClass,
-		func (intern *baseSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeBaseSinkClassFromGlibFull is used to convert raw C.GstBaseSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBaseSinkClassFromGlibFull(p unsafe.Pointer) *BaseSinkClass {
-	wrapped := UnsafeBaseSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.baseSinkClass,
-		func (intern *baseSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeBaseSinkClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [BaseSinkClass] is expected to work anymore.
@@ -9133,19 +10889,22 @@ func UnsafeBaseSinkClassToGlibNone(b *BaseSinkClass) unsafe.Pointer {
 	return unsafe.Pointer(b.native)
 }
 
-// UnsafeBaseSinkClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeBaseSinkClassToGlibFull(b *BaseSinkClass) unsafe.Pointer {
-	runtime.SetFinalizer(b.baseSinkClass, nil)
-	_p := unsafe.Pointer(b.native)
-	b.native = nil // BaseSinkClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (b *BaseSinkClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeBaseSinkClassToGlibNone(b))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *BaseSinkClass) {}, b)
+	return parent
 }
+
 // BaseSrcClass wraps GstBaseSrcClass
 //
 // Subclasses can override any of the available virtual methods or not, as
 // needed. At the minimum, the @create method should be overridden to produce
 // buffers.
+// 
+// BaseSrcClass is the type struct for [BaseSrc]
 type BaseSrcClass struct {
 	*baseSrcClass
 }
@@ -9160,31 +10919,6 @@ func UnsafeBaseSrcClassFromGlibBorrow(p unsafe.Pointer) *BaseSrcClass {
 	return &BaseSrcClass{&baseSrcClass{(*C.GstBaseSrcClass)(p)}}
 }
 
-// UnsafeBaseSrcClassFromGlibNone is used to convert raw C.GstBaseSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBaseSrcClassFromGlibNone(p unsafe.Pointer) *BaseSrcClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeBaseSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.baseSrcClass,
-		func (intern *baseSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeBaseSrcClassFromGlibFull is used to convert raw C.GstBaseSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBaseSrcClassFromGlibFull(p unsafe.Pointer) *BaseSrcClass {
-	wrapped := UnsafeBaseSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.baseSrcClass,
-		func (intern *baseSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeBaseSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [BaseSrcClass] is expected to work anymore.
@@ -9197,20 +10931,23 @@ func UnsafeBaseSrcClassToGlibNone(b *BaseSrcClass) unsafe.Pointer {
 	return unsafe.Pointer(b.native)
 }
 
-// UnsafeBaseSrcClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeBaseSrcClassToGlibFull(b *BaseSrcClass) unsafe.Pointer {
-	runtime.SetFinalizer(b.baseSrcClass, nil)
-	_p := unsafe.Pointer(b.native)
-	b.native = nil // BaseSrcClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (b *BaseSrcClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeBaseSrcClassToGlibNone(b))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *BaseSrcClass) {}, b)
+	return parent
 }
+
 // BaseTransformClass wraps GstBaseTransformClass
 //
 // Subclasses can override any of the available virtual methods or not, as
 // needed. At minimum either @transform or @transform_ip need to be overridden.
 // If the element can overwrite the input data with the results (data is of the
 // same type and quantity) it should provide @transform_ip.
+// 
+// BaseTransformClass is the type struct for [BaseTransform]
 type BaseTransformClass struct {
 	*baseTransformClass
 }
@@ -9225,31 +10962,6 @@ func UnsafeBaseTransformClassFromGlibBorrow(p unsafe.Pointer) *BaseTransformClas
 	return &BaseTransformClass{&baseTransformClass{(*C.GstBaseTransformClass)(p)}}
 }
 
-// UnsafeBaseTransformClassFromGlibNone is used to convert raw C.GstBaseTransformClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBaseTransformClassFromGlibNone(p unsafe.Pointer) *BaseTransformClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeBaseTransformClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.baseTransformClass,
-		func (intern *baseTransformClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeBaseTransformClassFromGlibFull is used to convert raw C.GstBaseTransformClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeBaseTransformClassFromGlibFull(p unsafe.Pointer) *BaseTransformClass {
-	wrapped := UnsafeBaseTransformClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.baseTransformClass,
-		func (intern *baseTransformClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeBaseTransformClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [BaseTransformClass] is expected to work anymore.
@@ -9262,14 +10974,15 @@ func UnsafeBaseTransformClassToGlibNone(b *BaseTransformClass) unsafe.Pointer {
 	return unsafe.Pointer(b.native)
 }
 
-// UnsafeBaseTransformClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeBaseTransformClassToGlibFull(b *BaseTransformClass) unsafe.Pointer {
-	runtime.SetFinalizer(b.baseTransformClass, nil)
-	_p := unsafe.Pointer(b.native)
-	b.native = nil // BaseTransformClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (b *BaseTransformClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeBaseTransformClassToGlibNone(b))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *BaseTransformClass) {}, b)
+	return parent
 }
+
 // BitReader wraps GstBitReader
 //
 // #GstBitReader provides a bit reader that can read any number of bits
@@ -9289,7 +11002,7 @@ func UnsafeBitReaderFromGlibBorrow(p unsafe.Pointer) *BitReader {
 	return &BitReader{&bitReader{(*C.GstBitReader)(p)}}
 }
 
-// UnsafeBitReaderFromGlibNone is used to convert raw C.GstBitReader pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBitReaderFromGlibNone is used to convert raw C.GstBitReader pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBitReaderFromGlibNone(p unsafe.Pointer) *BitReader {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBitReaderFromGlibBorrow(p)
@@ -9302,7 +11015,7 @@ func UnsafeBitReaderFromGlibNone(p unsafe.Pointer) *BitReader {
 	return wrapped
 }
 
-// UnsafeBitReaderFromGlibFull is used to convert raw C.GstBitReader pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBitReaderFromGlibFull is used to convert raw C.GstBitReader pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBitReaderFromGlibFull(p unsafe.Pointer) *BitReader {
 	wrapped := UnsafeBitReaderFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -9334,6 +11047,7 @@ func UnsafeBitReaderToGlibFull(b *BitReader) unsafe.Pointer {
 	b.native = nil // BitReader is invalid from here on
 	return _p
 }
+
 // GetBitsUint16 wraps gst_bit_reader_get_bits_uint16
 // 
 // The function takes the following parameters:
@@ -9479,6 +11193,7 @@ func (reader *BitReader) GetBitsUint8(nbits uint) (uint8, bool) {
 }
 
 // GetPos wraps gst_bit_reader_get_pos
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -9501,6 +11216,7 @@ func (reader *BitReader) GetPos() uint {
 }
 
 // GetRemaining wraps gst_bit_reader_get_remaining
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -9523,6 +11239,7 @@ func (reader *BitReader) GetRemaining() uint {
 }
 
 // GetSize wraps gst_bit_reader_get_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -9777,6 +11494,7 @@ func (reader *BitReader) Skip(nbits uint) bool {
 }
 
 // SkipToByte wraps gst_bit_reader_skip_to_byte
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -9819,7 +11537,7 @@ func UnsafeBitWriterFromGlibBorrow(p unsafe.Pointer) *BitWriter {
 	return &BitWriter{&bitWriter{(*C.GstBitWriter)(p)}}
 }
 
-// UnsafeBitWriterFromGlibNone is used to convert raw C.GstBitWriter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBitWriterFromGlibNone is used to convert raw C.GstBitWriter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBitWriterFromGlibNone(p unsafe.Pointer) *BitWriter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBitWriterFromGlibBorrow(p)
@@ -9832,7 +11550,7 @@ func UnsafeBitWriterFromGlibNone(p unsafe.Pointer) *BitWriter {
 	return wrapped
 }
 
-// UnsafeBitWriterFromGlibFull is used to convert raw C.GstBitWriter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeBitWriterFromGlibFull is used to convert raw C.GstBitWriter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBitWriterFromGlibFull(p unsafe.Pointer) *BitWriter {
 	wrapped := UnsafeBitWriterFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -9864,6 +11582,7 @@ func UnsafeBitWriterToGlibFull(b *BitWriter) unsafe.Pointer {
 	b.native = nil // BitWriter is invalid from here on
 	return _p
 }
+
 // AlignBytes wraps gst_bit_writer_align_bytes
 // 
 // The function takes the following parameters:
@@ -9898,6 +11617,7 @@ func (bitwriter *BitWriter) AlignBytes(trailingBit uint8) bool {
 }
 
 // FreeAndGetBuffer wraps gst_bit_writer_free_and_get_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer 
@@ -9923,6 +11643,7 @@ func (bitwriter *BitWriter) FreeAndGetBuffer() *gst.Buffer {
 }
 
 // GetRemaining wraps gst_bit_writer_get_remaining
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -9943,6 +11664,7 @@ func (bitwriter *BitWriter) GetRemaining() uint {
 }
 
 // GetSize wraps gst_bit_writer_get_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -10121,6 +11843,7 @@ func (bitwriter *BitWriter) Reset() {
 }
 
 // ResetAndGetBuffer wraps gst_bit_writer_reset_and_get_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer 
@@ -10196,7 +11919,7 @@ func UnsafeByteReaderFromGlibBorrow(p unsafe.Pointer) *ByteReader {
 	return &ByteReader{&byteReader{(*C.GstByteReader)(p)}}
 }
 
-// UnsafeByteReaderFromGlibNone is used to convert raw C.GstByteReader pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeByteReaderFromGlibNone is used to convert raw C.GstByteReader pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeByteReaderFromGlibNone(p unsafe.Pointer) *ByteReader {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeByteReaderFromGlibBorrow(p)
@@ -10209,7 +11932,7 @@ func UnsafeByteReaderFromGlibNone(p unsafe.Pointer) *ByteReader {
 	return wrapped
 }
 
-// UnsafeByteReaderFromGlibFull is used to convert raw C.GstByteReader pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeByteReaderFromGlibFull is used to convert raw C.GstByteReader pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeByteReaderFromGlibFull(p unsafe.Pointer) *ByteReader {
 	wrapped := UnsafeByteReaderFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10241,7 +11964,9 @@ func UnsafeByteReaderToGlibFull(b *ByteReader) unsafe.Pointer {
 	b.native = nil // ByteReader is invalid from here on
 	return _p
 }
+
 // DupStringUTF8 wraps gst_byte_reader_dup_string_utf8
+// 
 // The function returns the following values:
 // 
 // 	- str string: address of a
@@ -10280,6 +12005,7 @@ func (reader *ByteReader) DupStringUTF8() (string, bool) {
 }
 
 // GetFloat32Be wraps gst_byte_reader_get_float32_be
+// 
 // The function returns the following values:
 // 
 // 	- val float32: Pointer to a #gfloat to store the result 
@@ -10309,6 +12035,7 @@ func (reader *ByteReader) GetFloat32Be() (float32, bool) {
 }
 
 // GetFloat32LE wraps gst_byte_reader_get_float32_le
+// 
 // The function returns the following values:
 // 
 // 	- val float32: Pointer to a #gfloat to store the result 
@@ -10338,6 +12065,7 @@ func (reader *ByteReader) GetFloat32LE() (float32, bool) {
 }
 
 // GetFloat64Be wraps gst_byte_reader_get_float64_be
+// 
 // The function returns the following values:
 // 
 // 	- val float64: Pointer to a #gdouble to store the result 
@@ -10367,6 +12095,7 @@ func (reader *ByteReader) GetFloat64Be() (float64, bool) {
 }
 
 // GetFloat64LE wraps gst_byte_reader_get_float64_le
+// 
 // The function returns the following values:
 // 
 // 	- val float64: Pointer to a #gdouble to store the result 
@@ -10396,6 +12125,7 @@ func (reader *ByteReader) GetFloat64LE() (float64, bool) {
 }
 
 // GetInt16Be wraps gst_byte_reader_get_int16_be
+// 
 // The function returns the following values:
 // 
 // 	- val int16: Pointer to a #gint16 to store the result 
@@ -10425,6 +12155,7 @@ func (reader *ByteReader) GetInt16Be() (int16, bool) {
 }
 
 // GetInt16LE wraps gst_byte_reader_get_int16_le
+// 
 // The function returns the following values:
 // 
 // 	- val int16: Pointer to a #gint16 to store the result 
@@ -10454,6 +12185,7 @@ func (reader *ByteReader) GetInt16LE() (int16, bool) {
 }
 
 // GetInt24Be wraps gst_byte_reader_get_int24_be
+// 
 // The function returns the following values:
 // 
 // 	- val int32: Pointer to a #gint32 to store the result 
@@ -10483,6 +12215,7 @@ func (reader *ByteReader) GetInt24Be() (int32, bool) {
 }
 
 // GetInt24LE wraps gst_byte_reader_get_int24_le
+// 
 // The function returns the following values:
 // 
 // 	- val int32: Pointer to a #gint32 to store the result 
@@ -10512,6 +12245,7 @@ func (reader *ByteReader) GetInt24LE() (int32, bool) {
 }
 
 // GetInt32Be wraps gst_byte_reader_get_int32_be
+// 
 // The function returns the following values:
 // 
 // 	- val int32: Pointer to a #gint32 to store the result 
@@ -10541,6 +12275,7 @@ func (reader *ByteReader) GetInt32Be() (int32, bool) {
 }
 
 // GetInt32LE wraps gst_byte_reader_get_int32_le
+// 
 // The function returns the following values:
 // 
 // 	- val int32: Pointer to a #gint32 to store the result 
@@ -10570,6 +12305,7 @@ func (reader *ByteReader) GetInt32LE() (int32, bool) {
 }
 
 // GetInt64Be wraps gst_byte_reader_get_int64_be
+// 
 // The function returns the following values:
 // 
 // 	- val int64: Pointer to a #gint64 to store the result 
@@ -10599,6 +12335,7 @@ func (reader *ByteReader) GetInt64Be() (int64, bool) {
 }
 
 // GetInt64LE wraps gst_byte_reader_get_int64_le
+// 
 // The function returns the following values:
 // 
 // 	- val int64: Pointer to a #gint64 to store the result 
@@ -10628,6 +12365,7 @@ func (reader *ByteReader) GetInt64LE() (int64, bool) {
 }
 
 // GetInt8 wraps gst_byte_reader_get_int8
+// 
 // The function returns the following values:
 // 
 // 	- val int8: Pointer to a #gint8 to store the result 
@@ -10656,6 +12394,7 @@ func (reader *ByteReader) GetInt8() (int8, bool) {
 }
 
 // GetPos wraps gst_byte_reader_get_pos
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -10678,6 +12417,7 @@ func (reader *ByteReader) GetPos() uint {
 }
 
 // GetRemaining wraps gst_byte_reader_get_remaining
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -10700,6 +12440,7 @@ func (reader *ByteReader) GetRemaining() uint {
 }
 
 // GetSize wraps gst_byte_reader_get_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -10722,6 +12463,7 @@ func (reader *ByteReader) GetSize() uint {
 }
 
 // GetStringUTF8 wraps gst_byte_reader_get_string_utf8
+// 
 // The function returns the following values:
 // 
 // 	- str string: address of a
@@ -10761,6 +12503,7 @@ func (reader *ByteReader) GetStringUTF8() (string, bool) {
 }
 
 // GetUint16Be wraps gst_byte_reader_get_uint16_be
+// 
 // The function returns the following values:
 // 
 // 	- val uint16: Pointer to a #guint16 to store the result 
@@ -10790,6 +12533,7 @@ func (reader *ByteReader) GetUint16Be() (uint16, bool) {
 }
 
 // GetUint16LE wraps gst_byte_reader_get_uint16_le
+// 
 // The function returns the following values:
 // 
 // 	- val uint16: Pointer to a #guint16 to store the result 
@@ -10819,6 +12563,7 @@ func (reader *ByteReader) GetUint16LE() (uint16, bool) {
 }
 
 // GetUint24Be wraps gst_byte_reader_get_uint24_be
+// 
 // The function returns the following values:
 // 
 // 	- val uint32: Pointer to a #guint32 to store the result 
@@ -10848,6 +12593,7 @@ func (reader *ByteReader) GetUint24Be() (uint32, bool) {
 }
 
 // GetUint24LE wraps gst_byte_reader_get_uint24_le
+// 
 // The function returns the following values:
 // 
 // 	- val uint32: Pointer to a #guint32 to store the result 
@@ -10877,6 +12623,7 @@ func (reader *ByteReader) GetUint24LE() (uint32, bool) {
 }
 
 // GetUint32Be wraps gst_byte_reader_get_uint32_be
+// 
 // The function returns the following values:
 // 
 // 	- val uint32: Pointer to a #guint32 to store the result 
@@ -10906,6 +12653,7 @@ func (reader *ByteReader) GetUint32Be() (uint32, bool) {
 }
 
 // GetUint32LE wraps gst_byte_reader_get_uint32_le
+// 
 // The function returns the following values:
 // 
 // 	- val uint32: Pointer to a #guint32 to store the result 
@@ -10935,6 +12683,7 @@ func (reader *ByteReader) GetUint32LE() (uint32, bool) {
 }
 
 // GetUint64Be wraps gst_byte_reader_get_uint64_be
+// 
 // The function returns the following values:
 // 
 // 	- val uint64: Pointer to a #guint64 to store the result 
@@ -10964,6 +12713,7 @@ func (reader *ByteReader) GetUint64Be() (uint64, bool) {
 }
 
 // GetUint64LE wraps gst_byte_reader_get_uint64_le
+// 
 // The function returns the following values:
 // 
 // 	- val uint64: Pointer to a #guint64 to store the result 
@@ -10993,6 +12743,7 @@ func (reader *ByteReader) GetUint64LE() (uint64, bool) {
 }
 
 // GetUint8 wraps gst_byte_reader_get_uint8
+// 
 // The function returns the following values:
 // 
 // 	- val uint8: Pointer to a #guint8 to store the result 
@@ -11154,6 +12905,7 @@ func (reader *ByteReader) MaskedScanUint32Peek(mask uint32, pattern uint32, offs
 }
 
 // PeekFloat32Be wraps gst_byte_reader_peek_float32_be
+// 
 // The function returns the following values:
 // 
 // 	- val float32: Pointer to a #gfloat to store the result 
@@ -11183,6 +12935,7 @@ func (reader *ByteReader) PeekFloat32Be() (float32, bool) {
 }
 
 // PeekFloat32LE wraps gst_byte_reader_peek_float32_le
+// 
 // The function returns the following values:
 // 
 // 	- val float32: Pointer to a #gfloat to store the result 
@@ -11212,6 +12965,7 @@ func (reader *ByteReader) PeekFloat32LE() (float32, bool) {
 }
 
 // PeekFloat64Be wraps gst_byte_reader_peek_float64_be
+// 
 // The function returns the following values:
 // 
 // 	- val float64: Pointer to a #gdouble to store the result 
@@ -11241,6 +12995,7 @@ func (reader *ByteReader) PeekFloat64Be() (float64, bool) {
 }
 
 // PeekFloat64LE wraps gst_byte_reader_peek_float64_le
+// 
 // The function returns the following values:
 // 
 // 	- val float64: Pointer to a #gdouble to store the result 
@@ -11270,6 +13025,7 @@ func (reader *ByteReader) PeekFloat64LE() (float64, bool) {
 }
 
 // PeekInt16Be wraps gst_byte_reader_peek_int16_be
+// 
 // The function returns the following values:
 // 
 // 	- val int16: Pointer to a #gint16 to store the result 
@@ -11299,6 +13055,7 @@ func (reader *ByteReader) PeekInt16Be() (int16, bool) {
 }
 
 // PeekInt16LE wraps gst_byte_reader_peek_int16_le
+// 
 // The function returns the following values:
 // 
 // 	- val int16: Pointer to a #gint16 to store the result 
@@ -11328,6 +13085,7 @@ func (reader *ByteReader) PeekInt16LE() (int16, bool) {
 }
 
 // PeekInt24Be wraps gst_byte_reader_peek_int24_be
+// 
 // The function returns the following values:
 // 
 // 	- val int32: Pointer to a #gint32 to store the result 
@@ -11357,6 +13115,7 @@ func (reader *ByteReader) PeekInt24Be() (int32, bool) {
 }
 
 // PeekInt24LE wraps gst_byte_reader_peek_int24_le
+// 
 // The function returns the following values:
 // 
 // 	- val int32: Pointer to a #gint32 to store the result 
@@ -11386,6 +13145,7 @@ func (reader *ByteReader) PeekInt24LE() (int32, bool) {
 }
 
 // PeekInt32Be wraps gst_byte_reader_peek_int32_be
+// 
 // The function returns the following values:
 // 
 // 	- val int32: Pointer to a #gint32 to store the result 
@@ -11415,6 +13175,7 @@ func (reader *ByteReader) PeekInt32Be() (int32, bool) {
 }
 
 // PeekInt32LE wraps gst_byte_reader_peek_int32_le
+// 
 // The function returns the following values:
 // 
 // 	- val int32: Pointer to a #gint32 to store the result 
@@ -11444,6 +13205,7 @@ func (reader *ByteReader) PeekInt32LE() (int32, bool) {
 }
 
 // PeekInt64Be wraps gst_byte_reader_peek_int64_be
+// 
 // The function returns the following values:
 // 
 // 	- val int64: Pointer to a #gint64 to store the result 
@@ -11473,6 +13235,7 @@ func (reader *ByteReader) PeekInt64Be() (int64, bool) {
 }
 
 // PeekInt64LE wraps gst_byte_reader_peek_int64_le
+// 
 // The function returns the following values:
 // 
 // 	- val int64: Pointer to a #gint64 to store the result 
@@ -11502,6 +13265,7 @@ func (reader *ByteReader) PeekInt64LE() (int64, bool) {
 }
 
 // PeekInt8 wraps gst_byte_reader_peek_int8
+// 
 // The function returns the following values:
 // 
 // 	- val int8: Pointer to a #gint8 to store the result 
@@ -11530,6 +13294,7 @@ func (reader *ByteReader) PeekInt8() (int8, bool) {
 }
 
 // PeekStringUTF8 wraps gst_byte_reader_peek_string_utf8
+// 
 // The function returns the following values:
 // 
 // 	- str string: address of a
@@ -11569,6 +13334,7 @@ func (reader *ByteReader) PeekStringUTF8() (string, bool) {
 }
 
 // PeekUint16Be wraps gst_byte_reader_peek_uint16_be
+// 
 // The function returns the following values:
 // 
 // 	- val uint16: Pointer to a #guint16 to store the result 
@@ -11598,6 +13364,7 @@ func (reader *ByteReader) PeekUint16Be() (uint16, bool) {
 }
 
 // PeekUint16LE wraps gst_byte_reader_peek_uint16_le
+// 
 // The function returns the following values:
 // 
 // 	- val uint16: Pointer to a #guint16 to store the result 
@@ -11627,6 +13394,7 @@ func (reader *ByteReader) PeekUint16LE() (uint16, bool) {
 }
 
 // PeekUint24Be wraps gst_byte_reader_peek_uint24_be
+// 
 // The function returns the following values:
 // 
 // 	- val uint32: Pointer to a #guint32 to store the result 
@@ -11656,6 +13424,7 @@ func (reader *ByteReader) PeekUint24Be() (uint32, bool) {
 }
 
 // PeekUint24LE wraps gst_byte_reader_peek_uint24_le
+// 
 // The function returns the following values:
 // 
 // 	- val uint32: Pointer to a #guint32 to store the result 
@@ -11685,6 +13454,7 @@ func (reader *ByteReader) PeekUint24LE() (uint32, bool) {
 }
 
 // PeekUint32Be wraps gst_byte_reader_peek_uint32_be
+// 
 // The function returns the following values:
 // 
 // 	- val uint32: Pointer to a #guint32 to store the result 
@@ -11714,6 +13484,7 @@ func (reader *ByteReader) PeekUint32Be() (uint32, bool) {
 }
 
 // PeekUint32LE wraps gst_byte_reader_peek_uint32_le
+// 
 // The function returns the following values:
 // 
 // 	- val uint32: Pointer to a #guint32 to store the result 
@@ -11743,6 +13514,7 @@ func (reader *ByteReader) PeekUint32LE() (uint32, bool) {
 }
 
 // PeekUint64Be wraps gst_byte_reader_peek_uint64_be
+// 
 // The function returns the following values:
 // 
 // 	- val uint64: Pointer to a #guint64 to store the result 
@@ -11772,6 +13544,7 @@ func (reader *ByteReader) PeekUint64Be() (uint64, bool) {
 }
 
 // PeekUint64LE wraps gst_byte_reader_peek_uint64_le
+// 
 // The function returns the following values:
 // 
 // 	- val uint64: Pointer to a #guint64 to store the result 
@@ -11801,6 +13574,7 @@ func (reader *ByteReader) PeekUint64LE() (uint64, bool) {
 }
 
 // PeekUint8 wraps gst_byte_reader_peek_uint8
+// 
 // The function returns the following values:
 // 
 // 	- val uint8: Pointer to a #guint8 to store the result 
@@ -11893,6 +13667,7 @@ func (reader *ByteReader) Skip(nbytes uint) bool {
 }
 
 // SkipStringUTF16 wraps gst_byte_reader_skip_string_utf16
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -11922,6 +13697,7 @@ func (reader *ByteReader) SkipStringUTF16() bool {
 }
 
 // SkipStringUTF32 wraps gst_byte_reader_skip_string_utf32
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -11951,6 +13727,7 @@ func (reader *ByteReader) SkipStringUTF32() bool {
 }
 
 // SkipStringUTF8 wraps gst_byte_reader_skip_string_utf8
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -12001,7 +13778,7 @@ func UnsafeByteWriterFromGlibBorrow(p unsafe.Pointer) *ByteWriter {
 	return &ByteWriter{&byteWriter{(*C.GstByteWriter)(p)}}
 }
 
-// UnsafeByteWriterFromGlibNone is used to convert raw C.GstByteWriter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeByteWriterFromGlibNone is used to convert raw C.GstByteWriter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeByteWriterFromGlibNone(p unsafe.Pointer) *ByteWriter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeByteWriterFromGlibBorrow(p)
@@ -12014,7 +13791,7 @@ func UnsafeByteWriterFromGlibNone(p unsafe.Pointer) *ByteWriter {
 	return wrapped
 }
 
-// UnsafeByteWriterFromGlibFull is used to convert raw C.GstByteWriter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeByteWriterFromGlibFull is used to convert raw C.GstByteWriter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeByteWriterFromGlibFull(p unsafe.Pointer) *ByteWriter {
 	wrapped := UnsafeByteWriterFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -12046,6 +13823,7 @@ func UnsafeByteWriterToGlibFull(b *ByteWriter) unsafe.Pointer {
 	b.native = nil // ByteWriter is invalid from here on
 	return _p
 }
+
 // EnsureFreeSpace wraps gst_byte_writer_ensure_free_space
 // 
 // The function takes the following parameters:
@@ -12116,6 +13894,7 @@ func (writer *ByteWriter) Fill(value uint8, size uint) bool {
 }
 
 // FreeAndGetBuffer wraps gst_byte_writer_free_and_get_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer 
@@ -12141,6 +13920,7 @@ func (writer *ByteWriter) FreeAndGetBuffer() *gst.Buffer {
 }
 
 // FreeAndGetData wraps gst_byte_writer_free_and_get_data
+// 
 // The function returns the following values:
 // 
 // 	- goret *uint8 
@@ -12168,6 +13948,7 @@ func (writer *ByteWriter) FreeAndGetData() *uint8 {
 }
 
 // GetRemaining wraps gst_byte_writer_get_remaining
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -13153,6 +14934,7 @@ func (writer *ByteWriter) Reset() {
 }
 
 // ResetAndGetBuffer wraps gst_byte_writer_reset_and_get_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer 
@@ -13193,7 +14975,7 @@ func UnsafeCollectDataFromGlibBorrow(p unsafe.Pointer) *CollectData {
 	return &CollectData{&collectData{(*C.GstCollectData)(p)}}
 }
 
-// UnsafeCollectDataFromGlibNone is used to convert raw C.GstCollectData pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCollectDataFromGlibNone is used to convert raw C.GstCollectData pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCollectDataFromGlibNone(p unsafe.Pointer) *CollectData {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeCollectDataFromGlibBorrow(p)
@@ -13206,7 +14988,7 @@ func UnsafeCollectDataFromGlibNone(p unsafe.Pointer) *CollectData {
 	return wrapped
 }
 
-// UnsafeCollectDataFromGlibFull is used to convert raw C.GstCollectData pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCollectDataFromGlibFull is used to convert raw C.GstCollectData pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeCollectDataFromGlibFull(p unsafe.Pointer) *CollectData {
 	wrapped := UnsafeCollectDataFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -13238,7 +15020,10 @@ func UnsafeCollectDataToGlibFull(c *CollectData) unsafe.Pointer {
 	c.native = nil // CollectData is invalid from here on
 	return _p
 }
+
 // CollectPadsClass wraps GstCollectPadsClass
+// 
+// CollectPadsClass is the type struct for [CollectPads]
 type CollectPadsClass struct {
 	*collectPadsClass
 }
@@ -13253,31 +15038,6 @@ func UnsafeCollectPadsClassFromGlibBorrow(p unsafe.Pointer) *CollectPadsClass {
 	return &CollectPadsClass{&collectPadsClass{(*C.GstCollectPadsClass)(p)}}
 }
 
-// UnsafeCollectPadsClassFromGlibNone is used to convert raw C.GstCollectPadsClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeCollectPadsClassFromGlibNone(p unsafe.Pointer) *CollectPadsClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeCollectPadsClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.collectPadsClass,
-		func (intern *collectPadsClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeCollectPadsClassFromGlibFull is used to convert raw C.GstCollectPadsClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeCollectPadsClassFromGlibFull(p unsafe.Pointer) *CollectPadsClass {
-	wrapped := UnsafeCollectPadsClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.collectPadsClass,
-		func (intern *collectPadsClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeCollectPadsClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [CollectPadsClass] is expected to work anymore.
@@ -13290,15 +15050,18 @@ func UnsafeCollectPadsClassToGlibNone(c *CollectPadsClass) unsafe.Pointer {
 	return unsafe.Pointer(c.native)
 }
 
-// UnsafeCollectPadsClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeCollectPadsClassToGlibFull(c *CollectPadsClass) unsafe.Pointer {
-	runtime.SetFinalizer(c.collectPadsClass, nil)
-	_p := unsafe.Pointer(c.native)
-	c.native = nil // CollectPadsClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (c *CollectPadsClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeCollectPadsClassToGlibNone(c))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *CollectPadsClass) {}, c)
+	return parent
 }
+
 // DataQueueClass wraps GstDataQueueClass
+// 
+// DataQueueClass is the type struct for [DataQueue]
 type DataQueueClass struct {
 	*dataQueueClass
 }
@@ -13313,31 +15076,6 @@ func UnsafeDataQueueClassFromGlibBorrow(p unsafe.Pointer) *DataQueueClass {
 	return &DataQueueClass{&dataQueueClass{(*C.GstDataQueueClass)(p)}}
 }
 
-// UnsafeDataQueueClassFromGlibNone is used to convert raw C.GstDataQueueClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDataQueueClassFromGlibNone(p unsafe.Pointer) *DataQueueClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDataQueueClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.dataQueueClass,
-		func (intern *dataQueueClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDataQueueClassFromGlibFull is used to convert raw C.GstDataQueueClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDataQueueClassFromGlibFull(p unsafe.Pointer) *DataQueueClass {
-	wrapped := UnsafeDataQueueClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.dataQueueClass,
-		func (intern *dataQueueClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDataQueueClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DataQueueClass] is expected to work anymore.
@@ -13350,14 +15088,15 @@ func UnsafeDataQueueClassToGlibNone(d *DataQueueClass) unsafe.Pointer {
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDataQueueClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDataQueueClassToGlibFull(d *DataQueueClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.dataQueueClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DataQueueClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DataQueueClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafeDataQueueClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DataQueueClass) {}, d)
+	return parent
 }
+
 // FlowCombiner wraps GstFlowCombiner
 //
 // Utility struct to help handling #GstFlowReturn combination. Useful for
@@ -13417,7 +15156,7 @@ func UnsafeFlowCombinerFromGlibBorrow(p unsafe.Pointer) *FlowCombiner {
 	return &FlowCombiner{&flowCombiner{(*C.GstFlowCombiner)(p)}}
 }
 
-// UnsafeFlowCombinerFromGlibNone is used to convert raw C.GstFlowCombiner pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeFlowCombinerFromGlibNone is used to convert raw C.GstFlowCombiner pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeFlowCombinerFromGlibNone(p unsafe.Pointer) *FlowCombiner {
 	C.gst_flow_combiner_ref((*C.GstFlowCombiner)(p))
 	wrapped := UnsafeFlowCombinerFromGlibBorrow(p)
@@ -13430,7 +15169,7 @@ func UnsafeFlowCombinerFromGlibNone(p unsafe.Pointer) *FlowCombiner {
 	return wrapped
 }
 
-// UnsafeFlowCombinerFromGlibFull is used to convert raw C.GstFlowCombiner pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeFlowCombinerFromGlibFull is used to convert raw C.GstFlowCombiner pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeFlowCombinerFromGlibFull(p unsafe.Pointer) *FlowCombiner {
 	wrapped := UnsafeFlowCombinerFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -13469,7 +15208,9 @@ func UnsafeFlowCombinerToGlibFull(f *FlowCombiner) unsafe.Pointer {
 	f.native = nil // FlowCombiner is invalid from here on
 	return _p
 }
+
 // NewFlowCombiner wraps gst_flow_combiner_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *FlowCombiner 
@@ -13629,6 +15370,8 @@ func (combiner *FlowCombiner) UpdatePadFlow(pad gst.Pad, fret gst.FlowReturn) gs
 // Subclasses can override any of the available virtual methods or not, as
 // needed. At the minimum, the @fill method should be overridden to produce
 // buffers.
+// 
+// PushSrcClass is the type struct for [PushSrc]
 type PushSrcClass struct {
 	*pushSrcClass
 }
@@ -13643,31 +15386,6 @@ func UnsafePushSrcClassFromGlibBorrow(p unsafe.Pointer) *PushSrcClass {
 	return &PushSrcClass{&pushSrcClass{(*C.GstPushSrcClass)(p)}}
 }
 
-// UnsafePushSrcClassFromGlibNone is used to convert raw C.GstPushSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePushSrcClassFromGlibNone(p unsafe.Pointer) *PushSrcClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePushSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.pushSrcClass,
-		func (intern *pushSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePushSrcClassFromGlibFull is used to convert raw C.GstPushSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePushSrcClassFromGlibFull(p unsafe.Pointer) *PushSrcClass {
-	wrapped := UnsafePushSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.pushSrcClass,
-		func (intern *pushSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePushSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PushSrcClass] is expected to work anymore.
@@ -13680,11 +15398,12 @@ func UnsafePushSrcClassToGlibNone(p *PushSrcClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePushSrcClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePushSrcClassToGlibFull(p *PushSrcClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.pushSrcClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PushSrcClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PushSrcClass) ParentClass() *BaseSrcClass {
+	parent := UnsafeBaseSrcClassFromGlibBorrow(UnsafePushSrcClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PushSrcClass) {}, p)
+	return parent
 }
+

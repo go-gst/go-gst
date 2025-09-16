@@ -22,6 +22,94 @@ import (
 // #include <gst/webrtc/sctptransport.h>
 // extern void _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc(GstWebRTCICE*, guint, gchar*, gpointer);
 // extern void destroyUserdata(gpointer);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_add_candidate(GstWebRTCICE*, GstWebRTCICEStream*, gchar*, GstPromise*);
+// extern GstWebRTCICEStream* _gotk4_gstwebrtc1_WebRTCICE_add_stream(GstWebRTCICE*, guint);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_add_turn_server(GstWebRTCICE*, gchar*);
+// extern GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICE_find_transport(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_gather_candidates(GstWebRTCICE*, GstWebRTCICEStream*);
+// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_http_proxy(GstWebRTCICE*);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_get_is_controller(GstWebRTCICE*);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_get_selected_pair(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats*, GstWebRTCICECandidateStats*);
+// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_stun_server(GstWebRTCICE*);
+// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_turn_server(GstWebRTCICE*);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_force_relay(GstWebRTCICE*, gboolean);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_http_proxy(GstWebRTCICE*, gchar*);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_is_controller(GstWebRTCICE*, gboolean);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_set_local_credentials(GstWebRTCICE*, GstWebRTCICEStream*, gchar*, gchar*);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate(GstWebRTCICE*, GstWebRTCICEOnCandidateFunc, gpointer, GDestroyNotify);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials(GstWebRTCICE*, GstWebRTCICEStream*, gchar*, gchar*);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_stun_server(GstWebRTCICE*, gchar*);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_tos(GstWebRTCICE*, GstWebRTCICEStream*, guint);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_turn_server(GstWebRTCICE*, gchar*);
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_add_candidate(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, gchar* carg2, GstPromise* carg3) {
+// 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEStream*, gchar*, GstPromise*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// GstWebRTCICEStream* _gotk4_gstwebrtc1_WebRTCICE_virtual_add_stream(void* fnptr, GstWebRTCICE* carg0, guint carg1) {
+// 	return ((GstWebRTCICEStream* (*) (GstWebRTCICE*, guint))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_add_turn_server(void* fnptr, GstWebRTCICE* carg0, gchar* carg1) {
+// 	return ((gboolean (*) (GstWebRTCICE*, gchar*))(fnptr))(carg0, carg1);
+// }
+// GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICE_virtual_find_transport(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICEComponent carg2) {
+// 	return ((GstWebRTCICETransport* (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_gather_candidates(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1) {
+// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*))(fnptr))(carg0, carg1);
+// }
+// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_is_controller(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gboolean (*) (GstWebRTCICE*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICECandidateStats** carg2, GstWebRTCICECandidateStats** carg3) {
+// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats**, GstWebRTCICECandidateStats**))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_stun_server(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
+// }
+// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_turn_server(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
+// }
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_force_relay(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
+// 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(void* fnptr, GstWebRTCICE* carg0, gchar* carg1) {
+// 	return ((void (*) (GstWebRTCICE*, gchar*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_is_controller(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
+// 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, gchar* carg2, gchar* carg3) {
+// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, gchar*, gchar*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_on_ice_candidate(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEOnCandidateFunc carg1, gpointer carg2, GDestroyNotify carg3) {
+// 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEOnCandidateFunc, gpointer, GDestroyNotify))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, gchar* carg2, gchar* carg3) {
+// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, gchar*, gchar*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_stun_server(void* fnptr, GstWebRTCICE* carg0, gchar* carg1) {
+// 	return ((void (*) (GstWebRTCICE*, gchar*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_tos(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, guint carg2) {
+// 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEStream*, guint))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_turn_server(void* fnptr, GstWebRTCICE* carg0, gchar* carg1) {
+// 	return ((void (*) (GstWebRTCICE*, gchar*))(fnptr))(carg0, carg1);
+// }
+// extern GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICEStream_find_transport(GstWebRTCICEStream*, GstWebRTCICEComponent);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates(GstWebRTCICEStream*);
+// GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICEStream_virtual_find_transport(void* fnptr, GstWebRTCICEStream* carg0, GstWebRTCICEComponent carg1) {
+// 	return ((GstWebRTCICETransport* (*) (GstWebRTCICEStream*, GstWebRTCICEComponent))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(void* fnptr, GstWebRTCICEStream* carg0) {
+// 	return ((gboolean (*) (GstWebRTCICEStream*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates(GstWebRTCICETransport*);
+// gboolean _gotk4_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(void* fnptr, GstWebRTCICETransport* carg0) {
+// 	return ((gboolean (*) (GstWebRTCICETransport*))(fnptr))(carg0);
+// }
 import "C"
 
 // GType values.
@@ -356,6 +444,7 @@ func (e WebRTCError) String() string {
 }
 
 // WebRTCErrorQuark wraps gst_webrtc_error_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -1373,38 +1462,47 @@ func (channel *WebRTCDataChannelInstance) SendStringFull(str string) (bool, erro
 func (o *WebRTCDataChannelInstance) EmitClose() {
 	o.Emit("close")
 }
+
 // ConnectOnBufferedAmountLow connects the provided callback to the "on-buffered-amount-low" signal
 func (o *WebRTCDataChannelInstance) ConnectOnBufferedAmountLow(fn func(WebRTCDataChannel)) gobject.SignalHandle {
 	return o.Connect("on-buffered-amount-low", fn)
 }
+
 // ConnectOnClose connects the provided callback to the "on-close" signal
 func (o *WebRTCDataChannelInstance) ConnectOnClose(fn func(WebRTCDataChannel)) gobject.SignalHandle {
 	return o.Connect("on-close", fn)
 }
+
 // ConnectOnError connects the provided callback to the "on-error" signal
 func (o *WebRTCDataChannelInstance) ConnectOnError(fn func(WebRTCDataChannel, error)) gobject.SignalHandle {
 	return o.Connect("on-error", fn)
 }
+
 // ConnectOnMessageData connects the provided callback to the "on-message-data" signal
 func (o *WebRTCDataChannelInstance) ConnectOnMessageData(fn func(WebRTCDataChannel, glib.Bytes)) gobject.SignalHandle {
 	return o.Connect("on-message-data", fn)
 }
+
 // ConnectOnMessageString connects the provided callback to the "on-message-string" signal
 func (o *WebRTCDataChannelInstance) ConnectOnMessageString(fn func(WebRTCDataChannel, string)) gobject.SignalHandle {
 	return o.Connect("on-message-string", fn)
 }
+
 // ConnectOnOpen connects the provided callback to the "on-open" signal
 func (o *WebRTCDataChannelInstance) ConnectOnOpen(fn func(WebRTCDataChannel)) gobject.SignalHandle {
 	return o.Connect("on-open", fn)
 }
+
 // EmitSendData emits the "send-data" signal
 func (o *WebRTCDataChannelInstance) EmitSendData(arg0 glib.Bytes) {
 	o.Emit("send-data", arg0)
 }
+
 // EmitSendString emits the "send-string" signal
 func (o *WebRTCDataChannelInstance) EmitSendString(arg0 string) {
 	o.Emit("send-string", arg0)
 }
+
 // WebRTCICEInstance is the instance type used by all types extending GstWebRTCICE. It is used internally by the bindings. Users should use the interface [WebRTCICE] instead.
 type WebRTCICEInstance struct {
 	_ [0]func() // equal guard
@@ -1468,11 +1566,13 @@ type WebRTCICE interface {
 	// 	- goret bool 
 	GatherCandidates(WebRTCICEStream) bool
 	// GetHTTPProxy wraps gst_webrtc_ice_get_http_proxy
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	GetHTTPProxy() string
 	// GetIsController wraps gst_webrtc_ice_get_is_controller
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -1510,11 +1610,13 @@ type WebRTCICE interface {
 	// 	- goret bool 
 	GetSelectedPair(WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
 	// GetStunServer wraps gst_webrtc_ice_get_stun_server
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetStunServer() string
 	// GetTurnServer wraps gst_webrtc_ice_get_turn_server
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -1789,6 +1891,7 @@ func (ice *WebRTCICEInstance) GatherCandidates(stream WebRTCICEStream) bool {
 }
 
 // GetHTTPProxy wraps gst_webrtc_ice_get_http_proxy
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -1810,6 +1913,7 @@ func (ice *WebRTCICEInstance) GetHTTPProxy() string {
 }
 
 // GetIsController wraps gst_webrtc_ice_get_is_controller
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -1930,6 +2034,7 @@ func (ice *WebRTCICEInstance) GetSelectedPair(stream WebRTCICEStream) (*WebRTCIC
 }
 
 // GetStunServer wraps gst_webrtc_ice_get_stun_server
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -1953,6 +2058,7 @@ func (ice *WebRTCICEInstance) GetStunServer() string {
 }
 
 // GetTurnServer wraps gst_webrtc_ice_get_turn_server
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -2204,6 +2310,233 @@ func (ice *WebRTCICEInstance) SetTurnServer(uri string) {
 func (o *WebRTCICEInstance) EmitAddLocalIPAddress(arg0 string) bool {
 	return o.Emit("add-local-ip-address", arg0).(bool)
 }
+
+// WebRTCICEOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type WebRTCICEOverrides[Instance WebRTCICE] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+	// AddCandidate allows you to override the implementation of the virtual method add_candidate.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- candidate string: The ICE candidate 
+	// 	- promise *gst.Promise (nullable): A #GstPromise for task notifications (Since: 1.24) 
+	AddCandidate func(Instance, WebRTCICEStream, string, *gst.Promise)
+	// AddStream allows you to override the implementation of the virtual method add_stream.
+	// The function takes the following parameters:
+	// 
+	// 	- sessionId uint: The session id 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret WebRTCICEStream (nullable) 
+	AddStream func(Instance, uint) WebRTCICEStream
+	// AddTurnServer allows you to override the implementation of the virtual method add_turn_server.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string: URI of the TURN server 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	AddTurnServer func(Instance, string) bool
+	// FindTransport allows you to override the implementation of the virtual method find_transport.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- component WebRTCICEComponent: The #GstWebRTCICEComponent 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret WebRTCICETransport (nullable) 
+	FindTransport func(Instance, WebRTCICEStream, WebRTCICEComponent) WebRTCICETransport
+	// GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	GatherCandidates func(Instance, WebRTCICEStream) bool
+	// GetHTTPProxy allows you to override the implementation of the virtual method get_http_proxy.
+	// The function returns the following values:
+	// 
+	// 	- goret string 
+	GetHTTPProxy func(Instance) string
+	// GetIsController allows you to override the implementation of the virtual method get_is_controller.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	GetIsController func(Instance) bool
+	// GetSelectedPair allows you to override the implementation of the virtual method get_selected_pair.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- localStats *WebRTCICECandidateStats: A pointer to #GstWebRTCICECandidateStats for local candidate 
+	// 	- remoteStats *WebRTCICECandidateStats: pointer to #GstWebRTCICECandidateStats for remote candidate 
+	// 	- goret bool 
+	GetSelectedPair func(Instance, WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
+	// GetStunServer allows you to override the implementation of the virtual method get_stun_server.
+	// The function returns the following values:
+	// 
+	// 	- goret string (nullable) 
+	GetStunServer func(Instance) string
+	// GetTurnServer allows you to override the implementation of the virtual method get_turn_server.
+	// The function returns the following values:
+	// 
+	// 	- goret string (nullable) 
+	GetTurnServer func(Instance) string
+	// SetForceRelay allows you to override the implementation of the virtual method set_force_relay.
+	// The function takes the following parameters:
+	// 
+	// 	- forceRelay bool: TRUE to enable force relay 
+	SetForceRelay func(Instance, bool)
+	// SetHTTPProxy allows you to override the implementation of the virtual method set_http_proxy.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string: URI of the HTTP proxy of the form
+	//   http://[username:password@]hostname[:port][?alpn=&lt;alpn&gt;] 
+	SetHTTPProxy func(Instance, string)
+	// SetIsController allows you to override the implementation of the virtual method set_is_controller.
+	// The function takes the following parameters:
+	// 
+	// 	- controller bool: TRUE to set as controller 
+	SetIsController func(Instance, bool)
+	// SetLocalCredentials allows you to override the implementation of the virtual method set_local_credentials.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- ufrag string: ICE username 
+	// 	- pwd string: ICE password 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetLocalCredentials func(Instance, WebRTCICEStream, string, string) bool
+	// SetOnIceCandidate allows you to override the implementation of the virtual method set_on_ice_candidate.
+	// The function takes the following parameters:
+	// 
+	// 	- fn WebRTCICEOnCandidateFunc: The #GstWebRTCICEOnCandidateFunc callback function 
+	SetOnIceCandidate func(Instance, WebRTCICEOnCandidateFunc)
+	// SetRemoteCredentials allows you to override the implementation of the virtual method set_remote_credentials.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- ufrag string: ICE username 
+	// 	- pwd string: ICE password 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetRemoteCredentials func(Instance, WebRTCICEStream, string, string) bool
+	// SetStunServer allows you to override the implementation of the virtual method set_stun_server.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string (nullable): URI of the STUN server 
+	SetStunServer func(Instance, string)
+	// SetTos allows you to override the implementation of the virtual method set_tos.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- tos uint: ToS to be set 
+	SetTos func(Instance, WebRTCICEStream, uint)
+	// SetTurnServer allows you to override the implementation of the virtual method set_turn_server.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string (nullable): URI of the TURN sever 
+	SetTurnServer func(Instance, string)
+}
+
+// UnsafeApplyWebRTCICEOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, overrides WebRTCICEOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstWebRTCICEClass)(gclass)
+
+	if overrides.AddCandidate != nil {
+		pclass.add_candidate = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_add_candidate)
+	}
+
+	if overrides.AddStream != nil {
+		pclass.add_stream = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_add_stream)
+	}
+
+	if overrides.AddTurnServer != nil {
+		pclass.add_turn_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_add_turn_server)
+	}
+
+	if overrides.FindTransport != nil {
+		pclass.find_transport = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_find_transport)
+	}
+
+	if overrides.GatherCandidates != nil {
+		pclass.gather_candidates = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_gather_candidates)
+	}
+
+	if overrides.GetHTTPProxy != nil {
+		pclass.get_http_proxy = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_http_proxy)
+	}
+
+	if overrides.GetIsController != nil {
+		pclass.get_is_controller = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_is_controller)
+	}
+
+	if overrides.GetSelectedPair != nil {
+		pclass.get_selected_pair = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_selected_pair)
+	}
+
+	if overrides.GetStunServer != nil {
+		pclass.get_stun_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_stun_server)
+	}
+
+	if overrides.GetTurnServer != nil {
+		pclass.get_turn_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_turn_server)
+	}
+
+	if overrides.SetForceRelay != nil {
+		pclass.set_force_relay = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_force_relay)
+	}
+
+	if overrides.SetHTTPProxy != nil {
+		pclass.set_http_proxy = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_http_proxy)
+	}
+
+	if overrides.SetIsController != nil {
+		pclass.set_is_controller = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_is_controller)
+	}
+
+	if overrides.SetLocalCredentials != nil {
+		pclass.set_local_credentials = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_local_credentials)
+	}
+
+	if overrides.SetOnIceCandidate != nil {
+		pclass.set_on_ice_candidate = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate)
+	}
+
+	if overrides.SetRemoteCredentials != nil {
+		pclass.set_remote_credentials = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials)
+	}
+
+	if overrides.SetStunServer != nil {
+		pclass.set_stun_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_stun_server)
+	}
+
+	if overrides.SetTos != nil {
+		pclass.set_tos = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_tos)
+	}
+
+	if overrides.SetTurnServer != nil {
+		pclass.set_turn_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_turn_server)
+	}
+}
+
 // WebRTCICEStreamInstance is the instance type used by all types extending GstWebRTCICEStream. It is used internally by the bindings. Users should use the interface [WebRTCICEStream] instead.
 type WebRTCICEStreamInstance struct {
 	_ [0]func() // equal guard
@@ -2228,6 +2561,7 @@ type WebRTCICEStream interface {
 	// 	- goret WebRTCICETransport (nullable) 
 	FindTransport(WebRTCICEComponent) WebRTCICETransport
 	// GatherCandidates wraps gst_webrtc_ice_stream_gather_candidates
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -2303,6 +2637,7 @@ func (stream *WebRTCICEStreamInstance) FindTransport(component WebRTCICEComponen
 }
 
 // GatherCandidates wraps gst_webrtc_ice_stream_gather_candidates
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2322,6 +2657,44 @@ func (ice *WebRTCICEStreamInstance) GatherCandidates() bool {
 	}
 
 	return goret
+}
+
+// WebRTCICEStreamOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type WebRTCICEStreamOverrides[Instance WebRTCICEStream] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+	// FindTransport allows you to override the implementation of the virtual method find_transport.
+	// The function takes the following parameters:
+	// 
+	// 	- component WebRTCICEComponent: The #GstWebRTCICEComponent 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret WebRTCICETransport (nullable) 
+	FindTransport func(Instance, WebRTCICEComponent) WebRTCICETransport
+	// GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	GatherCandidates func(Instance) bool
+}
+
+// UnsafeApplyWebRTCICEStreamOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe.Pointer, overrides WebRTCICEStreamOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstWebRTCICEStreamClass)(gclass)
+
+	if overrides.FindTransport != nil {
+		pclass.find_transport = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICEStream_find_transport)
+	}
+
+	if overrides.GatherCandidates != nil {
+		pclass.gather_candidates = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates)
+	}
 }
 
 // WebRTCICETransportInstance is the instance type used by all types extending GstWebRTCICETransport. It is used internally by the bindings. Users should use the interface [WebRTCICETransport] instead.
@@ -2477,10 +2850,37 @@ func (ice *WebRTCICETransportInstance) SelectedPairChange() {
 func (o *WebRTCICETransportInstance) ConnectOnNewCandidate(fn func(WebRTCICETransport, string)) gobject.SignalHandle {
 	return o.Connect("on-new-candidate", fn)
 }
+
 // ConnectOnSelectedCandidatePairChange connects the provided callback to the "on-selected-candidate-pair-change" signal
 func (o *WebRTCICETransportInstance) ConnectOnSelectedCandidatePairChange(fn func(WebRTCICETransport)) gobject.SignalHandle {
 	return o.Connect("on-selected-candidate-pair-change", fn)
 }
+
+// WebRTCICETransportOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type WebRTCICETransportOverrides[Instance WebRTCICETransport] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+	// GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	GatherCandidates func(Instance) bool
+}
+
+// UnsafeApplyWebRTCICETransportOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass unsafe.Pointer, overrides WebRTCICETransportOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstWebRTCICETransportClass)(gclass)
+
+	if overrides.GatherCandidates != nil {
+		pclass.gather_candidates = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates)
+	}
+}
+
 // WebRTCRTPReceiverInstance is the instance type used by all types extending GstWebRTCRTPReceiver. It is used internally by the bindings. Users should use the interface [WebRTCRTPReceiver] instead.
 type WebRTCRTPReceiverInstance struct {
 	_ [0]func() // equal guard
@@ -2732,6 +3132,8 @@ func UnsafeWebRTCSCTPTransportToGlibFull(c WebRTCSCTPTransport) unsafe.Pointer {
 }
 
 // WebRTCDTLSTransportClass wraps GstWebRTCDTLSTransportClass
+// 
+// WebRTCDTLSTransportClass is the type struct for [WebRTCDTLSTransport]
 type WebRTCDTLSTransportClass struct {
 	*webRTCDTLSTransportClass
 }
@@ -2746,31 +3148,6 @@ func UnsafeWebRTCDTLSTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDTLST
 	return &WebRTCDTLSTransportClass{&webRTCDTLSTransportClass{(*C.GstWebRTCDTLSTransportClass)(p)}}
 }
 
-// UnsafeWebRTCDTLSTransportClassFromGlibNone is used to convert raw C.GstWebRTCDTLSTransportClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCDTLSTransportClassFromGlibNone(p unsafe.Pointer) *WebRTCDTLSTransportClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeWebRTCDTLSTransportClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCDTLSTransportClass,
-		func (intern *webRTCDTLSTransportClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeWebRTCDTLSTransportClassFromGlibFull is used to convert raw C.GstWebRTCDTLSTransportClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCDTLSTransportClassFromGlibFull(p unsafe.Pointer) *WebRTCDTLSTransportClass {
-	wrapped := UnsafeWebRTCDTLSTransportClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCDTLSTransportClass,
-		func (intern *webRTCDTLSTransportClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeWebRTCDTLSTransportClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [WebRTCDTLSTransportClass] is expected to work anymore.
@@ -2783,15 +3160,18 @@ func UnsafeWebRTCDTLSTransportClassToGlibNone(w *WebRTCDTLSTransportClass) unsaf
 	return unsafe.Pointer(w.native)
 }
 
-// UnsafeWebRTCDTLSTransportClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeWebRTCDTLSTransportClassToGlibFull(w *WebRTCDTLSTransportClass) unsafe.Pointer {
-	runtime.SetFinalizer(w.webRTCDTLSTransportClass, nil)
-	_p := unsafe.Pointer(w.native)
-	w.native = nil // WebRTCDTLSTransportClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (w *WebRTCDTLSTransportClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeWebRTCDTLSTransportClassToGlibNone(w))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *WebRTCDTLSTransportClass) {}, w)
+	return parent
 }
+
 // WebRTCDataChannelClass wraps GstWebRTCDataChannelClass
+// 
+// WebRTCDataChannelClass is the type struct for [WebRTCDataChannel]
 type WebRTCDataChannelClass struct {
 	*webRTCDataChannelClass
 }
@@ -2806,31 +3186,6 @@ func UnsafeWebRTCDataChannelClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDataCha
 	return &WebRTCDataChannelClass{&webRTCDataChannelClass{(*C.GstWebRTCDataChannelClass)(p)}}
 }
 
-// UnsafeWebRTCDataChannelClassFromGlibNone is used to convert raw C.GstWebRTCDataChannelClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCDataChannelClassFromGlibNone(p unsafe.Pointer) *WebRTCDataChannelClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeWebRTCDataChannelClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCDataChannelClass,
-		func (intern *webRTCDataChannelClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeWebRTCDataChannelClassFromGlibFull is used to convert raw C.GstWebRTCDataChannelClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCDataChannelClassFromGlibFull(p unsafe.Pointer) *WebRTCDataChannelClass {
-	wrapped := UnsafeWebRTCDataChannelClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCDataChannelClass,
-		func (intern *webRTCDataChannelClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeWebRTCDataChannelClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [WebRTCDataChannelClass] is expected to work anymore.
@@ -2843,14 +3198,15 @@ func UnsafeWebRTCDataChannelClassToGlibNone(w *WebRTCDataChannelClass) unsafe.Po
 	return unsafe.Pointer(w.native)
 }
 
-// UnsafeWebRTCDataChannelClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeWebRTCDataChannelClassToGlibFull(w *WebRTCDataChannelClass) unsafe.Pointer {
-	runtime.SetFinalizer(w.webRTCDataChannelClass, nil)
-	_p := unsafe.Pointer(w.native)
-	w.native = nil // WebRTCDataChannelClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (w *WebRTCDataChannelClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafeWebRTCDataChannelClassToGlibNone(w))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *WebRTCDataChannelClass) {}, w)
+	return parent
 }
+
 // WebRTCICECandidateStats wraps GstWebRTCICECandidateStats
 type WebRTCICECandidateStats struct {
 	*webRTCICECandidateStats
@@ -2878,7 +3234,7 @@ func UnsafeWebRTCICECandidateStatsFromGlibBorrow(p unsafe.Pointer) *WebRTCICECan
 	return &WebRTCICECandidateStats{&webRTCICECandidateStats{(*C.GstWebRTCICECandidateStats)(p)}}
 }
 
-// UnsafeWebRTCICECandidateStatsFromGlibNone is used to convert raw C.GstWebRTCICECandidateStats pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeWebRTCICECandidateStatsFromGlibNone is used to convert raw C.GstWebRTCICECandidateStats pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandidateStats {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeWebRTCICECandidateStatsFromGlibBorrow(p)
@@ -2891,7 +3247,7 @@ func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandi
 	return wrapped
 }
 
-// UnsafeWebRTCICECandidateStatsFromGlibFull is used to convert raw C.GstWebRTCICECandidateStats pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeWebRTCICECandidateStatsFromGlibFull is used to convert raw C.GstWebRTCICECandidateStats pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeWebRTCICECandidateStatsFromGlibFull(p unsafe.Pointer) *WebRTCICECandidateStats {
 	wrapped := UnsafeWebRTCICECandidateStatsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -2923,7 +3279,9 @@ func UnsafeWebRTCICECandidateStatsToGlibFull(w *WebRTCICECandidateStats) unsafe.
 	w.native = nil // WebRTCICECandidateStats is invalid from here on
 	return _p
 }
+
 // Copy wraps gst_webrtc_ice_candidate_stats_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *WebRTCICECandidateStats 
@@ -2944,6 +3302,8 @@ func (stats *WebRTCICECandidateStats) Copy() *WebRTCICECandidateStats {
 }
 
 // WebRTCICEClass wraps GstWebRTCICEClass
+// 
+// WebRTCICEClass is the type struct for [WebRTCICE]
 type WebRTCICEClass struct {
 	*webRTCICEClass
 }
@@ -2958,31 +3318,6 @@ func UnsafeWebRTCICEClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICEClass {
 	return &WebRTCICEClass{&webRTCICEClass{(*C.GstWebRTCICEClass)(p)}}
 }
 
-// UnsafeWebRTCICEClassFromGlibNone is used to convert raw C.GstWebRTCICEClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCICEClassFromGlibNone(p unsafe.Pointer) *WebRTCICEClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeWebRTCICEClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCICEClass,
-		func (intern *webRTCICEClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeWebRTCICEClassFromGlibFull is used to convert raw C.GstWebRTCICEClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCICEClassFromGlibFull(p unsafe.Pointer) *WebRTCICEClass {
-	wrapped := UnsafeWebRTCICEClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCICEClass,
-		func (intern *webRTCICEClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeWebRTCICEClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [WebRTCICEClass] is expected to work anymore.
@@ -2995,15 +3330,18 @@ func UnsafeWebRTCICEClassToGlibNone(w *WebRTCICEClass) unsafe.Pointer {
 	return unsafe.Pointer(w.native)
 }
 
-// UnsafeWebRTCICEClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeWebRTCICEClassToGlibFull(w *WebRTCICEClass) unsafe.Pointer {
-	runtime.SetFinalizer(w.webRTCICEClass, nil)
-	_p := unsafe.Pointer(w.native)
-	w.native = nil // WebRTCICEClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (w *WebRTCICEClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeWebRTCICEClassToGlibNone(w))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *WebRTCICEClass) {}, w)
+	return parent
 }
+
 // WebRTCICEStreamClass wraps GstWebRTCICEStreamClass
+// 
+// WebRTCICEStreamClass is the type struct for [WebRTCICEStream]
 type WebRTCICEStreamClass struct {
 	*webRTCICEStreamClass
 }
@@ -3018,31 +3356,6 @@ func UnsafeWebRTCICEStreamClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICEStream
 	return &WebRTCICEStreamClass{&webRTCICEStreamClass{(*C.GstWebRTCICEStreamClass)(p)}}
 }
 
-// UnsafeWebRTCICEStreamClassFromGlibNone is used to convert raw C.GstWebRTCICEStreamClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCICEStreamClassFromGlibNone(p unsafe.Pointer) *WebRTCICEStreamClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeWebRTCICEStreamClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCICEStreamClass,
-		func (intern *webRTCICEStreamClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeWebRTCICEStreamClassFromGlibFull is used to convert raw C.GstWebRTCICEStreamClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCICEStreamClassFromGlibFull(p unsafe.Pointer) *WebRTCICEStreamClass {
-	wrapped := UnsafeWebRTCICEStreamClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCICEStreamClass,
-		func (intern *webRTCICEStreamClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeWebRTCICEStreamClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [WebRTCICEStreamClass] is expected to work anymore.
@@ -3055,15 +3368,18 @@ func UnsafeWebRTCICEStreamClassToGlibNone(w *WebRTCICEStreamClass) unsafe.Pointe
 	return unsafe.Pointer(w.native)
 }
 
-// UnsafeWebRTCICEStreamClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeWebRTCICEStreamClassToGlibFull(w *WebRTCICEStreamClass) unsafe.Pointer {
-	runtime.SetFinalizer(w.webRTCICEStreamClass, nil)
-	_p := unsafe.Pointer(w.native)
-	w.native = nil // WebRTCICEStreamClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (w *WebRTCICEStreamClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeWebRTCICEStreamClassToGlibNone(w))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *WebRTCICEStreamClass) {}, w)
+	return parent
 }
+
 // WebRTCICETransportClass wraps GstWebRTCICETransportClass
+// 
+// WebRTCICETransportClass is the type struct for [WebRTCICETransport]
 type WebRTCICETransportClass struct {
 	*webRTCICETransportClass
 }
@@ -3078,31 +3394,6 @@ func UnsafeWebRTCICETransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICETra
 	return &WebRTCICETransportClass{&webRTCICETransportClass{(*C.GstWebRTCICETransportClass)(p)}}
 }
 
-// UnsafeWebRTCICETransportClassFromGlibNone is used to convert raw C.GstWebRTCICETransportClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCICETransportClassFromGlibNone(p unsafe.Pointer) *WebRTCICETransportClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeWebRTCICETransportClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCICETransportClass,
-		func (intern *webRTCICETransportClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeWebRTCICETransportClassFromGlibFull is used to convert raw C.GstWebRTCICETransportClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCICETransportClassFromGlibFull(p unsafe.Pointer) *WebRTCICETransportClass {
-	wrapped := UnsafeWebRTCICETransportClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCICETransportClass,
-		func (intern *webRTCICETransportClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeWebRTCICETransportClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [WebRTCICETransportClass] is expected to work anymore.
@@ -3115,15 +3406,18 @@ func UnsafeWebRTCICETransportClassToGlibNone(w *WebRTCICETransportClass) unsafe.
 	return unsafe.Pointer(w.native)
 }
 
-// UnsafeWebRTCICETransportClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeWebRTCICETransportClassToGlibFull(w *WebRTCICETransportClass) unsafe.Pointer {
-	runtime.SetFinalizer(w.webRTCICETransportClass, nil)
-	_p := unsafe.Pointer(w.native)
-	w.native = nil // WebRTCICETransportClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (w *WebRTCICETransportClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeWebRTCICETransportClassToGlibNone(w))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *WebRTCICETransportClass) {}, w)
+	return parent
 }
+
 // WebRTCRTPReceiverClass wraps GstWebRTCRTPReceiverClass
+// 
+// WebRTCRTPReceiverClass is the type struct for [WebRTCRTPReceiver]
 type WebRTCRTPReceiverClass struct {
 	*webRTCRTPReceiverClass
 }
@@ -3138,31 +3432,6 @@ func UnsafeWebRTCRTPReceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPRece
 	return &WebRTCRTPReceiverClass{&webRTCRTPReceiverClass{(*C.GstWebRTCRTPReceiverClass)(p)}}
 }
 
-// UnsafeWebRTCRTPReceiverClassFromGlibNone is used to convert raw C.GstWebRTCRTPReceiverClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCRTPReceiverClassFromGlibNone(p unsafe.Pointer) *WebRTCRTPReceiverClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeWebRTCRTPReceiverClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCRTPReceiverClass,
-		func (intern *webRTCRTPReceiverClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeWebRTCRTPReceiverClassFromGlibFull is used to convert raw C.GstWebRTCRTPReceiverClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCRTPReceiverClassFromGlibFull(p unsafe.Pointer) *WebRTCRTPReceiverClass {
-	wrapped := UnsafeWebRTCRTPReceiverClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCRTPReceiverClass,
-		func (intern *webRTCRTPReceiverClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeWebRTCRTPReceiverClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [WebRTCRTPReceiverClass] is expected to work anymore.
@@ -3175,15 +3444,18 @@ func UnsafeWebRTCRTPReceiverClassToGlibNone(w *WebRTCRTPReceiverClass) unsafe.Po
 	return unsafe.Pointer(w.native)
 }
 
-// UnsafeWebRTCRTPReceiverClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeWebRTCRTPReceiverClassToGlibFull(w *WebRTCRTPReceiverClass) unsafe.Pointer {
-	runtime.SetFinalizer(w.webRTCRTPReceiverClass, nil)
-	_p := unsafe.Pointer(w.native)
-	w.native = nil // WebRTCRTPReceiverClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (w *WebRTCRTPReceiverClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeWebRTCRTPReceiverClassToGlibNone(w))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *WebRTCRTPReceiverClass) {}, w)
+	return parent
 }
+
 // WebRTCRTPSenderClass wraps GstWebRTCRTPSenderClass
+// 
+// WebRTCRTPSenderClass is the type struct for [WebRTCRTPSender]
 type WebRTCRTPSenderClass struct {
 	*webRTCRTPSenderClass
 }
@@ -3198,31 +3470,6 @@ func UnsafeWebRTCRTPSenderClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPSender
 	return &WebRTCRTPSenderClass{&webRTCRTPSenderClass{(*C.GstWebRTCRTPSenderClass)(p)}}
 }
 
-// UnsafeWebRTCRTPSenderClassFromGlibNone is used to convert raw C.GstWebRTCRTPSenderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCRTPSenderClassFromGlibNone(p unsafe.Pointer) *WebRTCRTPSenderClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeWebRTCRTPSenderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCRTPSenderClass,
-		func (intern *webRTCRTPSenderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeWebRTCRTPSenderClassFromGlibFull is used to convert raw C.GstWebRTCRTPSenderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCRTPSenderClassFromGlibFull(p unsafe.Pointer) *WebRTCRTPSenderClass {
-	wrapped := UnsafeWebRTCRTPSenderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCRTPSenderClass,
-		func (intern *webRTCRTPSenderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeWebRTCRTPSenderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [WebRTCRTPSenderClass] is expected to work anymore.
@@ -3235,15 +3482,18 @@ func UnsafeWebRTCRTPSenderClassToGlibNone(w *WebRTCRTPSenderClass) unsafe.Pointe
 	return unsafe.Pointer(w.native)
 }
 
-// UnsafeWebRTCRTPSenderClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeWebRTCRTPSenderClassToGlibFull(w *WebRTCRTPSenderClass) unsafe.Pointer {
-	runtime.SetFinalizer(w.webRTCRTPSenderClass, nil)
-	_p := unsafe.Pointer(w.native)
-	w.native = nil // WebRTCRTPSenderClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (w *WebRTCRTPSenderClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeWebRTCRTPSenderClassToGlibNone(w))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *WebRTCRTPSenderClass) {}, w)
+	return parent
 }
+
 // WebRTCRTPTransceiverClass wraps GstWebRTCRTPTransceiverClass
+// 
+// WebRTCRTPTransceiverClass is the type struct for [WebRTCRTPTransceiver]
 type WebRTCRTPTransceiverClass struct {
 	*webRTCRTPTransceiverClass
 }
@@ -3258,31 +3508,6 @@ func UnsafeWebRTCRTPTransceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPT
 	return &WebRTCRTPTransceiverClass{&webRTCRTPTransceiverClass{(*C.GstWebRTCRTPTransceiverClass)(p)}}
 }
 
-// UnsafeWebRTCRTPTransceiverClassFromGlibNone is used to convert raw C.GstWebRTCRTPTransceiverClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCRTPTransceiverClassFromGlibNone(p unsafe.Pointer) *WebRTCRTPTransceiverClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeWebRTCRTPTransceiverClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCRTPTransceiverClass,
-		func (intern *webRTCRTPTransceiverClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeWebRTCRTPTransceiverClassFromGlibFull is used to convert raw C.GstWebRTCRTPTransceiverClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCRTPTransceiverClassFromGlibFull(p unsafe.Pointer) *WebRTCRTPTransceiverClass {
-	wrapped := UnsafeWebRTCRTPTransceiverClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCRTPTransceiverClass,
-		func (intern *webRTCRTPTransceiverClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeWebRTCRTPTransceiverClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [WebRTCRTPTransceiverClass] is expected to work anymore.
@@ -3295,15 +3520,18 @@ func UnsafeWebRTCRTPTransceiverClassToGlibNone(w *WebRTCRTPTransceiverClass) uns
 	return unsafe.Pointer(w.native)
 }
 
-// UnsafeWebRTCRTPTransceiverClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeWebRTCRTPTransceiverClassToGlibFull(w *WebRTCRTPTransceiverClass) unsafe.Pointer {
-	runtime.SetFinalizer(w.webRTCRTPTransceiverClass, nil)
-	_p := unsafe.Pointer(w.native)
-	w.native = nil // WebRTCRTPTransceiverClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (w *WebRTCRTPTransceiverClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeWebRTCRTPTransceiverClassToGlibNone(w))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *WebRTCRTPTransceiverClass) {}, w)
+	return parent
 }
+
 // WebRTCSCTPTransportClass wraps GstWebRTCSCTPTransportClass
+// 
+// WebRTCSCTPTransportClass is the type struct for [WebRTCSCTPTransport]
 type WebRTCSCTPTransportClass struct {
 	*webRTCSCTPTransportClass
 }
@@ -3318,31 +3546,6 @@ func UnsafeWebRTCSCTPTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCSCTPT
 	return &WebRTCSCTPTransportClass{&webRTCSCTPTransportClass{(*C.GstWebRTCSCTPTransportClass)(p)}}
 }
 
-// UnsafeWebRTCSCTPTransportClassFromGlibNone is used to convert raw C.GstWebRTCSCTPTransportClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCSCTPTransportClassFromGlibNone(p unsafe.Pointer) *WebRTCSCTPTransportClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeWebRTCSCTPTransportClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCSCTPTransportClass,
-		func (intern *webRTCSCTPTransportClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeWebRTCSCTPTransportClassFromGlibFull is used to convert raw C.GstWebRTCSCTPTransportClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeWebRTCSCTPTransportClassFromGlibFull(p unsafe.Pointer) *WebRTCSCTPTransportClass {
-	wrapped := UnsafeWebRTCSCTPTransportClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.webRTCSCTPTransportClass,
-		func (intern *webRTCSCTPTransportClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeWebRTCSCTPTransportClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [WebRTCSCTPTransportClass] is expected to work anymore.
@@ -3355,14 +3558,15 @@ func UnsafeWebRTCSCTPTransportClassToGlibNone(w *WebRTCSCTPTransportClass) unsaf
 	return unsafe.Pointer(w.native)
 }
 
-// UnsafeWebRTCSCTPTransportClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeWebRTCSCTPTransportClassToGlibFull(w *WebRTCSCTPTransportClass) unsafe.Pointer {
-	runtime.SetFinalizer(w.webRTCSCTPTransportClass, nil)
-	_p := unsafe.Pointer(w.native)
-	w.native = nil // WebRTCSCTPTransportClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (w *WebRTCSCTPTransportClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeWebRTCSCTPTransportClassToGlibNone(w))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *WebRTCSCTPTransportClass) {}, w)
+	return parent
 }
+
 // WebRTCSessionDescription wraps GstWebRTCSessionDescription
 //
 // See &lt;https://www.w3.org/TR/webrtc/#rtcsessiondescription-class&gt;
@@ -3392,7 +3596,7 @@ func UnsafeWebRTCSessionDescriptionFromGlibBorrow(p unsafe.Pointer) *WebRTCSessi
 	return &WebRTCSessionDescription{&webRTCSessionDescription{(*C.GstWebRTCSessionDescription)(p)}}
 }
 
-// UnsafeWebRTCSessionDescriptionFromGlibNone is used to convert raw C.GstWebRTCSessionDescription pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeWebRTCSessionDescriptionFromGlibNone is used to convert raw C.GstWebRTCSessionDescription pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSessionDescription {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeWebRTCSessionDescriptionFromGlibBorrow(p)
@@ -3405,7 +3609,7 @@ func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSession
 	return wrapped
 }
 
-// UnsafeWebRTCSessionDescriptionFromGlibFull is used to convert raw C.GstWebRTCSessionDescription pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeWebRTCSessionDescriptionFromGlibFull is used to convert raw C.GstWebRTCSessionDescription pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeWebRTCSessionDescriptionFromGlibFull(p unsafe.Pointer) *WebRTCSessionDescription {
 	wrapped := UnsafeWebRTCSessionDescriptionFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -3437,6 +3641,7 @@ func UnsafeWebRTCSessionDescriptionToGlibFull(w *WebRTCSessionDescription) unsaf
 	w.native = nil // WebRTCSessionDescription is invalid from here on
 	return _p
 }
+
 // NewWebRTCSessionDescription wraps gst_webrtc_session_description_new
 // 
 // The function takes the following parameters:
@@ -3467,6 +3672,7 @@ func NewWebRTCSessionDescription(typ WebRTCSDPType, sdp *gstsdp.SDPMessage) *Web
 }
 
 // Copy wraps gst_webrtc_session_description_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *WebRTCSessionDescription 

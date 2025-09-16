@@ -58,3 +58,198 @@ func _gotk4_gstgl1_GLFilterRenderFunc(carg1 *C.GstGLFilter, carg2 *C.GstGLMemory
 	return cret
 }
 
+//export _gotk4_gstgl1_GLBaseFilter_gl_set_caps
+func _gotk4_gstgl1_GLBaseFilter_gl_set_caps(carg0 *C.GstGLBaseFilter, carg1 *C.GstCaps, carg2 *C.GstCaps) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLBaseFilter_gl_start
+func _gotk4_gstgl1_GLBaseFilter_gl_start(carg0 *C.GstGLBaseFilter) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLBaseFilter_gl_stop
+func _gotk4_gstgl1_GLBaseFilter_gl_stop(carg0 *C.GstGLBaseFilter) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLBaseMixer_gl_start
+func _gotk4_gstgl1_GLBaseMixer_gl_start(carg0 *C.GstGLBaseMixer) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLBaseMixer_gl_stop
+func _gotk4_gstgl1_GLBaseMixer_gl_stop(carg0 *C.GstGLBaseMixer) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLBaseSrc_fill_gl_memory
+func _gotk4_gstgl1_GLBaseSrc_fill_gl_memory(carg0 *C.GstGLBaseSrc, carg1 *C.GstGLMemory) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLBaseSrc_gl_start
+func _gotk4_gstgl1_GLBaseSrc_gl_start(carg0 *C.GstGLBaseSrc) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLBaseSrc_gl_stop
+func _gotk4_gstgl1_GLBaseSrc_gl_stop(carg0 *C.GstGLBaseSrc) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_activate
+func _gotk4_gstgl1_GLContext_activate(carg0 *C.GstGLContext, carg1 C.gboolean) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_check_feature
+func _gotk4_gstgl1_GLContext_check_feature(carg0 *C.GstGLContext, carg1 *C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_choose_format
+func _gotk4_gstgl1_GLContext_choose_format(carg0 *C.GstGLContext, _cerr **C.GError) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_create_context
+func _gotk4_gstgl1_GLContext_create_context(carg0 *C.GstGLContext, carg1 C.GstGLAPI, carg2 *C.GstGLContext, _cerr **C.GError) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_destroy_context
+func _gotk4_gstgl1_GLContext_destroy_context(carg0 *C.GstGLContext) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_get_config
+func _gotk4_gstgl1_GLContext_get_config(carg0 *C.GstGLContext) (cret *C.GstStructure) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_get_gl_api
+func _gotk4_gstgl1_GLContext_get_gl_api(carg0 *C.GstGLContext) (cret C.GstGLAPI) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_get_gl_platform
+func _gotk4_gstgl1_GLContext_get_gl_platform(carg0 *C.GstGLContext) (cret C.GstGLPlatform) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_get_gl_platform_version
+func _gotk4_gstgl1_GLContext_get_gl_platform_version(carg0 *C.GstGLContext, carg1 *C.gint, carg2 *C.gint) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_request_config
+func _gotk4_gstgl1_GLContext_request_config(carg0 *C.GstGLContext, carg1 *C.GstStructure) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLContext_swap_buffers
+func _gotk4_gstgl1_GLContext_swap_buffers(carg0 *C.GstGLContext) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLDisplay_create_window
+func _gotk4_gstgl1_GLDisplay_create_window(carg0 *C.GstGLDisplay) (cret *C.GstGLWindow) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLFilter_filter
+func _gotk4_gstgl1_GLFilter_filter(carg0 *C.GstGLFilter, carg1 *C.GstBuffer, carg2 *C.GstBuffer) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLFilter_filter_texture
+func _gotk4_gstgl1_GLFilter_filter_texture(carg0 *C.GstGLFilter, carg1 *C.GstGLMemory, carg2 *C.GstGLMemory) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLFilter_init_fbo
+func _gotk4_gstgl1_GLFilter_init_fbo(carg0 *C.GstGLFilter) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLFilter_set_caps
+func _gotk4_gstgl1_GLFilter_set_caps(carg0 *C.GstGLFilter, carg1 *C.GstCaps, carg2 *C.GstCaps) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLFilter_transform_internal_caps
+func _gotk4_gstgl1_GLFilter_transform_internal_caps(carg0 *C.GstGLFilter, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 *C.GstCaps) (cret *C.GstCaps) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLMixer_process_buffers
+func _gotk4_gstgl1_GLMixer_process_buffers(carg0 *C.GstGLMixer, carg1 *C.GstBuffer) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLMixer_process_textures
+func _gotk4_gstgl1_GLMixer_process_textures(carg0 *C.GstGLMixer, carg1 *C.GstGLMemory) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_close
+func _gotk4_gstgl1_GLWindow_close(carg0 *C.GstGLWindow) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_controls_viewport
+func _gotk4_gstgl1_GLWindow_controls_viewport(carg0 *C.GstGLWindow) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_draw
+func _gotk4_gstgl1_GLWindow_draw(carg0 *C.GstGLWindow) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_handle_events
+func _gotk4_gstgl1_GLWindow_handle_events(carg0 *C.GstGLWindow, carg1 C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_has_output_surface
+func _gotk4_gstgl1_GLWindow_has_output_surface(carg0 *C.GstGLWindow) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_open
+func _gotk4_gstgl1_GLWindow_open(carg0 *C.GstGLWindow, _cerr **C.GError) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_queue_resize
+func _gotk4_gstgl1_GLWindow_queue_resize(carg0 *C.GstGLWindow) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_quit
+func _gotk4_gstgl1_GLWindow_quit(carg0 *C.GstGLWindow) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_run
+func _gotk4_gstgl1_GLWindow_run(carg0 *C.GstGLWindow) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_set_preferred_size
+func _gotk4_gstgl1_GLWindow_set_preferred_size(carg0 *C.GstGLWindow, carg1 C.gint, carg2 C.gint) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_set_render_rectangle
+func _gotk4_gstgl1_GLWindow_set_render_rectangle(carg0 *C.GstGLWindow, carg1 C.gint, carg2 C.gint, carg3 C.gint, carg4 C.gint) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstgl1_GLWindow_show
+func _gotk4_gstgl1_GLWindow_show(carg0 *C.GstGLWindow) {
+	panic("unimplemented")
+}
+

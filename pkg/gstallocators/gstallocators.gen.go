@@ -361,6 +361,16 @@ func UnsafePhysMemoryAllocatorToGlibFull(c PhysMemoryAllocator) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
+// PhysMemoryAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type PhysMemoryAllocatorOverrides[Instance PhysMemoryAllocator] struct {
+}
+
+// UnsafeApplyPhysMemoryAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyPhysMemoryAllocatorOverrides[Instance PhysMemoryAllocator](gclass unsafe.Pointer, overrides PhysMemoryAllocatorOverrides[Instance]) {
+}
+
 // DRMDumbAllocatorInstance is the instance type used by all types extending GstDRMDumbAllocator. It is used internally by the bindings. Users should use the interface [DRMDumbAllocator] instead.
 type DRMDumbAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -395,6 +405,7 @@ type DRMDumbAllocator interface {
 	// number and the height is scaled according to the sub-sampling.
 	DRMAlloc(uint32, uint32, uint32) (uint32, *gst.Memory)
 	// HasPrimeExport wraps gst_drm_dumb_allocator_has_prime_export
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -552,6 +563,7 @@ func (allocator *DRMDumbAllocatorInstance) DRMAlloc(drmFourcc uint32, width uint
 }
 
 // HasPrimeExport wraps gst_drm_dumb_allocator_has_prime_export
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -573,6 +585,20 @@ func (allocator *DRMDumbAllocatorInstance) HasPrimeExport() bool {
 	}
 
 	return goret
+}
+
+// DRMDumbAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type DRMDumbAllocatorOverrides[Instance DRMDumbAllocator] struct {
+	// gst.AllocatorOverrides allows you to override virtual methods from the parent class gst.Allocator
+	gst.AllocatorOverrides[Instance]
+
+}
+
+// UnsafeApplyDRMDumbAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyDRMDumbAllocatorOverrides[Instance DRMDumbAllocator](gclass unsafe.Pointer, overrides DRMDumbAllocatorOverrides[Instance]) {
+	gst.UnsafeApplyAllocatorOverrides(gclass, overrides.AllocatorOverrides)
 }
 
 // FdAllocatorInstance is the instance type used by all types extending GstFdAllocator. It is used internally by the bindings. Users should use the interface [FdAllocator] instead.
@@ -632,6 +658,7 @@ func UnsafeFdAllocatorToGlibFull(c FdAllocator) unsafe.Pointer {
 }
 
 // NewFdAllocator wraps gst_fd_allocator_new
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.Allocator 
@@ -688,6 +715,20 @@ func FdAllocatorAlloc(allocator gst.Allocator, fd int, size uint, flags FdMemory
 	}
 
 	return goret
+}
+
+// FdAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type FdAllocatorOverrides[Instance FdAllocator] struct {
+	// gst.AllocatorOverrides allows you to override virtual methods from the parent class gst.Allocator
+	gst.AllocatorOverrides[Instance]
+
+}
+
+// UnsafeApplyFdAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyFdAllocatorOverrides[Instance FdAllocator](gclass unsafe.Pointer, overrides FdAllocatorOverrides[Instance]) {
+	gst.UnsafeApplyAllocatorOverrides(gclass, overrides.AllocatorOverrides)
 }
 
 // ShmAllocatorInstance is the instance type used by all types extending GstShmAllocator. It is used internally by the bindings. Users should use the interface [ShmAllocator] instead.
@@ -757,6 +798,7 @@ func UnsafeShmAllocatorToGlibFull(c ShmAllocator) unsafe.Pointer {
 }
 
 // ShmAllocatorGet wraps gst_shm_allocator_get
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.Allocator (nullable) 
@@ -784,6 +826,20 @@ func ShmAllocatorGet() gst.Allocator {
 func ShmAllocatorInitOnce() {
 
 	C.gst_shm_allocator_init_once()
+}
+
+// ShmAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ShmAllocatorOverrides[Instance ShmAllocator] struct {
+	// FdAllocatorOverrides allows you to override virtual methods from the parent class FdAllocator
+	FdAllocatorOverrides[Instance]
+
+}
+
+// UnsafeApplyShmAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyShmAllocatorOverrides[Instance ShmAllocator](gclass unsafe.Pointer, overrides ShmAllocatorOverrides[Instance]) {
+	UnsafeApplyFdAllocatorOverrides(gclass, overrides.FdAllocatorOverrides)
 }
 
 // DmaBufAllocatorInstance is the instance type used by all types extending GstDmaBufAllocator. It is used internally by the bindings. Users should use the interface [DmaBufAllocator] instead.
@@ -845,6 +901,7 @@ func UnsafeDmaBufAllocatorToGlibFull(c DmaBufAllocator) unsafe.Pointer {
 }
 
 // NewDmaBufAllocator wraps gst_dmabuf_allocator_new
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.Allocator 
@@ -940,7 +997,23 @@ func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int, size uint, f
 	return goret
 }
 
+// DmaBufAllocatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type DmaBufAllocatorOverrides[Instance DmaBufAllocator] struct {
+	// FdAllocatorOverrides allows you to override virtual methods from the parent class FdAllocator
+	FdAllocatorOverrides[Instance]
+
+}
+
+// UnsafeApplyDmaBufAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyDmaBufAllocatorOverrides[Instance DmaBufAllocator](gclass unsafe.Pointer, overrides DmaBufAllocatorOverrides[Instance]) {
+	UnsafeApplyFdAllocatorOverrides(gclass, overrides.FdAllocatorOverrides)
+}
+
 // DRMDumbAllocatorClass wraps GstDRMDumbAllocatorClass
+// 
+// DRMDumbAllocatorClass is the type struct for [DRMDumbAllocator]
 type DRMDumbAllocatorClass struct {
 	*drmDumbAllocatorClass
 }
@@ -955,31 +1028,6 @@ func UnsafeDRMDumbAllocatorClassFromGlibBorrow(p unsafe.Pointer) *DRMDumbAllocat
 	return &DRMDumbAllocatorClass{&drmDumbAllocatorClass{(*C.GstDRMDumbAllocatorClass)(p)}}
 }
 
-// UnsafeDRMDumbAllocatorClassFromGlibNone is used to convert raw C.GstDRMDumbAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDRMDumbAllocatorClassFromGlibNone(p unsafe.Pointer) *DRMDumbAllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDRMDumbAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.drmDumbAllocatorClass,
-		func (intern *drmDumbAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDRMDumbAllocatorClassFromGlibFull is used to convert raw C.GstDRMDumbAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDRMDumbAllocatorClassFromGlibFull(p unsafe.Pointer) *DRMDumbAllocatorClass {
-	wrapped := UnsafeDRMDumbAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.drmDumbAllocatorClass,
-		func (intern *drmDumbAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDRMDumbAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DRMDumbAllocatorClass] is expected to work anymore.
@@ -992,15 +1040,18 @@ func UnsafeDRMDumbAllocatorClassToGlibNone(d *DRMDumbAllocatorClass) unsafe.Poin
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDRMDumbAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDRMDumbAllocatorClassToGlibFull(d *DRMDumbAllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.drmDumbAllocatorClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DRMDumbAllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DRMDumbAllocatorClass) ParentClass() *gst.AllocatorClass {
+	parent := gst.UnsafeAllocatorClassFromGlibBorrow(UnsafeDRMDumbAllocatorClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DRMDumbAllocatorClass) {}, d)
+	return parent
 }
+
 // DmaBufAllocatorClass wraps GstDmaBufAllocatorClass
+// 
+// DmaBufAllocatorClass is the type struct for [DmaBufAllocator]
 type DmaBufAllocatorClass struct {
 	*dmaBufAllocatorClass
 }
@@ -1015,31 +1066,6 @@ func UnsafeDmaBufAllocatorClassFromGlibBorrow(p unsafe.Pointer) *DmaBufAllocator
 	return &DmaBufAllocatorClass{&dmaBufAllocatorClass{(*C.GstDmaBufAllocatorClass)(p)}}
 }
 
-// UnsafeDmaBufAllocatorClassFromGlibNone is used to convert raw C.GstDmaBufAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDmaBufAllocatorClassFromGlibNone(p unsafe.Pointer) *DmaBufAllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDmaBufAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.dmaBufAllocatorClass,
-		func (intern *dmaBufAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDmaBufAllocatorClassFromGlibFull is used to convert raw C.GstDmaBufAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDmaBufAllocatorClassFromGlibFull(p unsafe.Pointer) *DmaBufAllocatorClass {
-	wrapped := UnsafeDmaBufAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.dmaBufAllocatorClass,
-		func (intern *dmaBufAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDmaBufAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DmaBufAllocatorClass] is expected to work anymore.
@@ -1052,15 +1078,18 @@ func UnsafeDmaBufAllocatorClassToGlibNone(d *DmaBufAllocatorClass) unsafe.Pointe
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDmaBufAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDmaBufAllocatorClassToGlibFull(d *DmaBufAllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.dmaBufAllocatorClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DmaBufAllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DmaBufAllocatorClass) ParentClass() *FdAllocatorClass {
+	parent := UnsafeFdAllocatorClassFromGlibBorrow(UnsafeDmaBufAllocatorClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DmaBufAllocatorClass) {}, d)
+	return parent
 }
+
 // FdAllocatorClass wraps GstFdAllocatorClass
+// 
+// FdAllocatorClass is the type struct for [FdAllocator]
 type FdAllocatorClass struct {
 	*fdAllocatorClass
 }
@@ -1075,31 +1104,6 @@ func UnsafeFdAllocatorClassFromGlibBorrow(p unsafe.Pointer) *FdAllocatorClass {
 	return &FdAllocatorClass{&fdAllocatorClass{(*C.GstFdAllocatorClass)(p)}}
 }
 
-// UnsafeFdAllocatorClassFromGlibNone is used to convert raw C.GstFdAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeFdAllocatorClassFromGlibNone(p unsafe.Pointer) *FdAllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeFdAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.fdAllocatorClass,
-		func (intern *fdAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeFdAllocatorClassFromGlibFull is used to convert raw C.GstFdAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeFdAllocatorClassFromGlibFull(p unsafe.Pointer) *FdAllocatorClass {
-	wrapped := UnsafeFdAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.fdAllocatorClass,
-		func (intern *fdAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeFdAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [FdAllocatorClass] is expected to work anymore.
@@ -1112,14 +1116,15 @@ func UnsafeFdAllocatorClassToGlibNone(f *FdAllocatorClass) unsafe.Pointer {
 	return unsafe.Pointer(f.native)
 }
 
-// UnsafeFdAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeFdAllocatorClassToGlibFull(f *FdAllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(f.fdAllocatorClass, nil)
-	_p := unsafe.Pointer(f.native)
-	f.native = nil // FdAllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (f *FdAllocatorClass) ParentClass() *gst.AllocatorClass {
+	parent := gst.UnsafeAllocatorClassFromGlibBorrow(UnsafeFdAllocatorClassToGlibNone(f))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *FdAllocatorClass) {}, f)
+	return parent
 }
+
 // PhysMemoryAllocatorInterface wraps GstPhysMemoryAllocatorInterface
 //
 // Marker interface for allocators with physical address backed memory
@@ -1137,7 +1142,7 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p unsafe.Pointer) *PhysMem
 	return &PhysMemoryAllocatorInterface{&physMemoryAllocatorInterface{(*C.GstPhysMemoryAllocatorInterface)(p)}}
 }
 
-// UnsafePhysMemoryAllocatorInterfaceFromGlibNone is used to convert raw C.GstPhysMemoryAllocatorInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePhysMemoryAllocatorInterfaceFromGlibNone is used to convert raw C.GstPhysMemoryAllocatorInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorInterfaceFromGlibNone(p unsafe.Pointer) *PhysMemoryAllocatorInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p)
@@ -1150,7 +1155,7 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibNone(p unsafe.Pointer) *PhysMemor
 	return wrapped
 }
 
-// UnsafePhysMemoryAllocatorInterfaceFromGlibFull is used to convert raw C.GstPhysMemoryAllocatorInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafePhysMemoryAllocatorInterfaceFromGlibFull is used to convert raw C.GstPhysMemoryAllocatorInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorInterfaceFromGlibFull(p unsafe.Pointer) *PhysMemoryAllocatorInterface {
 	wrapped := UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -1182,7 +1187,10 @@ func UnsafePhysMemoryAllocatorInterfaceToGlibFull(p *PhysMemoryAllocatorInterfac
 	p.native = nil // PhysMemoryAllocatorInterface is invalid from here on
 	return _p
 }
+
 // ShmAllocatorClass wraps GstShmAllocatorClass
+// 
+// ShmAllocatorClass is the type struct for [ShmAllocator]
 type ShmAllocatorClass struct {
 	*shmAllocatorClass
 }
@@ -1197,31 +1205,6 @@ func UnsafeShmAllocatorClassFromGlibBorrow(p unsafe.Pointer) *ShmAllocatorClass 
 	return &ShmAllocatorClass{&shmAllocatorClass{(*C.GstShmAllocatorClass)(p)}}
 }
 
-// UnsafeShmAllocatorClassFromGlibNone is used to convert raw C.GstShmAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeShmAllocatorClassFromGlibNone(p unsafe.Pointer) *ShmAllocatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeShmAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.shmAllocatorClass,
-		func (intern *shmAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeShmAllocatorClassFromGlibFull is used to convert raw C.GstShmAllocatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeShmAllocatorClassFromGlibFull(p unsafe.Pointer) *ShmAllocatorClass {
-	wrapped := UnsafeShmAllocatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.shmAllocatorClass,
-		func (intern *shmAllocatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeShmAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ShmAllocatorClass] is expected to work anymore.
@@ -1234,11 +1217,12 @@ func UnsafeShmAllocatorClassToGlibNone(s *ShmAllocatorClass) unsafe.Pointer {
 	return unsafe.Pointer(s.native)
 }
 
-// UnsafeShmAllocatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeShmAllocatorClassToGlibFull(s *ShmAllocatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(s.shmAllocatorClass, nil)
-	_p := unsafe.Pointer(s.native)
-	s.native = nil // ShmAllocatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (s *ShmAllocatorClass) ParentClass() *FdAllocatorClass {
+	parent := UnsafeFdAllocatorClassFromGlibBorrow(UnsafeShmAllocatorClassToGlibNone(s))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ShmAllocatorClass) {}, s)
+	return parent
 }
+

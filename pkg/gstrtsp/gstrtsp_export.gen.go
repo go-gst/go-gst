@@ -41,3 +41,48 @@ func _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(carg1 *C.GTlsConnection
 	return cret
 }
 
+//export _gotk4_gstrtsp1_RTSPExtension_after_send
+func _gotk4_gstrtsp1_RTSPExtension_after_send(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage, carg2 *C.GstRTSPMessage) (cret C.GstRTSPResult) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstrtsp1_RTSPExtension_before_send
+func _gotk4_gstrtsp1_RTSPExtension_before_send(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage) (cret C.GstRTSPResult) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstrtsp1_RTSPExtension_configure_stream
+func _gotk4_gstrtsp1_RTSPExtension_configure_stream(carg0 *C.GstRTSPExtension, carg1 *C.GstCaps) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstrtsp1_RTSPExtension_detect_server
+func _gotk4_gstrtsp1_RTSPExtension_detect_server(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstrtsp1_RTSPExtension_parse_sdp
+func _gotk4_gstrtsp1_RTSPExtension_parse_sdp(carg0 *C.GstRTSPExtension, carg1 *C.GstSDPMessage, carg2 *C.GstStructure) (cret C.GstRTSPResult) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstrtsp1_RTSPExtension_receive_request
+func _gotk4_gstrtsp1_RTSPExtension_receive_request(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage) (cret C.GstRTSPResult) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstrtsp1_RTSPExtension_send
+func _gotk4_gstrtsp1_RTSPExtension_send(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage, carg2 *C.GstRTSPMessage) (cret C.GstRTSPResult) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstrtsp1_RTSPExtension_setup_media
+func _gotk4_gstrtsp1_RTSPExtension_setup_media(carg0 *C.GstRTSPExtension, carg1 *C.GstSDPMedia) (cret C.GstRTSPResult) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstrtsp1_RTSPExtension_stream_select
+func _gotk4_gstrtsp1_RTSPExtension_stream_select(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPUrl) (cret C.GstRTSPResult) {
+	panic("unimplemented")
+}
+
