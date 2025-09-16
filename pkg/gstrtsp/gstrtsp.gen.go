@@ -2127,7 +2127,7 @@ type RTSPExtension interface {
 
 	// chain up virtual methods:
 
-	// ParentAfterSend calls the default implementations of the after_send virtual method.
+	// ParentAfterSend calls the default implementations of the `GstRTSPExtension.after_send` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2139,7 +2139,7 @@ type RTSPExtension interface {
 	// 
 	// 	- goret RTSPResult 
 	ParentAfterSend(req *RTSPMessage, resp *RTSPMessage) RTSPResult
-	// ParentBeforeSend calls the default implementations of the before_send virtual method.
+	// ParentBeforeSend calls the default implementations of the `GstRTSPExtension.before_send` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2150,7 +2150,7 @@ type RTSPExtension interface {
 	// 
 	// 	- goret RTSPResult 
 	ParentBeforeSend(req *RTSPMessage) RTSPResult
-	// ParentConfigureStream calls the default implementations of the configure_stream virtual method.
+	// ParentConfigureStream calls the default implementations of the `GstRTSPExtension.configure_stream` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2161,7 +2161,7 @@ type RTSPExtension interface {
 	// 
 	// 	- goret bool 
 	ParentConfigureStream(caps *gst.Caps) bool
-	// ParentDetectServer calls the default implementations of the detect_server virtual method.
+	// ParentDetectServer calls the default implementations of the `GstRTSPExtension.detect_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2172,7 +2172,7 @@ type RTSPExtension interface {
 	// 
 	// 	- goret bool 
 	ParentDetectServer(resp *RTSPMessage) bool
-	// ParentParseSdp calls the default implementations of the parse_sdp virtual method.
+	// ParentParseSdp calls the default implementations of the `GstRTSPExtension.parse_sdp` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2184,7 +2184,7 @@ type RTSPExtension interface {
 	// 
 	// 	- goret RTSPResult 
 	ParentParseSdp(sdp *gstsdp.SDPMessage, s *gst.Structure) RTSPResult
-	// ParentReceiveRequest calls the default implementations of the receive_request virtual method.
+	// ParentReceiveRequest calls the default implementations of the `GstRTSPExtension.receive_request` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2195,7 +2195,7 @@ type RTSPExtension interface {
 	// 
 	// 	- goret RTSPResult 
 	ParentReceiveRequest(req *RTSPMessage) RTSPResult
-	// ParentSend calls the default implementations of the send virtual method.
+	// ParentSend calls the default implementations of the `GstRTSPExtension.send` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2207,7 +2207,7 @@ type RTSPExtension interface {
 	// 
 	// 	- goret RTSPResult 
 	ParentSend(req *RTSPMessage, resp *RTSPMessage) RTSPResult
-	// ParentSetupMedia calls the default implementations of the setup_media virtual method.
+	// ParentSetupMedia calls the default implementations of the `GstRTSPExtension.setup_media` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2218,7 +2218,7 @@ type RTSPExtension interface {
 	// 
 	// 	- goret RTSPResult 
 	ParentSetupMedia(media *gstsdp.SDPMedia) RTSPResult
-	// ParentStreamSelect calls the default implementations of the stream_select virtual method.
+	// ParentStreamSelect calls the default implementations of the `GstRTSPExtension.stream_select` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2859,7 +2859,7 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 	}
 }
 
-// ParentAfterSend calls the default implementations of the after_send virtual method.
+// ParentAfterSend calls the default implementations of the `GstRTSPExtension.after_send` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2894,7 +2894,7 @@ func (ext *RTSPExtensionInstance) ParentAfterSend(req *RTSPMessage, resp *RTSPMe
 	return goret
 }
 
-// ParentBeforeSend calls the default implementations of the before_send virtual method.
+// ParentBeforeSend calls the default implementations of the `GstRTSPExtension.before_send` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2925,7 +2925,7 @@ func (ext *RTSPExtensionInstance) ParentBeforeSend(req *RTSPMessage) RTSPResult 
 	return goret
 }
 
-// ParentConfigureStream calls the default implementations of the configure_stream virtual method.
+// ParentConfigureStream calls the default implementations of the `GstRTSPExtension.configure_stream` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2958,7 +2958,7 @@ func (ext *RTSPExtensionInstance) ParentConfigureStream(caps *gst.Caps) bool {
 	return goret
 }
 
-// ParentDetectServer calls the default implementations of the detect_server virtual method.
+// ParentDetectServer calls the default implementations of the `GstRTSPExtension.detect_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2991,7 +2991,7 @@ func (ext *RTSPExtensionInstance) ParentDetectServer(resp *RTSPMessage) bool {
 	return goret
 }
 
-// ParentParseSdp calls the default implementations of the parse_sdp virtual method.
+// ParentParseSdp calls the default implementations of the `GstRTSPExtension.parse_sdp` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3026,7 +3026,7 @@ func (ext *RTSPExtensionInstance) ParentParseSdp(sdp *gstsdp.SDPMessage, s *gst.
 	return goret
 }
 
-// ParentReceiveRequest calls the default implementations of the receive_request virtual method.
+// ParentReceiveRequest calls the default implementations of the `GstRTSPExtension.receive_request` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3057,7 +3057,7 @@ func (ext *RTSPExtensionInstance) ParentReceiveRequest(req *RTSPMessage) RTSPRes
 	return goret
 }
 
-// ParentSend calls the default implementations of the send virtual method.
+// ParentSend calls the default implementations of the `GstRTSPExtension.send` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3092,7 +3092,7 @@ func (ext *RTSPExtensionInstance) ParentSend(req *RTSPMessage, resp *RTSPMessage
 	return goret
 }
 
-// ParentSetupMedia calls the default implementations of the setup_media virtual method.
+// ParentSetupMedia calls the default implementations of the `GstRTSPExtension.setup_media` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3123,7 +3123,7 @@ func (ext *RTSPExtensionInstance) ParentSetupMedia(media *gstsdp.SDPMedia) RTSPR
 	return goret
 }
 
-// ParentStreamSelect calls the default implementations of the stream_select virtual method.
+// ParentStreamSelect calls the default implementations of the `GstRTSPExtension.stream_select` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:

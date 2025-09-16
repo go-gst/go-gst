@@ -2062,7 +2062,7 @@ type TagDemux interface {
 
 	// chain up virtual methods:
 
-	// ParentIdentifyTag calls the default implementations of the identify_tag virtual method.
+	// ParentIdentifyTag calls the default implementations of the `GstTagDemux.identify_tag` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2079,7 +2079,7 @@ type TagDemux interface {
 	// tag. Buffer may be larger than the specified minimum size.
 	// Subclassed MUST override this vfunc in their class_init function.
 	ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint) bool
-	// ParentMergeTags calls the default implementations of the merge_tags virtual method.
+	// ParentMergeTags calls the default implementations of the `GstTagDemux.merge_tags` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2256,7 +2256,7 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 	}
 }
 
-// ParentIdentifyTag calls the default implementations of the identify_tag virtual method.
+// ParentIdentifyTag calls the default implementations of the `GstTagDemux.identify_tag` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2305,7 +2305,7 @@ func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bo
 	return goret
 }
 
-// ParentMergeTags calls the default implementations of the merge_tags virtual method.
+// ParentMergeTags calls the default implementations of the `GstTagDemux.merge_tags` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2404,7 +2404,7 @@ type TagMux interface {
 
 	// chain up virtual methods:
 
-	// ParentRenderEndTag calls the default implementations of the render_end_tag virtual method.
+	// ParentRenderEndTag calls the default implementations of the `GstTagMux.render_end_tag` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2418,7 +2418,7 @@ type TagMux interface {
 	// create a tag buffer to add to the end of the
 	//     input stream given a tag list, or NULL
 	ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer
-	// ParentRenderStartTag calls the default implementations of the render_start_tag virtual method.
+	// ParentRenderStartTag calls the default implementations of the `GstTagMux.render_start_tag` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2577,7 +2577,7 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 	}
 }
 
-// ParentRenderEndTag calls the default implementations of the render_end_tag virtual method.
+// ParentRenderEndTag calls the default implementations of the `GstTagMux.render_end_tag` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2611,7 +2611,7 @@ func (mux *TagMuxInstance) ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer 
 	return goret
 }
 
-// ParentRenderStartTag calls the default implementations of the render_start_tag virtual method.
+// ParentRenderStartTag calls the default implementations of the `GstTagMux.render_start_tag` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:

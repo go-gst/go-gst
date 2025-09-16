@@ -12692,7 +12692,7 @@ type ChildProxy interface {
 
 	// chain up virtual methods:
 
-	// ParentChildAdded calls the default implementations of the child_added virtual method.
+	// ParentChildAdded calls the default implementations of the `GstChildProxy.child_added` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12702,7 +12702,7 @@ type ChildProxy interface {
 	//
 	// Emits the #GstChildProxy::child-added signal.
 	ParentChildAdded(child gobject.Object, name string)
-	// ParentChildRemoved calls the default implementations of the child_removed virtual method.
+	// ParentChildRemoved calls the default implementations of the `GstChildProxy.child_removed` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12712,7 +12712,7 @@ type ChildProxy interface {
 	//
 	// Emits the #GstChildProxy::child-removed signal.
 	ParentChildRemoved(child gobject.Object, name string)
-	// ParentGetChildByIndex calls the default implementations of the get_child_by_index virtual method.
+	// ParentGetChildByIndex calls the default implementations of the `GstChildProxy.get_child_by_index` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12725,7 +12725,7 @@ type ChildProxy interface {
 	//
 	// Fetches a child by its number.
 	ParentGetChildByIndex(index uint) gobject.Object
-	// ParentGetChildByName calls the default implementations of the get_child_by_name virtual method.
+	// ParentGetChildByName calls the default implementations of the `GstChildProxy.get_child_by_name` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12742,7 +12742,7 @@ type ChildProxy interface {
 	// together with gst_object_get_name(). If the interface is to be used with
 	// #GObjects, this methods needs to be overridden.
 	ParentGetChildByName(name string) gobject.Object
-	// ParentGetChildrenCount calls the default implementations of the get_children_count virtual method.
+	// ParentGetChildrenCount calls the default implementations of the `GstChildProxy.get_children_count` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -13204,7 +13204,7 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 	}
 }
 
-// ParentChildAdded calls the default implementations of the child_added virtual method.
+// ParentChildAdded calls the default implementations of the `GstChildProxy.child_added` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13231,7 +13231,7 @@ func (parent *ChildProxyInstance) ParentChildAdded(child gobject.Object, name st
 	runtime.KeepAlive(name)
 }
 
-// ParentChildRemoved calls the default implementations of the child_removed virtual method.
+// ParentChildRemoved calls the default implementations of the `GstChildProxy.child_removed` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13258,7 +13258,7 @@ func (parent *ChildProxyInstance) ParentChildRemoved(child gobject.Object, name 
 	runtime.KeepAlive(name)
 }
 
-// ParentGetChildByIndex calls the default implementations of the get_child_by_index virtual method.
+// ParentGetChildByIndex calls the default implementations of the `GstChildProxy.get_child_by_index` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13293,7 +13293,7 @@ func (parent *ChildProxyInstance) ParentGetChildByIndex(index uint) gobject.Obje
 	return goret
 }
 
-// ParentGetChildByName calls the default implementations of the get_child_by_name virtual method.
+// ParentGetChildByName calls the default implementations of the `GstChildProxy.get_child_by_name` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13333,7 +13333,7 @@ func (parent *ChildProxyInstance) ParentGetChildByName(name string) gobject.Obje
 	return goret
 }
 
-// ParentGetChildrenCount calls the default implementations of the get_children_count virtual method.
+// ParentGetChildrenCount calls the default implementations of the `GstChildProxy.get_children_count` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -13504,7 +13504,7 @@ type Preset interface {
 
 	// chain up virtual methods:
 
-	// ParentDeletePreset calls the default implementations of the delete_preset virtual method.
+	// ParentDeletePreset calls the default implementations of the `GstPreset.delete_preset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -13517,7 +13517,7 @@ type Preset interface {
 	//
 	// Delete the given preset.
 	ParentDeletePreset(name string) bool
-	// ParentGetMeta calls the default implementations of the get_meta virtual method.
+	// ParentGetMeta calls the default implementations of the `GstPreset.get_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -13533,7 +13533,7 @@ type Preset interface {
 	// Gets the @value for an existing meta data @tag. Meta data @tag names can be
 	// something like e.g. "comment". Returned values need to be released when done.
 	ParentGetMeta(name string, tag string) (string, bool)
-	// ParentGetPresetNames calls the default implementations of the get_preset_names virtual method.
+	// ParentGetPresetNames calls the default implementations of the `GstPreset.get_preset_names` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -13542,7 +13542,7 @@ type Preset interface {
 	//
 	// Get a copy of preset names as a %NULL terminated string array.
 	ParentGetPresetNames() []string
-	// ParentGetPropertyNames calls the default implementations of the get_property_names virtual method.
+	// ParentGetPropertyNames calls the default implementations of the `GstPreset.get_property_names` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -13551,7 +13551,7 @@ type Preset interface {
 	//
 	// Get a the names of the GObject properties that can be used for presets.
 	ParentGetPropertyNames() []string
-	// ParentLoadPreset calls the default implementations of the load_preset virtual method.
+	// ParentLoadPreset calls the default implementations of the `GstPreset.load_preset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -13564,7 +13564,7 @@ type Preset interface {
 	//
 	// Load the given preset.
 	ParentLoadPreset(name string) bool
-	// ParentRenamePreset calls the default implementations of the rename_preset virtual method.
+	// ParentRenamePreset calls the default implementations of the `GstPreset.rename_preset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -13579,7 +13579,7 @@ type Preset interface {
 	// Renames a preset. If there is already a preset by the @new_name it will be
 	// overwritten.
 	ParentRenamePreset(oldName string, newName string) bool
-	// ParentSavePreset calls the default implementations of the save_preset virtual method.
+	// ParentSavePreset calls the default implementations of the `GstPreset.save_preset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -13593,7 +13593,7 @@ type Preset interface {
 	// Save the current object settings as a preset under the given name. If there
 	// is already a preset by this @name it will be overwritten.
 	ParentSavePreset(name string) bool
-	// ParentSetMeta calls the default implementations of the set_meta virtual method.
+	// ParentSetMeta calls the default implementations of the `GstPreset.set_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14323,7 +14323,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 	}
 }
 
-// ParentDeletePreset calls the default implementations of the delete_preset virtual method.
+// ParentDeletePreset calls the default implementations of the `GstPreset.delete_preset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -14359,7 +14359,7 @@ func (preset *PresetInstance) ParentDeletePreset(name string) bool {
 	return goret
 }
 
-// ParentGetMeta calls the default implementations of the get_meta virtual method.
+// ParentGetMeta calls the default implementations of the `GstPreset.get_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -14406,7 +14406,7 @@ func (preset *PresetInstance) ParentGetMeta(name string, tag string) (string, bo
 	return value, goret
 }
 
-// ParentGetPresetNames calls the default implementations of the get_preset_names virtual method.
+// ParentGetPresetNames calls the default implementations of the `GstPreset.get_preset_names` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -14434,7 +14434,7 @@ func (preset *PresetInstance) ParentGetPresetNames() []string {
 	return goret
 }
 
-// ParentGetPropertyNames calls the default implementations of the get_property_names virtual method.
+// ParentGetPropertyNames calls the default implementations of the `GstPreset.get_property_names` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -14462,7 +14462,7 @@ func (preset *PresetInstance) ParentGetPropertyNames() []string {
 	return goret
 }
 
-// ParentLoadPreset calls the default implementations of the load_preset virtual method.
+// ParentLoadPreset calls the default implementations of the `GstPreset.load_preset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -14498,7 +14498,7 @@ func (preset *PresetInstance) ParentLoadPreset(name string) bool {
 	return goret
 }
 
-// ParentRenamePreset calls the default implementations of the rename_preset virtual method.
+// ParentRenamePreset calls the default implementations of the `GstPreset.rename_preset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -14540,7 +14540,7 @@ func (preset *PresetInstance) ParentRenamePreset(oldName string, newName string)
 	return goret
 }
 
-// ParentSavePreset calls the default implementations of the save_preset virtual method.
+// ParentSavePreset calls the default implementations of the `GstPreset.save_preset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -14577,7 +14577,7 @@ func (preset *PresetInstance) ParentSavePreset(name string) bool {
 	return goret
 }
 
-// ParentSetMeta calls the default implementations of the set_meta virtual method.
+// ParentSetMeta calls the default implementations of the `GstPreset.set_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -14689,7 +14689,7 @@ type URIHandler interface {
 
 	// chain up virtual methods:
 
-	// ParentGetURI calls the default implementations of the get_uri virtual method.
+	// ParentGetURI calls the default implementations of the `GstURIHandler.get_uri` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14698,7 +14698,7 @@ type URIHandler interface {
 	//
 	// Gets the currently handled URI.
 	ParentGetURI() string
-	// ParentSetURI calls the default implementations of the set_uri virtual method.
+	// ParentSetURI calls the default implementations of the `GstURIHandler.set_uri` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14951,7 +14951,7 @@ func UnsafeApplyURIHandlerOverrides[Instance URIHandler](gclass unsafe.Pointer, 
 	}
 }
 
-// ParentGetURI calls the default implementations of the get_uri virtual method.
+// ParentGetURI calls the default implementations of the `GstURIHandler.get_uri` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -14980,7 +14980,7 @@ func (handler *URIHandlerInstance) ParentGetURI() string {
 	return goret
 }
 
-// ParentSetURI calls the default implementations of the set_uri virtual method.
+// ParentSetURI calls the default implementations of the `GstURIHandler.set_uri` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -15761,7 +15761,7 @@ type Object interface {
 
 	// chain up virtual methods:
 
-	// ParentDeepNotify calls the default implementations of the deep_notify virtual method.
+	// ParentDeepNotify calls the default implementations of the `GstObject.deep_notify` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -16476,7 +16476,7 @@ func UnsafeApplyObjectOverrides[Instance Object](gclass unsafe.Pointer, override
 	}
 }
 
-// ParentDeepNotify calls the default implementations of the deep_notify virtual method.
+// ParentDeepNotify calls the default implementations of the `GstObject.deep_notify` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17630,14 +17630,14 @@ type Pad interface {
 
 	// chain up virtual methods:
 
-	// ParentLinked calls the default implementations of the linked virtual method.
+	// ParentLinked calls the default implementations of the `GstPad.linked` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- peer Pad 
 	ParentLinked(peer Pad)
-	// ParentUnlinked calls the default implementations of the unlinked virtual method.
+	// ParentUnlinked calls the default implementations of the `GstPad.unlinked` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -20197,7 +20197,7 @@ func UnsafeApplyPadOverrides[Instance Pad](gclass unsafe.Pointer, overrides PadO
 	}
 }
 
-// ParentLinked calls the default implementations of the linked virtual method.
+// ParentLinked calls the default implementations of the `GstPad.linked` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20217,7 +20217,7 @@ func (pad *PadInstance) ParentLinked(peer Pad) {
 	runtime.KeepAlive(peer)
 }
 
-// ParentUnlinked calls the default implementations of the unlinked virtual method.
+// ParentUnlinked calls the default implementations of the `GstPad.unlinked` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20379,7 +20379,7 @@ type PadTemplate interface {
 
 	// chain up virtual methods:
 
-	// ParentPadCreated calls the default implementations of the pad_created virtual method.
+	// ParentPadCreated calls the default implementations of the `GstPadTemplate.pad_created` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -20700,7 +20700,7 @@ func UnsafeApplyPadTemplateOverrides[Instance PadTemplate](gclass unsafe.Pointer
 	}
 }
 
-// ParentPadCreated calls the default implementations of the pad_created virtual method.
+// ParentPadCreated calls the default implementations of the `GstPadTemplate.pad_created` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -23931,7 +23931,7 @@ type StreamCollection interface {
 
 	// chain up virtual methods:
 
-	// ParentStreamNotify calls the default implementations of the stream_notify virtual method.
+	// ParentStreamNotify calls the default implementations of the `GstStreamCollection.stream_notify` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -24191,7 +24191,7 @@ func UnsafeApplyStreamCollectionOverrides[Instance StreamCollection](gclass unsa
 	}
 }
 
-// ParentStreamNotify calls the default implementations of the stream_notify virtual method.
+// ParentStreamNotify calls the default implementations of the `GstStreamCollection.stream_notify` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -24943,7 +24943,7 @@ type TaskPool interface {
 
 	// chain up virtual methods:
 
-	// ParentCleanup calls the default implementations of the cleanup virtual method.
+	// ParentCleanup calls the default implementations of the `GstTaskPool.cleanup` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Wait for all tasks to be stopped. This is mainly used internally
@@ -24951,7 +24951,7 @@ type TaskPool interface {
 	// 
 	// MT safe.
 	ParentCleanup()
-	// ParentPrepare calls the default implementations of the prepare virtual method.
+	// ParentPrepare calls the default implementations of the `GstTaskPool.prepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -25144,7 +25144,7 @@ func UnsafeApplyTaskPoolOverrides[Instance TaskPool](gclass unsafe.Pointer, over
 	}
 }
 
-// ParentCleanup calls the default implementations of the cleanup virtual method.
+// ParentCleanup calls the default implementations of the `GstTaskPool.cleanup` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Wait for all tasks to be stopped. This is mainly used internally
@@ -25162,7 +25162,7 @@ func (pool *TaskPoolInstance) ParentCleanup() {
 	runtime.KeepAlive(pool)
 }
 
-// ParentPrepare calls the default implementations of the prepare virtual method.
+// ParentPrepare calls the default implementations of the `GstTaskPool.prepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -25935,7 +25935,7 @@ type Allocator interface {
 
 	// chain up virtual methods:
 
-	// ParentAlloc calls the default implementations of the alloc virtual method.
+	// ParentAlloc calls the default implementations of the `GstAllocator.alloc` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -25963,7 +25963,7 @@ type Allocator interface {
 	// the amount of bytes to align to. For example, to align to 8 bytes,
 	// use an alignment of 7.
 	ParentAlloc(size uint, params *AllocationParams) *Memory
-	// ParentFree calls the default implementations of the free virtual method.
+	// ParentFree calls the default implementations of the `GstAllocator.free` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -26259,7 +26259,7 @@ func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, ov
 	}
 }
 
-// ParentAlloc calls the default implementations of the alloc virtual method.
+// ParentAlloc calls the default implementations of the `GstAllocator.alloc` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -26314,7 +26314,7 @@ func (allocator *AllocatorInstance) ParentAlloc(size uint, params *AllocationPar
 	return goret
 }
 
-// ParentFree calls the default implementations of the free virtual method.
+// ParentFree calls the default implementations of the `GstAllocator.free` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -26539,7 +26539,7 @@ type BufferPool interface {
 
 	// chain up virtual methods:
 
-	// ParentAcquireBuffer calls the default implementations of the acquire_buffer virtual method.
+	// ParentAcquireBuffer calls the default implementations of the `GstBufferPool.acquire_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -26558,7 +26558,7 @@ type BufferPool interface {
 	// 
 	// @params can contain optional parameters to influence the allocation.
 	ParentAcquireBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn)
-	// ParentAllocBuffer calls the default implementations of the alloc_buffer virtual method.
+	// ParentAllocBuffer calls the default implementations of the `GstBufferPool.alloc_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -26577,17 +26577,17 @@ type BufferPool interface {
 	// not be removed from the buffer in #GstBufferPoolClass::reset_buffer.
 	// The buffer should have the #GST_BUFFER_FLAG_TAG_MEMORY cleared.
 	ParentAllocBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn)
-	// ParentFlushStart calls the default implementations of the flush_start virtual method.
+	// ParentFlushStart calls the default implementations of the `GstBufferPool.flush_start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Enter the flushing state.
 	ParentFlushStart()
-	// ParentFlushStop calls the default implementations of the flush_stop virtual method.
+	// ParentFlushStop calls the default implementations of the `GstBufferPool.flush_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Leave the flushing state.
 	ParentFlushStop()
-	// ParentFreeBuffer calls the default implementations of the free_buffer virtual method.
+	// ParentFreeBuffer calls the default implementations of the `GstBufferPool.free_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -26596,7 +26596,7 @@ type BufferPool interface {
 	//
 	// Free a buffer. The default implementation unrefs the buffer.
 	ParentFreeBuffer(buffer *Buffer)
-	// ParentGetOptions calls the default implementations of the get_options virtual method.
+	// ParentGetOptions calls the default implementations of the `GstBufferPool.get_options` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -26607,7 +26607,7 @@ type BufferPool interface {
 	// @pool. An option would typically be enabled with
 	// gst_buffer_pool_config_add_option().
 	ParentGetOptions() []string
-	// ParentReleaseBuffer calls the default implementations of the release_buffer virtual method.
+	// ParentReleaseBuffer calls the default implementations of the `GstBufferPool.release_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -26620,7 +26620,7 @@ type BufferPool interface {
 	// This function is usually called automatically when the last ref on @buffer
 	// disappears.
 	ParentReleaseBuffer(buffer *Buffer)
-	// ParentResetBuffer calls the default implementations of the reset_buffer virtual method.
+	// ParentResetBuffer calls the default implementations of the `GstBufferPool.reset_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -26634,7 +26634,7 @@ type BufferPool interface {
 	// #GST_BUFFER_FLAG_TAG_MEMORY was set, this function can also try to
 	// restore the memory and clear the #GST_BUFFER_FLAG_TAG_MEMORY again.
 	ParentResetBuffer(buffer *Buffer)
-	// ParentSetConfig calls the default implementations of the set_config virtual method.
+	// ParentSetConfig calls the default implementations of the `GstBufferPool.set_config` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -26662,7 +26662,7 @@ type BufferPool interface {
 	// 
 	// This function takes ownership of @config.
 	ParentSetConfig(config *Structure) bool
-	// ParentStart calls the default implementations of the start virtual method.
+	// ParentStart calls the default implementations of the `GstBufferPool.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -26675,7 +26675,7 @@ type BufferPool interface {
 	// Subclasses do not need to chain up to the parent's default implementation
 	// if they don't want min-buffers based preallocation.
 	ParentStart() bool
-	// ParentStop calls the default implementations of the stop virtual method.
+	// ParentStop calls the default implementations of the `GstBufferPool.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -27756,7 +27756,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 	}
 }
 
-// ParentAcquireBuffer calls the default implementations of the acquire_buffer virtual method.
+// ParentAcquireBuffer calls the default implementations of the `GstBufferPool.acquire_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -27802,7 +27802,7 @@ func (pool *BufferPoolInstance) ParentAcquireBuffer(params *BufferPoolAcquirePar
 	return buffer, goret
 }
 
-// ParentAllocBuffer calls the default implementations of the alloc_buffer virtual method.
+// ParentAllocBuffer calls the default implementations of the `GstBufferPool.alloc_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -27848,7 +27848,7 @@ func (pool *BufferPoolInstance) ParentAllocBuffer(params *BufferPoolAcquireParam
 	return buffer, goret
 }
 
-// ParentFlushStart calls the default implementations of the flush_start virtual method.
+// ParentFlushStart calls the default implementations of the `GstBufferPool.flush_start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Enter the flushing state.
@@ -27863,7 +27863,7 @@ func (pool *BufferPoolInstance) ParentFlushStart() {
 	runtime.KeepAlive(pool)
 }
 
-// ParentFlushStop calls the default implementations of the flush_stop virtual method.
+// ParentFlushStop calls the default implementations of the `GstBufferPool.flush_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Leave the flushing state.
@@ -27878,7 +27878,7 @@ func (pool *BufferPoolInstance) ParentFlushStop() {
 	runtime.KeepAlive(pool)
 }
 
-// ParentFreeBuffer calls the default implementations of the free_buffer virtual method.
+// ParentFreeBuffer calls the default implementations of the `GstBufferPool.free_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -27900,7 +27900,7 @@ func (pool *BufferPoolInstance) ParentFreeBuffer(buffer *Buffer) {
 	runtime.KeepAlive(buffer)
 }
 
-// ParentGetOptions calls the default implementations of the get_options virtual method.
+// ParentGetOptions calls the default implementations of the `GstBufferPool.get_options` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -27930,7 +27930,7 @@ func (pool *BufferPoolInstance) ParentGetOptions() []string {
 	return goret
 }
 
-// ParentReleaseBuffer calls the default implementations of the release_buffer virtual method.
+// ParentReleaseBuffer calls the default implementations of the `GstBufferPool.release_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -27956,7 +27956,7 @@ func (pool *BufferPoolInstance) ParentReleaseBuffer(buffer *Buffer) {
 	runtime.KeepAlive(buffer)
 }
 
-// ParentResetBuffer calls the default implementations of the reset_buffer virtual method.
+// ParentResetBuffer calls the default implementations of the `GstBufferPool.reset_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -27983,7 +27983,7 @@ func (pool *BufferPoolInstance) ParentResetBuffer(buffer *Buffer) {
 	runtime.KeepAlive(buffer)
 }
 
-// ParentSetConfig calls the default implementations of the set_config virtual method.
+// ParentSetConfig calls the default implementations of the `GstBufferPool.set_config` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -28033,7 +28033,7 @@ func (pool *BufferPoolInstance) ParentSetConfig(config *Structure) bool {
 	return goret
 }
 
-// ParentStart calls the default implementations of the start virtual method.
+// ParentStart calls the default implementations of the `GstBufferPool.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -28065,7 +28065,7 @@ func (pool *BufferPoolInstance) ParentStart() bool {
 	return goret
 }
 
-// ParentStop calls the default implementations of the stop virtual method.
+// ParentStop calls the default implementations of the `GstBufferPool.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -28482,7 +28482,7 @@ type Bus interface {
 
 	// chain up virtual methods:
 
-	// ParentMessage calls the default implementations of the message virtual method.
+	// ParentMessage calls the default implementations of the `GstBus.message` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -28491,7 +28491,7 @@ type Bus interface {
 	//
 	// A message has been posted on the bus.
 	ParentMessage(message *Message)
-	// ParentSyncMessage calls the default implementations of the sync_message virtual method.
+	// ParentSyncMessage calls the default implementations of the `GstBus.sync_message` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -29238,7 +29238,7 @@ func UnsafeApplyBusOverrides[Instance Bus](gclass unsafe.Pointer, overrides BusO
 	}
 }
 
-// ParentMessage calls the default implementations of the message virtual method.
+// ParentMessage calls the default implementations of the `GstBus.message` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -29260,7 +29260,7 @@ func (bus *BusInstance) ParentMessage(message *Message) {
 	runtime.KeepAlive(message)
 }
 
-// ParentSyncMessage calls the default implementations of the sync_message virtual method.
+// ParentSyncMessage calls the default implementations of the `GstBus.sync_message` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -29766,7 +29766,7 @@ type Clock interface {
 
 	// chain up virtual methods:
 
-	// ParentChangeResolution calls the default implementations of the change_resolution virtual method.
+	// ParentChangeResolution calls the default implementations of the `GstClock.change_resolution` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -29781,7 +29781,7 @@ type Clock interface {
 	// Change the resolution of the clock. Not all values might
 	// be acceptable.
 	ParentChangeResolution(oldResolution ClockTime, newResolution ClockTime) ClockTime
-	// ParentGetInternalTime calls the default implementations of the get_internal_time virtual method.
+	// ParentGetInternalTime calls the default implementations of the `GstClock.get_internal_time` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -29791,7 +29791,7 @@ type Clock interface {
 	// Gets the current internal time of the given clock. The time is returned
 	// unadjusted for the offset and the rate.
 	ParentGetInternalTime() ClockTime
-	// ParentGetResolution calls the default implementations of the get_resolution virtual method.
+	// ParentGetResolution calls the default implementations of the `GstClock.get_resolution` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -29801,7 +29801,7 @@ type Clock interface {
 	// Gets the accuracy of the clock. The accuracy of the clock is the granularity
 	// of the values returned by gst_clock_get_time().
 	ParentGetResolution() ClockTime
-	// ParentUnschedule calls the default implementations of the unschedule virtual method.
+	// ParentUnschedule calls the default implementations of the `GstClock.unschedule` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -29810,7 +29810,7 @@ type Clock interface {
 	//
 	// Unblock a blocking or async wait operation.
 	ParentUnschedule(entry *ClockEntry)
-	// ParentWait calls the default implementations of the wait virtual method.
+	// ParentWait calls the default implementations of the `GstClock.wait` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -29825,7 +29825,7 @@ type Clock interface {
 	// Perform a blocking wait on the given #GstClockEntry and return
 	// the jitter.
 	ParentWait(entry *ClockEntry) (ClockTimeDiff, ClockReturn)
-	// ParentWaitAsync calls the default implementations of the wait_async virtual method.
+	// ParentWaitAsync calls the default implementations of the `GstClock.wait_async` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -31184,7 +31184,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 	}
 }
 
-// ParentChangeResolution calls the default implementations of the change_resolution virtual method.
+// ParentChangeResolution calls the default implementations of the `GstClock.change_resolution` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -31222,7 +31222,7 @@ func (clock *ClockInstance) ParentChangeResolution(oldResolution ClockTime, newR
 	return goret
 }
 
-// ParentGetInternalTime calls the default implementations of the get_internal_time virtual method.
+// ParentGetInternalTime calls the default implementations of the `GstClock.get_internal_time` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -31249,7 +31249,7 @@ func (clock *ClockInstance) ParentGetInternalTime() ClockTime {
 	return goret
 }
 
-// ParentGetResolution calls the default implementations of the get_resolution virtual method.
+// ParentGetResolution calls the default implementations of the `GstClock.get_resolution` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -31276,7 +31276,7 @@ func (clock *ClockInstance) ParentGetResolution() ClockTime {
 	return goret
 }
 
-// ParentUnschedule calls the default implementations of the unschedule virtual method.
+// ParentUnschedule calls the default implementations of the `GstClock.unschedule` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -31298,7 +31298,7 @@ func (clock *ClockInstance) ParentUnschedule(entry *ClockEntry) {
 	runtime.KeepAlive(entry)
 }
 
-// ParentWait calls the default implementations of the wait virtual method.
+// ParentWait calls the default implementations of the `GstClock.wait` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -31336,7 +31336,7 @@ func (clock *ClockInstance) ParentWait(entry *ClockEntry) (ClockTimeDiff, ClockR
 	return jitter, goret
 }
 
-// ParentWaitAsync calls the default implementations of the wait_async virtual method.
+// ParentWaitAsync calls the default implementations of the `GstClock.wait_async` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -31452,7 +31452,7 @@ type ControlBinding interface {
 
 	// chain up virtual methods:
 
-	// ParentSyncValues calls the default implementations of the sync_values virtual method.
+	// ParentSyncValues calls the default implementations of the `GstControlBinding.sync_values` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -31679,7 +31679,7 @@ func UnsafeApplyControlBindingOverrides[Instance ControlBinding](gclass unsafe.P
 	}
 }
 
-// ParentSyncValues calls the default implementations of the sync_values virtual method.
+// ParentSyncValues calls the default implementations of the `GstControlBinding.sync_values` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -32100,7 +32100,7 @@ type Device interface {
 
 	// chain up virtual methods:
 
-	// ParentCreateElement calls the default implementations of the create_element virtual method.
+	// ParentCreateElement calls the default implementations of the `GstDevice.create_element` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -32115,7 +32115,7 @@ type Device interface {
 	// Creates the element with all of the required parameters set to use
 	// this device.
 	ParentCreateElement(name string) Element
-	// ParentReconfigureElement calls the default implementations of the reconfigure_element virtual method.
+	// ParentReconfigureElement calls the default implementations of the `GstDevice.reconfigure_element` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -32532,7 +32532,7 @@ func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, override
 	}
 }
 
-// ParentCreateElement calls the default implementations of the create_element virtual method.
+// ParentCreateElement calls the default implementations of the `GstDevice.create_element` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -32572,7 +32572,7 @@ func (device *DeviceInstance) ParentCreateElement(name string) Element {
 	return goret
 }
 
-// ParentReconfigureElement calls the default implementations of the reconfigure_element virtual method.
+// ParentReconfigureElement calls the default implementations of the `GstDevice.reconfigure_element` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -33354,7 +33354,7 @@ type DeviceProvider interface {
 
 	// chain up virtual methods:
 
-	// ParentStart calls the default implementations of the start virtual method.
+	// ParentStart calls the default implementations of the `GstDeviceProvider.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -33374,7 +33374,7 @@ type DeviceProvider interface {
 	// return the same objects that have been received from the
 	// #GST_MESSAGE_DEVICE_ADDED messages and will no longer probe.
 	ParentStart() bool
-	// ParentStop calls the default implementations of the stop virtual method.
+	// ParentStop calls the default implementations of the `GstDeviceProvider.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Decreases the use-count by one. If the use count reaches zero, this
@@ -33929,7 +33929,7 @@ func UnsafeApplyDeviceProviderOverrides[Instance DeviceProvider](gclass unsafe.P
 	}
 }
 
-// ParentStart calls the default implementations of the start virtual method.
+// ParentStart calls the default implementations of the `GstDeviceProvider.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -33968,7 +33968,7 @@ func (provider *DeviceProviderInstance) ParentStart() bool {
 	return goret
 }
 
-// ParentStop calls the default implementations of the stop virtual method.
+// ParentStop calls the default implementations of the `GstDeviceProvider.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Decreases the use-count by one. If the use count reaches zero, this
@@ -35680,7 +35680,7 @@ type Element interface {
 
 	// chain up virtual methods:
 
-	// ParentChangeState calls the default implementations of the change_state virtual method.
+	// ParentChangeState calls the default implementations of the `GstElement.change_state` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35696,7 +35696,7 @@ type Element interface {
 	// This function must be called with STATE_LOCK held and is mainly used
 	// internally.
 	ParentChangeState(transition StateChange) StateChangeReturn
-	// ParentGetState calls the default implementations of the get_state virtual method.
+	// ParentGetState calls the default implementations of the `GstElement.get_state` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35733,7 +35733,7 @@ type Element interface {
 	// an element is not producing data to complete the preroll. When setting the
 	// element to playing, the preroll will complete and playback will start.
 	ParentGetState(timeout ClockTime) (State, State, StateChangeReturn)
-	// ParentNoMorePads calls the default implementations of the no_more_pads virtual method.
+	// ParentNoMorePads calls the default implementations of the `GstElement.no_more_pads` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Use this function to signal that the element does not expect any more pads
@@ -35746,21 +35746,21 @@ type Element interface {
 	// 
 	// MT safe.
 	ParentNoMorePads()
-	// ParentPadAdded calls the default implementations of the pad_added virtual method.
+	// ParentPadAdded calls the default implementations of the `GstElement.pad_added` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad 
 	ParentPadAdded(pad Pad)
-	// ParentPadRemoved calls the default implementations of the pad_removed virtual method.
+	// ParentPadRemoved calls the default implementations of the `GstElement.pad_removed` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad 
 	ParentPadRemoved(pad Pad)
-	// ParentPostMessage calls the default implementations of the post_message virtual method.
+	// ParentPostMessage calls the default implementations of the `GstElement.post_message` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35775,7 +35775,7 @@ type Element interface {
 	// message; if you want to access the message after this call, you should add an
 	// additional reference before calling.
 	ParentPostMessage(message *Message) bool
-	// ParentProvideClock calls the default implementations of the provide_clock virtual method.
+	// ParentProvideClock calls the default implementations of the `GstElement.provide_clock` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -35786,7 +35786,7 @@ type Element interface {
 	// &gt; An element is only required to provide a clock in the PAUSED
 	// &gt; state. Some elements can provide a clock in other states.
 	ParentProvideClock() Clock
-	// ParentQuery calls the default implementations of the query virtual method.
+	// ParentQuery calls the default implementations of the `GstElement.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35805,7 +35805,7 @@ type Element interface {
 	// 
 	// Please note that some queries might need a running pipeline to work.
 	ParentQuery(query *Query) bool
-	// ParentReleasePad calls the default implementations of the release_pad virtual method.
+	// ParentReleasePad calls the default implementations of the `GstElement.release_pad` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35814,7 +35814,7 @@ type Element interface {
 	//
 	// called when a request pad is to be released
 	ParentReleasePad(pad Pad)
-	// ParentRequestNewPad calls the default implementations of the request_new_pad virtual method.
+	// ParentRequestNewPad calls the default implementations of the `GstElement.request_new_pad` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35835,7 +35835,7 @@ type Element interface {
 	// 
 	// The pad should be released with gst_element_release_request_pad().
 	ParentRequestNewPad(templ PadTemplate, name string, caps *Caps) Pad
-	// ParentSendEvent calls the default implementations of the send_event virtual method.
+	// ParentSendEvent calls the default implementations of the `GstElement.send_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35855,7 +35855,7 @@ type Element interface {
 	// 
 	// MT safe.
 	ParentSendEvent(event *Event) bool
-	// ParentSetBus calls the default implementations of the set_bus virtual method.
+	// ParentSetBus calls the default implementations of the `GstElement.set_bus` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35867,7 +35867,7 @@ type Element interface {
 	// 
 	// MT safe.
 	ParentSetBus(bus Bus)
-	// ParentSetClock calls the default implementations of the set_clock virtual method.
+	// ParentSetClock calls the default implementations of the `GstElement.set_clock` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35882,7 +35882,7 @@ type Element interface {
 	// refcount on the clock. Any previously set clock on the object
 	// is unreffed.
 	ParentSetClock(clock Clock) bool
-	// ParentSetContext calls the default implementations of the set_context virtual method.
+	// ParentSetContext calls the default implementations of the `GstElement.set_context` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35893,7 +35893,7 @@ type Element interface {
 	// 
 	// MT safe.
 	ParentSetContext(_context *Context)
-	// ParentSetState calls the default implementations of the set_state virtual method.
+	// ParentSetState calls the default implementations of the `GstElement.set_state` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -35918,7 +35918,7 @@ type Element interface {
 	// State changes to %GST_STATE_READY or %GST_STATE_NULL never return
 	// #GST_STATE_CHANGE_ASYNC.
 	ParentSetState(state State) StateChangeReturn
-	// ParentStateChanged calls the default implementations of the state_changed virtual method.
+	// ParentStateChanged calls the default implementations of the `GstElement.state_changed` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -39157,7 +39157,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 	}
 }
 
-// ParentChangeState calls the default implementations of the change_state virtual method.
+// ParentChangeState calls the default implementations of the `GstElement.change_state` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39193,7 +39193,7 @@ func (element *ElementInstance) ParentChangeState(transition StateChange) StateC
 	return goret
 }
 
-// ParentGetState calls the default implementations of the get_state virtual method.
+// ParentGetState calls the default implementations of the `GstElement.get_state` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39256,7 +39256,7 @@ func (element *ElementInstance) ParentGetState(timeout ClockTime) (State, State,
 	return state, pending, goret
 }
 
-// ParentNoMorePads calls the default implementations of the no_more_pads virtual method.
+// ParentNoMorePads calls the default implementations of the `GstElement.no_more_pads` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Use this function to signal that the element does not expect any more pads
@@ -39279,7 +39279,7 @@ func (element *ElementInstance) ParentNoMorePads() {
 	runtime.KeepAlive(element)
 }
 
-// ParentPadAdded calls the default implementations of the pad_added virtual method.
+// ParentPadAdded calls the default implementations of the `GstElement.pad_added` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39299,7 +39299,7 @@ func (element *ElementInstance) ParentPadAdded(pad Pad) {
 	runtime.KeepAlive(pad)
 }
 
-// ParentPadRemoved calls the default implementations of the pad_removed virtual method.
+// ParentPadRemoved calls the default implementations of the `GstElement.pad_removed` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39319,7 +39319,7 @@ func (element *ElementInstance) ParentPadRemoved(pad Pad) {
 	runtime.KeepAlive(pad)
 }
 
-// ParentPostMessage calls the default implementations of the post_message virtual method.
+// ParentPostMessage calls the default implementations of the `GstElement.post_message` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39356,7 +39356,7 @@ func (element *ElementInstance) ParentPostMessage(message *Message) bool {
 	return goret
 }
 
-// ParentProvideClock calls the default implementations of the provide_clock virtual method.
+// ParentProvideClock calls the default implementations of the `GstElement.provide_clock` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -39386,7 +39386,7 @@ func (element *ElementInstance) ParentProvideClock() Clock {
 	return goret
 }
 
-// ParentQuery calls the default implementations of the query virtual method.
+// ParentQuery calls the default implementations of the `GstElement.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39427,7 +39427,7 @@ func (element *ElementInstance) ParentQuery(query *Query) bool {
 	return goret
 }
 
-// ParentReleasePad calls the default implementations of the release_pad virtual method.
+// ParentReleasePad calls the default implementations of the `GstElement.release_pad` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39449,7 +39449,7 @@ func (element *ElementInstance) ParentReleasePad(pad Pad) {
 	runtime.KeepAlive(pad)
 }
 
-// ParentRequestNewPad calls the default implementations of the request_new_pad virtual method.
+// ParentRequestNewPad calls the default implementations of the `GstElement.request_new_pad` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39503,7 +39503,7 @@ func (element *ElementInstance) ParentRequestNewPad(templ PadTemplate, name stri
 	return goret
 }
 
-// ParentSendEvent calls the default implementations of the send_event virtual method.
+// ParentSendEvent calls the default implementations of the `GstElement.send_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39545,7 +39545,7 @@ func (element *ElementInstance) ParentSendEvent(event *Event) bool {
 	return goret
 }
 
-// ParentSetBus calls the default implementations of the set_bus virtual method.
+// ParentSetBus calls the default implementations of the `GstElement.set_bus` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39572,7 +39572,7 @@ func (element *ElementInstance) ParentSetBus(bus Bus) {
 	runtime.KeepAlive(bus)
 }
 
-// ParentSetClock calls the default implementations of the set_clock virtual method.
+// ParentSetClock calls the default implementations of the `GstElement.set_clock` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39611,7 +39611,7 @@ func (element *ElementInstance) ParentSetClock(clock Clock) bool {
 	return goret
 }
 
-// ParentSetContext calls the default implementations of the set_context virtual method.
+// ParentSetContext calls the default implementations of the `GstElement.set_context` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39635,7 +39635,7 @@ func (element *ElementInstance) ParentSetContext(_context *Context) {
 	runtime.KeepAlive(_context)
 }
 
-// ParentSetState calls the default implementations of the set_state virtual method.
+// ParentSetState calls the default implementations of the `GstElement.set_state` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -39680,7 +39680,7 @@ func (element *ElementInstance) ParentSetState(state State) StateChangeReturn {
 	return goret
 }
 
-// ParentStateChanged calls the default implementations of the state_changed virtual method.
+// ParentStateChanged calls the default implementations of the `GstElement.state_changed` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -41804,7 +41804,7 @@ type Bin interface {
 
 	// chain up virtual methods:
 
-	// ParentAddElement calls the default implementations of the add_element virtual method.
+	// ParentAddElement calls the default implementations of the `GstBin.add_element` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -41817,7 +41817,7 @@ type Bin interface {
 	//
 	// Method to add an element to the bin.
 	ParentAddElement(element Element) bool
-	// ParentDeepElementAdded calls the default implementations of the deep_element_added virtual method.
+	// ParentDeepElementAdded calls the default implementations of the `GstBin.deep_element_added` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -41827,7 +41827,7 @@ type Bin interface {
 	//
 	// Method called when an element was added somewhere in the bin hierarchy.
 	ParentDeepElementAdded(subBin Bin, child Element)
-	// ParentDeepElementRemoved calls the default implementations of the deep_element_removed virtual method.
+	// ParentDeepElementRemoved calls the default implementations of the `GstBin.deep_element_removed` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -41837,14 +41837,14 @@ type Bin interface {
 	//
 	// Method called when an element was removed somewhere in the bin hierarchy.
 	ParentDeepElementRemoved(subBin Bin, child Element)
-	// ParentDoLatency calls the default implementations of the do_latency virtual method.
+	// ParentDoLatency calls the default implementations of the `GstBin.do_latency` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	ParentDoLatency() bool
-	// ParentElementAdded calls the default implementations of the element_added virtual method.
+	// ParentElementAdded calls the default implementations of the `GstBin.element_added` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -41853,7 +41853,7 @@ type Bin interface {
 	//
 	// Method called when an element was added to the bin.
 	ParentElementAdded(child Element)
-	// ParentElementRemoved calls the default implementations of the element_removed virtual method.
+	// ParentElementRemoved calls the default implementations of the `GstBin.element_removed` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -41862,7 +41862,7 @@ type Bin interface {
 	//
 	// Method called when an element was removed from the bin.
 	ParentElementRemoved(child Element)
-	// ParentHandleMessage calls the default implementations of the handle_message virtual method.
+	// ParentHandleMessage calls the default implementations of the `GstBin.handle_message` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -41871,7 +41871,7 @@ type Bin interface {
 	//
 	// Method to handle a message from the children.
 	ParentHandleMessage(message *Message)
-	// ParentRemoveElement calls the default implementations of the remove_element virtual method.
+	// ParentRemoveElement calls the default implementations of the `GstBin.remove_element` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -42791,7 +42791,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 	}
 }
 
-// ParentAddElement calls the default implementations of the add_element virtual method.
+// ParentAddElement calls the default implementations of the `GstBin.add_element` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -42826,7 +42826,7 @@ func (bin *BinInstance) ParentAddElement(element Element) bool {
 	return goret
 }
 
-// ParentDeepElementAdded calls the default implementations of the deep_element_added virtual method.
+// ParentDeepElementAdded calls the default implementations of the `GstBin.deep_element_added` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -42852,7 +42852,7 @@ func (bin *BinInstance) ParentDeepElementAdded(subBin Bin, child Element) {
 	runtime.KeepAlive(child)
 }
 
-// ParentDeepElementRemoved calls the default implementations of the deep_element_removed virtual method.
+// ParentDeepElementRemoved calls the default implementations of the `GstBin.deep_element_removed` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -42878,7 +42878,7 @@ func (bin *BinInstance) ParentDeepElementRemoved(subBin Bin, child Element) {
 	runtime.KeepAlive(child)
 }
 
-// ParentDoLatency calls the default implementations of the do_latency virtual method.
+// ParentDoLatency calls the default implementations of the `GstBin.do_latency` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -42904,7 +42904,7 @@ func (bin *BinInstance) ParentDoLatency() bool {
 	return goret
 }
 
-// ParentElementAdded calls the default implementations of the element_added virtual method.
+// ParentElementAdded calls the default implementations of the `GstBin.element_added` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -42926,7 +42926,7 @@ func (bin *BinInstance) ParentElementAdded(child Element) {
 	runtime.KeepAlive(child)
 }
 
-// ParentElementRemoved calls the default implementations of the element_removed virtual method.
+// ParentElementRemoved calls the default implementations of the `GstBin.element_removed` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -42948,7 +42948,7 @@ func (bin *BinInstance) ParentElementRemoved(child Element) {
 	runtime.KeepAlive(child)
 }
 
-// ParentHandleMessage calls the default implementations of the handle_message virtual method.
+// ParentHandleMessage calls the default implementations of the `GstBin.handle_message` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -42970,7 +42970,7 @@ func (bin *BinInstance) ParentHandleMessage(message *Message) {
 	runtime.KeepAlive(message)
 }
 
-// ParentRemoveElement calls the default implementations of the remove_element virtual method.
+// ParentRemoveElement calls the default implementations of the `GstBin.remove_element` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:

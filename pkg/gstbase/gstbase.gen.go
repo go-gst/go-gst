@@ -3054,7 +3054,7 @@ type Aggregator interface {
 
 	// chain up virtual methods:
 
-	// ParentAggregate calls the default implementations of the aggregate virtual method.
+	// ParentAggregate calls the default implementations of the `GstAggregator.aggregate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3073,7 +3073,7 @@ type Aggregator interface {
 	//                  of. Once / if a buffer has been constructed from the
 	//                  aggregated buffers, the subclass should call _finish_buffer.
 	ParentAggregate(timeout bool) gst.FlowReturn
-	// ParentClip calls the default implementations of the clip virtual method.
+	// ParentClip calls the default implementations of the `GstAggregator.clip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3094,7 +3094,7 @@ type Aggregator interface {
 	//                  buf and should output a buffer or return NULL in
 	//                  if the buffer should be dropped.
 	ParentClip(aggregatorPad AggregatorPad, buf *gst.Buffer) *gst.Buffer
-	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// ParentDecideAllocation calls the default implementations of the `GstAggregator.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3111,7 +3111,7 @@ type Aggregator interface {
 	//                     buffers. The passed in query contains the result of the
 	//                     downstream allocation query.
 	ParentDecideAllocation(query *gst.Query) bool
-	// ParentFinishBuffer calls the default implementations of the finish_buffer virtual method.
+	// ParentFinishBuffer calls the default implementations of the `GstAggregator.finish_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3126,7 +3126,7 @@ type Aggregator interface {
 	// mandatory events such as stream-start, caps, and segment events will be
 	// sent before pushing the buffer.
 	ParentFinishBuffer(buffer *gst.Buffer) gst.FlowReturn
-	// ParentFinishBufferList calls the default implementations of the finish_buffer_list virtual method.
+	// ParentFinishBufferList calls the default implementations of the `GstAggregator.finish_buffer_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3141,7 +3141,7 @@ type Aggregator interface {
 	// mandatory events such as stream-start, caps, and segment events will be
 	// sent before pushing the buffer.
 	ParentFinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn
-	// ParentFixateSrcCaps calls the default implementations of the fixate_src_caps virtual method.
+	// ParentFixateSrcCaps calls the default implementations of the `GstAggregator.fixate_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3157,7 +3157,7 @@ type Aggregator interface {
 	//                   ownership of @caps and returns a fixated version of
 	//                   @caps. @caps is not guaranteed to be writable.
 	ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps
-	// ParentFlush calls the default implementations of the flush virtual method.
+	// ParentFlush calls the default implementations of the `GstAggregator.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3169,7 +3169,7 @@ type Aggregator interface {
 	//                  stops have been received. Flush pad-specific data in
 	//                  #GstAggregatorPad-&gt;flush.
 	ParentFlush() gst.FlowReturn
-	// ParentGetNextTime calls the default implementations of the get_next_time virtual method.
+	// ParentGetNextTime calls the default implementations of the `GstAggregator.get_next_time` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3183,7 +3183,7 @@ type Aggregator interface {
 	//                  GST_CLOCK_TIME_NONE causing the element to wait for buffers
 	//                  on all sink pads before aggregating.
 	ParentGetNextTime() gst.ClockTime
-	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// ParentNegotiate calls the default implementations of the `GstAggregator.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3194,7 +3194,7 @@ type Aggregator interface {
 	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
 	// if #GstAggregatorClass::negotiate fails.
 	ParentNegotiate() bool
-	// ParentNegotiatedSrcCaps calls the default implementations of the negotiated_src_caps virtual method.
+	// ParentNegotiatedSrcCaps calls the default implementations of the `GstAggregator.negotiated_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3208,7 +3208,7 @@ type Aggregator interface {
 	// Optional.
 	//                       Notifies subclasses what caps format has been negotiated
 	ParentNegotiatedSrcCaps(caps *gst.Caps) bool
-	// ParentPeekNextSample calls the default implementations of the peek_next_sample virtual method.
+	// ParentPeekNextSample calls the default implementations of the `GstAggregator.peek_next_sample` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3224,7 +3224,7 @@ type Aggregator interface {
 	// a #GstAggregator::samples-selected handler, and can be used to precisely
 	// control aggregating parameters for a given set of input samples.
 	ParentPeekNextSample(aggregatorPad AggregatorPad) *gst.Sample
-	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// ParentProposeAllocation calls the default implementations of the `GstAggregator.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3240,7 +3240,7 @@ type Aggregator interface {
 	// Optional.
 	//                     Allows the subclass to handle the allocation query from upstream.
 	ParentProposeAllocation(pad AggregatorPad, decideQuery *gst.Query, query *gst.Query) bool
-	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// ParentSinkEvent calls the default implementations of the `GstAggregator.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3256,7 +3256,7 @@ type Aggregator interface {
 	//                  Called when an event is received on a sink pad, the subclass
 	//                  should always chain up.
 	ParentSinkEvent(aggregatorPad AggregatorPad, event *gst.Event) bool
-	// ParentSinkEventPreQueue calls the default implementations of the sink_event_pre_queue virtual method.
+	// ParentSinkEventPreQueue calls the default implementations of the `GstAggregator.sink_event_pre_queue` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3272,7 +3272,7 @@ type Aggregator interface {
 	//                        Called when an event is received on a sink pad before queueing up
 	//                        serialized events. The subclass should always chain up (Since: 1.18).
 	ParentSinkEventPreQueue(aggregatorPad AggregatorPad, event *gst.Event) gst.FlowReturn
-	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// ParentSinkQuery calls the default implementations of the `GstAggregator.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3288,7 +3288,7 @@ type Aggregator interface {
 	//                  Called when a query is received on a sink pad, the subclass
 	//                  should always chain up.
 	ParentSinkQuery(aggregatorPad AggregatorPad, query *gst.Query) bool
-	// ParentSinkQueryPreQueue calls the default implementations of the sink_query_pre_queue virtual method.
+	// ParentSinkQueryPreQueue calls the default implementations of the `GstAggregator.sink_query_pre_queue` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3304,7 +3304,7 @@ type Aggregator interface {
 	//                        Called when a query is received on a sink pad before queueing up
 	//                        serialized queries. The subclass should always chain up (Since: 1.18).
 	ParentSinkQueryPreQueue(aggregatorPad AggregatorPad, query *gst.Query) bool
-	// ParentSrcActivate calls the default implementations of the src_activate virtual method.
+	// ParentSrcActivate calls the default implementations of the `GstAggregator.src_activate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3320,7 +3320,7 @@ type Aggregator interface {
 	//                  Called when the src pad is activated, it will start/stop its
 	//                  pad task right after that call.
 	ParentSrcActivate(mode gst.PadMode, active bool) bool
-	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// ParentSrcEvent calls the default implementations of the `GstAggregator.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3335,7 +3335,7 @@ type Aggregator interface {
 	//                  Called when an event is received on the src pad, the subclass
 	//                  should always chain up.
 	ParentSrcEvent(event *gst.Event) bool
-	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// ParentSrcQuery calls the default implementations of the `GstAggregator.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3350,7 +3350,7 @@ type Aggregator interface {
 	//                  Called when a query is received on the src pad, the subclass
 	//                  should always chain up.
 	ParentSrcQuery(query *gst.Query) bool
-	// ParentStart calls the default implementations of the start virtual method.
+	// ParentStart calls the default implementations of the `GstAggregator.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3362,7 +3362,7 @@ type Aggregator interface {
 	//                  The subclass should get ready to process
 	//                  aggregated buffers.
 	ParentStart() bool
-	// ParentStop calls the default implementations of the stop virtual method.
+	// ParentStop calls the default implementations of the `GstAggregator.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3373,7 +3373,7 @@ type Aggregator interface {
 	//                  Called when the element goes from PAUSED to READY.
 	//                  The subclass should free all resources and reset its state.
 	ParentStop() bool
-	// ParentUpdateSrcCaps calls the default implementations of the update_src_caps virtual method.
+	// ParentUpdateSrcCaps calls the default implementations of the `GstAggregator.update_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -4782,7 +4782,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 }
 
-// ParentAggregate calls the default implementations of the aggregate virtual method.
+// ParentAggregate calls the default implementations of the `GstAggregator.aggregate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4823,7 +4823,7 @@ func (aggregator *AggregatorInstance) ParentAggregate(timeout bool) gst.FlowRetu
 	return goret
 }
 
-// ParentClip calls the default implementations of the clip virtual method.
+// ParentClip calls the default implementations of the `GstAggregator.clip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4867,7 +4867,7 @@ func (aggregator *AggregatorInstance) ParentClip(aggregatorPad AggregatorPad, bu
 	return goret
 }
 
-// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// ParentDecideAllocation calls the default implementations of the `GstAggregator.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4906,7 +4906,7 @@ func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
 	return goret
 }
 
-// ParentFinishBuffer calls the default implementations of the finish_buffer virtual method.
+// ParentFinishBuffer calls the default implementations of the `GstAggregator.finish_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4941,7 +4941,7 @@ func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst
 	return goret
 }
 
-// ParentFinishBufferList calls the default implementations of the finish_buffer_list virtual method.
+// ParentFinishBufferList calls the default implementations of the `GstAggregator.finish_buffer_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4976,7 +4976,7 @@ func (aggregator *AggregatorInstance) ParentFinishBufferList(bufferlist *gst.Buf
 	return goret
 }
 
-// ParentFixateSrcCaps calls the default implementations of the fixate_src_caps virtual method.
+// ParentFixateSrcCaps calls the default implementations of the `GstAggregator.fixate_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5012,7 +5012,7 @@ func (self *AggregatorInstance) ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps {
 	return goret
 }
 
-// ParentFlush calls the default implementations of the flush virtual method.
+// ParentFlush calls the default implementations of the `GstAggregator.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -5041,7 +5041,7 @@ func (aggregator *AggregatorInstance) ParentFlush() gst.FlowReturn {
 	return goret
 }
 
-// ParentGetNextTime calls the default implementations of the get_next_time virtual method.
+// ParentGetNextTime calls the default implementations of the `GstAggregator.get_next_time` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -5072,7 +5072,7 @@ func (aggregator *AggregatorInstance) ParentGetNextTime() gst.ClockTime {
 	return goret
 }
 
-// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// ParentNegotiate calls the default implementations of the `GstAggregator.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -5102,7 +5102,7 @@ func (self *AggregatorInstance) ParentNegotiate() bool {
 	return goret
 }
 
-// ParentNegotiatedSrcCaps calls the default implementations of the negotiated_src_caps virtual method.
+// ParentNegotiatedSrcCaps calls the default implementations of the `GstAggregator.negotiated_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5138,7 +5138,7 @@ func (self *AggregatorInstance) ParentNegotiatedSrcCaps(caps *gst.Caps) bool {
 	return goret
 }
 
-// ParentPeekNextSample calls the default implementations of the peek_next_sample virtual method.
+// ParentPeekNextSample calls the default implementations of the `GstAggregator.peek_next_sample` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5176,7 +5176,7 @@ func (aggregator *AggregatorInstance) ParentPeekNextSample(aggregatorPad Aggrega
 	return goret
 }
 
-// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// ParentProposeAllocation calls the default implementations of the `GstAggregator.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5220,7 +5220,7 @@ func (self *AggregatorInstance) ParentProposeAllocation(pad AggregatorPad, decid
 	return goret
 }
 
-// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// ParentSinkEvent calls the default implementations of the `GstAggregator.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5261,7 +5261,7 @@ func (aggregator *AggregatorInstance) ParentSinkEvent(aggregatorPad AggregatorPa
 	return goret
 }
 
-// ParentSinkEventPreQueue calls the default implementations of the sink_event_pre_queue virtual method.
+// ParentSinkEventPreQueue calls the default implementations of the `GstAggregator.sink_event_pre_queue` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5300,7 +5300,7 @@ func (aggregator *AggregatorInstance) ParentSinkEventPreQueue(aggregatorPad Aggr
 	return goret
 }
 
-// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// ParentSinkQuery calls the default implementations of the `GstAggregator.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5341,7 +5341,7 @@ func (aggregator *AggregatorInstance) ParentSinkQuery(aggregatorPad AggregatorPa
 	return goret
 }
 
-// ParentSinkQueryPreQueue calls the default implementations of the sink_query_pre_queue virtual method.
+// ParentSinkQueryPreQueue calls the default implementations of the `GstAggregator.sink_query_pre_queue` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5382,7 +5382,7 @@ func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad Aggr
 	return goret
 }
 
-// ParentSrcActivate calls the default implementations of the src_activate virtual method.
+// ParentSrcActivate calls the default implementations of the `GstAggregator.src_activate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5425,7 +5425,7 @@ func (aggregator *AggregatorInstance) ParentSrcActivate(mode gst.PadMode, active
 	return goret
 }
 
-// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// ParentSrcEvent calls the default implementations of the `GstAggregator.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5462,7 +5462,7 @@ func (aggregator *AggregatorInstance) ParentSrcEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// ParentSrcQuery calls the default implementations of the `GstAggregator.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5499,7 +5499,7 @@ func (aggregator *AggregatorInstance) ParentSrcQuery(query *gst.Query) bool {
 	return goret
 }
 
-// ParentStart calls the default implementations of the start virtual method.
+// ParentStart calls the default implementations of the `GstAggregator.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -5530,7 +5530,7 @@ func (aggregator *AggregatorInstance) ParentStart() bool {
 	return goret
 }
 
-// ParentStop calls the default implementations of the stop virtual method.
+// ParentStop calls the default implementations of the `GstAggregator.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -5560,7 +5560,7 @@ func (aggregator *AggregatorInstance) ParentStop() bool {
 	return goret
 }
 
-// ParentUpdateSrcCaps calls the default implementations of the update_src_caps virtual method.
+// ParentUpdateSrcCaps calls the default implementations of the `GstAggregator.update_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -5689,7 +5689,7 @@ type AggregatorPad interface {
 
 	// chain up virtual methods:
 
-	// ParentFlush calls the default implementations of the flush virtual method.
+	// ParentFlush calls the default implementations of the `GstAggregatorPad.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -5705,7 +5705,7 @@ type AggregatorPad interface {
 	//               to flush any information specific to the pad, it allows for individual
 	//               pads to be flushed while others might not be.
 	ParentFlush(aggregator Aggregator) gst.FlowReturn
-	// ParentSkipBuffer calls the default implementations of the skip_buffer virtual method.
+	// ParentSkipBuffer calls the default implementations of the `GstAggregatorPad.skip_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6024,7 +6024,7 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 	}
 }
 
-// ParentFlush calls the default implementations of the flush virtual method.
+// ParentFlush calls the default implementations of the `GstAggregatorPad.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -6060,7 +6060,7 @@ func (aggpad *AggregatorPadInstance) ParentFlush(aggregator Aggregator) gst.Flow
 	return goret
 }
 
-// ParentSkipBuffer calls the default implementations of the skip_buffer virtual method.
+// ParentSkipBuffer calls the default implementations of the `GstAggregatorPad.skip_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -6514,7 +6514,7 @@ type BaseParse interface {
 
 	// chain up virtual methods:
 
-	// ParentConvert calls the default implementations of the convert virtual method.
+	// ParentConvert calls the default implementations of the `GstBaseParse.convert` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6531,7 +6531,7 @@ type BaseParse interface {
 	// Optional.
 	//                  Convert between formats.
 	ParentConvert(srcFormat gst.Format, srcValue int64, destFormat gst.Format, destValue *int64) bool
-	// ParentDetect calls the default implementations of the detect virtual method.
+	// ParentDetect calls the default implementations of the `GstBaseParse.detect` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6547,7 +6547,7 @@ type BaseParse interface {
 	//                   the first buffers. Can be used by the subclass to detect
 	//                   the stream format.
 	ParentDetect(buffer *gst.Buffer) gst.FlowReturn
-	// ParentGetSinkCaps calls the default implementations of the get_sink_caps virtual method.
+	// ParentGetSinkCaps calls the default implementations of the `GstBaseParse.get_sink_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6561,7 +6561,7 @@ type BaseParse interface {
 	// Optional.
 	//                  Allows the subclass to do its own sink get caps if needed.
 	ParentGetSinkCaps(filter *gst.Caps) *gst.Caps
-	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+	// ParentHandleFrame calls the default implementations of the `GstBaseParse.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6584,7 +6584,7 @@ type BaseParse interface {
 	// though subclass may still set buffer timestamp and duration
 	// if desired.
 	ParentHandleFrame(frame *BaseParseFrame) (int32, gst.FlowReturn)
-	// ParentPrePushFrame calls the default implementations of the pre_push_frame virtual method.
+	// ParentPrePushFrame calls the default implementations of the `GstBaseParse.pre_push_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6602,7 +6602,7 @@ type BaseParse interface {
 	//                   decide whether this buffer should be dropped or not
 	//                   (e.g. custom segment clipping).
 	ParentPrePushFrame(frame *BaseParseFrame) gst.FlowReturn
-	// ParentSetSinkCaps calls the default implementations of the set_sink_caps virtual method.
+	// ParentSetSinkCaps calls the default implementations of the `GstBaseParse.set_sink_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6616,7 +6616,7 @@ type BaseParse interface {
 	// Optional.
 	//                  Allows the subclass to be notified of the actual caps set.
 	ParentSetSinkCaps(caps *gst.Caps) bool
-	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// ParentSinkEvent calls the default implementations of the `GstBaseParse.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6632,7 +6632,7 @@ type BaseParse interface {
 	//                  up to the parent implementation to let the default handler
 	//                  run.
 	ParentSinkEvent(event *gst.Event) bool
-	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// ParentSinkQuery calls the default implementations of the `GstBaseParse.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6648,7 +6648,7 @@ type BaseParse interface {
 	//                   up to the parent implementation to let the default handler
 	//                   run (Since: 1.2)
 	ParentSinkQuery(query *gst.Query) bool
-	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// ParentSrcEvent calls the default implementations of the `GstBaseParse.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6663,7 +6663,7 @@ type BaseParse interface {
 	//                  Event handler on the source pad. Should chain up to the
 	//                  parent to let the default handler run.
 	ParentSrcEvent(event *gst.Event) bool
-	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// ParentSrcQuery calls the default implementations of the `GstBaseParse.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -6678,7 +6678,7 @@ type BaseParse interface {
 	//                   Query handler on the source pad. Should chain up to the
 	//                   parent to let the default handler run (Since: 1.2)
 	ParentSrcQuery(query *gst.Query) bool
-	// ParentStart calls the default implementations of the start virtual method.
+	// ParentStart calls the default implementations of the `GstBaseParse.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -6689,7 +6689,7 @@ type BaseParse interface {
 	//                  Called when the element starts processing.
 	//                  Allows opening external resources.
 	ParentStart() bool
-	// ParentStop calls the default implementations of the stop virtual method.
+	// ParentStop calls the default implementations of the `GstBaseParse.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -7741,7 +7741,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 }
 
-// ParentConvert calls the default implementations of the convert virtual method.
+// ParentConvert calls the default implementations of the `GstBaseParse.convert` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -7791,7 +7791,7 @@ func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int
 	return goret
 }
 
-// ParentDetect calls the default implementations of the detect virtual method.
+// ParentDetect calls the default implementations of the `GstBaseParse.detect` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -7827,7 +7827,7 @@ func (parse *BaseParseInstance) ParentDetect(buffer *gst.Buffer) gst.FlowReturn 
 	return goret
 }
 
-// ParentGetSinkCaps calls the default implementations of the get_sink_caps virtual method.
+// ParentGetSinkCaps calls the default implementations of the `GstBaseParse.get_sink_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -7861,7 +7861,7 @@ func (parse *BaseParseInstance) ParentGetSinkCaps(filter *gst.Caps) *gst.Caps {
 	return goret
 }
 
-// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+// ParentHandleFrame calls the default implementations of the `GstBaseParse.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -7907,7 +7907,7 @@ func (parse *BaseParseInstance) ParentHandleFrame(frame *BaseParseFrame) (int32,
 	return skipsize, goret
 }
 
-// ParentPrePushFrame calls the default implementations of the pre_push_frame virtual method.
+// ParentPrePushFrame calls the default implementations of the `GstBaseParse.pre_push_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -7945,7 +7945,7 @@ func (parse *BaseParseInstance) ParentPrePushFrame(frame *BaseParseFrame) gst.Fl
 	return goret
 }
 
-// ParentSetSinkCaps calls the default implementations of the set_sink_caps virtual method.
+// ParentSetSinkCaps calls the default implementations of the `GstBaseParse.set_sink_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -7981,7 +7981,7 @@ func (parse *BaseParseInstance) ParentSetSinkCaps(caps *gst.Caps) bool {
 	return goret
 }
 
-// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// ParentSinkEvent calls the default implementations of the `GstBaseParse.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -8019,7 +8019,7 @@ func (parse *BaseParseInstance) ParentSinkEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// ParentSinkQuery calls the default implementations of the `GstBaseParse.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -8057,7 +8057,7 @@ func (parse *BaseParseInstance) ParentSinkQuery(query *gst.Query) bool {
 	return goret
 }
 
-// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// ParentSrcEvent calls the default implementations of the `GstBaseParse.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -8094,7 +8094,7 @@ func (parse *BaseParseInstance) ParentSrcEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// ParentSrcQuery calls the default implementations of the `GstBaseParse.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -8131,7 +8131,7 @@ func (parse *BaseParseInstance) ParentSrcQuery(query *gst.Query) bool {
 	return goret
 }
 
-// ParentStart calls the default implementations of the start virtual method.
+// ParentStart calls the default implementations of the `GstBaseParse.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -8161,7 +8161,7 @@ func (parse *BaseParseInstance) ParentStart() bool {
 	return goret
 }
 
-// ParentStop calls the default implementations of the stop virtual method.
+// ParentStop calls the default implementations of the `GstBaseParse.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -8726,7 +8726,7 @@ type BaseSink interface {
 
 	// chain up virtual methods:
 
-	// ParentActivatePull calls the default implementations of the activate_pull virtual method.
+	// ParentActivatePull calls the default implementations of the `GstBaseSink.activate_pull` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8743,7 +8743,7 @@ type BaseSink interface {
 	//     "active" argument. Called after actually activating the sink pad in pull
 	//     mode. The default implementation starts a task on the sink pad.
 	ParentActivatePull(active bool) bool
-	// ParentEvent calls the default implementations of the event virtual method.
+	// ParentEvent calls the default implementations of the `GstBaseSink.event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8756,7 +8756,7 @@ type BaseSink interface {
 	//
 	// Override this to handle events arriving on the sink pad
 	ParentEvent(event *gst.Event) bool
-	// ParentFixate calls the default implementations of the fixate virtual method.
+	// ParentFixate calls the default implementations of the `GstBaseSink.fixate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8770,7 +8770,7 @@ type BaseSink interface {
 	// Only useful in pull mode. Implement if you have
 	//     ideas about what should be the default values for the caps you support.
 	ParentFixate(caps *gst.Caps) *gst.Caps
-	// ParentGetCaps calls the default implementations of the get_caps virtual method.
+	// ParentGetCaps calls the default implementations of the `GstBaseSink.get_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8783,7 +8783,7 @@ type BaseSink interface {
 	//
 	// Called to get sink pad caps from the subclass.
 	ParentGetCaps(filter *gst.Caps) *gst.Caps
-	// ParentGetTimes calls the default implementations of the get_times virtual method.
+	// ParentGetTimes calls the default implementations of the `GstBaseSink.get_times` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8797,7 +8797,7 @@ type BaseSink interface {
 	//
 	// Get the start and end times for syncing on this buffer.
 	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
-	// ParentPrepare calls the default implementations of the prepare virtual method.
+	// ParentPrepare calls the default implementations of the `GstBaseSink.prepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8811,7 +8811,7 @@ type BaseSink interface {
 	// Called to prepare the buffer for @render and @preroll. This
 	//     function is called before synchronisation is performed.
 	ParentPrepare(buffer *gst.Buffer) gst.FlowReturn
-	// ParentPrepareList calls the default implementations of the prepare_list virtual method.
+	// ParentPrepareList calls the default implementations of the `GstBaseSink.prepare_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8825,7 +8825,7 @@ type BaseSink interface {
 	// Called to prepare the buffer list for @render_list. This
 	//     function is called before synchronisation is performed.
 	ParentPrepareList(bufferList *gst.BufferList) gst.FlowReturn
-	// ParentPreroll calls the default implementations of the preroll virtual method.
+	// ParentPreroll calls the default implementations of the `GstBaseSink.preroll` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8838,7 +8838,7 @@ type BaseSink interface {
 	//
 	// Called to present the preroll buffer if desired.
 	ParentPreroll(buffer *gst.Buffer) gst.FlowReturn
-	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// ParentProposeAllocation calls the default implementations of the `GstBaseSink.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8851,7 +8851,7 @@ type BaseSink interface {
 	//
 	// configure the allocation query
 	ParentProposeAllocation(query *gst.Query) bool
-	// ParentQuery calls the default implementations of the query virtual method.
+	// ParentQuery calls the default implementations of the `GstBaseSink.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8864,7 +8864,7 @@ type BaseSink interface {
 	//
 	// perform a #GstQuery on the element.
 	ParentQuery(query *gst.Query) bool
-	// ParentRender calls the default implementations of the render virtual method.
+	// ParentRender calls the default implementations of the `GstBaseSink.render` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8878,7 +8878,7 @@ type BaseSink interface {
 	// Called when a buffer should be presented or output, at the
 	//     correct moment if the #GstBaseSink has been set to sync to the clock.
 	ParentRender(buffer *gst.Buffer) gst.FlowReturn
-	// ParentRenderList calls the default implementations of the render_list virtual method.
+	// ParentRenderList calls the default implementations of the `GstBaseSink.render_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8892,7 +8892,7 @@ type BaseSink interface {
 	// Same as @render but used with buffer lists instead of
 	//     buffers.
 	ParentRenderList(bufferList *gst.BufferList) gst.FlowReturn
-	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// ParentSetCaps calls the default implementations of the `GstBaseSink.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8905,7 +8905,7 @@ type BaseSink interface {
 	//
 	// Notify subclass of changed caps
 	ParentSetCaps(caps *gst.Caps) bool
-	// ParentStart calls the default implementations of the start virtual method.
+	// ParentStart calls the default implementations of the `GstBaseSink.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -8914,7 +8914,7 @@ type BaseSink interface {
 	//
 	// Start processing. Ideal for opening resources in the subclass
 	ParentStart() bool
-	// ParentStop calls the default implementations of the stop virtual method.
+	// ParentStop calls the default implementations of the `GstBaseSink.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -8923,7 +8923,7 @@ type BaseSink interface {
 	//
 	// Stop processing. Subclasses should use this to close resources.
 	ParentStop() bool
-	// ParentUnlock calls the default implementations of the unlock virtual method.
+	// ParentUnlock calls the default implementations of the `GstBaseSink.unlock` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -8933,7 +8933,7 @@ type BaseSink interface {
 	// Unlock any pending access to the resource. Subclasses should
 	//     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
 	ParentUnlock() bool
-	// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
+	// ParentUnlockStop calls the default implementations of the `GstBaseSink.unlock_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -8946,7 +8946,7 @@ type BaseSink interface {
 	//     gst_base_sink_wait() or gst_wait_sink_wait_clock() return or
 	//     #GstBaseSinkClass::render is called again.
 	ParentUnlockStop() bool
-	// ParentWaitEvent calls the default implementations of the wait_event virtual method.
+	// ParentWaitEvent calls the default implementations of the `GstBaseSink.wait_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -10526,7 +10526,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 }
 
-// ParentActivatePull calls the default implementations of the activate_pull virtual method.
+// ParentActivatePull calls the default implementations of the `GstBaseSink.activate_pull` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10567,7 +10567,7 @@ func (sink *BaseSinkInstance) ParentActivatePull(active bool) bool {
 	return goret
 }
 
-// ParentEvent calls the default implementations of the event virtual method.
+// ParentEvent calls the default implementations of the `GstBaseSink.event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10602,7 +10602,7 @@ func (sink *BaseSinkInstance) ParentEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentFixate calls the default implementations of the fixate virtual method.
+// ParentFixate calls the default implementations of the `GstBaseSink.fixate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10636,7 +10636,7 @@ func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 	return goret
 }
 
-// ParentGetCaps calls the default implementations of the get_caps virtual method.
+// ParentGetCaps calls the default implementations of the `GstBaseSink.get_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10671,7 +10671,7 @@ func (sink *BaseSinkInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 	return goret
 }
 
-// ParentGetTimes calls the default implementations of the get_times virtual method.
+// ParentGetTimes calls the default implementations of the `GstBaseSink.get_times` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10708,7 +10708,7 @@ func (sink *BaseSinkInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime,
 	return start, end
 }
 
-// ParentPrepare calls the default implementations of the prepare virtual method.
+// ParentPrepare calls the default implementations of the `GstBaseSink.prepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10742,7 +10742,7 @@ func (sink *BaseSinkInstance) ParentPrepare(buffer *gst.Buffer) gst.FlowReturn {
 	return goret
 }
 
-// ParentPrepareList calls the default implementations of the prepare_list virtual method.
+// ParentPrepareList calls the default implementations of the `GstBaseSink.prepare_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10776,7 +10776,7 @@ func (sink *BaseSinkInstance) ParentPrepareList(bufferList *gst.BufferList) gst.
 	return goret
 }
 
-// ParentPreroll calls the default implementations of the preroll virtual method.
+// ParentPreroll calls the default implementations of the `GstBaseSink.preroll` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10809,7 +10809,7 @@ func (sink *BaseSinkInstance) ParentPreroll(buffer *gst.Buffer) gst.FlowReturn {
 	return goret
 }
 
-// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// ParentProposeAllocation calls the default implementations of the `GstBaseSink.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10844,7 +10844,7 @@ func (sink *BaseSinkInstance) ParentProposeAllocation(query *gst.Query) bool {
 	return goret
 }
 
-// ParentQuery calls the default implementations of the query virtual method.
+// ParentQuery calls the default implementations of the `GstBaseSink.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10879,7 +10879,7 @@ func (sink *BaseSinkInstance) ParentQuery(query *gst.Query) bool {
 	return goret
 }
 
-// ParentRender calls the default implementations of the render virtual method.
+// ParentRender calls the default implementations of the `GstBaseSink.render` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10913,7 +10913,7 @@ func (sink *BaseSinkInstance) ParentRender(buffer *gst.Buffer) gst.FlowReturn {
 	return goret
 }
 
-// ParentRenderList calls the default implementations of the render_list virtual method.
+// ParentRenderList calls the default implementations of the `GstBaseSink.render_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10947,7 +10947,7 @@ func (sink *BaseSinkInstance) ParentRenderList(bufferList *gst.BufferList) gst.F
 	return goret
 }
 
-// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// ParentSetCaps calls the default implementations of the `GstBaseSink.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10982,7 +10982,7 @@ func (sink *BaseSinkInstance) ParentSetCaps(caps *gst.Caps) bool {
 	return goret
 }
 
-// ParentStart calls the default implementations of the start virtual method.
+// ParentStart calls the default implementations of the `GstBaseSink.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -11010,7 +11010,7 @@ func (sink *BaseSinkInstance) ParentStart() bool {
 	return goret
 }
 
-// ParentStop calls the default implementations of the stop virtual method.
+// ParentStop calls the default implementations of the `GstBaseSink.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -11038,7 +11038,7 @@ func (sink *BaseSinkInstance) ParentStop() bool {
 	return goret
 }
 
-// ParentUnlock calls the default implementations of the unlock virtual method.
+// ParentUnlock calls the default implementations of the `GstBaseSink.unlock` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -11067,7 +11067,7 @@ func (sink *BaseSinkInstance) ParentUnlock() bool {
 	return goret
 }
 
-// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
+// ParentUnlockStop calls the default implementations of the `GstBaseSink.unlock_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -11099,7 +11099,7 @@ func (sink *BaseSinkInstance) ParentUnlockStop() bool {
 	return goret
 }
 
-// ParentWaitEvent calls the default implementations of the wait_event virtual method.
+// ParentWaitEvent calls the default implementations of the `GstBaseSink.wait_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -11570,7 +11570,7 @@ type BaseSrc interface {
 
 	// chain up virtual methods:
 
-	// ParentAlloc calls the default implementations of the alloc virtual method.
+	// ParentAlloc calls the default implementations of the `GstBaseSrc.alloc` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11586,7 +11586,7 @@ type BaseSrc interface {
 	// Ask the subclass to allocate an output buffer with @offset and @size, the default
 	// implementation will use the negotiated allocator.
 	ParentAlloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn)
-	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// ParentDecideAllocation calls the default implementations of the `GstBaseSrc.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11599,7 +11599,7 @@ type BaseSrc interface {
 	//
 	// configure the allocation query
 	ParentDecideAllocation(query *gst.Query) bool
-	// ParentDoSeek calls the default implementations of the do_seek virtual method.
+	// ParentDoSeek calls the default implementations of the `GstBaseSrc.do_seek` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11612,7 +11612,7 @@ type BaseSrc interface {
 	//
 	// Perform seeking on the resource to the indicated segment.
 	ParentDoSeek(segment *gst.Segment) bool
-	// ParentEvent calls the default implementations of the event virtual method.
+	// ParentEvent calls the default implementations of the `GstBaseSrc.event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11625,7 +11625,7 @@ type BaseSrc interface {
 	//
 	// Override this to implement custom event handling.
 	ParentEvent(event *gst.Event) bool
-	// ParentFill calls the default implementations of the fill virtual method.
+	// ParentFill calls the default implementations of the `GstBaseSrc.fill` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11641,7 +11641,7 @@ type BaseSrc interface {
 	// Ask the subclass to fill the buffer with data for offset and size. The
 	//   passed buffer is guaranteed to hold the requested amount of bytes.
 	ParentFill(offset uint64, size uint, buf *gst.Buffer) gst.FlowReturn
-	// ParentFixate calls the default implementations of the fixate virtual method.
+	// ParentFixate calls the default implementations of the `GstBaseSrc.fixate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11654,7 +11654,7 @@ type BaseSrc interface {
 	//
 	// Called if, in negotiation, caps need fixating.
 	ParentFixate(caps *gst.Caps) *gst.Caps
-	// ParentGetCaps calls the default implementations of the get_caps virtual method.
+	// ParentGetCaps calls the default implementations of the `GstBaseSrc.get_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11667,7 +11667,7 @@ type BaseSrc interface {
 	//
 	// Called to get the caps to report.
 	ParentGetCaps(filter *gst.Caps) *gst.Caps
-	// ParentGetSize calls the default implementations of the get_size virtual method.
+	// ParentGetSize calls the default implementations of the `GstBaseSrc.get_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -11678,7 +11678,7 @@ type BaseSrc interface {
 	// Get the total size of the resource in the format set by
 	// gst_base_src_set_format().
 	ParentGetSize() (uint64, bool)
-	// ParentGetTimes calls the default implementations of the get_times virtual method.
+	// ParentGetTimes calls the default implementations of the `GstBaseSrc.get_times` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11693,7 +11693,7 @@ type BaseSrc interface {
 	// Given @buffer, return @start and @end time when it should be pushed
 	// out. The base class will sync on the clock using these times.
 	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
-	// ParentIsSeekable calls the default implementations of the is_seekable virtual method.
+	// ParentIsSeekable calls the default implementations of the `GstBaseSrc.is_seekable` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -11702,7 +11702,7 @@ type BaseSrc interface {
 	//
 	// Check if the source can seek
 	ParentIsSeekable() bool
-	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// ParentNegotiate calls the default implementations of the `GstBaseSrc.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -11717,7 +11717,7 @@ type BaseSrc interface {
 	// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
 	// buffer is allocated.
 	ParentNegotiate() bool
-	// ParentPrepareSeekSegment calls the default implementations of the prepare_seek_segment virtual method.
+	// ParentPrepareSeekSegment calls the default implementations of the `GstBaseSrc.prepare_seek_segment` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11736,7 +11736,7 @@ type BaseSrc interface {
 	//   convert the seek arguments to the configured native format and prepare a
 	//   segment in that format.
 	ParentPrepareSeekSegment(seek *gst.Event, segment *gst.Segment) bool
-	// ParentQuery calls the default implementations of the query virtual method.
+	// ParentQuery calls the default implementations of the `GstBaseSrc.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11749,7 +11749,7 @@ type BaseSrc interface {
 	//
 	// Handle a requested query.
 	ParentQuery(query *gst.Query) bool
-	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// ParentSetCaps calls the default implementations of the `GstBaseSrc.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11762,7 +11762,7 @@ type BaseSrc interface {
 	//
 	// Set new caps on the basesrc source pad.
 	ParentSetCaps(caps *gst.Caps) bool
-	// ParentStart calls the default implementations of the start virtual method.
+	// ParentStart calls the default implementations of the `GstBaseSrc.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -11774,7 +11774,7 @@ type BaseSrc interface {
 	//    when the operation completes, either from the current thread or any other
 	//    thread that finishes the start operation asynchronously.
 	ParentStart() bool
-	// ParentStop calls the default implementations of the stop virtual method.
+	// ParentStop calls the default implementations of the `GstBaseSrc.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -11783,7 +11783,7 @@ type BaseSrc interface {
 	//
 	// Stop processing. Subclasses should use this to close resources.
 	ParentStop() bool
-	// ParentUnlock calls the default implementations of the unlock virtual method.
+	// ParentUnlock calls the default implementations of the `GstBaseSrc.unlock` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -11797,7 +11797,7 @@ type BaseSrc interface {
 	//    GST_FLOW_FLUSHING until the #GstBaseSrcClass::unlock_stop function has
 	//    been called.
 	ParentUnlock() bool
-	// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
+	// ParentUnlockStop calls the default implementations of the `GstBaseSrc.unlock_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -13152,7 +13152,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 }
 
-// ParentAlloc calls the default implementations of the alloc virtual method.
+// ParentAlloc calls the default implementations of the `GstBaseSrc.alloc` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13196,7 +13196,7 @@ func (src *BaseSrcInstance) ParentAlloc(offset uint64, size uint) (*gst.Buffer, 
 	return buf, goret
 }
 
-// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// ParentDecideAllocation calls the default implementations of the `GstBaseSrc.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13231,7 +13231,7 @@ func (src *BaseSrcInstance) ParentDecideAllocation(query *gst.Query) bool {
 	return goret
 }
 
-// ParentDoSeek calls the default implementations of the do_seek virtual method.
+// ParentDoSeek calls the default implementations of the `GstBaseSrc.do_seek` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13266,7 +13266,7 @@ func (src *BaseSrcInstance) ParentDoSeek(segment *gst.Segment) bool {
 	return goret
 }
 
-// ParentEvent calls the default implementations of the event virtual method.
+// ParentEvent calls the default implementations of the `GstBaseSrc.event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13301,7 +13301,7 @@ func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentFill calls the default implementations of the fill virtual method.
+// ParentFill calls the default implementations of the `GstBaseSrc.fill` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13343,7 +13343,7 @@ func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer
 	return goret
 }
 
-// ParentFixate calls the default implementations of the fixate virtual method.
+// ParentFixate calls the default implementations of the `GstBaseSrc.fixate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13376,7 +13376,7 @@ func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 	return goret
 }
 
-// ParentGetCaps calls the default implementations of the get_caps virtual method.
+// ParentGetCaps calls the default implementations of the `GstBaseSrc.get_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13411,7 +13411,7 @@ func (src *BaseSrcInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 	return goret
 }
 
-// ParentGetSize calls the default implementations of the get_size virtual method.
+// ParentGetSize calls the default implementations of the `GstBaseSrc.get_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -13444,7 +13444,7 @@ func (src *BaseSrcInstance) ParentGetSize() (uint64, bool) {
 	return size, goret
 }
 
-// ParentGetTimes calls the default implementations of the get_times virtual method.
+// ParentGetTimes calls the default implementations of the `GstBaseSrc.get_times` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13482,7 +13482,7 @@ func (src *BaseSrcInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, g
 	return start, end
 }
 
-// ParentIsSeekable calls the default implementations of the is_seekable virtual method.
+// ParentIsSeekable calls the default implementations of the `GstBaseSrc.is_seekable` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -13510,7 +13510,7 @@ func (src *BaseSrcInstance) ParentIsSeekable() bool {
 	return goret
 }
 
-// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// ParentNegotiate calls the default implementations of the `GstBaseSrc.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -13544,7 +13544,7 @@ func (src *BaseSrcInstance) ParentNegotiate() bool {
 	return goret
 }
 
-// ParentPrepareSeekSegment calls the default implementations of the prepare_seek_segment virtual method.
+// ParentPrepareSeekSegment calls the default implementations of the `GstBaseSrc.prepare_seek_segment` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13588,7 +13588,7 @@ func (src *BaseSrcInstance) ParentPrepareSeekSegment(seek *gst.Event, segment *g
 	return goret
 }
 
-// ParentQuery calls the default implementations of the query virtual method.
+// ParentQuery calls the default implementations of the `GstBaseSrc.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13623,7 +13623,7 @@ func (src *BaseSrcInstance) ParentQuery(query *gst.Query) bool {
 	return goret
 }
 
-// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// ParentSetCaps calls the default implementations of the `GstBaseSrc.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13658,7 +13658,7 @@ func (src *BaseSrcInstance) ParentSetCaps(caps *gst.Caps) bool {
 	return goret
 }
 
-// ParentStart calls the default implementations of the start virtual method.
+// ParentStart calls the default implementations of the `GstBaseSrc.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -13689,7 +13689,7 @@ func (src *BaseSrcInstance) ParentStart() bool {
 	return goret
 }
 
-// ParentStop calls the default implementations of the stop virtual method.
+// ParentStop calls the default implementations of the `GstBaseSrc.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -13717,7 +13717,7 @@ func (src *BaseSrcInstance) ParentStop() bool {
 	return goret
 }
 
-// ParentUnlock calls the default implementations of the unlock virtual method.
+// ParentUnlock calls the default implementations of the `GstBaseSrc.unlock` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -13750,7 +13750,7 @@ func (src *BaseSrcInstance) ParentUnlock() bool {
 	return goret
 }
 
-// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
+// ParentUnlockStop calls the default implementations of the `GstBaseSrc.unlock_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -14107,7 +14107,7 @@ type BaseTransform interface {
 
 	// chain up virtual methods:
 
-	// ParentAcceptCaps calls the default implementations of the accept_caps virtual method.
+	// ParentAcceptCaps calls the default implementations of the `GstBaseTransform.accept_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14124,7 +14124,7 @@ type BaseTransform interface {
 	//                  handled by the element. The default implementation might not be
 	//                  the most optimal way to check this in all cases.
 	ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool
-	// ParentBeforeTransform calls the default implementations of the before_transform virtual method.
+	// ParentBeforeTransform calls the default implementations of the `GstBaseTransform.before_transform` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14136,7 +14136,7 @@ type BaseTransform interface {
 	//                    start processing. Dynamic properties or other delayed
 	//                    configuration could be performed in this method.
 	ParentBeforeTransform(buffer *gst.Buffer)
-	// ParentCopyMetadata calls the default implementations of the copy_metadata virtual method.
+	// ParentCopyMetadata calls the default implementations of the `GstBaseTransform.copy_metadata` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14153,7 +14153,7 @@ type BaseTransform interface {
 	//                 The default implementation will copy the flags, timestamps and
 	//                 offsets of the buffer.
 	ParentCopyMetadata(input *gst.Buffer, outbuf *gst.Buffer) bool
-	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// ParentDecideAllocation calls the default implementations of the `GstBaseTransform.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14173,7 +14173,7 @@ type BaseTransform interface {
 	//                    be called for all metadata API in the downstream query,
 	//                    otherwise the metadata API is removed.
 	ParentDecideAllocation(query *gst.Query) bool
-	// ParentFilterMeta calls the default implementations of the filter_meta virtual method.
+	// ParentFilterMeta calls the default implementations of the `GstBaseTransform.filter_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14190,7 +14190,7 @@ type BaseTransform interface {
 	//               upstream allocation query. The default implementation is %NULL
 	//               and will cause all metadata to be removed.
 	ParentFilterMeta(query *gst.Query, api gobject.Type, params *gst.Structure) bool
-	// ParentFixateCaps calls the default implementations of the fixate_caps virtual method.
+	// ParentFixateCaps calls the default implementations of the `GstBaseTransform.fixate_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14203,7 +14203,7 @@ type BaseTransform interface {
 	// 
 	// 	- goret *gst.Caps 
 	ParentFixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps
-	// ParentGenerateOutput calls the default implementations of the generate_output virtual method.
+	// ParentGenerateOutput calls the default implementations of the `GstBaseTransform.generate_output` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14211,7 +14211,7 @@ type BaseTransform interface {
 	// 	- outbuf *gst.Buffer 
 	// 	- goret gst.FlowReturn 
 	ParentGenerateOutput() (*gst.Buffer, gst.FlowReturn)
-	// ParentGetUnitSize calls the default implementations of the get_unit_size virtual method.
+	// ParentGetUnitSize calls the default implementations of the `GstBaseTransform.get_unit_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14223,7 +14223,7 @@ type BaseTransform interface {
 	// 	- size uint 
 	// 	- goret bool 
 	ParentGetUnitSize(caps *gst.Caps) (uint, bool)
-	// ParentPrepareOutputBuffer calls the default implementations of the prepare_output_buffer virtual method.
+	// ParentPrepareOutputBuffer calls the default implementations of the `GstBaseTransform.prepare_output_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14235,7 +14235,7 @@ type BaseTransform interface {
 	// 	- outbuf *gst.Buffer 
 	// 	- goret gst.FlowReturn 
 	ParentPrepareOutputBuffer(input *gst.Buffer) (*gst.Buffer, gst.FlowReturn)
-	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// ParentProposeAllocation calls the default implementations of the `GstBaseTransform.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14256,7 +14256,7 @@ type BaseTransform interface {
 	//                      passthrough mode and will copy all the filtered metadata
 	//                      API in non-passthrough mode.
 	ParentProposeAllocation(decideQuery *gst.Query, query *gst.Query) bool
-	// ParentQueryBaseTransform calls the default implementations of the query virtual method.
+	// ParentQueryBaseTransform calls the default implementations of the `GstBaseTransform.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14273,7 +14273,7 @@ type BaseTransform interface {
 	//                  must chain up to the parent if they didn't handle the
 	//                  query
 	ParentQueryBaseTransform(direction gst.PadDirection, query *gst.Query) bool
-	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// ParentSetCaps calls the default implementations of the `GstBaseTransform.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14287,7 +14287,7 @@ type BaseTransform interface {
 	//
 	// Allows the subclass to be notified of the actual caps set.
 	ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
-	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// ParentSinkEvent calls the default implementations of the `GstBaseTransform.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14298,7 +14298,7 @@ type BaseTransform interface {
 	// 
 	// 	- goret bool 
 	ParentSinkEvent(event *gst.Event) bool
-	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// ParentSrcEvent calls the default implementations of the `GstBaseTransform.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14309,7 +14309,7 @@ type BaseTransform interface {
 	// 
 	// 	- goret bool 
 	ParentSrcEvent(event *gst.Event) bool
-	// ParentStart calls the default implementations of the start virtual method.
+	// ParentStart calls the default implementations of the `GstBaseTransform.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14320,7 +14320,7 @@ type BaseTransform interface {
 	//                  Called when the element starts processing.
 	//                  Allows opening external resources.
 	ParentStart() bool
-	// ParentStop calls the default implementations of the stop virtual method.
+	// ParentStop calls the default implementations of the `GstBaseTransform.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14331,7 +14331,7 @@ type BaseTransform interface {
 	//                  Called when the element stops processing.
 	//                  Allows closing external resources.
 	ParentStop() bool
-	// ParentSubmitInputBuffer calls the default implementations of the submit_input_buffer virtual method.
+	// ParentSubmitInputBuffer calls the default implementations of the `GstBaseTransform.submit_input_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14351,7 +14351,7 @@ type BaseTransform interface {
 	//                  contiguous with any previous input buffer, then @is_discont
 	//                  is set to %TRUE. (Since: 1.6)
 	ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn
-	// ParentTransform calls the default implementations of the transform virtual method.
+	// ParentTransform calls the default implementations of the `GstBaseTransform.transform` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14368,7 +14368,7 @@ type BaseTransform interface {
 	//                  The function is allowed to change size/timestamp/duration
 	//                  of the outgoing buffer.
 	ParentTransform(inbuf *gst.Buffer, outbuf *gst.Buffer) gst.FlowReturn
-	// ParentTransformCaps calls the default implementations of the transform_caps virtual method.
+	// ParentTransformCaps calls the default implementations of the `GstBaseTransform.transform_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14385,7 +14385,7 @@ type BaseTransform interface {
 	//                  caps, what caps are allowed on the other pad in this
 	//                  element ?
 	ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps
-	// ParentTransformIp calls the default implementations of the transform_ip virtual method.
+	// ParentTransformIp calls the default implementations of the `GstBaseTransform.transform_ip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14399,7 +14399,7 @@ type BaseTransform interface {
 	// Required if the element operates in-place.
 	//                  Transform the incoming buffer in-place.
 	ParentTransformIp(buf *gst.Buffer) gst.FlowReturn
-	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+	// ParentTransformMeta calls the default implementations of the `GstBaseTransform.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14417,7 +14417,7 @@ type BaseTransform interface {
 	//                  tags. Subclasses can implement this method and return %TRUE if
 	//                  the metadata is to be copied.
 	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
-	// ParentTransformSize calls the default implementations of the transform_size virtual method.
+	// ParentTransformSize calls the default implementations of the `GstBaseTransform.transform_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -15759,7 +15759,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 }
 
-// ParentAcceptCaps calls the default implementations of the accept_caps virtual method.
+// ParentAcceptCaps calls the default implementations of the `GstBaseTransform.accept_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -15801,7 +15801,7 @@ func (trans *BaseTransformInstance) ParentAcceptCaps(direction gst.PadDirection,
 	return goret
 }
 
-// ParentBeforeTransform calls the default implementations of the before_transform virtual method.
+// ParentBeforeTransform calls the default implementations of the `GstBaseTransform.before_transform` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -15826,7 +15826,7 @@ func (trans *BaseTransformInstance) ParentBeforeTransform(buffer *gst.Buffer) {
 	runtime.KeepAlive(buffer)
 }
 
-// ParentCopyMetadata calls the default implementations of the copy_metadata virtual method.
+// ParentCopyMetadata calls the default implementations of the `GstBaseTransform.copy_metadata` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -15868,7 +15868,7 @@ func (trans *BaseTransformInstance) ParentCopyMetadata(input *gst.Buffer, outbuf
 	return goret
 }
 
-// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// ParentDecideAllocation calls the default implementations of the `GstBaseTransform.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -15910,7 +15910,7 @@ func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) boo
 	return goret
 }
 
-// ParentFilterMeta calls the default implementations of the filter_meta virtual method.
+// ParentFilterMeta calls the default implementations of the `GstBaseTransform.filter_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -15955,7 +15955,7 @@ func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobje
 	return goret
 }
 
-// ParentFixateCaps calls the default implementations of the fixate_caps virtual method.
+// ParentFixateCaps calls the default implementations of the `GstBaseTransform.fixate_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -15994,7 +15994,7 @@ func (trans *BaseTransformInstance) ParentFixateCaps(direction gst.PadDirection,
 	return goret
 }
 
-// ParentGenerateOutput calls the default implementations of the generate_output virtual method.
+// ParentGenerateOutput calls the default implementations of the `GstBaseTransform.generate_output` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -16022,7 +16022,7 @@ func (trans *BaseTransformInstance) ParentGenerateOutput() (*gst.Buffer, gst.Flo
 	return outbuf, goret
 }
 
-// ParentGetUnitSize calls the default implementations of the get_unit_size virtual method.
+// ParentGetUnitSize calls the default implementations of the `GstBaseTransform.get_unit_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16059,7 +16059,7 @@ func (trans *BaseTransformInstance) ParentGetUnitSize(caps *gst.Caps) (uint, boo
 	return size, goret
 }
 
-// ParentPrepareOutputBuffer calls the default implementations of the prepare_output_buffer virtual method.
+// ParentPrepareOutputBuffer calls the default implementations of the `GstBaseTransform.prepare_output_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16094,7 +16094,7 @@ func (trans *BaseTransformInstance) ParentPrepareOutputBuffer(input *gst.Buffer)
 	return outbuf, goret
 }
 
-// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// ParentProposeAllocation calls the default implementations of the `GstBaseTransform.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16140,7 +16140,7 @@ func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Que
 	return goret
 }
 
-// ParentQueryBaseTransform calls the default implementations of the query virtual method.
+// ParentQueryBaseTransform calls the default implementations of the `GstBaseTransform.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16182,7 +16182,7 @@ func (trans *BaseTransformInstance) ParentQueryBaseTransform(direction gst.PadDi
 	return goret
 }
 
-// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// ParentSetCaps calls the default implementations of the `GstBaseTransform.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16221,7 +16221,7 @@ func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst
 	return goret
 }
 
-// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// ParentSinkEvent calls the default implementations of the `GstBaseTransform.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16254,7 +16254,7 @@ func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// ParentSrcEvent calls the default implementations of the `GstBaseTransform.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16287,7 +16287,7 @@ func (trans *BaseTransformInstance) ParentSrcEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentStart calls the default implementations of the start virtual method.
+// ParentStart calls the default implementations of the `GstBaseTransform.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -16317,7 +16317,7 @@ func (trans *BaseTransformInstance) ParentStart() bool {
 	return goret
 }
 
-// ParentStop calls the default implementations of the stop virtual method.
+// ParentStop calls the default implementations of the `GstBaseTransform.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -16347,7 +16347,7 @@ func (trans *BaseTransformInstance) ParentStop() bool {
 	return goret
 }
 
-// ParentSubmitInputBuffer calls the default implementations of the submit_input_buffer virtual method.
+// ParentSubmitInputBuffer calls the default implementations of the `GstBaseTransform.submit_input_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16392,7 +16392,7 @@ func (trans *BaseTransformInstance) ParentSubmitInputBuffer(isDiscont bool, inpu
 	return goret
 }
 
-// ParentTransform calls the default implementations of the transform virtual method.
+// ParentTransform calls the default implementations of the `GstBaseTransform.transform` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16432,7 +16432,7 @@ func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *g
 	return goret
 }
 
-// ParentTransformCaps calls the default implementations of the transform_caps virtual method.
+// ParentTransformCaps calls the default implementations of the `GstBaseTransform.transform_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16475,7 +16475,7 @@ func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirecti
 	return goret
 }
 
-// ParentTransformIp calls the default implementations of the transform_ip virtual method.
+// ParentTransformIp calls the default implementations of the `GstBaseTransform.transform_ip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16509,7 +16509,7 @@ func (trans *BaseTransformInstance) ParentTransformIp(buf *gst.Buffer) gst.FlowR
 	return goret
 }
 
-// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+// ParentTransformMeta calls the default implementations of the `GstBaseTransform.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16555,7 +16555,7 @@ func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta
 	return goret
 }
 
-// ParentTransformSize calls the default implementations of the transform_size virtual method.
+// ParentTransformSize calls the default implementations of the `GstBaseTransform.transform_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17797,10 +17797,10 @@ type DataQueue interface {
 
 	// chain up virtual methods:
 
-	// ParentEmpty calls the default implementations of the empty virtual method.
+	// ParentEmpty calls the default implementations of the `GstDataQueue.empty` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentEmpty()
-	// ParentFull calls the default implementations of the full virtual method.
+	// ParentFull calls the default implementations of the `GstDataQueue.full` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentFull()
 }
@@ -17923,7 +17923,7 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 	}
 }
 
-// ParentEmpty calls the default implementations of the empty virtual method.
+// ParentEmpty calls the default implementations of the `GstDataQueue.empty` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 func (queue *DataQueueInstance) ParentEmpty() {
 	var carg0 *C.GstDataQueue
@@ -17936,7 +17936,7 @@ func (queue *DataQueueInstance) ParentEmpty() {
 	runtime.KeepAlive(queue)
 }
 
-// ParentFull calls the default implementations of the full virtual method.
+// ParentFull calls the default implementations of the `GstDataQueue.full` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 func (queue *DataQueueInstance) ParentFull() {
 	var carg0 *C.GstDataQueue
@@ -18010,7 +18010,7 @@ type PushSrc interface {
 
 	// chain up virtual methods:
 
-	// ParentAllocPushSrc calls the default implementations of the alloc virtual method.
+	// ParentAllocPushSrc calls the default implementations of the `GstPushSrc.alloc` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -18020,7 +18020,7 @@ type PushSrc interface {
 	//
 	// Allocate memory for a buffer.
 	ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn)
-	// ParentFillPushSrc calls the default implementations of the fill virtual method.
+	// ParentFillPushSrc calls the default implementations of the `GstPushSrc.fill` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -18172,7 +18172,7 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 	}
 }
 
-// ParentAllocPushSrc calls the default implementations of the alloc virtual method.
+// ParentAllocPushSrc calls the default implementations of the `GstPushSrc.alloc` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -18204,7 +18204,7 @@ func (src *PushSrcInstance) ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn) {
 	return buf, goret
 }
 
-// ParentFillPushSrc calls the default implementations of the fill virtual method.
+// ParentFillPushSrc calls the default implementations of the `GstPushSrc.fill` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
