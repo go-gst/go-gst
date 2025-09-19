@@ -271,6 +271,9 @@ func (promise *Promise) GetReply() *Structure {
 
 	if cret != nil {
 		goret = UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+
+		// the returned Structure is borrowed, so keep the promise alive:
+		runtime.AddCleanup(goret, func(_ *Promise) {}, promise)
 	}
 
 	return goret
