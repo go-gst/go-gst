@@ -53,7 +53,7 @@ func TestPromise(t *testing.T) {
 		// we don't use the structure anymore
 		awaitGC()
 
-		if res.GetName() != reply.GetName() {
+		if res == nil || res.GetName() != reply.GetName() {
 			errchan <- errors.New("name mismatch")
 		}
 
