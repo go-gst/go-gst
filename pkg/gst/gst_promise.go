@@ -311,7 +311,7 @@ func (promise *Promise) Reply(s *Structure) {
 
 	carg0 = (*C.GstPromise)(UnsafePromiseToGlibNone(promise))
 	if s != nil {
-		carg1 = (*C.GstStructure)(UnsafeStructureToGlibFull(s))
+		carg1 = (*C.GstStructure)(UnsafeStructureToGlibFull(s.Copy()))
 	}
 
 	C.gst_promise_reply(carg0, carg1)
