@@ -23175,7 +23175,7 @@ func UnsafeFlowCombinerFromGlibFull(p unsafe.Pointer) *FlowCombiner {
 // 
 // When this is called without an associated call to [FlowCombiner.UnsafeFlowCombinerUnref], then [FlowCombiner] will leak memory.
 func UnsafeFlowCombinerRef(f *FlowCombiner) {
-	C.gst_flow_combiner_ref(f.native)
+	C.gst_flow_combiner_ref((*C.GstFlowCombiner)(f.native))
 }
 
 // UnsafeFlowCombinerUnref unrefs/frees the underlying resource. This is used by the bindings internally.
