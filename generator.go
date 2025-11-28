@@ -4,6 +4,7 @@ package main
 
 import (
 	"encoding/xml"
+	"fmt"
 	"log"
 	"slices"
 	"strings"
@@ -276,6 +277,8 @@ var Data = genmain.Data{
 
 			return nil
 		},
+
+		MiniObjectExtenderReffing(),
 	},
 }
 
@@ -314,6 +317,58 @@ func MiniObjectExtenderBorrows() gir.Preprocessor {
 			}
 		}
 	})
+}
+
+var miniObjectExtenders = []string{
+	"Gst-1.Structure", "Gst-1.Caps", "Gst-1.Toc", "Gst-1.Buffer", "Gst-1.BufferList", "Gst-1.Memory", "Gst-1.Message", "Gst-1.Query", "Gst-1.Sample",
+}
+
+// these are implemented as go function to proxy the type casting
+const (
+	cgoMiniObjectRef   = "miniObjectRef"
+	cgoMiniObjectUnref = "miniObjectUnref"
+)
+
+// gst.MiniObject extenders must be freed with the miniobject unref function.
+// The aliases are sometimes macros, which the generator cannot handle.
+//
+// Must be done as a postprocessor
+func MiniObjectExtenderReffing() typesystem.PostProcessor {
+	return func(r *typesystem.Registry) error {
+		for _, fulltype := range miniObjectExtenders {
+			parts := strings.SplitN(fulltype, ".", 2)
+			if len(parts) != 2 {
+				panic("invalid fulltype: " + fulltype)
+			}
+
+			ns := r.FindNamespaceByName(parts[0])
+			if ns == nil {
+				log.Fatalf("namespace %s not found", parts[0])
+			}
+
+			res := ns.FindLocalTypeByGIRName(parts[1])
+
+			if res == nil {
+				log.Fatalf("fulltype %s not found", fulltype)
+			}
+
+			switch typ := res.(type) {
+			case *typesystem.Record:
+				typ.GoUnsafeRefFunction = fmt.Sprintf("Unsafe%sRef", typ.GoType(0))
+				typ.GoUnsafeUnrefFunction = fmt.Sprintf("Unsafe%sUnref", typ.GoType(0))
+
+				typ.CgoRefFunction = cgoMiniObjectRef
+				typ.CgoRefNeedsUnsafePointer = true
+				typ.CgoUnrefFunction = cgoMiniObjectUnref
+				typ.CgoUnrefNeedsUnsafeCast = true
+
+			default:
+				log.Fatalf("unhandled type for %s", fulltype)
+			}
+		}
+
+		return nil
+	}
 }
 
 // gstsdp.SDPMessage and family have getters that return borrowed values, so we mark the return value as borrowed

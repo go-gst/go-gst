@@ -21278,7 +21278,7 @@ func UnsafeVideoCodecFrameFromGlibFull(p unsafe.Pointer) *VideoCodecFrame {
 // 
 // When this is called without an associated call to [VideoCodecFrame.UnsafeVideoCodecFrameUnref], then [VideoCodecFrame] will leak memory.
 func UnsafeVideoCodecFrameRef(v *VideoCodecFrame) {
-	C.gst_video_codec_frame_ref(v.native)
+	C.gst_video_codec_frame_ref((*C.GstVideoCodecFrame)(v.native))
 }
 
 // UnsafeVideoCodecFrameUnref unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -21395,7 +21395,7 @@ func UnsafeVideoCodecStateFromGlibFull(p unsafe.Pointer) *VideoCodecState {
 // 
 // When this is called without an associated call to [VideoCodecState.UnsafeVideoCodecStateUnref], then [VideoCodecState] will leak memory.
 func UnsafeVideoCodecStateRef(v *VideoCodecState) {
-	C.gst_video_codec_state_ref(v.native)
+	C.gst_video_codec_state_ref((*C.GstVideoCodecState)(v.native))
 }
 
 // UnsafeVideoCodecStateUnref unrefs/frees the underlying resource. This is used by the bindings internally.
