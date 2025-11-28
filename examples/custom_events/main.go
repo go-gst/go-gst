@@ -102,7 +102,7 @@ func runPipeline(pipeline gst.Pipeline) {
 			if count == 3 {
 				ev.SendEOS = true
 			}
-			st := gst.MarshalStructure(ev)
+			st, _ := gst.MarshalStructure(ev)
 
 			if !pipeline.SendEvent(gst.NewEventCustom(gst.EventCustomDownstream, st)) {
 				fmt.Println("Warning: failed to send custom event")
