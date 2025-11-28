@@ -401,60 +401,96 @@ func init() {
 }
 
 // VIDEO_COMP_A wraps GST_VIDEO_COMP_A
+// 
+// see also No documentation available
 const VIDEO_COMP_A = 3
 // VIDEO_COMP_B wraps GST_VIDEO_COMP_B
+// 
+// see also No documentation available
 const VIDEO_COMP_B = 2
 // VIDEO_COMP_G wraps GST_VIDEO_COMP_G
+// 
+// see also No documentation available
 const VIDEO_COMP_G = 1
 // VIDEO_COMP_INDEX wraps GST_VIDEO_COMP_INDEX
+// 
+// see also No documentation available
 const VIDEO_COMP_INDEX = 0
 // VIDEO_COMP_PALETTE wraps GST_VIDEO_COMP_PALETTE
+// 
+// see also No documentation available
 const VIDEO_COMP_PALETTE = 1
 // VIDEO_COMP_R wraps GST_VIDEO_COMP_R
+// 
+// see also No documentation available
 const VIDEO_COMP_R = 0
 // VIDEO_COMP_U wraps GST_VIDEO_COMP_U
+// 
+// see also No documentation available
 const VIDEO_COMP_U = 1
 // VIDEO_COMP_V wraps GST_VIDEO_COMP_V
+// 
+// see also No documentation available
 const VIDEO_COMP_V = 2
 // VIDEO_COMP_Y wraps GST_VIDEO_COMP_Y
+// 
+// see also No documentation available
 const VIDEO_COMP_Y = 0
 // VIDEO_DECODER_MAX_ERRORS wraps GST_VIDEO_DECODER_MAX_ERRORS
+// 
+// see also No documentation available
 //
-// Default maximum number of errors tolerated before signaling error.
 const VIDEO_DECODER_MAX_ERRORS = -1
 // VIDEO_FORMAT_LAST wraps GST_VIDEO_FORMAT_LAST
+// 
+// see also No documentation available
 //
-// Number of video formats in #GstVideoFormat.
 const VIDEO_FORMAT_LAST = 140
 // VIDEO_MAX_COMPONENTS wraps GST_VIDEO_MAX_COMPONENTS
+// 
+// see also No documentation available
 const VIDEO_MAX_COMPONENTS = 4
 // VIDEO_MAX_PLANES wraps GST_VIDEO_MAX_PLANES
+// 
+// see also No documentation available
 const VIDEO_MAX_PLANES = 4
 // VIDEO_TILE_TYPE_MASK wraps GST_VIDEO_TILE_TYPE_MASK
+// 
+// see also No documentation available
 const VIDEO_TILE_TYPE_MASK = 65535
 // VIDEO_TILE_TYPE_SHIFT wraps GST_VIDEO_TILE_TYPE_SHIFT
+// 
+// see also No documentation available
 const VIDEO_TILE_TYPE_SHIFT = 16
 // VIDEO_TILE_X_TILES_MASK wraps GST_VIDEO_TILE_X_TILES_MASK
+// 
+// see also No documentation available
 const VIDEO_TILE_X_TILES_MASK = 65535
 // VIDEO_TILE_Y_TILES_SHIFT wraps GST_VIDEO_TILE_Y_TILES_SHIFT
+// 
+// see also No documentation available
 const VIDEO_TILE_Y_TILES_SHIFT = 16
 // AncillaryMetaField wraps GstAncillaryMetaField
+// 
+// see also No documentation available
 //
-// Location of a @GstAncillaryMeta.
 type AncillaryMetaField C.int
 
 const (
 	// AncillaryMetaFieldProgressive wraps GST_ANCILLARY_META_FIELD_PROGRESSIVE
+	// 
+	// see also No documentation available
 	//
-	// Progressive or no field specified (default)
 	AncillaryMetaFieldProgressive AncillaryMetaField = 0
 	// AncillaryMetaFieldInterlacedFirst wraps GST_ANCILLARY_META_FIELD_INTERLACED_FIRST
+	// 
+	// see also No documentation available
 	//
-	// Interlaced first field
 	AncillaryMetaFieldInterlacedFirst AncillaryMetaField = 16
 	// AncillaryMetaFieldInterlacedSecond wraps GST_ANCILLARY_META_FIELD_INTERLACED_SECOND
+	// 
+	// see also No documentation available
 	//
-	// Interlaced second field
 	AncillaryMetaFieldInterlacedSecond AncillaryMetaField = 17
 )
 
@@ -482,23 +518,21 @@ func (e AncillaryMetaField) String() string {
 }
 
 // ColorBalanceType wraps GstColorBalanceType
+// 
+// see also No documentation available
 //
-// An enumeration indicating whether an element implements color balancing
-// operations in software or in dedicated hardware. In general, dedicated
-// hardware implementations (such as those provided by xvimagesink) are
-// preferred.
 type ColorBalanceType C.int
 
 const (
 	// ColorBalanceHardware wraps GST_COLOR_BALANCE_HARDWARE
+	// 
+	// see also No documentation available
 	//
-	// Color balance is implemented with dedicated
-	//         hardware.
 	ColorBalanceHardware ColorBalanceType = 0
 	// ColorBalanceSoftware wraps GST_COLOR_BALANCE_SOFTWARE
+	// 
+	// see also No documentation available
 	//
-	// Color balance is implemented via software
-	//         processing.
 	ColorBalanceSoftware ColorBalanceType = 1
 )
 
@@ -525,95 +559,86 @@ func (e ColorBalanceType) String() string {
 }
 
 // NavigationCommand wraps GstNavigationCommand
-//
-// A set of commands that may be issued to an element providing the
-// #GstNavigation interface. The available commands can be queried via
-// the gst_navigation_query_new_commands() query.
 // 
-// For convenience in handling DVD navigation, the MENU commands are aliased as:
-//    GST_NAVIGATION_COMMAND_DVD_MENU            = @GST_NAVIGATION_COMMAND_MENU1
-//    GST_NAVIGATION_COMMAND_DVD_TITLE_MENU      = @GST_NAVIGATION_COMMAND_MENU2
-//    GST_NAVIGATION_COMMAND_DVD_ROOT_MENU       = @GST_NAVIGATION_COMMAND_MENU3
-//    GST_NAVIGATION_COMMAND_DVD_SUBPICTURE_MENU = @GST_NAVIGATION_COMMAND_MENU4
-//    GST_NAVIGATION_COMMAND_DVD_AUDIO_MENU      = @GST_NAVIGATION_COMMAND_MENU5
-//    GST_NAVIGATION_COMMAND_DVD_ANGLE_MENU      = @GST_NAVIGATION_COMMAND_MENU6
-//    GST_NAVIGATION_COMMAND_DVD_CHAPTER_MENU    = @GST_NAVIGATION_COMMAND_MENU7
+// see also No documentation available
+//
 type NavigationCommand C.int
 
 const (
 	// NavigationCommandInvalid wraps GST_NAVIGATION_COMMAND_INVALID
+	// 
+	// see also No documentation available
 	//
-	// An invalid command entry
 	NavigationCommandInvalid NavigationCommand = 0
 	// NavigationCommandMenu1 wraps GST_NAVIGATION_COMMAND_MENU1
+	// 
+	// see also No documentation available
 	//
-	// Execute navigation menu command 1. For DVD,
-	// this enters the DVD root menu, or exits back to the title from the menu.
 	NavigationCommandMenu1 NavigationCommand = 1
 	// NavigationCommandMenu2 wraps GST_NAVIGATION_COMMAND_MENU2
+	// 
+	// see also No documentation available
 	//
-	// Execute navigation menu command 2. For DVD,
-	// this jumps to the DVD title menu.
 	NavigationCommandMenu2 NavigationCommand = 2
 	// NavigationCommandMenu3 wraps GST_NAVIGATION_COMMAND_MENU3
+	// 
+	// see also No documentation available
 	//
-	// Execute navigation menu command 3. For DVD,
-	// this jumps into the DVD root menu.
 	NavigationCommandMenu3 NavigationCommand = 3
 	// NavigationCommandMenu4 wraps GST_NAVIGATION_COMMAND_MENU4
+	// 
+	// see also No documentation available
 	//
-	// Execute navigation menu command 4. For DVD,
-	// this jumps to the Subpicture menu.
 	NavigationCommandMenu4 NavigationCommand = 4
 	// NavigationCommandMenu5 wraps GST_NAVIGATION_COMMAND_MENU5
+	// 
+	// see also No documentation available
 	//
-	// Execute navigation menu command 5. For DVD,
-	// the jumps to the audio menu.
 	NavigationCommandMenu5 NavigationCommand = 5
 	// NavigationCommandMenu6 wraps GST_NAVIGATION_COMMAND_MENU6
+	// 
+	// see also No documentation available
 	//
-	// Execute navigation menu command 6. For DVD,
-	// this jumps to the angles menu.
 	NavigationCommandMenu6 NavigationCommand = 6
 	// NavigationCommandMenu7 wraps GST_NAVIGATION_COMMAND_MENU7
+	// 
+	// see also No documentation available
 	//
-	// Execute navigation menu command 7. For DVD,
-	// this jumps to the chapter menu.
 	NavigationCommandMenu7 NavigationCommand = 7
 	// NavigationCommandLeft wraps GST_NAVIGATION_COMMAND_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Select the next button to the left in a menu,
-	// if such a button exists.
 	NavigationCommandLeft NavigationCommand = 20
 	// NavigationCommandRight wraps GST_NAVIGATION_COMMAND_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Select the next button to the right in a menu,
-	// if such a button exists.
 	NavigationCommandRight NavigationCommand = 21
 	// NavigationCommandUp wraps GST_NAVIGATION_COMMAND_UP
+	// 
+	// see also No documentation available
 	//
-	// Select the button above the current one in a
-	// menu, if such a button exists.
 	NavigationCommandUp NavigationCommand = 22
 	// NavigationCommandDown wraps GST_NAVIGATION_COMMAND_DOWN
+	// 
+	// see also No documentation available
 	//
-	// Select the button below the current one in a
-	// menu, if such a button exists.
 	NavigationCommandDown NavigationCommand = 23
 	// NavigationCommandActivate wraps GST_NAVIGATION_COMMAND_ACTIVATE
+	// 
+	// see also No documentation available
 	//
-	// Activate (click) the currently selected
-	// button in a menu, if such a button exists.
 	NavigationCommandActivate NavigationCommand = 24
 	// NavigationCommandPrevAngle wraps GST_NAVIGATION_COMMAND_PREV_ANGLE
+	// 
+	// see also No documentation available
 	//
-	// Switch to the previous angle in a
-	// multiangle feature.
 	NavigationCommandPrevAngle NavigationCommand = 30
 	// NavigationCommandNextAngle wraps GST_NAVIGATION_COMMAND_NEXT_ANGLE
+	// 
+	// see also No documentation available
 	//
-	// Switch to the next angle in a multiangle
-	// feature.
 	NavigationCommandNextAngle NavigationCommand = 31
 )
 
@@ -653,89 +678,81 @@ func (e NavigationCommand) String() string {
 }
 
 // NavigationEventType wraps GstNavigationEventType
+// 
+// see also No documentation available
 //
-// Enum values for the various events that an element implementing the
-// GstNavigation interface might send up the pipeline. Touch events have been
-// inspired by the libinput API, and have the same meaning here.
 type NavigationEventType C.int
 
 const (
 	// NavigationEventInvalid wraps GST_NAVIGATION_EVENT_INVALID
+	// 
+	// see also No documentation available
 	//
-	// Returned from
-	// gst_navigation_event_get_type() when the passed event is not a navigation event.
 	NavigationEventInvalid NavigationEventType = 0
 	// NavigationEventKeyPress wraps GST_NAVIGATION_EVENT_KEY_PRESS
+	// 
+	// see also No documentation available
 	//
-	// A key press event. Use
-	// gst_navigation_event_parse_key_event() to extract the details from the event.
 	NavigationEventKeyPress NavigationEventType = 1
 	// NavigationEventKeyRelease wraps GST_NAVIGATION_EVENT_KEY_RELEASE
+	// 
+	// see also No documentation available
 	//
-	// A key release event. Use
-	// gst_navigation_event_parse_key_event() to extract the details from the event.
 	NavigationEventKeyRelease NavigationEventType = 2
 	// NavigationEventMouseButtonPress wraps GST_NAVIGATION_EVENT_MOUSE_BUTTON_PRESS
+	// 
+	// see also No documentation available
 	//
-	// A mouse button press event. Use
-	// gst_navigation_event_parse_mouse_button_event() to extract the details from the
-	// event.
 	NavigationEventMouseButtonPress NavigationEventType = 3
 	// NavigationEventMouseButtonRelease wraps GST_NAVIGATION_EVENT_MOUSE_BUTTON_RELEASE
+	// 
+	// see also No documentation available
 	//
-	// A mouse button release event. Use
-	// gst_navigation_event_parse_mouse_button_event() to extract the details from the
-	// event.
 	NavigationEventMouseButtonRelease NavigationEventType = 4
 	// NavigationEventMouseMove wraps GST_NAVIGATION_EVENT_MOUSE_MOVE
+	// 
+	// see also No documentation available
 	//
-	// A mouse movement event. Use
-	// gst_navigation_event_parse_mouse_move_event() to extract the details from the
-	// event.
 	NavigationEventMouseMove NavigationEventType = 5
 	// NavigationEventCommand wraps GST_NAVIGATION_EVENT_COMMAND
+	// 
+	// see also No documentation available
 	//
-	// A navigation command event. Use
-	// gst_navigation_event_parse_command() to extract the details from the event.
 	NavigationEventCommand NavigationEventType = 6
 	// NavigationEventMouseScroll wraps GST_NAVIGATION_EVENT_MOUSE_SCROLL
+	// 
+	// see also No documentation available
 	//
-	// A mouse scroll event. Use gst_navigation_event_parse_mouse_scroll_event()
-	// to extract the details from the event.
 	NavigationEventMouseScroll NavigationEventType = 7
 	// NavigationEventTouchDown wraps GST_NAVIGATION_EVENT_TOUCH_DOWN
+	// 
+	// see also No documentation available
 	//
-	// An event describing a new touch point, which will be assigned an identifier
-	// that is unique to it for the duration of its movement on the screen.
-	// Use gst_navigation_event_parse_touch_event() to extract the details
-	// from the event.
 	NavigationEventTouchDown NavigationEventType = 8
 	// NavigationEventTouchMotion wraps GST_NAVIGATION_EVENT_TOUCH_MOTION
+	// 
+	// see also No documentation available
 	//
-	// An event describing the movement of an active touch point across
-	// the screen. Use gst_navigation_event_parse_touch_event() to extract
-	// the details from the event.
 	NavigationEventTouchMotion NavigationEventType = 9
 	// NavigationEventTouchUp wraps GST_NAVIGATION_EVENT_TOUCH_UP
+	// 
+	// see also No documentation available
 	//
-	// An event describing a removed touch point. After this event,
-	// its identifier may be reused for any new touch points.
-	// Use gst_navigation_event_parse_touch_up_event() to extract the details
-	// from the event.
 	NavigationEventTouchUp NavigationEventType = 10
 	// NavigationEventTouchFrame wraps GST_NAVIGATION_EVENT_TOUCH_FRAME
+	// 
+	// see also No documentation available
 	//
-	// An event signaling the end of a sequence of simultaneous touch events.
 	NavigationEventTouchFrame NavigationEventType = 11
 	// NavigationEventTouchCancel wraps GST_NAVIGATION_EVENT_TOUCH_CANCEL
+	// 
+	// see also No documentation available
 	//
-	// An event cancelling all currently active touch points.
 	NavigationEventTouchCancel NavigationEventType = 12
 	// NavigationEventMouseDoubleClick wraps GST_NAVIGATION_EVENT_MOUSE_DOUBLE_CLICK
+	// 
+	// see also No documentation available
 	//
-	// A mouse button double click event.
-	// Use gst_navigation_event_parse_mouse_button_event() to extract the details
-	// from the event.
 	NavigationEventMouseDoubleClick NavigationEventType = 13
 )
 
@@ -774,38 +791,36 @@ func (e NavigationEventType) String() string {
 }
 
 // NavigationMessageType wraps GstNavigationMessageType
+// 
+// see also No documentation available
 //
-// A set of notifications that may be received on the bus when navigation
-// related status changes.
 type NavigationMessageType C.int
 
 const (
 	// NavigationMessageInvalid wraps GST_NAVIGATION_MESSAGE_INVALID
+	// 
+	// see also No documentation available
 	//
-	// Returned from
-	// gst_navigation_message_get_type() when the passed message is not a
-	// navigation message.
 	NavigationMessageInvalid NavigationMessageType = 0
 	// NavigationMessageMouseOver wraps GST_NAVIGATION_MESSAGE_MOUSE_OVER
+	// 
+	// see also No documentation available
 	//
-	// Sent when the mouse moves over or leaves a
-	// clickable region of the output, such as a DVD menu button.
 	NavigationMessageMouseOver NavigationMessageType = 1
 	// NavigationMessageCommandsChanged wraps GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
+	// 
+	// see also No documentation available
 	//
-	// Sent when the set of available commands
-	// changes and should re-queried by interested applications.
 	NavigationMessageCommandsChanged NavigationMessageType = 2
 	// NavigationMessageAnglesChanged wraps GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
+	// 
+	// see also No documentation available
 	//
-	// Sent when display angles in a multi-angle
-	// feature (such as a multiangle DVD) change - either angles have appeared or
-	// disappeared.
 	NavigationMessageAnglesChanged NavigationMessageType = 3
 	// NavigationMessageEvent wraps GST_NAVIGATION_MESSAGE_EVENT
+	// 
+	// see also No documentation available
 	//
-	// Sent when a navigation event was not handled
-	// by any element in the pipeline (Since: 1.6)
 	NavigationMessageEvent NavigationMessageType = 4
 )
 
@@ -835,22 +850,26 @@ func (e NavigationMessageType) String() string {
 }
 
 // NavigationQueryType wraps GstNavigationQueryType
+// 
+// see also No documentation available
 //
-// Types of navigation interface queries.
 type NavigationQueryType C.int
 
 const (
 	// NavigationQueryInvalid wraps GST_NAVIGATION_QUERY_INVALID
+	// 
+	// see also No documentation available
 	//
-	// invalid query
 	NavigationQueryInvalid NavigationQueryType = 0
 	// NavigationQueryCommands wraps GST_NAVIGATION_QUERY_COMMANDS
+	// 
+	// see also No documentation available
 	//
-	// command query
 	NavigationQueryCommands NavigationQueryType = 1
 	// NavigationQueryAngles wraps GST_NAVIGATION_QUERY_ANGLES
+	// 
+	// see also No documentation available
 	//
-	// viewing angle query
 	NavigationQueryAngles NavigationQueryType = 2
 )
 
@@ -878,28 +897,25 @@ func (e NavigationQueryType) String() string {
 }
 
 // VideoAFDSpec wraps GstVideoAFDSpec
+// 
+// see also No documentation available
 //
-// Enumeration of the different standards that may apply to AFD data:
-// 
-// 0) ETSI/DVB:
-// https://www.etsi.org/deliver/etsi_ts/101100_101199/101154/02.01.01_60/ts_101154v020101p.pdf
-// 
-// 1) ATSC A/53:
-// https://www.atsc.org/wp-content/uploads/2015/03/a_53-Part-4-2009.pdf
-// 
-// 2) SMPTE ST2016-1:
 type VideoAFDSpec C.int
 
 const (
 	// VideoAfdSpecDvbEtsi wraps GST_VIDEO_AFD_SPEC_DVB_ETSI
+	// 
+	// see also No documentation available
 	//
-	// AFD value is from DVB/ETSI standard
 	VideoAfdSpecDvbEtsi VideoAFDSpec = 0
 	// VideoAfdSpecAtscA53 wraps GST_VIDEO_AFD_SPEC_ATSC_A53
+	// 
+	// see also No documentation available
 	//
-	// AFD value is from ATSC A/53 standard
 	VideoAfdSpecAtscA53 VideoAFDSpec = 1
 	// VideoAfdSpecSmpteSt20161 wraps GST_VIDEO_AFD_SPEC_SMPTE_ST2016_1
+	// 
+	// see also No documentation available
 	VideoAfdSpecSmpteSt20161 VideoAFDSpec = 2
 )
 
@@ -927,102 +943,66 @@ func (e VideoAFDSpec) String() string {
 }
 
 // VideoAFDValue wraps GstVideoAFDValue
+// 
+// see also No documentation available
 //
-// Enumeration of the various values for Active Format Description (AFD)
-// 
-// AFD should be included in video user data whenever the rectangular
-// picture area containing useful information does not extend to the full height or width of the coded
-// frame. AFD data may also be included in user data when the rectangular picture area containing
-// useful information extends to the full height and width of the coded frame.
-// 
-// For details, see Table 6.14 Active Format in:
-// 
-// ATSC Digital Television Standard:
-// Part 4 &#x2013; MPEG-2 Video System Characteristics
-// 
-// https://www.atsc.org/wp-content/uploads/2015/03/a_53-Part-4-2009.pdf
-// 
-// and Active Format Description in Complete list of AFD codes
-// 
-// https://en.wikipedia.org/wiki/Active_Format_Description#Complete_list_of_AFD_codes
-// 
-// and SMPTE ST2016-1
-// 
-// Notes:
-// 
-// 1) AFD 0 is undefined for ATSC and SMPTE ST2016-1, indicating that AFD data is not available:
-// If Bar Data is not present, AFD '0000' indicates that exact information
-// is not available and the active image should be assumed to be the same as the coded frame. AFD '0000'.
-// AFD '0000' accompanied by Bar Data signals that the active image&#x2019;s aspect ratio is narrower than 16:9,
-// but is not 4:3 or 14:9. As the exact aspect ratio cannot be conveyed by AFD alone, wherever possible,
-// AFD &#x2018;0000&#x2019; should be accompanied by Bar Data to define the exact vertical or horizontal extent
-// of the active image.
-// 2) AFD 0 is reserved for DVB/ETSI
-// 3) values 1, 5, 6, 7, and 12 are reserved for both ATSC and DVB/ETSI
-// 4) values 2 and 3 are not recommended for ATSC, but are valid for DVB/ETSI
 type VideoAFDValue C.int
 
 const (
 	// VideoAfdUnavailable wraps GST_VIDEO_AFD_UNAVAILABLE
+	// 
+	// see also No documentation available
 	//
-	// Unavailable (see note 0 below).
 	VideoAfdUnavailable VideoAFDValue = 0
 	// VideoAfd169TopAligned wraps GST_VIDEO_AFD_16_9_TOP_ALIGNED
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, letterbox 16:9 image,
-	//      at top of the coded frame. For 16:9 coded frame, full frame 16:9 image,
-	//      the same as the coded frame.
 	VideoAfd169TopAligned VideoAFDValue = 2
 	// VideoAfd149TopAligned wraps GST_VIDEO_AFD_14_9_TOP_ALIGNED
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, letterbox 14:9 image,
-	//      at top of the coded frame. For 16:9 coded frame, pillarbox 14:9 image,
-	//      horizontally centered in the coded frame.
 	VideoAfd149TopAligned VideoAFDValue = 3
 	// VideoAfdGreaterThan169 wraps GST_VIDEO_AFD_GREATER_THAN_16_9
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, letterbox image with an aspect ratio
-	//      greater than 16:9, vertically centered in the coded frame. For 16:9 coded frame,
-	//      letterbox image with an aspect ratio greater than 16:9.
 	VideoAfdGreaterThan169 VideoAFDValue = 4
 	// VideoAfd43Full169Full wraps GST_VIDEO_AFD_4_3_FULL_16_9_FULL
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, full frame 4:3 image,
-	//      the same as the coded frame. For 16:9 coded frame, full frame 16:9 image, the same as
-	//      the coded frame.
 	VideoAfd43Full169Full VideoAFDValue = 8
 	// VideoAfd43Full43Pillar wraps GST_VIDEO_AFD_4_3_FULL_4_3_PILLAR
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, full frame 4:3 image, the same as
-	//      the coded frame. For 16:9 coded frame, pillarbox 4:3 image, horizontally centered in the
-	//      coded frame.
 	VideoAfd43Full43Pillar VideoAFDValue = 9
 	// VideoAfd169Letter169Full wraps GST_VIDEO_AFD_16_9_LETTER_16_9_FULL
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, letterbox 16:9 image, vertically centered in
-	//      the coded frame with all image areas protected. For 16:9 coded frame, full frame 16:9 image,
-	//      with all image areas protected.
 	VideoAfd169Letter169Full VideoAFDValue = 10
 	// VideoAfd149Letter149Pillar wraps GST_VIDEO_AFD_14_9_LETTER_14_9_PILLAR
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, letterbox 14:9 image, vertically centered in
-	//      the coded frame. For 16:9 coded frame, pillarbox 14:9 image, horizontally centered in the
-	//      coded frame.
 	VideoAfd149Letter149Pillar VideoAFDValue = 11
 	// VideoAfd43Full149Center wraps GST_VIDEO_AFD_4_3_FULL_14_9_CENTER
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, full frame 4:3 image, with alternative 14:9
-	//      center. For 16:9 coded frame, pillarbox 4:3 image, with alternative 14:9 center.
 	VideoAfd43Full149Center VideoAFDValue = 13
 	// VideoAfd169Letter149Center wraps GST_VIDEO_AFD_16_9_LETTER_14_9_CENTER
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, letterbox 16:9 image, with alternative 14:9
-	//      center. For 16:9 coded frame, full frame 16:9 image, with alternative 14:9 center.
 	VideoAfd169Letter149Center VideoAFDValue = 14
 	// VideoAfd169Letter43Center wraps GST_VIDEO_AFD_16_9_LETTER_4_3_CENTER
+	// 
+	// see also No documentation available
 	//
-	// For 4:3 coded frame, letterbox 16:9 image, with alternative 4:3
-	//      center. For 16:9 coded frame, full frame 16:9 image, with alternative 4:3 center.
 	VideoAfd169Letter43Center VideoAFDValue = 15
 )
 
@@ -1058,28 +1038,26 @@ func (e VideoAFDValue) String() string {
 }
 
 // VideoAlphaMode wraps GstVideoAlphaMode
+// 
+// see also No documentation available
 //
-// Different alpha modes.
 type VideoAlphaMode C.int
 
 const (
 	// VideoAlphaModeCopy wraps GST_VIDEO_ALPHA_MODE_COPY
+	// 
+	// see also No documentation available
 	//
-	// When input and output have alpha, it will be copied.
-	//         When the input has no alpha, alpha will be set to
-	//         #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE
 	VideoAlphaModeCopy VideoAlphaMode = 0
 	// VideoAlphaModeSet wraps GST_VIDEO_ALPHA_MODE_SET
+	// 
+	// see also No documentation available
 	//
-	// set all alpha to
-	//    #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE
 	VideoAlphaModeSet VideoAlphaMode = 1
 	// VideoAlphaModeMult wraps GST_VIDEO_ALPHA_MODE_MULT
+	// 
+	// see also No documentation available
 	//
-	// multiply all alpha with
-	//         #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE.
-	//         When the input format has no alpha but the output format has, the
-	//         alpha value will be set to #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE
 	VideoAlphaModeMult VideoAlphaMode = 2
 )
 
@@ -1107,32 +1085,58 @@ func (e VideoAlphaMode) String() string {
 }
 
 // VideoAncillaryDID wraps GstVideoAncillaryDID
+// 
+// see also No documentation available
 type VideoAncillaryDID C.int
 
 const (
 	// VideoAncillaryDidUndefined wraps GST_VIDEO_ANCILLARY_DID_UNDEFINED
+	// 
+	// see also No documentation available
 	VideoAncillaryDidUndefined VideoAncillaryDID = 0
 	// VideoAncillaryDidDeletion wraps GST_VIDEO_ANCILLARY_DID_DELETION
+	// 
+	// see also No documentation available
 	VideoAncillaryDidDeletion VideoAncillaryDID = 128
 	// VideoAncillaryDidHanc3gAudioDataFirst wraps GST_VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_FIRST
+	// 
+	// see also No documentation available
 	VideoAncillaryDidHanc3gAudioDataFirst VideoAncillaryDID = 160
 	// VideoAncillaryDidHanc3gAudioDataLast wraps GST_VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_LAST
+	// 
+	// see also No documentation available
 	VideoAncillaryDidHanc3gAudioDataLast VideoAncillaryDID = 167
 	// VideoAncillaryDidHancHdtvAudioDataFirst wraps GST_VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_FIRST
+	// 
+	// see also No documentation available
 	VideoAncillaryDidHancHdtvAudioDataFirst VideoAncillaryDID = 224
 	// VideoAncillaryDidHancHdtvAudioDataLast wraps GST_VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_LAST
+	// 
+	// see also No documentation available
 	VideoAncillaryDidHancHdtvAudioDataLast VideoAncillaryDID = 231
 	// VideoAncillaryDidHancSdtvAudioData1First wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_FIRST
+	// 
+	// see also No documentation available
 	VideoAncillaryDidHancSdtvAudioData1First VideoAncillaryDID = 236
 	// VideoAncillaryDidHancSdtvAudioData1Last wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_LAST
+	// 
+	// see also No documentation available
 	VideoAncillaryDidHancSdtvAudioData1Last VideoAncillaryDID = 239
 	// VideoAncillaryDidCameraPosition wraps GST_VIDEO_ANCILLARY_DID_CAMERA_POSITION
+	// 
+	// see also No documentation available
 	VideoAncillaryDidCameraPosition VideoAncillaryDID = 240
 	// VideoAncillaryDidHancErrorDetection wraps GST_VIDEO_ANCILLARY_DID_HANC_ERROR_DETECTION
+	// 
+	// see also No documentation available
 	VideoAncillaryDidHancErrorDetection VideoAncillaryDID = 244
 	// VideoAncillaryDidHancSdtvAudioData2First wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_FIRST
+	// 
+	// see also No documentation available
 	VideoAncillaryDidHancSdtvAudioData2First VideoAncillaryDID = 248
 	// VideoAncillaryDidHancSdtvAudioData2Last wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_LAST
+	// 
+	// see also No documentation available
 	VideoAncillaryDidHancSdtvAudioData2Last VideoAncillaryDID = 255
 )
 
@@ -1169,22 +1173,26 @@ func (e VideoAncillaryDID) String() string {
 }
 
 // VideoAncillaryDID16 wraps GstVideoAncillaryDID16
+// 
+// see also No documentation available
 //
-// Some know types of Ancillary Data identifiers.
 type VideoAncillaryDID16 C.int
 
 const (
 	// VideoAncillaryDid16S334Eia708 wraps GST_VIDEO_ANCILLARY_DID16_S334_EIA_708
+	// 
+	// see also No documentation available
 	//
-	// CEA 708 Ancillary data according to SMPTE 334
 	VideoAncillaryDid16S334Eia708 VideoAncillaryDID16 = 24833
 	// VideoAncillaryDid16S334Eia608 wraps GST_VIDEO_ANCILLARY_DID16_S334_EIA_608
+	// 
+	// see also No documentation available
 	//
-	// CEA 608 Ancillary data according to SMPTE 334
 	VideoAncillaryDid16S334Eia608 VideoAncillaryDID16 = 24834
 	// VideoAncillaryDid16S20163AfdBar wraps GST_VIDEO_ANCILLARY_DID16_S2016_3_AFD_BAR
+	// 
+	// see also No documentation available
 	//
-	// AFD/Bar Ancillary data according to SMPTE 2016-3 (Since: 1.18)
 	VideoAncillaryDid16S20163AfdBar VideoAncillaryDID16 = 16645
 )
 
@@ -1212,47 +1220,36 @@ func (e VideoAncillaryDID16) String() string {
 }
 
 // VideoCaptionType wraps GstVideoCaptionType
+// 
+// see also No documentation available
 //
-// The various known types of Closed Caption (CC).
 type VideoCaptionType C.int
 
 const (
 	// VideoCaptionTypeUnknown wraps GST_VIDEO_CAPTION_TYPE_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// Unknown type of CC
 	VideoCaptionTypeUnknown VideoCaptionType = 0
 	// VideoCaptionTypeCea608Raw wraps GST_VIDEO_CAPTION_TYPE_CEA608_RAW
+	// 
+	// see also No documentation available
 	//
-	// CEA-608 as byte pairs. Note that
-	//      this format is not recommended since is does not specify to
-	//      which field the caption comes from and therefore assumes
-	//      it comes from the first field (and that there is no information
-	//      on the second field). Use @GST_VIDEO_CAPTION_TYPE_CEA708_RAW
-	//      if you wish to store CEA-608 from two fields and prefix each byte pair
-	//      with 0xFC for the first field and 0xFD for the second field.
 	VideoCaptionTypeCea608Raw VideoCaptionType = 1
 	// VideoCaptionTypeCea608S3341a wraps GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A
+	// 
+	// see also No documentation available
 	//
-	// CEA-608 as byte triplets as defined
-	//      in SMPTE S334-1 Annex A. The second and third byte of the byte triplet
-	//      is the raw CEA608 data, the first byte is a bitfield: The top/7th bit is
-	//      0 for the second field, 1 for the first field, bit 6 and 5 are 0 and
-	//      bits 4 to 0 are a 5 bit unsigned integer that represents the line
-	//      offset relative to the base-line of the original image format (line 9
-	//      for 525-line field 1, line 272 for 525-line field 2, line 5 for
-	//      625-line field 1 and line 318 for 625-line field 2).
 	VideoCaptionTypeCea608S3341a VideoCaptionType = 2
 	// VideoCaptionTypeCea708Raw wraps GST_VIDEO_CAPTION_TYPE_CEA708_RAW
+	// 
+	// see also No documentation available
 	//
-	// CEA-708 as cc_data byte triplets. They
-	//      can also contain 608-in-708 and the first byte of each triplet has to
-	//      be inspected for detecting the type.
 	VideoCaptionTypeCea708Raw VideoCaptionType = 3
 	// VideoCaptionTypeCea708Cdp wraps GST_VIDEO_CAPTION_TYPE_CEA708_CDP
+	// 
+	// see also No documentation available
 	//
-	// CEA-708 (and optionally CEA-608) in
-	//      a CDP (Caption Distribution Packet) defined by SMPTE S-334-2.
-	//      Contains the whole CDP (starting with 0x9669).
 	VideoCaptionTypeCea708Cdp VideoCaptionType = 4
 )
 
@@ -1283,16 +1280,8 @@ func (e VideoCaptionType) String() string {
 
 // VideoCaptionTypeFromCaps wraps gst_video_caption_type_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: Fixed #GstCaps to parse 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoCaptionType 
+// see also No documentation available
 //
-// Parses fixed Closed Caption #GstCaps and returns the corresponding caption
-// type, or %GST_VIDEO_CAPTION_TYPE_UNKNOWN.
 func VideoCaptionTypeFromCaps(caps *gst.Caps) VideoCaptionType {
 	var carg1 *C.GstCaps            // in, none, converted
 	var cret  C.GstVideoCaptionType // return, none, casted
@@ -1311,15 +1300,8 @@ func VideoCaptionTypeFromCaps(caps *gst.Caps) VideoCaptionType {
 
 // VideoCaptionTypeToCaps wraps gst_video_caption_type_to_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- typ VideoCaptionType: #GstVideoCaptionType 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Creates new caps corresponding to @type.
 func VideoCaptionTypeToCaps(typ VideoCaptionType) *gst.Caps {
 	var carg1 C.GstVideoCaptionType // in, none, casted
 	var cret  *C.GstCaps            // return, full, converted
@@ -1337,20 +1319,21 @@ func VideoCaptionTypeToCaps(typ VideoCaptionType) *gst.Caps {
 }
 
 // VideoChromaMethod wraps GstVideoChromaMethod
+// 
+// see also No documentation available
 //
-// Different subsampling and upsampling methods
 type VideoChromaMethod C.int
 
 const (
 	// VideoChromaMethodNearest wraps GST_VIDEO_CHROMA_METHOD_NEAREST
+	// 
+	// see also No documentation available
 	//
-	// Duplicates the chroma samples when
-	//    upsampling and drops when subsampling
 	VideoChromaMethodNearest VideoChromaMethod = 0
 	// VideoChromaMethodLinear wraps GST_VIDEO_CHROMA_METHOD_LINEAR
+	// 
+	// see also No documentation available
 	//
-	// Uses linear interpolation to reconstruct
-	//    missing chroma and averaging to subsample
 	VideoChromaMethodLinear VideoChromaMethod = 1
 )
 
@@ -1377,26 +1360,31 @@ func (e VideoChromaMethod) String() string {
 }
 
 // VideoChromaMode wraps GstVideoChromaMode
+// 
+// see also No documentation available
 //
-// Different chroma downsampling and upsampling modes
 type VideoChromaMode C.int
 
 const (
 	// VideoChromaModeFull wraps GST_VIDEO_CHROMA_MODE_FULL
+	// 
+	// see also No documentation available
 	//
-	// do full chroma up and down sampling
 	VideoChromaModeFull VideoChromaMode = 0
 	// VideoChromaModeUpsampleOnly wraps GST_VIDEO_CHROMA_MODE_UPSAMPLE_ONLY
+	// 
+	// see also No documentation available
 	//
-	// only perform chroma upsampling
 	VideoChromaModeUpsampleOnly VideoChromaMode = 1
 	// VideoChromaModeDownsampleOnly wraps GST_VIDEO_CHROMA_MODE_DOWNSAMPLE_ONLY
+	// 
+	// see also No documentation available
 	//
-	// only perform chroma downsampling
 	VideoChromaModeDownsampleOnly VideoChromaMode = 2
 	// VideoChromaModeNone wraps GST_VIDEO_CHROMA_MODE_NONE
+	// 
+	// see also No documentation available
 	//
-	// disable chroma resampling
 	VideoChromaModeNone VideoChromaMode = 3
 )
 
@@ -1425,41 +1413,46 @@ func (e VideoChromaMode) String() string {
 }
 
 // VideoColorMatrix wraps GstVideoColorMatrix
+// 
+// see also No documentation available
 //
-// The color matrix is used to convert between Y'PbPr and
-// non-linear RGB (R'G'B')
 type VideoColorMatrix C.int
 
 const (
 	// VideoColorMatrixUnknown wraps GST_VIDEO_COLOR_MATRIX_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// unknown matrix
 	VideoColorMatrixUnknown VideoColorMatrix = 0
 	// VideoColorMatrixRgb wraps GST_VIDEO_COLOR_MATRIX_RGB
+	// 
+	// see also No documentation available
 	//
-	// identity matrix. Order of coefficients is
-	// actually GBR, also IEC 61966-2-1 (sRGB)
 	VideoColorMatrixRgb VideoColorMatrix = 1
 	// VideoColorMatrixFcc wraps GST_VIDEO_COLOR_MATRIX_FCC
+	// 
+	// see also No documentation available
 	//
-	// FCC Title 47 Code of Federal Regulations 73.682 (a)(20)
 	VideoColorMatrixFcc VideoColorMatrix = 2
 	// VideoColorMatrixBt709 wraps GST_VIDEO_COLOR_MATRIX_BT709
+	// 
+	// see also No documentation available
 	//
-	// ITU-R BT.709 color matrix, also ITU-R BT1361
-	// / IEC 61966-2-4 xvYCC709 / SMPTE RP177 Annex B
 	VideoColorMatrixBt709 VideoColorMatrix = 3
 	// VideoColorMatrixBt601 wraps GST_VIDEO_COLOR_MATRIX_BT601
+	// 
+	// see also No documentation available
 	//
-	// ITU-R BT.601 color matrix, also SMPTE170M / ITU-R BT1358 525 / ITU-R BT1700 NTSC
 	VideoColorMatrixBt601 VideoColorMatrix = 4
 	// VideoColorMatrixSmpte240m wraps GST_VIDEO_COLOR_MATRIX_SMPTE240M
+	// 
+	// see also No documentation available
 	//
-	// SMPTE 240M color matrix
 	VideoColorMatrixSmpte240m VideoColorMatrix = 5
 	// VideoColorMatrixBt2020 wraps GST_VIDEO_COLOR_MATRIX_BT2020
+	// 
+	// see also No documentation available
 	//
-	// ITU-R BT.2020 color matrix. Since: 1.6
 	VideoColorMatrixBt2020 VideoColorMatrix = 6
 )
 
@@ -1492,19 +1485,8 @@ func (e VideoColorMatrix) String() string {
 
 // VideoColorMatrixFromIso wraps gst_video_color_matrix_from_iso
 // 
-// The function takes the following parameters:
-// 
-// 	- value uint: a ITU-T H.273 matrix coefficients value 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoColorMatrix 
+// see also No documentation available
 //
-// Converts the @value to the #GstVideoColorMatrix
-// The matrix coefficients (MatrixCoefficients) value is
-// defined by "ISO/IEC 23001-8 Section 7.3 Table 4"
-// and "ITU-T H.273 Table 4".
-// "H.264 Table E-5" and "H.265 Table E.5" share the identical values.
 func VideoColorMatrixFromIso(value uint) VideoColorMatrix {
 	var carg1 C.guint               // in, none, casted
 	var cret  C.GstVideoColorMatrix // return, none, casted
@@ -1523,40 +1505,8 @@ func VideoColorMatrixFromIso(value uint) VideoColorMatrix {
 
 // VideoColorMatrixGetKrKb wraps gst_video_color_matrix_get_Kr_Kb
 // 
-// The function takes the following parameters:
-// 
-// 	- matrix VideoColorMatrix: a #GstVideoColorMatrix 
-// 
-// The function returns the following values:
-// 
-// 	- kr float64: result red channel coefficient 
-// 	- kb float64: result blue channel coefficient 
-// 	- goret bool 
+// see also No documentation available
 //
-// Get the coefficients used to convert between Y'PbPr and R'G'B' using @matrix.
-// 
-// When:
-// 
-// |[
-//   0.0 &lt;= [Y',R',G',B'] &lt;= 1.0)
-//   (-0.5 &lt;= [Pb,Pr] &lt;= 0.5)
-// ]|
-// 
-// the general conversion is given by:
-// 
-// |[
-//   Y' = Kr*R' + (1-Kr-Kb)*G' + Kb*B'
-//   Pb = (B'-Y')/(2*(1-Kb))
-//   Pr = (R'-Y')/(2*(1-Kr))
-// ]|
-// 
-// and the other way around:
-// 
-// |[
-//   R' = Y' + Cr*2*(1-Kr)
-//   G' = Y' - Cb*2*(1-Kb)*Kb/(1-Kr-Kb) - Cr*2*(1-Kr)*Kr/(1-Kr-Kb)
-//   B' = Y' + Cb*2*(1-Kb)
-// ]|
 func VideoColorMatrixGetKrKb(matrix VideoColorMatrix) (float64, float64, bool) {
 	var carg1 C.GstVideoColorMatrix // in, none, casted
 	var carg2 C.gdouble             // out, full, casted
@@ -1583,18 +1533,8 @@ func VideoColorMatrixGetKrKb(matrix VideoColorMatrix) (float64, float64, bool) {
 
 // VideoColorMatrixToIso wraps gst_video_color_matrix_to_iso
 // 
-// The function takes the following parameters:
-// 
-// 	- matrix VideoColorMatrix: a #GstVideoColorMatrix 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Converts #GstVideoColorMatrix to the "matrix coefficients"
-// (MatrixCoefficients) value defined by "ISO/IEC 23001-8 Section 7.3 Table 4"
-// and "ITU-T H.273 Table 4".
-// "H.264 Table E-5" and "H.265 Table E.5" share the identical values.
 func VideoColorMatrixToIso(matrix VideoColorMatrix) uint {
 	var carg1 C.GstVideoColorMatrix // in, none, casted
 	var cret  C.guint               // return, none, casted
@@ -1612,72 +1552,76 @@ func VideoColorMatrixToIso(matrix VideoColorMatrix) uint {
 }
 
 // VideoColorPrimaries wraps GstVideoColorPrimaries
+// 
+// see also No documentation available
 //
-// The color primaries define the how to transform linear RGB values to and from
-// the CIE XYZ colorspace.
 type VideoColorPrimaries C.int
 
 const (
 	// VideoColorPrimariesUnknown wraps GST_VIDEO_COLOR_PRIMARIES_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// unknown color primaries
 	VideoColorPrimariesUnknown VideoColorPrimaries = 0
 	// VideoColorPrimariesBt709 wraps GST_VIDEO_COLOR_PRIMARIES_BT709
+	// 
+	// see also No documentation available
 	//
-	// BT709 primaries, also ITU-R BT1361 / IEC
-	// 61966-2-4 / SMPTE RP177 Annex B
 	VideoColorPrimariesBt709 VideoColorPrimaries = 1
 	// VideoColorPrimariesBt470m wraps GST_VIDEO_COLOR_PRIMARIES_BT470M
+	// 
+	// see also No documentation available
 	//
-	// BT470M primaries, also FCC Title 47 Code
-	// of Federal Regulations 73.682 (a)(20)
 	VideoColorPrimariesBt470m VideoColorPrimaries = 2
 	// VideoColorPrimariesBt470bg wraps GST_VIDEO_COLOR_PRIMARIES_BT470BG
+	// 
+	// see also No documentation available
 	//
-	// BT470BG primaries, also ITU-R BT601-6
-	// 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL &amp; SECAM
 	VideoColorPrimariesBt470bg VideoColorPrimaries = 3
 	// VideoColorPrimariesSmpte170m wraps GST_VIDEO_COLOR_PRIMARIES_SMPTE170M
+	// 
+	// see also No documentation available
 	//
-	// SMPTE170M primaries, also ITU-R
-	// BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC
 	VideoColorPrimariesSmpte170m VideoColorPrimaries = 4
 	// VideoColorPrimariesSmpte240m wraps GST_VIDEO_COLOR_PRIMARIES_SMPTE240M
+	// 
+	// see also No documentation available
 	//
-	// SMPTE240M primaries
 	VideoColorPrimariesSmpte240m VideoColorPrimaries = 5
 	// VideoColorPrimariesFilm wraps GST_VIDEO_COLOR_PRIMARIES_FILM
+	// 
+	// see also No documentation available
 	//
-	// Generic film (colour filters using
-	// Illuminant C)
 	VideoColorPrimariesFilm VideoColorPrimaries = 6
 	// VideoColorPrimariesBt2020 wraps GST_VIDEO_COLOR_PRIMARIES_BT2020
+	// 
+	// see also No documentation available
 	//
-	// ITU-R BT2020 primaries. Since: 1.6
 	VideoColorPrimariesBt2020 VideoColorPrimaries = 7
 	// VideoColorPrimariesAdobergb wraps GST_VIDEO_COLOR_PRIMARIES_ADOBERGB
+	// 
+	// see also No documentation available
 	//
-	// Adobe RGB primaries. Since: 1.8
 	VideoColorPrimariesAdobergb VideoColorPrimaries = 8
 	// VideoColorPrimariesSmptest428 wraps GST_VIDEO_COLOR_PRIMARIES_SMPTEST428
+	// 
+	// see also No documentation available
 	//
-	// SMPTE ST 428 primaries (CIE 1931
-	// XYZ). Since: 1.16
 	VideoColorPrimariesSmptest428 VideoColorPrimaries = 9
 	// VideoColorPrimariesSmpterp431 wraps GST_VIDEO_COLOR_PRIMARIES_SMPTERP431
+	// 
+	// see also No documentation available
 	//
-	// SMPTE RP 431 primaries (ST 431-2
-	// (2011) / DCI P3). Since: 1.16
 	VideoColorPrimariesSmpterp431 VideoColorPrimaries = 10
 	// VideoColorPrimariesSmpteeg432 wraps GST_VIDEO_COLOR_PRIMARIES_SMPTEEG432
+	// 
+	// see also No documentation available
 	//
-	// SMPTE EG 432 primaries (ST 432-1
-	// (2010) / P3 D65). Since: 1.16
 	VideoColorPrimariesSmpteeg432 VideoColorPrimaries = 11
 	// VideoColorPrimariesEbu3213 wraps GST_VIDEO_COLOR_PRIMARIES_EBU3213
+	// 
+	// see also No documentation available
 	//
-	// EBU 3213 primaries (JEDEC P22
-	// phosphors). Since: 1.16
 	VideoColorPrimariesEbu3213 VideoColorPrimaries = 12
 )
 
@@ -1716,18 +1660,8 @@ func (e VideoColorPrimaries) String() string {
 
 // VideoColorPrimariesFromIso wraps gst_video_color_primaries_from_iso
 // 
-// The function takes the following parameters:
-// 
-// 	- value uint: a ITU-T H.273 colour primaries value 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoColorPrimaries 
+// see also No documentation available
 //
-// Converts the @value to the #GstVideoColorPrimaries
-// The colour primaries (ColourPrimaries) value is
-// defined by "ISO/IEC 23001-8 Section 7.1 Table 2" and "ITU-T H.273 Table 2".
-// "H.264 Table E-3" and "H.265 Table E.3" share the identical values.
 func VideoColorPrimariesFromIso(value uint) VideoColorPrimaries {
 	var carg1 C.guint                  // in, none, casted
 	var cret  C.GstVideoColorPrimaries // return, none, casted
@@ -1746,15 +1680,8 @@ func VideoColorPrimariesFromIso(value uint) VideoColorPrimaries {
 
 // VideoColorPrimariesGetInfo wraps gst_video_color_primaries_get_info
 // 
-// The function takes the following parameters:
-// 
-// 	- primaries VideoColorPrimaries: a #GstVideoColorPrimaries 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoColorPrimariesInfo 
+// see also No documentation available
 //
-// Get information about the chromaticity coordinates of @primaries.
 func VideoColorPrimariesGetInfo(primaries VideoColorPrimaries) *VideoColorPrimariesInfo {
 	var carg1 C.GstVideoColorPrimaries      // in, none, casted
 	var cret  *C.GstVideoColorPrimariesInfo // return, none, converted
@@ -1773,16 +1700,8 @@ func VideoColorPrimariesGetInfo(primaries VideoColorPrimaries) *VideoColorPrimar
 
 // VideoColorPrimariesIsEquivalent wraps gst_video_color_primaries_is_equivalent
 // 
-// The function takes the following parameters:
-// 
-// 	- primaries VideoColorPrimaries: a #GstVideoColorPrimaries 
-// 	- other VideoColorPrimaries: another #GstVideoColorPrimaries 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks whether @primaries and @other are functionally equivalent
 func VideoColorPrimariesIsEquivalent(primaries VideoColorPrimaries, other VideoColorPrimaries) bool {
 	var carg1 C.GstVideoColorPrimaries // in, none, casted
 	var carg2 C.GstVideoColorPrimaries // in, none, casted
@@ -1806,18 +1725,8 @@ func VideoColorPrimariesIsEquivalent(primaries VideoColorPrimaries, other VideoC
 
 // VideoColorPrimariesToIso wraps gst_video_color_primaries_to_iso
 // 
-// The function takes the following parameters:
-// 
-// 	- primaries VideoColorPrimaries: a #GstVideoColorPrimaries 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Converts #GstVideoColorPrimaries to the "colour primaries" (ColourPrimaries)
-// value defined by "ISO/IEC 23001-8 Section 7.1 Table 2"
-// and "ITU-T H.273 Table 2".
-// "H.264 Table E-3" and "H.265 Table E.3" share the identical values.
 func VideoColorPrimariesToIso(primaries VideoColorPrimaries) uint {
 	var carg1 C.GstVideoColorPrimaries // in, none, casted
 	var cret  C.guint                  // return, none, casted
@@ -1835,24 +1744,26 @@ func VideoColorPrimariesToIso(primaries VideoColorPrimaries) uint {
 }
 
 // VideoColorRange wraps GstVideoColorRange
+// 
+// see also No documentation available
 //
-// Possible color range values. These constants are defined for 8 bit color
-// values and can be scaled for other bit depths.
 type VideoColorRange C.int
 
 const (
 	// VideoColorRangeUnknown wraps GST_VIDEO_COLOR_RANGE_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// unknown range
 	VideoColorRangeUnknown VideoColorRange = 0
 	// VideoColorRange0255 wraps GST_VIDEO_COLOR_RANGE_0_255
+	// 
+	// see also No documentation available
 	//
-	// [0..255] for 8 bit components
 	VideoColorRange0255 VideoColorRange = 1
 	// VideoColorRange16235 wraps GST_VIDEO_COLOR_RANGE_16_235
+	// 
+	// see also No documentation available
 	//
-	// [16..235] for 8 bit components. Chroma has
-	//                 [16..240] range.
 	VideoColorRange16235 VideoColorRange = 2
 )
 
@@ -1880,30 +1791,36 @@ func (e VideoColorRange) String() string {
 }
 
 // VideoDitherMethod wraps GstVideoDitherMethod
+// 
+// see also No documentation available
 //
-// Different dithering methods to use.
 type VideoDitherMethod C.int
 
 const (
 	// VideoDitherNone wraps GST_VIDEO_DITHER_NONE
+	// 
+	// see also No documentation available
 	//
-	// no dithering
 	VideoDitherNone VideoDitherMethod = 0
 	// VideoDitherVerterr wraps GST_VIDEO_DITHER_VERTERR
+	// 
+	// see also No documentation available
 	//
-	// propagate rounding errors downwards
 	VideoDitherVerterr VideoDitherMethod = 1
 	// VideoDitherFloydSteinberg wraps GST_VIDEO_DITHER_FLOYD_STEINBERG
+	// 
+	// see also No documentation available
 	//
-	// Dither with floyd-steinberg error diffusion
 	VideoDitherFloydSteinberg VideoDitherMethod = 2
 	// VideoDitherSierraLite wraps GST_VIDEO_DITHER_SIERRA_LITE
+	// 
+	// see also No documentation available
 	//
-	// Dither with Sierra Lite error diffusion
 	VideoDitherSierraLite VideoDitherMethod = 3
 	// VideoDitherBayer wraps GST_VIDEO_DITHER_BAYER
+	// 
+	// see also No documentation available
 	//
-	// ordered dither using a bayer pattern
 	VideoDitherBayer VideoDitherMethod = 4
 )
 
@@ -1933,26 +1850,26 @@ func (e VideoDitherMethod) String() string {
 }
 
 // VideoFieldOrder wraps GstVideoFieldOrder
+// 
+// see also No documentation available
 //
-// Field order of interlaced content. This is only valid for
-// interlace-mode=interleaved and not interlace-mode=mixed. In the case of
-// mixed or GST_VIDEO_FIELD_ORDER_UNKOWN, the field order is signalled via
-// buffer flags.
 type VideoFieldOrder C.int
 
 const (
 	// VideoFieldOrderUnknown wraps GST_VIDEO_FIELD_ORDER_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// unknown field order for interlaced content.
-	//     The actual field order is signalled via buffer flags.
 	VideoFieldOrderUnknown VideoFieldOrder = 0
 	// VideoFieldOrderTopFieldFirst wraps GST_VIDEO_FIELD_ORDER_TOP_FIELD_FIRST
+	// 
+	// see also No documentation available
 	//
-	// top field is first
 	VideoFieldOrderTopFieldFirst VideoFieldOrder = 1
 	// VideoFieldOrderBottomFieldFirst wraps GST_VIDEO_FIELD_ORDER_BOTTOM_FIELD_FIRST
+	// 
+	// see also No documentation available
 	//
-	// bottom field is first
 	VideoFieldOrderBottomFieldFirst VideoFieldOrder = 2
 )
 
@@ -1981,15 +1898,8 @@ func (e VideoFieldOrder) String() string {
 
 // VideoFieldOrderFromString wraps gst_video_field_order_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- order string: a field order 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoFieldOrder 
+// see also No documentation available
 //
-// Convert @order to a #GstVideoFieldOrder
 func VideoFieldOrderFromString(order string) VideoFieldOrder {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstVideoFieldOrder // return, none, casted
@@ -2009,15 +1919,8 @@ func VideoFieldOrderFromString(order string) VideoFieldOrder {
 
 // VideoFieldOrderString wraps gst_video_field_order_to_string
 // 
-// The function takes the following parameters:
-// 
-// 	- order VideoFieldOrder: a #GstVideoFieldOrder 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Convert @order to its string representation.
 func VideoFieldOrderString(order VideoFieldOrder) string {
 	var carg1 C.GstVideoFieldOrder // in, none, casted
 	var cret  *C.gchar             // return, none, string
@@ -2035,587 +1938,706 @@ func VideoFieldOrderString(order VideoFieldOrder) string {
 }
 
 // VideoFormat wraps GstVideoFormat
-//
-// Enum value describing the most common video formats.
 // 
-// See the [GStreamer raw video format design document](https://gstreamer.freedesktop.org/documentation/additional/design/mediatype-video-raw.html#formats)
-// for details about the layout and packing of these formats in memory.
+// see also No documentation available
+//
 type VideoFormat C.int
 
 const (
 	// VideoFormatUnknown wraps GST_VIDEO_FORMAT_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// Unknown or unset video format id
 	VideoFormatUnknown VideoFormat = 0
 	// VideoFormatEncoded wraps GST_VIDEO_FORMAT_ENCODED
+	// 
+	// see also No documentation available
 	//
-	// Encoded video format. Only ever use that in caps for
-	//                            special video formats in combination with non-system
-	//                            memory GstCapsFeatures where it does not make sense
-	//                            to specify a real video format.
 	VideoFormatEncoded VideoFormat = 1
 	// VideoFormatI420 wraps GST_VIDEO_FORMAT_I420
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV
 	VideoFormatI420 VideoFormat = 2
 	// VideoFormatYv12 wraps GST_VIDEO_FORMAT_YV12
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YVU (like I420 but UV planes swapped)
 	VideoFormatYv12 VideoFormat = 3
 	// VideoFormatYuy2 wraps GST_VIDEO_FORMAT_YUY2
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 YUV (Y0-U0-Y1-V0 Y2-U2-Y3-V2 Y4 ...)
 	VideoFormatYuy2 VideoFormat = 4
 	// VideoFormatUyvy wraps GST_VIDEO_FORMAT_UYVY
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 YUV (U0-Y0-V0-Y1 U2-Y2-V2-Y3 U4 ...)
 	VideoFormatUyvy VideoFormat = 5
 	// VideoFormatAyuv wraps GST_VIDEO_FORMAT_AYUV
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4 YUV with alpha channel (A0-Y0-U0-V0 ...)
 	VideoFormatAyuv VideoFormat = 6
 	// VideoFormatRgbx wraps GST_VIDEO_FORMAT_RGBx
+	// 
+	// see also No documentation available
 	//
-	// sparse rgb packed into 32 bit, space last
 	VideoFormatRgbx VideoFormat = 7
 	// VideoFormatBgrx wraps GST_VIDEO_FORMAT_BGRx
+	// 
+	// see also No documentation available
 	//
-	// sparse reverse rgb packed into 32 bit, space last
 	VideoFormatBgrx VideoFormat = 8
 	// VideoFormatXrgb wraps GST_VIDEO_FORMAT_xRGB
+	// 
+	// see also No documentation available
 	//
-	// sparse rgb packed into 32 bit, space first
 	VideoFormatXrgb VideoFormat = 9
 	// VideoFormatXbgr wraps GST_VIDEO_FORMAT_xBGR
+	// 
+	// see also No documentation available
 	//
-	// sparse reverse rgb packed into 32 bit, space first
 	VideoFormatXbgr VideoFormat = 10
 	// VideoFormatRgba wraps GST_VIDEO_FORMAT_RGBA
+	// 
+	// see also No documentation available
 	//
-	// rgb with alpha channel last
 	VideoFormatRgba VideoFormat = 11
 	// VideoFormatBgra wraps GST_VIDEO_FORMAT_BGRA
+	// 
+	// see also No documentation available
 	//
-	// reverse rgb with alpha channel last
 	VideoFormatBgra VideoFormat = 12
 	// VideoFormatArgb wraps GST_VIDEO_FORMAT_ARGB
+	// 
+	// see also No documentation available
 	//
-	// rgb with alpha channel first
 	VideoFormatArgb VideoFormat = 13
 	// VideoFormatAbgr wraps GST_VIDEO_FORMAT_ABGR
+	// 
+	// see also No documentation available
 	//
-	// reverse rgb with alpha channel first
 	VideoFormatAbgr VideoFormat = 14
 	// VideoFormatRgb wraps GST_VIDEO_FORMAT_RGB
+	// 
+	// see also No documentation available
 	//
-	// RGB packed into 24 bits without padding (`R-G-B-R-G-B`)
 	VideoFormatRgb VideoFormat = 15
 	// VideoFormatBgr wraps GST_VIDEO_FORMAT_BGR
+	// 
+	// see also No documentation available
 	//
-	// reverse RGB packed into 24 bits without padding (`B-G-R-B-G-R`)
 	VideoFormatBgr VideoFormat = 16
 	// VideoFormatY41b wraps GST_VIDEO_FORMAT_Y41B
+	// 
+	// see also No documentation available
 	//
-	// planar 4:1:1 YUV
 	VideoFormatY41b VideoFormat = 17
 	// VideoFormatY42b wraps GST_VIDEO_FORMAT_Y42B
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:2 YUV
 	VideoFormatY42b VideoFormat = 18
 	// VideoFormatYvyu wraps GST_VIDEO_FORMAT_YVYU
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 YUV (Y0-V0-Y1-U0 Y2-V2-Y3-U2 Y4 ...)
 	VideoFormatYvyu VideoFormat = 19
 	// VideoFormatY444 wraps GST_VIDEO_FORMAT_Y444
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 YUV
 	VideoFormatY444 VideoFormat = 20
 	// VideoFormatV210 wraps GST_VIDEO_FORMAT_v210
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 10-bit YUV, complex format
 	VideoFormatV210 VideoFormat = 21
 	// VideoFormatV216 wraps GST_VIDEO_FORMAT_v216
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 16-bit YUV, Y0-U0-Y1-V1 order
 	VideoFormatV216 VideoFormat = 22
 	// VideoFormatNv12 wraps GST_VIDEO_FORMAT_NV12
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV with interleaved UV plane
 	VideoFormatNv12 VideoFormat = 23
 	// VideoFormatNv21 wraps GST_VIDEO_FORMAT_NV21
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV with interleaved VU plane
 	VideoFormatNv21 VideoFormat = 24
 	// VideoFormatGray8 wraps GST_VIDEO_FORMAT_GRAY8
+	// 
+	// see also No documentation available
 	//
-	// 8-bit grayscale
 	VideoFormatGray8 VideoFormat = 25
 	// VideoFormatGray16Be wraps GST_VIDEO_FORMAT_GRAY16_BE
+	// 
+	// see also No documentation available
 	//
-	// 16-bit grayscale, most significant byte first
 	VideoFormatGray16Be VideoFormat = 26
 	// VideoFormatGray16Le wraps GST_VIDEO_FORMAT_GRAY16_LE
+	// 
+	// see also No documentation available
 	//
-	// 16-bit grayscale, least significant byte first
 	VideoFormatGray16Le VideoFormat = 27
 	// VideoFormatV308 wraps GST_VIDEO_FORMAT_v308
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4 YUV (Y-U-V ...)
 	VideoFormatV308 VideoFormat = 28
 	// VideoFormatRgb16 wraps GST_VIDEO_FORMAT_RGB16
+	// 
+	// see also No documentation available
 	//
-	// rgb 5-6-5 bits per component
 	VideoFormatRgb16 VideoFormat = 29
 	// VideoFormatBgr16 wraps GST_VIDEO_FORMAT_BGR16
+	// 
+	// see also No documentation available
 	//
-	// reverse rgb 5-6-5 bits per component
 	VideoFormatBgr16 VideoFormat = 30
 	// VideoFormatRgb15 wraps GST_VIDEO_FORMAT_RGB15
+	// 
+	// see also No documentation available
 	//
-	// rgb 5-5-5 bits per component
 	VideoFormatRgb15 VideoFormat = 31
 	// VideoFormatBgr15 wraps GST_VIDEO_FORMAT_BGR15
+	// 
+	// see also No documentation available
 	//
-	// reverse rgb 5-5-5 bits per component
 	VideoFormatBgr15 VideoFormat = 32
 	// VideoFormatUyvp wraps GST_VIDEO_FORMAT_UYVP
+	// 
+	// see also No documentation available
 	//
-	// packed 10-bit 4:2:2 YUV (U0-Y0-V0-Y1 U2-Y2-V2-Y3 U4 ...)
 	VideoFormatUyvp VideoFormat = 33
 	// VideoFormatA420 wraps GST_VIDEO_FORMAT_A420
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:0 AYUV
 	VideoFormatA420 VideoFormat = 34
 	// VideoFormatRgb8p wraps GST_VIDEO_FORMAT_RGB8P
+	// 
+	// see also No documentation available
 	//
-	// 8-bit paletted RGB
 	VideoFormatRgb8p VideoFormat = 35
 	// VideoFormatYuv9 wraps GST_VIDEO_FORMAT_YUV9
+	// 
+	// see also No documentation available
 	//
-	// planar 4:1:0 YUV
 	VideoFormatYuv9 VideoFormat = 36
 	// VideoFormatYvu9 wraps GST_VIDEO_FORMAT_YVU9
+	// 
+	// see also No documentation available
 	//
-	// planar 4:1:0 YUV (like YUV9 but UV planes swapped)
 	VideoFormatYvu9 VideoFormat = 37
 	// VideoFormatIyu1 wraps GST_VIDEO_FORMAT_IYU1
+	// 
+	// see also No documentation available
 	//
-	// packed 4:1:1 YUV (Cb-Y0-Y1-Cr-Y2-Y3 ...)
 	VideoFormatIyu1 VideoFormat = 38
 	// VideoFormatArgb64 wraps GST_VIDEO_FORMAT_ARGB64
+	// 
+	// see also No documentation available
 	//
-	// rgb with alpha channel first, 16 bits (native endianness) per channel
 	VideoFormatArgb64 VideoFormat = 39
 	// VideoFormatAyuv64 wraps GST_VIDEO_FORMAT_AYUV64
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4 YUV with alpha channel, 16 bits (native endianness) per channel (A0-Y0-U0-V0 ...)
 	VideoFormatAyuv64 VideoFormat = 40
 	// VideoFormatR210 wraps GST_VIDEO_FORMAT_r210
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4 RGB, 10 bits per channel
 	VideoFormatR210 VideoFormat = 41
 	// VideoFormatI42010be wraps GST_VIDEO_FORMAT_I420_10BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV, 10 bits per channel
 	VideoFormatI42010be VideoFormat = 42
 	// VideoFormatI42010le wraps GST_VIDEO_FORMAT_I420_10LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV, 10 bits per channel
 	VideoFormatI42010le VideoFormat = 43
 	// VideoFormatI42210be wraps GST_VIDEO_FORMAT_I422_10BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:2 YUV, 10 bits per channel
 	VideoFormatI42210be VideoFormat = 44
 	// VideoFormatI42210le wraps GST_VIDEO_FORMAT_I422_10LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:2 YUV, 10 bits per channel
 	VideoFormatI42210le VideoFormat = 45
 	// VideoFormatY44410be wraps GST_VIDEO_FORMAT_Y444_10BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 YUV, 10 bits per channel (Since: 1.2)
 	VideoFormatY44410be VideoFormat = 46
 	// VideoFormatY44410le wraps GST_VIDEO_FORMAT_Y444_10LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 YUV, 10 bits per channel (Since: 1.2)
 	VideoFormatY44410le VideoFormat = 47
 	// VideoFormatGbr wraps GST_VIDEO_FORMAT_GBR
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 RGB, 8 bits per channel (Since: 1.2)
 	VideoFormatGbr VideoFormat = 48
 	// VideoFormatGbr10be wraps GST_VIDEO_FORMAT_GBR_10BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 RGB, 10 bits per channel (Since: 1.2)
 	VideoFormatGbr10be VideoFormat = 49
 	// VideoFormatGbr10le wraps GST_VIDEO_FORMAT_GBR_10LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 RGB, 10 bits per channel (Since: 1.2)
 	VideoFormatGbr10le VideoFormat = 50
 	// VideoFormatNv16 wraps GST_VIDEO_FORMAT_NV16
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:2 YUV with interleaved UV plane (Since: 1.2)
 	VideoFormatNv16 VideoFormat = 51
 	// VideoFormatNv24 wraps GST_VIDEO_FORMAT_NV24
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 YUV with interleaved UV plane (Since: 1.2)
 	VideoFormatNv24 VideoFormat = 52
 	// VideoFormatNv1264z32 wraps GST_VIDEO_FORMAT_NV12_64Z32
+	// 
+	// see also No documentation available
 	//
-	// NV12 with 64x32 tiling in zigzag pattern (Since: 1.4)
 	VideoFormatNv1264z32 VideoFormat = 53
 	// VideoFormatA42010be wraps GST_VIDEO_FORMAT_A420_10BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:0 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA42010be VideoFormat = 54
 	// VideoFormatA42010le wraps GST_VIDEO_FORMAT_A420_10LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:0 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA42010le VideoFormat = 55
 	// VideoFormatA42210be wraps GST_VIDEO_FORMAT_A422_10BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:2 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA42210be VideoFormat = 56
 	// VideoFormatA42210le wraps GST_VIDEO_FORMAT_A422_10LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:2 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA42210le VideoFormat = 57
 	// VideoFormatA44410be wraps GST_VIDEO_FORMAT_A444_10BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA44410be VideoFormat = 58
 	// VideoFormatA44410le wraps GST_VIDEO_FORMAT_A444_10LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA44410le VideoFormat = 59
 	// VideoFormatNv61 wraps GST_VIDEO_FORMAT_NV61
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:2 YUV with interleaved VU plane (Since: 1.6)
 	VideoFormatNv61 VideoFormat = 60
 	// VideoFormatP01010be wraps GST_VIDEO_FORMAT_P010_10BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV with interleaved UV plane, 10 bits per channel (Since: 1.10)
 	VideoFormatP01010be VideoFormat = 61
 	// VideoFormatP01010le wraps GST_VIDEO_FORMAT_P010_10LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV with interleaved UV plane, 10 bits per channel (Since: 1.10)
 	VideoFormatP01010le VideoFormat = 62
 	// VideoFormatIyu2 wraps GST_VIDEO_FORMAT_IYU2
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4 YUV (U-Y-V ...) (Since: 1.10)
 	VideoFormatIyu2 VideoFormat = 63
 	// VideoFormatVyuy wraps GST_VIDEO_FORMAT_VYUY
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 YUV (V0-Y0-U0-Y1 V2-Y2-U2-Y3 V4 ...)
 	VideoFormatVyuy VideoFormat = 64
 	// VideoFormatGbra wraps GST_VIDEO_FORMAT_GBRA
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 ARGB, 8 bits per channel (Since: 1.12)
 	VideoFormatGbra VideoFormat = 65
 	// VideoFormatGbra10be wraps GST_VIDEO_FORMAT_GBRA_10BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 ARGB, 10 bits per channel (Since: 1.12)
 	VideoFormatGbra10be VideoFormat = 66
 	// VideoFormatGbra10le wraps GST_VIDEO_FORMAT_GBRA_10LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 ARGB, 10 bits per channel (Since: 1.12)
 	VideoFormatGbra10le VideoFormat = 67
 	// VideoFormatGbr12be wraps GST_VIDEO_FORMAT_GBR_12BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 RGB, 12 bits per channel (Since: 1.12)
 	VideoFormatGbr12be VideoFormat = 68
 	// VideoFormatGbr12le wraps GST_VIDEO_FORMAT_GBR_12LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 RGB, 12 bits per channel (Since: 1.12)
 	VideoFormatGbr12le VideoFormat = 69
 	// VideoFormatGbra12be wraps GST_VIDEO_FORMAT_GBRA_12BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 ARGB, 12 bits per channel (Since: 1.12)
 	VideoFormatGbra12be VideoFormat = 70
 	// VideoFormatGbra12le wraps GST_VIDEO_FORMAT_GBRA_12LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 ARGB, 12 bits per channel (Since: 1.12)
 	VideoFormatGbra12le VideoFormat = 71
 	// VideoFormatI42012be wraps GST_VIDEO_FORMAT_I420_12BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatI42012be VideoFormat = 72
 	// VideoFormatI42012le wraps GST_VIDEO_FORMAT_I420_12LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatI42012le VideoFormat = 73
 	// VideoFormatI42212be wraps GST_VIDEO_FORMAT_I422_12BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:2 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatI42212be VideoFormat = 74
 	// VideoFormatI42212le wraps GST_VIDEO_FORMAT_I422_12LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:2 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatI42212le VideoFormat = 75
 	// VideoFormatY44412be wraps GST_VIDEO_FORMAT_Y444_12BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatY44412be VideoFormat = 76
 	// VideoFormatY44412le wraps GST_VIDEO_FORMAT_Y444_12LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatY44412le VideoFormat = 77
 	// VideoFormatGray10Le32 wraps GST_VIDEO_FORMAT_GRAY10_LE32
+	// 
+	// see also No documentation available
 	//
-	// 10-bit grayscale, packed into 32bit words (2 bits padding) (Since: 1.14)
 	VideoFormatGray10Le32 VideoFormat = 78
 	// VideoFormatNv1210le32 wraps GST_VIDEO_FORMAT_NV12_10LE32
+	// 
+	// see also No documentation available
 	//
-	// 10-bit variant of @GST_VIDEO_FORMAT_NV12, packed into 32bit words (MSB 2 bits padding) (Since: 1.14)
 	VideoFormatNv1210le32 VideoFormat = 79
 	// VideoFormatNv1610le32 wraps GST_VIDEO_FORMAT_NV16_10LE32
+	// 
+	// see also No documentation available
 	//
-	// 10-bit variant of @GST_VIDEO_FORMAT_NV16, packed into 32bit words (MSB 2 bits padding) (Since: 1.14)
 	VideoFormatNv1610le32 VideoFormat = 80
 	// VideoFormatNv1210le40 wraps GST_VIDEO_FORMAT_NV12_10LE40
+	// 
+	// see also No documentation available
 	//
-	// Fully packed variant of NV12_10LE32 (Since: 1.16)
 	VideoFormatNv1210le40 VideoFormat = 81
 	// VideoFormatY210 wraps GST_VIDEO_FORMAT_Y210
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 YUV, 10 bits per channel (Since: 1.16)
 	VideoFormatY210 VideoFormat = 82
 	// VideoFormatY410 wraps GST_VIDEO_FORMAT_Y410
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4 YUV, 10 bits per channel(A-V-Y-U...) (Since: 1.16)
 	VideoFormatY410 VideoFormat = 83
 	// VideoFormatVuya wraps GST_VIDEO_FORMAT_VUYA
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4 YUV with alpha channel (V0-U0-Y0-A0...) (Since: 1.16)
 	VideoFormatVuya VideoFormat = 84
 	// VideoFormatBgr10a2Le wraps GST_VIDEO_FORMAT_BGR10A2_LE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4 RGB with alpha channel(B-G-R-A), 10 bits for R/G/B channel and MSB 2 bits for alpha channel (Since: 1.16)
 	VideoFormatBgr10a2Le VideoFormat = 85
 	// VideoFormatRgb10a2Le wraps GST_VIDEO_FORMAT_RGB10A2_LE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4 RGB with alpha channel(R-G-B-A), 10 bits for R/G/B channel and MSB 2 bits for alpha channel (Since: 1.18)
 	VideoFormatRgb10a2Le VideoFormat = 86
 	// VideoFormatY44416be wraps GST_VIDEO_FORMAT_Y444_16BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 YUV, 16 bits per channel (Since: 1.18)
 	VideoFormatY44416be VideoFormat = 87
 	// VideoFormatY44416le wraps GST_VIDEO_FORMAT_Y444_16LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 YUV, 16 bits per channel (Since: 1.18)
 	VideoFormatY44416le VideoFormat = 88
 	// VideoFormatP016Be wraps GST_VIDEO_FORMAT_P016_BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV with interleaved UV plane, 16 bits per channel (Since: 1.18)
 	VideoFormatP016Be VideoFormat = 89
 	// VideoFormatP016Le wraps GST_VIDEO_FORMAT_P016_LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV with interleaved UV plane, 16 bits per channel (Since: 1.18)
 	VideoFormatP016Le VideoFormat = 90
 	// VideoFormatP012Be wraps GST_VIDEO_FORMAT_P012_BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV with interleaved UV plane, 12 bits per channel (Since: 1.18)
 	VideoFormatP012Be VideoFormat = 91
 	// VideoFormatP012Le wraps GST_VIDEO_FORMAT_P012_LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:2:0 YUV with interleaved UV plane, 12 bits per channel (Since: 1.18)
 	VideoFormatP012Le VideoFormat = 92
 	// VideoFormatY212Be wraps GST_VIDEO_FORMAT_Y212_BE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 YUV, 12 bits per channel (Y-U-Y-V) (Since: 1.18)
 	VideoFormatY212Be VideoFormat = 93
 	// VideoFormatY212Le wraps GST_VIDEO_FORMAT_Y212_LE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 YUV, 12 bits per channel (Y-U-Y-V) (Since: 1.18)
 	VideoFormatY212Le VideoFormat = 94
 	// VideoFormatY412Be wraps GST_VIDEO_FORMAT_Y412_BE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4:4 YUV, 12 bits per channel(U-Y-V-A...) (Since: 1.18)
 	VideoFormatY412Be VideoFormat = 95
 	// VideoFormatY412Le wraps GST_VIDEO_FORMAT_Y412_LE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4:4 YUV, 12 bits per channel(U-Y-V-A...) (Since: 1.18)
 	VideoFormatY412Le VideoFormat = 96
 	// VideoFormatNv124l4 wraps GST_VIDEO_FORMAT_NV12_4L4
+	// 
+	// see also No documentation available
 	//
-	// NV12 with 4x4 tiles in linear order.
 	VideoFormatNv124l4 VideoFormat = 97
 	// VideoFormatNv1232l32 wraps GST_VIDEO_FORMAT_NV12_32L32
+	// 
+	// see also No documentation available
 	//
-	// NV12 with 32x32 tiles in linear order.
 	VideoFormatNv1232l32 VideoFormat = 98
 	// VideoFormatRgbp wraps GST_VIDEO_FORMAT_RGBP
+	// 
+	// see also No documentation available
 	//
-	// Planar 4:4:4 RGB, R-G-B order
 	VideoFormatRgbp VideoFormat = 99
 	// VideoFormatBgrp wraps GST_VIDEO_FORMAT_BGRP
+	// 
+	// see also No documentation available
 	//
-	// Planar 4:4:4 RGB, B-G-R order
 	VideoFormatBgrp VideoFormat = 100
 	// VideoFormatAv12 wraps GST_VIDEO_FORMAT_AV12
+	// 
+	// see also No documentation available
 	//
-	// Planar 4:2:0 YUV with interleaved UV plane with alpha as
-	// 3rd plane.
 	VideoFormatAv12 VideoFormat = 101
 	// VideoFormatArgb64Le wraps GST_VIDEO_FORMAT_ARGB64_LE
+	// 
+	// see also No documentation available
 	//
-	// RGB with alpha channel first, 16 bits (little endian)
-	// per channel.
 	VideoFormatArgb64Le VideoFormat = 102
 	// VideoFormatArgb64Be wraps GST_VIDEO_FORMAT_ARGB64_BE
+	// 
+	// see also No documentation available
 	//
-	// RGB with alpha channel first, 16 bits (big endian)
-	// per channel.
 	VideoFormatArgb64Be VideoFormat = 103
 	// VideoFormatRgba64Le wraps GST_VIDEO_FORMAT_RGBA64_LE
+	// 
+	// see also No documentation available
 	//
-	// RGB with alpha channel last, 16 bits (little endian)
-	// per channel.
 	VideoFormatRgba64Le VideoFormat = 104
 	// VideoFormatRgba64Be wraps GST_VIDEO_FORMAT_RGBA64_BE
+	// 
+	// see also No documentation available
 	//
-	// RGB with alpha channel last, 16 bits (big endian)
-	// per channel.
 	VideoFormatRgba64Be VideoFormat = 105
 	// VideoFormatBgra64Le wraps GST_VIDEO_FORMAT_BGRA64_LE
+	// 
+	// see also No documentation available
 	//
-	// Reverse RGB with alpha channel last, 16 bits (little endian)
-	// per channel.
 	VideoFormatBgra64Le VideoFormat = 106
 	// VideoFormatBgra64Be wraps GST_VIDEO_FORMAT_BGRA64_BE
+	// 
+	// see also No documentation available
 	//
-	// Reverse RGB with alpha channel last, 16 bits (big endian)
-	// per channel.
 	VideoFormatBgra64Be VideoFormat = 107
 	// VideoFormatAbgr64Le wraps GST_VIDEO_FORMAT_ABGR64_LE
+	// 
+	// see also No documentation available
 	//
-	// Reverse RGB with alpha channel first, 16 bits (little endian)
-	// per channel.
 	VideoFormatAbgr64Le VideoFormat = 108
 	// VideoFormatAbgr64Be wraps GST_VIDEO_FORMAT_ABGR64_BE
+	// 
+	// see also No documentation available
 	//
-	// Reverse RGB with alpha channel first, 16 bits (big endian)
-	// per channel.
 	VideoFormatAbgr64Be VideoFormat = 109
 	// VideoFormatNv1216l32s wraps GST_VIDEO_FORMAT_NV12_16L32S
+	// 
+	// see also No documentation available
 	//
-	// NV12 with 16x32 Y tiles and 16x16 UV tiles.
 	VideoFormatNv1216l32s VideoFormat = 110
 	// VideoFormatNv128l128 wraps GST_VIDEO_FORMAT_NV12_8L128
+	// 
+	// see also No documentation available
 	//
-	// NV12 with 8x128 tiles in linear order.
 	VideoFormatNv128l128 VideoFormat = 111
 	// VideoFormatNv1210be8l128 wraps GST_VIDEO_FORMAT_NV12_10BE_8L128
+	// 
+	// see also No documentation available
 	//
-	// NV12 10bit big endian with 8x128 tiles in linear order.
 	VideoFormatNv1210be8l128 VideoFormat = 112
 	// VideoFormatNv1210le404l4 wraps GST_VIDEO_FORMAT_NV12_10LE40_4L4
+	// 
+	// see also No documentation available
 	//
-	// @GST_VIDEO_FORMAT_NV12_10LE40 with 4x4 pixels tiles (5 bytes
-	//  per tile row). This format is produced by Verisilicon/Hantro decoders.
 	VideoFormatNv1210le404l4 VideoFormat = 113
 	// VideoFormatDmaDrm wraps GST_VIDEO_FORMAT_DMA_DRM
+	// 
+	// see also No documentation available
 	//
-	// @GST_VIDEO_FORMAT_DMA_DRM represent the DMA DRM special format. It's
-	// only used with memory:DMABuf #GstCapsFeatures, where an extra
-	// parameter (drm-format) is required to define the image format and
-	// its memory layout.
 	VideoFormatDmaDrm VideoFormat = 114
 	// VideoFormatMt2110t wraps GST_VIDEO_FORMAT_MT2110T
+	// 
+	// see also No documentation available
 	//
-	// Mediatek 10bit NV12 little endian with 16x32 tiles in linear order, tile 2
-	// bits.
 	VideoFormatMt2110t VideoFormat = 115
 	// VideoFormatMt2110r wraps GST_VIDEO_FORMAT_MT2110R
+	// 
+	// see also No documentation available
 	//
-	// Mediatek 10bit NV12 little endian with 16x32 tiles in linear order, raster
-	// 2 bits.
 	VideoFormatMt2110r VideoFormat = 116
 	// VideoFormatA422 wraps GST_VIDEO_FORMAT_A422
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:2 YUV, 8 bits per channel
 	VideoFormatA422 VideoFormat = 117
 	// VideoFormatA444 wraps GST_VIDEO_FORMAT_A444
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 YUV, 8 bits per channel
 	VideoFormatA444 VideoFormat = 118
 	// VideoFormatA44412le wraps GST_VIDEO_FORMAT_A444_12LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 YUV, 12 bits per channel
 	VideoFormatA44412le VideoFormat = 119
 	// VideoFormatA44412be wraps GST_VIDEO_FORMAT_A444_12BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 YUV, 12 bits per channel
 	VideoFormatA44412be VideoFormat = 120
 	// VideoFormatA42212le wraps GST_VIDEO_FORMAT_A422_12LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:2 YUV, 12 bits per channel
 	VideoFormatA42212le VideoFormat = 121
 	// VideoFormatA42212be wraps GST_VIDEO_FORMAT_A422_12BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:2 YUV, 12 bits per channel
 	VideoFormatA42212be VideoFormat = 122
 	// VideoFormatA42012le wraps GST_VIDEO_FORMAT_A420_12LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:0 YUV, 12 bits per channel
 	VideoFormatA42012le VideoFormat = 123
 	// VideoFormatA42012be wraps GST_VIDEO_FORMAT_A420_12BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:0 YUV, 12 bits per channel
 	VideoFormatA42012be VideoFormat = 124
 	// VideoFormatA44416le wraps GST_VIDEO_FORMAT_A444_16LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 YUV, 16 bits per channel
 	VideoFormatA44416le VideoFormat = 125
 	// VideoFormatA44416be wraps GST_VIDEO_FORMAT_A444_16BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4:4 YUV, 16 bits per channel
 	VideoFormatA44416be VideoFormat = 126
 	// VideoFormatA42216le wraps GST_VIDEO_FORMAT_A422_16LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:2 YUV, 16 bits per channel
 	VideoFormatA42216le VideoFormat = 127
 	// VideoFormatA42216be wraps GST_VIDEO_FORMAT_A422_16BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:2 YUV, 16 bits per channel
 	VideoFormatA42216be VideoFormat = 128
 	// VideoFormatA42016le wraps GST_VIDEO_FORMAT_A420_16LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:0 YUV, 16 bits per channel
 	VideoFormatA42016le VideoFormat = 129
 	// VideoFormatA42016be wraps GST_VIDEO_FORMAT_A420_16BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:2:0 YUV, 16 bits per channel
 	VideoFormatA42016be VideoFormat = 130
 	// VideoFormatGbr16le wraps GST_VIDEO_FORMAT_GBR_16LE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 RGB, 16 bits per channel
 	VideoFormatGbr16le VideoFormat = 131
 	// VideoFormatGbr16be wraps GST_VIDEO_FORMAT_GBR_16BE
+	// 
+	// see also No documentation available
 	//
-	// planar 4:4:4 RGB, 16 bits per channel
 	VideoFormatGbr16be VideoFormat = 132
 	// VideoFormatRbga wraps GST_VIDEO_FORMAT_RBGA
+	// 
+	// see also No documentation available
 	//
-	// packed RGB with alpha, 8 bits per channel
 	VideoFormatRbga VideoFormat = 133
 	// VideoFormatY216Le wraps GST_VIDEO_FORMAT_Y216_LE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
 	VideoFormatY216Le VideoFormat = 134
 	// VideoFormatY216Be wraps GST_VIDEO_FORMAT_Y216_BE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
 	VideoFormatY216Be VideoFormat = 135
 	// VideoFormatY416Le wraps GST_VIDEO_FORMAT_Y416_LE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
 	VideoFormatY416Le VideoFormat = 136
 	// VideoFormatY416Be wraps GST_VIDEO_FORMAT_Y416_BE
+	// 
+	// see also No documentation available
 	//
-	// packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
 	VideoFormatY416Be VideoFormat = 137
 	// VideoFormatGray10Le16 wraps GST_VIDEO_FORMAT_GRAY10_LE16
+	// 
+	// see also No documentation available
 	//
-	// 10-bit grayscale, packed into 16bit words (6 bits left padding)
 	VideoFormatGray10Le16 VideoFormat = 138
 )
 
@@ -2780,17 +2802,8 @@ func (e VideoFormat) String() string {
 
 // VideoFormatFromFourcc wraps gst_video_format_from_fourcc
 // 
-// The function takes the following parameters:
-// 
-// 	- fourcc uint32: a FOURCC value representing raw YUV video 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoFormat 
+// see also No documentation available
 //
-// Converts a FOURCC value into the corresponding #GstVideoFormat.
-// If the FOURCC cannot be represented by #GstVideoFormat,
-// #GST_VIDEO_FORMAT_UNKNOWN is returned.
 func VideoFormatFromFourcc(fourcc uint32) VideoFormat {
 	var carg1 C.guint32        // in, none, casted
 	var cret  C.GstVideoFormat // return, none, casted
@@ -2809,22 +2822,8 @@ func VideoFormatFromFourcc(fourcc uint32) VideoFormat {
 
 // VideoFormatFromMasks wraps gst_video_format_from_masks
 // 
-// The function takes the following parameters:
-// 
-// 	- depth int32: the amount of bits used for a pixel 
-// 	- bpp int32: the amount of bits used to store a pixel. This value is bigger than
-//   @depth 
-// 	- endianness int32: the endianness of the masks, #G_LITTLE_ENDIAN or #G_BIG_ENDIAN 
-// 	- redMask uint: the red mask 
-// 	- greenMask uint: the green mask 
-// 	- blueMask uint: the blue mask 
-// 	- alphaMask uint: the alpha mask, or 0 if no alpha mask 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoFormat 
+// see also No documentation available
 //
-// Find the #GstVideoFormat for the given parameters.
 func VideoFormatFromMasks(depth int32, bpp int32, endianness int32, redMask uint, greenMask uint, blueMask uint, alphaMask uint) VideoFormat {
 	var carg1 C.gint           // in, none, casted
 	var carg2 C.gint           // in, none, casted
@@ -2861,15 +2860,8 @@ func VideoFormatFromMasks(depth int32, bpp int32, endianness int32, redMask uint
 
 // VideoFormatFromString wraps gst_video_format_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- format string: a format string 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoFormat 
+// see also No documentation available
 //
-// Convert the @format string to its #GstVideoFormat.
 func VideoFormatFromString(format string) VideoFormat {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstVideoFormat // return, none, casted
@@ -2889,15 +2881,8 @@ func VideoFormatFromString(format string) VideoFormat {
 
 // VideoFormatGetInfo wraps gst_video_format_get_info
 // 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: a #GstVideoFormat 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoFormatInfo 
+// see also No documentation available
 //
-// Get the #GstVideoFormatInfo for @format
 func VideoFormatGetInfo(format VideoFormat) *VideoFormatInfo {
 	var carg1 C.GstVideoFormat      // in, none, casted
 	var cret  *C.GstVideoFormatInfo // return, none, converted
@@ -2916,17 +2901,8 @@ func VideoFormatGetInfo(format VideoFormat) *VideoFormatInfo {
 
 // VideoFormatToFourcc wraps gst_video_format_to_fourcc
 // 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: a #GstVideoFormat video format 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint32 
+// see also No documentation available
 //
-// Converts a #GstVideoFormat value into the corresponding FOURCC.  Only
-// a few YUV formats have corresponding FOURCC values.  If @format has
-// no corresponding FOURCC value, 0 is returned.
 func VideoFormatToFourcc(format VideoFormat) uint32 {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var cret  C.guint32        // return, none, casted
@@ -2945,18 +2921,8 @@ func VideoFormatToFourcc(format VideoFormat) uint32 {
 
 // VideoFormatString wraps gst_video_format_to_string
 // 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: a #GstVideoFormat video format 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Returns a string containing a descriptive name for the #GstVideoFormat.
-// 
-// Since 1.26 this can also be used with %GST_VIDEO_FORMAT_UNKNOWN, previous
-// versions were printing a critical warning and returned %NULL.
 func VideoFormatString(format VideoFormat) string {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -2974,26 +2940,31 @@ func VideoFormatString(format VideoFormat) string {
 }
 
 // VideoGLTextureOrientation wraps GstVideoGLTextureOrientation
+// 
+// see also No documentation available
 //
-// The orientation of the GL texture.
 type VideoGLTextureOrientation C.int
 
 const (
 	// VideoGlTextureOrientationXNormalYNormal wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_NORMAL
+	// 
+	// see also No documentation available
 	//
-	// Top line first in memory, left row first
 	VideoGlTextureOrientationXNormalYNormal VideoGLTextureOrientation = 0
 	// VideoGlTextureOrientationXNormalYFlip wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_FLIP
+	// 
+	// see also No documentation available
 	//
-	// Bottom line first in memory, left row first
 	VideoGlTextureOrientationXNormalYFlip VideoGLTextureOrientation = 1
 	// VideoGlTextureOrientationXFlipYNormal wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_NORMAL
+	// 
+	// see also No documentation available
 	//
-	// Top line first in memory, right row first
 	VideoGlTextureOrientationXFlipYNormal VideoGLTextureOrientation = 2
 	// VideoGlTextureOrientationXFlipYFlip wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_FLIP
+	// 
+	// see also No documentation available
 	//
-	// Bottom line first in memory, right row first
 	VideoGlTextureOrientationXFlipYFlip VideoGLTextureOrientation = 3
 )
 
@@ -3022,38 +2993,46 @@ func (e VideoGLTextureOrientation) String() string {
 }
 
 // VideoGLTextureType wraps GstVideoGLTextureType
+// 
+// see also No documentation available
 //
-// The GL texture type.
 type VideoGLTextureType C.int
 
 const (
 	// VideoGlTextureTypeLuminance wraps GST_VIDEO_GL_TEXTURE_TYPE_LUMINANCE
+	// 
+	// see also No documentation available
 	//
-	// Luminance texture, GL_LUMINANCE
 	VideoGlTextureTypeLuminance VideoGLTextureType = 0
 	// VideoGlTextureTypeLuminanceAlpha wraps GST_VIDEO_GL_TEXTURE_TYPE_LUMINANCE_ALPHA
+	// 
+	// see also No documentation available
 	//
-	// Luminance-alpha texture, GL_LUMINANCE_ALPHA
 	VideoGlTextureTypeLuminanceAlpha VideoGLTextureType = 1
 	// VideoGlTextureTypeRgb16 wraps GST_VIDEO_GL_TEXTURE_TYPE_RGB16
+	// 
+	// see also No documentation available
 	//
-	// RGB 565 texture, GL_RGB
 	VideoGlTextureTypeRgb16 VideoGLTextureType = 2
 	// VideoGlTextureTypeRgb wraps GST_VIDEO_GL_TEXTURE_TYPE_RGB
+	// 
+	// see also No documentation available
 	//
-	// RGB texture, GL_RGB
 	VideoGlTextureTypeRgb VideoGLTextureType = 3
 	// VideoGlTextureTypeRgba wraps GST_VIDEO_GL_TEXTURE_TYPE_RGBA
+	// 
+	// see also No documentation available
 	//
-	// RGBA texture, GL_RGBA
 	VideoGlTextureTypeRgba VideoGLTextureType = 4
 	// VideoGlTextureTypeR wraps GST_VIDEO_GL_TEXTURE_TYPE_R
+	// 
+	// see also No documentation available
 	//
-	// R texture, GL_RED_EXT
 	VideoGlTextureTypeR VideoGLTextureType = 5
 	// VideoGlTextureTypeRg wraps GST_VIDEO_GL_TEXTURE_TYPE_RG
+	// 
+	// see also No documentation available
 	//
-	// RG texture, GL_RG_EXT
 	VideoGlTextureTypeRg VideoGLTextureType = 6
 )
 
@@ -3085,17 +3064,20 @@ func (e VideoGLTextureType) String() string {
 }
 
 // VideoGammaMode wraps GstVideoGammaMode
+// 
+// see also No documentation available
 type VideoGammaMode C.int
 
 const (
 	// VideoGammaModeNone wraps GST_VIDEO_GAMMA_MODE_NONE
+	// 
+	// see also No documentation available
 	//
-	// disable gamma handling
 	VideoGammaModeNone VideoGammaMode = 0
 	// VideoGammaModeRemap wraps GST_VIDEO_GAMMA_MODE_REMAP
+	// 
+	// see also No documentation available
 	//
-	// convert between input and output gamma
-	// Different gamma conversion modes
 	VideoGammaModeRemap VideoGammaMode = 1
 )
 
@@ -3122,43 +3104,36 @@ func (e VideoGammaMode) String() string {
 }
 
 // VideoInterlaceMode wraps GstVideoInterlaceMode
+// 
+// see also No documentation available
 //
-// The possible values of the #GstVideoInterlaceMode describing the interlace
-// mode of the stream.
 type VideoInterlaceMode C.int
 
 const (
 	// VideoInterlaceModeProgressive wraps GST_VIDEO_INTERLACE_MODE_PROGRESSIVE
+	// 
+	// see also No documentation available
 	//
-	// all frames are progressive
 	VideoInterlaceModeProgressive VideoInterlaceMode = 0
 	// VideoInterlaceModeInterleaved wraps GST_VIDEO_INTERLACE_MODE_INTERLEAVED
+	// 
+	// see also No documentation available
 	//
-	// 2 fields are interleaved in one video
-	//     frame. Extra buffer flags describe the field order.
 	VideoInterlaceModeInterleaved VideoInterlaceMode = 1
 	// VideoInterlaceModeMixed wraps GST_VIDEO_INTERLACE_MODE_MIXED
+	// 
+	// see also No documentation available
 	//
-	// frames contains both interlaced and
-	//     progressive video, the buffer flags describe the frame and fields.
 	VideoInterlaceModeMixed VideoInterlaceMode = 2
 	// VideoInterlaceModeFields wraps GST_VIDEO_INTERLACE_MODE_FIELDS
+	// 
+	// see also No documentation available
 	//
-	// 2 fields are stored in one buffer, use the
-	//     frame ID to get access to the required field. For multiview (the
-	//     'views' property &gt; 1) the fields of view N can be found at frame ID
-	//     (N * 2) and (N * 2) + 1.
-	//     Each field has only half the amount of lines as noted in the
-	//     height property. This mode requires multiple GstVideoMeta metadata
-	//     to describe the fields.
 	VideoInterlaceModeFields VideoInterlaceMode = 3
 	// VideoInterlaceModeAlternate wraps GST_VIDEO_INTERLACE_MODE_ALTERNATE
+	// 
+	// see also No documentation available
 	//
-	// 1 field is stored in one buffer,
-	//     @GST_VIDEO_BUFFER_FLAG_TF or @GST_VIDEO_BUFFER_FLAG_BF indicates if
-	//     the buffer is carrying the top or bottom field, respectively. The top and
-	//     bottom buffers must alternate in the pipeline, with this mode
-	//     (Since: 1.16).
 	VideoInterlaceModeAlternate VideoInterlaceMode = 4
 )
 
@@ -3189,15 +3164,8 @@ func (e VideoInterlaceMode) String() string {
 
 // VideoInterlaceModeFromString wraps gst_video_interlace_mode_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- mode string: a mode 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoInterlaceMode 
+// see also No documentation available
 //
-// Convert @mode to a #GstVideoInterlaceMode
 func VideoInterlaceModeFromString(mode string) VideoInterlaceMode {
 	var carg1 *C.gchar                // in, none, string
 	var cret  C.GstVideoInterlaceMode // return, none, casted
@@ -3217,15 +3185,8 @@ func VideoInterlaceModeFromString(mode string) VideoInterlaceMode {
 
 // VideoInterlaceModeString wraps gst_video_interlace_mode_to_string
 // 
-// The function takes the following parameters:
-// 
-// 	- mode VideoInterlaceMode: a #GstVideoInterlaceMode 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Convert @mode to its string representation.
 func VideoInterlaceModeString(mode VideoInterlaceMode) string {
 	var carg1 C.GstVideoInterlaceMode // in, none, casted
 	var cret  *C.gchar                // return, none, string
@@ -3243,28 +3204,31 @@ func VideoInterlaceModeString(mode VideoInterlaceMode) string {
 }
 
 // VideoMatrixMode wraps GstVideoMatrixMode
+// 
+// see also No documentation available
 //
-// Different color matrix conversion modes
 type VideoMatrixMode C.int
 
 const (
 	// VideoMatrixModeFull wraps GST_VIDEO_MATRIX_MODE_FULL
+	// 
+	// see also No documentation available
 	//
-	// do conversion between color matrices
 	VideoMatrixModeFull VideoMatrixMode = 0
 	// VideoMatrixModeInputOnly wraps GST_VIDEO_MATRIX_MODE_INPUT_ONLY
+	// 
+	// see also No documentation available
 	//
-	// use the input color matrix to convert
-	//   to and from R'G'B
 	VideoMatrixModeInputOnly VideoMatrixMode = 1
 	// VideoMatrixModeOutputOnly wraps GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY
+	// 
+	// see also No documentation available
 	//
-	// use the output color matrix to convert
-	//   to and from R'G'B
 	VideoMatrixModeOutputOnly VideoMatrixMode = 2
 	// VideoMatrixModeNone wraps GST_VIDEO_MATRIX_MODE_NONE
+	// 
+	// see also No documentation available
 	//
-	// disable color matrix conversion.
 	VideoMatrixModeNone VideoMatrixMode = 3
 )
 
@@ -3293,68 +3257,61 @@ func (e VideoMatrixMode) String() string {
 }
 
 // VideoMultiviewFramePacking wraps GstVideoMultiviewFramePacking
-//
-// #GstVideoMultiviewFramePacking represents the subset of #GstVideoMultiviewMode
-// values that can be applied to any video frame without needing extra metadata.
-// It can be used by elements that provide a property to override the
-// multiview interpretation of a video stream when the video doesn't contain
-// any markers.
 // 
-// This enum is used (for example) on playbin, to re-interpret a played
-// video stream as a stereoscopic video. The individual enum values are
-// equivalent to and have the same value as the matching #GstVideoMultiviewMode.
+// see also No documentation available
+//
 type VideoMultiviewFramePacking C.int
 
 const (
 	// VideoMultiviewFramePackingNone wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_NONE
+	// 
+	// see also No documentation available
 	//
-	// A special value indicating
-	// no frame packing info.
 	VideoMultiviewFramePackingNone VideoMultiviewFramePacking = -1
 	// VideoMultiviewFramePackingMono wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_MONO
+	// 
+	// see also No documentation available
 	//
-	// All frames are monoscopic.
 	VideoMultiviewFramePackingMono VideoMultiviewFramePacking = 0
 	// VideoMultiviewFramePackingLeft wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_LEFT
+	// 
+	// see also No documentation available
 	//
-	// All frames represent a left-eye view.
 	VideoMultiviewFramePackingLeft VideoMultiviewFramePacking = 1
 	// VideoMultiviewFramePackingRight wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// All frames represent a right-eye view.
 	VideoMultiviewFramePackingRight VideoMultiviewFramePacking = 2
 	// VideoMultiviewFramePackingSideBySide wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE
+	// 
+	// see also No documentation available
 	//
-	// Left and right eye views are
-	// provided in the left and right half of the frame respectively.
 	VideoMultiviewFramePackingSideBySide VideoMultiviewFramePacking = 3
 	// VideoMultiviewFramePackingSideBySideQuincunx wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE_QUINCUNX
+	// 
+	// see also No documentation available
 	//
-	// Left and right eye
-	// views are provided in the left and right half of the frame, but
-	// have been sampled using quincunx method, with half-pixel offset
-	// between the 2 views.
 	VideoMultiviewFramePackingSideBySideQuincunx VideoMultiviewFramePacking = 4
 	// VideoMultiviewFramePackingColumnInterleaved wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_COLUMN_INTERLEAVED
+	// 
+	// see also No documentation available
 	//
-	// Alternating vertical
-	// columns of pixels represent the left and right eye view respectively.
 	VideoMultiviewFramePackingColumnInterleaved VideoMultiviewFramePacking = 5
 	// VideoMultiviewFramePackingRowInterleaved wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_ROW_INTERLEAVED
+	// 
+	// see also No documentation available
 	//
-	// Alternating horizontal
-	// rows of pixels represent the left and right eye view respectively.
 	VideoMultiviewFramePackingRowInterleaved VideoMultiviewFramePacking = 6
 	// VideoMultiviewFramePackingTopBottom wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_TOP_BOTTOM
+	// 
+	// see also No documentation available
 	//
-	// The top half of the frame
-	// contains the left eye, and the bottom half the right eye.
 	VideoMultiviewFramePackingTopBottom VideoMultiviewFramePacking = 7
 	// VideoMultiviewFramePackingCheckerboard wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_CHECKERBOARD
+	// 
+	// see also No documentation available
 	//
-	// Pixels are arranged with
-	// alternating pixels representing left and right eye views in a
-	// checkerboard fashion.
 	VideoMultiviewFramePackingCheckerboard VideoMultiviewFramePacking = 8
 )
 
@@ -3389,84 +3346,76 @@ func (e VideoMultiviewFramePacking) String() string {
 }
 
 // VideoMultiviewMode wraps GstVideoMultiviewMode
+// 
+// see also No documentation available
 //
-// All possible stereoscopic 3D and multiview representations.
-// In conjunction with #GstVideoMultiviewFlags, describes how
-// multiview content is being transported in the stream.
 type VideoMultiviewMode C.int
 
 const (
 	// VideoMultiviewModeNone wraps GST_VIDEO_MULTIVIEW_MODE_NONE
+	// 
+	// see also No documentation available
 	//
-	// A special value indicating
-	// no multiview information. Used in GstVideoInfo and other places to
-	// indicate that no specific multiview handling has been requested or
-	// provided. This value is never carried on caps.
 	VideoMultiviewModeNone VideoMultiviewMode = -1
 	// VideoMultiviewModeMono wraps GST_VIDEO_MULTIVIEW_MODE_MONO
+	// 
+	// see also No documentation available
 	//
-	// All frames are monoscopic.
 	VideoMultiviewModeMono VideoMultiviewMode = 0
 	// VideoMultiviewModeLeft wraps GST_VIDEO_MULTIVIEW_MODE_LEFT
+	// 
+	// see also No documentation available
 	//
-	// All frames represent a left-eye view.
 	VideoMultiviewModeLeft VideoMultiviewMode = 1
 	// VideoMultiviewModeRight wraps GST_VIDEO_MULTIVIEW_MODE_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// All frames represent a right-eye view.
 	VideoMultiviewModeRight VideoMultiviewMode = 2
 	// VideoMultiviewModeSideBySide wraps GST_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE
+	// 
+	// see also No documentation available
 	//
-	// Left and right eye views are
-	// provided in the left and right half of the frame respectively.
 	VideoMultiviewModeSideBySide VideoMultiviewMode = 3
 	// VideoMultiviewModeSideBySideQuincunx wraps GST_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE_QUINCUNX
+	// 
+	// see also No documentation available
 	//
-	// Left and right eye
-	// views are provided in the left and right half of the frame, but
-	// have been sampled using quincunx method, with half-pixel offset
-	// between the 2 views.
 	VideoMultiviewModeSideBySideQuincunx VideoMultiviewMode = 4
 	// VideoMultiviewModeColumnInterleaved wraps GST_VIDEO_MULTIVIEW_MODE_COLUMN_INTERLEAVED
+	// 
+	// see also No documentation available
 	//
-	// Alternating vertical
-	// columns of pixels represent the left and right eye view respectively.
 	VideoMultiviewModeColumnInterleaved VideoMultiviewMode = 5
 	// VideoMultiviewModeRowInterleaved wraps GST_VIDEO_MULTIVIEW_MODE_ROW_INTERLEAVED
+	// 
+	// see also No documentation available
 	//
-	// Alternating horizontal
-	// rows of pixels represent the left and right eye view respectively.
 	VideoMultiviewModeRowInterleaved VideoMultiviewMode = 6
 	// VideoMultiviewModeTopBottom wraps GST_VIDEO_MULTIVIEW_MODE_TOP_BOTTOM
+	// 
+	// see also No documentation available
 	//
-	// The top half of the frame
-	// contains the left eye, and the bottom half the right eye.
 	VideoMultiviewModeTopBottom VideoMultiviewMode = 7
 	// VideoMultiviewModeCheckerboard wraps GST_VIDEO_MULTIVIEW_MODE_CHECKERBOARD
+	// 
+	// see also No documentation available
 	//
-	// Pixels are arranged with
-	// alternating pixels representing left and right eye views in a
-	// checkerboard fashion.
 	VideoMultiviewModeCheckerboard VideoMultiviewMode = 8
 	// VideoMultiviewModeFrameByFrame wraps GST_VIDEO_MULTIVIEW_MODE_FRAME_BY_FRAME
+	// 
+	// see also No documentation available
 	//
-	// Left and right eye views
-	// are provided in separate frames alternately.
 	VideoMultiviewModeFrameByFrame VideoMultiviewMode = 32
 	// VideoMultiviewModeMultiviewFrameByFrame wraps GST_VIDEO_MULTIVIEW_MODE_MULTIVIEW_FRAME_BY_FRAME
+	// 
+	// see also No documentation available
 	//
-	// Multiple
-	// independent views are provided in separate frames in sequence.
-	// This method only applies to raw video buffers at the moment.
-	// Specific view identification is via the `GstVideoMultiviewMeta`
-	// and #GstVideoMeta(s) on raw video buffers.
 	VideoMultiviewModeMultiviewFrameByFrame VideoMultiviewMode = 33
 	// VideoMultiviewModeSeparated wraps GST_VIDEO_MULTIVIEW_MODE_SEPARATED
+	// 
+	// see also No documentation available
 	//
-	// Multiple views are
-	// provided as separate #GstMemory framebuffers attached to each
-	// #GstBuffer, described by the `GstVideoMultiviewMeta`
-	// and #GstVideoMeta(s)
 	VideoMultiviewModeSeparated VideoMultiviewMode = 34
 )
 
@@ -3505,13 +3454,7 @@ func (e VideoMultiviewMode) String() string {
 
 // VideoMultiviewModeFromCapsString wraps gst_video_multiview_mode_from_caps_string
 // 
-// The function takes the following parameters:
-// 
-// 	- capsMviewMode string: multiview-mode field string from caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoMultiviewMode 
+// see also No documentation available
 func VideoMultiviewModeFromCapsString(capsMviewMode string) VideoMultiviewMode {
 	var carg1 *C.gchar                // in, none, string
 	var cret  C.GstVideoMultiviewMode // return, none, casted
@@ -3531,16 +3474,8 @@ func VideoMultiviewModeFromCapsString(capsMviewMode string) VideoMultiviewMode {
 
 // VideoMultiviewModeToCapsString wraps gst_video_multiview_mode_to_caps_string
 // 
-// The function takes the following parameters:
-// 
-// 	- mviewMode VideoMultiviewMode: A #GstVideoMultiviewMode value 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Given a #GstVideoMultiviewMode returns the multiview-mode caps string
-// for insertion into a caps structure
 func VideoMultiviewModeToCapsString(mviewMode VideoMultiviewMode) string {
 	var carg1 C.GstVideoMultiviewMode // in, none, casted
 	var cret  *C.gchar                // return, none, string, nullable-string
@@ -3560,50 +3495,61 @@ func VideoMultiviewModeToCapsString(mviewMode VideoMultiviewMode) string {
 }
 
 // VideoOrientationMethod wraps GstVideoOrientationMethod
+// 
+// see also No documentation available
 //
-// The different video orientation methods.
 type VideoOrientationMethod C.int
 
 const (
 	// VideoOrientationIdentity wraps GST_VIDEO_ORIENTATION_IDENTITY
+	// 
+	// see also No documentation available
 	//
-	// Identity (no rotation)
 	VideoOrientationIdentity VideoOrientationMethod = 0
 	// VideoOrientation90r wraps GST_VIDEO_ORIENTATION_90R
+	// 
+	// see also No documentation available
 	//
-	// Rotate clockwise 90 degrees
 	VideoOrientation90r VideoOrientationMethod = 1
 	// VideoOrientation180 wraps GST_VIDEO_ORIENTATION_180
+	// 
+	// see also No documentation available
 	//
-	// Rotate 180 degrees
 	VideoOrientation180 VideoOrientationMethod = 2
 	// VideoOrientation90l wraps GST_VIDEO_ORIENTATION_90L
+	// 
+	// see also No documentation available
 	//
-	// Rotate counter-clockwise 90 degrees
 	VideoOrientation90l VideoOrientationMethod = 3
 	// VideoOrientationHoriz wraps GST_VIDEO_ORIENTATION_HORIZ
+	// 
+	// see also No documentation available
 	//
-	// Flip horizontally
 	VideoOrientationHoriz VideoOrientationMethod = 4
 	// VideoOrientationVert wraps GST_VIDEO_ORIENTATION_VERT
+	// 
+	// see also No documentation available
 	//
-	// Flip vertically
 	VideoOrientationVert VideoOrientationMethod = 5
 	// VideoOrientationUlLr wraps GST_VIDEO_ORIENTATION_UL_LR
+	// 
+	// see also No documentation available
 	//
-	// Rotate counter-clockwise 90 degrees and flip vertically
 	VideoOrientationUlLr VideoOrientationMethod = 6
 	// VideoOrientationUrLl wraps GST_VIDEO_ORIENTATION_UR_LL
+	// 
+	// see also No documentation available
 	//
-	// Rotate clockwise 90 degrees and flip vertically
 	VideoOrientationUrLl VideoOrientationMethod = 7
 	// VideoOrientationAuto wraps GST_VIDEO_ORIENTATION_AUTO
+	// 
+	// see also No documentation available
 	//
-	// Select flip method based on image-orientation tag
 	VideoOrientationAuto VideoOrientationMethod = 8
 	// VideoOrientationCustom wraps GST_VIDEO_ORIENTATION_CUSTOM
+	// 
+	// see also No documentation available
 	//
-	// Current status depends on plugin internal setup
 	VideoOrientationCustom VideoOrientationMethod = 9
 )
 
@@ -3638,23 +3584,26 @@ func (e VideoOrientationMethod) String() string {
 }
 
 // VideoPrimariesMode wraps GstVideoPrimariesMode
+// 
+// see also No documentation available
 //
-// Different primaries conversion modes
 type VideoPrimariesMode C.int
 
 const (
 	// VideoPrimariesModeNone wraps GST_VIDEO_PRIMARIES_MODE_NONE
+	// 
+	// see also No documentation available
 	//
-	// disable conversion between primaries
 	VideoPrimariesModeNone VideoPrimariesMode = 0
 	// VideoPrimariesModeMergeOnly wraps GST_VIDEO_PRIMARIES_MODE_MERGE_ONLY
+	// 
+	// see also No documentation available
 	//
-	// do conversion between primaries only
-	//   when it can be merged with color matrix conversion.
 	VideoPrimariesModeMergeOnly VideoPrimariesMode = 1
 	// VideoPrimariesModeFast wraps GST_VIDEO_PRIMARIES_MODE_FAST
+	// 
+	// see also No documentation available
 	//
-	// fast conversion between primaries
 	VideoPrimariesModeFast VideoPrimariesMode = 2
 )
 
@@ -3682,32 +3631,36 @@ func (e VideoPrimariesMode) String() string {
 }
 
 // VideoResamplerMethod wraps GstVideoResamplerMethod
+// 
+// see also No documentation available
 //
-// Different subsampling and upsampling methods
 type VideoResamplerMethod C.int
 
 const (
 	// VideoResamplerMethodNearest wraps GST_VIDEO_RESAMPLER_METHOD_NEAREST
+	// 
+	// see also No documentation available
 	//
-	// Duplicates the samples when
-	//    upsampling and drops when downsampling
 	VideoResamplerMethodNearest VideoResamplerMethod = 0
 	// VideoResamplerMethodLinear wraps GST_VIDEO_RESAMPLER_METHOD_LINEAR
+	// 
+	// see also No documentation available
 	//
-	// Uses linear interpolation to reconstruct
-	//    missing samples and averaging to downsample
 	VideoResamplerMethodLinear VideoResamplerMethod = 1
 	// VideoResamplerMethodCubic wraps GST_VIDEO_RESAMPLER_METHOD_CUBIC
+	// 
+	// see also No documentation available
 	//
-	// Uses cubic interpolation
 	VideoResamplerMethodCubic VideoResamplerMethod = 2
 	// VideoResamplerMethodSinc wraps GST_VIDEO_RESAMPLER_METHOD_SINC
+	// 
+	// see also No documentation available
 	//
-	// Uses sinc interpolation
 	VideoResamplerMethodSinc VideoResamplerMethod = 3
 	// VideoResamplerMethodLanczos wraps GST_VIDEO_RESAMPLER_METHOD_LANCZOS
+	// 
+	// see also No documentation available
 	//
-	// Uses lanczos interpolation
 	VideoResamplerMethodLanczos VideoResamplerMethod = 4
 )
 
@@ -3737,25 +3690,26 @@ func (e VideoResamplerMethod) String() string {
 }
 
 // VideoTileMode wraps GstVideoTileMode
+// 
+// see also No documentation available
 //
-// Enum value describing the available tiling modes.
 type VideoTileMode C.int
 
 const (
 	// VideoTileModeUnknown wraps GST_VIDEO_TILE_MODE_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// Unknown or unset tile mode
 	VideoTileModeUnknown VideoTileMode = 0
 	// VideoTileModeZflipz2x2 wraps GST_VIDEO_TILE_MODE_ZFLIPZ_2X2
+	// 
+	// see also No documentation available
 	//
-	// Every four adjacent blocks - two
-	//    horizontally and two vertically are grouped together and are located
-	//    in memory in Z or flipped Z order. In case of odd rows, the last row
-	//    of blocks is arranged in linear order.
 	VideoTileModeZflipz2x2 VideoTileMode = 65536
 	// VideoTileModeLinear wraps GST_VIDEO_TILE_MODE_LINEAR
+	// 
+	// see also No documentation available
 	//
-	// Tiles are in row order.
 	VideoTileModeLinear VideoTileMode = 131072
 )
 
@@ -3783,16 +3737,16 @@ func (e VideoTileMode) String() string {
 }
 
 // VideoTileType wraps GstVideoTileType
+// 
+// see also No documentation available
 //
-// Enum value describing the most common tiling types.
 type VideoTileType C.int
 
 const (
 	// VideoTileTypeIndexed wraps GST_VIDEO_TILE_TYPE_INDEXED
+	// 
+	// see also No documentation available
 	//
-	// Tiles are indexed. Use
-	//   gst_video_tile_get_index () to retrieve the tile at the requested
-	//   coordinates.
 	VideoTileTypeIndexed VideoTileType = 0
 )
 
@@ -3818,94 +3772,96 @@ func (e VideoTileType) String() string {
 }
 
 // VideoTransferFunction wraps GstVideoTransferFunction
+// 
+// see also No documentation available
 //
-// The video transfer function defines the formula for converting between
-// non-linear RGB (R'G'B') and linear RGB
 type VideoTransferFunction C.int
 
 const (
 	// VideoTransferUnknown wraps GST_VIDEO_TRANSFER_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// unknown transfer function
 	VideoTransferUnknown VideoTransferFunction = 0
 	// VideoTransferGamma10 wraps GST_VIDEO_TRANSFER_GAMMA10
+	// 
+	// see also No documentation available
 	//
-	// linear RGB, gamma 1.0 curve
 	VideoTransferGamma10 VideoTransferFunction = 1
 	// VideoTransferGamma18 wraps GST_VIDEO_TRANSFER_GAMMA18
+	// 
+	// see also No documentation available
 	//
-	// Gamma 1.8 curve
 	VideoTransferGamma18 VideoTransferFunction = 2
 	// VideoTransferGamma20 wraps GST_VIDEO_TRANSFER_GAMMA20
+	// 
+	// see also No documentation available
 	//
-	// Gamma 2.0 curve
 	VideoTransferGamma20 VideoTransferFunction = 3
 	// VideoTransferGamma22 wraps GST_VIDEO_TRANSFER_GAMMA22
+	// 
+	// see also No documentation available
 	//
-	// Gamma 2.2 curve
 	VideoTransferGamma22 VideoTransferFunction = 4
 	// VideoTransferBt709 wraps GST_VIDEO_TRANSFER_BT709
+	// 
+	// see also No documentation available
 	//
-	// Gamma 2.2 curve with a linear segment in the lower
-	//                           range, also ITU-R BT470M / ITU-R BT1700 625 PAL &amp;
-	//                           SECAM / ITU-R BT1361
 	VideoTransferBt709 VideoTransferFunction = 5
 	// VideoTransferSmpte240m wraps GST_VIDEO_TRANSFER_SMPTE240M
+	// 
+	// see also No documentation available
 	//
-	// Gamma 2.2 curve with a linear segment in the
-	//                               lower range
 	VideoTransferSmpte240m VideoTransferFunction = 6
 	// VideoTransferSrgb wraps GST_VIDEO_TRANSFER_SRGB
+	// 
+	// see also No documentation available
 	//
-	// Gamma 2.4 curve with a linear segment in the lower
-	//                          range. IEC 61966-2-1 (sRGB or sYCC)
 	VideoTransferSrgb VideoTransferFunction = 7
 	// VideoTransferGamma28 wraps GST_VIDEO_TRANSFER_GAMMA28
+	// 
+	// see also No documentation available
 	//
-	// Gamma 2.8 curve, also ITU-R BT470BG
 	VideoTransferGamma28 VideoTransferFunction = 8
 	// VideoTransferLog100 wraps GST_VIDEO_TRANSFER_LOG100
+	// 
+	// see also No documentation available
 	//
-	// Logarithmic transfer characteristic
-	//                             100:1 range
 	VideoTransferLog100 VideoTransferFunction = 9
 	// VideoTransferLog316 wraps GST_VIDEO_TRANSFER_LOG316
+	// 
+	// see also No documentation available
 	//
-	// Logarithmic transfer characteristic
-	//                             316.22777:1 range (100 * sqrt(10) : 1)
 	VideoTransferLog316 VideoTransferFunction = 10
 	// VideoTransferBt202012 wraps GST_VIDEO_TRANSFER_BT2020_12
+	// 
+	// see also No documentation available
 	//
-	// Gamma 2.2 curve with a linear segment in the lower
-	//                                range. Used for BT.2020 with 12 bits per
-	//                                component. Since: 1.6
 	VideoTransferBt202012 VideoTransferFunction = 11
 	// VideoTransferAdobergb wraps GST_VIDEO_TRANSFER_ADOBERGB
+	// 
+	// see also No documentation available
 	//
-	// Gamma 2.19921875. Since: 1.8
 	VideoTransferAdobergb VideoTransferFunction = 12
 	// VideoTransferBt202010 wraps GST_VIDEO_TRANSFER_BT2020_10
+	// 
+	// see also No documentation available
 	//
-	// Rec. ITU-R BT.2020-2 with 10 bits per component.
-	//                                (functionally the same as the values
-	//                                GST_VIDEO_TRANSFER_BT709 and GST_VIDEO_TRANSFER_BT601).
-	//                                Since: 1.18
 	VideoTransferBt202010 VideoTransferFunction = 13
 	// VideoTransferSmpte2084 wraps GST_VIDEO_TRANSFER_SMPTE2084
+	// 
+	// see also No documentation available
 	//
-	// SMPTE ST 2084 for 10, 12, 14, and 16-bit systems.
-	//                                Known as perceptual quantization (PQ)
-	//                                Since: 1.18
 	VideoTransferSmpte2084 VideoTransferFunction = 14
 	// VideoTransferAribStdB67 wraps GST_VIDEO_TRANSFER_ARIB_STD_B67
+	// 
+	// see also No documentation available
 	//
-	// Association of Radio Industries and Businesses (ARIB)
-	//                                   STD-B67 and Rec. ITU-R BT.2100-1 hybrid loggamma (HLG) system
-	//                                   Since: 1.18
 	VideoTransferAribStdB67 VideoTransferFunction = 15
 	// VideoTransferBt601 wraps GST_VIDEO_TRANSFER_BT601
+	// 
+	// see also No documentation available
 	//
-	// also known as SMPTE170M / ITU-R BT1358 525 or 625 / ITU-R BT1700 NTSC
 	VideoTransferBt601 VideoTransferFunction = 16
 )
 
@@ -3948,27 +3904,8 @@ func (e VideoTransferFunction) String() string {
 
 // VideoTransferFunctionDecode wraps gst_video_transfer_function_decode
 // 
-// The function takes the following parameters:
-// 
-// 	- fn VideoTransferFunction: a #GstVideoTransferFunction 
-// 	- val float64: a value 
-// 
-// The function returns the following values:
-// 
-// 	- goret float64 
+// see also No documentation available
 //
-// Convert @val to its gamma decoded value. This is the inverse operation of
-// gst_video_color_transfer_encode().
-// 
-// For a non-linear value L' in the range [0..1], conversion to the linear
-// L is in general performed with a power function like:
-// 
-// |[
-//    L = L' ^ gamma
-// ]|
-// 
-// Depending on @func, different formulas might be applied. Some formulas
-// encode a linear segment in the lower range.
 func VideoTransferFunctionDecode(fn VideoTransferFunction, val float64) float64 {
 	var carg1 C.GstVideoTransferFunction // in, none, casted
 	var carg2 C.gdouble                  // in, none, casted
@@ -3990,26 +3927,8 @@ func VideoTransferFunctionDecode(fn VideoTransferFunction, val float64) float64 
 
 // VideoTransferFunctionEncode wraps gst_video_transfer_function_encode
 // 
-// The function takes the following parameters:
-// 
-// 	- fn VideoTransferFunction: a #GstVideoTransferFunction 
-// 	- val float64: a value 
-// 
-// The function returns the following values:
-// 
-// 	- goret float64 
+// see also No documentation available
 //
-// Convert @val to its gamma encoded value.
-// 
-// For a linear value L in the range [0..1], conversion to the non-linear
-// (gamma encoded) L' is in general performed with a power function like:
-// 
-// |[
-//    L' = L ^ (1 / gamma)
-// ]|
-// 
-// Depending on @func, different formulas might be applied. Some formulas
-// encode a linear segment in the lower range.
 func VideoTransferFunctionEncode(fn VideoTransferFunction, val float64) float64 {
 	var carg1 C.GstVideoTransferFunction // in, none, casted
 	var carg2 C.gdouble                  // in, none, casted
@@ -4031,19 +3950,8 @@ func VideoTransferFunctionEncode(fn VideoTransferFunction, val float64) float64 
 
 // VideoTransferFunctionFromIso wraps gst_video_transfer_function_from_iso
 // 
-// The function takes the following parameters:
-// 
-// 	- value uint: a ITU-T H.273 transfer characteristics value 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoTransferFunction 
+// see also No documentation available
 //
-// Converts the @value to the #GstVideoTransferFunction
-// The transfer characteristics (TransferCharacteristics) value is
-// defined by "ISO/IEC 23001-8 Section 7.2 Table 3"
-// and "ITU-T H.273 Table 3".
-// "H.264 Table E-4" and "H.265 Table E.4" share the identical values.
 func VideoTransferFunctionFromIso(value uint) VideoTransferFunction {
 	var carg1 C.guint                    // in, none, casted
 	var cret  C.GstVideoTransferFunction // return, none, casted
@@ -4062,22 +3970,8 @@ func VideoTransferFunctionFromIso(value uint) VideoTransferFunction {
 
 // VideoTransferFunctionIsEquivalent wraps gst_video_transfer_function_is_equivalent
 // 
-// The function takes the following parameters:
-// 
-// 	- fromFunc VideoTransferFunction: #GstVideoTransferFunction to convert from 
-// 	- fromBpp uint: bits per pixel to convert from 
-// 	- toFunc VideoTransferFunction: #GstVideoTransferFunction to convert into 
-// 	- toBpp uint: bits per pixel to convert into 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Returns whether @from_func and @to_func are equivalent. There are cases
-// (e.g. BT601, BT709, and BT2020_10) where several functions are functionally
-// identical. In these cases, when doing conversion, we should consider them
-// as equivalent. Also, BT2020_12 is the same as the aforementioned three for
-// less than 12 bits per pixel.
 func VideoTransferFunctionIsEquivalent(fromFunc VideoTransferFunction, fromBpp uint, toFunc VideoTransferFunction, toBpp uint) bool {
 	var carg1 C.GstVideoTransferFunction // in, none, casted
 	var carg2 C.guint                    // in, none, casted
@@ -4107,18 +4001,8 @@ func VideoTransferFunctionIsEquivalent(fromFunc VideoTransferFunction, fromBpp u
 
 // VideoTransferFunctionToIso wraps gst_video_transfer_function_to_iso
 // 
-// The function takes the following parameters:
-// 
-// 	- fn VideoTransferFunction: a #GstVideoTransferFunction 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Converts #GstVideoTransferFunction to the "transfer characteristics"
-// (TransferCharacteristics) value defined by "ISO/IEC 23001-8 Section 7.2 Table 3"
-// and "ITU-T H.273 Table 3".
-// "H.264 Table E-4" and "H.265 Table E.4" share the identical values.
 func VideoTransferFunctionToIso(fn VideoTransferFunction) uint {
 	var carg1 C.GstVideoTransferFunction // in, none, casted
 	var cret  C.guint                    // return, none, casted
@@ -4136,22 +4020,26 @@ func VideoTransferFunctionToIso(fn VideoTransferFunction) uint {
 }
 
 // VideoVBIParserResult wraps GstVideoVBIParserResult
+// 
+// see also No documentation available
 //
-// Return values for #GstVideoVBIParser
 type VideoVBIParserResult C.int
 
 const (
 	// VideoVbiParserResultDone wraps GST_VIDEO_VBI_PARSER_RESULT_DONE
+	// 
+	// see also No documentation available
 	//
-	// No line were provided, or no more Ancillary data was found.
 	VideoVbiParserResultDone VideoVBIParserResult = 0
 	// VideoVbiParserResultOK wraps GST_VIDEO_VBI_PARSER_RESULT_OK
+	// 
+	// see also No documentation available
 	//
-	// A #GstVideoAncillary was found.
 	VideoVbiParserResultOK VideoVBIParserResult = 1
 	// VideoVbiParserResultError wraps GST_VIDEO_VBI_PARSER_RESULT_ERROR
+	// 
+	// see also No documentation available
 	//
-	// An error occurred
 	VideoVbiParserResultError VideoVBIParserResult = 2
 )
 
@@ -4179,82 +4067,99 @@ func (e VideoVBIParserResult) String() string {
 }
 
 // NavigationModifierType wraps GstNavigationModifierType
-//
-// Flags to indicate the state of modifier keys and mouse buttons
-// in events.
 // 
-// Typical modifier keys are Shift, Control, Meta, Super, Hyper, Alt, Compose,
-// Apple, CapsLock or ShiftLock.
+// see also No documentation available
+//
 type NavigationModifierType C.gint
 
 const (
 	// NavigationModifierNone wraps GST_NAVIGATION_MODIFIER_NONE
+	// 
+	// see also No documentation available
 	NavigationModifierNone NavigationModifierType = 0
 	// NavigationModifierShiftMask wraps GST_NAVIGATION_MODIFIER_SHIFT_MASK
+	// 
+	// see also No documentation available
 	//
-	// the Shift key.
 	NavigationModifierShiftMask NavigationModifierType = 1
 	// NavigationModifierLockMask wraps GST_NAVIGATION_MODIFIER_LOCK_MASK
+	// 
+	// see also No documentation available
 	NavigationModifierLockMask NavigationModifierType = 2
 	// NavigationModifierControlMask wraps GST_NAVIGATION_MODIFIER_CONTROL_MASK
+	// 
+	// see also No documentation available
 	//
-	// the Control key.
 	NavigationModifierControlMask NavigationModifierType = 4
 	// NavigationModifierMod1Mask wraps GST_NAVIGATION_MODIFIER_MOD1_MASK
+	// 
+	// see also No documentation available
 	//
-	// the third modifier key
 	NavigationModifierMod1Mask NavigationModifierType = 8
 	// NavigationModifierMod2Mask wraps GST_NAVIGATION_MODIFIER_MOD2_MASK
+	// 
+	// see also No documentation available
 	//
-	// the fourth modifier key
 	NavigationModifierMod2Mask NavigationModifierType = 16
 	// NavigationModifierMod3Mask wraps GST_NAVIGATION_MODIFIER_MOD3_MASK
+	// 
+	// see also No documentation available
 	//
-	// the fifth modifier key
 	NavigationModifierMod3Mask NavigationModifierType = 32
 	// NavigationModifierMod4Mask wraps GST_NAVIGATION_MODIFIER_MOD4_MASK
+	// 
+	// see also No documentation available
 	//
-	// the sixth modifier key
 	NavigationModifierMod4Mask NavigationModifierType = 64
 	// NavigationModifierMod5Mask wraps GST_NAVIGATION_MODIFIER_MOD5_MASK
+	// 
+	// see also No documentation available
 	//
-	// the seventh modifier key
 	NavigationModifierMod5Mask NavigationModifierType = 128
 	// NavigationModifierButton1Mask wraps GST_NAVIGATION_MODIFIER_BUTTON1_MASK
+	// 
+	// see also No documentation available
 	//
-	// the first mouse button (usually the left button).
 	NavigationModifierButton1Mask NavigationModifierType = 256
 	// NavigationModifierButton2Mask wraps GST_NAVIGATION_MODIFIER_BUTTON2_MASK
+	// 
+	// see also No documentation available
 	//
-	// the second mouse button (usually the right button).
 	NavigationModifierButton2Mask NavigationModifierType = 512
 	// NavigationModifierButton3Mask wraps GST_NAVIGATION_MODIFIER_BUTTON3_MASK
+	// 
+	// see also No documentation available
 	//
-	// the third mouse button (usually the mouse wheel button or middle button).
 	NavigationModifierButton3Mask NavigationModifierType = 1024
 	// NavigationModifierButton4Mask wraps GST_NAVIGATION_MODIFIER_BUTTON4_MASK
+	// 
+	// see also No documentation available
 	//
-	// the fourth mouse button (typically the "Back" button).
 	NavigationModifierButton4Mask NavigationModifierType = 2048
 	// NavigationModifierButton5Mask wraps GST_NAVIGATION_MODIFIER_BUTTON5_MASK
+	// 
+	// see also No documentation available
 	//
-	// the fifth mouse button (typically the "forward" button).
 	NavigationModifierButton5Mask NavigationModifierType = 4096
 	// NavigationModifierSuperMask wraps GST_NAVIGATION_MODIFIER_SUPER_MASK
+	// 
+	// see also No documentation available
 	//
-	// the Super modifier
 	NavigationModifierSuperMask NavigationModifierType = 67108864
 	// NavigationModifierHyperMask wraps GST_NAVIGATION_MODIFIER_HYPER_MASK
+	// 
+	// see also No documentation available
 	//
-	// the Hyper modifier
 	NavigationModifierHyperMask NavigationModifierType = 134217728
 	// NavigationModifierMetaMask wraps GST_NAVIGATION_MODIFIER_META_MASK
+	// 
+	// see also No documentation available
 	//
-	// the Meta modifier
 	NavigationModifierMetaMask NavigationModifierType = 268435456
 	// NavigationModifierMask wraps GST_NAVIGATION_MODIFIER_MASK
+	// 
+	// see also No documentation available
 	//
-	// A mask covering all entries in #GdkModifierType.
 	NavigationModifierMask NavigationModifierType = 469770239
 )
 
@@ -4340,76 +4245,61 @@ func (f NavigationModifierType) String() string {
 }
 
 // VideoBufferFlags wraps GstVideoBufferFlags
-//
-// Additional video buffer flags. These flags can potentially be used on any
-// buffers carrying closed caption data, or video data - even encoded data.
 // 
-// Note that these are only valid for #GstCaps of type: video/... and caption/...
-// They can conflict with other extended buffer flags.
+// see also No documentation available
+//
 type VideoBufferFlags C.gint
 
 const (
 	// VideoBufferFlagInterlaced wraps GST_VIDEO_BUFFER_FLAG_INTERLACED
+	// 
+	// see also No documentation available
 	//
-	// If the #GstBuffer is interlaced. In mixed
-	//                                     interlace-mode, this flags specifies if the frame is
-	//                                     interlaced or progressive.
 	VideoBufferFlagInterlaced VideoBufferFlags = 1048576
 	// VideoBufferFlagTff wraps GST_VIDEO_BUFFER_FLAG_TFF
+	// 
+	// see also No documentation available
 	//
-	// If the #GstBuffer is interlaced, then the first field
-	//                                     in the video frame is the top field.  If unset, the
-	//                                     bottom field is first.
 	VideoBufferFlagTff VideoBufferFlags = 2097152
 	// VideoBufferFlagRff wraps GST_VIDEO_BUFFER_FLAG_RFF
+	// 
+	// see also No documentation available
 	//
-	// If the #GstBuffer is interlaced, then the first field
-	//                                     (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF flag setting)
-	//                                     is repeated.
 	VideoBufferFlagRff VideoBufferFlags = 4194304
 	// VideoBufferFlagOnefield wraps GST_VIDEO_BUFFER_FLAG_ONEFIELD
+	// 
+	// see also No documentation available
 	//
-	// If the #GstBuffer is interlaced, then only the
-	//                                     first field (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF
-	//                                     flag setting) is to be displayed (Since: 1.16).
 	VideoBufferFlagOnefield VideoBufferFlags = 8388608
 	// VideoBufferFlagMultipleView wraps GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW
+	// 
+	// see also No documentation available
 	//
-	// The #GstBuffer contains one or more specific views,
-	//                                     such as left or right eye view. This flags is set on
-	//                                     any buffer that contains non-mono content - even for
-	//                                     streams that contain only a single viewpoint. In mixed
-	//                                     mono / non-mono streams, the absence of the flag marks
-	//                                     mono buffers.
 	VideoBufferFlagMultipleView VideoBufferFlags = 16777216
 	// VideoBufferFlagFirstInBundle wraps GST_VIDEO_BUFFER_FLAG_FIRST_IN_BUNDLE
+	// 
+	// see also No documentation available
 	//
-	// When conveying stereo/multiview content with
-	//                                     frame-by-frame methods, this flag marks the first buffer
-	//                                      in a bundle of frames that belong together.
 	VideoBufferFlagFirstInBundle VideoBufferFlags = 33554432
 	// VideoBufferFlagTopField wraps GST_VIDEO_BUFFER_FLAG_TOP_FIELD
+	// 
+	// see also No documentation available
 	//
-	// The video frame has the top field only. This is the
-	//                                     same as GST_VIDEO_BUFFER_FLAG_TFF |
-	//                                     GST_VIDEO_BUFFER_FLAG_ONEFIELD (Since: 1.16).
-	//                                     Use GST_VIDEO_BUFFER_IS_TOP_FIELD() to check for this flag.
 	VideoBufferFlagTopField VideoBufferFlags = 10485760
 	// VideoBufferFlagBottomField wraps GST_VIDEO_BUFFER_FLAG_BOTTOM_FIELD
+	// 
+	// see also No documentation available
 	//
-	// The video frame has the bottom field only. This is
-	//                                     the same as GST_VIDEO_BUFFER_FLAG_ONEFIELD
-	//                                     (GST_VIDEO_BUFFER_FLAG_TFF flag unset) (Since: 1.16).
-	//                                     Use GST_VIDEO_BUFFER_IS_BOTTOM_FIELD() to check for this flag.
 	VideoBufferFlagBottomField VideoBufferFlags = 8388608
 	// VideoBufferFlagMarker wraps GST_VIDEO_BUFFER_FLAG_MARKER
+	// 
+	// see also No documentation available
 	//
-	// The #GstBuffer contains the end of a video field or frame
-	//                                     boundary such as the last subframe or packet (Since: 1.18).
 	VideoBufferFlagMarker VideoBufferFlags = 512
 	// VideoBufferFlagLast wraps GST_VIDEO_BUFFER_FLAG_LAST
+	// 
+	// see also No documentation available
 	//
-	// Offset to define more flags
 	VideoBufferFlagLast VideoBufferFlags = 268435456
 )
 
@@ -4471,18 +4361,21 @@ func (f VideoBufferFlags) String() string {
 }
 
 // VideoChromaFlags wraps GstVideoChromaFlags
+// 
+// see also No documentation available
 //
-// Extra flags that influence the result from gst_video_chroma_resample_new().
 type VideoChromaFlags C.gint
 
 const (
 	// VideoChromaFlagNone wraps GST_VIDEO_CHROMA_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flags
 	VideoChromaFlagNone VideoChromaFlags = 0
 	// VideoChromaFlagInterlaced wraps GST_VIDEO_CHROMA_FLAG_INTERLACED
+	// 
+	// see also No documentation available
 	//
-	// the input is interlaced
 	VideoChromaFlagInterlaced VideoChromaFlags = 1
 )
 
@@ -4520,46 +4413,56 @@ func (f VideoChromaFlags) String() string {
 }
 
 // VideoChromaSite wraps GstVideoChromaSite
+// 
+// see also No documentation available
 //
-// Various Chroma sitings.
 type VideoChromaSite C.gint
 
 const (
 	// VideoChromaSiteUnknown wraps GST_VIDEO_CHROMA_SITE_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// unknown cositing
 	VideoChromaSiteUnknown VideoChromaSite = 0
 	// VideoChromaSiteNone wraps GST_VIDEO_CHROMA_SITE_NONE
+	// 
+	// see also No documentation available
 	//
-	// no cositing
 	VideoChromaSiteNone VideoChromaSite = 1
 	// VideoChromaSiteHCosited wraps GST_VIDEO_CHROMA_SITE_H_COSITED
+	// 
+	// see also No documentation available
 	//
-	// chroma is horizontally cosited
 	VideoChromaSiteHCosited VideoChromaSite = 2
 	// VideoChromaSiteVCosited wraps GST_VIDEO_CHROMA_SITE_V_COSITED
+	// 
+	// see also No documentation available
 	//
-	// chroma is vertically cosited
 	VideoChromaSiteVCosited VideoChromaSite = 4
 	// VideoChromaSiteAltLine wraps GST_VIDEO_CHROMA_SITE_ALT_LINE
+	// 
+	// see also No documentation available
 	//
-	// chroma samples are sited on alternate lines
 	VideoChromaSiteAltLine VideoChromaSite = 8
 	// VideoChromaSiteCosited wraps GST_VIDEO_CHROMA_SITE_COSITED
+	// 
+	// see also No documentation available
 	//
-	// chroma samples cosited with luma samples
 	VideoChromaSiteCosited VideoChromaSite = 6
 	// VideoChromaSiteJpeg wraps GST_VIDEO_CHROMA_SITE_JPEG
+	// 
+	// see also No documentation available
 	//
-	// jpeg style cositing, also for mpeg1 and mjpeg
 	VideoChromaSiteJpeg VideoChromaSite = 1
 	// VideoChromaSiteMpeg2 wraps GST_VIDEO_CHROMA_SITE_MPEG2
+	// 
+	// see also No documentation available
 	//
-	// mpeg2 style cositing
 	VideoChromaSiteMpeg2 VideoChromaSite = 2
 	// VideoChromaSiteDv wraps GST_VIDEO_CHROMA_SITE_DV
+	// 
+	// see also No documentation available
 	//
-	// DV style cositing
 	VideoChromaSiteDv VideoChromaSite = 14
 )
 
@@ -4619,15 +4522,8 @@ func (f VideoChromaSite) String() string {
 
 // VideoChromaSiteFromString wraps gst_video_chroma_site_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- s string: a chromasite string 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoChromaSite 
+// see also No documentation available
 //
-// Convert @s to a #GstVideoChromaSite
 func VideoChromaSiteFromString(s string) VideoChromaSite {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstVideoChromaSite // return, none, casted
@@ -4647,15 +4543,8 @@ func VideoChromaSiteFromString(s string) VideoChromaSite {
 
 // VideoChromaSiteString wraps gst_video_chroma_site_to_string
 // 
-// The function takes the following parameters:
-// 
-// 	- site VideoChromaSite: a #GstVideoChromaSite 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Converts @site to its string representation.
 func VideoChromaSiteString(site VideoChromaSite) string {
 	var carg1 C.GstVideoChromaSite // in, none, casted
 	var cret  *C.gchar             // return, full, string, nullable-string
@@ -4676,30 +4565,36 @@ func VideoChromaSiteString(site VideoChromaSite) string {
 }
 
 // VideoCodecFrameFlags wraps GstVideoCodecFrameFlags
+// 
+// see also No documentation available
 //
-// Flags for #GstVideoCodecFrame
 type VideoCodecFrameFlags C.gint
 
 const (
 	// VideoCodecFrameFlagDecodeOnly wraps GST_VIDEO_CODEC_FRAME_FLAG_DECODE_ONLY
+	// 
+	// see also No documentation available
 	//
-	// is the frame only meant to be decoded
 	VideoCodecFrameFlagDecodeOnly VideoCodecFrameFlags = 1
 	// VideoCodecFrameFlagSyncPoint wraps GST_VIDEO_CODEC_FRAME_FLAG_SYNC_POINT
+	// 
+	// see also No documentation available
 	//
-	// is the frame a synchronization point (keyframe)
 	VideoCodecFrameFlagSyncPoint VideoCodecFrameFlags = 2
 	// VideoCodecFrameFlagForceKeyframe wraps GST_VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME
+	// 
+	// see also No documentation available
 	//
-	// should the output frame be made a keyframe
 	VideoCodecFrameFlagForceKeyframe VideoCodecFrameFlags = 4
 	// VideoCodecFrameFlagForceKeyframeHeaders wraps GST_VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME_HEADERS
+	// 
+	// see also No documentation available
 	//
-	// should the encoder output stream headers
 	VideoCodecFrameFlagForceKeyframeHeaders VideoCodecFrameFlags = 8
 	// VideoCodecFrameFlagCorrupted wraps GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
+	// 
+	// see also No documentation available
 	//
-	// The buffer data is corrupted.
 	VideoCodecFrameFlagCorrupted VideoCodecFrameFlags = 16
 )
 
@@ -4746,21 +4641,21 @@ func (f VideoCodecFrameFlags) String() string {
 }
 
 // VideoDecoderRequestSyncPointFlags wraps GstVideoDecoderRequestSyncPointFlags
+// 
+// see also No documentation available
 //
-// Flags to be used in combination with gst_video_decoder_request_sync_point().
-// See the function documentation for more details.
 type VideoDecoderRequestSyncPointFlags C.gint
 
 const (
 	// VideoDecoderRequestSyncPointDiscardInput wraps GST_VIDEO_DECODER_REQUEST_SYNC_POINT_DISCARD_INPUT
+	// 
+	// see also No documentation available
 	//
-	// discard all following
-	//     input until the next sync point.
 	VideoDecoderRequestSyncPointDiscardInput VideoDecoderRequestSyncPointFlags = 1
 	// VideoDecoderRequestSyncPointCorruptOutput wraps GST_VIDEO_DECODER_REQUEST_SYNC_POINT_CORRUPT_OUTPUT
+	// 
+	// see also No documentation available
 	//
-	// discard all following
-	//     output until the next sync point.
 	VideoDecoderRequestSyncPointCorruptOutput VideoDecoderRequestSyncPointFlags = 2
 )
 
@@ -4798,22 +4693,26 @@ func (f VideoDecoderRequestSyncPointFlags) String() string {
 }
 
 // VideoDitherFlags wraps GstVideoDitherFlags
+// 
+// see also No documentation available
 //
-// Extra flags that influence the result from gst_video_chroma_resample_new().
 type VideoDitherFlags C.gint
 
 const (
 	// VideoDitherFlagNone wraps GST_VIDEO_DITHER_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flags
 	VideoDitherFlagNone VideoDitherFlags = 0
 	// VideoDitherFlagInterlaced wraps GST_VIDEO_DITHER_FLAG_INTERLACED
+	// 
+	// see also No documentation available
 	//
-	// the input is interlaced
 	VideoDitherFlagInterlaced VideoDitherFlags = 1
 	// VideoDitherFlagQuantize wraps GST_VIDEO_DITHER_FLAG_QUANTIZE
+	// 
+	// see also No documentation available
 	//
-	// quantize values in addition to adding dither.
 	VideoDitherFlagQuantize VideoDitherFlags = 2
 )
 
@@ -4854,24 +4753,26 @@ func (f VideoDitherFlags) String() string {
 }
 
 // VideoFlags wraps GstVideoFlags
+// 
+// see also No documentation available
 //
-// Extra video flags
 type VideoFlags C.gint
 
 const (
 	// VideoFlagNone wraps GST_VIDEO_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flags
 	VideoFlagNone VideoFlags = 0
 	// VideoFlagVariableFps wraps GST_VIDEO_FLAG_VARIABLE_FPS
+	// 
+	// see also No documentation available
 	//
-	// a variable fps is selected, fps_n and fps_d
-	//     denote the maximum fps of the video
 	VideoFlagVariableFps VideoFlags = 1
 	// VideoFlagPremultipliedAlpha wraps GST_VIDEO_FLAG_PREMULTIPLIED_ALPHA
+	// 
+	// see also No documentation available
 	//
-	// Each color has been scaled by the alpha
-	//     value.
 	VideoFlagPremultipliedAlpha VideoFlags = 2
 )
 
@@ -4912,59 +4813,61 @@ func (f VideoFlags) String() string {
 }
 
 // VideoFormatFlags wraps GstVideoFormatFlags
+// 
+// see also No documentation available
 //
-// The different video flags that a format info can have.
 type VideoFormatFlags C.gint
 
 const (
 	// VideoFormatFlagYuv wraps GST_VIDEO_FORMAT_FLAG_YUV
+	// 
+	// see also No documentation available
 	//
-	// The video format is YUV, components are numbered
-	//   0=Y, 1=U, 2=V.
 	VideoFormatFlagYuv VideoFormatFlags = 1
 	// VideoFormatFlagRgb wraps GST_VIDEO_FORMAT_FLAG_RGB
+	// 
+	// see also No documentation available
 	//
-	// The video format is RGB, components are numbered
-	//   0=R, 1=G, 2=B.
 	VideoFormatFlagRgb VideoFormatFlags = 2
 	// VideoFormatFlagGray wraps GST_VIDEO_FORMAT_FLAG_GRAY
+	// 
+	// see also No documentation available
 	//
-	// The video is gray, there is one gray component
-	//   with index 0.
 	VideoFormatFlagGray VideoFormatFlags = 4
 	// VideoFormatFlagAlpha wraps GST_VIDEO_FORMAT_FLAG_ALPHA
+	// 
+	// see also No documentation available
 	//
-	// The video format has an alpha components with
-	//   the number 3.
 	VideoFormatFlagAlpha VideoFormatFlags = 8
 	// VideoFormatFlagLe wraps GST_VIDEO_FORMAT_FLAG_LE
+	// 
+	// see also No documentation available
 	//
-	// The video format has data stored in little
-	//   endianness.
 	VideoFormatFlagLe VideoFormatFlags = 16
 	// VideoFormatFlagPalette wraps GST_VIDEO_FORMAT_FLAG_PALETTE
+	// 
+	// see also No documentation available
 	//
-	// The video format has a palette. The palette
-	//   is stored in the second plane and indexes are stored in the first plane.
 	VideoFormatFlagPalette VideoFormatFlags = 32
 	// VideoFormatFlagComplex wraps GST_VIDEO_FORMAT_FLAG_COMPLEX
+	// 
+	// see also No documentation available
 	//
-	// The video format has a complex layout that
-	//   can't be described with the usual information in the #GstVideoFormatInfo.
 	VideoFormatFlagComplex VideoFormatFlags = 64
 	// VideoFormatFlagUnpack wraps GST_VIDEO_FORMAT_FLAG_UNPACK
+	// 
+	// see also No documentation available
 	//
-	// This format can be used in a
-	//   #GstVideoFormatUnpack and #GstVideoFormatPack function.
 	VideoFormatFlagUnpack VideoFormatFlags = 128
 	// VideoFormatFlagTiled wraps GST_VIDEO_FORMAT_FLAG_TILED
+	// 
+	// see also No documentation available
 	//
-	// The format is tiled, there is tiling information
-	//   in the last plane.
 	VideoFormatFlagTiled VideoFormatFlags = 256
 	// VideoFormatFlagSubtiles wraps GST_VIDEO_FORMAT_FLAG_SUBTILES
+	// 
+	// see also No documentation available
 	//
-	// The tile size varies per plane according to the subsampling.
 	VideoFormatFlagSubtiles VideoFormatFlags = 512
 )
 
@@ -5026,54 +4929,56 @@ func (f VideoFormatFlags) String() string {
 }
 
 // VideoFrameFlags wraps GstVideoFrameFlags
+// 
+// see also No documentation available
 //
-// Extra video frame flags
 type VideoFrameFlags C.gint
 
 const (
 	// VideoFrameFlagNone wraps GST_VIDEO_FRAME_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flags
 	VideoFrameFlagNone VideoFrameFlags = 0
 	// VideoFrameFlagInterlaced wraps GST_VIDEO_FRAME_FLAG_INTERLACED
+	// 
+	// see also No documentation available
 	//
-	// The video frame is interlaced. In mixed
-	//           interlace-mode, this flag specifies if the frame is interlaced or
-	//           progressive.
 	VideoFrameFlagInterlaced VideoFrameFlags = 1
 	// VideoFrameFlagTff wraps GST_VIDEO_FRAME_FLAG_TFF
+	// 
+	// see also No documentation available
 	//
-	// The video frame has the top field first
 	VideoFrameFlagTff VideoFrameFlags = 2
 	// VideoFrameFlagRff wraps GST_VIDEO_FRAME_FLAG_RFF
+	// 
+	// see also No documentation available
 	//
-	// The video frame has the repeat flag
 	VideoFrameFlagRff VideoFrameFlags = 4
 	// VideoFrameFlagOnefield wraps GST_VIDEO_FRAME_FLAG_ONEFIELD
+	// 
+	// see also No documentation available
 	//
-	// The video frame has one field
 	VideoFrameFlagOnefield VideoFrameFlags = 8
 	// VideoFrameFlagMultipleView wraps GST_VIDEO_FRAME_FLAG_MULTIPLE_VIEW
+	// 
+	// see also No documentation available
 	//
-	// The video contains one or
-	//     more non-mono views
 	VideoFrameFlagMultipleView VideoFrameFlags = 16
 	// VideoFrameFlagFirstInBundle wraps GST_VIDEO_FRAME_FLAG_FIRST_IN_BUNDLE
+	// 
+	// see also No documentation available
 	//
-	// The video frame is the first
-	//     in a set of corresponding views provided as sequential frames.
 	VideoFrameFlagFirstInBundle VideoFrameFlags = 32
 	// VideoFrameFlagTopField wraps GST_VIDEO_FRAME_FLAG_TOP_FIELD
+	// 
+	// see also No documentation available
 	//
-	// The video frame has the top field only. This
-	//     is the same as GST_VIDEO_FRAME_FLAG_TFF | GST_VIDEO_FRAME_FLAG_ONEFIELD
-	//     (Since: 1.16).
 	VideoFrameFlagTopField VideoFrameFlags = 10
 	// VideoFrameFlagBottomField wraps GST_VIDEO_FRAME_FLAG_BOTTOM_FIELD
+	// 
+	// see also No documentation available
 	//
-	// The video frame has the bottom field
-	//     only. This is the same as GST_VIDEO_FRAME_FLAG_ONEFIELD
-	//     (GST_VIDEO_FRAME_FLAG_TFF flag unset) (Since: 1.16).
 	VideoFrameFlagBottomField VideoFrameFlags = 8
 )
 
@@ -5132,21 +5037,21 @@ func (f VideoFrameFlags) String() string {
 }
 
 // VideoFrameMapFlags wraps GstVideoFrameMapFlags
+// 
+// see also No documentation available
 //
-// Additional mapping flags for gst_video_frame_map().
 type VideoFrameMapFlags C.gint
 
 const (
 	// VideoFrameMapFlagNoRef wraps GST_VIDEO_FRAME_MAP_FLAG_NO_REF
+	// 
+	// see also No documentation available
 	//
-	// Don't take another reference of the buffer and store it in
-	//                                    the GstVideoFrame. This makes sure that the buffer stays
-	//                                    writable while the frame is mapped, but requires that the
-	//                                    buffer reference stays valid until the frame is unmapped again.
 	VideoFrameMapFlagNoRef VideoFrameMapFlags = 65536
 	// VideoFrameMapFlagLast wraps GST_VIDEO_FRAME_MAP_FLAG_LAST
+	// 
+	// see also No documentation available
 	//
-	// Offset to define more flags
 	VideoFrameMapFlagLast VideoFrameMapFlags = 16777216
 )
 
@@ -5184,60 +5089,51 @@ func (f VideoFrameMapFlags) String() string {
 }
 
 // VideoMultiviewFlags wraps GstVideoMultiviewFlags
+// 
+// see also No documentation available
 //
-// GstVideoMultiviewFlags are used to indicate extra properties of a
-// stereo/multiview stream beyond the frame layout and buffer mapping
-// that is conveyed in the #GstVideoMultiviewMode.
 type VideoMultiviewFlags C.gint
 
 const (
 	// VideoMultiviewFlagsNone wraps GST_VIDEO_MULTIVIEW_FLAGS_NONE
+	// 
+	// see also No documentation available
 	//
-	// No flags
 	VideoMultiviewFlagsNone VideoMultiviewFlags = 0
 	// VideoMultiviewFlagsRightViewFirst wraps GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_VIEW_FIRST
+	// 
+	// see also No documentation available
 	//
-	// For stereo streams, the
-	//     normal arrangement of left and right views is reversed.
 	VideoMultiviewFlagsRightViewFirst VideoMultiviewFlags = 1
 	// VideoMultiviewFlagsLeftFlipped wraps GST_VIDEO_MULTIVIEW_FLAGS_LEFT_FLIPPED
+	// 
+	// see also No documentation available
 	//
-	// The left view is vertically
-	//     mirrored.
 	VideoMultiviewFlagsLeftFlipped VideoMultiviewFlags = 2
 	// VideoMultiviewFlagsLeftFlopped wraps GST_VIDEO_MULTIVIEW_FLAGS_LEFT_FLOPPED
+	// 
+	// see also No documentation available
 	//
-	// The left view is horizontally
-	//     mirrored.
 	VideoMultiviewFlagsLeftFlopped VideoMultiviewFlags = 4
 	// VideoMultiviewFlagsRightFlipped wraps GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLIPPED
+	// 
+	// see also No documentation available
 	//
-	// The right view is
-	//     vertically mirrored.
 	VideoMultiviewFlagsRightFlipped VideoMultiviewFlags = 8
 	// VideoMultiviewFlagsRightFlopped wraps GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLOPPED
+	// 
+	// see also No documentation available
 	//
-	// The right view is
-	//     horizontally mirrored.
 	VideoMultiviewFlagsRightFlopped VideoMultiviewFlags = 16
 	// VideoMultiviewFlagsHalfAspect wraps GST_VIDEO_MULTIVIEW_FLAGS_HALF_ASPECT
+	// 
+	// see also No documentation available
 	//
-	// For frame-packed
-	//     multiview modes, indicates that the individual
-	//     views have been encoded with half the true width or height
-	//     and should be scaled back up for display. This flag
-	//     is used for overriding input layout interpretation
-	//     by adjusting pixel-aspect-ratio.
-	//     For side-by-side, column interleaved or checkerboard packings, the
-	//     pixel width will be doubled. For row interleaved and top-bottom
-	//     encodings, pixel height will be doubled.
 	VideoMultiviewFlagsHalfAspect VideoMultiviewFlags = 16384
 	// VideoMultiviewFlagsMixedMono wraps GST_VIDEO_MULTIVIEW_FLAGS_MIXED_MONO
+	// 
+	// see also No documentation available
 	//
-	// The video stream contains both
-	//     mono and multiview portions, signalled on each buffer by the
-	//     absence or presence of the @GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW
-	//     buffer flag.
 	VideoMultiviewFlagsMixedMono VideoMultiviewFlags = 32768
 )
 
@@ -5293,22 +5189,26 @@ func (f VideoMultiviewFlags) String() string {
 }
 
 // VideoOverlayFormatFlags wraps GstVideoOverlayFormatFlags
+// 
+// see also No documentation available
 //
-// Overlay format flags.
 type VideoOverlayFormatFlags C.gint
 
 const (
 	// VideoOverlayFormatFlagNone wraps GST_VIDEO_OVERLAY_FORMAT_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flags
 	VideoOverlayFormatFlagNone VideoOverlayFormatFlags = 0
 	// VideoOverlayFormatFlagPremultipliedAlpha wraps GST_VIDEO_OVERLAY_FORMAT_FLAG_PREMULTIPLIED_ALPHA
+	// 
+	// see also No documentation available
 	//
-	// RGB are premultiplied by A/255.
 	VideoOverlayFormatFlagPremultipliedAlpha VideoOverlayFormatFlags = 1
 	// VideoOverlayFormatFlagGlobalAlpha wraps GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA
+	// 
+	// see also No documentation available
 	//
-	// a global-alpha value != 1 is set.
 	VideoOverlayFormatFlagGlobalAlpha VideoOverlayFormatFlags = 2
 )
 
@@ -5349,28 +5249,26 @@ func (f VideoOverlayFormatFlags) String() string {
 }
 
 // VideoPackFlags wraps GstVideoPackFlags
+// 
+// see also No documentation available
 //
-// The different flags that can be used when packing and unpacking.
 type VideoPackFlags C.gint
 
 const (
 	// VideoPackFlagNone wraps GST_VIDEO_PACK_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// No flag
 	VideoPackFlagNone VideoPackFlags = 0
 	// VideoPackFlagTruncateRange wraps GST_VIDEO_PACK_FLAG_TRUNCATE_RANGE
+	// 
+	// see also No documentation available
 	//
-	// When the source has a smaller depth
-	//   than the target format, set the least significant bits of the target
-	//   to 0. This is likely slightly faster but less accurate. When this flag
-	//   is not specified, the most significant bits of the source are duplicated
-	//   in the least significant bits of the destination.
 	VideoPackFlagTruncateRange VideoPackFlags = 1
 	// VideoPackFlagInterlaced wraps GST_VIDEO_PACK_FLAG_INTERLACED
+	// 
+	// see also No documentation available
 	//
-	// The source is interlaced. The unpacked
-	//   format will be interlaced as well with each line containing
-	//   information from alternating fields. (Since: 1.2)
 	VideoPackFlagInterlaced VideoPackFlags = 2
 )
 
@@ -5411,20 +5309,21 @@ func (f VideoPackFlags) String() string {
 }
 
 // VideoResamplerFlags wraps GstVideoResamplerFlags
+// 
+// see also No documentation available
 //
-// Different resampler flags.
 type VideoResamplerFlags C.gint
 
 const (
 	// VideoResamplerFlagNone wraps GST_VIDEO_RESAMPLER_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flags
 	VideoResamplerFlagNone VideoResamplerFlags = 0
 	// VideoResamplerFlagHalfTaps wraps GST_VIDEO_RESAMPLER_FLAG_HALF_TAPS
+	// 
+	// see also No documentation available
 	//
-	// when no taps are given, half the
-	//              number of calculated taps. This can be used when making scalers
-	//              for the different fields of an interlaced picture. Since: 1.10
 	VideoResamplerFlagHalfTaps VideoResamplerFlags = 1
 )
 
@@ -5462,18 +5361,21 @@ func (f VideoResamplerFlags) String() string {
 }
 
 // VideoScalerFlags wraps GstVideoScalerFlags
+// 
+// see also No documentation available
 //
-// Different scale flags.
 type VideoScalerFlags C.gint
 
 const (
 	// VideoScalerFlagNone wraps GST_VIDEO_SCALER_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flags
 	VideoScalerFlagNone VideoScalerFlags = 0
 	// VideoScalerFlagInterlaced wraps GST_VIDEO_SCALER_FLAG_INTERLACED
+	// 
+	// see also No documentation available
 	//
-	// Set up a scaler for interlaced content
 	VideoScalerFlagInterlaced VideoScalerFlags = 1
 )
 
@@ -5511,23 +5413,26 @@ func (f VideoScalerFlags) String() string {
 }
 
 // VideoTimeCodeFlags wraps GstVideoTimeCodeFlags
+// 
+// see also No documentation available
 //
-// Flags related to the time code information.
-// For drop frame, only 30000/1001 and 60000/1001 frame rates are supported.
 type VideoTimeCodeFlags C.gint
 
 const (
 	// VideoTimeCodeFlagsNone wraps GST_VIDEO_TIME_CODE_FLAGS_NONE
+	// 
+	// see also No documentation available
 	//
-	// No flags
 	VideoTimeCodeFlagsNone VideoTimeCodeFlags = 0
 	// VideoTimeCodeFlagsDropFrame wraps GST_VIDEO_TIME_CODE_FLAGS_DROP_FRAME
+	// 
+	// see also No documentation available
 	//
-	// Whether we have drop frame rate
 	VideoTimeCodeFlagsDropFrame VideoTimeCodeFlags = 1
 	// VideoTimeCodeFlagsInterlaced wraps GST_VIDEO_TIME_CODE_FLAGS_INTERLACED
+	// 
+	// see also No documentation available
 	//
-	// Whether we have interlaced video
 	VideoTimeCodeFlagsInterlaced VideoTimeCodeFlags = 2
 )
 
@@ -5569,9 +5474,7 @@ func (f VideoTimeCodeFlags) String() string {
 
 // AncillaryMetaAPIGetType wraps gst_ancillary_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func AncillaryMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -5586,16 +5489,8 @@ func AncillaryMetaAPIGetType() gobject.Type {
 
 // BufferAddAncillaryMeta wraps gst_buffer_add_ancillary_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: A #GstBuffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AncillaryMeta 
+// see also No documentation available
 //
-// Adds a new #GstAncillaryMeta to the @buffer. The caller is responsible for setting the appropriate
-// fields.
 func BufferAddAncillaryMeta(buffer *gst.Buffer) *AncillaryMeta {
 	var carg1 *C.GstBuffer        // in, none, converted
 	var cret  *C.GstAncillaryMeta // return, none, converted
@@ -5614,19 +5509,8 @@ func BufferAddAncillaryMeta(buffer *gst.Buffer) *AncillaryMeta {
 
 // BufferAddVideoAfdMeta wraps gst_buffer_add_video_afd_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- field uint8: 0 for progressive or field 1 and 1 for field 2 
-// 	- spec VideoAFDSpec: #GstVideoAFDSpec that applies to AFD value 
-// 	- afd VideoAFDValue: #GstVideoAFDValue AFD enumeration 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoAFDMeta 
+// see also No documentation available
 //
-// Attaches #GstVideoAFDMeta metadata to @buffer with the given
-// parameters.
 func BufferAddVideoAfdMeta(buffer *gst.Buffer, field uint8, spec VideoAFDSpec, afd VideoAFDValue) *VideoAFDMeta {
 	var carg1 *C.GstBuffer       // in, none, converted
 	var carg2 C.guint8           // in, none, casted
@@ -5654,16 +5538,8 @@ func BufferAddVideoAfdMeta(buffer *gst.Buffer, field uint8, spec VideoAFDSpec, a
 
 // BufferAddVideoAffineTransformationMeta wraps gst_buffer_add_video_affine_transformation_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoAffineTransformationMeta 
+// see also No documentation available
 //
-// Attaches GstVideoAffineTransformationMeta metadata to @buffer with
-// the given parameters.
 func BufferAddVideoAffineTransformationMeta(buffer *gst.Buffer) *VideoAffineTransformationMeta {
 	var carg1 *C.GstBuffer                        // in, none, converted
 	var cret  *C.GstVideoAffineTransformationMeta // return, none, converted
@@ -5682,26 +5558,8 @@ func BufferAddVideoAffineTransformationMeta(buffer *gst.Buffer) *VideoAffineTran
 
 // BufferAddVideoBarMeta wraps gst_buffer_add_video_bar_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- field uint8: 0 for progressive or field 1 and 1 for field 2 
-// 	- isLetterbox bool: if true then bar data specifies letterbox, otherwise pillarbox 
-// 	- barData1 uint: If @is_letterbox is true, then the value specifies the
-//      last line of a horizontal letterbox bar area at top of reconstructed frame.
-//      Otherwise, it specifies the last horizontal luminance sample of a vertical pillarbox
-//      bar area at the left side of the reconstructed frame 
-// 	- barData2 uint: If @is_letterbox is true, then the value specifies the
-//      first line of a horizontal letterbox bar area at bottom of reconstructed frame.
-//      Otherwise, it specifies the first horizontal
-//      luminance sample of a vertical pillarbox bar area at the right side of the reconstructed frame. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoBarMeta 
+// see also No documentation available
 //
-// Attaches #GstVideoBarMeta metadata to @buffer with the given
-// parameters.
 func BufferAddVideoBarMeta(buffer *gst.Buffer, field uint8, isLetterbox bool, barData1 uint, barData2 uint) *VideoBarMeta {
 	var carg1 *C.GstBuffer       // in, none, converted
 	var carg2 C.guint8           // in, none, casted
@@ -5734,18 +5592,8 @@ func BufferAddVideoBarMeta(buffer *gst.Buffer, field uint8, isLetterbox bool, ba
 
 // BufferAddVideoCaptionMeta wraps gst_buffer_add_video_caption_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- captionType VideoCaptionType: The type of Closed Caption to add 
-// 	- data []uint8: The Closed Caption data 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoCaptionMeta 
+// see also No documentation available
 //
-// Attaches #GstVideoCaptionMeta metadata to @buffer with the given
-// parameters.
 func BufferAddVideoCaptionMeta(buffer *gst.Buffer, captionType VideoCaptionType, data []uint8) *VideoCaptionMeta {
 	var carg1 *C.GstBuffer           // in, none, converted
 	var carg2 C.GstVideoCaptionType  // in, none, casted
@@ -5774,17 +5622,8 @@ func BufferAddVideoCaptionMeta(buffer *gst.Buffer, captionType VideoCaptionType,
 
 // BufferAddVideoCodecAlphaMeta wraps gst_buffer_add_video_codec_alpha_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- alphaBuffer *gst.Buffer: a #GstBuffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecAlphaMeta 
+// see also No documentation available
 //
-// Attaches a #GstVideoCodecAlphaMeta metadata to @buffer with
-// the given alpha buffer.
 func BufferAddVideoCodecAlphaMeta(buffer *gst.Buffer, alphaBuffer *gst.Buffer) *VideoCodecAlphaMeta {
 	var carg1 *C.GstBuffer              // in, none, converted
 	var carg2 *C.GstBuffer              // in, full, converted
@@ -5806,23 +5645,8 @@ func BufferAddVideoCodecAlphaMeta(buffer *gst.Buffer, alphaBuffer *gst.Buffer) *
 
 // BufferAddVideoMeta wraps gst_buffer_add_video_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- flags VideoFrameFlags: #GstVideoFrameFlags 
-// 	- format VideoFormat: a #GstVideoFormat 
-// 	- width uint: the width 
-// 	- height uint: the height 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoMeta 
+// see also No documentation available
 //
-// Attaches GstVideoMeta metadata to @buffer with the given parameters and the
-// default offsets and strides for @format and @width x @height.
-// 
-// This function calculates the default offsets and strides and then calls
-// gst_buffer_add_video_meta_full() with them.
 func BufferAddVideoMeta(buffer *gst.Buffer, flags VideoFrameFlags, format VideoFormat, width uint, height uint) *VideoMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var carg2 C.GstVideoFrameFlags // in, none, casted
@@ -5853,22 +5677,8 @@ func BufferAddVideoMeta(buffer *gst.Buffer, flags VideoFrameFlags, format VideoF
 
 // BufferAddVideoMetaFull wraps gst_buffer_add_video_meta_full
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- flags VideoFrameFlags: #GstVideoFrameFlags 
-// 	- format VideoFormat: a #GstVideoFormat 
-// 	- width uint: the width 
-// 	- height uint: the height 
-// 	- nPlanes uint: number of planes 
-// 	- offset [4]uint: offset of each plane 
-// 	- stride [4]int32: stride of each plane 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoMeta 
+// see also No documentation available
 //
-// Attaches GstVideoMeta metadata to @buffer with the given parameters.
 func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format VideoFormat, width uint, height uint, nPlanes uint, offset [4]uint, stride [4]int32) *VideoMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var carg2 C.GstVideoFrameFlags // in, none, casted
@@ -5920,18 +5730,8 @@ func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format Vi
 
 // BufferAddVideoOverlayCompositionMeta wraps gst_buffer_add_video_overlay_composition_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buf *gst.Buffer: a #GstBuffer 
-// 	- comp *VideoOverlayComposition (nullable): a #GstVideoOverlayComposition 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoOverlayCompositionMeta 
+// see also No documentation available
 //
-// Sets an overlay composition on a buffer. The buffer will obtain its own
-// reference to the composition, meaning this function does not take ownership
-// of @comp.
 func BufferAddVideoOverlayCompositionMeta(buf *gst.Buffer, comp *VideoOverlayComposition) *VideoOverlayCompositionMeta {
 	var carg1 *C.GstBuffer                      // in, none, converted
 	var carg2 *C.GstVideoOverlayComposition     // in, none, converted, nullable
@@ -5955,21 +5755,8 @@ func BufferAddVideoOverlayCompositionMeta(buf *gst.Buffer, comp *VideoOverlayCom
 
 // BufferAddVideoRegionOfInterestMeta wraps gst_buffer_add_video_region_of_interest_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- roiType string: Type of the region of interest (e.g. "face") 
-// 	- x uint: X position 
-// 	- y uint: Y position 
-// 	- w uint: width 
-// 	- h uint: height 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoRegionOfInterestMeta 
+// see also No documentation available
 //
-// Attaches #GstVideoRegionOfInterestMeta metadata to @buffer with the given
-// parameters.
 func BufferAddVideoRegionOfInterestMeta(buffer *gst.Buffer, roiType string, x uint, y uint, w uint, h uint) *VideoRegionOfInterestMeta {
 	var carg1 *C.GstBuffer                    // in, none, converted
 	var carg2 *C.gchar                        // in, none, string
@@ -6004,21 +5791,8 @@ func BufferAddVideoRegionOfInterestMeta(buffer *gst.Buffer, roiType string, x ui
 
 // BufferAddVideoRegionOfInterestMetaID wraps gst_buffer_add_video_region_of_interest_meta_id
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- roiType glib.Quark: Type of the region of interest (e.g. "face") 
-// 	- x uint: X position 
-// 	- y uint: Y position 
-// 	- w uint: width 
-// 	- h uint: height 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoRegionOfInterestMeta 
+// see also No documentation available
 //
-// Attaches #GstVideoRegionOfInterestMeta metadata to @buffer with the given
-// parameters.
 func BufferAddVideoRegionOfInterestMetaID(buffer *gst.Buffer, roiType glib.Quark, x uint, y uint, w uint, h uint) *VideoRegionOfInterestMeta {
 	var carg1 *C.GstBuffer                    // in, none, converted
 	var carg2 C.GQuark                        // in, none, casted, alias
@@ -6052,19 +5826,8 @@ func BufferAddVideoRegionOfInterestMetaID(buffer *gst.Buffer, roiType glib.Quark
 
 // BufferAddVideoSeiUserDataUnregisteredMeta wraps gst_buffer_add_video_sei_user_data_unregistered_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- uuid *uint8: User Data Unregistered UUID 
-// 	- data *uint8 (nullable): SEI User Data Unregistered buffer 
-// 	- size uint: size of the data buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoSEIUserDataUnregisteredMeta 
+// see also No documentation available
 //
-// Attaches #GstVideoSEIUserDataUnregisteredMeta metadata to @buffer with the given
-// parameters.
 func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, data *uint8, size uint) *VideoSEIUserDataUnregisteredMeta {
 	var carg1 *C.GstBuffer                           // in, none, converted
 	var carg2 *C.guint8                              // in, transfer: none, C Pointers: 1, Name: guint8
@@ -6098,17 +5861,8 @@ func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, 
 
 // BufferAddVideoTimeCodeMeta wraps gst_buffer_add_video_time_code_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- tc *VideoTimeCode: a #GstVideoTimeCode 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCodeMeta (nullable) 
+// see also No documentation available
 //
-// Attaches #GstVideoTimeCodeMeta metadata to @buffer with the given
-// parameters.
 func BufferAddVideoTimeCodeMeta(buffer *gst.Buffer, tc *VideoTimeCode) *VideoTimeCodeMeta {
 	var carg1 *C.GstBuffer            // in, none, converted
 	var carg2 *C.GstVideoTimeCode     // in, none, converted
@@ -6132,18 +5886,8 @@ func BufferAddVideoTimeCodeMeta(buffer *gst.Buffer, tc *VideoTimeCode) *VideoTim
 
 // BufferGetVideoMeta wraps gst_buffer_get_video_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoMeta (nullable) 
+// see also No documentation available
 //
-// Find the #GstVideoMeta on @buffer with the lowest @id.
-// 
-// Buffers can contain multiple #GstVideoMeta metadata items when dealing with
-// multiview buffers.
 func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 	var carg1 *C.GstBuffer    // in, none, converted
 	var cret  *C.GstVideoMeta // return, none, converted, nullable
@@ -6164,19 +5908,8 @@ func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 
 // BufferGetVideoMetaID wraps gst_buffer_get_video_meta_id
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- id int32: a metadata id 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoMeta (nullable) 
+// see also No documentation available
 //
-// Find the #GstVideoMeta on @buffer with the given @id.
-// 
-// Buffers can contain multiple #GstVideoMeta metadata items when dealing with
-// multiview buffers.
 func BufferGetVideoMetaID(buffer *gst.Buffer, id int32) *VideoMeta {
 	var carg1 *C.GstBuffer    // in, none, converted
 	var carg2 C.gint          // in, none, casted
@@ -6200,19 +5933,8 @@ func BufferGetVideoMetaID(buffer *gst.Buffer, id int32) *VideoMeta {
 
 // BufferGetVideoRegionOfInterestMetaID wraps gst_buffer_get_video_region_of_interest_meta_id
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- id int32: a metadata id 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoRegionOfInterestMeta (nullable) 
+// see also No documentation available
 //
-// Find the #GstVideoRegionOfInterestMeta on @buffer with the given @id.
-// 
-// Buffers can contain multiple #GstVideoRegionOfInterestMeta metadata items if
-// multiple regions of interests are marked on a frame.
 func BufferGetVideoRegionOfInterestMetaID(buffer *gst.Buffer, id int32) *VideoRegionOfInterestMeta {
 	var carg1 *C.GstBuffer                    // in, none, converted
 	var carg2 C.gint                          // in, none, casted
@@ -6236,17 +5958,8 @@ func BufferGetVideoRegionOfInterestMetaID(buffer *gst.Buffer, id int32) *VideoRe
 
 // BufferPoolConfigGetVideoAlignment wraps gst_buffer_pool_config_get_video_alignment
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstStructure 
-// 	- align *VideoAlignment: a #GstVideoAlignment 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Get the video alignment from the bufferpool configuration @config in
-// in @align
 func BufferPoolConfigGetVideoAlignment(config *gst.Structure, align *VideoAlignment) bool {
 	var carg1 *C.GstStructure      // in, none, converted
 	var carg2 *C.GstVideoAlignment // in, none, converted
@@ -6270,13 +5983,8 @@ func BufferPoolConfigGetVideoAlignment(config *gst.Structure, align *VideoAlignm
 
 // BufferPoolConfigSetVideoAlignment wraps gst_buffer_pool_config_set_video_alignment
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstStructure 
-// 	- align *VideoAlignment: a #GstVideoAlignment 
+// see also No documentation available
 //
-// Set the video alignment in @align to the bufferpool configuration
-// @config
 func BufferPoolConfigSetVideoAlignment(config *gst.Structure, align *VideoAlignment) {
 	var carg1 *C.GstStructure      // in, none, converted
 	var carg2 *C.GstVideoAlignment // in, none, converted
@@ -6291,16 +5999,8 @@ func BufferPoolConfigSetVideoAlignment(config *gst.Structure, align *VideoAlignm
 
 // IsVideoOverlayPrepareWindowHandleMessage wraps gst_is_video_overlay_prepare_window_handle_message
 // 
-// The function takes the following parameters:
-// 
-// 	- msg *gst.Message: a #GstMessage 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Convenience function to check if the given message is a
-// "prepare-window-handle" message from a #GstVideoOverlay.
 func IsVideoOverlayPrepareWindowHandleMessage(msg *gst.Message) bool {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  C.gboolean    // return
@@ -6321,9 +6021,7 @@ func IsVideoOverlayPrepareWindowHandleMessage(msg *gst.Message) bool {
 
 // VideoAfdMetaAPIGetType wraps gst_video_afd_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoAfdMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6338,9 +6036,7 @@ func VideoAfdMetaAPIGetType() gobject.Type {
 
 // VideoAffineTransformationMetaAPIGetType wraps gst_video_affine_transformation_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoAffineTransformationMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6355,9 +6051,7 @@ func VideoAffineTransformationMetaAPIGetType() gobject.Type {
 
 // VideoBarMetaAPIGetType wraps gst_video_bar_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoBarMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6372,20 +6066,8 @@ func VideoBarMetaAPIGetType() gobject.Type {
 
 // VideoBlend wraps gst_video_blend
 // 
-// The function takes the following parameters:
-// 
-// 	- dest *VideoFrame: The #GstVideoFrame where to blend @src in 
-// 	- src *VideoFrame: the #GstVideoFrame that we want to blend into 
-// 	- x int32: The x offset in pixel where the @src image should be blended 
-// 	- y int32: the y offset in pixel where the @src image should be blended 
-// 	- globalAlpha float32: the global_alpha each per-pixel alpha value is multiplied
-//                with 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Lets you blend the @src image into the @dest image
 func VideoBlend(dest *VideoFrame, src *VideoFrame, x int32, y int32, globalAlpha float32) bool {
 	var carg1 *C.GstVideoFrame // in, none, converted
 	var carg2 *C.GstVideoFrame // in, none, converted
@@ -6418,24 +6100,8 @@ func VideoBlend(dest *VideoFrame, src *VideoFrame, x int32, y int32, globalAlpha
 
 // VideoBlendScaleLinearRgba wraps gst_video_blend_scale_linear_RGBA
 // 
-// The function takes the following parameters:
-// 
-// 	- src *VideoInfo: the #GstVideoInfo describing the video data in @src_buffer 
-// 	- srcBuffer *gst.Buffer: the source buffer containing video pixels to scale 
-// 	- destHeight int32: the height in pixels to scale the video data in @src_buffer to 
-// 	- destWidth int32: the width in pixels to scale the video data in @src_buffer to 
-// 
-// The function returns the following values:
-// 
-// 	- dest VideoInfo: pointer to a #GstVideoInfo structure that will be filled in
-//     with the details for @dest_buffer 
-// 	- destBuffer *gst.Buffer: a pointer to a #GstBuffer variable, which will be
-//     set to a newly-allocated buffer containing the scaled pixels. 
+// see also No documentation available
 //
-// Scales a buffer containing RGBA (or AYUV) video. This is an internal
-// helper function which is used to scale subtitle overlays, and may be
-// deprecated in the near future. Use #GstVideoScaler to scale video buffers
-// instead.
 func VideoBlendScaleLinearRgba(src *VideoInfo, srcBuffer *gst.Buffer, destHeight int32, destWidth int32) (VideoInfo, *gst.Buffer) {
 	var carg1 *C.GstVideoInfo // in, none, converted
 	var carg2 *C.GstBuffer    // in, none, converted
@@ -6468,24 +6134,8 @@ func VideoBlendScaleLinearRgba(src *VideoInfo, srcBuffer *gst.Buffer, destHeight
 
 // VideoCalculateDisplayRatio wraps gst_video_calculate_display_ratio
 // 
-// The function takes the following parameters:
-// 
-// 	- videoWidth uint: Width of the video frame in pixels 
-// 	- videoHeight uint: Height of the video frame in pixels 
-// 	- videoParN uint: Numerator of the pixel aspect ratio of the input video. 
-// 	- videoParD uint: Denominator of the pixel aspect ratio of the input video. 
-// 	- displayParN uint: Numerator of the pixel aspect ratio of the display device 
-// 	- displayParD uint: Denominator of the pixel aspect ratio of the display device 
-// 
-// The function returns the following values:
-// 
-// 	- darN uint: Numerator of the calculated display_ratio 
-// 	- darD uint: Denominator of the calculated display_ratio 
-// 	- goret bool 
+// see also No documentation available
 //
-// Given the Pixel Aspect Ratio and size of an input video frame, and the
-// pixel aspect ratio of the intended display device, calculates the actual
-// display ratio the video will be rendered with.
 func VideoCalculateDisplayRatio(videoWidth uint, videoHeight uint, videoParN uint, videoParD uint, displayParN uint, displayParD uint) (uint, uint, bool) {
 	var carg3 C.guint    // in, none, casted
 	var carg4 C.guint    // in, none, casted
@@ -6527,9 +6177,7 @@ func VideoCalculateDisplayRatio(videoWidth uint, videoHeight uint, videoParN uin
 
 // VideoCaptionMetaAPIGetType wraps gst_video_caption_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoCaptionMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6544,19 +6192,8 @@ func VideoCaptionMetaAPIGetType() gobject.Type {
 
 // VideoCenterRect wraps gst_video_center_rect
 // 
-// The function takes the following parameters:
-// 
-// 	- src *VideoRectangle: a pointer to #GstVideoRectangle describing the source area 
-// 	- dst *VideoRectangle: a pointer to #GstVideoRectangle describing the destination area 
-// 	- scaling bool: a #gboolean indicating if scaling should be applied or not 
-// 
-// The function returns the following values:
-// 
-// 	- result VideoRectangle: a pointer to a #GstVideoRectangle which will receive the result area 
+// see also No documentation available
 //
-// Takes @src rectangle and position it at the center of @dst rectangle with or
-// without @scaling. It handles clipping if the @src rectangle is bigger than
-// the @dst one and @scaling is set to FALSE.
 func VideoCenterRect(src *VideoRectangle, dst *VideoRectangle, scaling bool) VideoRectangle {
 	var carg1 *C.GstVideoRectangle // in, none, converted
 	var carg2 *C.GstVideoRectangle // in, none, converted
@@ -6585,9 +6222,7 @@ func VideoCenterRect(src *VideoRectangle, dst *VideoRectangle, scaling bool) Vid
 
 // VideoCodecAlphaMetaAPIGetType wraps gst_video_codec_alpha_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoCodecAlphaMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6602,22 +6237,8 @@ func VideoCodecAlphaMetaAPIGetType() gobject.Type {
 
 // VideoConvertSample wraps gst_video_convert_sample
 // 
-// The function takes the following parameters:
-// 
-// 	- sample *gst.Sample: a #GstSample 
-// 	- toCaps *gst.Caps: the #GstCaps to convert to 
-// 	- timeout gst.ClockTime: the maximum amount of time allowed for the processing. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Sample (nullable) 
-// 	- _goerr error (nullable): an error 
+// see also No documentation available
 //
-// Converts a raw video buffer into the specified output caps.
-// 
-// The output caps can be any raw video formats or any image formats (jpeg, png, ...).
-// 
-// The width, height and pixel-aspect-ratio can also be specified in the output caps.
 func VideoConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockTime) (*gst.Sample, error) {
 	var carg1 *C.GstSample   // in, none, converted
 	var carg2 *C.GstCaps     // in, none, converted
@@ -6649,9 +6270,7 @@ func VideoConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockT
 
 // VideoCropMetaAPIGetType wraps gst_video_crop_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoCropMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6666,18 +6285,8 @@ func VideoCropMetaAPIGetType() gobject.Type {
 
 // VideoDmaDrmFormatFromGstFormat wraps gst_video_dma_drm_format_from_gst_format
 // 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: a #GstVideoFormat 
-// 	- modifier *uint64 (nullable): return location for the modifier 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint32 
+// see also No documentation available
 //
-// Converting the video format into dma drm fourcc/modifier pair.
-// If no matching fourcc found, then DRM_FORMAT_INVALID is returned
-// and @modifier will be set to DRM_FORMAT_MOD_INVALID.
 func VideoDmaDrmFormatFromGstFormat(format VideoFormat, modifier *uint64) uint32 {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var carg2 *C.guint64       // in, transfer: none, C Pointers: 1, Name: guint64, nullable, nullable
@@ -6703,17 +6312,8 @@ func VideoDmaDrmFormatFromGstFormat(format VideoFormat, modifier *uint64) uint32
 
 // VideoDmaDrmFormatToGstFormat wraps gst_video_dma_drm_format_to_gst_format
 // 
-// The function takes the following parameters:
-// 
-// 	- fourcc uint32: the dma drm fourcc value. 
-// 	- modifier uint64: the dma drm modifier. 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoFormat 
+// see also No documentation available
 //
-// Converting a dma drm fourcc and modifier pair into a #GstVideoFormat. If
-// no matching video format is found, then GST_VIDEO_FORMAT_UNKNOWN is returned.
 func VideoDmaDrmFormatToGstFormat(fourcc uint32, modifier uint64) VideoFormat {
 	var carg1 C.guint32        // in, none, casted
 	var carg2 C.guint64        // in, none, casted
@@ -6735,16 +6335,8 @@ func VideoDmaDrmFormatToGstFormat(fourcc uint32, modifier uint64) VideoFormat {
 
 // VideoDmaDrmFourccFromFormat wraps gst_video_dma_drm_fourcc_from_format
 // 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: a #GstVideoFormat 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint32 
+// see also No documentation available
 //
-// Converting the video format into dma drm fourcc. If no
-// matching fourcc found, then DRM_FORMAT_INVALID is returned.
 func VideoDmaDrmFourccFromFormat(format VideoFormat) uint32 {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var cret  C.guint32        // return, none, casted
@@ -6763,19 +6355,8 @@ func VideoDmaDrmFourccFromFormat(format VideoFormat) uint32 {
 
 // VideoDmaDrmFourccFromString wraps gst_video_dma_drm_fourcc_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- formatStr string: a drm format string 
-// 
-// The function returns the following values:
-// 
-// 	- modifier uint64: Return the modifier in @format or %NULL
-// to ignore. 
-// 	- goret uint32 
+// see also No documentation available
 //
-// Convert the @format_str string into the drm fourcc value. The @modifier is
-// also parsed if we want. Please note that the @format_str should follow the
-// fourcc:modifier kind style, such as NV12:0x0100000000000002
 func VideoDmaDrmFourccFromString(formatStr string) (uint64, uint32) {
 	var carg1 *C.gchar  // in, none, string
 	var carg2 C.guint64 // out, full, casted
@@ -6798,16 +6379,8 @@ func VideoDmaDrmFourccFromString(formatStr string) (uint64, uint32) {
 
 // VideoDmaDrmFourccToFormat wraps gst_video_dma_drm_fourcc_to_format
 // 
-// The function takes the following parameters:
-// 
-// 	- fourcc uint32: the dma drm value. 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoFormat 
+// see also No documentation available
 //
-// Converting a dma drm fourcc into the video format. If no matching
-// video format found, then GST_VIDEO_FORMAT_UNKNOWN is returned.
 func VideoDmaDrmFourccToFormat(fourcc uint32) VideoFormat {
 	var carg1 C.guint32        // in, none, casted
 	var cret  C.GstVideoFormat // return, none, casted
@@ -6826,17 +6399,8 @@ func VideoDmaDrmFourccToFormat(fourcc uint32) VideoFormat {
 
 // VideoDmaDrmFourccToString wraps gst_video_dma_drm_fourcc_to_string
 // 
-// The function takes the following parameters:
-// 
-// 	- fourcc uint32: a drm fourcc value. 
-// 	- modifier uint64: the associated modifier value. 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Returns a string containing drm kind format, such as
-// NV12:0x0100000000000002, or NULL otherwise.
 func VideoDmaDrmFourccToString(fourcc uint32, modifier uint64) string {
 	var carg1 C.guint32 // in, none, casted
 	var carg2 C.guint64 // in, none, casted
@@ -6861,16 +6425,8 @@ func VideoDmaDrmFourccToString(fourcc uint32, modifier uint64) string {
 
 // VideoEventIsForceKeyUnit wraps gst_video_event_is_force_key_unit
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to check 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if an event is a force key unit event. Returns true for both upstream
-// and downstream force key unit events.
 func VideoEventIsForceKeyUnit(event *gst.Event) bool {
 	var carg1 *C.GstEvent // in, none, converted
 	var cret  C.gboolean  // return
@@ -6891,26 +6447,8 @@ func VideoEventIsForceKeyUnit(event *gst.Event) bool {
 
 // VideoEventNewDownstreamForceKeyUnit wraps gst_video_event_new_downstream_force_key_unit
 // 
-// The function takes the following parameters:
-// 
-// 	- timestamp gst.ClockTime: the timestamp of the buffer that starts a new key unit 
-// 	- streamTime gst.ClockTime: the stream_time of the buffer that starts a new key unit 
-// 	- runningTime gst.ClockTime: the running_time of the buffer that starts a new key unit 
-// 	- allHeaders bool: %TRUE to produce headers when starting a new key unit 
-// 	- count uint: integer that can be used to number key units 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Creates a new downstream force key unit event. A downstream force key unit
-// event can be sent down the pipeline to request downstream elements to produce
-// a key unit. A downstream force key unit event must also be sent when handling
-// an upstream force key unit event to notify downstream that the latter has been
-// handled.
-// 
-// To parse an event created by gst_video_event_new_downstream_force_key_unit() use
-// gst_video_event_parse_downstream_force_key_unit().
 func VideoEventNewDownstreamForceKeyUnit(timestamp gst.ClockTime, streamTime gst.ClockTime, runningTime gst.ClockTime, allHeaders bool, count uint) *gst.Event {
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var carg2 C.GstClockTime // in, none, casted, alias
@@ -6943,20 +6481,8 @@ func VideoEventNewDownstreamForceKeyUnit(timestamp gst.ClockTime, streamTime gst
 
 // VideoEventNewStillFrame wraps gst_video_event_new_still_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- inStill bool: boolean value for the still-frame state of the event. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Creates a new Still Frame event. If @in_still is %TRUE, then the event
-// represents the start of a still frame sequence. If it is %FALSE, then
-// the event ends a still frame sequence.
-// 
-// To parse an event created by gst_video_event_new_still_frame() use
-// gst_video_event_parse_still_frame().
 func VideoEventNewStillFrame(inStill bool) *gst.Event {
 	var carg1 C.gboolean  // in
 	var cret  *C.GstEvent // return, full, converted
@@ -6977,25 +6503,8 @@ func VideoEventNewStillFrame(inStill bool) *gst.Event {
 
 // VideoEventNewUpstreamForceKeyUnit wraps gst_video_event_new_upstream_force_key_unit
 // 
-// The function takes the following parameters:
-// 
-// 	- runningTime gst.ClockTime: the running_time at which a new key unit should be produced 
-// 	- allHeaders bool: %TRUE to produce headers when starting a new key unit 
-// 	- count uint: integer that can be used to number key units 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Creates a new upstream force key unit event. An upstream force key unit event
-// can be sent to request upstream elements to produce a key unit.
-// 
-// @running_time can be set to request a new key unit at a specific
-// running_time. If set to GST_CLOCK_TIME_NONE, upstream elements will produce a
-// new key unit as soon as possible.
-// 
-// To parse an event created by gst_video_event_new_downstream_force_key_unit() use
-// gst_video_event_parse_downstream_force_key_unit().
 func VideoEventNewUpstreamForceKeyUnit(runningTime gst.ClockTime, allHeaders bool, count uint) *gst.Event {
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var carg2 C.gboolean     // in
@@ -7022,24 +6531,8 @@ func VideoEventNewUpstreamForceKeyUnit(runningTime gst.ClockTime, allHeaders boo
 
 // VideoEventParseDownstreamForceKeyUnit wraps gst_video_event_parse_downstream_force_key_unit
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to parse 
-// 
-// The function returns the following values:
-// 
-// 	- timestamp gst.ClockTime: A pointer to the timestamp in the event 
-// 	- streamTime gst.ClockTime: A pointer to the stream-time in the event 
-// 	- runningTime gst.ClockTime: A pointer to the running-time in the event 
-// 	- allHeaders bool: A pointer to the all_headers flag in the event 
-// 	- count uint: A pointer to the count field of the event 
-// 	- goret bool 
+// see also No documentation available
 //
-// Get timestamp, stream-time, running-time, all-headers and count in the force
-// key unit event. See gst_video_event_new_downstream_force_key_unit() for a
-// full description of the downstream force key unit event.
-// 
-// @running_time will be adjusted for any pad offsets of pads it was passing through.
 func VideoEventParseDownstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, gst.ClockTime, gst.ClockTime, bool, uint, bool) {
 	var carg1 *C.GstEvent    // in, none, converted
 	var carg2 C.GstClockTime // out, full, casted, alias
@@ -7077,24 +6570,8 @@ func VideoEventParseDownstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, gst
 
 // VideoEventParseStillFrame wraps gst_video_event_parse_still_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to parse 
-// 
-// The function returns the following values:
-// 
-// 	- inStill bool: 
-//     A boolean to receive the still-frame status from the event, or NULL 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse a #GstEvent, identify if it is a Still Frame event, and
-// return the still-frame state from the event if it is.
-// If the event represents the start of a still frame, the in_still
-// variable will be set to TRUE, otherwise FALSE. It is OK to pass NULL for the
-// in_still variable order to just check whether the event is a valid still-frame
-// event.
-// 
-// Create a still frame event using gst_video_event_new_still_frame()
 func VideoEventParseStillFrame(event *gst.Event) (bool, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gboolean  // out
@@ -7120,24 +6597,8 @@ func VideoEventParseStillFrame(event *gst.Event) (bool, bool) {
 
 // VideoEventParseUpstreamForceKeyUnit wraps gst_video_event_parse_upstream_force_key_unit
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to parse 
-// 
-// The function returns the following values:
-// 
-// 	- runningTime gst.ClockTime: A pointer to the running_time in the event 
-// 	- allHeaders bool: A pointer to the all_headers flag in the event 
-// 	- count uint: A pointer to the count field in the event 
-// 	- goret bool 
+// see also No documentation available
 //
-// Get running-time, all-headers and count in the force key unit event. See
-// gst_video_event_new_upstream_force_key_unit() for a full description of the
-// upstream force key unit event.
-// 
-// Create an upstream force key unit event using  gst_video_event_new_upstream_force_key_unit()
-// 
-// @running_time will be adjusted for any pad offsets of pads it was passing through.
 func VideoEventParseUpstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, bool, uint, bool) {
 	var carg1 *C.GstEvent    // in, none, converted
 	var carg2 C.GstClockTime // out, full, casted, alias
@@ -7169,15 +6630,8 @@ func VideoEventParseUpstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, bool,
 
 // VideoFormatsAny wraps gst_video_formats_any
 // 
-// The function returns the following values:
-// 
-// 	- len uint: the number of elements in the returned array 
-// 	- goret []VideoFormat 
+// see also No documentation available
 //
-// Return all the raw video formats supported by GStreamer including
-// special opaque formats such as %GST_VIDEO_FORMAT_DMA_DRM for which
-// no software conversion exists. This should be use for passthrough
-// template cpas.
 func VideoFormatsAny() (uint, []VideoFormat) {
 	var carg1 C.guint           // out, full, casted
 	var cret  *C.GstVideoFormat // return, transfer: none, C Pointers: 1, Name: array[VideoFormat], scope: , array (inner GstVideoFormat (*typesystem.Enum))
@@ -7197,12 +6651,8 @@ func VideoFormatsAny() (uint, []VideoFormat) {
 
 // VideoFormatsRaw wraps gst_video_formats_raw
 // 
-// The function returns the following values:
-// 
-// 	- len uint: the number of elements in the returned array 
-// 	- goret []VideoFormat 
+// see also No documentation available
 //
-// Return all the raw video formats supported by GStreamer.
 func VideoFormatsRaw() (uint, []VideoFormat) {
 	var carg1 C.guint           // out, full, casted
 	var cret  *C.GstVideoFormat // return, transfer: none, C Pointers: 1, Name: array[VideoFormat], scope: , array (inner GstVideoFormat (*typesystem.Enum))
@@ -7222,9 +6672,7 @@ func VideoFormatsRaw() (uint, []VideoFormat) {
 
 // VideoGlTextureUploadMetaAPIGetType wraps gst_video_gl_texture_upload_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoGlTextureUploadMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -7239,24 +6687,8 @@ func VideoGlTextureUploadMetaAPIGetType() gobject.Type {
 
 // VideoGuessFramerate wraps gst_video_guess_framerate
 // 
-// The function takes the following parameters:
-// 
-// 	- duration gst.ClockTime: Nominal duration of one frame 
-// 
-// The function returns the following values:
-// 
-// 	- destN int32: Numerator of the calculated framerate 
-// 	- destD int32: Denominator of the calculated framerate 
-// 	- goret bool 
+// see also No documentation available
 //
-// Given the nominal duration of one video frame,
-// this function will check some standard framerates for
-// a close match (within 0.1%) and return one if possible,
-// 
-// It will calculate an arbitrary framerate if no close
-// match was found, and return %FALSE.
-// 
-// It returns %FALSE if a duration of 0 is passed.
 func VideoGuessFramerate(duration gst.ClockTime) (int32, int32, bool) {
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var carg2 C.gint         // out, full, casted
@@ -7283,20 +6715,8 @@ func VideoGuessFramerate(duration gst.ClockTime) (int32, int32, bool) {
 
 // VideoIsCommonAspectRatio wraps gst_video_is_common_aspect_ratio
 // 
-// The function takes the following parameters:
-// 
-// 	- width int32: Width of the video frame 
-// 	- height int32: Height of the video frame 
-// 	- parN int32: Pixel aspect ratio numerator 
-// 	- parD int32: Pixel aspect ratio denominator 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Given a frame's dimensions and pixel aspect ratio, this function will
-// calculate the frame's aspect ratio and compare it against a set of
-// common well-known "standard" aspect ratios.
 func VideoIsCommonAspectRatio(width int32, height int32, parN int32, parD int32) bool {
 	var carg1 C.gint     // in, none, casted
 	var carg2 C.gint     // in, none, casted
@@ -7326,16 +6746,8 @@ func VideoIsCommonAspectRatio(width int32, height int32, parN int32, parD int32)
 
 // VideoIsDmaDrmCaps wraps gst_video_is_dma_drm_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check whether the @caps is a dma drm kind caps. Please note that
-// the caps should be fixed.
 func VideoIsDmaDrmCaps(caps *gst.Caps) bool {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  C.gboolean // return
@@ -7356,17 +6768,8 @@ func VideoIsDmaDrmCaps(caps *gst.Caps) bool {
 
 // VideoMakeRawCaps wraps gst_video_make_raw_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- formats []VideoFormat (nullable): an array of raw #GstVideoFormat, or %NULL 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Return a generic raw video caps for formats defined in @formats.
-// If @formats is %NULL returns a caps for all the supported raw video formats,
-// see gst_video_formats_raw().
 func VideoMakeRawCaps(formats []VideoFormat) *gst.Caps {
 	var carg1 *C.GstVideoFormat // in, transfer: none, C Pointers: 1, Name: array[VideoFormat], nullable, array (inner GstVideoFormat (*typesystem.Enum), length-by: carg2)
 	var carg2 C.guint           // implicit
@@ -7389,19 +6792,8 @@ func VideoMakeRawCaps(formats []VideoFormat) *gst.Caps {
 
 // VideoMakeRawCapsWithFeatures wraps gst_video_make_raw_caps_with_features
 // 
-// The function takes the following parameters:
-// 
-// 	- formats []VideoFormat (nullable): an array of raw #GstVideoFormat, or %NULL 
-// 	- features *gst.CapsFeatures (nullable): the #GstCapsFeatures to set on the caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Return a generic raw video caps for formats defined in @formats with features
-// @features.
-// If @formats is %NULL returns a caps for all the supported video formats,
-// see gst_video_formats_raw().
 func VideoMakeRawCapsWithFeatures(formats []VideoFormat, features *gst.CapsFeatures) *gst.Caps {
 	var carg1 *C.GstVideoFormat  // in, transfer: none, C Pointers: 1, Name: array[VideoFormat], nullable, array (inner GstVideoFormat (*typesystem.Enum), length-by: carg2)
 	var carg2 C.guint            // implicit
@@ -7429,9 +6821,7 @@ func VideoMakeRawCapsWithFeatures(formats []VideoFormat, features *gst.CapsFeatu
 
 // VideoMetaAPIGetType wraps gst_video_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -7446,9 +6836,7 @@ func VideoMetaAPIGetType() gobject.Type {
 
 // VideoMultiviewGetDoubledHeightModes wraps gst_video_multiview_get_doubled_height_modes
 // 
-// The function returns the following values:
-// 
-// 	- goret *gobject.Value 
+// see also No documentation available
 func VideoMultiviewGetDoubledHeightModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -7463,9 +6851,7 @@ func VideoMultiviewGetDoubledHeightModes() *gobject.Value {
 
 // VideoMultiviewGetDoubledSizeModes wraps gst_video_multiview_get_doubled_size_modes
 // 
-// The function returns the following values:
-// 
-// 	- goret *gobject.Value 
+// see also No documentation available
 func VideoMultiviewGetDoubledSizeModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -7480,9 +6866,7 @@ func VideoMultiviewGetDoubledSizeModes() *gobject.Value {
 
 // VideoMultiviewGetDoubledWidthModes wraps gst_video_multiview_get_doubled_width_modes
 // 
-// The function returns the following values:
-// 
-// 	- goret *gobject.Value 
+// see also No documentation available
 func VideoMultiviewGetDoubledWidthModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -7497,9 +6881,7 @@ func VideoMultiviewGetDoubledWidthModes() *gobject.Value {
 
 // VideoMultiviewGetMonoModes wraps gst_video_multiview_get_mono_modes
 // 
-// The function returns the following values:
-// 
-// 	- goret *gobject.Value 
+// see also No documentation available
 func VideoMultiviewGetMonoModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -7514,9 +6896,7 @@ func VideoMultiviewGetMonoModes() *gobject.Value {
 
 // VideoMultiviewGetUnpackedModes wraps gst_video_multiview_get_unpacked_modes
 // 
-// The function returns the following values:
-// 
-// 	- goret *gobject.Value 
+// see also No documentation available
 func VideoMultiviewGetUnpackedModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -7531,17 +6911,7 @@ func VideoMultiviewGetUnpackedModes() *gobject.Value {
 
 // VideoMultiviewGuessHalfAspect wraps gst_video_multiview_guess_half_aspect
 // 
-// The function takes the following parameters:
-// 
-// 	- mvMode VideoMultiviewMode: A #GstVideoMultiviewMode 
-// 	- width uint: Video frame width in pixels 
-// 	- height uint: Video frame height in pixels 
-// 	- parN uint: Numerator of the video pixel-aspect-ratio 
-// 	- parD uint: Denominator of the video pixel-aspect-ratio 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func VideoMultiviewGuessHalfAspect(mvMode VideoMultiviewMode, width uint, height uint, parN uint, parD uint) bool {
 	var carg1 C.GstVideoMultiviewMode // in, none, casted
 	var carg2 C.guint                 // in, none, casted
@@ -7574,15 +6944,8 @@ func VideoMultiviewGuessHalfAspect(mvMode VideoMultiviewMode, width uint, height
 
 // VideoMultiviewVideoInfoChangeMode wraps gst_video_multiview_video_info_change_mode
 // 
-// The function takes the following parameters:
-// 
-// 	- info *VideoInfo: A #GstVideoInfo structure to operate on 
-// 	- outMviewMode VideoMultiviewMode: A #GstVideoMultiviewMode value 
-// 	- outMviewFlags VideoMultiviewFlags: A set of #GstVideoMultiviewFlags 
+// see also No documentation available
 //
-// Utility function that transforms the width/height/PAR
-// and multiview mode and flags of a #GstVideoInfo into
-// the requested mode.
 func VideoMultiviewVideoInfoChangeMode(info *VideoInfo, outMviewMode VideoMultiviewMode, outMviewFlags VideoMultiviewFlags) {
 	var carg1 *C.GstVideoInfo          // in, none, converted
 	var carg2 C.GstVideoMultiviewMode  // in, none, casted
@@ -7600,9 +6963,7 @@ func VideoMultiviewVideoInfoChangeMode(info *VideoInfo, outMviewMode VideoMultiv
 
 // VideoOverlayCompositionMetaAPIGetType wraps gst_video_overlay_composition_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoOverlayCompositionMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -7617,9 +6978,7 @@ func VideoOverlayCompositionMetaAPIGetType() gobject.Type {
 
 // VideoRegionOfInterestMetaAPIGetType wraps gst_video_region_of_interest_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoRegionOfInterestMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -7634,9 +6993,7 @@ func VideoRegionOfInterestMetaAPIGetType() gobject.Type {
 
 // VideoSeiUserDataUnregisteredMetaAPIGetType wraps gst_video_sei_user_data_unregistered_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoSeiUserDataUnregisteredMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -7651,17 +7008,8 @@ func VideoSeiUserDataUnregisteredMetaAPIGetType() gobject.Type {
 
 // VideoSeiUserDataUnregisteredParsePrecisionTimeStamp wraps gst_video_sei_user_data_unregistered_parse_precision_time_stamp
 // 
-// The function takes the following parameters:
-// 
-// 	- userData *VideoSEIUserDataUnregisteredMeta: a #GstVideoSEIUserDataUnregisteredMeta 
-// 
-// The function returns the following values:
-// 
-// 	- status uint8: User Data Unregistered UUID 
-// 	- precisionTimeStamp uint64: The parsed Precision Time Stamp SEI 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses and returns the Precision Time Stamp (ST 0604) from the SEI User Data Unregistered buffer
 func VideoSeiUserDataUnregisteredParsePrecisionTimeStamp(userData *VideoSEIUserDataUnregisteredMeta) (uint8, uint64, bool) {
 	var carg1 *C.GstVideoSEIUserDataUnregisteredMeta // in, none, converted
 	var carg2 C.guint8                               // out, full, casted
@@ -7688,22 +7036,8 @@ func VideoSeiUserDataUnregisteredParsePrecisionTimeStamp(userData *VideoSEIUserD
 
 // VideoTileGetIndex wraps gst_video_tile_get_index
 // 
-// The function takes the following parameters:
-// 
-// 	- mode VideoTileMode: a #GstVideoTileMode 
-// 	- x int32: x coordinate 
-// 	- y int32: y coordinate 
-// 	- xTiles int32: number of horizintal tiles 
-// 	- yTiles int32: number of vertical tiles 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get the tile index of the tile at coordinates @x and @y in the tiled
-// image of @x_tiles by @y_tiles.
-// 
-// Use this method when @mode is of type %GST_VIDEO_TILE_TYPE_INDEXED.
 func VideoTileGetIndex(mode VideoTileMode, x int32, y int32, xTiles int32, yTiles int32) uint {
 	var carg1 C.GstVideoTileMode // in, none, casted
 	var carg2 C.gint             // in, none, casted
@@ -7734,9 +7068,7 @@ func VideoTileGetIndex(mode VideoTileMode, x int32, y int32, xTiles int32, yTile
 
 // VideoTimeCodeMetaAPIGetType wraps gst_video_time_code_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func VideoTimeCodeMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -7758,77 +7090,41 @@ type ColorBalanceInstance struct {
 var _ ColorBalance = (*ColorBalanceInstance)(nil)
 
 // ColorBalance wraps GstColorBalance
-//
-// This interface is implemented by elements which can perform some color
-// balance operation on video frames they process. For example, modifying
-// the brightness, contrast, hue or saturation.
 // 
-// Example elements are 'xvimagesink' and 'colorbalance'
+// see also No documentation available
+//
 type ColorBalance interface {
 	upcastToGstColorBalance() *ColorBalanceInstance
 
 	// GetBalanceType wraps gst_color_balance_get_balance_type
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret ColorBalanceType 
+	// see also No documentation available
 	//
-	// Get the #GstColorBalanceType of this implementation.
 	GetBalanceType() ColorBalanceType
 	// GetValue wraps gst_color_balance_get_value
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	//
-	// Retrieve the current value of the indicated channel, between min_value
-	// and max_value.
-	// 
-	// See Also: The #GstColorBalanceChannel.min_value and
-	//         #GstColorBalanceChannel.max_value members of the
-	//         #GstColorBalanceChannel object.
 	GetValue(ColorBalanceChannel) int32
 	// ListChannels wraps gst_color_balance_list_channels
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []ColorBalanceChannel 
+	// see also No documentation available
 	//
-	// Retrieve a list of the available channels.
 	ListChannels() []ColorBalanceChannel
 	// SetValue wraps gst_color_balance_set_value
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-	// 	- value int32: The new value for the channel. 
+	// see also No documentation available
 	//
-	// Sets the current value of the channel to the passed value, which must
-	// be between min_value and max_value.
-	// 
-	// See Also: The #GstColorBalanceChannel.min_value and
-	//         #GstColorBalanceChannel.max_value members of the
-	//         #GstColorBalanceChannel object.
 	SetValue(ColorBalanceChannel, int32)
 	// ValueChanged wraps gst_color_balance_value_changed
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
-	// 	- value int32: The new value of the channel 
+	// see also No documentation available
 	//
-	// A helper function called by implementations of the GstColorBalance
-	// interface. It fires the #GstColorBalance::value-changed signal on the
-	// instance, and the #GstColorBalanceChannel::value-changed signal on the
-	// channel object.
 	ValueChanged(ColorBalanceChannel, int32)
 	// ConnectValueChanged connects the provided callback to the "value-changed" signal
+	// 
+	// see also No documentation available
 	//
-	// Fired when the value of the indicated channel has changed.
 	ConnectValueChanged(func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle
 }
 
@@ -7877,11 +7173,8 @@ func UnsafeColorBalanceToGlibFull(c ColorBalance) unsafe.Pointer {
 
 // GetBalanceType wraps gst_color_balance_get_balance_type
 // 
-// The function returns the following values:
-// 
-// 	- goret ColorBalanceType 
+// see also No documentation available
 //
-// Get the #GstColorBalanceType of this implementation.
 func (balance *ColorBalanceInstance) GetBalanceType() ColorBalanceType {
 	var carg0 *C.GstColorBalance    // in, none, converted
 	var cret  C.GstColorBalanceType // return, none, casted
@@ -7900,20 +7193,8 @@ func (balance *ColorBalanceInstance) GetBalanceType() ColorBalanceType {
 
 // GetValue wraps gst_color_balance_get_value
 // 
-// The function takes the following parameters:
-// 
-// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-// 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 //
-// Retrieve the current value of the indicated channel, between min_value
-// and max_value.
-// 
-// See Also: The #GstColorBalanceChannel.min_value and
-//         #GstColorBalanceChannel.max_value members of the
-//         #GstColorBalanceChannel object.
 func (balance *ColorBalanceInstance) GetValue(channel ColorBalanceChannel) int32 {
 	var carg0 *C.GstColorBalance        // in, none, converted
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
@@ -7935,11 +7216,8 @@ func (balance *ColorBalanceInstance) GetValue(channel ColorBalanceChannel) int32
 
 // ListChannels wraps gst_color_balance_list_channels
 // 
-// The function returns the following values:
-// 
-// 	- goret []ColorBalanceChannel 
+// see also No documentation available
 //
-// Retrieve a list of the available channels.
 func (balance *ColorBalanceInstance) ListChannels() []ColorBalanceChannel {
 	var carg0 *C.GstColorBalance // in, none, converted
 	var cret  *C.GList           // container, transfer: none
@@ -7965,17 +7243,8 @@ func (balance *ColorBalanceInstance) ListChannels() []ColorBalanceChannel {
 
 // SetValue wraps gst_color_balance_set_value
 // 
-// The function takes the following parameters:
-// 
-// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
-// 	- value int32: The new value for the channel. 
+// see also No documentation available
 //
-// Sets the current value of the channel to the passed value, which must
-// be between min_value and max_value.
-// 
-// See Also: The #GstColorBalanceChannel.min_value and
-//         #GstColorBalanceChannel.max_value members of the
-//         #GstColorBalanceChannel object.
 func (balance *ColorBalanceInstance) SetValue(channel ColorBalanceChannel, value int32) {
 	var carg0 *C.GstColorBalance        // in, none, converted
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
@@ -7993,15 +7262,8 @@ func (balance *ColorBalanceInstance) SetValue(channel ColorBalanceChannel, value
 
 // ValueChanged wraps gst_color_balance_value_changed
 // 
-// The function takes the following parameters:
-// 
-// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
-// 	- value int32: The new value of the channel 
+// see also No documentation available
 //
-// A helper function called by implementations of the GstColorBalance
-// interface. It fires the #GstColorBalance::value-changed signal on the
-// instance, and the #GstColorBalanceChannel::value-changed signal on the
-// channel object.
 func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, value int32) {
 	var carg0 *C.GstColorBalance        // in, none, converted
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
@@ -8018,8 +7280,9 @@ func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, v
 }
 
 // ConnectValueChanged connects the provided callback to the "value-changed" signal
+// 
+// see also No documentation available
 //
-// Fired when the value of the indicated channel has changed.
 func (o *ColorBalanceInstance) ConnectValueChanged(fn func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle {
 	return o.Instance.Connect("value-changed", fn)
 }
@@ -8033,93 +7296,39 @@ type NavigationInstance struct {
 var _ Navigation = (*NavigationInstance)(nil)
 
 // Navigation wraps GstNavigation
+// 
+// see also No documentation available
 //
-// The Navigation interface is used for creating and injecting navigation
-// related events such as mouse button presses, cursor motion and key presses.
-// The associated library also provides methods for parsing received events, and
-// for sending and receiving navigation related bus events. One main usecase is
-// DVD menu navigation.
-// 
-// The main parts of the API are:
-// 
-// * The GstNavigation interface, implemented by elements which provide an
-//   application with the ability to create and inject navigation events into
-//   the pipeline.
-// * GstNavigation event handling API. GstNavigation events are created in
-//   response to calls on a GstNavigation interface implementation, and sent in
-//   the pipeline. Upstream elements can use the navigation event API functions
-//   to parse the contents of received messages.
-// 
-// * GstNavigation message handling API. GstNavigation messages may be sent on
-//   the message bus to inform applications of navigation related changes in the
-//   pipeline, such as the mouse moving over a clickable region, or the set of
-//   available angles changing.
-// 
-// The GstNavigation message functions provide functions for creating and
-// parsing custom bus messages for signaling GstNavigation changes.
 type Navigation interface {
 	upcastToGstNavigation() *NavigationInstance
 
 	// SendCommand wraps gst_navigation_send_command
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- command NavigationCommand: The command to issue 
+	// see also No documentation available
 	//
-	// Sends the indicated command to the navigation interface.
 	SendCommand(NavigationCommand)
 	// SendEvent wraps gst_navigation_send_event
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- structure *gst.Structure 
+	// see also No documentation available
 	SendEvent(*gst.Structure)
 	// SendEventSimple wraps gst_navigation_send_event_simple
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event: The event to send 
+	// see also No documentation available
 	//
-	// Sends an event to the navigation interface.
 	SendEventSimple(*gst.Event)
 	// SendKeyEvent wraps gst_navigation_send_key_event
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event string: The type of the key event. Recognised values are "key-press" and
-	// "key-release" 
-	// 	- key string: Character representation of the key. This is typically as produced
-	// by XKeysymToString. 
+	// see also No documentation available
 	SendKeyEvent(string, string)
 	// SendMouseEvent wraps gst_navigation_send_mouse_event
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event string: The type of mouse event, as a text string. Recognised values are
-	// "mouse-button-press", "mouse-button-release", "mouse-move" and "mouse-double-click". 
-	// 	- button int32: The button number of the button being pressed or released. Pass 0
-	// for mouse-move events. 
-	// 	- x float64: The x coordinate of the mouse event. 
-	// 	- y float64: The y coordinate of the mouse event. 
+	// see also No documentation available
 	//
-	// Sends a mouse event to the navigation interface. Mouse event coordinates
-	// are sent relative to the display space of the related output area. This is
-	// usually the size in pixels of the window associated with the element
-	// implementing the #GstNavigation interface.
 	SendMouseEvent(string, int32, float64, float64)
 	// SendMouseScrollEvent wraps gst_navigation_send_mouse_scroll_event
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- x float64: The x coordinate of the mouse event. 
-	// 	- y float64: The y coordinate of the mouse event. 
-	// 	- deltaX float64: The delta_x coordinate of the mouse event. 
-	// 	- deltaY float64: The delta_y coordinate of the mouse event. 
+	// see also No documentation available
 	//
-	// Sends a mouse scroll event to the navigation interface. Mouse event coordinates
-	// are sent relative to the display space of the related output area. This is
-	// usually the size in pixels of the window associated with the element
-	// implementing the #GstNavigation interface.
 	SendMouseScrollEvent(float64, float64, float64, float64)
 }
 
@@ -8168,19 +7377,8 @@ func UnsafeNavigationToGlibFull(c Navigation) unsafe.Pointer {
 
 // NavigationEventGetCoordinates wraps gst_navigation_event_get_coordinates
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: The #GstEvent to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- x float64: Pointer to a gdouble to receive the x coordinate of the
-//     navigation event. 
-// 	- y float64: Pointer to a gdouble to receive the y coordinate of the
-//     navigation event. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Try to retrieve x and y coordinates of a #GstNavigation event.
 func NavigationEventGetCoordinates(event *gst.Event) (float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // out, full, casted
@@ -8207,16 +7405,8 @@ func NavigationEventGetCoordinates(event *gst.Event) (float64, float64, bool) {
 
 // NavigationEventGetType wraps gst_navigation_event_get_type
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- goret NavigationEventType 
+// see also No documentation available
 //
-// Inspect a #GstEvent and return the #GstNavigationEventType of the event, or
-// #GST_NAVIGATION_EVENT_INVALID if the event is not a #GstNavigation event.
 func NavigationEventGetType(event *gst.Event) NavigationEventType {
 	var carg1 *C.GstEvent              // in, none, converted
 	var cret  C.GstNavigationEventType // return, none, casted
@@ -8235,15 +7425,8 @@ func NavigationEventGetType(event *gst.Event) NavigationEventType {
 
 // NavigationEventNewCommand wraps gst_navigation_event_new_command
 // 
-// The function takes the following parameters:
-// 
-// 	- command NavigationCommand: The navigation command to use. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event given navigation command..
 func NavigationEventNewCommand(command NavigationCommand) *gst.Event {
 	var carg1 C.GstNavigationCommand // in, none, casted
 	var cret  *C.GstEvent            // return, full, converted
@@ -8262,17 +7445,8 @@ func NavigationEventNewCommand(command NavigationCommand) *gst.Event {
 
 // NavigationEventNewKeyPress wraps gst_navigation_event_new_key_press
 // 
-// The function takes the following parameters:
-// 
-// 	- key string: A string identifying the key press. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for the given key press.
 func NavigationEventNewKeyPress(key string, state NavigationModifierType) *gst.Event {
 	var carg1 *C.gchar                    // in, none, string
 	var carg2 C.GstNavigationModifierType // in, none, casted
@@ -8295,17 +7469,8 @@ func NavigationEventNewKeyPress(key string, state NavigationModifierType) *gst.E
 
 // NavigationEventNewKeyRelease wraps gst_navigation_event_new_key_release
 // 
-// The function takes the following parameters:
-// 
-// 	- key string: A string identifying the released key. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for the given key release.
 func NavigationEventNewKeyRelease(key string, state NavigationModifierType) *gst.Event {
 	var carg1 *C.gchar                    // in, none, string
 	var carg2 C.GstNavigationModifierType // in, none, casted
@@ -8328,19 +7493,8 @@ func NavigationEventNewKeyRelease(key string, state NavigationModifierType) *gst
 
 // NavigationEventNewMouseButtonPress wraps gst_navigation_event_new_mouse_button_press
 // 
-// The function takes the following parameters:
-// 
-// 	- button int32: The number of the pressed mouse button. 
-// 	- x float64: The x coordinate of the mouse cursor. 
-// 	- y float64: The y coordinate of the mouse cursor. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for the given key mouse button press.
 func NavigationEventNewMouseButtonPress(button int32, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -8368,19 +7522,8 @@ func NavigationEventNewMouseButtonPress(button int32, x float64, y float64, stat
 
 // NavigationEventNewMouseButtonRelease wraps gst_navigation_event_new_mouse_button_release
 // 
-// The function takes the following parameters:
-// 
-// 	- button int32: The number of the released mouse button. 
-// 	- x float64: The x coordinate of the mouse cursor. 
-// 	- y float64: The y coordinate of the mouse cursor. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for the given key mouse button release.
 func NavigationEventNewMouseButtonRelease(button int32, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -8408,19 +7551,8 @@ func NavigationEventNewMouseButtonRelease(button int32, x float64, y float64, st
 
 // NavigationEventNewMouseDoubleClick wraps gst_navigation_event_new_mouse_double_click
 // 
-// The function takes the following parameters:
-// 
-// 	- button int32: The number of the pressed mouse button. 
-// 	- x float64: The x coordinate of the mouse cursor. 
-// 	- y float64: The y coordinate of the mouse cursor. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for the given key mouse double click.
 func NavigationEventNewMouseDoubleClick(button int32, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -8448,18 +7580,8 @@ func NavigationEventNewMouseDoubleClick(button int32, x float64, y float64, stat
 
 // NavigationEventNewMouseMove wraps gst_navigation_event_new_mouse_move
 // 
-// The function takes the following parameters:
-// 
-// 	- x float64: The x coordinate of the mouse cursor. 
-// 	- y float64: The y coordinate of the mouse cursor. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for the new mouse location.
 func NavigationEventNewMouseMove(x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gdouble                   // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -8484,20 +7606,8 @@ func NavigationEventNewMouseMove(x float64, y float64, state NavigationModifierT
 
 // NavigationEventNewMouseScroll wraps gst_navigation_event_new_mouse_scroll
 // 
-// The function takes the following parameters:
-// 
-// 	- x float64: The x coordinate of the mouse cursor. 
-// 	- y float64: The y coordinate of the mouse cursor. 
-// 	- deltaX float64: The x component of the scroll movement. 
-// 	- deltaY float64: The y component of the scroll movement. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for the mouse scroll.
 func NavigationEventNewMouseScroll(x float64, y float64, deltaX float64, deltaY float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gdouble                   // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -8528,19 +7638,8 @@ func NavigationEventNewMouseScroll(x float64, y float64, deltaX float64, deltaY 
 
 // NavigationEventNewTouchCancel wraps gst_navigation_event_new_touch_cancel
 // 
-// The function takes the following parameters:
-// 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event signalling that all currently active touch
-// points are cancelled and should be discarded. For example, under Wayland
-// this event might be sent when a swipe passes the threshold to be recognized
-// as a gesture by the compositor.
 func NavigationEventNewTouchCancel(state NavigationModifierType) *gst.Event {
 	var carg1 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
@@ -8559,23 +7658,8 @@ func NavigationEventNewTouchCancel(state NavigationModifierType) *gst.Event {
 
 // NavigationEventNewTouchDown wraps gst_navigation_event_new_touch_down
 // 
-// The function takes the following parameters:
-// 
-// 	- identifier uint: A number uniquely identifying this touch point. It must stay
-//    unique to this touch point at least until an up event is sent for
-//    the same identifier, or all touch points are cancelled. 
-// 	- x float64: The x coordinate of the new touch point. 
-// 	- y float64: The y coordinate of the new touch point. 
-// 	- pressure float64: Pressure data of the touch point, from 0.0 to 1.0, or NaN if no
-//    data is available. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for an added touch point.
 func NavigationEventNewTouchDown(identifier uint, x float64, y float64, pressure float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -8606,18 +7690,8 @@ func NavigationEventNewTouchDown(identifier uint, x float64, y float64, pressure
 
 // NavigationEventNewTouchFrame wraps gst_navigation_event_new_touch_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event signalling the end of a touch frame. Touch
-// frames signal that all previous down, motion and up events not followed by
-// another touch frame event already should be considered simultaneous.
 func NavigationEventNewTouchFrame(state NavigationModifierType) *gst.Event {
 	var carg1 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
@@ -8636,22 +7710,8 @@ func NavigationEventNewTouchFrame(state NavigationModifierType) *gst.Event {
 
 // NavigationEventNewTouchMotion wraps gst_navigation_event_new_touch_motion
 // 
-// The function takes the following parameters:
-// 
-// 	- identifier uint: A number uniquely identifying this touch point. It must
-//    correlate to exactly one previous touch_start event. 
-// 	- x float64: The x coordinate of the touch point. 
-// 	- y float64: The y coordinate of the touch point. 
-// 	- pressure float64: Pressure data of the touch point, from 0.0 to 1.0, or NaN if no
-//    data is available. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for a moved touch point.
 func NavigationEventNewTouchMotion(identifier uint, x float64, y float64, pressure float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -8682,21 +7742,8 @@ func NavigationEventNewTouchMotion(identifier uint, x float64, y float64, pressu
 
 // NavigationEventNewTouchUp wraps gst_navigation_event_new_touch_up
 // 
-// The function takes the following parameters:
-// 
-// 	- identifier uint: A number uniquely identifying this touch point. It must
-//    correlate to exactly one previous down event, but can be reused
-//    after sending this event. 
-// 	- x float64: The x coordinate of the touch point. 
-// 	- y float64: The y coordinate of the touch point. 
-// 	- state NavigationModifierType: a bit-mask representing the state of the modifier keys (e.g. Control,
-// Shift and Alt). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Create a new navigation event for a removed touch point.
 func NavigationEventNewTouchUp(identifier uint, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -8724,18 +7771,8 @@ func NavigationEventNewTouchUp(identifier uint, x float64, y float64, state Navi
 
 // NavigationEventParseCommand wraps gst_navigation_event_parse_command
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- command NavigationCommand: Pointer to GstNavigationCommand to receive the
-//     type of the navigation event. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Inspect a #GstNavigation command event and retrieve the enum value of the
-// associated command.
 func NavigationEventParseCommand(event *gst.Event) (NavigationCommand, bool) {
 	var carg1 *C.GstEvent            // in, none, converted
 	var carg2 C.GstNavigationCommand // out, full, casted
@@ -8759,21 +7796,8 @@ func NavigationEventParseCommand(event *gst.Event) (NavigationCommand, bool) {
 
 // NavigationEventParseKeyEvent wraps gst_navigation_event_parse_key_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- key string: A pointer to a location to receive
-//     the string identifying the key press. The returned string is owned by the
-//     event, and valid only until the event is unreffed. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Note: Modifier keys (as defined in #GstNavigationModifierType)
-// [press](GST_NAVIGATION_EVENT_KEY_PRESS) and
-// [release](GST_NAVIGATION_KEY_PRESS) events are generated even if those states are
-// present on all other related events
 func NavigationEventParseKeyEvent(event *gst.Event) (string, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 *C.gchar    // out, none, string
@@ -8797,23 +7821,8 @@ func NavigationEventParseKeyEvent(event *gst.Event) (string, bool) {
 
 // NavigationEventParseMouseButtonEvent wraps gst_navigation_event_parse_mouse_button_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- button int32: Pointer to a gint that will receive the button
-//     number associated with the event. 
-// 	- x float64: Pointer to a gdouble to receive the x coordinate of the
-//     mouse button event. 
-// 	- y float64: Pointer to a gdouble to receive the y coordinate of the
-//     mouse button event. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Retrieve the details of either a #GstNavigation mouse button press event or
-// a mouse button release event. Determine which type the event is using
-// gst_navigation_event_get_type() to retrieve the #GstNavigationEventType.
 func NavigationEventParseMouseButtonEvent(event *gst.Event) (int32, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gint      // out, full, casted
@@ -8843,20 +7852,8 @@ func NavigationEventParseMouseButtonEvent(event *gst.Event) (int32, float64, flo
 
 // NavigationEventParseMouseMoveEvent wraps gst_navigation_event_parse_mouse_move_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- x float64: Pointer to a gdouble to receive the x coordinate of the
-//     mouse movement. 
-// 	- y float64: Pointer to a gdouble to receive the y coordinate of the
-//     mouse movement. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Inspect a #GstNavigation mouse movement event and extract the coordinates
-// of the event.
 func NavigationEventParseMouseMoveEvent(event *gst.Event) (float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // out, full, casted
@@ -8883,24 +7880,8 @@ func NavigationEventParseMouseMoveEvent(event *gst.Event) (float64, float64, boo
 
 // NavigationEventParseMouseScrollEvent wraps gst_navigation_event_parse_mouse_scroll_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- x float64: Pointer to a gdouble to receive the x coordinate of the
-//     mouse movement. 
-// 	- y float64: Pointer to a gdouble to receive the y coordinate of the
-//     mouse movement. 
-// 	- deltaX float64: Pointer to a gdouble to receive the delta_x coordinate of the
-//     mouse movement. 
-// 	- deltaY float64: Pointer to a gdouble to receive the delta_y coordinate of the
-//     mouse movement. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Inspect a #GstNavigation mouse scroll event and extract the coordinates
-// of the event.
 func NavigationEventParseMouseScrollEvent(event *gst.Event) (float64, float64, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // out, full, casted
@@ -8933,26 +7914,8 @@ func NavigationEventParseMouseScrollEvent(event *gst.Event) (float64, float64, f
 
 // NavigationEventParseTouchEvent wraps gst_navigation_event_parse_touch_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- identifier uint: Pointer to a guint that will receive the
-//     identifier unique to this touch point. 
-// 	- x float64: Pointer to a gdouble that will receive the x
-//     coordinate of the touch event. 
-// 	- y float64: Pointer to a gdouble that will receive the y
-//     coordinate of the touch event. 
-// 	- pressure float64: Pointer to a gdouble that will receive the
-//     force of the touch event, in the range from 0.0 to 1.0. If pressure
-//     data is not available, NaN will be set instead. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Retrieve the details of a #GstNavigation touch-down or touch-motion event.
-// Determine which type the event is using gst_navigation_event_get_type()
-// to retrieve the #GstNavigationEventType.
 func NavigationEventParseTouchEvent(event *gst.Event) (uint, float64, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.guint     // out, full, casted
@@ -8985,21 +7948,8 @@ func NavigationEventParseTouchEvent(event *gst.Event) (uint, float64, float64, f
 
 // NavigationEventParseTouchUpEvent wraps gst_navigation_event_parse_touch_up_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: A #GstEvent to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- identifier uint: Pointer to a guint that will receive the
-//     identifier unique to this touch point. 
-// 	- x float64: Pointer to a gdouble that will receive the x
-//     coordinate of the touch event. 
-// 	- y float64: Pointer to a gdouble that will receive the y
-//     coordinate of the touch event. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Retrieve the details of a #GstNavigation touch-up event.
 func NavigationEventParseTouchUpEvent(event *gst.Event) (uint, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.guint     // out, full, casted
@@ -9029,18 +7979,8 @@ func NavigationEventParseTouchUpEvent(event *gst.Event) (uint, float64, float64,
 
 // NavigationEventSetCoordinates wraps gst_navigation_event_set_coordinates
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: The #GstEvent to modify. 
-// 	- x float64: The x coordinate to set. 
-// 	- y float64: The y coordinate to set. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Try to set x and y coordinates on a #GstNavigation event. The event must
-// be writable.
 func NavigationEventSetCoordinates(event *gst.Event, x float64, y float64) bool {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // in, none, casted
@@ -9067,16 +8007,8 @@ func NavigationEventSetCoordinates(event *gst.Event, x float64, y float64) bool 
 
 // NavigationMessageGetType wraps gst_navigation_message_get_type
 // 
-// The function takes the following parameters:
-// 
-// 	- message *gst.Message: A #GstMessage to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- goret NavigationMessageType 
+// see also No documentation available
 //
-// Check a bus message to see if it is a #GstNavigation event, and return
-// the #GstNavigationMessageType identifying the type of the message if so.
 func NavigationMessageGetType(message *gst.Message) NavigationMessageType {
 	var carg1 *C.GstMessage              // in, none, converted
 	var cret  C.GstNavigationMessageType // return, none, casted
@@ -9095,20 +8027,8 @@ func NavigationMessageGetType(message *gst.Message) NavigationMessageType {
 
 // NavigationMessageNewAnglesChanged wraps gst_navigation_message_new_angles_changed
 // 
-// The function takes the following parameters:
-// 
-// 	- src gst.Object: A #GstObject to set as source of the new message. 
-// 	- curAngle uint: The currently selected angle. 
-// 	- nAngles uint: The number of viewing angles now available. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Message 
+// see also No documentation available
 //
-// Creates a new #GstNavigation message with type
-// #GST_NAVIGATION_MESSAGE_ANGLES_CHANGED for notifying an application
-// that the current angle, or current number of angles available in a
-// multiangle video has changed.
 func NavigationMessageNewAnglesChanged(src gst.Object, curAngle uint, nAngles uint) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var carg2 C.guint       // in, none, casted
@@ -9133,16 +8053,8 @@ func NavigationMessageNewAnglesChanged(src gst.Object, curAngle uint, nAngles ui
 
 // NavigationMessageNewCommandsChanged wraps gst_navigation_message_new_commands_changed
 // 
-// The function takes the following parameters:
-// 
-// 	- src gst.Object: A #GstObject to set as source of the new message. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Message 
+// see also No documentation available
 //
-// Creates a new #GstNavigation message with type
-// #GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
 func NavigationMessageNewCommandsChanged(src gst.Object) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var cret  *C.GstMessage // return, full, converted
@@ -9161,17 +8073,8 @@ func NavigationMessageNewCommandsChanged(src gst.Object) *gst.Message {
 
 // NavigationMessageNewEvent wraps gst_navigation_message_new_event
 // 
-// The function takes the following parameters:
-// 
-// 	- src gst.Object: A #GstObject to set as source of the new message. 
-// 	- event *gst.Event: A navigation #GstEvent 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Message 
+// see also No documentation available
 //
-// Creates a new #GstNavigation message with type
-// #GST_NAVIGATION_MESSAGE_EVENT.
 func NavigationMessageNewEvent(src gst.Object, event *gst.Event) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var carg2 *C.GstEvent   // in, none, converted
@@ -9193,18 +8096,8 @@ func NavigationMessageNewEvent(src gst.Object, event *gst.Event) *gst.Message {
 
 // NavigationMessageNewMouseOver wraps gst_navigation_message_new_mouse_over
 // 
-// The function takes the following parameters:
-// 
-// 	- src gst.Object: A #GstObject to set as source of the new message. 
-// 	- active bool: %TRUE if the mouse has entered a clickable area of the display.
-// %FALSE if it over a non-clickable area. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Message 
+// see also No documentation available
 //
-// Creates a new #GstNavigation message with type
-// #GST_NAVIGATION_MESSAGE_MOUSE_OVER.
 func NavigationMessageNewMouseOver(src gst.Object, active bool) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var carg2 C.gboolean    // in
@@ -9228,20 +8121,8 @@ func NavigationMessageNewMouseOver(src gst.Object, active bool) *gst.Message {
 
 // NavigationMessageParseAnglesChanged wraps gst_navigation_message_parse_angles_changed
 // 
-// The function takes the following parameters:
-// 
-// 	- message *gst.Message: A #GstMessage to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- curAngle uint: A pointer to a #guint to receive the new
-//     current angle number, or NULL 
-// 	- nAngles uint: A pointer to a #guint to receive the new angle
-//     count, or NULL. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse a #GstNavigation message of type GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
-// and extract the @cur_angle and @n_angles parameters.
 func NavigationMessageParseAnglesChanged(message *gst.Message) (uint, uint, bool) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.guint       // out, full, casted
@@ -9268,19 +8149,8 @@ func NavigationMessageParseAnglesChanged(message *gst.Message) (uint, uint, bool
 
 // NavigationMessageParseEvent wraps gst_navigation_message_parse_event
 // 
-// The function takes the following parameters:
-// 
-// 	- message *gst.Message: A #GstMessage to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- event *gst.Event: a pointer to a #GstEvent to receive
-//     the contained navigation event. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_EVENT
-// and extract contained #GstEvent. The caller must unref the @event when done
-// with it.
 func NavigationMessageParseEvent(message *gst.Message) (*gst.Event, bool) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 *C.GstEvent   // out, full, converted
@@ -9304,19 +8174,8 @@ func NavigationMessageParseEvent(message *gst.Message) (*gst.Event, bool) {
 
 // NavigationMessageParseMouseOver wraps gst_navigation_message_parse_mouse_over
 // 
-// The function takes the following parameters:
-// 
-// 	- message *gst.Message: A #GstMessage to inspect. 
-// 
-// The function returns the following values:
-// 
-// 	- active bool: A pointer to a gboolean to receive the
-//     active/inactive state, or NULL. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse a #GstNavigation message of type #GST_NAVIGATION_MESSAGE_MOUSE_OVER
-// and extract the active/inactive flag. If the mouse over event is marked
-// active, it indicates that the mouse is over a clickable area.
 func NavigationMessageParseMouseOver(message *gst.Message) (bool, bool) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.gboolean    // out
@@ -9342,16 +8201,8 @@ func NavigationMessageParseMouseOver(message *gst.Message) (bool, bool) {
 
 // NavigationQueryGetType wraps gst_navigation_query_get_type
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query: The query to inspect 
-// 
-// The function returns the following values:
-// 
-// 	- goret NavigationQueryType 
+// see also No documentation available
 //
-// Inspect a #GstQuery and return the #GstNavigationQueryType associated with
-// it if it is a #GstNavigation query.
 func NavigationQueryGetType(query *gst.Query) NavigationQueryType {
 	var carg1 *C.GstQuery              // in, none, converted
 	var cret  C.GstNavigationQueryType // return, none, casted
@@ -9370,13 +8221,8 @@ func NavigationQueryGetType(query *gst.Query) NavigationQueryType {
 
 // NavigationQueryNewAngles wraps gst_navigation_query_new_angles
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Query 
+// see also No documentation available
 //
-// Create a new #GstNavigation angles query. When executed, it will
-// query the pipeline for the set of currently available angles, which may be
-// greater than one in a multiangle video.
 func NavigationQueryNewAngles() *gst.Query {
 	var cret *C.GstQuery // return, full, converted
 
@@ -9391,12 +8237,8 @@ func NavigationQueryNewAngles() *gst.Query {
 
 // NavigationQueryNewCommands wraps gst_navigation_query_new_commands
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Query 
+// see also No documentation available
 //
-// Create a new #GstNavigation commands query. When executed, it will
-// query the pipeline for the set of currently available commands.
 func NavigationQueryNewCommands() *gst.Query {
 	var cret *C.GstQuery // return, full, converted
 
@@ -9411,21 +8253,8 @@ func NavigationQueryNewCommands() *gst.Query {
 
 // NavigationQueryParseAngles wraps gst_navigation_query_parse_angles
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query: a #GstQuery 
-// 
-// The function returns the following values:
-// 
-// 	- curAngle uint: Pointer to a #guint into which to store the
-//     currently selected angle value from the query, or NULL 
-// 	- nAngles uint: Pointer to a #guint into which to store the
-//     number of angles value from the query, or NULL 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse the current angle number in the #GstNavigation angles @query into the
-// #guint pointed to by the @cur_angle variable, and the number of available
-// angles into the #guint pointed to by the @n_angles variable.
 func NavigationQueryParseAngles(query *gst.Query) (uint, uint, bool) {
 	var carg1 *C.GstQuery // in, none, converted
 	var carg2 C.guint     // out, full, casted
@@ -9452,16 +8281,8 @@ func NavigationQueryParseAngles(query *gst.Query) (uint, uint, bool) {
 
 // NavigationQueryParseCommandsLength wraps gst_navigation_query_parse_commands_length
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query: a #GstQuery 
-// 
-// The function returns the following values:
-// 
-// 	- nCmds uint: the number of commands in this query. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse the number of commands in the #GstNavigation commands @query.
 func NavigationQueryParseCommandsLength(query *gst.Query) (uint, bool) {
 	var carg1 *C.GstQuery // in, none, converted
 	var carg2 C.guint     // out, full, casted
@@ -9485,19 +8306,8 @@ func NavigationQueryParseCommandsLength(query *gst.Query) (uint, bool) {
 
 // NavigationQueryParseCommandsNth wraps gst_navigation_query_parse_commands_nth
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query: a #GstQuery 
-// 	- nth uint: the nth command to retrieve. 
-// 
-// The function returns the following values:
-// 
-// 	- cmd NavigationCommand: a pointer to store the nth command into. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse the #GstNavigation command query and retrieve the @nth command from
-// it into @cmd. If the list contains less elements than @nth, @cmd will be
-// set to #GST_NAVIGATION_COMMAND_INVALID.
 func NavigationQueryParseCommandsNth(query *gst.Query, nth uint) (NavigationCommand, bool) {
 	var carg1 *C.GstQuery            // in, none, converted
 	var carg2 C.guint                // in, none, casted
@@ -9524,13 +8334,8 @@ func NavigationQueryParseCommandsNth(query *gst.Query, nth uint) (NavigationComm
 
 // NavigationQuerySetAngles wraps gst_navigation_query_set_angles
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query: a #GstQuery 
-// 	- curAngle uint: the current viewing angle to set. 
-// 	- nAngles uint: the number of viewing angles to set. 
+// see also No documentation available
 //
-// Set the #GstNavigation angles query result field in @query.
 func NavigationQuerySetAngles(query *gst.Query, curAngle uint, nAngles uint) {
 	var carg1 *C.GstQuery // in, none, converted
 	var carg2 C.guint     // in, none, casted
@@ -9548,14 +8353,8 @@ func NavigationQuerySetAngles(query *gst.Query, curAngle uint, nAngles uint) {
 
 // NavigationQuerySetCommandsv wraps gst_navigation_query_set_commandsv
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query: a #GstQuery 
-// 	- cmds []NavigationCommand: An array containing @n_cmds
-//     @GstNavigationCommand values. 
+// see also No documentation available
 //
-// Set the #GstNavigation command query result fields in @query. The number
-// of commands passed must be equal to @n_commands.
 func NavigationQuerySetCommandsv(query *gst.Query, cmds []NavigationCommand) {
 	var carg1 *C.GstQuery             // in, none, converted
 	var carg2 C.gint                  // implicit
@@ -9574,11 +8373,8 @@ func NavigationQuerySetCommandsv(query *gst.Query, cmds []NavigationCommand) {
 
 // SendCommand wraps gst_navigation_send_command
 // 
-// The function takes the following parameters:
-// 
-// 	- command NavigationCommand: The command to issue 
+// see also No documentation available
 //
-// Sends the indicated command to the navigation interface.
 func (navigation *NavigationInstance) SendCommand(command NavigationCommand) {
 	var carg0 *C.GstNavigation       // in, none, converted
 	var carg1 C.GstNavigationCommand // in, none, casted
@@ -9593,9 +8389,7 @@ func (navigation *NavigationInstance) SendCommand(command NavigationCommand) {
 
 // SendEvent wraps gst_navigation_send_event
 // 
-// The function takes the following parameters:
-// 
-// 	- structure *gst.Structure 
+// see also No documentation available
 func (navigation *NavigationInstance) SendEvent(structure *gst.Structure) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 *C.GstStructure  // in, none, converted
@@ -9610,11 +8404,8 @@ func (navigation *NavigationInstance) SendEvent(structure *gst.Structure) {
 
 // SendEventSimple wraps gst_navigation_send_event_simple
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: The event to send 
+// see also No documentation available
 //
-// Sends an event to the navigation interface.
 func (navigation *NavigationInstance) SendEventSimple(event *gst.Event) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 *C.GstEvent      // in, full, converted
@@ -9629,12 +8420,7 @@ func (navigation *NavigationInstance) SendEventSimple(event *gst.Event) {
 
 // SendKeyEvent wraps gst_navigation_send_key_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event string: The type of the key event. Recognised values are "key-press" and
-// "key-release" 
-// 	- key string: Character representation of the key. This is typically as produced
-// by XKeysymToString. 
+// see also No documentation available
 func (navigation *NavigationInstance) SendKeyEvent(event string, key string) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 *C.char          // in, none, string
@@ -9654,19 +8440,8 @@ func (navigation *NavigationInstance) SendKeyEvent(event string, key string) {
 
 // SendMouseEvent wraps gst_navigation_send_mouse_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event string: The type of mouse event, as a text string. Recognised values are
-// "mouse-button-press", "mouse-button-release", "mouse-move" and "mouse-double-click". 
-// 	- button int32: The button number of the button being pressed or released. Pass 0
-// for mouse-move events. 
-// 	- x float64: The x coordinate of the mouse event. 
-// 	- y float64: The y coordinate of the mouse event. 
+// see also No documentation available
 //
-// Sends a mouse event to the navigation interface. Mouse event coordinates
-// are sent relative to the display space of the related output area. This is
-// usually the size in pixels of the window associated with the element
-// implementing the #GstNavigation interface.
 func (navigation *NavigationInstance) SendMouseEvent(event string, button int32, x float64, y float64) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 *C.char          // in, none, string
@@ -9691,17 +8466,8 @@ func (navigation *NavigationInstance) SendMouseEvent(event string, button int32,
 
 // SendMouseScrollEvent wraps gst_navigation_send_mouse_scroll_event
 // 
-// The function takes the following parameters:
-// 
-// 	- x float64: The x coordinate of the mouse event. 
-// 	- y float64: The y coordinate of the mouse event. 
-// 	- deltaX float64: The delta_x coordinate of the mouse event. 
-// 	- deltaY float64: The delta_y coordinate of the mouse event. 
+// see also No documentation available
 //
-// Sends a mouse scroll event to the navigation interface. Mouse event coordinates
-// are sent relative to the display space of the related output area. This is
-// usually the size in pixels of the window associated with the element
-// implementing the #GstNavigation interface.
 func (navigation *NavigationInstance) SendMouseScrollEvent(x float64, y float64, deltaX float64, deltaY float64) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 C.double         // in, none, casted
@@ -9732,9 +8498,9 @@ type VideoDirectionInstance struct {
 var _ VideoDirection = (*VideoDirectionInstance)(nil)
 
 // VideoDirection wraps GstVideoDirection
+// 
+// see also No documentation available
 //
-// The interface allows unified access to control flipping and rotation
-// operations of video-sources or operators.
 type VideoDirection interface {
 	upcastToGstVideoDirection() *VideoDirectionInstance
 }
@@ -9791,95 +8557,51 @@ type VideoOrientationInstance struct {
 var _ VideoOrientation = (*VideoOrientationInstance)(nil)
 
 // VideoOrientation wraps GstVideoOrientation
+// 
+// see also No documentation available
 //
-// The interface allows unified access to control flipping and autocenter
-// operation of video-sources or operators.
 type VideoOrientation interface {
 	upcastToGstVideoOrientation() *VideoOrientationInstance
 
 	// GetHcenter wraps gst_video_orientation_get_hcenter
 	// 
-	// The function returns the following values:
-	// 
-	// 	- center int32: return location for the result 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Get the horizontal centering offset from the given object.
 	GetHcenter() (int32, bool)
 	// GetHflip wraps gst_video_orientation_get_hflip
 	// 
-	// The function returns the following values:
-	// 
-	// 	- flip bool: return location for the result 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Get the horizontal flipping state (%TRUE for flipped) from the given object.
 	GetHflip() (bool, bool)
 	// GetVcenter wraps gst_video_orientation_get_vcenter
 	// 
-	// The function returns the following values:
-	// 
-	// 	- center int32: return location for the result 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Get the vertical centering offset from the given object.
 	GetVcenter() (int32, bool)
 	// GetVflip wraps gst_video_orientation_get_vflip
 	// 
-	// The function returns the following values:
-	// 
-	// 	- flip bool: return location for the result 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Get the vertical flipping state (%TRUE for flipped) from the given object.
 	GetVflip() (bool, bool)
 	// SetHcenter wraps gst_video_orientation_set_hcenter
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- center int32: centering offset 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Set the horizontal centering offset for the given object.
 	SetHcenter(int32) bool
 	// SetHflip wraps gst_video_orientation_set_hflip
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flip bool: use flipping 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Set the horizontal flipping state (%TRUE for flipped) for the given object.
 	SetHflip(bool) bool
 	// SetVcenter wraps gst_video_orientation_set_vcenter
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- center int32: centering offset 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Set the vertical centering offset for the given object.
 	SetVcenter(int32) bool
 	// SetVflip wraps gst_video_orientation_set_vflip
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flip bool: use flipping 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Set the vertical flipping state (%TRUE for flipped) for the given object.
 	SetVflip(bool) bool
 }
 
@@ -9928,17 +8650,8 @@ func UnsafeVideoOrientationToGlibFull(c VideoOrientation) unsafe.Pointer {
 
 // VideoOrientationFromTag wraps gst_video_orientation_from_tag
 // 
-// The function takes the following parameters:
-// 
-// 	- taglist *gst.TagList: A #GstTagList 
-// 
-// The function returns the following values:
-// 
-// 	- method VideoOrientationMethod: The location where to return the orientation. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses the "image-orientation" tag and transforms it into the
-// #GstVideoOrientationMethod enum.
 func VideoOrientationFromTag(taglist *gst.TagList) (VideoOrientationMethod, bool) {
 	var carg1 *C.GstTagList               // in, none, converted
 	var carg2 C.GstVideoOrientationMethod // out, full, casted
@@ -9962,12 +8675,8 @@ func VideoOrientationFromTag(taglist *gst.TagList) (VideoOrientationMethod, bool
 
 // GetHcenter wraps gst_video_orientation_get_hcenter
 // 
-// The function returns the following values:
-// 
-// 	- center int32: return location for the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Get the horizontal centering offset from the given object.
 func (videoOrientation *VideoOrientationInstance) GetHcenter() (int32, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // out, full, casted
@@ -9991,12 +8700,8 @@ func (videoOrientation *VideoOrientationInstance) GetHcenter() (int32, bool) {
 
 // GetHflip wraps gst_video_orientation_get_hflip
 // 
-// The function returns the following values:
-// 
-// 	- flip bool: return location for the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Get the horizontal flipping state (%TRUE for flipped) from the given object.
 func (videoOrientation *VideoOrientationInstance) GetHflip() (bool, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gboolean             // out
@@ -10022,12 +8727,8 @@ func (videoOrientation *VideoOrientationInstance) GetHflip() (bool, bool) {
 
 // GetVcenter wraps gst_video_orientation_get_vcenter
 // 
-// The function returns the following values:
-// 
-// 	- center int32: return location for the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Get the vertical centering offset from the given object.
 func (videoOrientation *VideoOrientationInstance) GetVcenter() (int32, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // out, full, casted
@@ -10051,12 +8752,8 @@ func (videoOrientation *VideoOrientationInstance) GetVcenter() (int32, bool) {
 
 // GetVflip wraps gst_video_orientation_get_vflip
 // 
-// The function returns the following values:
-// 
-// 	- flip bool: return location for the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Get the vertical flipping state (%TRUE for flipped) from the given object.
 func (videoOrientation *VideoOrientationInstance) GetVflip() (bool, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gboolean             // out
@@ -10082,15 +8779,8 @@ func (videoOrientation *VideoOrientationInstance) GetVflip() (bool, bool) {
 
 // SetHcenter wraps gst_video_orientation_set_hcenter
 // 
-// The function takes the following parameters:
-// 
-// 	- center int32: centering offset 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set the horizontal centering offset for the given object.
 func (videoOrientation *VideoOrientationInstance) SetHcenter(center int32) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // in, none, casted
@@ -10114,15 +8804,8 @@ func (videoOrientation *VideoOrientationInstance) SetHcenter(center int32) bool 
 
 // SetHflip wraps gst_video_orientation_set_hflip
 // 
-// The function takes the following parameters:
-// 
-// 	- flip bool: use flipping 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set the horizontal flipping state (%TRUE for flipped) for the given object.
 func (videoOrientation *VideoOrientationInstance) SetHflip(flip bool) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gboolean             // in
@@ -10148,15 +8831,8 @@ func (videoOrientation *VideoOrientationInstance) SetHflip(flip bool) bool {
 
 // SetVcenter wraps gst_video_orientation_set_vcenter
 // 
-// The function takes the following parameters:
-// 
-// 	- center int32: centering offset 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set the vertical centering offset for the given object.
 func (videoOrientation *VideoOrientationInstance) SetVcenter(center int32) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // in, none, casted
@@ -10180,15 +8856,8 @@ func (videoOrientation *VideoOrientationInstance) SetVcenter(center int32) bool 
 
 // SetVflip wraps gst_video_orientation_set_vflip
 // 
-// The function takes the following parameters:
-// 
-// 	- flip bool: use flipping 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set the vertical flipping state (%TRUE for flipped) for the given object.
 func (videoOrientation *VideoOrientationInstance) SetVflip(flip bool) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gboolean             // in
@@ -10221,317 +8890,31 @@ type VideoOverlayInstance struct {
 var _ VideoOverlay = (*VideoOverlayInstance)(nil)
 
 // VideoOverlay wraps GstVideoOverlay
+// 
+// see also No documentation available
 //
-// The #GstVideoOverlay interface is used for 2 main purposes :
-// 
-// * To get a grab on the Window where the video sink element is going to render.
-//   This is achieved by either being informed about the Window identifier that
-//   the video sink element generated, or by forcing the video sink element to use
-//   a specific Window identifier for rendering.
-// * To force a redrawing of the latest video frame the video sink element
-//   displayed on the Window. Indeed if the #GstPipeline is in #GST_STATE_PAUSED
-//   state, moving the Window around will damage its content. Application
-//   developers will want to handle the Expose events themselves and force the
-//   video sink element to refresh the Window's content.
-// 
-// Using the Window created by the video sink is probably the simplest scenario,
-// in some cases, though, it might not be flexible enough for application
-// developers if they need to catch events such as mouse moves and button
-// clicks.
-// 
-// Setting a specific Window identifier on the video sink element is the most
-// flexible solution but it has some issues. Indeed the application needs to set
-// its Window identifier at the right time to avoid internal Window creation
-// from the video sink element. To solve this issue a #GstMessage is posted on
-// the bus to inform the application that it should set the Window identifier
-// immediately. Here is an example on how to do that correctly:
-// |[
-// static GstBusSyncReply
-// create_window (GstBus * bus, GstMessage * message, GstPipeline * pipeline)
-// {
-//  // ignore anything but 'prepare-window-handle' element messages
-//  if (!gst_is_video_overlay_prepare_window_handle_message (message))
-//    return GST_BUS_PASS;
-// 
-//  win = XCreateSimpleWindow (disp, root, 0, 0, 320, 240, 0, 0, 0);
-// 
-//  XSetWindowBackgroundPixmap (disp, win, None);
-// 
-//  XMapRaised (disp, win);
-// 
-//  XSync (disp, FALSE);
-// 
-//  gst_video_overlay_set_window_handle (GST_VIDEO_OVERLAY (GST_MESSAGE_SRC (message)),
-//      win);
-// 
-//  gst_message_unref (message);
-// 
-//  return GST_BUS_DROP;
-// }
-// ...
-// int
-// main (int argc, char **argv)
-// {
-// ...
-//  bus = gst_pipeline_get_bus (GST_PIPELINE (pipeline));
-//  gst_bus_set_sync_handler (bus, (GstBusSyncHandler) create_window, pipeline,
-//         NULL);
-// ...
-// }
-// ]|
-// 
-// ## Two basic usage scenarios
-// 
-// There are two basic usage scenarios: in the simplest case, the application
-// uses #playbin or #playsink or knows exactly what particular element is used
-// for video output, which is usually the case when the application creates
-// the videosink to use (e.g. #xvimagesink, #ximagesink, etc.) itself; in this
-// case, the application can just create the videosink element, create and
-// realize the window to render the video on and then
-// call gst_video_overlay_set_window_handle() directly with the XID or native
-// window handle, before starting up the pipeline.
-// As #playbin and #playsink implement the video overlay interface and proxy
-// it transparently to the actual video sink even if it is created later, this
-// case also applies when using these elements.
-// 
-// In the other and more common case, the application does not know in advance
-// what GStreamer video sink element will be used for video output. This is
-// usually the case when an element such as #autovideosink is used.
-// In this case, the video sink element itself is created
-// asynchronously from a GStreamer streaming thread some time after the
-// pipeline has been started up. When that happens, however, the video sink
-// will need to know right then whether to render onto an already existing
-// application window or whether to create its own window. This is when it
-// posts a prepare-window-handle message, and that is also why this message needs
-// to be handled in a sync bus handler which will be called from the streaming
-// thread directly (because the video sink will need an answer right then).
-// 
-// As response to the prepare-window-handle element message in the bus sync
-// handler, the application may use gst_video_overlay_set_window_handle() to tell
-// the video sink to render onto an existing window surface. At this point the
-// application should already have obtained the window handle / XID, so it
-// just needs to set it. It is generally not advisable to call any GUI toolkit
-// functions or window system functions from the streaming thread in which the
-// prepare-window-handle message is handled, because most GUI toolkits and
-// windowing systems are not thread-safe at all and a lot of care would be
-// required to co-ordinate the toolkit and window system calls of the
-// different threads (Gtk+ users please note: prior to Gtk+ 2.18
-// `GDK_WINDOW_XID` was just a simple structure access, so generally fine to do
-// within the bus sync handler; this macro was changed to a function call in
-// Gtk+ 2.18 and later, which is likely to cause problems when called from a
-// sync handler; see below for a better approach without `GDK_WINDOW_XID`
-// used in the callback).
-// 
-// ## GstVideoOverlay and Gtk+
-// 
-// |[
-// #include &lt;gst/video/videooverlay.h&gt;
-// #include &lt;gtk/gtk.h&gt;
-// #ifdef GDK_WINDOWING_X11
-// #include &lt;gdk/gdkx.h&gt;  // for GDK_WINDOW_XID
-// #endif
-// #ifdef GDK_WINDOWING_WIN32
-// #include &lt;gdk/gdkwin32.h&gt;  // for GDK_WINDOW_HWND
-// #endif
-// ...
-// static guintptr video_window_handle = 0;
-// ...
-// static GstBusSyncReply
-// bus_sync_handler (GstBus * bus, GstMessage * message, gpointer user_data)
-// {
-//  // ignore anything but 'prepare-window-handle' element messages
-//  if (!gst_is_video_overlay_prepare_window_handle_message (message))
-//    return GST_BUS_PASS;
-// 
-//  if (video_window_handle != 0) {
-//    GstVideoOverlay *overlay;
-// 
-//    // GST_MESSAGE_SRC (message) will be the video sink element
-//    overlay = GST_VIDEO_OVERLAY (GST_MESSAGE_SRC (message));
-//    gst_video_overlay_set_window_handle (overlay, video_window_handle);
-//  } else {
-//    g_warning ("Should have obtained video_window_handle by now!");
-//  }
-// 
-//  gst_message_unref (message);
-//  return GST_BUS_DROP;
-// }
-// ...
-// static void
-// video_widget_realize_cb (GtkWidget * widget, gpointer data)
-// {
-// #if GTK_CHECK_VERSION(2,18,0)
-//   // Tell Gtk+/Gdk to create a native window for this widget instead of
-//   // drawing onto the parent widget.
-//   // This is here just for pedagogical purposes, GDK_WINDOW_XID will call
-//   // it as well in newer Gtk versions
-//   if (!gdk_window_ensure_native (widget-&gt;window))
-//     g_error ("Couldn't create native window needed for GstVideoOverlay!");
-// #endif
-// 
-// #ifdef GDK_WINDOWING_X11
-//   {
-//     gulong xid = GDK_WINDOW_XID (gtk_widget_get_window (video_window));
-//     video_window_handle = xid;
-//   }
-// #endif
-// #ifdef GDK_WINDOWING_WIN32
-//   {
-//     HWND wnd = GDK_WINDOW_HWND (gtk_widget_get_window (video_window));
-//     video_window_handle = (guintptr) wnd;
-//   }
-// #endif
-// }
-// ...
-// int
-// main (int argc, char **argv)
-// {
-//   GtkWidget *video_window;
-//   GtkWidget *app_window;
-//   ...
-//   app_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-//   ...
-//   video_window = gtk_drawing_area_new ();
-//   g_signal_connect (video_window, "realize",
-//       G_CALLBACK (video_widget_realize_cb), NULL);
-//   gtk_widget_set_double_buffered (video_window, FALSE);
-//   ...
-//   // usually the video_window will not be directly embedded into the
-//   // application window like this, but there will be many other widgets
-//   // and the video window will be embedded in one of them instead
-//   gtk_container_add (GTK_CONTAINER (ap_window), video_window);
-//   ...
-//   // show the GUI
-//   gtk_widget_show_all (app_window);
-// 
-//   // realize window now so that the video window gets created and we can
-//   // obtain its XID/HWND before the pipeline is started up and the videosink
-//   // asks for the XID/HWND of the window to render onto
-//   gtk_widget_realize (video_window);
-// 
-//   // we should have the XID/HWND now
-//   g_assert (video_window_handle != 0);
-//   ...
-//   // set up sync handler for setting the xid once the pipeline is started
-//   bus = gst_pipeline_get_bus (GST_PIPELINE (pipeline));
-//   gst_bus_set_sync_handler (bus, (GstBusSyncHandler) bus_sync_handler, NULL,
-//       NULL);
-//   gst_object_unref (bus);
-//   ...
-//   gst_element_set_state (pipeline, GST_STATE_PLAYING);
-//   ...
-// }
-// ]|
-// 
-// ## GstVideoOverlay and Qt
-// 
-// |[
-// #include &lt;glib.h&gt;;
-// #include &lt;gst/gst.h&gt;;
-// #include &lt;gst/video/videooverlay.h&gt;;
-// 
-// #include &lt;QApplication&gt;;
-// #include &lt;QTimer&gt;;
-// #include &lt;QWidget&gt;;
-// 
-// int main(int argc, char *argv[])
-// {
-//   if (!g_thread_supported ())
-//     g_thread_init (NULL);
-// 
-//   gst_init (&amp;argc, &amp;argv);
-//   QApplication app(argc, argv);
-//   app.connect(&amp;app, SIGNAL(lastWindowClosed()), &amp;app, SLOT(quit ()));
-// 
-//   // prepare the pipeline
-// 
-//   GstElement *pipeline = gst_pipeline_new ("xvoverlay");
-//   GstElement *src = gst_element_factory_make ("videotestsrc", NULL);
-//   GstElement *sink = gst_element_factory_make ("xvimagesink", NULL);
-//   gst_bin_add_many (GST_BIN (pipeline), src, sink, NULL);
-//   gst_element_link (src, sink);
-// 
-//   // prepare the ui
-// 
-//   QWidget window;
-//   window.resize(320, 240);
-//   window.show();
-// 
-//   WId xwinid = window.winId();
-//   gst_video_overlay_set_window_handle (GST_VIDEO_OVERLAY (sink), xwinid);
-// 
-//   // run the pipeline
-// 
-//   GstStateChangeReturn sret = gst_element_set_state (pipeline,
-//       GST_STATE_PLAYING);
-//   if (sret == GST_STATE_CHANGE_FAILURE) {
-//     gst_element_set_state (pipeline, GST_STATE_NULL);
-//     gst_object_unref (pipeline);
-//     // Exit application
-//     QTimer::singleShot(0, QApplication::activeWindow(), SLOT(quit()));
-//   }
-// 
-//   int ret = app.exec();
-// 
-//   window.hide();
-//   gst_element_set_state (pipeline, GST_STATE_NULL);
-//   gst_object_unref (pipeline);
-// 
-//   return ret;
-// }
-// ]|
 type VideoOverlay interface {
 	upcastToGstVideoOverlay() *VideoOverlayInstance
 
 	// Expose wraps gst_video_overlay_expose
+	// 
+	// see also No documentation available
 	//
-	// Tell an overlay that it has been exposed. This will redraw the current frame
-	// in the drawable even if the pipeline is PAUSED.
 	Expose()
 	// HandleEvents wraps gst_video_overlay_handle_events
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+	// see also No documentation available
 	//
-	// Tell an overlay that it should handle events from the window system. These
-	// events are forwarded upstream as navigation events. In some window system,
-	// events are not propagated in the window hierarchy if a client is listening
-	// for them. This method allows you to disable events handling completely
-	// from the #GstVideoOverlay.
 	HandleEvents(bool)
 	// PrepareWindowHandle wraps gst_video_overlay_prepare_window_handle
-	//
-	// This will post a "prepare-window-handle" element message on the bus
-	// to give applications an opportunity to call
-	// gst_video_overlay_set_window_handle() before a plugin creates its own
-	// window.
 	// 
-	// This function should only be used by video overlay plugin developers.
+	// see also No documentation available
+	//
 	PrepareWindowHandle()
 	// SetRenderRectangle wraps gst_video_overlay_set_render_rectangle
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- x int32: the horizontal offset of the render area inside the window 
-	// 	- y int32: the vertical offset of the render area inside the window 
-	// 	- width int32: the width of the render area inside the window 
-	// 	- height int32: the height of the render area inside the window 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Configure a subregion as a video target within the window set by
-	// gst_video_overlay_set_window_handle(). If this is not used or not supported
-	// the video will fill the area of the window set as the overlay to 100%.
-	// By specifying the rectangle, the video can be overlayed to a specific region
-	// of that window only. After setting the new rectangle one should call
-	// gst_video_overlay_expose() to force a redraw. To unset the region pass -1 for
-	// the @width and @height parameters.
-	// 
-	// This method is needed for non fullscreen video overlay in UI toolkits that
-	// do not support subwindows.
 	SetRenderRectangle(int32, int32, int32, int32) bool
 }
 
@@ -10580,21 +8963,8 @@ func UnsafeVideoOverlayToGlibFull(c VideoOverlay) unsafe.Pointer {
 
 // VideoOverlaySetProperty wraps gst_video_overlay_set_property
 // 
-// The function takes the following parameters:
-// 
-// 	- object gobject.Object: The instance on which the property is set 
-// 	- lastPropId int32: The highest property ID. 
-// 	- propertyId uint: The property ID 
-// 	- value *gobject.Value: The #GValue to be set 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// This helper shall be used by classes implementing the #GstVideoOverlay
-// interface that want the render rectangle to be controllable using
-// properties. This helper will parse and set the render rectangle calling
-// gst_video_overlay_set_render_rectangle().
 func VideoOverlaySetProperty(object gobject.Object, lastPropId int32, propertyId uint, value *gobject.Value) bool {
 	var carg1 *C.GObject // in, none, converted
 	var carg2 C.gint     // in, none, casted
@@ -10623,9 +8993,9 @@ func VideoOverlaySetProperty(object gobject.Object, lastPropId int32, propertyId
 }
 
 // Expose wraps gst_video_overlay_expose
+// 
+// see also No documentation available
 //
-// Tell an overlay that it has been exposed. This will redraw the current frame
-// in the drawable even if the pipeline is PAUSED.
 func (overlay *VideoOverlayInstance) Expose() {
 	var carg0 *C.GstVideoOverlay // in, none, converted
 
@@ -10637,15 +9007,8 @@ func (overlay *VideoOverlayInstance) Expose() {
 
 // HandleEvents wraps gst_video_overlay_handle_events
 // 
-// The function takes the following parameters:
-// 
-// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+// see also No documentation available
 //
-// Tell an overlay that it should handle events from the window system. These
-// events are forwarded upstream as navigation events. In some window system,
-// events are not propagated in the window hierarchy if a client is listening
-// for them. This method allows you to disable events handling completely
-// from the #GstVideoOverlay.
 func (overlay *VideoOverlayInstance) HandleEvents(handleEvents bool) {
 	var carg0 *C.GstVideoOverlay // in, none, converted
 	var carg1 C.gboolean         // in
@@ -10661,13 +9024,9 @@ func (overlay *VideoOverlayInstance) HandleEvents(handleEvents bool) {
 }
 
 // PrepareWindowHandle wraps gst_video_overlay_prepare_window_handle
-//
-// This will post a "prepare-window-handle" element message on the bus
-// to give applications an opportunity to call
-// gst_video_overlay_set_window_handle() before a plugin creates its own
-// window.
 // 
-// This function should only be used by video overlay plugin developers.
+// see also No documentation available
+//
 func (overlay *VideoOverlayInstance) PrepareWindowHandle() {
 	var carg0 *C.GstVideoOverlay // in, none, converted
 
@@ -10679,27 +9038,8 @@ func (overlay *VideoOverlayInstance) PrepareWindowHandle() {
 
 // SetRenderRectangle wraps gst_video_overlay_set_render_rectangle
 // 
-// The function takes the following parameters:
-// 
-// 	- x int32: the horizontal offset of the render area inside the window 
-// 	- y int32: the vertical offset of the render area inside the window 
-// 	- width int32: the width of the render area inside the window 
-// 	- height int32: the height of the render area inside the window 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Configure a subregion as a video target within the window set by
-// gst_video_overlay_set_window_handle(). If this is not used or not supported
-// the video will fill the area of the window set as the overlay to 100%.
-// By specifying the rectangle, the video can be overlayed to a specific region
-// of that window only. After setting the new rectangle one should call
-// gst_video_overlay_expose() to force a redraw. To unset the region pass -1 for
-// the @width and @height parameters.
-// 
-// This method is needed for non fullscreen video overlay in UI toolkits that
-// do not support subwindows.
 func (overlay *VideoOverlayInstance) SetRenderRectangle(x int32, y int32, width int32, height int32) bool {
 	var carg0 *C.GstVideoOverlay // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -10739,17 +9079,17 @@ type ColorBalanceChannelInstance struct {
 var _ ColorBalanceChannel = (*ColorBalanceChannelInstance)(nil)
 
 // ColorBalanceChannel wraps GstColorBalanceChannel
+// 
+// see also No documentation available
 //
-// The #GstColorBalanceChannel object represents a parameter
-// for modifying the color balance implemented by an element providing the
-// #GstColorBalance interface. For example, Hue or Saturation.
 type ColorBalanceChannel interface {
 	gobject.Object
 	upcastToGstColorBalanceChannel() *ColorBalanceChannelInstance
 
 	// ConnectValueChanged connects the provided callback to the "value-changed" signal
+	// 
+	// see also No documentation available
 	//
-	// Fired when the value of the indicated channel has changed.
 	ConnectValueChanged(func(ColorBalanceChannel, int32)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -10757,11 +9097,7 @@ type ColorBalanceChannel interface {
 	// ParentValueChanged calls the default implementations of the `GstColorBalanceChannel.value_changed` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- value int32 
-	//
-	// default handler for value changed notification
+	// see also No documentation available
 	ParentValueChanged(value int32)
 }
 
@@ -10814,8 +9150,9 @@ func UnsafeColorBalanceChannelToGlibFull(c ColorBalanceChannel) unsafe.Pointer {
 }
 
 // ConnectValueChanged connects the provided callback to the "value-changed" signal
+// 
+// see also No documentation available
 //
-// Fired when the value of the indicated channel has changed.
 func (o *ColorBalanceChannelInstance) ConnectValueChanged(fn func(ColorBalanceChannel, int32)) gobject.SignalHandle {
 	return o.Connect("value-changed", fn)
 }
@@ -10828,11 +9165,7 @@ type ColorBalanceChannelOverrides[Instance ColorBalanceChannel] struct {
 
 	// // ValueChanged allows you to override the implementation of the virtual method value_changed.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- value int32 
-	//
-	// default handler for value changed notification
+	// see also No documentation available
 	ValueChanged func(Instance, int32)
 }
 
@@ -10864,11 +9197,7 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 // ParentValueChanged calls the default implementations of the `GstColorBalanceChannel.value_changed` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- value int32 
-//
-// default handler for value changed notification
+// see also No documentation available
 func (channel *ColorBalanceChannelInstance) ParentValueChanged(value int32) {
 	var carg0 *C.GstColorBalanceChannel
 	var carg1 C.gint // in, none, converted
@@ -10918,31 +9247,17 @@ type VideoAggregatorInstance struct {
 var _ VideoAggregator = (*VideoAggregatorInstance)(nil)
 
 // VideoAggregator wraps GstVideoAggregator
+// 
+// see also No documentation available
 //
-// VideoAggregator can accept AYUV, ARGB and BGRA video streams. For each of the requested
-// sink pads it will compare the incoming geometry and framerate to define the
-// output parameters. Indeed output video frames will have the geometry of the
-// biggest incoming video stream and the framerate of the fastest incoming one.
-// 
-// VideoAggregator will do colorspace conversion.
-// 
-// Zorder for each input stream can be configured on the
-// #GstVideoAggregatorPad.
 type VideoAggregator interface {
 	gstbase.Aggregator
 	upcastToGstVideoAggregator() *VideoAggregatorInstance
 
 	// GetExecutionTaskPool wraps gst_video_aggregator_get_execution_task_pool
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.TaskPool 
+	// see also No documentation available
 	//
-	// The returned #GstTaskPool is used internally for performing parallel
-	// video format conversions/scaling/etc during the
-	// #GstVideoAggregatorPadClass::prepare_frame_start() process.
-	// Subclasses can add their own operation to perform using the returned
-	// #GstTaskPool during #GstVideoAggregatorClass::aggregate_frames().
 	GetExecutionTaskPool() gst.TaskPool
 
 	// chain up virtual methods:
@@ -10950,47 +9265,17 @@ type VideoAggregator interface {
 	// ParentAggregateFrames calls the default implementations of the `GstVideoAggregator.aggregate_frames` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Lets subclasses aggregate frames that are ready. Subclasses
-	//                            should iterate the GstElement.sinkpads and use the already
-	//                            mapped #GstVideoFrame from gst_video_aggregator_pad_get_prepared_frame()
-	//                            or directly use the #GstBuffer from gst_video_aggregator_pad_get_current_buffer()
-	//                            if it needs to map the buffer in a special way. The result of the
-	//                            aggregation should land in @outbuffer.
+	// see also No documentation available
 	ParentAggregateFrames(outbuffer *gst.Buffer) gst.FlowReturn
 	// ParentFindBestFormat calls the default implementations of the `GstVideoAggregator.find_best_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- downstreamCaps *gst.Caps 
-	// 	- bestInfo *VideoInfo 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- atLeastOneAlpha bool 
+	// see also No documentation available
 	ParentFindBestFormat(downstreamCaps *gst.Caps, bestInfo *VideoInfo) bool
 	// ParentUpdateCaps calls the default implementations of the `GstVideoAggregator.update_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                            Lets subclasses update the #GstCaps representing
-	//                            the src pad caps before usage.  Return %NULL to indicate failure.
+	// see also No documentation available
 	ParentUpdateCaps(caps *gst.Caps) *gst.Caps
 }
 
@@ -11052,15 +9337,8 @@ func UnsafeVideoAggregatorToGlibFull(c VideoAggregator) unsafe.Pointer {
 
 // GetExecutionTaskPool wraps gst_video_aggregator_get_execution_task_pool
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.TaskPool 
+// see also No documentation available
 //
-// The returned #GstTaskPool is used internally for performing parallel
-// video format conversions/scaling/etc during the
-// #GstVideoAggregatorPadClass::prepare_frame_start() process.
-// Subclasses can add their own operation to perform using the returned
-// #GstTaskPool during #GstVideoAggregatorClass::aggregate_frames().
 func (vagg *VideoAggregatorInstance) GetExecutionTaskPool() gst.TaskPool {
 	var carg0 *C.GstVideoAggregator // in, none, converted
 	var cret  *C.GstTaskPool        // return, full, converted
@@ -11085,45 +9363,15 @@ type VideoAggregatorOverrides[Instance VideoAggregator] struct {
 
 	// // AggregateFrames allows you to override the implementation of the virtual method aggregate_frames.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Lets subclasses aggregate frames that are ready. Subclasses
-	//                            should iterate the GstElement.sinkpads and use the already
-	//                            mapped #GstVideoFrame from gst_video_aggregator_pad_get_prepared_frame()
-	//                            or directly use the #GstBuffer from gst_video_aggregator_pad_get_current_buffer()
-	//                            if it needs to map the buffer in a special way. The result of the
-	//                            aggregation should land in @outbuffer.
+	// see also No documentation available
 	AggregateFrames func(Instance, *gst.Buffer) gst.FlowReturn
 	// // FindBestFormat allows you to override the implementation of the virtual method find_best_format.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- downstreamCaps *gst.Caps 
-	// 	- bestInfo *VideoInfo 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- atLeastOneAlpha bool 
+	// see also No documentation available
 	FindBestFormat func(Instance, *gst.Caps, *VideoInfo) bool
 	// // UpdateCaps allows you to override the implementation of the virtual method update_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                            Lets subclasses update the #GstCaps representing
-	//                            the src pad caps before usage.  Return %NULL to indicate failure.
+	// see also No documentation available
 	UpdateCaps func(Instance, *gst.Caps) *gst.Caps
 }
 
@@ -11206,20 +9454,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 // ParentAggregateFrames calls the default implementations of the `GstVideoAggregator.aggregate_frames` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- outbuffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Lets subclasses aggregate frames that are ready. Subclasses
-//                            should iterate the GstElement.sinkpads and use the already
-//                            mapped #GstVideoFrame from gst_video_aggregator_pad_get_prepared_frame()
-//                            or directly use the #GstBuffer from gst_video_aggregator_pad_get_current_buffer()
-//                            if it needs to map the buffer in a special way. The result of the
-//                            aggregation should land in @outbuffer.
+// see also No documentation available
 func (videoaggregator *VideoAggregatorInstance) ParentAggregateFrames(outbuffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstVideoAggregator
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -11244,14 +9479,7 @@ func (videoaggregator *VideoAggregatorInstance) ParentAggregateFrames(outbuffer 
 // ParentFindBestFormat calls the default implementations of the `GstVideoAggregator.find_best_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- downstreamCaps *gst.Caps 
-// 	- bestInfo *VideoInfo 
-// 
-// The function returns the following values:
-// 
-// 	- atLeastOneAlpha bool 
+// see also No documentation available
 func (vagg *VideoAggregatorInstance) ParentFindBestFormat(downstreamCaps *gst.Caps, bestInfo *VideoInfo) bool {
 	var carg0 *C.GstVideoAggregator
 	var carg1 *C.GstCaps      // in, none, converted
@@ -11281,17 +9509,7 @@ func (vagg *VideoAggregatorInstance) ParentFindBestFormat(downstreamCaps *gst.Ca
 // ParentUpdateCaps calls the default implementations of the `GstVideoAggregator.update_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Optional.
-//                            Lets subclasses update the #GstCaps representing
-//                            the src pad caps before usage.  Return %NULL to indicate failure.
+// see also No documentation available
 func (videoaggregator *VideoAggregatorInstance) ParentUpdateCaps(caps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoAggregator
 	var carg1 *C.GstCaps // in, none, converted
@@ -11348,59 +9566,31 @@ type VideoAggregatorPadInstance struct {
 var _ VideoAggregatorPad = (*VideoAggregatorPadInstance)(nil)
 
 // VideoAggregatorPad wraps GstVideoAggregatorPad
+// 
+// see also No documentation available
 type VideoAggregatorPad interface {
 	gstbase.AggregatorPad
 	upcastToGstVideoAggregatorPad() *VideoAggregatorPadInstance
 
 	// GetCurrentBuffer wraps gst_video_aggregator_pad_get_current_buffer
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
+	// see also No documentation available
 	//
-	// Returns the currently queued buffer that is going to be used
-	// for the current output frame.
-	// 
-	// This must only be called from the #GstVideoAggregatorClass::aggregate_frames virtual method,
-	// or from the #GstVideoAggregatorPadClass::prepare_frame virtual method of the aggregator pads.
-	// 
-	// The return value is only valid until #GstVideoAggregatorClass::aggregate_frames or #GstVideoAggregatorPadClass::prepare_frame
-	// returns.
 	GetCurrentBuffer() *gst.Buffer
 	// GetPreparedFrame wraps gst_video_aggregator_pad_get_prepared_frame
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoFrame 
+	// see also No documentation available
 	//
-	// Returns the currently prepared video frame that has to be aggregated into
-	// the current output frame.
-	// 
-	// This must only be called from the #GstVideoAggregatorClass::aggregate_frames virtual method,
-	// or from the #GstVideoAggregatorPadClass::prepare_frame virtual method of the aggregator pads.
-	// 
-	// The return value is only valid until #GstVideoAggregatorClass::aggregate_frames or #GstVideoAggregatorPadClass::prepare_frame
-	// returns.
 	GetPreparedFrame() *VideoFrame
 	// HasCurrentBuffer wraps gst_video_aggregator_pad_has_current_buffer
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks if the pad currently has a buffer queued that is going to be used
-	// for the current output frame.
-	// 
-	// This must only be called from the #GstVideoAggregatorClass::aggregate_frames virtual method,
-	// or from the #GstVideoAggregatorPadClass::prepare_frame virtual method of the aggregator pads.
 	HasCurrentBuffer() bool
 	// SetNeedsAlpha wraps gst_video_aggregator_pad_set_needs_alpha
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- needsAlpha bool: %TRUE if this pad requires alpha output 
+	// see also No documentation available
 	//
-	// Allows selecting that this pad requires an output format with alpha
 	SetNeedsAlpha(bool)
 
 	// chain up virtual methods:
@@ -11408,60 +9598,27 @@ type VideoAggregatorPad interface {
 	// ParentCleanFrame calls the default implementations of the `GstVideoAggregatorPad.clean_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- videoaggregator VideoAggregator 
-	// 	- preparedFrame *VideoFrame 
-	//
-	// clean the frame previously prepared in prepare_frame
+	// see also No documentation available
 	ParentCleanFrame(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
 	// ParentPrepareFrame calls the default implementations of the `GstVideoAggregatorPad.prepare_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- videoaggregator VideoAggregator 
-	// 	- buffer *gst.Buffer 
-	// 	- preparedFrame *VideoFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Prepare the frame from the pad buffer and sets it to prepared_frame.
-	//      Implementations should always return TRUE.  Returning FALSE will cease
-	//      iteration over subsequent pads.
+	// see also No documentation available
 	ParentPrepareFrame(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) bool
 	// ParentPrepareFrameFinish calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_finish` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
-	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
-	//
-	// Finish preparing @prepared_frame.
-	// 
-	// If overriden, `prepare_frame_start` must also be overriden.
+	// see also No documentation available
 	ParentPrepareFrameFinish(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
 	// ParentPrepareFrameStart calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
-	// 	- buffer *gst.Buffer: the input #GstBuffer to prepare 
-	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
-	//
-	// Begin preparing the frame from the pad buffer and sets it to prepared_frame.
-	// 
-	// If overriden, `prepare_frame_finish` must also be overriden.
+	// see also No documentation available
 	ParentPrepareFrameStart(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame)
 	// ParentUpdateConversionInfo calls the default implementations of the `GstVideoAggregatorPad.update_conversion_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// Called when either the input or output formats
-	//                          have changed.
+	// 
+	// see also No documentation available
 	ParentUpdateConversionInfo()
 }
 
@@ -11523,18 +9680,8 @@ func UnsafeVideoAggregatorPadToGlibFull(c VideoAggregatorPad) unsafe.Pointer {
 
 // GetCurrentBuffer wraps gst_video_aggregator_pad_get_current_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Returns the currently queued buffer that is going to be used
-// for the current output frame.
-// 
-// This must only be called from the #GstVideoAggregatorClass::aggregate_frames virtual method,
-// or from the #GstVideoAggregatorPadClass::prepare_frame virtual method of the aggregator pads.
-// 
-// The return value is only valid until #GstVideoAggregatorClass::aggregate_frames or #GstVideoAggregatorPadClass::prepare_frame
-// returns.
 func (pad *VideoAggregatorPadInstance) GetCurrentBuffer() *gst.Buffer {
 	var carg0 *C.GstVideoAggregatorPad // in, none, converted
 	var cret  *C.GstBuffer             // return, none, converted
@@ -11553,18 +9700,8 @@ func (pad *VideoAggregatorPadInstance) GetCurrentBuffer() *gst.Buffer {
 
 // GetPreparedFrame wraps gst_video_aggregator_pad_get_prepared_frame
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoFrame 
+// see also No documentation available
 //
-// Returns the currently prepared video frame that has to be aggregated into
-// the current output frame.
-// 
-// This must only be called from the #GstVideoAggregatorClass::aggregate_frames virtual method,
-// or from the #GstVideoAggregatorPadClass::prepare_frame virtual method of the aggregator pads.
-// 
-// The return value is only valid until #GstVideoAggregatorClass::aggregate_frames or #GstVideoAggregatorPadClass::prepare_frame
-// returns.
 func (pad *VideoAggregatorPadInstance) GetPreparedFrame() *VideoFrame {
 	var carg0 *C.GstVideoAggregatorPad // in, none, converted
 	var cret  *C.GstVideoFrame         // return, none, converted
@@ -11583,15 +9720,8 @@ func (pad *VideoAggregatorPadInstance) GetPreparedFrame() *VideoFrame {
 
 // HasCurrentBuffer wraps gst_video_aggregator_pad_has_current_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if the pad currently has a buffer queued that is going to be used
-// for the current output frame.
-// 
-// This must only be called from the #GstVideoAggregatorClass::aggregate_frames virtual method,
-// or from the #GstVideoAggregatorPadClass::prepare_frame virtual method of the aggregator pads.
 func (pad *VideoAggregatorPadInstance) HasCurrentBuffer() bool {
 	var carg0 *C.GstVideoAggregatorPad // in, none, converted
 	var cret  C.gboolean               // return
@@ -11612,11 +9742,8 @@ func (pad *VideoAggregatorPadInstance) HasCurrentBuffer() bool {
 
 // SetNeedsAlpha wraps gst_video_aggregator_pad_set_needs_alpha
 // 
-// The function takes the following parameters:
-// 
-// 	- needsAlpha bool: %TRUE if this pad requires alpha output 
+// see also No documentation available
 //
-// Allows selecting that this pad requires an output format with alpha
 func (pad *VideoAggregatorPadInstance) SetNeedsAlpha(needsAlpha bool) {
 	var carg0 *C.GstVideoAggregatorPad // in, none, converted
 	var carg1 C.gboolean               // in
@@ -11639,56 +9766,23 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 
 	// // CleanFrame allows you to override the implementation of the virtual method clean_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- videoaggregator VideoAggregator 
-	// 	- preparedFrame *VideoFrame 
-	//
-	// clean the frame previously prepared in prepare_frame
+	// see also No documentation available
 	CleanFrame func(Instance, VideoAggregator, *VideoFrame)
 	// // PrepareFrame allows you to override the implementation of the virtual method prepare_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- videoaggregator VideoAggregator 
-	// 	- buffer *gst.Buffer 
-	// 	- preparedFrame *VideoFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Prepare the frame from the pad buffer and sets it to prepared_frame.
-	//      Implementations should always return TRUE.  Returning FALSE will cease
-	//      iteration over subsequent pads.
+	// see also No documentation available
 	PrepareFrame func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame) bool
 	// // PrepareFrameFinish allows you to override the implementation of the virtual method prepare_frame_finish.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
-	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
-	//
-	// Finish preparing @prepared_frame.
-	// 
-	// If overriden, `prepare_frame_start` must also be overriden.
+	// see also No documentation available
 	PrepareFrameFinish func(Instance, VideoAggregator, *VideoFrame)
 	// // PrepareFrameStart allows you to override the implementation of the virtual method prepare_frame_start.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
-	// 	- buffer *gst.Buffer: the input #GstBuffer to prepare 
-	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
-	//
-	// Begin preparing the frame from the pad buffer and sets it to prepared_frame.
-	// 
-	// If overriden, `prepare_frame_finish` must also be overriden.
+	// see also No documentation available
 	PrepareFrameStart func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame)
 	// // UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
-	//
-	// Called when either the input or output formats
-	//                          have changed.
+	// 
+	// see also No documentation available
 	UpdateConversionInfo func(Instance)
 }
 
@@ -11805,12 +9899,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 // ParentCleanFrame calls the default implementations of the `GstVideoAggregatorPad.clean_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- videoaggregator VideoAggregator 
-// 	- preparedFrame *VideoFrame 
-//
-// clean the frame previously prepared in prepare_frame
+// see also No documentation available
 func (pad *VideoAggregatorPadInstance) ParentCleanFrame(videoaggregator VideoAggregator, preparedFrame *VideoFrame) {
 	var carg0 *C.GstVideoAggregatorPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -11831,19 +9920,7 @@ func (pad *VideoAggregatorPadInstance) ParentCleanFrame(videoaggregator VideoAgg
 // ParentPrepareFrame calls the default implementations of the `GstVideoAggregatorPad.prepare_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- videoaggregator VideoAggregator 
-// 	- buffer *gst.Buffer 
-// 	- preparedFrame *VideoFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Prepare the frame from the pad buffer and sets it to prepared_frame.
-//      Implementations should always return TRUE.  Returning FALSE will cease
-//      iteration over subsequent pads.
+// see also No documentation available
 func (pad *VideoAggregatorPadInstance) ParentPrepareFrame(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) bool {
 	var carg0 *C.GstVideoAggregatorPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -11876,14 +9953,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrame(videoaggregator VideoA
 // ParentPrepareFrameFinish calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_finish` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
-// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
-//
-// Finish preparing @prepared_frame.
-// 
-// If overriden, `prepare_frame_start` must also be overriden.
+// see also No documentation available
 func (pad *VideoAggregatorPadInstance) ParentPrepareFrameFinish(videoaggregator VideoAggregator, preparedFrame *VideoFrame) {
 	var carg0 *C.GstVideoAggregatorPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -11904,15 +9974,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameFinish(videoaggregator 
 // ParentPrepareFrameStart calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
-// 	- buffer *gst.Buffer: the input #GstBuffer to prepare 
-// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
-//
-// Begin preparing the frame from the pad buffer and sets it to prepared_frame.
-// 
-// If overriden, `prepare_frame_finish` must also be overriden.
+// see also No documentation available
 func (pad *VideoAggregatorPadInstance) ParentPrepareFrameStart(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) {
 	var carg0 *C.GstVideoAggregatorPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -11935,9 +9997,8 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameStart(videoaggregator V
 
 // ParentUpdateConversionInfo calls the default implementations of the `GstVideoAggregatorPad.update_conversion_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// Called when either the input or output formats
-//                          have changed.
+// 
+// see also No documentation available
 func (pad *VideoAggregatorPadInstance) ParentUpdateConversionInfo() {
 	var carg0 *C.GstVideoAggregatorPad
 
@@ -11984,6 +10045,8 @@ type VideoBufferPoolInstance struct {
 var _ VideoBufferPool = (*VideoBufferPoolInstance)(nil)
 
 // VideoBufferPool wraps GstVideoBufferPool
+// 
+// see also No documentation available
 type VideoBufferPool interface {
 	gst.BufferPool
 	upcastToGstVideoBufferPool() *VideoBufferPoolInstance
@@ -12047,12 +10110,8 @@ func UnsafeVideoBufferPoolToGlibFull(c VideoBufferPool) unsafe.Pointer {
 
 // NewVideoBufferPool wraps gst_video_buffer_pool_new
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.BufferPool 
+// see also No documentation available
 //
-// Create a new bufferpool that can allocate video frames. This bufferpool
-// supports all the video bufferpool options.
 func NewVideoBufferPool() gst.BufferPool {
 	var cret *C.GstBufferPool // return, full, converted
 
@@ -12114,669 +10173,223 @@ type VideoDecoderInstance struct {
 var _ VideoDecoder = (*VideoDecoderInstance)(nil)
 
 // VideoDecoder wraps GstVideoDecoder
+// 
+// see also No documentation available
 //
-// This base class is for video decoders turning encoded data into raw video
-// frames.
-// 
-// The GstVideoDecoder base class and derived subclasses should cooperate as
-// follows:
-// 
-// ## Configuration
-// 
-//   * Initially, GstVideoDecoder calls @start when the decoder element
-//     is activated, which allows the subclass to perform any global setup.
-// 
-//   * GstVideoDecoder calls @set_format to inform the subclass of caps
-//     describing input video data that it is about to receive, including
-//     possibly configuration data.
-//     While unlikely, it might be called more than once, if changing input
-//     parameters require reconfiguration.
-// 
-//   * Incoming data buffers are processed as needed, described in Data
-//     Processing below.
-// 
-//   * GstVideoDecoder calls @stop at end of all processing.
-// 
-// ## Data processing
-// 
-//   * The base class gathers input data, and optionally allows subclass
-//     to parse this into subsequently manageable chunks, typically
-//     corresponding to and referred to as 'frames'.
-// 
-//   * Each input frame is provided in turn to the subclass' @handle_frame
-//     callback.
-//   * When the subclass enables the subframe mode with `gst_video_decoder_set_subframe_mode`,
-//     the base class will provide to the subclass the same input frame with
-//     different input buffers to the subclass @handle_frame
-//     callback. During this call, the subclass needs to take
-//     ownership of the input_buffer as @GstVideoCodecFrame.input_buffer
-//     will have been changed before the next subframe buffer is received.
-//     The subclass will call `gst_video_decoder_have_last_subframe`
-//     when a new input frame can be created by the base class.
-//     Every subframe will share the same @GstVideoCodecFrame.output_buffer
-//     to write the decoding result. The subclass is responsible to protect
-//     its access.
-// 
-//   * If codec processing results in decoded data, the subclass should call
-//     @gst_video_decoder_finish_frame to have decoded data pushed
-//     downstream. In subframe mode
-//     the subclass should call @gst_video_decoder_finish_subframe until the
-//     last subframe where it should call @gst_video_decoder_finish_frame.
-//     The subclass can detect the last subframe using GST_VIDEO_BUFFER_FLAG_MARKER
-//     on buffers or using its own logic to collect the subframes.
-//     In case of decoding failure, the subclass must call
-//     @gst_video_decoder_drop_frame or @gst_video_decoder_drop_subframe,
-//     to allow the base class to do timestamp and offset tracking, and possibly
-//     to requeue the frame for a later attempt in the case of reverse playback.
-// 
-// ## Shutdown phase
-// 
-//   * The GstVideoDecoder class calls @stop to inform the subclass that data
-//     parsing will be stopped.
-// 
-// ## Additional Notes
-// 
-//   * Seeking/Flushing
-// 
-//     * When the pipeline is seeked or otherwise flushed, the subclass is
-//       informed via a call to its @reset callback, with the hard parameter
-//       set to true. This indicates the subclass should drop any internal data
-//       queues and timestamps and prepare for a fresh set of buffers to arrive
-//       for parsing and decoding.
-// 
-//   * End Of Stream
-// 
-//     * At end-of-stream, the subclass @parse function may be called some final
-//       times with the at_eos parameter set to true, indicating that the element
-//       should not expect any more data to be arriving, and it should parse and
-//       remaining frames and call gst_video_decoder_have_frame() if possible.
-// 
-// The subclass is responsible for providing pad template caps for
-// source and sink pads. The pads need to be named "sink" and "src". It also
-// needs to provide information about the output caps, when they are known.
-// This may be when the base class calls the subclass' @set_format function,
-// though it might be during decoding, before calling
-// @gst_video_decoder_finish_frame. This is done via
-// @gst_video_decoder_set_output_state
-// 
-// The subclass is also responsible for providing (presentation) timestamps
-// (likely based on corresponding input ones).  If that is not applicable
-// or possible, the base class provides limited framerate based interpolation.
-// 
-// Similarly, the base class provides some limited (legacy) seeking support
-// if specifically requested by the subclass, as full-fledged support
-// should rather be left to upstream demuxer, parser or alike.  This simple
-// approach caters for seeking and duration reporting using estimated input
-// bitrates. To enable it, a subclass should call
-// @gst_video_decoder_set_estimate_rate to enable handling of incoming
-// byte-streams.
-// 
-// The base class provides some support for reverse playback, in particular
-// in case incoming data is not packetized or upstream does not provide
-// fragments on keyframe boundaries.  However, the subclass should then be
-// prepared for the parsing and frame processing stage to occur separately
-// (in normal forward processing, the latter immediately follows the former),
-// The subclass also needs to ensure the parsing stage properly marks
-// keyframes, unless it knows the upstream elements will do so properly for
-// incoming data.
-// 
-// The bare minimum that a functional subclass needs to implement is:
-// 
-//   * Provide pad templates
-//   * Inform the base class of output caps via
-//      @gst_video_decoder_set_output_state
-// 
-//   * Parse input data, if it is not considered packetized from upstream
-//      Data will be provided to @parse which should invoke
-//      @gst_video_decoder_add_to_frame and @gst_video_decoder_have_frame to
-//      separate the data belonging to each video frame.
-// 
-//   * Accept data in @handle_frame and provide decoded results to
-//      @gst_video_decoder_finish_frame, or call @gst_video_decoder_drop_frame.
 type VideoDecoder interface {
 	gst.Element
 	upcastToGstVideoDecoder() *VideoDecoderInstance
 
 	// AddToFrame wraps gst_video_decoder_add_to_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- nBytes int32: the number of bytes to add 
+	// see also No documentation available
 	//
-	// Removes next @n_bytes of input data and adds it to currently parsed frame.
 	AddToFrame(int32)
 	// AllocateOutputBuffer wraps gst_video_decoder_allocate_output_buffer
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Helper function that allocates a buffer to hold a video frame for @decoder's
-	// current #GstVideoCodecState.
-	// 
-	// You should use gst_video_decoder_allocate_output_frame() instead of this
-	// function, if possible at all.
 	AllocateOutputBuffer() *gst.Buffer
 	// AllocateOutputFrame wraps gst_video_decoder_allocate_output_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Helper function that allocates a buffer to hold a video frame for @decoder's
-	// current #GstVideoCodecState.  Subclass should already have configured video
-	// state and set src pad caps.
-	// 
-	// The buffer allocated here is owned by the frame and you should only
-	// keep references to the frame, not the buffer.
 	AllocateOutputFrame(*VideoCodecFrame) gst.FlowReturn
 	// AllocateOutputFrameWithParams wraps gst_video_decoder_allocate_output_frame_with_params
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-	// 	- params *gst.BufferPoolAcquireParams: a #GstBufferPoolAcquireParams 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Same as #gst_video_decoder_allocate_output_frame except it allows passing
-	// #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
 	AllocateOutputFrameWithParams(*VideoCodecFrame, *gst.BufferPoolAcquireParams) gst.FlowReturn
 	// DropFrame wraps gst_video_decoder_drop_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to drop 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Similar to gst_video_decoder_finish_frame(), but drops @frame in any
-	// case and posts a QoS message with the frame's details on the bus.
-	// In any case, the frame is considered finished and released.
 	DropFrame(*VideoCodecFrame) gst.FlowReturn
 	// DropSubframe wraps gst_video_decoder_drop_subframe
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Drops input data.
-	// The frame is not considered finished until the whole frame
-	// is finished or dropped by the subclass.
 	DropSubframe(*VideoCodecFrame) gst.FlowReturn
 	// FinishFrame wraps gst_video_decoder_finish_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a decoded #GstVideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// @frame should have a valid decoded data buffer, whose metadata fields
-	// are then appropriately set according to frame data and pushed downstream.
-	// If no output data is provided, @frame is considered skipped.
-	// In any case, the frame is considered finished and released.
-	// 
-	// After calling this function the output buffer of the frame is to be
-	// considered read-only. This function will also change the metadata
-	// of the buffer.
 	FinishFrame(*VideoCodecFrame) gst.FlowReturn
 	// FinishSubframe wraps gst_video_decoder_finish_subframe
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Indicate that a subframe has been finished to be decoded
-	// by the subclass. This method should be called for all subframes
-	// except the last subframe where @gst_video_decoder_finish_frame
-	// should be called instead.
 	FinishSubframe(*VideoCodecFrame) gst.FlowReturn
 	// GetAllocator wraps gst_video_decoder_get_allocator
 	// 
-	// The function returns the following values:
-	// 
-	// 	- allocator gst.Allocator (nullable): the #GstAllocator
-	// used 
-	// 	- params gst.AllocationParams: the
-	// #GstAllocationParams of @allocator 
+	// see also No documentation available
 	//
-	// Lets #GstVideoDecoder sub-classes to know the memory @allocator
-	// used by the base class and its @params.
-	// 
-	// Unref the @allocator after use it.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_video_decoder_get_buffer_pool
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.BufferPool (nullable) 
+	// see also No documentation available
 	GetBufferPool() gst.BufferPool
 	// GetEstimateRate wraps gst_video_decoder_get_estimate_rate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetEstimateRate() int32
 	// GetFrame wraps gst_video_decoder_get_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frameNumber int32: system_frame_number of a frame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoCodecFrame (nullable) 
+	// see also No documentation available
 	//
-	// Get a pending unfinished #GstVideoCodecFrame
 	GetFrame(int32) *VideoCodecFrame
 	// GetFrames wraps gst_video_decoder_get_frames
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []*VideoCodecFrame 
+	// see also No documentation available
 	//
-	// Get all pending unfinished #GstVideoCodecFrame
 	GetFrames() []*VideoCodecFrame
 	// GetInputSubframeIndex wraps gst_video_decoder_get_input_subframe_index
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to update 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Queries the number of the last subframe received by
-	// the decoder baseclass in the @frame.
 	GetInputSubframeIndex(*VideoCodecFrame) uint
 	// GetLatency wraps gst_video_decoder_get_latency
 	// 
-	// The function returns the following values:
-	// 
-	// 	- minLatency gst.ClockTime: address of variable in which to store the
-	//     configured minimum latency, or %NULL 
-	// 	- maxLatency gst.ClockTime: address of variable in which to store the
-	//     configured mximum latency, or %NULL 
+	// see also No documentation available
 	//
-	// Query the configured decoder latency. Results will be returned via
-	// @min_latency and @max_latency.
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetMaxDecodeTime wraps gst_video_decoder_get_max_decode_time
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTimeDiff 
+	// see also No documentation available
 	//
-	// Determines maximum possible decoding time for @frame that will
-	// allow it to decode and arrive in time (as determined by QoS events).
-	// In particular, a negative result means decoding in time is no longer possible
-	// and should therefore occur as soon/skippy as possible.
 	GetMaxDecodeTime(*VideoCodecFrame) gst.ClockTimeDiff
 	// GetMaxErrors wraps gst_video_decoder_get_max_errors
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetMaxErrors() int32
 	// GetNeedsFormat wraps gst_video_decoder_get_needs_format
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries decoder required format handling.
 	GetNeedsFormat() bool
 	// GetNeedsSyncPoint wraps gst_video_decoder_get_needs_sync_point
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries if the decoder requires a sync point before it starts outputting
-	// data in the beginning.
 	GetNeedsSyncPoint() bool
 	// GetOldestFrame wraps gst_video_decoder_get_oldest_frame
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoCodecFrame (nullable) 
+	// see also No documentation available
 	//
-	// Get the oldest pending unfinished #GstVideoCodecFrame
 	GetOldestFrame() *VideoCodecFrame
 	// GetOutputState wraps gst_video_decoder_get_output_state
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoCodecState (nullable) 
+	// see also No documentation available
 	//
-	// Get the #GstVideoCodecState currently describing the output stream.
 	GetOutputState() *VideoCodecState
 	// GetPacketized wraps gst_video_decoder_get_packetized
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries whether input data is considered packetized or not by the
-	// base class.
 	GetPacketized() bool
 	// GetPendingFrameSize wraps gst_video_decoder_get_pending_frame_size
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Returns the number of bytes previously added to the current frame
-	// by calling gst_video_decoder_add_to_frame().
 	GetPendingFrameSize() uint
 	// GetProcessedSubframeIndex wraps gst_video_decoder_get_processed_subframe_index
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to update 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Queries the number of subframes in the frame processed by
-	// the decoder baseclass.
 	GetProcessedSubframeIndex(*VideoCodecFrame) uint
 	// GetQosProportion wraps gst_video_decoder_get_qos_proportion
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret float64 
+	// see also No documentation available
 	GetQosProportion() float64
 	// GetSubframeMode wraps gst_video_decoder_get_subframe_mode
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries whether input data is considered as subframes or not by the
-	// base class. If FALSE, each input buffer will be considered as a full
-	// frame.
 	GetSubframeMode() bool
 	// HaveFrame wraps gst_video_decoder_have_frame
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Gathers all data collected for currently parsed frame, gathers corresponding
-	// metadata and passes it along for further processing, i.e. @handle_frame.
 	HaveFrame() gst.FlowReturn
 	// HaveLastSubframe wraps gst_video_decoder_have_last_subframe
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to update 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Indicates that the last subframe has been processed by the decoder
-	// in @frame. This will release the current frame in video decoder
-	// allowing to receive new frames from upstream elements. This method
-	// must be called in the subclass @handle_frame callback.
 	HaveLastSubframe(*VideoCodecFrame) gst.FlowReturn
 	// MergeTags wraps gst_video_decoder_merge_tags
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL to unset
-	//     previously-set tags 
-	// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+	// see also No documentation available
 	//
-	// Sets the audio decoder tags and how they should be merged with any
-	// upstream stream tags. This will override any tags previously-set
-	// with gst_audio_decoder_merge_tags().
-	// 
-	// Note that this is provided for convenience, and the subclass is
-	// not required to use this and can still do tag handling on its own.
-	// 
-	// MT safe.
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_video_decoder_negotiate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
 	Negotiate() bool
 	// ProxyGetcaps wraps gst_video_decoder_proxy_getcaps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps (nullable): initial caps 
-	// 	- filter *gst.Caps (nullable): filter caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
+	// see also No documentation available
 	//
-	// Returns caps that express @caps (or sink template caps if @caps == NULL)
-	// restricted to resolution/format/... combinations supported by downstream
-	// elements.
 	ProxyGetcaps(*gst.Caps, *gst.Caps) *gst.Caps
 	// ReleaseFrame wraps gst_video_decoder_release_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to release 
+	// see also No documentation available
 	//
-	// Similar to gst_video_decoder_drop_frame(), but simply releases @frame
-	// without any processing other than removing it from list of pending frames,
-	// after which it is considered finished and released.
 	ReleaseFrame(*VideoCodecFrame)
 	// RequestSyncPoint wraps gst_video_decoder_request_sync_point
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-	// 	- flags VideoDecoderRequestSyncPointFlags: #GstVideoDecoderRequestSyncPointFlags 
+	// see also No documentation available
 	//
-	// Allows the #GstVideoDecoder subclass to request from the base class that
-	// a new sync should be requested from upstream, and that @frame was the frame
-	// when the subclass noticed that a new sync point is required. A reason for
-	// the subclass to do this could be missing reference frames, for example.
-	// 
-	// The base class will then request a new sync point from upstream as long as
-	// the time that passed since the last one is exceeding
-	// #GstVideoDecoder:min-force-key-unit-interval.
-	// 
-	// The subclass can signal via @flags how the frames until the next sync point
-	// should be handled:
-	// 
-	//   * If %GST_VIDEO_DECODER_REQUEST_SYNC_POINT_DISCARD_INPUT is selected then
-	//     all following input frames until the next sync point are discarded.
-	//     This can be useful if the lack of a sync point will prevent all further
-	//     decoding and the decoder implementation is not very robust in handling
-	//     missing references frames.
-	//   * If %GST_VIDEO_DECODER_REQUEST_SYNC_POINT_CORRUPT_OUTPUT is selected
-	//     then all output frames following @frame are marked as corrupted via
-	//     %GST_BUFFER_FLAG_CORRUPTED. Corrupted frames can be automatically
-	//     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
-	//     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
-	//     before calling gst_video_decoder_finish_frame().
 	RequestSyncPoint(*VideoCodecFrame, VideoDecoderRequestSyncPointFlags)
 	// SetEstimateRate wraps gst_video_decoder_set_estimate_rate
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: whether to enable byte to time conversion 
+	// see also No documentation available
 	//
-	// Allows baseclass to perform byte to time estimated conversion.
 	SetEstimateRate(bool)
 	// SetInterlacedOutputState wraps gst_video_decoder_set_interlaced_output_state
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- _fmt VideoFormat: a #GstVideoFormat 
-	// 	- interlaceMode VideoInterlaceMode: A #GstVideoInterlaceMode 
-	// 	- width uint: The width in pixels 
-	// 	- height uint: The height in pixels 
-	// 	- reference *VideoCodecState (nullable): An optional reference #GstVideoCodecState 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoCodecState (nullable) 
+	// see also No documentation available
 	//
-	// Same as #gst_video_decoder_set_output_state() but also allows you to also set
-	// the interlacing mode.
 	SetInterlacedOutputState(VideoFormat, VideoInterlaceMode, uint, uint, *VideoCodecState) *VideoCodecState
 	// SetLatency wraps gst_video_decoder_set_latency
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- minLatency gst.ClockTime: minimum latency 
-	// 	- maxLatency gst.ClockTime: maximum latency 
+	// see also No documentation available
 	//
-	// Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder latency
-	// is. If the provided values changed from previously provided ones, this will
-	// also post a LATENCY message on the bus so the pipeline can reconfigure its
-	// global latency.
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetMaxErrors wraps gst_video_decoder_set_max_errors
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- num int32: max tolerated errors 
+	// see also No documentation available
 	//
-	// Sets numbers of tolerated decoder errors, where a tolerated one is then only
-	// warned about, but more than tolerated will lead to fatal error.  You can set
-	// -1 for never returning fatal errors. Default is set to
-	// GST_VIDEO_DECODER_MAX_ERRORS.
-	// 
-	// The '-1' option was added in 1.4
 	SetMaxErrors(int32)
 	// SetNeedsFormat wraps gst_video_decoder_set_needs_format
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Configures decoder format needs.  If enabled, subclass needs to be
-	// negotiated with format caps before it can process any data.  It will then
-	// never be handed any data before it has been configured.
-	// Otherwise, it might be handed data without having been configured and
-	// is then expected being able to do so either by default
-	// or based on the input data.
 	SetNeedsFormat(bool)
 	// SetNeedsSyncPoint wraps gst_video_decoder_set_needs_sync_point
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Configures whether the decoder requires a sync point before it starts
-	// outputting data in the beginning. If enabled, the base class will discard
-	// all non-sync point frames in the beginning and after a flush and does not
-	// pass it to the subclass.
-	// 
-	// If the first frame is not a sync point, the base class will request a sync
-	// point via the force-key-unit event.
 	SetNeedsSyncPoint(bool)
 	// SetOutputState wraps gst_video_decoder_set_output_state
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- _fmt VideoFormat: a #GstVideoFormat 
-	// 	- width uint: The width in pixels 
-	// 	- height uint: The height in pixels 
-	// 	- reference *VideoCodecState (nullable): An optional reference #GstVideoCodecState 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoCodecState (nullable) 
+	// see also No documentation available
 	//
-	// Creates a new #GstVideoCodecState with the specified @fmt, @width and @height
-	// as the output state for the decoder.
-	// Any previously set output state on @decoder will be replaced by the newly
-	// created one.
-	// 
-	// If the subclass wishes to copy over existing fields (like pixel aspec ratio,
-	// or framerate) from an existing #GstVideoCodecState, it can be provided as a
-	// @reference.
-	// 
-	// If the subclass wishes to override some fields from the output state (like
-	// pixel-aspect-ratio or framerate) it can do so on the returned #GstVideoCodecState.
-	// 
-	// The new output state will only take effect (set on pads and buffers) starting
-	// from the next call to #gst_video_decoder_finish_frame().
 	SetOutputState(VideoFormat, uint, uint, *VideoCodecState) *VideoCodecState
 	// SetPacketized wraps gst_video_decoder_set_packetized
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- packetized bool: whether the input data should be considered as packetized. 
+	// see also No documentation available
 	//
-	// Allows baseclass to consider input data as packetized or not. If the
-	// input is packetized, then the @parse method will not be called.
 	SetPacketized(bool)
 	// SetSubframeMode wraps gst_video_decoder_set_subframe_mode
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- subframeMode bool: whether the input data should be considered as subframes. 
+	// see also No documentation available
 	//
-	// If this is set to TRUE, it informs the base class that the subclass
-	// can receive the data at a granularity lower than one frame.
-	// 
-	// Note that in this mode, the subclass has two options. It can either
-	// require the presence of a GST_VIDEO_BUFFER_FLAG_MARKER to mark the
-	// end of a frame. Or it can operate in such a way that it will decode
-	// a single frame at a time. In this second case, every buffer that
-	// arrives to the element is considered part of the same frame until
-	// gst_video_decoder_finish_frame() is called.
-	// 
-	// In either case, the same #GstVideoCodecFrame will be passed to the
-	// GstVideoDecoderClass:handle_frame vmethod repeatedly with a
-	// different GstVideoCodecFrame:input_buffer every time until the end of the
-	// frame has been signaled using either method.
-	// This method must be called during the decoder subclass @set_format call.
 	SetSubframeMode(bool)
 	// SetUseDefaultPadAcceptcaps wraps gst_video_decoder_set_use_default_pad_acceptcaps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- use bool: if the default pad accept-caps query handling should be used 
+	// see also No documentation available
 	//
-	// Lets #GstVideoDecoder sub-classes decide if they want the sink pad
-	// to use the default pad query handler to reply to accept-caps queries.
-	// 
-	// By setting this to true it is possible to further customize the default
-	// handler with %GST_PAD_SET_ACCEPT_INTERSECT and
-	// %GST_PAD_SET_ACCEPT_TEMPLATE
 	SetUseDefaultPadAcceptcaps(bool)
 
 	// chain up virtual methods:
@@ -12784,299 +10397,107 @@ type VideoDecoder interface {
 	// ParentClose calls the default implementations of the `GstVideoDecoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_NULL.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the `GstVideoDecoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
-	//                     Subclasses should chain up to the parent implementation to
-	//                     invoke the default handler.
+	// see also No documentation available
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentDrain calls the default implementations of the `GstVideoDecoder.drain` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Called to request subclass to decode any data it can at this
-	//                  point, but that more data may arrive after. (e.g. at segment end).
-	//                  Sub-classes should be prepared to handle new data afterward,
-	//                  or seamless segment processing will break. Since: 1.6
+	// see also No documentation available
 	ParentDrain() gst.FlowReturn
 	// ParentFinish calls the default implementations of the `GstVideoDecoder.finish` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Called to request subclass to dispatch any pending remaining
-	//                  data at EOS. Sub-classes can refuse to decode new data after.
+	// see also No documentation available
 	ParentFinish() gst.FlowReturn
 	// ParentFlush calls the default implementations of the `GstVideoDecoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Flush all remaining data from the decoder without
-	//                      pushing it downstream. Since: 1.2
+	// see also No documentation available
 	ParentFlush() bool
 	// ParentGetcaps calls the default implementations of the `GstVideoDecoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows for a custom sink getcaps implementation.
-	//                  If not implemented, default returns
-	//                  gst_video_decoder_proxy_getcaps
-	//                  applied to sink template caps.
+	// see also No documentation available
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstVideoDecoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: The frame to handle 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
 	// ParentHandleMissingData calls the default implementations of the `GstVideoDecoder.handle_missing_data` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- timestamp gst.ClockTime: Timestamp of the missing data 
-	// 	- duration gst.ClockTime: Duration of the missing data 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	ParentHandleMissingData(timestamp gst.ClockTime, duration gst.ClockTime) bool
 	// ParentNegotiate calls the default implementations of the `GstVideoDecoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
+	// see also No documentation available
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the `GstVideoDecoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_READY.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentOpen() bool
 	// ParentParse calls the default implementations of the `GstVideoDecoder.parse` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 	- adapter gstbase.Adapter 
-	// 	- atEos bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Required for non-packetized input.
-	//                  Allows chopping incoming data into manageable units (frames)
-	//                  for subsequent decoding.
+	// see also No documentation available
 	ParentParse(frame *VideoCodecFrame, adapter gstbase.Adapter, atEos bool) gst.FlowReturn
 	// ParentProposeAllocation calls the default implementations of the `GstVideoDecoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Propose buffer allocation parameters for upstream elements.
-	//                      Subclasses should chain up to the parent implementation to
-	//                      invoke the default handler.
+	// see also No documentation available
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentReset calls the default implementations of the `GstVideoDecoder.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- hard bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Allows subclass (decoder) to perform post-seek semantics reset.
-	//                  Deprecated.
+	// see also No documentation available
 	ParentReset(hard bool) bool
 	// ParentSetFormat calls the default implementations of the `GstVideoDecoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- state *VideoCodecState 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notifies subclass of incoming data format (caps).
+	// see also No documentation available
 	ParentSetFormat(state *VideoCodecState) bool
 	// ParentSinkEvent calls the default implementations of the `GstVideoDecoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. This function should return
-	//                  TRUE if the event was handled and should be discarded
-	//                  (i.e. not unref'ed).
-	//                  Subclasses should chain up to the parent implementation to
-	//                  invoke the default handler.
+	// see also No documentation available
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstVideoDecoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the sink pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.4
+	// see also No documentation available
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstVideoDecoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the source pad. This function should return
-	//                  TRUE if the event was handled and should be discarded
-	//                  (i.e. not unref'ed).
-	//                  Subclasses should chain up to the parent implementation to
-	//                  invoke the default handler.
+	// see also No documentation available
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstVideoDecoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the source pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.4
+	// see also No documentation available
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstVideoDecoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstVideoDecoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the `GstVideoDecoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 	- meta *gst.Meta 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method is copies all meta without
-	//                  tags and meta with only the "video" tag. subclasses can
-	//                  implement this method and return %TRUE if the metadata is to be
-	//                  copied. Since: 1.6
+	// see also No documentation available
 	ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool
 }
 
@@ -13136,11 +10557,8 @@ func UnsafeVideoDecoderToGlibFull(c VideoDecoder) unsafe.Pointer {
 
 // AddToFrame wraps gst_video_decoder_add_to_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- nBytes int32: the number of bytes to add 
+// see also No documentation available
 //
-// Removes next @n_bytes of input data and adds it to currently parsed frame.
 func (decoder *VideoDecoderInstance) AddToFrame(nBytes int32) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.int              // in, none, casted
@@ -13155,15 +10573,8 @@ func (decoder *VideoDecoderInstance) AddToFrame(nBytes int32) {
 
 // AllocateOutputBuffer wraps gst_video_decoder_allocate_output_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Helper function that allocates a buffer to hold a video frame for @decoder's
-// current #GstVideoCodecState.
-// 
-// You should use gst_video_decoder_allocate_output_frame() instead of this
-// function, if possible at all.
 func (decoder *VideoDecoderInstance) AllocateOutputBuffer() *gst.Buffer {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  *C.GstBuffer       // return, full, converted, nullable
@@ -13184,20 +10595,8 @@ func (decoder *VideoDecoderInstance) AllocateOutputBuffer() *gst.Buffer {
 
 // AllocateOutputFrame wraps gst_video_decoder_allocate_output_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Helper function that allocates a buffer to hold a video frame for @decoder's
-// current #GstVideoCodecState.  Subclass should already have configured video
-// state and set src pad caps.
-// 
-// The buffer allocated here is owned by the frame and you should only
-// keep references to the frame, not the buffer.
 func (decoder *VideoDecoderInstance) AllocateOutputFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -13219,17 +10618,8 @@ func (decoder *VideoDecoderInstance) AllocateOutputFrame(frame *VideoCodecFrame)
 
 // AllocateOutputFrameWithParams wraps gst_video_decoder_allocate_output_frame_with_params
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-// 	- params *gst.BufferPoolAcquireParams: a #GstBufferPoolAcquireParams 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Same as #gst_video_decoder_allocate_output_frame except it allows passing
-// #GstBufferPoolAcquireParams to the sub call gst_buffer_pool_acquire_buffer.
 func (decoder *VideoDecoderInstance) AllocateOutputFrameWithParams(frame *VideoCodecFrame, params *gst.BufferPoolAcquireParams) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder            // in, none, converted
 	var carg1 *C.GstVideoCodecFrame         // in, none, converted
@@ -13254,17 +10644,8 @@ func (decoder *VideoDecoderInstance) AllocateOutputFrameWithParams(frame *VideoC
 
 // DropFrame wraps gst_video_decoder_drop_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to drop 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Similar to gst_video_decoder_finish_frame(), but drops @frame in any
-// case and posts a QoS message with the frame's details on the bus.
-// In any case, the frame is considered finished and released.
 func (dec *VideoDecoderInstance) DropFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -13286,17 +10667,8 @@ func (dec *VideoDecoderInstance) DropFrame(frame *VideoCodecFrame) gst.FlowRetur
 
 // DropSubframe wraps gst_video_decoder_drop_subframe
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Drops input data.
-// The frame is not considered finished until the whole frame
-// is finished or dropped by the subclass.
 func (dec *VideoDecoderInstance) DropSubframe(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -13318,22 +10690,8 @@ func (dec *VideoDecoderInstance) DropSubframe(frame *VideoCodecFrame) gst.FlowRe
 
 // FinishFrame wraps gst_video_decoder_finish_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a decoded #GstVideoCodecFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// @frame should have a valid decoded data buffer, whose metadata fields
-// are then appropriately set according to frame data and pushed downstream.
-// If no output data is provided, @frame is considered skipped.
-// In any case, the frame is considered finished and released.
-// 
-// After calling this function the output buffer of the frame is to be
-// considered read-only. This function will also change the metadata
-// of the buffer.
 func (decoder *VideoDecoderInstance) FinishFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -13355,18 +10713,8 @@ func (decoder *VideoDecoderInstance) FinishFrame(frame *VideoCodecFrame) gst.Flo
 
 // FinishSubframe wraps gst_video_decoder_finish_subframe
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Indicate that a subframe has been finished to be decoded
-// by the subclass. This method should be called for all subframes
-// except the last subframe where @gst_video_decoder_finish_frame
-// should be called instead.
 func (decoder *VideoDecoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -13388,17 +10736,8 @@ func (decoder *VideoDecoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.
 
 // GetAllocator wraps gst_video_decoder_get_allocator
 // 
-// The function returns the following values:
-// 
-// 	- allocator gst.Allocator (nullable): the #GstAllocator
-// used 
-// 	- params gst.AllocationParams: the
-// #GstAllocationParams of @allocator 
+// see also No documentation available
 //
-// Lets #GstVideoDecoder sub-classes to know the memory @allocator
-// used by the base class and its @params.
-// 
-// Unref the @allocator after use it.
 func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -13424,9 +10763,7 @@ func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 
 // GetBufferPool wraps gst_video_decoder_get_buffer_pool
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.BufferPool (nullable) 
+// see also No documentation available
 func (decoder *VideoDecoderInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  *C.GstBufferPool   // return, full, converted, nullable
@@ -13447,9 +10784,7 @@ func (decoder *VideoDecoderInstance) GetBufferPool() gst.BufferPool {
 
 // GetEstimateRate wraps gst_video_decoder_get_estimate_rate
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (dec *VideoDecoderInstance) GetEstimateRate() int32 {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -13468,15 +10803,8 @@ func (dec *VideoDecoderInstance) GetEstimateRate() int32 {
 
 // GetFrame wraps gst_video_decoder_get_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frameNumber int32: system_frame_number of a frame 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecFrame (nullable) 
+// see also No documentation available
 //
-// Get a pending unfinished #GstVideoCodecFrame
 func (decoder *VideoDecoderInstance) GetFrame(frameNumber int32) *VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 C.int                 // in, none, casted
@@ -13500,11 +10828,8 @@ func (decoder *VideoDecoderInstance) GetFrame(frameNumber int32) *VideoCodecFram
 
 // GetFrames wraps gst_video_decoder_get_frames
 // 
-// The function returns the following values:
-// 
-// 	- goret []*VideoCodecFrame 
+// see also No documentation available
 //
-// Get all pending unfinished #GstVideoCodecFrame
 func (decoder *VideoDecoderInstance) GetFrames() []*VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  *C.GList           // container, transfer: full
@@ -13530,16 +10855,8 @@ func (decoder *VideoDecoderInstance) GetFrames() []*VideoCodecFrame {
 
 // GetInputSubframeIndex wraps gst_video_decoder_get_input_subframe_index
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to update 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Queries the number of the last subframe received by
-// the decoder baseclass in the @frame.
 func (decoder *VideoDecoderInstance) GetInputSubframeIndex(frame *VideoCodecFrame) uint {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -13561,15 +10878,8 @@ func (decoder *VideoDecoderInstance) GetInputSubframeIndex(frame *VideoCodecFram
 
 // GetLatency wraps gst_video_decoder_get_latency
 // 
-// The function returns the following values:
-// 
-// 	- minLatency gst.ClockTime: address of variable in which to store the
-//     configured minimum latency, or %NULL 
-// 	- maxLatency gst.ClockTime: address of variable in which to store the
-//     configured mximum latency, or %NULL 
+// see also No documentation available
 //
-// Query the configured decoder latency. Results will be returned via
-// @min_latency and @max_latency.
 func (decoder *VideoDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.GstClockTime     // out, full, casted, alias
@@ -13591,18 +10901,8 @@ func (decoder *VideoDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime)
 
 // GetMaxDecodeTime wraps gst_video_decoder_get_max_decode_time
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTimeDiff 
+// see also No documentation available
 //
-// Determines maximum possible decoding time for @frame that will
-// allow it to decode and arrive in time (as determined by QoS events).
-// In particular, a negative result means decoding in time is no longer possible
-// and should therefore occur as soon/skippy as possible.
 func (decoder *VideoDecoderInstance) GetMaxDecodeTime(frame *VideoCodecFrame) gst.ClockTimeDiff {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -13624,9 +10924,7 @@ func (decoder *VideoDecoderInstance) GetMaxDecodeTime(frame *VideoCodecFrame) gs
 
 // GetMaxErrors wraps gst_video_decoder_get_max_errors
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (dec *VideoDecoderInstance) GetMaxErrors() int32 {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -13645,11 +10943,8 @@ func (dec *VideoDecoderInstance) GetMaxErrors() int32 {
 
 // GetNeedsFormat wraps gst_video_decoder_get_needs_format
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries decoder required format handling.
 func (dec *VideoDecoderInstance) GetNeedsFormat() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -13670,12 +10965,8 @@ func (dec *VideoDecoderInstance) GetNeedsFormat() bool {
 
 // GetNeedsSyncPoint wraps gst_video_decoder_get_needs_sync_point
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries if the decoder requires a sync point before it starts outputting
-// data in the beginning.
 func (dec *VideoDecoderInstance) GetNeedsSyncPoint() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -13696,11 +10987,8 @@ func (dec *VideoDecoderInstance) GetNeedsSyncPoint() bool {
 
 // GetOldestFrame wraps gst_video_decoder_get_oldest_frame
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecFrame (nullable) 
+// see also No documentation available
 //
-// Get the oldest pending unfinished #GstVideoCodecFrame
 func (decoder *VideoDecoderInstance) GetOldestFrame() *VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
@@ -13721,11 +11009,8 @@ func (decoder *VideoDecoderInstance) GetOldestFrame() *VideoCodecFrame {
 
 // GetOutputState wraps gst_video_decoder_get_output_state
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecState (nullable) 
+// see also No documentation available
 //
-// Get the #GstVideoCodecState currently describing the output stream.
 func (decoder *VideoDecoderInstance) GetOutputState() *VideoCodecState {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var cret  *C.GstVideoCodecState // return, full, converted, nullable
@@ -13746,12 +11031,8 @@ func (decoder *VideoDecoderInstance) GetOutputState() *VideoCodecState {
 
 // GetPacketized wraps gst_video_decoder_get_packetized
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries whether input data is considered packetized or not by the
-// base class.
 func (decoder *VideoDecoderInstance) GetPacketized() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -13772,12 +11053,8 @@ func (decoder *VideoDecoderInstance) GetPacketized() bool {
 
 // GetPendingFrameSize wraps gst_video_decoder_get_pending_frame_size
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the number of bytes previously added to the current frame
-// by calling gst_video_decoder_add_to_frame().
 func (decoder *VideoDecoderInstance) GetPendingFrameSize() uint {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gsize            // return, none, casted
@@ -13796,16 +11073,8 @@ func (decoder *VideoDecoderInstance) GetPendingFrameSize() uint {
 
 // GetProcessedSubframeIndex wraps gst_video_decoder_get_processed_subframe_index
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to update 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Queries the number of subframes in the frame processed by
-// the decoder baseclass.
 func (decoder *VideoDecoderInstance) GetProcessedSubframeIndex(frame *VideoCodecFrame) uint {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -13827,9 +11096,7 @@ func (decoder *VideoDecoderInstance) GetProcessedSubframeIndex(frame *VideoCodec
 
 // GetQosProportion wraps gst_video_decoder_get_qos_proportion
 // 
-// The function returns the following values:
-// 
-// 	- goret float64 
+// see also No documentation available
 func (decoder *VideoDecoderInstance) GetQosProportion() float64 {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gdouble          // return, none, casted
@@ -13848,13 +11115,8 @@ func (decoder *VideoDecoderInstance) GetQosProportion() float64 {
 
 // GetSubframeMode wraps gst_video_decoder_get_subframe_mode
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries whether input data is considered as subframes or not by the
-// base class. If FALSE, each input buffer will be considered as a full
-// frame.
 func (decoder *VideoDecoderInstance) GetSubframeMode() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -13875,12 +11137,8 @@ func (decoder *VideoDecoderInstance) GetSubframeMode() bool {
 
 // HaveFrame wraps gst_video_decoder_have_frame
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Gathers all data collected for currently parsed frame, gathers corresponding
-// metadata and passes it along for further processing, i.e. @handle_frame.
 func (decoder *VideoDecoderInstance) HaveFrame() gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.GstFlowReturn    // return, none, casted
@@ -13899,18 +11157,8 @@ func (decoder *VideoDecoderInstance) HaveFrame() gst.FlowReturn {
 
 // HaveLastSubframe wraps gst_video_decoder_have_last_subframe
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to update 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Indicates that the last subframe has been processed by the decoder
-// in @frame. This will release the current frame in video decoder
-// allowing to receive new frames from upstream elements. This method
-// must be called in the subclass @handle_frame callback.
 func (decoder *VideoDecoderInstance) HaveLastSubframe(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -13932,20 +11180,8 @@ func (decoder *VideoDecoderInstance) HaveLastSubframe(frame *VideoCodecFrame) gs
 
 // MergeTags wraps gst_video_decoder_merge_tags
 // 
-// The function takes the following parameters:
-// 
-// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL to unset
-//     previously-set tags 
-// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+// see also No documentation available
 //
-// Sets the audio decoder tags and how they should be merged with any
-// upstream stream tags. This will override any tags previously-set
-// with gst_audio_decoder_merge_tags().
-// 
-// Note that this is provided for convenience, and the subclass is
-// not required to use this and can still do tag handling on its own.
-// 
-// MT safe.
 func (decoder *VideoDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted, nullable
@@ -13965,13 +11201,8 @@ func (decoder *VideoDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMe
 
 // Negotiate wraps gst_video_decoder_negotiate
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-// negotiate fails.
 func (decoder *VideoDecoderInstance) Negotiate() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -13992,18 +11223,8 @@ func (decoder *VideoDecoderInstance) Negotiate() bool {
 
 // ProxyGetcaps wraps gst_video_decoder_proxy_getcaps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps (nullable): initial caps 
-// 	- filter *gst.Caps (nullable): filter caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Returns caps that express @caps (or sink template caps if @caps == NULL)
-// restricted to resolution/format/... combinations supported by downstream
-// elements.
 func (decoder *VideoDecoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -14032,13 +11253,8 @@ func (decoder *VideoDecoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Ca
 
 // ReleaseFrame wraps gst_video_decoder_release_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: the #GstVideoCodecFrame to release 
+// see also No documentation available
 //
-// Similar to gst_video_decoder_drop_frame(), but simply releases @frame
-// without any processing other than removing it from list of pending frames,
-// after which it is considered finished and released.
 func (dec *VideoDecoderInstance) ReleaseFrame(frame *VideoCodecFrame) {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -14053,34 +11269,8 @@ func (dec *VideoDecoderInstance) ReleaseFrame(frame *VideoCodecFrame) {
 
 // RequestSyncPoint wraps gst_video_decoder_request_sync_point
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-// 	- flags VideoDecoderRequestSyncPointFlags: #GstVideoDecoderRequestSyncPointFlags 
+// see also No documentation available
 //
-// Allows the #GstVideoDecoder subclass to request from the base class that
-// a new sync should be requested from upstream, and that @frame was the frame
-// when the subclass noticed that a new sync point is required. A reason for
-// the subclass to do this could be missing reference frames, for example.
-// 
-// The base class will then request a new sync point from upstream as long as
-// the time that passed since the last one is exceeding
-// #GstVideoDecoder:min-force-key-unit-interval.
-// 
-// The subclass can signal via @flags how the frames until the next sync point
-// should be handled:
-// 
-//   * If %GST_VIDEO_DECODER_REQUEST_SYNC_POINT_DISCARD_INPUT is selected then
-//     all following input frames until the next sync point are discarded.
-//     This can be useful if the lack of a sync point will prevent all further
-//     decoding and the decoder implementation is not very robust in handling
-//     missing references frames.
-//   * If %GST_VIDEO_DECODER_REQUEST_SYNC_POINT_CORRUPT_OUTPUT is selected
-//     then all output frames following @frame are marked as corrupted via
-//     %GST_BUFFER_FLAG_CORRUPTED. Corrupted frames can be automatically
-//     dropped by the base class, see #GstVideoDecoder:discard-corrupted-frames.
-//     Subclasses can manually mark frames as corrupted via %GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
-//     before calling gst_video_decoder_finish_frame().
 func (dec *VideoDecoderInstance) RequestSyncPoint(frame *VideoCodecFrame, flags VideoDecoderRequestSyncPointFlags) {
 	var carg0 *C.GstVideoDecoder                     // in, none, converted
 	var carg1 *C.GstVideoCodecFrame                  // in, none, converted
@@ -14098,11 +11288,8 @@ func (dec *VideoDecoderInstance) RequestSyncPoint(frame *VideoCodecFrame, flags 
 
 // SetEstimateRate wraps gst_video_decoder_set_estimate_rate
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: whether to enable byte to time conversion 
+// see also No documentation available
 //
-// Allows baseclass to perform byte to time estimated conversion.
 func (dec *VideoDecoderInstance) SetEstimateRate(enabled bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -14119,20 +11306,8 @@ func (dec *VideoDecoderInstance) SetEstimateRate(enabled bool) {
 
 // SetInterlacedOutputState wraps gst_video_decoder_set_interlaced_output_state
 // 
-// The function takes the following parameters:
-// 
-// 	- _fmt VideoFormat: a #GstVideoFormat 
-// 	- interlaceMode VideoInterlaceMode: A #GstVideoInterlaceMode 
-// 	- width uint: The width in pixels 
-// 	- height uint: The height in pixels 
-// 	- reference *VideoCodecState (nullable): An optional reference #GstVideoCodecState 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecState (nullable) 
+// see also No documentation available
 //
-// Same as #gst_video_decoder_set_output_state() but also allows you to also set
-// the interlacing mode.
 func (decoder *VideoDecoderInstance) SetInterlacedOutputState(_fmt VideoFormat, interlaceMode VideoInterlaceMode, width uint, height uint, reference *VideoCodecState) *VideoCodecState {
 	var carg0 *C.GstVideoDecoder      // in, none, converted
 	var carg1 C.GstVideoFormat        // in, none, casted
@@ -14170,15 +11345,8 @@ func (decoder *VideoDecoderInstance) SetInterlacedOutputState(_fmt VideoFormat, 
 
 // SetLatency wraps gst_video_decoder_set_latency
 // 
-// The function takes the following parameters:
-// 
-// 	- minLatency gst.ClockTime: minimum latency 
-// 	- maxLatency gst.ClockTime: maximum latency 
+// see also No documentation available
 //
-// Lets #GstVideoDecoder sub-classes tell the baseclass what the decoder latency
-// is. If the provided values changed from previously provided ones, this will
-// also post a LATENCY message on the bus so the pipeline can reconfigure its
-// global latency.
 func (decoder *VideoDecoderInstance) SetLatency(minLatency gst.ClockTime, maxLatency gst.ClockTime) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -14196,16 +11364,8 @@ func (decoder *VideoDecoderInstance) SetLatency(minLatency gst.ClockTime, maxLat
 
 // SetMaxErrors wraps gst_video_decoder_set_max_errors
 // 
-// The function takes the following parameters:
-// 
-// 	- num int32: max tolerated errors 
+// see also No documentation available
 //
-// Sets numbers of tolerated decoder errors, where a tolerated one is then only
-// warned about, but more than tolerated will lead to fatal error.  You can set
-// -1 for never returning fatal errors. Default is set to
-// GST_VIDEO_DECODER_MAX_ERRORS.
-// 
-// The '-1' option was added in 1.4
 func (dec *VideoDecoderInstance) SetMaxErrors(num int32) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -14220,16 +11380,8 @@ func (dec *VideoDecoderInstance) SetMaxErrors(num int32) {
 
 // SetNeedsFormat wraps gst_video_decoder_set_needs_format
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Configures decoder format needs.  If enabled, subclass needs to be
-// negotiated with format caps before it can process any data.  It will then
-// never be handed any data before it has been configured.
-// Otherwise, it might be handed data without having been configured and
-// is then expected being able to do so either by default
-// or based on the input data.
 func (dec *VideoDecoderInstance) SetNeedsFormat(enabled bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -14246,17 +11398,8 @@ func (dec *VideoDecoderInstance) SetNeedsFormat(enabled bool) {
 
 // SetNeedsSyncPoint wraps gst_video_decoder_set_needs_sync_point
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Configures whether the decoder requires a sync point before it starts
-// outputting data in the beginning. If enabled, the base class will discard
-// all non-sync point frames in the beginning and after a flush and does not
-// pass it to the subclass.
-// 
-// If the first frame is not a sync point, the base class will request a sync
-// point via the force-key-unit event.
 func (dec *VideoDecoderInstance) SetNeedsSyncPoint(enabled bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -14273,31 +11416,8 @@ func (dec *VideoDecoderInstance) SetNeedsSyncPoint(enabled bool) {
 
 // SetOutputState wraps gst_video_decoder_set_output_state
 // 
-// The function takes the following parameters:
-// 
-// 	- _fmt VideoFormat: a #GstVideoFormat 
-// 	- width uint: The width in pixels 
-// 	- height uint: The height in pixels 
-// 	- reference *VideoCodecState (nullable): An optional reference #GstVideoCodecState 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecState (nullable) 
+// see also No documentation available
 //
-// Creates a new #GstVideoCodecState with the specified @fmt, @width and @height
-// as the output state for the decoder.
-// Any previously set output state on @decoder will be replaced by the newly
-// created one.
-// 
-// If the subclass wishes to copy over existing fields (like pixel aspec ratio,
-// or framerate) from an existing #GstVideoCodecState, it can be provided as a
-// @reference.
-// 
-// If the subclass wishes to override some fields from the output state (like
-// pixel-aspect-ratio or framerate) it can do so on the returned #GstVideoCodecState.
-// 
-// The new output state will only take effect (set on pads and buffers) starting
-// from the next call to #gst_video_decoder_finish_frame().
 func (decoder *VideoDecoderInstance) SetOutputState(_fmt VideoFormat, width uint, height uint, reference *VideoCodecState) *VideoCodecState {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 C.GstVideoFormat      // in, none, casted
@@ -14332,12 +11452,8 @@ func (decoder *VideoDecoderInstance) SetOutputState(_fmt VideoFormat, width uint
 
 // SetPacketized wraps gst_video_decoder_set_packetized
 // 
-// The function takes the following parameters:
-// 
-// 	- packetized bool: whether the input data should be considered as packetized. 
+// see also No documentation available
 //
-// Allows baseclass to consider input data as packetized or not. If the
-// input is packetized, then the @parse method will not be called.
 func (decoder *VideoDecoderInstance) SetPacketized(packetized bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -14354,25 +11470,8 @@ func (decoder *VideoDecoderInstance) SetPacketized(packetized bool) {
 
 // SetSubframeMode wraps gst_video_decoder_set_subframe_mode
 // 
-// The function takes the following parameters:
-// 
-// 	- subframeMode bool: whether the input data should be considered as subframes. 
+// see also No documentation available
 //
-// If this is set to TRUE, it informs the base class that the subclass
-// can receive the data at a granularity lower than one frame.
-// 
-// Note that in this mode, the subclass has two options. It can either
-// require the presence of a GST_VIDEO_BUFFER_FLAG_MARKER to mark the
-// end of a frame. Or it can operate in such a way that it will decode
-// a single frame at a time. In this second case, every buffer that
-// arrives to the element is considered part of the same frame until
-// gst_video_decoder_finish_frame() is called.
-// 
-// In either case, the same #GstVideoCodecFrame will be passed to the
-// GstVideoDecoderClass:handle_frame vmethod repeatedly with a
-// different GstVideoCodecFrame:input_buffer every time until the end of the
-// frame has been signaled using either method.
-// This method must be called during the decoder subclass @set_format call.
 func (decoder *VideoDecoderInstance) SetSubframeMode(subframeMode bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -14389,16 +11488,8 @@ func (decoder *VideoDecoderInstance) SetSubframeMode(subframeMode bool) {
 
 // SetUseDefaultPadAcceptcaps wraps gst_video_decoder_set_use_default_pad_acceptcaps
 // 
-// The function takes the following parameters:
-// 
-// 	- use bool: if the default pad accept-caps query handling should be used 
+// see also No documentation available
 //
-// Lets #GstVideoDecoder sub-classes decide if they want the sink pad
-// to use the default pad query handler to reply to accept-caps queries.
-// 
-// By setting this to true it is possible to further customize the default
-// handler with %GST_PAD_SET_ACCEPT_INTERSECT and
-// %GST_PAD_SET_ACCEPT_TEMPLATE
 func (decoder *VideoDecoderInstance) SetUseDefaultPadAcceptcaps(use bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -14421,279 +11512,87 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_NULL.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Close func(Instance) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
-	//                     Subclasses should chain up to the parent implementation to
-	//                     invoke the default handler.
+	// see also No documentation available
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // Drain allows you to override the implementation of the virtual method drain.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Called to request subclass to decode any data it can at this
-	//                  point, but that more data may arrive after. (e.g. at segment end).
-	//                  Sub-classes should be prepared to handle new data afterward,
-	//                  or seamless segment processing will break. Since: 1.6
+	// see also No documentation available
 	Drain func(Instance) gst.FlowReturn
 	// // Finish allows you to override the implementation of the virtual method finish.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Called to request subclass to dispatch any pending remaining
-	//                  data at EOS. Sub-classes can refuse to decode new data after.
+	// see also No documentation available
 	Finish func(Instance) gst.FlowReturn
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Flush all remaining data from the decoder without
-	//                      pushing it downstream. Since: 1.2
+	// see also No documentation available
 	Flush func(Instance) bool
 	// // Getcaps allows you to override the implementation of the virtual method getcaps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows for a custom sink getcaps implementation.
-	//                  If not implemented, default returns
-	//                  gst_video_decoder_proxy_getcaps
-	//                  applied to sink template caps.
+	// see also No documentation available
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: The frame to handle 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	HandleFrame func(Instance, *VideoCodecFrame) gst.FlowReturn
 	// // HandleMissingData allows you to override the implementation of the virtual method handle_missing_data.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- timestamp gst.ClockTime: Timestamp of the missing data 
-	// 	- duration gst.ClockTime: Duration of the missing data 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	HandleMissingData func(Instance, gst.ClockTime, gst.ClockTime) bool
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
+	// see also No documentation available
 	Negotiate func(Instance) bool
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_READY.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Open func(Instance) bool
 	// // Parse allows you to override the implementation of the virtual method parse.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 	- adapter gstbase.Adapter 
-	// 	- atEos bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Required for non-packetized input.
-	//                  Allows chopping incoming data into manageable units (frames)
-	//                  for subsequent decoding.
+	// see also No documentation available
 	Parse func(Instance, *VideoCodecFrame, gstbase.Adapter, bool) gst.FlowReturn
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Propose buffer allocation parameters for upstream elements.
-	//                      Subclasses should chain up to the parent implementation to
-	//                      invoke the default handler.
+	// see also No documentation available
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // Reset allows you to override the implementation of the virtual method reset.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- hard bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Allows subclass (decoder) to perform post-seek semantics reset.
-	//                  Deprecated.
+	// see also No documentation available
 	Reset func(Instance, bool) bool
 	// // SetFormat allows you to override the implementation of the virtual method set_format.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- state *VideoCodecState 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notifies subclass of incoming data format (caps).
+	// see also No documentation available
 	SetFormat func(Instance, *VideoCodecState) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. This function should return
-	//                  TRUE if the event was handled and should be discarded
-	//                  (i.e. not unref'ed).
-	//                  Subclasses should chain up to the parent implementation to
-	//                  invoke the default handler.
+	// see also No documentation available
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the sink pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.4
+	// see also No documentation available
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the source pad. This function should return
-	//                  TRUE if the event was handled and should be discarded
-	//                  (i.e. not unref'ed).
-	//                  Subclasses should chain up to the parent implementation to
-	//                  invoke the default handler.
+	// see also No documentation available
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the source pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.4
+	// see also No documentation available
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Stop func(Instance) bool
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 	- meta *gst.Meta 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method is copies all meta without
-	//                  tags and meta with only the "video" tag. subclasses can
-	//                  implement this method and return %TRUE if the metadata is to be
-	//                  copied. Since: 1.6
+	// see also No documentation available
 	TransformMeta func(Instance, *VideoCodecFrame, *gst.Meta) bool
 }
 
@@ -15198,13 +12097,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 // ParentClose calls the default implementations of the `GstVideoDecoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element changes to GST_STATE_NULL.
-//                  Allows closing external resources.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentClose() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -15228,20 +12121,7 @@ func (decoder *VideoDecoderInstance) ParentClose() bool {
 // ParentDecideAllocation calls the default implementations of the `GstVideoDecoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                     Setup the allocation parameters for allocating output
-//                     buffers. The passed in query contains the result of the
-//                     downstream allocation query.
-//                     Subclasses should chain up to the parent implementation to
-//                     invoke the default handler.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -15268,15 +12148,7 @@ func (decoder *VideoDecoderInstance) ParentDecideAllocation(query *gst.Query) bo
 // ParentDrain calls the default implementations of the `GstVideoDecoder.drain` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Optional.
-//                  Called to request subclass to decode any data it can at this
-//                  point, but that more data may arrive after. (e.g. at segment end).
-//                  Sub-classes should be prepared to handle new data afterward,
-//                  or seamless segment processing will break. Since: 1.6
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentDrain() gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.GstFlowReturn // return, none, casted
@@ -15298,13 +12170,7 @@ func (decoder *VideoDecoderInstance) ParentDrain() gst.FlowReturn {
 // ParentFinish calls the default implementations of the `GstVideoDecoder.finish` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Optional.
-//                  Called to request subclass to dispatch any pending remaining
-//                  data at EOS. Sub-classes can refuse to decode new data after.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentFinish() gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.GstFlowReturn // return, none, casted
@@ -15326,13 +12192,7 @@ func (decoder *VideoDecoderInstance) ParentFinish() gst.FlowReturn {
 // ParentFlush calls the default implementations of the `GstVideoDecoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                      Flush all remaining data from the decoder without
-//                      pushing it downstream. Since: 1.2
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentFlush() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -15356,19 +12216,7 @@ func (decoder *VideoDecoderInstance) ParentFlush() bool {
 // ParentGetcaps calls the default implementations of the `GstVideoDecoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- filter *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Optional.
-//                  Allows for a custom sink getcaps implementation.
-//                  If not implemented, default returns
-//                  gst_video_decoder_proxy_getcaps
-//                  applied to sink template caps.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -15393,13 +12241,7 @@ func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstVideoDecoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: The frame to handle 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -15424,14 +12266,7 @@ func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 // ParentHandleMissingData calls the default implementations of the `GstVideoDecoder.handle_missing_data` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- timestamp gst.ClockTime: Timestamp of the missing data 
-// 	- duration gst.ClockTime: Duration of the missing data 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentHandleMissingData(timestamp gst.ClockTime, duration gst.ClockTime) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 C.GstClockTime // in, none, converted
@@ -15461,13 +12296,7 @@ func (decoder *VideoDecoderInstance) ParentHandleMissingData(timestamp gst.Clock
 // ParentNegotiate calls the default implementations of the `GstVideoDecoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-// negotiate fails.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentNegotiate() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -15491,13 +12320,7 @@ func (decoder *VideoDecoderInstance) ParentNegotiate() bool {
 // ParentOpen calls the default implementations of the `GstVideoDecoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element changes to GST_STATE_READY.
-//                  Allows opening external resources.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentOpen() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -15521,19 +12344,7 @@ func (decoder *VideoDecoderInstance) ParentOpen() bool {
 // ParentParse calls the default implementations of the `GstVideoDecoder.parse` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame 
-// 	- adapter gstbase.Adapter 
-// 	- atEos bool 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Required for non-packetized input.
-//                  Allows chopping incoming data into manageable units (frames)
-//                  for subsequent decoding.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentParse(frame *VideoCodecFrame, adapter gstbase.Adapter, atEos bool) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -15566,18 +12377,7 @@ func (decoder *VideoDecoderInstance) ParentParse(frame *VideoCodecFrame, adapter
 // ParentProposeAllocation calls the default implementations of the `GstVideoDecoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                      Propose buffer allocation parameters for upstream elements.
-//                      Subclasses should chain up to the parent implementation to
-//                      invoke the default handler.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -15604,17 +12404,7 @@ func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) b
 // ParentReset calls the default implementations of the `GstVideoDecoder.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- hard bool 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Allows subclass (decoder) to perform post-seek semantics reset.
-//                  Deprecated.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentReset(hard bool) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 C.gboolean // in, none, converted
@@ -15643,15 +12433,7 @@ func (decoder *VideoDecoderInstance) ParentReset(hard bool) bool {
 // ParentSetFormat calls the default implementations of the `GstVideoDecoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- state *VideoCodecState 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Notifies subclass of incoming data format (caps).
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentSetFormat(state *VideoCodecState) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstVideoCodecState // in, none, converted
@@ -15678,20 +12460,7 @@ func (decoder *VideoDecoderInstance) ParentSetFormat(state *VideoCodecState) boo
 // ParentSinkEvent calls the default implementations of the `GstVideoDecoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the sink pad. This function should return
-//                  TRUE if the event was handled and should be discarded
-//                  (i.e. not unref'ed).
-//                  Subclasses should chain up to the parent implementation to
-//                  invoke the default handler.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -15718,19 +12487,7 @@ func (decoder *VideoDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstVideoDecoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Query handler on the sink pad. This function should
-//                  return TRUE if the query could be performed. Subclasses
-//                  should chain up to the parent implementation to invoke the
-//                  default handler. Since: 1.4
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -15757,20 +12514,7 @@ func (decoder *VideoDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstVideoDecoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the source pad. This function should return
-//                  TRUE if the event was handled and should be discarded
-//                  (i.e. not unref'ed).
-//                  Subclasses should chain up to the parent implementation to
-//                  invoke the default handler.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -15797,19 +12541,7 @@ func (decoder *VideoDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstVideoDecoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Query handler on the source pad. This function should
-//                  return TRUE if the query could be performed. Subclasses
-//                  should chain up to the parent implementation to invoke the
-//                  default handler. Since: 1.4
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -15836,13 +12568,7 @@ func (decoder *VideoDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstVideoDecoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element starts processing.
-//                  Allows opening external resources.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentStart() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -15866,13 +12592,7 @@ func (decoder *VideoDecoderInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstVideoDecoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element stops processing.
-//                  Allows closing external resources.
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentStop() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -15896,20 +12616,7 @@ func (decoder *VideoDecoderInstance) ParentStop() bool {
 // ParentTransformMeta calls the default implementations of the `GstVideoDecoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame 
-// 	- meta *gst.Meta 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional. Transform the metadata on the input buffer to the
-//                  output buffer. By default this method is copies all meta without
-//                  tags and meta with only the "video" tag. subclasses can
-//                  implement this method and return %TRUE if the metadata is to be
-//                  copied. Since: 1.6
+// see also No documentation available
 func (decoder *VideoDecoderInstance) ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -15973,65 +12680,9 @@ type VideoEncoderInstance struct {
 var _ VideoEncoder = (*VideoEncoderInstance)(nil)
 
 // VideoEncoder wraps GstVideoEncoder
+// 
+// see also No documentation available
 //
-// This base class is for video encoders turning raw video into
-// encoded video data.
-// 
-// GstVideoEncoder and subclass should cooperate as follows.
-// 
-// ## Configuration
-// 
-//   * Initially, GstVideoEncoder calls @start when the encoder element
-//     is activated, which allows subclass to perform any global setup.
-//   * GstVideoEncoder calls @set_format to inform subclass of the format
-//     of input video data that it is about to receive.  Subclass should
-//     setup for encoding and configure base class as appropriate
-//     (e.g. latency). While unlikely, it might be called more than once,
-//     if changing input parameters require reconfiguration.  Baseclass
-//     will ensure that processing of current configuration is finished.
-//   * GstVideoEncoder calls @stop at end of all processing.
-// 
-// ## Data processing
-// 
-//     * Base class collects input data and metadata into a frame and hands
-//       this to subclass' @handle_frame.
-// 
-//     * If codec processing results in encoded data, subclass should call
-//       @gst_video_encoder_finish_frame to have encoded data pushed
-//       downstream.
-// 
-//     * If implemented, baseclass calls subclass @pre_push just prior to
-//       pushing to allow subclasses to modify some metadata on the buffer.
-//       If it returns GST_FLOW_OK, the buffer is pushed downstream.
-// 
-//     * GstVideoEncoderClass will handle both srcpad and sinkpad events.
-//       Sink events will be passed to subclass if @event callback has been
-//       provided.
-// 
-// ## Shutdown phase
-// 
-//   * GstVideoEncoder class calls @stop to inform the subclass that data
-//     parsing will be stopped.
-// 
-// Subclass is responsible for providing pad template caps for
-// source and sink pads. The pads need to be named "sink" and "src". It should
-// also be able to provide fixed src pad caps in @getcaps by the time it calls
-// @gst_video_encoder_finish_frame.
-// 
-// Things that subclass need to take care of:
-// 
-//   * Provide pad templates
-//   * Provide source pad caps before pushing the first buffer
-//   * Accept data in @handle_frame and provide encoded results to
-//      @gst_video_encoder_finish_frame.
-// 
-// 
-// The #GstVideoEncoder:qos property will enable the Quality-of-Service
-// features of the encoder which gather statistics about the real-time
-// performance of the downstream elements. If enabled, subclasses can
-// use gst_video_encoder_get_max_encode_time() to check if input frames
-// are already late and drop them right away to give a chance to the
-// pipeline to catch up.
 type VideoEncoder interface {
 	gst.Element
 	gst.Preset
@@ -16039,312 +12690,118 @@ type VideoEncoder interface {
 
 	// AllocateOutputBuffer wraps gst_video_encoder_allocate_output_buffer
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- size uint: size of the buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
+	// see also No documentation available
 	//
-	// Helper function that allocates a buffer to hold an encoded video frame
-	// for @encoder's current #GstVideoCodecState.
 	AllocateOutputBuffer(uint) *gst.Buffer
 	// AllocateOutputFrame wraps gst_video_encoder_allocate_output_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-	// 	- size uint: size of the buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Helper function that allocates a buffer to hold an encoded video frame for @encoder's
-	// current #GstVideoCodecState.  Subclass should already have configured video
-	// state and set src pad caps.
-	// 
-	// The buffer allocated here is owned by the frame and you should only
-	// keep references to the frame, not the buffer.
 	AllocateOutputFrame(*VideoCodecFrame, uint) gst.FlowReturn
 	// DropFrame wraps gst_video_encoder_drop_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
+	// see also No documentation available
 	//
-	// Removes @frame from the list of pending frames, releases it
-	// and posts a QoS message with the frame's details on the bus.
-	// Similar to calling gst_video_encoder_finish_frame() without a buffer
-	// attached to @frame, but this function additionally stores events
-	// from @frame as pending, to be pushed out alongside the next frame
-	// submitted via gst_video_encoder_finish_frame().
 	DropFrame(*VideoCodecFrame)
 	// FinishFrame wraps gst_video_encoder_finish_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: an encoded #GstVideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// @frame must have a valid encoded data buffer, whose metadata fields
-	// are then appropriately set according to frame data or no buffer at
-	// all if the frame should be dropped.
-	// It is subsequently pushed downstream or provided to @pre_push.
-	// In any case, the frame is considered finished and released.
-	// 
-	// If @frame does not have a buffer attached, it will be dropped, and
-	// a QoS message will be posted on the bus. Events from @frame will be
-	// pushed out immediately.
-	// 
-	// After calling this function the output buffer of the frame is to be
-	// considered read-only. This function will also change the metadata
-	// of the buffer.
 	FinishFrame(*VideoCodecFrame) gst.FlowReturn
 	// FinishSubframe wraps gst_video_encoder_finish_subframe
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame being encoded 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// If multiple subframes are produced for one input frame then use this method
-	// for each subframe, except for the last one. Before calling this function,
-	// you need to fill frame-&gt;output_buffer with the encoded buffer to push.
-	// 
-	// You must call #gst_video_encoder_finish_frame() for the last sub-frame
-	// to tell the encoder that the frame has been fully encoded.
-	// 
-	// This function will change the metadata of @frame and frame-&gt;output_buffer
-	// will be pushed downstream.
 	FinishSubframe(*VideoCodecFrame) gst.FlowReturn
 	// GetAllocator wraps gst_video_encoder_get_allocator
 	// 
-	// The function returns the following values:
-	// 
-	// 	- allocator gst.Allocator (nullable): the #GstAllocator
-	// used 
-	// 	- params gst.AllocationParams: the
-	// #GstAllocationParams of @allocator 
+	// see also No documentation available
 	//
-	// Lets #GstVideoEncoder sub-classes to know the memory @allocator
-	// used by the base class and its @params.
-	// 
-	// Unref the @allocator after use it.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetFrame wraps gst_video_encoder_get_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frameNumber int32: system_frame_number of a frame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoCodecFrame (nullable) 
+	// see also No documentation available
 	//
-	// Get a pending unfinished #GstVideoCodecFrame
 	GetFrame(int32) *VideoCodecFrame
 	// GetFrames wraps gst_video_encoder_get_frames
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []*VideoCodecFrame 
+	// see also No documentation available
 	//
-	// Get all pending unfinished #GstVideoCodecFrame
 	GetFrames() []*VideoCodecFrame
 	// GetLatency wraps gst_video_encoder_get_latency
 	// 
-	// The function returns the following values:
-	// 
-	// 	- minLatency gst.ClockTime: address of variable in which to store the
-	//     configured minimum latency, or %NULL 
-	// 	- maxLatency gst.ClockTime: address of variable in which to store the
-	//     configured maximum latency, or %NULL 
+	// see also No documentation available
 	//
-	// Query the configured encoding latency. Results will be returned via
-	// @min_latency and @max_latency.
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetMaxEncodeTime wraps gst_video_encoder_get_max_encode_time
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTimeDiff 
+	// see also No documentation available
 	//
-	// Determines maximum possible encoding time for @frame that will
-	// allow it to encode and arrive in time (as determined by QoS events).
-	// In particular, a negative result means encoding in time is no longer possible
-	// and should therefore occur as soon/skippy as possible.
-	// 
-	// If no QoS events have been received from downstream, or if
-	// #GstVideoEncoder:qos is disabled this function returns #G_MAXINT64.
 	GetMaxEncodeTime(*VideoCodecFrame) gst.ClockTimeDiff
 	// GetMinForceKeyUnitInterval wraps gst_video_encoder_get_min_force_key_unit_interval
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Returns the minimum force-keyunit interval, see gst_video_encoder_set_min_force_key_unit_interval()
-	// for more details.
 	GetMinForceKeyUnitInterval() gst.ClockTime
 	// GetOldestFrame wraps gst_video_encoder_get_oldest_frame
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoCodecFrame (nullable) 
+	// see also No documentation available
 	//
-	// Get the oldest unfinished pending #GstVideoCodecFrame
 	GetOldestFrame() *VideoCodecFrame
 	// GetOutputState wraps gst_video_encoder_get_output_state
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoCodecState (nullable) 
+	// see also No documentation available
 	//
-	// Get the current #GstVideoCodecState
 	GetOutputState() *VideoCodecState
 	// IsQosEnabled wraps gst_video_encoder_is_qos_enabled
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks if @encoder is currently configured to handle Quality-of-Service
-	// events from downstream.
 	IsQosEnabled() bool
 	// MergeTags wraps gst_video_encoder_merge_tags
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL to unset
-	//     previously-set tags 
-	// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+	// see also No documentation available
 	//
-	// Sets the video encoder tags and how they should be merged with any
-	// upstream stream tags. This will override any tags previously-set
-	// with gst_video_encoder_merge_tags().
-	// 
-	// Note that this is provided for convenience, and the subclass is
-	// not required to use this and can still do tag handling on its own.
-	// 
-	// MT safe.
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_video_encoder_negotiate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
 	Negotiate() bool
 	// ProxyGetcaps wraps gst_video_encoder_proxy_getcaps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps (nullable): initial caps 
-	// 	- filter *gst.Caps (nullable): filter caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
+	// see also No documentation available
 	//
-	// Returns caps that express @caps (or sink template caps if @caps == NULL)
-	// restricted to resolution/format/... combinations supported by downstream
-	// elements (e.g. muxers).
 	ProxyGetcaps(*gst.Caps, *gst.Caps) *gst.Caps
 	// ReleaseFrame wraps gst_video_encoder_release_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
+	// see also No documentation available
 	//
-	// Removes @frame from list of pending frames and releases it, similar
-	// to calling gst_video_encoder_finish_frame() without a buffer attached
-	// to the frame, but does not post a QoS message or do any additional
-	// processing. Events from @frame are moved to the pending events list.
 	ReleaseFrame(*VideoCodecFrame)
 	// SetLatency wraps gst_video_encoder_set_latency
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- minLatency gst.ClockTime: minimum latency 
-	// 	- maxLatency gst.ClockTime: maximum latency 
+	// see also No documentation available
 	//
-	// Informs baseclass of encoding latency. If the provided values changed from
-	// previously provided ones, this will also post a LATENCY message on the bus
-	// so the pipeline can reconfigure its global latency.
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetMinForceKeyUnitInterval wraps gst_video_encoder_set_min_force_key_unit_interval
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- interval gst.ClockTime: minimum interval 
+	// see also No documentation available
 	//
-	// Sets the minimum interval for requesting keyframes based on force-keyunit
-	// events. Setting this to 0 will allow to handle every event, setting this to
-	// %GST_CLOCK_TIME_NONE causes force-keyunit events to be ignored.
 	SetMinForceKeyUnitInterval(gst.ClockTime)
 	// SetMinPts wraps gst_video_encoder_set_min_pts
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- minPts gst.ClockTime: minimal PTS that will be passed to handle_frame 
+	// see also No documentation available
 	//
-	// Request minimal value for PTS passed to handle_frame.
-	// 
-	// For streams with reordered frames this can be used to ensure that there
-	// is enough time to accommodate first DTS, which may be less than first PTS
 	SetMinPts(gst.ClockTime)
 	// SetOutputState wraps gst_video_encoder_set_output_state
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps: the #GstCaps to use for the output 
-	// 	- reference *VideoCodecState (nullable): An optional reference @GstVideoCodecState 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *VideoCodecState (nullable) 
+	// see also No documentation available
 	//
-	// Creates a new #GstVideoCodecState with the specified caps as the output state
-	// for the encoder.
-	// Any previously set output state on @encoder will be replaced by the newly
-	// created one.
-	// 
-	// The specified @caps should not contain any resolution, pixel-aspect-ratio,
-	// framerate, codec-data, .... Those should be specified instead in the returned
-	// #GstVideoCodecState.
-	// 
-	// If the subclass wishes to copy over existing fields (like pixel aspect ratio,
-	// or framerate) from an existing #GstVideoCodecState, it can be provided as a
-	// @reference.
-	// 
-	// If the subclass wishes to override some fields from the output state (like
-	// pixel-aspect-ratio or framerate) it can do so on the returned #GstVideoCodecState.
-	// 
-	// The new output state will only take effect (set on pads and buffers) starting
-	// from the next call to #gst_video_encoder_finish_frame().
 	SetOutputState(*gst.Caps, *VideoCodecState) *VideoCodecState
 	// SetQosEnabled wraps gst_video_encoder_set_qos_enabled
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: the new qos value. 
+	// see also No documentation available
 	//
-	// Configures @encoder to handle Quality-of-Service events from downstream.
 	SetQosEnabled(bool)
 
 	// chain up virtual methods:
@@ -16352,278 +12809,97 @@ type VideoEncoder interface {
 	// ParentClose calls the default implementations of the `GstVideoEncoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_NULL.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the `GstVideoEncoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
-	//                     Subclasses should chain up to the parent implementation to
-	//                     invoke the default handler.
+	// see also No documentation available
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFinish calls the default implementations of the `GstVideoEncoder.finish` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Called to request subclass to dispatch any pending remaining
-	//                  data (e.g. at EOS).
+	// see also No documentation available
 	ParentFinish() gst.FlowReturn
 	// ParentFlush calls the default implementations of the `GstVideoEncoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Flush all remaining data from the encoder without
-	//                      pushing it downstream. Since: 1.2
+	// see also No documentation available
 	ParentFlush() bool
 	// ParentGetcaps calls the default implementations of the `GstVideoEncoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows for a custom sink getcaps implementation (e.g.
-	//                  for multichannel input specification).  If not implemented,
-	//                  default returns gst_video_encoder_proxy_getcaps
-	//                  applied to sink template caps.
+	// see also No documentation available
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstVideoEncoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Provides input frame to subclass.
+	// see also No documentation available
 	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
 	// ParentNegotiate calls the default implementations of the `GstVideoEncoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
+	// see also No documentation available
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the `GstVideoEncoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_READY.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentOpen() bool
 	// ParentPrePush calls the default implementations of the `GstVideoEncoder.pre_push` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Allows subclass to push frame downstream in whatever
-	//                  shape or form it deems appropriate.  If not provided,
-	//                  provided encoded frame data is simply pushed downstream.
+	// see also No documentation available
 	ParentPrePush(frame *VideoCodecFrame) gst.FlowReturn
 	// ParentProposeAllocation calls the default implementations of the `GstVideoEncoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Propose buffer allocation parameters for upstream elements.
-	//                      Subclasses should chain up to the parent implementation to
-	//                      invoke the default handler.
+	// see also No documentation available
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentReset calls the default implementations of the `GstVideoEncoder.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- hard bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Allows subclass (encoder) to perform post-seek semantics reset.
-	//                  Deprecated.
+	// see also No documentation available
 	ParentReset(hard bool) bool
 	// ParentSetFormat calls the default implementations of the `GstVideoEncoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- state *VideoCodecState 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Notifies subclass of incoming data format.
-	//                  GstVideoCodecState fields have already been
-	//                  set according to provided caps.
+	// see also No documentation available
 	ParentSetFormat(state *VideoCodecState) bool
 	// ParentSinkEvent calls the default implementations of the `GstVideoEncoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. This function should return
-	//                  TRUE if the event was handled and should be discarded
-	//                  (i.e. not unref'ed).
-	//                  Subclasses should chain up to the parent implementation to
-	//                  invoke the default handler.
+	// see also No documentation available
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstVideoEncoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the sink pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.4
+	// see also No documentation available
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstVideoEncoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the source pad. This function should return
-	//                  TRUE if the event was handled and should be discarded
-	//                  (i.e. not unref'ed).
-	//                  Subclasses should chain up to the parent implementation to
-	//                  invoke the default handler.
+	// see also No documentation available
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstVideoEncoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the source pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.4
+	// see also No documentation available
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstVideoEncoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstVideoEncoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the `GstVideoEncoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 	- meta *gst.Meta 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method is copies all meta without
-	//                  tags and meta with only the "video" tag. subclasses can
-	//                  implement this method and return %TRUE if the metadata is to be
-	//                  copied. Since: 1.6
+	// see also No documentation available
 	ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool
 }
 
@@ -16686,16 +12962,8 @@ func UnsafeVideoEncoderToGlibFull(c VideoEncoder) unsafe.Pointer {
 
 // AllocateOutputBuffer wraps gst_video_encoder_allocate_output_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- size uint: size of the buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Helper function that allocates a buffer to hold an encoded video frame
-// for @encoder's current #GstVideoCodecState.
 func (encoder *VideoEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.gsize            // in, none, casted
@@ -16717,21 +12985,8 @@ func (encoder *VideoEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer
 
 // AllocateOutputFrame wraps gst_video_encoder_allocate_output_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-// 	- size uint: size of the buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Helper function that allocates a buffer to hold an encoded video frame for @encoder's
-// current #GstVideoCodecState.  Subclass should already have configured video
-// state and set src pad caps.
-// 
-// The buffer allocated here is owned by the frame and you should only
-// keep references to the frame, not the buffer.
 func (encoder *VideoEncoderInstance) AllocateOutputFrame(frame *VideoCodecFrame, size uint) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -16756,16 +13011,8 @@ func (encoder *VideoEncoderInstance) AllocateOutputFrame(frame *VideoCodecFrame,
 
 // DropFrame wraps gst_video_encoder_drop_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
+// see also No documentation available
 //
-// Removes @frame from the list of pending frames, releases it
-// and posts a QoS message with the frame's details on the bus.
-// Similar to calling gst_video_encoder_finish_frame() without a buffer
-// attached to @frame, but this function additionally stores events
-// from @frame as pending, to be pushed out alongside the next frame
-// submitted via gst_video_encoder_finish_frame().
 func (encoder *VideoEncoderInstance) DropFrame(frame *VideoCodecFrame) {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -16780,27 +13027,8 @@ func (encoder *VideoEncoderInstance) DropFrame(frame *VideoCodecFrame) {
 
 // FinishFrame wraps gst_video_encoder_finish_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: an encoded #GstVideoCodecFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// @frame must have a valid encoded data buffer, whose metadata fields
-// are then appropriately set according to frame data or no buffer at
-// all if the frame should be dropped.
-// It is subsequently pushed downstream or provided to @pre_push.
-// In any case, the frame is considered finished and released.
-// 
-// If @frame does not have a buffer attached, it will be dropped, and
-// a QoS message will be posted on the bus. Events from @frame will be
-// pushed out immediately.
-// 
-// After calling this function the output buffer of the frame is to be
-// considered read-only. This function will also change the metadata
-// of the buffer.
 func (encoder *VideoEncoderInstance) FinishFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -16822,23 +13050,8 @@ func (encoder *VideoEncoderInstance) FinishFrame(frame *VideoCodecFrame) gst.Flo
 
 // FinishSubframe wraps gst_video_encoder_finish_subframe
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame being encoded 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// If multiple subframes are produced for one input frame then use this method
-// for each subframe, except for the last one. Before calling this function,
-// you need to fill frame-&gt;output_buffer with the encoded buffer to push.
-// 
-// You must call #gst_video_encoder_finish_frame() for the last sub-frame
-// to tell the encoder that the frame has been fully encoded.
-// 
-// This function will change the metadata of @frame and frame-&gt;output_buffer
-// will be pushed downstream.
 func (encoder *VideoEncoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -16860,17 +13073,8 @@ func (encoder *VideoEncoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.
 
 // GetAllocator wraps gst_video_encoder_get_allocator
 // 
-// The function returns the following values:
-// 
-// 	- allocator gst.Allocator (nullable): the #GstAllocator
-// used 
-// 	- params gst.AllocationParams: the
-// #GstAllocationParams of @allocator 
+// see also No documentation available
 //
-// Lets #GstVideoEncoder sub-classes to know the memory @allocator
-// used by the base class and its @params.
-// 
-// Unref the @allocator after use it.
 func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -16896,15 +13100,8 @@ func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 
 // GetFrame wraps gst_video_encoder_get_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frameNumber int32: system_frame_number of a frame 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecFrame (nullable) 
+// see also No documentation available
 //
-// Get a pending unfinished #GstVideoCodecFrame
 func (encoder *VideoEncoderInstance) GetFrame(frameNumber int32) *VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 C.int                 // in, none, casted
@@ -16928,11 +13125,8 @@ func (encoder *VideoEncoderInstance) GetFrame(frameNumber int32) *VideoCodecFram
 
 // GetFrames wraps gst_video_encoder_get_frames
 // 
-// The function returns the following values:
-// 
-// 	- goret []*VideoCodecFrame 
+// see also No documentation available
 //
-// Get all pending unfinished #GstVideoCodecFrame
 func (encoder *VideoEncoderInstance) GetFrames() []*VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var cret  *C.GList           // container, transfer: full
@@ -16958,15 +13152,8 @@ func (encoder *VideoEncoderInstance) GetFrames() []*VideoCodecFrame {
 
 // GetLatency wraps gst_video_encoder_get_latency
 // 
-// The function returns the following values:
-// 
-// 	- minLatency gst.ClockTime: address of variable in which to store the
-//     configured minimum latency, or %NULL 
-// 	- maxLatency gst.ClockTime: address of variable in which to store the
-//     configured maximum latency, or %NULL 
+// see also No documentation available
 //
-// Query the configured encoding latency. Results will be returned via
-// @min_latency and @max_latency.
 func (encoder *VideoEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.GstClockTime     // out, full, casted, alias
@@ -16988,21 +13175,8 @@ func (encoder *VideoEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime)
 
 // GetMaxEncodeTime wraps gst_video_encoder_get_max_encode_time
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTimeDiff 
+// see also No documentation available
 //
-// Determines maximum possible encoding time for @frame that will
-// allow it to encode and arrive in time (as determined by QoS events).
-// In particular, a negative result means encoding in time is no longer possible
-// and should therefore occur as soon/skippy as possible.
-// 
-// If no QoS events have been received from downstream, or if
-// #GstVideoEncoder:qos is disabled this function returns #G_MAXINT64.
 func (encoder *VideoEncoderInstance) GetMaxEncodeTime(frame *VideoCodecFrame) gst.ClockTimeDiff {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -17024,12 +13198,8 @@ func (encoder *VideoEncoderInstance) GetMaxEncodeTime(frame *VideoCodecFrame) gs
 
 // GetMinForceKeyUnitInterval wraps gst_video_encoder_get_min_force_key_unit_interval
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Returns the minimum force-keyunit interval, see gst_video_encoder_set_min_force_key_unit_interval()
-// for more details.
 func (encoder *VideoEncoderInstance) GetMinForceKeyUnitInterval() gst.ClockTime {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var cret  C.GstClockTime     // return, none, casted, alias
@@ -17048,11 +13218,8 @@ func (encoder *VideoEncoderInstance) GetMinForceKeyUnitInterval() gst.ClockTime 
 
 // GetOldestFrame wraps gst_video_encoder_get_oldest_frame
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecFrame (nullable) 
+// see also No documentation available
 //
-// Get the oldest unfinished pending #GstVideoCodecFrame
 func (encoder *VideoEncoderInstance) GetOldestFrame() *VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
@@ -17073,11 +13240,8 @@ func (encoder *VideoEncoderInstance) GetOldestFrame() *VideoCodecFrame {
 
 // GetOutputState wraps gst_video_encoder_get_output_state
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecState (nullable) 
+// see also No documentation available
 //
-// Get the current #GstVideoCodecState
 func (encoder *VideoEncoderInstance) GetOutputState() *VideoCodecState {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var cret  *C.GstVideoCodecState // return, full, converted, nullable
@@ -17098,12 +13262,8 @@ func (encoder *VideoEncoderInstance) GetOutputState() *VideoCodecState {
 
 // IsQosEnabled wraps gst_video_encoder_is_qos_enabled
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if @encoder is currently configured to handle Quality-of-Service
-// events from downstream.
 func (encoder *VideoEncoderInstance) IsQosEnabled() bool {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -17124,20 +13284,8 @@ func (encoder *VideoEncoderInstance) IsQosEnabled() bool {
 
 // MergeTags wraps gst_video_encoder_merge_tags
 // 
-// The function takes the following parameters:
-// 
-// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL to unset
-//     previously-set tags 
-// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+// see also No documentation available
 //
-// Sets the video encoder tags and how they should be merged with any
-// upstream stream tags. This will override any tags previously-set
-// with gst_video_encoder_merge_tags().
-// 
-// Note that this is provided for convenience, and the subclass is
-// not required to use this and can still do tag handling on its own.
-// 
-// MT safe.
 func (encoder *VideoEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted, nullable
@@ -17157,13 +13305,8 @@ func (encoder *VideoEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMe
 
 // Negotiate wraps gst_video_encoder_negotiate
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-// negotiate fails.
 func (encoder *VideoEncoderInstance) Negotiate() bool {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -17184,18 +13327,8 @@ func (encoder *VideoEncoderInstance) Negotiate() bool {
 
 // ProxyGetcaps wraps gst_video_encoder_proxy_getcaps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps (nullable): initial caps 
-// 	- filter *gst.Caps (nullable): filter caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Returns caps that express @caps (or sink template caps if @caps == NULL)
-// restricted to resolution/format/... combinations supported by downstream
-// elements (e.g. muxers).
 func (enc *VideoEncoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -17224,14 +13357,8 @@ func (enc *VideoEncoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) 
 
 // ReleaseFrame wraps gst_video_encoder_release_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame: a #GstVideoCodecFrame 
+// see also No documentation available
 //
-// Removes @frame from list of pending frames and releases it, similar
-// to calling gst_video_encoder_finish_frame() without a buffer attached
-// to the frame, but does not post a QoS message or do any additional
-// processing. Events from @frame are moved to the pending events list.
 func (encoder *VideoEncoderInstance) ReleaseFrame(frame *VideoCodecFrame) {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -17246,14 +13373,8 @@ func (encoder *VideoEncoderInstance) ReleaseFrame(frame *VideoCodecFrame) {
 
 // SetLatency wraps gst_video_encoder_set_latency
 // 
-// The function takes the following parameters:
-// 
-// 	- minLatency gst.ClockTime: minimum latency 
-// 	- maxLatency gst.ClockTime: maximum latency 
+// see also No documentation available
 //
-// Informs baseclass of encoding latency. If the provided values changed from
-// previously provided ones, this will also post a LATENCY message on the bus
-// so the pipeline can reconfigure its global latency.
 func (encoder *VideoEncoderInstance) SetLatency(minLatency gst.ClockTime, maxLatency gst.ClockTime) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -17271,13 +13392,8 @@ func (encoder *VideoEncoderInstance) SetLatency(minLatency gst.ClockTime, maxLat
 
 // SetMinForceKeyUnitInterval wraps gst_video_encoder_set_min_force_key_unit_interval
 // 
-// The function takes the following parameters:
-// 
-// 	- interval gst.ClockTime: minimum interval 
+// see also No documentation available
 //
-// Sets the minimum interval for requesting keyframes based on force-keyunit
-// events. Setting this to 0 will allow to handle every event, setting this to
-// %GST_CLOCK_TIME_NONE causes force-keyunit events to be ignored.
 func (encoder *VideoEncoderInstance) SetMinForceKeyUnitInterval(interval gst.ClockTime) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -17292,14 +13408,8 @@ func (encoder *VideoEncoderInstance) SetMinForceKeyUnitInterval(interval gst.Clo
 
 // SetMinPts wraps gst_video_encoder_set_min_pts
 // 
-// The function takes the following parameters:
-// 
-// 	- minPts gst.ClockTime: minimal PTS that will be passed to handle_frame 
+// see also No documentation available
 //
-// Request minimal value for PTS passed to handle_frame.
-// 
-// For streams with reordered frames this can be used to ensure that there
-// is enough time to accommodate first DTS, which may be less than first PTS
 func (encoder *VideoEncoderInstance) SetMinPts(minPts gst.ClockTime) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -17314,33 +13424,8 @@ func (encoder *VideoEncoderInstance) SetMinPts(minPts gst.ClockTime) {
 
 // SetOutputState wraps gst_video_encoder_set_output_state
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: the #GstCaps to use for the output 
-// 	- reference *VideoCodecState (nullable): An optional reference @GstVideoCodecState 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoCodecState (nullable) 
+// see also No documentation available
 //
-// Creates a new #GstVideoCodecState with the specified caps as the output state
-// for the encoder.
-// Any previously set output state on @encoder will be replaced by the newly
-// created one.
-// 
-// The specified @caps should not contain any resolution, pixel-aspect-ratio,
-// framerate, codec-data, .... Those should be specified instead in the returned
-// #GstVideoCodecState.
-// 
-// If the subclass wishes to copy over existing fields (like pixel aspect ratio,
-// or framerate) from an existing #GstVideoCodecState, it can be provided as a
-// @reference.
-// 
-// If the subclass wishes to override some fields from the output state (like
-// pixel-aspect-ratio or framerate) it can do so on the returned #GstVideoCodecState.
-// 
-// The new output state will only take effect (set on pads and buffers) starting
-// from the next call to #gst_video_encoder_finish_frame().
 func (encoder *VideoEncoderInstance) SetOutputState(caps *gst.Caps, reference *VideoCodecState) *VideoCodecState {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstCaps            // in, full, converted
@@ -17369,11 +13454,8 @@ func (encoder *VideoEncoderInstance) SetOutputState(caps *gst.Caps, reference *V
 
 // SetQosEnabled wraps gst_video_encoder_set_qos_enabled
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: the new qos value. 
+// see also No documentation available
 //
-// Configures @encoder to handle Quality-of-Service events from downstream.
 func (encoder *VideoEncoderInstance) SetQosEnabled(enabled bool) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -17396,260 +13478,79 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_NULL.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Close func(Instance) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
-	//                     Subclasses should chain up to the parent implementation to
-	//                     invoke the default handler.
+	// see also No documentation available
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // Finish allows you to override the implementation of the virtual method finish.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Called to request subclass to dispatch any pending remaining
-	//                  data (e.g. at EOS).
+	// see also No documentation available
 	Finish func(Instance) gst.FlowReturn
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Flush all remaining data from the encoder without
-	//                      pushing it downstream. Since: 1.2
+	// see also No documentation available
 	Flush func(Instance) bool
 	// // Getcaps allows you to override the implementation of the virtual method getcaps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows for a custom sink getcaps implementation (e.g.
-	//                  for multichannel input specification).  If not implemented,
-	//                  default returns gst_video_encoder_proxy_getcaps
-	//                  applied to sink template caps.
+	// see also No documentation available
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Provides input frame to subclass.
+	// see also No documentation available
 	HandleFrame func(Instance, *VideoCodecFrame) gst.FlowReturn
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
+	// see also No documentation available
 	Negotiate func(Instance) bool
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_READY.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Open func(Instance) bool
 	// // PrePush allows you to override the implementation of the virtual method pre_push.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Allows subclass to push frame downstream in whatever
-	//                  shape or form it deems appropriate.  If not provided,
-	//                  provided encoded frame data is simply pushed downstream.
+	// see also No documentation available
 	PrePush func(Instance, *VideoCodecFrame) gst.FlowReturn
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Propose buffer allocation parameters for upstream elements.
-	//                      Subclasses should chain up to the parent implementation to
-	//                      invoke the default handler.
+	// see also No documentation available
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // Reset allows you to override the implementation of the virtual method reset.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- hard bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Allows subclass (encoder) to perform post-seek semantics reset.
-	//                  Deprecated.
+	// see also No documentation available
 	Reset func(Instance, bool) bool
 	// // SetFormat allows you to override the implementation of the virtual method set_format.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- state *VideoCodecState 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Notifies subclass of incoming data format.
-	//                  GstVideoCodecState fields have already been
-	//                  set according to provided caps.
+	// see also No documentation available
 	SetFormat func(Instance, *VideoCodecState) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. This function should return
-	//                  TRUE if the event was handled and should be discarded
-	//                  (i.e. not unref'ed).
-	//                  Subclasses should chain up to the parent implementation to
-	//                  invoke the default handler.
+	// see also No documentation available
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the sink pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.4
+	// see also No documentation available
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the source pad. This function should return
-	//                  TRUE if the event was handled and should be discarded
-	//                  (i.e. not unref'ed).
-	//                  Subclasses should chain up to the parent implementation to
-	//                  invoke the default handler.
+	// see also No documentation available
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the source pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.4
+	// see also No documentation available
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Stop func(Instance) bool
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoCodecFrame 
-	// 	- meta *gst.Meta 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method is copies all meta without
-	//                  tags and meta with only the "video" tag. subclasses can
-	//                  implement this method and return %TRUE if the metadata is to be
-	//                  copied. Since: 1.6
+	// see also No documentation available
 	TransformMeta func(Instance, *VideoCodecFrame, *gst.Meta) bool
 }
 
@@ -18102,13 +14003,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 // ParentClose calls the default implementations of the `GstVideoEncoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element changes to GST_STATE_NULL.
-//                  Allows closing external resources.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentClose() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -18132,20 +14027,7 @@ func (encoder *VideoEncoderInstance) ParentClose() bool {
 // ParentDecideAllocation calls the default implementations of the `GstVideoEncoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                     Setup the allocation parameters for allocating output
-//                     buffers. The passed in query contains the result of the
-//                     downstream allocation query.
-//                     Subclasses should chain up to the parent implementation to
-//                     invoke the default handler.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -18172,13 +14054,7 @@ func (encoder *VideoEncoderInstance) ParentDecideAllocation(query *gst.Query) bo
 // ParentFinish calls the default implementations of the `GstVideoEncoder.finish` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Optional.
-//                  Called to request subclass to dispatch any pending remaining
-//                  data (e.g. at EOS).
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentFinish() gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.GstFlowReturn // return, none, casted
@@ -18200,13 +14076,7 @@ func (encoder *VideoEncoderInstance) ParentFinish() gst.FlowReturn {
 // ParentFlush calls the default implementations of the `GstVideoEncoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                      Flush all remaining data from the encoder without
-//                      pushing it downstream. Since: 1.2
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentFlush() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -18230,19 +14100,7 @@ func (encoder *VideoEncoderInstance) ParentFlush() bool {
 // ParentGetcaps calls the default implementations of the `GstVideoEncoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- filter *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Optional.
-//                  Allows for a custom sink getcaps implementation (e.g.
-//                  for multichannel input specification).  If not implemented,
-//                  default returns gst_video_encoder_proxy_getcaps
-//                  applied to sink template caps.
+// see also No documentation available
 func (enc *VideoEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -18267,15 +14125,7 @@ func (enc *VideoEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstVideoEncoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Provides input frame to subclass.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -18300,13 +14150,7 @@ func (encoder *VideoEncoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 // ParentNegotiate calls the default implementations of the `GstVideoEncoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Negotiate with downstream elements to currently configured #GstVideoCodecState.
-// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-// negotiate fails.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentNegotiate() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -18330,13 +14174,7 @@ func (encoder *VideoEncoderInstance) ParentNegotiate() bool {
 // ParentOpen calls the default implementations of the `GstVideoEncoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element changes to GST_STATE_READY.
-//                  Allows opening external resources.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentOpen() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -18360,18 +14198,7 @@ func (encoder *VideoEncoderInstance) ParentOpen() bool {
 // ParentPrePush calls the default implementations of the `GstVideoEncoder.pre_push` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Optional.
-//                  Allows subclass to push frame downstream in whatever
-//                  shape or form it deems appropriate.  If not provided,
-//                  provided encoded frame data is simply pushed downstream.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentPrePush(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -18396,18 +14223,7 @@ func (encoder *VideoEncoderInstance) ParentPrePush(frame *VideoCodecFrame) gst.F
 // ParentProposeAllocation calls the default implementations of the `GstVideoEncoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                      Propose buffer allocation parameters for upstream elements.
-//                      Subclasses should chain up to the parent implementation to
-//                      invoke the default handler.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -18434,17 +14250,7 @@ func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) b
 // ParentReset calls the default implementations of the `GstVideoEncoder.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- hard bool 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Allows subclass (encoder) to perform post-seek semantics reset.
-//                  Deprecated.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentReset(hard bool) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 C.gboolean // in, none, converted
@@ -18473,18 +14279,7 @@ func (encoder *VideoEncoderInstance) ParentReset(hard bool) bool {
 // ParentSetFormat calls the default implementations of the `GstVideoEncoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- state *VideoCodecState 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Notifies subclass of incoming data format.
-//                  GstVideoCodecState fields have already been
-//                  set according to provided caps.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentSetFormat(state *VideoCodecState) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstVideoCodecState // in, none, converted
@@ -18511,20 +14306,7 @@ func (encoder *VideoEncoderInstance) ParentSetFormat(state *VideoCodecState) boo
 // ParentSinkEvent calls the default implementations of the `GstVideoEncoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the sink pad. This function should return
-//                  TRUE if the event was handled and should be discarded
-//                  (i.e. not unref'ed).
-//                  Subclasses should chain up to the parent implementation to
-//                  invoke the default handler.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -18551,19 +14333,7 @@ func (encoder *VideoEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstVideoEncoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Query handler on the sink pad. This function should
-//                  return TRUE if the query could be performed. Subclasses
-//                  should chain up to the parent implementation to invoke the
-//                  default handler. Since: 1.4
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -18590,20 +14360,7 @@ func (encoder *VideoEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstVideoEncoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the source pad. This function should return
-//                  TRUE if the event was handled and should be discarded
-//                  (i.e. not unref'ed).
-//                  Subclasses should chain up to the parent implementation to
-//                  invoke the default handler.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -18630,19 +14387,7 @@ func (encoder *VideoEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstVideoEncoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Query handler on the source pad. This function should
-//                  return TRUE if the query could be performed. Subclasses
-//                  should chain up to the parent implementation to invoke the
-//                  default handler. Since: 1.4
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -18669,13 +14414,7 @@ func (encoder *VideoEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstVideoEncoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element starts processing.
-//                  Allows opening external resources.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentStart() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -18699,13 +14438,7 @@ func (encoder *VideoEncoderInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstVideoEncoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element stops processing.
-//                  Allows closing external resources.
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentStop() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -18729,20 +14462,7 @@ func (encoder *VideoEncoderInstance) ParentStop() bool {
 // ParentTransformMeta calls the default implementations of the `GstVideoEncoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoCodecFrame 
-// 	- meta *gst.Meta 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional. Transform the metadata on the input buffer to the
-//                  output buffer. By default this method is copies all meta without
-//                  tags and meta with only the "video" tag. subclasses can
-//                  implement this method and return %TRUE if the metadata is to be
-//                  copied. Since: 1.6
+// see also No documentation available
 func (encoder *VideoEncoderInstance) ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -18804,11 +14524,9 @@ type VideoFilterInstance struct {
 var _ VideoFilter = (*VideoFilterInstance)(nil)
 
 // VideoFilter wraps GstVideoFilter
-//
-// Provides useful functions and a base class for video filters.
 // 
-// The videofilter will by default enable QoS on the parent GstBaseTransform
-// to implement frame dropping.
+// see also No documentation available
+//
 type VideoFilter interface {
 	gstbase.BaseTransform
 	upcastToGstVideoFilter() *VideoFilterInstance
@@ -18818,45 +14536,17 @@ type VideoFilter interface {
 	// ParentSetInfo calls the default implementations of the `GstVideoFilter.set_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- incaps *gst.Caps 
-	// 	- inInfo *VideoInfo 
-	// 	- outcaps *gst.Caps 
-	// 	- outInfo *VideoInfo 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// function to be called with the negotiated caps and video infos
+	// see also No documentation available
 	ParentSetInfo(incaps *gst.Caps, inInfo *VideoInfo, outcaps *gst.Caps, outInfo *VideoInfo) bool
 	// ParentTransformFrame calls the default implementations of the `GstVideoFilter.transform_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- inframe *VideoFrame 
-	// 	- outframe *VideoFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// transform a video frame
+	// see also No documentation available
 	ParentTransformFrame(inframe *VideoFrame, outframe *VideoFrame) gst.FlowReturn
 	// ParentTransformFrameIp calls the default implementations of the `GstVideoFilter.transform_frame_ip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// transform a video frame in place
+	// see also No documentation available
 	ParentTransformFrameIp(frame *VideoFrame) gst.FlowReturn
 }
 
@@ -18924,43 +14614,15 @@ type VideoFilterOverrides[Instance VideoFilter] struct {
 
 	// // SetInfo allows you to override the implementation of the virtual method set_info.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- incaps *gst.Caps 
-	// 	- inInfo *VideoInfo 
-	// 	- outcaps *gst.Caps 
-	// 	- outInfo *VideoInfo 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// function to be called with the negotiated caps and video infos
+	// see also No documentation available
 	SetInfo func(Instance, *gst.Caps, *VideoInfo, *gst.Caps, *VideoInfo) bool
 	// // TransformFrame allows you to override the implementation of the virtual method transform_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- inframe *VideoFrame 
-	// 	- outframe *VideoFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// transform a video frame
+	// see also No documentation available
 	TransformFrame func(Instance, *VideoFrame, *VideoFrame) gst.FlowReturn
 	// // TransformFrameIp allows you to override the implementation of the virtual method transform_frame_ip.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *VideoFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// transform a video frame in place
+	// see also No documentation available
 	TransformFrameIp func(Instance, *VideoFrame) gst.FlowReturn
 }
 
@@ -19051,18 +14713,7 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 // ParentSetInfo calls the default implementations of the `GstVideoFilter.set_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- incaps *gst.Caps 
-// 	- inInfo *VideoInfo 
-// 	- outcaps *gst.Caps 
-// 	- outInfo *VideoInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// function to be called with the negotiated caps and video infos
+// see also No documentation available
 func (filter *VideoFilterInstance) ParentSetInfo(incaps *gst.Caps, inInfo *VideoInfo, outcaps *gst.Caps, outInfo *VideoInfo) bool {
 	var carg0 *C.GstVideoFilter
 	var carg1 *C.GstCaps      // in, none, converted
@@ -19098,16 +14749,7 @@ func (filter *VideoFilterInstance) ParentSetInfo(incaps *gst.Caps, inInfo *Video
 // ParentTransformFrame calls the default implementations of the `GstVideoFilter.transform_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- inframe *VideoFrame 
-// 	- outframe *VideoFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// transform a video frame
+// see also No documentation available
 func (filter *VideoFilterInstance) ParentTransformFrame(inframe *VideoFrame, outframe *VideoFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoFilter
 	var carg1 *C.GstVideoFrame // in, none, converted
@@ -19135,15 +14777,7 @@ func (filter *VideoFilterInstance) ParentTransformFrame(inframe *VideoFrame, out
 // ParentTransformFrameIp calls the default implementations of the `GstVideoFilter.transform_frame_ip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *VideoFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// transform a video frame in place
+// see also No documentation available
 func (trans *VideoFilterInstance) ParentTransformFrameIp(frame *VideoFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoFilter
 	var carg1 *C.GstVideoFrame // in, none, converted
@@ -19200,12 +14834,9 @@ type VideoSinkInstance struct {
 var _ VideoSink = (*VideoSinkInstance)(nil)
 
 // VideoSink wraps GstVideoSink
-//
-// Provides useful functions and a base class for video sinks.
 // 
-// GstVideoSink will configure the default base sink to drop frames that
-// arrive later than 20ms as this is considered the default threshold for
-// observing out-of-sync frames.
+// see also No documentation available
+//
 type VideoSink interface {
 	gstbase.BaseSink
 	upcastToGstVideoSink() *VideoSinkInstance
@@ -19215,32 +14846,12 @@ type VideoSink interface {
 	// ParentSetInfo calls the default implementations of the `GstVideoSink.set_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps: A #GstCaps. 
-	// 	- info *VideoInfo: A #GstVideoInfo corresponding to @caps. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notifies the subclass of changed #GstVideoInfo.
+	// see also No documentation available
 	ParentSetInfo(caps *gst.Caps, info *VideoInfo) bool
 	// ParentShowFrame calls the default implementations of the `GstVideoSink.show_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// render a video frame. Maps to #GstBaseSinkClass.render() and
-	//     #GstBaseSinkClass.preroll() vfuncs. Rendering during preroll will be
-	//     suppressed if the #GstVideoSink:show-preroll-frame property is set to
-	//     %FALSE.
+	// see also No documentation available
 	ParentShowFrame(buf *gst.Buffer) gst.FlowReturn
 }
 
@@ -19308,31 +14919,11 @@ type VideoSinkOverrides[Instance VideoSink] struct {
 
 	// // SetInfo allows you to override the implementation of the virtual method set_info.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps: A #GstCaps. 
-	// 	- info *VideoInfo: A #GstVideoInfo corresponding to @caps. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notifies the subclass of changed #GstVideoInfo.
+	// see also No documentation available
 	SetInfo func(Instance, *gst.Caps, *VideoInfo) bool
 	// // ShowFrame allows you to override the implementation of the virtual method show_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// render a video frame. Maps to #GstBaseSinkClass.render() and
-	//     #GstBaseSinkClass.preroll() vfuncs. Rendering during preroll will be
-	//     suppressed if the #GstVideoSink:show-preroll-frame property is set to
-	//     %FALSE.
+	// see also No documentation available
 	ShowFrame func(Instance, *gst.Buffer) gst.FlowReturn
 }
 
@@ -19395,16 +14986,7 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 // ParentSetInfo calls the default implementations of the `GstVideoSink.set_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: A #GstCaps. 
-// 	- info *VideoInfo: A #GstVideoInfo corresponding to @caps. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Notifies the subclass of changed #GstVideoInfo.
+// see also No documentation available
 func (videoSink *VideoSinkInstance) ParentSetInfo(caps *gst.Caps, info *VideoInfo) bool {
 	var carg0 *C.GstVideoSink
 	var carg1 *C.GstCaps      // in, none, converted
@@ -19434,18 +15016,7 @@ func (videoSink *VideoSinkInstance) ParentSetInfo(caps *gst.Caps, info *VideoInf
 // ParentShowFrame calls the default implementations of the `GstVideoSink.show_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// render a video frame. Maps to #GstBaseSinkClass.render() and
-//     #GstBaseSinkClass.preroll() vfuncs. Rendering during preroll will be
-//     suppressed if the #GstVideoSink:show-preroll-frame property is set to
-//     %FALSE.
+// see also No documentation available
 func (videoSink *VideoSinkInstance) ParentShowFrame(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstVideoSink
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -19502,18 +15073,17 @@ type VideoAggregatorConvertPadInstance struct {
 var _ VideoAggregatorConvertPad = (*VideoAggregatorConvertPadInstance)(nil)
 
 // VideoAggregatorConvertPad wraps GstVideoAggregatorConvertPad
-//
-// An implementation of GstPad that can be used with #GstVideoAggregator.
 // 
-// See #GstVideoAggregator for more details.
+// see also No documentation available
+//
 type VideoAggregatorConvertPad interface {
 	VideoAggregatorPad
 	upcastToGstVideoAggregatorConvertPad() *VideoAggregatorConvertPadInstance
 
 	// UpdateConversionInfo wraps gst_video_aggregator_convert_pad_update_conversion_info
+	// 
+	// see also No documentation available
 	//
-	// Requests the pad to check and update the converter before the next usage to
-	// update for any changes that have happened.
 	UpdateConversionInfo()
 
 	// chain up virtual methods:
@@ -19521,10 +15091,7 @@ type VideoAggregatorConvertPad interface {
 	// ParentCreateConversionInfo calls the default implementations of the `GstVideoAggregatorConvertPad.create_conversion_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- agg VideoAggregator 
-	// 	- conversionInfo *VideoInfo 
+	// see also No documentation available
 	ParentCreateConversionInfo(agg VideoAggregator, conversionInfo *VideoInfo)
 }
 
@@ -19587,9 +15154,9 @@ func UnsafeVideoAggregatorConvertPadToGlibFull(c VideoAggregatorConvertPad) unsa
 }
 
 // UpdateConversionInfo wraps gst_video_aggregator_convert_pad_update_conversion_info
+// 
+// see also No documentation available
 //
-// Requests the pad to check and update the converter before the next usage to
-// update for any changes that have happened.
 func (pad *VideoAggregatorConvertPadInstance) UpdateConversionInfo() {
 	var carg0 *C.GstVideoAggregatorConvertPad // in, none, converted
 
@@ -19607,10 +15174,7 @@ type VideoAggregatorConvertPadOverrides[Instance VideoAggregatorConvertPad] stru
 
 	// // CreateConversionInfo allows you to override the implementation of the virtual method create_conversion_info.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- agg VideoAggregator 
-	// 	- conversionInfo *VideoInfo 
+	// see also No documentation available
 	CreateConversionInfo func(Instance, VideoAggregator, *VideoInfo)
 }
 
@@ -19644,10 +15208,7 @@ func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConve
 // ParentCreateConversionInfo calls the default implementations of the `GstVideoAggregatorConvertPad.create_conversion_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- agg VideoAggregator 
-// 	- conversionInfo *VideoInfo 
+// see also No documentation available
 func (pad *VideoAggregatorConvertPadInstance) ParentCreateConversionInfo(agg VideoAggregator, conversionInfo *VideoInfo) {
 	var carg0 *C.GstVideoAggregatorConvertPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -19700,10 +15261,9 @@ type VideoAggregatorParallelConvertPadInstance struct {
 var _ VideoAggregatorParallelConvertPad = (*VideoAggregatorParallelConvertPadInstance)(nil)
 
 // VideoAggregatorParallelConvertPad wraps GstVideoAggregatorParallelConvertPad
-//
-// An implementation of GstPad that can be used with #GstVideoAggregator.
 // 
-// See #GstVideoAggregator for more details.
+// see also No documentation available
+//
 type VideoAggregatorParallelConvertPad interface {
 	VideoAggregatorConvertPad
 	upcastToGstVideoAggregatorParallelConvertPad() *VideoAggregatorParallelConvertPadInstance
@@ -19812,9 +15372,9 @@ func RegisterVideoAggregatorParallelConvertPadSubClass[InstanceT VideoAggregator
 }
 
 // AncillaryMeta wraps GstAncillaryMeta
+// 
+// see also No documentation available
 //
-// #GstMeta for carrying SMPTE-291M Ancillary data. Note that all the ADF fields
-//    (@DID to @checksum) are 10bit values with parity/non-parity high-bits set.
 type AncillaryMeta struct {
 	*ancillaryMeta
 }
@@ -19895,9 +15455,7 @@ func UnsafeAncillaryMetaToGlibFull(a *AncillaryMeta) unsafe.Pointer {
 
 // AncillaryMetaGetInfo wraps gst_ancillary_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func AncillaryMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -19911,8 +15469,9 @@ func AncillaryMetaGetInfo() *gst.MetaInfo {
 }
 
 // ColorBalanceChannelClass wraps GstColorBalanceChannelClass
+// 
+// see also No documentation available
 //
-// Color-balance channel class.
 // 
 // ColorBalanceChannelClass is the type struct for [ColorBalanceChannel]
 type ColorBalanceChannelClass struct {
@@ -19965,8 +15524,9 @@ func (c *ColorBalanceChannelClass) ParentClass() *gobject.ObjectClass {
 }
 
 // ColorBalanceInterface wraps GstColorBalanceInterface
+// 
+// see also No documentation available
 //
-// Color-balance interface.
 type ColorBalanceInterface struct {
 	*colorBalanceInterface
 }
@@ -20046,8 +15606,9 @@ func UnsafeColorBalanceInterfaceToGlibFull(c *ColorBalanceInterface) unsafe.Poin
 }
 
 // NavigationInterface wraps GstNavigationInterface
+// 
+// see also No documentation available
 //
-// Navigation interface.
 type NavigationInterface struct {
 	*navigationInterface
 }
@@ -20127,21 +15688,9 @@ func UnsafeNavigationInterfaceToGlibFull(n *NavigationInterface) unsafe.Pointer 
 }
 
 // VideoAFDMeta wraps GstVideoAFDMeta
+// 
+// see also No documentation available
 //
-// Active Format Description (AFD)
-// 
-// For details, see Table 6.14 Active Format in:
-// 
-// ATSC Digital Television Standard:
-// Part 4 &#x2013; MPEG-2 Video System Characteristics
-// 
-// https://www.atsc.org/wp-content/uploads/2015/03/a_53-Part-4-2009.pdf
-// 
-// and Active Format Description in Complete list of AFD codes
-// 
-// https://en.wikipedia.org/wiki/Active_Format_Description#Complete_list_of_AFD_codes
-// 
-// and SMPTE ST2016-1
 type VideoAFDMeta struct {
 	*videoAFDMeta
 }
@@ -20222,9 +15771,7 @@ func UnsafeVideoAFDMetaToGlibFull(v *VideoAFDMeta) unsafe.Pointer {
 
 // VideoAFDMetaGetInfo wraps gst_video_afd_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoAFDMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -20238,17 +15785,9 @@ func VideoAFDMetaGetInfo() *gst.MetaInfo {
 }
 
 // VideoAffineTransformationMeta wraps GstVideoAffineTransformationMeta
-//
-// Extra buffer metadata for performing an affine transformation using a 4x4
-// matrix. The transformation matrix can be composed with
-// gst_video_affine_transformation_meta_apply_matrix().
 // 
-// The vertices operated on are all in the range 0 to 1, not in
-// Normalized Device Coordinates (-1 to +1). Transforming points in this space
-// are assumed to have an origin at (0.5, 0.5, 0.5) in a left-handed coordinate
-// system with the x-axis moving horizontally (positive values to the right),
-// the y-axis moving vertically (positive values up the screen) and the z-axis
-// perpendicular to the screen (positive values into the screen).
+// see also No documentation available
+//
 type VideoAffineTransformationMeta struct {
 	*videoAffineTransformationMeta
 }
@@ -20329,9 +15868,7 @@ func UnsafeVideoAffineTransformationMetaToGlibFull(v *VideoAffineTransformationM
 
 // VideoAffineTransformationMetaGetInfo wraps gst_video_affine_transformation_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoAffineTransformationMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -20346,12 +15883,8 @@ func VideoAffineTransformationMetaGetInfo() *gst.MetaInfo {
 
 // ApplyMatrix wraps gst_video_affine_transformation_meta_apply_matrix
 // 
-// The function takes the following parameters:
-// 
-// 	- matrix [16]float32: a 4x4 transformation matrix to be applied 
+// see also No documentation available
 //
-// Apply a transformation using the given 4x4 transformation matrix.
-// Performs the multiplication, meta-&gt;matrix X matrix.
 func (meta *VideoAffineTransformationMeta) ApplyMatrix(matrix [16]float32) {
 	var carg0 *C.GstVideoAffineTransformationMeta // in, none, converted
 	var carg1 *C.gfloat                           // in, none, array fixed size (inner: gfloat, size: 16)
@@ -20371,6 +15904,8 @@ func (meta *VideoAffineTransformationMeta) ApplyMatrix(matrix [16]float32) {
 }
 
 // VideoAggregatorClass wraps GstVideoAggregatorClass
+// 
+// see also No documentation available
 // 
 // VideoAggregatorClass is the type struct for [VideoAggregator]
 type VideoAggregatorClass struct {
@@ -20424,6 +15959,8 @@ func (v *VideoAggregatorClass) ParentClass() *gstbase.AggregatorClass {
 
 // VideoAggregatorConvertPadClass wraps GstVideoAggregatorConvertPadClass
 // 
+// see also No documentation available
+// 
 // VideoAggregatorConvertPadClass is the type struct for [VideoAggregatorConvertPad]
 type VideoAggregatorConvertPadClass struct {
 	*videoAggregatorConvertPadClass
@@ -20475,6 +16012,8 @@ func (v *VideoAggregatorConvertPadClass) ParentClass() *VideoAggregatorPadClass 
 }
 
 // VideoAggregatorPadClass wraps GstVideoAggregatorPadClass
+// 
+// see also No documentation available
 // 
 // VideoAggregatorPadClass is the type struct for [VideoAggregatorPad]
 type VideoAggregatorPadClass struct {
@@ -20528,6 +16067,8 @@ func (v *VideoAggregatorPadClass) ParentClass() *gstbase.AggregatorPadClass {
 
 // VideoAggregatorParallelConvertPadClass wraps GstVideoAggregatorParallelConvertPadClass
 // 
+// see also No documentation available
+// 
 // VideoAggregatorParallelConvertPadClass is the type struct for [VideoAggregatorParallelConvertPad]
 type VideoAggregatorParallelConvertPadClass struct {
 	*videoAggregatorParallelConvertPadClass
@@ -20579,10 +16120,9 @@ func (v *VideoAggregatorParallelConvertPadClass) ParentClass() *VideoAggregatorC
 }
 
 // VideoAlignment wraps GstVideoAlignment
+// 
+// see also No documentation available
 //
-// Extra alignment parameters for the memory of video buffers. This
-// structure is usually used to configure the bufferpool if it supports the
-// #GST_BUFFER_POOL_OPTION_VIDEO_ALIGNMENT.
 type VideoAlignment struct {
 	*videoAlignment
 }
@@ -20662,8 +16202,9 @@ func UnsafeVideoAlignmentToGlibFull(v *VideoAlignment) unsafe.Pointer {
 }
 
 // Reset wraps gst_video_alignment_reset
+// 
+// see also No documentation available
 //
-// Set @align to its default values with no padding and no alignment.
 func (align *VideoAlignment) Reset() {
 	var carg0 *C.GstVideoAlignment // in, none, converted
 
@@ -20674,11 +16215,9 @@ func (align *VideoAlignment) Reset() {
 }
 
 // VideoAncillary wraps GstVideoAncillary
-//
-// Video Ancillary data, according to SMPTE-291M specification.
 // 
-// Note that the contents of the data are always stored as 8bit data (i.e. do not contain
-// the parity check bits).
+// see also No documentation available
+//
 type VideoAncillary struct {
 	*videoAncillary
 }
@@ -20758,19 +16297,9 @@ func UnsafeVideoAncillaryToGlibFull(v *VideoAncillary) unsafe.Pointer {
 }
 
 // VideoBarMeta wraps GstVideoBarMeta
+// 
+// see also No documentation available
 //
-// Bar data should be included in video user data
-// whenever the rectangular picture area containing useful information
-// does not extend to the full height or width of the coded frame
-// and AFD alone is insufficient to describe the extent of the image.
-// 
-// Note: either vertical or horizontal bars are specified, but not both.
-// 
-// For more details, see:
-// 
-// https://www.atsc.org/wp-content/uploads/2015/03/a_53-Part-4-2009.pdf
-// 
-// and SMPTE ST2016-1
 type VideoBarMeta struct {
 	*videoBarMeta
 }
@@ -20851,9 +16380,7 @@ func UnsafeVideoBarMetaToGlibFull(v *VideoBarMeta) unsafe.Pointer {
 
 // VideoBarMetaGetInfo wraps gst_video_bar_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoBarMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -20867,6 +16394,8 @@ func VideoBarMetaGetInfo() *gst.MetaInfo {
 }
 
 // VideoBufferPoolClass wraps GstVideoBufferPoolClass
+// 
+// see also No documentation available
 // 
 // VideoBufferPoolClass is the type struct for [VideoBufferPool]
 type VideoBufferPoolClass struct {
@@ -20919,8 +16448,9 @@ func (v *VideoBufferPoolClass) ParentClass() *gst.BufferPoolClass {
 }
 
 // VideoCaptionMeta wraps GstVideoCaptionMeta
+// 
+// see also No documentation available
 //
-// Extra buffer metadata providing Closed Caption.
 type VideoCaptionMeta struct {
 	*videoCaptionMeta
 }
@@ -21001,9 +16531,7 @@ func UnsafeVideoCaptionMetaToGlibFull(v *VideoCaptionMeta) unsafe.Pointer {
 
 // VideoCaptionMetaGetInfo wraps gst_video_caption_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoCaptionMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -21017,6 +16545,8 @@ func VideoCaptionMetaGetInfo() *gst.MetaInfo {
 }
 
 // VideoChromaResample wraps GstVideoChromaResample
+// 
+// see also No documentation available
 type VideoChromaResample struct {
 	*videoChromaResample
 }
@@ -21096,13 +16626,9 @@ func UnsafeVideoChromaResamplerToGlibFull(v *VideoChromaResample) unsafe.Pointer
 }
 
 // VideoCodecAlphaMeta wraps GstVideoCodecAlphaMeta
+// 
+// see also No documentation available
 //
-// This meta is primarily for internal use in GStreamer elements to support
-// VP8/VP9 transparent video stored into WebM or Matroska containers, or
-// transparent static AV1 images. Nothing prevents you from using this meta
-// for custom purposes, but it generally can't be used to easily to add support
-// for alpha channels to CODECs or formats that don't support that out of the
-// box.
 type VideoCodecAlphaMeta struct {
 	*videoCodecAlphaMeta
 }
@@ -21183,9 +16709,7 @@ func UnsafeVideoCodecAlphaMetaToGlibFull(v *VideoCodecAlphaMeta) unsafe.Pointer 
 
 // VideoCodecAlphaMetaGetInfo wraps gst_video_codec_alpha_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoCodecAlphaMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -21199,9 +16723,9 @@ func VideoCodecAlphaMetaGetInfo() *gst.MetaInfo {
 }
 
 // VideoCodecFrame wraps GstVideoCodecFrame
+// 
+// see also No documentation available
 //
-// A #GstVideoCodecFrame represents a video frame both in raw and
-// encoded form.
 type VideoCodecFrame struct {
 	*videoCodecFrame
 }
@@ -21309,16 +16833,9 @@ func UnsafeVideoCodecFrameToGlibFull(v *VideoCodecFrame) unsafe.Pointer {
 }
 
 // VideoCodecState wraps GstVideoCodecState
+// 
+// see also No documentation available
 //
-// Structure representing the state of an incoming or outgoing video
-// stream for encoders and decoders.
-// 
-// Decoders and encoders will receive such a state through their
-// respective @set_format vmethods.
-// 
-// Decoders and encoders can set the downstream state, by using the
-// gst_video_decoder_set_output_state() or
-// gst_video_encoder_set_output_state() methods.
 type VideoCodecState struct {
 	*videoCodecState
 }
@@ -21426,10 +16943,9 @@ func UnsafeVideoCodecStateToGlibFull(v *VideoCodecState) unsafe.Pointer {
 }
 
 // VideoColorPrimariesInfo wraps GstVideoColorPrimariesInfo
+// 
+// see also No documentation available
 //
-// Structure describing the chromaticity coordinates of an RGB system. These
-// values can be used to construct a matrix to transform RGB to and from the
-// XYZ colorspace.
 type VideoColorPrimariesInfo struct {
 	*videoColorPrimariesInfo
 }
@@ -21509,8 +17025,9 @@ func UnsafeVideoColorPrimariesInfoToGlibFull(v *VideoColorPrimariesInfo) unsafe.
 }
 
 // VideoColorimetry wraps GstVideoColorimetry
+// 
+// see also No documentation available
 //
-// Structure describing the color info.
 type VideoColorimetry struct {
 	*videoColorimetry
 }
@@ -21591,16 +17108,8 @@ func UnsafeVideoColorimetryToGlibFull(v *VideoColorimetry) unsafe.Pointer {
 
 // FromString wraps gst_video_colorimetry_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- color string: a colorimetry string 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse the colorimetry string and update @cinfo with the parsed
-// values.
 func (cinfo *VideoColorimetry) FromString(color string) bool {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var carg1 *C.gchar               // in, none, string
@@ -21625,15 +17134,8 @@ func (cinfo *VideoColorimetry) FromString(color string) bool {
 
 // IsEqual wraps gst_video_colorimetry_is_equal
 // 
-// The function takes the following parameters:
-// 
-// 	- other *VideoColorimetry: another #GstVideoColorimetry 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Compare the 2 colorimetry sets for equality
 func (cinfo *VideoColorimetry) IsEqual(other *VideoColorimetry) bool {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var carg1 *C.GstVideoColorimetry // in, none, converted
@@ -21657,17 +17159,8 @@ func (cinfo *VideoColorimetry) IsEqual(other *VideoColorimetry) bool {
 
 // IsEquivalent wraps gst_video_colorimetry_is_equivalent
 // 
-// The function takes the following parameters:
-// 
-// 	- bitdepth uint: bitdepth of a format associated with @cinfo 
-// 	- other *VideoColorimetry: another #GstVideoColorimetry 
-// 	- otherBitdepth uint: bitdepth of a format associated with @other 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Compare the 2 colorimetry sets for functionally equality
 func (cinfo *VideoColorimetry) IsEquivalent(bitdepth uint, other *VideoColorimetry, otherBitdepth uint) bool {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var carg1 C.guint                // in, none, casted
@@ -21697,16 +17190,8 @@ func (cinfo *VideoColorimetry) IsEquivalent(bitdepth uint, other *VideoColorimet
 
 // Matches wraps gst_video_colorimetry_matches
 // 
-// The function takes the following parameters:
-// 
-// 	- color string: a colorimetry string 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check if the colorimetry information in @info matches that of the
-// string @color.
 func (cinfo *VideoColorimetry) Matches(color string) bool {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var carg1 *C.gchar               // in, none, string
@@ -21731,11 +17216,8 @@ func (cinfo *VideoColorimetry) Matches(color string) bool {
 
 // String wraps gst_video_colorimetry_to_string
 // 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Make a string representation of @cinfo.
 func (cinfo *VideoColorimetry) String() string {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var cret  *C.gchar               // return, full, string, nullable-string
@@ -21756,8 +17238,9 @@ func (cinfo *VideoColorimetry) String() string {
 }
 
 // VideoContentLightLevel wraps GstVideoContentLightLevel
+// 
+// see also No documentation available
 //
-// Content light level information specified in CEA-861.3, Appendix A.
 type VideoContentLightLevel struct {
 	*videoContentLightLevel
 }
@@ -21838,15 +17321,8 @@ func UnsafeVideoContentLightLevelToGlibFull(v *VideoContentLightLevel) unsafe.Po
 
 // AddToCaps wraps gst_video_content_light_level_add_to_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse @caps and update @linfo
 func (linfo *VideoContentLightLevel) AddToCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var carg1 *C.GstCaps                   // in, none, converted
@@ -21870,15 +17346,8 @@ func (linfo *VideoContentLightLevel) AddToCaps(caps *gst.Caps) bool {
 
 // FromCaps wraps gst_video_content_light_level_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse @caps and update @linfo
 func (linfo *VideoContentLightLevel) FromCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var carg1 *C.GstCaps                   // in, none, converted
@@ -21902,16 +17371,8 @@ func (linfo *VideoContentLightLevel) FromCaps(caps *gst.Caps) bool {
 
 // FromString wraps gst_video_content_light_level_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- level string: a content-light-level string from caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse the value of content-light-level caps field and update @minfo
-// with the parsed values.
 func (linfo *VideoContentLightLevel) FromString(level string) bool {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var carg1 *C.gchar                     // in, none, string
@@ -21935,8 +17396,9 @@ func (linfo *VideoContentLightLevel) FromString(level string) bool {
 }
 
 // Init wraps gst_video_content_light_level_init
+// 
+// see also No documentation available
 //
-// Initialize @linfo
 func (linfo *VideoContentLightLevel) Init() {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 
@@ -21948,15 +17410,8 @@ func (linfo *VideoContentLightLevel) Init() {
 
 // IsEqual wraps gst_video_content_light_level_is_equal
 // 
-// The function takes the following parameters:
-// 
-// 	- other *VideoContentLightLevel: a #GstVideoContentLightLevel 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks equality between @linfo and @other.
 func (linfo *VideoContentLightLevel) IsEqual(other *VideoContentLightLevel) bool {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var carg1 *C.GstVideoContentLightLevel // in, none, converted
@@ -21980,11 +17435,8 @@ func (linfo *VideoContentLightLevel) IsEqual(other *VideoContentLightLevel) bool
 
 // String wraps gst_video_content_light_level_to_string
 // 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Convert @linfo to its string representation.
 func (linfo *VideoContentLightLevel) String() string {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var cret  *C.gchar                     // return, full, string
@@ -22003,6 +17455,8 @@ func (linfo *VideoContentLightLevel) String() string {
 }
 
 // VideoConverter wraps GstVideoConverter
+// 
+// see also No documentation available
 type VideoConverter struct {
 	*videoConverter
 }
@@ -22083,16 +17537,8 @@ func UnsafeVideoConverterToGlibFull(v *VideoConverter) unsafe.Pointer {
 
 // Frame wraps gst_video_converter_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- src *VideoFrame: a #GstVideoFrame 
-// 	- dest *VideoFrame: a #GstVideoFrame 
+// see also No documentation available
 //
-// Convert the pixels of @src into @dest using @convert.
-// 
-// If #GST_VIDEO_CONVERTER_OPT_ASYNC_TASKS is %TRUE then this function will
-// return immediately and needs to be followed by a call to
-// gst_video_converter_frame_finish().
 func (convert *VideoConverter) Frame(src *VideoFrame, dest *VideoFrame) {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var carg1 *C.GstVideoFrame     // in, none, converted
@@ -22109,9 +17555,9 @@ func (convert *VideoConverter) Frame(src *VideoFrame, dest *VideoFrame) {
 }
 
 // FrameFinish wraps gst_video_converter_frame_finish
+// 
+// see also No documentation available
 //
-// Wait for a previous async conversion performed using
-// gst_video_converter_frame() to complete.
 func (convert *VideoConverter) FrameFinish() {
 	var carg0 *C.GstVideoConverter // in, none, converted
 
@@ -22123,11 +17569,8 @@ func (convert *VideoConverter) FrameFinish() {
 
 // GetConfig wraps gst_video_converter_get_config
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Structure 
+// see also No documentation available
 //
-// Get the current configuration of @convert.
 func (convert *VideoConverter) GetConfig() *gst.Structure {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var cret  *C.GstStructure      // return, none, converted
@@ -22146,11 +17589,8 @@ func (convert *VideoConverter) GetConfig() *gst.Structure {
 
 // GetInInfo wraps gst_video_converter_get_in_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoInfo 
+// see also No documentation available
 //
-// Retrieve the input format of @convert.
 func (convert *VideoConverter) GetInInfo() *VideoInfo {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var cret  *C.GstVideoInfo      // return, none, converted
@@ -22169,11 +17609,8 @@ func (convert *VideoConverter) GetInInfo() *VideoInfo {
 
 // GetOutInfo wraps gst_video_converter_get_out_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoInfo 
+// see also No documentation available
 //
-// Retrieve the output format of @convert.
 func (convert *VideoConverter) GetOutInfo() *VideoInfo {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var cret  *C.GstVideoInfo      // return, none, converted
@@ -22192,22 +17629,8 @@ func (convert *VideoConverter) GetOutInfo() *VideoInfo {
 
 // SetConfig wraps gst_video_converter_set_config
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstStructure 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set @config as extra configuration for @convert.
-// 
-// If the parameters in @config can not be set exactly, this function returns
-// %FALSE and will try to update as much state as possible. The new state can
-// then be retrieved and refined with gst_video_converter_get_config().
-// 
-// Look at the `GST_VIDEO_CONVERTER_OPT_*` fields to check valid configuration
-// option and values.
 func (convert *VideoConverter) SetConfig(config *gst.Structure) bool {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var carg1 *C.GstStructure      // in, full, converted
@@ -22230,8 +17653,9 @@ func (convert *VideoConverter) SetConfig(config *gst.Structure) bool {
 }
 
 // VideoCropMeta wraps GstVideoCropMeta
+// 
+// see also No documentation available
 //
-// Extra buffer metadata describing image cropping.
 type VideoCropMeta struct {
 	*videoCropMeta
 }
@@ -22312,9 +17736,7 @@ func UnsafeVideoCropMetaToGlibFull(v *VideoCropMeta) unsafe.Pointer {
 
 // VideoCropMetaGetInfo wraps gst_video_crop_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoCropMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -22328,11 +17750,9 @@ func VideoCropMetaGetInfo() *gst.MetaInfo {
 }
 
 // VideoDecoderClass wraps GstVideoDecoderClass
+// 
+// see also No documentation available
 //
-// Subclasses can override any of the available virtual methods or not, as
-// needed. At minimum @handle_frame needs to be overridden, and @set_format
-// and likely as well.  If non-packetized input is supported or expected,
-// @parse needs to be overridden as well.
 // 
 // VideoDecoderClass is the type struct for [VideoDecoder]
 type VideoDecoderClass struct {
@@ -22385,8 +17805,9 @@ func (v *VideoDecoderClass) ParentClass() *gst.ElementClass {
 }
 
 // VideoDirectionInterface wraps GstVideoDirectionInterface
+// 
+// see also No documentation available
 //
-// #GstVideoDirectionInterface interface.
 type VideoDirectionInterface struct {
 	*videoDirectionInterface
 }
@@ -22466,9 +17887,9 @@ func UnsafeVideoDirectionInterfaceToGlibFull(v *VideoDirectionInterface) unsafe.
 }
 
 // VideoDither wraps GstVideoDither
+// 
+// see also No documentation available
 //
-// GstVideoDither provides implementations of several dithering algorithms
-// that can be applied to lines of video pixels to quantize and dither them.
 type VideoDither struct {
 	*videoDither
 }
@@ -22548,10 +17969,9 @@ func UnsafeVideoDitherToGlibFull(v *VideoDither) unsafe.Pointer {
 }
 
 // VideoEncoderClass wraps GstVideoEncoderClass
+// 
+// see also No documentation available
 //
-// Subclasses can override any of the available virtual methods or not, as
-// needed. At minimum @handle_frame needs to be overridden, and @set_format
-// and @get_caps are likely needed as well.
 // 
 // VideoEncoderClass is the type struct for [VideoEncoder]
 type VideoEncoderClass struct {
@@ -22604,8 +18024,9 @@ func (v *VideoEncoderClass) ParentClass() *gst.ElementClass {
 }
 
 // VideoFilterClass wraps GstVideoFilterClass
+// 
+// see also No documentation available
 //
-// The video filter class structure.
 // 
 // VideoFilterClass is the type struct for [VideoFilter]
 type VideoFilterClass struct {
@@ -22658,8 +18079,9 @@ func (v *VideoFilterClass) ParentClass() *gstbase.BaseTransformClass {
 }
 
 // VideoFormatInfo wraps GstVideoFormatInfo
+// 
+// see also No documentation available
 //
-// Information for a video format.
 type VideoFormatInfo struct {
 	*videoFormatInfo
 }
@@ -22740,17 +18162,8 @@ func UnsafeVideoFormatInfoToGlibFull(v *VideoFormatInfo) unsafe.Pointer {
 
 // Component wraps gst_video_format_info_component
 // 
-// The function takes the following parameters:
-// 
-// 	- plane uint: a plane number 
-// 
-// The function returns the following values:
-// 
-// 	- components int32: array used to store component numbers 
+// see also No documentation available
 //
-// Fill @components with the number of all the components packed in plane @p
-// for the format @info. A value of -1 in @components indicates that no more
-// components are packed in the plane.
 func (info *VideoFormatInfo) Component(plane uint) int32 {
 	var carg0 *C.GstVideoFormatInfo // in, none, converted
 	var carg1 C.guint               // in, none, casted
@@ -22772,17 +18185,8 @@ func (info *VideoFormatInfo) Component(plane uint) int32 {
 
 // ExtrapolateStride wraps gst_video_format_info_extrapolate_stride
 // 
-// The function takes the following parameters:
-// 
-// 	- plane int32: a plane number 
-// 	- stride int32: The fist plane stride 
-// 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 //
-// Extrapolate @plane stride from the first stride of an image. This helper is
-// useful to support legacy API were only one stride is supported.
 func (finfo *VideoFormatInfo) ExtrapolateStride(plane int32, stride int32) int32 {
 	var carg0 *C.GstVideoFormatInfo // in, none, converted
 	var carg1 C.gint                // in, none, casted
@@ -22806,8 +18210,9 @@ func (finfo *VideoFormatInfo) ExtrapolateStride(plane int32, stride int32) int32
 }
 
 // VideoFrame wraps GstVideoFrame
+// 
+// see also No documentation available
 //
-// A video frame obtained from gst_video_frame_map()
 type VideoFrame struct {
 	*videoFrame
 }
@@ -22888,60 +18293,8 @@ func UnsafeVideoFrameToGlibFull(v *VideoFrame) unsafe.Pointer {
 
 // VideoFrameMap wraps gst_video_frame_map
 // 
-// The function takes the following parameters:
-// 
-// 	- info *VideoInfo: a #GstVideoInfo 
-// 	- buffer *gst.Buffer: the buffer to map 
-// 	- flags gst.MapFlags: #GstMapFlags 
-// 
-// The function returns the following values:
-// 
-// 	- frame VideoFrame: pointer to #GstVideoFrame 
-// 	- goret bool 
+// see also No documentation available
 //
-// Use @info and @buffer to fill in the values of @frame. @frame is usually
-// allocated on the stack, and you will pass the address to the #GstVideoFrame
-// structure allocated on the stack; gst_video_frame_map() will then fill in
-// the structures with the various video-specific information you need to access
-// the pixels of the video buffer. You can then use accessor macros such as
-// GST_VIDEO_FRAME_COMP_DATA(), GST_VIDEO_FRAME_PLANE_DATA(),
-// GST_VIDEO_FRAME_COMP_STRIDE(), GST_VIDEO_FRAME_PLANE_STRIDE() etc.
-// to get to the pixels.
-// 
-// |[&lt;!-- language="C" --&gt;
-//   GstVideoFrame vframe;
-//   ...
-//   // set RGB pixels to black one at a time
-//   if (gst_video_frame_map (&amp;vframe, video_info, video_buffer, GST_MAP_WRITE)) {
-//     guint8 *pixels = GST_VIDEO_FRAME_PLANE_DATA (vframe, 0);
-//     guint stride = GST_VIDEO_FRAME_PLANE_STRIDE (vframe, 0);
-//     guint pixel_stride = GST_VIDEO_FRAME_COMP_PSTRIDE (vframe, 0);
-// 
-//     for (h = 0; h &lt; height; ++h) {
-//       for (w = 0; w &lt; width; ++w) {
-//         guint8 *pixel = pixels + h * stride + w * pixel_stride;
-// 
-//         memset (pixel, 0, pixel_stride);
-//       }
-//     }
-// 
-//     gst_video_frame_unmap (&amp;vframe);
-//   }
-//   ...
-// ]|
-// 
-// All video planes of @buffer will be mapped and the pointers will be set in
-// @frame-&gt;data.
-// 
-// The purpose of this function is to make it easy for you to get to the video
-// pixels in a generic way, without you having to worry too much about details
-// such as whether the video data is allocated in one contiguous memory chunk
-// or multiple memory chunks (e.g. one for each plane); or if custom strides
-// and custom plane offsets are used or not (as signalled by GstVideoMeta on
-// each buffer). This function will just fill the #GstVideoFrame structure
-// with the right values and if you use the accessor macros everything will
-// just work and you can access the data easily. It also maps the underlying
-// memory chunks for you.
 func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (VideoFrame, bool) {
 	var carg2 *C.GstVideoInfo // in, none, converted
 	var carg3 *C.GstBuffer    // in, none, converted
@@ -22973,26 +18326,8 @@ func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (Vid
 
 // VideoFrameMapID wraps gst_video_frame_map_id
 // 
-// The function takes the following parameters:
-// 
-// 	- info *VideoInfo: a #GstVideoInfo 
-// 	- buffer *gst.Buffer: the buffer to map 
-// 	- id int32: the frame id to map 
-// 	- flags gst.MapFlags: #GstMapFlags 
-// 
-// The function returns the following values:
-// 
-// 	- frame VideoFrame: pointer to #GstVideoFrame 
-// 	- goret bool 
+// see also No documentation available
 //
-// Use @info and @buffer to fill in the values of @frame with the video frame
-// information of frame @id.
-// 
-// When @id is -1, the default frame is mapped. When @id != -1, this function
-// will return %FALSE when there is no GstVideoMeta with that id.
-// 
-// All video planes of @buffer will be mapped and the pointers will be set in
-// @frame-&gt;data.
 func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int32, flags gst.MapFlags) (VideoFrame, bool) {
 	var carg2 *C.GstVideoInfo // in, none, converted
 	var carg3 *C.GstBuffer    // in, none, converted
@@ -23027,18 +18362,8 @@ func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int32, flags gst.Ma
 
 // Copy wraps gst_video_frame_copy
 // 
-// The function takes the following parameters:
-// 
-// 	- src *VideoFrame: a #GstVideoFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Copy the contents from @src to @dest.
-// 
-// Note: Since: 1.18, @dest dimensions are allowed to be
-// smaller than @src dimensions.
 func (dest *VideoFrame) Copy(src *VideoFrame) bool {
 	var carg0 *C.GstVideoFrame // in, none, converted
 	var carg1 *C.GstVideoFrame // in, none, converted
@@ -23062,19 +18387,8 @@ func (dest *VideoFrame) Copy(src *VideoFrame) bool {
 
 // CopyPlane wraps gst_video_frame_copy_plane
 // 
-// The function takes the following parameters:
-// 
-// 	- src *VideoFrame: a #GstVideoFrame 
-// 	- plane uint: a plane 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Copy the plane with index @plane from @src to @dest.
-// 
-// Note: Since: 1.18, @dest dimensions are allowed to be
-// smaller than @src dimensions.
 func (dest *VideoFrame) CopyPlane(src *VideoFrame, plane uint) bool {
 	var carg0 *C.GstVideoFrame // in, none, converted
 	var carg1 *C.GstVideoFrame // in, none, converted
@@ -23100,8 +18414,9 @@ func (dest *VideoFrame) CopyPlane(src *VideoFrame, plane uint) bool {
 }
 
 // Unmap wraps gst_video_frame_unmap
+// 
+// see also No documentation available
 //
-// Unmap the memory previously mapped with gst_video_frame_map.
 func (frame *VideoFrame) Unmap() {
 	var carg0 *C.GstVideoFrame // in, none, converted
 
@@ -23112,11 +18427,9 @@ func (frame *VideoFrame) Unmap() {
 }
 
 // VideoGLTextureUploadMeta wraps GstVideoGLTextureUploadMeta
+// 
+// see also No documentation available
 //
-// Extra buffer metadata for uploading a buffer to an OpenGL texture
-// ID. The caller of gst_video_gl_texture_upload_meta_upload() must
-// have OpenGL set up and call this from a thread where it is valid
-// to upload something to an OpenGL texture.
 type VideoGLTextureUploadMeta struct {
 	*videoGLTextureUploadMeta
 }
@@ -23197,9 +18510,7 @@ func UnsafeVideoGLTextureUploadMetaToGlibFull(v *VideoGLTextureUploadMeta) unsaf
 
 // VideoGLTextureUploadMetaGetInfo wraps gst_video_gl_texture_upload_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoGLTextureUploadMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -23214,15 +18525,8 @@ func VideoGLTextureUploadMetaGetInfo() *gst.MetaInfo {
 
 // Upload wraps gst_video_gl_texture_upload_meta_upload
 // 
-// The function takes the following parameters:
-// 
-// 	- textureId *uint: the texture IDs to upload to 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Uploads the buffer which owns the meta to a specific texture ID.
 func (meta *VideoGLTextureUploadMeta) Upload(textureId *uint) bool {
 	var carg0 *C.GstVideoGLTextureUploadMeta // in, none, converted
 	var carg1 *C.guint                       // in, transfer: none, C Pointers: 1, Name: guint
@@ -23247,13 +18551,9 @@ func (meta *VideoGLTextureUploadMeta) Upload(textureId *uint) bool {
 }
 
 // VideoInfo wraps GstVideoInfo
-//
-// Information describing image properties. This information can be filled
-// in from GstCaps with gst_video_info_from_caps(). The information is also used
-// to store the specific video info when mapping a video frame with
-// gst_video_frame_map().
 // 
-// Use the provided macros to access the info in this structure.
+// see also No documentation available
+//
 type VideoInfo struct {
 	*videoInfo
 }
@@ -23349,12 +18649,8 @@ func UnsafeVideoInfoToGlibFull(v *VideoInfo) unsafe.Pointer {
 
 // NewVideoInfo wraps gst_video_info_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoInfo 
+// see also No documentation available
 //
-// Allocate a new #GstVideoInfo that is also initialized with
-// gst_video_info_init().
 func NewVideoInfo() *VideoInfo {
 	var cret *C.GstVideoInfo // return, full, converted
 
@@ -23369,15 +18665,8 @@ func NewVideoInfo() *VideoInfo {
 
 // NewVideoInfoFromCaps wraps gst_video_info_new_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoInfo (nullable) 
+// see also No documentation available
 //
-// Parse @caps to generate a #GstVideoInfo.
 func NewVideoInfoFromCaps(caps *gst.Caps) *VideoInfo {
 	var carg1 *C.GstCaps      // in, none, converted
 	var cret  *C.GstVideoInfo // return, full, converted, nullable
@@ -23398,16 +18687,8 @@ func NewVideoInfoFromCaps(caps *gst.Caps) *VideoInfo {
 
 // VideoInfoFromCaps wraps gst_video_info_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- info VideoInfo: #GstVideoInfo 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse @caps and update @info.
 func VideoInfoFromCaps(caps *gst.Caps) (VideoInfo, bool) {
 	var carg2 *C.GstCaps     // in, none, converted
 	var carg1 C.GstVideoInfo // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
@@ -23433,11 +18714,8 @@ func VideoInfoFromCaps(caps *gst.Caps) (VideoInfo, bool) {
 
 // VideoInfoInit wraps gst_video_info_init
 // 
-// The function returns the following values:
-// 
-// 	- info VideoInfo: a #GstVideoInfo 
+// see also No documentation available
 //
-// Initialize @info with default values.
 func VideoInfoInit() VideoInfo {
 	var carg1 C.GstVideoInfo // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
 
@@ -23454,19 +18732,8 @@ func VideoInfoInit() VideoInfo {
 
 // Align wraps gst_video_info_align
 // 
-// The function takes the following parameters:
-// 
-// 	- align *VideoAlignment: alignment parameters 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Adjust the offset and stride fields in @info so that the padding and
-// stride alignment in @align is respected.
-// 
-// Extra padding will be added to the right side when stride alignment padding
-// is required and @align will be updated with the new padding values.
 func (info *VideoInfo) Align(align *VideoAlignment) bool {
 	var carg0 *C.GstVideoInfo      // in, none, converted
 	var carg1 *C.GstVideoAlignment // in, none, converted
@@ -23490,24 +18757,8 @@ func (info *VideoInfo) Align(align *VideoAlignment) bool {
 
 // AlignFull wraps gst_video_info_align_full
 // 
-// The function takes the following parameters:
-// 
-// 	- align *VideoAlignment: alignment parameters 
-// 
-// The function returns the following values:
-// 
-// 	- planeSize uint: array used to store the plane sizes 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extra padding will be added to the right side when stride alignment padding
-// is required and @align will be updated with the new padding values.
-// 
-// This variant of gst_video_info_align() provides the updated size, in bytes,
-// of each video plane after the alignment, including all horizontal and vertical
-// paddings.
-// 
-// In case of GST_VIDEO_INTERLACE_MODE_ALTERNATE info, the returned sizes are the
-// ones used to hold a single field, not the full frame.
 func (info *VideoInfo) AlignFull(align *VideoAlignment) (uint, bool) {
 	var carg0 *C.GstVideoInfo      // in, none, converted
 	var carg1 *C.GstVideoAlignment // in, none, converted
@@ -23534,21 +18785,8 @@ func (info *VideoInfo) AlignFull(align *VideoAlignment) (uint, bool) {
 
 // Convert wraps gst_video_info_convert
 // 
-// The function takes the following parameters:
-// 
-// 	- srcFormat gst.Format: #GstFormat of the @src_value 
-// 	- srcValue int64: value to convert 
-// 	- destFormat gst.Format: #GstFormat of the @dest_value 
-// 
-// The function returns the following values:
-// 
-// 	- destValue int64: pointer to destination value 
-// 	- goret bool 
+// see also No documentation available
 //
-// Converts among various #GstFormat types.  This function handles
-// GST_FORMAT_BYTES, GST_FORMAT_TIME, and GST_FORMAT_DEFAULT.  For
-// raw video, GST_FORMAT_DEFAULT corresponds to video frames.  This
-// function can be used to handle pad queries of the type GST_QUERY_CONVERT.
 func (info *VideoInfo) Convert(srcFormat gst.Format, srcValue int64, destFormat gst.Format) (int64, bool) {
 	var carg0 *C.GstVideoInfo // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
@@ -23581,11 +18819,8 @@ func (info *VideoInfo) Convert(srcFormat gst.Format, srcValue int64, destFormat 
 
 // Copy wraps gst_video_info_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoInfo 
+// see also No documentation available
 //
-// Copy a GstVideoInfo structure.
 func (info *VideoInfo) Copy() *VideoInfo {
 	var carg0 *C.GstVideoInfo // in, none, converted
 	var cret  *C.GstVideoInfo // return, full, converted
@@ -23604,15 +18839,8 @@ func (info *VideoInfo) Copy() *VideoInfo {
 
 // IsEqual wraps gst_video_info_is_equal
 // 
-// The function takes the following parameters:
-// 
-// 	- other *VideoInfo: a #GstVideoInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Compares two #GstVideoInfo and returns whether they are equal or not
 func (info *VideoInfo) IsEqual(other *VideoInfo) bool {
 	var carg0 *C.GstVideoInfo // in, none, converted
 	var carg1 *C.GstVideoInfo // in, none, converted
@@ -23636,21 +18864,8 @@ func (info *VideoInfo) IsEqual(other *VideoInfo) bool {
 
 // SetFormat wraps gst_video_info_set_format
 // 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: the format 
-// 	- width uint: a width 
-// 	- height uint: a height 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set the default info for a video frame of @format and @width and @height.
-// 
-// Note: This initializes @info first, no values are preserved. This function
-// does not set the offsets correctly for interlaced vertically
-// subsampled formats.
 func (info *VideoInfo) SetFormat(format VideoFormat, width uint, height uint) bool {
 	var carg0 *C.GstVideoInfo  // in, none, converted
 	var carg1 C.GstVideoFormat // in, none, casted
@@ -23680,19 +18895,8 @@ func (info *VideoInfo) SetFormat(format VideoFormat, width uint, height uint) bo
 
 // SetInterlacedFormat wraps gst_video_info_set_interlaced_format
 // 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: the format 
-// 	- mode VideoInterlaceMode: a #GstVideoInterlaceMode 
-// 	- width uint: a width 
-// 	- height uint: a height 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Same as #gst_video_info_set_format but also allowing to set the interlaced
-// mode.
 func (info *VideoInfo) SetInterlacedFormat(format VideoFormat, mode VideoInterlaceMode, width uint, height uint) bool {
 	var carg0 *C.GstVideoInfo         // in, none, converted
 	var carg1 C.GstVideoFormat        // in, none, casted
@@ -23725,11 +18929,8 @@ func (info *VideoInfo) SetInterlacedFormat(format VideoFormat, mode VideoInterla
 
 // ToCaps wraps gst_video_info_to_caps
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Convert the values of @info into a #GstCaps.
 func (info *VideoInfo) ToCaps() *gst.Caps {
 	var carg0 *C.GstVideoInfo // in, none, converted
 	var cret  *C.GstCaps      // return, full, converted
@@ -23747,10 +18948,9 @@ func (info *VideoInfo) ToCaps() *gst.Caps {
 }
 
 // VideoInfoDmaDrm wraps GstVideoInfoDmaDrm
+// 
+// see also No documentation available
 //
-// Information describing a DMABuf image properties. It wraps #GstVideoInfo and
-// adds DRM information such as drm-fourcc and drm-modifier, required for
-// negotiation and mapping.
 type VideoInfoDmaDrm struct {
 	*videoInfoDmaDrm
 }
@@ -23846,12 +19046,8 @@ func UnsafeVideoInfoDmaDrmToGlibFull(v *VideoInfoDmaDrm) unsafe.Pointer {
 
 // NewVideoInfoDmaDrm wraps gst_video_info_dma_drm_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoInfoDmaDrm 
+// see also No documentation available
 //
-// Allocate a new #GstVideoInfoDmaDrm that is also initialized with
-// gst_video_info_dma_drm_init().
 func NewVideoInfoDmaDrm() *VideoInfoDmaDrm {
 	var cret *C.GstVideoInfoDmaDrm // return, full, converted
 
@@ -23866,17 +19062,8 @@ func NewVideoInfoDmaDrm() *VideoInfoDmaDrm {
 
 // NewVideoInfoDmaDrmFromCaps wraps gst_video_info_dma_drm_new_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoInfoDmaDrm (nullable) 
+// see also No documentation available
 //
-// Parse @caps to generate a #GstVideoInfoDmaDrm. Please note that the
-// @caps should be a dma drm caps. The gst_video_is_dma_drm_caps() can
-// be used to verify it before calling this function.
 func NewVideoInfoDmaDrmFromCaps(caps *gst.Caps) *VideoInfoDmaDrm {
 	var carg1 *C.GstCaps            // in, none, converted
 	var cret  *C.GstVideoInfoDmaDrm // return, full, converted, nullable
@@ -23897,18 +19084,8 @@ func NewVideoInfoDmaDrmFromCaps(caps *gst.Caps) *VideoInfoDmaDrm {
 
 // VideoInfoDmaDrmFromCaps wraps gst_video_info_dma_drm_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- drmInfo VideoInfoDmaDrm: #GstVideoInfoDmaDrm 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse @caps and update @info. Please note that the @caps should be
-// a dma drm caps. The gst_video_is_dma_drm_caps() can be used to verify
-// it before calling this function.
 func VideoInfoDmaDrmFromCaps(caps *gst.Caps) (VideoInfoDmaDrm, bool) {
 	var carg2 *C.GstCaps           // in, none, converted
 	var carg1 C.GstVideoInfoDmaDrm // out, transfer: none, C Pointers: 0, Name: VideoInfoDmaDrm, caller-allocates
@@ -23934,18 +19111,8 @@ func VideoInfoDmaDrmFromCaps(caps *gst.Caps) (VideoInfoDmaDrm, bool) {
 
 // VideoInfoDmaDrmFromVideoInfo wraps gst_video_info_dma_drm_from_video_info
 // 
-// The function takes the following parameters:
-// 
-// 	- info *VideoInfo: a #GstVideoInfo 
-// 	- modifier uint64: the associated modifier value. 
-// 
-// The function returns the following values:
-// 
-// 	- drmInfo VideoInfoDmaDrm: #GstVideoInfoDmaDrm 
-// 	- goret bool 
+// see also No documentation available
 //
-// Fills @drm_info if @info's format has a valid drm format and @modifier is also
-// valid
 func VideoInfoDmaDrmFromVideoInfo(info *VideoInfo, modifier uint64) (VideoInfoDmaDrm, bool) {
 	var carg2 *C.GstVideoInfo      // in, none, converted
 	var carg3 C.guint64            // in, none, casted
@@ -23974,11 +19141,8 @@ func VideoInfoDmaDrmFromVideoInfo(info *VideoInfo, modifier uint64) (VideoInfoDm
 
 // VideoInfoDmaDrmInit wraps gst_video_info_dma_drm_init
 // 
-// The function returns the following values:
-// 
-// 	- drmInfo VideoInfoDmaDrm: a #GstVideoInfoDmaDrm 
+// see also No documentation available
 //
-// Initialize @drm_info with default values.
 func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 	var carg1 C.GstVideoInfoDmaDrm // out, transfer: none, C Pointers: 0, Name: VideoInfoDmaDrm, caller-allocates
 
@@ -23995,14 +19159,8 @@ func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 
 // ToCaps wraps gst_video_info_dma_drm_to_caps
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 //
-// Convert the values of @drm_info into a #GstCaps. Please note that the
-// @caps returned will be a dma drm caps which sets format field to DMA_DRM,
-// and contains a new drm-format field. The value of drm-format field is
-// composed of a drm fourcc and a modifier, such as NV12:0x0100000000000002.
 func (drmInfo *VideoInfoDmaDrm) ToCaps() *gst.Caps {
 	var carg0 *C.GstVideoInfoDmaDrm // in, none, converted
 	var cret  *C.GstCaps            // return, full, converted, nullable
@@ -24023,16 +19181,8 @@ func (drmInfo *VideoInfoDmaDrm) ToCaps() *gst.Caps {
 
 // ToVideoInfo wraps gst_video_info_dma_drm_to_video_info
 // 
-// The function returns the following values:
-// 
-// 	- info VideoInfo: #GstVideoInfo 
-// 	- goret bool 
+// see also No documentation available
 //
-// Convert the #GstVideoInfoDmaDrm into a traditional #GstVideoInfo with
-// recognized video format. For DMA kind memory, the non linear DMA format
-// should be recognized as #GST_VIDEO_FORMAT_DMA_DRM. This helper function
-// sets @info's video format into the default value according to @drm_info's
-// drm_fourcc field.
 func (drmInfo *VideoInfoDmaDrm) ToVideoInfo() (VideoInfo, bool) {
 	var carg0 *C.GstVideoInfoDmaDrm // in, none, converted
 	var carg1 C.GstVideoInfo        // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
@@ -24057,9 +19207,9 @@ func (drmInfo *VideoInfoDmaDrm) ToVideoInfo() (VideoInfo, bool) {
 }
 
 // VideoMasteringDisplayInfo wraps GstVideoMasteringDisplayInfo
+// 
+// see also No documentation available
 //
-// Mastering display color volume information defined by SMPTE ST 2086
-// (a.k.a static HDR metadata).
 type VideoMasteringDisplayInfo struct {
 	*videoMasteringDisplayInfo
 }
@@ -24140,16 +19290,8 @@ func UnsafeVideoMasteringDisplayInfoToGlibFull(v *VideoMasteringDisplayInfo) uns
 
 // VideoMasteringDisplayInfoFromString wraps gst_video_mastering_display_info_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- mastering string: a #GstStructure representing #GstVideoMasteringDisplayInfo 
-// 
-// The function returns the following values:
-// 
-// 	- minfo VideoMasteringDisplayInfo: a #GstVideoMasteringDisplayInfo 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extract #GstVideoMasteringDisplayInfo from @mastering
 func VideoMasteringDisplayInfoFromString(mastering string) (VideoMasteringDisplayInfo, bool) {
 	var carg2 *C.gchar                       // in, none, string
 	var carg1 C.GstVideoMasteringDisplayInfo // out, transfer: none, C Pointers: 0, Name: VideoMasteringDisplayInfo, caller-allocates
@@ -24176,15 +19318,8 @@ func VideoMasteringDisplayInfoFromString(mastering string) (VideoMasteringDispla
 
 // AddToCaps wraps gst_video_mastering_display_info_add_to_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set string representation of @minfo to @caps
 func (minfo *VideoMasteringDisplayInfo) AddToCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 	var carg1 *C.GstCaps                      // in, none, converted
@@ -24208,15 +19343,8 @@ func (minfo *VideoMasteringDisplayInfo) AddToCaps(caps *gst.Caps) bool {
 
 // FromCaps wraps gst_video_mastering_display_info_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse @caps and update @minfo
 func (minfo *VideoMasteringDisplayInfo) FromCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 	var carg1 *C.GstCaps                      // in, none, converted
@@ -24239,8 +19367,9 @@ func (minfo *VideoMasteringDisplayInfo) FromCaps(caps *gst.Caps) bool {
 }
 
 // Init wraps gst_video_mastering_display_info_init
+// 
+// see also No documentation available
 //
-// Initialize @minfo
 func (minfo *VideoMasteringDisplayInfo) Init() {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 
@@ -24252,15 +19381,8 @@ func (minfo *VideoMasteringDisplayInfo) Init() {
 
 // IsEqual wraps gst_video_mastering_display_info_is_equal
 // 
-// The function takes the following parameters:
-// 
-// 	- other *VideoMasteringDisplayInfo: a #GstVideoMasteringDisplayInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks equality between @minfo and @other.
 func (minfo *VideoMasteringDisplayInfo) IsEqual(other *VideoMasteringDisplayInfo) bool {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 	var carg1 *C.GstVideoMasteringDisplayInfo // in, none, converted
@@ -24284,11 +19406,8 @@ func (minfo *VideoMasteringDisplayInfo) IsEqual(other *VideoMasteringDisplayInfo
 
 // String wraps gst_video_mastering_display_info_to_string
 // 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Convert @minfo to its string representation
 func (minfo *VideoMasteringDisplayInfo) String() string {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 	var cret  *C.gchar                        // return, full, string
@@ -24307,9 +19426,9 @@ func (minfo *VideoMasteringDisplayInfo) String() string {
 }
 
 // VideoMasteringDisplayInfoCoordinates wraps GstVideoMasteringDisplayInfoCoordinates
+// 
+// see also No documentation available
 //
-// Used to represent display_primaries and white_point of
-// #GstVideoMasteringDisplayInfo struct. See #GstVideoMasteringDisplayInfo
 type VideoMasteringDisplayInfoCoordinates struct {
 	*videoMasteringDisplayInfoCoordinates
 }
@@ -24389,30 +19508,9 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesToGlibFull(v *VideoMasteringDispl
 }
 
 // VideoMeta wraps GstVideoMeta
+// 
+// see also No documentation available
 //
-// Extra buffer metadata describing image properties
-// 
-// This meta can also be used by downstream elements to specifiy their
-// buffer layout requirements for upstream. Upstream should try to
-// fit those requirements, if possible, in order to prevent buffer copies.
-// 
-// This is done by passing a custom #GstStructure to
-// gst_query_add_allocation_meta() when handling the ALLOCATION query.
-// This structure should be named 'video-meta' and can have the following
-// fields:
-// - padding-top (uint): extra pixels on the top
-// - padding-bottom (uint): extra pixels on the bottom
-// - padding-left (uint): extra pixels on the left side
-// - padding-right (uint): extra pixels on the right side
-// - stride-align0 (uint): stride align requirements for plane 0
-// - stride-align1 (uint): stride align requirements for plane 1
-// - stride-align2 (uint): stride align requirements for plane 2
-// - stride-align3 (uint): stride align requirements for plane 3
-// The padding and stride-align fields have the same semantic as #GstVideoMeta.alignment
-// and so represent the paddings and stride-align requested on produced video buffers.
-// 
-// Since 1.24 it can be serialized using gst_meta_serialize() and
-// gst_meta_deserialize().
 type VideoMeta struct {
 	*videoMeta
 }
@@ -24493,9 +19591,7 @@ func UnsafeVideoMetaToGlibFull(v *VideoMeta) unsafe.Pointer {
 
 // VideoMetaGetInfo wraps gst_video_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -24510,17 +19606,8 @@ func VideoMetaGetInfo() *gst.MetaInfo {
 
 // SetAlignment wraps gst_video_meta_set_alignment
 // 
-// The function takes the following parameters:
-// 
-// 	- alignment VideoAlignment: a #GstVideoAlignment 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set the alignment of @meta to @alignment. This function checks that
-// the paddings defined in @alignment are compatible with the strides
-// defined in @meta and will fail to update if they are not.
 func (meta *VideoMeta) SetAlignment(alignment VideoAlignment) bool {
 	var carg0 *C.GstVideoMeta     // in, none, converted
 	var carg1 C.GstVideoAlignment // in, transfer: none, C Pointers: 0, Name: VideoAlignment
@@ -24545,9 +19632,9 @@ func (meta *VideoMeta) SetAlignment(alignment VideoAlignment) bool {
 }
 
 // VideoMetaTransform wraps GstVideoMetaTransform
+// 
+// see also No documentation available
 //
-// Extra data passed to a video transform #GstMetaTransformFunction such as:
-// "gst-video-scale".
 type VideoMetaTransform struct {
 	*videoMetaTransform
 }
@@ -24628,11 +19715,8 @@ func UnsafeVideoMetaTransformToGlibFull(v *VideoMetaTransform) unsafe.Pointer {
 
 // VideoMetaTransformScaleGetQuark wraps gst_video_meta_transform_scale_get_quark
 // 
-// The function returns the following values:
-// 
-// 	- goret glib.Quark 
+// see also No documentation available
 //
-// Get the #GQuark for the "gst-video-scale" metadata transform operation.
 func VideoMetaTransformScaleGetQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -24646,8 +19730,9 @@ func VideoMetaTransformScaleGetQuark() glib.Quark {
 }
 
 // VideoOrientationInterface wraps GstVideoOrientationInterface
+// 
+// see also No documentation available
 //
-// #GstVideoOrientationInterface interface.
 type VideoOrientationInterface struct {
 	*videoOrientationInterface
 }
@@ -24727,29 +19812,9 @@ func UnsafeVideoOrientationInterfaceToGlibFull(v *VideoOrientationInterface) uns
 }
 
 // VideoOverlayComposition wraps GstVideoOverlayComposition
+// 
+// see also No documentation available
 //
-// Functions to create and handle overlay compositions on video buffers.
-// 
-// An overlay composition describes one or more overlay rectangles to be
-// blended on top of a video buffer.
-// 
-// This API serves two main purposes:
-// 
-// * it can be used to attach overlay information (subtitles or logos)
-//   to non-raw video buffers such as GL/VAAPI/VDPAU surfaces. The actual
-//   blending of the overlay can then be done by e.g. the video sink that
-//   processes these non-raw buffers.
-// 
-// * it can also be used to blend overlay rectangles on top of raw video
-//   buffers, thus consolidating blending functionality for raw video in
-//   one place.
-// 
-// Together, this allows existing overlay elements to easily handle raw
-// and non-raw video as input in without major changes (once the overlays
-// have been put into a #GstVideoOverlayComposition object anyway) - for raw
-// video the overlay can just use the blending function to blend the data
-// on top of the video, and for surface buffers it can just attach them to
-// the buffer and let the sink render the overlays.
 type VideoOverlayComposition struct {
 	*videoOverlayComposition
 }
@@ -24845,19 +19910,8 @@ func UnsafeVideoOverlayCompositionToGlibFull(v *VideoOverlayComposition) unsafe.
 
 // NewVideoOverlayComposition wraps gst_video_overlay_composition_new
 // 
-// The function takes the following parameters:
-// 
-// 	- rectangle *VideoOverlayRectangle (nullable): a #GstVideoOverlayRectangle to add to the
-//     composition 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoOverlayComposition 
+// see also No documentation available
 //
-// Creates a new video overlay composition object to hold one or more
-// overlay rectangles.
-// 
-// Note that since 1.20 this allows to pass %NULL for @rectangle.
 func NewVideoOverlayComposition(rectangle *VideoOverlayRectangle) *VideoOverlayComposition {
 	var carg1 *C.GstVideoOverlayRectangle   // in, none, converted, nullable
 	var cret  *C.GstVideoOverlayComposition // return, full, converted
@@ -24878,13 +19932,8 @@ func NewVideoOverlayComposition(rectangle *VideoOverlayRectangle) *VideoOverlayC
 
 // AddRectangle wraps gst_video_overlay_composition_add_rectangle
 // 
-// The function takes the following parameters:
-// 
-// 	- rectangle *VideoOverlayRectangle: a #GstVideoOverlayRectangle to add to the
-//     composition 
+// see also No documentation available
 //
-// Adds an overlay rectangle to an existing overlay composition object. This
-// must be done right after creating the overlay composition.
 func (comp *VideoOverlayComposition) AddRectangle(rectangle *VideoOverlayRectangle) {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var carg1 *C.GstVideoOverlayRectangle   // in, none, converted
@@ -24899,21 +19948,8 @@ func (comp *VideoOverlayComposition) AddRectangle(rectangle *VideoOverlayRectang
 
 // Blend wraps gst_video_overlay_composition_blend
 // 
-// The function takes the following parameters:
-// 
-// 	- videoBuf *VideoFrame: a #GstVideoFrame containing raw video data in a
-//             supported format. It should be mapped using GST_MAP_READWRITE 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Blends the overlay rectangles in @comp on top of the raw video data
-// contained in @video_buf. The data in @video_buf must be writable and
-// mapped appropriately.
-// 
-// Since @video_buf data is read and will be modified, it ought be
-// mapped with flag GST_MAP_READWRITE.
 func (comp *VideoOverlayComposition) Blend(videoBuf *VideoFrame) bool {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var carg1 *C.GstVideoFrame              // in, none, converted
@@ -24937,15 +19973,8 @@ func (comp *VideoOverlayComposition) Blend(videoBuf *VideoFrame) bool {
 
 // Copy wraps gst_video_overlay_composition_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoOverlayComposition 
+// see also No documentation available
 //
-// Makes a copy of @comp and all contained rectangles, so that it is possible
-// to modify the composition and contained rectangles (e.g. add additional
-// rectangles or change the render co-ordinates or render dimension). The
-// actual overlay pixel data buffers contained in the rectangles are not
-// copied.
 func (comp *VideoOverlayComposition) Copy() *VideoOverlayComposition {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var cret  *C.GstVideoOverlayComposition // return, full, converted
@@ -24964,15 +19993,8 @@ func (comp *VideoOverlayComposition) Copy() *VideoOverlayComposition {
 
 // GetRectangle wraps gst_video_overlay_composition_get_rectangle
 // 
-// The function takes the following parameters:
-// 
-// 	- n uint: number of the rectangle to get 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoOverlayRectangle (nullable) 
+// see also No documentation available
 //
-// Returns the @n-th #GstVideoOverlayRectangle contained in @comp.
 func (comp *VideoOverlayComposition) GetRectangle(n uint) *VideoOverlayRectangle {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var carg1 C.guint                       // in, none, casted
@@ -24996,14 +20018,8 @@ func (comp *VideoOverlayComposition) GetRectangle(n uint) *VideoOverlayRectangle
 
 // GetSeqnum wraps gst_video_overlay_composition_get_seqnum
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the sequence number of this composition. Sequence numbers are
-// monotonically increasing and unique for overlay compositions and rectangles
-// (meaning there will never be a rectangle with the same sequence number as
-// a composition).
 func (comp *VideoOverlayComposition) GetSeqnum() uint {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var cret  C.guint                       // return, none, casted
@@ -25022,15 +20038,8 @@ func (comp *VideoOverlayComposition) GetSeqnum() uint {
 
 // MakeWritable wraps gst_video_overlay_composition_make_writable
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoOverlayComposition 
+// see also No documentation available
 //
-// Takes ownership of @comp and returns a version of @comp that is writable
-// (i.e. can be modified). Will either return @comp right away, or create a
-// new writable copy of @comp and unref @comp itself. All the contained
-// rectangles will also be copied, but the actual overlay pixel data buffers
-// contained in the rectangles are not copied.
 func (comp *VideoOverlayComposition) MakeWritable() *VideoOverlayComposition {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var cret  *C.GstVideoOverlayComposition // return, full, converted
@@ -25049,11 +20058,8 @@ func (comp *VideoOverlayComposition) MakeWritable() *VideoOverlayComposition {
 
 // NRectangles wraps gst_video_overlay_composition_n_rectangles
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the number of #GstVideoOverlayRectangle&lt;!-- --&gt;s contained in @comp.
 func (comp *VideoOverlayComposition) NRectangles() uint {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var cret  C.guint                       // return, none, casted
@@ -25071,8 +20077,9 @@ func (comp *VideoOverlayComposition) NRectangles() uint {
 }
 
 // VideoOverlayCompositionMeta wraps GstVideoOverlayCompositionMeta
+// 
+// see also No documentation available
 //
-// Extra buffer metadata describing image overlay data.
 type VideoOverlayCompositionMeta struct {
 	*videoOverlayCompositionMeta
 }
@@ -25153,9 +20160,7 @@ func UnsafeVideoOverlayCompositionMetaToGlibFull(v *VideoOverlayCompositionMeta)
 
 // VideoOverlayCompositionMetaGetInfo wraps gst_video_overlay_composition_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoOverlayCompositionMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -25169,8 +20174,9 @@ func VideoOverlayCompositionMetaGetInfo() *gst.MetaInfo {
 }
 
 // VideoOverlayInterface wraps GstVideoOverlayInterface
+// 
+// see also No documentation available
 //
-// #GstVideoOverlay interface
 type VideoOverlayInterface struct {
 	*videoOverlayInterface
 }
@@ -25250,9 +20256,9 @@ func UnsafeVideoOverlayInterfaceToGlibFull(v *VideoOverlayInterface) unsafe.Poin
 }
 
 // VideoOverlayRectangle wraps GstVideoOverlayRectangle
+// 
+// see also No documentation available
 //
-// An opaque video overlay rectangle object. A rectangle contains a single
-// overlay rectangle which can be added to a composition.
 type VideoOverlayRectangle struct {
 	*videoOverlayRectangle
 }
@@ -25348,32 +20354,8 @@ func UnsafeVideoOverlayRectangleToGlibFull(v *VideoOverlayRectangle) unsafe.Poin
 
 // NewVideoOverlayRectangleRaw wraps gst_video_overlay_rectangle_new_raw
 // 
-// The function takes the following parameters:
-// 
-// 	- pixels *gst.Buffer: a #GstBuffer pointing to the pixel memory 
-// 	- renderX int32: the X co-ordinate on the video where the top-left corner of this
-//     overlay rectangle should be rendered to 
-// 	- renderY int32: the Y co-ordinate on the video where the top-left corner of this
-//     overlay rectangle should be rendered to 
-// 	- renderWidth uint: the render width of this rectangle on the video 
-// 	- renderHeight uint: the render height of this rectangle on the video 
-// 	- flags VideoOverlayFormatFlags: flags 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoOverlayRectangle 
+// see also No documentation available
 //
-// Creates a new video overlay rectangle with ARGB or AYUV pixel data.
-// The layout in case of ARGB of the components in memory is B-G-R-A
-// on little-endian platforms
-// (corresponding to #GST_VIDEO_FORMAT_BGRA) and A-R-G-B on big-endian
-// platforms (corresponding to #GST_VIDEO_FORMAT_ARGB). In other words,
-// pixels are treated as 32-bit words and the lowest 8 bits then contain
-// the blue component value and the highest 8 bits contain the alpha
-// component value. Unless specified in the flags, the RGB values are
-// non-premultiplied. This is the format that is used by most hardware,
-// and also many rendering libraries such as Cairo, for example.
-// The pixel data buffer must have #GstVideoMeta set.
 func NewVideoOverlayRectangleRaw(pixels *gst.Buffer, renderX int32, renderY int32, renderWidth uint, renderHeight uint, flags VideoOverlayFormatFlags) *VideoOverlayRectangle {
 	var carg1 *C.GstBuffer                 // in, none, converted
 	var carg2 C.gint                       // in, none, casted
@@ -25407,14 +20389,8 @@ func NewVideoOverlayRectangleRaw(pixels *gst.Buffer, renderX int32, renderY int3
 
 // Copy wraps gst_video_overlay_rectangle_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoOverlayRectangle 
+// see also No documentation available
 //
-// Makes a copy of @rectangle, so that it is possible to modify it
-// (e.g. to change the render co-ordinates or render dimension). The
-// actual overlay pixel data buffers contained in the rectangle are not
-// copied.
 func (rectangle *VideoOverlayRectangle) Copy() *VideoOverlayRectangle {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var cret  *C.GstVideoOverlayRectangle // return, full, converted
@@ -25433,15 +20409,8 @@ func (rectangle *VideoOverlayRectangle) Copy() *VideoOverlayRectangle {
 
 // GetFlags wraps gst_video_overlay_rectangle_get_flags
 // 
-// The function returns the following values:
-// 
-// 	- goret VideoOverlayFormatFlags 
+// see also No documentation available
 //
-// Retrieves the flags associated with a #GstVideoOverlayRectangle.
-// This is useful if the caller can handle both premultiplied alpha and
-// non premultiplied alpha, for example. By knowing whether the rectangle
-// uses premultiplied or not, it can request the pixel data in the format
-// it is stored in, to avoid unnecessary conversion.
 func (rectangle *VideoOverlayRectangle) GetFlags() VideoOverlayFormatFlags {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var cret  C.GstVideoOverlayFormatFlags // return, none, casted
@@ -25460,11 +20429,8 @@ func (rectangle *VideoOverlayRectangle) GetFlags() VideoOverlayFormatFlags {
 
 // GetGlobalAlpha wraps gst_video_overlay_rectangle_get_global_alpha
 // 
-// The function returns the following values:
-// 
-// 	- goret float32 
+// see also No documentation available
 //
-// Retrieves the global-alpha value associated with a #GstVideoOverlayRectangle.
 func (rectangle *VideoOverlayRectangle) GetGlobalAlpha() float32 {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var cret  C.gfloat                    // return, none, casted
@@ -25483,17 +20449,7 @@ func (rectangle *VideoOverlayRectangle) GetGlobalAlpha() float32 {
 
 // GetPixelsArgb wraps gst_video_overlay_rectangle_get_pixels_argb
 // 
-// The function takes the following parameters:
-// 
-// 	- flags VideoOverlayFormatFlags: flags
-//    If a global_alpha value != 1 is set for the rectangle, the caller
-//    should set the #GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA flag
-//    if he wants to apply global-alpha himself. If the flag is not set
-//    global_alpha is applied internally before returning the pixel-data. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 func (rectangle *VideoOverlayRectangle) GetPixelsArgb(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -25515,17 +20471,7 @@ func (rectangle *VideoOverlayRectangle) GetPixelsArgb(flags VideoOverlayFormatFl
 
 // GetPixelsAyuv wraps gst_video_overlay_rectangle_get_pixels_ayuv
 // 
-// The function takes the following parameters:
-// 
-// 	- flags VideoOverlayFormatFlags: flags
-//    If a global_alpha value != 1 is set for the rectangle, the caller
-//    should set the #GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA flag
-//    if he wants to apply global-alpha himself. If the flag is not set
-//    global_alpha is applied internally before returning the pixel-data. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 func (rectangle *VideoOverlayRectangle) GetPixelsAyuv(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -25547,17 +20493,7 @@ func (rectangle *VideoOverlayRectangle) GetPixelsAyuv(flags VideoOverlayFormatFl
 
 // GetPixelsRaw wraps gst_video_overlay_rectangle_get_pixels_raw
 // 
-// The function takes the following parameters:
-// 
-// 	- flags VideoOverlayFormatFlags: flags
-//    If a global_alpha value != 1 is set for the rectangle, the caller
-//    should set the #GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA flag
-//    if he wants to apply global-alpha himself. If the flag is not set
-//    global_alpha is applied internally before returning the pixel-data. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 func (rectangle *VideoOverlayRectangle) GetPixelsRaw(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -25579,22 +20515,8 @@ func (rectangle *VideoOverlayRectangle) GetPixelsRaw(flags VideoOverlayFormatFla
 
 // GetPixelsUnscaledArgb wraps gst_video_overlay_rectangle_get_pixels_unscaled_argb
 // 
-// The function takes the following parameters:
-// 
-// 	- flags VideoOverlayFormatFlags: flags.
-//    If a global_alpha value != 1 is set for the rectangle, the caller
-//    should set the #GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA flag
-//    if he wants to apply global-alpha himself. If the flag is not set
-//    global_alpha is applied internally before returning the pixel-data. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Retrieves the pixel data as it is. This is useful if the caller can
-// do the scaling itself when handling the overlaying. The rectangle will
-// need to be scaled to the render dimensions, which can be retrieved using
-// gst_video_overlay_rectangle_get_render_rectangle().
 func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledArgb(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -25616,22 +20538,8 @@ func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledArgb(flags VideoOverlay
 
 // GetPixelsUnscaledAyuv wraps gst_video_overlay_rectangle_get_pixels_unscaled_ayuv
 // 
-// The function takes the following parameters:
-// 
-// 	- flags VideoOverlayFormatFlags: flags.
-//    If a global_alpha value != 1 is set for the rectangle, the caller
-//    should set the #GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA flag
-//    if he wants to apply global-alpha himself. If the flag is not set
-//    global_alpha is applied internally before returning the pixel-data. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Retrieves the pixel data as it is. This is useful if the caller can
-// do the scaling itself when handling the overlaying. The rectangle will
-// need to be scaled to the render dimensions, which can be retrieved using
-// gst_video_overlay_rectangle_get_render_rectangle().
 func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledAyuv(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -25653,22 +20561,8 @@ func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledAyuv(flags VideoOverlay
 
 // GetPixelsUnscaledRaw wraps gst_video_overlay_rectangle_get_pixels_unscaled_raw
 // 
-// The function takes the following parameters:
-// 
-// 	- flags VideoOverlayFormatFlags: flags.
-//    If a global_alpha value != 1 is set for the rectangle, the caller
-//    should set the #GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA flag
-//    if he wants to apply global-alpha himself. If the flag is not set
-//    global_alpha is applied internally before returning the pixel-data. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Retrieves the pixel data as it is. This is useful if the caller can
-// do the scaling itself when handling the overlaying. The rectangle will
-// need to be scaled to the render dimensions, which can be retrieved using
-// gst_video_overlay_rectangle_get_render_rectangle().
 func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledRaw(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -25690,16 +20584,8 @@ func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledRaw(flags VideoOverlayF
 
 // GetRenderRectangle wraps gst_video_overlay_rectangle_get_render_rectangle
 // 
-// The function returns the following values:
-// 
-// 	- renderX int32: address where to store the X render offset 
-// 	- renderY int32: address where to store the Y render offset 
-// 	- renderWidth uint: address where to store the render width 
-// 	- renderHeight uint: address where to store the render height 
-// 	- goret bool 
+// see also No documentation available
 //
-// Retrieves the render position and render dimension of the overlay
-// rectangle on the video.
 func (rectangle *VideoOverlayRectangle) GetRenderRectangle() (int32, int32, uint, uint, bool) {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var carg1 C.gint                      // out, full, casted
@@ -25732,24 +20618,8 @@ func (rectangle *VideoOverlayRectangle) GetRenderRectangle() (int32, int32, uint
 
 // GetSeqnum wraps gst_video_overlay_rectangle_get_seqnum
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the sequence number of this rectangle. Sequence numbers are
-// monotonically increasing and unique for overlay compositions and rectangles
-// (meaning there will never be a rectangle with the same sequence number as
-// a composition).
-// 
-// Using the sequence number of a rectangle as an indicator for changed
-// pixel-data of a rectangle is dangereous. Some API calls, like e.g.
-// gst_video_overlay_rectangle_set_global_alpha(), automatically update
-// the per rectangle sequence number, which is misleading for renderers/
-// consumers, that handle global-alpha themselves. For them  the
-// pixel-data returned by gst_video_overlay_rectangle_get_pixels_*()
-// won't be different for different global-alpha values. In this case a
-// renderer could also use the GstBuffer pointers as a hint for changed
-// pixel-data.
 func (rectangle *VideoOverlayRectangle) GetSeqnum() uint {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var cret  C.guint                     // return, none, casted
@@ -25768,18 +20638,8 @@ func (rectangle *VideoOverlayRectangle) GetSeqnum() uint {
 
 // SetGlobalAlpha wraps gst_video_overlay_rectangle_set_global_alpha
 // 
-// The function takes the following parameters:
-// 
-// 	- globalAlpha float32: Global alpha value (0 to 1.0) 
+// see also No documentation available
 //
-// Sets the global alpha value associated with a #GstVideoOverlayRectangle. Per-
-// pixel alpha values are multiplied with this value. Valid
-// values: 0 &lt;= global_alpha &lt;= 1; 1 to deactivate.
-// 
-// @rectangle must be writable, meaning its refcount must be 1. You can
-// make the rectangles inside a #GstVideoOverlayComposition writable using
-// gst_video_overlay_composition_make_writable() or
-// gst_video_overlay_composition_copy().
 func (rectangle *VideoOverlayRectangle) SetGlobalAlpha(globalAlpha float32) {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var carg1 C.gfloat                    // in, none, casted
@@ -25794,22 +20654,8 @@ func (rectangle *VideoOverlayRectangle) SetGlobalAlpha(globalAlpha float32) {
 
 // SetRenderRectangle wraps gst_video_overlay_rectangle_set_render_rectangle
 // 
-// The function takes the following parameters:
-// 
-// 	- renderX int32: render X position of rectangle on video 
-// 	- renderY int32: render Y position of rectangle on video 
-// 	- renderWidth uint: render width of rectangle 
-// 	- renderHeight uint: render height of rectangle 
+// see also No documentation available
 //
-// Sets the render position and dimensions of the rectangle on the video.
-// This function is mainly for elements that modify the size of the video
-// in some way (e.g. through scaling or cropping) and need to adjust the
-// details of any overlays to match the operation that changed the size.
-// 
-// @rectangle must be writable, meaning its refcount must be 1. You can
-// make the rectangles inside a #GstVideoOverlayComposition writable using
-// gst_video_overlay_composition_make_writable() or
-// gst_video_overlay_composition_copy().
 func (rectangle *VideoOverlayRectangle) SetRenderRectangle(renderX int32, renderY int32, renderWidth uint, renderHeight uint) {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var carg1 C.gint                      // in, none, casted
@@ -25832,8 +20678,9 @@ func (rectangle *VideoOverlayRectangle) SetRenderRectangle(renderX int32, render
 }
 
 // VideoRectangle wraps GstVideoRectangle
+// 
+// see also No documentation available
 //
-// Helper structure representing a rectangular area.
 type VideoRectangle struct {
 	*videoRectangle
 }
@@ -25913,8 +20760,9 @@ func UnsafeVideoRectangleToGlibFull(v *VideoRectangle) unsafe.Pointer {
 }
 
 // VideoRegionOfInterestMeta wraps GstVideoRegionOfInterestMeta
+// 
+// see also No documentation available
 //
-// Extra buffer metadata describing an image region of interest
 type VideoRegionOfInterestMeta struct {
 	*videoRegionOfInterestMeta
 }
@@ -25995,9 +20843,7 @@ func UnsafeVideoRegionOfInterestMetaToGlibFull(v *VideoRegionOfInterestMeta) uns
 
 // VideoRegionOfInterestMetaGetInfo wraps gst_video_region_of_interest_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoRegionOfInterestMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -26012,19 +20858,8 @@ func VideoRegionOfInterestMetaGetInfo() *gst.MetaInfo {
 
 // AddParam wraps gst_video_region_of_interest_meta_add_param
 // 
-// The function takes the following parameters:
-// 
-// 	- s *gst.Structure: a #GstStructure 
+// see also No documentation available
 //
-// Attach element-specific parameters to @meta meant to be used by downstream
-// elements which may handle this ROI.
-// The name of @s is used to identify the element these parameters are meant for.
-// 
-// This is typically used to tell encoders how they should encode this specific region.
-// For example, a structure named "roi/x264enc" could be used to give the
-// QP offsets this encoder should use when encoding the region described in @meta.
-// Multiple parameters can be defined for the same meta so different encoders
-// can be supported by cross platform applications).
 func (meta *VideoRegionOfInterestMeta) AddParam(s *gst.Structure) {
 	var carg0 *C.GstVideoRegionOfInterestMeta // in, none, converted
 	var carg1 *C.GstStructure                 // in, full, converted
@@ -26039,16 +20874,8 @@ func (meta *VideoRegionOfInterestMeta) AddParam(s *gst.Structure) {
 
 // GetParam wraps gst_video_region_of_interest_meta_get_param
 // 
-// The function takes the following parameters:
-// 
-// 	- name string: a name. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Structure (nullable) 
+// see also No documentation available
 //
-// Retrieve the parameter for @meta having @name as structure name,
-// or %NULL if there is none.
 func (meta *VideoRegionOfInterestMeta) GetParam(name string) *gst.Structure {
 	var carg0 *C.GstVideoRegionOfInterestMeta // in, none, converted
 	var carg1 *C.gchar                        // in, none, string
@@ -26072,9 +20899,9 @@ func (meta *VideoRegionOfInterestMeta) GetParam(name string) *gst.Structure {
 }
 
 // VideoResampler wraps GstVideoResampler
+// 
+// see also No documentation available
 //
-// #GstVideoResampler is a structure which holds the information
-// required to perform various kinds of resampling filtering.
 type VideoResampler struct {
 	*videoResampler
 }
@@ -26154,8 +20981,9 @@ func UnsafeVideoResamplerToGlibFull(v *VideoResampler) unsafe.Pointer {
 }
 
 // Clear wraps gst_video_resampler_clear
+// 
+// see also No documentation available
 //
-// Clear a previously initialized #GstVideoResampler @resampler.
 func (resampler *VideoResampler) Clear() {
 	var carg0 *C.GstVideoResampler // in, none, converted
 
@@ -26167,20 +20995,7 @@ func (resampler *VideoResampler) Clear() {
 
 // Init wraps gst_video_resampler_init
 // 
-// The function takes the following parameters:
-// 
-// 	- method VideoResamplerMethod 
-// 	- flags VideoResamplerFlags 
-// 	- nPhases uint 
-// 	- nTaps uint 
-// 	- shift float64 
-// 	- inSize uint 
-// 	- outSize uint 
-// 	- options *gst.Structure 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (resampler *VideoResampler) Init(method VideoResamplerMethod, flags VideoResamplerFlags, nPhases uint, nTaps uint, shift float64, inSize uint, outSize uint, options *gst.Structure) bool {
 	var carg0 *C.GstVideoResampler      // in, none, converted
 	var carg1 C.GstVideoResamplerMethod // in, none, casted
@@ -26224,8 +21039,9 @@ func (resampler *VideoResampler) Init(method VideoResamplerMethod, flags VideoRe
 }
 
 // VideoSEIUserDataUnregisteredMeta wraps GstVideoSEIUserDataUnregisteredMeta
+// 
+// see also No documentation available
 //
-// H.264 H.265 metadata from SEI User Data Unregistered messages
 type VideoSEIUserDataUnregisteredMeta struct {
 	*videoSEIUserDataUnregisteredMeta
 }
@@ -26306,9 +21122,7 @@ func UnsafeVideoSEIUserDataUnregisteredMetaToGlibFull(v *VideoSEIUserDataUnregis
 
 // VideoSEIUserDataUnregisteredMetaGetInfo wraps gst_video_sei_user_data_unregistered_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoSEIUserDataUnregisteredMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -26322,9 +21136,9 @@ func VideoSEIUserDataUnregisteredMetaGetInfo() *gst.MetaInfo {
 }
 
 // VideoScaler wraps GstVideoScaler
+// 
+// see also No documentation available
 //
-// #GstVideoScaler is a utility object for rescaling and resampling
-// video frames using various interpolation / sampling methods.
 type VideoScaler struct {
 	*videoScaler
 }
@@ -26405,21 +21219,8 @@ func UnsafeVideoScalerToGlibFull(v *VideoScaler) unsafe.Pointer {
 
 // GetCoeff wraps gst_video_scaler_get_coeff
 // 
-// The function takes the following parameters:
-// 
-// 	- outOffset uint: an output offset 
-// 
-// The function returns the following values:
-// 
-// 	- inOffset uint: result input offset 
-// 	- nTaps uint: result n_taps 
-// 	- goret *float64 
+// see also No documentation available
 //
-// For a given pixel at @out_offset, get the first required input pixel at
-// @in_offset and the @n_taps filter coefficients.
-// 
-// Note that for interlaced content, @in_offset needs to be incremented with
-// 2 to get the next input line.
 func (scale *VideoScaler) GetCoeff(outOffset uint) (uint, uint, *float64) {
 	var carg0 *C.GstVideoScaler // in, none, converted
 	var carg1 C.guint           // in, none, casted
@@ -26449,11 +21250,8 @@ func (scale *VideoScaler) GetCoeff(outOffset uint) (uint, uint, *float64) {
 
 // GetMaxTaps wraps gst_video_scaler_get_max_taps
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get the maximum number of taps for @scale.
 func (scale *VideoScaler) GetMaxTaps() uint {
 	var carg0 *C.GstVideoScaler // in, none, converted
 	var cret  C.guint           // return, none, casted
@@ -26471,9 +21269,9 @@ func (scale *VideoScaler) GetMaxTaps() uint {
 }
 
 // VideoSinkClass wraps GstVideoSinkClass
+// 
+// see also No documentation available
 //
-// The video sink class structure. Derived classes should override the
-// @show_frame virtual function.
 // 
 // VideoSinkClass is the type struct for [VideoSink]
 type VideoSinkClass struct {
@@ -26526,9 +21324,9 @@ func (v *VideoSinkClass) ParentClass() *gstbase.BaseSinkClass {
 }
 
 // VideoTileInfo wraps GstVideoTileInfo
+// 
+// see also No documentation available
 //
-// Description of a tile. This structure allow to describe arbitrary tile
-// dimensions and sizes.
 type VideoTileInfo struct {
 	*videoTileInfo
 }
@@ -26608,15 +21406,9 @@ func UnsafeVideoTileInfoToGlibFull(v *VideoTileInfo) unsafe.Pointer {
 }
 
 // VideoTimeCode wraps GstVideoTimeCode
+// 
+// see also No documentation available
 //
-// @field_count must be 0 for progressive video and 1 or 2 for interlaced.
-// 
-// A representation of a SMPTE time code.
-// 
-// @hours must be positive and less than 24. Will wrap around otherwise.
-// @minutes and @seconds must be positive and less than 60.
-// @frames must be less than or equal to @config.fps_n / @config.fps_d
-// These values are *NOT* automatically normalized.
 type VideoTimeCode struct {
 	*videoTimeCode
 }
@@ -26697,9 +21489,7 @@ func UnsafeVideoTimeCodeToGlibFull(v *VideoTimeCode) unsafe.Pointer {
 
 // NewVideoTimeCodeEmpty wraps gst_video_time_code_new_empty
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCode 
+// see also No documentation available
 func NewVideoTimeCodeEmpty() *VideoTimeCode {
 	var cret *C.GstVideoTimeCode // return, full, converted
 
@@ -26714,13 +21504,7 @@ func NewVideoTimeCodeEmpty() *VideoTimeCode {
 
 // NewVideoTimeCodeFromString wraps gst_video_time_code_new_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- tcStr string: The string that represents the #GstVideoTimeCode 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCode (nullable) 
+// see also No documentation available
 func NewVideoTimeCodeFromString(tcStr string) *VideoTimeCode {
 	var carg1 *C.gchar            // in, none, string
 	var cret  *C.GstVideoTimeCode // return, full, converted, nullable
@@ -26742,12 +21526,8 @@ func NewVideoTimeCodeFromString(tcStr string) *VideoTimeCode {
 
 // AddFrames wraps gst_video_time_code_add_frames
 // 
-// The function takes the following parameters:
-// 
-// 	- frames int64: How many frames to add or subtract 
+// see also No documentation available
 //
-// Adds or subtracts @frames amount of frames to @tc. tc needs to
-// contain valid data, as verified by gst_video_time_code_is_valid().
 func (tc *VideoTimeCode) AddFrames(frames int64) {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var carg1 C.gint64            // in, none, casted
@@ -26762,24 +21542,8 @@ func (tc *VideoTimeCode) AddFrames(frames int64) {
 
 // AddInterval wraps gst_video_time_code_add_interval
 // 
-// The function takes the following parameters:
-// 
-// 	- tcInter *VideoTimeCodeInterval: The #GstVideoTimeCodeInterval to add to @tc.
-// The interval must contain valid values, except that for drop-frame
-// timecode, it may also contain timecodes which would normally
-// be dropped. These are then corrected to the next reasonable timecode. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCode (nullable) 
+// see also No documentation available
 //
-// This makes a component-wise addition of @tc_inter to @tc. For example,
-// adding ("01:02:03:04", "00:01:00:00") will return "01:03:03:04".
-// When it comes to drop-frame timecodes,
-// adding ("00:00:00;00", "00:01:00:00") will return "00:01:00;02"
-// because of drop-frame oddities. However,
-// adding ("00:09:00;02", "00:01:00:00") will return "00:10:00;00"
-// because this time we can have an exact minute.
 func (tc *VideoTimeCode) AddInterval(tcInter *VideoTimeCodeInterval) *VideoTimeCode {
 	var carg0 *C.GstVideoTimeCode         // in, none, converted
 	var carg1 *C.GstVideoTimeCodeInterval // in, none, converted
@@ -26802,9 +21566,9 @@ func (tc *VideoTimeCode) AddInterval(tcInter *VideoTimeCodeInterval) *VideoTimeC
 }
 
 // Clear wraps gst_video_time_code_clear
+// 
+// see also No documentation available
 //
-// Initializes @tc with empty/zero/NULL values and frees any memory
-// it might currently use.
 func (tc *VideoTimeCode) Clear() {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 
@@ -26816,17 +21580,8 @@ func (tc *VideoTimeCode) Clear() {
 
 // Compare wraps gst_video_time_code_compare
 // 
-// The function takes the following parameters:
-// 
-// 	- tc2 *VideoTimeCode: another valid #GstVideoTimeCode 
-// 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 //
-// Compares @tc1 and @tc2. If both have latest daily jam information, it is
-// taken into account. Otherwise, it is assumed that the daily jam of both
-// @tc1 and @tc2 was at the same time. Both time codes must be valid.
 func (tc1 *VideoTimeCode) Compare(tc2 *VideoTimeCode) int32 {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var carg1 *C.GstVideoTimeCode // in, none, converted
@@ -26848,9 +21603,7 @@ func (tc1 *VideoTimeCode) Compare(tc2 *VideoTimeCode) int32 {
 
 // Copy wraps gst_video_time_code_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCode 
+// see also No documentation available
 func (tc *VideoTimeCode) Copy() *VideoTimeCode {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  *C.GstVideoTimeCode // return, full, converted
@@ -26869,9 +21622,7 @@ func (tc *VideoTimeCode) Copy() *VideoTimeCode {
 
 // FramesSinceDailyJam wraps gst_video_time_code_frames_since_daily_jam
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 func (tc *VideoTimeCode) FramesSinceDailyJam() uint64 {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  C.guint64           // return, none, casted
@@ -26889,8 +21640,9 @@ func (tc *VideoTimeCode) FramesSinceDailyJam() uint64 {
 }
 
 // IncrementFrame wraps gst_video_time_code_increment_frame
+// 
+// see also No documentation available
 //
-// Adds one frame to @tc.
 func (tc *VideoTimeCode) IncrementFrame() {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 
@@ -26902,9 +21654,7 @@ func (tc *VideoTimeCode) IncrementFrame() {
 
 // IsValid wraps gst_video_time_code_is_valid
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (tc *VideoTimeCode) IsValid() bool {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  C.gboolean          // return
@@ -26925,9 +21675,7 @@ func (tc *VideoTimeCode) IsValid() bool {
 
 // NsecSinceDailyJam wraps gst_video_time_code_nsec_since_daily_jam
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 func (tc *VideoTimeCode) NsecSinceDailyJam() uint64 {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  C.guint64           // return, none, casted
@@ -26946,9 +21694,7 @@ func (tc *VideoTimeCode) NsecSinceDailyJam() uint64 {
 
 // String wraps gst_video_time_code_to_string
 // 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 func (tc *VideoTimeCode) String() string {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  *C.gchar            // return, full, string
@@ -26967,11 +21713,9 @@ func (tc *VideoTimeCode) String() string {
 }
 
 // VideoTimeCodeConfig wraps GstVideoTimeCodeConfig
-//
-// Supported frame rates: 30000/1001, 60000/1001 (both with and without drop
-// frame), and integer frame rates e.g. 25/1, 30/1, 50/1, 60/1.
 // 
-// The configuration of the time code.
+// see also No documentation available
+//
 type VideoTimeCodeConfig struct {
 	*videoTimeCodeConfig
 }
@@ -27051,9 +21795,9 @@ func UnsafeVideoTimeCodeConfigToGlibFull(v *VideoTimeCodeConfig) unsafe.Pointer 
 }
 
 // VideoTimeCodeInterval wraps GstVideoTimeCodeInterval
+// 
+// see also No documentation available
 //
-// A representation of a difference between two #GstVideoTimeCode instances.
-// Will not necessarily correspond to a real timecode (e.g. 00:00:10;00)
 type VideoTimeCodeInterval struct {
 	*videoTimeCodeInterval
 }
@@ -27149,16 +21893,7 @@ func UnsafeVideoTimeCodeIntervalToGlibFull(v *VideoTimeCodeInterval) unsafe.Poin
 
 // NewVideoTimeCodeInterval wraps gst_video_time_code_interval_new
 // 
-// The function takes the following parameters:
-// 
-// 	- hours uint: the hours field of #GstVideoTimeCodeInterval 
-// 	- minutes uint: the minutes field of #GstVideoTimeCodeInterval 
-// 	- seconds uint: the seconds field of #GstVideoTimeCodeInterval 
-// 	- frames uint: the frames field of #GstVideoTimeCodeInterval 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCodeInterval 
+// see also No documentation available
 func NewVideoTimeCodeInterval(hours uint, minutes uint, seconds uint, frames uint) *VideoTimeCodeInterval {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.guint                     // in, none, casted
@@ -27186,15 +21921,8 @@ func NewVideoTimeCodeInterval(hours uint, minutes uint, seconds uint, frames uin
 
 // NewVideoTimeCodeIntervalFromString wraps gst_video_time_code_interval_new_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- tcInterStr string: The string that represents the #GstVideoTimeCodeInterval 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCodeInterval (nullable) 
+// see also No documentation available
 //
-// @tc_inter_str must only have ":" as separators.
 func NewVideoTimeCodeIntervalFromString(tcInterStr string) *VideoTimeCodeInterval {
 	var carg1 *C.gchar                    // in, none, string
 	var cret  *C.GstVideoTimeCodeInterval // return, full, converted, nullable
@@ -27215,8 +21943,9 @@ func NewVideoTimeCodeIntervalFromString(tcInterStr string) *VideoTimeCodeInterva
 }
 
 // Clear wraps gst_video_time_code_interval_clear
+// 
+// see also No documentation available
 //
-// Initializes @tc with empty/zero/NULL values.
 func (tc *VideoTimeCodeInterval) Clear() {
 	var carg0 *C.GstVideoTimeCodeInterval // in, none, converted
 
@@ -27228,9 +21957,7 @@ func (tc *VideoTimeCodeInterval) Clear() {
 
 // Copy wraps gst_video_time_code_interval_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCodeInterval 
+// see also No documentation available
 func (tc *VideoTimeCodeInterval) Copy() *VideoTimeCodeInterval {
 	var carg0 *C.GstVideoTimeCodeInterval // in, none, converted
 	var cret  *C.GstVideoTimeCodeInterval // return, full, converted
@@ -27249,14 +21976,8 @@ func (tc *VideoTimeCodeInterval) Copy() *VideoTimeCodeInterval {
 
 // Init wraps gst_video_time_code_interval_init
 // 
-// The function takes the following parameters:
-// 
-// 	- hours uint: the hours field of #GstVideoTimeCodeInterval 
-// 	- minutes uint: the minutes field of #GstVideoTimeCodeInterval 
-// 	- seconds uint: the seconds field of #GstVideoTimeCodeInterval 
-// 	- frames uint: the frames field of #GstVideoTimeCodeInterval 
+// see also No documentation available
 //
-// Initializes @tc with the given values.
 func (tc *VideoTimeCodeInterval) Init(hours uint, minutes uint, seconds uint, frames uint) {
 	var carg0 *C.GstVideoTimeCodeInterval // in, none, converted
 	var carg1 C.guint                     // in, none, casted
@@ -27279,11 +22000,9 @@ func (tc *VideoTimeCodeInterval) Init(hours uint, minutes uint, seconds uint, fr
 }
 
 // VideoTimeCodeMeta wraps GstVideoTimeCodeMeta
-//
-// Extra buffer metadata describing the GstVideoTimeCode of the frame.
 // 
-// Each frame is assumed to have its own timecode, i.e. they are not
-// automatically incremented/interpolated.
+// see also No documentation available
+//
 type VideoTimeCodeMeta struct {
 	*videoTimeCodeMeta
 }
@@ -27364,9 +22083,7 @@ func UnsafeVideoTimeCodeMetaToGlibFull(v *VideoTimeCodeMeta) unsafe.Pointer {
 
 // VideoTimeCodeMetaGetInfo wraps gst_video_time_code_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func VideoTimeCodeMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -27380,9 +22097,9 @@ func VideoTimeCodeMetaGetInfo() *gst.MetaInfo {
 }
 
 // VideoVBIEncoder wraps GstVideoVBIEncoder
+// 
+// see also No documentation available
 //
-// An encoder for writing ancillary data to the
-// Vertical Blanking Interval lines of component signals.
 type VideoVBIEncoder struct {
 	*videoVBIEncoder
 }
@@ -27478,16 +22195,8 @@ func UnsafeVideoVBIEncoderToGlibFull(v *VideoVBIEncoder) unsafe.Pointer {
 
 // NewVideoVBIEncoder wraps gst_video_vbi_encoder_new
 // 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: a #GstVideoFormat 
-// 	- pixelWidth uint32: The width in pixel to use 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoVBIEncoder (nullable) 
+// see also No documentation available
 //
-// Create a new #GstVideoVBIEncoder for the specified @format and @pixel_width.
 func NewVideoVBIEncoder(format VideoFormat, pixelWidth uint32) *VideoVBIEncoder {
 	var carg1 C.GstVideoFormat      // in, none, casted
 	var carg2 C.guint32             // in, none, casted
@@ -27511,23 +22220,8 @@ func NewVideoVBIEncoder(format VideoFormat, pixelWidth uint32) *VideoVBIEncoder 
 
 // AddAncillary wraps gst_video_vbi_encoder_add_ancillary
 // 
-// The function takes the following parameters:
-// 
-// 	- composite bool: %TRUE if composite ADF should be created, component otherwise 
-// 	- did uint8: The Data Identifier 
-// 	- sdidBlockNumber uint8: The Secondary Data Identifier (if type 2) or the Data
-//                     Block Number (if type 1) 
-// 	- data []uint8: The user data content of the Ancillary packet.
-//    Does not contain the ADF, DID, SDID nor CS. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Stores Video Ancillary data, according to SMPTE-291M specification.
-// 
-// Note that the contents of the data are always read as 8bit data (i.e. do not contain
-// the parity check bits).
 func (encoder *VideoVBIEncoder) AddAncillary(composite bool, did uint8, sdidBlockNumber uint8, data []uint8) bool {
 	var carg0 *C.GstVideoVBIEncoder // in, none, converted
 	var carg1 C.gboolean            // in
@@ -27566,9 +22260,7 @@ func (encoder *VideoVBIEncoder) AddAncillary(composite bool, did uint8, sdidBloc
 
 // Copy wraps gst_video_vbi_encoder_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoVBIEncoder 
+// see also No documentation available
 func (encoder *VideoVBIEncoder) Copy() *VideoVBIEncoder {
 	var carg0 *C.GstVideoVBIEncoder // in, none, converted
 	var cret  *C.GstVideoVBIEncoder // return, full, converted
@@ -27587,9 +22279,7 @@ func (encoder *VideoVBIEncoder) Copy() *VideoVBIEncoder {
 
 // WriteLine wraps gst_video_vbi_encoder_write_line
 // 
-// The function takes the following parameters:
-// 
-// 	- data *uint8 
+// see also No documentation available
 func (encoder *VideoVBIEncoder) WriteLine(data *uint8) {
 	var carg0 *C.GstVideoVBIEncoder // in, none, converted
 	var carg1 *C.guint8             // in, transfer: none, C Pointers: 1, Name: guint8
@@ -27605,9 +22295,9 @@ func (encoder *VideoVBIEncoder) WriteLine(data *uint8) {
 }
 
 // VideoVBIParser wraps GstVideoVBIParser
+// 
+// see also No documentation available
 //
-// A parser for detecting and extracting @GstVideoAncillary data from
-// Vertical Blanking Interval lines of component signals.
 type VideoVBIParser struct {
 	*videoVBIParser
 }
@@ -27703,16 +22393,8 @@ func UnsafeVideoVBIParserToGlibFull(v *VideoVBIParser) unsafe.Pointer {
 
 // NewVideoVBIParser wraps gst_video_vbi_parser_new
 // 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: a #GstVideoFormat 
-// 	- pixelWidth uint32: The width in pixel to use 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoVBIParser (nullable) 
+// see also No documentation available
 //
-// Create a new #GstVideoVBIParser for the specified @format and @pixel_width.
 func NewVideoVBIParser(format VideoFormat, pixelWidth uint32) *VideoVBIParser {
 	var carg1 C.GstVideoFormat     // in, none, casted
 	var carg2 C.guint32            // in, none, casted
@@ -27736,9 +22418,7 @@ func NewVideoVBIParser(format VideoFormat, pixelWidth uint32) *VideoVBIParser {
 
 // Copy wraps gst_video_vbi_parser_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *VideoVBIParser 
+// see also No documentation available
 func (parser *VideoVBIParser) Copy() *VideoVBIParser {
 	var carg0 *C.GstVideoVBIParser // in, none, converted
 	var cret  *C.GstVideoVBIParser // return, full, converted
@@ -27757,12 +22437,8 @@ func (parser *VideoVBIParser) Copy() *VideoVBIParser {
 
 // GetAncillary wraps gst_video_vbi_parser_get_ancillary
 // 
-// The function returns the following values:
-// 
-// 	- anc VideoAncillary: a #GstVideoAncillary to start the eventual ancillary data 
-// 	- goret VideoVBIParserResult 
+// see also No documentation available
 //
-// Parse the line provided previously by gst_video_vbi_parser_add_line().
 func (parser *VideoVBIParser) GetAncillary() (VideoAncillary, VideoVBIParserResult) {
 	var carg0 *C.GstVideoVBIParser      // in, none, converted
 	var carg1 C.GstVideoAncillary       // out, transfer: none, C Pointers: 0, Name: VideoAncillary, caller-allocates

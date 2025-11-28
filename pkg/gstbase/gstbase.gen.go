@@ -456,26 +456,33 @@ func init() {
 }
 
 // BASE_PARSE_FLAG_DRAINING wraps GST_BASE_PARSE_FLAG_DRAINING
+// 
+// see also No documentation available
 const BASE_PARSE_FLAG_DRAINING = 2
 // BASE_PARSE_FLAG_LOST_SYNC wraps GST_BASE_PARSE_FLAG_LOST_SYNC
+// 
+// see also No documentation available
 const BASE_PARSE_FLAG_LOST_SYNC = 1
 // AggregatorStartTimeSelection wraps GstAggregatorStartTimeSelection
+// 
+// see also No documentation available
 type AggregatorStartTimeSelection C.int
 
 const (
 	// AggregatorStartTimeSelectionZero wraps GST_AGGREGATOR_START_TIME_SELECTION_ZERO
+	// 
+	// see also No documentation available
 	//
-	// Start at running time 0.
 	AggregatorStartTimeSelectionZero AggregatorStartTimeSelection = 0
 	// AggregatorStartTimeSelectionFirst wraps GST_AGGREGATOR_START_TIME_SELECTION_FIRST
+	// 
+	// see also No documentation available
 	//
-	// Start at the running time of
-	// the first buffer that is received.
 	AggregatorStartTimeSelectionFirst AggregatorStartTimeSelection = 1
 	// AggregatorStartTimeSelectionSet wraps GST_AGGREGATOR_START_TIME_SELECTION_SET
+	// 
+	// see also No documentation available
 	//
-	// Start at the running time
-	// selected by the `start-time` property.
 	AggregatorStartTimeSelectionSet AggregatorStartTimeSelection = 2
 )
 
@@ -503,44 +510,41 @@ func (e AggregatorStartTimeSelection) String() string {
 }
 
 // BaseParseFrameFlags wraps GstBaseParseFrameFlags
+// 
+// see also No documentation available
 //
-// Flags to be used in a #GstBaseParseFrame.
 type BaseParseFrameFlags C.gint
 
 const (
 	// BaseParseFrameFlagNone wraps GST_BASE_PARSE_FRAME_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flag
 	BaseParseFrameFlagNone BaseParseFrameFlags = 0
 	// BaseParseFrameFlagNewFrame wraps GST_BASE_PARSE_FRAME_FLAG_NEW_FRAME
+	// 
+	// see also No documentation available
 	//
-	// set by baseclass if current frame
-	//   is passed for processing to the subclass for the first time
-	//   (and not set on subsequent calls with same data).
 	BaseParseFrameFlagNewFrame BaseParseFrameFlags = 1
 	// BaseParseFrameFlagNoFrame wraps GST_BASE_PARSE_FRAME_FLAG_NO_FRAME
+	// 
+	// see also No documentation available
 	//
-	// set to indicate this buffer should not be
-	//   counted as frame, e.g. if this frame is dependent on a previous one.
-	//   As it is not counted as a frame, bitrate increases but frame to time
-	//   conversions are maintained.
 	BaseParseFrameFlagNoFrame BaseParseFrameFlags = 2
 	// BaseParseFrameFlagClip wraps GST_BASE_PARSE_FRAME_FLAG_CLIP
+	// 
+	// see also No documentation available
 	//
-	// @pre_push_frame can set this to indicate
-	//    that regular segment clipping can still be performed (as opposed to
-	//    any custom one having been done).
 	BaseParseFrameFlagClip BaseParseFrameFlags = 4
 	// BaseParseFrameFlagDrop wraps GST_BASE_PARSE_FRAME_FLAG_DROP
+	// 
+	// see also No documentation available
 	//
-	// indicates to @finish_frame that the
-	//    the frame should be dropped (and might be handled internally by subclass)
 	BaseParseFrameFlagDrop BaseParseFrameFlags = 8
 	// BaseParseFrameFlagQueue wraps GST_BASE_PARSE_FRAME_FLAG_QUEUE
+	// 
+	// see also No documentation available
 	//
-	// indicates to @finish_frame that the
-	//    the frame should be queued for now and processed fully later
-	//    when the first non-queued frame is finished
 	BaseParseFrameFlagQueue BaseParseFrameFlags = 16
 )
 
@@ -577,22 +581,26 @@ func (f BaseParseFrameFlags) String() string {
 }
 
 // BaseSrcFlags wraps GstBaseSrcFlags
+// 
+// see also No documentation available
 //
-// The #GstElement flags that a basesrc element may have.
 type BaseSrcFlags C.gint
 
 const (
 	// BaseSrcFlagStarting wraps GST_BASE_SRC_FLAG_STARTING
+	// 
+	// see also No documentation available
 	//
-	// has source is starting
 	BaseSrcFlagStarting BaseSrcFlags = 16384
 	// BaseSrcFlagStarted wraps GST_BASE_SRC_FLAG_STARTED
+	// 
+	// see also No documentation available
 	//
-	// has source been started
 	BaseSrcFlagStarted BaseSrcFlags = 32768
 	// BaseSrcFlagLast wraps GST_BASE_SRC_FLAG_LAST
+	// 
+	// see also No documentation available
 	//
-	// offset to define more flags
 	BaseSrcFlagLast BaseSrcFlags = 1048576
 )
 
@@ -620,32 +628,35 @@ func (f BaseSrcFlags) String() string {
 }
 
 // CollectPadsStateFlags wraps GstCollectPadsStateFlags
+// 
+// see also No documentation available
 type CollectPadsStateFlags C.gint
 
 const (
 	// CollectPadsStateEOS wraps GST_COLLECT_PADS_STATE_EOS
+	// 
+	// see also No documentation available
 	//
-	// Set if collectdata's pad is EOS.
 	CollectPadsStateEOS CollectPadsStateFlags = 1
 	// CollectPadsStateFlushing wraps GST_COLLECT_PADS_STATE_FLUSHING
+	// 
+	// see also No documentation available
 	//
-	// Set if collectdata's pad is flushing.
 	CollectPadsStateFlushing CollectPadsStateFlags = 2
 	// CollectPadsStateNewSegment wraps GST_COLLECT_PADS_STATE_NEW_SEGMENT
+	// 
+	// see also No documentation available
 	//
-	// Set if collectdata's pad received a
-	//                                      new_segment event.
 	CollectPadsStateNewSegment CollectPadsStateFlags = 4
 	// CollectPadsStateWaiting wraps GST_COLLECT_PADS_STATE_WAITING
+	// 
+	// see also No documentation available
 	//
-	// Set if collectdata's pad must be waited
-	//                                      for when collecting.
 	CollectPadsStateWaiting CollectPadsStateFlags = 8
 	// CollectPadsStateLocked wraps GST_COLLECT_PADS_STATE_LOCKED
+	// 
+	// see also No documentation available
 	//
-	// Set collectdata's pad WAITING state must
-	//                                      not be changed.
-	// #GstCollectPadsStateFlags indicate private state of a collectdata('s pad).
 	CollectPadsStateLocked CollectPadsStateFlags = 16
 )
 
@@ -680,137 +691,50 @@ func (f CollectPadsStateFlags) String() string {
 
 // CollectPadsBufferFunction wraps GstCollectPadsBufferFunction
 // 
-// The function takes the following parameters:
-// 
-// 	- pads CollectPads: the #GstCollectPads that triggered the callback 
-// 	- data *CollectData: the #GstCollectData of pad that has received the buffer 
-// 	- buffer *gst.Buffer: the #GstBuffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// A function that will be called when a (considered oldest) buffer can be muxed.
-// If all pads have reached EOS, this function is called with %NULL @buffer
-// and %NULL @data.
 type CollectPadsBufferFunction func(pads CollectPads, data *CollectData, buffer *gst.Buffer) (goret gst.FlowReturn)
 
 // CollectPadsClipFunction wraps GstCollectPadsClipFunction
 // 
-// The function takes the following parameters:
-// 
-// 	- pads CollectPads: a #GstCollectPads 
-// 	- data *CollectData: a #GstCollectData 
-// 	- inbuffer *gst.Buffer: the input #GstBuffer 
-// 
-// The function returns the following values:
-// 
-// 	- outbuffer *gst.Buffer: the output #GstBuffer 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// A function that will be called when @inbuffer is received on the pad managed
-// by @data in the collectpad object @pads.
-// 
-// The function should use the segment of @data and the negotiated media type on
-// the pad to perform clipping of @inbuffer.
-// 
-// This function takes ownership of @inbuffer and should output a buffer in
-// @outbuffer or return %NULL in @outbuffer if the buffer should be dropped.
 type CollectPadsClipFunction func(pads CollectPads, data *CollectData, inbuffer *gst.Buffer) (outbuffer *gst.Buffer, goret gst.FlowReturn)
 
 // CollectPadsCompareFunction wraps GstCollectPadsCompareFunction
 // 
-// The function takes the following parameters:
-// 
-// 	- pads CollectPads: the #GstCollectPads that is comparing the timestamps 
-// 	- data1 *CollectData: the first #GstCollectData 
-// 	- timestamp1 gst.ClockTime: the first timestamp 
-// 	- data2 *CollectData: the second #GstCollectData 
-// 	- timestamp2 gst.ClockTime: the second timestamp 
-// 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 //
-// A function for comparing two timestamps of buffers or newsegments collected on one pad.
 type CollectPadsCompareFunction func(pads CollectPads, data1 *CollectData, timestamp1 gst.ClockTime, data2 *CollectData, timestamp2 gst.ClockTime) (goret int32)
 
 // CollectPadsEventFunction wraps GstCollectPadsEventFunction
 // 
-// The function takes the following parameters:
-// 
-// 	- pads CollectPads: the #GstCollectPads that triggered the callback 
-// 	- pad *CollectData: the #GstPad that received an event 
-// 	- event *gst.Event: the #GstEvent received 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// A function that will be called while processing an event. It takes
-// ownership of the event and is responsible for chaining up (to
-// gst_collect_pads_event_default()) or dropping events (such typical cases
-// being handled by the default handler).
 type CollectPadsEventFunction func(pads CollectPads, pad *CollectData, event *gst.Event) (goret bool)
 
 // CollectPadsFlushFunction wraps GstCollectPadsFlushFunction
 // 
-// The function takes the following parameters:
-// 
-// 	- pads CollectPads: a #GstCollectPads 
+// see also No documentation available
 //
-// A function that will be called while processing a flushing seek event.
-// 
-// The function should flush any internal state of the element and the state of
-// all the pads. It should clear only the state not directly managed by the
-// @pads object. It is therefore not necessary to call
-// gst_collect_pads_set_flushing nor gst_collect_pads_clear from this function.
 type CollectPadsFlushFunction func(pads CollectPads)
 
 // CollectPadsFunction wraps GstCollectPadsFunction
 // 
-// The function takes the following parameters:
-// 
-// 	- pads CollectPads: the #GstCollectPads that triggered the callback 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// A function that will be called when all pads have received data.
 type CollectPadsFunction func(pads CollectPads) (goret gst.FlowReturn)
 
 // CollectPadsQueryFunction wraps GstCollectPadsQueryFunction
 // 
-// The function takes the following parameters:
-// 
-// 	- pads CollectPads: the #GstCollectPads that triggered the callback 
-// 	- pad *CollectData: the #GstPad that received an event 
-// 	- query *gst.Query: the #GstEvent received 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// A function that will be called while processing a query. It takes
-// ownership of the query and is responsible for chaining up (to
-// events downstream (with gst_pad_event_default()).
 type CollectPadsQueryFunction func(pads CollectPads, pad *CollectData, query *gst.Query) (goret bool)
 
 // TypeFindHelper wraps gst_type_find_helper
 // 
-// The function takes the following parameters:
-// 
-// 	- src gst.Pad: A source #GstPad 
-// 	- size uint64: The length in bytes 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 //
-// Tries to find what type of data is flowing from the given source #GstPad.
-// 
-// Free-function: gst_caps_unref
 func TypeFindHelper(src gst.Pad, size uint64) *gst.Caps {
 	var carg1 *C.GstPad  // in, none, converted
 	var carg2 C.guint64  // in, none, casted
@@ -834,29 +758,8 @@ func TypeFindHelper(src gst.Pad, size uint64) *gst.Caps {
 
 // TypeFindHelperForBuffer wraps gst_type_find_helper_for_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- obj gst.Object (nullable): object doing the typefinding, or %NULL (used for logging) 
-// 	- buf *gst.Buffer: a #GstBuffer with data to typefind 
-// 
-// The function returns the following values:
-// 
-// 	- prob gst.TypeFindProbability: location to store the probability of the found
-//     caps, or %NULL 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 //
-// Tries to find what type of data is contained in the given #GstBuffer, the
-// assumption being that the buffer represents the beginning of the stream or
-// file.
-// 
-// All available typefinders will be called on the data in order of rank. If
-// a typefinding function returns a probability of %GST_TYPE_FIND_MAXIMUM,
-// typefinding is stopped immediately and the found caps will be returned
-// right away. Otherwise, all available typefind functions will the tried,
-// and the caps with the highest probability will be returned, or %NULL if
-// the content of the buffer could not be identified.
-// 
-// Free-function: gst_caps_unref
 func TypeFindHelperForBuffer(obj gst.Object, buf *gst.Buffer) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.GstBuffer             // in, none, converted
@@ -885,31 +788,8 @@ func TypeFindHelperForBuffer(obj gst.Object, buf *gst.Buffer) (gst.TypeFindProba
 
 // TypeFindHelperForBufferWithCaps wraps gst_type_find_helper_for_buffer_with_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- obj gst.Object (nullable): object doing the typefinding, or %NULL (used for logging) 
-// 	- buf *gst.Buffer: a #GstBuffer with data to typefind 
-// 	- caps *gst.Caps: caps of the media 
-// 
-// The function returns the following values:
-// 
-// 	- prob gst.TypeFindProbability: location to store the probability of the found
-//     caps, or %NULL 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 //
-// Tries to find if type of media contained in the given #GstBuffer, matches
-// @caps specified, assumption being that the buffer represents the beginning
-// of the stream or file.
-// 
-// Tries to find what type of data is contained in the given @data, the
-// assumption being that the data represents the beginning of the stream or
-// file.
-// 
-// Only the typefinder matching the given caps will be called, if found. The
-// caps with the highest probability will be returned, or %NULL if the content
-// of the @data could not be identified.
-// 
-// Free-function: gst_caps_unref
 func TypeFindHelperForBufferWithCaps(obj gst.Object, buf *gst.Buffer, caps *gst.Caps) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.GstBuffer             // in, none, converted
@@ -941,34 +821,8 @@ func TypeFindHelperForBufferWithCaps(obj gst.Object, buf *gst.Buffer, caps *gst.
 
 // TypeFindHelperForBufferWithExtension wraps gst_type_find_helper_for_buffer_with_extension
 // 
-// The function takes the following parameters:
-// 
-// 	- obj gst.Object (nullable): object doing the typefinding, or %NULL (used for logging) 
-// 	- buf *gst.Buffer: a #GstBuffer with data to typefind 
-// 	- extension string (nullable): extension of the media, or %NULL 
-// 
-// The function returns the following values:
-// 
-// 	- prob gst.TypeFindProbability: location to store the probability of the found
-//     caps, or %NULL 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 //
-// Tries to find what type of data is contained in the given #GstBuffer, the
-// assumption being that the buffer represents the beginning of the stream or
-// file.
-// 
-// All available typefinders will be called on the data in order of rank. If
-// a typefinding function returns a probability of %GST_TYPE_FIND_MAXIMUM,
-// typefinding is stopped immediately and the found caps will be returned
-// right away. Otherwise, all available typefind functions will the tried,
-// and the caps with the highest probability will be returned, or %NULL if
-// the content of the buffer could not be identified.
-// 
-// When @extension is not %NULL, this function will first try the typefind
-// functions for the given extension, which might speed up the typefinding
-// in many cases.
-// 
-// Free-function: gst_caps_unref
 func TypeFindHelperForBufferWithExtension(obj gst.Object, buf *gst.Buffer, extension string) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.GstBuffer             // in, none, converted
@@ -1003,29 +857,8 @@ func TypeFindHelperForBufferWithExtension(obj gst.Object, buf *gst.Buffer, exten
 
 // TypeFindHelperForData wraps gst_type_find_helper_for_data
 // 
-// The function takes the following parameters:
-// 
-// 	- obj gst.Object (nullable): object doing the typefinding, or %NULL (used for logging) 
-// 	- data []uint8: * a pointer with data to typefind 
-// 
-// The function returns the following values:
-// 
-// 	- prob gst.TypeFindProbability: location to store the probability of the found
-//     caps, or %NULL 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 //
-// Tries to find what type of data is contained in the given @data, the
-// assumption being that the data represents the beginning of the stream or
-// file.
-// 
-// All available typefinders will be called on the data in order of rank. If
-// a typefinding function returns a probability of %GST_TYPE_FIND_MAXIMUM,
-// typefinding is stopped immediately and the found caps will be returned
-// right away. Otherwise, all available typefind functions will the tried,
-// and the caps with the highest probability will be returned, or %NULL if
-// the content of @data could not be identified.
-// 
-// Free-function: gst_caps_unref
 func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -1058,27 +891,8 @@ func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbabilit
 
 // TypeFindHelperForDataWithCaps wraps gst_type_find_helper_for_data_with_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- obj gst.Object (nullable): object doing the typefinding, or %NULL (used for logging) 
-// 	- data []uint8: a pointer with data to typefind 
-// 	- caps *gst.Caps: caps of the media 
-// 
-// The function returns the following values:
-// 
-// 	- prob gst.TypeFindProbability: location to store the probability of the found
-//     caps, or %NULL 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 //
-// Tries to find if type of media contained in the given @data, matches the
-// @caps specified, assumption being that the data represents the beginning
-// of the stream or file.
-// 
-// Only the typefinder matching the given caps will be called, if found. The
-// caps with the highest probability will be returned, or %NULL if the content
-// of the @data could not be identified.
-// 
-// Free-function: gst_caps_unref
 func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -1114,34 +928,8 @@ func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps)
 
 // TypeFindHelperForDataWithExtension wraps gst_type_find_helper_for_data_with_extension
 // 
-// The function takes the following parameters:
-// 
-// 	- obj gst.Object (nullable): object doing the typefinding, or %NULL (used for logging) 
-// 	- data []uint8: * a pointer with data to typefind 
-// 	- extension string (nullable): extension of the media, or %NULL 
-// 
-// The function returns the following values:
-// 
-// 	- prob gst.TypeFindProbability: location to store the probability of the found
-//     caps, or %NULL 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 //
-// Tries to find what type of data is contained in the given @data, the
-// assumption being that the data represents the beginning of the stream or
-// file.
-// 
-// All available typefinders will be called on the data in order of rank. If
-// a typefinding function returns a probability of %GST_TYPE_FIND_MAXIMUM,
-// typefinding is stopped immediately and the found caps will be returned
-// right away. Otherwise, all available typefind functions will the tried,
-// and the caps with the highest probability will be returned, or %NULL if
-// the content of @data could not be identified.
-// 
-// When @extension is not %NULL, this function will first try the typefind
-// functions for the given extension, which might speed up the typefinding
-// in many cases.
-// 
-// Free-function: gst_caps_unref
 func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension string) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -1180,22 +968,8 @@ func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension 
 
 // TypeFindHelperForExtension wraps gst_type_find_helper_for_extension
 // 
-// The function takes the following parameters:
-// 
-// 	- obj gst.Object (nullable): object doing the typefinding, or %NULL (used for logging) 
-// 	- extension string: an extension 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 //
-// Tries to find the best #GstCaps associated with @extension.
-// 
-// All available typefinders will be checked against the extension in order
-// of rank. The caps of the first typefinder that can handle @extension will be
-// returned.
-// 
-// Free-function: gst_caps_unref
 func TypeFindHelperForExtension(obj gst.Object, extension string) *gst.Caps {
 	var carg1 *C.GstObject // in, none, converted, nullable
 	var carg2 *C.gchar     // in, none, string
@@ -1222,20 +996,8 @@ func TypeFindHelperForExtension(obj gst.Object, extension string) *gst.Caps {
 
 // TypeFindListFactoriesForCaps wraps gst_type_find_list_factories_for_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- obj gst.Object (nullable): object doing the typefinding, or %NULL (used for logging) 
-// 	- caps *gst.Caps: caps of the media 
-// 
-// The function returns the following values:
-// 
-// 	- goret []gst.TypeFindFactory (nullable) 
+// see also No documentation available
 //
-// Tries to find the best #GstTypeFindFactory associated with @caps.
-// 
-// The typefinder that can handle @caps will be returned.
-// 
-// Free-function: g_list_free
 func TypeFindListFactoriesForCaps(obj gst.Object, caps *gst.Caps) []gst.TypeFindFactory {
 	var carg1 *C.GstObject // in, none, converted, nullable
 	var carg2 *C.GstCaps   // in, none, converted
@@ -1273,533 +1035,142 @@ type AdapterInstance struct {
 var _ Adapter = (*AdapterInstance)(nil)
 
 // Adapter wraps GstAdapter
+// 
+// see also No documentation available
 //
-// This class is for elements that receive buffers in an undesired size.
-// While for example raw video contains one image per buffer, the same is not
-// true for a lot of other formats, especially those that come directly from
-// a file. So if you have undefined buffer sizes and require a specific size,
-// this object is for you.
-// 
-// An adapter is created with gst_adapter_new(). It can be freed again with
-// g_object_unref().
-// 
-// The theory of operation is like this: All buffers received are put
-// into the adapter using gst_adapter_push() and the data is then read back
-// in chunks of the desired size using gst_adapter_map()/gst_adapter_unmap()
-// and/or gst_adapter_copy(). After the data has been processed, it is freed
-// using gst_adapter_unmap().
-// 
-// Other methods such as gst_adapter_take() and gst_adapter_take_buffer()
-// combine gst_adapter_map() and gst_adapter_unmap() in one method and are
-// potentially more convenient for some use cases.
-// 
-// For example, a sink pad's chain function that needs to pass data to a library
-// in 512-byte chunks could be implemented like this:
-// |[&lt;!-- language="C" --&gt;
-// static GstFlowReturn
-// sink_pad_chain (GstPad *pad, GstObject *parent, GstBuffer *buffer)
-// {
-//   MyElement *this;
-//   GstAdapter *adapter;
-//   GstFlowReturn ret = GST_FLOW_OK;
-// 
-//   this = MY_ELEMENT (parent);
-// 
-//   adapter = this-&gt;adapter;
-// 
-//   // put buffer into adapter
-//   gst_adapter_push (adapter, buffer);
-// 
-//   // while we can read out 512 bytes, process them
-//   while (gst_adapter_available (adapter) &gt;= 512 &amp;&amp; ret == GST_FLOW_OK) {
-//     const guint8 *data = gst_adapter_map (adapter, 512);
-//     // use flowreturn as an error value
-//     ret = my_library_foo (data);
-//     gst_adapter_unmap (adapter);
-//     gst_adapter_flush (adapter, 512);
-//   }
-//   return ret;
-// }
-// ]|
-// 
-// For another example, a simple element inside GStreamer that uses #GstAdapter
-// is the libvisual element.
-// 
-// An element using #GstAdapter in its sink pad chain function should ensure that
-// when the FLUSH_STOP event is received, that any queued data is cleared using
-// gst_adapter_clear(). Data should also be cleared or processed on EOS and
-// when changing state from %GST_STATE_PAUSED to %GST_STATE_READY.
-// 
-// Also check the GST_BUFFER_FLAG_DISCONT flag on the buffer. Some elements might
-// need to clear the adapter after a discontinuity.
-// 
-// The adapter will keep track of the timestamps of the buffers
-// that were pushed. The last seen timestamp before the current position
-// can be queried with gst_adapter_prev_pts(). This function can
-// optionally return the number of bytes between the start of the buffer that
-// carried the timestamp and the current adapter position. The distance is
-// useful when dealing with, for example, raw audio samples because it allows
-// you to calculate the timestamp of the current adapter position by using the
-// last seen timestamp and the amount of bytes since.  Additionally, the
-// gst_adapter_prev_pts_at_offset() can be used to determine the last
-// seen timestamp at a particular offset in the adapter.
-// 
-// The adapter will also keep track of the offset of the buffers
-// (#GST_BUFFER_OFFSET) that were pushed. The last seen offset before the
-// current position can be queried with gst_adapter_prev_offset(). This function
-// can optionally return the number of bytes between the start of the buffer
-// that carried the offset and the current adapter position.
-// 
-// Additionally the adapter also keeps track of the PTS, DTS and buffer offset
-// at the last discontinuity, which can be retrieved with
-// gst_adapter_pts_at_discont(), gst_adapter_dts_at_discont() and
-// gst_adapter_offset_at_discont(). The number of bytes that were consumed
-// since then can be queried with gst_adapter_distance_from_discont().
-// 
-// A last thing to note is that while #GstAdapter is pretty optimized,
-// merging buffers still might be an operation that requires a `malloc()` and
-// `memcpy()` operation, and these operations are not the fastest. Because of
-// this, some functions like gst_adapter_available_fast() are provided to help
-// speed up such cases should you want to. To avoid repeated memory allocations,
-// gst_adapter_copy() can be used to copy data into a (statically allocated)
-// user provided buffer.
-// 
-// #GstAdapter is not MT safe. All operations on an adapter must be serialized by
-// the caller. This is not normally a problem, however, as the normal use case
-// of #GstAdapter is inside one pad's chain function, in which case access is
-// serialized via the pad's STREAM_LOCK.
-// 
-// Note that gst_adapter_push() takes ownership of the buffer passed. Use
-// gst_buffer_ref() before pushing it into the adapter if you still want to
-// access the buffer later. The adapter will never modify the data in the
-// buffer pushed in it.
 type Adapter interface {
 	gobject.Object
 	upcastToGstAdapter() *AdapterInstance
 
 	// Available wraps gst_adapter_available
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Gets the maximum amount of bytes available, that is it returns the maximum
-	// value that can be supplied to gst_adapter_map() without that function
-	// returning %NULL.
-	// 
-	// Calling gst_adapter_map() with the amount of bytes returned by this function
-	// may require expensive operations (like copying the data into a temporary
-	// buffer) in some cases.
 	Available() uint
 	// AvailableFast wraps gst_adapter_available_fast
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Gets the maximum number of bytes that can be retrieved in a single map
-	// operation without merging buffers.
-	// 
-	// Calling gst_adapter_map() with the amount of bytes returned by this function
-	// will never require any expensive operations (like copying the data into a
-	// temporary buffer).
 	AvailableFast() uint
 	// Clear wraps gst_adapter_clear
+	// 
+	// see also No documentation available
 	//
-	// Removes all buffers from @adapter.
 	Clear()
 	// CopyBytes wraps gst_adapter_copy_bytes
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset uint: the bytes offset in the adapter to start from 
-	// 	- size uint: the number of bytes to copy 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *glib.Bytes 
+	// see also No documentation available
 	//
-	// Similar to gst_adapter_copy, but more suitable for language bindings. @size
-	// bytes of data starting at @offset will be copied out of the buffers contained
-	// in @adapter and into a new #GBytes structure which is returned. Depending on
-	// the value of the @size argument an empty #GBytes structure may be returned.
 	CopyBytes(uint, uint) *glib.Bytes
 	// DistanceFromDiscont wraps gst_adapter_distance_from_discont
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint64 
+	// see also No documentation available
 	//
-	// Get the distance in bytes since the last buffer with the
-	// %GST_BUFFER_FLAG_DISCONT flag.
-	// 
-	// The distance will be reset to 0 for all buffers with
-	// %GST_BUFFER_FLAG_DISCONT on them, and then calculated for all other
-	// following buffers based on their size.
 	DistanceFromDiscont() uint64
 	// DtsAtDiscont wraps gst_adapter_dts_at_discont
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the DTS that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
-	// flag, or GST_CLOCK_TIME_NONE.
 	DtsAtDiscont() gst.ClockTime
 	// Flush wraps gst_adapter_flush
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flush uint: the number of bytes to flush 
+	// see also No documentation available
 	//
-	// Flushes the first @flush bytes in the @adapter. The caller must ensure that
-	// at least this many bytes are available.
-	// 
-	// See also: gst_adapter_map(), gst_adapter_unmap()
 	Flush(uint)
 	// GetBuffer wraps gst_adapter_get_buffer
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- nbytes uint: the number of bytes to get 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Returns a #GstBuffer containing the first @nbytes of the @adapter, but
-	// does not flush them from the adapter. See gst_adapter_take_buffer()
-	// for details.
-	// 
-	// Caller owns a reference to the returned buffer. gst_buffer_unref() after
-	// usage.
-	// 
-	// Free-function: gst_buffer_unref
 	GetBuffer(uint) *gst.Buffer
 	// GetBufferFast wraps gst_adapter_get_buffer_fast
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- nbytes uint: the number of bytes to get 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Returns a #GstBuffer containing the first @nbytes of the @adapter, but
-	// does not flush them from the adapter. See gst_adapter_take_buffer_fast()
-	// for details.
-	// 
-	// Caller owns a reference to the returned buffer. gst_buffer_unref() after
-	// usage.
-	// 
-	// Free-function: gst_buffer_unref
 	GetBufferFast(uint) *gst.Buffer
 	// GetBufferList wraps gst_adapter_get_buffer_list
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- nbytes uint: the number of bytes to get 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.BufferList (nullable) 
+	// see also No documentation available
 	//
-	// Returns a #GstBufferList of buffers containing the first @nbytes bytes of
-	// the @adapter but does not flush them from the adapter. See
-	// gst_adapter_take_buffer_list() for details.
-	// 
-	// Caller owns the returned list. Call gst_buffer_list_unref() to free
-	// the list after usage.
 	GetBufferList(uint) *gst.BufferList
 	// GetList wraps gst_adapter_get_list
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- nbytes uint: the number of bytes to get 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []*gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Returns a #GList of buffers containing the first @nbytes bytes of the
-	// @adapter, but does not flush them from the adapter. See
-	// gst_adapter_take_list() for details.
-	// 
-	// Caller owns returned list and contained buffers. gst_buffer_unref() each
-	// buffer in the list before freeing the list after usage.
 	GetList(uint) []*gst.Buffer
 	// MaskedScanUint32 wraps gst_adapter_masked_scan_uint32
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- mask uint32: mask to apply to data before matching against @pattern 
-	// 	- pattern uint32: pattern to match (after mask is applied) 
-	// 	- offset uint: offset into the adapter data from which to start scanning, returns
-	//          the last scanned position. 
-	// 	- size uint: number of bytes to scan from offset 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int 
+	// see also No documentation available
 	//
-	// Scan for pattern @pattern with applied mask @mask in the adapter data,
-	// starting from offset @offset.
-	// 
-	// The bytes in @pattern and @mask are interpreted left-to-right, regardless
-	// of endianness.  All four bytes of the pattern must be present in the
-	// adapter for it to match, even if the first or last bytes are masked out.
-	// 
-	// It is an error to call this function without making sure that there is
-	// enough data (offset+size bytes) in the adapter.
-	// 
-	// This function calls gst_adapter_masked_scan_uint32_peek() passing %NULL
-	// for value.
 	MaskedScanUint32(uint32, uint32, uint, uint) int
 	// MaskedScanUint32Peek wraps gst_adapter_masked_scan_uint32_peek
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- mask uint32: mask to apply to data before matching against @pattern 
-	// 	- pattern uint32: pattern to match (after mask is applied) 
-	// 	- offset uint: offset into the adapter data from which to start scanning, returns
-	//          the last scanned position. 
-	// 	- size uint: number of bytes to scan from offset 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- value uint32: pointer to uint32 to return matching data 
-	// 	- goret int 
+	// see also No documentation available
 	//
-	// Scan for pattern @pattern with applied mask @mask in the adapter data,
-	// starting from offset @offset.  If a match is found, the value that matched
-	// is returned through @value, otherwise @value is left untouched.
-	// 
-	// The bytes in @pattern and @mask are interpreted left-to-right, regardless
-	// of endianness.  All four bytes of the pattern must be present in the
-	// adapter for it to match, even if the first or last bytes are masked out.
-	// 
-	// It is an error to call this function without making sure that there is
-	// enough data (offset+size bytes) in the adapter.
 	MaskedScanUint32Peek(uint32, uint32, uint, uint) (uint32, int)
 	// OffsetAtDiscont wraps gst_adapter_offset_at_discont
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint64 
+	// see also No documentation available
 	//
-	// Get the offset that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
-	// flag, or GST_BUFFER_OFFSET_NONE.
 	OffsetAtDiscont() uint64
 	// PrevDts wraps gst_adapter_prev_dts
 	// 
-	// The function returns the following values:
-	// 
-	// 	- distance uint64: pointer to location for distance, or %NULL 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the dts that was before the current byte in the adapter. When
-	// @distance is given, the amount of bytes between the dts and the current
-	// position is returned.
-	// 
-	// The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
-	// the adapter is first created or when it is cleared. This also means that before
-	// the first byte with a dts is added to the adapter, the dts
-	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevDts() (uint64, gst.ClockTime)
 	// PrevDtsAtOffset wraps gst_adapter_prev_dts_at_offset
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset uint: the offset in the adapter at which to get timestamp 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- distance uint64: pointer to location for distance, or %NULL 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the dts that was before the byte at offset @offset in the adapter. When
-	// @distance is given, the amount of bytes between the dts and the current
-	// position is returned.
-	// 
-	// The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
-	// the adapter is first created or when it is cleared. This also means that before
-	// the first byte with a dts is added to the adapter, the dts
-	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevDtsAtOffset(uint) (uint64, gst.ClockTime)
 	// PrevOffset wraps gst_adapter_prev_offset
 	// 
-	// The function returns the following values:
-	// 
-	// 	- distance uint64: pointer to a location for distance, or %NULL 
-	// 	- goret uint64 
+	// see also No documentation available
 	//
-	// Get the offset that was before the current byte in the adapter. When
-	// @distance is given, the amount of bytes between the offset and the current
-	// position is returned.
-	// 
-	// The offset is reset to GST_BUFFER_OFFSET_NONE and the distance is set to 0
-	// when the adapter is first created or when it is cleared. This also means that
-	// before the first byte with an offset is added to the adapter, the offset
-	// and distance returned are GST_BUFFER_OFFSET_NONE and 0 respectively.
 	PrevOffset() (uint64, uint64)
 	// PrevPts wraps gst_adapter_prev_pts
 	// 
-	// The function returns the following values:
-	// 
-	// 	- distance uint64: pointer to location for distance, or %NULL 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the pts that was before the current byte in the adapter. When
-	// @distance is given, the amount of bytes between the pts and the current
-	// position is returned.
-	// 
-	// The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
-	// the adapter is first created or when it is cleared. This also means that before
-	// the first byte with a pts is added to the adapter, the pts
-	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevPts() (uint64, gst.ClockTime)
 	// PrevPtsAtOffset wraps gst_adapter_prev_pts_at_offset
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset uint: the offset in the adapter at which to get timestamp 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- distance uint64: pointer to location for distance, or %NULL 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the pts that was before the byte at offset @offset in the adapter. When
-	// @distance is given, the amount of bytes between the pts and the current
-	// position is returned.
-	// 
-	// The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
-	// the adapter is first created or when it is cleared. This also means that before
-	// the first byte with a pts is added to the adapter, the pts
-	// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 	PrevPtsAtOffset(uint) (uint64, gst.ClockTime)
 	// PtsAtDiscont wraps gst_adapter_pts_at_discont
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the PTS that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
-	// flag, or GST_CLOCK_TIME_NONE.
 	PtsAtDiscont() gst.ClockTime
 	// Push wraps gst_adapter_push
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buf *gst.Buffer: a #GstBuffer to add to queue in the adapter 
+	// see also No documentation available
 	//
-	// Adds the data from @buf to the data stored inside @adapter and takes
-	// ownership of the buffer.
 	Push(*gst.Buffer)
 	// TakeBuffer wraps gst_adapter_take_buffer
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- nbytes uint: the number of bytes to take 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Returns a #GstBuffer containing the first @nbytes bytes of the
-	// @adapter. The returned bytes will be flushed from the adapter.
-	// This function is potentially more performant than
-	// gst_adapter_take() since it can reuse the memory in pushed buffers
-	// by subbuffering or merging. This function will always return a
-	// buffer with a single memory region.
-	// 
-	// Note that no assumptions should be made as to whether certain buffer
-	// flags such as the DISCONT flag are set on the returned buffer, or not.
-	// The caller needs to explicitly set or unset flags that should be set or
-	// unset.
-	// 
-	// Since 1.6 this will also copy over all GstMeta of the input buffers except
-	// for meta with the %GST_META_FLAG_POOLED flag or with the "memory" tag.
-	// 
-	// Caller owns a reference to the returned buffer. gst_buffer_unref() after
-	// usage.
-	// 
-	// Free-function: gst_buffer_unref
 	TakeBuffer(uint) *gst.Buffer
 	// TakeBufferFast wraps gst_adapter_take_buffer_fast
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- nbytes uint: the number of bytes to take 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Returns a #GstBuffer containing the first @nbytes of the @adapter.
-	// The returned bytes will be flushed from the adapter.  This function
-	// is potentially more performant than gst_adapter_take_buffer() since
-	// it can reuse the memory in pushed buffers by subbuffering or
-	// merging. Unlike gst_adapter_take_buffer(), the returned buffer may
-	// be composed of multiple non-contiguous #GstMemory objects, no
-	// copies are made.
-	// 
-	// Note that no assumptions should be made as to whether certain buffer
-	// flags such as the DISCONT flag are set on the returned buffer, or not.
-	// The caller needs to explicitly set or unset flags that should be set or
-	// unset.
-	// 
-	// This will also copy over all GstMeta of the input buffers except
-	// for meta with the %GST_META_FLAG_POOLED flag or with the "memory" tag.
-	// 
-	// This function can return buffer up to the return value of
-	// gst_adapter_available() without making copies if possible.
-	// 
-	// Caller owns a reference to the returned buffer. gst_buffer_unref() after
-	// usage.
-	// 
-	// Free-function: gst_buffer_unref
 	TakeBufferFast(uint) *gst.Buffer
 	// TakeBufferList wraps gst_adapter_take_buffer_list
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- nbytes uint: the number of bytes to take 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.BufferList (nullable) 
+	// see also No documentation available
 	//
-	// Returns a #GstBufferList of buffers containing the first @nbytes bytes of
-	// the @adapter. The returned bytes will be flushed from the adapter.
-	// When the caller can deal with individual buffers, this function is more
-	// performant because no memory should be copied.
-	// 
-	// Caller owns the returned list. Call gst_buffer_list_unref() to free
-	// the list after usage.
 	TakeBufferList(uint) *gst.BufferList
 	// TakeList wraps gst_adapter_take_list
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- nbytes uint: the number of bytes to take 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []*gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Returns a #GList of buffers containing the first @nbytes bytes of the
-	// @adapter. The returned bytes will be flushed from the adapter.
-	// When the caller can deal with individual buffers, this function is more
-	// performant because no memory should be copied.
-	// 
-	// Caller owns returned list and contained buffers. gst_buffer_unref() each
-	// buffer in the list before freeing the list after usage.
 	TakeList(uint) []*gst.Buffer
 	// Unmap wraps gst_adapter_unmap
+	// 
+	// see also No documentation available
 	//
-	// Releases the memory obtained with the last gst_adapter_map().
 	Unmap()
 }
 
@@ -1853,11 +1224,8 @@ func UnsafeAdapterToGlibFull(c Adapter) unsafe.Pointer {
 
 // NewAdapter wraps gst_adapter_new
 // 
-// The function returns the following values:
-// 
-// 	- goret Adapter 
+// see also No documentation available
 //
-// Creates a new #GstAdapter. Free with g_object_unref().
 func NewAdapter() Adapter {
 	var cret *C.GstAdapter // return, full, converted
 
@@ -1872,17 +1240,8 @@ func NewAdapter() Adapter {
 
 // Available wraps gst_adapter_available
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Gets the maximum amount of bytes available, that is it returns the maximum
-// value that can be supplied to gst_adapter_map() without that function
-// returning %NULL.
-// 
-// Calling gst_adapter_map() with the amount of bytes returned by this function
-// may require expensive operations (like copying the data into a temporary
-// buffer) in some cases.
 func (adapter *AdapterInstance) Available() uint {
 	var carg0 *C.GstAdapter // in, none, converted
 	var cret  C.gsize       // return, none, casted
@@ -1901,16 +1260,8 @@ func (adapter *AdapterInstance) Available() uint {
 
 // AvailableFast wraps gst_adapter_available_fast
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Gets the maximum number of bytes that can be retrieved in a single map
-// operation without merging buffers.
-// 
-// Calling gst_adapter_map() with the amount of bytes returned by this function
-// will never require any expensive operations (like copying the data into a
-// temporary buffer).
 func (adapter *AdapterInstance) AvailableFast() uint {
 	var carg0 *C.GstAdapter // in, none, converted
 	var cret  C.gsize       // return, none, casted
@@ -1928,8 +1279,9 @@ func (adapter *AdapterInstance) AvailableFast() uint {
 }
 
 // Clear wraps gst_adapter_clear
+// 
+// see also No documentation available
 //
-// Removes all buffers from @adapter.
 func (adapter *AdapterInstance) Clear() {
 	var carg0 *C.GstAdapter // in, none, converted
 
@@ -1941,19 +1293,8 @@ func (adapter *AdapterInstance) Clear() {
 
 // CopyBytes wraps gst_adapter_copy_bytes
 // 
-// The function takes the following parameters:
-// 
-// 	- offset uint: the bytes offset in the adapter to start from 
-// 	- size uint: the number of bytes to copy 
-// 
-// The function returns the following values:
-// 
-// 	- goret *glib.Bytes 
+// see also No documentation available
 //
-// Similar to gst_adapter_copy, but more suitable for language bindings. @size
-// bytes of data starting at @offset will be copied out of the buffers contained
-// in @adapter and into a new #GBytes structure which is returned. Depending on
-// the value of the @size argument an empty #GBytes structure may be returned.
 func (adapter *AdapterInstance) CopyBytes(offset uint, size uint) *glib.Bytes {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1978,16 +1319,8 @@ func (adapter *AdapterInstance) CopyBytes(offset uint, size uint) *glib.Bytes {
 
 // DistanceFromDiscont wraps gst_adapter_distance_from_discont
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Get the distance in bytes since the last buffer with the
-// %GST_BUFFER_FLAG_DISCONT flag.
-// 
-// The distance will be reset to 0 for all buffers with
-// %GST_BUFFER_FLAG_DISCONT on them, and then calculated for all other
-// following buffers based on their size.
 func (adapter *AdapterInstance) DistanceFromDiscont() uint64 {
 	var carg0 *C.GstAdapter // in, none, converted
 	var cret  C.guint64     // return, none, casted
@@ -2006,12 +1339,8 @@ func (adapter *AdapterInstance) DistanceFromDiscont() uint64 {
 
 // DtsAtDiscont wraps gst_adapter_dts_at_discont
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the DTS that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
-// flag, or GST_CLOCK_TIME_NONE.
 func (adapter *AdapterInstance) DtsAtDiscont() gst.ClockTime {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -2030,14 +1359,8 @@ func (adapter *AdapterInstance) DtsAtDiscont() gst.ClockTime {
 
 // Flush wraps gst_adapter_flush
 // 
-// The function takes the following parameters:
-// 
-// 	- flush uint: the number of bytes to flush 
+// see also No documentation available
 //
-// Flushes the first @flush bytes in the @adapter. The caller must ensure that
-// at least this many bytes are available.
-// 
-// See also: gst_adapter_map(), gst_adapter_unmap()
 func (adapter *AdapterInstance) Flush(flush uint) {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -2052,22 +1375,8 @@ func (adapter *AdapterInstance) Flush(flush uint) {
 
 // GetBuffer wraps gst_adapter_get_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- nbytes uint: the number of bytes to get 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Returns a #GstBuffer containing the first @nbytes of the @adapter, but
-// does not flush them from the adapter. See gst_adapter_take_buffer()
-// for details.
-// 
-// Caller owns a reference to the returned buffer. gst_buffer_unref() after
-// usage.
-// 
-// Free-function: gst_buffer_unref
 func (adapter *AdapterInstance) GetBuffer(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -2091,22 +1400,8 @@ func (adapter *AdapterInstance) GetBuffer(nbytes uint) *gst.Buffer {
 
 // GetBufferFast wraps gst_adapter_get_buffer_fast
 // 
-// The function takes the following parameters:
-// 
-// 	- nbytes uint: the number of bytes to get 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Returns a #GstBuffer containing the first @nbytes of the @adapter, but
-// does not flush them from the adapter. See gst_adapter_take_buffer_fast()
-// for details.
-// 
-// Caller owns a reference to the returned buffer. gst_buffer_unref() after
-// usage.
-// 
-// Free-function: gst_buffer_unref
 func (adapter *AdapterInstance) GetBufferFast(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -2130,20 +1425,8 @@ func (adapter *AdapterInstance) GetBufferFast(nbytes uint) *gst.Buffer {
 
 // GetBufferList wraps gst_adapter_get_buffer_list
 // 
-// The function takes the following parameters:
-// 
-// 	- nbytes uint: the number of bytes to get 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.BufferList (nullable) 
+// see also No documentation available
 //
-// Returns a #GstBufferList of buffers containing the first @nbytes bytes of
-// the @adapter but does not flush them from the adapter. See
-// gst_adapter_take_buffer_list() for details.
-// 
-// Caller owns the returned list. Call gst_buffer_list_unref() to free
-// the list after usage.
 func (adapter *AdapterInstance) GetBufferList(nbytes uint) *gst.BufferList {
 	var carg0 *C.GstAdapter    // in, none, converted
 	var carg1 C.gsize          // in, none, casted
@@ -2167,20 +1450,8 @@ func (adapter *AdapterInstance) GetBufferList(nbytes uint) *gst.BufferList {
 
 // GetList wraps gst_adapter_get_list
 // 
-// The function takes the following parameters:
-// 
-// 	- nbytes uint: the number of bytes to get 
-// 
-// The function returns the following values:
-// 
-// 	- goret []*gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Returns a #GList of buffers containing the first @nbytes bytes of the
-// @adapter, but does not flush them from the adapter. See
-// gst_adapter_take_list() for details.
-// 
-// Caller owns returned list and contained buffers. gst_buffer_unref() each
-// buffer in the list before freeing the list after usage.
 func (adapter *AdapterInstance) GetList(nbytes uint) []*gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -2209,30 +1480,8 @@ func (adapter *AdapterInstance) GetList(nbytes uint) []*gst.Buffer {
 
 // MaskedScanUint32 wraps gst_adapter_masked_scan_uint32
 // 
-// The function takes the following parameters:
-// 
-// 	- mask uint32: mask to apply to data before matching against @pattern 
-// 	- pattern uint32: pattern to match (after mask is applied) 
-// 	- offset uint: offset into the adapter data from which to start scanning, returns
-//          the last scanned position. 
-// 	- size uint: number of bytes to scan from offset 
-// 
-// The function returns the following values:
-// 
-// 	- goret int 
+// see also No documentation available
 //
-// Scan for pattern @pattern with applied mask @mask in the adapter data,
-// starting from offset @offset.
-// 
-// The bytes in @pattern and @mask are interpreted left-to-right, regardless
-// of endianness.  All four bytes of the pattern must be present in the
-// adapter for it to match, even if the first or last bytes are masked out.
-// 
-// It is an error to call this function without making sure that there is
-// enough data (offset+size bytes) in the adapter.
-// 
-// This function calls gst_adapter_masked_scan_uint32_peek() passing %NULL
-// for value.
 func (adapter *AdapterInstance) MaskedScanUint32(mask uint32, pattern uint32, offset uint, size uint) int {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.guint32     // in, none, casted
@@ -2263,29 +1512,8 @@ func (adapter *AdapterInstance) MaskedScanUint32(mask uint32, pattern uint32, of
 
 // MaskedScanUint32Peek wraps gst_adapter_masked_scan_uint32_peek
 // 
-// The function takes the following parameters:
-// 
-// 	- mask uint32: mask to apply to data before matching against @pattern 
-// 	- pattern uint32: pattern to match (after mask is applied) 
-// 	- offset uint: offset into the adapter data from which to start scanning, returns
-//          the last scanned position. 
-// 	- size uint: number of bytes to scan from offset 
-// 
-// The function returns the following values:
-// 
-// 	- value uint32: pointer to uint32 to return matching data 
-// 	- goret int 
+// see also No documentation available
 //
-// Scan for pattern @pattern with applied mask @mask in the adapter data,
-// starting from offset @offset.  If a match is found, the value that matched
-// is returned through @value, otherwise @value is left untouched.
-// 
-// The bytes in @pattern and @mask are interpreted left-to-right, regardless
-// of endianness.  All four bytes of the pattern must be present in the
-// adapter for it to match, even if the first or last bytes are masked out.
-// 
-// It is an error to call this function without making sure that there is
-// enough data (offset+size bytes) in the adapter.
 func (adapter *AdapterInstance) MaskedScanUint32Peek(mask uint32, pattern uint32, offset uint, size uint) (uint32, int) {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.guint32     // in, none, casted
@@ -2319,12 +1547,8 @@ func (adapter *AdapterInstance) MaskedScanUint32Peek(mask uint32, pattern uint32
 
 // OffsetAtDiscont wraps gst_adapter_offset_at_discont
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Get the offset that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
-// flag, or GST_BUFFER_OFFSET_NONE.
 func (adapter *AdapterInstance) OffsetAtDiscont() uint64 {
 	var carg0 *C.GstAdapter // in, none, converted
 	var cret  C.guint64     // return, none, casted
@@ -2343,19 +1567,8 @@ func (adapter *AdapterInstance) OffsetAtDiscont() uint64 {
 
 // PrevDts wraps gst_adapter_prev_dts
 // 
-// The function returns the following values:
-// 
-// 	- distance uint64: pointer to location for distance, or %NULL 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the dts that was before the current byte in the adapter. When
-// @distance is given, the amount of bytes between the dts and the current
-// position is returned.
-// 
-// The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
-// the adapter is first created or when it is cleared. This also means that before
-// the first byte with a dts is added to the adapter, the dts
-// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevDts() (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var carg1 C.guint64      // out, full, casted
@@ -2377,23 +1590,8 @@ func (adapter *AdapterInstance) PrevDts() (uint64, gst.ClockTime) {
 
 // PrevDtsAtOffset wraps gst_adapter_prev_dts_at_offset
 // 
-// The function takes the following parameters:
-// 
-// 	- offset uint: the offset in the adapter at which to get timestamp 
-// 
-// The function returns the following values:
-// 
-// 	- distance uint64: pointer to location for distance, or %NULL 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the dts that was before the byte at offset @offset in the adapter. When
-// @distance is given, the amount of bytes between the dts and the current
-// position is returned.
-// 
-// The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
-// the adapter is first created or when it is cleared. This also means that before
-// the first byte with a dts is added to the adapter, the dts
-// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevDtsAtOffset(offset uint) (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var carg1 C.gsize        // in, none, casted
@@ -2418,19 +1616,8 @@ func (adapter *AdapterInstance) PrevDtsAtOffset(offset uint) (uint64, gst.ClockT
 
 // PrevOffset wraps gst_adapter_prev_offset
 // 
-// The function returns the following values:
-// 
-// 	- distance uint64: pointer to a location for distance, or %NULL 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Get the offset that was before the current byte in the adapter. When
-// @distance is given, the amount of bytes between the offset and the current
-// position is returned.
-// 
-// The offset is reset to GST_BUFFER_OFFSET_NONE and the distance is set to 0
-// when the adapter is first created or when it is cleared. This also means that
-// before the first byte with an offset is added to the adapter, the offset
-// and distance returned are GST_BUFFER_OFFSET_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevOffset() (uint64, uint64) {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.guint64     // out, full, casted
@@ -2452,19 +1639,8 @@ func (adapter *AdapterInstance) PrevOffset() (uint64, uint64) {
 
 // PrevPts wraps gst_adapter_prev_pts
 // 
-// The function returns the following values:
-// 
-// 	- distance uint64: pointer to location for distance, or %NULL 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the pts that was before the current byte in the adapter. When
-// @distance is given, the amount of bytes between the pts and the current
-// position is returned.
-// 
-// The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
-// the adapter is first created or when it is cleared. This also means that before
-// the first byte with a pts is added to the adapter, the pts
-// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevPts() (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var carg1 C.guint64      // out, full, casted
@@ -2486,23 +1662,8 @@ func (adapter *AdapterInstance) PrevPts() (uint64, gst.ClockTime) {
 
 // PrevPtsAtOffset wraps gst_adapter_prev_pts_at_offset
 // 
-// The function takes the following parameters:
-// 
-// 	- offset uint: the offset in the adapter at which to get timestamp 
-// 
-// The function returns the following values:
-// 
-// 	- distance uint64: pointer to location for distance, or %NULL 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the pts that was before the byte at offset @offset in the adapter. When
-// @distance is given, the amount of bytes between the pts and the current
-// position is returned.
-// 
-// The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when
-// the adapter is first created or when it is cleared. This also means that before
-// the first byte with a pts is added to the adapter, the pts
-// and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
 func (adapter *AdapterInstance) PrevPtsAtOffset(offset uint) (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var carg1 C.gsize        // in, none, casted
@@ -2527,12 +1688,8 @@ func (adapter *AdapterInstance) PrevPtsAtOffset(offset uint) (uint64, gst.ClockT
 
 // PtsAtDiscont wraps gst_adapter_pts_at_discont
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the PTS that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
-// flag, or GST_CLOCK_TIME_NONE.
 func (adapter *AdapterInstance) PtsAtDiscont() gst.ClockTime {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -2551,12 +1708,8 @@ func (adapter *AdapterInstance) PtsAtDiscont() gst.ClockTime {
 
 // Push wraps gst_adapter_push
 // 
-// The function takes the following parameters:
-// 
-// 	- buf *gst.Buffer: a #GstBuffer to add to queue in the adapter 
+// see also No documentation available
 //
-// Adds the data from @buf to the data stored inside @adapter and takes
-// ownership of the buffer.
 func (adapter *AdapterInstance) Push(buf *gst.Buffer) {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 *C.GstBuffer  // in, full, converted
@@ -2571,33 +1724,8 @@ func (adapter *AdapterInstance) Push(buf *gst.Buffer) {
 
 // TakeBuffer wraps gst_adapter_take_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- nbytes uint: the number of bytes to take 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Returns a #GstBuffer containing the first @nbytes bytes of the
-// @adapter. The returned bytes will be flushed from the adapter.
-// This function is potentially more performant than
-// gst_adapter_take() since it can reuse the memory in pushed buffers
-// by subbuffering or merging. This function will always return a
-// buffer with a single memory region.
-// 
-// Note that no assumptions should be made as to whether certain buffer
-// flags such as the DISCONT flag are set on the returned buffer, or not.
-// The caller needs to explicitly set or unset flags that should be set or
-// unset.
-// 
-// Since 1.6 this will also copy over all GstMeta of the input buffers except
-// for meta with the %GST_META_FLAG_POOLED flag or with the "memory" tag.
-// 
-// Caller owns a reference to the returned buffer. gst_buffer_unref() after
-// usage.
-// 
-// Free-function: gst_buffer_unref
 func (adapter *AdapterInstance) TakeBuffer(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -2621,37 +1749,8 @@ func (adapter *AdapterInstance) TakeBuffer(nbytes uint) *gst.Buffer {
 
 // TakeBufferFast wraps gst_adapter_take_buffer_fast
 // 
-// The function takes the following parameters:
-// 
-// 	- nbytes uint: the number of bytes to take 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Returns a #GstBuffer containing the first @nbytes of the @adapter.
-// The returned bytes will be flushed from the adapter.  This function
-// is potentially more performant than gst_adapter_take_buffer() since
-// it can reuse the memory in pushed buffers by subbuffering or
-// merging. Unlike gst_adapter_take_buffer(), the returned buffer may
-// be composed of multiple non-contiguous #GstMemory objects, no
-// copies are made.
-// 
-// Note that no assumptions should be made as to whether certain buffer
-// flags such as the DISCONT flag are set on the returned buffer, or not.
-// The caller needs to explicitly set or unset flags that should be set or
-// unset.
-// 
-// This will also copy over all GstMeta of the input buffers except
-// for meta with the %GST_META_FLAG_POOLED flag or with the "memory" tag.
-// 
-// This function can return buffer up to the return value of
-// gst_adapter_available() without making copies if possible.
-// 
-// Caller owns a reference to the returned buffer. gst_buffer_unref() after
-// usage.
-// 
-// Free-function: gst_buffer_unref
 func (adapter *AdapterInstance) TakeBufferFast(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -2675,21 +1774,8 @@ func (adapter *AdapterInstance) TakeBufferFast(nbytes uint) *gst.Buffer {
 
 // TakeBufferList wraps gst_adapter_take_buffer_list
 // 
-// The function takes the following parameters:
-// 
-// 	- nbytes uint: the number of bytes to take 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.BufferList (nullable) 
+// see also No documentation available
 //
-// Returns a #GstBufferList of buffers containing the first @nbytes bytes of
-// the @adapter. The returned bytes will be flushed from the adapter.
-// When the caller can deal with individual buffers, this function is more
-// performant because no memory should be copied.
-// 
-// Caller owns the returned list. Call gst_buffer_list_unref() to free
-// the list after usage.
 func (adapter *AdapterInstance) TakeBufferList(nbytes uint) *gst.BufferList {
 	var carg0 *C.GstAdapter    // in, none, converted
 	var carg1 C.gsize          // in, none, casted
@@ -2713,21 +1799,8 @@ func (adapter *AdapterInstance) TakeBufferList(nbytes uint) *gst.BufferList {
 
 // TakeList wraps gst_adapter_take_list
 // 
-// The function takes the following parameters:
-// 
-// 	- nbytes uint: the number of bytes to take 
-// 
-// The function returns the following values:
-// 
-// 	- goret []*gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Returns a #GList of buffers containing the first @nbytes bytes of the
-// @adapter. The returned bytes will be flushed from the adapter.
-// When the caller can deal with individual buffers, this function is more
-// performant because no memory should be copied.
-// 
-// Caller owns returned list and contained buffers. gst_buffer_unref() each
-// buffer in the list before freeing the list after usage.
 func (adapter *AdapterInstance) TakeList(nbytes uint) []*gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -2755,8 +1828,9 @@ func (adapter *AdapterInstance) TakeList(nbytes uint) []*gst.Buffer {
 }
 
 // Unmap wraps gst_adapter_unmap
+// 
+// see also No documentation available
 //
-// Releases the memory obtained with the last gst_adapter_map().
 func (adapter *AdapterInstance) Unmap() {
 	var carg0 *C.GstAdapter // in, none, converted
 
@@ -2775,282 +1849,100 @@ type AggregatorInstance struct {
 var _ Aggregator = (*AggregatorInstance)(nil)
 
 // Aggregator wraps GstAggregator
+// 
+// see also No documentation available
 //
-// Manages a set of pads with the purpose of aggregating their buffers.
-// Control is given to the subclass when all pads have data.
-// 
-//  * Base class for mixers and muxers. Subclasses should at least implement
-//    the #GstAggregatorClass::aggregate virtual method.
-// 
-//  * Installs a #GstPadChainFunction, a #GstPadEventFullFunction and a
-//    #GstPadQueryFunction to queue all serialized data packets per sink pad.
-//    Subclasses should not overwrite those, but instead implement
-//    #GstAggregatorClass::sink_event and #GstAggregatorClass::sink_query as
-//    needed.
-// 
-//  * When data is queued on all pads, the aggregate vmethod is called.
-// 
-//  * One can peek at the data on any given GstAggregatorPad with the
-//    gst_aggregator_pad_peek_buffer() method, and remove it from the pad
-//    with the gst_aggregator_pad_pop_buffer () method. When a buffer
-//    has been taken with pop_buffer (), a new buffer can be queued
-//    on that pad.
-// 
-//  * When gst_aggregator_pad_peek_buffer() or gst_aggregator_pad_has_buffer()
-//    are called, a reference is taken to the returned buffer, which stays
-//    valid until either:
-// 
-//      - gst_aggregator_pad_pop_buffer() is called, in which case the caller
-//        is guaranteed that the buffer they receive is the same as the peeked
-//        buffer.
-//      - gst_aggregator_pad_drop_buffer() is called, in which case the caller
-//        is guaranteed that the dropped buffer is the one that was peeked.
-//      - the subclass implementation of #GstAggregatorClass.aggregate returns.
-// 
-//    Subsequent calls to gst_aggregator_pad_peek_buffer() or
-//    gst_aggregator_pad_has_buffer() return / check the same buffer that was
-//    returned / checked, until one of the conditions listed above is met.
-// 
-//    Subclasses are only allowed to call these methods from the aggregate
-//    thread.
-// 
-//  * If the subclass wishes to push a buffer downstream in its aggregate
-//    implementation, it should do so through the
-//    gst_aggregator_finish_buffer() method. This method will take care
-//    of sending and ordering mandatory events such as stream start, caps
-//    and segment. Buffer lists can also be pushed out with
-//    gst_aggregator_finish_buffer_list().
-// 
-//  * Same goes for EOS events, which should not be pushed directly by the
-//    subclass, it should instead return GST_FLOW_EOS in its aggregate
-//    implementation.
-// 
-//  * Note that the aggregator logic regarding gap event handling is to turn
-//    these into gap buffers with matching PTS and duration. It will also
-//    flag these buffers with GST_BUFFER_FLAG_GAP and GST_BUFFER_FLAG_DROPPABLE
-//    to ease their identification and subsequent processing.
-//    In addition, if the gap event was flagged with GST_GAP_FLAG_MISSING_DATA,
-//    a custom meta is added to the resulting gap buffer (GstAggregatorMissingDataMeta).
-// 
-//  * Subclasses must use (a subclass of) #GstAggregatorPad for both their
-//    sink and source pads.
-//    See gst_element_class_add_static_pad_template_with_gtype().
-// 
-// This class used to live in gst-plugins-bad and was moved to core.
 type Aggregator interface {
 	gst.Element
 	upcastToGstAggregator() *AggregatorInstance
 
 	// FinishBuffer wraps gst_aggregator_finish_buffer
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer: the #GstBuffer to push. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// This method will push the provided output buffer downstream. If needed,
-	// mandatory events such as stream-start, caps, and segment events will be
-	// sent before pushing the buffer.
 	FinishBuffer(*gst.Buffer) gst.FlowReturn
 	// FinishBufferList wraps gst_aggregator_finish_buffer_list
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// This method will push the provided output buffer list downstream. If needed,
-	// mandatory events such as stream-start, caps, and segment events will be
-	// sent before pushing the buffer.
 	FinishBufferList(*gst.BufferList) gst.FlowReturn
 	// GetAllocator wraps gst_aggregator_get_allocator
 	// 
-	// The function returns the following values:
-	// 
-	// 	- allocator gst.Allocator (nullable): the #GstAllocator
-	// used 
-	// 	- params gst.AllocationParams: the
-	// #GstAllocationParams of @allocator 
+	// see also No documentation available
 	//
-	// Lets #GstAggregator sub-classes get the memory @allocator
-	// acquired by the base class and its @params.
-	// 
-	// Unref the @allocator after use it.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_aggregator_get_buffer_pool
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.BufferPool (nullable) 
+	// see also No documentation available
 	GetBufferPool() gst.BufferPool
 	// GetForceLive wraps gst_aggregator_get_force_live
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Subclasses may use the return value to inform whether they should return
-	// %GST_FLOW_EOS from their aggregate implementation.
 	GetForceLive() bool
 	// GetIgnoreInactivePads wraps gst_aggregator_get_ignore_inactive_pads
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	GetIgnoreInactivePads() bool
 	// GetLatency wraps gst_aggregator_get_latency
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Retrieves the latency values reported by @self in response to the latency
-	// query, or %GST_CLOCK_TIME_NONE if there is not live source connected and the element
-	// will not wait for the clock.
-	// 
-	// Typically only called by subclasses.
 	GetLatency() gst.ClockTime
 	// Negotiate wraps gst_aggregator_negotiate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Negotiates src pad caps with downstream elements.
-	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-	// if #GstAggregatorClass::negotiate fails.
 	Negotiate() bool
 	// PeekNextSample wraps gst_aggregator_peek_next_sample
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pad AggregatorPad 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Sample (nullable) 
+	// see also No documentation available
 	//
-	// Use this function to determine what input buffers will be aggregated
-	// to produce the next output buffer. This should only be called from
-	// a #GstAggregator::samples-selected handler, and can be used to precisely
-	// control aggregating parameters for a given set of input samples.
 	PeekNextSample(AggregatorPad) *gst.Sample
 	// PushSrcEvent wraps gst_aggregator_push_src_event
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event: the #GstEvent to push. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// This method will push the provided event downstream. If needed, mandatory
-	// events such as stream-start, caps, and segment events will be sent before
-	// pushing the event.
-	// 
-	// This API does not allow pushing stream-start, caps, segment and EOS events.
-	// Specific API like gst_aggregator_set_src_caps() should be used for these.
 	PushSrcEvent(*gst.Event) bool
 	// SelectedSamples wraps gst_aggregator_selected_samples
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pts gst.ClockTime: The presentation timestamp of the next output buffer 
-	// 	- dts gst.ClockTime: The decoding timestamp of the next output buffer 
-	// 	- duration gst.ClockTime: The duration of the next output buffer 
-	// 	- info *gst.Structure (nullable): a #GstStructure containing additional information 
+	// see also No documentation available
 	//
-	// Subclasses should call this when they have prepared the
-	// buffers they will aggregate for each of their sink pads, but
-	// before using any of the properties of the pads that govern
-	// *how* aggregation should be performed, for example z-index
-	// for video aggregators.
-	// 
-	// If gst_aggregator_update_segment() is used by the subclass,
-	// it MUST be called before gst_aggregator_selected_samples().
-	// 
-	// This function MUST only be called from the #GstAggregatorClass::aggregate()
-	// function.
 	SelectedSamples(gst.ClockTime, gst.ClockTime, gst.ClockTime, *gst.Structure)
 	// SetForceLive wraps gst_aggregator_set_force_live
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- forceLive bool 
+	// see also No documentation available
 	//
-	// Subclasses should call this at construction time in order for @self to
-	// aggregate on a timeout even when no live source is connected.
 	SetForceLive(bool)
 	// SetIgnoreInactivePads wraps gst_aggregator_set_ignore_inactive_pads
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- ignore bool: whether inactive pads should not be waited on 
+	// see also No documentation available
 	//
-	// Subclasses should call this when they don't want to time out
-	// waiting for a pad that hasn't yet received any buffers in live
-	// mode.
-	// 
-	// #GstAggregator will still wait once on each newly-added pad, making
-	// sure upstream has had a fair chance to start up.
 	SetIgnoreInactivePads(bool)
 	// SetLatency wraps gst_aggregator_set_latency
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- minLatency gst.ClockTime: minimum latency 
-	// 	- maxLatency gst.ClockTime: maximum latency 
+	// see also No documentation available
 	//
-	// Lets #GstAggregator sub-classes tell the baseclass what their internal
-	// latency is. Will also post a LATENCY message on the bus so the pipeline
-	// can reconfigure its global latency if the values changed.
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetSrcCaps wraps gst_aggregator_set_src_caps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps: The #GstCaps to set on the src pad. 
+	// see also No documentation available
 	//
-	// Sets the caps to be used on the src pad.
 	SetSrcCaps(*gst.Caps)
 	// SimpleGetNextTime wraps gst_aggregator_simple_get_next_time
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// This is a simple #GstAggregatorClass::get_next_time implementation that
-	// just looks at the #GstSegment on the srcpad of the aggregator and bases
-	// the next time on the running time there.
-	// 
-	// This is the desired behaviour in most cases where you have a live source
-	// and you have a dead line based aggregator subclass.
 	SimpleGetNextTime() gst.ClockTime
 	// UpdateSegment wraps gst_aggregator_update_segment
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- segment *gst.Segment 
+	// see also No documentation available
 	//
-	// Subclasses should use this to update the segment on their
-	// source pad, instead of directly pushing new segment events
-	// downstream.
-	// 
-	// Subclasses MUST call this before gst_aggregator_selected_samples(),
-	// if it is used at all.
 	UpdateSegment(*gst.Segment)
 	// ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
+	// 
+	// see also No documentation available
 	//
-	// Signals that the #GstAggregator subclass has selected the next set
-	// of input samples it will aggregate. Handlers may call
-	// gst_aggregator_peek_next_sample() at that point.
 	ConnectSamplesSelected(func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -3058,333 +1950,112 @@ type Aggregator interface {
 	// ParentAggregate calls the default implementations of the `GstAggregator.aggregate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- timeout bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Mandatory.
-	//                  Called when buffers are queued on all sinkpads. Classes
-	//                  should iterate the GstElement-&gt;sinkpads and peek or steal
-	//                  buffers from the #GstAggregatorPads. If the subclass returns
-	//                  GST_FLOW_EOS, sending of the eos event will be taken care
-	//                  of. Once / if a buffer has been constructed from the
-	//                  aggregated buffers, the subclass should call _finish_buffer.
+	// see also No documentation available
 	ParentAggregate(timeout bool) gst.FlowReturn
 	// ParentClip calls the default implementations of the `GstAggregator.clip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// Optional.
-	//                  Called when a buffer is received on a sink pad, the task of
-	//                  clipping it and translating it to the current segment falls
-	//                  on the subclass. The function should use the segment of data
-	//                  and the negotiated media type on the pad to perform
-	//                  clipping of input buffer. This function takes ownership of
-	//                  buf and should output a buffer or return NULL in
-	//                  if the buffer should be dropped.
+	// see also No documentation available
 	ParentClip(aggregatorPad AggregatorPad, buf *gst.Buffer) *gst.Buffer
 	// ParentDecideAllocation calls the default implementations of the `GstAggregator.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Allows the subclass to influence the allocation choices.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
+	// see also No documentation available
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFinishBuffer calls the default implementations of the `GstAggregator.finish_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer: the #GstBuffer to push. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// This method will push the provided output buffer downstream. If needed,
-	// mandatory events such as stream-start, caps, and segment events will be
-	// sent before pushing the buffer.
+	// see also No documentation available
 	ParentFinishBuffer(buffer *gst.Buffer) gst.FlowReturn
 	// ParentFinishBufferList calls the default implementations of the `GstAggregator.finish_buffer_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// This method will push the provided output buffer list downstream. If needed,
-	// mandatory events such as stream-start, caps, and segment events will be
-	// sent before pushing the buffer.
+	// see also No documentation available
 	ParentFinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn
 	// ParentFixateSrcCaps calls the default implementations of the `GstAggregator.fixate_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                   Fixate and return the src pad caps provided.  The function takes
-	//                   ownership of @caps and returns a fixated version of
-	//                   @caps. @caps is not guaranteed to be writable.
+	// see also No documentation available
 	ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps
 	// ParentFlush calls the default implementations of the `GstAggregator.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Called after a successful flushing seek, once all the flush
-	//                  stops have been received. Flush pad-specific data in
-	//                  #GstAggregatorPad-&gt;flush.
+	// see also No documentation available
 	ParentFlush() gst.FlowReturn
 	// ParentGetNextTime calls the default implementations of the `GstAggregator.get_next_time` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
-	//
-	// Optional.
-	//                  Called when the element needs to know the running time of the next
-	//                  rendered buffer for live pipelines. This causes deadline
-	//                  based aggregation to occur. Defaults to returning
-	//                  GST_CLOCK_TIME_NONE causing the element to wait for buffers
-	//                  on all sink pads before aggregating.
+	// see also No documentation available
 	ParentGetNextTime() gst.ClockTime
 	// ParentNegotiate calls the default implementations of the `GstAggregator.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiates src pad caps with downstream elements.
-	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-	// if #GstAggregatorClass::negotiate fails.
+	// see also No documentation available
 	ParentNegotiate() bool
 	// ParentNegotiatedSrcCaps calls the default implementations of the `GstAggregator.negotiated_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                       Notifies subclasses what caps format has been negotiated
+	// see also No documentation available
 	ParentNegotiatedSrcCaps(caps *gst.Caps) bool
 	// ParentPeekNextSample calls the default implementations of the `GstAggregator.peek_next_sample` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Sample (nullable) 
-	//
-	// Use this function to determine what input buffers will be aggregated
-	// to produce the next output buffer. This should only be called from
-	// a #GstAggregator::samples-selected handler, and can be used to precisely
-	// control aggregating parameters for a given set of input samples.
+	// see also No documentation available
 	ParentPeekNextSample(aggregatorPad AggregatorPad) *gst.Sample
 	// ParentProposeAllocation calls the default implementations of the `GstAggregator.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pad AggregatorPad 
-	// 	- decideQuery *gst.Query 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Allows the subclass to handle the allocation query from upstream.
+	// see also No documentation available
 	ParentProposeAllocation(pad AggregatorPad, decideQuery *gst.Query, query *gst.Query) bool
 	// ParentSinkEvent calls the default implementations of the `GstAggregator.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when an event is received on a sink pad, the subclass
-	//                  should always chain up.
+	// see also No documentation available
 	ParentSinkEvent(aggregatorPad AggregatorPad, event *gst.Event) bool
 	// ParentSinkEventPreQueue calls the default implementations of the `GstAggregator.sink_event_pre_queue` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                        Called when an event is received on a sink pad before queueing up
-	//                        serialized events. The subclass should always chain up (Since: 1.18).
+	// see also No documentation available
 	ParentSinkEventPreQueue(aggregatorPad AggregatorPad, event *gst.Event) gst.FlowReturn
 	// ParentSinkQuery calls the default implementations of the `GstAggregator.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when a query is received on a sink pad, the subclass
-	//                  should always chain up.
+	// see also No documentation available
 	ParentSinkQuery(aggregatorPad AggregatorPad, query *gst.Query) bool
 	// ParentSinkQueryPreQueue calls the default implementations of the `GstAggregator.sink_query_pre_queue` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                        Called when a query is received on a sink pad before queueing up
-	//                        serialized queries. The subclass should always chain up (Since: 1.18).
+	// see also No documentation available
 	ParentSinkQueryPreQueue(aggregatorPad AggregatorPad, query *gst.Query) bool
 	// ParentSrcActivate calls the default implementations of the `GstAggregator.src_activate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- mode gst.PadMode 
-	// 	- active bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the src pad is activated, it will start/stop its
-	//                  pad task right after that call.
+	// see also No documentation available
 	ParentSrcActivate(mode gst.PadMode, active bool) bool
 	// ParentSrcEvent calls the default implementations of the `GstAggregator.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when an event is received on the src pad, the subclass
-	//                  should always chain up.
+	// see also No documentation available
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstAggregator.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when a query is received on the src pad, the subclass
-	//                  should always chain up.
+	// see also No documentation available
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstAggregator.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element goes from READY to PAUSED.
-	//                  The subclass should get ready to process
-	//                  aggregated buffers.
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstAggregator.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element goes from PAUSED to READY.
-	//                  The subclass should free all resources and reset its state.
+	// see also No documentation available
 	ParentStop() bool
 	// ParentUpdateSrcCaps calls the default implementations of the `GstAggregator.update_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- ret *gst.Caps 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	ParentUpdateSrcCaps(caps *gst.Caps) (*gst.Caps, gst.FlowReturn)
 }
 
@@ -3444,17 +2115,8 @@ func UnsafeAggregatorToGlibFull(c Aggregator) unsafe.Pointer {
 
 // FinishBuffer wraps gst_aggregator_finish_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: the #GstBuffer to push. 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// This method will push the provided output buffer downstream. If needed,
-// mandatory events such as stream-start, caps, and segment events will be
-// sent before pushing the buffer.
 func (aggregator *AggregatorInstance) FinishBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstBuffer     // in, full, converted
@@ -3476,17 +2138,8 @@ func (aggregator *AggregatorInstance) FinishBuffer(buffer *gst.Buffer) gst.FlowR
 
 // FinishBufferList wraps gst_aggregator_finish_buffer_list
 // 
-// The function takes the following parameters:
-// 
-// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// This method will push the provided output buffer list downstream. If needed,
-// mandatory events such as stream-start, caps, and segment events will be
-// sent before pushing the buffer.
 func (aggregator *AggregatorInstance) FinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstBufferList // in, full, converted
@@ -3508,17 +2161,8 @@ func (aggregator *AggregatorInstance) FinishBufferList(bufferlist *gst.BufferLis
 
 // GetAllocator wraps gst_aggregator_get_allocator
 // 
-// The function returns the following values:
-// 
-// 	- allocator gst.Allocator (nullable): the #GstAllocator
-// used 
-// 	- params gst.AllocationParams: the
-// #GstAllocationParams of @allocator 
+// see also No documentation available
 //
-// Lets #GstAggregator sub-classes get the memory @allocator
-// acquired by the base class and its @params.
-// 
-// Unref the @allocator after use it.
 func (self *AggregatorInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstAggregator      // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -3544,9 +2188,7 @@ func (self *AggregatorInstance) GetAllocator() (gst.Allocator, gst.AllocationPar
 
 // GetBufferPool wraps gst_aggregator_get_buffer_pool
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.BufferPool (nullable) 
+// see also No documentation available
 func (self *AggregatorInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  *C.GstBufferPool // return, full, converted, nullable
@@ -3567,12 +2209,8 @@ func (self *AggregatorInstance) GetBufferPool() gst.BufferPool {
 
 // GetForceLive wraps gst_aggregator_get_force_live
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Subclasses may use the return value to inform whether they should return
-// %GST_FLOW_EOS from their aggregate implementation.
 func (self *AggregatorInstance) GetForceLive() bool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.gboolean       // return
@@ -3593,9 +2231,7 @@ func (self *AggregatorInstance) GetForceLive() bool {
 
 // GetIgnoreInactivePads wraps gst_aggregator_get_ignore_inactive_pads
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (self *AggregatorInstance) GetIgnoreInactivePads() bool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.gboolean       // return
@@ -3616,15 +2252,8 @@ func (self *AggregatorInstance) GetIgnoreInactivePads() bool {
 
 // GetLatency wraps gst_aggregator_get_latency
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Retrieves the latency values reported by @self in response to the latency
-// query, or %GST_CLOCK_TIME_NONE if there is not live source connected and the element
-// will not wait for the clock.
-// 
-// Typically only called by subclasses.
 func (self *AggregatorInstance) GetLatency() gst.ClockTime {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.GstClockTime   // return, none, casted, alias
@@ -3643,13 +2272,8 @@ func (self *AggregatorInstance) GetLatency() gst.ClockTime {
 
 // Negotiate wraps gst_aggregator_negotiate
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Negotiates src pad caps with downstream elements.
-// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-// if #GstAggregatorClass::negotiate fails.
 func (self *AggregatorInstance) Negotiate() bool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.gboolean       // return
@@ -3670,18 +2294,8 @@ func (self *AggregatorInstance) Negotiate() bool {
 
 // PeekNextSample wraps gst_aggregator_peek_next_sample
 // 
-// The function takes the following parameters:
-// 
-// 	- pad AggregatorPad 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Sample (nullable) 
+// see also No documentation available
 //
-// Use this function to determine what input buffers will be aggregated
-// to produce the next output buffer. This should only be called from
-// a #GstAggregator::samples-selected handler, and can be used to precisely
-// control aggregating parameters for a given set of input samples.
 func (self *AggregatorInstance) PeekNextSample(pad AggregatorPad) *gst.Sample {
 	var carg0 *C.GstAggregator    // in, none, converted
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -3705,20 +2319,8 @@ func (self *AggregatorInstance) PeekNextSample(pad AggregatorPad) *gst.Sample {
 
 // PushSrcEvent wraps gst_aggregator_push_src_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: the #GstEvent to push. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// This method will push the provided event downstream. If needed, mandatory
-// events such as stream-start, caps, and segment events will be sent before
-// pushing the event.
-// 
-// This API does not allow pushing stream-start, caps, segment and EOS events.
-// Specific API like gst_aggregator_set_src_caps() should be used for these.
 func (aggregator *AggregatorInstance) PushSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstEvent      // in, full, converted
@@ -3742,24 +2344,8 @@ func (aggregator *AggregatorInstance) PushSrcEvent(event *gst.Event) bool {
 
 // SelectedSamples wraps gst_aggregator_selected_samples
 // 
-// The function takes the following parameters:
-// 
-// 	- pts gst.ClockTime: The presentation timestamp of the next output buffer 
-// 	- dts gst.ClockTime: The decoding timestamp of the next output buffer 
-// 	- duration gst.ClockTime: The duration of the next output buffer 
-// 	- info *gst.Structure (nullable): a #GstStructure containing additional information 
+// see also No documentation available
 //
-// Subclasses should call this when they have prepared the
-// buffers they will aggregate for each of their sink pads, but
-// before using any of the properties of the pads that govern
-// *how* aggregation should be performed, for example z-index
-// for video aggregators.
-// 
-// If gst_aggregator_update_segment() is used by the subclass,
-// it MUST be called before gst_aggregator_selected_samples().
-// 
-// This function MUST only be called from the #GstAggregatorClass::aggregate()
-// function.
 func (self *AggregatorInstance) SelectedSamples(pts gst.ClockTime, dts gst.ClockTime, duration gst.ClockTime, info *gst.Structure) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 C.GstClockTime   // in, none, casted, alias
@@ -3785,12 +2371,8 @@ func (self *AggregatorInstance) SelectedSamples(pts gst.ClockTime, dts gst.Clock
 
 // SetForceLive wraps gst_aggregator_set_force_live
 // 
-// The function takes the following parameters:
-// 
-// 	- forceLive bool 
+// see also No documentation available
 //
-// Subclasses should call this at construction time in order for @self to
-// aggregate on a timeout even when no live source is connected.
 func (self *AggregatorInstance) SetForceLive(forceLive bool) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 C.gboolean       // in
@@ -3807,16 +2389,8 @@ func (self *AggregatorInstance) SetForceLive(forceLive bool) {
 
 // SetIgnoreInactivePads wraps gst_aggregator_set_ignore_inactive_pads
 // 
-// The function takes the following parameters:
-// 
-// 	- ignore bool: whether inactive pads should not be waited on 
+// see also No documentation available
 //
-// Subclasses should call this when they don't want to time out
-// waiting for a pad that hasn't yet received any buffers in live
-// mode.
-// 
-// #GstAggregator will still wait once on each newly-added pad, making
-// sure upstream has had a fair chance to start up.
 func (self *AggregatorInstance) SetIgnoreInactivePads(ignore bool) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 C.gboolean       // in
@@ -3833,14 +2407,8 @@ func (self *AggregatorInstance) SetIgnoreInactivePads(ignore bool) {
 
 // SetLatency wraps gst_aggregator_set_latency
 // 
-// The function takes the following parameters:
-// 
-// 	- minLatency gst.ClockTime: minimum latency 
-// 	- maxLatency gst.ClockTime: maximum latency 
+// see also No documentation available
 //
-// Lets #GstAggregator sub-classes tell the baseclass what their internal
-// latency is. Will also post a LATENCY message on the bus so the pipeline
-// can reconfigure its global latency if the values changed.
 func (self *AggregatorInstance) SetLatency(minLatency gst.ClockTime, maxLatency gst.ClockTime) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 C.GstClockTime   // in, none, casted, alias
@@ -3858,11 +2426,8 @@ func (self *AggregatorInstance) SetLatency(minLatency gst.ClockTime, maxLatency 
 
 // SetSrcCaps wraps gst_aggregator_set_src_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: The #GstCaps to set on the src pad. 
+// see also No documentation available
 //
-// Sets the caps to be used on the src pad.
 func (self *AggregatorInstance) SetSrcCaps(caps *gst.Caps) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstCaps       // in, none, converted
@@ -3877,16 +2442,8 @@ func (self *AggregatorInstance) SetSrcCaps(caps *gst.Caps) {
 
 // SimpleGetNextTime wraps gst_aggregator_simple_get_next_time
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// This is a simple #GstAggregatorClass::get_next_time implementation that
-// just looks at the #GstSegment on the srcpad of the aggregator and bases
-// the next time on the running time there.
-// 
-// This is the desired behaviour in most cases where you have a live source
-// and you have a dead line based aggregator subclass.
 func (self *AggregatorInstance) SimpleGetNextTime() gst.ClockTime {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.GstClockTime   // return, none, casted, alias
@@ -3905,16 +2462,8 @@ func (self *AggregatorInstance) SimpleGetNextTime() gst.ClockTime {
 
 // UpdateSegment wraps gst_aggregator_update_segment
 // 
-// The function takes the following parameters:
-// 
-// 	- segment *gst.Segment 
+// see also No documentation available
 //
-// Subclasses should use this to update the segment on their
-// source pad, instead of directly pushing new segment events
-// downstream.
-// 
-// Subclasses MUST call this before gst_aggregator_selected_samples(),
-// if it is used at all.
 func (self *AggregatorInstance) UpdateSegment(segment *gst.Segment) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstSegment    // in, none, converted
@@ -3928,10 +2477,9 @@ func (self *AggregatorInstance) UpdateSegment(segment *gst.Segment) {
 }
 
 // ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
+// 
+// see also No documentation available
 //
-// Signals that the #GstAggregator subclass has selected the next set
-// of input samples it will aggregate. Handlers may call
-// gst_aggregator_peek_next_sample() at that point.
 func (o *AggregatorInstance) ConnectSamplesSelected(fn func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("samples-selected", fn)
 }
@@ -3944,312 +2492,91 @@ type AggregatorOverrides[Instance Aggregator] struct {
 
 	// // Aggregate allows you to override the implementation of the virtual method aggregate.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- timeout bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Mandatory.
-	//                  Called when buffers are queued on all sinkpads. Classes
-	//                  should iterate the GstElement-&gt;sinkpads and peek or steal
-	//                  buffers from the #GstAggregatorPads. If the subclass returns
-	//                  GST_FLOW_EOS, sending of the eos event will be taken care
-	//                  of. Once / if a buffer has been constructed from the
-	//                  aggregated buffers, the subclass should call _finish_buffer.
+	// see also No documentation available
 	Aggregate func(Instance, bool) gst.FlowReturn
 	// // Clip allows you to override the implementation of the virtual method clip.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// Optional.
-	//                  Called when a buffer is received on a sink pad, the task of
-	//                  clipping it and translating it to the current segment falls
-	//                  on the subclass. The function should use the segment of data
-	//                  and the negotiated media type on the pad to perform
-	//                  clipping of input buffer. This function takes ownership of
-	//                  buf and should output a buffer or return NULL in
-	//                  if the buffer should be dropped.
+	// see also No documentation available
 	Clip func(Instance, AggregatorPad, *gst.Buffer) *gst.Buffer
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Allows the subclass to influence the allocation choices.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
+	// see also No documentation available
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // FinishBuffer allows you to override the implementation of the virtual method finish_buffer.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer: the #GstBuffer to push. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// This method will push the provided output buffer downstream. If needed,
-	// mandatory events such as stream-start, caps, and segment events will be
-	// sent before pushing the buffer.
+	// see also No documentation available
 	FinishBuffer func(Instance, *gst.Buffer) gst.FlowReturn
 	// // FinishBufferList allows you to override the implementation of the virtual method finish_buffer_list.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// This method will push the provided output buffer list downstream. If needed,
-	// mandatory events such as stream-start, caps, and segment events will be
-	// sent before pushing the buffer.
+	// see also No documentation available
 	FinishBufferList func(Instance, *gst.BufferList) gst.FlowReturn
 	// // FixateSrcCaps allows you to override the implementation of the virtual method fixate_src_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                   Fixate and return the src pad caps provided.  The function takes
-	//                   ownership of @caps and returns a fixated version of
-	//                   @caps. @caps is not guaranteed to be writable.
+	// see also No documentation available
 	FixateSrcCaps func(Instance, *gst.Caps) *gst.Caps
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                  Called after a successful flushing seek, once all the flush
-	//                  stops have been received. Flush pad-specific data in
-	//                  #GstAggregatorPad-&gt;flush.
+	// see also No documentation available
 	Flush func(Instance) gst.FlowReturn
 	// // GetNextTime allows you to override the implementation of the virtual method get_next_time.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
-	//
-	// Optional.
-	//                  Called when the element needs to know the running time of the next
-	//                  rendered buffer for live pipelines. This causes deadline
-	//                  based aggregation to occur. Defaults to returning
-	//                  GST_CLOCK_TIME_NONE causing the element to wait for buffers
-	//                  on all sink pads before aggregating.
+	// see also No documentation available
 	GetNextTime func(Instance) gst.ClockTime
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiates src pad caps with downstream elements.
-	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-	// if #GstAggregatorClass::negotiate fails.
+	// see also No documentation available
 	Negotiate func(Instance) bool
 	// // NegotiatedSrcCaps allows you to override the implementation of the virtual method negotiated_src_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                       Notifies subclasses what caps format has been negotiated
+	// see also No documentation available
 	NegotiatedSrcCaps func(Instance, *gst.Caps) bool
 	// // PeekNextSample allows you to override the implementation of the virtual method peek_next_sample.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Sample (nullable) 
-	//
-	// Use this function to determine what input buffers will be aggregated
-	// to produce the next output buffer. This should only be called from
-	// a #GstAggregator::samples-selected handler, and can be used to precisely
-	// control aggregating parameters for a given set of input samples.
+	// see also No documentation available
 	PeekNextSample func(Instance, AggregatorPad) *gst.Sample
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pad AggregatorPad 
-	// 	- decideQuery *gst.Query 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Allows the subclass to handle the allocation query from upstream.
+	// see also No documentation available
 	ProposeAllocation func(Instance, AggregatorPad, *gst.Query, *gst.Query) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when an event is received on a sink pad, the subclass
-	//                  should always chain up.
+	// see also No documentation available
 	SinkEvent func(Instance, AggregatorPad, *gst.Event) bool
 	// // SinkEventPreQueue allows you to override the implementation of the virtual method sink_event_pre_queue.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                        Called when an event is received on a sink pad before queueing up
-	//                        serialized events. The subclass should always chain up (Since: 1.18).
+	// see also No documentation available
 	SinkEventPreQueue func(Instance, AggregatorPad, *gst.Event) gst.FlowReturn
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when a query is received on a sink pad, the subclass
-	//                  should always chain up.
+	// see also No documentation available
 	SinkQuery func(Instance, AggregatorPad, *gst.Query) bool
 	// // SinkQueryPreQueue allows you to override the implementation of the virtual method sink_query_pre_queue.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregatorPad AggregatorPad 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                        Called when a query is received on a sink pad before queueing up
-	//                        serialized queries. The subclass should always chain up (Since: 1.18).
+	// see also No documentation available
 	SinkQueryPreQueue func(Instance, AggregatorPad, *gst.Query) bool
 	// // SrcActivate allows you to override the implementation of the virtual method src_activate.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- mode gst.PadMode 
-	// 	- active bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the src pad is activated, it will start/stop its
-	//                  pad task right after that call.
+	// see also No documentation available
 	SrcActivate func(Instance, gst.PadMode, bool) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when an event is received on the src pad, the subclass
-	//                  should always chain up.
+	// see also No documentation available
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when a query is received on the src pad, the subclass
-	//                  should always chain up.
+	// see also No documentation available
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element goes from READY to PAUSED.
-	//                  The subclass should get ready to process
-	//                  aggregated buffers.
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element goes from PAUSED to READY.
-	//                  The subclass should free all resources and reset its state.
+	// see also No documentation available
 	Stop func(Instance) bool
 	// // UpdateSrcCaps allows you to override the implementation of the virtual method update_src_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- ret *gst.Caps 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	UpdateSrcCaps func(Instance, *gst.Caps) (*gst.Caps, gst.FlowReturn)
 }
 
@@ -4786,21 +3113,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 // ParentAggregate calls the default implementations of the `GstAggregator.aggregate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- timeout bool 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Mandatory.
-//                  Called when buffers are queued on all sinkpads. Classes
-//                  should iterate the GstElement-&gt;sinkpads and peek or steal
-//                  buffers from the #GstAggregatorPads. If the subclass returns
-//                  GST_FLOW_EOS, sending of the eos event will be taken care
-//                  of. Once / if a buffer has been constructed from the
-//                  aggregated buffers, the subclass should call _finish_buffer.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentAggregate(timeout bool) gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var carg1 C.gboolean      // in, none, converted
@@ -4827,23 +3140,7 @@ func (aggregator *AggregatorInstance) ParentAggregate(timeout bool) gst.FlowRetu
 // ParentClip calls the default implementations of the `GstAggregator.clip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- aggregatorPad AggregatorPad 
-// 	- buf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
-//
-// Optional.
-//                  Called when a buffer is received on a sink pad, the task of
-//                  clipping it and translating it to the current segment falls
-//                  on the subclass. The function should use the segment of data
-//                  and the negotiated media type on the pad to perform
-//                  clipping of input buffer. This function takes ownership of
-//                  buf and should output a buffer or return NULL in
-//                  if the buffer should be dropped.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentClip(aggregatorPad AggregatorPad, buf *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -4871,19 +3168,7 @@ func (aggregator *AggregatorInstance) ParentClip(aggregatorPad AggregatorPad, bu
 // ParentDecideAllocation calls the default implementations of the `GstAggregator.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                     Allows the subclass to influence the allocation choices.
-//                     Setup the allocation parameters for allocating output
-//                     buffers. The passed in query contains the result of the
-//                     downstream allocation query.
+// see also No documentation available
 func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstQuery // in, none, converted
@@ -4910,17 +3195,7 @@ func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
 // ParentFinishBuffer calls the default implementations of the `GstAggregator.finish_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: the #GstBuffer to push. 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// This method will push the provided output buffer downstream. If needed,
-// mandatory events such as stream-start, caps, and segment events will be
-// sent before pushing the buffer.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -4945,17 +3220,7 @@ func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst
 // ParentFinishBufferList calls the default implementations of the `GstAggregator.finish_buffer_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// This method will push the provided output buffer list downstream. If needed,
-// mandatory events such as stream-start, caps, and segment events will be
-// sent before pushing the buffer.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentFinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstBufferList // in, none, converted
@@ -4980,18 +3245,7 @@ func (aggregator *AggregatorInstance) ParentFinishBufferList(bufferlist *gst.Buf
 // ParentFixateSrcCaps calls the default implementations of the `GstAggregator.fixate_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Optional.
-//                   Fixate and return the src pad caps provided.  The function takes
-//                   ownership of @caps and returns a fixated version of
-//                   @caps. @caps is not guaranteed to be writable.
+// see also No documentation available
 func (self *AggregatorInstance) ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstCaps // in, none, converted
@@ -5016,14 +3270,7 @@ func (self *AggregatorInstance) ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps {
 // ParentFlush calls the default implementations of the `GstAggregator.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Optional.
-//                  Called after a successful flushing seek, once all the flush
-//                  stops have been received. Flush pad-specific data in
-//                  #GstAggregatorPad-&gt;flush.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentFlush() gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var cret  C.GstFlowReturn // return, none, casted
@@ -5045,16 +3292,7 @@ func (aggregator *AggregatorInstance) ParentFlush() gst.FlowReturn {
 // ParentGetNextTime calls the default implementations of the `GstAggregator.get_next_time` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
-//
-// Optional.
-//                  Called when the element needs to know the running time of the next
-//                  rendered buffer for live pipelines. This causes deadline
-//                  based aggregation to occur. Defaults to returning
-//                  GST_CLOCK_TIME_NONE causing the element to wait for buffers
-//                  on all sink pads before aggregating.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentGetNextTime() gst.ClockTime {
 	var carg0 *C.GstAggregator
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -5076,13 +3314,7 @@ func (aggregator *AggregatorInstance) ParentGetNextTime() gst.ClockTime {
 // ParentNegotiate calls the default implementations of the `GstAggregator.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Negotiates src pad caps with downstream elements.
-// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-// if #GstAggregatorClass::negotiate fails.
+// see also No documentation available
 func (self *AggregatorInstance) ParentNegotiate() bool {
 	var carg0 *C.GstAggregator
 	var cret  C.gboolean // return
@@ -5106,16 +3338,7 @@ func (self *AggregatorInstance) ParentNegotiate() bool {
 // ParentNegotiatedSrcCaps calls the default implementations of the `GstAggregator.negotiated_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                       Notifies subclasses what caps format has been negotiated
+// see also No documentation available
 func (self *AggregatorInstance) ParentNegotiatedSrcCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstCaps // in, none, converted
@@ -5142,18 +3365,7 @@ func (self *AggregatorInstance) ParentNegotiatedSrcCaps(caps *gst.Caps) bool {
 // ParentPeekNextSample calls the default implementations of the `GstAggregator.peek_next_sample` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- aggregatorPad AggregatorPad 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Sample (nullable) 
-//
-// Use this function to determine what input buffers will be aggregated
-// to produce the next output buffer. This should only be called from
-// a #GstAggregator::samples-selected handler, and can be used to precisely
-// control aggregating parameters for a given set of input samples.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentPeekNextSample(aggregatorPad AggregatorPad) *gst.Sample {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -5180,18 +3392,7 @@ func (aggregator *AggregatorInstance) ParentPeekNextSample(aggregatorPad Aggrega
 // ParentProposeAllocation calls the default implementations of the `GstAggregator.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- pad AggregatorPad 
-// 	- decideQuery *gst.Query 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                     Allows the subclass to handle the allocation query from upstream.
+// see also No documentation available
 func (self *AggregatorInstance) ParentProposeAllocation(pad AggregatorPad, decideQuery *gst.Query, query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -5224,18 +3425,7 @@ func (self *AggregatorInstance) ParentProposeAllocation(pad AggregatorPad, decid
 // ParentSinkEvent calls the default implementations of the `GstAggregator.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- aggregatorPad AggregatorPad 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when an event is received on a sink pad, the subclass
-//                  should always chain up.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentSinkEvent(aggregatorPad AggregatorPad, event *gst.Event) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -5265,18 +3455,7 @@ func (aggregator *AggregatorInstance) ParentSinkEvent(aggregatorPad AggregatorPa
 // ParentSinkEventPreQueue calls the default implementations of the `GstAggregator.sink_event_pre_queue` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- aggregatorPad AggregatorPad 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Optional.
-//                        Called when an event is received on a sink pad before queueing up
-//                        serialized events. The subclass should always chain up (Since: 1.18).
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentSinkEventPreQueue(aggregatorPad AggregatorPad, event *gst.Event) gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -5304,18 +3483,7 @@ func (aggregator *AggregatorInstance) ParentSinkEventPreQueue(aggregatorPad Aggr
 // ParentSinkQuery calls the default implementations of the `GstAggregator.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- aggregatorPad AggregatorPad 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when a query is received on a sink pad, the subclass
-//                  should always chain up.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentSinkQuery(aggregatorPad AggregatorPad, query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -5345,18 +3513,7 @@ func (aggregator *AggregatorInstance) ParentSinkQuery(aggregatorPad AggregatorPa
 // ParentSinkQueryPreQueue calls the default implementations of the `GstAggregator.sink_query_pre_queue` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- aggregatorPad AggregatorPad 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                        Called when a query is received on a sink pad before queueing up
-//                        serialized queries. The subclass should always chain up (Since: 1.18).
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad AggregatorPad, query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -5386,18 +3543,7 @@ func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad Aggr
 // ParentSrcActivate calls the default implementations of the `GstAggregator.src_activate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- mode gst.PadMode 
-// 	- active bool 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the src pad is activated, it will start/stop its
-//                  pad task right after that call.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentSrcActivate(mode gst.PadMode, active bool) bool {
 	var carg0 *C.GstAggregator
 	var carg1 C.GstPadMode // in, none, converted
@@ -5429,17 +3575,7 @@ func (aggregator *AggregatorInstance) ParentSrcActivate(mode gst.PadMode, active
 // ParentSrcEvent calls the default implementations of the `GstAggregator.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when an event is received on the src pad, the subclass
-//                  should always chain up.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstEvent // in, none, converted
@@ -5466,17 +3602,7 @@ func (aggregator *AggregatorInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstAggregator.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when a query is received on the src pad, the subclass
-//                  should always chain up.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstQuery // in, none, converted
@@ -5503,14 +3629,7 @@ func (aggregator *AggregatorInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstAggregator.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element goes from READY to PAUSED.
-//                  The subclass should get ready to process
-//                  aggregated buffers.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentStart() bool {
 	var carg0 *C.GstAggregator
 	var cret  C.gboolean // return
@@ -5534,13 +3653,7 @@ func (aggregator *AggregatorInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstAggregator.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element goes from PAUSED to READY.
-//                  The subclass should free all resources and reset its state.
+// see also No documentation available
 func (aggregator *AggregatorInstance) ParentStop() bool {
 	var carg0 *C.GstAggregator
 	var cret  C.gboolean // return
@@ -5564,14 +3677,7 @@ func (aggregator *AggregatorInstance) ParentStop() bool {
 // ParentUpdateSrcCaps calls the default implementations of the `GstAggregator.update_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- ret *gst.Caps 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 func (self *AggregatorInstance) ParentUpdateSrcCaps(caps *gst.Caps) (*gst.Caps, gst.FlowReturn) {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstCaps      // in, none, converted
@@ -5631,61 +3737,44 @@ type AggregatorPadInstance struct {
 var _ AggregatorPad = (*AggregatorPadInstance)(nil)
 
 // AggregatorPad wraps GstAggregatorPad
-//
-// Pads managed by a #GstAggregator subclass.
 // 
-// This class used to live in gst-plugins-bad and was moved to core.
+// see also No documentation available
+//
 type AggregatorPad interface {
 	gst.Pad
 	upcastToGstAggregatorPad() *AggregatorPadInstance
 
 	// DropBuffer wraps gst_aggregator_pad_drop_buffer
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Drop the buffer currently queued in @pad.
 	DropBuffer() bool
 	// HasBuffer wraps gst_aggregator_pad_has_buffer
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// This checks if a pad has a buffer available that will be returned by
-	// a call to gst_aggregator_pad_peek_buffer() or
-	// gst_aggregator_pad_pop_buffer().
 	HasBuffer() bool
 	// IsEOS wraps gst_aggregator_pad_is_eos
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	IsEOS() bool
 	// IsInactive wraps gst_aggregator_pad_is_inactive
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// It is only valid to call this method from #GstAggregatorClass::aggregate()
 	IsInactive() bool
 	// PeekBuffer wraps gst_aggregator_pad_peek_buffer
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	PeekBuffer() *gst.Buffer
 	// PopBuffer wraps gst_aggregator_pad_pop_buffer
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Steal the ref to the buffer currently queued in @pad.
 	PopBuffer() *gst.Buffer
 	// ConnectBufferConsumed connects the provided callback to the "buffer-consumed" signal
+	// 
+	// see also No documentation available
 	ConnectBufferConsumed(func(AggregatorPad, gst.Buffer)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -5693,34 +3782,12 @@ type AggregatorPad interface {
 	// ParentFlush calls the default implementations of the `GstAggregatorPad.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregator Aggregator 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional
-	//               Called when the pad has received a flush stop, this is the place
-	//               to flush any information specific to the pad, it allows for individual
-	//               pads to be flushed while others might not be.
+	// see also No documentation available
 	ParentFlush(aggregator Aggregator) gst.FlowReturn
 	// ParentSkipBuffer calls the default implementations of the `GstAggregatorPad.skip_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregator Aggregator 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional
-	//               Called before input buffers are queued in the pad, return %TRUE
-	//               if the buffer should be skipped.
+	// see also No documentation available
 	ParentSkipBuffer(aggregator Aggregator, buffer *gst.Buffer) bool
 }
 
@@ -5780,11 +3847,8 @@ func UnsafeAggregatorPadToGlibFull(c AggregatorPad) unsafe.Pointer {
 
 // DropBuffer wraps gst_aggregator_pad_drop_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Drop the buffer currently queued in @pad.
 func (pad *AggregatorPadInstance) DropBuffer() bool {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  C.gboolean          // return
@@ -5805,13 +3869,8 @@ func (pad *AggregatorPadInstance) DropBuffer() bool {
 
 // HasBuffer wraps gst_aggregator_pad_has_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// This checks if a pad has a buffer available that will be returned by
-// a call to gst_aggregator_pad_peek_buffer() or
-// gst_aggregator_pad_pop_buffer().
 func (pad *AggregatorPadInstance) HasBuffer() bool {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  C.gboolean          // return
@@ -5832,9 +3891,7 @@ func (pad *AggregatorPadInstance) HasBuffer() bool {
 
 // IsEOS wraps gst_aggregator_pad_is_eos
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (pad *AggregatorPadInstance) IsEOS() bool {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  C.gboolean          // return
@@ -5855,11 +3912,8 @@ func (pad *AggregatorPadInstance) IsEOS() bool {
 
 // IsInactive wraps gst_aggregator_pad_is_inactive
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// It is only valid to call this method from #GstAggregatorClass::aggregate()
 func (pad *AggregatorPadInstance) IsInactive() bool {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  C.gboolean          // return
@@ -5880,9 +3934,7 @@ func (pad *AggregatorPadInstance) IsInactive() bool {
 
 // PeekBuffer wraps gst_aggregator_pad_peek_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 func (pad *AggregatorPadInstance) PeekBuffer() *gst.Buffer {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  *C.GstBuffer        // return, full, converted, nullable
@@ -5903,11 +3955,8 @@ func (pad *AggregatorPadInstance) PeekBuffer() *gst.Buffer {
 
 // PopBuffer wraps gst_aggregator_pad_pop_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Steal the ref to the buffer currently queued in @pad.
 func (pad *AggregatorPadInstance) PopBuffer() *gst.Buffer {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  *C.GstBuffer        // return, full, converted, nullable
@@ -5927,6 +3976,8 @@ func (pad *AggregatorPadInstance) PopBuffer() *gst.Buffer {
 }
 
 // ConnectBufferConsumed connects the provided callback to the "buffer-consumed" signal
+// 
+// see also No documentation available
 func (o *AggregatorPadInstance) ConnectBufferConsumed(fn func(AggregatorPad, gst.Buffer)) gobject.SignalHandle {
 	return o.Connect("buffer-consumed", fn)
 }
@@ -5939,33 +3990,11 @@ type AggregatorPadOverrides[Instance AggregatorPad] struct {
 
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregator Aggregator 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional
-	//               Called when the pad has received a flush stop, this is the place
-	//               to flush any information specific to the pad, it allows for individual
-	//               pads to be flushed while others might not be.
+	// see also No documentation available
 	Flush func(Instance, Aggregator) gst.FlowReturn
 	// // SkipBuffer allows you to override the implementation of the virtual method skip_buffer.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- aggregator Aggregator 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional
-	//               Called before input buffers are queued in the pad, return %TRUE
-	//               if the buffer should be skipped.
+	// see also No documentation available
 	SkipBuffer func(Instance, Aggregator, *gst.Buffer) bool
 }
 
@@ -6028,18 +4057,7 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 // ParentFlush calls the default implementations of the `GstAggregatorPad.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- aggregator Aggregator 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Optional
-//               Called when the pad has received a flush stop, this is the place
-//               to flush any information specific to the pad, it allows for individual
-//               pads to be flushed while others might not be.
+// see also No documentation available
 func (aggpad *AggregatorPadInstance) ParentFlush(aggregator Aggregator) gst.FlowReturn {
 	var carg0 *C.GstAggregatorPad
 	var carg1 *C.GstAggregator // in, none, converted
@@ -6064,18 +4082,7 @@ func (aggpad *AggregatorPadInstance) ParentFlush(aggregator Aggregator) gst.Flow
 // ParentSkipBuffer calls the default implementations of the `GstAggregatorPad.skip_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- aggregator Aggregator 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional
-//               Called before input buffers are queued in the pad, return %TRUE
-//               if the buffer should be skipped.
+// see also No documentation available
 func (aggpad *AggregatorPadInstance) ParentSkipBuffer(aggregator Aggregator, buffer *gst.Buffer) bool {
 	var carg0 *C.GstAggregatorPad
 	var carg1 *C.GstAggregator // in, none, converted
@@ -6137,380 +4144,97 @@ type BaseParseInstance struct {
 var _ BaseParse = (*BaseParseInstance)(nil)
 
 // BaseParse wraps GstBaseParse
+// 
+// see also No documentation available
 //
-// This base class is for parser elements that process data and splits it
-// into separate audio/video/whatever frames.
-// 
-// It provides for:
-// 
-//   * provides one sink pad and one source pad
-//   * handles state changes
-//   * can operate in pull mode or push mode
-//   * handles seeking in both modes
-//   * handles events (SEGMENT/EOS/FLUSH)
-//   * handles queries (POSITION/DURATION/SEEKING/FORMAT/CONVERT)
-//   * handles flushing
-// 
-// The purpose of this base class is to provide the basic functionality of
-// a parser and share a lot of rather complex code.
-// 
-// # Description of the parsing mechanism:
-// 
-// ## Set-up phase
-// 
-//  * #GstBaseParse calls #GstBaseParseClass::start to inform subclass
-//    that data processing is about to start now.
-// 
-//  * #GstBaseParse class calls #GstBaseParseClass::set_sink_caps to
-//    inform the subclass about incoming sinkpad caps. Subclass could
-//    already set the srcpad caps accordingly, but this might be delayed
-//    until calling gst_base_parse_finish_frame() with a non-queued frame.
-// 
-//  * At least at this point subclass needs to tell the #GstBaseParse class
-//    how big data chunks it wants to receive (minimum frame size ). It can
-//    do this with gst_base_parse_set_min_frame_size().
-// 
-//  * #GstBaseParse class sets up appropriate data passing mode (pull/push)
-//    and starts to process the data.
-// 
-// ## Parsing phase
-// 
-//  * #GstBaseParse gathers at least min_frame_size bytes of data either
-//    by pulling it from upstream or collecting buffers in an internal
-//    #GstAdapter.
-// 
-//  * A buffer of (at least) min_frame_size bytes is passed to subclass
-//    with #GstBaseParseClass::handle_frame. Subclass checks the contents
-//    and can optionally return #GST_FLOW_OK along with an amount of data
-//    to be skipped to find a valid frame (which will result in a
-//    subsequent DISCONT).  If, otherwise, the buffer does not hold a
-//    complete frame, #GstBaseParseClass::handle_frame can merely return
-//    and will be called again when additional data is available.  In push
-//    mode this amounts to an additional input buffer (thus minimal
-//    additional latency), in pull mode this amounts to some arbitrary
-//    reasonable buffer size increase.
-// 
-//    Of course, gst_base_parse_set_min_frame_size() could also be used if
-//    a very specific known amount of additional data is required.  If,
-//    however, the buffer holds a complete valid frame, it can pass the
-//    size of this frame to gst_base_parse_finish_frame().
-// 
-//    If acting as a converter, it can also merely indicate consumed input
-//    data while simultaneously providing custom output data.  Note that
-//    baseclass performs some processing (such as tracking overall consumed
-//    data rate versus duration) for each finished frame, but other state
-//    is only updated upon each call to #GstBaseParseClass::handle_frame
-//    (such as tracking upstream input timestamp).
-// 
-//    Subclass is also responsible for setting the buffer metadata
-//    (e.g. buffer timestamp and duration, or keyframe if applicable).
-//    (although the latter can also be done by #GstBaseParse if it is
-//    appropriately configured, see below).  Frame is provided with
-//    timestamp derived from upstream (as much as generally possible),
-//    duration obtained from configuration (see below), and offset
-//    if meaningful (in pull mode).
-// 
-//    Note that #GstBaseParseClass::handle_frame might receive any small
-//    amount of input data when leftover data is being drained (e.g. at
-//    EOS).
-// 
-//  * As part of finish frame processing, just prior to actually pushing
-//    the buffer in question, it is passed to
-//    #GstBaseParseClass::pre_push_frame which gives subclass yet one last
-//    chance to examine buffer metadata, or to send some custom (tag)
-//    events, or to perform custom (segment) filtering.
-// 
-//  * During the parsing process #GstBaseParseClass will handle both srcpad
-//    and sinkpad events. They will be passed to subclass if
-//    #GstBaseParseClass::sink_event or #GstBaseParseClass::src_event
-//    implementations have been provided.
-// 
-// ## Shutdown phase
-// 
-// * #GstBaseParse class calls #GstBaseParseClass::stop to inform the
-//   subclass that data parsing will be stopped.
-// 
-// Subclass is responsible for providing pad template caps for source and
-// sink pads. The pads need to be named "sink" and "src". It also needs to
-// set the fixed caps on srcpad, when the format is ensured (e.g.  when
-// base class calls subclass' #GstBaseParseClass::set_sink_caps function).
-// 
-// This base class uses %GST_FORMAT_DEFAULT as a meaning of frames. So,
-// subclass conversion routine needs to know that conversion from
-// %GST_FORMAT_TIME to %GST_FORMAT_DEFAULT must return the
-// frame number that can be found from the given byte position.
-// 
-// #GstBaseParse uses subclasses conversion methods also for seeking (or
-// otherwise uses its own default one, see also below).
-// 
-// Subclass @start and @stop functions will be called to inform the beginning
-// and end of data processing.
-// 
-// Things that subclass need to take care of:
-// 
-// * Provide pad templates
-// * Fixate the source pad caps when appropriate
-// * Inform base class how big data chunks should be retrieved. This is
-//   done with gst_base_parse_set_min_frame_size() function.
-// * Examine data chunks passed to subclass with
-//   #GstBaseParseClass::handle_frame and pass proper frame(s) to
-//   gst_base_parse_finish_frame(), and setting src pad caps and timestamps
-//   on frame.
-// * Provide conversion functions
-// * Update the duration information with gst_base_parse_set_duration()
-// * Optionally passthrough using gst_base_parse_set_passthrough()
-// * Configure various baseparse parameters using
-//   gst_base_parse_set_average_bitrate(), gst_base_parse_set_syncable()
-//   and gst_base_parse_set_frame_rate().
-// 
-// * In particular, if subclass is unable to determine a duration, but
-//   parsing (or specs) yields a frames per seconds rate, then this can be
-//   provided to #GstBaseParse to enable it to cater for buffer time
-//   metadata (which will be taken from upstream as much as
-//   possible). Internally keeping track of frame durations and respective
-//   sizes that have been pushed provides #GstBaseParse with an estimated
-//   bitrate. A default #GstBaseParseClass::convert (used if not
-//   overridden) will then use these rates to perform obvious conversions.
-//   These rates are also used to update (estimated) duration at regular
-//   frame intervals.
 type BaseParse interface {
 	gst.Element
 	upcastToGstBaseParse() *BaseParseInstance
 
 	// AddIndexEntry wraps gst_base_parse_add_index_entry
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset uint64: offset of entry 
-	// 	- ts gst.ClockTime: timestamp associated with offset 
-	// 	- key bool: whether entry refers to keyframe 
-	// 	- force bool: add entry disregarding sanity checks 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Adds an entry to the index associating @offset to @ts.  It is recommended
-	// to only add keyframe entries.  @force allows to bypass checks, such as
-	// whether the stream is (upstream) seekable, another entry is already "close"
-	// to the new entry, etc.
 	AddIndexEntry(uint64, gst.ClockTime, bool, bool) bool
 	// ConvertDefault wraps gst_base_parse_convert_default
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- srcFormat gst.Format: #GstFormat describing the source format. 
-	// 	- srcValue int64: Source value to be converted. 
-	// 	- destFormat gst.Format: #GstFormat defining the converted format. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- destValue int64: Pointer where the conversion result will be put. 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Default implementation of #GstBaseParseClass::convert.
 	ConvertDefault(gst.Format, int64, gst.Format) (int64, bool)
 	// Drain wraps gst_base_parse_drain
+	// 
+	// see also No documentation available
 	//
-	// Drains the adapter until it is empty. It decreases the min_frame_size to
-	// match the current adapter size and calls chain method until the adapter
-	// is emptied or chain returns with error.
 	Drain()
 	// FinishFrame wraps gst_base_parse_finish_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *BaseParseFrame: a #GstBaseParseFrame 
-	// 	- size int32: consumed input data represented by frame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Collects parsed data and pushes it downstream.
-	// Source pad caps must be set when this is called.
-	// 
-	// If @frame's out_buffer is set, that will be used as subsequent frame data,
-	// and @size amount will be flushed from the input data. The output_buffer size
-	// can differ from the consumed size indicated by @size.
-	// 
-	// Otherwise, @size samples will be taken from the input and used for output,
-	// and the output's metadata (timestamps etc) will be taken as (optionally)
-	// set by the subclass on @frame's (input) buffer (which is otherwise
-	// ignored for any but the above purpose/information).
-	// 
-	// Note that the latter buffer is invalidated by this call, whereas the
-	// caller retains ownership of @frame.
 	FinishFrame(*BaseParseFrame, int32) gst.FlowReturn
 	// MergeTags wraps gst_base_parse_merge_tags
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL to unset
-	//     previously-set tags 
-	// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+	// see also No documentation available
 	//
-	// Sets the parser subclass's tags and how they should be merged with any
-	// upstream stream tags. This will override any tags previously-set
-	// with gst_base_parse_merge_tags().
-	// 
-	// Note that this is provided for convenience, and the subclass is
-	// not required to use this and can still do tag handling on its own.
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// PushFrame wraps gst_base_parse_push_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *BaseParseFrame: a #GstBaseParseFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Pushes the frame's buffer downstream, sends any pending events and
-	// does some timestamp and segment handling. Takes ownership of
-	// frame's buffer, though caller retains ownership of @frame.
-	// 
-	// This must be called with sinkpad STREAM_LOCK held.
 	PushFrame(*BaseParseFrame) gst.FlowReturn
 	// SetAverageBitrate wraps gst_base_parse_set_average_bitrate
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- bitrate uint: average bitrate in bits/second 
+	// see also No documentation available
 	//
-	// Optionally sets the average bitrate detected in media (if non-zero),
-	// e.g. based on metadata, as it will be posted to the application.
-	// 
-	// By default, announced average bitrate is estimated. The average bitrate
-	// is used to estimate the total duration of the stream and to estimate
-	// a seek position, if there's no index and the format is syncable
-	// (see gst_base_parse_set_syncable()).
 	SetAverageBitrate(uint)
 	// SetDuration wraps gst_base_parse_set_duration
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- _fmt gst.Format: #GstFormat. 
-	// 	- duration int64: duration value. 
-	// 	- interval int32: how often to update the duration estimate based on bitrate, or 0. 
+	// see also No documentation available
 	//
-	// Sets the duration of the currently playing media. Subclass can use this
-	// when it is able to determine duration and/or notices a change in the media
-	// duration.  Alternatively, if @interval is non-zero (default), then stream
-	// duration is determined based on estimated bitrate, and updated every @interval
-	// frames.
 	SetDuration(gst.Format, int64, int32)
 	// SetFrameRate wraps gst_base_parse_set_frame_rate
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- fpsNum uint: frames per second (numerator). 
-	// 	- fpsDen uint: frames per second (denominator). 
-	// 	- leadIn uint: frames needed before a segment for subsequent decode 
-	// 	- leadOut uint: frames needed after a segment 
+	// see also No documentation available
 	//
-	// If frames per second is configured, parser can take care of buffer duration
-	// and timestamping.  When performing segment clipping, or seeking to a specific
-	// location, a corresponding decoder might need an initial @lead_in and a
-	// following @lead_out number of frames to ensure the desired segment is
-	// entirely filled upon decoding.
 	SetFrameRate(uint, uint, uint, uint)
 	// SetHasTimingInfo wraps gst_base_parse_set_has_timing_info
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- hasTiming bool: whether frames carry timing information 
+	// see also No documentation available
 	//
-	// Set if frames carry timing information which the subclass can (generally)
-	// parse and provide.  In particular, intrinsic (rather than estimated) time
-	// can be obtained following a seek.
 	SetHasTimingInfo(bool)
 	// SetInferTs wraps gst_base_parse_set_infer_ts
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- inferTs bool: %TRUE if parser should infer DTS/PTS from each other 
+	// see also No documentation available
 	//
-	// By default, the base class might try to infer PTS from DTS and vice
-	// versa.  While this is generally correct for audio data, it may not
-	// be otherwise. Sub-classes implementing such formats should disable
-	// timestamp inferring.
 	SetInferTs(bool)
 	// SetLatency wraps gst_base_parse_set_latency
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- minLatency gst.ClockTime: minimum parse latency 
-	// 	- maxLatency gst.ClockTime: maximum parse latency 
+	// see also No documentation available
 	//
-	// Sets the minimum and maximum (which may likely be equal) latency introduced
-	// by the parsing process. If there is such a latency, which depends on the
-	// particular parsing of the format, it typically corresponds to 1 frame duration.
-	// 
-	// If the provided values changed from previously provided ones, this will
-	// also post a LATENCY message on the bus so the pipeline can reconfigure its
-	// global latency.
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetMinFrameSize wraps gst_base_parse_set_min_frame_size
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- minSize uint: Minimum size in bytes of the data that this base class should
-	//       give to subclass. 
+	// see also No documentation available
 	//
-	// Subclass can use this function to tell the base class that it needs to
-	// be given buffers of at least @min_size bytes.
 	SetMinFrameSize(uint)
 	// SetPassthrough wraps gst_base_parse_set_passthrough
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- passthrough bool: %TRUE if parser should run in passthrough mode 
+	// see also No documentation available
 	//
-	// Set if the nature of the format or configuration does not allow (much)
-	// parsing, and the parser should operate in passthrough mode (which only
-	// applies when operating in push mode). That is, incoming buffers are
-	// pushed through unmodified, i.e. no #GstBaseParseClass::handle_frame
-	// will be invoked, but #GstBaseParseClass::pre_push_frame will still be
-	// invoked, so subclass can perform as much or as little is appropriate for
-	// passthrough semantics in #GstBaseParseClass::pre_push_frame.
 	SetPassthrough(bool)
 	// SetPtsInterpolation wraps gst_base_parse_set_pts_interpolation
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- ptsInterpolate bool: %TRUE if parser should interpolate PTS timestamps 
+	// see also No documentation available
 	//
-	// By default, the base class will guess PTS timestamps using a simple
-	// interpolation (previous timestamp + duration), which is incorrect for
-	// data streams with reordering, where PTS can go backward. Sub-classes
-	// implementing such formats should disable PTS interpolation.
 	SetPtsInterpolation(bool)
 	// SetSyncable wraps gst_base_parse_set_syncable
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- syncable bool: set if frame starts can be identified 
+	// see also No documentation available
 	//
-	// Set if frame starts can be identified. This is set by default and
-	// determines whether seeking based on bitrate averages
-	// is possible for a format/stream.
 	SetSyncable(bool)
 	// SetTsAtOffset wraps gst_base_parse_set_ts_at_offset
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset uint: offset into current buffer 
+	// see also No documentation available
 	//
-	// This function should only be called from a @handle_frame implementation.
-	// 
-	// #GstBaseParse creates initial timestamps for frames by using the last
-	// timestamp seen in the stream before the frame starts.  In certain
-	// cases, the correct timestamps will occur in the stream after the
-	// start of the frame, but before the start of the actual picture data.
-	// This function can be used to set the timestamps based on the offset
-	// into the frame data that the picture starts.
 	SetTsAtOffset(uint)
 
 	// chain up virtual methods:
@@ -6518,188 +4242,62 @@ type BaseParse interface {
 	// ParentConvert calls the default implementations of the `GstBaseParse.convert` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- srcFormat gst.Format 
-	// 	- srcValue int64 
-	// 	- destFormat gst.Format 
-	// 	- destValue *int64 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Convert between formats.
+	// see also No documentation available
 	ParentConvert(srcFormat gst.Format, srcValue int64, destFormat gst.Format, destValue *int64) bool
 	// ParentDetect calls the default implementations of the `GstBaseParse.detect` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                   Called until it doesn't return GST_FLOW_OK anymore for
-	//                   the first buffers. Can be used by the subclass to detect
-	//                   the stream format.
+	// see also No documentation available
 	ParentDetect(buffer *gst.Buffer) gst.FlowReturn
 	// ParentGetSinkCaps calls the default implementations of the `GstBaseParse.get_sink_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows the subclass to do its own sink get caps if needed.
+	// see also No documentation available
 	ParentGetSinkCaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstBaseParse.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *BaseParseFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- skipsize int32 
-	// 	- goret gst.FlowReturn 
-	//
-	// Parses the input data into valid frames as defined by subclass
-	// which should be passed to gst_base_parse_finish_frame().
-	// The frame's input buffer is guaranteed writable,
-	// whereas the input frame ownership is held by caller
-	// (so subclass should make a copy if it needs to hang on).
-	// Input buffer (data) is provided by baseclass with as much
-	// metadata set as possible by baseclass according to upstream
-	// information and/or subclass settings,
-	// though subclass may still set buffer timestamp and duration
-	// if desired.
+	// see also No documentation available
 	ParentHandleFrame(frame *BaseParseFrame) (int32, gst.FlowReturn)
 	// ParentPrePushFrame calls the default implementations of the `GstBaseParse.pre_push_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *BaseParseFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                   Called just prior to pushing a frame (after any pending
-	//                   events have been sent) to give subclass a chance to perform
-	//                   additional actions at this time (e.g. tag sending) or to
-	//                   decide whether this buffer should be dropped or not
-	//                   (e.g. custom segment clipping).
+	// see also No documentation available
 	ParentPrePushFrame(frame *BaseParseFrame) gst.FlowReturn
 	// ParentSetSinkCaps calls the default implementations of the `GstBaseParse.set_sink_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Allows the subclass to be notified of the actual caps set.
+	// see also No documentation available
 	ParentSetSinkCaps(caps *gst.Caps) bool
 	// ParentSinkEvent calls the default implementations of the `GstBaseParse.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. This function should chain
-	//                  up to the parent implementation to let the default handler
-	//                  run.
+	// see also No documentation available
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstBaseParse.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                   Query handler on the sink pad. This function should chain
-	//                   up to the parent implementation to let the default handler
-	//                   run (Since: 1.2)
+	// see also No documentation available
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstBaseParse.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the source pad. Should chain up to the
-	//                  parent to let the default handler run.
+	// see also No documentation available
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstBaseParse.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                   Query handler on the source pad. Should chain up to the
-	//                   parent to let the default handler run (Since: 1.2)
+	// see also No documentation available
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstBaseParse.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstBaseParse.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentStop() bool
 }
 
@@ -6759,21 +4357,8 @@ func UnsafeBaseParseToGlibFull(c BaseParse) unsafe.Pointer {
 
 // AddIndexEntry wraps gst_base_parse_add_index_entry
 // 
-// The function takes the following parameters:
-// 
-// 	- offset uint64: offset of entry 
-// 	- ts gst.ClockTime: timestamp associated with offset 
-// 	- key bool: whether entry refers to keyframe 
-// 	- force bool: add entry disregarding sanity checks 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Adds an entry to the index associating @offset to @ts.  It is recommended
-// to only add keyframe entries.  @force allows to bypass checks, such as
-// whether the stream is (upstream) seekable, another entry is already "close"
-// to the new entry, etc.
 func (parse *BaseParseInstance) AddIndexEntry(offset uint64, ts gst.ClockTime, key bool, force bool) bool {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.guint64       // in, none, casted
@@ -6810,18 +4395,8 @@ func (parse *BaseParseInstance) AddIndexEntry(offset uint64, ts gst.ClockTime, k
 
 // ConvertDefault wraps gst_base_parse_convert_default
 // 
-// The function takes the following parameters:
-// 
-// 	- srcFormat gst.Format: #GstFormat describing the source format. 
-// 	- srcValue int64: Source value to be converted. 
-// 	- destFormat gst.Format: #GstFormat defining the converted format. 
-// 
-// The function returns the following values:
-// 
-// 	- destValue int64: Pointer where the conversion result will be put. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Default implementation of #GstBaseParseClass::convert.
 func (parse *BaseParseInstance) ConvertDefault(srcFormat gst.Format, srcValue int64, destFormat gst.Format) (int64, bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
@@ -6853,10 +4428,9 @@ func (parse *BaseParseInstance) ConvertDefault(srcFormat gst.Format, srcValue in
 }
 
 // Drain wraps gst_base_parse_drain
+// 
+// see also No documentation available
 //
-// Drains the adapter until it is empty. It decreases the min_frame_size to
-// match the current adapter size and calls chain method until the adapter
-// is emptied or chain returns with error.
 func (parse *BaseParseInstance) Drain() {
 	var carg0 *C.GstBaseParse // in, none, converted
 
@@ -6868,29 +4442,8 @@ func (parse *BaseParseInstance) Drain() {
 
 // FinishFrame wraps gst_base_parse_finish_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *BaseParseFrame: a #GstBaseParseFrame 
-// 	- size int32: consumed input data represented by frame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Collects parsed data and pushes it downstream.
-// Source pad caps must be set when this is called.
-// 
-// If @frame's out_buffer is set, that will be used as subsequent frame data,
-// and @size amount will be flushed from the input data. The output_buffer size
-// can differ from the consumed size indicated by @size.
-// 
-// Otherwise, @size samples will be taken from the input and used for output,
-// and the output's metadata (timestamps etc) will be taken as (optionally)
-// set by the subclass on @frame's (input) buffer (which is otherwise
-// ignored for any but the above purpose/information).
-// 
-// Note that the latter buffer is invalidated by this call, whereas the
-// caller retains ownership of @frame.
 func (parse *BaseParseInstance) FinishFrame(frame *BaseParseFrame, size int32) gst.FlowReturn {
 	var carg0 *C.GstBaseParse      // in, none, converted
 	var carg1 *C.GstBaseParseFrame // in, none, converted
@@ -6915,18 +4468,8 @@ func (parse *BaseParseInstance) FinishFrame(frame *BaseParseFrame, size int32) g
 
 // MergeTags wraps gst_base_parse_merge_tags
 // 
-// The function takes the following parameters:
-// 
-// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL to unset
-//     previously-set tags 
-// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+// see also No documentation available
 //
-// Sets the parser subclass's tags and how they should be merged with any
-// upstream stream tags. This will override any tags previously-set
-// with gst_base_parse_merge_tags().
-// 
-// Note that this is provided for convenience, and the subclass is
-// not required to use this and can still do tag handling on its own.
 func (parse *BaseParseInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstBaseParse   // in, none, converted
 	var carg1 *C.GstTagList     // in, none, converted, nullable
@@ -6946,19 +4489,8 @@ func (parse *BaseParseInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMo
 
 // PushFrame wraps gst_base_parse_push_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *BaseParseFrame: a #GstBaseParseFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Pushes the frame's buffer downstream, sends any pending events and
-// does some timestamp and segment handling. Takes ownership of
-// frame's buffer, though caller retains ownership of @frame.
-// 
-// This must be called with sinkpad STREAM_LOCK held.
 func (parse *BaseParseInstance) PushFrame(frame *BaseParseFrame) gst.FlowReturn {
 	var carg0 *C.GstBaseParse      // in, none, converted
 	var carg1 *C.GstBaseParseFrame // in, none, converted
@@ -6980,17 +4512,8 @@ func (parse *BaseParseInstance) PushFrame(frame *BaseParseFrame) gst.FlowReturn 
 
 // SetAverageBitrate wraps gst_base_parse_set_average_bitrate
 // 
-// The function takes the following parameters:
-// 
-// 	- bitrate uint: average bitrate in bits/second 
+// see also No documentation available
 //
-// Optionally sets the average bitrate detected in media (if non-zero),
-// e.g. based on metadata, as it will be posted to the application.
-// 
-// By default, announced average bitrate is estimated. The average bitrate
-// is used to estimate the total duration of the stream and to estimate
-// a seek position, if there's no index and the format is syncable
-// (see gst_base_parse_set_syncable()).
 func (parse *BaseParseInstance) SetAverageBitrate(bitrate uint) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -7005,17 +4528,8 @@ func (parse *BaseParseInstance) SetAverageBitrate(bitrate uint) {
 
 // SetDuration wraps gst_base_parse_set_duration
 // 
-// The function takes the following parameters:
-// 
-// 	- _fmt gst.Format: #GstFormat. 
-// 	- duration int64: duration value. 
-// 	- interval int32: how often to update the duration estimate based on bitrate, or 0. 
+// see also No documentation available
 //
-// Sets the duration of the currently playing media. Subclass can use this
-// when it is able to determine duration and/or notices a change in the media
-// duration.  Alternatively, if @interval is non-zero (default), then stream
-// duration is determined based on estimated bitrate, and updated every @interval
-// frames.
 func (parse *BaseParseInstance) SetDuration(_fmt gst.Format, duration int64, interval int32) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
@@ -7036,18 +4550,8 @@ func (parse *BaseParseInstance) SetDuration(_fmt gst.Format, duration int64, int
 
 // SetFrameRate wraps gst_base_parse_set_frame_rate
 // 
-// The function takes the following parameters:
-// 
-// 	- fpsNum uint: frames per second (numerator). 
-// 	- fpsDen uint: frames per second (denominator). 
-// 	- leadIn uint: frames needed before a segment for subsequent decode 
-// 	- leadOut uint: frames needed after a segment 
+// see also No documentation available
 //
-// If frames per second is configured, parser can take care of buffer duration
-// and timestamping.  When performing segment clipping, or seeking to a specific
-// location, a corresponding decoder might need an initial @lead_in and a
-// following @lead_out number of frames to ensure the desired segment is
-// entirely filled upon decoding.
 func (parse *BaseParseInstance) SetFrameRate(fpsNum uint, fpsDen uint, leadIn uint, leadOut uint) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -7071,13 +4575,8 @@ func (parse *BaseParseInstance) SetFrameRate(fpsNum uint, fpsDen uint, leadIn ui
 
 // SetHasTimingInfo wraps gst_base_parse_set_has_timing_info
 // 
-// The function takes the following parameters:
-// 
-// 	- hasTiming bool: whether frames carry timing information 
+// see also No documentation available
 //
-// Set if frames carry timing information which the subclass can (generally)
-// parse and provide.  In particular, intrinsic (rather than estimated) time
-// can be obtained following a seek.
 func (parse *BaseParseInstance) SetHasTimingInfo(hasTiming bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -7094,14 +4593,8 @@ func (parse *BaseParseInstance) SetHasTimingInfo(hasTiming bool) {
 
 // SetInferTs wraps gst_base_parse_set_infer_ts
 // 
-// The function takes the following parameters:
-// 
-// 	- inferTs bool: %TRUE if parser should infer DTS/PTS from each other 
+// see also No documentation available
 //
-// By default, the base class might try to infer PTS from DTS and vice
-// versa.  While this is generally correct for audio data, it may not
-// be otherwise. Sub-classes implementing such formats should disable
-// timestamp inferring.
 func (parse *BaseParseInstance) SetInferTs(inferTs bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -7118,18 +4611,8 @@ func (parse *BaseParseInstance) SetInferTs(inferTs bool) {
 
 // SetLatency wraps gst_base_parse_set_latency
 // 
-// The function takes the following parameters:
-// 
-// 	- minLatency gst.ClockTime: minimum parse latency 
-// 	- maxLatency gst.ClockTime: maximum parse latency 
+// see also No documentation available
 //
-// Sets the minimum and maximum (which may likely be equal) latency introduced
-// by the parsing process. If there is such a latency, which depends on the
-// particular parsing of the format, it typically corresponds to 1 frame duration.
-// 
-// If the provided values changed from previously provided ones, this will
-// also post a LATENCY message on the bus so the pipeline can reconfigure its
-// global latency.
 func (parse *BaseParseInstance) SetLatency(minLatency gst.ClockTime, maxLatency gst.ClockTime) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.GstClockTime  // in, none, casted, alias
@@ -7147,13 +4630,8 @@ func (parse *BaseParseInstance) SetLatency(minLatency gst.ClockTime, maxLatency 
 
 // SetMinFrameSize wraps gst_base_parse_set_min_frame_size
 // 
-// The function takes the following parameters:
-// 
-// 	- minSize uint: Minimum size in bytes of the data that this base class should
-//       give to subclass. 
+// see also No documentation available
 //
-// Subclass can use this function to tell the base class that it needs to
-// be given buffers of at least @min_size bytes.
 func (parse *BaseParseInstance) SetMinFrameSize(minSize uint) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -7168,17 +4646,8 @@ func (parse *BaseParseInstance) SetMinFrameSize(minSize uint) {
 
 // SetPassthrough wraps gst_base_parse_set_passthrough
 // 
-// The function takes the following parameters:
-// 
-// 	- passthrough bool: %TRUE if parser should run in passthrough mode 
+// see also No documentation available
 //
-// Set if the nature of the format or configuration does not allow (much)
-// parsing, and the parser should operate in passthrough mode (which only
-// applies when operating in push mode). That is, incoming buffers are
-// pushed through unmodified, i.e. no #GstBaseParseClass::handle_frame
-// will be invoked, but #GstBaseParseClass::pre_push_frame will still be
-// invoked, so subclass can perform as much or as little is appropriate for
-// passthrough semantics in #GstBaseParseClass::pre_push_frame.
 func (parse *BaseParseInstance) SetPassthrough(passthrough bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -7195,14 +4664,8 @@ func (parse *BaseParseInstance) SetPassthrough(passthrough bool) {
 
 // SetPtsInterpolation wraps gst_base_parse_set_pts_interpolation
 // 
-// The function takes the following parameters:
-// 
-// 	- ptsInterpolate bool: %TRUE if parser should interpolate PTS timestamps 
+// see also No documentation available
 //
-// By default, the base class will guess PTS timestamps using a simple
-// interpolation (previous timestamp + duration), which is incorrect for
-// data streams with reordering, where PTS can go backward. Sub-classes
-// implementing such formats should disable PTS interpolation.
 func (parse *BaseParseInstance) SetPtsInterpolation(ptsInterpolate bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -7219,13 +4682,8 @@ func (parse *BaseParseInstance) SetPtsInterpolation(ptsInterpolate bool) {
 
 // SetSyncable wraps gst_base_parse_set_syncable
 // 
-// The function takes the following parameters:
-// 
-// 	- syncable bool: set if frame starts can be identified 
+// see also No documentation available
 //
-// Set if frame starts can be identified. This is set by default and
-// determines whether seeking based on bitrate averages
-// is possible for a format/stream.
 func (parse *BaseParseInstance) SetSyncable(syncable bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -7242,18 +4700,8 @@ func (parse *BaseParseInstance) SetSyncable(syncable bool) {
 
 // SetTsAtOffset wraps gst_base_parse_set_ts_at_offset
 // 
-// The function takes the following parameters:
-// 
-// 	- offset uint: offset into current buffer 
+// see also No documentation available
 //
-// This function should only be called from a @handle_frame implementation.
-// 
-// #GstBaseParse creates initial timestamps for frames by using the last
-// timestamp seen in the stream before the frame starts.  In certain
-// cases, the correct timestamps will occur in the stream after the
-// start of the frame, but before the start of the actual picture data.
-// This function can be used to set the timestamps based on the offset
-// into the frame data that the picture starts.
 func (parse *BaseParseInstance) SetTsAtOffset(offset uint) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gsize         // in, none, casted
@@ -7274,177 +4722,51 @@ type BaseParseOverrides[Instance BaseParse] struct {
 
 	// // Convert allows you to override the implementation of the virtual method convert.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- srcFormat gst.Format 
-	// 	- srcValue int64 
-	// 	- destFormat gst.Format 
-	// 	- destValue *int64 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Convert between formats.
+	// see also No documentation available
 	Convert func(Instance, gst.Format, int64, gst.Format, *int64) bool
 	// // Detect allows you to override the implementation of the virtual method detect.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                   Called until it doesn't return GST_FLOW_OK anymore for
-	//                   the first buffers. Can be used by the subclass to detect
-	//                   the stream format.
+	// see also No documentation available
 	Detect func(Instance, *gst.Buffer) gst.FlowReturn
 	// // GetSinkCaps allows you to override the implementation of the virtual method get_sink_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows the subclass to do its own sink get caps if needed.
+	// see also No documentation available
 	GetSinkCaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *BaseParseFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- skipsize int32 
-	// 	- goret gst.FlowReturn 
-	//
-	// Parses the input data into valid frames as defined by subclass
-	// which should be passed to gst_base_parse_finish_frame().
-	// The frame's input buffer is guaranteed writable,
-	// whereas the input frame ownership is held by caller
-	// (so subclass should make a copy if it needs to hang on).
-	// Input buffer (data) is provided by baseclass with as much
-	// metadata set as possible by baseclass according to upstream
-	// information and/or subclass settings,
-	// though subclass may still set buffer timestamp and duration
-	// if desired.
+	// see also No documentation available
 	HandleFrame func(Instance, *BaseParseFrame) (int32, gst.FlowReturn)
 	// // PrePushFrame allows you to override the implementation of the virtual method pre_push_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- frame *BaseParseFrame 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Optional.
-	//                   Called just prior to pushing a frame (after any pending
-	//                   events have been sent) to give subclass a chance to perform
-	//                   additional actions at this time (e.g. tag sending) or to
-	//                   decide whether this buffer should be dropped or not
-	//                   (e.g. custom segment clipping).
+	// see also No documentation available
 	PrePushFrame func(Instance, *BaseParseFrame) gst.FlowReturn
 	// // SetSinkCaps allows you to override the implementation of the virtual method set_sink_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Allows the subclass to be notified of the actual caps set.
+	// see also No documentation available
 	SetSinkCaps func(Instance, *gst.Caps) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. This function should chain
-	//                  up to the parent implementation to let the default handler
-	//                  run.
+	// see also No documentation available
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                   Query handler on the sink pad. This function should chain
-	//                   up to the parent implementation to let the default handler
-	//                   run (Since: 1.2)
+	// see also No documentation available
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the source pad. Should chain up to the
-	//                  parent to let the default handler run.
+	// see also No documentation available
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                   Query handler on the source pad. Should chain up to the
-	//                   parent to let the default handler run (Since: 1.2)
+	// see also No documentation available
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Stop func(Instance) bool
 }
 
@@ -7745,19 +5067,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 // ParentConvert calls the default implementations of the `GstBaseParse.convert` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- srcFormat gst.Format 
-// 	- srcValue int64 
-// 	- destFormat gst.Format 
-// 	- destValue *int64 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Convert between formats.
+// see also No documentation available
 func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int64, destFormat gst.Format, destValue *int64) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 C.GstFormat // in, none, converted
@@ -7795,18 +5105,7 @@ func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int
 // ParentDetect calls the default implementations of the `GstBaseParse.detect` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Optional.
-//                   Called until it doesn't return GST_FLOW_OK anymore for
-//                   the first buffers. Can be used by the subclass to detect
-//                   the stream format.
+// see also No documentation available
 func (parse *BaseParseInstance) ParentDetect(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -7831,16 +5130,7 @@ func (parse *BaseParseInstance) ParentDetect(buffer *gst.Buffer) gst.FlowReturn 
 // ParentGetSinkCaps calls the default implementations of the `GstBaseParse.get_sink_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- filter *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Optional.
-//                  Allows the subclass to do its own sink get caps if needed.
+// see also No documentation available
 func (parse *BaseParseInstance) ParentGetSinkCaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstCaps // in, none, converted
@@ -7865,25 +5155,7 @@ func (parse *BaseParseInstance) ParentGetSinkCaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstBaseParse.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *BaseParseFrame 
-// 
-// The function returns the following values:
-// 
-// 	- skipsize int32 
-// 	- goret gst.FlowReturn 
-//
-// Parses the input data into valid frames as defined by subclass
-// which should be passed to gst_base_parse_finish_frame().
-// The frame's input buffer is guaranteed writable,
-// whereas the input frame ownership is held by caller
-// (so subclass should make a copy if it needs to hang on).
-// Input buffer (data) is provided by baseclass with as much
-// metadata set as possible by baseclass according to upstream
-// information and/or subclass settings,
-// though subclass may still set buffer timestamp and duration
-// if desired.
+// see also No documentation available
 func (parse *BaseParseInstance) ParentHandleFrame(frame *BaseParseFrame) (int32, gst.FlowReturn) {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstBaseParseFrame // in, none, converted
@@ -7911,20 +5183,7 @@ func (parse *BaseParseInstance) ParentHandleFrame(frame *BaseParseFrame) (int32,
 // ParentPrePushFrame calls the default implementations of the `GstBaseParse.pre_push_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- frame *BaseParseFrame 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Optional.
-//                   Called just prior to pushing a frame (after any pending
-//                   events have been sent) to give subclass a chance to perform
-//                   additional actions at this time (e.g. tag sending) or to
-//                   decide whether this buffer should be dropped or not
-//                   (e.g. custom segment clipping).
+// see also No documentation available
 func (parse *BaseParseInstance) ParentPrePushFrame(frame *BaseParseFrame) gst.FlowReturn {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstBaseParseFrame // in, none, converted
@@ -7949,16 +5208,7 @@ func (parse *BaseParseInstance) ParentPrePushFrame(frame *BaseParseFrame) gst.Fl
 // ParentSetSinkCaps calls the default implementations of the `GstBaseParse.set_sink_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Allows the subclass to be notified of the actual caps set.
+// see also No documentation available
 func (parse *BaseParseInstance) ParentSetSinkCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstCaps // in, none, converted
@@ -7985,18 +5235,7 @@ func (parse *BaseParseInstance) ParentSetSinkCaps(caps *gst.Caps) bool {
 // ParentSinkEvent calls the default implementations of the `GstBaseParse.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the sink pad. This function should chain
-//                  up to the parent implementation to let the default handler
-//                  run.
+// see also No documentation available
 func (parse *BaseParseInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstEvent // in, none, converted
@@ -8023,18 +5262,7 @@ func (parse *BaseParseInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstBaseParse.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                   Query handler on the sink pad. This function should chain
-//                   up to the parent implementation to let the default handler
-//                   run (Since: 1.2)
+// see also No documentation available
 func (parse *BaseParseInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstQuery // in, none, converted
@@ -8061,17 +5289,7 @@ func (parse *BaseParseInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstBaseParse.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the source pad. Should chain up to the
-//                  parent to let the default handler run.
+// see also No documentation available
 func (parse *BaseParseInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstEvent // in, none, converted
@@ -8098,17 +5316,7 @@ func (parse *BaseParseInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstBaseParse.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                   Query handler on the source pad. Should chain up to the
-//                   parent to let the default handler run (Since: 1.2)
+// see also No documentation available
 func (parse *BaseParseInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstQuery // in, none, converted
@@ -8135,13 +5343,7 @@ func (parse *BaseParseInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstBaseParse.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element starts processing.
-//                  Allows opening external resources.
+// see also No documentation available
 func (parse *BaseParseInstance) ParentStart() bool {
 	var carg0 *C.GstBaseParse
 	var cret  C.gboolean // return
@@ -8165,13 +5367,7 @@ func (parse *BaseParseInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstBaseParse.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element stops processing.
-//                  Allows closing external resources.
+// see also No documentation available
 func (parse *BaseParseInstance) ParentStop() bool {
 	var carg0 *C.GstBaseParse
 	var cret  C.gboolean // return
@@ -8227,502 +5423,172 @@ type BaseSinkInstance struct {
 var _ BaseSink = (*BaseSinkInstance)(nil)
 
 // BaseSink wraps GstBaseSink
+// 
+// see also No documentation available
 //
-// #GstBaseSink is the base class for sink elements in GStreamer, such as
-// xvimagesink or filesink. It is a layer on top of #GstElement that provides a
-// simplified interface to plugin writers. #GstBaseSink handles many details
-// for you, for example: preroll, clock synchronization, state changes,
-// activation in push or pull mode, and queries.
-// 
-// In most cases, when writing sink elements, there is no need to implement
-// class methods from #GstElement or to set functions on pads, because the
-// #GstBaseSink infrastructure should be sufficient.
-// 
-// #GstBaseSink provides support for exactly one sink pad, which should be
-// named "sink". A sink implementation (subclass of #GstBaseSink) should
-// install a pad template in its class_init function, like so:
-// |[&lt;!-- language="C" --&gt;
-// static void
-// my_element_class_init (GstMyElementClass *klass)
-// {
-//   GstElementClass *gstelement_class = GST_ELEMENT_CLASS (klass);
-// 
-//   // sinktemplate should be a #GstStaticPadTemplate with direction
-//   // %GST_PAD_SINK and name "sink"
-//   gst_element_class_add_static_pad_template (gstelement_class, &amp;sinktemplate);
-// 
-//   gst_element_class_set_static_metadata (gstelement_class,
-//       "Sink name",
-//       "Sink",
-//       "My Sink element",
-//       "The author &lt;my.sink@my.email&gt;");
-// }
-// ]|
-// 
-// #GstBaseSink will handle the prerolling correctly. This means that it will
-// return %GST_STATE_CHANGE_ASYNC from a state change to PAUSED until the first
-// buffer arrives in this element. The base class will call the
-// #GstBaseSinkClass::preroll vmethod with this preroll buffer and will then
-// commit the state change to the next asynchronously pending state.
-// 
-// When the element is set to PLAYING, #GstBaseSink will synchronise on the
-// clock using the times returned from #GstBaseSinkClass::get_times. If this
-// function returns %GST_CLOCK_TIME_NONE for the start time, no synchronisation
-// will be done. Synchronisation can be disabled entirely by setting the object
-// #GstBaseSink:sync property to %FALSE.
-// 
-// After synchronisation the virtual method #GstBaseSinkClass::render will be
-// called. Subclasses should minimally implement this method.
-// 
-// Subclasses that synchronise on the clock in the #GstBaseSinkClass::render
-// method are supported as well. These classes typically receive a buffer in
-// the render method and can then potentially block on the clock while
-// rendering. A typical example is an audiosink.
-// These subclasses can use gst_base_sink_wait_preroll() to perform the
-// blocking wait.
-// 
-// Upon receiving the EOS event in the PLAYING state, #GstBaseSink will wait
-// for the clock to reach the time indicated by the stop time of the last
-// #GstBaseSinkClass::get_times call before posting an EOS message. When the
-// element receives EOS in PAUSED, preroll completes, the event is queued and an
-// EOS message is posted when going to PLAYING.
-// 
-// #GstBaseSink will internally use the %GST_EVENT_SEGMENT events to schedule
-// synchronisation and clipping of buffers. Buffers that fall completely outside
-// of the current segment are dropped. Buffers that fall partially in the
-// segment are rendered (and prerolled). Subclasses should do any subbuffer
-// clipping themselves when needed.
-// 
-// #GstBaseSink will by default report the current playback position in
-// %GST_FORMAT_TIME based on the current clock time and segment information.
-// If no clock has been set on the element, the query will be forwarded
-// upstream.
-// 
-// The #GstBaseSinkClass::set_caps function will be called when the subclass
-// should configure itself to process a specific media type.
-// 
-// The #GstBaseSinkClass::start and #GstBaseSinkClass::stop virtual methods
-// will be called when resources should be allocated. Any
-// #GstBaseSinkClass::preroll, #GstBaseSinkClass::render and
-// #GstBaseSinkClass::set_caps function will be called between the
-// #GstBaseSinkClass::start and #GstBaseSinkClass::stop calls.
-// 
-// The #GstBaseSinkClass::event virtual method will be called when an event is
-// received by #GstBaseSink. Normally this method should only be overridden by
-// very specific elements (such as file sinks) which need to handle the
-// newsegment event specially.
-// 
-// The #GstBaseSinkClass::unlock method is called when the elements should
-// unblock any blocking operations they perform in the
-// #GstBaseSinkClass::render method. This is mostly useful when the
-// #GstBaseSinkClass::render method performs a blocking write on a file
-// descriptor, for example.
-// 
-// The #GstBaseSink:max-lateness property affects how the sink deals with
-// buffers that arrive too late in the sink. A buffer arrives too late in the
-// sink when the presentation time (as a combination of the last segment, buffer
-// timestamp and element base_time) plus the duration is before the current
-// time of the clock.
-// If the frame is later than max-lateness, the sink will drop the buffer
-// without calling the render method.
-// This feature is disabled if sync is disabled, the
-// #GstBaseSinkClass::get_times method does not return a valid start time or
-// max-lateness is set to -1 (the default).
-// Subclasses can use gst_base_sink_set_max_lateness() to configure the
-// max-lateness value.
-// 
-// The #GstBaseSink:qos property will enable the quality-of-service features of
-// the basesink which gather statistics about the real-time performance of the
-// clock synchronisation. For each buffer received in the sink, statistics are
-// gathered and a QOS event is sent upstream with these numbers. This
-// information can then be used by upstream elements to reduce their processing
-// rate, for example.
-// 
-// The #GstBaseSink:async property can be used to instruct the sink to never
-// perform an ASYNC state change. This feature is mostly usable when dealing
-// with non-synchronized streams or sparse streams.
 type BaseSink interface {
 	gst.Element
 	upcastToGstBaseSink() *BaseSinkInstance
 
 	// DoPreroll wraps gst_base_sink_do_preroll
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- obj *gst.MiniObject: the mini object that caused the preroll 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// If the @sink spawns its own thread for pulling buffers from upstream it
-	// should call this method after it has pulled a buffer. If the element needed
-	// to preroll, this function will perform the preroll and will then block
-	// until the element state is changed.
-	// 
-	// This function should be called with the PREROLL_LOCK held.
 	DoPreroll(*gst.MiniObject) gst.FlowReturn
 	// GetBlocksize wraps gst_base_sink_get_blocksize
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Get the number of bytes that the sink will pull when it is operating in pull
-	// mode.
 	GetBlocksize() uint
 	// GetDropOutOfSegment wraps gst_base_sink_get_drop_out_of_segment
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks if @sink is currently configured to drop buffers which are outside
-	// the current segment
 	GetDropOutOfSegment() bool
 	// GetLastSample wraps gst_base_sink_get_last_sample
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Sample (nullable) 
+	// see also No documentation available
 	//
-	// Get the last sample that arrived in the sink and was used for preroll or for
-	// rendering. This property can be used to generate thumbnails.
-	// 
-	// The #GstCaps on the sample can be used to determine the type of the buffer.
-	// 
-	// Free-function: gst_sample_unref
 	GetLastSample() *gst.Sample
 	// GetLatency wraps gst_base_sink_get_latency
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the currently configured latency.
 	GetLatency() gst.ClockTime
 	// GetMaxBitrate wraps gst_base_sink_get_max_bitrate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint64 
+	// see also No documentation available
 	//
-	// Get the maximum amount of bits per second that the sink will render.
 	GetMaxBitrate() uint64
 	// GetMaxLateness wraps gst_base_sink_get_max_lateness
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int64 
+	// see also No documentation available
 	//
-	// Gets the max lateness value. See gst_base_sink_set_max_lateness() for
-	// more details.
 	GetMaxLateness() int64
 	// GetProcessingDeadline wraps gst_base_sink_get_processing_deadline
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the processing deadline of @sink. see
-	// gst_base_sink_set_processing_deadline() for more information about
-	// the processing deadline.
 	GetProcessingDeadline() gst.ClockTime
 	// GetRenderDelay wraps gst_base_sink_get_render_delay
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the render delay of @sink. see gst_base_sink_set_render_delay() for more
-	// information about the render delay.
 	GetRenderDelay() gst.ClockTime
 	// GetStats wraps gst_base_sink_get_stats
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Structure 
+	// see also No documentation available
 	//
-	// Return various #GstBaseSink statistics. This function returns a #GstStructure
-	// with name `application/x-gst-base-sink-stats` with the following fields:
-	// 
-	// - "average-rate" G_TYPE_DOUBLE   average frame rate
-	// - "dropped" G_TYPE_UINT64   Number of dropped frames
-	// - "rendered" G_TYPE_UINT64   Number of rendered frames
 	GetStats() *gst.Structure
 	// GetSync wraps gst_base_sink_get_sync
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks if @sink is currently configured to synchronize against the
-	// clock.
 	GetSync() bool
 	// GetThrottleTime wraps gst_base_sink_get_throttle_time
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint64 
+	// see also No documentation available
 	//
-	// Get the time that will be inserted between frames to control the
-	// maximum buffers per second.
 	GetThrottleTime() uint64
 	// GetTsOffset wraps gst_base_sink_get_ts_offset
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTimeDiff 
+	// see also No documentation available
 	//
-	// Get the synchronisation offset of @sink.
 	GetTsOffset() gst.ClockTimeDiff
 	// IsAsyncEnabled wraps gst_base_sink_is_async_enabled
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks if @sink is currently configured to perform asynchronous state
-	// changes to PAUSED.
 	IsAsyncEnabled() bool
 	// IsLastSampleEnabled wraps gst_base_sink_is_last_sample_enabled
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks if @sink is currently configured to store the last received sample in
-	// the last-sample property.
 	IsLastSampleEnabled() bool
 	// IsQosEnabled wraps gst_base_sink_is_qos_enabled
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks if @sink is currently configured to send Quality-of-Service events
-	// upstream.
 	IsQosEnabled() bool
 	// QueryLatency wraps gst_base_sink_query_latency
 	// 
-	// The function returns the following values:
-	// 
-	// 	- live bool: if the sink is live 
-	// 	- upstreamLive bool: if an upstream element is live 
-	// 	- minLatency gst.ClockTime: the min latency of the upstream elements 
-	// 	- maxLatency gst.ClockTime: the max latency of the upstream elements 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Query the sink for the latency parameters. The latency will be queried from
-	// the upstream elements. @live will be %TRUE if @sink is configured to
-	// synchronize against the clock. @upstream_live will be %TRUE if an upstream
-	// element is live.
-	// 
-	// If both @live and @upstream_live are %TRUE, the sink will want to compensate
-	// for the latency introduced by the upstream elements by setting the
-	// @min_latency to a strictly positive value.
-	// 
-	// This function is mostly used by subclasses.
 	QueryLatency() (bool, bool, gst.ClockTime, gst.ClockTime, bool)
 	// SetAsyncEnabled wraps gst_base_sink_set_async_enabled
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: the new async value. 
+	// see also No documentation available
 	//
-	// Configures @sink to perform all state changes asynchronously. When async is
-	// disabled, the sink will immediately go to PAUSED instead of waiting for a
-	// preroll buffer. This feature is useful if the sink does not synchronize
-	// against the clock or when it is dealing with sparse streams.
 	SetAsyncEnabled(bool)
 	// SetBlocksize wraps gst_base_sink_set_blocksize
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- blocksize uint: the blocksize in bytes 
+	// see also No documentation available
 	//
-	// Set the number of bytes that the sink will pull when it is operating in pull
-	// mode.
 	SetBlocksize(uint)
 	// SetDropOutOfSegment wraps gst_base_sink_set_drop_out_of_segment
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- dropOutOfSegment bool: drop buffers outside the segment 
+	// see also No documentation available
 	//
-	// Configure @sink to drop buffers which are outside the current segment
 	SetDropOutOfSegment(bool)
 	// SetLastSampleEnabled wraps gst_base_sink_set_last_sample_enabled
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: the new enable-last-sample value. 
+	// see also No documentation available
 	//
-	// Configures @sink to store the last received sample in the last-sample
-	// property.
 	SetLastSampleEnabled(bool)
 	// SetMaxBitrate wraps gst_base_sink_set_max_bitrate
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- maxBitrate uint64: the max_bitrate in bits per second 
+	// see also No documentation available
 	//
-	// Set the maximum amount of bits per second that the sink will render.
 	SetMaxBitrate(uint64)
 	// SetMaxLateness wraps gst_base_sink_set_max_lateness
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- maxLateness int64: the new max lateness value. 
+	// see also No documentation available
 	//
-	// Sets the new max lateness value to @max_lateness. This value is
-	// used to decide if a buffer should be dropped or not based on the
-	// buffer timestamp and the current clock time. A value of -1 means
-	// an unlimited time.
 	SetMaxLateness(int64)
 	// SetProcessingDeadline wraps gst_base_sink_set_processing_deadline
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- processingDeadline gst.ClockTime: the new processing deadline in nanoseconds. 
+	// see also No documentation available
 	//
-	// Maximum amount of time (in nanoseconds) that the pipeline can take
-	// for processing the buffer. This is added to the latency of live
-	// pipelines.
-	// 
-	// This function is usually called by subclasses.
 	SetProcessingDeadline(gst.ClockTime)
 	// SetQosEnabled wraps gst_base_sink_set_qos_enabled
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: the new qos value. 
+	// see also No documentation available
 	//
-	// Configures @sink to send Quality-of-Service events upstream.
 	SetQosEnabled(bool)
 	// SetRenderDelay wraps gst_base_sink_set_render_delay
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- delay gst.ClockTime: the new delay 
+	// see also No documentation available
 	//
-	// Set the render delay in @sink to @delay. The render delay is the time
-	// between actual rendering of a buffer and its synchronisation time. Some
-	// devices might delay media rendering which can be compensated for with this
-	// function.
-	// 
-	// After calling this function, this sink will report additional latency and
-	// other sinks will adjust their latency to delay the rendering of their media.
-	// 
-	// This function is usually called by subclasses.
 	SetRenderDelay(gst.ClockTime)
 	// SetSync wraps gst_base_sink_set_sync
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- sync bool: the new sync value. 
+	// see also No documentation available
 	//
-	// Configures @sink to synchronize on the clock or not. When
-	// @sync is %FALSE, incoming samples will be played as fast as
-	// possible. If @sync is %TRUE, the timestamps of the incoming
-	// buffers will be used to schedule the exact render time of its
-	// contents.
 	SetSync(bool)
 	// SetThrottleTime wraps gst_base_sink_set_throttle_time
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- throttle uint64: the throttle time in nanoseconds 
+	// see also No documentation available
 	//
-	// Set the time that will be inserted between rendered buffers. This
-	// can be used to control the maximum buffers per second that the sink
-	// will render.
 	SetThrottleTime(uint64)
 	// SetTsOffset wraps gst_base_sink_set_ts_offset
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset gst.ClockTimeDiff: the new offset 
+	// see also No documentation available
 	//
-	// Adjust the synchronisation of @sink with @offset. A negative value will
-	// render buffers earlier than their timestamp. A positive value will delay
-	// rendering. This function can be used to fix playback of badly timestamped
-	// buffers.
 	SetTsOffset(gst.ClockTimeDiff)
 	// Wait wraps gst_base_sink_wait
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- time gst.ClockTime: the running_time to be reached 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- jitter gst.ClockTimeDiff: the jitter to be filled with time diff, or %NULL 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// This function will wait for preroll to complete and will then block until @time
-	// is reached. It is usually called by subclasses that use their own internal
-	// synchronisation but want to let some synchronization (like EOS) be handled
-	// by the base class.
-	// 
-	// This function should only be called with the PREROLL_LOCK held (like when
-	// receiving an EOS event in the ::event vmethod or when handling buffers in
-	// ::render).
-	// 
-	// The @time argument should be the running_time of when the timeout should happen
-	// and will be adjusted with any latency and offset configured in the sink.
 	Wait(gst.ClockTime) (gst.ClockTimeDiff, gst.FlowReturn)
 	// WaitClock wraps gst_base_sink_wait_clock
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- time gst.ClockTime: the running_time to be reached 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- jitter gst.ClockTimeDiff: the jitter to be filled with time diff, or %NULL 
-	// 	- goret gst.ClockReturn 
+	// see also No documentation available
 	//
-	// This function will block until @time is reached. It is usually called by
-	// subclasses that use their own internal synchronisation.
-	// 
-	// If @time is not valid, no synchronisation is done and %GST_CLOCK_BADTIME is
-	// returned. Likewise, if synchronisation is disabled in the element or there
-	// is no clock, no synchronisation is done and %GST_CLOCK_BADTIME is returned.
-	// 
-	// This function should only be called with the PREROLL_LOCK held, like when
-	// receiving an EOS event in the #GstBaseSinkClass::event vmethod or when
-	// receiving a buffer in
-	// the #GstBaseSinkClass::render vmethod.
-	// 
-	// The @time argument should be the running_time of when this method should
-	// return and is not adjusted with any latency or offset configured in the
-	// sink.
 	WaitClock(gst.ClockTime) (gst.ClockTimeDiff, gst.ClockReturn)
 	// WaitPreroll wraps gst_base_sink_wait_preroll
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// If the #GstBaseSinkClass::render method performs its own synchronisation
-	// against the clock it must unblock when going from PLAYING to the PAUSED state
-	// and call this method before continuing to render the remaining data.
-	// 
-	// If the #GstBaseSinkClass::render method can block on something else than
-	// the clock, it must also be ready to unblock immediately on
-	// the #GstBaseSinkClass::unlock method and cause the
-	// #GstBaseSinkClass::render method to immediately call this function.
-	// In this case, the subclass must be prepared to continue rendering where it
-	// left off if this function returns %GST_FLOW_OK.
-	// 
-	// This function will block until a state change to PLAYING happens (in which
-	// case this function returns %GST_FLOW_OK) or the processing must be stopped due
-	// to a state change to READY or a FLUSH event (in which case this function
-	// returns %GST_FLOW_FLUSHING).
-	// 
-	// This function should only be called with the PREROLL_LOCK held, like in the
-	// render function.
 	WaitPreroll() gst.FlowReturn
 
 	// chain up virtual methods:
@@ -8730,237 +5596,92 @@ type BaseSink interface {
 	// ParentActivatePull calls the default implementations of the `GstBaseSink.activate_pull` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- active bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Subclasses should override this when they can provide an
-	//     alternate method of spawning a thread to drive the pipeline in pull mode.
-	//     Should start or stop the pulling thread, depending on the value of the
-	//     "active" argument. Called after actually activating the sink pad in pull
-	//     mode. The default implementation starts a task on the sink pad.
+	// see also No documentation available
 	ParentActivatePull(active bool) bool
 	// ParentEvent calls the default implementations of the `GstBaseSink.event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Override this to handle events arriving on the sink pad
+	// see also No documentation available
 	ParentEvent(event *gst.Event) bool
 	// ParentFixate calls the default implementations of the `GstBaseSink.fixate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Only useful in pull mode. Implement if you have
-	//     ideas about what should be the default values for the caps you support.
+	// see also No documentation available
 	ParentFixate(caps *gst.Caps) *gst.Caps
 	// ParentGetCaps calls the default implementations of the `GstBaseSink.get_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps (nullable) 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Called to get sink pad caps from the subclass.
+	// see also No documentation available
 	ParentGetCaps(filter *gst.Caps) *gst.Caps
 	// ParentGetTimes calls the default implementations of the `GstBaseSink.get_times` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- start gst.ClockTime: the start #GstClockTime 
-	// 	- end gst.ClockTime: the end #GstClockTime 
-	//
-	// Get the start and end times for syncing on this buffer.
+	// see also No documentation available
 	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// ParentPrepare calls the default implementations of the `GstBaseSink.prepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Called to prepare the buffer for @render and @preroll. This
-	//     function is called before synchronisation is performed.
+	// see also No documentation available
 	ParentPrepare(buffer *gst.Buffer) gst.FlowReturn
 	// ParentPrepareList calls the default implementations of the `GstBaseSink.prepare_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- bufferList *gst.BufferList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Called to prepare the buffer list for @render_list. This
-	//     function is called before synchronisation is performed.
+	// see also No documentation available
 	ParentPrepareList(bufferList *gst.BufferList) gst.FlowReturn
 	// ParentPreroll calls the default implementations of the `GstBaseSink.preroll` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Called to present the preroll buffer if desired.
+	// see also No documentation available
 	ParentPreroll(buffer *gst.Buffer) gst.FlowReturn
 	// ParentProposeAllocation calls the default implementations of the `GstBaseSink.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// configure the allocation query
+	// see also No documentation available
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentQuery calls the default implementations of the `GstBaseSink.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// perform a #GstQuery on the element.
+	// see also No documentation available
 	ParentQuery(query *gst.Query) bool
 	// ParentRender calls the default implementations of the `GstBaseSink.render` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Called when a buffer should be presented or output, at the
-	//     correct moment if the #GstBaseSink has been set to sync to the clock.
+	// see also No documentation available
 	ParentRender(buffer *gst.Buffer) gst.FlowReturn
 	// ParentRenderList calls the default implementations of the `GstBaseSink.render_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- bufferList *gst.BufferList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Same as @render but used with buffer lists instead of
-	//     buffers.
+	// see also No documentation available
 	ParentRenderList(bufferList *gst.BufferList) gst.FlowReturn
 	// ParentSetCaps calls the default implementations of the `GstBaseSink.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notify subclass of changed caps
+	// see also No documentation available
 	ParentSetCaps(caps *gst.Caps) bool
 	// ParentStart calls the default implementations of the `GstBaseSink.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Start processing. Ideal for opening resources in the subclass
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstBaseSink.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Stop processing. Subclasses should use this to close resources.
+	// see also No documentation available
 	ParentStop() bool
 	// ParentUnlock calls the default implementations of the `GstBaseSink.unlock` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Unlock any pending access to the resource. Subclasses should
-	//     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
+	// see also No documentation available
 	ParentUnlock() bool
 	// ParentUnlockStop calls the default implementations of the `GstBaseSink.unlock_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Clear the previous unlock request. Subclasses should clear
-	//     any state they set during #GstBaseSinkClass::unlock, and be ready to
-	//     continue where they left off after gst_base_sink_wait_preroll(),
-	//     gst_base_sink_wait() or gst_wait_sink_wait_clock() return or
-	//     #GstBaseSinkClass::render is called again.
+	// see also No documentation available
 	ParentUnlockStop() bool
 	// ParentWaitEvent calls the default implementations of the `GstBaseSink.wait_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Override this to implement custom logic to wait for the event
-	//     time (for events like EOS and GAP). Subclasses should always first
-	//     chain up to the default implementation.
+	// see also No documentation available
 	ParentWaitEvent(event *gst.Event) gst.FlowReturn
 }
 
@@ -9020,20 +5741,8 @@ func UnsafeBaseSinkToGlibFull(c BaseSink) unsafe.Pointer {
 
 // DoPreroll wraps gst_base_sink_do_preroll
 // 
-// The function takes the following parameters:
-// 
-// 	- obj *gst.MiniObject: the mini object that caused the preroll 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// If the @sink spawns its own thread for pulling buffers from upstream it
-// should call this method after it has pulled a buffer. If the element needed
-// to preroll, this function will perform the preroll and will then block
-// until the element state is changed.
-// 
-// This function should be called with the PREROLL_LOCK held.
 func (sink *BaseSinkInstance) DoPreroll(obj *gst.MiniObject) gst.FlowReturn {
 	var carg0 *C.GstBaseSink   // in, none, converted
 	var carg1 *C.GstMiniObject // in, none, converted
@@ -9055,12 +5764,8 @@ func (sink *BaseSinkInstance) DoPreroll(obj *gst.MiniObject) gst.FlowReturn {
 
 // GetBlocksize wraps gst_base_sink_get_blocksize
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get the number of bytes that the sink will pull when it is operating in pull
-// mode.
 func (sink *BaseSinkInstance) GetBlocksize() uint {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.guint        // return, none, casted
@@ -9079,12 +5784,8 @@ func (sink *BaseSinkInstance) GetBlocksize() uint {
 
 // GetDropOutOfSegment wraps gst_base_sink_get_drop_out_of_segment
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if @sink is currently configured to drop buffers which are outside
-// the current segment
 func (sink *BaseSinkInstance) GetDropOutOfSegment() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -9105,16 +5806,8 @@ func (sink *BaseSinkInstance) GetDropOutOfSegment() bool {
 
 // GetLastSample wraps gst_base_sink_get_last_sample
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Sample (nullable) 
+// see also No documentation available
 //
-// Get the last sample that arrived in the sink and was used for preroll or for
-// rendering. This property can be used to generate thumbnails.
-// 
-// The #GstCaps on the sample can be used to determine the type of the buffer.
-// 
-// Free-function: gst_sample_unref
 func (sink *BaseSinkInstance) GetLastSample() *gst.Sample {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  *C.GstSample   // return, full, converted, nullable
@@ -9135,11 +5828,8 @@ func (sink *BaseSinkInstance) GetLastSample() *gst.Sample {
 
 // GetLatency wraps gst_base_sink_get_latency
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the currently configured latency.
 func (sink *BaseSinkInstance) GetLatency() gst.ClockTime {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -9158,11 +5848,8 @@ func (sink *BaseSinkInstance) GetLatency() gst.ClockTime {
 
 // GetMaxBitrate wraps gst_base_sink_get_max_bitrate
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Get the maximum amount of bits per second that the sink will render.
 func (sink *BaseSinkInstance) GetMaxBitrate() uint64 {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.guint64      // return, none, casted
@@ -9181,12 +5868,8 @@ func (sink *BaseSinkInstance) GetMaxBitrate() uint64 {
 
 // GetMaxLateness wraps gst_base_sink_get_max_lateness
 // 
-// The function returns the following values:
-// 
-// 	- goret int64 
+// see also No documentation available
 //
-// Gets the max lateness value. See gst_base_sink_set_max_lateness() for
-// more details.
 func (sink *BaseSinkInstance) GetMaxLateness() int64 {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gint64       // return, none, casted
@@ -9205,13 +5888,8 @@ func (sink *BaseSinkInstance) GetMaxLateness() int64 {
 
 // GetProcessingDeadline wraps gst_base_sink_get_processing_deadline
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the processing deadline of @sink. see
-// gst_base_sink_set_processing_deadline() for more information about
-// the processing deadline.
 func (sink *BaseSinkInstance) GetProcessingDeadline() gst.ClockTime {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -9230,12 +5908,8 @@ func (sink *BaseSinkInstance) GetProcessingDeadline() gst.ClockTime {
 
 // GetRenderDelay wraps gst_base_sink_get_render_delay
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the render delay of @sink. see gst_base_sink_set_render_delay() for more
-// information about the render delay.
 func (sink *BaseSinkInstance) GetRenderDelay() gst.ClockTime {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -9254,16 +5928,8 @@ func (sink *BaseSinkInstance) GetRenderDelay() gst.ClockTime {
 
 // GetStats wraps gst_base_sink_get_stats
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Structure 
+// see also No documentation available
 //
-// Return various #GstBaseSink statistics. This function returns a #GstStructure
-// with name `application/x-gst-base-sink-stats` with the following fields:
-// 
-// - "average-rate" G_TYPE_DOUBLE   average frame rate
-// - "dropped" G_TYPE_UINT64   Number of dropped frames
-// - "rendered" G_TYPE_UINT64   Number of rendered frames
 func (sink *BaseSinkInstance) GetStats() *gst.Structure {
 	var carg0 *C.GstBaseSink  // in, none, converted
 	var cret  *C.GstStructure // return, full, converted
@@ -9282,12 +5948,8 @@ func (sink *BaseSinkInstance) GetStats() *gst.Structure {
 
 // GetSync wraps gst_base_sink_get_sync
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if @sink is currently configured to synchronize against the
-// clock.
 func (sink *BaseSinkInstance) GetSync() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -9308,12 +5970,8 @@ func (sink *BaseSinkInstance) GetSync() bool {
 
 // GetThrottleTime wraps gst_base_sink_get_throttle_time
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Get the time that will be inserted between frames to control the
-// maximum buffers per second.
 func (sink *BaseSinkInstance) GetThrottleTime() uint64 {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.guint64      // return, none, casted
@@ -9332,11 +5990,8 @@ func (sink *BaseSinkInstance) GetThrottleTime() uint64 {
 
 // GetTsOffset wraps gst_base_sink_get_ts_offset
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTimeDiff 
+// see also No documentation available
 //
-// Get the synchronisation offset of @sink.
 func (sink *BaseSinkInstance) GetTsOffset() gst.ClockTimeDiff {
 	var carg0 *C.GstBaseSink     // in, none, converted
 	var cret  C.GstClockTimeDiff // return, none, casted, alias
@@ -9355,12 +6010,8 @@ func (sink *BaseSinkInstance) GetTsOffset() gst.ClockTimeDiff {
 
 // IsAsyncEnabled wraps gst_base_sink_is_async_enabled
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if @sink is currently configured to perform asynchronous state
-// changes to PAUSED.
 func (sink *BaseSinkInstance) IsAsyncEnabled() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -9381,12 +6032,8 @@ func (sink *BaseSinkInstance) IsAsyncEnabled() bool {
 
 // IsLastSampleEnabled wraps gst_base_sink_is_last_sample_enabled
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if @sink is currently configured to store the last received sample in
-// the last-sample property.
 func (sink *BaseSinkInstance) IsLastSampleEnabled() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -9407,12 +6054,8 @@ func (sink *BaseSinkInstance) IsLastSampleEnabled() bool {
 
 // IsQosEnabled wraps gst_base_sink_is_qos_enabled
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if @sink is currently configured to send Quality-of-Service events
-// upstream.
 func (sink *BaseSinkInstance) IsQosEnabled() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -9433,24 +6076,8 @@ func (sink *BaseSinkInstance) IsQosEnabled() bool {
 
 // QueryLatency wraps gst_base_sink_query_latency
 // 
-// The function returns the following values:
-// 
-// 	- live bool: if the sink is live 
-// 	- upstreamLive bool: if an upstream element is live 
-// 	- minLatency gst.ClockTime: the min latency of the upstream elements 
-// 	- maxLatency gst.ClockTime: the max latency of the upstream elements 
-// 	- goret bool 
+// see also No documentation available
 //
-// Query the sink for the latency parameters. The latency will be queried from
-// the upstream elements. @live will be %TRUE if @sink is configured to
-// synchronize against the clock. @upstream_live will be %TRUE if an upstream
-// element is live.
-// 
-// If both @live and @upstream_live are %TRUE, the sink will want to compensate
-// for the latency introduced by the upstream elements by setting the
-// @min_latency to a strictly positive value.
-// 
-// This function is mostly used by subclasses.
 func (sink *BaseSinkInstance) QueryLatency() (bool, bool, gst.ClockTime, gst.ClockTime, bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // out
@@ -9487,14 +6114,8 @@ func (sink *BaseSinkInstance) QueryLatency() (bool, bool, gst.ClockTime, gst.Clo
 
 // SetAsyncEnabled wraps gst_base_sink_set_async_enabled
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: the new async value. 
+// see also No documentation available
 //
-// Configures @sink to perform all state changes asynchronously. When async is
-// disabled, the sink will immediately go to PAUSED instead of waiting for a
-// preroll buffer. This feature is useful if the sink does not synchronize
-// against the clock or when it is dealing with sparse streams.
 func (sink *BaseSinkInstance) SetAsyncEnabled(enabled bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -9511,12 +6132,8 @@ func (sink *BaseSinkInstance) SetAsyncEnabled(enabled bool) {
 
 // SetBlocksize wraps gst_base_sink_set_blocksize
 // 
-// The function takes the following parameters:
-// 
-// 	- blocksize uint: the blocksize in bytes 
+// see also No documentation available
 //
-// Set the number of bytes that the sink will pull when it is operating in pull
-// mode.
 func (sink *BaseSinkInstance) SetBlocksize(blocksize uint) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.guint        // in, none, casted
@@ -9531,11 +6148,8 @@ func (sink *BaseSinkInstance) SetBlocksize(blocksize uint) {
 
 // SetDropOutOfSegment wraps gst_base_sink_set_drop_out_of_segment
 // 
-// The function takes the following parameters:
-// 
-// 	- dropOutOfSegment bool: drop buffers outside the segment 
+// see also No documentation available
 //
-// Configure @sink to drop buffers which are outside the current segment
 func (sink *BaseSinkInstance) SetDropOutOfSegment(dropOutOfSegment bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -9552,12 +6166,8 @@ func (sink *BaseSinkInstance) SetDropOutOfSegment(dropOutOfSegment bool) {
 
 // SetLastSampleEnabled wraps gst_base_sink_set_last_sample_enabled
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: the new enable-last-sample value. 
+// see also No documentation available
 //
-// Configures @sink to store the last received sample in the last-sample
-// property.
 func (sink *BaseSinkInstance) SetLastSampleEnabled(enabled bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -9574,11 +6184,8 @@ func (sink *BaseSinkInstance) SetLastSampleEnabled(enabled bool) {
 
 // SetMaxBitrate wraps gst_base_sink_set_max_bitrate
 // 
-// The function takes the following parameters:
-// 
-// 	- maxBitrate uint64: the max_bitrate in bits per second 
+// see also No documentation available
 //
-// Set the maximum amount of bits per second that the sink will render.
 func (sink *BaseSinkInstance) SetMaxBitrate(maxBitrate uint64) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.guint64      // in, none, casted
@@ -9593,14 +6200,8 @@ func (sink *BaseSinkInstance) SetMaxBitrate(maxBitrate uint64) {
 
 // SetMaxLateness wraps gst_base_sink_set_max_lateness
 // 
-// The function takes the following parameters:
-// 
-// 	- maxLateness int64: the new max lateness value. 
+// see also No documentation available
 //
-// Sets the new max lateness value to @max_lateness. This value is
-// used to decide if a buffer should be dropped or not based on the
-// buffer timestamp and the current clock time. A value of -1 means
-// an unlimited time.
 func (sink *BaseSinkInstance) SetMaxLateness(maxLateness int64) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gint64       // in, none, casted
@@ -9615,15 +6216,8 @@ func (sink *BaseSinkInstance) SetMaxLateness(maxLateness int64) {
 
 // SetProcessingDeadline wraps gst_base_sink_set_processing_deadline
 // 
-// The function takes the following parameters:
-// 
-// 	- processingDeadline gst.ClockTime: the new processing deadline in nanoseconds. 
+// see also No documentation available
 //
-// Maximum amount of time (in nanoseconds) that the pipeline can take
-// for processing the buffer. This is added to the latency of live
-// pipelines.
-// 
-// This function is usually called by subclasses.
 func (sink *BaseSinkInstance) SetProcessingDeadline(processingDeadline gst.ClockTime) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
@@ -9638,11 +6232,8 @@ func (sink *BaseSinkInstance) SetProcessingDeadline(processingDeadline gst.Clock
 
 // SetQosEnabled wraps gst_base_sink_set_qos_enabled
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: the new qos value. 
+// see also No documentation available
 //
-// Configures @sink to send Quality-of-Service events upstream.
 func (sink *BaseSinkInstance) SetQosEnabled(enabled bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -9659,19 +6250,8 @@ func (sink *BaseSinkInstance) SetQosEnabled(enabled bool) {
 
 // SetRenderDelay wraps gst_base_sink_set_render_delay
 // 
-// The function takes the following parameters:
-// 
-// 	- delay gst.ClockTime: the new delay 
+// see also No documentation available
 //
-// Set the render delay in @sink to @delay. The render delay is the time
-// between actual rendering of a buffer and its synchronisation time. Some
-// devices might delay media rendering which can be compensated for with this
-// function.
-// 
-// After calling this function, this sink will report additional latency and
-// other sinks will adjust their latency to delay the rendering of their media.
-// 
-// This function is usually called by subclasses.
 func (sink *BaseSinkInstance) SetRenderDelay(delay gst.ClockTime) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
@@ -9686,15 +6266,8 @@ func (sink *BaseSinkInstance) SetRenderDelay(delay gst.ClockTime) {
 
 // SetSync wraps gst_base_sink_set_sync
 // 
-// The function takes the following parameters:
-// 
-// 	- sync bool: the new sync value. 
+// see also No documentation available
 //
-// Configures @sink to synchronize on the clock or not. When
-// @sync is %FALSE, incoming samples will be played as fast as
-// possible. If @sync is %TRUE, the timestamps of the incoming
-// buffers will be used to schedule the exact render time of its
-// contents.
 func (sink *BaseSinkInstance) SetSync(sync bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -9711,13 +6284,8 @@ func (sink *BaseSinkInstance) SetSync(sync bool) {
 
 // SetThrottleTime wraps gst_base_sink_set_throttle_time
 // 
-// The function takes the following parameters:
-// 
-// 	- throttle uint64: the throttle time in nanoseconds 
+// see also No documentation available
 //
-// Set the time that will be inserted between rendered buffers. This
-// can be used to control the maximum buffers per second that the sink
-// will render.
 func (sink *BaseSinkInstance) SetThrottleTime(throttle uint64) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.guint64      // in, none, casted
@@ -9732,14 +6300,8 @@ func (sink *BaseSinkInstance) SetThrottleTime(throttle uint64) {
 
 // SetTsOffset wraps gst_base_sink_set_ts_offset
 // 
-// The function takes the following parameters:
-// 
-// 	- offset gst.ClockTimeDiff: the new offset 
+// see also No documentation available
 //
-// Adjust the synchronisation of @sink with @offset. A negative value will
-// render buffers earlier than their timestamp. A positive value will delay
-// rendering. This function can be used to fix playback of badly timestamped
-// buffers.
 func (sink *BaseSinkInstance) SetTsOffset(offset gst.ClockTimeDiff) {
 	var carg0 *C.GstBaseSink     // in, none, converted
 	var carg1 C.GstClockTimeDiff // in, none, casted, alias
@@ -9754,26 +6316,8 @@ func (sink *BaseSinkInstance) SetTsOffset(offset gst.ClockTimeDiff) {
 
 // Wait wraps gst_base_sink_wait
 // 
-// The function takes the following parameters:
-// 
-// 	- time gst.ClockTime: the running_time to be reached 
-// 
-// The function returns the following values:
-// 
-// 	- jitter gst.ClockTimeDiff: the jitter to be filled with time diff, or %NULL 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// This function will wait for preroll to complete and will then block until @time
-// is reached. It is usually called by subclasses that use their own internal
-// synchronisation but want to let some synchronization (like EOS) be handled
-// by the base class.
-// 
-// This function should only be called with the PREROLL_LOCK held (like when
-// receiving an EOS event in the ::event vmethod or when handling buffers in
-// ::render).
-// 
-// The @time argument should be the running_time of when the timeout should happen
-// and will be adjusted with any latency and offset configured in the sink.
 func (sink *BaseSinkInstance) Wait(time gst.ClockTime) (gst.ClockTimeDiff, gst.FlowReturn) {
 	var carg0 *C.GstBaseSink     // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -9798,30 +6342,8 @@ func (sink *BaseSinkInstance) Wait(time gst.ClockTime) (gst.ClockTimeDiff, gst.F
 
 // WaitClock wraps gst_base_sink_wait_clock
 // 
-// The function takes the following parameters:
-// 
-// 	- time gst.ClockTime: the running_time to be reached 
-// 
-// The function returns the following values:
-// 
-// 	- jitter gst.ClockTimeDiff: the jitter to be filled with time diff, or %NULL 
-// 	- goret gst.ClockReturn 
+// see also No documentation available
 //
-// This function will block until @time is reached. It is usually called by
-// subclasses that use their own internal synchronisation.
-// 
-// If @time is not valid, no synchronisation is done and %GST_CLOCK_BADTIME is
-// returned. Likewise, if synchronisation is disabled in the element or there
-// is no clock, no synchronisation is done and %GST_CLOCK_BADTIME is returned.
-// 
-// This function should only be called with the PREROLL_LOCK held, like when
-// receiving an EOS event in the #GstBaseSinkClass::event vmethod or when
-// receiving a buffer in
-// the #GstBaseSinkClass::render vmethod.
-// 
-// The @time argument should be the running_time of when this method should
-// return and is not adjusted with any latency or offset configured in the
-// sink.
 func (sink *BaseSinkInstance) WaitClock(time gst.ClockTime) (gst.ClockTimeDiff, gst.ClockReturn) {
 	var carg0 *C.GstBaseSink     // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -9846,28 +6368,8 @@ func (sink *BaseSinkInstance) WaitClock(time gst.ClockTime) (gst.ClockTimeDiff, 
 
 // WaitPreroll wraps gst_base_sink_wait_preroll
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// If the #GstBaseSinkClass::render method performs its own synchronisation
-// against the clock it must unblock when going from PLAYING to the PAUSED state
-// and call this method before continuing to render the remaining data.
-// 
-// If the #GstBaseSinkClass::render method can block on something else than
-// the clock, it must also be ready to unblock immediately on
-// the #GstBaseSinkClass::unlock method and cause the
-// #GstBaseSinkClass::render method to immediately call this function.
-// In this case, the subclass must be prepared to continue rendering where it
-// left off if this function returns %GST_FLOW_OK.
-// 
-// This function will block until a state change to PLAYING happens (in which
-// case this function returns %GST_FLOW_OK) or the processing must be stopped due
-// to a state change to READY or a FLUSH event (in which case this function
-// returns %GST_FLOW_FLUSHING).
-// 
-// This function should only be called with the PREROLL_LOCK held, like in the
-// render function.
 func (sink *BaseSinkInstance) WaitPreroll() gst.FlowReturn {
 	var carg0 *C.GstBaseSink  // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -9892,220 +6394,75 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 
 	// // ActivatePull allows you to override the implementation of the virtual method activate_pull.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- active bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Subclasses should override this when they can provide an
-	//     alternate method of spawning a thread to drive the pipeline in pull mode.
-	//     Should start or stop the pulling thread, depending on the value of the
-	//     "active" argument. Called after actually activating the sink pad in pull
-	//     mode. The default implementation starts a task on the sink pad.
+	// see also No documentation available
 	ActivatePull func(Instance, bool) bool
 	// // Event allows you to override the implementation of the virtual method event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Override this to handle events arriving on the sink pad
+	// see also No documentation available
 	Event func(Instance, *gst.Event) bool
 	// // Fixate allows you to override the implementation of the virtual method fixate.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Only useful in pull mode. Implement if you have
-	//     ideas about what should be the default values for the caps you support.
+	// see also No documentation available
 	Fixate func(Instance, *gst.Caps) *gst.Caps
 	// // GetCaps allows you to override the implementation of the virtual method get_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps (nullable) 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Called to get sink pad caps from the subclass.
+	// see also No documentation available
 	GetCaps func(Instance, *gst.Caps) *gst.Caps
 	// // GetTimes allows you to override the implementation of the virtual method get_times.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- start gst.ClockTime: the start #GstClockTime 
-	// 	- end gst.ClockTime: the end #GstClockTime 
-	//
-	// Get the start and end times for syncing on this buffer.
+	// see also No documentation available
 	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// // Prepare allows you to override the implementation of the virtual method prepare.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Called to prepare the buffer for @render and @preroll. This
-	//     function is called before synchronisation is performed.
+	// see also No documentation available
 	Prepare func(Instance, *gst.Buffer) gst.FlowReturn
 	// // PrepareList allows you to override the implementation of the virtual method prepare_list.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- bufferList *gst.BufferList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Called to prepare the buffer list for @render_list. This
-	//     function is called before synchronisation is performed.
+	// see also No documentation available
 	PrepareList func(Instance, *gst.BufferList) gst.FlowReturn
 	// // Preroll allows you to override the implementation of the virtual method preroll.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Called to present the preroll buffer if desired.
+	// see also No documentation available
 	Preroll func(Instance, *gst.Buffer) gst.FlowReturn
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// configure the allocation query
+	// see also No documentation available
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // Query allows you to override the implementation of the virtual method query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// perform a #GstQuery on the element.
+	// see also No documentation available
 	Query func(Instance, *gst.Query) bool
 	// // Render allows you to override the implementation of the virtual method render.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Called when a buffer should be presented or output, at the
-	//     correct moment if the #GstBaseSink has been set to sync to the clock.
+	// see also No documentation available
 	Render func(Instance, *gst.Buffer) gst.FlowReturn
 	// // RenderList allows you to override the implementation of the virtual method render_list.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- bufferList *gst.BufferList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Same as @render but used with buffer lists instead of
-	//     buffers.
+	// see also No documentation available
 	RenderList func(Instance, *gst.BufferList) gst.FlowReturn
 	// // SetCaps allows you to override the implementation of the virtual method set_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notify subclass of changed caps
+	// see also No documentation available
 	SetCaps func(Instance, *gst.Caps) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Start processing. Ideal for opening resources in the subclass
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Stop processing. Subclasses should use this to close resources.
+	// see also No documentation available
 	Stop func(Instance) bool
 	// // Unlock allows you to override the implementation of the virtual method unlock.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Unlock any pending access to the resource. Subclasses should
-	//     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
+	// see also No documentation available
 	Unlock func(Instance) bool
 	// // UnlockStop allows you to override the implementation of the virtual method unlock_stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Clear the previous unlock request. Subclasses should clear
-	//     any state they set during #GstBaseSinkClass::unlock, and be ready to
-	//     continue where they left off after gst_base_sink_wait_preroll(),
-	//     gst_base_sink_wait() or gst_wait_sink_wait_clock() return or
-	//     #GstBaseSinkClass::render is called again.
+	// see also No documentation available
 	UnlockStop func(Instance) bool
 	// // WaitEvent allows you to override the implementation of the virtual method wait_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Override this to implement custom logic to wait for the event
-	//     time (for events like EOS and GAP). Subclasses should always first
-	//     chain up to the default implementation.
+	// see also No documentation available
 	WaitEvent func(Instance, *gst.Event) gst.FlowReturn
 }
 
@@ -10530,19 +6887,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 // ParentActivatePull calls the default implementations of the `GstBaseSink.activate_pull` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- active bool 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Subclasses should override this when they can provide an
-//     alternate method of spawning a thread to drive the pipeline in pull mode.
-//     Should start or stop the pulling thread, depending on the value of the
-//     "active" argument. Called after actually activating the sink pad in pull
-//     mode. The default implementation starts a task on the sink pad.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentActivatePull(active bool) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 C.gboolean // in, none, converted
@@ -10571,15 +6916,7 @@ func (sink *BaseSinkInstance) ParentActivatePull(active bool) bool {
 // ParentEvent calls the default implementations of the `GstBaseSink.event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Override this to handle events arriving on the sink pad
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstEvent // in, none, converted
@@ -10606,16 +6943,7 @@ func (sink *BaseSinkInstance) ParentEvent(event *gst.Event) bool {
 // ParentFixate calls the default implementations of the `GstBaseSink.fixate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Only useful in pull mode. Implement if you have
-//     ideas about what should be the default values for the caps you support.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstCaps // in, none, converted
@@ -10640,15 +6968,7 @@ func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 // ParentGetCaps calls the default implementations of the `GstBaseSink.get_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- filter *gst.Caps (nullable) 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Called to get sink pad caps from the subclass.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstCaps // in, none, converted
@@ -10675,16 +6995,7 @@ func (sink *BaseSinkInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 // ParentGetTimes calls the default implementations of the `GstBaseSink.get_times` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- start gst.ClockTime: the start #GstClockTime 
-// 	- end gst.ClockTime: the end #GstClockTime 
-//
-// Get the start and end times for syncing on this buffer.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBuffer   // in, none, converted
@@ -10712,16 +7023,7 @@ func (sink *BaseSinkInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime,
 // ParentPrepare calls the default implementations of the `GstBaseSink.prepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Called to prepare the buffer for @render and @preroll. This
-//     function is called before synchronisation is performed.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentPrepare(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -10746,16 +7048,7 @@ func (sink *BaseSinkInstance) ParentPrepare(buffer *gst.Buffer) gst.FlowReturn {
 // ParentPrepareList calls the default implementations of the `GstBaseSink.prepare_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- bufferList *gst.BufferList 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Called to prepare the buffer list for @render_list. This
-//     function is called before synchronisation is performed.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentPrepareList(bufferList *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBufferList // in, none, converted
@@ -10780,15 +7073,7 @@ func (sink *BaseSinkInstance) ParentPrepareList(bufferList *gst.BufferList) gst.
 // ParentPreroll calls the default implementations of the `GstBaseSink.preroll` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Called to present the preroll buffer if desired.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentPreroll(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -10813,15 +7098,7 @@ func (sink *BaseSinkInstance) ParentPreroll(buffer *gst.Buffer) gst.FlowReturn {
 // ParentProposeAllocation calls the default implementations of the `GstBaseSink.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// configure the allocation query
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstQuery // in, none, converted
@@ -10848,15 +7125,7 @@ func (sink *BaseSinkInstance) ParentProposeAllocation(query *gst.Query) bool {
 // ParentQuery calls the default implementations of the `GstBaseSink.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// perform a #GstQuery on the element.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentQuery(query *gst.Query) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstQuery // in, none, converted
@@ -10883,16 +7152,7 @@ func (sink *BaseSinkInstance) ParentQuery(query *gst.Query) bool {
 // ParentRender calls the default implementations of the `GstBaseSink.render` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Called when a buffer should be presented or output, at the
-//     correct moment if the #GstBaseSink has been set to sync to the clock.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentRender(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -10917,16 +7177,7 @@ func (sink *BaseSinkInstance) ParentRender(buffer *gst.Buffer) gst.FlowReturn {
 // ParentRenderList calls the default implementations of the `GstBaseSink.render_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- bufferList *gst.BufferList 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Same as @render but used with buffer lists instead of
-//     buffers.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentRenderList(bufferList *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBufferList // in, none, converted
@@ -10951,15 +7202,7 @@ func (sink *BaseSinkInstance) ParentRenderList(bufferList *gst.BufferList) gst.F
 // ParentSetCaps calls the default implementations of the `GstBaseSink.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Notify subclass of changed caps
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentSetCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstCaps // in, none, converted
@@ -10986,11 +7229,7 @@ func (sink *BaseSinkInstance) ParentSetCaps(caps *gst.Caps) bool {
 // ParentStart calls the default implementations of the `GstBaseSink.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Start processing. Ideal for opening resources in the subclass
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentStart() bool {
 	var carg0 *C.GstBaseSink
 	var cret  C.gboolean // return
@@ -11014,11 +7253,7 @@ func (sink *BaseSinkInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstBaseSink.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Stop processing. Subclasses should use this to close resources.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentStop() bool {
 	var carg0 *C.GstBaseSink
 	var cret  C.gboolean // return
@@ -11042,12 +7277,7 @@ func (sink *BaseSinkInstance) ParentStop() bool {
 // ParentUnlock calls the default implementations of the `GstBaseSink.unlock` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Unlock any pending access to the resource. Subclasses should
-//     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentUnlock() bool {
 	var carg0 *C.GstBaseSink
 	var cret  C.gboolean // return
@@ -11071,15 +7301,7 @@ func (sink *BaseSinkInstance) ParentUnlock() bool {
 // ParentUnlockStop calls the default implementations of the `GstBaseSink.unlock_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Clear the previous unlock request. Subclasses should clear
-//     any state they set during #GstBaseSinkClass::unlock, and be ready to
-//     continue where they left off after gst_base_sink_wait_preroll(),
-//     gst_base_sink_wait() or gst_wait_sink_wait_clock() return or
-//     #GstBaseSinkClass::render is called again.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentUnlockStop() bool {
 	var carg0 *C.GstBaseSink
 	var cret  C.gboolean // return
@@ -11103,17 +7325,7 @@ func (sink *BaseSinkInstance) ParentUnlockStop() bool {
 // ParentWaitEvent calls the default implementations of the `GstBaseSink.wait_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Override this to implement custom logic to wait for the event
-//     time (for events like EOS and GAP). Subclasses should always first
-//     chain up to the default implementation.
+// see also No documentation available
 func (sink *BaseSinkInstance) ParentWaitEvent(event *gst.Event) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstEvent     // in, none, converted
@@ -11170,403 +7382,121 @@ type BaseSrcInstance struct {
 var _ BaseSrc = (*BaseSrcInstance)(nil)
 
 // BaseSrc wraps GstBaseSrc
+// 
+// see also No documentation available
 //
-// This is a generic base class for source elements. The following
-// types of sources are supported:
-// 
-//   * random access sources like files
-//   * seekable sources
-//   * live sources
-// 
-// The source can be configured to operate in any #GstFormat with the
-// gst_base_src_set_format() method. The currently set format determines
-// the format of the internal #GstSegment and any %GST_EVENT_SEGMENT
-// events. The default format for #GstBaseSrc is %GST_FORMAT_BYTES.
-// 
-// #GstBaseSrc always supports push mode scheduling. If the following
-// conditions are met, it also supports pull mode scheduling:
-// 
-//   * The format is set to %GST_FORMAT_BYTES (default).
-//   * #GstBaseSrcClass::is_seekable returns %TRUE.
-// 
-// If all the conditions are met for operating in pull mode, #GstBaseSrc is
-// automatically seekable in push mode as well. The following conditions must
-// be met to make the element seekable in push mode when the format is not
-// %GST_FORMAT_BYTES:
-// 
-// * #GstBaseSrcClass::is_seekable returns %TRUE.
-// * #GstBaseSrcClass::query can convert all supported seek formats to the
-//   internal format as set with gst_base_src_set_format().
-// * #GstBaseSrcClass::do_seek is implemented, performs the seek and returns
-//    %TRUE.
-// 
-// When the element does not meet the requirements to operate in pull mode, the
-// offset and length in the #GstBaseSrcClass::create method should be ignored.
-// It is recommended to subclass #GstPushSrc instead, in this situation. If the
-// element can operate in pull mode but only with specific offsets and
-// lengths, it is allowed to generate an error when the wrong values are passed
-// to the #GstBaseSrcClass::create function.
-// 
-// #GstBaseSrc has support for live sources. Live sources are sources that when
-// paused discard data, such as audio or video capture devices. A typical live
-// source also produces data at a fixed rate and thus provides a clock to publish
-// this rate.
-// Use gst_base_src_set_live() to activate the live source mode.
-// 
-// A live source does not produce data in the PAUSED state. This means that the
-// #GstBaseSrcClass::create method will not be called in PAUSED but only in
-// PLAYING. To signal the pipeline that the element will not produce data, the
-// return value from the READY to PAUSED state will be
-// %GST_STATE_CHANGE_NO_PREROLL.
-// 
-// A typical live source will timestamp the buffers it creates with the
-// current running time of the pipeline. This is one reason why a live source
-// can only produce data in the PLAYING state, when the clock is actually
-// distributed and running.
-// 
-// Live sources that synchronize and block on the clock (an audio source, for
-// example) can use gst_base_src_wait_playing() when the
-// #GstBaseSrcClass::create function was interrupted by a state change to
-// PAUSED.
-// 
-// The #GstBaseSrcClass::get_times method can be used to implement pseudo-live
-// sources. It only makes sense to implement the #GstBaseSrcClass::get_times
-// function if the source is a live source. The #GstBaseSrcClass::get_times
-// function should return timestamps starting from 0, as if it were a non-live
-// source. The base class will make sure that the timestamps are transformed
-// into the current running_time. The base source will then wait for the
-// calculated running_time before pushing out the buffer.
-// 
-// For live sources, the base class will by default report a latency of 0.
-// For pseudo live sources, the base class will by default measure the difference
-// between the first buffer timestamp and the start time of get_times and will
-// report this value as the latency.
-// Subclasses should override the query function when this behaviour is not
-// acceptable.
-// 
-// There is only support in #GstBaseSrc for exactly one source pad, which
-// should be named "src". A source implementation (subclass of #GstBaseSrc)
-// should install a pad template in its class_init function, like so:
-// |[&lt;!-- language="C" --&gt;
-// static void
-// my_element_class_init (GstMyElementClass *klass)
-// {
-//   GstElementClass *gstelement_class = GST_ELEMENT_CLASS (klass);
-//   // srctemplate should be a #GstStaticPadTemplate with direction
-//   // %GST_PAD_SRC and name "src"
-//   gst_element_class_add_static_pad_template (gstelement_class, &amp;srctemplate);
-// 
-//   gst_element_class_set_static_metadata (gstelement_class,
-//      "Source name",
-//      "Source",
-//      "My Source element",
-//      "The author &lt;my.sink@my.email&gt;");
-// }
-// ]|
-// 
-// ## Controlled shutdown of live sources in applications
-// 
-// Applications that record from a live source may want to stop recording
-// in a controlled way, so that the recording is stopped, but the data
-// already in the pipeline is processed to the end (remember that many live
-// sources would go on recording forever otherwise). For that to happen the
-// application needs to make the source stop recording and send an EOS
-// event down the pipeline. The application would then wait for an
-// EOS message posted on the pipeline's bus to know when all data has
-// been processed and the pipeline can safely be stopped.
-// 
-// An application may send an EOS event to a source element to make it
-// perform the EOS logic (send EOS event downstream or post a
-// %GST_MESSAGE_SEGMENT_DONE on the bus). This can typically be done
-// with the gst_element_send_event() function on the element or its parent bin.
-// 
-// After the EOS has been sent to the element, the application should wait for
-// an EOS message to be posted on the pipeline's bus. Once this EOS message is
-// received, it may safely shut down the entire pipeline.
 type BaseSrc interface {
 	gst.Element
 	upcastToGstBaseSrc() *BaseSrcInstance
 
 	// GetAllocator wraps gst_base_src_get_allocator
 	// 
-	// The function returns the following values:
-	// 
-	// 	- allocator gst.Allocator (nullable): the #GstAllocator
-	// used 
-	// 	- params gst.AllocationParams: the #GstAllocationParams of @allocator 
+	// see also No documentation available
 	//
-	// Lets #GstBaseSrc sub-classes to know the memory @allocator
-	// used by the base class and its @params.
-	// 
-	// Unref the @allocator after usage.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBlocksize wraps gst_base_src_get_blocksize
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Get the number of bytes that @src will push out with each buffer.
 	GetBlocksize() uint
 	// GetBufferPool wraps gst_base_src_get_buffer_pool
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.BufferPool (nullable) 
+	// see also No documentation available
 	GetBufferPool() gst.BufferPool
 	// GetDoTimestamp wraps gst_base_src_get_do_timestamp
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Query if @src timestamps outgoing buffers based on the current running_time.
 	GetDoTimestamp() bool
 	// IsAsync wraps gst_base_src_is_async
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Get the current async behaviour of @src. See also gst_base_src_set_async().
 	IsAsync() bool
 	// IsLive wraps gst_base_src_is_live
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Check if an element is in live mode.
 	IsLive() bool
 	// Negotiate wraps gst_base_src_negotiate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Negotiates src pad caps with downstream elements.
-	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-	// if #GstBaseSrcClass::negotiate fails.
-	// 
-	// Do not call this in the #GstBaseSrcClass::fill vmethod. Call this in
-	// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
-	// buffer is allocated.
 	Negotiate() bool
 	// NewSegment wraps gst_base_src_new_segment
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- segment *gst.Segment: a pointer to a #GstSegment 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Prepare a new segment for emission downstream. This function must
-	// only be called by derived sub-classes, and only from the #GstBaseSrcClass::create function,
-	// as the stream-lock needs to be held.
-	// 
-	// The format for the @segment must be identical with the current format
-	// of the source, as configured with gst_base_src_set_format().
-	// 
-	// The format of @src must not be %GST_FORMAT_UNDEFINED and the format
-	// should be configured via gst_base_src_set_format() before calling this method.
 	NewSegment(*gst.Segment) bool
 	// PushSegment wraps gst_base_src_push_segment
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- segment *gst.Segment: a pointer to a #GstSegment 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Send a new segment downstream. This function must
-	// only be called by derived sub-classes, and only from the #GstBaseSrcClass::create function,
-	// as the stream-lock needs to be held.
-	// This method also requires that an out caps has been configured, so
-	// gst_base_src_set_caps() needs to have been called before.
-	// 
-	// The format for the @segment must be identical with the current format
-	// of the source, as configured with gst_base_src_set_format().
-	// 
-	// The format of @src must not be %GST_FORMAT_UNDEFINED and the format
-	// should be configured via gst_base_src_set_format() before calling this method.
-	// 
-	// This is a variant of gst_base_src_new_segment() sending the segment right away,
-	// which can be useful to ensure events ordering.
 	PushSegment(*gst.Segment) bool
 	// QueryLatency wraps gst_base_src_query_latency
 	// 
-	// The function returns the following values:
-	// 
-	// 	- live bool: if the source is live 
-	// 	- minLatency gst.ClockTime: the min latency of the source 
-	// 	- maxLatency gst.ClockTime: the max latency of the source 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Query the source for the latency parameters. @live will be %TRUE when @src is
-	// configured as a live source. @min_latency and @max_latency will be set
-	// to the difference between the running time and the timestamp of the first
-	// buffer.
-	// 
-	// This function is mostly used by subclasses.
 	QueryLatency() (bool, gst.ClockTime, gst.ClockTime, bool)
 	// SetAsync wraps gst_base_src_set_async
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- async bool: new async mode 
+	// see also No documentation available
 	//
-	// Configure async behaviour in @src, no state change will block. The open,
-	// close, start, stop, play and pause virtual methods will be executed in a
-	// different thread and are thus allowed to perform blocking operations. Any
-	// blocking operation should be unblocked with the unlock vmethod.
 	SetAsync(bool)
 	// SetAutomaticEOS wraps gst_base_src_set_automatic_eos
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- automaticEos bool: automatic eos 
+	// see also No documentation available
 	//
-	// If @automatic_eos is %TRUE, @src will automatically go EOS if a buffer
-	// after the total size is returned. By default this is %TRUE but sources
-	// that can't return an authoritative size and only know that they're EOS
-	// when trying to read more should set this to %FALSE.
-	// 
-	// When @src operates in %GST_FORMAT_TIME, #GstBaseSrc will send an EOS
-	// when a buffer outside of the currently configured segment is pushed if
-	// @automatic_eos is %TRUE. Since 1.16, if @automatic_eos is %FALSE an
-	// EOS will be pushed only when the #GstBaseSrcClass::create implementation
-	// returns %GST_FLOW_EOS.
 	SetAutomaticEOS(bool)
 	// SetBlocksize wraps gst_base_src_set_blocksize
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- blocksize uint: the new blocksize in bytes 
+	// see also No documentation available
 	//
-	// Set the number of bytes that @src will push out with each buffer. When
-	// @blocksize is set to -1, a default length will be used.
 	SetBlocksize(uint)
 	// SetCaps wraps gst_base_src_set_caps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps: a #GstCaps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Set new caps on the basesrc source pad.
 	SetCaps(*gst.Caps) bool
 	// SetDoTimestamp wraps gst_base_src_set_do_timestamp
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- timestamp bool: enable or disable timestamping 
+	// see also No documentation available
 	//
-	// Configure @src to automatically timestamp outgoing buffers based on the
-	// current running_time of the pipeline. This property is mostly useful for live
-	// sources.
 	SetDoTimestamp(bool)
 	// SetDynamicSize wraps gst_base_src_set_dynamic_size
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- dynamic bool: new dynamic size mode 
+	// see also No documentation available
 	//
-	// If not @dynamic, size is only updated when needed, such as when trying to
-	// read past current tracked size.  Otherwise, size is checked for upon each
-	// read.
 	SetDynamicSize(bool)
 	// SetFormat wraps gst_base_src_set_format
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- format gst.Format: the format to use 
+	// see also No documentation available
 	//
-	// Sets the default format of the source. This will be the format used
-	// for sending SEGMENT events and for performing seeks.
-	// 
-	// If a format of GST_FORMAT_BYTES is set, the element will be able to
-	// operate in pull mode if the #GstBaseSrcClass::is_seekable returns %TRUE.
-	// 
-	// This function must only be called in states &lt; %GST_STATE_PAUSED.
 	SetFormat(gst.Format)
 	// SetLive wraps gst_base_src_set_live
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- live bool: new live-mode 
+	// see also No documentation available
 	//
-	// If the element listens to a live source, @live should
-	// be set to %TRUE.
-	// 
-	// A live source will not produce data in the PAUSED state and
-	// will therefore not be able to participate in the PREROLL phase
-	// of a pipeline. To signal this fact to the application and the
-	// pipeline, the state change return value of the live source will
-	// be GST_STATE_CHANGE_NO_PREROLL.
 	SetLive(bool)
 	// StartComplete wraps gst_base_src_start_complete
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- ret gst.FlowReturn: a #GstFlowReturn 
+	// see also No documentation available
 	//
-	// Complete an asynchronous start operation. When the subclass overrides the
-	// start method, it should call gst_base_src_start_complete() when the start
-	// operation completes either from the same thread or from an asynchronous
-	// helper thread.
 	StartComplete(gst.FlowReturn)
 	// StartWait wraps gst_base_src_start_wait
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Wait until the start operation completes.
 	StartWait() gst.FlowReturn
 	// SubmitBufferList wraps gst_base_src_submit_buffer_list
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- bufferList *gst.BufferList: a #GstBufferList 
+	// see also No documentation available
 	//
-	// Subclasses can call this from their create virtual method implementation
-	// to submit a buffer list to be pushed out later. This is useful in
-	// cases where the create function wants to produce multiple buffers to be
-	// pushed out in one go in form of a #GstBufferList, which can reduce overhead
-	// drastically, especially for packetised inputs (for data streams where
-	// the packetisation/chunking is not important it is usually more efficient
-	// to return larger buffers instead).
-	// 
-	// Subclasses that use this function from their create function must return
-	// %GST_FLOW_OK and no buffer from their create virtual method implementation.
-	// If a buffer is returned after a buffer list has also been submitted via this
-	// function the behaviour is undefined.
-	// 
-	// Subclasses must only call this function once per create function call and
-	// subclasses must only call this function when the source operates in push
-	// mode.
 	SubmitBufferList(*gst.BufferList)
 	// WaitPlaying wraps gst_base_src_wait_playing
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// If the #GstBaseSrcClass::create method performs its own synchronisation
-	// against the clock it must unblock when going from PLAYING to the PAUSED state
-	// and call this method before continuing to produce the remaining data.
-	// 
-	// This function will block until a state change to PLAYING happens (in which
-	// case this function returns %GST_FLOW_OK) or the processing must be stopped due
-	// to a state change to READY or a FLUSH event (in which case this function
-	// returns %GST_FLOW_FLUSHING).
 	WaitPlaying() gst.FlowReturn
 
 	// chain up virtual methods:
@@ -11574,240 +7504,92 @@ type BaseSrc interface {
 	// ParentAlloc calls the default implementations of the `GstBaseSrc.alloc` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset uint64 
-	// 	- size uint 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- buf *gst.Buffer (nullable) 
-	// 	- goret gst.FlowReturn 
-	//
-	// Ask the subclass to allocate an output buffer with @offset and @size, the default
-	// implementation will use the negotiated allocator.
+	// see also No documentation available
 	ParentAlloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn)
 	// ParentDecideAllocation calls the default implementations of the `GstBaseSrc.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// configure the allocation query
+	// see also No documentation available
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentDoSeek calls the default implementations of the `GstBaseSrc.do_seek` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- segment *gst.Segment 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Perform seeking on the resource to the indicated segment.
+	// see also No documentation available
 	ParentDoSeek(segment *gst.Segment) bool
 	// ParentEvent calls the default implementations of the `GstBaseSrc.event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Override this to implement custom event handling.
+	// see also No documentation available
 	ParentEvent(event *gst.Event) bool
 	// ParentFill calls the default implementations of the `GstBaseSrc.fill` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset uint64 
-	// 	- size uint 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Ask the subclass to fill the buffer with data for offset and size. The
-	//   passed buffer is guaranteed to hold the requested amount of bytes.
+	// see also No documentation available
 	ParentFill(offset uint64, size uint, buf *gst.Buffer) gst.FlowReturn
 	// ParentFixate calls the default implementations of the `GstBaseSrc.fixate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Called if, in negotiation, caps need fixating.
+	// see also No documentation available
 	ParentFixate(caps *gst.Caps) *gst.Caps
 	// ParentGetCaps calls the default implementations of the `GstBaseSrc.get_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps (nullable) 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Called to get the caps to report.
+	// see also No documentation available
 	ParentGetCaps(filter *gst.Caps) *gst.Caps
 	// ParentGetSize calls the default implementations of the `GstBaseSrc.get_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- size uint64 
-	// 	- goret bool 
-	//
-	// Get the total size of the resource in the format set by
-	// gst_base_src_set_format().
+	// see also No documentation available
 	ParentGetSize() (uint64, bool)
 	// ParentGetTimes calls the default implementations of the `GstBaseSrc.get_times` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- start gst.ClockTime 
-	// 	- end gst.ClockTime 
-	//
-	// Given @buffer, return @start and @end time when it should be pushed
-	// out. The base class will sync on the clock using these times.
+	// see also No documentation available
 	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// ParentIsSeekable calls the default implementations of the `GstBaseSrc.is_seekable` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Check if the source can seek
+	// see also No documentation available
 	ParentIsSeekable() bool
 	// ParentNegotiate calls the default implementations of the `GstBaseSrc.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiates src pad caps with downstream elements.
-	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-	// if #GstBaseSrcClass::negotiate fails.
-	// 
-	// Do not call this in the #GstBaseSrcClass::fill vmethod. Call this in
-	// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
-	// buffer is allocated.
+	// see also No documentation available
 	ParentNegotiate() bool
 	// ParentPrepareSeekSegment calls the default implementations of the `GstBaseSrc.prepare_seek_segment` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- seek *gst.Event 
-	// 	- segment *gst.Segment 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Prepare the #GstSegment that will be passed to the
-	//   #GstBaseSrcClass::do_seek vmethod for executing a seek
-	//   request. Sub-classes should override this if they support seeking in
-	//   formats other than the configured native format. By default, it tries to
-	//   convert the seek arguments to the configured native format and prepare a
-	//   segment in that format.
+	// see also No documentation available
 	ParentPrepareSeekSegment(seek *gst.Event, segment *gst.Segment) bool
 	// ParentQuery calls the default implementations of the `GstBaseSrc.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Handle a requested query.
+	// see also No documentation available
 	ParentQuery(query *gst.Query) bool
 	// ParentSetCaps calls the default implementations of the `GstBaseSrc.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps: a #GstCaps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set new caps on the basesrc source pad.
+	// see also No documentation available
 	ParentSetCaps(caps *gst.Caps) bool
 	// ParentStart calls the default implementations of the `GstBaseSrc.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Start processing. Subclasses should open resources and prepare
-	//    to produce data. Implementation should call gst_base_src_start_complete()
-	//    when the operation completes, either from the current thread or any other
-	//    thread that finishes the start operation asynchronously.
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstBaseSrc.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Stop processing. Subclasses should use this to close resources.
+	// see also No documentation available
 	ParentStop() bool
 	// ParentUnlock calls the default implementations of the `GstBaseSrc.unlock` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Unlock any pending access to the resource. Subclasses should unblock
-	//    any blocked function ASAP. In particular, any `create()` function in
-	//    progress should be unblocked and should return GST_FLOW_FLUSHING. Any
-	//    future #GstBaseSrcClass::create function call should also return
-	//    GST_FLOW_FLUSHING until the #GstBaseSrcClass::unlock_stop function has
-	//    been called.
+	// see also No documentation available
 	ParentUnlock() bool
 	// ParentUnlockStop calls the default implementations of the `GstBaseSrc.unlock_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Clear the previous unlock request. Subclasses should clear any
-	//    state they set during #GstBaseSrcClass::unlock, such as clearing command
-	//    queues.
+	// see also No documentation available
 	ParentUnlockStop() bool
 }
 
@@ -11867,16 +7649,8 @@ func UnsafeBaseSrcToGlibFull(c BaseSrc) unsafe.Pointer {
 
 // GetAllocator wraps gst_base_src_get_allocator
 // 
-// The function returns the following values:
-// 
-// 	- allocator gst.Allocator (nullable): the #GstAllocator
-// used 
-// 	- params gst.AllocationParams: the #GstAllocationParams of @allocator 
+// see also No documentation available
 //
-// Lets #GstBaseSrc sub-classes to know the memory @allocator
-// used by the base class and its @params.
-// 
-// Unref the @allocator after usage.
 func (src *BaseSrcInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstBaseSrc         // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -11902,11 +7676,8 @@ func (src *BaseSrcInstance) GetAllocator() (gst.Allocator, gst.AllocationParams)
 
 // GetBlocksize wraps gst_base_src_get_blocksize
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get the number of bytes that @src will push out with each buffer.
 func (src *BaseSrcInstance) GetBlocksize() uint {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.guint       // return, none, casted
@@ -11925,9 +7696,7 @@ func (src *BaseSrcInstance) GetBlocksize() uint {
 
 // GetBufferPool wraps gst_base_src_get_buffer_pool
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.BufferPool (nullable) 
+// see also No documentation available
 func (src *BaseSrcInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstBaseSrc    // in, none, converted
 	var cret  *C.GstBufferPool // return, full, converted, nullable
@@ -11948,11 +7717,8 @@ func (src *BaseSrcInstance) GetBufferPool() gst.BufferPool {
 
 // GetDoTimestamp wraps gst_base_src_get_do_timestamp
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Query if @src timestamps outgoing buffers based on the current running_time.
 func (src *BaseSrcInstance) GetDoTimestamp() bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.gboolean    // return
@@ -11973,11 +7739,8 @@ func (src *BaseSrcInstance) GetDoTimestamp() bool {
 
 // IsAsync wraps gst_base_src_is_async
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Get the current async behaviour of @src. See also gst_base_src_set_async().
 func (src *BaseSrcInstance) IsAsync() bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.gboolean    // return
@@ -11998,11 +7761,8 @@ func (src *BaseSrcInstance) IsAsync() bool {
 
 // IsLive wraps gst_base_src_is_live
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check if an element is in live mode.
 func (src *BaseSrcInstance) IsLive() bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.gboolean    // return
@@ -12023,17 +7783,8 @@ func (src *BaseSrcInstance) IsLive() bool {
 
 // Negotiate wraps gst_base_src_negotiate
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Negotiates src pad caps with downstream elements.
-// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-// if #GstBaseSrcClass::negotiate fails.
-// 
-// Do not call this in the #GstBaseSrcClass::fill vmethod. Call this in
-// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
-// buffer is allocated.
 func (src *BaseSrcInstance) Negotiate() bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.gboolean    // return
@@ -12054,23 +7805,8 @@ func (src *BaseSrcInstance) Negotiate() bool {
 
 // NewSegment wraps gst_base_src_new_segment
 // 
-// The function takes the following parameters:
-// 
-// 	- segment *gst.Segment: a pointer to a #GstSegment 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Prepare a new segment for emission downstream. This function must
-// only be called by derived sub-classes, and only from the #GstBaseSrcClass::create function,
-// as the stream-lock needs to be held.
-// 
-// The format for the @segment must be identical with the current format
-// of the source, as configured with gst_base_src_set_format().
-// 
-// The format of @src must not be %GST_FORMAT_UNDEFINED and the format
-// should be configured via gst_base_src_set_format() before calling this method.
 func (src *BaseSrcInstance) NewSegment(segment *gst.Segment) bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 *C.GstSegment // in, none, converted
@@ -12094,28 +7830,8 @@ func (src *BaseSrcInstance) NewSegment(segment *gst.Segment) bool {
 
 // PushSegment wraps gst_base_src_push_segment
 // 
-// The function takes the following parameters:
-// 
-// 	- segment *gst.Segment: a pointer to a #GstSegment 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Send a new segment downstream. This function must
-// only be called by derived sub-classes, and only from the #GstBaseSrcClass::create function,
-// as the stream-lock needs to be held.
-// This method also requires that an out caps has been configured, so
-// gst_base_src_set_caps() needs to have been called before.
-// 
-// The format for the @segment must be identical with the current format
-// of the source, as configured with gst_base_src_set_format().
-// 
-// The format of @src must not be %GST_FORMAT_UNDEFINED and the format
-// should be configured via gst_base_src_set_format() before calling this method.
-// 
-// This is a variant of gst_base_src_new_segment() sending the segment right away,
-// which can be useful to ensure events ordering.
 func (src *BaseSrcInstance) PushSegment(segment *gst.Segment) bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 *C.GstSegment // in, none, converted
@@ -12139,19 +7855,8 @@ func (src *BaseSrcInstance) PushSegment(segment *gst.Segment) bool {
 
 // QueryLatency wraps gst_base_src_query_latency
 // 
-// The function returns the following values:
-// 
-// 	- live bool: if the source is live 
-// 	- minLatency gst.ClockTime: the min latency of the source 
-// 	- maxLatency gst.ClockTime: the max latency of the source 
-// 	- goret bool 
+// see also No documentation available
 //
-// Query the source for the latency parameters. @live will be %TRUE when @src is
-// configured as a live source. @min_latency and @max_latency will be set
-// to the difference between the running time and the timestamp of the first
-// buffer.
-// 
-// This function is mostly used by subclasses.
 func (src *BaseSrcInstance) QueryLatency() (bool, gst.ClockTime, gst.ClockTime, bool) {
 	var carg0 *C.GstBaseSrc  // in, none, converted
 	var carg1 C.gboolean     // out
@@ -12183,14 +7888,8 @@ func (src *BaseSrcInstance) QueryLatency() (bool, gst.ClockTime, gst.ClockTime, 
 
 // SetAsync wraps gst_base_src_set_async
 // 
-// The function takes the following parameters:
-// 
-// 	- async bool: new async mode 
+// see also No documentation available
 //
-// Configure async behaviour in @src, no state change will block. The open,
-// close, start, stop, play and pause virtual methods will be executed in a
-// different thread and are thus allowed to perform blocking operations. Any
-// blocking operation should be unblocked with the unlock vmethod.
 func (src *BaseSrcInstance) SetAsync(async bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -12207,20 +7906,8 @@ func (src *BaseSrcInstance) SetAsync(async bool) {
 
 // SetAutomaticEOS wraps gst_base_src_set_automatic_eos
 // 
-// The function takes the following parameters:
-// 
-// 	- automaticEos bool: automatic eos 
+// see also No documentation available
 //
-// If @automatic_eos is %TRUE, @src will automatically go EOS if a buffer
-// after the total size is returned. By default this is %TRUE but sources
-// that can't return an authoritative size and only know that they're EOS
-// when trying to read more should set this to %FALSE.
-// 
-// When @src operates in %GST_FORMAT_TIME, #GstBaseSrc will send an EOS
-// when a buffer outside of the currently configured segment is pushed if
-// @automatic_eos is %TRUE. Since 1.16, if @automatic_eos is %FALSE an
-// EOS will be pushed only when the #GstBaseSrcClass::create implementation
-// returns %GST_FLOW_EOS.
 func (src *BaseSrcInstance) SetAutomaticEOS(automaticEos bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -12237,12 +7924,8 @@ func (src *BaseSrcInstance) SetAutomaticEOS(automaticEos bool) {
 
 // SetBlocksize wraps gst_base_src_set_blocksize
 // 
-// The function takes the following parameters:
-// 
-// 	- blocksize uint: the new blocksize in bytes 
+// see also No documentation available
 //
-// Set the number of bytes that @src will push out with each buffer. When
-// @blocksize is set to -1, a default length will be used.
 func (src *BaseSrcInstance) SetBlocksize(blocksize uint) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.guint       // in, none, casted
@@ -12257,15 +7940,8 @@ func (src *BaseSrcInstance) SetBlocksize(blocksize uint) {
 
 // SetCaps wraps gst_base_src_set_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set new caps on the basesrc source pad.
 func (src *BaseSrcInstance) SetCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 *C.GstCaps    // in, none, converted
@@ -12289,13 +7965,8 @@ func (src *BaseSrcInstance) SetCaps(caps *gst.Caps) bool {
 
 // SetDoTimestamp wraps gst_base_src_set_do_timestamp
 // 
-// The function takes the following parameters:
-// 
-// 	- timestamp bool: enable or disable timestamping 
+// see also No documentation available
 //
-// Configure @src to automatically timestamp outgoing buffers based on the
-// current running_time of the pipeline. This property is mostly useful for live
-// sources.
 func (src *BaseSrcInstance) SetDoTimestamp(timestamp bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -12312,13 +7983,8 @@ func (src *BaseSrcInstance) SetDoTimestamp(timestamp bool) {
 
 // SetDynamicSize wraps gst_base_src_set_dynamic_size
 // 
-// The function takes the following parameters:
-// 
-// 	- dynamic bool: new dynamic size mode 
+// see also No documentation available
 //
-// If not @dynamic, size is only updated when needed, such as when trying to
-// read past current tracked size.  Otherwise, size is checked for upon each
-// read.
 func (src *BaseSrcInstance) SetDynamicSize(dynamic bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -12335,17 +8001,8 @@ func (src *BaseSrcInstance) SetDynamicSize(dynamic bool) {
 
 // SetFormat wraps gst_base_src_set_format
 // 
-// The function takes the following parameters:
-// 
-// 	- format gst.Format: the format to use 
+// see also No documentation available
 //
-// Sets the default format of the source. This will be the format used
-// for sending SEGMENT events and for performing seeks.
-// 
-// If a format of GST_FORMAT_BYTES is set, the element will be able to
-// operate in pull mode if the #GstBaseSrcClass::is_seekable returns %TRUE.
-// 
-// This function must only be called in states &lt; %GST_STATE_PAUSED.
 func (src *BaseSrcInstance) SetFormat(format gst.Format) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.GstFormat   // in, none, casted
@@ -12360,18 +8017,8 @@ func (src *BaseSrcInstance) SetFormat(format gst.Format) {
 
 // SetLive wraps gst_base_src_set_live
 // 
-// The function takes the following parameters:
-// 
-// 	- live bool: new live-mode 
+// see also No documentation available
 //
-// If the element listens to a live source, @live should
-// be set to %TRUE.
-// 
-// A live source will not produce data in the PAUSED state and
-// will therefore not be able to participate in the PREROLL phase
-// of a pipeline. To signal this fact to the application and the
-// pipeline, the state change return value of the live source will
-// be GST_STATE_CHANGE_NO_PREROLL.
 func (src *BaseSrcInstance) SetLive(live bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -12388,14 +8035,8 @@ func (src *BaseSrcInstance) SetLive(live bool) {
 
 // StartComplete wraps gst_base_src_start_complete
 // 
-// The function takes the following parameters:
-// 
-// 	- ret gst.FlowReturn: a #GstFlowReturn 
+// see also No documentation available
 //
-// Complete an asynchronous start operation. When the subclass overrides the
-// start method, it should call gst_base_src_start_complete() when the start
-// operation completes either from the same thread or from an asynchronous
-// helper thread.
 func (basesrc *BaseSrcInstance) StartComplete(ret gst.FlowReturn) {
 	var carg0 *C.GstBaseSrc   // in, none, converted
 	var carg1 C.GstFlowReturn // in, none, casted
@@ -12410,11 +8051,8 @@ func (basesrc *BaseSrcInstance) StartComplete(ret gst.FlowReturn) {
 
 // StartWait wraps gst_base_src_start_wait
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Wait until the start operation completes.
 func (basesrc *BaseSrcInstance) StartWait() gst.FlowReturn {
 	var carg0 *C.GstBaseSrc   // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -12433,26 +8071,8 @@ func (basesrc *BaseSrcInstance) StartWait() gst.FlowReturn {
 
 // SubmitBufferList wraps gst_base_src_submit_buffer_list
 // 
-// The function takes the following parameters:
-// 
-// 	- bufferList *gst.BufferList: a #GstBufferList 
+// see also No documentation available
 //
-// Subclasses can call this from their create virtual method implementation
-// to submit a buffer list to be pushed out later. This is useful in
-// cases where the create function wants to produce multiple buffers to be
-// pushed out in one go in form of a #GstBufferList, which can reduce overhead
-// drastically, especially for packetised inputs (for data streams where
-// the packetisation/chunking is not important it is usually more efficient
-// to return larger buffers instead).
-// 
-// Subclasses that use this function from their create function must return
-// %GST_FLOW_OK and no buffer from their create virtual method implementation.
-// If a buffer is returned after a buffer list has also been submitted via this
-// function the behaviour is undefined.
-// 
-// Subclasses must only call this function once per create function call and
-// subclasses must only call this function when the source operates in push
-// mode.
 func (src *BaseSrcInstance) SubmitBufferList(bufferList *gst.BufferList) {
 	var carg0 *C.GstBaseSrc    // in, none, converted
 	var carg1 *C.GstBufferList // in, full, converted
@@ -12467,18 +8087,8 @@ func (src *BaseSrcInstance) SubmitBufferList(bufferList *gst.BufferList) {
 
 // WaitPlaying wraps gst_base_src_wait_playing
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// If the #GstBaseSrcClass::create method performs its own synchronisation
-// against the clock it must unblock when going from PLAYING to the PAUSED state
-// and call this method before continuing to produce the remaining data.
-// 
-// This function will block until a state change to PLAYING happens (in which
-// case this function returns %GST_FLOW_OK) or the processing must be stopped due
-// to a state change to READY or a FLUSH event (in which case this function
-// returns %GST_FLOW_FLUSHING).
 func (src *BaseSrcInstance) WaitPlaying() gst.FlowReturn {
 	var carg0 *C.GstBaseSrc   // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -12503,223 +8113,75 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 
 	// // Alloc allows you to override the implementation of the virtual method alloc.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset uint64 
-	// 	- size uint 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- buf *gst.Buffer (nullable) 
-	// 	- goret gst.FlowReturn 
-	//
-	// Ask the subclass to allocate an output buffer with @offset and @size, the default
-	// implementation will use the negotiated allocator.
+	// see also No documentation available
 	Alloc func(Instance, uint64, uint) (*gst.Buffer, gst.FlowReturn)
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// configure the allocation query
+	// see also No documentation available
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // DoSeek allows you to override the implementation of the virtual method do_seek.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- segment *gst.Segment 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Perform seeking on the resource to the indicated segment.
+	// see also No documentation available
 	DoSeek func(Instance, *gst.Segment) bool
 	// // Event allows you to override the implementation of the virtual method event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Override this to implement custom event handling.
+	// see also No documentation available
 	Event func(Instance, *gst.Event) bool
 	// // Fill allows you to override the implementation of the virtual method fill.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset uint64 
-	// 	- size uint 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Ask the subclass to fill the buffer with data for offset and size. The
-	//   passed buffer is guaranteed to hold the requested amount of bytes.
+	// see also No documentation available
 	Fill func(Instance, uint64, uint, *gst.Buffer) gst.FlowReturn
 	// // Fixate allows you to override the implementation of the virtual method fixate.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Called if, in negotiation, caps need fixating.
+	// see also No documentation available
 	Fixate func(Instance, *gst.Caps) *gst.Caps
 	// // GetCaps allows you to override the implementation of the virtual method get_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps (nullable) 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Called to get the caps to report.
+	// see also No documentation available
 	GetCaps func(Instance, *gst.Caps) *gst.Caps
 	// // GetSize allows you to override the implementation of the virtual method get_size.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- size uint64 
-	// 	- goret bool 
-	//
-	// Get the total size of the resource in the format set by
-	// gst_base_src_set_format().
+	// see also No documentation available
 	GetSize func(Instance) (uint64, bool)
 	// // GetTimes allows you to override the implementation of the virtual method get_times.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- start gst.ClockTime 
-	// 	- end gst.ClockTime 
-	//
-	// Given @buffer, return @start and @end time when it should be pushed
-	// out. The base class will sync on the clock using these times.
+	// see also No documentation available
 	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// // IsSeekable allows you to override the implementation of the virtual method is_seekable.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Check if the source can seek
+	// see also No documentation available
 	IsSeekable func(Instance) bool
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiates src pad caps with downstream elements.
-	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-	// if #GstBaseSrcClass::negotiate fails.
-	// 
-	// Do not call this in the #GstBaseSrcClass::fill vmethod. Call this in
-	// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
-	// buffer is allocated.
+	// see also No documentation available
 	Negotiate func(Instance) bool
 	// // PrepareSeekSegment allows you to override the implementation of the virtual method prepare_seek_segment.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- seek *gst.Event 
-	// 	- segment *gst.Segment 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Prepare the #GstSegment that will be passed to the
-	//   #GstBaseSrcClass::do_seek vmethod for executing a seek
-	//   request. Sub-classes should override this if they support seeking in
-	//   formats other than the configured native format. By default, it tries to
-	//   convert the seek arguments to the configured native format and prepare a
-	//   segment in that format.
+	// see also No documentation available
 	PrepareSeekSegment func(Instance, *gst.Event, *gst.Segment) bool
 	// // Query allows you to override the implementation of the virtual method query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Handle a requested query.
+	// see also No documentation available
 	Query func(Instance, *gst.Query) bool
 	// // SetCaps allows you to override the implementation of the virtual method set_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps: a #GstCaps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Set new caps on the basesrc source pad.
+	// see also No documentation available
 	SetCaps func(Instance, *gst.Caps) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Start processing. Subclasses should open resources and prepare
-	//    to produce data. Implementation should call gst_base_src_start_complete()
-	//    when the operation completes, either from the current thread or any other
-	//    thread that finishes the start operation asynchronously.
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Stop processing. Subclasses should use this to close resources.
+	// see also No documentation available
 	Stop func(Instance) bool
 	// // Unlock allows you to override the implementation of the virtual method unlock.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Unlock any pending access to the resource. Subclasses should unblock
-	//    any blocked function ASAP. In particular, any `create()` function in
-	//    progress should be unblocked and should return GST_FLOW_FLUSHING. Any
-	//    future #GstBaseSrcClass::create function call should also return
-	//    GST_FLOW_FLUSHING until the #GstBaseSrcClass::unlock_stop function has
-	//    been called.
+	// see also No documentation available
 	Unlock func(Instance) bool
 	// // UnlockStop allows you to override the implementation of the virtual method unlock_stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Clear the previous unlock request. Subclasses should clear any
-	//    state they set during #GstBaseSrcClass::unlock, such as clearing command
-	//    queues.
+	// see also No documentation available
 	UnlockStop func(Instance) bool
 }
 
@@ -13156,18 +8618,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 // ParentAlloc calls the default implementations of the `GstBaseSrc.alloc` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- offset uint64 
-// 	- size uint 
-// 
-// The function returns the following values:
-// 
-// 	- buf *gst.Buffer (nullable) 
-// 	- goret gst.FlowReturn 
-//
-// Ask the subclass to allocate an output buffer with @offset and @size, the default
-// implementation will use the negotiated allocator.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentAlloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstBaseSrc
 	var carg1 C.guint64       // in, none, converted
@@ -13200,15 +8651,7 @@ func (src *BaseSrcInstance) ParentAlloc(offset uint64, size uint) (*gst.Buffer, 
 // ParentDecideAllocation calls the default implementations of the `GstBaseSrc.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// configure the allocation query
+// see also No documentation available
 func (src *BaseSrcInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstQuery // in, none, converted
@@ -13235,15 +8678,7 @@ func (src *BaseSrcInstance) ParentDecideAllocation(query *gst.Query) bool {
 // ParentDoSeek calls the default implementations of the `GstBaseSrc.do_seek` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- segment *gst.Segment 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Perform seeking on the resource to the indicated segment.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentDoSeek(segment *gst.Segment) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstSegment // in, none, converted
@@ -13270,15 +8705,7 @@ func (src *BaseSrcInstance) ParentDoSeek(segment *gst.Segment) bool {
 // ParentEvent calls the default implementations of the `GstBaseSrc.event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Override this to implement custom event handling.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstEvent // in, none, converted
@@ -13305,18 +8732,7 @@ func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
 // ParentFill calls the default implementations of the `GstBaseSrc.fill` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- offset uint64 
-// 	- size uint 
-// 	- buf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Ask the subclass to fill the buffer with data for offset and size. The
-//   passed buffer is guaranteed to hold the requested amount of bytes.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseSrc
 	var carg1 C.guint64       // in, none, converted
@@ -13347,15 +8763,7 @@ func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer
 // ParentFixate calls the default implementations of the `GstBaseSrc.fixate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Called if, in negotiation, caps need fixating.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstCaps // in, none, converted
@@ -13380,15 +8788,7 @@ func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 // ParentGetCaps calls the default implementations of the `GstBaseSrc.get_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- filter *gst.Caps (nullable) 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Called to get the caps to report.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstCaps // in, none, converted
@@ -13415,13 +8815,7 @@ func (src *BaseSrcInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 // ParentGetSize calls the default implementations of the `GstBaseSrc.get_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- size uint64 
-// 	- goret bool 
-//
-// Get the total size of the resource in the format set by
-// gst_base_src_set_format().
+// see also No documentation available
 func (src *BaseSrcInstance) ParentGetSize() (uint64, bool) {
 	var carg0 *C.GstBaseSrc
 	var carg1 C.guint64  // out, full, casted
@@ -13448,17 +8842,7 @@ func (src *BaseSrcInstance) ParentGetSize() (uint64, bool) {
 // ParentGetTimes calls the default implementations of the `GstBaseSrc.get_times` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- start gst.ClockTime 
-// 	- end gst.ClockTime 
-//
-// Given @buffer, return @start and @end time when it should be pushed
-// out. The base class will sync on the clock using these times.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstBuffer   // in, none, converted
@@ -13486,11 +8870,7 @@ func (src *BaseSrcInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, g
 // ParentIsSeekable calls the default implementations of the `GstBaseSrc.is_seekable` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Check if the source can seek
+// see also No documentation available
 func (src *BaseSrcInstance) ParentIsSeekable() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -13514,17 +8894,7 @@ func (src *BaseSrcInstance) ParentIsSeekable() bool {
 // ParentNegotiate calls the default implementations of the `GstBaseSrc.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Negotiates src pad caps with downstream elements.
-// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
-// if #GstBaseSrcClass::negotiate fails.
-// 
-// Do not call this in the #GstBaseSrcClass::fill vmethod. Call this in
-// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
-// buffer is allocated.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentNegotiate() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -13548,21 +8918,7 @@ func (src *BaseSrcInstance) ParentNegotiate() bool {
 // ParentPrepareSeekSegment calls the default implementations of the `GstBaseSrc.prepare_seek_segment` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- seek *gst.Event 
-// 	- segment *gst.Segment 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Prepare the #GstSegment that will be passed to the
-//   #GstBaseSrcClass::do_seek vmethod for executing a seek
-//   request. Sub-classes should override this if they support seeking in
-//   formats other than the configured native format. By default, it tries to
-//   convert the seek arguments to the configured native format and prepare a
-//   segment in that format.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentPrepareSeekSegment(seek *gst.Event, segment *gst.Segment) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstEvent   // in, none, converted
@@ -13592,15 +8948,7 @@ func (src *BaseSrcInstance) ParentPrepareSeekSegment(seek *gst.Event, segment *g
 // ParentQuery calls the default implementations of the `GstBaseSrc.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Handle a requested query.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentQuery(query *gst.Query) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstQuery // in, none, converted
@@ -13627,15 +8975,7 @@ func (src *BaseSrcInstance) ParentQuery(query *gst.Query) bool {
 // ParentSetCaps calls the default implementations of the `GstBaseSrc.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Set new caps on the basesrc source pad.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentSetCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstCaps // in, none, converted
@@ -13662,14 +9002,7 @@ func (src *BaseSrcInstance) ParentSetCaps(caps *gst.Caps) bool {
 // ParentStart calls the default implementations of the `GstBaseSrc.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Start processing. Subclasses should open resources and prepare
-//    to produce data. Implementation should call gst_base_src_start_complete()
-//    when the operation completes, either from the current thread or any other
-//    thread that finishes the start operation asynchronously.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentStart() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -13693,11 +9026,7 @@ func (src *BaseSrcInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstBaseSrc.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Stop processing. Subclasses should use this to close resources.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentStop() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -13721,16 +9050,7 @@ func (src *BaseSrcInstance) ParentStop() bool {
 // ParentUnlock calls the default implementations of the `GstBaseSrc.unlock` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Unlock any pending access to the resource. Subclasses should unblock
-//    any blocked function ASAP. In particular, any `create()` function in
-//    progress should be unblocked and should return GST_FLOW_FLUSHING. Any
-//    future #GstBaseSrcClass::create function call should also return
-//    GST_FLOW_FLUSHING until the #GstBaseSrcClass::unlock_stop function has
-//    been called.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentUnlock() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -13754,13 +9074,7 @@ func (src *BaseSrcInstance) ParentUnlock() bool {
 // ParentUnlockStop calls the default implementations of the `GstBaseSrc.unlock_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Clear the previous unlock request. Subclasses should clear any
-//    state they set during #GstBaseSrcClass::unlock, such as clearing command
-//    queues.
+// see also No documentation available
 func (src *BaseSrcInstance) ParentUnlockStop() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -13816,294 +9130,86 @@ type BaseTransformInstance struct {
 var _ BaseTransform = (*BaseTransformInstance)(nil)
 
 // BaseTransform wraps GstBaseTransform
+// 
+// see also No documentation available
 //
-// This base class is for filter elements that process data. Elements
-// that are suitable for implementation using #GstBaseTransform are ones
-// where the size and caps of the output is known entirely from the input
-// caps and buffer sizes. These include elements that directly transform
-// one buffer into another, modify the contents of a buffer in-place, as
-// well as elements that collate multiple input buffers into one output buffer,
-// or that expand one input buffer into multiple output buffers. See below
-// for more concrete use cases.
-// 
-// It provides for:
-// 
-// * one sinkpad and one srcpad
-// * Possible formats on sink and source pad implemented
-//   with custom transform_caps function. By default uses
-//   same format on sink and source.
-// 
-// * Handles state changes
-// * Does flushing
-// * Push mode
-// * Pull mode if the sub-class transform can operate on arbitrary data
-// 
-// # Use Cases
-// 
-// ## Passthrough mode
-// 
-//   * Element has no interest in modifying the buffer. It may want to inspect it,
-//     in which case the element should have a transform_ip function. If there
-//     is no transform_ip function in passthrough mode, the buffer is pushed
-//     intact.
-// 
-//   * The #GstBaseTransformClass.passthrough_on_same_caps variable
-//     will automatically set/unset passthrough based on whether the
-//     element negotiates the same caps on both pads.
-// 
-//   * #GstBaseTransformClass.passthrough_on_same_caps on an element that
-//     doesn't implement a transform_caps function is useful for elements that
-//     only inspect data (such as level)
-// 
-//   * Example elements
-// 
-//     * Level
-//     * Videoscale, audioconvert, videoconvert, audioresample in certain modes.
-// 
-// ## Modifications in-place - input buffer and output buffer are the same thing.
-// 
-// * The element must implement a transform_ip function.
-// * Output buffer size must &lt;= input buffer size
-// * If the always_in_place flag is set, non-writable buffers will be copied
-//   and passed to the transform_ip function, otherwise a new buffer will be
-//   created and the transform function called.
-// 
-// * Incoming writable buffers will be passed to the transform_ip function
-//   immediately.
-// * only implementing transform_ip and not transform implies always_in_place = %TRUE
-// 
-//   * Example elements:
-//     * Volume
-//     * Audioconvert in certain modes (signed/unsigned conversion)
-//     * videoconvert in certain modes (endianness swapping)
-// 
-// ## Modifications only to the caps/metadata of a buffer
-// 
-// * The element does not require writable data, but non-writable buffers
-//   should be subbuffered so that the meta-information can be replaced.
-// 
-// * Elements wishing to operate in this mode should replace the
-//   prepare_output_buffer method to create subbuffers of the input buffer
-//   and set always_in_place to %TRUE
-// 
-// * Example elements
-//   * Capsfilter when setting caps on outgoing buffers that have
-//     none.
-//   * identity when it is going to re-timestamp buffers by
-//     datarate.
-// 
-// ## Normal mode
-//   * always_in_place flag is not set, or there is no transform_ip function
-//   * Element will receive an input buffer and output buffer to operate on.
-//   * Output buffer is allocated by calling the prepare_output_buffer function.
-//   * Example elements:
-//     * Videoscale, videoconvert, audioconvert when doing
-//     scaling/conversions
-// 
-// ## Special output buffer allocations
-//   * Elements which need to do special allocation of their output buffers
-//     beyond allocating output buffers via the negotiated allocator or
-//     buffer pool should implement the prepare_output_buffer method.
-// 
-//   * Example elements:
-//     * efence
-// 
-// # Sub-class settable flags on GstBaseTransform
-// 
-// * passthrough
-// 
-//   * Implies that in the current configuration, the sub-class is not interested in modifying the buffers.
-//   * Elements which are always in passthrough mode whenever the same caps has been negotiated on both pads can set the class variable passthrough_on_same_caps to have this behaviour automatically.
-// 
-// * always_in_place
-//   * Determines whether a non-writable buffer will be copied before passing
-//     to the transform_ip function.
-// 
-//   * Implied %TRUE if no transform function is implemented.
-//   * Implied %FALSE if ONLY transform function is implemented.
 type BaseTransform interface {
 	gst.Element
 	upcastToGstBaseTransform() *BaseTransformInstance
 
 	// GetAllocator wraps gst_base_transform_get_allocator
 	// 
-	// The function returns the following values:
-	// 
-	// 	- allocator gst.Allocator (nullable): the #GstAllocator
-	// used 
-	// 	- params gst.AllocationParams: the #GstAllocationParams of @allocator 
+	// see also No documentation available
 	//
-	// Lets #GstBaseTransform sub-classes know the memory @allocator
-	// used by the base class and its @params.
-	// 
-	// Unref the @allocator after use.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_base_transform_get_buffer_pool
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.BufferPool (nullable) 
+	// see also No documentation available
 	GetBufferPool() gst.BufferPool
 	// IsInPlace wraps gst_base_transform_is_in_place
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// See if @trans is configured as a in_place transform.
 	IsInPlace() bool
 	// IsPassthrough wraps gst_base_transform_is_passthrough
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// See if @trans is configured as a passthrough transform.
 	IsPassthrough() bool
 	// IsQosEnabled wraps gst_base_transform_is_qos_enabled
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries if the transform will handle QoS.
 	IsQosEnabled() bool
 	// Reconfigure wraps gst_base_transform_reconfigure
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Negotiates src pad caps with downstream elements if the source pad is
-	// marked as needing reconfiguring. Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in
-	// any case. But marks it again if negotiation fails.
-	// 
-	// Do not call this in the #GstBaseTransformClass::transform or
-	// #GstBaseTransformClass::transform_ip vmethod. Call this in
-	// #GstBaseTransformClass::submit_input_buffer,
-	// #GstBaseTransformClass::prepare_output_buffer or in
-	// #GstBaseTransformClass::generate_output _before_ any output buffer is
-	// allocated.
-	// 
-	// It will be default be called when handling an ALLOCATION query or at the
-	// very beginning of the default #GstBaseTransformClass::submit_input_buffer
-	// implementation.
 	Reconfigure() bool
 	// ReconfigureSink wraps gst_base_transform_reconfigure_sink
+	// 
+	// see also No documentation available
 	//
-	// Instructs @trans to request renegotiation upstream. This function is
-	// typically called after properties on the transform were set that
-	// influence the input format.
 	ReconfigureSink()
 	// ReconfigureSrc wraps gst_base_transform_reconfigure_src
+	// 
+	// see also No documentation available
 	//
-	// Instructs @trans to renegotiate a new downstream transform on the next
-	// buffer. This function is typically called after properties on the transform
-	// were set that influence the output format.
 	ReconfigureSrc()
 	// SetGapAware wraps gst_base_transform_set_gap_aware
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- gapAware bool: New state 
+	// see also No documentation available
 	//
-	// If @gap_aware is %FALSE (the default), output buffers will have the
-	// %GST_BUFFER_FLAG_GAP flag unset.
-	// 
-	// If set to %TRUE, the element must handle output buffers with this flag set
-	// correctly, i.e. it can assume that the buffer contains neutral data but must
-	// unset the flag if the output is no neutral data.
-	// 
-	// MT safe.
 	SetGapAware(bool)
 	// SetInPlace wraps gst_base_transform_set_in_place
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- inPlace bool: Boolean value indicating that we would like to operate
-	// on in_place buffers. 
+	// see also No documentation available
 	//
-	// Determines whether a non-writable buffer will be copied before passing
-	// to the transform_ip function.
-	// 
-	//   * Always %TRUE if no transform function is implemented.
-	//   * Always %FALSE if ONLY transform function is implemented.
-	// 
-	// MT safe.
 	SetInPlace(bool)
 	// SetPassthrough wraps gst_base_transform_set_passthrough
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- passthrough bool: boolean indicating passthrough mode. 
+	// see also No documentation available
 	//
-	// Set passthrough mode for this filter by default. This is mostly
-	// useful for filters that do not care about negotiation.
-	// 
-	// Always %TRUE for filters which don't implement either a transform
-	// or transform_ip or generate_output method.
-	// 
-	// MT safe.
 	SetPassthrough(bool)
 	// SetPreferPassthrough wraps gst_base_transform_set_prefer_passthrough
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- preferPassthrough bool: New state 
+	// see also No documentation available
 	//
-	// If @prefer_passthrough is %TRUE (the default), @trans will check and
-	// prefer passthrough caps from the list of caps returned by the
-	// transform_caps vmethod.
-	// 
-	// If set to %FALSE, the element must order the caps returned from the
-	// transform_caps function in such a way that the preferred format is
-	// first in the list. This can be interesting for transforms that can do
-	// passthrough transforms but prefer to do something else, like a
-	// capsfilter.
-	// 
-	// MT safe.
 	SetPreferPassthrough(bool)
 	// SetQosEnabled wraps gst_base_transform_set_qos_enabled
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Enable or disable QoS handling in the transform.
-	// 
-	// MT safe.
 	SetQosEnabled(bool)
 	// UpdateQos wraps gst_base_transform_update_qos
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- proportion float64: the proportion 
-	// 	- diff gst.ClockTimeDiff: the diff against the clock 
-	// 	- timestamp gst.ClockTime: the timestamp of the buffer generating the QoS expressed in
-	// running_time. 
+	// see also No documentation available
 	//
-	// Set the QoS parameters in the transform. This function is called internally
-	// when a QOS event is received but subclasses can provide custom information
-	// when needed.
-	// 
-	// MT safe.
 	UpdateQos(float64, gst.ClockTimeDiff, gst.ClockTime)
 	// UpdateSrcCaps wraps gst_base_transform_update_src_caps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- updatedCaps *gst.Caps: An updated version of the srcpad caps to be pushed
-	// downstream 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Updates the srcpad caps and sends the caps downstream. This function
-	// can be used by subclasses when they have already negotiated their caps
-	// but found a change in them (or computed new information). This way,
-	// they can notify downstream about that change without losing any
-	// buffer.
 	UpdateSrcCaps(*gst.Caps) bool
 
 	// chain up virtual methods:
@@ -14111,327 +9217,112 @@ type BaseTransform interface {
 	// ParentAcceptCaps calls the default implementations of the `GstBaseTransform.accept_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Subclasses can override this method to check if @caps can be
-	//                  handled by the element. The default implementation might not be
-	//                  the most optimal way to check this in all cases.
+	// see also No documentation available
 	ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool
 	// ParentBeforeTransform calls the default implementations of the `GstBaseTransform.before_transform` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	//
-	// Optional.
-	//                    This method is called right before the base class will
-	//                    start processing. Dynamic properties or other delayed
-	//                    configuration could be performed in this method.
+	// see also No documentation available
 	ParentBeforeTransform(buffer *gst.Buffer)
 	// ParentCopyMetadata calls the default implementations of the `GstBaseTransform.copy_metadata` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- input *gst.Buffer 
-	// 	- outbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                 Copy the metadata from the input buffer to the output buffer.
-	//                 The default implementation will copy the flags, timestamps and
-	//                 offsets of the buffer.
+	// see also No documentation available
 	ParentCopyMetadata(input *gst.Buffer, outbuf *gst.Buffer) bool
 	// ParentDecideAllocation calls the default implementations of the `GstBaseTransform.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Setup the allocation parameters for allocating output
-	//                    buffers. The passed in query contains the result of the
-	//                    downstream allocation query. This function is only called
-	//                    when not operating in passthrough mode. The default
-	//                    implementation will remove all memory dependent metadata.
-	//                    If there is a @filter_meta method implementation, it will
-	//                    be called for all metadata API in the downstream query,
-	//                    otherwise the metadata API is removed.
+	// see also No documentation available
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFilterMeta calls the default implementations of the `GstBaseTransform.filter_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 	- api gobject.Type 
-	// 	- params *gst.Structure 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Return %TRUE if the metadata API should be proposed in the
-	//               upstream allocation query. The default implementation is %NULL
-	//               and will cause all metadata to be removed.
+	// see also No documentation available
 	ParentFilterMeta(query *gst.Query, api gobject.Type, params *gst.Structure) bool
 	// ParentFixateCaps calls the default implementations of the `GstBaseTransform.fixate_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- caps *gst.Caps 
-	// 	- othercaps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
+	// see also No documentation available
 	ParentFixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps
 	// ParentGenerateOutput calls the default implementations of the `GstBaseTransform.generate_output` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	ParentGenerateOutput() (*gst.Buffer, gst.FlowReturn)
 	// ParentGetUnitSize calls the default implementations of the `GstBaseTransform.get_unit_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- size uint 
-	// 	- goret bool 
+	// see also No documentation available
 	ParentGetUnitSize(caps *gst.Caps) (uint, bool)
 	// ParentPrepareOutputBuffer calls the default implementations of the `GstBaseTransform.prepare_output_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- input *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	ParentPrepareOutputBuffer(input *gst.Buffer) (*gst.Buffer, gst.FlowReturn)
 	// ParentProposeAllocation calls the default implementations of the `GstBaseTransform.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- decideQuery *gst.Query 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Propose buffer allocation parameters for upstream elements.
-	//                      This function must be implemented if the element reads or
-	//                      writes the buffer content. The query that was passed to
-	//                      the decide_allocation is passed in this method (or %NULL
-	//                      when the element is in passthrough mode). The default
-	//                      implementation will pass the query downstream when in
-	//                      passthrough mode and will copy all the filtered metadata
-	//                      API in non-passthrough mode.
+	// see also No documentation available
 	ParentProposeAllocation(decideQuery *gst.Query, query *gst.Query) bool
 	// ParentQueryBaseTransform calls the default implementations of the `GstBaseTransform.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Handle a requested query. Subclasses that implement this
-	//                  must chain up to the parent if they didn't handle the
-	//                  query
+	// see also No documentation available
 	ParentQueryBaseTransform(direction gst.PadDirection, query *gst.Query) bool
 	// ParentSetCaps calls the default implementations of the `GstBaseTransform.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- incaps *gst.Caps 
-	// 	- outcaps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Allows the subclass to be notified of the actual caps set.
+	// see also No documentation available
 	ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
 	// ParentSinkEvent calls the default implementations of the `GstBaseTransform.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSrcEvent calls the default implementations of the `GstBaseTransform.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentStart calls the default implementations of the `GstBaseTransform.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstBaseTransform.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentStop() bool
 	// ParentSubmitInputBuffer calls the default implementations of the `GstBaseTransform.submit_input_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- isDiscont bool 
-	// 	- input *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Function which accepts a new input buffer and pre-processes it.
-	//                  The default implementation performs caps (re)negotiation, then
-	//                  QoS if needed, and places the input buffer into the @queued_buf
-	//                  member variable. If the buffer is dropped due to QoS, it returns
-	//                  GST_BASE_TRANSFORM_FLOW_DROPPED. If this input buffer is not
-	//                  contiguous with any previous input buffer, then @is_discont
-	//                  is set to %TRUE. (Since: 1.6)
+	// see also No documentation available
 	ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn
 	// ParentTransform calls the default implementations of the `GstBaseTransform.transform` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- inbuf *gst.Buffer 
-	// 	- outbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Required if the element does not operate in-place.
-	//                  Transforms one incoming buffer to one outgoing buffer.
-	//                  The function is allowed to change size/timestamp/duration
-	//                  of the outgoing buffer.
+	// see also No documentation available
 	ParentTransform(inbuf *gst.Buffer, outbuf *gst.Buffer) gst.FlowReturn
 	// ParentTransformCaps calls the default implementations of the `GstBaseTransform.transform_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- caps *gst.Caps 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.  Given the pad in this direction and the given
-	//                  caps, what caps are allowed on the other pad in this
-	//                  element ?
+	// see also No documentation available
 	ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps
 	// ParentTransformIp calls the default implementations of the `GstBaseTransform.transform_ip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Required if the element operates in-place.
-	//                  Transform the incoming buffer in-place.
+	// see also No documentation available
 	ParentTransformIp(buf *gst.Buffer) gst.FlowReturn
 	// ParentTransformMeta calls the default implementations of the `GstBaseTransform.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- meta *gst.Meta 
-	// 	- inbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method copies all meta without
-	//                  tags. Subclasses can implement this method and return %TRUE if
-	//                  the metadata is to be copied.
+	// see also No documentation available
 	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 	// ParentTransformSize calls the default implementations of the `GstBaseTransform.transform_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- caps *gst.Caps 
-	// 	- size uint 
-	// 	- othercaps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- othersize uint 
-	// 	- goret bool 
+	// see also No documentation available
 	ParentTransformSize(direction gst.PadDirection, caps *gst.Caps, size uint, othercaps *gst.Caps) (uint, bool)
 }
 
@@ -14491,16 +9382,8 @@ func UnsafeBaseTransformToGlibFull(c BaseTransform) unsafe.Pointer {
 
 // GetAllocator wraps gst_base_transform_get_allocator
 // 
-// The function returns the following values:
-// 
-// 	- allocator gst.Allocator (nullable): the #GstAllocator
-// used 
-// 	- params gst.AllocationParams: the #GstAllocationParams of @allocator 
+// see also No documentation available
 //
-// Lets #GstBaseTransform sub-classes know the memory @allocator
-// used by the base class and its @params.
-// 
-// Unref the @allocator after use.
 func (trans *BaseTransformInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstBaseTransform   // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -14526,9 +9409,7 @@ func (trans *BaseTransformInstance) GetAllocator() (gst.Allocator, gst.Allocatio
 
 // GetBufferPool wraps gst_base_transform_get_buffer_pool
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.BufferPool (nullable) 
+// see also No documentation available
 func (trans *BaseTransformInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  *C.GstBufferPool    // return, full, converted, nullable
@@ -14549,11 +9430,8 @@ func (trans *BaseTransformInstance) GetBufferPool() gst.BufferPool {
 
 // IsInPlace wraps gst_base_transform_is_in_place
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// See if @trans is configured as a in_place transform.
 func (trans *BaseTransformInstance) IsInPlace() bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  C.gboolean          // return
@@ -14574,11 +9452,8 @@ func (trans *BaseTransformInstance) IsInPlace() bool {
 
 // IsPassthrough wraps gst_base_transform_is_passthrough
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// See if @trans is configured as a passthrough transform.
 func (trans *BaseTransformInstance) IsPassthrough() bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  C.gboolean          // return
@@ -14599,11 +9474,8 @@ func (trans *BaseTransformInstance) IsPassthrough() bool {
 
 // IsQosEnabled wraps gst_base_transform_is_qos_enabled
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries if the transform will handle QoS.
 func (trans *BaseTransformInstance) IsQosEnabled() bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  C.gboolean          // return
@@ -14624,24 +9496,8 @@ func (trans *BaseTransformInstance) IsQosEnabled() bool {
 
 // Reconfigure wraps gst_base_transform_reconfigure
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Negotiates src pad caps with downstream elements if the source pad is
-// marked as needing reconfiguring. Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in
-// any case. But marks it again if negotiation fails.
-// 
-// Do not call this in the #GstBaseTransformClass::transform or
-// #GstBaseTransformClass::transform_ip vmethod. Call this in
-// #GstBaseTransformClass::submit_input_buffer,
-// #GstBaseTransformClass::prepare_output_buffer or in
-// #GstBaseTransformClass::generate_output _before_ any output buffer is
-// allocated.
-// 
-// It will be default be called when handling an ALLOCATION query or at the
-// very beginning of the default #GstBaseTransformClass::submit_input_buffer
-// implementation.
 func (trans *BaseTransformInstance) Reconfigure() bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  C.gboolean          // return
@@ -14661,10 +9517,9 @@ func (trans *BaseTransformInstance) Reconfigure() bool {
 }
 
 // ReconfigureSink wraps gst_base_transform_reconfigure_sink
+// 
+// see also No documentation available
 //
-// Instructs @trans to request renegotiation upstream. This function is
-// typically called after properties on the transform were set that
-// influence the input format.
 func (trans *BaseTransformInstance) ReconfigureSink() {
 	var carg0 *C.GstBaseTransform // in, none, converted
 
@@ -14675,10 +9530,9 @@ func (trans *BaseTransformInstance) ReconfigureSink() {
 }
 
 // ReconfigureSrc wraps gst_base_transform_reconfigure_src
+// 
+// see also No documentation available
 //
-// Instructs @trans to renegotiate a new downstream transform on the next
-// buffer. This function is typically called after properties on the transform
-// were set that influence the output format.
 func (trans *BaseTransformInstance) ReconfigureSrc() {
 	var carg0 *C.GstBaseTransform // in, none, converted
 
@@ -14690,18 +9544,8 @@ func (trans *BaseTransformInstance) ReconfigureSrc() {
 
 // SetGapAware wraps gst_base_transform_set_gap_aware
 // 
-// The function takes the following parameters:
-// 
-// 	- gapAware bool: New state 
+// see also No documentation available
 //
-// If @gap_aware is %FALSE (the default), output buffers will have the
-// %GST_BUFFER_FLAG_GAP flag unset.
-// 
-// If set to %TRUE, the element must handle output buffers with this flag set
-// correctly, i.e. it can assume that the buffer contains neutral data but must
-// unset the flag if the output is no neutral data.
-// 
-// MT safe.
 func (trans *BaseTransformInstance) SetGapAware(gapAware bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -14718,18 +9562,8 @@ func (trans *BaseTransformInstance) SetGapAware(gapAware bool) {
 
 // SetInPlace wraps gst_base_transform_set_in_place
 // 
-// The function takes the following parameters:
-// 
-// 	- inPlace bool: Boolean value indicating that we would like to operate
-// on in_place buffers. 
+// see also No documentation available
 //
-// Determines whether a non-writable buffer will be copied before passing
-// to the transform_ip function.
-// 
-//   * Always %TRUE if no transform function is implemented.
-//   * Always %FALSE if ONLY transform function is implemented.
-// 
-// MT safe.
 func (trans *BaseTransformInstance) SetInPlace(inPlace bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -14746,17 +9580,8 @@ func (trans *BaseTransformInstance) SetInPlace(inPlace bool) {
 
 // SetPassthrough wraps gst_base_transform_set_passthrough
 // 
-// The function takes the following parameters:
-// 
-// 	- passthrough bool: boolean indicating passthrough mode. 
+// see also No documentation available
 //
-// Set passthrough mode for this filter by default. This is mostly
-// useful for filters that do not care about negotiation.
-// 
-// Always %TRUE for filters which don't implement either a transform
-// or transform_ip or generate_output method.
-// 
-// MT safe.
 func (trans *BaseTransformInstance) SetPassthrough(passthrough bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -14773,21 +9598,8 @@ func (trans *BaseTransformInstance) SetPassthrough(passthrough bool) {
 
 // SetPreferPassthrough wraps gst_base_transform_set_prefer_passthrough
 // 
-// The function takes the following parameters:
-// 
-// 	- preferPassthrough bool: New state 
+// see also No documentation available
 //
-// If @prefer_passthrough is %TRUE (the default), @trans will check and
-// prefer passthrough caps from the list of caps returned by the
-// transform_caps vmethod.
-// 
-// If set to %FALSE, the element must order the caps returned from the
-// transform_caps function in such a way that the preferred format is
-// first in the list. This can be interesting for transforms that can do
-// passthrough transforms but prefer to do something else, like a
-// capsfilter.
-// 
-// MT safe.
 func (trans *BaseTransformInstance) SetPreferPassthrough(preferPassthrough bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -14804,13 +9616,8 @@ func (trans *BaseTransformInstance) SetPreferPassthrough(preferPassthrough bool)
 
 // SetQosEnabled wraps gst_base_transform_set_qos_enabled
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Enable or disable QoS handling in the transform.
-// 
-// MT safe.
 func (trans *BaseTransformInstance) SetQosEnabled(enabled bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -14827,18 +9634,8 @@ func (trans *BaseTransformInstance) SetQosEnabled(enabled bool) {
 
 // UpdateQos wraps gst_base_transform_update_qos
 // 
-// The function takes the following parameters:
-// 
-// 	- proportion float64: the proportion 
-// 	- diff gst.ClockTimeDiff: the diff against the clock 
-// 	- timestamp gst.ClockTime: the timestamp of the buffer generating the QoS expressed in
-// running_time. 
+// see also No documentation available
 //
-// Set the QoS parameters in the transform. This function is called internally
-// when a QOS event is received but subclasses can provide custom information
-// when needed.
-// 
-// MT safe.
 func (trans *BaseTransformInstance) UpdateQos(proportion float64, diff gst.ClockTimeDiff, timestamp gst.ClockTime) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gdouble           // in, none, casted
@@ -14859,20 +9656,8 @@ func (trans *BaseTransformInstance) UpdateQos(proportion float64, diff gst.Clock
 
 // UpdateSrcCaps wraps gst_base_transform_update_src_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- updatedCaps *gst.Caps: An updated version of the srcpad caps to be pushed
-// downstream 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Updates the srcpad caps and sends the caps downstream. This function
-// can be used by subclasses when they have already negotiated their caps
-// but found a change in them (or computed new information). This way,
-// they can notify downstream about that change without losing any
-// buffer.
 func (trans *BaseTransformInstance) UpdateSrcCaps(updatedCaps *gst.Caps) bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 *C.GstCaps          // in, none, converted
@@ -14902,306 +9687,91 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 
 	// // AcceptCaps allows you to override the implementation of the virtual method accept_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Subclasses can override this method to check if @caps can be
-	//                  handled by the element. The default implementation might not be
-	//                  the most optimal way to check this in all cases.
+	// see also No documentation available
 	AcceptCaps func(Instance, gst.PadDirection, *gst.Caps) bool
 	// // BeforeTransform allows you to override the implementation of the virtual method before_transform.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	//
-	// Optional.
-	//                    This method is called right before the base class will
-	//                    start processing. Dynamic properties or other delayed
-	//                    configuration could be performed in this method.
+	// see also No documentation available
 	BeforeTransform func(Instance, *gst.Buffer)
 	// // CopyMetadata allows you to override the implementation of the virtual method copy_metadata.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- input *gst.Buffer 
-	// 	- outbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                 Copy the metadata from the input buffer to the output buffer.
-	//                 The default implementation will copy the flags, timestamps and
-	//                 offsets of the buffer.
+	// see also No documentation available
 	CopyMetadata func(Instance, *gst.Buffer, *gst.Buffer) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Setup the allocation parameters for allocating output
-	//                    buffers. The passed in query contains the result of the
-	//                    downstream allocation query. This function is only called
-	//                    when not operating in passthrough mode. The default
-	//                    implementation will remove all memory dependent metadata.
-	//                    If there is a @filter_meta method implementation, it will
-	//                    be called for all metadata API in the downstream query,
-	//                    otherwise the metadata API is removed.
+	// see also No documentation available
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // FilterMeta allows you to override the implementation of the virtual method filter_meta.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 	- api gobject.Type 
-	// 	- params *gst.Structure 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Return %TRUE if the metadata API should be proposed in the
-	//               upstream allocation query. The default implementation is %NULL
-	//               and will cause all metadata to be removed.
+	// see also No documentation available
 	FilterMeta func(Instance, *gst.Query, gobject.Type, *gst.Structure) bool
 	// // FixateCaps allows you to override the implementation of the virtual method fixate_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- caps *gst.Caps 
-	// 	- othercaps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
+	// see also No documentation available
 	FixateCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 	// // GenerateOutput allows you to override the implementation of the virtual method generate_output.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	GenerateOutput func(Instance) (*gst.Buffer, gst.FlowReturn)
 	// // GetUnitSize allows you to override the implementation of the virtual method get_unit_size.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- size uint 
-	// 	- goret bool 
+	// see also No documentation available
 	GetUnitSize func(Instance, *gst.Caps) (uint, bool)
 	// // PrepareOutputBuffer allows you to override the implementation of the virtual method prepare_output_buffer.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- input *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	PrepareOutputBuffer func(Instance, *gst.Buffer) (*gst.Buffer, gst.FlowReturn)
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- decideQuery *gst.Query 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Propose buffer allocation parameters for upstream elements.
-	//                      This function must be implemented if the element reads or
-	//                      writes the buffer content. The query that was passed to
-	//                      the decide_allocation is passed in this method (or %NULL
-	//                      when the element is in passthrough mode). The default
-	//                      implementation will pass the query downstream when in
-	//                      passthrough mode and will copy all the filtered metadata
-	//                      API in non-passthrough mode.
+	// see also No documentation available
 	ProposeAllocation func(Instance, *gst.Query, *gst.Query) bool
 	// // Query allows you to override the implementation of the virtual method query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Handle a requested query. Subclasses that implement this
-	//                  must chain up to the parent if they didn't handle the
-	//                  query
+	// see also No documentation available
 	Query func(Instance, gst.PadDirection, *gst.Query) bool
 	// // SetCaps allows you to override the implementation of the virtual method set_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- incaps *gst.Caps 
-	// 	- outcaps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Allows the subclass to be notified of the actual caps set.
+	// see also No documentation available
 	SetCaps func(Instance, *gst.Caps, *gst.Caps) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	SrcEvent func(Instance, *gst.Event) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Stop func(Instance) bool
 	// // SubmitInputBuffer allows you to override the implementation of the virtual method submit_input_buffer.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- isDiscont bool 
-	// 	- input *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Function which accepts a new input buffer and pre-processes it.
-	//                  The default implementation performs caps (re)negotiation, then
-	//                  QoS if needed, and places the input buffer into the @queued_buf
-	//                  member variable. If the buffer is dropped due to QoS, it returns
-	//                  GST_BASE_TRANSFORM_FLOW_DROPPED. If this input buffer is not
-	//                  contiguous with any previous input buffer, then @is_discont
-	//                  is set to %TRUE. (Since: 1.6)
+	// see also No documentation available
 	SubmitInputBuffer func(Instance, bool, *gst.Buffer) gst.FlowReturn
 	// // Transform allows you to override the implementation of the virtual method transform.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- inbuf *gst.Buffer 
-	// 	- outbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Required if the element does not operate in-place.
-	//                  Transforms one incoming buffer to one outgoing buffer.
-	//                  The function is allowed to change size/timestamp/duration
-	//                  of the outgoing buffer.
+	// see also No documentation available
 	Transform func(Instance, *gst.Buffer, *gst.Buffer) gst.FlowReturn
 	// // TransformCaps allows you to override the implementation of the virtual method transform_caps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- caps *gst.Caps 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.  Given the pad in this direction and the given
-	//                  caps, what caps are allowed on the other pad in this
-	//                  element ?
+	// see also No documentation available
 	TransformCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 	// // TransformIp allows you to override the implementation of the virtual method transform_ip.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Required if the element operates in-place.
-	//                  Transform the incoming buffer in-place.
+	// see also No documentation available
 	TransformIp func(Instance, *gst.Buffer) gst.FlowReturn
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- meta *gst.Meta 
-	// 	- inbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method copies all meta without
-	//                  tags. Subclasses can implement this method and return %TRUE if
-	//                  the metadata is to be copied.
+	// see also No documentation available
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
 	// // TransformSize allows you to override the implementation of the virtual method transform_size.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- direction gst.PadDirection 
-	// 	- caps *gst.Caps 
-	// 	- size uint 
-	// 	- othercaps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- othersize uint 
-	// 	- goret bool 
+	// see also No documentation available
 	TransformSize func(Instance, gst.PadDirection, *gst.Caps, uint, *gst.Caps) (uint, bool)
 }
 
@@ -15763,19 +10333,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 // ParentAcceptCaps calls the default implementations of the `GstBaseTransform.accept_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- direction gst.PadDirection 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Subclasses can override this method to check if @caps can be
-//                  handled by the element. The default implementation might not be
-//                  the most optimal way to check this in all cases.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -15805,14 +10363,7 @@ func (trans *BaseTransformInstance) ParentAcceptCaps(direction gst.PadDirection,
 // ParentBeforeTransform calls the default implementations of the `GstBaseTransform.before_transform` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-//
-// Optional.
-//                    This method is called right before the base class will
-//                    start processing. Dynamic properties or other delayed
-//                    configuration could be performed in this method.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentBeforeTransform(buffer *gst.Buffer) {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer // in, none, converted
@@ -15830,19 +10381,7 @@ func (trans *BaseTransformInstance) ParentBeforeTransform(buffer *gst.Buffer) {
 // ParentCopyMetadata calls the default implementations of the `GstBaseTransform.copy_metadata` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- input *gst.Buffer 
-// 	- outbuf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                 Copy the metadata from the input buffer to the output buffer.
-//                 The default implementation will copy the flags, timestamps and
-//                 offsets of the buffer.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentCopyMetadata(input *gst.Buffer, outbuf *gst.Buffer) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer // in, none, converted
@@ -15872,22 +10411,7 @@ func (trans *BaseTransformInstance) ParentCopyMetadata(input *gst.Buffer, outbuf
 // ParentDecideAllocation calls the default implementations of the `GstBaseTransform.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Setup the allocation parameters for allocating output
-//                    buffers. The passed in query contains the result of the
-//                    downstream allocation query. This function is only called
-//                    when not operating in passthrough mode. The default
-//                    implementation will remove all memory dependent metadata.
-//                    If there is a @filter_meta method implementation, it will
-//                    be called for all metadata API in the downstream query,
-//                    otherwise the metadata API is removed.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstQuery // in, none, converted
@@ -15914,19 +10438,7 @@ func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) boo
 // ParentFilterMeta calls the default implementations of the `GstBaseTransform.filter_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 	- api gobject.Type 
-// 	- params *gst.Structure 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Return %TRUE if the metadata API should be proposed in the
-//               upstream allocation query. The default implementation is %NULL
-//               and will cause all metadata to be removed.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobject.Type, params *gst.Structure) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstQuery     // in, none, converted
@@ -15959,15 +10471,7 @@ func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobje
 // ParentFixateCaps calls the default implementations of the `GstBaseTransform.fixate_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- direction gst.PadDirection 
-// 	- caps *gst.Caps 
-// 	- othercaps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentFixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -15998,10 +10502,7 @@ func (trans *BaseTransformInstance) ParentFixateCaps(direction gst.PadDirection,
 // ParentGenerateOutput calls the default implementations of the `GstBaseTransform.generate_output` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- outbuf *gst.Buffer 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentGenerateOutput() (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer    // out, full, converted
@@ -16026,14 +10527,7 @@ func (trans *BaseTransformInstance) ParentGenerateOutput() (*gst.Buffer, gst.Flo
 // ParentGetUnitSize calls the default implementations of the `GstBaseTransform.get_unit_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- size uint 
-// 	- goret bool 
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentGetUnitSize(caps *gst.Caps) (uint, bool) {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstCaps // in, none, converted
@@ -16063,14 +10557,7 @@ func (trans *BaseTransformInstance) ParentGetUnitSize(caps *gst.Caps) (uint, boo
 // ParentPrepareOutputBuffer calls the default implementations of the `GstBaseTransform.prepare_output_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- input *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- outbuf *gst.Buffer 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentPrepareOutputBuffer(input *gst.Buffer) (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -16098,23 +10585,7 @@ func (trans *BaseTransformInstance) ParentPrepareOutputBuffer(input *gst.Buffer)
 // ParentProposeAllocation calls the default implementations of the `GstBaseTransform.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- decideQuery *gst.Query 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Propose buffer allocation parameters for upstream elements.
-//                      This function must be implemented if the element reads or
-//                      writes the buffer content. The query that was passed to
-//                      the decide_allocation is passed in this method (or %NULL
-//                      when the element is in passthrough mode). The default
-//                      implementation will pass the query downstream when in
-//                      passthrough mode and will copy all the filtered metadata
-//                      API in non-passthrough mode.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Query, query *gst.Query) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstQuery // in, none, converted
@@ -16144,19 +10615,7 @@ func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Que
 // ParentQueryBaseTransform calls the default implementations of the `GstBaseTransform.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- direction gst.PadDirection 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Handle a requested query. Subclasses that implement this
-//                  must chain up to the parent if they didn't handle the
-//                  query
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentQueryBaseTransform(direction gst.PadDirection, query *gst.Query) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -16186,16 +10645,7 @@ func (trans *BaseTransformInstance) ParentQueryBaseTransform(direction gst.PadDi
 // ParentSetCaps calls the default implementations of the `GstBaseTransform.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- incaps *gst.Caps 
-// 	- outcaps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Allows the subclass to be notified of the actual caps set.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstCaps // in, none, converted
@@ -16225,13 +10675,7 @@ func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst
 // ParentSinkEvent calls the default implementations of the `GstBaseTransform.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstEvent // in, none, converted
@@ -16258,13 +10702,7 @@ func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSrcEvent calls the default implementations of the `GstBaseTransform.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstEvent // in, none, converted
@@ -16291,13 +10729,7 @@ func (trans *BaseTransformInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentStart calls the default implementations of the `GstBaseTransform.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element starts processing.
-//                  Allows opening external resources.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentStart() bool {
 	var carg0 *C.GstBaseTransform
 	var cret  C.gboolean // return
@@ -16321,13 +10753,7 @@ func (trans *BaseTransformInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstBaseTransform.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element stops processing.
-//                  Allows closing external resources.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentStop() bool {
 	var carg0 *C.GstBaseTransform
 	var cret  C.gboolean // return
@@ -16351,22 +10777,7 @@ func (trans *BaseTransformInstance) ParentStop() bool {
 // ParentSubmitInputBuffer calls the default implementations of the `GstBaseTransform.submit_input_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- isDiscont bool 
-// 	- input *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Function which accepts a new input buffer and pre-processes it.
-//                  The default implementation performs caps (re)negotiation, then
-//                  QoS if needed, and places the input buffer into the @queued_buf
-//                  member variable. If the buffer is dropped due to QoS, it returns
-//                  GST_BASE_TRANSFORM_FLOW_DROPPED. If this input buffer is not
-//                  contiguous with any previous input buffer, then @is_discont
-//                  is set to %TRUE. (Since: 1.6)
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.gboolean      // in, none, converted
@@ -16396,19 +10807,7 @@ func (trans *BaseTransformInstance) ParentSubmitInputBuffer(isDiscont bool, inpu
 // ParentTransform calls the default implementations of the `GstBaseTransform.transform` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- inbuf *gst.Buffer 
-// 	- outbuf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Required if the element does not operate in-place.
-//                  Transforms one incoming buffer to one outgoing buffer.
-//                  The function is allowed to change size/timestamp/duration
-//                  of the outgoing buffer.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -16436,19 +10835,7 @@ func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *g
 // ParentTransformCaps calls the default implementations of the `GstBaseTransform.transform_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- direction gst.PadDirection 
-// 	- caps *gst.Caps 
-// 	- filter *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Optional.  Given the pad in this direction and the given
-//                  caps, what caps are allowed on the other pad in this
-//                  element ?
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -16479,16 +10866,7 @@ func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirecti
 // ParentTransformIp calls the default implementations of the `GstBaseTransform.transform_ip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Required if the element operates in-place.
-//                  Transform the incoming buffer in-place.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentTransformIp(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -16513,20 +10891,7 @@ func (trans *BaseTransformInstance) ParentTransformIp(buf *gst.Buffer) gst.FlowR
 // ParentTransformMeta calls the default implementations of the `GstBaseTransform.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- outbuf *gst.Buffer 
-// 	- meta *gst.Meta 
-// 	- inbuf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional. Transform the metadata on the input buffer to the
-//                  output buffer. By default this method copies all meta without
-//                  tags. Subclasses can implement this method and return %TRUE if
-//                  the metadata is to be copied.
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer // in, none, converted
@@ -16559,17 +10924,7 @@ func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta
 // ParentTransformSize calls the default implementations of the `GstBaseTransform.transform_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- direction gst.PadDirection 
-// 	- caps *gst.Caps 
-// 	- size uint 
-// 	- othercaps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- othersize uint 
-// 	- goret bool 
+// see also No documentation available
 func (trans *BaseTransformInstance) ParentTransformSize(direction gst.PadDirection, caps *gst.Caps, size uint, othercaps *gst.Caps) (uint, bool) {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -16640,347 +10995,117 @@ type CollectPadsInstance struct {
 var _ CollectPads = (*CollectPadsInstance)(nil)
 
 // CollectPads wraps GstCollectPads
+// 
+// see also No documentation available
 //
-// Manages a set of pads that operate in collect mode. This means that control
-// is given to the manager of this object when all pads have data.
-// 
-//   * Collectpads are created with gst_collect_pads_new(). A callback should then
-//     be installed with gst_collect_pads_set_function ().
-// 
-//   * Pads are added to the collection with gst_collect_pads_add_pad()/
-//     gst_collect_pads_remove_pad(). The pad has to be a sinkpad. When added,
-//     the chain, event and query functions of the pad are overridden. The
-//     element_private of the pad is used to store private information for the
-//     collectpads.
-// 
-//   * For each pad, data is queued in the _chain function or by
-//     performing a pull_range.
-// 
-//   * When data is queued on all pads in waiting mode, the callback function is called.
-// 
-//   * Data can be dequeued from the pad with the gst_collect_pads_pop() method.
-//     One can peek at the data with the gst_collect_pads_peek() function.
-//     These functions will return %NULL if the pad received an EOS event. When all
-//     pads return %NULL from a gst_collect_pads_peek(), the element can emit an EOS
-//     event itself.
-// 
-//   * Data can also be dequeued in byte units using the gst_collect_pads_available(),
-//     gst_collect_pads_read_buffer() and gst_collect_pads_flush() calls.
-// 
-//   * Elements should call gst_collect_pads_start() and gst_collect_pads_stop() in
-//     their state change functions to start and stop the processing of the collectpads.
-//     The gst_collect_pads_stop() call should be called before calling the parent
-//     element state change function in the PAUSED_TO_READY state change to ensure
-//     no pad is blocked and the element can finish streaming.
-// 
-//   * gst_collect_pads_set_waiting() sets a pad to waiting or non-waiting mode.
-//     CollectPads element is not waiting for data to be collected on non-waiting pads.
-//     Thus these pads may but need not have data when the callback is called.
-//     All pads are in waiting mode by default.
 type CollectPads interface {
 	gst.Object
 	upcastToGstCollectPads() *CollectPadsInstance
 
 	// Available wraps gst_collect_pads_available
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Query how much bytes can be read from each queued buffer. This means
-	// that the result of this call is the maximum number of bytes that can
-	// be read from each of the pads.
-	// 
-	// This function should be called with @pads STREAM_LOCK held, such as
-	// in the callback.
-	// 
-	// MT safe.
 	Available() uint
 	// EventDefault wraps gst_collect_pads_event_default
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- data *CollectData: collect data of corresponding pad 
-	// 	- event *gst.Event: event being processed 
-	// 	- discard bool: process but do not send event downstream 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Default #GstCollectPads event handling that elements should always
-	// chain up to to ensure proper operation.  Element might however indicate
-	// event should not be forwarded downstream.
 	EventDefault(*CollectData, *gst.Event, bool) bool
 	// Flush wraps gst_collect_pads_flush
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- data *CollectData: the data to use 
-	// 	- size uint: the number of bytes to flush 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Flush @size bytes from the pad @data.
-	// 
-	// This function should be called with @pads STREAM_LOCK held, such as
-	// in the callback.
-	// 
-	// MT safe.
 	Flush(*CollectData, uint) uint
 	// Peek wraps gst_collect_pads_peek
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- data *CollectData: the data to use 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Peek at the buffer currently queued in @data. This function
-	// should be called with the @pads STREAM_LOCK held, such as in the callback
-	// handler.
-	// 
-	// MT safe.
 	Peek(*CollectData) *gst.Buffer
 	// Pop wraps gst_collect_pads_pop
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- data *CollectData: the data to use 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Pop the buffer currently queued in @data. This function
-	// should be called with the @pads STREAM_LOCK held, such as in the callback
-	// handler.
-	// 
-	// MT safe.
 	Pop(*CollectData) *gst.Buffer
 	// QueryDefault wraps gst_collect_pads_query_default
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- data *CollectData: collect data of corresponding pad 
-	// 	- query *gst.Query: query being processed 
-	// 	- discard bool: process but do not send event downstream 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Default #GstCollectPads query handling that elements should always
-	// chain up to to ensure proper operation.  Element might however indicate
-	// query should not be forwarded downstream.
 	QueryDefault(*CollectData, *gst.Query, bool) bool
 	// ReadBuffer wraps gst_collect_pads_read_buffer
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- data *CollectData: the data to use 
-	// 	- size uint: the number of bytes to read 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Get a subbuffer of @size bytes from the given pad @data.
-	// 
-	// This function should be called with @pads STREAM_LOCK held, such as in the
-	// callback.
-	// 
-	// MT safe.
 	ReadBuffer(*CollectData, uint) *gst.Buffer
 	// RemovePad wraps gst_collect_pads_remove_pad
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pad gst.Pad: the pad to remove 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Remove a pad from the collection of collect pads. This function will also
-	// free the #GstCollectData and all the resources that were allocated with
-	// gst_collect_pads_add_pad().
-	// 
-	// The pad will be deactivated automatically when @pads is stopped.
-	// 
-	// MT safe.
 	RemovePad(gst.Pad) bool
 	// SetBufferFunction wraps gst_collect_pads_set_buffer_function
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- fn CollectPadsBufferFunction: the function to set 
+	// see also No documentation available
 	//
-	// Set the callback function and user data that will be called with
-	// the oldest buffer when all pads have been collected, or %NULL on EOS.
-	// If a buffer is passed, the callback owns a reference and must unref
-	// it.
-	// 
-	// MT safe.
 	SetBufferFunction(CollectPadsBufferFunction)
 	// SetClipFunction wraps gst_collect_pads_set_clip_function
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- clipfunc CollectPadsClipFunction: clip function to install 
+	// see also No documentation available
 	//
-	// Install a clipping function that is called right after a buffer is received
-	// on a pad managed by @pads. See #GstCollectPadsClipFunction for more info.
 	SetClipFunction(CollectPadsClipFunction)
 	// SetCompareFunction wraps gst_collect_pads_set_compare_function
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- fn CollectPadsCompareFunction: the function to set 
+	// see also No documentation available
 	//
-	// Set the timestamp comparison function.
-	// 
-	// MT safe.
 	SetCompareFunction(CollectPadsCompareFunction)
 	// SetEventFunction wraps gst_collect_pads_set_event_function
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- fn CollectPadsEventFunction: the function to set 
+	// see also No documentation available
 	//
-	// Set the event callback function and user data that will be called when
-	// collectpads has received an event originating from one of the collected
-	// pads.  If the event being processed is a serialized one, this callback is
-	// called with @pads STREAM_LOCK held, otherwise not.  As this lock should be
-	// held when calling a number of CollectPads functions, it should be acquired
-	// if so (unusually) needed.
-	// 
-	// MT safe.
 	SetEventFunction(CollectPadsEventFunction)
 	// SetFlushFunction wraps gst_collect_pads_set_flush_function
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- fn CollectPadsFlushFunction: flush function to install 
+	// see also No documentation available
 	//
-	// Install a flush function that is called when the internal
-	// state of all pads should be flushed as part of flushing seek
-	// handling. See #GstCollectPadsFlushFunction for more info.
 	SetFlushFunction(CollectPadsFlushFunction)
 	// SetFlushing wraps gst_collect_pads_set_flushing
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flushing bool: desired state of the pads 
+	// see also No documentation available
 	//
-	// Change the flushing state of all the pads in the collection. No pad
-	// is able to accept anymore data when @flushing is %TRUE. Calling this
-	// function with @flushing %FALSE makes @pads accept data again.
-	// Caller must ensure that downstream streaming (thread) is not blocked,
-	// e.g. by sending a FLUSH_START downstream.
-	// 
-	// MT safe.
 	SetFlushing(bool)
 	// SetFunction wraps gst_collect_pads_set_function
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- fn CollectPadsFunction: the function to set 
+	// see also No documentation available
 	//
-	// CollectPads provides a default collection algorithm that will determine
-	// the oldest buffer available on all of its pads, and then delegate
-	// to a configured callback.
-	// However, if circumstances are more complicated and/or more control
-	// is desired, this sets a callback that will be invoked instead when
-	// all the pads added to the collection have buffers queued.
-	// Evidently, this callback is not compatible with
-	// gst_collect_pads_set_buffer_function() callback.
-	// If this callback is set, the former will be unset.
-	// 
-	// MT safe.
 	SetFunction(CollectPadsFunction)
 	// SetQueryFunction wraps gst_collect_pads_set_query_function
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- fn CollectPadsQueryFunction: the function to set 
+	// see also No documentation available
 	//
-	// Set the query callback function and user data that will be called after
-	// collectpads has received a query originating from one of the collected
-	// pads.  If the query being processed is a serialized one, this callback is
-	// called with @pads STREAM_LOCK held, otherwise not.  As this lock should be
-	// held when calling a number of CollectPads functions, it should be acquired
-	// if so (unusually) needed.
-	// 
-	// MT safe.
 	SetQueryFunction(CollectPadsQueryFunction)
 	// SetWaiting wraps gst_collect_pads_set_waiting
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- data *CollectData: the data to use 
-	// 	- waiting bool: boolean indicating whether this pad should operate
-	//           in waiting or non-waiting mode 
+	// see also No documentation available
 	//
-	// Sets a pad to waiting or non-waiting mode, if at least this pad
-	// has not been created with locked waiting state,
-	// in which case nothing happens.
-	// 
-	// This function should be called with @pads STREAM_LOCK held, such as
-	// in the callback.
-	// 
-	// MT safe.
 	SetWaiting(*CollectData, bool)
 	// SrcEventDefault wraps gst_collect_pads_src_event_default
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pad gst.Pad: src #GstPad that received the event 
-	// 	- event *gst.Event: event being processed 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Default #GstCollectPads event handling for the src pad of elements.
-	// Elements can chain up to this to let flushing seek event handling
-	// be done by #GstCollectPads.
 	SrcEventDefault(gst.Pad, *gst.Event) bool
 	// Start wraps gst_collect_pads_start
-	//
-	// Starts the processing of data in the collect_pads.
 	// 
-	// MT safe.
+	// see also No documentation available
+	//
 	Start()
 	// Stop wraps gst_collect_pads_stop
-	//
-	// Stops the processing of data in the collect_pads. this function
-	// will also unblock any blocking operations.
 	// 
-	// MT safe.
+	// see also No documentation available
+	//
 	Stop()
 	// TakeBuffer wraps gst_collect_pads_take_buffer
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- data *CollectData: the data to use 
-	// 	- size uint: the number of bytes to read 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer (nullable) 
+	// see also No documentation available
 	//
-	// Get a subbuffer of @size bytes from the given pad @data. Flushes the amount
-	// of read bytes.
-	// 
-	// This function should be called with @pads STREAM_LOCK held, such as in the
-	// callback.
-	// 
-	// MT safe.
 	TakeBuffer(*CollectData, uint) *gst.Buffer
 
 	// chain up virtual methods:
@@ -17040,13 +11165,8 @@ func UnsafeCollectPadsToGlibFull(c CollectPads) unsafe.Pointer {
 
 // NewCollectPads wraps gst_collect_pads_new
 // 
-// The function returns the following values:
-// 
-// 	- goret CollectPads 
+// see also No documentation available
 //
-// Create a new instance of #GstCollectPads.
-// 
-// MT safe.
 func NewCollectPads() CollectPads {
 	var cret *C.GstCollectPads // return, full, converted
 
@@ -17061,18 +11181,8 @@ func NewCollectPads() CollectPads {
 
 // Available wraps gst_collect_pads_available
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Query how much bytes can be read from each queued buffer. This means
-// that the result of this call is the maximum number of bytes that can
-// be read from each of the pads.
-// 
-// This function should be called with @pads STREAM_LOCK held, such as
-// in the callback.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) Available() uint {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var cret  C.guint           // return, none, casted
@@ -17091,19 +11201,8 @@ func (pads *CollectPadsInstance) Available() uint {
 
 // EventDefault wraps gst_collect_pads_event_default
 // 
-// The function takes the following parameters:
-// 
-// 	- data *CollectData: collect data of corresponding pad 
-// 	- event *gst.Event: event being processed 
-// 	- discard bool: process but do not send event downstream 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Default #GstCollectPads event handling that elements should always
-// chain up to to ensure proper operation.  Element might however indicate
-// event should not be forwarded downstream.
 func (pads *CollectPadsInstance) EventDefault(data *CollectData, event *gst.Event, discard bool) bool {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -17135,21 +11234,8 @@ func (pads *CollectPadsInstance) EventDefault(data *CollectData, event *gst.Even
 
 // Flush wraps gst_collect_pads_flush
 // 
-// The function takes the following parameters:
-// 
-// 	- data *CollectData: the data to use 
-// 	- size uint: the number of bytes to flush 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Flush @size bytes from the pad @data.
-// 
-// This function should be called with @pads STREAM_LOCK held, such as
-// in the callback.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) Flush(data *CollectData, size uint) uint {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -17174,19 +11260,8 @@ func (pads *CollectPadsInstance) Flush(data *CollectData, size uint) uint {
 
 // Peek wraps gst_collect_pads_peek
 // 
-// The function takes the following parameters:
-// 
-// 	- data *CollectData: the data to use 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Peek at the buffer currently queued in @data. This function
-// should be called with the @pads STREAM_LOCK held, such as in the callback
-// handler.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) Peek(data *CollectData) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -17210,19 +11285,8 @@ func (pads *CollectPadsInstance) Peek(data *CollectData) *gst.Buffer {
 
 // Pop wraps gst_collect_pads_pop
 // 
-// The function takes the following parameters:
-// 
-// 	- data *CollectData: the data to use 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Pop the buffer currently queued in @data. This function
-// should be called with the @pads STREAM_LOCK held, such as in the callback
-// handler.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) Pop(data *CollectData) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -17246,19 +11310,8 @@ func (pads *CollectPadsInstance) Pop(data *CollectData) *gst.Buffer {
 
 // QueryDefault wraps gst_collect_pads_query_default
 // 
-// The function takes the following parameters:
-// 
-// 	- data *CollectData: collect data of corresponding pad 
-// 	- query *gst.Query: query being processed 
-// 	- discard bool: process but do not send event downstream 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Default #GstCollectPads query handling that elements should always
-// chain up to to ensure proper operation.  Element might however indicate
-// query should not be forwarded downstream.
 func (pads *CollectPadsInstance) QueryDefault(data *CollectData, query *gst.Query, discard bool) bool {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -17290,21 +11343,8 @@ func (pads *CollectPadsInstance) QueryDefault(data *CollectData, query *gst.Quer
 
 // ReadBuffer wraps gst_collect_pads_read_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- data *CollectData: the data to use 
-// 	- size uint: the number of bytes to read 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Get a subbuffer of @size bytes from the given pad @data.
-// 
-// This function should be called with @pads STREAM_LOCK held, such as in the
-// callback.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) ReadBuffer(data *CollectData, size uint) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -17331,21 +11371,8 @@ func (pads *CollectPadsInstance) ReadBuffer(data *CollectData, size uint) *gst.B
 
 // RemovePad wraps gst_collect_pads_remove_pad
 // 
-// The function takes the following parameters:
-// 
-// 	- pad gst.Pad: the pad to remove 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Remove a pad from the collection of collect pads. This function will also
-// free the #GstCollectData and all the resources that were allocated with
-// gst_collect_pads_add_pad().
-// 
-// The pad will be deactivated automatically when @pads is stopped.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) RemovePad(pad gst.Pad) bool {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstPad         // in, none, converted
@@ -17369,16 +11396,8 @@ func (pads *CollectPadsInstance) RemovePad(pad gst.Pad) bool {
 
 // SetBufferFunction wraps gst_collect_pads_set_buffer_function
 // 
-// The function takes the following parameters:
-// 
-// 	- fn CollectPadsBufferFunction: the function to set 
+// see also No documentation available
 //
-// Set the callback function and user data that will be called with
-// the oldest buffer when all pads have been collected, or %NULL on EOS.
-// If a buffer is passed, the callback owns a reference and must unref
-// it.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) SetBufferFunction(fn CollectPadsBufferFunction) {
 	var carg0 *C.GstCollectPads              // in, none, converted
 	var carg1 C.GstCollectPadsBufferFunction // callback, scope: call, closure: carg2
@@ -17396,12 +11415,8 @@ func (pads *CollectPadsInstance) SetBufferFunction(fn CollectPadsBufferFunction)
 
 // SetClipFunction wraps gst_collect_pads_set_clip_function
 // 
-// The function takes the following parameters:
-// 
-// 	- clipfunc CollectPadsClipFunction: clip function to install 
+// see also No documentation available
 //
-// Install a clipping function that is called right after a buffer is received
-// on a pad managed by @pads. See #GstCollectPadsClipFunction for more info.
 func (pads *CollectPadsInstance) SetClipFunction(clipfunc CollectPadsClipFunction) {
 	var carg0 *C.GstCollectPads            // in, none, converted
 	var carg1 C.GstCollectPadsClipFunction // callback, scope: call, closure: carg2
@@ -17419,13 +11434,8 @@ func (pads *CollectPadsInstance) SetClipFunction(clipfunc CollectPadsClipFunctio
 
 // SetCompareFunction wraps gst_collect_pads_set_compare_function
 // 
-// The function takes the following parameters:
-// 
-// 	- fn CollectPadsCompareFunction: the function to set 
+// see also No documentation available
 //
-// Set the timestamp comparison function.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) SetCompareFunction(fn CollectPadsCompareFunction) {
 	var carg0 *C.GstCollectPads               // in, none, converted
 	var carg1 C.GstCollectPadsCompareFunction // callback, scope: call, closure: carg2
@@ -17443,18 +11453,8 @@ func (pads *CollectPadsInstance) SetCompareFunction(fn CollectPadsCompareFunctio
 
 // SetEventFunction wraps gst_collect_pads_set_event_function
 // 
-// The function takes the following parameters:
-// 
-// 	- fn CollectPadsEventFunction: the function to set 
+// see also No documentation available
 //
-// Set the event callback function and user data that will be called when
-// collectpads has received an event originating from one of the collected
-// pads.  If the event being processed is a serialized one, this callback is
-// called with @pads STREAM_LOCK held, otherwise not.  As this lock should be
-// held when calling a number of CollectPads functions, it should be acquired
-// if so (unusually) needed.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) SetEventFunction(fn CollectPadsEventFunction) {
 	var carg0 *C.GstCollectPads             // in, none, converted
 	var carg1 C.GstCollectPadsEventFunction // callback, scope: call, closure: carg2
@@ -17472,13 +11472,8 @@ func (pads *CollectPadsInstance) SetEventFunction(fn CollectPadsEventFunction) {
 
 // SetFlushFunction wraps gst_collect_pads_set_flush_function
 // 
-// The function takes the following parameters:
-// 
-// 	- fn CollectPadsFlushFunction: flush function to install 
+// see also No documentation available
 //
-// Install a flush function that is called when the internal
-// state of all pads should be flushed as part of flushing seek
-// handling. See #GstCollectPadsFlushFunction for more info.
 func (pads *CollectPadsInstance) SetFlushFunction(fn CollectPadsFlushFunction) {
 	var carg0 *C.GstCollectPads             // in, none, converted
 	var carg1 C.GstCollectPadsFlushFunction // callback, scope: call, closure: carg2
@@ -17496,17 +11491,8 @@ func (pads *CollectPadsInstance) SetFlushFunction(fn CollectPadsFlushFunction) {
 
 // SetFlushing wraps gst_collect_pads_set_flushing
 // 
-// The function takes the following parameters:
-// 
-// 	- flushing bool: desired state of the pads 
+// see also No documentation available
 //
-// Change the flushing state of all the pads in the collection. No pad
-// is able to accept anymore data when @flushing is %TRUE. Calling this
-// function with @flushing %FALSE makes @pads accept data again.
-// Caller must ensure that downstream streaming (thread) is not blocked,
-// e.g. by sending a FLUSH_START downstream.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) SetFlushing(flushing bool) {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 C.gboolean        // in
@@ -17523,21 +11509,8 @@ func (pads *CollectPadsInstance) SetFlushing(flushing bool) {
 
 // SetFunction wraps gst_collect_pads_set_function
 // 
-// The function takes the following parameters:
-// 
-// 	- fn CollectPadsFunction: the function to set 
+// see also No documentation available
 //
-// CollectPads provides a default collection algorithm that will determine
-// the oldest buffer available on all of its pads, and then delegate
-// to a configured callback.
-// However, if circumstances are more complicated and/or more control
-// is desired, this sets a callback that will be invoked instead when
-// all the pads added to the collection have buffers queued.
-// Evidently, this callback is not compatible with
-// gst_collect_pads_set_buffer_function() callback.
-// If this callback is set, the former will be unset.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) SetFunction(fn CollectPadsFunction) {
 	var carg0 *C.GstCollectPads        // in, none, converted
 	var carg1 C.GstCollectPadsFunction // callback, scope: call, closure: carg2
@@ -17555,18 +11528,8 @@ func (pads *CollectPadsInstance) SetFunction(fn CollectPadsFunction) {
 
 // SetQueryFunction wraps gst_collect_pads_set_query_function
 // 
-// The function takes the following parameters:
-// 
-// 	- fn CollectPadsQueryFunction: the function to set 
+// see also No documentation available
 //
-// Set the query callback function and user data that will be called after
-// collectpads has received a query originating from one of the collected
-// pads.  If the query being processed is a serialized one, this callback is
-// called with @pads STREAM_LOCK held, otherwise not.  As this lock should be
-// held when calling a number of CollectPads functions, it should be acquired
-// if so (unusually) needed.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) SetQueryFunction(fn CollectPadsQueryFunction) {
 	var carg0 *C.GstCollectPads             // in, none, converted
 	var carg1 C.GstCollectPadsQueryFunction // callback, scope: call, closure: carg2
@@ -17584,20 +11547,8 @@ func (pads *CollectPadsInstance) SetQueryFunction(fn CollectPadsQueryFunction) {
 
 // SetWaiting wraps gst_collect_pads_set_waiting
 // 
-// The function takes the following parameters:
-// 
-// 	- data *CollectData: the data to use 
-// 	- waiting bool: boolean indicating whether this pad should operate
-//           in waiting or non-waiting mode 
+// see also No documentation available
 //
-// Sets a pad to waiting or non-waiting mode, if at least this pad
-// has not been created with locked waiting state,
-// in which case nothing happens.
-// 
-// This function should be called with @pads STREAM_LOCK held, such as
-// in the callback.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) SetWaiting(data *CollectData, waiting bool) {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -17617,18 +11568,8 @@ func (pads *CollectPadsInstance) SetWaiting(data *CollectData, waiting bool) {
 
 // SrcEventDefault wraps gst_collect_pads_src_event_default
 // 
-// The function takes the following parameters:
-// 
-// 	- pad gst.Pad: src #GstPad that received the event 
-// 	- event *gst.Event: event being processed 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Default #GstCollectPads event handling for the src pad of elements.
-// Elements can chain up to this to let flushing seek event handling
-// be done by #GstCollectPads.
 func (pads *CollectPadsInstance) SrcEventDefault(pad gst.Pad, event *gst.Event) bool {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstPad         // in, none, converted
@@ -17654,10 +11595,9 @@ func (pads *CollectPadsInstance) SrcEventDefault(pad gst.Pad, event *gst.Event) 
 }
 
 // Start wraps gst_collect_pads_start
-//
-// Starts the processing of data in the collect_pads.
 // 
-// MT safe.
+// see also No documentation available
+//
 func (pads *CollectPadsInstance) Start() {
 	var carg0 *C.GstCollectPads // in, none, converted
 
@@ -17668,11 +11608,9 @@ func (pads *CollectPadsInstance) Start() {
 }
 
 // Stop wraps gst_collect_pads_stop
-//
-// Stops the processing of data in the collect_pads. this function
-// will also unblock any blocking operations.
 // 
-// MT safe.
+// see also No documentation available
+//
 func (pads *CollectPadsInstance) Stop() {
 	var carg0 *C.GstCollectPads // in, none, converted
 
@@ -17684,22 +11622,8 @@ func (pads *CollectPadsInstance) Stop() {
 
 // TakeBuffer wraps gst_collect_pads_take_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- data *CollectData: the data to use 
-// 	- size uint: the number of bytes to read 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Get a subbuffer of @size bytes from the given pad @data. Flushes the amount
-// of read bytes.
-// 
-// This function should be called with @pads STREAM_LOCK held, such as in the
-// callback.
-// 
-// MT safe.
 func (pads *CollectPadsInstance) TakeBuffer(data *CollectData, size uint) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -17773,36 +11697,35 @@ type DataQueueInstance struct {
 var _ DataQueue = (*DataQueueInstance)(nil)
 
 // DataQueue wraps GstDataQueue
+// 
+// see also No documentation available
 //
-// #GstDataQueue is an object that handles threadsafe queueing of objects. It
-// also provides size-related functionality. This object should be used for
-// any #GstElement that wishes to provide some sort of queueing functionality.
 type DataQueue interface {
 	gobject.Object
 	upcastToGstDataQueue() *DataQueueInstance
 
 	// ConnectEmpty connects the provided callback to the "empty" signal
+	// 
+	// see also No documentation available
 	//
-	// Reports that the queue became empty (empty).
-	// A queue is empty if the total amount of visible items inside it (num-visible, time,
-	// size) is lower than the boundary values which can be set through the GObject
-	// properties.
 	ConnectEmpty(func(DataQueue)) gobject.SignalHandle
 	// ConnectFull connects the provided callback to the "full" signal
+	// 
+	// see also No documentation available
 	//
-	// Reports that the queue became full (full).
-	// A queue is full if the total amount of data inside it (num-visible, time,
-	// size) is higher than the boundary values which can be set through the GObject
-	// properties.
 	ConnectFull(func(DataQueue)) gobject.SignalHandle
 
 	// chain up virtual methods:
 
 	// ParentEmpty calls the default implementations of the `GstDataQueue.empty` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
+	// see also No documentation available
 	ParentEmpty()
 	// ParentFull calls the default implementations of the `GstDataQueue.full` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
+	// see also No documentation available
 	ParentFull()
 }
 
@@ -17855,21 +11778,17 @@ func UnsafeDataQueueToGlibFull(c DataQueue) unsafe.Pointer {
 }
 
 // ConnectEmpty connects the provided callback to the "empty" signal
+// 
+// see also No documentation available
 //
-// Reports that the queue became empty (empty).
-// A queue is empty if the total amount of visible items inside it (num-visible, time,
-// size) is lower than the boundary values which can be set through the GObject
-// properties.
 func (o *DataQueueInstance) ConnectEmpty(fn func(DataQueue)) gobject.SignalHandle {
 	return o.Connect("empty", fn)
 }
 
 // ConnectFull connects the provided callback to the "full" signal
+// 
+// see also No documentation available
 //
-// Reports that the queue became full (full).
-// A queue is full if the total amount of data inside it (num-visible, time,
-// size) is higher than the boundary values which can be set through the GObject
-// properties.
 func (o *DataQueueInstance) ConnectFull(fn func(DataQueue)) gobject.SignalHandle {
 	return o.Connect("full", fn)
 }
@@ -17881,8 +11800,12 @@ type DataQueueOverrides[Instance DataQueue] struct {
 	gobject.ObjectOverrides[Instance]
 
 	// // Empty allows you to override the implementation of the virtual method empty.
+	// 
+	// see also No documentation available
 	Empty func(Instance)
 	// // Full allows you to override the implementation of the virtual method full.
+	// 
+	// see also No documentation available
 	Full func(Instance)
 }
 
@@ -17926,6 +11849,8 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 
 // ParentEmpty calls the default implementations of the `GstDataQueue.empty` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
+// 
+// see also No documentation available
 func (queue *DataQueueInstance) ParentEmpty() {
 	var carg0 *C.GstDataQueue
 
@@ -17939,6 +11864,8 @@ func (queue *DataQueueInstance) ParentEmpty() {
 
 // ParentFull calls the default implementations of the `GstDataQueue.full` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
+// 
+// see also No documentation available
 func (queue *DataQueueInstance) ParentFull() {
 	var carg0 *C.GstDataQueue
 
@@ -17985,26 +11912,9 @@ type PushSrcInstance struct {
 var _ PushSrc = (*PushSrcInstance)(nil)
 
 // PushSrc wraps GstPushSrc
+// 
+// see also No documentation available
 //
-// This class is mostly useful for elements that cannot do
-// random access, or at least very slowly. The source usually
-// prefers to push out a fixed size buffer.
-// 
-// Subclasses usually operate in a format that is different from the
-// default GST_FORMAT_BYTES format of #GstBaseSrc.
-// 
-// Classes extending this base class will usually be scheduled
-// in a push based mode. If the peer accepts to operate without
-// offsets and within the limits of the allowed block size, this
-// class can operate in getrange based mode automatically. To make
-// this possible, the subclass should implement and override the
-// SCHEDULING query.
-// 
-// The subclass should extend the methods from the baseclass in
-// addition to the ::create method.
-// 
-// Seeking, flushing, scheduling and sync is all handled by this
-// base class.
 type PushSrc interface {
 	BaseSrc
 	upcastToGstPushSrc() *PushSrcInstance
@@ -18014,25 +11924,12 @@ type PushSrc interface {
 	// ParentAllocPushSrc calls the default implementations of the `GstPushSrc.alloc` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- buf *gst.Buffer (nullable) 
-	// 	- goret gst.FlowReturn 
-	//
-	// Allocate memory for a buffer.
+	// see also No documentation available
 	ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn)
 	// ParentFillPushSrc calls the default implementations of the `GstPushSrc.fill` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Ask the subclass to fill the buffer with data.
+	// see also No documentation available
 	ParentFillPushSrc(buf *gst.Buffer) gst.FlowReturn
 }
 
@@ -18100,24 +11997,11 @@ type PushSrcOverrides[Instance PushSrc] struct {
 
 	// // Alloc allows you to override the implementation of the virtual method alloc.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- buf *gst.Buffer (nullable) 
-	// 	- goret gst.FlowReturn 
-	//
-	// Allocate memory for a buffer.
+	// see also No documentation available
 	Alloc func(Instance) (*gst.Buffer, gst.FlowReturn)
 	// // Fill allows you to override the implementation of the virtual method fill.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Ask the subclass to fill the buffer with data.
+	// see also No documentation available
 	Fill func(Instance, *gst.Buffer) gst.FlowReturn
 }
 
@@ -18176,12 +12060,7 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 // ParentAllocPushSrc calls the default implementations of the `GstPushSrc.alloc` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- buf *gst.Buffer (nullable) 
-// 	- goret gst.FlowReturn 
-//
-// Allocate memory for a buffer.
+// see also No documentation available
 func (src *PushSrcInstance) ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstPushSrc
 	var carg1 *C.GstBuffer    // out, full, converted, nullable
@@ -18208,15 +12087,7 @@ func (src *PushSrcInstance) ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn) {
 // ParentFillPushSrc calls the default implementations of the `GstPushSrc.fill` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Ask the subclass to fill the buffer with data.
+// see also No documentation available
 func (src *PushSrcInstance) ParentFillPushSrc(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstPushSrc
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -18265,6 +12136,8 @@ func RegisterPushSrcSubClass[InstanceT PushSrc](
 }
 
 // AdapterClass wraps GstAdapterClass
+// 
+// see also No documentation available
 // 
 // AdapterClass is the type struct for [Adapter]
 type AdapterClass struct {
@@ -18317,16 +12190,9 @@ func (a *AdapterClass) ParentClass() *gobject.ObjectClass {
 }
 
 // AggregatorClass wraps GstAggregatorClass
+// 
+// see also No documentation available
 //
-// The aggregator base class will handle in a thread-safe way all manners of
-// concurrent flushes, seeks, pad additions and removals, leaving to the
-// subclass the responsibility of clipping buffers, and aggregating buffers in
-// the way the implementor sees fit.
-// 
-// It will also take care of event ordering (stream-start, segment, eos).
-// 
-// Basically, a simple implementation will override @aggregate, and call
-// _finish_buffer from inside that function.
 // 
 // AggregatorClass is the type struct for [Aggregator]
 type AggregatorClass struct {
@@ -18380,6 +12246,8 @@ func (a *AggregatorClass) ParentClass() *gst.ElementClass {
 
 // AggregatorPadClass wraps GstAggregatorPadClass
 // 
+// see also No documentation available
+// 
 // AggregatorPadClass is the type struct for [AggregatorPad]
 type AggregatorPadClass struct {
 	*aggregatorPadClass
@@ -18431,9 +12299,9 @@ func (a *AggregatorPadClass) ParentClass() *gst.PadClass {
 }
 
 // BaseParseClass wraps GstBaseParseClass
+// 
+// see also No documentation available
 //
-// Subclasses can override any of the available virtual methods or not, as
-// needed. At minimum @handle_frame needs to be overridden.
 // 
 // BaseParseClass is the type struct for [BaseParse]
 type BaseParseClass struct {
@@ -18486,14 +12354,9 @@ func (b *BaseParseClass) ParentClass() *gst.ElementClass {
 }
 
 // BaseParseFrame wraps GstBaseParseFrame
+// 
+// see also No documentation available
 //
-// Frame (context) data passed to each frame parsing virtual methods.  In
-// addition to providing the data to be checked for a valid frame or an already
-// identified frame, it conveys additional metadata or control information
-// from and to the subclass w.r.t. the particular frame in question (rather
-// than global parameters).  Some of these may apply to each parsing stage, others
-// only to some a particular one.  These parameters are effectively zeroed at start
-// of each frame's processing, i.e. parsing virtual method invocation sequence.
 type BaseParseFrame struct {
 	*baseParseFrame
 }
@@ -18589,21 +12452,8 @@ func UnsafeBaseParseFrameToGlibFull(b *BaseParseFrame) unsafe.Pointer {
 
 // NewBaseParseFrame wraps gst_base_parse_frame_new
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- flags BaseParseFrameFlags: the flags 
-// 	- overhead int32: number of bytes in this frame which should be counted as
-//     metadata overhead, ie. not used to calculate the average bitrate.
-//     Set to -1 to mark the entire frame as metadata. If in doubt, set to 0. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *BaseParseFrame 
+// see also No documentation available
 //
-// Allocates a new #GstBaseParseFrame. This function is mainly for bindings,
-// elements written in C should usually allocate the frame on the stack and
-// then use gst_base_parse_frame_init() to initialise it.
 func NewBaseParseFrame(buffer *gst.Buffer, flags BaseParseFrameFlags, overhead int32) *BaseParseFrame {
 	var carg1 *C.GstBuffer             // in, none, converted
 	var carg2 C.GstBaseParseFrameFlags // in, none, casted
@@ -18628,11 +12478,8 @@ func NewBaseParseFrame(buffer *gst.Buffer, flags BaseParseFrameFlags, overhead i
 
 // Copy wraps gst_base_parse_frame_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *BaseParseFrame 
+// see also No documentation available
 //
-// Copies a #GstBaseParseFrame.
 func (frame *BaseParseFrame) Copy() *BaseParseFrame {
 	var carg0 *C.GstBaseParseFrame // in, none, converted
 	var cret  *C.GstBaseParseFrame // return, full, converted
@@ -18650,12 +12497,9 @@ func (frame *BaseParseFrame) Copy() *BaseParseFrame {
 }
 
 // Init wraps gst_base_parse_frame_init
+// 
+// see also No documentation available
 //
-// Sets a #GstBaseParseFrame to initial state.  Currently this means
-// all public fields are zero-ed and a private flag is set to make
-// sure gst_base_parse_frame_free() only frees the contents but not
-// the actual frame. Use this function to initialise a #GstBaseParseFrame
-// allocated on the stack.
 func (frame *BaseParseFrame) Init() {
 	var carg0 *C.GstBaseParseFrame // in, none, converted
 
@@ -18666,10 +12510,9 @@ func (frame *BaseParseFrame) Init() {
 }
 
 // BaseSinkClass wraps GstBaseSinkClass
+// 
+// see also No documentation available
 //
-// Subclasses can override any of the available virtual methods or not, as
-// needed. At the minimum, the @render method should be overridden to
-// output/present buffers.
 // 
 // BaseSinkClass is the type struct for [BaseSink]
 type BaseSinkClass struct {
@@ -18722,10 +12565,9 @@ func (b *BaseSinkClass) ParentClass() *gst.ElementClass {
 }
 
 // BaseSrcClass wraps GstBaseSrcClass
+// 
+// see also No documentation available
 //
-// Subclasses can override any of the available virtual methods or not, as
-// needed. At the minimum, the @create method should be overridden to produce
-// buffers.
 // 
 // BaseSrcClass is the type struct for [BaseSrc]
 type BaseSrcClass struct {
@@ -18778,11 +12620,9 @@ func (b *BaseSrcClass) ParentClass() *gst.ElementClass {
 }
 
 // BaseTransformClass wraps GstBaseTransformClass
+// 
+// see also No documentation available
 //
-// Subclasses can override any of the available virtual methods or not, as
-// needed. At minimum either @transform or @transform_ip need to be overridden.
-// If the element can overwrite the input data with the results (data is of the
-// same type and quantity) it should provide @transform_ip.
 // 
 // BaseTransformClass is the type struct for [BaseTransform]
 type BaseTransformClass struct {
@@ -18835,10 +12675,9 @@ func (b *BaseTransformClass) ParentClass() *gst.ElementClass {
 }
 
 // BitReader wraps GstBitReader
+// 
+// see also No documentation available
 //
-// #GstBitReader provides a bit reader that can read any number of bits
-// from a memory buffer. It provides functions for reading any number of bits
-// into 8, 16, 32 and 64 bit variables.
 type BitReader struct {
 	*bitReader
 }
@@ -18919,16 +12758,8 @@ func UnsafeBitReaderToGlibFull(b *BitReader) unsafe.Pointer {
 
 // GetBitsUint16 wraps gst_bit_reader_get_bits_uint16
 // 
-// The function takes the following parameters:
-// 
-// 	- nbits uint: number of bits to read 
-// 
-// The function returns the following values:
-// 
-// 	- val uint16: Pointer to a #guint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read @nbits bits into @val and update the current position.
 func (reader *BitReader) GetBitsUint16(nbits uint) (uint16, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -18955,16 +12786,8 @@ func (reader *BitReader) GetBitsUint16(nbits uint) (uint16, bool) {
 
 // GetBitsUint32 wraps gst_bit_reader_get_bits_uint32
 // 
-// The function takes the following parameters:
-// 
-// 	- nbits uint: number of bits to read 
-// 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read @nbits bits into @val and update the current position.
 func (reader *BitReader) GetBitsUint32(nbits uint) (uint32, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -18991,16 +12814,8 @@ func (reader *BitReader) GetBitsUint32(nbits uint) (uint32, bool) {
 
 // GetBitsUint64 wraps gst_bit_reader_get_bits_uint64
 // 
-// The function takes the following parameters:
-// 
-// 	- nbits uint: number of bits to read 
-// 
-// The function returns the following values:
-// 
-// 	- val uint64: Pointer to a #guint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read @nbits bits into @val and update the current position.
 func (reader *BitReader) GetBitsUint64(nbits uint) (uint64, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -19027,16 +12842,8 @@ func (reader *BitReader) GetBitsUint64(nbits uint) (uint64, bool) {
 
 // GetBitsUint8 wraps gst_bit_reader_get_bits_uint8
 // 
-// The function takes the following parameters:
-// 
-// 	- nbits uint: number of bits to read 
-// 
-// The function returns the following values:
-// 
-// 	- val uint8: Pointer to a #guint8 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read @nbits bits into @val and update the current position.
 func (reader *BitReader) GetBitsUint8(nbits uint) (uint8, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -19063,11 +12870,8 @@ func (reader *BitReader) GetBitsUint8(nbits uint) (uint8, bool) {
 
 // GetPos wraps gst_bit_reader_get_pos
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the current position of a #GstBitReader instance in bits.
 func (reader *BitReader) GetPos() uint {
 	var carg0 *C.GstBitReader // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -19086,11 +12890,8 @@ func (reader *BitReader) GetPos() uint {
 
 // GetRemaining wraps gst_bit_reader_get_remaining
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the remaining number of bits of a #GstBitReader instance.
 func (reader *BitReader) GetRemaining() uint {
 	var carg0 *C.GstBitReader // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -19109,11 +12910,8 @@ func (reader *BitReader) GetRemaining() uint {
 
 // GetSize wraps gst_bit_reader_get_size
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the total number of bits of a #GstBitReader instance.
 func (reader *BitReader) GetSize() uint {
 	var carg0 *C.GstBitReader // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -19132,12 +12930,8 @@ func (reader *BitReader) GetSize() uint {
 
 // Init wraps gst_bit_reader_init
 // 
-// The function takes the following parameters:
-// 
-// 	- data []uint8: data from which the bit reader should read 
+// see also No documentation available
 //
-// Initializes a #GstBitReader instance to read from @data. This function
-// can be called on already initialized instances.
 func (reader *BitReader) Init(data []uint8) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg1 *C.guint8       // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -19156,16 +12950,8 @@ func (reader *BitReader) Init(data []uint8) {
 
 // PeekBitsUint16 wraps gst_bit_reader_peek_bits_uint16
 // 
-// The function takes the following parameters:
-// 
-// 	- nbits uint: number of bits to read 
-// 
-// The function returns the following values:
-// 
-// 	- val uint16: Pointer to a #guint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read @nbits bits into @val but keep the current position.
 func (reader *BitReader) PeekBitsUint16(nbits uint) (uint16, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -19192,16 +12978,8 @@ func (reader *BitReader) PeekBitsUint16(nbits uint) (uint16, bool) {
 
 // PeekBitsUint32 wraps gst_bit_reader_peek_bits_uint32
 // 
-// The function takes the following parameters:
-// 
-// 	- nbits uint: number of bits to read 
-// 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read @nbits bits into @val but keep the current position.
 func (reader *BitReader) PeekBitsUint32(nbits uint) (uint32, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -19228,16 +13006,8 @@ func (reader *BitReader) PeekBitsUint32(nbits uint) (uint32, bool) {
 
 // PeekBitsUint64 wraps gst_bit_reader_peek_bits_uint64
 // 
-// The function takes the following parameters:
-// 
-// 	- nbits uint: number of bits to read 
-// 
-// The function returns the following values:
-// 
-// 	- val uint64: Pointer to a #guint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read @nbits bits into @val but keep the current position.
 func (reader *BitReader) PeekBitsUint64(nbits uint) (uint64, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -19264,16 +13034,8 @@ func (reader *BitReader) PeekBitsUint64(nbits uint) (uint64, bool) {
 
 // PeekBitsUint8 wraps gst_bit_reader_peek_bits_uint8
 // 
-// The function takes the following parameters:
-// 
-// 	- nbits uint: number of bits to read 
-// 
-// The function returns the following values:
-// 
-// 	- val uint8: Pointer to a #guint8 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read @nbits bits into @val but keep the current position.
 func (reader *BitReader) PeekBitsUint8(nbits uint) (uint8, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -19300,15 +13062,8 @@ func (reader *BitReader) PeekBitsUint8(nbits uint) (uint8, bool) {
 
 // SetPos wraps gst_bit_reader_set_pos
 // 
-// The function takes the following parameters:
-// 
-// 	- pos uint: The new position in bits 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Sets the new position of a #GstBitReader instance to @pos in bits.
 func (reader *BitReader) SetPos(pos uint) bool {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -19332,15 +13087,8 @@ func (reader *BitReader) SetPos(pos uint) bool {
 
 // Skip wraps gst_bit_reader_skip
 // 
-// The function takes the following parameters:
-// 
-// 	- nbits uint: the number of bits to skip 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Skips @nbits bits of the #GstBitReader instance.
 func (reader *BitReader) Skip(nbits uint) bool {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -19364,11 +13112,8 @@ func (reader *BitReader) Skip(nbits uint) bool {
 
 // SkipToByte wraps gst_bit_reader_skip_to_byte
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Skips until the next byte.
 func (reader *BitReader) SkipToByte() bool {
 	var carg0 *C.GstBitReader // in, none, converted
 	var cret  C.gboolean      // return
@@ -19388,10 +13133,9 @@ func (reader *BitReader) SkipToByte() bool {
 }
 
 // BitWriter wraps GstBitWriter
+// 
+// see also No documentation available
 //
-// #GstBitWriter provides a bit writer that can write any number of
-// bits into a memory buffer. It provides functions for writing any
-// number of bits into 8, 16, 32 and 64 bit variables.
 type BitWriter struct {
 	*bitWriter
 }
@@ -19472,16 +13216,8 @@ func UnsafeBitWriterToGlibFull(b *BitWriter) unsafe.Pointer {
 
 // AlignBytes wraps gst_bit_writer_align_bytes
 // 
-// The function takes the following parameters:
-// 
-// 	- trailingBit uint8: trailing bits of last byte, 0 or 1 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Write trailing bit to align last byte of @data. @trailing_bit can
-// only be 1 or 0.
 func (bitwriter *BitWriter) AlignBytes(trailingBit uint8) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint8        // in, none, casted
@@ -19505,14 +13241,8 @@ func (bitwriter *BitWriter) AlignBytes(trailingBit uint8) bool {
 
 // FreeAndGetBuffer wraps gst_bit_writer_free_and_get_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Frees @bitwriter without destroying the internal data, which is
-// returned as #GstBuffer.
-// 
-// Free-function: gst_buffer_unref
 func (bitwriter *BitWriter) FreeAndGetBuffer() *gst.Buffer {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var cret  *C.GstBuffer    // return, full, converted
@@ -19531,9 +13261,7 @@ func (bitwriter *BitWriter) FreeAndGetBuffer() *gst.Buffer {
 
 // GetRemaining wraps gst_bit_writer_get_remaining
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 func (bitwriter *BitWriter) GetRemaining() uint {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -19552,11 +13280,8 @@ func (bitwriter *BitWriter) GetRemaining() uint {
 
 // GetSize wraps gst_bit_writer_get_size
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get size of written @data
 func (bitwriter *BitWriter) GetSize() uint {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -19575,16 +13300,8 @@ func (bitwriter *BitWriter) GetSize() uint {
 
 // PutBitsUint16 wraps gst_bit_writer_put_bits_uint16
 // 
-// The function takes the following parameters:
-// 
-// 	- value uint16: value of #guint16 to write 
-// 	- nbits uint: number of bits to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Write @nbits bits of @value to #GstBitWriter.
 func (bitwriter *BitWriter) PutBitsUint16(value uint16, nbits uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint16       // in, none, casted
@@ -19611,16 +13328,8 @@ func (bitwriter *BitWriter) PutBitsUint16(value uint16, nbits uint) bool {
 
 // PutBitsUint32 wraps gst_bit_writer_put_bits_uint32
 // 
-// The function takes the following parameters:
-// 
-// 	- value uint32: value of #guint32 to write 
-// 	- nbits uint: number of bits to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Write @nbits bits of @value to #GstBitWriter.
 func (bitwriter *BitWriter) PutBitsUint32(value uint32, nbits uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint32       // in, none, casted
@@ -19647,16 +13356,8 @@ func (bitwriter *BitWriter) PutBitsUint32(value uint32, nbits uint) bool {
 
 // PutBitsUint64 wraps gst_bit_writer_put_bits_uint64
 // 
-// The function takes the following parameters:
-// 
-// 	- value uint64: value of #guint64 to write 
-// 	- nbits uint: number of bits to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Write @nbits bits of @value to #GstBitWriter.
 func (bitwriter *BitWriter) PutBitsUint64(value uint64, nbits uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint64       // in, none, casted
@@ -19683,16 +13384,8 @@ func (bitwriter *BitWriter) PutBitsUint64(value uint64, nbits uint) bool {
 
 // PutBitsUint8 wraps gst_bit_writer_put_bits_uint8
 // 
-// The function takes the following parameters:
-// 
-// 	- value uint8: value of #guint8 to write 
-// 	- nbits uint: number of bits to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Write @nbits bits of @value to #GstBitWriter.
 func (bitwriter *BitWriter) PutBitsUint8(value uint8, nbits uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint8        // in, none, casted
@@ -19718,8 +13411,9 @@ func (bitwriter *BitWriter) PutBitsUint8(value uint8, nbits uint) bool {
 }
 
 // Reset wraps gst_bit_writer_reset
+// 
+// see also No documentation available
 //
-// Resets @bitwriter and frees the data if it's owned by @bitwriter.
 func (bitwriter *BitWriter) Reset() {
 	var carg0 *C.GstBitWriter // in, none, converted
 
@@ -19731,13 +13425,8 @@ func (bitwriter *BitWriter) Reset() {
 
 // ResetAndGetBuffer wraps gst_bit_writer_reset_and_get_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Resets @bitwriter and returns the current data as #GstBuffer.
-// 
-// Free-function: gst_buffer_unref
 func (bitwriter *BitWriter) ResetAndGetBuffer() *gst.Buffer {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var cret  *C.GstBuffer    // return, full, converted
@@ -19756,13 +13445,7 @@ func (bitwriter *BitWriter) ResetAndGetBuffer() *gst.Buffer {
 
 // SetPos wraps gst_bit_writer_set_pos
 // 
-// The function takes the following parameters:
-// 
-// 	- pos uint 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (bitwriter *BitWriter) SetPos(pos uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -19785,13 +13468,9 @@ func (bitwriter *BitWriter) SetPos(pos uint) bool {
 }
 
 // ByteReader wraps GstByteReader
+// 
+// see also No documentation available
 //
-// #GstByteReader provides a byte reader that can read different integer and
-// floating point types from a memory buffer. It provides functions for reading
-// signed/unsigned, little/big endian integers of 8, 16, 24, 32 and 64 bits
-// and functions for reading little/big endian floating points numbers of
-// 32 and 64 bits. It also provides functions to read NUL-terminated strings
-// in various character encodings.
 type ByteReader struct {
 	*byteReader
 }
@@ -19872,20 +13551,8 @@ func UnsafeByteReaderToGlibFull(b *ByteReader) unsafe.Pointer {
 
 // DupStringUTF8 wraps gst_byte_reader_dup_string_utf8
 // 
-// The function returns the following values:
-// 
-// 	- str string: address of a
-//     #gchar pointer variable in which to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Free-function: g_free
-// 
-// FIXME:Reads (copies) a NUL-terminated string in the #GstByteReader instance,
-// advancing the current position to the byte after the string. This will work
-// for any NUL-terminated string with a character width of 8 bits, so ASCII,
-// UTF-8, ISO-8859-N etc. No input checking for valid UTF-8 is done.
-// 
-// This function will fail if no NUL-terminator was found in in the data.
 func (reader *ByteReader) DupStringUTF8() (string, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 *C.gchar         // out, transfer: full, C Pointers: 1, Name: array[unknown], array (inner unknown, zero-terminated)
@@ -19911,13 +13578,8 @@ func (reader *ByteReader) DupStringUTF8() (string, bool) {
 
 // GetFloat32Be wraps gst_byte_reader_get_float32_be
 // 
-// The function returns the following values:
-// 
-// 	- val float32: Pointer to a #gfloat to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a 32 bit big endian floating point value into @val
-// and update the current position.
 func (reader *ByteReader) GetFloat32Be() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
@@ -19941,13 +13603,8 @@ func (reader *ByteReader) GetFloat32Be() (float32, bool) {
 
 // GetFloat32Le wraps gst_byte_reader_get_float32_le
 // 
-// The function returns the following values:
-// 
-// 	- val float32: Pointer to a #gfloat to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a 32 bit little endian floating point value into @val
-// and update the current position.
 func (reader *ByteReader) GetFloat32Le() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
@@ -19971,13 +13628,8 @@ func (reader *ByteReader) GetFloat32Le() (float32, bool) {
 
 // GetFloat64Be wraps gst_byte_reader_get_float64_be
 // 
-// The function returns the following values:
-// 
-// 	- val float64: Pointer to a #gdouble to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a 64 bit big endian floating point value into @val
-// and update the current position.
 func (reader *ByteReader) GetFloat64Be() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
@@ -20001,13 +13653,8 @@ func (reader *ByteReader) GetFloat64Be() (float64, bool) {
 
 // GetFloat64Le wraps gst_byte_reader_get_float64_le
 // 
-// The function returns the following values:
-// 
-// 	- val float64: Pointer to a #gdouble to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a 64 bit little endian floating point value into @val
-// and update the current position.
 func (reader *ByteReader) GetFloat64Le() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
@@ -20031,13 +13678,8 @@ func (reader *ByteReader) GetFloat64Le() (float64, bool) {
 
 // GetInt16Be wraps gst_byte_reader_get_int16_be
 // 
-// The function returns the following values:
-// 
-// 	- val int16: Pointer to a #gint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 16 bit big endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetInt16Be() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
@@ -20061,13 +13703,8 @@ func (reader *ByteReader) GetInt16Be() (int16, bool) {
 
 // GetInt16Le wraps gst_byte_reader_get_int16_le
 // 
-// The function returns the following values:
-// 
-// 	- val int16: Pointer to a #gint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 16 bit little endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetInt16Le() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
@@ -20091,13 +13728,8 @@ func (reader *ByteReader) GetInt16Le() (int16, bool) {
 
 // GetInt24Be wraps gst_byte_reader_get_int24_be
 // 
-// The function returns the following values:
-// 
-// 	- val int32: Pointer to a #gint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 24 bit big endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetInt24Be() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -20121,13 +13753,8 @@ func (reader *ByteReader) GetInt24Be() (int32, bool) {
 
 // GetInt24Le wraps gst_byte_reader_get_int24_le
 // 
-// The function returns the following values:
-// 
-// 	- val int32: Pointer to a #gint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 24 bit little endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetInt24Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -20151,13 +13778,8 @@ func (reader *ByteReader) GetInt24Le() (int32, bool) {
 
 // GetInt32Be wraps gst_byte_reader_get_int32_be
 // 
-// The function returns the following values:
-// 
-// 	- val int32: Pointer to a #gint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 32 bit big endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetInt32Be() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -20181,13 +13803,8 @@ func (reader *ByteReader) GetInt32Be() (int32, bool) {
 
 // GetInt32Le wraps gst_byte_reader_get_int32_le
 // 
-// The function returns the following values:
-// 
-// 	- val int32: Pointer to a #gint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 32 bit little endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetInt32Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -20211,13 +13828,8 @@ func (reader *ByteReader) GetInt32Le() (int32, bool) {
 
 // GetInt64Be wraps gst_byte_reader_get_int64_be
 // 
-// The function returns the following values:
-// 
-// 	- val int64: Pointer to a #gint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 64 bit big endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetInt64Be() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
@@ -20241,13 +13853,8 @@ func (reader *ByteReader) GetInt64Be() (int64, bool) {
 
 // GetInt64Le wraps gst_byte_reader_get_int64_le
 // 
-// The function returns the following values:
-// 
-// 	- val int64: Pointer to a #gint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 64 bit little endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetInt64Le() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
@@ -20271,12 +13878,8 @@ func (reader *ByteReader) GetInt64Le() (int64, bool) {
 
 // GetInt8 wraps gst_byte_reader_get_int8
 // 
-// The function returns the following values:
-// 
-// 	- val int8: Pointer to a #gint8 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 8 bit integer into @val and update the current position.
 func (reader *ByteReader) GetInt8() (int8, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint8          // out, full, casted
@@ -20300,11 +13903,8 @@ func (reader *ByteReader) GetInt8() (int8, bool) {
 
 // GetPos wraps gst_byte_reader_get_pos
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the current position of a #GstByteReader instance in bytes.
 func (reader *ByteReader) GetPos() uint {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -20323,11 +13923,8 @@ func (reader *ByteReader) GetPos() uint {
 
 // GetRemaining wraps gst_byte_reader_get_remaining
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the remaining number of bytes of a #GstByteReader instance.
 func (reader *ByteReader) GetRemaining() uint {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -20346,11 +13943,8 @@ func (reader *ByteReader) GetRemaining() uint {
 
 // GetSize wraps gst_byte_reader_get_size
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the total number of bytes of a #GstByteReader instance.
 func (reader *ByteReader) GetSize() uint {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -20369,21 +13963,8 @@ func (reader *ByteReader) GetSize() uint {
 
 // GetStringUTF8 wraps gst_byte_reader_get_string_utf8
 // 
-// The function returns the following values:
-// 
-// 	- str string: address of a
-//     #gchar pointer variable in which to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Returns a constant pointer to the current data position if there is
-// a NUL-terminated string in the data (this could be just a NUL terminator),
-// advancing the current position to the byte after the string. This will work
-// for any NUL-terminated string with a character width of 8 bits, so ASCII,
-// UTF-8, ISO-8859-N etc.
-// 
-// No input checking for valid UTF-8 is done.
-// 
-// This function will fail if no NUL-terminator was found in in the data.
 func (reader *ByteReader) GetStringUTF8() (string, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 *C.gchar         // out, transfer: none, C Pointers: 1, Name: array[unknown], array (inner unknown, zero-terminated)
@@ -20409,13 +13990,8 @@ func (reader *ByteReader) GetStringUTF8() (string, bool) {
 
 // GetUint16Be wraps gst_byte_reader_get_uint16_be
 // 
-// The function returns the following values:
-// 
-// 	- val uint16: Pointer to a #guint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 16 bit big endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetUint16Be() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
@@ -20439,13 +14015,8 @@ func (reader *ByteReader) GetUint16Be() (uint16, bool) {
 
 // GetUint16Le wraps gst_byte_reader_get_uint16_le
 // 
-// The function returns the following values:
-// 
-// 	- val uint16: Pointer to a #guint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 16 bit little endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetUint16Le() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
@@ -20469,13 +14040,8 @@ func (reader *ByteReader) GetUint16Le() (uint16, bool) {
 
 // GetUint24Be wraps gst_byte_reader_get_uint24_be
 // 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 24 bit big endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetUint24Be() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -20499,13 +14065,8 @@ func (reader *ByteReader) GetUint24Be() (uint32, bool) {
 
 // GetUint24Le wraps gst_byte_reader_get_uint24_le
 // 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 24 bit little endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetUint24Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -20529,13 +14090,8 @@ func (reader *ByteReader) GetUint24Le() (uint32, bool) {
 
 // GetUint32Be wraps gst_byte_reader_get_uint32_be
 // 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 32 bit big endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetUint32Be() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -20559,13 +14115,8 @@ func (reader *ByteReader) GetUint32Be() (uint32, bool) {
 
 // GetUint32Le wraps gst_byte_reader_get_uint32_le
 // 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 32 bit little endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetUint32Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -20589,13 +14140,8 @@ func (reader *ByteReader) GetUint32Le() (uint32, bool) {
 
 // GetUint64Be wraps gst_byte_reader_get_uint64_be
 // 
-// The function returns the following values:
-// 
-// 	- val uint64: Pointer to a #guint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 64 bit big endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetUint64Be() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
@@ -20619,13 +14165,8 @@ func (reader *ByteReader) GetUint64Be() (uint64, bool) {
 
 // GetUint64Le wraps gst_byte_reader_get_uint64_le
 // 
-// The function returns the following values:
-// 
-// 	- val uint64: Pointer to a #guint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 64 bit little endian integer into @val
-// and update the current position.
 func (reader *ByteReader) GetUint64Le() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
@@ -20649,12 +14190,8 @@ func (reader *ByteReader) GetUint64Le() (uint64, bool) {
 
 // GetUint8 wraps gst_byte_reader_get_uint8
 // 
-// The function returns the following values:
-// 
-// 	- val uint8: Pointer to a #guint8 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 8 bit integer into @val and update the current position.
 func (reader *ByteReader) GetUint8() (uint8, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint8         // out, full, casted
@@ -20678,13 +14215,8 @@ func (reader *ByteReader) GetUint8() (uint8, bool) {
 
 // Init wraps gst_byte_reader_init
 // 
-// The function takes the following parameters:
-// 
-// 	- data []uint8: data from which
-//     the #GstByteReader should read 
+// see also No documentation available
 //
-// Initializes a #GstByteReader instance to read from @data. This function
-// can be called on already initialized instances.
 func (reader *ByteReader) Init(data []uint8) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -20703,28 +14235,8 @@ func (reader *ByteReader) Init(data []uint8) {
 
 // MaskedScanUint32 wraps gst_byte_reader_masked_scan_uint32
 // 
-// The function takes the following parameters:
-// 
-// 	- mask uint32: mask to apply to data before matching against @pattern 
-// 	- pattern uint32: pattern to match (after mask is applied) 
-// 	- offset uint: offset from which to start scanning, relative to the current
-//     position 
-// 	- size uint: number of bytes to scan from offset 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Scan for pattern @pattern with applied mask @mask in the byte reader data,
-// starting from offset @offset relative to the current position.
-// 
-// The bytes in @pattern and @mask are interpreted left-to-right, regardless
-// of endianness.  All four bytes of the pattern must be present in the
-// byte reader data for it to match, even if the first or last bytes are masked
-// out.
-// 
-// It is an error to call this function without making sure that there is
-// enough data (offset+size bytes) in the byte reader.
 func (reader *ByteReader) MaskedScanUint32(mask uint32, pattern uint32, offset uint, size uint) uint {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -20755,29 +14267,8 @@ func (reader *ByteReader) MaskedScanUint32(mask uint32, pattern uint32, offset u
 
 // MaskedScanUint32Peek wraps gst_byte_reader_masked_scan_uint32_peek
 // 
-// The function takes the following parameters:
-// 
-// 	- mask uint32: mask to apply to data before matching against @pattern 
-// 	- pattern uint32: pattern to match (after mask is applied) 
-// 	- offset uint: offset from which to start scanning, relative to the current
-//     position 
-// 	- size uint: number of bytes to scan from offset 
-// 
-// The function returns the following values:
-// 
-// 	- value uint32: pointer to uint32 to return matching data 
-// 	- goret uint 
+// see also No documentation available
 //
-// Scan for pattern @pattern with applied mask @mask in the byte reader data,
-// starting from offset @offset relative to the current position.
-// 
-// The bytes in @pattern and @mask are interpreted left-to-right, regardless
-// of endianness.  All four bytes of the pattern must be present in the
-// byte reader data for it to match, even if the first or last bytes are masked
-// out.
-// 
-// It is an error to call this function without making sure that there is
-// enough data (offset+size bytes) in the byte reader.
 func (reader *ByteReader) MaskedScanUint32Peek(mask uint32, pattern uint32, offset uint, size uint) (uint32, uint) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -20811,13 +14302,8 @@ func (reader *ByteReader) MaskedScanUint32Peek(mask uint32, pattern uint32, offs
 
 // PeekFloat32Be wraps gst_byte_reader_peek_float32_be
 // 
-// The function returns the following values:
-// 
-// 	- val float32: Pointer to a #gfloat to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a 32 bit big endian floating point value into @val
-// but keep the current position.
 func (reader *ByteReader) PeekFloat32Be() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
@@ -20841,13 +14327,8 @@ func (reader *ByteReader) PeekFloat32Be() (float32, bool) {
 
 // PeekFloat32Le wraps gst_byte_reader_peek_float32_le
 // 
-// The function returns the following values:
-// 
-// 	- val float32: Pointer to a #gfloat to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a 32 bit little endian floating point value into @val
-// but keep the current position.
 func (reader *ByteReader) PeekFloat32Le() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
@@ -20871,13 +14352,8 @@ func (reader *ByteReader) PeekFloat32Le() (float32, bool) {
 
 // PeekFloat64Be wraps gst_byte_reader_peek_float64_be
 // 
-// The function returns the following values:
-// 
-// 	- val float64: Pointer to a #gdouble to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a 64 bit big endian floating point value into @val
-// but keep the current position.
 func (reader *ByteReader) PeekFloat64Be() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
@@ -20901,13 +14377,8 @@ func (reader *ByteReader) PeekFloat64Be() (float64, bool) {
 
 // PeekFloat64Le wraps gst_byte_reader_peek_float64_le
 // 
-// The function returns the following values:
-// 
-// 	- val float64: Pointer to a #gdouble to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a 64 bit little endian floating point value into @val
-// but keep the current position.
 func (reader *ByteReader) PeekFloat64Le() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
@@ -20931,13 +14402,8 @@ func (reader *ByteReader) PeekFloat64Le() (float64, bool) {
 
 // PeekInt16Be wraps gst_byte_reader_peek_int16_be
 // 
-// The function returns the following values:
-// 
-// 	- val int16: Pointer to a #gint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 16 bit big endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekInt16Be() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
@@ -20961,13 +14427,8 @@ func (reader *ByteReader) PeekInt16Be() (int16, bool) {
 
 // PeekInt16Le wraps gst_byte_reader_peek_int16_le
 // 
-// The function returns the following values:
-// 
-// 	- val int16: Pointer to a #gint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 16 bit little endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekInt16Le() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
@@ -20991,13 +14452,8 @@ func (reader *ByteReader) PeekInt16Le() (int16, bool) {
 
 // PeekInt24Be wraps gst_byte_reader_peek_int24_be
 // 
-// The function returns the following values:
-// 
-// 	- val int32: Pointer to a #gint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 24 bit big endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekInt24Be() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -21021,13 +14477,8 @@ func (reader *ByteReader) PeekInt24Be() (int32, bool) {
 
 // PeekInt24Le wraps gst_byte_reader_peek_int24_le
 // 
-// The function returns the following values:
-// 
-// 	- val int32: Pointer to a #gint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 24 bit little endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekInt24Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -21051,13 +14502,8 @@ func (reader *ByteReader) PeekInt24Le() (int32, bool) {
 
 // PeekInt32Be wraps gst_byte_reader_peek_int32_be
 // 
-// The function returns the following values:
-// 
-// 	- val int32: Pointer to a #gint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 32 bit big endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekInt32Be() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -21081,13 +14527,8 @@ func (reader *ByteReader) PeekInt32Be() (int32, bool) {
 
 // PeekInt32Le wraps gst_byte_reader_peek_int32_le
 // 
-// The function returns the following values:
-// 
-// 	- val int32: Pointer to a #gint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 32 bit little endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekInt32Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -21111,13 +14552,8 @@ func (reader *ByteReader) PeekInt32Le() (int32, bool) {
 
 // PeekInt64Be wraps gst_byte_reader_peek_int64_be
 // 
-// The function returns the following values:
-// 
-// 	- val int64: Pointer to a #gint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 64 bit big endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekInt64Be() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
@@ -21141,13 +14577,8 @@ func (reader *ByteReader) PeekInt64Be() (int64, bool) {
 
 // PeekInt64Le wraps gst_byte_reader_peek_int64_le
 // 
-// The function returns the following values:
-// 
-// 	- val int64: Pointer to a #gint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 64 bit little endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekInt64Le() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
@@ -21171,12 +14602,8 @@ func (reader *ByteReader) PeekInt64Le() (int64, bool) {
 
 // PeekInt8 wraps gst_byte_reader_peek_int8
 // 
-// The function returns the following values:
-// 
-// 	- val int8: Pointer to a #gint8 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read a signed 8 bit integer into @val but keep the current position.
 func (reader *ByteReader) PeekInt8() (int8, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint8          // out, full, casted
@@ -21200,21 +14627,8 @@ func (reader *ByteReader) PeekInt8() (int8, bool) {
 
 // PeekStringUTF8 wraps gst_byte_reader_peek_string_utf8
 // 
-// The function returns the following values:
-// 
-// 	- str string: address of a
-//     #gchar pointer variable in which to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Returns a constant pointer to the current data position if there is
-// a NUL-terminated string in the data (this could be just a NUL terminator).
-// The current position will be maintained. This will work for any
-// NUL-terminated string with a character width of 8 bits, so ASCII,
-// UTF-8, ISO-8859-N etc.
-// 
-// No input checking for valid UTF-8 is done.
-// 
-// This function will fail if no NUL-terminator was found in in the data.
 func (reader *ByteReader) PeekStringUTF8() (string, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 *C.gchar         // out, transfer: none, C Pointers: 1, Name: array[unknown], array (inner unknown, zero-terminated)
@@ -21240,13 +14654,8 @@ func (reader *ByteReader) PeekStringUTF8() (string, bool) {
 
 // PeekUint16Be wraps gst_byte_reader_peek_uint16_be
 // 
-// The function returns the following values:
-// 
-// 	- val uint16: Pointer to a #guint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 16 bit big endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekUint16Be() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
@@ -21270,13 +14679,8 @@ func (reader *ByteReader) PeekUint16Be() (uint16, bool) {
 
 // PeekUint16Le wraps gst_byte_reader_peek_uint16_le
 // 
-// The function returns the following values:
-// 
-// 	- val uint16: Pointer to a #guint16 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 16 bit little endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekUint16Le() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
@@ -21300,13 +14704,8 @@ func (reader *ByteReader) PeekUint16Le() (uint16, bool) {
 
 // PeekUint24Be wraps gst_byte_reader_peek_uint24_be
 // 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 24 bit big endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekUint24Be() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -21330,13 +14729,8 @@ func (reader *ByteReader) PeekUint24Be() (uint32, bool) {
 
 // PeekUint24Le wraps gst_byte_reader_peek_uint24_le
 // 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 24 bit little endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekUint24Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -21360,13 +14754,8 @@ func (reader *ByteReader) PeekUint24Le() (uint32, bool) {
 
 // PeekUint32Be wraps gst_byte_reader_peek_uint32_be
 // 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 32 bit big endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekUint32Be() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -21390,13 +14779,8 @@ func (reader *ByteReader) PeekUint32Be() (uint32, bool) {
 
 // PeekUint32Le wraps gst_byte_reader_peek_uint32_le
 // 
-// The function returns the following values:
-// 
-// 	- val uint32: Pointer to a #guint32 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 32 bit little endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekUint32Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -21420,13 +14804,8 @@ func (reader *ByteReader) PeekUint32Le() (uint32, bool) {
 
 // PeekUint64Be wraps gst_byte_reader_peek_uint64_be
 // 
-// The function returns the following values:
-// 
-// 	- val uint64: Pointer to a #guint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 64 bit big endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekUint64Be() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
@@ -21450,13 +14829,8 @@ func (reader *ByteReader) PeekUint64Be() (uint64, bool) {
 
 // PeekUint64Le wraps gst_byte_reader_peek_uint64_le
 // 
-// The function returns the following values:
-// 
-// 	- val uint64: Pointer to a #guint64 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 64 bit little endian integer into @val
-// but keep the current position.
 func (reader *ByteReader) PeekUint64Le() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
@@ -21480,12 +14854,8 @@ func (reader *ByteReader) PeekUint64Le() (uint64, bool) {
 
 // PeekUint8 wraps gst_byte_reader_peek_uint8
 // 
-// The function returns the following values:
-// 
-// 	- val uint8: Pointer to a #guint8 to store the result 
-// 	- goret bool 
+// see also No documentation available
 //
-// Read an unsigned 8 bit integer into @val but keep the current position.
 func (reader *ByteReader) PeekUint8() (uint8, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint8         // out, full, casted
@@ -21509,15 +14879,8 @@ func (reader *ByteReader) PeekUint8() (uint8, bool) {
 
 // SetPos wraps gst_byte_reader_set_pos
 // 
-// The function takes the following parameters:
-// 
-// 	- pos uint: The new position in bytes 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Sets the new position of a #GstByteReader instance to @pos in bytes.
 func (reader *ByteReader) SetPos(pos uint) bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -21541,15 +14904,8 @@ func (reader *ByteReader) SetPos(pos uint) bool {
 
 // Skip wraps gst_byte_reader_skip
 // 
-// The function takes the following parameters:
-// 
-// 	- nbytes uint: the number of bytes to skip 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Skips @nbytes bytes of the #GstByteReader instance.
 func (reader *ByteReader) Skip(nbytes uint) bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -21573,16 +14929,8 @@ func (reader *ByteReader) Skip(nbytes uint) bool {
 
 // SkipStringUTF16 wraps gst_byte_reader_skip_string_utf16
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Skips a NUL-terminated UTF-16 string in the #GstByteReader instance,
-// advancing the current position to the byte after the string.
-// 
-// No input checking for valid UTF-16 is done.
-// 
-// This function will fail if no NUL-terminator was found in in the data.
 func (reader *ByteReader) SkipStringUTF16() bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.gboolean       // return
@@ -21603,16 +14951,8 @@ func (reader *ByteReader) SkipStringUTF16() bool {
 
 // SkipStringUtf32 wraps gst_byte_reader_skip_string_utf32
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Skips a NUL-terminated UTF-32 string in the #GstByteReader instance,
-// advancing the current position to the byte after the string.
-// 
-// No input checking for valid UTF-32 is done.
-// 
-// This function will fail if no NUL-terminator was found in in the data.
 func (reader *ByteReader) SkipStringUtf32() bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.gboolean       // return
@@ -21633,16 +14973,8 @@ func (reader *ByteReader) SkipStringUtf32() bool {
 
 // SkipStringUTF8 wraps gst_byte_reader_skip_string_utf8
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Skips a NUL-terminated string in the #GstByteReader instance, advancing
-// the current position to the byte after the string. This will work for
-// any NUL-terminated string with a character width of 8 bits, so ASCII,
-// UTF-8, ISO-8859-N etc. No input checking for valid UTF-8 is done.
-// 
-// This function will fail if no NUL-terminator was found in in the data.
 func (reader *ByteReader) SkipStringUTF8() bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.gboolean       // return
@@ -21662,13 +14994,9 @@ func (reader *ByteReader) SkipStringUTF8() bool {
 }
 
 // ByteWriter wraps GstByteWriter
+// 
+// see also No documentation available
 //
-// #GstByteWriter provides a byte writer and reader that can write/read different
-// integer and floating point types to/from a memory buffer. It provides functions
-// for writing/reading signed/unsigned, little/big endian integers of 8, 16, 24,
-// 32 and 64 bits and functions for reading little/big endian floating points numbers of
-// 32 and 64 bits. It also provides functions to write/read NUL-terminated strings
-// in various character encodings.
 type ByteWriter struct {
 	*byteWriter
 }
@@ -21749,16 +15077,8 @@ func UnsafeByteWriterToGlibFull(b *ByteWriter) unsafe.Pointer {
 
 // EnsureFreeSpace wraps gst_byte_writer_ensure_free_space
 // 
-// The function takes the following parameters:
-// 
-// 	- size uint: Number of bytes that should be available 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if enough free space from the current write cursor is
-// available and reallocates if necessary.
 func (writer *ByteWriter) EnsureFreeSpace(size uint) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -21782,16 +15102,8 @@ func (writer *ByteWriter) EnsureFreeSpace(size uint) bool {
 
 // Fill wraps gst_byte_writer_fill
 // 
-// The function takes the following parameters:
-// 
-// 	- value uint8: Value to be written 
-// 	- size uint: Number of bytes to be written 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes @size bytes containing @value to @writer.
 func (writer *ByteWriter) Fill(value uint8, size uint) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint8         // in, none, casted
@@ -21818,14 +15130,8 @@ func (writer *ByteWriter) Fill(value uint8, size uint) bool {
 
 // FreeAndGetBuffer wraps gst_byte_writer_free_and_get_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Frees @writer and all memory allocated by it except
-// the current data, which is returned as #GstBuffer.
-// 
-// Free-function: gst_buffer_unref
 func (writer *ByteWriter) FreeAndGetBuffer() *gst.Buffer {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var cret  *C.GstBuffer     // return, full, converted
@@ -21844,14 +15150,8 @@ func (writer *ByteWriter) FreeAndGetBuffer() *gst.Buffer {
 
 // FreeAndGetData wraps gst_byte_writer_free_and_get_data
 // 
-// The function returns the following values:
-// 
-// 	- goret *uint8 
+// see also No documentation available
 //
-// Frees @writer and all memory allocated by it except
-// the current data, which is returned.
-// 
-// Free-function: g_free
 func (writer *ByteWriter) FreeAndGetData() *uint8 {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var cret  *C.guint8        // return, transfer: full, C Pointers: 1, Name: guint8, scope: 
@@ -21872,12 +15172,8 @@ func (writer *ByteWriter) FreeAndGetData() *uint8 {
 
 // GetRemaining wraps gst_byte_writer_get_remaining
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Returns the remaining size of data that can still be written. If
-// -1 is returned the remaining size is only limited by system resources.
 func (writer *ByteWriter) GetRemaining() uint {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -21895,8 +15191,9 @@ func (writer *ByteWriter) GetRemaining() uint {
 }
 
 // Init wraps gst_byte_writer_init
+// 
+// see also No documentation available
 //
-// Initializes @writer to an empty instance
 func (writer *ByteWriter) Init() {
 	var carg0 *C.GstByteWriter // in, none, converted
 
@@ -21908,14 +15205,8 @@ func (writer *ByteWriter) Init() {
 
 // InitWithData wraps gst_byte_writer_init_with_data
 // 
-// The function takes the following parameters:
-// 
-// 	- data []uint8: Memory area for writing 
-// 	- initialized bool: If %TRUE the complete data can be read from the beginning 
+// see also No documentation available
 //
-// Initializes @writer with the given
-// memory area. If @initialized is %TRUE it is possible to
-// read @size bytes from the #GstByteWriter from the beginning.
 func (writer *ByteWriter) InitWithData(data []uint8, initialized bool) {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -21939,12 +15230,8 @@ func (writer *ByteWriter) InitWithData(data []uint8, initialized bool) {
 
 // InitWithSize wraps gst_byte_writer_init_with_size
 // 
-// The function takes the following parameters:
-// 
-// 	- size uint: Initial size of data 
-// 	- fixed bool: If %TRUE the data can't be reallocated 
+// see also No documentation available
 //
-// Initializes @writer with the given initial data size.
 func (writer *ByteWriter) InitWithSize(size uint, fixed bool) {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -21964,17 +15251,8 @@ func (writer *ByteWriter) InitWithSize(size uint, fixed bool) {
 
 // PutBuffer wraps gst_byte_writer_put_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: source #GstBuffer 
-// 	- offset uint: offset to copy from 
-// 	- size int: total size to copy. If -1, all data is copied 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes @size bytes of @data to @writer.
 func (writer *ByteWriter) PutBuffer(buffer *gst.Buffer, offset uint, size int) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.GstBuffer     // in, none, converted
@@ -22004,15 +15282,8 @@ func (writer *ByteWriter) PutBuffer(buffer *gst.Buffer, offset uint, size int) b
 
 // PutData wraps gst_byte_writer_put_data
 // 
-// The function takes the following parameters:
-// 
-// 	- data []uint8: Data to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes @size bytes of @data to @writer.
 func (writer *ByteWriter) PutData(data []uint8) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -22040,15 +15311,8 @@ func (writer *ByteWriter) PutData(data []uint8) bool {
 
 // PutFloat32Be wraps gst_byte_writer_put_float32_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val float32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a big endian 32 bit float to @writer.
 func (writer *ByteWriter) PutFloat32Be(val float32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gfloat         // in, none, casted
@@ -22072,15 +15336,8 @@ func (writer *ByteWriter) PutFloat32Be(val float32) bool {
 
 // PutFloat32Le wraps gst_byte_writer_put_float32_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val float32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a little endian 32 bit float to @writer.
 func (writer *ByteWriter) PutFloat32Le(val float32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gfloat         // in, none, casted
@@ -22104,15 +15361,8 @@ func (writer *ByteWriter) PutFloat32Le(val float32) bool {
 
 // PutFloat64Be wraps gst_byte_writer_put_float64_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val float64: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a big endian 64 bit float to @writer.
 func (writer *ByteWriter) PutFloat64Be(val float64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gdouble        // in, none, casted
@@ -22136,15 +15386,8 @@ func (writer *ByteWriter) PutFloat64Be(val float64) bool {
 
 // PutFloat64Le wraps gst_byte_writer_put_float64_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val float64: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a little endian 64 bit float to @writer.
 func (writer *ByteWriter) PutFloat64Le(val float64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gdouble        // in, none, casted
@@ -22168,15 +15411,8 @@ func (writer *ByteWriter) PutFloat64Le(val float64) bool {
 
 // PutInt16Be wraps gst_byte_writer_put_int16_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val int16: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a signed big endian 16 bit integer to @writer.
 func (writer *ByteWriter) PutInt16Be(val int16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint16         // in, none, casted
@@ -22200,15 +15436,8 @@ func (writer *ByteWriter) PutInt16Be(val int16) bool {
 
 // PutInt16Le wraps gst_byte_writer_put_int16_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val int16: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a signed little endian 16 bit integer to @writer.
 func (writer *ByteWriter) PutInt16Le(val int16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint16         // in, none, casted
@@ -22232,15 +15461,8 @@ func (writer *ByteWriter) PutInt16Le(val int16) bool {
 
 // PutInt24Be wraps gst_byte_writer_put_int24_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val int32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a signed big endian 24 bit integer to @writer.
 func (writer *ByteWriter) PutInt24Be(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
@@ -22264,15 +15486,8 @@ func (writer *ByteWriter) PutInt24Be(val int32) bool {
 
 // PutInt24Le wraps gst_byte_writer_put_int24_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val int32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a signed little endian 24 bit integer to @writer.
 func (writer *ByteWriter) PutInt24Le(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
@@ -22296,15 +15511,8 @@ func (writer *ByteWriter) PutInt24Le(val int32) bool {
 
 // PutInt32Be wraps gst_byte_writer_put_int32_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val int32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a signed big endian 32 bit integer to @writer.
 func (writer *ByteWriter) PutInt32Be(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
@@ -22328,15 +15536,8 @@ func (writer *ByteWriter) PutInt32Be(val int32) bool {
 
 // PutInt32Le wraps gst_byte_writer_put_int32_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val int32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a signed little endian 32 bit integer to @writer.
 func (writer *ByteWriter) PutInt32Le(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
@@ -22360,15 +15561,8 @@ func (writer *ByteWriter) PutInt32Le(val int32) bool {
 
 // PutInt64Be wraps gst_byte_writer_put_int64_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val int64: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a signed big endian 64 bit integer to @writer.
 func (writer *ByteWriter) PutInt64Be(val int64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint64         // in, none, casted
@@ -22392,15 +15586,8 @@ func (writer *ByteWriter) PutInt64Be(val int64) bool {
 
 // PutInt64Le wraps gst_byte_writer_put_int64_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val int64: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a signed little endian 64 bit integer to @writer.
 func (writer *ByteWriter) PutInt64Le(val int64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint64         // in, none, casted
@@ -22424,15 +15611,8 @@ func (writer *ByteWriter) PutInt64Le(val int64) bool {
 
 // PutInt8 wraps gst_byte_writer_put_int8
 // 
-// The function takes the following parameters:
-// 
-// 	- val int8: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a signed 8 bit integer to @writer.
 func (writer *ByteWriter) PutInt8(val int8) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint8          // in, none, casted
@@ -22456,15 +15636,8 @@ func (writer *ByteWriter) PutInt8(val int8) bool {
 
 // PutStringUTF16 wraps gst_byte_writer_put_string_utf16
 // 
-// The function takes the following parameters:
-// 
-// 	- data []uint16: UTF16 string to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a NUL-terminated UTF16 string to @writer (including the terminator).
 func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.guint16       // in, transfer: none, C Pointers: 1, Name: array[guint16], array (inner guint16 (*typesystem.CastablePrimitive), zero-terminated)
@@ -22490,15 +15663,8 @@ func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 
 // PutStringUtf32 wraps gst_byte_writer_put_string_utf32
 // 
-// The function takes the following parameters:
-// 
-// 	- data []uint32: UTF32 string to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a NUL-terminated UTF32 string to @writer (including the terminator).
 func (writer *ByteWriter) PutStringUtf32(data []uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner guint32 (*typesystem.CastablePrimitive), zero-terminated)
@@ -22524,15 +15690,8 @@ func (writer *ByteWriter) PutStringUtf32(data []uint32) bool {
 
 // PutStringUTF8 wraps gst_byte_writer_put_string_utf8
 // 
-// The function takes the following parameters:
-// 
-// 	- data string: UTF8 string to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a NUL-terminated UTF8 string to @writer (including the terminator).
 func (writer *ByteWriter) PutStringUTF8(data string) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.gchar         // in, none, string
@@ -22557,15 +15716,8 @@ func (writer *ByteWriter) PutStringUTF8(data string) bool {
 
 // PutUint16Be wraps gst_byte_writer_put_uint16_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val uint16: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a unsigned big endian 16 bit integer to @writer.
 func (writer *ByteWriter) PutUint16Be(val uint16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint16        // in, none, casted
@@ -22589,15 +15741,8 @@ func (writer *ByteWriter) PutUint16Be(val uint16) bool {
 
 // PutUint16Le wraps gst_byte_writer_put_uint16_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val uint16: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a unsigned little endian 16 bit integer to @writer.
 func (writer *ByteWriter) PutUint16Le(val uint16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint16        // in, none, casted
@@ -22621,15 +15766,8 @@ func (writer *ByteWriter) PutUint16Le(val uint16) bool {
 
 // PutUint24Be wraps gst_byte_writer_put_uint24_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val uint32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a unsigned big endian 24 bit integer to @writer.
 func (writer *ByteWriter) PutUint24Be(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -22653,15 +15791,8 @@ func (writer *ByteWriter) PutUint24Be(val uint32) bool {
 
 // PutUint24Le wraps gst_byte_writer_put_uint24_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val uint32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a unsigned little endian 24 bit integer to @writer.
 func (writer *ByteWriter) PutUint24Le(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -22685,15 +15816,8 @@ func (writer *ByteWriter) PutUint24Le(val uint32) bool {
 
 // PutUint32Be wraps gst_byte_writer_put_uint32_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val uint32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a unsigned big endian 32 bit integer to @writer.
 func (writer *ByteWriter) PutUint32Be(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -22717,15 +15841,8 @@ func (writer *ByteWriter) PutUint32Be(val uint32) bool {
 
 // PutUint32Le wraps gst_byte_writer_put_uint32_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val uint32: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a unsigned little endian 32 bit integer to @writer.
 func (writer *ByteWriter) PutUint32Le(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -22749,15 +15866,8 @@ func (writer *ByteWriter) PutUint32Le(val uint32) bool {
 
 // PutUint64Be wraps gst_byte_writer_put_uint64_be
 // 
-// The function takes the following parameters:
-// 
-// 	- val uint64: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a unsigned big endian 64 bit integer to @writer.
 func (writer *ByteWriter) PutUint64Be(val uint64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint64        // in, none, casted
@@ -22781,15 +15891,8 @@ func (writer *ByteWriter) PutUint64Be(val uint64) bool {
 
 // PutUint64Le wraps gst_byte_writer_put_uint64_le
 // 
-// The function takes the following parameters:
-// 
-// 	- val uint64: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a unsigned little endian 64 bit integer to @writer.
 func (writer *ByteWriter) PutUint64Le(val uint64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint64        // in, none, casted
@@ -22813,15 +15916,8 @@ func (writer *ByteWriter) PutUint64Le(val uint64) bool {
 
 // PutUint8 wraps gst_byte_writer_put_uint8
 // 
-// The function takes the following parameters:
-// 
-// 	- val uint8: Value to write 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Writes a unsigned 8 bit integer to @writer.
 func (writer *ByteWriter) PutUint8(val uint8) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint8         // in, none, casted
@@ -22844,9 +15940,9 @@ func (writer *ByteWriter) PutUint8(val uint8) bool {
 }
 
 // Reset wraps gst_byte_writer_reset
+// 
+// see also No documentation available
 //
-// Resets @writer and frees the data if it's
-// owned by @writer.
 func (writer *ByteWriter) Reset() {
 	var carg0 *C.GstByteWriter // in, none, converted
 
@@ -22858,13 +15954,8 @@ func (writer *ByteWriter) Reset() {
 
 // ResetAndGetBuffer wraps gst_byte_writer_reset_and_get_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Resets @writer and returns the current data as buffer.
-// 
-// Free-function: gst_buffer_unref
 func (writer *ByteWriter) ResetAndGetBuffer() *gst.Buffer {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var cret  *C.GstBuffer     // return, full, converted
@@ -22882,8 +15973,9 @@ func (writer *ByteWriter) ResetAndGetBuffer() *gst.Buffer {
 }
 
 // CollectData wraps GstCollectData
+// 
+// see also No documentation available
 //
-// Structure used by the collect_pads.
 type CollectData struct {
 	*collectData
 }
@@ -22964,6 +16056,8 @@ func UnsafeCollectDataToGlibFull(c *CollectData) unsafe.Pointer {
 
 // CollectPadsClass wraps GstCollectPadsClass
 // 
+// see also No documentation available
+// 
 // CollectPadsClass is the type struct for [CollectPads]
 type CollectPadsClass struct {
 	*collectPadsClass
@@ -23016,6 +16110,8 @@ func (c *CollectPadsClass) ParentClass() *gst.ObjectClass {
 
 // DataQueueClass wraps GstDataQueueClass
 // 
+// see also No documentation available
+// 
 // DataQueueClass is the type struct for [DataQueue]
 type DataQueueClass struct {
 	*dataQueueClass
@@ -23067,38 +16163,9 @@ func (d *DataQueueClass) ParentClass() *gobject.ObjectClass {
 }
 
 // FlowCombiner wraps GstFlowCombiner
+// 
+// see also No documentation available
 //
-// Utility struct to help handling #GstFlowReturn combination. Useful for
-// #GstElement&lt;!-- --&gt;s that have multiple source pads and need to combine
-// the different #GstFlowReturn for those pads.
-// 
-// #GstFlowCombiner works by using the last #GstFlowReturn for all #GstPad
-// it has in its list and computes the combined return value and provides
-// it to the caller.
-// 
-// To add a new pad to the #GstFlowCombiner use gst_flow_combiner_add_pad().
-// The new #GstPad is stored with a default value of %GST_FLOW_OK.
-// 
-// In case you want a #GstPad to be removed, use gst_flow_combiner_remove_pad().
-// 
-// Please be aware that this struct isn't thread safe as its designed to be
-//  used by demuxers, those usually will have a single thread operating it.
-// 
-// These functions will take refs on the passed #GstPad&lt;!-- --&gt;s.
-// 
-// Aside from reducing the user's code size, the main advantage of using this
-// helper struct is to follow the standard rules for #GstFlowReturn combination.
-// These rules are:
-// 
-// * %GST_FLOW_EOS: only if all returns are EOS too
-// * %GST_FLOW_NOT_LINKED: only if all returns are NOT_LINKED too
-// * %GST_FLOW_ERROR or below: if at least one returns an error return
-// * %GST_FLOW_NOT_NEGOTIATED: if at least one returns a not-negotiated return
-// * %GST_FLOW_FLUSHING: if at least one returns flushing
-// * %GST_FLOW_OK: otherwise
-// 
-// %GST_FLOW_ERROR or below, GST_FLOW_NOT_NEGOTIATED and GST_FLOW_FLUSHING are
-// returned immediately from the gst_flow_combiner_update_flow() function.
 type FlowCombiner struct {
 	*flowCombiner
 }
@@ -23207,11 +16274,8 @@ func UnsafeFlowCombinerToGlibFull(f *FlowCombiner) unsafe.Pointer {
 
 // NewFlowCombiner wraps gst_flow_combiner_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *FlowCombiner 
+// see also No documentation available
 //
-// Creates a new #GstFlowCombiner, use gst_flow_combiner_free() to free it.
 func NewFlowCombiner() *FlowCombiner {
 	var cret *C.GstFlowCombiner // return, full, converted
 
@@ -23226,11 +16290,8 @@ func NewFlowCombiner() *FlowCombiner {
 
 // AddPad wraps gst_flow_combiner_add_pad
 // 
-// The function takes the following parameters:
-// 
-// 	- pad gst.Pad: the #GstPad that is being added 
+// see also No documentation available
 //
-// Adds a new #GstPad to the #GstFlowCombiner.
 func (combiner *FlowCombiner) AddPad(pad gst.Pad) {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 	var carg1 *C.GstPad          // in, none, converted
@@ -23244,8 +16305,9 @@ func (combiner *FlowCombiner) AddPad(pad gst.Pad) {
 }
 
 // Clear wraps gst_flow_combiner_clear
+// 
+// see also No documentation available
 //
-// Removes all pads from a #GstFlowCombiner and resets it to its initial state.
 func (combiner *FlowCombiner) Clear() {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 
@@ -23257,11 +16319,8 @@ func (combiner *FlowCombiner) Clear() {
 
 // RemovePad wraps gst_flow_combiner_remove_pad
 // 
-// The function takes the following parameters:
-// 
-// 	- pad gst.Pad: the #GstPad to remove 
+// see also No documentation available
 //
-// Removes a #GstPad from the #GstFlowCombiner.
 func (combiner *FlowCombiner) RemovePad(pad gst.Pad) {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 	var carg1 *C.GstPad          // in, none, converted
@@ -23275,8 +16334,9 @@ func (combiner *FlowCombiner) RemovePad(pad gst.Pad) {
 }
 
 // Reset wraps gst_flow_combiner_reset
+// 
+// see also No documentation available
 //
-// Reset flow combiner and all pads to their initial state without removing pads.
 func (combiner *FlowCombiner) Reset() {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 
@@ -23288,20 +16348,8 @@ func (combiner *FlowCombiner) Reset() {
 
 // UpdateFlow wraps gst_flow_combiner_update_flow
 // 
-// The function takes the following parameters:
-// 
-// 	- fret gst.FlowReturn: the latest #GstFlowReturn received for a pad in this #GstFlowCombiner 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Computes the combined flow return for the pads in it.
-// 
-// The #GstFlowReturn parameter should be the last flow return update for a pad
-// in this #GstFlowCombiner. It will use this value to be able to shortcut some
-// combinations and avoid looking over all pads again. e.g. The last combined
-// return is the same as the latest obtained #GstFlowReturn.
 func (combiner *FlowCombiner) UpdateFlow(fret gst.FlowReturn) gst.FlowReturn {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 	var carg1 C.GstFlowReturn    // in, none, casted
@@ -23323,22 +16371,8 @@ func (combiner *FlowCombiner) UpdateFlow(fret gst.FlowReturn) gst.FlowReturn {
 
 // UpdatePadFlow wraps gst_flow_combiner_update_pad_flow
 // 
-// The function takes the following parameters:
-// 
-// 	- pad gst.Pad: the #GstPad whose #GstFlowReturn to update 
-// 	- fret gst.FlowReturn: the latest #GstFlowReturn received for a pad in this #GstFlowCombiner 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Sets the provided pad's last flow return to provided value and computes
-// the combined flow return for the pads in it.
-// 
-// The #GstFlowReturn parameter should be the last flow return update for a pad
-// in this #GstFlowCombiner. It will use this value to be able to shortcut some
-// combinations and avoid looking over all pads again. e.g. The last combined
-// return is the same as the latest obtained #GstFlowReturn.
 func (combiner *FlowCombiner) UpdatePadFlow(pad gst.Pad, fret gst.FlowReturn) gst.FlowReturn {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 	var carg1 *C.GstPad          // in, none, converted
@@ -23362,10 +16396,9 @@ func (combiner *FlowCombiner) UpdatePadFlow(pad gst.Pad, fret gst.FlowReturn) gs
 }
 
 // PushSrcClass wraps GstPushSrcClass
+// 
+// see also No documentation available
 //
-// Subclasses can override any of the available virtual methods or not, as
-// needed. At the minimum, the @fill method should be overridden to produce
-// buffers.
 // 
 // PushSrcClass is the type struct for [PushSrc]
 type PushSrcClass struct {

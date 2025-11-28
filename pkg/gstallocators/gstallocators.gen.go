@@ -37,29 +37,31 @@ func init() {
 }
 
 // FdMemoryFlags wraps GstFdMemoryFlags
+// 
+// see also No documentation available
 //
-// Various flags to control the operation of the fd backed memory.
 type FdMemoryFlags C.gint
 
 const (
 	// FdMemoryFlagNone wraps GST_FD_MEMORY_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flag
 	FdMemoryFlagNone FdMemoryFlags = 0
 	// FdMemoryFlagKeepMapped wraps GST_FD_MEMORY_FLAG_KEEP_MAPPED
+	// 
+	// see also No documentation available
 	//
-	// once the memory is mapped,
-	//        keep it mapped until the memory is destroyed.
 	FdMemoryFlagKeepMapped FdMemoryFlags = 1
 	// FdMemoryFlagMapPrivate wraps GST_FD_MEMORY_FLAG_MAP_PRIVATE
+	// 
+	// see also No documentation available
 	//
-	// do a private mapping instead of
-	//        the default shared mapping.
 	FdMemoryFlagMapPrivate FdMemoryFlags = 2
 	// FdMemoryFlagDontClose wraps GST_FD_MEMORY_FLAG_DONT_CLOSE
+	// 
+	// see also No documentation available
 	//
-	// don't close the file descriptor when
-	//        the memory is freed. Since: 1.10
 	FdMemoryFlagDontClose FdMemoryFlags = 4
 )
 
@@ -91,15 +93,8 @@ func (f FdMemoryFlags) String() string {
 
 // DmabufMemoryGetFd wraps gst_dmabuf_memory_get_fd
 // 
-// The function takes the following parameters:
-// 
-// 	- mem *gst.Memory: the memory to get the file descriptor 
-// 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 //
-// Return the file descriptor associated with @mem.
 func DmabufMemoryGetFd(mem *gst.Memory) int32 {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gint       // return, none, casted
@@ -118,16 +113,8 @@ func DmabufMemoryGetFd(mem *gst.Memory) int32 {
 
 // DrmDumbMemoryExportDmabuf wraps gst_drm_dumb_memory_export_dmabuf
 // 
-// The function takes the following parameters:
-// 
-// 	- mem *gst.Memory: the memory to export from 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Memory 
+// see also No documentation available
 //
-// Exports a DMABuf from the DRM Bumb buffer object. One can check if this
-// feature is supported using gst_drm_dumb_allocator_has_prime_export();
 func DrmDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  *C.GstMemory // return, full, converted
@@ -146,15 +133,8 @@ func DrmDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 
 // DrmDumbMemoryGetHandle wraps gst_drm_dumb_memory_get_handle
 // 
-// The function takes the following parameters:
-// 
-// 	- mem *gst.Memory: the memory to get the handle from 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint32 
+// see also No documentation available
 //
-// Return the DRM buffer object handle associated with @mem.
 func DrmDumbMemoryGetHandle(mem *gst.Memory) uint32 {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.guint32    // return, none, casted
@@ -173,16 +153,8 @@ func DrmDumbMemoryGetHandle(mem *gst.Memory) uint32 {
 
 // FdMemoryGetFd wraps gst_fd_memory_get_fd
 // 
-// The function takes the following parameters:
-// 
-// 	- mem *gst.Memory: #GstMemory 
-// 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 //
-// Get the fd from @mem. Call gst_is_fd_memory() to check if @mem has
-// an fd.
 func FdMemoryGetFd(mem *gst.Memory) int32 {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gint       // return, none, casted
@@ -201,15 +173,8 @@ func FdMemoryGetFd(mem *gst.Memory) int32 {
 
 // IsDmabufMemory wraps gst_is_dmabuf_memory
 // 
-// The function takes the following parameters:
-// 
-// 	- mem *gst.Memory: the memory to be check 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check if @mem is dmabuf memory.
 func IsDmabufMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -230,13 +195,7 @@ func IsDmabufMemory(mem *gst.Memory) bool {
 
 // IsDrmDumbMemory wraps gst_is_drm_dumb_memory
 // 
-// The function takes the following parameters:
-// 
-// 	- mem *gst.Memory: the memory to be checked 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func IsDrmDumbMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -257,15 +216,8 @@ func IsDrmDumbMemory(mem *gst.Memory) bool {
 
 // IsFdMemory wraps gst_is_fd_memory
 // 
-// The function takes the following parameters:
-// 
-// 	- mem *gst.Memory: #GstMemory 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check if @mem is memory backed by an fd
 func IsFdMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -286,13 +238,7 @@ func IsFdMemory(mem *gst.Memory) bool {
 
 // IsPhysMemory wraps gst_is_phys_memory
 // 
-// The function takes the following parameters:
-// 
-// 	- mem *gst.Memory: a #GstMemory 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func IsPhysMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -320,6 +266,8 @@ type PhysMemoryAllocatorInstance struct {
 var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
 
 // PhysMemoryAllocator wraps GstPhysMemoryAllocator
+// 
+// see also No documentation available
 type PhysMemoryAllocator interface {
 	upcastToGstPhysMemoryAllocator() *PhysMemoryAllocatorInstance
 }
@@ -376,37 +324,22 @@ type DRMDumbAllocatorInstance struct {
 var _ DRMDumbAllocator = (*DRMDumbAllocatorInstance)(nil)
 
 // DRMDumbAllocator wraps GstDRMDumbAllocator
+// 
+// see also No documentation available
 //
-// Private intance object for #GstDRMDumbAllocator.
 type DRMDumbAllocator interface {
 	gst.Allocator
 	upcastToGstDRMDumbAllocator() *DRMDumbAllocatorInstance
 
 	// DrmDumbAlloc wraps gst_drm_dumb_allocator_alloc
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- drmFourcc uint32: the DRM format to allocate for 
-	// 	- width uint32: padded width for this allocation 
-	// 	- height uint32: padded height for this allocation 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- outPitch uint32: the pitch as returned by the driver 
-	// 	- goret *gst.Memory 
+	// see also No documentation available
 	//
-	// Allocated a DRM buffer object for the specific @drm_fourcc, @width and
-	// @height. Note that the DRM Dumb allocation interface is agnostic to the
-	// pixel format. This @drm_fourcc is converted into a bpp (bit-per-pixel)
-	// number and the height is scaled according to the sub-sampling.
 	DrmDumbAlloc(uint32, uint32, uint32) (uint32, *gst.Memory)
 	// HasPrimeExport wraps gst_drm_dumb_allocator_has_prime_export
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// This function allow verifying if the driver support dma-buf exportation.
 	HasPrimeExport() bool
 
 	// chain up virtual methods:
@@ -468,17 +401,8 @@ func UnsafeDRMDumbAllocatorToGlibFull(c DRMDumbAllocator) unsafe.Pointer {
 
 // NewDRMDumbAllocatorWithDevicePath wraps gst_drm_dumb_allocator_new_with_device_path
 // 
-// The function takes the following parameters:
-// 
-// 	- drmDevicePath string: path to the DRM device to open 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.Allocator (nullable) 
+// see also No documentation available
 //
-// Creates a new #GstDRMDumbAllocator for the specific device path. This
-// function can fail if the path does not exist, is not a DRM device or if
-// the DRM device doesnot support DUMB allocation.
 func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 	var carg1 *C.gchar        // in, none, string
 	var cret  *C.GstAllocator // return, full, converted, nullable
@@ -500,17 +424,8 @@ func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 
 // NewDRMDumbAllocatorWithFd wraps gst_drm_dumb_allocator_new_with_fd
 // 
-// The function takes the following parameters:
-// 
-// 	- drmFd int32: file descriptor of the DRM device 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.Allocator (nullable) 
+// see also No documentation available
 //
-// Creates a new #GstDRMDumbAllocator for the specific file desciptor. This
-// function can fail if the file descriptor is not a DRM device or if
-// the DRM device does not support DUMB allocation.
 func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
 	var carg1 C.gint          // in, none, casted
 	var cret  *C.GstAllocator // return, full, converted, nullable
@@ -531,21 +446,8 @@ func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
 
 // DrmDumbAlloc wraps gst_drm_dumb_allocator_alloc
 // 
-// The function takes the following parameters:
-// 
-// 	- drmFourcc uint32: the DRM format to allocate for 
-// 	- width uint32: padded width for this allocation 
-// 	- height uint32: padded height for this allocation 
-// 
-// The function returns the following values:
-// 
-// 	- outPitch uint32: the pitch as returned by the driver 
-// 	- goret *gst.Memory 
+// see also No documentation available
 //
-// Allocated a DRM buffer object for the specific @drm_fourcc, @width and
-// @height. Note that the DRM Dumb allocation interface is agnostic to the
-// pixel format. This @drm_fourcc is converted into a bpp (bit-per-pixel)
-// number and the height is scaled according to the sub-sampling.
 func (allocator *DRMDumbAllocatorInstance) DrmDumbAlloc(drmFourcc uint32, width uint32, height uint32) (uint32, *gst.Memory) {
 	var carg0 *C.GstAllocator // in, none, converted
 	var carg1 C.guint32       // in, none, casted
@@ -576,11 +478,8 @@ func (allocator *DRMDumbAllocatorInstance) DrmDumbAlloc(drmFourcc uint32, width 
 
 // HasPrimeExport wraps gst_drm_dumb_allocator_has_prime_export
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// This function allow verifying if the driver support dma-buf exportation.
 func (allocator *DRMDumbAllocatorInstance) HasPrimeExport() bool {
 	var carg0 *C.GstAllocator // in, none, converted
 	var cret  C.gboolean      // return
@@ -648,8 +547,9 @@ type FdAllocatorInstance struct {
 var _ FdAllocator = (*FdAllocatorInstance)(nil)
 
 // FdAllocator wraps GstFdAllocator
+// 
+// see also No documentation available
 //
-// Base class for allocators with fd-backed memory
 type FdAllocator interface {
 	gst.Allocator
 	upcastToGstFdAllocator() *FdAllocatorInstance
@@ -713,11 +613,8 @@ func UnsafeFdAllocatorToGlibFull(c FdAllocator) unsafe.Pointer {
 
 // NewFdAllocator wraps gst_fd_allocator_new
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.Allocator 
+// see also No documentation available
 //
-// Return a new fd allocator.
 func NewFdAllocator() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted
 
@@ -732,18 +629,8 @@ func NewFdAllocator() gst.Allocator {
 
 // FdAllocatorAlloc wraps gst_fd_allocator_alloc
 // 
-// The function takes the following parameters:
-// 
-// 	- allocator gst.Allocator: allocator to be used for this memory 
-// 	- fd int32: file descriptor 
-// 	- size uint: memory size 
-// 	- flags FdMemoryFlags: extra #GstFdMemoryFlags 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Memory (nullable) 
+// see also No documentation available
 //
-// Return a %GstMemory that wraps a generic file descriptor.
 func FdAllocatorAlloc(allocator gst.Allocator, fd int32, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
@@ -820,16 +707,9 @@ type ShmAllocatorInstance struct {
 var _ ShmAllocator = (*ShmAllocatorInstance)(nil)
 
 // ShmAllocator wraps GstShmAllocator
-//
-// This is a subclass of #GstFdAllocator that implements the
-// gst_allocator_alloc() method using `memfd_create()` when available, POSIX
-// `shm_open()` otherwise. Platforms not supporting any of those (Windows) will
-// always return %NULL.
 // 
-// Note that allocating new shared memories has a significant performance cost,
-// it is thus recommended to keep a pool of pre-allocated #GstMemory, using
-// #GstBufferPool. For that reason, this allocator has the
-// %GST_ALLOCATOR_FLAG_NO_COPY flag set.
+// see also No documentation available
+//
 type ShmAllocator interface {
 	FdAllocator
 	upcastToGstShmAllocator() *ShmAllocatorInstance
@@ -895,12 +775,8 @@ func UnsafeShmAllocatorToGlibFull(c ShmAllocator) unsafe.Pointer {
 
 // ShmAllocatorGet wraps gst_shm_allocator_get
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.Allocator (nullable) 
+// see also No documentation available
 //
-// Get the #GstShmAllocator singleton previously registered with
-// gst_shm_allocator_init_once().
 func ShmAllocatorGet() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted, nullable
 
@@ -916,9 +792,9 @@ func ShmAllocatorGet() gst.Allocator {
 }
 
 // ShmAllocatorInitOnce wraps gst_shm_allocator_init_once
+// 
+// see also No documentation available
 //
-// Register a #GstShmAllocator using gst_allocator_register() with the name
-// %GST_ALLOCATOR_SHM. This is no-op after the first call.
 func ShmAllocatorInitOnce() {
 
 	C.gst_shm_allocator_init_once()
@@ -973,8 +849,9 @@ type DmaBufAllocatorInstance struct {
 var _ DmaBufAllocator = (*DmaBufAllocatorInstance)(nil)
 
 // DmaBufAllocator wraps GstDmaBufAllocator
+// 
+// see also No documentation available
 //
-// Base class for allocators with dmabuf-backed memory
 type DmaBufAllocator interface {
 	FdAllocator
 	upcastToGstDmaBufAllocator() *DmaBufAllocatorInstance
@@ -1040,11 +917,8 @@ func UnsafeDmaBufAllocatorToGlibFull(c DmaBufAllocator) unsafe.Pointer {
 
 // NewDmaBufAllocator wraps gst_dmabuf_allocator_new
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.Allocator 
+// see also No documentation available
 //
-// Return a new dmabuf allocator.
 func NewDmaBufAllocator() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted
 
@@ -1059,17 +933,8 @@ func NewDmaBufAllocator() gst.Allocator {
 
 // DmaBufAllocatorAlloc wraps gst_dmabuf_allocator_alloc
 // 
-// The function takes the following parameters:
-// 
-// 	- allocator gst.Allocator: allocator to be used for this memory 
-// 	- fd int32: dmabuf file descriptor 
-// 	- size uint: memory size 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Memory (nullable) 
+// see also No documentation available
 //
-// Return a %GstMemory that wraps a dmabuf file descriptor.
 func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int32, size uint) *gst.Memory {
 	var carg1 *C.GstAllocator // in, none, converted
 	var carg2 C.gint          // in, none, casted
@@ -1096,18 +961,8 @@ func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int32, size uint) *gst.Mem
 
 // DmaBufAllocatorAllocWithFlags wraps gst_dmabuf_allocator_alloc_with_flags
 // 
-// The function takes the following parameters:
-// 
-// 	- allocator gst.Allocator: allocator to be used for this memory 
-// 	- fd int32: dmabuf file descriptor 
-// 	- size uint: memory size 
-// 	- flags FdMemoryFlags: extra #GstFdMemoryFlags 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Memory (nullable) 
+// see also No documentation available
 //
-// Return a %GstMemory that wraps a dmabuf file descriptor.
 func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int32, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
@@ -1177,6 +1032,8 @@ func RegisterDmaBufAllocatorSubClass[InstanceT DmaBufAllocator](
 
 // DRMDumbAllocatorClass wraps GstDRMDumbAllocatorClass
 // 
+// see also No documentation available
+// 
 // DRMDumbAllocatorClass is the type struct for [DRMDumbAllocator]
 type DRMDumbAllocatorClass struct {
 	*dRMDumbAllocatorClass
@@ -1228,6 +1085,8 @@ func (d *DRMDumbAllocatorClass) ParentClass() *gst.AllocatorClass {
 }
 
 // DmaBufAllocatorClass wraps GstDmaBufAllocatorClass
+// 
+// see also No documentation available
 // 
 // DmaBufAllocatorClass is the type struct for [DmaBufAllocator]
 type DmaBufAllocatorClass struct {
@@ -1281,6 +1140,8 @@ func (d *DmaBufAllocatorClass) ParentClass() *FdAllocatorClass {
 
 // FdAllocatorClass wraps GstFdAllocatorClass
 // 
+// see also No documentation available
+// 
 // FdAllocatorClass is the type struct for [FdAllocator]
 type FdAllocatorClass struct {
 	*fdAllocatorClass
@@ -1332,8 +1193,9 @@ func (f *FdAllocatorClass) ParentClass() *gst.AllocatorClass {
 }
 
 // PhysMemoryAllocatorInterface wraps GstPhysMemoryAllocatorInterface
+// 
+// see also No documentation available
 //
-// Marker interface for allocators with physical address backed memory
 type PhysMemoryAllocatorInterface struct {
 	*physMemoryAllocatorInterface
 }
@@ -1413,6 +1275,8 @@ func UnsafePhysMemoryAllocatorInterfaceToGlibFull(p *PhysMemoryAllocatorInterfac
 }
 
 // ShmAllocatorClass wraps GstShmAllocatorClass
+// 
+// see also No documentation available
 // 
 // ShmAllocatorClass is the type struct for [ShmAllocator]
 type ShmAllocatorClass struct {
