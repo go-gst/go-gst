@@ -12,6 +12,7 @@ import (
 	"github.com/go-gst/go-glib/gir"
 	"github.com/go-gst/go-glib/gir/cmd/gir-generate/gendata"
 	"github.com/go-gst/go-glib/gir/cmd/gir-generate/genmain"
+	"github.com/go-gst/go-glib/gir/girgen/generators"
 	"github.com/go-gst/go-glib/gir/girgen/strcases"
 	"github.com/go-gst/go-glib/gir/girgen/typesystem"
 	girfiles_gst "github.com/go-gst/go-gst/girs"
@@ -19,9 +20,14 @@ import (
 
 const Module = "github.com/go-gst/go-gst/pkg"
 
+const GstreamerDocsBaseURL = "https://gstreamer.freedesktop.org/documentation"
+
 var Data = genmain.Data{
 	Module:   Module,
 	GirFiles: girfiles_gst.GirFiles,
+
+	Documentation: generators.NewHotDocGodocGeneratorFactory(GstreamerDocsBaseURL),
+
 	Preprocessors: []gir.Preprocessor{
 		gir.MustIntrospect("Gst-1.Message.copy"),
 

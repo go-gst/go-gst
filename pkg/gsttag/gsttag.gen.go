@@ -58,27 +58,31 @@ func init() {
 }
 
 // TAG_ID3V2_HEADER_SIZE wraps GST_TAG_ID3V2_HEADER_SIZE
+// 
+// see also No documentation available
 //
-// ID3V2 header size considered minimum input for some functions such as
-// gst_tag_list_from_id3v2_tag() and gst_tag_get_id3v2_tag_size() for example.
 const TAG_ID3V2_HEADER_SIZE = 10
 // TagDemuxResult wraps GstTagDemuxResult
+// 
+// see also No documentation available
 //
-// Result values from the parse_tag virtual function.
 type TagDemuxResult C.int
 
 const (
 	// TagDemuxResultBrokenTag wraps GST_TAG_DEMUX_RESULT_BROKEN_TAG
+	// 
+	// see also No documentation available
 	//
-	// cannot parse tag, just skip it
 	TagDemuxResultBrokenTag TagDemuxResult = 0
 	// TagDemuxResultAgain wraps GST_TAG_DEMUX_RESULT_AGAIN
+	// 
+	// see also No documentation available
 	//
-	// call again with less or more data
 	TagDemuxResultAgain TagDemuxResult = 1
 	// TagDemuxResultOK wraps GST_TAG_DEMUX_RESULT_OK
+	// 
+	// see also No documentation available
 	//
-	// parsed tag successfully
 	TagDemuxResultOK TagDemuxResult = 2
 )
 
@@ -106,93 +110,111 @@ func (e TagDemuxResult) String() string {
 }
 
 // TagImageType wraps GstTagImageType
+// 
+// see also No documentation available
 //
-// Type of image contained in an image tag (specified as "image-type" field in
-// the info structure in the image's #GstSample)
 type TagImageType C.int
 
 const (
 	// TagImageTypeNone wraps GST_TAG_IMAGE_TYPE_NONE
+	// 
+	// see also No documentation available
 	//
-	// No image type. Can be used to
-	//      tell functions such as gst_tag_image_data_to_image_sample() that no
-	//      image type should be set.
 	TagImageTypeNone TagImageType = -1
 	// TagImageTypeUndefined wraps GST_TAG_IMAGE_TYPE_UNDEFINED
+	// 
+	// see also No documentation available
 	//
-	// Undefined/other image type
 	TagImageTypeUndefined TagImageType = 0
 	// TagImageTypeFrontCover wraps GST_TAG_IMAGE_TYPE_FRONT_COVER
+	// 
+	// see also No documentation available
 	//
-	// Cover (front)
 	TagImageTypeFrontCover TagImageType = 1
 	// TagImageTypeBackCover wraps GST_TAG_IMAGE_TYPE_BACK_COVER
+	// 
+	// see also No documentation available
 	//
-	// Cover (back)
 	TagImageTypeBackCover TagImageType = 2
 	// TagImageTypeLeafletPage wraps GST_TAG_IMAGE_TYPE_LEAFLET_PAGE
+	// 
+	// see also No documentation available
 	//
-	// Leaflet page
 	TagImageTypeLeafletPage TagImageType = 3
 	// TagImageTypeMedium wraps GST_TAG_IMAGE_TYPE_MEDIUM
+	// 
+	// see also No documentation available
 	//
-	// Medium (e.g. label side of CD)
 	TagImageTypeMedium TagImageType = 4
 	// TagImageTypeLeadArtist wraps GST_TAG_IMAGE_TYPE_LEAD_ARTIST
+	// 
+	// see also No documentation available
 	//
-	// Lead artist/lead performer/soloist
 	TagImageTypeLeadArtist TagImageType = 5
 	// TagImageTypeArtist wraps GST_TAG_IMAGE_TYPE_ARTIST
+	// 
+	// see also No documentation available
 	//
-	// Artist/performer
 	TagImageTypeArtist TagImageType = 6
 	// TagImageTypeConductor wraps GST_TAG_IMAGE_TYPE_CONDUCTOR
+	// 
+	// see also No documentation available
 	//
-	// Conductor
 	TagImageTypeConductor TagImageType = 7
 	// TagImageTypeBandOrchestra wraps GST_TAG_IMAGE_TYPE_BAND_ORCHESTRA
+	// 
+	// see also No documentation available
 	//
-	// Band/orchestra
 	TagImageTypeBandOrchestra TagImageType = 8
 	// TagImageTypeComposer wraps GST_TAG_IMAGE_TYPE_COMPOSER
+	// 
+	// see also No documentation available
 	//
-	// Composer
 	TagImageTypeComposer TagImageType = 9
 	// TagImageTypeLyricist wraps GST_TAG_IMAGE_TYPE_LYRICIST
+	// 
+	// see also No documentation available
 	//
-	// Lyricist/text writer
 	TagImageTypeLyricist TagImageType = 10
 	// TagImageTypeRecordingLocation wraps GST_TAG_IMAGE_TYPE_RECORDING_LOCATION
+	// 
+	// see also No documentation available
 	//
-	// Recording location
 	TagImageTypeRecordingLocation TagImageType = 11
 	// TagImageTypeDuringRecording wraps GST_TAG_IMAGE_TYPE_DURING_RECORDING
+	// 
+	// see also No documentation available
 	//
-	// During recording
 	TagImageTypeDuringRecording TagImageType = 12
 	// TagImageTypeDuringPerformance wraps GST_TAG_IMAGE_TYPE_DURING_PERFORMANCE
+	// 
+	// see also No documentation available
 	//
-	// During performance
 	TagImageTypeDuringPerformance TagImageType = 13
 	// TagImageTypeVideoCapture wraps GST_TAG_IMAGE_TYPE_VIDEO_CAPTURE
+	// 
+	// see also No documentation available
 	//
-	// Movie/video screen capture
 	TagImageTypeVideoCapture TagImageType = 14
 	// TagImageTypeFish wraps GST_TAG_IMAGE_TYPE_FISH
+	// 
+	// see also No documentation available
 	//
-	// A fish as funny as the ID3v2 spec
 	TagImageTypeFish TagImageType = 15
 	// TagImageTypeIllustration wraps GST_TAG_IMAGE_TYPE_ILLUSTRATION
+	// 
+	// see also No documentation available
 	//
-	// Illustration
 	TagImageTypeIllustration TagImageType = 16
 	// TagImageTypeBandArtistLogo wraps GST_TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
+	// 
+	// see also No documentation available
 	//
-	// Band/artist logotype
 	TagImageTypeBandArtistLogo TagImageType = 17
 	// TagImageTypePublisherStudioLogo wraps GST_TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
+	// 
+	// see also No documentation available
 	//
-	// Publisher/studio logotype
 	TagImageTypePublisherStudioLogo TagImageType = 18
 )
 
@@ -237,84 +259,81 @@ func (e TagImageType) String() string {
 }
 
 // TagLicenseFlags wraps GstTagLicenseFlags
+// 
+// see also No documentation available
 //
-// See http://creativecommons.org/ns for more information.
 type TagLicenseFlags C.gint
 
 const (
 	// TagLicensePermitsReproduction wraps GST_TAG_LICENSE_PERMITS_REPRODUCTION
+	// 
+	// see also No documentation available
 	//
-	// making multiple copies
-	//     is allowed
 	TagLicensePermitsReproduction TagLicenseFlags = 1
 	// TagLicensePermitsDistribution wraps GST_TAG_LICENSE_PERMITS_DISTRIBUTION
+	// 
+	// see also No documentation available
 	//
-	// distribution, public display
-	//     and public performance are allowed
 	TagLicensePermitsDistribution TagLicenseFlags = 2
 	// TagLicensePermitsDerivativeWorks wraps GST_TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
+	// 
+	// see also No documentation available
 	//
-	// distribution of derivative
-	//     works is allowed
 	TagLicensePermitsDerivativeWorks TagLicenseFlags = 4
 	// TagLicensePermitsSharing wraps GST_TAG_LICENSE_PERMITS_SHARING
+	// 
+	// see also No documentation available
 	//
-	// commercial derivatives are allowed,
-	//     but only non-commercial distribution is allowed
 	TagLicensePermitsSharing TagLicenseFlags = 8
 	// TagLicenseRequiresNotice wraps GST_TAG_LICENSE_REQUIRES_NOTICE
+	// 
+	// see also No documentation available
 	//
-	// copyright and license notices
-	//     must be kept intact
 	TagLicenseRequiresNotice TagLicenseFlags = 256
 	// TagLicenseRequiresAttribution wraps GST_TAG_LICENSE_REQUIRES_ATTRIBUTION
+	// 
+	// see also No documentation available
 	//
-	// credit must be given to
-	//     copyright holder and/or author
 	TagLicenseRequiresAttribution TagLicenseFlags = 512
 	// TagLicenseRequiresShareAlike wraps GST_TAG_LICENSE_REQUIRES_SHARE_ALIKE
+	// 
+	// see also No documentation available
 	//
-	// derivative works must be
-	//     licensed under the same terms or compatible terms as the original work
 	TagLicenseRequiresShareAlike TagLicenseFlags = 1024
 	// TagLicenseRequiresSourceCode wraps GST_TAG_LICENSE_REQUIRES_SOURCE_CODE
+	// 
+	// see also No documentation available
 	//
-	// source code (the preferred
-	//     form for making modifications) must be provided when exercising some
-	//     rights granted by the license
 	TagLicenseRequiresSourceCode TagLicenseFlags = 2048
 	// TagLicenseRequiresCopyleft wraps GST_TAG_LICENSE_REQUIRES_COPYLEFT
+	// 
+	// see also No documentation available
 	//
-	// derivative and combined works
-	//     must be licensed under specified terms, similar to those of the original
-	//     work
 	TagLicenseRequiresCopyleft TagLicenseFlags = 4096
 	// TagLicenseRequiresLesserCopyleft wraps GST_TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
+	// 
+	// see also No documentation available
 	//
-	// derivative works must be
-	//     licensed under specified terms, with at least the same conditions as
-	//     the original work; combinations with the work may be licensed under
-	//     different terms
 	TagLicenseRequiresLesserCopyleft TagLicenseFlags = 8192
 	// TagLicenseProhibitsCommercialUse wraps GST_TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
+	// 
+	// see also No documentation available
 	//
-	// exercising rights for
-	//     commercial purposes is prohibited
 	TagLicenseProhibitsCommercialUse TagLicenseFlags = 65536
 	// TagLicenseProhibitsHighIncomeNationUse wraps GST_TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
+	// 
+	// see also No documentation available
 	//
-	// use in a
-	//     non-developing country is prohibited
 	TagLicenseProhibitsHighIncomeNationUse TagLicenseFlags = 131072
 	// TagLicenseCreativeCommonsLicense wraps GST_TAG_LICENSE_CREATIVE_COMMONS_LICENSE
+	// 
+	// see also No documentation available
 	//
-	// this license was created
-	//     by the Creative Commons project
 	TagLicenseCreativeCommonsLicense TagLicenseFlags = 16777216
 	// TagLicenseFreeSoftwareFoundationLicense wraps GST_TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
+	// 
+	// see also No documentation available
 	//
-	// this license was
-	//     created by the Free Software Foundation (FSF)
 	TagLicenseFreeSoftwareFoundationLicense TagLicenseFlags = 33554432
 )
 
@@ -389,20 +408,8 @@ func (f TagLicenseFlags) String() string {
 
 // TagCheckLanguageCode wraps gst_tag_check_language_code
 // 
-// The function takes the following parameters:
-// 
-// 	- langCode string: ISO-639 language code (e.g. "deu" or "ger" or "de") 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check if a given string contains a known ISO 639 language code.
-// 
-// This is useful in situations where it's not clear whether a given
-// string is a language code (which should be put into a #GST_TAG_LANGUAGE_CODE
-// tag) or a free-form language name descriptor (which should be put into a
-// #GST_TAG_LANGUAGE_NAME tag instead).
 func TagCheckLanguageCode(langCode string) bool {
 	var carg1 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
@@ -424,24 +431,8 @@ func TagCheckLanguageCode(langCode string) bool {
 
 // TagFreeformStringToUTF8 wraps gst_tag_freeform_string_to_utf8
 // 
-// The function takes the following parameters:
-// 
-// 	- data string: string data 
-// 	- envVars []string: 
-//    a NULL-terminated string array of environment variable names, or NULL 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Convenience function to read a string with unknown character encoding. If
-// the string is already in UTF-8 encoding, it will be returned right away.
-// If not it tries to detect byte-order-mark for UTF-16/32 cases and use that.
-// Otherwise, the environment will be searched for a number of environment
-// variables (whose names are specified in the NULL-terminated string array
-// @env_vars) containing a list of character encodings to try/use. If none
-// are specified, the current locale will be tried. If that also doesn't work,
-// WINDOWS-1252/ISO-8859-1 is assumed (which will almost always succeed).
 func TagFreeformStringToUTF8(data string, envVars []string) string {
 	var carg1 *C.gchar  // in, transfer: none, C Pointers: 1, Name: array[unknown], array (inner unknown, length-by: carg2)
 	var carg2 C.gint    // implicit
@@ -472,15 +463,8 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 
 // TagFromId3Tag wraps gst_tag_from_id3_tag
 // 
-// The function takes the following parameters:
-// 
-// 	- id3Tag string: ID3v2 tag to convert to GStreamer tag 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Looks up the GStreamer tag for a ID3v2 tag.
 func TagFromId3Tag(id3Tag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -502,17 +486,8 @@ func TagFromId3Tag(id3Tag string) string {
 
 // TagFromId3UserTag wraps gst_tag_from_id3_user_tag
 // 
-// The function takes the following parameters:
-// 
-// 	- typ string: the type of ID3v2 user tag (e.g. "TXXX" or "UDIF") 
-// 	- id3UserTag string: ID3v2 user tag to convert to GStreamer tag 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Looks up the GStreamer tag for an ID3v2 user tag (e.g. description in
-// TXXX frame or owner in UFID frame).
 func TagFromId3UserTag(typ string, id3UserTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var carg2 *C.gchar // in, none, string
@@ -538,15 +513,8 @@ func TagFromId3UserTag(typ string, id3UserTag string) string {
 
 // TagFromVorbisTag wraps gst_tag_from_vorbis_tag
 // 
-// The function takes the following parameters:
-// 
-// 	- vorbisTag string: vorbiscomment tag to convert to GStreamer tag 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Looks up the GStreamer tag for a vorbiscomment tag.
 func TagFromVorbisTag(vorbisTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -568,16 +536,8 @@ func TagFromVorbisTag(vorbisTag string) string {
 
 // TagGetId3v2TagSize wraps gst_tag_get_id3v2_tag_size
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: buffer holding ID3v2 tag (or at least the start of one) 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Determines size of an ID3v2 tag on buffer containing at least ID3v2 header,
-// i.e. at least #GST_TAG_ID3V2_HEADER_SIZE (10) bytes;
 func TagGetId3v2TagSize(buffer *gst.Buffer) uint {
 	var carg1 *C.GstBuffer // in, none, converted
 	var cret  C.guint      // return, none, casted
@@ -596,19 +556,8 @@ func TagGetId3v2TagSize(buffer *gst.Buffer) uint {
 
 // TagGetLanguageCodeIso6391 wraps gst_tag_get_language_code_iso_639_1
 // 
-// The function takes the following parameters:
-// 
-// 	- langCode string: ISO-639 language code (e.g. "deu" or "ger" or "de") 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Returns two-letter ISO-639-1 language code given a three-letter ISO-639-2
-// language code or two-letter ISO-639-1 language code (both are accepted for
-// convenience).
-// 
-// Language codes are case-sensitive and expected to be lower case.
 func TagGetLanguageCodeIso6391(langCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -630,23 +579,8 @@ func TagGetLanguageCodeIso6391(langCode string) string {
 
 // TagGetLanguageCodeIso6392b wraps gst_tag_get_language_code_iso_639_2B
 // 
-// The function takes the following parameters:
-// 
-// 	- langCode string: ISO-639 language code (e.g. "deu" or "ger" or "de") 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Returns three-letter ISO-639-2 "bibliographic" language code given a
-// two-letter ISO-639-1 language code or a three-letter ISO-639-2 language
-// code (both are accepted for convenience).
-// 
-// The "bibliographic" code is derived from the English name of the language
-// (e.g. "ger" for German instead of "de" or "deu"). In most scenarios, the
-// "terminological" codes are preferred.
-// 
-// Language codes are case-sensitive and expected to be lower case.
 func TagGetLanguageCodeIso6392b(langCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -668,23 +602,8 @@ func TagGetLanguageCodeIso6392b(langCode string) string {
 
 // TagGetLanguageCodeIso6392t wraps gst_tag_get_language_code_iso_639_2T
 // 
-// The function takes the following parameters:
-// 
-// 	- langCode string: ISO-639 language code (e.g. "deu" or "ger" or "de") 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Returns three-letter ISO-639-2 "terminological" language code given a
-// two-letter ISO-639-1 language code or a three-letter ISO-639-2 language
-// code (both are accepted for convenience).
-// 
-// The "terminological" code is derived from the local name of the language
-// (e.g. "deu" for German instead of "ger"). In most scenarios, the
-// "terminological" codes are preferred over the "bibliographic" ones.
-// 
-// Language codes are case-sensitive and expected to be lower case.
 func TagGetLanguageCodeIso6392t(langCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -706,14 +625,8 @@ func TagGetLanguageCodeIso6392t(langCode string) string {
 
 // TagGetLanguageCodes wraps gst_tag_get_language_codes
 // 
-// The function returns the following values:
-// 
-// 	- goret []string 
+// see also No documentation available
 //
-// Returns a list of known language codes (in form of two-letter ISO-639-1
-// codes). This is useful for UIs to build a list of available languages for
-// tagging purposes (e.g. to tag an audio track appropriately in a video or
-// audio editor).
 func TagGetLanguageCodes() []string {
 	var cret **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 
@@ -730,20 +643,8 @@ func TagGetLanguageCodes() []string {
 
 // TagGetLanguageName wraps gst_tag_get_language_name
 // 
-// The function takes the following parameters:
-// 
-// 	- languageCode string: two or three-letter ISO-639 language code 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Returns the name of the language given an ISO-639 language code as
-// found in a GST_TAG_LANGUAGE_CODE tag. The name will be translated
-// according to the current locale (if the library was built against the
-// iso-codes package, otherwise the English name will be returned).
-// 
-// Language codes are case-sensitive and expected to be lower case.
 func TagGetLanguageName(languageCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -765,17 +666,8 @@ func TagGetLanguageName(languageCode string) string {
 
 // TagGetLicenseDescription wraps gst_tag_get_license_description
 // 
-// The function takes the following parameters:
-// 
-// 	- licenseRef string: a license reference string in form of a URI,
-//     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/" 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Get the description of a license, which is a translated description
-// of the license's main features.
 func TagGetLicenseDescription(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -797,17 +689,8 @@ func TagGetLicenseDescription(licenseRef string) string {
 
 // TagGetLicenseFlags wraps gst_tag_get_license_flags
 // 
-// The function takes the following parameters:
-// 
-// 	- licenseRef string: a license reference string in form of a URI,
-//     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/" 
-// 
-// The function returns the following values:
-// 
-// 	- goret TagLicenseFlags 
+// see also No documentation available
 //
-// Get the flags of a license, which describe most of the features of
-// a license in their most general form.
 func TagGetLicenseFlags(licenseRef string) TagLicenseFlags {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstTagLicenseFlags // return, none, casted
@@ -827,22 +710,8 @@ func TagGetLicenseFlags(licenseRef string) TagLicenseFlags {
 
 // TagGetLicenseJurisdiction wraps gst_tag_get_license_jurisdiction
 // 
-// The function takes the following parameters:
-// 
-// 	- licenseRef string: a license reference string in form of a URI,
-//     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/" 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Get the jurisdiction code of a license. This is usually a two-letter
-// ISO 3166-1 alpha-2 code, but there is also the special case of Scotland,
-// for which no code exists and which is thus represented as "scotland".
-// 
-// Known jurisdictions: ar, at, au, be, bg, br, ca, ch, cl, cn, co, de,
-// dk, es, fi, fr, hr, hu, il, in, it, jp, kr, mk, mt, mx, my, nl, pe, pl,
-// pt, scotland, se, si, tw, uk, us, za.
 func TagGetLicenseJurisdiction(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -864,17 +733,8 @@ func TagGetLicenseJurisdiction(licenseRef string) string {
 
 // TagGetLicenseNick wraps gst_tag_get_license_nick
 // 
-// The function takes the following parameters:
-// 
-// 	- licenseRef string: a license reference string in form of a URI,
-//     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/" 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Get the nick name of a license, which is a short (untranslated) string
-// such as e.g. "CC BY-NC-ND 2.0 UK".
 func TagGetLicenseNick(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -896,17 +756,8 @@ func TagGetLicenseNick(licenseRef string) string {
 
 // TagGetLicenseTitle wraps gst_tag_get_license_title
 // 
-// The function takes the following parameters:
-// 
-// 	- licenseRef string: a license reference string in form of a URI,
-//     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/" 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Get the title of a license, which is a short translated description
-// of the license's features (generally not very pretty though).
 func TagGetLicenseTitle(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -928,16 +779,8 @@ func TagGetLicenseTitle(licenseRef string) string {
 
 // TagGetLicenseVersion wraps gst_tag_get_license_version
 // 
-// The function takes the following parameters:
-// 
-// 	- licenseRef string: a license reference string in form of a URI,
-//     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/" 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Get the version of a license.
 func TagGetLicenseVersion(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -959,14 +802,8 @@ func TagGetLicenseVersion(licenseRef string) string {
 
 // TagGetLicenses wraps gst_tag_get_licenses
 // 
-// The function returns the following values:
-// 
-// 	- goret []string 
+// see also No documentation available
 //
-// Returns a list of known license references (in form of URIs). This is
-// useful for UIs to build a list of available licenses for tagging purposes
-// (e.g. to tag an audio track appropriately in a video or audio editor, or
-// an image in a camera application).
 func TagGetLicenses() []string {
 	var cret **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 
@@ -983,12 +820,8 @@ func TagGetLicenses() []string {
 
 // TagId3GenreCount wraps gst_tag_id3_genre_count
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Gets the number of ID3v1 genres that can be identified. Winamp genres are
-// included.
 func TagId3GenreCount() uint {
 	var cret C.guint // return, none, casted
 
@@ -1003,15 +836,8 @@ func TagId3GenreCount() uint {
 
 // TagId3GenreGet wraps gst_tag_id3_genre_get
 // 
-// The function takes the following parameters:
-// 
-// 	- id uint: ID of genre to query 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Gets the ID3v1 genre name for a given ID.
 func TagId3GenreGet(id uint) string {
 	var carg1 C.guint  // in, none, casted
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -1032,39 +858,8 @@ func TagId3GenreGet(id uint) string {
 
 // TagImageDataToImageSample wraps gst_tag_image_data_to_image_sample
 // 
-// The function takes the following parameters:
-// 
-// 	- imageData []uint8: the (encoded) image 
-// 	- imageType TagImageType: type of the image, or #GST_TAG_IMAGE_TYPE_UNDEFINED. Pass
-//     #GST_TAG_IMAGE_TYPE_NONE if no image type should be set at all (e.g.
-//     for preview images) 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Sample (nullable) 
+// see also No documentation available
 //
-// Helper function for tag-reading plugins to create a #GstSample suitable to
-// add to a #GstTagList as an image tag (such as #GST_TAG_IMAGE or
-// #GST_TAG_PREVIEW_IMAGE) from the encoded image data and an (optional) image
-// type.
-// 
-// Background: cover art and other images in tags are usually stored as a
-// blob of binary image data, often accompanied by a MIME type or some other
-// content type string (e.g. 'png', 'jpeg', 'jpg'). Sometimes there is also an
-// 'image type' to indicate what kind of image this is (e.g. front cover,
-// back cover, artist, etc.). The image data may also be an URI to the image
-// rather than the image itself.
-// 
-// In GStreamer, image tags are #GstSample&lt;!-- --&gt;s containing the raw image
-// data, with the sample caps describing the content type of the image
-// (e.g. image/jpeg, image/png, text/uri-list). The sample info may contain
-// an additional 'image-type' field of #GstTagImageType to describe
-// the type of image (front cover, back cover etc.). #GST_TAG_PREVIEW_IMAGE
-// tags should not carry an image type, their type is already indicated via
-// the special tag name.
-// 
-// This function will do various checks and typefind the encoded image
-// data (we can't trust the declared mime type).
 func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.Sample {
 	var carg1 *C.guint8         // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint           // implicit
@@ -1092,20 +887,8 @@ func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.S
 
 // TagListAddId3Image wraps gst_tag_list_add_id3_image
 // 
-// The function takes the following parameters:
-// 
-// 	- tagList *gst.TagList: a tag list 
-// 	- imageData []uint8: the (encoded) image 
-// 	- id3PictureType uint: picture type as per the ID3 (v2.4.0) specification for
-//    the APIC frame (0 = unknown/other) 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Adds an image from an ID3 APIC frame (or similar, such as used in FLAC)
-// to the given tag list. Also see gst_tag_image_data_to_image_sample() for
-// more information on image tags in GStreamer.
 func TagListAddId3Image(tagList *gst.TagList, imageData []uint8, id3PictureType uint) bool {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -1136,20 +919,8 @@ func TagListAddId3Image(tagList *gst.TagList, imageData []uint8, id3PictureType 
 
 // TagListFromExifBuffer wraps gst_tag_list_from_exif_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: The exif buffer 
-// 	- byteOrder int32: byte order of the data 
-// 	- baseOffset uint32: Offset from the tiff header to this buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.TagList 
+// see also No documentation available
 //
-// Parses the IFD and IFD tags data contained in the buffer and puts it
-// on a taglist. The base_offset is used to subtract from the offset in
-// the tag entries and be able to get the offset relative to the buffer
-// start
 func TagListFromExifBuffer(buffer *gst.Buffer, byteOrder int32, baseOffset uint32) *gst.TagList {
 	var carg1 *C.GstBuffer  // in, none, converted
 	var carg2 C.gint        // in, none, casted
@@ -1174,15 +945,8 @@ func TagListFromExifBuffer(buffer *gst.Buffer, byteOrder int32, baseOffset uint3
 
 // TagListFromExifBufferWithTiffHeader wraps gst_tag_list_from_exif_buffer_with_tiff_header
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: The exif buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.TagList 
+// see also No documentation available
 //
-// Parses the exif tags starting with a tiff header structure.
 func TagListFromExifBufferWithTiffHeader(buffer *gst.Buffer) *gst.TagList {
 	var carg1 *C.GstBuffer  // in, none, converted
 	var cret  *C.GstTagList // return, full, converted
@@ -1201,16 +965,8 @@ func TagListFromExifBufferWithTiffHeader(buffer *gst.Buffer) *gst.TagList {
 
 // TagListFromId3v2Tag wraps gst_tag_list_from_id3v2_tag
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: buffer to convert 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.TagList (nullable) 
+// see also No documentation available
 //
-// Creates a new tag list that contains the information parsed out of a
-// ID3 tag.
 func TagListFromId3v2Tag(buffer *gst.Buffer) *gst.TagList {
 	var carg1 *C.GstBuffer  // in, none, converted
 	var cret  *C.GstTagList // return, full, converted, nullable
@@ -1231,19 +987,8 @@ func TagListFromId3v2Tag(buffer *gst.Buffer) *gst.TagList {
 
 // TagListFromVorbiscomment wraps gst_tag_list_from_vorbiscomment
 // 
-// The function takes the following parameters:
-// 
-// 	- data []uint8: data to convert 
-// 	- idData []uint8: identification data at start of stream 
-// 
-// The function returns the following values:
-// 
-// 	- vendorString string: pointer to a string that should take the
-//     vendor string of this vorbis comment or NULL if you don't need it. 
-// 	- goret *gst.TagList (nullable) 
+// see also No documentation available
 //
-// Creates a new tag list that contains the information parsed out of a
-// vorbiscomment packet.
 func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagList) {
 	var carg1 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.gsize       // implicit
@@ -1279,19 +1024,8 @@ func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagLis
 
 // TagListFromVorbiscommentBuffer wraps gst_tag_list_from_vorbiscomment_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: buffer to convert 
-// 	- idData []uint8: identification data at start of stream 
-// 
-// The function returns the following values:
-// 
-// 	- vendorString string: pointer to a string that should take the
-//     vendor string of this vorbis comment or NULL if you don't need it. 
-// 	- goret *gst.TagList (nullable) 
+// see also No documentation available
 //
-// Creates a new tag list that contains the information parsed out of a
-// vorbiscomment packet.
 func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string, *gst.TagList) {
 	var carg1 *C.GstBuffer  // in, none, converted
 	var carg2 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -1323,15 +1057,8 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string,
 
 // TagListFromXmpBuffer wraps gst_tag_list_from_xmp_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.TagList (nullable) 
+// see also No documentation available
 //
-// Parse a xmp packet into a taglist.
 func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
 	var carg1 *C.GstBuffer  // in, none, converted
 	var cret  *C.GstTagList // return, full, converted, nullable
@@ -1352,16 +1079,8 @@ func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
 
 // TagListNewFromId3v1 wraps gst_tag_list_new_from_id3v1
 // 
-// The function takes the following parameters:
-// 
-// 	- data [128]uint8: 128 bytes of data containing the ID3v1 tag 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.TagList (nullable) 
+// see also No documentation available
 //
-// Parses the data containing an ID3v1 tag and returns a #GstTagList from the
-// parsed data.
 func TagListNewFromId3v1(data [128]uint8) *gst.TagList {
 	var carg1 *C.guint8     // in, none, array fixed size (inner: guint8, size: 128)
 	var cret  *C.GstTagList // return, full, converted, nullable
@@ -1388,18 +1107,8 @@ func TagListNewFromId3v1(data [128]uint8) *gst.TagList {
 
 // TagListToExifBuffer wraps gst_tag_list_to_exif_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- taglist *gst.TagList: The taglist 
-// 	- byteOrder int32: byte order used in writing (G_LITTLE_ENDIAN or G_BIG_ENDIAN) 
-// 	- baseOffset uint32: Offset from the tiff header first byte 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Formats the tags in taglist on exif format. The resulting buffer contains
-// the tags IFD and is followed by the data pointed by the tag entries.
 func TagListToExifBuffer(taglist *gst.TagList, byteOrder int32, baseOffset uint32) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 C.gint        // in, none, casted
@@ -1424,16 +1133,8 @@ func TagListToExifBuffer(taglist *gst.TagList, byteOrder int32, baseOffset uint3
 
 // TagListToExifBufferWithTiffHeader wraps gst_tag_list_to_exif_buffer_with_tiff_header
 // 
-// The function takes the following parameters:
-// 
-// 	- taglist *gst.TagList: The taglist 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Formats the tags in taglist into exif structure, a tiff header
-// is put in the beginning of the buffer.
 func TagListToExifBufferWithTiffHeader(taglist *gst.TagList) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
 	var cret  *C.GstBuffer  // return, full, converted
@@ -1452,17 +1153,8 @@ func TagListToExifBufferWithTiffHeader(taglist *gst.TagList) *gst.Buffer {
 
 // TagListToVorbiscommentBuffer wraps gst_tag_list_to_vorbiscomment_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- list *gst.TagList: tag list to convert 
-// 	- idData []uint8: identification data at start of stream 
-// 	- vendorString string (nullable): string that describes the vendor string or NULL 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Creates a new vorbiscomment buffer from a tag list.
 func TagListToVorbiscommentBuffer(list *gst.TagList, idData []uint8, vendorString string) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -1494,20 +1186,8 @@ func TagListToVorbiscommentBuffer(list *gst.TagList, idData []uint8, vendorStrin
 
 // TagListToXmpBuffer wraps gst_tag_list_to_xmp_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- list *gst.TagList: tags 
-// 	- readOnly bool: does the container forbid inplace editing 
-// 	- schemas []string: 
-//     %NULL terminated array of schemas to be used on serialization 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Formats a taglist as a xmp packet using only the selected
-// schemas. An empty list (%NULL) means that all schemas should
-// be used
 func TagListToXmpBuffer(list *gst.TagList, readOnly bool, schemas []string) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 C.gboolean    // in
@@ -1538,27 +1218,8 @@ func TagListToXmpBuffer(list *gst.TagList, readOnly bool, schemas []string) *gst
 
 // TagParseExtendedComment wraps gst_tag_parse_extended_comment
 // 
-// The function takes the following parameters:
-// 
-// 	- extComment string: an extended comment string, see #GST_TAG_EXTENDED_COMMENT 
-// 	- failIfNoKey bool: whether to fail if strings are not in key=value form 
-// 
-// The function returns the following values:
-// 
-// 	- key string (nullable): 
-//     return location for the comment description key, or NULL 
-// 	- lang string (nullable): 
-//     return location for the comment ISO-639 language code, or NULL 
-// 	- value string: return location for the actual comment string, or NULL 
-// 	- goret bool 
+// see also No documentation available
 //
-// Convenience function to parse a GST_TAG_EXTENDED_COMMENT string and
-// separate it into its components.
-// 
-// If successful, @key, @lang and/or @value will be set to newly allocated
-// strings that you need to free with g_free() when done. @key and @lang
-// may also be set to NULL by this function if there is no key or no language
-// code in the extended comment string.
 func TagParseExtendedComment(extComment string, failIfNoKey bool) (string, string, string, bool) {
 	var carg1 *C.gchar   // in, none, string
 	var carg5 C.gboolean // in
@@ -1600,10 +1261,9 @@ func TagParseExtendedComment(extComment string, failIfNoKey bool) (string, strin
 }
 
 // TagRegisterMusicbrainzTags wraps gst_tag_register_musicbrainz_tags
+// 
+// see also No documentation available
 //
-// Registers additional musicbrainz-specific tags with the GStreamer tag
-// system. Plugins and applications that use these tags should call this
-// function before using them. Can be called multiple times.
 func TagRegisterMusicbrainzTags() {
 
 	C.gst_tag_register_musicbrainz_tags()
@@ -1611,15 +1271,8 @@ func TagRegisterMusicbrainzTags() {
 
 // TagToId3Tag wraps gst_tag_to_id3_tag
 // 
-// The function takes the following parameters:
-// 
-// 	- gstTag string: GStreamer tag to convert to vorbiscomment tag 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Looks up the ID3v2 tag for a GStreamer tag.
 func TagToId3Tag(gstTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -1641,17 +1294,8 @@ func TagToId3Tag(gstTag string) string {
 
 // TagToVorbisComments wraps gst_tag_to_vorbis_comments
 // 
-// The function takes the following parameters:
-// 
-// 	- list *gst.TagList: a #GstTagList 
-// 	- tag string: a GStreamer tag identifier, such as #GST_TAG_ARTIST 
-// 
-// The function returns the following values:
-// 
-// 	- goret []string 
+// see also No documentation available
 //
-// Creates a new tag list that contains the information parsed out of a
-// vorbiscomment packet.
 func TagToVorbisComments(list *gst.TagList, tag string) []string {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.gchar      // in, none, string
@@ -1682,15 +1326,8 @@ func TagToVorbisComments(list *gst.TagList, tag string) []string {
 
 // TagToVorbisTag wraps gst_tag_to_vorbis_tag
 // 
-// The function takes the following parameters:
-// 
-// 	- gstTag string: GStreamer tag to convert to vorbiscomment tag 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Looks up the vorbiscomment tag for a GStreamer tag.
 func TagToVorbisTag(gstTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -1712,11 +1349,8 @@ func TagToVorbisTag(gstTag string) string {
 
 // TagXmpListSchemas wraps gst_tag_xmp_list_schemas
 // 
-// The function returns the following values:
-// 
-// 	- goret []string 
+// see also No documentation available
 //
-// Gets the list of supported schemas in the xmp lib
 func TagXmpListSchemas() []string {
 	var cret **C.gchar // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 
@@ -1733,18 +1367,8 @@ func TagXmpListSchemas() []string {
 
 // VorbisTagAdd wraps gst_vorbis_tag_add
 // 
-// The function takes the following parameters:
-// 
-// 	- list *gst.TagList: a #GstTagList 
-// 	- tag string: a vorbiscomment tag string (key in key=value), must be valid UTF-8 
-// 	- value string: a vorbiscomment value string (value in key=value), must be valid UTF-8 
+// see also No documentation available
 //
-// Convenience function using gst_tag_from_vorbis_tag(), parsing
-// a vorbis comment string into the right type and adding it to the
-// given taglist @list.
-// 
-// Unknown vorbiscomment tags will be added to the tag list in form
-// of a #GST_TAG_EXTENDED_COMMENT.
 func VorbisTagAdd(list *gst.TagList, tag string, value string) {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.gchar      // in, none, string
@@ -1771,65 +1395,40 @@ type TagXmpWriterInstance struct {
 var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
 
 // TagXmpWriter wraps GstTagXmpWriter
-//
-// This interface is implemented by elements that are able to do XMP serialization. Examples for
-// such elements are #jifmux and #qtmux.
 // 
-// Applications can use this interface to configure which XMP schemas should be used when serializing
-// tags into XMP. Schemas are represented by their names, a full list of the supported schemas can be
-// obtained from gst_tag_xmp_list_schemas(). By default, all schemas are used.
+// see also No documentation available
+//
 type TagXmpWriter interface {
 	upcastToGstTagXmpWriter() *TagXmpWriterInstance
 
 	// AddAllSchemas wraps gst_tag_xmp_writer_add_all_schemas
+	// 
+	// see also No documentation available
 	//
-	// Adds all available XMP schemas to the configuration. Meaning that
-	// all will be used.
 	AddAllSchemas()
 	// AddSchema wraps gst_tag_xmp_writer_add_schema
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- schema string: the schema to be added 
+	// see also No documentation available
 	//
-	// Adds @schema to the list schemas
 	AddSchema(string)
 	// HasSchema wraps gst_tag_xmp_writer_has_schema
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- schema string: the schema to test 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks if @schema is going to be used
 	HasSchema(string) bool
 	// RemoveAllSchemas wraps gst_tag_xmp_writer_remove_all_schemas
+	// 
+	// see also No documentation available
 	//
-	// Removes all schemas from the list of schemas to use. Meaning that no
-	// XMP will be generated.
 	RemoveAllSchemas()
 	// RemoveSchema wraps gst_tag_xmp_writer_remove_schema
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- schema string: the schema to remove 
+	// see also No documentation available
 	//
-	// Removes a schema from the list of schemas to use. Nothing is done if
-	// the schema wasn't in the list
 	RemoveSchema(string)
 	// TagListToXmpBuffer wraps gst_tag_xmp_writer_tag_list_to_xmp_buffer
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- taglist *gst.TagList 
-	// 	- readOnly bool 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
+	// see also No documentation available
 	TagListToXmpBuffer(*gst.TagList, bool) *gst.Buffer
 }
 
@@ -1877,9 +1476,9 @@ func UnsafeTagXmpWriterToGlibFull(c TagXmpWriter) unsafe.Pointer {
 }
 
 // AddAllSchemas wraps gst_tag_xmp_writer_add_all_schemas
+// 
+// see also No documentation available
 //
-// Adds all available XMP schemas to the configuration. Meaning that
-// all will be used.
 func (config *TagXmpWriterInstance) AddAllSchemas() {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
 
@@ -1891,11 +1490,8 @@ func (config *TagXmpWriterInstance) AddAllSchemas() {
 
 // AddSchema wraps gst_tag_xmp_writer_add_schema
 // 
-// The function takes the following parameters:
-// 
-// 	- schema string: the schema to be added 
+// see also No documentation available
 //
-// Adds @schema to the list schemas
 func (config *TagXmpWriterInstance) AddSchema(schema string) {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
 	var carg1 *C.gchar           // in, none, string
@@ -1911,15 +1507,8 @@ func (config *TagXmpWriterInstance) AddSchema(schema string) {
 
 // HasSchema wraps gst_tag_xmp_writer_has_schema
 // 
-// The function takes the following parameters:
-// 
-// 	- schema string: the schema to test 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if @schema is going to be used
 func (config *TagXmpWriterInstance) HasSchema(schema string) bool {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
 	var carg1 *C.gchar           // in, none, string
@@ -1943,9 +1532,9 @@ func (config *TagXmpWriterInstance) HasSchema(schema string) bool {
 }
 
 // RemoveAllSchemas wraps gst_tag_xmp_writer_remove_all_schemas
+// 
+// see also No documentation available
 //
-// Removes all schemas from the list of schemas to use. Meaning that no
-// XMP will be generated.
 func (config *TagXmpWriterInstance) RemoveAllSchemas() {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
 
@@ -1957,12 +1546,8 @@ func (config *TagXmpWriterInstance) RemoveAllSchemas() {
 
 // RemoveSchema wraps gst_tag_xmp_writer_remove_schema
 // 
-// The function takes the following parameters:
-// 
-// 	- schema string: the schema to remove 
+// see also No documentation available
 //
-// Removes a schema from the list of schemas to use. Nothing is done if
-// the schema wasn't in the list
 func (config *TagXmpWriterInstance) RemoveSchema(schema string) {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
 	var carg1 *C.gchar           // in, none, string
@@ -1978,14 +1563,7 @@ func (config *TagXmpWriterInstance) RemoveSchema(schema string) {
 
 // TagListToXmpBuffer wraps gst_tag_xmp_writer_tag_list_to_xmp_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- taglist *gst.TagList 
-// 	- readOnly bool 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 func (config *TagXmpWriterInstance) TagListToXmpBuffer(taglist *gst.TagList, readOnly bool) *gst.Buffer {
 	var carg0 *C.GstTagXmpWriter // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted
@@ -2019,36 +1597,9 @@ type TagDemuxInstance struct {
 var _ TagDemux = (*TagDemuxInstance)(nil)
 
 // TagDemux wraps GstTagDemux
+// 
+// see also No documentation available
 //
-// Provides a base class for demuxing tags at the beginning or end of a
-// stream and handles things like typefinding, querying, seeking, and
-// different modes of operation (chain-based, pull_range-based, and providing
-// downstream elements with random access if upstream supports that). The tag
-// is stripped from the output, and all offsets are adjusted for the tag
-// sizes, so that to the downstream element the stream will appear as if
-// there was no tag at all. Also, once the tag has been parsed, GstTagDemux
-// will try to determine the media type of the resulting stream and add a
-// source pad with the appropriate caps in order to facilitate auto-plugging.
-// 
-// ## Deriving from GstTagDemux
-// 
-// Subclasses have to do four things:
-// 
-//  * In their base init function, they must add a pad template for the sink
-//    pad to the element class, describing the media type they can parse in
-//    the caps of the pad template.
-//  * In their class init function, they must override
-//    GST_TAG_DEMUX_CLASS(demux_klass)-&gt;identify_tag with their own identify
-//    function.
-//  * In their class init function, they must override
-//  GST_TAG_DEMUX_CLASS(demux_klass)-&gt;parse_tag with their own parse
-//  function.
-//  * In their class init function, they must also set
-//    GST_TAG_DEMUX_CLASS(demux_klass)-&gt;min_start_size and/or
-//  GST_TAG_DEMUX_CLASS(demux_klass)-&gt;min_end_size to the minimum size required
-//  for the identify function to decide whether the stream has a supported tag
-//  or not. A class parsing ID3v1 tags, for example, would set min_end_size to
-//  128 bytes.
 type TagDemux interface {
 	gst.Element
 	upcastToGstTagDemux() *TagDemuxInstance
@@ -2058,36 +1609,12 @@ type TagDemux interface {
 	// ParentIdentifyTag calls the default implementations of the `GstTagDemux.identify_tag` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 	- startTag bool 
-	// 	- tagSize *uint 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// identify tag and determine the size required to parse the
-	// tag. Buffer may be larger than the specified minimum size.
-	// Subclassed MUST override this vfunc in their class_init function.
+	// see also No documentation available
 	ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint) bool
 	// ParentMergeTags calls the default implementations of the `GstTagDemux.merge_tags` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- startTags *gst.TagList 
-	// 	- endTags *gst.TagList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.TagList 
-	//
-	// merge start and end tags. Subclasses may want to override this
-	// vfunc to allow prioritising of start or end tag according to user
-	// preference.  Note that both start_tags and end_tags may be NULL. By default
-	// start tags are preferred over end tags.
+	// see also No documentation available
 	ParentMergeTags(startTags *gst.TagList, endTags *gst.TagList) *gst.TagList
 }
 
@@ -2153,35 +1680,11 @@ type TagDemuxOverrides[Instance TagDemux] struct {
 
 	// // IdentifyTag allows you to override the implementation of the virtual method identify_tag.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 	- startTag bool 
-	// 	- tagSize *uint 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// identify tag and determine the size required to parse the
-	// tag. Buffer may be larger than the specified minimum size.
-	// Subclassed MUST override this vfunc in their class_init function.
+	// see also No documentation available
 	IdentifyTag func(Instance, *gst.Buffer, bool, *uint) bool
 	// // MergeTags allows you to override the implementation of the virtual method merge_tags.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- startTags *gst.TagList 
-	// 	- endTags *gst.TagList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.TagList 
-	//
-	// merge start and end tags. Subclasses may want to override this
-	// vfunc to allow prioritising of start or end tag according to user
-	// preference.  Note that both start_tags and end_tags may be NULL. By default
-	// start tags are preferred over end tags.
+	// see also No documentation available
 	MergeTags func(Instance, *gst.TagList, *gst.TagList) *gst.TagList
 }
 
@@ -2252,19 +1755,7 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 // ParentIdentifyTag calls the default implementations of the `GstTagDemux.identify_tag` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 	- startTag bool 
-// 	- tagSize *uint 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// identify tag and determine the size required to parse the
-// tag. Buffer may be larger than the specified minimum size.
-// Subclassed MUST override this vfunc in their class_init function.
+// see also No documentation available
 func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint) bool {
 	var carg0 *C.GstTagDemux
 	var carg1 *C.GstBuffer // in, none, converted
@@ -2301,19 +1792,7 @@ func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bo
 // ParentMergeTags calls the default implementations of the `GstTagDemux.merge_tags` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- startTags *gst.TagList 
-// 	- endTags *gst.TagList 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.TagList 
-//
-// merge start and end tags. Subclasses may want to override this
-// vfunc to allow prioritising of start or end tag according to user
-// preference.  Note that both start_tags and end_tags may be NULL. By default
-// start tags are preferred over end tags.
+// see also No documentation available
 func (demux *TagDemuxInstance) ParentMergeTags(startTags *gst.TagList, endTags *gst.TagList) *gst.TagList {
 	var carg0 *C.GstTagDemux
 	var carg1 *C.GstTagList // in, none, converted
@@ -2375,21 +1854,9 @@ type TagMuxInstance struct {
 var _ TagMux = (*TagMuxInstance)(nil)
 
 // TagMux wraps GstTagMux
+// 
+// see also No documentation available
 //
-// Provides a base class for adding tags at the beginning or end of a
-// stream.
-// 
-// ## Deriving from GstTagMux
-// 
-// Subclasses have to do the following things:
-// 
-//  * In their base init function, they must add pad templates for the sink
-//    pad and the source pad to the element class, describing the media type
-//    they accept and output in the caps of the pad template.
-//  * In their class init function, they must override the
-//    GST_TAG_MUX_CLASS(mux_klass)-&gt;render_start_tag and/or
-//    GST_TAG_MUX_CLASS(mux_klass)-&gt;render_end_tag vfuncs and set up a render
-//    function.
 type TagMux interface {
 	gst.Element
 	gst.TagSetter
@@ -2400,30 +1867,12 @@ type TagMux interface {
 	// ParentRenderEndTag calls the default implementations of the `GstTagMux.render_end_tag` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tagList *gst.TagList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// create a tag buffer to add to the end of the
-	//     input stream given a tag list, or NULL
+	// see also No documentation available
 	ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer
 	// ParentRenderStartTag calls the default implementations of the `GstTagMux.render_start_tag` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tagList *gst.TagList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// create a tag buffer to add to the beginning of the
-	//     input stream given a tag list, or NULL
+	// see also No documentation available
 	ParentRenderStartTag(tagList *gst.TagList) *gst.Buffer
 }
 
@@ -2492,29 +1941,11 @@ type TagMuxOverrides[Instance TagMux] struct {
 
 	// // RenderEndTag allows you to override the implementation of the virtual method render_end_tag.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tagList *gst.TagList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// create a tag buffer to add to the end of the
-	//     input stream given a tag list, or NULL
+	// see also No documentation available
 	RenderEndTag func(Instance, *gst.TagList) *gst.Buffer
 	// // RenderStartTag allows you to override the implementation of the virtual method render_start_tag.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tagList *gst.TagList 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// create a tag buffer to add to the beginning of the
-	//     input stream given a tag list, or NULL
+	// see also No documentation available
 	RenderStartTag func(Instance, *gst.TagList) *gst.Buffer
 }
 
@@ -2573,16 +2004,7 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 // ParentRenderEndTag calls the default implementations of the `GstTagMux.render_end_tag` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- tagList *gst.TagList 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
-//
-// create a tag buffer to add to the end of the
-//     input stream given a tag list, or NULL
+// see also No documentation available
 func (mux *TagMuxInstance) ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer {
 	var carg0 *C.GstTagMux
 	var carg1 *C.GstTagList // in, none, converted
@@ -2607,16 +2029,7 @@ func (mux *TagMuxInstance) ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer 
 // ParentRenderStartTag calls the default implementations of the `GstTagMux.render_start_tag` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- tagList *gst.TagList 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
-//
-// create a tag buffer to add to the beginning of the
-//     input stream given a tag list, or NULL
+// see also No documentation available
 func (mux *TagMuxInstance) ParentRenderStartTag(tagList *gst.TagList) *gst.Buffer {
 	var carg0 *C.GstTagMux
 	var carg1 *C.GstTagList // in, none, converted
@@ -2665,9 +2078,9 @@ func RegisterTagMuxSubClass[InstanceT TagMux](
 }
 
 // TagDemuxClass wraps GstTagDemuxClass
+// 
+// see also No documentation available
 //
-// The #GstTagDemuxClass structure.  See documentation at beginning of section
-// for details about what subclasses need to override and do.
 // 
 // TagDemuxClass is the type struct for [TagDemux]
 type TagDemuxClass struct {
@@ -2720,9 +2133,9 @@ func (t *TagDemuxClass) ParentClass() *gst.ElementClass {
 }
 
 // TagMuxClass wraps GstTagMuxClass
+// 
+// see also No documentation available
 //
-// The #GstTagMuxClass structure. Subclasses need to override at least one
-// of the two render vfuncs.
 // 
 // TagMuxClass is the type struct for [TagMux]
 type TagMuxClass struct {
@@ -2775,6 +2188,8 @@ func (t *TagMuxClass) ParentClass() *gst.ElementClass {
 }
 
 // TagXmpWriterInterface wraps GstTagXmpWriterInterface
+// 
+// see also No documentation available
 type TagXmpWriterInterface struct {
 	*tagXmpWriterInterface
 }

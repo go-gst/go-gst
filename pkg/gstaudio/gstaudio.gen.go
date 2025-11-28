@@ -397,66 +397,78 @@ func init() {
 }
 
 // AUDIO_DECODER_MAX_ERRORS wraps GST_AUDIO_DECODER_MAX_ERRORS
+// 
+// see also No documentation available
 //
-// Default maximum number of errors tolerated before signaling error.
 const AUDIO_DECODER_MAX_ERRORS = -1
 // AUDIO_DEF_CHANNELS wraps GST_AUDIO_DEF_CHANNELS
+// 
+// see also No documentation available
 //
-// Standard number of channels used in consumer audio.
 const AUDIO_DEF_CHANNELS = 2
 // AUDIO_DEF_RATE wraps GST_AUDIO_DEF_RATE
+// 
+// see also No documentation available
 //
-// Standard sampling rate used in consumer audio.
 const AUDIO_DEF_RATE = 44100
 // AUDIO_FORMAT_LAST wraps GST_AUDIO_FORMAT_LAST
+// 
+// see also No documentation available
 //
-// Number of audio formats in #GstAudioFormat.
 const AUDIO_FORMAT_LAST = 32
 // AUDIO_RESAMPLER_QUALITY_DEFAULT wraps GST_AUDIO_RESAMPLER_QUALITY_DEFAULT
+// 
+// see also No documentation available
 const AUDIO_RESAMPLER_QUALITY_DEFAULT = 4
 // AUDIO_RESAMPLER_QUALITY_MAX wraps GST_AUDIO_RESAMPLER_QUALITY_MAX
+// 
+// see also No documentation available
 const AUDIO_RESAMPLER_QUALITY_MAX = 10
 // AUDIO_RESAMPLER_QUALITY_MIN wraps GST_AUDIO_RESAMPLER_QUALITY_MIN
+// 
+// see also No documentation available
 const AUDIO_RESAMPLER_QUALITY_MIN = 0
 // DSD_SILENCE_PATTERN_BYTE wraps GST_DSD_SILENCE_PATTERN_BYTE
-//
-// Silence pattern for DSD data.
 // 
-// In DSD, a nullbyte does not correspond to silence. To fill memory regions
-// with "DSD silence", these regions must be filled with byte 0x69 instead
-// (this is the DSD silence pattern). This constant provides that pattern
-// in a more readable fashion.
+// see also No documentation available
+//
 const DSD_SILENCE_PATTERN_BYTE = 105
 // AudioBaseSinkDiscontReason wraps GstAudioBaseSinkDiscontReason
+// 
+// see also No documentation available
 //
-// Different possible reasons for discontinuities. This enum is useful for the custom
-// slave method.
 type AudioBaseSinkDiscontReason C.int
 
 const (
 	// AudioBaseSinkDiscontReasonNoDiscont wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_NO_DISCONT
+	// 
+	// see also No documentation available
 	//
-	// No discontinuity occurred
 	AudioBaseSinkDiscontReasonNoDiscont AudioBaseSinkDiscontReason = 0
 	// AudioBaseSinkDiscontReasonNewCaps wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_NEW_CAPS
+	// 
+	// see also No documentation available
 	//
-	// New caps are set, causing renegotiotion
 	AudioBaseSinkDiscontReasonNewCaps AudioBaseSinkDiscontReason = 1
 	// AudioBaseSinkDiscontReasonFlush wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_FLUSH
+	// 
+	// see also No documentation available
 	//
-	// Samples have been flushed
 	AudioBaseSinkDiscontReasonFlush AudioBaseSinkDiscontReason = 2
 	// AudioBaseSinkDiscontReasonSyncLatency wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_SYNC_LATENCY
+	// 
+	// see also No documentation available
 	//
-	// Sink was synchronized to the estimated latency (occurs during initialization)
 	AudioBaseSinkDiscontReasonSyncLatency AudioBaseSinkDiscontReason = 3
 	// AudioBaseSinkDiscontReasonAlignment wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_ALIGNMENT
+	// 
+	// see also No documentation available
 	//
-	// Aligning buffers failed because the timestamps are too discontinuous
 	AudioBaseSinkDiscontReasonAlignment AudioBaseSinkDiscontReason = 4
 	// AudioBaseSinkDiscontReasonDeviceFailure wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_DEVICE_FAILURE
+	// 
+	// see also No documentation available
 	//
-	// Audio output device experienced and recovered from an error but introduced latency in the process (see also gst_audio_base_sink_report_device_failure())
 	AudioBaseSinkDiscontReasonDeviceFailure AudioBaseSinkDiscontReason = 5
 )
 
@@ -487,28 +499,31 @@ func (e AudioBaseSinkDiscontReason) String() string {
 }
 
 // AudioBaseSinkSlaveMethod wraps GstAudioBaseSinkSlaveMethod
+// 
+// see also No documentation available
 //
-// Different possible clock slaving algorithms used when the internal audio
-// clock is not selected as the pipeline master clock.
 type AudioBaseSinkSlaveMethod C.int
 
 const (
 	// AudioBaseSinkSlaveResample wraps GST_AUDIO_BASE_SINK_SLAVE_RESAMPLE
+	// 
+	// see also No documentation available
 	//
-	// Resample to match the master clock
 	AudioBaseSinkSlaveResample AudioBaseSinkSlaveMethod = 0
 	// AudioBaseSinkSlaveSkew wraps GST_AUDIO_BASE_SINK_SLAVE_SKEW
+	// 
+	// see also No documentation available
 	//
-	// Adjust playout pointer when master clock
-	// drifts too much.
 	AudioBaseSinkSlaveSkew AudioBaseSinkSlaveMethod = 1
 	// AudioBaseSinkSlaveNone wraps GST_AUDIO_BASE_SINK_SLAVE_NONE
+	// 
+	// see also No documentation available
 	//
-	// No adjustment is done.
 	AudioBaseSinkSlaveNone AudioBaseSinkSlaveMethod = 2
 	// AudioBaseSinkSlaveCustom wraps GST_AUDIO_BASE_SINK_SLAVE_CUSTOM
+	// 
+	// see also No documentation available
 	//
-	// Use custom clock slaving algorithm (Since: 1.6)
 	AudioBaseSinkSlaveCustom AudioBaseSinkSlaveMethod = 3
 )
 
@@ -537,29 +552,31 @@ func (e AudioBaseSinkSlaveMethod) String() string {
 }
 
 // AudioBaseSrcSlaveMethod wraps GstAudioBaseSrcSlaveMethod
+// 
+// see also No documentation available
 //
-// Different possible clock slaving algorithms when the internal audio clock was
-// not selected as the pipeline clock.
 type AudioBaseSrcSlaveMethod C.int
 
 const (
 	// AudioBaseSrcSlaveResample wraps GST_AUDIO_BASE_SRC_SLAVE_RESAMPLE
+	// 
+	// see also No documentation available
 	//
-	// Resample to match the master clock.
 	AudioBaseSrcSlaveResample AudioBaseSrcSlaveMethod = 0
 	// AudioBaseSrcSlaveReTimestamp wraps GST_AUDIO_BASE_SRC_SLAVE_RE_TIMESTAMP
+	// 
+	// see also No documentation available
 	//
-	// Retimestamp output buffers with master
-	// clock time.
 	AudioBaseSrcSlaveReTimestamp AudioBaseSrcSlaveMethod = 1
 	// AudioBaseSrcSlaveSkew wraps GST_AUDIO_BASE_SRC_SLAVE_SKEW
+	// 
+	// see also No documentation available
 	//
-	// Adjust capture pointer when master clock
-	// drifts too much.
 	AudioBaseSrcSlaveSkew AudioBaseSrcSlaveMethod = 2
 	// AudioBaseSrcSlaveNone wraps GST_AUDIO_BASE_SRC_SLAVE_NONE
+	// 
+	// see also No documentation available
 	//
-	// No adjustment is done.
 	AudioBaseSrcSlaveNone AudioBaseSrcSlaveMethod = 3
 )
 
@@ -588,19 +605,21 @@ func (e AudioBaseSrcSlaveMethod) String() string {
 }
 
 // AudioCdSrcMode wraps GstAudioCdSrcMode
+// 
+// see also No documentation available
 //
-// Mode in which the CD audio source operates. Influences timestamping,
-// EOS handling and seeking.
 type AudioCdSrcMode C.int
 
 const (
 	// AudioCdSrcModeNormal wraps GST_AUDIO_CD_SRC_MODE_NORMAL
+	// 
+	// see also No documentation available
 	//
-	// each single track is a stream
 	AudioCdSrcModeNormal AudioCdSrcMode = 0
 	// AudioCdSrcModeContinuous wraps GST_AUDIO_CD_SRC_MODE_CONTINUOUS
+	// 
+	// see also No documentation available
 	//
-	// the entire disc is a single stream
 	AudioCdSrcModeContinuous AudioCdSrcMode = 1
 )
 
@@ -627,168 +646,176 @@ func (e AudioCdSrcMode) String() string {
 }
 
 // AudioChannelPosition wraps GstAudioChannelPosition
+// 
+// see also No documentation available
 //
-// Audio channel positions.
-// 
-// These are the channels defined in SMPTE 2036-2-2008
-// Table 1 for 22.2 audio systems with the Surround and Wide channels from
-// DTS Coherent Acoustics (v.1.3.1) and 10.2 and 7.1 layouts. In the caps the
-// actual channel layout is expressed with a channel count and a channel mask,
-// which describes the existing channels. The positions in the bit mask correspond
-// to the enum values.
-// For negotiation it is allowed to have more bits set in the channel mask than
-// the number of channels to specify the allowed channel positions but this is
-// not allowed in negotiated caps. It is not allowed in any situation other
-// than the one mentioned below to have less bits set in the channel mask than
-// the number of channels.
-// 
-// @GST_AUDIO_CHANNEL_POSITION_MONO can only be used with a single mono channel that
-// has no direction information and would be mixed into all directional channels.
-// This is expressed in caps by having a single channel and no channel mask.
-// 
-// @GST_AUDIO_CHANNEL_POSITION_NONE can only be used if all channels have this position.
-// This is expressed in caps by having a channel mask with no bits set.
-// 
-// As another special case it is allowed to have two channels without a channel mask.
-// This implicitly means that this is a stereo stream with a front left and front right
-// channel.
 type AudioChannelPosition C.int
 
 const (
 	// AudioChannelPositionNone wraps GST_AUDIO_CHANNEL_POSITION_NONE
+	// 
+	// see also No documentation available
 	//
-	// used for position-less channels, e.g.
-	//     from a sound card that records 1024 channels; mutually exclusive with
-	//     any other channel position
 	AudioChannelPositionNone AudioChannelPosition = -3
 	// AudioChannelPositionMono wraps GST_AUDIO_CHANNEL_POSITION_MONO
+	// 
+	// see also No documentation available
 	//
-	// Mono without direction;
-	//     can only be used with 1 channel
 	AudioChannelPositionMono AudioChannelPosition = -2
 	// AudioChannelPositionInvalid wraps GST_AUDIO_CHANNEL_POSITION_INVALID
+	// 
+	// see also No documentation available
 	//
-	// invalid position
 	AudioChannelPositionInvalid AudioChannelPosition = -1
 	// AudioChannelPositionFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Front left
 	AudioChannelPositionFrontLeft AudioChannelPosition = 0
 	// AudioChannelPositionFrontRight wraps GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Front right
 	AudioChannelPositionFrontRight AudioChannelPosition = 1
 	// AudioChannelPositionFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_CENTER
+	// 
+	// see also No documentation available
 	//
-	// Front center
 	AudioChannelPositionFrontCenter AudioChannelPosition = 2
 	// AudioChannelPositionLfe1 wraps GST_AUDIO_CHANNEL_POSITION_LFE1
+	// 
+	// see also No documentation available
 	//
-	// Low-frequency effects 1 (subwoofer)
 	AudioChannelPositionLfe1 AudioChannelPosition = 3
 	// AudioChannelPositionRearLeft wraps GST_AUDIO_CHANNEL_POSITION_REAR_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Rear left
 	AudioChannelPositionRearLeft AudioChannelPosition = 4
 	// AudioChannelPositionRearRight wraps GST_AUDIO_CHANNEL_POSITION_REAR_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Rear right
 	AudioChannelPositionRearRight AudioChannelPosition = 5
 	// AudioChannelPositionFrontLeftOfCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT_OF_CENTER
+	// 
+	// see also No documentation available
 	//
-	// Front left of center
 	AudioChannelPositionFrontLeftOfCenter AudioChannelPosition = 6
 	// AudioChannelPositionFrontRightOfCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT_OF_CENTER
+	// 
+	// see also No documentation available
 	//
-	// Front right of center
 	AudioChannelPositionFrontRightOfCenter AudioChannelPosition = 7
 	// AudioChannelPositionRearCenter wraps GST_AUDIO_CHANNEL_POSITION_REAR_CENTER
+	// 
+	// see also No documentation available
 	//
-	// Rear center
 	AudioChannelPositionRearCenter AudioChannelPosition = 8
 	// AudioChannelPositionLfe2 wraps GST_AUDIO_CHANNEL_POSITION_LFE2
+	// 
+	// see also No documentation available
 	//
-	// Low-frequency effects 2 (subwoofer)
 	AudioChannelPositionLfe2 AudioChannelPosition = 9
 	// AudioChannelPositionSideLeft wraps GST_AUDIO_CHANNEL_POSITION_SIDE_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Side left
 	AudioChannelPositionSideLeft AudioChannelPosition = 10
 	// AudioChannelPositionSideRight wraps GST_AUDIO_CHANNEL_POSITION_SIDE_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Side right
 	AudioChannelPositionSideRight AudioChannelPosition = 11
 	// AudioChannelPositionTopFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Top front left
 	AudioChannelPositionTopFrontLeft AudioChannelPosition = 12
 	// AudioChannelPositionTopFrontRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Top front right
 	AudioChannelPositionTopFrontRight AudioChannelPosition = 13
 	// AudioChannelPositionTopFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_CENTER
+	// 
+	// see also No documentation available
 	//
-	// Top front center
 	AudioChannelPositionTopFrontCenter AudioChannelPosition = 14
 	// AudioChannelPositionTopCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_CENTER
+	// 
+	// see also No documentation available
 	//
-	// Top center
 	AudioChannelPositionTopCenter AudioChannelPosition = 15
 	// AudioChannelPositionTopRearLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Top rear left
 	AudioChannelPositionTopRearLeft AudioChannelPosition = 16
 	// AudioChannelPositionTopRearRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Top rear right
 	AudioChannelPositionTopRearRight AudioChannelPosition = 17
 	// AudioChannelPositionTopSideLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Top side right
 	AudioChannelPositionTopSideLeft AudioChannelPosition = 18
 	// AudioChannelPositionTopSideRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Top rear right
 	AudioChannelPositionTopSideRight AudioChannelPosition = 19
 	// AudioChannelPositionTopRearCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_CENTER
+	// 
+	// see also No documentation available
 	//
-	// Top rear center
 	AudioChannelPositionTopRearCenter AudioChannelPosition = 20
 	// AudioChannelPositionBottomFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_CENTER
+	// 
+	// see also No documentation available
 	//
-	// Bottom front center
 	AudioChannelPositionBottomFrontCenter AudioChannelPosition = 21
 	// AudioChannelPositionBottomFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Bottom front left
 	AudioChannelPositionBottomFrontLeft AudioChannelPosition = 22
 	// AudioChannelPositionBottomFrontRight wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Bottom front right
 	AudioChannelPositionBottomFrontRight AudioChannelPosition = 23
 	// AudioChannelPositionWideLeft wraps GST_AUDIO_CHANNEL_POSITION_WIDE_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Wide left (between front left and side left)
 	AudioChannelPositionWideLeft AudioChannelPosition = 24
 	// AudioChannelPositionWideRight wraps GST_AUDIO_CHANNEL_POSITION_WIDE_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Wide right (between front right and side right)
 	AudioChannelPositionWideRight AudioChannelPosition = 25
 	// AudioChannelPositionSurroundLeft wraps GST_AUDIO_CHANNEL_POSITION_SURROUND_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Surround left (between rear left and side left)
 	AudioChannelPositionSurroundLeft AudioChannelPosition = 26
 	// AudioChannelPositionSurroundRight wraps GST_AUDIO_CHANNEL_POSITION_SURROUND_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Surround right (between rear right and side right)
 	AudioChannelPositionSurroundRight AudioChannelPosition = 27
 	// AudioChannelPositionTopSurroundLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_LEFT
+	// 
+	// see also No documentation available
 	//
-	// Top surround left (between rear left and side left).
 	AudioChannelPositionTopSurroundLeft AudioChannelPosition = 28
 	// AudioChannelPositionTopSurroundRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_RIGHT
+	// 
+	// see also No documentation available
 	//
-	// Top surround right (between rear right and side right).
 	AudioChannelPositionTopSurroundRight AudioChannelPosition = 29
 )
 
@@ -846,26 +873,31 @@ func (e AudioChannelPosition) String() string {
 }
 
 // AudioDitherMethod wraps GstAudioDitherMethod
+// 
+// see also No documentation available
 //
-// Set of available dithering methods.
 type AudioDitherMethod C.int
 
 const (
 	// AudioDitherNone wraps GST_AUDIO_DITHER_NONE
+	// 
+	// see also No documentation available
 	//
-	// No dithering
 	AudioDitherNone AudioDitherMethod = 0
 	// AudioDitherRpdf wraps GST_AUDIO_DITHER_RPDF
+	// 
+	// see also No documentation available
 	//
-	// Rectangular dithering
 	AudioDitherRpdf AudioDitherMethod = 1
 	// AudioDitherTpdf wraps GST_AUDIO_DITHER_TPDF
+	// 
+	// see also No documentation available
 	//
-	// Triangular dithering (default)
 	AudioDitherTpdf AudioDitherMethod = 2
 	// AudioDitherTpdfHf wraps GST_AUDIO_DITHER_TPDF_HF
+	// 
+	// see also No documentation available
 	//
-	// High frequency triangular dithering
 	AudioDitherTpdfHf AudioDitherMethod = 3
 )
 
@@ -894,194 +926,241 @@ func (e AudioDitherMethod) String() string {
 }
 
 // AudioFormat wraps GstAudioFormat
+// 
+// see also No documentation available
 //
-// Enum value describing the most common audio formats.
 type AudioFormat C.int
 
 const (
 	// AudioFormatUnknown wraps GST_AUDIO_FORMAT_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// unknown or unset audio format
 	AudioFormatUnknown AudioFormat = 0
 	// AudioFormatEncoded wraps GST_AUDIO_FORMAT_ENCODED
+	// 
+	// see also No documentation available
 	//
-	// encoded audio format
 	AudioFormatEncoded AudioFormat = 1
 	// AudioFormatS8 wraps GST_AUDIO_FORMAT_S8
+	// 
+	// see also No documentation available
 	//
-	// 8 bits in 8 bits, signed
 	AudioFormatS8 AudioFormat = 2
 	// AudioFormatU8 wraps GST_AUDIO_FORMAT_U8
+	// 
+	// see also No documentation available
 	//
-	// 8 bits in 8 bits, unsigned
 	AudioFormatU8 AudioFormat = 3
 	// AudioFormatS16le wraps GST_AUDIO_FORMAT_S16LE
+	// 
+	// see also No documentation available
 	//
-	// 16 bits in 16 bits, signed, little endian
 	AudioFormatS16le AudioFormat = 4
 	// AudioFormatS16be wraps GST_AUDIO_FORMAT_S16BE
+	// 
+	// see also No documentation available
 	//
-	// 16 bits in 16 bits, signed, big endian
 	AudioFormatS16be AudioFormat = 5
 	// AudioFormatU16le wraps GST_AUDIO_FORMAT_U16LE
+	// 
+	// see also No documentation available
 	//
-	// 16 bits in 16 bits, unsigned, little endian
 	AudioFormatU16le AudioFormat = 6
 	// AudioFormatU16be wraps GST_AUDIO_FORMAT_U16BE
+	// 
+	// see also No documentation available
 	//
-	// 16 bits in 16 bits, unsigned, big endian
 	AudioFormatU16be AudioFormat = 7
 	// AudioFormatS2432le wraps GST_AUDIO_FORMAT_S24_32LE
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 32 bits, signed, little endian
 	AudioFormatS2432le AudioFormat = 8
 	// AudioFormatS2432be wraps GST_AUDIO_FORMAT_S24_32BE
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 32 bits, signed, big endian
 	AudioFormatS2432be AudioFormat = 9
 	// AudioFormatU2432le wraps GST_AUDIO_FORMAT_U24_32LE
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 32 bits, unsigned, little endian
 	AudioFormatU2432le AudioFormat = 10
 	// AudioFormatU2432be wraps GST_AUDIO_FORMAT_U24_32BE
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 32 bits, unsigned, big endian
 	AudioFormatU2432be AudioFormat = 11
 	// AudioFormatS32le wraps GST_AUDIO_FORMAT_S32LE
+	// 
+	// see also No documentation available
 	//
-	// 32 bits in 32 bits, signed, little endian
 	AudioFormatS32le AudioFormat = 12
 	// AudioFormatS32be wraps GST_AUDIO_FORMAT_S32BE
+	// 
+	// see also No documentation available
 	//
-	// 32 bits in 32 bits, signed, big endian
 	AudioFormatS32be AudioFormat = 13
 	// AudioFormatU32le wraps GST_AUDIO_FORMAT_U32LE
+	// 
+	// see also No documentation available
 	//
-	// 32 bits in 32 bits, unsigned, little endian
 	AudioFormatU32le AudioFormat = 14
 	// AudioFormatU32be wraps GST_AUDIO_FORMAT_U32BE
+	// 
+	// see also No documentation available
 	//
-	// 32 bits in 32 bits, unsigned, big endian
 	AudioFormatU32be AudioFormat = 15
 	// AudioFormatS24le wraps GST_AUDIO_FORMAT_S24LE
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 24 bits, signed, little endian
 	AudioFormatS24le AudioFormat = 16
 	// AudioFormatS24be wraps GST_AUDIO_FORMAT_S24BE
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 24 bits, signed, big endian
 	AudioFormatS24be AudioFormat = 17
 	// AudioFormatU24le wraps GST_AUDIO_FORMAT_U24LE
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 24 bits, unsigned, little endian
 	AudioFormatU24le AudioFormat = 18
 	// AudioFormatU24be wraps GST_AUDIO_FORMAT_U24BE
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 24 bits, unsigned, big endian
 	AudioFormatU24be AudioFormat = 19
 	// AudioFormatS20le wraps GST_AUDIO_FORMAT_S20LE
+	// 
+	// see also No documentation available
 	//
-	// 20 bits in 24 bits, signed, little endian
 	AudioFormatS20le AudioFormat = 20
 	// AudioFormatS20be wraps GST_AUDIO_FORMAT_S20BE
+	// 
+	// see also No documentation available
 	//
-	// 20 bits in 24 bits, signed, big endian
 	AudioFormatS20be AudioFormat = 21
 	// AudioFormatU20le wraps GST_AUDIO_FORMAT_U20LE
+	// 
+	// see also No documentation available
 	//
-	// 20 bits in 24 bits, unsigned, little endian
 	AudioFormatU20le AudioFormat = 22
 	// AudioFormatU20be wraps GST_AUDIO_FORMAT_U20BE
+	// 
+	// see also No documentation available
 	//
-	// 20 bits in 24 bits, unsigned, big endian
 	AudioFormatU20be AudioFormat = 23
 	// AudioFormatS18le wraps GST_AUDIO_FORMAT_S18LE
+	// 
+	// see also No documentation available
 	//
-	// 18 bits in 24 bits, signed, little endian
 	AudioFormatS18le AudioFormat = 24
 	// AudioFormatS18be wraps GST_AUDIO_FORMAT_S18BE
+	// 
+	// see also No documentation available
 	//
-	// 18 bits in 24 bits, signed, big endian
 	AudioFormatS18be AudioFormat = 25
 	// AudioFormatU18le wraps GST_AUDIO_FORMAT_U18LE
+	// 
+	// see also No documentation available
 	//
-	// 18 bits in 24 bits, unsigned, little endian
 	AudioFormatU18le AudioFormat = 26
 	// AudioFormatU18be wraps GST_AUDIO_FORMAT_U18BE
+	// 
+	// see also No documentation available
 	//
-	// 18 bits in 24 bits, unsigned, big endian
 	AudioFormatU18be AudioFormat = 27
 	// AudioFormatF32le wraps GST_AUDIO_FORMAT_F32LE
+	// 
+	// see also No documentation available
 	//
-	// 32-bit floating point samples, little endian
 	AudioFormatF32le AudioFormat = 28
 	// AudioFormatF32be wraps GST_AUDIO_FORMAT_F32BE
+	// 
+	// see also No documentation available
 	//
-	// 32-bit floating point samples, big endian
 	AudioFormatF32be AudioFormat = 29
 	// AudioFormatF64le wraps GST_AUDIO_FORMAT_F64LE
+	// 
+	// see also No documentation available
 	//
-	// 64-bit floating point samples, little endian
 	AudioFormatF64le AudioFormat = 30
 	// AudioFormatF64be wraps GST_AUDIO_FORMAT_F64BE
+	// 
+	// see also No documentation available
 	//
-	// 64-bit floating point samples, big endian
 	AudioFormatF64be AudioFormat = 31
 	// AudioFormatS16 wraps GST_AUDIO_FORMAT_S16
+	// 
+	// see also No documentation available
 	//
-	// 16 bits in 16 bits, signed, native endianness
 	AudioFormatS16 AudioFormat = 4
 	// AudioFormatU16 wraps GST_AUDIO_FORMAT_U16
+	// 
+	// see also No documentation available
 	//
-	// 16 bits in 16 bits, unsigned, native endianness
 	AudioFormatU16 AudioFormat = 6
 	// AudioFormatS2432 wraps GST_AUDIO_FORMAT_S24_32
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 32 bits, signed, native endianness
 	AudioFormatS2432 AudioFormat = 8
 	// AudioFormatU2432 wraps GST_AUDIO_FORMAT_U24_32
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 32 bits, unsigned, native endianness
 	AudioFormatU2432 AudioFormat = 10
 	// AudioFormatS32 wraps GST_AUDIO_FORMAT_S32
+	// 
+	// see also No documentation available
 	//
-	// 32 bits in 32 bits, signed, native endianness
 	AudioFormatS32 AudioFormat = 12
 	// AudioFormatU32 wraps GST_AUDIO_FORMAT_U32
+	// 
+	// see also No documentation available
 	//
-	// 32 bits in 32 bits, unsigned, native endianness
 	AudioFormatU32 AudioFormat = 14
 	// AudioFormatS24 wraps GST_AUDIO_FORMAT_S24
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 24 bits, signed, native endianness
 	AudioFormatS24 AudioFormat = 16
 	// AudioFormatU24 wraps GST_AUDIO_FORMAT_U24
+	// 
+	// see also No documentation available
 	//
-	// 24 bits in 24 bits, unsigned, native endianness
 	AudioFormatU24 AudioFormat = 18
 	// AudioFormatS20 wraps GST_AUDIO_FORMAT_S20
+	// 
+	// see also No documentation available
 	//
-	// 20 bits in 24 bits, signed, native endianness
 	AudioFormatS20 AudioFormat = 20
 	// AudioFormatU20 wraps GST_AUDIO_FORMAT_U20
+	// 
+	// see also No documentation available
 	//
-	// 20 bits in 24 bits, unsigned, native endianness
 	AudioFormatU20 AudioFormat = 22
 	// AudioFormatS18 wraps GST_AUDIO_FORMAT_S18
+	// 
+	// see also No documentation available
 	//
-	// 18 bits in 24 bits, signed, native endianness
 	AudioFormatS18 AudioFormat = 24
 	// AudioFormatU18 wraps GST_AUDIO_FORMAT_U18
+	// 
+	// see also No documentation available
 	//
-	// 18 bits in 24 bits, unsigned, native endianness
 	AudioFormatU18 AudioFormat = 26
 	// AudioFormatF32 wraps GST_AUDIO_FORMAT_F32
+	// 
+	// see also No documentation available
 	//
-	// 32-bit floating point samples, native endianness
 	AudioFormatF32 AudioFormat = 28
 	// AudioFormatF64 wraps GST_AUDIO_FORMAT_F64
+	// 
+	// see also No documentation available
 	//
-	// 64-bit floating point samples, native endianness
 	AudioFormatF64 AudioFormat = 30
 )
 
@@ -1139,18 +1218,8 @@ func (e AudioFormat) String() string {
 
 // AudioFormatBuildInteger wraps gst_audio_format_build_integer
 // 
-// The function takes the following parameters:
-// 
-// 	- sign bool: signed or unsigned format 
-// 	- endianness int32: G_LITTLE_ENDIAN or G_BIG_ENDIAN 
-// 	- width int32: amount of bits used per sample 
-// 	- depth int32: amount of used bits in @width 
-// 
-// The function returns the following values:
-// 
-// 	- goret AudioFormat 
+// see also No documentation available
 //
-// Construct a #GstAudioFormat with given parameters.
 func AudioFormatBuildInteger(sign bool, endianness int32, width int32, depth int32) AudioFormat {
 	var carg1 C.gboolean       // in
 	var carg2 C.gint           // in, none, casted
@@ -1180,15 +1249,8 @@ func AudioFormatBuildInteger(sign bool, endianness int32, width int32, depth int
 
 // AudioFormatFromString wraps gst_audio_format_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- format string: a format string 
-// 
-// The function returns the following values:
-// 
-// 	- goret AudioFormat 
+// see also No documentation available
 //
-// Convert the @format string to its #GstAudioFormat.
 func AudioFormatFromString(format string) AudioFormat {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstAudioFormat // return, none, casted
@@ -1208,15 +1270,8 @@ func AudioFormatFromString(format string) AudioFormat {
 
 // AudioFormatGetInfo wraps gst_audio_format_get_info
 // 
-// The function takes the following parameters:
-// 
-// 	- format AudioFormat: a #GstAudioFormat 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioFormatInfo 
+// see also No documentation available
 //
-// Get the #GstAudioFormatInfo for @format
 func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
 	var carg1 C.GstAudioFormat      // in, none, casted
 	var cret  *C.GstAudioFormatInfo // return, none, converted
@@ -1235,18 +1290,8 @@ func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
 
 // AudioFormatString wraps gst_audio_format_to_string
 // 
-// The function takes the following parameters:
-// 
-// 	- format AudioFormat: a #GstAudioFormat audio format 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Returns a string containing a descriptive name for the #GstAudioFormat.
-// 
-// Since 1.26 this can also be used with %GST_AUDIO_FORMAT_UNKNOWN, previous
-// versions were printing a critical warning and returned %NULL.
 func AudioFormatString(format AudioFormat) string {
 	var carg1 C.GstAudioFormat // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -1264,18 +1309,21 @@ func AudioFormatString(format AudioFormat) string {
 }
 
 // AudioLayout wraps GstAudioLayout
+// 
+// see also No documentation available
 //
-// Layout of the audio samples for the different channels.
 type AudioLayout C.int
 
 const (
 	// AudioLayoutInterleaved wraps GST_AUDIO_LAYOUT_INTERLEAVED
+	// 
+	// see also No documentation available
 	//
-	// interleaved audio
 	AudioLayoutInterleaved AudioLayout = 0
 	// AudioLayoutNonInterleaved wraps GST_AUDIO_LAYOUT_NON_INTERLEAVED
+	// 
+	// see also No documentation available
 	//
-	// non-interleaved audio
 	AudioLayoutNonInterleaved AudioLayout = 1
 )
 
@@ -1302,30 +1350,36 @@ func (e AudioLayout) String() string {
 }
 
 // AudioNoiseShapingMethod wraps GstAudioNoiseShapingMethod
+// 
+// see also No documentation available
 //
-// Set of available noise shaping methods
 type AudioNoiseShapingMethod C.int
 
 const (
 	// AudioNoiseShapingNone wraps GST_AUDIO_NOISE_SHAPING_NONE
+	// 
+	// see also No documentation available
 	//
-	// No noise shaping (default)
 	AudioNoiseShapingNone AudioNoiseShapingMethod = 0
 	// AudioNoiseShapingErrorFeedback wraps GST_AUDIO_NOISE_SHAPING_ERROR_FEEDBACK
+	// 
+	// see also No documentation available
 	//
-	// Error feedback
 	AudioNoiseShapingErrorFeedback AudioNoiseShapingMethod = 1
 	// AudioNoiseShapingSimple wraps GST_AUDIO_NOISE_SHAPING_SIMPLE
+	// 
+	// see also No documentation available
 	//
-	// Simple 2-pole noise shaping
 	AudioNoiseShapingSimple AudioNoiseShapingMethod = 2
 	// AudioNoiseShapingMedium wraps GST_AUDIO_NOISE_SHAPING_MEDIUM
+	// 
+	// see also No documentation available
 	//
-	// Medium 5-pole noise shaping
 	AudioNoiseShapingMedium AudioNoiseShapingMethod = 3
 	// AudioNoiseShapingHigh wraps GST_AUDIO_NOISE_SHAPING_HIGH
+	// 
+	// see also No documentation available
 	//
-	// High 8-pole noise shaping
 	AudioNoiseShapingHigh AudioNoiseShapingMethod = 4
 )
 
@@ -1355,24 +1409,26 @@ func (e AudioNoiseShapingMethod) String() string {
 }
 
 // AudioResamplerFilterInterpolation wraps GstAudioResamplerFilterInterpolation
+// 
+// see also No documentation available
 //
-// The different filter interpolation methods.
 type AudioResamplerFilterInterpolation C.int
 
 const (
 	// AudioResamplerFilterInterpolationNone wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_NONE
+	// 
+	// see also No documentation available
 	//
-	// no interpolation
 	AudioResamplerFilterInterpolationNone AudioResamplerFilterInterpolation = 0
 	// AudioResamplerFilterInterpolationLinear wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_LINEAR
+	// 
+	// see also No documentation available
 	//
-	// linear interpolation of the
-	//   filter coefficients.
 	AudioResamplerFilterInterpolationLinear AudioResamplerFilterInterpolation = 1
 	// AudioResamplerFilterInterpolationCubic wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC
+	// 
+	// see also No documentation available
 	//
-	// cubic interpolation of the
-	//   filter coefficients.
 	AudioResamplerFilterInterpolationCubic AudioResamplerFilterInterpolation = 2
 )
 
@@ -1400,26 +1456,26 @@ func (e AudioResamplerFilterInterpolation) String() string {
 }
 
 // AudioResamplerFilterMode wraps GstAudioResamplerFilterMode
+// 
+// see also No documentation available
 //
-// Select for the filter tables should be set up.
 type AudioResamplerFilterMode C.int
 
 const (
 	// AudioResamplerFilterModeInterpolated wraps GST_AUDIO_RESAMPLER_FILTER_MODE_INTERPOLATED
+	// 
+	// see also No documentation available
 	//
-	// Use interpolated filter tables. This
-	//     uses less memory but more CPU and is slightly less accurate but it allows for more
-	//     efficient variable rate resampling with gst_audio_resampler_update().
 	AudioResamplerFilterModeInterpolated AudioResamplerFilterMode = 0
 	// AudioResamplerFilterModeFull wraps GST_AUDIO_RESAMPLER_FILTER_MODE_FULL
+	// 
+	// see also No documentation available
 	//
-	// Use full filter table. This uses more memory
-	//     but less CPU.
 	AudioResamplerFilterModeFull AudioResamplerFilterMode = 1
 	// AudioResamplerFilterModeAuto wraps GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO
+	// 
+	// see also No documentation available
 	//
-	// Automatically choose between interpolated
-	//     and full filter tables.
 	AudioResamplerFilterModeAuto AudioResamplerFilterMode = 2
 )
 
@@ -1447,32 +1503,36 @@ func (e AudioResamplerFilterMode) String() string {
 }
 
 // AudioResamplerMethod wraps GstAudioResamplerMethod
+// 
+// see also No documentation available
 //
-// Different subsampling and upsampling methods
 type AudioResamplerMethod C.int
 
 const (
 	// AudioResamplerMethodNearest wraps GST_AUDIO_RESAMPLER_METHOD_NEAREST
+	// 
+	// see also No documentation available
 	//
-	// Duplicates the samples when
-	//    upsampling and drops when downsampling
 	AudioResamplerMethodNearest AudioResamplerMethod = 0
 	// AudioResamplerMethodLinear wraps GST_AUDIO_RESAMPLER_METHOD_LINEAR
+	// 
+	// see also No documentation available
 	//
-	// Uses linear interpolation to reconstruct
-	//    missing samples and averaging to downsample
 	AudioResamplerMethodLinear AudioResamplerMethod = 1
 	// AudioResamplerMethodCubic wraps GST_AUDIO_RESAMPLER_METHOD_CUBIC
+	// 
+	// see also No documentation available
 	//
-	// Uses cubic interpolation
 	AudioResamplerMethodCubic AudioResamplerMethod = 2
 	// AudioResamplerMethodBlackmanNuttall wraps GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL
+	// 
+	// see also No documentation available
 	//
-	// Uses Blackman-Nuttall windowed sinc interpolation
 	AudioResamplerMethodBlackmanNuttall AudioResamplerMethod = 3
 	// AudioResamplerMethodKaiser wraps GST_AUDIO_RESAMPLER_METHOD_KAISER
+	// 
+	// see also No documentation available
 	//
-	// Uses Kaiser windowed sinc interpolation
 	AudioResamplerMethodKaiser AudioResamplerMethod = 4
 )
 
@@ -1502,74 +1562,91 @@ func (e AudioResamplerMethod) String() string {
 }
 
 // AudioRingBufferFormatType wraps GstAudioRingBufferFormatType
+// 
+// see also No documentation available
 //
-// The format of the samples in the ringbuffer.
 type AudioRingBufferFormatType C.int
 
 const (
 	// AudioRingBufferFormatTypeRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_RAW
+	// 
+	// see also No documentation available
 	//
-	// samples in linear or float
 	AudioRingBufferFormatTypeRaw AudioRingBufferFormatType = 0
 	// AudioRingBufferFormatTypeMuLaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MU_LAW
+	// 
+	// see also No documentation available
 	//
-	// samples in mulaw
 	AudioRingBufferFormatTypeMuLaw AudioRingBufferFormatType = 1
 	// AudioRingBufferFormatTypeALaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_A_LAW
+	// 
+	// see also No documentation available
 	//
-	// samples in alaw
 	AudioRingBufferFormatTypeALaw AudioRingBufferFormatType = 2
 	// AudioRingBufferFormatTypeImaAdpcm wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IMA_ADPCM
+	// 
+	// see also No documentation available
 	//
-	// samples in ima adpcm
 	AudioRingBufferFormatTypeImaAdpcm AudioRingBufferFormatType = 3
 	// AudioRingBufferFormatTypeMpeg wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG
+	// 
+	// see also No documentation available
 	//
-	// samples in mpeg audio (but not AAC) format
 	AudioRingBufferFormatTypeMpeg AudioRingBufferFormatType = 4
 	// AudioRingBufferFormatTypeGsm wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_GSM
+	// 
+	// see also No documentation available
 	//
-	// samples in gsm format
 	AudioRingBufferFormatTypeGsm AudioRingBufferFormatType = 5
 	// AudioRingBufferFormatTypeIec958 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IEC958
+	// 
+	// see also No documentation available
 	//
-	// samples in IEC958 frames (e.g. AC3)
 	AudioRingBufferFormatTypeIec958 AudioRingBufferFormatType = 6
 	// AudioRingBufferFormatTypeAc3 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_AC3
+	// 
+	// see also No documentation available
 	//
-	// samples in AC3 format
 	AudioRingBufferFormatTypeAc3 AudioRingBufferFormatType = 7
 	// AudioRingBufferFormatTypeEac3 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_EAC3
+	// 
+	// see also No documentation available
 	//
-	// samples in EAC3 format
 	AudioRingBufferFormatTypeEac3 AudioRingBufferFormatType = 8
 	// AudioRingBufferFormatTypeDts wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DTS
+	// 
+	// see also No documentation available
 	//
-	// samples in DTS format
 	AudioRingBufferFormatTypeDts AudioRingBufferFormatType = 9
 	// AudioRingBufferFormatTypeMpeg2Aac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC
+	// 
+	// see also No documentation available
 	//
-	// samples in MPEG-2 AAC ADTS format
 	AudioRingBufferFormatTypeMpeg2Aac AudioRingBufferFormatType = 10
 	// AudioRingBufferFormatTypeMpeg4Aac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC
+	// 
+	// see also No documentation available
 	//
-	// samples in MPEG-4 AAC ADTS format
 	AudioRingBufferFormatTypeMpeg4Aac AudioRingBufferFormatType = 11
 	// AudioRingBufferFormatTypeMpeg2AacRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC_RAW
+	// 
+	// see also No documentation available
 	//
-	// samples in MPEG-2 AAC raw format (Since: 1.12)
 	AudioRingBufferFormatTypeMpeg2AacRaw AudioRingBufferFormatType = 12
 	// AudioRingBufferFormatTypeMpeg4AacRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC_RAW
+	// 
+	// see also No documentation available
 	//
-	// samples in MPEG-4 AAC raw format (Since: 1.12)
 	AudioRingBufferFormatTypeMpeg4AacRaw AudioRingBufferFormatType = 13
 	// AudioRingBufferFormatTypeFlac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_FLAC
+	// 
+	// see also No documentation available
 	//
-	// samples in FLAC format (Since: 1.12)
 	AudioRingBufferFormatTypeFlac AudioRingBufferFormatType = 14
 	// AudioRingBufferFormatTypeDsd wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD
+	// 
+	// see also No documentation available
 	//
-	// samples in DSD format (Since: 1.24)
 	AudioRingBufferFormatTypeDsd AudioRingBufferFormatType = 15
 )
 
@@ -1610,28 +1687,31 @@ func (e AudioRingBufferFormatType) String() string {
 }
 
 // AudioRingBufferState wraps GstAudioRingBufferState
+// 
+// see also No documentation available
 //
-// The state of the ringbuffer.
 type AudioRingBufferState C.int
 
 const (
 	// AudioRingBufferStateStopped wraps GST_AUDIO_RING_BUFFER_STATE_STOPPED
+	// 
+	// see also No documentation available
 	//
-	// The ringbuffer is stopped
 	AudioRingBufferStateStopped AudioRingBufferState = 0
 	// AudioRingBufferStatePaused wraps GST_AUDIO_RING_BUFFER_STATE_PAUSED
+	// 
+	// see also No documentation available
 	//
-	// The ringbuffer is paused
 	AudioRingBufferStatePaused AudioRingBufferState = 1
 	// AudioRingBufferStateStarted wraps GST_AUDIO_RING_BUFFER_STATE_STARTED
+	// 
+	// see also No documentation available
 	//
-	// The ringbuffer is started
 	AudioRingBufferStateStarted AudioRingBufferState = 2
 	// AudioRingBufferStateError wraps GST_AUDIO_RING_BUFFER_STATE_ERROR
+	// 
+	// see also No documentation available
 	//
-	// The ringbuffer has encountered an
-	//     error after it has been started, e.g. because the device was
-	//     disconnected (Since: 1.2)
 	AudioRingBufferStateError AudioRingBufferState = 3
 )
 
@@ -1660,46 +1740,56 @@ func (e AudioRingBufferState) String() string {
 }
 
 // DsdFormat wraps GstDsdFormat
+// 
+// see also No documentation available
 //
-// Enum value describing how DSD bits are grouped.
 type DsdFormat C.int
 
 const (
 	// DsdFormatUnknown wraps GST_DSD_FORMAT_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// unknown / invalid DSD format
 	DsdFormatUnknown DsdFormat = 0
 	// DsdFormatU8 wraps GST_DSD_FORMAT_U8
+	// 
+	// see also No documentation available
 	//
-	// 8 DSD bits in 1 byte
 	DsdFormatU8 DsdFormat = 1
 	// DsdFormatU16le wraps GST_DSD_FORMAT_U16LE
+	// 
+	// see also No documentation available
 	//
-	// 16 DSD bits in 2 bytes, little endian order
 	DsdFormatU16le DsdFormat = 2
 	// DsdFormatU16be wraps GST_DSD_FORMAT_U16BE
+	// 
+	// see also No documentation available
 	//
-	// 16 DSD bits in 2 bytes, big endian order
 	DsdFormatU16be DsdFormat = 3
 	// DsdFormatU32le wraps GST_DSD_FORMAT_U32LE
+	// 
+	// see also No documentation available
 	//
-	// 32 DSD bits in 4 bytes, little endian order
 	DsdFormatU32le DsdFormat = 4
 	// DsdFormatU32be wraps GST_DSD_FORMAT_U32BE
+	// 
+	// see also No documentation available
 	//
-	// 32 DSD bits in 4 bytes, big endian order
 	DsdFormatU32be DsdFormat = 5
 	// NumDsdFormats wraps GST_NUM_DSD_FORMATS
+	// 
+	// see also No documentation available
 	//
-	// number of valid DSD formats
 	NumDsdFormats DsdFormat = 6
 	// DsdFormatU16 wraps GST_DSD_FORMAT_U16
+	// 
+	// see also No documentation available
 	//
-	// 16 DSD bits in 2 bytes, native endianness
 	DsdFormatU16 DsdFormat = 2
 	// DsdFormatU32 wraps GST_DSD_FORMAT_U32
+	// 
+	// see also No documentation available
 	//
-	// 32 DSD bits in 4 bytes, native endianness
 	DsdFormatU32 DsdFormat = 4
 )
 
@@ -1732,15 +1822,8 @@ func (e DsdFormat) String() string {
 
 // DsdFormatFromString wraps gst_dsd_format_from_string
 // 
-// The function takes the following parameters:
-// 
-// 	- str string: a DSD format string 
-// 
-// The function returns the following values:
-// 
-// 	- goret DsdFormat 
+// see also No documentation available
 //
-// Convert the DSD format string @str to its #GstDsdFormat.
 func DsdFormatFromString(str string) DsdFormat {
 	var carg1 *C.gchar       // in, none, string
 	var cret  C.GstDsdFormat // return, none, casted
@@ -1760,13 +1843,7 @@ func DsdFormatFromString(str string) DsdFormat {
 
 // DsdFormatGetWidth wraps gst_dsd_format_get_width
 // 
-// The function takes the following parameters:
-// 
-// 	- format DsdFormat: a #GstDsdFormat 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 func DsdFormatGetWidth(format DsdFormat) uint {
 	var carg1 C.GstDsdFormat // in, none, casted
 	var cret  C.guint        // return, none, casted
@@ -1785,16 +1862,8 @@ func DsdFormatGetWidth(format DsdFormat) uint {
 
 // DsdFormatString wraps gst_dsd_format_to_string
 // 
-// The function takes the following parameters:
-// 
-// 	- format DsdFormat: a #GstDsdFormat 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Returns a string containing a descriptive name for
-// the #GstDsdFormat if there is one, or NULL otherwise.
 func DsdFormatString(format DsdFormat) string {
 	var carg1 C.GstDsdFormat // in, none, casted
 	var cret  *C.gchar       // return, none, string
@@ -1812,26 +1881,26 @@ func DsdFormatString(format DsdFormat) string {
 }
 
 // StreamVolumeFormat wraps GstStreamVolumeFormat
-//
-// Different representations of a stream volume. gst_stream_volume_convert_volume()
-// allows to convert between the different representations.
 // 
-// Formulas to convert from a linear to a cubic or dB volume are
-// cbrt(val) and 20 * log10 (val).
+// see also No documentation available
+//
 type StreamVolumeFormat C.int
 
 const (
 	// StreamVolumeFormatLinear wraps GST_STREAM_VOLUME_FORMAT_LINEAR
+	// 
+	// see also No documentation available
 	//
-	// Linear scale factor, 1.0 = 100%
 	StreamVolumeFormatLinear StreamVolumeFormat = 0
 	// StreamVolumeFormatCubic wraps GST_STREAM_VOLUME_FORMAT_CUBIC
+	// 
+	// see also No documentation available
 	//
-	// Cubic volume scale
 	StreamVolumeFormatCubic StreamVolumeFormat = 1
 	// StreamVolumeFormatDb wraps GST_STREAM_VOLUME_FORMAT_DB
+	// 
+	// see also No documentation available
 	//
-	// Logarithmic volume scale (dB, amplitude not power)
 	StreamVolumeFormatDb StreamVolumeFormat = 2
 )
 
@@ -1846,30 +1915,36 @@ func (e StreamVolumeFormat) String() string {
 }
 
 // AudioChannelMixerFlags wraps GstAudioChannelMixerFlags
+// 
+// see also No documentation available
 //
-// Flags passed to gst_audio_channel_mixer_new()
 type AudioChannelMixerFlags C.gint
 
 const (
 	// AudioChannelMixerFlagsNone wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flag
 	AudioChannelMixerFlagsNone AudioChannelMixerFlags = 0
 	// AudioChannelMixerFlagsNonInterleavedIn wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_IN
+	// 
+	// see also No documentation available
 	//
-	// input channels are not interleaved
 	AudioChannelMixerFlagsNonInterleavedIn AudioChannelMixerFlags = 1
 	// AudioChannelMixerFlagsNonInterleavedOut wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_OUT
+	// 
+	// see also No documentation available
 	//
-	// output channels are not interleaved
 	AudioChannelMixerFlagsNonInterleavedOut AudioChannelMixerFlags = 2
 	// AudioChannelMixerFlagsUnpositionedIn wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_IN
+	// 
+	// see also No documentation available
 	//
-	// input channels are explicitly unpositioned
 	AudioChannelMixerFlagsUnpositionedIn AudioChannelMixerFlags = 4
 	// AudioChannelMixerFlagsUnpositionedOut wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_OUT
+	// 
+	// see also No documentation available
 	//
-	// output channels are explicitly unpositioned
 	AudioChannelMixerFlagsUnpositionedOut AudioChannelMixerFlags = 8
 )
 
@@ -1916,24 +1991,26 @@ func (f AudioChannelMixerFlags) String() string {
 }
 
 // AudioConverterFlags wraps GstAudioConverterFlags
+// 
+// see also No documentation available
 //
-// Extra flags passed to gst_audio_converter_new() and gst_audio_converter_samples().
 type AudioConverterFlags C.gint
 
 const (
 	// AudioConverterFlagNone wraps GST_AUDIO_CONVERTER_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flag
 	AudioConverterFlagNone AudioConverterFlags = 0
 	// AudioConverterFlagInWritable wraps GST_AUDIO_CONVERTER_FLAG_IN_WRITABLE
+	// 
+	// see also No documentation available
 	//
-	// the input sample arrays are writable and can be
-	//    used as temporary storage during conversion.
 	AudioConverterFlagInWritable AudioConverterFlags = 1
 	// AudioConverterFlagVariableRate wraps GST_AUDIO_CONVERTER_FLAG_VARIABLE_RATE
+	// 
+	// see also No documentation available
 	//
-	// allow arbitrary rate updates with
-	//    gst_audio_converter_update_config().
 	AudioConverterFlagVariableRate AudioConverterFlags = 2
 )
 
@@ -1974,19 +2051,21 @@ func (f AudioConverterFlags) String() string {
 }
 
 // AudioFlags wraps GstAudioFlags
+// 
+// see also No documentation available
 //
-// Extra audio flags
 type AudioFlags C.gint
 
 const (
 	// AudioFlagNone wraps GST_AUDIO_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no valid flag
 	AudioFlagNone AudioFlags = 0
 	// AudioFlagUnpositioned wraps GST_AUDIO_FLAG_UNPOSITIONED
+	// 
+	// see also No documentation available
 	//
-	// the position array explicitly
-	//     contains unpositioned channels.
 	AudioFlagUnpositioned AudioFlags = 1
 )
 
@@ -2024,31 +2103,36 @@ func (f AudioFlags) String() string {
 }
 
 // AudioFormatFlags wraps GstAudioFormatFlags
+// 
+// see also No documentation available
 //
-// The different audio flags that a format info can have.
 type AudioFormatFlags C.gint
 
 const (
 	// AudioFormatFlagInteger wraps GST_AUDIO_FORMAT_FLAG_INTEGER
+	// 
+	// see also No documentation available
 	//
-	// integer samples
 	AudioFormatFlagInteger AudioFormatFlags = 1
 	// AudioFormatFlagFloat wraps GST_AUDIO_FORMAT_FLAG_FLOAT
+	// 
+	// see also No documentation available
 	//
-	// float samples
 	AudioFormatFlagFloat AudioFormatFlags = 2
 	// AudioFormatFlagSigned wraps GST_AUDIO_FORMAT_FLAG_SIGNED
+	// 
+	// see also No documentation available
 	//
-	// signed samples
 	AudioFormatFlagSigned AudioFormatFlags = 4
 	// AudioFormatFlagComplex wraps GST_AUDIO_FORMAT_FLAG_COMPLEX
+	// 
+	// see also No documentation available
 	//
-	// complex layout
 	AudioFormatFlagComplex AudioFormatFlags = 16
 	// AudioFormatFlagUnpack wraps GST_AUDIO_FORMAT_FLAG_UNPACK
+	// 
+	// see also No documentation available
 	//
-	// the format can be used in
-	// #GstAudioFormatUnpack and #GstAudioFormatPack functions
 	AudioFormatFlagUnpack AudioFormatFlags = 32
 )
 
@@ -2095,22 +2179,21 @@ func (f AudioFormatFlags) String() string {
 }
 
 // AudioPackFlags wraps GstAudioPackFlags
+// 
+// see also No documentation available
 //
-// The different flags that can be used when packing and unpacking.
 type AudioPackFlags C.gint
 
 const (
 	// AudioPackFlagNone wraps GST_AUDIO_PACK_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// No flag
 	AudioPackFlagNone AudioPackFlags = 0
 	// AudioPackFlagTruncateRange wraps GST_AUDIO_PACK_FLAG_TRUNCATE_RANGE
+	// 
+	// see also No documentation available
 	//
-	// When the source has a smaller depth
-	//   than the target format, set the least significant bits of the target
-	//   to 0. This is likely slightly faster but less accurate. When this flag
-	//   is not specified, the most significant bits of the source are duplicated
-	//   in the least significant bits of the destination.
 	AudioPackFlagTruncateRange AudioPackFlags = 1
 )
 
@@ -2148,18 +2231,21 @@ func (f AudioPackFlags) String() string {
 }
 
 // AudioQuantizeFlags wraps GstAudioQuantizeFlags
+// 
+// see also No documentation available
 //
-// Extra flags that can be passed to gst_audio_quantize_new()
 type AudioQuantizeFlags C.gint
 
 const (
 	// AudioQuantizeFlagNone wraps GST_AUDIO_QUANTIZE_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flags
 	AudioQuantizeFlagNone AudioQuantizeFlags = 0
 	// AudioQuantizeFlagNonInterleaved wraps GST_AUDIO_QUANTIZE_FLAG_NON_INTERLEAVED
+	// 
+	// see also No documentation available
 	//
-	// samples are non-interleaved
 	AudioQuantizeFlagNonInterleaved AudioQuantizeFlags = 1
 )
 
@@ -2197,32 +2283,31 @@ func (f AudioQuantizeFlags) String() string {
 }
 
 // AudioResamplerFlags wraps GstAudioResamplerFlags
+// 
+// see also No documentation available
 //
-// Different resampler flags.
 type AudioResamplerFlags C.gint
 
 const (
 	// AudioResamplerFlagNone wraps GST_AUDIO_RESAMPLER_FLAG_NONE
+	// 
+	// see also No documentation available
 	//
-	// no flags
 	AudioResamplerFlagNone AudioResamplerFlags = 0
 	// AudioResamplerFlagNonInterleavedIn wraps GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_IN
+	// 
+	// see also No documentation available
 	//
-	// input samples are non-interleaved.
-	//    an array of blocks of samples, one for each channel, should be passed to the
-	//    resample function.
 	AudioResamplerFlagNonInterleavedIn AudioResamplerFlags = 1
 	// AudioResamplerFlagNonInterleavedOut wraps GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_OUT
+	// 
+	// see also No documentation available
 	//
-	// output samples are non-interleaved.
-	//    an array of blocks of samples, one for each channel, should be passed to the
-	//    resample function.
 	AudioResamplerFlagNonInterleavedOut AudioResamplerFlags = 2
 	// AudioResamplerFlagVariableRate wraps GST_AUDIO_RESAMPLER_FLAG_VARIABLE_RATE
+	// 
+	// see also No documentation available
 	//
-	// optimize for dynamic updates of the sample
-	//    rates with gst_audio_resampler_update(). This will select an interpolating filter
-	//    when #GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO is configured.
 	AudioResamplerFlagVariableRate AudioResamplerFlags = 4
 )
 
@@ -2267,79 +2352,26 @@ func (f AudioResamplerFlags) String() string {
 
 // AudioBaseSinkCustomSlavingCallback wraps GstAudioBaseSinkCustomSlavingCallback
 // 
-// The function takes the following parameters:
-// 
-// 	- sink AudioBaseSink: a #GstAudioBaseSink 
-// 	- etime gst.ClockTime: external clock time 
-// 	- itime gst.ClockTime: internal clock time 
-// 	- requestedSkew *gst.ClockTimeDiff: skew amount requested by the callback 
-// 	- discontReason AudioBaseSinkDiscontReason: reason for discontinuity (if any) 
+// see also No documentation available
 //
-// This function is set with gst_audio_base_sink_set_custom_slaving_callback()
-// and is called during playback. It receives the current time of external and
-// internal clocks, which the callback can then use to apply any custom
-// slaving/synchronization schemes.
-// 
-// The external clock is the sink's element clock, the internal one is the
-// internal audio clock. The internal audio clock's calibration is applied to
-// the timestamps before they are passed to the callback. The difference between
-// etime and itime is the skew; how much internal and external clock lie apart
-// from each other. A skew of 0 means both clocks are perfectly in sync.
-// itime &gt; etime means the external clock is going slower, while itime &lt; etime
-// means it is going faster than the internal clock. etime and itime are always
-// valid timestamps, except for when a discontinuity happens.
-// 
-// requested_skew is an output value the callback can write to. It informs the
-// sink of whether or not it should move the playout pointer, and if so, by how
-// much. This pointer is only NULL if a discontinuity occurs; otherwise, it is
-// safe to write to *requested_skew. The default skew is 0.
-// 
-// The sink may experience discontinuities. If one happens, discont is TRUE,
-// itime, etime are set to GST_CLOCK_TIME_NONE, and requested_skew is NULL.
-// This makes it possible to reset custom clock slaving algorithms when a
-// discontinuity happens.
 type AudioBaseSinkCustomSlavingCallback func(sink AudioBaseSink, etime gst.ClockTime, itime gst.ClockTime, requestedSkew *gst.ClockTimeDiff, discontReason AudioBaseSinkDiscontReason)
 
 // AudioClockGetTimeFunc wraps GstAudioClockGetTimeFunc
 // 
-// The function takes the following parameters:
-// 
-// 	- clock gst.Clock: the #GstAudioClock 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// This function will be called whenever the current clock time needs to be
-// calculated. If this function returns #GST_CLOCK_TIME_NONE, the last reported
-// time will be returned by the clock.
 type AudioClockGetTimeFunc func(clock gst.Clock) (goret gst.ClockTime)
 
 // AudioRingBufferCallback wraps GstAudioRingBufferCallback
 // 
-// The function takes the following parameters:
-// 
-// 	- rbuf AudioRingBuffer: a #GstAudioRingBuffer 
-// 	- data []uint8: target to fill 
+// see also No documentation available
 //
-// This function is set with gst_audio_ring_buffer_set_callback() and is
-// called to fill the memory at @data with @len bytes of samples.
 type AudioRingBufferCallback func(rbuf AudioRingBuffer, data []uint8)
 
 // AudioChannelGetFallbackMask wraps gst_audio_channel_get_fallback_mask
 // 
-// The function takes the following parameters:
-// 
-// 	- channels int32: the number of channels 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Get the fallback channel-mask for the given number of channels.
-// 
-// This function returns a reasonable fallback channel-mask and should be
-// called as a last resort when the specific channel map is unknown.
 func AudioChannelGetFallbackMask(channels int32) uint64 {
 	var carg1 C.gint    // in, none, casted
 	var cret  C.guint64 // return, none, casted
@@ -2358,22 +2390,8 @@ func AudioChannelGetFallbackMask(channels int32) uint64 {
 
 // AudioChannelPositionsFromMask wraps gst_audio_channel_positions_from_mask
 // 
-// The function takes the following parameters:
-// 
-// 	- channelMask uint64: The input channel_mask 
-// 	- position []AudioChannelPosition: The
-//   %GstAudioChannelPosition&lt;!-- --&gt;s 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Convert the @channels present in @channel_mask to a @position array
-// (which should have at least @channels entries ensured by caller).
-// If @channel_mask is set to 0, it is considered as 'not present' for purpose
-// of conversion.
-// A partially valid @channel_mask with less bits set than the number
-// of channels is considered valid.
 func AudioChannelPositionsFromMask(channelMask uint64, position []AudioChannelPosition) bool {
 	var carg1 C.gint                     // implicit
 	var carg2 C.guint64                  // in, none, casted
@@ -2401,20 +2419,8 @@ func AudioChannelPositionsFromMask(channelMask uint64, position []AudioChannelPo
 
 // AudioChannelPositionsToMask wraps gst_audio_channel_positions_to_mask
 // 
-// The function takes the following parameters:
-// 
-// 	- position []AudioChannelPosition: The %GstAudioChannelPositions 
-// 	- forceOrder bool: Only consider the GStreamer channel order. 
-// 
-// The function returns the following values:
-// 
-// 	- channelMask uint64: the output channel mask 
-// 	- goret bool 
+// see also No documentation available
 //
-// Convert the @position array of @channels channels to a bitmask.
-// 
-// If @force_order is %TRUE it additionally checks if the channels are
-// in the order required by GStreamer.
 func AudioChannelPositionsToMask(position []AudioChannelPosition, forceOrder bool) (uint64, bool) {
 	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
@@ -2447,17 +2453,8 @@ func AudioChannelPositionsToMask(position []AudioChannelPosition, forceOrder boo
 
 // AudioChannelPositionsToString wraps gst_audio_channel_positions_to_string
 // 
-// The function takes the following parameters:
-// 
-// 	- position []AudioChannelPosition: The %GstAudioChannelPositions
-//   to convert. 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Converts @position to a human-readable string representation for
-// debugging purposes.
 func AudioChannelPositionsToString(position []AudioChannelPosition) string {
 	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
@@ -2481,17 +2478,8 @@ func AudioChannelPositionsToString(position []AudioChannelPosition) string {
 
 // AudioChannelPositionsToValidOrder wraps gst_audio_channel_positions_to_valid_order
 // 
-// The function takes the following parameters:
-// 
-// 	- position []AudioChannelPosition: The channel positions to
-//   reorder to. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Reorders the channel positions in @position from any order to
-// the GStreamer channel order.
 func AudioChannelPositionsToValidOrder(position []AudioChannelPosition) bool {
 	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
@@ -2516,19 +2504,8 @@ func AudioChannelPositionsToValidOrder(position []AudioChannelPosition) bool {
 
 // AudioCheckValidChannelPositions wraps gst_audio_check_valid_channel_positions
 // 
-// The function takes the following parameters:
-// 
-// 	- position []AudioChannelPosition: The %GstAudioChannelPositions
-//   to check. 
-// 	- forceOrder bool: Only consider the GStreamer channel order. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks if @position contains valid channel positions for
-// @channels channels. If @force_order is %TRUE it additionally
-// checks if the channels are in the order required by GStreamer.
 func AudioCheckValidChannelPositions(position []AudioChannelPosition, forceOrder bool) bool {
 	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
@@ -2558,9 +2535,7 @@ func AudioCheckValidChannelPositions(position []AudioChannelPosition, forceOrder
 
 // AudioClippingMetaAPIGetType wraps gst_audio_clipping_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func AudioClippingMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2575,9 +2550,7 @@ func AudioClippingMetaAPIGetType() gobject.Type {
 
 // AudioDownmixMetaAPIGetType wraps gst_audio_downmix_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func AudioDownmixMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2592,12 +2565,8 @@ func AudioDownmixMetaAPIGetType() gobject.Type {
 
 // AudioFormatsRaw wraps gst_audio_formats_raw
 // 
-// The function returns the following values:
-// 
-// 	- len uint: the number of elements in the returned array 
-// 	- goret []AudioFormat 
+// see also No documentation available
 //
-// Return all the raw audio formats supported by GStreamer.
 func AudioFormatsRaw() (uint, []AudioFormat) {
 	var carg1 C.guint           // out, full, casted
 	var cret  *C.GstAudioFormat // return, transfer: none, C Pointers: 1, Name: array[AudioFormat], scope: , array (inner GstAudioFormat (*typesystem.Enum))
@@ -2617,24 +2586,8 @@ func AudioFormatsRaw() (uint, []AudioFormat) {
 
 // AudioGetChannelReorderMap wraps gst_audio_get_channel_reorder_map
 // 
-// The function takes the following parameters:
-// 
-// 	- from []AudioChannelPosition: The channel positions to reorder from. 
-// 	- to []AudioChannelPosition: The channel positions to reorder to. 
-// 	- reorderMap []int32: Pointer to the reorder map. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Returns a reorder map for @from to @to that can be used in
-// custom channel reordering code, e.g. to convert from or to the
-// GStreamer channel order. @from and @to must contain the same
-// number of positions and the same positions, only in a
-// different order.
-// 
-// The resulting @reorder_map can be used for reordering by assigning
-// channel i of the input to channel reorder_map[i] of the output.
 func AudioGetChannelReorderMap(from []AudioChannelPosition, to []AudioChannelPosition, reorderMap []int32) bool {
 	var carg1 C.gint                     // implicit
 	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg1)
@@ -2671,16 +2624,8 @@ func AudioGetChannelReorderMap(from []AudioChannelPosition, to []AudioChannelPos
 
 // AudioIec61937FrameSize wraps gst_audio_iec61937_frame_size
 // 
-// The function takes the following parameters:
-// 
-// 	- spec *AudioRingBufferSpec: the ringbufer spec 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Calculated the size of the buffer expected by gst_audio_iec61937_payload() for
-// payloading type from @spec.
 func AudioIec61937FrameSize(spec *AudioRingBufferSpec) uint {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -2699,21 +2644,8 @@ func AudioIec61937FrameSize(spec *AudioRingBufferSpec) uint {
 
 // AudioIec61937Payload wraps gst_audio_iec61937_payload
 // 
-// The function takes the following parameters:
-// 
-// 	- src []uint8: a buffer containing the data to payload 
-// 	- dst []uint8: the destination buffer to store the
-//       payloaded contents in. Should not overlap with @src 
-// 	- spec *AudioRingBufferSpec: the ringbufer spec for @src 
-// 	- endianness int32: the expected byte order of the payloaded data 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Payloads @src in the form specified by IEC 61937 for the type from @spec and
-// stores the result in @dst. @src must contain exactly one frame of data and
-// the frame is not checked for errors.
 func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, endianness int32) bool {
 	var carg1 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint                   // implicit
@@ -2751,11 +2683,8 @@ func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, e
 
 // AudioLevelMetaAPIGetType wraps gst_audio_level_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 //
-// Return the #GType associated with #GstAudioLevelMeta.
 func AudioLevelMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2770,18 +2699,8 @@ func AudioLevelMetaAPIGetType() gobject.Type {
 
 // AudioMakeRawCaps wraps gst_audio_make_raw_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- formats []AudioFormat (nullable): an array of raw #GstAudioFormat, or %NULL 
-// 	- layout AudioLayout: the layout of audio samples 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Return a generic raw audio caps for formats defined in @formats.
-// If @formats is %NULL returns a caps for all the supported raw audio formats,
-// see gst_audio_formats_raw().
 func AudioMakeRawCaps(formats []AudioFormat, layout AudioLayout) *gst.Caps {
 	var carg1 *C.GstAudioFormat // in, transfer: none, C Pointers: 1, Name: array[AudioFormat], nullable, array (inner GstAudioFormat (*typesystem.Enum), length-by: carg2)
 	var carg2 C.guint           // implicit
@@ -2807,9 +2726,7 @@ func AudioMakeRawCaps(formats []AudioFormat, layout AudioLayout) *gst.Caps {
 
 // AudioMetaAPIGetType wraps gst_audio_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func AudioMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2824,18 +2741,8 @@ func AudioMetaAPIGetType() gobject.Type {
 
 // BufferAddAudioClippingMeta wraps gst_buffer_add_audio_clipping_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- format gst.Format: GstFormat of @start and @stop, GST_FORMAT_DEFAULT is samples 
-// 	- start uint64: Amount of audio to clip from start of buffer 
-// 	- end uint64: Amount of  to clip from end of buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioClippingMeta 
+// see also No documentation available
 //
-// Attaches #GstAudioClippingMeta metadata to @buffer with the given parameters.
 func BufferAddAudioClippingMeta(buffer *gst.Buffer, format gst.Format, start uint64, end uint64) *AudioClippingMeta {
 	var carg1 *C.GstBuffer            // in, none, converted
 	var carg2 C.GstFormat             // in, none, casted
@@ -2863,25 +2770,8 @@ func BufferAddAudioClippingMeta(buffer *gst.Buffer, format gst.Format, start uin
 
 // BufferAddAudioDownmixMeta wraps gst_buffer_add_audio_downmix_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- fromPosition []AudioChannelPosition: the channel positions
-//   of the source 
-// 	- toPosition []AudioChannelPosition: the channel positions of
-//   the destination 
-// 	- matrix **float32: The matrix coefficients. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioDownmixMeta 
+// see also No documentation available
 //
-// Attaches #GstAudioDownmixMeta metadata to @buffer with the given parameters.
-// 
-// @matrix is an two-dimensional array of @to_channels times @from_channels
-// coefficients, i.e. the i-th output channels is constructed by multiplicating
-// the input channels with the coefficients in @matrix[i] and taking the sum
-// of the results.
 func BufferAddAudioDownmixMeta(buffer *gst.Buffer, fromPosition []AudioChannelPosition, toPosition []AudioChannelPosition, matrix **float32) *AudioDownmixMeta {
 	var carg1 *C.GstBuffer               // in, none, converted
 	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg3)
@@ -2919,17 +2809,8 @@ func BufferAddAudioDownmixMeta(buffer *gst.Buffer, fromPosition []AudioChannelPo
 
 // BufferAddAudioLevelMeta wraps gst_buffer_add_audio_level_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- level uint8: the -dBov from 0-127 (127 is silence). 
-// 	- voiceActivity bool: whether the buffer contains voice activity. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioLevelMeta (nullable) 
+// see also No documentation available
 //
-// Attaches audio level information to @buffer. (RFC 6464)
 func BufferAddAudioLevelMeta(buffer *gst.Buffer, level uint8, voiceActivity bool) *AudioLevelMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var carg2 C.guint8             // in, none, casted
@@ -2958,37 +2839,8 @@ func BufferAddAudioLevelMeta(buffer *gst.Buffer, level uint8, voiceActivity bool
 
 // BufferAddAudioMeta wraps gst_buffer_add_audio_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- info *AudioInfo: the audio properties of the buffer 
-// 	- samples uint: the number of valid samples in the buffer 
-// 	- offsets *uint (nullable): the offsets (in bytes) where each channel plane starts
-//   in the buffer or %NULL to calculate it (see below); must be %NULL also
-//   when @info-&gt;layout is %GST_AUDIO_LAYOUT_INTERLEAVED 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioMeta 
+// see also No documentation available
 //
-// Allocates and attaches a #GstAudioMeta on @buffer, which must be writable
-// for that purpose. The fields of the #GstAudioMeta are directly populated
-// from the arguments of this function.
-// 
-// When @info-&gt;layout is %GST_AUDIO_LAYOUT_NON_INTERLEAVED and @offsets is
-// %NULL, the offsets are calculated with a formula that assumes the planes are
-// tightly packed and in sequence:
-// offsets[channel] = channel * @samples * sample_stride
-// 
-// It is not allowed for channels to overlap in memory,
-// i.e. for each i in [0, channels), the range
-// [@offsets[i], @offsets[i] + @samples * sample_stride) must not overlap
-// with any other such range. This function will assert if the parameters
-// specified cause this restriction to be violated.
-// 
-// It is, obviously, also not allowed to specify parameters that would cause
-// out-of-bounds memory access on @buffer. This is also checked, which means
-// that you must add enough memory on the @buffer before adding this meta.
 func BufferAddAudioMeta(buffer *gst.Buffer, info *AudioInfo, samples uint, offsets *uint) *AudioMeta {
 	var carg1 *C.GstBuffer    // in, none, converted
 	var carg2 *C.GstAudioInfo // in, none, converted
@@ -3020,39 +2872,8 @@ func BufferAddAudioMeta(buffer *gst.Buffer, info *AudioInfo, samples uint, offse
 
 // BufferAddDsdPlaneOffsetMeta wraps gst_buffer_add_dsd_plane_offset_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- numChannels int32: Number of channels in the DSD data 
-// 	- numBytesPerChannel uint: Number of bytes per channel 
-// 	- offsets *uint (nullable): the offsets (in bytes) where each channel plane starts
-//   in the buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *DsdPlaneOffsetMeta 
+// see also No documentation available
 //
-// Allocates and attaches a #GstDsdPlaneOffsetMeta on @buffer, which must be
-// writable for that purpose. The fields of the #GstDsdPlaneOffsetMeta are
-// directly populated from the arguments of this function.
-// 
-// If @offsets is NULL, then the meta's offsets field is left uninitialized.
-// This is useful if for example offset values are to be calculated in the
-// meta's offsets field in-place. Similarly, @num_bytes_per_channel can be
-// set to 0, but only if @offsets is NULL. This is useful if the number of
-// bytes per channel is known only later.
-// 
-// It is not allowed for channels to overlap in memory,
-// i.e. for each i in [0, channels), the range
-// [@offsets[i], @offsets[i] + @num_bytes_per_channel) must not overlap
-// with any other such range. This function will assert if the parameters
-// specified cause this restriction to be violated.
-// 
-// It is, obviously, also not allowed to specify parameters that would cause
-// out-of-bounds memory access on @buffer. This is also checked, which means
-// that you must add enough memory on the @buffer before adding this meta.
-// 
-// This meta is only needed for non-interleaved (= planar) DSD data.
 func BufferAddDsdPlaneOffsetMeta(buffer *gst.Buffer, numChannels int32, numBytesPerChannel uint, offsets *uint) *DsdPlaneOffsetMeta {
 	var carg1 *C.GstBuffer             // in, none, converted
 	var carg2 C.gint                   // in, none, casted
@@ -3084,18 +2905,8 @@ func BufferAddDsdPlaneOffsetMeta(buffer *gst.Buffer, numChannels int32, numBytes
 
 // BufferGetAudioDownmixMetaForChannels wraps gst_buffer_get_audio_downmix_meta_for_channels
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- toPosition []AudioChannelPosition: the channel positions of
-//   the destination 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioDownmixMeta 
+// see also No documentation available
 //
-// Find the #GstAudioDownmixMeta on @buffer for the given destination
-// channel positions.
 func BufferGetAudioDownmixMetaForChannels(buffer *gst.Buffer, toPosition []AudioChannelPosition) *AudioDownmixMeta {
 	var carg1 *C.GstBuffer               // in, none, converted
 	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg3)
@@ -3121,15 +2932,8 @@ func BufferGetAudioDownmixMetaForChannels(buffer *gst.Buffer, toPosition []Audio
 
 // BufferGetAudioLevelMeta wraps gst_buffer_get_audio_level_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioLevelMeta (nullable) 
+// see also No documentation available
 //
-// Find the #GstAudioLevelMeta on @buffer.
 func BufferGetAudioLevelMeta(buffer *gst.Buffer) *AudioLevelMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var cret  *C.GstAudioLevelMeta // return, none, converted, nullable
@@ -3150,37 +2954,8 @@ func BufferGetAudioLevelMeta(buffer *gst.Buffer) *AudioLevelMeta {
 
 // DsdConvert wraps gst_dsd_convert
 // 
-// The function takes the following parameters:
-// 
-// 	- inputData *uint8: the DSD format conversion's input source 
-// 	- outputData *uint8: the DSD format conversion's output destination 
-// 	- inputFormat DsdFormat: DSD format of the input data to convert from 
-// 	- outputFormat DsdFormat: DSD format of the output data to convert to 
-// 	- inputLayout AudioLayout: Input data layout 
-// 	- outputLayout AudioLayout: Output data layout 
-// 	- inputPlaneOffsets *uint: Plane offsets for non-interleaved input data 
-// 	- outputPlaneOffsets *uint: Plane offsets for non-interleaved output data 
-// 	- numDsdBytes uint: How many bytes with DSD data to convert 
-// 	- numChannels int32: Number of channels (must be at least 1) 
-// 	- reverseByteBits bool: If TRUE, reverse the bits in each DSD byte 
+// see also No documentation available
 //
-// Converts DSD data from one layout and grouping format to another.
-// @num_bytes must be an integer multiple of the width of both input
-// and output format. For example, if the input format is GST_DSD_FORMAT_U32LE,
-// and the output format is GST_DSD_FORMAT_U16BE, then @num_bytes must
-// be an integer multiple of both 4 (U32LE width) and 2 (U16BE width).
-// 
-// @reverse_byte_bits is necessary if the bit order within the DSD bytes
-// needs to be reversed. This is rarely necessary, and is not to be
-// confused with the endianness of formats (which determines the ordering
-// of *bytes*).
-// 
-// @input_plane_offsets must not be NULL if @input_layout is set to
-// #GST_AUDIO_LAYOUT_NON_INTERLEAVED. The same applies to @output_plane_offsets.
-// These plane offsets define the starting offset of the planes (there is
-// exactly one plane per channel) within @input_data and @output_data
-// respectively. If GST_AUDIO_LAYOUT_INTERLEAVED is used, the plane offsets
-// are ignored.
 func DsdConvert(inputData *uint8, outputData *uint8, inputFormat DsdFormat, outputFormat DsdFormat, inputLayout AudioLayout, outputLayout AudioLayout, inputPlaneOffsets *uint, outputPlaneOffsets *uint, numDsdBytes uint, numChannels int32, reverseByteBits bool) {
 	var carg1  *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg2  *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -3232,9 +3007,7 @@ func DsdConvert(inputData *uint8, outputData *uint8, inputFormat DsdFormat, outp
 
 // DsdPlaneOffsetMetaAPIGetType wraps gst_dsd_plane_offset_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 func DsdPlaneOffsetMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -3256,54 +3029,27 @@ type StreamVolumeInstance struct {
 var _ StreamVolume = (*StreamVolumeInstance)(nil)
 
 // StreamVolume wraps GstStreamVolume
+// 
+// see also No documentation available
 //
-// This interface is implemented by elements that provide a stream volume. Examples for
-// such elements are #volume and #playbin.
-// 
-// Applications can use this interface to get or set the current stream volume. For this
-// the "volume" #GObject property can be used or the helper functions gst_stream_volume_set_volume()
-// and gst_stream_volume_get_volume(). This volume is always a linear factor, i.e. 0.0 is muted
-// 1.0 is 100%. For showing the volume in a GUI it might make sense to convert it to
-// a different format by using gst_stream_volume_convert_volume(). Volume sliders should usually
-// use a cubic volume.
-// 
-// Separate from the volume the stream can also be muted by the "mute" #GObject property or
-// gst_stream_volume_set_mute() and gst_stream_volume_get_mute().
-// 
-// Elements that provide some kind of stream volume should implement the "volume" and
-// "mute" #GObject properties and handle setting and getting of them properly.
-// The volume property is defined to be a linear volume factor.
 type StreamVolume interface {
 	upcastToGstStreamVolume() *StreamVolumeInstance
 
 	// GetMute wraps gst_stream_volume_get_mute
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	GetMute() bool
 	// GetVolume wraps gst_stream_volume_get_volume
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- format StreamVolumeFormat: #GstStreamVolumeFormat which should be returned 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret float64 
+	// see also No documentation available
 	GetVolume(StreamVolumeFormat) float64
 	// SetMute wraps gst_stream_volume_set_mute
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- mute bool: Mute state that should be set 
+	// see also No documentation available
 	SetMute(bool)
 	// SetVolume wraps gst_stream_volume_set_volume
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- format StreamVolumeFormat: #GstStreamVolumeFormat of @val 
-	// 	- val float64: Linear volume factor that should be set 
+	// see also No documentation available
 	SetVolume(StreamVolumeFormat, float64)
 }
 
@@ -3352,15 +3098,7 @@ func UnsafeStreamVolumeToGlibFull(c StreamVolume) unsafe.Pointer {
 
 // StreamVolumeConvertVolume wraps gst_stream_volume_convert_volume
 // 
-// The function takes the following parameters:
-// 
-// 	- from StreamVolumeFormat: #GstStreamVolumeFormat to convert from 
-// 	- to StreamVolumeFormat: #GstStreamVolumeFormat to convert to 
-// 	- val float64: Volume in @from format that should be converted 
-// 
-// The function returns the following values:
-// 
-// 	- goret float64 
+// see also No documentation available
 func StreamVolumeConvertVolume(from StreamVolumeFormat, to StreamVolumeFormat, val float64) float64 {
 	var carg1 C.GstStreamVolumeFormat // in, none, casted
 	var carg2 C.GstStreamVolumeFormat // in, none, casted
@@ -3385,9 +3123,7 @@ func StreamVolumeConvertVolume(from StreamVolumeFormat, to StreamVolumeFormat, v
 
 // GetMute wraps gst_stream_volume_get_mute
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (volume *StreamVolumeInstance) GetMute() bool {
 	var carg0 *C.GstStreamVolume // in, none, converted
 	var cret  C.gboolean         // return
@@ -3408,13 +3144,7 @@ func (volume *StreamVolumeInstance) GetMute() bool {
 
 // GetVolume wraps gst_stream_volume_get_volume
 // 
-// The function takes the following parameters:
-// 
-// 	- format StreamVolumeFormat: #GstStreamVolumeFormat which should be returned 
-// 
-// The function returns the following values:
-// 
-// 	- goret float64 
+// see also No documentation available
 func (volume *StreamVolumeInstance) GetVolume(format StreamVolumeFormat) float64 {
 	var carg0 *C.GstStreamVolume      // in, none, converted
 	var carg1 C.GstStreamVolumeFormat // in, none, casted
@@ -3436,9 +3166,7 @@ func (volume *StreamVolumeInstance) GetVolume(format StreamVolumeFormat) float64
 
 // SetMute wraps gst_stream_volume_set_mute
 // 
-// The function takes the following parameters:
-// 
-// 	- mute bool: Mute state that should be set 
+// see also No documentation available
 func (volume *StreamVolumeInstance) SetMute(mute bool) {
 	var carg0 *C.GstStreamVolume // in, none, converted
 	var carg1 C.gboolean         // in
@@ -3455,10 +3183,7 @@ func (volume *StreamVolumeInstance) SetMute(mute bool) {
 
 // SetVolume wraps gst_stream_volume_set_volume
 // 
-// The function takes the following parameters:
-// 
-// 	- format StreamVolumeFormat: #GstStreamVolumeFormat of @val 
-// 	- val float64: Linear volume factor that should be set 
+// see also No documentation available
 func (volume *StreamVolumeInstance) SetVolume(format StreamVolumeFormat, val float64) {
 	var carg0 *C.GstStreamVolume      // in, none, converted
 	var carg1 C.GstStreamVolumeFormat // in, none, casted
@@ -3483,61 +3208,16 @@ type AudioAggregatorInstance struct {
 var _ AudioAggregator = (*AudioAggregatorInstance)(nil)
 
 // AudioAggregator wraps GstAudioAggregator
+// 
+// see also No documentation available
 //
-// Subclasses must use (a subclass of) #GstAudioAggregatorPad for both
-// their source and sink pads,
-// gst_element_class_add_static_pad_template_with_gtype() is a convenient
-// helper.
-// 
-// #GstAudioAggregator can perform conversion on the data arriving
-// on its sink pads, based on the format expected downstream: in order
-// to enable that behaviour, the GType of the sink pads must either be
-// a (subclass of) #GstAudioAggregatorConvertPad to use the default
-// #GstAudioConverter implementation, or a subclass of #GstAudioAggregatorPad
-// implementing #GstAudioAggregatorPadClass.convert_buffer.
-// 
-// To allow for the output caps to change, the mechanism is the same as
-// above, with the GType of the source pad.
-// 
-// See #GstAudioMixer for an example.
-// 
-// When conversion is enabled, #GstAudioAggregator will accept
-// any type of raw audio caps and perform conversion
-// on the data arriving on its sink pads, with whatever downstream
-// expects as the target format.
-// 
-// In case downstream caps are not fully fixated, it will use
-// the first configured sink pad to finish fixating its source pad
-// caps.
-// 
-// A notable exception for now is the sample rate, sink pads must
-// have the same sample rate as either the downstream requirement,
-// or the first configured pad, or a combination of both (when
-// downstream specifies a range or a set of acceptable rates).
-// 
-// The #GstAggregator::samples-selected signal is provided with some
-// additional information about the output buffer:
-// - "offset"  G_TYPE_UINT64   Offset in samples since segment start
-//   for the position that is next to be filled in the output buffer.
-// - "frames"  G_TYPE_UINT   Number of frames per output buffer.
-// 
-// In addition the gst_aggregator_peek_next_sample() function returns
-// additional information in the info #GstStructure of the returned sample:
-// - "output-offset"  G_TYPE_UINT64   Sample offset in output segment relative to
-//   the output segment's start where the current position of this input
-//   buffer would be placed
-// - "position"  G_TYPE_UINT   current position in the input buffer in samples
-// - "size"  G_TYPE_UINT   size of the input buffer in samples
 type AudioAggregator interface {
 	gstbase.Aggregator
 	upcastToGstAudioAggregator() *AudioAggregatorInstance
 
 	// SetSinkCaps wraps gst_audio_aggregator_set_sink_caps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pad AudioAggregatorPad 
-	// 	- caps *gst.Caps 
+	// see also No documentation available
 	SetSinkCaps(AudioAggregatorPad, *gst.Caps)
 
 	// chain up virtual methods:
@@ -3545,36 +3225,12 @@ type AudioAggregator interface {
 	// ParentAggregateOneBuffer calls the default implementations of the `GstAudioAggregator.aggregate_one_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pad AudioAggregatorPad 
-	// 	- inbuf *gst.Buffer 
-	// 	- inOffset uint 
-	// 	- outbuf *gst.Buffer 
-	// 	- outOffset uint 
-	// 	- numFrames uint 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Aggregates one input buffer to the output
-	//  buffer.  The in_offset and out_offset are in "frames", which is
-	//  the size of a sample times the number of channels. Returns TRUE if
-	//  any non-silence was added to the buffer
+	// see also No documentation available
 	ParentAggregateOneBuffer(pad AudioAggregatorPad, inbuf *gst.Buffer, inOffset uint, outbuf *gst.Buffer, outOffset uint, numFrames uint) bool
 	// ParentCreateOutputBuffer calls the default implementations of the `GstAudioAggregator.create_output_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- numFrames uint 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// Create a new output buffer contains num_frames frames.
+	// see also No documentation available
 	ParentCreateOutputBuffer(numFrames uint) *gst.Buffer
 }
 
@@ -3636,10 +3292,7 @@ func UnsafeAudioAggregatorToGlibFull(c AudioAggregator) unsafe.Pointer {
 
 // SetSinkCaps wraps gst_audio_aggregator_set_sink_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- pad AudioAggregatorPad 
-// 	- caps *gst.Caps 
+// see also No documentation available
 func (aagg *AudioAggregatorInstance) SetSinkCaps(pad AudioAggregatorPad, caps *gst.Caps) {
 	var carg0 *C.GstAudioAggregator    // in, none, converted
 	var carg1 *C.GstAudioAggregatorPad // in, none, converted
@@ -3663,35 +3316,11 @@ type AudioAggregatorOverrides[Instance AudioAggregator] struct {
 
 	// // AggregateOneBuffer allows you to override the implementation of the virtual method aggregate_one_buffer.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pad AudioAggregatorPad 
-	// 	- inbuf *gst.Buffer 
-	// 	- inOffset uint 
-	// 	- outbuf *gst.Buffer 
-	// 	- outOffset uint 
-	// 	- numFrames uint 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Aggregates one input buffer to the output
-	//  buffer.  The in_offset and out_offset are in "frames", which is
-	//  the size of a sample times the number of channels. Returns TRUE if
-	//  any non-silence was added to the buffer
+	// see also No documentation available
 	AggregateOneBuffer func(Instance, AudioAggregatorPad, *gst.Buffer, uint, *gst.Buffer, uint, uint) bool
 	// // CreateOutputBuffer allows you to override the implementation of the virtual method create_output_buffer.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- numFrames uint 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// Create a new output buffer contains num_frames frames.
+	// see also No documentation available
 	CreateOutputBuffer func(Instance, uint) *gst.Buffer
 }
 
@@ -3762,23 +3391,7 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 // ParentAggregateOneBuffer calls the default implementations of the `GstAudioAggregator.aggregate_one_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- pad AudioAggregatorPad 
-// 	- inbuf *gst.Buffer 
-// 	- inOffset uint 
-// 	- outbuf *gst.Buffer 
-// 	- outOffset uint 
-// 	- numFrames uint 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Aggregates one input buffer to the output
-//  buffer.  The in_offset and out_offset are in "frames", which is
-//  the size of a sample times the number of channels. Returns TRUE if
-//  any non-silence was added to the buffer
+// see also No documentation available
 func (aagg *AudioAggregatorInstance) ParentAggregateOneBuffer(pad AudioAggregatorPad, inbuf *gst.Buffer, inOffset uint, outbuf *gst.Buffer, outOffset uint, numFrames uint) bool {
 	var carg0 *C.GstAudioAggregator
 	var carg1 *C.GstAudioAggregatorPad // in, none, converted
@@ -3820,15 +3433,7 @@ func (aagg *AudioAggregatorInstance) ParentAggregateOneBuffer(pad AudioAggregato
 // ParentCreateOutputBuffer calls the default implementations of the `GstAudioAggregator.create_output_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- numFrames uint 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
-//
-// Create a new output buffer contains num_frames frames.
+// see also No documentation available
 func (aagg *AudioAggregatorInstance) ParentCreateOutputBuffer(numFrames uint) *gst.Buffer {
 	var carg0 *C.GstAudioAggregator
 	var carg1 C.guint      // in, none, converted
@@ -3885,8 +3490,9 @@ type AudioAggregatorPadInstance struct {
 var _ AudioAggregatorPad = (*AudioAggregatorPadInstance)(nil)
 
 // AudioAggregatorPad wraps GstAudioAggregatorPad
+// 
+// see also No documentation available
 //
-// The default implementation of GstPad used with #GstAudioAggregator
 type AudioAggregatorPad interface {
 	gstbase.AggregatorPad
 	upcastToGstAudioAggregatorPad() *AudioAggregatorPadInstance
@@ -3896,23 +3502,12 @@ type AudioAggregatorPad interface {
 	// ParentConvertBuffer calls the default implementations of the `GstAudioAggregatorPad.convert_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- inInfo *AudioInfo 
-	// 	- outInfo *AudioInfo 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// Convert a buffer from one format to another.
+	// see also No documentation available
 	ParentConvertBuffer(inInfo *AudioInfo, outInfo *AudioInfo, buffer *gst.Buffer) *gst.Buffer
 	// ParentUpdateConversionInfo calls the default implementations of the `GstAudioAggregatorPad.update_conversion_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// Called when either the input or output
-	//  formats have changed.
+	// 
+	// see also No documentation available
 	ParentUpdateConversionInfo()
 }
 
@@ -3980,22 +3575,11 @@ type AudioAggregatorPadOverrides[Instance AudioAggregatorPad] struct {
 
 	// // ConvertBuffer allows you to override the implementation of the virtual method convert_buffer.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- inInfo *AudioInfo 
-	// 	- outInfo *AudioInfo 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// Convert a buffer from one format to another.
+	// see also No documentation available
 	ConvertBuffer func(Instance, *AudioInfo, *AudioInfo, *gst.Buffer) *gst.Buffer
 	// // UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
-	//
-	// Called when either the input or output
-	//  formats have changed.
+	// 
+	// see also No documentation available
 	UpdateConversionInfo func(Instance)
 }
 
@@ -4051,17 +3635,7 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 // ParentConvertBuffer calls the default implementations of the `GstAudioAggregatorPad.convert_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- inInfo *AudioInfo 
-// 	- outInfo *AudioInfo 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
-//
-// Convert a buffer from one format to another.
+// see also No documentation available
 func (pad *AudioAggregatorPadInstance) ParentConvertBuffer(inInfo *AudioInfo, outInfo *AudioInfo, buffer *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstAudioAggregatorPad
 	var carg1 *C.GstAudioInfo // in, none, converted
@@ -4091,9 +3665,8 @@ func (pad *AudioAggregatorPadInstance) ParentConvertBuffer(inInfo *AudioInfo, ou
 
 // ParentUpdateConversionInfo calls the default implementations of the `GstAudioAggregatorPad.update_conversion_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// Called when either the input or output
-//  formats have changed.
+// 
+// see also No documentation available
 func (pad *AudioAggregatorPadInstance) ParentUpdateConversionInfo() {
 	var carg0 *C.GstAudioAggregatorPad
 
@@ -4140,130 +3713,77 @@ type AudioBaseSinkInstance struct {
 var _ AudioBaseSink = (*AudioBaseSinkInstance)(nil)
 
 // AudioBaseSink wraps GstAudioBaseSink
+// 
+// see also No documentation available
 //
-// This is the base class for audio sinks. Subclasses need to implement the
-// ::create_ringbuffer vmethod. This base class will then take care of
-// writing samples to the ringbuffer, synchronisation, clipping and flushing.
 type AudioBaseSink interface {
 	gstbase.BaseSink
 	upcastToGstAudioBaseSink() *AudioBaseSinkInstance
 
 	// CreateRingbuffer wraps gst_audio_base_sink_create_ringbuffer
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret AudioRingBuffer (nullable) 
+	// see also No documentation available
 	//
-	// Create and return the #GstAudioRingBuffer for @sink. This function will
-	// call the ::create_ringbuffer vmethod and will set @sink as the parent of
-	// the returned buffer (see gst_object_set_parent()).
 	CreateRingbuffer() AudioRingBuffer
 	// GetAlignmentThreshold wraps gst_audio_base_sink_get_alignment_threshold
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the current alignment threshold, in nanoseconds, used by @sink.
 	GetAlignmentThreshold() gst.ClockTime
 	// GetDiscontWait wraps gst_audio_base_sink_get_discont_wait
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Get the current discont wait, in nanoseconds, used by @sink.
 	GetDiscontWait() gst.ClockTime
 	// GetDriftTolerance wraps gst_audio_base_sink_get_drift_tolerance
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int64 
+	// see also No documentation available
 	//
-	// Get the current drift tolerance, in microseconds, used by @sink.
 	GetDriftTolerance() int64
 	// GetProvideClock wraps gst_audio_base_sink_get_provide_clock
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries whether @sink will provide a clock or not. See also
-	// gst_audio_base_sink_set_provide_clock.
 	GetProvideClock() bool
 	// GetSlaveMethod wraps gst_audio_base_sink_get_slave_method
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret AudioBaseSinkSlaveMethod 
+	// see also No documentation available
 	//
-	// Get the current slave method used by @sink.
 	GetSlaveMethod() AudioBaseSinkSlaveMethod
 	// ReportDeviceFailure wraps gst_audio_base_sink_report_device_failure
+	// 
+	// see also No documentation available
 	//
-	// Informs this base class that the audio output device has failed for
-	// some reason, causing a discontinuity (for example, because the device
-	// recovered from the error, but lost all contents of its ring buffer).
-	// This function is typically called by derived classes, and is useful
-	// for the custom slave method.
 	ReportDeviceFailure()
 	// SetAlignmentThreshold wraps gst_audio_base_sink_set_alignment_threshold
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- alignmentThreshold gst.ClockTime: the new alignment threshold in nanoseconds 
+	// see also No documentation available
 	//
-	// Controls the sink's alignment threshold.
 	SetAlignmentThreshold(gst.ClockTime)
 	// SetCustomSlavingCallback wraps gst_audio_base_sink_set_custom_slaving_callback
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- callback AudioBaseSinkCustomSlavingCallback: a #GstAudioBaseSinkCustomSlavingCallback 
+	// see also No documentation available
 	//
-	// Sets the custom slaving callback. This callback will
-	// be invoked if the slave-method property is set to
-	// GST_AUDIO_BASE_SINK_SLAVE_CUSTOM and the audio sink
-	// receives and plays samples.
-	// 
-	// Setting the callback to NULL causes the sink to
-	// behave as if the GST_AUDIO_BASE_SINK_SLAVE_NONE
-	// method were used.
 	SetCustomSlavingCallback(AudioBaseSinkCustomSlavingCallback)
 	// SetDiscontWait wraps gst_audio_base_sink_set_discont_wait
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- discontWait gst.ClockTime: the new discont wait in nanoseconds 
+	// see also No documentation available
 	//
-	// Controls how long the sink will wait before creating a discontinuity.
 	SetDiscontWait(gst.ClockTime)
 	// SetDriftTolerance wraps gst_audio_base_sink_set_drift_tolerance
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- driftTolerance int64: the new drift tolerance in microseconds 
+	// see also No documentation available
 	//
-	// Controls the sink's drift tolerance.
 	SetDriftTolerance(int64)
 	// SetProvideClock wraps gst_audio_base_sink_set_provide_clock
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- provide bool: new state 
+	// see also No documentation available
 	//
-	// Controls whether @sink will provide a clock or not. If @provide is %TRUE,
-	// gst_element_provide_clock() will return a clock that reflects the datarate
-	// of @sink. If @provide is %FALSE, gst_element_provide_clock() will return
-	// NULL.
 	SetProvideClock(bool)
 	// SetSlaveMethod wraps gst_audio_base_sink_set_slave_method
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- method AudioBaseSinkSlaveMethod: the new slave method 
+	// see also No documentation available
 	//
-	// Controls how clock slaving will be performed in @sink.
 	SetSlaveMethod(AudioBaseSinkSlaveMethod)
 
 	// chain up virtual methods:
@@ -4271,29 +3791,12 @@ type AudioBaseSink interface {
 	// ParentCreateRingbuffer calls the default implementations of the `GstAudioBaseSink.create_ringbuffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret AudioRingBuffer (nullable) 
-	//
-	// Create and return the #GstAudioRingBuffer for @sink. This function will
-	// call the ::create_ringbuffer vmethod and will set @sink as the parent of
-	// the returned buffer (see gst_object_set_parent()).
+	// see also No documentation available
 	ParentCreateRingbuffer() AudioRingBuffer
 	// ParentPayload calls the default implementations of the `GstAudioBaseSink.payload` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// payload data in a format suitable to write to the sink. If no
-	//           payloading is required, returns a reffed copy of the original
-	//           buffer, else returns the payloaded buffer with all other metadata
-	//           copied.
+	// see also No documentation available
 	ParentPayload(buffer *gst.Buffer) *gst.Buffer
 }
 
@@ -4355,13 +3858,8 @@ func UnsafeAudioBaseSinkToGlibFull(c AudioBaseSink) unsafe.Pointer {
 
 // CreateRingbuffer wraps gst_audio_base_sink_create_ringbuffer
 // 
-// The function returns the following values:
-// 
-// 	- goret AudioRingBuffer (nullable) 
+// see also No documentation available
 //
-// Create and return the #GstAudioRingBuffer for @sink. This function will
-// call the ::create_ringbuffer vmethod and will set @sink as the parent of
-// the returned buffer (see gst_object_set_parent()).
 func (sink *AudioBaseSinkInstance) CreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSink   // in, none, converted
 	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
@@ -4382,11 +3880,8 @@ func (sink *AudioBaseSinkInstance) CreateRingbuffer() AudioRingBuffer {
 
 // GetAlignmentThreshold wraps gst_audio_base_sink_get_alignment_threshold
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the current alignment threshold, in nanoseconds, used by @sink.
 func (sink *AudioBaseSinkInstance) GetAlignmentThreshold() gst.ClockTime {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var cret  C.GstClockTime      // return, none, casted, alias
@@ -4405,11 +3900,8 @@ func (sink *AudioBaseSinkInstance) GetAlignmentThreshold() gst.ClockTime {
 
 // GetDiscontWait wraps gst_audio_base_sink_get_discont_wait
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the current discont wait, in nanoseconds, used by @sink.
 func (sink *AudioBaseSinkInstance) GetDiscontWait() gst.ClockTime {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var cret  C.GstClockTime      // return, none, casted, alias
@@ -4428,11 +3920,8 @@ func (sink *AudioBaseSinkInstance) GetDiscontWait() gst.ClockTime {
 
 // GetDriftTolerance wraps gst_audio_base_sink_get_drift_tolerance
 // 
-// The function returns the following values:
-// 
-// 	- goret int64 
+// see also No documentation available
 //
-// Get the current drift tolerance, in microseconds, used by @sink.
 func (sink *AudioBaseSinkInstance) GetDriftTolerance() int64 {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var cret  C.gint64            // return, none, casted
@@ -4451,12 +3940,8 @@ func (sink *AudioBaseSinkInstance) GetDriftTolerance() int64 {
 
 // GetProvideClock wraps gst_audio_base_sink_get_provide_clock
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries whether @sink will provide a clock or not. See also
-// gst_audio_base_sink_set_provide_clock.
 func (sink *AudioBaseSinkInstance) GetProvideClock() bool {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var cret  C.gboolean          // return
@@ -4477,11 +3962,8 @@ func (sink *AudioBaseSinkInstance) GetProvideClock() bool {
 
 // GetSlaveMethod wraps gst_audio_base_sink_get_slave_method
 // 
-// The function returns the following values:
-// 
-// 	- goret AudioBaseSinkSlaveMethod 
+// see also No documentation available
 //
-// Get the current slave method used by @sink.
 func (sink *AudioBaseSinkInstance) GetSlaveMethod() AudioBaseSinkSlaveMethod {
 	var carg0 *C.GstAudioBaseSink           // in, none, converted
 	var cret  C.GstAudioBaseSinkSlaveMethod // return, none, casted
@@ -4499,12 +3981,9 @@ func (sink *AudioBaseSinkInstance) GetSlaveMethod() AudioBaseSinkSlaveMethod {
 }
 
 // ReportDeviceFailure wraps gst_audio_base_sink_report_device_failure
+// 
+// see also No documentation available
 //
-// Informs this base class that the audio output device has failed for
-// some reason, causing a discontinuity (for example, because the device
-// recovered from the error, but lost all contents of its ring buffer).
-// This function is typically called by derived classes, and is useful
-// for the custom slave method.
 func (sink *AudioBaseSinkInstance) ReportDeviceFailure() {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 
@@ -4516,11 +3995,8 @@ func (sink *AudioBaseSinkInstance) ReportDeviceFailure() {
 
 // SetAlignmentThreshold wraps gst_audio_base_sink_set_alignment_threshold
 // 
-// The function takes the following parameters:
-// 
-// 	- alignmentThreshold gst.ClockTime: the new alignment threshold in nanoseconds 
+// see also No documentation available
 //
-// Controls the sink's alignment threshold.
 func (sink *AudioBaseSinkInstance) SetAlignmentThreshold(alignmentThreshold gst.ClockTime) {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var carg1 C.GstClockTime      // in, none, casted, alias
@@ -4535,18 +4011,8 @@ func (sink *AudioBaseSinkInstance) SetAlignmentThreshold(alignmentThreshold gst.
 
 // SetCustomSlavingCallback wraps gst_audio_base_sink_set_custom_slaving_callback
 // 
-// The function takes the following parameters:
-// 
-// 	- callback AudioBaseSinkCustomSlavingCallback: a #GstAudioBaseSinkCustomSlavingCallback 
+// see also No documentation available
 //
-// Sets the custom slaving callback. This callback will
-// be invoked if the slave-method property is set to
-// GST_AUDIO_BASE_SINK_SLAVE_CUSTOM and the audio sink
-// receives and plays samples.
-// 
-// Setting the callback to NULL causes the sink to
-// behave as if the GST_AUDIO_BASE_SINK_SLAVE_NONE
-// method were used.
 func (sink *AudioBaseSinkInstance) SetCustomSlavingCallback(callback AudioBaseSinkCustomSlavingCallback) {
 	var carg0 *C.GstAudioBaseSink                     // in, none, converted
 	var carg1 C.GstAudioBaseSinkCustomSlavingCallback // callback, scope: notified, closure: carg2, destroy: carg3
@@ -4565,11 +4031,8 @@ func (sink *AudioBaseSinkInstance) SetCustomSlavingCallback(callback AudioBaseSi
 
 // SetDiscontWait wraps gst_audio_base_sink_set_discont_wait
 // 
-// The function takes the following parameters:
-// 
-// 	- discontWait gst.ClockTime: the new discont wait in nanoseconds 
+// see also No documentation available
 //
-// Controls how long the sink will wait before creating a discontinuity.
 func (sink *AudioBaseSinkInstance) SetDiscontWait(discontWait gst.ClockTime) {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var carg1 C.GstClockTime      // in, none, casted, alias
@@ -4584,11 +4047,8 @@ func (sink *AudioBaseSinkInstance) SetDiscontWait(discontWait gst.ClockTime) {
 
 // SetDriftTolerance wraps gst_audio_base_sink_set_drift_tolerance
 // 
-// The function takes the following parameters:
-// 
-// 	- driftTolerance int64: the new drift tolerance in microseconds 
+// see also No documentation available
 //
-// Controls the sink's drift tolerance.
 func (sink *AudioBaseSinkInstance) SetDriftTolerance(driftTolerance int64) {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var carg1 C.gint64            // in, none, casted
@@ -4603,14 +4063,8 @@ func (sink *AudioBaseSinkInstance) SetDriftTolerance(driftTolerance int64) {
 
 // SetProvideClock wraps gst_audio_base_sink_set_provide_clock
 // 
-// The function takes the following parameters:
-// 
-// 	- provide bool: new state 
+// see also No documentation available
 //
-// Controls whether @sink will provide a clock or not. If @provide is %TRUE,
-// gst_element_provide_clock() will return a clock that reflects the datarate
-// of @sink. If @provide is %FALSE, gst_element_provide_clock() will return
-// NULL.
 func (sink *AudioBaseSinkInstance) SetProvideClock(provide bool) {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var carg1 C.gboolean          // in
@@ -4627,11 +4081,8 @@ func (sink *AudioBaseSinkInstance) SetProvideClock(provide bool) {
 
 // SetSlaveMethod wraps gst_audio_base_sink_set_slave_method
 // 
-// The function takes the following parameters:
-// 
-// 	- method AudioBaseSinkSlaveMethod: the new slave method 
+// see also No documentation available
 //
-// Controls how clock slaving will be performed in @sink.
 func (sink *AudioBaseSinkInstance) SetSlaveMethod(method AudioBaseSinkSlaveMethod) {
 	var carg0 *C.GstAudioBaseSink           // in, none, converted
 	var carg1 C.GstAudioBaseSinkSlaveMethod // in, none, casted
@@ -4652,28 +4103,11 @@ type AudioBaseSinkOverrides[Instance AudioBaseSink] struct {
 
 	// // CreateRingbuffer allows you to override the implementation of the virtual method create_ringbuffer.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret AudioRingBuffer (nullable) 
-	//
-	// Create and return the #GstAudioRingBuffer for @sink. This function will
-	// call the ::create_ringbuffer vmethod and will set @sink as the parent of
-	// the returned buffer (see gst_object_set_parent()).
+	// see also No documentation available
 	CreateRingbuffer func(Instance) AudioRingBuffer
 	// // Payload allows you to override the implementation of the virtual method payload.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// payload data in a format suitable to write to the sink. If no
-	//           payloading is required, returns a reffed copy of the original
-	//           buffer, else returns the payloaded buffer with all other metadata
-	//           copied.
+	// see also No documentation available
 	Payload func(Instance, *gst.Buffer) *gst.Buffer
 }
 
@@ -4732,13 +4166,7 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 // ParentCreateRingbuffer calls the default implementations of the `GstAudioBaseSink.create_ringbuffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret AudioRingBuffer (nullable) 
-//
-// Create and return the #GstAudioRingBuffer for @sink. This function will
-// call the ::create_ringbuffer vmethod and will set @sink as the parent of
-// the returned buffer (see gst_object_set_parent()).
+// see also No documentation available
 func (sink *AudioBaseSinkInstance) ParentCreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSink
 	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
@@ -4762,18 +4190,7 @@ func (sink *AudioBaseSinkInstance) ParentCreateRingbuffer() AudioRingBuffer {
 // ParentPayload calls the default implementations of the `GstAudioBaseSink.payload` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
-//
-// payload data in a format suitable to write to the sink. If no
-//           payloading is required, returns a reffed copy of the original
-//           buffer, else returns the payloaded buffer with all other metadata
-//           copied.
+// see also No documentation available
 func (sink *AudioBaseSinkInstance) ParentPayload(buffer *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstAudioBaseSink
 	var carg1 *C.GstBuffer // in, none, converted
@@ -4830,58 +4247,37 @@ type AudioBaseSrcInstance struct {
 var _ AudioBaseSrc = (*AudioBaseSrcInstance)(nil)
 
 // AudioBaseSrc wraps GstAudioBaseSrc
+// 
+// see also No documentation available
 //
-// This is the base class for audio sources. Subclasses need to implement the
-// ::create_ringbuffer vmethod. This base class will then take care of
-// reading samples from the ringbuffer, synchronisation and flushing.
 type AudioBaseSrc interface {
 	gstbase.PushSrc
 	upcastToGstAudioBaseSrc() *AudioBaseSrcInstance
 
 	// CreateRingbuffer wraps gst_audio_base_src_create_ringbuffer
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret AudioRingBuffer (nullable) 
+	// see also No documentation available
 	//
-	// Create and return the #GstAudioRingBuffer for @src. This function will call
-	// the ::create_ringbuffer vmethod and will set @src as the parent of the
-	// returned buffer (see gst_object_set_parent()).
 	CreateRingbuffer() AudioRingBuffer
 	// GetProvideClock wraps gst_audio_base_src_get_provide_clock
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries whether @src will provide a clock or not. See also
-	// gst_audio_base_src_set_provide_clock.
 	GetProvideClock() bool
 	// GetSlaveMethod wraps gst_audio_base_src_get_slave_method
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret AudioBaseSrcSlaveMethod 
+	// see also No documentation available
 	//
-	// Get the current slave method used by @src.
 	GetSlaveMethod() AudioBaseSrcSlaveMethod
 	// SetProvideClock wraps gst_audio_base_src_set_provide_clock
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- provide bool: new state 
+	// see also No documentation available
 	//
-	// Controls whether @src will provide a clock or not. If @provide is %TRUE,
-	// gst_element_provide_clock() will return a clock that reflects the datarate
-	// of @src. If @provide is %FALSE, gst_element_provide_clock() will return NULL.
 	SetProvideClock(bool)
 	// SetSlaveMethod wraps gst_audio_base_src_set_slave_method
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- method AudioBaseSrcSlaveMethod: the new slave method 
+	// see also No documentation available
 	//
-	// Controls how clock slaving will be performed in @src.
 	SetSlaveMethod(AudioBaseSrcSlaveMethod)
 
 	// chain up virtual methods:
@@ -4889,13 +4285,7 @@ type AudioBaseSrc interface {
 	// ParentCreateRingbuffer calls the default implementations of the `GstAudioBaseSrc.create_ringbuffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret AudioRingBuffer (nullable) 
-	//
-	// Create and return the #GstAudioRingBuffer for @src. This function will call
-	// the ::create_ringbuffer vmethod and will set @src as the parent of the
-	// returned buffer (see gst_object_set_parent()).
+	// see also No documentation available
 	ParentCreateRingbuffer() AudioRingBuffer
 }
 
@@ -4959,13 +4349,8 @@ func UnsafeAudioBaseSrcToGlibFull(c AudioBaseSrc) unsafe.Pointer {
 
 // CreateRingbuffer wraps gst_audio_base_src_create_ringbuffer
 // 
-// The function returns the following values:
-// 
-// 	- goret AudioRingBuffer (nullable) 
+// see also No documentation available
 //
-// Create and return the #GstAudioRingBuffer for @src. This function will call
-// the ::create_ringbuffer vmethod and will set @src as the parent of the
-// returned buffer (see gst_object_set_parent()).
 func (src *AudioBaseSrcInstance) CreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSrc    // in, none, converted
 	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
@@ -4986,12 +4371,8 @@ func (src *AudioBaseSrcInstance) CreateRingbuffer() AudioRingBuffer {
 
 // GetProvideClock wraps gst_audio_base_src_get_provide_clock
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries whether @src will provide a clock or not. See also
-// gst_audio_base_src_set_provide_clock.
 func (src *AudioBaseSrcInstance) GetProvideClock() bool {
 	var carg0 *C.GstAudioBaseSrc // in, none, converted
 	var cret  C.gboolean         // return
@@ -5012,11 +4393,8 @@ func (src *AudioBaseSrcInstance) GetProvideClock() bool {
 
 // GetSlaveMethod wraps gst_audio_base_src_get_slave_method
 // 
-// The function returns the following values:
-// 
-// 	- goret AudioBaseSrcSlaveMethod 
+// see also No documentation available
 //
-// Get the current slave method used by @src.
 func (src *AudioBaseSrcInstance) GetSlaveMethod() AudioBaseSrcSlaveMethod {
 	var carg0 *C.GstAudioBaseSrc           // in, none, converted
 	var cret  C.GstAudioBaseSrcSlaveMethod // return, none, casted
@@ -5035,13 +4413,8 @@ func (src *AudioBaseSrcInstance) GetSlaveMethod() AudioBaseSrcSlaveMethod {
 
 // SetProvideClock wraps gst_audio_base_src_set_provide_clock
 // 
-// The function takes the following parameters:
-// 
-// 	- provide bool: new state 
+// see also No documentation available
 //
-// Controls whether @src will provide a clock or not. If @provide is %TRUE,
-// gst_element_provide_clock() will return a clock that reflects the datarate
-// of @src. If @provide is %FALSE, gst_element_provide_clock() will return NULL.
 func (src *AudioBaseSrcInstance) SetProvideClock(provide bool) {
 	var carg0 *C.GstAudioBaseSrc // in, none, converted
 	var carg1 C.gboolean         // in
@@ -5058,11 +4431,8 @@ func (src *AudioBaseSrcInstance) SetProvideClock(provide bool) {
 
 // SetSlaveMethod wraps gst_audio_base_src_set_slave_method
 // 
-// The function takes the following parameters:
-// 
-// 	- method AudioBaseSrcSlaveMethod: the new slave method 
+// see also No documentation available
 //
-// Controls how clock slaving will be performed in @src.
 func (src *AudioBaseSrcInstance) SetSlaveMethod(method AudioBaseSrcSlaveMethod) {
 	var carg0 *C.GstAudioBaseSrc           // in, none, converted
 	var carg1 C.GstAudioBaseSrcSlaveMethod // in, none, casted
@@ -5083,13 +4453,7 @@ type AudioBaseSrcOverrides[Instance AudioBaseSrc] struct {
 
 	// // CreateRingbuffer allows you to override the implementation of the virtual method create_ringbuffer.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret AudioRingBuffer (nullable) 
-	//
-	// Create and return the #GstAudioRingBuffer for @src. This function will call
-	// the ::create_ringbuffer vmethod and will set @src as the parent of the
-	// returned buffer (see gst_object_set_parent()).
+	// see also No documentation available
 	CreateRingbuffer func(Instance) AudioRingBuffer
 }
 
@@ -5126,13 +4490,7 @@ func UnsafeApplyAudioBaseSrcOverrides[Instance AudioBaseSrc](gclass unsafe.Point
 // ParentCreateRingbuffer calls the default implementations of the `GstAudioBaseSrc.create_ringbuffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret AudioRingBuffer (nullable) 
-//
-// Create and return the #GstAudioRingBuffer for @src. This function will call
-// the ::create_ringbuffer vmethod and will set @src as the parent of the
-// returned buffer (see gst_object_set_parent()).
+// see also No documentation available
 func (src *AudioBaseSrcInstance) ParentCreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSrc
 	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
@@ -5190,50 +4548,9 @@ type AudioCdSrcInstance struct {
 var _ AudioCdSrc = (*AudioCdSrcInstance)(nil)
 
 // AudioCdSrc wraps GstAudioCdSrc
+// 
+// see also No documentation available
 //
-// Provides a base class for CD digital audio (CDDA) sources, which handles
-// things like seeking, querying, discid calculation, tags, and buffer
-// timestamping.
-// 
-// ## Using GstAudioCdSrc-based elements in applications
-// 
-// GstAudioCdSrc registers two #GstFormat&lt;!-- --&gt;s of its own, namely
-// the "track" format and the "sector" format. Applications will usually
-// only find the "track" format interesting. You can retrieve that #GstFormat
-// for use in seek events or queries with gst_format_get_by_nick("track").
-// 
-// In order to query the number of tracks, for example, an application would
-// set the CDDA source element to READY or PAUSED state and then query the
-// the number of tracks via gst_element_query_duration() using the track
-// format acquired above. Applications can query the currently playing track
-// in the same way.
-// 
-// Alternatively, applications may retrieve the currently playing track and
-// the total number of tracks from the taglist that will posted on the bus
-// whenever the CD is opened or the currently playing track changes. The
-// taglist will contain GST_TAG_TRACK_NUMBER and GST_TAG_TRACK_COUNT tags.
-// 
-// Applications playing back CD audio using playbin and cdda://n URIs should
-// issue a seek command in track format to change between tracks, rather than
-// setting a new cdda://n+1 URI on playbin (as setting a new URI on playbin
-// involves closing and re-opening the CD device, which is much much slower).
-// 
-// ## Tags and meta-information
-// 
-// CDDA sources will automatically emit a number of tags, details about which
-// can be found in the libgsttag documentation. Those tags are:
-// #GST_TAG_CDDA_CDDB_DISCID, #GST_TAG_CDDA_CDDB_DISCID_FULL,
-// #GST_TAG_CDDA_MUSICBRAINZ_DISCID, #GST_TAG_CDDA_MUSICBRAINZ_DISCID_FULL,
-// among others.
-// 
-// ## Tracks and Table of Contents (TOC)
-// 
-// Applications will be informed of the available tracks via a TOC message
-// on the pipeline's #GstBus. The #GstToc will contain a #GstTocEntry for
-// each track, with information about each track. The duration for each
-// track can be retrieved via the #GST_TAG_DURATION tag from each entry's
-// tag list, or calculated via gst_toc_entry_get_start_stop_times().
-// The track entries in the TOC will be sorted by track number.
 type AudioCdSrc interface {
 	gstbase.PushSrc
 	gst.URIHandler
@@ -5241,52 +4558,26 @@ type AudioCdSrc interface {
 
 	// AddTrack wraps gst_audio_cd_src_add_track
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- track *AudioCdSrcTrack: address of #GstAudioCdSrcTrack to add 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// CDDA sources use this function from their start vfunc to announce the
-	// available data and audio tracks to the base source class. The caller
-	// should allocate @track on the stack, the base source will do a shallow
-	// copy of the structure (and take ownership of the taglist if there is one).
 	AddTrack(*AudioCdSrcTrack) bool
 
 	// chain up virtual methods:
 
 	// ParentClose calls the default implementations of the `GstAudioCdSrc.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// closing the device
+	// 
+	// see also No documentation available
 	ParentClose()
 	// ParentOpen calls the default implementations of the `GstAudioCdSrc.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- device string 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// opening the device
+	// see also No documentation available
 	ParentOpen(device string) bool
 	// ParentReadSector calls the default implementations of the `GstAudioCdSrc.read_sector` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- sector int32 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// reading a sector
+	// see also No documentation available
 	ParentReadSector(sector int32) *gst.Buffer
 }
 
@@ -5353,18 +4644,8 @@ func UnsafeAudioCdSrcToGlibFull(c AudioCdSrc) unsafe.Pointer {
 
 // AddTrack wraps gst_audio_cd_src_add_track
 // 
-// The function takes the following parameters:
-// 
-// 	- track *AudioCdSrcTrack: address of #GstAudioCdSrcTrack to add 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// CDDA sources use this function from their start vfunc to announce the
-// available data and audio tracks to the base source class. The caller
-// should allocate @track on the stack, the base source will do a shallow
-// copy of the structure (and take ownership of the taglist if there is one).
 func (src *AudioCdSrcInstance) AddTrack(track *AudioCdSrcTrack) bool {
 	var carg0 *C.GstAudioCdSrc      // in, none, converted
 	var carg1 *C.GstAudioCdSrcTrack // in, none, converted
@@ -5393,32 +4674,16 @@ type AudioCdSrcOverrides[Instance AudioCdSrc] struct {
 	gstbase.PushSrcOverrides[Instance]
 
 	// // Close allows you to override the implementation of the virtual method close.
-	//
-	// closing the device
+	// 
+	// see also No documentation available
 	Close func(Instance)
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- device string 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// opening the device
+	// see also No documentation available
 	Open func(Instance, string) bool
 	// // ReadSector allows you to override the implementation of the virtual method read_sector.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- sector int32 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
-	//
-	// reading a sector
+	// see also No documentation available
 	ReadSector func(Instance, int32) *gst.Buffer
 }
 
@@ -5493,8 +4758,8 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 
 // ParentClose calls the default implementations of the `GstAudioCdSrc.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// closing the device
+// 
+// see also No documentation available
 func (src *AudioCdSrcInstance) ParentClose() {
 	var carg0 *C.GstAudioCdSrc
 
@@ -5509,15 +4774,7 @@ func (src *AudioCdSrcInstance) ParentClose() {
 // ParentOpen calls the default implementations of the `GstAudioCdSrc.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- device string 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// opening the device
+// see also No documentation available
 func (src *AudioCdSrcInstance) ParentOpen(device string) bool {
 	var carg0 *C.GstAudioCdSrc
 	var carg1 *C.gchar   // in, none, converted
@@ -5545,15 +4802,7 @@ func (src *AudioCdSrcInstance) ParentOpen(device string) bool {
 // ParentReadSector calls the default implementations of the `GstAudioCdSrc.read_sector` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- sector int32 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
-//
-// reading a sector
+// see also No documentation available
 func (src *AudioCdSrcInstance) ParentReadSector(sector int32) *gst.Buffer {
 	var carg0 *C.GstAudioCdSrc
 	var carg1 C.gint       // in, none, converted
@@ -5610,55 +4859,32 @@ type AudioClockInstance struct {
 var _ AudioClock = (*AudioClockInstance)(nil)
 
 // AudioClock wraps GstAudioClock
-//
-// #GstAudioClock makes it easy for elements to implement a #GstClock, they
-// simply need to provide a function that returns the current clock time.
 // 
-// This object is internally used to implement the clock in #GstAudioBaseSink.
+// see also No documentation available
+//
 type AudioClock interface {
 	gst.SystemClock
 	upcastToGstAudioClock() *AudioClockInstance
 
 	// Adjust wraps gst_audio_clock_adjust
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- time gst.ClockTime: a #GstClockTime 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Adjust @time with the internal offset of the audio clock.
 	Adjust(gst.ClockTime) gst.ClockTime
 	// GetTime wraps gst_audio_clock_get_time
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Report the time as returned by the #GstAudioClockGetTimeFunc without applying
-	// any offsets.
 	GetTime() gst.ClockTime
 	// Invalidate wraps gst_audio_clock_invalidate
-	//
-	// Invalidate the clock function. Call this function when the provided
-	// #GstAudioClockGetTimeFunc cannot be called anymore, for example, when the
-	// user_data becomes invalid.
 	// 
-	// After calling this function, @clock will return the last returned time for
-	// the rest of its lifetime.
+	// see also No documentation available
+	//
 	Invalidate()
 	// Reset wraps gst_audio_clock_reset
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- time gst.ClockTime: a #GstClockTime 
+	// see also No documentation available
 	//
-	// Inform @clock that future calls to #GstAudioClockGetTimeFunc will return values
-	// starting from @time. The clock will update an internal offset to make sure that
-	// future calls to internal_time will return an increasing result as required by
-	// the #GstClock object.
 	Reset(gst.ClockTime)
 
 	// chain up virtual methods:
@@ -5722,18 +4948,8 @@ func UnsafeAudioClockToGlibFull(c AudioClock) unsafe.Pointer {
 
 // NewAudioClock wraps gst_audio_clock_new
 // 
-// The function takes the following parameters:
-// 
-// 	- name string: the name of the clock 
-// 	- fn AudioClockGetTimeFunc: a function 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.Clock 
+// see also No documentation available
 //
-// Create a new #GstAudioClock instance. Whenever the clock time should be
-// calculated it will call @func with @user_data. When @func returns
-// #GST_CLOCK_TIME_NONE, the clock will return the last reported time.
 func NewAudioClock(name string, fn AudioClockGetTimeFunc) gst.Clock {
 	var carg1 *C.gchar                   // in, none, string
 	var carg2 C.GstAudioClockGetTimeFunc // callback, scope: notified, closure: carg3, destroy: carg4
@@ -5760,15 +4976,8 @@ func NewAudioClock(name string, fn AudioClockGetTimeFunc) gst.Clock {
 
 // Adjust wraps gst_audio_clock_adjust
 // 
-// The function takes the following parameters:
-// 
-// 	- time gst.ClockTime: a #GstClockTime 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Adjust @time with the internal offset of the audio clock.
 func (clock *AudioClockInstance) Adjust(time gst.ClockTime) gst.ClockTime {
 	var carg0 *C.GstAudioClock // in, none, converted
 	var carg1 C.GstClockTime   // in, none, casted, alias
@@ -5790,12 +4999,8 @@ func (clock *AudioClockInstance) Adjust(time gst.ClockTime) gst.ClockTime {
 
 // GetTime wraps gst_audio_clock_get_time
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Report the time as returned by the #GstAudioClockGetTimeFunc without applying
-// any offsets.
 func (clock *AudioClockInstance) GetTime() gst.ClockTime {
 	var carg0 *C.GstAudioClock // in, none, converted
 	var cret  C.GstClockTime   // return, none, casted, alias
@@ -5813,13 +5018,9 @@ func (clock *AudioClockInstance) GetTime() gst.ClockTime {
 }
 
 // Invalidate wraps gst_audio_clock_invalidate
-//
-// Invalidate the clock function. Call this function when the provided
-// #GstAudioClockGetTimeFunc cannot be called anymore, for example, when the
-// user_data becomes invalid.
 // 
-// After calling this function, @clock will return the last returned time for
-// the rest of its lifetime.
+// see also No documentation available
+//
 func (clock *AudioClockInstance) Invalidate() {
 	var carg0 *C.GstAudioClock // in, none, converted
 
@@ -5831,14 +5032,8 @@ func (clock *AudioClockInstance) Invalidate() {
 
 // Reset wraps gst_audio_clock_reset
 // 
-// The function takes the following parameters:
-// 
-// 	- time gst.ClockTime: a #GstClockTime 
+// see also No documentation available
 //
-// Inform @clock that future calls to #GstAudioClockGetTimeFunc will return values
-// starting from @time. The clock will update an internal offset to make sure that
-// future calls to internal_time will return an increasing result as required by
-// the #GstClock object.
 func (clock *AudioClockInstance) Reset(time gst.ClockTime) {
 	var carg0 *C.GstAudioClock // in, none, converted
 	var carg1 C.GstClockTime   // in, none, casted, alias
@@ -5900,448 +5095,167 @@ type AudioDecoderInstance struct {
 var _ AudioDecoder = (*AudioDecoderInstance)(nil)
 
 // AudioDecoder wraps GstAudioDecoder
+// 
+// see also No documentation available
 //
-// This base class is for audio decoders turning encoded data into
-// raw audio samples.
-// 
-// GstAudioDecoder and subclass should cooperate as follows.
-// 
-// ## Configuration
-// 
-//   * Initially, GstAudioDecoder calls @start when the decoder element
-//     is activated, which allows subclass to perform any global setup.
-//     Base class (context) parameters can already be set according to subclass
-//     capabilities (or possibly upon receive more information in subsequent
-//     @set_format).
-//   * GstAudioDecoder calls @set_format to inform subclass of the format
-//     of input audio data that it is about to receive.
-//     While unlikely, it might be called more than once, if changing input
-//     parameters require reconfiguration.
-//   * GstAudioDecoder calls @stop at end of all processing.
-// 
-// As of configuration stage, and throughout processing, GstAudioDecoder
-// provides various (context) parameters, e.g. describing the format of
-// output audio data (valid when output caps have been set) or current parsing state.
-// Conversely, subclass can and should configure context to inform
-// base class of its expectation w.r.t. buffer handling.
-// 
-// ## Data processing
-//     * Base class gathers input data, and optionally allows subclass
-//       to parse this into subsequently manageable (as defined by subclass)
-//       chunks.  Such chunks are subsequently referred to as 'frames',
-//       though they may or may not correspond to 1 (or more) audio format frame.
-//     * Input frame is provided to subclass' @handle_frame.
-//     * If codec processing results in decoded data, subclass should call
-//       @gst_audio_decoder_finish_frame to have decoded data pushed
-//       downstream.
-//     * Just prior to actually pushing a buffer downstream,
-//       it is passed to @pre_push.  Subclass should either use this callback
-//       to arrange for additional downstream pushing or otherwise ensure such
-//       custom pushing occurs after at least a method call has finished since
-//       setting src pad caps.
-//     * During the parsing process GstAudioDecoderClass will handle both
-//       srcpad and sinkpad events. Sink events will be passed to subclass
-//       if @event callback has been provided.
-// 
-// ## Shutdown phase
-// 
-//   * GstAudioDecoder class calls @stop to inform the subclass that data
-//     parsing will be stopped.
-// 
-// Subclass is responsible for providing pad template caps for
-// source and sink pads. The pads need to be named "sink" and "src". It also
-// needs to set the fixed caps on srcpad, when the format is ensured.  This
-// is typically when base class calls subclass' @set_format function, though
-// it might be delayed until calling @gst_audio_decoder_finish_frame.
-// 
-// In summary, above process should have subclass concentrating on
-// codec data processing while leaving other matters to base class,
-// such as most notably timestamp handling.  While it may exert more control
-// in this area (see e.g. @pre_push), it is very much not recommended.
-// 
-// In particular, base class will try to arrange for perfect output timestamps
-// as much as possible while tracking upstream timestamps.
-// To this end, if deviation between the next ideal expected perfect timestamp
-// and upstream exceeds #GstAudioDecoder:tolerance, then resync to upstream
-// occurs (which would happen always if the tolerance mechanism is disabled).
-// 
-// In non-live pipelines, baseclass can also (configurably) arrange for
-// output buffer aggregation which may help to redue large(r) numbers of
-// small(er) buffers being pushed and processed downstream. Note that this
-// feature is only available if the buffer layout is interleaved. For planar
-// buffers, the decoder implementation is fully responsible for the output
-// buffer size.
-// 
-// On the other hand, it should be noted that baseclass only provides limited
-// seeking support (upon explicit subclass request), as full-fledged support
-// should rather be left to upstream demuxer, parser or alike.  This simple
-// approach caters for seeking and duration reporting using estimated input
-// bitrates.
-// 
-// Things that subclass need to take care of:
-// 
-//   * Provide pad templates
-//   * Set source pad caps when appropriate
-//   * Set user-configurable properties to sane defaults for format and
-//      implementing codec at hand, and convey some subclass capabilities and
-//      expectations in context.
-// 
-//   * Accept data in @handle_frame and provide encoded results to
-//      @gst_audio_decoder_finish_frame.  If it is prepared to perform
-//      PLC, it should also accept NULL data in @handle_frame and provide for
-//      data for indicated duration.
 type AudioDecoder interface {
 	gst.Element
 	upcastToGstAudioDecoder() *AudioDecoderInstance
 
 	// AllocateOutputBuffer wraps gst_audio_decoder_allocate_output_buffer
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- size uint: size of the buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
+	// see also No documentation available
 	//
-	// Helper function that allocates a buffer to hold an audio frame
-	// for @dec's current output format.
 	AllocateOutputBuffer(uint) *gst.Buffer
 	// FinishFrame wraps gst_audio_decoder_finish_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buf *gst.Buffer (nullable): decoded data 
-	// 	- frames int32: number of decoded frames represented by decoded data 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Collects decoded data and pushes it downstream.
-	// 
-	// @buf may be NULL in which case the indicated number of frames
-	// are discarded and considered to have produced no output
-	// (e.g. lead-in or setup frames).
-	// Otherwise, source pad caps must be set when it is called with valid
-	// data in @buf.
-	// 
-	// Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
-	// invalidated by a call to this function.
 	FinishFrame(*gst.Buffer, int32) gst.FlowReturn
 	// FinishSubframe wraps gst_audio_decoder_finish_subframe
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buf *gst.Buffer (nullable): decoded data 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Collects decoded data and pushes it downstream. This function may be called
-	// multiple times for a given input frame.
-	// 
-	// @buf may be NULL in which case it is assumed that the current input frame is
-	// finished. This is equivalent to calling gst_audio_decoder_finish_subframe()
-	// with a NULL buffer and frames=1 after having pushed out all decoded audio
-	// subframes using this function.
-	// 
-	// When called with valid data in @buf the source pad caps must have been set
-	// already.
-	// 
-	// Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
-	// invalidated by a call to this function.
 	FinishSubframe(*gst.Buffer) gst.FlowReturn
 	// GetAllocator wraps gst_audio_decoder_get_allocator
 	// 
-	// The function returns the following values:
-	// 
-	// 	- allocator gst.Allocator (nullable): the #GstAllocator
-	// used 
-	// 	- params gst.AllocationParams: the
-	// #GstAllocationParams of @allocator 
+	// see also No documentation available
 	//
-	// Lets #GstAudioDecoder sub-classes to know the memory @allocator
-	// used by the base class and its @params.
-	// 
-	// Unref the @allocator after use it.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetAudioInfo wraps gst_audio_decoder_get_audio_info
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *AudioInfo 
+	// see also No documentation available
 	GetAudioInfo() *AudioInfo
 	// GetDelay wraps gst_audio_decoder_get_delay
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetDelay() int32
 	// GetDrainable wraps gst_audio_decoder_get_drainable
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries decoder drain handling.
 	GetDrainable() bool
 	// GetEstimateRate wraps gst_audio_decoder_get_estimate_rate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetEstimateRate() int32
 	// GetLatency wraps gst_audio_decoder_get_latency
 	// 
-	// The function returns the following values:
-	// 
-	// 	- min gst.ClockTime: a pointer to storage to hold minimum latency 
-	// 	- max gst.ClockTime: a pointer to storage to hold maximum latency 
+	// see also No documentation available
 	//
-	// Sets the variables pointed to by @min and @max to the currently configured
-	// latency.
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetMaxErrors wraps gst_audio_decoder_get_max_errors
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetMaxErrors() int32
 	// GetMinLatency wraps gst_audio_decoder_get_min_latency
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Queries decoder's latency aggregation.
 	GetMinLatency() gst.ClockTime
 	// GetNeedsFormat wraps gst_audio_decoder_get_needs_format
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries decoder required format handling.
 	GetNeedsFormat() bool
 	// GetParseState wraps gst_audio_decoder_get_parse_state
 	// 
-	// The function returns the following values:
-	// 
-	// 	- sync bool: a pointer to a variable to hold the current sync state 
-	// 	- eos bool: a pointer to a variable to hold the current eos state 
+	// see also No documentation available
 	//
-	// Return current parsing (sync and eos) state.
 	GetParseState() (bool, bool)
 	// GetPlc wraps gst_audio_decoder_get_plc
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries decoder packet loss concealment handling.
 	GetPlc() bool
 	// GetPlcAware wraps gst_audio_decoder_get_plc_aware
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetPlcAware() int32
 	// GetTolerance wraps gst_audio_decoder_get_tolerance
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Queries current audio jitter tolerance threshold.
 	GetTolerance() gst.ClockTime
 	// MergeTags wraps gst_audio_decoder_merge_tags
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL 
-	// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+	// see also No documentation available
 	//
-	// Sets the audio decoder tags and how they should be merged with any
-	// upstream stream tags. This will override any tags previously-set
-	// with gst_audio_decoder_merge_tags().
-	// 
-	// Note that this is provided for convenience, and the subclass is
-	// not required to use this and can still do tag handling on its own.
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_audio_decoder_negotiate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Negotiate with downstream elements to currently configured #GstAudioInfo.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
 	Negotiate() bool
 	// ProxyGetcaps wraps gst_audio_decoder_proxy_getcaps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps (nullable): initial caps 
-	// 	- filter *gst.Caps (nullable): filter caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
+	// see also No documentation available
 	//
-	// Returns caps that express @caps (or sink template caps if @caps == NULL)
-	// restricted to rate/channels/... combinations supported by downstream
-	// elements.
 	ProxyGetcaps(*gst.Caps, *gst.Caps) *gst.Caps
 	// SetAllocationCaps wraps gst_audio_decoder_set_allocation_caps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- allocationCaps *gst.Caps (nullable): a #GstCaps or %NULL 
+	// see also No documentation available
 	//
-	// Sets a caps in allocation query which are different from the set
-	// pad's caps. Use this function before calling
-	// gst_audio_decoder_negotiate(). Setting to %NULL the allocation
-	// query will use the caps from the pad.
 	SetAllocationCaps(*gst.Caps)
 	// SetDrainable wraps gst_audio_decoder_set_drainable
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Configures decoder drain handling.  If drainable, subclass might
-	// be handed a NULL buffer to have it return any leftover decoded data.
-	// Otherwise, it is not considered so capable and will only ever be passed
-	// real data.
-	// 
-	// MT safe.
 	SetDrainable(bool)
 	// SetEstimateRate wraps gst_audio_decoder_set_estimate_rate
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: whether to enable byte to time conversion 
+	// see also No documentation available
 	//
-	// Allows baseclass to perform byte to time estimated conversion.
 	SetEstimateRate(bool)
 	// SetLatency wraps gst_audio_decoder_set_latency
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- min gst.ClockTime: minimum latency 
-	// 	- max gst.ClockTime: maximum latency 
+	// see also No documentation available
 	//
-	// Sets decoder latency. If the provided values changed from
-	// previously provided ones, this will also post a LATENCY message on the bus
-	// so the pipeline can reconfigure its global latency.
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetMaxErrors wraps gst_audio_decoder_set_max_errors
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- num int32: max tolerated errors 
+	// see also No documentation available
 	//
-	// Sets numbers of tolerated decoder errors, where a tolerated one is then only
-	// warned about, but more than tolerated will lead to fatal error. You can set
-	// -1 for never returning fatal errors. Default is set to
-	// GST_AUDIO_DECODER_MAX_ERRORS.
 	SetMaxErrors(int32)
 	// SetMinLatency wraps gst_audio_decoder_set_min_latency
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- num gst.ClockTime: new minimum latency 
+	// see also No documentation available
 	//
-	// Sets decoder minimum aggregation latency.
-	// 
-	// MT safe.
 	SetMinLatency(gst.ClockTime)
 	// SetNeedsFormat wraps gst_audio_decoder_set_needs_format
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Configures decoder format needs.  If enabled, subclass needs to be
-	// negotiated with format caps before it can process any data.  It will then
-	// never be handed any data before it has been configured.
-	// Otherwise, it might be handed data without having been configured and
-	// is then expected being able to do so either by default
-	// or based on the input data.
-	// 
-	// MT safe.
 	SetNeedsFormat(bool)
 	// SetOutputCaps wraps gst_audio_decoder_set_output_caps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps: (fixed) #GstCaps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Configure output caps on the srcpad of @dec. Similar to
-	// gst_audio_decoder_set_output_format(), but allows subclasses to specify
-	// output caps that can't be expressed via #GstAudioInfo e.g. caps that have
-	// caps features.
 	SetOutputCaps(*gst.Caps) bool
 	// SetOutputFormat wraps gst_audio_decoder_set_output_format
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- info *AudioInfo: #GstAudioInfo 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Configure output info on the srcpad of @dec.
 	SetOutputFormat(*AudioInfo) bool
 	// SetPlc wraps gst_audio_decoder_set_plc
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Enable or disable decoder packet loss concealment, provided subclass
-	// and codec are capable and allow handling plc.
-	// 
-	// MT safe.
 	SetPlc(bool)
 	// SetPlcAware wraps gst_audio_decoder_set_plc_aware
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- plc bool: new plc state 
+	// see also No documentation available
 	//
-	// Indicates whether or not subclass handles packet loss concealment (plc).
 	SetPlcAware(bool)
 	// SetTolerance wraps gst_audio_decoder_set_tolerance
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tolerance gst.ClockTime: new tolerance 
+	// see also No documentation available
 	//
-	// Configures decoder audio jitter tolerance threshold.
-	// 
-	// MT safe.
 	SetTolerance(gst.ClockTime)
 	// SetUseDefaultPadAcceptcaps wraps gst_audio_decoder_set_use_default_pad_acceptcaps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- use bool: if the default pad accept-caps query handling should be used 
+	// see also No documentation available
 	//
-	// Lets #GstAudioDecoder sub-classes decide if they want the sink pad
-	// to use the default pad query handler to reply to accept-caps queries.
-	// 
-	// By setting this to true it is possible to further customize the default
-	// handler with %GST_PAD_SET_ACCEPT_INTERSECT and
-	// %GST_PAD_SET_ACCEPT_TEMPLATE
 	SetUseDefaultPadAcceptcaps(bool)
 
 	// chain up virtual methods:
@@ -6349,247 +5263,87 @@ type AudioDecoder interface {
 	// ParentClose calls the default implementations of the `GstAudioDecoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_NULL.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the `GstAudioDecoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
-	//                     Subclasses should chain up to the parent implementation to
-	//                     invoke the default handler.
+	// see also No documentation available
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFlush calls the default implementations of the `GstAudioDecoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- hard bool 
-	//
-	// Optional.
-	//                  Instructs subclass to clear any codec caches and discard
-	//                  any pending samples and not yet returned decoded data.
-	//                  @hard indicates whether a FLUSH is being processed,
-	//                  or otherwise a DISCONT (or conceptually similar).
+	// see also No documentation available
 	ParentFlush(hard bool)
 	// ParentGetcaps calls the default implementations of the `GstAudioDecoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows for a custom sink getcaps implementation.
-	//                  If not implemented,
-	//                  default returns gst_audio_decoder_proxy_getcaps
-	//                  applied to sink template caps.
+	// see also No documentation available
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstAudioDecoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Provides input data (or NULL to clear any remaining data)
-	//                  to subclass.  Input data ref management is performed by
-	//                  base class, subclass should not care or intervene,
-	//                  and input data is only valid until next call to base class,
-	//                  most notably a call to gst_audio_decoder_finish_frame().
+	// see also No documentation available
 	ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn
 	// ParentNegotiate calls the default implementations of the `GstAudioDecoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiate with downstream elements to currently configured #GstAudioInfo.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
+	// see also No documentation available
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the `GstAudioDecoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_READY.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentOpen() bool
 	// ParentParse calls the default implementations of the `GstAudioDecoder.parse` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- adapter gstbase.Adapter 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- offset int32 
-	// 	- length int32 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	ParentParse(adapter gstbase.Adapter) (int32, int32, gst.FlowReturn)
 	// ParentProposeAllocation calls the default implementations of the `GstAudioDecoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Propose buffer allocation parameters for upstream elements.
-	//                      Subclasses should chain up to the parent implementation to
-	//                      invoke the default handler.
+	// see also No documentation available
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentSetFormat calls the default implementations of the `GstAudioDecoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notifies subclass of incoming data format (caps).
+	// see also No documentation available
 	ParentSetFormat(caps *gst.Caps) bool
 	// ParentSinkEvent calls the default implementations of the `GstAudioDecoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. Subclasses should chain up to
-	//                  the parent implementation to invoke the default handler.
+	// see also No documentation available
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstAudioDecoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the sink pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.6
+	// see also No documentation available
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstAudioDecoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the src pad. Subclasses should chain up to
-	//                  the parent implementation to invoke the default handler.
+	// see also No documentation available
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstAudioDecoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the source pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.6
+	// see also No documentation available
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstAudioDecoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstAudioDecoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the `GstAudioDecoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- meta *gst.Meta 
-	// 	- inbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method copies all meta without
-	//                  tags and meta with only the "audio" tag. subclasses can
-	//                  implement this method and return %TRUE if the metadata is to be
-	//                  copied. Since: 1.6
+	// see also No documentation available
 	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 }
 
@@ -6649,16 +5403,8 @@ func UnsafeAudioDecoderToGlibFull(c AudioDecoder) unsafe.Pointer {
 
 // AllocateOutputBuffer wraps gst_audio_decoder_allocate_output_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- size uint: size of the buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Helper function that allocates a buffer to hold an audio frame
-// for @dec's current output format.
 func (dec *AudioDecoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gsize            // in, none, casted
@@ -6680,25 +5426,8 @@ func (dec *AudioDecoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 
 // FinishFrame wraps gst_audio_decoder_finish_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- buf *gst.Buffer (nullable): decoded data 
-// 	- frames int32: number of decoded frames represented by decoded data 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Collects decoded data and pushes it downstream.
-// 
-// @buf may be NULL in which case the indicated number of frames
-// are discarded and considered to have produced no output
-// (e.g. lead-in or setup frames).
-// Otherwise, source pad caps must be set when it is called with valid
-// data in @buf.
-// 
-// Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
-// invalidated by a call to this function.
 func (dec *AudioDecoderInstance) FinishFrame(buf *gst.Buffer, frames int32) gst.FlowReturn {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstBuffer       // in, full, converted, nullable
@@ -6725,27 +5454,8 @@ func (dec *AudioDecoderInstance) FinishFrame(buf *gst.Buffer, frames int32) gst.
 
 // FinishSubframe wraps gst_audio_decoder_finish_subframe
 // 
-// The function takes the following parameters:
-// 
-// 	- buf *gst.Buffer (nullable): decoded data 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Collects decoded data and pushes it downstream. This function may be called
-// multiple times for a given input frame.
-// 
-// @buf may be NULL in which case it is assumed that the current input frame is
-// finished. This is equivalent to calling gst_audio_decoder_finish_subframe()
-// with a NULL buffer and frames=1 after having pushed out all decoded audio
-// subframes using this function.
-// 
-// When called with valid data in @buf the source pad caps must have been set
-// already.
-// 
-// Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
-// invalidated by a call to this function.
 func (dec *AudioDecoderInstance) FinishSubframe(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstBuffer       // in, full, converted, nullable
@@ -6769,17 +5479,8 @@ func (dec *AudioDecoderInstance) FinishSubframe(buf *gst.Buffer) gst.FlowReturn 
 
 // GetAllocator wraps gst_audio_decoder_get_allocator
 // 
-// The function returns the following values:
-// 
-// 	- allocator gst.Allocator (nullable): the #GstAllocator
-// used 
-// 	- params gst.AllocationParams: the
-// #GstAllocationParams of @allocator 
+// see also No documentation available
 //
-// Lets #GstAudioDecoder sub-classes to know the memory @allocator
-// used by the base class and its @params.
-// 
-// Unref the @allocator after use it.
 func (dec *AudioDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstAudioDecoder    // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -6805,9 +5506,7 @@ func (dec *AudioDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 
 // GetAudioInfo wraps gst_audio_decoder_get_audio_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *AudioInfo 
+// see also No documentation available
 func (dec *AudioDecoderInstance) GetAudioInfo() *AudioInfo {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  *C.GstAudioInfo    // return, none, converted
@@ -6826,9 +5525,7 @@ func (dec *AudioDecoderInstance) GetAudioInfo() *AudioInfo {
 
 // GetDelay wraps gst_audio_decoder_get_delay
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (dec *AudioDecoderInstance) GetDelay() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -6847,11 +5544,8 @@ func (dec *AudioDecoderInstance) GetDelay() int32 {
 
 // GetDrainable wraps gst_audio_decoder_get_drainable
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries decoder drain handling.
 func (dec *AudioDecoderInstance) GetDrainable() bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -6872,9 +5566,7 @@ func (dec *AudioDecoderInstance) GetDrainable() bool {
 
 // GetEstimateRate wraps gst_audio_decoder_get_estimate_rate
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (dec *AudioDecoderInstance) GetEstimateRate() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -6893,13 +5585,8 @@ func (dec *AudioDecoderInstance) GetEstimateRate() int32 {
 
 // GetLatency wraps gst_audio_decoder_get_latency
 // 
-// The function returns the following values:
-// 
-// 	- min gst.ClockTime: a pointer to storage to hold minimum latency 
-// 	- max gst.ClockTime: a pointer to storage to hold maximum latency 
+// see also No documentation available
 //
-// Sets the variables pointed to by @min and @max to the currently configured
-// latency.
 func (dec *AudioDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.GstClockTime     // out, full, casted, alias
@@ -6921,9 +5608,7 @@ func (dec *AudioDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 
 // GetMaxErrors wraps gst_audio_decoder_get_max_errors
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (dec *AudioDecoderInstance) GetMaxErrors() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -6942,11 +5627,8 @@ func (dec *AudioDecoderInstance) GetMaxErrors() int32 {
 
 // GetMinLatency wraps gst_audio_decoder_get_min_latency
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Queries decoder's latency aggregation.
 func (dec *AudioDecoderInstance) GetMinLatency() gst.ClockTime {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.GstClockTime     // return, none, casted, alias
@@ -6965,11 +5647,8 @@ func (dec *AudioDecoderInstance) GetMinLatency() gst.ClockTime {
 
 // GetNeedsFormat wraps gst_audio_decoder_get_needs_format
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries decoder required format handling.
 func (dec *AudioDecoderInstance) GetNeedsFormat() bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -6990,12 +5669,8 @@ func (dec *AudioDecoderInstance) GetNeedsFormat() bool {
 
 // GetParseState wraps gst_audio_decoder_get_parse_state
 // 
-// The function returns the following values:
-// 
-// 	- sync bool: a pointer to a variable to hold the current sync state 
-// 	- eos bool: a pointer to a variable to hold the current eos state 
+// see also No documentation available
 //
-// Return current parsing (sync and eos) state.
 func (dec *AudioDecoderInstance) GetParseState() (bool, bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // out
@@ -7021,11 +5696,8 @@ func (dec *AudioDecoderInstance) GetParseState() (bool, bool) {
 
 // GetPlc wraps gst_audio_decoder_get_plc
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries decoder packet loss concealment handling.
 func (dec *AudioDecoderInstance) GetPlc() bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -7046,9 +5718,7 @@ func (dec *AudioDecoderInstance) GetPlc() bool {
 
 // GetPlcAware wraps gst_audio_decoder_get_plc_aware
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (dec *AudioDecoderInstance) GetPlcAware() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -7067,11 +5737,8 @@ func (dec *AudioDecoderInstance) GetPlcAware() int32 {
 
 // GetTolerance wraps gst_audio_decoder_get_tolerance
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Queries current audio jitter tolerance threshold.
 func (dec *AudioDecoderInstance) GetTolerance() gst.ClockTime {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.GstClockTime     // return, none, casted, alias
@@ -7090,17 +5757,8 @@ func (dec *AudioDecoderInstance) GetTolerance() gst.ClockTime {
 
 // MergeTags wraps gst_audio_decoder_merge_tags
 // 
-// The function takes the following parameters:
-// 
-// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL 
-// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+// see also No documentation available
 //
-// Sets the audio decoder tags and how they should be merged with any
-// upstream stream tags. This will override any tags previously-set
-// with gst_audio_decoder_merge_tags().
-// 
-// Note that this is provided for convenience, and the subclass is
-// not required to use this and can still do tag handling on its own.
 func (dec *AudioDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted, nullable
@@ -7120,13 +5778,8 @@ func (dec *AudioDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeM
 
 // Negotiate wraps gst_audio_decoder_negotiate
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Negotiate with downstream elements to currently configured #GstAudioInfo.
-// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-// negotiate fails.
 func (dec *AudioDecoderInstance) Negotiate() bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -7147,18 +5800,8 @@ func (dec *AudioDecoderInstance) Negotiate() bool {
 
 // ProxyGetcaps wraps gst_audio_decoder_proxy_getcaps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps (nullable): initial caps 
-// 	- filter *gst.Caps (nullable): filter caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Returns caps that express @caps (or sink template caps if @caps == NULL)
-// restricted to rate/channels/... combinations supported by downstream
-// elements.
 func (decoder *AudioDecoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -7187,14 +5830,8 @@ func (decoder *AudioDecoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Ca
 
 // SetAllocationCaps wraps gst_audio_decoder_set_allocation_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- allocationCaps *gst.Caps (nullable): a #GstCaps or %NULL 
+// see also No documentation available
 //
-// Sets a caps in allocation query which are different from the set
-// pad's caps. Use this function before calling
-// gst_audio_decoder_negotiate(). Setting to %NULL the allocation
-// query will use the caps from the pad.
 func (dec *AudioDecoderInstance) SetAllocationCaps(allocationCaps *gst.Caps) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -7211,16 +5848,8 @@ func (dec *AudioDecoderInstance) SetAllocationCaps(allocationCaps *gst.Caps) {
 
 // SetDrainable wraps gst_audio_decoder_set_drainable
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Configures decoder drain handling.  If drainable, subclass might
-// be handed a NULL buffer to have it return any leftover decoded data.
-// Otherwise, it is not considered so capable and will only ever be passed
-// real data.
-// 
-// MT safe.
 func (dec *AudioDecoderInstance) SetDrainable(enabled bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7237,11 +5866,8 @@ func (dec *AudioDecoderInstance) SetDrainable(enabled bool) {
 
 // SetEstimateRate wraps gst_audio_decoder_set_estimate_rate
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: whether to enable byte to time conversion 
+// see also No documentation available
 //
-// Allows baseclass to perform byte to time estimated conversion.
 func (dec *AudioDecoderInstance) SetEstimateRate(enabled bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7258,14 +5884,8 @@ func (dec *AudioDecoderInstance) SetEstimateRate(enabled bool) {
 
 // SetLatency wraps gst_audio_decoder_set_latency
 // 
-// The function takes the following parameters:
-// 
-// 	- min gst.ClockTime: minimum latency 
-// 	- max gst.ClockTime: maximum latency 
+// see also No documentation available
 //
-// Sets decoder latency. If the provided values changed from
-// previously provided ones, this will also post a LATENCY message on the bus
-// so the pipeline can reconfigure its global latency.
 func (dec *AudioDecoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -7283,14 +5903,8 @@ func (dec *AudioDecoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime
 
 // SetMaxErrors wraps gst_audio_decoder_set_max_errors
 // 
-// The function takes the following parameters:
-// 
-// 	- num int32: max tolerated errors 
+// see also No documentation available
 //
-// Sets numbers of tolerated decoder errors, where a tolerated one is then only
-// warned about, but more than tolerated will lead to fatal error. You can set
-// -1 for never returning fatal errors. Default is set to
-// GST_AUDIO_DECODER_MAX_ERRORS.
 func (dec *AudioDecoderInstance) SetMaxErrors(num int32) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -7305,13 +5919,8 @@ func (dec *AudioDecoderInstance) SetMaxErrors(num int32) {
 
 // SetMinLatency wraps gst_audio_decoder_set_min_latency
 // 
-// The function takes the following parameters:
-// 
-// 	- num gst.ClockTime: new minimum latency 
+// see also No documentation available
 //
-// Sets decoder minimum aggregation latency.
-// 
-// MT safe.
 func (dec *AudioDecoderInstance) SetMinLatency(num gst.ClockTime) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -7326,18 +5935,8 @@ func (dec *AudioDecoderInstance) SetMinLatency(num gst.ClockTime) {
 
 // SetNeedsFormat wraps gst_audio_decoder_set_needs_format
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Configures decoder format needs.  If enabled, subclass needs to be
-// negotiated with format caps before it can process any data.  It will then
-// never be handed any data before it has been configured.
-// Otherwise, it might be handed data without having been configured and
-// is then expected being able to do so either by default
-// or based on the input data.
-// 
-// MT safe.
 func (dec *AudioDecoderInstance) SetNeedsFormat(enabled bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7354,18 +5953,8 @@ func (dec *AudioDecoderInstance) SetNeedsFormat(enabled bool) {
 
 // SetOutputCaps wraps gst_audio_decoder_set_output_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: (fixed) #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Configure output caps on the srcpad of @dec. Similar to
-// gst_audio_decoder_set_output_format(), but allows subclasses to specify
-// output caps that can't be expressed via #GstAudioInfo e.g. caps that have
-// caps features.
 func (dec *AudioDecoderInstance) SetOutputCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted
@@ -7389,15 +5978,8 @@ func (dec *AudioDecoderInstance) SetOutputCaps(caps *gst.Caps) bool {
 
 // SetOutputFormat wraps gst_audio_decoder_set_output_format
 // 
-// The function takes the following parameters:
-// 
-// 	- info *AudioInfo: #GstAudioInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Configure output info on the srcpad of @dec.
 func (dec *AudioDecoderInstance) SetOutputFormat(info *AudioInfo) bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstAudioInfo    // in, none, converted
@@ -7421,14 +6003,8 @@ func (dec *AudioDecoderInstance) SetOutputFormat(info *AudioInfo) bool {
 
 // SetPlc wraps gst_audio_decoder_set_plc
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Enable or disable decoder packet loss concealment, provided subclass
-// and codec are capable and allow handling plc.
-// 
-// MT safe.
 func (dec *AudioDecoderInstance) SetPlc(enabled bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7445,11 +6021,8 @@ func (dec *AudioDecoderInstance) SetPlc(enabled bool) {
 
 // SetPlcAware wraps gst_audio_decoder_set_plc_aware
 // 
-// The function takes the following parameters:
-// 
-// 	- plc bool: new plc state 
+// see also No documentation available
 //
-// Indicates whether or not subclass handles packet loss concealment (plc).
 func (dec *AudioDecoderInstance) SetPlcAware(plc bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7466,13 +6039,8 @@ func (dec *AudioDecoderInstance) SetPlcAware(plc bool) {
 
 // SetTolerance wraps gst_audio_decoder_set_tolerance
 // 
-// The function takes the following parameters:
-// 
-// 	- tolerance gst.ClockTime: new tolerance 
+// see also No documentation available
 //
-// Configures decoder audio jitter tolerance threshold.
-// 
-// MT safe.
 func (dec *AudioDecoderInstance) SetTolerance(tolerance gst.ClockTime) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -7487,16 +6055,8 @@ func (dec *AudioDecoderInstance) SetTolerance(tolerance gst.ClockTime) {
 
 // SetUseDefaultPadAcceptcaps wraps gst_audio_decoder_set_use_default_pad_acceptcaps
 // 
-// The function takes the following parameters:
-// 
-// 	- use bool: if the default pad accept-caps query handling should be used 
+// see also No documentation available
 //
-// Lets #GstAudioDecoder sub-classes decide if they want the sink pad
-// to use the default pad query handler to reply to accept-caps queries.
-// 
-// By setting this to true it is possible to further customize the default
-// handler with %GST_PAD_SET_ACCEPT_INTERSECT and
-// %GST_PAD_SET_ACCEPT_TEMPLATE
 func (decoder *AudioDecoderInstance) SetUseDefaultPadAcceptcaps(use bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7519,231 +6079,71 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_NULL.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Close func(Instance) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
-	//                     Subclasses should chain up to the parent implementation to
-	//                     invoke the default handler.
+	// see also No documentation available
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- hard bool 
-	//
-	// Optional.
-	//                  Instructs subclass to clear any codec caches and discard
-	//                  any pending samples and not yet returned decoded data.
-	//                  @hard indicates whether a FLUSH is being processed,
-	//                  or otherwise a DISCONT (or conceptually similar).
+	// see also No documentation available
 	Flush func(Instance, bool)
 	// // Getcaps allows you to override the implementation of the virtual method getcaps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows for a custom sink getcaps implementation.
-	//                  If not implemented,
-	//                  default returns gst_audio_decoder_proxy_getcaps
-	//                  applied to sink template caps.
+	// see also No documentation available
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Provides input data (or NULL to clear any remaining data)
-	//                  to subclass.  Input data ref management is performed by
-	//                  base class, subclass should not care or intervene,
-	//                  and input data is only valid until next call to base class,
-	//                  most notably a call to gst_audio_decoder_finish_frame().
+	// see also No documentation available
 	HandleFrame func(Instance, *gst.Buffer) gst.FlowReturn
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiate with downstream elements to currently configured #GstAudioInfo.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
+	// see also No documentation available
 	Negotiate func(Instance) bool
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_READY.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Open func(Instance) bool
 	// // Parse allows you to override the implementation of the virtual method parse.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- adapter gstbase.Adapter 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- offset int32 
-	// 	- length int32 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	Parse func(Instance, gstbase.Adapter) (int32, int32, gst.FlowReturn)
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Propose buffer allocation parameters for upstream elements.
-	//                      Subclasses should chain up to the parent implementation to
-	//                      invoke the default handler.
+	// see also No documentation available
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // SetFormat allows you to override the implementation of the virtual method set_format.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notifies subclass of incoming data format (caps).
+	// see also No documentation available
 	SetFormat func(Instance, *gst.Caps) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. Subclasses should chain up to
-	//                  the parent implementation to invoke the default handler.
+	// see also No documentation available
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the sink pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.6
+	// see also No documentation available
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the src pad. Subclasses should chain up to
-	//                  the parent implementation to invoke the default handler.
+	// see also No documentation available
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the source pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.6
+	// see also No documentation available
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Stop func(Instance) bool
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- meta *gst.Meta 
-	// 	- inbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method copies all meta without
-	//                  tags and meta with only the "audio" tag. subclasses can
-	//                  implement this method and return %TRUE if the metadata is to be
-	//                  copied. Since: 1.6
+	// see also No documentation available
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
 }
 
@@ -8153,13 +6553,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 // ParentClose calls the default implementations of the `GstAudioDecoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element changes to GST_STATE_NULL.
-//                  Allows closing external resources.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentClose() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -8183,20 +6577,7 @@ func (dec *AudioDecoderInstance) ParentClose() bool {
 // ParentDecideAllocation calls the default implementations of the `GstAudioDecoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                     Setup the allocation parameters for allocating output
-//                     buffers. The passed in query contains the result of the
-//                     downstream allocation query.
-//                     Subclasses should chain up to the parent implementation to
-//                     invoke the default handler.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -8223,15 +6604,7 @@ func (dec *AudioDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 // ParentFlush calls the default implementations of the `GstAudioDecoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- hard bool 
-//
-// Optional.
-//                  Instructs subclass to clear any codec caches and discard
-//                  any pending samples and not yet returned decoded data.
-//                  @hard indicates whether a FLUSH is being processed,
-//                  or otherwise a DISCONT (or conceptually similar).
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentFlush(hard bool) {
 	var carg0 *C.GstAudioDecoder
 	var carg1 C.gboolean // in, none, converted
@@ -8251,19 +6624,7 @@ func (dec *AudioDecoderInstance) ParentFlush(hard bool) {
 // ParentGetcaps calls the default implementations of the `GstAudioDecoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- filter *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Optional.
-//                  Allows for a custom sink getcaps implementation.
-//                  If not implemented,
-//                  default returns gst_audio_decoder_proxy_getcaps
-//                  applied to sink template caps.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -8288,19 +6649,7 @@ func (dec *AudioDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstAudioDecoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Provides input data (or NULL to clear any remaining data)
-//                  to subclass.  Input data ref management is performed by
-//                  base class, subclass should not care or intervene,
-//                  and input data is only valid until next call to base class,
-//                  most notably a call to gst_audio_decoder_finish_frame().
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -8325,13 +6674,7 @@ func (dec *AudioDecoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowR
 // ParentNegotiate calls the default implementations of the `GstAudioDecoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Negotiate with downstream elements to currently configured #GstAudioInfo.
-// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-// negotiate fails.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentNegotiate() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -8355,13 +6698,7 @@ func (dec *AudioDecoderInstance) ParentNegotiate() bool {
 // ParentOpen calls the default implementations of the `GstAudioDecoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element changes to GST_STATE_READY.
-//                  Allows opening external resources.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentOpen() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -8385,15 +6722,7 @@ func (dec *AudioDecoderInstance) ParentOpen() bool {
 // ParentParse calls the default implementations of the `GstAudioDecoder.parse` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- adapter gstbase.Adapter 
-// 
-// The function returns the following values:
-// 
-// 	- offset int32 
-// 	- length int32 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentParse(adapter gstbase.Adapter) (int32, int32, gst.FlowReturn) {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstAdapter   // in, none, converted
@@ -8424,18 +6753,7 @@ func (dec *AudioDecoderInstance) ParentParse(adapter gstbase.Adapter) (int32, in
 // ParentProposeAllocation calls the default implementations of the `GstAudioDecoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                      Propose buffer allocation parameters for upstream elements.
-//                      Subclasses should chain up to the parent implementation to
-//                      invoke the default handler.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -8462,15 +6780,7 @@ func (dec *AudioDecoderInstance) ParentProposeAllocation(query *gst.Query) bool 
 // ParentSetFormat calls the default implementations of the `GstAudioDecoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Notifies subclass of incoming data format (caps).
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentSetFormat(caps *gst.Caps) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -8497,17 +6807,7 @@ func (dec *AudioDecoderInstance) ParentSetFormat(caps *gst.Caps) bool {
 // ParentSinkEvent calls the default implementations of the `GstAudioDecoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the sink pad. Subclasses should chain up to
-//                  the parent implementation to invoke the default handler.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -8534,19 +6834,7 @@ func (dec *AudioDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstAudioDecoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Query handler on the sink pad. This function should
-//                  return TRUE if the query could be performed. Subclasses
-//                  should chain up to the parent implementation to invoke the
-//                  default handler. Since: 1.6
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -8573,17 +6861,7 @@ func (dec *AudioDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstAudioDecoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the src pad. Subclasses should chain up to
-//                  the parent implementation to invoke the default handler.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -8610,19 +6888,7 @@ func (dec *AudioDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstAudioDecoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Query handler on the source pad. This function should
-//                  return TRUE if the query could be performed. Subclasses
-//                  should chain up to the parent implementation to invoke the
-//                  default handler. Since: 1.6
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -8649,13 +6915,7 @@ func (dec *AudioDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstAudioDecoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element starts processing.
-//                  Allows opening external resources.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentStart() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -8679,13 +6939,7 @@ func (dec *AudioDecoderInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstAudioDecoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element stops processing.
-//                  Allows closing external resources.
+// see also No documentation available
 func (dec *AudioDecoderInstance) ParentStop() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -8709,21 +6963,7 @@ func (dec *AudioDecoderInstance) ParentStop() bool {
 // ParentTransformMeta calls the default implementations of the `GstAudioDecoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- outbuf *gst.Buffer 
-// 	- meta *gst.Meta 
-// 	- inbuf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional. Transform the metadata on the input buffer to the
-//                  output buffer. By default this method copies all meta without
-//                  tags and meta with only the "audio" tag. subclasses can
-//                  implement this method and return %TRUE if the metadata is to be
-//                  copied. Since: 1.6
+// see also No documentation available
 func (enc *AudioDecoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstBuffer // in, none, converted
@@ -8790,99 +7030,9 @@ type AudioEncoderInstance struct {
 var _ AudioEncoder = (*AudioEncoderInstance)(nil)
 
 // AudioEncoder wraps GstAudioEncoder
+// 
+// see also No documentation available
 //
-// This base class is for audio encoders turning raw audio samples into
-// encoded audio data.
-// 
-// GstAudioEncoder and subclass should cooperate as follows.
-// 
-// ## Configuration
-// 
-//   * Initially, GstAudioEncoder calls @start when the encoder element
-//     is activated, which allows subclass to perform any global setup.
-// 
-//   * GstAudioEncoder calls @set_format to inform subclass of the format
-//     of input audio data that it is about to receive.  Subclass should
-//     setup for encoding and configure various base class parameters
-//     appropriately, notably those directing desired input data handling.
-//     While unlikely, it might be called more than once, if changing input
-//     parameters require reconfiguration.
-// 
-//   * GstAudioEncoder calls @stop at end of all processing.
-// 
-// As of configuration stage, and throughout processing, GstAudioEncoder
-// maintains various parameters that provide required context,
-// e.g. describing the format of input audio data.
-// Conversely, subclass can and should configure these context parameters
-// to inform base class of its expectation w.r.t. buffer handling.
-// 
-// ## Data processing
-// 
-//     * Base class gathers input sample data (as directed by the context's
-//       frame_samples and frame_max) and provides this to subclass' @handle_frame.
-//     * If codec processing results in encoded data, subclass should call
-//       gst_audio_encoder_finish_frame() to have encoded data pushed
-//       downstream. Alternatively, it might also call
-//       gst_audio_encoder_finish_frame() (with a NULL buffer and some number of
-//       dropped samples) to indicate dropped (non-encoded) samples.
-//     * Just prior to actually pushing a buffer downstream,
-//       it is passed to @pre_push.
-//     * During the parsing process GstAudioEncoderClass will handle both
-//       srcpad and sinkpad events. Sink events will be passed to subclass
-//       if @event callback has been provided.
-// 
-// ## Shutdown phase
-// 
-//   * GstAudioEncoder class calls @stop to inform the subclass that data
-//     parsing will be stopped.
-// 
-// Subclass is responsible for providing pad template caps for
-// source and sink pads. The pads need to be named "sink" and "src". It also
-// needs to set the fixed caps on srcpad, when the format is ensured.  This
-// is typically when base class calls subclass' @set_format function, though
-// it might be delayed until calling @gst_audio_encoder_finish_frame.
-// 
-// In summary, above process should have subclass concentrating on
-// codec data processing while leaving other matters to base class,
-// such as most notably timestamp handling.  While it may exert more control
-// in this area (see e.g. @pre_push), it is very much not recommended.
-// 
-// In particular, base class will either favor tracking upstream timestamps
-// (at the possible expense of jitter) or aim to arrange for a perfect stream of
-// output timestamps, depending on #GstAudioEncoder:perfect-timestamp.
-// However, in the latter case, the input may not be so perfect or ideal, which
-// is handled as follows.  An input timestamp is compared with the expected
-// timestamp as dictated by input sample stream and if the deviation is less
-// than #GstAudioEncoder:tolerance, the deviation is discarded.
-// Otherwise, it is considered a discontuinity and subsequent output timestamp
-// is resynced to the new position after performing configured discontinuity
-// processing.  In the non-perfect-timestamp case, an upstream variation
-// exceeding tolerance only leads to marking DISCONT on subsequent outgoing
-// (while timestamps are adjusted to upstream regardless of variation).
-// While DISCONT is also marked in the perfect-timestamp case, this one
-// optionally (see #GstAudioEncoder:hard-resync)
-// performs some additional steps, such as clipping of (early) input samples
-// or draining all currently remaining input data, depending on the direction
-// of the discontuinity.
-// 
-// If perfect timestamps are arranged, it is also possible to request baseclass
-// (usually set by subclass) to provide additional buffer metadata (in OFFSET
-// and OFFSET_END) fields according to granule defined semantics currently
-// needed by oggmux.  Specifically, OFFSET is set to granulepos (= sample count
-// including buffer) and OFFSET_END to corresponding timestamp (as determined
-// by same sample count and sample rate).
-// 
-// Things that subclass need to take care of:
-// 
-//   * Provide pad templates
-//   * Set source pad caps when appropriate
-//   * Inform base class of buffer processing needs using context's
-//      frame_samples and frame_bytes.
-//   * Set user-configurable properties to sane defaults for format and
-//      implementing codec at hand, e.g. those controlling timestamp behaviour
-//      and discontinuity processing.
-//   * Accept data in @handle_frame and provide encoded results to
-//      gst_audio_encoder_finish_frame().
 type AudioEncoder interface {
 	gst.Element
 	gst.Preset
@@ -8890,329 +7040,151 @@ type AudioEncoder interface {
 
 	// AllocateOutputBuffer wraps gst_audio_encoder_allocate_output_buffer
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- size uint: size of the buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Buffer 
+	// see also No documentation available
 	//
-	// Helper function that allocates a buffer to hold an encoded audio frame
-	// for @enc's current output format.
 	AllocateOutputBuffer(uint) *gst.Buffer
 	// FinishFrame wraps gst_audio_encoder_finish_frame
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer (nullable): encoded data 
-	// 	- samples int32: number of samples (per channel) represented by encoded data 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
+	// see also No documentation available
 	//
-	// Collects encoded data and pushes encoded data downstream.
-	// Source pad caps must be set when this is called.
-	// 
-	// If @samples &lt; 0, then best estimate is all samples provided to encoder
-	// (subclass) so far.  @buf may be NULL, in which case next number of @samples
-	// are considered discarded, e.g. as a result of discontinuous transmission,
-	// and a discontinuity is marked.
-	// 
-	// Note that samples received in #GstAudioEncoderClass.handle_frame()
-	// may be invalidated by a call to this function.
 	FinishFrame(*gst.Buffer, int32) gst.FlowReturn
 	// GetAllocator wraps gst_audio_encoder_get_allocator
 	// 
-	// The function returns the following values:
-	// 
-	// 	- allocator gst.Allocator (nullable): the #GstAllocator
-	// used 
-	// 	- params gst.AllocationParams: the
-	// #GstAllocationParams of @allocator 
+	// see also No documentation available
 	//
-	// Lets #GstAudioEncoder sub-classes to know the memory @allocator
-	// used by the base class and its @params.
-	// 
-	// Unref the @allocator after use it.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetAudioInfo wraps gst_audio_encoder_get_audio_info
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *AudioInfo 
+	// see also No documentation available
 	GetAudioInfo() *AudioInfo
 	// GetDrainable wraps gst_audio_encoder_get_drainable
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries encoder drain handling.
 	GetDrainable() bool
 	// GetFrameMax wraps gst_audio_encoder_get_frame_max
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetFrameMax() int32
 	// GetFrameSamplesMax wraps gst_audio_encoder_get_frame_samples_max
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetFrameSamplesMax() int32
 	// GetFrameSamplesMin wraps gst_audio_encoder_get_frame_samples_min
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetFrameSamplesMin() int32
 	// GetHardMin wraps gst_audio_encoder_get_hard_min
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries encoder hard minimum handling.
 	GetHardMin() bool
 	// GetHardResync wraps gst_audio_encoder_get_hard_resync
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	GetHardResync() bool
 	// GetLatency wraps gst_audio_encoder_get_latency
 	// 
-	// The function returns the following values:
-	// 
-	// 	- min gst.ClockTime: a pointer to storage to hold minimum latency 
-	// 	- max gst.ClockTime: a pointer to storage to hold maximum latency 
+	// see also No documentation available
 	//
-	// Sets the variables pointed to by @min and @max to the currently configured
-	// latency.
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetLookahead wraps gst_audio_encoder_get_lookahead
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetLookahead() int32
 	// GetMarkGranule wraps gst_audio_encoder_get_mark_granule
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries if the encoder will handle granule marking.
 	GetMarkGranule() bool
 	// GetPerfectTimestamp wraps gst_audio_encoder_get_perfect_timestamp
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Queries encoder perfect timestamp behaviour.
 	GetPerfectTimestamp() bool
 	// GetTolerance wraps gst_audio_encoder_get_tolerance
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Queries current audio jitter tolerance threshold.
 	GetTolerance() gst.ClockTime
 	// MergeTags wraps gst_audio_encoder_merge_tags
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL to unset
-	//     previously-set tags 
-	// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+	// see also No documentation available
 	//
-	// Sets the audio encoder tags and how they should be merged with any
-	// upstream stream tags. This will override any tags previously-set
-	// with gst_audio_encoder_merge_tags().
-	// 
-	// Note that this is provided for convenience, and the subclass is
-	// not required to use this and can still do tag handling on its own.
-	// 
-	// MT safe.
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_audio_encoder_negotiate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Negotiate with downstream elements to currently configured #GstCaps.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
 	Negotiate() bool
 	// ProxyGetcaps wraps gst_audio_encoder_proxy_getcaps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps (nullable): initial caps 
-	// 	- filter *gst.Caps (nullable): filter caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
+	// see also No documentation available
 	//
-	// Returns caps that express @caps (or sink template caps if @caps == NULL)
-	// restricted to channel/rate combinations supported by downstream elements
-	// (e.g. muxers).
 	ProxyGetcaps(*gst.Caps, *gst.Caps) *gst.Caps
 	// SetAllocationCaps wraps gst_audio_encoder_set_allocation_caps
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- allocationCaps *gst.Caps (nullable): a #GstCaps or %NULL 
+	// see also No documentation available
 	//
-	// Sets a caps in allocation query which are different from the set
-	// pad's caps. Use this function before calling
-	// gst_audio_encoder_negotiate(). Setting to %NULL the allocation
-	// query will use the caps from the pad.
 	SetAllocationCaps(*gst.Caps)
 	// SetDrainable wraps gst_audio_encoder_set_drainable
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Configures encoder drain handling.  If drainable, subclass might
-	// be handed a NULL buffer to have it return any leftover encoded data.
-	// Otherwise, it is not considered so capable and will only ever be passed
-	// real data.
-	// 
-	// MT safe.
 	SetDrainable(bool)
 	// SetFrameMax wraps gst_audio_encoder_set_frame_max
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- num int32: number of frames 
+	// see also No documentation available
 	//
-	// Sets max number of frames accepted at once (assumed minimally 1).
-	// Requires @frame_samples_min and @frame_samples_max to be the equal.
-	// 
-	// Note: This value will be reset to 0 every time before
-	// #GstAudioEncoderClass.set_format() is called.
 	SetFrameMax(int32)
 	// SetFrameSamplesMax wraps gst_audio_encoder_set_frame_samples_max
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- num int32: number of samples per frame 
+	// see also No documentation available
 	//
-	// Sets number of samples (per channel) subclass needs to be handed,
-	// at most or will be handed all available if 0.
-	// 
-	// If an exact number of samples is required, gst_audio_encoder_set_frame_samples_min()
-	// must be called with the same number.
-	// 
-	// Note: This value will be reset to 0 every time before
-	// #GstAudioEncoderClass.set_format() is called.
 	SetFrameSamplesMax(int32)
 	// SetFrameSamplesMin wraps gst_audio_encoder_set_frame_samples_min
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- num int32: number of samples per frame 
+	// see also No documentation available
 	//
-	// Sets number of samples (per channel) subclass needs to be handed,
-	// at least or will be handed all available if 0.
-	// 
-	// If an exact number of samples is required, gst_audio_encoder_set_frame_samples_max()
-	// must be called with the same number.
-	// 
-	// Note: This value will be reset to 0 every time before
-	// #GstAudioEncoderClass.set_format() is called.
 	SetFrameSamplesMin(int32)
 	// SetHardMin wraps gst_audio_encoder_set_hard_min
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Configures encoder hard minimum handling.  If enabled, subclass
-	// will never be handed less samples than it configured, which otherwise
-	// might occur near end-of-data handling.  Instead, the leftover samples
-	// will simply be discarded.
-	// 
-	// MT safe.
 	SetHardMin(bool)
 	// SetHardResync wraps gst_audio_encoder_set_hard_resync
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool 
+	// see also No documentation available
 	SetHardResync(bool)
 	// SetLatency wraps gst_audio_encoder_set_latency
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- min gst.ClockTime: minimum latency 
-	// 	- max gst.ClockTime: maximum latency 
+	// see also No documentation available
 	//
-	// Sets encoder latency. If the provided values changed from
-	// previously provided ones, this will also post a LATENCY message on the bus
-	// so the pipeline can reconfigure its global latency.
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetLookahead wraps gst_audio_encoder_set_lookahead
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- num int32: lookahead 
+	// see also No documentation available
 	//
-	// Sets encoder lookahead (in units of input rate samples)
-	// 
-	// Note: This value will be reset to 0 every time before
-	// #GstAudioEncoderClass.set_format() is called.
 	SetLookahead(int32)
 	// SetMarkGranule wraps gst_audio_encoder_set_mark_granule
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Enable or disable encoder granule handling.
-	// 
-	// MT safe.
 	SetMarkGranule(bool)
 	// SetOutputFormat wraps gst_audio_encoder_set_output_format
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- caps *gst.Caps: #GstCaps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Configure output caps on the srcpad of @enc.
 	SetOutputFormat(*gst.Caps) bool
 	// SetPerfectTimestamp wraps gst_audio_encoder_set_perfect_timestamp
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: new state 
+	// see also No documentation available
 	//
-	// Enable or disable encoder perfect output timestamp preference.
-	// 
-	// MT safe.
 	SetPerfectTimestamp(bool)
 	// SetTolerance wraps gst_audio_encoder_set_tolerance
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- tolerance gst.ClockTime: new tolerance 
+	// see also No documentation available
 	//
-	// Configures encoder audio jitter tolerance threshold.
-	// 
-	// MT safe.
 	SetTolerance(gst.ClockTime)
 
 	// chain up virtual methods:
@@ -9220,230 +7192,82 @@ type AudioEncoder interface {
 	// ParentClose calls the default implementations of the `GstAudioEncoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_NULL.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the `GstAudioEncoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
-	//                     Subclasses should chain up to the parent implementation to
-	//                     invoke the default handler.
+	// see also No documentation available
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFlush calls the default implementations of the `GstAudioEncoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// Optional.
-	//                  Instructs subclass to clear any codec caches and discard
-	//                  any pending samples and not yet returned encoded data.
+	// 
+	// see also No documentation available
 	ParentFlush()
 	// ParentGetcaps calls the default implementations of the `GstAudioEncoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows for a custom sink getcaps implementation (e.g.
-	//                  for multichannel input specification).  If not implemented,
-	//                  default returns gst_audio_encoder_proxy_getcaps
-	//                  applied to sink template caps.
+	// see also No documentation available
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstAudioEncoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Provides input samples (or NULL to clear any remaining data)
-	//                  according to directions as configured by the subclass
-	//                  using the API.  Input data ref management is performed
-	//                  by base class, subclass should not care or intervene,
-	//                  and input data is only valid until next call to base class,
-	//                  most notably a call to gst_audio_encoder_finish_frame().
+	// see also No documentation available
 	ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn
 	// ParentNegotiate calls the default implementations of the `GstAudioEncoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiate with downstream elements to currently configured #GstCaps.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
+	// see also No documentation available
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the `GstAudioEncoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_READY.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentOpen() bool
 	// ParentProposeAllocation calls the default implementations of the `GstAudioEncoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Propose buffer allocation parameters for upstream elements.
-	//                      Subclasses should chain up to the parent implementation to
-	//                      invoke the default handler.
+	// see also No documentation available
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentSetFormat calls the default implementations of the `GstAudioEncoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- info *AudioInfo 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notifies subclass of incoming data format.
-	//                  GstAudioInfo contains the format according to provided caps.
+	// see also No documentation available
 	ParentSetFormat(info *AudioInfo) bool
 	// ParentSinkEvent calls the default implementations of the `GstAudioEncoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. Subclasses should chain up to
-	//                  the parent implementation to invoke the default handler.
+	// see also No documentation available
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstAudioEncoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the sink pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.6
+	// see also No documentation available
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstAudioEncoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the src pad. Subclasses should chain up to
-	//                  the parent implementation to invoke the default handler.
+	// see also No documentation available
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstAudioEncoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the source pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.6
+	// see also No documentation available
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstAudioEncoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstAudioEncoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the `GstAudioEncoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- meta *gst.Meta 
-	// 	- inbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method copies all meta without
-	//                  tags and meta with only the "audio" tag. subclasses can
-	//                  implement this method and return %TRUE if the metadata is to be
-	//                  copied. Since: 1.6
+	// see also No documentation available
 	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 }
 
@@ -9506,16 +7330,8 @@ func UnsafeAudioEncoderToGlibFull(c AudioEncoder) unsafe.Pointer {
 
 // AllocateOutputBuffer wraps gst_audio_encoder_allocate_output_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- size uint: size of the buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Helper function that allocates a buffer to hold an encoded audio frame
-// for @enc's current output format.
 func (enc *AudioEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gsize            // in, none, casted
@@ -9537,25 +7353,8 @@ func (enc *AudioEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 
 // FinishFrame wraps gst_audio_encoder_finish_frame
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer (nullable): encoded data 
-// 	- samples int32: number of samples (per channel) represented by encoded data 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Collects encoded data and pushes encoded data downstream.
-// Source pad caps must be set when this is called.
-// 
-// If @samples &lt; 0, then best estimate is all samples provided to encoder
-// (subclass) so far.  @buf may be NULL, in which case next number of @samples
-// are considered discarded, e.g. as a result of discontinuous transmission,
-// and a discontinuity is marked.
-// 
-// Note that samples received in #GstAudioEncoderClass.handle_frame()
-// may be invalidated by a call to this function.
 func (enc *AudioEncoderInstance) FinishFrame(buffer *gst.Buffer, samples int32) gst.FlowReturn {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstBuffer       // in, full, converted, nullable
@@ -9582,17 +7381,8 @@ func (enc *AudioEncoderInstance) FinishFrame(buffer *gst.Buffer, samples int32) 
 
 // GetAllocator wraps gst_audio_encoder_get_allocator
 // 
-// The function returns the following values:
-// 
-// 	- allocator gst.Allocator (nullable): the #GstAllocator
-// used 
-// 	- params gst.AllocationParams: the
-// #GstAllocationParams of @allocator 
+// see also No documentation available
 //
-// Lets #GstAudioEncoder sub-classes to know the memory @allocator
-// used by the base class and its @params.
-// 
-// Unref the @allocator after use it.
 func (enc *AudioEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstAudioEncoder    // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -9618,9 +7408,7 @@ func (enc *AudioEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 
 // GetAudioInfo wraps gst_audio_encoder_get_audio_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *AudioInfo 
+// see also No documentation available
 func (enc *AudioEncoderInstance) GetAudioInfo() *AudioInfo {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  *C.GstAudioInfo    // return, none, converted
@@ -9639,11 +7427,8 @@ func (enc *AudioEncoderInstance) GetAudioInfo() *AudioInfo {
 
 // GetDrainable wraps gst_audio_encoder_get_drainable
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries encoder drain handling.
 func (enc *AudioEncoderInstance) GetDrainable() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -9664,9 +7449,7 @@ func (enc *AudioEncoderInstance) GetDrainable() bool {
 
 // GetFrameMax wraps gst_audio_encoder_get_frame_max
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (enc *AudioEncoderInstance) GetFrameMax() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -9685,9 +7468,7 @@ func (enc *AudioEncoderInstance) GetFrameMax() int32 {
 
 // GetFrameSamplesMax wraps gst_audio_encoder_get_frame_samples_max
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (enc *AudioEncoderInstance) GetFrameSamplesMax() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -9706,9 +7487,7 @@ func (enc *AudioEncoderInstance) GetFrameSamplesMax() int32 {
 
 // GetFrameSamplesMin wraps gst_audio_encoder_get_frame_samples_min
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (enc *AudioEncoderInstance) GetFrameSamplesMin() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -9727,11 +7506,8 @@ func (enc *AudioEncoderInstance) GetFrameSamplesMin() int32 {
 
 // GetHardMin wraps gst_audio_encoder_get_hard_min
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries encoder hard minimum handling.
 func (enc *AudioEncoderInstance) GetHardMin() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -9752,9 +7528,7 @@ func (enc *AudioEncoderInstance) GetHardMin() bool {
 
 // GetHardResync wraps gst_audio_encoder_get_hard_resync
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (enc *AudioEncoderInstance) GetHardResync() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -9775,13 +7549,8 @@ func (enc *AudioEncoderInstance) GetHardResync() bool {
 
 // GetLatency wraps gst_audio_encoder_get_latency
 // 
-// The function returns the following values:
-// 
-// 	- min gst.ClockTime: a pointer to storage to hold minimum latency 
-// 	- max gst.ClockTime: a pointer to storage to hold maximum latency 
+// see also No documentation available
 //
-// Sets the variables pointed to by @min and @max to the currently configured
-// latency.
 func (enc *AudioEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.GstClockTime     // out, full, casted, alias
@@ -9803,9 +7572,7 @@ func (enc *AudioEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 
 // GetLookahead wraps gst_audio_encoder_get_lookahead
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (enc *AudioEncoderInstance) GetLookahead() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -9824,11 +7591,8 @@ func (enc *AudioEncoderInstance) GetLookahead() int32 {
 
 // GetMarkGranule wraps gst_audio_encoder_get_mark_granule
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries if the encoder will handle granule marking.
 func (enc *AudioEncoderInstance) GetMarkGranule() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -9849,11 +7613,8 @@ func (enc *AudioEncoderInstance) GetMarkGranule() bool {
 
 // GetPerfectTimestamp wraps gst_audio_encoder_get_perfect_timestamp
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Queries encoder perfect timestamp behaviour.
 func (enc *AudioEncoderInstance) GetPerfectTimestamp() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -9874,11 +7635,8 @@ func (enc *AudioEncoderInstance) GetPerfectTimestamp() bool {
 
 // GetTolerance wraps gst_audio_encoder_get_tolerance
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Queries current audio jitter tolerance threshold.
 func (enc *AudioEncoderInstance) GetTolerance() gst.ClockTime {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.GstClockTime     // return, none, casted, alias
@@ -9897,20 +7655,8 @@ func (enc *AudioEncoderInstance) GetTolerance() gst.ClockTime {
 
 // MergeTags wraps gst_audio_encoder_merge_tags
 // 
-// The function takes the following parameters:
-// 
-// 	- tags *gst.TagList (nullable): a #GstTagList to merge, or NULL to unset
-//     previously-set tags 
-// 	- mode gst.TagMergeMode: the #GstTagMergeMode to use, usually #GST_TAG_MERGE_REPLACE 
+// see also No documentation available
 //
-// Sets the audio encoder tags and how they should be merged with any
-// upstream stream tags. This will override any tags previously-set
-// with gst_audio_encoder_merge_tags().
-// 
-// Note that this is provided for convenience, and the subclass is
-// not required to use this and can still do tag handling on its own.
-// 
-// MT safe.
 func (enc *AudioEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted, nullable
@@ -9930,13 +7676,8 @@ func (enc *AudioEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeM
 
 // Negotiate wraps gst_audio_encoder_negotiate
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Negotiate with downstream elements to currently configured #GstCaps.
-// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-// negotiate fails.
 func (enc *AudioEncoderInstance) Negotiate() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -9957,18 +7698,8 @@ func (enc *AudioEncoderInstance) Negotiate() bool {
 
 // ProxyGetcaps wraps gst_audio_encoder_proxy_getcaps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps (nullable): initial caps 
-// 	- filter *gst.Caps (nullable): filter caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Returns caps that express @caps (or sink template caps if @caps == NULL)
-// restricted to channel/rate combinations supported by downstream elements
-// (e.g. muxers).
 func (enc *AudioEncoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -9997,14 +7728,8 @@ func (enc *AudioEncoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) 
 
 // SetAllocationCaps wraps gst_audio_encoder_set_allocation_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- allocationCaps *gst.Caps (nullable): a #GstCaps or %NULL 
+// see also No documentation available
 //
-// Sets a caps in allocation query which are different from the set
-// pad's caps. Use this function before calling
-// gst_audio_encoder_negotiate(). Setting to %NULL the allocation
-// query will use the caps from the pad.
 func (enc *AudioEncoderInstance) SetAllocationCaps(allocationCaps *gst.Caps) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -10021,16 +7746,8 @@ func (enc *AudioEncoderInstance) SetAllocationCaps(allocationCaps *gst.Caps) {
 
 // SetDrainable wraps gst_audio_encoder_set_drainable
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Configures encoder drain handling.  If drainable, subclass might
-// be handed a NULL buffer to have it return any leftover encoded data.
-// Otherwise, it is not considered so capable and will only ever be passed
-// real data.
-// 
-// MT safe.
 func (enc *AudioEncoderInstance) SetDrainable(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -10047,15 +7764,8 @@ func (enc *AudioEncoderInstance) SetDrainable(enabled bool) {
 
 // SetFrameMax wraps gst_audio_encoder_set_frame_max
 // 
-// The function takes the following parameters:
-// 
-// 	- num int32: number of frames 
+// see also No documentation available
 //
-// Sets max number of frames accepted at once (assumed minimally 1).
-// Requires @frame_samples_min and @frame_samples_max to be the equal.
-// 
-// Note: This value will be reset to 0 every time before
-// #GstAudioEncoderClass.set_format() is called.
 func (enc *AudioEncoderInstance) SetFrameMax(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -10070,18 +7780,8 @@ func (enc *AudioEncoderInstance) SetFrameMax(num int32) {
 
 // SetFrameSamplesMax wraps gst_audio_encoder_set_frame_samples_max
 // 
-// The function takes the following parameters:
-// 
-// 	- num int32: number of samples per frame 
+// see also No documentation available
 //
-// Sets number of samples (per channel) subclass needs to be handed,
-// at most or will be handed all available if 0.
-// 
-// If an exact number of samples is required, gst_audio_encoder_set_frame_samples_min()
-// must be called with the same number.
-// 
-// Note: This value will be reset to 0 every time before
-// #GstAudioEncoderClass.set_format() is called.
 func (enc *AudioEncoderInstance) SetFrameSamplesMax(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -10096,18 +7796,8 @@ func (enc *AudioEncoderInstance) SetFrameSamplesMax(num int32) {
 
 // SetFrameSamplesMin wraps gst_audio_encoder_set_frame_samples_min
 // 
-// The function takes the following parameters:
-// 
-// 	- num int32: number of samples per frame 
+// see also No documentation available
 //
-// Sets number of samples (per channel) subclass needs to be handed,
-// at least or will be handed all available if 0.
-// 
-// If an exact number of samples is required, gst_audio_encoder_set_frame_samples_max()
-// must be called with the same number.
-// 
-// Note: This value will be reset to 0 every time before
-// #GstAudioEncoderClass.set_format() is called.
 func (enc *AudioEncoderInstance) SetFrameSamplesMin(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -10122,16 +7812,8 @@ func (enc *AudioEncoderInstance) SetFrameSamplesMin(num int32) {
 
 // SetHardMin wraps gst_audio_encoder_set_hard_min
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Configures encoder hard minimum handling.  If enabled, subclass
-// will never be handed less samples than it configured, which otherwise
-// might occur near end-of-data handling.  Instead, the leftover samples
-// will simply be discarded.
-// 
-// MT safe.
 func (enc *AudioEncoderInstance) SetHardMin(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -10148,9 +7830,7 @@ func (enc *AudioEncoderInstance) SetHardMin(enabled bool) {
 
 // SetHardResync wraps gst_audio_encoder_set_hard_resync
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool 
+// see also No documentation available
 func (enc *AudioEncoderInstance) SetHardResync(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -10167,14 +7847,8 @@ func (enc *AudioEncoderInstance) SetHardResync(enabled bool) {
 
 // SetLatency wraps gst_audio_encoder_set_latency
 // 
-// The function takes the following parameters:
-// 
-// 	- min gst.ClockTime: minimum latency 
-// 	- max gst.ClockTime: maximum latency 
+// see also No documentation available
 //
-// Sets encoder latency. If the provided values changed from
-// previously provided ones, this will also post a LATENCY message on the bus
-// so the pipeline can reconfigure its global latency.
 func (enc *AudioEncoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -10192,14 +7866,8 @@ func (enc *AudioEncoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime
 
 // SetLookahead wraps gst_audio_encoder_set_lookahead
 // 
-// The function takes the following parameters:
-// 
-// 	- num int32: lookahead 
+// see also No documentation available
 //
-// Sets encoder lookahead (in units of input rate samples)
-// 
-// Note: This value will be reset to 0 every time before
-// #GstAudioEncoderClass.set_format() is called.
 func (enc *AudioEncoderInstance) SetLookahead(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -10214,13 +7882,8 @@ func (enc *AudioEncoderInstance) SetLookahead(num int32) {
 
 // SetMarkGranule wraps gst_audio_encoder_set_mark_granule
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Enable or disable encoder granule handling.
-// 
-// MT safe.
 func (enc *AudioEncoderInstance) SetMarkGranule(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -10237,15 +7900,8 @@ func (enc *AudioEncoderInstance) SetMarkGranule(enabled bool) {
 
 // SetOutputFormat wraps gst_audio_encoder_set_output_format
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Configure output caps on the srcpad of @enc.
 func (enc *AudioEncoderInstance) SetOutputFormat(caps *gst.Caps) bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted
@@ -10269,13 +7925,8 @@ func (enc *AudioEncoderInstance) SetOutputFormat(caps *gst.Caps) bool {
 
 // SetPerfectTimestamp wraps gst_audio_encoder_set_perfect_timestamp
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: new state 
+// see also No documentation available
 //
-// Enable or disable encoder perfect output timestamp preference.
-// 
-// MT safe.
 func (enc *AudioEncoderInstance) SetPerfectTimestamp(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -10292,13 +7943,8 @@ func (enc *AudioEncoderInstance) SetPerfectTimestamp(enabled bool) {
 
 // SetTolerance wraps gst_audio_encoder_set_tolerance
 // 
-// The function takes the following parameters:
-// 
-// 	- tolerance gst.ClockTime: new tolerance 
+// see also No documentation available
 //
-// Configures encoder audio jitter tolerance threshold.
-// 
-// MT safe.
 func (enc *AudioEncoderInstance) SetTolerance(tolerance gst.ClockTime) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -10319,215 +7965,67 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_NULL.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Close func(Instance) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                     Setup the allocation parameters for allocating output
-	//                     buffers. The passed in query contains the result of the
-	//                     downstream allocation query.
-	//                     Subclasses should chain up to the parent implementation to
-	//                     invoke the default handler.
+	// see also No documentation available
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // Flush allows you to override the implementation of the virtual method flush.
-	//
-	// Optional.
-	//                  Instructs subclass to clear any codec caches and discard
-	//                  any pending samples and not yet returned encoded data.
+	// 
+	// see also No documentation available
 	Flush func(Instance)
 	// // Getcaps allows you to override the implementation of the virtual method getcaps.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- filter *gst.Caps 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps 
-	//
-	// Optional.
-	//                  Allows for a custom sink getcaps implementation (e.g.
-	//                  for multichannel input specification).  If not implemented,
-	//                  default returns gst_audio_encoder_proxy_getcaps
-	//                  applied to sink template caps.
+	// see also No documentation available
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- buffer *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.FlowReturn 
-	//
-	// Provides input samples (or NULL to clear any remaining data)
-	//                  according to directions as configured by the subclass
-	//                  using the API.  Input data ref management is performed
-	//                  by base class, subclass should not care or intervene,
-	//                  and input data is only valid until next call to base class,
-	//                  most notably a call to gst_audio_encoder_finish_frame().
+	// see also No documentation available
 	HandleFrame func(Instance, *gst.Buffer) gst.FlowReturn
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Negotiate with downstream elements to currently configured #GstCaps.
-	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-	// negotiate fails.
+	// see also No documentation available
 	Negotiate func(Instance) bool
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element changes to GST_STATE_READY.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Open func(Instance) bool
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                      Propose buffer allocation parameters for upstream elements.
-	//                      Subclasses should chain up to the parent implementation to
-	//                      invoke the default handler.
+	// see also No documentation available
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // SetFormat allows you to override the implementation of the virtual method set_format.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- info *AudioInfo 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Notifies subclass of incoming data format.
-	//                  GstAudioInfo contains the format according to provided caps.
+	// see also No documentation available
 	SetFormat func(Instance, *AudioInfo) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the sink pad. Subclasses should chain up to
-	//                  the parent implementation to invoke the default handler.
+	// see also No documentation available
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the sink pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.6
+	// see also No documentation available
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- event *gst.Event 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Event handler on the src pad. Subclasses should chain up to
-	//                  the parent implementation to invoke the default handler.
+	// see also No documentation available
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- query *gst.Query 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Query handler on the source pad. This function should
-	//                  return TRUE if the query could be performed. Subclasses
-	//                  should chain up to the parent implementation to invoke the
-	//                  default handler. Since: 1.6
+	// see also No documentation available
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element starts processing.
-	//                  Allows opening external resources.
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional.
-	//                  Called when the element stops processing.
-	//                  Allows closing external resources.
+	// see also No documentation available
 	Stop func(Instance) bool
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 	- meta *gst.Meta 
-	// 	- inbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Optional. Transform the metadata on the input buffer to the
-	//                  output buffer. By default this method copies all meta without
-	//                  tags and meta with only the "audio" tag. subclasses can
-	//                  implement this method and return %TRUE if the metadata is to be
-	//                  copied. Since: 1.6
+	// see also No documentation available
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
 }
 
@@ -10907,13 +8405,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 // ParentClose calls the default implementations of the `GstAudioEncoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element changes to GST_STATE_NULL.
-//                  Allows closing external resources.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentClose() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -10937,20 +8429,7 @@ func (enc *AudioEncoderInstance) ParentClose() bool {
 // ParentDecideAllocation calls the default implementations of the `GstAudioEncoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                     Setup the allocation parameters for allocating output
-//                     buffers. The passed in query contains the result of the
-//                     downstream allocation query.
-//                     Subclasses should chain up to the parent implementation to
-//                     invoke the default handler.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -10976,10 +8455,8 @@ func (enc *AudioEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 
 // ParentFlush calls the default implementations of the `GstAudioEncoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// Optional.
-//                  Instructs subclass to clear any codec caches and discard
-//                  any pending samples and not yet returned encoded data.
+// 
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentFlush() {
 	var carg0 *C.GstAudioEncoder
 
@@ -10994,19 +8471,7 @@ func (enc *AudioEncoderInstance) ParentFlush() {
 // ParentGetcaps calls the default implementations of the `GstAudioEncoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- filter *gst.Caps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
-//
-// Optional.
-//                  Allows for a custom sink getcaps implementation (e.g.
-//                  for multichannel input specification).  If not implemented,
-//                  default returns gst_audio_encoder_proxy_getcaps
-//                  applied to sink template caps.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -11031,20 +8496,7 @@ func (enc *AudioEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstAudioEncoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
-//
-// Provides input samples (or NULL to clear any remaining data)
-//                  according to directions as configured by the subclass
-//                  using the API.  Input data ref management is performed
-//                  by base class, subclass should not care or intervene,
-//                  and input data is only valid until next call to base class,
-//                  most notably a call to gst_audio_encoder_finish_frame().
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -11069,13 +8521,7 @@ func (enc *AudioEncoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowR
 // ParentNegotiate calls the default implementations of the `GstAudioEncoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Negotiate with downstream elements to currently configured #GstCaps.
-// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
-// negotiate fails.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentNegotiate() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -11099,13 +8545,7 @@ func (enc *AudioEncoderInstance) ParentNegotiate() bool {
 // ParentOpen calls the default implementations of the `GstAudioEncoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element changes to GST_STATE_READY.
-//                  Allows opening external resources.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentOpen() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -11129,18 +8569,7 @@ func (enc *AudioEncoderInstance) ParentOpen() bool {
 // ParentProposeAllocation calls the default implementations of the `GstAudioEncoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                      Propose buffer allocation parameters for upstream elements.
-//                      Subclasses should chain up to the parent implementation to
-//                      invoke the default handler.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -11167,16 +8596,7 @@ func (enc *AudioEncoderInstance) ParentProposeAllocation(query *gst.Query) bool 
 // ParentSetFormat calls the default implementations of the `GstAudioEncoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- info *AudioInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Notifies subclass of incoming data format.
-//                  GstAudioInfo contains the format according to provided caps.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentSetFormat(info *AudioInfo) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstAudioInfo // in, none, converted
@@ -11203,17 +8623,7 @@ func (enc *AudioEncoderInstance) ParentSetFormat(info *AudioInfo) bool {
 // ParentSinkEvent calls the default implementations of the `GstAudioEncoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the sink pad. Subclasses should chain up to
-//                  the parent implementation to invoke the default handler.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -11240,19 +8650,7 @@ func (enc *AudioEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstAudioEncoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Query handler on the sink pad. This function should
-//                  return TRUE if the query could be performed. Subclasses
-//                  should chain up to the parent implementation to invoke the
-//                  default handler. Since: 1.6
+// see also No documentation available
 func (encoder *AudioEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -11279,17 +8677,7 @@ func (encoder *AudioEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstAudioEncoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Event handler on the src pad. Subclasses should chain up to
-//                  the parent implementation to invoke the default handler.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -11316,19 +8704,7 @@ func (enc *AudioEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstAudioEncoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- query *gst.Query 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Query handler on the source pad. This function should
-//                  return TRUE if the query could be performed. Subclasses
-//                  should chain up to the parent implementation to invoke the
-//                  default handler. Since: 1.6
+// see also No documentation available
 func (encoder *AudioEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -11355,13 +8731,7 @@ func (encoder *AudioEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstAudioEncoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element starts processing.
-//                  Allows opening external resources.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentStart() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -11385,13 +8755,7 @@ func (enc *AudioEncoderInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstAudioEncoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional.
-//                  Called when the element stops processing.
-//                  Allows closing external resources.
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentStop() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -11415,21 +8779,7 @@ func (enc *AudioEncoderInstance) ParentStop() bool {
 // ParentTransformMeta calls the default implementations of the `GstAudioEncoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- outbuf *gst.Buffer 
-// 	- meta *gst.Meta 
-// 	- inbuf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Optional. Transform the metadata on the input buffer to the
-//                  output buffer. By default this method copies all meta without
-//                  tags and meta with only the "audio" tag. subclasses can
-//                  implement this method and return %TRUE if the metadata is to be
-//                  copied. Since: 1.6
+// see also No documentation available
 func (enc *AudioEncoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstBuffer // in, none, converted
@@ -11494,20 +8844,9 @@ type AudioFilterInstance struct {
 var _ AudioFilter = (*AudioFilterInstance)(nil)
 
 // AudioFilter wraps GstAudioFilter
+// 
+// see also No documentation available
 //
-// #GstAudioFilter is a #GstBaseTransform&lt;!-- --&gt;-derived base class for simple audio
-// filters, ie. those that output the same format that they get as input.
-// 
-// #GstAudioFilter will parse the input format for you (with error checking)
-// before calling your setup function. Also, elements deriving from
-// #GstAudioFilter may use gst_audio_filter_class_add_pad_templates() from
-// their class_init function to easily configure the set of caps/formats that
-// the element is able to handle.
-// 
-// Derived classes should override the #GstAudioFilterClass.setup() and
-// #GstBaseTransformClass.transform_ip() and/or
-// #GstBaseTransformClass.transform()
-// virtual functions in their class_init function.
 type AudioFilter interface {
 	gstbase.BaseTransform
 	upcastToGstAudioFilter() *AudioFilterInstance
@@ -11517,15 +8856,7 @@ type AudioFilter interface {
 	// ParentSetup calls the default implementations of the `GstAudioFilter.setup` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- info *AudioInfo 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// virtual function called whenever the format changes
+	// see also No documentation available
 	ParentSetup(info *AudioInfo) bool
 }
 
@@ -11593,15 +8924,7 @@ type AudioFilterOverrides[Instance AudioFilter] struct {
 
 	// // Setup allows you to override the implementation of the virtual method setup.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- info *AudioInfo 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// virtual function called whenever the format changes
+	// see also No documentation available
 	Setup func(Instance, *AudioInfo) bool
 }
 
@@ -11640,15 +8963,7 @@ func UnsafeApplyAudioFilterOverrides[Instance AudioFilter](gclass unsafe.Pointer
 // ParentSetup calls the default implementations of the `GstAudioFilter.setup` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- info *AudioInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// virtual function called whenever the format changes
+// see also No documentation available
 func (filter *AudioFilterInstance) ParentSetup(info *AudioInfo) bool {
 	var carg0 *C.GstAudioFilter
 	var carg1 *C.GstAudioInfo // in, none, converted
@@ -11707,316 +9022,151 @@ type AudioRingBufferInstance struct {
 var _ AudioRingBuffer = (*AudioRingBufferInstance)(nil)
 
 // AudioRingBuffer wraps GstAudioRingBuffer
-//
-// This object is the base class for audio ringbuffers used by the base
-// audio source and sink classes.
 // 
-// The ringbuffer abstracts a circular buffer of data. One reader and
-// one writer can operate on the data from different threads in a lockfree
-// manner. The base class is sufficiently flexible to be used as an
-// abstraction for DMA based ringbuffers as well as a pure software
-// implementations.
+// see also No documentation available
+//
 type AudioRingBuffer interface {
 	gst.Object
 	upcastToGstAudioRingBuffer() *AudioRingBufferInstance
 
 	// Acquire wraps gst_audio_ring_buffer_acquire
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- spec *AudioRingBufferSpec: the specs of the buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Allocate the resources for the ringbuffer. This function fills
-	// in the data pointer of the ring buffer with a valid #GstBuffer
-	// to which samples can be written.
 	Acquire(*AudioRingBufferSpec) bool
 	// Activate wraps gst_audio_ring_buffer_activate
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- active bool: the new mode 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Activate @buf to start or stop pulling data.
-	// 
-	// MT safe.
 	Activate(bool) bool
 	// Advance wraps gst_audio_ring_buffer_advance
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- advance uint: the number of segments written 
+	// see also No documentation available
 	//
-	// Subclasses should call this function to notify the fact that
-	// @advance segments are now processed by the device.
-	// 
-	// MT safe.
 	Advance(uint)
 	// Clear wraps gst_audio_ring_buffer_clear
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- segment int32: the segment to clear 
+	// see also No documentation available
 	//
-	// Clear the given segment of the buffer with silence samples.
-	// This function is used by subclasses.
-	// 
-	// MT safe.
 	Clear(int32)
 	// ClearAll wraps gst_audio_ring_buffer_clear_all
-	//
-	// Clear all samples from the ringbuffer.
 	// 
-	// MT safe.
+	// see also No documentation available
+	//
 	ClearAll()
 	// CloseDevice wraps gst_audio_ring_buffer_close_device
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Close the audio device associated with the ring buffer. The ring buffer
-	// should already have been released via gst_audio_ring_buffer_release().
 	CloseDevice() bool
 	// Convert wraps gst_audio_ring_buffer_convert
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- srcFmt gst.Format: the source format 
-	// 	- srcVal int64: the source value 
-	// 	- destFmt gst.Format: the destination format 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- destVal int64: a location to store the converted value 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Convert @src_val in @src_fmt to the equivalent value in @dest_fmt. The result
-	// will be put in @dest_val.
 	Convert(gst.Format, int64, gst.Format) (int64, bool)
 	// Delay wraps gst_audio_ring_buffer_delay
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Get the number of samples queued in the audio device. This is
-	// usually less than the segment size but can be bigger when the
-	// implementation uses another internal buffer between the audio
-	// device.
-	// 
-	// For playback ringbuffers this is the amount of samples transferred from the
-	// ringbuffer to the device but still not played.
-	// 
-	// For capture ringbuffers this is the amount of samples in the device that are
-	// not yet transferred to the ringbuffer.
 	Delay() uint
 	// DeviceIsOpen wraps gst_audio_ring_buffer_device_is_open
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks the status of the device associated with the ring buffer.
 	DeviceIsOpen() bool
 	// GetSegbase wraps gst_audio_ring_buffer_get_segbase
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint64 
+	// see also No documentation available
 	//
-	// Gets the current segment base number of the ringbuffer.
-	// 
-	// MT safe.
 	GetSegbase() uint64
 	// GetSegdone wraps gst_audio_ring_buffer_get_segdone
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint64 
+	// see also No documentation available
 	//
-	// Gets the current segment number of the ringbuffer.
-	// 
-	// MT safe.
 	GetSegdone() uint64
 	// IsAcquired wraps gst_audio_ring_buffer_is_acquired
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Check if the ringbuffer is acquired and ready to use.
 	IsAcquired() bool
 	// IsActive wraps gst_audio_ring_buffer_is_active
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Check if @buf is activated.
-	// 
-	// MT safe.
 	IsActive() bool
 	// IsFlushing wraps gst_audio_ring_buffer_is_flushing
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Check if @buf is flushing.
-	// 
-	// MT safe.
 	IsFlushing() bool
 	// MayStart wraps gst_audio_ring_buffer_may_start
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- allowed bool: the new value 
+	// see also No documentation available
 	//
-	// Tell the ringbuffer that it is allowed to start playback when
-	// the ringbuffer is filled with samples.
-	// 
-	// MT safe.
 	MayStart(bool)
 	// OpenDevice wraps gst_audio_ring_buffer_open_device
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Open the audio device associated with the ring buffer. Does not perform any
-	// setup on the device. You must open the device before acquiring the ring
-	// buffer.
 	OpenDevice() bool
 	// Pause wraps gst_audio_ring_buffer_pause
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Pause processing samples from the ringbuffer.
 	Pause() bool
 	// Read wraps gst_audio_ring_buffer_read
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- sample uint64: the sample position of the data 
-	// 	- data []uint8: where the data should be read 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- timestamp gst.ClockTime: where the timestamp is returned 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Read @len samples from the ringbuffer into the memory pointed
-	// to by @data.
-	// The first sample should be read from position @sample in
-	// the ringbuffer.
-	// 
-	// @len should not be a multiple of the segment size of the ringbuffer
-	// although it is recommended.
-	// 
-	// @timestamp will return the timestamp associated with the data returned.
 	Read(uint64, []uint8) (gst.ClockTime, uint)
 	// Release wraps gst_audio_ring_buffer_release
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Free the resources of the ringbuffer.
 	Release() bool
 	// SamplesDone wraps gst_audio_ring_buffer_samples_done
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint64 
+	// see also No documentation available
 	//
-	// Get the number of samples that were processed by the ringbuffer
-	// since it was last started. This does not include the number of samples not
-	// yet processed (see gst_audio_ring_buffer_delay()).
 	SamplesDone() uint64
 	// SetCallbackFull wraps gst_audio_ring_buffer_set_callback_full
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- cb AudioRingBufferCallback (nullable): the callback to set 
+	// see also No documentation available
 	//
-	// Sets the given callback function on the buffer. This function
-	// will be called every time a segment has been written to a device.
-	// 
-	// MT safe.
 	SetCallbackFull(AudioRingBufferCallback)
 	// SetErrored wraps gst_audio_ring_buffer_set_errored
-	//
-	// Mark the ringbuffer as errored after it has started.
 	// 
-	// MT safe.
+	// see also No documentation available
+	//
 	SetErrored()
 	// SetFlushing wraps gst_audio_ring_buffer_set_flushing
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flushing bool: the new mode 
+	// see also No documentation available
 	//
-	// Set the ringbuffer to flushing mode or normal mode.
-	// 
-	// MT safe.
 	SetFlushing(bool)
 	// SetSample wraps gst_audio_ring_buffer_set_sample
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- sample uint64: the sample number to set 
+	// see also No documentation available
 	//
-	// Make sure that the next sample written to the device is
-	// accounted for as being the @sample sample written to the
-	// device. This value will be used in reporting the current
-	// sample position of the ringbuffer.
-	// 
-	// This function will also clear the buffer with silence.
-	// 
-	// MT safe.
 	SetSample(uint64)
 	// SetSegdone wraps gst_audio_ring_buffer_set_segdone
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- segdone uint64: the segment number to set 
+	// see also No documentation available
 	//
-	// Sets the current segment number of the ringbuffer.
-	// 
-	// MT safe.
 	SetSegdone(uint64)
 	// SetTimestamp wraps gst_audio_ring_buffer_set_timestamp
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- readseg int32 
-	// 	- timestamp gst.ClockTime 
+	// see also No documentation available
 	SetTimestamp(int32, gst.ClockTime)
 	// Start wraps gst_audio_ring_buffer_start
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Start processing samples from the ringbuffer.
 	Start() bool
 	// Stop wraps gst_audio_ring_buffer_stop
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Stop processing samples from the ringbuffer.
 	Stop() bool
 
 	// chain up virtual methods:
@@ -12024,123 +9174,57 @@ type AudioRingBuffer interface {
 	// ParentAcquire calls the default implementations of the `GstAudioRingBuffer.acquire` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- spec *AudioRingBufferSpec: the specs of the buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Allocate the resources for the ringbuffer. This function fills
-	// in the data pointer of the ring buffer with a valid #GstBuffer
-	// to which samples can be written.
+	// see also No documentation available
 	ParentAcquire(spec *AudioRingBufferSpec) bool
 	// ParentActivate calls the default implementations of the `GstAudioRingBuffer.activate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- active bool: the new mode 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Activate @buf to start or stop pulling data.
-	// 
-	// MT safe.
+	// see also No documentation available
 	ParentActivate(active bool) bool
 	// ParentClearAll calls the default implementations of the `GstAudioRingBuffer.clear_all` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// Clear all samples from the ringbuffer.
 	// 
-	// MT safe.
+	// see also No documentation available
 	ParentClearAll()
 	// ParentCloseDevice calls the default implementations of the `GstAudioRingBuffer.close_device` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Close the audio device associated with the ring buffer. The ring buffer
-	// should already have been released via gst_audio_ring_buffer_release().
+	// see also No documentation available
 	ParentCloseDevice() bool
 	// ParentDelay calls the default implementations of the `GstAudioRingBuffer.delay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
-	//
-	// Get the number of samples queued in the audio device. This is
-	// usually less than the segment size but can be bigger when the
-	// implementation uses another internal buffer between the audio
-	// device.
-	// 
-	// For playback ringbuffers this is the amount of samples transferred from the
-	// ringbuffer to the device but still not played.
-	// 
-	// For capture ringbuffers this is the amount of samples in the device that are
-	// not yet transferred to the ringbuffer.
+	// see also No documentation available
 	ParentDelay() uint
 	// ParentOpenDevice calls the default implementations of the `GstAudioRingBuffer.open_device` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Open the audio device associated with the ring buffer. Does not perform any
-	// setup on the device. You must open the device before acquiring the ring
-	// buffer.
+	// see also No documentation available
 	ParentOpenDevice() bool
 	// ParentPause calls the default implementations of the `GstAudioRingBuffer.pause` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Pause processing samples from the ringbuffer.
+	// see also No documentation available
 	ParentPause() bool
 	// ParentRelease calls the default implementations of the `GstAudioRingBuffer.release` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Free the resources of the ringbuffer.
+	// see also No documentation available
 	ParentRelease() bool
 	// ParentResume calls the default implementations of the `GstAudioRingBuffer.resume` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// resume processing of samples after pause
+	// see also No documentation available
 	ParentResume() bool
 	// ParentStart calls the default implementations of the `GstAudioRingBuffer.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Start processing samples from the ringbuffer.
+	// see also No documentation available
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstAudioRingBuffer.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Stop processing samples from the ringbuffer.
+	// see also No documentation available
 	ParentStop() bool
 }
 
@@ -12198,11 +9282,8 @@ func UnsafeAudioRingBufferToGlibFull(c AudioRingBuffer) unsafe.Pointer {
 
 // AudioRingBufferDebugSpecBuff wraps gst_audio_ring_buffer_debug_spec_buff
 // 
-// The function takes the following parameters:
-// 
-// 	- spec *AudioRingBufferSpec: the spec to debug 
+// see also No documentation available
 //
-// Print debug info about the buffer sized in @spec to the debug log.
 func AudioRingBufferDebugSpecBuff(spec *AudioRingBufferSpec) {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 
@@ -12214,11 +9295,8 @@ func AudioRingBufferDebugSpecBuff(spec *AudioRingBufferSpec) {
 
 // AudioRingBufferDebugSpecCaps wraps gst_audio_ring_buffer_debug_spec_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- spec *AudioRingBufferSpec: the spec to debug 
+// see also No documentation available
 //
-// Print debug info about the parsed caps in @spec to the debug log.
 func AudioRingBufferDebugSpecCaps(spec *AudioRingBufferSpec) {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 
@@ -12230,16 +9308,8 @@ func AudioRingBufferDebugSpecCaps(spec *AudioRingBufferSpec) {
 
 // AudioRingBufferParseCaps wraps gst_audio_ring_buffer_parse_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- spec *AudioRingBufferSpec: a spec 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse @caps into @spec.
 func AudioRingBufferParseCaps(spec *AudioRingBufferSpec, caps *gst.Caps) bool {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 	var carg2 *C.GstCaps                // in, none, converted
@@ -12263,17 +9333,8 @@ func AudioRingBufferParseCaps(spec *AudioRingBufferSpec, caps *gst.Caps) bool {
 
 // Acquire wraps gst_audio_ring_buffer_acquire
 // 
-// The function takes the following parameters:
-// 
-// 	- spec *AudioRingBufferSpec: the specs of the buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Allocate the resources for the ringbuffer. This function fills
-// in the data pointer of the ring buffer with a valid #GstBuffer
-// to which samples can be written.
 func (buf *AudioRingBufferInstance) Acquire(spec *AudioRingBufferSpec) bool {
 	var carg0 *C.GstAudioRingBuffer     // in, none, converted
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
@@ -12297,17 +9358,8 @@ func (buf *AudioRingBufferInstance) Acquire(spec *AudioRingBufferSpec) bool {
 
 // Activate wraps gst_audio_ring_buffer_activate
 // 
-// The function takes the following parameters:
-// 
-// 	- active bool: the new mode 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Activate @buf to start or stop pulling data.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) Activate(active bool) bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gboolean            // in
@@ -12333,14 +9385,8 @@ func (buf *AudioRingBufferInstance) Activate(active bool) bool {
 
 // Advance wraps gst_audio_ring_buffer_advance
 // 
-// The function takes the following parameters:
-// 
-// 	- advance uint: the number of segments written 
+// see also No documentation available
 //
-// Subclasses should call this function to notify the fact that
-// @advance segments are now processed by the device.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) Advance(advance uint) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.guint               // in, none, casted
@@ -12355,14 +9401,8 @@ func (buf *AudioRingBufferInstance) Advance(advance uint) {
 
 // Clear wraps gst_audio_ring_buffer_clear
 // 
-// The function takes the following parameters:
-// 
-// 	- segment int32: the segment to clear 
+// see also No documentation available
 //
-// Clear the given segment of the buffer with silence samples.
-// This function is used by subclasses.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) Clear(segment int32) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gint                // in, none, casted
@@ -12376,10 +9416,9 @@ func (buf *AudioRingBufferInstance) Clear(segment int32) {
 }
 
 // ClearAll wraps gst_audio_ring_buffer_clear_all
-//
-// Clear all samples from the ringbuffer.
 // 
-// MT safe.
+// see also No documentation available
+//
 func (buf *AudioRingBufferInstance) ClearAll() {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 
@@ -12391,12 +9430,8 @@ func (buf *AudioRingBufferInstance) ClearAll() {
 
 // CloseDevice wraps gst_audio_ring_buffer_close_device
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Close the audio device associated with the ring buffer. The ring buffer
-// should already have been released via gst_audio_ring_buffer_release().
 func (buf *AudioRingBufferInstance) CloseDevice() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -12417,19 +9452,8 @@ func (buf *AudioRingBufferInstance) CloseDevice() bool {
 
 // Convert wraps gst_audio_ring_buffer_convert
 // 
-// The function takes the following parameters:
-// 
-// 	- srcFmt gst.Format: the source format 
-// 	- srcVal int64: the source value 
-// 	- destFmt gst.Format: the destination format 
-// 
-// The function returns the following values:
-// 
-// 	- destVal int64: a location to store the converted value 
-// 	- goret bool 
+// see also No documentation available
 //
-// Convert @src_val in @src_fmt to the equivalent value in @dest_fmt. The result
-// will be put in @dest_val.
 func (buf *AudioRingBufferInstance) Convert(srcFmt gst.Format, srcVal int64, destFmt gst.Format) (int64, bool) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.GstFormat           // in, none, casted
@@ -12462,20 +9486,8 @@ func (buf *AudioRingBufferInstance) Convert(srcFmt gst.Format, srcVal int64, des
 
 // Delay wraps gst_audio_ring_buffer_delay
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get the number of samples queued in the audio device. This is
-// usually less than the segment size but can be bigger when the
-// implementation uses another internal buffer between the audio
-// device.
-// 
-// For playback ringbuffers this is the amount of samples transferred from the
-// ringbuffer to the device but still not played.
-// 
-// For capture ringbuffers this is the amount of samples in the device that are
-// not yet transferred to the ringbuffer.
 func (buf *AudioRingBufferInstance) Delay() uint {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.guint               // return, none, casted
@@ -12494,11 +9506,8 @@ func (buf *AudioRingBufferInstance) Delay() uint {
 
 // DeviceIsOpen wraps gst_audio_ring_buffer_device_is_open
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks the status of the device associated with the ring buffer.
 func (buf *AudioRingBufferInstance) DeviceIsOpen() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -12519,13 +9528,8 @@ func (buf *AudioRingBufferInstance) DeviceIsOpen() bool {
 
 // GetSegbase wraps gst_audio_ring_buffer_get_segbase
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Gets the current segment base number of the ringbuffer.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) GetSegbase() uint64 {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.guint64             // return, none, casted
@@ -12544,13 +9548,8 @@ func (buf *AudioRingBufferInstance) GetSegbase() uint64 {
 
 // GetSegdone wraps gst_audio_ring_buffer_get_segdone
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Gets the current segment number of the ringbuffer.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) GetSegdone() uint64 {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.guint64             // return, none, casted
@@ -12569,11 +9568,8 @@ func (buf *AudioRingBufferInstance) GetSegdone() uint64 {
 
 // IsAcquired wraps gst_audio_ring_buffer_is_acquired
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check if the ringbuffer is acquired and ready to use.
 func (buf *AudioRingBufferInstance) IsAcquired() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -12594,13 +9590,8 @@ func (buf *AudioRingBufferInstance) IsAcquired() bool {
 
 // IsActive wraps gst_audio_ring_buffer_is_active
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check if @buf is activated.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) IsActive() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -12621,13 +9612,8 @@ func (buf *AudioRingBufferInstance) IsActive() bool {
 
 // IsFlushing wraps gst_audio_ring_buffer_is_flushing
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check if @buf is flushing.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) IsFlushing() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -12648,14 +9634,8 @@ func (buf *AudioRingBufferInstance) IsFlushing() bool {
 
 // MayStart wraps gst_audio_ring_buffer_may_start
 // 
-// The function takes the following parameters:
-// 
-// 	- allowed bool: the new value 
+// see also No documentation available
 //
-// Tell the ringbuffer that it is allowed to start playback when
-// the ringbuffer is filled with samples.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) MayStart(allowed bool) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gboolean            // in
@@ -12672,13 +9652,8 @@ func (buf *AudioRingBufferInstance) MayStart(allowed bool) {
 
 // OpenDevice wraps gst_audio_ring_buffer_open_device
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Open the audio device associated with the ring buffer. Does not perform any
-// setup on the device. You must open the device before acquiring the ring
-// buffer.
 func (buf *AudioRingBufferInstance) OpenDevice() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -12699,11 +9674,8 @@ func (buf *AudioRingBufferInstance) OpenDevice() bool {
 
 // Pause wraps gst_audio_ring_buffer_pause
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Pause processing samples from the ringbuffer.
 func (buf *AudioRingBufferInstance) Pause() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -12724,25 +9696,8 @@ func (buf *AudioRingBufferInstance) Pause() bool {
 
 // Read wraps gst_audio_ring_buffer_read
 // 
-// The function takes the following parameters:
-// 
-// 	- sample uint64: the sample position of the data 
-// 	- data []uint8: where the data should be read 
-// 
-// The function returns the following values:
-// 
-// 	- timestamp gst.ClockTime: where the timestamp is returned 
-// 	- goret uint 
+// see also No documentation available
 //
-// Read @len samples from the ringbuffer into the memory pointed
-// to by @data.
-// The first sample should be read from position @sample in
-// the ringbuffer.
-// 
-// @len should not be a multiple of the segment size of the ringbuffer
-// although it is recommended.
-// 
-// @timestamp will return the timestamp associated with the data returned.
 func (buf *AudioRingBufferInstance) Read(sample uint64, data []uint8) (gst.ClockTime, uint) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.guint64             // in, none, casted
@@ -12774,11 +9729,8 @@ func (buf *AudioRingBufferInstance) Read(sample uint64, data []uint8) (gst.Clock
 
 // Release wraps gst_audio_ring_buffer_release
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Free the resources of the ringbuffer.
 func (buf *AudioRingBufferInstance) Release() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -12799,13 +9751,8 @@ func (buf *AudioRingBufferInstance) Release() bool {
 
 // SamplesDone wraps gst_audio_ring_buffer_samples_done
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Get the number of samples that were processed by the ringbuffer
-// since it was last started. This does not include the number of samples not
-// yet processed (see gst_audio_ring_buffer_delay()).
 func (buf *AudioRingBufferInstance) SamplesDone() uint64 {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.guint64             // return, none, casted
@@ -12824,14 +9771,8 @@ func (buf *AudioRingBufferInstance) SamplesDone() uint64 {
 
 // SetCallbackFull wraps gst_audio_ring_buffer_set_callback_full
 // 
-// The function takes the following parameters:
-// 
-// 	- cb AudioRingBufferCallback (nullable): the callback to set 
+// see also No documentation available
 //
-// Sets the given callback function on the buffer. This function
-// will be called every time a segment has been written to a device.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) SetCallbackFull(cb AudioRingBufferCallback) {
 	var carg0 *C.GstAudioRingBuffer        // in, none, converted
 	var carg1 C.GstAudioRingBufferCallback // callback, scope: notified, closure: carg2, destroy: carg3, nullable
@@ -12851,10 +9792,9 @@ func (buf *AudioRingBufferInstance) SetCallbackFull(cb AudioRingBufferCallback) 
 }
 
 // SetErrored wraps gst_audio_ring_buffer_set_errored
-//
-// Mark the ringbuffer as errored after it has started.
 // 
-// MT safe.
+// see also No documentation available
+//
 func (buf *AudioRingBufferInstance) SetErrored() {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 
@@ -12866,13 +9806,8 @@ func (buf *AudioRingBufferInstance) SetErrored() {
 
 // SetFlushing wraps gst_audio_ring_buffer_set_flushing
 // 
-// The function takes the following parameters:
-// 
-// 	- flushing bool: the new mode 
+// see also No documentation available
 //
-// Set the ringbuffer to flushing mode or normal mode.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) SetFlushing(flushing bool) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gboolean            // in
@@ -12889,18 +9824,8 @@ func (buf *AudioRingBufferInstance) SetFlushing(flushing bool) {
 
 // SetSample wraps gst_audio_ring_buffer_set_sample
 // 
-// The function takes the following parameters:
-// 
-// 	- sample uint64: the sample number to set 
+// see also No documentation available
 //
-// Make sure that the next sample written to the device is
-// accounted for as being the @sample sample written to the
-// device. This value will be used in reporting the current
-// sample position of the ringbuffer.
-// 
-// This function will also clear the buffer with silence.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) SetSample(sample uint64) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.guint64             // in, none, casted
@@ -12915,13 +9840,8 @@ func (buf *AudioRingBufferInstance) SetSample(sample uint64) {
 
 // SetSegdone wraps gst_audio_ring_buffer_set_segdone
 // 
-// The function takes the following parameters:
-// 
-// 	- segdone uint64: the segment number to set 
+// see also No documentation available
 //
-// Sets the current segment number of the ringbuffer.
-// 
-// MT safe.
 func (buf *AudioRingBufferInstance) SetSegdone(segdone uint64) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.guint64             // in, none, casted
@@ -12936,10 +9856,7 @@ func (buf *AudioRingBufferInstance) SetSegdone(segdone uint64) {
 
 // SetTimestamp wraps gst_audio_ring_buffer_set_timestamp
 // 
-// The function takes the following parameters:
-// 
-// 	- readseg int32 
-// 	- timestamp gst.ClockTime 
+// see also No documentation available
 func (buf *AudioRingBufferInstance) SetTimestamp(readseg int32, timestamp gst.ClockTime) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gint                // in, none, casted
@@ -12957,11 +9874,8 @@ func (buf *AudioRingBufferInstance) SetTimestamp(readseg int32, timestamp gst.Cl
 
 // Start wraps gst_audio_ring_buffer_start
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Start processing samples from the ringbuffer.
 func (buf *AudioRingBufferInstance) Start() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -12982,11 +9896,8 @@ func (buf *AudioRingBufferInstance) Start() bool {
 
 // Stop wraps gst_audio_ring_buffer_stop
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Stop processing samples from the ringbuffer.
 func (buf *AudioRingBufferInstance) Stop() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -13013,113 +9924,47 @@ type AudioRingBufferOverrides[Instance AudioRingBuffer] struct {
 
 	// // Acquire allows you to override the implementation of the virtual method acquire.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- spec *AudioRingBufferSpec: the specs of the buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Allocate the resources for the ringbuffer. This function fills
-	// in the data pointer of the ring buffer with a valid #GstBuffer
-	// to which samples can be written.
+	// see also No documentation available
 	Acquire func(Instance, *AudioRingBufferSpec) bool
 	// // Activate allows you to override the implementation of the virtual method activate.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- active bool: the new mode 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Activate @buf to start or stop pulling data.
-	// 
-	// MT safe.
+	// see also No documentation available
 	Activate func(Instance, bool) bool
 	// // ClearAll allows you to override the implementation of the virtual method clear_all.
-	//
-	// Clear all samples from the ringbuffer.
 	// 
-	// MT safe.
+	// see also No documentation available
 	ClearAll func(Instance)
 	// // CloseDevice allows you to override the implementation of the virtual method close_device.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Close the audio device associated with the ring buffer. The ring buffer
-	// should already have been released via gst_audio_ring_buffer_release().
+	// see also No documentation available
 	CloseDevice func(Instance) bool
 	// // Delay allows you to override the implementation of the virtual method delay.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
-	//
-	// Get the number of samples queued in the audio device. This is
-	// usually less than the segment size but can be bigger when the
-	// implementation uses another internal buffer between the audio
-	// device.
-	// 
-	// For playback ringbuffers this is the amount of samples transferred from the
-	// ringbuffer to the device but still not played.
-	// 
-	// For capture ringbuffers this is the amount of samples in the device that are
-	// not yet transferred to the ringbuffer.
+	// see also No documentation available
 	Delay func(Instance) uint
 	// // OpenDevice allows you to override the implementation of the virtual method open_device.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Open the audio device associated with the ring buffer. Does not perform any
-	// setup on the device. You must open the device before acquiring the ring
-	// buffer.
+	// see also No documentation available
 	OpenDevice func(Instance) bool
 	// // Pause allows you to override the implementation of the virtual method pause.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Pause processing samples from the ringbuffer.
+	// see also No documentation available
 	Pause func(Instance) bool
 	// // Release allows you to override the implementation of the virtual method release.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Free the resources of the ringbuffer.
+	// see also No documentation available
 	Release func(Instance) bool
 	// // Resume allows you to override the implementation of the virtual method resume.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// resume processing of samples after pause
+	// see also No documentation available
 	Resume func(Instance) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Start processing samples from the ringbuffer.
+	// see also No documentation available
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Stop processing samples from the ringbuffer.
+	// see also No documentation available
 	Stop func(Instance) bool
 }
 
@@ -13373,17 +10218,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 // ParentAcquire calls the default implementations of the `GstAudioRingBuffer.acquire` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- spec *AudioRingBufferSpec: the specs of the buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Allocate the resources for the ringbuffer. This function fills
-// in the data pointer of the ring buffer with a valid #GstBuffer
-// to which samples can be written.
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentAcquire(spec *AudioRingBufferSpec) bool {
 	var carg0 *C.GstAudioRingBuffer
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
@@ -13410,17 +10245,7 @@ func (buf *AudioRingBufferInstance) ParentAcquire(spec *AudioRingBufferSpec) boo
 // ParentActivate calls the default implementations of the `GstAudioRingBuffer.activate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- active bool: the new mode 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Activate @buf to start or stop pulling data.
-// 
-// MT safe.
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentActivate(active bool) bool {
 	var carg0 *C.GstAudioRingBuffer
 	var carg1 C.gboolean // in, none, converted
@@ -13448,10 +10273,8 @@ func (buf *AudioRingBufferInstance) ParentActivate(active bool) bool {
 
 // ParentClearAll calls the default implementations of the `GstAudioRingBuffer.clear_all` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// Clear all samples from the ringbuffer.
 // 
-// MT safe.
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentClearAll() {
 	var carg0 *C.GstAudioRingBuffer
 
@@ -13466,12 +10289,7 @@ func (buf *AudioRingBufferInstance) ParentClearAll() {
 // ParentCloseDevice calls the default implementations of the `GstAudioRingBuffer.close_device` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Close the audio device associated with the ring buffer. The ring buffer
-// should already have been released via gst_audio_ring_buffer_release().
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentCloseDevice() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -13495,20 +10313,7 @@ func (buf *AudioRingBufferInstance) ParentCloseDevice() bool {
 // ParentDelay calls the default implementations of the `GstAudioRingBuffer.delay` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
-//
-// Get the number of samples queued in the audio device. This is
-// usually less than the segment size but can be bigger when the
-// implementation uses another internal buffer between the audio
-// device.
-// 
-// For playback ringbuffers this is the amount of samples transferred from the
-// ringbuffer to the device but still not played.
-// 
-// For capture ringbuffers this is the amount of samples in the device that are
-// not yet transferred to the ringbuffer.
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentDelay() uint {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.guint // return, none, casted
@@ -13530,13 +10335,7 @@ func (buf *AudioRingBufferInstance) ParentDelay() uint {
 // ParentOpenDevice calls the default implementations of the `GstAudioRingBuffer.open_device` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Open the audio device associated with the ring buffer. Does not perform any
-// setup on the device. You must open the device before acquiring the ring
-// buffer.
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentOpenDevice() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -13560,11 +10359,7 @@ func (buf *AudioRingBufferInstance) ParentOpenDevice() bool {
 // ParentPause calls the default implementations of the `GstAudioRingBuffer.pause` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Pause processing samples from the ringbuffer.
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentPause() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -13588,11 +10383,7 @@ func (buf *AudioRingBufferInstance) ParentPause() bool {
 // ParentRelease calls the default implementations of the `GstAudioRingBuffer.release` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Free the resources of the ringbuffer.
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentRelease() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -13616,11 +10407,7 @@ func (buf *AudioRingBufferInstance) ParentRelease() bool {
 // ParentResume calls the default implementations of the `GstAudioRingBuffer.resume` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// resume processing of samples after pause
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentResume() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -13644,11 +10431,7 @@ func (buf *AudioRingBufferInstance) ParentResume() bool {
 // ParentStart calls the default implementations of the `GstAudioRingBuffer.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Start processing samples from the ringbuffer.
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentStart() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -13672,11 +10455,7 @@ func (buf *AudioRingBufferInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstAudioRingBuffer.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Stop processing samples from the ringbuffer.
+// see also No documentation available
 func (buf *AudioRingBufferInstance) ParentStop() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -13732,28 +10511,9 @@ type AudioSinkInstance struct {
 var _ AudioSink = (*AudioSinkInstance)(nil)
 
 // AudioSink wraps GstAudioSink
+// 
+// see also No documentation available
 //
-// This is the most simple base class for audio sinks that only requires
-// subclasses to implement a set of simple functions:
-// 
-// * `open()` :Open the device.
-// 
-// * `prepare()` :Configure the device with the specified format.
-// 
-// * `write()` :Write samples to the device.
-// 
-// * `reset()` :Unblock writes and flush the device.
-// 
-// * `delay()` :Get the number of samples written but not yet played
-// by the device.
-// 
-// * `unprepare()` :Undo operations done by prepare.
-// 
-// * `close()` :Close the device.
-// 
-// All scheduling of samples and timestamps is done in this base class
-// together with #GstAudioBaseSink using a default implementation of a
-// #GstAudioRingBuffer that uses threads.
 type AudioSink interface {
 	AudioBaseSink
 	upcastToGstAudioSink() *AudioSinkInstance
@@ -13763,80 +10523,47 @@ type AudioSink interface {
 	// ParentClose calls the default implementations of the `GstAudioSink.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Close the device.
+	// see also No documentation available
 	ParentClose() bool
 	// ParentDelay calls the default implementations of the `GstAudioSink.delay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
-	//
-	// Return how many frames are still in the device. Participates in
-	//         computing the time for audio clocks and drives the synchronisation.
+	// see also No documentation available
 	ParentDelay() uint
 	// ParentOpen calls the default implementations of the `GstAudioSink.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Open the device. No configuration needs to be done at this point.
-	//        This function is also used to check if the device is available.
+	// see also No documentation available
 	ParentOpen() bool
 	// ParentPause calls the default implementations of the `GstAudioSink.pause` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// Pause the device and unblock write as fast as possible.
-	//         For retro compatibility, the audio sink will fallback
-	//         to calling reset if this vmethod is not provided. Since: 1.18
+	// 
+	// see also No documentation available
 	ParentPause()
 	// ParentPrepareAudioSink calls the default implementations of the `GstAudioSink.prepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- spec *AudioRingBufferSpec 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Prepare the device to operate with the specified parameters.
+	// see also No documentation available
 	ParentPrepareAudioSink(spec *AudioRingBufferSpec) bool
 	// ParentReset calls the default implementations of the `GstAudioSink.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// Returns as quickly as possible from a write and flush any pending
-	//         samples from the device.
-	//         This vmethod is deprecated. Please provide pause and stop instead.
+	// 
+	// see also No documentation available
 	ParentReset()
 	// ParentResume calls the default implementations of the `GstAudioSink.resume` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// Resume the device. Since: 1.18
+	// 
+	// see also No documentation available
 	ParentResume()
 	// ParentStopAudioSink calls the default implementations of the `GstAudioSink.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// Stop the device and unblock write as fast as possible.
-	//        Pending samples are flushed from the device.
-	//        For retro compatibility, the audio sink will fallback
-	//        to calling reset if this vmethod is not provided. Since: 1.18
+	// 
+	// see also No documentation available
 	ParentStopAudioSink()
 	// ParentUnprepare calls the default implementations of the `GstAudioSink.unprepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Undo operations done in prepare.
+	// see also No documentation available
 	ParentUnprepare() bool
 }
 
@@ -13906,72 +10633,39 @@ type AudioSinkOverrides[Instance AudioSink] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Close the device.
+	// see also No documentation available
 	Close func(Instance) bool
 	// // Delay allows you to override the implementation of the virtual method delay.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
-	//
-	// Return how many frames are still in the device. Participates in
-	//         computing the time for audio clocks and drives the synchronisation.
+	// see also No documentation available
 	Delay func(Instance) uint
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Open the device. No configuration needs to be done at this point.
-	//        This function is also used to check if the device is available.
+	// see also No documentation available
 	Open func(Instance) bool
 	// // Pause allows you to override the implementation of the virtual method pause.
-	//
-	// Pause the device and unblock write as fast as possible.
-	//         For retro compatibility, the audio sink will fallback
-	//         to calling reset if this vmethod is not provided. Since: 1.18
+	// 
+	// see also No documentation available
 	Pause func(Instance)
 	// // Prepare allows you to override the implementation of the virtual method prepare.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- spec *AudioRingBufferSpec 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Prepare the device to operate with the specified parameters.
+	// see also No documentation available
 	Prepare func(Instance, *AudioRingBufferSpec) bool
 	// // Reset allows you to override the implementation of the virtual method reset.
-	//
-	// Returns as quickly as possible from a write and flush any pending
-	//         samples from the device.
-	//         This vmethod is deprecated. Please provide pause and stop instead.
+	// 
+	// see also No documentation available
 	Reset func(Instance)
 	// // Resume allows you to override the implementation of the virtual method resume.
-	//
-	// Resume the device. Since: 1.18
+	// 
+	// see also No documentation available
 	Resume func(Instance)
 	// // Stop allows you to override the implementation of the virtual method stop.
-	//
-	// Stop the device and unblock write as fast as possible.
-	//        Pending samples are flushed from the device.
-	//        For retro compatibility, the audio sink will fallback
-	//        to calling reset if this vmethod is not provided. Since: 1.18
+	// 
+	// see also No documentation available
 	Stop func(Instance)
 	// // Unprepare allows you to override the implementation of the virtual method unprepare.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Undo operations done in prepare.
+	// see also No documentation available
 	Unprepare func(Instance) bool
 }
 
@@ -14156,11 +10850,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 // ParentClose calls the default implementations of the `GstAudioSink.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Close the device.
+// see also No documentation available
 func (sink *AudioSinkInstance) ParentClose() bool {
 	var carg0 *C.GstAudioSink
 	var cret  C.gboolean // return
@@ -14184,12 +10874,7 @@ func (sink *AudioSinkInstance) ParentClose() bool {
 // ParentDelay calls the default implementations of the `GstAudioSink.delay` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
-//
-// Return how many frames are still in the device. Participates in
-//         computing the time for audio clocks and drives the synchronisation.
+// see also No documentation available
 func (sink *AudioSinkInstance) ParentDelay() uint {
 	var carg0 *C.GstAudioSink
 	var cret  C.guint // return, none, casted
@@ -14211,12 +10896,7 @@ func (sink *AudioSinkInstance) ParentDelay() uint {
 // ParentOpen calls the default implementations of the `GstAudioSink.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Open the device. No configuration needs to be done at this point.
-//        This function is also used to check if the device is available.
+// see also No documentation available
 func (sink *AudioSinkInstance) ParentOpen() bool {
 	var carg0 *C.GstAudioSink
 	var cret  C.gboolean // return
@@ -14239,10 +10919,8 @@ func (sink *AudioSinkInstance) ParentOpen() bool {
 
 // ParentPause calls the default implementations of the `GstAudioSink.pause` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// Pause the device and unblock write as fast as possible.
-//         For retro compatibility, the audio sink will fallback
-//         to calling reset if this vmethod is not provided. Since: 1.18
+// 
+// see also No documentation available
 func (sink *AudioSinkInstance) ParentPause() {
 	var carg0 *C.GstAudioSink
 
@@ -14257,15 +10935,7 @@ func (sink *AudioSinkInstance) ParentPause() {
 // ParentPrepareAudioSink calls the default implementations of the `GstAudioSink.prepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- spec *AudioRingBufferSpec 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Prepare the device to operate with the specified parameters.
+// see also No documentation available
 func (sink *AudioSinkInstance) ParentPrepareAudioSink(spec *AudioRingBufferSpec) bool {
 	var carg0 *C.GstAudioSink
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
@@ -14291,10 +10961,8 @@ func (sink *AudioSinkInstance) ParentPrepareAudioSink(spec *AudioRingBufferSpec)
 
 // ParentReset calls the default implementations of the `GstAudioSink.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// Returns as quickly as possible from a write and flush any pending
-//         samples from the device.
-//         This vmethod is deprecated. Please provide pause and stop instead.
+// 
+// see also No documentation available
 func (sink *AudioSinkInstance) ParentReset() {
 	var carg0 *C.GstAudioSink
 
@@ -14308,8 +10976,8 @@ func (sink *AudioSinkInstance) ParentReset() {
 
 // ParentResume calls the default implementations of the `GstAudioSink.resume` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// Resume the device. Since: 1.18
+// 
+// see also No documentation available
 func (sink *AudioSinkInstance) ParentResume() {
 	var carg0 *C.GstAudioSink
 
@@ -14323,11 +10991,8 @@ func (sink *AudioSinkInstance) ParentResume() {
 
 // ParentStopAudioSink calls the default implementations of the `GstAudioSink.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// Stop the device and unblock write as fast as possible.
-//        Pending samples are flushed from the device.
-//        For retro compatibility, the audio sink will fallback
-//        to calling reset if this vmethod is not provided. Since: 1.18
+// 
+// see also No documentation available
 func (sink *AudioSinkInstance) ParentStopAudioSink() {
 	var carg0 *C.GstAudioSink
 
@@ -14342,11 +11007,7 @@ func (sink *AudioSinkInstance) ParentStopAudioSink() {
 // ParentUnprepare calls the default implementations of the `GstAudioSink.unprepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Undo operations done in prepare.
+// see also No documentation available
 func (sink *AudioSinkInstance) ParentUnprepare() bool {
 	var carg0 *C.GstAudioSink
 	var cret  C.gboolean // return
@@ -14402,21 +11063,9 @@ type AudioSrcInstance struct {
 var _ AudioSrc = (*AudioSrcInstance)(nil)
 
 // AudioSrc wraps GstAudioSrc
+// 
+// see also No documentation available
 //
-// This is the most simple base class for audio sources that only requires
-// subclasses to implement a set of simple functions:
-// 
-// * `open()` :Open the device.
-// * `prepare()` :Configure the device with the specified format.
-// * `read()` :Read samples from the device.
-// * `reset()` :Unblock reads and flush the device.
-// * `delay()` :Get the number of samples in the device but not yet read.
-// * `unprepare()` :Undo operations done by prepare.
-// * `close()` :Close the device.
-// 
-// All scheduling of samples and timestamps is done in this base class
-// together with #GstAudioBaseSrc using a default implementation of a
-// #GstAudioRingBuffer that uses threads.
 type AudioSrc interface {
 	AudioBaseSrc
 	upcastToGstAudioSrc() *AudioSrcInstance
@@ -14426,56 +11075,32 @@ type AudioSrc interface {
 	// ParentClose calls the default implementations of the `GstAudioSrc.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// close the device
+	// see also No documentation available
 	ParentClose() bool
 	// ParentDelay calls the default implementations of the `GstAudioSrc.delay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
-	//
-	// the number of frames queued in the device
+	// see also No documentation available
 	ParentDelay() uint
 	// ParentOpen calls the default implementations of the `GstAudioSrc.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// open the device with the specified caps
+	// see also No documentation available
 	ParentOpen() bool
 	// ParentPrepare calls the default implementations of the `GstAudioSrc.prepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- spec *AudioRingBufferSpec 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// configure device with format
+	// see also No documentation available
 	ParentPrepare(spec *AudioRingBufferSpec) bool
 	// ParentReset calls the default implementations of the `GstAudioSrc.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// unblock a read to the device and reset.
+	// 
+	// see also No documentation available
 	ParentReset()
 	// ParentUnprepare calls the default implementations of the `GstAudioSrc.unprepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// undo the configuration
+	// see also No documentation available
 	ParentUnprepare() bool
 }
 
@@ -14547,51 +11172,27 @@ type AudioSrcOverrides[Instance AudioSrc] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// close the device
+	// see also No documentation available
 	Close func(Instance) bool
 	// // Delay allows you to override the implementation of the virtual method delay.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
-	//
-	// the number of frames queued in the device
+	// see also No documentation available
 	Delay func(Instance) uint
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// open the device with the specified caps
+	// see also No documentation available
 	Open func(Instance) bool
 	// // Prepare allows you to override the implementation of the virtual method prepare.
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- spec *AudioRingBufferSpec 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// configure device with format
+	// see also No documentation available
 	Prepare func(Instance, *AudioRingBufferSpec) bool
 	// // Reset allows you to override the implementation of the virtual method reset.
-	//
-	// unblock a read to the device and reset.
+	// 
+	// see also No documentation available
 	Reset func(Instance)
 	// // Unprepare allows you to override the implementation of the virtual method unprepare.
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// undo the configuration
+	// see also No documentation available
 	Unprepare func(Instance) bool
 }
 
@@ -14731,11 +11332,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 // ParentClose calls the default implementations of the `GstAudioSrc.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// close the device
+// see also No documentation available
 func (src *AudioSrcInstance) ParentClose() bool {
 	var carg0 *C.GstAudioSrc
 	var cret  C.gboolean // return
@@ -14759,11 +11356,7 @@ func (src *AudioSrcInstance) ParentClose() bool {
 // ParentDelay calls the default implementations of the `GstAudioSrc.delay` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
-//
-// the number of frames queued in the device
+// see also No documentation available
 func (src *AudioSrcInstance) ParentDelay() uint {
 	var carg0 *C.GstAudioSrc
 	var cret  C.guint // return, none, casted
@@ -14785,11 +11378,7 @@ func (src *AudioSrcInstance) ParentDelay() uint {
 // ParentOpen calls the default implementations of the `GstAudioSrc.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// open the device with the specified caps
+// see also No documentation available
 func (src *AudioSrcInstance) ParentOpen() bool {
 	var carg0 *C.GstAudioSrc
 	var cret  C.gboolean // return
@@ -14813,15 +11402,7 @@ func (src *AudioSrcInstance) ParentOpen() bool {
 // ParentPrepare calls the default implementations of the `GstAudioSrc.prepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function takes the following parameters:
-// 
-// 	- spec *AudioRingBufferSpec 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// configure device with format
+// see also No documentation available
 func (src *AudioSrcInstance) ParentPrepare(spec *AudioRingBufferSpec) bool {
 	var carg0 *C.GstAudioSrc
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
@@ -14847,8 +11428,8 @@ func (src *AudioSrcInstance) ParentPrepare(spec *AudioRingBufferSpec) bool {
 
 // ParentReset calls the default implementations of the `GstAudioSrc.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// unblock a read to the device and reset.
+// 
+// see also No documentation available
 func (src *AudioSrcInstance) ParentReset() {
 	var carg0 *C.GstAudioSrc
 
@@ -14863,11 +11444,7 @@ func (src *AudioSrcInstance) ParentReset() {
 // ParentUnprepare calls the default implementations of the `GstAudioSrc.unprepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// undo the configuration
+// see also No documentation available
 func (src *AudioSrcInstance) ParentUnprepare() bool {
 	var carg0 *C.GstAudioSrc
 	var cret  C.gboolean // return
@@ -14923,10 +11500,9 @@ type AudioAggregatorConvertPadInstance struct {
 var _ AudioAggregatorConvertPad = (*AudioAggregatorConvertPadInstance)(nil)
 
 // AudioAggregatorConvertPad wraps GstAudioAggregatorConvertPad
-//
-// An implementation of GstPad that can be used with #GstAudioAggregator.
 // 
-// See #GstAudioAggregator for more details.
+// see also No documentation available
+//
 type AudioAggregatorConvertPad interface {
 	AudioAggregatorPad
 	upcastToGstAudioAggregatorConvertPad() *AudioAggregatorConvertPadInstance
@@ -15034,6 +11610,8 @@ func RegisterAudioAggregatorConvertPadSubClass[InstanceT AudioAggregatorConvertP
 
 // AudioAggregatorClass wraps GstAudioAggregatorClass
 // 
+// see also No documentation available
+// 
 // AudioAggregatorClass is the type struct for [AudioAggregator]
 type AudioAggregatorClass struct {
 	*audioAggregatorClass
@@ -15085,6 +11663,8 @@ func (a *AudioAggregatorClass) ParentClass() *gstbase.AggregatorClass {
 }
 
 // AudioAggregatorConvertPadClass wraps GstAudioAggregatorConvertPadClass
+// 
+// see also No documentation available
 // 
 // AudioAggregatorConvertPadClass is the type struct for [AudioAggregatorConvertPad]
 type AudioAggregatorConvertPadClass struct {
@@ -15138,6 +11718,8 @@ func (a *AudioAggregatorConvertPadClass) ParentClass() *AudioAggregatorPadClass 
 
 // AudioAggregatorPadClass wraps GstAudioAggregatorPadClass
 // 
+// see also No documentation available
+// 
 // AudioAggregatorPadClass is the type struct for [AudioAggregatorPad]
 type AudioAggregatorPadClass struct {
 	*audioAggregatorPadClass
@@ -15189,9 +11771,9 @@ func (a *AudioAggregatorPadClass) ParentClass() *gstbase.AggregatorPadClass {
 }
 
 // AudioBaseSinkClass wraps GstAudioBaseSinkClass
+// 
+// see also No documentation available
 //
-// #GstAudioBaseSink class. Override the vmethod to implement
-// functionality.
 // 
 // AudioBaseSinkClass is the type struct for [AudioBaseSink]
 type AudioBaseSinkClass struct {
@@ -15244,9 +11826,9 @@ func (a *AudioBaseSinkClass) ParentClass() *gstbase.BaseSinkClass {
 }
 
 // AudioBaseSrcClass wraps GstAudioBaseSrcClass
+// 
+// see also No documentation available
 //
-// #GstAudioBaseSrc class. Override the vmethod to implement
-// functionality.
 // 
 // AudioBaseSrcClass is the type struct for [AudioBaseSrc]
 type AudioBaseSrcClass struct {
@@ -15299,15 +11881,9 @@ func (a *AudioBaseSrcClass) ParentClass() *gstbase.PushSrcClass {
 }
 
 // AudioBuffer wraps GstAudioBuffer
-//
-// A structure containing the result of an audio buffer map operation,
-// which is executed with gst_audio_buffer_map(). For non-interleaved (planar)
-// buffers, the beginning of each channel in the buffer has its own pointer in
-// the @planes array. For interleaved buffers, the @planes array only contains
-// one item, which is the pointer to the beginning of the buffer, and @n_planes
-// equals 1.
 // 
-// The different channels in @planes are always in the GStreamer channel order.
+// see also No documentation available
+//
 type AudioBuffer struct {
 	*audioBuffer
 }
@@ -15388,23 +11964,8 @@ func UnsafeAudioBufferToGlibFull(a *AudioBuffer) unsafe.Pointer {
 
 // AudioBufferClip wraps gst_audio_buffer_clip
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: The buffer to clip. 
-// 	- segment *gst.Segment: Segment in %GST_FORMAT_TIME or %GST_FORMAT_DEFAULT to which
-//           the buffer should be clipped. 
-// 	- rate int32: sample rate. 
-// 	- bpf int32: size of one audio frame in bytes. This is the size of one sample *
-// number of channels. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Clip the buffer to the given %GstSegment.
-// 
-// After calling this function the caller does not own a reference to
-// @buffer anymore.
 func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate int32, bpf int32) *gst.Buffer {
 	var carg1 *C.GstBuffer  // in, full, converted
 	var carg2 *C.GstSegment // in, none, converted
@@ -15434,41 +11995,8 @@ func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate int32, bpf i
 
 // AudioBufferMap wraps gst_audio_buffer_map
 // 
-// The function takes the following parameters:
-// 
-// 	- info *AudioInfo: the audio properties of the buffer 
-// 	- gstbuffer *gst.Buffer: the #GstBuffer to be mapped 
-// 	- flags gst.MapFlags: the access mode for the memory 
-// 
-// The function returns the following values:
-// 
-// 	- buffer AudioBuffer: pointer to a #GstAudioBuffer 
-// 	- goret bool 
+// see also No documentation available
 //
-// Maps an audio @gstbuffer so that it can be read or written and stores the
-// result of the map operation in @buffer.
-// 
-// This is especially useful when the @gstbuffer is in non-interleaved (planar)
-// layout, in which case this function will use the information in the
-// @gstbuffer's attached #GstAudioMeta in order to map each channel in a
-// separate "plane" in #GstAudioBuffer. If a #GstAudioMeta is not attached
-// on the @gstbuffer, then it must be in interleaved layout.
-// 
-// If a #GstAudioMeta is attached, then the #GstAudioInfo on the meta is checked
-// against @info. Normally, they should be equal, but in case they are not,
-// a g_critical will be printed and the #GstAudioInfo from the meta will be
-// used.
-// 
-// In non-interleaved buffers, it is possible to have each channel on a separate
-// #GstMemory. In this case, each memory will be mapped separately to avoid
-// copying their contents in a larger memory area. Do note though that it is
-// not supported to have a single channel spanning over two or more different
-// #GstMemory objects. Although the map operation will likely succeed in this
-// case, it will be highly sub-optimal and it is recommended to merge all the
-// memories in the buffer before calling this function.
-// 
-// Note: The actual #GstBuffer is not ref'ed, but it is required to stay valid
-// as long as it's mapped.
 func AudioBufferMap(info *AudioInfo, gstbuffer *gst.Buffer, flags gst.MapFlags) (AudioBuffer, bool) {
 	var carg2 *C.GstAudioInfo  // in, none, converted
 	var carg3 *C.GstBuffer     // in, none, converted
@@ -15500,21 +12028,8 @@ func AudioBufferMap(info *AudioInfo, gstbuffer *gst.Buffer, flags gst.MapFlags) 
 
 // AudioBufferReorderChannels wraps gst_audio_buffer_reorder_channels
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: The buffer to reorder. 
-// 	- format AudioFormat: The %GstAudioFormat of the buffer. 
-// 	- from []AudioChannelPosition: The channel positions in the buffer. 
-// 	- to []AudioChannelPosition: The channel positions to convert to. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Reorders @buffer from the channel positions @from to the channel
-// positions @to. @from and @to must contain the same number of
-// positions and the same positions, only in a different order.
-// @buffer must be writable.
 func AudioBufferReorderChannels(buffer *gst.Buffer, format AudioFormat, from []AudioChannelPosition, to []AudioChannelPosition) bool {
 	var carg1 *C.GstBuffer               // in, none, converted
 	var carg2 C.GstAudioFormat           // in, none, casted
@@ -15551,32 +12066,8 @@ func AudioBufferReorderChannels(buffer *gst.Buffer, format AudioFormat, from []A
 
 // AudioBufferTruncate wraps gst_audio_buffer_truncate
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: The buffer to truncate. 
-// 	- bpf int32: size of one audio frame in bytes. This is the size of one sample *
-// number of channels. 
-// 	- trim uint: the number of samples to remove from the beginning of the buffer 
-// 	- samples uint: the final number of samples that should exist in this buffer or -1
-// to use all the remaining samples if you are only removing samples from the
-// beginning. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Truncate the buffer to finally have @samples number of samples, removing
-// the necessary amount of samples from the end and @trim number of samples
-// from the beginning.
-// 
-// This function does not know the audio rate, therefore the caller is
-// responsible for re-setting the correct timestamp and duration to the
-// buffer. However, timestamp will be preserved if trim == 0, and duration
-// will also be preserved if there is no trimming to be done. Offset and
-// offset end will be preserved / updated.
-// 
-// After calling this function the caller does not own a reference to
-// @buffer anymore.
 func AudioBufferTruncate(buffer *gst.Buffer, bpf int32, trim uint, samples uint) *gst.Buffer {
 	var carg1 *C.GstBuffer // in, full, converted
 	var carg2 C.gint       // in, none, casted
@@ -15603,9 +12094,9 @@ func AudioBufferTruncate(buffer *gst.Buffer, bpf int32, trim uint, samples uint)
 }
 
 // Unmap wraps gst_audio_buffer_unmap
+// 
+// see also No documentation available
 //
-// Unmaps an audio buffer that was previously mapped with
-// gst_audio_buffer_map().
 func (buffer *AudioBuffer) Unmap() {
 	var carg0 *C.GstAudioBuffer // in, none, converted
 
@@ -15616,8 +12107,9 @@ func (buffer *AudioBuffer) Unmap() {
 }
 
 // AudioCdSrcClass wraps GstAudioCdSrcClass
+// 
+// see also No documentation available
 //
-// Audio CD source base class.
 // 
 // AudioCdSrcClass is the type struct for [AudioCdSrc]
 type AudioCdSrcClass struct {
@@ -15670,14 +12162,9 @@ func (a *AudioCdSrcClass) ParentClass() *gstbase.PushSrcClass {
 }
 
 // AudioCdSrcTrack wraps GstAudioCdSrcTrack
+// 
+// see also No documentation available
 //
-// CD track abstraction to communicate TOC entries to the base class.
-// 
-// This structure is only for use by sub-classed in connection with
-// gst_audio_cd_src_add_track().
-// 
-// Applications will be informed of the available tracks via a TOC message
-// on the pipeline's #GstBus instead.
 type AudioCdSrcTrack struct {
 	*audioCdSrcTrack
 }
@@ -15757,6 +12244,8 @@ func UnsafeAudioCdSrcTrackToGlibFull(a *AudioCdSrcTrack) unsafe.Pointer {
 }
 
 // AudioChannelMixer wraps GstAudioChannelMixer
+// 
+// see also No documentation available
 type AudioChannelMixer struct {
 	*audioChannelMixer
 }
@@ -15837,21 +12326,8 @@ func UnsafeAudioChannelMixerToGlibFull(a *AudioChannelMixer) unsafe.Pointer {
 
 // IsPassthrough wraps gst_audio_channel_mixer_is_passthrough
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Check if @mix is in passthrough.
-// 
-// Only N x N mix identity matrices are considered passthrough,
-// this is determined by comparing the contents of the matrix
-// with 0.0 and 1.0.
-// 
-// As this is floating point comparisons, if the values have been
-// generated, they should be rounded up or down by explicit
-// assignment of 0.0 or 1.0 to values within a user-defined
-// epsilon, this code doesn't make assumptions as to what may
-// constitute an appropriate epsilon.
 func (mix *AudioChannelMixer) IsPassthrough() bool {
 	var carg0 *C.GstAudioChannelMixer // in, none, converted
 	var cret  C.gboolean              // return
@@ -15871,18 +12347,9 @@ func (mix *AudioChannelMixer) IsPassthrough() bool {
 }
 
 // AudioClippingMeta wraps GstAudioClippingMeta
+// 
+// see also No documentation available
 //
-// Extra buffer metadata describing how much audio has to be clipped from
-// the start or end of a buffer. This is used for compressed formats, where
-// the first frame usually has some additional samples due to encoder and
-// decoder delays, and the last frame usually has some additional samples to
-// be able to fill the complete last frame.
-// 
-// This is used to ensure that decoded data in the end has the same amount of
-// samples, and multiply decoded streams can be gaplessly concatenated.
-// 
-// Note: If clipping of the start is done by adjusting the segment, this meta
-// has to be dropped from buffers as otherwise clipping could happen twice.
 type AudioClippingMeta struct {
 	*audioClippingMeta
 }
@@ -15963,9 +12430,7 @@ func UnsafeAudioClippingMetaToGlibFull(a *AudioClippingMeta) unsafe.Pointer {
 
 // AudioClippingMetaGetInfo wraps gst_audio_clipping_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func AudioClippingMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -15979,6 +12444,8 @@ func AudioClippingMetaGetInfo() *gst.MetaInfo {
 }
 
 // AudioClockClass wraps GstAudioClockClass
+// 
+// see also No documentation available
 // 
 // AudioClockClass is the type struct for [AudioClock]
 type AudioClockClass struct {
@@ -16031,15 +12498,9 @@ func (a *AudioClockClass) ParentClass() *gst.SystemClockClass {
 }
 
 // AudioConverter wraps GstAudioConverter
+// 
+// see also No documentation available
 //
-// This object is used to convert audio samples from one format to another.
-// The object can perform conversion of:
-// 
-//  * audio format with optional dithering and noise shaping
-// 
-//  * audio samplerate
-// 
-//  * audio channels and channel layout
 type AudioConverter struct {
 	*audioConverter
 }
@@ -16135,22 +12596,8 @@ func UnsafeAudioConverterToGlibFull(a *AudioConverter) unsafe.Pointer {
 
 // NewAudioConverter wraps gst_audio_converter_new
 // 
-// The function takes the following parameters:
-// 
-// 	- flags AudioConverterFlags: extra #GstAudioConverterFlags 
-// 	- inInfo *AudioInfo: a source #GstAudioInfo 
-// 	- outInfo *AudioInfo: a destination #GstAudioInfo 
-// 	- config *gst.Structure (nullable): a #GstStructure with configuration options 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioConverter (nullable) 
+// see also No documentation available
 //
-// Create a new #GstAudioConverter that is able to convert between @in and @out
-// audio formats.
-// 
-// @config contains extra configuration options, see `GST_AUDIO_CONVERTER_OPT_*`
-// parameters for details about the options and values.
 func NewAudioConverter(flags AudioConverterFlags, inInfo *AudioInfo, outInfo *AudioInfo, config *gst.Structure) *AudioConverter {
 	var carg1 C.GstAudioConverterFlags // in, none, casted
 	var carg2 *C.GstAudioInfo          // in, none, converted
@@ -16182,13 +12629,8 @@ func NewAudioConverter(flags AudioConverterFlags, inInfo *AudioInfo, outInfo *Au
 
 // GetConfig wraps gst_audio_converter_get_config
 // 
-// The function returns the following values:
-// 
-// 	- inRate int32: result input rate 
-// 	- outRate int32: result output rate 
-// 	- goret *gst.Structure 
+// see also No documentation available
 //
-// Get the current configuration of @convert.
 func (convert *AudioConverter) GetConfig() (int32, int32, *gst.Structure) {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gint               // out, full, casted
@@ -16213,16 +12655,8 @@ func (convert *AudioConverter) GetConfig() (int32, int32, *gst.Structure) {
 
 // GetInFrames wraps gst_audio_converter_get_in_frames
 // 
-// The function takes the following parameters:
-// 
-// 	- outFrames uint: number of output frames 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Calculate how many input frames are currently needed by @convert to produce
-// @out_frames of output frames.
 func (convert *AudioConverter) GetInFrames(outFrames uint) uint {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gsize              // in, none, casted
@@ -16244,12 +12678,8 @@ func (convert *AudioConverter) GetInFrames(outFrames uint) uint {
 
 // GetMaxLatency wraps gst_audio_converter_get_max_latency
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get the maximum number of input frames that the converter would
-// need before producing output.
 func (convert *AudioConverter) GetMaxLatency() uint {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var cret  C.gsize              // return, none, casted
@@ -16268,16 +12698,8 @@ func (convert *AudioConverter) GetMaxLatency() uint {
 
 // GetOutFrames wraps gst_audio_converter_get_out_frames
 // 
-// The function takes the following parameters:
-// 
-// 	- inFrames uint: number of input frames 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Calculate how many output frames can be produced when @in_frames input
-// frames are given to @convert.
 func (convert *AudioConverter) GetOutFrames(inFrames uint) uint {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gsize              // in, none, casted
@@ -16299,12 +12721,8 @@ func (convert *AudioConverter) GetOutFrames(inFrames uint) uint {
 
 // IsPassthrough wraps gst_audio_converter_is_passthrough
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Returns whether the audio converter will operate in passthrough mode.
-// The return value would be typically input to gst_base_transform_set_passthrough()
 func (convert *AudioConverter) IsPassthrough() bool {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var cret  C.gboolean           // return
@@ -16324,9 +12742,9 @@ func (convert *AudioConverter) IsPassthrough() bool {
 }
 
 // Reset wraps gst_audio_converter_reset
+// 
+// see also No documentation available
 //
-// Reset @convert to the state it was when it was first created, clearing
-// any history it might currently have.
 func (convert *AudioConverter) Reset() {
 	var carg0 *C.GstAudioConverter // in, none, converted
 
@@ -16338,12 +12756,8 @@ func (convert *AudioConverter) Reset() {
 
 // SupportsInplace wraps gst_audio_converter_supports_inplace
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Returns whether the audio converter can perform the conversion in-place.
-// The return value would be typically input to gst_base_transform_set_in_place()
 func (convert *AudioConverter) SupportsInplace() bool {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var cret  C.gboolean           // return
@@ -16364,30 +12778,8 @@ func (convert *AudioConverter) SupportsInplace() bool {
 
 // UpdateConfig wraps gst_audio_converter_update_config
 // 
-// The function takes the following parameters:
-// 
-// 	- inRate int32: input rate 
-// 	- outRate int32: output rate 
-// 	- config *gst.Structure (nullable): a #GstStructure or %NULL 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set @in_rate, @out_rate and @config as extra configuration for @convert.
-// 
-// @in_rate and @out_rate specify the new sample rates of input and output
-// formats. A value of 0 leaves the sample rate unchanged.
-// 
-// @config can be %NULL, in which case, the current configuration is not
-// changed.
-// 
-// If the parameters in @config can not be set exactly, this function returns
-// %FALSE and will try to update as much state as possible. The new state can
-// then be retrieved and refined with gst_audio_converter_get_config().
-// 
-// Look at the `GST_AUDIO_CONVERTER_OPT_*` fields to check valid configuration
-// option and values.
 func (convert *AudioConverter) UpdateConfig(inRate int32, outRate int32, config *gst.Structure) bool {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gint               // in, none, casted
@@ -16418,10 +12810,9 @@ func (convert *AudioConverter) UpdateConfig(inRate int32, outRate int32, config 
 }
 
 // AudioDecoderClass wraps GstAudioDecoderClass
+// 
+// see also No documentation available
 //
-// Subclasses can override any of the available virtual methods or not, as
-// needed. At minimum @handle_frame (and likely @set_format) needs to be
-// overridden.
 // 
 // AudioDecoderClass is the type struct for [AudioDecoder]
 type AudioDecoderClass struct {
@@ -16474,15 +12865,9 @@ func (a *AudioDecoderClass) ParentClass() *gst.ElementClass {
 }
 
 // AudioDownmixMeta wraps GstAudioDownmixMeta
-//
-// Extra buffer metadata describing audio downmixing matrix. This metadata is
-// attached to audio buffers and contains a matrix to downmix the buffer number
-// of channels to @channels.
 // 
-// @matrix is an two-dimensional array of @to_channels times @from_channels
-// coefficients, i.e. the i-th output channels is constructed by multiplicating
-// the input channels with the coefficients in @matrix[i] and taking the sum
-// of the results.
+// see also No documentation available
+//
 type AudioDownmixMeta struct {
 	*audioDownmixMeta
 }
@@ -16563,9 +12948,7 @@ func UnsafeAudioDownmixMetaToGlibFull(a *AudioDownmixMeta) unsafe.Pointer {
 
 // AudioDownmixMetaGetInfo wraps gst_audio_downmix_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func AudioDownmixMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -16579,9 +12962,9 @@ func AudioDownmixMetaGetInfo() *gst.MetaInfo {
 }
 
 // AudioEncoderClass wraps GstAudioEncoderClass
+// 
+// see also No documentation available
 //
-// Subclasses can override any of the available virtual methods or not, as
-// needed. At minimum @set_format and @handle_frame needs to be overridden.
 // 
 // AudioEncoderClass is the type struct for [AudioEncoder]
 type AudioEncoderClass struct {
@@ -16634,10 +13017,9 @@ func (a *AudioEncoderClass) ParentClass() *gst.ElementClass {
 }
 
 // AudioFilterClass wraps GstAudioFilterClass
+// 
+// see also No documentation available
 //
-// In addition to the @setup virtual function, you should also override the
-// GstBaseTransform::transform and/or GstBaseTransform::transform_ip virtual
-// function.
 // 
 // AudioFilterClass is the type struct for [AudioFilter]
 type AudioFilterClass struct {
@@ -16691,14 +13073,8 @@ func (a *AudioFilterClass) ParentClass() *gstbase.BaseTransformClass {
 
 // AddPadTemplates wraps gst_audio_filter_class_add_pad_templates
 // 
-// The function takes the following parameters:
-// 
-// 	- allowedCaps *gst.Caps: what formats the filter can handle, as #GstCaps 
+// see also No documentation available
 //
-// Convenience function to add pad templates to this element class, with
-// @allowed_caps as the caps that can be handled.
-// 
-// This function is usually used from within a GObject class_init function.
 func (klass *AudioFilterClass) AddPadTemplates(allowedCaps *gst.Caps) {
 	var carg0 *C.GstAudioFilterClass // in, none, converted
 	var carg1 *C.GstCaps             // in, none, converted
@@ -16712,8 +13088,9 @@ func (klass *AudioFilterClass) AddPadTemplates(allowedCaps *gst.Caps) {
 }
 
 // AudioFormatInfo wraps GstAudioFormatInfo
+// 
+// see also No documentation available
 //
-// Information for an audio format.
 type AudioFormatInfo struct {
 	*audioFormatInfo
 }
@@ -16808,11 +13185,9 @@ func UnsafeAudioFormatInfoToGlibFull(a *AudioFormatInfo) unsafe.Pointer {
 }
 
 // AudioInfo wraps GstAudioInfo
-//
-// Information describing audio properties. This information can be filled
-// in from GstCaps with gst_audio_info_from_caps().
 // 
-// Use the provided macros to access the info in this structure.
+// see also No documentation available
+//
 type AudioInfo struct {
 	*audioInfo
 }
@@ -16908,12 +13283,8 @@ func UnsafeAudioInfoToGlibFull(a *AudioInfo) unsafe.Pointer {
 
 // NewAudioInfo wraps gst_audio_info_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *AudioInfo 
+// see also No documentation available
 //
-// Allocate a new #GstAudioInfo that is also initialized with
-// gst_audio_info_init().
 func NewAudioInfo() *AudioInfo {
 	var cret *C.GstAudioInfo // return, full, converted
 
@@ -16928,15 +13299,8 @@ func NewAudioInfo() *AudioInfo {
 
 // NewAudioInfoFromCaps wraps gst_audio_info_new_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioInfo (nullable) 
+// see also No documentation available
 //
-// Parse @caps to generate a #GstAudioInfo.
 func NewAudioInfoFromCaps(caps *gst.Caps) *AudioInfo {
 	var carg1 *C.GstCaps      // in, none, converted
 	var cret  *C.GstAudioInfo // return, full, converted, nullable
@@ -16957,16 +13321,8 @@ func NewAudioInfoFromCaps(caps *gst.Caps) *AudioInfo {
 
 // AudioInfoFromCaps wraps gst_audio_info_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- info AudioInfo: a #GstAudioInfo 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse @caps and update @info.
 func AudioInfoFromCaps(caps *gst.Caps) (AudioInfo, bool) {
 	var carg2 *C.GstCaps     // in, none, converted
 	var carg1 C.GstAudioInfo // out, transfer: none, C Pointers: 0, Name: AudioInfo, caller-allocates
@@ -16992,11 +13348,8 @@ func AudioInfoFromCaps(caps *gst.Caps) (AudioInfo, bool) {
 
 // AudioInfoInit wraps gst_audio_info_init
 // 
-// The function returns the following values:
-// 
-// 	- info AudioInfo: a #GstAudioInfo 
+// see also No documentation available
 //
-// Initialize @info with default values.
 func AudioInfoInit() AudioInfo {
 	var carg1 C.GstAudioInfo // out, transfer: none, C Pointers: 0, Name: AudioInfo, caller-allocates
 
@@ -17013,21 +13366,8 @@ func AudioInfoInit() AudioInfo {
 
 // Convert wraps gst_audio_info_convert
 // 
-// The function takes the following parameters:
-// 
-// 	- srcFmt gst.Format: #GstFormat of the @src_val 
-// 	- srcVal int64: value to convert 
-// 	- destFmt gst.Format: #GstFormat of the @dest_val 
-// 
-// The function returns the following values:
-// 
-// 	- destVal int64: pointer to destination value 
-// 	- goret bool 
+// see also No documentation available
 //
-// Converts among various #GstFormat types.  This function handles
-// GST_FORMAT_BYTES, GST_FORMAT_TIME, and GST_FORMAT_DEFAULT.  For
-// raw audio, GST_FORMAT_DEFAULT corresponds to audio frames.  This
-// function can be used to handle pad queries of the type GST_QUERY_CONVERT.
 func (info *AudioInfo) Convert(srcFmt gst.Format, srcVal int64, destFmt gst.Format) (int64, bool) {
 	var carg0 *C.GstAudioInfo // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
@@ -17060,11 +13400,8 @@ func (info *AudioInfo) Convert(srcFmt gst.Format, srcVal int64, destFmt gst.Form
 
 // Copy wraps gst_audio_info_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *AudioInfo 
+// see also No documentation available
 //
-// Copy a GstAudioInfo structure.
 func (info *AudioInfo) Copy() *AudioInfo {
 	var carg0 *C.GstAudioInfo // in, none, converted
 	var cret  *C.GstAudioInfo // return, full, converted
@@ -17083,15 +13420,8 @@ func (info *AudioInfo) Copy() *AudioInfo {
 
 // IsEqual wraps gst_audio_info_is_equal
 // 
-// The function takes the following parameters:
-// 
-// 	- other *AudioInfo: a #GstAudioInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Compares two #GstAudioInfo and returns whether they are equal or not
 func (info *AudioInfo) IsEqual(other *AudioInfo) bool {
 	var carg0 *C.GstAudioInfo // in, none, converted
 	var carg1 *C.GstAudioInfo // in, none, converted
@@ -17115,16 +13445,8 @@ func (info *AudioInfo) IsEqual(other *AudioInfo) bool {
 
 // SetFormat wraps gst_audio_info_set_format
 // 
-// The function takes the following parameters:
-// 
-// 	- format AudioFormat: the format 
-// 	- rate int32: the samplerate 
-// 	- channels int32: the number of channels 
-// 	- position [64]AudioChannelPosition (nullable): the channel positions 
+// see also No documentation available
 //
-// Set the default info for the audio info of @format and @rate and @channels.
-// 
-// Note: This initializes @info first, no values are preserved.
 func (info *AudioInfo) SetFormat(format AudioFormat, rate int32, channels int32, position [64]AudioChannelPosition) {
 	var carg0 *C.GstAudioInfo            // in, none, converted
 	var carg1 C.GstAudioFormat           // in, none, casted
@@ -17154,11 +13476,8 @@ func (info *AudioInfo) SetFormat(format AudioFormat, rate int32, channels int32,
 
 // ToCaps wraps gst_audio_info_to_caps
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Convert the values of @info into a #GstCaps.
 func (info *AudioInfo) ToCaps() *gst.Caps {
 	var carg0 *C.GstAudioInfo // in, none, converted
 	var cret  *C.GstCaps      // return, full, converted
@@ -17176,8 +13495,9 @@ func (info *AudioInfo) ToCaps() *gst.Caps {
 }
 
 // AudioLevelMeta wraps GstAudioLevelMeta
+// 
+// see also No documentation available
 //
-// Meta containing Audio Level Indication: https://tools.ietf.org/html/rfc6464
 type AudioLevelMeta struct {
 	*audioLevelMeta
 }
@@ -17258,11 +13578,8 @@ func UnsafeAudioLevelMetaToGlibFull(a *AudioLevelMeta) unsafe.Pointer {
 
 // AudioLevelMetaGetInfo wraps gst_audio_level_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 //
-// Return the #GstMetaInfo associated with #GstAudioLevelMeta.
 func AudioLevelMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -17276,10 +13593,9 @@ func AudioLevelMetaGetInfo() *gst.MetaInfo {
 }
 
 // AudioMeta wraps GstAudioMeta
+// 
+// see also No documentation available
 //
-// #GstAudioDownmixMeta defines an audio downmix matrix to be send along with
-// audio buffers. These functions in this module help to create and attach the
-// meta as well as extracting it.
 type AudioMeta struct {
 	*audioMeta
 }
@@ -17360,9 +13676,7 @@ func UnsafeAudioMetaToGlibFull(a *AudioMeta) unsafe.Pointer {
 
 // AudioMetaGetInfo wraps gst_audio_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func AudioMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -17376,6 +13690,8 @@ func AudioMetaGetInfo() *gst.MetaInfo {
 }
 
 // AudioQuantize wraps GstAudioQuantize
+// 
+// see also No documentation available
 type AudioQuantize struct {
 	*audioQuantize
 }
@@ -17455,9 +13771,9 @@ func UnsafeAudioQuantizeToGlibFull(a *AudioQuantize) unsafe.Pointer {
 }
 
 // Reset wraps gst_audio_quantize_reset
+// 
+// see also No documentation available
 //
-// Reset @quant to the state is was when created, clearing any
-// history it might have.
 func (quant *AudioQuantize) Reset() {
 	var carg0 *C.GstAudioQuantize // in, none, converted
 
@@ -17468,9 +13784,9 @@ func (quant *AudioQuantize) Reset() {
 }
 
 // AudioResampler wraps GstAudioResampler
+// 
+// see also No documentation available
 //
-// #GstAudioResampler is a structure which holds the information
-// required to perform various kinds of resampling filtering.
 type AudioResampler struct {
 	*audioResampler
 }
@@ -17551,21 +13867,8 @@ func UnsafeAudioResamplerToGlibFull(a *AudioResampler) unsafe.Pointer {
 
 // NewAudioResampler wraps gst_audio_resampler_new
 // 
-// The function takes the following parameters:
-// 
-// 	- method AudioResamplerMethod: a #GstAudioResamplerMethod 
-// 	- flags AudioResamplerFlags: #GstAudioResamplerFlags 
-// 	- format AudioFormat: the #GstAudioFormat 
-// 	- channels int32: the number of channels 
-// 	- inRate int32: input rate 
-// 	- outRate int32: output rate 
-// 	- options *gst.Structure: extra options 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioResampler 
+// see also No documentation available
 //
-// Make a new resampler.
 func NewAudioResampler(method AudioResamplerMethod, flags AudioResamplerFlags, format AudioFormat, channels int32, inRate int32, outRate int32, options *gst.Structure) *AudioResampler {
 	var carg1 C.GstAudioResamplerMethod // in, none, casted
 	var carg2 C.GstAudioResamplerFlags  // in, none, casted
@@ -17602,16 +13905,8 @@ func NewAudioResampler(method AudioResamplerMethod, flags AudioResamplerFlags, f
 
 // AudioResamplerOptionsSetQuality wraps gst_audio_resampler_options_set_quality
 // 
-// The function takes the following parameters:
-// 
-// 	- method AudioResamplerMethod: a #GstAudioResamplerMethod 
-// 	- quality uint: the quality 
-// 	- inRate int32: the input rate 
-// 	- outRate int32: the output rate 
-// 	- options *gst.Structure: a #GstStructure 
+// see also No documentation available
 //
-// Set the parameters for resampling from @in_rate to @out_rate using @method
-// for @quality in @options.
 func AudioResamplerOptionsSetQuality(method AudioResamplerMethod, quality uint, inRate int32, outRate int32, options *gst.Structure) {
 	var carg1 C.GstAudioResamplerMethod // in, none, casted
 	var carg2 C.guint                   // in, none, casted
@@ -17635,16 +13930,8 @@ func AudioResamplerOptionsSetQuality(method AudioResamplerMethod, quality uint, 
 
 // GetInFrames wraps gst_audio_resampler_get_in_frames
 // 
-// The function takes the following parameters:
-// 
-// 	- outFrames uint: number of input frames 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get the number of input frames that would currently be needed
-// to produce @out_frames from @resampler.
 func (resampler *AudioResampler) GetInFrames(outFrames uint) uint {
 	var carg0 *C.GstAudioResampler // in, none, converted
 	var carg1 C.gsize              // in, none, casted
@@ -17666,12 +13953,8 @@ func (resampler *AudioResampler) GetInFrames(outFrames uint) uint {
 
 // GetMaxLatency wraps gst_audio_resampler_get_max_latency
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get the maximum number of input samples that the resampler would
-// need before producing output.
 func (resampler *AudioResampler) GetMaxLatency() uint {
 	var carg0 *C.GstAudioResampler // in, none, converted
 	var cret  C.gsize              // return, none, casted
@@ -17690,16 +13973,8 @@ func (resampler *AudioResampler) GetMaxLatency() uint {
 
 // GetOutFrames wraps gst_audio_resampler_get_out_frames
 // 
-// The function takes the following parameters:
-// 
-// 	- inFrames uint: number of input frames 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Get the number of output frames that would be currently available when
-// @in_frames are given to @resampler.
 func (resampler *AudioResampler) GetOutFrames(inFrames uint) uint {
 	var carg0 *C.GstAudioResampler // in, none, converted
 	var carg1 C.gsize              // in, none, casted
@@ -17720,9 +13995,9 @@ func (resampler *AudioResampler) GetOutFrames(inFrames uint) uint {
 }
 
 // Reset wraps gst_audio_resampler_reset
+// 
+// see also No documentation available
 //
-// Reset @resampler to the state it was when it was first created, discarding
-// all sample history.
 func (resampler *AudioResampler) Reset() {
 	var carg0 *C.GstAudioResampler // in, none, converted
 
@@ -17734,22 +14009,8 @@ func (resampler *AudioResampler) Reset() {
 
 // Update wraps gst_audio_resampler_update
 // 
-// The function takes the following parameters:
-// 
-// 	- inRate int32: new input rate 
-// 	- outRate int32: new output rate 
-// 	- options *gst.Structure: new options or %NULL 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Update the resampler parameters for @resampler. This function should
-// not be called concurrently with any other function on @resampler.
-// 
-// When @in_rate or @out_rate is 0, its value is unchanged.
-// 
-// When @options is %NULL, the previously configured options are reused.
 func (resampler *AudioResampler) Update(inRate int32, outRate int32, options *gst.Structure) bool {
 	var carg0 *C.GstAudioResampler // in, none, converted
 	var carg1 C.gint               // in, none, casted
@@ -17778,8 +14039,9 @@ func (resampler *AudioResampler) Update(inRate int32, outRate int32, options *gs
 }
 
 // AudioRingBufferClass wraps GstAudioRingBufferClass
+// 
+// see also No documentation available
 //
-// The vmethods that subclasses can override to implement the ringbuffer.
 // 
 // AudioRingBufferClass is the type struct for [AudioRingBuffer]
 type AudioRingBufferClass struct {
@@ -17832,12 +14094,9 @@ func (a *AudioRingBufferClass) ParentClass() *gst.ObjectClass {
 }
 
 // AudioRingBufferSpec wraps GstAudioRingBufferSpec
-//
-// The structure containing the format specification of the ringbuffer.
 // 
-// When @type is GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD, the @dsd_format
-// is valid (otherwise it is unused). Also, when DSD is the sample type,
-// only the rate, channels, position, and bpf fields in @info are populated.
+// see also No documentation available
+//
 type AudioRingBufferSpec struct {
 	*audioRingBufferSpec
 }
@@ -17918,6 +14177,8 @@ func UnsafeAudioRingBufferSpecToGlibFull(a *AudioRingBufferSpec) unsafe.Pointer 
 
 // AudioSinkClass wraps GstAudioSinkClass
 // 
+// see also No documentation available
+// 
 // AudioSinkClass is the type struct for [AudioSink]
 type AudioSinkClass struct {
 	*audioSinkClass
@@ -17969,6 +14230,8 @@ func (a *AudioSinkClass) ParentClass() *AudioBaseSinkClass {
 }
 
 // AudioSinkClassExtension wraps GstAudioSinkClassExtension
+// 
+// see also No documentation available
 type AudioSinkClassExtension struct {
 	*audioSinkClassExtension
 }
@@ -18048,9 +14311,9 @@ func UnsafeAudioSinkClassExtensionToGlibFull(a *AudioSinkClassExtension) unsafe.
 }
 
 // AudioSrcClass wraps GstAudioSrcClass
+// 
+// see also No documentation available
 //
-// #GstAudioSrc class. Override the vmethod to implement
-// functionality.
 // 
 // AudioSrcClass is the type struct for [AudioSrc]
 type AudioSrcClass struct {
@@ -18103,13 +14366,9 @@ func (a *AudioSrcClass) ParentClass() *AudioBaseSrcClass {
 }
 
 // AudioStreamAlign wraps GstAudioStreamAlign
-//
-// #GstAudioStreamAlign provides a helper object that helps tracking audio
-// stream alignment and discontinuities, and detects discontinuities if
-// possible.
 // 
-// See gst_audio_stream_align_new() for a description of its parameters and
-// gst_audio_stream_align_process() for the details of the processing.
+// see also No documentation available
+//
 type AudioStreamAlign struct {
 	*audioStreamAlign
 }
@@ -18205,27 +14464,8 @@ func UnsafeAudioStreamAlignToGlibFull(a *AudioStreamAlign) unsafe.Pointer {
 
 // NewAudioStreamAlign wraps gst_audio_stream_align_new
 // 
-// The function takes the following parameters:
-// 
-// 	- rate int32: a sample rate 
-// 	- alignmentThreshold gst.ClockTime: a alignment threshold in nanoseconds 
-// 	- discontWait gst.ClockTime: discont wait in nanoseconds 
-// 
-// The function returns the following values:
-// 
-// 	- goret *AudioStreamAlign 
+// see also No documentation available
 //
-// Allocate a new #GstAudioStreamAlign with the given configuration. All
-// processing happens according to sample rate @rate, until
-// gst_audio_stream_align_set_rate() is called with a new @rate.
-// A negative rate can be used for reverse playback.
-// 
-// @alignment_threshold gives the tolerance in nanoseconds after which a
-// timestamp difference is considered a discontinuity. Once detected,
-// @discont_wait nanoseconds have to pass without going below the threshold
-// again until the output buffer is marked as a discontinuity. These can later
-// be re-configured with gst_audio_stream_align_set_alignment_threshold() and
-// gst_audio_stream_align_set_discont_wait().
 func NewAudioStreamAlign(rate int32, alignmentThreshold gst.ClockTime, discontWait gst.ClockTime) *AudioStreamAlign {
 	var carg1 C.gint                 // in, none, casted
 	var carg2 C.GstClockTime         // in, none, casted, alias
@@ -18250,11 +14490,8 @@ func NewAudioStreamAlign(rate int32, alignmentThreshold gst.ClockTime, discontWa
 
 // Copy wraps gst_audio_stream_align_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *AudioStreamAlign 
+// see also No documentation available
 //
-// Copy a GstAudioStreamAlign structure.
 func (align *AudioStreamAlign) Copy() *AudioStreamAlign {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  *C.GstAudioStreamAlign // return, full, converted
@@ -18273,11 +14510,8 @@ func (align *AudioStreamAlign) Copy() *AudioStreamAlign {
 
 // GetAlignmentThreshold wraps gst_audio_stream_align_get_alignment_threshold
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Gets the currently configured alignment threshold.
 func (align *AudioStreamAlign) GetAlignmentThreshold() gst.ClockTime {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.GstClockTime         // return, none, casted, alias
@@ -18296,11 +14530,8 @@ func (align *AudioStreamAlign) GetAlignmentThreshold() gst.ClockTime {
 
 // GetDiscontWait wraps gst_audio_stream_align_get_discont_wait
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Gets the currently configured discont wait.
 func (align *AudioStreamAlign) GetDiscontWait() gst.ClockTime {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.GstClockTime         // return, none, casted, alias
@@ -18319,11 +14550,8 @@ func (align *AudioStreamAlign) GetDiscontWait() gst.ClockTime {
 
 // GetRate wraps gst_audio_stream_align_get_rate
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 //
-// Gets the currently configured sample rate.
 func (align *AudioStreamAlign) GetRate() int32 {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.gint                 // return, none, casted
@@ -18342,12 +14570,8 @@ func (align *AudioStreamAlign) GetRate() int32 {
 
 // GetSamplesSinceDiscont wraps gst_audio_stream_align_get_samples_since_discont
 // 
-// The function returns the following values:
-// 
-// 	- goret uint64 
+// see also No documentation available
 //
-// Returns the number of samples that were processed since the last
-// discontinuity was detected.
 func (align *AudioStreamAlign) GetSamplesSinceDiscont() uint64 {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.guint64              // return, none, casted
@@ -18366,12 +14590,8 @@ func (align *AudioStreamAlign) GetSamplesSinceDiscont() uint64 {
 
 // GetTimestampAtDiscont wraps gst_audio_stream_align_get_timestamp_at_discont
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Timestamp that was passed when a discontinuity was detected, i.e. the first
-// timestamp after the discontinuity.
 func (align *AudioStreamAlign) GetTimestampAtDiscont() gst.ClockTime {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.GstClockTime         // return, none, casted, alias
@@ -18389,8 +14609,9 @@ func (align *AudioStreamAlign) GetTimestampAtDiscont() gst.ClockTime {
 }
 
 // MarkDiscont wraps gst_audio_stream_align_mark_discont
+// 
+// see also No documentation available
 //
-// Marks the next buffer as discontinuous and resets timestamp tracking.
 func (align *AudioStreamAlign) MarkDiscont() {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 
@@ -18402,35 +14623,8 @@ func (align *AudioStreamAlign) MarkDiscont() {
 
 // Process wraps gst_audio_stream_align_process
 // 
-// The function takes the following parameters:
-// 
-// 	- discont bool: if this data is considered to be discontinuous 
-// 	- timestamp gst.ClockTime: a #GstClockTime of the start of the data 
-// 	- nSamples uint: number of samples to process 
-// 
-// The function returns the following values:
-// 
-// 	- outTimestamp gst.ClockTime: output timestamp of the data 
-// 	- outDuration gst.ClockTime: output duration of the data 
-// 	- outSamplePosition uint64: output sample position of the start of the data 
-// 	- goret bool 
+// see also No documentation available
 //
-// Processes data with @timestamp and @n_samples, and returns the output
-// timestamp, duration and sample position together with a boolean to signal
-// whether a discontinuity was detected or not. All non-discontinuous data
-// will have perfect timestamps and durations.
-// 
-// A discontinuity is detected once the difference between the actual
-// timestamp and the timestamp calculated from the sample count since the last
-// discontinuity differs by more than the alignment threshold for a duration
-// longer than discont wait.
-// 
-// Note: In reverse playback, every buffer is considered discontinuous in the
-// context of buffer flags because the last sample of the previous buffer is
-// discontinuous with the first sample of the current one. However for this
-// function they are only considered discontinuous in reverse playback if the
-// first sample of the previous buffer is discontinuous with the last sample
-// of the current one.
 func (align *AudioStreamAlign) Process(discont bool, timestamp gst.ClockTime, nSamples uint) (gst.ClockTime, gst.ClockTime, uint64, bool) {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var carg1 C.gboolean             // in
@@ -18471,11 +14665,8 @@ func (align *AudioStreamAlign) Process(discont bool, timestamp gst.ClockTime, nS
 
 // SetAlignmentThreshold wraps gst_audio_stream_align_set_alignment_threshold
 // 
-// The function takes the following parameters:
-// 
-// 	- alignmentThreshold gst.ClockTime: a new alignment threshold 
+// see also No documentation available
 //
-// Sets @alignment_treshold as new alignment threshold for the following processing.
 func (align *AudioStreamAlign) SetAlignmentThreshold(alignmentThreshold gst.ClockTime) {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var carg1 C.GstClockTime         // in, none, casted, alias
@@ -18490,11 +14681,8 @@ func (align *AudioStreamAlign) SetAlignmentThreshold(alignmentThreshold gst.Cloc
 
 // SetDiscontWait wraps gst_audio_stream_align_set_discont_wait
 // 
-// The function takes the following parameters:
-// 
-// 	- discontWait gst.ClockTime: a new discont wait 
+// see also No documentation available
 //
-// Sets @alignment_treshold as new discont wait for the following processing.
 func (align *AudioStreamAlign) SetDiscontWait(discontWait gst.ClockTime) {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var carg1 C.GstClockTime         // in, none, casted, alias
@@ -18509,12 +14697,8 @@ func (align *AudioStreamAlign) SetDiscontWait(discontWait gst.ClockTime) {
 
 // SetRate wraps gst_audio_stream_align_set_rate
 // 
-// The function takes the following parameters:
-// 
-// 	- rate int32: a new sample rate 
+// see also No documentation available
 //
-// Sets @rate as new sample rate for the following processing. If the sample
-// rate differs this implicitly marks the next data as discontinuous.
 func (align *AudioStreamAlign) SetRate(rate int32) {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var carg1 C.gint                 // in, none, casted
@@ -18528,58 +14712,9 @@ func (align *AudioStreamAlign) SetRate(rate int32) {
 }
 
 // DsdInfo wraps GstDsdInfo
+// 
+// see also No documentation available
 //
-// Information describing DSD audio properties.
-// 
-// In DSD, the "sample format" is the bit. Unlike PCM, there are no further
-// "sample formats" in DSD. However, in software, DSD bits are grouped into
-// bytes (since dealing with individual bits is impractical), and these bytes
-// in turn are grouped into words. This becomes relevant when interleaving
-// channels and transmitting DSD data through audio APIs. The different
-// types of grouping DSD bytes are referred to as the "DSD grouping forma"
-// or just "DSD format". #GstDsdFormat has a list of valid ways of grouping
-// DSD bytes into words.
-// 
-// DSD rates are equivalent to PCM sample rates, except that they specify
-// how many DSD bytes are consumed per second. This refers to the bytes per
-// second _per channel_; the rate does not change when the number of channel
-// changes. (Strictly speaking, it would be more correct to measure the
-// *bits* per second, since the bit is the DSD "sample format", but it is
-// more practical to use bytes.) In DSD, bit rates are always an integer
-// multiple of the CD audio rate (44100) or the DAT rate (48000). DSD64-44x
-// is 44100 * 64 = 2822400 bits per second, or 352800 bytes per second
-// (the latter would be used in this info structure). DSD64-48x is
-// 48000 * 64 = 3072000 bits per second, or 384000 bytes per second.
-// #GST_DSD_MAKE_DSD_RATE_44x can be used for specifying DSD-44x rates,
-// *and #GST_DSD_MAKE_DSD_RATE_48x can be used for specifying DSD-48x ones.
-// Also, since DSD-48x is less well known, when the multiplier is given
-// without the 44x/48x specifier, 44x is typically implied.
-// 
-// It is important to know that in DSD, different format widths correspond
-// to different playtimes. That is, a word with 32 DSD bits covers two times
-// as much playtime as a word with 16 DSD bits. This is in contrast to PCM,
-// where one word (= one PCM sample) always covers a time period of 1/samplerate,
-// no matter how many bits a PCM sample is made of. For this reason, DSD
-// and PCM widths and strides cannot be used the same way.
-// 
-// Multiple channels are arranged in DSD data either interleaved or non-
-// interleaved. This is similar to PCM. Interleaved layouts rotate between
-// channels and words. First, word 0 of channel 0 is present. Then word
-// 0 of channel 1 follows. Then word 0 of channel 2 etc. until all
-// channels are through, then comes word 1 of channel 0 etc.
-// 
-// Non-interleaved data is planar. First, all words of channel 0 are
-// present, then all words of channel 1 etc. Unlike interleaved data,
-// non-interleaved data can be sparse, that is, there can be space in
-// between the planes. the @positions array specifies the plane offsets.
-// 
-// In uncommon cases, the DSD bits in the data bytes can be stored in reverse
-// order. For example, normally, in DSDU8, the first byte contains DSD bits
-// 0 to 7, and the most significant bit of that byte is DSD bit 0. If this
-// order is reversed, then bit 7 is the first one instead. In that ase,
-// @reversed_bytes is set to TRUE.
-// 
-// Use the provided macros to access the info in this structure.
 type DsdInfo struct {
 	*dsdInfo
 }
@@ -18675,12 +14810,8 @@ func UnsafeDsdInfoToGlibFull(d *DsdInfo) unsafe.Pointer {
 
 // NewDsdInfo wraps gst_dsd_info_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *DsdInfo 
+// see also No documentation available
 //
-// Allocate a new #GstDsdInfo that is also initialized with
-// gst_dsd_info_init().
 func NewDsdInfo() *DsdInfo {
 	var cret *C.GstDsdInfo // return, full, converted
 
@@ -18695,15 +14826,8 @@ func NewDsdInfo() *DsdInfo {
 
 // NewDsdInfoFromCaps wraps gst_dsd_info_new_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- goret *DsdInfo 
+// see also No documentation available
 //
-// Parse @caps to generate a #GstDsdInfo.
 func NewDsdInfoFromCaps(caps *gst.Caps) *DsdInfo {
 	var carg1 *C.GstCaps    // in, none, converted
 	var cret  *C.GstDsdInfo // return, full, converted
@@ -18722,16 +14846,8 @@ func NewDsdInfoFromCaps(caps *gst.Caps) *DsdInfo {
 
 // DsdInfoFromCaps wraps gst_dsd_info_from_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps 
-// 
-// The function returns the following values:
-// 
-// 	- info DsdInfo: a #GstDsdInfo 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parse @caps and update @info.
 func DsdInfoFromCaps(caps *gst.Caps) (DsdInfo, bool) {
 	var carg2 *C.GstCaps   // in, none, converted
 	var carg1 C.GstDsdInfo // out, transfer: none, C Pointers: 0, Name: DsdInfo, caller-allocates
@@ -18757,11 +14873,8 @@ func DsdInfoFromCaps(caps *gst.Caps) (DsdInfo, bool) {
 
 // DsdInfoInit wraps gst_dsd_info_init
 // 
-// The function returns the following values:
-// 
-// 	- info DsdInfo: a #GstDsdInfo 
+// see also No documentation available
 //
-// Initialize @info with default values.
 func DsdInfoInit() DsdInfo {
 	var carg1 C.GstDsdInfo // out, transfer: none, C Pointers: 0, Name: DsdInfo, caller-allocates
 
@@ -18778,11 +14891,8 @@ func DsdInfoInit() DsdInfo {
 
 // Copy wraps gst_dsd_info_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *DsdInfo 
+// see also No documentation available
 //
-// Copy a GstDsdInfo structure.
 func (info *DsdInfo) Copy() *DsdInfo {
 	var carg0 *C.GstDsdInfo // in, none, converted
 	var cret  *C.GstDsdInfo // return, full, converted
@@ -18801,15 +14911,8 @@ func (info *DsdInfo) Copy() *DsdInfo {
 
 // IsEqual wraps gst_dsd_info_is_equal
 // 
-// The function takes the following parameters:
-// 
-// 	- other *DsdInfo: a #GstDsdInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Compares two #GstDsdInfo and returns whether they are equal or not
 func (info *DsdInfo) IsEqual(other *DsdInfo) bool {
 	var carg0 *C.GstDsdInfo // in, none, converted
 	var carg1 *C.GstDsdInfo // in, none, converted
@@ -18833,16 +14936,8 @@ func (info *DsdInfo) IsEqual(other *DsdInfo) bool {
 
 // SetFormat wraps gst_dsd_info_set_format
 // 
-// The function takes the following parameters:
-// 
-// 	- format DsdFormat: the format 
-// 	- rate int32: the DSD rate 
-// 	- channels int32: the number of channels 
-// 	- positions [64]AudioChannelPosition (nullable): the channel positions 
+// see also No documentation available
 //
-// Set the default info for the DSD info of @format and @rate and @channels.
-// 
-// Note: This initializes @info first, no values are preserved.
 func (info *DsdInfo) SetFormat(format DsdFormat, rate int32, channels int32, positions [64]AudioChannelPosition) {
 	var carg0 *C.GstDsdInfo              // in, none, converted
 	var carg1 C.GstDsdFormat             // in, none, casted
@@ -18872,11 +14967,8 @@ func (info *DsdInfo) SetFormat(format DsdFormat, rate int32, channels int32, pos
 
 // ToCaps wraps gst_dsd_info_to_caps
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps 
+// see also No documentation available
 //
-// Convert the values of @info into a #GstCaps.
 func (info *DsdInfo) ToCaps() *gst.Caps {
 	var carg0 *C.GstDsdInfo // in, none, converted
 	var cret  *C.GstCaps    // return, full, converted
@@ -18894,26 +14986,9 @@ func (info *DsdInfo) ToCaps() *gst.Caps {
 }
 
 // DsdPlaneOffsetMeta wraps GstDsdPlaneOffsetMeta
+// 
+// see also No documentation available
 //
-// Buffer metadata describing planar DSD contents in the buffer. This is not needed
-// for interleaved DSD data, and is required for non-interleaved (= planar) data.
-// 
-// The different channels in @offsets are always in the GStreamer channel order.
-// Zero-copy channel reordering can be implemented by swapping the values in
-// @offsets.
-// 
-// It is not allowed for channels to overlap in memory,
-// i.e. for each i in [0, channels), the range
-// [@offsets[i], @offsets[i] + @num_bytes_per_channel) must not overlap
-// with any other such range.
-// 
-// It is, however, allowed to have parts of the buffer memory unused, by using
-// @offsets and @num_bytes_per_channel in such a way that leave gaps on it.
-// This is used to implement zero-copy clipping in non-interleaved buffers.
-// 
-// Obviously, due to the above, it is not safe to infer the
-// number of valid bytes from the size of the buffer. You should always
-// use the @num_bytes_per_channel variable of this metadata.
 type DsdPlaneOffsetMeta struct {
 	*dsdPlaneOffsetMeta
 }
@@ -18994,9 +15069,7 @@ func UnsafeDsdPlaneOffsetMetaToGlibFull(d *DsdPlaneOffsetMeta) unsafe.Pointer {
 
 // DsdPlaneOffsetMetaGetInfo wraps gst_dsd_plane_offset_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 func DsdPlaneOffsetMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -19010,6 +15083,8 @@ func DsdPlaneOffsetMetaGetInfo() *gst.MetaInfo {
 }
 
 // StreamVolumeInterface wraps GstStreamVolumeInterface
+// 
+// see also No documentation available
 type StreamVolumeInterface struct {
 	*streamVolumeInterface
 }

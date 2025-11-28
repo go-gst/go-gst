@@ -57,25 +57,30 @@ func init() {
 }
 
 // PlayerColorBalanceType wraps GstPlayerColorBalanceType
+// 
+// see also No documentation available
 type PlayerColorBalanceType C.int
 
 const (
 	// PlayerColorBalanceHue wraps GST_PLAYER_COLOR_BALANCE_HUE
+	// 
+	// see also No documentation available
 	//
-	// hue or color balance.
 	PlayerColorBalanceHue PlayerColorBalanceType = 3
 	// PlayerColorBalanceBrightness wraps GST_PLAYER_COLOR_BALANCE_BRIGHTNESS
+	// 
+	// see also No documentation available
 	//
-	// brightness or black level.
 	PlayerColorBalanceBrightness PlayerColorBalanceType = 0
 	// PlayerColorBalanceSaturation wraps GST_PLAYER_COLOR_BALANCE_SATURATION
+	// 
+	// see also No documentation available
 	//
-	// color saturation or chroma
-	// gain.
 	PlayerColorBalanceSaturation PlayerColorBalanceType = 2
 	// PlayerColorBalanceContrast wraps GST_PLAYER_COLOR_BALANCE_CONTRAST
+	// 
+	// see also No documentation available
 	//
-	// contrast or luma gain.
 	PlayerColorBalanceContrast PlayerColorBalanceType = 1
 )
 
@@ -105,15 +110,8 @@ func (e PlayerColorBalanceType) String() string {
 
 // PlayerColorBalanceTypeGetName wraps gst_player_color_balance_type_get_name
 // 
-// The function takes the following parameters:
-// 
-// 	- typ PlayerColorBalanceType: a #GstPlayerColorBalanceType 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Gets a string representing the given color balance type.
 func PlayerColorBalanceTypeGetName(typ PlayerColorBalanceType) string {
 	var carg1 C.GstPlayerColorBalanceType // in, none, casted
 	var cret  *C.gchar                    // return, none, string
@@ -131,12 +129,15 @@ func PlayerColorBalanceTypeGetName(typ PlayerColorBalanceType) string {
 }
 
 // PlayerError wraps GstPlayerError
+// 
+// see also No documentation available
 type PlayerError C.int
 
 const (
 	// PlayerErrorFailed wraps GST_PLAYER_ERROR_FAILED
+	// 
+	// see also No documentation available
 	//
-	// generic error.
 	PlayerErrorFailed PlayerError = 0
 )
 
@@ -163,15 +164,8 @@ func (e PlayerError) String() string {
 
 // PlayerErrorGetName wraps gst_player_error_get_name
 // 
-// The function takes the following parameters:
-// 
-// 	- err PlayerError: a #GstPlayerError 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Gets a string representing the given error.
 func PlayerErrorGetName(err PlayerError) string {
 	var carg1 C.GstPlayerError // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -190,9 +184,7 @@ func PlayerErrorGetName(err PlayerError) string {
 
 // PlayerErrorQuark wraps gst_player_error_quark
 // 
-// The function returns the following values:
-// 
-// 	- goret glib.Quark 
+// see also No documentation available
 func PlayerErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -206,18 +198,30 @@ func PlayerErrorQuark() glib.Quark {
 }
 
 // PlayerSnapshotFormat wraps GstPlayerSnapshotFormat
+// 
+// see also No documentation available
 type PlayerSnapshotFormat C.int
 
 const (
 	// PlayerThumbnailRawNative wraps GST_PLAYER_THUMBNAIL_RAW_NATIVE
+	// 
+	// see also No documentation available
 	PlayerThumbnailRawNative PlayerSnapshotFormat = 0
 	// PlayerThumbnailRawXrgb wraps GST_PLAYER_THUMBNAIL_RAW_xRGB
+	// 
+	// see also No documentation available
 	PlayerThumbnailRawXrgb PlayerSnapshotFormat = 1
 	// PlayerThumbnailRawBgrx wraps GST_PLAYER_THUMBNAIL_RAW_BGRx
+	// 
+	// see also No documentation available
 	PlayerThumbnailRawBgrx PlayerSnapshotFormat = 2
 	// PlayerThumbnailJpg wraps GST_PLAYER_THUMBNAIL_JPG
+	// 
+	// see also No documentation available
 	PlayerThumbnailJpg PlayerSnapshotFormat = 3
 	// PlayerThumbnailPng wraps GST_PLAYER_THUMBNAIL_PNG
+	// 
+	// see also No documentation available
 	PlayerThumbnailPng PlayerSnapshotFormat = 4
 )
 
@@ -234,25 +238,30 @@ func (e PlayerSnapshotFormat) String() string {
 }
 
 // PlayerState wraps GstPlayerState
+// 
+// see also No documentation available
 type PlayerState C.int
 
 const (
 	// PlayerStateStopped wraps GST_PLAYER_STATE_STOPPED
+	// 
+	// see also No documentation available
 	//
-	// the player is stopped.
 	PlayerStateStopped PlayerState = 0
 	// PlayerStateBuffering wraps GST_PLAYER_STATE_BUFFERING
+	// 
+	// see also No documentation available
 	//
-	// the player is buffering.
 	PlayerStateBuffering PlayerState = 1
 	// PlayerStatePaused wraps GST_PLAYER_STATE_PAUSED
+	// 
+	// see also No documentation available
 	//
-	// the player is paused.
 	PlayerStatePaused PlayerState = 2
 	// PlayerStatePlaying wraps GST_PLAYER_STATE_PLAYING
+	// 
+	// see also No documentation available
 	//
-	// the player is currently playing a
-	// stream.
 	PlayerStatePlaying PlayerState = 3
 )
 
@@ -282,15 +291,8 @@ func (e PlayerState) String() string {
 
 // PlayerStateGetName wraps gst_player_state_get_name
 // 
-// The function takes the following parameters:
-// 
-// 	- state PlayerState: a #GstPlayerState 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Gets a string representing the given state.
 func PlayerStateGetName(state PlayerState) string {
 	var carg1 C.GstPlayerState // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -316,6 +318,8 @@ type PlayerSignalDispatcherInstance struct {
 var _ PlayerSignalDispatcher = (*PlayerSignalDispatcherInstance)(nil)
 
 // PlayerSignalDispatcher wraps GstPlayerSignalDispatcher
+// 
+// see also No documentation available
 type PlayerSignalDispatcher interface {
 	upcastToGstPlayerSignalDispatcher() *PlayerSignalDispatcherInstance
 }
@@ -372,6 +376,8 @@ type PlayerVideoRendererInstance struct {
 var _ PlayerVideoRenderer = (*PlayerVideoRendererInstance)(nil)
 
 // PlayerVideoRenderer wraps GstPlayerVideoRenderer
+// 
+// see also No documentation available
 type PlayerVideoRenderer interface {
 	upcastToGstPlayerVideoRenderer() *PlayerVideoRendererInstance
 }
@@ -428,417 +434,275 @@ type PlayerInstance struct {
 var _ Player = (*PlayerInstance)(nil)
 
 // Player wraps GstPlayer
+// 
+// see also No documentation available
 //
-// Starting from GStreamer 1.20, application developers are strongly advised to migrate to #GstPlay.
-// #GstPlayer will be deprecated in 1.20 and most likely removed by 1.24.
 type Player interface {
 	gst.Object
 	upcastToGstPlayer() *PlayerInstance
 
 	// GetAudioVideoOffset wraps gst_player_get_audio_video_offset
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int64 
+	// see also No documentation available
 	//
-	// Retrieve the current value of audio-video-offset property
 	GetAudioVideoOffset() int64
 	// GetColorBalance wraps gst_player_get_color_balance
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- typ PlayerColorBalanceType: #GstPlayerColorBalanceType 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret float64 
+	// see also No documentation available
 	//
-	// Retrieve the current value of the indicated @type.
 	GetColorBalance(PlayerColorBalanceType) float64
 	// GetConfig wraps gst_player_get_config
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Structure 
+	// see also No documentation available
 	//
-	// Get a copy of the current configuration of the player. This configuration
-	// can either be modified and used for the gst_player_set_config() call
-	// or it must be freed after usage.
 	GetConfig() *gst.Structure
 	// GetCurrentAudioTrack wraps gst_player_get_current_audio_track
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret PlayerAudioInfo (nullable) 
+	// see also No documentation available
 	//
-	// A Function to get current audio #GstPlayerAudioInfo instance.
 	GetCurrentAudioTrack() PlayerAudioInfo
 	// GetCurrentSubtitleTrack wraps gst_player_get_current_subtitle_track
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret PlayerSubtitleInfo (nullable) 
+	// see also No documentation available
 	//
-	// A Function to get current subtitle #GstPlayerSubtitleInfo instance.
 	GetCurrentSubtitleTrack() PlayerSubtitleInfo
 	// GetCurrentVideoTrack wraps gst_player_get_current_video_track
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret PlayerVideoInfo (nullable) 
+	// see also No documentation available
 	//
-	// A Function to get current video #GstPlayerVideoInfo instance.
 	GetCurrentVideoTrack() PlayerVideoInfo
 	// GetCurrentVisualization wraps gst_player_get_current_visualization
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
+	// see also No documentation available
 	GetCurrentVisualization() string
 	// GetDuration wraps gst_player_get_duration
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Retrieves the duration of the media stream that self represents.
 	GetDuration() gst.ClockTime
 	// GetMediaInfo wraps gst_player_get_media_info
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret PlayerMediaInfo (nullable) 
+	// see also No documentation available
 	//
-	// A Function to get the current media info #GstPlayerMediaInfo instance.
 	GetMediaInfo() PlayerMediaInfo
 	// GetMultiviewFlags wraps gst_player_get_multiview_flags
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gstvideo.VideoMultiviewFlags 
+	// see also No documentation available
 	//
-	// Retrieve the current value of the indicated @type.
 	GetMultiviewFlags() gstvideo.VideoMultiviewFlags
 	// GetMultiviewMode wraps gst_player_get_multiview_mode
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gstvideo.VideoMultiviewFramePacking 
+	// see also No documentation available
 	//
-	// Retrieve the current value of the indicated @type.
 	GetMultiviewMode() gstvideo.VideoMultiviewFramePacking
 	// GetMute wraps gst_player_get_mute
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	GetMute() bool
 	// GetPipeline wraps gst_player_get_pipeline
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.Element 
+	// see also No documentation available
 	GetPipeline() gst.Element
 	// GetPosition wraps gst_player_get_position
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	GetPosition() gst.ClockTime
 	// GetRate wraps gst_player_get_rate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret float64 
+	// see also No documentation available
 	GetRate() float64
 	// GetSubtitleURI wraps gst_player_get_subtitle_uri
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
+	// see also No documentation available
 	//
-	// current subtitle URI
 	GetSubtitleURI() string
 	// GetSubtitleVideoOffset wraps gst_player_get_subtitle_video_offset
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int64 
+	// see also No documentation available
 	//
-	// Retrieve the current value of subtitle-video-offset property
 	GetSubtitleVideoOffset() int64
 	// GetURI wraps gst_player_get_uri
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
+	// see also No documentation available
 	//
-	// Gets the URI of the currently-playing stream.
 	GetURI() string
 	// GetVideoSnapshot wraps gst_player_get_video_snapshot
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- format PlayerSnapshotFormat: output format of the video snapshot 
-	// 	- config *gst.Structure (nullable): Additional configuration 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Sample (nullable) 
+	// see also No documentation available
 	//
-	// Get a snapshot of the currently selected video stream, if any. The format can be
-	// selected with @format and optional configuration is possible with @config
-	// Currently supported settings are:
-	// - width, height of type G_TYPE_INT
-	// - pixel-aspect-ratio of type GST_TYPE_FRACTION
-	//  Except for GST_PLAYER_THUMBNAIL_RAW_NATIVE format, if no config is set, pixel-aspect-ratio would be 1/1
 	GetVideoSnapshot(PlayerSnapshotFormat, *gst.Structure) *gst.Sample
 	// GetVolume wraps gst_player_get_volume
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret float64 
+	// see also No documentation available
 	//
-	// Returns the current volume level, as a percentage between 0 and 1.
 	GetVolume() float64
 	// HasColorBalance wraps gst_player_has_color_balance
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks whether the @player has color balance support available.
 	HasColorBalance() bool
 	// Pause wraps gst_player_pause
+	// 
+	// see also No documentation available
 	//
-	// Pauses the current stream.
 	Pause()
 	// Play wraps gst_player_play
+	// 
+	// see also No documentation available
 	//
-	// Request to play the loaded stream.
 	Play()
 	// Seek wraps gst_player_seek
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- position gst.ClockTime: position to seek in nanoseconds 
+	// see also No documentation available
 	//
-	// Seeks the currently-playing stream to the absolute @position time
-	// in nanoseconds.
 	Seek(gst.ClockTime)
 	// SetAudioTrack wraps gst_player_set_audio_track
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- streamIndex int32: stream index 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	SetAudioTrack(int32) bool
 	// SetAudioTrackEnabled wraps gst_player_set_audio_track_enabled
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: TRUE or FALSE 
+	// see also No documentation available
 	//
-	// Enable or disable the current audio track.
 	SetAudioTrackEnabled(bool)
 	// SetAudioVideoOffset wraps gst_player_set_audio_video_offset
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset int64: #gint64 in nanoseconds 
+	// see also No documentation available
 	//
-	// Sets audio-video-offset property by value of @offset
 	SetAudioVideoOffset(int64)
 	// SetColorBalance wraps gst_player_set_color_balance
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- typ PlayerColorBalanceType: #GstPlayerColorBalanceType 
-	// 	- value float64: The new value for the @type, ranged [0,1] 
+	// see also No documentation available
 	//
-	// Sets the current value of the indicated channel @type to the passed
-	// value.
 	SetColorBalance(PlayerColorBalanceType, float64)
 	// SetConfig wraps gst_player_set_config
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- config *gst.Structure: a #GstStructure 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Set the configuration of the player. If the player is already configured, and
-	// the configuration haven't change, this function will return %TRUE. If the
-	// player is not in the GST_PLAYER_STATE_STOPPED, this method will return %FALSE
-	// and active configuration will remain.
-	// 
-	// @config is a #GstStructure that contains the configuration parameters for
-	// the player.
-	// 
-	// This function takes ownership of @config.
 	SetConfig(*gst.Structure) bool
 	// SetMultiviewFlags wraps gst_player_set_multiview_flags
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- flags gstvideo.VideoMultiviewFlags: The new value for the @type 
+	// see also No documentation available
 	//
-	// Sets the current value of the indicated mode @type to the passed
-	// value.
 	SetMultiviewFlags(gstvideo.VideoMultiviewFlags)
 	// SetMultiviewMode wraps gst_player_set_multiview_mode
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- mode gstvideo.VideoMultiviewFramePacking: The new value for the @type 
+	// see also No documentation available
 	//
-	// Sets the current value of the indicated mode @type to the passed
-	// value.
 	SetMultiviewMode(gstvideo.VideoMultiviewFramePacking)
 	// SetMute wraps gst_player_set_mute
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- val bool: Mute state the should be set 
+	// see also No documentation available
 	//
-	// %TRUE if the currently-playing stream should be muted.
 	SetMute(bool)
 	// SetRate wraps gst_player_set_rate
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- rate float64: playback rate 
+	// see also No documentation available
 	//
-	// Playback at specified rate
 	SetRate(float64)
 	// SetSubtitleTrack wraps gst_player_set_subtitle_track
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- streamIndex int32: stream index 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	SetSubtitleTrack(int32) bool
 	// SetSubtitleTrackEnabled wraps gst_player_set_subtitle_track_enabled
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: TRUE or FALSE 
+	// see also No documentation available
 	//
-	// Enable or disable the current subtitle track.
 	SetSubtitleTrackEnabled(bool)
 	// SetSubtitleURI wraps gst_player_set_subtitle_uri
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- uri string (nullable): subtitle URI 
+	// see also No documentation available
 	//
-	// Sets the external subtitle URI. This should be combined with a call to
-	// gst_player_set_subtitle_track_enabled(@player, TRUE) so the subtitles are actually
-	// rendered.
 	SetSubtitleURI(string)
 	// SetSubtitleVideoOffset wraps gst_player_set_subtitle_video_offset
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- offset int64: #gint64 in nanoseconds 
+	// see also No documentation available
 	//
-	// Sets subtitle-video-offset property by value of @offset
 	SetSubtitleVideoOffset(int64)
 	// SetURI wraps gst_player_set_uri
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- uri string (nullable): next URI to play. 
+	// see also No documentation available
 	//
-	// Sets the next URI to play.
 	SetURI(string)
 	// SetVideoTrack wraps gst_player_set_video_track
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- streamIndex int32: stream index 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	SetVideoTrack(int32) bool
 	// SetVideoTrackEnabled wraps gst_player_set_video_track_enabled
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: TRUE or FALSE 
+	// see also No documentation available
 	//
-	// Enable or disable the current video track.
 	SetVideoTrackEnabled(bool)
 	// SetVisualization wraps gst_player_set_visualization
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string (nullable): visualization element obtained from
-	// #gst_player_visualizations_get() 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	SetVisualization(string) bool
 	// SetVisualizationEnabled wraps gst_player_set_visualization_enabled
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- enabled bool: TRUE or FALSE 
+	// see also No documentation available
 	//
-	// Enable or disable the visualization.
 	SetVisualizationEnabled(bool)
 	// SetVolume wraps gst_player_set_volume
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- val float64: the new volume level, as a percentage between 0 and 1 
+	// see also No documentation available
 	//
-	// Sets the volume level of the stream as a percentage between 0 and 1.
-	// 
-	// This volume is a linear factor. For showing the volume in a GUI it
-	// might make sense to first convert from a different format. Volume sliders
-	// should usually use a cubic volume. See gst_stream_volume_convert_volume().
 	SetVolume(float64)
 	// Stop wraps gst_player_stop
+	// 
+	// see also No documentation available
 	//
-	// Stops playing the current stream and resets to the first position
-	// in the stream.
 	Stop()
 	// ConnectBuffering connects the provided callback to the "buffering" signal
+	// 
+	// see also No documentation available
 	ConnectBuffering(func(Player, int32)) gobject.SignalHandle
 	// ConnectDurationChanged connects the provided callback to the "duration-changed" signal
+	// 
+	// see also No documentation available
 	ConnectDurationChanged(func(Player, uint64)) gobject.SignalHandle
 	// ConnectEndOfStream connects the provided callback to the "end-of-stream" signal
+	// 
+	// see also No documentation available
 	ConnectEndOfStream(func(Player)) gobject.SignalHandle
 	// ConnectError connects the provided callback to the "error" signal
+	// 
+	// see also No documentation available
 	ConnectError(func(Player, error)) gobject.SignalHandle
 	// ConnectMediaInfoUpdated connects the provided callback to the "media-info-updated" signal
+	// 
+	// see also No documentation available
 	ConnectMediaInfoUpdated(func(Player, PlayerMediaInfo)) gobject.SignalHandle
 	// ConnectMuteChanged connects the provided callback to the "mute-changed" signal
+	// 
+	// see also No documentation available
 	ConnectMuteChanged(func(Player)) gobject.SignalHandle
 	// ConnectPositionUpdated connects the provided callback to the "position-updated" signal
+	// 
+	// see also No documentation available
 	ConnectPositionUpdated(func(Player, uint64)) gobject.SignalHandle
 	// ConnectSeekDone connects the provided callback to the "seek-done" signal
+	// 
+	// see also No documentation available
 	ConnectSeekDone(func(Player, uint64)) gobject.SignalHandle
 	// ConnectStateChanged connects the provided callback to the "state-changed" signal
+	// 
+	// see also No documentation available
 	ConnectStateChanged(func(Player, PlayerState)) gobject.SignalHandle
 	// ConnectURILoaded connects the provided callback to the "uri-loaded" signal
+	// 
+	// see also No documentation available
 	ConnectURILoaded(func(Player, string)) gobject.SignalHandle
 	// ConnectVideoDimensionsChanged connects the provided callback to the "video-dimensions-changed" signal
+	// 
+	// see also No documentation available
 	ConnectVideoDimensionsChanged(func(Player, int32, int32)) gobject.SignalHandle
 	// ConnectVolumeChanged connects the provided callback to the "volume-changed" signal
+	// 
+	// see also No documentation available
 	ConnectVolumeChanged(func(Player)) gobject.SignalHandle
 	// ConnectWarning connects the provided callback to the "warning" signal
+	// 
+	// see also No documentation available
 	ConnectWarning(func(Player, error)) gobject.SignalHandle
 }
 
@@ -896,25 +760,8 @@ func UnsafePlayerToGlibFull(c Player) unsafe.Pointer {
 
 // NewPlayer wraps gst_player_new
 // 
-// The function takes the following parameters:
-// 
-// 	- videoRenderer PlayerVideoRenderer (nullable): GstPlayerVideoRenderer to use 
-// 	- signalDispatcher PlayerSignalDispatcher (nullable): GstPlayerSignalDispatcher to use 
-// 
-// The function returns the following values:
-// 
-// 	- goret Player 
+// see also No documentation available
 //
-// Creates a new #GstPlayer instance that uses @signal_dispatcher to dispatch
-// signals to some event loop system, or emits signals directly if NULL is
-// passed. See gst_player_g_main_context_signal_dispatcher_new().
-// 
-// Video is going to be rendered by @video_renderer, or if %NULL is provided
-// no special video set up will be done and some default handling will be
-// performed.
-// 
-// This also initializes GStreamer via `gst_init()` on the first call if this
-// didn't happen before.
 func NewPlayer(videoRenderer PlayerVideoRenderer, signalDispatcher PlayerSignalDispatcher) Player {
 	var carg1 *C.GstPlayerVideoRenderer    // in, full, converted, nullable
 	var carg2 *C.GstPlayerSignalDispatcher // in, full, converted, nullable
@@ -940,13 +787,7 @@ func NewPlayer(videoRenderer PlayerVideoRenderer, signalDispatcher PlayerSignalD
 
 // PlayerConfigGetPositionUpdateInterval wraps gst_player_config_get_position_update_interval
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstPlayer configuration 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 func PlayerConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -965,13 +806,7 @@ func PlayerConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 
 // PlayerConfigGetSeekAccurate wraps gst_player_config_get_seek_accurate
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstPlayer configuration 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func PlayerConfigGetSeekAccurate(config *gst.Structure) bool {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.gboolean      // return
@@ -992,16 +827,8 @@ func PlayerConfigGetSeekAccurate(config *gst.Structure) bool {
 
 // PlayerConfigGetUserAgent wraps gst_player_config_get_user_agent
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstPlayer configuration 
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Return the user agent which has been configured using
-// gst_player_config_set_user_agent() if any.
 func PlayerConfigGetUserAgent(config *gst.Structure) string {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  *C.gchar        // return, full, string, nullable-string
@@ -1023,13 +850,8 @@ func PlayerConfigGetUserAgent(config *gst.Structure) string {
 
 // PlayerConfigSetPositionUpdateInterval wraps gst_player_config_set_position_update_interval
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstPlayer configuration 
-// 	- interval uint: interval in ms 
+// see also No documentation available
 //
-// set interval in milliseconds between two position-updated signals.
-// pass 0 to stop updating the position.
 func PlayerConfigSetPositionUpdateInterval(config *gst.Structure, interval uint) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -1044,20 +866,8 @@ func PlayerConfigSetPositionUpdateInterval(config *gst.Structure, interval uint)
 
 // PlayerConfigSetSeekAccurate wraps gst_player_config_set_seek_accurate
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstPlayer configuration 
-// 	- accurate bool: accurate seek or not 
+// see also No documentation available
 //
-// Enable or disable accurate seeking. When enabled, elements will try harder
-// to seek as accurately as possible to the requested seek position. Generally
-// it will be slower especially for formats that don't have any indexes or
-// timestamp markers in the stream.
-// 
-// If accurate seeking is disabled, elements will seek as close as the request
-// position without slowing down seeking too much.
-// 
-// Accurate seeking is disabled by default.
 func PlayerConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.gboolean      // in
@@ -1074,14 +884,8 @@ func PlayerConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 
 // PlayerConfigSetUserAgent wraps gst_player_config_set_user_agent
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstPlayer configuration 
-// 	- agent string (nullable): the string to use as user agent 
+// see also No documentation available
 //
-// Set the user agent to pass to the server if @player needs to connect
-// to a server during playback. This is typically used when playing HTTP
-// or RTSP streams.
 func PlayerConfigSetUserAgent(config *gst.Structure, agent string) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 *C.gchar        // in, none, string, nullable-string
@@ -1099,13 +903,7 @@ func PlayerConfigSetUserAgent(config *gst.Structure, agent string) {
 
 // PlayerGetAudioStreams wraps gst_player_get_audio_streams
 // 
-// The function takes the following parameters:
-// 
-// 	- info PlayerMediaInfo: a #GstPlayerMediaInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret []PlayerAudioInfo 
+// see also No documentation available
 func PlayerGetAudioStreams(info PlayerMediaInfo) []PlayerAudioInfo {
 	var carg1 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.GList              // container, transfer: none
@@ -1131,13 +929,7 @@ func PlayerGetAudioStreams(info PlayerMediaInfo) []PlayerAudioInfo {
 
 // PlayerGetSubtitleStreams wraps gst_player_get_subtitle_streams
 // 
-// The function takes the following parameters:
-// 
-// 	- info PlayerMediaInfo: a #GstPlayerMediaInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret []PlayerSubtitleInfo 
+// see also No documentation available
 func PlayerGetSubtitleStreams(info PlayerMediaInfo) []PlayerSubtitleInfo {
 	var carg1 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.GList              // container, transfer: none
@@ -1163,13 +955,7 @@ func PlayerGetSubtitleStreams(info PlayerMediaInfo) []PlayerSubtitleInfo {
 
 // PlayerGetVideoStreams wraps gst_player_get_video_streams
 // 
-// The function takes the following parameters:
-// 
-// 	- info PlayerMediaInfo: a #GstPlayerMediaInfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret []PlayerVideoInfo 
+// see also No documentation available
 func PlayerGetVideoStreams(info PlayerMediaInfo) []PlayerVideoInfo {
 	var carg1 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.GList              // container, transfer: none
@@ -1195,11 +981,8 @@ func PlayerGetVideoStreams(info PlayerMediaInfo) []PlayerVideoInfo {
 
 // GetAudioVideoOffset wraps gst_player_get_audio_video_offset
 // 
-// The function returns the following values:
-// 
-// 	- goret int64 
+// see also No documentation available
 //
-// Retrieve the current value of audio-video-offset property
 func (player *PlayerInstance) GetAudioVideoOffset() int64 {
 	var carg0 *C.GstPlayer // in, none, converted
 	var cret  C.gint64     // return, none, casted
@@ -1218,15 +1001,8 @@ func (player *PlayerInstance) GetAudioVideoOffset() int64 {
 
 // GetColorBalance wraps gst_player_get_color_balance
 // 
-// The function takes the following parameters:
-// 
-// 	- typ PlayerColorBalanceType: #GstPlayerColorBalanceType 
-// 
-// The function returns the following values:
-// 
-// 	- goret float64 
+// see also No documentation available
 //
-// Retrieve the current value of the indicated @type.
 func (player *PlayerInstance) GetColorBalance(typ PlayerColorBalanceType) float64 {
 	var carg0 *C.GstPlayer                // in, none, converted
 	var carg1 C.GstPlayerColorBalanceType // in, none, casted
@@ -1248,13 +1024,8 @@ func (player *PlayerInstance) GetColorBalance(typ PlayerColorBalanceType) float6
 
 // GetConfig wraps gst_player_get_config
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Structure 
+// see also No documentation available
 //
-// Get a copy of the current configuration of the player. This configuration
-// can either be modified and used for the gst_player_set_config() call
-// or it must be freed after usage.
 func (player *PlayerInstance) GetConfig() *gst.Structure {
 	var carg0 *C.GstPlayer    // in, none, converted
 	var cret  *C.GstStructure // return, full, converted
@@ -1273,11 +1044,8 @@ func (player *PlayerInstance) GetConfig() *gst.Structure {
 
 // GetCurrentAudioTrack wraps gst_player_get_current_audio_track
 // 
-// The function returns the following values:
-// 
-// 	- goret PlayerAudioInfo (nullable) 
+// see also No documentation available
 //
-// A Function to get current audio #GstPlayerAudioInfo instance.
 func (player *PlayerInstance) GetCurrentAudioTrack() PlayerAudioInfo {
 	var carg0 *C.GstPlayer          // in, none, converted
 	var cret  *C.GstPlayerAudioInfo // return, full, converted, nullable
@@ -1298,11 +1066,8 @@ func (player *PlayerInstance) GetCurrentAudioTrack() PlayerAudioInfo {
 
 // GetCurrentSubtitleTrack wraps gst_player_get_current_subtitle_track
 // 
-// The function returns the following values:
-// 
-// 	- goret PlayerSubtitleInfo (nullable) 
+// see also No documentation available
 //
-// A Function to get current subtitle #GstPlayerSubtitleInfo instance.
 func (player *PlayerInstance) GetCurrentSubtitleTrack() PlayerSubtitleInfo {
 	var carg0 *C.GstPlayer             // in, none, converted
 	var cret  *C.GstPlayerSubtitleInfo // return, full, converted, nullable
@@ -1323,11 +1088,8 @@ func (player *PlayerInstance) GetCurrentSubtitleTrack() PlayerSubtitleInfo {
 
 // GetCurrentVideoTrack wraps gst_player_get_current_video_track
 // 
-// The function returns the following values:
-// 
-// 	- goret PlayerVideoInfo (nullable) 
+// see also No documentation available
 //
-// A Function to get current video #GstPlayerVideoInfo instance.
 func (player *PlayerInstance) GetCurrentVideoTrack() PlayerVideoInfo {
 	var carg0 *C.GstPlayer          // in, none, converted
 	var cret  *C.GstPlayerVideoInfo // return, full, converted, nullable
@@ -1348,9 +1110,7 @@ func (player *PlayerInstance) GetCurrentVideoTrack() PlayerVideoInfo {
 
 // GetCurrentVisualization wraps gst_player_get_current_visualization
 // 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 func (player *PlayerInstance) GetCurrentVisualization() string {
 	var carg0 *C.GstPlayer // in, none, converted
 	var cret  *C.gchar     // return, full, string, nullable-string
@@ -1372,11 +1132,8 @@ func (player *PlayerInstance) GetCurrentVisualization() string {
 
 // GetDuration wraps gst_player_get_duration
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Retrieves the duration of the media stream that self represents.
 func (player *PlayerInstance) GetDuration() gst.ClockTime {
 	var carg0 *C.GstPlayer   // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -1395,11 +1152,8 @@ func (player *PlayerInstance) GetDuration() gst.ClockTime {
 
 // GetMediaInfo wraps gst_player_get_media_info
 // 
-// The function returns the following values:
-// 
-// 	- goret PlayerMediaInfo (nullable) 
+// see also No documentation available
 //
-// A Function to get the current media info #GstPlayerMediaInfo instance.
 func (player *PlayerInstance) GetMediaInfo() PlayerMediaInfo {
 	var carg0 *C.GstPlayer          // in, none, converted
 	var cret  *C.GstPlayerMediaInfo // return, full, converted, nullable
@@ -1420,11 +1174,8 @@ func (player *PlayerInstance) GetMediaInfo() PlayerMediaInfo {
 
 // GetMultiviewFlags wraps gst_player_get_multiview_flags
 // 
-// The function returns the following values:
-// 
-// 	- goret gstvideo.VideoMultiviewFlags 
+// see also No documentation available
 //
-// Retrieve the current value of the indicated @type.
 func (player *PlayerInstance) GetMultiviewFlags() gstvideo.VideoMultiviewFlags {
 	var carg0 *C.GstPlayer             // in, none, converted
 	var cret  C.GstVideoMultiviewFlags // return, none, casted
@@ -1443,11 +1194,8 @@ func (player *PlayerInstance) GetMultiviewFlags() gstvideo.VideoMultiviewFlags {
 
 // GetMultiviewMode wraps gst_player_get_multiview_mode
 // 
-// The function returns the following values:
-// 
-// 	- goret gstvideo.VideoMultiviewFramePacking 
+// see also No documentation available
 //
-// Retrieve the current value of the indicated @type.
 func (player *PlayerInstance) GetMultiviewMode() gstvideo.VideoMultiviewFramePacking {
 	var carg0 *C.GstPlayer                    // in, none, converted
 	var cret  C.GstVideoMultiviewFramePacking // return, none, casted
@@ -1466,9 +1214,7 @@ func (player *PlayerInstance) GetMultiviewMode() gstvideo.VideoMultiviewFramePac
 
 // GetMute wraps gst_player_get_mute
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (player *PlayerInstance) GetMute() bool {
 	var carg0 *C.GstPlayer // in, none, converted
 	var cret  C.gboolean   // return
@@ -1489,9 +1235,7 @@ func (player *PlayerInstance) GetMute() bool {
 
 // GetPipeline wraps gst_player_get_pipeline
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.Element 
+// see also No documentation available
 func (player *PlayerInstance) GetPipeline() gst.Element {
 	var carg0 *C.GstPlayer  // in, none, converted
 	var cret  *C.GstElement // return, full, converted
@@ -1510,9 +1254,7 @@ func (player *PlayerInstance) GetPipeline() gst.Element {
 
 // GetPosition wraps gst_player_get_position
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 func (player *PlayerInstance) GetPosition() gst.ClockTime {
 	var carg0 *C.GstPlayer   // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -1531,9 +1273,7 @@ func (player *PlayerInstance) GetPosition() gst.ClockTime {
 
 // GetRate wraps gst_player_get_rate
 // 
-// The function returns the following values:
-// 
-// 	- goret float64 
+// see also No documentation available
 func (player *PlayerInstance) GetRate() float64 {
 	var carg0 *C.GstPlayer // in, none, converted
 	var cret  C.gdouble    // return, none, casted
@@ -1552,11 +1292,8 @@ func (player *PlayerInstance) GetRate() float64 {
 
 // GetSubtitleURI wraps gst_player_get_subtitle_uri
 // 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// current subtitle URI
 func (player *PlayerInstance) GetSubtitleURI() string {
 	var carg0 *C.GstPlayer // in, none, converted
 	var cret  *C.gchar     // return, full, string, nullable-string
@@ -1578,11 +1315,8 @@ func (player *PlayerInstance) GetSubtitleURI() string {
 
 // GetSubtitleVideoOffset wraps gst_player_get_subtitle_video_offset
 // 
-// The function returns the following values:
-// 
-// 	- goret int64 
+// see also No documentation available
 //
-// Retrieve the current value of subtitle-video-offset property
 func (player *PlayerInstance) GetSubtitleVideoOffset() int64 {
 	var carg0 *C.GstPlayer // in, none, converted
 	var cret  C.gint64     // return, none, casted
@@ -1601,11 +1335,8 @@ func (player *PlayerInstance) GetSubtitleVideoOffset() int64 {
 
 // GetURI wraps gst_player_get_uri
 // 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// Gets the URI of the currently-playing stream.
 func (player *PlayerInstance) GetURI() string {
 	var carg0 *C.GstPlayer // in, none, converted
 	var cret  *C.gchar     // return, full, string, nullable-string
@@ -1627,21 +1358,8 @@ func (player *PlayerInstance) GetURI() string {
 
 // GetVideoSnapshot wraps gst_player_get_video_snapshot
 // 
-// The function takes the following parameters:
-// 
-// 	- format PlayerSnapshotFormat: output format of the video snapshot 
-// 	- config *gst.Structure (nullable): Additional configuration 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Sample (nullable) 
+// see also No documentation available
 //
-// Get a snapshot of the currently selected video stream, if any. The format can be
-// selected with @format and optional configuration is possible with @config
-// Currently supported settings are:
-// - width, height of type G_TYPE_INT
-// - pixel-aspect-ratio of type GST_TYPE_FRACTION
-//  Except for GST_PLAYER_THUMBNAIL_RAW_NATIVE format, if no config is set, pixel-aspect-ratio would be 1/1
 func (player *PlayerInstance) GetVideoSnapshot(format PlayerSnapshotFormat, config *gst.Structure) *gst.Sample {
 	var carg0 *C.GstPlayer              // in, none, converted
 	var carg1 C.GstPlayerSnapshotFormat // in, none, casted
@@ -1670,11 +1388,8 @@ func (player *PlayerInstance) GetVideoSnapshot(format PlayerSnapshotFormat, conf
 
 // GetVolume wraps gst_player_get_volume
 // 
-// The function returns the following values:
-// 
-// 	- goret float64 
+// see also No documentation available
 //
-// Returns the current volume level, as a percentage between 0 and 1.
 func (player *PlayerInstance) GetVolume() float64 {
 	var carg0 *C.GstPlayer // in, none, converted
 	var cret  C.gdouble    // return, none, casted
@@ -1693,11 +1408,8 @@ func (player *PlayerInstance) GetVolume() float64 {
 
 // HasColorBalance wraps gst_player_has_color_balance
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks whether the @player has color balance support available.
 func (player *PlayerInstance) HasColorBalance() bool {
 	var carg0 *C.GstPlayer // in, none, converted
 	var cret  C.gboolean   // return
@@ -1717,8 +1429,9 @@ func (player *PlayerInstance) HasColorBalance() bool {
 }
 
 // Pause wraps gst_player_pause
+// 
+// see also No documentation available
 //
-// Pauses the current stream.
 func (player *PlayerInstance) Pause() {
 	var carg0 *C.GstPlayer // in, none, converted
 
@@ -1729,8 +1442,9 @@ func (player *PlayerInstance) Pause() {
 }
 
 // Play wraps gst_player_play
+// 
+// see also No documentation available
 //
-// Request to play the loaded stream.
 func (player *PlayerInstance) Play() {
 	var carg0 *C.GstPlayer // in, none, converted
 
@@ -1742,12 +1456,8 @@ func (player *PlayerInstance) Play() {
 
 // Seek wraps gst_player_seek
 // 
-// The function takes the following parameters:
-// 
-// 	- position gst.ClockTime: position to seek in nanoseconds 
+// see also No documentation available
 //
-// Seeks the currently-playing stream to the absolute @position time
-// in nanoseconds.
 func (player *PlayerInstance) Seek(position gst.ClockTime) {
 	var carg0 *C.GstPlayer   // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
@@ -1762,13 +1472,7 @@ func (player *PlayerInstance) Seek(position gst.ClockTime) {
 
 // SetAudioTrack wraps gst_player_set_audio_track
 // 
-// The function takes the following parameters:
-// 
-// 	- streamIndex int32: stream index 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (player *PlayerInstance) SetAudioTrack(streamIndex int32) bool {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gint       // in, none, casted
@@ -1792,11 +1496,8 @@ func (player *PlayerInstance) SetAudioTrack(streamIndex int32) bool {
 
 // SetAudioTrackEnabled wraps gst_player_set_audio_track_enabled
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: TRUE or FALSE 
+// see also No documentation available
 //
-// Enable or disable the current audio track.
 func (player *PlayerInstance) SetAudioTrackEnabled(enabled bool) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gboolean   // in
@@ -1813,11 +1514,8 @@ func (player *PlayerInstance) SetAudioTrackEnabled(enabled bool) {
 
 // SetAudioVideoOffset wraps gst_player_set_audio_video_offset
 // 
-// The function takes the following parameters:
-// 
-// 	- offset int64: #gint64 in nanoseconds 
+// see also No documentation available
 //
-// Sets audio-video-offset property by value of @offset
 func (player *PlayerInstance) SetAudioVideoOffset(offset int64) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gint64     // in, none, casted
@@ -1832,13 +1530,8 @@ func (player *PlayerInstance) SetAudioVideoOffset(offset int64) {
 
 // SetColorBalance wraps gst_player_set_color_balance
 // 
-// The function takes the following parameters:
-// 
-// 	- typ PlayerColorBalanceType: #GstPlayerColorBalanceType 
-// 	- value float64: The new value for the @type, ranged [0,1] 
+// see also No documentation available
 //
-// Sets the current value of the indicated channel @type to the passed
-// value.
 func (player *PlayerInstance) SetColorBalance(typ PlayerColorBalanceType, value float64) {
 	var carg0 *C.GstPlayer                // in, none, converted
 	var carg1 C.GstPlayerColorBalanceType // in, none, casted
@@ -1856,23 +1549,8 @@ func (player *PlayerInstance) SetColorBalance(typ PlayerColorBalanceType, value 
 
 // SetConfig wraps gst_player_set_config
 // 
-// The function takes the following parameters:
-// 
-// 	- config *gst.Structure: a #GstStructure 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Set the configuration of the player. If the player is already configured, and
-// the configuration haven't change, this function will return %TRUE. If the
-// player is not in the GST_PLAYER_STATE_STOPPED, this method will return %FALSE
-// and active configuration will remain.
-// 
-// @config is a #GstStructure that contains the configuration parameters for
-// the player.
-// 
-// This function takes ownership of @config.
 func (player *PlayerInstance) SetConfig(config *gst.Structure) bool {
 	var carg0 *C.GstPlayer    // in, none, converted
 	var carg1 *C.GstStructure // in, full, converted
@@ -1896,12 +1574,8 @@ func (player *PlayerInstance) SetConfig(config *gst.Structure) bool {
 
 // SetMultiviewFlags wraps gst_player_set_multiview_flags
 // 
-// The function takes the following parameters:
-// 
-// 	- flags gstvideo.VideoMultiviewFlags: The new value for the @type 
+// see also No documentation available
 //
-// Sets the current value of the indicated mode @type to the passed
-// value.
 func (player *PlayerInstance) SetMultiviewFlags(flags gstvideo.VideoMultiviewFlags) {
 	var carg0 *C.GstPlayer             // in, none, converted
 	var carg1 C.GstVideoMultiviewFlags // in, none, casted
@@ -1916,12 +1590,8 @@ func (player *PlayerInstance) SetMultiviewFlags(flags gstvideo.VideoMultiviewFla
 
 // SetMultiviewMode wraps gst_player_set_multiview_mode
 // 
-// The function takes the following parameters:
-// 
-// 	- mode gstvideo.VideoMultiviewFramePacking: The new value for the @type 
+// see also No documentation available
 //
-// Sets the current value of the indicated mode @type to the passed
-// value.
 func (player *PlayerInstance) SetMultiviewMode(mode gstvideo.VideoMultiviewFramePacking) {
 	var carg0 *C.GstPlayer                    // in, none, converted
 	var carg1 C.GstVideoMultiviewFramePacking // in, none, casted
@@ -1936,11 +1606,8 @@ func (player *PlayerInstance) SetMultiviewMode(mode gstvideo.VideoMultiviewFrame
 
 // SetMute wraps gst_player_set_mute
 // 
-// The function takes the following parameters:
-// 
-// 	- val bool: Mute state the should be set 
+// see also No documentation available
 //
-// %TRUE if the currently-playing stream should be muted.
 func (player *PlayerInstance) SetMute(val bool) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gboolean   // in
@@ -1957,11 +1624,8 @@ func (player *PlayerInstance) SetMute(val bool) {
 
 // SetRate wraps gst_player_set_rate
 // 
-// The function takes the following parameters:
-// 
-// 	- rate float64: playback rate 
+// see also No documentation available
 //
-// Playback at specified rate
 func (player *PlayerInstance) SetRate(rate float64) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gdouble    // in, none, casted
@@ -1976,13 +1640,7 @@ func (player *PlayerInstance) SetRate(rate float64) {
 
 // SetSubtitleTrack wraps gst_player_set_subtitle_track
 // 
-// The function takes the following parameters:
-// 
-// 	- streamIndex int32: stream index 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (player *PlayerInstance) SetSubtitleTrack(streamIndex int32) bool {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gint       // in, none, casted
@@ -2006,11 +1664,8 @@ func (player *PlayerInstance) SetSubtitleTrack(streamIndex int32) bool {
 
 // SetSubtitleTrackEnabled wraps gst_player_set_subtitle_track_enabled
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: TRUE or FALSE 
+// see also No documentation available
 //
-// Enable or disable the current subtitle track.
 func (player *PlayerInstance) SetSubtitleTrackEnabled(enabled bool) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gboolean   // in
@@ -2027,13 +1682,8 @@ func (player *PlayerInstance) SetSubtitleTrackEnabled(enabled bool) {
 
 // SetSubtitleURI wraps gst_player_set_subtitle_uri
 // 
-// The function takes the following parameters:
-// 
-// 	- uri string (nullable): subtitle URI 
+// see also No documentation available
 //
-// Sets the external subtitle URI. This should be combined with a call to
-// gst_player_set_subtitle_track_enabled(@player, TRUE) so the subtitles are actually
-// rendered.
 func (player *PlayerInstance) SetSubtitleURI(uri string) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 *C.gchar     // in, none, string, nullable-string
@@ -2051,11 +1701,8 @@ func (player *PlayerInstance) SetSubtitleURI(uri string) {
 
 // SetSubtitleVideoOffset wraps gst_player_set_subtitle_video_offset
 // 
-// The function takes the following parameters:
-// 
-// 	- offset int64: #gint64 in nanoseconds 
+// see also No documentation available
 //
-// Sets subtitle-video-offset property by value of @offset
 func (player *PlayerInstance) SetSubtitleVideoOffset(offset int64) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gint64     // in, none, casted
@@ -2070,11 +1717,8 @@ func (player *PlayerInstance) SetSubtitleVideoOffset(offset int64) {
 
 // SetURI wraps gst_player_set_uri
 // 
-// The function takes the following parameters:
-// 
-// 	- uri string (nullable): next URI to play. 
+// see also No documentation available
 //
-// Sets the next URI to play.
 func (player *PlayerInstance) SetURI(uri string) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 *C.gchar     // in, none, string, nullable-string
@@ -2092,13 +1736,7 @@ func (player *PlayerInstance) SetURI(uri string) {
 
 // SetVideoTrack wraps gst_player_set_video_track
 // 
-// The function takes the following parameters:
-// 
-// 	- streamIndex int32: stream index 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (player *PlayerInstance) SetVideoTrack(streamIndex int32) bool {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gint       // in, none, casted
@@ -2122,11 +1760,8 @@ func (player *PlayerInstance) SetVideoTrack(streamIndex int32) bool {
 
 // SetVideoTrackEnabled wraps gst_player_set_video_track_enabled
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: TRUE or FALSE 
+// see also No documentation available
 //
-// Enable or disable the current video track.
 func (player *PlayerInstance) SetVideoTrackEnabled(enabled bool) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gboolean   // in
@@ -2143,14 +1778,7 @@ func (player *PlayerInstance) SetVideoTrackEnabled(enabled bool) {
 
 // SetVisualization wraps gst_player_set_visualization
 // 
-// The function takes the following parameters:
-// 
-// 	- name string (nullable): visualization element obtained from
-// #gst_player_visualizations_get() 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (player *PlayerInstance) SetVisualization(name string) bool {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 *C.gchar     // in, none, string, nullable-string
@@ -2177,11 +1805,8 @@ func (player *PlayerInstance) SetVisualization(name string) bool {
 
 // SetVisualizationEnabled wraps gst_player_set_visualization_enabled
 // 
-// The function takes the following parameters:
-// 
-// 	- enabled bool: TRUE or FALSE 
+// see also No documentation available
 //
-// Enable or disable the visualization.
 func (player *PlayerInstance) SetVisualizationEnabled(enabled bool) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gboolean   // in
@@ -2198,15 +1823,8 @@ func (player *PlayerInstance) SetVisualizationEnabled(enabled bool) {
 
 // SetVolume wraps gst_player_set_volume
 // 
-// The function takes the following parameters:
-// 
-// 	- val float64: the new volume level, as a percentage between 0 and 1 
+// see also No documentation available
 //
-// Sets the volume level of the stream as a percentage between 0 and 1.
-// 
-// This volume is a linear factor. For showing the volume in a GUI it
-// might make sense to first convert from a different format. Volume sliders
-// should usually use a cubic volume. See gst_stream_volume_convert_volume().
 func (player *PlayerInstance) SetVolume(val float64) {
 	var carg0 *C.GstPlayer // in, none, converted
 	var carg1 C.gdouble    // in, none, casted
@@ -2220,9 +1838,9 @@ func (player *PlayerInstance) SetVolume(val float64) {
 }
 
 // Stop wraps gst_player_stop
+// 
+// see also No documentation available
 //
-// Stops playing the current stream and resets to the first position
-// in the stream.
 func (player *PlayerInstance) Stop() {
 	var carg0 *C.GstPlayer // in, none, converted
 
@@ -2233,66 +1851,92 @@ func (player *PlayerInstance) Stop() {
 }
 
 // ConnectBuffering connects the provided callback to the "buffering" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectBuffering(fn func(Player, int32)) gobject.SignalHandle {
 	return o.Connect("buffering", fn)
 }
 
 // ConnectDurationChanged connects the provided callback to the "duration-changed" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectDurationChanged(fn func(Player, uint64)) gobject.SignalHandle {
 	return o.Connect("duration-changed", fn)
 }
 
 // ConnectEndOfStream connects the provided callback to the "end-of-stream" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectEndOfStream(fn func(Player)) gobject.SignalHandle {
 	return o.Connect("end-of-stream", fn)
 }
 
 // ConnectError connects the provided callback to the "error" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectError(fn func(Player, error)) gobject.SignalHandle {
 	return o.Connect("error", fn)
 }
 
 // ConnectMediaInfoUpdated connects the provided callback to the "media-info-updated" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectMediaInfoUpdated(fn func(Player, PlayerMediaInfo)) gobject.SignalHandle {
 	return o.Connect("media-info-updated", fn)
 }
 
 // ConnectMuteChanged connects the provided callback to the "mute-changed" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectMuteChanged(fn func(Player)) gobject.SignalHandle {
 	return o.Connect("mute-changed", fn)
 }
 
 // ConnectPositionUpdated connects the provided callback to the "position-updated" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectPositionUpdated(fn func(Player, uint64)) gobject.SignalHandle {
 	return o.Connect("position-updated", fn)
 }
 
 // ConnectSeekDone connects the provided callback to the "seek-done" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectSeekDone(fn func(Player, uint64)) gobject.SignalHandle {
 	return o.Connect("seek-done", fn)
 }
 
 // ConnectStateChanged connects the provided callback to the "state-changed" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectStateChanged(fn func(Player, PlayerState)) gobject.SignalHandle {
 	return o.Connect("state-changed", fn)
 }
 
 // ConnectURILoaded connects the provided callback to the "uri-loaded" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectURILoaded(fn func(Player, string)) gobject.SignalHandle {
 	return o.Connect("uri-loaded", fn)
 }
 
 // ConnectVideoDimensionsChanged connects the provided callback to the "video-dimensions-changed" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectVideoDimensionsChanged(fn func(Player, int32, int32)) gobject.SignalHandle {
 	return o.Connect("video-dimensions-changed", fn)
 }
 
 // ConnectVolumeChanged connects the provided callback to the "volume-changed" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectVolumeChanged(fn func(Player)) gobject.SignalHandle {
 	return o.Connect("volume-changed", fn)
 }
 
 // ConnectWarning connects the provided callback to the "warning" signal
+// 
+// see also No documentation available
 func (o *PlayerInstance) ConnectWarning(fn func(Player, error)) gobject.SignalHandle {
 	return o.Connect("warning", fn)
 }
@@ -2306,6 +1950,8 @@ type PlayerGMainContextSignalDispatcherInstance struct {
 var _ PlayerGMainContextSignalDispatcher = (*PlayerGMainContextSignalDispatcherInstance)(nil)
 
 // PlayerGMainContextSignalDispatcher wraps GstPlayerGMainContextSignalDispatcher
+// 
+// see also No documentation available
 type PlayerGMainContextSignalDispatcher interface {
 	gobject.Object
 	upcastToGstPlayerGMainContextSignalDispatcher() *PlayerGMainContextSignalDispatcherInstance
@@ -2361,16 +2007,8 @@ func UnsafePlayerGMainContextSignalDispatcherToGlibFull(c PlayerGMainContextSign
 
 // NewPlayerGMainContextSignalDispatcher wraps gst_player_g_main_context_signal_dispatcher_new
 // 
-// The function takes the following parameters:
-// 
-// 	- applicationContext *glib.MainContext (nullable): GMainContext to use or %NULL 
-// 
-// The function returns the following values:
-// 
-// 	- goret PlayerSignalDispatcher 
+// see also No documentation available
 //
-// Creates a new GstPlayerSignalDispatcher that uses @application_context,
-// or the thread default one if %NULL is used. See gst_player_new().
 func NewPlayerGMainContextSignalDispatcher(applicationContext *glib.MainContext) PlayerSignalDispatcher {
 	var carg1 *C.GMainContext              // in, none, converted, nullable
 	var cret  *C.GstPlayerSignalDispatcher // return, full, converted
@@ -2398,110 +2036,77 @@ type PlayerMediaInfoInstance struct {
 var _ PlayerMediaInfo = (*PlayerMediaInfoInstance)(nil)
 
 // PlayerMediaInfo wraps GstPlayerMediaInfo
+// 
+// see also No documentation available
 //
-// Structure containing the media information of a URI.
 type PlayerMediaInfo interface {
 	gobject.Object
 	upcastToGstPlayerMediaInfo() *PlayerMediaInfoInstance
 
 	// GetAudioStreams wraps gst_player_media_info_get_audio_streams
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []PlayerAudioInfo 
+	// see also No documentation available
 	GetAudioStreams() []PlayerAudioInfo
 	// GetContainerFormat wraps gst_player_media_info_get_container_format
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
+	// see also No documentation available
 	GetContainerFormat() string
 	// GetDuration wraps gst_player_media_info_get_duration
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	GetDuration() gst.ClockTime
 	// GetImageSample wraps gst_player_media_info_get_image_sample
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Sample (nullable) 
+	// see also No documentation available
 	//
-	// Function to get the image (or preview-image) stored in taglist.
-	// Application can use `gst_sample_*_()` API's to get caps, buffer etc.
 	GetImageSample() *gst.Sample
 	// GetNumberOfAudioStreams wraps gst_player_media_info_get_number_of_audio_streams
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	GetNumberOfAudioStreams() uint
 	// GetNumberOfStreams wraps gst_player_media_info_get_number_of_streams
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	GetNumberOfStreams() uint
 	// GetNumberOfSubtitleStreams wraps gst_player_media_info_get_number_of_subtitle_streams
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	GetNumberOfSubtitleStreams() uint
 	// GetNumberOfVideoStreams wraps gst_player_media_info_get_number_of_video_streams
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	GetNumberOfVideoStreams() uint
 	// GetStreamList wraps gst_player_media_info_get_stream_list
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []PlayerStreamInfo 
+	// see also No documentation available
 	GetStreamList() []PlayerStreamInfo
 	// GetSubtitleStreams wraps gst_player_media_info_get_subtitle_streams
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []PlayerSubtitleInfo 
+	// see also No documentation available
 	GetSubtitleStreams() []PlayerSubtitleInfo
 	// GetTags wraps gst_player_media_info_get_tags
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.TagList (nullable) 
+	// see also No documentation available
 	GetTags() *gst.TagList
 	// GetTitle wraps gst_player_media_info_get_title
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
+	// see also No documentation available
 	GetTitle() string
 	// GetURI wraps gst_player_media_info_get_uri
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string 
+	// see also No documentation available
 	GetURI() string
 	// GetVideoStreams wraps gst_player_media_info_get_video_streams
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []PlayerVideoInfo 
+	// see also No documentation available
 	GetVideoStreams() []PlayerVideoInfo
 	// IsLive wraps gst_player_media_info_is_live
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	IsLive() bool
 	// IsSeekable wraps gst_player_media_info_is_seekable
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	IsSeekable() bool
 }
 
@@ -2555,9 +2160,7 @@ func UnsafePlayerMediaInfoToGlibFull(c PlayerMediaInfo) unsafe.Pointer {
 
 // GetAudioStreams wraps gst_player_media_info_get_audio_streams
 // 
-// The function returns the following values:
-// 
-// 	- goret []PlayerAudioInfo 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetAudioStreams() []PlayerAudioInfo {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.GList              // container, transfer: none
@@ -2583,9 +2186,7 @@ func (info *PlayerMediaInfoInstance) GetAudioStreams() []PlayerAudioInfo {
 
 // GetContainerFormat wraps gst_player_media_info_get_container_format
 // 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetContainerFormat() string {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.gchar              // return, none, string, nullable-string
@@ -2606,9 +2207,7 @@ func (info *PlayerMediaInfoInstance) GetContainerFormat() string {
 
 // GetDuration wraps gst_player_media_info_get_duration
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetDuration() gst.ClockTime {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  C.GstClockTime        // return, none, casted, alias
@@ -2627,12 +2226,8 @@ func (info *PlayerMediaInfoInstance) GetDuration() gst.ClockTime {
 
 // GetImageSample wraps gst_player_media_info_get_image_sample
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Sample (nullable) 
+// see also No documentation available
 //
-// Function to get the image (or preview-image) stored in taglist.
-// Application can use `gst_sample_*_()` API's to get caps, buffer etc.
 func (info *PlayerMediaInfoInstance) GetImageSample() *gst.Sample {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.GstSample          // return, none, converted, nullable
@@ -2653,9 +2248,7 @@ func (info *PlayerMediaInfoInstance) GetImageSample() *gst.Sample {
 
 // GetNumberOfAudioStreams wraps gst_player_media_info_get_number_of_audio_streams
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetNumberOfAudioStreams() uint {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  C.guint               // return, none, casted
@@ -2674,9 +2267,7 @@ func (info *PlayerMediaInfoInstance) GetNumberOfAudioStreams() uint {
 
 // GetNumberOfStreams wraps gst_player_media_info_get_number_of_streams
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetNumberOfStreams() uint {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  C.guint               // return, none, casted
@@ -2695,9 +2286,7 @@ func (info *PlayerMediaInfoInstance) GetNumberOfStreams() uint {
 
 // GetNumberOfSubtitleStreams wraps gst_player_media_info_get_number_of_subtitle_streams
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetNumberOfSubtitleStreams() uint {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  C.guint               // return, none, casted
@@ -2716,9 +2305,7 @@ func (info *PlayerMediaInfoInstance) GetNumberOfSubtitleStreams() uint {
 
 // GetNumberOfVideoStreams wraps gst_player_media_info_get_number_of_video_streams
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetNumberOfVideoStreams() uint {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  C.guint               // return, none, casted
@@ -2737,9 +2324,7 @@ func (info *PlayerMediaInfoInstance) GetNumberOfVideoStreams() uint {
 
 // GetStreamList wraps gst_player_media_info_get_stream_list
 // 
-// The function returns the following values:
-// 
-// 	- goret []PlayerStreamInfo 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetStreamList() []PlayerStreamInfo {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.GList              // container, transfer: none
@@ -2765,9 +2350,7 @@ func (info *PlayerMediaInfoInstance) GetStreamList() []PlayerStreamInfo {
 
 // GetSubtitleStreams wraps gst_player_media_info_get_subtitle_streams
 // 
-// The function returns the following values:
-// 
-// 	- goret []PlayerSubtitleInfo 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetSubtitleStreams() []PlayerSubtitleInfo {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.GList              // container, transfer: none
@@ -2793,9 +2376,7 @@ func (info *PlayerMediaInfoInstance) GetSubtitleStreams() []PlayerSubtitleInfo {
 
 // GetTags wraps gst_player_media_info_get_tags
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.TagList (nullable) 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.GstTagList         // return, none, converted, nullable
@@ -2816,9 +2397,7 @@ func (info *PlayerMediaInfoInstance) GetTags() *gst.TagList {
 
 // GetTitle wraps gst_player_media_info_get_title
 // 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetTitle() string {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.gchar              // return, none, string, nullable-string
@@ -2839,9 +2418,7 @@ func (info *PlayerMediaInfoInstance) GetTitle() string {
 
 // GetURI wraps gst_player_media_info_get_uri
 // 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetURI() string {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.gchar              // return, none, string
@@ -2860,9 +2437,7 @@ func (info *PlayerMediaInfoInstance) GetURI() string {
 
 // GetVideoStreams wraps gst_player_media_info_get_video_streams
 // 
-// The function returns the following values:
-// 
-// 	- goret []PlayerVideoInfo 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) GetVideoStreams() []PlayerVideoInfo {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  *C.GList              // container, transfer: none
@@ -2888,9 +2463,7 @@ func (info *PlayerMediaInfoInstance) GetVideoStreams() []PlayerVideoInfo {
 
 // IsLive wraps gst_player_media_info_is_live
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) IsLive() bool {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  C.gboolean            // return
@@ -2911,9 +2484,7 @@ func (info *PlayerMediaInfoInstance) IsLive() bool {
 
 // IsSeekable wraps gst_player_media_info_is_seekable
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (info *PlayerMediaInfoInstance) IsSeekable() bool {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
 	var cret  C.gboolean            // return
@@ -2941,51 +2512,35 @@ type PlayerStreamInfoInstance struct {
 var _ PlayerStreamInfo = (*PlayerStreamInfoInstance)(nil)
 
 // PlayerStreamInfo wraps GstPlayerStreamInfo
+// 
+// see also No documentation available
 //
-// Base structure for information concerning a media stream. Depending on
-// the stream type, one can find more media-specific information in
-// #GstPlayerVideoInfo, #GstPlayerAudioInfo, #GstPlayerSubtitleInfo.
 type PlayerStreamInfo interface {
 	gobject.Object
 	upcastToGstPlayerStreamInfo() *PlayerStreamInfoInstance
 
 	// GetCaps wraps gst_player_stream_info_get_caps
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Caps (nullable) 
+	// see also No documentation available
 	GetCaps() *gst.Caps
 	// GetCodec wraps gst_player_stream_info_get_codec
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
+	// see also No documentation available
 	//
-	// A string describing codec used in #GstPlayerStreamInfo.
 	GetCodec() string
 	// GetIndex wraps gst_player_stream_info_get_index
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	//
-	// Function to get stream index from #GstPlayerStreamInfo instance or -1 if
-	// unknown.
 	GetIndex() int32
 	// GetStreamType wraps gst_player_stream_info_get_stream_type
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string 
+	// see also No documentation available
 	//
-	// Function to return human readable name for the stream type
-	// of the given @info (ex: "audio", "video", "subtitle")
 	GetStreamType() string
 	// GetTags wraps gst_player_stream_info_get_tags
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.TagList (nullable) 
+	// see also No documentation available
 	GetTags() *gst.TagList
 }
 
@@ -3039,9 +2594,7 @@ func UnsafePlayerStreamInfoToGlibFull(c PlayerStreamInfo) unsafe.Pointer {
 
 // GetCaps wraps gst_player_stream_info_get_caps
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Caps (nullable) 
+// see also No documentation available
 func (info *PlayerStreamInfoInstance) GetCaps() *gst.Caps {
 	var carg0 *C.GstPlayerStreamInfo // in, none, converted
 	var cret  *C.GstCaps             // return, none, converted, nullable
@@ -3062,11 +2615,8 @@ func (info *PlayerStreamInfoInstance) GetCaps() *gst.Caps {
 
 // GetCodec wraps gst_player_stream_info_get_codec
 // 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 //
-// A string describing codec used in #GstPlayerStreamInfo.
 func (info *PlayerStreamInfoInstance) GetCodec() string {
 	var carg0 *C.GstPlayerStreamInfo // in, none, converted
 	var cret  *C.gchar               // return, none, string, nullable-string
@@ -3087,12 +2637,8 @@ func (info *PlayerStreamInfoInstance) GetCodec() string {
 
 // GetIndex wraps gst_player_stream_info_get_index
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 //
-// Function to get stream index from #GstPlayerStreamInfo instance or -1 if
-// unknown.
 func (info *PlayerStreamInfoInstance) GetIndex() int32 {
 	var carg0 *C.GstPlayerStreamInfo // in, none, converted
 	var cret  C.gint                 // return, none, casted
@@ -3111,12 +2657,8 @@ func (info *PlayerStreamInfoInstance) GetIndex() int32 {
 
 // GetStreamType wraps gst_player_stream_info_get_stream_type
 // 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 //
-// Function to return human readable name for the stream type
-// of the given @info (ex: "audio", "video", "subtitle")
 func (info *PlayerStreamInfoInstance) GetStreamType() string {
 	var carg0 *C.GstPlayerStreamInfo // in, none, converted
 	var cret  *C.gchar               // return, none, string
@@ -3135,9 +2677,7 @@ func (info *PlayerStreamInfoInstance) GetStreamType() string {
 
 // GetTags wraps gst_player_stream_info_get_tags
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.TagList (nullable) 
+// see also No documentation available
 func (info *PlayerStreamInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstPlayerStreamInfo // in, none, converted
 	var cret  *C.GstTagList          // return, none, converted, nullable
@@ -3165,17 +2705,16 @@ type PlayerSubtitleInfoInstance struct {
 var _ PlayerSubtitleInfo = (*PlayerSubtitleInfoInstance)(nil)
 
 // PlayerSubtitleInfo wraps GstPlayerSubtitleInfo
+// 
+// see also No documentation available
 //
-// #GstPlayerStreamInfo specific to subtitle streams.
 type PlayerSubtitleInfo interface {
 	PlayerStreamInfo
 	upcastToGstPlayerSubtitleInfo() *PlayerSubtitleInfoInstance
 
 	// GetLanguage wraps gst_player_subtitle_info_get_language
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
+	// see also No documentation available
 	GetLanguage() string
 }
 
@@ -3231,9 +2770,7 @@ func UnsafePlayerSubtitleInfoToGlibFull(c PlayerSubtitleInfo) unsafe.Pointer {
 
 // GetLanguage wraps gst_player_subtitle_info_get_language
 // 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 func (info *PlayerSubtitleInfoInstance) GetLanguage() string {
 	var carg0 *C.GstPlayerSubtitleInfo // in, none, converted
 	var cret  *C.gchar                 // return, none, string, nullable-string
@@ -3261,51 +2798,37 @@ type PlayerVideoInfoInstance struct {
 var _ PlayerVideoInfo = (*PlayerVideoInfoInstance)(nil)
 
 // PlayerVideoInfo wraps GstPlayerVideoInfo
+// 
+// see also No documentation available
 //
-// #GstPlayerStreamInfo specific to video streams.
 type PlayerVideoInfo interface {
 	PlayerStreamInfo
 	upcastToGstPlayerVideoInfo() *PlayerVideoInfoInstance
 
 	// GetBitrate wraps gst_player_video_info_get_bitrate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetBitrate() int32
 	// GetFramerate wraps gst_player_video_info_get_framerate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- fpsN int32: Numerator of frame rate 
-	// 	- fpsD int32: Denominator of frame rate 
+	// see also No documentation available
 	GetFramerate() (int32, int32)
 	// GetHeight wraps gst_player_video_info_get_height
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetHeight() int32
 	// GetMaxBitrate wraps gst_player_video_info_get_max_bitrate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetMaxBitrate() int32
 	// GetPixelAspectRatio wraps gst_player_video_info_get_pixel_aspect_ratio
 	// 
-	// The function returns the following values:
-	// 
-	// 	- parN uint: numerator 
-	// 	- parD uint: denominator 
+	// see also No documentation available
 	//
-	// Returns the pixel aspect ratio in @par_n and @par_d
 	GetPixelAspectRatio() (uint, uint)
 	// GetWidth wraps gst_player_video_info_get_width
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetWidth() int32
 }
 
@@ -3361,9 +2884,7 @@ func UnsafePlayerVideoInfoToGlibFull(c PlayerVideoInfo) unsafe.Pointer {
 
 // GetBitrate wraps gst_player_video_info_get_bitrate
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (info *PlayerVideoInfoInstance) GetBitrate() int32 {
 	var carg0 *C.GstPlayerVideoInfo // in, none, converted
 	var cret  C.gint                // return, none, casted
@@ -3382,10 +2903,7 @@ func (info *PlayerVideoInfoInstance) GetBitrate() int32 {
 
 // GetFramerate wraps gst_player_video_info_get_framerate
 // 
-// The function returns the following values:
-// 
-// 	- fpsN int32: Numerator of frame rate 
-// 	- fpsD int32: Denominator of frame rate 
+// see also No documentation available
 func (info *PlayerVideoInfoInstance) GetFramerate() (int32, int32) {
 	var carg0 *C.GstPlayerVideoInfo // in, none, converted
 	var carg1 C.gint                // out, full, casted
@@ -3407,9 +2925,7 @@ func (info *PlayerVideoInfoInstance) GetFramerate() (int32, int32) {
 
 // GetHeight wraps gst_player_video_info_get_height
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (info *PlayerVideoInfoInstance) GetHeight() int32 {
 	var carg0 *C.GstPlayerVideoInfo // in, none, converted
 	var cret  C.gint                // return, none, casted
@@ -3428,9 +2944,7 @@ func (info *PlayerVideoInfoInstance) GetHeight() int32 {
 
 // GetMaxBitrate wraps gst_player_video_info_get_max_bitrate
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (info *PlayerVideoInfoInstance) GetMaxBitrate() int32 {
 	var carg0 *C.GstPlayerVideoInfo // in, none, converted
 	var cret  C.gint                // return, none, casted
@@ -3449,12 +2963,8 @@ func (info *PlayerVideoInfoInstance) GetMaxBitrate() int32 {
 
 // GetPixelAspectRatio wraps gst_player_video_info_get_pixel_aspect_ratio
 // 
-// The function returns the following values:
-// 
-// 	- parN uint: numerator 
-// 	- parD uint: denominator 
+// see also No documentation available
 //
-// Returns the pixel aspect ratio in @par_n and @par_d
 func (info *PlayerVideoInfoInstance) GetPixelAspectRatio() (uint, uint) {
 	var carg0 *C.GstPlayerVideoInfo // in, none, converted
 	var carg1 C.guint               // out, full, casted
@@ -3476,9 +2986,7 @@ func (info *PlayerVideoInfoInstance) GetPixelAspectRatio() (uint, uint) {
 
 // GetWidth wraps gst_player_video_info_get_width
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (info *PlayerVideoInfoInstance) GetWidth() int32 {
 	var carg0 *C.GstPlayerVideoInfo // in, none, converted
 	var cret  C.gint                // return, none, casted
@@ -3504,46 +3012,26 @@ type PlayerVideoOverlayVideoRendererInstance struct {
 var _ PlayerVideoOverlayVideoRenderer = (*PlayerVideoOverlayVideoRendererInstance)(nil)
 
 // PlayerVideoOverlayVideoRenderer wraps GstPlayerVideoOverlayVideoRenderer
+// 
+// see also No documentation available
 type PlayerVideoOverlayVideoRenderer interface {
 	gobject.Object
 	upcastToGstPlayerVideoOverlayVideoRenderer() *PlayerVideoOverlayVideoRendererInstance
 
 	// Expose wraps gst_player_video_overlay_video_renderer_expose
+	// 
+	// see also No documentation available
 	//
-	// Tell an overlay that it has been exposed. This will redraw the current frame
-	// in the drawable even if the pipeline is PAUSED.
 	Expose()
 	// GetRenderRectangle wraps gst_player_video_overlay_video_renderer_get_render_rectangle
 	// 
-	// The function returns the following values:
-	// 
-	// 	- x int32: the horizontal offset of the render area inside the window 
-	// 	- y int32: the vertical offset of the render area inside the window 
-	// 	- width int32: the width of the render area inside the window 
-	// 	- height int32: the height of the render area inside the window 
+	// see also No documentation available
 	//
-	// Return the currently configured render rectangle. See gst_player_video_overlay_video_renderer_set_render_rectangle()
-	// for details.
 	GetRenderRectangle() (int32, int32, int32, int32)
 	// SetRenderRectangle wraps gst_player_video_overlay_video_renderer_set_render_rectangle
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- x int32: the horizontal offset of the render area inside the window 
-	// 	- y int32: the vertical offset of the render area inside the window 
-	// 	- width int32: the width of the render area inside the window 
-	// 	- height int32: the height of the render area inside the window 
+	// see also No documentation available
 	//
-	// Configure a subregion as a video target within the window set by
-	// gst_player_video_overlay_video_renderer_set_window_handle(). If this is not
-	// used or not supported the video will fill the area of the window set as the
-	// overlay to 100%. By specifying the rectangle, the video can be overlaid to
-	// a specific region of that window only. After setting the new rectangle one
-	// should call gst_player_video_overlay_video_renderer_expose() to force a
-	// redraw. To unset the region pass -1 for the @width and @height parameters.
-	// 
-	// This method is needed for non fullscreen video overlay in UI toolkits that
-	// do not support subwindows.
 	SetRenderRectangle(int32, int32, int32, int32)
 }
 
@@ -3596,9 +3084,9 @@ func UnsafePlayerVideoOverlayVideoRendererToGlibFull(c PlayerVideoOverlayVideoRe
 }
 
 // Expose wraps gst_player_video_overlay_video_renderer_expose
+// 
+// see also No documentation available
 //
-// Tell an overlay that it has been exposed. This will redraw the current frame
-// in the drawable even if the pipeline is PAUSED.
 func (self *PlayerVideoOverlayVideoRendererInstance) Expose() {
 	var carg0 *C.GstPlayerVideoOverlayVideoRenderer // in, none, converted
 
@@ -3610,15 +3098,8 @@ func (self *PlayerVideoOverlayVideoRendererInstance) Expose() {
 
 // GetRenderRectangle wraps gst_player_video_overlay_video_renderer_get_render_rectangle
 // 
-// The function returns the following values:
-// 
-// 	- x int32: the horizontal offset of the render area inside the window 
-// 	- y int32: the vertical offset of the render area inside the window 
-// 	- width int32: the width of the render area inside the window 
-// 	- height int32: the height of the render area inside the window 
+// see also No documentation available
 //
-// Return the currently configured render rectangle. See gst_player_video_overlay_video_renderer_set_render_rectangle()
-// for details.
 func (self *PlayerVideoOverlayVideoRendererInstance) GetRenderRectangle() (int32, int32, int32, int32) {
 	var carg0 *C.GstPlayerVideoOverlayVideoRenderer // in, none, converted
 	var carg1 C.gint                                // out, full, casted
@@ -3646,23 +3127,8 @@ func (self *PlayerVideoOverlayVideoRendererInstance) GetRenderRectangle() (int32
 
 // SetRenderRectangle wraps gst_player_video_overlay_video_renderer_set_render_rectangle
 // 
-// The function takes the following parameters:
-// 
-// 	- x int32: the horizontal offset of the render area inside the window 
-// 	- y int32: the vertical offset of the render area inside the window 
-// 	- width int32: the width of the render area inside the window 
-// 	- height int32: the height of the render area inside the window 
+// see also No documentation available
 //
-// Configure a subregion as a video target within the window set by
-// gst_player_video_overlay_video_renderer_set_window_handle(). If this is not
-// used or not supported the video will fill the area of the window set as the
-// overlay to 100%. By specifying the rectangle, the video can be overlaid to
-// a specific region of that window only. After setting the new rectangle one
-// should call gst_player_video_overlay_video_renderer_expose() to force a
-// redraw. To unset the region pass -1 for the @width and @height parameters.
-// 
-// This method is needed for non fullscreen video overlay in UI toolkits that
-// do not support subwindows.
 func (self *PlayerVideoOverlayVideoRendererInstance) SetRenderRectangle(x int32, y int32, width int32, height int32) {
 	var carg0 *C.GstPlayerVideoOverlayVideoRenderer // in, none, converted
 	var carg1 C.gint                                // in, none, casted
@@ -3693,41 +3159,32 @@ type PlayerAudioInfoInstance struct {
 var _ PlayerAudioInfo = (*PlayerAudioInfoInstance)(nil)
 
 // PlayerAudioInfo wraps GstPlayerAudioInfo
+// 
+// see also No documentation available
 //
-// #GstPlayerStreamInfo specific to audio streams.
 type PlayerAudioInfo interface {
 	PlayerStreamInfo
 	upcastToGstPlayerAudioInfo() *PlayerAudioInfoInstance
 
 	// GetBitrate wraps gst_player_audio_info_get_bitrate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetBitrate() int32
 	// GetChannels wraps gst_player_audio_info_get_channels
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetChannels() int32
 	// GetLanguage wraps gst_player_audio_info_get_language
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
+	// see also No documentation available
 	GetLanguage() string
 	// GetMaxBitrate wraps gst_player_audio_info_get_max_bitrate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetMaxBitrate() int32
 	// GetSampleRate wraps gst_player_audio_info_get_sample_rate
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret int32 
+	// see also No documentation available
 	GetSampleRate() int32
 }
 
@@ -3783,9 +3240,7 @@ func UnsafePlayerAudioInfoToGlibFull(c PlayerAudioInfo) unsafe.Pointer {
 
 // GetBitrate wraps gst_player_audio_info_get_bitrate
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (info *PlayerAudioInfoInstance) GetBitrate() int32 {
 	var carg0 *C.GstPlayerAudioInfo // in, none, converted
 	var cret  C.gint                // return, none, casted
@@ -3804,9 +3259,7 @@ func (info *PlayerAudioInfoInstance) GetBitrate() int32 {
 
 // GetChannels wraps gst_player_audio_info_get_channels
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (info *PlayerAudioInfoInstance) GetChannels() int32 {
 	var carg0 *C.GstPlayerAudioInfo // in, none, converted
 	var cret  C.gint                // return, none, casted
@@ -3825,9 +3278,7 @@ func (info *PlayerAudioInfoInstance) GetChannels() int32 {
 
 // GetLanguage wraps gst_player_audio_info_get_language
 // 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
+// see also No documentation available
 func (info *PlayerAudioInfoInstance) GetLanguage() string {
 	var carg0 *C.GstPlayerAudioInfo // in, none, converted
 	var cret  *C.gchar              // return, none, string, nullable-string
@@ -3848,9 +3299,7 @@ func (info *PlayerAudioInfoInstance) GetLanguage() string {
 
 // GetMaxBitrate wraps gst_player_audio_info_get_max_bitrate
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (info *PlayerAudioInfoInstance) GetMaxBitrate() int32 {
 	var carg0 *C.GstPlayerAudioInfo // in, none, converted
 	var cret  C.gint                // return, none, casted
@@ -3869,9 +3318,7 @@ func (info *PlayerAudioInfoInstance) GetMaxBitrate() int32 {
 
 // GetSampleRate wraps gst_player_audio_info_get_sample_rate
 // 
-// The function returns the following values:
-// 
-// 	- goret int32 
+// see also No documentation available
 func (info *PlayerAudioInfoInstance) GetSampleRate() int32 {
 	var carg0 *C.GstPlayerAudioInfo // in, none, converted
 	var cret  C.gint                // return, none, casted
@@ -3889,6 +3336,8 @@ func (info *PlayerAudioInfoInstance) GetSampleRate() int32 {
 }
 
 // PlayerAudioInfoClass wraps GstPlayerAudioInfoClass
+// 
+// see also No documentation available
 // 
 // PlayerAudioInfoClass is the type struct for [PlayerAudioInfo]
 type PlayerAudioInfoClass struct {
@@ -3942,6 +3391,8 @@ func (p *PlayerAudioInfoClass) ParentClass() *PlayerStreamInfoClass {
 
 // PlayerClass wraps GstPlayerClass
 // 
+// see also No documentation available
+// 
 // PlayerClass is the type struct for [Player]
 type PlayerClass struct {
 	*playerClass
@@ -3993,6 +3444,8 @@ func (p *PlayerClass) ParentClass() *gst.ObjectClass {
 }
 
 // PlayerGMainContextSignalDispatcherClass wraps GstPlayerGMainContextSignalDispatcherClass
+// 
+// see also No documentation available
 // 
 // PlayerGMainContextSignalDispatcherClass is the type struct for [PlayerGMainContextSignalDispatcher]
 type PlayerGMainContextSignalDispatcherClass struct {
@@ -4046,6 +3499,8 @@ func (p *PlayerGMainContextSignalDispatcherClass) ParentClass() *gobject.ObjectC
 
 // PlayerMediaInfoClass wraps GstPlayerMediaInfoClass
 // 
+// see also No documentation available
+// 
 // PlayerMediaInfoClass is the type struct for [PlayerMediaInfo]
 type PlayerMediaInfoClass struct {
 	*playerMediaInfoClass
@@ -4097,6 +3552,8 @@ func (p *PlayerMediaInfoClass) ParentClass() *gobject.ObjectClass {
 }
 
 // PlayerSignalDispatcherInterface wraps GstPlayerSignalDispatcherInterface
+// 
+// see also No documentation available
 type PlayerSignalDispatcherInterface struct {
 	*playerSignalDispatcherInterface
 }
@@ -4177,6 +3634,8 @@ func UnsafePlayerSignalDispatcherInterfaceToGlibFull(p *PlayerSignalDispatcherIn
 
 // PlayerStreamInfoClass wraps GstPlayerStreamInfoClass
 // 
+// see also No documentation available
+// 
 // PlayerStreamInfoClass is the type struct for [PlayerStreamInfo]
 type PlayerStreamInfoClass struct {
 	*playerStreamInfoClass
@@ -4228,6 +3687,8 @@ func (p *PlayerStreamInfoClass) ParentClass() *gobject.ObjectClass {
 }
 
 // PlayerSubtitleInfoClass wraps GstPlayerSubtitleInfoClass
+// 
+// see also No documentation available
 // 
 // PlayerSubtitleInfoClass is the type struct for [PlayerSubtitleInfo]
 type PlayerSubtitleInfoClass struct {
@@ -4281,6 +3742,8 @@ func (p *PlayerSubtitleInfoClass) ParentClass() *PlayerStreamInfoClass {
 
 // PlayerVideoInfoClass wraps GstPlayerVideoInfoClass
 // 
+// see also No documentation available
+// 
 // PlayerVideoInfoClass is the type struct for [PlayerVideoInfo]
 type PlayerVideoInfoClass struct {
 	*playerVideoInfoClass
@@ -4333,6 +3796,8 @@ func (p *PlayerVideoInfoClass) ParentClass() *PlayerStreamInfoClass {
 
 // PlayerVideoOverlayVideoRendererClass wraps GstPlayerVideoOverlayVideoRendererClass
 // 
+// see also No documentation available
+// 
 // PlayerVideoOverlayVideoRendererClass is the type struct for [PlayerVideoOverlayVideoRenderer]
 type PlayerVideoOverlayVideoRendererClass struct {
 	*playerVideoOverlayVideoRendererClass
@@ -4384,6 +3849,8 @@ func (p *PlayerVideoOverlayVideoRendererClass) ParentClass() *gobject.ObjectClas
 }
 
 // PlayerVideoRendererInterface wraps GstPlayerVideoRendererInterface
+// 
+// see also No documentation available
 type PlayerVideoRendererInterface struct {
 	*playerVideoRendererInterface
 }
@@ -4463,8 +3930,9 @@ func UnsafePlayerVideoRendererInterfaceToGlibFull(p *PlayerVideoRendererInterfac
 }
 
 // PlayerVisualization wraps GstPlayerVisualization
+// 
+// see also No documentation available
 //
-// A #GstPlayerVisualization descriptor.
 type PlayerVisualization struct {
 	*playerVisualization
 }
@@ -4560,12 +4028,8 @@ func UnsafePlayerVisualizationToGlibFull(p *PlayerVisualization) unsafe.Pointer 
 
 // Copy wraps gst_player_visualization_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *PlayerVisualization 
+// see also No documentation available
 //
-// Makes a copy of the #GstPlayerVisualization. The result must be
-// freed using gst_player_visualization_free().
 func (vis *PlayerVisualization) Copy() *PlayerVisualization {
 	var carg0 *C.GstPlayerVisualization // in, none, converted
 	var cret  *C.GstPlayerVisualization // return, full, converted

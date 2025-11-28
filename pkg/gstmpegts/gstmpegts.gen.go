@@ -147,57 +147,99 @@ func init() {
 }
 
 // ATSCDescriptorType wraps GstMpegtsATSCDescriptorType
-//
-// These values correspond to the registered descriptor type from
-// the various ATSC specifications.
 // 
-// Consult the relevant specifications for more details.
+// see also No documentation available
+//
 type ATSCDescriptorType C.int
 
 const (
 	// GstMtsDescAtscStuffing wraps GST_MTS_DESC_ATSC_STUFFING
+	// 
+	// see also No documentation available
 	GstMtsDescAtscStuffing ATSCDescriptorType = 128
 	// GstMtsDescAtscAc3 wraps GST_MTS_DESC_ATSC_AC3
+	// 
+	// see also No documentation available
 	GstMtsDescAtscAc3 ATSCDescriptorType = 129
 	// GstMtsDescAtscCaptionService wraps GST_MTS_DESC_ATSC_CAPTION_SERVICE
+	// 
+	// see also No documentation available
 	GstMtsDescAtscCaptionService ATSCDescriptorType = 134
 	// GstMtsDescAtscContentAdvisory wraps GST_MTS_DESC_ATSC_CONTENT_ADVISORY
+	// 
+	// see also No documentation available
 	GstMtsDescAtscContentAdvisory ATSCDescriptorType = 135
 	// GstMtsDescAtscExtendedChannelName wraps GST_MTS_DESC_ATSC_EXTENDED_CHANNEL_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescAtscExtendedChannelName ATSCDescriptorType = 160
 	// GstMtsDescAtscServiceLocation wraps GST_MTS_DESC_ATSC_SERVICE_LOCATION
+	// 
+	// see also No documentation available
 	GstMtsDescAtscServiceLocation ATSCDescriptorType = 161
 	// GstMtsDescAtscTimeShiftedService wraps GST_MTS_DESC_ATSC_TIME_SHIFTED_SERVICE
+	// 
+	// see also No documentation available
 	GstMtsDescAtscTimeShiftedService ATSCDescriptorType = 162
 	// GstMtsDescAtscComponentName wraps GST_MTS_DESC_ATSC_COMPONENT_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescAtscComponentName ATSCDescriptorType = 163
 	// GstMtsDescAtscDccDepartingRequest wraps GST_MTS_DESC_ATSC_DCC_DEPARTING_REQUEST
+	// 
+	// see also No documentation available
 	GstMtsDescAtscDccDepartingRequest ATSCDescriptorType = 168
 	// GstMtsDescAtscDccArrivingRequest wraps GST_MTS_DESC_ATSC_DCC_ARRIVING_REQUEST
+	// 
+	// see also No documentation available
 	GstMtsDescAtscDccArrivingRequest ATSCDescriptorType = 169
 	// GstMtsDescAtscRedistributionControl wraps GST_MTS_DESC_ATSC_REDISTRIBUTION_CONTROL
+	// 
+	// see also No documentation available
 	GstMtsDescAtscRedistributionControl ATSCDescriptorType = 170
 	// GstMtsDescAtscGenre wraps GST_MTS_DESC_ATSC_GENRE
+	// 
+	// see also No documentation available
 	GstMtsDescAtscGenre ATSCDescriptorType = 171
 	// GstMtsDescAtscPrivateInformation wraps GST_MTS_DESC_ATSC_PRIVATE_INFORMATION
+	// 
+	// see also No documentation available
 	GstMtsDescAtscPrivateInformation ATSCDescriptorType = 173
 	// GstMtsDescAtscEac3 wraps GST_MTS_DESC_ATSC_EAC3
+	// 
+	// see also No documentation available
 	GstMtsDescAtscEac3 ATSCDescriptorType = 204
 	// GstMtsDescAtscEnhancedSignaling wraps GST_MTS_DESC_ATSC_ENHANCED_SIGNALING
+	// 
+	// see also No documentation available
 	GstMtsDescAtscEnhancedSignaling ATSCDescriptorType = 178
 	// GstMtsDescAtscDataService wraps GST_MTS_DESC_ATSC_DATA_SERVICE
+	// 
+	// see also No documentation available
 	GstMtsDescAtscDataService ATSCDescriptorType = 164
 	// GstMtsDescAtscPidCount wraps GST_MTS_DESC_ATSC_PID_COUNT
+	// 
+	// see also No documentation available
 	GstMtsDescAtscPidCount ATSCDescriptorType = 165
 	// GstMtsDescAtscDownloadDescriptor wraps GST_MTS_DESC_ATSC_DOWNLOAD_DESCRIPTOR
+	// 
+	// see also No documentation available
 	GstMtsDescAtscDownloadDescriptor ATSCDescriptorType = 166
 	// GstMtsDescAtscMultiprotocolEncapsulation wraps GST_MTS_DESC_ATSC_MULTIPROTOCOL_ENCAPSULATION
+	// 
+	// see also No documentation available
 	GstMtsDescAtscMultiprotocolEncapsulation ATSCDescriptorType = 167
 	// GstMtsDescAtscModuleLink wraps GST_MTS_DESC_ATSC_MODULE_LINK
+	// 
+	// see also No documentation available
 	GstMtsDescAtscModuleLink ATSCDescriptorType = 180
 	// GstMtsDescAtscCrc32 wraps GST_MTS_DESC_ATSC_CRC32
+	// 
+	// see also No documentation available
 	GstMtsDescAtscCrc32 ATSCDescriptorType = 181
 	// GstMtsDescAtscGroupLink wraps GST_MTS_DESC_ATSC_GROUP_LINK
+	// 
+	// see also No documentation available
 	GstMtsDescAtscGroupLink ATSCDescriptorType = 184
 )
 
@@ -231,40 +273,46 @@ func (e ATSCDescriptorType) String() string {
 }
 
 // ATSCStreamType wraps GstMpegtsATSCStreamType
+// 
+// see also No documentation available
 //
-// Type of mpeg-ts streams for ATSC, as defined by the ATSC Code Points
-// Registry. For convenience, some stream types from %GstMpegtsScteStreamType
-// are also included.
 type ATSCStreamType C.int
 
 const (
 	// StreamTypeAtscDciiVideo wraps GST_MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
+	// 
+	// see also No documentation available
 	//
-	// DigiCipher II video | Identical to ITU-T Rec. H.262 | ISO/IEC 13818-2 Video
 	StreamTypeAtscDciiVideo ATSCStreamType = 128
 	// StreamTypeAtscAudioAc3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
+	// 
+	// see also No documentation available
 	//
-	// ATSC A/53 Audio | AC-3
 	StreamTypeAtscAudioAc3 ATSCStreamType = 129
 	// StreamTypeAtscSubtitling wraps GST_MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
+	// 
+	// see also No documentation available
 	//
-	// SCTE-27 Subtitling
 	StreamTypeAtscSubtitling ATSCStreamType = 130
 	// StreamTypeAtscIsochData wraps GST_MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
+	// 
+	// see also No documentation available
 	//
-	// SCTE-19 Isochronous data | Reserved
 	StreamTypeAtscIsochData ATSCStreamType = 131
 	// StreamTypeAtscSit wraps GST_MPEGTS_STREAM_TYPE_ATSC_SIT
+	// 
+	// see also No documentation available
 	//
-	// SCTE-35 Splice Information Table
 	StreamTypeAtscSit ATSCStreamType = 134
 	// StreamTypeAtscAudioEac3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
+	// 
+	// see also No documentation available
 	//
-	// E-AC-3 A/52:2018
 	StreamTypeAtscAudioEac3 ATSCStreamType = 135
 	// StreamTypeAtscAudioDtsHd wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
+	// 
+	// see also No documentation available
 	//
-	// E-AC-3 A/107 (ATSC 2.0)
 	StreamTypeAtscAudioDtsHd ATSCStreamType = 136
 )
 
@@ -283,16 +331,26 @@ func (e ATSCStreamType) String() string {
 }
 
 // AtscMGTTableType wraps GstMpegtsAtscMGTTableType
+// 
+// see also No documentation available
 type AtscMGTTableType C.int
 
 const (
 	// AtscMgtTableTypeEit0 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT0
+	// 
+	// see also No documentation available
 	AtscMgtTableTypeEit0 AtscMGTTableType = 256
 	// AtscMgtTableTypeEit127 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT127
+	// 
+	// see also No documentation available
 	AtscMgtTableTypeEit127 AtscMGTTableType = 383
 	// AtscMgtTableTypeEtt0 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT0
+	// 
+	// see also No documentation available
 	AtscMgtTableTypeEtt0 AtscMGTTableType = 512
 	// AtscMgtTableTypeEtt127 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT127
+	// 
+	// see also No documentation available
 	AtscMgtTableTypeEtt127 AtscMGTTableType = 639
 )
 
@@ -308,14 +366,22 @@ func (e AtscMGTTableType) String() string {
 }
 
 // CableOuterFECScheme wraps GstMpegtsCableOuterFECScheme
+// 
+// see also No documentation available
 type CableOuterFECScheme C.int
 
 const (
 	// CableOuterFecUndefined wraps GST_MPEGTS_CABLE_OUTER_FEC_UNDEFINED
+	// 
+	// see also No documentation available
 	CableOuterFecUndefined CableOuterFECScheme = 0
 	// CableOuterFecNone wraps GST_MPEGTS_CABLE_OUTER_FEC_NONE
+	// 
+	// see also No documentation available
 	CableOuterFecNone CableOuterFECScheme = 1
 	// CableOuterFecRs204188 wraps GST_MPEGTS_CABLE_OUTER_FEC_RS_204_188
+	// 
+	// see also No documentation available
 	CableOuterFecRs204188 CableOuterFECScheme = 2
 )
 
@@ -330,24 +396,42 @@ func (e CableOuterFECScheme) String() string {
 }
 
 // ComponentStreamContent wraps GstMpegtsComponentStreamContent
+// 
+// see also No documentation available
 type ComponentStreamContent C.int
 
 const (
 	// StreamContentMpeg2Video wraps GST_MPEGTS_STREAM_CONTENT_MPEG2_VIDEO
+	// 
+	// see also No documentation available
 	StreamContentMpeg2Video ComponentStreamContent = 1
 	// StreamContentMpeg1Layer2Audio wraps GST_MPEGTS_STREAM_CONTENT_MPEG1_LAYER2_AUDIO
+	// 
+	// see also No documentation available
 	StreamContentMpeg1Layer2Audio ComponentStreamContent = 2
 	// StreamContentTeletextOrSubtitle wraps GST_MPEGTS_STREAM_CONTENT_TELETEXT_OR_SUBTITLE
+	// 
+	// see also No documentation available
 	StreamContentTeletextOrSubtitle ComponentStreamContent = 3
 	// StreamContentAc3 wraps GST_MPEGTS_STREAM_CONTENT_AC_3
+	// 
+	// see also No documentation available
 	StreamContentAc3 ComponentStreamContent = 4
 	// StreamContentAvc wraps GST_MPEGTS_STREAM_CONTENT_AVC
+	// 
+	// see also No documentation available
 	StreamContentAvc ComponentStreamContent = 5
 	// StreamContentAac wraps GST_MPEGTS_STREAM_CONTENT_AAC
+	// 
+	// see also No documentation available
 	StreamContentAac ComponentStreamContent = 6
 	// StreamContentDts wraps GST_MPEGTS_STREAM_CONTENT_DTS
+	// 
+	// see also No documentation available
 	StreamContentDts ComponentStreamContent = 7
 	// StreamContentSrmCpcm wraps GST_MPEGTS_STREAM_CONTENT_SRM_CPCM
+	// 
+	// see also No documentation available
 	StreamContentSrmCpcm ComponentStreamContent = 8
 )
 
@@ -367,30 +451,54 @@ func (e ComponentStreamContent) String() string {
 }
 
 // ContentNibbleHi wraps GstMpegtsContentNibbleHi
+// 
+// see also No documentation available
 type ContentNibbleHi C.int
 
 const (
 	// ContentMovieDrama wraps GST_MPEGTS_CONTENT_MOVIE_DRAMA
+	// 
+	// see also No documentation available
 	ContentMovieDrama ContentNibbleHi = 1
 	// ContentNewsCurrentAffairs wraps GST_MPEGTS_CONTENT_NEWS_CURRENT_AFFAIRS
+	// 
+	// see also No documentation available
 	ContentNewsCurrentAffairs ContentNibbleHi = 2
 	// ContentShowGameShow wraps GST_MPEGTS_CONTENT_SHOW_GAME_SHOW
+	// 
+	// see also No documentation available
 	ContentShowGameShow ContentNibbleHi = 3
 	// ContentSports wraps GST_MPEGTS_CONTENT_SPORTS
+	// 
+	// see also No documentation available
 	ContentSports ContentNibbleHi = 4
 	// ContentChildrenYouthProgram wraps GST_MPEGTS_CONTENT_CHILDREN_YOUTH_PROGRAM
+	// 
+	// see also No documentation available
 	ContentChildrenYouthProgram ContentNibbleHi = 5
 	// ContentMusicBalletDance wraps GST_MPEGTS_CONTENT_MUSIC_BALLET_DANCE
+	// 
+	// see also No documentation available
 	ContentMusicBalletDance ContentNibbleHi = 6
 	// ContentArtsCulture wraps GST_MPEGTS_CONTENT_ARTS_CULTURE
+	// 
+	// see also No documentation available
 	ContentArtsCulture ContentNibbleHi = 7
 	// ContentSocialPoliticalEconomics wraps GST_MPEGTS_CONTENT_SOCIAL_POLITICAL_ECONOMICS
+	// 
+	// see also No documentation available
 	ContentSocialPoliticalEconomics ContentNibbleHi = 8
 	// ContentEducationScienceFactual wraps GST_MPEGTS_CONTENT_EDUCATION_SCIENCE_FACTUAL
+	// 
+	// see also No documentation available
 	ContentEducationScienceFactual ContentNibbleHi = 9
 	// ContentLeisureHobbies wraps GST_MPEGTS_CONTENT_LEISURE_HOBBIES
+	// 
+	// see also No documentation available
 	ContentLeisureHobbies ContentNibbleHi = 10
 	// ContentSpecialCharacteristics wraps GST_MPEGTS_CONTENT_SPECIAL_CHARACTERISTICS
+	// 
+	// see also No documentation available
 	ContentSpecialCharacteristics ContentNibbleHi = 11
 )
 
@@ -413,34 +521,62 @@ func (e ContentNibbleHi) String() string {
 }
 
 // DVBCodeRate wraps GstMpegtsDVBCodeRate
+// 
+// see also No documentation available
 type DVBCodeRate C.int
 
 const (
 	// FecNone wraps GST_MPEGTS_FEC_NONE
+	// 
+	// see also No documentation available
 	FecNone DVBCodeRate = 0
 	// Fec12 wraps GST_MPEGTS_FEC_1_2
+	// 
+	// see also No documentation available
 	Fec12 DVBCodeRate = 1
 	// Fec23 wraps GST_MPEGTS_FEC_2_3
+	// 
+	// see also No documentation available
 	Fec23 DVBCodeRate = 2
 	// Fec34 wraps GST_MPEGTS_FEC_3_4
+	// 
+	// see also No documentation available
 	Fec34 DVBCodeRate = 3
 	// Fec45 wraps GST_MPEGTS_FEC_4_5
+	// 
+	// see also No documentation available
 	Fec45 DVBCodeRate = 4
 	// Fec56 wraps GST_MPEGTS_FEC_5_6
+	// 
+	// see also No documentation available
 	Fec56 DVBCodeRate = 5
 	// Fec67 wraps GST_MPEGTS_FEC_6_7
+	// 
+	// see also No documentation available
 	Fec67 DVBCodeRate = 6
 	// Fec78 wraps GST_MPEGTS_FEC_7_8
+	// 
+	// see also No documentation available
 	Fec78 DVBCodeRate = 7
 	// Fec89 wraps GST_MPEGTS_FEC_8_9
+	// 
+	// see also No documentation available
 	Fec89 DVBCodeRate = 8
 	// FecAuto wraps GST_MPEGTS_FEC_AUTO
+	// 
+	// see also No documentation available
 	FecAuto DVBCodeRate = 9
 	// Fec35 wraps GST_MPEGTS_FEC_3_5
+	// 
+	// see also No documentation available
 	Fec35 DVBCodeRate = 10
 	// Fec910 wraps GST_MPEGTS_FEC_9_10
+	// 
+	// see also No documentation available
 	Fec910 DVBCodeRate = 11
 	// Fec25 wraps GST_MPEGTS_FEC_2_5
+	// 
+	// see also No documentation available
 	Fec25 DVBCodeRate = 12
 )
 
@@ -465,147 +601,268 @@ func (e DVBCodeRate) String() string {
 }
 
 // DVBDescriptorType wraps GstMpegtsDVBDescriptorType
+// 
+// see also No documentation available
 //
-// The type of #GstMpegtsDescriptor
-// 
-// These values correspond to the registered descriptor type from
-// the various DVB specifications.
-// 
-// Consult the relevant specifications for more details.
 type DVBDescriptorType C.int
 
 const (
 	// GstMtsDescDvbNetworkName wraps GST_MTS_DESC_DVB_NETWORK_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescDvbNetworkName DVBDescriptorType = 64
 	// GstMtsDescDvbServiceList wraps GST_MTS_DESC_DVB_SERVICE_LIST
+	// 
+	// see also No documentation available
 	GstMtsDescDvbServiceList DVBDescriptorType = 65
 	// GstMtsDescDvbStuffing wraps GST_MTS_DESC_DVB_STUFFING
+	// 
+	// see also No documentation available
 	GstMtsDescDvbStuffing DVBDescriptorType = 66
 	// GstMtsDescDvbSatelliteDeliverySystem wraps GST_MTS_DESC_DVB_SATELLITE_DELIVERY_SYSTEM
+	// 
+	// see also No documentation available
 	GstMtsDescDvbSatelliteDeliverySystem DVBDescriptorType = 67
 	// GstMtsDescDvbCableDeliverySystem wraps GST_MTS_DESC_DVB_CABLE_DELIVERY_SYSTEM
+	// 
+	// see also No documentation available
 	GstMtsDescDvbCableDeliverySystem DVBDescriptorType = 68
 	// GstMtsDescDvbVbiData wraps GST_MTS_DESC_DVB_VBI_DATA
+	// 
+	// see also No documentation available
 	GstMtsDescDvbVbiData DVBDescriptorType = 69
 	// GstMtsDescDvbVbiTeletext wraps GST_MTS_DESC_DVB_VBI_TELETEXT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbVbiTeletext DVBDescriptorType = 70
 	// GstMtsDescDvbBouquetName wraps GST_MTS_DESC_DVB_BOUQUET_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescDvbBouquetName DVBDescriptorType = 71
 	// GstMtsDescDvbService wraps GST_MTS_DESC_DVB_SERVICE
+	// 
+	// see also No documentation available
 	GstMtsDescDvbService DVBDescriptorType = 72
 	// GstMtsDescDvbCountryAvailability wraps GST_MTS_DESC_DVB_COUNTRY_AVAILABILITY
+	// 
+	// see also No documentation available
 	GstMtsDescDvbCountryAvailability DVBDescriptorType = 73
 	// GstMtsDescDvbLinkage wraps GST_MTS_DESC_DVB_LINKAGE
+	// 
+	// see also No documentation available
 	GstMtsDescDvbLinkage DVBDescriptorType = 74
 	// GstMtsDescDvbNvodReference wraps GST_MTS_DESC_DVB_NVOD_REFERENCE
+	// 
+	// see also No documentation available
 	GstMtsDescDvbNvodReference DVBDescriptorType = 75
 	// GstMtsDescDvbTimeShiftedService wraps GST_MTS_DESC_DVB_TIME_SHIFTED_SERVICE
+	// 
+	// see also No documentation available
 	GstMtsDescDvbTimeShiftedService DVBDescriptorType = 76
 	// GstMtsDescDvbShortEvent wraps GST_MTS_DESC_DVB_SHORT_EVENT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbShortEvent DVBDescriptorType = 77
 	// GstMtsDescDvbExtendedEvent wraps GST_MTS_DESC_DVB_EXTENDED_EVENT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbExtendedEvent DVBDescriptorType = 78
 	// GstMtsDescDvbTimeShiftedEvent wraps GST_MTS_DESC_DVB_TIME_SHIFTED_EVENT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbTimeShiftedEvent DVBDescriptorType = 79
 	// GstMtsDescDvbComponent wraps GST_MTS_DESC_DVB_COMPONENT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbComponent DVBDescriptorType = 80
 	// GstMtsDescDvbMosaic wraps GST_MTS_DESC_DVB_MOSAIC
+	// 
+	// see also No documentation available
 	GstMtsDescDvbMosaic DVBDescriptorType = 81
 	// GstMtsDescDvbStreamIdentifier wraps GST_MTS_DESC_DVB_STREAM_IDENTIFIER
+	// 
+	// see also No documentation available
 	GstMtsDescDvbStreamIdentifier DVBDescriptorType = 82
 	// GstMtsDescDvbCaIdentifier wraps GST_MTS_DESC_DVB_CA_IDENTIFIER
+	// 
+	// see also No documentation available
 	GstMtsDescDvbCaIdentifier DVBDescriptorType = 83
 	// GstMtsDescDvbContent wraps GST_MTS_DESC_DVB_CONTENT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbContent DVBDescriptorType = 84
 	// GstMtsDescDvbParentalRating wraps GST_MTS_DESC_DVB_PARENTAL_RATING
+	// 
+	// see also No documentation available
 	GstMtsDescDvbParentalRating DVBDescriptorType = 85
 	// GstMtsDescDvbTeletext wraps GST_MTS_DESC_DVB_TELETEXT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbTeletext DVBDescriptorType = 86
 	// GstMtsDescDvbTelephone wraps GST_MTS_DESC_DVB_TELEPHONE
+	// 
+	// see also No documentation available
 	GstMtsDescDvbTelephone DVBDescriptorType = 87
 	// GstMtsDescDvbLocalTimeOffset wraps GST_MTS_DESC_DVB_LOCAL_TIME_OFFSET
+	// 
+	// see also No documentation available
 	GstMtsDescDvbLocalTimeOffset DVBDescriptorType = 88
 	// GstMtsDescDvbSubtitling wraps GST_MTS_DESC_DVB_SUBTITLING
+	// 
+	// see also No documentation available
 	GstMtsDescDvbSubtitling DVBDescriptorType = 89
 	// GstMtsDescDvbTerrestrialDeliverySystem wraps GST_MTS_DESC_DVB_TERRESTRIAL_DELIVERY_SYSTEM
+	// 
+	// see also No documentation available
 	GstMtsDescDvbTerrestrialDeliverySystem DVBDescriptorType = 90
 	// GstMtsDescDvbMultilingualNetworkName wraps GST_MTS_DESC_DVB_MULTILINGUAL_NETWORK_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescDvbMultilingualNetworkName DVBDescriptorType = 91
 	// GstMtsDescDvbMultilingualBouquetName wraps GST_MTS_DESC_DVB_MULTILINGUAL_BOUQUET_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescDvbMultilingualBouquetName DVBDescriptorType = 92
 	// GstMtsDescDvbMultilingualServiceName wraps GST_MTS_DESC_DVB_MULTILINGUAL_SERVICE_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescDvbMultilingualServiceName DVBDescriptorType = 93
 	// GstMtsDescDvbMultilingualComponent wraps GST_MTS_DESC_DVB_MULTILINGUAL_COMPONENT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbMultilingualComponent DVBDescriptorType = 94
 	// GstMtsDescDvbPrivateDataSpecifier wraps GST_MTS_DESC_DVB_PRIVATE_DATA_SPECIFIER
+	// 
+	// see also No documentation available
 	GstMtsDescDvbPrivateDataSpecifier DVBDescriptorType = 95
 	// GstMtsDescDvbServiceMove wraps GST_MTS_DESC_DVB_SERVICE_MOVE
+	// 
+	// see also No documentation available
 	GstMtsDescDvbServiceMove DVBDescriptorType = 96
 	// GstMtsDescDvbShortSmoothingBuffer wraps GST_MTS_DESC_DVB_SHORT_SMOOTHING_BUFFER
+	// 
+	// see also No documentation available
 	GstMtsDescDvbShortSmoothingBuffer DVBDescriptorType = 97
 	// GstMtsDescDvbFrequencyList wraps GST_MTS_DESC_DVB_FREQUENCY_LIST
+	// 
+	// see also No documentation available
 	GstMtsDescDvbFrequencyList DVBDescriptorType = 98
 	// GstMtsDescDvbPartialTransportStream wraps GST_MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
-	//
-	// Partial Transport Stream descriptor. Only present in SIT Sections.
 	// 
-	// See also: %GST_MPEGTS_SECTION_SIT, %GstMpegtsSIT
+	// see also No documentation available
+	//
 	GstMtsDescDvbPartialTransportStream DVBDescriptorType = 99
 	// GstMtsDescDvbDataBroadcast wraps GST_MTS_DESC_DVB_DATA_BROADCAST
+	// 
+	// see also No documentation available
 	GstMtsDescDvbDataBroadcast DVBDescriptorType = 100
 	// GstMtsDescDvbScrambling wraps GST_MTS_DESC_DVB_SCRAMBLING
+	// 
+	// see also No documentation available
 	GstMtsDescDvbScrambling DVBDescriptorType = 101
 	// GstMtsDescDvbDataBroadcastID wraps GST_MTS_DESC_DVB_DATA_BROADCAST_ID
+	// 
+	// see also No documentation available
 	GstMtsDescDvbDataBroadcastID DVBDescriptorType = 102
 	// GstMtsDescDvbTransportStream wraps GST_MTS_DESC_DVB_TRANSPORT_STREAM
+	// 
+	// see also No documentation available
 	GstMtsDescDvbTransportStream DVBDescriptorType = 103
 	// GstMtsDescDvbDsng wraps GST_MTS_DESC_DVB_DSNG
+	// 
+	// see also No documentation available
 	GstMtsDescDvbDsng DVBDescriptorType = 104
 	// GstMtsDescDvbPdc wraps GST_MTS_DESC_DVB_PDC
+	// 
+	// see also No documentation available
 	GstMtsDescDvbPdc DVBDescriptorType = 105
 	// GstMtsDescDvbAc3 wraps GST_MTS_DESC_DVB_AC3
+	// 
+	// see also No documentation available
 	GstMtsDescDvbAc3 DVBDescriptorType = 106
 	// GstMtsDescDvbAncillaryData wraps GST_MTS_DESC_DVB_ANCILLARY_DATA
+	// 
+	// see also No documentation available
 	GstMtsDescDvbAncillaryData DVBDescriptorType = 107
 	// GstMtsDescDvbCellList wraps GST_MTS_DESC_DVB_CELL_LIST
+	// 
+	// see also No documentation available
 	GstMtsDescDvbCellList DVBDescriptorType = 108
 	// GstMtsDescDvbCellFrequencyLink wraps GST_MTS_DESC_DVB_CELL_FREQUENCY_LINK
+	// 
+	// see also No documentation available
 	GstMtsDescDvbCellFrequencyLink DVBDescriptorType = 109
 	// GstMtsDescDvbAnnouncementSupport wraps GST_MTS_DESC_DVB_ANNOUNCEMENT_SUPPORT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbAnnouncementSupport DVBDescriptorType = 110
 	// GstMtsDescDvbApplicationSignalling wraps GST_MTS_DESC_DVB_APPLICATION_SIGNALLING
+	// 
+	// see also No documentation available
 	GstMtsDescDvbApplicationSignalling DVBDescriptorType = 111
 	// GstMtsDescDvbAdaptationFieldData wraps GST_MTS_DESC_DVB_ADAPTATION_FIELD_DATA
+	// 
+	// see also No documentation available
 	GstMtsDescDvbAdaptationFieldData DVBDescriptorType = 112
 	// GstMtsDescDvbServiceIdentifier wraps GST_MTS_DESC_DVB_SERVICE_IDENTIFIER
+	// 
+	// see also No documentation available
 	GstMtsDescDvbServiceIdentifier DVBDescriptorType = 113
 	// GstMtsDescDvbServiceAvailability wraps GST_MTS_DESC_DVB_SERVICE_AVAILABILITY
+	// 
+	// see also No documentation available
 	GstMtsDescDvbServiceAvailability DVBDescriptorType = 114
 	// GstMtsDescDvbDefaultAuthority wraps GST_MTS_DESC_DVB_DEFAULT_AUTHORITY
+	// 
+	// see also No documentation available
 	GstMtsDescDvbDefaultAuthority DVBDescriptorType = 115
 	// GstMtsDescDvbRelatedContent wraps GST_MTS_DESC_DVB_RELATED_CONTENT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbRelatedContent DVBDescriptorType = 116
 	// GstMtsDescDvbTvaID wraps GST_MTS_DESC_DVB_TVA_ID
+	// 
+	// see also No documentation available
 	GstMtsDescDvbTvaID DVBDescriptorType = 117
 	// GstMtsDescDvbContentIdentifier wraps GST_MTS_DESC_DVB_CONTENT_IDENTIFIER
+	// 
+	// see also No documentation available
 	GstMtsDescDvbContentIdentifier DVBDescriptorType = 118
 	// GstMtsDescDvbTimesliceFecIdentifier wraps GST_MTS_DESC_DVB_TIMESLICE_FEC_IDENTIFIER
+	// 
+	// see also No documentation available
 	GstMtsDescDvbTimesliceFecIdentifier DVBDescriptorType = 119
 	// GstMtsDescDvbEcmRepetitionRate wraps GST_MTS_DESC_DVB_ECM_REPETITION_RATE
+	// 
+	// see also No documentation available
 	GstMtsDescDvbEcmRepetitionRate DVBDescriptorType = 120
 	// GstMtsDescDvbS2SatelliteDeliverySystem wraps GST_MTS_DESC_DVB_S2_SATELLITE_DELIVERY_SYSTEM
+	// 
+	// see also No documentation available
 	GstMtsDescDvbS2SatelliteDeliverySystem DVBDescriptorType = 121
 	// GstMtsDescDvbEnhancedAc3 wraps GST_MTS_DESC_DVB_ENHANCED_AC3
+	// 
+	// see also No documentation available
 	GstMtsDescDvbEnhancedAc3 DVBDescriptorType = 122
 	// GstMtsDescDvbDts wraps GST_MTS_DESC_DVB_DTS
+	// 
+	// see also No documentation available
 	GstMtsDescDvbDts DVBDescriptorType = 123
 	// GstMtsDescDvbAac wraps GST_MTS_DESC_DVB_AAC
+	// 
+	// see also No documentation available
 	GstMtsDescDvbAac DVBDescriptorType = 124
 	// GstMtsDescDvbXaitLocation wraps GST_MTS_DESC_DVB_XAIT_LOCATION
+	// 
+	// see also No documentation available
 	GstMtsDescDvbXaitLocation DVBDescriptorType = 125
 	// GstMtsDescDvbFtaContentManagement wraps GST_MTS_DESC_DVB_FTA_CONTENT_MANAGEMENT
+	// 
+	// see also No documentation available
 	GstMtsDescDvbFtaContentManagement DVBDescriptorType = 126
 	// GstMtsDescDvbExtension wraps GST_MTS_DESC_DVB_EXTENSION
+	// 
+	// see also No documentation available
 	GstMtsDescDvbExtension DVBDescriptorType = 127
 )
 
@@ -681,59 +938,96 @@ func (e DVBDescriptorType) String() string {
 }
 
 // DVBExtendedDescriptorType wraps GstMpegtsDVBExtendedDescriptorType
+// 
+// see also No documentation available
 //
-// The type of #GstMpegtsDescriptor
-// 
-// These values correspond to the registered extended descriptor
-// type from the various DVB specifications.
-// 
-// Consult the relevant specifications for more details.
 type DVBExtendedDescriptorType C.int
 
 const (
 	// GstMtsDescExtDvbImageIcon wraps GST_MTS_DESC_EXT_DVB_IMAGE_ICON
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbImageIcon DVBExtendedDescriptorType = 0
 	// GstMtsDescExtDvbCpcmDeliverySignalling wraps GST_MTS_DESC_EXT_DVB_CPCM_DELIVERY_SIGNALLING
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbCpcmDeliverySignalling DVBExtendedDescriptorType = 1
 	// GstMtsDescExtDvbCp wraps GST_MTS_DESC_EXT_DVB_CP
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbCp DVBExtendedDescriptorType = 2
 	// GstMtsDescExtDvbCpIdentifier wraps GST_MTS_DESC_EXT_DVB_CP_IDENTIFIER
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbCpIdentifier DVBExtendedDescriptorType = 3
 	// GstMtsDescExtDvbT2DeliverySystem wraps GST_MTS_DESC_EXT_DVB_T2_DELIVERY_SYSTEM
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbT2DeliverySystem DVBExtendedDescriptorType = 4
 	// GstMtsDescExtDvbShDeliverySystem wraps GST_MTS_DESC_EXT_DVB_SH_DELIVERY_SYSTEM
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbShDeliverySystem DVBExtendedDescriptorType = 5
 	// GstMtsDescExtDvbSupplementaryAudio wraps GST_MTS_DESC_EXT_DVB_SUPPLEMENTARY_AUDIO
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbSupplementaryAudio DVBExtendedDescriptorType = 6
 	// GstMtsDescExtDvbNetworkChangeNotify wraps GST_MTS_DESC_EXT_DVB_NETWORK_CHANGE_NOTIFY
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbNetworkChangeNotify DVBExtendedDescriptorType = 7
 	// GstMtsDescExtDvbMessage wraps GST_MTS_DESC_EXT_DVB_MESSAGE
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbMessage DVBExtendedDescriptorType = 8
 	// GstMtsDescExtDvbTargetRegion wraps GST_MTS_DESC_EXT_DVB_TARGET_REGION
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbTargetRegion DVBExtendedDescriptorType = 9
 	// GstMtsDescExtDvbTargetRegionName wraps GST_MTS_DESC_EXT_DVB_TARGET_REGION_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbTargetRegionName DVBExtendedDescriptorType = 10
 	// GstMtsDescExtDvbServiceRelocated wraps GST_MTS_DESC_EXT_DVB_SERVICE_RELOCATED
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbServiceRelocated DVBExtendedDescriptorType = 11
 	// GstMtsDescExtDvbXaitPid wraps GST_MTS_DESC_EXT_DVB_XAIT_PID
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbXaitPid DVBExtendedDescriptorType = 12
 	// GstMtsDescExtDvbC2DeliverySystem wraps GST_MTS_DESC_EXT_DVB_C2_DELIVERY_SYSTEM
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbC2DeliverySystem DVBExtendedDescriptorType = 13
 	// GstMtsDescExtDvbDtsHdAudioStream wraps GST_MTS_DESC_EXT_DVB_DTS_HD_AUDIO_STREAM
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbDtsHdAudioStream DVBExtendedDescriptorType = 14
 	// GstMtsDescExtDvbDtsNeutral wraps GST_MTS_DESC_EXT_DVB_DTS_NEUTRAL
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbDtsNeutral DVBExtendedDescriptorType = 15
 	// GstMtsDescExtDvbVideoDepthRange wraps GST_MTS_DESC_EXT_DVB_VIDEO_DEPTH_RANGE
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbVideoDepthRange DVBExtendedDescriptorType = 16
 	// GstMtsDescExtDvbT2mi wraps GST_MTS_DESC_EXT_DVB_T2MI
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbT2mi DVBExtendedDescriptorType = 17
 	// GstMtsDescExtDvbURILinkage wraps GST_MTS_DESC_EXT_DVB_URI_LINKAGE
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbURILinkage DVBExtendedDescriptorType = 19
 	// GstMtsDescExtDvbAc4 wraps GST_MTS_DESC_EXT_DVB_AC4
+	// 
+	// see also No documentation available
 	GstMtsDescExtDvbAc4 DVBExtendedDescriptorType = 21
 	// GstMtsDescExtDvbAudioPreselection wraps GST_MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
+	// 
+	// see also No documentation available
 	//
-	// Provide all avaliable audio programme for user selection
 	GstMtsDescExtDvbAudioPreselection DVBExtendedDescriptorType = 25
 )
 
@@ -766,16 +1060,26 @@ func (e DVBExtendedDescriptorType) String() string {
 }
 
 // DVBLinkageHandOverType wraps GstMpegtsDVBLinkageHandOverType
+// 
+// see also No documentation available
 type DVBLinkageHandOverType C.int
 
 const (
 	// DvbLinkageHandOverReserved wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_RESERVED
+	// 
+	// see also No documentation available
 	DvbLinkageHandOverReserved DVBLinkageHandOverType = 0
 	// DvbLinkageHandOverIdentical wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_IDENTICAL
+	// 
+	// see also No documentation available
 	DvbLinkageHandOverIdentical DVBLinkageHandOverType = 1
 	// DvbLinkageHandOverLocalVariation wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_LOCAL_VARIATION
+	// 
+	// see also No documentation available
 	DvbLinkageHandOverLocalVariation DVBLinkageHandOverType = 2
 	// DvbLinkageHandOverAssociated wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_ASSOCIATED
+	// 
+	// see also No documentation available
 	DvbLinkageHandOverAssociated DVBLinkageHandOverType = 3
 )
 
@@ -791,40 +1095,71 @@ func (e DVBLinkageHandOverType) String() string {
 }
 
 // DVBLinkageType wraps GstMpegtsDVBLinkageType
+// 
+// see also No documentation available
 //
-// Linkage Type (EN 300 468 v.1.13.1)
 type DVBLinkageType C.int
 
 const (
 	// DvbLinkageReserved00 wraps GST_MPEGTS_DVB_LINKAGE_RESERVED_00
+	// 
+	// see also No documentation available
 	DvbLinkageReserved00 DVBLinkageType = 0
 	// DvbLinkageInformation wraps GST_MPEGTS_DVB_LINKAGE_INFORMATION
+	// 
+	// see also No documentation available
 	DvbLinkageInformation DVBLinkageType = 1
 	// DvbLinkageEpg wraps GST_MPEGTS_DVB_LINKAGE_EPG
+	// 
+	// see also No documentation available
 	DvbLinkageEpg DVBLinkageType = 2
 	// DvbLinkageCaReplacement wraps GST_MPEGTS_DVB_LINKAGE_CA_REPLACEMENT
+	// 
+	// see also No documentation available
 	DvbLinkageCaReplacement DVBLinkageType = 3
 	// DvbLinkageTsContainingCompleteSi wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_COMPLETE_SI
+	// 
+	// see also No documentation available
 	DvbLinkageTsContainingCompleteSi DVBLinkageType = 4
 	// DvbLinkageServiceReplacement wraps GST_MPEGTS_DVB_LINKAGE_SERVICE_REPLACEMENT
+	// 
+	// see also No documentation available
 	DvbLinkageServiceReplacement DVBLinkageType = 5
 	// DvbLinkageDataBroadcast wraps GST_MPEGTS_DVB_LINKAGE_DATA_BROADCAST
+	// 
+	// see also No documentation available
 	DvbLinkageDataBroadcast DVBLinkageType = 6
 	// DvbLinkageRcsMap wraps GST_MPEGTS_DVB_LINKAGE_RCS_MAP
+	// 
+	// see also No documentation available
 	DvbLinkageRcsMap DVBLinkageType = 7
 	// DvbLinkageMobileHandOver wraps GST_MPEGTS_DVB_LINKAGE_MOBILE_HAND_OVER
+	// 
+	// see also No documentation available
 	DvbLinkageMobileHandOver DVBLinkageType = 8
 	// DvbLinkageSystemSoftwareUpdate wraps GST_MPEGTS_DVB_LINKAGE_SYSTEM_SOFTWARE_UPDATE
+	// 
+	// see also No documentation available
 	DvbLinkageSystemSoftwareUpdate DVBLinkageType = 9
 	// DvbLinkageTsContainingSsu wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_SSU
+	// 
+	// see also No documentation available
 	DvbLinkageTsContainingSsu DVBLinkageType = 10
 	// DvbLinkageIpMacNotification wraps GST_MPEGTS_DVB_LINKAGE_IP_MAC_NOTIFICATION
+	// 
+	// see also No documentation available
 	DvbLinkageIpMacNotification DVBLinkageType = 11
 	// DvbLinkageTsContainingInt wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_INT
+	// 
+	// see also No documentation available
 	DvbLinkageTsContainingInt DVBLinkageType = 12
 	// DvbLinkageEvent wraps GST_MPEGTS_DVB_LINKAGE_EVENT
+	// 
+	// see also No documentation available
 	DvbLinkageEvent DVBLinkageType = 13
 	// DvbLinkageExtendedEvent wraps GST_MPEGTS_DVB_LINKAGE_EXTENDED_EVENT
+	// 
+	// see also No documentation available
 	DvbLinkageExtendedEvent DVBLinkageType = 14
 )
 
@@ -851,26 +1186,46 @@ func (e DVBLinkageType) String() string {
 }
 
 // DVBScramblingModeType wraps GstMpegtsDVBScramblingModeType
+// 
+// see also No documentation available
 type DVBScramblingModeType C.int
 
 const (
 	// DvbScramblingModeReserved wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_RESERVED
+	// 
+	// see also No documentation available
 	DvbScramblingModeReserved DVBScramblingModeType = 0
 	// DvbScramblingModeCsa1 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA1
+	// 
+	// see also No documentation available
 	DvbScramblingModeCsa1 DVBScramblingModeType = 1
 	// DvbScramblingModeCsa2 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA2
+	// 
+	// see also No documentation available
 	DvbScramblingModeCsa2 DVBScramblingModeType = 2
 	// DvbScramblingModeCsa3Standard wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_STANDARD
+	// 
+	// see also No documentation available
 	DvbScramblingModeCsa3Standard DVBScramblingModeType = 3
 	// DvbScramblingModeCsa3MinimalEnhanced wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_MINIMAL_ENHANCED
+	// 
+	// see also No documentation available
 	DvbScramblingModeCsa3MinimalEnhanced DVBScramblingModeType = 4
 	// DvbScramblingModeCsa3FullEnhanced wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_FULL_ENHANCED
+	// 
+	// see also No documentation available
 	DvbScramblingModeCsa3FullEnhanced DVBScramblingModeType = 5
 	// DvbScramblingModeCissa wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CISSA
+	// 
+	// see also No documentation available
 	DvbScramblingModeCissa DVBScramblingModeType = 16
 	// DvbScramblingModeAtis0 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_0
+	// 
+	// see also No documentation available
 	DvbScramblingModeAtis0 DVBScramblingModeType = 112
 	// DvbScramblingModeAtisF wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_F
+	// 
+	// see also No documentation available
 	DvbScramblingModeAtisF DVBScramblingModeType = 127
 )
 
@@ -891,68 +1246,123 @@ func (e DVBScramblingModeType) String() string {
 }
 
 // DVBServiceType wraps GstMpegtsDVBServiceType
-//
-// The type of service of a channel.
 // 
-// As specified in Table 87 of ETSI EN 300 468 v1.13.1
+// see also No documentation available
+//
 type DVBServiceType C.int
 
 const (
 	// GstDvbServiceReserved00 wraps GST_DVB_SERVICE_RESERVED_00
+	// 
+	// see also No documentation available
 	GstDvbServiceReserved00 DVBServiceType = 0
 	// GstDvbServiceDigitalTelevision wraps GST_DVB_SERVICE_DIGITAL_TELEVISION
+	// 
+	// see also No documentation available
 	GstDvbServiceDigitalTelevision DVBServiceType = 1
 	// GstDvbServiceDigitalRadioSound wraps GST_DVB_SERVICE_DIGITAL_RADIO_SOUND
+	// 
+	// see also No documentation available
 	GstDvbServiceDigitalRadioSound DVBServiceType = 2
 	// GstDvbServiceTeletext wraps GST_DVB_SERVICE_TELETEXT
+	// 
+	// see also No documentation available
 	GstDvbServiceTeletext DVBServiceType = 3
 	// GstDvbServiceNvodReference wraps GST_DVB_SERVICE_NVOD_REFERENCE
+	// 
+	// see also No documentation available
 	GstDvbServiceNvodReference DVBServiceType = 4
 	// GstDvbServiceNvodTimeShifted wraps GST_DVB_SERVICE_NVOD_TIME_SHIFTED
+	// 
+	// see also No documentation available
 	GstDvbServiceNvodTimeShifted DVBServiceType = 5
 	// GstDvbServiceMosaic wraps GST_DVB_SERVICE_MOSAIC
+	// 
+	// see also No documentation available
 	GstDvbServiceMosaic DVBServiceType = 6
 	// GstDvbServiceFmRadio wraps GST_DVB_SERVICE_FM_RADIO
+	// 
+	// see also No documentation available
 	GstDvbServiceFmRadio DVBServiceType = 7
 	// GstDvbServiceDvbSrm wraps GST_DVB_SERVICE_DVB_SRM
+	// 
+	// see also No documentation available
 	GstDvbServiceDvbSrm DVBServiceType = 8
 	// GstDvbServiceReserved09 wraps GST_DVB_SERVICE_RESERVED_09
+	// 
+	// see also No documentation available
 	GstDvbServiceReserved09 DVBServiceType = 9
 	// GstDvbServiceAdvancedCodecDigitalRadioSound wraps GST_DVB_SERVICE_ADVANCED_CODEC_DIGITAL_RADIO_SOUND
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecDigitalRadioSound DVBServiceType = 10
 	// GstDvbServiceAdvancedCodecMosaic wraps GST_DVB_SERVICE_ADVANCED_CODEC_MOSAIC
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecMosaic DVBServiceType = 11
 	// GstDvbServiceDataBroadcast wraps GST_DVB_SERVICE_DATA_BROADCAST
+	// 
+	// see also No documentation available
 	GstDvbServiceDataBroadcast DVBServiceType = 12
 	// GstDvbServiceReserved0dCommonInterface wraps GST_DVB_SERVICE_RESERVED_0D_COMMON_INTERFACE
+	// 
+	// see also No documentation available
 	GstDvbServiceReserved0dCommonInterface DVBServiceType = 13
 	// GstDvbServiceRcsMap wraps GST_DVB_SERVICE_RCS_MAP
+	// 
+	// see also No documentation available
 	GstDvbServiceRcsMap DVBServiceType = 14
 	// GstDvbServiceRcsFls wraps GST_DVB_SERVICE_RCS_FLS
+	// 
+	// see also No documentation available
 	GstDvbServiceRcsFls DVBServiceType = 15
 	// GstDvbServiceDvbMhp wraps GST_DVB_SERVICE_DVB_MHP
+	// 
+	// see also No documentation available
 	GstDvbServiceDvbMhp DVBServiceType = 16
 	// GstDvbServiceMpeg2HdDigitalTelevision wraps GST_DVB_SERVICE_MPEG2_HD_DIGITAL_TELEVISION
+	// 
+	// see also No documentation available
 	GstDvbServiceMpeg2HdDigitalTelevision DVBServiceType = 17
 	// GstDvbServiceAdvancedCodecSdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_DIGITAL_TELEVISION
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecSdDigitalTelevision DVBServiceType = 22
 	// GstDvbServiceAdvancedCodecSdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_TIME_SHIFTED
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecSdNvodTimeShifted DVBServiceType = 23
 	// GstDvbServiceAdvancedCodecSdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_REFERENCE
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecSdNvodReference DVBServiceType = 24
 	// GstDvbServiceAdvancedCodecHdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_DIGITAL_TELEVISION
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecHdDigitalTelevision DVBServiceType = 25
 	// GstDvbServiceAdvancedCodecHdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_TIME_SHIFTED
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecHdNvodTimeShifted DVBServiceType = 26
 	// GstDvbServiceAdvancedCodecHdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_REFERENCE
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecHdNvodReference DVBServiceType = 27
 	// GstDvbServiceAdvancedCodecStereoHdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_DIGITAL_TELEVISION
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecStereoHdDigitalTelevision DVBServiceType = 28
 	// GstDvbServiceAdvancedCodecStereoHdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_TIME_SHIFTED
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecStereoHdNvodTimeShifted DVBServiceType = 29
 	// GstDvbServiceAdvancedCodecStereoHdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE
+	// 
+	// see also No documentation available
 	GstDvbServiceAdvancedCodecStereoHdNvodReference DVBServiceType = 30
 	// GstDvbServiceReservedFf wraps GST_DVB_SERVICE_RESERVED_FF
+	// 
+	// see also No documentation available
 	GstDvbServiceReservedFf DVBServiceType = 31
 )
 
@@ -992,22 +1402,31 @@ func (e DVBServiceType) String() string {
 }
 
 // DVBTeletextType wraps GstMpegtsDVBTeletextType
-//
-// The type of teletext page.
 // 
-// As specified in Table 100 of ETSI EN 300 468 v1.13.1
+// see also No documentation available
+//
 type DVBTeletextType C.int
 
 const (
 	// GstInitialPage wraps gst_INITIAL_PAGE
+	// 
+	// see also No documentation available
 	GstInitialPage DVBTeletextType = 1
 	// GstSubtitlePage wraps gst_SUBTITLE_PAGE
+	// 
+	// see also No documentation available
 	GstSubtitlePage DVBTeletextType = 2
 	// GstAdditionalInfoPage wraps gst_ADDITIONAL_INFO_PAGE
+	// 
+	// see also No documentation available
 	GstAdditionalInfoPage DVBTeletextType = 3
 	// GstProgrammeSchedulePage wraps gst_PROGRAMME_SCHEDULE_PAGE
+	// 
+	// see also No documentation available
 	GstProgrammeSchedulePage DVBTeletextType = 4
 	// GstHearingImpairedPage wraps gst_HEARING_IMPAIRED_PAGE
+	// 
+	// see also No documentation available
 	GstHearingImpairedPage DVBTeletextType = 5
 )
 
@@ -1024,127 +1443,232 @@ func (e DVBTeletextType) String() string {
 }
 
 // DescriptorType wraps GstMpegtsDescriptorType
+// 
+// see also No documentation available
 //
-// The type of #GstMpegtsDescriptor
-// 
-// These values correspond to the registered descriptor type from
-// the base MPEG-TS specifications (ITU H.222.0 | ISO/IEC 13818-1).
-// 
-// Consult the relevant specifications for more details.
 type DescriptorType C.int
 
 const (
 	// GstMtsDescReserved00 wraps GST_MTS_DESC_RESERVED_00
+	// 
+	// see also No documentation available
 	GstMtsDescReserved00 DescriptorType = 0
 	// GstMtsDescReserved01 wraps GST_MTS_DESC_RESERVED_01
+	// 
+	// see also No documentation available
 	GstMtsDescReserved01 DescriptorType = 1
 	// GstMtsDescVideoStream wraps GST_MTS_DESC_VIDEO_STREAM
+	// 
+	// see also No documentation available
 	GstMtsDescVideoStream DescriptorType = 2
 	// GstMtsDescAudioStream wraps GST_MTS_DESC_AUDIO_STREAM
+	// 
+	// see also No documentation available
 	GstMtsDescAudioStream DescriptorType = 3
 	// GstMtsDescHierarchy wraps GST_MTS_DESC_HIERARCHY
+	// 
+	// see also No documentation available
 	GstMtsDescHierarchy DescriptorType = 4
 	// GstMtsDescRegistration wraps GST_MTS_DESC_REGISTRATION
+	// 
+	// see also No documentation available
 	GstMtsDescRegistration DescriptorType = 5
 	// GstMtsDescDataStreamAlignment wraps GST_MTS_DESC_DATA_STREAM_ALIGNMENT
+	// 
+	// see also No documentation available
 	GstMtsDescDataStreamAlignment DescriptorType = 6
 	// GstMtsDescTargetBackgroundGrid wraps GST_MTS_DESC_TARGET_BACKGROUND_GRID
+	// 
+	// see also No documentation available
 	GstMtsDescTargetBackgroundGrid DescriptorType = 7
 	// GstMtsDescVideoWindow wraps GST_MTS_DESC_VIDEO_WINDOW
+	// 
+	// see also No documentation available
 	GstMtsDescVideoWindow DescriptorType = 8
 	// GstMtsDescCa wraps GST_MTS_DESC_CA
+	// 
+	// see also No documentation available
 	GstMtsDescCa DescriptorType = 9
 	// GstMtsDescIso639Language wraps GST_MTS_DESC_ISO_639_LANGUAGE
+	// 
+	// see also No documentation available
 	GstMtsDescIso639Language DescriptorType = 10
 	// GstMtsDescSystemClock wraps GST_MTS_DESC_SYSTEM_CLOCK
+	// 
+	// see also No documentation available
 	GstMtsDescSystemClock DescriptorType = 11
 	// GstMtsDescMultiplexBufferUtilisation wraps GST_MTS_DESC_MULTIPLEX_BUFFER_UTILISATION
+	// 
+	// see also No documentation available
 	GstMtsDescMultiplexBufferUtilisation DescriptorType = 12
 	// GstMtsDescCopyright wraps GST_MTS_DESC_COPYRIGHT
+	// 
+	// see also No documentation available
 	GstMtsDescCopyright DescriptorType = 13
 	// GstMtsDescMaximumBitrate wraps GST_MTS_DESC_MAXIMUM_BITRATE
+	// 
+	// see also No documentation available
 	GstMtsDescMaximumBitrate DescriptorType = 14
 	// GstMtsDescPrivateDataIndicator wraps GST_MTS_DESC_PRIVATE_DATA_INDICATOR
+	// 
+	// see also No documentation available
 	GstMtsDescPrivateDataIndicator DescriptorType = 15
 	// GstMtsDescSmoothingBuffer wraps GST_MTS_DESC_SMOOTHING_BUFFER
+	// 
+	// see also No documentation available
 	GstMtsDescSmoothingBuffer DescriptorType = 16
 	// GstMtsDescStd wraps GST_MTS_DESC_STD
+	// 
+	// see also No documentation available
 	GstMtsDescStd DescriptorType = 17
 	// GstMtsDescIbp wraps GST_MTS_DESC_IBP
+	// 
+	// see also No documentation available
 	GstMtsDescIbp DescriptorType = 18
 	// GstMtsDescDsmccCarouselIdentifier wraps GST_MTS_DESC_DSMCC_CAROUSEL_IDENTIFIER
+	// 
+	// see also No documentation available
 	GstMtsDescDsmccCarouselIdentifier DescriptorType = 19
 	// GstMtsDescDsmccAssociationTag wraps GST_MTS_DESC_DSMCC_ASSOCIATION_TAG
+	// 
+	// see also No documentation available
 	GstMtsDescDsmccAssociationTag DescriptorType = 20
 	// GstMtsDescDsmccDeferredAssociationTag wraps GST_MTS_DESC_DSMCC_DEFERRED_ASSOCIATION_TAG
+	// 
+	// see also No documentation available
 	GstMtsDescDsmccDeferredAssociationTag DescriptorType = 21
 	// GstMtsDescDsmccNptReference wraps GST_MTS_DESC_DSMCC_NPT_REFERENCE
+	// 
+	// see also No documentation available
 	GstMtsDescDsmccNptReference DescriptorType = 23
 	// GstMtsDescDsmccNptEndpoint wraps GST_MTS_DESC_DSMCC_NPT_ENDPOINT
+	// 
+	// see also No documentation available
 	GstMtsDescDsmccNptEndpoint DescriptorType = 24
 	// GstMtsDescDsmccStreamMode wraps GST_MTS_DESC_DSMCC_STREAM_MODE
+	// 
+	// see also No documentation available
 	GstMtsDescDsmccStreamMode DescriptorType = 25
 	// GstMtsDescDsmccStreamEvent wraps GST_MTS_DESC_DSMCC_STREAM_EVENT
+	// 
+	// see also No documentation available
 	GstMtsDescDsmccStreamEvent DescriptorType = 26
 	// GstMtsDescMpeg4Video wraps GST_MTS_DESC_MPEG4_VIDEO
+	// 
+	// see also No documentation available
 	GstMtsDescMpeg4Video DescriptorType = 27
 	// GstMtsDescMpeg4Audio wraps GST_MTS_DESC_MPEG4_AUDIO
+	// 
+	// see also No documentation available
 	GstMtsDescMpeg4Audio DescriptorType = 28
 	// GstMtsDescIod wraps GST_MTS_DESC_IOD
+	// 
+	// see also No documentation available
 	GstMtsDescIod DescriptorType = 29
 	// GstMtsDescSl wraps GST_MTS_DESC_SL
+	// 
+	// see also No documentation available
 	GstMtsDescSl DescriptorType = 30
 	// GstMtsDescFmc wraps GST_MTS_DESC_FMC
+	// 
+	// see also No documentation available
 	GstMtsDescFmc DescriptorType = 31
 	// GstMtsDescExternalEsID wraps GST_MTS_DESC_EXTERNAL_ES_ID
+	// 
+	// see also No documentation available
 	GstMtsDescExternalEsID DescriptorType = 32
 	// GstMtsDescMuxCode wraps GST_MTS_DESC_MUX_CODE
+	// 
+	// see also No documentation available
 	GstMtsDescMuxCode DescriptorType = 33
 	// GstMtsDescFmxBufferSize wraps GST_MTS_DESC_FMX_BUFFER_SIZE
+	// 
+	// see also No documentation available
 	GstMtsDescFmxBufferSize DescriptorType = 34
 	// GstMtsDescMultiplexBuffer wraps GST_MTS_DESC_MULTIPLEX_BUFFER
+	// 
+	// see also No documentation available
 	GstMtsDescMultiplexBuffer DescriptorType = 35
 	// GstMtsDescContentLabeling wraps GST_MTS_DESC_CONTENT_LABELING
+	// 
+	// see also No documentation available
 	GstMtsDescContentLabeling DescriptorType = 36
 	// GstMtsDescMetadataPointer wraps GST_MTS_DESC_METADATA_POINTER
+	// 
+	// see also No documentation available
 	GstMtsDescMetadataPointer DescriptorType = 37
 	// GstMtsDescMetadata wraps GST_MTS_DESC_METADATA
+	// 
+	// see also No documentation available
 	GstMtsDescMetadata DescriptorType = 38
 	// GstMtsDescMetadataStd wraps GST_MTS_DESC_METADATA_STD
+	// 
+	// see also No documentation available
 	GstMtsDescMetadataStd DescriptorType = 39
 	// GstMtsDescAvcVideo wraps GST_MTS_DESC_AVC_VIDEO
+	// 
+	// see also No documentation available
 	GstMtsDescAvcVideo DescriptorType = 40
 	// GstMtsDescIpmp wraps GST_MTS_DESC_IPMP
+	// 
+	// see also No documentation available
 	GstMtsDescIpmp DescriptorType = 41
 	// GstMtsDescAvcTimingAndHrd wraps GST_MTS_DESC_AVC_TIMING_AND_HRD
+	// 
+	// see also No documentation available
 	GstMtsDescAvcTimingAndHrd DescriptorType = 42
 	// GstMtsDescMpeg2AacAudio wraps GST_MTS_DESC_MPEG2_AAC_AUDIO
+	// 
+	// see also No documentation available
 	GstMtsDescMpeg2AacAudio DescriptorType = 43
 	// GstMtsDescFlexMuxTiming wraps GST_MTS_DESC_FLEX_MUX_TIMING
+	// 
+	// see also No documentation available
 	GstMtsDescFlexMuxTiming DescriptorType = 44
 	// GstMtsDescMpeg4Text wraps GST_MTS_DESC_MPEG4_TEXT
+	// 
+	// see also No documentation available
 	GstMtsDescMpeg4Text DescriptorType = 45
 	// GstMtsDescMpeg4AudioExtension wraps GST_MTS_DESC_MPEG4_AUDIO_EXTENSION
+	// 
+	// see also No documentation available
 	GstMtsDescMpeg4AudioExtension DescriptorType = 46
 	// GstMtsDescAuxiliaryVideoStream wraps GST_MTS_DESC_AUXILIARY_VIDEO_STREAM
+	// 
+	// see also No documentation available
 	GstMtsDescAuxiliaryVideoStream DescriptorType = 47
 	// GstMtsDescSvcExtension wraps GST_MTS_DESC_SVC_EXTENSION
+	// 
+	// see also No documentation available
 	GstMtsDescSvcExtension DescriptorType = 48
 	// GstMtsDescMvcExtension wraps GST_MTS_DESC_MVC_EXTENSION
+	// 
+	// see also No documentation available
 	GstMtsDescMvcExtension DescriptorType = 49
 	// GstMtsDescJ2kVideo wraps GST_MTS_DESC_J2K_VIDEO
+	// 
+	// see also No documentation available
 	GstMtsDescJ2kVideo DescriptorType = 50
 	// GstMtsDescMvcOperationPoint wraps GST_MTS_DESC_MVC_OPERATION_POINT
+	// 
+	// see also No documentation available
 	GstMtsDescMvcOperationPoint DescriptorType = 51
 	// GstMtsDescMpeg2StereoscopicVideoFormat wraps GST_MTS_DESC_MPEG2_STEREOSCOPIC_VIDEO_FORMAT
+	// 
+	// see also No documentation available
 	GstMtsDescMpeg2StereoscopicVideoFormat DescriptorType = 52
 	// GstMtsDescStereoscopicProgramInfo wraps GST_MTS_DESC_STEREOSCOPIC_PROGRAM_INFO
+	// 
+	// see also No documentation available
 	GstMtsDescStereoscopicProgramInfo DescriptorType = 53
 	// GstMtsDescStereoscopicVideoInfo wraps GST_MTS_DESC_STEREOSCOPIC_VIDEO_INFO
+	// 
+	// see also No documentation available
 	GstMtsDescStereoscopicVideoInfo DescriptorType = 54
 	// GstMtsDescExtension wraps GST_MTS_DESC_EXTENSION
+	// 
+	// see also No documentation available
 	//
-	// Extension Descriptor.
 	GstMtsDescExtension DescriptorType = 63
 )
 
@@ -1211,17 +1735,15 @@ func (e DescriptorType) String() string {
 }
 
 // ExtendedDescriptorType wraps GstMpegtsExtendedDescriptorType
+// 
+// see also No documentation available
 //
-// The type of an extended descriptor
-// 
-// The values correpond to the registered extended descriptor types from the
-// base ISO 13818 / ITU H.222.0 specifications
-// 
-// Consult the specification for more details
 type ExtendedDescriptorType C.int
 
 const (
 	// GstMtsDescExtJxsVideo wraps GST_MTS_DESC_EXT_JXS_VIDEO
+	// 
+	// see also No documentation available
 	GstMtsDescExtJxsVideo ExtendedDescriptorType = 20
 )
 
@@ -1234,37 +1756,63 @@ func (e ExtendedDescriptorType) String() string {
 }
 
 // HdmvStreamType wraps GstMpegtsHdmvStreamType
+// 
+// see also No documentation available
 //
-// Type of mpeg-ts streams for Blu-ray formats. To be matched with the
-// stream-type of a #GstMpegtsSection.
 type HdmvStreamType C.int
 
 const (
 	// StreamTypeHdmvAudioLpcm wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_LPCM
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioLpcm HdmvStreamType = 128
 	// StreamTypeHdmvAudioAc3 wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioAc3 HdmvStreamType = 129
 	// StreamTypeHdmvAudioDts wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioDts HdmvStreamType = 130
 	// StreamTypeHdmvAudioAc3TrueHd wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_TRUE_HD
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioAc3TrueHd HdmvStreamType = 131
 	// StreamTypeHdmvAudioAc3Plus wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioAc3Plus HdmvStreamType = 132
 	// StreamTypeHdmvAudioDtsHd wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioDtsHd HdmvStreamType = 133
 	// StreamTypeHdmvAudioDtsHdMasterAudio wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_MASTER_AUDIO
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioDtsHdMasterAudio HdmvStreamType = 134
 	// StreamTypeHdmvAudioEac3 wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_EAC3
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioEac3 HdmvStreamType = 135
 	// StreamTypeHdmvSubpicturePgs wraps GST_MPEGTS_STREAM_TYPE_HDMV_SUBPICTURE_PGS
+	// 
+	// see also No documentation available
 	StreamTypeHdmvSubpicturePgs HdmvStreamType = 144
 	// StreamTypeHdmvIgs wraps GST_MPEGTS_STREAM_TYPE_HDMV_IGS
+	// 
+	// see also No documentation available
 	StreamTypeHdmvIgs HdmvStreamType = 145
 	// StreamTypeHdmvSubtitle wraps GST_MPEGTS_STREAM_TYPE_HDMV_SUBTITLE
+	// 
+	// see also No documentation available
 	StreamTypeHdmvSubtitle HdmvStreamType = 146
 	// StreamTypeHdmvAudioAc3PlusSecondary wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS_SECONDARY
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioAc3PlusSecondary HdmvStreamType = 161
 	// StreamTypeHdmvAudioDtsHdSecondary wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_SECONDARY
+	// 
+	// see also No documentation available
 	StreamTypeHdmvAudioDtsHdSecondary HdmvStreamType = 162
 )
 
@@ -1289,77 +1837,139 @@ func (e HdmvStreamType) String() string {
 }
 
 // ISDBDescriptorType wraps GstMpegtsISDBDescriptorType
-//
-// These values correspond to the registered descriptor type from
-// the various ISDB specifications.
 // 
-// Consult the relevant specifications for more details.
+// see also No documentation available
+//
 type ISDBDescriptorType C.int
 
 const (
 	// GstMtsDescIsdbHierarchicalTransmission wraps GST_MTS_DESC_ISDB_HIERARCHICAL_TRANSMISSION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbHierarchicalTransmission ISDBDescriptorType = 192
 	// GstMtsDescIsdbDigitalCopyControl wraps GST_MTS_DESC_ISDB_DIGITAL_COPY_CONTROL
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbDigitalCopyControl ISDBDescriptorType = 193
 	// GstMtsDescIsdbNetworkIdentification wraps GST_MTS_DESC_ISDB_NETWORK_IDENTIFICATION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbNetworkIdentification ISDBDescriptorType = 194
 	// GstMtsDescIsdbPartialTsTime wraps GST_MTS_DESC_ISDB_PARTIAL_TS_TIME
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbPartialTsTime ISDBDescriptorType = 195
 	// GstMtsDescIsdbAudioComponent wraps GST_MTS_DESC_ISDB_AUDIO_COMPONENT
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbAudioComponent ISDBDescriptorType = 196
 	// GstMtsDescIsdbHyperlink wraps GST_MTS_DESC_ISDB_HYPERLINK
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbHyperlink ISDBDescriptorType = 197
 	// GstMtsDescIsdbTargetRegion wraps GST_MTS_DESC_ISDB_TARGET_REGION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbTargetRegion ISDBDescriptorType = 198
 	// GstMtsDescIsdbDataContent wraps GST_MTS_DESC_ISDB_DATA_CONTENT
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbDataContent ISDBDescriptorType = 199
 	// GstMtsDescIsdbVideoDecodeControl wraps GST_MTS_DESC_ISDB_VIDEO_DECODE_CONTROL
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbVideoDecodeControl ISDBDescriptorType = 200
 	// GstMtsDescIsdbDownloadContent wraps GST_MTS_DESC_ISDB_DOWNLOAD_CONTENT
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbDownloadContent ISDBDescriptorType = 201
 	// GstMtsDescIsdbCaEmmTs wraps GST_MTS_DESC_ISDB_CA_EMM_TS
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbCaEmmTs ISDBDescriptorType = 202
 	// GstMtsDescIsdbCaContractInformation wraps GST_MTS_DESC_ISDB_CA_CONTRACT_INFORMATION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbCaContractInformation ISDBDescriptorType = 203
 	// GstMtsDescIsdbCaService wraps GST_MTS_DESC_ISDB_CA_SERVICE
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbCaService ISDBDescriptorType = 204
 	// GstMtsDescIsdbTsInformation wraps GST_MTS_DESC_ISDB_TS_INFORMATION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbTsInformation ISDBDescriptorType = 205
 	// GstMtsDescIsdbExtendedBroadcaster wraps GST_MTS_DESC_ISDB_EXTENDED_BROADCASTER
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbExtendedBroadcaster ISDBDescriptorType = 206
 	// GstMtsDescIsdbLogoTransmission wraps GST_MTS_DESC_ISDB_LOGO_TRANSMISSION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbLogoTransmission ISDBDescriptorType = 207
 	// GstMtsDescIsdbBasicLocalEvent wraps GST_MTS_DESC_ISDB_BASIC_LOCAL_EVENT
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbBasicLocalEvent ISDBDescriptorType = 208
 	// GstMtsDescIsdbReference wraps GST_MTS_DESC_ISDB_REFERENCE
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbReference ISDBDescriptorType = 209
 	// GstMtsDescIsdbNodeRelation wraps GST_MTS_DESC_ISDB_NODE_RELATION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbNodeRelation ISDBDescriptorType = 210
 	// GstMtsDescIsdbShortNodeInformation wraps GST_MTS_DESC_ISDB_SHORT_NODE_INFORMATION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbShortNodeInformation ISDBDescriptorType = 211
 	// GstMtsDescIsdbStcReference wraps GST_MTS_DESC_ISDB_STC_REFERENCE
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbStcReference ISDBDescriptorType = 212
 	// GstMtsDescIsdbSeries wraps GST_MTS_DESC_ISDB_SERIES
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbSeries ISDBDescriptorType = 213
 	// GstMtsDescIsdbEventGroup wraps GST_MTS_DESC_ISDB_EVENT_GROUP
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbEventGroup ISDBDescriptorType = 214
 	// GstMtsDescIsdbSiParameter wraps GST_MTS_DESC_ISDB_SI_PARAMETER
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbSiParameter ISDBDescriptorType = 215
 	// GstMtsDescIsdbBroadcasterName wraps GST_MTS_DESC_ISDB_BROADCASTER_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbBroadcasterName ISDBDescriptorType = 216
 	// GstMtsDescIsdbComponentGroup wraps GST_MTS_DESC_ISDB_COMPONENT_GROUP
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbComponentGroup ISDBDescriptorType = 217
 	// GstMtsDescIsdbSiPrimeTs wraps GST_MTS_DESC_ISDB_SI_PRIME_TS
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbSiPrimeTs ISDBDescriptorType = 218
 	// GstMtsDescIsdbBoardInformation wraps GST_MTS_DESC_ISDB_BOARD_INFORMATION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbBoardInformation ISDBDescriptorType = 219
 	// GstMtsDescIsdbLdtLinkage wraps GST_MTS_DESC_ISDB_LDT_LINKAGE
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbLdtLinkage ISDBDescriptorType = 220
 	// GstMtsDescIsdbConnectedTransmission wraps GST_MTS_DESC_ISDB_CONNECTED_TRANSMISSION
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbConnectedTransmission ISDBDescriptorType = 221
 	// GstMtsDescIsdbContentAvailability wraps GST_MTS_DESC_ISDB_CONTENT_AVAILABILITY
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbContentAvailability ISDBDescriptorType = 222
 	// GstMtsDescIsdbServiceGroup wraps GST_MTS_DESC_ISDB_SERVICE_GROUP
+	// 
+	// see also No documentation available
 	GstMtsDescIsdbServiceGroup ISDBDescriptorType = 224
 )
 
@@ -1403,16 +2013,26 @@ func (e ISDBDescriptorType) String() string {
 }
 
 // Iso639AudioType wraps GstMpegtsIso639AudioType
+// 
+// see also No documentation available
 type Iso639AudioType C.int
 
 const (
 	// AudioTypeUndefined wraps GST_MPEGTS_AUDIO_TYPE_UNDEFINED
+	// 
+	// see also No documentation available
 	AudioTypeUndefined Iso639AudioType = 0
 	// AudioTypeCleanEffects wraps GST_MPEGTS_AUDIO_TYPE_CLEAN_EFFECTS
+	// 
+	// see also No documentation available
 	AudioTypeCleanEffects Iso639AudioType = 1
 	// AudioTypeHearingImpaired wraps GST_MPEGTS_AUDIO_TYPE_HEARING_IMPAIRED
+	// 
+	// see also No documentation available
 	AudioTypeHearingImpaired Iso639AudioType = 2
 	// AudioTypeVisualImpairedCommentary wraps GST_MPEGTS_AUDIO_TYPE_VISUAL_IMPAIRED_COMMENTARY
+	// 
+	// see also No documentation available
 	AudioTypeVisualImpairedCommentary Iso639AudioType = 3
 )
 
@@ -1428,20 +2048,23 @@ func (e Iso639AudioType) String() string {
 }
 
 // MetadataApplicationFormat wraps GstMpegtsMetadataApplicationFormat
-//
-// @GST_MPEGTS_METADATA_APPLICATION_FORMAT_ISAN ISO 15706-1 (ISAN) encoded in its binary form
-// @GST_MPEGTS_METADATA_APPLICATION_FORMAT_VSAN ISO 15706-2 (V-ISAN) encoded in its binary form
-// @GST_MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD Defined by the metadata_application_format_identifier field
 // 
-// metadata_application_format valid values. See ISO/IEC 13818-1:2023(E) Table 2-84.
+// see also No documentation available
+//
 type MetadataApplicationFormat C.int
 
 const (
 	// MetadataApplicationFormatIsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_ISAN
+	// 
+	// see also No documentation available
 	MetadataApplicationFormatIsan MetadataApplicationFormat = 16
 	// MetadataApplicationFormatVsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_VSAN
+	// 
+	// see also No documentation available
 	MetadataApplicationFormatVsan MetadataApplicationFormat = 17
 	// MetadataApplicationFormatIdentifierField wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD
+	// 
+	// see also No documentation available
 	MetadataApplicationFormatIdentifierField MetadataApplicationFormat = 65535
 )
 
@@ -1456,26 +2079,31 @@ func (e MetadataApplicationFormat) String() string {
 }
 
 // MetadataFormat wraps GstMpegtsMetadataFormat
+// 
+// see also No documentation available
 //
-// metadata_descriptor metadata_format valid values. See ISO/IEC 13818-1:2018(E) Table 2-85.
 type MetadataFormat C.int
 
 const (
 	// MetadataFormatTem wraps GST_MPEGTS_METADATA_FORMAT_TEM
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 15938-1 TeM.
 	MetadataFormatTem MetadataFormat = 16
 	// MetadataFormatBim wraps GST_MPEGTS_METADATA_FORMAT_BIM
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 15938-1 BiM.
 	MetadataFormatBim MetadataFormat = 17
 	// MetadataFormatApplicationFormat wraps GST_MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
+	// 
+	// see also No documentation available
 	//
-	// Defined by metadata application format.
 	MetadataFormatApplicationFormat MetadataFormat = 63
 	// MetadataFormatIdentifierField wraps GST_MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
+	// 
+	// see also No documentation available
 	//
-	// Defined by metadata_format_identifier field.
 	MetadataFormatIdentifierField MetadataFormat = 255
 )
 
@@ -1491,15 +2119,15 @@ func (e MetadataFormat) String() string {
 }
 
 // MiscDescriptorType wraps GstMpegtsMiscDescriptorType
-//
-// The type of #GstMpegtsDescriptor
 // 
-// These values correspond to miscellaneous descriptor types that are
-// not yet identified from known specifications.
+// see also No documentation available
+//
 type MiscDescriptorType C.int
 
 const (
 	// GstMtsDescDtgLogicalChannel wraps GST_MTS_DESC_DTG_LOGICAL_CHANNEL
+	// 
+	// see also No documentation available
 	GstMtsDescDtgLogicalChannel MiscDescriptorType = 131
 )
 
@@ -1512,38 +2140,70 @@ func (e MiscDescriptorType) String() string {
 }
 
 // ModulationType wraps GstMpegtsModulationType
+// 
+// see also No documentation available
 type ModulationType C.int
 
 const (
 	// ModulationQpsk wraps GST_MPEGTS_MODULATION_QPSK
+	// 
+	// see also No documentation available
 	ModulationQpsk ModulationType = 0
 	// ModulationQam16 wraps GST_MPEGTS_MODULATION_QAM_16
+	// 
+	// see also No documentation available
 	ModulationQam16 ModulationType = 1
 	// ModulationQam32 wraps GST_MPEGTS_MODULATION_QAM_32
+	// 
+	// see also No documentation available
 	ModulationQam32 ModulationType = 2
 	// ModulationQam64 wraps GST_MPEGTS_MODULATION_QAM_64
+	// 
+	// see also No documentation available
 	ModulationQam64 ModulationType = 3
 	// ModulationQam128 wraps GST_MPEGTS_MODULATION_QAM_128
+	// 
+	// see also No documentation available
 	ModulationQam128 ModulationType = 4
 	// ModulationQam256 wraps GST_MPEGTS_MODULATION_QAM_256
+	// 
+	// see also No documentation available
 	ModulationQam256 ModulationType = 5
 	// ModulationQamAuto wraps GST_MPEGTS_MODULATION_QAM_AUTO
+	// 
+	// see also No documentation available
 	ModulationQamAuto ModulationType = 6
 	// ModulationVsb8 wraps GST_MPEGTS_MODULATION_VSB_8
+	// 
+	// see also No documentation available
 	ModulationVsb8 ModulationType = 7
 	// ModulationVsb16 wraps GST_MPEGTS_MODULATION_VSB_16
+	// 
+	// see also No documentation available
 	ModulationVsb16 ModulationType = 8
 	// ModulationPsk8 wraps GST_MPEGTS_MODULATION_PSK_8
+	// 
+	// see also No documentation available
 	ModulationPsk8 ModulationType = 9
 	// ModulationApsk16 wraps GST_MPEGTS_MODULATION_APSK_16
+	// 
+	// see also No documentation available
 	ModulationApsk16 ModulationType = 10
 	// ModulationApsk32 wraps GST_MPEGTS_MODULATION_APSK_32
+	// 
+	// see also No documentation available
 	ModulationApsk32 ModulationType = 11
 	// ModulationDqpsk wraps GST_MPEGTS_MODULATION_DQPSK
+	// 
+	// see also No documentation available
 	ModulationDqpsk ModulationType = 12
 	// ModulationQam4Nr wraps GST_MPEGTS_MODULATION_QAM_4_NR_
+	// 
+	// see also No documentation available
 	ModulationQam4Nr ModulationType = 13
 	// ModulationNone wraps GST_MPEGTS_MODULATION_NONE
+	// 
+	// see also No documentation available
 	ModulationNone ModulationType = 14
 )
 
@@ -1570,24 +2230,35 @@ func (e ModulationType) String() string {
 }
 
 // RunningStatus wraps GstMpegtsRunningStatus
-//
-// Running status of a service.
 // 
-// Corresponds to table 6 of ETSI EN 300 468 (v1.13.0)
+// see also No documentation available
+//
 type RunningStatus C.int
 
 const (
 	// RunningStatusUndefined wraps GST_MPEGTS_RUNNING_STATUS_UNDEFINED
+	// 
+	// see also No documentation available
 	RunningStatusUndefined RunningStatus = 0
 	// RunningStatusNotRunning wraps GST_MPEGTS_RUNNING_STATUS_NOT_RUNNING
+	// 
+	// see also No documentation available
 	RunningStatusNotRunning RunningStatus = 1
 	// RunningStatusStartsInFewSeconds wraps GST_MPEGTS_RUNNING_STATUS_STARTS_IN_FEW_SECONDS
+	// 
+	// see also No documentation available
 	RunningStatusStartsInFewSeconds RunningStatus = 2
 	// RunningStatusPausing wraps GST_MPEGTS_RUNNING_STATUS_PAUSING
+	// 
+	// see also No documentation available
 	RunningStatusPausing RunningStatus = 3
 	// RunningStatusRunning wraps GST_MPEGTS_RUNNING_STATUS_RUNNING
+	// 
+	// see also No documentation available
 	RunningStatusRunning RunningStatus = 4
 	// RunningStatusOffAir wraps GST_MPEGTS_RUNNING_STATUS_OFF_AIR
+	// 
+	// see also No documentation available
 	RunningStatusOffAir RunningStatus = 5
 )
 
@@ -1605,26 +2276,43 @@ func (e RunningStatus) String() string {
 }
 
 // SCTEDescriptorType wraps GstMpegtsSCTEDescriptorType
+// 
+// see also No documentation available
 //
-// These values correspond to the ones defined by SCTE (amongst other in ANSI/SCTE 57)
 type SCTEDescriptorType C.int
 
 const (
 	// GstMtsDescScteStuffing wraps GST_MTS_DESC_SCTE_STUFFING
+	// 
+	// see also No documentation available
 	GstMtsDescScteStuffing SCTEDescriptorType = 128
 	// GstMtsDescScteAc3 wraps GST_MTS_DESC_SCTE_AC3
+	// 
+	// see also No documentation available
 	GstMtsDescScteAc3 SCTEDescriptorType = 129
 	// GstMtsDescScteFrameRate wraps GST_MTS_DESC_SCTE_FRAME_RATE
+	// 
+	// see also No documentation available
 	GstMtsDescScteFrameRate SCTEDescriptorType = 130
 	// GstMtsDescScteExtendedVideo wraps GST_MTS_DESC_SCTE_EXTENDED_VIDEO
+	// 
+	// see also No documentation available
 	GstMtsDescScteExtendedVideo SCTEDescriptorType = 131
 	// GstMtsDescScteComponentName wraps GST_MTS_DESC_SCTE_COMPONENT_NAME
+	// 
+	// see also No documentation available
 	GstMtsDescScteComponentName SCTEDescriptorType = 132
 	// GstMtsDescScteFrequencySpec wraps GST_MTS_DESC_SCTE_FREQUENCY_SPEC
+	// 
+	// see also No documentation available
 	GstMtsDescScteFrequencySpec SCTEDescriptorType = 144
 	// GstMtsDescScteModulationParams wraps GST_MTS_DESC_SCTE_MODULATION_PARAMS
+	// 
+	// see also No documentation available
 	GstMtsDescScteModulationParams SCTEDescriptorType = 145
 	// GstMtsDescScteTransportStreamID wraps GST_MTS_DESC_SCTE_TRANSPORT_STREAM_ID
+	// 
+	// see also No documentation available
 	GstMtsDescScteTransportStreamID SCTEDescriptorType = 146
 )
 
@@ -1644,20 +2332,34 @@ func (e SCTEDescriptorType) String() string {
 }
 
 // SCTESpliceCommandType wraps GstMpegtsSCTESpliceCommandType
+// 
+// see also No documentation available
 type SCTESpliceCommandType C.int
 
 const (
 	// GstMtsScteSpliceCommandNull wraps GST_MTS_SCTE_SPLICE_COMMAND_NULL
+	// 
+	// see also No documentation available
 	GstMtsScteSpliceCommandNull SCTESpliceCommandType = 0
 	// GstMtsScteSpliceCommandSchedule wraps GST_MTS_SCTE_SPLICE_COMMAND_SCHEDULE
+	// 
+	// see also No documentation available
 	GstMtsScteSpliceCommandSchedule SCTESpliceCommandType = 4
 	// GstMtsScteSpliceCommandInsert wraps GST_MTS_SCTE_SPLICE_COMMAND_INSERT
+	// 
+	// see also No documentation available
 	GstMtsScteSpliceCommandInsert SCTESpliceCommandType = 5
 	// GstMtsScteSpliceCommandTime wraps GST_MTS_SCTE_SPLICE_COMMAND_TIME
+	// 
+	// see also No documentation available
 	GstMtsScteSpliceCommandTime SCTESpliceCommandType = 6
 	// GstMtsScteSpliceCommandBandwidth wraps GST_MTS_SCTE_SPLICE_COMMAND_BANDWIDTH
+	// 
+	// see also No documentation available
 	GstMtsScteSpliceCommandBandwidth SCTESpliceCommandType = 7
 	// GstMtsScteSpliceCommandPrivate wraps GST_MTS_SCTE_SPLICE_COMMAND_PRIVATE
+	// 
+	// see also No documentation available
 	GstMtsScteSpliceCommandPrivate SCTESpliceCommandType = 255
 )
 
@@ -1675,18 +2377,30 @@ func (e SCTESpliceCommandType) String() string {
 }
 
 // SCTESpliceDescriptor wraps GstMpegtsSCTESpliceDescriptor
+// 
+// see also No documentation available
 type SCTESpliceDescriptor C.int
 
 const (
 	// GstMtsScteDescAvail wraps GST_MTS_SCTE_DESC_AVAIL
+	// 
+	// see also No documentation available
 	GstMtsScteDescAvail SCTESpliceDescriptor = 0
 	// GstMtsScteDescDtmf wraps GST_MTS_SCTE_DESC_DTMF
+	// 
+	// see also No documentation available
 	GstMtsScteDescDtmf SCTESpliceDescriptor = 1
 	// GstMtsScteDescSegmentation wraps GST_MTS_SCTE_DESC_SEGMENTATION
+	// 
+	// see also No documentation available
 	GstMtsScteDescSegmentation SCTESpliceDescriptor = 2
 	// GstMtsScteDescTime wraps GST_MTS_SCTE_DESC_TIME
+	// 
+	// see also No documentation available
 	GstMtsScteDescTime SCTESpliceDescriptor = 3
 	// GstMtsScteDescAudio wraps GST_MTS_SCTE_DESC_AUDIO
+	// 
+	// see also No documentation available
 	GstMtsScteDescAudio SCTESpliceDescriptor = 4
 )
 
@@ -1703,16 +2417,26 @@ func (e SCTESpliceDescriptor) String() string {
 }
 
 // SatellitePolarizationType wraps GstMpegtsSatellitePolarizationType
+// 
+// see also No documentation available
 type SatellitePolarizationType C.int
 
 const (
 	// PolarizationLinearHorizontal wraps GST_MPEGTS_POLARIZATION_LINEAR_HORIZONTAL
+	// 
+	// see also No documentation available
 	PolarizationLinearHorizontal SatellitePolarizationType = 0
 	// PolarizationLinearVertical wraps GST_MPEGTS_POLARIZATION_LINEAR_VERTICAL
+	// 
+	// see also No documentation available
 	PolarizationLinearVertical SatellitePolarizationType = 1
 	// PolarizationCircularLeft wraps GST_MPEGTS_POLARIZATION_CIRCULAR_LEFT
+	// 
+	// see also No documentation available
 	PolarizationCircularLeft SatellitePolarizationType = 2
 	// PolarizationCircularRight wraps GST_MPEGTS_POLARIZATION_CIRCULAR_RIGHT
+	// 
+	// see also No documentation available
 	PolarizationCircularRight SatellitePolarizationType = 3
 )
 
@@ -1728,18 +2452,30 @@ func (e SatellitePolarizationType) String() string {
 }
 
 // SatelliteRolloff wraps GstMpegtsSatelliteRolloff
+// 
+// see also No documentation available
 type SatelliteRolloff C.int
 
 const (
 	// Rolloff35 wraps GST_MPEGTS_ROLLOFF_35
+	// 
+	// see also No documentation available
 	Rolloff35 SatelliteRolloff = 0
 	// Rolloff20 wraps GST_MPEGTS_ROLLOFF_20
+	// 
+	// see also No documentation available
 	Rolloff20 SatelliteRolloff = 1
 	// Rolloff25 wraps GST_MPEGTS_ROLLOFF_25
+	// 
+	// see also No documentation available
 	Rolloff25 SatelliteRolloff = 2
 	// RolloffReserved wraps GST_MPEGTS_ROLLOFF_RESERVED
+	// 
+	// see also No documentation available
 	RolloffReserved SatelliteRolloff = 3
 	// RolloffAuto wraps GST_MPEGTS_ROLLOFF_AUTO
+	// 
+	// see also No documentation available
 	RolloffAuto SatelliteRolloff = 4
 )
 
@@ -1756,46 +2492,51 @@ func (e SatelliteRolloff) String() string {
 }
 
 // ScteStreamType wraps GstMpegtsScteStreamType
+// 
+// see also No documentation available
 //
-// Type of mpeg-ts streams for SCTE. Most users would want to use the
-// #GstMpegtsATSCStreamType instead since it also covers these stream types
 type ScteStreamType C.int
 
 const (
 	// StreamTypeScteSubtitling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
+	// 
+	// see also No documentation available
 	//
-	// SCTE-27 Subtitling
 	StreamTypeScteSubtitling ScteStreamType = 130
 	// StreamTypeScteIsochData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
+	// 
+	// see also No documentation available
 	//
-	// SCTE-19 Isochronous data
 	StreamTypeScteIsochData ScteStreamType = 131
 	// StreamTypeScteSit wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIT
+	// 
+	// see also No documentation available
 	//
-	// SCTE-35 Splice Information Table
 	StreamTypeScteSit ScteStreamType = 134
 	// StreamTypeScteDstNrt wraps GST_MPEGTS_STREAM_TYPE_SCTE_DST_NRT
+	// 
+	// see also No documentation available
 	//
-	// SCTE-07 Data Service or
-	// Network Resource Table
 	StreamTypeScteDstNrt ScteStreamType = 149
 	// StreamTypeScteDsmccDcb wraps GST_MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
+	// 
+	// see also No documentation available
 	//
-	// Type B - DSM-CC Data Carousel
-	// [IEC 13818-6])
 	StreamTypeScteDsmccDcb ScteStreamType = 176
 	// StreamTypeScteSignaling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIGNALING
+	// 
+	// see also No documentation available
 	//
-	// Enhanced Television Application
-	// Signaling (OC-SP-ETV-AM1.0.1-120614)
 	StreamTypeScteSignaling ScteStreamType = 192
 	// StreamTypeScteSyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
+	// 
+	// see also No documentation available
 	//
-	// SCTE-07 Synchronous data
 	StreamTypeScteSyncData ScteStreamType = 194
 	// StreamTypeScteAsyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
+	// 
+	// see also No documentation available
 	//
-	// SCTE-53 Asynchronous data
 	StreamTypeScteAsyncData ScteStreamType = 195
 )
 
@@ -1815,81 +2556,98 @@ func (e ScteStreamType) String() string {
 }
 
 // SectionATSCTableID wraps GstMpegtsSectionATSCTableID
+// 
+// see also No documentation available
 //
-// Values for a #GstMpegtsSection table_id.
-// 
-// These are the registered ATSC section `table_id` variants. Unless specified
-// otherwise, they are defined in the "ATSC A/65" specification.
-// 
-// see also: #GstMpegtsSectionTableID and other variants.
 type SectionATSCTableID C.int
 
 const (
 	// GstMtsTableIDAtscMasterGuide wraps GST_MTS_TABLE_ID_ATSC_MASTER_GUIDE
+	// 
+	// see also No documentation available
 	//
-	// Master Guide Table (MGT)
 	GstMtsTableIDAtscMasterGuide SectionATSCTableID = 199
 	// GstMtsTableIDAtscTerrestrialVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
+	// 
+	// see also No documentation available
 	//
-	// Terrestrial Virtual Channel Table (TVCT)
 	GstMtsTableIDAtscTerrestrialVirtualChannel SectionATSCTableID = 200
 	// GstMtsTableIDAtscCableVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
+	// 
+	// see also No documentation available
 	//
-	// Cable Virtual Channel Table (CVCT)
 	GstMtsTableIDAtscCableVirtualChannel SectionATSCTableID = 201
 	// GstMtsTableIDAtscRatingRegion wraps GST_MTS_TABLE_ID_ATSC_RATING_REGION
+	// 
+	// see also No documentation available
 	//
-	// Rating Region Table (RRT)
 	GstMtsTableIDAtscRatingRegion SectionATSCTableID = 202
 	// GstMtsTableIDAtscEventInformation wraps GST_MTS_TABLE_ID_ATSC_EVENT_INFORMATION
+	// 
+	// see also No documentation available
 	//
-	// Event Information Table (EIT)
 	GstMtsTableIDAtscEventInformation SectionATSCTableID = 203
 	// GstMtsTableIDAtscChannelOrEventExtendedText wraps GST_MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
+	// 
+	// see also No documentation available
 	//
-	// Extended Text Table (ETT)
 	GstMtsTableIDAtscChannelOrEventExtendedText SectionATSCTableID = 204
 	// GstMtsTableIDAtscSystemTime wraps GST_MTS_TABLE_ID_ATSC_SYSTEM_TIME
+	// 
+	// see also No documentation available
 	//
-	// System Time Table (STT)
 	GstMtsTableIDAtscSystemTime SectionATSCTableID = 205
 	// GstMtsTableIDAtscDataEvent wraps GST_MTS_TABLE_ID_ATSC_DATA_EVENT
+	// 
+	// see also No documentation available
 	//
-	// A/90: Data Event Table (DET)
 	GstMtsTableIDAtscDataEvent SectionATSCTableID = 206
 	// GstMtsTableIDAtscDataService wraps GST_MTS_TABLE_ID_ATSC_DATA_SERVICE
+	// 
+	// see also No documentation available
 	//
-	// A/90: Data Service Table (DST)
 	GstMtsTableIDAtscDataService SectionATSCTableID = 207
 	// GstMtsTableIDAtscProgramIdentifier wraps GST_MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
+	// 
+	// see also No documentation available
 	//
-	// A/57B: Program Identifier Table.
 	GstMtsTableIDAtscProgramIdentifier SectionATSCTableID = 208
 	// GstMtsTableIDAtscNetworkResource wraps GST_MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
+	// 
+	// see also No documentation available
 	//
-	// A/90: Network Resources Table (NRT)
 	GstMtsTableIDAtscNetworkResource SectionATSCTableID = 209
 	// GstMtsTableIDAtscLongTermService wraps GST_MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
+	// 
+	// see also No documentation available
 	//
-	// A/90: Long Term Service Table (LTST)
 	GstMtsTableIDAtscLongTermService SectionATSCTableID = 210
 	// GstMtsTableIDAtscDirectedChannelChange wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
+	// 
+	// see also No documentation available
 	//
-	// Directed Channel Change Table (DCCT)
 	GstMtsTableIDAtscDirectedChannelChange SectionATSCTableID = 211
 	// GstMtsTableIDAtscDirectedChannelChangeSectionCode wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
+	// 
+	// see also No documentation available
 	//
-	// Directed Channel Change Selection Code Table (DCCSCT)
 	GstMtsTableIDAtscDirectedChannelChangeSectionCode SectionATSCTableID = 212
 	// GstMtsTableIDAtscAggregateEventInformation wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_EVENT_INFORMATION
+	// 
+	// see also No documentation available
 	GstMtsTableIDAtscAggregateEventInformation SectionATSCTableID = 214
 	// GstMtsTableIDAtscAggregateExtendedText wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_EXTENDED_TEXT
+	// 
+	// see also No documentation available
 	GstMtsTableIDAtscAggregateExtendedText SectionATSCTableID = 215
 	// GstMtsTableIDAtscAggregateDataEvent wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_DATA_EVENT
+	// 
+	// see also No documentation available
 	GstMtsTableIDAtscAggregateDataEvent SectionATSCTableID = 217
 	// GstMtsTableIDAtscSatelliteVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
+	// 
+	// see also No documentation available
 	//
-	// A/81: Satellite Virtual Channel Table
 	GstMtsTableIDAtscSatelliteVirtualChannel SectionATSCTableID = 218
 )
 
@@ -1919,159 +2677,206 @@ func (e SectionATSCTableID) String() string {
 }
 
 // SectionDVBTableID wraps GstMpegtsSectionDVBTableID
+// 
+// see also No documentation available
 //
-// Values for a #GstMpegtsSection table_id.
-// 
-// These are the registered DVB table_id variants. Unless specified otherwise,
-// they come from the DVB Specification for SI (ETSI EN 300 468).
-// 
-// see also: #GstMpegtsSectionTableID
 type SectionDVBTableID C.int
 
 const (
 	// GstMtsTableIDNetworkInformationActualNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
+	// 
+	// see also No documentation available
 	//
-	// Network Information Table (NIT), Actual Network
 	GstMtsTableIDNetworkInformationActualNetwork SectionDVBTableID = 64
 	// GstMtsTableIDNetworkInformationOtherNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
+	// 
+	// see also No documentation available
 	//
-	// Network Information Table (NIT), Other Network
 	GstMtsTableIDNetworkInformationOtherNetwork SectionDVBTableID = 65
 	// GstMtsTableIDServiceDescriptionActualTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
+	// 
+	// see also No documentation available
 	//
-	// Service Description Table (SDT), Actual Transport Stream
 	GstMtsTableIDServiceDescriptionActualTs SectionDVBTableID = 66
 	// GstMtsTableIDServiceDescriptionOtherTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
+	// 
+	// see also No documentation available
 	//
-	// Service Description Table (SDT), Other Transport Stream
 	GstMtsTableIDServiceDescriptionOtherTs SectionDVBTableID = 70
 	// GstMtsTableIDBouquetAssociation wraps GST_MTS_TABLE_ID_BOUQUET_ASSOCIATION
+	// 
+	// see also No documentation available
 	//
-	// Bouquet Association Table (BAT)
 	GstMtsTableIDBouquetAssociation SectionDVBTableID = 74
 	// GstMtsTableIDUpdateNotification wraps GST_MTS_TABLE_ID_UPDATE_NOTIFICATION
+	// 
+	// see also No documentation available
 	//
-	// ETSI TS 102 006: Update Notification Table (UNT)
 	GstMtsTableIDUpdateNotification SectionDVBTableID = 75
 	// GstMtsTableIDDownloadableFontInfo wraps GST_MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
+	// 
+	// see also No documentation available
 	//
-	// ETSI EN 303 560: Downloadable Font Info
 	GstMtsTableIDDownloadableFontInfo SectionDVBTableID = 76
 	// GstMtsTableIDEventInformationActualTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
+	// 
+	// see also No documentation available
 	//
-	// Event Information Table (EIT), Actual Transport Stream, present/following
 	GstMtsTableIDEventInformationActualTsPresent SectionDVBTableID = 78
 	// GstMtsTableIDEventInformationOtherTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
+	// 
+	// see also No documentation available
 	//
-	// Event Information Table (EIT), Other Transport Stream, present/following
 	GstMtsTableIDEventInformationOtherTsPresent SectionDVBTableID = 79
 	// GstMtsTableIDEventInformationActualTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
+	// 
+	// see also No documentation available
 	//
-	// Event Information Table (EIT), Actual Transport Stream, Schedule (first)
 	GstMtsTableIDEventInformationActualTsSchedule1 SectionDVBTableID = 80
 	// GstMtsTableIDEventInformationActualTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
+	// 
+	// see also No documentation available
 	//
-	// Event Information Table (EIT), Actual Transport Stream, Schedule (last)
 	GstMtsTableIDEventInformationActualTsScheduleN SectionDVBTableID = 95
 	// GstMtsTableIDEventInformationOtherTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
+	// 
+	// see also No documentation available
 	//
-	// Event Information Table (EIT), Other Transport Stream, Schedule (first)
 	GstMtsTableIDEventInformationOtherTsSchedule1 SectionDVBTableID = 96
 	// GstMtsTableIDEventInformationOtherTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
+	// 
+	// see also No documentation available
 	//
-	// Event Information Table (EIT), Other Transport Stream, Schedule (last)
 	GstMtsTableIDEventInformationOtherTsScheduleN SectionDVBTableID = 111
 	// GstMtsTableIDTimeDate wraps GST_MTS_TABLE_ID_TIME_DATE
+	// 
+	// see also No documentation available
 	//
-	// Time Date Table (TDT)
 	GstMtsTableIDTimeDate SectionDVBTableID = 112
 	// GstMtsTableIDRunningStatus wraps GST_MTS_TABLE_ID_RUNNING_STATUS
+	// 
+	// see also No documentation available
 	//
-	// Running Status Table (RST)
 	GstMtsTableIDRunningStatus SectionDVBTableID = 113
 	// GstMtsTableIDStuffing wraps GST_MTS_TABLE_ID_STUFFING
+	// 
+	// see also No documentation available
 	//
-	// Stuffing Table (ST)
 	GstMtsTableIDStuffing SectionDVBTableID = 114
 	// GstMtsTableIDTimeOffset wraps GST_MTS_TABLE_ID_TIME_OFFSET
+	// 
+	// see also No documentation available
 	//
-	// Time Offset Table (TOT)
 	GstMtsTableIDTimeOffset SectionDVBTableID = 115
 	// GstMtsTableIDApplicationInformationTable wraps GST_MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
+	// 
+	// see also No documentation available
 	//
-	// ETSI TS 102 323: Application Information Table (AIT)
 	GstMtsTableIDApplicationInformationTable SectionDVBTableID = 116
 	// GstMtsTableIDContainer wraps GST_MTS_TABLE_ID_CONTAINER
+	// 
+	// see also No documentation available
 	//
-	// ETSI TS 102 323: Container Section
 	GstMtsTableIDContainer SectionDVBTableID = 117
 	// GstMtsTableIDRelatedContent wraps GST_MTS_TABLE_ID_RELATED_CONTENT
+	// 
+	// see also No documentation available
 	//
-	// ETSI TS 102 323: Related Content Table (RCT)
 	GstMtsTableIDRelatedContent SectionDVBTableID = 118
 	// GstMtsTableIDContentIdentifier wraps GST_MTS_TABLE_ID_CONTENT_IDENTIFIER
+	// 
+	// see also No documentation available
 	//
-	// ETSI TS 102 323: Content Identifier Table (CIT)
 	GstMtsTableIDContentIdentifier SectionDVBTableID = 119
 	// GstMtsTableIDMpeFec wraps GST_MTS_TABLE_ID_MPE_FEC
+	// 
+	// see also No documentation available
 	//
-	// ETSI TS 301 192: MPE-FEC Section
 	GstMtsTableIDMpeFec SectionDVBTableID = 120
 	// GstMtsTableIDResolutionNotification wraps GST_MTS_TABLE_ID_RESOLUTION_NOTIFICATION
+	// 
+	// see also No documentation available
 	//
-	// ETSI 103 323: Resolution Provider Notification Table (RNT)
 	GstMtsTableIDResolutionNotification SectionDVBTableID = 121
 	// GstMtsTableIDMpeIfec wraps GST_MTS_TABLE_ID_MPE_IFEC
+	// 
+	// see also No documentation available
 	//
-	// ETSI TS 102 772: MPE-IFEC Section
 	GstMtsTableIDMpeIfec SectionDVBTableID = 122
 	// GstMtsTableIDProtectionMessage wraps GST_MTS_TABLE_ID_PROTECTION_MESSAGE
+	// 
+	// see also No documentation available
 	//
-	// ETSI TS 102 809: Protection Message Section
 	GstMtsTableIDProtectionMessage SectionDVBTableID = 123
 	// GstMtsTableIDDiscontinuityInformation wraps GST_MTS_TABLE_ID_DISCONTINUITY_INFORMATION
+	// 
+	// see also No documentation available
 	//
-	// Discontinuity Information Table (DIT)
 	GstMtsTableIDDiscontinuityInformation SectionDVBTableID = 126
 	// GstMtsTableIDSelectionInformation wraps GST_MTS_TABLE_ID_SELECTION_INFORMATION
+	// 
+	// see also No documentation available
 	//
-	// Selection Information Table (SIT)
 	GstMtsTableIDSelectionInformation SectionDVBTableID = 127
 	// GstMtsTableIDCaMessageEcm0 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_0
+	// 
+	// see also No documentation available
 	//
-	// ETSI TR 289: CA Message Table (CMT): ECM 0
 	GstMtsTableIDCaMessageEcm0 SectionDVBTableID = 128
 	// GstMtsTableIDCaMessageEcm1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_1
+	// 
+	// see also No documentation available
 	//
-	// ETSI TR 289: CA Message Table (CMT): ECM 1
 	GstMtsTableIDCaMessageEcm1 SectionDVBTableID = 129
 	// GstMtsTableIDCaMessageSystemPrivate1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
+	// 
+	// see also No documentation available
 	//
-	// ETSI TR 289: CA Message Table (CMT): CA System Private (First)
 	GstMtsTableIDCaMessageSystemPrivate1 SectionDVBTableID = 130
 	// GstMtsTableIDCaMessageSystemPrivateN wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
+	// 
+	// see also No documentation available
 	//
-	// ETSI TR 289: CA Message Table (CMT): CA System Private (Last)
 	GstMtsTableIDCaMessageSystemPrivateN SectionDVBTableID = 143
 	// GstMtsTableIDSct wraps GST_MTS_TABLE_ID_SCT
+	// 
+	// see also No documentation available
 	GstMtsTableIDSct SectionDVBTableID = 160
 	// GstMtsTableIDFct wraps GST_MTS_TABLE_ID_FCT
+	// 
+	// see also No documentation available
 	GstMtsTableIDFct SectionDVBTableID = 161
 	// GstMtsTableIDTct wraps GST_MTS_TABLE_ID_TCT
+	// 
+	// see also No documentation available
 	GstMtsTableIDTct SectionDVBTableID = 162
 	// GstMtsTableIDSpt wraps GST_MTS_TABLE_ID_SPT
+	// 
+	// see also No documentation available
 	GstMtsTableIDSpt SectionDVBTableID = 163
 	// GstMtsTableIDCmt wraps GST_MTS_TABLE_ID_CMT
+	// 
+	// see also No documentation available
 	GstMtsTableIDCmt SectionDVBTableID = 164
 	// GstMtsTableIDTbtp wraps GST_MTS_TABLE_ID_TBTP
+	// 
+	// see also No documentation available
 	GstMtsTableIDTbtp SectionDVBTableID = 165
 	// GstMtsTableIDPcrPacketPayload wraps GST_MTS_TABLE_ID_PCR_PACKET_PAYLOAD
+	// 
+	// see also No documentation available
 	GstMtsTableIDPcrPacketPayload SectionDVBTableID = 166
 	// GstMtsTableIDTransmissionModeSupportPayload wraps GST_MTS_TABLE_ID_TRANSMISSION_MODE_SUPPORT_PAYLOAD
+	// 
+	// see also No documentation available
 	GstMtsTableIDTransmissionModeSupportPayload SectionDVBTableID = 170
 	// GstMtsTableIDTim wraps GST_MTS_TABLE_ID_TIM
+	// 
+	// see also No documentation available
 	GstMtsTableIDTim SectionDVBTableID = 176
 	// GstMtsTableIDLlFecParityDataTable wraps GST_MTS_TABLE_ID_LL_FEC_PARITY_DATA_TABLE
+	// 
+	// see also No documentation available
 	GstMtsTableIDLlFecParityDataTable SectionDVBTableID = 177
 )
 
@@ -2124,43 +2929,45 @@ func (e SectionDVBTableID) String() string {
 }
 
 // SectionSCTETableID wraps GstMpegtsSectionSCTETableID
+// 
+// see also No documentation available
 //
-// Values for a #GstMpegtsSection table_id.
-// 
-// These are the registered SCTE table_id variants.
-// 
-// see also: #GstMpegtsSectionTableID
 type SectionSCTETableID C.int
 
 const (
 	// GstMtsTableIDScteEas wraps GST_MTS_TABLE_ID_SCTE_EAS
+	// 
+	// see also No documentation available
 	//
-	// SCTE-18 Emergency Alert System
 	GstMtsTableIDScteEas SectionSCTETableID = 216
 	// GstMtsTableIDScteEbif wraps GST_MTS_TABLE_ID_SCTE_EBIF
+	// 
+	// see also No documentation available
 	//
-	// CL-SP-ETV-AM 1.0.1 EBIF message
 	GstMtsTableIDScteEbif SectionSCTETableID = 224
 	// GstMtsTableIDScteReserved wraps GST_MTS_TABLE_ID_SCTE_RESERVED
+	// 
+	// see also No documentation available
 	GstMtsTableIDScteReserved SectionSCTETableID = 225
 	// GstMtsTableIDScteEiss wraps GST_MTS_TABLE_ID_SCTE_EISS
+	// 
+	// see also No documentation available
 	//
-	// CL-SP-ETV-AM 1.0.1 EBIF Int. Signaling Sect.
 	GstMtsTableIDScteEiss SectionSCTETableID = 226
 	// GstMtsTableIDScteDii wraps GST_MTS_TABLE_ID_SCTE_DII
+	// 
+	// see also No documentation available
 	//
-	// CL-SP-ETV-AM 1.0.1 DSMCC DII message
 	GstMtsTableIDScteDii SectionSCTETableID = 227
 	// GstMtsTableIDScteDdb wraps GST_MTS_TABLE_ID_SCTE_DDB
+	// 
+	// see also No documentation available
 	//
-	// CL-SP-ETV-AM 1.0.1 DSMCC Data Download Block
 	GstMtsTableIDScteDdb SectionSCTETableID = 228
 	// GstMtsTableIDScteSplice wraps GST_MTS_TABLE_ID_SCTE_SPLICE
+	// 
+	// see also No documentation available
 	//
-	// SCTE-35 splice information is carried in a
-	// section stream on a separate PID in the program&#x2019;s Map Table (PMT) allowing
-	// Splice Event notifications to remain associated with the program and pass
-	// through multiplexers.
 	GstMtsTableIDScteSplice SectionSCTETableID = 252
 )
 
@@ -2179,87 +2986,101 @@ func (e SectionSCTETableID) String() string {
 }
 
 // SectionTableID wraps GstMpegtsSectionTableID
+// 
+// see also No documentation available
 //
-// Values for a #GstMpegtsSection table_id
-// 
-// These are the registered ITU H.222.0 | ISO/IEC 13818-1 table_id variants.
-// 
-// see also #GstMpegtsSectionATSCTableID, #GstMpegtsSectionDVBTableID, and
-// #GstMpegtsSectionSCTETableID
 type SectionTableID C.int
 
 const (
 	// GstMtsTableIDProgramAssociation wraps GST_MTS_TABLE_ID_PROGRAM_ASSOCIATION
+	// 
+	// see also No documentation available
 	//
-	// Program Association Table (PAT)
 	GstMtsTableIDProgramAssociation SectionTableID = 0
 	// GstMtsTableIDConditionalAccess wraps GST_MTS_TABLE_ID_CONDITIONAL_ACCESS
+	// 
+	// see also No documentation available
 	//
-	// Conditional Access Table (CAT)
 	GstMtsTableIDConditionalAccess SectionTableID = 1
 	// GstMtsTableIDTsProgramMap wraps GST_MTS_TABLE_ID_TS_PROGRAM_MAP
+	// 
+	// see also No documentation available
 	//
-	// Program Map Table (PMT)
 	GstMtsTableIDTsProgramMap SectionTableID = 2
 	// GstMtsTableIDTsDescription wraps GST_MTS_TABLE_ID_TS_DESCRIPTION
+	// 
+	// see also No documentation available
 	//
-	// Transport Stream Description Table
 	GstMtsTableIDTsDescription SectionTableID = 3
 	// GstMtsTableID14496SceneDescription wraps GST_MTS_TABLE_ID_14496_SCENE_DESCRIPTION
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 14496 Scene Description Table
 	GstMtsTableID14496SceneDescription SectionTableID = 4
 	// GstMtsTableID14496ObjetDescriptor wraps GST_MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 14496 Object Descriptor Table
 	GstMtsTableID14496ObjetDescriptor SectionTableID = 5
 	// GstMtsTableIDMetadata wraps GST_MTS_TABLE_ID_METADATA
+	// 
+	// see also No documentation available
 	//
-	// Metadata Section
 	GstMtsTableIDMetadata SectionTableID = 6
 	// GstMtsTableIDIpmpControlInformation wraps GST_MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
+	// 
+	// see also No documentation available
 	//
-	// IPMP Control Information
 	GstMtsTableIDIpmpControlInformation SectionTableID = 7
 	// GstMtsTableID14496Section wraps GST_MTS_TABLE_ID_14496_SECTION
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 14496 Section.
 	GstMtsTableID14496Section SectionTableID = 8
 	// GstMtsTableID2300111Section wraps GST_MTS_TABLE_ID_23001_11_SECTION
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 23001-11 (Green Access Unit) Section.
 	GstMtsTableID2300111Section SectionTableID = 9
 	// GstMtsTableID2300110Section wraps GST_MTS_TABLE_ID_23001_10_SECTION
+	// 
+	// see also No documentation available
 	//
-	// ISO/ISO 23001-10 (Quality Access Unit) Section.
 	GstMtsTableID2300110Section SectionTableID = 10
 	// GstMtsTableIDDsmCcMultiprotoEncapsulatedData wraps GST_MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
+	// 
+	// see also No documentation available
 	//
-	// DSM-CC Multi-Protocol Encapsulated (MPE) Data
 	GstMtsTableIDDsmCcMultiprotoEncapsulatedData SectionTableID = 58
 	// GstMtsTableIDDsmCcUNMessages wraps GST_MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
+	// 
+	// see also No documentation available
 	//
-	// DSM-CC U-N Messages
 	GstMtsTableIDDsmCcUNMessages SectionTableID = 59
 	// GstMtsTableIDDsmCcDownloadDataMessages wraps GST_MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
+	// 
+	// see also No documentation available
 	//
-	// DSM-CC Download Data Messages
 	GstMtsTableIDDsmCcDownloadDataMessages SectionTableID = 60
 	// GstMtsTableIDDsmCcStreamDescriptors wraps GST_MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
+	// 
+	// see also No documentation available
 	//
-	// DSM-CC Stream Descriptors
 	GstMtsTableIDDsmCcStreamDescriptors SectionTableID = 61
 	// GstMtsTableIDDsmCcPrivateData wraps GST_MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
+	// 
+	// see also No documentation available
 	//
-	// DSM-CC Private Data
 	GstMtsTableIDDsmCcPrivateData SectionTableID = 62
 	// GstMtsTableIDDsmCcAddressableSections wraps GST_MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
+	// 
+	// see also No documentation available
 	//
-	// DSM-CC Addressable Section
 	GstMtsTableIDDsmCcAddressableSections SectionTableID = 63
 	// GstMtsTableIDUnset wraps GST_MTS_TABLE_ID_UNSET
+	// 
+	// see also No documentation available
 	//
-	// Unset section table_id (value is forbidden to use in actual sections)
 	GstMtsTableIDUnset SectionTableID = 255
 )
 
@@ -2289,92 +3110,111 @@ func (e SectionTableID) String() string {
 }
 
 // SectionType wraps GstMpegtsSectionType
+// 
+// see also No documentation available
 //
-// Types of #GstMpegtsSection that the library handles. This covers all the
-// MPEG-TS and derivate specification that the library can properly identify and
-// use.
 type SectionType C.int
 
 const (
 	// SectionUnknown wraps GST_MPEGTS_SECTION_UNKNOWN
+	// 
+	// see also No documentation available
 	//
-	// Unknown section type
 	SectionUnknown SectionType = 0
 	// SectionPat wraps GST_MPEGTS_SECTION_PAT
+	// 
+	// see also No documentation available
 	//
-	// Program Association Table (ISO/IEC 13818-1)
 	SectionPat SectionType = 1
 	// SectionPmt wraps GST_MPEGTS_SECTION_PMT
+	// 
+	// see also No documentation available
 	//
-	// Program Map Table (ISO/IEC 13818-1)
 	SectionPmt SectionType = 2
 	// SectionCat wraps GST_MPEGTS_SECTION_CAT
+	// 
+	// see also No documentation available
 	//
-	// Conditional Access Table (ISO/IEC 13818-1)
 	SectionCat SectionType = 3
 	// SectionTsdt wraps GST_MPEGTS_SECTION_TSDT
+	// 
+	// see also No documentation available
 	//
-	// Transport Stream Description Table (ISO/IEC 13818-1)
 	SectionTsdt SectionType = 4
 	// SectionEit wraps GST_MPEGTS_SECTION_EIT
+	// 
+	// see also No documentation available
 	//
-	// Event Information Table (EN 300 468)
 	SectionEit SectionType = 5
 	// SectionNit wraps GST_MPEGTS_SECTION_NIT
+	// 
+	// see also No documentation available
 	//
-	// Network Information Table (ISO/IEC 13818-1 / EN 300 468)
 	SectionNit SectionType = 6
 	// SectionBat wraps GST_MPEGTS_SECTION_BAT
+	// 
+	// see also No documentation available
 	//
-	// Bouquet Association Table ((EN 300 468)
 	SectionBat SectionType = 7
 	// SectionSdt wraps GST_MPEGTS_SECTION_SDT
+	// 
+	// see also No documentation available
 	//
-	// Service Description Table (EN 300 468)
 	SectionSdt SectionType = 8
 	// SectionTdt wraps GST_MPEGTS_SECTION_TDT
+	// 
+	// see also No documentation available
 	//
-	// Time and Date Table (EN 300 468)
 	SectionTdt SectionType = 9
 	// SectionTot wraps GST_MPEGTS_SECTION_TOT
+	// 
+	// see also No documentation available
 	//
-	// Time Offset Table (EN 300 468)
 	SectionTot SectionType = 10
 	// SectionSit wraps GST_MPEGTS_SECTION_SIT
+	// 
+	// see also No documentation available
 	//
-	// Selection Information Table (EN 300 468)
 	SectionSit SectionType = 11
 	// SectionAtscTvct wraps GST_MPEGTS_SECTION_ATSC_TVCT
+	// 
+	// see also No documentation available
 	//
-	// ATSC Terrestrial Virtual Channel Table (A65)
 	SectionAtscTvct SectionType = 12
 	// SectionAtscCvct wraps GST_MPEGTS_SECTION_ATSC_CVCT
+	// 
+	// see also No documentation available
 	//
-	// ATSC Cable Virtual Channel Table (A65)
 	SectionAtscCvct SectionType = 13
 	// SectionAtscMgt wraps GST_MPEGTS_SECTION_ATSC_MGT
+	// 
+	// see also No documentation available
 	//
-	// ATSC Master Guide Table (A65)
 	SectionAtscMgt SectionType = 14
 	// SectionAtscEtt wraps GST_MPEGTS_SECTION_ATSC_ETT
+	// 
+	// see also No documentation available
 	//
-	// ATSC Extended Text Table (A65)
 	SectionAtscEtt SectionType = 15
 	// SectionAtscEit wraps GST_MPEGTS_SECTION_ATSC_EIT
+	// 
+	// see also No documentation available
 	//
-	// ATSC Event Information Table (A65)
 	SectionAtscEit SectionType = 16
 	// SectionAtscStt wraps GST_MPEGTS_SECTION_ATSC_STT
+	// 
+	// see also No documentation available
 	//
-	// ATSC System Time Table (A65)
 	SectionAtscStt SectionType = 17
 	// SectionAtscRrt wraps GST_MPEGTS_SECTION_ATSC_RRT
+	// 
+	// see also No documentation available
 	//
-	// ATSC Rating Region Table (A65)
 	SectionAtscRrt SectionType = 18
 	// SectionScteSit wraps GST_MPEGTS_SECTION_SCTE_SIT
+	// 
+	// see also No documentation available
 	//
-	// SCTE Splice Information Table (SCTE-35)
 	SectionScteSit SectionType = 19
 )
 
@@ -2406,207 +3246,216 @@ func (e SectionType) String() string {
 }
 
 // StreamType wraps GstMpegtsStreamType
+// 
+// see also No documentation available
 //
-// Type of MPEG-TS stream type.
-// 
-// These values correspond to the base standard registered types. Depending
-// on the variant of mpeg-ts being used (Bluray, ATSC, DVB, ...), other
-// types might also be used, but will not conflict with these.
-// 
-// Corresponds to table 2-34 of ITU H.222.0 | ISO/IEC 13818-1
 type StreamType C.int
 
 const (
 	// StreamTypeReserved00 wraps GST_MPEGTS_STREAM_TYPE_RESERVED_00
+	// 
+	// see also No documentation available
 	//
-	// ITU-T | ISO/IEC Reserved
 	StreamTypeReserved00 StreamType = 0
 	// StreamTypeVideoMpeg1 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG1
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 11172-2 Video (i.e. MPEG-1 Video)
 	StreamTypeVideoMpeg1 StreamType = 1
 	// StreamTypeVideoMpeg2 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2
+	// 
+	// see also No documentation available
 	//
-	// Rec. ITU-T H.262 | ISO/IEC 13818-2
-	//       Video or ISO/IEC 11172-2 constrained parameter video stream (i.e.
-	//       MPEG-2 Video)
 	StreamTypeVideoMpeg2 StreamType = 2
 	// StreamTypeAudioMpeg1 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG1
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 11172-3 Audio
 	StreamTypeAudioMpeg1 StreamType = 3
 	// StreamTypeAudioMpeg2 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG2
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 13818-3 Audio
 	StreamTypeAudioMpeg2 StreamType = 4
 	// StreamTypePrivateSections wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
+	// 
+	// see also No documentation available
 	//
-	// private sections
 	StreamTypePrivateSections StreamType = 5
 	// StreamTypePrivatePesPackets wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
+	// 
+	// see also No documentation available
 	//
-	// PES packets containing private data
 	StreamTypePrivatePesPackets StreamType = 6
 	// StreamTypeMheg wraps GST_MPEGTS_STREAM_TYPE_MHEG
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 13522 MHEG
 	StreamTypeMheg StreamType = 7
 	// StreamTypeDsmCc wraps GST_MPEGTS_STREAM_TYPE_DSM_CC
+	// 
+	// see also No documentation available
 	//
-	// Annex A DSM-CC
 	StreamTypeDsmCc StreamType = 8
 	// StreamTypeH2221 wraps GST_MPEGTS_STREAM_TYPE_H_222_1
+	// 
+	// see also No documentation available
 	//
-	// Rec. ITU-T H.222.1
 	StreamTypeH2221 StreamType = 9
 	// StreamTypeDsmccA wraps GST_MPEGTS_STREAM_TYPE_DSMCC_A
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 13818-6 type A
 	StreamTypeDsmccA StreamType = 10
 	// StreamTypeDsmccB wraps GST_MPEGTS_STREAM_TYPE_DSMCC_B
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 13818-6 type B
 	StreamTypeDsmccB StreamType = 11
 	// StreamTypeDsmccC wraps GST_MPEGTS_STREAM_TYPE_DSMCC_C
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 13818-6 type C
 	StreamTypeDsmccC StreamType = 12
 	// StreamTypeDsmccD wraps GST_MPEGTS_STREAM_TYPE_DSMCC_D
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 13818-6 type D
 	StreamTypeDsmccD StreamType = 13
 	// StreamTypeAuxiliary wraps GST_MPEGTS_STREAM_TYPE_AUXILIARY
+	// 
+	// see also No documentation available
 	//
-	// auxiliary streams
 	StreamTypeAuxiliary StreamType = 14
 	// StreamTypeAudioAacAdts wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 13818-7 Audio (AAC) with ADTS
-	//       transport syntax
 	StreamTypeAudioAacAdts StreamType = 15
 	// StreamTypeVideoMpeg4 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG4
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 14496-2 Visual (MPEG-4 Video)
 	StreamTypeVideoMpeg4 StreamType = 16
 	// StreamTypeAudioAacLatm wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 14496-3 Audio (AAC) with the LATM
-	//       transport syntax as defined in ISO/IEC 14496-3
 	StreamTypeAudioAacLatm StreamType = 17
 	// StreamTypeSlFlexmuxPesPackets wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 14496-1
-	//       SL-packetized stream or FlexMux stream carried in PES packets
 	StreamTypeSlFlexmuxPesPackets StreamType = 18
 	// StreamTypeSlFlexmuxSections wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 14496-1 SL-packetized
-	//       stream or FlexMux stream carried in ISO/IEC 14496_sections
 	StreamTypeSlFlexmuxSections StreamType = 19
 	// StreamTypeSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 13818-6 Synchronized
-	//       Download Protocol
 	StreamTypeSynchronizedDownload StreamType = 20
 	// StreamTypeMetadataPesPackets wraps GST_MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
+	// 
+	// see also No documentation available
 	//
-	// Metadata carried in PES packets
 	StreamTypeMetadataPesPackets StreamType = 21
 	// StreamTypeMetadataSections wraps GST_MPEGTS_STREAM_TYPE_METADATA_SECTIONS
+	// 
+	// see also No documentation available
 	//
-	// Metadata carried in metadata_sections
 	StreamTypeMetadataSections StreamType = 22
 	// StreamTypeMetadataDataCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
+	// 
+	// see also No documentation available
 	//
-	// Metadata carried in ISO/IEC
-	//       13818-6 Data Carousel
 	StreamTypeMetadataDataCarousel StreamType = 23
 	// StreamTypeMetadataObjectCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
+	// 
+	// see also No documentation available
 	//
-	// Metadata carried in
-	//       ISO/IEC 13818-6 Object Carousel
 	StreamTypeMetadataObjectCarousel StreamType = 24
 	// StreamTypeMetadataSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
+	// 
+	// see also No documentation available
 	//
-	// Metadata carried in
-	//       ISO/IEC 13818-6 Synchronized Download Protocol
 	StreamTypeMetadataSynchronizedDownload StreamType = 25
 	// StreamTypeMpeg2Ipmp wraps GST_MPEGTS_STREAM_TYPE_MPEG2_IPMP
+	// 
+	// see also No documentation available
 	//
-	// IPMP stream (defined in ISO/IEC 13818-11,
-	//       MPEG-2 IPMP)
 	StreamTypeMpeg2Ipmp StreamType = 26
 	// StreamTypeVideoH264 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264
+	// 
+	// see also No documentation available
 	//
-	// AVC video stream conforming to one or
-	// more profiles defined in Annex A of Rec. ITU-T H.264 | ISO/IEC 14496-10 or
-	// AVC video sub-bitstream of SVC as defined in 2.1.78 or MVC base view
-	// sub-bitstream, as defined in 2.1.85, or AVC video sub-bitstream of MVC, as
-	// defined in 2.1.88
 	StreamTypeVideoH264 StreamType = 27
 	// StreamTypeAudioAacClean wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 14496-3 (AAC) Audio, without
-	//       using any additional transport syntax, such as DST, ALS and SLS
 	StreamTypeAudioAacClean StreamType = 28
 	// StreamTypeMpeg4TimedText wraps GST_MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
+	// 
+	// see also No documentation available
 	//
-	// ISO/IEC 14496-17 Text
 	StreamTypeMpeg4TimedText StreamType = 29
 	// StreamTypeVideoRvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_RVC
+	// 
+	// see also No documentation available
 	//
-	// Auxiliary video stream as defined in
-	// ISO/IEC 23002-3
 	StreamTypeVideoRvc StreamType = 30
 	// StreamTypeVideoH264SvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
+	// 
+	// see also No documentation available
 	//
-	// SVC video sub-bitstream
-	// of an AVC video stream conforming to one or more profiles defined in Annex G
-	// of Rec. ITU-T H.264 | ISO/IEC 14496-10
 	StreamTypeVideoH264SvcSubBitstream StreamType = 31
 	// StreamTypeVideoH264MvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
+	// 
+	// see also No documentation available
 	//
-	// MVC video sub-bitstream
-	// of an AVC video stream conforming to one or more profiles defined in Annex H
-	// of Rec. ITU-T H.264 | ISO/IEC 14496-10
 	StreamTypeVideoH264MvcSubBitstream StreamType = 32
 	// StreamTypeVideoJp2k wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JP2K
+	// 
+	// see also No documentation available
 	//
-	// Video stream conforming to one or more
-	//       profiles as defined in Rec. ITU-T T.800 | ISO/IEC 15444-1 (i.e. JPEG 2000)
 	StreamTypeVideoJp2k StreamType = 33
 	// StreamTypeVideoMpeg2StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
+	// 
+	// see also No documentation available
 	//
-	// Additional view
-	// Rec. ITU-T H.262 | ISO/IEC 13818-2 video stream for service-compatible
-	// stereoscopic 3D services
 	StreamTypeVideoMpeg2StereoAdditionalView StreamType = 34
 	// StreamTypeVideoH264StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
+	// 
+	// see also No documentation available
 	//
-	// Additional view
-	// Rec. ITU-T H.264 | ISO/IEC 14496-10 video stream conforming to one or more
-	// profiles defined in Annex A for service-compatible stereoscopic 3D services
 	StreamTypeVideoH264StereoAdditionalView StreamType = 35
 	// StreamTypeVideoHevc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_HEVC
+	// 
+	// see also No documentation available
 	//
-	// Rec. ITU-T H.265 | ISO/IEC 23008-2 video
-	//      stream or an HEVC temporal video sub-bitstream
 	StreamTypeVideoHevc StreamType = 36
 	// StreamTypeVideoJpegXs wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
+	// 
+	// see also No documentation available
 	//
-	// JPEG-XS stream type
 	StreamTypeVideoJpegXs StreamType = 50
 	// StreamTypeVideoVvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_VVC
+	// 
+	// see also No documentation available
 	//
-	// VVC/H.266 video stream type
 	StreamTypeVideoVvc StreamType = 51
 	// StreamTypeIpmpStream wraps GST_MPEGTS_STREAM_TYPE_IPMP_STREAM
+	// 
+	// see also No documentation available
 	//
-	// IPMP stream
 	StreamTypeIpmpStream StreamType = 127
 	// StreamTypeUserPrivateEa wraps GST_MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
+	// 
+	// see also No documentation available
 	//
-	// User Private stream id (used for VC-1) as defined by SMPTE RP227.
 	StreamTypeUserPrivateEa StreamType = 234
 )
 
@@ -2659,30 +3508,54 @@ func (e StreamType) String() string {
 }
 
 // TerrestrialGuardInterval wraps GstMpegtsTerrestrialGuardInterval
+// 
+// see also No documentation available
 type TerrestrialGuardInterval C.int
 
 const (
 	// GuardInterval132 wraps GST_MPEGTS_GUARD_INTERVAL_1_32
+	// 
+	// see also No documentation available
 	GuardInterval132 TerrestrialGuardInterval = 0
 	// GuardInterval116 wraps GST_MPEGTS_GUARD_INTERVAL_1_16
+	// 
+	// see also No documentation available
 	GuardInterval116 TerrestrialGuardInterval = 1
 	// GuardInterval18 wraps GST_MPEGTS_GUARD_INTERVAL_1_8
+	// 
+	// see also No documentation available
 	GuardInterval18 TerrestrialGuardInterval = 2
 	// GuardInterval14 wraps GST_MPEGTS_GUARD_INTERVAL_1_4
+	// 
+	// see also No documentation available
 	GuardInterval14 TerrestrialGuardInterval = 3
 	// GuardIntervalAuto wraps GST_MPEGTS_GUARD_INTERVAL_AUTO
+	// 
+	// see also No documentation available
 	GuardIntervalAuto TerrestrialGuardInterval = 4
 	// GuardInterval1128 wraps GST_MPEGTS_GUARD_INTERVAL_1_128
+	// 
+	// see also No documentation available
 	GuardInterval1128 TerrestrialGuardInterval = 5
 	// GuardInterval19128 wraps GST_MPEGTS_GUARD_INTERVAL_19_128
+	// 
+	// see also No documentation available
 	GuardInterval19128 TerrestrialGuardInterval = 6
 	// GuardInterval19256 wraps GST_MPEGTS_GUARD_INTERVAL_19_256
+	// 
+	// see also No documentation available
 	GuardInterval19256 TerrestrialGuardInterval = 7
 	// GuardIntervalPn420 wraps GST_MPEGTS_GUARD_INTERVAL_PN420
+	// 
+	// see also No documentation available
 	GuardIntervalPn420 TerrestrialGuardInterval = 8
 	// GuardIntervalPn595 wraps GST_MPEGTS_GUARD_INTERVAL_PN595
+	// 
+	// see also No documentation available
 	GuardIntervalPn595 TerrestrialGuardInterval = 9
 	// GuardIntervalPn945 wraps GST_MPEGTS_GUARD_INTERVAL_PN945
+	// 
+	// see also No documentation available
 	GuardIntervalPn945 TerrestrialGuardInterval = 10
 )
 
@@ -2705,18 +3578,30 @@ func (e TerrestrialGuardInterval) String() string {
 }
 
 // TerrestrialHierarchy wraps GstMpegtsTerrestrialHierarchy
+// 
+// see also No documentation available
 type TerrestrialHierarchy C.int
 
 const (
 	// HierarchyNone wraps GST_MPEGTS_HIERARCHY_NONE
+	// 
+	// see also No documentation available
 	HierarchyNone TerrestrialHierarchy = 0
 	// Hierarchy1 wraps GST_MPEGTS_HIERARCHY_1
+	// 
+	// see also No documentation available
 	Hierarchy1 TerrestrialHierarchy = 1
 	// Hierarchy2 wraps GST_MPEGTS_HIERARCHY_2
+	// 
+	// see also No documentation available
 	Hierarchy2 TerrestrialHierarchy = 2
 	// Hierarchy4 wraps GST_MPEGTS_HIERARCHY_4
+	// 
+	// see also No documentation available
 	Hierarchy4 TerrestrialHierarchy = 3
 	// HierarchyAuto wraps GST_MPEGTS_HIERARCHY_AUTO
+	// 
+	// see also No documentation available
 	HierarchyAuto TerrestrialHierarchy = 4
 )
 
@@ -2733,26 +3618,46 @@ func (e TerrestrialHierarchy) String() string {
 }
 
 // TerrestrialTransmissionMode wraps GstMpegtsTerrestrialTransmissionMode
+// 
+// see also No documentation available
 type TerrestrialTransmissionMode C.int
 
 const (
 	// TransmissionMode2k wraps GST_MPEGTS_TRANSMISSION_MODE_2K
+	// 
+	// see also No documentation available
 	TransmissionMode2k TerrestrialTransmissionMode = 0
 	// TransmissionMode8k wraps GST_MPEGTS_TRANSMISSION_MODE_8K
+	// 
+	// see also No documentation available
 	TransmissionMode8k TerrestrialTransmissionMode = 1
 	// TransmissionModeAuto wraps GST_MPEGTS_TRANSMISSION_MODE_AUTO
+	// 
+	// see also No documentation available
 	TransmissionModeAuto TerrestrialTransmissionMode = 2
 	// TransmissionMode4k wraps GST_MPEGTS_TRANSMISSION_MODE_4K
+	// 
+	// see also No documentation available
 	TransmissionMode4k TerrestrialTransmissionMode = 3
 	// TransmissionMode1k wraps GST_MPEGTS_TRANSMISSION_MODE_1K
+	// 
+	// see also No documentation available
 	TransmissionMode1k TerrestrialTransmissionMode = 4
 	// TransmissionMode16k wraps GST_MPEGTS_TRANSMISSION_MODE_16K
+	// 
+	// see also No documentation available
 	TransmissionMode16k TerrestrialTransmissionMode = 5
 	// TransmissionMode32k wraps GST_MPEGTS_TRANSMISSION_MODE_32K
+	// 
+	// see also No documentation available
 	TransmissionMode32k TerrestrialTransmissionMode = 6
 	// TransmissionModeC1 wraps GST_MPEGTS_TRANSMISSION_MODE_C1
+	// 
+	// see also No documentation available
 	TransmissionModeC1 TerrestrialTransmissionMode = 7
 	// TransmissionModeC3780 wraps GST_MPEGTS_TRANSMISSION_MODE_C3780
+	// 
+	// see also No documentation available
 	TransmissionModeC3780 TerrestrialTransmissionMode = 8
 )
 
@@ -2773,88 +3678,101 @@ func (e TerrestrialTransmissionMode) String() string {
 }
 
 // RegistrationId wraps GstMpegtsRegistrationId
+// 
+// see also No documentation available
 //
-// Well-known registration ids, expressed as native-endian 32bit integers. These
-// are used in descriptors of type %GST_MTS_DESC_REGISTRATION. Unless specified
-// otherwise (by use of the "OTHER" prefix), they are all registered by the
-// [SMPTE Registration Authority](https://smpte-ra.org/) or specified in
-// "official" documentation for the given format.
 type RegistrationId C.gint
 
 const (
 	// GstMtsRegistration0 wraps GST_MTS_REGISTRATION_0
+	// 
+	// see also No documentation available
 	//
-	// Undefined registration id
 	GstMtsRegistration0 RegistrationId = 0
 	// GstMtsRegistrationAc3 wraps GST_MTS_REGISTRATION_AC_3
+	// 
+	// see also No documentation available
 	//
-	// Audio AC-3, ATSC A/52
 	GstMtsRegistrationAc3 RegistrationId = 1094921523
 	// GstMtsRegistrationCuei wraps GST_MTS_REGISTRATION_CUEI
+	// 
+	// see also No documentation available
 	//
-	// SCTE 35, "Digital Program Insertion Cueing Message"
 	GstMtsRegistrationCuei RegistrationId = 1129661769
 	// GstMtsRegistrationDrac wraps GST_MTS_REGISTRATION_drac
+	// 
+	// see also No documentation available
 	//
-	// Dirac Video codec
 	GstMtsRegistrationDrac RegistrationId = 1685217635
 	// GstMtsRegistrationDts1 wraps GST_MTS_REGISTRATION_DTS1
+	// 
+	// see also No documentation available
 	//
-	// DTS Audio
 	GstMtsRegistrationDts1 RegistrationId = 1146377009
 	// GstMtsRegistrationDts2 wraps GST_MTS_REGISTRATION_DTS2
+	// 
+	// see also No documentation available
 	//
-	// DTS Audio
 	GstMtsRegistrationDts2 RegistrationId = 1146377010
 	// GstMtsRegistrationDts3 wraps GST_MTS_REGISTRATION_DTS3
+	// 
+	// see also No documentation available
 	//
-	// DTS Audio
 	GstMtsRegistrationDts3 RegistrationId = 1146377011
 	// GstMtsRegistrationBssd wraps GST_MTS_REGISTRATION_BSSD
+	// 
+	// see also No documentation available
 	//
-	// SMPTE 302M, Mapping of AES3 Data in mpeg-ts
 	GstMtsRegistrationBssd RegistrationId = 1112757060
 	// GstMtsRegistrationEac3 wraps GST_MTS_REGISTRATION_EAC3
+	// 
+	// see also No documentation available
 	//
-	// Enhanced AC-3 (i.e. EAC3)
 	GstMtsRegistrationEac3 RegistrationId = 1161904947
 	// GstMtsRegistrationEtv1 wraps GST_MTS_REGISTRATION_ETV1
+	// 
+	// see also No documentation available
 	//
-	// Cablelabs ETV
 	GstMtsRegistrationEtv1 RegistrationId = 1163154993
 	// GstMtsRegistrationGa94 wraps GST_MTS_REGISTRATION_GA94
+	// 
+	// see also No documentation available
 	//
-	// ATSC A/53 compliant stream (i.e. ATSC)
 	GstMtsRegistrationGa94 RegistrationId = 1195456820
 	// GstMtsRegistrationHdmv wraps GST_MTS_REGISTRATION_HDMV
+	// 
+	// see also No documentation available
 	//
-	// Blu-ray, "System Description Blu-ray Disc
-	//             Read-Only Format part 3 Audio Visual Basic Specifications"
 	GstMtsRegistrationHdmv RegistrationId = 1212435798
 	// GstMtsRegistrationKlva wraps GST_MTS_REGISTRATION_KLVA
+	// 
+	// see also No documentation available
 	//
-	// SMPTE RP217 : Non-synchronized Mapping of KLV
-	//             Packets in mpeg-ts
 	GstMtsRegistrationKlva RegistrationId = 1263294017
 	// GstMtsRegistrationOpus wraps GST_MTS_REGISTRATION_OPUS
+	// 
+	// see also No documentation available
 	//
-	// Opus Audio
 	GstMtsRegistrationOpus RegistrationId = 1330664787
 	// GstMtsRegistrationTshv wraps GST_MTS_REGISTRATION_TSHV
+	// 
+	// see also No documentation available
 	//
-	// HDV (Sony)
 	GstMtsRegistrationTshv RegistrationId = 1414744150
 	// GstMtsRegistrationVc1 wraps GST_MTS_REGISTRATION_VC_1
+	// 
+	// see also No documentation available
 	//
-	// Video VC-1, SMPTE RP227 "VC-1 Bitstream Transport Encodings"
 	GstMtsRegistrationVc1 RegistrationId = 1447243057
 	// GstMtsRegistrationAc4 wraps GST_MTS_REGISTRATION_AC_4
+	// 
+	// see also No documentation available
 	//
-	// Audio AC-4, ETSI 103 190-2
 	GstMtsRegistrationAc4 RegistrationId = 1094921524
 	// GstMtsRegistrationOtherHevc wraps GST_MTS_REGISTRATION_OTHER_HEVC
+	// 
+	// see also No documentation available
 	//
-	// HEVC / h265
 	GstMtsRegistrationOtherHevc RegistrationId = 1212503619
 )
 
@@ -2928,15 +3846,8 @@ func (f RegistrationId) String() string {
 
 // BufferAddMpegtsPesMetadataMeta wraps gst_buffer_add_mpegts_pes_metadata_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *PESMetadataMeta 
+// see also No documentation available
 //
-// Creates and adds a #GstMpegtsPESMetadataMeta to a @buffer.
 func BufferAddMpegtsPesMetadataMeta(buffer *gst.Buffer) *PESMetadataMeta {
 	var carg1 *C.GstBuffer                // in, none, converted
 	var cret  *C.GstMpegtsPESMetadataMeta // return, none, converted
@@ -2955,9 +3866,7 @@ func BufferAddMpegtsPesMetadataMeta(buffer *gst.Buffer) *PESMetadataMeta {
 
 // DvbComponentDescriptorFree wraps gst_mpegts_dvb_component_descriptor_free
 // 
-// The function takes the following parameters:
-// 
-// 	- source *ComponentDescriptor 
+// see also No documentation available
 func DvbComponentDescriptorFree(source *ComponentDescriptor) {
 	var carg1 *C.GstMpegtsComponentDescriptor // in, none, converted
 
@@ -2969,15 +3878,8 @@ func DvbComponentDescriptorFree(source *ComponentDescriptor) {
 
 // EventNewMpegtsSection wraps gst_event_new_mpegts_section
 // 
-// The function takes the following parameters:
-// 
-// 	- section *Section: The #GstMpegtsSection to put in a message 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event 
+// see also No documentation available
 //
-// Creates a new #GstEvent for a #GstMpegtsSection.
 func EventNewMpegtsSection(section *Section) *gst.Event {
 	var carg1 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstEvent         // return, full, converted
@@ -2996,15 +3898,8 @@ func EventNewMpegtsSection(section *Section) *gst.Event {
 
 // EventParseMpegtsSection wraps gst_event_parse_mpegts_section
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: #GstEvent containing a #GstMpegtsSection 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section (nullable) 
+// see also No documentation available
 //
-// Extracts the #GstMpegtsSection contained in the @event #GstEvent
 func EventParseMpegtsSection(event *gst.Event) *Section {
 	var carg1 *C.GstEvent         // in, none, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -3024,9 +3919,9 @@ func EventParseMpegtsSection(event *gst.Event) *Section {
 }
 
 // Initialize wraps gst_mpegts_initialize
+// 
+// see also No documentation available
 //
-// Initializes the MPEG-TS helper library. Must be called before any
-// usage.
 func Initialize() {
 
 	C.gst_mpegts_initialize()
@@ -3034,16 +3929,8 @@ func Initialize() {
 
 // MessageNewMpegtsSection wraps gst_message_new_mpegts_section
 // 
-// The function takes the following parameters:
-// 
-// 	- parent gst.Object: The creator of the message 
-// 	- section *Section: The #GstMpegtsSection to put in a message 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Message (nullable) 
+// see also No documentation available
 //
-// Creates a new #GstMessage for a @GstMpegtsSection.
 func MessageNewMpegtsSection(parent gst.Object, section *Section) *gst.Message {
 	var carg1 *C.GstObject        // in, none, converted
 	var carg2 *C.GstMpegtsSection // in, none, converted
@@ -3067,15 +3954,8 @@ func MessageNewMpegtsSection(parent gst.Object, section *Section) *gst.Message {
 
 // MessageParseMpegtsSection wraps gst_message_parse_mpegts_section
 // 
-// The function takes the following parameters:
-// 
-// 	- message *gst.Message: a #GstMessage 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsSection contained in a message.
 func MessageParseMpegtsSection(message *gst.Message) *Section {
 	var carg1 *C.GstMessage       // in, none, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -3096,11 +3976,8 @@ func MessageParseMpegtsSection(message *gst.Message) *Section {
 
 // PesMetadataMetaAPIGetType wraps gst_mpegts_pes_metadata_meta_api_get_type
 // 
-// The function returns the following values:
-// 
-// 	- goret gobject.Type 
+// see also No documentation available
 //
-// Return the #GType associated with #GstMpegtsPESMetadataMeta
 func PesMetadataMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -3115,16 +3992,8 @@ func PesMetadataMetaAPIGetType() gobject.Type {
 
 // NewScteCancel wraps gst_mpegts_scte_cancel_new
 // 
-// The function takes the following parameters:
-// 
-// 	- eventId uint32: The event ID to cancel. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *SCTESIT 
+// see also No documentation available
 //
-// Allocates and initializes a new INSERT command #GstMpegtsSCTESIT
-// setup to cancel the specified @event_id.
 func NewScteCancel(eventId uint32) *SCTESIT {
 	var carg1 C.guint32           // in, none, casted
 	var cret  *C.GstMpegtsSCTESIT // return, full, converted
@@ -3143,11 +4012,8 @@ func NewScteCancel(eventId uint32) *SCTESIT {
 
 // NewScteNull wraps gst_mpegts_scte_null_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *SCTESIT 
+// see also No documentation available
 //
-// Allocates and initializes a NULL command #GstMpegtsSCTESIT.
 func NewScteNull() *SCTESIT {
 	var cret *C.GstMpegtsSCTESIT // return, full, converted
 
@@ -3162,20 +4028,8 @@ func NewScteNull() *SCTESIT {
 
 // NewScteSpliceIn wraps gst_mpegts_scte_splice_in_new
 // 
-// The function takes the following parameters:
-// 
-// 	- eventId uint32: The event ID. 
-// 	- spliceTime gst.ClockTime: The running time for the splice event 
-// 
-// The function returns the following values:
-// 
-// 	- goret *SCTESIT 
+// see also No documentation available
 //
-// Allocates and initializes a new "Splice In" INSERT command
-// #GstMpegtsSCTESIT for the given @event_id and @splice_time.
-// 
-// If the @splice_time is #G_MAXUINT64 then the event will be
-// immediate as opposed to for the target @splice_time.
 func NewScteSpliceIn(eventId uint32, spliceTime gst.ClockTime) *SCTESIT {
 	var carg1 C.guint32           // in, none, casted
 	var carg2 C.GstClockTime      // in, none, casted, alias
@@ -3197,24 +4051,8 @@ func NewScteSpliceIn(eventId uint32, spliceTime gst.ClockTime) *SCTESIT {
 
 // NewScteSpliceOut wraps gst_mpegts_scte_splice_out_new
 // 
-// The function takes the following parameters:
-// 
-// 	- eventId uint32: The event ID. 
-// 	- spliceTime gst.ClockTime: The running time for the splice event 
-// 	- duration gst.ClockTime: The optional duration. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *SCTESIT 
+// see also No documentation available
 //
-// Allocates and initializes a new "Splice Out" INSERT command
-// #GstMpegtsSCTESIT for the given @event_id, @splice_time and
-// @duration.
-// 
-// If the @splice_time is #G_MAXUINT64 then the event will be
-// immediate as opposed to for the target @splice_time.
-// 
-// If the @duration is 0 it won't be specified in the event.
 func NewScteSpliceOut(eventId uint32, spliceTime gst.ClockTime, duration gst.ClockTime) *SCTESIT {
 	var carg1 C.guint32           // in, none, casted
 	var carg2 C.GstClockTime      // in, none, casted, alias
@@ -3238,8 +4076,9 @@ func NewScteSpliceOut(eventId uint32, spliceTime gst.ClockTime, duration gst.Clo
 }
 
 // AtscEIT wraps GstMpegtsAtscEIT
+// 
+// see also No documentation available
 //
-// Event Information Table (ATSC)
 type AtscEIT struct {
 	*atscEIT
 }
@@ -3334,8 +4173,9 @@ func UnsafeAtscEITToGlibFull(a *AtscEIT) unsafe.Pointer {
 }
 
 // AtscEITEvent wraps GstMpegtsAtscEITEvent
+// 
+// see also No documentation available
 //
-// An ATSC EIT Event
 type AtscEITEvent struct {
 	*atscEITEvent
 }
@@ -3430,8 +4270,9 @@ func UnsafeAtscEITEventToGlibFull(a *AtscEITEvent) unsafe.Pointer {
 }
 
 // AtscETT wraps GstMpegtsAtscETT
+// 
+// see also No documentation available
 //
-// Extended Text Table (ATSC)
 type AtscETT struct {
 	*atscETT
 }
@@ -3526,8 +4367,9 @@ func UnsafeAtscETTToGlibFull(a *AtscETT) unsafe.Pointer {
 }
 
 // AtscMGT wraps GstMpegtsAtscMGT
+// 
+// see also No documentation available
 //
-// Master Guide Table (A65)
 type AtscMGT struct {
 	*atscMGT
 }
@@ -3623,9 +4465,7 @@ func UnsafeAtscMGTToGlibFull(a *AtscMGT) unsafe.Pointer {
 
 // NewAtscMGT wraps gst_mpegts_atsc_mgt_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscMGT 
+// see also No documentation available
 func NewAtscMGT() *AtscMGT {
 	var cret *C.GstMpegtsAtscMGT // return, full, converted
 
@@ -3639,8 +4479,9 @@ func NewAtscMGT() *AtscMGT {
 }
 
 // AtscMGTTable wraps GstMpegtsAtscMGTTable
+// 
+// see also No documentation available
 //
-// Source from a @GstMpegtsAtscMGT
 type AtscMGTTable struct {
 	*atscMGTTable
 }
@@ -3735,6 +4576,8 @@ func UnsafeAtscMGTTableToGlibFull(a *AtscMGTTable) unsafe.Pointer {
 }
 
 // AtscMultString wraps GstMpegtsAtscMultString
+// 
+// see also No documentation available
 type AtscMultString struct {
 	*atscMultString
 }
@@ -3829,8 +4672,9 @@ func UnsafeAtscMultStringToGlibFull(a *AtscMultString) unsafe.Pointer {
 }
 
 // AtscRRT wraps GstMpegtsAtscRRT
+// 
+// see also No documentation available
 //
-// Region Rating Table (A65)
 type AtscRRT struct {
 	*atscRRT
 }
@@ -3926,9 +4770,7 @@ func UnsafeAtscRRTToGlibFull(a *AtscRRT) unsafe.Pointer {
 
 // NewAtscRRT wraps gst_mpegts_atsc_rrt_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscRRT 
+// see also No documentation available
 func NewAtscRRT() *AtscRRT {
 	var cret *C.GstMpegtsAtscRRT // return, full, converted
 
@@ -3942,6 +4784,8 @@ func NewAtscRRT() *AtscRRT {
 }
 
 // AtscRRTDimension wraps GstMpegtsAtscRRTDimension
+// 
+// see also No documentation available
 type AtscRRTDimension struct {
 	*atscRRTDimension
 }
@@ -4037,9 +4881,7 @@ func UnsafeAtscRRTDimensionToGlibFull(a *AtscRRTDimension) unsafe.Pointer {
 
 // NewAtscRRTDimension wraps gst_mpegts_atsc_rrt_dimension_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscRRTDimension 
+// see also No documentation available
 func NewAtscRRTDimension() *AtscRRTDimension {
 	var cret *C.GstMpegtsAtscRRTDimension // return, full, converted
 
@@ -4053,6 +4895,8 @@ func NewAtscRRTDimension() *AtscRRTDimension {
 }
 
 // AtscRRTDimensionValue wraps GstMpegtsAtscRRTDimensionValue
+// 
+// see also No documentation available
 type AtscRRTDimensionValue struct {
 	*atscRRTDimensionValue
 }
@@ -4148,9 +4992,7 @@ func UnsafeAtscRRTDimensionValueToGlibFull(a *AtscRRTDimensionValue) unsafe.Poin
 
 // NewAtscRRTDimensionValue wraps gst_mpegts_atsc_rrt_dimension_value_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscRRTDimensionValue 
+// see also No documentation available
 func NewAtscRRTDimensionValue() *AtscRRTDimensionValue {
 	var cret *C.GstMpegtsAtscRRTDimensionValue // return, full, converted
 
@@ -4164,8 +5006,9 @@ func NewAtscRRTDimensionValue() *AtscRRTDimensionValue {
 }
 
 // AtscSTT wraps GstMpegtsAtscSTT
+// 
+// see also No documentation available
 //
-// System Time Table (A65)
 type AtscSTT struct {
 	*atscSTT
 }
@@ -4261,9 +5104,7 @@ func UnsafeAtscSTTToGlibFull(a *AtscSTT) unsafe.Pointer {
 
 // NewAtscSTT wraps gst_mpegts_atsc_stt_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscSTT 
+// see also No documentation available
 func NewAtscSTT() *AtscSTT {
 	var cret *C.GstMpegtsAtscSTT // return, full, converted
 
@@ -4278,9 +5119,7 @@ func NewAtscSTT() *AtscSTT {
 
 // GetDatetimeUtc wraps gst_mpegts_atsc_stt_get_datetime_utc
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.DateTime 
+// see also No documentation available
 func (stt *AtscSTT) GetDatetimeUtc() *gst.DateTime {
 	var carg0 *C.GstMpegtsAtscSTT // in, none, converted
 	var cret  *C.GstDateTime      // return, full, converted
@@ -4298,8 +5137,9 @@ func (stt *AtscSTT) GetDatetimeUtc() *gst.DateTime {
 }
 
 // AtscStringSegment wraps GstMpegtsAtscStringSegment
+// 
+// see also No documentation available
 //
-// A string segment
 type AtscStringSegment struct {
 	*atscStringSegment
 }
@@ -4395,9 +5235,7 @@ func UnsafeAtscStringSegmentToGlibFull(a *AtscStringSegment) unsafe.Pointer {
 
 // GetString wraps gst_mpegts_atsc_string_segment_get_string
 // 
-// The function returns the following values:
-// 
-// 	- goret string 
+// see also No documentation available
 func (seg *AtscStringSegment) GetString() string {
 	var carg0 *C.GstMpegtsAtscStringSegment // in, none, converted
 	var cret  *C.gchar                      // return, none, string
@@ -4416,15 +5254,7 @@ func (seg *AtscStringSegment) GetString() string {
 
 // SetString wraps gst_mpegts_atsc_string_segment_set_string
 // 
-// The function takes the following parameters:
-// 
-// 	- str string 
-// 	- compressionType uint8 
-// 	- mode uint8 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 func (seg *AtscStringSegment) SetString(str string, compressionType uint8, mode uint8) bool {
 	var carg0 *C.GstMpegtsAtscStringSegment // in, none, converted
 	var carg1 *C.gchar                      // in, none, string
@@ -4454,10 +5284,9 @@ func (seg *AtscStringSegment) SetString(str string, compressionType uint8, mode 
 }
 
 // AtscVCT wraps GstMpegtsAtscVCT
+// 
+// see also No documentation available
 //
-// Represents both:
-//   Terrestrial Virtual Channel Table (A65)
-//   Cable Virtual Channel Table (A65)
 type AtscVCT struct {
 	*atscVCT
 }
@@ -4552,8 +5381,9 @@ func UnsafeAtscVCTToGlibFull(a *AtscVCT) unsafe.Pointer {
 }
 
 // AtscVCTSource wraps GstMpegtsAtscVCTSource
+// 
+// see also No documentation available
 //
-// Source from a %GstMpegtsAtscVCT, can be used both for TVCT and CVCT tables
 type AtscVCTSource struct {
 	*atscVCTSource
 }
@@ -4648,8 +5478,9 @@ func UnsafeAtscVCTSourceToGlibFull(a *AtscVCTSource) unsafe.Pointer {
 }
 
 // AudioPreselectionDescriptor wraps GstMpegtsAudioPreselectionDescriptor
+// 
+// see also No documentation available
 //
-// Table 110: Audio Preselection Descriptor (ETSI EN 300 468 v1.16.1)
 type AudioPreselectionDescriptor struct {
 	*audioPreselectionDescriptor
 }
@@ -4729,8 +5560,9 @@ func UnsafeAudioPreselectionDescriptorToGlibFull(a *AudioPreselectionDescriptor)
 }
 
 // BAT wraps GstMpegtsBAT
+// 
+// see also No documentation available
 //
-// DVB Bouquet Association Table (EN 300 468)
 type BAT struct {
 	*bAT
 }
@@ -4825,6 +5657,8 @@ func UnsafeBATToGlibFull(b *BAT) unsafe.Pointer {
 }
 
 // BATStream wraps GstMpegtsBATStream
+// 
+// see also No documentation available
 type BATStream struct {
 	*bATStream
 }
@@ -4919,8 +5753,9 @@ func UnsafeBATStreamToGlibFull(b *BATStream) unsafe.Pointer {
 }
 
 // CableDeliverySystemDescriptor wraps GstMpegtsCableDeliverySystemDescriptor
+// 
+// see also No documentation available
 //
-// Cable Delivery System Descriptor (EN 300 468 v.1.13.1)
 type CableDeliverySystemDescriptor struct {
 	*cableDeliverySystemDescriptor
 }
@@ -5015,6 +5850,8 @@ func UnsafeCableDeliverySystemDescriptorToGlibFull(c *CableDeliverySystemDescrip
 }
 
 // ComponentDescriptor wraps GstMpegtsComponentDescriptor
+// 
+// see also No documentation available
 type ComponentDescriptor struct {
 	*componentDescriptor
 }
@@ -5109,6 +5946,8 @@ func UnsafeComponentDescriptorToGlibFull(c *ComponentDescriptor) unsafe.Pointer 
 }
 
 // Content wraps GstMpegtsContent
+// 
+// see also No documentation available
 type Content struct {
 	*content
 }
@@ -5203,6 +6042,8 @@ func UnsafeContentToGlibFull(c *Content) unsafe.Pointer {
 }
 
 // DVBLinkageDescriptor wraps GstMpegtsDVBLinkageDescriptor
+// 
+// see also No documentation available
 type DVBLinkageDescriptor struct {
 	*dVBLinkageDescriptor
 }
@@ -5298,9 +6139,7 @@ func UnsafeDVBLinkageDescriptorToGlibFull(d *DVBLinkageDescriptor) unsafe.Pointe
 
 // GetEvent wraps gst_mpegts_dvb_linkage_descriptor_get_event
 // 
-// The function returns the following values:
-// 
-// 	- goret *DVBLinkageEvent (nullable) 
+// see also No documentation available
 func (desc *DVBLinkageDescriptor) GetEvent() *DVBLinkageEvent {
 	var carg0 *C.GstMpegtsDVBLinkageDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDVBLinkageEvent      // return, none, converted, nullable
@@ -5321,9 +6160,7 @@ func (desc *DVBLinkageDescriptor) GetEvent() *DVBLinkageEvent {
 
 // GetMobileHandOver wraps gst_mpegts_dvb_linkage_descriptor_get_mobile_hand_over
 // 
-// The function returns the following values:
-// 
-// 	- goret *DVBLinkageMobileHandOver (nullable) 
+// see also No documentation available
 func (desc *DVBLinkageDescriptor) GetMobileHandOver() *DVBLinkageMobileHandOver {
 	var carg0 *C.GstMpegtsDVBLinkageDescriptor     // in, none, converted
 	var cret  *C.GstMpegtsDVBLinkageMobileHandOver // return, none, converted, nullable
@@ -5343,6 +6180,8 @@ func (desc *DVBLinkageDescriptor) GetMobileHandOver() *DVBLinkageMobileHandOver 
 }
 
 // DVBLinkageEvent wraps GstMpegtsDVBLinkageEvent
+// 
+// see also No documentation available
 type DVBLinkageEvent struct {
 	*dVBLinkageEvent
 }
@@ -5437,6 +6276,8 @@ func UnsafeDVBLinkageEventToGlibFull(d *DVBLinkageEvent) unsafe.Pointer {
 }
 
 // DVBLinkageExtendedEvent wraps GstMpegtsDVBLinkageExtendedEvent
+// 
+// see also No documentation available
 type DVBLinkageExtendedEvent struct {
 	*dVBLinkageExtendedEvent
 }
@@ -5531,6 +6372,8 @@ func UnsafeDVBLinkageExtendedEventToGlibFull(d *DVBLinkageExtendedEvent) unsafe.
 }
 
 // DVBLinkageMobileHandOver wraps GstMpegtsDVBLinkageMobileHandOver
+// 
+// see also No documentation available
 type DVBLinkageMobileHandOver struct {
 	*dVBLinkageMobileHandOver
 }
@@ -5625,6 +6468,8 @@ func UnsafeDVBLinkageMobileHandOverToGlibFull(d *DVBLinkageMobileHandOver) unsaf
 }
 
 // DVBParentalRatingItem wraps GstMpegtsDVBParentalRatingItem
+// 
+// see also No documentation available
 type DVBParentalRatingItem struct {
 	*dVBParentalRatingItem
 }
@@ -5719,6 +6564,8 @@ func UnsafeDVBParentalRatingItemToGlibFull(d *DVBParentalRatingItem) unsafe.Poin
 }
 
 // DVBServiceListItem wraps GstMpegtsDVBServiceListItem
+// 
+// see also No documentation available
 type DVBServiceListItem struct {
 	*dVBServiceListItem
 }
@@ -5813,6 +6660,8 @@ func UnsafeDVBServiceListItemToGlibFull(d *DVBServiceListItem) unsafe.Pointer {
 }
 
 // DataBroadcastDescriptor wraps GstMpegtsDataBroadcastDescriptor
+// 
+// see also No documentation available
 type DataBroadcastDescriptor struct {
 	*dataBroadcastDescriptor
 }
@@ -5907,11 +6756,9 @@ func UnsafeDataBroadcastDescriptorToGlibFull(d *DataBroadcastDescriptor) unsafe.
 }
 
 // Descriptor wraps GstMpegtsDescriptor
-//
-// These are the base descriptor types and methods.
 // 
-// For more details, refer to the ITU H.222.0 or ISO/IEC 13818-1 specifications
-// and other specifications mentioned in the documentation.
+// see also No documentation available
+//
 type Descriptor struct {
 	*descriptor
 }
@@ -6007,16 +6854,8 @@ func UnsafeDescriptorToGlibFull(d *Descriptor) unsafe.Pointer {
 
 // DescriptorFromCustom wraps gst_mpegts_descriptor_from_custom
 // 
-// The function takes the following parameters:
-// 
-// 	- tag uint8: descriptor tag 
-// 	- data []uint8: descriptor data (after tag and length field) 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor (nullable) 
+// see also No documentation available
 //
-// Creates a #GstMpegtsDescriptor with custom @tag and @data
 func DescriptorFromCustom(tag uint8, data []uint8) *Descriptor {
 	var carg1 C.guint8               // in, none, casted
 	var carg2 *C.guint8              // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -6044,17 +6883,8 @@ func DescriptorFromCustom(tag uint8, data []uint8) *Descriptor {
 
 // DescriptorFromCustomWithExtension wraps gst_mpegts_descriptor_from_custom_with_extension
 // 
-// The function takes the following parameters:
-// 
-// 	- tag uint8: descriptor tag 
-// 	- tagExtension uint8: descriptor tag extension 
-// 	- data []uint8: descriptor data (after tag and length field) 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor 
+// see also No documentation available
 //
-// Creates a #GstMpegtsDescriptor with custom @tag, @tag_extension and @data
 func DescriptorFromCustomWithExtension(tag uint8, tagExtension uint8, data []uint8) *Descriptor {
 	var carg1 C.guint8               // in, none, casted
 	var carg2 C.guint8               // in, none, casted
@@ -6083,17 +6913,8 @@ func DescriptorFromCustomWithExtension(tag uint8, tagExtension uint8, data []uin
 
 // DescriptorFromDvbNetworkName wraps gst_mpegts_descriptor_from_dvb_network_name
 // 
-// The function takes the following parameters:
-// 
-// 	- name string: the network name to set 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor (nullable) 
+// see also No documentation available
 //
-// Creates a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_NETWORK_NAME,
-// with the network name @name. The data field of the #GstMpegtsDescriptor
-// will be allocated, and transferred to the caller.
 func DescriptorFromDvbNetworkName(name string) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var cret  *C.GstMpegtsDescriptor // return, full, converted, nullable
@@ -6115,19 +6936,8 @@ func DescriptorFromDvbNetworkName(name string) *Descriptor {
 
 // DescriptorFromDvbService wraps gst_mpegts_descriptor_from_dvb_service
 // 
-// The function takes the following parameters:
-// 
-// 	- serviceType DVBServiceType: Service type defined as a #GstMpegtsDVBServiceType 
-// 	- serviceName string (nullable): Name of the service 
-// 	- serviceProvider string (nullable): Name of the service provider 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor (nullable) 
+// see also No documentation available
 //
-// Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
-// The data field of the #GstMpegtsDescriptor will be allocated,
-// and transferred to the caller.
 func DescriptorFromDvbService(serviceType DVBServiceType, serviceName string, serviceProvider string) *Descriptor {
 	var carg1 C.GstMpegtsDVBServiceType // in, none, casted
 	var carg2 *C.gchar                  // in, none, string, nullable-string
@@ -6160,16 +6970,7 @@ func DescriptorFromDvbService(serviceType DVBServiceType, serviceName string, se
 
 // DescriptorFromDvbSubtitling wraps gst_mpegts_descriptor_from_dvb_subtitling
 // 
-// The function takes the following parameters:
-// 
-// 	- lang string: a string containing the ISO639 language 
-// 	- typ uint8: subtitling type 
-// 	- composition uint16: composition page id 
-// 	- ancillary uint16: ancillary page id 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor 
+// see also No documentation available
 func DescriptorFromDvbSubtitling(lang string, typ uint8, composition uint16, ancillary uint16) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var carg2 C.guint8               // in, none, casted
@@ -6198,16 +6999,8 @@ func DescriptorFromDvbSubtitling(lang string, typ uint8, composition uint16, anc
 
 // DescriptorFromIso639Language wraps gst_mpegts_descriptor_from_iso_639_language
 // 
-// The function takes the following parameters:
-// 
-// 	- language string: ISO-639-2 language 3-char code 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor 
+// see also No documentation available
 //
-// Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
-// a single language
 func DescriptorFromIso639Language(language string) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var cret  *C.GstMpegtsDescriptor // return, full, converted
@@ -6227,15 +7020,8 @@ func DescriptorFromIso639Language(language string) *Descriptor {
 
 // DescriptorFromJpegXs wraps gst_mpegts_descriptor_from_jpeg_xs
 // 
-// The function takes the following parameters:
-// 
-// 	- jpegxs *JpegXsDescriptor: A #GstMpegtsJpegXsDescriptor 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor 
+// see also No documentation available
 //
-// Create a new #GstMpegtsDescriptor based on the information in @jpegxs
 func DescriptorFromJpegXs(jpegxs *JpegXsDescriptor) *Descriptor {
 	var carg1 *C.GstMpegtsJpegXsDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDescriptor       // return, full, converted
@@ -6254,13 +7040,7 @@ func DescriptorFromJpegXs(jpegxs *JpegXsDescriptor) *Descriptor {
 
 // DescriptorFromMetadata wraps gst_mpegts_descriptor_from_metadata
 // 
-// The function takes the following parameters:
-// 
-// 	- metadataDescriptor *MetadataDescriptor 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor 
+// see also No documentation available
 func DescriptorFromMetadata(metadataDescriptor *MetadataDescriptor) *Descriptor {
 	var carg1 *C.GstMpegtsMetadataDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDescriptor         // return, full, converted
@@ -6279,13 +7059,7 @@ func DescriptorFromMetadata(metadataDescriptor *MetadataDescriptor) *Descriptor 
 
 // DescriptorFromMetadataPointer wraps gst_mpegts_descriptor_from_metadata_pointer
 // 
-// The function takes the following parameters:
-// 
-// 	- metadataPointerDescriptor *MetadataPointerDescriptor: a #GstMpegtsMetadataPointerDescriptor 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor 
+// see also No documentation available
 func DescriptorFromMetadataPointer(metadataPointerDescriptor *MetadataPointerDescriptor) *Descriptor {
 	var carg1 *C.GstMpegtsMetadataPointerDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDescriptor                // return, full, converted
@@ -6304,16 +7078,8 @@ func DescriptorFromMetadataPointer(metadataPointerDescriptor *MetadataPointerDes
 
 // DescriptorFromRegistration wraps gst_mpegts_descriptor_from_registration
 // 
-// The function takes the following parameters:
-// 
-// 	- formatIdentifier string: a 4 character format identifier string 
-// 	- additionalInfo []uint8 (nullable): pointer to optional additional info 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor 
+// see also No documentation available
 //
-// Creates a %GST_MTS_DESC_REGISTRATION #GstMpegtsDescriptor
 func DescriptorFromRegistration(formatIdentifier string, additionalInfo []uint8) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var carg2 *C.guint8              // in, transfer: none, C Pointers: 1, Name: array[guint8], nullable, array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -6340,9 +7106,7 @@ func DescriptorFromRegistration(formatIdentifier string, additionalInfo []uint8)
 
 // DescriptorParseAudioPreselectionDump wraps gst_mpegts_descriptor_parse_audio_preselection_dump
 // 
-// The function takes the following parameters:
-// 
-// 	- source *AudioPreselectionDescriptor 
+// see also No documentation available
 func DescriptorParseAudioPreselectionDump(source *AudioPreselectionDescriptor) {
 	var carg1 *C.GstMpegtsAudioPreselectionDescriptor // in, none, converted
 
@@ -6354,9 +7118,7 @@ func DescriptorParseAudioPreselectionDump(source *AudioPreselectionDescriptor) {
 
 // DescriptorParseAudioPreselectionFree wraps gst_mpegts_descriptor_parse_audio_preselection_free
 // 
-// The function takes the following parameters:
-// 
-// 	- source *AudioPreselectionDescriptor 
+// see also No documentation available
 func DescriptorParseAudioPreselectionFree(source *AudioPreselectionDescriptor) {
 	var carg1 *C.GstMpegtsAudioPreselectionDescriptor // in, none, converted
 
@@ -6368,11 +7130,8 @@ func DescriptorParseAudioPreselectionFree(source *AudioPreselectionDescriptor) {
 
 // Copy wraps gst_mpegts_descriptor_copy
 // 
-// The function returns the following values:
-// 
-// 	- goret *Descriptor 
+// see also No documentation available
 //
-// Copy the given descriptor.
 func (desc *Descriptor) Copy() *Descriptor {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDescriptor // return, full, converted
@@ -6391,12 +7150,8 @@ func (desc *Descriptor) Copy() *Descriptor {
 
 // ParseCableDeliverySystem wraps gst_mpegts_descriptor_parse_cable_delivery_system
 // 
-// The function returns the following values:
-// 
-// 	- res CableDeliverySystemDescriptor: the #GstMpegtsCableDeliverySystemDescriptor to fill 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the cable delivery system information from @descriptor.
 func (descriptor *Descriptor) ParseCableDeliverySystem() (CableDeliverySystemDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor                   // in, none, converted
 	var carg1 C.GstMpegtsCableDeliverySystemDescriptor // out, transfer: none, C Pointers: 0, Name: CableDeliverySystemDescriptor, caller-allocates
@@ -6422,12 +7177,8 @@ func (descriptor *Descriptor) ParseCableDeliverySystem() (CableDeliverySystemDes
 
 // ParseDvbBouquetName wraps gst_mpegts_descriptor_parse_dvb_bouquet_name
 // 
-// The function returns the following values:
-// 
-// 	- bouquetName string: the bouquet name 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the bouquet name from @descriptor.
 func (descriptor *Descriptor) ParseDvbBouquetName() (string, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.gchar               // out, full, string
@@ -6452,12 +7203,8 @@ func (descriptor *Descriptor) ParseDvbBouquetName() (string, bool) {
 
 // ParseDvbComponent wraps gst_mpegts_descriptor_parse_dvb_component
 // 
-// The function returns the following values:
-// 
-// 	- res *ComponentDescriptor: the #GstMpegtsComponentDescriptor to fill 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the DVB component information from @descriptor.
 func (descriptor *Descriptor) ParseDvbComponent() (*ComponentDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor          // in, none, converted
 	var carg1 *C.GstMpegtsComponentDescriptor // out, full, converted
@@ -6481,12 +7228,8 @@ func (descriptor *Descriptor) ParseDvbComponent() (*ComponentDescriptor, bool) {
 
 // ParseDvbDataBroadcast wraps gst_mpegts_descriptor_parse_dvb_data_broadcast
 // 
-// The function returns the following values:
-// 
-// 	- res *DataBroadcastDescriptor: #GstMpegtsDataBroadcastDescriptor 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses out the data broadcast from the @descriptor.
 func (descriptor *Descriptor) ParseDvbDataBroadcast() (*DataBroadcastDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor              // in, none, converted
 	var carg1 *C.GstMpegtsDataBroadcastDescriptor // out, full, converted
@@ -6510,12 +7253,8 @@ func (descriptor *Descriptor) ParseDvbDataBroadcast() (*DataBroadcastDescriptor,
 
 // ParseDvbExtendedEvent wraps gst_mpegts_descriptor_parse_dvb_extended_event
 // 
-// The function returns the following values:
-// 
-// 	- res *ExtendedEventDescriptor: the #GstMpegtsExtendedEventDescriptor to fill 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the DVB extended event information from @descriptor.
 func (descriptor *Descriptor) ParseDvbExtendedEvent() (*ExtendedEventDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor              // in, none, converted
 	var carg1 *C.GstMpegtsExtendedEventDescriptor // out, full, converted
@@ -6539,12 +7278,8 @@ func (descriptor *Descriptor) ParseDvbExtendedEvent() (*ExtendedEventDescriptor,
 
 // ParseDvbLinkage wraps gst_mpegts_descriptor_parse_dvb_linkage
 // 
-// The function returns the following values:
-// 
-// 	- res *DVBLinkageDescriptor: the #GstMpegtsDVBLinkageDescriptor to fill 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the DVB linkage information from @descriptor.
 func (descriptor *Descriptor) ParseDvbLinkage() (*DVBLinkageDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor           // in, none, converted
 	var carg1 *C.GstMpegtsDVBLinkageDescriptor // out, full, converted
@@ -6568,12 +7303,8 @@ func (descriptor *Descriptor) ParseDvbLinkage() (*DVBLinkageDescriptor, bool) {
 
 // ParseDvbNetworkName wraps gst_mpegts_descriptor_parse_dvb_network_name
 // 
-// The function returns the following values:
-// 
-// 	- name string: the extracted name 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses out the dvb network name from the @descriptor:
 func (descriptor *Descriptor) ParseDvbNetworkName() (string, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.gchar               // out, full, string
@@ -6598,16 +7329,8 @@ func (descriptor *Descriptor) ParseDvbNetworkName() (string, bool) {
 
 // ParseDvbScrambling wraps gst_mpegts_descriptor_parse_dvb_scrambling
 // 
-// The function returns the following values:
-// 
-// 	- scramblingMode DVBScramblingModeType: This 8-bit field identifies the selected
-// mode of the scrambling algorithm (#GstMpegtsDVBScramblingModeType).
-// The technical details of the scrambling algorithm are available only
-// to bona-fide users upon signature of a Non Disclosure Agreement (NDA)
-// administered by the DVB Common Scrambling Algorithm Custodian. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses out the scrambling mode from the @descriptor.
 func (descriptor *Descriptor) ParseDvbScrambling() (DVBScramblingModeType, bool) {
 	var carg0 *C.GstMpegtsDescriptor           // in, none, converted
 	var carg1 C.GstMpegtsDVBScramblingModeType // out, full, casted
@@ -6631,14 +7354,8 @@ func (descriptor *Descriptor) ParseDvbScrambling() (DVBScramblingModeType, bool)
 
 // ParseDvbService wraps gst_mpegts_descriptor_parse_dvb_service
 // 
-// The function returns the following values:
-// 
-// 	- serviceType DVBServiceType: the service type 
-// 	- serviceName string: the service name 
-// 	- providerName string: the provider name 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the dvb service information from @descriptor.
 func (descriptor *Descriptor) ParseDvbService() (DVBServiceType, string, string, bool) {
 	var carg0 *C.GstMpegtsDescriptor    // in, none, converted
 	var carg1 C.GstMpegtsDVBServiceType // out, full, casted
@@ -6670,14 +7387,8 @@ func (descriptor *Descriptor) ParseDvbService() (DVBServiceType, string, string,
 
 // ParseDvbShortEvent wraps gst_mpegts_descriptor_parse_dvb_short_event
 // 
-// The function returns the following values:
-// 
-// 	- languageCode string: the language code 
-// 	- eventName string: the event name 
-// 	- text string: the event text 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the DVB short event information from @descriptor.
 func (descriptor *Descriptor) ParseDvbShortEvent() (string, string, string, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.gchar               // out, full, string
@@ -6710,12 +7421,8 @@ func (descriptor *Descriptor) ParseDvbShortEvent() (string, string, string, bool
 
 // ParseDvbStreamIdentifier wraps gst_mpegts_descriptor_parse_dvb_stream_identifier
 // 
-// The function returns the following values:
-// 
-// 	- componentTag uint8: the component tag 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the component tag from @descriptor.
 func (descriptor *Descriptor) ParseDvbStreamIdentifier() (uint8, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 C.guint8               // out, none, casted
@@ -6739,12 +7446,8 @@ func (descriptor *Descriptor) ParseDvbStreamIdentifier() (uint8, bool) {
 
 // ParseDvbStuffing wraps gst_mpegts_descriptor_parse_dvb_stuffing
 // 
-// The function returns the following values:
-// 
-// 	- stuffingBytes *uint8: the stuffing bytes 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses out the stuffing bytes from the @descriptor.
 func (descriptor *Descriptor) ParseDvbStuffing() (*uint8, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.guint8              // out, transfer: full, C Pointers: 1, Name: guint8
@@ -6770,22 +7473,8 @@ func (descriptor *Descriptor) ParseDvbStuffing() (*uint8, bool) {
 
 // ParseDvbSubtitlingIdx wraps gst_mpegts_descriptor_parse_dvb_subtitling_idx
 // 
-// The function takes the following parameters:
-// 
-// 	- idx uint: Table id of the entry to parse 
-// 
-// The function returns the following values:
-// 
-// 	- lang string: the language code 
-// 	- typ uint8: the type of subtitling 
-// 	- compositionPageId uint16: the composition page id 
-// 	- ancillaryPageId uint16: the ancillary page id 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the DVB subtitling informatio from specific table id in @descriptor.
-// 
-// Note: Use #gst_tag_get_language_code if you want to get the the
-// ISO 639-1 language code from the returned ISO 639-2 one.
 func (descriptor *Descriptor) ParseDvbSubtitlingIdx(idx uint) (string, uint8, uint16, uint16, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 C.guint                // in, none, casted
@@ -6822,9 +7511,7 @@ func (descriptor *Descriptor) ParseDvbSubtitlingIdx(idx uint) (string, uint8, ui
 
 // ParseDvbSubtitlingNb wraps gst_mpegts_descriptor_parse_dvb_subtitling_nb
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 func (descriptor *Descriptor) ParseDvbSubtitlingNb() uint {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var cret  C.guint                // return, none, casted
@@ -6843,12 +7530,8 @@ func (descriptor *Descriptor) ParseDvbSubtitlingNb() uint {
 
 // ParseDvbT2DeliverySystem wraps gst_mpegts_descriptor_parse_dvb_t2_delivery_system
 // 
-// The function returns the following values:
-// 
-// 	- res *T2DeliverySystemDescriptor: #GstMpegtsT2DeliverySystemDescriptor 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses out the DVB-T2 delivery system from the @descriptor.
 func (descriptor *Descriptor) ParseDvbT2DeliverySystem() (*T2DeliverySystemDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor                 // in, none, converted
 	var carg1 *C.GstMpegtsT2DeliverySystemDescriptor // out, full, converted
@@ -6872,19 +7555,8 @@ func (descriptor *Descriptor) ParseDvbT2DeliverySystem() (*T2DeliverySystemDescr
 
 // ParseDvbTeletextIdx wraps gst_mpegts_descriptor_parse_dvb_teletext_idx
 // 
-// The function takes the following parameters:
-// 
-// 	- idx uint: The id of the teletext to get 
-// 
-// The function returns the following values:
-// 
-// 	- languageCode string: a null-terminated string 
-// 	- teletextType DVBTeletextType: #GstMpegtsDVBTeletextType 
-// 	- magazineNumber uint8 
-// 	- pageNumber uint8 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses teletext number @idx in the @descriptor. The language is in ISO639 format.
 func (descriptor *Descriptor) ParseDvbTeletextIdx(idx uint) (string, DVBTeletextType, uint8, uint8, bool) {
 	var carg0 *C.GstMpegtsDescriptor     // in, none, converted
 	var carg1 C.guint                    // in, none, casted
@@ -6921,11 +7593,8 @@ func (descriptor *Descriptor) ParseDvbTeletextIdx(idx uint) (string, DVBTeletext
 
 // ParseDvbTeletextNb wraps gst_mpegts_descriptor_parse_dvb_teletext_nb
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Find the number of teletext entries in @descriptor
 func (descriptor *Descriptor) ParseDvbTeletextNb() uint {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var cret  C.guint                // return, none, casted
@@ -6944,15 +7613,8 @@ func (descriptor *Descriptor) ParseDvbTeletextNb() uint {
 
 // ParseIso639Language wraps gst_mpegts_descriptor_parse_iso_639_language
 // 
-// The function returns the following values:
-// 
-// 	- res *ISO639LanguageDescriptor: the #GstMpegtsISO639LanguageDescriptor to fill 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the iso 639-2 language information from @descriptor.
-// 
-// Note: Use #gst_tag_get_language_code if you want to get the the
-// ISO 639-1 language code from the returned ISO 639-2 one.
 func (descriptor *Descriptor) ParseIso639Language() (*ISO639LanguageDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor               // in, none, converted
 	var carg1 *C.GstMpegtsISO639LanguageDescriptor // out, full, converted
@@ -6976,20 +7638,8 @@ func (descriptor *Descriptor) ParseIso639Language() (*ISO639LanguageDescriptor, 
 
 // ParseIso639LanguageIdx wraps gst_mpegts_descriptor_parse_iso_639_language_idx
 // 
-// The function takes the following parameters:
-// 
-// 	- idx uint: Table id of the language to parse 
-// 
-// The function returns the following values:
-// 
-// 	- lang string: 4-byte gchar array to hold the language code 
-// 	- audioType Iso639AudioType: the #GstMpegtsIso639AudioType to set 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the iso 639-2 language information from specific table id in @descriptor.
-// 
-// Note: Use #gst_tag_get_language_code if you want to get the the
-// ISO 639-1 language code from the returned ISO 639-2 one.
 func (descriptor *Descriptor) ParseIso639LanguageIdx(idx uint) (string, Iso639AudioType, bool) {
 	var carg0 *C.GstMpegtsDescriptor     // in, none, converted
 	var carg1 C.guint                    // in, none, casted
@@ -7020,9 +7670,7 @@ func (descriptor *Descriptor) ParseIso639LanguageIdx(idx uint) (string, Iso639Au
 
 // ParseIso639LanguageNb wraps gst_mpegts_descriptor_parse_iso_639_language_nb
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 func (descriptor *Descriptor) ParseIso639LanguageNb() uint {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var cret  C.guint                // return, none, casted
@@ -7041,12 +7689,8 @@ func (descriptor *Descriptor) ParseIso639LanguageNb() uint {
 
 // ParseJpegXs wraps gst_mpegts_descriptor_parse_jpeg_xs
 // 
-// The function returns the following values:
-// 
-// 	- res JpegXsDescriptor: A parsed #GstMpegtsJpegXsDescriptor 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses the JPEG-XS descriptor information from @descriptor:
 func (descriptor *Descriptor) ParseJpegXs() (JpegXsDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor      // in, none, converted
 	var carg1 C.GstMpegtsJpegXsDescriptor // out, transfer: none, C Pointers: 0, Name: JpegXsDescriptor, caller-allocates
@@ -7072,12 +7716,8 @@ func (descriptor *Descriptor) ParseJpegXs() (JpegXsDescriptor, bool) {
 
 // ParseLogicalChannel wraps gst_mpegts_descriptor_parse_logical_channel
 // 
-// The function returns the following values:
-// 
-// 	- res LogicalChannelDescriptor: the #GstMpegtsLogicalChannelDescriptor to fill 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the logical channels from @descriptor.
 func (descriptor *Descriptor) ParseLogicalChannel() (LogicalChannelDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor              // in, none, converted
 	var carg1 C.GstMpegtsLogicalChannelDescriptor // out, transfer: none, C Pointers: 0, Name: LogicalChannelDescriptor, caller-allocates
@@ -7103,16 +7743,8 @@ func (descriptor *Descriptor) ParseLogicalChannel() (LogicalChannelDescriptor, b
 
 // ParseMetadata wraps gst_mpegts_descriptor_parse_metadata
 // 
-// The function returns the following values:
-// 
-// 	- res *MetadataDescriptor: #GstMpegtsMetadataDescriptor 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses out the metadata descriptor from the @descriptor.
-// 
-// See ISO/IEC 13818-1:2018 Section 2.6.60 and 2.6.61 for details.
-// metadata_application_format is provided in Table 2-82. metadata_format is
-// provided in Table 2-85.
 func (descriptor *Descriptor) ParseMetadata() (*MetadataDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor         // in, none, converted
 	var carg1 *C.GstMpegtsMetadataDescriptor // out, full, converted
@@ -7136,19 +7768,8 @@ func (descriptor *Descriptor) ParseMetadata() (*MetadataDescriptor, bool) {
 
 // ParseMetadataStd wraps gst_mpegts_descriptor_parse_metadata_std
 // 
-// The function takes the following parameters:
-// 
-// 	- metadataInputLeakRate *uint32 
-// 	- metadataBufferSize *uint32 
-// 	- metadataOutputLeakRate *uint32 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the metadata STD descriptor from @descriptor.
-// 
-// See ISO/IEC 13818-1:2018 Section 2.6.62 and 2.6.63 for details.
 func (descriptor *Descriptor) ParseMetadataStd(metadataInputLeakRate *uint32, metadataBufferSize *uint32, metadataOutputLeakRate *uint32) bool {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.guint32             // in, transfer: none, C Pointers: 1, Name: guint32
@@ -7184,12 +7805,8 @@ func (descriptor *Descriptor) ParseMetadataStd(metadataInputLeakRate *uint32, me
 
 // ParseSatelliteDeliverySystem wraps gst_mpegts_descriptor_parse_satellite_delivery_system
 // 
-// The function returns the following values:
-// 
-// 	- res SatelliteDeliverySystemDescriptor: the #GstMpegtsSatelliteDeliverySystemDescriptor to fill 
-// 	- goret bool 
+// see also No documentation available
 //
-// Extracts the satellite delivery system information from @descriptor.
 func (descriptor *Descriptor) ParseSatelliteDeliverySystem() (SatelliteDeliverySystemDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor                       // in, none, converted
 	var carg1 C.GstMpegtsSatelliteDeliverySystemDescriptor // out, transfer: none, C Pointers: 0, Name: SatelliteDeliverySystemDescriptor, caller-allocates
@@ -7215,12 +7832,8 @@ func (descriptor *Descriptor) ParseSatelliteDeliverySystem() (SatelliteDeliveryS
 
 // ParseTerrestrialDeliverySystem wraps gst_mpegts_descriptor_parse_terrestrial_delivery_system
 // 
-// The function returns the following values:
-// 
-// 	- res TerrestrialDeliverySystemDescriptor: #GstMpegtsTerrestrialDeliverySystemDescriptor 
-// 	- goret bool 
+// see also No documentation available
 //
-// Parses out the terrestrial delivery system from the @descriptor.
 func (descriptor *Descriptor) ParseTerrestrialDeliverySystem() (TerrestrialDeliverySystemDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor                         // in, none, converted
 	var carg1 C.GstMpegtsTerrestrialDeliverySystemDescriptor // out, transfer: none, C Pointers: 0, Name: TerrestrialDeliverySystemDescriptor, caller-allocates
@@ -7245,8 +7858,9 @@ func (descriptor *Descriptor) ParseTerrestrialDeliverySystem() (TerrestrialDeliv
 }
 
 // DvbMultilingualBouquetNameItem wraps GstMpegtsDvbMultilingualBouquetNameItem
+// 
+// see also No documentation available
 //
-// a multilingual bouquet name entry
 type DvbMultilingualBouquetNameItem struct {
 	*dvbMultilingualBouquetNameItem
 }
@@ -7341,6 +7955,8 @@ func UnsafeDvbMultilingualBouquetNameItemToGlibFull(d *DvbMultilingualBouquetNam
 }
 
 // DvbMultilingualComponentItem wraps GstMpegtsDvbMultilingualComponentItem
+// 
+// see also No documentation available
 type DvbMultilingualComponentItem struct {
 	*dvbMultilingualComponentItem
 }
@@ -7435,8 +8051,9 @@ func UnsafeDvbMultilingualComponentItemToGlibFull(d *DvbMultilingualComponentIte
 }
 
 // DvbMultilingualNetworkNameItem wraps GstMpegtsDvbMultilingualNetworkNameItem
+// 
+// see also No documentation available
 //
-// a multilingual network name entry
 type DvbMultilingualNetworkNameItem struct {
 	*dvbMultilingualNetworkNameItem
 }
@@ -7531,8 +8148,9 @@ func UnsafeDvbMultilingualNetworkNameItemToGlibFull(d *DvbMultilingualNetworkNam
 }
 
 // DvbMultilingualServiceNameItem wraps GstMpegtsDvbMultilingualServiceNameItem
+// 
+// see also No documentation available
 //
-// a multilingual service name entry
 type DvbMultilingualServiceNameItem struct {
 	*dvbMultilingualServiceNameItem
 }
@@ -7627,8 +8245,9 @@ func UnsafeDvbMultilingualServiceNameItemToGlibFull(d *DvbMultilingualServiceNam
 }
 
 // EIT wraps GstMpegtsEIT
+// 
+// see also No documentation available
 //
-// Event Information Table (EN 300 468)
 type EIT struct {
 	*eIT
 }
@@ -7723,8 +8342,9 @@ func UnsafeEITToGlibFull(e *EIT) unsafe.Pointer {
 }
 
 // EITEvent wraps GstMpegtsEITEvent
+// 
+// see also No documentation available
 //
-// Event from a @GstMpegtsEIT
 type EITEvent struct {
 	*eITEvent
 }
@@ -7819,8 +8439,9 @@ func UnsafeEITEventToGlibFull(e *EITEvent) unsafe.Pointer {
 }
 
 // ExtendedEventDescriptor wraps GstMpegtsExtendedEventDescriptor
+// 
+// see also No documentation available
 //
-// Extended Event Descriptor (EN 300 468 v.1.13.1)
 type ExtendedEventDescriptor struct {
 	*extendedEventDescriptor
 }
@@ -7915,6 +8536,8 @@ func UnsafeExtendedEventDescriptorToGlibFull(e *ExtendedEventDescriptor) unsafe.
 }
 
 // ExtendedEventItem wraps GstMpegtsExtendedEventItem
+// 
+// see also No documentation available
 type ExtendedEventItem struct {
 	*extendedEventItem
 }
@@ -8009,6 +8632,8 @@ func UnsafeExtendedEventItemToGlibFull(e *ExtendedEventItem) unsafe.Pointer {
 }
 
 // ISO639LanguageDescriptor wraps GstMpegtsISO639LanguageDescriptor
+// 
+// see also No documentation available
 type ISO639LanguageDescriptor struct {
 	*iSO639LanguageDescriptor
 }
@@ -8103,6 +8728,8 @@ func UnsafeISO639LanguageDescriptorToGlibFull(i *ISO639LanguageDescriptor) unsaf
 }
 
 // DescriptorFree wraps gst_mpegts_iso_639_language_descriptor_free
+// 
+// see also No documentation available
 func (desc *ISO639LanguageDescriptor) DescriptorFree() {
 	var carg0 *C.GstMpegtsISO639LanguageDescriptor // in, none, converted
 
@@ -8113,8 +8740,9 @@ func (desc *ISO639LanguageDescriptor) DescriptorFree() {
 }
 
 // JpegXsDescriptor wraps GstMpegtsJpegXsDescriptor
+// 
+// see also No documentation available
 //
-// JPEG-XS descriptor
 type JpegXsDescriptor struct {
 	*jpegXsDescriptor
 }
@@ -8209,6 +8837,8 @@ func UnsafeJpegXsDescriptorToGlibFull(j *JpegXsDescriptor) unsafe.Pointer {
 }
 
 // LogicalChannel wraps GstMpegtsLogicalChannel
+// 
+// see also No documentation available
 type LogicalChannel struct {
 	*logicalChannel
 }
@@ -8303,6 +8933,8 @@ func UnsafeLogicalChannelToGlibFull(l *LogicalChannel) unsafe.Pointer {
 }
 
 // LogicalChannelDescriptor wraps GstMpegtsLogicalChannelDescriptor
+// 
+// see also No documentation available
 type LogicalChannelDescriptor struct {
 	*logicalChannelDescriptor
 }
@@ -8397,13 +9029,9 @@ func UnsafeLogicalChannelDescriptorToGlibFull(l *LogicalChannelDescriptor) unsaf
 }
 
 // MetadataDescriptor wraps GstMpegtsMetadataDescriptor
-//
-// The metadata descriptor specifies parameters of a metadata service carried in an MPEG-2 Transport Stream (or Program Stream). The descriptor is included in the PMT in the descriptor loop for the elementary stream that carries the
-// metadata service. The descriptor specifies the format of the associated metadata, and contains the value of the
-// metadata_service_id to identify the metadata service to which the metadata descriptor applies.
 // 
-// Note that this structure does not include all of the metadata_descriptor items, and will need extension to support DSM-CC and private data.
-// See ISO/IEC 13818-1:2018 Section 2.6.60 and Section 2.6.61 for more information.
+// see also No documentation available
+//
 type MetadataDescriptor struct {
 	*metadataDescriptor
 }
@@ -8498,15 +9126,9 @@ func UnsafeMetadataDescriptorToGlibFull(m *MetadataDescriptor) unsafe.Pointer {
 }
 
 // MetadataPointerDescriptor wraps GstMpegtsMetadataPointerDescriptor
-//
-// This structure is not complete. The following fields are missing in comparison to the standard (ISO/IEC 13818-1:2023 Section 2.6.58):
-// * metadata_locator_record_flag: hardcoded to 0. Indicating no metadata_locator_record present in the descriptor.
-// * MPEG_carriage_flags: hardcoded to 0b00, indicating the metadata is carried in the same transport steam.
-// * metadata_locator_record_length.
-// * transport_stream_location.
-// * transport_stream_id.
 // 
-// See also: gst_mpegts_descriptor_from_metadata_pointer
+// see also No documentation available
+//
 type MetadataPointerDescriptor struct {
 	*metadataPointerDescriptor
 }
@@ -8601,8 +9223,9 @@ func UnsafeMetadataPointerDescriptorToGlibFull(m *MetadataPointerDescriptor) uns
 }
 
 // NIT wraps GstMpegtsNIT
+// 
+// see also No documentation available
 //
-// Network Information Table (ISO/IEC 13818-1 / EN 300 468)
 type NIT struct {
 	*nIT
 }
@@ -8698,11 +9321,8 @@ func UnsafeNITToGlibFull(n *NIT) unsafe.Pointer {
 
 // NewNIT wraps gst_mpegts_nit_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *NIT 
+// see also No documentation available
 //
-// Allocates and initializes a #GstMpegtsNIT.
 func NewNIT() *NIT {
 	var cret *C.GstMpegtsNIT // return, full, converted
 
@@ -8716,6 +9336,8 @@ func NewNIT() *NIT {
 }
 
 // NITStream wraps GstMpegtsNITStream
+// 
+// see also No documentation available
 type NITStream struct {
 	*nITStream
 }
@@ -8811,11 +9433,8 @@ func UnsafeNITStreamToGlibFull(n *NITStream) unsafe.Pointer {
 
 // NewNITStream wraps gst_mpegts_nit_stream_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *NITStream 
+// see also No documentation available
 //
-// Allocates and initializes a #GstMpegtsNITStream
 func NewNITStream() *NITStream {
 	var cret *C.GstMpegtsNITStream // return, full, converted
 
@@ -8829,12 +9448,9 @@ func NewNITStream() *NITStream {
 }
 
 // PESMetadataMeta wraps GstMpegtsPESMetadataMeta
-//
-// Extra buffer metadata describing the PES Metadata context.
-// This is based on the Metadata AU cell header in
-// ISO/IEC 13818-1:2018 Section 2.12.4.
 // 
-// AU_cell_data_length is not provided, since it matches the length of the buffer
+// see also No documentation available
+//
 type PESMetadataMeta struct {
 	*pESMetadataMeta
 }
@@ -8915,11 +9531,8 @@ func UnsafePESMetadataMetaToGlibFull(p *PESMetadataMeta) unsafe.Pointer {
 
 // PESMetadataMetaGetInfo wraps gst_mpegts_pes_metadata_meta_get_info
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.MetaInfo 
+// see also No documentation available
 //
-// Gets the global #GstMetaInfo describing the #GstMpegtsPESMetadataMeta meta.
 func PESMetadataMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -8933,12 +9546,9 @@ func PESMetadataMetaGetInfo() *gst.MetaInfo {
 }
 
 // PMT wraps GstMpegtsPMT
-//
-// Program Map Table (ISO/IEC 13818-1). Provides the mappings between program
-// numbers and the program elements that comprise them.
 // 
-// The program_number is contained in the subtable_extension field of the
-// container #GstMpegtsSection.
+// see also No documentation available
+//
 type PMT struct {
 	*pMT
 }
@@ -9034,13 +9644,8 @@ func UnsafePMTToGlibFull(p *PMT) unsafe.Pointer {
 
 // NewPMT wraps gst_mpegts_pmt_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *PMT 
+// see also No documentation available
 //
-// Allocates and initializes a new #GstMpegtsPMT. #GstMpegtsPMTStream can be
-// added to the streams array, and global PMT #GstMpegtsDescriptor to the
-// descriptors array.
 func NewPMT() *PMT {
 	var cret *C.GstMpegtsPMT // return, full, converted
 
@@ -9054,8 +9659,9 @@ func NewPMT() *PMT {
 }
 
 // PMTStream wraps GstMpegtsPMTStream
+// 
+// see also No documentation available
 //
-// An individual stream definition of a #GstMpegtsPMT.
 type PMTStream struct {
 	*pMTStream
 }
@@ -9151,11 +9757,8 @@ func UnsafePMTStreamToGlibFull(p *PMTStream) unsafe.Pointer {
 
 // NewPMTStream wraps gst_mpegts_pmt_stream_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *PMTStream 
+// see also No documentation available
 //
-// Allocates and initializes a new #GstMpegtsPMTStream.
 func NewPMTStream() *PMTStream {
 	var cret *C.GstMpegtsPMTStream // return, full, converted
 
@@ -9169,8 +9772,9 @@ func NewPMTStream() *PMTStream {
 }
 
 // PatProgram wraps GstMpegtsPatProgram
+// 
+// see also No documentation available
 //
-// A program entry from a Program Association Table (ITU H.222.0, ISO/IEC 13818-1).
 type PatProgram struct {
 	*patProgram
 }
@@ -9266,11 +9870,8 @@ func UnsafePatProgramToGlibFull(p *PatProgram) unsafe.Pointer {
 
 // NewPatProgram wraps gst_mpegts_pat_program_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *PatProgram 
+// see also No documentation available
 //
-// Allocates a new #GstMpegtsPatProgram.
 func NewPatProgram() *PatProgram {
 	var cret *C.GstMpegtsPatProgram // return, full, converted
 
@@ -9284,6 +9885,8 @@ func NewPatProgram() *PatProgram {
 }
 
 // SCTESIT wraps GstMpegtsSCTESIT
+// 
+// see also No documentation available
 type SCTESIT struct {
 	*sCTESIT
 }
@@ -9379,11 +9982,8 @@ func UnsafeSCTESITToGlibFull(s *SCTESIT) unsafe.Pointer {
 
 // NewSCTESIT wraps gst_mpegts_scte_sit_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *SCTESIT 
+// see also No documentation available
 //
-// Allocates and initializes a #GstMpegtsSCTESIT.
 func NewSCTESIT() *SCTESIT {
 	var cret *C.GstMpegtsSCTESIT // return, full, converted
 
@@ -9397,8 +9997,9 @@ func NewSCTESIT() *SCTESIT {
 }
 
 // SCTESpliceComponent wraps GstMpegtsSCTESpliceComponent
+// 
+// see also No documentation available
 //
-// Per-PID splice information.
 type SCTESpliceComponent struct {
 	*sCTESpliceComponent
 }
@@ -9494,15 +10095,8 @@ func UnsafeSCTESpliceComponentToGlibFull(s *SCTESpliceComponent) unsafe.Pointer 
 
 // NewSCTESpliceComponent wraps gst_mpegts_scte_splice_component_new
 // 
-// The function takes the following parameters:
-// 
-// 	- tag uint8: the elementary PID stream identifier 
-// 
-// The function returns the following values:
-// 
-// 	- goret *SCTESpliceComponent 
+// see also No documentation available
 //
-// Allocates and initializes a #GstMpegtsSCTESpliceComponent.
 func NewSCTESpliceComponent(tag uint8) *SCTESpliceComponent {
 	var carg1 C.guint8                        // in, none, casted
 	var cret  *C.GstMpegtsSCTESpliceComponent // return, full, converted
@@ -9520,6 +10114,8 @@ func NewSCTESpliceComponent(tag uint8) *SCTESpliceComponent {
 }
 
 // SCTESpliceEvent wraps GstMpegtsSCTESpliceEvent
+// 
+// see also No documentation available
 type SCTESpliceEvent struct {
 	*sCTESpliceEvent
 }
@@ -9615,11 +10211,8 @@ func UnsafeSCTESpliceEventToGlibFull(s *SCTESpliceEvent) unsafe.Pointer {
 
 // NewSCTESpliceEvent wraps gst_mpegts_scte_splice_event_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *SCTESpliceEvent 
+// see also No documentation available
 //
-// Allocates and initializes a #GstMpegtsSCTESpliceEvent.
 func NewSCTESpliceEvent() *SCTESpliceEvent {
 	var cret *C.GstMpegtsSCTESpliceEvent // return, full, converted
 
@@ -9633,8 +10226,9 @@ func NewSCTESpliceEvent() *SCTESpliceEvent {
 }
 
 // SDT wraps GstMpegtsSDT
+// 
+// see also No documentation available
 //
-// Service Description Table (EN 300 468)
 type SDT struct {
 	*sDT
 }
@@ -9730,11 +10324,8 @@ func UnsafeSDTToGlibFull(s *SDT) unsafe.Pointer {
 
 // NewSDT wraps gst_mpegts_sdt_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *SDT 
+// see also No documentation available
 //
-// Allocates and initializes a #GstMpegtsSDT.
 func NewSDT() *SDT {
 	var cret *C.GstMpegtsSDT // return, full, converted
 
@@ -9748,6 +10339,8 @@ func NewSDT() *SDT {
 }
 
 // SDTService wraps GstMpegtsSDTService
+// 
+// see also No documentation available
 type SDTService struct {
 	*sDTService
 }
@@ -9843,11 +10436,8 @@ func UnsafeSDTServiceToGlibFull(s *SDTService) unsafe.Pointer {
 
 // NewSDTService wraps gst_mpegts_sdt_service_new
 // 
-// The function returns the following values:
-// 
-// 	- goret *SDTService 
+// see also No documentation available
 //
-// Allocates and initializes a #GstMpegtsSDTService.
 func NewSDTService() *SDTService {
 	var cret *C.GstMpegtsSDTService // return, full, converted
 
@@ -9861,8 +10451,9 @@ func NewSDTService() *SDTService {
 }
 
 // SIT wraps GstMpegtsSIT
+// 
+// see also No documentation available
 //
-// Selection Information Table (EN 300 468)
 type SIT struct {
 	*sIT
 }
@@ -9957,8 +10548,9 @@ func UnsafeSITToGlibFull(s *SIT) unsafe.Pointer {
 }
 
 // SITService wraps GstMpegtsSITService
+// 
+// see also No documentation available
 //
-// SIT Service entry
 type SITService struct {
 	*sITService
 }
@@ -10053,8 +10645,9 @@ func UnsafeSITServiceToGlibFull(s *SITService) unsafe.Pointer {
 }
 
 // SatelliteDeliverySystemDescriptor wraps GstMpegtsSatelliteDeliverySystemDescriptor
+// 
+// see also No documentation available
 //
-// Satellite Delivery System Descriptor (EN 300 468 v.1.13.1)
 type SatelliteDeliverySystemDescriptor struct {
 	*satelliteDeliverySystemDescriptor
 }
@@ -10149,51 +10742,9 @@ func UnsafeSatelliteDeliverySystemDescriptorToGlibFull(s *SatelliteDeliverySyste
 }
 
 // Section wraps GstMpegtsSection
+// 
+// see also No documentation available
 //
-// ## Generic usage of sections with %GstMpegtsSection
-// 
-// The %GstMpegtsSection object is the representation of MPEG-TS Section (SI or
-// PSI).
-// 
-// Various elements can post those on the bus via %GstMessage of type
-// %GST_MESSAGE_ELEMENT. The gst_message_parse_mpegts_section() function
-// provides access to the section.
-// 
-// Applications (or other elements) can create them either by using one of the
-// `gst_mpegts_section_from_*` functions, or by providing the raw SI data via
-// gst_mpegts_section_new().
-// 
-// Elements outputting MPEG-TS streams can also create sections using the
-// various convenience functions and then get the packetized data (to be
-// inserted in MPEG-TS packets) using gst_mpegts_section_packetize().
-// 
-// For more details, refer to the ITU H.222.0 or ISO/IEC 13818-1 specifications
-// and other specifications mentioned in the documentation.
-// 
-// # Supported base MPEG-TS sections
-// These are the sections for which parsing and packetizing code exists.
-// 
-// ## Program Association Table (PAT)
-// See:
-// * gst_mpegts_section_get_pat()
-// * gst_mpegts_pat_program_new()
-// * %GstMpegtsPatProgram
-// 
-// ## Conditional Access Table (CAT)
-// See:
-// * gst_mpegts_section_get_cat()
-// 
-// ## Program Map Table (PMT)
-// See:
-// * %GstMpegtsPMT
-// * gst_mpegts_section_get_pmt()
-// * gst_mpegts_pmt_new()
-// * %GstMpegtsPMTStream
-// 
-// ## Transport Stream Description Table (TSDT)
-// See:
-// * gst_mpegts_section_get_tsdt()
-// # API
 type Section struct {
 	*section
 }
@@ -10289,24 +10840,8 @@ func UnsafeSectionToGlibFull(s *Section) unsafe.Pointer {
 
 // NewSection wraps gst_mpegts_section_new
 // 
-// The function takes the following parameters:
-// 
-// 	- pid uint16: the PID to which this section belongs 
-// 	- data []uint8: a pointer to the beginning of
-// the section (i.e. the first byte should contain the `table_id` field). 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section 
+// see also No documentation available
 //
-// Creates a new #GstMpegtsSection from the provided @data.
-// 
-// Note: Ensuring @data is big enough to contain the full section is the
-// responsibility of the caller. If it is not big enough, %NULL will be
-// returned.
-// 
-// Note: it is the responsibility of the caller to ensure @data does point
-// to the beginning of the section.
 func NewSection(pid uint16, data []uint8) *Section {
 	var carg1 C.guint16           // in, none, casted
 	var carg2 *C.guint8           // in, transfer: full, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -10332,13 +10867,7 @@ func NewSection(pid uint16, data []uint8) *Section {
 
 // SectionFromAtscMgt wraps gst_mpegts_section_from_atsc_mgt
 // 
-// The function takes the following parameters:
-// 
-// 	- mgt *AtscMGT: a #GstMpegtsAtscMGT to create the #GstMpegtsSection from 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section (nullable) 
+// see also No documentation available
 func SectionFromAtscMgt(mgt *AtscMGT) *Section {
 	var carg1 *C.GstMpegtsAtscMGT // in, full, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -10359,13 +10888,7 @@ func SectionFromAtscMgt(mgt *AtscMGT) *Section {
 
 // SectionFromAtscRrt wraps gst_mpegts_section_from_atsc_rrt
 // 
-// The function takes the following parameters:
-// 
-// 	- rrt *AtscRRT 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section 
+// see also No documentation available
 func SectionFromAtscRrt(rrt *AtscRRT) *Section {
 	var carg1 *C.GstMpegtsAtscRRT // in, none, converted
 	var cret  *C.GstMpegtsSection // return, full, converted
@@ -10384,13 +10907,7 @@ func SectionFromAtscRrt(rrt *AtscRRT) *Section {
 
 // SectionFromAtscStt wraps gst_mpegts_section_from_atsc_stt
 // 
-// The function takes the following parameters:
-// 
-// 	- stt *AtscSTT 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section 
+// see also No documentation available
 func SectionFromAtscStt(stt *AtscSTT) *Section {
 	var carg1 *C.GstMpegtsAtscSTT // in, none, converted
 	var cret  *C.GstMpegtsSection // return, full, converted
@@ -10409,15 +10926,8 @@ func SectionFromAtscStt(stt *AtscSTT) *Section {
 
 // SectionFromNit wraps gst_mpegts_section_from_nit
 // 
-// The function takes the following parameters:
-// 
-// 	- nit *NIT: a #GstMpegtsNIT to create the #GstMpegtsSection from 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section (nullable) 
+// see also No documentation available
 //
-// Ownership of @nit is taken. The data in @nit is managed by the #GstMpegtsSection
 func SectionFromNit(nit *NIT) *Section {
 	var carg1 *C.GstMpegtsNIT     // in, full, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -10438,16 +10948,8 @@ func SectionFromNit(nit *NIT) *Section {
 
 // SectionFromPmt wraps gst_mpegts_section_from_pmt
 // 
-// The function takes the following parameters:
-// 
-// 	- pmt *PMT: a #GstMpegtsPMT to create a #GstMpegtsSection from 
-// 	- pid uint16: The PID that the #GstMpegtsPMT belongs to 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section (nullable) 
+// see also No documentation available
 //
-// Creates a #GstMpegtsSection from @pmt that is bound to @pid
 func SectionFromPmt(pmt *PMT, pid uint16) *Section {
 	var carg1 *C.GstMpegtsPMT     // in, full, converted
 	var carg2 C.guint16           // in, none, casted
@@ -10471,16 +10973,8 @@ func SectionFromPmt(pmt *PMT, pid uint16) *Section {
 
 // SectionFromScteSit wraps gst_mpegts_section_from_scte_sit
 // 
-// The function takes the following parameters:
-// 
-// 	- sit *SCTESIT: a #GstMpegtsSCTESIT to create the #GstMpegtsSection from 
-// 	- pid uint16 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section (nullable) 
+// see also No documentation available
 //
-// Ownership of @sit is taken. The data in @sit is managed by the #GstMpegtsSection
 func SectionFromScteSit(sit *SCTESIT, pid uint16) *Section {
 	var carg1 *C.GstMpegtsSCTESIT // in, full, converted
 	var carg2 C.guint16           // in, none, casted
@@ -10504,15 +10998,8 @@ func SectionFromScteSit(sit *SCTESIT, pid uint16) *Section {
 
 // SectionFromSdt wraps gst_mpegts_section_from_sdt
 // 
-// The function takes the following parameters:
-// 
-// 	- sdt *SDT: a #GstMpegtsSDT to create the #GstMpegtsSection from 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Section (nullable) 
+// see also No documentation available
 //
-// Ownership of @sdt is taken. The data in @sdt is managed by the #GstMpegtsSection
 func SectionFromSdt(sdt *SDT) *Section {
 	var carg1 *C.GstMpegtsSDT     // in, full, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -10533,11 +11020,8 @@ func SectionFromSdt(sdt *SDT) *Section {
 
 // GetAtscCvct wraps gst_mpegts_section_get_atsc_cvct
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscVCT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsAtscVCT contained in the @section
 func (section *Section) GetAtscCvct() *AtscVCT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscVCT // return, none, converted, nullable
@@ -10558,11 +11042,8 @@ func (section *Section) GetAtscCvct() *AtscVCT {
 
 // GetAtscEit wraps gst_mpegts_section_get_atsc_eit
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscEIT 
+// see also No documentation available
 //
-// Returns the #GstMpegtsAtscEIT contained in the @section.
 func (section *Section) GetAtscEit() *AtscEIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscEIT // return, none, converted
@@ -10581,11 +11062,8 @@ func (section *Section) GetAtscEit() *AtscEIT {
 
 // GetAtscEtt wraps gst_mpegts_section_get_atsc_ett
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscETT 
+// see also No documentation available
 //
-// Returns the #GstMpegtsAtscETT contained in the @section.
 func (section *Section) GetAtscEtt() *AtscETT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscETT // return, none, converted
@@ -10604,11 +11082,8 @@ func (section *Section) GetAtscEtt() *AtscETT {
 
 // GetAtscMgt wraps gst_mpegts_section_get_atsc_mgt
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscMGT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsAtscMGT contained in the @section.
 func (section *Section) GetAtscMgt() *AtscMGT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscMGT // return, none, converted, nullable
@@ -10629,11 +11104,8 @@ func (section *Section) GetAtscMgt() *AtscMGT {
 
 // GetAtscRrt wraps gst_mpegts_section_get_atsc_rrt
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscRRT 
+// see also No documentation available
 //
-// Returns the #GstMpegtsAtscRRT contained in the @section.
 func (section *Section) GetAtscRrt() *AtscRRT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscRRT // return, none, converted
@@ -10652,11 +11124,8 @@ func (section *Section) GetAtscRrt() *AtscRRT {
 
 // GetAtscStt wraps gst_mpegts_section_get_atsc_stt
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscSTT 
+// see also No documentation available
 //
-// Returns the #GstMpegtsAtscSTT contained in the @section.
 func (section *Section) GetAtscStt() *AtscSTT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscSTT // return, none, converted
@@ -10675,11 +11144,8 @@ func (section *Section) GetAtscStt() *AtscSTT {
 
 // GetAtscTvct wraps gst_mpegts_section_get_atsc_tvct
 // 
-// The function returns the following values:
-// 
-// 	- goret *AtscVCT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsAtscVCT contained in the @section
 func (section *Section) GetAtscTvct() *AtscVCT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscVCT // return, none, converted, nullable
@@ -10700,11 +11166,8 @@ func (section *Section) GetAtscTvct() *AtscVCT {
 
 // GetBat wraps gst_mpegts_section_get_bat
 // 
-// The function returns the following values:
-// 
-// 	- goret *BAT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsBAT contained in the @section.
 func (section *Section) GetBat() *BAT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsBAT     // return, none, converted, nullable
@@ -10725,11 +11188,8 @@ func (section *Section) GetBat() *BAT {
 
 // GetData wraps gst_mpegts_section_get_data
 // 
-// The function returns the following values:
-// 
-// 	- goret *glib.Bytes 
+// see also No documentation available
 //
-// Gets the original unparsed section data.
 func (section *Section) GetData() *glib.Bytes {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GBytes           // return, full, converted
@@ -10748,11 +11208,8 @@ func (section *Section) GetData() *glib.Bytes {
 
 // GetEit wraps gst_mpegts_section_get_eit
 // 
-// The function returns the following values:
-// 
-// 	- goret *EIT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsEIT contained in the @section.
 func (section *Section) GetEit() *EIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsEIT     // return, none, converted, nullable
@@ -10773,11 +11230,8 @@ func (section *Section) GetEit() *EIT {
 
 // GetNit wraps gst_mpegts_section_get_nit
 // 
-// The function returns the following values:
-// 
-// 	- goret *NIT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsNIT contained in the @section.
 func (section *Section) GetNit() *NIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsNIT     // return, none, converted, nullable
@@ -10798,11 +11252,8 @@ func (section *Section) GetNit() *NIT {
 
 // GetPmt wraps gst_mpegts_section_get_pmt
 // 
-// The function returns the following values:
-// 
-// 	- goret *PMT (nullable) 
+// see also No documentation available
 //
-// Parses the Program Map Table contained in the @section.
 func (section *Section) GetPmt() *PMT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsPMT     // return, none, converted, nullable
@@ -10823,11 +11274,8 @@ func (section *Section) GetPmt() *PMT {
 
 // GetScteSit wraps gst_mpegts_section_get_scte_sit
 // 
-// The function returns the following values:
-// 
-// 	- goret *SCTESIT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsSCTESIT contained in the @section.
 func (section *Section) GetScteSit() *SCTESIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsSCTESIT // return, none, converted, nullable
@@ -10848,11 +11296,8 @@ func (section *Section) GetScteSit() *SCTESIT {
 
 // GetSdt wraps gst_mpegts_section_get_sdt
 // 
-// The function returns the following values:
-// 
-// 	- goret *SDT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsSDT contained in the @section.
 func (section *Section) GetSdt() *SDT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsSDT     // return, none, converted, nullable
@@ -10873,11 +11318,8 @@ func (section *Section) GetSdt() *SDT {
 
 // GetSit wraps gst_mpegts_section_get_sit
 // 
-// The function returns the following values:
-// 
-// 	- goret *SIT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsSIT contained in the @section.
 func (section *Section) GetSit() *SIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsSIT     // return, none, converted, nullable
@@ -10898,11 +11340,8 @@ func (section *Section) GetSit() *SIT {
 
 // GetTdt wraps gst_mpegts_section_get_tdt
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.DateTime (nullable) 
+// see also No documentation available
 //
-// Returns the #GstDateTime of the TDT
 func (section *Section) GetTdt() *gst.DateTime {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstDateTime      // return, full, converted, nullable
@@ -10923,11 +11362,8 @@ func (section *Section) GetTdt() *gst.DateTime {
 
 // GetTot wraps gst_mpegts_section_get_tot
 // 
-// The function returns the following values:
-// 
-// 	- goret *TOT (nullable) 
+// see also No documentation available
 //
-// Returns the #GstMpegtsTOT contained in the @section.
 func (section *Section) GetTot() *TOT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsTOT     // return, none, converted, nullable
@@ -10948,14 +11384,8 @@ func (section *Section) GetTot() *TOT {
 
 // Packetize wraps gst_mpegts_section_packetize
 // 
-// The function returns the following values:
-// 
-// 	- outputSize uint: #gsize to hold the size of the data 
-// 	- goret *uint8 
+// see also No documentation available
 //
-// Packetize (i.e. serialize) the @section. If the data in @section has already
-// been packetized, the data pointer is returned immediately. Otherwise, the
-// data field is allocated and populated.
 func (section *Section) Packetize() (uint, *uint8) {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var carg1 C.gsize             // out, full, casted
@@ -10979,16 +11409,8 @@ func (section *Section) Packetize() (uint, *uint8) {
 
 // SendEvent wraps gst_mpegts_section_send_event
 // 
-// The function takes the following parameters:
-// 
-// 	- element gst.Element: The #GstElement to send to section event to 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Creates a custom #GstEvent with a @GstMpegtsSection and send it the @element
-// #GstElement.
 func (section *Section) SendEvent(element gst.Element) bool {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var carg1 *C.GstElement       // in, none, converted
@@ -11011,6 +11433,8 @@ func (section *Section) SendEvent(element gst.Element) bool {
 }
 
 // T2DeliverySystemCell wraps GstMpegtsT2DeliverySystemCell
+// 
+// see also No documentation available
 type T2DeliverySystemCell struct {
 	*t2DeliverySystemCell
 }
@@ -11105,6 +11529,8 @@ func UnsafeT2DeliverySystemCellToGlibFull(t *T2DeliverySystemCell) unsafe.Pointe
 }
 
 // T2DeliverySystemCellExtension wraps GstMpegtsT2DeliverySystemCellExtension
+// 
+// see also No documentation available
 type T2DeliverySystemCellExtension struct {
 	*t2DeliverySystemCellExtension
 }
@@ -11199,8 +11625,9 @@ func UnsafeT2DeliverySystemCellExtensionToGlibFull(t *T2DeliverySystemCellExtens
 }
 
 // T2DeliverySystemDescriptor wraps GstMpegtsT2DeliverySystemDescriptor
+// 
+// see also No documentation available
 //
-// describe DVB-T2 transmissions according to EN 302 755
 type T2DeliverySystemDescriptor struct {
 	*t2DeliverySystemDescriptor
 }
@@ -11295,8 +11722,9 @@ func UnsafeT2DeliverySystemDescriptorToGlibFull(t *T2DeliverySystemDescriptor) u
 }
 
 // TOT wraps GstMpegtsTOT
+// 
+// see also No documentation available
 //
-// Time Offset Table (EN 300 468)
 type TOT struct {
 	*tOT
 }
@@ -11391,8 +11819,9 @@ func UnsafeTOTToGlibFull(t *TOT) unsafe.Pointer {
 }
 
 // TerrestrialDeliverySystemDescriptor wraps GstMpegtsTerrestrialDeliverySystemDescriptor
+// 
+// see also No documentation available
 //
-// Terrestrial Delivery System Descriptor (EN 300 468 v.1.13.1)
 type TerrestrialDeliverySystemDescriptor struct {
 	*terrestrialDeliverySystemDescriptor
 }

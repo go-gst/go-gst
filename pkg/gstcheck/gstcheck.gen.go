@@ -33,17 +33,8 @@ func init() {
 
 // ConsistencyCheckerAddPad wraps gst_consistency_checker_add_pad
 // 
-// The function takes the following parameters:
-// 
-// 	- consist *StreamConsistency: The #GstStreamConsistency handle 
-// 	- pad gst.Pad: The #GstPad on which the dataflow will be checked. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Sets up a data probe on the given pad which will raise assertions if the
-// data flow is inconsistent.
 func ConsistencyCheckerAddPad(consist *StreamConsistency, pad gst.Pad) bool {
 	var carg1 *C.GstStreamConsistency // in, none, converted
 	var carg2 *C.GstPad               // in, none, converted
@@ -67,11 +58,8 @@ func ConsistencyCheckerAddPad(consist *StreamConsistency, pad gst.Pad) bool {
 
 // ConsistencyCheckerFree wraps gst_consistency_checker_free
 // 
-// The function takes the following parameters:
-// 
-// 	- consist *StreamConsistency: The #GstStreamConsistency to free. 
+// see also No documentation available
 //
-// Frees the allocated data and probes associated with @consist.
 func ConsistencyCheckerFree(consist *StreamConsistency) {
 	var carg1 *C.GstStreamConsistency // in, none, converted
 
@@ -83,11 +71,8 @@ func ConsistencyCheckerFree(consist *StreamConsistency) {
 
 // ConsistencyCheckerReset wraps gst_consistency_checker_reset
 // 
-// The function takes the following parameters:
-// 
-// 	- consist *StreamConsistency: The #GstStreamConsistency to reset. 
+// see also No documentation available
 //
-// Reset the stream checker's internal variables.
 func ConsistencyCheckerReset(consist *StreamConsistency) {
 	var carg1 *C.GstStreamConsistency // in, none, converted
 
@@ -106,287 +91,67 @@ type TestClockInstance struct {
 var _ TestClock = (*TestClockInstance)(nil)
 
 // TestClock wraps GstTestClock
+// 
+// see also No documentation available
 //
-// GstTestClock is an implementation of #GstClock which has different
-// behaviour compared to #GstSystemClock. Time for #GstSystemClock advances
-// according to the system time, while time for #GstTestClock changes only
-// when gst_test_clock_set_time() or gst_test_clock_advance_time() are
-// called. #GstTestClock provides unit tests with the possibility to
-// precisely advance the time in a deterministic manner, independent of the
-// system time or any other external factors.
-// 
-// ## Advancing the time of a #GstTestClock
-// 
-// |[&lt;!-- language="C" --&gt;
-//   #include &lt;gst/gst.h&gt;
-//   #include &lt;gst/check/gsttestclock.h&gt;
-// 
-//   GstClock *clock;
-//   GstTestClock *test_clock;
-// 
-//   clock = gst_test_clock_new ();
-//   test_clock = GST_TEST_CLOCK (clock);
-//   GST_INFO ("Time: %" GST_TIME_FORMAT, GST_TIME_ARGS (gst_clock_get_time (clock)));
-//   gst_test_clock_advance_time ( test_clock, 1 * GST_SECOND);
-//   GST_INFO ("Time: %" GST_TIME_FORMAT, GST_TIME_ARGS (gst_clock_get_time (clock)));
-//   g_usleep (10 * G_USEC_PER_SEC);
-//   GST_INFO ("Time: %" GST_TIME_FORMAT, GST_TIME_ARGS (gst_clock_get_time (clock)));
-//   gst_test_clock_set_time (test_clock, 42 * GST_SECOND);
-//   GST_INFO ("Time: %" GST_TIME_FORMAT, GST_TIME_ARGS (gst_clock_get_time (clock)));
-//   ...
-// ]|
-// 
-// #GstClock allows for setting up single shot or periodic clock notifications
-// as well as waiting for these notifications synchronously (using
-// gst_clock_id_wait()) or asynchronously (using gst_clock_id_wait_async() or
-// gst_clock_id_wait_async()). This is used by many GStreamer elements,
-// among them #GstBaseSrc and #GstBaseSink.
-// 
-// #GstTestClock keeps track of these clock notifications. By calling
-// gst_test_clock_wait_for_next_pending_id() or
-// gst_test_clock_wait_for_multiple_pending_ids() a unit tests may wait for the
-// next one or several clock notifications to be requested. Additionally unit
-// tests may release blocked waits in a controlled fashion by calling
-// gst_test_clock_process_next_clock_id(). This way a unit test can control the
-// inaccuracy (jitter) of clock notifications, since the test can decide to
-// release blocked waits when the clock time has advanced exactly to, or past,
-// the requested clock notification time.
-// 
-// There are also interfaces for determining if a notification belongs to a
-// #GstTestClock or not, as well as getting the number of requested clock
-// notifications so far.
-// 
-// N.B.: When a unit test waits for a certain amount of clock notifications to
-// be requested in gst_test_clock_wait_for_next_pending_id() or
-// gst_test_clock_wait_for_multiple_pending_ids() then these functions may block
-// for a long time. If they block forever then the expected clock notifications
-// were never requested from #GstTestClock, and so the assumptions in the code
-// of the unit test are wrong. The unit test case runner in gstcheck is
-// expected to catch these cases either by the default test case timeout or the
-// one set for the unit test by calling tcase_set_timeout\(\).
-// 
-// The sample code below assumes that the element under test will delay a
-// buffer pushed on the source pad by some latency until it arrives on the sink
-// pad. Moreover it is assumed that the element will at some point call
-// gst_clock_id_wait() to synchronously wait for a specific time. The first
-// buffer sent will arrive exactly on time only delayed by the latency. The
-// second buffer will arrive a little late (7ms) due to simulated jitter in the
-// clock notification.
-// 
-// ## Demonstration of how to work with clock notifications and #GstTestClock
-// 
-// |[&lt;!-- language="C" --&gt;
-//   #include &lt;gst/gst.h&gt;
-//   #include &lt;gst/check/gstcheck.h&gt;
-//   #include &lt;gst/check/gsttestclock.h&gt;
-// 
-//   GstClockTime latency;
-//   GstElement *element;
-//   GstPad *srcpad;
-//   GstClock *clock;
-//   GstTestClock *test_clock;
-//   GstBuffer buf;
-//   GstClockID pending_id;
-//   GstClockID processed_id;
-// 
-//   latency = 42 * GST_MSECOND;
-//   element = create_element (latency, ...);
-//   srcpad = get_source_pad (element);
-// 
-//   clock = gst_test_clock_new ();
-//   test_clock = GST_TEST_CLOCK (clock);
-//   gst_element_set_clock (element, clock);
-// 
-//   GST_INFO ("Set time, create and push the first buffer\n");
-//   gst_test_clock_set_time (test_clock, 0);
-//   buf = create_test_buffer (gst_clock_get_time (clock), ...);
-//   gst_assert_cmpint (gst_pad_push (srcpad, buf), ==, GST_FLOW_OK);
-// 
-//   GST_INFO ("Block until element is waiting for a clock notification\n");
-//   gst_test_clock_wait_for_next_pending_id (test_clock, &amp;pending_id);
-//   GST_INFO ("Advance to the requested time of the clock notification\n");
-//   gst_test_clock_advance_time (test_clock, latency);
-//   GST_INFO ("Release the next blocking wait and make sure it is the one from element\n");
-//   processed_id = gst_test_clock_process_next_clock_id (test_clock);
-//   g_assert (processed_id == pending_id);
-//   g_assert_cmpint (GST_CLOCK_ENTRY_STATUS (processed_id), ==, GST_CLOCK_OK);
-//   gst_clock_id_unref (pending_id);
-//   gst_clock_id_unref (processed_id);
-// 
-//   GST_INFO ("Validate that element produced an output buffer and check its timestamp\n");
-//   g_assert_cmpint (get_number_of_output_buffer (...), ==, 1);
-//   buf = get_buffer_pushed_by_element (element, ...);
-//   g_assert_cmpint (GST_BUFFER_TIMESTAMP (buf), ==, latency);
-//   gst_buffer_unref (buf);
-//   GST_INFO ("Check that element does not wait for any clock notification\n");
-//   g_assert (!gst_test_clock_peek_next_pending_id (test_clock, NULL));
-// 
-//   GST_INFO ("Set time, create and push the second buffer\n");
-//   gst_test_clock_advance_time (test_clock, 10 * GST_SECOND);
-//   buf = create_test_buffer (gst_clock_get_time (clock), ...);
-//   gst_assert_cmpint (gst_pad_push (srcpad, buf), ==, GST_FLOW_OK);
-// 
-//   GST_INFO ("Block until element is waiting for a new clock notification\n");
-//   (gst_test_clock_wait_for_next_pending_id (test_clock, &amp;pending_id);
-//   GST_INFO ("Advance past 7ms beyond the requested time of the clock notification\n");
-//   gst_test_clock_advance_time (test_clock, latency + 7 * GST_MSECOND);
-//   GST_INFO ("Release the next blocking wait and make sure it is the one from element\n");
-//   processed_id = gst_test_clock_process_next_clock_id (test_clock);
-//   g_assert (processed_id == pending_id);
-//   g_assert_cmpint (GST_CLOCK_ENTRY_STATUS (processed_id), ==, GST_CLOCK_OK);
-//   gst_clock_id_unref (pending_id);
-//   gst_clock_id_unref (processed_id);
-// 
-//   GST_INFO ("Validate that element produced an output buffer and check its timestamp\n");
-//   g_assert_cmpint (get_number_of_output_buffer (...), ==, 1);
-//   buf = get_buffer_pushed_by_element (element, ...);
-//   g_assert_cmpint (GST_BUFFER_TIMESTAMP (buf), ==,
-//       10 * GST_SECOND + latency + 7 * GST_MSECOND);
-//   gst_buffer_unref (buf);
-//   GST_INFO ("Check that element does not wait for any clock notification\n");
-//   g_assert (!gst_test_clock_peek_next_pending_id (test_clock, NULL));
-//   ...
-// ]|
-// 
-// Since #GstTestClock is only supposed to be used in unit tests it calls
-// g_assert(), g_assert_cmpint() or g_assert_cmpuint() to validate all function
-// arguments. This will highlight any issues with the unit test code itself.
 type TestClock interface {
 	gst.Clock
 	upcastToGstTestClock() *TestClockInstance
 
 	// AdvanceTime wraps gst_test_clock_advance_time
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- delta gst.ClockTimeDiff: a positive #GstClockTimeDiff to be added to the time of the clock 
+	// see also No documentation available
 	//
-	// Advances the time of the @test_clock by the amount given by @delta. The
-	// time of @test_clock is monotonically increasing, therefore providing a
-	// @delta which is negative or zero is a programming error.
-	// 
-	// MT safe.
 	AdvanceTime(gst.ClockTimeDiff)
 	// Crank wraps gst_test_clock_crank
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// A "crank" consists of three steps:
-	// 1: Wait for a #GstClockID to be registered with the #GstTestClock.
-	// 2: Advance the #GstTestClock to the time the #GstClockID is waiting, unless
-	//    the clock time is already passed the clock id (Since: 1.18).
-	// 3: Release the #GstClockID wait.
-	// A "crank" can be though of as the notion of
-	// manually driving the clock forward to its next logical step.
 	Crank() bool
 	// GetNextEntryTime wraps gst_test_clock_get_next_entry_time
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockTime 
+	// see also No documentation available
 	//
-	// Retrieve the requested time for the next pending clock notification.
-	// 
-	// MT safe.
 	GetNextEntryTime() gst.ClockTime
 	// HasID wraps gst_test_clock_has_id
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- id gst.ClockID: a #GstClockID clock notification 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Checks whether @test_clock was requested to provide the clock notification
-	// given by @id.
-	// 
-	// MT safe.
 	HasID(gst.ClockID) bool
 	// PeekIDCount wraps gst_test_clock_peek_id_count
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
+	// see also No documentation available
 	//
-	// Determine the number of pending clock notifications that have been
-	// requested from the @test_clock.
-	// 
-	// MT safe.
 	PeekIDCount() uint
 	// PeekNextPendingID wraps gst_test_clock_peek_next_pending_id
 	// 
-	// The function returns the following values:
-	// 
-	// 	- pendingId gst.ClockID: a #GstClockID clock
-	// notification to look for 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Determines if the @pending_id is the next clock notification scheduled to
-	// be triggered given the current time of the @test_clock.
-	// 
-	// MT safe.
 	PeekNextPendingID() (gst.ClockID, bool)
 	// ProcessID wraps gst_test_clock_process_id
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- pendingId gst.ClockID: #GstClockID 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
+	// see also No documentation available
 	//
-	// Processes and releases the pending ID.
-	// 
-	// MT safe.
 	ProcessID(gst.ClockID) bool
 	// ProcessNextClockID wraps gst_test_clock_process_next_clock_id
 	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gst.ClockID (nullable) 
+	// see also No documentation available
 	//
-	// MT safe.
 	ProcessNextClockID() gst.ClockID
 	// SetTime wraps gst_test_clock_set_time
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- newTime gst.ClockTime: a #GstClockTime later than that returned by gst_clock_get_time() 
+	// see also No documentation available
 	//
-	// Sets the time of @test_clock to the time given by @new_time. The time of
-	// @test_clock is monotonically increasing, therefore providing a @new_time
-	// which is earlier or equal to the time of the clock as given by
-	// gst_clock_get_time() is a programming error.
-	// 
-	// MT safe.
 	SetTime(gst.ClockTime)
 	// WaitForNextPendingID wraps gst_test_clock_wait_for_next_pending_id
 	// 
-	// The function returns the following values:
-	// 
-	// 	- pendingId gst.ClockID: #GstClockID
-	// with information about the pending clock notification 
+	// see also No documentation available
 	//
-	// Waits until a clock notification is requested from @test_clock. There is no
-	// timeout for this wait, see the main description of #GstTestClock. A reference
-	// to the pending clock notification is stored in @pending_id.
-	// 
-	// MT safe.
 	WaitForNextPendingID() gst.ClockID
 	// WaitForPendingIDCount wraps gst_test_clock_wait_for_pending_id_count
 	// 
-	// The function takes the following parameters:
-	// 
-	// 	- count uint: the number of pending clock notifications to wait for 
+	// see also No documentation available
 	//
-	// Blocks until at least @count clock notifications have been requested from
-	// @test_clock. There is no timeout for this wait, see the main description of
-	// #GstTestClock.
 	//
 	// Deprecated: use gst_test_clock_wait_for_multiple_pending_ids() instead.
 	WaitForPendingIDCount(uint)
@@ -450,13 +215,8 @@ func UnsafeTestClockToGlibFull(c TestClock) unsafe.Pointer {
 
 // NewTestClock wraps gst_test_clock_new
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.Clock 
+// see also No documentation available
 //
-// Creates a new test clock with its time set to zero.
-// 
-// MT safe.
 func NewTestClock() gst.Clock {
 	var cret *C.GstClock // return, full, converted
 
@@ -471,17 +231,8 @@ func NewTestClock() gst.Clock {
 
 // NewTestClockWithStartTime wraps gst_test_clock_new_with_start_time
 // 
-// The function takes the following parameters:
-// 
-// 	- startTime gst.ClockTime: a #GstClockTime set to the desired start time of the clock. 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.Clock 
+// see also No documentation available
 //
-// Creates a new test clock with its time set to the specified time.
-// 
-// MT safe.
 func NewTestClockWithStartTime(startTime gst.ClockTime) gst.Clock {
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var cret  *C.GstClock    // return, full, converted
@@ -500,15 +251,8 @@ func NewTestClockWithStartTime(startTime gst.ClockTime) gst.Clock {
 
 // AdvanceTime wraps gst_test_clock_advance_time
 // 
-// The function takes the following parameters:
-// 
-// 	- delta gst.ClockTimeDiff: a positive #GstClockTimeDiff to be added to the time of the clock 
+// see also No documentation available
 //
-// Advances the time of the @test_clock by the amount given by @delta. The
-// time of @test_clock is monotonically increasing, therefore providing a
-// @delta which is negative or zero is a programming error.
-// 
-// MT safe.
 func (testClock *TestClockInstance) AdvanceTime(delta gst.ClockTimeDiff) {
 	var carg0 *C.GstTestClock    // in, none, converted
 	var carg1 C.GstClockTimeDiff // in, none, casted, alias
@@ -523,17 +267,8 @@ func (testClock *TestClockInstance) AdvanceTime(delta gst.ClockTimeDiff) {
 
 // Crank wraps gst_test_clock_crank
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// A "crank" consists of three steps:
-// 1: Wait for a #GstClockID to be registered with the #GstTestClock.
-// 2: Advance the #GstTestClock to the time the #GstClockID is waiting, unless
-//    the clock time is already passed the clock id (Since: 1.18).
-// 3: Release the #GstClockID wait.
-// A "crank" can be though of as the notion of
-// manually driving the clock forward to its next logical step.
 func (testClock *TestClockInstance) Crank() bool {
 	var carg0 *C.GstTestClock // in, none, converted
 	var cret  C.gboolean      // return
@@ -554,13 +289,8 @@ func (testClock *TestClockInstance) Crank() bool {
 
 // GetNextEntryTime wraps gst_test_clock_get_next_entry_time
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Retrieve the requested time for the next pending clock notification.
-// 
-// MT safe.
 func (testClock *TestClockInstance) GetNextEntryTime() gst.ClockTime {
 	var carg0 *C.GstTestClock // in, none, converted
 	var cret  C.GstClockTime  // return, none, casted, alias
@@ -579,18 +309,8 @@ func (testClock *TestClockInstance) GetNextEntryTime() gst.ClockTime {
 
 // HasID wraps gst_test_clock_has_id
 // 
-// The function takes the following parameters:
-// 
-// 	- id gst.ClockID: a #GstClockID clock notification 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Checks whether @test_clock was requested to provide the clock notification
-// given by @id.
-// 
-// MT safe.
 func (testClock *TestClockInstance) HasID(id gst.ClockID) bool {
 	var carg0 *C.GstTestClock // in, none, converted
 	var carg1 C.GstClockID    // in, none, casted, alias
@@ -614,14 +334,8 @@ func (testClock *TestClockInstance) HasID(id gst.ClockID) bool {
 
 // PeekIDCount wraps gst_test_clock_peek_id_count
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Determine the number of pending clock notifications that have been
-// requested from the @test_clock.
-// 
-// MT safe.
 func (testClock *TestClockInstance) PeekIDCount() uint {
 	var carg0 *C.GstTestClock // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -640,16 +354,8 @@ func (testClock *TestClockInstance) PeekIDCount() uint {
 
 // PeekNextPendingID wraps gst_test_clock_peek_next_pending_id
 // 
-// The function returns the following values:
-// 
-// 	- pendingId gst.ClockID: a #GstClockID clock
-// notification to look for 
-// 	- goret bool 
+// see also No documentation available
 //
-// Determines if the @pending_id is the next clock notification scheduled to
-// be triggered given the current time of the @test_clock.
-// 
-// MT safe.
 func (testClock *TestClockInstance) PeekNextPendingID() (gst.ClockID, bool) {
 	var carg0 *C.GstTestClock // in, none, converted
 	var carg1 C.GstClockID    // out, full, casted, alias
@@ -673,17 +379,8 @@ func (testClock *TestClockInstance) PeekNextPendingID() (gst.ClockID, bool) {
 
 // ProcessID wraps gst_test_clock_process_id
 // 
-// The function takes the following parameters:
-// 
-// 	- pendingId gst.ClockID: #GstClockID 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Processes and releases the pending ID.
-// 
-// MT safe.
 func (testClock *TestClockInstance) ProcessID(pendingId gst.ClockID) bool {
 	var carg0 *C.GstTestClock // in, none, converted
 	var carg1 C.GstClockID    // in, full, casted, alias
@@ -707,11 +404,8 @@ func (testClock *TestClockInstance) ProcessID(pendingId gst.ClockID) bool {
 
 // ProcessNextClockID wraps gst_test_clock_process_next_clock_id
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockID (nullable) 
+// see also No documentation available
 //
-// MT safe.
 func (testClock *TestClockInstance) ProcessNextClockID() gst.ClockID {
 	var carg0 *C.GstTestClock // in, none, converted
 	var cret  C.GstClockID    // return, full, casted, alias, nullable
@@ -732,16 +426,8 @@ func (testClock *TestClockInstance) ProcessNextClockID() gst.ClockID {
 
 // SetTime wraps gst_test_clock_set_time
 // 
-// The function takes the following parameters:
-// 
-// 	- newTime gst.ClockTime: a #GstClockTime later than that returned by gst_clock_get_time() 
+// see also No documentation available
 //
-// Sets the time of @test_clock to the time given by @new_time. The time of
-// @test_clock is monotonically increasing, therefore providing a @new_time
-// which is earlier or equal to the time of the clock as given by
-// gst_clock_get_time() is a programming error.
-// 
-// MT safe.
 func (testClock *TestClockInstance) SetTime(newTime gst.ClockTime) {
 	var carg0 *C.GstTestClock // in, none, converted
 	var carg1 C.GstClockTime  // in, none, casted, alias
@@ -756,16 +442,8 @@ func (testClock *TestClockInstance) SetTime(newTime gst.ClockTime) {
 
 // WaitForNextPendingID wraps gst_test_clock_wait_for_next_pending_id
 // 
-// The function returns the following values:
-// 
-// 	- pendingId gst.ClockID: #GstClockID
-// with information about the pending clock notification 
+// see also No documentation available
 //
-// Waits until a clock notification is requested from @test_clock. There is no
-// timeout for this wait, see the main description of #GstTestClock. A reference
-// to the pending clock notification is stored in @pending_id.
-// 
-// MT safe.
 func (testClock *TestClockInstance) WaitForNextPendingID() gst.ClockID {
 	var carg0 *C.GstTestClock // in, none, converted
 	var carg1 C.GstClockID    // out, full, casted, alias
@@ -784,13 +462,8 @@ func (testClock *TestClockInstance) WaitForNextPendingID() gst.ClockID {
 
 // WaitForPendingIDCount wraps gst_test_clock_wait_for_pending_id_count
 // 
-// The function takes the following parameters:
-// 
-// 	- count uint: the number of pending clock notifications to wait for 
+// see also No documentation available
 //
-// Blocks until at least @count clock notifications have been requested from
-// @test_clock. There is no timeout for this wait, see the main description of
-// #GstTestClock.
 //
 // Deprecated: use gst_test_clock_wait_for_multiple_pending_ids() instead.
 func (testClock *TestClockInstance) WaitForPendingIDCount(count uint) {
@@ -846,97 +519,9 @@ func RegisterTestClockSubClass[InstanceT TestClock](
 }
 
 // Harness wraps GstHarness
+// 
+// see also No documentation available
 //
-// #GstHarness is meant to make writing unit test for GStreamer much easier.
-// It can be thought of as a way of treating a #GstElement as a black box,
-// deterministically feeding it data, and controlling what data it outputs.
-// 
-// The basic structure of #GstHarness is two "floating" #GstPads that connect
-// to the harnessed #GstElement src and sink #GstPads like so:
-// 
-// |[
-//           __________________________
-//  _____   |  _____            _____  |   _____
-// |     |  | |     |          |     | |  |     |
-// | src |--+-| sink|  Element | src |-+--| sink|
-// |_____|  | |_____|          |_____| |  |_____|
-//          |__________________________|
-// 
-// ]|
-// 
-// With this, you can now simulate any environment the #GstElement might find
-// itself in. By specifying the #GstCaps of the harness #GstPads, using
-// functions like gst_harness_set_src_caps() or gst_harness_set_sink_caps_str(),
-// you can test how the #GstElement interacts with different caps sets.
-// 
-// Your harnessed #GstElement can of course also be a bin, and using
-// gst_harness_new_parse() supporting standard gst-launch syntax, you can
-// easily test a whole pipeline instead of just one element.
-// 
-// You can then go on to push #GstBuffers and #GstEvents on to the srcpad,
-// using functions like gst_harness_push() and gst_harness_push_event(), and
-// then pull them out to examine them with gst_harness_pull() and
-// gst_harness_pull_event().
-// 
-// ## A simple buffer-in buffer-out example
-// 
-// |[&lt;!-- language="C" --&gt;
-//   #include &lt;gst/gst.h&gt;
-//   #include &lt;gst/check/gstharness.h&gt;
-//   GstHarness *h;
-//   GstBuffer *in_buf;
-//   GstBuffer *out_buf;
-// 
-//   // attach the harness to the src and sink pad of GstQueue
-//   h = gst_harness_new ("queue");
-// 
-//   // we must specify a caps before pushing buffers
-//   gst_harness_set_src_caps_str (h, "mycaps");
-// 
-//   // create a buffer of size 42
-//   in_buf = gst_harness_create_buffer (h, 42);
-// 
-//   // push the buffer into the queue
-//   gst_harness_push (h, in_buf);
-// 
-//   // pull the buffer from the queue
-//   out_buf = gst_harness_pull (h);
-// 
-//   // validate the buffer in is the same as buffer out
-//   fail_unless (in_buf == out_buf);
-// 
-//   // cleanup
-//   gst_buffer_unref (out_buf);
-//   gst_harness_teardown (h);
-// 
-//   ]|
-// 
-// Another main feature of the #GstHarness is its integration with the
-// #GstTestClock. Operating the #GstTestClock can be very challenging, but
-// #GstHarness simplifies some of the most desired actions a lot, like wanting
-// to manually advance the clock while at the same time releasing a #GstClockID
-// that is waiting, with functions like gst_harness_crank_single_clock_wait().
-// 
-// #GstHarness also supports sub-harnesses, as a way of generating and
-// validating data. A sub-harness is another #GstHarness that is managed by
-// the "parent" harness, and can either be created by using the standard
-// gst_harness_new type functions directly on the (GstHarness *)-&gt;src_harness,
-// or using the much more convenient gst_harness_add_src() or
-// gst_harness_add_sink_parse(). If you have a decoder-element you want to test,
-// (like vp8dec) it can be very useful to add a src-harness with both a
-// src-element (videotestsrc) and an encoder (vp8enc) to feed the decoder data
-// with different configurations, by simply doing:
-// 
-// |[&lt;!-- language="C" --&gt;
-//   GstHarness * h = gst_harness_new ("vp8dec");
-//   gst_harness_add_src_parse (h, "videotestsrc is-live=1 ! vp8enc", TRUE);
-// ]|
-// 
-// and then feeding it data with:
-// 
-// |[&lt;!-- language="C" --&gt;
-// gst_harness_push_from_src (h);
-// ]|
 type Harness struct {
 	*harness
 }
@@ -1017,17 +602,8 @@ func UnsafeHarnessToGlibFull(h *Harness) unsafe.Pointer {
 
 // HarnessStressThreadStop wraps gst_harness_stress_thread_stop
 // 
-// The function takes the following parameters:
-// 
-// 	- t *HarnessThread: a #GstHarnessThread 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// Stop the running #GstHarnessThread
-// 
-// MT safe.
 func HarnessStressThreadStop(t *HarnessThread) uint {
 	var carg1 *C.GstHarnessThread // in, none, converted
 	var cret  C.guint             // return, none, casted
@@ -1046,13 +622,8 @@ func HarnessStressThreadStop(t *HarnessThread) uint {
 
 // AddElementSinkPad wraps gst_harness_add_element_sink_pad
 // 
-// The function takes the following parameters:
-// 
-// 	- sinkpad gst.Pad: a #GstPad to link to the harness srcpad 
+// see also No documentation available
 //
-// Links the specified #GstPad the @GstHarness srcpad.
-// 
-// MT safe.
 func (h *Harness) AddElementSinkPad(sinkpad gst.Pad) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstPad     // in, none, converted
@@ -1067,15 +638,8 @@ func (h *Harness) AddElementSinkPad(sinkpad gst.Pad) {
 
 // AddElementSrcPad wraps gst_harness_add_element_src_pad
 // 
-// The function takes the following parameters:
-// 
-// 	- srcpad gst.Pad: a #GstPad to link to the harness sinkpad 
+// see also No documentation available
 //
-// Links the specified #GstPad the @GstHarness sinkpad. This can be useful if
-// perhaps the srcpad did not exist at the time of creating the harness,
-// like a demuxer that provides a sometimes-pad after receiving data.
-// 
-// MT safe.
 func (h *Harness) AddElementSrcPad(srcpad gst.Pad) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstPad     // in, none, converted
@@ -1090,18 +654,8 @@ func (h *Harness) AddElementSrcPad(srcpad gst.Pad) {
 
 // AddProbe wraps gst_harness_add_probe
 // 
-// The function takes the following parameters:
-// 
-// 	- elementName string: a #gchar with a #GstElementFactory name 
-// 	- padName string: a #gchar with the name of the pad to attach the probe to 
-// 	- mask gst.PadProbeType: a #GstPadProbeType (see gst_pad_add_probe) 
-// 	- callback gst.PadProbeCallback: a #GstPadProbeCallback (see gst_pad_add_probe) 
+// see also No documentation available
 //
-// A convenience function to allows you to call gst_pad_add_probe on a
-// #GstPad of a #GstElement that are residing inside the #GstHarness,
-// by using normal gst_pad_add_probe syntax
-// 
-// MT safe.
 func (h *Harness) AddProbe(elementName string, padName string, mask gst.PadProbeType, callback gst.PadProbeCallback) {
 	var carg0 *C.GstHarness         // in, none, converted
 	var carg1 *C.gchar              // in, none, string
@@ -1131,15 +685,8 @@ func (h *Harness) AddProbe(elementName string, padName string, mask gst.PadProbe
 
 // AddProposeAllocationMeta wraps gst_harness_add_propose_allocation_meta
 // 
-// The function takes the following parameters:
-// 
-// 	- api gobject.Type: a metadata API 
-// 	- params *gst.Structure (nullable): API specific parameters 
+// see also No documentation available
 //
-// Add api with params as one of the supported metadata API to propose when
-// receiving an allocation query.
-// 
-// MT safe.
 func (h *Harness) AddProposeAllocationMeta(api gobject.Type, params *gst.Structure) {
 	var carg0 *C.GstHarness   // in, none, converted
 	var carg1 C.GType         // in, none, casted, alias
@@ -1159,14 +706,8 @@ func (h *Harness) AddProposeAllocationMeta(api gobject.Type, params *gst.Structu
 
 // AddSink wraps gst_harness_add_sink
 // 
-// The function takes the following parameters:
-// 
-// 	- sinkElementName string: a #gchar with the name of a #GstElement 
+// see also No documentation available
 //
-// Similar to gst_harness_add_sink_harness, this is a convenience to
-// directly create a sink-harness using the @sink_element_name name specified.
-// 
-// MT safe.
 func (h *Harness) AddSink(sinkElementName string) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -1182,20 +723,8 @@ func (h *Harness) AddSink(sinkElementName string) {
 
 // AddSinkHarness wraps gst_harness_add_sink_harness
 // 
-// The function takes the following parameters:
-// 
-// 	- sinkHarness *Harness: a #GstHarness to be added as a sink-harness. 
+// see also No documentation available
 //
-// Similar to gst_harness_add_src, this allows you to send the data coming out
-// of your harnessed #GstElement to a sink-element, allowing to test different
-// responses the element output might create in sink elements. An example might
-// be an existing sink providing some analytical data on the input it receives that
-// can be useful to your testing. If the goal is to test a sink-element itself,
-// this is better achieved using gst_harness_new directly on the sink.
-// 
-// If a sink-harness already exists it will be replaced.
-// 
-// MT safe.
 func (h *Harness) AddSinkHarness(sinkHarness *Harness) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstHarness // in, full, converted
@@ -1210,14 +739,8 @@ func (h *Harness) AddSinkHarness(sinkHarness *Harness) {
 
 // AddSinkParse wraps gst_harness_add_sink_parse
 // 
-// The function takes the following parameters:
-// 
-// 	- launchline string: a #gchar with the name of a #GstElement 
+// see also No documentation available
 //
-// Similar to gst_harness_add_sink, this allows you to specify a launch-line
-// instead of just an element name. See gst_harness_add_src_parse for details.
-// 
-// MT safe.
 func (h *Harness) AddSinkParse(launchline string) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -1233,16 +756,8 @@ func (h *Harness) AddSinkParse(launchline string) {
 
 // AddSrc wraps gst_harness_add_src
 // 
-// The function takes the following parameters:
-// 
-// 	- srcElementName string: a #gchar with the name of a #GstElement 
-// 	- hasClockWait bool: a #gboolean specifying if the #GstElement uses
-// gst_clock_wait_id internally. 
+// see also No documentation available
 //
-// Similar to gst_harness_add_src_harness, this is a convenience to
-// directly create a src-harness using the @src_element_name name specified.
-// 
-// MT safe.
 func (h *Harness) AddSrc(srcElementName string, hasClockWait bool) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -1263,23 +778,8 @@ func (h *Harness) AddSrc(srcElementName string, hasClockWait bool) {
 
 // AddSrcHarness wraps gst_harness_add_src_harness
 // 
-// The function takes the following parameters:
-// 
-// 	- srcHarness *Harness: a #GstHarness to be added as a src-harness. 
-// 	- hasClockWait bool: a #gboolean specifying if the #GstElement uses
-// gst_clock_wait_id internally. 
+// see also No documentation available
 //
-// A src-harness is a great way of providing the #GstHarness with data.
-// By adding a src-type #GstElement, it is then easy to use functions like
-// gst_harness_push_from_src or gst_harness_src_crank_and_push_many
-// to provide your harnessed element with input. The @has_clock_wait variable
-// is a great way to control you src-element with, in that you can have it
-// produce a buffer for you by simply cranking the clock, and not have it
-// spin out of control producing buffers as fast as possible.
-// 
-// If a src-harness already exists it will be replaced.
-// 
-// MT safe.
 func (h *Harness) AddSrcHarness(srcHarness *Harness, hasClockWait bool) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstHarness // in, full, converted
@@ -1299,19 +799,8 @@ func (h *Harness) AddSrcHarness(srcHarness *Harness, hasClockWait bool) {
 
 // AddSrcParse wraps gst_harness_add_src_parse
 // 
-// The function takes the following parameters:
-// 
-// 	- launchline string: a #gchar describing a gst-launch type line 
-// 	- hasClockWait bool: a #gboolean specifying if the #GstElement uses
-// gst_clock_wait_id internally. 
+// see also No documentation available
 //
-// Similar to gst_harness_add_src, this allows you to specify a launch-line,
-// which can be useful for both having more then one #GstElement acting as your
-// src (Like a src producing raw buffers, and then an encoder, providing encoded
-// data), but also by allowing you to set properties like "is-live" directly on
-// the elements.
-// 
-// MT safe.
 func (h *Harness) AddSrcParse(launchline string, hasClockWait bool) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -1332,13 +821,8 @@ func (h *Harness) AddSrcParse(launchline string, hasClockWait bool) {
 
 // BuffersInQueue wraps gst_harness_buffers_in_queue
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// The number of #GstBuffers currently in the #GstHarness sinkpad #GAsyncQueue
-// 
-// MT safe.
 func (h *Harness) BuffersInQueue() uint {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  C.guint       // return, none, casted
@@ -1357,15 +841,8 @@ func (h *Harness) BuffersInQueue() uint {
 
 // BuffersReceived wraps gst_harness_buffers_received
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// The total number of #GstBuffers that has arrived on the #GstHarness sinkpad.
-// This number includes buffers that have been dropped as well as buffers
-// that have already been pulled out.
-// 
-// MT safe.
 func (h *Harness) BuffersReceived() uint {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  C.guint       // return, none, casted
@@ -1384,22 +861,8 @@ func (h *Harness) BuffersReceived() uint {
 
 // CrankMultipleClockWaits wraps gst_harness_crank_multiple_clock_waits
 // 
-// The function takes the following parameters:
-// 
-// 	- waits uint: a #guint describing the number of #GstClockIDs to crank 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Similar to gst_harness_crank_single_clock_wait(), this is the function to use
-// if your harnessed element(s) are using more then one gst_clock_id_wait.
-// Failing to do so can (and will) make it racy which #GstClockID you actually
-// are releasing, where as this function will process all the waits at the
-// same time, ensuring that one thread can't register another wait before
-// both are released.
-// 
-// MT safe.
 func (h *Harness) CrankMultipleClockWaits(waits uint) bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 C.guint       // in, none, casted
@@ -1423,20 +886,8 @@ func (h *Harness) CrankMultipleClockWaits(waits uint) bool {
 
 // CrankSingleClockWait wraps gst_harness_crank_single_clock_wait
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// A "crank" consists of three steps:
-// 1: Wait for a #GstClockID to be registered with the #GstTestClock.
-// 2: Advance the #GstTestClock to the time the #GstClockID is waiting for.
-// 3: Release the #GstClockID wait.
-// Together, this provides an easy way to not have to think about the details
-// around clocks and time, but still being able to write deterministic tests
-// that are dependent on this. A "crank" can be though of as the notion of
-// manually driving the clock forward to its next logical step.
-// 
-// MT safe.
 func (h *Harness) CrankSingleClockWait() bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  C.gboolean    // return
@@ -1457,18 +908,8 @@ func (h *Harness) CrankSingleClockWait() bool {
 
 // CreateBuffer wraps gst_harness_create_buffer
 // 
-// The function takes the following parameters:
-// 
-// 	- size uint: a #gsize specifying the size of the buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Allocates a buffer using a #GstBufferPool if present, or else using the
-// configured #GstAllocator and #GstAllocationParams
-// 
-// MT safe.
 func (h *Harness) CreateBuffer(size uint) *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1490,14 +931,8 @@ func (h *Harness) CreateBuffer(size uint) *gst.Buffer {
 
 // DumpToFile wraps gst_harness_dump_to_file
 // 
-// The function takes the following parameters:
-// 
-// 	- filename string: a #gchar with a the name of a file 
+// see also No documentation available
 //
-// Allows you to dump the #GstBuffers the #GstHarness sinkpad #GAsyncQueue
-// to a file.
-// 
-// MT safe.
 func (h *Harness) DumpToFile(filename string) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -1513,13 +948,8 @@ func (h *Harness) DumpToFile(filename string) {
 
 // EventsInQueue wraps gst_harness_events_in_queue
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// The number of #GstEvents currently in the #GstHarness sinkpad #GAsyncQueue
-// 
-// MT safe.
 func (h *Harness) EventsInQueue() uint {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  C.guint       // return, none, casted
@@ -1538,15 +968,8 @@ func (h *Harness) EventsInQueue() uint {
 
 // EventsReceived wraps gst_harness_events_received
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// The total number of #GstEvents that has arrived on the #GstHarness sinkpad
-// This number includes events handled by the harness as well as events
-// that have already been pulled out.
-// 
-// MT safe.
 func (h *Harness) EventsReceived() uint {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  C.guint       // return, none, casted
@@ -1565,20 +988,8 @@ func (h *Harness) EventsReceived() uint {
 
 // FindElement wraps gst_harness_find_element
 // 
-// The function takes the following parameters:
-// 
-// 	- elementName string: a #gchar with a #GstElementFactory name 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.Element (nullable) 
+// see also No documentation available
 //
-// Most useful in conjunction with gst_harness_new_parse, this will scan the
-// #GstElements inside the #GstHarness, and check if any of them matches
-// @element_name. Typical usecase being that you need to access one of the
-// harnessed elements for properties and/or signals.
-// 
-// MT safe.
 func (h *Harness) FindElement(elementName string) gst.Element {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -1603,16 +1014,8 @@ func (h *Harness) FindElement(elementName string) gst.Element {
 
 // GetAllocator wraps gst_harness_get_allocator
 // 
-// The function returns the following values:
-// 
-// 	- allocator gst.Allocator (nullable): the #GstAllocator used 
-// 	- params gst.AllocationParams: the #GstAllocationParams of
-//   @allocator 
+// see also No documentation available
 //
-// Gets the @allocator and its @params that has been decided to use after an
-// allocation query.
-// 
-// MT safe.
 func (h *Harness) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstHarness         // in, none, converted
 	var carg1 *C.GstAllocator       // out, none, converted, nullable
@@ -1638,14 +1041,8 @@ func (h *Harness) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 
 // GetLastPushedTimestamp wraps gst_harness_get_last_pushed_timestamp
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the timestamp of the last #GstBuffer pushed on the #GstHarness srcpad,
-// typically with gst_harness_push or gst_harness_push_from_src.
-// 
-// MT safe.
 func (h *Harness) GetLastPushedTimestamp() gst.ClockTime {
 	var carg0 *C.GstHarness  // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -1664,14 +1061,8 @@ func (h *Harness) GetLastPushedTimestamp() gst.ClockTime {
 
 // GetTestclock wraps gst_harness_get_testclock
 // 
-// The function returns the following values:
-// 
-// 	- goret TestClock (nullable) 
+// see also No documentation available
 //
-// Get the #GstTestClock. Useful if specific operations on the testclock is
-// needed.
-// 
-// MT safe.
 func (h *Harness) GetTestclock() TestClock {
 	var carg0 *C.GstHarness   // in, none, converted
 	var cret  *C.GstTestClock // return, full, converted, nullable
@@ -1691,16 +1082,9 @@ func (h *Harness) GetTestclock() TestClock {
 }
 
 // Play wraps gst_harness_play
-//
-// This will set the harnessed #GstElement to %GST_STATE_PLAYING.
-// #GstElements without a sink-#GstPad and with the %GST_ELEMENT_FLAG_SOURCE
-// flag set is considered a src #GstElement
-// Non-src #GstElements (like sinks and filters) are automatically set to
-// playing by the #GstHarness, but src #GstElements are not to avoid them
-// starting to produce buffers.
-// Hence, for src #GstElement you must call gst_harness_play() explicitly.
 // 
-// MT safe.
+// see also No documentation available
+//
 func (h *Harness) Play() {
 	var carg0 *C.GstHarness // in, none, converted
 
@@ -1712,15 +1096,8 @@ func (h *Harness) Play() {
 
 // Pull wraps gst_harness_pull
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Pulls a #GstBuffer from the #GAsyncQueue on the #GstHarness sinkpad. The pull
-// will timeout in 60 seconds. This is the standard way of getting a buffer
-// from a harnessed #GstElement.
-// 
-// MT safe.
 func (h *Harness) Pull() *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  *C.GstBuffer  // return, full, converted, nullable
@@ -1741,14 +1118,8 @@ func (h *Harness) Pull() *gst.Buffer {
 
 // PullEvent wraps gst_harness_pull_event
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event (nullable) 
+// see also No documentation available
 //
-// Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness sinkpad.
-// Timeouts after 60 seconds similar to gst_harness_pull.
-// 
-// MT safe.
 func (h *Harness) PullEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  *C.GstEvent   // return, full, converted, nullable
@@ -1769,15 +1140,8 @@ func (h *Harness) PullEvent() *gst.Event {
 
 // PullUntilEOS wraps gst_harness_pull_until_eos
 // 
-// The function returns the following values:
-// 
-// 	- buf *gst.Buffer (nullable): A #GstBuffer, or %NULL if EOS or timeout occures
-//   first. 
-// 	- goret bool 
+// see also No documentation available
 //
-// Pulls a #GstBuffer from the #GAsyncQueue on the #GstHarness sinkpad. The pull
-// will block until an EOS event is received, or timeout in 60 seconds.
-// MT safe.
 func (h *Harness) PullUntilEOS() (*gst.Buffer, bool) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstBuffer  // out, full, converted, nullable
@@ -1803,14 +1167,8 @@ func (h *Harness) PullUntilEOS() (*gst.Buffer, bool) {
 
 // PullUpstreamEvent wraps gst_harness_pull_upstream_event
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event (nullable) 
+// see also No documentation available
 //
-// Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness srcpad.
-// Timeouts after 60 seconds similar to gst_harness_pull.
-// 
-// MT safe.
 func (h *Harness) PullUpstreamEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  *C.GstEvent   // return, full, converted, nullable
@@ -1831,18 +1189,8 @@ func (h *Harness) PullUpstreamEvent() *gst.Event {
 
 // Push wraps gst_harness_push
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer to push 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Pushes a #GstBuffer on the #GstHarness srcpad. The standard way of
-// interacting with an harnessed element.
-// 
-// MT safe.
 func (h *Harness) Push(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstHarness   // in, none, converted
 	var carg1 *C.GstBuffer    // in, full, converted
@@ -1864,19 +1212,8 @@ func (h *Harness) Push(buffer *gst.Buffer) gst.FlowReturn {
 
 // PushAndPull wraps gst_harness_push_and_pull
 // 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer to push 
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Basically a gst_harness_push and a gst_harness_pull in one line. Reflects
-// the fact that you often want to do exactly this in your test: Push one buffer
-// in, and inspect the outcome.
-// 
-// MT safe.
 func (h *Harness) PushAndPull(buffer *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstBuffer  // in, full, converted
@@ -1900,17 +1237,8 @@ func (h *Harness) PushAndPull(buffer *gst.Buffer) *gst.Buffer {
 
 // PushEvent wraps gst_harness_push_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: a #GstEvent to push 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Pushes an #GstEvent on the #GstHarness srcpad.
-// 
-// MT safe.
 func (h *Harness) PushEvent(event *gst.Event) bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstEvent   // in, full, converted
@@ -1934,18 +1262,8 @@ func (h *Harness) PushEvent(event *gst.Event) bool {
 
 // PushFromSrc wraps gst_harness_push_from_src
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Transfer data from the src-#GstHarness to the main-#GstHarness. It consists
-// of 4 steps:
-// 1: Make sure the src is started. (see: gst_harness_play)
-// 2: Crank the clock (see: gst_harness_crank_single_clock_wait)
-// 3: Pull a #GstBuffer from the src-#GstHarness (see: gst_harness_pull)
-// 4: Push the same #GstBuffer into the main-#GstHarness (see: gst_harness_push)
-// 
-// MT safe.
 func (h *Harness) PushFromSrc() gst.FlowReturn {
 	var carg0 *C.GstHarness   // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -1964,14 +1282,8 @@ func (h *Harness) PushFromSrc() gst.FlowReturn {
 
 // PushToSink wraps gst_harness_push_to_sink
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Transfer one #GstBuffer from the main-#GstHarness to the sink-#GstHarness.
-// See gst_harness_push_from_src for details.
-// 
-// MT safe.
 func (h *Harness) PushToSink() gst.FlowReturn {
 	var carg0 *C.GstHarness   // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -1990,17 +1302,8 @@ func (h *Harness) PushToSink() gst.FlowReturn {
 
 // PushUpstreamEvent wraps gst_harness_push_upstream_event
 // 
-// The function takes the following parameters:
-// 
-// 	- event *gst.Event: a #GstEvent to push 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Pushes an #GstEvent on the #GstHarness sinkpad.
-// 
-// MT safe.
 func (h *Harness) PushUpstreamEvent(event *gst.Event) bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstEvent   // in, full, converted
@@ -2024,13 +1327,8 @@ func (h *Harness) PushUpstreamEvent(event *gst.Event) bool {
 
 // QueryLatency wraps gst_harness_query_latency
 // 
-// The function returns the following values:
-// 
-// 	- goret gst.ClockTime 
+// see also No documentation available
 //
-// Get the min latency reported by any harnessed #GstElement.
-// 
-// MT safe.
 func (h *Harness) QueryLatency() gst.ClockTime {
 	var carg0 *C.GstHarness  // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -2048,14 +1346,9 @@ func (h *Harness) QueryLatency() gst.ClockTime {
 }
 
 // SetBlockingPushMode wraps gst_harness_set_blocking_push_mode
-//
-// Setting this will make the harness block in the chain-function, and
-// then release when gst_harness_pull() or gst_harness_try_pull() is called.
-// Can be useful when wanting to control a src-element that is not implementing
-// gst_clock_id_wait() so it can't be controlled by the #GstTestClock, since
-// it otherwise would produce buffers as fast as possible.
 // 
-// MT safe.
+// see also No documentation available
+//
 func (h *Harness) SetBlockingPushMode() {
 	var carg0 *C.GstHarness // in, none, converted
 
@@ -2067,14 +1360,8 @@ func (h *Harness) SetBlockingPushMode() {
 
 // SetCaps wraps gst_harness_set_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- in *gst.Caps: a #GstCaps to set on the harness srcpad 
-// 	- out *gst.Caps: a #GstCaps to set on the harness sinkpad 
+// see also No documentation available
 //
-// Sets the @GstHarness srcpad and sinkpad caps.
-// 
-// MT safe.
 func (h *Harness) SetCaps(in *gst.Caps, out *gst.Caps) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstCaps    // in, full, converted
@@ -2092,14 +1379,8 @@ func (h *Harness) SetCaps(in *gst.Caps, out *gst.Caps) {
 
 // SetCapsStr wraps gst_harness_set_caps_str
 // 
-// The function takes the following parameters:
-// 
-// 	- in string: a @gchar describing a #GstCaps to set on the harness srcpad 
-// 	- out string: a @gchar describing a #GstCaps to set on the harness sinkpad 
+// see also No documentation available
 //
-// Sets the @GstHarness srcpad and sinkpad caps using strings.
-// 
-// MT safe.
 func (h *Harness) SetCapsStr(in string, out string) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -2119,14 +1400,8 @@ func (h *Harness) SetCapsStr(in string, out string) {
 
 // SetDropBuffers wraps gst_harness_set_drop_buffers
 // 
-// The function takes the following parameters:
-// 
-// 	- dropBuffers bool: a #gboolean specifying to drop outgoing buffers or not 
+// see also No documentation available
 //
-// When set to %TRUE, instead of placing the buffers arriving from the harnessed
-// #GstElement inside the sinkpads #GAsyncQueue, they are instead unreffed.
-// 
-// MT safe.
 func (h *Harness) SetDropBuffers(dropBuffers bool) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 C.gboolean    // in
@@ -2143,25 +1418,8 @@ func (h *Harness) SetDropBuffers(dropBuffers bool) {
 
 // SetForwarding wraps gst_harness_set_forwarding
 // 
-// The function takes the following parameters:
-// 
-// 	- forwarding bool: a #gboolean to enable/disable forwarding 
+// see also No documentation available
 //
-// As a convenience, a src-harness will forward %GST_EVENT_STREAM_START,
-// %GST_EVENT_CAPS and %GST_EVENT_SEGMENT to the main-harness if forwarding
-// is enabled, and forward any sticky-events from the main-harness to
-// the sink-harness. It will also forward the %GST_QUERY_ALLOCATION.
-// 
-// If forwarding is disabled, the user will have to either manually push
-// these events from the src-harness using gst_harness_src_push_event(), or
-// create and push them manually. While this will allow full control and
-// inspection of these events, for the most cases having forwarding enabled
-// will be sufficient when writing a test where the src-harness' main function
-// is providing data for the main-harness.
-// 
-// Forwarding is enabled by default.
-// 
-// MT safe.
 func (h *Harness) SetForwarding(forwarding bool) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 C.gboolean    // in
@@ -2178,12 +1436,8 @@ func (h *Harness) SetForwarding(forwarding bool) {
 
 // SetLive wraps gst_harness_set_live
 // 
-// The function takes the following parameters:
-// 
-// 	- isLive bool: %TRUE for live, %FALSE for non-live 
+// see also No documentation available
 //
-// Sets the liveness reported by #GstHarness when receiving a latency-query.
-// The default is %TRUE.
 func (h *Harness) SetLive(isLive bool) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 C.gboolean    // in
@@ -2200,15 +1454,8 @@ func (h *Harness) SetLive(isLive bool) {
 
 // SetProposeAllocator wraps gst_harness_set_propose_allocator
 // 
-// The function takes the following parameters:
-// 
-// 	- allocator gst.Allocator (nullable): a #GstAllocator 
-// 	- params *gst.AllocationParams (nullable): a #GstAllocationParams 
+// see also No documentation available
 //
-// Sets the @allocator and @params to propose when receiving an allocation
-// query.
-// 
-// MT safe.
 func (h *Harness) SetProposeAllocator(allocator gst.Allocator, params *gst.AllocationParams) {
 	var carg0 *C.GstHarness          // in, none, converted
 	var carg1 *C.GstAllocator        // in, full, converted, nullable
@@ -2230,13 +1477,8 @@ func (h *Harness) SetProposeAllocator(allocator gst.Allocator, params *gst.Alloc
 
 // SetSinkCaps wraps gst_harness_set_sink_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps to set on the harness sinkpad 
+// see also No documentation available
 //
-// Sets the @GstHarness sinkpad caps.
-// 
-// MT safe.
 func (h *Harness) SetSinkCaps(caps *gst.Caps) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstCaps    // in, full, converted
@@ -2251,13 +1493,8 @@ func (h *Harness) SetSinkCaps(caps *gst.Caps) {
 
 // SetSinkCapsStr wraps gst_harness_set_sink_caps_str
 // 
-// The function takes the following parameters:
-// 
-// 	- str string: a @gchar describing a #GstCaps to set on the harness sinkpad 
+// see also No documentation available
 //
-// Sets the @GstHarness sinkpad caps using a string.
-// 
-// MT safe.
 func (h *Harness) SetSinkCapsStr(str string) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -2273,14 +1510,8 @@ func (h *Harness) SetSinkCapsStr(str string) {
 
 // SetSrcCaps wraps gst_harness_set_src_caps
 // 
-// The function takes the following parameters:
-// 
-// 	- caps *gst.Caps: a #GstCaps to set on the harness srcpad 
+// see also No documentation available
 //
-// Sets the @GstHarness srcpad caps. This must be done before any buffers
-// can legally be pushed from the harness to the element.
-// 
-// MT safe.
 func (h *Harness) SetSrcCaps(caps *gst.Caps) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstCaps    // in, full, converted
@@ -2295,14 +1526,8 @@ func (h *Harness) SetSrcCaps(caps *gst.Caps) {
 
 // SetSrcCapsStr wraps gst_harness_set_src_caps_str
 // 
-// The function takes the following parameters:
-// 
-// 	- str string: a @gchar describing a #GstCaps to set on the harness srcpad 
+// see also No documentation available
 //
-// Sets the @GstHarness srcpad caps using a string. This must be done before
-// any buffers can legally be pushed from the harness to the element.
-// 
-// MT safe.
 func (h *Harness) SetSrcCapsStr(str string) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -2318,17 +1543,8 @@ func (h *Harness) SetSrcCapsStr(str string) {
 
 // SetTime wraps gst_harness_set_time
 // 
-// The function takes the following parameters:
-// 
-// 	- time gst.ClockTime: a #GstClockTime to advance the clock to 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Advance the #GstTestClock to a specific time.
-// 
-// MT safe.
 func (h *Harness) SetTime(time gst.ClockTime) bool {
 	var carg0 *C.GstHarness  // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
@@ -2352,11 +1568,8 @@ func (h *Harness) SetTime(time gst.ClockTime) bool {
 
 // SetUpstreamLatency wraps gst_harness_set_upstream_latency
 // 
-// The function takes the following parameters:
-// 
-// 	- latency gst.ClockTime: a #GstClockTime specifying the latency 
+// see also No documentation available
 //
-// Sets the min latency reported by #GstHarness when receiving a latency-query
 func (h *Harness) SetUpstreamLatency(latency gst.ClockTime) {
 	var carg0 *C.GstHarness  // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
@@ -2371,18 +1584,8 @@ func (h *Harness) SetUpstreamLatency(latency gst.ClockTime) {
 
 // SinkPushMany wraps gst_harness_sink_push_many
 // 
-// The function takes the following parameters:
-// 
-// 	- pushes int32: a #gint with the number of calls to gst_harness_push_to_sink 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Convenience that calls gst_harness_push_to_sink @pushes number of times.
-// Will abort the pushing if any one push fails.
-// 
-// MT safe.
 func (h *Harness) SinkPushMany(pushes int32) gst.FlowReturn {
 	var carg0 *C.GstHarness   // in, none, converted
 	var carg1 C.gint          // in, none, casted
@@ -2404,22 +1607,8 @@ func (h *Harness) SinkPushMany(pushes int32) gst.FlowReturn {
 
 // SrcCrankAndPushMany wraps gst_harness_src_crank_and_push_many
 // 
-// The function takes the following parameters:
-// 
-// 	- cranks int32: a #gint with the number of calls to gst_harness_crank_single_clock_wait 
-// 	- pushes int32: a #gint with the number of calls to gst_harness_push 
-// 
-// The function returns the following values:
-// 
-// 	- goret gst.FlowReturn 
+// see also No documentation available
 //
-// Transfer data from the src-#GstHarness to the main-#GstHarness. Similar to
-// gst_harness_push_from_src, this variant allows you to specify how many cranks
-// and how many pushes to perform. This can be useful for both moving a lot
-// of data at the same time, as well as cases when one crank does not equal one
-// buffer to push and v.v.
-// 
-// MT safe.
 func (h *Harness) SrcCrankAndPushMany(cranks int32, pushes int32) gst.FlowReturn {
 	var carg0 *C.GstHarness   // in, none, converted
 	var carg1 C.gint          // in, none, casted
@@ -2444,16 +1633,8 @@ func (h *Harness) SrcCrankAndPushMany(cranks int32, pushes int32) gst.FlowReturn
 
 // SrcPushEvent wraps gst_harness_src_push_event
 // 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Similar to what gst_harness_src_push does with #GstBuffers, this transfers
-// a #GstEvent from the src-#GstHarness to the main-#GstHarness. Note that
-// some #GstEvents are being transferred automagically. Look at sink_forward_pad
-// for details.
-// 
-// MT safe.
 func (h *Harness) SrcPushEvent() bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  C.gboolean    // return
@@ -2474,11 +1655,8 @@ func (h *Harness) SrcPushEvent() bool {
 
 // TakeAllDataAsBuffer wraps gst_harness_take_all_data_as_buffer
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer 
+// see also No documentation available
 //
-// Pulls all pending data from the harness and returns it as a single buffer.
 func (h *Harness) TakeAllDataAsBuffer() *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  *C.GstBuffer  // return, full, converted
@@ -2497,11 +1675,8 @@ func (h *Harness) TakeAllDataAsBuffer() *gst.Buffer {
 
 // TakeAllDataAsBytes wraps gst_harness_take_all_data_as_bytes
 // 
-// The function returns the following values:
-// 
-// 	- goret *glib.Bytes 
+// see also No documentation available
 //
-// Pulls all pending data from the harness and returns it as a single #GBytes.
 func (h *Harness) TakeAllDataAsBytes() *glib.Bytes {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  *C.GBytes     // return, full, converted
@@ -2519,10 +1694,9 @@ func (h *Harness) TakeAllDataAsBytes() *glib.Bytes {
 }
 
 // Teardown wraps gst_harness_teardown
-//
-// Tears down a @GstHarness, freeing all resources allocated using it.
 // 
-// MT safe.
+// see also No documentation available
+//
 func (h *Harness) Teardown() {
 	var carg0 *C.GstHarness // in, none, converted
 
@@ -2534,15 +1708,8 @@ func (h *Harness) Teardown() {
 
 // TryPull wraps gst_harness_try_pull
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Buffer (nullable) 
+// see also No documentation available
 //
-// Pulls a #GstBuffer from the #GAsyncQueue on the #GstHarness sinkpad. Unlike
-// gst_harness_pull this will not wait for any buffers if not any are present,
-// and return %NULL straight away.
-// 
-// MT safe.
 func (h *Harness) TryPull() *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  *C.GstBuffer  // return, full, converted, nullable
@@ -2563,14 +1730,8 @@ func (h *Harness) TryPull() *gst.Buffer {
 
 // TryPullEvent wraps gst_harness_try_pull_event
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event (nullable) 
+// see also No documentation available
 //
-// Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness sinkpad.
-// See gst_harness_try_pull for details.
-// 
-// MT safe.
 func (h *Harness) TryPullEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  *C.GstEvent   // return, full, converted, nullable
@@ -2591,14 +1752,8 @@ func (h *Harness) TryPullEvent() *gst.Event {
 
 // TryPullUpstreamEvent wraps gst_harness_try_pull_upstream_event
 // 
-// The function returns the following values:
-// 
-// 	- goret *gst.Event (nullable) 
+// see also No documentation available
 //
-// Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness srcpad.
-// See gst_harness_try_pull for details.
-// 
-// MT safe.
 func (h *Harness) TryPullUpstreamEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  *C.GstEvent   // return, full, converted, nullable
@@ -2619,13 +1774,8 @@ func (h *Harness) TryPullUpstreamEvent() *gst.Event {
 
 // UpstreamEventsInQueue wraps gst_harness_upstream_events_in_queue
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// The number of #GstEvents currently in the #GstHarness srcpad #GAsyncQueue
-// 
-// MT safe.
 func (h *Harness) UpstreamEventsInQueue() uint {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  C.guint       // return, none, casted
@@ -2644,15 +1794,8 @@ func (h *Harness) UpstreamEventsInQueue() uint {
 
 // UpstreamEventsReceived wraps gst_harness_upstream_events_received
 // 
-// The function returns the following values:
-// 
-// 	- goret uint 
+// see also No documentation available
 //
-// The total number of #GstEvents that has arrived on the #GstHarness srcpad
-// This number includes events handled by the harness as well as events
-// that have already been pulled out.
-// 
-// MT safe.
 func (h *Harness) UpstreamEventsReceived() uint {
 	var carg0 *C.GstHarness // in, none, converted
 	var cret  C.guint       // return, none, casted
@@ -2670,10 +1813,9 @@ func (h *Harness) UpstreamEventsReceived() uint {
 }
 
 // UseSystemclock wraps gst_harness_use_systemclock
-//
-// Sets the system #GstClock on the @GstHarness #GstElement
 // 
-// MT safe.
+// see also No documentation available
+//
 func (h *Harness) UseSystemclock() {
 	var carg0 *C.GstHarness // in, none, converted
 
@@ -2684,10 +1826,9 @@ func (h *Harness) UseSystemclock() {
 }
 
 // UseTestclock wraps gst_harness_use_testclock
-//
-// Sets the #GstTestClock on the #GstHarness #GstElement
 // 
-// MT safe.
+// see also No documentation available
+//
 func (h *Harness) UseTestclock() {
 	var carg0 *C.GstHarness // in, none, converted
 
@@ -2699,22 +1840,8 @@ func (h *Harness) UseTestclock() {
 
 // WaitForClockIDWaits wraps gst_harness_wait_for_clock_id_waits
 // 
-// The function takes the following parameters:
-// 
-// 	- waits uint: a #guint describing the numbers of #GstClockID registered with
-// the #GstTestClock 
-// 	- timeout uint: a #guint describing how many seconds to wait for @waits to be true 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
+// see also No documentation available
 //
-// Waits for @timeout seconds until @waits number of #GstClockID waits is
-// registered with the #GstTestClock. Useful for writing deterministic tests,
-// where you want to make sure that an expected number of waits have been
-// reached.
-// 
-// MT safe.
 func (h *Harness) WaitForClockIDWaits(waits uint, timeout uint) bool {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 C.guint       // in, none, casted
@@ -2740,8 +1867,9 @@ func (h *Harness) WaitForClockIDWaits(waits uint, timeout uint) bool {
 }
 
 // HarnessThread wraps GstHarnessThread
+// 
+// see also No documentation available
 //
-// Opaque handle representing a GstHarness stress testing thread.
 type HarnessThread struct {
 	*harnessThread
 }
@@ -2821,8 +1949,9 @@ func UnsafeHarnessThreadToGlibFull(h *HarnessThread) unsafe.Pointer {
 }
 
 // StreamConsistency wraps GstStreamConsistency
+// 
+// see also No documentation available
 //
-// Opaque consistency checker handle.
 type StreamConsistency struct {
 	*streamConsistency
 }
@@ -2902,8 +2031,9 @@ func UnsafeStreamConsistencyToGlibFull(s *StreamConsistency) unsafe.Pointer {
 }
 
 // TestClockClass wraps GstTestClockClass
+// 
+// see also No documentation available
 //
-// The class of a #GstTestClock, which has no virtual methods to override.
 // 
 // TestClockClass is the type struct for [TestClock]
 type TestClockClass struct {
