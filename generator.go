@@ -181,6 +181,27 @@ var Data = genmain.Data{
 					// ParamSpec subclass colliding with constructor:
 					typesystem.IgnoreMatching("ParamSpecArray"),
 					typesystem.IgnoreMatching("ParamSpecFraction"),
+
+					// Workaround: some symbols are missing the Since 1.28 annotation:
+					typesystem.IgnoreMatching("MetaFactoryClass"),
+					typesystem.IgnoreMatching("BufferList.is_writable"),
+					typesystem.IgnoreMatching("BufferList.make_writable"),
+					typesystem.IgnoreMatching("Caps.is_writable"),
+					typesystem.IgnoreMatching("Caps.make_writable"),
+					typesystem.IgnoreMatching("Context.is_writable"),
+					typesystem.IgnoreMatching("Context.make_writable"),
+					typesystem.IgnoreMatching("Event.is_writable"),
+					typesystem.IgnoreMatching("Event.make_writable"),
+					typesystem.IgnoreMatching("Memory.is_writable"),
+					typesystem.IgnoreMatching("Memory.make_writable"),
+					typesystem.IgnoreMatching("Message.is_writable"),
+					typesystem.IgnoreMatching("Message.make_writable"),
+					typesystem.IgnoreMatching("Query.is_writable"),
+					typesystem.IgnoreMatching("Query.make_writable"),
+					typesystem.IgnoreMatching("Sample.is_writable"),
+					typesystem.IgnoreMatching("Sample.make_writable"),
+					typesystem.IgnoreMatching("TagList.is_writable"),
+					typesystem.IgnoreMatching("TagList.make_writable"),
 				},
 			},
 			"GstApp-1": {
