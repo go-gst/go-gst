@@ -11,9 +11,6 @@ import (
 import "C"
 
 // VideoFormatGetPalette wraps gst_video_format_get_palette
-//
-// Get the default palette of @format. This the palette used in the pack
-// function for paletted formats.
 func VideoFormatGetPalette(format VideoFormat) []color.Color {
 	var size C.gsize
 	ptr := C.gst_video_format_get_palette(C.GstVideoFormat(format), &size)

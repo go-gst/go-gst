@@ -16,16 +16,6 @@ import (
 import "C"
 
 // NewMessagePropertyNotify wraps gst_message_new_property_notify
-//
-// The function takes the following parameters:
-//
-//   - src Object: The #GstObject whose property changed (may or may not be a #GstElement)
-//   - propertyName string: name of the property that changed
-//   - val any (nullable): new property value, or %NULL
-//
-// The function returns the following values:
-//
-//   - goret *Message
 func NewMessagePropertyNotify(src Object, propertyName string, val any) *Message {
 	var carg1 *C.GstObject // in, none, converted
 	var carg2 *C.gchar     // in, none, string, casted *C.gchar
@@ -52,20 +42,6 @@ func NewMessagePropertyNotify(src Object, propertyName string, val any) *Message
 }
 
 // ParsePropertyNotify wraps gst_message_parse_property_notify
-// The function returns the following values:
-//
-//   - object Object: location where to store a
-//     pointer to the object whose property got changed, or %NULL
-//   - propertyName string: return location for
-//     the name of the property that got changed, or %NULL
-//   - propertyValue *gobject.Value (nullable): return location for
-//     the new value of the property that got changed, or %NULL. This will
-//     only be set if the property notify watch was told to include the value
-//     when it was set up
-//
-// Parses a property-notify message. These will be posted on the bus only
-// when set up with gst_element_add_property_notify_watch() or
-// gst_element_add_property_deep_notify_watch().
 func (message *Message) ParsePropertyNotify() (Object, string, any) {
 	var carg0 *C.GstMessage // in, none, converted
 	var carg1 *C.GstObject  // out, none, converted
@@ -91,11 +67,6 @@ func (message *Message) ParsePropertyNotify() (Object, string, any) {
 }
 
 // GetStreamStatusObject wraps gst_message_get_stream_status_object
-// The function returns the following values:
-//
-//   - goret *gobject.Value
-//
-// Extracts the object managing the streaming thread from @message.
 func (message *Message) GetStreamStatusObject() any {
 	var carg0 *C.GstMessage // in, none, converted
 	var cret *C.GValue      // return, none, converted
@@ -323,8 +294,7 @@ func (m *Message) String() string {
 	return msg
 }
 
-// Create a new error message. The message will copy error and debug. This message is posted by element when a fatal event occurred.
-// The pipeline will probably (partially) stop. The application receiving this message should stop the pipeline.
+// NewMessageError wraps gst_message_new_error_with_details
 func NewMessageError(src Object, debug string, err error) *Message {
 	// must be manually implemented because we need to convert error to GError
 

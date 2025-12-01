@@ -13,18 +13,6 @@ import (
 import "C"
 
 // ElementFactoryInstanceMakeWithProperties wraps gst_element_factory_make_with_properties
-//
-// The function takes the following parameters:
-//
-//   - factoryname string: a named factory to instantiate
-//   - properties map[string]any: a map of properties to set on the element
-//
-// The function returns the following values:
-//
-//   - goret Element
-//
-// Create a new element of the type defined by the given elementfactory.
-// The supplied list of properties, will be passed at object construction.
 func ElementFactoryMakeWithProperties(factoryname string, properties map[string]any) Element {
 	var cname *C.gchar      // out
 	var _cret *C.GstElement // in

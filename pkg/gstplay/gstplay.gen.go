@@ -58,29 +58,25 @@ func init() {
 
 // PlayColorBalanceType wraps GstPlayColorBalanceType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play#GstPlayColorBalanceType
 type PlayColorBalanceType C.int
 
 const (
 	// PlayColorBalanceHue wraps GST_PLAY_COLOR_BALANCE_HUE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_COLOR_BALANCE_HUE
 	PlayColorBalanceHue PlayColorBalanceType = 3
 	// PlayColorBalanceBrightness wraps GST_PLAY_COLOR_BALANCE_BRIGHTNESS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_COLOR_BALANCE_BRIGHTNESS
 	PlayColorBalanceBrightness PlayColorBalanceType = 0
 	// PlayColorBalanceSaturation wraps GST_PLAY_COLOR_BALANCE_SATURATION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_COLOR_BALANCE_SATURATION
 	PlayColorBalanceSaturation PlayColorBalanceType = 2
 	// PlayColorBalanceContrast wraps GST_PLAY_COLOR_BALANCE_CONTRAST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_COLOR_BALANCE_CONTRAST
 	PlayColorBalanceContrast PlayColorBalanceType = 1
 )
 
@@ -110,8 +106,7 @@ func (e PlayColorBalanceType) String() string {
 
 // PlayColorBalanceTypeGetName wraps gst_play_color_balance_type_get_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_color_balance_type_get_name
 func PlayColorBalanceTypeGetName(typ PlayColorBalanceType) string {
 	var carg1 C.GstPlayColorBalanceType // in, none, casted
 	var cret  *C.gchar                  // return, none, string
@@ -130,14 +125,13 @@ func PlayColorBalanceTypeGetName(typ PlayColorBalanceType) string {
 
 // PlayError wraps GstPlayError
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play#GstPlayError
 type PlayError C.int
 
 const (
 	// PlayErrorFailed wraps GST_PLAY_ERROR_FAILED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_ERROR_FAILED
 	PlayErrorFailed PlayError = 0
 )
 
@@ -164,8 +158,7 @@ func (e PlayError) String() string {
 
 // PlayErrorGetName wraps gst_play_error_get_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_error_get_name
 func PlayErrorGetName(err PlayError) string {
 	var carg1 C.GstPlayError // in, none, casted
 	var cret  *C.gchar       // return, none, string
@@ -184,7 +177,7 @@ func PlayErrorGetName(err PlayError) string {
 
 // PlayErrorQuark wraps gst_play_error_quark
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_error_quark
 func PlayErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -199,74 +192,61 @@ func PlayErrorQuark() glib.Quark {
 
 // PlayMessage wraps GstPlayMessage
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play#GstPlayMessage
 type PlayMessage C.int
 
 const (
 	// PlayMessageURILoaded wraps GST_PLAY_MESSAGE_URI_LOADED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_URI_LOADED
 	PlayMessageURILoaded PlayMessage = 0
 	// PlayMessagePositionUpdated wraps GST_PLAY_MESSAGE_POSITION_UPDATED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_POSITION_UPDATED
 	PlayMessagePositionUpdated PlayMessage = 1
 	// PlayMessageDurationChanged wraps GST_PLAY_MESSAGE_DURATION_CHANGED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_DURATION_CHANGED
 	PlayMessageDurationChanged PlayMessage = 2
 	// PlayMessageStateChanged wraps GST_PLAY_MESSAGE_STATE_CHANGED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_STATE_CHANGED
 	PlayMessageStateChanged PlayMessage = 3
 	// PlayMessageBuffering wraps GST_PLAY_MESSAGE_BUFFERING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_BUFFERING
 	PlayMessageBuffering PlayMessage = 4
 	// PlayMessageEndOfStream wraps GST_PLAY_MESSAGE_END_OF_STREAM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_END_OF_STREAM
 	PlayMessageEndOfStream PlayMessage = 5
 	// PlayMessageError wraps GST_PLAY_MESSAGE_ERROR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_ERROR
 	PlayMessageError PlayMessage = 6
 	// PlayMessageWarning wraps GST_PLAY_MESSAGE_WARNING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_WARNING
 	PlayMessageWarning PlayMessage = 7
 	// PlayMessageVideoDimensionsChanged wraps GST_PLAY_MESSAGE_VIDEO_DIMENSIONS_CHANGED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_VIDEO_DIMENSIONS_CHANGED
 	PlayMessageVideoDimensionsChanged PlayMessage = 8
 	// PlayMessageMediaInfoUpdated wraps GST_PLAY_MESSAGE_MEDIA_INFO_UPDATED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_MEDIA_INFO_UPDATED
 	PlayMessageMediaInfoUpdated PlayMessage = 9
 	// PlayMessageVolumeChanged wraps GST_PLAY_MESSAGE_VOLUME_CHANGED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_VOLUME_CHANGED
 	PlayMessageVolumeChanged PlayMessage = 10
 	// PlayMessageMuteChanged wraps GST_PLAY_MESSAGE_MUTE_CHANGED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_MUTE_CHANGED
 	PlayMessageMuteChanged PlayMessage = 11
 	// PlayMessageSeekDone wraps GST_PLAY_MESSAGE_SEEK_DONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_SEEK_DONE
 	PlayMessageSeekDone PlayMessage = 12
 )
 
@@ -305,7 +285,7 @@ func (e PlayMessage) String() string {
 
 // PlayMessageGetName wraps gst_play_message_get_name
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_get_name
 func PlayMessageGetName(messageType PlayMessage) string {
 	var carg1 C.GstPlayMessage // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -324,8 +304,7 @@ func PlayMessageGetName(messageType PlayMessage) string {
 
 // PlayMessageGetStreamID wraps gst_play_message_get_stream_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_get_stream_id
 func PlayMessageGetStreamID(msg *gst.Message) string {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  *C.gchar      // return, none, string, nullable-string
@@ -346,8 +325,7 @@ func PlayMessageGetStreamID(msg *gst.Message) string {
 
 // PlayMessageGetURI wraps gst_play_message_get_uri
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_get_uri
 func PlayMessageGetURI(msg *gst.Message) string {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  *C.gchar      // return, none, string
@@ -366,8 +344,7 @@ func PlayMessageGetURI(msg *gst.Message) string {
 
 // PlayMessageParseBuffering wraps gst_play_message_parse_buffering
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_buffering
 func PlayMessageParseBuffering(msg *gst.Message) uint {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.guint       // out, full, casted
@@ -386,10 +363,9 @@ func PlayMessageParseBuffering(msg *gst.Message) uint {
 
 // PlayMessageParseBufferingPercent wraps gst_play_message_parse_buffering_percent
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_buffering_percent
 //
-//
-// Deprecated: (since 1.26.0) Use gst_play_message_parse_buffering().
+// Deprecated: (since 1.26.0) see the provided link for the reason
 func PlayMessageParseBufferingPercent(msg *gst.Message) uint {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.guint       // out, full, casted
@@ -408,8 +384,7 @@ func PlayMessageParseBufferingPercent(msg *gst.Message) uint {
 
 // PlayMessageParseDurationChanged wraps gst_play_message_parse_duration_changed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_duration_changed
 func PlayMessageParseDurationChanged(msg *gst.Message) gst.ClockTime {
 	var carg1 *C.GstMessage  // in, none, converted
 	var carg2 C.GstClockTime // out, full, casted, alias
@@ -428,10 +403,9 @@ func PlayMessageParseDurationChanged(msg *gst.Message) gst.ClockTime {
 
 // PlayMessageParseDurationUpdated wraps gst_play_message_parse_duration_updated
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_duration_updated
 //
-//
-// Deprecated: (since 1.26.0) Use gst_play_message_parse_duration_changed().
+// Deprecated: (since 1.26.0) see the provided link for the reason
 func PlayMessageParseDurationUpdated(msg *gst.Message) gst.ClockTime {
 	var carg1 *C.GstMessage  // in, none, converted
 	var carg2 C.GstClockTime // out, full, casted, alias
@@ -450,8 +424,7 @@ func PlayMessageParseDurationUpdated(msg *gst.Message) gst.ClockTime {
 
 // PlayMessageParseError wraps gst_play_message_parse_error
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_error
 func PlayMessageParseError(msg *gst.Message) (*gst.Structure, error) {
 	var carg1 *C.GstMessage   // in, none, converted
 	var carg3 *C.GstStructure // out, full, converted, nullable
@@ -475,8 +448,7 @@ func PlayMessageParseError(msg *gst.Message) (*gst.Structure, error) {
 
 // PlayMessageParseMediaInfoUpdated wraps gst_play_message_parse_media_info_updated
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_media_info_updated
 func PlayMessageParseMediaInfoUpdated(msg *gst.Message) PlayMediaInfo {
 	var carg1 *C.GstMessage       // in, none, converted
 	var carg2 *C.GstPlayMediaInfo // out, full, converted
@@ -495,8 +467,7 @@ func PlayMessageParseMediaInfoUpdated(msg *gst.Message) PlayMediaInfo {
 
 // PlayMessageParseMutedChanged wraps gst_play_message_parse_muted_changed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_muted_changed
 func PlayMessageParseMutedChanged(msg *gst.Message) bool {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.gboolean    // out
@@ -517,8 +488,7 @@ func PlayMessageParseMutedChanged(msg *gst.Message) bool {
 
 // PlayMessageParsePositionUpdated wraps gst_play_message_parse_position_updated
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_position_updated
 func PlayMessageParsePositionUpdated(msg *gst.Message) gst.ClockTime {
 	var carg1 *C.GstMessage  // in, none, converted
 	var carg2 C.GstClockTime // out, full, casted, alias
@@ -537,8 +507,7 @@ func PlayMessageParsePositionUpdated(msg *gst.Message) gst.ClockTime {
 
 // PlayMessageParseSeekDone wraps gst_play_message_parse_seek_done
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_seek_done
 func PlayMessageParseSeekDone(msg *gst.Message) gst.ClockTime {
 	var carg1 *C.GstMessage  // in, none, converted
 	var carg2 C.GstClockTime // out, full, casted, alias
@@ -557,8 +526,7 @@ func PlayMessageParseSeekDone(msg *gst.Message) gst.ClockTime {
 
 // PlayMessageParseStateChanged wraps gst_play_message_parse_state_changed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_state_changed
 func PlayMessageParseStateChanged(msg *gst.Message) PlayState {
 	var carg1 *C.GstMessage  // in, none, converted
 	var carg2 C.GstPlayState // out, full, casted
@@ -577,8 +545,7 @@ func PlayMessageParseStateChanged(msg *gst.Message) PlayState {
 
 // PlayMessageParseType wraps gst_play_message_parse_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_type
 func PlayMessageParseType(msg *gst.Message) PlayMessage {
 	var carg1 *C.GstMessage    // in, none, converted
 	var carg2 C.GstPlayMessage // out, full, casted
@@ -597,8 +564,7 @@ func PlayMessageParseType(msg *gst.Message) PlayMessage {
 
 // PlayMessageParseURILoaded wraps gst_play_message_parse_uri_loaded
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_uri_loaded
 func PlayMessageParseURILoaded(msg *gst.Message) string {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 *C.gchar      // out, full, string
@@ -618,8 +584,7 @@ func PlayMessageParseURILoaded(msg *gst.Message) string {
 
 // PlayMessageParseVideoDimensionsChanged wraps gst_play_message_parse_video_dimensions_changed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_video_dimensions_changed
 func PlayMessageParseVideoDimensionsChanged(msg *gst.Message) (uint, uint) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.guint       // out, full, casted
@@ -641,8 +606,7 @@ func PlayMessageParseVideoDimensionsChanged(msg *gst.Message) (uint, uint) {
 
 // PlayMessageParseVolumeChanged wraps gst_play_message_parse_volume_changed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_volume_changed
 func PlayMessageParseVolumeChanged(msg *gst.Message) float64 {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.gdouble     // out, full, casted
@@ -661,8 +625,7 @@ func PlayMessageParseVolumeChanged(msg *gst.Message) float64 {
 
 // PlayMessageParseWarning wraps gst_play_message_parse_warning
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_warning
 func PlayMessageParseWarning(msg *gst.Message) (*gst.Structure, error) {
 	var carg1 *C.GstMessage   // in, none, converted
 	var carg3 *C.GstStructure // out, full, converted, nullable
@@ -686,34 +649,29 @@ func PlayMessageParseWarning(msg *gst.Message) (*gst.Structure, error) {
 
 // PlaySnapshotFormat wraps GstPlaySnapshotFormat
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GstPlaySnapshotFormat
 type PlaySnapshotFormat C.int
 
 const (
 	// PlayThumbnailRawNative wraps GST_PLAY_THUMBNAIL_RAW_NATIVE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_RAW_NATIVE
 	PlayThumbnailRawNative PlaySnapshotFormat = 0
 	// PlayThumbnailRawXrgb wraps GST_PLAY_THUMBNAIL_RAW_xRGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_RAW_xRGB
 	PlayThumbnailRawXrgb PlaySnapshotFormat = 1
 	// PlayThumbnailRawBgrx wraps GST_PLAY_THUMBNAIL_RAW_BGRx
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_RAW_BGRx
 	PlayThumbnailRawBgrx PlaySnapshotFormat = 2
 	// PlayThumbnailJpg wraps GST_PLAY_THUMBNAIL_JPG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_JPG
 	PlayThumbnailJpg PlaySnapshotFormat = 3
 	// PlayThumbnailPng wraps GST_PLAY_THUMBNAIL_PNG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_PNG
 	PlayThumbnailPng PlaySnapshotFormat = 4
 )
 
@@ -731,29 +689,25 @@ func (e PlaySnapshotFormat) String() string {
 
 // PlayState wraps GstPlayState
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play#GstPlayState
 type PlayState C.int
 
 const (
 	// PlayStateStopped wraps GST_PLAY_STATE_STOPPED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_STATE_STOPPED
 	PlayStateStopped PlayState = 0
 	// PlayStateBuffering wraps GST_PLAY_STATE_BUFFERING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_STATE_BUFFERING
 	PlayStateBuffering PlayState = 1
 	// PlayStatePaused wraps GST_PLAY_STATE_PAUSED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_STATE_PAUSED
 	PlayStatePaused PlayState = 2
 	// PlayStatePlaying wraps GST_PLAY_STATE_PLAYING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_STATE_PLAYING
 	PlayStatePlaying PlayState = 3
 )
 
@@ -783,8 +737,7 @@ func (e PlayState) String() string {
 
 // PlayStateGetName wraps gst_play_state_get_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_state_get_name
 func PlayStateGetName(state PlayState) string {
 	var carg1 C.GstPlayState // in, none, casted
 	var cret  *C.gchar       // return, none, string
@@ -811,7 +764,7 @@ var _ PlayVideoRenderer = (*PlayVideoRendererInstance)(nil)
 
 // PlayVideoRenderer wraps GstPlayVideoRenderer
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-renderer.html#GstPlayVideoRenderer
 type PlayVideoRenderer interface {
 	upcastToGstPlayVideoRenderer() *PlayVideoRendererInstance
 }
@@ -869,252 +822,212 @@ var _ Play = (*PlayInstance)(nil)
 
 // Play wraps GstPlay
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#GstPlay
 type Play interface {
 	gst.Object
 	upcastToGstPlay() *PlayInstance
 
 	// GetAudioVideoOffset wraps gst_play_get_audio_video_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_audio_video_offset
 	GetAudioVideoOffset() int64
 	// GetColorBalance wraps gst_play_get_color_balance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_color_balance
 	GetColorBalance(PlayColorBalanceType) float64
 	// GetConfig wraps gst_play_get_config
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_config
 	GetConfig() *gst.Structure
 	// GetCurrentAudioTrack wraps gst_play_get_current_audio_track
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_current_audio_track
 	GetCurrentAudioTrack() PlayAudioInfo
 	// GetCurrentSubtitleTrack wraps gst_play_get_current_subtitle_track
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_current_subtitle_track
 	GetCurrentSubtitleTrack() PlaySubtitleInfo
 	// GetCurrentVideoTrack wraps gst_play_get_current_video_track
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_current_video_track
 	GetCurrentVideoTrack() PlayVideoInfo
 	// GetCurrentVisualization wraps gst_play_get_current_visualization
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_current_visualization
 	GetCurrentVisualization() string
 	// GetDuration wraps gst_play_get_duration
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_duration
 	GetDuration() gst.ClockTime
 	// GetMediaInfo wraps gst_play_get_media_info
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_media_info
 	GetMediaInfo() PlayMediaInfo
 	// GetMessageBus wraps gst_play_get_message_bus
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_message_bus
 	GetMessageBus() gst.Bus
 	// GetMultiviewFlags wraps gst_play_get_multiview_flags
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_multiview_flags
 	GetMultiviewFlags() gstvideo.VideoMultiviewFlags
 	// GetMultiviewMode wraps gst_play_get_multiview_mode
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_multiview_mode
 	GetMultiviewMode() gstvideo.VideoMultiviewFramePacking
 	// GetMute wraps gst_play_get_mute
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_mute
 	GetMute() bool
 	// GetPipeline wraps gst_play_get_pipeline
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_pipeline
 	GetPipeline() gst.Element
 	// GetPosition wraps gst_play_get_position
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_position
 	GetPosition() gst.ClockTime
 	// GetRate wraps gst_play_get_rate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_rate
 	GetRate() float64
 	// GetSubtitleURI wraps gst_play_get_subtitle_uri
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_subtitle_uri
 	GetSubtitleURI() string
 	// GetSubtitleVideoOffset wraps gst_play_get_subtitle_video_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_subtitle_video_offset
 	GetSubtitleVideoOffset() int64
 	// GetURI wraps gst_play_get_uri
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_uri
 	GetURI() string
 	// GetVideoSnapshot wraps gst_play_get_video_snapshot
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_video_snapshot
 	GetVideoSnapshot(PlaySnapshotFormat, *gst.Structure) *gst.Sample
 	// GetVolume wraps gst_play_get_volume
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_volume
 	GetVolume() float64
 	// HasColorBalance wraps gst_play_has_color_balance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_has_color_balance
 	HasColorBalance() bool
 	// Pause wraps gst_play_pause
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_pause
 	Pause()
 	// Play wraps gst_play_play
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_play
 	Play()
 	// Seek wraps gst_play_seek
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_seek
 	Seek(gst.ClockTime)
 	// SetAudioTrack wraps gst_play_set_audio_track
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track
 	//
-	//
-	// Deprecated: (since 1.26.0) Use gst_play_set_audio_track_id() instead.
+	// Deprecated: (since 1.26.0) see the provided link for the reason
 	SetAudioTrack(int32) bool
 	// SetAudioTrackEnabled wraps gst_play_set_audio_track_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track_enabled
 	SetAudioTrackEnabled(bool)
 	// SetAudioTrackID wraps gst_play_set_audio_track_id
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track_id
 	SetAudioTrackID(string) bool
 	// SetAudioVideoOffset wraps gst_play_set_audio_video_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_video_offset
 	SetAudioVideoOffset(int64)
 	// SetColorBalance wraps gst_play_set_color_balance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_color_balance
 	SetColorBalance(PlayColorBalanceType, float64)
 	// SetConfig wraps gst_play_set_config
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_config
 	SetConfig(*gst.Structure) bool
 	// SetMultiviewFlags wraps gst_play_set_multiview_flags
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_multiview_flags
 	SetMultiviewFlags(gstvideo.VideoMultiviewFlags)
 	// SetMultiviewMode wraps gst_play_set_multiview_mode
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_multiview_mode
 	SetMultiviewMode(gstvideo.VideoMultiviewFramePacking)
 	// SetMute wraps gst_play_set_mute
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_mute
 	SetMute(bool)
 	// SetRate wraps gst_play_set_rate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_rate
 	SetRate(float64)
 	// SetSubtitleTrack wraps gst_play_set_subtitle_track
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track
 	//
-	//
-	// Deprecated: (since 1.26.0) Use gst_play_set_subtitle_track_id() instead.
+	// Deprecated: (since 1.26.0) see the provided link for the reason
 	SetSubtitleTrack(int32) bool
 	// SetSubtitleTrackEnabled wraps gst_play_set_subtitle_track_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track_enabled
 	SetSubtitleTrackEnabled(bool)
 	// SetSubtitleTrackID wraps gst_play_set_subtitle_track_id
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track_id
 	SetSubtitleTrackID(string) bool
 	// SetSubtitleURI wraps gst_play_set_subtitle_uri
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_uri
 	SetSubtitleURI(string)
 	// SetSubtitleVideoOffset wraps gst_play_set_subtitle_video_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_video_offset
 	SetSubtitleVideoOffset(int64)
 	// SetTrackIDs wraps gst_play_set_track_ids
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_track_ids
 	SetTrackIDs(string, string, string) bool
 	// SetURI wraps gst_play_set_uri
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_uri
 	SetURI(string)
 	// SetVideoTrack wraps gst_play_set_video_track
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_video_track
 	//
-	//
-	// Deprecated: (since 1.26.0) Use gst_play_set_video_track_id() instead.
+	// Deprecated: (since 1.26.0) see the provided link for the reason
 	SetVideoTrack(int32) bool
 	// SetVideoTrackEnabled wraps gst_play_set_video_track_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_video_track_enabled
 	SetVideoTrackEnabled(bool)
 	// SetVideoTrackID wraps gst_play_set_video_track_id
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_video_track_id
 	SetVideoTrackID(string) bool
 	// SetVisualization wraps gst_play_set_visualization
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_visualization
 	SetVisualization(string) bool
 	// SetVisualizationEnabled wraps gst_play_set_visualization_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_visualization_enabled
 	SetVisualizationEnabled(bool)
 	// SetVolume wraps gst_play_set_volume
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_volume
 	SetVolume(float64)
 	// Stop wraps gst_play_stop
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_stop
 	Stop()
 }
 
@@ -1172,8 +1085,7 @@ func UnsafePlayToGlibFull(c Play) unsafe.Pointer {
 
 // NewPlay wraps gst_play_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_new
 func NewPlay(videoRenderer PlayVideoRenderer) Play {
 	var carg1 *C.GstPlayVideoRenderer // in, full, converted, nullable
 	var cret  *C.GstPlay              // return, full, converted
@@ -1194,7 +1106,7 @@ func NewPlay(videoRenderer PlayVideoRenderer) Play {
 
 // PlayConfigGetPipelineDumpInErrorDetails wraps gst_play_config_get_pipeline_dump_in_error_details
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_config_get_pipeline_dump_in_error_details
 func PlayConfigGetPipelineDumpInErrorDetails(config *gst.Structure) bool {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.gboolean      // return
@@ -1215,7 +1127,7 @@ func PlayConfigGetPipelineDumpInErrorDetails(config *gst.Structure) bool {
 
 // PlayConfigGetPositionUpdateInterval wraps gst_play_config_get_position_update_interval
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_config_get_position_update_interval
 func PlayConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -1234,7 +1146,7 @@ func PlayConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 
 // PlayConfigGetSeekAccurate wraps gst_play_config_get_seek_accurate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_config_get_seek_accurate
 func PlayConfigGetSeekAccurate(config *gst.Structure) bool {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.gboolean      // return
@@ -1255,8 +1167,7 @@ func PlayConfigGetSeekAccurate(config *gst.Structure) bool {
 
 // PlayConfigGetUserAgent wraps gst_play_config_get_user_agent
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_config_get_user_agent
 func PlayConfigGetUserAgent(config *gst.Structure) string {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  *C.gchar        // return, full, string, nullable-string
@@ -1278,8 +1189,7 @@ func PlayConfigGetUserAgent(config *gst.Structure) string {
 
 // PlayConfigSetPipelineDumpInErrorDetails wraps gst_play_config_set_pipeline_dump_in_error_details
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_config_set_pipeline_dump_in_error_details
 func PlayConfigSetPipelineDumpInErrorDetails(config *gst.Structure, value bool) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.gboolean      // in
@@ -1296,8 +1206,7 @@ func PlayConfigSetPipelineDumpInErrorDetails(config *gst.Structure, value bool) 
 
 // PlayConfigSetPositionUpdateInterval wraps gst_play_config_set_position_update_interval
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_config_set_position_update_interval
 func PlayConfigSetPositionUpdateInterval(config *gst.Structure, interval uint) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -1312,8 +1221,7 @@ func PlayConfigSetPositionUpdateInterval(config *gst.Structure, interval uint) {
 
 // PlayConfigSetSeekAccurate wraps gst_play_config_set_seek_accurate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_config_set_seek_accurate
 func PlayConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.gboolean      // in
@@ -1330,8 +1238,7 @@ func PlayConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 
 // PlayConfigSetUserAgent wraps gst_play_config_set_user_agent
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_config_set_user_agent
 func PlayConfigSetUserAgent(config *gst.Structure, agent string) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 *C.gchar        // in, none, string, nullable-string
@@ -1349,7 +1256,7 @@ func PlayConfigSetUserAgent(config *gst.Structure, agent string) {
 
 // PlayGetAudioStreams wraps gst_play_get_audio_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_audio_streams
 func PlayGetAudioStreams(info PlayMediaInfo) []PlayAudioInfo {
 	var carg1 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.GList            // container, transfer: none
@@ -1375,7 +1282,7 @@ func PlayGetAudioStreams(info PlayMediaInfo) []PlayAudioInfo {
 
 // PlayGetSubtitleStreams wraps gst_play_get_subtitle_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_subtitle_streams
 func PlayGetSubtitleStreams(info PlayMediaInfo) []PlaySubtitleInfo {
 	var carg1 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.GList            // container, transfer: none
@@ -1401,7 +1308,7 @@ func PlayGetSubtitleStreams(info PlayMediaInfo) []PlaySubtitleInfo {
 
 // PlayGetVideoStreams wraps gst_play_get_video_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_video_streams
 func PlayGetVideoStreams(info PlayMediaInfo) []PlayVideoInfo {
 	var carg1 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.GList            // container, transfer: none
@@ -1427,7 +1334,7 @@ func PlayGetVideoStreams(info PlayMediaInfo) []PlayVideoInfo {
 
 // PlayIsPlayMessage wraps gst_play_is_play_message
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_is_play_message
 func PlayIsPlayMessage(msg *gst.Message) bool {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  C.gboolean    // return
@@ -1448,8 +1355,7 @@ func PlayIsPlayMessage(msg *gst.Message) bool {
 
 // GetAudioVideoOffset wraps gst_play_get_audio_video_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_audio_video_offset
 func (play *PlayInstance) GetAudioVideoOffset() int64 {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  C.gint64   // return, none, casted
@@ -1468,8 +1374,7 @@ func (play *PlayInstance) GetAudioVideoOffset() int64 {
 
 // GetColorBalance wraps gst_play_get_color_balance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_color_balance
 func (play *PlayInstance) GetColorBalance(typ PlayColorBalanceType) float64 {
 	var carg0 *C.GstPlay                // in, none, converted
 	var carg1 C.GstPlayColorBalanceType // in, none, casted
@@ -1491,8 +1396,7 @@ func (play *PlayInstance) GetColorBalance(typ PlayColorBalanceType) float64 {
 
 // GetConfig wraps gst_play_get_config
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_config
 func (play *PlayInstance) GetConfig() *gst.Structure {
 	var carg0 *C.GstPlay      // in, none, converted
 	var cret  *C.GstStructure // return, full, converted
@@ -1511,8 +1415,7 @@ func (play *PlayInstance) GetConfig() *gst.Structure {
 
 // GetCurrentAudioTrack wraps gst_play_get_current_audio_track
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_current_audio_track
 func (play *PlayInstance) GetCurrentAudioTrack() PlayAudioInfo {
 	var carg0 *C.GstPlay          // in, none, converted
 	var cret  *C.GstPlayAudioInfo // return, full, converted, nullable
@@ -1533,8 +1436,7 @@ func (play *PlayInstance) GetCurrentAudioTrack() PlayAudioInfo {
 
 // GetCurrentSubtitleTrack wraps gst_play_get_current_subtitle_track
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_current_subtitle_track
 func (play *PlayInstance) GetCurrentSubtitleTrack() PlaySubtitleInfo {
 	var carg0 *C.GstPlay             // in, none, converted
 	var cret  *C.GstPlaySubtitleInfo // return, full, converted, nullable
@@ -1555,8 +1457,7 @@ func (play *PlayInstance) GetCurrentSubtitleTrack() PlaySubtitleInfo {
 
 // GetCurrentVideoTrack wraps gst_play_get_current_video_track
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_current_video_track
 func (play *PlayInstance) GetCurrentVideoTrack() PlayVideoInfo {
 	var carg0 *C.GstPlay          // in, none, converted
 	var cret  *C.GstPlayVideoInfo // return, full, converted, nullable
@@ -1577,7 +1478,7 @@ func (play *PlayInstance) GetCurrentVideoTrack() PlayVideoInfo {
 
 // GetCurrentVisualization wraps gst_play_get_current_visualization
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_current_visualization
 func (play *PlayInstance) GetCurrentVisualization() string {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  *C.gchar   // return, full, string, nullable-string
@@ -1599,8 +1500,7 @@ func (play *PlayInstance) GetCurrentVisualization() string {
 
 // GetDuration wraps gst_play_get_duration
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_duration
 func (play *PlayInstance) GetDuration() gst.ClockTime {
 	var carg0 *C.GstPlay     // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -1619,8 +1519,7 @@ func (play *PlayInstance) GetDuration() gst.ClockTime {
 
 // GetMediaInfo wraps gst_play_get_media_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_media_info
 func (play *PlayInstance) GetMediaInfo() PlayMediaInfo {
 	var carg0 *C.GstPlay          // in, none, converted
 	var cret  *C.GstPlayMediaInfo // return, full, converted, nullable
@@ -1641,8 +1540,7 @@ func (play *PlayInstance) GetMediaInfo() PlayMediaInfo {
 
 // GetMessageBus wraps gst_play_get_message_bus
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_message_bus
 func (play *PlayInstance) GetMessageBus() gst.Bus {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  *C.GstBus  // return, full, converted
@@ -1661,8 +1559,7 @@ func (play *PlayInstance) GetMessageBus() gst.Bus {
 
 // GetMultiviewFlags wraps gst_play_get_multiview_flags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_multiview_flags
 func (play *PlayInstance) GetMultiviewFlags() gstvideo.VideoMultiviewFlags {
 	var carg0 *C.GstPlay               // in, none, converted
 	var cret  C.GstVideoMultiviewFlags // return, none, casted
@@ -1681,8 +1578,7 @@ func (play *PlayInstance) GetMultiviewFlags() gstvideo.VideoMultiviewFlags {
 
 // GetMultiviewMode wraps gst_play_get_multiview_mode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_multiview_mode
 func (play *PlayInstance) GetMultiviewMode() gstvideo.VideoMultiviewFramePacking {
 	var carg0 *C.GstPlay                      // in, none, converted
 	var cret  C.GstVideoMultiviewFramePacking // return, none, casted
@@ -1701,7 +1597,7 @@ func (play *PlayInstance) GetMultiviewMode() gstvideo.VideoMultiviewFramePacking
 
 // GetMute wraps gst_play_get_mute
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_mute
 func (play *PlayInstance) GetMute() bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  C.gboolean // return
@@ -1722,7 +1618,7 @@ func (play *PlayInstance) GetMute() bool {
 
 // GetPipeline wraps gst_play_get_pipeline
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_pipeline
 func (play *PlayInstance) GetPipeline() gst.Element {
 	var carg0 *C.GstPlay    // in, none, converted
 	var cret  *C.GstElement // return, full, converted
@@ -1741,7 +1637,7 @@ func (play *PlayInstance) GetPipeline() gst.Element {
 
 // GetPosition wraps gst_play_get_position
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_position
 func (play *PlayInstance) GetPosition() gst.ClockTime {
 	var carg0 *C.GstPlay     // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -1760,7 +1656,7 @@ func (play *PlayInstance) GetPosition() gst.ClockTime {
 
 // GetRate wraps gst_play_get_rate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_rate
 func (play *PlayInstance) GetRate() float64 {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  C.gdouble  // return, none, casted
@@ -1779,8 +1675,7 @@ func (play *PlayInstance) GetRate() float64 {
 
 // GetSubtitleURI wraps gst_play_get_subtitle_uri
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_subtitle_uri
 func (play *PlayInstance) GetSubtitleURI() string {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  *C.gchar   // return, full, string, nullable-string
@@ -1802,8 +1697,7 @@ func (play *PlayInstance) GetSubtitleURI() string {
 
 // GetSubtitleVideoOffset wraps gst_play_get_subtitle_video_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_subtitle_video_offset
 func (play *PlayInstance) GetSubtitleVideoOffset() int64 {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  C.gint64   // return, none, casted
@@ -1822,8 +1716,7 @@ func (play *PlayInstance) GetSubtitleVideoOffset() int64 {
 
 // GetURI wraps gst_play_get_uri
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_uri
 func (play *PlayInstance) GetURI() string {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  *C.gchar   // return, full, string, nullable-string
@@ -1845,8 +1738,7 @@ func (play *PlayInstance) GetURI() string {
 
 // GetVideoSnapshot wraps gst_play_get_video_snapshot
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_video_snapshot
 func (play *PlayInstance) GetVideoSnapshot(format PlaySnapshotFormat, config *gst.Structure) *gst.Sample {
 	var carg0 *C.GstPlay              // in, none, converted
 	var carg1 C.GstPlaySnapshotFormat // in, none, casted
@@ -1875,8 +1767,7 @@ func (play *PlayInstance) GetVideoSnapshot(format PlaySnapshotFormat, config *gs
 
 // GetVolume wraps gst_play_get_volume
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_get_volume
 func (play *PlayInstance) GetVolume() float64 {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  C.gdouble  // return, none, casted
@@ -1895,8 +1786,7 @@ func (play *PlayInstance) GetVolume() float64 {
 
 // HasColorBalance wraps gst_play_has_color_balance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_has_color_balance
 func (play *PlayInstance) HasColorBalance() bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var cret  C.gboolean // return
@@ -1917,8 +1807,7 @@ func (play *PlayInstance) HasColorBalance() bool {
 
 // Pause wraps gst_play_pause
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_pause
 func (play *PlayInstance) Pause() {
 	var carg0 *C.GstPlay // in, none, converted
 
@@ -1930,8 +1819,7 @@ func (play *PlayInstance) Pause() {
 
 // Play wraps gst_play_play
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_play
 func (play *PlayInstance) Play() {
 	var carg0 *C.GstPlay // in, none, converted
 
@@ -1943,8 +1831,7 @@ func (play *PlayInstance) Play() {
 
 // Seek wraps gst_play_seek
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_seek
 func (play *PlayInstance) Seek(position gst.ClockTime) {
 	var carg0 *C.GstPlay     // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
@@ -1959,10 +1846,9 @@ func (play *PlayInstance) Seek(position gst.ClockTime) {
 
 // SetAudioTrack wraps gst_play_set_audio_track
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track
 //
-//
-// Deprecated: (since 1.26.0) Use gst_play_set_audio_track_id() instead.
+// Deprecated: (since 1.26.0) see the provided link for the reason
 func (play *PlayInstance) SetAudioTrack(streamIndex int32) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gint     // in, none, casted
@@ -1986,8 +1872,7 @@ func (play *PlayInstance) SetAudioTrack(streamIndex int32) bool {
 
 // SetAudioTrackEnabled wraps gst_play_set_audio_track_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track_enabled
 func (play *PlayInstance) SetAudioTrackEnabled(enabled bool) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gboolean // in
@@ -2004,7 +1889,7 @@ func (play *PlayInstance) SetAudioTrackEnabled(enabled bool) {
 
 // SetAudioTrackID wraps gst_play_set_audio_track_id
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track_id
 func (play *PlayInstance) SetAudioTrackID(streamId string) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 *C.gchar   // in, none, string, nullable-string
@@ -2031,8 +1916,7 @@ func (play *PlayInstance) SetAudioTrackID(streamId string) bool {
 
 // SetAudioVideoOffset wraps gst_play_set_audio_video_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_video_offset
 func (play *PlayInstance) SetAudioVideoOffset(offset int64) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gint64   // in, none, casted
@@ -2047,8 +1931,7 @@ func (play *PlayInstance) SetAudioVideoOffset(offset int64) {
 
 // SetColorBalance wraps gst_play_set_color_balance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_color_balance
 func (play *PlayInstance) SetColorBalance(typ PlayColorBalanceType, value float64) {
 	var carg0 *C.GstPlay                // in, none, converted
 	var carg1 C.GstPlayColorBalanceType // in, none, casted
@@ -2066,8 +1949,7 @@ func (play *PlayInstance) SetColorBalance(typ PlayColorBalanceType, value float6
 
 // SetConfig wraps gst_play_set_config
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_config
 func (play *PlayInstance) SetConfig(config *gst.Structure) bool {
 	var carg0 *C.GstPlay      // in, none, converted
 	var carg1 *C.GstStructure // in, full, converted
@@ -2091,8 +1973,7 @@ func (play *PlayInstance) SetConfig(config *gst.Structure) bool {
 
 // SetMultiviewFlags wraps gst_play_set_multiview_flags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_multiview_flags
 func (play *PlayInstance) SetMultiviewFlags(flags gstvideo.VideoMultiviewFlags) {
 	var carg0 *C.GstPlay               // in, none, converted
 	var carg1 C.GstVideoMultiviewFlags // in, none, casted
@@ -2107,8 +1988,7 @@ func (play *PlayInstance) SetMultiviewFlags(flags gstvideo.VideoMultiviewFlags) 
 
 // SetMultiviewMode wraps gst_play_set_multiview_mode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_multiview_mode
 func (play *PlayInstance) SetMultiviewMode(mode gstvideo.VideoMultiviewFramePacking) {
 	var carg0 *C.GstPlay                      // in, none, converted
 	var carg1 C.GstVideoMultiviewFramePacking // in, none, casted
@@ -2123,8 +2003,7 @@ func (play *PlayInstance) SetMultiviewMode(mode gstvideo.VideoMultiviewFramePack
 
 // SetMute wraps gst_play_set_mute
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_mute
 func (play *PlayInstance) SetMute(val bool) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gboolean // in
@@ -2141,8 +2020,7 @@ func (play *PlayInstance) SetMute(val bool) {
 
 // SetRate wraps gst_play_set_rate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_rate
 func (play *PlayInstance) SetRate(rate float64) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gdouble  // in, none, casted
@@ -2157,10 +2035,9 @@ func (play *PlayInstance) SetRate(rate float64) {
 
 // SetSubtitleTrack wraps gst_play_set_subtitle_track
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track
 //
-//
-// Deprecated: (since 1.26.0) Use gst_play_set_subtitle_track_id() instead.
+// Deprecated: (since 1.26.0) see the provided link for the reason
 func (play *PlayInstance) SetSubtitleTrack(streamIndex int32) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gint     // in, none, casted
@@ -2184,8 +2061,7 @@ func (play *PlayInstance) SetSubtitleTrack(streamIndex int32) bool {
 
 // SetSubtitleTrackEnabled wraps gst_play_set_subtitle_track_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track_enabled
 func (play *PlayInstance) SetSubtitleTrackEnabled(enabled bool) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gboolean // in
@@ -2202,7 +2078,7 @@ func (play *PlayInstance) SetSubtitleTrackEnabled(enabled bool) {
 
 // SetSubtitleTrackID wraps gst_play_set_subtitle_track_id
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track_id
 func (play *PlayInstance) SetSubtitleTrackID(streamId string) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 *C.gchar   // in, none, string, nullable-string
@@ -2229,8 +2105,7 @@ func (play *PlayInstance) SetSubtitleTrackID(streamId string) bool {
 
 // SetSubtitleURI wraps gst_play_set_subtitle_uri
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_uri
 func (play *PlayInstance) SetSubtitleURI(uri string) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 *C.gchar   // in, none, string, nullable-string
@@ -2248,8 +2123,7 @@ func (play *PlayInstance) SetSubtitleURI(uri string) {
 
 // SetSubtitleVideoOffset wraps gst_play_set_subtitle_video_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_video_offset
 func (play *PlayInstance) SetSubtitleVideoOffset(offset int64) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gint64   // in, none, casted
@@ -2264,7 +2138,7 @@ func (play *PlayInstance) SetSubtitleVideoOffset(offset int64) {
 
 // SetTrackIDs wraps gst_play_set_track_ids
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_track_ids
 func (play *PlayInstance) SetTrackIDs(audioStreamId string, videoStreamId string, subtitleStreamId string) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 *C.gchar   // in, none, string, nullable-string
@@ -2303,8 +2177,7 @@ func (play *PlayInstance) SetTrackIDs(audioStreamId string, videoStreamId string
 
 // SetURI wraps gst_play_set_uri
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_uri
 func (play *PlayInstance) SetURI(uri string) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 *C.gchar   // in, none, string, nullable-string
@@ -2322,10 +2195,9 @@ func (play *PlayInstance) SetURI(uri string) {
 
 // SetVideoTrack wraps gst_play_set_video_track
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_video_track
 //
-//
-// Deprecated: (since 1.26.0) Use gst_play_set_video_track_id() instead.
+// Deprecated: (since 1.26.0) see the provided link for the reason
 func (play *PlayInstance) SetVideoTrack(streamIndex int32) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gint     // in, none, casted
@@ -2349,8 +2221,7 @@ func (play *PlayInstance) SetVideoTrack(streamIndex int32) bool {
 
 // SetVideoTrackEnabled wraps gst_play_set_video_track_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_video_track_enabled
 func (play *PlayInstance) SetVideoTrackEnabled(enabled bool) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gboolean // in
@@ -2367,7 +2238,7 @@ func (play *PlayInstance) SetVideoTrackEnabled(enabled bool) {
 
 // SetVideoTrackID wraps gst_play_set_video_track_id
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_video_track_id
 func (play *PlayInstance) SetVideoTrackID(streamId string) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 *C.gchar   // in, none, string, nullable-string
@@ -2394,7 +2265,7 @@ func (play *PlayInstance) SetVideoTrackID(streamId string) bool {
 
 // SetVisualization wraps gst_play_set_visualization
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_visualization
 func (play *PlayInstance) SetVisualization(name string) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 *C.gchar   // in, none, string, nullable-string
@@ -2421,8 +2292,7 @@ func (play *PlayInstance) SetVisualization(name string) bool {
 
 // SetVisualizationEnabled wraps gst_play_set_visualization_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_visualization_enabled
 func (play *PlayInstance) SetVisualizationEnabled(enabled bool) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gboolean // in
@@ -2439,8 +2309,7 @@ func (play *PlayInstance) SetVisualizationEnabled(enabled bool) {
 
 // SetVolume wraps gst_play_set_volume
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_volume
 func (play *PlayInstance) SetVolume(val float64) {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gdouble  // in, none, casted
@@ -2455,8 +2324,7 @@ func (play *PlayInstance) SetVolume(val float64) {
 
 // Stop wraps gst_play_stop
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_stop
 func (play *PlayInstance) Stop() {
 	var carg0 *C.GstPlay // in, none, converted
 
@@ -2476,76 +2344,74 @@ var _ PlayMediaInfo = (*PlayMediaInfoInstance)(nil)
 
 // PlayMediaInfo wraps GstPlayMediaInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlayMediaInfo
 type PlayMediaInfo interface {
 	gobject.Object
 	upcastToGstPlayMediaInfo() *PlayMediaInfoInstance
 
 	// GetAudioStreams wraps gst_play_media_info_get_audio_streams
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_audio_streams
 	GetAudioStreams() []PlayAudioInfo
 	// GetContainerFormat wraps gst_play_media_info_get_container_format
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_container_format
 	GetContainerFormat() string
 	// GetDuration wraps gst_play_media_info_get_duration
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_duration
 	GetDuration() gst.ClockTime
 	// GetImageSample wraps gst_play_media_info_get_image_sample
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_image_sample
 	GetImageSample() *gst.Sample
 	// GetNumberOfAudioStreams wraps gst_play_media_info_get_number_of_audio_streams
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_number_of_audio_streams
 	GetNumberOfAudioStreams() uint
 	// GetNumberOfStreams wraps gst_play_media_info_get_number_of_streams
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_number_of_streams
 	GetNumberOfStreams() uint
 	// GetNumberOfSubtitleStreams wraps gst_play_media_info_get_number_of_subtitle_streams
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_number_of_subtitle_streams
 	GetNumberOfSubtitleStreams() uint
 	// GetNumberOfVideoStreams wraps gst_play_media_info_get_number_of_video_streams
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_number_of_video_streams
 	GetNumberOfVideoStreams() uint
 	// GetStreamList wraps gst_play_media_info_get_stream_list
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_stream_list
 	GetStreamList() []PlayStreamInfo
 	// GetSubtitleStreams wraps gst_play_media_info_get_subtitle_streams
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_subtitle_streams
 	GetSubtitleStreams() []PlaySubtitleInfo
 	// GetTags wraps gst_play_media_info_get_tags
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_tags
 	GetTags() *gst.TagList
 	// GetTitle wraps gst_play_media_info_get_title
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_title
 	GetTitle() string
 	// GetURI wraps gst_play_media_info_get_uri
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_uri
 	GetURI() string
 	// GetVideoStreams wraps gst_play_media_info_get_video_streams
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_video_streams
 	GetVideoStreams() []PlayVideoInfo
 	// IsLive wraps gst_play_media_info_is_live
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_is_live
 	IsLive() bool
 	// IsSeekable wraps gst_play_media_info_is_seekable
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_is_seekable
 	IsSeekable() bool
 }
 
@@ -2599,7 +2465,7 @@ func UnsafePlayMediaInfoToGlibFull(c PlayMediaInfo) unsafe.Pointer {
 
 // GetAudioStreams wraps gst_play_media_info_get_audio_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_audio_streams
 func (info *PlayMediaInfoInstance) GetAudioStreams() []PlayAudioInfo {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.GList            // container, transfer: none
@@ -2625,7 +2491,7 @@ func (info *PlayMediaInfoInstance) GetAudioStreams() []PlayAudioInfo {
 
 // GetContainerFormat wraps gst_play_media_info_get_container_format
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_container_format
 func (info *PlayMediaInfoInstance) GetContainerFormat() string {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.gchar            // return, none, string, nullable-string
@@ -2646,7 +2512,7 @@ func (info *PlayMediaInfoInstance) GetContainerFormat() string {
 
 // GetDuration wraps gst_play_media_info_get_duration
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_duration
 func (info *PlayMediaInfoInstance) GetDuration() gst.ClockTime {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  C.GstClockTime      // return, none, casted, alias
@@ -2665,8 +2531,7 @@ func (info *PlayMediaInfoInstance) GetDuration() gst.ClockTime {
 
 // GetImageSample wraps gst_play_media_info_get_image_sample
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_image_sample
 func (info *PlayMediaInfoInstance) GetImageSample() *gst.Sample {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.GstSample        // return, none, converted, nullable
@@ -2687,7 +2552,7 @@ func (info *PlayMediaInfoInstance) GetImageSample() *gst.Sample {
 
 // GetNumberOfAudioStreams wraps gst_play_media_info_get_number_of_audio_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_number_of_audio_streams
 func (info *PlayMediaInfoInstance) GetNumberOfAudioStreams() uint {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  C.guint             // return, none, casted
@@ -2706,7 +2571,7 @@ func (info *PlayMediaInfoInstance) GetNumberOfAudioStreams() uint {
 
 // GetNumberOfStreams wraps gst_play_media_info_get_number_of_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_number_of_streams
 func (info *PlayMediaInfoInstance) GetNumberOfStreams() uint {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  C.guint             // return, none, casted
@@ -2725,7 +2590,7 @@ func (info *PlayMediaInfoInstance) GetNumberOfStreams() uint {
 
 // GetNumberOfSubtitleStreams wraps gst_play_media_info_get_number_of_subtitle_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_number_of_subtitle_streams
 func (info *PlayMediaInfoInstance) GetNumberOfSubtitleStreams() uint {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  C.guint             // return, none, casted
@@ -2744,7 +2609,7 @@ func (info *PlayMediaInfoInstance) GetNumberOfSubtitleStreams() uint {
 
 // GetNumberOfVideoStreams wraps gst_play_media_info_get_number_of_video_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_number_of_video_streams
 func (info *PlayMediaInfoInstance) GetNumberOfVideoStreams() uint {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  C.guint             // return, none, casted
@@ -2763,7 +2628,7 @@ func (info *PlayMediaInfoInstance) GetNumberOfVideoStreams() uint {
 
 // GetStreamList wraps gst_play_media_info_get_stream_list
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_stream_list
 func (info *PlayMediaInfoInstance) GetStreamList() []PlayStreamInfo {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.GList            // container, transfer: none
@@ -2789,7 +2654,7 @@ func (info *PlayMediaInfoInstance) GetStreamList() []PlayStreamInfo {
 
 // GetSubtitleStreams wraps gst_play_media_info_get_subtitle_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_subtitle_streams
 func (info *PlayMediaInfoInstance) GetSubtitleStreams() []PlaySubtitleInfo {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.GList            // container, transfer: none
@@ -2815,7 +2680,7 @@ func (info *PlayMediaInfoInstance) GetSubtitleStreams() []PlaySubtitleInfo {
 
 // GetTags wraps gst_play_media_info_get_tags
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_tags
 func (info *PlayMediaInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.GstTagList       // return, none, converted, nullable
@@ -2836,7 +2701,7 @@ func (info *PlayMediaInfoInstance) GetTags() *gst.TagList {
 
 // GetTitle wraps gst_play_media_info_get_title
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_title
 func (info *PlayMediaInfoInstance) GetTitle() string {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.gchar            // return, none, string, nullable-string
@@ -2857,7 +2722,7 @@ func (info *PlayMediaInfoInstance) GetTitle() string {
 
 // GetURI wraps gst_play_media_info_get_uri
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_uri
 func (info *PlayMediaInfoInstance) GetURI() string {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.gchar            // return, none, string
@@ -2876,7 +2741,7 @@ func (info *PlayMediaInfoInstance) GetURI() string {
 
 // GetVideoStreams wraps gst_play_media_info_get_video_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_get_video_streams
 func (info *PlayMediaInfoInstance) GetVideoStreams() []PlayVideoInfo {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  *C.GList            // container, transfer: none
@@ -2902,7 +2767,7 @@ func (info *PlayMediaInfoInstance) GetVideoStreams() []PlayVideoInfo {
 
 // IsLive wraps gst_play_media_info_is_live
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_is_live
 func (info *PlayMediaInfoInstance) IsLive() bool {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  C.gboolean          // return
@@ -2923,7 +2788,7 @@ func (info *PlayMediaInfoInstance) IsLive() bool {
 
 // IsSeekable wraps gst_play_media_info_is_seekable
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_media_info_is_seekable
 func (info *PlayMediaInfoInstance) IsSeekable() bool {
 	var carg0 *C.GstPlayMediaInfo // in, none, converted
 	var cret  C.gboolean          // return
@@ -2952,68 +2817,66 @@ var _ PlaySignalAdapter = (*PlaySignalAdapterInstance)(nil)
 
 // PlaySignalAdapter wraps GstPlaySignalAdapter
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#GstPlaySignalAdapter
 type PlaySignalAdapter interface {
 	gobject.Object
 	upcastToGstPlaySignalAdapter() *PlaySignalAdapterInstance
 
 	// GetPlay wraps gst_play_signal_adapter_get_play
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_signal_adapter_get_play
 	GetPlay() Play
 	// ConnectBuffering connects the provided callback to the "buffering" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectBuffering(func(PlaySignalAdapter, int32)) gobject.SignalHandle
 	// ConnectDurationChanged connects the provided callback to the "duration-changed" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectDurationChanged(func(PlaySignalAdapter, uint64)) gobject.SignalHandle
 	// ConnectEndOfStream connects the provided callback to the "end-of-stream" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectEndOfStream(func(PlaySignalAdapter)) gobject.SignalHandle
 	// ConnectError connects the provided callback to the "error" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectError(func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle
 	// ConnectMediaInfoUpdated connects the provided callback to the "media-info-updated" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectMediaInfoUpdated(func(PlaySignalAdapter, PlayMediaInfo)) gobject.SignalHandle
 	// ConnectMuteChanged connects the provided callback to the "mute-changed" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectMuteChanged(func(PlaySignalAdapter, bool)) gobject.SignalHandle
 	// ConnectPositionUpdated connects the provided callback to the "position-updated" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectPositionUpdated(func(PlaySignalAdapter, uint64)) gobject.SignalHandle
 	// ConnectSeekDone connects the provided callback to the "seek-done" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectSeekDone(func(PlaySignalAdapter, uint64)) gobject.SignalHandle
 	// ConnectStateChanged connects the provided callback to the "state-changed" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectStateChanged(func(PlaySignalAdapter, PlayState)) gobject.SignalHandle
 	// ConnectURILoaded connects the provided callback to the "uri-loaded" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectURILoaded(func(PlaySignalAdapter, string)) gobject.SignalHandle
 	// ConnectVideoDimensionsChanged connects the provided callback to the "video-dimensions-changed" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectVideoDimensionsChanged(func(PlaySignalAdapter, uint, uint)) gobject.SignalHandle
 	// ConnectVolumeChanged connects the provided callback to the "volume-changed" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectVolumeChanged(func(PlaySignalAdapter, float64)) gobject.SignalHandle
 	// ConnectWarning connects the provided callback to the "warning" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play
 	ConnectWarning(func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle
 }
 
@@ -3067,8 +2930,7 @@ func UnsafePlaySignalAdapterToGlibFull(c PlaySignalAdapter) unsafe.Pointer {
 
 // NewPlaySignalAdapter wraps gst_play_signal_adapter_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_signal_adapter_new
 func NewPlaySignalAdapter(play Play) PlaySignalAdapter {
 	var carg1 *C.GstPlay              // in, none, converted
 	var cret  *C.GstPlaySignalAdapter // return, full, converted
@@ -3087,8 +2949,7 @@ func NewPlaySignalAdapter(play Play) PlaySignalAdapter {
 
 // NewPlaySignalAdapterSyncEmit wraps gst_play_signal_adapter_new_sync_emit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_signal_adapter_new_sync_emit
 func NewPlaySignalAdapterSyncEmit(play Play) PlaySignalAdapter {
 	var carg1 *C.GstPlay              // in, none, converted
 	var cret  *C.GstPlaySignalAdapter // return, full, converted
@@ -3107,8 +2968,7 @@ func NewPlaySignalAdapterSyncEmit(play Play) PlaySignalAdapter {
 
 // NewPlaySignalAdapterWithMainContext wraps gst_play_signal_adapter_new_with_main_context
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_signal_adapter_new_with_main_context
 func NewPlaySignalAdapterWithMainContext(play Play, _context *glib.MainContext) PlaySignalAdapter {
 	var carg1 *C.GstPlay              // in, none, converted
 	var carg2 *C.GMainContext         // in, none, converted
@@ -3130,7 +2990,7 @@ func NewPlaySignalAdapterWithMainContext(play Play, _context *glib.MainContext) 
 
 // GetPlay wraps gst_play_signal_adapter_get_play
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_signal_adapter_get_play
 func (adapter *PlaySignalAdapterInstance) GetPlay() Play {
 	var carg0 *C.GstPlaySignalAdapter // in, none, converted
 	var cret  *C.GstPlay              // return, none, converted
@@ -3149,93 +3009,91 @@ func (adapter *PlaySignalAdapterInstance) GetPlay() Play {
 
 // ConnectBuffering connects the provided callback to the "buffering" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectBuffering(fn func(PlaySignalAdapter, int32)) gobject.SignalHandle {
 	return o.Connect("buffering", fn)
 }
 
 // ConnectDurationChanged connects the provided callback to the "duration-changed" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectDurationChanged(fn func(PlaySignalAdapter, uint64)) gobject.SignalHandle {
 	return o.Connect("duration-changed", fn)
 }
 
 // ConnectEndOfStream connects the provided callback to the "end-of-stream" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectEndOfStream(fn func(PlaySignalAdapter)) gobject.SignalHandle {
 	return o.Connect("end-of-stream", fn)
 }
 
 // ConnectError connects the provided callback to the "error" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectError(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("error", fn)
 }
 
 // ConnectMediaInfoUpdated connects the provided callback to the "media-info-updated" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectMediaInfoUpdated(fn func(PlaySignalAdapter, PlayMediaInfo)) gobject.SignalHandle {
 	return o.Connect("media-info-updated", fn)
 }
 
 // ConnectMuteChanged connects the provided callback to the "mute-changed" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectMuteChanged(fn func(PlaySignalAdapter, bool)) gobject.SignalHandle {
 	return o.Connect("mute-changed", fn)
 }
 
 // ConnectPositionUpdated connects the provided callback to the "position-updated" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectPositionUpdated(fn func(PlaySignalAdapter, uint64)) gobject.SignalHandle {
 	return o.Connect("position-updated", fn)
 }
 
 // ConnectSeekDone connects the provided callback to the "seek-done" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectSeekDone(fn func(PlaySignalAdapter, uint64)) gobject.SignalHandle {
 	return o.Connect("seek-done", fn)
 }
 
 // ConnectStateChanged connects the provided callback to the "state-changed" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectStateChanged(fn func(PlaySignalAdapter, PlayState)) gobject.SignalHandle {
 	return o.Connect("state-changed", fn)
 }
 
 // ConnectURILoaded connects the provided callback to the "uri-loaded" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectURILoaded(fn func(PlaySignalAdapter, string)) gobject.SignalHandle {
 	return o.Connect("uri-loaded", fn)
 }
 
 // ConnectVideoDimensionsChanged connects the provided callback to the "video-dimensions-changed" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectVideoDimensionsChanged(fn func(PlaySignalAdapter, uint, uint)) gobject.SignalHandle {
 	return o.Connect("video-dimensions-changed", fn)
 }
 
 // ConnectVolumeChanged connects the provided callback to the "volume-changed" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectVolumeChanged(fn func(PlaySignalAdapter, float64)) gobject.SignalHandle {
 	return o.Connect("volume-changed", fn)
 }
 
 // ConnectWarning connects the provided callback to the "warning" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play
 func (o *PlaySignalAdapterInstance) ConnectWarning(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("warning", fn)
 }
@@ -3250,41 +3108,36 @@ var _ PlayStreamInfo = (*PlayStreamInfoInstance)(nil)
 
 // PlayStreamInfo wraps GstPlayStreamInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlayStreamInfo
 type PlayStreamInfo interface {
 	gobject.Object
 	upcastToGstPlayStreamInfo() *PlayStreamInfoInstance
 
 	// GetCaps wraps gst_play_stream_info_get_caps
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_caps
 	GetCaps() *gst.Caps
 	// GetCodec wraps gst_play_stream_info_get_codec
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_codec
 	GetCodec() string
 	// GetIndex wraps gst_play_stream_info_get_index
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_index
 	//
-	//
-	// Deprecated: (since 1.26.0) Use gst_play_stream_info_get_stream_id().
+	// Deprecated: (since 1.26.0) see the provided link for the reason
 	GetIndex() int32
 	// GetStreamID wraps gst_play_stream_info_get_stream_id
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_stream_id
 	GetStreamID() string
 	// GetStreamType wraps gst_play_stream_info_get_stream_type
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_stream_type
 	GetStreamType() string
 	// GetTags wraps gst_play_stream_info_get_tags
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_tags
 	GetTags() *gst.TagList
 }
 
@@ -3338,7 +3191,7 @@ func UnsafePlayStreamInfoToGlibFull(c PlayStreamInfo) unsafe.Pointer {
 
 // GetCaps wraps gst_play_stream_info_get_caps
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_caps
 func (info *PlayStreamInfoInstance) GetCaps() *gst.Caps {
 	var carg0 *C.GstPlayStreamInfo // in, none, converted
 	var cret  *C.GstCaps           // return, none, converted, nullable
@@ -3359,8 +3212,7 @@ func (info *PlayStreamInfoInstance) GetCaps() *gst.Caps {
 
 // GetCodec wraps gst_play_stream_info_get_codec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_codec
 func (info *PlayStreamInfoInstance) GetCodec() string {
 	var carg0 *C.GstPlayStreamInfo // in, none, converted
 	var cret  *C.gchar             // return, none, string, nullable-string
@@ -3381,10 +3233,9 @@ func (info *PlayStreamInfoInstance) GetCodec() string {
 
 // GetIndex wraps gst_play_stream_info_get_index
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_index
 //
-//
-// Deprecated: (since 1.26.0) Use gst_play_stream_info_get_stream_id().
+// Deprecated: (since 1.26.0) see the provided link for the reason
 func (info *PlayStreamInfoInstance) GetIndex() int32 {
 	var carg0 *C.GstPlayStreamInfo // in, none, converted
 	var cret  C.gint               // return, none, casted
@@ -3403,8 +3254,7 @@ func (info *PlayStreamInfoInstance) GetIndex() int32 {
 
 // GetStreamID wraps gst_play_stream_info_get_stream_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_stream_id
 func (info *PlayStreamInfoInstance) GetStreamID() string {
 	var carg0 *C.GstPlayStreamInfo // in, none, converted
 	var cret  *C.gchar             // return, none, string
@@ -3423,8 +3273,7 @@ func (info *PlayStreamInfoInstance) GetStreamID() string {
 
 // GetStreamType wraps gst_play_stream_info_get_stream_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_stream_type
 func (info *PlayStreamInfoInstance) GetStreamType() string {
 	var carg0 *C.GstPlayStreamInfo // in, none, converted
 	var cret  *C.gchar             // return, none, string
@@ -3443,7 +3292,7 @@ func (info *PlayStreamInfoInstance) GetStreamType() string {
 
 // GetTags wraps gst_play_stream_info_get_tags
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_tags
 func (info *PlayStreamInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstPlayStreamInfo // in, none, converted
 	var cret  *C.GstTagList        // return, none, converted, nullable
@@ -3472,15 +3321,14 @@ var _ PlaySubtitleInfo = (*PlaySubtitleInfoInstance)(nil)
 
 // PlaySubtitleInfo wraps GstPlaySubtitleInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlaySubtitleInfo
 type PlaySubtitleInfo interface {
 	PlayStreamInfo
 	upcastToGstPlaySubtitleInfo() *PlaySubtitleInfoInstance
 
 	// GetLanguage wraps gst_play_subtitle_info_get_language
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_subtitle_info_get_language
 	GetLanguage() string
 }
 
@@ -3536,7 +3384,7 @@ func UnsafePlaySubtitleInfoToGlibFull(c PlaySubtitleInfo) unsafe.Pointer {
 
 // GetLanguage wraps gst_play_subtitle_info_get_language
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_subtitle_info_get_language
 func (info *PlaySubtitleInfoInstance) GetLanguage() string {
 	var carg0 *C.GstPlaySubtitleInfo // in, none, converted
 	var cret  *C.gchar               // return, none, string, nullable-string
@@ -3565,36 +3413,34 @@ var _ PlayVideoInfo = (*PlayVideoInfoInstance)(nil)
 
 // PlayVideoInfo wraps GstPlayVideoInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlayVideoInfo
 type PlayVideoInfo interface {
 	PlayStreamInfo
 	upcastToGstPlayVideoInfo() *PlayVideoInfoInstance
 
 	// GetBitrate wraps gst_play_video_info_get_bitrate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_bitrate
 	GetBitrate() int32
 	// GetFramerate wraps gst_play_video_info_get_framerate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_framerate
 	GetFramerate() (int32, int32)
 	// GetHeight wraps gst_play_video_info_get_height
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_height
 	GetHeight() int32
 	// GetMaxBitrate wraps gst_play_video_info_get_max_bitrate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_max_bitrate
 	GetMaxBitrate() int32
 	// GetPixelAspectRatio wraps gst_play_video_info_get_pixel_aspect_ratio
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_pixel_aspect_ratio
 	GetPixelAspectRatio() (uint, uint)
 	// GetWidth wraps gst_play_video_info_get_width
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_width
 	GetWidth() int32
 }
 
@@ -3650,7 +3496,7 @@ func UnsafePlayVideoInfoToGlibFull(c PlayVideoInfo) unsafe.Pointer {
 
 // GetBitrate wraps gst_play_video_info_get_bitrate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_bitrate
 func (info *PlayVideoInfoInstance) GetBitrate() int32 {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
@@ -3669,7 +3515,7 @@ func (info *PlayVideoInfoInstance) GetBitrate() int32 {
 
 // GetFramerate wraps gst_play_video_info_get_framerate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_framerate
 func (info *PlayVideoInfoInstance) GetFramerate() (int32, int32) {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var carg1 C.gint              // out, full, casted
@@ -3691,7 +3537,7 @@ func (info *PlayVideoInfoInstance) GetFramerate() (int32, int32) {
 
 // GetHeight wraps gst_play_video_info_get_height
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_height
 func (info *PlayVideoInfoInstance) GetHeight() int32 {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
@@ -3710,7 +3556,7 @@ func (info *PlayVideoInfoInstance) GetHeight() int32 {
 
 // GetMaxBitrate wraps gst_play_video_info_get_max_bitrate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_max_bitrate
 func (info *PlayVideoInfoInstance) GetMaxBitrate() int32 {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
@@ -3729,8 +3575,7 @@ func (info *PlayVideoInfoInstance) GetMaxBitrate() int32 {
 
 // GetPixelAspectRatio wraps gst_play_video_info_get_pixel_aspect_ratio
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_pixel_aspect_ratio
 func (info *PlayVideoInfoInstance) GetPixelAspectRatio() (uint, uint) {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var carg1 C.guint             // out, full, casted
@@ -3752,7 +3597,7 @@ func (info *PlayVideoInfoInstance) GetPixelAspectRatio() (uint, uint) {
 
 // GetWidth wraps gst_play_video_info_get_width
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_video_info_get_width
 func (info *PlayVideoInfoInstance) GetWidth() int32 {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
@@ -3779,25 +3624,22 @@ var _ PlayVideoOverlayVideoRenderer = (*PlayVideoOverlayVideoRendererInstance)(n
 
 // PlayVideoOverlayVideoRenderer wraps GstPlayVideoOverlayVideoRenderer
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-overlay-video-renderer.html#GstPlayVideoOverlayVideoRenderer
 type PlayVideoOverlayVideoRenderer interface {
 	gobject.Object
 	upcastToGstPlayVideoOverlayVideoRenderer() *PlayVideoOverlayVideoRendererInstance
 
 	// Expose wraps gst_play_video_overlay_video_renderer_expose
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-overlay-video-renderer.html#gst_play_video_overlay_video_renderer_expose
 	Expose()
 	// GetRenderRectangle wraps gst_play_video_overlay_video_renderer_get_render_rectangle
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-overlay-video-renderer.html#gst_play_video_overlay_video_renderer_get_render_rectangle
 	GetRenderRectangle() (int32, int32, int32, int32)
 	// SetRenderRectangle wraps gst_play_video_overlay_video_renderer_set_render_rectangle
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-overlay-video-renderer.html#gst_play_video_overlay_video_renderer_set_render_rectangle
 	SetRenderRectangle(int32, int32, int32, int32)
 }
 
@@ -3851,8 +3693,7 @@ func UnsafePlayVideoOverlayVideoRendererToGlibFull(c PlayVideoOverlayVideoRender
 
 // Expose wraps gst_play_video_overlay_video_renderer_expose
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-overlay-video-renderer.html#gst_play_video_overlay_video_renderer_expose
 func (self *PlayVideoOverlayVideoRendererInstance) Expose() {
 	var carg0 *C.GstPlayVideoOverlayVideoRenderer // in, none, converted
 
@@ -3864,8 +3705,7 @@ func (self *PlayVideoOverlayVideoRendererInstance) Expose() {
 
 // GetRenderRectangle wraps gst_play_video_overlay_video_renderer_get_render_rectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-overlay-video-renderer.html#gst_play_video_overlay_video_renderer_get_render_rectangle
 func (self *PlayVideoOverlayVideoRendererInstance) GetRenderRectangle() (int32, int32, int32, int32) {
 	var carg0 *C.GstPlayVideoOverlayVideoRenderer // in, none, converted
 	var carg1 C.gint                              // out, full, casted
@@ -3893,8 +3733,7 @@ func (self *PlayVideoOverlayVideoRendererInstance) GetRenderRectangle() (int32, 
 
 // SetRenderRectangle wraps gst_play_video_overlay_video_renderer_set_render_rectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-overlay-video-renderer.html#gst_play_video_overlay_video_renderer_set_render_rectangle
 func (self *PlayVideoOverlayVideoRendererInstance) SetRenderRectangle(x int32, y int32, width int32, height int32) {
 	var carg0 *C.GstPlayVideoOverlayVideoRenderer // in, none, converted
 	var carg1 C.gint                              // in, none, casted
@@ -3926,31 +3765,30 @@ var _ PlayAudioInfo = (*PlayAudioInfoInstance)(nil)
 
 // PlayAudioInfo wraps GstPlayAudioInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlayAudioInfo
 type PlayAudioInfo interface {
 	PlayStreamInfo
 	upcastToGstPlayAudioInfo() *PlayAudioInfoInstance
 
 	// GetBitrate wraps gst_play_audio_info_get_bitrate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_bitrate
 	GetBitrate() int32
 	// GetChannels wraps gst_play_audio_info_get_channels
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_channels
 	GetChannels() int32
 	// GetLanguage wraps gst_play_audio_info_get_language
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_language
 	GetLanguage() string
 	// GetMaxBitrate wraps gst_play_audio_info_get_max_bitrate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_max_bitrate
 	GetMaxBitrate() int32
 	// GetSampleRate wraps gst_play_audio_info_get_sample_rate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_sample_rate
 	GetSampleRate() int32
 }
 
@@ -4006,7 +3844,7 @@ func UnsafePlayAudioInfoToGlibFull(c PlayAudioInfo) unsafe.Pointer {
 
 // GetBitrate wraps gst_play_audio_info_get_bitrate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_bitrate
 func (info *PlayAudioInfoInstance) GetBitrate() int32 {
 	var carg0 *C.GstPlayAudioInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
@@ -4025,7 +3863,7 @@ func (info *PlayAudioInfoInstance) GetBitrate() int32 {
 
 // GetChannels wraps gst_play_audio_info_get_channels
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_channels
 func (info *PlayAudioInfoInstance) GetChannels() int32 {
 	var carg0 *C.GstPlayAudioInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
@@ -4044,7 +3882,7 @@ func (info *PlayAudioInfoInstance) GetChannels() int32 {
 
 // GetLanguage wraps gst_play_audio_info_get_language
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_language
 func (info *PlayAudioInfoInstance) GetLanguage() string {
 	var carg0 *C.GstPlayAudioInfo // in, none, converted
 	var cret  *C.gchar            // return, none, string, nullable-string
@@ -4065,7 +3903,7 @@ func (info *PlayAudioInfoInstance) GetLanguage() string {
 
 // GetMaxBitrate wraps gst_play_audio_info_get_max_bitrate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_max_bitrate
 func (info *PlayAudioInfoInstance) GetMaxBitrate() int32 {
 	var carg0 *C.GstPlayAudioInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
@@ -4084,7 +3922,7 @@ func (info *PlayAudioInfoInstance) GetMaxBitrate() int32 {
 
 // GetSampleRate wraps gst_play_audio_info_get_sample_rate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_audio_info_get_sample_rate
 func (info *PlayAudioInfoInstance) GetSampleRate() int32 {
 	var carg0 *C.GstPlayAudioInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
@@ -4103,7 +3941,7 @@ func (info *PlayAudioInfoInstance) GetSampleRate() int32 {
 
 // PlayAudioInfoClass wraps GstPlayAudioInfoClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlayAudioInfoClass
 // 
 // PlayAudioInfoClass is the type struct for [PlayAudioInfo]
 type PlayAudioInfoClass struct {
@@ -4157,7 +3995,7 @@ func (p *PlayAudioInfoClass) ParentClass() *PlayStreamInfoClass {
 
 // PlayClass wraps GstPlayClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#GstPlayClass
 // 
 // PlayClass is the type struct for [Play]
 type PlayClass struct {
@@ -4211,7 +4049,7 @@ func (p *PlayClass) ParentClass() *gst.ObjectClass {
 
 // PlayMediaInfoClass wraps GstPlayMediaInfoClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlayMediaInfoClass
 // 
 // PlayMediaInfoClass is the type struct for [PlayMediaInfo]
 type PlayMediaInfoClass struct {
@@ -4265,7 +4103,7 @@ func (p *PlayMediaInfoClass) ParentClass() *gobject.ObjectClass {
 
 // PlaySignalAdapterClass wraps GstPlaySignalAdapterClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#GstPlaySignalAdapterClass
 // 
 // PlaySignalAdapterClass is the type struct for [PlaySignalAdapter]
 type PlaySignalAdapterClass struct {
@@ -4319,7 +4157,7 @@ func (p *PlaySignalAdapterClass) ParentClass() *gobject.ObjectClass {
 
 // PlayStreamInfoClass wraps GstPlayStreamInfoClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlayStreamInfoClass
 // 
 // PlayStreamInfoClass is the type struct for [PlayStreamInfo]
 type PlayStreamInfoClass struct {
@@ -4373,7 +4211,7 @@ func (p *PlayStreamInfoClass) ParentClass() *gobject.ObjectClass {
 
 // PlaySubtitleInfoClass wraps GstPlaySubtitleInfoClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlaySubtitleInfoClass
 // 
 // PlaySubtitleInfoClass is the type struct for [PlaySubtitleInfo]
 type PlaySubtitleInfoClass struct {
@@ -4427,7 +4265,7 @@ func (p *PlaySubtitleInfoClass) ParentClass() *PlayStreamInfoClass {
 
 // PlayVideoInfoClass wraps GstPlayVideoInfoClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#GstPlayVideoInfoClass
 // 
 // PlayVideoInfoClass is the type struct for [PlayVideoInfo]
 type PlayVideoInfoClass struct {
@@ -4481,7 +4319,7 @@ func (p *PlayVideoInfoClass) ParentClass() *PlayStreamInfoClass {
 
 // PlayVideoOverlayVideoRendererClass wraps GstPlayVideoOverlayVideoRendererClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-overlay-video-renderer.html#GstPlayVideoOverlayVideoRendererClass
 // 
 // PlayVideoOverlayVideoRendererClass is the type struct for [PlayVideoOverlayVideoRenderer]
 type PlayVideoOverlayVideoRendererClass struct {
@@ -4535,7 +4373,7 @@ func (p *PlayVideoOverlayVideoRendererClass) ParentClass() *gobject.ObjectClass 
 
 // PlayVideoRendererInterface wraps GstPlayVideoRendererInterface
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-video-renderer.html#GstPlayVideoRendererInterface
 type PlayVideoRendererInterface struct {
 	*playVideoRendererInterface
 }
@@ -4616,8 +4454,7 @@ func UnsafePlayVideoRendererInterfaceToGlibFull(p *PlayVideoRendererInterface) u
 
 // PlayVisualization wraps GstPlayVisualization
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-visualization.html#GstPlayVisualization
 type PlayVisualization struct {
 	*playVisualization
 }
@@ -4713,8 +4550,7 @@ func UnsafePlayVisualizationToGlibFull(p *PlayVisualization) unsafe.Pointer {
 
 // Copy wraps gst_play_visualization_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-visualization.html#gst_play_visualization_copy
 func (vis *PlayVisualization) Copy() *PlayVisualization {
 	var carg0 *C.GstPlayVisualization // in, none, converted
 	var cret  *C.GstPlayVisualization // return, full, converted

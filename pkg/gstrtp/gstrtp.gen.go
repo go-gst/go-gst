@@ -136,152 +136,129 @@ func init() {
 
 // RTCP_MAX_BYE_SSRC_COUNT wraps GST_RTCP_MAX_BYE_SSRC_COUNT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_MAX_BYE_SSRC_COUNT
 const RTCP_MAX_BYE_SSRC_COUNT = 31
 // RTCP_MAX_RB_COUNT wraps GST_RTCP_MAX_RB_COUNT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_MAX_RB_COUNT
 const RTCP_MAX_RB_COUNT = 31
 // RTCP_MAX_SDES wraps GST_RTCP_MAX_SDES
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_MAX_SDES
 const RTCP_MAX_SDES = 255
 // RTCP_MAX_SDES_ITEM_COUNT wraps GST_RTCP_MAX_SDES_ITEM_COUNT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_MAX_SDES_ITEM_COUNT
 const RTCP_MAX_SDES_ITEM_COUNT = 31
 // RTCP_REDUCED_SIZE_VALID_MASK wraps GST_RTCP_REDUCED_SIZE_VALID_MASK
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_REDUCED_SIZE_VALID_MASK
 const RTCP_REDUCED_SIZE_VALID_MASK = 49400
 // RTCP_VALID_MASK wraps GST_RTCP_VALID_MASK
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_VALID_MASK
 const RTCP_VALID_MASK = 57598
 // RTCP_VALID_VALUE wraps GST_RTCP_VALID_VALUE
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_VALID_VALUE
 const RTCP_VALID_VALUE = 32968
 // RTCP_VERSION wraps GST_RTCP_VERSION
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_VERSION
 const RTCP_VERSION = 2
 // RTP_HDREXT_NTP_56_SIZE wraps GST_RTP_HDREXT_NTP_56_SIZE
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GST_RTP_HDREXT_NTP_56_SIZE
 const RTP_HDREXT_NTP_56_SIZE = 7
 // RTP_HDREXT_NTP_64_SIZE wraps GST_RTP_HDREXT_NTP_64_SIZE
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GST_RTP_HDREXT_NTP_64_SIZE
 const RTP_HDREXT_NTP_64_SIZE = 8
 // RTP_PAYLOAD_G723_53 wraps GST_RTP_PAYLOAD_G723_53
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_G723_53
 const RTP_PAYLOAD_G723_53 = 17
 // RTP_PAYLOAD_G723_63 wraps GST_RTP_PAYLOAD_G723_63
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_G723_63
 const RTP_PAYLOAD_G723_63 = 16
 // RTP_PAYLOAD_TS41 wraps GST_RTP_PAYLOAD_TS41
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_TS41
 const RTP_PAYLOAD_TS41 = 19
 // RTP_PAYLOAD_TS48 wraps GST_RTP_PAYLOAD_TS48
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_TS48
 const RTP_PAYLOAD_TS48 = 18
 // RTP_SOURCE_META_MAX_CSRC_COUNT wraps GST_RTP_SOURCE_META_MAX_CSRC_COUNT
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpmeta.html#GST_RTP_SOURCE_META_MAX_CSRC_COUNT
 const RTP_SOURCE_META_MAX_CSRC_COUNT = 15
 // RTP_VERSION wraps GST_RTP_VERSION
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#GST_RTP_VERSION
 const RTP_VERSION = 2
 // RTCPFBType wraps GstRTCPFBType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTCPFBType
 type RTCPFBType C.int
 
 const (
 	// RtcpFbTypeInvalid wraps GST_RTCP_FB_TYPE_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_FB_TYPE_INVALID
 	RtcpFbTypeInvalid RTCPFBType = 0
 	// RtcpRtpfbTypeNack wraps GST_RTCP_RTPFB_TYPE_NACK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_RTPFB_TYPE_NACK
 	RtcpRtpfbTypeNack RTCPFBType = 1
 	// RtcpRtpfbTypeTmmbr wraps GST_RTCP_RTPFB_TYPE_TMMBR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_RTPFB_TYPE_TMMBR
 	RtcpRtpfbTypeTmmbr RTCPFBType = 3
 	// RtcpRtpfbTypeTmmbn wraps GST_RTCP_RTPFB_TYPE_TMMBN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_RTPFB_TYPE_TMMBN
 	RtcpRtpfbTypeTmmbn RTCPFBType = 4
 	// RtcpRtpfbTypeRtcpSrReq wraps GST_RTCP_RTPFB_TYPE_RTCP_SR_REQ
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_RTPFB_TYPE_RTCP_SR_REQ
 	RtcpRtpfbTypeRtcpSrReq RTCPFBType = 5
 	// RtcpRtpfbTypeTwcc wraps GST_RTCP_RTPFB_TYPE_TWCC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_RTPFB_TYPE_TWCC
 	RtcpRtpfbTypeTwcc RTCPFBType = 15
 	// RtcpPsfbTypePli wraps GST_RTCP_PSFB_TYPE_PLI
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_PLI
 	RtcpPsfbTypePli RTCPFBType = 1
 	// RtcpPsfbTypeSli wraps GST_RTCP_PSFB_TYPE_SLI
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_SLI
 	RtcpPsfbTypeSli RTCPFBType = 2
 	// RtcpPsfbTypeRpsi wraps GST_RTCP_PSFB_TYPE_RPSI
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_RPSI
 	RtcpPsfbTypeRpsi RTCPFBType = 3
 	// RtcpPsfbTypeAfb wraps GST_RTCP_PSFB_TYPE_AFB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_AFB
 	RtcpPsfbTypeAfb RTCPFBType = 15
 	// RtcpPsfbTypeFir wraps GST_RTCP_PSFB_TYPE_FIR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_FIR
 	RtcpPsfbTypeFir RTCPFBType = 4
 	// RtcpPsfbTypeTstr wraps GST_RTCP_PSFB_TYPE_TSTR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_TSTR
 	RtcpPsfbTypeTstr RTCPFBType = 5
 	// RtcpPsfbTypeTstn wraps GST_RTCP_PSFB_TYPE_TSTN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_TSTN
 	RtcpPsfbTypeTstn RTCPFBType = 6
 	// RtcpPsfbTypeVbcn wraps GST_RTCP_PSFB_TYPE_VBCN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_VBCN
 	RtcpPsfbTypeVbcn RTCPFBType = 7
 )
 
@@ -316,95 +293,77 @@ func (e RTCPFBType) String() string {
 
 // RTCPSDESType wraps GstRTCPSDESType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTCPSDESType
 type RTCPSDESType C.int
 
 const (
 	// RtcpSdesInvalid wraps GST_RTCP_SDES_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_INVALID
 	RtcpSdesInvalid RTCPSDESType = -1
 	// RtcpSdesEnd wraps GST_RTCP_SDES_END
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_END
 	RtcpSdesEnd RTCPSDESType = 0
 	// RtcpSdesCname wraps GST_RTCP_SDES_CNAME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_CNAME
 	RtcpSdesCname RTCPSDESType = 1
 	// RtcpSdesName wraps GST_RTCP_SDES_NAME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_NAME
 	RtcpSdesName RTCPSDESType = 2
 	// RtcpSdesEmail wraps GST_RTCP_SDES_EMAIL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_EMAIL
 	RtcpSdesEmail RTCPSDESType = 3
 	// RtcpSdesPhone wraps GST_RTCP_SDES_PHONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_PHONE
 	RtcpSdesPhone RTCPSDESType = 4
 	// RtcpSdesLoc wraps GST_RTCP_SDES_LOC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_LOC
 	RtcpSdesLoc RTCPSDESType = 5
 	// RtcpSdesTool wraps GST_RTCP_SDES_TOOL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_TOOL
 	RtcpSdesTool RTCPSDESType = 6
 	// RtcpSdesNote wraps GST_RTCP_SDES_NOTE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_NOTE
 	RtcpSdesNote RTCPSDESType = 7
 	// RtcpSdesPriv wraps GST_RTCP_SDES_PRIV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_PRIV
 	RtcpSdesPriv RTCPSDESType = 8
 	// RtcpSdesH323Caddr wraps GST_RTCP_SDES_H323_CADDR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_H323_CADDR
 	RtcpSdesH323Caddr RTCPSDESType = 9
 	// RtcpSdesApsi wraps GST_RTCP_SDES_APSI
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_APSI
 	RtcpSdesApsi RTCPSDESType = 10
 	// RtcpSdesRgrp wraps GST_RTCP_SDES_RGRP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_RGRP
 	RtcpSdesRgrp RTCPSDESType = 11
 	// RtcpSdesRtpStreamID wraps GST_RTCP_SDES_RTP_STREAM_ID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_RTP_STREAM_ID
 	RtcpSdesRtpStreamID RTCPSDESType = 12
 	// RtcpSdesRepairedRtpStreamID wraps GST_RTCP_SDES_REPAIRED_RTP_STREAM_ID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_REPAIRED_RTP_STREAM_ID
 	RtcpSdesRepairedRtpStreamID RTCPSDESType = 13
 	// RtcpSdesCcid wraps GST_RTCP_SDES_CCID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_CCID
 	RtcpSdesCcid RTCPSDESType = 14
 	// RtcpSdesMid wraps GST_RTCP_SDES_MID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_MID
 	RtcpSdesMid RTCPSDESType = 15
 )
 
@@ -447,55 +406,45 @@ func (e RTCPSDESType) String() string {
 
 // RTCPType wraps GstRTCPType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTCPType
 type RTCPType C.int
 
 const (
 	// RtcpTypeInvalid wraps GST_RTCP_TYPE_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_INVALID
 	RtcpTypeInvalid RTCPType = 0
 	// RtcpTypeSr wraps GST_RTCP_TYPE_SR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_SR
 	RtcpTypeSr RTCPType = 200
 	// RtcpTypeRr wraps GST_RTCP_TYPE_RR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_RR
 	RtcpTypeRr RTCPType = 201
 	// RtcpTypeSdes wraps GST_RTCP_TYPE_SDES
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_SDES
 	RtcpTypeSdes RTCPType = 202
 	// RtcpTypeBye wraps GST_RTCP_TYPE_BYE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_BYE
 	RtcpTypeBye RTCPType = 203
 	// RtcpTypeApp wraps GST_RTCP_TYPE_APP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_APP
 	RtcpTypeApp RTCPType = 204
 	// RtcpTypeRtpfb wraps GST_RTCP_TYPE_RTPFB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_RTPFB
 	RtcpTypeRtpfb RTCPType = 205
 	// RtcpTypePsfb wraps GST_RTCP_TYPE_PSFB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_PSFB
 	RtcpTypePsfb RTCPType = 206
 	// RtcpTypeXr wraps GST_RTCP_TYPE_XR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_XR
 	RtcpTypeXr RTCPType = 207
 )
 
@@ -530,50 +479,41 @@ func (e RTCPType) String() string {
 
 // RTCPXRType wraps GstRTCPXRType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTCPXRType
 type RTCPXRType C.int
 
 const (
 	// RtcpXrTypeInvalid wraps GST_RTCP_XR_TYPE_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_INVALID
 	RtcpXrTypeInvalid RTCPXRType = -1
 	// RtcpXrTypeLrle wraps GST_RTCP_XR_TYPE_LRLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_LRLE
 	RtcpXrTypeLrle RTCPXRType = 1
 	// RtcpXrTypeDrle wraps GST_RTCP_XR_TYPE_DRLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_DRLE
 	RtcpXrTypeDrle RTCPXRType = 2
 	// RtcpXrTypePrt wraps GST_RTCP_XR_TYPE_PRT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_PRT
 	RtcpXrTypePrt RTCPXRType = 3
 	// RtcpXrTypeRrt wraps GST_RTCP_XR_TYPE_RRT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_RRT
 	RtcpXrTypeRrt RTCPXRType = 4
 	// RtcpXrTypeDlrr wraps GST_RTCP_XR_TYPE_DLRR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_DLRR
 	RtcpXrTypeDlrr RTCPXRType = 5
 	// RtcpXrTypeSsumm wraps GST_RTCP_XR_TYPE_SSUMM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_SSUMM
 	RtcpXrTypeSsumm RTCPXRType = 6
 	// RtcpXrTypeVoipMetrics wraps GST_RTCP_XR_TYPE_VOIP_METRICS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_VOIP_METRICS
 	RtcpXrTypeVoipMetrics RTCPXRType = 7
 )
 
@@ -607,140 +547,113 @@ func (e RTCPXRType) String() string {
 
 // RTPPayload wraps GstRTPPayload
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPPayload
 type RTPPayload C.int
 
 const (
 	// RtpPayloadPcmu wraps GST_RTP_PAYLOAD_PCMU
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_PCMU
 	RtpPayloadPcmu RTPPayload = 0
 	// RtpPayload1016 wraps GST_RTP_PAYLOAD_1016
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_1016
 	RtpPayload1016 RTPPayload = 1
 	// RtpPayloadG721 wraps GST_RTP_PAYLOAD_G721
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G721
 	RtpPayloadG721 RTPPayload = 2
 	// RtpPayloadGsm wraps GST_RTP_PAYLOAD_GSM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_GSM
 	RtpPayloadGsm RTPPayload = 3
 	// RtpPayloadG723 wraps GST_RTP_PAYLOAD_G723
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G723
 	RtpPayloadG723 RTPPayload = 4
 	// RtpPayloadDvi48000 wraps GST_RTP_PAYLOAD_DVI4_8000
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_DVI4_8000
 	RtpPayloadDvi48000 RTPPayload = 5
 	// RtpPayloadDvi416000 wraps GST_RTP_PAYLOAD_DVI4_16000
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_DVI4_16000
 	RtpPayloadDvi416000 RTPPayload = 6
 	// RtpPayloadLpc wraps GST_RTP_PAYLOAD_LPC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_LPC
 	RtpPayloadLpc RTPPayload = 7
 	// RtpPayloadPcma wraps GST_RTP_PAYLOAD_PCMA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_PCMA
 	RtpPayloadPcma RTPPayload = 8
 	// RtpPayloadG722 wraps GST_RTP_PAYLOAD_G722
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G722
 	RtpPayloadG722 RTPPayload = 9
 	// RtpPayloadL16Stereo wraps GST_RTP_PAYLOAD_L16_STEREO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_L16_STEREO
 	RtpPayloadL16Stereo RTPPayload = 10
 	// RtpPayloadL16Mono wraps GST_RTP_PAYLOAD_L16_MONO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_L16_MONO
 	RtpPayloadL16Mono RTPPayload = 11
 	// RtpPayloadQcelp wraps GST_RTP_PAYLOAD_QCELP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_QCELP
 	RtpPayloadQcelp RTPPayload = 12
 	// RtpPayloadCn wraps GST_RTP_PAYLOAD_CN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_CN
 	RtpPayloadCn RTPPayload = 13
 	// RtpPayloadMpa wraps GST_RTP_PAYLOAD_MPA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_MPA
 	RtpPayloadMpa RTPPayload = 14
 	// RtpPayloadG728 wraps GST_RTP_PAYLOAD_G728
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G728
 	RtpPayloadG728 RTPPayload = 15
 	// RtpPayloadDvi411025 wraps GST_RTP_PAYLOAD_DVI4_11025
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_DVI4_11025
 	RtpPayloadDvi411025 RTPPayload = 16
 	// RtpPayloadDvi422050 wraps GST_RTP_PAYLOAD_DVI4_22050
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_DVI4_22050
 	RtpPayloadDvi422050 RTPPayload = 17
 	// RtpPayloadG729 wraps GST_RTP_PAYLOAD_G729
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G729
 	RtpPayloadG729 RTPPayload = 18
 	// RtpPayloadCellb wraps GST_RTP_PAYLOAD_CELLB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_CELLB
 	RtpPayloadCellb RTPPayload = 25
 	// RtpPayloadJpeg wraps GST_RTP_PAYLOAD_JPEG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_JPEG
 	RtpPayloadJpeg RTPPayload = 26
 	// RtpPayloadNv wraps GST_RTP_PAYLOAD_NV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_NV
 	RtpPayloadNv RTPPayload = 28
 	// RtpPayloadH261 wraps GST_RTP_PAYLOAD_H261
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_H261
 	RtpPayloadH261 RTPPayload = 31
 	// RtpPayloadMpv wraps GST_RTP_PAYLOAD_MPV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_MPV
 	RtpPayloadMpv RTPPayload = 32
 	// RtpPayloadMp2t wraps GST_RTP_PAYLOAD_MP2T
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_MP2T
 	RtpPayloadMp2t RTPPayload = 33
 	// RtpPayloadH263 wraps GST_RTP_PAYLOAD_H263
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_H263
 	RtpPayloadH263 RTPPayload = 34
 )
 
@@ -792,35 +705,29 @@ func (e RTPPayload) String() string {
 
 // RTPProfile wraps GstRTPProfile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPProfile
 type RTPProfile C.int
 
 const (
 	// RtpProfileUnknown wraps GST_RTP_PROFILE_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_UNKNOWN
 	RtpProfileUnknown RTPProfile = 0
 	// RtpProfileAvp wraps GST_RTP_PROFILE_AVP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_AVP
 	RtpProfileAvp RTPProfile = 1
 	// RtpProfileSavp wraps GST_RTP_PROFILE_SAVP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_SAVP
 	RtpProfileSavp RTPProfile = 2
 	// RtpProfileAvpf wraps GST_RTP_PROFILE_AVPF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_AVPF
 	RtpProfileAvpf RTPProfile = 3
 	// RtpProfileSavpf wraps GST_RTP_PROFILE_SAVPF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_SAVPF
 	RtpProfileSavpf RTPProfile = 4
 )
 
@@ -851,25 +758,21 @@ func (e RTPProfile) String() string {
 
 // RTPBufferFlags wraps GstRTPBufferFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPBufferFlags
 type RTPBufferFlags C.gint
 
 const (
 	// RtpBufferFlagRetransmission wraps GST_RTP_BUFFER_FLAG_RETRANSMISSION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_FLAG_RETRANSMISSION
 	RtpBufferFlagRetransmission RTPBufferFlags = 1048576
 	// RtpBufferFlagRedundant wraps GST_RTP_BUFFER_FLAG_REDUNDANT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_FLAG_REDUNDANT
 	RtpBufferFlagRedundant RTPBufferFlags = 2097152
 	// RtpBufferFlagLast wraps GST_RTP_BUFFER_FLAG_LAST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_FLAG_LAST
 	RtpBufferFlagLast RTPBufferFlags = 268435456
 )
 
@@ -911,20 +814,17 @@ func (f RTPBufferFlags) String() string {
 
 // RTPBufferMapFlags wraps GstRTPBufferMapFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPBufferMapFlags
 type RTPBufferMapFlags C.gint
 
 const (
 	// RtpBufferMapFlagSkipPadding wraps GST_RTP_BUFFER_MAP_FLAG_SKIP_PADDING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_MAP_FLAG_SKIP_PADDING
 	RtpBufferMapFlagSkipPadding RTPBufferMapFlags = 65536
 	// RtpBufferMapFlagLast wraps GST_RTP_BUFFER_MAP_FLAG_LAST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_MAP_FLAG_LAST
 	RtpBufferMapFlagLast RTPBufferMapFlags = 16777216
 )
 
@@ -963,34 +863,29 @@ func (f RTPBufferMapFlags) String() string {
 
 // RTPHeaderExtensionDirection wraps GstRTPHeaderExtensionDirection
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPHeaderExtensionDirection
 type RTPHeaderExtensionDirection C.gint
 
 const (
 	// RtpHeaderExtensionDirectionInactive wraps GST_RTP_HEADER_EXTENSION_DIRECTION_INACTIVE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_DIRECTION_INACTIVE
 	RtpHeaderExtensionDirectionInactive RTPHeaderExtensionDirection = 0
 	// RtpHeaderExtensionDirectionSendonly wraps GST_RTP_HEADER_EXTENSION_DIRECTION_SENDONLY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_DIRECTION_SENDONLY
 	RtpHeaderExtensionDirectionSendonly RTPHeaderExtensionDirection = 1
 	// RtpHeaderExtensionDirectionRecvonly wraps GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY
 	RtpHeaderExtensionDirectionRecvonly RTPHeaderExtensionDirection = 2
 	// RtpHeaderExtensionDirectionSendrecv wraps GST_RTP_HEADER_EXTENSION_DIRECTION_SENDRECV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_DIRECTION_SENDRECV
 	RtpHeaderExtensionDirectionSendrecv RTPHeaderExtensionDirection = 3
 	// RtpHeaderExtensionDirectionInherited wraps GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED
 	RtpHeaderExtensionDirectionInherited RTPHeaderExtensionDirection = 4
 )
 
@@ -1038,20 +933,17 @@ func (f RTPHeaderExtensionDirection) String() string {
 
 // RTPHeaderExtensionFlags wraps GstRTPHeaderExtensionFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPHeaderExtensionFlags
 type RTPHeaderExtensionFlags C.gint
 
 const (
 	// RtpHeaderExtensionOneByte wraps GST_RTP_HEADER_EXTENSION_ONE_BYTE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_ONE_BYTE
 	RtpHeaderExtensionOneByte RTPHeaderExtensionFlags = 1
 	// RtpHeaderExtensionTwoByte wraps GST_RTP_HEADER_EXTENSION_TWO_BYTE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_TWO_BYTE
 	RtpHeaderExtensionTwoByte RTPHeaderExtensionFlags = 2
 )
 
@@ -1090,8 +982,7 @@ func (f RTPHeaderExtensionFlags) String() string {
 
 // BufferAddRtpSourceMeta wraps gst_buffer_add_rtp_source_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func BufferAddRtpSourceMeta(buffer *gst.Buffer, ssrc *uint32, csrc []uint32) *RTPSourceMeta {
 	var carg1 *C.GstBuffer        // in, none, converted
 	var carg2 *C.guint32          // in, transfer: none, C Pointers: 1, Name: guint32, nullable, nullable
@@ -1124,8 +1015,7 @@ func BufferAddRtpSourceMeta(buffer *gst.Buffer, ssrc *uint32, csrc []uint32) *RT
 
 // BufferGetRtpSourceMeta wraps gst_buffer_get_rtp_source_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func BufferGetRtpSourceMeta(buffer *gst.Buffer) *RTPSourceMeta {
 	var carg1 *C.GstBuffer        // in, none, converted
 	var cret  *C.GstRTPSourceMeta // return, none, converted, nullable
@@ -1146,8 +1036,7 @@ func BufferGetRtpSourceMeta(buffer *gst.Buffer) *RTPSourceMeta {
 
 // RtcpNtpToUnix wraps gst_rtcp_ntp_to_unix
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func RtcpNtpToUnix(ntptime uint64) uint64 {
 	var carg1 C.guint64 // in, none, casted
 	var cret  C.guint64 // return, none, casted
@@ -1166,8 +1055,7 @@ func RtcpNtpToUnix(ntptime uint64) uint64 {
 
 // RtcpSdesNameToType wraps gst_rtcp_sdes_name_to_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func RtcpSdesNameToType(name string) RTCPSDESType {
 	var carg1 *C.gchar          // in, none, string
 	var cret  C.GstRTCPSDESType // return, none, casted
@@ -1187,8 +1075,7 @@ func RtcpSdesNameToType(name string) RTCPSDESType {
 
 // RtcpSdesTypeToName wraps gst_rtcp_sdes_type_to_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func RtcpSdesTypeToName(typ RTCPSDESType) string {
 	var carg1 C.GstRTCPSDESType // in, none, casted
 	var cret  *C.gchar          // return, none, string
@@ -1207,8 +1094,7 @@ func RtcpSdesTypeToName(typ RTCPSDESType) string {
 
 // RtcpUnixToNtp wraps gst_rtcp_unix_to_ntp
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func RtcpUnixToNtp(unixtime uint64) uint64 {
 	var carg1 C.guint64 // in, none, casted
 	var cret  C.guint64 // return, none, casted
@@ -1227,8 +1113,7 @@ func RtcpUnixToNtp(unixtime uint64) uint64 {
 
 // RtpGetHeaderExtensionList wraps gst_rtp_get_header_extension_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func RtpGetHeaderExtensionList() []gst.ElementFactory {
 	var cret *C.GList // container, transfer: full
 
@@ -1250,7 +1135,7 @@ func RtpGetHeaderExtensionList() []gst.ElementFactory {
 
 // RtpSourceMetaAPIGetType wraps gst_rtp_source_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func RtpSourceMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -1273,71 +1158,58 @@ var _ RTPBaseDepayload = (*RTPBaseDepayloadInstance)(nil)
 
 // RTPBaseDepayload wraps GstRTPBaseDepayload
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#GstRTPBaseDepayload
 type RTPBaseDepayload interface {
 	gst.Element
 	upcastToGstRTPBaseDepayload() *RTPBaseDepayloadInstance
 
 	// Delayed wraps gst_rtp_base_depayload_delayed
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_delayed
 	Delayed()
 	// Dropped wraps gst_rtp_base_depayload_dropped
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_dropped
 	Dropped()
 	// Flush wraps gst_rtp_base_depayload_flush
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_flush
 	Flush(bool)
 	// IsAggregateHdrextEnabled wraps gst_rtp_base_depayload_is_aggregate_hdrext_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_is_aggregate_hdrext_enabled
 	IsAggregateHdrextEnabled() bool
 	// IsSourceInfoEnabled wraps gst_rtp_base_depayload_is_source_info_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_is_source_info_enabled
 	IsSourceInfoEnabled() bool
 	// Push wraps gst_rtp_base_depayload_push
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_push
 	Push(*gst.Buffer) gst.FlowReturn
 	// PushList wraps gst_rtp_base_depayload_push_list
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_push_list
 	PushList(*gst.BufferList) gst.FlowReturn
 	// SetAggregateHdrextEnabled wraps gst_rtp_base_depayload_set_aggregate_hdrext_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_set_aggregate_hdrext_enabled
 	SetAggregateHdrextEnabled(bool)
 	// SetSourceInfoEnabled wraps gst_rtp_base_depayload_set_source_info_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_set_source_info_enabled
 	SetSourceInfoEnabled(bool)
 	// EmitAddExtension emits the "add-extension" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp
 	EmitAddExtension(RTPHeaderExtension)
 	// EmitClearExtensions emits the "clear-extensions" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp
 	EmitClearExtensions()
 	// ConnectRequestExtension connects the provided callback to the "request-extension" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp
 	ConnectRequestExtension(func(RTPBaseDepayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -1345,27 +1217,27 @@ type RTPBaseDepayload interface {
 	// ParentHandleEvent calls the default implementations of the `GstRTPBaseDepayload.handle_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#handle_event
 	ParentHandleEvent(event *gst.Event) bool
 	// ParentPacketLost calls the default implementations of the `GstRTPBaseDepayload.packet_lost` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#packet_lost
 	ParentPacketLost(event *gst.Event) bool
 	// ParentProcess calls the default implementations of the `GstRTPBaseDepayload.process` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#process
 	ParentProcess(in *gst.Buffer) *gst.Buffer
 	// ParentProcessRtpPacket calls the default implementations of the `GstRTPBaseDepayload.process_rtp_packet` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#process_rtp_packet
 	ParentProcessRtpPacket(rtpBuffer *RTPBuffer) *gst.Buffer
 	// ParentSetCaps calls the default implementations of the `GstRTPBaseDepayload.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#set_caps
 	ParentSetCaps(caps *gst.Caps) bool
 }
 
@@ -1425,8 +1297,7 @@ func UnsafeRTPBaseDepayloadToGlibFull(c RTPBaseDepayload) unsafe.Pointer {
 
 // Delayed wraps gst_rtp_base_depayload_delayed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_delayed
 func (depayload *RTPBaseDepayloadInstance) Delayed() {
 	var carg0 *C.GstRTPBaseDepayload // in, none, converted
 
@@ -1438,8 +1309,7 @@ func (depayload *RTPBaseDepayloadInstance) Delayed() {
 
 // Dropped wraps gst_rtp_base_depayload_dropped
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_dropped
 func (depayload *RTPBaseDepayloadInstance) Dropped() {
 	var carg0 *C.GstRTPBaseDepayload // in, none, converted
 
@@ -1451,8 +1321,7 @@ func (depayload *RTPBaseDepayloadInstance) Dropped() {
 
 // Flush wraps gst_rtp_base_depayload_flush
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_flush
 func (depayload *RTPBaseDepayloadInstance) Flush(keepCurrent bool) {
 	var carg0 *C.GstRTPBaseDepayload // in, none, converted
 	var carg1 C.gboolean             // in
@@ -1469,8 +1338,7 @@ func (depayload *RTPBaseDepayloadInstance) Flush(keepCurrent bool) {
 
 // IsAggregateHdrextEnabled wraps gst_rtp_base_depayload_is_aggregate_hdrext_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_is_aggregate_hdrext_enabled
 func (depayload *RTPBaseDepayloadInstance) IsAggregateHdrextEnabled() bool {
 	var carg0 *C.GstRTPBaseDepayload // in, none, converted
 	var cret  C.gboolean             // return
@@ -1491,8 +1359,7 @@ func (depayload *RTPBaseDepayloadInstance) IsAggregateHdrextEnabled() bool {
 
 // IsSourceInfoEnabled wraps gst_rtp_base_depayload_is_source_info_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_is_source_info_enabled
 func (depayload *RTPBaseDepayloadInstance) IsSourceInfoEnabled() bool {
 	var carg0 *C.GstRTPBaseDepayload // in, none, converted
 	var cret  C.gboolean             // return
@@ -1513,8 +1380,7 @@ func (depayload *RTPBaseDepayloadInstance) IsSourceInfoEnabled() bool {
 
 // Push wraps gst_rtp_base_depayload_push
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_push
 func (filter *RTPBaseDepayloadInstance) Push(outBuf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstRTPBaseDepayload // in, none, converted
 	var carg1 *C.GstBuffer           // in, full, converted
@@ -1536,8 +1402,7 @@ func (filter *RTPBaseDepayloadInstance) Push(outBuf *gst.Buffer) gst.FlowReturn 
 
 // PushList wraps gst_rtp_base_depayload_push_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_push_list
 func (filter *RTPBaseDepayloadInstance) PushList(outList *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstRTPBaseDepayload // in, none, converted
 	var carg1 *C.GstBufferList       // in, full, converted
@@ -1559,8 +1424,7 @@ func (filter *RTPBaseDepayloadInstance) PushList(outList *gst.BufferList) gst.Fl
 
 // SetAggregateHdrextEnabled wraps gst_rtp_base_depayload_set_aggregate_hdrext_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_set_aggregate_hdrext_enabled
 func (depayload *RTPBaseDepayloadInstance) SetAggregateHdrextEnabled(enable bool) {
 	var carg0 *C.GstRTPBaseDepayload // in, none, converted
 	var carg1 C.gboolean             // in
@@ -1577,8 +1441,7 @@ func (depayload *RTPBaseDepayloadInstance) SetAggregateHdrextEnabled(enable bool
 
 // SetSourceInfoEnabled wraps gst_rtp_base_depayload_set_source_info_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#gst_rtp_base_depayload_set_source_info_enabled
 func (depayload *RTPBaseDepayloadInstance) SetSourceInfoEnabled(enable bool) {
 	var carg0 *C.GstRTPBaseDepayload // in, none, converted
 	var carg1 C.gboolean             // in
@@ -1595,24 +1458,21 @@ func (depayload *RTPBaseDepayloadInstance) SetSourceInfoEnabled(enable bool) {
 
 // EmitAddExtension emits the "add-extension" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func (o *RTPBaseDepayloadInstance) EmitAddExtension(arg0 RTPHeaderExtension) {
 	o.Emit("add-extension", arg0)
 }
 
 // EmitClearExtensions emits the "clear-extensions" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func (o *RTPBaseDepayloadInstance) EmitClearExtensions() {
 	o.Emit("clear-extensions")
 }
 
 // ConnectRequestExtension connects the provided callback to the "request-extension" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func (o *RTPBaseDepayloadInstance) ConnectRequestExtension(fn func(RTPBaseDepayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle {
 	return o.Connect("request-extension", fn)
 }
@@ -1625,23 +1485,23 @@ type RTPBaseDepayloadOverrides[Instance RTPBaseDepayload] struct {
 
 	// // HandleEvent allows you to override the implementation of the virtual method handle_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#handle_event
 	HandleEvent func(Instance, *gst.Event) bool
 	// // PacketLost allows you to override the implementation of the virtual method packet_lost.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#packet_lost
 	PacketLost func(Instance, *gst.Event) bool
 	// // Process allows you to override the implementation of the virtual method process.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#process
 	Process func(Instance, *gst.Buffer) *gst.Buffer
 	// // ProcessRtpPacket allows you to override the implementation of the virtual method process_rtp_packet.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#process_rtp_packet
 	ProcessRtpPacket func(Instance, *RTPBuffer) *gst.Buffer
 	// // SetCaps allows you to override the implementation of the virtual method set_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#set_caps
 	SetCaps func(Instance, *gst.Caps) bool
 }
 
@@ -1772,7 +1632,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 // ParentHandleEvent calls the default implementations of the `GstRTPBaseDepayload.handle_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#handle_event
 func (filter *RTPBaseDepayloadInstance) ParentHandleEvent(event *gst.Event) bool {
 	var carg0 *C.GstRTPBaseDepayload
 	var carg1 *C.GstEvent // in, none, converted
@@ -1799,7 +1659,7 @@ func (filter *RTPBaseDepayloadInstance) ParentHandleEvent(event *gst.Event) bool
 // ParentPacketLost calls the default implementations of the `GstRTPBaseDepayload.packet_lost` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#packet_lost
 func (filter *RTPBaseDepayloadInstance) ParentPacketLost(event *gst.Event) bool {
 	var carg0 *C.GstRTPBaseDepayload
 	var carg1 *C.GstEvent // in, none, converted
@@ -1826,7 +1686,7 @@ func (filter *RTPBaseDepayloadInstance) ParentPacketLost(event *gst.Event) bool 
 // ParentProcess calls the default implementations of the `GstRTPBaseDepayload.process` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#process
 func (base *RTPBaseDepayloadInstance) ParentProcess(in *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstRTPBaseDepayload
 	var carg1 *C.GstBuffer // in, none, converted
@@ -1851,7 +1711,7 @@ func (base *RTPBaseDepayloadInstance) ParentProcess(in *gst.Buffer) *gst.Buffer 
 // ParentProcessRtpPacket calls the default implementations of the `GstRTPBaseDepayload.process_rtp_packet` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#process_rtp_packet
 func (base *RTPBaseDepayloadInstance) ParentProcessRtpPacket(rtpBuffer *RTPBuffer) *gst.Buffer {
 	var carg0 *C.GstRTPBaseDepayload
 	var carg1 *C.GstRTPBuffer // in, none, converted
@@ -1876,7 +1736,7 @@ func (base *RTPBaseDepayloadInstance) ParentProcessRtpPacket(rtpBuffer *RTPBuffe
 // ParentSetCaps calls the default implementations of the `GstRTPBaseDepayload.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#set_caps
 func (filter *RTPBaseDepayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstRTPBaseDepayload
 	var carg1 *C.GstCaps // in, none, converted
@@ -1936,71 +1796,58 @@ var _ RTPBasePayload = (*RTPBasePayloadInstance)(nil)
 
 // RTPBasePayload wraps GstRTPBasePayload
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#GstRTPBasePayload
 type RTPBasePayload interface {
 	gst.Element
 	upcastToGstRTPBasePayload() *RTPBasePayloadInstance
 
 	// AllocateOutputBuffer wraps gst_rtp_base_payload_allocate_output_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_allocate_output_buffer
 	AllocateOutputBuffer(uint, uint8, uint8) *gst.Buffer
 	// GetSourceCount wraps gst_rtp_base_payload_get_source_count
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_get_source_count
 	GetSourceCount(*gst.Buffer) uint
 	// IsFilled wraps gst_rtp_base_payload_is_filled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_is_filled
 	IsFilled(uint, gst.ClockTime) bool
 	// IsSourceInfoEnabled wraps gst_rtp_base_payload_is_source_info_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_is_source_info_enabled
 	IsSourceInfoEnabled() bool
 	// PushBuffer wraps gst_rtp_base_payload_push
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_push
 	PushBuffer(*gst.Buffer) gst.FlowReturn
 	// PushList wraps gst_rtp_base_payload_push_list
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_push_list
 	PushList(*gst.BufferList) gst.FlowReturn
 	// SetOptions wraps gst_rtp_base_payload_set_options
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_set_options
 	SetOptions(string, bool, string, uint32)
 	// SetOutcapsStructure wraps gst_rtp_base_payload_set_outcaps_structure
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_set_outcaps_structure
 	SetOutcapsStructure(*gst.Structure) bool
 	// SetSourceInfoEnabled wraps gst_rtp_base_payload_set_source_info_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_set_source_info_enabled
 	SetSourceInfoEnabled(bool)
 	// EmitAddExtension emits the "add-extension" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp
 	EmitAddExtension(RTPHeaderExtension)
 	// EmitClearExtensions emits the "clear-extensions" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp
 	EmitClearExtensions()
 	// ConnectRequestExtension connects the provided callback to the "request-extension" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp
 	ConnectRequestExtension(func(RTPBasePayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -2008,32 +1855,32 @@ type RTPBasePayload interface {
 	// ParentGetCaps calls the default implementations of the `GstRTPBasePayload.get_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#get_caps
 	ParentGetCaps(pad gst.Pad, filter *gst.Caps) *gst.Caps
 	// ParentHandleBuffer calls the default implementations of the `GstRTPBasePayload.handle_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#handle_buffer
 	ParentHandleBuffer(buffer *gst.Buffer) gst.FlowReturn
 	// ParentQueryRTPBasePayload calls the default implementations of the `GstRTPBasePayload.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#query
 	ParentQueryRTPBasePayload(pad gst.Pad, query *gst.Query) bool
 	// ParentSetCaps calls the default implementations of the `GstRTPBasePayload.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#set_caps
 	ParentSetCaps(caps *gst.Caps) bool
 	// ParentSinkEvent calls the default implementations of the `GstRTPBasePayload.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#sink_event
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSrcEvent calls the default implementations of the `GstRTPBasePayload.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#src_event
 	ParentSrcEvent(event *gst.Event) bool
 }
 
@@ -2093,8 +1940,7 @@ func UnsafeRTPBasePayloadToGlibFull(c RTPBasePayload) unsafe.Pointer {
 
 // AllocateOutputBuffer wraps gst_rtp_base_payload_allocate_output_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_allocate_output_buffer
 func (payload *RTPBasePayloadInstance) AllocateOutputBuffer(payloadLen uint, padLen uint8, csrcCount uint8) *gst.Buffer {
 	var carg0 *C.GstRTPBasePayload // in, none, converted
 	var carg1 C.guint              // in, none, casted
@@ -2122,8 +1968,7 @@ func (payload *RTPBasePayloadInstance) AllocateOutputBuffer(payloadLen uint, pad
 
 // GetSourceCount wraps gst_rtp_base_payload_get_source_count
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_get_source_count
 func (payload *RTPBasePayloadInstance) GetSourceCount(buffer *gst.Buffer) uint {
 	var carg0 *C.GstRTPBasePayload // in, none, converted
 	var carg1 *C.GstBuffer         // in, none, converted
@@ -2145,8 +1990,7 @@ func (payload *RTPBasePayloadInstance) GetSourceCount(buffer *gst.Buffer) uint {
 
 // IsFilled wraps gst_rtp_base_payload_is_filled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_is_filled
 func (payload *RTPBasePayloadInstance) IsFilled(size uint, duration gst.ClockTime) bool {
 	var carg0 *C.GstRTPBasePayload // in, none, converted
 	var carg1 C.guint              // in, none, casted
@@ -2173,8 +2017,7 @@ func (payload *RTPBasePayloadInstance) IsFilled(size uint, duration gst.ClockTim
 
 // IsSourceInfoEnabled wraps gst_rtp_base_payload_is_source_info_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_is_source_info_enabled
 func (payload *RTPBasePayloadInstance) IsSourceInfoEnabled() bool {
 	var carg0 *C.GstRTPBasePayload // in, none, converted
 	var cret  C.gboolean           // return
@@ -2195,8 +2038,7 @@ func (payload *RTPBasePayloadInstance) IsSourceInfoEnabled() bool {
 
 // PushBuffer wraps gst_rtp_base_payload_push
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_push
 func (payload *RTPBasePayloadInstance) PushBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstRTPBasePayload // in, none, converted
 	var carg1 *C.GstBuffer         // in, full, converted
@@ -2218,8 +2060,7 @@ func (payload *RTPBasePayloadInstance) PushBuffer(buffer *gst.Buffer) gst.FlowRe
 
 // PushList wraps gst_rtp_base_payload_push_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_push_list
 func (payload *RTPBasePayloadInstance) PushList(list *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstRTPBasePayload // in, none, converted
 	var carg1 *C.GstBufferList     // in, full, converted
@@ -2241,8 +2082,7 @@ func (payload *RTPBasePayloadInstance) PushList(list *gst.BufferList) gst.FlowRe
 
 // SetOptions wraps gst_rtp_base_payload_set_options
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_set_options
 func (payload *RTPBasePayloadInstance) SetOptions(media string, dynamic bool, encodingName string, clockRate uint32) {
 	var carg0 *C.GstRTPBasePayload // in, none, converted
 	var carg1 *C.gchar             // in, none, string
@@ -2270,8 +2110,7 @@ func (payload *RTPBasePayloadInstance) SetOptions(media string, dynamic bool, en
 
 // SetOutcapsStructure wraps gst_rtp_base_payload_set_outcaps_structure
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_set_outcaps_structure
 func (payload *RTPBasePayloadInstance) SetOutcapsStructure(s *gst.Structure) bool {
 	var carg0 *C.GstRTPBasePayload // in, none, converted
 	var carg1 *C.GstStructure      // in, none, converted, nullable
@@ -2297,8 +2136,7 @@ func (payload *RTPBasePayloadInstance) SetOutcapsStructure(s *gst.Structure) boo
 
 // SetSourceInfoEnabled wraps gst_rtp_base_payload_set_source_info_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#gst_rtp_base_payload_set_source_info_enabled
 func (payload *RTPBasePayloadInstance) SetSourceInfoEnabled(enable bool) {
 	var carg0 *C.GstRTPBasePayload // in, none, converted
 	var carg1 C.gboolean           // in
@@ -2315,24 +2153,21 @@ func (payload *RTPBasePayloadInstance) SetSourceInfoEnabled(enable bool) {
 
 // EmitAddExtension emits the "add-extension" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func (o *RTPBasePayloadInstance) EmitAddExtension(arg0 RTPHeaderExtension) {
 	o.Emit("add-extension", arg0)
 }
 
 // EmitClearExtensions emits the "clear-extensions" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func (o *RTPBasePayloadInstance) EmitClearExtensions() {
 	o.Emit("clear-extensions")
 }
 
 // ConnectRequestExtension connects the provided callback to the "request-extension" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp
 func (o *RTPBasePayloadInstance) ConnectRequestExtension(fn func(RTPBasePayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle {
 	return o.Connect("request-extension", fn)
 }
@@ -2345,27 +2180,27 @@ type RTPBasePayloadOverrides[Instance RTPBasePayload] struct {
 
 	// // GetCaps allows you to override the implementation of the virtual method get_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#get_caps
 	GetCaps func(Instance, gst.Pad, *gst.Caps) *gst.Caps
 	// // HandleBuffer allows you to override the implementation of the virtual method handle_buffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#handle_buffer
 	HandleBuffer func(Instance, *gst.Buffer) gst.FlowReturn
 	// // Query allows you to override the implementation of the virtual method query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#query
 	Query func(Instance, gst.Pad, *gst.Query) bool
 	// // SetCaps allows you to override the implementation of the virtual method set_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#set_caps
 	SetCaps func(Instance, *gst.Caps) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#sink_event
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#src_event
 	SrcEvent func(Instance, *gst.Event) bool
 }
 
@@ -2524,7 +2359,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 // ParentGetCaps calls the default implementations of the `GstRTPBasePayload.get_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#get_caps
 func (payload *RTPBasePayloadInstance) ParentGetCaps(pad gst.Pad, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstRTPBasePayload
 	var carg1 *C.GstPad  // in, none, converted
@@ -2552,7 +2387,7 @@ func (payload *RTPBasePayloadInstance) ParentGetCaps(pad gst.Pad, filter *gst.Ca
 // ParentHandleBuffer calls the default implementations of the `GstRTPBasePayload.handle_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#handle_buffer
 func (payload *RTPBasePayloadInstance) ParentHandleBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstRTPBasePayload
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -2577,7 +2412,7 @@ func (payload *RTPBasePayloadInstance) ParentHandleBuffer(buffer *gst.Buffer) gs
 // ParentQueryRTPBasePayload calls the default implementations of the `GstRTPBasePayload.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#query
 func (payload *RTPBasePayloadInstance) ParentQueryRTPBasePayload(pad gst.Pad, query *gst.Query) bool {
 	var carg0 *C.GstRTPBasePayload
 	var carg1 *C.GstPad   // in, none, converted
@@ -2607,7 +2442,7 @@ func (payload *RTPBasePayloadInstance) ParentQueryRTPBasePayload(pad gst.Pad, qu
 // ParentSetCaps calls the default implementations of the `GstRTPBasePayload.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#set_caps
 func (payload *RTPBasePayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstRTPBasePayload
 	var carg1 *C.GstCaps // in, none, converted
@@ -2634,7 +2469,7 @@ func (payload *RTPBasePayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
 // ParentSinkEvent calls the default implementations of the `GstRTPBasePayload.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#sink_event
 func (payload *RTPBasePayloadInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstRTPBasePayload
 	var carg1 *C.GstEvent // in, none, converted
@@ -2661,7 +2496,7 @@ func (payload *RTPBasePayloadInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSrcEvent calls the default implementations of the `GstRTPBasePayload.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#src_event
 func (payload *RTPBasePayloadInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstRTPBasePayload
 	var carg1 *C.GstEvent // in, none, converted
@@ -2721,92 +2556,78 @@ var _ RTPHeaderExtension = (*RTPHeaderExtensionInstance)(nil)
 
 // RTPHeaderExtension wraps GstRTPHeaderExtension
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GstRTPHeaderExtension
 type RTPHeaderExtension interface {
 	gst.Element
 	upcastToGstRTPHeaderExtension() *RTPHeaderExtensionInstance
 
 	// GetDirection wraps gst_rtp_header_extension_get_direction
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_direction
 	GetDirection() RTPHeaderExtensionDirection
 	// GetID wraps gst_rtp_header_extension_get_id
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_id
 	GetID() uint
 	// GetMaxSize wraps gst_rtp_header_extension_get_max_size
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_max_size
 	GetMaxSize(*gst.Buffer) uint
 	// GetSdpCapsFieldName wraps gst_rtp_header_extension_get_sdp_caps_field_name
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_sdp_caps_field_name
 	GetSdpCapsFieldName() string
 	// GetSupportedFlags wraps gst_rtp_header_extension_get_supported_flags
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_supported_flags
 	GetSupportedFlags() RTPHeaderExtensionFlags
 	// GetURI wraps gst_rtp_header_extension_get_uri
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_uri
 	GetURI() string
 	// Read wraps gst_rtp_header_extension_read
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_read
 	Read(RTPHeaderExtensionFlags, []uint8, *gst.Buffer) bool
 	// SetAttributesFromCaps wraps gst_rtp_header_extension_set_attributes_from_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_attributes_from_caps
 	SetAttributesFromCaps(*gst.Caps) bool
 	// SetCapsFromAttributes wraps gst_rtp_header_extension_set_caps_from_attributes
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_caps_from_attributes
 	SetCapsFromAttributes(*gst.Caps) bool
 	// SetCapsFromAttributesHelper wraps gst_rtp_header_extension_set_caps_from_attributes_helper
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_caps_from_attributes_helper
 	SetCapsFromAttributesHelper(*gst.Caps, string) bool
 	// SetDirection wraps gst_rtp_header_extension_set_direction
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_direction
 	SetDirection(RTPHeaderExtensionDirection)
 	// SetID wraps gst_rtp_header_extension_set_id
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_id
 	SetID(uint)
 	// SetNonRtpSinkCaps wraps gst_rtp_header_extension_set_non_rtp_sink_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_non_rtp_sink_caps
 	SetNonRtpSinkCaps(*gst.Caps) bool
 	// SetWantsUpdateNonRtpSrcCaps wraps gst_rtp_header_extension_set_wants_update_non_rtp_src_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_wants_update_non_rtp_src_caps
 	SetWantsUpdateNonRtpSrcCaps(bool)
 	// UpdateNonRtpSrcCaps wraps gst_rtp_header_extension_update_non_rtp_src_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_update_non_rtp_src_caps
 	UpdateNonRtpSrcCaps(*gst.Caps) bool
 	// WantsUpdateNonRtpSrcCaps wraps gst_rtp_header_extension_wants_update_non_rtp_src_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_wants_update_non_rtp_src_caps
 	WantsUpdateNonRtpSrcCaps() bool
 	// Write wraps gst_rtp_header_extension_write
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_write
 	Write(*gst.Buffer, RTPHeaderExtensionFlags, *gst.Buffer, []uint8) int
 
 	// chain up virtual methods:
@@ -2814,42 +2635,42 @@ type RTPHeaderExtension interface {
 	// ParentGetMaxSize calls the default implementations of the `GstRTPHeaderExtension.get_max_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#get_max_size
 	ParentGetMaxSize(inputMeta *gst.Buffer) uint
 	// ParentGetSupportedFlags calls the default implementations of the `GstRTPHeaderExtension.get_supported_flags` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#get_supported_flags
 	ParentGetSupportedFlags() RTPHeaderExtensionFlags
 	// ParentRead calls the default implementations of the `GstRTPHeaderExtension.read` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#read
 	ParentRead(readFlags RTPHeaderExtensionFlags, data []uint8, buffer *gst.Buffer) bool
 	// ParentSetAttributes calls the default implementations of the `GstRTPHeaderExtension.set_attributes` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#set_attributes
 	ParentSetAttributes(direction RTPHeaderExtensionDirection, attributes string) bool
 	// ParentSetCapsFromAttributes calls the default implementations of the `GstRTPHeaderExtension.set_caps_from_attributes` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#set_caps_from_attributes
 	ParentSetCapsFromAttributes(caps *gst.Caps) bool
 	// ParentSetNonRtpSinkCaps calls the default implementations of the `GstRTPHeaderExtension.set_non_rtp_sink_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#set_non_rtp_sink_caps
 	ParentSetNonRtpSinkCaps(caps *gst.Caps) bool
 	// ParentUpdateNonRtpSrcCaps calls the default implementations of the `GstRTPHeaderExtension.update_non_rtp_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#update_non_rtp_src_caps
 	ParentUpdateNonRtpSrcCaps(caps *gst.Caps) bool
 	// ParentWrite calls the default implementations of the `GstRTPHeaderExtension.write` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#write
 	ParentWrite(inputMeta *gst.Buffer, writeFlags RTPHeaderExtensionFlags, output *gst.Buffer, data []uint8) int
 }
 
@@ -2909,7 +2730,7 @@ func UnsafeRTPHeaderExtensionToGlibFull(c RTPHeaderExtension) unsafe.Pointer {
 
 // RTPHeaderExtensionCreateFromURI wraps gst_rtp_header_extension_create_from_uri
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_create_from_uri
 func RTPHeaderExtensionCreateFromURI(uri string) RTPHeaderExtension {
 	var carg1 *C.gchar                 // in, none, string
 	var cret  *C.GstRTPHeaderExtension // return, full, converted, nullable
@@ -2931,8 +2752,7 @@ func RTPHeaderExtensionCreateFromURI(uri string) RTPHeaderExtension {
 
 // GetDirection wraps gst_rtp_header_extension_get_direction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_direction
 func (ext *RTPHeaderExtensionInstance) GetDirection() RTPHeaderExtensionDirection {
 	var carg0 *C.GstRTPHeaderExtension         // in, none, converted
 	var cret  C.GstRTPHeaderExtensionDirection // return, none, casted
@@ -2951,7 +2771,7 @@ func (ext *RTPHeaderExtensionInstance) GetDirection() RTPHeaderExtensionDirectio
 
 // GetID wraps gst_rtp_header_extension_get_id
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_id
 func (ext *RTPHeaderExtensionInstance) GetID() uint {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var cret  C.guint                  // return, none, casted
@@ -2970,8 +2790,7 @@ func (ext *RTPHeaderExtensionInstance) GetID() uint {
 
 // GetMaxSize wraps gst_rtp_header_extension_get_max_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_max_size
 func (ext *RTPHeaderExtensionInstance) GetMaxSize(inputMeta *gst.Buffer) uint {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var carg1 *C.GstBuffer             // in, none, converted
@@ -2993,7 +2812,7 @@ func (ext *RTPHeaderExtensionInstance) GetMaxSize(inputMeta *gst.Buffer) uint {
 
 // GetSdpCapsFieldName wraps gst_rtp_header_extension_get_sdp_caps_field_name
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_sdp_caps_field_name
 func (ext *RTPHeaderExtensionInstance) GetSdpCapsFieldName() string {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var cret  *C.gchar                 // return, full, string
@@ -3013,7 +2832,7 @@ func (ext *RTPHeaderExtensionInstance) GetSdpCapsFieldName() string {
 
 // GetSupportedFlags wraps gst_rtp_header_extension_get_supported_flags
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_supported_flags
 func (ext *RTPHeaderExtensionInstance) GetSupportedFlags() RTPHeaderExtensionFlags {
 	var carg0 *C.GstRTPHeaderExtension     // in, none, converted
 	var cret  C.GstRTPHeaderExtensionFlags // return, none, casted
@@ -3032,7 +2851,7 @@ func (ext *RTPHeaderExtensionInstance) GetSupportedFlags() RTPHeaderExtensionFla
 
 // GetURI wraps gst_rtp_header_extension_get_uri
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_get_uri
 func (ext *RTPHeaderExtensionInstance) GetURI() string {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var cret  *C.gchar                 // return, none, string, nullable-string
@@ -3053,8 +2872,7 @@ func (ext *RTPHeaderExtensionInstance) GetURI() string {
 
 // Read wraps gst_rtp_header_extension_read
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_read
 func (ext *RTPHeaderExtensionInstance) Read(readFlags RTPHeaderExtensionFlags, data []uint8, buffer *gst.Buffer) bool {
 	var carg0 *C.GstRTPHeaderExtension     // in, none, converted
 	var carg1 C.GstRTPHeaderExtensionFlags // in, none, casted
@@ -3088,8 +2906,7 @@ func (ext *RTPHeaderExtensionInstance) Read(readFlags RTPHeaderExtensionFlags, d
 
 // SetAttributesFromCaps wraps gst_rtp_header_extension_set_attributes_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_attributes_from_caps
 func (ext *RTPHeaderExtensionInstance) SetAttributesFromCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var carg1 *C.GstCaps               // in, none, converted
@@ -3113,8 +2930,7 @@ func (ext *RTPHeaderExtensionInstance) SetAttributesFromCaps(caps *gst.Caps) boo
 
 // SetCapsFromAttributes wraps gst_rtp_header_extension_set_caps_from_attributes
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_caps_from_attributes
 func (ext *RTPHeaderExtensionInstance) SetCapsFromAttributes(caps *gst.Caps) bool {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var carg1 *C.GstCaps               // in, none, converted
@@ -3138,8 +2954,7 @@ func (ext *RTPHeaderExtensionInstance) SetCapsFromAttributes(caps *gst.Caps) boo
 
 // SetCapsFromAttributesHelper wraps gst_rtp_header_extension_set_caps_from_attributes_helper
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_caps_from_attributes_helper
 func (ext *RTPHeaderExtensionInstance) SetCapsFromAttributesHelper(caps *gst.Caps, attributes string) bool {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var carg1 *C.GstCaps               // in, none, converted
@@ -3167,8 +2982,7 @@ func (ext *RTPHeaderExtensionInstance) SetCapsFromAttributesHelper(caps *gst.Cap
 
 // SetDirection wraps gst_rtp_header_extension_set_direction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_direction
 func (ext *RTPHeaderExtensionInstance) SetDirection(direction RTPHeaderExtensionDirection) {
 	var carg0 *C.GstRTPHeaderExtension         // in, none, converted
 	var carg1 C.GstRTPHeaderExtensionDirection // in, none, casted
@@ -3183,8 +2997,7 @@ func (ext *RTPHeaderExtensionInstance) SetDirection(direction RTPHeaderExtension
 
 // SetID wraps gst_rtp_header_extension_set_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_id
 func (ext *RTPHeaderExtensionInstance) SetID(extId uint) {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var carg1 C.guint                  // in, none, casted
@@ -3199,8 +3012,7 @@ func (ext *RTPHeaderExtensionInstance) SetID(extId uint) {
 
 // SetNonRtpSinkCaps wraps gst_rtp_header_extension_set_non_rtp_sink_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_non_rtp_sink_caps
 func (ext *RTPHeaderExtensionInstance) SetNonRtpSinkCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var carg1 *C.GstCaps               // in, none, converted
@@ -3224,8 +3036,7 @@ func (ext *RTPHeaderExtensionInstance) SetNonRtpSinkCaps(caps *gst.Caps) bool {
 
 // SetWantsUpdateNonRtpSrcCaps wraps gst_rtp_header_extension_set_wants_update_non_rtp_src_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_set_wants_update_non_rtp_src_caps
 func (ext *RTPHeaderExtensionInstance) SetWantsUpdateNonRtpSrcCaps(state bool) {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var carg1 C.gboolean               // in
@@ -3242,8 +3053,7 @@ func (ext *RTPHeaderExtensionInstance) SetWantsUpdateNonRtpSrcCaps(state bool) {
 
 // UpdateNonRtpSrcCaps wraps gst_rtp_header_extension_update_non_rtp_src_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_update_non_rtp_src_caps
 func (ext *RTPHeaderExtensionInstance) UpdateNonRtpSrcCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var carg1 *C.GstCaps               // in, none, converted
@@ -3267,8 +3077,7 @@ func (ext *RTPHeaderExtensionInstance) UpdateNonRtpSrcCaps(caps *gst.Caps) bool 
 
 // WantsUpdateNonRtpSrcCaps wraps gst_rtp_header_extension_wants_update_non_rtp_src_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_wants_update_non_rtp_src_caps
 func (ext *RTPHeaderExtensionInstance) WantsUpdateNonRtpSrcCaps() bool {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
 	var cret  C.gboolean               // return
@@ -3289,8 +3098,7 @@ func (ext *RTPHeaderExtensionInstance) WantsUpdateNonRtpSrcCaps() bool {
 
 // Write wraps gst_rtp_header_extension_write
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_write
 func (ext *RTPHeaderExtensionInstance) Write(inputMeta *gst.Buffer, writeFlags RTPHeaderExtensionFlags, output *gst.Buffer, data []uint8) int {
 	var carg0 *C.GstRTPHeaderExtension     // in, none, converted
 	var carg1 *C.GstBuffer                 // in, none, converted
@@ -3331,35 +3139,35 @@ type RTPHeaderExtensionOverrides[Instance RTPHeaderExtension] struct {
 
 	// // GetMaxSize allows you to override the implementation of the virtual method get_max_size.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#get_max_size
 	GetMaxSize func(Instance, *gst.Buffer) uint
 	// // GetSupportedFlags allows you to override the implementation of the virtual method get_supported_flags.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#get_supported_flags
 	GetSupportedFlags func(Instance) RTPHeaderExtensionFlags
 	// // Read allows you to override the implementation of the virtual method read.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#read
 	Read func(Instance, RTPHeaderExtensionFlags, []uint8, *gst.Buffer) bool
 	// // SetAttributes allows you to override the implementation of the virtual method set_attributes.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#set_attributes
 	SetAttributes func(Instance, RTPHeaderExtensionDirection, string) bool
 	// // SetCapsFromAttributes allows you to override the implementation of the virtual method set_caps_from_attributes.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#set_caps_from_attributes
 	SetCapsFromAttributes func(Instance, *gst.Caps) bool
 	// // SetNonRtpSinkCaps allows you to override the implementation of the virtual method set_non_rtp_sink_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#set_non_rtp_sink_caps
 	SetNonRtpSinkCaps func(Instance, *gst.Caps) bool
 	// // UpdateNonRtpSrcCaps allows you to override the implementation of the virtual method update_non_rtp_src_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#update_non_rtp_src_caps
 	UpdateNonRtpSrcCaps func(Instance, *gst.Caps) bool
 	// // Write allows you to override the implementation of the virtual method write.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#write
 	Write func(Instance, *gst.Buffer, RTPHeaderExtensionFlags, *gst.Buffer, []uint8) int
 }
 
@@ -3576,7 +3384,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 // ParentGetMaxSize calls the default implementations of the `GstRTPHeaderExtension.get_max_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#get_max_size
 func (ext *RTPHeaderExtensionInstance) ParentGetMaxSize(inputMeta *gst.Buffer) uint {
 	var carg0 *C.GstRTPHeaderExtension
 	var carg1 *C.GstBuffer // in, none, converted
@@ -3601,7 +3409,7 @@ func (ext *RTPHeaderExtensionInstance) ParentGetMaxSize(inputMeta *gst.Buffer) u
 // ParentGetSupportedFlags calls the default implementations of the `GstRTPHeaderExtension.get_supported_flags` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#get_supported_flags
 func (ext *RTPHeaderExtensionInstance) ParentGetSupportedFlags() RTPHeaderExtensionFlags {
 	var carg0 *C.GstRTPHeaderExtension
 	var cret  C.GstRTPHeaderExtensionFlags // return, none, casted
@@ -3623,7 +3431,7 @@ func (ext *RTPHeaderExtensionInstance) ParentGetSupportedFlags() RTPHeaderExtens
 // ParentRead calls the default implementations of the `GstRTPHeaderExtension.read` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#read
 func (ext *RTPHeaderExtensionInstance) ParentRead(readFlags RTPHeaderExtensionFlags, data []uint8, buffer *gst.Buffer) bool {
 	var carg0 *C.GstRTPHeaderExtension
 	var carg1 C.GstRTPHeaderExtensionFlags // in, none, converted
@@ -3660,7 +3468,7 @@ func (ext *RTPHeaderExtensionInstance) ParentRead(readFlags RTPHeaderExtensionFl
 // ParentSetAttributes calls the default implementations of the `GstRTPHeaderExtension.set_attributes` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#set_attributes
 func (ext *RTPHeaderExtensionInstance) ParentSetAttributes(direction RTPHeaderExtensionDirection, attributes string) bool {
 	var carg0 *C.GstRTPHeaderExtension
 	var carg1 C.GstRTPHeaderExtensionDirection // in, none, converted
@@ -3691,7 +3499,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetAttributes(direction RTPHeaderEx
 // ParentSetCapsFromAttributes calls the default implementations of the `GstRTPHeaderExtension.set_caps_from_attributes` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#set_caps_from_attributes
 func (ext *RTPHeaderExtensionInstance) ParentSetCapsFromAttributes(caps *gst.Caps) bool {
 	var carg0 *C.GstRTPHeaderExtension
 	var carg1 *C.GstCaps // in, none, converted
@@ -3718,7 +3526,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetCapsFromAttributes(caps *gst.Cap
 // ParentSetNonRtpSinkCaps calls the default implementations of the `GstRTPHeaderExtension.set_non_rtp_sink_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#set_non_rtp_sink_caps
 func (ext *RTPHeaderExtensionInstance) ParentSetNonRtpSinkCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstRTPHeaderExtension
 	var carg1 *C.GstCaps // in, none, converted
@@ -3745,7 +3553,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetNonRtpSinkCaps(caps *gst.Caps) b
 // ParentUpdateNonRtpSrcCaps calls the default implementations of the `GstRTPHeaderExtension.update_non_rtp_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#update_non_rtp_src_caps
 func (ext *RTPHeaderExtensionInstance) ParentUpdateNonRtpSrcCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstRTPHeaderExtension
 	var carg1 *C.GstCaps // in, none, converted
@@ -3772,7 +3580,7 @@ func (ext *RTPHeaderExtensionInstance) ParentUpdateNonRtpSrcCaps(caps *gst.Caps)
 // ParentWrite calls the default implementations of the `GstRTPHeaderExtension.write` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#write
 func (ext *RTPHeaderExtensionInstance) ParentWrite(inputMeta *gst.Buffer, writeFlags RTPHeaderExtensionFlags, output *gst.Buffer, data []uint8) int {
 	var carg0 *C.GstRTPHeaderExtension
 	var carg1 *C.GstBuffer                 // in, none, converted
@@ -3843,51 +3651,42 @@ var _ RTPBaseAudioPayload = (*RTPBaseAudioPayloadInstance)(nil)
 
 // RTPBaseAudioPayload wraps GstRTPBaseAudioPayload
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#GstRTPBaseAudioPayload
 type RTPBaseAudioPayload interface {
 	RTPBasePayload
 	upcastToGstRTPBaseAudioPayload() *RTPBaseAudioPayloadInstance
 
 	// Flush wraps gst_rtp_base_audio_payload_flush
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_flush
 	Flush(uint, gst.ClockTime) gst.FlowReturn
 	// GetAdapter wraps gst_rtp_base_audio_payload_get_adapter
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_get_adapter
 	GetAdapter() gstbase.Adapter
 	// Push wraps gst_rtp_base_audio_payload_push
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_push
 	Push([]uint8, gst.ClockTime) gst.FlowReturn
 	// SetFrameBased wraps gst_rtp_base_audio_payload_set_frame_based
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_frame_based
 	SetFrameBased()
 	// SetFrameOptions wraps gst_rtp_base_audio_payload_set_frame_options
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_frame_options
 	SetFrameOptions(int32, int32)
 	// SetSampleBased wraps gst_rtp_base_audio_payload_set_sample_based
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_sample_based
 	SetSampleBased()
 	// SetSampleOptions wraps gst_rtp_base_audio_payload_set_sample_options
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_sample_options
 	SetSampleOptions(int32)
 	// SetSamplebitsOptions wraps gst_rtp_base_audio_payload_set_samplebits_options
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_samplebits_options
 	SetSamplebitsOptions(int32)
 
 	// chain up virtual methods:
@@ -3951,8 +3750,7 @@ func UnsafeRTPBaseAudioPayloadToGlibFull(c RTPBaseAudioPayload) unsafe.Pointer {
 
 // Flush wraps gst_rtp_base_audio_payload_flush
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_flush
 func (baseaudiopayload *RTPBaseAudioPayloadInstance) Flush(payloadLen uint, timestamp gst.ClockTime) gst.FlowReturn {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 	var carg1 C.guint                   // in, none, casted
@@ -3977,8 +3775,7 @@ func (baseaudiopayload *RTPBaseAudioPayloadInstance) Flush(payloadLen uint, time
 
 // GetAdapter wraps gst_rtp_base_audio_payload_get_adapter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_get_adapter
 func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) GetAdapter() gstbase.Adapter {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 	var cret  *C.GstAdapter             // return, full, converted
@@ -3997,8 +3794,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) GetAdapter() gstbase.Ada
 
 // Push wraps gst_rtp_base_audio_payload_push
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_push
 func (baseaudiopayload *RTPBaseAudioPayloadInstance) Push(data []uint8, timestamp gst.ClockTime) gst.FlowReturn {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 	var carg1 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -4027,8 +3823,7 @@ func (baseaudiopayload *RTPBaseAudioPayloadInstance) Push(data []uint8, timestam
 
 // SetFrameBased wraps gst_rtp_base_audio_payload_set_frame_based
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_frame_based
 func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetFrameBased() {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 
@@ -4040,8 +3835,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetFrameBased() {
 
 // SetFrameOptions wraps gst_rtp_base_audio_payload_set_frame_options
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_frame_options
 func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetFrameOptions(frameDuration int32, frameSize int32) {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 	var carg1 C.gint                    // in, none, casted
@@ -4059,8 +3853,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetFrameOptions(frameDur
 
 // SetSampleBased wraps gst_rtp_base_audio_payload_set_sample_based
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_sample_based
 func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSampleBased() {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 
@@ -4072,8 +3865,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSampleBased() {
 
 // SetSampleOptions wraps gst_rtp_base_audio_payload_set_sample_options
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_sample_options
 func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSampleOptions(sampleSize int32) {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 	var carg1 C.gint                    // in, none, casted
@@ -4088,8 +3880,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSampleOptions(sampleS
 
 // SetSamplebitsOptions wraps gst_rtp_base_audio_payload_set_samplebits_options
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#gst_rtp_base_audio_payload_set_samplebits_options
 func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSamplebitsOptions(sampleSize int32) {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 	var carg1 C.gint                    // in, none, casted
@@ -4144,8 +3935,7 @@ func RegisterRTPBaseAudioPayloadSubClass[InstanceT RTPBaseAudioPayload](
 
 // RTCPBuffer wraps GstRTCPBuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GstRTCPBuffer
 type RTCPBuffer struct {
 	*rTCPBuffer
 }
@@ -4226,8 +4016,7 @@ func UnsafeRTCPBufferToGlibFull(r *RTCPBuffer) unsafe.Pointer {
 
 // RTCPBufferMap wraps gst_rtcp_buffer_map
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_map
 func RTCPBufferMap(buffer *gst.Buffer, flags gst.MapFlags, rtcp *RTCPBuffer) bool {
 	var carg1 *C.GstBuffer     // in, none, converted
 	var carg2 C.GstMapFlags    // in, none, casted
@@ -4254,8 +4043,7 @@ func RTCPBufferMap(buffer *gst.Buffer, flags gst.MapFlags, rtcp *RTCPBuffer) boo
 
 // NewRTCPBuffer wraps gst_rtcp_buffer_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_new
 func NewRTCPBuffer(mtu uint) *gst.Buffer {
 	var carg1 C.guint      // in, none, casted
 	var cret  *C.GstBuffer // return, full, converted
@@ -4274,8 +4062,7 @@ func NewRTCPBuffer(mtu uint) *gst.Buffer {
 
 // RTCPBufferValidate wraps gst_rtcp_buffer_validate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_validate
 func RTCPBufferValidate(buffer *gst.Buffer) bool {
 	var carg1 *C.GstBuffer // in, none, converted
 	var cret  C.gboolean   // return
@@ -4296,8 +4083,7 @@ func RTCPBufferValidate(buffer *gst.Buffer) bool {
 
 // RTCPBufferValidateData wraps gst_rtcp_buffer_validate_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_validate_data
 func RTCPBufferValidateData(data []uint8) bool {
 	var carg1 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint    // implicit
@@ -4322,8 +4108,7 @@ func RTCPBufferValidateData(data []uint8) bool {
 
 // RTCPBufferValidateDataReduced wraps gst_rtcp_buffer_validate_data_reduced
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_validate_data_reduced
 func RTCPBufferValidateDataReduced(data []uint8) bool {
 	var carg1 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint    // implicit
@@ -4348,8 +4133,7 @@ func RTCPBufferValidateDataReduced(data []uint8) bool {
 
 // RTCPBufferValidateReduced wraps gst_rtcp_buffer_validate_reduced
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_validate_reduced
 func RTCPBufferValidateReduced(buffer *gst.Buffer) bool {
 	var carg1 *C.GstBuffer // in, none, converted
 	var cret  C.gboolean   // return
@@ -4370,8 +4154,7 @@ func RTCPBufferValidateReduced(buffer *gst.Buffer) bool {
 
 // AddPacket wraps gst_rtcp_buffer_add_packet
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_add_packet
 func (rtcp *RTCPBuffer) AddPacket(typ RTCPType, packet *RTCPPacket) bool {
 	var carg0 *C.GstRTCPBuffer // in, none, converted
 	var carg1 C.GstRTCPType    // in, none, casted
@@ -4398,8 +4181,7 @@ func (rtcp *RTCPBuffer) AddPacket(typ RTCPType, packet *RTCPPacket) bool {
 
 // GetFirstPacket wraps gst_rtcp_buffer_get_first_packet
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_get_first_packet
 func (rtcp *RTCPBuffer) GetFirstPacket(packet *RTCPPacket) bool {
 	var carg0 *C.GstRTCPBuffer // in, none, converted
 	var carg1 *C.GstRTCPPacket // in, none, converted
@@ -4423,8 +4205,7 @@ func (rtcp *RTCPBuffer) GetFirstPacket(packet *RTCPPacket) bool {
 
 // GetPacketCount wraps gst_rtcp_buffer_get_packet_count
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_get_packet_count
 func (rtcp *RTCPBuffer) GetPacketCount() uint {
 	var carg0 *C.GstRTCPBuffer // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -4443,8 +4224,7 @@ func (rtcp *RTCPBuffer) GetPacketCount() uint {
 
 // Unmap wraps gst_rtcp_buffer_unmap
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_buffer_unmap
 func (rtcp *RTCPBuffer) Unmap() bool {
 	var carg0 *C.GstRTCPBuffer // in, none, converted
 	var cret  C.gboolean       // return
@@ -4465,8 +4245,7 @@ func (rtcp *RTCPBuffer) Unmap() bool {
 
 // RTCPPacket wraps GstRTCPPacket
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GstRTCPPacket
 type RTCPPacket struct {
 	*rTCPPacket
 }
@@ -4547,8 +4326,7 @@ func UnsafeRTCPPacketToGlibFull(r *RTCPPacket) unsafe.Pointer {
 
 // AddProfileSpecificExt wraps gst_rtcp_packet_add_profile_specific_ext
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_add_profile_specific_ext
 func (packet *RTCPPacket) AddProfileSpecificExt(data []uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -4576,8 +4354,7 @@ func (packet *RTCPPacket) AddProfileSpecificExt(data []uint8) bool {
 
 // AddRb wraps gst_rtcp_packet_add_rb
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_add_rb
 func (packet *RTCPPacket) AddRb(ssrc uint32, fractionlost uint8, packetslost int32, exthighestseq uint32, jitter uint32, lsr uint32, dlsr uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -4619,8 +4396,7 @@ func (packet *RTCPPacket) AddRb(ssrc uint32, fractionlost uint8, packetslost int
 
 // AppGetData wraps gst_rtcp_packet_app_get_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_app_get_data
 func (packet *RTCPPacket) AppGetData() *uint8 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  *C.guint8        // return, transfer: none, C Pointers: 1, Name: guint8, scope: 
@@ -4641,8 +4417,7 @@ func (packet *RTCPPacket) AppGetData() *uint8 {
 
 // AppGetDataLength wraps gst_rtcp_packet_app_get_data_length
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_app_get_data_length
 func (packet *RTCPPacket) AppGetDataLength() uint16 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint16        // return, none, casted
@@ -4661,8 +4436,7 @@ func (packet *RTCPPacket) AppGetDataLength() uint16 {
 
 // AppGetName wraps gst_rtcp_packet_app_get_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_app_get_name
 func (packet *RTCPPacket) AppGetName() string {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  *C.gchar         // return, none, string
@@ -4681,8 +4455,7 @@ func (packet *RTCPPacket) AppGetName() string {
 
 // AppGetSsrc wraps gst_rtcp_packet_app_get_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_app_get_ssrc
 func (packet *RTCPPacket) AppGetSsrc() uint32 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint32        // return, none, casted
@@ -4701,8 +4474,7 @@ func (packet *RTCPPacket) AppGetSsrc() uint32 {
 
 // AppGetSubtype wraps gst_rtcp_packet_app_get_subtype
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_app_get_subtype
 func (packet *RTCPPacket) AppGetSubtype() uint8 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint8         // return, none, casted
@@ -4721,8 +4493,7 @@ func (packet *RTCPPacket) AppGetSubtype() uint8 {
 
 // AppSetDataLength wraps gst_rtcp_packet_app_set_data_length
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_app_set_data_length
 func (packet *RTCPPacket) AppSetDataLength(wordlen uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint16        // in, none, casted
@@ -4746,8 +4517,7 @@ func (packet *RTCPPacket) AppSetDataLength(wordlen uint16) bool {
 
 // AppSetName wraps gst_rtcp_packet_app_set_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_app_set_name
 func (packet *RTCPPacket) AppSetName(name string) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.gchar         // in, none, string
@@ -4763,8 +4533,7 @@ func (packet *RTCPPacket) AppSetName(name string) {
 
 // AppSetSsrc wraps gst_rtcp_packet_app_set_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_app_set_ssrc
 func (packet *RTCPPacket) AppSetSsrc(ssrc uint32) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -4779,8 +4548,7 @@ func (packet *RTCPPacket) AppSetSsrc(ssrc uint32) {
 
 // AppSetSubtype wraps gst_rtcp_packet_app_set_subtype
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_app_set_subtype
 func (packet *RTCPPacket) AppSetSubtype(subtype uint8) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint8         // in, none, casted
@@ -4795,8 +4563,7 @@ func (packet *RTCPPacket) AppSetSubtype(subtype uint8) {
 
 // ByeAddSsrc wraps gst_rtcp_packet_bye_add_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_bye_add_ssrc
 func (packet *RTCPPacket) ByeAddSsrc(ssrc uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -4820,8 +4587,7 @@ func (packet *RTCPPacket) ByeAddSsrc(ssrc uint32) bool {
 
 // ByeAddSsrcs wraps gst_rtcp_packet_bye_add_ssrcs
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_bye_add_ssrcs
 func (packet *RTCPPacket) ByeAddSsrcs(ssrc []uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner guint32 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -4849,8 +4615,7 @@ func (packet *RTCPPacket) ByeAddSsrcs(ssrc []uint32) bool {
 
 // ByeGetNthSsrc wraps gst_rtcp_packet_bye_get_nth_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_bye_get_nth_ssrc
 func (packet *RTCPPacket) ByeGetNthSsrc(nth uint) uint32 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -4872,8 +4637,7 @@ func (packet *RTCPPacket) ByeGetNthSsrc(nth uint) uint32 {
 
 // ByeGetReason wraps gst_rtcp_packet_bye_get_reason
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_bye_get_reason
 func (packet *RTCPPacket) ByeGetReason() string {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  *C.gchar         // return, full, string, nullable-string
@@ -4895,8 +4659,7 @@ func (packet *RTCPPacket) ByeGetReason() string {
 
 // ByeGetReasonLen wraps gst_rtcp_packet_bye_get_reason_len
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_bye_get_reason_len
 func (packet *RTCPPacket) ByeGetReasonLen() uint8 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint8         // return, none, casted
@@ -4915,8 +4678,7 @@ func (packet *RTCPPacket) ByeGetReasonLen() uint8 {
 
 // ByeGetSsrcCount wraps gst_rtcp_packet_bye_get_ssrc_count
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_bye_get_ssrc_count
 func (packet *RTCPPacket) ByeGetSsrcCount() uint {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -4935,8 +4697,7 @@ func (packet *RTCPPacket) ByeGetSsrcCount() uint {
 
 // ByeSetReason wraps gst_rtcp_packet_bye_set_reason
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_bye_set_reason
 func (packet *RTCPPacket) ByeSetReason(reason string) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.gchar         // in, none, string
@@ -4961,8 +4722,7 @@ func (packet *RTCPPacket) ByeSetReason(reason string) bool {
 
 // FbGetFci wraps gst_rtcp_packet_fb_get_fci
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_fb_get_fci
 func (packet *RTCPPacket) FbGetFci() *uint8 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  *C.guint8        // return, transfer: none, C Pointers: 1, Name: guint8, scope: 
@@ -4983,8 +4743,7 @@ func (packet *RTCPPacket) FbGetFci() *uint8 {
 
 // FbGetFciLength wraps gst_rtcp_packet_fb_get_fci_length
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_fb_get_fci_length
 func (packet *RTCPPacket) FbGetFciLength() uint16 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint16        // return, none, casted
@@ -5003,8 +4762,7 @@ func (packet *RTCPPacket) FbGetFciLength() uint16 {
 
 // FbGetMediaSsrc wraps gst_rtcp_packet_fb_get_media_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_fb_get_media_ssrc
 func (packet *RTCPPacket) FbGetMediaSsrc() uint32 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint32        // return, none, casted
@@ -5023,8 +4781,7 @@ func (packet *RTCPPacket) FbGetMediaSsrc() uint32 {
 
 // FbGetSenderSsrc wraps gst_rtcp_packet_fb_get_sender_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_fb_get_sender_ssrc
 func (packet *RTCPPacket) FbGetSenderSsrc() uint32 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint32        // return, none, casted
@@ -5043,8 +4800,7 @@ func (packet *RTCPPacket) FbGetSenderSsrc() uint32 {
 
 // FbGetType wraps gst_rtcp_packet_fb_get_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_fb_get_type
 func (packet *RTCPPacket) FbGetType() RTCPFBType {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.GstRTCPFBType  // return, none, casted
@@ -5063,8 +4819,7 @@ func (packet *RTCPPacket) FbGetType() RTCPFBType {
 
 // FbSetFciLength wraps gst_rtcp_packet_fb_set_fci_length
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_fb_set_fci_length
 func (packet *RTCPPacket) FbSetFciLength(wordlen uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint16        // in, none, casted
@@ -5088,8 +4843,7 @@ func (packet *RTCPPacket) FbSetFciLength(wordlen uint16) bool {
 
 // FbSetMediaSsrc wraps gst_rtcp_packet_fb_set_media_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_fb_set_media_ssrc
 func (packet *RTCPPacket) FbSetMediaSsrc(ssrc uint32) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -5104,8 +4858,7 @@ func (packet *RTCPPacket) FbSetMediaSsrc(ssrc uint32) {
 
 // FbSetSenderSsrc wraps gst_rtcp_packet_fb_set_sender_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_fb_set_sender_ssrc
 func (packet *RTCPPacket) FbSetSenderSsrc(ssrc uint32) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -5120,8 +4873,7 @@ func (packet *RTCPPacket) FbSetSenderSsrc(ssrc uint32) {
 
 // FbSetType wraps gst_rtcp_packet_fb_set_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_fb_set_type
 func (packet *RTCPPacket) FbSetType(typ RTCPFBType) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.GstRTCPFBType  // in, none, casted
@@ -5136,8 +4888,7 @@ func (packet *RTCPPacket) FbSetType(typ RTCPFBType) {
 
 // GetCount wraps gst_rtcp_packet_get_count
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_get_count
 func (packet *RTCPPacket) GetCount() uint8 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint8         // return, none, casted
@@ -5156,8 +4907,7 @@ func (packet *RTCPPacket) GetCount() uint8 {
 
 // GetLength wraps gst_rtcp_packet_get_length
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_get_length
 func (packet *RTCPPacket) GetLength() uint16 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint16        // return, none, casted
@@ -5176,8 +4926,7 @@ func (packet *RTCPPacket) GetLength() uint16 {
 
 // GetPadding wraps gst_rtcp_packet_get_padding
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_get_padding
 func (packet *RTCPPacket) GetPadding() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
@@ -5198,7 +4947,7 @@ func (packet *RTCPPacket) GetPadding() bool {
 
 // GetProfileSpecificExtLength wraps gst_rtcp_packet_get_profile_specific_ext_length
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_get_profile_specific_ext_length
 func (packet *RTCPPacket) GetProfileSpecificExtLength() uint16 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint16        // return, none, casted
@@ -5217,8 +4966,7 @@ func (packet *RTCPPacket) GetProfileSpecificExtLength() uint16 {
 
 // GetRb wraps gst_rtcp_packet_get_rb
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_get_rb
 func (packet *RTCPPacket) GetRb(nth uint) (uint32, uint8, int32, uint32, uint32, uint32, uint32) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -5258,8 +5006,7 @@ func (packet *RTCPPacket) GetRb(nth uint) (uint32, uint8, int32, uint32, uint32,
 
 // GetRbCount wraps gst_rtcp_packet_get_rb_count
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_get_rb_count
 func (packet *RTCPPacket) GetRbCount() uint {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -5278,8 +5025,7 @@ func (packet *RTCPPacket) GetRbCount() uint {
 
 // GetType wraps gst_rtcp_packet_get_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_get_type
 func (packet *RTCPPacket) GetType() RTCPType {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.GstRTCPType    // return, none, casted
@@ -5298,8 +5044,7 @@ func (packet *RTCPPacket) GetType() RTCPType {
 
 // MoveToNext wraps gst_rtcp_packet_move_to_next
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_move_to_next
 func (packet *RTCPPacket) MoveToNext() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
@@ -5320,8 +5065,7 @@ func (packet *RTCPPacket) MoveToNext() bool {
 
 // Remove wraps gst_rtcp_packet_remove
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_remove
 func (packet *RTCPPacket) Remove() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
@@ -5342,8 +5086,7 @@ func (packet *RTCPPacket) Remove() bool {
 
 // RrGetSsrc wraps gst_rtcp_packet_rr_get_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_rr_get_ssrc
 func (packet *RTCPPacket) RrGetSsrc() uint32 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint32        // return, none, casted
@@ -5362,8 +5105,7 @@ func (packet *RTCPPacket) RrGetSsrc() uint32 {
 
 // RrSetSsrc wraps gst_rtcp_packet_rr_set_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_rr_set_ssrc
 func (packet *RTCPPacket) RrSetSsrc(ssrc uint32) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -5378,8 +5120,7 @@ func (packet *RTCPPacket) RrSetSsrc(ssrc uint32) {
 
 // SdesAddEntry wraps gst_rtcp_packet_sdes_add_entry
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sdes_add_entry
 func (packet *RTCPPacket) SdesAddEntry(typ RTCPSDESType, data []uint8) bool {
 	var carg0 *C.GstRTCPPacket  // in, none, converted
 	var carg1 C.GstRTCPSDESType // in, none, casted
@@ -5410,8 +5151,7 @@ func (packet *RTCPPacket) SdesAddEntry(typ RTCPSDESType, data []uint8) bool {
 
 // SdesAddItem wraps gst_rtcp_packet_sdes_add_item
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sdes_add_item
 func (packet *RTCPPacket) SdesAddItem(ssrc uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -5435,8 +5175,7 @@ func (packet *RTCPPacket) SdesAddItem(ssrc uint32) bool {
 
 // SdesFirstEntry wraps gst_rtcp_packet_sdes_first_entry
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sdes_first_entry
 func (packet *RTCPPacket) SdesFirstEntry() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
@@ -5457,8 +5196,7 @@ func (packet *RTCPPacket) SdesFirstEntry() bool {
 
 // SdesFirstItem wraps gst_rtcp_packet_sdes_first_item
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sdes_first_item
 func (packet *RTCPPacket) SdesFirstItem() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
@@ -5479,8 +5217,7 @@ func (packet *RTCPPacket) SdesFirstItem() bool {
 
 // SdesGetItemCount wraps gst_rtcp_packet_sdes_get_item_count
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sdes_get_item_count
 func (packet *RTCPPacket) SdesGetItemCount() uint {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -5499,8 +5236,7 @@ func (packet *RTCPPacket) SdesGetItemCount() uint {
 
 // SdesGetSsrc wraps gst_rtcp_packet_sdes_get_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sdes_get_ssrc
 func (packet *RTCPPacket) SdesGetSsrc() uint32 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint32        // return, none, casted
@@ -5519,8 +5255,7 @@ func (packet *RTCPPacket) SdesGetSsrc() uint32 {
 
 // SdesNextEntry wraps gst_rtcp_packet_sdes_next_entry
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sdes_next_entry
 func (packet *RTCPPacket) SdesNextEntry() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
@@ -5541,8 +5276,7 @@ func (packet *RTCPPacket) SdesNextEntry() bool {
 
 // SdesNextItem wraps gst_rtcp_packet_sdes_next_item
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sdes_next_item
 func (packet *RTCPPacket) SdesNextItem() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
@@ -5563,8 +5297,7 @@ func (packet *RTCPPacket) SdesNextItem() bool {
 
 // SetRb wraps gst_rtcp_packet_set_rb
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_set_rb
 func (packet *RTCPPacket) SetRb(nth uint, ssrc uint32, fractionlost uint8, packetslost int32, exthighestseq uint32, jitter uint32, lsr uint32, dlsr uint32) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -5600,8 +5333,7 @@ func (packet *RTCPPacket) SetRb(nth uint, ssrc uint32, fractionlost uint8, packe
 
 // SrGetSenderInfo wraps gst_rtcp_packet_sr_get_sender_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sr_get_sender_info
 func (packet *RTCPPacket) SrGetSenderInfo() (uint32, uint64, uint32, uint32, uint32) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -5632,8 +5364,7 @@ func (packet *RTCPPacket) SrGetSenderInfo() (uint32, uint64, uint32, uint32, uin
 
 // SrSetSenderInfo wraps gst_rtcp_packet_sr_set_sender_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_sr_set_sender_info
 func (packet *RTCPPacket) SrSetSenderInfo(ssrc uint32, ntptime uint64, rtptime uint32, packetCount uint32, octetCount uint32) {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -5660,8 +5391,7 @@ func (packet *RTCPPacket) SrSetSenderInfo(ssrc uint32, ntptime uint64, rtptime u
 
 // XrFirstRb wraps gst_rtcp_packet_xr_first_rb
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_first_rb
 func (packet *RTCPPacket) XrFirstRb() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
@@ -5682,7 +5412,7 @@ func (packet *RTCPPacket) XrFirstRb() bool {
 
 // XrGetBlockLength wraps gst_rtcp_packet_xr_get_block_length
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_block_length
 func (packet *RTCPPacket) XrGetBlockLength() uint16 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint16        // return, none, casted
@@ -5701,8 +5431,7 @@ func (packet *RTCPPacket) XrGetBlockLength() uint16 {
 
 // XrGetBlockType wraps gst_rtcp_packet_xr_get_block_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_block_type
 func (packet *RTCPPacket) XrGetBlockType() RTCPXRType {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.GstRTCPXRType  // return, none, casted
@@ -5721,8 +5450,7 @@ func (packet *RTCPPacket) XrGetBlockType() RTCPXRType {
 
 // XrGetDlrrBlock wraps gst_rtcp_packet_xr_get_dlrr_block
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_dlrr_block
 func (packet *RTCPPacket) XrGetDlrrBlock(nth uint, ssrc *uint32, lastRr *uint32, delay *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -5761,8 +5489,7 @@ func (packet *RTCPPacket) XrGetDlrrBlock(nth uint, ssrc *uint32, lastRr *uint32,
 
 // XrGetPrtBySeq wraps gst_rtcp_packet_xr_get_prt_by_seq
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_prt_by_seq
 func (packet *RTCPPacket) XrGetPrtBySeq(seq uint16, receiptTime *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint16        // in, none, casted
@@ -5791,8 +5518,7 @@ func (packet *RTCPPacket) XrGetPrtBySeq(seq uint16, receiptTime *uint32) bool {
 
 // XrGetPrtInfo wraps gst_rtcp_packet_xr_get_prt_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_prt_info
 func (packet *RTCPPacket) XrGetPrtInfo(ssrc *uint32, thinning *uint8, beginSeq *uint16, endSeq *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -5833,8 +5559,7 @@ func (packet *RTCPPacket) XrGetPrtInfo(ssrc *uint32, thinning *uint8, beginSeq *
 
 // XrGetRleInfo wraps gst_rtcp_packet_xr_get_rle_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_rle_info
 func (packet *RTCPPacket) XrGetRleInfo(ssrc *uint32, thinning *uint8, beginSeq *uint16, endSeq *uint16, chunkCount *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -5880,8 +5605,7 @@ func (packet *RTCPPacket) XrGetRleInfo(ssrc *uint32, thinning *uint8, beginSeq *
 
 // XrGetRleNthChunk wraps gst_rtcp_packet_xr_get_rle_nth_chunk
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_rle_nth_chunk
 func (packet *RTCPPacket) XrGetRleNthChunk(nth uint, chunk *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -5910,7 +5634,7 @@ func (packet *RTCPPacket) XrGetRleNthChunk(nth uint, chunk *uint16) bool {
 
 // XrGetRrt wraps gst_rtcp_packet_xr_get_rrt
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_rrt
 func (packet *RTCPPacket) XrGetRrt(timestamp *uint64) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint64       // in, transfer: none, C Pointers: 1, Name: guint64
@@ -5936,8 +5660,7 @@ func (packet *RTCPPacket) XrGetRrt(timestamp *uint64) bool {
 
 // XrGetSsrc wraps gst_rtcp_packet_xr_get_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_ssrc
 func (packet *RTCPPacket) XrGetSsrc() uint32 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint32        // return, none, casted
@@ -5956,8 +5679,7 @@ func (packet *RTCPPacket) XrGetSsrc() uint32 {
 
 // XrGetSummaryInfo wraps gst_rtcp_packet_xr_get_summary_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_summary_info
 func (packet *RTCPPacket) XrGetSummaryInfo(ssrc *uint32, beginSeq *uint16, endSeq *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -5993,8 +5715,7 @@ func (packet *RTCPPacket) XrGetSummaryInfo(ssrc *uint32, beginSeq *uint16, endSe
 
 // XrGetSummaryJitter wraps gst_rtcp_packet_xr_get_summary_jitter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_summary_jitter
 func (packet *RTCPPacket) XrGetSummaryJitter(minJitter *uint32, maxJitter *uint32, meanJitter *uint32, devJitter *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -6035,8 +5756,7 @@ func (packet *RTCPPacket) XrGetSummaryJitter(minJitter *uint32, maxJitter *uint3
 
 // XrGetSummaryPkt wraps gst_rtcp_packet_xr_get_summary_pkt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_summary_pkt
 func (packet *RTCPPacket) XrGetSummaryPkt(lostPackets *uint32, dupPackets *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -6067,8 +5787,7 @@ func (packet *RTCPPacket) XrGetSummaryPkt(lostPackets *uint32, dupPackets *uint3
 
 // XrGetSummaryTtl wraps gst_rtcp_packet_xr_get_summary_ttl
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_summary_ttl
 func (packet *RTCPPacket) XrGetSummaryTtl(isIpv4 *bool, minTtl *uint8, maxTtl *uint8, meanTtl *uint8, devTtl *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.gboolean      // in, transfer: none, C Pointers: 1, Name: gboolean
@@ -6114,7 +5833,7 @@ func (packet *RTCPPacket) XrGetSummaryTtl(isIpv4 *bool, minTtl *uint8, maxTtl *u
 
 // XrGetVoipBurstMetrics wraps gst_rtcp_packet_xr_get_voip_burst_metrics
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_voip_burst_metrics
 func (packet *RTCPPacket) XrGetVoipBurstMetrics(burstDensity *uint8, gapDensity *uint8, burstDuration *uint16, gapDuration *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -6155,7 +5874,7 @@ func (packet *RTCPPacket) XrGetVoipBurstMetrics(burstDensity *uint8, gapDensity 
 
 // XrGetVoipConfigurationParams wraps gst_rtcp_packet_xr_get_voip_configuration_params
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_voip_configuration_params
 func (packet *RTCPPacket) XrGetVoipConfigurationParams(gmin *uint8, rxConfig *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -6186,7 +5905,7 @@ func (packet *RTCPPacket) XrGetVoipConfigurationParams(gmin *uint8, rxConfig *ui
 
 // XrGetVoipDelayMetrics wraps gst_rtcp_packet_xr_get_voip_delay_metrics
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_voip_delay_metrics
 func (packet *RTCPPacket) XrGetVoipDelayMetrics(roundtripDelay *uint16, endSystemDelay *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint16       // in, transfer: none, C Pointers: 1, Name: guint16
@@ -6217,7 +5936,7 @@ func (packet *RTCPPacket) XrGetVoipDelayMetrics(roundtripDelay *uint16, endSyste
 
 // XrGetVoipJitterBufferParams wraps gst_rtcp_packet_xr_get_voip_jitter_buffer_params
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_voip_jitter_buffer_params
 func (packet *RTCPPacket) XrGetVoipJitterBufferParams(jbNominal *uint16, jbMaximum *uint16, jbAbsMax *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint16       // in, transfer: none, C Pointers: 1, Name: guint16
@@ -6253,7 +5972,7 @@ func (packet *RTCPPacket) XrGetVoipJitterBufferParams(jbNominal *uint16, jbMaxim
 
 // XrGetVoipMetricsSsrc wraps gst_rtcp_packet_xr_get_voip_metrics_ssrc
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_voip_metrics_ssrc
 func (packet *RTCPPacket) XrGetVoipMetricsSsrc(ssrc *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -6279,7 +5998,7 @@ func (packet *RTCPPacket) XrGetVoipMetricsSsrc(ssrc *uint32) bool {
 
 // XrGetVoipPacketMetrics wraps gst_rtcp_packet_xr_get_voip_packet_metrics
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_voip_packet_metrics
 func (packet *RTCPPacket) XrGetVoipPacketMetrics(lossRate *uint8, discardRate *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -6310,7 +6029,7 @@ func (packet *RTCPPacket) XrGetVoipPacketMetrics(lossRate *uint8, discardRate *u
 
 // XrGetVoipQualityMetrics wraps gst_rtcp_packet_xr_get_voip_quality_metrics
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_voip_quality_metrics
 func (packet *RTCPPacket) XrGetVoipQualityMetrics(rFactor *uint8, extRFactor *uint8, mosLq *uint8, mosCq *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -6351,7 +6070,7 @@ func (packet *RTCPPacket) XrGetVoipQualityMetrics(rFactor *uint8, extRFactor *ui
 
 // XrGetVoipSignalMetrics wraps gst_rtcp_packet_xr_get_voip_signal_metrics
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_get_voip_signal_metrics
 func (packet *RTCPPacket) XrGetVoipSignalMetrics(signalLevel *uint8, noiseLevel *uint8, rerl *uint8, gmin *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -6392,8 +6111,7 @@ func (packet *RTCPPacket) XrGetVoipSignalMetrics(signalLevel *uint8, noiseLevel 
 
 // XrNextRb wraps gst_rtcp_packet_xr_next_rb
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#gst_rtcp_packet_xr_next_rb
 func (packet *RTCPPacket) XrNextRb() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
@@ -6414,8 +6132,7 @@ func (packet *RTCPPacket) XrNextRb() bool {
 
 // RTPBaseAudioPayloadClass wraps GstRTPBaseAudioPayloadClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbaseaudiopayload.html#GstRTPBaseAudioPayloadClass
 // 
 // RTPBaseAudioPayloadClass is the type struct for [RTPBaseAudioPayload]
 type RTPBaseAudioPayloadClass struct {
@@ -6469,8 +6186,7 @@ func (r *RTPBaseAudioPayloadClass) ParentClass() *RTPBasePayloadClass {
 
 // RTPBaseDepayloadClass wraps GstRTPBaseDepayloadClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html#GstRTPBaseDepayloadClass
 // 
 // RTPBaseDepayloadClass is the type struct for [RTPBaseDepayload]
 type RTPBaseDepayloadClass struct {
@@ -6524,8 +6240,7 @@ func (r *RTPBaseDepayloadClass) ParentClass() *gst.ElementClass {
 
 // RTPBasePayloadClass wraps GstRTPBasePayloadClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html#GstRTPBasePayloadClass
 // 
 // RTPBasePayloadClass is the type struct for [RTPBasePayload]
 type RTPBasePayloadClass struct {
@@ -6579,8 +6294,7 @@ func (r *RTPBasePayloadClass) ParentClass() *gst.ElementClass {
 
 // RTPBuffer wraps GstRTPBuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#GstRTPBuffer
 type RTPBuffer struct {
 	*rTPBuffer
 }
@@ -6661,8 +6375,7 @@ func UnsafeRTPBufferToGlibFull(r *RTPBuffer) unsafe.Pointer {
 
 // RTPBufferAllocateData wraps gst_rtp_buffer_allocate_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_allocate_data
 func RTPBufferAllocateData(buffer *gst.Buffer, payloadLen uint, padLen uint8, csrcCount uint8) {
 	var carg1 *C.GstBuffer // in, none, converted
 	var carg2 C.guint      // in, none, casted
@@ -6683,8 +6396,7 @@ func RTPBufferAllocateData(buffer *gst.Buffer, payloadLen uint, padLen uint8, cs
 
 // RTPBufferCalcHeaderLen wraps gst_rtp_buffer_calc_header_len
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_calc_header_len
 func RTPBufferCalcHeaderLen(csrcCount uint8) uint {
 	var carg1 C.guint8 // in, none, casted
 	var cret  C.guint  // return, none, casted
@@ -6703,8 +6415,7 @@ func RTPBufferCalcHeaderLen(csrcCount uint8) uint {
 
 // RTPBufferCalcPacketLen wraps gst_rtp_buffer_calc_packet_len
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_calc_packet_len
 func RTPBufferCalcPacketLen(payloadLen uint, padLen uint8, csrcCount uint8) uint {
 	var carg1 C.guint  // in, none, casted
 	var carg2 C.guint8 // in, none, casted
@@ -6729,8 +6440,7 @@ func RTPBufferCalcPacketLen(payloadLen uint, padLen uint8, csrcCount uint8) uint
 
 // RTPBufferCalcPayloadLen wraps gst_rtp_buffer_calc_payload_len
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_calc_payload_len
 func RTPBufferCalcPayloadLen(packetLen uint, padLen uint8, csrcCount uint8) uint {
 	var carg1 C.guint  // in, none, casted
 	var carg2 C.guint8 // in, none, casted
@@ -6755,8 +6465,7 @@ func RTPBufferCalcPayloadLen(packetLen uint, padLen uint8, csrcCount uint8) uint
 
 // RTPBufferCompareSeqnum wraps gst_rtp_buffer_compare_seqnum
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_compare_seqnum
 func RTPBufferCompareSeqnum(seqnum1 uint16, seqnum2 uint16) int32 {
 	var carg1 C.guint16 // in, none, casted
 	var carg2 C.guint16 // in, none, casted
@@ -6778,8 +6487,7 @@ func RTPBufferCompareSeqnum(seqnum1 uint16, seqnum2 uint16) int32 {
 
 // RTPBufferDefaultClockRate wraps gst_rtp_buffer_default_clock_rate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_default_clock_rate
 func RTPBufferDefaultClockRate(payloadType uint8) uint32 {
 	var carg1 C.guint8  // in, none, casted
 	var cret  C.guint32 // return, none, casted
@@ -6798,8 +6506,7 @@ func RTPBufferDefaultClockRate(payloadType uint8) uint32 {
 
 // RTPBufferMap wraps gst_rtp_buffer_map
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_map
 func RTPBufferMap(buffer *gst.Buffer, flags gst.MapFlags) (RTPBuffer, bool) {
 	var carg1 *C.GstBuffer   // in, none, converted
 	var carg2 C.GstMapFlags  // in, none, casted
@@ -6828,8 +6535,7 @@ func RTPBufferMap(buffer *gst.Buffer, flags gst.MapFlags) (RTPBuffer, bool) {
 
 // NewRTPBufferAllocate wraps gst_rtp_buffer_new_allocate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_new_allocate
 func NewRTPBufferAllocate(payloadLen uint, padLen uint8, csrcCount uint8) *gst.Buffer {
 	var carg1 C.guint      // in, none, casted
 	var carg2 C.guint8     // in, none, casted
@@ -6854,8 +6560,7 @@ func NewRTPBufferAllocate(payloadLen uint, padLen uint8, csrcCount uint8) *gst.B
 
 // NewRTPBufferAllocateLen wraps gst_rtp_buffer_new_allocate_len
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_new_allocate_len
 func NewRTPBufferAllocateLen(packetLen uint, padLen uint8, csrcCount uint8) *gst.Buffer {
 	var carg1 C.guint      // in, none, casted
 	var carg2 C.guint8     // in, none, casted
@@ -6880,8 +6585,7 @@ func NewRTPBufferAllocateLen(packetLen uint, padLen uint8, csrcCount uint8) *gst
 
 // GetCsrc wraps gst_rtp_buffer_get_csrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_csrc
 func (rtp *RTPBuffer) GetCsrc(idx uint8) uint32 {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint8        // in, none, casted
@@ -6903,8 +6607,7 @@ func (rtp *RTPBuffer) GetCsrc(idx uint8) uint32 {
 
 // GetCsrcCount wraps gst_rtp_buffer_get_csrc_count
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_csrc_count
 func (rtp *RTPBuffer) GetCsrcCount() uint8 {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.guint8        // return, none, casted
@@ -6923,8 +6626,7 @@ func (rtp *RTPBuffer) GetCsrcCount() uint8 {
 
 // GetExtension wraps gst_rtp_buffer_get_extension
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_extension
 func (rtp *RTPBuffer) GetExtension() bool {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.gboolean      // return
@@ -6945,8 +6647,7 @@ func (rtp *RTPBuffer) GetExtension() bool {
 
 // GetExtensionBytes wraps gst_rtp_buffer_get_extension_bytes
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_extension_bytes
 func (rtp *RTPBuffer) GetExtensionBytes() (uint16, *glib.Bytes) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint16       // out, full, casted
@@ -6970,8 +6671,7 @@ func (rtp *RTPBuffer) GetExtensionBytes() (uint16, *glib.Bytes) {
 
 // GetHeaderLen wraps gst_rtp_buffer_get_header_len
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_header_len
 func (rtp *RTPBuffer) GetHeaderLen() uint {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -6990,8 +6690,7 @@ func (rtp *RTPBuffer) GetHeaderLen() uint {
 
 // GetMarker wraps gst_rtp_buffer_get_marker
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_marker
 func (rtp *RTPBuffer) GetMarker() bool {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.gboolean      // return
@@ -7012,8 +6711,7 @@ func (rtp *RTPBuffer) GetMarker() bool {
 
 // GetPacketLen wraps gst_rtp_buffer_get_packet_len
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_packet_len
 func (rtp *RTPBuffer) GetPacketLen() uint {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -7032,8 +6730,7 @@ func (rtp *RTPBuffer) GetPacketLen() uint {
 
 // GetPadding wraps gst_rtp_buffer_get_padding
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_padding
 func (rtp *RTPBuffer) GetPadding() bool {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.gboolean      // return
@@ -7054,8 +6751,7 @@ func (rtp *RTPBuffer) GetPadding() bool {
 
 // GetPayloadBuffer wraps gst_rtp_buffer_get_payload_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_payload_buffer
 func (rtp *RTPBuffer) GetPayloadBuffer() *gst.Buffer {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  *C.GstBuffer    // return, full, converted
@@ -7074,8 +6770,7 @@ func (rtp *RTPBuffer) GetPayloadBuffer() *gst.Buffer {
 
 // GetPayloadBytes wraps gst_rtp_buffer_get_payload_bytes
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_payload_bytes
 func (rtp *RTPBuffer) GetPayloadBytes() *glib.Bytes {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  *C.GBytes       // return, full, converted, nullable
@@ -7096,8 +6791,7 @@ func (rtp *RTPBuffer) GetPayloadBytes() *glib.Bytes {
 
 // GetPayloadLen wraps gst_rtp_buffer_get_payload_len
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_payload_len
 func (rtp *RTPBuffer) GetPayloadLen() uint {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -7116,8 +6810,7 @@ func (rtp *RTPBuffer) GetPayloadLen() uint {
 
 // GetPayloadSubbuffer wraps gst_rtp_buffer_get_payload_subbuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_payload_subbuffer
 func (rtp *RTPBuffer) GetPayloadSubbuffer(offset uint, len uint) *gst.Buffer {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -7142,8 +6835,7 @@ func (rtp *RTPBuffer) GetPayloadSubbuffer(offset uint, len uint) *gst.Buffer {
 
 // GetPayloadType wraps gst_rtp_buffer_get_payload_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_payload_type
 func (rtp *RTPBuffer) GetPayloadType() uint8 {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.guint8        // return, none, casted
@@ -7162,8 +6854,7 @@ func (rtp *RTPBuffer) GetPayloadType() uint8 {
 
 // GetSeq wraps gst_rtp_buffer_get_seq
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_seq
 func (rtp *RTPBuffer) GetSeq() uint16 {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.guint16       // return, none, casted
@@ -7182,8 +6873,7 @@ func (rtp *RTPBuffer) GetSeq() uint16 {
 
 // GetSsrc wraps gst_rtp_buffer_get_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_ssrc
 func (rtp *RTPBuffer) GetSsrc() uint32 {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.guint32       // return, none, casted
@@ -7202,8 +6892,7 @@ func (rtp *RTPBuffer) GetSsrc() uint32 {
 
 // GetTimestamp wraps gst_rtp_buffer_get_timestamp
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_timestamp
 func (rtp *RTPBuffer) GetTimestamp() uint32 {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.guint32       // return, none, casted
@@ -7222,8 +6911,7 @@ func (rtp *RTPBuffer) GetTimestamp() uint32 {
 
 // GetVersion wraps gst_rtp_buffer_get_version
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_get_version
 func (rtp *RTPBuffer) GetVersion() uint8 {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var cret  C.guint8        // return, none, casted
@@ -7242,8 +6930,7 @@ func (rtp *RTPBuffer) GetVersion() uint8 {
 
 // PadTo wraps gst_rtp_buffer_pad_to
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_pad_to
 func (rtp *RTPBuffer) PadTo(len uint) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -7258,8 +6945,7 @@ func (rtp *RTPBuffer) PadTo(len uint) {
 
 // RemoveExtensionData wraps gst_rtp_buffer_remove_extension_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_remove_extension_data
 func (rtp *RTPBuffer) RemoveExtensionData() {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 
@@ -7271,8 +6957,7 @@ func (rtp *RTPBuffer) RemoveExtensionData() {
 
 // SetCsrc wraps gst_rtp_buffer_set_csrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_csrc
 func (rtp *RTPBuffer) SetCsrc(idx uint8, csrc uint32) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint8        // in, none, casted
@@ -7290,8 +6975,7 @@ func (rtp *RTPBuffer) SetCsrc(idx uint8, csrc uint32) {
 
 // SetExtension wraps gst_rtp_buffer_set_extension
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_extension
 func (rtp *RTPBuffer) SetExtension(extension bool) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.gboolean      // in
@@ -7308,8 +6992,7 @@ func (rtp *RTPBuffer) SetExtension(extension bool) {
 
 // SetExtensionData wraps gst_rtp_buffer_set_extension_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_extension_data
 func (rtp *RTPBuffer) SetExtensionData(bits uint16, length uint16) bool {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint16       // in, none, casted
@@ -7336,8 +7019,7 @@ func (rtp *RTPBuffer) SetExtensionData(bits uint16, length uint16) bool {
 
 // SetMarker wraps gst_rtp_buffer_set_marker
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_marker
 func (rtp *RTPBuffer) SetMarker(marker bool) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.gboolean      // in
@@ -7354,8 +7036,7 @@ func (rtp *RTPBuffer) SetMarker(marker bool) {
 
 // SetPacketLen wraps gst_rtp_buffer_set_packet_len
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_packet_len
 func (rtp *RTPBuffer) SetPacketLen(len uint) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -7370,8 +7051,7 @@ func (rtp *RTPBuffer) SetPacketLen(len uint) {
 
 // SetPadding wraps gst_rtp_buffer_set_padding
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_padding
 func (rtp *RTPBuffer) SetPadding(padding bool) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.gboolean      // in
@@ -7388,8 +7068,7 @@ func (rtp *RTPBuffer) SetPadding(padding bool) {
 
 // SetPayloadType wraps gst_rtp_buffer_set_payload_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_payload_type
 func (rtp *RTPBuffer) SetPayloadType(payloadType uint8) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint8        // in, none, casted
@@ -7404,8 +7083,7 @@ func (rtp *RTPBuffer) SetPayloadType(payloadType uint8) {
 
 // SetSeq wraps gst_rtp_buffer_set_seq
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_seq
 func (rtp *RTPBuffer) SetSeq(seq uint16) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint16       // in, none, casted
@@ -7420,8 +7098,7 @@ func (rtp *RTPBuffer) SetSeq(seq uint16) {
 
 // SetSsrc wraps gst_rtp_buffer_set_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_ssrc
 func (rtp *RTPBuffer) SetSsrc(ssrc uint32) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint32       // in, none, casted
@@ -7436,8 +7113,7 @@ func (rtp *RTPBuffer) SetSsrc(ssrc uint32) {
 
 // SetTimestamp wraps gst_rtp_buffer_set_timestamp
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_timestamp
 func (rtp *RTPBuffer) SetTimestamp(timestamp uint32) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint32       // in, none, casted
@@ -7452,8 +7128,7 @@ func (rtp *RTPBuffer) SetTimestamp(timestamp uint32) {
 
 // SetVersion wraps gst_rtp_buffer_set_version
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_set_version
 func (rtp *RTPBuffer) SetVersion(version uint8) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint8        // in, none, casted
@@ -7468,8 +7143,7 @@ func (rtp *RTPBuffer) SetVersion(version uint8) {
 
 // Unmap wraps gst_rtp_buffer_unmap
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#gst_rtp_buffer_unmap
 func (rtp *RTPBuffer) Unmap() {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 
@@ -7481,8 +7155,7 @@ func (rtp *RTPBuffer) Unmap() {
 
 // RTPHeaderExtensionClass wraps GstRTPHeaderExtensionClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GstRTPHeaderExtensionClass
 // 
 // RTPHeaderExtensionClass is the type struct for [RTPHeaderExtension]
 type RTPHeaderExtensionClass struct {
@@ -7536,8 +7209,7 @@ func (r *RTPHeaderExtensionClass) ParentClass() *gst.ElementClass {
 
 // SetURI wraps gst_rtp_header_extension_class_set_uri
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#gst_rtp_header_extension_class_set_uri
 func (klass *RTPHeaderExtensionClass) SetURI(uri string) {
 	var carg0 *C.GstRTPHeaderExtensionClass // in, none, converted
 	var carg1 *C.gchar                      // in, none, string
@@ -7553,8 +7225,7 @@ func (klass *RTPHeaderExtensionClass) SetURI(uri string) {
 
 // RTPPayloadInfo wraps GstRTPPayloadInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GstRTPPayloadInfo
 type RTPPayloadInfo struct {
 	*rTPPayloadInfo
 }
@@ -7635,8 +7306,7 @@ func UnsafeRTPPayloadInfoToGlibFull(r *RTPPayloadInfo) unsafe.Pointer {
 
 // RTPPayloadInfoForName wraps gst_rtp_payload_info_for_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#gst_rtp_payload_info_for_name
 func RTPPayloadInfoForName(media string, encodingName string) *RTPPayloadInfo {
 	var carg1 *C.gchar             // in, none, string
 	var carg2 *C.gchar             // in, none, string
@@ -7662,8 +7332,7 @@ func RTPPayloadInfoForName(media string, encodingName string) *RTPPayloadInfo {
 
 // RTPPayloadInfoForPt wraps gst_rtp_payload_info_for_pt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#gst_rtp_payload_info_for_pt
 func RTPPayloadInfoForPt(payloadType uint8) *RTPPayloadInfo {
 	var carg1 C.guint8             // in, none, casted
 	var cret  *C.GstRTPPayloadInfo // return, none, converted, nullable
@@ -7684,8 +7353,7 @@ func RTPPayloadInfoForPt(payloadType uint8) *RTPPayloadInfo {
 
 // RTPSourceMeta wraps GstRTPSourceMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpmeta.html#GstRTPSourceMeta
 type RTPSourceMeta struct {
 	*rTPSourceMeta
 }
@@ -7766,7 +7434,7 @@ func UnsafeRTPSourceMetaToGlibFull(r *RTPSourceMeta) unsafe.Pointer {
 
 // RTPSourceMetaGetInfo wraps gst_rtp_source_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpmeta.html#gst_rtp_source_meta_get_info
 func RTPSourceMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -7781,8 +7449,7 @@ func RTPSourceMetaGetInfo() *gst.MetaInfo {
 
 // AppendCsrc wraps gst_rtp_source_meta_append_csrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpmeta.html#gst_rtp_source_meta_append_csrc
 func (meta *RTPSourceMeta) AppendCsrc(csrc []uint32) bool {
 	var carg0 *C.GstRTPSourceMeta // in, none, converted
 	var carg1 *C.guint32          // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner guint32 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -7810,8 +7477,7 @@ func (meta *RTPSourceMeta) AppendCsrc(csrc []uint32) bool {
 
 // GetSourceCount wraps gst_rtp_source_meta_get_source_count
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpmeta.html#gst_rtp_source_meta_get_source_count
 func (meta *RTPSourceMeta) GetSourceCount() uint {
 	var carg0 *C.GstRTPSourceMeta // in, none, converted
 	var cret  C.guint             // return, none, casted
@@ -7830,8 +7496,7 @@ func (meta *RTPSourceMeta) GetSourceCount() uint {
 
 // SetSsrc wraps gst_rtp_source_meta_set_ssrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpmeta.html#gst_rtp_source_meta_set_ssrc
 func (meta *RTPSourceMeta) SetSsrc(ssrc *uint32) bool {
 	var carg0 *C.GstRTPSourceMeta // in, none, converted
 	var carg1 *C.guint32          // in, transfer: none, C Pointers: 1, Name: guint32, nullable, nullable

@@ -26,20 +26,6 @@ type BusExtManual interface {
 	Messages(context.Context) iter.Seq[*Message]
 
 	// SetSyncHandler wraps gst_bus_set_sync_handler
-	//
-	// The function takes the following parameters:
-	//
-	// 	- fn BusSyncHandler (nullable): The handler function to install
-	//
-	// Sets the synchronous handler on the bus. The function will be called
-	// every time a new message is posted on the bus. Note that the function
-	// will be called in the same thread context as the posting object. This
-	// function is usually only called by the creator of the bus. Applications
-	// should handle messages asynchronously using the gst_bus watch and poll
-	// functions.
-	//
-	// Before 1.16.3 it was not possible to replace an existing handler and
-	// clearing an existing handler with %NULL was not thread-safe.
 	SetSyncHandler(BusSyncHandler)
 }
 
@@ -77,20 +63,6 @@ func (bus *BusInstance) Messages(ctx context.Context) iter.Seq[*Message] {
 }
 
 // SetSyncHandler wraps gst_bus_set_sync_handler
-//
-// The function takes the following parameters:
-//
-//   - fn BusSyncHandler (nullable): The handler function to install
-//
-// Sets the synchronous handler on the bus. The function will be called
-// every time a new message is posted on the bus. Note that the function
-// will be called in the same thread context as the posting object. This
-// function is usually only called by the creator of the bus. Applications
-// should handle messages asynchronously using the gst_bus watch and poll
-// functions.
-//
-// Before 1.16.3 it was not possible to replace an existing handler and
-// clearing an existing handler with %NULL was not thread-safe.
 func (bus *BusInstance) SetSyncHandler(fn BusSyncHandler) {
 	var carg0 *C.GstBus           // in, none, converted
 	var carg1 C.GstBusSyncHandler // callback, scope: notified, closure: carg2, destroy: carg3, nullable
@@ -110,17 +82,4 @@ func (bus *BusInstance) SetSyncHandler(fn BusSyncHandler) {
 }
 
 // BusSyncHandler wraps GstBusSyncHandler
-//
-// The function takes the following parameters:
-//
-//   - bus Bus: the #GstBus that sent the message
-//   - message *Message: the #GstMessage
-//
-// The function returns the following values:
-//
-//   - goret BusSyncReply
-//
-// Handler will be invoked synchronously, when a new message has been injected
-// into the bus. This function is mostly used internally. Only one sync handler
-// can be attached to a given bus.
 type BusSyncHandler func(bus Bus, message *Message) (goret BusSyncReply)

@@ -71,6 +71,18 @@ func _goglib_gstapp1_AppSink_pull_sample(carg0 *C.GstAppSink) (cret *C.GstSample
 	return fn(carg0)
 }
 
+//export _goglib_gstapp1_AppSink_try_pull_object
+func _goglib_gstapp1_AppSink_try_pull_object(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstMiniObject) {
+	var fn func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstMiniObject)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSink_try_pull_object").(func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstMiniObject))
+		if fn == nil {
+			panic("_goglib_gstapp1_AppSink_try_pull_object: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
+}
+
 //export _goglib_gstapp1_AppSink_try_pull_preroll
 func _goglib_gstapp1_AppSink_try_pull_preroll(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
 	var fn func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample)

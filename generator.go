@@ -26,7 +26,14 @@ var Data = genmain.Data{
 	Module:   Module,
 	GirFiles: girfiles_gst.GirFiles,
 
-	Documentation: generators.NewHotDocGodocGeneratorFactory(GstreamerDocsBaseURL),
+	Documentation: generators.NewHotDocGodocGeneratorFactory(GstreamerDocsBaseURL, func(s string) string {
+		switch s {
+		case "Gst":
+			return "gstreamer"
+		default:
+			return strings.ToLower(strings.TrimPrefix(s, "Gst"))
+		}
+	}),
 
 	Preprocessors: []gir.Preprocessor{
 		gir.MustIntrospect("Gst-1.Message.copy"),

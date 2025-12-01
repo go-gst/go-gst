@@ -13,18 +13,6 @@ import (
 import "C"
 
 // GetValueIndex wraps gst_tag_list_get_value_index
-//
-// The function takes the following parameters:
-//
-//   - tag string: tag to read out
-//   - index uint: number of entry to read out
-//
-// The function returns the following values:
-//
-//   - goret any
-//
-// Gets the value that is at the given index for the given tag in the given
-// list.
 func (list *TagList) GetValueIndex(tag string, index uint) any {
 	var carg0 *C.GstTagList // in, none, converted
 	var carg1 *C.gchar      // in, none, string, casted *C.gchar
