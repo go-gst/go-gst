@@ -42,24 +42,20 @@ func init() {
 
 // NET_TIME_PACKET_SIZE wraps GST_NET_TIME_PACKET_SIZE
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#GST_NET_TIME_PACKET_SIZE
 const NET_TIME_PACKET_SIZE = 16
 // PTP_CLOCK_ID_NONE wraps GST_PTP_CLOCK_ID_NONE
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#GST_PTP_CLOCK_ID_NONE
 const PTP_CLOCK_ID_NONE = 18446744073709551615
 // PtpStatisticsCallback wraps GstPtpStatisticsCallback
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#GstPtpStatisticsCallback
 type PtpStatisticsCallback func(domain uint8, stats *gst.Structure) (goret bool)
 
 // BufferAddNetAddressMeta wraps gst_buffer_add_net_address_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func BufferAddNetAddressMeta(buffer *gst.Buffer, addr gio.SocketAddress) *NetAddressMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var carg2 *C.GSocketAddress    // in, none, converted
@@ -81,8 +77,7 @@ func BufferAddNetAddressMeta(buffer *gst.Buffer, addr gio.SocketAddress) *NetAdd
 
 // BufferAddNetControlMessageMeta wraps gst_buffer_add_net_control_message_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func BufferAddNetControlMessageMeta(buffer *gst.Buffer, message gio.SocketControlMessage) *NetControlMessageMeta {
 	var carg1 *C.GstBuffer                // in, none, converted
 	var carg2 *C.GSocketControlMessage    // in, none, converted
@@ -104,8 +99,7 @@ func BufferAddNetControlMessageMeta(buffer *gst.Buffer, message gio.SocketContro
 
 // BufferGetNetAddressMeta wraps gst_buffer_get_net_address_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func BufferGetNetAddressMeta(buffer *gst.Buffer) *NetAddressMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var cret  *C.GstNetAddressMeta // return, none, converted, nullable
@@ -126,7 +120,7 @@ func BufferGetNetAddressMeta(buffer *gst.Buffer) *NetAddressMeta {
 
 // NetAddressMetaAPIGetType wraps gst_net_address_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/net
 func NetAddressMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -141,7 +135,7 @@ func NetAddressMetaAPIGetType() gobject.Type {
 
 // NetControlMessageMetaAPIGetType wraps gst_net_control_message_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/net
 func NetControlMessageMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -156,8 +150,7 @@ func NetControlMessageMetaAPIGetType() gobject.Type {
 
 // NetUtilsSetSocketTos wraps gst_net_utils_set_socket_tos
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func NetUtilsSetSocketTos(socket gio.Socket, qosDscp int32) bool {
 	var carg1 *C.GSocket // in, none, converted
 	var carg2 C.gint     // in, none, casted
@@ -181,8 +174,7 @@ func NetUtilsSetSocketTos(socket gio.Socket, qosDscp int32) bool {
 
 // PtpDeinit wraps gst_ptp_deinit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func PtpDeinit() {
 
 	C.gst_ptp_deinit()
@@ -190,8 +182,7 @@ func PtpDeinit() {
 
 // PtpInit wraps gst_ptp_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func PtpInit(clockId uint64, interfaces []string) bool {
 	var carg1 C.guint64  // in, none, casted
 	var carg2 **C.gchar  // in, transfer: none, C Pointers: 2, Name: array[utf8], nullable, array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
@@ -217,8 +208,7 @@ func PtpInit(clockId uint64, interfaces []string) bool {
 
 // PtpInitFull wraps gst_ptp_init_full
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func PtpInitFull(config *gst.Structure) bool {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.gboolean      // return
@@ -239,8 +229,7 @@ func PtpInitFull(config *gst.Structure) bool {
 
 // PtpIsInitialized wraps gst_ptp_is_initialized
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func PtpIsInitialized() bool {
 	var cret C.gboolean // return
 
@@ -257,8 +246,7 @@ func PtpIsInitialized() bool {
 
 // PtpIsSupported wraps gst_ptp_is_supported
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func PtpIsSupported() bool {
 	var cret C.gboolean // return
 
@@ -275,8 +263,7 @@ func PtpIsSupported() bool {
 
 // PtpStatisticsCallbackAdd wraps gst_ptp_statistics_callback_add
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback) uint32 {
 	var carg1 C.GstPtpStatisticsCallback // callback, scope: notified, closure: carg2, destroy: carg3
 	var carg2 C.gpointer                 // implicit
@@ -299,8 +286,7 @@ func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback) uint32 {
 
 // PtpStatisticsCallbackRemove wraps gst_ptp_statistics_callback_remove
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net
 func PtpStatisticsCallbackRemove(id uint32) {
 	var carg1 C.gulong // in, none, casted
 
@@ -320,8 +306,7 @@ var _ NetClientClock = (*NetClientClockInstance)(nil)
 
 // NetClientClock wraps GstNetClientClock
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#GstNetClientClock
 type NetClientClock interface {
 	gst.SystemClock
 	upcastToGstNetClientClock() *NetClientClockInstance
@@ -387,8 +372,7 @@ func UnsafeNetClientClockToGlibFull(c NetClientClock) unsafe.Pointer {
 
 // NewNetClientClock wraps gst_net_client_clock_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#gst_net_client_clock_new
 func NewNetClientClock(name string, remoteAddress string, remotePort int32, baseTime gst.ClockTime) gst.Clock {
 	var carg1 *C.gchar       // in, none, string, nullable-string
 	var carg2 *C.gchar       // in, none, string
@@ -416,6 +400,14 @@ func NewNetClientClock(name string, remoteAddress string, remotePort int32, base
 	goret = gst.UnsafeClockFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
+}
+
+// NetClientClockDeinit wraps gst_net_client_clock_deinit
+// 
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#gst_net_client_clock_deinit
+func NetClientClockDeinit() {
+
+	C.gst_net_client_clock_deinit()
 }
 
 // NetClientClockOverrides is the struct used to override the default implementation of virtual methods.
@@ -470,8 +462,7 @@ var _ NetTimeProvider = (*NetTimeProviderInstance)(nil)
 
 // NetTimeProvider wraps GstNetTimeProvider
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimeprovider.html#GstNetTimeProvider
 type NetTimeProvider interface {
 	gst.Object
 	gio.Initable
@@ -537,8 +528,7 @@ func UnsafeNetTimeProviderToGlibFull(c NetTimeProvider) unsafe.Pointer {
 
 // NewNetTimeProvider wraps gst_net_time_provider_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimeprovider.html#gst_net_time_provider_new
 func NewNetTimeProvider(clock gst.Clock, address string, port int32) NetTimeProvider {
 	var carg1 *C.GstClock           // in, none, converted
 	var carg2 *C.gchar              // in, none, string, nullable-string
@@ -616,7 +606,7 @@ var _ NtpClock = (*NtpClockInstance)(nil)
 
 // NtpClock wraps GstNtpClock
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#GstNtpClock
 type NtpClock interface {
 	NetClientClock
 	upcastToGstNtpClock() *NtpClockInstance
@@ -684,8 +674,7 @@ func UnsafeNtpClockToGlibFull(c NtpClock) unsafe.Pointer {
 
 // NewNtpClock wraps gst_ntp_clock_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#gst_ntp_clock_new
 func NewNtpClock(name string, remoteAddress string, remotePort int32, baseTime gst.ClockTime) gst.Clock {
 	var carg1 *C.gchar       // in, none, string, nullable-string
 	var carg2 *C.gchar       // in, none, string
@@ -765,8 +754,7 @@ var _ PtpClock = (*PtpClockInstance)(nil)
 
 // PtpClock wraps GstPtpClock
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#GstPtpClock
 type PtpClock interface {
 	gst.SystemClock
 	upcastToGstPtpClock() *PtpClockInstance
@@ -832,8 +820,7 @@ func UnsafePtpClockToGlibFull(c PtpClock) unsafe.Pointer {
 
 // NewPtpClock wraps gst_ptp_clock_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#gst_ptp_clock_new
 func NewPtpClock(name string, domain uint) gst.Clock {
 	var carg1 *C.gchar    // in, none, string, nullable-string
 	var carg2 C.guint     // in, none, casted
@@ -900,8 +887,7 @@ func RegisterPtpClockSubClass[InstanceT PtpClock](
 
 // NetAddressMeta wraps GstNetAddressMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetaddressmeta.html#GstNetAddressMeta
 type NetAddressMeta struct {
 	*netAddressMeta
 }
@@ -982,7 +968,7 @@ func UnsafeNetAddressMetaToGlibFull(n *NetAddressMeta) unsafe.Pointer {
 
 // NetAddressMetaGetInfo wraps gst_net_address_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetaddressmeta.html#gst_net_address_meta_get_info
 func NetAddressMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -997,7 +983,7 @@ func NetAddressMetaGetInfo() *gst.MetaInfo {
 
 // NetClientClockClass wraps GstNetClientClockClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#GstNetClientClockClass
 // 
 // NetClientClockClass is the type struct for [NetClientClock]
 type NetClientClockClass struct {
@@ -1051,8 +1037,7 @@ func (n *NetClientClockClass) ParentClass() *gst.SystemClockClass {
 
 // NetControlMessageMeta wraps GstNetControlMessageMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetcontrolmessagemeta.html#GstNetControlMessageMeta
 type NetControlMessageMeta struct {
 	*netControlMessageMeta
 }
@@ -1133,7 +1118,7 @@ func UnsafeNetControlMessageMetaToGlibFull(n *NetControlMessageMeta) unsafe.Poin
 
 // NetControlMessageMetaGetInfo wraps gst_net_control_message_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetcontrolmessagemeta.html#gst_net_control_message_meta_get_info
 func NetControlMessageMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -1148,8 +1133,7 @@ func NetControlMessageMetaGetInfo() *gst.MetaInfo {
 
 // NetTimePacket wraps GstNetTimePacket
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#GstNetTimePacket
 type NetTimePacket struct {
 	*netTimePacket
 }
@@ -1245,8 +1229,7 @@ func UnsafeNetTimePacketToGlibFull(n *NetTimePacket) unsafe.Pointer {
 
 // NewNetTimePacket wraps gst_net_time_packet_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_new
 func NewNetTimePacket(buffer [16]uint8) *NetTimePacket {
 	var carg1 *C.guint8           // in, none, array fixed size (inner: guint8, size: 16)
 	var cret  *C.GstNetTimePacket // return, full, converted
@@ -1271,8 +1254,7 @@ func NewNetTimePacket(buffer [16]uint8) *NetTimePacket {
 
 // NetTimePacketReceive wraps gst_net_time_packet_receive
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_receive
 func NetTimePacketReceive(socket gio.Socket) (gio.SocketAddress, *NetTimePacket, error) {
 	var carg1 *C.GSocket          // in, none, converted
 	var carg2 *C.GSocketAddress   // out, full, converted
@@ -1299,8 +1281,7 @@ func NetTimePacketReceive(socket gio.Socket) (gio.SocketAddress, *NetTimePacket,
 
 // Copy wraps gst_net_time_packet_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_copy
 func (packet *NetTimePacket) Copy() *NetTimePacket {
 	var carg0 *C.GstNetTimePacket // in, none, converted
 	var cret  *C.GstNetTimePacket // return, full, converted
@@ -1319,8 +1300,7 @@ func (packet *NetTimePacket) Copy() *NetTimePacket {
 
 // Send wraps gst_net_time_packet_send
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_send
 func (packet *NetTimePacket) Send(socket gio.Socket, destAddress gio.SocketAddress) (bool, error) {
 	var carg0 *C.GstNetTimePacket // in, none, converted
 	var carg1 *C.GSocket          // in, none, converted
@@ -1352,8 +1332,7 @@ func (packet *NetTimePacket) Send(socket gio.Socket, destAddress gio.SocketAddre
 
 // Serialize wraps gst_net_time_packet_serialize
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimepacket.html#gst_net_time_packet_serialize
 func (packet *NetTimePacket) Serialize() [16]uint8 {
 	var carg0 *C.GstNetTimePacket // in, none, converted
 	var cret  *C.guint8           // return, transfer: full, C Pointers: 1, Name: array[guint8], scope: , array (inner guint8 (*typesystem.CastablePrimitive), fixed-size: 16)
@@ -1374,7 +1353,7 @@ func (packet *NetTimePacket) Serialize() [16]uint8 {
 
 // NetTimeProviderClass wraps GstNetTimeProviderClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnettimeprovider.html#GstNetTimeProviderClass
 // 
 // NetTimeProviderClass is the type struct for [NetTimeProvider]
 type NetTimeProviderClass struct {
@@ -1428,7 +1407,7 @@ func (n *NetTimeProviderClass) ParentClass() *gst.ObjectClass {
 
 // NtpClockClass wraps GstNtpClockClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#GstNtpClockClass
 // 
 // NtpClockClass is the type struct for [NtpClock]
 type NtpClockClass struct {
@@ -1482,8 +1461,7 @@ func (n *NtpClockClass) ParentClass() *NetClientClockClass {
 
 // PtpClockClass wraps GstPtpClockClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/net/gstptpclock.html#GstPtpClockClass
 // 
 // PtpClockClass is the type struct for [PtpClock]
 type PtpClockClass struct {

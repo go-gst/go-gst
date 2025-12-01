@@ -402,95 +402,89 @@ func init() {
 
 // VIDEO_COMP_A wraps GST_VIDEO_COMP_A
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_COMP_A
 const VIDEO_COMP_A = 3
 // VIDEO_COMP_B wraps GST_VIDEO_COMP_B
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_COMP_B
 const VIDEO_COMP_B = 2
 // VIDEO_COMP_G wraps GST_VIDEO_COMP_G
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_COMP_G
 const VIDEO_COMP_G = 1
 // VIDEO_COMP_INDEX wraps GST_VIDEO_COMP_INDEX
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_COMP_INDEX
 const VIDEO_COMP_INDEX = 0
 // VIDEO_COMP_PALETTE wraps GST_VIDEO_COMP_PALETTE
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_COMP_PALETTE
 const VIDEO_COMP_PALETTE = 1
 // VIDEO_COMP_R wraps GST_VIDEO_COMP_R
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_COMP_R
 const VIDEO_COMP_R = 0
 // VIDEO_COMP_U wraps GST_VIDEO_COMP_U
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_COMP_U
 const VIDEO_COMP_U = 1
 // VIDEO_COMP_V wraps GST_VIDEO_COMP_V
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_COMP_V
 const VIDEO_COMP_V = 2
 // VIDEO_COMP_Y wraps GST_VIDEO_COMP_Y
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_COMP_Y
 const VIDEO_COMP_Y = 0
 // VIDEO_DECODER_MAX_ERRORS wraps GST_VIDEO_DECODER_MAX_ERRORS
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#GST_VIDEO_DECODER_MAX_ERRORS
 const VIDEO_DECODER_MAX_ERRORS = -1
 // VIDEO_FORMAT_LAST wraps GST_VIDEO_FORMAT_LAST
 // 
-// see also No documentation available
-//
-const VIDEO_FORMAT_LAST = 140
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_FORMAT_LAST
+const VIDEO_FORMAT_LAST = 142
 // VIDEO_MAX_COMPONENTS wraps GST_VIDEO_MAX_COMPONENTS
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_MAX_COMPONENTS
 const VIDEO_MAX_COMPONENTS = 4
 // VIDEO_MAX_PLANES wraps GST_VIDEO_MAX_PLANES
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GST_VIDEO_MAX_PLANES
 const VIDEO_MAX_PLANES = 4
 // VIDEO_TILE_TYPE_MASK wraps GST_VIDEO_TILE_TYPE_MASK
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-tile.html#GST_VIDEO_TILE_TYPE_MASK
 const VIDEO_TILE_TYPE_MASK = 65535
 // VIDEO_TILE_TYPE_SHIFT wraps GST_VIDEO_TILE_TYPE_SHIFT
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-tile.html#GST_VIDEO_TILE_TYPE_SHIFT
 const VIDEO_TILE_TYPE_SHIFT = 16
 // VIDEO_TILE_X_TILES_MASK wraps GST_VIDEO_TILE_X_TILES_MASK
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-tile.html#GST_VIDEO_TILE_X_TILES_MASK
 const VIDEO_TILE_X_TILES_MASK = 65535
 // VIDEO_TILE_Y_TILES_SHIFT wraps GST_VIDEO_TILE_Y_TILES_SHIFT
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-tile.html#GST_VIDEO_TILE_Y_TILES_SHIFT
 const VIDEO_TILE_Y_TILES_SHIFT = 16
 // AncillaryMetaField wraps GstAncillaryMetaField
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstAncillaryMetaField
 type AncillaryMetaField C.int
 
 const (
 	// AncillaryMetaFieldProgressive wraps GST_ANCILLARY_META_FIELD_PROGRESSIVE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_ANCILLARY_META_FIELD_PROGRESSIVE
 	AncillaryMetaFieldProgressive AncillaryMetaField = 0
 	// AncillaryMetaFieldInterlacedFirst wraps GST_ANCILLARY_META_FIELD_INTERLACED_FIRST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_ANCILLARY_META_FIELD_INTERLACED_FIRST
 	AncillaryMetaFieldInterlacedFirst AncillaryMetaField = 16
 	// AncillaryMetaFieldInterlacedSecond wraps GST_ANCILLARY_META_FIELD_INTERLACED_SECOND
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_ANCILLARY_META_FIELD_INTERLACED_SECOND
 	AncillaryMetaFieldInterlacedSecond AncillaryMetaField = 17
 )
 
@@ -519,20 +513,17 @@ func (e AncillaryMetaField) String() string {
 
 // ColorBalanceType wraps GstColorBalanceType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstColorBalanceType
 type ColorBalanceType C.int
 
 const (
 	// ColorBalanceHardware wraps GST_COLOR_BALANCE_HARDWARE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_COLOR_BALANCE_HARDWARE
 	ColorBalanceHardware ColorBalanceType = 0
 	// ColorBalanceSoftware wraps GST_COLOR_BALANCE_SOFTWARE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_COLOR_BALANCE_SOFTWARE
 	ColorBalanceSoftware ColorBalanceType = 1
 )
 
@@ -560,85 +551,69 @@ func (e ColorBalanceType) String() string {
 
 // NavigationCommand wraps GstNavigationCommand
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstNavigationCommand
 type NavigationCommand C.int
 
 const (
 	// NavigationCommandInvalid wraps GST_NAVIGATION_COMMAND_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_INVALID
 	NavigationCommandInvalid NavigationCommand = 0
 	// NavigationCommandMenu1 wraps GST_NAVIGATION_COMMAND_MENU1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_MENU1
 	NavigationCommandMenu1 NavigationCommand = 1
 	// NavigationCommandMenu2 wraps GST_NAVIGATION_COMMAND_MENU2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_MENU2
 	NavigationCommandMenu2 NavigationCommand = 2
 	// NavigationCommandMenu3 wraps GST_NAVIGATION_COMMAND_MENU3
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_MENU3
 	NavigationCommandMenu3 NavigationCommand = 3
 	// NavigationCommandMenu4 wraps GST_NAVIGATION_COMMAND_MENU4
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_MENU4
 	NavigationCommandMenu4 NavigationCommand = 4
 	// NavigationCommandMenu5 wraps GST_NAVIGATION_COMMAND_MENU5
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_MENU5
 	NavigationCommandMenu5 NavigationCommand = 5
 	// NavigationCommandMenu6 wraps GST_NAVIGATION_COMMAND_MENU6
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_MENU6
 	NavigationCommandMenu6 NavigationCommand = 6
 	// NavigationCommandMenu7 wraps GST_NAVIGATION_COMMAND_MENU7
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_MENU7
 	NavigationCommandMenu7 NavigationCommand = 7
 	// NavigationCommandLeft wraps GST_NAVIGATION_COMMAND_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_LEFT
 	NavigationCommandLeft NavigationCommand = 20
 	// NavigationCommandRight wraps GST_NAVIGATION_COMMAND_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_RIGHT
 	NavigationCommandRight NavigationCommand = 21
 	// NavigationCommandUp wraps GST_NAVIGATION_COMMAND_UP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_UP
 	NavigationCommandUp NavigationCommand = 22
 	// NavigationCommandDown wraps GST_NAVIGATION_COMMAND_DOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_DOWN
 	NavigationCommandDown NavigationCommand = 23
 	// NavigationCommandActivate wraps GST_NAVIGATION_COMMAND_ACTIVATE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_ACTIVATE
 	NavigationCommandActivate NavigationCommand = 24
 	// NavigationCommandPrevAngle wraps GST_NAVIGATION_COMMAND_PREV_ANGLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_PREV_ANGLE
 	NavigationCommandPrevAngle NavigationCommand = 30
 	// NavigationCommandNextAngle wraps GST_NAVIGATION_COMMAND_NEXT_ANGLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_COMMAND_NEXT_ANGLE
 	NavigationCommandNextAngle NavigationCommand = 31
 )
 
@@ -679,80 +654,65 @@ func (e NavigationCommand) String() string {
 
 // NavigationEventType wraps GstNavigationEventType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstNavigationEventType
 type NavigationEventType C.int
 
 const (
 	// NavigationEventInvalid wraps GST_NAVIGATION_EVENT_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_INVALID
 	NavigationEventInvalid NavigationEventType = 0
 	// NavigationEventKeyPress wraps GST_NAVIGATION_EVENT_KEY_PRESS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_KEY_PRESS
 	NavigationEventKeyPress NavigationEventType = 1
 	// NavigationEventKeyRelease wraps GST_NAVIGATION_EVENT_KEY_RELEASE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_KEY_RELEASE
 	NavigationEventKeyRelease NavigationEventType = 2
 	// NavigationEventMouseButtonPress wraps GST_NAVIGATION_EVENT_MOUSE_BUTTON_PRESS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_MOUSE_BUTTON_PRESS
 	NavigationEventMouseButtonPress NavigationEventType = 3
 	// NavigationEventMouseButtonRelease wraps GST_NAVIGATION_EVENT_MOUSE_BUTTON_RELEASE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_MOUSE_BUTTON_RELEASE
 	NavigationEventMouseButtonRelease NavigationEventType = 4
 	// NavigationEventMouseMove wraps GST_NAVIGATION_EVENT_MOUSE_MOVE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_MOUSE_MOVE
 	NavigationEventMouseMove NavigationEventType = 5
 	// NavigationEventCommand wraps GST_NAVIGATION_EVENT_COMMAND
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_COMMAND
 	NavigationEventCommand NavigationEventType = 6
 	// NavigationEventMouseScroll wraps GST_NAVIGATION_EVENT_MOUSE_SCROLL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_MOUSE_SCROLL
 	NavigationEventMouseScroll NavigationEventType = 7
 	// NavigationEventTouchDown wraps GST_NAVIGATION_EVENT_TOUCH_DOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_TOUCH_DOWN
 	NavigationEventTouchDown NavigationEventType = 8
 	// NavigationEventTouchMotion wraps GST_NAVIGATION_EVENT_TOUCH_MOTION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_TOUCH_MOTION
 	NavigationEventTouchMotion NavigationEventType = 9
 	// NavigationEventTouchUp wraps GST_NAVIGATION_EVENT_TOUCH_UP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_TOUCH_UP
 	NavigationEventTouchUp NavigationEventType = 10
 	// NavigationEventTouchFrame wraps GST_NAVIGATION_EVENT_TOUCH_FRAME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_TOUCH_FRAME
 	NavigationEventTouchFrame NavigationEventType = 11
 	// NavigationEventTouchCancel wraps GST_NAVIGATION_EVENT_TOUCH_CANCEL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_TOUCH_CANCEL
 	NavigationEventTouchCancel NavigationEventType = 12
 	// NavigationEventMouseDoubleClick wraps GST_NAVIGATION_EVENT_MOUSE_DOUBLE_CLICK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_EVENT_MOUSE_DOUBLE_CLICK
 	NavigationEventMouseDoubleClick NavigationEventType = 13
 )
 
@@ -792,35 +752,29 @@ func (e NavigationEventType) String() string {
 
 // NavigationMessageType wraps GstNavigationMessageType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstNavigationMessageType
 type NavigationMessageType C.int
 
 const (
 	// NavigationMessageInvalid wraps GST_NAVIGATION_MESSAGE_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MESSAGE_INVALID
 	NavigationMessageInvalid NavigationMessageType = 0
 	// NavigationMessageMouseOver wraps GST_NAVIGATION_MESSAGE_MOUSE_OVER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MESSAGE_MOUSE_OVER
 	NavigationMessageMouseOver NavigationMessageType = 1
 	// NavigationMessageCommandsChanged wraps GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
 	NavigationMessageCommandsChanged NavigationMessageType = 2
 	// NavigationMessageAnglesChanged wraps GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
 	NavigationMessageAnglesChanged NavigationMessageType = 3
 	// NavigationMessageEvent wraps GST_NAVIGATION_MESSAGE_EVENT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MESSAGE_EVENT
 	NavigationMessageEvent NavigationMessageType = 4
 )
 
@@ -851,25 +805,21 @@ func (e NavigationMessageType) String() string {
 
 // NavigationQueryType wraps GstNavigationQueryType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstNavigationQueryType
 type NavigationQueryType C.int
 
 const (
 	// NavigationQueryInvalid wraps GST_NAVIGATION_QUERY_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_QUERY_INVALID
 	NavigationQueryInvalid NavigationQueryType = 0
 	// NavigationQueryCommands wraps GST_NAVIGATION_QUERY_COMMANDS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_QUERY_COMMANDS
 	NavigationQueryCommands NavigationQueryType = 1
 	// NavigationQueryAngles wraps GST_NAVIGATION_QUERY_ANGLES
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_QUERY_ANGLES
 	NavigationQueryAngles NavigationQueryType = 2
 )
 
@@ -898,24 +848,21 @@ func (e NavigationQueryType) String() string {
 
 // VideoAFDSpec wraps GstVideoAFDSpec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoAFDSpec
 type VideoAFDSpec C.int
 
 const (
 	// VideoAfdSpecDvbEtsi wraps GST_VIDEO_AFD_SPEC_DVB_ETSI
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_SPEC_DVB_ETSI
 	VideoAfdSpecDvbEtsi VideoAFDSpec = 0
 	// VideoAfdSpecAtscA53 wraps GST_VIDEO_AFD_SPEC_ATSC_A53
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_SPEC_ATSC_A53
 	VideoAfdSpecAtscA53 VideoAFDSpec = 1
 	// VideoAfdSpecSmpteSt20161 wraps GST_VIDEO_AFD_SPEC_SMPTE_ST2016_1
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_SPEC_SMPTE_ST2016_1
 	VideoAfdSpecSmpteSt20161 VideoAFDSpec = 2
 )
 
@@ -944,65 +891,53 @@ func (e VideoAFDSpec) String() string {
 
 // VideoAFDValue wraps GstVideoAFDValue
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoAFDValue
 type VideoAFDValue C.int
 
 const (
 	// VideoAfdUnavailable wraps GST_VIDEO_AFD_UNAVAILABLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_UNAVAILABLE
 	VideoAfdUnavailable VideoAFDValue = 0
 	// VideoAfd169TopAligned wraps GST_VIDEO_AFD_16_9_TOP_ALIGNED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_16_9_TOP_ALIGNED
 	VideoAfd169TopAligned VideoAFDValue = 2
 	// VideoAfd149TopAligned wraps GST_VIDEO_AFD_14_9_TOP_ALIGNED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_14_9_TOP_ALIGNED
 	VideoAfd149TopAligned VideoAFDValue = 3
 	// VideoAfdGreaterThan169 wraps GST_VIDEO_AFD_GREATER_THAN_16_9
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_GREATER_THAN_16_9
 	VideoAfdGreaterThan169 VideoAFDValue = 4
 	// VideoAfd43Full169Full wraps GST_VIDEO_AFD_4_3_FULL_16_9_FULL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_4_3_FULL_16_9_FULL
 	VideoAfd43Full169Full VideoAFDValue = 8
 	// VideoAfd43Full43Pillar wraps GST_VIDEO_AFD_4_3_FULL_4_3_PILLAR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_4_3_FULL_4_3_PILLAR
 	VideoAfd43Full43Pillar VideoAFDValue = 9
 	// VideoAfd169Letter169Full wraps GST_VIDEO_AFD_16_9_LETTER_16_9_FULL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_16_9_LETTER_16_9_FULL
 	VideoAfd169Letter169Full VideoAFDValue = 10
 	// VideoAfd149Letter149Pillar wraps GST_VIDEO_AFD_14_9_LETTER_14_9_PILLAR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_14_9_LETTER_14_9_PILLAR
 	VideoAfd149Letter149Pillar VideoAFDValue = 11
 	// VideoAfd43Full149Center wraps GST_VIDEO_AFD_4_3_FULL_14_9_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_4_3_FULL_14_9_CENTER
 	VideoAfd43Full149Center VideoAFDValue = 13
 	// VideoAfd169Letter149Center wraps GST_VIDEO_AFD_16_9_LETTER_14_9_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_16_9_LETTER_14_9_CENTER
 	VideoAfd169Letter149Center VideoAFDValue = 14
 	// VideoAfd169Letter43Center wraps GST_VIDEO_AFD_16_9_LETTER_4_3_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_AFD_16_9_LETTER_4_3_CENTER
 	VideoAfd169Letter43Center VideoAFDValue = 15
 )
 
@@ -1039,25 +974,21 @@ func (e VideoAFDValue) String() string {
 
 // VideoAlphaMode wraps GstVideoAlphaMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoAlphaMode
 type VideoAlphaMode C.int
 
 const (
 	// VideoAlphaModeCopy wraps GST_VIDEO_ALPHA_MODE_COPY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ALPHA_MODE_COPY
 	VideoAlphaModeCopy VideoAlphaMode = 0
 	// VideoAlphaModeSet wraps GST_VIDEO_ALPHA_MODE_SET
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ALPHA_MODE_SET
 	VideoAlphaModeSet VideoAlphaMode = 1
 	// VideoAlphaModeMult wraps GST_VIDEO_ALPHA_MODE_MULT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ALPHA_MODE_MULT
 	VideoAlphaModeMult VideoAlphaMode = 2
 )
 
@@ -1086,57 +1017,57 @@ func (e VideoAlphaMode) String() string {
 
 // VideoAncillaryDID wraps GstVideoAncillaryDID
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoAncillaryDID
 type VideoAncillaryDID C.int
 
 const (
 	// VideoAncillaryDidUndefined wraps GST_VIDEO_ANCILLARY_DID_UNDEFINED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_UNDEFINED
 	VideoAncillaryDidUndefined VideoAncillaryDID = 0
 	// VideoAncillaryDidDeletion wraps GST_VIDEO_ANCILLARY_DID_DELETION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_DELETION
 	VideoAncillaryDidDeletion VideoAncillaryDID = 128
 	// VideoAncillaryDidHanc3gAudioDataFirst wraps GST_VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_FIRST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_FIRST
 	VideoAncillaryDidHanc3gAudioDataFirst VideoAncillaryDID = 160
 	// VideoAncillaryDidHanc3gAudioDataLast wraps GST_VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_LAST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_LAST
 	VideoAncillaryDidHanc3gAudioDataLast VideoAncillaryDID = 167
 	// VideoAncillaryDidHancHdtvAudioDataFirst wraps GST_VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_FIRST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_FIRST
 	VideoAncillaryDidHancHdtvAudioDataFirst VideoAncillaryDID = 224
 	// VideoAncillaryDidHancHdtvAudioDataLast wraps GST_VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_LAST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_LAST
 	VideoAncillaryDidHancHdtvAudioDataLast VideoAncillaryDID = 231
 	// VideoAncillaryDidHancSdtvAudioData1First wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_FIRST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_FIRST
 	VideoAncillaryDidHancSdtvAudioData1First VideoAncillaryDID = 236
 	// VideoAncillaryDidHancSdtvAudioData1Last wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_LAST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_LAST
 	VideoAncillaryDidHancSdtvAudioData1Last VideoAncillaryDID = 239
 	// VideoAncillaryDidCameraPosition wraps GST_VIDEO_ANCILLARY_DID_CAMERA_POSITION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_CAMERA_POSITION
 	VideoAncillaryDidCameraPosition VideoAncillaryDID = 240
 	// VideoAncillaryDidHancErrorDetection wraps GST_VIDEO_ANCILLARY_DID_HANC_ERROR_DETECTION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_HANC_ERROR_DETECTION
 	VideoAncillaryDidHancErrorDetection VideoAncillaryDID = 244
 	// VideoAncillaryDidHancSdtvAudioData2First wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_FIRST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_FIRST
 	VideoAncillaryDidHancSdtvAudioData2First VideoAncillaryDID = 248
 	// VideoAncillaryDidHancSdtvAudioData2Last wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_LAST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_LAST
 	VideoAncillaryDidHancSdtvAudioData2Last VideoAncillaryDID = 255
 )
 
@@ -1174,25 +1105,21 @@ func (e VideoAncillaryDID) String() string {
 
 // VideoAncillaryDID16 wraps GstVideoAncillaryDID16
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoAncillaryDID16
 type VideoAncillaryDID16 C.int
 
 const (
 	// VideoAncillaryDid16S334Eia708 wraps GST_VIDEO_ANCILLARY_DID16_S334_EIA_708
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID16_S334_EIA_708
 	VideoAncillaryDid16S334Eia708 VideoAncillaryDID16 = 24833
 	// VideoAncillaryDid16S334Eia608 wraps GST_VIDEO_ANCILLARY_DID16_S334_EIA_608
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID16_S334_EIA_608
 	VideoAncillaryDid16S334Eia608 VideoAncillaryDID16 = 24834
 	// VideoAncillaryDid16S20163AfdBar wraps GST_VIDEO_ANCILLARY_DID16_S2016_3_AFD_BAR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ANCILLARY_DID16_S2016_3_AFD_BAR
 	VideoAncillaryDid16S20163AfdBar VideoAncillaryDID16 = 16645
 )
 
@@ -1221,35 +1148,29 @@ func (e VideoAncillaryDID16) String() string {
 
 // VideoCaptionType wraps GstVideoCaptionType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoCaptionType
 type VideoCaptionType C.int
 
 const (
 	// VideoCaptionTypeUnknown wraps GST_VIDEO_CAPTION_TYPE_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CAPTION_TYPE_UNKNOWN
 	VideoCaptionTypeUnknown VideoCaptionType = 0
 	// VideoCaptionTypeCea608Raw wraps GST_VIDEO_CAPTION_TYPE_CEA608_RAW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CAPTION_TYPE_CEA608_RAW
 	VideoCaptionTypeCea608Raw VideoCaptionType = 1
 	// VideoCaptionTypeCea608S3341a wraps GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A
 	VideoCaptionTypeCea608S3341a VideoCaptionType = 2
 	// VideoCaptionTypeCea708Raw wraps GST_VIDEO_CAPTION_TYPE_CEA708_RAW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CAPTION_TYPE_CEA708_RAW
 	VideoCaptionTypeCea708Raw VideoCaptionType = 3
 	// VideoCaptionTypeCea708Cdp wraps GST_VIDEO_CAPTION_TYPE_CEA708_CDP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CAPTION_TYPE_CEA708_CDP
 	VideoCaptionTypeCea708Cdp VideoCaptionType = 4
 )
 
@@ -1280,8 +1201,7 @@ func (e VideoCaptionType) String() string {
 
 // VideoCaptionTypeFromCaps wraps gst_video_caption_type_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_caption_type_from_caps
 func VideoCaptionTypeFromCaps(caps *gst.Caps) VideoCaptionType {
 	var carg1 *C.GstCaps            // in, none, converted
 	var cret  C.GstVideoCaptionType // return, none, casted
@@ -1300,8 +1220,7 @@ func VideoCaptionTypeFromCaps(caps *gst.Caps) VideoCaptionType {
 
 // VideoCaptionTypeToCaps wraps gst_video_caption_type_to_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_caption_type_to_caps
 func VideoCaptionTypeToCaps(typ VideoCaptionType) *gst.Caps {
 	var carg1 C.GstVideoCaptionType // in, none, casted
 	var cret  *C.GstCaps            // return, full, converted
@@ -1320,20 +1239,17 @@ func VideoCaptionTypeToCaps(typ VideoCaptionType) *gst.Caps {
 
 // VideoChromaMethod wraps GstVideoChromaMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoChromaMethod
 type VideoChromaMethod C.int
 
 const (
 	// VideoChromaMethodNearest wraps GST_VIDEO_CHROMA_METHOD_NEAREST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_METHOD_NEAREST
 	VideoChromaMethodNearest VideoChromaMethod = 0
 	// VideoChromaMethodLinear wraps GST_VIDEO_CHROMA_METHOD_LINEAR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_METHOD_LINEAR
 	VideoChromaMethodLinear VideoChromaMethod = 1
 )
 
@@ -1361,30 +1277,25 @@ func (e VideoChromaMethod) String() string {
 
 // VideoChromaMode wraps GstVideoChromaMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoChromaMode
 type VideoChromaMode C.int
 
 const (
 	// VideoChromaModeFull wraps GST_VIDEO_CHROMA_MODE_FULL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_MODE_FULL
 	VideoChromaModeFull VideoChromaMode = 0
 	// VideoChromaModeUpsampleOnly wraps GST_VIDEO_CHROMA_MODE_UPSAMPLE_ONLY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_MODE_UPSAMPLE_ONLY
 	VideoChromaModeUpsampleOnly VideoChromaMode = 1
 	// VideoChromaModeDownsampleOnly wraps GST_VIDEO_CHROMA_MODE_DOWNSAMPLE_ONLY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_MODE_DOWNSAMPLE_ONLY
 	VideoChromaModeDownsampleOnly VideoChromaMode = 2
 	// VideoChromaModeNone wraps GST_VIDEO_CHROMA_MODE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_MODE_NONE
 	VideoChromaModeNone VideoChromaMode = 3
 )
 
@@ -1414,45 +1325,37 @@ func (e VideoChromaMode) String() string {
 
 // VideoColorMatrix wraps GstVideoColorMatrix
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoColorMatrix
 type VideoColorMatrix C.int
 
 const (
 	// VideoColorMatrixUnknown wraps GST_VIDEO_COLOR_MATRIX_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_MATRIX_UNKNOWN
 	VideoColorMatrixUnknown VideoColorMatrix = 0
 	// VideoColorMatrixRgb wraps GST_VIDEO_COLOR_MATRIX_RGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_MATRIX_RGB
 	VideoColorMatrixRgb VideoColorMatrix = 1
 	// VideoColorMatrixFcc wraps GST_VIDEO_COLOR_MATRIX_FCC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_MATRIX_FCC
 	VideoColorMatrixFcc VideoColorMatrix = 2
 	// VideoColorMatrixBt709 wraps GST_VIDEO_COLOR_MATRIX_BT709
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_MATRIX_BT709
 	VideoColorMatrixBt709 VideoColorMatrix = 3
 	// VideoColorMatrixBt601 wraps GST_VIDEO_COLOR_MATRIX_BT601
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_MATRIX_BT601
 	VideoColorMatrixBt601 VideoColorMatrix = 4
 	// VideoColorMatrixSmpte240m wraps GST_VIDEO_COLOR_MATRIX_SMPTE240M
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_MATRIX_SMPTE240M
 	VideoColorMatrixSmpte240m VideoColorMatrix = 5
 	// VideoColorMatrixBt2020 wraps GST_VIDEO_COLOR_MATRIX_BT2020
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_MATRIX_BT2020
 	VideoColorMatrixBt2020 VideoColorMatrix = 6
 )
 
@@ -1485,8 +1388,7 @@ func (e VideoColorMatrix) String() string {
 
 // VideoColorMatrixFromIso wraps gst_video_color_matrix_from_iso
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_color_matrix_from_iso
 func VideoColorMatrixFromIso(value uint) VideoColorMatrix {
 	var carg1 C.guint               // in, none, casted
 	var cret  C.GstVideoColorMatrix // return, none, casted
@@ -1505,8 +1407,7 @@ func VideoColorMatrixFromIso(value uint) VideoColorMatrix {
 
 // VideoColorMatrixGetKrKb wraps gst_video_color_matrix_get_Kr_Kb
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_color_matrix_get_Kr_Kb
 func VideoColorMatrixGetKrKb(matrix VideoColorMatrix) (float64, float64, bool) {
 	var carg1 C.GstVideoColorMatrix // in, none, casted
 	var carg2 C.gdouble             // out, full, casted
@@ -1533,8 +1434,7 @@ func VideoColorMatrixGetKrKb(matrix VideoColorMatrix) (float64, float64, bool) {
 
 // VideoColorMatrixToIso wraps gst_video_color_matrix_to_iso
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_color_matrix_to_iso
 func VideoColorMatrixToIso(matrix VideoColorMatrix) uint {
 	var carg1 C.GstVideoColorMatrix // in, none, casted
 	var cret  C.guint               // return, none, casted
@@ -1553,75 +1453,61 @@ func VideoColorMatrixToIso(matrix VideoColorMatrix) uint {
 
 // VideoColorPrimaries wraps GstVideoColorPrimaries
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoColorPrimaries
 type VideoColorPrimaries C.int
 
 const (
 	// VideoColorPrimariesUnknown wraps GST_VIDEO_COLOR_PRIMARIES_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_UNKNOWN
 	VideoColorPrimariesUnknown VideoColorPrimaries = 0
 	// VideoColorPrimariesBt709 wraps GST_VIDEO_COLOR_PRIMARIES_BT709
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_BT709
 	VideoColorPrimariesBt709 VideoColorPrimaries = 1
 	// VideoColorPrimariesBt470m wraps GST_VIDEO_COLOR_PRIMARIES_BT470M
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_BT470M
 	VideoColorPrimariesBt470m VideoColorPrimaries = 2
 	// VideoColorPrimariesBt470bg wraps GST_VIDEO_COLOR_PRIMARIES_BT470BG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_BT470BG
 	VideoColorPrimariesBt470bg VideoColorPrimaries = 3
 	// VideoColorPrimariesSmpte170m wraps GST_VIDEO_COLOR_PRIMARIES_SMPTE170M
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_SMPTE170M
 	VideoColorPrimariesSmpte170m VideoColorPrimaries = 4
 	// VideoColorPrimariesSmpte240m wraps GST_VIDEO_COLOR_PRIMARIES_SMPTE240M
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_SMPTE240M
 	VideoColorPrimariesSmpte240m VideoColorPrimaries = 5
 	// VideoColorPrimariesFilm wraps GST_VIDEO_COLOR_PRIMARIES_FILM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_FILM
 	VideoColorPrimariesFilm VideoColorPrimaries = 6
 	// VideoColorPrimariesBt2020 wraps GST_VIDEO_COLOR_PRIMARIES_BT2020
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_BT2020
 	VideoColorPrimariesBt2020 VideoColorPrimaries = 7
 	// VideoColorPrimariesAdobergb wraps GST_VIDEO_COLOR_PRIMARIES_ADOBERGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_ADOBERGB
 	VideoColorPrimariesAdobergb VideoColorPrimaries = 8
 	// VideoColorPrimariesSmptest428 wraps GST_VIDEO_COLOR_PRIMARIES_SMPTEST428
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_SMPTEST428
 	VideoColorPrimariesSmptest428 VideoColorPrimaries = 9
 	// VideoColorPrimariesSmpterp431 wraps GST_VIDEO_COLOR_PRIMARIES_SMPTERP431
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_SMPTERP431
 	VideoColorPrimariesSmpterp431 VideoColorPrimaries = 10
 	// VideoColorPrimariesSmpteeg432 wraps GST_VIDEO_COLOR_PRIMARIES_SMPTEEG432
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_SMPTEEG432
 	VideoColorPrimariesSmpteeg432 VideoColorPrimaries = 11
 	// VideoColorPrimariesEbu3213 wraps GST_VIDEO_COLOR_PRIMARIES_EBU3213
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_PRIMARIES_EBU3213
 	VideoColorPrimariesEbu3213 VideoColorPrimaries = 12
 )
 
@@ -1660,8 +1546,7 @@ func (e VideoColorPrimaries) String() string {
 
 // VideoColorPrimariesFromIso wraps gst_video_color_primaries_from_iso
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_color_primaries_from_iso
 func VideoColorPrimariesFromIso(value uint) VideoColorPrimaries {
 	var carg1 C.guint                  // in, none, casted
 	var cret  C.GstVideoColorPrimaries // return, none, casted
@@ -1680,8 +1565,7 @@ func VideoColorPrimariesFromIso(value uint) VideoColorPrimaries {
 
 // VideoColorPrimariesGetInfo wraps gst_video_color_primaries_get_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_color_primaries_get_info
 func VideoColorPrimariesGetInfo(primaries VideoColorPrimaries) *VideoColorPrimariesInfo {
 	var carg1 C.GstVideoColorPrimaries      // in, none, casted
 	var cret  *C.GstVideoColorPrimariesInfo // return, none, converted
@@ -1700,8 +1584,7 @@ func VideoColorPrimariesGetInfo(primaries VideoColorPrimaries) *VideoColorPrimar
 
 // VideoColorPrimariesIsEquivalent wraps gst_video_color_primaries_is_equivalent
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_color_primaries_is_equivalent
 func VideoColorPrimariesIsEquivalent(primaries VideoColorPrimaries, other VideoColorPrimaries) bool {
 	var carg1 C.GstVideoColorPrimaries // in, none, casted
 	var carg2 C.GstVideoColorPrimaries // in, none, casted
@@ -1725,8 +1608,7 @@ func VideoColorPrimariesIsEquivalent(primaries VideoColorPrimaries, other VideoC
 
 // VideoColorPrimariesToIso wraps gst_video_color_primaries_to_iso
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_color_primaries_to_iso
 func VideoColorPrimariesToIso(primaries VideoColorPrimaries) uint {
 	var carg1 C.GstVideoColorPrimaries // in, none, casted
 	var cret  C.guint                  // return, none, casted
@@ -1745,25 +1627,21 @@ func VideoColorPrimariesToIso(primaries VideoColorPrimaries) uint {
 
 // VideoColorRange wraps GstVideoColorRange
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoColorRange
 type VideoColorRange C.int
 
 const (
 	// VideoColorRangeUnknown wraps GST_VIDEO_COLOR_RANGE_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_RANGE_UNKNOWN
 	VideoColorRangeUnknown VideoColorRange = 0
 	// VideoColorRange0255 wraps GST_VIDEO_COLOR_RANGE_0_255
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_RANGE_0_255
 	VideoColorRange0255 VideoColorRange = 1
 	// VideoColorRange16235 wraps GST_VIDEO_COLOR_RANGE_16_235
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_COLOR_RANGE_16_235
 	VideoColorRange16235 VideoColorRange = 2
 )
 
@@ -1792,35 +1670,29 @@ func (e VideoColorRange) String() string {
 
 // VideoDitherMethod wraps GstVideoDitherMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoDitherMethod
 type VideoDitherMethod C.int
 
 const (
 	// VideoDitherNone wraps GST_VIDEO_DITHER_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DITHER_NONE
 	VideoDitherNone VideoDitherMethod = 0
 	// VideoDitherVerterr wraps GST_VIDEO_DITHER_VERTERR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DITHER_VERTERR
 	VideoDitherVerterr VideoDitherMethod = 1
 	// VideoDitherFloydSteinberg wraps GST_VIDEO_DITHER_FLOYD_STEINBERG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DITHER_FLOYD_STEINBERG
 	VideoDitherFloydSteinberg VideoDitherMethod = 2
 	// VideoDitherSierraLite wraps GST_VIDEO_DITHER_SIERRA_LITE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DITHER_SIERRA_LITE
 	VideoDitherSierraLite VideoDitherMethod = 3
 	// VideoDitherBayer wraps GST_VIDEO_DITHER_BAYER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DITHER_BAYER
 	VideoDitherBayer VideoDitherMethod = 4
 )
 
@@ -1851,25 +1723,21 @@ func (e VideoDitherMethod) String() string {
 
 // VideoFieldOrder wraps GstVideoFieldOrder
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoFieldOrder
 type VideoFieldOrder C.int
 
 const (
 	// VideoFieldOrderUnknown wraps GST_VIDEO_FIELD_ORDER_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FIELD_ORDER_UNKNOWN
 	VideoFieldOrderUnknown VideoFieldOrder = 0
 	// VideoFieldOrderTopFieldFirst wraps GST_VIDEO_FIELD_ORDER_TOP_FIELD_FIRST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FIELD_ORDER_TOP_FIELD_FIRST
 	VideoFieldOrderTopFieldFirst VideoFieldOrder = 1
 	// VideoFieldOrderBottomFieldFirst wraps GST_VIDEO_FIELD_ORDER_BOTTOM_FIELD_FIRST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FIELD_ORDER_BOTTOM_FIELD_FIRST
 	VideoFieldOrderBottomFieldFirst VideoFieldOrder = 2
 )
 
@@ -1898,8 +1766,7 @@ func (e VideoFieldOrder) String() string {
 
 // VideoFieldOrderFromString wraps gst_video_field_order_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_field_order_from_string
 func VideoFieldOrderFromString(order string) VideoFieldOrder {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstVideoFieldOrder // return, none, casted
@@ -1919,8 +1786,7 @@ func VideoFieldOrderFromString(order string) VideoFieldOrder {
 
 // VideoFieldOrderString wraps gst_video_field_order_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_field_order_to_string
 func VideoFieldOrderString(order VideoFieldOrder) string {
 	var carg1 C.GstVideoFieldOrder // in, none, casted
 	var cret  *C.gchar             // return, none, string
@@ -1939,705 +1805,565 @@ func VideoFieldOrderString(order VideoFieldOrder) string {
 
 // VideoFormat wraps GstVideoFormat
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoFormat
 type VideoFormat C.int
 
 const (
 	// VideoFormatUnknown wraps GST_VIDEO_FORMAT_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_UNKNOWN
 	VideoFormatUnknown VideoFormat = 0
 	// VideoFormatEncoded wraps GST_VIDEO_FORMAT_ENCODED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_ENCODED
 	VideoFormatEncoded VideoFormat = 1
 	// VideoFormatI420 wraps GST_VIDEO_FORMAT_I420
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_I420
 	VideoFormatI420 VideoFormat = 2
 	// VideoFormatYv12 wraps GST_VIDEO_FORMAT_YV12
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_YV12
 	VideoFormatYv12 VideoFormat = 3
 	// VideoFormatYuy2 wraps GST_VIDEO_FORMAT_YUY2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_YUY2
 	VideoFormatYuy2 VideoFormat = 4
 	// VideoFormatUyvy wraps GST_VIDEO_FORMAT_UYVY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_UYVY
 	VideoFormatUyvy VideoFormat = 5
 	// VideoFormatAyuv wraps GST_VIDEO_FORMAT_AYUV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_AYUV
 	VideoFormatAyuv VideoFormat = 6
 	// VideoFormatRgbx wraps GST_VIDEO_FORMAT_RGBx
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGBx
 	VideoFormatRgbx VideoFormat = 7
 	// VideoFormatBgrx wraps GST_VIDEO_FORMAT_BGRx
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_BGRx
 	VideoFormatBgrx VideoFormat = 8
 	// VideoFormatXrgb wraps GST_VIDEO_FORMAT_xRGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_xRGB
 	VideoFormatXrgb VideoFormat = 9
 	// VideoFormatXbgr wraps GST_VIDEO_FORMAT_xBGR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_xBGR
 	VideoFormatXbgr VideoFormat = 10
 	// VideoFormatRgba wraps GST_VIDEO_FORMAT_RGBA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGBA
 	VideoFormatRgba VideoFormat = 11
 	// VideoFormatBgra wraps GST_VIDEO_FORMAT_BGRA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_BGRA
 	VideoFormatBgra VideoFormat = 12
 	// VideoFormatArgb wraps GST_VIDEO_FORMAT_ARGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_ARGB
 	VideoFormatArgb VideoFormat = 13
 	// VideoFormatAbgr wraps GST_VIDEO_FORMAT_ABGR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_ABGR
 	VideoFormatAbgr VideoFormat = 14
 	// VideoFormatRgb wraps GST_VIDEO_FORMAT_RGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGB
 	VideoFormatRgb VideoFormat = 15
 	// VideoFormatBgr wraps GST_VIDEO_FORMAT_BGR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_BGR
 	VideoFormatBgr VideoFormat = 16
 	// VideoFormatY41b wraps GST_VIDEO_FORMAT_Y41B
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y41B
 	VideoFormatY41b VideoFormat = 17
 	// VideoFormatY42b wraps GST_VIDEO_FORMAT_Y42B
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y42B
 	VideoFormatY42b VideoFormat = 18
 	// VideoFormatYvyu wraps GST_VIDEO_FORMAT_YVYU
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_YVYU
 	VideoFormatYvyu VideoFormat = 19
 	// VideoFormatY444 wraps GST_VIDEO_FORMAT_Y444
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y444
 	VideoFormatY444 VideoFormat = 20
 	// VideoFormatV210 wraps GST_VIDEO_FORMAT_v210
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_v210
 	VideoFormatV210 VideoFormat = 21
 	// VideoFormatV216 wraps GST_VIDEO_FORMAT_v216
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_v216
 	VideoFormatV216 VideoFormat = 22
 	// VideoFormatNv12 wraps GST_VIDEO_FORMAT_NV12
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12
 	VideoFormatNv12 VideoFormat = 23
 	// VideoFormatNv21 wraps GST_VIDEO_FORMAT_NV21
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV21
 	VideoFormatNv21 VideoFormat = 24
 	// VideoFormatGray8 wraps GST_VIDEO_FORMAT_GRAY8
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GRAY8
 	VideoFormatGray8 VideoFormat = 25
 	// VideoFormatGray16Be wraps GST_VIDEO_FORMAT_GRAY16_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GRAY16_BE
 	VideoFormatGray16Be VideoFormat = 26
 	// VideoFormatGray16Le wraps GST_VIDEO_FORMAT_GRAY16_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GRAY16_LE
 	VideoFormatGray16Le VideoFormat = 27
 	// VideoFormatV308 wraps GST_VIDEO_FORMAT_v308
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_v308
 	VideoFormatV308 VideoFormat = 28
 	// VideoFormatRgb16 wraps GST_VIDEO_FORMAT_RGB16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGB16
 	VideoFormatRgb16 VideoFormat = 29
 	// VideoFormatBgr16 wraps GST_VIDEO_FORMAT_BGR16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_BGR16
 	VideoFormatBgr16 VideoFormat = 30
 	// VideoFormatRgb15 wraps GST_VIDEO_FORMAT_RGB15
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGB15
 	VideoFormatRgb15 VideoFormat = 31
 	// VideoFormatBgr15 wraps GST_VIDEO_FORMAT_BGR15
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_BGR15
 	VideoFormatBgr15 VideoFormat = 32
 	// VideoFormatUyvp wraps GST_VIDEO_FORMAT_UYVP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_UYVP
 	VideoFormatUyvp VideoFormat = 33
 	// VideoFormatA420 wraps GST_VIDEO_FORMAT_A420
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A420
 	VideoFormatA420 VideoFormat = 34
 	// VideoFormatRgb8p wraps GST_VIDEO_FORMAT_RGB8P
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGB8P
 	VideoFormatRgb8p VideoFormat = 35
 	// VideoFormatYuv9 wraps GST_VIDEO_FORMAT_YUV9
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_YUV9
 	VideoFormatYuv9 VideoFormat = 36
 	// VideoFormatYvu9 wraps GST_VIDEO_FORMAT_YVU9
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_YVU9
 	VideoFormatYvu9 VideoFormat = 37
 	// VideoFormatIyu1 wraps GST_VIDEO_FORMAT_IYU1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_IYU1
 	VideoFormatIyu1 VideoFormat = 38
 	// VideoFormatArgb64 wraps GST_VIDEO_FORMAT_ARGB64
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_ARGB64
 	VideoFormatArgb64 VideoFormat = 39
 	// VideoFormatAyuv64 wraps GST_VIDEO_FORMAT_AYUV64
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_AYUV64
 	VideoFormatAyuv64 VideoFormat = 40
 	// VideoFormatR210 wraps GST_VIDEO_FORMAT_r210
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_r210
 	VideoFormatR210 VideoFormat = 41
 	// VideoFormatI42010be wraps GST_VIDEO_FORMAT_I420_10BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_I420_10BE
 	VideoFormatI42010be VideoFormat = 42
 	// VideoFormatI42010le wraps GST_VIDEO_FORMAT_I420_10LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_I420_10LE
 	VideoFormatI42010le VideoFormat = 43
 	// VideoFormatI42210be wraps GST_VIDEO_FORMAT_I422_10BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_I422_10BE
 	VideoFormatI42210be VideoFormat = 44
 	// VideoFormatI42210le wraps GST_VIDEO_FORMAT_I422_10LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_I422_10LE
 	VideoFormatI42210le VideoFormat = 45
 	// VideoFormatY44410be wraps GST_VIDEO_FORMAT_Y444_10BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y444_10BE
 	VideoFormatY44410be VideoFormat = 46
 	// VideoFormatY44410le wraps GST_VIDEO_FORMAT_Y444_10LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y444_10LE
 	VideoFormatY44410le VideoFormat = 47
 	// VideoFormatGbr wraps GST_VIDEO_FORMAT_GBR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBR
 	VideoFormatGbr VideoFormat = 48
 	// VideoFormatGbr10be wraps GST_VIDEO_FORMAT_GBR_10BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBR_10BE
 	VideoFormatGbr10be VideoFormat = 49
 	// VideoFormatGbr10le wraps GST_VIDEO_FORMAT_GBR_10LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBR_10LE
 	VideoFormatGbr10le VideoFormat = 50
 	// VideoFormatNv16 wraps GST_VIDEO_FORMAT_NV16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV16
 	VideoFormatNv16 VideoFormat = 51
 	// VideoFormatNv24 wraps GST_VIDEO_FORMAT_NV24
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV24
 	VideoFormatNv24 VideoFormat = 52
 	// VideoFormatNv1264z32 wraps GST_VIDEO_FORMAT_NV12_64Z32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12_64Z32
 	VideoFormatNv1264z32 VideoFormat = 53
 	// VideoFormatA42010be wraps GST_VIDEO_FORMAT_A420_10BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A420_10BE
 	VideoFormatA42010be VideoFormat = 54
 	// VideoFormatA42010le wraps GST_VIDEO_FORMAT_A420_10LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A420_10LE
 	VideoFormatA42010le VideoFormat = 55
 	// VideoFormatA42210be wraps GST_VIDEO_FORMAT_A422_10BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A422_10BE
 	VideoFormatA42210be VideoFormat = 56
 	// VideoFormatA42210le wraps GST_VIDEO_FORMAT_A422_10LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A422_10LE
 	VideoFormatA42210le VideoFormat = 57
 	// VideoFormatA44410be wraps GST_VIDEO_FORMAT_A444_10BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A444_10BE
 	VideoFormatA44410be VideoFormat = 58
 	// VideoFormatA44410le wraps GST_VIDEO_FORMAT_A444_10LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A444_10LE
 	VideoFormatA44410le VideoFormat = 59
 	// VideoFormatNv61 wraps GST_VIDEO_FORMAT_NV61
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV61
 	VideoFormatNv61 VideoFormat = 60
 	// VideoFormatP01010be wraps GST_VIDEO_FORMAT_P010_10BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_P010_10BE
 	VideoFormatP01010be VideoFormat = 61
 	// VideoFormatP01010le wraps GST_VIDEO_FORMAT_P010_10LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_P010_10LE
 	VideoFormatP01010le VideoFormat = 62
 	// VideoFormatIyu2 wraps GST_VIDEO_FORMAT_IYU2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_IYU2
 	VideoFormatIyu2 VideoFormat = 63
 	// VideoFormatVyuy wraps GST_VIDEO_FORMAT_VYUY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_VYUY
 	VideoFormatVyuy VideoFormat = 64
 	// VideoFormatGbra wraps GST_VIDEO_FORMAT_GBRA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBRA
 	VideoFormatGbra VideoFormat = 65
 	// VideoFormatGbra10be wraps GST_VIDEO_FORMAT_GBRA_10BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBRA_10BE
 	VideoFormatGbra10be VideoFormat = 66
 	// VideoFormatGbra10le wraps GST_VIDEO_FORMAT_GBRA_10LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBRA_10LE
 	VideoFormatGbra10le VideoFormat = 67
 	// VideoFormatGbr12be wraps GST_VIDEO_FORMAT_GBR_12BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBR_12BE
 	VideoFormatGbr12be VideoFormat = 68
 	// VideoFormatGbr12le wraps GST_VIDEO_FORMAT_GBR_12LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBR_12LE
 	VideoFormatGbr12le VideoFormat = 69
 	// VideoFormatGbra12be wraps GST_VIDEO_FORMAT_GBRA_12BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBRA_12BE
 	VideoFormatGbra12be VideoFormat = 70
 	// VideoFormatGbra12le wraps GST_VIDEO_FORMAT_GBRA_12LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBRA_12LE
 	VideoFormatGbra12le VideoFormat = 71
 	// VideoFormatI42012be wraps GST_VIDEO_FORMAT_I420_12BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_I420_12BE
 	VideoFormatI42012be VideoFormat = 72
 	// VideoFormatI42012le wraps GST_VIDEO_FORMAT_I420_12LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_I420_12LE
 	VideoFormatI42012le VideoFormat = 73
 	// VideoFormatI42212be wraps GST_VIDEO_FORMAT_I422_12BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_I422_12BE
 	VideoFormatI42212be VideoFormat = 74
 	// VideoFormatI42212le wraps GST_VIDEO_FORMAT_I422_12LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_I422_12LE
 	VideoFormatI42212le VideoFormat = 75
 	// VideoFormatY44412be wraps GST_VIDEO_FORMAT_Y444_12BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y444_12BE
 	VideoFormatY44412be VideoFormat = 76
 	// VideoFormatY44412le wraps GST_VIDEO_FORMAT_Y444_12LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y444_12LE
 	VideoFormatY44412le VideoFormat = 77
 	// VideoFormatGray10Le32 wraps GST_VIDEO_FORMAT_GRAY10_LE32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GRAY10_LE32
 	VideoFormatGray10Le32 VideoFormat = 78
 	// VideoFormatNv1210le32 wraps GST_VIDEO_FORMAT_NV12_10LE32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12_10LE32
 	VideoFormatNv1210le32 VideoFormat = 79
 	// VideoFormatNv1610le32 wraps GST_VIDEO_FORMAT_NV16_10LE32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV16_10LE32
 	VideoFormatNv1610le32 VideoFormat = 80
 	// VideoFormatNv1210le40 wraps GST_VIDEO_FORMAT_NV12_10LE40
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12_10LE40
 	VideoFormatNv1210le40 VideoFormat = 81
 	// VideoFormatY210 wraps GST_VIDEO_FORMAT_Y210
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y210
 	VideoFormatY210 VideoFormat = 82
 	// VideoFormatY410 wraps GST_VIDEO_FORMAT_Y410
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y410
 	VideoFormatY410 VideoFormat = 83
 	// VideoFormatVuya wraps GST_VIDEO_FORMAT_VUYA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_VUYA
 	VideoFormatVuya VideoFormat = 84
 	// VideoFormatBgr10a2Le wraps GST_VIDEO_FORMAT_BGR10A2_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_BGR10A2_LE
 	VideoFormatBgr10a2Le VideoFormat = 85
 	// VideoFormatRgb10a2Le wraps GST_VIDEO_FORMAT_RGB10A2_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGB10A2_LE
 	VideoFormatRgb10a2Le VideoFormat = 86
 	// VideoFormatY44416be wraps GST_VIDEO_FORMAT_Y444_16BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y444_16BE
 	VideoFormatY44416be VideoFormat = 87
 	// VideoFormatY44416le wraps GST_VIDEO_FORMAT_Y444_16LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y444_16LE
 	VideoFormatY44416le VideoFormat = 88
 	// VideoFormatP016Be wraps GST_VIDEO_FORMAT_P016_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_P016_BE
 	VideoFormatP016Be VideoFormat = 89
 	// VideoFormatP016Le wraps GST_VIDEO_FORMAT_P016_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_P016_LE
 	VideoFormatP016Le VideoFormat = 90
 	// VideoFormatP012Be wraps GST_VIDEO_FORMAT_P012_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_P012_BE
 	VideoFormatP012Be VideoFormat = 91
 	// VideoFormatP012Le wraps GST_VIDEO_FORMAT_P012_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_P012_LE
 	VideoFormatP012Le VideoFormat = 92
 	// VideoFormatY212Be wraps GST_VIDEO_FORMAT_Y212_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y212_BE
 	VideoFormatY212Be VideoFormat = 93
 	// VideoFormatY212Le wraps GST_VIDEO_FORMAT_Y212_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y212_LE
 	VideoFormatY212Le VideoFormat = 94
 	// VideoFormatY412Be wraps GST_VIDEO_FORMAT_Y412_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y412_BE
 	VideoFormatY412Be VideoFormat = 95
 	// VideoFormatY412Le wraps GST_VIDEO_FORMAT_Y412_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y412_LE
 	VideoFormatY412Le VideoFormat = 96
 	// VideoFormatNv124l4 wraps GST_VIDEO_FORMAT_NV12_4L4
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12_4L4
 	VideoFormatNv124l4 VideoFormat = 97
 	// VideoFormatNv1232l32 wraps GST_VIDEO_FORMAT_NV12_32L32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12_32L32
 	VideoFormatNv1232l32 VideoFormat = 98
 	// VideoFormatRgbp wraps GST_VIDEO_FORMAT_RGBP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGBP
 	VideoFormatRgbp VideoFormat = 99
 	// VideoFormatBgrp wraps GST_VIDEO_FORMAT_BGRP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_BGRP
 	VideoFormatBgrp VideoFormat = 100
 	// VideoFormatAv12 wraps GST_VIDEO_FORMAT_AV12
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_AV12
 	VideoFormatAv12 VideoFormat = 101
 	// VideoFormatArgb64Le wraps GST_VIDEO_FORMAT_ARGB64_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_ARGB64_LE
 	VideoFormatArgb64Le VideoFormat = 102
 	// VideoFormatArgb64Be wraps GST_VIDEO_FORMAT_ARGB64_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_ARGB64_BE
 	VideoFormatArgb64Be VideoFormat = 103
 	// VideoFormatRgba64Le wraps GST_VIDEO_FORMAT_RGBA64_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGBA64_LE
 	VideoFormatRgba64Le VideoFormat = 104
 	// VideoFormatRgba64Be wraps GST_VIDEO_FORMAT_RGBA64_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RGBA64_BE
 	VideoFormatRgba64Be VideoFormat = 105
 	// VideoFormatBgra64Le wraps GST_VIDEO_FORMAT_BGRA64_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_BGRA64_LE
 	VideoFormatBgra64Le VideoFormat = 106
 	// VideoFormatBgra64Be wraps GST_VIDEO_FORMAT_BGRA64_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_BGRA64_BE
 	VideoFormatBgra64Be VideoFormat = 107
 	// VideoFormatAbgr64Le wraps GST_VIDEO_FORMAT_ABGR64_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_ABGR64_LE
 	VideoFormatAbgr64Le VideoFormat = 108
 	// VideoFormatAbgr64Be wraps GST_VIDEO_FORMAT_ABGR64_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_ABGR64_BE
 	VideoFormatAbgr64Be VideoFormat = 109
 	// VideoFormatNv1216l32s wraps GST_VIDEO_FORMAT_NV12_16L32S
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12_16L32S
 	VideoFormatNv1216l32s VideoFormat = 110
 	// VideoFormatNv128l128 wraps GST_VIDEO_FORMAT_NV12_8L128
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12_8L128
 	VideoFormatNv128l128 VideoFormat = 111
 	// VideoFormatNv1210be8l128 wraps GST_VIDEO_FORMAT_NV12_10BE_8L128
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12_10BE_8L128
 	VideoFormatNv1210be8l128 VideoFormat = 112
 	// VideoFormatNv1210le404l4 wraps GST_VIDEO_FORMAT_NV12_10LE40_4L4
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_NV12_10LE40_4L4
 	VideoFormatNv1210le404l4 VideoFormat = 113
 	// VideoFormatDmaDrm wraps GST_VIDEO_FORMAT_DMA_DRM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_DMA_DRM
 	VideoFormatDmaDrm VideoFormat = 114
 	// VideoFormatMt2110t wraps GST_VIDEO_FORMAT_MT2110T
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_MT2110T
 	VideoFormatMt2110t VideoFormat = 115
 	// VideoFormatMt2110r wraps GST_VIDEO_FORMAT_MT2110R
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_MT2110R
 	VideoFormatMt2110r VideoFormat = 116
 	// VideoFormatA422 wraps GST_VIDEO_FORMAT_A422
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A422
 	VideoFormatA422 VideoFormat = 117
 	// VideoFormatA444 wraps GST_VIDEO_FORMAT_A444
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A444
 	VideoFormatA444 VideoFormat = 118
 	// VideoFormatA44412le wraps GST_VIDEO_FORMAT_A444_12LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A444_12LE
 	VideoFormatA44412le VideoFormat = 119
 	// VideoFormatA44412be wraps GST_VIDEO_FORMAT_A444_12BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A444_12BE
 	VideoFormatA44412be VideoFormat = 120
 	// VideoFormatA42212le wraps GST_VIDEO_FORMAT_A422_12LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A422_12LE
 	VideoFormatA42212le VideoFormat = 121
 	// VideoFormatA42212be wraps GST_VIDEO_FORMAT_A422_12BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A422_12BE
 	VideoFormatA42212be VideoFormat = 122
 	// VideoFormatA42012le wraps GST_VIDEO_FORMAT_A420_12LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A420_12LE
 	VideoFormatA42012le VideoFormat = 123
 	// VideoFormatA42012be wraps GST_VIDEO_FORMAT_A420_12BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A420_12BE
 	VideoFormatA42012be VideoFormat = 124
 	// VideoFormatA44416le wraps GST_VIDEO_FORMAT_A444_16LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A444_16LE
 	VideoFormatA44416le VideoFormat = 125
 	// VideoFormatA44416be wraps GST_VIDEO_FORMAT_A444_16BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A444_16BE
 	VideoFormatA44416be VideoFormat = 126
 	// VideoFormatA42216le wraps GST_VIDEO_FORMAT_A422_16LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A422_16LE
 	VideoFormatA42216le VideoFormat = 127
 	// VideoFormatA42216be wraps GST_VIDEO_FORMAT_A422_16BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A422_16BE
 	VideoFormatA42216be VideoFormat = 128
 	// VideoFormatA42016le wraps GST_VIDEO_FORMAT_A420_16LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A420_16LE
 	VideoFormatA42016le VideoFormat = 129
 	// VideoFormatA42016be wraps GST_VIDEO_FORMAT_A420_16BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_A420_16BE
 	VideoFormatA42016be VideoFormat = 130
 	// VideoFormatGbr16le wraps GST_VIDEO_FORMAT_GBR_16LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBR_16LE
 	VideoFormatGbr16le VideoFormat = 131
 	// VideoFormatGbr16be wraps GST_VIDEO_FORMAT_GBR_16BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GBR_16BE
 	VideoFormatGbr16be VideoFormat = 132
 	// VideoFormatRbga wraps GST_VIDEO_FORMAT_RBGA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_RBGA
 	VideoFormatRbga VideoFormat = 133
 	// VideoFormatY216Le wraps GST_VIDEO_FORMAT_Y216_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y216_LE
 	VideoFormatY216Le VideoFormat = 134
 	// VideoFormatY216Be wraps GST_VIDEO_FORMAT_Y216_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y216_BE
 	VideoFormatY216Be VideoFormat = 135
 	// VideoFormatY416Le wraps GST_VIDEO_FORMAT_Y416_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y416_LE
 	VideoFormatY416Le VideoFormat = 136
 	// VideoFormatY416Be wraps GST_VIDEO_FORMAT_Y416_BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_Y416_BE
 	VideoFormatY416Be VideoFormat = 137
 	// VideoFormatGray10Le16 wraps GST_VIDEO_FORMAT_GRAY10_LE16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_GRAY10_LE16
 	VideoFormatGray10Le16 VideoFormat = 138
 )
 
@@ -2802,8 +2528,7 @@ func (e VideoFormat) String() string {
 
 // VideoFormatFromFourcc wraps gst_video_format_from_fourcc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_format_from_fourcc
 func VideoFormatFromFourcc(fourcc uint32) VideoFormat {
 	var carg1 C.guint32        // in, none, casted
 	var cret  C.GstVideoFormat // return, none, casted
@@ -2822,8 +2547,7 @@ func VideoFormatFromFourcc(fourcc uint32) VideoFormat {
 
 // VideoFormatFromMasks wraps gst_video_format_from_masks
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_format_from_masks
 func VideoFormatFromMasks(depth int32, bpp int32, endianness int32, redMask uint, greenMask uint, blueMask uint, alphaMask uint) VideoFormat {
 	var carg1 C.gint           // in, none, casted
 	var carg2 C.gint           // in, none, casted
@@ -2860,8 +2584,7 @@ func VideoFormatFromMasks(depth int32, bpp int32, endianness int32, redMask uint
 
 // VideoFormatFromString wraps gst_video_format_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_format_from_string
 func VideoFormatFromString(format string) VideoFormat {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstVideoFormat // return, none, casted
@@ -2881,8 +2604,7 @@ func VideoFormatFromString(format string) VideoFormat {
 
 // VideoFormatGetInfo wraps gst_video_format_get_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_format_get_info
 func VideoFormatGetInfo(format VideoFormat) *VideoFormatInfo {
 	var carg1 C.GstVideoFormat      // in, none, casted
 	var cret  *C.GstVideoFormatInfo // return, none, converted
@@ -2901,8 +2623,7 @@ func VideoFormatGetInfo(format VideoFormat) *VideoFormatInfo {
 
 // VideoFormatToFourcc wraps gst_video_format_to_fourcc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_format_to_fourcc
 func VideoFormatToFourcc(format VideoFormat) uint32 {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var cret  C.guint32        // return, none, casted
@@ -2921,8 +2642,7 @@ func VideoFormatToFourcc(format VideoFormat) uint32 {
 
 // VideoFormatString wraps gst_video_format_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_format_to_string
 func VideoFormatString(format VideoFormat) string {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -2941,30 +2661,25 @@ func VideoFormatString(format VideoFormat) string {
 
 // VideoGLTextureOrientation wraps GstVideoGLTextureOrientation
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoGLTextureOrientation
 type VideoGLTextureOrientation C.int
 
 const (
 	// VideoGlTextureOrientationXNormalYNormal wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_NORMAL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_NORMAL
 	VideoGlTextureOrientationXNormalYNormal VideoGLTextureOrientation = 0
 	// VideoGlTextureOrientationXNormalYFlip wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_FLIP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_FLIP
 	VideoGlTextureOrientationXNormalYFlip VideoGLTextureOrientation = 1
 	// VideoGlTextureOrientationXFlipYNormal wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_NORMAL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_NORMAL
 	VideoGlTextureOrientationXFlipYNormal VideoGLTextureOrientation = 2
 	// VideoGlTextureOrientationXFlipYFlip wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_FLIP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_FLIP
 	VideoGlTextureOrientationXFlipYFlip VideoGLTextureOrientation = 3
 )
 
@@ -2994,45 +2709,37 @@ func (e VideoGLTextureOrientation) String() string {
 
 // VideoGLTextureType wraps GstVideoGLTextureType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoGLTextureType
 type VideoGLTextureType C.int
 
 const (
 	// VideoGlTextureTypeLuminance wraps GST_VIDEO_GL_TEXTURE_TYPE_LUMINANCE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_TYPE_LUMINANCE
 	VideoGlTextureTypeLuminance VideoGLTextureType = 0
 	// VideoGlTextureTypeLuminanceAlpha wraps GST_VIDEO_GL_TEXTURE_TYPE_LUMINANCE_ALPHA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_TYPE_LUMINANCE_ALPHA
 	VideoGlTextureTypeLuminanceAlpha VideoGLTextureType = 1
 	// VideoGlTextureTypeRgb16 wraps GST_VIDEO_GL_TEXTURE_TYPE_RGB16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_TYPE_RGB16
 	VideoGlTextureTypeRgb16 VideoGLTextureType = 2
 	// VideoGlTextureTypeRgb wraps GST_VIDEO_GL_TEXTURE_TYPE_RGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_TYPE_RGB
 	VideoGlTextureTypeRgb VideoGLTextureType = 3
 	// VideoGlTextureTypeRgba wraps GST_VIDEO_GL_TEXTURE_TYPE_RGBA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_TYPE_RGBA
 	VideoGlTextureTypeRgba VideoGLTextureType = 4
 	// VideoGlTextureTypeR wraps GST_VIDEO_GL_TEXTURE_TYPE_R
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_TYPE_R
 	VideoGlTextureTypeR VideoGLTextureType = 5
 	// VideoGlTextureTypeRg wraps GST_VIDEO_GL_TEXTURE_TYPE_RG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GL_TEXTURE_TYPE_RG
 	VideoGlTextureTypeRg VideoGLTextureType = 6
 )
 
@@ -3065,19 +2772,17 @@ func (e VideoGLTextureType) String() string {
 
 // VideoGammaMode wraps GstVideoGammaMode
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoGammaMode
 type VideoGammaMode C.int
 
 const (
 	// VideoGammaModeNone wraps GST_VIDEO_GAMMA_MODE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GAMMA_MODE_NONE
 	VideoGammaModeNone VideoGammaMode = 0
 	// VideoGammaModeRemap wraps GST_VIDEO_GAMMA_MODE_REMAP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_GAMMA_MODE_REMAP
 	VideoGammaModeRemap VideoGammaMode = 1
 )
 
@@ -3105,35 +2810,29 @@ func (e VideoGammaMode) String() string {
 
 // VideoInterlaceMode wraps GstVideoInterlaceMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoInterlaceMode
 type VideoInterlaceMode C.int
 
 const (
 	// VideoInterlaceModeProgressive wraps GST_VIDEO_INTERLACE_MODE_PROGRESSIVE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_INTERLACE_MODE_PROGRESSIVE
 	VideoInterlaceModeProgressive VideoInterlaceMode = 0
 	// VideoInterlaceModeInterleaved wraps GST_VIDEO_INTERLACE_MODE_INTERLEAVED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_INTERLACE_MODE_INTERLEAVED
 	VideoInterlaceModeInterleaved VideoInterlaceMode = 1
 	// VideoInterlaceModeMixed wraps GST_VIDEO_INTERLACE_MODE_MIXED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_INTERLACE_MODE_MIXED
 	VideoInterlaceModeMixed VideoInterlaceMode = 2
 	// VideoInterlaceModeFields wraps GST_VIDEO_INTERLACE_MODE_FIELDS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_INTERLACE_MODE_FIELDS
 	VideoInterlaceModeFields VideoInterlaceMode = 3
 	// VideoInterlaceModeAlternate wraps GST_VIDEO_INTERLACE_MODE_ALTERNATE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_INTERLACE_MODE_ALTERNATE
 	VideoInterlaceModeAlternate VideoInterlaceMode = 4
 )
 
@@ -3164,8 +2863,7 @@ func (e VideoInterlaceMode) String() string {
 
 // VideoInterlaceModeFromString wraps gst_video_interlace_mode_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_interlace_mode_from_string
 func VideoInterlaceModeFromString(mode string) VideoInterlaceMode {
 	var carg1 *C.gchar                // in, none, string
 	var cret  C.GstVideoInterlaceMode // return, none, casted
@@ -3185,8 +2883,7 @@ func VideoInterlaceModeFromString(mode string) VideoInterlaceMode {
 
 // VideoInterlaceModeString wraps gst_video_interlace_mode_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_interlace_mode_to_string
 func VideoInterlaceModeString(mode VideoInterlaceMode) string {
 	var carg1 C.GstVideoInterlaceMode // in, none, casted
 	var cret  *C.gchar                // return, none, string
@@ -3205,30 +2902,25 @@ func VideoInterlaceModeString(mode VideoInterlaceMode) string {
 
 // VideoMatrixMode wraps GstVideoMatrixMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoMatrixMode
 type VideoMatrixMode C.int
 
 const (
 	// VideoMatrixModeFull wraps GST_VIDEO_MATRIX_MODE_FULL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MATRIX_MODE_FULL
 	VideoMatrixModeFull VideoMatrixMode = 0
 	// VideoMatrixModeInputOnly wraps GST_VIDEO_MATRIX_MODE_INPUT_ONLY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MATRIX_MODE_INPUT_ONLY
 	VideoMatrixModeInputOnly VideoMatrixMode = 1
 	// VideoMatrixModeOutputOnly wraps GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY
 	VideoMatrixModeOutputOnly VideoMatrixMode = 2
 	// VideoMatrixModeNone wraps GST_VIDEO_MATRIX_MODE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MATRIX_MODE_NONE
 	VideoMatrixModeNone VideoMatrixMode = 3
 )
 
@@ -3258,60 +2950,49 @@ func (e VideoMatrixMode) String() string {
 
 // VideoMultiviewFramePacking wraps GstVideoMultiviewFramePacking
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoMultiviewFramePacking
 type VideoMultiviewFramePacking C.int
 
 const (
 	// VideoMultiviewFramePackingNone wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_NONE
 	VideoMultiviewFramePackingNone VideoMultiviewFramePacking = -1
 	// VideoMultiviewFramePackingMono wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_MONO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_MONO
 	VideoMultiviewFramePackingMono VideoMultiviewFramePacking = 0
 	// VideoMultiviewFramePackingLeft wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_LEFT
 	VideoMultiviewFramePackingLeft VideoMultiviewFramePacking = 1
 	// VideoMultiviewFramePackingRight wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_RIGHT
 	VideoMultiviewFramePackingRight VideoMultiviewFramePacking = 2
 	// VideoMultiviewFramePackingSideBySide wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE
 	VideoMultiviewFramePackingSideBySide VideoMultiviewFramePacking = 3
 	// VideoMultiviewFramePackingSideBySideQuincunx wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE_QUINCUNX
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE_QUINCUNX
 	VideoMultiviewFramePackingSideBySideQuincunx VideoMultiviewFramePacking = 4
 	// VideoMultiviewFramePackingColumnInterleaved wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_COLUMN_INTERLEAVED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_COLUMN_INTERLEAVED
 	VideoMultiviewFramePackingColumnInterleaved VideoMultiviewFramePacking = 5
 	// VideoMultiviewFramePackingRowInterleaved wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_ROW_INTERLEAVED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_ROW_INTERLEAVED
 	VideoMultiviewFramePackingRowInterleaved VideoMultiviewFramePacking = 6
 	// VideoMultiviewFramePackingTopBottom wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_TOP_BOTTOM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_TOP_BOTTOM
 	VideoMultiviewFramePackingTopBottom VideoMultiviewFramePacking = 7
 	// VideoMultiviewFramePackingCheckerboard wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_CHECKERBOARD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FRAME_PACKING_CHECKERBOARD
 	VideoMultiviewFramePackingCheckerboard VideoMultiviewFramePacking = 8
 )
 
@@ -3347,75 +3028,61 @@ func (e VideoMultiviewFramePacking) String() string {
 
 // VideoMultiviewMode wraps GstVideoMultiviewMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoMultiviewMode
 type VideoMultiviewMode C.int
 
 const (
 	// VideoMultiviewModeNone wraps GST_VIDEO_MULTIVIEW_MODE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_NONE
 	VideoMultiviewModeNone VideoMultiviewMode = -1
 	// VideoMultiviewModeMono wraps GST_VIDEO_MULTIVIEW_MODE_MONO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_MONO
 	VideoMultiviewModeMono VideoMultiviewMode = 0
 	// VideoMultiviewModeLeft wraps GST_VIDEO_MULTIVIEW_MODE_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_LEFT
 	VideoMultiviewModeLeft VideoMultiviewMode = 1
 	// VideoMultiviewModeRight wraps GST_VIDEO_MULTIVIEW_MODE_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_RIGHT
 	VideoMultiviewModeRight VideoMultiviewMode = 2
 	// VideoMultiviewModeSideBySide wraps GST_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE
 	VideoMultiviewModeSideBySide VideoMultiviewMode = 3
 	// VideoMultiviewModeSideBySideQuincunx wraps GST_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE_QUINCUNX
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE_QUINCUNX
 	VideoMultiviewModeSideBySideQuincunx VideoMultiviewMode = 4
 	// VideoMultiviewModeColumnInterleaved wraps GST_VIDEO_MULTIVIEW_MODE_COLUMN_INTERLEAVED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_COLUMN_INTERLEAVED
 	VideoMultiviewModeColumnInterleaved VideoMultiviewMode = 5
 	// VideoMultiviewModeRowInterleaved wraps GST_VIDEO_MULTIVIEW_MODE_ROW_INTERLEAVED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_ROW_INTERLEAVED
 	VideoMultiviewModeRowInterleaved VideoMultiviewMode = 6
 	// VideoMultiviewModeTopBottom wraps GST_VIDEO_MULTIVIEW_MODE_TOP_BOTTOM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_TOP_BOTTOM
 	VideoMultiviewModeTopBottom VideoMultiviewMode = 7
 	// VideoMultiviewModeCheckerboard wraps GST_VIDEO_MULTIVIEW_MODE_CHECKERBOARD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_CHECKERBOARD
 	VideoMultiviewModeCheckerboard VideoMultiviewMode = 8
 	// VideoMultiviewModeFrameByFrame wraps GST_VIDEO_MULTIVIEW_MODE_FRAME_BY_FRAME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_FRAME_BY_FRAME
 	VideoMultiviewModeFrameByFrame VideoMultiviewMode = 32
 	// VideoMultiviewModeMultiviewFrameByFrame wraps GST_VIDEO_MULTIVIEW_MODE_MULTIVIEW_FRAME_BY_FRAME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_MULTIVIEW_FRAME_BY_FRAME
 	VideoMultiviewModeMultiviewFrameByFrame VideoMultiviewMode = 33
 	// VideoMultiviewModeSeparated wraps GST_VIDEO_MULTIVIEW_MODE_SEPARATED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_MODE_SEPARATED
 	VideoMultiviewModeSeparated VideoMultiviewMode = 34
 )
 
@@ -3454,7 +3121,7 @@ func (e VideoMultiviewMode) String() string {
 
 // VideoMultiviewModeFromCapsString wraps gst_video_multiview_mode_from_caps_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_multiview_mode_from_caps_string
 func VideoMultiviewModeFromCapsString(capsMviewMode string) VideoMultiviewMode {
 	var carg1 *C.gchar                // in, none, string
 	var cret  C.GstVideoMultiviewMode // return, none, casted
@@ -3474,8 +3141,7 @@ func VideoMultiviewModeFromCapsString(capsMviewMode string) VideoMultiviewMode {
 
 // VideoMultiviewModeToCapsString wraps gst_video_multiview_mode_to_caps_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_multiview_mode_to_caps_string
 func VideoMultiviewModeToCapsString(mviewMode VideoMultiviewMode) string {
 	var carg1 C.GstVideoMultiviewMode // in, none, casted
 	var cret  *C.gchar                // return, none, string, nullable-string
@@ -3496,60 +3162,49 @@ func VideoMultiviewModeToCapsString(mviewMode VideoMultiviewMode) string {
 
 // VideoOrientationMethod wraps GstVideoOrientationMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoOrientationMethod
 type VideoOrientationMethod C.int
 
 const (
 	// VideoOrientationIdentity wraps GST_VIDEO_ORIENTATION_IDENTITY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_IDENTITY
 	VideoOrientationIdentity VideoOrientationMethod = 0
 	// VideoOrientation90r wraps GST_VIDEO_ORIENTATION_90R
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_90R
 	VideoOrientation90r VideoOrientationMethod = 1
 	// VideoOrientation180 wraps GST_VIDEO_ORIENTATION_180
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_180
 	VideoOrientation180 VideoOrientationMethod = 2
 	// VideoOrientation90l wraps GST_VIDEO_ORIENTATION_90L
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_90L
 	VideoOrientation90l VideoOrientationMethod = 3
 	// VideoOrientationHoriz wraps GST_VIDEO_ORIENTATION_HORIZ
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_HORIZ
 	VideoOrientationHoriz VideoOrientationMethod = 4
 	// VideoOrientationVert wraps GST_VIDEO_ORIENTATION_VERT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_VERT
 	VideoOrientationVert VideoOrientationMethod = 5
 	// VideoOrientationUlLr wraps GST_VIDEO_ORIENTATION_UL_LR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_UL_LR
 	VideoOrientationUlLr VideoOrientationMethod = 6
 	// VideoOrientationUrLl wraps GST_VIDEO_ORIENTATION_UR_LL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_UR_LL
 	VideoOrientationUrLl VideoOrientationMethod = 7
 	// VideoOrientationAuto wraps GST_VIDEO_ORIENTATION_AUTO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_AUTO
 	VideoOrientationAuto VideoOrientationMethod = 8
 	// VideoOrientationCustom wraps GST_VIDEO_ORIENTATION_CUSTOM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_ORIENTATION_CUSTOM
 	VideoOrientationCustom VideoOrientationMethod = 9
 )
 
@@ -3585,25 +3240,21 @@ func (e VideoOrientationMethod) String() string {
 
 // VideoPrimariesMode wraps GstVideoPrimariesMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoPrimariesMode
 type VideoPrimariesMode C.int
 
 const (
 	// VideoPrimariesModeNone wraps GST_VIDEO_PRIMARIES_MODE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_PRIMARIES_MODE_NONE
 	VideoPrimariesModeNone VideoPrimariesMode = 0
 	// VideoPrimariesModeMergeOnly wraps GST_VIDEO_PRIMARIES_MODE_MERGE_ONLY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_PRIMARIES_MODE_MERGE_ONLY
 	VideoPrimariesModeMergeOnly VideoPrimariesMode = 1
 	// VideoPrimariesModeFast wraps GST_VIDEO_PRIMARIES_MODE_FAST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_PRIMARIES_MODE_FAST
 	VideoPrimariesModeFast VideoPrimariesMode = 2
 )
 
@@ -3632,35 +3283,29 @@ func (e VideoPrimariesMode) String() string {
 
 // VideoResamplerMethod wraps GstVideoResamplerMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoResamplerMethod
 type VideoResamplerMethod C.int
 
 const (
 	// VideoResamplerMethodNearest wraps GST_VIDEO_RESAMPLER_METHOD_NEAREST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_RESAMPLER_METHOD_NEAREST
 	VideoResamplerMethodNearest VideoResamplerMethod = 0
 	// VideoResamplerMethodLinear wraps GST_VIDEO_RESAMPLER_METHOD_LINEAR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_RESAMPLER_METHOD_LINEAR
 	VideoResamplerMethodLinear VideoResamplerMethod = 1
 	// VideoResamplerMethodCubic wraps GST_VIDEO_RESAMPLER_METHOD_CUBIC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_RESAMPLER_METHOD_CUBIC
 	VideoResamplerMethodCubic VideoResamplerMethod = 2
 	// VideoResamplerMethodSinc wraps GST_VIDEO_RESAMPLER_METHOD_SINC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_RESAMPLER_METHOD_SINC
 	VideoResamplerMethodSinc VideoResamplerMethod = 3
 	// VideoResamplerMethodLanczos wraps GST_VIDEO_RESAMPLER_METHOD_LANCZOS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_RESAMPLER_METHOD_LANCZOS
 	VideoResamplerMethodLanczos VideoResamplerMethod = 4
 )
 
@@ -3691,25 +3336,21 @@ func (e VideoResamplerMethod) String() string {
 
 // VideoTileMode wraps GstVideoTileMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoTileMode
 type VideoTileMode C.int
 
 const (
 	// VideoTileModeUnknown wraps GST_VIDEO_TILE_MODE_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TILE_MODE_UNKNOWN
 	VideoTileModeUnknown VideoTileMode = 0
 	// VideoTileModeZflipz2x2 wraps GST_VIDEO_TILE_MODE_ZFLIPZ_2X2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TILE_MODE_ZFLIPZ_2X2
 	VideoTileModeZflipz2x2 VideoTileMode = 65536
 	// VideoTileModeLinear wraps GST_VIDEO_TILE_MODE_LINEAR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TILE_MODE_LINEAR
 	VideoTileModeLinear VideoTileMode = 131072
 )
 
@@ -3738,15 +3379,13 @@ func (e VideoTileMode) String() string {
 
 // VideoTileType wraps GstVideoTileType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoTileType
 type VideoTileType C.int
 
 const (
 	// VideoTileTypeIndexed wraps GST_VIDEO_TILE_TYPE_INDEXED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TILE_TYPE_INDEXED
 	VideoTileTypeIndexed VideoTileType = 0
 )
 
@@ -3773,95 +3412,77 @@ func (e VideoTileType) String() string {
 
 // VideoTransferFunction wraps GstVideoTransferFunction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoTransferFunction
 type VideoTransferFunction C.int
 
 const (
 	// VideoTransferUnknown wraps GST_VIDEO_TRANSFER_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_UNKNOWN
 	VideoTransferUnknown VideoTransferFunction = 0
 	// VideoTransferGamma10 wraps GST_VIDEO_TRANSFER_GAMMA10
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_GAMMA10
 	VideoTransferGamma10 VideoTransferFunction = 1
 	// VideoTransferGamma18 wraps GST_VIDEO_TRANSFER_GAMMA18
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_GAMMA18
 	VideoTransferGamma18 VideoTransferFunction = 2
 	// VideoTransferGamma20 wraps GST_VIDEO_TRANSFER_GAMMA20
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_GAMMA20
 	VideoTransferGamma20 VideoTransferFunction = 3
 	// VideoTransferGamma22 wraps GST_VIDEO_TRANSFER_GAMMA22
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_GAMMA22
 	VideoTransferGamma22 VideoTransferFunction = 4
 	// VideoTransferBt709 wraps GST_VIDEO_TRANSFER_BT709
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_BT709
 	VideoTransferBt709 VideoTransferFunction = 5
 	// VideoTransferSmpte240m wraps GST_VIDEO_TRANSFER_SMPTE240M
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_SMPTE240M
 	VideoTransferSmpte240m VideoTransferFunction = 6
 	// VideoTransferSrgb wraps GST_VIDEO_TRANSFER_SRGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_SRGB
 	VideoTransferSrgb VideoTransferFunction = 7
 	// VideoTransferGamma28 wraps GST_VIDEO_TRANSFER_GAMMA28
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_GAMMA28
 	VideoTransferGamma28 VideoTransferFunction = 8
 	// VideoTransferLog100 wraps GST_VIDEO_TRANSFER_LOG100
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_LOG100
 	VideoTransferLog100 VideoTransferFunction = 9
 	// VideoTransferLog316 wraps GST_VIDEO_TRANSFER_LOG316
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_LOG316
 	VideoTransferLog316 VideoTransferFunction = 10
 	// VideoTransferBt202012 wraps GST_VIDEO_TRANSFER_BT2020_12
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_BT2020_12
 	VideoTransferBt202012 VideoTransferFunction = 11
 	// VideoTransferAdobergb wraps GST_VIDEO_TRANSFER_ADOBERGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_ADOBERGB
 	VideoTransferAdobergb VideoTransferFunction = 12
 	// VideoTransferBt202010 wraps GST_VIDEO_TRANSFER_BT2020_10
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_BT2020_10
 	VideoTransferBt202010 VideoTransferFunction = 13
 	// VideoTransferSmpte2084 wraps GST_VIDEO_TRANSFER_SMPTE2084
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_SMPTE2084
 	VideoTransferSmpte2084 VideoTransferFunction = 14
 	// VideoTransferAribStdB67 wraps GST_VIDEO_TRANSFER_ARIB_STD_B67
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_ARIB_STD_B67
 	VideoTransferAribStdB67 VideoTransferFunction = 15
 	// VideoTransferBt601 wraps GST_VIDEO_TRANSFER_BT601
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TRANSFER_BT601
 	VideoTransferBt601 VideoTransferFunction = 16
 )
 
@@ -3904,8 +3525,7 @@ func (e VideoTransferFunction) String() string {
 
 // VideoTransferFunctionDecode wraps gst_video_transfer_function_decode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_transfer_function_decode
 func VideoTransferFunctionDecode(fn VideoTransferFunction, val float64) float64 {
 	var carg1 C.GstVideoTransferFunction // in, none, casted
 	var carg2 C.gdouble                  // in, none, casted
@@ -3927,8 +3547,7 @@ func VideoTransferFunctionDecode(fn VideoTransferFunction, val float64) float64 
 
 // VideoTransferFunctionEncode wraps gst_video_transfer_function_encode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_transfer_function_encode
 func VideoTransferFunctionEncode(fn VideoTransferFunction, val float64) float64 {
 	var carg1 C.GstVideoTransferFunction // in, none, casted
 	var carg2 C.gdouble                  // in, none, casted
@@ -3950,8 +3569,7 @@ func VideoTransferFunctionEncode(fn VideoTransferFunction, val float64) float64 
 
 // VideoTransferFunctionFromIso wraps gst_video_transfer_function_from_iso
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_transfer_function_from_iso
 func VideoTransferFunctionFromIso(value uint) VideoTransferFunction {
 	var carg1 C.guint                    // in, none, casted
 	var cret  C.GstVideoTransferFunction // return, none, casted
@@ -3970,8 +3588,7 @@ func VideoTransferFunctionFromIso(value uint) VideoTransferFunction {
 
 // VideoTransferFunctionIsEquivalent wraps gst_video_transfer_function_is_equivalent
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_transfer_function_is_equivalent
 func VideoTransferFunctionIsEquivalent(fromFunc VideoTransferFunction, fromBpp uint, toFunc VideoTransferFunction, toBpp uint) bool {
 	var carg1 C.GstVideoTransferFunction // in, none, casted
 	var carg2 C.guint                    // in, none, casted
@@ -4001,8 +3618,7 @@ func VideoTransferFunctionIsEquivalent(fromFunc VideoTransferFunction, fromBpp u
 
 // VideoTransferFunctionToIso wraps gst_video_transfer_function_to_iso
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_transfer_function_to_iso
 func VideoTransferFunctionToIso(fn VideoTransferFunction) uint {
 	var carg1 C.GstVideoTransferFunction // in, none, casted
 	var cret  C.guint                    // return, none, casted
@@ -4021,25 +3637,21 @@ func VideoTransferFunctionToIso(fn VideoTransferFunction) uint {
 
 // VideoVBIParserResult wraps GstVideoVBIParserResult
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoVBIParserResult
 type VideoVBIParserResult C.int
 
 const (
 	// VideoVbiParserResultDone wraps GST_VIDEO_VBI_PARSER_RESULT_DONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_VBI_PARSER_RESULT_DONE
 	VideoVbiParserResultDone VideoVBIParserResult = 0
 	// VideoVbiParserResultOK wraps GST_VIDEO_VBI_PARSER_RESULT_OK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_VBI_PARSER_RESULT_OK
 	VideoVbiParserResultOK VideoVBIParserResult = 1
 	// VideoVbiParserResultError wraps GST_VIDEO_VBI_PARSER_RESULT_ERROR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_VBI_PARSER_RESULT_ERROR
 	VideoVbiParserResultError VideoVBIParserResult = 2
 )
 
@@ -4068,98 +3680,81 @@ func (e VideoVBIParserResult) String() string {
 
 // NavigationModifierType wraps GstNavigationModifierType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstNavigationModifierType
 type NavigationModifierType C.gint
 
 const (
 	// NavigationModifierNone wraps GST_NAVIGATION_MODIFIER_NONE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_NONE
 	NavigationModifierNone NavigationModifierType = 0
 	// NavigationModifierShiftMask wraps GST_NAVIGATION_MODIFIER_SHIFT_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_SHIFT_MASK
 	NavigationModifierShiftMask NavigationModifierType = 1
 	// NavigationModifierLockMask wraps GST_NAVIGATION_MODIFIER_LOCK_MASK
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_LOCK_MASK
 	NavigationModifierLockMask NavigationModifierType = 2
 	// NavigationModifierControlMask wraps GST_NAVIGATION_MODIFIER_CONTROL_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_CONTROL_MASK
 	NavigationModifierControlMask NavigationModifierType = 4
 	// NavigationModifierMod1Mask wraps GST_NAVIGATION_MODIFIER_MOD1_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_MOD1_MASK
 	NavigationModifierMod1Mask NavigationModifierType = 8
 	// NavigationModifierMod2Mask wraps GST_NAVIGATION_MODIFIER_MOD2_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_MOD2_MASK
 	NavigationModifierMod2Mask NavigationModifierType = 16
 	// NavigationModifierMod3Mask wraps GST_NAVIGATION_MODIFIER_MOD3_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_MOD3_MASK
 	NavigationModifierMod3Mask NavigationModifierType = 32
 	// NavigationModifierMod4Mask wraps GST_NAVIGATION_MODIFIER_MOD4_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_MOD4_MASK
 	NavigationModifierMod4Mask NavigationModifierType = 64
 	// NavigationModifierMod5Mask wraps GST_NAVIGATION_MODIFIER_MOD5_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_MOD5_MASK
 	NavigationModifierMod5Mask NavigationModifierType = 128
 	// NavigationModifierButton1Mask wraps GST_NAVIGATION_MODIFIER_BUTTON1_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_BUTTON1_MASK
 	NavigationModifierButton1Mask NavigationModifierType = 256
 	// NavigationModifierButton2Mask wraps GST_NAVIGATION_MODIFIER_BUTTON2_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_BUTTON2_MASK
 	NavigationModifierButton2Mask NavigationModifierType = 512
 	// NavigationModifierButton3Mask wraps GST_NAVIGATION_MODIFIER_BUTTON3_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_BUTTON3_MASK
 	NavigationModifierButton3Mask NavigationModifierType = 1024
 	// NavigationModifierButton4Mask wraps GST_NAVIGATION_MODIFIER_BUTTON4_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_BUTTON4_MASK
 	NavigationModifierButton4Mask NavigationModifierType = 2048
 	// NavigationModifierButton5Mask wraps GST_NAVIGATION_MODIFIER_BUTTON5_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_BUTTON5_MASK
 	NavigationModifierButton5Mask NavigationModifierType = 4096
 	// NavigationModifierSuperMask wraps GST_NAVIGATION_MODIFIER_SUPER_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_SUPER_MASK
 	NavigationModifierSuperMask NavigationModifierType = 67108864
 	// NavigationModifierHyperMask wraps GST_NAVIGATION_MODIFIER_HYPER_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_HYPER_MASK
 	NavigationModifierHyperMask NavigationModifierType = 134217728
 	// NavigationModifierMetaMask wraps GST_NAVIGATION_MODIFIER_META_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_META_MASK
 	NavigationModifierMetaMask NavigationModifierType = 268435456
 	// NavigationModifierMask wraps GST_NAVIGATION_MODIFIER_MASK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_NAVIGATION_MODIFIER_MASK
 	NavigationModifierMask NavigationModifierType = 469770239
 )
 
@@ -4246,60 +3841,49 @@ func (f NavigationModifierType) String() string {
 
 // VideoBufferFlags wraps GstVideoBufferFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoBufferFlags
 type VideoBufferFlags C.gint
 
 const (
 	// VideoBufferFlagInterlaced wraps GST_VIDEO_BUFFER_FLAG_INTERLACED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_INTERLACED
 	VideoBufferFlagInterlaced VideoBufferFlags = 1048576
 	// VideoBufferFlagTff wraps GST_VIDEO_BUFFER_FLAG_TFF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_TFF
 	VideoBufferFlagTff VideoBufferFlags = 2097152
 	// VideoBufferFlagRff wraps GST_VIDEO_BUFFER_FLAG_RFF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_RFF
 	VideoBufferFlagRff VideoBufferFlags = 4194304
 	// VideoBufferFlagOnefield wraps GST_VIDEO_BUFFER_FLAG_ONEFIELD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_ONEFIELD
 	VideoBufferFlagOnefield VideoBufferFlags = 8388608
 	// VideoBufferFlagMultipleView wraps GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW
 	VideoBufferFlagMultipleView VideoBufferFlags = 16777216
 	// VideoBufferFlagFirstInBundle wraps GST_VIDEO_BUFFER_FLAG_FIRST_IN_BUNDLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_FIRST_IN_BUNDLE
 	VideoBufferFlagFirstInBundle VideoBufferFlags = 33554432
 	// VideoBufferFlagTopField wraps GST_VIDEO_BUFFER_FLAG_TOP_FIELD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_TOP_FIELD
 	VideoBufferFlagTopField VideoBufferFlags = 10485760
 	// VideoBufferFlagBottomField wraps GST_VIDEO_BUFFER_FLAG_BOTTOM_FIELD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_BOTTOM_FIELD
 	VideoBufferFlagBottomField VideoBufferFlags = 8388608
 	// VideoBufferFlagMarker wraps GST_VIDEO_BUFFER_FLAG_MARKER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_MARKER
 	VideoBufferFlagMarker VideoBufferFlags = 512
 	// VideoBufferFlagLast wraps GST_VIDEO_BUFFER_FLAG_LAST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_BUFFER_FLAG_LAST
 	VideoBufferFlagLast VideoBufferFlags = 268435456
 )
 
@@ -4362,20 +3946,17 @@ func (f VideoBufferFlags) String() string {
 
 // VideoChromaFlags wraps GstVideoChromaFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoChromaFlags
 type VideoChromaFlags C.gint
 
 const (
 	// VideoChromaFlagNone wraps GST_VIDEO_CHROMA_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_FLAG_NONE
 	VideoChromaFlagNone VideoChromaFlags = 0
 	// VideoChromaFlagInterlaced wraps GST_VIDEO_CHROMA_FLAG_INTERLACED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_FLAG_INTERLACED
 	VideoChromaFlagInterlaced VideoChromaFlags = 1
 )
 
@@ -4414,55 +3995,45 @@ func (f VideoChromaFlags) String() string {
 
 // VideoChromaSite wraps GstVideoChromaSite
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoChromaSite
 type VideoChromaSite C.gint
 
 const (
 	// VideoChromaSiteUnknown wraps GST_VIDEO_CHROMA_SITE_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_SITE_UNKNOWN
 	VideoChromaSiteUnknown VideoChromaSite = 0
 	// VideoChromaSiteNone wraps GST_VIDEO_CHROMA_SITE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_SITE_NONE
 	VideoChromaSiteNone VideoChromaSite = 1
 	// VideoChromaSiteHCosited wraps GST_VIDEO_CHROMA_SITE_H_COSITED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_SITE_H_COSITED
 	VideoChromaSiteHCosited VideoChromaSite = 2
 	// VideoChromaSiteVCosited wraps GST_VIDEO_CHROMA_SITE_V_COSITED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_SITE_V_COSITED
 	VideoChromaSiteVCosited VideoChromaSite = 4
 	// VideoChromaSiteAltLine wraps GST_VIDEO_CHROMA_SITE_ALT_LINE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_SITE_ALT_LINE
 	VideoChromaSiteAltLine VideoChromaSite = 8
 	// VideoChromaSiteCosited wraps GST_VIDEO_CHROMA_SITE_COSITED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_SITE_COSITED
 	VideoChromaSiteCosited VideoChromaSite = 6
 	// VideoChromaSiteJpeg wraps GST_VIDEO_CHROMA_SITE_JPEG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_SITE_JPEG
 	VideoChromaSiteJpeg VideoChromaSite = 1
 	// VideoChromaSiteMpeg2 wraps GST_VIDEO_CHROMA_SITE_MPEG2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_SITE_MPEG2
 	VideoChromaSiteMpeg2 VideoChromaSite = 2
 	// VideoChromaSiteDv wraps GST_VIDEO_CHROMA_SITE_DV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CHROMA_SITE_DV
 	VideoChromaSiteDv VideoChromaSite = 14
 )
 
@@ -4522,8 +4093,7 @@ func (f VideoChromaSite) String() string {
 
 // VideoChromaSiteFromString wraps gst_video_chroma_site_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_chroma_site_from_string
 func VideoChromaSiteFromString(s string) VideoChromaSite {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstVideoChromaSite // return, none, casted
@@ -4543,8 +4113,7 @@ func VideoChromaSiteFromString(s string) VideoChromaSite {
 
 // VideoChromaSiteString wraps gst_video_chroma_site_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#gst_video_chroma_site_to_string
 func VideoChromaSiteString(site VideoChromaSite) string {
 	var carg1 C.GstVideoChromaSite // in, none, casted
 	var cret  *C.gchar             // return, full, string, nullable-string
@@ -4566,35 +4135,29 @@ func VideoChromaSiteString(site VideoChromaSite) string {
 
 // VideoCodecFrameFlags wraps GstVideoCodecFrameFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoCodecFrameFlags
 type VideoCodecFrameFlags C.gint
 
 const (
 	// VideoCodecFrameFlagDecodeOnly wraps GST_VIDEO_CODEC_FRAME_FLAG_DECODE_ONLY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CODEC_FRAME_FLAG_DECODE_ONLY
 	VideoCodecFrameFlagDecodeOnly VideoCodecFrameFlags = 1
 	// VideoCodecFrameFlagSyncPoint wraps GST_VIDEO_CODEC_FRAME_FLAG_SYNC_POINT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CODEC_FRAME_FLAG_SYNC_POINT
 	VideoCodecFrameFlagSyncPoint VideoCodecFrameFlags = 2
 	// VideoCodecFrameFlagForceKeyframe wraps GST_VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME
 	VideoCodecFrameFlagForceKeyframe VideoCodecFrameFlags = 4
 	// VideoCodecFrameFlagForceKeyframeHeaders wraps GST_VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME_HEADERS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME_HEADERS
 	VideoCodecFrameFlagForceKeyframeHeaders VideoCodecFrameFlags = 8
 	// VideoCodecFrameFlagCorrupted wraps GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
 	VideoCodecFrameFlagCorrupted VideoCodecFrameFlags = 16
 )
 
@@ -4642,20 +4205,17 @@ func (f VideoCodecFrameFlags) String() string {
 
 // VideoDecoderRequestSyncPointFlags wraps GstVideoDecoderRequestSyncPointFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoDecoderRequestSyncPointFlags
 type VideoDecoderRequestSyncPointFlags C.gint
 
 const (
 	// VideoDecoderRequestSyncPointDiscardInput wraps GST_VIDEO_DECODER_REQUEST_SYNC_POINT_DISCARD_INPUT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DECODER_REQUEST_SYNC_POINT_DISCARD_INPUT
 	VideoDecoderRequestSyncPointDiscardInput VideoDecoderRequestSyncPointFlags = 1
 	// VideoDecoderRequestSyncPointCorruptOutput wraps GST_VIDEO_DECODER_REQUEST_SYNC_POINT_CORRUPT_OUTPUT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DECODER_REQUEST_SYNC_POINT_CORRUPT_OUTPUT
 	VideoDecoderRequestSyncPointCorruptOutput VideoDecoderRequestSyncPointFlags = 2
 )
 
@@ -4694,25 +4254,21 @@ func (f VideoDecoderRequestSyncPointFlags) String() string {
 
 // VideoDitherFlags wraps GstVideoDitherFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoDitherFlags
 type VideoDitherFlags C.gint
 
 const (
 	// VideoDitherFlagNone wraps GST_VIDEO_DITHER_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DITHER_FLAG_NONE
 	VideoDitherFlagNone VideoDitherFlags = 0
 	// VideoDitherFlagInterlaced wraps GST_VIDEO_DITHER_FLAG_INTERLACED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DITHER_FLAG_INTERLACED
 	VideoDitherFlagInterlaced VideoDitherFlags = 1
 	// VideoDitherFlagQuantize wraps GST_VIDEO_DITHER_FLAG_QUANTIZE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_DITHER_FLAG_QUANTIZE
 	VideoDitherFlagQuantize VideoDitherFlags = 2
 )
 
@@ -4754,25 +4310,21 @@ func (f VideoDitherFlags) String() string {
 
 // VideoFlags wraps GstVideoFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoFlags
 type VideoFlags C.gint
 
 const (
 	// VideoFlagNone wraps GST_VIDEO_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FLAG_NONE
 	VideoFlagNone VideoFlags = 0
 	// VideoFlagVariableFps wraps GST_VIDEO_FLAG_VARIABLE_FPS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FLAG_VARIABLE_FPS
 	VideoFlagVariableFps VideoFlags = 1
 	// VideoFlagPremultipliedAlpha wraps GST_VIDEO_FLAG_PREMULTIPLIED_ALPHA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FLAG_PREMULTIPLIED_ALPHA
 	VideoFlagPremultipliedAlpha VideoFlags = 2
 )
 
@@ -4814,60 +4366,49 @@ func (f VideoFlags) String() string {
 
 // VideoFormatFlags wraps GstVideoFormatFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoFormatFlags
 type VideoFormatFlags C.gint
 
 const (
 	// VideoFormatFlagYuv wraps GST_VIDEO_FORMAT_FLAG_YUV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_YUV
 	VideoFormatFlagYuv VideoFormatFlags = 1
 	// VideoFormatFlagRgb wraps GST_VIDEO_FORMAT_FLAG_RGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_RGB
 	VideoFormatFlagRgb VideoFormatFlags = 2
 	// VideoFormatFlagGray wraps GST_VIDEO_FORMAT_FLAG_GRAY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_GRAY
 	VideoFormatFlagGray VideoFormatFlags = 4
 	// VideoFormatFlagAlpha wraps GST_VIDEO_FORMAT_FLAG_ALPHA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_ALPHA
 	VideoFormatFlagAlpha VideoFormatFlags = 8
 	// VideoFormatFlagLe wraps GST_VIDEO_FORMAT_FLAG_LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_LE
 	VideoFormatFlagLe VideoFormatFlags = 16
 	// VideoFormatFlagPalette wraps GST_VIDEO_FORMAT_FLAG_PALETTE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_PALETTE
 	VideoFormatFlagPalette VideoFormatFlags = 32
 	// VideoFormatFlagComplex wraps GST_VIDEO_FORMAT_FLAG_COMPLEX
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_COMPLEX
 	VideoFormatFlagComplex VideoFormatFlags = 64
 	// VideoFormatFlagUnpack wraps GST_VIDEO_FORMAT_FLAG_UNPACK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_UNPACK
 	VideoFormatFlagUnpack VideoFormatFlags = 128
 	// VideoFormatFlagTiled wraps GST_VIDEO_FORMAT_FLAG_TILED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_TILED
 	VideoFormatFlagTiled VideoFormatFlags = 256
 	// VideoFormatFlagSubtiles wraps GST_VIDEO_FORMAT_FLAG_SUBTILES
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FORMAT_FLAG_SUBTILES
 	VideoFormatFlagSubtiles VideoFormatFlags = 512
 )
 
@@ -4930,55 +4471,45 @@ func (f VideoFormatFlags) String() string {
 
 // VideoFrameFlags wraps GstVideoFrameFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoFrameFlags
 type VideoFrameFlags C.gint
 
 const (
 	// VideoFrameFlagNone wraps GST_VIDEO_FRAME_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_FLAG_NONE
 	VideoFrameFlagNone VideoFrameFlags = 0
 	// VideoFrameFlagInterlaced wraps GST_VIDEO_FRAME_FLAG_INTERLACED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_FLAG_INTERLACED
 	VideoFrameFlagInterlaced VideoFrameFlags = 1
 	// VideoFrameFlagTff wraps GST_VIDEO_FRAME_FLAG_TFF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_FLAG_TFF
 	VideoFrameFlagTff VideoFrameFlags = 2
 	// VideoFrameFlagRff wraps GST_VIDEO_FRAME_FLAG_RFF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_FLAG_RFF
 	VideoFrameFlagRff VideoFrameFlags = 4
 	// VideoFrameFlagOnefield wraps GST_VIDEO_FRAME_FLAG_ONEFIELD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_FLAG_ONEFIELD
 	VideoFrameFlagOnefield VideoFrameFlags = 8
 	// VideoFrameFlagMultipleView wraps GST_VIDEO_FRAME_FLAG_MULTIPLE_VIEW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_FLAG_MULTIPLE_VIEW
 	VideoFrameFlagMultipleView VideoFrameFlags = 16
 	// VideoFrameFlagFirstInBundle wraps GST_VIDEO_FRAME_FLAG_FIRST_IN_BUNDLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_FLAG_FIRST_IN_BUNDLE
 	VideoFrameFlagFirstInBundle VideoFrameFlags = 32
 	// VideoFrameFlagTopField wraps GST_VIDEO_FRAME_FLAG_TOP_FIELD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_FLAG_TOP_FIELD
 	VideoFrameFlagTopField VideoFrameFlags = 10
 	// VideoFrameFlagBottomField wraps GST_VIDEO_FRAME_FLAG_BOTTOM_FIELD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_FLAG_BOTTOM_FIELD
 	VideoFrameFlagBottomField VideoFrameFlags = 8
 )
 
@@ -5038,20 +4569,17 @@ func (f VideoFrameFlags) String() string {
 
 // VideoFrameMapFlags wraps GstVideoFrameMapFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoFrameMapFlags
 type VideoFrameMapFlags C.gint
 
 const (
 	// VideoFrameMapFlagNoRef wraps GST_VIDEO_FRAME_MAP_FLAG_NO_REF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_MAP_FLAG_NO_REF
 	VideoFrameMapFlagNoRef VideoFrameMapFlags = 65536
 	// VideoFrameMapFlagLast wraps GST_VIDEO_FRAME_MAP_FLAG_LAST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_FRAME_MAP_FLAG_LAST
 	VideoFrameMapFlagLast VideoFrameMapFlags = 16777216
 )
 
@@ -5090,50 +4618,41 @@ func (f VideoFrameMapFlags) String() string {
 
 // VideoMultiviewFlags wraps GstVideoMultiviewFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoMultiviewFlags
 type VideoMultiviewFlags C.gint
 
 const (
 	// VideoMultiviewFlagsNone wraps GST_VIDEO_MULTIVIEW_FLAGS_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FLAGS_NONE
 	VideoMultiviewFlagsNone VideoMultiviewFlags = 0
 	// VideoMultiviewFlagsRightViewFirst wraps GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_VIEW_FIRST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_VIEW_FIRST
 	VideoMultiviewFlagsRightViewFirst VideoMultiviewFlags = 1
 	// VideoMultiviewFlagsLeftFlipped wraps GST_VIDEO_MULTIVIEW_FLAGS_LEFT_FLIPPED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FLAGS_LEFT_FLIPPED
 	VideoMultiviewFlagsLeftFlipped VideoMultiviewFlags = 2
 	// VideoMultiviewFlagsLeftFlopped wraps GST_VIDEO_MULTIVIEW_FLAGS_LEFT_FLOPPED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FLAGS_LEFT_FLOPPED
 	VideoMultiviewFlagsLeftFlopped VideoMultiviewFlags = 4
 	// VideoMultiviewFlagsRightFlipped wraps GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLIPPED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLIPPED
 	VideoMultiviewFlagsRightFlipped VideoMultiviewFlags = 8
 	// VideoMultiviewFlagsRightFlopped wraps GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLOPPED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLOPPED
 	VideoMultiviewFlagsRightFlopped VideoMultiviewFlags = 16
 	// VideoMultiviewFlagsHalfAspect wraps GST_VIDEO_MULTIVIEW_FLAGS_HALF_ASPECT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FLAGS_HALF_ASPECT
 	VideoMultiviewFlagsHalfAspect VideoMultiviewFlags = 16384
 	// VideoMultiviewFlagsMixedMono wraps GST_VIDEO_MULTIVIEW_FLAGS_MIXED_MONO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_MULTIVIEW_FLAGS_MIXED_MONO
 	VideoMultiviewFlagsMixedMono VideoMultiviewFlags = 32768
 )
 
@@ -5190,25 +4709,21 @@ func (f VideoMultiviewFlags) String() string {
 
 // VideoOverlayFormatFlags wraps GstVideoOverlayFormatFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoOverlayFormatFlags
 type VideoOverlayFormatFlags C.gint
 
 const (
 	// VideoOverlayFormatFlagNone wraps GST_VIDEO_OVERLAY_FORMAT_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_OVERLAY_FORMAT_FLAG_NONE
 	VideoOverlayFormatFlagNone VideoOverlayFormatFlags = 0
 	// VideoOverlayFormatFlagPremultipliedAlpha wraps GST_VIDEO_OVERLAY_FORMAT_FLAG_PREMULTIPLIED_ALPHA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_OVERLAY_FORMAT_FLAG_PREMULTIPLIED_ALPHA
 	VideoOverlayFormatFlagPremultipliedAlpha VideoOverlayFormatFlags = 1
 	// VideoOverlayFormatFlagGlobalAlpha wraps GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA
 	VideoOverlayFormatFlagGlobalAlpha VideoOverlayFormatFlags = 2
 )
 
@@ -5250,25 +4765,21 @@ func (f VideoOverlayFormatFlags) String() string {
 
 // VideoPackFlags wraps GstVideoPackFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoPackFlags
 type VideoPackFlags C.gint
 
 const (
 	// VideoPackFlagNone wraps GST_VIDEO_PACK_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_PACK_FLAG_NONE
 	VideoPackFlagNone VideoPackFlags = 0
 	// VideoPackFlagTruncateRange wraps GST_VIDEO_PACK_FLAG_TRUNCATE_RANGE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_PACK_FLAG_TRUNCATE_RANGE
 	VideoPackFlagTruncateRange VideoPackFlags = 1
 	// VideoPackFlagInterlaced wraps GST_VIDEO_PACK_FLAG_INTERLACED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_PACK_FLAG_INTERLACED
 	VideoPackFlagInterlaced VideoPackFlags = 2
 )
 
@@ -5310,20 +4821,17 @@ func (f VideoPackFlags) String() string {
 
 // VideoResamplerFlags wraps GstVideoResamplerFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoResamplerFlags
 type VideoResamplerFlags C.gint
 
 const (
 	// VideoResamplerFlagNone wraps GST_VIDEO_RESAMPLER_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_RESAMPLER_FLAG_NONE
 	VideoResamplerFlagNone VideoResamplerFlags = 0
 	// VideoResamplerFlagHalfTaps wraps GST_VIDEO_RESAMPLER_FLAG_HALF_TAPS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_RESAMPLER_FLAG_HALF_TAPS
 	VideoResamplerFlagHalfTaps VideoResamplerFlags = 1
 )
 
@@ -5362,20 +4870,17 @@ func (f VideoResamplerFlags) String() string {
 
 // VideoScalerFlags wraps GstVideoScalerFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoScalerFlags
 type VideoScalerFlags C.gint
 
 const (
 	// VideoScalerFlagNone wraps GST_VIDEO_SCALER_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_SCALER_FLAG_NONE
 	VideoScalerFlagNone VideoScalerFlags = 0
 	// VideoScalerFlagInterlaced wraps GST_VIDEO_SCALER_FLAG_INTERLACED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_SCALER_FLAG_INTERLACED
 	VideoScalerFlagInterlaced VideoScalerFlags = 1
 )
 
@@ -5414,25 +4919,21 @@ func (f VideoScalerFlags) String() string {
 
 // VideoTimeCodeFlags wraps GstVideoTimeCodeFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video#GstVideoTimeCodeFlags
 type VideoTimeCodeFlags C.gint
 
 const (
 	// VideoTimeCodeFlagsNone wraps GST_VIDEO_TIME_CODE_FLAGS_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TIME_CODE_FLAGS_NONE
 	VideoTimeCodeFlagsNone VideoTimeCodeFlags = 0
 	// VideoTimeCodeFlagsDropFrame wraps GST_VIDEO_TIME_CODE_FLAGS_DROP_FRAME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TIME_CODE_FLAGS_DROP_FRAME
 	VideoTimeCodeFlagsDropFrame VideoTimeCodeFlags = 1
 	// VideoTimeCodeFlagsInterlaced wraps GST_VIDEO_TIME_CODE_FLAGS_INTERLACED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video#GST_VIDEO_TIME_CODE_FLAGS_INTERLACED
 	VideoTimeCodeFlagsInterlaced VideoTimeCodeFlags = 2
 )
 
@@ -5474,7 +4975,7 @@ func (f VideoTimeCodeFlags) String() string {
 
 // AncillaryMetaAPIGetType wraps gst_ancillary_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func AncillaryMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -5489,8 +4990,7 @@ func AncillaryMetaAPIGetType() gobject.Type {
 
 // BufferAddAncillaryMeta wraps gst_buffer_add_ancillary_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddAncillaryMeta(buffer *gst.Buffer) *AncillaryMeta {
 	var carg1 *C.GstBuffer        // in, none, converted
 	var cret  *C.GstAncillaryMeta // return, none, converted
@@ -5509,8 +5009,7 @@ func BufferAddAncillaryMeta(buffer *gst.Buffer) *AncillaryMeta {
 
 // BufferAddVideoAfdMeta wraps gst_buffer_add_video_afd_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoAfdMeta(buffer *gst.Buffer, field uint8, spec VideoAFDSpec, afd VideoAFDValue) *VideoAFDMeta {
 	var carg1 *C.GstBuffer       // in, none, converted
 	var carg2 C.guint8           // in, none, casted
@@ -5538,8 +5037,7 @@ func BufferAddVideoAfdMeta(buffer *gst.Buffer, field uint8, spec VideoAFDSpec, a
 
 // BufferAddVideoAffineTransformationMeta wraps gst_buffer_add_video_affine_transformation_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoAffineTransformationMeta(buffer *gst.Buffer) *VideoAffineTransformationMeta {
 	var carg1 *C.GstBuffer                        // in, none, converted
 	var cret  *C.GstVideoAffineTransformationMeta // return, none, converted
@@ -5558,8 +5056,7 @@ func BufferAddVideoAffineTransformationMeta(buffer *gst.Buffer) *VideoAffineTran
 
 // BufferAddVideoBarMeta wraps gst_buffer_add_video_bar_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoBarMeta(buffer *gst.Buffer, field uint8, isLetterbox bool, barData1 uint, barData2 uint) *VideoBarMeta {
 	var carg1 *C.GstBuffer       // in, none, converted
 	var carg2 C.guint8           // in, none, casted
@@ -5592,8 +5089,7 @@ func BufferAddVideoBarMeta(buffer *gst.Buffer, field uint8, isLetterbox bool, ba
 
 // BufferAddVideoCaptionMeta wraps gst_buffer_add_video_caption_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoCaptionMeta(buffer *gst.Buffer, captionType VideoCaptionType, data []uint8) *VideoCaptionMeta {
 	var carg1 *C.GstBuffer           // in, none, converted
 	var carg2 C.GstVideoCaptionType  // in, none, casted
@@ -5622,8 +5118,7 @@ func BufferAddVideoCaptionMeta(buffer *gst.Buffer, captionType VideoCaptionType,
 
 // BufferAddVideoCodecAlphaMeta wraps gst_buffer_add_video_codec_alpha_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoCodecAlphaMeta(buffer *gst.Buffer, alphaBuffer *gst.Buffer) *VideoCodecAlphaMeta {
 	var carg1 *C.GstBuffer              // in, none, converted
 	var carg2 *C.GstBuffer              // in, full, converted
@@ -5645,8 +5140,7 @@ func BufferAddVideoCodecAlphaMeta(buffer *gst.Buffer, alphaBuffer *gst.Buffer) *
 
 // BufferAddVideoMeta wraps gst_buffer_add_video_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoMeta(buffer *gst.Buffer, flags VideoFrameFlags, format VideoFormat, width uint, height uint) *VideoMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var carg2 C.GstVideoFrameFlags // in, none, casted
@@ -5677,8 +5171,7 @@ func BufferAddVideoMeta(buffer *gst.Buffer, flags VideoFrameFlags, format VideoF
 
 // BufferAddVideoMetaFull wraps gst_buffer_add_video_meta_full
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format VideoFormat, width uint, height uint, nPlanes uint, offset [4]uint, stride [4]int32) *VideoMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var carg2 C.GstVideoFrameFlags // in, none, casted
@@ -5730,8 +5223,7 @@ func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format Vi
 
 // BufferAddVideoOverlayCompositionMeta wraps gst_buffer_add_video_overlay_composition_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoOverlayCompositionMeta(buf *gst.Buffer, comp *VideoOverlayComposition) *VideoOverlayCompositionMeta {
 	var carg1 *C.GstBuffer                      // in, none, converted
 	var carg2 *C.GstVideoOverlayComposition     // in, none, converted, nullable
@@ -5755,8 +5247,7 @@ func BufferAddVideoOverlayCompositionMeta(buf *gst.Buffer, comp *VideoOverlayCom
 
 // BufferAddVideoRegionOfInterestMeta wraps gst_buffer_add_video_region_of_interest_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoRegionOfInterestMeta(buffer *gst.Buffer, roiType string, x uint, y uint, w uint, h uint) *VideoRegionOfInterestMeta {
 	var carg1 *C.GstBuffer                    // in, none, converted
 	var carg2 *C.gchar                        // in, none, string
@@ -5791,8 +5282,7 @@ func BufferAddVideoRegionOfInterestMeta(buffer *gst.Buffer, roiType string, x ui
 
 // BufferAddVideoRegionOfInterestMetaID wraps gst_buffer_add_video_region_of_interest_meta_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoRegionOfInterestMetaID(buffer *gst.Buffer, roiType glib.Quark, x uint, y uint, w uint, h uint) *VideoRegionOfInterestMeta {
 	var carg1 *C.GstBuffer                    // in, none, converted
 	var carg2 C.GQuark                        // in, none, casted, alias
@@ -5826,8 +5316,7 @@ func BufferAddVideoRegionOfInterestMetaID(buffer *gst.Buffer, roiType glib.Quark
 
 // BufferAddVideoSeiUserDataUnregisteredMeta wraps gst_buffer_add_video_sei_user_data_unregistered_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, data *uint8, size uint) *VideoSEIUserDataUnregisteredMeta {
 	var carg1 *C.GstBuffer                           // in, none, converted
 	var carg2 *C.guint8                              // in, transfer: none, C Pointers: 1, Name: guint8
@@ -5861,8 +5350,7 @@ func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, 
 
 // BufferAddVideoTimeCodeMeta wraps gst_buffer_add_video_time_code_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferAddVideoTimeCodeMeta(buffer *gst.Buffer, tc *VideoTimeCode) *VideoTimeCodeMeta {
 	var carg1 *C.GstBuffer            // in, none, converted
 	var carg2 *C.GstVideoTimeCode     // in, none, converted
@@ -5886,8 +5374,7 @@ func BufferAddVideoTimeCodeMeta(buffer *gst.Buffer, tc *VideoTimeCode) *VideoTim
 
 // BufferGetVideoMeta wraps gst_buffer_get_video_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 	var carg1 *C.GstBuffer    // in, none, converted
 	var cret  *C.GstVideoMeta // return, none, converted, nullable
@@ -5908,8 +5395,7 @@ func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 
 // BufferGetVideoMetaID wraps gst_buffer_get_video_meta_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferGetVideoMetaID(buffer *gst.Buffer, id int32) *VideoMeta {
 	var carg1 *C.GstBuffer    // in, none, converted
 	var carg2 C.gint          // in, none, casted
@@ -5933,8 +5419,7 @@ func BufferGetVideoMetaID(buffer *gst.Buffer, id int32) *VideoMeta {
 
 // BufferGetVideoRegionOfInterestMetaID wraps gst_buffer_get_video_region_of_interest_meta_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferGetVideoRegionOfInterestMetaID(buffer *gst.Buffer, id int32) *VideoRegionOfInterestMeta {
 	var carg1 *C.GstBuffer                    // in, none, converted
 	var carg2 C.gint                          // in, none, casted
@@ -5958,8 +5443,7 @@ func BufferGetVideoRegionOfInterestMetaID(buffer *gst.Buffer, id int32) *VideoRe
 
 // BufferPoolConfigGetVideoAlignment wraps gst_buffer_pool_config_get_video_alignment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferPoolConfigGetVideoAlignment(config *gst.Structure, align *VideoAlignment) bool {
 	var carg1 *C.GstStructure      // in, none, converted
 	var carg2 *C.GstVideoAlignment // in, none, converted
@@ -5983,8 +5467,7 @@ func BufferPoolConfigGetVideoAlignment(config *gst.Structure, align *VideoAlignm
 
 // BufferPoolConfigSetVideoAlignment wraps gst_buffer_pool_config_set_video_alignment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func BufferPoolConfigSetVideoAlignment(config *gst.Structure, align *VideoAlignment) {
 	var carg1 *C.GstStructure      // in, none, converted
 	var carg2 *C.GstVideoAlignment // in, none, converted
@@ -5999,8 +5482,7 @@ func BufferPoolConfigSetVideoAlignment(config *gst.Structure, align *VideoAlignm
 
 // IsVideoOverlayPrepareWindowHandleMessage wraps gst_is_video_overlay_prepare_window_handle_message
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func IsVideoOverlayPrepareWindowHandleMessage(msg *gst.Message) bool {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  C.gboolean    // return
@@ -6021,7 +5503,7 @@ func IsVideoOverlayPrepareWindowHandleMessage(msg *gst.Message) bool {
 
 // VideoAfdMetaAPIGetType wraps gst_video_afd_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoAfdMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6036,7 +5518,7 @@ func VideoAfdMetaAPIGetType() gobject.Type {
 
 // VideoAffineTransformationMetaAPIGetType wraps gst_video_affine_transformation_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoAffineTransformationMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6051,7 +5533,7 @@ func VideoAffineTransformationMetaAPIGetType() gobject.Type {
 
 // VideoBarMetaAPIGetType wraps gst_video_bar_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoBarMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6066,8 +5548,7 @@ func VideoBarMetaAPIGetType() gobject.Type {
 
 // VideoBlend wraps gst_video_blend
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoBlend(dest *VideoFrame, src *VideoFrame, x int32, y int32, globalAlpha float32) bool {
 	var carg1 *C.GstVideoFrame // in, none, converted
 	var carg2 *C.GstVideoFrame // in, none, converted
@@ -6100,8 +5581,7 @@ func VideoBlend(dest *VideoFrame, src *VideoFrame, x int32, y int32, globalAlpha
 
 // VideoBlendScaleLinearRgba wraps gst_video_blend_scale_linear_RGBA
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoBlendScaleLinearRgba(src *VideoInfo, srcBuffer *gst.Buffer, destHeight int32, destWidth int32) (VideoInfo, *gst.Buffer) {
 	var carg1 *C.GstVideoInfo // in, none, converted
 	var carg2 *C.GstBuffer    // in, none, converted
@@ -6134,8 +5614,7 @@ func VideoBlendScaleLinearRgba(src *VideoInfo, srcBuffer *gst.Buffer, destHeight
 
 // VideoCalculateDisplayRatio wraps gst_video_calculate_display_ratio
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoCalculateDisplayRatio(videoWidth uint, videoHeight uint, videoParN uint, videoParD uint, displayParN uint, displayParD uint) (uint, uint, bool) {
 	var carg3 C.guint    // in, none, casted
 	var carg4 C.guint    // in, none, casted
@@ -6177,7 +5656,7 @@ func VideoCalculateDisplayRatio(videoWidth uint, videoHeight uint, videoParN uin
 
 // VideoCaptionMetaAPIGetType wraps gst_video_caption_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoCaptionMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6192,8 +5671,7 @@ func VideoCaptionMetaAPIGetType() gobject.Type {
 
 // VideoCenterRect wraps gst_video_center_rect
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoCenterRect(src *VideoRectangle, dst *VideoRectangle, scaling bool) VideoRectangle {
 	var carg1 *C.GstVideoRectangle // in, none, converted
 	var carg2 *C.GstVideoRectangle // in, none, converted
@@ -6222,7 +5700,7 @@ func VideoCenterRect(src *VideoRectangle, dst *VideoRectangle, scaling bool) Vid
 
 // VideoCodecAlphaMetaAPIGetType wraps gst_video_codec_alpha_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoCodecAlphaMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6237,8 +5715,7 @@ func VideoCodecAlphaMetaAPIGetType() gobject.Type {
 
 // VideoConvertSample wraps gst_video_convert_sample
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockTime) (*gst.Sample, error) {
 	var carg1 *C.GstSample   // in, none, converted
 	var carg2 *C.GstCaps     // in, none, converted
@@ -6270,7 +5747,7 @@ func VideoConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockT
 
 // VideoCropMetaAPIGetType wraps gst_video_crop_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoCropMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6285,8 +5762,7 @@ func VideoCropMetaAPIGetType() gobject.Type {
 
 // VideoDmaDrmFormatFromGstFormat wraps gst_video_dma_drm_format_from_gst_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoDmaDrmFormatFromGstFormat(format VideoFormat, modifier *uint64) uint32 {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var carg2 *C.guint64       // in, transfer: none, C Pointers: 1, Name: guint64, nullable, nullable
@@ -6312,8 +5788,7 @@ func VideoDmaDrmFormatFromGstFormat(format VideoFormat, modifier *uint64) uint32
 
 // VideoDmaDrmFormatToGstFormat wraps gst_video_dma_drm_format_to_gst_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoDmaDrmFormatToGstFormat(fourcc uint32, modifier uint64) VideoFormat {
 	var carg1 C.guint32        // in, none, casted
 	var carg2 C.guint64        // in, none, casted
@@ -6335,8 +5810,7 @@ func VideoDmaDrmFormatToGstFormat(fourcc uint32, modifier uint64) VideoFormat {
 
 // VideoDmaDrmFourccFromFormat wraps gst_video_dma_drm_fourcc_from_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoDmaDrmFourccFromFormat(format VideoFormat) uint32 {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var cret  C.guint32        // return, none, casted
@@ -6355,8 +5829,7 @@ func VideoDmaDrmFourccFromFormat(format VideoFormat) uint32 {
 
 // VideoDmaDrmFourccFromString wraps gst_video_dma_drm_fourcc_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoDmaDrmFourccFromString(formatStr string) (uint64, uint32) {
 	var carg1 *C.gchar  // in, none, string
 	var carg2 C.guint64 // out, full, casted
@@ -6379,8 +5852,7 @@ func VideoDmaDrmFourccFromString(formatStr string) (uint64, uint32) {
 
 // VideoDmaDrmFourccToFormat wraps gst_video_dma_drm_fourcc_to_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoDmaDrmFourccToFormat(fourcc uint32) VideoFormat {
 	var carg1 C.guint32        // in, none, casted
 	var cret  C.GstVideoFormat // return, none, casted
@@ -6399,8 +5871,7 @@ func VideoDmaDrmFourccToFormat(fourcc uint32) VideoFormat {
 
 // VideoDmaDrmFourccToString wraps gst_video_dma_drm_fourcc_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoDmaDrmFourccToString(fourcc uint32, modifier uint64) string {
 	var carg1 C.guint32 // in, none, casted
 	var carg2 C.guint64 // in, none, casted
@@ -6425,8 +5896,7 @@ func VideoDmaDrmFourccToString(fourcc uint32, modifier uint64) string {
 
 // VideoEventIsForceKeyUnit wraps gst_video_event_is_force_key_unit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoEventIsForceKeyUnit(event *gst.Event) bool {
 	var carg1 *C.GstEvent // in, none, converted
 	var cret  C.gboolean  // return
@@ -6447,8 +5917,7 @@ func VideoEventIsForceKeyUnit(event *gst.Event) bool {
 
 // VideoEventNewDownstreamForceKeyUnit wraps gst_video_event_new_downstream_force_key_unit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoEventNewDownstreamForceKeyUnit(timestamp gst.ClockTime, streamTime gst.ClockTime, runningTime gst.ClockTime, allHeaders bool, count uint) *gst.Event {
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var carg2 C.GstClockTime // in, none, casted, alias
@@ -6481,8 +5950,7 @@ func VideoEventNewDownstreamForceKeyUnit(timestamp gst.ClockTime, streamTime gst
 
 // VideoEventNewStillFrame wraps gst_video_event_new_still_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoEventNewStillFrame(inStill bool) *gst.Event {
 	var carg1 C.gboolean  // in
 	var cret  *C.GstEvent // return, full, converted
@@ -6503,8 +5971,7 @@ func VideoEventNewStillFrame(inStill bool) *gst.Event {
 
 // VideoEventNewUpstreamForceKeyUnit wraps gst_video_event_new_upstream_force_key_unit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoEventNewUpstreamForceKeyUnit(runningTime gst.ClockTime, allHeaders bool, count uint) *gst.Event {
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var carg2 C.gboolean     // in
@@ -6531,8 +5998,7 @@ func VideoEventNewUpstreamForceKeyUnit(runningTime gst.ClockTime, allHeaders boo
 
 // VideoEventParseDownstreamForceKeyUnit wraps gst_video_event_parse_downstream_force_key_unit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoEventParseDownstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, gst.ClockTime, gst.ClockTime, bool, uint, bool) {
 	var carg1 *C.GstEvent    // in, none, converted
 	var carg2 C.GstClockTime // out, full, casted, alias
@@ -6570,8 +6036,7 @@ func VideoEventParseDownstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, gst
 
 // VideoEventParseStillFrame wraps gst_video_event_parse_still_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoEventParseStillFrame(event *gst.Event) (bool, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gboolean  // out
@@ -6597,8 +6062,7 @@ func VideoEventParseStillFrame(event *gst.Event) (bool, bool) {
 
 // VideoEventParseUpstreamForceKeyUnit wraps gst_video_event_parse_upstream_force_key_unit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoEventParseUpstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, bool, uint, bool) {
 	var carg1 *C.GstEvent    // in, none, converted
 	var carg2 C.GstClockTime // out, full, casted, alias
@@ -6630,8 +6094,7 @@ func VideoEventParseUpstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, bool,
 
 // VideoFormatsAny wraps gst_video_formats_any
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoFormatsAny() (uint, []VideoFormat) {
 	var carg1 C.guint           // out, full, casted
 	var cret  *C.GstVideoFormat // return, transfer: none, C Pointers: 1, Name: array[VideoFormat], scope: , array (inner GstVideoFormat (*typesystem.Enum))
@@ -6651,8 +6114,7 @@ func VideoFormatsAny() (uint, []VideoFormat) {
 
 // VideoFormatsRaw wraps gst_video_formats_raw
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoFormatsRaw() (uint, []VideoFormat) {
 	var carg1 C.guint           // out, full, casted
 	var cret  *C.GstVideoFormat // return, transfer: none, C Pointers: 1, Name: array[VideoFormat], scope: , array (inner GstVideoFormat (*typesystem.Enum))
@@ -6672,7 +6134,7 @@ func VideoFormatsRaw() (uint, []VideoFormat) {
 
 // VideoGlTextureUploadMetaAPIGetType wraps gst_video_gl_texture_upload_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoGlTextureUploadMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6687,8 +6149,7 @@ func VideoGlTextureUploadMetaAPIGetType() gobject.Type {
 
 // VideoGuessFramerate wraps gst_video_guess_framerate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoGuessFramerate(duration gst.ClockTime) (int32, int32, bool) {
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var carg2 C.gint         // out, full, casted
@@ -6715,8 +6176,7 @@ func VideoGuessFramerate(duration gst.ClockTime) (int32, int32, bool) {
 
 // VideoIsCommonAspectRatio wraps gst_video_is_common_aspect_ratio
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoIsCommonAspectRatio(width int32, height int32, parN int32, parD int32) bool {
 	var carg1 C.gint     // in, none, casted
 	var carg2 C.gint     // in, none, casted
@@ -6746,8 +6206,7 @@ func VideoIsCommonAspectRatio(width int32, height int32, parN int32, parD int32)
 
 // VideoIsDmaDrmCaps wraps gst_video_is_dma_drm_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoIsDmaDrmCaps(caps *gst.Caps) bool {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  C.gboolean // return
@@ -6768,8 +6227,7 @@ func VideoIsDmaDrmCaps(caps *gst.Caps) bool {
 
 // VideoMakeRawCaps wraps gst_video_make_raw_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMakeRawCaps(formats []VideoFormat) *gst.Caps {
 	var carg1 *C.GstVideoFormat // in, transfer: none, C Pointers: 1, Name: array[VideoFormat], nullable, array (inner GstVideoFormat (*typesystem.Enum), length-by: carg2)
 	var carg2 C.guint           // implicit
@@ -6792,8 +6250,7 @@ func VideoMakeRawCaps(formats []VideoFormat) *gst.Caps {
 
 // VideoMakeRawCapsWithFeatures wraps gst_video_make_raw_caps_with_features
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMakeRawCapsWithFeatures(formats []VideoFormat, features *gst.CapsFeatures) *gst.Caps {
 	var carg1 *C.GstVideoFormat  // in, transfer: none, C Pointers: 1, Name: array[VideoFormat], nullable, array (inner GstVideoFormat (*typesystem.Enum), length-by: carg2)
 	var carg2 C.guint            // implicit
@@ -6821,7 +6278,7 @@ func VideoMakeRawCapsWithFeatures(formats []VideoFormat, features *gst.CapsFeatu
 
 // VideoMetaAPIGetType wraps gst_video_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6836,7 +6293,7 @@ func VideoMetaAPIGetType() gobject.Type {
 
 // VideoMultiviewGetDoubledHeightModes wraps gst_video_multiview_get_doubled_height_modes
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMultiviewGetDoubledHeightModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -6851,7 +6308,7 @@ func VideoMultiviewGetDoubledHeightModes() *gobject.Value {
 
 // VideoMultiviewGetDoubledSizeModes wraps gst_video_multiview_get_doubled_size_modes
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMultiviewGetDoubledSizeModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -6866,7 +6323,7 @@ func VideoMultiviewGetDoubledSizeModes() *gobject.Value {
 
 // VideoMultiviewGetDoubledWidthModes wraps gst_video_multiview_get_doubled_width_modes
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMultiviewGetDoubledWidthModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -6881,7 +6338,7 @@ func VideoMultiviewGetDoubledWidthModes() *gobject.Value {
 
 // VideoMultiviewGetMonoModes wraps gst_video_multiview_get_mono_modes
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMultiviewGetMonoModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -6896,7 +6353,7 @@ func VideoMultiviewGetMonoModes() *gobject.Value {
 
 // VideoMultiviewGetUnpackedModes wraps gst_video_multiview_get_unpacked_modes
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMultiviewGetUnpackedModes() *gobject.Value {
 	var cret *C.GValue // return, none, converted
 
@@ -6911,7 +6368,7 @@ func VideoMultiviewGetUnpackedModes() *gobject.Value {
 
 // VideoMultiviewGuessHalfAspect wraps gst_video_multiview_guess_half_aspect
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMultiviewGuessHalfAspect(mvMode VideoMultiviewMode, width uint, height uint, parN uint, parD uint) bool {
 	var carg1 C.GstVideoMultiviewMode // in, none, casted
 	var carg2 C.guint                 // in, none, casted
@@ -6944,8 +6401,7 @@ func VideoMultiviewGuessHalfAspect(mvMode VideoMultiviewMode, width uint, height
 
 // VideoMultiviewVideoInfoChangeMode wraps gst_video_multiview_video_info_change_mode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoMultiviewVideoInfoChangeMode(info *VideoInfo, outMviewMode VideoMultiviewMode, outMviewFlags VideoMultiviewFlags) {
 	var carg1 *C.GstVideoInfo          // in, none, converted
 	var carg2 C.GstVideoMultiviewMode  // in, none, casted
@@ -6963,7 +6419,7 @@ func VideoMultiviewVideoInfoChangeMode(info *VideoInfo, outMviewMode VideoMultiv
 
 // VideoOverlayCompositionMetaAPIGetType wraps gst_video_overlay_composition_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoOverlayCompositionMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6978,7 +6434,7 @@ func VideoOverlayCompositionMetaAPIGetType() gobject.Type {
 
 // VideoRegionOfInterestMetaAPIGetType wraps gst_video_region_of_interest_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoRegionOfInterestMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -6993,7 +6449,7 @@ func VideoRegionOfInterestMetaAPIGetType() gobject.Type {
 
 // VideoSeiUserDataUnregisteredMetaAPIGetType wraps gst_video_sei_user_data_unregistered_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoSeiUserDataUnregisteredMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -7008,8 +6464,7 @@ func VideoSeiUserDataUnregisteredMetaAPIGetType() gobject.Type {
 
 // VideoSeiUserDataUnregisteredParsePrecisionTimeStamp wraps gst_video_sei_user_data_unregistered_parse_precision_time_stamp
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoSeiUserDataUnregisteredParsePrecisionTimeStamp(userData *VideoSEIUserDataUnregisteredMeta) (uint8, uint64, bool) {
 	var carg1 *C.GstVideoSEIUserDataUnregisteredMeta // in, none, converted
 	var carg2 C.guint8                               // out, full, casted
@@ -7036,8 +6491,7 @@ func VideoSeiUserDataUnregisteredParsePrecisionTimeStamp(userData *VideoSEIUserD
 
 // VideoTileGetIndex wraps gst_video_tile_get_index
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoTileGetIndex(mode VideoTileMode, x int32, y int32, xTiles int32, yTiles int32) uint {
 	var carg1 C.GstVideoTileMode // in, none, casted
 	var carg2 C.gint             // in, none, casted
@@ -7068,7 +6522,7 @@ func VideoTileGetIndex(mode VideoTileMode, x int32, y int32, xTiles int32, yTile
 
 // VideoTimeCodeMetaAPIGetType wraps gst_video_time_code_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video
 func VideoTimeCodeMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -7091,40 +6545,33 @@ var _ ColorBalance = (*ColorBalanceInstance)(nil)
 
 // ColorBalance wraps GstColorBalance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#GstColorBalance
 type ColorBalance interface {
 	upcastToGstColorBalance() *ColorBalanceInstance
 
 	// GetBalanceType wraps gst_color_balance_get_balance_type
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_get_balance_type
 	GetBalanceType() ColorBalanceType
 	// GetValue wraps gst_color_balance_get_value
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_get_value
 	GetValue(ColorBalanceChannel) int32
 	// ListChannels wraps gst_color_balance_list_channels
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_list_channels
 	ListChannels() []ColorBalanceChannel
 	// SetValue wraps gst_color_balance_set_value
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_set_value
 	SetValue(ColorBalanceChannel, int32)
 	// ValueChanged wraps gst_color_balance_value_changed
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_value_changed
 	ValueChanged(ColorBalanceChannel, int32)
 	// ConnectValueChanged connects the provided callback to the "value-changed" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video
 	ConnectValueChanged(func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle
 }
 
@@ -7173,8 +6620,7 @@ func UnsafeColorBalanceToGlibFull(c ColorBalance) unsafe.Pointer {
 
 // GetBalanceType wraps gst_color_balance_get_balance_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_get_balance_type
 func (balance *ColorBalanceInstance) GetBalanceType() ColorBalanceType {
 	var carg0 *C.GstColorBalance    // in, none, converted
 	var cret  C.GstColorBalanceType // return, none, casted
@@ -7193,8 +6639,7 @@ func (balance *ColorBalanceInstance) GetBalanceType() ColorBalanceType {
 
 // GetValue wraps gst_color_balance_get_value
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_get_value
 func (balance *ColorBalanceInstance) GetValue(channel ColorBalanceChannel) int32 {
 	var carg0 *C.GstColorBalance        // in, none, converted
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
@@ -7216,8 +6661,7 @@ func (balance *ColorBalanceInstance) GetValue(channel ColorBalanceChannel) int32
 
 // ListChannels wraps gst_color_balance_list_channels
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_list_channels
 func (balance *ColorBalanceInstance) ListChannels() []ColorBalanceChannel {
 	var carg0 *C.GstColorBalance // in, none, converted
 	var cret  *C.GList           // container, transfer: none
@@ -7243,8 +6687,7 @@ func (balance *ColorBalanceInstance) ListChannels() []ColorBalanceChannel {
 
 // SetValue wraps gst_color_balance_set_value
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_set_value
 func (balance *ColorBalanceInstance) SetValue(channel ColorBalanceChannel, value int32) {
 	var carg0 *C.GstColorBalance        // in, none, converted
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
@@ -7262,8 +6705,7 @@ func (balance *ColorBalanceInstance) SetValue(channel ColorBalanceChannel, value
 
 // ValueChanged wraps gst_color_balance_value_changed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#gst_color_balance_value_changed
 func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, value int32) {
 	var carg0 *C.GstColorBalance        // in, none, converted
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
@@ -7281,8 +6723,7 @@ func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, v
 
 // ConnectValueChanged connects the provided callback to the "value-changed" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func (o *ColorBalanceInstance) ConnectValueChanged(fn func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle {
 	return o.Instance.Connect("value-changed", fn)
 }
@@ -7297,38 +6738,33 @@ var _ Navigation = (*NavigationInstance)(nil)
 
 // Navigation wraps GstNavigation
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#GstNavigation
 type Navigation interface {
 	upcastToGstNavigation() *NavigationInstance
 
 	// SendCommand wraps gst_navigation_send_command
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_command
 	SendCommand(NavigationCommand)
 	// SendEvent wraps gst_navigation_send_event
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_event
 	SendEvent(*gst.Structure)
 	// SendEventSimple wraps gst_navigation_send_event_simple
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_event_simple
 	SendEventSimple(*gst.Event)
 	// SendKeyEvent wraps gst_navigation_send_key_event
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_key_event
 	SendKeyEvent(string, string)
 	// SendMouseEvent wraps gst_navigation_send_mouse_event
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_mouse_event
 	SendMouseEvent(string, int32, float64, float64)
 	// SendMouseScrollEvent wraps gst_navigation_send_mouse_scroll_event
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_mouse_scroll_event
 	SendMouseScrollEvent(float64, float64, float64, float64)
 }
 
@@ -7377,8 +6813,7 @@ func UnsafeNavigationToGlibFull(c Navigation) unsafe.Pointer {
 
 // NavigationEventGetCoordinates wraps gst_navigation_event_get_coordinates
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_get_coordinates
 func NavigationEventGetCoordinates(event *gst.Event) (float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // out, full, casted
@@ -7405,8 +6840,7 @@ func NavigationEventGetCoordinates(event *gst.Event) (float64, float64, bool) {
 
 // NavigationEventGetType wraps gst_navigation_event_get_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_get_type
 func NavigationEventGetType(event *gst.Event) NavigationEventType {
 	var carg1 *C.GstEvent              // in, none, converted
 	var cret  C.GstNavigationEventType // return, none, casted
@@ -7425,8 +6859,7 @@ func NavigationEventGetType(event *gst.Event) NavigationEventType {
 
 // NavigationEventNewCommand wraps gst_navigation_event_new_command
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_command
 func NavigationEventNewCommand(command NavigationCommand) *gst.Event {
 	var carg1 C.GstNavigationCommand // in, none, casted
 	var cret  *C.GstEvent            // return, full, converted
@@ -7445,8 +6878,7 @@ func NavigationEventNewCommand(command NavigationCommand) *gst.Event {
 
 // NavigationEventNewKeyPress wraps gst_navigation_event_new_key_press
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_key_press
 func NavigationEventNewKeyPress(key string, state NavigationModifierType) *gst.Event {
 	var carg1 *C.gchar                    // in, none, string
 	var carg2 C.GstNavigationModifierType // in, none, casted
@@ -7469,8 +6901,7 @@ func NavigationEventNewKeyPress(key string, state NavigationModifierType) *gst.E
 
 // NavigationEventNewKeyRelease wraps gst_navigation_event_new_key_release
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_key_release
 func NavigationEventNewKeyRelease(key string, state NavigationModifierType) *gst.Event {
 	var carg1 *C.gchar                    // in, none, string
 	var carg2 C.GstNavigationModifierType // in, none, casted
@@ -7493,8 +6924,7 @@ func NavigationEventNewKeyRelease(key string, state NavigationModifierType) *gst
 
 // NavigationEventNewMouseButtonPress wraps gst_navigation_event_new_mouse_button_press
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_mouse_button_press
 func NavigationEventNewMouseButtonPress(button int32, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -7522,8 +6952,7 @@ func NavigationEventNewMouseButtonPress(button int32, x float64, y float64, stat
 
 // NavigationEventNewMouseButtonRelease wraps gst_navigation_event_new_mouse_button_release
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_mouse_button_release
 func NavigationEventNewMouseButtonRelease(button int32, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -7551,8 +6980,7 @@ func NavigationEventNewMouseButtonRelease(button int32, x float64, y float64, st
 
 // NavigationEventNewMouseDoubleClick wraps gst_navigation_event_new_mouse_double_click
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_mouse_double_click
 func NavigationEventNewMouseDoubleClick(button int32, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gint                      // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -7580,8 +7008,7 @@ func NavigationEventNewMouseDoubleClick(button int32, x float64, y float64, stat
 
 // NavigationEventNewMouseMove wraps gst_navigation_event_new_mouse_move
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_mouse_move
 func NavigationEventNewMouseMove(x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gdouble                   // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -7606,8 +7033,7 @@ func NavigationEventNewMouseMove(x float64, y float64, state NavigationModifierT
 
 // NavigationEventNewMouseScroll wraps gst_navigation_event_new_mouse_scroll
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_mouse_scroll
 func NavigationEventNewMouseScroll(x float64, y float64, deltaX float64, deltaY float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.gdouble                   // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -7638,8 +7064,7 @@ func NavigationEventNewMouseScroll(x float64, y float64, deltaX float64, deltaY 
 
 // NavigationEventNewTouchCancel wraps gst_navigation_event_new_touch_cancel
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_touch_cancel
 func NavigationEventNewTouchCancel(state NavigationModifierType) *gst.Event {
 	var carg1 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
@@ -7658,8 +7083,7 @@ func NavigationEventNewTouchCancel(state NavigationModifierType) *gst.Event {
 
 // NavigationEventNewTouchDown wraps gst_navigation_event_new_touch_down
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_touch_down
 func NavigationEventNewTouchDown(identifier uint, x float64, y float64, pressure float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -7690,8 +7114,7 @@ func NavigationEventNewTouchDown(identifier uint, x float64, y float64, pressure
 
 // NavigationEventNewTouchFrame wraps gst_navigation_event_new_touch_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_touch_frame
 func NavigationEventNewTouchFrame(state NavigationModifierType) *gst.Event {
 	var carg1 C.GstNavigationModifierType // in, none, casted
 	var cret  *C.GstEvent                 // return, full, converted
@@ -7710,8 +7133,7 @@ func NavigationEventNewTouchFrame(state NavigationModifierType) *gst.Event {
 
 // NavigationEventNewTouchMotion wraps gst_navigation_event_new_touch_motion
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_touch_motion
 func NavigationEventNewTouchMotion(identifier uint, x float64, y float64, pressure float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -7742,8 +7164,7 @@ func NavigationEventNewTouchMotion(identifier uint, x float64, y float64, pressu
 
 // NavigationEventNewTouchUp wraps gst_navigation_event_new_touch_up
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_new_touch_up
 func NavigationEventNewTouchUp(identifier uint, x float64, y float64, state NavigationModifierType) *gst.Event {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.gdouble                   // in, none, casted
@@ -7771,8 +7192,7 @@ func NavigationEventNewTouchUp(identifier uint, x float64, y float64, state Navi
 
 // NavigationEventParseCommand wraps gst_navigation_event_parse_command
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_parse_command
 func NavigationEventParseCommand(event *gst.Event) (NavigationCommand, bool) {
 	var carg1 *C.GstEvent            // in, none, converted
 	var carg2 C.GstNavigationCommand // out, full, casted
@@ -7796,8 +7216,7 @@ func NavigationEventParseCommand(event *gst.Event) (NavigationCommand, bool) {
 
 // NavigationEventParseKeyEvent wraps gst_navigation_event_parse_key_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_parse_key_event
 func NavigationEventParseKeyEvent(event *gst.Event) (string, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 *C.gchar    // out, none, string
@@ -7821,8 +7240,7 @@ func NavigationEventParseKeyEvent(event *gst.Event) (string, bool) {
 
 // NavigationEventParseMouseButtonEvent wraps gst_navigation_event_parse_mouse_button_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_parse_mouse_button_event
 func NavigationEventParseMouseButtonEvent(event *gst.Event) (int32, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gint      // out, full, casted
@@ -7852,8 +7270,7 @@ func NavigationEventParseMouseButtonEvent(event *gst.Event) (int32, float64, flo
 
 // NavigationEventParseMouseMoveEvent wraps gst_navigation_event_parse_mouse_move_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_parse_mouse_move_event
 func NavigationEventParseMouseMoveEvent(event *gst.Event) (float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // out, full, casted
@@ -7880,8 +7297,7 @@ func NavigationEventParseMouseMoveEvent(event *gst.Event) (float64, float64, boo
 
 // NavigationEventParseMouseScrollEvent wraps gst_navigation_event_parse_mouse_scroll_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_parse_mouse_scroll_event
 func NavigationEventParseMouseScrollEvent(event *gst.Event) (float64, float64, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // out, full, casted
@@ -7914,8 +7330,7 @@ func NavigationEventParseMouseScrollEvent(event *gst.Event) (float64, float64, f
 
 // NavigationEventParseTouchEvent wraps gst_navigation_event_parse_touch_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_parse_touch_event
 func NavigationEventParseTouchEvent(event *gst.Event) (uint, float64, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.guint     // out, full, casted
@@ -7948,8 +7363,7 @@ func NavigationEventParseTouchEvent(event *gst.Event) (uint, float64, float64, f
 
 // NavigationEventParseTouchUpEvent wraps gst_navigation_event_parse_touch_up_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_parse_touch_up_event
 func NavigationEventParseTouchUpEvent(event *gst.Event) (uint, float64, float64, bool) {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.guint     // out, full, casted
@@ -7979,8 +7393,7 @@ func NavigationEventParseTouchUpEvent(event *gst.Event) (uint, float64, float64,
 
 // NavigationEventSetCoordinates wraps gst_navigation_event_set_coordinates
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_event_set_coordinates
 func NavigationEventSetCoordinates(event *gst.Event, x float64, y float64) bool {
 	var carg1 *C.GstEvent // in, none, converted
 	var carg2 C.gdouble   // in, none, casted
@@ -8007,8 +7420,7 @@ func NavigationEventSetCoordinates(event *gst.Event, x float64, y float64) bool 
 
 // NavigationMessageGetType wraps gst_navigation_message_get_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_message_get_type
 func NavigationMessageGetType(message *gst.Message) NavigationMessageType {
 	var carg1 *C.GstMessage              // in, none, converted
 	var cret  C.GstNavigationMessageType // return, none, casted
@@ -8027,8 +7439,7 @@ func NavigationMessageGetType(message *gst.Message) NavigationMessageType {
 
 // NavigationMessageNewAnglesChanged wraps gst_navigation_message_new_angles_changed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_message_new_angles_changed
 func NavigationMessageNewAnglesChanged(src gst.Object, curAngle uint, nAngles uint) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var carg2 C.guint       // in, none, casted
@@ -8053,8 +7464,7 @@ func NavigationMessageNewAnglesChanged(src gst.Object, curAngle uint, nAngles ui
 
 // NavigationMessageNewCommandsChanged wraps gst_navigation_message_new_commands_changed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_message_new_commands_changed
 func NavigationMessageNewCommandsChanged(src gst.Object) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var cret  *C.GstMessage // return, full, converted
@@ -8073,8 +7483,7 @@ func NavigationMessageNewCommandsChanged(src gst.Object) *gst.Message {
 
 // NavigationMessageNewEvent wraps gst_navigation_message_new_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_message_new_event
 func NavigationMessageNewEvent(src gst.Object, event *gst.Event) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var carg2 *C.GstEvent   // in, none, converted
@@ -8096,8 +7505,7 @@ func NavigationMessageNewEvent(src gst.Object, event *gst.Event) *gst.Message {
 
 // NavigationMessageNewMouseOver wraps gst_navigation_message_new_mouse_over
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_message_new_mouse_over
 func NavigationMessageNewMouseOver(src gst.Object, active bool) *gst.Message {
 	var carg1 *C.GstObject  // in, none, converted
 	var carg2 C.gboolean    // in
@@ -8121,8 +7529,7 @@ func NavigationMessageNewMouseOver(src gst.Object, active bool) *gst.Message {
 
 // NavigationMessageParseAnglesChanged wraps gst_navigation_message_parse_angles_changed
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_message_parse_angles_changed
 func NavigationMessageParseAnglesChanged(message *gst.Message) (uint, uint, bool) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.guint       // out, full, casted
@@ -8149,8 +7556,7 @@ func NavigationMessageParseAnglesChanged(message *gst.Message) (uint, uint, bool
 
 // NavigationMessageParseEvent wraps gst_navigation_message_parse_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_message_parse_event
 func NavigationMessageParseEvent(message *gst.Message) (*gst.Event, bool) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 *C.GstEvent   // out, full, converted
@@ -8174,8 +7580,7 @@ func NavigationMessageParseEvent(message *gst.Message) (*gst.Event, bool) {
 
 // NavigationMessageParseMouseOver wraps gst_navigation_message_parse_mouse_over
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_message_parse_mouse_over
 func NavigationMessageParseMouseOver(message *gst.Message) (bool, bool) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.gboolean    // out
@@ -8201,8 +7606,7 @@ func NavigationMessageParseMouseOver(message *gst.Message) (bool, bool) {
 
 // NavigationQueryGetType wraps gst_navigation_query_get_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_query_get_type
 func NavigationQueryGetType(query *gst.Query) NavigationQueryType {
 	var carg1 *C.GstQuery              // in, none, converted
 	var cret  C.GstNavigationQueryType // return, none, casted
@@ -8221,8 +7625,7 @@ func NavigationQueryGetType(query *gst.Query) NavigationQueryType {
 
 // NavigationQueryNewAngles wraps gst_navigation_query_new_angles
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_query_new_angles
 func NavigationQueryNewAngles() *gst.Query {
 	var cret *C.GstQuery // return, full, converted
 
@@ -8237,8 +7640,7 @@ func NavigationQueryNewAngles() *gst.Query {
 
 // NavigationQueryNewCommands wraps gst_navigation_query_new_commands
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_query_new_commands
 func NavigationQueryNewCommands() *gst.Query {
 	var cret *C.GstQuery // return, full, converted
 
@@ -8253,8 +7655,7 @@ func NavigationQueryNewCommands() *gst.Query {
 
 // NavigationQueryParseAngles wraps gst_navigation_query_parse_angles
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_query_parse_angles
 func NavigationQueryParseAngles(query *gst.Query) (uint, uint, bool) {
 	var carg1 *C.GstQuery // in, none, converted
 	var carg2 C.guint     // out, full, casted
@@ -8281,8 +7682,7 @@ func NavigationQueryParseAngles(query *gst.Query) (uint, uint, bool) {
 
 // NavigationQueryParseCommandsLength wraps gst_navigation_query_parse_commands_length
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_query_parse_commands_length
 func NavigationQueryParseCommandsLength(query *gst.Query) (uint, bool) {
 	var carg1 *C.GstQuery // in, none, converted
 	var carg2 C.guint     // out, full, casted
@@ -8306,8 +7706,7 @@ func NavigationQueryParseCommandsLength(query *gst.Query) (uint, bool) {
 
 // NavigationQueryParseCommandsNth wraps gst_navigation_query_parse_commands_nth
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_query_parse_commands_nth
 func NavigationQueryParseCommandsNth(query *gst.Query, nth uint) (NavigationCommand, bool) {
 	var carg1 *C.GstQuery            // in, none, converted
 	var carg2 C.guint                // in, none, casted
@@ -8334,8 +7733,7 @@ func NavigationQueryParseCommandsNth(query *gst.Query, nth uint) (NavigationComm
 
 // NavigationQuerySetAngles wraps gst_navigation_query_set_angles
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_query_set_angles
 func NavigationQuerySetAngles(query *gst.Query, curAngle uint, nAngles uint) {
 	var carg1 *C.GstQuery // in, none, converted
 	var carg2 C.guint     // in, none, casted
@@ -8353,8 +7751,7 @@ func NavigationQuerySetAngles(query *gst.Query, curAngle uint, nAngles uint) {
 
 // NavigationQuerySetCommandsv wraps gst_navigation_query_set_commandsv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_query_set_commandsv
 func NavigationQuerySetCommandsv(query *gst.Query, cmds []NavigationCommand) {
 	var carg1 *C.GstQuery             // in, none, converted
 	var carg2 C.gint                  // implicit
@@ -8373,8 +7770,7 @@ func NavigationQuerySetCommandsv(query *gst.Query, cmds []NavigationCommand) {
 
 // SendCommand wraps gst_navigation_send_command
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_command
 func (navigation *NavigationInstance) SendCommand(command NavigationCommand) {
 	var carg0 *C.GstNavigation       // in, none, converted
 	var carg1 C.GstNavigationCommand // in, none, casted
@@ -8389,7 +7785,7 @@ func (navigation *NavigationInstance) SendCommand(command NavigationCommand) {
 
 // SendEvent wraps gst_navigation_send_event
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_event
 func (navigation *NavigationInstance) SendEvent(structure *gst.Structure) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 *C.GstStructure  // in, none, converted
@@ -8404,8 +7800,7 @@ func (navigation *NavigationInstance) SendEvent(structure *gst.Structure) {
 
 // SendEventSimple wraps gst_navigation_send_event_simple
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_event_simple
 func (navigation *NavigationInstance) SendEventSimple(event *gst.Event) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 *C.GstEvent      // in, full, converted
@@ -8420,7 +7815,7 @@ func (navigation *NavigationInstance) SendEventSimple(event *gst.Event) {
 
 // SendKeyEvent wraps gst_navigation_send_key_event
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_key_event
 func (navigation *NavigationInstance) SendKeyEvent(event string, key string) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 *C.char          // in, none, string
@@ -8440,8 +7835,7 @@ func (navigation *NavigationInstance) SendKeyEvent(event string, key string) {
 
 // SendMouseEvent wraps gst_navigation_send_mouse_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_mouse_event
 func (navigation *NavigationInstance) SendMouseEvent(event string, button int32, x float64, y float64) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 *C.char          // in, none, string
@@ -8466,8 +7860,7 @@ func (navigation *NavigationInstance) SendMouseEvent(event string, button int32,
 
 // SendMouseScrollEvent wraps gst_navigation_send_mouse_scroll_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#gst_navigation_send_mouse_scroll_event
 func (navigation *NavigationInstance) SendMouseScrollEvent(x float64, y float64, deltaX float64, deltaY float64) {
 	var carg0 *C.GstNavigation // in, none, converted
 	var carg1 C.double         // in, none, casted
@@ -8499,8 +7892,7 @@ var _ VideoDirection = (*VideoDirectionInstance)(nil)
 
 // VideoDirection wraps GstVideoDirection
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videodirection.html#GstVideoDirection
 type VideoDirection interface {
 	upcastToGstVideoDirection() *VideoDirectionInstance
 }
@@ -8558,50 +7950,41 @@ var _ VideoOrientation = (*VideoOrientationInstance)(nil)
 
 // VideoOrientation wraps GstVideoOrientation
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#GstVideoOrientation
 type VideoOrientation interface {
 	upcastToGstVideoOrientation() *VideoOrientationInstance
 
 	// GetHcenter wraps gst_video_orientation_get_hcenter
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_get_hcenter
 	GetHcenter() (int32, bool)
 	// GetHflip wraps gst_video_orientation_get_hflip
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_get_hflip
 	GetHflip() (bool, bool)
 	// GetVcenter wraps gst_video_orientation_get_vcenter
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_get_vcenter
 	GetVcenter() (int32, bool)
 	// GetVflip wraps gst_video_orientation_get_vflip
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_get_vflip
 	GetVflip() (bool, bool)
 	// SetHcenter wraps gst_video_orientation_set_hcenter
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_set_hcenter
 	SetHcenter(int32) bool
 	// SetHflip wraps gst_video_orientation_set_hflip
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_set_hflip
 	SetHflip(bool) bool
 	// SetVcenter wraps gst_video_orientation_set_vcenter
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_set_vcenter
 	SetVcenter(int32) bool
 	// SetVflip wraps gst_video_orientation_set_vflip
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_set_vflip
 	SetVflip(bool) bool
 }
 
@@ -8650,8 +8033,7 @@ func UnsafeVideoOrientationToGlibFull(c VideoOrientation) unsafe.Pointer {
 
 // VideoOrientationFromTag wraps gst_video_orientation_from_tag
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_from_tag
 func VideoOrientationFromTag(taglist *gst.TagList) (VideoOrientationMethod, bool) {
 	var carg1 *C.GstTagList               // in, none, converted
 	var carg2 C.GstVideoOrientationMethod // out, full, casted
@@ -8675,8 +8057,7 @@ func VideoOrientationFromTag(taglist *gst.TagList) (VideoOrientationMethod, bool
 
 // GetHcenter wraps gst_video_orientation_get_hcenter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_get_hcenter
 func (videoOrientation *VideoOrientationInstance) GetHcenter() (int32, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // out, full, casted
@@ -8700,8 +8081,7 @@ func (videoOrientation *VideoOrientationInstance) GetHcenter() (int32, bool) {
 
 // GetHflip wraps gst_video_orientation_get_hflip
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_get_hflip
 func (videoOrientation *VideoOrientationInstance) GetHflip() (bool, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gboolean             // out
@@ -8727,8 +8107,7 @@ func (videoOrientation *VideoOrientationInstance) GetHflip() (bool, bool) {
 
 // GetVcenter wraps gst_video_orientation_get_vcenter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_get_vcenter
 func (videoOrientation *VideoOrientationInstance) GetVcenter() (int32, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // out, full, casted
@@ -8752,8 +8131,7 @@ func (videoOrientation *VideoOrientationInstance) GetVcenter() (int32, bool) {
 
 // GetVflip wraps gst_video_orientation_get_vflip
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_get_vflip
 func (videoOrientation *VideoOrientationInstance) GetVflip() (bool, bool) {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gboolean             // out
@@ -8779,8 +8157,7 @@ func (videoOrientation *VideoOrientationInstance) GetVflip() (bool, bool) {
 
 // SetHcenter wraps gst_video_orientation_set_hcenter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_set_hcenter
 func (videoOrientation *VideoOrientationInstance) SetHcenter(center int32) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // in, none, casted
@@ -8804,8 +8181,7 @@ func (videoOrientation *VideoOrientationInstance) SetHcenter(center int32) bool 
 
 // SetHflip wraps gst_video_orientation_set_hflip
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_set_hflip
 func (videoOrientation *VideoOrientationInstance) SetHflip(flip bool) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gboolean             // in
@@ -8831,8 +8207,7 @@ func (videoOrientation *VideoOrientationInstance) SetHflip(flip bool) bool {
 
 // SetVcenter wraps gst_video_orientation_set_vcenter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_set_vcenter
 func (videoOrientation *VideoOrientationInstance) SetVcenter(center int32) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gint                 // in, none, casted
@@ -8856,8 +8231,7 @@ func (videoOrientation *VideoOrientationInstance) SetVcenter(center int32) bool 
 
 // SetVflip wraps gst_video_orientation_set_vflip
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#gst_video_orientation_set_vflip
 func (videoOrientation *VideoOrientationInstance) SetVflip(flip bool) bool {
 	var carg0 *C.GstVideoOrientation // in, none, converted
 	var carg1 C.gboolean             // in
@@ -8891,30 +8265,25 @@ var _ VideoOverlay = (*VideoOverlayInstance)(nil)
 
 // VideoOverlay wraps GstVideoOverlay
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#GstVideoOverlay
 type VideoOverlay interface {
 	upcastToGstVideoOverlay() *VideoOverlayInstance
 
 	// Expose wraps gst_video_overlay_expose
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#gst_video_overlay_expose
 	Expose()
 	// HandleEvents wraps gst_video_overlay_handle_events
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#gst_video_overlay_handle_events
 	HandleEvents(bool)
 	// PrepareWindowHandle wraps gst_video_overlay_prepare_window_handle
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#gst_video_overlay_prepare_window_handle
 	PrepareWindowHandle()
 	// SetRenderRectangle wraps gst_video_overlay_set_render_rectangle
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#gst_video_overlay_set_render_rectangle
 	SetRenderRectangle(int32, int32, int32, int32) bool
 }
 
@@ -8963,8 +8332,7 @@ func UnsafeVideoOverlayToGlibFull(c VideoOverlay) unsafe.Pointer {
 
 // VideoOverlaySetProperty wraps gst_video_overlay_set_property
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#gst_video_overlay_set_property
 func VideoOverlaySetProperty(object gobject.Object, lastPropId int32, propertyId uint, value *gobject.Value) bool {
 	var carg1 *C.GObject // in, none, converted
 	var carg2 C.gint     // in, none, casted
@@ -8994,8 +8362,7 @@ func VideoOverlaySetProperty(object gobject.Object, lastPropId int32, propertyId
 
 // Expose wraps gst_video_overlay_expose
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#gst_video_overlay_expose
 func (overlay *VideoOverlayInstance) Expose() {
 	var carg0 *C.GstVideoOverlay // in, none, converted
 
@@ -9007,8 +8374,7 @@ func (overlay *VideoOverlayInstance) Expose() {
 
 // HandleEvents wraps gst_video_overlay_handle_events
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#gst_video_overlay_handle_events
 func (overlay *VideoOverlayInstance) HandleEvents(handleEvents bool) {
 	var carg0 *C.GstVideoOverlay // in, none, converted
 	var carg1 C.gboolean         // in
@@ -9025,8 +8391,7 @@ func (overlay *VideoOverlayInstance) HandleEvents(handleEvents bool) {
 
 // PrepareWindowHandle wraps gst_video_overlay_prepare_window_handle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#gst_video_overlay_prepare_window_handle
 func (overlay *VideoOverlayInstance) PrepareWindowHandle() {
 	var carg0 *C.GstVideoOverlay // in, none, converted
 
@@ -9038,8 +8403,7 @@ func (overlay *VideoOverlayInstance) PrepareWindowHandle() {
 
 // SetRenderRectangle wraps gst_video_overlay_set_render_rectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#gst_video_overlay_set_render_rectangle
 func (overlay *VideoOverlayInstance) SetRenderRectangle(x int32, y int32, width int32, height int32) bool {
 	var carg0 *C.GstVideoOverlay // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -9080,16 +8444,14 @@ var _ ColorBalanceChannel = (*ColorBalanceChannelInstance)(nil)
 
 // ColorBalanceChannel wraps GstColorBalanceChannel
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalancechannel.html#GstColorBalanceChannel
 type ColorBalanceChannel interface {
 	gobject.Object
 	upcastToGstColorBalanceChannel() *ColorBalanceChannelInstance
 
 	// ConnectValueChanged connects the provided callback to the "value-changed" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video
 	ConnectValueChanged(func(ColorBalanceChannel, int32)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -9097,7 +8459,7 @@ type ColorBalanceChannel interface {
 	// ParentValueChanged calls the default implementations of the `GstColorBalanceChannel.value_changed` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/colorbalancechannel.html#value_changed
 	ParentValueChanged(value int32)
 }
 
@@ -9151,8 +8513,7 @@ func UnsafeColorBalanceChannelToGlibFull(c ColorBalanceChannel) unsafe.Pointer {
 
 // ConnectValueChanged connects the provided callback to the "value-changed" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video
 func (o *ColorBalanceChannelInstance) ConnectValueChanged(fn func(ColorBalanceChannel, int32)) gobject.SignalHandle {
 	return o.Connect("value-changed", fn)
 }
@@ -9165,7 +8526,7 @@ type ColorBalanceChannelOverrides[Instance ColorBalanceChannel] struct {
 
 	// // ValueChanged allows you to override the implementation of the virtual method value_changed.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/colorbalancechannel.html#value_changed
 	ValueChanged func(Instance, int32)
 }
 
@@ -9197,7 +8558,7 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 // ParentValueChanged calls the default implementations of the `GstColorBalanceChannel.value_changed` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalancechannel.html#value_changed
 func (channel *ColorBalanceChannelInstance) ParentValueChanged(value int32) {
 	var carg0 *C.GstColorBalanceChannel
 	var carg1 C.gint // in, none, converted
@@ -9248,16 +8609,14 @@ var _ VideoAggregator = (*VideoAggregatorInstance)(nil)
 
 // VideoAggregator wraps GstVideoAggregator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#GstVideoAggregator
 type VideoAggregator interface {
 	gstbase.Aggregator
 	upcastToGstVideoAggregator() *VideoAggregatorInstance
 
 	// GetExecutionTaskPool wraps gst_video_aggregator_get_execution_task_pool
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_get_execution_task_pool
 	GetExecutionTaskPool() gst.TaskPool
 
 	// chain up virtual methods:
@@ -9265,17 +8624,17 @@ type VideoAggregator interface {
 	// ParentAggregateFrames calls the default implementations of the `GstVideoAggregator.aggregate_frames` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#aggregate_frames
 	ParentAggregateFrames(outbuffer *gst.Buffer) gst.FlowReturn
 	// ParentFindBestFormat calls the default implementations of the `GstVideoAggregator.find_best_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#find_best_format
 	ParentFindBestFormat(downstreamCaps *gst.Caps, bestInfo *VideoInfo) bool
 	// ParentUpdateCaps calls the default implementations of the `GstVideoAggregator.update_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#update_caps
 	ParentUpdateCaps(caps *gst.Caps) *gst.Caps
 }
 
@@ -9337,8 +8696,7 @@ func UnsafeVideoAggregatorToGlibFull(c VideoAggregator) unsafe.Pointer {
 
 // GetExecutionTaskPool wraps gst_video_aggregator_get_execution_task_pool
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_get_execution_task_pool
 func (vagg *VideoAggregatorInstance) GetExecutionTaskPool() gst.TaskPool {
 	var carg0 *C.GstVideoAggregator // in, none, converted
 	var cret  *C.GstTaskPool        // return, full, converted
@@ -9363,15 +8721,15 @@ type VideoAggregatorOverrides[Instance VideoAggregator] struct {
 
 	// // AggregateFrames allows you to override the implementation of the virtual method aggregate_frames.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#aggregate_frames
 	AggregateFrames func(Instance, *gst.Buffer) gst.FlowReturn
 	// // FindBestFormat allows you to override the implementation of the virtual method find_best_format.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#find_best_format
 	FindBestFormat func(Instance, *gst.Caps, *VideoInfo) bool
 	// // UpdateCaps allows you to override the implementation of the virtual method update_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#update_caps
 	UpdateCaps func(Instance, *gst.Caps) *gst.Caps
 }
 
@@ -9454,7 +8812,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 // ParentAggregateFrames calls the default implementations of the `GstVideoAggregator.aggregate_frames` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#aggregate_frames
 func (videoaggregator *VideoAggregatorInstance) ParentAggregateFrames(outbuffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstVideoAggregator
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -9479,7 +8837,7 @@ func (videoaggregator *VideoAggregatorInstance) ParentAggregateFrames(outbuffer 
 // ParentFindBestFormat calls the default implementations of the `GstVideoAggregator.find_best_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#find_best_format
 func (vagg *VideoAggregatorInstance) ParentFindBestFormat(downstreamCaps *gst.Caps, bestInfo *VideoInfo) bool {
 	var carg0 *C.GstVideoAggregator
 	var carg1 *C.GstCaps      // in, none, converted
@@ -9509,7 +8867,7 @@ func (vagg *VideoAggregatorInstance) ParentFindBestFormat(downstreamCaps *gst.Ca
 // ParentUpdateCaps calls the default implementations of the `GstVideoAggregator.update_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#update_caps
 func (videoaggregator *VideoAggregatorInstance) ParentUpdateCaps(caps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoAggregator
 	var carg1 *C.GstCaps // in, none, converted
@@ -9567,30 +8925,26 @@ var _ VideoAggregatorPad = (*VideoAggregatorPadInstance)(nil)
 
 // VideoAggregatorPad wraps GstVideoAggregatorPad
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#GstVideoAggregatorPad
 type VideoAggregatorPad interface {
 	gstbase.AggregatorPad
 	upcastToGstVideoAggregatorPad() *VideoAggregatorPadInstance
 
 	// GetCurrentBuffer wraps gst_video_aggregator_pad_get_current_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_pad_get_current_buffer
 	GetCurrentBuffer() *gst.Buffer
 	// GetPreparedFrame wraps gst_video_aggregator_pad_get_prepared_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_pad_get_prepared_frame
 	GetPreparedFrame() *VideoFrame
 	// HasCurrentBuffer wraps gst_video_aggregator_pad_has_current_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_pad_has_current_buffer
 	HasCurrentBuffer() bool
 	// SetNeedsAlpha wraps gst_video_aggregator_pad_set_needs_alpha
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_pad_set_needs_alpha
 	SetNeedsAlpha(bool)
 
 	// chain up virtual methods:
@@ -9598,27 +8952,27 @@ type VideoAggregatorPad interface {
 	// ParentCleanFrame calls the default implementations of the `GstVideoAggregatorPad.clean_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#clean_frame
 	ParentCleanFrame(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
 	// ParentPrepareFrame calls the default implementations of the `GstVideoAggregatorPad.prepare_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#prepare_frame
 	ParentPrepareFrame(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) bool
 	// ParentPrepareFrameFinish calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_finish` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#prepare_frame_finish
 	ParentPrepareFrameFinish(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
 	// ParentPrepareFrameStart calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#prepare_frame_start
 	ParentPrepareFrameStart(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame)
 	// ParentUpdateConversionInfo calls the default implementations of the `GstVideoAggregatorPad.update_conversion_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#update_conversion_info
 	ParentUpdateConversionInfo()
 }
 
@@ -9680,8 +9034,7 @@ func UnsafeVideoAggregatorPadToGlibFull(c VideoAggregatorPad) unsafe.Pointer {
 
 // GetCurrentBuffer wraps gst_video_aggregator_pad_get_current_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_pad_get_current_buffer
 func (pad *VideoAggregatorPadInstance) GetCurrentBuffer() *gst.Buffer {
 	var carg0 *C.GstVideoAggregatorPad // in, none, converted
 	var cret  *C.GstBuffer             // return, none, converted
@@ -9700,8 +9053,7 @@ func (pad *VideoAggregatorPadInstance) GetCurrentBuffer() *gst.Buffer {
 
 // GetPreparedFrame wraps gst_video_aggregator_pad_get_prepared_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_pad_get_prepared_frame
 func (pad *VideoAggregatorPadInstance) GetPreparedFrame() *VideoFrame {
 	var carg0 *C.GstVideoAggregatorPad // in, none, converted
 	var cret  *C.GstVideoFrame         // return, none, converted
@@ -9720,8 +9072,7 @@ func (pad *VideoAggregatorPadInstance) GetPreparedFrame() *VideoFrame {
 
 // HasCurrentBuffer wraps gst_video_aggregator_pad_has_current_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_pad_has_current_buffer
 func (pad *VideoAggregatorPadInstance) HasCurrentBuffer() bool {
 	var carg0 *C.GstVideoAggregatorPad // in, none, converted
 	var cret  C.gboolean               // return
@@ -9742,8 +9093,7 @@ func (pad *VideoAggregatorPadInstance) HasCurrentBuffer() bool {
 
 // SetNeedsAlpha wraps gst_video_aggregator_pad_set_needs_alpha
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_pad_set_needs_alpha
 func (pad *VideoAggregatorPadInstance) SetNeedsAlpha(needsAlpha bool) {
 	var carg0 *C.GstVideoAggregatorPad // in, none, converted
 	var carg1 C.gboolean               // in
@@ -9766,23 +9116,23 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 
 	// // CleanFrame allows you to override the implementation of the virtual method clean_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#clean_frame
 	CleanFrame func(Instance, VideoAggregator, *VideoFrame)
 	// // PrepareFrame allows you to override the implementation of the virtual method prepare_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#prepare_frame
 	PrepareFrame func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame) bool
 	// // PrepareFrameFinish allows you to override the implementation of the virtual method prepare_frame_finish.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#prepare_frame_finish
 	PrepareFrameFinish func(Instance, VideoAggregator, *VideoFrame)
 	// // PrepareFrameStart allows you to override the implementation of the virtual method prepare_frame_start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#prepare_frame_start
 	PrepareFrameStart func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame)
 	// // UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#update_conversion_info
 	UpdateConversionInfo func(Instance)
 }
 
@@ -9899,7 +9249,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 // ParentCleanFrame calls the default implementations of the `GstVideoAggregatorPad.clean_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#clean_frame
 func (pad *VideoAggregatorPadInstance) ParentCleanFrame(videoaggregator VideoAggregator, preparedFrame *VideoFrame) {
 	var carg0 *C.GstVideoAggregatorPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -9920,7 +9270,7 @@ func (pad *VideoAggregatorPadInstance) ParentCleanFrame(videoaggregator VideoAgg
 // ParentPrepareFrame calls the default implementations of the `GstVideoAggregatorPad.prepare_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#prepare_frame
 func (pad *VideoAggregatorPadInstance) ParentPrepareFrame(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) bool {
 	var carg0 *C.GstVideoAggregatorPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -9953,7 +9303,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrame(videoaggregator VideoA
 // ParentPrepareFrameFinish calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_finish` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#prepare_frame_finish
 func (pad *VideoAggregatorPadInstance) ParentPrepareFrameFinish(videoaggregator VideoAggregator, preparedFrame *VideoFrame) {
 	var carg0 *C.GstVideoAggregatorPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -9974,7 +9324,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameFinish(videoaggregator 
 // ParentPrepareFrameStart calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#prepare_frame_start
 func (pad *VideoAggregatorPadInstance) ParentPrepareFrameStart(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) {
 	var carg0 *C.GstVideoAggregatorPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -9998,7 +9348,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameStart(videoaggregator V
 // ParentUpdateConversionInfo calls the default implementations of the `GstVideoAggregatorPad.update_conversion_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#update_conversion_info
 func (pad *VideoAggregatorPadInstance) ParentUpdateConversionInfo() {
 	var carg0 *C.GstVideoAggregatorPad
 
@@ -10046,7 +9396,7 @@ var _ VideoBufferPool = (*VideoBufferPoolInstance)(nil)
 
 // VideoBufferPool wraps GstVideoBufferPool
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideopool.html#GstVideoBufferPool
 type VideoBufferPool interface {
 	gst.BufferPool
 	upcastToGstVideoBufferPool() *VideoBufferPoolInstance
@@ -10110,8 +9460,7 @@ func UnsafeVideoBufferPoolToGlibFull(c VideoBufferPool) unsafe.Pointer {
 
 // NewVideoBufferPool wraps gst_video_buffer_pool_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideopool.html#gst_video_buffer_pool_new
 func NewVideoBufferPool() gst.BufferPool {
 	var cret *C.GstBufferPool // return, full, converted
 
@@ -10174,222 +9523,182 @@ var _ VideoDecoder = (*VideoDecoderInstance)(nil)
 
 // VideoDecoder wraps GstVideoDecoder
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#GstVideoDecoder
 type VideoDecoder interface {
 	gst.Element
 	upcastToGstVideoDecoder() *VideoDecoderInstance
 
 	// AddToFrame wraps gst_video_decoder_add_to_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_add_to_frame
 	AddToFrame(int32)
 	// AllocateOutputBuffer wraps gst_video_decoder_allocate_output_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_allocate_output_buffer
 	AllocateOutputBuffer() *gst.Buffer
 	// AllocateOutputFrame wraps gst_video_decoder_allocate_output_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_allocate_output_frame
 	AllocateOutputFrame(*VideoCodecFrame) gst.FlowReturn
 	// AllocateOutputFrameWithParams wraps gst_video_decoder_allocate_output_frame_with_params
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_allocate_output_frame_with_params
 	AllocateOutputFrameWithParams(*VideoCodecFrame, *gst.BufferPoolAcquireParams) gst.FlowReturn
 	// DropFrame wraps gst_video_decoder_drop_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_drop_frame
 	DropFrame(*VideoCodecFrame) gst.FlowReturn
 	// DropSubframe wraps gst_video_decoder_drop_subframe
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_drop_subframe
 	DropSubframe(*VideoCodecFrame) gst.FlowReturn
 	// FinishFrame wraps gst_video_decoder_finish_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_finish_frame
 	FinishFrame(*VideoCodecFrame) gst.FlowReturn
 	// FinishSubframe wraps gst_video_decoder_finish_subframe
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_finish_subframe
 	FinishSubframe(*VideoCodecFrame) gst.FlowReturn
 	// GetAllocator wraps gst_video_decoder_get_allocator
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_allocator
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_video_decoder_get_buffer_pool
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_buffer_pool
 	GetBufferPool() gst.BufferPool
 	// GetEstimateRate wraps gst_video_decoder_get_estimate_rate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_estimate_rate
 	GetEstimateRate() int32
 	// GetFrame wraps gst_video_decoder_get_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_frame
 	GetFrame(int32) *VideoCodecFrame
 	// GetFrames wraps gst_video_decoder_get_frames
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_frames
 	GetFrames() []*VideoCodecFrame
 	// GetInputSubframeIndex wraps gst_video_decoder_get_input_subframe_index
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_input_subframe_index
 	GetInputSubframeIndex(*VideoCodecFrame) uint
 	// GetLatency wraps gst_video_decoder_get_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_latency
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetMaxDecodeTime wraps gst_video_decoder_get_max_decode_time
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_max_decode_time
 	GetMaxDecodeTime(*VideoCodecFrame) gst.ClockTimeDiff
 	// GetMaxErrors wraps gst_video_decoder_get_max_errors
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_max_errors
 	GetMaxErrors() int32
 	// GetNeedsFormat wraps gst_video_decoder_get_needs_format
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_needs_format
 	GetNeedsFormat() bool
 	// GetNeedsSyncPoint wraps gst_video_decoder_get_needs_sync_point
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_needs_sync_point
 	GetNeedsSyncPoint() bool
 	// GetOldestFrame wraps gst_video_decoder_get_oldest_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_oldest_frame
 	GetOldestFrame() *VideoCodecFrame
 	// GetOutputState wraps gst_video_decoder_get_output_state
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_output_state
 	GetOutputState() *VideoCodecState
 	// GetPacketized wraps gst_video_decoder_get_packetized
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_packetized
 	GetPacketized() bool
 	// GetPendingFrameSize wraps gst_video_decoder_get_pending_frame_size
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_pending_frame_size
 	GetPendingFrameSize() uint
 	// GetProcessedSubframeIndex wraps gst_video_decoder_get_processed_subframe_index
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_processed_subframe_index
 	GetProcessedSubframeIndex(*VideoCodecFrame) uint
 	// GetQosProportion wraps gst_video_decoder_get_qos_proportion
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_qos_proportion
 	GetQosProportion() float64
 	// GetSubframeMode wraps gst_video_decoder_get_subframe_mode
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_subframe_mode
 	GetSubframeMode() bool
 	// HaveFrame wraps gst_video_decoder_have_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_have_frame
 	HaveFrame() gst.FlowReturn
 	// HaveLastSubframe wraps gst_video_decoder_have_last_subframe
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_have_last_subframe
 	HaveLastSubframe(*VideoCodecFrame) gst.FlowReturn
 	// MergeTags wraps gst_video_decoder_merge_tags
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_merge_tags
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_video_decoder_negotiate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_negotiate
 	Negotiate() bool
 	// ProxyGetcaps wraps gst_video_decoder_proxy_getcaps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_proxy_getcaps
 	ProxyGetcaps(*gst.Caps, *gst.Caps) *gst.Caps
 	// ReleaseFrame wraps gst_video_decoder_release_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_release_frame
 	ReleaseFrame(*VideoCodecFrame)
 	// RequestSyncPoint wraps gst_video_decoder_request_sync_point
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_request_sync_point
 	RequestSyncPoint(*VideoCodecFrame, VideoDecoderRequestSyncPointFlags)
 	// SetEstimateRate wraps gst_video_decoder_set_estimate_rate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_estimate_rate
 	SetEstimateRate(bool)
 	// SetInterlacedOutputState wraps gst_video_decoder_set_interlaced_output_state
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_interlaced_output_state
 	SetInterlacedOutputState(VideoFormat, VideoInterlaceMode, uint, uint, *VideoCodecState) *VideoCodecState
 	// SetLatency wraps gst_video_decoder_set_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_latency
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetMaxErrors wraps gst_video_decoder_set_max_errors
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_max_errors
 	SetMaxErrors(int32)
 	// SetNeedsFormat wraps gst_video_decoder_set_needs_format
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_needs_format
 	SetNeedsFormat(bool)
 	// SetNeedsSyncPoint wraps gst_video_decoder_set_needs_sync_point
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_needs_sync_point
 	SetNeedsSyncPoint(bool)
 	// SetOutputState wraps gst_video_decoder_set_output_state
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_output_state
 	SetOutputState(VideoFormat, uint, uint, *VideoCodecState) *VideoCodecState
 	// SetPacketized wraps gst_video_decoder_set_packetized
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_packetized
 	SetPacketized(bool)
 	// SetSubframeMode wraps gst_video_decoder_set_subframe_mode
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_subframe_mode
 	SetSubframeMode(bool)
 	// SetUseDefaultPadAcceptcaps wraps gst_video_decoder_set_use_default_pad_acceptcaps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_use_default_pad_acceptcaps
 	SetUseDefaultPadAcceptcaps(bool)
 
 	// chain up virtual methods:
@@ -10397,107 +9706,107 @@ type VideoDecoder interface {
 	// ParentClose calls the default implementations of the `GstVideoDecoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#close
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the `GstVideoDecoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#decide_allocation
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentDrain calls the default implementations of the `GstVideoDecoder.drain` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#drain
 	ParentDrain() gst.FlowReturn
 	// ParentFinish calls the default implementations of the `GstVideoDecoder.finish` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#finish
 	ParentFinish() gst.FlowReturn
 	// ParentFlush calls the default implementations of the `GstVideoDecoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#flush
 	ParentFlush() bool
 	// ParentGetcaps calls the default implementations of the `GstVideoDecoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#getcaps
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstVideoDecoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#handle_frame
 	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
 	// ParentHandleMissingData calls the default implementations of the `GstVideoDecoder.handle_missing_data` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#handle_missing_data
 	ParentHandleMissingData(timestamp gst.ClockTime, duration gst.ClockTime) bool
 	// ParentNegotiate calls the default implementations of the `GstVideoDecoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#negotiate
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the `GstVideoDecoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#open
 	ParentOpen() bool
 	// ParentParse calls the default implementations of the `GstVideoDecoder.parse` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#parse
 	ParentParse(frame *VideoCodecFrame, adapter gstbase.Adapter, atEos bool) gst.FlowReturn
 	// ParentProposeAllocation calls the default implementations of the `GstVideoDecoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#propose_allocation
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentReset calls the default implementations of the `GstVideoDecoder.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#reset
 	ParentReset(hard bool) bool
 	// ParentSetFormat calls the default implementations of the `GstVideoDecoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#set_format
 	ParentSetFormat(state *VideoCodecState) bool
 	// ParentSinkEvent calls the default implementations of the `GstVideoDecoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#sink_event
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstVideoDecoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#sink_query
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstVideoDecoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#src_event
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstVideoDecoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#src_query
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstVideoDecoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstVideoDecoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#stop
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the `GstVideoDecoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#transform_meta
 	ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool
 }
 
@@ -10557,8 +9866,7 @@ func UnsafeVideoDecoderToGlibFull(c VideoDecoder) unsafe.Pointer {
 
 // AddToFrame wraps gst_video_decoder_add_to_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_add_to_frame
 func (decoder *VideoDecoderInstance) AddToFrame(nBytes int32) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.int              // in, none, casted
@@ -10573,8 +9881,7 @@ func (decoder *VideoDecoderInstance) AddToFrame(nBytes int32) {
 
 // AllocateOutputBuffer wraps gst_video_decoder_allocate_output_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_allocate_output_buffer
 func (decoder *VideoDecoderInstance) AllocateOutputBuffer() *gst.Buffer {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  *C.GstBuffer       // return, full, converted, nullable
@@ -10595,8 +9902,7 @@ func (decoder *VideoDecoderInstance) AllocateOutputBuffer() *gst.Buffer {
 
 // AllocateOutputFrame wraps gst_video_decoder_allocate_output_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_allocate_output_frame
 func (decoder *VideoDecoderInstance) AllocateOutputFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -10618,8 +9924,7 @@ func (decoder *VideoDecoderInstance) AllocateOutputFrame(frame *VideoCodecFrame)
 
 // AllocateOutputFrameWithParams wraps gst_video_decoder_allocate_output_frame_with_params
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_allocate_output_frame_with_params
 func (decoder *VideoDecoderInstance) AllocateOutputFrameWithParams(frame *VideoCodecFrame, params *gst.BufferPoolAcquireParams) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder            // in, none, converted
 	var carg1 *C.GstVideoCodecFrame         // in, none, converted
@@ -10644,8 +9949,7 @@ func (decoder *VideoDecoderInstance) AllocateOutputFrameWithParams(frame *VideoC
 
 // DropFrame wraps gst_video_decoder_drop_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_drop_frame
 func (dec *VideoDecoderInstance) DropFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -10667,8 +9971,7 @@ func (dec *VideoDecoderInstance) DropFrame(frame *VideoCodecFrame) gst.FlowRetur
 
 // DropSubframe wraps gst_video_decoder_drop_subframe
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_drop_subframe
 func (dec *VideoDecoderInstance) DropSubframe(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -10690,8 +9993,7 @@ func (dec *VideoDecoderInstance) DropSubframe(frame *VideoCodecFrame) gst.FlowRe
 
 // FinishFrame wraps gst_video_decoder_finish_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_finish_frame
 func (decoder *VideoDecoderInstance) FinishFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -10713,8 +10015,7 @@ func (decoder *VideoDecoderInstance) FinishFrame(frame *VideoCodecFrame) gst.Flo
 
 // FinishSubframe wraps gst_video_decoder_finish_subframe
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_finish_subframe
 func (decoder *VideoDecoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -10736,8 +10037,7 @@ func (decoder *VideoDecoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.
 
 // GetAllocator wraps gst_video_decoder_get_allocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_allocator
 func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -10763,7 +10063,7 @@ func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 
 // GetBufferPool wraps gst_video_decoder_get_buffer_pool
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_buffer_pool
 func (decoder *VideoDecoderInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  *C.GstBufferPool   // return, full, converted, nullable
@@ -10784,7 +10084,7 @@ func (decoder *VideoDecoderInstance) GetBufferPool() gst.BufferPool {
 
 // GetEstimateRate wraps gst_video_decoder_get_estimate_rate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_estimate_rate
 func (dec *VideoDecoderInstance) GetEstimateRate() int32 {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -10803,8 +10103,7 @@ func (dec *VideoDecoderInstance) GetEstimateRate() int32 {
 
 // GetFrame wraps gst_video_decoder_get_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_frame
 func (decoder *VideoDecoderInstance) GetFrame(frameNumber int32) *VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 C.int                 // in, none, casted
@@ -10828,8 +10127,7 @@ func (decoder *VideoDecoderInstance) GetFrame(frameNumber int32) *VideoCodecFram
 
 // GetFrames wraps gst_video_decoder_get_frames
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_frames
 func (decoder *VideoDecoderInstance) GetFrames() []*VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  *C.GList           // container, transfer: full
@@ -10855,8 +10153,7 @@ func (decoder *VideoDecoderInstance) GetFrames() []*VideoCodecFrame {
 
 // GetInputSubframeIndex wraps gst_video_decoder_get_input_subframe_index
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_input_subframe_index
 func (decoder *VideoDecoderInstance) GetInputSubframeIndex(frame *VideoCodecFrame) uint {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -10878,8 +10175,7 @@ func (decoder *VideoDecoderInstance) GetInputSubframeIndex(frame *VideoCodecFram
 
 // GetLatency wraps gst_video_decoder_get_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_latency
 func (decoder *VideoDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.GstClockTime     // out, full, casted, alias
@@ -10901,8 +10197,7 @@ func (decoder *VideoDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime)
 
 // GetMaxDecodeTime wraps gst_video_decoder_get_max_decode_time
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_max_decode_time
 func (decoder *VideoDecoderInstance) GetMaxDecodeTime(frame *VideoCodecFrame) gst.ClockTimeDiff {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -10924,7 +10219,7 @@ func (decoder *VideoDecoderInstance) GetMaxDecodeTime(frame *VideoCodecFrame) gs
 
 // GetMaxErrors wraps gst_video_decoder_get_max_errors
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_max_errors
 func (dec *VideoDecoderInstance) GetMaxErrors() int32 {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -10943,8 +10238,7 @@ func (dec *VideoDecoderInstance) GetMaxErrors() int32 {
 
 // GetNeedsFormat wraps gst_video_decoder_get_needs_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_needs_format
 func (dec *VideoDecoderInstance) GetNeedsFormat() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -10965,8 +10259,7 @@ func (dec *VideoDecoderInstance) GetNeedsFormat() bool {
 
 // GetNeedsSyncPoint wraps gst_video_decoder_get_needs_sync_point
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_needs_sync_point
 func (dec *VideoDecoderInstance) GetNeedsSyncPoint() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -10987,8 +10280,7 @@ func (dec *VideoDecoderInstance) GetNeedsSyncPoint() bool {
 
 // GetOldestFrame wraps gst_video_decoder_get_oldest_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_oldest_frame
 func (decoder *VideoDecoderInstance) GetOldestFrame() *VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
@@ -11009,8 +10301,7 @@ func (decoder *VideoDecoderInstance) GetOldestFrame() *VideoCodecFrame {
 
 // GetOutputState wraps gst_video_decoder_get_output_state
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_output_state
 func (decoder *VideoDecoderInstance) GetOutputState() *VideoCodecState {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var cret  *C.GstVideoCodecState // return, full, converted, nullable
@@ -11031,8 +10322,7 @@ func (decoder *VideoDecoderInstance) GetOutputState() *VideoCodecState {
 
 // GetPacketized wraps gst_video_decoder_get_packetized
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_packetized
 func (decoder *VideoDecoderInstance) GetPacketized() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -11053,8 +10343,7 @@ func (decoder *VideoDecoderInstance) GetPacketized() bool {
 
 // GetPendingFrameSize wraps gst_video_decoder_get_pending_frame_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_pending_frame_size
 func (decoder *VideoDecoderInstance) GetPendingFrameSize() uint {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gsize            // return, none, casted
@@ -11073,8 +10362,7 @@ func (decoder *VideoDecoderInstance) GetPendingFrameSize() uint {
 
 // GetProcessedSubframeIndex wraps gst_video_decoder_get_processed_subframe_index
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_processed_subframe_index
 func (decoder *VideoDecoderInstance) GetProcessedSubframeIndex(frame *VideoCodecFrame) uint {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -11096,7 +10384,7 @@ func (decoder *VideoDecoderInstance) GetProcessedSubframeIndex(frame *VideoCodec
 
 // GetQosProportion wraps gst_video_decoder_get_qos_proportion
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_qos_proportion
 func (decoder *VideoDecoderInstance) GetQosProportion() float64 {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gdouble          // return, none, casted
@@ -11115,8 +10403,7 @@ func (decoder *VideoDecoderInstance) GetQosProportion() float64 {
 
 // GetSubframeMode wraps gst_video_decoder_get_subframe_mode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_get_subframe_mode
 func (decoder *VideoDecoderInstance) GetSubframeMode() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -11137,8 +10424,7 @@ func (decoder *VideoDecoderInstance) GetSubframeMode() bool {
 
 // HaveFrame wraps gst_video_decoder_have_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_have_frame
 func (decoder *VideoDecoderInstance) HaveFrame() gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.GstFlowReturn    // return, none, casted
@@ -11157,8 +10443,7 @@ func (decoder *VideoDecoderInstance) HaveFrame() gst.FlowReturn {
 
 // HaveLastSubframe wraps gst_video_decoder_have_last_subframe
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_have_last_subframe
 func (decoder *VideoDecoderInstance) HaveLastSubframe(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -11180,8 +10465,7 @@ func (decoder *VideoDecoderInstance) HaveLastSubframe(frame *VideoCodecFrame) gs
 
 // MergeTags wraps gst_video_decoder_merge_tags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_merge_tags
 func (decoder *VideoDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted, nullable
@@ -11201,8 +10485,7 @@ func (decoder *VideoDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMe
 
 // Negotiate wraps gst_video_decoder_negotiate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_negotiate
 func (decoder *VideoDecoderInstance) Negotiate() bool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -11223,8 +10506,7 @@ func (decoder *VideoDecoderInstance) Negotiate() bool {
 
 // ProxyGetcaps wraps gst_video_decoder_proxy_getcaps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_proxy_getcaps
 func (decoder *VideoDecoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -11253,8 +10535,7 @@ func (decoder *VideoDecoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Ca
 
 // ReleaseFrame wraps gst_video_decoder_release_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_release_frame
 func (dec *VideoDecoderInstance) ReleaseFrame(frame *VideoCodecFrame) {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -11269,8 +10550,7 @@ func (dec *VideoDecoderInstance) ReleaseFrame(frame *VideoCodecFrame) {
 
 // RequestSyncPoint wraps gst_video_decoder_request_sync_point
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_request_sync_point
 func (dec *VideoDecoderInstance) RequestSyncPoint(frame *VideoCodecFrame, flags VideoDecoderRequestSyncPointFlags) {
 	var carg0 *C.GstVideoDecoder                     // in, none, converted
 	var carg1 *C.GstVideoCodecFrame                  // in, none, converted
@@ -11288,8 +10568,7 @@ func (dec *VideoDecoderInstance) RequestSyncPoint(frame *VideoCodecFrame, flags 
 
 // SetEstimateRate wraps gst_video_decoder_set_estimate_rate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_estimate_rate
 func (dec *VideoDecoderInstance) SetEstimateRate(enabled bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -11306,8 +10585,7 @@ func (dec *VideoDecoderInstance) SetEstimateRate(enabled bool) {
 
 // SetInterlacedOutputState wraps gst_video_decoder_set_interlaced_output_state
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_interlaced_output_state
 func (decoder *VideoDecoderInstance) SetInterlacedOutputState(_fmt VideoFormat, interlaceMode VideoInterlaceMode, width uint, height uint, reference *VideoCodecState) *VideoCodecState {
 	var carg0 *C.GstVideoDecoder      // in, none, converted
 	var carg1 C.GstVideoFormat        // in, none, casted
@@ -11345,8 +10623,7 @@ func (decoder *VideoDecoderInstance) SetInterlacedOutputState(_fmt VideoFormat, 
 
 // SetLatency wraps gst_video_decoder_set_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_latency
 func (decoder *VideoDecoderInstance) SetLatency(minLatency gst.ClockTime, maxLatency gst.ClockTime) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -11364,8 +10641,7 @@ func (decoder *VideoDecoderInstance) SetLatency(minLatency gst.ClockTime, maxLat
 
 // SetMaxErrors wraps gst_video_decoder_set_max_errors
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_max_errors
 func (dec *VideoDecoderInstance) SetMaxErrors(num int32) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -11380,8 +10656,7 @@ func (dec *VideoDecoderInstance) SetMaxErrors(num int32) {
 
 // SetNeedsFormat wraps gst_video_decoder_set_needs_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_needs_format
 func (dec *VideoDecoderInstance) SetNeedsFormat(enabled bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -11398,8 +10673,7 @@ func (dec *VideoDecoderInstance) SetNeedsFormat(enabled bool) {
 
 // SetNeedsSyncPoint wraps gst_video_decoder_set_needs_sync_point
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_needs_sync_point
 func (dec *VideoDecoderInstance) SetNeedsSyncPoint(enabled bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -11416,8 +10690,7 @@ func (dec *VideoDecoderInstance) SetNeedsSyncPoint(enabled bool) {
 
 // SetOutputState wraps gst_video_decoder_set_output_state
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_output_state
 func (decoder *VideoDecoderInstance) SetOutputState(_fmt VideoFormat, width uint, height uint, reference *VideoCodecState) *VideoCodecState {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 C.GstVideoFormat      // in, none, casted
@@ -11452,8 +10725,7 @@ func (decoder *VideoDecoderInstance) SetOutputState(_fmt VideoFormat, width uint
 
 // SetPacketized wraps gst_video_decoder_set_packetized
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_packetized
 func (decoder *VideoDecoderInstance) SetPacketized(packetized bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -11470,8 +10742,7 @@ func (decoder *VideoDecoderInstance) SetPacketized(packetized bool) {
 
 // SetSubframeMode wraps gst_video_decoder_set_subframe_mode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_subframe_mode
 func (decoder *VideoDecoderInstance) SetSubframeMode(subframeMode bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -11488,8 +10759,7 @@ func (decoder *VideoDecoderInstance) SetSubframeMode(subframeMode bool) {
 
 // SetUseDefaultPadAcceptcaps wraps gst_video_decoder_set_use_default_pad_acceptcaps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#gst_video_decoder_set_use_default_pad_acceptcaps
 func (decoder *VideoDecoderInstance) SetUseDefaultPadAcceptcaps(use bool) {
 	var carg0 *C.GstVideoDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -11512,87 +10782,87 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#close
 	Close func(Instance) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#decide_allocation
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // Drain allows you to override the implementation of the virtual method drain.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#drain
 	Drain func(Instance) gst.FlowReturn
 	// // Finish allows you to override the implementation of the virtual method finish.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#finish
 	Finish func(Instance) gst.FlowReturn
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#flush
 	Flush func(Instance) bool
 	// // Getcaps allows you to override the implementation of the virtual method getcaps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#getcaps
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#handle_frame
 	HandleFrame func(Instance, *VideoCodecFrame) gst.FlowReturn
 	// // HandleMissingData allows you to override the implementation of the virtual method handle_missing_data.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#handle_missing_data
 	HandleMissingData func(Instance, gst.ClockTime, gst.ClockTime) bool
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#negotiate
 	Negotiate func(Instance) bool
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#open
 	Open func(Instance) bool
 	// // Parse allows you to override the implementation of the virtual method parse.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#parse
 	Parse func(Instance, *VideoCodecFrame, gstbase.Adapter, bool) gst.FlowReturn
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#propose_allocation
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // Reset allows you to override the implementation of the virtual method reset.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#reset
 	Reset func(Instance, bool) bool
 	// // SetFormat allows you to override the implementation of the virtual method set_format.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#set_format
 	SetFormat func(Instance, *VideoCodecState) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#sink_event
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#sink_query
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#src_event
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#src_query
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#stop
 	Stop func(Instance) bool
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#transform_meta
 	TransformMeta func(Instance, *VideoCodecFrame, *gst.Meta) bool
 }
 
@@ -12097,7 +11367,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 // ParentClose calls the default implementations of the `GstVideoDecoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#close
 func (decoder *VideoDecoderInstance) ParentClose() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -12121,7 +11391,7 @@ func (decoder *VideoDecoderInstance) ParentClose() bool {
 // ParentDecideAllocation calls the default implementations of the `GstVideoDecoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#decide_allocation
 func (decoder *VideoDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -12148,7 +11418,7 @@ func (decoder *VideoDecoderInstance) ParentDecideAllocation(query *gst.Query) bo
 // ParentDrain calls the default implementations of the `GstVideoDecoder.drain` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#drain
 func (decoder *VideoDecoderInstance) ParentDrain() gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.GstFlowReturn // return, none, casted
@@ -12170,7 +11440,7 @@ func (decoder *VideoDecoderInstance) ParentDrain() gst.FlowReturn {
 // ParentFinish calls the default implementations of the `GstVideoDecoder.finish` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#finish
 func (decoder *VideoDecoderInstance) ParentFinish() gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.GstFlowReturn // return, none, casted
@@ -12192,7 +11462,7 @@ func (decoder *VideoDecoderInstance) ParentFinish() gst.FlowReturn {
 // ParentFlush calls the default implementations of the `GstVideoDecoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#flush
 func (decoder *VideoDecoderInstance) ParentFlush() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -12216,7 +11486,7 @@ func (decoder *VideoDecoderInstance) ParentFlush() bool {
 // ParentGetcaps calls the default implementations of the `GstVideoDecoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#getcaps
 func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -12241,7 +11511,7 @@ func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstVideoDecoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#handle_frame
 func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -12266,7 +11536,7 @@ func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 // ParentHandleMissingData calls the default implementations of the `GstVideoDecoder.handle_missing_data` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#handle_missing_data
 func (decoder *VideoDecoderInstance) ParentHandleMissingData(timestamp gst.ClockTime, duration gst.ClockTime) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 C.GstClockTime // in, none, converted
@@ -12296,7 +11566,7 @@ func (decoder *VideoDecoderInstance) ParentHandleMissingData(timestamp gst.Clock
 // ParentNegotiate calls the default implementations of the `GstVideoDecoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#negotiate
 func (decoder *VideoDecoderInstance) ParentNegotiate() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -12320,7 +11590,7 @@ func (decoder *VideoDecoderInstance) ParentNegotiate() bool {
 // ParentOpen calls the default implementations of the `GstVideoDecoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#open
 func (decoder *VideoDecoderInstance) ParentOpen() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -12344,7 +11614,7 @@ func (decoder *VideoDecoderInstance) ParentOpen() bool {
 // ParentParse calls the default implementations of the `GstVideoDecoder.parse` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#parse
 func (decoder *VideoDecoderInstance) ParentParse(frame *VideoCodecFrame, adapter gstbase.Adapter, atEos bool) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -12377,7 +11647,7 @@ func (decoder *VideoDecoderInstance) ParentParse(frame *VideoCodecFrame, adapter
 // ParentProposeAllocation calls the default implementations of the `GstVideoDecoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#propose_allocation
 func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -12404,7 +11674,7 @@ func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) b
 // ParentReset calls the default implementations of the `GstVideoDecoder.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#reset
 func (decoder *VideoDecoderInstance) ParentReset(hard bool) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 C.gboolean // in, none, converted
@@ -12433,7 +11703,7 @@ func (decoder *VideoDecoderInstance) ParentReset(hard bool) bool {
 // ParentSetFormat calls the default implementations of the `GstVideoDecoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#set_format
 func (decoder *VideoDecoderInstance) ParentSetFormat(state *VideoCodecState) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstVideoCodecState // in, none, converted
@@ -12460,7 +11730,7 @@ func (decoder *VideoDecoderInstance) ParentSetFormat(state *VideoCodecState) boo
 // ParentSinkEvent calls the default implementations of the `GstVideoDecoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#sink_event
 func (decoder *VideoDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -12487,7 +11757,7 @@ func (decoder *VideoDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstVideoDecoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#sink_query
 func (decoder *VideoDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -12514,7 +11784,7 @@ func (decoder *VideoDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstVideoDecoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#src_event
 func (decoder *VideoDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -12541,7 +11811,7 @@ func (decoder *VideoDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstVideoDecoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#src_query
 func (decoder *VideoDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -12568,7 +11838,7 @@ func (decoder *VideoDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstVideoDecoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#start
 func (decoder *VideoDecoderInstance) ParentStart() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -12592,7 +11862,7 @@ func (decoder *VideoDecoderInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstVideoDecoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#stop
 func (decoder *VideoDecoderInstance) ParentStop() bool {
 	var carg0 *C.GstVideoDecoder
 	var cret  C.gboolean // return
@@ -12616,7 +11886,7 @@ func (decoder *VideoDecoderInstance) ParentStop() bool {
 // ParentTransformMeta calls the default implementations of the `GstVideoDecoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#transform_meta
 func (decoder *VideoDecoderInstance) ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool {
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -12681,8 +11951,7 @@ var _ VideoEncoder = (*VideoEncoderInstance)(nil)
 
 // VideoEncoder wraps GstVideoEncoder
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#GstVideoEncoder
 type VideoEncoder interface {
 	gst.Element
 	gst.Preset
@@ -12690,118 +11959,95 @@ type VideoEncoder interface {
 
 	// AllocateOutputBuffer wraps gst_video_encoder_allocate_output_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_allocate_output_buffer
 	AllocateOutputBuffer(uint) *gst.Buffer
 	// AllocateOutputFrame wraps gst_video_encoder_allocate_output_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_allocate_output_frame
 	AllocateOutputFrame(*VideoCodecFrame, uint) gst.FlowReturn
 	// DropFrame wraps gst_video_encoder_drop_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_drop_frame
 	DropFrame(*VideoCodecFrame)
 	// FinishFrame wraps gst_video_encoder_finish_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_finish_frame
 	FinishFrame(*VideoCodecFrame) gst.FlowReturn
 	// FinishSubframe wraps gst_video_encoder_finish_subframe
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_finish_subframe
 	FinishSubframe(*VideoCodecFrame) gst.FlowReturn
 	// GetAllocator wraps gst_video_encoder_get_allocator
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_allocator
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetFrame wraps gst_video_encoder_get_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_frame
 	GetFrame(int32) *VideoCodecFrame
 	// GetFrames wraps gst_video_encoder_get_frames
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_frames
 	GetFrames() []*VideoCodecFrame
 	// GetLatency wraps gst_video_encoder_get_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_latency
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetMaxEncodeTime wraps gst_video_encoder_get_max_encode_time
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_max_encode_time
 	GetMaxEncodeTime(*VideoCodecFrame) gst.ClockTimeDiff
 	// GetMinForceKeyUnitInterval wraps gst_video_encoder_get_min_force_key_unit_interval
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_min_force_key_unit_interval
 	GetMinForceKeyUnitInterval() gst.ClockTime
 	// GetOldestFrame wraps gst_video_encoder_get_oldest_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_oldest_frame
 	GetOldestFrame() *VideoCodecFrame
 	// GetOutputState wraps gst_video_encoder_get_output_state
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_output_state
 	GetOutputState() *VideoCodecState
 	// IsQosEnabled wraps gst_video_encoder_is_qos_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_is_qos_enabled
 	IsQosEnabled() bool
 	// MergeTags wraps gst_video_encoder_merge_tags
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_merge_tags
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_video_encoder_negotiate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_negotiate
 	Negotiate() bool
 	// ProxyGetcaps wraps gst_video_encoder_proxy_getcaps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_proxy_getcaps
 	ProxyGetcaps(*gst.Caps, *gst.Caps) *gst.Caps
 	// ReleaseFrame wraps gst_video_encoder_release_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_release_frame
 	ReleaseFrame(*VideoCodecFrame)
 	// SetLatency wraps gst_video_encoder_set_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_latency
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetMinForceKeyUnitInterval wraps gst_video_encoder_set_min_force_key_unit_interval
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_min_force_key_unit_interval
 	SetMinForceKeyUnitInterval(gst.ClockTime)
 	// SetMinPts wraps gst_video_encoder_set_min_pts
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_min_pts
 	SetMinPts(gst.ClockTime)
 	// SetOutputState wraps gst_video_encoder_set_output_state
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_output_state
 	SetOutputState(*gst.Caps, *VideoCodecState) *VideoCodecState
 	// SetQosEnabled wraps gst_video_encoder_set_qos_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_qos_enabled
 	SetQosEnabled(bool)
 
 	// chain up virtual methods:
@@ -12809,97 +12055,97 @@ type VideoEncoder interface {
 	// ParentClose calls the default implementations of the `GstVideoEncoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#close
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the `GstVideoEncoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#decide_allocation
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFinish calls the default implementations of the `GstVideoEncoder.finish` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#finish
 	ParentFinish() gst.FlowReturn
 	// ParentFlush calls the default implementations of the `GstVideoEncoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#flush
 	ParentFlush() bool
 	// ParentGetcaps calls the default implementations of the `GstVideoEncoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#getcaps
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstVideoEncoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#handle_frame
 	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
 	// ParentNegotiate calls the default implementations of the `GstVideoEncoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#negotiate
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the `GstVideoEncoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#open
 	ParentOpen() bool
 	// ParentPrePush calls the default implementations of the `GstVideoEncoder.pre_push` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#pre_push
 	ParentPrePush(frame *VideoCodecFrame) gst.FlowReturn
 	// ParentProposeAllocation calls the default implementations of the `GstVideoEncoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#propose_allocation
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentReset calls the default implementations of the `GstVideoEncoder.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#reset
 	ParentReset(hard bool) bool
 	// ParentSetFormat calls the default implementations of the `GstVideoEncoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#set_format
 	ParentSetFormat(state *VideoCodecState) bool
 	// ParentSinkEvent calls the default implementations of the `GstVideoEncoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#sink_event
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstVideoEncoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#sink_query
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstVideoEncoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#src_event
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstVideoEncoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#src_query
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstVideoEncoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstVideoEncoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#stop
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the `GstVideoEncoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#transform_meta
 	ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool
 }
 
@@ -12962,8 +12208,7 @@ func UnsafeVideoEncoderToGlibFull(c VideoEncoder) unsafe.Pointer {
 
 // AllocateOutputBuffer wraps gst_video_encoder_allocate_output_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_allocate_output_buffer
 func (encoder *VideoEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.gsize            // in, none, casted
@@ -12985,8 +12230,7 @@ func (encoder *VideoEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer
 
 // AllocateOutputFrame wraps gst_video_encoder_allocate_output_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_allocate_output_frame
 func (encoder *VideoEncoderInstance) AllocateOutputFrame(frame *VideoCodecFrame, size uint) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -13011,8 +12255,7 @@ func (encoder *VideoEncoderInstance) AllocateOutputFrame(frame *VideoCodecFrame,
 
 // DropFrame wraps gst_video_encoder_drop_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_drop_frame
 func (encoder *VideoEncoderInstance) DropFrame(frame *VideoCodecFrame) {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -13027,8 +12270,7 @@ func (encoder *VideoEncoderInstance) DropFrame(frame *VideoCodecFrame) {
 
 // FinishFrame wraps gst_video_encoder_finish_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_finish_frame
 func (encoder *VideoEncoderInstance) FinishFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -13050,8 +12292,7 @@ func (encoder *VideoEncoderInstance) FinishFrame(frame *VideoCodecFrame) gst.Flo
 
 // FinishSubframe wraps gst_video_encoder_finish_subframe
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_finish_subframe
 func (encoder *VideoEncoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -13073,8 +12314,7 @@ func (encoder *VideoEncoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.
 
 // GetAllocator wraps gst_video_encoder_get_allocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_allocator
 func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -13100,8 +12340,7 @@ func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 
 // GetFrame wraps gst_video_encoder_get_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_frame
 func (encoder *VideoEncoderInstance) GetFrame(frameNumber int32) *VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 C.int                 // in, none, casted
@@ -13125,8 +12364,7 @@ func (encoder *VideoEncoderInstance) GetFrame(frameNumber int32) *VideoCodecFram
 
 // GetFrames wraps gst_video_encoder_get_frames
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_frames
 func (encoder *VideoEncoderInstance) GetFrames() []*VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var cret  *C.GList           // container, transfer: full
@@ -13152,8 +12390,7 @@ func (encoder *VideoEncoderInstance) GetFrames() []*VideoCodecFrame {
 
 // GetLatency wraps gst_video_encoder_get_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_latency
 func (encoder *VideoEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.GstClockTime     // out, full, casted, alias
@@ -13175,8 +12412,7 @@ func (encoder *VideoEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime)
 
 // GetMaxEncodeTime wraps gst_video_encoder_get_max_encode_time
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_max_encode_time
 func (encoder *VideoEncoderInstance) GetMaxEncodeTime(frame *VideoCodecFrame) gst.ClockTimeDiff {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -13198,8 +12434,7 @@ func (encoder *VideoEncoderInstance) GetMaxEncodeTime(frame *VideoCodecFrame) gs
 
 // GetMinForceKeyUnitInterval wraps gst_video_encoder_get_min_force_key_unit_interval
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_min_force_key_unit_interval
 func (encoder *VideoEncoderInstance) GetMinForceKeyUnitInterval() gst.ClockTime {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var cret  C.GstClockTime     // return, none, casted, alias
@@ -13218,8 +12453,7 @@ func (encoder *VideoEncoderInstance) GetMinForceKeyUnitInterval() gst.ClockTime 
 
 // GetOldestFrame wraps gst_video_encoder_get_oldest_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_oldest_frame
 func (encoder *VideoEncoderInstance) GetOldestFrame() *VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
@@ -13240,8 +12474,7 @@ func (encoder *VideoEncoderInstance) GetOldestFrame() *VideoCodecFrame {
 
 // GetOutputState wraps gst_video_encoder_get_output_state
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_get_output_state
 func (encoder *VideoEncoderInstance) GetOutputState() *VideoCodecState {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var cret  *C.GstVideoCodecState // return, full, converted, nullable
@@ -13262,8 +12495,7 @@ func (encoder *VideoEncoderInstance) GetOutputState() *VideoCodecState {
 
 // IsQosEnabled wraps gst_video_encoder_is_qos_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_is_qos_enabled
 func (encoder *VideoEncoderInstance) IsQosEnabled() bool {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -13284,8 +12516,7 @@ func (encoder *VideoEncoderInstance) IsQosEnabled() bool {
 
 // MergeTags wraps gst_video_encoder_merge_tags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_merge_tags
 func (encoder *VideoEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted, nullable
@@ -13305,8 +12536,7 @@ func (encoder *VideoEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMe
 
 // Negotiate wraps gst_video_encoder_negotiate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_negotiate
 func (encoder *VideoEncoderInstance) Negotiate() bool {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -13327,8 +12557,7 @@ func (encoder *VideoEncoderInstance) Negotiate() bool {
 
 // ProxyGetcaps wraps gst_video_encoder_proxy_getcaps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_proxy_getcaps
 func (enc *VideoEncoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -13357,8 +12586,7 @@ func (enc *VideoEncoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) 
 
 // ReleaseFrame wraps gst_video_encoder_release_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_release_frame
 func (encoder *VideoEncoderInstance) ReleaseFrame(frame *VideoCodecFrame) {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstVideoCodecFrame // in, full, converted
@@ -13373,8 +12601,7 @@ func (encoder *VideoEncoderInstance) ReleaseFrame(frame *VideoCodecFrame) {
 
 // SetLatency wraps gst_video_encoder_set_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_latency
 func (encoder *VideoEncoderInstance) SetLatency(minLatency gst.ClockTime, maxLatency gst.ClockTime) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -13392,8 +12619,7 @@ func (encoder *VideoEncoderInstance) SetLatency(minLatency gst.ClockTime, maxLat
 
 // SetMinForceKeyUnitInterval wraps gst_video_encoder_set_min_force_key_unit_interval
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_min_force_key_unit_interval
 func (encoder *VideoEncoderInstance) SetMinForceKeyUnitInterval(interval gst.ClockTime) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -13408,8 +12634,7 @@ func (encoder *VideoEncoderInstance) SetMinForceKeyUnitInterval(interval gst.Clo
 
 // SetMinPts wraps gst_video_encoder_set_min_pts
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_min_pts
 func (encoder *VideoEncoderInstance) SetMinPts(minPts gst.ClockTime) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -13424,8 +12649,7 @@ func (encoder *VideoEncoderInstance) SetMinPts(minPts gst.ClockTime) {
 
 // SetOutputState wraps gst_video_encoder_set_output_state
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_output_state
 func (encoder *VideoEncoderInstance) SetOutputState(caps *gst.Caps, reference *VideoCodecState) *VideoCodecState {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstCaps            // in, full, converted
@@ -13454,8 +12678,7 @@ func (encoder *VideoEncoderInstance) SetOutputState(caps *gst.Caps, reference *V
 
 // SetQosEnabled wraps gst_video_encoder_set_qos_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#gst_video_encoder_set_qos_enabled
 func (encoder *VideoEncoderInstance) SetQosEnabled(enabled bool) {
 	var carg0 *C.GstVideoEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -13478,79 +12701,79 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#close
 	Close func(Instance) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#decide_allocation
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // Finish allows you to override the implementation of the virtual method finish.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#finish
 	Finish func(Instance) gst.FlowReturn
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#flush
 	Flush func(Instance) bool
 	// // Getcaps allows you to override the implementation of the virtual method getcaps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#getcaps
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#handle_frame
 	HandleFrame func(Instance, *VideoCodecFrame) gst.FlowReturn
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#negotiate
 	Negotiate func(Instance) bool
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#open
 	Open func(Instance) bool
 	// // PrePush allows you to override the implementation of the virtual method pre_push.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#pre_push
 	PrePush func(Instance, *VideoCodecFrame) gst.FlowReturn
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#propose_allocation
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // Reset allows you to override the implementation of the virtual method reset.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#reset
 	Reset func(Instance, bool) bool
 	// // SetFormat allows you to override the implementation of the virtual method set_format.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#set_format
 	SetFormat func(Instance, *VideoCodecState) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#sink_event
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#sink_query
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#src_event
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#src_query
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#stop
 	Stop func(Instance) bool
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#transform_meta
 	TransformMeta func(Instance, *VideoCodecFrame, *gst.Meta) bool
 }
 
@@ -14003,7 +13226,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 // ParentClose calls the default implementations of the `GstVideoEncoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#close
 func (encoder *VideoEncoderInstance) ParentClose() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -14027,7 +13250,7 @@ func (encoder *VideoEncoderInstance) ParentClose() bool {
 // ParentDecideAllocation calls the default implementations of the `GstVideoEncoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#decide_allocation
 func (encoder *VideoEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -14054,7 +13277,7 @@ func (encoder *VideoEncoderInstance) ParentDecideAllocation(query *gst.Query) bo
 // ParentFinish calls the default implementations of the `GstVideoEncoder.finish` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#finish
 func (encoder *VideoEncoderInstance) ParentFinish() gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.GstFlowReturn // return, none, casted
@@ -14076,7 +13299,7 @@ func (encoder *VideoEncoderInstance) ParentFinish() gst.FlowReturn {
 // ParentFlush calls the default implementations of the `GstVideoEncoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#flush
 func (encoder *VideoEncoderInstance) ParentFlush() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -14100,7 +13323,7 @@ func (encoder *VideoEncoderInstance) ParentFlush() bool {
 // ParentGetcaps calls the default implementations of the `GstVideoEncoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#getcaps
 func (enc *VideoEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -14125,7 +13348,7 @@ func (enc *VideoEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstVideoEncoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#handle_frame
 func (encoder *VideoEncoderInstance) ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -14150,7 +13373,7 @@ func (encoder *VideoEncoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 // ParentNegotiate calls the default implementations of the `GstVideoEncoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#negotiate
 func (encoder *VideoEncoderInstance) ParentNegotiate() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -14174,7 +13397,7 @@ func (encoder *VideoEncoderInstance) ParentNegotiate() bool {
 // ParentOpen calls the default implementations of the `GstVideoEncoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#open
 func (encoder *VideoEncoderInstance) ParentOpen() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -14198,7 +13421,7 @@ func (encoder *VideoEncoderInstance) ParentOpen() bool {
 // ParentPrePush calls the default implementations of the `GstVideoEncoder.pre_push` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#pre_push
 func (encoder *VideoEncoderInstance) ParentPrePush(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -14223,7 +13446,7 @@ func (encoder *VideoEncoderInstance) ParentPrePush(frame *VideoCodecFrame) gst.F
 // ParentProposeAllocation calls the default implementations of the `GstVideoEncoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#propose_allocation
 func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -14250,7 +13473,7 @@ func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) b
 // ParentReset calls the default implementations of the `GstVideoEncoder.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#reset
 func (encoder *VideoEncoderInstance) ParentReset(hard bool) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 C.gboolean // in, none, converted
@@ -14279,7 +13502,7 @@ func (encoder *VideoEncoderInstance) ParentReset(hard bool) bool {
 // ParentSetFormat calls the default implementations of the `GstVideoEncoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#set_format
 func (encoder *VideoEncoderInstance) ParentSetFormat(state *VideoCodecState) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstVideoCodecState // in, none, converted
@@ -14306,7 +13529,7 @@ func (encoder *VideoEncoderInstance) ParentSetFormat(state *VideoCodecState) boo
 // ParentSinkEvent calls the default implementations of the `GstVideoEncoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#sink_event
 func (encoder *VideoEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -14333,7 +13556,7 @@ func (encoder *VideoEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstVideoEncoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#sink_query
 func (encoder *VideoEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -14360,7 +13583,7 @@ func (encoder *VideoEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstVideoEncoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#src_event
 func (encoder *VideoEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -14387,7 +13610,7 @@ func (encoder *VideoEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstVideoEncoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#src_query
 func (encoder *VideoEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -14414,7 +13637,7 @@ func (encoder *VideoEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstVideoEncoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#start
 func (encoder *VideoEncoderInstance) ParentStart() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -14438,7 +13661,7 @@ func (encoder *VideoEncoderInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstVideoEncoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#stop
 func (encoder *VideoEncoderInstance) ParentStop() bool {
 	var carg0 *C.GstVideoEncoder
 	var cret  C.gboolean // return
@@ -14462,7 +13685,7 @@ func (encoder *VideoEncoderInstance) ParentStop() bool {
 // ParentTransformMeta calls the default implementations of the `GstVideoEncoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#transform_meta
 func (encoder *VideoEncoderInstance) ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool {
 	var carg0 *C.GstVideoEncoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
@@ -14525,8 +13748,7 @@ var _ VideoFilter = (*VideoFilterInstance)(nil)
 
 // VideoFilter wraps GstVideoFilter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#GstVideoFilter
 type VideoFilter interface {
 	gstbase.BaseTransform
 	upcastToGstVideoFilter() *VideoFilterInstance
@@ -14536,17 +13758,17 @@ type VideoFilter interface {
 	// ParentSetInfo calls the default implementations of the `GstVideoFilter.set_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#set_info
 	ParentSetInfo(incaps *gst.Caps, inInfo *VideoInfo, outcaps *gst.Caps, outInfo *VideoInfo) bool
 	// ParentTransformFrame calls the default implementations of the `GstVideoFilter.transform_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#transform_frame
 	ParentTransformFrame(inframe *VideoFrame, outframe *VideoFrame) gst.FlowReturn
 	// ParentTransformFrameIp calls the default implementations of the `GstVideoFilter.transform_frame_ip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#transform_frame_ip
 	ParentTransformFrameIp(frame *VideoFrame) gst.FlowReturn
 }
 
@@ -14614,15 +13836,15 @@ type VideoFilterOverrides[Instance VideoFilter] struct {
 
 	// // SetInfo allows you to override the implementation of the virtual method set_info.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#set_info
 	SetInfo func(Instance, *gst.Caps, *VideoInfo, *gst.Caps, *VideoInfo) bool
 	// // TransformFrame allows you to override the implementation of the virtual method transform_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#transform_frame
 	TransformFrame func(Instance, *VideoFrame, *VideoFrame) gst.FlowReturn
 	// // TransformFrameIp allows you to override the implementation of the virtual method transform_frame_ip.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#transform_frame_ip
 	TransformFrameIp func(Instance, *VideoFrame) gst.FlowReturn
 }
 
@@ -14713,7 +13935,7 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 // ParentSetInfo calls the default implementations of the `GstVideoFilter.set_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#set_info
 func (filter *VideoFilterInstance) ParentSetInfo(incaps *gst.Caps, inInfo *VideoInfo, outcaps *gst.Caps, outInfo *VideoInfo) bool {
 	var carg0 *C.GstVideoFilter
 	var carg1 *C.GstCaps      // in, none, converted
@@ -14749,7 +13971,7 @@ func (filter *VideoFilterInstance) ParentSetInfo(incaps *gst.Caps, inInfo *Video
 // ParentTransformFrame calls the default implementations of the `GstVideoFilter.transform_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#transform_frame
 func (filter *VideoFilterInstance) ParentTransformFrame(inframe *VideoFrame, outframe *VideoFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoFilter
 	var carg1 *C.GstVideoFrame // in, none, converted
@@ -14777,7 +13999,7 @@ func (filter *VideoFilterInstance) ParentTransformFrame(inframe *VideoFrame, out
 // ParentTransformFrameIp calls the default implementations of the `GstVideoFilter.transform_frame_ip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#transform_frame_ip
 func (trans *VideoFilterInstance) ParentTransformFrameIp(frame *VideoFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoFilter
 	var carg1 *C.GstVideoFrame // in, none, converted
@@ -14835,8 +14057,7 @@ var _ VideoSink = (*VideoSinkInstance)(nil)
 
 // VideoSink wraps GstVideoSink
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideosink.html#GstVideoSink
 type VideoSink interface {
 	gstbase.BaseSink
 	upcastToGstVideoSink() *VideoSinkInstance
@@ -14846,12 +14067,12 @@ type VideoSink interface {
 	// ParentSetInfo calls the default implementations of the `GstVideoSink.set_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideosink.html#set_info
 	ParentSetInfo(caps *gst.Caps, info *VideoInfo) bool
 	// ParentShowFrame calls the default implementations of the `GstVideoSink.show_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideosink.html#show_frame
 	ParentShowFrame(buf *gst.Buffer) gst.FlowReturn
 }
 
@@ -14919,11 +14140,11 @@ type VideoSinkOverrides[Instance VideoSink] struct {
 
 	// // SetInfo allows you to override the implementation of the virtual method set_info.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideosink.html#set_info
 	SetInfo func(Instance, *gst.Caps, *VideoInfo) bool
 	// // ShowFrame allows you to override the implementation of the virtual method show_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideosink.html#show_frame
 	ShowFrame func(Instance, *gst.Buffer) gst.FlowReturn
 }
 
@@ -14986,7 +14207,7 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 // ParentSetInfo calls the default implementations of the `GstVideoSink.set_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideosink.html#set_info
 func (videoSink *VideoSinkInstance) ParentSetInfo(caps *gst.Caps, info *VideoInfo) bool {
 	var carg0 *C.GstVideoSink
 	var carg1 *C.GstCaps      // in, none, converted
@@ -15016,7 +14237,7 @@ func (videoSink *VideoSinkInstance) ParentSetInfo(caps *gst.Caps, info *VideoInf
 // ParentShowFrame calls the default implementations of the `GstVideoSink.show_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideosink.html#show_frame
 func (videoSink *VideoSinkInstance) ParentShowFrame(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstVideoSink
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -15074,16 +14295,14 @@ var _ VideoAggregatorConvertPad = (*VideoAggregatorConvertPadInstance)(nil)
 
 // VideoAggregatorConvertPad wraps GstVideoAggregatorConvertPad
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#GstVideoAggregatorConvertPad
 type VideoAggregatorConvertPad interface {
 	VideoAggregatorPad
 	upcastToGstVideoAggregatorConvertPad() *VideoAggregatorConvertPadInstance
 
 	// UpdateConversionInfo wraps gst_video_aggregator_convert_pad_update_conversion_info
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_convert_pad_update_conversion_info
 	UpdateConversionInfo()
 
 	// chain up virtual methods:
@@ -15091,7 +14310,7 @@ type VideoAggregatorConvertPad interface {
 	// ParentCreateConversionInfo calls the default implementations of the `GstVideoAggregatorConvertPad.create_conversion_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#create_conversion_info
 	ParentCreateConversionInfo(agg VideoAggregator, conversionInfo *VideoInfo)
 }
 
@@ -15155,8 +14374,7 @@ func UnsafeVideoAggregatorConvertPadToGlibFull(c VideoAggregatorConvertPad) unsa
 
 // UpdateConversionInfo wraps gst_video_aggregator_convert_pad_update_conversion_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#gst_video_aggregator_convert_pad_update_conversion_info
 func (pad *VideoAggregatorConvertPadInstance) UpdateConversionInfo() {
 	var carg0 *C.GstVideoAggregatorConvertPad // in, none, converted
 
@@ -15174,7 +14392,7 @@ type VideoAggregatorConvertPadOverrides[Instance VideoAggregatorConvertPad] stru
 
 	// // CreateConversionInfo allows you to override the implementation of the virtual method create_conversion_info.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#create_conversion_info
 	CreateConversionInfo func(Instance, VideoAggregator, *VideoInfo)
 }
 
@@ -15208,7 +14426,7 @@ func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConve
 // ParentCreateConversionInfo calls the default implementations of the `GstVideoAggregatorConvertPad.create_conversion_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#create_conversion_info
 func (pad *VideoAggregatorConvertPadInstance) ParentCreateConversionInfo(agg VideoAggregator, conversionInfo *VideoInfo) {
 	var carg0 *C.GstVideoAggregatorConvertPad
 	var carg1 *C.GstVideoAggregator // in, none, converted
@@ -15262,8 +14480,7 @@ var _ VideoAggregatorParallelConvertPad = (*VideoAggregatorParallelConvertPadIns
 
 // VideoAggregatorParallelConvertPad wraps GstVideoAggregatorParallelConvertPad
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#GstVideoAggregatorParallelConvertPad
 type VideoAggregatorParallelConvertPad interface {
 	VideoAggregatorConvertPad
 	upcastToGstVideoAggregatorParallelConvertPad() *VideoAggregatorParallelConvertPadInstance
@@ -15373,8 +14590,7 @@ func RegisterVideoAggregatorParallelConvertPadSubClass[InstanceT VideoAggregator
 
 // AncillaryMeta wraps GstAncillaryMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#GstAncillaryMeta
 type AncillaryMeta struct {
 	*ancillaryMeta
 }
@@ -15455,7 +14671,7 @@ func UnsafeAncillaryMetaToGlibFull(a *AncillaryMeta) unsafe.Pointer {
 
 // AncillaryMetaGetInfo wraps gst_ancillary_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_ancillary_meta_get_info
 func AncillaryMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -15470,8 +14686,7 @@ func AncillaryMetaGetInfo() *gst.MetaInfo {
 
 // ColorBalanceChannelClass wraps GstColorBalanceChannelClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalancechannel.html#GstColorBalanceChannelClass
 // 
 // ColorBalanceChannelClass is the type struct for [ColorBalanceChannel]
 type ColorBalanceChannelClass struct {
@@ -15525,8 +14740,7 @@ func (c *ColorBalanceChannelClass) ParentClass() *gobject.ObjectClass {
 
 // ColorBalanceInterface wraps GstColorBalanceInterface
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/colorbalance.html#GstColorBalanceInterface
 type ColorBalanceInterface struct {
 	*colorBalanceInterface
 }
@@ -15607,8 +14821,7 @@ func UnsafeColorBalanceInterfaceToGlibFull(c *ColorBalanceInterface) unsafe.Poin
 
 // NavigationInterface wraps GstNavigationInterface
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/navigation.html#GstNavigationInterface
 type NavigationInterface struct {
 	*navigationInterface
 }
@@ -15689,8 +14902,7 @@ func UnsafeNavigationInterfaceToGlibFull(n *NavigationInterface) unsafe.Pointer 
 
 // VideoAFDMeta wraps GstVideoAFDMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#GstVideoAFDMeta
 type VideoAFDMeta struct {
 	*videoAFDMeta
 }
@@ -15771,7 +14983,7 @@ func UnsafeVideoAFDMetaToGlibFull(v *VideoAFDMeta) unsafe.Pointer {
 
 // VideoAFDMetaGetInfo wraps gst_video_afd_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_afd_meta_get_info
 func VideoAFDMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -15786,8 +14998,7 @@ func VideoAFDMetaGetInfo() *gst.MetaInfo {
 
 // VideoAffineTransformationMeta wraps GstVideoAffineTransformationMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaffinetransformationmeta.html#GstVideoAffineTransformationMeta
 type VideoAffineTransformationMeta struct {
 	*videoAffineTransformationMeta
 }
@@ -15868,7 +15079,7 @@ func UnsafeVideoAffineTransformationMetaToGlibFull(v *VideoAffineTransformationM
 
 // VideoAffineTransformationMetaGetInfo wraps gst_video_affine_transformation_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaffinetransformationmeta.html#gst_video_affine_transformation_meta_get_info
 func VideoAffineTransformationMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -15883,8 +15094,7 @@ func VideoAffineTransformationMetaGetInfo() *gst.MetaInfo {
 
 // ApplyMatrix wraps gst_video_affine_transformation_meta_apply_matrix
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaffinetransformationmeta.html#gst_video_affine_transformation_meta_apply_matrix
 func (meta *VideoAffineTransformationMeta) ApplyMatrix(matrix [16]float32) {
 	var carg0 *C.GstVideoAffineTransformationMeta // in, none, converted
 	var carg1 *C.gfloat                           // in, none, array fixed size (inner: gfloat, size: 16)
@@ -15905,7 +15115,7 @@ func (meta *VideoAffineTransformationMeta) ApplyMatrix(matrix [16]float32) {
 
 // VideoAggregatorClass wraps GstVideoAggregatorClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#GstVideoAggregatorClass
 // 
 // VideoAggregatorClass is the type struct for [VideoAggregator]
 type VideoAggregatorClass struct {
@@ -15959,7 +15169,7 @@ func (v *VideoAggregatorClass) ParentClass() *gstbase.AggregatorClass {
 
 // VideoAggregatorConvertPadClass wraps GstVideoAggregatorConvertPadClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#GstVideoAggregatorConvertPadClass
 // 
 // VideoAggregatorConvertPadClass is the type struct for [VideoAggregatorConvertPad]
 type VideoAggregatorConvertPadClass struct {
@@ -16013,7 +15223,7 @@ func (v *VideoAggregatorConvertPadClass) ParentClass() *VideoAggregatorPadClass 
 
 // VideoAggregatorPadClass wraps GstVideoAggregatorPadClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#GstVideoAggregatorPadClass
 // 
 // VideoAggregatorPadClass is the type struct for [VideoAggregatorPad]
 type VideoAggregatorPadClass struct {
@@ -16067,7 +15277,7 @@ func (v *VideoAggregatorPadClass) ParentClass() *gstbase.AggregatorPadClass {
 
 // VideoAggregatorParallelConvertPadClass wraps GstVideoAggregatorParallelConvertPadClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoaggregator.html#GstVideoAggregatorParallelConvertPadClass
 // 
 // VideoAggregatorParallelConvertPadClass is the type struct for [VideoAggregatorParallelConvertPad]
 type VideoAggregatorParallelConvertPadClass struct {
@@ -16121,8 +15331,7 @@ func (v *VideoAggregatorParallelConvertPadClass) ParentClass() *VideoAggregatorC
 
 // VideoAlignment wraps GstVideoAlignment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video.html#GstVideoAlignment
 type VideoAlignment struct {
 	*videoAlignment
 }
@@ -16203,8 +15412,7 @@ func UnsafeVideoAlignmentToGlibFull(v *VideoAlignment) unsafe.Pointer {
 
 // Reset wraps gst_video_alignment_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video.html#gst_video_alignment_reset
 func (align *VideoAlignment) Reset() {
 	var carg0 *C.GstVideoAlignment // in, none, converted
 
@@ -16216,8 +15424,7 @@ func (align *VideoAlignment) Reset() {
 
 // VideoAncillary wraps GstVideoAncillary
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#GstVideoAncillary
 type VideoAncillary struct {
 	*videoAncillary
 }
@@ -16298,8 +15505,7 @@ func UnsafeVideoAncillaryToGlibFull(v *VideoAncillary) unsafe.Pointer {
 
 // VideoBarMeta wraps GstVideoBarMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#GstVideoBarMeta
 type VideoBarMeta struct {
 	*videoBarMeta
 }
@@ -16380,7 +15586,7 @@ func UnsafeVideoBarMetaToGlibFull(v *VideoBarMeta) unsafe.Pointer {
 
 // VideoBarMetaGetInfo wraps gst_video_bar_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_bar_meta_get_info
 func VideoBarMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -16395,7 +15601,7 @@ func VideoBarMetaGetInfo() *gst.MetaInfo {
 
 // VideoBufferPoolClass wraps GstVideoBufferPoolClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideopool.html#GstVideoBufferPoolClass
 // 
 // VideoBufferPoolClass is the type struct for [VideoBufferPool]
 type VideoBufferPoolClass struct {
@@ -16449,8 +15655,7 @@ func (v *VideoBufferPoolClass) ParentClass() *gst.BufferPoolClass {
 
 // VideoCaptionMeta wraps GstVideoCaptionMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#GstVideoCaptionMeta
 type VideoCaptionMeta struct {
 	*videoCaptionMeta
 }
@@ -16531,7 +15736,7 @@ func UnsafeVideoCaptionMetaToGlibFull(v *VideoCaptionMeta) unsafe.Pointer {
 
 // VideoCaptionMetaGetInfo wraps gst_video_caption_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_caption_meta_get_info
 func VideoCaptionMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -16546,7 +15751,7 @@ func VideoCaptionMetaGetInfo() *gst.MetaInfo {
 
 // VideoChromaResample wraps GstVideoChromaResample
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-chroma.html#GstVideoChromaResample
 type VideoChromaResample struct {
 	*videoChromaResample
 }
@@ -16627,8 +15832,7 @@ func UnsafeVideoChromaResamplerToGlibFull(v *VideoChromaResample) unsafe.Pointer
 
 // VideoCodecAlphaMeta wraps GstVideoCodecAlphaMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideocodecalphameta.html#GstVideoCodecAlphaMeta
 type VideoCodecAlphaMeta struct {
 	*videoCodecAlphaMeta
 }
@@ -16709,7 +15913,7 @@ func UnsafeVideoCodecAlphaMetaToGlibFull(v *VideoCodecAlphaMeta) unsafe.Pointer 
 
 // VideoCodecAlphaMetaGetInfo wraps gst_video_codec_alpha_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideocodecalphameta.html#gst_video_codec_alpha_meta_get_info
 func VideoCodecAlphaMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -16724,8 +15928,7 @@ func VideoCodecAlphaMetaGetInfo() *gst.MetaInfo {
 
 // VideoCodecFrame wraps GstVideoCodecFrame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoutils.html#GstVideoCodecFrame
 type VideoCodecFrame struct {
 	*videoCodecFrame
 }
@@ -16834,8 +16037,7 @@ func UnsafeVideoCodecFrameToGlibFull(v *VideoCodecFrame) unsafe.Pointer {
 
 // VideoCodecState wraps GstVideoCodecState
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoutils.html#GstVideoCodecState
 type VideoCodecState struct {
 	*videoCodecState
 }
@@ -16944,8 +16146,7 @@ func UnsafeVideoCodecStateToGlibFull(v *VideoCodecState) unsafe.Pointer {
 
 // VideoColorPrimariesInfo wraps GstVideoColorPrimariesInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-color.html#GstVideoColorPrimariesInfo
 type VideoColorPrimariesInfo struct {
 	*videoColorPrimariesInfo
 }
@@ -17026,8 +16227,7 @@ func UnsafeVideoColorPrimariesInfoToGlibFull(v *VideoColorPrimariesInfo) unsafe.
 
 // VideoColorimetry wraps GstVideoColorimetry
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-color.html#GstVideoColorimetry
 type VideoColorimetry struct {
 	*videoColorimetry
 }
@@ -17108,8 +16308,7 @@ func UnsafeVideoColorimetryToGlibFull(v *VideoColorimetry) unsafe.Pointer {
 
 // FromString wraps gst_video_colorimetry_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-color.html#gst_video_colorimetry_from_string
 func (cinfo *VideoColorimetry) FromString(color string) bool {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var carg1 *C.gchar               // in, none, string
@@ -17134,8 +16333,7 @@ func (cinfo *VideoColorimetry) FromString(color string) bool {
 
 // IsEqual wraps gst_video_colorimetry_is_equal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-color.html#gst_video_colorimetry_is_equal
 func (cinfo *VideoColorimetry) IsEqual(other *VideoColorimetry) bool {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var carg1 *C.GstVideoColorimetry // in, none, converted
@@ -17159,8 +16357,7 @@ func (cinfo *VideoColorimetry) IsEqual(other *VideoColorimetry) bool {
 
 // IsEquivalent wraps gst_video_colorimetry_is_equivalent
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-color.html#gst_video_colorimetry_is_equivalent
 func (cinfo *VideoColorimetry) IsEquivalent(bitdepth uint, other *VideoColorimetry, otherBitdepth uint) bool {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var carg1 C.guint                // in, none, casted
@@ -17190,8 +16387,7 @@ func (cinfo *VideoColorimetry) IsEquivalent(bitdepth uint, other *VideoColorimet
 
 // Matches wraps gst_video_colorimetry_matches
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-color.html#gst_video_colorimetry_matches
 func (cinfo *VideoColorimetry) Matches(color string) bool {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var carg1 *C.gchar               // in, none, string
@@ -17216,8 +16412,7 @@ func (cinfo *VideoColorimetry) Matches(color string) bool {
 
 // String wraps gst_video_colorimetry_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-color.html#gst_video_colorimetry_to_string
 func (cinfo *VideoColorimetry) String() string {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
 	var cret  *C.gchar               // return, full, string, nullable-string
@@ -17239,8 +16434,7 @@ func (cinfo *VideoColorimetry) String() string {
 
 // VideoContentLightLevel wraps GstVideoContentLightLevel
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#GstVideoContentLightLevel
 type VideoContentLightLevel struct {
 	*videoContentLightLevel
 }
@@ -17321,8 +16515,7 @@ func UnsafeVideoContentLightLevelToGlibFull(v *VideoContentLightLevel) unsafe.Po
 
 // AddToCaps wraps gst_video_content_light_level_add_to_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_content_light_level_add_to_caps
 func (linfo *VideoContentLightLevel) AddToCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var carg1 *C.GstCaps                   // in, none, converted
@@ -17346,8 +16539,7 @@ func (linfo *VideoContentLightLevel) AddToCaps(caps *gst.Caps) bool {
 
 // FromCaps wraps gst_video_content_light_level_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_content_light_level_from_caps
 func (linfo *VideoContentLightLevel) FromCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var carg1 *C.GstCaps                   // in, none, converted
@@ -17371,8 +16563,7 @@ func (linfo *VideoContentLightLevel) FromCaps(caps *gst.Caps) bool {
 
 // FromString wraps gst_video_content_light_level_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_content_light_level_from_string
 func (linfo *VideoContentLightLevel) FromString(level string) bool {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var carg1 *C.gchar                     // in, none, string
@@ -17397,8 +16588,7 @@ func (linfo *VideoContentLightLevel) FromString(level string) bool {
 
 // Init wraps gst_video_content_light_level_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_content_light_level_init
 func (linfo *VideoContentLightLevel) Init() {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 
@@ -17410,8 +16600,7 @@ func (linfo *VideoContentLightLevel) Init() {
 
 // IsEqual wraps gst_video_content_light_level_is_equal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_content_light_level_is_equal
 func (linfo *VideoContentLightLevel) IsEqual(other *VideoContentLightLevel) bool {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var carg1 *C.GstVideoContentLightLevel // in, none, converted
@@ -17435,8 +16624,7 @@ func (linfo *VideoContentLightLevel) IsEqual(other *VideoContentLightLevel) bool
 
 // String wraps gst_video_content_light_level_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_content_light_level_to_string
 func (linfo *VideoContentLightLevel) String() string {
 	var carg0 *C.GstVideoContentLightLevel // in, none, converted
 	var cret  *C.gchar                     // return, full, string
@@ -17456,7 +16644,7 @@ func (linfo *VideoContentLightLevel) String() string {
 
 // VideoConverter wraps GstVideoConverter
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-converter.html#GstVideoConverter
 type VideoConverter struct {
 	*videoConverter
 }
@@ -17537,8 +16725,7 @@ func UnsafeVideoConverterToGlibFull(v *VideoConverter) unsafe.Pointer {
 
 // Frame wraps gst_video_converter_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-converter.html#gst_video_converter_frame
 func (convert *VideoConverter) Frame(src *VideoFrame, dest *VideoFrame) {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var carg1 *C.GstVideoFrame     // in, none, converted
@@ -17556,8 +16743,7 @@ func (convert *VideoConverter) Frame(src *VideoFrame, dest *VideoFrame) {
 
 // FrameFinish wraps gst_video_converter_frame_finish
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-converter.html#gst_video_converter_frame_finish
 func (convert *VideoConverter) FrameFinish() {
 	var carg0 *C.GstVideoConverter // in, none, converted
 
@@ -17569,8 +16755,7 @@ func (convert *VideoConverter) FrameFinish() {
 
 // GetConfig wraps gst_video_converter_get_config
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-converter.html#gst_video_converter_get_config
 func (convert *VideoConverter) GetConfig() *gst.Structure {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var cret  *C.GstStructure      // return, none, converted
@@ -17589,8 +16774,7 @@ func (convert *VideoConverter) GetConfig() *gst.Structure {
 
 // GetInInfo wraps gst_video_converter_get_in_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-converter.html#gst_video_converter_get_in_info
 func (convert *VideoConverter) GetInInfo() *VideoInfo {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var cret  *C.GstVideoInfo      // return, none, converted
@@ -17609,8 +16793,7 @@ func (convert *VideoConverter) GetInInfo() *VideoInfo {
 
 // GetOutInfo wraps gst_video_converter_get_out_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-converter.html#gst_video_converter_get_out_info
 func (convert *VideoConverter) GetOutInfo() *VideoInfo {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var cret  *C.GstVideoInfo      // return, none, converted
@@ -17629,8 +16812,7 @@ func (convert *VideoConverter) GetOutInfo() *VideoInfo {
 
 // SetConfig wraps gst_video_converter_set_config
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-converter.html#gst_video_converter_set_config
 func (convert *VideoConverter) SetConfig(config *gst.Structure) bool {
 	var carg0 *C.GstVideoConverter // in, none, converted
 	var carg1 *C.GstStructure      // in, full, converted
@@ -17654,8 +16836,7 @@ func (convert *VideoConverter) SetConfig(config *gst.Structure) bool {
 
 // VideoCropMeta wraps GstVideoCropMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#GstVideoCropMeta
 type VideoCropMeta struct {
 	*videoCropMeta
 }
@@ -17736,7 +16917,7 @@ func UnsafeVideoCropMetaToGlibFull(v *VideoCropMeta) unsafe.Pointer {
 
 // VideoCropMetaGetInfo wraps gst_video_crop_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_crop_meta_get_info
 func VideoCropMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -17751,8 +16932,7 @@ func VideoCropMetaGetInfo() *gst.MetaInfo {
 
 // VideoDecoderClass wraps GstVideoDecoderClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideodecoder.html#GstVideoDecoderClass
 // 
 // VideoDecoderClass is the type struct for [VideoDecoder]
 type VideoDecoderClass struct {
@@ -17806,8 +16986,7 @@ func (v *VideoDecoderClass) ParentClass() *gst.ElementClass {
 
 // VideoDirectionInterface wraps GstVideoDirectionInterface
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videodirection.html#GstVideoDirectionInterface
 type VideoDirectionInterface struct {
 	*videoDirectionInterface
 }
@@ -17888,8 +17067,7 @@ func UnsafeVideoDirectionInterfaceToGlibFull(v *VideoDirectionInterface) unsafe.
 
 // VideoDither wraps GstVideoDither
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-dither.html#GstVideoDither
 type VideoDither struct {
 	*videoDither
 }
@@ -17970,8 +17148,7 @@ func UnsafeVideoDitherToGlibFull(v *VideoDither) unsafe.Pointer {
 
 // VideoEncoderClass wraps GstVideoEncoderClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideoencoder.html#GstVideoEncoderClass
 // 
 // VideoEncoderClass is the type struct for [VideoEncoder]
 type VideoEncoderClass struct {
@@ -18025,8 +17202,7 @@ func (v *VideoEncoderClass) ParentClass() *gst.ElementClass {
 
 // VideoFilterClass wraps GstVideoFilterClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideofilter.html#GstVideoFilterClass
 // 
 // VideoFilterClass is the type struct for [VideoFilter]
 type VideoFilterClass struct {
@@ -18080,8 +17256,7 @@ func (v *VideoFilterClass) ParentClass() *gstbase.BaseTransformClass {
 
 // VideoFormatInfo wraps GstVideoFormatInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#GstVideoFormatInfo
 type VideoFormatInfo struct {
 	*videoFormatInfo
 }
@@ -18162,8 +17337,7 @@ func UnsafeVideoFormatInfoToGlibFull(v *VideoFormatInfo) unsafe.Pointer {
 
 // Component wraps gst_video_format_info_component
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#gst_video_format_info_component
 func (info *VideoFormatInfo) Component(plane uint) int32 {
 	var carg0 *C.GstVideoFormatInfo // in, none, converted
 	var carg1 C.guint               // in, none, casted
@@ -18185,8 +17359,7 @@ func (info *VideoFormatInfo) Component(plane uint) int32 {
 
 // ExtrapolateStride wraps gst_video_format_info_extrapolate_stride
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-format.html#gst_video_format_info_extrapolate_stride
 func (finfo *VideoFormatInfo) ExtrapolateStride(plane int32, stride int32) int32 {
 	var carg0 *C.GstVideoFormatInfo // in, none, converted
 	var carg1 C.gint                // in, none, casted
@@ -18211,8 +17384,7 @@ func (finfo *VideoFormatInfo) ExtrapolateStride(plane int32, stride int32) int32
 
 // VideoFrame wraps GstVideoFrame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-frame.html#GstVideoFrame
 type VideoFrame struct {
 	*videoFrame
 }
@@ -18293,8 +17465,7 @@ func UnsafeVideoFrameToGlibFull(v *VideoFrame) unsafe.Pointer {
 
 // VideoFrameMap wraps gst_video_frame_map
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-frame.html#gst_video_frame_map
 func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (VideoFrame, bool) {
 	var carg2 *C.GstVideoInfo // in, none, converted
 	var carg3 *C.GstBuffer    // in, none, converted
@@ -18326,8 +17497,7 @@ func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (Vid
 
 // VideoFrameMapID wraps gst_video_frame_map_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-frame.html#gst_video_frame_map_id
 func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int32, flags gst.MapFlags) (VideoFrame, bool) {
 	var carg2 *C.GstVideoInfo // in, none, converted
 	var carg3 *C.GstBuffer    // in, none, converted
@@ -18362,8 +17532,7 @@ func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int32, flags gst.Ma
 
 // Copy wraps gst_video_frame_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-frame.html#gst_video_frame_copy
 func (dest *VideoFrame) Copy(src *VideoFrame) bool {
 	var carg0 *C.GstVideoFrame // in, none, converted
 	var carg1 *C.GstVideoFrame // in, none, converted
@@ -18387,8 +17556,7 @@ func (dest *VideoFrame) Copy(src *VideoFrame) bool {
 
 // CopyPlane wraps gst_video_frame_copy_plane
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-frame.html#gst_video_frame_copy_plane
 func (dest *VideoFrame) CopyPlane(src *VideoFrame, plane uint) bool {
 	var carg0 *C.GstVideoFrame // in, none, converted
 	var carg1 *C.GstVideoFrame // in, none, converted
@@ -18415,8 +17583,7 @@ func (dest *VideoFrame) CopyPlane(src *VideoFrame, plane uint) bool {
 
 // Unmap wraps gst_video_frame_unmap
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-frame.html#gst_video_frame_unmap
 func (frame *VideoFrame) Unmap() {
 	var carg0 *C.GstVideoFrame // in, none, converted
 
@@ -18428,8 +17595,7 @@ func (frame *VideoFrame) Unmap() {
 
 // VideoGLTextureUploadMeta wraps GstVideoGLTextureUploadMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#GstVideoGLTextureUploadMeta
 type VideoGLTextureUploadMeta struct {
 	*videoGLTextureUploadMeta
 }
@@ -18510,7 +17676,7 @@ func UnsafeVideoGLTextureUploadMetaToGlibFull(v *VideoGLTextureUploadMeta) unsaf
 
 // VideoGLTextureUploadMetaGetInfo wraps gst_video_gl_texture_upload_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_gl_texture_upload_meta_get_info
 func VideoGLTextureUploadMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -18525,8 +17691,7 @@ func VideoGLTextureUploadMetaGetInfo() *gst.MetaInfo {
 
 // Upload wraps gst_video_gl_texture_upload_meta_upload
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_gl_texture_upload_meta_upload
 func (meta *VideoGLTextureUploadMeta) Upload(textureId *uint) bool {
 	var carg0 *C.GstVideoGLTextureUploadMeta // in, none, converted
 	var carg1 *C.guint                       // in, transfer: none, C Pointers: 1, Name: guint
@@ -18552,8 +17717,7 @@ func (meta *VideoGLTextureUploadMeta) Upload(textureId *uint) bool {
 
 // VideoInfo wraps GstVideoInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#GstVideoInfo
 type VideoInfo struct {
 	*videoInfo
 }
@@ -18649,8 +17813,7 @@ func UnsafeVideoInfoToGlibFull(v *VideoInfo) unsafe.Pointer {
 
 // NewVideoInfo wraps gst_video_info_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_new
 func NewVideoInfo() *VideoInfo {
 	var cret *C.GstVideoInfo // return, full, converted
 
@@ -18665,8 +17828,7 @@ func NewVideoInfo() *VideoInfo {
 
 // NewVideoInfoFromCaps wraps gst_video_info_new_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_new_from_caps
 func NewVideoInfoFromCaps(caps *gst.Caps) *VideoInfo {
 	var carg1 *C.GstCaps      // in, none, converted
 	var cret  *C.GstVideoInfo // return, full, converted, nullable
@@ -18687,8 +17849,7 @@ func NewVideoInfoFromCaps(caps *gst.Caps) *VideoInfo {
 
 // VideoInfoFromCaps wraps gst_video_info_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_from_caps
 func VideoInfoFromCaps(caps *gst.Caps) (VideoInfo, bool) {
 	var carg2 *C.GstCaps     // in, none, converted
 	var carg1 C.GstVideoInfo // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
@@ -18714,8 +17875,7 @@ func VideoInfoFromCaps(caps *gst.Caps) (VideoInfo, bool) {
 
 // VideoInfoInit wraps gst_video_info_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_init
 func VideoInfoInit() VideoInfo {
 	var carg1 C.GstVideoInfo // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
 
@@ -18732,8 +17892,7 @@ func VideoInfoInit() VideoInfo {
 
 // Align wraps gst_video_info_align
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_align
 func (info *VideoInfo) Align(align *VideoAlignment) bool {
 	var carg0 *C.GstVideoInfo      // in, none, converted
 	var carg1 *C.GstVideoAlignment // in, none, converted
@@ -18757,8 +17916,7 @@ func (info *VideoInfo) Align(align *VideoAlignment) bool {
 
 // AlignFull wraps gst_video_info_align_full
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_align_full
 func (info *VideoInfo) AlignFull(align *VideoAlignment) (uint, bool) {
 	var carg0 *C.GstVideoInfo      // in, none, converted
 	var carg1 *C.GstVideoAlignment // in, none, converted
@@ -18785,8 +17943,7 @@ func (info *VideoInfo) AlignFull(align *VideoAlignment) (uint, bool) {
 
 // Convert wraps gst_video_info_convert
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_convert
 func (info *VideoInfo) Convert(srcFormat gst.Format, srcValue int64, destFormat gst.Format) (int64, bool) {
 	var carg0 *C.GstVideoInfo // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
@@ -18819,8 +17976,7 @@ func (info *VideoInfo) Convert(srcFormat gst.Format, srcValue int64, destFormat 
 
 // Copy wraps gst_video_info_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_copy
 func (info *VideoInfo) Copy() *VideoInfo {
 	var carg0 *C.GstVideoInfo // in, none, converted
 	var cret  *C.GstVideoInfo // return, full, converted
@@ -18839,8 +17995,7 @@ func (info *VideoInfo) Copy() *VideoInfo {
 
 // IsEqual wraps gst_video_info_is_equal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_is_equal
 func (info *VideoInfo) IsEqual(other *VideoInfo) bool {
 	var carg0 *C.GstVideoInfo // in, none, converted
 	var carg1 *C.GstVideoInfo // in, none, converted
@@ -18864,8 +18019,7 @@ func (info *VideoInfo) IsEqual(other *VideoInfo) bool {
 
 // SetFormat wraps gst_video_info_set_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_set_format
 func (info *VideoInfo) SetFormat(format VideoFormat, width uint, height uint) bool {
 	var carg0 *C.GstVideoInfo  // in, none, converted
 	var carg1 C.GstVideoFormat // in, none, casted
@@ -18895,8 +18049,7 @@ func (info *VideoInfo) SetFormat(format VideoFormat, width uint, height uint) bo
 
 // SetInterlacedFormat wraps gst_video_info_set_interlaced_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_set_interlaced_format
 func (info *VideoInfo) SetInterlacedFormat(format VideoFormat, mode VideoInterlaceMode, width uint, height uint) bool {
 	var carg0 *C.GstVideoInfo         // in, none, converted
 	var carg1 C.GstVideoFormat        // in, none, casted
@@ -18929,8 +18082,7 @@ func (info *VideoInfo) SetInterlacedFormat(format VideoFormat, mode VideoInterla
 
 // ToCaps wraps gst_video_info_to_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info.html#gst_video_info_to_caps
 func (info *VideoInfo) ToCaps() *gst.Caps {
 	var carg0 *C.GstVideoInfo // in, none, converted
 	var cret  *C.GstCaps      // return, full, converted
@@ -18949,8 +18101,7 @@ func (info *VideoInfo) ToCaps() *gst.Caps {
 
 // VideoInfoDmaDrm wraps GstVideoInfoDmaDrm
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#GstVideoInfoDmaDrm
 type VideoInfoDmaDrm struct {
 	*videoInfoDmaDrm
 }
@@ -19046,8 +18197,7 @@ func UnsafeVideoInfoDmaDrmToGlibFull(v *VideoInfoDmaDrm) unsafe.Pointer {
 
 // NewVideoInfoDmaDrm wraps gst_video_info_dma_drm_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_new
 func NewVideoInfoDmaDrm() *VideoInfoDmaDrm {
 	var cret *C.GstVideoInfoDmaDrm // return, full, converted
 
@@ -19062,8 +18212,7 @@ func NewVideoInfoDmaDrm() *VideoInfoDmaDrm {
 
 // NewVideoInfoDmaDrmFromCaps wraps gst_video_info_dma_drm_new_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_new_from_caps
 func NewVideoInfoDmaDrmFromCaps(caps *gst.Caps) *VideoInfoDmaDrm {
 	var carg1 *C.GstCaps            // in, none, converted
 	var cret  *C.GstVideoInfoDmaDrm // return, full, converted, nullable
@@ -19084,8 +18233,7 @@ func NewVideoInfoDmaDrmFromCaps(caps *gst.Caps) *VideoInfoDmaDrm {
 
 // VideoInfoDmaDrmFromCaps wraps gst_video_info_dma_drm_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_from_caps
 func VideoInfoDmaDrmFromCaps(caps *gst.Caps) (VideoInfoDmaDrm, bool) {
 	var carg2 *C.GstCaps           // in, none, converted
 	var carg1 C.GstVideoInfoDmaDrm // out, transfer: none, C Pointers: 0, Name: VideoInfoDmaDrm, caller-allocates
@@ -19111,8 +18259,7 @@ func VideoInfoDmaDrmFromCaps(caps *gst.Caps) (VideoInfoDmaDrm, bool) {
 
 // VideoInfoDmaDrmFromVideoInfo wraps gst_video_info_dma_drm_from_video_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_from_video_info
 func VideoInfoDmaDrmFromVideoInfo(info *VideoInfo, modifier uint64) (VideoInfoDmaDrm, bool) {
 	var carg2 *C.GstVideoInfo      // in, none, converted
 	var carg3 C.guint64            // in, none, casted
@@ -19141,8 +18288,7 @@ func VideoInfoDmaDrmFromVideoInfo(info *VideoInfo, modifier uint64) (VideoInfoDm
 
 // VideoInfoDmaDrmInit wraps gst_video_info_dma_drm_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_init
 func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 	var carg1 C.GstVideoInfoDmaDrm // out, transfer: none, C Pointers: 0, Name: VideoInfoDmaDrm, caller-allocates
 
@@ -19159,8 +18305,7 @@ func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 
 // ToCaps wraps gst_video_info_dma_drm_to_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_to_caps
 func (drmInfo *VideoInfoDmaDrm) ToCaps() *gst.Caps {
 	var carg0 *C.GstVideoInfoDmaDrm // in, none, converted
 	var cret  *C.GstCaps            // return, full, converted, nullable
@@ -19181,8 +18326,7 @@ func (drmInfo *VideoInfoDmaDrm) ToCaps() *gst.Caps {
 
 // ToVideoInfo wraps gst_video_info_dma_drm_to_video_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-info-dma.html#gst_video_info_dma_drm_to_video_info
 func (drmInfo *VideoInfoDmaDrm) ToVideoInfo() (VideoInfo, bool) {
 	var carg0 *C.GstVideoInfoDmaDrm // in, none, converted
 	var carg1 C.GstVideoInfo        // out, transfer: none, C Pointers: 0, Name: VideoInfo, caller-allocates
@@ -19208,8 +18352,7 @@ func (drmInfo *VideoInfoDmaDrm) ToVideoInfo() (VideoInfo, bool) {
 
 // VideoMasteringDisplayInfo wraps GstVideoMasteringDisplayInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#GstVideoMasteringDisplayInfo
 type VideoMasteringDisplayInfo struct {
 	*videoMasteringDisplayInfo
 }
@@ -19290,8 +18433,7 @@ func UnsafeVideoMasteringDisplayInfoToGlibFull(v *VideoMasteringDisplayInfo) uns
 
 // VideoMasteringDisplayInfoFromString wraps gst_video_mastering_display_info_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_mastering_display_info_from_string
 func VideoMasteringDisplayInfoFromString(mastering string) (VideoMasteringDisplayInfo, bool) {
 	var carg2 *C.gchar                       // in, none, string
 	var carg1 C.GstVideoMasteringDisplayInfo // out, transfer: none, C Pointers: 0, Name: VideoMasteringDisplayInfo, caller-allocates
@@ -19318,8 +18460,7 @@ func VideoMasteringDisplayInfoFromString(mastering string) (VideoMasteringDispla
 
 // AddToCaps wraps gst_video_mastering_display_info_add_to_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_mastering_display_info_add_to_caps
 func (minfo *VideoMasteringDisplayInfo) AddToCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 	var carg1 *C.GstCaps                      // in, none, converted
@@ -19343,8 +18484,7 @@ func (minfo *VideoMasteringDisplayInfo) AddToCaps(caps *gst.Caps) bool {
 
 // FromCaps wraps gst_video_mastering_display_info_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_mastering_display_info_from_caps
 func (minfo *VideoMasteringDisplayInfo) FromCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 	var carg1 *C.GstCaps                      // in, none, converted
@@ -19368,8 +18508,7 @@ func (minfo *VideoMasteringDisplayInfo) FromCaps(caps *gst.Caps) bool {
 
 // Init wraps gst_video_mastering_display_info_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_mastering_display_info_init
 func (minfo *VideoMasteringDisplayInfo) Init() {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 
@@ -19381,8 +18520,7 @@ func (minfo *VideoMasteringDisplayInfo) Init() {
 
 // IsEqual wraps gst_video_mastering_display_info_is_equal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_mastering_display_info_is_equal
 func (minfo *VideoMasteringDisplayInfo) IsEqual(other *VideoMasteringDisplayInfo) bool {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 	var carg1 *C.GstVideoMasteringDisplayInfo // in, none, converted
@@ -19406,8 +18544,7 @@ func (minfo *VideoMasteringDisplayInfo) IsEqual(other *VideoMasteringDisplayInfo
 
 // String wraps gst_video_mastering_display_info_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#gst_video_mastering_display_info_to_string
 func (minfo *VideoMasteringDisplayInfo) String() string {
 	var carg0 *C.GstVideoMasteringDisplayInfo // in, none, converted
 	var cret  *C.gchar                        // return, full, string
@@ -19427,8 +18564,7 @@ func (minfo *VideoMasteringDisplayInfo) String() string {
 
 // VideoMasteringDisplayInfoCoordinates wraps GstVideoMasteringDisplayInfoCoordinates
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-hdr.html#GstVideoMasteringDisplayInfoCoordinates
 type VideoMasteringDisplayInfoCoordinates struct {
 	*videoMasteringDisplayInfoCoordinates
 }
@@ -19509,8 +18645,7 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesToGlibFull(v *VideoMasteringDispl
 
 // VideoMeta wraps GstVideoMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#GstVideoMeta
 type VideoMeta struct {
 	*videoMeta
 }
@@ -19591,7 +18726,7 @@ func UnsafeVideoMetaToGlibFull(v *VideoMeta) unsafe.Pointer {
 
 // VideoMetaGetInfo wraps gst_video_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_meta_get_info
 func VideoMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -19606,8 +18741,7 @@ func VideoMetaGetInfo() *gst.MetaInfo {
 
 // SetAlignment wraps gst_video_meta_set_alignment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_meta_set_alignment
 func (meta *VideoMeta) SetAlignment(alignment VideoAlignment) bool {
 	var carg0 *C.GstVideoMeta     // in, none, converted
 	var carg1 C.GstVideoAlignment // in, transfer: none, C Pointers: 0, Name: VideoAlignment
@@ -19633,8 +18767,7 @@ func (meta *VideoMeta) SetAlignment(alignment VideoAlignment) bool {
 
 // VideoMetaTransform wraps GstVideoMetaTransform
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#GstVideoMetaTransform
 type VideoMetaTransform struct {
 	*videoMetaTransform
 }
@@ -19715,8 +18848,7 @@ func UnsafeVideoMetaTransformToGlibFull(v *VideoMetaTransform) unsafe.Pointer {
 
 // VideoMetaTransformScaleGetQuark wraps gst_video_meta_transform_scale_get_quark
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_meta_transform_scale_get_quark
 func VideoMetaTransformScaleGetQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -19731,8 +18863,7 @@ func VideoMetaTransformScaleGetQuark() glib.Quark {
 
 // VideoOrientationInterface wraps GstVideoOrientationInterface
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videoorientation.html#GstVideoOrientationInterface
 type VideoOrientationInterface struct {
 	*videoOrientationInterface
 }
@@ -19813,8 +18944,7 @@ func UnsafeVideoOrientationInterfaceToGlibFull(v *VideoOrientationInterface) uns
 
 // VideoOverlayComposition wraps GstVideoOverlayComposition
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#GstVideoOverlayComposition
 type VideoOverlayComposition struct {
 	*videoOverlayComposition
 }
@@ -19910,8 +19040,7 @@ func UnsafeVideoOverlayCompositionToGlibFull(v *VideoOverlayComposition) unsafe.
 
 // NewVideoOverlayComposition wraps gst_video_overlay_composition_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_composition_new
 func NewVideoOverlayComposition(rectangle *VideoOverlayRectangle) *VideoOverlayComposition {
 	var carg1 *C.GstVideoOverlayRectangle   // in, none, converted, nullable
 	var cret  *C.GstVideoOverlayComposition // return, full, converted
@@ -19932,8 +19061,7 @@ func NewVideoOverlayComposition(rectangle *VideoOverlayRectangle) *VideoOverlayC
 
 // AddRectangle wraps gst_video_overlay_composition_add_rectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_composition_add_rectangle
 func (comp *VideoOverlayComposition) AddRectangle(rectangle *VideoOverlayRectangle) {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var carg1 *C.GstVideoOverlayRectangle   // in, none, converted
@@ -19948,8 +19076,7 @@ func (comp *VideoOverlayComposition) AddRectangle(rectangle *VideoOverlayRectang
 
 // Blend wraps gst_video_overlay_composition_blend
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_composition_blend
 func (comp *VideoOverlayComposition) Blend(videoBuf *VideoFrame) bool {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var carg1 *C.GstVideoFrame              // in, none, converted
@@ -19973,8 +19100,7 @@ func (comp *VideoOverlayComposition) Blend(videoBuf *VideoFrame) bool {
 
 // Copy wraps gst_video_overlay_composition_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_composition_copy
 func (comp *VideoOverlayComposition) Copy() *VideoOverlayComposition {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var cret  *C.GstVideoOverlayComposition // return, full, converted
@@ -19993,8 +19119,7 @@ func (comp *VideoOverlayComposition) Copy() *VideoOverlayComposition {
 
 // GetRectangle wraps gst_video_overlay_composition_get_rectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_composition_get_rectangle
 func (comp *VideoOverlayComposition) GetRectangle(n uint) *VideoOverlayRectangle {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var carg1 C.guint                       // in, none, casted
@@ -20018,8 +19143,7 @@ func (comp *VideoOverlayComposition) GetRectangle(n uint) *VideoOverlayRectangle
 
 // GetSeqnum wraps gst_video_overlay_composition_get_seqnum
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_composition_get_seqnum
 func (comp *VideoOverlayComposition) GetSeqnum() uint {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var cret  C.guint                       // return, none, casted
@@ -20038,8 +19162,7 @@ func (comp *VideoOverlayComposition) GetSeqnum() uint {
 
 // MakeWritable wraps gst_video_overlay_composition_make_writable
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_composition_make_writable
 func (comp *VideoOverlayComposition) MakeWritable() *VideoOverlayComposition {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var cret  *C.GstVideoOverlayComposition // return, full, converted
@@ -20058,8 +19181,7 @@ func (comp *VideoOverlayComposition) MakeWritable() *VideoOverlayComposition {
 
 // NRectangles wraps gst_video_overlay_composition_n_rectangles
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_composition_n_rectangles
 func (comp *VideoOverlayComposition) NRectangles() uint {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var cret  C.guint                       // return, none, casted
@@ -20078,8 +19200,7 @@ func (comp *VideoOverlayComposition) NRectangles() uint {
 
 // VideoOverlayCompositionMeta wraps GstVideoOverlayCompositionMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#GstVideoOverlayCompositionMeta
 type VideoOverlayCompositionMeta struct {
 	*videoOverlayCompositionMeta
 }
@@ -20160,7 +19281,7 @@ func UnsafeVideoOverlayCompositionMetaToGlibFull(v *VideoOverlayCompositionMeta)
 
 // VideoOverlayCompositionMetaGetInfo wraps gst_video_overlay_composition_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_composition_meta_get_info
 func VideoOverlayCompositionMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -20175,8 +19296,7 @@ func VideoOverlayCompositionMetaGetInfo() *gst.MetaInfo {
 
 // VideoOverlayInterface wraps GstVideoOverlayInterface
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/videooverlay.html#GstVideoOverlayInterface
 type VideoOverlayInterface struct {
 	*videoOverlayInterface
 }
@@ -20257,8 +19377,7 @@ func UnsafeVideoOverlayInterfaceToGlibFull(v *VideoOverlayInterface) unsafe.Poin
 
 // VideoOverlayRectangle wraps GstVideoOverlayRectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#GstVideoOverlayRectangle
 type VideoOverlayRectangle struct {
 	*videoOverlayRectangle
 }
@@ -20354,8 +19473,7 @@ func UnsafeVideoOverlayRectangleToGlibFull(v *VideoOverlayRectangle) unsafe.Poin
 
 // NewVideoOverlayRectangleRaw wraps gst_video_overlay_rectangle_new_raw
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_new_raw
 func NewVideoOverlayRectangleRaw(pixels *gst.Buffer, renderX int32, renderY int32, renderWidth uint, renderHeight uint, flags VideoOverlayFormatFlags) *VideoOverlayRectangle {
 	var carg1 *C.GstBuffer                 // in, none, converted
 	var carg2 C.gint                       // in, none, casted
@@ -20389,8 +19507,7 @@ func NewVideoOverlayRectangleRaw(pixels *gst.Buffer, renderX int32, renderY int3
 
 // Copy wraps gst_video_overlay_rectangle_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_copy
 func (rectangle *VideoOverlayRectangle) Copy() *VideoOverlayRectangle {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var cret  *C.GstVideoOverlayRectangle // return, full, converted
@@ -20409,8 +19526,7 @@ func (rectangle *VideoOverlayRectangle) Copy() *VideoOverlayRectangle {
 
 // GetFlags wraps gst_video_overlay_rectangle_get_flags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_flags
 func (rectangle *VideoOverlayRectangle) GetFlags() VideoOverlayFormatFlags {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var cret  C.GstVideoOverlayFormatFlags // return, none, casted
@@ -20429,8 +19545,7 @@ func (rectangle *VideoOverlayRectangle) GetFlags() VideoOverlayFormatFlags {
 
 // GetGlobalAlpha wraps gst_video_overlay_rectangle_get_global_alpha
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_global_alpha
 func (rectangle *VideoOverlayRectangle) GetGlobalAlpha() float32 {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var cret  C.gfloat                    // return, none, casted
@@ -20449,7 +19564,7 @@ func (rectangle *VideoOverlayRectangle) GetGlobalAlpha() float32 {
 
 // GetPixelsArgb wraps gst_video_overlay_rectangle_get_pixels_argb
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_pixels_argb
 func (rectangle *VideoOverlayRectangle) GetPixelsArgb(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -20471,7 +19586,7 @@ func (rectangle *VideoOverlayRectangle) GetPixelsArgb(flags VideoOverlayFormatFl
 
 // GetPixelsAyuv wraps gst_video_overlay_rectangle_get_pixels_ayuv
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_pixels_ayuv
 func (rectangle *VideoOverlayRectangle) GetPixelsAyuv(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -20493,7 +19608,7 @@ func (rectangle *VideoOverlayRectangle) GetPixelsAyuv(flags VideoOverlayFormatFl
 
 // GetPixelsRaw wraps gst_video_overlay_rectangle_get_pixels_raw
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_pixels_raw
 func (rectangle *VideoOverlayRectangle) GetPixelsRaw(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -20515,8 +19630,7 @@ func (rectangle *VideoOverlayRectangle) GetPixelsRaw(flags VideoOverlayFormatFla
 
 // GetPixelsUnscaledArgb wraps gst_video_overlay_rectangle_get_pixels_unscaled_argb
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_pixels_unscaled_argb
 func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledArgb(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -20538,8 +19652,7 @@ func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledArgb(flags VideoOverlay
 
 // GetPixelsUnscaledAyuv wraps gst_video_overlay_rectangle_get_pixels_unscaled_ayuv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_pixels_unscaled_ayuv
 func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledAyuv(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -20561,8 +19674,7 @@ func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledAyuv(flags VideoOverlay
 
 // GetPixelsUnscaledRaw wraps gst_video_overlay_rectangle_get_pixels_unscaled_raw
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_pixels_unscaled_raw
 func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledRaw(flags VideoOverlayFormatFlags) *gst.Buffer {
 	var carg0 *C.GstVideoOverlayRectangle  // in, none, converted
 	var carg1 C.GstVideoOverlayFormatFlags // in, none, casted
@@ -20584,8 +19696,7 @@ func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledRaw(flags VideoOverlayF
 
 // GetRenderRectangle wraps gst_video_overlay_rectangle_get_render_rectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_render_rectangle
 func (rectangle *VideoOverlayRectangle) GetRenderRectangle() (int32, int32, uint, uint, bool) {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var carg1 C.gint                      // out, full, casted
@@ -20618,8 +19729,7 @@ func (rectangle *VideoOverlayRectangle) GetRenderRectangle() (int32, int32, uint
 
 // GetSeqnum wraps gst_video_overlay_rectangle_get_seqnum
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_get_seqnum
 func (rectangle *VideoOverlayRectangle) GetSeqnum() uint {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var cret  C.guint                     // return, none, casted
@@ -20638,8 +19748,7 @@ func (rectangle *VideoOverlayRectangle) GetSeqnum() uint {
 
 // SetGlobalAlpha wraps gst_video_overlay_rectangle_set_global_alpha
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_set_global_alpha
 func (rectangle *VideoOverlayRectangle) SetGlobalAlpha(globalAlpha float32) {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var carg1 C.gfloat                    // in, none, casted
@@ -20654,8 +19763,7 @@ func (rectangle *VideoOverlayRectangle) SetGlobalAlpha(globalAlpha float32) {
 
 // SetRenderRectangle wraps gst_video_overlay_rectangle_set_render_rectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-overlay-composition.html#gst_video_overlay_rectangle_set_render_rectangle
 func (rectangle *VideoOverlayRectangle) SetRenderRectangle(renderX int32, renderY int32, renderWidth uint, renderHeight uint) {
 	var carg0 *C.GstVideoOverlayRectangle // in, none, converted
 	var carg1 C.gint                      // in, none, casted
@@ -20679,8 +19787,7 @@ func (rectangle *VideoOverlayRectangle) SetRenderRectangle(renderX int32, render
 
 // VideoRectangle wraps GstVideoRectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideosink.html#GstVideoRectangle
 type VideoRectangle struct {
 	*videoRectangle
 }
@@ -20761,8 +19868,7 @@ func UnsafeVideoRectangleToGlibFull(v *VideoRectangle) unsafe.Pointer {
 
 // VideoRegionOfInterestMeta wraps GstVideoRegionOfInterestMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#GstVideoRegionOfInterestMeta
 type VideoRegionOfInterestMeta struct {
 	*videoRegionOfInterestMeta
 }
@@ -20843,7 +19949,7 @@ func UnsafeVideoRegionOfInterestMetaToGlibFull(v *VideoRegionOfInterestMeta) uns
 
 // VideoRegionOfInterestMetaGetInfo wraps gst_video_region_of_interest_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_region_of_interest_meta_get_info
 func VideoRegionOfInterestMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -20858,8 +19964,7 @@ func VideoRegionOfInterestMetaGetInfo() *gst.MetaInfo {
 
 // AddParam wraps gst_video_region_of_interest_meta_add_param
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_region_of_interest_meta_add_param
 func (meta *VideoRegionOfInterestMeta) AddParam(s *gst.Structure) {
 	var carg0 *C.GstVideoRegionOfInterestMeta // in, none, converted
 	var carg1 *C.GstStructure                 // in, full, converted
@@ -20874,8 +19979,7 @@ func (meta *VideoRegionOfInterestMeta) AddParam(s *gst.Structure) {
 
 // GetParam wraps gst_video_region_of_interest_meta_get_param
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_region_of_interest_meta_get_param
 func (meta *VideoRegionOfInterestMeta) GetParam(name string) *gst.Structure {
 	var carg0 *C.GstVideoRegionOfInterestMeta // in, none, converted
 	var carg1 *C.gchar                        // in, none, string
@@ -20900,8 +20004,7 @@ func (meta *VideoRegionOfInterestMeta) GetParam(name string) *gst.Structure {
 
 // VideoResampler wraps GstVideoResampler
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-resampler.html#GstVideoResampler
 type VideoResampler struct {
 	*videoResampler
 }
@@ -20982,8 +20085,7 @@ func UnsafeVideoResamplerToGlibFull(v *VideoResampler) unsafe.Pointer {
 
 // Clear wraps gst_video_resampler_clear
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-resampler.html#gst_video_resampler_clear
 func (resampler *VideoResampler) Clear() {
 	var carg0 *C.GstVideoResampler // in, none, converted
 
@@ -20995,7 +20097,7 @@ func (resampler *VideoResampler) Clear() {
 
 // Init wraps gst_video_resampler_init
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-resampler.html#gst_video_resampler_init
 func (resampler *VideoResampler) Init(method VideoResamplerMethod, flags VideoResamplerFlags, nPhases uint, nTaps uint, shift float64, inSize uint, outSize uint, options *gst.Structure) bool {
 	var carg0 *C.GstVideoResampler      // in, none, converted
 	var carg1 C.GstVideoResamplerMethod // in, none, casted
@@ -21040,8 +20142,7 @@ func (resampler *VideoResampler) Init(method VideoResamplerMethod, flags VideoRe
 
 // VideoSEIUserDataUnregisteredMeta wraps GstVideoSEIUserDataUnregisteredMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-sei.html#GstVideoSEIUserDataUnregisteredMeta
 type VideoSEIUserDataUnregisteredMeta struct {
 	*videoSEIUserDataUnregisteredMeta
 }
@@ -21122,7 +20223,7 @@ func UnsafeVideoSEIUserDataUnregisteredMetaToGlibFull(v *VideoSEIUserDataUnregis
 
 // VideoSEIUserDataUnregisteredMetaGetInfo wraps gst_video_sei_user_data_unregistered_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-sei.html#gst_video_sei_user_data_unregistered_meta_get_info
 func VideoSEIUserDataUnregisteredMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -21137,8 +20238,7 @@ func VideoSEIUserDataUnregisteredMetaGetInfo() *gst.MetaInfo {
 
 // VideoScaler wraps GstVideoScaler
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-scaler.html#GstVideoScaler
 type VideoScaler struct {
 	*videoScaler
 }
@@ -21219,8 +20319,7 @@ func UnsafeVideoScalerToGlibFull(v *VideoScaler) unsafe.Pointer {
 
 // GetCoeff wraps gst_video_scaler_get_coeff
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-scaler.html#gst_video_scaler_get_coeff
 func (scale *VideoScaler) GetCoeff(outOffset uint) (uint, uint, *float64) {
 	var carg0 *C.GstVideoScaler // in, none, converted
 	var carg1 C.guint           // in, none, casted
@@ -21250,8 +20349,7 @@ func (scale *VideoScaler) GetCoeff(outOffset uint) (uint, uint, *float64) {
 
 // GetMaxTaps wraps gst_video_scaler_get_max_taps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-scaler.html#gst_video_scaler_get_max_taps
 func (scale *VideoScaler) GetMaxTaps() uint {
 	var carg0 *C.GstVideoScaler // in, none, converted
 	var cret  C.guint           // return, none, casted
@@ -21270,8 +20368,7 @@ func (scale *VideoScaler) GetMaxTaps() uint {
 
 // VideoSinkClass wraps GstVideoSinkClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideosink.html#GstVideoSinkClass
 // 
 // VideoSinkClass is the type struct for [VideoSink]
 type VideoSinkClass struct {
@@ -21325,8 +20422,7 @@ func (v *VideoSinkClass) ParentClass() *gstbase.BaseSinkClass {
 
 // VideoTileInfo wraps GstVideoTileInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-tile.html#GstVideoTileInfo
 type VideoTileInfo struct {
 	*videoTileInfo
 }
@@ -21407,8 +20503,7 @@ func UnsafeVideoTileInfoToGlibFull(v *VideoTileInfo) unsafe.Pointer {
 
 // VideoTimeCode wraps GstVideoTimeCode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#GstVideoTimeCode
 type VideoTimeCode struct {
 	*videoTimeCode
 }
@@ -21489,7 +20584,7 @@ func UnsafeVideoTimeCodeToGlibFull(v *VideoTimeCode) unsafe.Pointer {
 
 // NewVideoTimeCodeEmpty wraps gst_video_time_code_new_empty
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_new_empty
 func NewVideoTimeCodeEmpty() *VideoTimeCode {
 	var cret *C.GstVideoTimeCode // return, full, converted
 
@@ -21504,7 +20599,7 @@ func NewVideoTimeCodeEmpty() *VideoTimeCode {
 
 // NewVideoTimeCodeFromString wraps gst_video_time_code_new_from_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_new_from_string
 func NewVideoTimeCodeFromString(tcStr string) *VideoTimeCode {
 	var carg1 *C.gchar            // in, none, string
 	var cret  *C.GstVideoTimeCode // return, full, converted, nullable
@@ -21526,8 +20621,7 @@ func NewVideoTimeCodeFromString(tcStr string) *VideoTimeCode {
 
 // AddFrames wraps gst_video_time_code_add_frames
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_add_frames
 func (tc *VideoTimeCode) AddFrames(frames int64) {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var carg1 C.gint64            // in, none, casted
@@ -21542,8 +20636,7 @@ func (tc *VideoTimeCode) AddFrames(frames int64) {
 
 // AddInterval wraps gst_video_time_code_add_interval
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_add_interval
 func (tc *VideoTimeCode) AddInterval(tcInter *VideoTimeCodeInterval) *VideoTimeCode {
 	var carg0 *C.GstVideoTimeCode         // in, none, converted
 	var carg1 *C.GstVideoTimeCodeInterval // in, none, converted
@@ -21567,8 +20660,7 @@ func (tc *VideoTimeCode) AddInterval(tcInter *VideoTimeCodeInterval) *VideoTimeC
 
 // Clear wraps gst_video_time_code_clear
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_clear
 func (tc *VideoTimeCode) Clear() {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 
@@ -21580,8 +20672,7 @@ func (tc *VideoTimeCode) Clear() {
 
 // Compare wraps gst_video_time_code_compare
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_compare
 func (tc1 *VideoTimeCode) Compare(tc2 *VideoTimeCode) int32 {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var carg1 *C.GstVideoTimeCode // in, none, converted
@@ -21603,7 +20694,7 @@ func (tc1 *VideoTimeCode) Compare(tc2 *VideoTimeCode) int32 {
 
 // Copy wraps gst_video_time_code_copy
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_copy
 func (tc *VideoTimeCode) Copy() *VideoTimeCode {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  *C.GstVideoTimeCode // return, full, converted
@@ -21622,7 +20713,7 @@ func (tc *VideoTimeCode) Copy() *VideoTimeCode {
 
 // FramesSinceDailyJam wraps gst_video_time_code_frames_since_daily_jam
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_frames_since_daily_jam
 func (tc *VideoTimeCode) FramesSinceDailyJam() uint64 {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  C.guint64           // return, none, casted
@@ -21641,8 +20732,7 @@ func (tc *VideoTimeCode) FramesSinceDailyJam() uint64 {
 
 // IncrementFrame wraps gst_video_time_code_increment_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_increment_frame
 func (tc *VideoTimeCode) IncrementFrame() {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 
@@ -21654,7 +20744,7 @@ func (tc *VideoTimeCode) IncrementFrame() {
 
 // IsValid wraps gst_video_time_code_is_valid
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_is_valid
 func (tc *VideoTimeCode) IsValid() bool {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  C.gboolean          // return
@@ -21675,7 +20765,7 @@ func (tc *VideoTimeCode) IsValid() bool {
 
 // NsecSinceDailyJam wraps gst_video_time_code_nsec_since_daily_jam
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_nsec_since_daily_jam
 func (tc *VideoTimeCode) NsecSinceDailyJam() uint64 {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  C.guint64           // return, none, casted
@@ -21694,7 +20784,7 @@ func (tc *VideoTimeCode) NsecSinceDailyJam() uint64 {
 
 // String wraps gst_video_time_code_to_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_to_string
 func (tc *VideoTimeCode) String() string {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
 	var cret  *C.gchar            // return, full, string
@@ -21714,8 +20804,7 @@ func (tc *VideoTimeCode) String() string {
 
 // VideoTimeCodeConfig wraps GstVideoTimeCodeConfig
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#GstVideoTimeCodeConfig
 type VideoTimeCodeConfig struct {
 	*videoTimeCodeConfig
 }
@@ -21796,8 +20885,7 @@ func UnsafeVideoTimeCodeConfigToGlibFull(v *VideoTimeCodeConfig) unsafe.Pointer 
 
 // VideoTimeCodeInterval wraps GstVideoTimeCodeInterval
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#GstVideoTimeCodeInterval
 type VideoTimeCodeInterval struct {
 	*videoTimeCodeInterval
 }
@@ -21893,7 +20981,7 @@ func UnsafeVideoTimeCodeIntervalToGlibFull(v *VideoTimeCodeInterval) unsafe.Poin
 
 // NewVideoTimeCodeInterval wraps gst_video_time_code_interval_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_interval_new
 func NewVideoTimeCodeInterval(hours uint, minutes uint, seconds uint, frames uint) *VideoTimeCodeInterval {
 	var carg1 C.guint                     // in, none, casted
 	var carg2 C.guint                     // in, none, casted
@@ -21921,8 +21009,7 @@ func NewVideoTimeCodeInterval(hours uint, minutes uint, seconds uint, frames uin
 
 // NewVideoTimeCodeIntervalFromString wraps gst_video_time_code_interval_new_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_interval_new_from_string
 func NewVideoTimeCodeIntervalFromString(tcInterStr string) *VideoTimeCodeInterval {
 	var carg1 *C.gchar                    // in, none, string
 	var cret  *C.GstVideoTimeCodeInterval // return, full, converted, nullable
@@ -21944,8 +21031,7 @@ func NewVideoTimeCodeIntervalFromString(tcInterStr string) *VideoTimeCodeInterva
 
 // Clear wraps gst_video_time_code_interval_clear
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_interval_clear
 func (tc *VideoTimeCodeInterval) Clear() {
 	var carg0 *C.GstVideoTimeCodeInterval // in, none, converted
 
@@ -21957,7 +21043,7 @@ func (tc *VideoTimeCodeInterval) Clear() {
 
 // Copy wraps gst_video_time_code_interval_copy
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_interval_copy
 func (tc *VideoTimeCodeInterval) Copy() *VideoTimeCodeInterval {
 	var carg0 *C.GstVideoTimeCodeInterval // in, none, converted
 	var cret  *C.GstVideoTimeCodeInterval // return, full, converted
@@ -21976,8 +21062,7 @@ func (tc *VideoTimeCodeInterval) Copy() *VideoTimeCodeInterval {
 
 // Init wraps gst_video_time_code_interval_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideotimecode.html#gst_video_time_code_interval_init
 func (tc *VideoTimeCodeInterval) Init(hours uint, minutes uint, seconds uint, frames uint) {
 	var carg0 *C.GstVideoTimeCodeInterval // in, none, converted
 	var carg1 C.guint                     // in, none, casted
@@ -22001,8 +21086,7 @@ func (tc *VideoTimeCodeInterval) Init(hours uint, minutes uint, seconds uint, fr
 
 // VideoTimeCodeMeta wraps GstVideoTimeCodeMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#GstVideoTimeCodeMeta
 type VideoTimeCodeMeta struct {
 	*videoTimeCodeMeta
 }
@@ -22083,7 +21167,7 @@ func UnsafeVideoTimeCodeMetaToGlibFull(v *VideoTimeCodeMeta) unsafe.Pointer {
 
 // VideoTimeCodeMetaGetInfo wraps gst_video_time_code_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/gstvideometa.html#gst_video_time_code_meta_get_info
 func VideoTimeCodeMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -22098,8 +21182,7 @@ func VideoTimeCodeMetaGetInfo() *gst.MetaInfo {
 
 // VideoVBIEncoder wraps GstVideoVBIEncoder
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#GstVideoVBIEncoder
 type VideoVBIEncoder struct {
 	*videoVBIEncoder
 }
@@ -22195,8 +21278,7 @@ func UnsafeVideoVBIEncoderToGlibFull(v *VideoVBIEncoder) unsafe.Pointer {
 
 // NewVideoVBIEncoder wraps gst_video_vbi_encoder_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_vbi_encoder_new
 func NewVideoVBIEncoder(format VideoFormat, pixelWidth uint32) *VideoVBIEncoder {
 	var carg1 C.GstVideoFormat      // in, none, casted
 	var carg2 C.guint32             // in, none, casted
@@ -22220,8 +21302,7 @@ func NewVideoVBIEncoder(format VideoFormat, pixelWidth uint32) *VideoVBIEncoder 
 
 // AddAncillary wraps gst_video_vbi_encoder_add_ancillary
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_vbi_encoder_add_ancillary
 func (encoder *VideoVBIEncoder) AddAncillary(composite bool, did uint8, sdidBlockNumber uint8, data []uint8) bool {
 	var carg0 *C.GstVideoVBIEncoder // in, none, converted
 	var carg1 C.gboolean            // in
@@ -22260,7 +21341,7 @@ func (encoder *VideoVBIEncoder) AddAncillary(composite bool, did uint8, sdidBloc
 
 // Copy wraps gst_video_vbi_encoder_copy
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_vbi_encoder_copy
 func (encoder *VideoVBIEncoder) Copy() *VideoVBIEncoder {
 	var carg0 *C.GstVideoVBIEncoder // in, none, converted
 	var cret  *C.GstVideoVBIEncoder // return, full, converted
@@ -22279,7 +21360,7 @@ func (encoder *VideoVBIEncoder) Copy() *VideoVBIEncoder {
 
 // WriteLine wraps gst_video_vbi_encoder_write_line
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_vbi_encoder_write_line
 func (encoder *VideoVBIEncoder) WriteLine(data *uint8) {
 	var carg0 *C.GstVideoVBIEncoder // in, none, converted
 	var carg1 *C.guint8             // in, transfer: none, C Pointers: 1, Name: guint8
@@ -22296,8 +21377,7 @@ func (encoder *VideoVBIEncoder) WriteLine(data *uint8) {
 
 // VideoVBIParser wraps GstVideoVBIParser
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#GstVideoVBIParser
 type VideoVBIParser struct {
 	*videoVBIParser
 }
@@ -22393,8 +21473,7 @@ func UnsafeVideoVBIParserToGlibFull(v *VideoVBIParser) unsafe.Pointer {
 
 // NewVideoVBIParser wraps gst_video_vbi_parser_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_vbi_parser_new
 func NewVideoVBIParser(format VideoFormat, pixelWidth uint32) *VideoVBIParser {
 	var carg1 C.GstVideoFormat     // in, none, casted
 	var carg2 C.guint32            // in, none, casted
@@ -22418,7 +21497,7 @@ func NewVideoVBIParser(format VideoFormat, pixelWidth uint32) *VideoVBIParser {
 
 // Copy wraps gst_video_vbi_parser_copy
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_vbi_parser_copy
 func (parser *VideoVBIParser) Copy() *VideoVBIParser {
 	var carg0 *C.GstVideoVBIParser // in, none, converted
 	var cret  *C.GstVideoVBIParser // return, full, converted
@@ -22437,8 +21516,7 @@ func (parser *VideoVBIParser) Copy() *VideoVBIParser {
 
 // GetAncillary wraps gst_video_vbi_parser_get_ancillary
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/video/video-anc.html#gst_video_vbi_parser_get_ancillary
 func (parser *VideoVBIParser) GetAncillary() (VideoAncillary, VideoVBIParserResult) {
 	var carg0 *C.GstVideoVBIParser      // in, none, converted
 	var carg1 C.GstVideoAncillary       // out, transfer: none, C Pointers: 0, Name: VideoAncillary, caller-allocates

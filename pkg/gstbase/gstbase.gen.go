@@ -457,32 +457,29 @@ func init() {
 
 // BASE_PARSE_FLAG_DRAINING wraps GST_BASE_PARSE_FLAG_DRAINING
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GST_BASE_PARSE_FLAG_DRAINING
 const BASE_PARSE_FLAG_DRAINING = 2
 // BASE_PARSE_FLAG_LOST_SYNC wraps GST_BASE_PARSE_FLAG_LOST_SYNC
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GST_BASE_PARSE_FLAG_LOST_SYNC
 const BASE_PARSE_FLAG_LOST_SYNC = 1
 // AggregatorStartTimeSelection wraps GstAggregatorStartTimeSelection
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base#GstAggregatorStartTimeSelection
 type AggregatorStartTimeSelection C.int
 
 const (
 	// AggregatorStartTimeSelectionZero wraps GST_AGGREGATOR_START_TIME_SELECTION_ZERO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_AGGREGATOR_START_TIME_SELECTION_ZERO
 	AggregatorStartTimeSelectionZero AggregatorStartTimeSelection = 0
 	// AggregatorStartTimeSelectionFirst wraps GST_AGGREGATOR_START_TIME_SELECTION_FIRST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_AGGREGATOR_START_TIME_SELECTION_FIRST
 	AggregatorStartTimeSelectionFirst AggregatorStartTimeSelection = 1
 	// AggregatorStartTimeSelectionSet wraps GST_AGGREGATOR_START_TIME_SELECTION_SET
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_AGGREGATOR_START_TIME_SELECTION_SET
 	AggregatorStartTimeSelectionSet AggregatorStartTimeSelection = 2
 )
 
@@ -511,40 +508,33 @@ func (e AggregatorStartTimeSelection) String() string {
 
 // BaseParseFrameFlags wraps GstBaseParseFrameFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GstBaseParseFrameFlags
 type BaseParseFrameFlags C.gint
 
 const (
 	// BaseParseFrameFlagNone wraps GST_BASE_PARSE_FRAME_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_NONE
 	BaseParseFrameFlagNone BaseParseFrameFlags = 0
 	// BaseParseFrameFlagNewFrame wraps GST_BASE_PARSE_FRAME_FLAG_NEW_FRAME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_NEW_FRAME
 	BaseParseFrameFlagNewFrame BaseParseFrameFlags = 1
 	// BaseParseFrameFlagNoFrame wraps GST_BASE_PARSE_FRAME_FLAG_NO_FRAME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_NO_FRAME
 	BaseParseFrameFlagNoFrame BaseParseFrameFlags = 2
 	// BaseParseFrameFlagClip wraps GST_BASE_PARSE_FRAME_FLAG_CLIP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_CLIP
 	BaseParseFrameFlagClip BaseParseFrameFlags = 4
 	// BaseParseFrameFlagDrop wraps GST_BASE_PARSE_FRAME_FLAG_DROP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_DROP
 	BaseParseFrameFlagDrop BaseParseFrameFlags = 8
 	// BaseParseFrameFlagQueue wraps GST_BASE_PARSE_FRAME_FLAG_QUEUE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_QUEUE
 	BaseParseFrameFlagQueue BaseParseFrameFlags = 16
 )
 
@@ -582,25 +572,21 @@ func (f BaseParseFrameFlags) String() string {
 
 // BaseSrcFlags wraps GstBaseSrcFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#GstBaseSrcFlags
 type BaseSrcFlags C.gint
 
 const (
 	// BaseSrcFlagStarting wraps GST_BASE_SRC_FLAG_STARTING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_SRC_FLAG_STARTING
 	BaseSrcFlagStarting BaseSrcFlags = 16384
 	// BaseSrcFlagStarted wraps GST_BASE_SRC_FLAG_STARTED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_SRC_FLAG_STARTED
 	BaseSrcFlagStarted BaseSrcFlags = 32768
 	// BaseSrcFlagLast wraps GST_BASE_SRC_FLAG_LAST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_SRC_FLAG_LAST
 	BaseSrcFlagLast BaseSrcFlags = 1048576
 )
 
@@ -629,34 +615,29 @@ func (f BaseSrcFlags) String() string {
 
 // CollectPadsStateFlags wraps GstCollectPadsStateFlags
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPadsStateFlags
 type CollectPadsStateFlags C.gint
 
 const (
 	// CollectPadsStateEOS wraps GST_COLLECT_PADS_STATE_EOS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_EOS
 	CollectPadsStateEOS CollectPadsStateFlags = 1
 	// CollectPadsStateFlushing wraps GST_COLLECT_PADS_STATE_FLUSHING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_FLUSHING
 	CollectPadsStateFlushing CollectPadsStateFlags = 2
 	// CollectPadsStateNewSegment wraps GST_COLLECT_PADS_STATE_NEW_SEGMENT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_NEW_SEGMENT
 	CollectPadsStateNewSegment CollectPadsStateFlags = 4
 	// CollectPadsStateWaiting wraps GST_COLLECT_PADS_STATE_WAITING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_WAITING
 	CollectPadsStateWaiting CollectPadsStateFlags = 8
 	// CollectPadsStateLocked wraps GST_COLLECT_PADS_STATE_LOCKED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_LOCKED
 	CollectPadsStateLocked CollectPadsStateFlags = 16
 )
 
@@ -691,50 +672,42 @@ func (f CollectPadsStateFlags) String() string {
 
 // CollectPadsBufferFunction wraps GstCollectPadsBufferFunction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPadsBufferFunction
 type CollectPadsBufferFunction func(pads CollectPads, data *CollectData, buffer *gst.Buffer) (goret gst.FlowReturn)
 
 // CollectPadsClipFunction wraps GstCollectPadsClipFunction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPadsClipFunction
 type CollectPadsClipFunction func(pads CollectPads, data *CollectData, inbuffer *gst.Buffer) (outbuffer *gst.Buffer, goret gst.FlowReturn)
 
 // CollectPadsCompareFunction wraps GstCollectPadsCompareFunction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPadsCompareFunction
 type CollectPadsCompareFunction func(pads CollectPads, data1 *CollectData, timestamp1 gst.ClockTime, data2 *CollectData, timestamp2 gst.ClockTime) (goret int32)
 
 // CollectPadsEventFunction wraps GstCollectPadsEventFunction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPadsEventFunction
 type CollectPadsEventFunction func(pads CollectPads, pad *CollectData, event *gst.Event) (goret bool)
 
 // CollectPadsFlushFunction wraps GstCollectPadsFlushFunction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPadsFlushFunction
 type CollectPadsFlushFunction func(pads CollectPads)
 
 // CollectPadsFunction wraps GstCollectPadsFunction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPadsFunction
 type CollectPadsFunction func(pads CollectPads) (goret gst.FlowReturn)
 
 // CollectPadsQueryFunction wraps GstCollectPadsQueryFunction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPadsQueryFunction
 type CollectPadsQueryFunction func(pads CollectPads, pad *CollectData, query *gst.Query) (goret bool)
 
 // TypeFindHelper wraps gst_type_find_helper
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func TypeFindHelper(src gst.Pad, size uint64) *gst.Caps {
 	var carg1 *C.GstPad  // in, none, converted
 	var carg2 C.guint64  // in, none, casted
@@ -758,8 +731,7 @@ func TypeFindHelper(src gst.Pad, size uint64) *gst.Caps {
 
 // TypeFindHelperForBuffer wraps gst_type_find_helper_for_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func TypeFindHelperForBuffer(obj gst.Object, buf *gst.Buffer) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.GstBuffer             // in, none, converted
@@ -788,8 +760,7 @@ func TypeFindHelperForBuffer(obj gst.Object, buf *gst.Buffer) (gst.TypeFindProba
 
 // TypeFindHelperForBufferWithCaps wraps gst_type_find_helper_for_buffer_with_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func TypeFindHelperForBufferWithCaps(obj gst.Object, buf *gst.Buffer, caps *gst.Caps) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.GstBuffer             // in, none, converted
@@ -821,8 +792,7 @@ func TypeFindHelperForBufferWithCaps(obj gst.Object, buf *gst.Buffer, caps *gst.
 
 // TypeFindHelperForBufferWithExtension wraps gst_type_find_helper_for_buffer_with_extension
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func TypeFindHelperForBufferWithExtension(obj gst.Object, buf *gst.Buffer, extension string) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.GstBuffer             // in, none, converted
@@ -857,8 +827,7 @@ func TypeFindHelperForBufferWithExtension(obj gst.Object, buf *gst.Buffer, exten
 
 // TypeFindHelperForData wraps gst_type_find_helper_for_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -891,8 +860,7 @@ func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbabilit
 
 // TypeFindHelperForDataWithCaps wraps gst_type_find_helper_for_data_with_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -928,8 +896,7 @@ func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps)
 
 // TypeFindHelperForDataWithExtension wraps gst_type_find_helper_for_data_with_extension
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension string) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -968,8 +935,7 @@ func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension 
 
 // TypeFindHelperForExtension wraps gst_type_find_helper_for_extension
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func TypeFindHelperForExtension(obj gst.Object, extension string) *gst.Caps {
 	var carg1 *C.GstObject // in, none, converted, nullable
 	var carg2 *C.gchar     // in, none, string
@@ -996,8 +962,7 @@ func TypeFindHelperForExtension(obj gst.Object, extension string) *gst.Caps {
 
 // TypeFindListFactoriesForCaps wraps gst_type_find_list_factories_for_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func TypeFindListFactoriesForCaps(obj gst.Object, caps *gst.Caps) []gst.TypeFindFactory {
 	var carg1 *C.GstObject // in, none, converted, nullable
 	var carg2 *C.GstCaps   // in, none, converted
@@ -1036,141 +1001,114 @@ var _ Adapter = (*AdapterInstance)(nil)
 
 // Adapter wraps GstAdapter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#GstAdapter
 type Adapter interface {
 	gobject.Object
 	upcastToGstAdapter() *AdapterInstance
 
 	// Available wraps gst_adapter_available
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_available
 	Available() uint
 	// AvailableFast wraps gst_adapter_available_fast
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_available_fast
 	AvailableFast() uint
 	// Clear wraps gst_adapter_clear
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_clear
 	Clear()
 	// CopyBytes wraps gst_adapter_copy_bytes
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_copy_bytes
 	CopyBytes(uint, uint) *glib.Bytes
 	// DistanceFromDiscont wraps gst_adapter_distance_from_discont
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_distance_from_discont
 	DistanceFromDiscont() uint64
 	// DtsAtDiscont wraps gst_adapter_dts_at_discont
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_dts_at_discont
 	DtsAtDiscont() gst.ClockTime
 	// Flush wraps gst_adapter_flush
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_flush
 	Flush(uint)
 	// GetBuffer wraps gst_adapter_get_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_get_buffer
 	GetBuffer(uint) *gst.Buffer
 	// GetBufferFast wraps gst_adapter_get_buffer_fast
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_get_buffer_fast
 	GetBufferFast(uint) *gst.Buffer
 	// GetBufferList wraps gst_adapter_get_buffer_list
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_get_buffer_list
 	GetBufferList(uint) *gst.BufferList
 	// GetList wraps gst_adapter_get_list
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_get_list
 	GetList(uint) []*gst.Buffer
 	// MaskedScanUint32 wraps gst_adapter_masked_scan_uint32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_masked_scan_uint32
 	MaskedScanUint32(uint32, uint32, uint, uint) int
 	// MaskedScanUint32Peek wraps gst_adapter_masked_scan_uint32_peek
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_masked_scan_uint32_peek
 	MaskedScanUint32Peek(uint32, uint32, uint, uint) (uint32, int)
 	// OffsetAtDiscont wraps gst_adapter_offset_at_discont
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_offset_at_discont
 	OffsetAtDiscont() uint64
 	// PrevDts wraps gst_adapter_prev_dts
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_dts
 	PrevDts() (uint64, gst.ClockTime)
 	// PrevDtsAtOffset wraps gst_adapter_prev_dts_at_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_dts_at_offset
 	PrevDtsAtOffset(uint) (uint64, gst.ClockTime)
 	// PrevOffset wraps gst_adapter_prev_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_offset
 	PrevOffset() (uint64, uint64)
 	// PrevPts wraps gst_adapter_prev_pts
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_pts
 	PrevPts() (uint64, gst.ClockTime)
 	// PrevPtsAtOffset wraps gst_adapter_prev_pts_at_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_pts_at_offset
 	PrevPtsAtOffset(uint) (uint64, gst.ClockTime)
 	// PtsAtDiscont wraps gst_adapter_pts_at_discont
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_pts_at_discont
 	PtsAtDiscont() gst.ClockTime
 	// Push wraps gst_adapter_push
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_push
 	Push(*gst.Buffer)
 	// TakeBuffer wraps gst_adapter_take_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_take_buffer
 	TakeBuffer(uint) *gst.Buffer
 	// TakeBufferFast wraps gst_adapter_take_buffer_fast
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_take_buffer_fast
 	TakeBufferFast(uint) *gst.Buffer
 	// TakeBufferList wraps gst_adapter_take_buffer_list
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_take_buffer_list
 	TakeBufferList(uint) *gst.BufferList
 	// TakeList wraps gst_adapter_take_list
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_take_list
 	TakeList(uint) []*gst.Buffer
 	// Unmap wraps gst_adapter_unmap
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_unmap
 	Unmap()
 }
 
@@ -1224,8 +1162,7 @@ func UnsafeAdapterToGlibFull(c Adapter) unsafe.Pointer {
 
 // NewAdapter wraps gst_adapter_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_new
 func NewAdapter() Adapter {
 	var cret *C.GstAdapter // return, full, converted
 
@@ -1240,8 +1177,7 @@ func NewAdapter() Adapter {
 
 // Available wraps gst_adapter_available
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_available
 func (adapter *AdapterInstance) Available() uint {
 	var carg0 *C.GstAdapter // in, none, converted
 	var cret  C.gsize       // return, none, casted
@@ -1260,8 +1196,7 @@ func (adapter *AdapterInstance) Available() uint {
 
 // AvailableFast wraps gst_adapter_available_fast
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_available_fast
 func (adapter *AdapterInstance) AvailableFast() uint {
 	var carg0 *C.GstAdapter // in, none, converted
 	var cret  C.gsize       // return, none, casted
@@ -1280,8 +1215,7 @@ func (adapter *AdapterInstance) AvailableFast() uint {
 
 // Clear wraps gst_adapter_clear
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_clear
 func (adapter *AdapterInstance) Clear() {
 	var carg0 *C.GstAdapter // in, none, converted
 
@@ -1293,8 +1227,7 @@ func (adapter *AdapterInstance) Clear() {
 
 // CopyBytes wraps gst_adapter_copy_bytes
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_copy_bytes
 func (adapter *AdapterInstance) CopyBytes(offset uint, size uint) *glib.Bytes {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1319,8 +1252,7 @@ func (adapter *AdapterInstance) CopyBytes(offset uint, size uint) *glib.Bytes {
 
 // DistanceFromDiscont wraps gst_adapter_distance_from_discont
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_distance_from_discont
 func (adapter *AdapterInstance) DistanceFromDiscont() uint64 {
 	var carg0 *C.GstAdapter // in, none, converted
 	var cret  C.guint64     // return, none, casted
@@ -1339,8 +1271,7 @@ func (adapter *AdapterInstance) DistanceFromDiscont() uint64 {
 
 // DtsAtDiscont wraps gst_adapter_dts_at_discont
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_dts_at_discont
 func (adapter *AdapterInstance) DtsAtDiscont() gst.ClockTime {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -1359,8 +1290,7 @@ func (adapter *AdapterInstance) DtsAtDiscont() gst.ClockTime {
 
 // Flush wraps gst_adapter_flush
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_flush
 func (adapter *AdapterInstance) Flush(flush uint) {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1375,8 +1305,7 @@ func (adapter *AdapterInstance) Flush(flush uint) {
 
 // GetBuffer wraps gst_adapter_get_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_get_buffer
 func (adapter *AdapterInstance) GetBuffer(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1400,8 +1329,7 @@ func (adapter *AdapterInstance) GetBuffer(nbytes uint) *gst.Buffer {
 
 // GetBufferFast wraps gst_adapter_get_buffer_fast
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_get_buffer_fast
 func (adapter *AdapterInstance) GetBufferFast(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1425,8 +1353,7 @@ func (adapter *AdapterInstance) GetBufferFast(nbytes uint) *gst.Buffer {
 
 // GetBufferList wraps gst_adapter_get_buffer_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_get_buffer_list
 func (adapter *AdapterInstance) GetBufferList(nbytes uint) *gst.BufferList {
 	var carg0 *C.GstAdapter    // in, none, converted
 	var carg1 C.gsize          // in, none, casted
@@ -1450,8 +1377,7 @@ func (adapter *AdapterInstance) GetBufferList(nbytes uint) *gst.BufferList {
 
 // GetList wraps gst_adapter_get_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_get_list
 func (adapter *AdapterInstance) GetList(nbytes uint) []*gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1480,8 +1406,7 @@ func (adapter *AdapterInstance) GetList(nbytes uint) []*gst.Buffer {
 
 // MaskedScanUint32 wraps gst_adapter_masked_scan_uint32
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_masked_scan_uint32
 func (adapter *AdapterInstance) MaskedScanUint32(mask uint32, pattern uint32, offset uint, size uint) int {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.guint32     // in, none, casted
@@ -1512,8 +1437,7 @@ func (adapter *AdapterInstance) MaskedScanUint32(mask uint32, pattern uint32, of
 
 // MaskedScanUint32Peek wraps gst_adapter_masked_scan_uint32_peek
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_masked_scan_uint32_peek
 func (adapter *AdapterInstance) MaskedScanUint32Peek(mask uint32, pattern uint32, offset uint, size uint) (uint32, int) {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.guint32     // in, none, casted
@@ -1547,8 +1471,7 @@ func (adapter *AdapterInstance) MaskedScanUint32Peek(mask uint32, pattern uint32
 
 // OffsetAtDiscont wraps gst_adapter_offset_at_discont
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_offset_at_discont
 func (adapter *AdapterInstance) OffsetAtDiscont() uint64 {
 	var carg0 *C.GstAdapter // in, none, converted
 	var cret  C.guint64     // return, none, casted
@@ -1567,8 +1490,7 @@ func (adapter *AdapterInstance) OffsetAtDiscont() uint64 {
 
 // PrevDts wraps gst_adapter_prev_dts
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_dts
 func (adapter *AdapterInstance) PrevDts() (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var carg1 C.guint64      // out, full, casted
@@ -1590,8 +1512,7 @@ func (adapter *AdapterInstance) PrevDts() (uint64, gst.ClockTime) {
 
 // PrevDtsAtOffset wraps gst_adapter_prev_dts_at_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_dts_at_offset
 func (adapter *AdapterInstance) PrevDtsAtOffset(offset uint) (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var carg1 C.gsize        // in, none, casted
@@ -1616,8 +1537,7 @@ func (adapter *AdapterInstance) PrevDtsAtOffset(offset uint) (uint64, gst.ClockT
 
 // PrevOffset wraps gst_adapter_prev_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_offset
 func (adapter *AdapterInstance) PrevOffset() (uint64, uint64) {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.guint64     // out, full, casted
@@ -1639,8 +1559,7 @@ func (adapter *AdapterInstance) PrevOffset() (uint64, uint64) {
 
 // PrevPts wraps gst_adapter_prev_pts
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_pts
 func (adapter *AdapterInstance) PrevPts() (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var carg1 C.guint64      // out, full, casted
@@ -1662,8 +1581,7 @@ func (adapter *AdapterInstance) PrevPts() (uint64, gst.ClockTime) {
 
 // PrevPtsAtOffset wraps gst_adapter_prev_pts_at_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_prev_pts_at_offset
 func (adapter *AdapterInstance) PrevPtsAtOffset(offset uint) (uint64, gst.ClockTime) {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var carg1 C.gsize        // in, none, casted
@@ -1688,8 +1606,7 @@ func (adapter *AdapterInstance) PrevPtsAtOffset(offset uint) (uint64, gst.ClockT
 
 // PtsAtDiscont wraps gst_adapter_pts_at_discont
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_pts_at_discont
 func (adapter *AdapterInstance) PtsAtDiscont() gst.ClockTime {
 	var carg0 *C.GstAdapter  // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -1708,8 +1625,7 @@ func (adapter *AdapterInstance) PtsAtDiscont() gst.ClockTime {
 
 // Push wraps gst_adapter_push
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_push
 func (adapter *AdapterInstance) Push(buf *gst.Buffer) {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 *C.GstBuffer  // in, full, converted
@@ -1724,8 +1640,7 @@ func (adapter *AdapterInstance) Push(buf *gst.Buffer) {
 
 // TakeBuffer wraps gst_adapter_take_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_take_buffer
 func (adapter *AdapterInstance) TakeBuffer(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1749,8 +1664,7 @@ func (adapter *AdapterInstance) TakeBuffer(nbytes uint) *gst.Buffer {
 
 // TakeBufferFast wraps gst_adapter_take_buffer_fast
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_take_buffer_fast
 func (adapter *AdapterInstance) TakeBufferFast(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1774,8 +1688,7 @@ func (adapter *AdapterInstance) TakeBufferFast(nbytes uint) *gst.Buffer {
 
 // TakeBufferList wraps gst_adapter_take_buffer_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_take_buffer_list
 func (adapter *AdapterInstance) TakeBufferList(nbytes uint) *gst.BufferList {
 	var carg0 *C.GstAdapter    // in, none, converted
 	var carg1 C.gsize          // in, none, casted
@@ -1799,8 +1712,7 @@ func (adapter *AdapterInstance) TakeBufferList(nbytes uint) *gst.BufferList {
 
 // TakeList wraps gst_adapter_take_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_take_list
 func (adapter *AdapterInstance) TakeList(nbytes uint) []*gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
@@ -1829,8 +1741,7 @@ func (adapter *AdapterInstance) TakeList(nbytes uint) []*gst.Buffer {
 
 // Unmap wraps gst_adapter_unmap
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#gst_adapter_unmap
 func (adapter *AdapterInstance) Unmap() {
 	var carg0 *C.GstAdapter // in, none, converted
 
@@ -1850,99 +1761,82 @@ var _ Aggregator = (*AggregatorInstance)(nil)
 
 // Aggregator wraps GstAggregator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#GstAggregator
 type Aggregator interface {
 	gst.Element
 	upcastToGstAggregator() *AggregatorInstance
 
 	// FinishBuffer wraps gst_aggregator_finish_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_finish_buffer
 	FinishBuffer(*gst.Buffer) gst.FlowReturn
 	// FinishBufferList wraps gst_aggregator_finish_buffer_list
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_finish_buffer_list
 	FinishBufferList(*gst.BufferList) gst.FlowReturn
 	// GetAllocator wraps gst_aggregator_get_allocator
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_allocator
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_aggregator_get_buffer_pool
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_buffer_pool
 	GetBufferPool() gst.BufferPool
 	// GetForceLive wraps gst_aggregator_get_force_live
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_force_live
 	GetForceLive() bool
 	// GetIgnoreInactivePads wraps gst_aggregator_get_ignore_inactive_pads
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_ignore_inactive_pads
 	GetIgnoreInactivePads() bool
 	// GetLatency wraps gst_aggregator_get_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_latency
 	GetLatency() gst.ClockTime
 	// Negotiate wraps gst_aggregator_negotiate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_negotiate
 	Negotiate() bool
 	// PeekNextSample wraps gst_aggregator_peek_next_sample
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_peek_next_sample
 	PeekNextSample(AggregatorPad) *gst.Sample
 	// PushSrcEvent wraps gst_aggregator_push_src_event
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_push_src_event
 	PushSrcEvent(*gst.Event) bool
 	// SelectedSamples wraps gst_aggregator_selected_samples
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_selected_samples
 	SelectedSamples(gst.ClockTime, gst.ClockTime, gst.ClockTime, *gst.Structure)
 	// SetForceLive wraps gst_aggregator_set_force_live
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_set_force_live
 	SetForceLive(bool)
 	// SetIgnoreInactivePads wraps gst_aggregator_set_ignore_inactive_pads
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_set_ignore_inactive_pads
 	SetIgnoreInactivePads(bool)
 	// SetLatency wraps gst_aggregator_set_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_set_latency
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetSrcCaps wraps gst_aggregator_set_src_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_set_src_caps
 	SetSrcCaps(*gst.Caps)
 	// SimpleGetNextTime wraps gst_aggregator_simple_get_next_time
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_simple_get_next_time
 	SimpleGetNextTime() gst.ClockTime
 	// UpdateSegment wraps gst_aggregator_update_segment
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_update_segment
 	UpdateSegment(*gst.Segment)
 	// ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base
 	ConnectSamplesSelected(func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -1950,112 +1844,112 @@ type Aggregator interface {
 	// ParentAggregate calls the default implementations of the `GstAggregator.aggregate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#aggregate
 	ParentAggregate(timeout bool) gst.FlowReturn
 	// ParentClip calls the default implementations of the `GstAggregator.clip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#clip
 	ParentClip(aggregatorPad AggregatorPad, buf *gst.Buffer) *gst.Buffer
 	// ParentDecideAllocation calls the default implementations of the `GstAggregator.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#decide_allocation
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFinishBuffer calls the default implementations of the `GstAggregator.finish_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#finish_buffer
 	ParentFinishBuffer(buffer *gst.Buffer) gst.FlowReturn
 	// ParentFinishBufferList calls the default implementations of the `GstAggregator.finish_buffer_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#finish_buffer_list
 	ParentFinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn
 	// ParentFixateSrcCaps calls the default implementations of the `GstAggregator.fixate_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#fixate_src_caps
 	ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps
 	// ParentFlush calls the default implementations of the `GstAggregator.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#flush
 	ParentFlush() gst.FlowReturn
 	// ParentGetNextTime calls the default implementations of the `GstAggregator.get_next_time` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#get_next_time
 	ParentGetNextTime() gst.ClockTime
 	// ParentNegotiate calls the default implementations of the `GstAggregator.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#negotiate
 	ParentNegotiate() bool
 	// ParentNegotiatedSrcCaps calls the default implementations of the `GstAggregator.negotiated_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#negotiated_src_caps
 	ParentNegotiatedSrcCaps(caps *gst.Caps) bool
 	// ParentPeekNextSample calls the default implementations of the `GstAggregator.peek_next_sample` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#peek_next_sample
 	ParentPeekNextSample(aggregatorPad AggregatorPad) *gst.Sample
 	// ParentProposeAllocation calls the default implementations of the `GstAggregator.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#propose_allocation
 	ParentProposeAllocation(pad AggregatorPad, decideQuery *gst.Query, query *gst.Query) bool
 	// ParentSinkEvent calls the default implementations of the `GstAggregator.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_event
 	ParentSinkEvent(aggregatorPad AggregatorPad, event *gst.Event) bool
 	// ParentSinkEventPreQueue calls the default implementations of the `GstAggregator.sink_event_pre_queue` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_event_pre_queue
 	ParentSinkEventPreQueue(aggregatorPad AggregatorPad, event *gst.Event) gst.FlowReturn
 	// ParentSinkQuery calls the default implementations of the `GstAggregator.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_query
 	ParentSinkQuery(aggregatorPad AggregatorPad, query *gst.Query) bool
 	// ParentSinkQueryPreQueue calls the default implementations of the `GstAggregator.sink_query_pre_queue` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_query_pre_queue
 	ParentSinkQueryPreQueue(aggregatorPad AggregatorPad, query *gst.Query) bool
 	// ParentSrcActivate calls the default implementations of the `GstAggregator.src_activate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#src_activate
 	ParentSrcActivate(mode gst.PadMode, active bool) bool
 	// ParentSrcEvent calls the default implementations of the `GstAggregator.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#src_event
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstAggregator.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#src_query
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstAggregator.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstAggregator.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#stop
 	ParentStop() bool
 	// ParentUpdateSrcCaps calls the default implementations of the `GstAggregator.update_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#update_src_caps
 	ParentUpdateSrcCaps(caps *gst.Caps) (*gst.Caps, gst.FlowReturn)
 }
 
@@ -2115,8 +2009,7 @@ func UnsafeAggregatorToGlibFull(c Aggregator) unsafe.Pointer {
 
 // FinishBuffer wraps gst_aggregator_finish_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_finish_buffer
 func (aggregator *AggregatorInstance) FinishBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstBuffer     // in, full, converted
@@ -2138,8 +2031,7 @@ func (aggregator *AggregatorInstance) FinishBuffer(buffer *gst.Buffer) gst.FlowR
 
 // FinishBufferList wraps gst_aggregator_finish_buffer_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_finish_buffer_list
 func (aggregator *AggregatorInstance) FinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstBufferList // in, full, converted
@@ -2161,8 +2053,7 @@ func (aggregator *AggregatorInstance) FinishBufferList(bufferlist *gst.BufferLis
 
 // GetAllocator wraps gst_aggregator_get_allocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_allocator
 func (self *AggregatorInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstAggregator      // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -2188,7 +2079,7 @@ func (self *AggregatorInstance) GetAllocator() (gst.Allocator, gst.AllocationPar
 
 // GetBufferPool wraps gst_aggregator_get_buffer_pool
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_buffer_pool
 func (self *AggregatorInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  *C.GstBufferPool // return, full, converted, nullable
@@ -2209,8 +2100,7 @@ func (self *AggregatorInstance) GetBufferPool() gst.BufferPool {
 
 // GetForceLive wraps gst_aggregator_get_force_live
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_force_live
 func (self *AggregatorInstance) GetForceLive() bool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.gboolean       // return
@@ -2231,7 +2121,7 @@ func (self *AggregatorInstance) GetForceLive() bool {
 
 // GetIgnoreInactivePads wraps gst_aggregator_get_ignore_inactive_pads
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_ignore_inactive_pads
 func (self *AggregatorInstance) GetIgnoreInactivePads() bool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.gboolean       // return
@@ -2252,8 +2142,7 @@ func (self *AggregatorInstance) GetIgnoreInactivePads() bool {
 
 // GetLatency wraps gst_aggregator_get_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_get_latency
 func (self *AggregatorInstance) GetLatency() gst.ClockTime {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.GstClockTime   // return, none, casted, alias
@@ -2272,8 +2161,7 @@ func (self *AggregatorInstance) GetLatency() gst.ClockTime {
 
 // Negotiate wraps gst_aggregator_negotiate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_negotiate
 func (self *AggregatorInstance) Negotiate() bool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.gboolean       // return
@@ -2294,8 +2182,7 @@ func (self *AggregatorInstance) Negotiate() bool {
 
 // PeekNextSample wraps gst_aggregator_peek_next_sample
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_peek_next_sample
 func (self *AggregatorInstance) PeekNextSample(pad AggregatorPad) *gst.Sample {
 	var carg0 *C.GstAggregator    // in, none, converted
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -2319,8 +2206,7 @@ func (self *AggregatorInstance) PeekNextSample(pad AggregatorPad) *gst.Sample {
 
 // PushSrcEvent wraps gst_aggregator_push_src_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_push_src_event
 func (aggregator *AggregatorInstance) PushSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstEvent      // in, full, converted
@@ -2344,8 +2230,7 @@ func (aggregator *AggregatorInstance) PushSrcEvent(event *gst.Event) bool {
 
 // SelectedSamples wraps gst_aggregator_selected_samples
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_selected_samples
 func (self *AggregatorInstance) SelectedSamples(pts gst.ClockTime, dts gst.ClockTime, duration gst.ClockTime, info *gst.Structure) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 C.GstClockTime   // in, none, casted, alias
@@ -2371,8 +2256,7 @@ func (self *AggregatorInstance) SelectedSamples(pts gst.ClockTime, dts gst.Clock
 
 // SetForceLive wraps gst_aggregator_set_force_live
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_set_force_live
 func (self *AggregatorInstance) SetForceLive(forceLive bool) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 C.gboolean       // in
@@ -2389,8 +2273,7 @@ func (self *AggregatorInstance) SetForceLive(forceLive bool) {
 
 // SetIgnoreInactivePads wraps gst_aggregator_set_ignore_inactive_pads
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_set_ignore_inactive_pads
 func (self *AggregatorInstance) SetIgnoreInactivePads(ignore bool) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 C.gboolean       // in
@@ -2407,8 +2290,7 @@ func (self *AggregatorInstance) SetIgnoreInactivePads(ignore bool) {
 
 // SetLatency wraps gst_aggregator_set_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_set_latency
 func (self *AggregatorInstance) SetLatency(minLatency gst.ClockTime, maxLatency gst.ClockTime) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 C.GstClockTime   // in, none, casted, alias
@@ -2426,8 +2308,7 @@ func (self *AggregatorInstance) SetLatency(minLatency gst.ClockTime, maxLatency 
 
 // SetSrcCaps wraps gst_aggregator_set_src_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_set_src_caps
 func (self *AggregatorInstance) SetSrcCaps(caps *gst.Caps) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstCaps       // in, none, converted
@@ -2442,8 +2323,7 @@ func (self *AggregatorInstance) SetSrcCaps(caps *gst.Caps) {
 
 // SimpleGetNextTime wraps gst_aggregator_simple_get_next_time
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_simple_get_next_time
 func (self *AggregatorInstance) SimpleGetNextTime() gst.ClockTime {
 	var carg0 *C.GstAggregator // in, none, converted
 	var cret  C.GstClockTime   // return, none, casted, alias
@@ -2462,8 +2342,7 @@ func (self *AggregatorInstance) SimpleGetNextTime() gst.ClockTime {
 
 // UpdateSegment wraps gst_aggregator_update_segment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_update_segment
 func (self *AggregatorInstance) UpdateSegment(segment *gst.Segment) {
 	var carg0 *C.GstAggregator // in, none, converted
 	var carg1 *C.GstSegment    // in, none, converted
@@ -2478,8 +2357,7 @@ func (self *AggregatorInstance) UpdateSegment(segment *gst.Segment) {
 
 // ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func (o *AggregatorInstance) ConnectSamplesSelected(fn func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("samples-selected", fn)
 }
@@ -2492,91 +2370,91 @@ type AggregatorOverrides[Instance Aggregator] struct {
 
 	// // Aggregate allows you to override the implementation of the virtual method aggregate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#aggregate
 	Aggregate func(Instance, bool) gst.FlowReturn
 	// // Clip allows you to override the implementation of the virtual method clip.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#clip
 	Clip func(Instance, AggregatorPad, *gst.Buffer) *gst.Buffer
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#decide_allocation
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // FinishBuffer allows you to override the implementation of the virtual method finish_buffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#finish_buffer
 	FinishBuffer func(Instance, *gst.Buffer) gst.FlowReturn
 	// // FinishBufferList allows you to override the implementation of the virtual method finish_buffer_list.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#finish_buffer_list
 	FinishBufferList func(Instance, *gst.BufferList) gst.FlowReturn
 	// // FixateSrcCaps allows you to override the implementation of the virtual method fixate_src_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#fixate_src_caps
 	FixateSrcCaps func(Instance, *gst.Caps) *gst.Caps
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#flush
 	Flush func(Instance) gst.FlowReturn
 	// // GetNextTime allows you to override the implementation of the virtual method get_next_time.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#get_next_time
 	GetNextTime func(Instance) gst.ClockTime
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#negotiate
 	Negotiate func(Instance) bool
 	// // NegotiatedSrcCaps allows you to override the implementation of the virtual method negotiated_src_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#negotiated_src_caps
 	NegotiatedSrcCaps func(Instance, *gst.Caps) bool
 	// // PeekNextSample allows you to override the implementation of the virtual method peek_next_sample.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#peek_next_sample
 	PeekNextSample func(Instance, AggregatorPad) *gst.Sample
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#propose_allocation
 	ProposeAllocation func(Instance, AggregatorPad, *gst.Query, *gst.Query) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_event
 	SinkEvent func(Instance, AggregatorPad, *gst.Event) bool
 	// // SinkEventPreQueue allows you to override the implementation of the virtual method sink_event_pre_queue.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_event_pre_queue
 	SinkEventPreQueue func(Instance, AggregatorPad, *gst.Event) gst.FlowReturn
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_query
 	SinkQuery func(Instance, AggregatorPad, *gst.Query) bool
 	// // SinkQueryPreQueue allows you to override the implementation of the virtual method sink_query_pre_queue.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_query_pre_queue
 	SinkQueryPreQueue func(Instance, AggregatorPad, *gst.Query) bool
 	// // SrcActivate allows you to override the implementation of the virtual method src_activate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#src_activate
 	SrcActivate func(Instance, gst.PadMode, bool) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#src_event
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#src_query
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#stop
 	Stop func(Instance) bool
 	// // UpdateSrcCaps allows you to override the implementation of the virtual method update_src_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#update_src_caps
 	UpdateSrcCaps func(Instance, *gst.Caps) (*gst.Caps, gst.FlowReturn)
 }
 
@@ -3113,7 +2991,7 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 // ParentAggregate calls the default implementations of the `GstAggregator.aggregate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#aggregate
 func (aggregator *AggregatorInstance) ParentAggregate(timeout bool) gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var carg1 C.gboolean      // in, none, converted
@@ -3140,7 +3018,7 @@ func (aggregator *AggregatorInstance) ParentAggregate(timeout bool) gst.FlowRetu
 // ParentClip calls the default implementations of the `GstAggregator.clip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#clip
 func (aggregator *AggregatorInstance) ParentClip(aggregatorPad AggregatorPad, buf *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -3168,7 +3046,7 @@ func (aggregator *AggregatorInstance) ParentClip(aggregatorPad AggregatorPad, bu
 // ParentDecideAllocation calls the default implementations of the `GstAggregator.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#decide_allocation
 func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstQuery // in, none, converted
@@ -3195,7 +3073,7 @@ func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
 // ParentFinishBuffer calls the default implementations of the `GstAggregator.finish_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#finish_buffer
 func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -3220,7 +3098,7 @@ func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst
 // ParentFinishBufferList calls the default implementations of the `GstAggregator.finish_buffer_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#finish_buffer_list
 func (aggregator *AggregatorInstance) ParentFinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstBufferList // in, none, converted
@@ -3245,7 +3123,7 @@ func (aggregator *AggregatorInstance) ParentFinishBufferList(bufferlist *gst.Buf
 // ParentFixateSrcCaps calls the default implementations of the `GstAggregator.fixate_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#fixate_src_caps
 func (self *AggregatorInstance) ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstCaps // in, none, converted
@@ -3270,7 +3148,7 @@ func (self *AggregatorInstance) ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps {
 // ParentFlush calls the default implementations of the `GstAggregator.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#flush
 func (aggregator *AggregatorInstance) ParentFlush() gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var cret  C.GstFlowReturn // return, none, casted
@@ -3292,7 +3170,7 @@ func (aggregator *AggregatorInstance) ParentFlush() gst.FlowReturn {
 // ParentGetNextTime calls the default implementations of the `GstAggregator.get_next_time` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#get_next_time
 func (aggregator *AggregatorInstance) ParentGetNextTime() gst.ClockTime {
 	var carg0 *C.GstAggregator
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -3314,7 +3192,7 @@ func (aggregator *AggregatorInstance) ParentGetNextTime() gst.ClockTime {
 // ParentNegotiate calls the default implementations of the `GstAggregator.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#negotiate
 func (self *AggregatorInstance) ParentNegotiate() bool {
 	var carg0 *C.GstAggregator
 	var cret  C.gboolean // return
@@ -3338,7 +3216,7 @@ func (self *AggregatorInstance) ParentNegotiate() bool {
 // ParentNegotiatedSrcCaps calls the default implementations of the `GstAggregator.negotiated_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#negotiated_src_caps
 func (self *AggregatorInstance) ParentNegotiatedSrcCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstCaps // in, none, converted
@@ -3365,7 +3243,7 @@ func (self *AggregatorInstance) ParentNegotiatedSrcCaps(caps *gst.Caps) bool {
 // ParentPeekNextSample calls the default implementations of the `GstAggregator.peek_next_sample` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#peek_next_sample
 func (aggregator *AggregatorInstance) ParentPeekNextSample(aggregatorPad AggregatorPad) *gst.Sample {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -3392,7 +3270,7 @@ func (aggregator *AggregatorInstance) ParentPeekNextSample(aggregatorPad Aggrega
 // ParentProposeAllocation calls the default implementations of the `GstAggregator.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#propose_allocation
 func (self *AggregatorInstance) ParentProposeAllocation(pad AggregatorPad, decideQuery *gst.Query, query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -3425,7 +3303,7 @@ func (self *AggregatorInstance) ParentProposeAllocation(pad AggregatorPad, decid
 // ParentSinkEvent calls the default implementations of the `GstAggregator.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_event
 func (aggregator *AggregatorInstance) ParentSinkEvent(aggregatorPad AggregatorPad, event *gst.Event) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -3455,7 +3333,7 @@ func (aggregator *AggregatorInstance) ParentSinkEvent(aggregatorPad AggregatorPa
 // ParentSinkEventPreQueue calls the default implementations of the `GstAggregator.sink_event_pre_queue` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_event_pre_queue
 func (aggregator *AggregatorInstance) ParentSinkEventPreQueue(aggregatorPad AggregatorPad, event *gst.Event) gst.FlowReturn {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -3483,7 +3361,7 @@ func (aggregator *AggregatorInstance) ParentSinkEventPreQueue(aggregatorPad Aggr
 // ParentSinkQuery calls the default implementations of the `GstAggregator.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_query
 func (aggregator *AggregatorInstance) ParentSinkQuery(aggregatorPad AggregatorPad, query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -3513,7 +3391,7 @@ func (aggregator *AggregatorInstance) ParentSinkQuery(aggregatorPad AggregatorPa
 // ParentSinkQueryPreQueue calls the default implementations of the `GstAggregator.sink_query_pre_queue` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#sink_query_pre_queue
 func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad AggregatorPad, query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstAggregatorPad // in, none, converted
@@ -3543,7 +3421,7 @@ func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad Aggr
 // ParentSrcActivate calls the default implementations of the `GstAggregator.src_activate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#src_activate
 func (aggregator *AggregatorInstance) ParentSrcActivate(mode gst.PadMode, active bool) bool {
 	var carg0 *C.GstAggregator
 	var carg1 C.GstPadMode // in, none, converted
@@ -3575,7 +3453,7 @@ func (aggregator *AggregatorInstance) ParentSrcActivate(mode gst.PadMode, active
 // ParentSrcEvent calls the default implementations of the `GstAggregator.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#src_event
 func (aggregator *AggregatorInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstEvent // in, none, converted
@@ -3602,7 +3480,7 @@ func (aggregator *AggregatorInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstAggregator.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#src_query
 func (aggregator *AggregatorInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstQuery // in, none, converted
@@ -3629,7 +3507,7 @@ func (aggregator *AggregatorInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstAggregator.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#start
 func (aggregator *AggregatorInstance) ParentStart() bool {
 	var carg0 *C.GstAggregator
 	var cret  C.gboolean // return
@@ -3653,7 +3531,7 @@ func (aggregator *AggregatorInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstAggregator.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#stop
 func (aggregator *AggregatorInstance) ParentStop() bool {
 	var carg0 *C.GstAggregator
 	var cret  C.gboolean // return
@@ -3677,7 +3555,7 @@ func (aggregator *AggregatorInstance) ParentStop() bool {
 // ParentUpdateSrcCaps calls the default implementations of the `GstAggregator.update_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#update_src_caps
 func (self *AggregatorInstance) ParentUpdateSrcCaps(caps *gst.Caps) (*gst.Caps, gst.FlowReturn) {
 	var carg0 *C.GstAggregator
 	var carg1 *C.GstCaps      // in, none, converted
@@ -3738,43 +3616,38 @@ var _ AggregatorPad = (*AggregatorPadInstance)(nil)
 
 // AggregatorPad wraps GstAggregatorPad
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#GstAggregatorPad
 type AggregatorPad interface {
 	gst.Pad
 	upcastToGstAggregatorPad() *AggregatorPadInstance
 
 	// DropBuffer wraps gst_aggregator_pad_drop_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_drop_buffer
 	DropBuffer() bool
 	// HasBuffer wraps gst_aggregator_pad_has_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_has_buffer
 	HasBuffer() bool
 	// IsEOS wraps gst_aggregator_pad_is_eos
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_is_eos
 	IsEOS() bool
 	// IsInactive wraps gst_aggregator_pad_is_inactive
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_is_inactive
 	IsInactive() bool
 	// PeekBuffer wraps gst_aggregator_pad_peek_buffer
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_peek_buffer
 	PeekBuffer() *gst.Buffer
 	// PopBuffer wraps gst_aggregator_pad_pop_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_pop_buffer
 	PopBuffer() *gst.Buffer
 	// ConnectBufferConsumed connects the provided callback to the "buffer-consumed" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base
 	ConnectBufferConsumed(func(AggregatorPad, gst.Buffer)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -3782,12 +3655,12 @@ type AggregatorPad interface {
 	// ParentFlush calls the default implementations of the `GstAggregatorPad.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#flush
 	ParentFlush(aggregator Aggregator) gst.FlowReturn
 	// ParentSkipBuffer calls the default implementations of the `GstAggregatorPad.skip_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#skip_buffer
 	ParentSkipBuffer(aggregator Aggregator, buffer *gst.Buffer) bool
 }
 
@@ -3847,8 +3720,7 @@ func UnsafeAggregatorPadToGlibFull(c AggregatorPad) unsafe.Pointer {
 
 // DropBuffer wraps gst_aggregator_pad_drop_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_drop_buffer
 func (pad *AggregatorPadInstance) DropBuffer() bool {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  C.gboolean          // return
@@ -3869,8 +3741,7 @@ func (pad *AggregatorPadInstance) DropBuffer() bool {
 
 // HasBuffer wraps gst_aggregator_pad_has_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_has_buffer
 func (pad *AggregatorPadInstance) HasBuffer() bool {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  C.gboolean          // return
@@ -3891,7 +3762,7 @@ func (pad *AggregatorPadInstance) HasBuffer() bool {
 
 // IsEOS wraps gst_aggregator_pad_is_eos
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_is_eos
 func (pad *AggregatorPadInstance) IsEOS() bool {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  C.gboolean          // return
@@ -3912,8 +3783,7 @@ func (pad *AggregatorPadInstance) IsEOS() bool {
 
 // IsInactive wraps gst_aggregator_pad_is_inactive
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_is_inactive
 func (pad *AggregatorPadInstance) IsInactive() bool {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  C.gboolean          // return
@@ -3934,7 +3804,7 @@ func (pad *AggregatorPadInstance) IsInactive() bool {
 
 // PeekBuffer wraps gst_aggregator_pad_peek_buffer
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_peek_buffer
 func (pad *AggregatorPadInstance) PeekBuffer() *gst.Buffer {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  *C.GstBuffer        // return, full, converted, nullable
@@ -3955,8 +3825,7 @@ func (pad *AggregatorPadInstance) PeekBuffer() *gst.Buffer {
 
 // PopBuffer wraps gst_aggregator_pad_pop_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#gst_aggregator_pad_pop_buffer
 func (pad *AggregatorPadInstance) PopBuffer() *gst.Buffer {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  *C.GstBuffer        // return, full, converted, nullable
@@ -3977,7 +3846,7 @@ func (pad *AggregatorPadInstance) PopBuffer() *gst.Buffer {
 
 // ConnectBufferConsumed connects the provided callback to the "buffer-consumed" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base
 func (o *AggregatorPadInstance) ConnectBufferConsumed(fn func(AggregatorPad, gst.Buffer)) gobject.SignalHandle {
 	return o.Connect("buffer-consumed", fn)
 }
@@ -3990,11 +3859,11 @@ type AggregatorPadOverrides[Instance AggregatorPad] struct {
 
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#flush
 	Flush func(Instance, Aggregator) gst.FlowReturn
 	// // SkipBuffer allows you to override the implementation of the virtual method skip_buffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#skip_buffer
 	SkipBuffer func(Instance, Aggregator, *gst.Buffer) bool
 }
 
@@ -4057,7 +3926,7 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 // ParentFlush calls the default implementations of the `GstAggregatorPad.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#flush
 func (aggpad *AggregatorPadInstance) ParentFlush(aggregator Aggregator) gst.FlowReturn {
 	var carg0 *C.GstAggregatorPad
 	var carg1 *C.GstAggregator // in, none, converted
@@ -4082,7 +3951,7 @@ func (aggpad *AggregatorPadInstance) ParentFlush(aggregator Aggregator) gst.Flow
 // ParentSkipBuffer calls the default implementations of the `GstAggregatorPad.skip_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#skip_buffer
 func (aggpad *AggregatorPadInstance) ParentSkipBuffer(aggregator Aggregator, buffer *gst.Buffer) bool {
 	var carg0 *C.GstAggregatorPad
 	var carg1 *C.GstAggregator // in, none, converted
@@ -4145,96 +4014,78 @@ var _ BaseParse = (*BaseParseInstance)(nil)
 
 // BaseParse wraps GstBaseParse
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GstBaseParse
 type BaseParse interface {
 	gst.Element
 	upcastToGstBaseParse() *BaseParseInstance
 
 	// AddIndexEntry wraps gst_base_parse_add_index_entry
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_add_index_entry
 	AddIndexEntry(uint64, gst.ClockTime, bool, bool) bool
 	// ConvertDefault wraps gst_base_parse_convert_default
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_convert_default
 	ConvertDefault(gst.Format, int64, gst.Format) (int64, bool)
 	// Drain wraps gst_base_parse_drain
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_drain
 	Drain()
 	// FinishFrame wraps gst_base_parse_finish_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_finish_frame
 	FinishFrame(*BaseParseFrame, int32) gst.FlowReturn
 	// MergeTags wraps gst_base_parse_merge_tags
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_merge_tags
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// PushFrame wraps gst_base_parse_push_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_push_frame
 	PushFrame(*BaseParseFrame) gst.FlowReturn
 	// SetAverageBitrate wraps gst_base_parse_set_average_bitrate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_average_bitrate
 	SetAverageBitrate(uint)
 	// SetDuration wraps gst_base_parse_set_duration
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_duration
 	SetDuration(gst.Format, int64, int32)
 	// SetFrameRate wraps gst_base_parse_set_frame_rate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_frame_rate
 	SetFrameRate(uint, uint, uint, uint)
 	// SetHasTimingInfo wraps gst_base_parse_set_has_timing_info
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_has_timing_info
 	SetHasTimingInfo(bool)
 	// SetInferTs wraps gst_base_parse_set_infer_ts
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_infer_ts
 	SetInferTs(bool)
 	// SetLatency wraps gst_base_parse_set_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_latency
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetMinFrameSize wraps gst_base_parse_set_min_frame_size
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_min_frame_size
 	SetMinFrameSize(uint)
 	// SetPassthrough wraps gst_base_parse_set_passthrough
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_passthrough
 	SetPassthrough(bool)
 	// SetPtsInterpolation wraps gst_base_parse_set_pts_interpolation
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_pts_interpolation
 	SetPtsInterpolation(bool)
 	// SetSyncable wraps gst_base_parse_set_syncable
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_syncable
 	SetSyncable(bool)
 	// SetTsAtOffset wraps gst_base_parse_set_ts_at_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_ts_at_offset
 	SetTsAtOffset(uint)
 
 	// chain up virtual methods:
@@ -4242,62 +4093,62 @@ type BaseParse interface {
 	// ParentConvert calls the default implementations of the `GstBaseParse.convert` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#convert
 	ParentConvert(srcFormat gst.Format, srcValue int64, destFormat gst.Format, destValue *int64) bool
 	// ParentDetect calls the default implementations of the `GstBaseParse.detect` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#detect
 	ParentDetect(buffer *gst.Buffer) gst.FlowReturn
 	// ParentGetSinkCaps calls the default implementations of the `GstBaseParse.get_sink_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#get_sink_caps
 	ParentGetSinkCaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstBaseParse.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#handle_frame
 	ParentHandleFrame(frame *BaseParseFrame) (int32, gst.FlowReturn)
 	// ParentPrePushFrame calls the default implementations of the `GstBaseParse.pre_push_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#pre_push_frame
 	ParentPrePushFrame(frame *BaseParseFrame) gst.FlowReturn
 	// ParentSetSinkCaps calls the default implementations of the `GstBaseParse.set_sink_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#set_sink_caps
 	ParentSetSinkCaps(caps *gst.Caps) bool
 	// ParentSinkEvent calls the default implementations of the `GstBaseParse.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#sink_event
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstBaseParse.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#sink_query
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstBaseParse.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#src_event
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstBaseParse.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#src_query
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstBaseParse.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstBaseParse.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#stop
 	ParentStop() bool
 }
 
@@ -4357,8 +4208,7 @@ func UnsafeBaseParseToGlibFull(c BaseParse) unsafe.Pointer {
 
 // AddIndexEntry wraps gst_base_parse_add_index_entry
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_add_index_entry
 func (parse *BaseParseInstance) AddIndexEntry(offset uint64, ts gst.ClockTime, key bool, force bool) bool {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.guint64       // in, none, casted
@@ -4395,8 +4245,7 @@ func (parse *BaseParseInstance) AddIndexEntry(offset uint64, ts gst.ClockTime, k
 
 // ConvertDefault wraps gst_base_parse_convert_default
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_convert_default
 func (parse *BaseParseInstance) ConvertDefault(srcFormat gst.Format, srcValue int64, destFormat gst.Format) (int64, bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
@@ -4429,8 +4278,7 @@ func (parse *BaseParseInstance) ConvertDefault(srcFormat gst.Format, srcValue in
 
 // Drain wraps gst_base_parse_drain
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_drain
 func (parse *BaseParseInstance) Drain() {
 	var carg0 *C.GstBaseParse // in, none, converted
 
@@ -4442,8 +4290,7 @@ func (parse *BaseParseInstance) Drain() {
 
 // FinishFrame wraps gst_base_parse_finish_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_finish_frame
 func (parse *BaseParseInstance) FinishFrame(frame *BaseParseFrame, size int32) gst.FlowReturn {
 	var carg0 *C.GstBaseParse      // in, none, converted
 	var carg1 *C.GstBaseParseFrame // in, none, converted
@@ -4468,8 +4315,7 @@ func (parse *BaseParseInstance) FinishFrame(frame *BaseParseFrame, size int32) g
 
 // MergeTags wraps gst_base_parse_merge_tags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_merge_tags
 func (parse *BaseParseInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstBaseParse   // in, none, converted
 	var carg1 *C.GstTagList     // in, none, converted, nullable
@@ -4489,8 +4335,7 @@ func (parse *BaseParseInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMo
 
 // PushFrame wraps gst_base_parse_push_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_push_frame
 func (parse *BaseParseInstance) PushFrame(frame *BaseParseFrame) gst.FlowReturn {
 	var carg0 *C.GstBaseParse      // in, none, converted
 	var carg1 *C.GstBaseParseFrame // in, none, converted
@@ -4512,8 +4357,7 @@ func (parse *BaseParseInstance) PushFrame(frame *BaseParseFrame) gst.FlowReturn 
 
 // SetAverageBitrate wraps gst_base_parse_set_average_bitrate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_average_bitrate
 func (parse *BaseParseInstance) SetAverageBitrate(bitrate uint) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -4528,8 +4372,7 @@ func (parse *BaseParseInstance) SetAverageBitrate(bitrate uint) {
 
 // SetDuration wraps gst_base_parse_set_duration
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_duration
 func (parse *BaseParseInstance) SetDuration(_fmt gst.Format, duration int64, interval int32) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
@@ -4550,8 +4393,7 @@ func (parse *BaseParseInstance) SetDuration(_fmt gst.Format, duration int64, int
 
 // SetFrameRate wraps gst_base_parse_set_frame_rate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_frame_rate
 func (parse *BaseParseInstance) SetFrameRate(fpsNum uint, fpsDen uint, leadIn uint, leadOut uint) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -4575,8 +4417,7 @@ func (parse *BaseParseInstance) SetFrameRate(fpsNum uint, fpsDen uint, leadIn ui
 
 // SetHasTimingInfo wraps gst_base_parse_set_has_timing_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_has_timing_info
 func (parse *BaseParseInstance) SetHasTimingInfo(hasTiming bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -4593,8 +4434,7 @@ func (parse *BaseParseInstance) SetHasTimingInfo(hasTiming bool) {
 
 // SetInferTs wraps gst_base_parse_set_infer_ts
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_infer_ts
 func (parse *BaseParseInstance) SetInferTs(inferTs bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -4611,8 +4451,7 @@ func (parse *BaseParseInstance) SetInferTs(inferTs bool) {
 
 // SetLatency wraps gst_base_parse_set_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_latency
 func (parse *BaseParseInstance) SetLatency(minLatency gst.ClockTime, maxLatency gst.ClockTime) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.GstClockTime  // in, none, casted, alias
@@ -4630,8 +4469,7 @@ func (parse *BaseParseInstance) SetLatency(minLatency gst.ClockTime, maxLatency 
 
 // SetMinFrameSize wraps gst_base_parse_set_min_frame_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_min_frame_size
 func (parse *BaseParseInstance) SetMinFrameSize(minSize uint) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -4646,8 +4484,7 @@ func (parse *BaseParseInstance) SetMinFrameSize(minSize uint) {
 
 // SetPassthrough wraps gst_base_parse_set_passthrough
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_passthrough
 func (parse *BaseParseInstance) SetPassthrough(passthrough bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -4664,8 +4501,7 @@ func (parse *BaseParseInstance) SetPassthrough(passthrough bool) {
 
 // SetPtsInterpolation wraps gst_base_parse_set_pts_interpolation
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_pts_interpolation
 func (parse *BaseParseInstance) SetPtsInterpolation(ptsInterpolate bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -4682,8 +4518,7 @@ func (parse *BaseParseInstance) SetPtsInterpolation(ptsInterpolate bool) {
 
 // SetSyncable wraps gst_base_parse_set_syncable
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_syncable
 func (parse *BaseParseInstance) SetSyncable(syncable bool) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gboolean      // in
@@ -4700,8 +4535,7 @@ func (parse *BaseParseInstance) SetSyncable(syncable bool) {
 
 // SetTsAtOffset wraps gst_base_parse_set_ts_at_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_set_ts_at_offset
 func (parse *BaseParseInstance) SetTsAtOffset(offset uint) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.gsize         // in, none, casted
@@ -4722,51 +4556,51 @@ type BaseParseOverrides[Instance BaseParse] struct {
 
 	// // Convert allows you to override the implementation of the virtual method convert.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#convert
 	Convert func(Instance, gst.Format, int64, gst.Format, *int64) bool
 	// // Detect allows you to override the implementation of the virtual method detect.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#detect
 	Detect func(Instance, *gst.Buffer) gst.FlowReturn
 	// // GetSinkCaps allows you to override the implementation of the virtual method get_sink_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#get_sink_caps
 	GetSinkCaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#handle_frame
 	HandleFrame func(Instance, *BaseParseFrame) (int32, gst.FlowReturn)
 	// // PrePushFrame allows you to override the implementation of the virtual method pre_push_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#pre_push_frame
 	PrePushFrame func(Instance, *BaseParseFrame) gst.FlowReturn
 	// // SetSinkCaps allows you to override the implementation of the virtual method set_sink_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#set_sink_caps
 	SetSinkCaps func(Instance, *gst.Caps) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#sink_event
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#sink_query
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#src_event
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#src_query
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#stop
 	Stop func(Instance) bool
 }
 
@@ -5067,7 +4901,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 // ParentConvert calls the default implementations of the `GstBaseParse.convert` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#convert
 func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int64, destFormat gst.Format, destValue *int64) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 C.GstFormat // in, none, converted
@@ -5105,7 +4939,7 @@ func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int
 // ParentDetect calls the default implementations of the `GstBaseParse.detect` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#detect
 func (parse *BaseParseInstance) ParentDetect(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -5130,7 +4964,7 @@ func (parse *BaseParseInstance) ParentDetect(buffer *gst.Buffer) gst.FlowReturn 
 // ParentGetSinkCaps calls the default implementations of the `GstBaseParse.get_sink_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#get_sink_caps
 func (parse *BaseParseInstance) ParentGetSinkCaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstCaps // in, none, converted
@@ -5155,7 +4989,7 @@ func (parse *BaseParseInstance) ParentGetSinkCaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstBaseParse.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#handle_frame
 func (parse *BaseParseInstance) ParentHandleFrame(frame *BaseParseFrame) (int32, gst.FlowReturn) {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstBaseParseFrame // in, none, converted
@@ -5183,7 +5017,7 @@ func (parse *BaseParseInstance) ParentHandleFrame(frame *BaseParseFrame) (int32,
 // ParentPrePushFrame calls the default implementations of the `GstBaseParse.pre_push_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#pre_push_frame
 func (parse *BaseParseInstance) ParentPrePushFrame(frame *BaseParseFrame) gst.FlowReturn {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstBaseParseFrame // in, none, converted
@@ -5208,7 +5042,7 @@ func (parse *BaseParseInstance) ParentPrePushFrame(frame *BaseParseFrame) gst.Fl
 // ParentSetSinkCaps calls the default implementations of the `GstBaseParse.set_sink_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#set_sink_caps
 func (parse *BaseParseInstance) ParentSetSinkCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstCaps // in, none, converted
@@ -5235,7 +5069,7 @@ func (parse *BaseParseInstance) ParentSetSinkCaps(caps *gst.Caps) bool {
 // ParentSinkEvent calls the default implementations of the `GstBaseParse.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#sink_event
 func (parse *BaseParseInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstEvent // in, none, converted
@@ -5262,7 +5096,7 @@ func (parse *BaseParseInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstBaseParse.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#sink_query
 func (parse *BaseParseInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstQuery // in, none, converted
@@ -5289,7 +5123,7 @@ func (parse *BaseParseInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstBaseParse.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#src_event
 func (parse *BaseParseInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstEvent // in, none, converted
@@ -5316,7 +5150,7 @@ func (parse *BaseParseInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstBaseParse.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#src_query
 func (parse *BaseParseInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstBaseParse
 	var carg1 *C.GstQuery // in, none, converted
@@ -5343,7 +5177,7 @@ func (parse *BaseParseInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstBaseParse.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#start
 func (parse *BaseParseInstance) ParentStart() bool {
 	var carg0 *C.GstBaseParse
 	var cret  C.gboolean // return
@@ -5367,7 +5201,7 @@ func (parse *BaseParseInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstBaseParse.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#stop
 func (parse *BaseParseInstance) ParentStop() bool {
 	var carg0 *C.GstBaseParse
 	var cret  C.gboolean // return
@@ -5424,171 +5258,138 @@ var _ BaseSink = (*BaseSinkInstance)(nil)
 
 // BaseSink wraps GstBaseSink
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#GstBaseSink
 type BaseSink interface {
 	gst.Element
 	upcastToGstBaseSink() *BaseSinkInstance
 
 	// DoPreroll wraps gst_base_sink_do_preroll
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_do_preroll
 	DoPreroll(*gst.MiniObject) gst.FlowReturn
 	// GetBlocksize wraps gst_base_sink_get_blocksize
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_blocksize
 	GetBlocksize() uint
 	// GetDropOutOfSegment wraps gst_base_sink_get_drop_out_of_segment
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_drop_out_of_segment
 	GetDropOutOfSegment() bool
 	// GetLastSample wraps gst_base_sink_get_last_sample
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_last_sample
 	GetLastSample() *gst.Sample
 	// GetLatency wraps gst_base_sink_get_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_latency
 	GetLatency() gst.ClockTime
 	// GetMaxBitrate wraps gst_base_sink_get_max_bitrate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_max_bitrate
 	GetMaxBitrate() uint64
 	// GetMaxLateness wraps gst_base_sink_get_max_lateness
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_max_lateness
 	GetMaxLateness() int64
 	// GetProcessingDeadline wraps gst_base_sink_get_processing_deadline
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_processing_deadline
 	GetProcessingDeadline() gst.ClockTime
 	// GetRenderDelay wraps gst_base_sink_get_render_delay
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_render_delay
 	GetRenderDelay() gst.ClockTime
 	// GetStats wraps gst_base_sink_get_stats
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_stats
 	GetStats() *gst.Structure
 	// GetSync wraps gst_base_sink_get_sync
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_sync
 	GetSync() bool
 	// GetThrottleTime wraps gst_base_sink_get_throttle_time
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_throttle_time
 	GetThrottleTime() uint64
 	// GetTsOffset wraps gst_base_sink_get_ts_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_ts_offset
 	GetTsOffset() gst.ClockTimeDiff
 	// IsAsyncEnabled wraps gst_base_sink_is_async_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_is_async_enabled
 	IsAsyncEnabled() bool
 	// IsLastSampleEnabled wraps gst_base_sink_is_last_sample_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_is_last_sample_enabled
 	IsLastSampleEnabled() bool
 	// IsQosEnabled wraps gst_base_sink_is_qos_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_is_qos_enabled
 	IsQosEnabled() bool
 	// QueryLatency wraps gst_base_sink_query_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_query_latency
 	QueryLatency() (bool, bool, gst.ClockTime, gst.ClockTime, bool)
 	// SetAsyncEnabled wraps gst_base_sink_set_async_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_async_enabled
 	SetAsyncEnabled(bool)
 	// SetBlocksize wraps gst_base_sink_set_blocksize
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_blocksize
 	SetBlocksize(uint)
 	// SetDropOutOfSegment wraps gst_base_sink_set_drop_out_of_segment
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_drop_out_of_segment
 	SetDropOutOfSegment(bool)
 	// SetLastSampleEnabled wraps gst_base_sink_set_last_sample_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_last_sample_enabled
 	SetLastSampleEnabled(bool)
 	// SetMaxBitrate wraps gst_base_sink_set_max_bitrate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_max_bitrate
 	SetMaxBitrate(uint64)
 	// SetMaxLateness wraps gst_base_sink_set_max_lateness
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_max_lateness
 	SetMaxLateness(int64)
 	// SetProcessingDeadline wraps gst_base_sink_set_processing_deadline
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_processing_deadline
 	SetProcessingDeadline(gst.ClockTime)
 	// SetQosEnabled wraps gst_base_sink_set_qos_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_qos_enabled
 	SetQosEnabled(bool)
 	// SetRenderDelay wraps gst_base_sink_set_render_delay
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_render_delay
 	SetRenderDelay(gst.ClockTime)
 	// SetSync wraps gst_base_sink_set_sync
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_sync
 	SetSync(bool)
 	// SetThrottleTime wraps gst_base_sink_set_throttle_time
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_throttle_time
 	SetThrottleTime(uint64)
 	// SetTsOffset wraps gst_base_sink_set_ts_offset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_ts_offset
 	SetTsOffset(gst.ClockTimeDiff)
 	// Wait wraps gst_base_sink_wait
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_wait
 	Wait(gst.ClockTime) (gst.ClockTimeDiff, gst.FlowReturn)
 	// WaitClock wraps gst_base_sink_wait_clock
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_wait_clock
 	WaitClock(gst.ClockTime) (gst.ClockTimeDiff, gst.ClockReturn)
 	// WaitPreroll wraps gst_base_sink_wait_preroll
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_wait_preroll
 	WaitPreroll() gst.FlowReturn
 
 	// chain up virtual methods:
@@ -5596,92 +5397,92 @@ type BaseSink interface {
 	// ParentActivatePull calls the default implementations of the `GstBaseSink.activate_pull` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#activate_pull
 	ParentActivatePull(active bool) bool
 	// ParentEvent calls the default implementations of the `GstBaseSink.event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#event
 	ParentEvent(event *gst.Event) bool
 	// ParentFixate calls the default implementations of the `GstBaseSink.fixate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#fixate
 	ParentFixate(caps *gst.Caps) *gst.Caps
 	// ParentGetCaps calls the default implementations of the `GstBaseSink.get_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#get_caps
 	ParentGetCaps(filter *gst.Caps) *gst.Caps
 	// ParentGetTimes calls the default implementations of the `GstBaseSink.get_times` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#get_times
 	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// ParentPrepare calls the default implementations of the `GstBaseSink.prepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#prepare
 	ParentPrepare(buffer *gst.Buffer) gst.FlowReturn
 	// ParentPrepareList calls the default implementations of the `GstBaseSink.prepare_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#prepare_list
 	ParentPrepareList(bufferList *gst.BufferList) gst.FlowReturn
 	// ParentPreroll calls the default implementations of the `GstBaseSink.preroll` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#preroll
 	ParentPreroll(buffer *gst.Buffer) gst.FlowReturn
 	// ParentProposeAllocation calls the default implementations of the `GstBaseSink.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#propose_allocation
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentQuery calls the default implementations of the `GstBaseSink.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#query
 	ParentQuery(query *gst.Query) bool
 	// ParentRender calls the default implementations of the `GstBaseSink.render` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#render
 	ParentRender(buffer *gst.Buffer) gst.FlowReturn
 	// ParentRenderList calls the default implementations of the `GstBaseSink.render_list` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#render_list
 	ParentRenderList(bufferList *gst.BufferList) gst.FlowReturn
 	// ParentSetCaps calls the default implementations of the `GstBaseSink.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#set_caps
 	ParentSetCaps(caps *gst.Caps) bool
 	// ParentStart calls the default implementations of the `GstBaseSink.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstBaseSink.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#stop
 	ParentStop() bool
 	// ParentUnlock calls the default implementations of the `GstBaseSink.unlock` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#unlock
 	ParentUnlock() bool
 	// ParentUnlockStop calls the default implementations of the `GstBaseSink.unlock_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#unlock_stop
 	ParentUnlockStop() bool
 	// ParentWaitEvent calls the default implementations of the `GstBaseSink.wait_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#wait_event
 	ParentWaitEvent(event *gst.Event) gst.FlowReturn
 }
 
@@ -5741,8 +5542,7 @@ func UnsafeBaseSinkToGlibFull(c BaseSink) unsafe.Pointer {
 
 // DoPreroll wraps gst_base_sink_do_preroll
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_do_preroll
 func (sink *BaseSinkInstance) DoPreroll(obj *gst.MiniObject) gst.FlowReturn {
 	var carg0 *C.GstBaseSink   // in, none, converted
 	var carg1 *C.GstMiniObject // in, none, converted
@@ -5764,8 +5564,7 @@ func (sink *BaseSinkInstance) DoPreroll(obj *gst.MiniObject) gst.FlowReturn {
 
 // GetBlocksize wraps gst_base_sink_get_blocksize
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_blocksize
 func (sink *BaseSinkInstance) GetBlocksize() uint {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.guint        // return, none, casted
@@ -5784,8 +5583,7 @@ func (sink *BaseSinkInstance) GetBlocksize() uint {
 
 // GetDropOutOfSegment wraps gst_base_sink_get_drop_out_of_segment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_drop_out_of_segment
 func (sink *BaseSinkInstance) GetDropOutOfSegment() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -5806,8 +5604,7 @@ func (sink *BaseSinkInstance) GetDropOutOfSegment() bool {
 
 // GetLastSample wraps gst_base_sink_get_last_sample
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_last_sample
 func (sink *BaseSinkInstance) GetLastSample() *gst.Sample {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  *C.GstSample   // return, full, converted, nullable
@@ -5828,8 +5625,7 @@ func (sink *BaseSinkInstance) GetLastSample() *gst.Sample {
 
 // GetLatency wraps gst_base_sink_get_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_latency
 func (sink *BaseSinkInstance) GetLatency() gst.ClockTime {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -5848,8 +5644,7 @@ func (sink *BaseSinkInstance) GetLatency() gst.ClockTime {
 
 // GetMaxBitrate wraps gst_base_sink_get_max_bitrate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_max_bitrate
 func (sink *BaseSinkInstance) GetMaxBitrate() uint64 {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.guint64      // return, none, casted
@@ -5868,8 +5663,7 @@ func (sink *BaseSinkInstance) GetMaxBitrate() uint64 {
 
 // GetMaxLateness wraps gst_base_sink_get_max_lateness
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_max_lateness
 func (sink *BaseSinkInstance) GetMaxLateness() int64 {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gint64       // return, none, casted
@@ -5888,8 +5682,7 @@ func (sink *BaseSinkInstance) GetMaxLateness() int64 {
 
 // GetProcessingDeadline wraps gst_base_sink_get_processing_deadline
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_processing_deadline
 func (sink *BaseSinkInstance) GetProcessingDeadline() gst.ClockTime {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -5908,8 +5701,7 @@ func (sink *BaseSinkInstance) GetProcessingDeadline() gst.ClockTime {
 
 // GetRenderDelay wraps gst_base_sink_get_render_delay
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_render_delay
 func (sink *BaseSinkInstance) GetRenderDelay() gst.ClockTime {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.GstClockTime // return, none, casted, alias
@@ -5928,8 +5720,7 @@ func (sink *BaseSinkInstance) GetRenderDelay() gst.ClockTime {
 
 // GetStats wraps gst_base_sink_get_stats
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_stats
 func (sink *BaseSinkInstance) GetStats() *gst.Structure {
 	var carg0 *C.GstBaseSink  // in, none, converted
 	var cret  *C.GstStructure // return, full, converted
@@ -5948,8 +5739,7 @@ func (sink *BaseSinkInstance) GetStats() *gst.Structure {
 
 // GetSync wraps gst_base_sink_get_sync
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_sync
 func (sink *BaseSinkInstance) GetSync() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -5970,8 +5760,7 @@ func (sink *BaseSinkInstance) GetSync() bool {
 
 // GetThrottleTime wraps gst_base_sink_get_throttle_time
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_throttle_time
 func (sink *BaseSinkInstance) GetThrottleTime() uint64 {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.guint64      // return, none, casted
@@ -5990,8 +5779,7 @@ func (sink *BaseSinkInstance) GetThrottleTime() uint64 {
 
 // GetTsOffset wraps gst_base_sink_get_ts_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_get_ts_offset
 func (sink *BaseSinkInstance) GetTsOffset() gst.ClockTimeDiff {
 	var carg0 *C.GstBaseSink     // in, none, converted
 	var cret  C.GstClockTimeDiff // return, none, casted, alias
@@ -6010,8 +5798,7 @@ func (sink *BaseSinkInstance) GetTsOffset() gst.ClockTimeDiff {
 
 // IsAsyncEnabled wraps gst_base_sink_is_async_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_is_async_enabled
 func (sink *BaseSinkInstance) IsAsyncEnabled() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -6032,8 +5819,7 @@ func (sink *BaseSinkInstance) IsAsyncEnabled() bool {
 
 // IsLastSampleEnabled wraps gst_base_sink_is_last_sample_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_is_last_sample_enabled
 func (sink *BaseSinkInstance) IsLastSampleEnabled() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -6054,8 +5840,7 @@ func (sink *BaseSinkInstance) IsLastSampleEnabled() bool {
 
 // IsQosEnabled wraps gst_base_sink_is_qos_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_is_qos_enabled
 func (sink *BaseSinkInstance) IsQosEnabled() bool {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var cret  C.gboolean     // return
@@ -6076,8 +5861,7 @@ func (sink *BaseSinkInstance) IsQosEnabled() bool {
 
 // QueryLatency wraps gst_base_sink_query_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_query_latency
 func (sink *BaseSinkInstance) QueryLatency() (bool, bool, gst.ClockTime, gst.ClockTime, bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // out
@@ -6114,8 +5898,7 @@ func (sink *BaseSinkInstance) QueryLatency() (bool, bool, gst.ClockTime, gst.Clo
 
 // SetAsyncEnabled wraps gst_base_sink_set_async_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_async_enabled
 func (sink *BaseSinkInstance) SetAsyncEnabled(enabled bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -6132,8 +5915,7 @@ func (sink *BaseSinkInstance) SetAsyncEnabled(enabled bool) {
 
 // SetBlocksize wraps gst_base_sink_set_blocksize
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_blocksize
 func (sink *BaseSinkInstance) SetBlocksize(blocksize uint) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.guint        // in, none, casted
@@ -6148,8 +5930,7 @@ func (sink *BaseSinkInstance) SetBlocksize(blocksize uint) {
 
 // SetDropOutOfSegment wraps gst_base_sink_set_drop_out_of_segment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_drop_out_of_segment
 func (sink *BaseSinkInstance) SetDropOutOfSegment(dropOutOfSegment bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -6166,8 +5947,7 @@ func (sink *BaseSinkInstance) SetDropOutOfSegment(dropOutOfSegment bool) {
 
 // SetLastSampleEnabled wraps gst_base_sink_set_last_sample_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_last_sample_enabled
 func (sink *BaseSinkInstance) SetLastSampleEnabled(enabled bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -6184,8 +5964,7 @@ func (sink *BaseSinkInstance) SetLastSampleEnabled(enabled bool) {
 
 // SetMaxBitrate wraps gst_base_sink_set_max_bitrate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_max_bitrate
 func (sink *BaseSinkInstance) SetMaxBitrate(maxBitrate uint64) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.guint64      // in, none, casted
@@ -6200,8 +5979,7 @@ func (sink *BaseSinkInstance) SetMaxBitrate(maxBitrate uint64) {
 
 // SetMaxLateness wraps gst_base_sink_set_max_lateness
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_max_lateness
 func (sink *BaseSinkInstance) SetMaxLateness(maxLateness int64) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gint64       // in, none, casted
@@ -6216,8 +5994,7 @@ func (sink *BaseSinkInstance) SetMaxLateness(maxLateness int64) {
 
 // SetProcessingDeadline wraps gst_base_sink_set_processing_deadline
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_processing_deadline
 func (sink *BaseSinkInstance) SetProcessingDeadline(processingDeadline gst.ClockTime) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
@@ -6232,8 +6009,7 @@ func (sink *BaseSinkInstance) SetProcessingDeadline(processingDeadline gst.Clock
 
 // SetQosEnabled wraps gst_base_sink_set_qos_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_qos_enabled
 func (sink *BaseSinkInstance) SetQosEnabled(enabled bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -6250,8 +6026,7 @@ func (sink *BaseSinkInstance) SetQosEnabled(enabled bool) {
 
 // SetRenderDelay wraps gst_base_sink_set_render_delay
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_render_delay
 func (sink *BaseSinkInstance) SetRenderDelay(delay gst.ClockTime) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
@@ -6266,8 +6041,7 @@ func (sink *BaseSinkInstance) SetRenderDelay(delay gst.ClockTime) {
 
 // SetSync wraps gst_base_sink_set_sync
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_sync
 func (sink *BaseSinkInstance) SetSync(sync bool) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.gboolean     // in
@@ -6284,8 +6058,7 @@ func (sink *BaseSinkInstance) SetSync(sync bool) {
 
 // SetThrottleTime wraps gst_base_sink_set_throttle_time
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_throttle_time
 func (sink *BaseSinkInstance) SetThrottleTime(throttle uint64) {
 	var carg0 *C.GstBaseSink // in, none, converted
 	var carg1 C.guint64      // in, none, casted
@@ -6300,8 +6073,7 @@ func (sink *BaseSinkInstance) SetThrottleTime(throttle uint64) {
 
 // SetTsOffset wraps gst_base_sink_set_ts_offset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_set_ts_offset
 func (sink *BaseSinkInstance) SetTsOffset(offset gst.ClockTimeDiff) {
 	var carg0 *C.GstBaseSink     // in, none, converted
 	var carg1 C.GstClockTimeDiff // in, none, casted, alias
@@ -6316,8 +6088,7 @@ func (sink *BaseSinkInstance) SetTsOffset(offset gst.ClockTimeDiff) {
 
 // Wait wraps gst_base_sink_wait
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_wait
 func (sink *BaseSinkInstance) Wait(time gst.ClockTime) (gst.ClockTimeDiff, gst.FlowReturn) {
 	var carg0 *C.GstBaseSink     // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -6342,8 +6113,7 @@ func (sink *BaseSinkInstance) Wait(time gst.ClockTime) (gst.ClockTimeDiff, gst.F
 
 // WaitClock wraps gst_base_sink_wait_clock
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_wait_clock
 func (sink *BaseSinkInstance) WaitClock(time gst.ClockTime) (gst.ClockTimeDiff, gst.ClockReturn) {
 	var carg0 *C.GstBaseSink     // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -6368,8 +6138,7 @@ func (sink *BaseSinkInstance) WaitClock(time gst.ClockTime) (gst.ClockTimeDiff, 
 
 // WaitPreroll wraps gst_base_sink_wait_preroll
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#gst_base_sink_wait_preroll
 func (sink *BaseSinkInstance) WaitPreroll() gst.FlowReturn {
 	var carg0 *C.GstBaseSink  // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -6394,75 +6163,75 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 
 	// // ActivatePull allows you to override the implementation of the virtual method activate_pull.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#activate_pull
 	ActivatePull func(Instance, bool) bool
 	// // Event allows you to override the implementation of the virtual method event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#event
 	Event func(Instance, *gst.Event) bool
 	// // Fixate allows you to override the implementation of the virtual method fixate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#fixate
 	Fixate func(Instance, *gst.Caps) *gst.Caps
 	// // GetCaps allows you to override the implementation of the virtual method get_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#get_caps
 	GetCaps func(Instance, *gst.Caps) *gst.Caps
 	// // GetTimes allows you to override the implementation of the virtual method get_times.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#get_times
 	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// // Prepare allows you to override the implementation of the virtual method prepare.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#prepare
 	Prepare func(Instance, *gst.Buffer) gst.FlowReturn
 	// // PrepareList allows you to override the implementation of the virtual method prepare_list.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#prepare_list
 	PrepareList func(Instance, *gst.BufferList) gst.FlowReturn
 	// // Preroll allows you to override the implementation of the virtual method preroll.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#preroll
 	Preroll func(Instance, *gst.Buffer) gst.FlowReturn
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#propose_allocation
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // Query allows you to override the implementation of the virtual method query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#query
 	Query func(Instance, *gst.Query) bool
 	// // Render allows you to override the implementation of the virtual method render.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#render
 	Render func(Instance, *gst.Buffer) gst.FlowReturn
 	// // RenderList allows you to override the implementation of the virtual method render_list.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#render_list
 	RenderList func(Instance, *gst.BufferList) gst.FlowReturn
 	// // SetCaps allows you to override the implementation of the virtual method set_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#set_caps
 	SetCaps func(Instance, *gst.Caps) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#stop
 	Stop func(Instance) bool
 	// // Unlock allows you to override the implementation of the virtual method unlock.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#unlock
 	Unlock func(Instance) bool
 	// // UnlockStop allows you to override the implementation of the virtual method unlock_stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#unlock_stop
 	UnlockStop func(Instance) bool
 	// // WaitEvent allows you to override the implementation of the virtual method wait_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#wait_event
 	WaitEvent func(Instance, *gst.Event) gst.FlowReturn
 }
 
@@ -6887,7 +6656,7 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 // ParentActivatePull calls the default implementations of the `GstBaseSink.activate_pull` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#activate_pull
 func (sink *BaseSinkInstance) ParentActivatePull(active bool) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 C.gboolean // in, none, converted
@@ -6916,7 +6685,7 @@ func (sink *BaseSinkInstance) ParentActivatePull(active bool) bool {
 // ParentEvent calls the default implementations of the `GstBaseSink.event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#event
 func (sink *BaseSinkInstance) ParentEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstEvent // in, none, converted
@@ -6943,7 +6712,7 @@ func (sink *BaseSinkInstance) ParentEvent(event *gst.Event) bool {
 // ParentFixate calls the default implementations of the `GstBaseSink.fixate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#fixate
 func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstCaps // in, none, converted
@@ -6968,7 +6737,7 @@ func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 // ParentGetCaps calls the default implementations of the `GstBaseSink.get_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#get_caps
 func (sink *BaseSinkInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstCaps // in, none, converted
@@ -6995,7 +6764,7 @@ func (sink *BaseSinkInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 // ParentGetTimes calls the default implementations of the `GstBaseSink.get_times` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#get_times
 func (sink *BaseSinkInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBuffer   // in, none, converted
@@ -7023,7 +6792,7 @@ func (sink *BaseSinkInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime,
 // ParentPrepare calls the default implementations of the `GstBaseSink.prepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#prepare
 func (sink *BaseSinkInstance) ParentPrepare(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -7048,7 +6817,7 @@ func (sink *BaseSinkInstance) ParentPrepare(buffer *gst.Buffer) gst.FlowReturn {
 // ParentPrepareList calls the default implementations of the `GstBaseSink.prepare_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#prepare_list
 func (sink *BaseSinkInstance) ParentPrepareList(bufferList *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBufferList // in, none, converted
@@ -7073,7 +6842,7 @@ func (sink *BaseSinkInstance) ParentPrepareList(bufferList *gst.BufferList) gst.
 // ParentPreroll calls the default implementations of the `GstBaseSink.preroll` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#preroll
 func (sink *BaseSinkInstance) ParentPreroll(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -7098,7 +6867,7 @@ func (sink *BaseSinkInstance) ParentPreroll(buffer *gst.Buffer) gst.FlowReturn {
 // ParentProposeAllocation calls the default implementations of the `GstBaseSink.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#propose_allocation
 func (sink *BaseSinkInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstQuery // in, none, converted
@@ -7125,7 +6894,7 @@ func (sink *BaseSinkInstance) ParentProposeAllocation(query *gst.Query) bool {
 // ParentQuery calls the default implementations of the `GstBaseSink.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#query
 func (sink *BaseSinkInstance) ParentQuery(query *gst.Query) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstQuery // in, none, converted
@@ -7152,7 +6921,7 @@ func (sink *BaseSinkInstance) ParentQuery(query *gst.Query) bool {
 // ParentRender calls the default implementations of the `GstBaseSink.render` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#render
 func (sink *BaseSinkInstance) ParentRender(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -7177,7 +6946,7 @@ func (sink *BaseSinkInstance) ParentRender(buffer *gst.Buffer) gst.FlowReturn {
 // ParentRenderList calls the default implementations of the `GstBaseSink.render_list` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#render_list
 func (sink *BaseSinkInstance) ParentRenderList(bufferList *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstBufferList // in, none, converted
@@ -7202,7 +6971,7 @@ func (sink *BaseSinkInstance) ParentRenderList(bufferList *gst.BufferList) gst.F
 // ParentSetCaps calls the default implementations of the `GstBaseSink.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#set_caps
 func (sink *BaseSinkInstance) ParentSetCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstCaps // in, none, converted
@@ -7229,7 +6998,7 @@ func (sink *BaseSinkInstance) ParentSetCaps(caps *gst.Caps) bool {
 // ParentStart calls the default implementations of the `GstBaseSink.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#start
 func (sink *BaseSinkInstance) ParentStart() bool {
 	var carg0 *C.GstBaseSink
 	var cret  C.gboolean // return
@@ -7253,7 +7022,7 @@ func (sink *BaseSinkInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstBaseSink.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#stop
 func (sink *BaseSinkInstance) ParentStop() bool {
 	var carg0 *C.GstBaseSink
 	var cret  C.gboolean // return
@@ -7277,7 +7046,7 @@ func (sink *BaseSinkInstance) ParentStop() bool {
 // ParentUnlock calls the default implementations of the `GstBaseSink.unlock` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#unlock
 func (sink *BaseSinkInstance) ParentUnlock() bool {
 	var carg0 *C.GstBaseSink
 	var cret  C.gboolean // return
@@ -7301,7 +7070,7 @@ func (sink *BaseSinkInstance) ParentUnlock() bool {
 // ParentUnlockStop calls the default implementations of the `GstBaseSink.unlock_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#unlock_stop
 func (sink *BaseSinkInstance) ParentUnlockStop() bool {
 	var carg0 *C.GstBaseSink
 	var cret  C.gboolean // return
@@ -7325,7 +7094,7 @@ func (sink *BaseSinkInstance) ParentUnlockStop() bool {
 // ParentWaitEvent calls the default implementations of the `GstBaseSink.wait_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#wait_event
 func (sink *BaseSinkInstance) ParentWaitEvent(event *gst.Event) gst.FlowReturn {
 	var carg0 *C.GstBaseSink
 	var carg1 *C.GstEvent     // in, none, converted
@@ -7383,120 +7152,98 @@ var _ BaseSrc = (*BaseSrcInstance)(nil)
 
 // BaseSrc wraps GstBaseSrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#GstBaseSrc
 type BaseSrc interface {
 	gst.Element
 	upcastToGstBaseSrc() *BaseSrcInstance
 
 	// GetAllocator wraps gst_base_src_get_allocator
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_allocator
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBlocksize wraps gst_base_src_get_blocksize
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_blocksize
 	GetBlocksize() uint
 	// GetBufferPool wraps gst_base_src_get_buffer_pool
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_buffer_pool
 	GetBufferPool() gst.BufferPool
 	// GetDoTimestamp wraps gst_base_src_get_do_timestamp
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_do_timestamp
 	GetDoTimestamp() bool
 	// IsAsync wraps gst_base_src_is_async
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_is_async
 	IsAsync() bool
 	// IsLive wraps gst_base_src_is_live
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_is_live
 	IsLive() bool
 	// Negotiate wraps gst_base_src_negotiate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_negotiate
 	Negotiate() bool
 	// NewSegment wraps gst_base_src_new_segment
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_new_segment
 	NewSegment(*gst.Segment) bool
 	// PushSegment wraps gst_base_src_push_segment
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_push_segment
 	PushSegment(*gst.Segment) bool
 	// QueryLatency wraps gst_base_src_query_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_query_latency
 	QueryLatency() (bool, gst.ClockTime, gst.ClockTime, bool)
 	// SetAsync wraps gst_base_src_set_async
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_async
 	SetAsync(bool)
 	// SetAutomaticEOS wraps gst_base_src_set_automatic_eos
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_automatic_eos
 	SetAutomaticEOS(bool)
 	// SetBlocksize wraps gst_base_src_set_blocksize
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_blocksize
 	SetBlocksize(uint)
 	// SetCaps wraps gst_base_src_set_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_caps
 	SetCaps(*gst.Caps) bool
 	// SetDoTimestamp wraps gst_base_src_set_do_timestamp
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_do_timestamp
 	SetDoTimestamp(bool)
 	// SetDynamicSize wraps gst_base_src_set_dynamic_size
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_dynamic_size
 	SetDynamicSize(bool)
 	// SetFormat wraps gst_base_src_set_format
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_format
 	SetFormat(gst.Format)
 	// SetLive wraps gst_base_src_set_live
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_live
 	SetLive(bool)
 	// StartComplete wraps gst_base_src_start_complete
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_start_complete
 	StartComplete(gst.FlowReturn)
 	// StartWait wraps gst_base_src_start_wait
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_start_wait
 	StartWait() gst.FlowReturn
 	// SubmitBufferList wraps gst_base_src_submit_buffer_list
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_submit_buffer_list
 	SubmitBufferList(*gst.BufferList)
 	// WaitPlaying wraps gst_base_src_wait_playing
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_wait_playing
 	WaitPlaying() gst.FlowReturn
 
 	// chain up virtual methods:
@@ -7504,92 +7251,92 @@ type BaseSrc interface {
 	// ParentAlloc calls the default implementations of the `GstBaseSrc.alloc` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#alloc
 	ParentAlloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn)
 	// ParentDecideAllocation calls the default implementations of the `GstBaseSrc.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#decide_allocation
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentDoSeek calls the default implementations of the `GstBaseSrc.do_seek` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#do_seek
 	ParentDoSeek(segment *gst.Segment) bool
 	// ParentEvent calls the default implementations of the `GstBaseSrc.event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#event
 	ParentEvent(event *gst.Event) bool
 	// ParentFill calls the default implementations of the `GstBaseSrc.fill` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#fill
 	ParentFill(offset uint64, size uint, buf *gst.Buffer) gst.FlowReturn
 	// ParentFixate calls the default implementations of the `GstBaseSrc.fixate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#fixate
 	ParentFixate(caps *gst.Caps) *gst.Caps
 	// ParentGetCaps calls the default implementations of the `GstBaseSrc.get_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#get_caps
 	ParentGetCaps(filter *gst.Caps) *gst.Caps
 	// ParentGetSize calls the default implementations of the `GstBaseSrc.get_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#get_size
 	ParentGetSize() (uint64, bool)
 	// ParentGetTimes calls the default implementations of the `GstBaseSrc.get_times` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#get_times
 	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// ParentIsSeekable calls the default implementations of the `GstBaseSrc.is_seekable` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#is_seekable
 	ParentIsSeekable() bool
 	// ParentNegotiate calls the default implementations of the `GstBaseSrc.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#negotiate
 	ParentNegotiate() bool
 	// ParentPrepareSeekSegment calls the default implementations of the `GstBaseSrc.prepare_seek_segment` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#prepare_seek_segment
 	ParentPrepareSeekSegment(seek *gst.Event, segment *gst.Segment) bool
 	// ParentQuery calls the default implementations of the `GstBaseSrc.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#query
 	ParentQuery(query *gst.Query) bool
 	// ParentSetCaps calls the default implementations of the `GstBaseSrc.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#set_caps
 	ParentSetCaps(caps *gst.Caps) bool
 	// ParentStart calls the default implementations of the `GstBaseSrc.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstBaseSrc.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#stop
 	ParentStop() bool
 	// ParentUnlock calls the default implementations of the `GstBaseSrc.unlock` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#unlock
 	ParentUnlock() bool
 	// ParentUnlockStop calls the default implementations of the `GstBaseSrc.unlock_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#unlock_stop
 	ParentUnlockStop() bool
 }
 
@@ -7649,8 +7396,7 @@ func UnsafeBaseSrcToGlibFull(c BaseSrc) unsafe.Pointer {
 
 // GetAllocator wraps gst_base_src_get_allocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_allocator
 func (src *BaseSrcInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstBaseSrc         // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -7676,8 +7422,7 @@ func (src *BaseSrcInstance) GetAllocator() (gst.Allocator, gst.AllocationParams)
 
 // GetBlocksize wraps gst_base_src_get_blocksize
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_blocksize
 func (src *BaseSrcInstance) GetBlocksize() uint {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.guint       // return, none, casted
@@ -7696,7 +7441,7 @@ func (src *BaseSrcInstance) GetBlocksize() uint {
 
 // GetBufferPool wraps gst_base_src_get_buffer_pool
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_buffer_pool
 func (src *BaseSrcInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstBaseSrc    // in, none, converted
 	var cret  *C.GstBufferPool // return, full, converted, nullable
@@ -7717,8 +7462,7 @@ func (src *BaseSrcInstance) GetBufferPool() gst.BufferPool {
 
 // GetDoTimestamp wraps gst_base_src_get_do_timestamp
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_get_do_timestamp
 func (src *BaseSrcInstance) GetDoTimestamp() bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.gboolean    // return
@@ -7739,8 +7483,7 @@ func (src *BaseSrcInstance) GetDoTimestamp() bool {
 
 // IsAsync wraps gst_base_src_is_async
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_is_async
 func (src *BaseSrcInstance) IsAsync() bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.gboolean    // return
@@ -7761,8 +7504,7 @@ func (src *BaseSrcInstance) IsAsync() bool {
 
 // IsLive wraps gst_base_src_is_live
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_is_live
 func (src *BaseSrcInstance) IsLive() bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.gboolean    // return
@@ -7783,8 +7525,7 @@ func (src *BaseSrcInstance) IsLive() bool {
 
 // Negotiate wraps gst_base_src_negotiate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_negotiate
 func (src *BaseSrcInstance) Negotiate() bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var cret  C.gboolean    // return
@@ -7805,8 +7546,7 @@ func (src *BaseSrcInstance) Negotiate() bool {
 
 // NewSegment wraps gst_base_src_new_segment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_new_segment
 func (src *BaseSrcInstance) NewSegment(segment *gst.Segment) bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 *C.GstSegment // in, none, converted
@@ -7830,8 +7570,7 @@ func (src *BaseSrcInstance) NewSegment(segment *gst.Segment) bool {
 
 // PushSegment wraps gst_base_src_push_segment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_push_segment
 func (src *BaseSrcInstance) PushSegment(segment *gst.Segment) bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 *C.GstSegment // in, none, converted
@@ -7855,8 +7594,7 @@ func (src *BaseSrcInstance) PushSegment(segment *gst.Segment) bool {
 
 // QueryLatency wraps gst_base_src_query_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_query_latency
 func (src *BaseSrcInstance) QueryLatency() (bool, gst.ClockTime, gst.ClockTime, bool) {
 	var carg0 *C.GstBaseSrc  // in, none, converted
 	var carg1 C.gboolean     // out
@@ -7888,8 +7626,7 @@ func (src *BaseSrcInstance) QueryLatency() (bool, gst.ClockTime, gst.ClockTime, 
 
 // SetAsync wraps gst_base_src_set_async
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_async
 func (src *BaseSrcInstance) SetAsync(async bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -7906,8 +7643,7 @@ func (src *BaseSrcInstance) SetAsync(async bool) {
 
 // SetAutomaticEOS wraps gst_base_src_set_automatic_eos
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_automatic_eos
 func (src *BaseSrcInstance) SetAutomaticEOS(automaticEos bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -7924,8 +7660,7 @@ func (src *BaseSrcInstance) SetAutomaticEOS(automaticEos bool) {
 
 // SetBlocksize wraps gst_base_src_set_blocksize
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_blocksize
 func (src *BaseSrcInstance) SetBlocksize(blocksize uint) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.guint       // in, none, casted
@@ -7940,8 +7675,7 @@ func (src *BaseSrcInstance) SetBlocksize(blocksize uint) {
 
 // SetCaps wraps gst_base_src_set_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_caps
 func (src *BaseSrcInstance) SetCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 *C.GstCaps    // in, none, converted
@@ -7965,8 +7699,7 @@ func (src *BaseSrcInstance) SetCaps(caps *gst.Caps) bool {
 
 // SetDoTimestamp wraps gst_base_src_set_do_timestamp
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_do_timestamp
 func (src *BaseSrcInstance) SetDoTimestamp(timestamp bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -7983,8 +7716,7 @@ func (src *BaseSrcInstance) SetDoTimestamp(timestamp bool) {
 
 // SetDynamicSize wraps gst_base_src_set_dynamic_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_dynamic_size
 func (src *BaseSrcInstance) SetDynamicSize(dynamic bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -8001,8 +7733,7 @@ func (src *BaseSrcInstance) SetDynamicSize(dynamic bool) {
 
 // SetFormat wraps gst_base_src_set_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_format
 func (src *BaseSrcInstance) SetFormat(format gst.Format) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.GstFormat   // in, none, casted
@@ -8017,8 +7748,7 @@ func (src *BaseSrcInstance) SetFormat(format gst.Format) {
 
 // SetLive wraps gst_base_src_set_live
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_set_live
 func (src *BaseSrcInstance) SetLive(live bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
@@ -8035,8 +7765,7 @@ func (src *BaseSrcInstance) SetLive(live bool) {
 
 // StartComplete wraps gst_base_src_start_complete
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_start_complete
 func (basesrc *BaseSrcInstance) StartComplete(ret gst.FlowReturn) {
 	var carg0 *C.GstBaseSrc   // in, none, converted
 	var carg1 C.GstFlowReturn // in, none, casted
@@ -8051,8 +7780,7 @@ func (basesrc *BaseSrcInstance) StartComplete(ret gst.FlowReturn) {
 
 // StartWait wraps gst_base_src_start_wait
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_start_wait
 func (basesrc *BaseSrcInstance) StartWait() gst.FlowReturn {
 	var carg0 *C.GstBaseSrc   // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -8071,8 +7799,7 @@ func (basesrc *BaseSrcInstance) StartWait() gst.FlowReturn {
 
 // SubmitBufferList wraps gst_base_src_submit_buffer_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_submit_buffer_list
 func (src *BaseSrcInstance) SubmitBufferList(bufferList *gst.BufferList) {
 	var carg0 *C.GstBaseSrc    // in, none, converted
 	var carg1 *C.GstBufferList // in, full, converted
@@ -8087,8 +7814,7 @@ func (src *BaseSrcInstance) SubmitBufferList(bufferList *gst.BufferList) {
 
 // WaitPlaying wraps gst_base_src_wait_playing
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#gst_base_src_wait_playing
 func (src *BaseSrcInstance) WaitPlaying() gst.FlowReturn {
 	var carg0 *C.GstBaseSrc   // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -8113,75 +7839,75 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 
 	// // Alloc allows you to override the implementation of the virtual method alloc.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#alloc
 	Alloc func(Instance, uint64, uint) (*gst.Buffer, gst.FlowReturn)
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#decide_allocation
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // DoSeek allows you to override the implementation of the virtual method do_seek.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#do_seek
 	DoSeek func(Instance, *gst.Segment) bool
 	// // Event allows you to override the implementation of the virtual method event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#event
 	Event func(Instance, *gst.Event) bool
 	// // Fill allows you to override the implementation of the virtual method fill.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#fill
 	Fill func(Instance, uint64, uint, *gst.Buffer) gst.FlowReturn
 	// // Fixate allows you to override the implementation of the virtual method fixate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#fixate
 	Fixate func(Instance, *gst.Caps) *gst.Caps
 	// // GetCaps allows you to override the implementation of the virtual method get_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#get_caps
 	GetCaps func(Instance, *gst.Caps) *gst.Caps
 	// // GetSize allows you to override the implementation of the virtual method get_size.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#get_size
 	GetSize func(Instance) (uint64, bool)
 	// // GetTimes allows you to override the implementation of the virtual method get_times.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#get_times
 	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// // IsSeekable allows you to override the implementation of the virtual method is_seekable.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#is_seekable
 	IsSeekable func(Instance) bool
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#negotiate
 	Negotiate func(Instance) bool
 	// // PrepareSeekSegment allows you to override the implementation of the virtual method prepare_seek_segment.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#prepare_seek_segment
 	PrepareSeekSegment func(Instance, *gst.Event, *gst.Segment) bool
 	// // Query allows you to override the implementation of the virtual method query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#query
 	Query func(Instance, *gst.Query) bool
 	// // SetCaps allows you to override the implementation of the virtual method set_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#set_caps
 	SetCaps func(Instance, *gst.Caps) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#stop
 	Stop func(Instance) bool
 	// // Unlock allows you to override the implementation of the virtual method unlock.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#unlock
 	Unlock func(Instance) bool
 	// // UnlockStop allows you to override the implementation of the virtual method unlock_stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#unlock_stop
 	UnlockStop func(Instance) bool
 }
 
@@ -8618,7 +8344,7 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 // ParentAlloc calls the default implementations of the `GstBaseSrc.alloc` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#alloc
 func (src *BaseSrcInstance) ParentAlloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstBaseSrc
 	var carg1 C.guint64       // in, none, converted
@@ -8651,7 +8377,7 @@ func (src *BaseSrcInstance) ParentAlloc(offset uint64, size uint) (*gst.Buffer, 
 // ParentDecideAllocation calls the default implementations of the `GstBaseSrc.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#decide_allocation
 func (src *BaseSrcInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstQuery // in, none, converted
@@ -8678,7 +8404,7 @@ func (src *BaseSrcInstance) ParentDecideAllocation(query *gst.Query) bool {
 // ParentDoSeek calls the default implementations of the `GstBaseSrc.do_seek` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#do_seek
 func (src *BaseSrcInstance) ParentDoSeek(segment *gst.Segment) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstSegment // in, none, converted
@@ -8705,7 +8431,7 @@ func (src *BaseSrcInstance) ParentDoSeek(segment *gst.Segment) bool {
 // ParentEvent calls the default implementations of the `GstBaseSrc.event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#event
 func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstEvent // in, none, converted
@@ -8732,7 +8458,7 @@ func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
 // ParentFill calls the default implementations of the `GstBaseSrc.fill` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#fill
 func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseSrc
 	var carg1 C.guint64       // in, none, converted
@@ -8763,7 +8489,7 @@ func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer
 // ParentFixate calls the default implementations of the `GstBaseSrc.fixate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#fixate
 func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstCaps // in, none, converted
@@ -8788,7 +8514,7 @@ func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 // ParentGetCaps calls the default implementations of the `GstBaseSrc.get_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#get_caps
 func (src *BaseSrcInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstCaps // in, none, converted
@@ -8815,7 +8541,7 @@ func (src *BaseSrcInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 // ParentGetSize calls the default implementations of the `GstBaseSrc.get_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#get_size
 func (src *BaseSrcInstance) ParentGetSize() (uint64, bool) {
 	var carg0 *C.GstBaseSrc
 	var carg1 C.guint64  // out, full, casted
@@ -8842,7 +8568,7 @@ func (src *BaseSrcInstance) ParentGetSize() (uint64, bool) {
 // ParentGetTimes calls the default implementations of the `GstBaseSrc.get_times` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#get_times
 func (src *BaseSrcInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstBuffer   // in, none, converted
@@ -8870,7 +8596,7 @@ func (src *BaseSrcInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, g
 // ParentIsSeekable calls the default implementations of the `GstBaseSrc.is_seekable` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#is_seekable
 func (src *BaseSrcInstance) ParentIsSeekable() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -8894,7 +8620,7 @@ func (src *BaseSrcInstance) ParentIsSeekable() bool {
 // ParentNegotiate calls the default implementations of the `GstBaseSrc.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#negotiate
 func (src *BaseSrcInstance) ParentNegotiate() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -8918,7 +8644,7 @@ func (src *BaseSrcInstance) ParentNegotiate() bool {
 // ParentPrepareSeekSegment calls the default implementations of the `GstBaseSrc.prepare_seek_segment` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#prepare_seek_segment
 func (src *BaseSrcInstance) ParentPrepareSeekSegment(seek *gst.Event, segment *gst.Segment) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstEvent   // in, none, converted
@@ -8948,7 +8674,7 @@ func (src *BaseSrcInstance) ParentPrepareSeekSegment(seek *gst.Event, segment *g
 // ParentQuery calls the default implementations of the `GstBaseSrc.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#query
 func (src *BaseSrcInstance) ParentQuery(query *gst.Query) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstQuery // in, none, converted
@@ -8975,7 +8701,7 @@ func (src *BaseSrcInstance) ParentQuery(query *gst.Query) bool {
 // ParentSetCaps calls the default implementations of the `GstBaseSrc.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#set_caps
 func (src *BaseSrcInstance) ParentSetCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstBaseSrc
 	var carg1 *C.GstCaps // in, none, converted
@@ -9002,7 +8728,7 @@ func (src *BaseSrcInstance) ParentSetCaps(caps *gst.Caps) bool {
 // ParentStart calls the default implementations of the `GstBaseSrc.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#start
 func (src *BaseSrcInstance) ParentStart() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -9026,7 +8752,7 @@ func (src *BaseSrcInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstBaseSrc.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#stop
 func (src *BaseSrcInstance) ParentStop() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -9050,7 +8776,7 @@ func (src *BaseSrcInstance) ParentStop() bool {
 // ParentUnlock calls the default implementations of the `GstBaseSrc.unlock` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#unlock
 func (src *BaseSrcInstance) ParentUnlock() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -9074,7 +8800,7 @@ func (src *BaseSrcInstance) ParentUnlock() bool {
 // ParentUnlockStop calls the default implementations of the `GstBaseSrc.unlock_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#unlock_stop
 func (src *BaseSrcInstance) ParentUnlockStop() bool {
 	var carg0 *C.GstBaseSrc
 	var cret  C.gboolean // return
@@ -9131,85 +8857,70 @@ var _ BaseTransform = (*BaseTransformInstance)(nil)
 
 // BaseTransform wraps GstBaseTransform
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#GstBaseTransform
 type BaseTransform interface {
 	gst.Element
 	upcastToGstBaseTransform() *BaseTransformInstance
 
 	// GetAllocator wraps gst_base_transform_get_allocator
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_get_allocator
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_base_transform_get_buffer_pool
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_get_buffer_pool
 	GetBufferPool() gst.BufferPool
 	// IsInPlace wraps gst_base_transform_is_in_place
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_is_in_place
 	IsInPlace() bool
 	// IsPassthrough wraps gst_base_transform_is_passthrough
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_is_passthrough
 	IsPassthrough() bool
 	// IsQosEnabled wraps gst_base_transform_is_qos_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_is_qos_enabled
 	IsQosEnabled() bool
 	// Reconfigure wraps gst_base_transform_reconfigure
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_reconfigure
 	Reconfigure() bool
 	// ReconfigureSink wraps gst_base_transform_reconfigure_sink
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_reconfigure_sink
 	ReconfigureSink()
 	// ReconfigureSrc wraps gst_base_transform_reconfigure_src
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_reconfigure_src
 	ReconfigureSrc()
 	// SetGapAware wraps gst_base_transform_set_gap_aware
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_gap_aware
 	SetGapAware(bool)
 	// SetInPlace wraps gst_base_transform_set_in_place
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_in_place
 	SetInPlace(bool)
 	// SetPassthrough wraps gst_base_transform_set_passthrough
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_passthrough
 	SetPassthrough(bool)
 	// SetPreferPassthrough wraps gst_base_transform_set_prefer_passthrough
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_prefer_passthrough
 	SetPreferPassthrough(bool)
 	// SetQosEnabled wraps gst_base_transform_set_qos_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_qos_enabled
 	SetQosEnabled(bool)
 	// UpdateQos wraps gst_base_transform_update_qos
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_update_qos
 	UpdateQos(float64, gst.ClockTimeDiff, gst.ClockTime)
 	// UpdateSrcCaps wraps gst_base_transform_update_src_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_update_src_caps
 	UpdateSrcCaps(*gst.Caps) bool
 
 	// chain up virtual methods:
@@ -9217,112 +8928,112 @@ type BaseTransform interface {
 	// ParentAcceptCaps calls the default implementations of the `GstBaseTransform.accept_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#accept_caps
 	ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool
 	// ParentBeforeTransform calls the default implementations of the `GstBaseTransform.before_transform` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#before_transform
 	ParentBeforeTransform(buffer *gst.Buffer)
 	// ParentCopyMetadata calls the default implementations of the `GstBaseTransform.copy_metadata` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#copy_metadata
 	ParentCopyMetadata(input *gst.Buffer, outbuf *gst.Buffer) bool
 	// ParentDecideAllocation calls the default implementations of the `GstBaseTransform.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#decide_allocation
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFilterMeta calls the default implementations of the `GstBaseTransform.filter_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#filter_meta
 	ParentFilterMeta(query *gst.Query, api gobject.Type, params *gst.Structure) bool
 	// ParentFixateCaps calls the default implementations of the `GstBaseTransform.fixate_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#fixate_caps
 	ParentFixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps
 	// ParentGenerateOutput calls the default implementations of the `GstBaseTransform.generate_output` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#generate_output
 	ParentGenerateOutput() (*gst.Buffer, gst.FlowReturn)
 	// ParentGetUnitSize calls the default implementations of the `GstBaseTransform.get_unit_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#get_unit_size
 	ParentGetUnitSize(caps *gst.Caps) (uint, bool)
 	// ParentPrepareOutputBuffer calls the default implementations of the `GstBaseTransform.prepare_output_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#prepare_output_buffer
 	ParentPrepareOutputBuffer(input *gst.Buffer) (*gst.Buffer, gst.FlowReturn)
 	// ParentProposeAllocation calls the default implementations of the `GstBaseTransform.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#propose_allocation
 	ParentProposeAllocation(decideQuery *gst.Query, query *gst.Query) bool
 	// ParentQueryBaseTransform calls the default implementations of the `GstBaseTransform.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#query
 	ParentQueryBaseTransform(direction gst.PadDirection, query *gst.Query) bool
 	// ParentSetCaps calls the default implementations of the `GstBaseTransform.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#set_caps
 	ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
 	// ParentSinkEvent calls the default implementations of the `GstBaseTransform.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#sink_event
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSrcEvent calls the default implementations of the `GstBaseTransform.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#src_event
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentStart calls the default implementations of the `GstBaseTransform.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstBaseTransform.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#stop
 	ParentStop() bool
 	// ParentSubmitInputBuffer calls the default implementations of the `GstBaseTransform.submit_input_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#submit_input_buffer
 	ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn
 	// ParentTransform calls the default implementations of the `GstBaseTransform.transform` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform
 	ParentTransform(inbuf *gst.Buffer, outbuf *gst.Buffer) gst.FlowReturn
 	// ParentTransformCaps calls the default implementations of the `GstBaseTransform.transform_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_caps
 	ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps
 	// ParentTransformIp calls the default implementations of the `GstBaseTransform.transform_ip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_ip
 	ParentTransformIp(buf *gst.Buffer) gst.FlowReturn
 	// ParentTransformMeta calls the default implementations of the `GstBaseTransform.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_meta
 	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 	// ParentTransformSize calls the default implementations of the `GstBaseTransform.transform_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_size
 	ParentTransformSize(direction gst.PadDirection, caps *gst.Caps, size uint, othercaps *gst.Caps) (uint, bool)
 }
 
@@ -9382,8 +9093,7 @@ func UnsafeBaseTransformToGlibFull(c BaseTransform) unsafe.Pointer {
 
 // GetAllocator wraps gst_base_transform_get_allocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_get_allocator
 func (trans *BaseTransformInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstBaseTransform   // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -9409,7 +9119,7 @@ func (trans *BaseTransformInstance) GetAllocator() (gst.Allocator, gst.Allocatio
 
 // GetBufferPool wraps gst_base_transform_get_buffer_pool
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_get_buffer_pool
 func (trans *BaseTransformInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  *C.GstBufferPool    // return, full, converted, nullable
@@ -9430,8 +9140,7 @@ func (trans *BaseTransformInstance) GetBufferPool() gst.BufferPool {
 
 // IsInPlace wraps gst_base_transform_is_in_place
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_is_in_place
 func (trans *BaseTransformInstance) IsInPlace() bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  C.gboolean          // return
@@ -9452,8 +9161,7 @@ func (trans *BaseTransformInstance) IsInPlace() bool {
 
 // IsPassthrough wraps gst_base_transform_is_passthrough
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_is_passthrough
 func (trans *BaseTransformInstance) IsPassthrough() bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  C.gboolean          // return
@@ -9474,8 +9182,7 @@ func (trans *BaseTransformInstance) IsPassthrough() bool {
 
 // IsQosEnabled wraps gst_base_transform_is_qos_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_is_qos_enabled
 func (trans *BaseTransformInstance) IsQosEnabled() bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  C.gboolean          // return
@@ -9496,8 +9203,7 @@ func (trans *BaseTransformInstance) IsQosEnabled() bool {
 
 // Reconfigure wraps gst_base_transform_reconfigure
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_reconfigure
 func (trans *BaseTransformInstance) Reconfigure() bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var cret  C.gboolean          // return
@@ -9518,8 +9224,7 @@ func (trans *BaseTransformInstance) Reconfigure() bool {
 
 // ReconfigureSink wraps gst_base_transform_reconfigure_sink
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_reconfigure_sink
 func (trans *BaseTransformInstance) ReconfigureSink() {
 	var carg0 *C.GstBaseTransform // in, none, converted
 
@@ -9531,8 +9236,7 @@ func (trans *BaseTransformInstance) ReconfigureSink() {
 
 // ReconfigureSrc wraps gst_base_transform_reconfigure_src
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_reconfigure_src
 func (trans *BaseTransformInstance) ReconfigureSrc() {
 	var carg0 *C.GstBaseTransform // in, none, converted
 
@@ -9544,8 +9248,7 @@ func (trans *BaseTransformInstance) ReconfigureSrc() {
 
 // SetGapAware wraps gst_base_transform_set_gap_aware
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_gap_aware
 func (trans *BaseTransformInstance) SetGapAware(gapAware bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -9562,8 +9265,7 @@ func (trans *BaseTransformInstance) SetGapAware(gapAware bool) {
 
 // SetInPlace wraps gst_base_transform_set_in_place
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_in_place
 func (trans *BaseTransformInstance) SetInPlace(inPlace bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -9580,8 +9282,7 @@ func (trans *BaseTransformInstance) SetInPlace(inPlace bool) {
 
 // SetPassthrough wraps gst_base_transform_set_passthrough
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_passthrough
 func (trans *BaseTransformInstance) SetPassthrough(passthrough bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -9598,8 +9299,7 @@ func (trans *BaseTransformInstance) SetPassthrough(passthrough bool) {
 
 // SetPreferPassthrough wraps gst_base_transform_set_prefer_passthrough
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_prefer_passthrough
 func (trans *BaseTransformInstance) SetPreferPassthrough(preferPassthrough bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -9616,8 +9316,7 @@ func (trans *BaseTransformInstance) SetPreferPassthrough(preferPassthrough bool)
 
 // SetQosEnabled wraps gst_base_transform_set_qos_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_set_qos_enabled
 func (trans *BaseTransformInstance) SetQosEnabled(enabled bool) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gboolean          // in
@@ -9634,8 +9333,7 @@ func (trans *BaseTransformInstance) SetQosEnabled(enabled bool) {
 
 // UpdateQos wraps gst_base_transform_update_qos
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_update_qos
 func (trans *BaseTransformInstance) UpdateQos(proportion float64, diff gst.ClockTimeDiff, timestamp gst.ClockTime) {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 C.gdouble           // in, none, casted
@@ -9656,8 +9354,7 @@ func (trans *BaseTransformInstance) UpdateQos(proportion float64, diff gst.Clock
 
 // UpdateSrcCaps wraps gst_base_transform_update_src_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#gst_base_transform_update_src_caps
 func (trans *BaseTransformInstance) UpdateSrcCaps(updatedCaps *gst.Caps) bool {
 	var carg0 *C.GstBaseTransform // in, none, converted
 	var carg1 *C.GstCaps          // in, none, converted
@@ -9687,91 +9384,91 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 
 	// // AcceptCaps allows you to override the implementation of the virtual method accept_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#accept_caps
 	AcceptCaps func(Instance, gst.PadDirection, *gst.Caps) bool
 	// // BeforeTransform allows you to override the implementation of the virtual method before_transform.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#before_transform
 	BeforeTransform func(Instance, *gst.Buffer)
 	// // CopyMetadata allows you to override the implementation of the virtual method copy_metadata.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#copy_metadata
 	CopyMetadata func(Instance, *gst.Buffer, *gst.Buffer) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#decide_allocation
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // FilterMeta allows you to override the implementation of the virtual method filter_meta.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#filter_meta
 	FilterMeta func(Instance, *gst.Query, gobject.Type, *gst.Structure) bool
 	// // FixateCaps allows you to override the implementation of the virtual method fixate_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#fixate_caps
 	FixateCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 	// // GenerateOutput allows you to override the implementation of the virtual method generate_output.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#generate_output
 	GenerateOutput func(Instance) (*gst.Buffer, gst.FlowReturn)
 	// // GetUnitSize allows you to override the implementation of the virtual method get_unit_size.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#get_unit_size
 	GetUnitSize func(Instance, *gst.Caps) (uint, bool)
 	// // PrepareOutputBuffer allows you to override the implementation of the virtual method prepare_output_buffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#prepare_output_buffer
 	PrepareOutputBuffer func(Instance, *gst.Buffer) (*gst.Buffer, gst.FlowReturn)
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#propose_allocation
 	ProposeAllocation func(Instance, *gst.Query, *gst.Query) bool
 	// // Query allows you to override the implementation of the virtual method query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#query
 	Query func(Instance, gst.PadDirection, *gst.Query) bool
 	// // SetCaps allows you to override the implementation of the virtual method set_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#set_caps
 	SetCaps func(Instance, *gst.Caps, *gst.Caps) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#sink_event
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#src_event
 	SrcEvent func(Instance, *gst.Event) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#stop
 	Stop func(Instance) bool
 	// // SubmitInputBuffer allows you to override the implementation of the virtual method submit_input_buffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#submit_input_buffer
 	SubmitInputBuffer func(Instance, bool, *gst.Buffer) gst.FlowReturn
 	// // Transform allows you to override the implementation of the virtual method transform.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform
 	Transform func(Instance, *gst.Buffer, *gst.Buffer) gst.FlowReturn
 	// // TransformCaps allows you to override the implementation of the virtual method transform_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_caps
 	TransformCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 	// // TransformIp allows you to override the implementation of the virtual method transform_ip.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_ip
 	TransformIp func(Instance, *gst.Buffer) gst.FlowReturn
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_meta
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
 	// // TransformSize allows you to override the implementation of the virtual method transform_size.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_size
 	TransformSize func(Instance, gst.PadDirection, *gst.Caps, uint, *gst.Caps) (uint, bool)
 }
 
@@ -10333,7 +10030,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 // ParentAcceptCaps calls the default implementations of the `GstBaseTransform.accept_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#accept_caps
 func (trans *BaseTransformInstance) ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -10363,7 +10060,7 @@ func (trans *BaseTransformInstance) ParentAcceptCaps(direction gst.PadDirection,
 // ParentBeforeTransform calls the default implementations of the `GstBaseTransform.before_transform` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#before_transform
 func (trans *BaseTransformInstance) ParentBeforeTransform(buffer *gst.Buffer) {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer // in, none, converted
@@ -10381,7 +10078,7 @@ func (trans *BaseTransformInstance) ParentBeforeTransform(buffer *gst.Buffer) {
 // ParentCopyMetadata calls the default implementations of the `GstBaseTransform.copy_metadata` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#copy_metadata
 func (trans *BaseTransformInstance) ParentCopyMetadata(input *gst.Buffer, outbuf *gst.Buffer) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer // in, none, converted
@@ -10411,7 +10108,7 @@ func (trans *BaseTransformInstance) ParentCopyMetadata(input *gst.Buffer, outbuf
 // ParentDecideAllocation calls the default implementations of the `GstBaseTransform.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#decide_allocation
 func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstQuery // in, none, converted
@@ -10438,7 +10135,7 @@ func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) boo
 // ParentFilterMeta calls the default implementations of the `GstBaseTransform.filter_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#filter_meta
 func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobject.Type, params *gst.Structure) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstQuery     // in, none, converted
@@ -10471,7 +10168,7 @@ func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobje
 // ParentFixateCaps calls the default implementations of the `GstBaseTransform.fixate_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#fixate_caps
 func (trans *BaseTransformInstance) ParentFixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -10502,7 +10199,7 @@ func (trans *BaseTransformInstance) ParentFixateCaps(direction gst.PadDirection,
 // ParentGenerateOutput calls the default implementations of the `GstBaseTransform.generate_output` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#generate_output
 func (trans *BaseTransformInstance) ParentGenerateOutput() (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer    // out, full, converted
@@ -10527,7 +10224,7 @@ func (trans *BaseTransformInstance) ParentGenerateOutput() (*gst.Buffer, gst.Flo
 // ParentGetUnitSize calls the default implementations of the `GstBaseTransform.get_unit_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#get_unit_size
 func (trans *BaseTransformInstance) ParentGetUnitSize(caps *gst.Caps) (uint, bool) {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstCaps // in, none, converted
@@ -10557,7 +10254,7 @@ func (trans *BaseTransformInstance) ParentGetUnitSize(caps *gst.Caps) (uint, boo
 // ParentPrepareOutputBuffer calls the default implementations of the `GstBaseTransform.prepare_output_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#prepare_output_buffer
 func (trans *BaseTransformInstance) ParentPrepareOutputBuffer(input *gst.Buffer) (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -10585,7 +10282,7 @@ func (trans *BaseTransformInstance) ParentPrepareOutputBuffer(input *gst.Buffer)
 // ParentProposeAllocation calls the default implementations of the `GstBaseTransform.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#propose_allocation
 func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Query, query *gst.Query) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstQuery // in, none, converted
@@ -10615,7 +10312,7 @@ func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Que
 // ParentQueryBaseTransform calls the default implementations of the `GstBaseTransform.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#query
 func (trans *BaseTransformInstance) ParentQueryBaseTransform(direction gst.PadDirection, query *gst.Query) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -10645,7 +10342,7 @@ func (trans *BaseTransformInstance) ParentQueryBaseTransform(direction gst.PadDi
 // ParentSetCaps calls the default implementations of the `GstBaseTransform.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#set_caps
 func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstCaps // in, none, converted
@@ -10675,7 +10372,7 @@ func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst
 // ParentSinkEvent calls the default implementations of the `GstBaseTransform.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#sink_event
 func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstEvent // in, none, converted
@@ -10702,7 +10399,7 @@ func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSrcEvent calls the default implementations of the `GstBaseTransform.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#src_event
 func (trans *BaseTransformInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstEvent // in, none, converted
@@ -10729,7 +10426,7 @@ func (trans *BaseTransformInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentStart calls the default implementations of the `GstBaseTransform.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#start
 func (trans *BaseTransformInstance) ParentStart() bool {
 	var carg0 *C.GstBaseTransform
 	var cret  C.gboolean // return
@@ -10753,7 +10450,7 @@ func (trans *BaseTransformInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstBaseTransform.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#stop
 func (trans *BaseTransformInstance) ParentStop() bool {
 	var carg0 *C.GstBaseTransform
 	var cret  C.gboolean // return
@@ -10777,7 +10474,7 @@ func (trans *BaseTransformInstance) ParentStop() bool {
 // ParentSubmitInputBuffer calls the default implementations of the `GstBaseTransform.submit_input_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#submit_input_buffer
 func (trans *BaseTransformInstance) ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.gboolean      // in, none, converted
@@ -10807,7 +10504,7 @@ func (trans *BaseTransformInstance) ParentSubmitInputBuffer(isDiscont bool, inpu
 // ParentTransform calls the default implementations of the `GstBaseTransform.transform` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform
 func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -10835,7 +10532,7 @@ func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *g
 // ParentTransformCaps calls the default implementations of the `GstBaseTransform.transform_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_caps
 func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -10866,7 +10563,7 @@ func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirecti
 // ParentTransformIp calls the default implementations of the `GstBaseTransform.transform_ip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_ip
 func (trans *BaseTransformInstance) ParentTransformIp(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -10891,7 +10588,7 @@ func (trans *BaseTransformInstance) ParentTransformIp(buf *gst.Buffer) gst.FlowR
 // ParentTransformMeta calls the default implementations of the `GstBaseTransform.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_meta
 func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer // in, none, converted
@@ -10924,7 +10621,7 @@ func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta
 // ParentTransformSize calls the default implementations of the `GstBaseTransform.transform_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#transform_size
 func (trans *BaseTransformInstance) ParentTransformSize(direction gst.PadDirection, caps *gst.Caps, size uint, othercaps *gst.Caps) (uint, bool) {
 	var carg0 *C.GstBaseTransform
 	var carg1 C.GstPadDirection // in, none, converted
@@ -10996,116 +10693,94 @@ var _ CollectPads = (*CollectPadsInstance)(nil)
 
 // CollectPads wraps GstCollectPads
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPads
 type CollectPads interface {
 	gst.Object
 	upcastToGstCollectPads() *CollectPadsInstance
 
 	// Available wraps gst_collect_pads_available
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_available
 	Available() uint
 	// EventDefault wraps gst_collect_pads_event_default
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_event_default
 	EventDefault(*CollectData, *gst.Event, bool) bool
 	// Flush wraps gst_collect_pads_flush
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_flush
 	Flush(*CollectData, uint) uint
 	// Peek wraps gst_collect_pads_peek
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_peek
 	Peek(*CollectData) *gst.Buffer
 	// Pop wraps gst_collect_pads_pop
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_pop
 	Pop(*CollectData) *gst.Buffer
 	// QueryDefault wraps gst_collect_pads_query_default
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_query_default
 	QueryDefault(*CollectData, *gst.Query, bool) bool
 	// ReadBuffer wraps gst_collect_pads_read_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_read_buffer
 	ReadBuffer(*CollectData, uint) *gst.Buffer
 	// RemovePad wraps gst_collect_pads_remove_pad
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_remove_pad
 	RemovePad(gst.Pad) bool
 	// SetBufferFunction wraps gst_collect_pads_set_buffer_function
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_buffer_function
 	SetBufferFunction(CollectPadsBufferFunction)
 	// SetClipFunction wraps gst_collect_pads_set_clip_function
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_clip_function
 	SetClipFunction(CollectPadsClipFunction)
 	// SetCompareFunction wraps gst_collect_pads_set_compare_function
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_compare_function
 	SetCompareFunction(CollectPadsCompareFunction)
 	// SetEventFunction wraps gst_collect_pads_set_event_function
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_event_function
 	SetEventFunction(CollectPadsEventFunction)
 	// SetFlushFunction wraps gst_collect_pads_set_flush_function
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_flush_function
 	SetFlushFunction(CollectPadsFlushFunction)
 	// SetFlushing wraps gst_collect_pads_set_flushing
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_flushing
 	SetFlushing(bool)
 	// SetFunction wraps gst_collect_pads_set_function
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_function
 	SetFunction(CollectPadsFunction)
 	// SetQueryFunction wraps gst_collect_pads_set_query_function
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_query_function
 	SetQueryFunction(CollectPadsQueryFunction)
 	// SetWaiting wraps gst_collect_pads_set_waiting
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_waiting
 	SetWaiting(*CollectData, bool)
 	// SrcEventDefault wraps gst_collect_pads_src_event_default
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_src_event_default
 	SrcEventDefault(gst.Pad, *gst.Event) bool
 	// Start wraps gst_collect_pads_start
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_start
 	Start()
 	// Stop wraps gst_collect_pads_stop
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_stop
 	Stop()
 	// TakeBuffer wraps gst_collect_pads_take_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_take_buffer
 	TakeBuffer(*CollectData, uint) *gst.Buffer
 
 	// chain up virtual methods:
@@ -11165,8 +10840,7 @@ func UnsafeCollectPadsToGlibFull(c CollectPads) unsafe.Pointer {
 
 // NewCollectPads wraps gst_collect_pads_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_new
 func NewCollectPads() CollectPads {
 	var cret *C.GstCollectPads // return, full, converted
 
@@ -11181,8 +10855,7 @@ func NewCollectPads() CollectPads {
 
 // Available wraps gst_collect_pads_available
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_available
 func (pads *CollectPadsInstance) Available() uint {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var cret  C.guint           // return, none, casted
@@ -11201,8 +10874,7 @@ func (pads *CollectPadsInstance) Available() uint {
 
 // EventDefault wraps gst_collect_pads_event_default
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_event_default
 func (pads *CollectPadsInstance) EventDefault(data *CollectData, event *gst.Event, discard bool) bool {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -11234,8 +10906,7 @@ func (pads *CollectPadsInstance) EventDefault(data *CollectData, event *gst.Even
 
 // Flush wraps gst_collect_pads_flush
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_flush
 func (pads *CollectPadsInstance) Flush(data *CollectData, size uint) uint {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -11260,8 +10931,7 @@ func (pads *CollectPadsInstance) Flush(data *CollectData, size uint) uint {
 
 // Peek wraps gst_collect_pads_peek
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_peek
 func (pads *CollectPadsInstance) Peek(data *CollectData) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -11285,8 +10955,7 @@ func (pads *CollectPadsInstance) Peek(data *CollectData) *gst.Buffer {
 
 // Pop wraps gst_collect_pads_pop
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_pop
 func (pads *CollectPadsInstance) Pop(data *CollectData) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -11310,8 +10979,7 @@ func (pads *CollectPadsInstance) Pop(data *CollectData) *gst.Buffer {
 
 // QueryDefault wraps gst_collect_pads_query_default
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_query_default
 func (pads *CollectPadsInstance) QueryDefault(data *CollectData, query *gst.Query, discard bool) bool {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -11343,8 +11011,7 @@ func (pads *CollectPadsInstance) QueryDefault(data *CollectData, query *gst.Quer
 
 // ReadBuffer wraps gst_collect_pads_read_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_read_buffer
 func (pads *CollectPadsInstance) ReadBuffer(data *CollectData, size uint) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -11371,8 +11038,7 @@ func (pads *CollectPadsInstance) ReadBuffer(data *CollectData, size uint) *gst.B
 
 // RemovePad wraps gst_collect_pads_remove_pad
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_remove_pad
 func (pads *CollectPadsInstance) RemovePad(pad gst.Pad) bool {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstPad         // in, none, converted
@@ -11396,8 +11062,7 @@ func (pads *CollectPadsInstance) RemovePad(pad gst.Pad) bool {
 
 // SetBufferFunction wraps gst_collect_pads_set_buffer_function
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_buffer_function
 func (pads *CollectPadsInstance) SetBufferFunction(fn CollectPadsBufferFunction) {
 	var carg0 *C.GstCollectPads              // in, none, converted
 	var carg1 C.GstCollectPadsBufferFunction // callback, scope: call, closure: carg2
@@ -11415,8 +11080,7 @@ func (pads *CollectPadsInstance) SetBufferFunction(fn CollectPadsBufferFunction)
 
 // SetClipFunction wraps gst_collect_pads_set_clip_function
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_clip_function
 func (pads *CollectPadsInstance) SetClipFunction(clipfunc CollectPadsClipFunction) {
 	var carg0 *C.GstCollectPads            // in, none, converted
 	var carg1 C.GstCollectPadsClipFunction // callback, scope: call, closure: carg2
@@ -11434,8 +11098,7 @@ func (pads *CollectPadsInstance) SetClipFunction(clipfunc CollectPadsClipFunctio
 
 // SetCompareFunction wraps gst_collect_pads_set_compare_function
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_compare_function
 func (pads *CollectPadsInstance) SetCompareFunction(fn CollectPadsCompareFunction) {
 	var carg0 *C.GstCollectPads               // in, none, converted
 	var carg1 C.GstCollectPadsCompareFunction // callback, scope: call, closure: carg2
@@ -11453,8 +11116,7 @@ func (pads *CollectPadsInstance) SetCompareFunction(fn CollectPadsCompareFunctio
 
 // SetEventFunction wraps gst_collect_pads_set_event_function
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_event_function
 func (pads *CollectPadsInstance) SetEventFunction(fn CollectPadsEventFunction) {
 	var carg0 *C.GstCollectPads             // in, none, converted
 	var carg1 C.GstCollectPadsEventFunction // callback, scope: call, closure: carg2
@@ -11472,8 +11134,7 @@ func (pads *CollectPadsInstance) SetEventFunction(fn CollectPadsEventFunction) {
 
 // SetFlushFunction wraps gst_collect_pads_set_flush_function
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_flush_function
 func (pads *CollectPadsInstance) SetFlushFunction(fn CollectPadsFlushFunction) {
 	var carg0 *C.GstCollectPads             // in, none, converted
 	var carg1 C.GstCollectPadsFlushFunction // callback, scope: call, closure: carg2
@@ -11491,8 +11152,7 @@ func (pads *CollectPadsInstance) SetFlushFunction(fn CollectPadsFlushFunction) {
 
 // SetFlushing wraps gst_collect_pads_set_flushing
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_flushing
 func (pads *CollectPadsInstance) SetFlushing(flushing bool) {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 C.gboolean        // in
@@ -11509,8 +11169,7 @@ func (pads *CollectPadsInstance) SetFlushing(flushing bool) {
 
 // SetFunction wraps gst_collect_pads_set_function
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_function
 func (pads *CollectPadsInstance) SetFunction(fn CollectPadsFunction) {
 	var carg0 *C.GstCollectPads        // in, none, converted
 	var carg1 C.GstCollectPadsFunction // callback, scope: call, closure: carg2
@@ -11528,8 +11187,7 @@ func (pads *CollectPadsInstance) SetFunction(fn CollectPadsFunction) {
 
 // SetQueryFunction wraps gst_collect_pads_set_query_function
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_query_function
 func (pads *CollectPadsInstance) SetQueryFunction(fn CollectPadsQueryFunction) {
 	var carg0 *C.GstCollectPads             // in, none, converted
 	var carg1 C.GstCollectPadsQueryFunction // callback, scope: call, closure: carg2
@@ -11547,8 +11205,7 @@ func (pads *CollectPadsInstance) SetQueryFunction(fn CollectPadsQueryFunction) {
 
 // SetWaiting wraps gst_collect_pads_set_waiting
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_set_waiting
 func (pads *CollectPadsInstance) SetWaiting(data *CollectData, waiting bool) {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -11568,8 +11225,7 @@ func (pads *CollectPadsInstance) SetWaiting(data *CollectData, waiting bool) {
 
 // SrcEventDefault wraps gst_collect_pads_src_event_default
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_src_event_default
 func (pads *CollectPadsInstance) SrcEventDefault(pad gst.Pad, event *gst.Event) bool {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstPad         // in, none, converted
@@ -11596,8 +11252,7 @@ func (pads *CollectPadsInstance) SrcEventDefault(pad gst.Pad, event *gst.Event) 
 
 // Start wraps gst_collect_pads_start
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_start
 func (pads *CollectPadsInstance) Start() {
 	var carg0 *C.GstCollectPads // in, none, converted
 
@@ -11609,8 +11264,7 @@ func (pads *CollectPadsInstance) Start() {
 
 // Stop wraps gst_collect_pads_stop
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_stop
 func (pads *CollectPadsInstance) Stop() {
 	var carg0 *C.GstCollectPads // in, none, converted
 
@@ -11622,8 +11276,7 @@ func (pads *CollectPadsInstance) Stop() {
 
 // TakeBuffer wraps gst_collect_pads_take_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#gst_collect_pads_take_buffer
 func (pads *CollectPadsInstance) TakeBuffer(data *CollectData, size uint) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
@@ -11698,21 +11351,18 @@ var _ DataQueue = (*DataQueueInstance)(nil)
 
 // DataQueue wraps GstDataQueue
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html#GstDataQueue
 type DataQueue interface {
 	gobject.Object
 	upcastToGstDataQueue() *DataQueueInstance
 
 	// ConnectEmpty connects the provided callback to the "empty" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base
 	ConnectEmpty(func(DataQueue)) gobject.SignalHandle
 	// ConnectFull connects the provided callback to the "full" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/base
 	ConnectFull(func(DataQueue)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -11720,12 +11370,12 @@ type DataQueue interface {
 	// ParentEmpty calls the default implementations of the `GstDataQueue.empty` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html#empty
 	ParentEmpty()
 	// ParentFull calls the default implementations of the `GstDataQueue.full` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html#full
 	ParentFull()
 }
 
@@ -11779,16 +11429,14 @@ func UnsafeDataQueueToGlibFull(c DataQueue) unsafe.Pointer {
 
 // ConnectEmpty connects the provided callback to the "empty" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func (o *DataQueueInstance) ConnectEmpty(fn func(DataQueue)) gobject.SignalHandle {
 	return o.Connect("empty", fn)
 }
 
 // ConnectFull connects the provided callback to the "full" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base
 func (o *DataQueueInstance) ConnectFull(fn func(DataQueue)) gobject.SignalHandle {
 	return o.Connect("full", fn)
 }
@@ -11801,11 +11449,11 @@ type DataQueueOverrides[Instance DataQueue] struct {
 
 	// // Empty allows you to override the implementation of the virtual method empty.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html#empty
 	Empty func(Instance)
 	// // Full allows you to override the implementation of the virtual method full.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html#full
 	Full func(Instance)
 }
 
@@ -11850,7 +11498,7 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 // ParentEmpty calls the default implementations of the `GstDataQueue.empty` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html#empty
 func (queue *DataQueueInstance) ParentEmpty() {
 	var carg0 *C.GstDataQueue
 
@@ -11865,7 +11513,7 @@ func (queue *DataQueueInstance) ParentEmpty() {
 // ParentFull calls the default implementations of the `GstDataQueue.full` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html#full
 func (queue *DataQueueInstance) ParentFull() {
 	var carg0 *C.GstDataQueue
 
@@ -11913,8 +11561,7 @@ var _ PushSrc = (*PushSrcInstance)(nil)
 
 // PushSrc wraps GstPushSrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstpushsrc.html#GstPushSrc
 type PushSrc interface {
 	BaseSrc
 	upcastToGstPushSrc() *PushSrcInstance
@@ -11924,12 +11571,12 @@ type PushSrc interface {
 	// ParentAllocPushSrc calls the default implementations of the `GstPushSrc.alloc` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstpushsrc.html#alloc
 	ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn)
 	// ParentFillPushSrc calls the default implementations of the `GstPushSrc.fill` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstpushsrc.html#fill
 	ParentFillPushSrc(buf *gst.Buffer) gst.FlowReturn
 }
 
@@ -11997,11 +11644,11 @@ type PushSrcOverrides[Instance PushSrc] struct {
 
 	// // Alloc allows you to override the implementation of the virtual method alloc.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstpushsrc.html#alloc
 	Alloc func(Instance) (*gst.Buffer, gst.FlowReturn)
 	// // Fill allows you to override the implementation of the virtual method fill.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstpushsrc.html#fill
 	Fill func(Instance, *gst.Buffer) gst.FlowReturn
 }
 
@@ -12060,7 +11707,7 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 // ParentAllocPushSrc calls the default implementations of the `GstPushSrc.alloc` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstpushsrc.html#alloc
 func (src *PushSrcInstance) ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstPushSrc
 	var carg1 *C.GstBuffer    // out, full, converted, nullable
@@ -12087,7 +11734,7 @@ func (src *PushSrcInstance) ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn) {
 // ParentFillPushSrc calls the default implementations of the `GstPushSrc.fill` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstpushsrc.html#fill
 func (src *PushSrcInstance) ParentFillPushSrc(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstPushSrc
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -12137,7 +11784,7 @@ func RegisterPushSrcSubClass[InstanceT PushSrc](
 
 // AdapterClass wraps GstAdapterClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstadapter.html#GstAdapterClass
 // 
 // AdapterClass is the type struct for [Adapter]
 type AdapterClass struct {
@@ -12191,8 +11838,7 @@ func (a *AdapterClass) ParentClass() *gobject.ObjectClass {
 
 // AggregatorClass wraps GstAggregatorClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#GstAggregatorClass
 // 
 // AggregatorClass is the type struct for [Aggregator]
 type AggregatorClass struct {
@@ -12246,7 +11892,7 @@ func (a *AggregatorClass) ParentClass() *gst.ElementClass {
 
 // AggregatorPadClass wraps GstAggregatorPadClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#GstAggregatorPadClass
 // 
 // AggregatorPadClass is the type struct for [AggregatorPad]
 type AggregatorPadClass struct {
@@ -12300,8 +11946,7 @@ func (a *AggregatorPadClass) ParentClass() *gst.PadClass {
 
 // BaseParseClass wraps GstBaseParseClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GstBaseParseClass
 // 
 // BaseParseClass is the type struct for [BaseParse]
 type BaseParseClass struct {
@@ -12355,8 +12000,7 @@ func (b *BaseParseClass) ParentClass() *gst.ElementClass {
 
 // BaseParseFrame wraps GstBaseParseFrame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GstBaseParseFrame
 type BaseParseFrame struct {
 	*baseParseFrame
 }
@@ -12452,8 +12096,7 @@ func UnsafeBaseParseFrameToGlibFull(b *BaseParseFrame) unsafe.Pointer {
 
 // NewBaseParseFrame wraps gst_base_parse_frame_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_frame_new
 func NewBaseParseFrame(buffer *gst.Buffer, flags BaseParseFrameFlags, overhead int32) *BaseParseFrame {
 	var carg1 *C.GstBuffer             // in, none, converted
 	var carg2 C.GstBaseParseFrameFlags // in, none, casted
@@ -12478,8 +12121,7 @@ func NewBaseParseFrame(buffer *gst.Buffer, flags BaseParseFrameFlags, overhead i
 
 // Copy wraps gst_base_parse_frame_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_frame_copy
 func (frame *BaseParseFrame) Copy() *BaseParseFrame {
 	var carg0 *C.GstBaseParseFrame // in, none, converted
 	var cret  *C.GstBaseParseFrame // return, full, converted
@@ -12498,8 +12140,7 @@ func (frame *BaseParseFrame) Copy() *BaseParseFrame {
 
 // Init wraps gst_base_parse_frame_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#gst_base_parse_frame_init
 func (frame *BaseParseFrame) Init() {
 	var carg0 *C.GstBaseParseFrame // in, none, converted
 
@@ -12511,8 +12152,7 @@ func (frame *BaseParseFrame) Init() {
 
 // BaseSinkClass wraps GstBaseSinkClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesink.html#GstBaseSinkClass
 // 
 // BaseSinkClass is the type struct for [BaseSink]
 type BaseSinkClass struct {
@@ -12566,8 +12206,7 @@ func (b *BaseSinkClass) ParentClass() *gst.ElementClass {
 
 // BaseSrcClass wraps GstBaseSrcClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#GstBaseSrcClass
 // 
 // BaseSrcClass is the type struct for [BaseSrc]
 type BaseSrcClass struct {
@@ -12621,8 +12260,7 @@ func (b *BaseSrcClass) ParentClass() *gst.ElementClass {
 
 // BaseTransformClass wraps GstBaseTransformClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html#GstBaseTransformClass
 // 
 // BaseTransformClass is the type struct for [BaseTransform]
 type BaseTransformClass struct {
@@ -12676,8 +12314,7 @@ func (b *BaseTransformClass) ParentClass() *gst.ElementClass {
 
 // BitReader wraps GstBitReader
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#GstBitReader
 type BitReader struct {
 	*bitReader
 }
@@ -12758,8 +12395,7 @@ func UnsafeBitReaderToGlibFull(b *BitReader) unsafe.Pointer {
 
 // GetBitsUint16 wraps gst_bit_reader_get_bits_uint16
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_get_bits_uint16
 func (reader *BitReader) GetBitsUint16(nbits uint) (uint16, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -12786,8 +12422,7 @@ func (reader *BitReader) GetBitsUint16(nbits uint) (uint16, bool) {
 
 // GetBitsUint32 wraps gst_bit_reader_get_bits_uint32
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_get_bits_uint32
 func (reader *BitReader) GetBitsUint32(nbits uint) (uint32, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -12814,8 +12449,7 @@ func (reader *BitReader) GetBitsUint32(nbits uint) (uint32, bool) {
 
 // GetBitsUint64 wraps gst_bit_reader_get_bits_uint64
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_get_bits_uint64
 func (reader *BitReader) GetBitsUint64(nbits uint) (uint64, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -12842,8 +12476,7 @@ func (reader *BitReader) GetBitsUint64(nbits uint) (uint64, bool) {
 
 // GetBitsUint8 wraps gst_bit_reader_get_bits_uint8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_get_bits_uint8
 func (reader *BitReader) GetBitsUint8(nbits uint) (uint8, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -12870,8 +12503,7 @@ func (reader *BitReader) GetBitsUint8(nbits uint) (uint8, bool) {
 
 // GetPos wraps gst_bit_reader_get_pos
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_get_pos
 func (reader *BitReader) GetPos() uint {
 	var carg0 *C.GstBitReader // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -12890,8 +12522,7 @@ func (reader *BitReader) GetPos() uint {
 
 // GetRemaining wraps gst_bit_reader_get_remaining
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_get_remaining
 func (reader *BitReader) GetRemaining() uint {
 	var carg0 *C.GstBitReader // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -12910,8 +12541,7 @@ func (reader *BitReader) GetRemaining() uint {
 
 // GetSize wraps gst_bit_reader_get_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_get_size
 func (reader *BitReader) GetSize() uint {
 	var carg0 *C.GstBitReader // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -12930,8 +12560,7 @@ func (reader *BitReader) GetSize() uint {
 
 // Init wraps gst_bit_reader_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_init
 func (reader *BitReader) Init(data []uint8) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg1 *C.guint8       // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -12950,8 +12579,7 @@ func (reader *BitReader) Init(data []uint8) {
 
 // PeekBitsUint16 wraps gst_bit_reader_peek_bits_uint16
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_peek_bits_uint16
 func (reader *BitReader) PeekBitsUint16(nbits uint) (uint16, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -12978,8 +12606,7 @@ func (reader *BitReader) PeekBitsUint16(nbits uint) (uint16, bool) {
 
 // PeekBitsUint32 wraps gst_bit_reader_peek_bits_uint32
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_peek_bits_uint32
 func (reader *BitReader) PeekBitsUint32(nbits uint) (uint32, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -13006,8 +12633,7 @@ func (reader *BitReader) PeekBitsUint32(nbits uint) (uint32, bool) {
 
 // PeekBitsUint64 wraps gst_bit_reader_peek_bits_uint64
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_peek_bits_uint64
 func (reader *BitReader) PeekBitsUint64(nbits uint) (uint64, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -13034,8 +12660,7 @@ func (reader *BitReader) PeekBitsUint64(nbits uint) (uint64, bool) {
 
 // PeekBitsUint8 wraps gst_bit_reader_peek_bits_uint8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_peek_bits_uint8
 func (reader *BitReader) PeekBitsUint8(nbits uint) (uint8, bool) {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -13062,8 +12687,7 @@ func (reader *BitReader) PeekBitsUint8(nbits uint) (uint8, bool) {
 
 // SetPos wraps gst_bit_reader_set_pos
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_set_pos
 func (reader *BitReader) SetPos(pos uint) bool {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -13087,8 +12711,7 @@ func (reader *BitReader) SetPos(pos uint) bool {
 
 // Skip wraps gst_bit_reader_skip
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_skip
 func (reader *BitReader) Skip(nbits uint) bool {
 	var carg0 *C.GstBitReader // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -13112,8 +12735,7 @@ func (reader *BitReader) Skip(nbits uint) bool {
 
 // SkipToByte wraps gst_bit_reader_skip_to_byte
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitreader.html#gst_bit_reader_skip_to_byte
 func (reader *BitReader) SkipToByte() bool {
 	var carg0 *C.GstBitReader // in, none, converted
 	var cret  C.gboolean      // return
@@ -13134,8 +12756,7 @@ func (reader *BitReader) SkipToByte() bool {
 
 // BitWriter wraps GstBitWriter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#GstBitWriter
 type BitWriter struct {
 	*bitWriter
 }
@@ -13216,8 +12837,7 @@ func UnsafeBitWriterToGlibFull(b *BitWriter) unsafe.Pointer {
 
 // AlignBytes wraps gst_bit_writer_align_bytes
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_align_bytes
 func (bitwriter *BitWriter) AlignBytes(trailingBit uint8) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint8        // in, none, casted
@@ -13241,8 +12861,7 @@ func (bitwriter *BitWriter) AlignBytes(trailingBit uint8) bool {
 
 // FreeAndGetBuffer wraps gst_bit_writer_free_and_get_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_free_and_get_buffer
 func (bitwriter *BitWriter) FreeAndGetBuffer() *gst.Buffer {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var cret  *C.GstBuffer    // return, full, converted
@@ -13261,7 +12880,7 @@ func (bitwriter *BitWriter) FreeAndGetBuffer() *gst.Buffer {
 
 // GetRemaining wraps gst_bit_writer_get_remaining
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_get_remaining
 func (bitwriter *BitWriter) GetRemaining() uint {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -13280,8 +12899,7 @@ func (bitwriter *BitWriter) GetRemaining() uint {
 
 // GetSize wraps gst_bit_writer_get_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_get_size
 func (bitwriter *BitWriter) GetSize() uint {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -13300,8 +12918,7 @@ func (bitwriter *BitWriter) GetSize() uint {
 
 // PutBitsUint16 wraps gst_bit_writer_put_bits_uint16
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_put_bits_uint16
 func (bitwriter *BitWriter) PutBitsUint16(value uint16, nbits uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint16       // in, none, casted
@@ -13328,8 +12945,7 @@ func (bitwriter *BitWriter) PutBitsUint16(value uint16, nbits uint) bool {
 
 // PutBitsUint32 wraps gst_bit_writer_put_bits_uint32
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_put_bits_uint32
 func (bitwriter *BitWriter) PutBitsUint32(value uint32, nbits uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint32       // in, none, casted
@@ -13356,8 +12972,7 @@ func (bitwriter *BitWriter) PutBitsUint32(value uint32, nbits uint) bool {
 
 // PutBitsUint64 wraps gst_bit_writer_put_bits_uint64
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_put_bits_uint64
 func (bitwriter *BitWriter) PutBitsUint64(value uint64, nbits uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint64       // in, none, casted
@@ -13384,8 +12999,7 @@ func (bitwriter *BitWriter) PutBitsUint64(value uint64, nbits uint) bool {
 
 // PutBitsUint8 wraps gst_bit_writer_put_bits_uint8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_put_bits_uint8
 func (bitwriter *BitWriter) PutBitsUint8(value uint8, nbits uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint8        // in, none, casted
@@ -13412,8 +13026,7 @@ func (bitwriter *BitWriter) PutBitsUint8(value uint8, nbits uint) bool {
 
 // Reset wraps gst_bit_writer_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_reset
 func (bitwriter *BitWriter) Reset() {
 	var carg0 *C.GstBitWriter // in, none, converted
 
@@ -13425,8 +13038,7 @@ func (bitwriter *BitWriter) Reset() {
 
 // ResetAndGetBuffer wraps gst_bit_writer_reset_and_get_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_reset_and_get_buffer
 func (bitwriter *BitWriter) ResetAndGetBuffer() *gst.Buffer {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var cret  *C.GstBuffer    // return, full, converted
@@ -13445,7 +13057,7 @@ func (bitwriter *BitWriter) ResetAndGetBuffer() *gst.Buffer {
 
 // SetPos wraps gst_bit_writer_set_pos
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbitwriter.html#gst_bit_writer_set_pos
 func (bitwriter *BitWriter) SetPos(pos uint) bool {
 	var carg0 *C.GstBitWriter // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -13469,8 +13081,7 @@ func (bitwriter *BitWriter) SetPos(pos uint) bool {
 
 // ByteReader wraps GstByteReader
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#GstByteReader
 type ByteReader struct {
 	*byteReader
 }
@@ -13551,8 +13162,7 @@ func UnsafeByteReaderToGlibFull(b *ByteReader) unsafe.Pointer {
 
 // DupStringUTF8 wraps gst_byte_reader_dup_string_utf8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_dup_string_utf8
 func (reader *ByteReader) DupStringUTF8() (string, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 *C.gchar         // out, transfer: full, C Pointers: 1, Name: array[unknown], array (inner unknown, zero-terminated)
@@ -13578,8 +13188,7 @@ func (reader *ByteReader) DupStringUTF8() (string, bool) {
 
 // GetFloat32Be wraps gst_byte_reader_get_float32_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_float32_be
 func (reader *ByteReader) GetFloat32Be() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
@@ -13603,8 +13212,7 @@ func (reader *ByteReader) GetFloat32Be() (float32, bool) {
 
 // GetFloat32Le wraps gst_byte_reader_get_float32_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_float32_le
 func (reader *ByteReader) GetFloat32Le() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
@@ -13628,8 +13236,7 @@ func (reader *ByteReader) GetFloat32Le() (float32, bool) {
 
 // GetFloat64Be wraps gst_byte_reader_get_float64_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_float64_be
 func (reader *ByteReader) GetFloat64Be() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
@@ -13653,8 +13260,7 @@ func (reader *ByteReader) GetFloat64Be() (float64, bool) {
 
 // GetFloat64Le wraps gst_byte_reader_get_float64_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_float64_le
 func (reader *ByteReader) GetFloat64Le() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
@@ -13678,8 +13284,7 @@ func (reader *ByteReader) GetFloat64Le() (float64, bool) {
 
 // GetInt16Be wraps gst_byte_reader_get_int16_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_int16_be
 func (reader *ByteReader) GetInt16Be() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
@@ -13703,8 +13308,7 @@ func (reader *ByteReader) GetInt16Be() (int16, bool) {
 
 // GetInt16Le wraps gst_byte_reader_get_int16_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_int16_le
 func (reader *ByteReader) GetInt16Le() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
@@ -13728,8 +13332,7 @@ func (reader *ByteReader) GetInt16Le() (int16, bool) {
 
 // GetInt24Be wraps gst_byte_reader_get_int24_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_int24_be
 func (reader *ByteReader) GetInt24Be() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -13753,8 +13356,7 @@ func (reader *ByteReader) GetInt24Be() (int32, bool) {
 
 // GetInt24Le wraps gst_byte_reader_get_int24_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_int24_le
 func (reader *ByteReader) GetInt24Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -13778,8 +13380,7 @@ func (reader *ByteReader) GetInt24Le() (int32, bool) {
 
 // GetInt32Be wraps gst_byte_reader_get_int32_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_int32_be
 func (reader *ByteReader) GetInt32Be() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -13803,8 +13404,7 @@ func (reader *ByteReader) GetInt32Be() (int32, bool) {
 
 // GetInt32Le wraps gst_byte_reader_get_int32_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_int32_le
 func (reader *ByteReader) GetInt32Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -13828,8 +13428,7 @@ func (reader *ByteReader) GetInt32Le() (int32, bool) {
 
 // GetInt64Be wraps gst_byte_reader_get_int64_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_int64_be
 func (reader *ByteReader) GetInt64Be() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
@@ -13853,8 +13452,7 @@ func (reader *ByteReader) GetInt64Be() (int64, bool) {
 
 // GetInt64Le wraps gst_byte_reader_get_int64_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_int64_le
 func (reader *ByteReader) GetInt64Le() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
@@ -13878,8 +13476,7 @@ func (reader *ByteReader) GetInt64Le() (int64, bool) {
 
 // GetInt8 wraps gst_byte_reader_get_int8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_int8
 func (reader *ByteReader) GetInt8() (int8, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint8          // out, full, casted
@@ -13903,8 +13500,7 @@ func (reader *ByteReader) GetInt8() (int8, bool) {
 
 // GetPos wraps gst_byte_reader_get_pos
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_pos
 func (reader *ByteReader) GetPos() uint {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -13923,8 +13519,7 @@ func (reader *ByteReader) GetPos() uint {
 
 // GetRemaining wraps gst_byte_reader_get_remaining
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_remaining
 func (reader *ByteReader) GetRemaining() uint {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -13943,8 +13538,7 @@ func (reader *ByteReader) GetRemaining() uint {
 
 // GetSize wraps gst_byte_reader_get_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_size
 func (reader *ByteReader) GetSize() uint {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -13963,8 +13557,7 @@ func (reader *ByteReader) GetSize() uint {
 
 // GetStringUTF8 wraps gst_byte_reader_get_string_utf8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_string_utf8
 func (reader *ByteReader) GetStringUTF8() (string, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 *C.gchar         // out, transfer: none, C Pointers: 1, Name: array[unknown], array (inner unknown, zero-terminated)
@@ -13990,8 +13583,7 @@ func (reader *ByteReader) GetStringUTF8() (string, bool) {
 
 // GetUint16Be wraps gst_byte_reader_get_uint16_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_uint16_be
 func (reader *ByteReader) GetUint16Be() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
@@ -14015,8 +13607,7 @@ func (reader *ByteReader) GetUint16Be() (uint16, bool) {
 
 // GetUint16Le wraps gst_byte_reader_get_uint16_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_uint16_le
 func (reader *ByteReader) GetUint16Le() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
@@ -14040,8 +13631,7 @@ func (reader *ByteReader) GetUint16Le() (uint16, bool) {
 
 // GetUint24Be wraps gst_byte_reader_get_uint24_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_uint24_be
 func (reader *ByteReader) GetUint24Be() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -14065,8 +13655,7 @@ func (reader *ByteReader) GetUint24Be() (uint32, bool) {
 
 // GetUint24Le wraps gst_byte_reader_get_uint24_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_uint24_le
 func (reader *ByteReader) GetUint24Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -14090,8 +13679,7 @@ func (reader *ByteReader) GetUint24Le() (uint32, bool) {
 
 // GetUint32Be wraps gst_byte_reader_get_uint32_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_uint32_be
 func (reader *ByteReader) GetUint32Be() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -14115,8 +13703,7 @@ func (reader *ByteReader) GetUint32Be() (uint32, bool) {
 
 // GetUint32Le wraps gst_byte_reader_get_uint32_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_uint32_le
 func (reader *ByteReader) GetUint32Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -14140,8 +13727,7 @@ func (reader *ByteReader) GetUint32Le() (uint32, bool) {
 
 // GetUint64Be wraps gst_byte_reader_get_uint64_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_uint64_be
 func (reader *ByteReader) GetUint64Be() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
@@ -14165,8 +13751,7 @@ func (reader *ByteReader) GetUint64Be() (uint64, bool) {
 
 // GetUint64Le wraps gst_byte_reader_get_uint64_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_uint64_le
 func (reader *ByteReader) GetUint64Le() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
@@ -14190,8 +13775,7 @@ func (reader *ByteReader) GetUint64Le() (uint64, bool) {
 
 // GetUint8 wraps gst_byte_reader_get_uint8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_get_uint8
 func (reader *ByteReader) GetUint8() (uint8, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint8         // out, full, casted
@@ -14215,8 +13799,7 @@ func (reader *ByteReader) GetUint8() (uint8, bool) {
 
 // Init wraps gst_byte_reader_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_init
 func (reader *ByteReader) Init(data []uint8) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -14235,8 +13818,7 @@ func (reader *ByteReader) Init(data []uint8) {
 
 // MaskedScanUint32 wraps gst_byte_reader_masked_scan_uint32
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_masked_scan_uint32
 func (reader *ByteReader) MaskedScanUint32(mask uint32, pattern uint32, offset uint, size uint) uint {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -14267,8 +13849,7 @@ func (reader *ByteReader) MaskedScanUint32(mask uint32, pattern uint32, offset u
 
 // MaskedScanUint32Peek wraps gst_byte_reader_masked_scan_uint32_peek
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_masked_scan_uint32_peek
 func (reader *ByteReader) MaskedScanUint32Peek(mask uint32, pattern uint32, offset uint, size uint) (uint32, uint) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -14302,8 +13883,7 @@ func (reader *ByteReader) MaskedScanUint32Peek(mask uint32, pattern uint32, offs
 
 // PeekFloat32Be wraps gst_byte_reader_peek_float32_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_float32_be
 func (reader *ByteReader) PeekFloat32Be() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
@@ -14327,8 +13907,7 @@ func (reader *ByteReader) PeekFloat32Be() (float32, bool) {
 
 // PeekFloat32Le wraps gst_byte_reader_peek_float32_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_float32_le
 func (reader *ByteReader) PeekFloat32Le() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
@@ -14352,8 +13931,7 @@ func (reader *ByteReader) PeekFloat32Le() (float32, bool) {
 
 // PeekFloat64Be wraps gst_byte_reader_peek_float64_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_float64_be
 func (reader *ByteReader) PeekFloat64Be() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
@@ -14377,8 +13955,7 @@ func (reader *ByteReader) PeekFloat64Be() (float64, bool) {
 
 // PeekFloat64Le wraps gst_byte_reader_peek_float64_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_float64_le
 func (reader *ByteReader) PeekFloat64Le() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
@@ -14402,8 +13979,7 @@ func (reader *ByteReader) PeekFloat64Le() (float64, bool) {
 
 // PeekInt16Be wraps gst_byte_reader_peek_int16_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_int16_be
 func (reader *ByteReader) PeekInt16Be() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
@@ -14427,8 +14003,7 @@ func (reader *ByteReader) PeekInt16Be() (int16, bool) {
 
 // PeekInt16Le wraps gst_byte_reader_peek_int16_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_int16_le
 func (reader *ByteReader) PeekInt16Le() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
@@ -14452,8 +14027,7 @@ func (reader *ByteReader) PeekInt16Le() (int16, bool) {
 
 // PeekInt24Be wraps gst_byte_reader_peek_int24_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_int24_be
 func (reader *ByteReader) PeekInt24Be() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -14477,8 +14051,7 @@ func (reader *ByteReader) PeekInt24Be() (int32, bool) {
 
 // PeekInt24Le wraps gst_byte_reader_peek_int24_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_int24_le
 func (reader *ByteReader) PeekInt24Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -14502,8 +14075,7 @@ func (reader *ByteReader) PeekInt24Le() (int32, bool) {
 
 // PeekInt32Be wraps gst_byte_reader_peek_int32_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_int32_be
 func (reader *ByteReader) PeekInt32Be() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -14527,8 +14099,7 @@ func (reader *ByteReader) PeekInt32Be() (int32, bool) {
 
 // PeekInt32Le wraps gst_byte_reader_peek_int32_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_int32_le
 func (reader *ByteReader) PeekInt32Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
@@ -14552,8 +14123,7 @@ func (reader *ByteReader) PeekInt32Le() (int32, bool) {
 
 // PeekInt64Be wraps gst_byte_reader_peek_int64_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_int64_be
 func (reader *ByteReader) PeekInt64Be() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
@@ -14577,8 +14147,7 @@ func (reader *ByteReader) PeekInt64Be() (int64, bool) {
 
 // PeekInt64Le wraps gst_byte_reader_peek_int64_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_int64_le
 func (reader *ByteReader) PeekInt64Le() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
@@ -14602,8 +14171,7 @@ func (reader *ByteReader) PeekInt64Le() (int64, bool) {
 
 // PeekInt8 wraps gst_byte_reader_peek_int8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_int8
 func (reader *ByteReader) PeekInt8() (int8, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint8          // out, full, casted
@@ -14627,8 +14195,7 @@ func (reader *ByteReader) PeekInt8() (int8, bool) {
 
 // PeekStringUTF8 wraps gst_byte_reader_peek_string_utf8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_string_utf8
 func (reader *ByteReader) PeekStringUTF8() (string, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 *C.gchar         // out, transfer: none, C Pointers: 1, Name: array[unknown], array (inner unknown, zero-terminated)
@@ -14654,8 +14221,7 @@ func (reader *ByteReader) PeekStringUTF8() (string, bool) {
 
 // PeekUint16Be wraps gst_byte_reader_peek_uint16_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_uint16_be
 func (reader *ByteReader) PeekUint16Be() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
@@ -14679,8 +14245,7 @@ func (reader *ByteReader) PeekUint16Be() (uint16, bool) {
 
 // PeekUint16Le wraps gst_byte_reader_peek_uint16_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_uint16_le
 func (reader *ByteReader) PeekUint16Le() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
@@ -14704,8 +14269,7 @@ func (reader *ByteReader) PeekUint16Le() (uint16, bool) {
 
 // PeekUint24Be wraps gst_byte_reader_peek_uint24_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_uint24_be
 func (reader *ByteReader) PeekUint24Be() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -14729,8 +14293,7 @@ func (reader *ByteReader) PeekUint24Be() (uint32, bool) {
 
 // PeekUint24Le wraps gst_byte_reader_peek_uint24_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_uint24_le
 func (reader *ByteReader) PeekUint24Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -14754,8 +14317,7 @@ func (reader *ByteReader) PeekUint24Le() (uint32, bool) {
 
 // PeekUint32Be wraps gst_byte_reader_peek_uint32_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_uint32_be
 func (reader *ByteReader) PeekUint32Be() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -14779,8 +14341,7 @@ func (reader *ByteReader) PeekUint32Be() (uint32, bool) {
 
 // PeekUint32Le wraps gst_byte_reader_peek_uint32_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_uint32_le
 func (reader *ByteReader) PeekUint32Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
@@ -14804,8 +14365,7 @@ func (reader *ByteReader) PeekUint32Le() (uint32, bool) {
 
 // PeekUint64Be wraps gst_byte_reader_peek_uint64_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_uint64_be
 func (reader *ByteReader) PeekUint64Be() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
@@ -14829,8 +14389,7 @@ func (reader *ByteReader) PeekUint64Be() (uint64, bool) {
 
 // PeekUint64Le wraps gst_byte_reader_peek_uint64_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_uint64_le
 func (reader *ByteReader) PeekUint64Le() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
@@ -14854,8 +14413,7 @@ func (reader *ByteReader) PeekUint64Le() (uint64, bool) {
 
 // PeekUint8 wraps gst_byte_reader_peek_uint8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_peek_uint8
 func (reader *ByteReader) PeekUint8() (uint8, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint8         // out, full, casted
@@ -14879,8 +14437,7 @@ func (reader *ByteReader) PeekUint8() (uint8, bool) {
 
 // SetPos wraps gst_byte_reader_set_pos
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_set_pos
 func (reader *ByteReader) SetPos(pos uint) bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -14904,8 +14461,7 @@ func (reader *ByteReader) SetPos(pos uint) bool {
 
 // Skip wraps gst_byte_reader_skip
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_skip
 func (reader *ByteReader) Skip(nbytes uint) bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -14929,8 +14485,7 @@ func (reader *ByteReader) Skip(nbytes uint) bool {
 
 // SkipStringUTF16 wraps gst_byte_reader_skip_string_utf16
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_skip_string_utf16
 func (reader *ByteReader) SkipStringUTF16() bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.gboolean       // return
@@ -14951,8 +14506,7 @@ func (reader *ByteReader) SkipStringUTF16() bool {
 
 // SkipStringUtf32 wraps gst_byte_reader_skip_string_utf32
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_skip_string_utf32
 func (reader *ByteReader) SkipStringUtf32() bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.gboolean       // return
@@ -14973,8 +14527,7 @@ func (reader *ByteReader) SkipStringUtf32() bool {
 
 // SkipStringUTF8 wraps gst_byte_reader_skip_string_utf8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytereader.html#gst_byte_reader_skip_string_utf8
 func (reader *ByteReader) SkipStringUTF8() bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.gboolean       // return
@@ -14995,8 +14548,7 @@ func (reader *ByteReader) SkipStringUTF8() bool {
 
 // ByteWriter wraps GstByteWriter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#GstByteWriter
 type ByteWriter struct {
 	*byteWriter
 }
@@ -15077,8 +14629,7 @@ func UnsafeByteWriterToGlibFull(b *ByteWriter) unsafe.Pointer {
 
 // EnsureFreeSpace wraps gst_byte_writer_ensure_free_space
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_ensure_free_space
 func (writer *ByteWriter) EnsureFreeSpace(size uint) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -15102,8 +14653,7 @@ func (writer *ByteWriter) EnsureFreeSpace(size uint) bool {
 
 // Fill wraps gst_byte_writer_fill
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_fill
 func (writer *ByteWriter) Fill(value uint8, size uint) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint8         // in, none, casted
@@ -15130,8 +14680,7 @@ func (writer *ByteWriter) Fill(value uint8, size uint) bool {
 
 // FreeAndGetBuffer wraps gst_byte_writer_free_and_get_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_free_and_get_buffer
 func (writer *ByteWriter) FreeAndGetBuffer() *gst.Buffer {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var cret  *C.GstBuffer     // return, full, converted
@@ -15150,8 +14699,7 @@ func (writer *ByteWriter) FreeAndGetBuffer() *gst.Buffer {
 
 // FreeAndGetData wraps gst_byte_writer_free_and_get_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_free_and_get_data
 func (writer *ByteWriter) FreeAndGetData() *uint8 {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var cret  *C.guint8        // return, transfer: full, C Pointers: 1, Name: guint8, scope: 
@@ -15172,8 +14720,7 @@ func (writer *ByteWriter) FreeAndGetData() *uint8 {
 
 // GetRemaining wraps gst_byte_writer_get_remaining
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_get_remaining
 func (writer *ByteWriter) GetRemaining() uint {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var cret  C.guint          // return, none, casted
@@ -15192,8 +14739,7 @@ func (writer *ByteWriter) GetRemaining() uint {
 
 // Init wraps gst_byte_writer_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_init
 func (writer *ByteWriter) Init() {
 	var carg0 *C.GstByteWriter // in, none, converted
 
@@ -15205,8 +14751,7 @@ func (writer *ByteWriter) Init() {
 
 // InitWithData wraps gst_byte_writer_init_with_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_init_with_data
 func (writer *ByteWriter) InitWithData(data []uint8, initialized bool) {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -15230,8 +14775,7 @@ func (writer *ByteWriter) InitWithData(data []uint8, initialized bool) {
 
 // InitWithSize wraps gst_byte_writer_init_with_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_init_with_size
 func (writer *ByteWriter) InitWithSize(size uint, fixed bool) {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint          // in, none, casted
@@ -15251,8 +14795,7 @@ func (writer *ByteWriter) InitWithSize(size uint, fixed bool) {
 
 // PutBuffer wraps gst_byte_writer_put_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_buffer
 func (writer *ByteWriter) PutBuffer(buffer *gst.Buffer, offset uint, size int) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.GstBuffer     // in, none, converted
@@ -15282,8 +14825,7 @@ func (writer *ByteWriter) PutBuffer(buffer *gst.Buffer, offset uint, size int) b
 
 // PutData wraps gst_byte_writer_put_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_data
 func (writer *ByteWriter) PutData(data []uint8) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -15311,8 +14853,7 @@ func (writer *ByteWriter) PutData(data []uint8) bool {
 
 // PutFloat32Be wraps gst_byte_writer_put_float32_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_float32_be
 func (writer *ByteWriter) PutFloat32Be(val float32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gfloat         // in, none, casted
@@ -15336,8 +14877,7 @@ func (writer *ByteWriter) PutFloat32Be(val float32) bool {
 
 // PutFloat32Le wraps gst_byte_writer_put_float32_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_float32_le
 func (writer *ByteWriter) PutFloat32Le(val float32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gfloat         // in, none, casted
@@ -15361,8 +14901,7 @@ func (writer *ByteWriter) PutFloat32Le(val float32) bool {
 
 // PutFloat64Be wraps gst_byte_writer_put_float64_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_float64_be
 func (writer *ByteWriter) PutFloat64Be(val float64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gdouble        // in, none, casted
@@ -15386,8 +14925,7 @@ func (writer *ByteWriter) PutFloat64Be(val float64) bool {
 
 // PutFloat64Le wraps gst_byte_writer_put_float64_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_float64_le
 func (writer *ByteWriter) PutFloat64Le(val float64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gdouble        // in, none, casted
@@ -15411,8 +14949,7 @@ func (writer *ByteWriter) PutFloat64Le(val float64) bool {
 
 // PutInt16Be wraps gst_byte_writer_put_int16_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_int16_be
 func (writer *ByteWriter) PutInt16Be(val int16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint16         // in, none, casted
@@ -15436,8 +14973,7 @@ func (writer *ByteWriter) PutInt16Be(val int16) bool {
 
 // PutInt16Le wraps gst_byte_writer_put_int16_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_int16_le
 func (writer *ByteWriter) PutInt16Le(val int16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint16         // in, none, casted
@@ -15461,8 +14997,7 @@ func (writer *ByteWriter) PutInt16Le(val int16) bool {
 
 // PutInt24Be wraps gst_byte_writer_put_int24_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_int24_be
 func (writer *ByteWriter) PutInt24Be(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
@@ -15486,8 +15021,7 @@ func (writer *ByteWriter) PutInt24Be(val int32) bool {
 
 // PutInt24Le wraps gst_byte_writer_put_int24_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_int24_le
 func (writer *ByteWriter) PutInt24Le(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
@@ -15511,8 +15045,7 @@ func (writer *ByteWriter) PutInt24Le(val int32) bool {
 
 // PutInt32Be wraps gst_byte_writer_put_int32_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_int32_be
 func (writer *ByteWriter) PutInt32Be(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
@@ -15536,8 +15069,7 @@ func (writer *ByteWriter) PutInt32Be(val int32) bool {
 
 // PutInt32Le wraps gst_byte_writer_put_int32_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_int32_le
 func (writer *ByteWriter) PutInt32Le(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
@@ -15561,8 +15093,7 @@ func (writer *ByteWriter) PutInt32Le(val int32) bool {
 
 // PutInt64Be wraps gst_byte_writer_put_int64_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_int64_be
 func (writer *ByteWriter) PutInt64Be(val int64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint64         // in, none, casted
@@ -15586,8 +15117,7 @@ func (writer *ByteWriter) PutInt64Be(val int64) bool {
 
 // PutInt64Le wraps gst_byte_writer_put_int64_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_int64_le
 func (writer *ByteWriter) PutInt64Le(val int64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint64         // in, none, casted
@@ -15611,8 +15141,7 @@ func (writer *ByteWriter) PutInt64Le(val int64) bool {
 
 // PutInt8 wraps gst_byte_writer_put_int8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_int8
 func (writer *ByteWriter) PutInt8(val int8) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint8          // in, none, casted
@@ -15636,8 +15165,7 @@ func (writer *ByteWriter) PutInt8(val int8) bool {
 
 // PutStringUTF16 wraps gst_byte_writer_put_string_utf16
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_string_utf16
 func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.guint16       // in, transfer: none, C Pointers: 1, Name: array[guint16], array (inner guint16 (*typesystem.CastablePrimitive), zero-terminated)
@@ -15663,8 +15191,7 @@ func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 
 // PutStringUtf32 wraps gst_byte_writer_put_string_utf32
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_string_utf32
 func (writer *ByteWriter) PutStringUtf32(data []uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner guint32 (*typesystem.CastablePrimitive), zero-terminated)
@@ -15690,8 +15217,7 @@ func (writer *ByteWriter) PutStringUtf32(data []uint32) bool {
 
 // PutStringUTF8 wraps gst_byte_writer_put_string_utf8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_string_utf8
 func (writer *ByteWriter) PutStringUTF8(data string) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.gchar         // in, none, string
@@ -15716,8 +15242,7 @@ func (writer *ByteWriter) PutStringUTF8(data string) bool {
 
 // PutUint16Be wraps gst_byte_writer_put_uint16_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_uint16_be
 func (writer *ByteWriter) PutUint16Be(val uint16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint16        // in, none, casted
@@ -15741,8 +15266,7 @@ func (writer *ByteWriter) PutUint16Be(val uint16) bool {
 
 // PutUint16Le wraps gst_byte_writer_put_uint16_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_uint16_le
 func (writer *ByteWriter) PutUint16Le(val uint16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint16        // in, none, casted
@@ -15766,8 +15290,7 @@ func (writer *ByteWriter) PutUint16Le(val uint16) bool {
 
 // PutUint24Be wraps gst_byte_writer_put_uint24_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_uint24_be
 func (writer *ByteWriter) PutUint24Be(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -15791,8 +15314,7 @@ func (writer *ByteWriter) PutUint24Be(val uint32) bool {
 
 // PutUint24Le wraps gst_byte_writer_put_uint24_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_uint24_le
 func (writer *ByteWriter) PutUint24Le(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -15816,8 +15338,7 @@ func (writer *ByteWriter) PutUint24Le(val uint32) bool {
 
 // PutUint32Be wraps gst_byte_writer_put_uint32_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_uint32_be
 func (writer *ByteWriter) PutUint32Be(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -15841,8 +15362,7 @@ func (writer *ByteWriter) PutUint32Be(val uint32) bool {
 
 // PutUint32Le wraps gst_byte_writer_put_uint32_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_uint32_le
 func (writer *ByteWriter) PutUint32Le(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
@@ -15866,8 +15386,7 @@ func (writer *ByteWriter) PutUint32Le(val uint32) bool {
 
 // PutUint64Be wraps gst_byte_writer_put_uint64_be
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_uint64_be
 func (writer *ByteWriter) PutUint64Be(val uint64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint64        // in, none, casted
@@ -15891,8 +15410,7 @@ func (writer *ByteWriter) PutUint64Be(val uint64) bool {
 
 // PutUint64Le wraps gst_byte_writer_put_uint64_le
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_uint64_le
 func (writer *ByteWriter) PutUint64Le(val uint64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint64        // in, none, casted
@@ -15916,8 +15434,7 @@ func (writer *ByteWriter) PutUint64Le(val uint64) bool {
 
 // PutUint8 wraps gst_byte_writer_put_uint8
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_put_uint8
 func (writer *ByteWriter) PutUint8(val uint8) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint8         // in, none, casted
@@ -15941,8 +15458,7 @@ func (writer *ByteWriter) PutUint8(val uint8) bool {
 
 // Reset wraps gst_byte_writer_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_reset
 func (writer *ByteWriter) Reset() {
 	var carg0 *C.GstByteWriter // in, none, converted
 
@@ -15954,8 +15470,7 @@ func (writer *ByteWriter) Reset() {
 
 // ResetAndGetBuffer wraps gst_byte_writer_reset_and_get_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstbytewriter.html#gst_byte_writer_reset_and_get_buffer
 func (writer *ByteWriter) ResetAndGetBuffer() *gst.Buffer {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var cret  *C.GstBuffer     // return, full, converted
@@ -15974,8 +15489,7 @@ func (writer *ByteWriter) ResetAndGetBuffer() *gst.Buffer {
 
 // CollectData wraps GstCollectData
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectData
 type CollectData struct {
 	*collectData
 }
@@ -16056,7 +15570,7 @@ func UnsafeCollectDataToGlibFull(c *CollectData) unsafe.Pointer {
 
 // CollectPadsClass wraps GstCollectPadsClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GstCollectPadsClass
 // 
 // CollectPadsClass is the type struct for [CollectPads]
 type CollectPadsClass struct {
@@ -16110,7 +15624,7 @@ func (c *CollectPadsClass) ParentClass() *gst.ObjectClass {
 
 // DataQueueClass wraps GstDataQueueClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html#GstDataQueueClass
 // 
 // DataQueueClass is the type struct for [DataQueue]
 type DataQueueClass struct {
@@ -16164,8 +15678,7 @@ func (d *DataQueueClass) ParentClass() *gobject.ObjectClass {
 
 // FlowCombiner wraps GstFlowCombiner
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstflowcombiner.html#GstFlowCombiner
 type FlowCombiner struct {
 	*flowCombiner
 }
@@ -16274,8 +15787,7 @@ func UnsafeFlowCombinerToGlibFull(f *FlowCombiner) unsafe.Pointer {
 
 // NewFlowCombiner wraps gst_flow_combiner_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstflowcombiner.html#gst_flow_combiner_new
 func NewFlowCombiner() *FlowCombiner {
 	var cret *C.GstFlowCombiner // return, full, converted
 
@@ -16290,8 +15802,7 @@ func NewFlowCombiner() *FlowCombiner {
 
 // AddPad wraps gst_flow_combiner_add_pad
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstflowcombiner.html#gst_flow_combiner_add_pad
 func (combiner *FlowCombiner) AddPad(pad gst.Pad) {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 	var carg1 *C.GstPad          // in, none, converted
@@ -16306,8 +15817,7 @@ func (combiner *FlowCombiner) AddPad(pad gst.Pad) {
 
 // Clear wraps gst_flow_combiner_clear
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstflowcombiner.html#gst_flow_combiner_clear
 func (combiner *FlowCombiner) Clear() {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 
@@ -16319,8 +15829,7 @@ func (combiner *FlowCombiner) Clear() {
 
 // RemovePad wraps gst_flow_combiner_remove_pad
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstflowcombiner.html#gst_flow_combiner_remove_pad
 func (combiner *FlowCombiner) RemovePad(pad gst.Pad) {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 	var carg1 *C.GstPad          // in, none, converted
@@ -16335,8 +15844,7 @@ func (combiner *FlowCombiner) RemovePad(pad gst.Pad) {
 
 // Reset wraps gst_flow_combiner_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstflowcombiner.html#gst_flow_combiner_reset
 func (combiner *FlowCombiner) Reset() {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 
@@ -16348,8 +15856,7 @@ func (combiner *FlowCombiner) Reset() {
 
 // UpdateFlow wraps gst_flow_combiner_update_flow
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstflowcombiner.html#gst_flow_combiner_update_flow
 func (combiner *FlowCombiner) UpdateFlow(fret gst.FlowReturn) gst.FlowReturn {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 	var carg1 C.GstFlowReturn    // in, none, casted
@@ -16371,8 +15878,7 @@ func (combiner *FlowCombiner) UpdateFlow(fret gst.FlowReturn) gst.FlowReturn {
 
 // UpdatePadFlow wraps gst_flow_combiner_update_pad_flow
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstflowcombiner.html#gst_flow_combiner_update_pad_flow
 func (combiner *FlowCombiner) UpdatePadFlow(pad gst.Pad, fret gst.FlowReturn) gst.FlowReturn {
 	var carg0 *C.GstFlowCombiner // in, none, converted
 	var carg1 *C.GstPad          // in, none, converted
@@ -16397,8 +15903,7 @@ func (combiner *FlowCombiner) UpdatePadFlow(pad gst.Pad, fret gst.FlowReturn) gs
 
 // PushSrcClass wraps GstPushSrcClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/base/gstpushsrc.html#GstPushSrcClass
 // 
 // PushSrcClass is the type struct for [PushSrc]
 type PushSrcClass struct {

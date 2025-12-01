@@ -38,30 +38,25 @@ func init() {
 
 // FdMemoryFlags wraps GstFdMemoryFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GstFdMemoryFlags
 type FdMemoryFlags C.gint
 
 const (
 	// FdMemoryFlagNone wraps GST_FD_MEMORY_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/allocators#GST_FD_MEMORY_FLAG_NONE
 	FdMemoryFlagNone FdMemoryFlags = 0
 	// FdMemoryFlagKeepMapped wraps GST_FD_MEMORY_FLAG_KEEP_MAPPED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/allocators#GST_FD_MEMORY_FLAG_KEEP_MAPPED
 	FdMemoryFlagKeepMapped FdMemoryFlags = 1
 	// FdMemoryFlagMapPrivate wraps GST_FD_MEMORY_FLAG_MAP_PRIVATE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/allocators#GST_FD_MEMORY_FLAG_MAP_PRIVATE
 	FdMemoryFlagMapPrivate FdMemoryFlags = 2
 	// FdMemoryFlagDontClose wraps GST_FD_MEMORY_FLAG_DONT_CLOSE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/allocators#GST_FD_MEMORY_FLAG_DONT_CLOSE
 	FdMemoryFlagDontClose FdMemoryFlags = 4
 )
 
@@ -93,8 +88,7 @@ func (f FdMemoryFlags) String() string {
 
 // DmabufMemoryGetFd wraps gst_dmabuf_memory_get_fd
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators
 func DmabufMemoryGetFd(mem *gst.Memory) int32 {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gint       // return, none, casted
@@ -113,8 +107,7 @@ func DmabufMemoryGetFd(mem *gst.Memory) int32 {
 
 // DrmDumbMemoryExportDmabuf wraps gst_drm_dumb_memory_export_dmabuf
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators
 func DrmDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  *C.GstMemory // return, full, converted
@@ -133,8 +126,7 @@ func DrmDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 
 // DrmDumbMemoryGetHandle wraps gst_drm_dumb_memory_get_handle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators
 func DrmDumbMemoryGetHandle(mem *gst.Memory) uint32 {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.guint32    // return, none, casted
@@ -153,8 +145,7 @@ func DrmDumbMemoryGetHandle(mem *gst.Memory) uint32 {
 
 // FdMemoryGetFd wraps gst_fd_memory_get_fd
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators
 func FdMemoryGetFd(mem *gst.Memory) int32 {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gint       // return, none, casted
@@ -173,8 +164,7 @@ func FdMemoryGetFd(mem *gst.Memory) int32 {
 
 // IsDmabufMemory wraps gst_is_dmabuf_memory
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators
 func IsDmabufMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -195,7 +185,7 @@ func IsDmabufMemory(mem *gst.Memory) bool {
 
 // IsDrmDumbMemory wraps gst_is_drm_dumb_memory
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/allocators
 func IsDrmDumbMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -216,8 +206,7 @@ func IsDrmDumbMemory(mem *gst.Memory) bool {
 
 // IsFdMemory wraps gst_is_fd_memory
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators
 func IsFdMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -238,7 +227,7 @@ func IsFdMemory(mem *gst.Memory) bool {
 
 // IsPhysMemory wraps gst_is_phys_memory
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/allocators
 func IsPhysMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -267,7 +256,7 @@ var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
 
 // PhysMemoryAllocator wraps GstPhysMemoryAllocator
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstphysmemory.html#GstPhysMemoryAllocator
 type PhysMemoryAllocator interface {
 	upcastToGstPhysMemoryAllocator() *PhysMemoryAllocatorInstance
 }
@@ -325,21 +314,18 @@ var _ DRMDumbAllocator = (*DRMDumbAllocatorInstance)(nil)
 
 // DRMDumbAllocator wraps GstDRMDumbAllocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#GstDRMDumbAllocator
 type DRMDumbAllocator interface {
 	gst.Allocator
 	upcastToGstDRMDumbAllocator() *DRMDumbAllocatorInstance
 
 	// DrmDumbAlloc wraps gst_drm_dumb_allocator_alloc
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_alloc
 	DrmDumbAlloc(uint32, uint32, uint32) (uint32, *gst.Memory)
 	// HasPrimeExport wraps gst_drm_dumb_allocator_has_prime_export
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_has_prime_export
 	HasPrimeExport() bool
 
 	// chain up virtual methods:
@@ -401,8 +387,7 @@ func UnsafeDRMDumbAllocatorToGlibFull(c DRMDumbAllocator) unsafe.Pointer {
 
 // NewDRMDumbAllocatorWithDevicePath wraps gst_drm_dumb_allocator_new_with_device_path
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_new_with_device_path
 func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 	var carg1 *C.gchar        // in, none, string
 	var cret  *C.GstAllocator // return, full, converted, nullable
@@ -424,8 +409,7 @@ func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 
 // NewDRMDumbAllocatorWithFd wraps gst_drm_dumb_allocator_new_with_fd
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_new_with_fd
 func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
 	var carg1 C.gint          // in, none, casted
 	var cret  *C.GstAllocator // return, full, converted, nullable
@@ -446,8 +430,7 @@ func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
 
 // DrmDumbAlloc wraps gst_drm_dumb_allocator_alloc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_alloc
 func (allocator *DRMDumbAllocatorInstance) DrmDumbAlloc(drmFourcc uint32, width uint32, height uint32) (uint32, *gst.Memory) {
 	var carg0 *C.GstAllocator // in, none, converted
 	var carg1 C.guint32       // in, none, casted
@@ -478,8 +461,7 @@ func (allocator *DRMDumbAllocatorInstance) DrmDumbAlloc(drmFourcc uint32, width 
 
 // HasPrimeExport wraps gst_drm_dumb_allocator_has_prime_export
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#gst_drm_dumb_allocator_has_prime_export
 func (allocator *DRMDumbAllocatorInstance) HasPrimeExport() bool {
 	var carg0 *C.GstAllocator // in, none, converted
 	var cret  C.gboolean      // return
@@ -548,8 +530,7 @@ var _ FdAllocator = (*FdAllocatorInstance)(nil)
 
 // FdAllocator wraps GstFdAllocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GstFdAllocator
 type FdAllocator interface {
 	gst.Allocator
 	upcastToGstFdAllocator() *FdAllocatorInstance
@@ -613,8 +594,7 @@ func UnsafeFdAllocatorToGlibFull(c FdAllocator) unsafe.Pointer {
 
 // NewFdAllocator wraps gst_fd_allocator_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#gst_fd_allocator_new
 func NewFdAllocator() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted
 
@@ -629,8 +609,7 @@ func NewFdAllocator() gst.Allocator {
 
 // FdAllocatorAlloc wraps gst_fd_allocator_alloc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#gst_fd_allocator_alloc
 func FdAllocatorAlloc(allocator gst.Allocator, fd int32, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
@@ -708,8 +687,7 @@ var _ ShmAllocator = (*ShmAllocatorInstance)(nil)
 
 // ShmAllocator wraps GstShmAllocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstshmallocator.html#GstShmAllocator
 type ShmAllocator interface {
 	FdAllocator
 	upcastToGstShmAllocator() *ShmAllocatorInstance
@@ -775,8 +753,7 @@ func UnsafeShmAllocatorToGlibFull(c ShmAllocator) unsafe.Pointer {
 
 // ShmAllocatorGet wraps gst_shm_allocator_get
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstshmallocator.html#gst_shm_allocator_get
 func ShmAllocatorGet() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted, nullable
 
@@ -793,8 +770,7 @@ func ShmAllocatorGet() gst.Allocator {
 
 // ShmAllocatorInitOnce wraps gst_shm_allocator_init_once
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstshmallocator.html#gst_shm_allocator_init_once
 func ShmAllocatorInitOnce() {
 
 	C.gst_shm_allocator_init_once()
@@ -850,8 +826,7 @@ var _ DmaBufAllocator = (*DmaBufAllocatorInstance)(nil)
 
 // DmaBufAllocator wraps GstDmaBufAllocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#GstDmaBufAllocator
 type DmaBufAllocator interface {
 	FdAllocator
 	upcastToGstDmaBufAllocator() *DmaBufAllocatorInstance
@@ -917,8 +892,7 @@ func UnsafeDmaBufAllocatorToGlibFull(c DmaBufAllocator) unsafe.Pointer {
 
 // NewDmaBufAllocator wraps gst_dmabuf_allocator_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#gst_dmabuf_allocator_new
 func NewDmaBufAllocator() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted
 
@@ -933,8 +907,7 @@ func NewDmaBufAllocator() gst.Allocator {
 
 // DmaBufAllocatorAlloc wraps gst_dmabuf_allocator_alloc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#gst_dmabuf_allocator_alloc
 func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int32, size uint) *gst.Memory {
 	var carg1 *C.GstAllocator // in, none, converted
 	var carg2 C.gint          // in, none, casted
@@ -961,8 +934,7 @@ func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int32, size uint) *gst.Mem
 
 // DmaBufAllocatorAllocWithFlags wraps gst_dmabuf_allocator_alloc_with_flags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#gst_dmabuf_allocator_alloc_with_flags
 func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int32, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
@@ -1032,7 +1004,7 @@ func RegisterDmaBufAllocatorSubClass[InstanceT DmaBufAllocator](
 
 // DRMDumbAllocatorClass wraps GstDRMDumbAllocatorClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdrmdumb.html#GstDRMDumbAllocatorClass
 // 
 // DRMDumbAllocatorClass is the type struct for [DRMDumbAllocator]
 type DRMDumbAllocatorClass struct {
@@ -1086,7 +1058,7 @@ func (d *DRMDumbAllocatorClass) ParentClass() *gst.AllocatorClass {
 
 // DmaBufAllocatorClass wraps GstDmaBufAllocatorClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstdmabuf.html#GstDmaBufAllocatorClass
 // 
 // DmaBufAllocatorClass is the type struct for [DmaBufAllocator]
 type DmaBufAllocatorClass struct {
@@ -1140,7 +1112,7 @@ func (d *DmaBufAllocatorClass) ParentClass() *FdAllocatorClass {
 
 // FdAllocatorClass wraps GstFdAllocatorClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GstFdAllocatorClass
 // 
 // FdAllocatorClass is the type struct for [FdAllocator]
 type FdAllocatorClass struct {
@@ -1194,8 +1166,7 @@ func (f *FdAllocatorClass) ParentClass() *gst.AllocatorClass {
 
 // PhysMemoryAllocatorInterface wraps GstPhysMemoryAllocatorInterface
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstphysmemory.html#GstPhysMemoryAllocatorInterface
 type PhysMemoryAllocatorInterface struct {
 	*physMemoryAllocatorInterface
 }
@@ -1276,7 +1247,7 @@ func UnsafePhysMemoryAllocatorInterfaceToGlibFull(p *PhysMemoryAllocatorInterfac
 
 // ShmAllocatorClass wraps GstShmAllocatorClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/allocators/gstshmallocator.html#GstShmAllocatorClass
 // 
 // ShmAllocatorClass is the type struct for [ShmAllocator]
 type ShmAllocatorClass struct {

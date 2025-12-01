@@ -75,30 +75,25 @@ func init() {
 
 // RTSP_DEFAULT_PORT wraps GST_RTSP_DEFAULT_PORT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspurl.html#GST_RTSP_DEFAULT_PORT
 const RTSP_DEFAULT_PORT = 554
 // RTSPAuthMethod wraps GstRTSPAuthMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPAuthMethod
 type RTSPAuthMethod C.int
 
 const (
 	// RtspAuthNone wraps GST_RTSP_AUTH_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_AUTH_NONE
 	RtspAuthNone RTSPAuthMethod = 0
 	// RtspAuthBasic wraps GST_RTSP_AUTH_BASIC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_AUTH_BASIC
 	RtspAuthBasic RTSPAuthMethod = 1
 	// RtspAuthDigest wraps GST_RTSP_AUTH_DIGEST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_AUTH_DIGEST
 	RtspAuthDigest RTSPAuthMethod = 2
 )
 
@@ -127,25 +122,21 @@ func (e RTSPAuthMethod) String() string {
 
 // RTSPFamily wraps GstRTSPFamily
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPFamily
 type RTSPFamily C.int
 
 const (
 	// RtspFamNone wraps GST_RTSP_FAM_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_FAM_NONE
 	RtspFamNone RTSPFamily = 0
 	// RtspFamInet wraps GST_RTSP_FAM_INET
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_FAM_INET
 	RtspFamInet RTSPFamily = 1
 	// RtspFamInet6 wraps GST_RTSP_FAM_INET6
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_FAM_INET6
 	RtspFamInet6 RTSPFamily = 2
 )
 
@@ -174,370 +165,369 @@ func (e RTSPFamily) String() string {
 
 // RTSPHeaderField wraps GstRTSPHeaderField
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPHeaderField
 type RTSPHeaderField C.int
 
 const (
 	// RtspHdrInvalid wraps GST_RTSP_HDR_INVALID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_INVALID
 	RtspHdrInvalid RTSPHeaderField = 0
 	// RtspHdrAccept wraps GST_RTSP_HDR_ACCEPT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_ACCEPT
 	RtspHdrAccept RTSPHeaderField = 1
 	// RtspHdrAcceptEncoding wraps GST_RTSP_HDR_ACCEPT_ENCODING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_ACCEPT_ENCODING
 	RtspHdrAcceptEncoding RTSPHeaderField = 2
 	// RtspHdrAcceptLanguage wraps GST_RTSP_HDR_ACCEPT_LANGUAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_ACCEPT_LANGUAGE
 	RtspHdrAcceptLanguage RTSPHeaderField = 3
 	// RtspHdrAllow wraps GST_RTSP_HDR_ALLOW
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_ALLOW
 	RtspHdrAllow RTSPHeaderField = 4
 	// RtspHdrAuthorization wraps GST_RTSP_HDR_AUTHORIZATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_AUTHORIZATION
 	RtspHdrAuthorization RTSPHeaderField = 5
 	// RtspHdrBandwidth wraps GST_RTSP_HDR_BANDWIDTH
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_BANDWIDTH
 	RtspHdrBandwidth RTSPHeaderField = 6
 	// RtspHdrBlocksize wraps GST_RTSP_HDR_BLOCKSIZE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_BLOCKSIZE
 	RtspHdrBlocksize RTSPHeaderField = 7
 	// RtspHdrCacheControl wraps GST_RTSP_HDR_CACHE_CONTROL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CACHE_CONTROL
 	RtspHdrCacheControl RTSPHeaderField = 8
 	// RtspHdrConference wraps GST_RTSP_HDR_CONFERENCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CONFERENCE
 	RtspHdrConference RTSPHeaderField = 9
 	// RtspHdrConnection wraps GST_RTSP_HDR_CONNECTION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CONNECTION
 	RtspHdrConnection RTSPHeaderField = 10
 	// RtspHdrContentBase wraps GST_RTSP_HDR_CONTENT_BASE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CONTENT_BASE
 	RtspHdrContentBase RTSPHeaderField = 11
 	// RtspHdrContentEncoding wraps GST_RTSP_HDR_CONTENT_ENCODING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CONTENT_ENCODING
 	RtspHdrContentEncoding RTSPHeaderField = 12
 	// RtspHdrContentLanguage wraps GST_RTSP_HDR_CONTENT_LANGUAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CONTENT_LANGUAGE
 	RtspHdrContentLanguage RTSPHeaderField = 13
 	// RtspHdrContentLength wraps GST_RTSP_HDR_CONTENT_LENGTH
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CONTENT_LENGTH
 	RtspHdrContentLength RTSPHeaderField = 14
 	// RtspHdrContentLocation wraps GST_RTSP_HDR_CONTENT_LOCATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CONTENT_LOCATION
 	RtspHdrContentLocation RTSPHeaderField = 15
 	// RtspHdrContentType wraps GST_RTSP_HDR_CONTENT_TYPE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CONTENT_TYPE
 	RtspHdrContentType RTSPHeaderField = 16
 	// RtspHdrCseq wraps GST_RTSP_HDR_CSEQ
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CSEQ
 	RtspHdrCseq RTSPHeaderField = 17
 	// RtspHdrDate wraps GST_RTSP_HDR_DATE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_DATE
 	RtspHdrDate RTSPHeaderField = 18
 	// RtspHdrExpires wraps GST_RTSP_HDR_EXPIRES
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_EXPIRES
 	RtspHdrExpires RTSPHeaderField = 19
 	// RtspHdrFrom wraps GST_RTSP_HDR_FROM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_FROM
 	RtspHdrFrom RTSPHeaderField = 20
 	// RtspHdrIfModifiedSince wraps GST_RTSP_HDR_IF_MODIFIED_SINCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_IF_MODIFIED_SINCE
 	RtspHdrIfModifiedSince RTSPHeaderField = 21
 	// RtspHdrLastModified wraps GST_RTSP_HDR_LAST_MODIFIED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_LAST_MODIFIED
 	RtspHdrLastModified RTSPHeaderField = 22
 	// RtspHdrProxyAuthenticate wraps GST_RTSP_HDR_PROXY_AUTHENTICATE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_PROXY_AUTHENTICATE
 	RtspHdrProxyAuthenticate RTSPHeaderField = 23
 	// RtspHdrProxyRequire wraps GST_RTSP_HDR_PROXY_REQUIRE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_PROXY_REQUIRE
 	RtspHdrProxyRequire RTSPHeaderField = 24
 	// RtspHdrPublic wraps GST_RTSP_HDR_PUBLIC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_PUBLIC
 	RtspHdrPublic RTSPHeaderField = 25
 	// RtspHdrRange wraps GST_RTSP_HDR_RANGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_RANGE
 	RtspHdrRange RTSPHeaderField = 26
 	// RtspHdrReferer wraps GST_RTSP_HDR_REFERER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_REFERER
 	RtspHdrReferer RTSPHeaderField = 27
 	// RtspHdrRequire wraps GST_RTSP_HDR_REQUIRE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_REQUIRE
 	RtspHdrRequire RTSPHeaderField = 28
 	// RtspHdrRetryAfter wraps GST_RTSP_HDR_RETRY_AFTER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_RETRY_AFTER
 	RtspHdrRetryAfter RTSPHeaderField = 29
 	// RtspHdrRtpInfo wraps GST_RTSP_HDR_RTP_INFO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_RTP_INFO
 	RtspHdrRtpInfo RTSPHeaderField = 30
 	// RtspHdrScale wraps GST_RTSP_HDR_SCALE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_SCALE
 	RtspHdrScale RTSPHeaderField = 31
 	// RtspHdrSession wraps GST_RTSP_HDR_SESSION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_SESSION
 	RtspHdrSession RTSPHeaderField = 32
 	// RtspHdrServer wraps GST_RTSP_HDR_SERVER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_SERVER
 	RtspHdrServer RTSPHeaderField = 33
 	// RtspHdrSpeed wraps GST_RTSP_HDR_SPEED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_SPEED
 	RtspHdrSpeed RTSPHeaderField = 34
 	// RtspHdrTransport wraps GST_RTSP_HDR_TRANSPORT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_TRANSPORT
 	RtspHdrTransport RTSPHeaderField = 35
 	// RtspHdrUnsupported wraps GST_RTSP_HDR_UNSUPPORTED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_UNSUPPORTED
 	RtspHdrUnsupported RTSPHeaderField = 36
 	// RtspHdrUserAgent wraps GST_RTSP_HDR_USER_AGENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_USER_AGENT
 	RtspHdrUserAgent RTSPHeaderField = 37
 	// RtspHdrVia wraps GST_RTSP_HDR_VIA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_VIA
 	RtspHdrVia RTSPHeaderField = 38
 	// RtspHdrWwwAuthenticate wraps GST_RTSP_HDR_WWW_AUTHENTICATE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_WWW_AUTHENTICATE
 	RtspHdrWwwAuthenticate RTSPHeaderField = 39
 	// RtspHdrClientChallenge wraps GST_RTSP_HDR_CLIENT_CHALLENGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CLIENT_CHALLENGE
 	RtspHdrClientChallenge RTSPHeaderField = 40
 	// RtspHdrRealChallenge1 wraps GST_RTSP_HDR_REAL_CHALLENGE1
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_REAL_CHALLENGE1
 	RtspHdrRealChallenge1 RTSPHeaderField = 41
 	// RtspHdrRealChallenge2 wraps GST_RTSP_HDR_REAL_CHALLENGE2
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_REAL_CHALLENGE2
 	RtspHdrRealChallenge2 RTSPHeaderField = 42
 	// RtspHdrRealChallenge3 wraps GST_RTSP_HDR_REAL_CHALLENGE3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_REAL_CHALLENGE3
 	RtspHdrRealChallenge3 RTSPHeaderField = 43
 	// RtspHdrSubscribe wraps GST_RTSP_HDR_SUBSCRIBE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_SUBSCRIBE
 	RtspHdrSubscribe RTSPHeaderField = 44
 	// RtspHdrAlert wraps GST_RTSP_HDR_ALERT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_ALERT
 	RtspHdrAlert RTSPHeaderField = 45
 	// RtspHdrClientID wraps GST_RTSP_HDR_CLIENT_ID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_CLIENT_ID
 	RtspHdrClientID RTSPHeaderField = 46
 	// RtspHdrCompanyID wraps GST_RTSP_HDR_COMPANY_ID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_COMPANY_ID
 	RtspHdrCompanyID RTSPHeaderField = 47
 	// RtspHdrGuid wraps GST_RTSP_HDR_GUID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_GUID
 	RtspHdrGuid RTSPHeaderField = 48
 	// RtspHdrRegionData wraps GST_RTSP_HDR_REGION_DATA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_REGION_DATA
 	RtspHdrRegionData RTSPHeaderField = 49
 	// RtspHdrMaxAsmWidth wraps GST_RTSP_HDR_MAX_ASM_WIDTH
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_MAX_ASM_WIDTH
 	RtspHdrMaxAsmWidth RTSPHeaderField = 50
 	// RtspHdrLanguage wraps GST_RTSP_HDR_LANGUAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_LANGUAGE
 	RtspHdrLanguage RTSPHeaderField = 51
 	// RtspHdrPlayerStartTime wraps GST_RTSP_HDR_PLAYER_START_TIME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_PLAYER_START_TIME
 	RtspHdrPlayerStartTime RTSPHeaderField = 52
 	// RtspHdrLocation wraps GST_RTSP_HDR_LOCATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_LOCATION
 	RtspHdrLocation RTSPHeaderField = 53
 	// RtspHdrEtag wraps GST_RTSP_HDR_ETAG
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_ETAG
 	RtspHdrEtag RTSPHeaderField = 54
 	// RtspHdrIfMatch wraps GST_RTSP_HDR_IF_MATCH
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_IF_MATCH
 	RtspHdrIfMatch RTSPHeaderField = 55
 	// RtspHdrAcceptCharset wraps GST_RTSP_HDR_ACCEPT_CHARSET
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_ACCEPT_CHARSET
 	RtspHdrAcceptCharset RTSPHeaderField = 56
 	// RtspHdrSupported wraps GST_RTSP_HDR_SUPPORTED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_SUPPORTED
 	RtspHdrSupported RTSPHeaderField = 57
 	// RtspHdrVary wraps GST_RTSP_HDR_VARY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_VARY
 	RtspHdrVary RTSPHeaderField = 58
 	// RtspHdrXAccelerateStreaming wraps GST_RTSP_HDR_X_ACCELERATE_STREAMING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_ACCELERATE_STREAMING
 	RtspHdrXAccelerateStreaming RTSPHeaderField = 59
 	// RtspHdrXAcceptAuthent wraps GST_RTSP_HDR_X_ACCEPT_AUTHENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_ACCEPT_AUTHENT
 	RtspHdrXAcceptAuthent RTSPHeaderField = 60
 	// RtspHdrXAcceptProxyAuthent wraps GST_RTSP_HDR_X_ACCEPT_PROXY_AUTHENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_ACCEPT_PROXY_AUTHENT
 	RtspHdrXAcceptProxyAuthent RTSPHeaderField = 61
 	// RtspHdrXBroadcastID wraps GST_RTSP_HDR_X_BROADCAST_ID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_BROADCAST_ID
 	RtspHdrXBroadcastID RTSPHeaderField = 62
 	// RtspHdrXBurstStreaming wraps GST_RTSP_HDR_X_BURST_STREAMING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_BURST_STREAMING
 	RtspHdrXBurstStreaming RTSPHeaderField = 63
 	// RtspHdrXNotice wraps GST_RTSP_HDR_X_NOTICE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_NOTICE
 	RtspHdrXNotice RTSPHeaderField = 64
 	// RtspHdrXPlayerLagTime wraps GST_RTSP_HDR_X_PLAYER_LAG_TIME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_PLAYER_LAG_TIME
 	RtspHdrXPlayerLagTime RTSPHeaderField = 65
 	// RtspHdrXPlaylist wraps GST_RTSP_HDR_X_PLAYLIST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_PLAYLIST
 	RtspHdrXPlaylist RTSPHeaderField = 66
 	// RtspHdrXPlaylistChangeNotice wraps GST_RTSP_HDR_X_PLAYLIST_CHANGE_NOTICE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_PLAYLIST_CHANGE_NOTICE
 	RtspHdrXPlaylistChangeNotice RTSPHeaderField = 67
 	// RtspHdrXPlaylistGenID wraps GST_RTSP_HDR_X_PLAYLIST_GEN_ID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_PLAYLIST_GEN_ID
 	RtspHdrXPlaylistGenID RTSPHeaderField = 68
 	// RtspHdrXPlaylistSeekID wraps GST_RTSP_HDR_X_PLAYLIST_SEEK_ID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_PLAYLIST_SEEK_ID
 	RtspHdrXPlaylistSeekID RTSPHeaderField = 69
 	// RtspHdrXProxyClientAgent wraps GST_RTSP_HDR_X_PROXY_CLIENT_AGENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_PROXY_CLIENT_AGENT
 	RtspHdrXProxyClientAgent RTSPHeaderField = 70
 	// RtspHdrXProxyClientVerb wraps GST_RTSP_HDR_X_PROXY_CLIENT_VERB
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_PROXY_CLIENT_VERB
 	RtspHdrXProxyClientVerb RTSPHeaderField = 71
 	// RtspHdrXRecedingPlaylistchange wraps GST_RTSP_HDR_X_RECEDING_PLAYLISTCHANGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_RECEDING_PLAYLISTCHANGE
 	RtspHdrXRecedingPlaylistchange RTSPHeaderField = 72
 	// RtspHdrXRtpInfo wraps GST_RTSP_HDR_X_RTP_INFO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_RTP_INFO
 	RtspHdrXRtpInfo RTSPHeaderField = 73
 	// RtspHdrXStartupprofile wraps GST_RTSP_HDR_X_STARTUPPROFILE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_STARTUPPROFILE
 	RtspHdrXStartupprofile RTSPHeaderField = 74
 	// RtspHdrTimestamp wraps GST_RTSP_HDR_TIMESTAMP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_TIMESTAMP
 	RtspHdrTimestamp RTSPHeaderField = 75
 	// RtspHdrAuthenticationInfo wraps GST_RTSP_HDR_AUTHENTICATION_INFO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_AUTHENTICATION_INFO
 	RtspHdrAuthenticationInfo RTSPHeaderField = 76
 	// RtspHdrHost wraps GST_RTSP_HDR_HOST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_HOST
 	RtspHdrHost RTSPHeaderField = 77
 	// RtspHdrPragma wraps GST_RTSP_HDR_PRAGMA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_PRAGMA
 	RtspHdrPragma RTSPHeaderField = 78
 	// RtspHdrXServerIpAddress wraps GST_RTSP_HDR_X_SERVER_IP_ADDRESS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_SERVER_IP_ADDRESS
 	RtspHdrXServerIpAddress RTSPHeaderField = 79
 	// RtspHdrXSessioncookie wraps GST_RTSP_HDR_X_SESSIONCOOKIE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_X_SESSIONCOOKIE
 	RtspHdrXSessioncookie RTSPHeaderField = 80
 	// RtspHdrRtcpInterval wraps GST_RTSP_HDR_RTCP_INTERVAL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_RTCP_INTERVAL
 	RtspHdrRtcpInterval RTSPHeaderField = 81
 	// RtspHdrKeymgmt wraps GST_RTSP_HDR_KEYMGMT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_KEYMGMT
 	RtspHdrKeymgmt RTSPHeaderField = 82
 	// RtspHdrPipelinedRequests wraps GST_RTSP_HDR_PIPELINED_REQUESTS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_PIPELINED_REQUESTS
 	RtspHdrPipelinedRequests RTSPHeaderField = 83
 	// RtspHdrMediaProperties wraps GST_RTSP_HDR_MEDIA_PROPERTIES
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_MEDIA_PROPERTIES
 	RtspHdrMediaProperties RTSPHeaderField = 84
 	// RtspHdrSeekStyle wraps GST_RTSP_HDR_SEEK_STYLE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_SEEK_STYLE
 	RtspHdrSeekStyle RTSPHeaderField = 85
 	// RtspHdrAcceptRanges wraps GST_RTSP_HDR_ACCEPT_RANGES
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_ACCEPT_RANGES
 	RtspHdrAcceptRanges RTSPHeaderField = 86
 	// RtspHdrFrames wraps GST_RTSP_HDR_FRAMES
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_FRAMES
 	RtspHdrFrames RTSPHeaderField = 87
 	// RtspHdrRateControl wraps GST_RTSP_HDR_RATE_CONTROL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_RATE_CONTROL
 	RtspHdrRateControl RTSPHeaderField = 88
 	// RtspHdrLast wraps GST_RTSP_HDR_LAST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_HDR_LAST
 	RtspHdrLast RTSPHeaderField = 89
 )
 
@@ -653,40 +643,33 @@ func (e RTSPHeaderField) String() string {
 
 // RTSPMsgType wraps GstRTSPMsgType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPMsgType
 type RTSPMsgType C.int
 
 const (
 	// RtspMessageInvalid wraps GST_RTSP_MESSAGE_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_MESSAGE_INVALID
 	RtspMessageInvalid RTSPMsgType = 0
 	// RtspMessageRequest wraps GST_RTSP_MESSAGE_REQUEST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_MESSAGE_REQUEST
 	RtspMessageRequest RTSPMsgType = 1
 	// RtspMessageResponse wraps GST_RTSP_MESSAGE_RESPONSE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_MESSAGE_RESPONSE
 	RtspMessageResponse RTSPMsgType = 2
 	// RtspMessageHttpRequest wraps GST_RTSP_MESSAGE_HTTP_REQUEST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_MESSAGE_HTTP_REQUEST
 	RtspMessageHttpRequest RTSPMsgType = 3
 	// RtspMessageHttpResponse wraps GST_RTSP_MESSAGE_HTTP_RESPONSE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_MESSAGE_HTTP_RESPONSE
 	RtspMessageHttpResponse RTSPMsgType = 4
 	// RtspMessageData wraps GST_RTSP_MESSAGE_DATA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_MESSAGE_DATA
 	RtspMessageData RTSPMsgType = 5
 )
 
@@ -718,35 +701,29 @@ func (e RTSPMsgType) String() string {
 
 // RTSPRangeUnit wraps GstRTSPRangeUnit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPRangeUnit
 type RTSPRangeUnit C.int
 
 const (
 	// RtspRangeSmpte wraps GST_RTSP_RANGE_SMPTE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_RANGE_SMPTE
 	RtspRangeSmpte RTSPRangeUnit = 0
 	// RtspRangeSmpte30Drop wraps GST_RTSP_RANGE_SMPTE_30_DROP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_RANGE_SMPTE_30_DROP
 	RtspRangeSmpte30Drop RTSPRangeUnit = 1
 	// RtspRangeSmpte25 wraps GST_RTSP_RANGE_SMPTE_25
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_RANGE_SMPTE_25
 	RtspRangeSmpte25 RTSPRangeUnit = 2
 	// RtspRangeNpt wraps GST_RTSP_RANGE_NPT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_RANGE_NPT
 	RtspRangeNpt RTSPRangeUnit = 3
 	// RtspRangeClock wraps GST_RTSP_RANGE_CLOCK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_RANGE_CLOCK
 	RtspRangeClock RTSPRangeUnit = 4
 )
 
@@ -777,105 +754,85 @@ func (e RTSPRangeUnit) String() string {
 
 // RTSPResult wraps GstRTSPResult
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPResult
 type RTSPResult C.int
 
 const (
 	// RtspOK wraps GST_RTSP_OK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_OK
 	RtspOK RTSPResult = 0
 	// RtspOKRedirect wraps GST_RTSP_OK_REDIRECT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_OK_REDIRECT
 	RtspOKRedirect RTSPResult = 1
 	// RtspError wraps GST_RTSP_ERROR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ERROR
 	RtspError RTSPResult = -1
 	// RtspEinval wraps GST_RTSP_EINVAL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_EINVAL
 	RtspEinval RTSPResult = -2
 	// RtspEintr wraps GST_RTSP_EINTR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_EINTR
 	RtspEintr RTSPResult = -3
 	// RtspEnomem wraps GST_RTSP_ENOMEM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ENOMEM
 	RtspEnomem RTSPResult = -4
 	// RtspEresolv wraps GST_RTSP_ERESOLV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ERESOLV
 	RtspEresolv RTSPResult = -5
 	// RtspEnotimpl wraps GST_RTSP_ENOTIMPL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ENOTIMPL
 	RtspEnotimpl RTSPResult = -6
 	// RtspEsys wraps GST_RTSP_ESYS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ESYS
 	RtspEsys RTSPResult = -7
 	// RtspEparse wraps GST_RTSP_EPARSE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_EPARSE
 	RtspEparse RTSPResult = -8
 	// RtspEwsastart wraps GST_RTSP_EWSASTART
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_EWSASTART
 	RtspEwsastart RTSPResult = -9
 	// RtspEwsaversion wraps GST_RTSP_EWSAVERSION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_EWSAVERSION
 	RtspEwsaversion RTSPResult = -10
 	// RtspEeof wraps GST_RTSP_EEOF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_EEOF
 	RtspEeof RTSPResult = -11
 	// RtspEnet wraps GST_RTSP_ENET
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ENET
 	RtspEnet RTSPResult = -12
 	// RtspEnotip wraps GST_RTSP_ENOTIP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ENOTIP
 	RtspEnotip RTSPResult = -13
 	// RtspEtimeout wraps GST_RTSP_ETIMEOUT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ETIMEOUT
 	RtspEtimeout RTSPResult = -14
 	// RtspEtget wraps GST_RTSP_ETGET
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ETGET
 	RtspEtget RTSPResult = -15
 	// RtspEtpost wraps GST_RTSP_ETPOST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ETPOST
 	RtspEtpost RTSPResult = -16
 	// RtspElast wraps GST_RTSP_ELAST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ELAST
 	RtspElast RTSPResult = -17
 )
 
@@ -920,40 +877,33 @@ func (e RTSPResult) String() string {
 
 // RTSPState wraps GstRTSPState
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPState
 type RTSPState C.int
 
 const (
 	// RtspStateInvalid wraps GST_RTSP_STATE_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STATE_INVALID
 	RtspStateInvalid RTSPState = 0
 	// RtspStateInit wraps GST_RTSP_STATE_INIT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STATE_INIT
 	RtspStateInit RTSPState = 1
 	// RtspStateReady wraps GST_RTSP_STATE_READY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STATE_READY
 	RtspStateReady RTSPState = 2
 	// RtspStateSeeking wraps GST_RTSP_STATE_SEEKING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STATE_SEEKING
 	RtspStateSeeking RTSPState = 3
 	// RtspStatePlaying wraps GST_RTSP_STATE_PLAYING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STATE_PLAYING
 	RtspStatePlaying RTSPState = 4
 	// RtspStateRecording wraps GST_RTSP_STATE_RECORDING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STATE_RECORDING
 	RtspStateRecording RTSPState = 5
 )
 
@@ -985,204 +935,201 @@ func (e RTSPState) String() string {
 
 // RTSPStatusCode wraps GstRTSPStatusCode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPStatusCode
 type RTSPStatusCode C.int
 
 const (
 	// RtspStsInvalid wraps GST_RTSP_STS_INVALID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_INVALID
 	RtspStsInvalid RTSPStatusCode = 0
 	// RtspStsContinue wraps GST_RTSP_STS_CONTINUE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_CONTINUE
 	RtspStsContinue RTSPStatusCode = 100
 	// RtspStsOK wraps GST_RTSP_STS_OK
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_OK
 	RtspStsOK RTSPStatusCode = 200
 	// RtspStsCreated wraps GST_RTSP_STS_CREATED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_CREATED
 	RtspStsCreated RTSPStatusCode = 201
 	// RtspStsLowOnStorage wraps GST_RTSP_STS_LOW_ON_STORAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_LOW_ON_STORAGE
 	RtspStsLowOnStorage RTSPStatusCode = 250
 	// RtspStsMultipleChoices wraps GST_RTSP_STS_MULTIPLE_CHOICES
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_MULTIPLE_CHOICES
 	RtspStsMultipleChoices RTSPStatusCode = 300
 	// RtspStsMovedPermanently wraps GST_RTSP_STS_MOVED_PERMANENTLY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_MOVED_PERMANENTLY
 	RtspStsMovedPermanently RTSPStatusCode = 301
 	// RtspStsMoveTemporarily wraps GST_RTSP_STS_MOVE_TEMPORARILY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_MOVE_TEMPORARILY
 	RtspStsMoveTemporarily RTSPStatusCode = 302
 	// RtspStsSeeOther wraps GST_RTSP_STS_SEE_OTHER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_SEE_OTHER
 	RtspStsSeeOther RTSPStatusCode = 303
 	// RtspStsNotModified wraps GST_RTSP_STS_NOT_MODIFIED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_NOT_MODIFIED
 	RtspStsNotModified RTSPStatusCode = 304
 	// RtspStsUseProxy wraps GST_RTSP_STS_USE_PROXY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_USE_PROXY
 	RtspStsUseProxy RTSPStatusCode = 305
 	// RtspStsRedirectTemporarily wraps GST_RTSP_STS_REDIRECT_TEMPORARILY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_REDIRECT_TEMPORARILY
 	RtspStsRedirectTemporarily RTSPStatusCode = 307
 	// RtspStsRedirectPermanently wraps GST_RTSP_STS_REDIRECT_PERMANENTLY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_REDIRECT_PERMANENTLY
 	RtspStsRedirectPermanently RTSPStatusCode = 308
 	// RtspStsBadRequest wraps GST_RTSP_STS_BAD_REQUEST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_BAD_REQUEST
 	RtspStsBadRequest RTSPStatusCode = 400
 	// RtspStsUnauthorized wraps GST_RTSP_STS_UNAUTHORIZED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_UNAUTHORIZED
 	RtspStsUnauthorized RTSPStatusCode = 401
 	// RtspStsPaymentRequired wraps GST_RTSP_STS_PAYMENT_REQUIRED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_PAYMENT_REQUIRED
 	RtspStsPaymentRequired RTSPStatusCode = 402
 	// RtspStsForbidden wraps GST_RTSP_STS_FORBIDDEN
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_FORBIDDEN
 	RtspStsForbidden RTSPStatusCode = 403
 	// RtspStsNotFound wraps GST_RTSP_STS_NOT_FOUND
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_NOT_FOUND
 	RtspStsNotFound RTSPStatusCode = 404
 	// RtspStsMethodNotAllowed wraps GST_RTSP_STS_METHOD_NOT_ALLOWED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_METHOD_NOT_ALLOWED
 	RtspStsMethodNotAllowed RTSPStatusCode = 405
 	// RtspStsNotAcceptable wraps GST_RTSP_STS_NOT_ACCEPTABLE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_NOT_ACCEPTABLE
 	RtspStsNotAcceptable RTSPStatusCode = 406
 	// RtspStsProxyAuthRequired wraps GST_RTSP_STS_PROXY_AUTH_REQUIRED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_PROXY_AUTH_REQUIRED
 	RtspStsProxyAuthRequired RTSPStatusCode = 407
 	// RtspStsRequestTimeout wraps GST_RTSP_STS_REQUEST_TIMEOUT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_REQUEST_TIMEOUT
 	RtspStsRequestTimeout RTSPStatusCode = 408
 	// RtspStsGone wraps GST_RTSP_STS_GONE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_GONE
 	RtspStsGone RTSPStatusCode = 410
 	// RtspStsLengthRequired wraps GST_RTSP_STS_LENGTH_REQUIRED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_LENGTH_REQUIRED
 	RtspStsLengthRequired RTSPStatusCode = 411
 	// RtspStsPreconditionFailed wraps GST_RTSP_STS_PRECONDITION_FAILED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_PRECONDITION_FAILED
 	RtspStsPreconditionFailed RTSPStatusCode = 412
 	// RtspStsRequestEntityTooLarge wraps GST_RTSP_STS_REQUEST_ENTITY_TOO_LARGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_REQUEST_ENTITY_TOO_LARGE
 	RtspStsRequestEntityTooLarge RTSPStatusCode = 413
 	// RtspStsRequestURITooLarge wraps GST_RTSP_STS_REQUEST_URI_TOO_LARGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_REQUEST_URI_TOO_LARGE
 	RtspStsRequestURITooLarge RTSPStatusCode = 414
 	// RtspStsUnsupportedMediaType wraps GST_RTSP_STS_UNSUPPORTED_MEDIA_TYPE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_UNSUPPORTED_MEDIA_TYPE
 	RtspStsUnsupportedMediaType RTSPStatusCode = 415
 	// RtspStsParameterNotUnderstood wraps GST_RTSP_STS_PARAMETER_NOT_UNDERSTOOD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_PARAMETER_NOT_UNDERSTOOD
 	RtspStsParameterNotUnderstood RTSPStatusCode = 451
 	// RtspStsConferenceNotFound wraps GST_RTSP_STS_CONFERENCE_NOT_FOUND
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_CONFERENCE_NOT_FOUND
 	RtspStsConferenceNotFound RTSPStatusCode = 452
 	// RtspStsNotEnoughBandwidth wraps GST_RTSP_STS_NOT_ENOUGH_BANDWIDTH
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_NOT_ENOUGH_BANDWIDTH
 	RtspStsNotEnoughBandwidth RTSPStatusCode = 453
 	// RtspStsSessionNotFound wraps GST_RTSP_STS_SESSION_NOT_FOUND
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_SESSION_NOT_FOUND
 	RtspStsSessionNotFound RTSPStatusCode = 454
 	// RtspStsMethodNotValidInThisState wraps GST_RTSP_STS_METHOD_NOT_VALID_IN_THIS_STATE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_METHOD_NOT_VALID_IN_THIS_STATE
 	RtspStsMethodNotValidInThisState RTSPStatusCode = 455
 	// RtspStsHeaderFieldNotValidForResource wraps GST_RTSP_STS_HEADER_FIELD_NOT_VALID_FOR_RESOURCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_HEADER_FIELD_NOT_VALID_FOR_RESOURCE
 	RtspStsHeaderFieldNotValidForResource RTSPStatusCode = 456
 	// RtspStsInvalidRange wraps GST_RTSP_STS_INVALID_RANGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_INVALID_RANGE
 	RtspStsInvalidRange RTSPStatusCode = 457
 	// RtspStsParameterIsReadonly wraps GST_RTSP_STS_PARAMETER_IS_READONLY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_PARAMETER_IS_READONLY
 	RtspStsParameterIsReadonly RTSPStatusCode = 458
 	// RtspStsAggregateOperationNotAllowed wraps GST_RTSP_STS_AGGREGATE_OPERATION_NOT_ALLOWED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_AGGREGATE_OPERATION_NOT_ALLOWED
 	RtspStsAggregateOperationNotAllowed RTSPStatusCode = 459
 	// RtspStsOnlyAggregateOperationAllowed wraps GST_RTSP_STS_ONLY_AGGREGATE_OPERATION_ALLOWED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_ONLY_AGGREGATE_OPERATION_ALLOWED
 	RtspStsOnlyAggregateOperationAllowed RTSPStatusCode = 460
 	// RtspStsUnsupportedTransport wraps GST_RTSP_STS_UNSUPPORTED_TRANSPORT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_UNSUPPORTED_TRANSPORT
 	RtspStsUnsupportedTransport RTSPStatusCode = 461
 	// RtspStsDestinationUnreachable wraps GST_RTSP_STS_DESTINATION_UNREACHABLE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_DESTINATION_UNREACHABLE
 	RtspStsDestinationUnreachable RTSPStatusCode = 462
 	// RtspStsKeyManagementFailure wraps GST_RTSP_STS_KEY_MANAGEMENT_FAILURE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_KEY_MANAGEMENT_FAILURE
 	RtspStsKeyManagementFailure RTSPStatusCode = 463
 	// RtspStsInternalServerError wraps GST_RTSP_STS_INTERNAL_SERVER_ERROR
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_INTERNAL_SERVER_ERROR
 	RtspStsInternalServerError RTSPStatusCode = 500
 	// RtspStsNotImplemented wraps GST_RTSP_STS_NOT_IMPLEMENTED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_NOT_IMPLEMENTED
 	RtspStsNotImplemented RTSPStatusCode = 501
 	// RtspStsBadGateway wraps GST_RTSP_STS_BAD_GATEWAY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_BAD_GATEWAY
 	RtspStsBadGateway RTSPStatusCode = 502
 	// RtspStsServiceUnavailable wraps GST_RTSP_STS_SERVICE_UNAVAILABLE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_SERVICE_UNAVAILABLE
 	RtspStsServiceUnavailable RTSPStatusCode = 503
 	// RtspStsGatewayTimeout wraps GST_RTSP_STS_GATEWAY_TIMEOUT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_GATEWAY_TIMEOUT
 	RtspStsGatewayTimeout RTSPStatusCode = 504
 	// RtspStsRtspVersionNotSupported wraps GST_RTSP_STS_RTSP_VERSION_NOT_SUPPORTED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_RTSP_VERSION_NOT_SUPPORTED
 	RtspStsRtspVersionNotSupported RTSPStatusCode = 505
 	// RtspStsOptionNotSupported wraps GST_RTSP_STS_OPTION_NOT_SUPPORTED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_STS_OPTION_NOT_SUPPORTED
 	RtspStsOptionNotSupported RTSPStatusCode = 551
 )
 
@@ -1256,35 +1203,29 @@ func (e RTSPStatusCode) String() string {
 
 // RTSPTimeType wraps GstRTSPTimeType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPTimeType
 type RTSPTimeType C.int
 
 const (
 	// RtspTimeSeconds wraps GST_RTSP_TIME_SECONDS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_TIME_SECONDS
 	RtspTimeSeconds RTSPTimeType = 0
 	// RtspTimeNow wraps GST_RTSP_TIME_NOW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_TIME_NOW
 	RtspTimeNow RTSPTimeType = 1
 	// RtspTimeEnd wraps GST_RTSP_TIME_END
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_TIME_END
 	RtspTimeEnd RTSPTimeType = 2
 	// RtspTimeFrames wraps GST_RTSP_TIME_FRAMES
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_TIME_FRAMES
 	RtspTimeFrames RTSPTimeType = 3
 	// RtspTimeUtc wraps GST_RTSP_TIME_UTC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_TIME_UTC
 	RtspTimeUtc RTSPTimeType = 4
 )
 
@@ -1315,30 +1256,25 @@ func (e RTSPTimeType) String() string {
 
 // RTSPVersion wraps GstRTSPVersion
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPVersion
 type RTSPVersion C.int
 
 const (
 	// RtspVersionInvalid wraps GST_RTSP_VERSION_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_VERSION_INVALID
 	RtspVersionInvalid RTSPVersion = 0
 	// RtspVersion10 wraps GST_RTSP_VERSION_1_0
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_VERSION_1_0
 	RtspVersion10 RTSPVersion = 16
 	// RtspVersion11 wraps GST_RTSP_VERSION_1_1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_VERSION_1_1
 	RtspVersion11 RTSPVersion = 17
 	// RtspVersion20 wraps GST_RTSP_VERSION_2_0
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_VERSION_2_0
 	RtspVersion20 RTSPVersion = 32
 )
 
@@ -1368,8 +1304,7 @@ func (e RTSPVersion) String() string {
 
 // RTSPVersionAsText wraps gst_rtsp_version_as_text
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#gst_rtsp_version_as_text
 func RTSPVersionAsText(version RTSPVersion) string {
 	var carg1 C.GstRTSPVersion // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -1388,20 +1323,17 @@ func RTSPVersionAsText(version RTSPVersion) string {
 
 // RTSPEvent wraps GstRTSPEvent
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPEvent
 type RTSPEvent C.gint
 
 const (
 	// RtspEvRead wraps GST_RTSP_EV_READ
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_EV_READ
 	RtspEvRead RTSPEvent = 1
 	// RtspEvWrite wraps GST_RTSP_EV_WRITE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_EV_WRITE
 	RtspEvWrite RTSPEvent = 2
 )
 
@@ -1440,40 +1372,33 @@ func (f RTSPEvent) String() string {
 
 // RTSPLowerTrans wraps GstRTSPLowerTrans
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPLowerTrans
 type RTSPLowerTrans C.gint
 
 const (
 	// RtspLowerTransUnknown wraps GST_RTSP_LOWER_TRANS_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_LOWER_TRANS_UNKNOWN
 	RtspLowerTransUnknown RTSPLowerTrans = 0
 	// RtspLowerTransUdp wraps GST_RTSP_LOWER_TRANS_UDP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_LOWER_TRANS_UDP
 	RtspLowerTransUdp RTSPLowerTrans = 1
 	// RtspLowerTransUdpMcast wraps GST_RTSP_LOWER_TRANS_UDP_MCAST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_LOWER_TRANS_UDP_MCAST
 	RtspLowerTransUdpMcast RTSPLowerTrans = 2
 	// RtspLowerTransTcp wraps GST_RTSP_LOWER_TRANS_TCP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_LOWER_TRANS_TCP
 	RtspLowerTransTcp RTSPLowerTrans = 4
 	// RtspLowerTransHttp wraps GST_RTSP_LOWER_TRANS_HTTP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_LOWER_TRANS_HTTP
 	RtspLowerTransHttp RTSPLowerTrans = 16
 	// RtspLowerTransTls wraps GST_RTSP_LOWER_TRANS_TLS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_LOWER_TRANS_TLS
 	RtspLowerTransTls RTSPLowerTrans = 32
 )
 
@@ -1524,80 +1449,65 @@ func (f RTSPLowerTrans) String() string {
 
 // RTSPMethod wraps GstRTSPMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPMethod
 type RTSPMethod C.gint
 
 const (
 	// RtspInvalid wraps GST_RTSP_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_INVALID
 	RtspInvalid RTSPMethod = 0
 	// RtspDescribe wraps GST_RTSP_DESCRIBE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_DESCRIBE
 	RtspDescribe RTSPMethod = 1
 	// RtspAnnounce wraps GST_RTSP_ANNOUNCE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_ANNOUNCE
 	RtspAnnounce RTSPMethod = 2
 	// RtspGetParameter wraps GST_RTSP_GET_PARAMETER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_GET_PARAMETER
 	RtspGetParameter RTSPMethod = 4
 	// RtspOptions wraps GST_RTSP_OPTIONS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_OPTIONS
 	RtspOptions RTSPMethod = 8
 	// RtspPause wraps GST_RTSP_PAUSE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_PAUSE
 	RtspPause RTSPMethod = 16
 	// RtspPlay wraps GST_RTSP_PLAY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_PLAY
 	RtspPlay RTSPMethod = 32
 	// RtspRecord wraps GST_RTSP_RECORD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_RECORD
 	RtspRecord RTSPMethod = 64
 	// RtspRedirect wraps GST_RTSP_REDIRECT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_REDIRECT
 	RtspRedirect RTSPMethod = 128
 	// RtspSetup wraps GST_RTSP_SETUP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_SETUP
 	RtspSetup RTSPMethod = 256
 	// RtspSetParameter wraps GST_RTSP_SET_PARAMETER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_SET_PARAMETER
 	RtspSetParameter RTSPMethod = 512
 	// RtspTeardown wraps GST_RTSP_TEARDOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_TEARDOWN
 	RtspTeardown RTSPMethod = 1024
 	// RtspGet wraps GST_RTSP_GET
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_GET
 	RtspGet RTSPMethod = 2048
 	// RtspPost wraps GST_RTSP_POST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_POST
 	RtspPost RTSPMethod = 4096
 )
 
@@ -1672,8 +1582,7 @@ func (f RTSPMethod) String() string {
 
 // RTSPMethodAsText wraps gst_rtsp_method_as_text
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#gst_rtsp_method_as_text
 func RTSPMethodAsText(method RTSPMethod) string {
 	var carg1 C.GstRTSPMethod // in, none, casted
 	var cret  *C.gchar        // return, none, string, nullable-string
@@ -1694,35 +1603,29 @@ func RTSPMethodAsText(method RTSPMethod) string {
 
 // RTSPProfile wraps GstRTSPProfile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPProfile
 type RTSPProfile C.gint
 
 const (
 	// RtspProfileUnknown wraps GST_RTSP_PROFILE_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_PROFILE_UNKNOWN
 	RtspProfileUnknown RTSPProfile = 0
 	// RtspProfileAvp wraps GST_RTSP_PROFILE_AVP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_PROFILE_AVP
 	RtspProfileAvp RTSPProfile = 1
 	// RtspProfileSavp wraps GST_RTSP_PROFILE_SAVP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_PROFILE_SAVP
 	RtspProfileSavp RTSPProfile = 2
 	// RtspProfileAvpf wraps GST_RTSP_PROFILE_AVPF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_PROFILE_AVPF
 	RtspProfileAvpf RTSPProfile = 4
 	// RtspProfileSavpf wraps GST_RTSP_PROFILE_SAVPF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_PROFILE_SAVPF
 	RtspProfileSavpf RTSPProfile = 8
 )
 
@@ -1770,25 +1673,21 @@ func (f RTSPProfile) String() string {
 
 // RTSPTransMode wraps GstRTSPTransMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp#GstRTSPTransMode
 type RTSPTransMode C.gint
 
 const (
 	// RtspTransUnknown wraps GST_RTSP_TRANS_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_TRANS_UNKNOWN
 	RtspTransUnknown RTSPTransMode = 0
 	// RtspTransRtp wraps GST_RTSP_TRANS_RTP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_TRANS_RTP
 	RtspTransRtp RTSPTransMode = 1
 	// RtspTransRdt wraps GST_RTSP_TRANS_RDT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp#GST_RTSP_TRANS_RDT
 	RtspTransRdt RTSPTransMode = 2
 )
 
@@ -1830,13 +1729,12 @@ func (f RTSPTransMode) String() string {
 
 // RTSPConnectionAcceptCertificateFunc wraps GstRTSPConnectionAcceptCertificateFunc
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#GstRTSPConnectionAcceptCertificateFunc
 type RTSPConnectionAcceptCertificateFunc func(conn gio.TlsConnection, peerCert gio.TlsCertificate, errors gio.TlsCertificateFlags) (goret bool)
 
 // RtspFindHeaderField wraps gst_rtsp_find_header_field
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspFindHeaderField(header string) RTSPHeaderField {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstRTSPHeaderField // return, none, casted
@@ -1856,8 +1754,7 @@ func RtspFindHeaderField(header string) RTSPHeaderField {
 
 // RtspFindMethod wraps gst_rtsp_find_method
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspFindMethod(method string) RTSPMethod {
 	var carg1 *C.gchar        // in, none, string
 	var cret  C.GstRTSPMethod // return, none, casted
@@ -1877,8 +1774,7 @@ func RtspFindMethod(method string) RTSPMethod {
 
 // RtspGenerateDigestAuthResponse wraps gst_rtsp_generate_digest_auth_response
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspGenerateDigestAuthResponse(algorithm string, method string, realm string, username string, password string, uri string, nonce string) string {
 	var carg1 *C.gchar // in, none, string, nullable-string
 	var carg2 *C.gchar // in, none, string
@@ -1927,8 +1823,7 @@ func RtspGenerateDigestAuthResponse(algorithm string, method string, realm strin
 
 // RtspGenerateDigestAuthResponseFromMD5 wraps gst_rtsp_generate_digest_auth_response_from_md5
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspGenerateDigestAuthResponseFromMD5(algorithm string, method string, md5 string, uri string, nonce string) string {
 	var carg1 *C.gchar // in, none, string, nullable-string
 	var carg2 *C.gchar // in, none, string
@@ -1969,8 +1864,7 @@ func RtspGenerateDigestAuthResponseFromMD5(algorithm string, method string, md5 
 
 // RtspHeaderAllowMultiple wraps gst_rtsp_header_allow_multiple
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspHeaderAllowMultiple(field RTSPHeaderField) bool {
 	var carg1 C.GstRTSPHeaderField // in, none, casted
 	var cret  C.gboolean           // return
@@ -1991,8 +1885,7 @@ func RtspHeaderAllowMultiple(field RTSPHeaderField) bool {
 
 // RtspHeaderAsText wraps gst_rtsp_header_as_text
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspHeaderAsText(field RTSPHeaderField) string {
 	var carg1 C.GstRTSPHeaderField // in, none, casted
 	var cret  *C.gchar             // return, none, string, nullable-string
@@ -2013,8 +1906,7 @@ func RtspHeaderAsText(field RTSPHeaderField) string {
 
 // NewRtspMessage wraps gst_rtsp_message_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func NewRtspMessage() (*RTSPMessage, RTSPResult) {
 	var carg1 *C.GstRTSPMessage // out, full, converted
 	var cret  C.GstRTSPResult   // return, none, casted
@@ -2032,8 +1924,7 @@ func NewRtspMessage() (*RTSPMessage, RTSPResult) {
 
 // RtspMessageNewData wraps gst_rtsp_message_new_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspMessageNewData(channel uint8) (*RTSPMessage, RTSPResult) {
 	var carg2 C.guint8          // in, none, casted
 	var carg1 *C.GstRTSPMessage // out, full, converted
@@ -2055,8 +1946,7 @@ func RtspMessageNewData(channel uint8) (*RTSPMessage, RTSPResult) {
 
 // RtspMessageNewRequest wraps gst_rtsp_message_new_request
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspMessageNewRequest(method RTSPMethod, uri string) (*RTSPMessage, RTSPResult) {
 	var carg2 C.GstRTSPMethod   // in, none, casted
 	var carg3 *C.gchar          // in, none, string
@@ -2082,8 +1972,7 @@ func RtspMessageNewRequest(method RTSPMethod, uri string) (*RTSPMessage, RTSPRes
 
 // RtspMessageNewResponse wraps gst_rtsp_message_new_response
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspMessageNewResponse(code RTSPStatusCode, reason string, request *RTSPMessage) (*RTSPMessage, RTSPResult) {
 	var carg2 C.GstRTSPStatusCode // in, none, casted
 	var carg3 *C.gchar            // in, none, string, nullable-string
@@ -2116,8 +2005,7 @@ func RtspMessageNewResponse(code RTSPStatusCode, reason string, request *RTSPMes
 
 // RtspOptionsAsText wraps gst_rtsp_options_as_text
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspOptionsAsText(options RTSPMethod) string {
 	var carg1 C.GstRTSPMethod // in, none, casted
 	var cret  *C.gchar        // return, full, string
@@ -2137,8 +2025,7 @@ func RtspOptionsAsText(options RTSPMethod) string {
 
 // RtspOptionsFromText wraps gst_rtsp_options_from_text
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspOptionsFromText(options string) RTSPMethod {
 	var carg1 *C.gchar        // in, none, string
 	var cret  C.GstRTSPMethod // return, none, casted
@@ -2158,8 +2045,7 @@ func RtspOptionsFromText(options string) RTSPMethod {
 
 // RtspStatusAsText wraps gst_rtsp_status_as_text
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspStatusAsText(code RTSPStatusCode) string {
 	var carg1 C.GstRTSPStatusCode // in, none, casted
 	var cret  *C.gchar            // return, none, string
@@ -2178,8 +2064,7 @@ func RtspStatusAsText(code RTSPStatusCode) string {
 
 // RtspStrresult wraps gst_rtsp_strresult
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func RtspStrresult(result RTSPResult) string {
 	var carg1 C.GstRTSPResult // in, none, casted
 	var cret  *C.gchar        // return, full, string
@@ -2207,50 +2092,49 @@ var _ RTSPExtension = (*RTSPExtensionInstance)(nil)
 
 // RTSPExtension wraps GstRTSPExtension
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#GstRTSPExtension
 type RTSPExtension interface {
 	upcastToGstRTSPExtension() *RTSPExtensionInstance
 
 	// AfterSend wraps gst_rtsp_extension_after_send
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_after_send
 	AfterSend(*RTSPMessage, *RTSPMessage) RTSPResult
 	// BeforeSend wraps gst_rtsp_extension_before_send
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_before_send
 	BeforeSend(*RTSPMessage) RTSPResult
 	// ConfigureStream wraps gst_rtsp_extension_configure_stream
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_configure_stream
 	ConfigureStream(*gst.Caps) bool
 	// DetectServer wraps gst_rtsp_extension_detect_server
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_detect_server
 	DetectServer(*RTSPMessage) bool
 	// ParseSdp wraps gst_rtsp_extension_parse_sdp
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_parse_sdp
 	ParseSdp(*gstsdp.SDPMessage, *gst.Structure) RTSPResult
 	// ReceiveRequest wraps gst_rtsp_extension_receive_request
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_receive_request
 	ReceiveRequest(*RTSPMessage) RTSPResult
 	// Send wraps gst_rtsp_extension_send
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_send
 	Send(*RTSPMessage, *RTSPMessage) RTSPResult
 	// SetupMedia wraps gst_rtsp_extension_setup_media
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_setup_media
 	SetupMedia(*gstsdp.SDPMedia) RTSPResult
 	// StreamSelect wraps gst_rtsp_extension_stream_select
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_stream_select
 	StreamSelect(*RTSPUrl) RTSPResult
 	// ConnectSend connects the provided callback to the "send" signal
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/rtsp
 	ConnectSend(func(RTSPExtension, unsafe.Pointer, unsafe.Pointer) RTSPResult) gobject.SignalHandle
 }
 
@@ -2299,7 +2183,7 @@ func UnsafeRTSPExtensionToGlibFull(c RTSPExtension) unsafe.Pointer {
 
 // AfterSend wraps gst_rtsp_extension_after_send
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_after_send
 func (ext *RTSPExtensionInstance) AfterSend(req *RTSPMessage, resp *RTSPMessage) RTSPResult {
 	var carg0 *C.GstRTSPExtension // in, none, converted
 	var carg1 *C.GstRTSPMessage   // in, none, converted
@@ -2324,7 +2208,7 @@ func (ext *RTSPExtensionInstance) AfterSend(req *RTSPMessage, resp *RTSPMessage)
 
 // BeforeSend wraps gst_rtsp_extension_before_send
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_before_send
 func (ext *RTSPExtensionInstance) BeforeSend(req *RTSPMessage) RTSPResult {
 	var carg0 *C.GstRTSPExtension // in, none, converted
 	var carg1 *C.GstRTSPMessage   // in, none, converted
@@ -2346,7 +2230,7 @@ func (ext *RTSPExtensionInstance) BeforeSend(req *RTSPMessage) RTSPResult {
 
 // ConfigureStream wraps gst_rtsp_extension_configure_stream
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_configure_stream
 func (ext *RTSPExtensionInstance) ConfigureStream(caps *gst.Caps) bool {
 	var carg0 *C.GstRTSPExtension // in, none, converted
 	var carg1 *C.GstCaps          // in, none, converted
@@ -2370,7 +2254,7 @@ func (ext *RTSPExtensionInstance) ConfigureStream(caps *gst.Caps) bool {
 
 // DetectServer wraps gst_rtsp_extension_detect_server
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_detect_server
 func (ext *RTSPExtensionInstance) DetectServer(resp *RTSPMessage) bool {
 	var carg0 *C.GstRTSPExtension // in, none, converted
 	var carg1 *C.GstRTSPMessage   // in, none, converted
@@ -2394,7 +2278,7 @@ func (ext *RTSPExtensionInstance) DetectServer(resp *RTSPMessage) bool {
 
 // ParseSdp wraps gst_rtsp_extension_parse_sdp
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_parse_sdp
 func (ext *RTSPExtensionInstance) ParseSdp(sdp *gstsdp.SDPMessage, s *gst.Structure) RTSPResult {
 	var carg0 *C.GstRTSPExtension // in, none, converted
 	var carg1 *C.GstSDPMessage    // in, none, converted
@@ -2419,7 +2303,7 @@ func (ext *RTSPExtensionInstance) ParseSdp(sdp *gstsdp.SDPMessage, s *gst.Struct
 
 // ReceiveRequest wraps gst_rtsp_extension_receive_request
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_receive_request
 func (ext *RTSPExtensionInstance) ReceiveRequest(req *RTSPMessage) RTSPResult {
 	var carg0 *C.GstRTSPExtension // in, none, converted
 	var carg1 *C.GstRTSPMessage   // in, none, converted
@@ -2441,7 +2325,7 @@ func (ext *RTSPExtensionInstance) ReceiveRequest(req *RTSPMessage) RTSPResult {
 
 // Send wraps gst_rtsp_extension_send
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_send
 func (ext *RTSPExtensionInstance) Send(req *RTSPMessage, resp *RTSPMessage) RTSPResult {
 	var carg0 *C.GstRTSPExtension // in, none, converted
 	var carg1 *C.GstRTSPMessage   // in, none, converted
@@ -2466,7 +2350,7 @@ func (ext *RTSPExtensionInstance) Send(req *RTSPMessage, resp *RTSPMessage) RTSP
 
 // SetupMedia wraps gst_rtsp_extension_setup_media
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_setup_media
 func (ext *RTSPExtensionInstance) SetupMedia(media *gstsdp.SDPMedia) RTSPResult {
 	var carg0 *C.GstRTSPExtension // in, none, converted
 	var carg1 *C.GstSDPMedia      // in, none, converted
@@ -2488,7 +2372,7 @@ func (ext *RTSPExtensionInstance) SetupMedia(media *gstsdp.SDPMedia) RTSPResult 
 
 // StreamSelect wraps gst_rtsp_extension_stream_select
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#gst_rtsp_extension_stream_select
 func (ext *RTSPExtensionInstance) StreamSelect(url *RTSPUrl) RTSPResult {
 	var carg0 *C.GstRTSPExtension // in, none, converted
 	var carg1 *C.GstRTSPUrl       // in, none, converted
@@ -2510,15 +2394,14 @@ func (ext *RTSPExtensionInstance) StreamSelect(url *RTSPUrl) RTSPResult {
 
 // ConnectSend connects the provided callback to the "send" signal
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp
 func (o *RTSPExtensionInstance) ConnectSend(fn func(RTSPExtension, unsafe.Pointer, unsafe.Pointer) RTSPResult) gobject.SignalHandle {
 	return o.Instance.Connect("send", fn)
 }
 
 // RTSPAuthCredential wraps GstRTSPAuthCredential
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#GstRTSPAuthCredential
 type RTSPAuthCredential struct {
 	*rTSPAuthCredential
 }
@@ -2614,8 +2497,7 @@ func UnsafeRTSPAuthCredentialToGlibFull(r *RTSPAuthCredential) unsafe.Pointer {
 
 // RTSPAuthParam wraps GstRTSPAuthParam
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#GstRTSPAuthParam
 type RTSPAuthParam struct {
 	*rTSPAuthParam
 }
@@ -2711,7 +2593,7 @@ func UnsafeRTSPAuthParamToGlibFull(r *RTSPAuthParam) unsafe.Pointer {
 
 // Copy wraps gst_rtsp_auth_param_copy
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_auth_param_copy
 func (param *RTSPAuthParam) Copy() *RTSPAuthParam {
 	var carg0 *C.GstRTSPAuthParam // in, none, converted
 	var cret  *C.GstRTSPAuthParam // return, full, converted
@@ -2730,8 +2612,7 @@ func (param *RTSPAuthParam) Copy() *RTSPAuthParam {
 
 // RTSPConnection wraps GstRTSPConnection
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#GstRTSPConnection
 type RTSPConnection struct {
 	*rTSPConnection
 }
@@ -2812,8 +2693,7 @@ func UnsafeRTSPConnectionToGlibFull(r *RTSPConnection) unsafe.Pointer {
 
 // RTSPConnectionAccept wraps gst_rtsp_connection_accept
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_accept
 func RTSPConnectionAccept(socket gio.Socket, cancellable gio.Cancellable) (*RTSPConnection, RTSPResult) {
 	var carg1 *C.GSocket           // in, none, converted
 	var carg3 *C.GCancellable      // in, none, converted, nullable
@@ -2842,8 +2722,7 @@ func RTSPConnectionAccept(socket gio.Socket, cancellable gio.Cancellable) (*RTSP
 
 // RTSPConnectionCreate wraps gst_rtsp_connection_create
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_create
 func RTSPConnectionCreate(url *RTSPUrl) (*RTSPConnection, RTSPResult) {
 	var carg1 *C.GstRTSPUrl        // in, none, converted
 	var carg2 *C.GstRTSPConnection // out, full, converted
@@ -2865,8 +2744,7 @@ func RTSPConnectionCreate(url *RTSPUrl) (*RTSPConnection, RTSPResult) {
 
 // RTSPConnectionCreateFromSocket wraps gst_rtsp_connection_create_from_socket
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_create_from_socket
 func RTSPConnectionCreateFromSocket(socket gio.Socket, ip string, port uint16, initialBuffer string) (*RTSPConnection, RTSPResult) {
 	var carg1 *C.GSocket           // in, none, converted
 	var carg2 *C.gchar             // in, none, string
@@ -2901,8 +2779,7 @@ func RTSPConnectionCreateFromSocket(socket gio.Socket, ip string, port uint16, i
 
 // AddExtraHttpRequestHeader wraps gst_rtsp_connection_add_extra_http_request_header
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_add_extra_http_request_header
 func (conn *RTSPConnection) AddExtraHttpRequestHeader(key string, value string) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.gchar             // in, none, string
@@ -2922,8 +2799,7 @@ func (conn *RTSPConnection) AddExtraHttpRequestHeader(key string, value string) 
 
 // ClearAuthParams wraps gst_rtsp_connection_clear_auth_params
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_clear_auth_params
 func (conn *RTSPConnection) ClearAuthParams() {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 
@@ -2935,8 +2811,7 @@ func (conn *RTSPConnection) ClearAuthParams() {
 
 // Close wraps gst_rtsp_connection_close
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_close
 func (conn *RTSPConnection) Close() RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  C.GstRTSPResult      // return, none, casted
@@ -2955,8 +2830,7 @@ func (conn *RTSPConnection) Close() RTSPResult {
 
 // ConnectUsec wraps gst_rtsp_connection_connect_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_connect_usec
 func (conn *RTSPConnection) ConnectUsec(timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.gint64             // in, none, casted
@@ -2978,8 +2852,7 @@ func (conn *RTSPConnection) ConnectUsec(timeout int64) RTSPResult {
 
 // ConnectWithResponseUsec wraps gst_rtsp_connection_connect_with_response_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_connect_with_response_usec
 func (conn *RTSPConnection) ConnectWithResponseUsec(timeout int64, response *RTSPMessage) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.gint64             // in, none, casted
@@ -3004,8 +2877,7 @@ func (conn *RTSPConnection) ConnectWithResponseUsec(timeout int64, response *RTS
 
 // DoTunnel wraps gst_rtsp_connection_do_tunnel
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_do_tunnel
 func (conn *RTSPConnection) DoTunnel(conn2 *RTSPConnection) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.GstRTSPConnection // in, none, converted, nullable
@@ -3029,8 +2901,7 @@ func (conn *RTSPConnection) DoTunnel(conn2 *RTSPConnection) RTSPResult {
 
 // Flush wraps gst_rtsp_connection_flush
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_flush
 func (conn *RTSPConnection) Flush(flush bool) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.gboolean           // in
@@ -3054,8 +2925,7 @@ func (conn *RTSPConnection) Flush(flush bool) RTSPResult {
 
 // GetIgnoreXServerReply wraps gst_rtsp_connection_get_ignore_x_server_reply
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_ignore_x_server_reply
 func (conn *RTSPConnection) GetIgnoreXServerReply() bool {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  C.gboolean           // return
@@ -3076,11 +2946,10 @@ func (conn *RTSPConnection) GetIgnoreXServerReply() bool {
 
 // GetIp wraps gst_rtsp_connection_get_ip
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_ip
 func (conn *RTSPConnection) GetIp() string {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.gchar             // return, none, string
+	var cret  *C.gchar             // return, none, string, nullable-string
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
 
@@ -3089,15 +2958,16 @@ func (conn *RTSPConnection) GetIp() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
 
 // GetReadSocket wraps gst_rtsp_connection_get_read_socket
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_read_socket
 func (conn *RTSPConnection) GetReadSocket() gio.Socket {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.GSocket           // return, none, converted, nullable
@@ -3118,7 +2988,7 @@ func (conn *RTSPConnection) GetReadSocket() gio.Socket {
 
 // GetRememberSessionID wraps gst_rtsp_connection_get_remember_session_id
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_remember_session_id
 func (conn *RTSPConnection) GetRememberSessionID() bool {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  C.gboolean           // return
@@ -3139,8 +3009,7 @@ func (conn *RTSPConnection) GetRememberSessionID() bool {
 
 // GetTls wraps gst_rtsp_connection_get_tls
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_tls
 func (conn *RTSPConnection) GetTls() (gio.TlsConnection, error) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.GTlsConnection    // return, none, converted
@@ -3164,8 +3033,7 @@ func (conn *RTSPConnection) GetTls() (gio.TlsConnection, error) {
 
 // GetTlsDatabase wraps gst_rtsp_connection_get_tls_database
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_tls_database
 func (conn *RTSPConnection) GetTlsDatabase() gio.TlsDatabase {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.GTlsDatabase      // return, full, converted, nullable
@@ -3186,8 +3054,7 @@ func (conn *RTSPConnection) GetTlsDatabase() gio.TlsDatabase {
 
 // GetTlsInteraction wraps gst_rtsp_connection_get_tls_interaction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_tls_interaction
 func (conn *RTSPConnection) GetTlsInteraction() gio.TlsInteraction {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.GTlsInteraction   // return, full, converted, nullable
@@ -3208,8 +3075,7 @@ func (conn *RTSPConnection) GetTlsInteraction() gio.TlsInteraction {
 
 // GetTlsValidationFlags wraps gst_rtsp_connection_get_tls_validation_flags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_tls_validation_flags
 func (conn *RTSPConnection) GetTlsValidationFlags() gio.TlsCertificateFlags {
 	var carg0 *C.GstRTSPConnection   // in, none, converted
 	var cret  C.GTlsCertificateFlags // return, none, casted
@@ -3228,8 +3094,7 @@ func (conn *RTSPConnection) GetTlsValidationFlags() gio.TlsCertificateFlags {
 
 // GetTunnelid wraps gst_rtsp_connection_get_tunnelid
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_tunnelid
 func (conn *RTSPConnection) GetTunnelid() string {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.gchar             // return, none, string, nullable-string
@@ -3250,11 +3115,10 @@ func (conn *RTSPConnection) GetTunnelid() string {
 
 // GetUrl wraps gst_rtsp_connection_get_url
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_url
 func (conn *RTSPConnection) GetUrl() *RTSPUrl {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GstRTSPUrl        // return, full, converted
+	var cret  *C.GstRTSPUrl        // return, none, converted
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
 
@@ -3263,15 +3127,14 @@ func (conn *RTSPConnection) GetUrl() *RTSPUrl {
 
 	var goret *RTSPUrl
 
-	goret = UnsafeRTSPUrlFromGlibFull(unsafe.Pointer(cret))
+	goret = UnsafeRTSPUrlFromGlibNone(unsafe.Pointer(cret))
 
 	return goret
 }
 
 // GetWriteSocket wraps gst_rtsp_connection_get_write_socket
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_get_write_socket
 func (conn *RTSPConnection) GetWriteSocket() gio.Socket {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.GSocket           // return, none, converted, nullable
@@ -3292,8 +3155,7 @@ func (conn *RTSPConnection) GetWriteSocket() gio.Socket {
 
 // IsTunneled wraps gst_rtsp_connection_is_tunneled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_is_tunneled
 func (conn *RTSPConnection) IsTunneled() bool {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  C.gboolean           // return
@@ -3314,8 +3176,7 @@ func (conn *RTSPConnection) IsTunneled() bool {
 
 // NextTimeoutUsec wraps gst_rtsp_connection_next_timeout_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_next_timeout_usec
 func (conn *RTSPConnection) NextTimeoutUsec() int64 {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  C.gint64             // return, none, casted
@@ -3334,8 +3195,7 @@ func (conn *RTSPConnection) NextTimeoutUsec() int64 {
 
 // PollUsec wraps gst_rtsp_connection_poll_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_poll_usec
 func (conn *RTSPConnection) PollUsec(events RTSPEvent, timeout int64) (RTSPEvent, RTSPResult) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.GstRTSPEvent       // in, none, casted
@@ -3365,8 +3225,7 @@ func (conn *RTSPConnection) PollUsec(events RTSPEvent, timeout int64) (RTSPEvent
 
 // ReadUsec wraps gst_rtsp_connection_read_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_read_usec
 func (conn *RTSPConnection) ReadUsec(data []uint8, timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.guint8            // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -3395,8 +3254,7 @@ func (conn *RTSPConnection) ReadUsec(data []uint8, timeout int64) RTSPResult {
 
 // ReceiveUsec wraps gst_rtsp_connection_receive_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_receive_usec
 func (conn *RTSPConnection) ReceiveUsec(message *RTSPMessage, timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.GstRTSPMessage    // in, none, converted
@@ -3421,8 +3279,7 @@ func (conn *RTSPConnection) ReceiveUsec(message *RTSPMessage, timeout int64) RTS
 
 // ResetTimeout wraps gst_rtsp_connection_reset_timeout
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_reset_timeout
 func (conn *RTSPConnection) ResetTimeout() RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  C.GstRTSPResult      // return, none, casted
@@ -3441,8 +3298,7 @@ func (conn *RTSPConnection) ResetTimeout() RTSPResult {
 
 // SendMessagesUsec wraps gst_rtsp_connection_send_messages_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_send_messages_usec
 func (conn *RTSPConnection) SendMessagesUsec(messages []RTSPMessage, timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.GstRTSPMessage    // in, transfer: none, C Pointers: 1, Name: array[RTSPMessage], array (inner GstRTSPMessage (*typesystem.Record), length-by: carg2)
@@ -3471,8 +3327,7 @@ func (conn *RTSPConnection) SendMessagesUsec(messages []RTSPMessage, timeout int
 
 // SendUsec wraps gst_rtsp_connection_send_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_send_usec
 func (conn *RTSPConnection) SendUsec(message *RTSPMessage, timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.GstRTSPMessage    // in, none, converted
@@ -3497,8 +3352,7 @@ func (conn *RTSPConnection) SendUsec(message *RTSPMessage, timeout int64) RTSPRe
 
 // SetAcceptCertificateFunc wraps gst_rtsp_connection_set_accept_certificate_func
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_accept_certificate_func
 func (conn *RTSPConnection) SetAcceptCertificateFunc(fn RTSPConnectionAcceptCertificateFunc) {
 	var carg0 *C.GstRTSPConnection                     // in, none, converted
 	var carg1 C.GstRTSPConnectionAcceptCertificateFunc // callback, scope: notified, closure: carg2, destroy: carg3
@@ -3517,8 +3371,7 @@ func (conn *RTSPConnection) SetAcceptCertificateFunc(fn RTSPConnectionAcceptCert
 
 // SetAuth wraps gst_rtsp_connection_set_auth
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_auth
 func (conn *RTSPConnection) SetAuth(method RTSPAuthMethod, user string, pass string) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.GstRTSPAuthMethod  // in, none, casted
@@ -3548,8 +3401,7 @@ func (conn *RTSPConnection) SetAuth(method RTSPAuthMethod, user string, pass str
 
 // SetAuthParam wraps gst_rtsp_connection_set_auth_param
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_auth_param
 func (conn *RTSPConnection) SetAuthParam(param string, value string) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.gchar             // in, none, string
@@ -3569,8 +3421,7 @@ func (conn *RTSPConnection) SetAuthParam(param string, value string) {
 
 // SetContentLengthLimit wraps gst_rtsp_connection_set_content_length_limit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_content_length_limit
 func (conn *RTSPConnection) SetContentLengthLimit(limit uint) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.guint              // in, none, casted
@@ -3585,8 +3436,7 @@ func (conn *RTSPConnection) SetContentLengthLimit(limit uint) {
 
 // SetHttpMode wraps gst_rtsp_connection_set_http_mode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_http_mode
 func (conn *RTSPConnection) SetHttpMode(enable bool) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.gboolean           // in
@@ -3603,8 +3453,7 @@ func (conn *RTSPConnection) SetHttpMode(enable bool) {
 
 // SetIgnoreXServerReply wraps gst_rtsp_connection_set_ignore_x_server_reply
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_ignore_x_server_reply
 func (conn *RTSPConnection) SetIgnoreXServerReply(ignore bool) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.gboolean           // in
@@ -3621,8 +3470,7 @@ func (conn *RTSPConnection) SetIgnoreXServerReply(ignore bool) {
 
 // SetIp wraps gst_rtsp_connection_set_ip
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_ip
 func (conn *RTSPConnection) SetIp(ip string) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.gchar             // in, none, string
@@ -3638,8 +3486,7 @@ func (conn *RTSPConnection) SetIp(ip string) {
 
 // SetProxy wraps gst_rtsp_connection_set_proxy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_proxy
 func (conn *RTSPConnection) SetProxy(host string, port uint) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.gchar             // in, none, string
@@ -3665,8 +3512,7 @@ func (conn *RTSPConnection) SetProxy(host string, port uint) RTSPResult {
 
 // SetQosDscp wraps gst_rtsp_connection_set_qos_dscp
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_qos_dscp
 func (conn *RTSPConnection) SetQosDscp(qosDscp uint) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.guint              // in, none, casted
@@ -3688,8 +3534,7 @@ func (conn *RTSPConnection) SetQosDscp(qosDscp uint) RTSPResult {
 
 // SetRememberSessionID wraps gst_rtsp_connection_set_remember_session_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_remember_session_id
 func (conn *RTSPConnection) SetRememberSessionID(remember bool) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.gboolean           // in
@@ -3706,8 +3551,7 @@ func (conn *RTSPConnection) SetRememberSessionID(remember bool) {
 
 // SetTlsDatabase wraps gst_rtsp_connection_set_tls_database
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_tls_database
 func (conn *RTSPConnection) SetTlsDatabase(database gio.TlsDatabase) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.GTlsDatabase      // in, none, converted, nullable
@@ -3724,8 +3568,7 @@ func (conn *RTSPConnection) SetTlsDatabase(database gio.TlsDatabase) {
 
 // SetTlsInteraction wraps gst_rtsp_connection_set_tls_interaction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_tls_interaction
 func (conn *RTSPConnection) SetTlsInteraction(interaction gio.TlsInteraction) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.GTlsInteraction   // in, none, converted, nullable
@@ -3742,8 +3585,7 @@ func (conn *RTSPConnection) SetTlsInteraction(interaction gio.TlsInteraction) {
 
 // SetTlsValidationFlags wraps gst_rtsp_connection_set_tls_validation_flags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_tls_validation_flags
 func (conn *RTSPConnection) SetTlsValidationFlags(flags gio.TlsCertificateFlags) bool {
 	var carg0 *C.GstRTSPConnection   // in, none, converted
 	var carg1 C.GTlsCertificateFlags // in, none, casted
@@ -3767,8 +3609,7 @@ func (conn *RTSPConnection) SetTlsValidationFlags(flags gio.TlsCertificateFlags)
 
 // SetTunneled wraps gst_rtsp_connection_set_tunneled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_set_tunneled
 func (conn *RTSPConnection) SetTunneled(tunneled bool) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.gboolean           // in
@@ -3785,8 +3626,7 @@ func (conn *RTSPConnection) SetTunneled(tunneled bool) {
 
 // WriteUsec wraps gst_rtsp_connection_write_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_connection_write_usec
 func (conn *RTSPConnection) WriteUsec(data []uint8, timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.guint8            // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -3815,8 +3655,7 @@ func (conn *RTSPConnection) WriteUsec(data []uint8, timeout int64) RTSPResult {
 
 // RTSPExtensionInterface wraps GstRTSPExtensionInterface
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspextension.html#GstRTSPExtensionInterface
 type RTSPExtensionInterface struct {
 	*rTSPExtensionInterface
 }
@@ -3897,8 +3736,7 @@ func UnsafeRTSPExtensionInterfaceToGlibFull(r *RTSPExtensionInterface) unsafe.Po
 
 // RTSPMessage wraps GstRTSPMessage
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#GstRTSPMessage
 type RTSPMessage struct {
 	*rTSPMessage
 }
@@ -3994,8 +3832,7 @@ func UnsafeRTSPMessageToGlibFull(r *RTSPMessage) unsafe.Pointer {
 
 // AddHeader wraps gst_rtsp_message_add_header
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_add_header
 func (msg *RTSPMessage) AddHeader(field RTSPHeaderField, value string) RTSPResult {
 	var carg0 *C.GstRTSPMessage    // in, none, converted
 	var carg1 C.GstRTSPHeaderField // in, none, casted
@@ -4021,8 +3858,7 @@ func (msg *RTSPMessage) AddHeader(field RTSPHeaderField, value string) RTSPResul
 
 // AddHeaderByName wraps gst_rtsp_message_add_header_by_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_add_header_by_name
 func (msg *RTSPMessage) AddHeaderByName(header string, value string) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.gchar          // in, none, string
@@ -4049,8 +3885,7 @@ func (msg *RTSPMessage) AddHeaderByName(header string, value string) RTSPResult 
 
 // Copy wraps gst_rtsp_message_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_copy
 func (msg *RTSPMessage) Copy() (*RTSPMessage, RTSPResult) {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.GstRTSPMessage // out, full, converted, nullable
@@ -4074,8 +3909,7 @@ func (msg *RTSPMessage) Copy() (*RTSPMessage, RTSPResult) {
 
 // Dump wraps gst_rtsp_message_dump
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_dump
 func (msg *RTSPMessage) Dump() RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var cret  C.GstRTSPResult   // return, none, casted
@@ -4094,8 +3928,7 @@ func (msg *RTSPMessage) Dump() RTSPResult {
 
 // GetBodyBuffer wraps gst_rtsp_message_get_body_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_get_body_buffer
 func (msg *RTSPMessage) GetBodyBuffer() (*gst.Buffer, RTSPResult) {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.GstBuffer      // out, none, converted
@@ -4117,8 +3950,7 @@ func (msg *RTSPMessage) GetBodyBuffer() (*gst.Buffer, RTSPResult) {
 
 // GetHeader wraps gst_rtsp_message_get_header
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_get_header
 func (msg *RTSPMessage) GetHeader(field RTSPHeaderField, indx int32) (string, RTSPResult) {
 	var carg0 *C.GstRTSPMessage    // in, none, converted
 	var carg1 C.GstRTSPHeaderField // in, none, casted
@@ -4148,8 +3980,7 @@ func (msg *RTSPMessage) GetHeader(field RTSPHeaderField, indx int32) (string, RT
 
 // GetHeaderByName wraps gst_rtsp_message_get_header_by_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_get_header_by_name
 func (msg *RTSPMessage) GetHeaderByName(header string, index int32) (string, RTSPResult) {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.gchar          // in, none, string
@@ -4180,8 +4011,7 @@ func (msg *RTSPMessage) GetHeaderByName(header string, index int32) (string, RTS
 
 // GetType wraps gst_rtsp_message_get_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_get_type
 func (msg *RTSPMessage) GetType() RTSPMsgType {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var cret  C.GstRTSPMsgType  // return, none, casted
@@ -4200,8 +4030,7 @@ func (msg *RTSPMessage) GetType() RTSPMsgType {
 
 // HasBodyBuffer wraps gst_rtsp_message_has_body_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_has_body_buffer
 func (msg *RTSPMessage) HasBodyBuffer() bool {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var cret  C.gboolean        // return
@@ -4222,8 +4051,7 @@ func (msg *RTSPMessage) HasBodyBuffer() bool {
 
 // Init wraps gst_rtsp_message_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_init
 func (msg *RTSPMessage) Init() RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var cret  C.GstRTSPResult   // return, none, casted
@@ -4242,8 +4070,7 @@ func (msg *RTSPMessage) Init() RTSPResult {
 
 // InitData wraps gst_rtsp_message_init_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_init_data
 func (msg *RTSPMessage) InitData(channel uint8) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 C.guint8          // in, none, casted
@@ -4265,8 +4092,7 @@ func (msg *RTSPMessage) InitData(channel uint8) RTSPResult {
 
 // InitRequest wraps gst_rtsp_message_init_request
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_init_request
 func (msg *RTSPMessage) InitRequest(method RTSPMethod, uri string) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 C.GstRTSPMethod   // in, none, casted
@@ -4292,8 +4118,7 @@ func (msg *RTSPMessage) InitRequest(method RTSPMethod, uri string) RTSPResult {
 
 // InitResponse wraps gst_rtsp_message_init_response
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_init_response
 func (msg *RTSPMessage) InitResponse(code RTSPStatusCode, reason string, request *RTSPMessage) RTSPResult {
 	var carg0 *C.GstRTSPMessage   // in, none, converted
 	var carg1 C.GstRTSPStatusCode // in, none, casted
@@ -4326,8 +4151,7 @@ func (msg *RTSPMessage) InitResponse(code RTSPStatusCode, reason string, request
 
 // ParseAuthCredentials wraps gst_rtsp_message_parse_auth_credentials
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_parse_auth_credentials
 func (msg *RTSPMessage) ParseAuthCredentials(field RTSPHeaderField) []*RTSPAuthCredential {
 	var carg0 *C.GstRTSPMessage         // in, none, converted
 	var carg1 C.GstRTSPHeaderField      // in, none, casted
@@ -4351,8 +4175,7 @@ func (msg *RTSPMessage) ParseAuthCredentials(field RTSPHeaderField) []*RTSPAuthC
 
 // ParseData wraps gst_rtsp_message_parse_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_parse_data
 func (msg *RTSPMessage) ParseData() (uint8, RTSPResult) {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 C.guint8          // out, full, casted
@@ -4374,8 +4197,7 @@ func (msg *RTSPMessage) ParseData() (uint8, RTSPResult) {
 
 // ParseRequest wraps gst_rtsp_message_parse_request
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_parse_request
 func (msg *RTSPMessage) ParseRequest() (RTSPMethod, string, RTSPVersion, RTSPResult) {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 C.GstRTSPMethod   // out, full, casted
@@ -4403,8 +4225,7 @@ func (msg *RTSPMessage) ParseRequest() (RTSPMethod, string, RTSPVersion, RTSPRes
 
 // ParseResponse wraps gst_rtsp_message_parse_response
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_parse_response
 func (msg *RTSPMessage) ParseResponse() (RTSPStatusCode, string, RTSPVersion, RTSPResult) {
 	var carg0 *C.GstRTSPMessage   // in, none, converted
 	var carg1 C.GstRTSPStatusCode // out, full, casted
@@ -4432,8 +4253,7 @@ func (msg *RTSPMessage) ParseResponse() (RTSPStatusCode, string, RTSPVersion, RT
 
 // RemoveHeader wraps gst_rtsp_message_remove_header
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_remove_header
 func (msg *RTSPMessage) RemoveHeader(field RTSPHeaderField, indx int32) RTSPResult {
 	var carg0 *C.GstRTSPMessage    // in, none, converted
 	var carg1 C.GstRTSPHeaderField // in, none, casted
@@ -4458,8 +4278,7 @@ func (msg *RTSPMessage) RemoveHeader(field RTSPHeaderField, indx int32) RTSPResu
 
 // RemoveHeaderByName wraps gst_rtsp_message_remove_header_by_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_remove_header_by_name
 func (msg *RTSPMessage) RemoveHeaderByName(header string, index int32) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.gchar          // in, none, string
@@ -4485,8 +4304,7 @@ func (msg *RTSPMessage) RemoveHeaderByName(header string, index int32) RTSPResul
 
 // SetBody wraps gst_rtsp_message_set_body
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_set_body
 func (msg *RTSPMessage) SetBody(data []uint8) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.guint8         // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -4512,8 +4330,7 @@ func (msg *RTSPMessage) SetBody(data []uint8) RTSPResult {
 
 // SetBodyBuffer wraps gst_rtsp_message_set_body_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_set_body_buffer
 func (msg *RTSPMessage) SetBodyBuffer(buffer *gst.Buffer) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.GstBuffer      // in, none, converted
@@ -4535,8 +4352,7 @@ func (msg *RTSPMessage) SetBodyBuffer(buffer *gst.Buffer) RTSPResult {
 
 // StealBodyBuffer wraps gst_rtsp_message_steal_body_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_steal_body_buffer
 func (msg *RTSPMessage) StealBodyBuffer() (*gst.Buffer, RTSPResult) {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.GstBuffer      // out, full, converted
@@ -4558,8 +4374,7 @@ func (msg *RTSPMessage) StealBodyBuffer() (*gst.Buffer, RTSPResult) {
 
 // TakeBody wraps gst_rtsp_message_take_body
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_take_body
 func (msg *RTSPMessage) TakeBody(data []uint8) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.guint8         // in, transfer: full, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -4585,8 +4400,7 @@ func (msg *RTSPMessage) TakeBody(data []uint8) RTSPResult {
 
 // TakeBodyBuffer wraps gst_rtsp_message_take_body_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_take_body_buffer
 func (msg *RTSPMessage) TakeBodyBuffer(buffer *gst.Buffer) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.GstBuffer      // in, full, converted
@@ -4608,8 +4422,7 @@ func (msg *RTSPMessage) TakeBodyBuffer(buffer *gst.Buffer) RTSPResult {
 
 // TakeHeader wraps gst_rtsp_message_take_header
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_take_header
 func (msg *RTSPMessage) TakeHeader(field RTSPHeaderField, value string) RTSPResult {
 	var carg0 *C.GstRTSPMessage    // in, none, converted
 	var carg1 C.GstRTSPHeaderField // in, none, casted
@@ -4634,8 +4447,7 @@ func (msg *RTSPMessage) TakeHeader(field RTSPHeaderField, value string) RTSPResu
 
 // TakeHeaderByName wraps gst_rtsp_message_take_header_by_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_take_header_by_name
 func (msg *RTSPMessage) TakeHeaderByName(header string, value string) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var carg1 *C.gchar          // in, none, string
@@ -4661,8 +4473,7 @@ func (msg *RTSPMessage) TakeHeaderByName(header string, value string) RTSPResult
 
 // Unset wraps gst_rtsp_message_unset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspmessage.html#gst_rtsp_message_unset
 func (msg *RTSPMessage) Unset() RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
 	var cret  C.GstRTSPResult   // return, none, casted
@@ -4681,8 +4492,7 @@ func (msg *RTSPMessage) Unset() RTSPResult {
 
 // RTSPRange wraps GstRTSPRange
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#GstRTSPRange
 type RTSPRange struct {
 	*rTSPRange
 }
@@ -4763,8 +4573,7 @@ func UnsafeRTSPRangeToGlibFull(r *RTSPRange) unsafe.Pointer {
 
 // RTSPRangeConvertUnits wraps gst_rtsp_range_convert_units
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_range_convert_units
 func RTSPRangeConvertUnits(_range *RTSPTimeRange, unit RTSPRangeUnit) bool {
 	var carg1 *C.GstRTSPTimeRange // in, none, converted
 	var carg2 C.GstRTSPRangeUnit  // in, none, casted
@@ -4788,8 +4597,7 @@ func RTSPRangeConvertUnits(_range *RTSPTimeRange, unit RTSPRangeUnit) bool {
 
 // RTSPRangeFree wraps gst_rtsp_range_free
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_range_free
 func RTSPRangeFree(_range *RTSPTimeRange) {
 	var carg1 *C.GstRTSPTimeRange // in, none, converted
 
@@ -4801,8 +4609,7 @@ func RTSPRangeFree(_range *RTSPTimeRange) {
 
 // RTSPRangeGetTimes wraps gst_rtsp_range_get_times
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_range_get_times
 func RTSPRangeGetTimes(_range *RTSPTimeRange) (gst.ClockTime, gst.ClockTime, bool) {
 	var carg1 *C.GstRTSPTimeRange // in, none, converted
 	var carg2 C.GstClockTime      // out, full, casted, alias
@@ -4829,8 +4636,7 @@ func RTSPRangeGetTimes(_range *RTSPTimeRange) (gst.ClockTime, gst.ClockTime, boo
 
 // RTSPRangeParse wraps gst_rtsp_range_parse
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_range_parse
 func RTSPRangeParse(rangestr string) (*RTSPTimeRange, RTSPResult) {
 	var carg1 *C.gchar            // in, none, string
 	var carg2 *C.GstRTSPTimeRange // out, full, converted
@@ -4853,8 +4659,7 @@ func RTSPRangeParse(rangestr string) (*RTSPTimeRange, RTSPResult) {
 
 // RTSPRangeString wraps gst_rtsp_range_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_range_to_string
 func RTSPRangeString(_range *RTSPTimeRange) string {
 	var carg1 *C.GstRTSPTimeRange // in, none, converted
 	var cret  *C.gchar            // return, full, string
@@ -4874,8 +4679,7 @@ func RTSPRangeString(_range *RTSPTimeRange) string {
 
 // RTSPTime wraps GstRTSPTime
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsprange.html#GstRTSPTime
 type RTSPTime struct {
 	*rTSPTime
 }
@@ -4956,8 +4760,7 @@ func UnsafeRTSPTimeToGlibFull(r *RTSPTime) unsafe.Pointer {
 
 // RTSPTime2 wraps GstRTSPTime2
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsprange.html#GstRTSPTime2
 type RTSPTime2 struct {
 	*rTSPTime2
 }
@@ -5038,8 +4841,7 @@ func UnsafeRTSPTime2ToGlibFull(r *RTSPTime2) unsafe.Pointer {
 
 // RTSPTimeRange wraps GstRTSPTimeRange
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsprange.html#GstRTSPTimeRange
 type RTSPTimeRange struct {
 	*rTSPTimeRange
 }
@@ -5120,8 +4922,7 @@ func UnsafeRTSPTimeRangeToGlibFull(r *RTSPTimeRange) unsafe.Pointer {
 
 // RTSPTransport wraps GstRTSPTransport
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#GstRTSPTransport
 type RTSPTransport struct {
 	*rTSPTransport
 }
@@ -5202,8 +5003,7 @@ func UnsafeRTSPTransportToGlibFull(r *RTSPTransport) unsafe.Pointer {
 
 // RTSPTransportGetManager wraps gst_rtsp_transport_get_manager
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_get_manager
 func RTSPTransportGetManager(trans RTSPTransMode, option uint) (string, RTSPResult) {
 	var carg1 C.GstRTSPTransMode // in, none, casted
 	var carg3 C.guint            // in, none, casted
@@ -5230,12 +5030,9 @@ func RTSPTransportGetManager(trans RTSPTransMode, option uint) (string, RTSPResu
 
 // RTSPTransportGetMime wraps gst_rtsp_transport_get_mime
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_get_mime
 //
-//
-// Deprecated: This functions only deals with the GstRTSPTransMode and only
-//    returns the mime type for #GST_RTSP_PROFILE_AVP. Use
-//    gst_rtsp_transport_get_media_type() instead.
+// Deprecated: see the provided link for the reason
 func RTSPTransportGetMime(trans RTSPTransMode) (string, RTSPResult) {
 	var carg1 C.GstRTSPTransMode // in, none, casted
 	var carg2 *C.gchar           // out, none, string
@@ -5257,8 +5054,7 @@ func RTSPTransportGetMime(trans RTSPTransMode) (string, RTSPResult) {
 
 // RTSPTransportInit wraps gst_rtsp_transport_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_init
 func RTSPTransportInit() (RTSPTransport, RTSPResult) {
 	var carg1 C.GstRTSPTransport // out, transfer: none, C Pointers: 0, Name: RTSPTransport, caller-allocates
 	var cret  C.GstRTSPResult    // return, none, casted
@@ -5278,8 +5074,7 @@ func RTSPTransportInit() (RTSPTransport, RTSPResult) {
 
 // NewRTSPTransport wraps gst_rtsp_transport_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_new
 func NewRTSPTransport() (*RTSPTransport, RTSPResult) {
 	var carg1 *C.GstRTSPTransport // out, full, converted
 	var cret  C.GstRTSPResult     // return, none, casted
@@ -5297,8 +5092,7 @@ func NewRTSPTransport() (*RTSPTransport, RTSPResult) {
 
 // RTSPTransportParse wraps gst_rtsp_transport_parse
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_parse
 func RTSPTransportParse(str string) (RTSPTransport, RTSPResult) {
 	var carg1 *C.gchar           // in, none, string
 	var carg2 C.GstRTSPTransport // out, transfer: none, C Pointers: 0, Name: RTSPTransport, caller-allocates
@@ -5323,8 +5117,7 @@ func RTSPTransportParse(str string) (RTSPTransport, RTSPResult) {
 
 // AsText wraps gst_rtsp_transport_as_text
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_as_text
 func (transport *RTSPTransport) AsText() string {
 	var carg0 *C.GstRTSPTransport // in, none, converted
 	var cret  *C.gchar            // return, full, string, nullable-string
@@ -5346,8 +5139,7 @@ func (transport *RTSPTransport) AsText() string {
 
 // GetMediaType wraps gst_rtsp_transport_get_media_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_get_media_type
 func (transport *RTSPTransport) GetMediaType() (string, RTSPResult) {
 	var carg0 *C.GstRTSPTransport // in, none, converted
 	var carg1 *C.gchar            // out, none, string
@@ -5369,8 +5161,7 @@ func (transport *RTSPTransport) GetMediaType() (string, RTSPResult) {
 
 // RTSPUrl wraps GstRTSPUrl
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspurl.html#GstRTSPUrl
 type RTSPUrl struct {
 	*rTSPUrl
 }
@@ -5466,8 +5257,7 @@ func UnsafeRTSPUrlToGlibFull(r *RTSPUrl) unsafe.Pointer {
 
 // RTSPUrlParse wraps gst_rtsp_url_parse
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspurl.html#gst_rtsp_url_parse
 func RTSPUrlParse(urlstr string) (*RTSPUrl, RTSPResult) {
 	var carg1 *C.gchar        // in, none, string
 	var carg2 *C.GstRTSPUrl   // out, full, converted, nullable
@@ -5492,8 +5282,7 @@ func RTSPUrlParse(urlstr string) (*RTSPUrl, RTSPResult) {
 
 // Copy wraps gst_rtsp_url_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspurl.html#gst_rtsp_url_copy
 func (url *RTSPUrl) Copy() *RTSPUrl {
 	var carg0 *C.GstRTSPUrl // in, none, converted
 	var cret  *C.GstRTSPUrl // return, full, converted
@@ -5512,8 +5301,7 @@ func (url *RTSPUrl) Copy() *RTSPUrl {
 
 // DecodePathComponents wraps gst_rtsp_url_decode_path_components
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspurl.html#gst_rtsp_url_decode_path_components
 func (url *RTSPUrl) DecodePathComponents() []string {
 	var carg0 *C.GstRTSPUrl // in, none, converted
 	var cret  **C.gchar     // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
@@ -5534,8 +5322,7 @@ func (url *RTSPUrl) DecodePathComponents() []string {
 
 // GetPort wraps gst_rtsp_url_get_port
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspurl.html#gst_rtsp_url_get_port
 func (url *RTSPUrl) GetPort() (uint16, RTSPResult) {
 	var carg0 *C.GstRTSPUrl   // in, none, converted
 	var carg1 C.guint16       // out, full, casted
@@ -5557,8 +5344,7 @@ func (url *RTSPUrl) GetPort() (uint16, RTSPResult) {
 
 // GetRequestURI wraps gst_rtsp_url_get_request_uri
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspurl.html#gst_rtsp_url_get_request_uri
 func (url *RTSPUrl) GetRequestURI() string {
 	var carg0 *C.GstRTSPUrl // in, none, converted
 	var cret  *C.gchar      // return, full, string
@@ -5578,8 +5364,7 @@ func (url *RTSPUrl) GetRequestURI() string {
 
 // GetRequestURIWithControl wraps gst_rtsp_url_get_request_uri_with_control
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspurl.html#gst_rtsp_url_get_request_uri_with_control
 func (url *RTSPUrl) GetRequestURIWithControl(controlPath string) string {
 	var carg0 *C.GstRTSPUrl // in, none, converted
 	var carg1 *C.gchar      // in, none, string
@@ -5603,8 +5388,7 @@ func (url *RTSPUrl) GetRequestURIWithControl(controlPath string) string {
 
 // SetPort wraps gst_rtsp_url_set_port
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspurl.html#gst_rtsp_url_set_port
 func (url *RTSPUrl) SetPort(port uint16) RTSPResult {
 	var carg0 *C.GstRTSPUrl   // in, none, converted
 	var carg1 C.guint16       // in, none, casted
@@ -5626,8 +5410,7 @@ func (url *RTSPUrl) SetPort(port uint16) RTSPResult {
 
 // RTSPWatch wraps GstRTSPWatch
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#GstRTSPWatch
 type RTSPWatch struct {
 	*rTSPWatch
 }
@@ -5708,8 +5491,7 @@ func UnsafeRTSPWatchToGlibFull(r *RTSPWatch) unsafe.Pointer {
 
 // Attach wraps gst_rtsp_watch_attach
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_attach
 func (watch *RTSPWatch) Attach(_context *glib.MainContext) uint {
 	var carg0 *C.GstRTSPWatch // in, none, converted
 	var carg1 *C.GMainContext // in, none, converted, nullable
@@ -5733,8 +5515,7 @@ func (watch *RTSPWatch) Attach(_context *glib.MainContext) uint {
 
 // GetSendBacklog wraps gst_rtsp_watch_get_send_backlog
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_get_send_backlog
 func (watch *RTSPWatch) GetSendBacklog() (uint, uint) {
 	var carg0 *C.GstRTSPWatch // in, none, converted
 	var carg1 C.gsize         // out, full, casted
@@ -5756,8 +5537,7 @@ func (watch *RTSPWatch) GetSendBacklog() (uint, uint) {
 
 // Reset wraps gst_rtsp_watch_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_reset
 func (watch *RTSPWatch) Reset() {
 	var carg0 *C.GstRTSPWatch // in, none, converted
 
@@ -5769,8 +5549,7 @@ func (watch *RTSPWatch) Reset() {
 
 // SendMessage wraps gst_rtsp_watch_send_message
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_send_message
 func (watch *RTSPWatch) SendMessage(message *RTSPMessage) (uint, RTSPResult) {
 	var carg0 *C.GstRTSPWatch   // in, none, converted
 	var carg1 *C.GstRTSPMessage // in, none, converted
@@ -5795,8 +5574,7 @@ func (watch *RTSPWatch) SendMessage(message *RTSPMessage) (uint, RTSPResult) {
 
 // SendMessages wraps gst_rtsp_watch_send_messages
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_send_messages
 func (watch *RTSPWatch) SendMessages(messages []RTSPMessage) (uint, RTSPResult) {
 	var carg0 *C.GstRTSPWatch   // in, none, converted
 	var carg1 *C.GstRTSPMessage // in, transfer: none, C Pointers: 1, Name: array[RTSPMessage], array (inner GstRTSPMessage (*typesystem.Record), length-by: carg2)
@@ -5825,8 +5603,7 @@ func (watch *RTSPWatch) SendMessages(messages []RTSPMessage) (uint, RTSPResult) 
 
 // SetFlushing wraps gst_rtsp_watch_set_flushing
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_set_flushing
 func (watch *RTSPWatch) SetFlushing(flushing bool) {
 	var carg0 *C.GstRTSPWatch // in, none, converted
 	var carg1 C.gboolean      // in
@@ -5843,8 +5620,7 @@ func (watch *RTSPWatch) SetFlushing(flushing bool) {
 
 // SetSendBacklog wraps gst_rtsp_watch_set_send_backlog
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_set_send_backlog
 func (watch *RTSPWatch) SetSendBacklog(bytes uint, messages uint) {
 	var carg0 *C.GstRTSPWatch // in, none, converted
 	var carg1 C.gsize         // in, none, casted
@@ -5862,8 +5638,7 @@ func (watch *RTSPWatch) SetSendBacklog(bytes uint, messages uint) {
 
 // WaitBacklogUsec wraps gst_rtsp_watch_wait_backlog_usec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_wait_backlog_usec
 func (watch *RTSPWatch) WaitBacklogUsec(timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPWatch // in, none, converted
 	var carg1 C.gint64        // in, none, casted
@@ -5885,8 +5660,7 @@ func (watch *RTSPWatch) WaitBacklogUsec(timeout int64) RTSPResult {
 
 // WriteData wraps gst_rtsp_watch_write_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#gst_rtsp_watch_write_data
 func (watch *RTSPWatch) WriteData(data []uint8) (uint, RTSPResult) {
 	var carg0 *C.GstRTSPWatch // in, none, converted
 	var carg1 *C.guint8       // in, transfer: full, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
@@ -5915,8 +5689,7 @@ func (watch *RTSPWatch) WriteData(data []uint8) (uint, RTSPResult) {
 
 // RTSPWatchFuncs wraps GstRTSPWatchFuncs
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtspconnection.html#GstRTSPWatchFuncs
 type RTSPWatchFuncs struct {
 	*rTSPWatchFuncs
 }

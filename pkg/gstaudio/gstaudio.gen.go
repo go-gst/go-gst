@@ -344,7 +344,6 @@ var (
 	TypeAudioSrc                          = gobject.Type(C.gst_audio_src_get_type())
 	TypeAudioAggregatorConvertPad         = gobject.Type(C.gst_audio_aggregator_convert_pad_get_type())
 	TypeAudioConverter                    = gobject.Type(C.gst_audio_converter_get_type())
-	TypeAudioFormatInfo                   = gobject.Type(C.gst_audio_format_info_get_type())
 	TypeAudioInfo                         = gobject.Type(C.gst_audio_info_get_type())
 	TypeAudioStreamAlign                  = gobject.Type(C.gst_audio_stream_align_get_type())
 	TypeDsdInfo                           = gobject.Type(C.gst_dsd_info_get_type())
@@ -389,7 +388,6 @@ func init() {
 		gobject.TypeMarshaler{T: TypeAudioSrc, F: marshalAudioSrcInstance},
 		gobject.TypeMarshaler{T: TypeAudioAggregatorConvertPad, F: marshalAudioAggregatorConvertPadInstance},
 		gobject.TypeMarshaler{T: TypeAudioConverter, F: marshalAudioConverter},
-		gobject.TypeMarshaler{T: TypeAudioFormatInfo, F: marshalAudioFormatInfo},
 		gobject.TypeMarshaler{T: TypeAudioInfo, F: marshalAudioInfo},
 		gobject.TypeMarshaler{T: TypeAudioStreamAlign, F: marshalAudioStreamAlign},
 		gobject.TypeMarshaler{T: TypeDsdInfo, F: marshalDsdInfo},
@@ -398,77 +396,65 @@ func init() {
 
 // AUDIO_DECODER_MAX_ERRORS wraps GST_AUDIO_DECODER_MAX_ERRORS
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#GST_AUDIO_DECODER_MAX_ERRORS
 const AUDIO_DECODER_MAX_ERRORS = -1
 // AUDIO_DEF_CHANNELS wraps GST_AUDIO_DEF_CHANNELS
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_DEF_CHANNELS
 const AUDIO_DEF_CHANNELS = 2
 // AUDIO_DEF_RATE wraps GST_AUDIO_DEF_RATE
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_DEF_RATE
 const AUDIO_DEF_RATE = 44100
 // AUDIO_FORMAT_LAST wraps GST_AUDIO_FORMAT_LAST
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_LAST
 const AUDIO_FORMAT_LAST = 32
 // AUDIO_RESAMPLER_QUALITY_DEFAULT wraps GST_AUDIO_RESAMPLER_QUALITY_DEFAULT
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_QUALITY_DEFAULT
 const AUDIO_RESAMPLER_QUALITY_DEFAULT = 4
 // AUDIO_RESAMPLER_QUALITY_MAX wraps GST_AUDIO_RESAMPLER_QUALITY_MAX
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_QUALITY_MAX
 const AUDIO_RESAMPLER_QUALITY_MAX = 10
 // AUDIO_RESAMPLER_QUALITY_MIN wraps GST_AUDIO_RESAMPLER_QUALITY_MIN
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_QUALITY_MIN
 const AUDIO_RESAMPLER_QUALITY_MIN = 0
 // DSD_SILENCE_PATTERN_BYTE wraps GST_DSD_SILENCE_PATTERN_BYTE
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#GST_DSD_SILENCE_PATTERN_BYTE
 const DSD_SILENCE_PATTERN_BYTE = 105
 // AudioBaseSinkDiscontReason wraps GstAudioBaseSinkDiscontReason
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioBaseSinkDiscontReason
 type AudioBaseSinkDiscontReason C.int
 
 const (
 	// AudioBaseSinkDiscontReasonNoDiscont wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_NO_DISCONT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_NO_DISCONT
 	AudioBaseSinkDiscontReasonNoDiscont AudioBaseSinkDiscontReason = 0
 	// AudioBaseSinkDiscontReasonNewCaps wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_NEW_CAPS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_NEW_CAPS
 	AudioBaseSinkDiscontReasonNewCaps AudioBaseSinkDiscontReason = 1
 	// AudioBaseSinkDiscontReasonFlush wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_FLUSH
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_FLUSH
 	AudioBaseSinkDiscontReasonFlush AudioBaseSinkDiscontReason = 2
 	// AudioBaseSinkDiscontReasonSyncLatency wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_SYNC_LATENCY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_SYNC_LATENCY
 	AudioBaseSinkDiscontReasonSyncLatency AudioBaseSinkDiscontReason = 3
 	// AudioBaseSinkDiscontReasonAlignment wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_ALIGNMENT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_ALIGNMENT
 	AudioBaseSinkDiscontReasonAlignment AudioBaseSinkDiscontReason = 4
 	// AudioBaseSinkDiscontReasonDeviceFailure wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_DEVICE_FAILURE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_DEVICE_FAILURE
 	AudioBaseSinkDiscontReasonDeviceFailure AudioBaseSinkDiscontReason = 5
 )
 
@@ -500,30 +486,25 @@ func (e AudioBaseSinkDiscontReason) String() string {
 
 // AudioBaseSinkSlaveMethod wraps GstAudioBaseSinkSlaveMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioBaseSinkSlaveMethod
 type AudioBaseSinkSlaveMethod C.int
 
 const (
 	// AudioBaseSinkSlaveResample wraps GST_AUDIO_BASE_SINK_SLAVE_RESAMPLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_SLAVE_RESAMPLE
 	AudioBaseSinkSlaveResample AudioBaseSinkSlaveMethod = 0
 	// AudioBaseSinkSlaveSkew wraps GST_AUDIO_BASE_SINK_SLAVE_SKEW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_SLAVE_SKEW
 	AudioBaseSinkSlaveSkew AudioBaseSinkSlaveMethod = 1
 	// AudioBaseSinkSlaveNone wraps GST_AUDIO_BASE_SINK_SLAVE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_SLAVE_NONE
 	AudioBaseSinkSlaveNone AudioBaseSinkSlaveMethod = 2
 	// AudioBaseSinkSlaveCustom wraps GST_AUDIO_BASE_SINK_SLAVE_CUSTOM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_SLAVE_CUSTOM
 	AudioBaseSinkSlaveCustom AudioBaseSinkSlaveMethod = 3
 )
 
@@ -553,30 +534,25 @@ func (e AudioBaseSinkSlaveMethod) String() string {
 
 // AudioBaseSrcSlaveMethod wraps GstAudioBaseSrcSlaveMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioBaseSrcSlaveMethod
 type AudioBaseSrcSlaveMethod C.int
 
 const (
 	// AudioBaseSrcSlaveResample wraps GST_AUDIO_BASE_SRC_SLAVE_RESAMPLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SRC_SLAVE_RESAMPLE
 	AudioBaseSrcSlaveResample AudioBaseSrcSlaveMethod = 0
 	// AudioBaseSrcSlaveReTimestamp wraps GST_AUDIO_BASE_SRC_SLAVE_RE_TIMESTAMP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SRC_SLAVE_RE_TIMESTAMP
 	AudioBaseSrcSlaveReTimestamp AudioBaseSrcSlaveMethod = 1
 	// AudioBaseSrcSlaveSkew wraps GST_AUDIO_BASE_SRC_SLAVE_SKEW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SRC_SLAVE_SKEW
 	AudioBaseSrcSlaveSkew AudioBaseSrcSlaveMethod = 2
 	// AudioBaseSrcSlaveNone wraps GST_AUDIO_BASE_SRC_SLAVE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SRC_SLAVE_NONE
 	AudioBaseSrcSlaveNone AudioBaseSrcSlaveMethod = 3
 )
 
@@ -606,20 +582,17 @@ func (e AudioBaseSrcSlaveMethod) String() string {
 
 // AudioCdSrcMode wraps GstAudioCdSrcMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioCdSrcMode
 type AudioCdSrcMode C.int
 
 const (
 	// AudioCdSrcModeNormal wraps GST_AUDIO_CD_SRC_MODE_NORMAL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CD_SRC_MODE_NORMAL
 	AudioCdSrcModeNormal AudioCdSrcMode = 0
 	// AudioCdSrcModeContinuous wraps GST_AUDIO_CD_SRC_MODE_CONTINUOUS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CD_SRC_MODE_CONTINUOUS
 	AudioCdSrcModeContinuous AudioCdSrcMode = 1
 )
 
@@ -647,175 +620,141 @@ func (e AudioCdSrcMode) String() string {
 
 // AudioChannelPosition wraps GstAudioChannelPosition
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioChannelPosition
 type AudioChannelPosition C.int
 
 const (
 	// AudioChannelPositionNone wraps GST_AUDIO_CHANNEL_POSITION_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_NONE
 	AudioChannelPositionNone AudioChannelPosition = -3
 	// AudioChannelPositionMono wraps GST_AUDIO_CHANNEL_POSITION_MONO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_MONO
 	AudioChannelPositionMono AudioChannelPosition = -2
 	// AudioChannelPositionInvalid wraps GST_AUDIO_CHANNEL_POSITION_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_INVALID
 	AudioChannelPositionInvalid AudioChannelPosition = -1
 	// AudioChannelPositionFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT
 	AudioChannelPositionFrontLeft AudioChannelPosition = 0
 	// AudioChannelPositionFrontRight wraps GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT
 	AudioChannelPositionFrontRight AudioChannelPosition = 1
 	// AudioChannelPositionFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_CENTER
 	AudioChannelPositionFrontCenter AudioChannelPosition = 2
 	// AudioChannelPositionLfe1 wraps GST_AUDIO_CHANNEL_POSITION_LFE1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_LFE1
 	AudioChannelPositionLfe1 AudioChannelPosition = 3
 	// AudioChannelPositionRearLeft wraps GST_AUDIO_CHANNEL_POSITION_REAR_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_REAR_LEFT
 	AudioChannelPositionRearLeft AudioChannelPosition = 4
 	// AudioChannelPositionRearRight wraps GST_AUDIO_CHANNEL_POSITION_REAR_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_REAR_RIGHT
 	AudioChannelPositionRearRight AudioChannelPosition = 5
 	// AudioChannelPositionFrontLeftOfCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT_OF_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT_OF_CENTER
 	AudioChannelPositionFrontLeftOfCenter AudioChannelPosition = 6
 	// AudioChannelPositionFrontRightOfCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT_OF_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT_OF_CENTER
 	AudioChannelPositionFrontRightOfCenter AudioChannelPosition = 7
 	// AudioChannelPositionRearCenter wraps GST_AUDIO_CHANNEL_POSITION_REAR_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_REAR_CENTER
 	AudioChannelPositionRearCenter AudioChannelPosition = 8
 	// AudioChannelPositionLfe2 wraps GST_AUDIO_CHANNEL_POSITION_LFE2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_LFE2
 	AudioChannelPositionLfe2 AudioChannelPosition = 9
 	// AudioChannelPositionSideLeft wraps GST_AUDIO_CHANNEL_POSITION_SIDE_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_SIDE_LEFT
 	AudioChannelPositionSideLeft AudioChannelPosition = 10
 	// AudioChannelPositionSideRight wraps GST_AUDIO_CHANNEL_POSITION_SIDE_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_SIDE_RIGHT
 	AudioChannelPositionSideRight AudioChannelPosition = 11
 	// AudioChannelPositionTopFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_LEFT
 	AudioChannelPositionTopFrontLeft AudioChannelPosition = 12
 	// AudioChannelPositionTopFrontRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_RIGHT
 	AudioChannelPositionTopFrontRight AudioChannelPosition = 13
 	// AudioChannelPositionTopFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_CENTER
 	AudioChannelPositionTopFrontCenter AudioChannelPosition = 14
 	// AudioChannelPositionTopCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_CENTER
 	AudioChannelPositionTopCenter AudioChannelPosition = 15
 	// AudioChannelPositionTopRearLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_REAR_LEFT
 	AudioChannelPositionTopRearLeft AudioChannelPosition = 16
 	// AudioChannelPositionTopRearRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_REAR_RIGHT
 	AudioChannelPositionTopRearRight AudioChannelPosition = 17
 	// AudioChannelPositionTopSideLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_LEFT
 	AudioChannelPositionTopSideLeft AudioChannelPosition = 18
 	// AudioChannelPositionTopSideRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_RIGHT
 	AudioChannelPositionTopSideRight AudioChannelPosition = 19
 	// AudioChannelPositionTopRearCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_REAR_CENTER
 	AudioChannelPositionTopRearCenter AudioChannelPosition = 20
 	// AudioChannelPositionBottomFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_CENTER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_CENTER
 	AudioChannelPositionBottomFrontCenter AudioChannelPosition = 21
 	// AudioChannelPositionBottomFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_LEFT
 	AudioChannelPositionBottomFrontLeft AudioChannelPosition = 22
 	// AudioChannelPositionBottomFrontRight wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_RIGHT
 	AudioChannelPositionBottomFrontRight AudioChannelPosition = 23
 	// AudioChannelPositionWideLeft wraps GST_AUDIO_CHANNEL_POSITION_WIDE_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_WIDE_LEFT
 	AudioChannelPositionWideLeft AudioChannelPosition = 24
 	// AudioChannelPositionWideRight wraps GST_AUDIO_CHANNEL_POSITION_WIDE_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_WIDE_RIGHT
 	AudioChannelPositionWideRight AudioChannelPosition = 25
 	// AudioChannelPositionSurroundLeft wraps GST_AUDIO_CHANNEL_POSITION_SURROUND_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_SURROUND_LEFT
 	AudioChannelPositionSurroundLeft AudioChannelPosition = 26
 	// AudioChannelPositionSurroundRight wraps GST_AUDIO_CHANNEL_POSITION_SURROUND_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_SURROUND_RIGHT
 	AudioChannelPositionSurroundRight AudioChannelPosition = 27
 	// AudioChannelPositionTopSurroundLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_LEFT
 	AudioChannelPositionTopSurroundLeft AudioChannelPosition = 28
 	// AudioChannelPositionTopSurroundRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_RIGHT
 	AudioChannelPositionTopSurroundRight AudioChannelPosition = 29
 )
 
@@ -874,30 +813,25 @@ func (e AudioChannelPosition) String() string {
 
 // AudioDitherMethod wraps GstAudioDitherMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioDitherMethod
 type AudioDitherMethod C.int
 
 const (
 	// AudioDitherNone wraps GST_AUDIO_DITHER_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_DITHER_NONE
 	AudioDitherNone AudioDitherMethod = 0
 	// AudioDitherRpdf wraps GST_AUDIO_DITHER_RPDF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_DITHER_RPDF
 	AudioDitherRpdf AudioDitherMethod = 1
 	// AudioDitherTpdf wraps GST_AUDIO_DITHER_TPDF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_DITHER_TPDF
 	AudioDitherTpdf AudioDitherMethod = 2
 	// AudioDitherTpdfHf wraps GST_AUDIO_DITHER_TPDF_HF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_DITHER_TPDF_HF
 	AudioDitherTpdfHf AudioDitherMethod = 3
 )
 
@@ -927,240 +861,193 @@ func (e AudioDitherMethod) String() string {
 
 // AudioFormat wraps GstAudioFormat
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioFormat
 type AudioFormat C.int
 
 const (
 	// AudioFormatUnknown wraps GST_AUDIO_FORMAT_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_UNKNOWN
 	AudioFormatUnknown AudioFormat = 0
 	// AudioFormatEncoded wraps GST_AUDIO_FORMAT_ENCODED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_ENCODED
 	AudioFormatEncoded AudioFormat = 1
 	// AudioFormatS8 wraps GST_AUDIO_FORMAT_S8
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S8
 	AudioFormatS8 AudioFormat = 2
 	// AudioFormatU8 wraps GST_AUDIO_FORMAT_U8
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U8
 	AudioFormatU8 AudioFormat = 3
 	// AudioFormatS16le wraps GST_AUDIO_FORMAT_S16LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S16LE
 	AudioFormatS16le AudioFormat = 4
 	// AudioFormatS16be wraps GST_AUDIO_FORMAT_S16BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S16BE
 	AudioFormatS16be AudioFormat = 5
 	// AudioFormatU16le wraps GST_AUDIO_FORMAT_U16LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U16LE
 	AudioFormatU16le AudioFormat = 6
 	// AudioFormatU16be wraps GST_AUDIO_FORMAT_U16BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U16BE
 	AudioFormatU16be AudioFormat = 7
 	// AudioFormatS2432le wraps GST_AUDIO_FORMAT_S24_32LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24_32LE
 	AudioFormatS2432le AudioFormat = 8
 	// AudioFormatS2432be wraps GST_AUDIO_FORMAT_S24_32BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24_32BE
 	AudioFormatS2432be AudioFormat = 9
 	// AudioFormatU2432le wraps GST_AUDIO_FORMAT_U24_32LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24_32LE
 	AudioFormatU2432le AudioFormat = 10
 	// AudioFormatU2432be wraps GST_AUDIO_FORMAT_U24_32BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24_32BE
 	AudioFormatU2432be AudioFormat = 11
 	// AudioFormatS32le wraps GST_AUDIO_FORMAT_S32LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S32LE
 	AudioFormatS32le AudioFormat = 12
 	// AudioFormatS32be wraps GST_AUDIO_FORMAT_S32BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S32BE
 	AudioFormatS32be AudioFormat = 13
 	// AudioFormatU32le wraps GST_AUDIO_FORMAT_U32LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U32LE
 	AudioFormatU32le AudioFormat = 14
 	// AudioFormatU32be wraps GST_AUDIO_FORMAT_U32BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U32BE
 	AudioFormatU32be AudioFormat = 15
 	// AudioFormatS24le wraps GST_AUDIO_FORMAT_S24LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24LE
 	AudioFormatS24le AudioFormat = 16
 	// AudioFormatS24be wraps GST_AUDIO_FORMAT_S24BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24BE
 	AudioFormatS24be AudioFormat = 17
 	// AudioFormatU24le wraps GST_AUDIO_FORMAT_U24LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24LE
 	AudioFormatU24le AudioFormat = 18
 	// AudioFormatU24be wraps GST_AUDIO_FORMAT_U24BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24BE
 	AudioFormatU24be AudioFormat = 19
 	// AudioFormatS20le wraps GST_AUDIO_FORMAT_S20LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S20LE
 	AudioFormatS20le AudioFormat = 20
 	// AudioFormatS20be wraps GST_AUDIO_FORMAT_S20BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S20BE
 	AudioFormatS20be AudioFormat = 21
 	// AudioFormatU20le wraps GST_AUDIO_FORMAT_U20LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U20LE
 	AudioFormatU20le AudioFormat = 22
 	// AudioFormatU20be wraps GST_AUDIO_FORMAT_U20BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U20BE
 	AudioFormatU20be AudioFormat = 23
 	// AudioFormatS18le wraps GST_AUDIO_FORMAT_S18LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S18LE
 	AudioFormatS18le AudioFormat = 24
 	// AudioFormatS18be wraps GST_AUDIO_FORMAT_S18BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S18BE
 	AudioFormatS18be AudioFormat = 25
 	// AudioFormatU18le wraps GST_AUDIO_FORMAT_U18LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U18LE
 	AudioFormatU18le AudioFormat = 26
 	// AudioFormatU18be wraps GST_AUDIO_FORMAT_U18BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U18BE
 	AudioFormatU18be AudioFormat = 27
 	// AudioFormatF32le wraps GST_AUDIO_FORMAT_F32LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F32LE
 	AudioFormatF32le AudioFormat = 28
 	// AudioFormatF32be wraps GST_AUDIO_FORMAT_F32BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F32BE
 	AudioFormatF32be AudioFormat = 29
 	// AudioFormatF64le wraps GST_AUDIO_FORMAT_F64LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F64LE
 	AudioFormatF64le AudioFormat = 30
 	// AudioFormatF64be wraps GST_AUDIO_FORMAT_F64BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F64BE
 	AudioFormatF64be AudioFormat = 31
 	// AudioFormatS16 wraps GST_AUDIO_FORMAT_S16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S16
 	AudioFormatS16 AudioFormat = 4
 	// AudioFormatU16 wraps GST_AUDIO_FORMAT_U16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U16
 	AudioFormatU16 AudioFormat = 6
 	// AudioFormatS2432 wraps GST_AUDIO_FORMAT_S24_32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24_32
 	AudioFormatS2432 AudioFormat = 8
 	// AudioFormatU2432 wraps GST_AUDIO_FORMAT_U24_32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24_32
 	AudioFormatU2432 AudioFormat = 10
 	// AudioFormatS32 wraps GST_AUDIO_FORMAT_S32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S32
 	AudioFormatS32 AudioFormat = 12
 	// AudioFormatU32 wraps GST_AUDIO_FORMAT_U32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U32
 	AudioFormatU32 AudioFormat = 14
 	// AudioFormatS24 wraps GST_AUDIO_FORMAT_S24
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24
 	AudioFormatS24 AudioFormat = 16
 	// AudioFormatU24 wraps GST_AUDIO_FORMAT_U24
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24
 	AudioFormatU24 AudioFormat = 18
 	// AudioFormatS20 wraps GST_AUDIO_FORMAT_S20
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S20
 	AudioFormatS20 AudioFormat = 20
 	// AudioFormatU20 wraps GST_AUDIO_FORMAT_U20
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U20
 	AudioFormatU20 AudioFormat = 22
 	// AudioFormatS18 wraps GST_AUDIO_FORMAT_S18
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S18
 	AudioFormatS18 AudioFormat = 24
 	// AudioFormatU18 wraps GST_AUDIO_FORMAT_U18
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U18
 	AudioFormatU18 AudioFormat = 26
 	// AudioFormatF32 wraps GST_AUDIO_FORMAT_F32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F32
 	AudioFormatF32 AudioFormat = 28
 	// AudioFormatF64 wraps GST_AUDIO_FORMAT_F64
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F64
 	AudioFormatF64 AudioFormat = 30
 )
 
@@ -1218,8 +1105,7 @@ func (e AudioFormat) String() string {
 
 // AudioFormatBuildInteger wraps gst_audio_format_build_integer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#gst_audio_format_build_integer
 func AudioFormatBuildInteger(sign bool, endianness int32, width int32, depth int32) AudioFormat {
 	var carg1 C.gboolean       // in
 	var carg2 C.gint           // in, none, casted
@@ -1249,8 +1135,7 @@ func AudioFormatBuildInteger(sign bool, endianness int32, width int32, depth int
 
 // AudioFormatFromString wraps gst_audio_format_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#gst_audio_format_from_string
 func AudioFormatFromString(format string) AudioFormat {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstAudioFormat // return, none, casted
@@ -1270,8 +1155,7 @@ func AudioFormatFromString(format string) AudioFormat {
 
 // AudioFormatGetInfo wraps gst_audio_format_get_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#gst_audio_format_get_info
 func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
 	var carg1 C.GstAudioFormat      // in, none, casted
 	var cret  *C.GstAudioFormatInfo // return, none, converted
@@ -1290,8 +1174,7 @@ func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
 
 // AudioFormatString wraps gst_audio_format_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#gst_audio_format_to_string
 func AudioFormatString(format AudioFormat) string {
 	var carg1 C.GstAudioFormat // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -1310,20 +1193,17 @@ func AudioFormatString(format AudioFormat) string {
 
 // AudioLayout wraps GstAudioLayout
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioLayout
 type AudioLayout C.int
 
 const (
 	// AudioLayoutInterleaved wraps GST_AUDIO_LAYOUT_INTERLEAVED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_LAYOUT_INTERLEAVED
 	AudioLayoutInterleaved AudioLayout = 0
 	// AudioLayoutNonInterleaved wraps GST_AUDIO_LAYOUT_NON_INTERLEAVED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_LAYOUT_NON_INTERLEAVED
 	AudioLayoutNonInterleaved AudioLayout = 1
 )
 
@@ -1351,35 +1231,29 @@ func (e AudioLayout) String() string {
 
 // AudioNoiseShapingMethod wraps GstAudioNoiseShapingMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioNoiseShapingMethod
 type AudioNoiseShapingMethod C.int
 
 const (
 	// AudioNoiseShapingNone wraps GST_AUDIO_NOISE_SHAPING_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_NONE
 	AudioNoiseShapingNone AudioNoiseShapingMethod = 0
 	// AudioNoiseShapingErrorFeedback wraps GST_AUDIO_NOISE_SHAPING_ERROR_FEEDBACK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_ERROR_FEEDBACK
 	AudioNoiseShapingErrorFeedback AudioNoiseShapingMethod = 1
 	// AudioNoiseShapingSimple wraps GST_AUDIO_NOISE_SHAPING_SIMPLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_SIMPLE
 	AudioNoiseShapingSimple AudioNoiseShapingMethod = 2
 	// AudioNoiseShapingMedium wraps GST_AUDIO_NOISE_SHAPING_MEDIUM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_MEDIUM
 	AudioNoiseShapingMedium AudioNoiseShapingMethod = 3
 	// AudioNoiseShapingHigh wraps GST_AUDIO_NOISE_SHAPING_HIGH
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_HIGH
 	AudioNoiseShapingHigh AudioNoiseShapingMethod = 4
 )
 
@@ -1410,25 +1284,21 @@ func (e AudioNoiseShapingMethod) String() string {
 
 // AudioResamplerFilterInterpolation wraps GstAudioResamplerFilterInterpolation
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioResamplerFilterInterpolation
 type AudioResamplerFilterInterpolation C.int
 
 const (
 	// AudioResamplerFilterInterpolationNone wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_NONE
 	AudioResamplerFilterInterpolationNone AudioResamplerFilterInterpolation = 0
 	// AudioResamplerFilterInterpolationLinear wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_LINEAR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_LINEAR
 	AudioResamplerFilterInterpolationLinear AudioResamplerFilterInterpolation = 1
 	// AudioResamplerFilterInterpolationCubic wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC
 	AudioResamplerFilterInterpolationCubic AudioResamplerFilterInterpolation = 2
 )
 
@@ -1457,25 +1327,21 @@ func (e AudioResamplerFilterInterpolation) String() string {
 
 // AudioResamplerFilterMode wraps GstAudioResamplerFilterMode
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioResamplerFilterMode
 type AudioResamplerFilterMode C.int
 
 const (
 	// AudioResamplerFilterModeInterpolated wraps GST_AUDIO_RESAMPLER_FILTER_MODE_INTERPOLATED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_MODE_INTERPOLATED
 	AudioResamplerFilterModeInterpolated AudioResamplerFilterMode = 0
 	// AudioResamplerFilterModeFull wraps GST_AUDIO_RESAMPLER_FILTER_MODE_FULL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_MODE_FULL
 	AudioResamplerFilterModeFull AudioResamplerFilterMode = 1
 	// AudioResamplerFilterModeAuto wraps GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO
 	AudioResamplerFilterModeAuto AudioResamplerFilterMode = 2
 )
 
@@ -1504,35 +1370,29 @@ func (e AudioResamplerFilterMode) String() string {
 
 // AudioResamplerMethod wraps GstAudioResamplerMethod
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioResamplerMethod
 type AudioResamplerMethod C.int
 
 const (
 	// AudioResamplerMethodNearest wraps GST_AUDIO_RESAMPLER_METHOD_NEAREST
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_NEAREST
 	AudioResamplerMethodNearest AudioResamplerMethod = 0
 	// AudioResamplerMethodLinear wraps GST_AUDIO_RESAMPLER_METHOD_LINEAR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_LINEAR
 	AudioResamplerMethodLinear AudioResamplerMethod = 1
 	// AudioResamplerMethodCubic wraps GST_AUDIO_RESAMPLER_METHOD_CUBIC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_CUBIC
 	AudioResamplerMethodCubic AudioResamplerMethod = 2
 	// AudioResamplerMethodBlackmanNuttall wraps GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL
 	AudioResamplerMethodBlackmanNuttall AudioResamplerMethod = 3
 	// AudioResamplerMethodKaiser wraps GST_AUDIO_RESAMPLER_METHOD_KAISER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_KAISER
 	AudioResamplerMethodKaiser AudioResamplerMethod = 4
 )
 
@@ -1563,90 +1423,73 @@ func (e AudioResamplerMethod) String() string {
 
 // AudioRingBufferFormatType wraps GstAudioRingBufferFormatType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioRingBufferFormatType
 type AudioRingBufferFormatType C.int
 
 const (
 	// AudioRingBufferFormatTypeRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_RAW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_RAW
 	AudioRingBufferFormatTypeRaw AudioRingBufferFormatType = 0
 	// AudioRingBufferFormatTypeMuLaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MU_LAW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MU_LAW
 	AudioRingBufferFormatTypeMuLaw AudioRingBufferFormatType = 1
 	// AudioRingBufferFormatTypeALaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_A_LAW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_A_LAW
 	AudioRingBufferFormatTypeALaw AudioRingBufferFormatType = 2
 	// AudioRingBufferFormatTypeImaAdpcm wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IMA_ADPCM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IMA_ADPCM
 	AudioRingBufferFormatTypeImaAdpcm AudioRingBufferFormatType = 3
 	// AudioRingBufferFormatTypeMpeg wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG
 	AudioRingBufferFormatTypeMpeg AudioRingBufferFormatType = 4
 	// AudioRingBufferFormatTypeGsm wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_GSM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_GSM
 	AudioRingBufferFormatTypeGsm AudioRingBufferFormatType = 5
 	// AudioRingBufferFormatTypeIec958 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IEC958
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IEC958
 	AudioRingBufferFormatTypeIec958 AudioRingBufferFormatType = 6
 	// AudioRingBufferFormatTypeAc3 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_AC3
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_AC3
 	AudioRingBufferFormatTypeAc3 AudioRingBufferFormatType = 7
 	// AudioRingBufferFormatTypeEac3 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_EAC3
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_EAC3
 	AudioRingBufferFormatTypeEac3 AudioRingBufferFormatType = 8
 	// AudioRingBufferFormatTypeDts wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DTS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DTS
 	AudioRingBufferFormatTypeDts AudioRingBufferFormatType = 9
 	// AudioRingBufferFormatTypeMpeg2Aac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC
 	AudioRingBufferFormatTypeMpeg2Aac AudioRingBufferFormatType = 10
 	// AudioRingBufferFormatTypeMpeg4Aac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC
 	AudioRingBufferFormatTypeMpeg4Aac AudioRingBufferFormatType = 11
 	// AudioRingBufferFormatTypeMpeg2AacRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC_RAW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC_RAW
 	AudioRingBufferFormatTypeMpeg2AacRaw AudioRingBufferFormatType = 12
 	// AudioRingBufferFormatTypeMpeg4AacRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC_RAW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC_RAW
 	AudioRingBufferFormatTypeMpeg4AacRaw AudioRingBufferFormatType = 13
 	// AudioRingBufferFormatTypeFlac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_FLAC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_FLAC
 	AudioRingBufferFormatTypeFlac AudioRingBufferFormatType = 14
 	// AudioRingBufferFormatTypeDsd wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD
 	AudioRingBufferFormatTypeDsd AudioRingBufferFormatType = 15
 )
 
@@ -1688,30 +1531,25 @@ func (e AudioRingBufferFormatType) String() string {
 
 // AudioRingBufferState wraps GstAudioRingBufferState
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioRingBufferState
 type AudioRingBufferState C.int
 
 const (
 	// AudioRingBufferStateStopped wraps GST_AUDIO_RING_BUFFER_STATE_STOPPED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_STATE_STOPPED
 	AudioRingBufferStateStopped AudioRingBufferState = 0
 	// AudioRingBufferStatePaused wraps GST_AUDIO_RING_BUFFER_STATE_PAUSED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_STATE_PAUSED
 	AudioRingBufferStatePaused AudioRingBufferState = 1
 	// AudioRingBufferStateStarted wraps GST_AUDIO_RING_BUFFER_STATE_STARTED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_STATE_STARTED
 	AudioRingBufferStateStarted AudioRingBufferState = 2
 	// AudioRingBufferStateError wraps GST_AUDIO_RING_BUFFER_STATE_ERROR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_STATE_ERROR
 	AudioRingBufferStateError AudioRingBufferState = 3
 )
 
@@ -1741,55 +1579,45 @@ func (e AudioRingBufferState) String() string {
 
 // DsdFormat wraps GstDsdFormat
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstDsdFormat
 type DsdFormat C.int
 
 const (
 	// DsdFormatUnknown wraps GST_DSD_FORMAT_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_UNKNOWN
 	DsdFormatUnknown DsdFormat = 0
 	// DsdFormatU8 wraps GST_DSD_FORMAT_U8
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U8
 	DsdFormatU8 DsdFormat = 1
 	// DsdFormatU16le wraps GST_DSD_FORMAT_U16LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U16LE
 	DsdFormatU16le DsdFormat = 2
 	// DsdFormatU16be wraps GST_DSD_FORMAT_U16BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U16BE
 	DsdFormatU16be DsdFormat = 3
 	// DsdFormatU32le wraps GST_DSD_FORMAT_U32LE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U32LE
 	DsdFormatU32le DsdFormat = 4
 	// DsdFormatU32be wraps GST_DSD_FORMAT_U32BE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U32BE
 	DsdFormatU32be DsdFormat = 5
 	// NumDsdFormats wraps GST_NUM_DSD_FORMATS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_NUM_DSD_FORMATS
 	NumDsdFormats DsdFormat = 6
 	// DsdFormatU16 wraps GST_DSD_FORMAT_U16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U16
 	DsdFormatU16 DsdFormat = 2
 	// DsdFormatU32 wraps GST_DSD_FORMAT_U32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U32
 	DsdFormatU32 DsdFormat = 4
 )
 
@@ -1822,8 +1650,7 @@ func (e DsdFormat) String() string {
 
 // DsdFormatFromString wraps gst_dsd_format_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#gst_dsd_format_from_string
 func DsdFormatFromString(str string) DsdFormat {
 	var carg1 *C.gchar       // in, none, string
 	var cret  C.GstDsdFormat // return, none, casted
@@ -1843,7 +1670,7 @@ func DsdFormatFromString(str string) DsdFormat {
 
 // DsdFormatGetWidth wraps gst_dsd_format_get_width
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio#gst_dsd_format_get_width
 func DsdFormatGetWidth(format DsdFormat) uint {
 	var carg1 C.GstDsdFormat // in, none, casted
 	var cret  C.guint        // return, none, casted
@@ -1862,8 +1689,7 @@ func DsdFormatGetWidth(format DsdFormat) uint {
 
 // DsdFormatString wraps gst_dsd_format_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#gst_dsd_format_to_string
 func DsdFormatString(format DsdFormat) string {
 	var carg1 C.GstDsdFormat // in, none, casted
 	var cret  *C.gchar       // return, none, string
@@ -1882,25 +1708,21 @@ func DsdFormatString(format DsdFormat) string {
 
 // StreamVolumeFormat wraps GstStreamVolumeFormat
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#GstStreamVolumeFormat
 type StreamVolumeFormat C.int
 
 const (
 	// StreamVolumeFormatLinear wraps GST_STREAM_VOLUME_FORMAT_LINEAR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_STREAM_VOLUME_FORMAT_LINEAR
 	StreamVolumeFormatLinear StreamVolumeFormat = 0
 	// StreamVolumeFormatCubic wraps GST_STREAM_VOLUME_FORMAT_CUBIC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_STREAM_VOLUME_FORMAT_CUBIC
 	StreamVolumeFormatCubic StreamVolumeFormat = 1
 	// StreamVolumeFormatDb wraps GST_STREAM_VOLUME_FORMAT_DB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_STREAM_VOLUME_FORMAT_DB
 	StreamVolumeFormatDb StreamVolumeFormat = 2
 )
 
@@ -1916,35 +1738,29 @@ func (e StreamVolumeFormat) String() string {
 
 // AudioChannelMixerFlags wraps GstAudioChannelMixerFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioChannelMixerFlags
 type AudioChannelMixerFlags C.gint
 
 const (
 	// AudioChannelMixerFlagsNone wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_NONE
 	AudioChannelMixerFlagsNone AudioChannelMixerFlags = 0
 	// AudioChannelMixerFlagsNonInterleavedIn wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_IN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_IN
 	AudioChannelMixerFlagsNonInterleavedIn AudioChannelMixerFlags = 1
 	// AudioChannelMixerFlagsNonInterleavedOut wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_OUT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_OUT
 	AudioChannelMixerFlagsNonInterleavedOut AudioChannelMixerFlags = 2
 	// AudioChannelMixerFlagsUnpositionedIn wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_IN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_IN
 	AudioChannelMixerFlagsUnpositionedIn AudioChannelMixerFlags = 4
 	// AudioChannelMixerFlagsUnpositionedOut wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_OUT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_OUT
 	AudioChannelMixerFlagsUnpositionedOut AudioChannelMixerFlags = 8
 )
 
@@ -1992,25 +1808,21 @@ func (f AudioChannelMixerFlags) String() string {
 
 // AudioConverterFlags wraps GstAudioConverterFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioConverterFlags
 type AudioConverterFlags C.gint
 
 const (
 	// AudioConverterFlagNone wraps GST_AUDIO_CONVERTER_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CONVERTER_FLAG_NONE
 	AudioConverterFlagNone AudioConverterFlags = 0
 	// AudioConverterFlagInWritable wraps GST_AUDIO_CONVERTER_FLAG_IN_WRITABLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CONVERTER_FLAG_IN_WRITABLE
 	AudioConverterFlagInWritable AudioConverterFlags = 1
 	// AudioConverterFlagVariableRate wraps GST_AUDIO_CONVERTER_FLAG_VARIABLE_RATE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CONVERTER_FLAG_VARIABLE_RATE
 	AudioConverterFlagVariableRate AudioConverterFlags = 2
 )
 
@@ -2052,20 +1864,17 @@ func (f AudioConverterFlags) String() string {
 
 // AudioFlags wraps GstAudioFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioFlags
 type AudioFlags C.gint
 
 const (
 	// AudioFlagNone wraps GST_AUDIO_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FLAG_NONE
 	AudioFlagNone AudioFlags = 0
 	// AudioFlagUnpositioned wraps GST_AUDIO_FLAG_UNPOSITIONED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FLAG_UNPOSITIONED
 	AudioFlagUnpositioned AudioFlags = 1
 )
 
@@ -2104,35 +1913,29 @@ func (f AudioFlags) String() string {
 
 // AudioFormatFlags wraps GstAudioFormatFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioFormatFlags
 type AudioFormatFlags C.gint
 
 const (
 	// AudioFormatFlagInteger wraps GST_AUDIO_FORMAT_FLAG_INTEGER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_INTEGER
 	AudioFormatFlagInteger AudioFormatFlags = 1
 	// AudioFormatFlagFloat wraps GST_AUDIO_FORMAT_FLAG_FLOAT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_FLOAT
 	AudioFormatFlagFloat AudioFormatFlags = 2
 	// AudioFormatFlagSigned wraps GST_AUDIO_FORMAT_FLAG_SIGNED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_SIGNED
 	AudioFormatFlagSigned AudioFormatFlags = 4
 	// AudioFormatFlagComplex wraps GST_AUDIO_FORMAT_FLAG_COMPLEX
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_COMPLEX
 	AudioFormatFlagComplex AudioFormatFlags = 16
 	// AudioFormatFlagUnpack wraps GST_AUDIO_FORMAT_FLAG_UNPACK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_UNPACK
 	AudioFormatFlagUnpack AudioFormatFlags = 32
 )
 
@@ -2180,20 +1983,17 @@ func (f AudioFormatFlags) String() string {
 
 // AudioPackFlags wraps GstAudioPackFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioPackFlags
 type AudioPackFlags C.gint
 
 const (
 	// AudioPackFlagNone wraps GST_AUDIO_PACK_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_PACK_FLAG_NONE
 	AudioPackFlagNone AudioPackFlags = 0
 	// AudioPackFlagTruncateRange wraps GST_AUDIO_PACK_FLAG_TRUNCATE_RANGE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_PACK_FLAG_TRUNCATE_RANGE
 	AudioPackFlagTruncateRange AudioPackFlags = 1
 )
 
@@ -2232,20 +2032,17 @@ func (f AudioPackFlags) String() string {
 
 // AudioQuantizeFlags wraps GstAudioQuantizeFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioQuantizeFlags
 type AudioQuantizeFlags C.gint
 
 const (
 	// AudioQuantizeFlagNone wraps GST_AUDIO_QUANTIZE_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_QUANTIZE_FLAG_NONE
 	AudioQuantizeFlagNone AudioQuantizeFlags = 0
 	// AudioQuantizeFlagNonInterleaved wraps GST_AUDIO_QUANTIZE_FLAG_NON_INTERLEAVED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_QUANTIZE_FLAG_NON_INTERLEAVED
 	AudioQuantizeFlagNonInterleaved AudioQuantizeFlags = 1
 )
 
@@ -2284,30 +2081,25 @@ func (f AudioQuantizeFlags) String() string {
 
 // AudioResamplerFlags wraps GstAudioResamplerFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioResamplerFlags
 type AudioResamplerFlags C.gint
 
 const (
 	// AudioResamplerFlagNone wraps GST_AUDIO_RESAMPLER_FLAG_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FLAG_NONE
 	AudioResamplerFlagNone AudioResamplerFlags = 0
 	// AudioResamplerFlagNonInterleavedIn wraps GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_IN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_IN
 	AudioResamplerFlagNonInterleavedIn AudioResamplerFlags = 1
 	// AudioResamplerFlagNonInterleavedOut wraps GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_OUT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_OUT
 	AudioResamplerFlagNonInterleavedOut AudioResamplerFlags = 2
 	// AudioResamplerFlagVariableRate wraps GST_AUDIO_RESAMPLER_FLAG_VARIABLE_RATE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FLAG_VARIABLE_RATE
 	AudioResamplerFlagVariableRate AudioResamplerFlags = 4
 )
 
@@ -2352,26 +2144,22 @@ func (f AudioResamplerFlags) String() string {
 
 // AudioBaseSinkCustomSlavingCallback wraps GstAudioBaseSinkCustomSlavingCallback
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GstAudioBaseSinkCustomSlavingCallback
 type AudioBaseSinkCustomSlavingCallback func(sink AudioBaseSink, etime gst.ClockTime, itime gst.ClockTime, requestedSkew *gst.ClockTimeDiff, discontReason AudioBaseSinkDiscontReason)
 
 // AudioClockGetTimeFunc wraps GstAudioClockGetTimeFunc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#GstAudioClockGetTimeFunc
 type AudioClockGetTimeFunc func(clock gst.Clock) (goret gst.ClockTime)
 
 // AudioRingBufferCallback wraps GstAudioRingBufferCallback
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GstAudioRingBufferCallback
 type AudioRingBufferCallback func(rbuf AudioRingBuffer, data []uint8)
 
 // AudioChannelGetFallbackMask wraps gst_audio_channel_get_fallback_mask
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioChannelGetFallbackMask(channels int32) uint64 {
 	var carg1 C.gint    // in, none, casted
 	var cret  C.guint64 // return, none, casted
@@ -2390,8 +2178,7 @@ func AudioChannelGetFallbackMask(channels int32) uint64 {
 
 // AudioChannelPositionsFromMask wraps gst_audio_channel_positions_from_mask
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioChannelPositionsFromMask(channelMask uint64, position []AudioChannelPosition) bool {
 	var carg1 C.gint                     // implicit
 	var carg2 C.guint64                  // in, none, casted
@@ -2419,8 +2206,7 @@ func AudioChannelPositionsFromMask(channelMask uint64, position []AudioChannelPo
 
 // AudioChannelPositionsToMask wraps gst_audio_channel_positions_to_mask
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioChannelPositionsToMask(position []AudioChannelPosition, forceOrder bool) (uint64, bool) {
 	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
@@ -2453,8 +2239,7 @@ func AudioChannelPositionsToMask(position []AudioChannelPosition, forceOrder boo
 
 // AudioChannelPositionsToString wraps gst_audio_channel_positions_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioChannelPositionsToString(position []AudioChannelPosition) string {
 	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
@@ -2478,8 +2263,7 @@ func AudioChannelPositionsToString(position []AudioChannelPosition) string {
 
 // AudioChannelPositionsToValidOrder wraps gst_audio_channel_positions_to_valid_order
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioChannelPositionsToValidOrder(position []AudioChannelPosition) bool {
 	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
@@ -2504,8 +2288,7 @@ func AudioChannelPositionsToValidOrder(position []AudioChannelPosition) bool {
 
 // AudioCheckValidChannelPositions wraps gst_audio_check_valid_channel_positions
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioCheckValidChannelPositions(position []AudioChannelPosition, forceOrder bool) bool {
 	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
@@ -2535,7 +2318,7 @@ func AudioCheckValidChannelPositions(position []AudioChannelPosition, forceOrder
 
 // AudioClippingMetaAPIGetType wraps gst_audio_clipping_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioClippingMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2550,7 +2333,7 @@ func AudioClippingMetaAPIGetType() gobject.Type {
 
 // AudioDownmixMetaAPIGetType wraps gst_audio_downmix_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioDownmixMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2563,10 +2346,24 @@ func AudioDownmixMetaAPIGetType() gobject.Type {
 	return goret
 }
 
+// AudioFormatInfoGetType wraps gst_audio_format_info_get_type
+// 
+// see also https://gstreamer.freedesktop.org/documentation/audio
+func AudioFormatInfoGetType() gobject.Type {
+	var cret C.GType // return, none, casted, alias
+
+	cret = C.gst_audio_format_info_get_type()
+
+	var goret gobject.Type
+
+	goret = gobject.Type(cret)
+
+	return goret
+}
+
 // AudioFormatsRaw wraps gst_audio_formats_raw
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioFormatsRaw() (uint, []AudioFormat) {
 	var carg1 C.guint           // out, full, casted
 	var cret  *C.GstAudioFormat // return, transfer: none, C Pointers: 1, Name: array[AudioFormat], scope: , array (inner GstAudioFormat (*typesystem.Enum))
@@ -2586,8 +2383,7 @@ func AudioFormatsRaw() (uint, []AudioFormat) {
 
 // AudioGetChannelReorderMap wraps gst_audio_get_channel_reorder_map
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioGetChannelReorderMap(from []AudioChannelPosition, to []AudioChannelPosition, reorderMap []int32) bool {
 	var carg1 C.gint                     // implicit
 	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg1)
@@ -2624,8 +2420,7 @@ func AudioGetChannelReorderMap(from []AudioChannelPosition, to []AudioChannelPos
 
 // AudioIec61937FrameSize wraps gst_audio_iec61937_frame_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioIec61937FrameSize(spec *AudioRingBufferSpec) uint {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -2644,8 +2439,7 @@ func AudioIec61937FrameSize(spec *AudioRingBufferSpec) uint {
 
 // AudioIec61937Payload wraps gst_audio_iec61937_payload
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, endianness int32) bool {
 	var carg1 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint                   // implicit
@@ -2683,8 +2477,7 @@ func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, e
 
 // AudioLevelMetaAPIGetType wraps gst_audio_level_meta_api_get_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioLevelMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2699,8 +2492,7 @@ func AudioLevelMetaAPIGetType() gobject.Type {
 
 // AudioMakeRawCaps wraps gst_audio_make_raw_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioMakeRawCaps(formats []AudioFormat, layout AudioLayout) *gst.Caps {
 	var carg1 *C.GstAudioFormat // in, transfer: none, C Pointers: 1, Name: array[AudioFormat], nullable, array (inner GstAudioFormat (*typesystem.Enum), length-by: carg2)
 	var carg2 C.guint           // implicit
@@ -2726,7 +2518,7 @@ func AudioMakeRawCaps(formats []AudioFormat, layout AudioLayout) *gst.Caps {
 
 // AudioMetaAPIGetType wraps gst_audio_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func AudioMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2741,8 +2533,7 @@ func AudioMetaAPIGetType() gobject.Type {
 
 // BufferAddAudioClippingMeta wraps gst_buffer_add_audio_clipping_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func BufferAddAudioClippingMeta(buffer *gst.Buffer, format gst.Format, start uint64, end uint64) *AudioClippingMeta {
 	var carg1 *C.GstBuffer            // in, none, converted
 	var carg2 C.GstFormat             // in, none, casted
@@ -2770,8 +2561,7 @@ func BufferAddAudioClippingMeta(buffer *gst.Buffer, format gst.Format, start uin
 
 // BufferAddAudioDownmixMeta wraps gst_buffer_add_audio_downmix_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func BufferAddAudioDownmixMeta(buffer *gst.Buffer, fromPosition []AudioChannelPosition, toPosition []AudioChannelPosition, matrix **float32) *AudioDownmixMeta {
 	var carg1 *C.GstBuffer               // in, none, converted
 	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg3)
@@ -2809,8 +2599,7 @@ func BufferAddAudioDownmixMeta(buffer *gst.Buffer, fromPosition []AudioChannelPo
 
 // BufferAddAudioLevelMeta wraps gst_buffer_add_audio_level_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func BufferAddAudioLevelMeta(buffer *gst.Buffer, level uint8, voiceActivity bool) *AudioLevelMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var carg2 C.guint8             // in, none, casted
@@ -2839,8 +2628,7 @@ func BufferAddAudioLevelMeta(buffer *gst.Buffer, level uint8, voiceActivity bool
 
 // BufferAddAudioMeta wraps gst_buffer_add_audio_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func BufferAddAudioMeta(buffer *gst.Buffer, info *AudioInfo, samples uint, offsets *uint) *AudioMeta {
 	var carg1 *C.GstBuffer    // in, none, converted
 	var carg2 *C.GstAudioInfo // in, none, converted
@@ -2872,8 +2660,7 @@ func BufferAddAudioMeta(buffer *gst.Buffer, info *AudioInfo, samples uint, offse
 
 // BufferAddDsdPlaneOffsetMeta wraps gst_buffer_add_dsd_plane_offset_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func BufferAddDsdPlaneOffsetMeta(buffer *gst.Buffer, numChannels int32, numBytesPerChannel uint, offsets *uint) *DsdPlaneOffsetMeta {
 	var carg1 *C.GstBuffer             // in, none, converted
 	var carg2 C.gint                   // in, none, casted
@@ -2905,8 +2692,7 @@ func BufferAddDsdPlaneOffsetMeta(buffer *gst.Buffer, numChannels int32, numBytes
 
 // BufferGetAudioDownmixMetaForChannels wraps gst_buffer_get_audio_downmix_meta_for_channels
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func BufferGetAudioDownmixMetaForChannels(buffer *gst.Buffer, toPosition []AudioChannelPosition) *AudioDownmixMeta {
 	var carg1 *C.GstBuffer               // in, none, converted
 	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg3)
@@ -2932,8 +2718,7 @@ func BufferGetAudioDownmixMetaForChannels(buffer *gst.Buffer, toPosition []Audio
 
 // BufferGetAudioLevelMeta wraps gst_buffer_get_audio_level_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func BufferGetAudioLevelMeta(buffer *gst.Buffer) *AudioLevelMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var cret  *C.GstAudioLevelMeta // return, none, converted, nullable
@@ -2954,8 +2739,7 @@ func BufferGetAudioLevelMeta(buffer *gst.Buffer) *AudioLevelMeta {
 
 // DsdConvert wraps gst_dsd_convert
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func DsdConvert(inputData *uint8, outputData *uint8, inputFormat DsdFormat, outputFormat DsdFormat, inputLayout AudioLayout, outputLayout AudioLayout, inputPlaneOffsets *uint, outputPlaneOffsets *uint, numDsdBytes uint, numChannels int32, reverseByteBits bool) {
 	var carg1  *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg2  *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -3007,7 +2791,7 @@ func DsdConvert(inputData *uint8, outputData *uint8, inputFormat DsdFormat, outp
 
 // DsdPlaneOffsetMetaAPIGetType wraps gst_dsd_plane_offset_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio
 func DsdPlaneOffsetMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -3030,26 +2814,25 @@ var _ StreamVolume = (*StreamVolumeInstance)(nil)
 
 // StreamVolume wraps GstStreamVolume
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#GstStreamVolume
 type StreamVolume interface {
 	upcastToGstStreamVolume() *StreamVolumeInstance
 
 	// GetMute wraps gst_stream_volume_get_mute
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#gst_stream_volume_get_mute
 	GetMute() bool
 	// GetVolume wraps gst_stream_volume_get_volume
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#gst_stream_volume_get_volume
 	GetVolume(StreamVolumeFormat) float64
 	// SetMute wraps gst_stream_volume_set_mute
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#gst_stream_volume_set_mute
 	SetMute(bool)
 	// SetVolume wraps gst_stream_volume_set_volume
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#gst_stream_volume_set_volume
 	SetVolume(StreamVolumeFormat, float64)
 }
 
@@ -3098,7 +2881,7 @@ func UnsafeStreamVolumeToGlibFull(c StreamVolume) unsafe.Pointer {
 
 // StreamVolumeConvertVolume wraps gst_stream_volume_convert_volume
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#gst_stream_volume_convert_volume
 func StreamVolumeConvertVolume(from StreamVolumeFormat, to StreamVolumeFormat, val float64) float64 {
 	var carg1 C.GstStreamVolumeFormat // in, none, casted
 	var carg2 C.GstStreamVolumeFormat // in, none, casted
@@ -3123,7 +2906,7 @@ func StreamVolumeConvertVolume(from StreamVolumeFormat, to StreamVolumeFormat, v
 
 // GetMute wraps gst_stream_volume_get_mute
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#gst_stream_volume_get_mute
 func (volume *StreamVolumeInstance) GetMute() bool {
 	var carg0 *C.GstStreamVolume // in, none, converted
 	var cret  C.gboolean         // return
@@ -3144,7 +2927,7 @@ func (volume *StreamVolumeInstance) GetMute() bool {
 
 // GetVolume wraps gst_stream_volume_get_volume
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#gst_stream_volume_get_volume
 func (volume *StreamVolumeInstance) GetVolume(format StreamVolumeFormat) float64 {
 	var carg0 *C.GstStreamVolume      // in, none, converted
 	var carg1 C.GstStreamVolumeFormat // in, none, casted
@@ -3166,7 +2949,7 @@ func (volume *StreamVolumeInstance) GetVolume(format StreamVolumeFormat) float64
 
 // SetMute wraps gst_stream_volume_set_mute
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#gst_stream_volume_set_mute
 func (volume *StreamVolumeInstance) SetMute(mute bool) {
 	var carg0 *C.GstStreamVolume // in, none, converted
 	var carg1 C.gboolean         // in
@@ -3183,7 +2966,7 @@ func (volume *StreamVolumeInstance) SetMute(mute bool) {
 
 // SetVolume wraps gst_stream_volume_set_volume
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#gst_stream_volume_set_volume
 func (volume *StreamVolumeInstance) SetVolume(format StreamVolumeFormat, val float64) {
 	var carg0 *C.GstStreamVolume      // in, none, converted
 	var carg1 C.GstStreamVolumeFormat // in, none, casted
@@ -3209,15 +2992,14 @@ var _ AudioAggregator = (*AudioAggregatorInstance)(nil)
 
 // AudioAggregator wraps GstAudioAggregator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#GstAudioAggregator
 type AudioAggregator interface {
 	gstbase.Aggregator
 	upcastToGstAudioAggregator() *AudioAggregatorInstance
 
 	// SetSinkCaps wraps gst_audio_aggregator_set_sink_caps
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#gst_audio_aggregator_set_sink_caps
 	SetSinkCaps(AudioAggregatorPad, *gst.Caps)
 
 	// chain up virtual methods:
@@ -3225,12 +3007,12 @@ type AudioAggregator interface {
 	// ParentAggregateOneBuffer calls the default implementations of the `GstAudioAggregator.aggregate_one_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#aggregate_one_buffer
 	ParentAggregateOneBuffer(pad AudioAggregatorPad, inbuf *gst.Buffer, inOffset uint, outbuf *gst.Buffer, outOffset uint, numFrames uint) bool
 	// ParentCreateOutputBuffer calls the default implementations of the `GstAudioAggregator.create_output_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#create_output_buffer
 	ParentCreateOutputBuffer(numFrames uint) *gst.Buffer
 }
 
@@ -3292,7 +3074,7 @@ func UnsafeAudioAggregatorToGlibFull(c AudioAggregator) unsafe.Pointer {
 
 // SetSinkCaps wraps gst_audio_aggregator_set_sink_caps
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#gst_audio_aggregator_set_sink_caps
 func (aagg *AudioAggregatorInstance) SetSinkCaps(pad AudioAggregatorPad, caps *gst.Caps) {
 	var carg0 *C.GstAudioAggregator    // in, none, converted
 	var carg1 *C.GstAudioAggregatorPad // in, none, converted
@@ -3316,11 +3098,11 @@ type AudioAggregatorOverrides[Instance AudioAggregator] struct {
 
 	// // AggregateOneBuffer allows you to override the implementation of the virtual method aggregate_one_buffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#aggregate_one_buffer
 	AggregateOneBuffer func(Instance, AudioAggregatorPad, *gst.Buffer, uint, *gst.Buffer, uint, uint) bool
 	// // CreateOutputBuffer allows you to override the implementation of the virtual method create_output_buffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#create_output_buffer
 	CreateOutputBuffer func(Instance, uint) *gst.Buffer
 }
 
@@ -3391,7 +3173,7 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 // ParentAggregateOneBuffer calls the default implementations of the `GstAudioAggregator.aggregate_one_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#aggregate_one_buffer
 func (aagg *AudioAggregatorInstance) ParentAggregateOneBuffer(pad AudioAggregatorPad, inbuf *gst.Buffer, inOffset uint, outbuf *gst.Buffer, outOffset uint, numFrames uint) bool {
 	var carg0 *C.GstAudioAggregator
 	var carg1 *C.GstAudioAggregatorPad // in, none, converted
@@ -3433,7 +3215,7 @@ func (aagg *AudioAggregatorInstance) ParentAggregateOneBuffer(pad AudioAggregato
 // ParentCreateOutputBuffer calls the default implementations of the `GstAudioAggregator.create_output_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#create_output_buffer
 func (aagg *AudioAggregatorInstance) ParentCreateOutputBuffer(numFrames uint) *gst.Buffer {
 	var carg0 *C.GstAudioAggregator
 	var carg1 C.guint      // in, none, converted
@@ -3491,8 +3273,7 @@ var _ AudioAggregatorPad = (*AudioAggregatorPadInstance)(nil)
 
 // AudioAggregatorPad wraps GstAudioAggregatorPad
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#GstAudioAggregatorPad
 type AudioAggregatorPad interface {
 	gstbase.AggregatorPad
 	upcastToGstAudioAggregatorPad() *AudioAggregatorPadInstance
@@ -3502,12 +3283,12 @@ type AudioAggregatorPad interface {
 	// ParentConvertBuffer calls the default implementations of the `GstAudioAggregatorPad.convert_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#convert_buffer
 	ParentConvertBuffer(inInfo *AudioInfo, outInfo *AudioInfo, buffer *gst.Buffer) *gst.Buffer
 	// ParentUpdateConversionInfo calls the default implementations of the `GstAudioAggregatorPad.update_conversion_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#update_conversion_info
 	ParentUpdateConversionInfo()
 }
 
@@ -3575,11 +3356,11 @@ type AudioAggregatorPadOverrides[Instance AudioAggregatorPad] struct {
 
 	// // ConvertBuffer allows you to override the implementation of the virtual method convert_buffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#convert_buffer
 	ConvertBuffer func(Instance, *AudioInfo, *AudioInfo, *gst.Buffer) *gst.Buffer
 	// // UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#update_conversion_info
 	UpdateConversionInfo func(Instance)
 }
 
@@ -3635,7 +3416,7 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 // ParentConvertBuffer calls the default implementations of the `GstAudioAggregatorPad.convert_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#convert_buffer
 func (pad *AudioAggregatorPadInstance) ParentConvertBuffer(inInfo *AudioInfo, outInfo *AudioInfo, buffer *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstAudioAggregatorPad
 	var carg1 *C.GstAudioInfo // in, none, converted
@@ -3666,7 +3447,7 @@ func (pad *AudioAggregatorPadInstance) ParentConvertBuffer(inInfo *AudioInfo, ou
 // ParentUpdateConversionInfo calls the default implementations of the `GstAudioAggregatorPad.update_conversion_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#update_conversion_info
 func (pad *AudioAggregatorPadInstance) ParentUpdateConversionInfo() {
 	var carg0 *C.GstAudioAggregatorPad
 
@@ -3714,76 +3495,62 @@ var _ AudioBaseSink = (*AudioBaseSinkInstance)(nil)
 
 // AudioBaseSink wraps GstAudioBaseSink
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GstAudioBaseSink
 type AudioBaseSink interface {
 	gstbase.BaseSink
 	upcastToGstAudioBaseSink() *AudioBaseSinkInstance
 
 	// CreateRingbuffer wraps gst_audio_base_sink_create_ringbuffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_create_ringbuffer
 	CreateRingbuffer() AudioRingBuffer
 	// GetAlignmentThreshold wraps gst_audio_base_sink_get_alignment_threshold
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_alignment_threshold
 	GetAlignmentThreshold() gst.ClockTime
 	// GetDiscontWait wraps gst_audio_base_sink_get_discont_wait
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_discont_wait
 	GetDiscontWait() gst.ClockTime
 	// GetDriftTolerance wraps gst_audio_base_sink_get_drift_tolerance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_drift_tolerance
 	GetDriftTolerance() int64
 	// GetProvideClock wraps gst_audio_base_sink_get_provide_clock
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_provide_clock
 	GetProvideClock() bool
 	// GetSlaveMethod wraps gst_audio_base_sink_get_slave_method
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_slave_method
 	GetSlaveMethod() AudioBaseSinkSlaveMethod
 	// ReportDeviceFailure wraps gst_audio_base_sink_report_device_failure
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_report_device_failure
 	ReportDeviceFailure()
 	// SetAlignmentThreshold wraps gst_audio_base_sink_set_alignment_threshold
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_alignment_threshold
 	SetAlignmentThreshold(gst.ClockTime)
 	// SetCustomSlavingCallback wraps gst_audio_base_sink_set_custom_slaving_callback
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_custom_slaving_callback
 	SetCustomSlavingCallback(AudioBaseSinkCustomSlavingCallback)
 	// SetDiscontWait wraps gst_audio_base_sink_set_discont_wait
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_discont_wait
 	SetDiscontWait(gst.ClockTime)
 	// SetDriftTolerance wraps gst_audio_base_sink_set_drift_tolerance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_drift_tolerance
 	SetDriftTolerance(int64)
 	// SetProvideClock wraps gst_audio_base_sink_set_provide_clock
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_provide_clock
 	SetProvideClock(bool)
 	// SetSlaveMethod wraps gst_audio_base_sink_set_slave_method
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_slave_method
 	SetSlaveMethod(AudioBaseSinkSlaveMethod)
 
 	// chain up virtual methods:
@@ -3791,12 +3558,12 @@ type AudioBaseSink interface {
 	// ParentCreateRingbuffer calls the default implementations of the `GstAudioBaseSink.create_ringbuffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#create_ringbuffer
 	ParentCreateRingbuffer() AudioRingBuffer
 	// ParentPayload calls the default implementations of the `GstAudioBaseSink.payload` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#payload
 	ParentPayload(buffer *gst.Buffer) *gst.Buffer
 }
 
@@ -3858,8 +3625,7 @@ func UnsafeAudioBaseSinkToGlibFull(c AudioBaseSink) unsafe.Pointer {
 
 // CreateRingbuffer wraps gst_audio_base_sink_create_ringbuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_create_ringbuffer
 func (sink *AudioBaseSinkInstance) CreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSink   // in, none, converted
 	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
@@ -3880,8 +3646,7 @@ func (sink *AudioBaseSinkInstance) CreateRingbuffer() AudioRingBuffer {
 
 // GetAlignmentThreshold wraps gst_audio_base_sink_get_alignment_threshold
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_alignment_threshold
 func (sink *AudioBaseSinkInstance) GetAlignmentThreshold() gst.ClockTime {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var cret  C.GstClockTime      // return, none, casted, alias
@@ -3900,8 +3665,7 @@ func (sink *AudioBaseSinkInstance) GetAlignmentThreshold() gst.ClockTime {
 
 // GetDiscontWait wraps gst_audio_base_sink_get_discont_wait
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_discont_wait
 func (sink *AudioBaseSinkInstance) GetDiscontWait() gst.ClockTime {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var cret  C.GstClockTime      // return, none, casted, alias
@@ -3920,8 +3684,7 @@ func (sink *AudioBaseSinkInstance) GetDiscontWait() gst.ClockTime {
 
 // GetDriftTolerance wraps gst_audio_base_sink_get_drift_tolerance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_drift_tolerance
 func (sink *AudioBaseSinkInstance) GetDriftTolerance() int64 {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var cret  C.gint64            // return, none, casted
@@ -3940,8 +3703,7 @@ func (sink *AudioBaseSinkInstance) GetDriftTolerance() int64 {
 
 // GetProvideClock wraps gst_audio_base_sink_get_provide_clock
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_provide_clock
 func (sink *AudioBaseSinkInstance) GetProvideClock() bool {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var cret  C.gboolean          // return
@@ -3962,8 +3724,7 @@ func (sink *AudioBaseSinkInstance) GetProvideClock() bool {
 
 // GetSlaveMethod wraps gst_audio_base_sink_get_slave_method
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_get_slave_method
 func (sink *AudioBaseSinkInstance) GetSlaveMethod() AudioBaseSinkSlaveMethod {
 	var carg0 *C.GstAudioBaseSink           // in, none, converted
 	var cret  C.GstAudioBaseSinkSlaveMethod // return, none, casted
@@ -3982,8 +3743,7 @@ func (sink *AudioBaseSinkInstance) GetSlaveMethod() AudioBaseSinkSlaveMethod {
 
 // ReportDeviceFailure wraps gst_audio_base_sink_report_device_failure
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_report_device_failure
 func (sink *AudioBaseSinkInstance) ReportDeviceFailure() {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 
@@ -3995,8 +3755,7 @@ func (sink *AudioBaseSinkInstance) ReportDeviceFailure() {
 
 // SetAlignmentThreshold wraps gst_audio_base_sink_set_alignment_threshold
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_alignment_threshold
 func (sink *AudioBaseSinkInstance) SetAlignmentThreshold(alignmentThreshold gst.ClockTime) {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var carg1 C.GstClockTime      // in, none, casted, alias
@@ -4011,8 +3770,7 @@ func (sink *AudioBaseSinkInstance) SetAlignmentThreshold(alignmentThreshold gst.
 
 // SetCustomSlavingCallback wraps gst_audio_base_sink_set_custom_slaving_callback
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_custom_slaving_callback
 func (sink *AudioBaseSinkInstance) SetCustomSlavingCallback(callback AudioBaseSinkCustomSlavingCallback) {
 	var carg0 *C.GstAudioBaseSink                     // in, none, converted
 	var carg1 C.GstAudioBaseSinkCustomSlavingCallback // callback, scope: notified, closure: carg2, destroy: carg3
@@ -4031,8 +3789,7 @@ func (sink *AudioBaseSinkInstance) SetCustomSlavingCallback(callback AudioBaseSi
 
 // SetDiscontWait wraps gst_audio_base_sink_set_discont_wait
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_discont_wait
 func (sink *AudioBaseSinkInstance) SetDiscontWait(discontWait gst.ClockTime) {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var carg1 C.GstClockTime      // in, none, casted, alias
@@ -4047,8 +3804,7 @@ func (sink *AudioBaseSinkInstance) SetDiscontWait(discontWait gst.ClockTime) {
 
 // SetDriftTolerance wraps gst_audio_base_sink_set_drift_tolerance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_drift_tolerance
 func (sink *AudioBaseSinkInstance) SetDriftTolerance(driftTolerance int64) {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var carg1 C.gint64            // in, none, casted
@@ -4063,8 +3819,7 @@ func (sink *AudioBaseSinkInstance) SetDriftTolerance(driftTolerance int64) {
 
 // SetProvideClock wraps gst_audio_base_sink_set_provide_clock
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_provide_clock
 func (sink *AudioBaseSinkInstance) SetProvideClock(provide bool) {
 	var carg0 *C.GstAudioBaseSink // in, none, converted
 	var carg1 C.gboolean          // in
@@ -4081,8 +3836,7 @@ func (sink *AudioBaseSinkInstance) SetProvideClock(provide bool) {
 
 // SetSlaveMethod wraps gst_audio_base_sink_set_slave_method
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#gst_audio_base_sink_set_slave_method
 func (sink *AudioBaseSinkInstance) SetSlaveMethod(method AudioBaseSinkSlaveMethod) {
 	var carg0 *C.GstAudioBaseSink           // in, none, converted
 	var carg1 C.GstAudioBaseSinkSlaveMethod // in, none, casted
@@ -4103,11 +3857,11 @@ type AudioBaseSinkOverrides[Instance AudioBaseSink] struct {
 
 	// // CreateRingbuffer allows you to override the implementation of the virtual method create_ringbuffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#create_ringbuffer
 	CreateRingbuffer func(Instance) AudioRingBuffer
 	// // Payload allows you to override the implementation of the virtual method payload.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#payload
 	Payload func(Instance, *gst.Buffer) *gst.Buffer
 }
 
@@ -4166,7 +3920,7 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 // ParentCreateRingbuffer calls the default implementations of the `GstAudioBaseSink.create_ringbuffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#create_ringbuffer
 func (sink *AudioBaseSinkInstance) ParentCreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSink
 	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
@@ -4190,7 +3944,7 @@ func (sink *AudioBaseSinkInstance) ParentCreateRingbuffer() AudioRingBuffer {
 // ParentPayload calls the default implementations of the `GstAudioBaseSink.payload` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#payload
 func (sink *AudioBaseSinkInstance) ParentPayload(buffer *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstAudioBaseSink
 	var carg1 *C.GstBuffer // in, none, converted
@@ -4248,36 +4002,30 @@ var _ AudioBaseSrc = (*AudioBaseSrcInstance)(nil)
 
 // AudioBaseSrc wraps GstAudioBaseSrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#GstAudioBaseSrc
 type AudioBaseSrc interface {
 	gstbase.PushSrc
 	upcastToGstAudioBaseSrc() *AudioBaseSrcInstance
 
 	// CreateRingbuffer wraps gst_audio_base_src_create_ringbuffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_create_ringbuffer
 	CreateRingbuffer() AudioRingBuffer
 	// GetProvideClock wraps gst_audio_base_src_get_provide_clock
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_get_provide_clock
 	GetProvideClock() bool
 	// GetSlaveMethod wraps gst_audio_base_src_get_slave_method
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_get_slave_method
 	GetSlaveMethod() AudioBaseSrcSlaveMethod
 	// SetProvideClock wraps gst_audio_base_src_set_provide_clock
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_set_provide_clock
 	SetProvideClock(bool)
 	// SetSlaveMethod wraps gst_audio_base_src_set_slave_method
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_set_slave_method
 	SetSlaveMethod(AudioBaseSrcSlaveMethod)
 
 	// chain up virtual methods:
@@ -4285,7 +4033,7 @@ type AudioBaseSrc interface {
 	// ParentCreateRingbuffer calls the default implementations of the `GstAudioBaseSrc.create_ringbuffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#create_ringbuffer
 	ParentCreateRingbuffer() AudioRingBuffer
 }
 
@@ -4349,8 +4097,7 @@ func UnsafeAudioBaseSrcToGlibFull(c AudioBaseSrc) unsafe.Pointer {
 
 // CreateRingbuffer wraps gst_audio_base_src_create_ringbuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_create_ringbuffer
 func (src *AudioBaseSrcInstance) CreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSrc    // in, none, converted
 	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
@@ -4371,8 +4118,7 @@ func (src *AudioBaseSrcInstance) CreateRingbuffer() AudioRingBuffer {
 
 // GetProvideClock wraps gst_audio_base_src_get_provide_clock
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_get_provide_clock
 func (src *AudioBaseSrcInstance) GetProvideClock() bool {
 	var carg0 *C.GstAudioBaseSrc // in, none, converted
 	var cret  C.gboolean         // return
@@ -4393,8 +4139,7 @@ func (src *AudioBaseSrcInstance) GetProvideClock() bool {
 
 // GetSlaveMethod wraps gst_audio_base_src_get_slave_method
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_get_slave_method
 func (src *AudioBaseSrcInstance) GetSlaveMethod() AudioBaseSrcSlaveMethod {
 	var carg0 *C.GstAudioBaseSrc           // in, none, converted
 	var cret  C.GstAudioBaseSrcSlaveMethod // return, none, casted
@@ -4413,8 +4158,7 @@ func (src *AudioBaseSrcInstance) GetSlaveMethod() AudioBaseSrcSlaveMethod {
 
 // SetProvideClock wraps gst_audio_base_src_set_provide_clock
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_set_provide_clock
 func (src *AudioBaseSrcInstance) SetProvideClock(provide bool) {
 	var carg0 *C.GstAudioBaseSrc // in, none, converted
 	var carg1 C.gboolean         // in
@@ -4431,8 +4175,7 @@ func (src *AudioBaseSrcInstance) SetProvideClock(provide bool) {
 
 // SetSlaveMethod wraps gst_audio_base_src_set_slave_method
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#gst_audio_base_src_set_slave_method
 func (src *AudioBaseSrcInstance) SetSlaveMethod(method AudioBaseSrcSlaveMethod) {
 	var carg0 *C.GstAudioBaseSrc           // in, none, converted
 	var carg1 C.GstAudioBaseSrcSlaveMethod // in, none, casted
@@ -4453,7 +4196,7 @@ type AudioBaseSrcOverrides[Instance AudioBaseSrc] struct {
 
 	// // CreateRingbuffer allows you to override the implementation of the virtual method create_ringbuffer.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#create_ringbuffer
 	CreateRingbuffer func(Instance) AudioRingBuffer
 }
 
@@ -4490,7 +4233,7 @@ func UnsafeApplyAudioBaseSrcOverrides[Instance AudioBaseSrc](gclass unsafe.Point
 // ParentCreateRingbuffer calls the default implementations of the `GstAudioBaseSrc.create_ringbuffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#create_ringbuffer
 func (src *AudioBaseSrcInstance) ParentCreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSrc
 	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
@@ -4549,8 +4292,7 @@ var _ AudioCdSrc = (*AudioCdSrcInstance)(nil)
 
 // AudioCdSrc wraps GstAudioCdSrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#GstAudioCdSrc
 type AudioCdSrc interface {
 	gstbase.PushSrc
 	gst.URIHandler
@@ -4558,8 +4300,7 @@ type AudioCdSrc interface {
 
 	// AddTrack wraps gst_audio_cd_src_add_track
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#gst_audio_cd_src_add_track
 	AddTrack(*AudioCdSrcTrack) bool
 
 	// chain up virtual methods:
@@ -4567,17 +4308,17 @@ type AudioCdSrc interface {
 	// ParentClose calls the default implementations of the `GstAudioCdSrc.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#close
 	ParentClose()
 	// ParentOpen calls the default implementations of the `GstAudioCdSrc.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#open
 	ParentOpen(device string) bool
 	// ParentReadSector calls the default implementations of the `GstAudioCdSrc.read_sector` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#read_sector
 	ParentReadSector(sector int32) *gst.Buffer
 }
 
@@ -4644,8 +4385,7 @@ func UnsafeAudioCdSrcToGlibFull(c AudioCdSrc) unsafe.Pointer {
 
 // AddTrack wraps gst_audio_cd_src_add_track
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#gst_audio_cd_src_add_track
 func (src *AudioCdSrcInstance) AddTrack(track *AudioCdSrcTrack) bool {
 	var carg0 *C.GstAudioCdSrc      // in, none, converted
 	var carg1 *C.GstAudioCdSrcTrack // in, none, converted
@@ -4675,15 +4415,15 @@ type AudioCdSrcOverrides[Instance AudioCdSrc] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#close
 	Close func(Instance)
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#open
 	Open func(Instance, string) bool
 	// // ReadSector allows you to override the implementation of the virtual method read_sector.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#read_sector
 	ReadSector func(Instance, int32) *gst.Buffer
 }
 
@@ -4759,7 +4499,7 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 // ParentClose calls the default implementations of the `GstAudioCdSrc.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#close
 func (src *AudioCdSrcInstance) ParentClose() {
 	var carg0 *C.GstAudioCdSrc
 
@@ -4774,7 +4514,7 @@ func (src *AudioCdSrcInstance) ParentClose() {
 // ParentOpen calls the default implementations of the `GstAudioCdSrc.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#open
 func (src *AudioCdSrcInstance) ParentOpen(device string) bool {
 	var carg0 *C.GstAudioCdSrc
 	var carg1 *C.gchar   // in, none, converted
@@ -4802,7 +4542,7 @@ func (src *AudioCdSrcInstance) ParentOpen(device string) bool {
 // ParentReadSector calls the default implementations of the `GstAudioCdSrc.read_sector` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#read_sector
 func (src *AudioCdSrcInstance) ParentReadSector(sector int32) *gst.Buffer {
 	var carg0 *C.GstAudioCdSrc
 	var carg1 C.gint       // in, none, converted
@@ -4860,31 +4600,26 @@ var _ AudioClock = (*AudioClockInstance)(nil)
 
 // AudioClock wraps GstAudioClock
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#GstAudioClock
 type AudioClock interface {
 	gst.SystemClock
 	upcastToGstAudioClock() *AudioClockInstance
 
 	// Adjust wraps gst_audio_clock_adjust
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#gst_audio_clock_adjust
 	Adjust(gst.ClockTime) gst.ClockTime
 	// GetTime wraps gst_audio_clock_get_time
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#gst_audio_clock_get_time
 	GetTime() gst.ClockTime
 	// Invalidate wraps gst_audio_clock_invalidate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#gst_audio_clock_invalidate
 	Invalidate()
 	// Reset wraps gst_audio_clock_reset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#gst_audio_clock_reset
 	Reset(gst.ClockTime)
 
 	// chain up virtual methods:
@@ -4948,8 +4683,7 @@ func UnsafeAudioClockToGlibFull(c AudioClock) unsafe.Pointer {
 
 // NewAudioClock wraps gst_audio_clock_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#gst_audio_clock_new
 func NewAudioClock(name string, fn AudioClockGetTimeFunc) gst.Clock {
 	var carg1 *C.gchar                   // in, none, string
 	var carg2 C.GstAudioClockGetTimeFunc // callback, scope: notified, closure: carg3, destroy: carg4
@@ -4976,8 +4710,7 @@ func NewAudioClock(name string, fn AudioClockGetTimeFunc) gst.Clock {
 
 // Adjust wraps gst_audio_clock_adjust
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#gst_audio_clock_adjust
 func (clock *AudioClockInstance) Adjust(time gst.ClockTime) gst.ClockTime {
 	var carg0 *C.GstAudioClock // in, none, converted
 	var carg1 C.GstClockTime   // in, none, casted, alias
@@ -4999,8 +4732,7 @@ func (clock *AudioClockInstance) Adjust(time gst.ClockTime) gst.ClockTime {
 
 // GetTime wraps gst_audio_clock_get_time
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#gst_audio_clock_get_time
 func (clock *AudioClockInstance) GetTime() gst.ClockTime {
 	var carg0 *C.GstAudioClock // in, none, converted
 	var cret  C.GstClockTime   // return, none, casted, alias
@@ -5019,8 +4751,7 @@ func (clock *AudioClockInstance) GetTime() gst.ClockTime {
 
 // Invalidate wraps gst_audio_clock_invalidate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#gst_audio_clock_invalidate
 func (clock *AudioClockInstance) Invalidate() {
 	var carg0 *C.GstAudioClock // in, none, converted
 
@@ -5032,8 +4763,7 @@ func (clock *AudioClockInstance) Invalidate() {
 
 // Reset wraps gst_audio_clock_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#gst_audio_clock_reset
 func (clock *AudioClockInstance) Reset(time gst.ClockTime) {
 	var carg0 *C.GstAudioClock // in, none, converted
 	var carg1 C.GstClockTime   // in, none, casted, alias
@@ -5096,166 +4826,138 @@ var _ AudioDecoder = (*AudioDecoderInstance)(nil)
 
 // AudioDecoder wraps GstAudioDecoder
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#GstAudioDecoder
 type AudioDecoder interface {
 	gst.Element
 	upcastToGstAudioDecoder() *AudioDecoderInstance
 
 	// AllocateOutputBuffer wraps gst_audio_decoder_allocate_output_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_allocate_output_buffer
 	AllocateOutputBuffer(uint) *gst.Buffer
 	// FinishFrame wraps gst_audio_decoder_finish_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_finish_frame
 	FinishFrame(*gst.Buffer, int32) gst.FlowReturn
 	// FinishSubframe wraps gst_audio_decoder_finish_subframe
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_finish_subframe
 	FinishSubframe(*gst.Buffer) gst.FlowReturn
 	// GetAllocator wraps gst_audio_decoder_get_allocator
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_allocator
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetAudioInfo wraps gst_audio_decoder_get_audio_info
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_audio_info
 	GetAudioInfo() *AudioInfo
 	// GetDelay wraps gst_audio_decoder_get_delay
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_delay
 	GetDelay() int32
 	// GetDrainable wraps gst_audio_decoder_get_drainable
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_drainable
 	GetDrainable() bool
 	// GetEstimateRate wraps gst_audio_decoder_get_estimate_rate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_estimate_rate
 	GetEstimateRate() int32
 	// GetLatency wraps gst_audio_decoder_get_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_latency
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetMaxErrors wraps gst_audio_decoder_get_max_errors
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_max_errors
 	GetMaxErrors() int32
 	// GetMinLatency wraps gst_audio_decoder_get_min_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_min_latency
 	GetMinLatency() gst.ClockTime
 	// GetNeedsFormat wraps gst_audio_decoder_get_needs_format
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_needs_format
 	GetNeedsFormat() bool
 	// GetParseState wraps gst_audio_decoder_get_parse_state
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_parse_state
 	GetParseState() (bool, bool)
 	// GetPlc wraps gst_audio_decoder_get_plc
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_plc
 	GetPlc() bool
 	// GetPlcAware wraps gst_audio_decoder_get_plc_aware
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_plc_aware
 	GetPlcAware() int32
 	// GetTolerance wraps gst_audio_decoder_get_tolerance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_tolerance
 	GetTolerance() gst.ClockTime
 	// MergeTags wraps gst_audio_decoder_merge_tags
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_merge_tags
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_audio_decoder_negotiate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_negotiate
 	Negotiate() bool
 	// ProxyGetcaps wraps gst_audio_decoder_proxy_getcaps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_proxy_getcaps
 	ProxyGetcaps(*gst.Caps, *gst.Caps) *gst.Caps
 	// SetAllocationCaps wraps gst_audio_decoder_set_allocation_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_allocation_caps
 	SetAllocationCaps(*gst.Caps)
 	// SetDrainable wraps gst_audio_decoder_set_drainable
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_drainable
 	SetDrainable(bool)
 	// SetEstimateRate wraps gst_audio_decoder_set_estimate_rate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_estimate_rate
 	SetEstimateRate(bool)
 	// SetLatency wraps gst_audio_decoder_set_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_latency
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetMaxErrors wraps gst_audio_decoder_set_max_errors
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_max_errors
 	SetMaxErrors(int32)
 	// SetMinLatency wraps gst_audio_decoder_set_min_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_min_latency
 	SetMinLatency(gst.ClockTime)
 	// SetNeedsFormat wraps gst_audio_decoder_set_needs_format
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_needs_format
 	SetNeedsFormat(bool)
 	// SetOutputCaps wraps gst_audio_decoder_set_output_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_output_caps
 	SetOutputCaps(*gst.Caps) bool
 	// SetOutputFormat wraps gst_audio_decoder_set_output_format
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_output_format
 	SetOutputFormat(*AudioInfo) bool
 	// SetPlc wraps gst_audio_decoder_set_plc
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_plc
 	SetPlc(bool)
 	// SetPlcAware wraps gst_audio_decoder_set_plc_aware
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_plc_aware
 	SetPlcAware(bool)
 	// SetTolerance wraps gst_audio_decoder_set_tolerance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_tolerance
 	SetTolerance(gst.ClockTime)
 	// SetUseDefaultPadAcceptcaps wraps gst_audio_decoder_set_use_default_pad_acceptcaps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_use_default_pad_acceptcaps
 	SetUseDefaultPadAcceptcaps(bool)
 
 	// chain up virtual methods:
@@ -5263,87 +4965,87 @@ type AudioDecoder interface {
 	// ParentClose calls the default implementations of the `GstAudioDecoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#close
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the `GstAudioDecoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#decide_allocation
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFlush calls the default implementations of the `GstAudioDecoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#flush
 	ParentFlush(hard bool)
 	// ParentGetcaps calls the default implementations of the `GstAudioDecoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#getcaps
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstAudioDecoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#handle_frame
 	ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn
 	// ParentNegotiate calls the default implementations of the `GstAudioDecoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#negotiate
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the `GstAudioDecoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#open
 	ParentOpen() bool
 	// ParentParse calls the default implementations of the `GstAudioDecoder.parse` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#parse
 	ParentParse(adapter gstbase.Adapter) (int32, int32, gst.FlowReturn)
 	// ParentProposeAllocation calls the default implementations of the `GstAudioDecoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#propose_allocation
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentSetFormat calls the default implementations of the `GstAudioDecoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#set_format
 	ParentSetFormat(caps *gst.Caps) bool
 	// ParentSinkEvent calls the default implementations of the `GstAudioDecoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#sink_event
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstAudioDecoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#sink_query
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstAudioDecoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#src_event
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstAudioDecoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#src_query
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstAudioDecoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstAudioDecoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#stop
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the `GstAudioDecoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#transform_meta
 	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 }
 
@@ -5403,8 +5105,7 @@ func UnsafeAudioDecoderToGlibFull(c AudioDecoder) unsafe.Pointer {
 
 // AllocateOutputBuffer wraps gst_audio_decoder_allocate_output_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_allocate_output_buffer
 func (dec *AudioDecoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gsize            // in, none, casted
@@ -5426,8 +5127,7 @@ func (dec *AudioDecoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 
 // FinishFrame wraps gst_audio_decoder_finish_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_finish_frame
 func (dec *AudioDecoderInstance) FinishFrame(buf *gst.Buffer, frames int32) gst.FlowReturn {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstBuffer       // in, full, converted, nullable
@@ -5454,8 +5154,7 @@ func (dec *AudioDecoderInstance) FinishFrame(buf *gst.Buffer, frames int32) gst.
 
 // FinishSubframe wraps gst_audio_decoder_finish_subframe
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_finish_subframe
 func (dec *AudioDecoderInstance) FinishSubframe(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstBuffer       // in, full, converted, nullable
@@ -5479,8 +5178,7 @@ func (dec *AudioDecoderInstance) FinishSubframe(buf *gst.Buffer) gst.FlowReturn 
 
 // GetAllocator wraps gst_audio_decoder_get_allocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_allocator
 func (dec *AudioDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstAudioDecoder    // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -5506,7 +5204,7 @@ func (dec *AudioDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 
 // GetAudioInfo wraps gst_audio_decoder_get_audio_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_audio_info
 func (dec *AudioDecoderInstance) GetAudioInfo() *AudioInfo {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  *C.GstAudioInfo    // return, none, converted
@@ -5525,7 +5223,7 @@ func (dec *AudioDecoderInstance) GetAudioInfo() *AudioInfo {
 
 // GetDelay wraps gst_audio_decoder_get_delay
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_delay
 func (dec *AudioDecoderInstance) GetDelay() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -5544,8 +5242,7 @@ func (dec *AudioDecoderInstance) GetDelay() int32 {
 
 // GetDrainable wraps gst_audio_decoder_get_drainable
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_drainable
 func (dec *AudioDecoderInstance) GetDrainable() bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -5566,7 +5263,7 @@ func (dec *AudioDecoderInstance) GetDrainable() bool {
 
 // GetEstimateRate wraps gst_audio_decoder_get_estimate_rate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_estimate_rate
 func (dec *AudioDecoderInstance) GetEstimateRate() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -5585,8 +5282,7 @@ func (dec *AudioDecoderInstance) GetEstimateRate() int32 {
 
 // GetLatency wraps gst_audio_decoder_get_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_latency
 func (dec *AudioDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.GstClockTime     // out, full, casted, alias
@@ -5608,7 +5304,7 @@ func (dec *AudioDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 
 // GetMaxErrors wraps gst_audio_decoder_get_max_errors
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_max_errors
 func (dec *AudioDecoderInstance) GetMaxErrors() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -5627,8 +5323,7 @@ func (dec *AudioDecoderInstance) GetMaxErrors() int32 {
 
 // GetMinLatency wraps gst_audio_decoder_get_min_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_min_latency
 func (dec *AudioDecoderInstance) GetMinLatency() gst.ClockTime {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.GstClockTime     // return, none, casted, alias
@@ -5647,8 +5342,7 @@ func (dec *AudioDecoderInstance) GetMinLatency() gst.ClockTime {
 
 // GetNeedsFormat wraps gst_audio_decoder_get_needs_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_needs_format
 func (dec *AudioDecoderInstance) GetNeedsFormat() bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -5669,8 +5363,7 @@ func (dec *AudioDecoderInstance) GetNeedsFormat() bool {
 
 // GetParseState wraps gst_audio_decoder_get_parse_state
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_parse_state
 func (dec *AudioDecoderInstance) GetParseState() (bool, bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // out
@@ -5696,8 +5389,7 @@ func (dec *AudioDecoderInstance) GetParseState() (bool, bool) {
 
 // GetPlc wraps gst_audio_decoder_get_plc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_plc
 func (dec *AudioDecoderInstance) GetPlc() bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -5718,7 +5410,7 @@ func (dec *AudioDecoderInstance) GetPlc() bool {
 
 // GetPlcAware wraps gst_audio_decoder_get_plc_aware
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_plc_aware
 func (dec *AudioDecoderInstance) GetPlcAware() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -5737,8 +5429,7 @@ func (dec *AudioDecoderInstance) GetPlcAware() int32 {
 
 // GetTolerance wraps gst_audio_decoder_get_tolerance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_get_tolerance
 func (dec *AudioDecoderInstance) GetTolerance() gst.ClockTime {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.GstClockTime     // return, none, casted, alias
@@ -5757,8 +5448,7 @@ func (dec *AudioDecoderInstance) GetTolerance() gst.ClockTime {
 
 // MergeTags wraps gst_audio_decoder_merge_tags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_merge_tags
 func (dec *AudioDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted, nullable
@@ -5778,8 +5468,7 @@ func (dec *AudioDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeM
 
 // Negotiate wraps gst_audio_decoder_negotiate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_negotiate
 func (dec *AudioDecoderInstance) Negotiate() bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -5800,8 +5489,7 @@ func (dec *AudioDecoderInstance) Negotiate() bool {
 
 // ProxyGetcaps wraps gst_audio_decoder_proxy_getcaps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_proxy_getcaps
 func (decoder *AudioDecoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -5830,8 +5518,7 @@ func (decoder *AudioDecoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Ca
 
 // SetAllocationCaps wraps gst_audio_decoder_set_allocation_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_allocation_caps
 func (dec *AudioDecoderInstance) SetAllocationCaps(allocationCaps *gst.Caps) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -5848,8 +5535,7 @@ func (dec *AudioDecoderInstance) SetAllocationCaps(allocationCaps *gst.Caps) {
 
 // SetDrainable wraps gst_audio_decoder_set_drainable
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_drainable
 func (dec *AudioDecoderInstance) SetDrainable(enabled bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -5866,8 +5552,7 @@ func (dec *AudioDecoderInstance) SetDrainable(enabled bool) {
 
 // SetEstimateRate wraps gst_audio_decoder_set_estimate_rate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_estimate_rate
 func (dec *AudioDecoderInstance) SetEstimateRate(enabled bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -5884,8 +5569,7 @@ func (dec *AudioDecoderInstance) SetEstimateRate(enabled bool) {
 
 // SetLatency wraps gst_audio_decoder_set_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_latency
 func (dec *AudioDecoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -5903,8 +5587,7 @@ func (dec *AudioDecoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime
 
 // SetMaxErrors wraps gst_audio_decoder_set_max_errors
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_max_errors
 func (dec *AudioDecoderInstance) SetMaxErrors(num int32) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -5919,8 +5602,7 @@ func (dec *AudioDecoderInstance) SetMaxErrors(num int32) {
 
 // SetMinLatency wraps gst_audio_decoder_set_min_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_min_latency
 func (dec *AudioDecoderInstance) SetMinLatency(num gst.ClockTime) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -5935,8 +5617,7 @@ func (dec *AudioDecoderInstance) SetMinLatency(num gst.ClockTime) {
 
 // SetNeedsFormat wraps gst_audio_decoder_set_needs_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_needs_format
 func (dec *AudioDecoderInstance) SetNeedsFormat(enabled bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -5953,8 +5634,7 @@ func (dec *AudioDecoderInstance) SetNeedsFormat(enabled bool) {
 
 // SetOutputCaps wraps gst_audio_decoder_set_output_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_output_caps
 func (dec *AudioDecoderInstance) SetOutputCaps(caps *gst.Caps) bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted
@@ -5978,8 +5658,7 @@ func (dec *AudioDecoderInstance) SetOutputCaps(caps *gst.Caps) bool {
 
 // SetOutputFormat wraps gst_audio_decoder_set_output_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_output_format
 func (dec *AudioDecoderInstance) SetOutputFormat(info *AudioInfo) bool {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstAudioInfo    // in, none, converted
@@ -6003,8 +5682,7 @@ func (dec *AudioDecoderInstance) SetOutputFormat(info *AudioInfo) bool {
 
 // SetPlc wraps gst_audio_decoder_set_plc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_plc
 func (dec *AudioDecoderInstance) SetPlc(enabled bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -6021,8 +5699,7 @@ func (dec *AudioDecoderInstance) SetPlc(enabled bool) {
 
 // SetPlcAware wraps gst_audio_decoder_set_plc_aware
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_plc_aware
 func (dec *AudioDecoderInstance) SetPlcAware(plc bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -6039,8 +5716,7 @@ func (dec *AudioDecoderInstance) SetPlcAware(plc bool) {
 
 // SetTolerance wraps gst_audio_decoder_set_tolerance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_tolerance
 func (dec *AudioDecoderInstance) SetTolerance(tolerance gst.ClockTime) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -6055,8 +5731,7 @@ func (dec *AudioDecoderInstance) SetTolerance(tolerance gst.ClockTime) {
 
 // SetUseDefaultPadAcceptcaps wraps gst_audio_decoder_set_use_default_pad_acceptcaps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#gst_audio_decoder_set_use_default_pad_acceptcaps
 func (decoder *AudioDecoderInstance) SetUseDefaultPadAcceptcaps(use bool) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -6079,71 +5754,71 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#close
 	Close func(Instance) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#decide_allocation
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#flush
 	Flush func(Instance, bool)
 	// // Getcaps allows you to override the implementation of the virtual method getcaps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#getcaps
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#handle_frame
 	HandleFrame func(Instance, *gst.Buffer) gst.FlowReturn
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#negotiate
 	Negotiate func(Instance) bool
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#open
 	Open func(Instance) bool
 	// // Parse allows you to override the implementation of the virtual method parse.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#parse
 	Parse func(Instance, gstbase.Adapter) (int32, int32, gst.FlowReturn)
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#propose_allocation
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // SetFormat allows you to override the implementation of the virtual method set_format.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#set_format
 	SetFormat func(Instance, *gst.Caps) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#sink_event
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#sink_query
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#src_event
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#src_query
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#stop
 	Stop func(Instance) bool
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#transform_meta
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
 }
 
@@ -6553,7 +6228,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 // ParentClose calls the default implementations of the `GstAudioDecoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#close
 func (dec *AudioDecoderInstance) ParentClose() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -6577,7 +6252,7 @@ func (dec *AudioDecoderInstance) ParentClose() bool {
 // ParentDecideAllocation calls the default implementations of the `GstAudioDecoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#decide_allocation
 func (dec *AudioDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -6604,7 +6279,7 @@ func (dec *AudioDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 // ParentFlush calls the default implementations of the `GstAudioDecoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#flush
 func (dec *AudioDecoderInstance) ParentFlush(hard bool) {
 	var carg0 *C.GstAudioDecoder
 	var carg1 C.gboolean // in, none, converted
@@ -6624,7 +6299,7 @@ func (dec *AudioDecoderInstance) ParentFlush(hard bool) {
 // ParentGetcaps calls the default implementations of the `GstAudioDecoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#getcaps
 func (dec *AudioDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -6649,7 +6324,7 @@ func (dec *AudioDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstAudioDecoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#handle_frame
 func (dec *AudioDecoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -6674,7 +6349,7 @@ func (dec *AudioDecoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowR
 // ParentNegotiate calls the default implementations of the `GstAudioDecoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#negotiate
 func (dec *AudioDecoderInstance) ParentNegotiate() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -6698,7 +6373,7 @@ func (dec *AudioDecoderInstance) ParentNegotiate() bool {
 // ParentOpen calls the default implementations of the `GstAudioDecoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#open
 func (dec *AudioDecoderInstance) ParentOpen() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -6722,7 +6397,7 @@ func (dec *AudioDecoderInstance) ParentOpen() bool {
 // ParentParse calls the default implementations of the `GstAudioDecoder.parse` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#parse
 func (dec *AudioDecoderInstance) ParentParse(adapter gstbase.Adapter) (int32, int32, gst.FlowReturn) {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstAdapter   // in, none, converted
@@ -6753,7 +6428,7 @@ func (dec *AudioDecoderInstance) ParentParse(adapter gstbase.Adapter) (int32, in
 // ParentProposeAllocation calls the default implementations of the `GstAudioDecoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#propose_allocation
 func (dec *AudioDecoderInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -6780,7 +6455,7 @@ func (dec *AudioDecoderInstance) ParentProposeAllocation(query *gst.Query) bool 
 // ParentSetFormat calls the default implementations of the `GstAudioDecoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#set_format
 func (dec *AudioDecoderInstance) ParentSetFormat(caps *gst.Caps) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -6807,7 +6482,7 @@ func (dec *AudioDecoderInstance) ParentSetFormat(caps *gst.Caps) bool {
 // ParentSinkEvent calls the default implementations of the `GstAudioDecoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#sink_event
 func (dec *AudioDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -6834,7 +6509,7 @@ func (dec *AudioDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstAudioDecoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#sink_query
 func (dec *AudioDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -6861,7 +6536,7 @@ func (dec *AudioDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstAudioDecoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#src_event
 func (dec *AudioDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -6888,7 +6563,7 @@ func (dec *AudioDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstAudioDecoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#src_query
 func (dec *AudioDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -6915,7 +6590,7 @@ func (dec *AudioDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstAudioDecoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#start
 func (dec *AudioDecoderInstance) ParentStart() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -6939,7 +6614,7 @@ func (dec *AudioDecoderInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstAudioDecoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#stop
 func (dec *AudioDecoderInstance) ParentStop() bool {
 	var carg0 *C.GstAudioDecoder
 	var cret  C.gboolean // return
@@ -6963,7 +6638,7 @@ func (dec *AudioDecoderInstance) ParentStop() bool {
 // ParentTransformMeta calls the default implementations of the `GstAudioDecoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#transform_meta
 func (enc *AudioDecoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
 	var carg0 *C.GstAudioDecoder
 	var carg1 *C.GstBuffer // in, none, converted
@@ -7031,8 +6706,7 @@ var _ AudioEncoder = (*AudioEncoderInstance)(nil)
 
 // AudioEncoder wraps GstAudioEncoder
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#GstAudioEncoder
 type AudioEncoder interface {
 	gst.Element
 	gst.Preset
@@ -7040,151 +6714,127 @@ type AudioEncoder interface {
 
 	// AllocateOutputBuffer wraps gst_audio_encoder_allocate_output_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_allocate_output_buffer
 	AllocateOutputBuffer(uint) *gst.Buffer
 	// FinishFrame wraps gst_audio_encoder_finish_frame
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_finish_frame
 	FinishFrame(*gst.Buffer, int32) gst.FlowReturn
 	// GetAllocator wraps gst_audio_encoder_get_allocator
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_allocator
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetAudioInfo wraps gst_audio_encoder_get_audio_info
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_audio_info
 	GetAudioInfo() *AudioInfo
 	// GetDrainable wraps gst_audio_encoder_get_drainable
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_drainable
 	GetDrainable() bool
 	// GetFrameMax wraps gst_audio_encoder_get_frame_max
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_frame_max
 	GetFrameMax() int32
 	// GetFrameSamplesMax wraps gst_audio_encoder_get_frame_samples_max
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_frame_samples_max
 	GetFrameSamplesMax() int32
 	// GetFrameSamplesMin wraps gst_audio_encoder_get_frame_samples_min
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_frame_samples_min
 	GetFrameSamplesMin() int32
 	// GetHardMin wraps gst_audio_encoder_get_hard_min
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_hard_min
 	GetHardMin() bool
 	// GetHardResync wraps gst_audio_encoder_get_hard_resync
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_hard_resync
 	GetHardResync() bool
 	// GetLatency wraps gst_audio_encoder_get_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_latency
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetLookahead wraps gst_audio_encoder_get_lookahead
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_lookahead
 	GetLookahead() int32
 	// GetMarkGranule wraps gst_audio_encoder_get_mark_granule
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_mark_granule
 	GetMarkGranule() bool
 	// GetPerfectTimestamp wraps gst_audio_encoder_get_perfect_timestamp
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_perfect_timestamp
 	GetPerfectTimestamp() bool
 	// GetTolerance wraps gst_audio_encoder_get_tolerance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_tolerance
 	GetTolerance() gst.ClockTime
 	// MergeTags wraps gst_audio_encoder_merge_tags
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_merge_tags
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_audio_encoder_negotiate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_negotiate
 	Negotiate() bool
 	// ProxyGetcaps wraps gst_audio_encoder_proxy_getcaps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_proxy_getcaps
 	ProxyGetcaps(*gst.Caps, *gst.Caps) *gst.Caps
 	// SetAllocationCaps wraps gst_audio_encoder_set_allocation_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_allocation_caps
 	SetAllocationCaps(*gst.Caps)
 	// SetDrainable wraps gst_audio_encoder_set_drainable
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_drainable
 	SetDrainable(bool)
 	// SetFrameMax wraps gst_audio_encoder_set_frame_max
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_frame_max
 	SetFrameMax(int32)
 	// SetFrameSamplesMax wraps gst_audio_encoder_set_frame_samples_max
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_frame_samples_max
 	SetFrameSamplesMax(int32)
 	// SetFrameSamplesMin wraps gst_audio_encoder_set_frame_samples_min
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_frame_samples_min
 	SetFrameSamplesMin(int32)
 	// SetHardMin wraps gst_audio_encoder_set_hard_min
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_hard_min
 	SetHardMin(bool)
 	// SetHardResync wraps gst_audio_encoder_set_hard_resync
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_hard_resync
 	SetHardResync(bool)
 	// SetLatency wraps gst_audio_encoder_set_latency
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_latency
 	SetLatency(gst.ClockTime, gst.ClockTime)
 	// SetLookahead wraps gst_audio_encoder_set_lookahead
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_lookahead
 	SetLookahead(int32)
 	// SetMarkGranule wraps gst_audio_encoder_set_mark_granule
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_mark_granule
 	SetMarkGranule(bool)
 	// SetOutputFormat wraps gst_audio_encoder_set_output_format
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_output_format
 	SetOutputFormat(*gst.Caps) bool
 	// SetPerfectTimestamp wraps gst_audio_encoder_set_perfect_timestamp
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_perfect_timestamp
 	SetPerfectTimestamp(bool)
 	// SetTolerance wraps gst_audio_encoder_set_tolerance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_tolerance
 	SetTolerance(gst.ClockTime)
 
 	// chain up virtual methods:
@@ -7192,82 +6842,82 @@ type AudioEncoder interface {
 	// ParentClose calls the default implementations of the `GstAudioEncoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#close
 	ParentClose() bool
 	// ParentDecideAllocation calls the default implementations of the `GstAudioEncoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#decide_allocation
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentFlush calls the default implementations of the `GstAudioEncoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#flush
 	ParentFlush()
 	// ParentGetcaps calls the default implementations of the `GstAudioEncoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#getcaps
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
 	// ParentHandleFrame calls the default implementations of the `GstAudioEncoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#handle_frame
 	ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn
 	// ParentNegotiate calls the default implementations of the `GstAudioEncoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#negotiate
 	ParentNegotiate() bool
 	// ParentOpen calls the default implementations of the `GstAudioEncoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#open
 	ParentOpen() bool
 	// ParentProposeAllocation calls the default implementations of the `GstAudioEncoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#propose_allocation
 	ParentProposeAllocation(query *gst.Query) bool
 	// ParentSetFormat calls the default implementations of the `GstAudioEncoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#set_format
 	ParentSetFormat(info *AudioInfo) bool
 	// ParentSinkEvent calls the default implementations of the `GstAudioEncoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#sink_event
 	ParentSinkEvent(event *gst.Event) bool
 	// ParentSinkQuery calls the default implementations of the `GstAudioEncoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#sink_query
 	ParentSinkQuery(query *gst.Query) bool
 	// ParentSrcEvent calls the default implementations of the `GstAudioEncoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#src_event
 	ParentSrcEvent(event *gst.Event) bool
 	// ParentSrcQuery calls the default implementations of the `GstAudioEncoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#src_query
 	ParentSrcQuery(query *gst.Query) bool
 	// ParentStart calls the default implementations of the `GstAudioEncoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstAudioEncoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#stop
 	ParentStop() bool
 	// ParentTransformMeta calls the default implementations of the `GstAudioEncoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#transform_meta
 	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 }
 
@@ -7330,8 +6980,7 @@ func UnsafeAudioEncoderToGlibFull(c AudioEncoder) unsafe.Pointer {
 
 // AllocateOutputBuffer wraps gst_audio_encoder_allocate_output_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_allocate_output_buffer
 func (enc *AudioEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gsize            // in, none, casted
@@ -7353,8 +7002,7 @@ func (enc *AudioEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 
 // FinishFrame wraps gst_audio_encoder_finish_frame
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_finish_frame
 func (enc *AudioEncoderInstance) FinishFrame(buffer *gst.Buffer, samples int32) gst.FlowReturn {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstBuffer       // in, full, converted, nullable
@@ -7381,8 +7029,7 @@ func (enc *AudioEncoderInstance) FinishFrame(buffer *gst.Buffer, samples int32) 
 
 // GetAllocator wraps gst_audio_encoder_get_allocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_allocator
 func (enc *AudioEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	var carg0 *C.GstAudioEncoder    // in, none, converted
 	var carg1 *C.GstAllocator       // out, full, converted, nullable
@@ -7408,7 +7055,7 @@ func (enc *AudioEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 
 // GetAudioInfo wraps gst_audio_encoder_get_audio_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_audio_info
 func (enc *AudioEncoderInstance) GetAudioInfo() *AudioInfo {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  *C.GstAudioInfo    // return, none, converted
@@ -7427,8 +7074,7 @@ func (enc *AudioEncoderInstance) GetAudioInfo() *AudioInfo {
 
 // GetDrainable wraps gst_audio_encoder_get_drainable
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_drainable
 func (enc *AudioEncoderInstance) GetDrainable() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -7449,7 +7095,7 @@ func (enc *AudioEncoderInstance) GetDrainable() bool {
 
 // GetFrameMax wraps gst_audio_encoder_get_frame_max
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_frame_max
 func (enc *AudioEncoderInstance) GetFrameMax() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -7468,7 +7114,7 @@ func (enc *AudioEncoderInstance) GetFrameMax() int32 {
 
 // GetFrameSamplesMax wraps gst_audio_encoder_get_frame_samples_max
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_frame_samples_max
 func (enc *AudioEncoderInstance) GetFrameSamplesMax() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -7487,7 +7133,7 @@ func (enc *AudioEncoderInstance) GetFrameSamplesMax() int32 {
 
 // GetFrameSamplesMin wraps gst_audio_encoder_get_frame_samples_min
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_frame_samples_min
 func (enc *AudioEncoderInstance) GetFrameSamplesMin() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -7506,8 +7152,7 @@ func (enc *AudioEncoderInstance) GetFrameSamplesMin() int32 {
 
 // GetHardMin wraps gst_audio_encoder_get_hard_min
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_hard_min
 func (enc *AudioEncoderInstance) GetHardMin() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -7528,7 +7173,7 @@ func (enc *AudioEncoderInstance) GetHardMin() bool {
 
 // GetHardResync wraps gst_audio_encoder_get_hard_resync
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_hard_resync
 func (enc *AudioEncoderInstance) GetHardResync() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -7549,8 +7194,7 @@ func (enc *AudioEncoderInstance) GetHardResync() bool {
 
 // GetLatency wraps gst_audio_encoder_get_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_latency
 func (enc *AudioEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.GstClockTime     // out, full, casted, alias
@@ -7572,7 +7216,7 @@ func (enc *AudioEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 
 // GetLookahead wraps gst_audio_encoder_get_lookahead
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_lookahead
 func (enc *AudioEncoderInstance) GetLookahead() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
@@ -7591,8 +7235,7 @@ func (enc *AudioEncoderInstance) GetLookahead() int32 {
 
 // GetMarkGranule wraps gst_audio_encoder_get_mark_granule
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_mark_granule
 func (enc *AudioEncoderInstance) GetMarkGranule() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -7613,8 +7256,7 @@ func (enc *AudioEncoderInstance) GetMarkGranule() bool {
 
 // GetPerfectTimestamp wraps gst_audio_encoder_get_perfect_timestamp
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_perfect_timestamp
 func (enc *AudioEncoderInstance) GetPerfectTimestamp() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -7635,8 +7277,7 @@ func (enc *AudioEncoderInstance) GetPerfectTimestamp() bool {
 
 // GetTolerance wraps gst_audio_encoder_get_tolerance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_get_tolerance
 func (enc *AudioEncoderInstance) GetTolerance() gst.ClockTime {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.GstClockTime     // return, none, casted, alias
@@ -7655,8 +7296,7 @@ func (enc *AudioEncoderInstance) GetTolerance() gst.ClockTime {
 
 // MergeTags wraps gst_audio_encoder_merge_tags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_merge_tags
 func (enc *AudioEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstTagList      // in, none, converted, nullable
@@ -7676,8 +7316,7 @@ func (enc *AudioEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeM
 
 // Negotiate wraps gst_audio_encoder_negotiate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_negotiate
 func (enc *AudioEncoderInstance) Negotiate() bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gboolean         // return
@@ -7698,8 +7337,7 @@ func (enc *AudioEncoderInstance) Negotiate() bool {
 
 // ProxyGetcaps wraps gst_audio_encoder_proxy_getcaps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_proxy_getcaps
 func (enc *AudioEncoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -7728,8 +7366,7 @@ func (enc *AudioEncoderInstance) ProxyGetcaps(caps *gst.Caps, filter *gst.Caps) 
 
 // SetAllocationCaps wraps gst_audio_encoder_set_allocation_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_allocation_caps
 func (enc *AudioEncoderInstance) SetAllocationCaps(allocationCaps *gst.Caps) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted, nullable
@@ -7746,8 +7383,7 @@ func (enc *AudioEncoderInstance) SetAllocationCaps(allocationCaps *gst.Caps) {
 
 // SetDrainable wraps gst_audio_encoder_set_drainable
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_drainable
 func (enc *AudioEncoderInstance) SetDrainable(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7764,8 +7400,7 @@ func (enc *AudioEncoderInstance) SetDrainable(enabled bool) {
 
 // SetFrameMax wraps gst_audio_encoder_set_frame_max
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_frame_max
 func (enc *AudioEncoderInstance) SetFrameMax(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -7780,8 +7415,7 @@ func (enc *AudioEncoderInstance) SetFrameMax(num int32) {
 
 // SetFrameSamplesMax wraps gst_audio_encoder_set_frame_samples_max
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_frame_samples_max
 func (enc *AudioEncoderInstance) SetFrameSamplesMax(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -7796,8 +7430,7 @@ func (enc *AudioEncoderInstance) SetFrameSamplesMax(num int32) {
 
 // SetFrameSamplesMin wraps gst_audio_encoder_set_frame_samples_min
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_frame_samples_min
 func (enc *AudioEncoderInstance) SetFrameSamplesMin(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -7812,8 +7445,7 @@ func (enc *AudioEncoderInstance) SetFrameSamplesMin(num int32) {
 
 // SetHardMin wraps gst_audio_encoder_set_hard_min
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_hard_min
 func (enc *AudioEncoderInstance) SetHardMin(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7830,7 +7462,7 @@ func (enc *AudioEncoderInstance) SetHardMin(enabled bool) {
 
 // SetHardResync wraps gst_audio_encoder_set_hard_resync
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_hard_resync
 func (enc *AudioEncoderInstance) SetHardResync(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7847,8 +7479,7 @@ func (enc *AudioEncoderInstance) SetHardResync(enabled bool) {
 
 // SetLatency wraps gst_audio_encoder_set_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_latency
 func (enc *AudioEncoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -7866,8 +7497,7 @@ func (enc *AudioEncoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime
 
 // SetLookahead wraps gst_audio_encoder_set_lookahead
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_lookahead
 func (enc *AudioEncoderInstance) SetLookahead(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
@@ -7882,8 +7512,7 @@ func (enc *AudioEncoderInstance) SetLookahead(num int32) {
 
 // SetMarkGranule wraps gst_audio_encoder_set_mark_granule
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_mark_granule
 func (enc *AudioEncoderInstance) SetMarkGranule(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7900,8 +7529,7 @@ func (enc *AudioEncoderInstance) SetMarkGranule(enabled bool) {
 
 // SetOutputFormat wraps gst_audio_encoder_set_output_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_output_format
 func (enc *AudioEncoderInstance) SetOutputFormat(caps *gst.Caps) bool {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstCaps         // in, none, converted
@@ -7925,8 +7553,7 @@ func (enc *AudioEncoderInstance) SetOutputFormat(caps *gst.Caps) bool {
 
 // SetPerfectTimestamp wraps gst_audio_encoder_set_perfect_timestamp
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_perfect_timestamp
 func (enc *AudioEncoderInstance) SetPerfectTimestamp(enabled bool) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gboolean         // in
@@ -7943,8 +7570,7 @@ func (enc *AudioEncoderInstance) SetPerfectTimestamp(enabled bool) {
 
 // SetTolerance wraps gst_audio_encoder_set_tolerance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#gst_audio_encoder_set_tolerance
 func (enc *AudioEncoderInstance) SetTolerance(tolerance gst.ClockTime) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.GstClockTime     // in, none, casted, alias
@@ -7965,67 +7591,67 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#close
 	Close func(Instance) bool
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#decide_allocation
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // Flush allows you to override the implementation of the virtual method flush.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#flush
 	Flush func(Instance)
 	// // Getcaps allows you to override the implementation of the virtual method getcaps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#getcaps
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// // HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#handle_frame
 	HandleFrame func(Instance, *gst.Buffer) gst.FlowReturn
 	// // Negotiate allows you to override the implementation of the virtual method negotiate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#negotiate
 	Negotiate func(Instance) bool
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#open
 	Open func(Instance) bool
 	// // ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#propose_allocation
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// // SetFormat allows you to override the implementation of the virtual method set_format.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#set_format
 	SetFormat func(Instance, *AudioInfo) bool
 	// // SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#sink_event
 	SinkEvent func(Instance, *gst.Event) bool
 	// // SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#sink_query
 	SinkQuery func(Instance, *gst.Query) bool
 	// // SrcEvent allows you to override the implementation of the virtual method src_event.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#src_event
 	SrcEvent func(Instance, *gst.Event) bool
 	// // SrcQuery allows you to override the implementation of the virtual method src_query.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#src_query
 	SrcQuery func(Instance, *gst.Query) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#stop
 	Stop func(Instance) bool
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#transform_meta
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
 }
 
@@ -8405,7 +8031,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 // ParentClose calls the default implementations of the `GstAudioEncoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#close
 func (enc *AudioEncoderInstance) ParentClose() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -8429,7 +8055,7 @@ func (enc *AudioEncoderInstance) ParentClose() bool {
 // ParentDecideAllocation calls the default implementations of the `GstAudioEncoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#decide_allocation
 func (enc *AudioEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -8456,7 +8082,7 @@ func (enc *AudioEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 // ParentFlush calls the default implementations of the `GstAudioEncoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#flush
 func (enc *AudioEncoderInstance) ParentFlush() {
 	var carg0 *C.GstAudioEncoder
 
@@ -8471,7 +8097,7 @@ func (enc *AudioEncoderInstance) ParentFlush() {
 // ParentGetcaps calls the default implementations of the `GstAudioEncoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#getcaps
 func (enc *AudioEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstCaps // in, none, converted
@@ -8496,7 +8122,7 @@ func (enc *AudioEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 // ParentHandleFrame calls the default implementations of the `GstAudioEncoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#handle_frame
 func (enc *AudioEncoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstBuffer    // in, none, converted
@@ -8521,7 +8147,7 @@ func (enc *AudioEncoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowR
 // ParentNegotiate calls the default implementations of the `GstAudioEncoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#negotiate
 func (enc *AudioEncoderInstance) ParentNegotiate() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -8545,7 +8171,7 @@ func (enc *AudioEncoderInstance) ParentNegotiate() bool {
 // ParentOpen calls the default implementations of the `GstAudioEncoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#open
 func (enc *AudioEncoderInstance) ParentOpen() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -8569,7 +8195,7 @@ func (enc *AudioEncoderInstance) ParentOpen() bool {
 // ParentProposeAllocation calls the default implementations of the `GstAudioEncoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#propose_allocation
 func (enc *AudioEncoderInstance) ParentProposeAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -8596,7 +8222,7 @@ func (enc *AudioEncoderInstance) ParentProposeAllocation(query *gst.Query) bool 
 // ParentSetFormat calls the default implementations of the `GstAudioEncoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#set_format
 func (enc *AudioEncoderInstance) ParentSetFormat(info *AudioInfo) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstAudioInfo // in, none, converted
@@ -8623,7 +8249,7 @@ func (enc *AudioEncoderInstance) ParentSetFormat(info *AudioInfo) bool {
 // ParentSinkEvent calls the default implementations of the `GstAudioEncoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#sink_event
 func (enc *AudioEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -8650,7 +8276,7 @@ func (enc *AudioEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 // ParentSinkQuery calls the default implementations of the `GstAudioEncoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#sink_query
 func (encoder *AudioEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -8677,7 +8303,7 @@ func (encoder *AudioEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 // ParentSrcEvent calls the default implementations of the `GstAudioEncoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#src_event
 func (enc *AudioEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstEvent // in, none, converted
@@ -8704,7 +8330,7 @@ func (enc *AudioEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 // ParentSrcQuery calls the default implementations of the `GstAudioEncoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#src_query
 func (encoder *AudioEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstQuery // in, none, converted
@@ -8731,7 +8357,7 @@ func (encoder *AudioEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 // ParentStart calls the default implementations of the `GstAudioEncoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#start
 func (enc *AudioEncoderInstance) ParentStart() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -8755,7 +8381,7 @@ func (enc *AudioEncoderInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstAudioEncoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#stop
 func (enc *AudioEncoderInstance) ParentStop() bool {
 	var carg0 *C.GstAudioEncoder
 	var cret  C.gboolean // return
@@ -8779,7 +8405,7 @@ func (enc *AudioEncoderInstance) ParentStop() bool {
 // ParentTransformMeta calls the default implementations of the `GstAudioEncoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#transform_meta
 func (enc *AudioEncoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
 	var carg0 *C.GstAudioEncoder
 	var carg1 *C.GstBuffer // in, none, converted
@@ -8845,8 +8471,7 @@ var _ AudioFilter = (*AudioFilterInstance)(nil)
 
 // AudioFilter wraps GstAudioFilter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiofilter.html#GstAudioFilter
 type AudioFilter interface {
 	gstbase.BaseTransform
 	upcastToGstAudioFilter() *AudioFilterInstance
@@ -8856,7 +8481,7 @@ type AudioFilter interface {
 	// ParentSetup calls the default implementations of the `GstAudioFilter.setup` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiofilter.html#setup
 	ParentSetup(info *AudioInfo) bool
 }
 
@@ -8924,7 +8549,7 @@ type AudioFilterOverrides[Instance AudioFilter] struct {
 
 	// // Setup allows you to override the implementation of the virtual method setup.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiofilter.html#setup
 	Setup func(Instance, *AudioInfo) bool
 }
 
@@ -8963,7 +8588,7 @@ func UnsafeApplyAudioFilterOverrides[Instance AudioFilter](gclass unsafe.Pointer
 // ParentSetup calls the default implementations of the `GstAudioFilter.setup` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiofilter.html#setup
 func (filter *AudioFilterInstance) ParentSetup(info *AudioInfo) bool {
 	var carg0 *C.GstAudioFilter
 	var carg1 *C.GstAudioInfo // in, none, converted
@@ -9023,150 +8648,122 @@ var _ AudioRingBuffer = (*AudioRingBufferInstance)(nil)
 
 // AudioRingBuffer wraps GstAudioRingBuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GstAudioRingBuffer
 type AudioRingBuffer interface {
 	gst.Object
 	upcastToGstAudioRingBuffer() *AudioRingBufferInstance
 
 	// Acquire wraps gst_audio_ring_buffer_acquire
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_acquire
 	Acquire(*AudioRingBufferSpec) bool
 	// Activate wraps gst_audio_ring_buffer_activate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_activate
 	Activate(bool) bool
 	// Advance wraps gst_audio_ring_buffer_advance
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_advance
 	Advance(uint)
 	// Clear wraps gst_audio_ring_buffer_clear
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_clear
 	Clear(int32)
 	// ClearAll wraps gst_audio_ring_buffer_clear_all
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_clear_all
 	ClearAll()
 	// CloseDevice wraps gst_audio_ring_buffer_close_device
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_close_device
 	CloseDevice() bool
 	// Convert wraps gst_audio_ring_buffer_convert
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_convert
 	Convert(gst.Format, int64, gst.Format) (int64, bool)
 	// Delay wraps gst_audio_ring_buffer_delay
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_delay
 	Delay() uint
 	// DeviceIsOpen wraps gst_audio_ring_buffer_device_is_open
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_device_is_open
 	DeviceIsOpen() bool
 	// GetSegbase wraps gst_audio_ring_buffer_get_segbase
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_get_segbase
 	GetSegbase() uint64
 	// GetSegdone wraps gst_audio_ring_buffer_get_segdone
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_get_segdone
 	GetSegdone() uint64
 	// IsAcquired wraps gst_audio_ring_buffer_is_acquired
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_is_acquired
 	IsAcquired() bool
 	// IsActive wraps gst_audio_ring_buffer_is_active
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_is_active
 	IsActive() bool
 	// IsFlushing wraps gst_audio_ring_buffer_is_flushing
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_is_flushing
 	IsFlushing() bool
 	// MayStart wraps gst_audio_ring_buffer_may_start
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_may_start
 	MayStart(bool)
 	// OpenDevice wraps gst_audio_ring_buffer_open_device
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_open_device
 	OpenDevice() bool
 	// Pause wraps gst_audio_ring_buffer_pause
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_pause
 	Pause() bool
 	// Read wraps gst_audio_ring_buffer_read
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_read
 	Read(uint64, []uint8) (gst.ClockTime, uint)
 	// Release wraps gst_audio_ring_buffer_release
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_release
 	Release() bool
 	// SamplesDone wraps gst_audio_ring_buffer_samples_done
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_samples_done
 	SamplesDone() uint64
 	// SetCallbackFull wraps gst_audio_ring_buffer_set_callback_full
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_callback_full
 	SetCallbackFull(AudioRingBufferCallback)
 	// SetErrored wraps gst_audio_ring_buffer_set_errored
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_errored
 	SetErrored()
 	// SetFlushing wraps gst_audio_ring_buffer_set_flushing
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_flushing
 	SetFlushing(bool)
 	// SetSample wraps gst_audio_ring_buffer_set_sample
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_sample
 	SetSample(uint64)
 	// SetSegdone wraps gst_audio_ring_buffer_set_segdone
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_segdone
 	SetSegdone(uint64)
 	// SetTimestamp wraps gst_audio_ring_buffer_set_timestamp
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_timestamp
 	SetTimestamp(int32, gst.ClockTime)
 	// Start wraps gst_audio_ring_buffer_start
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_start
 	Start() bool
 	// Stop wraps gst_audio_ring_buffer_stop
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_stop
 	Stop() bool
 
 	// chain up virtual methods:
@@ -9174,57 +8771,57 @@ type AudioRingBuffer interface {
 	// ParentAcquire calls the default implementations of the `GstAudioRingBuffer.acquire` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#acquire
 	ParentAcquire(spec *AudioRingBufferSpec) bool
 	// ParentActivate calls the default implementations of the `GstAudioRingBuffer.activate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#activate
 	ParentActivate(active bool) bool
 	// ParentClearAll calls the default implementations of the `GstAudioRingBuffer.clear_all` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#clear_all
 	ParentClearAll()
 	// ParentCloseDevice calls the default implementations of the `GstAudioRingBuffer.close_device` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#close_device
 	ParentCloseDevice() bool
 	// ParentDelay calls the default implementations of the `GstAudioRingBuffer.delay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#delay
 	ParentDelay() uint
 	// ParentOpenDevice calls the default implementations of the `GstAudioRingBuffer.open_device` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#open_device
 	ParentOpenDevice() bool
 	// ParentPause calls the default implementations of the `GstAudioRingBuffer.pause` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#pause
 	ParentPause() bool
 	// ParentRelease calls the default implementations of the `GstAudioRingBuffer.release` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#release
 	ParentRelease() bool
 	// ParentResume calls the default implementations of the `GstAudioRingBuffer.resume` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#resume
 	ParentResume() bool
 	// ParentStart calls the default implementations of the `GstAudioRingBuffer.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#start
 	ParentStart() bool
 	// ParentStop calls the default implementations of the `GstAudioRingBuffer.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#stop
 	ParentStop() bool
 }
 
@@ -9282,8 +8879,7 @@ func UnsafeAudioRingBufferToGlibFull(c AudioRingBuffer) unsafe.Pointer {
 
 // AudioRingBufferDebugSpecBuff wraps gst_audio_ring_buffer_debug_spec_buff
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_debug_spec_buff
 func AudioRingBufferDebugSpecBuff(spec *AudioRingBufferSpec) {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 
@@ -9295,8 +8891,7 @@ func AudioRingBufferDebugSpecBuff(spec *AudioRingBufferSpec) {
 
 // AudioRingBufferDebugSpecCaps wraps gst_audio_ring_buffer_debug_spec_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_debug_spec_caps
 func AudioRingBufferDebugSpecCaps(spec *AudioRingBufferSpec) {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 
@@ -9308,8 +8903,7 @@ func AudioRingBufferDebugSpecCaps(spec *AudioRingBufferSpec) {
 
 // AudioRingBufferParseCaps wraps gst_audio_ring_buffer_parse_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_parse_caps
 func AudioRingBufferParseCaps(spec *AudioRingBufferSpec, caps *gst.Caps) bool {
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
 	var carg2 *C.GstCaps                // in, none, converted
@@ -9333,8 +8927,7 @@ func AudioRingBufferParseCaps(spec *AudioRingBufferSpec, caps *gst.Caps) bool {
 
 // Acquire wraps gst_audio_ring_buffer_acquire
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_acquire
 func (buf *AudioRingBufferInstance) Acquire(spec *AudioRingBufferSpec) bool {
 	var carg0 *C.GstAudioRingBuffer     // in, none, converted
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
@@ -9358,8 +8951,7 @@ func (buf *AudioRingBufferInstance) Acquire(spec *AudioRingBufferSpec) bool {
 
 // Activate wraps gst_audio_ring_buffer_activate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_activate
 func (buf *AudioRingBufferInstance) Activate(active bool) bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gboolean            // in
@@ -9385,8 +8977,7 @@ func (buf *AudioRingBufferInstance) Activate(active bool) bool {
 
 // Advance wraps gst_audio_ring_buffer_advance
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_advance
 func (buf *AudioRingBufferInstance) Advance(advance uint) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.guint               // in, none, casted
@@ -9401,8 +8992,7 @@ func (buf *AudioRingBufferInstance) Advance(advance uint) {
 
 // Clear wraps gst_audio_ring_buffer_clear
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_clear
 func (buf *AudioRingBufferInstance) Clear(segment int32) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gint                // in, none, casted
@@ -9417,8 +9007,7 @@ func (buf *AudioRingBufferInstance) Clear(segment int32) {
 
 // ClearAll wraps gst_audio_ring_buffer_clear_all
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_clear_all
 func (buf *AudioRingBufferInstance) ClearAll() {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 
@@ -9430,8 +9019,7 @@ func (buf *AudioRingBufferInstance) ClearAll() {
 
 // CloseDevice wraps gst_audio_ring_buffer_close_device
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_close_device
 func (buf *AudioRingBufferInstance) CloseDevice() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9452,8 +9040,7 @@ func (buf *AudioRingBufferInstance) CloseDevice() bool {
 
 // Convert wraps gst_audio_ring_buffer_convert
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_convert
 func (buf *AudioRingBufferInstance) Convert(srcFmt gst.Format, srcVal int64, destFmt gst.Format) (int64, bool) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.GstFormat           // in, none, casted
@@ -9486,8 +9073,7 @@ func (buf *AudioRingBufferInstance) Convert(srcFmt gst.Format, srcVal int64, des
 
 // Delay wraps gst_audio_ring_buffer_delay
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_delay
 func (buf *AudioRingBufferInstance) Delay() uint {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.guint               // return, none, casted
@@ -9506,8 +9092,7 @@ func (buf *AudioRingBufferInstance) Delay() uint {
 
 // DeviceIsOpen wraps gst_audio_ring_buffer_device_is_open
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_device_is_open
 func (buf *AudioRingBufferInstance) DeviceIsOpen() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9528,8 +9113,7 @@ func (buf *AudioRingBufferInstance) DeviceIsOpen() bool {
 
 // GetSegbase wraps gst_audio_ring_buffer_get_segbase
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_get_segbase
 func (buf *AudioRingBufferInstance) GetSegbase() uint64 {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.guint64             // return, none, casted
@@ -9548,8 +9132,7 @@ func (buf *AudioRingBufferInstance) GetSegbase() uint64 {
 
 // GetSegdone wraps gst_audio_ring_buffer_get_segdone
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_get_segdone
 func (buf *AudioRingBufferInstance) GetSegdone() uint64 {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.guint64             // return, none, casted
@@ -9568,8 +9151,7 @@ func (buf *AudioRingBufferInstance) GetSegdone() uint64 {
 
 // IsAcquired wraps gst_audio_ring_buffer_is_acquired
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_is_acquired
 func (buf *AudioRingBufferInstance) IsAcquired() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9590,8 +9172,7 @@ func (buf *AudioRingBufferInstance) IsAcquired() bool {
 
 // IsActive wraps gst_audio_ring_buffer_is_active
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_is_active
 func (buf *AudioRingBufferInstance) IsActive() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9612,8 +9193,7 @@ func (buf *AudioRingBufferInstance) IsActive() bool {
 
 // IsFlushing wraps gst_audio_ring_buffer_is_flushing
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_is_flushing
 func (buf *AudioRingBufferInstance) IsFlushing() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9634,8 +9214,7 @@ func (buf *AudioRingBufferInstance) IsFlushing() bool {
 
 // MayStart wraps gst_audio_ring_buffer_may_start
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_may_start
 func (buf *AudioRingBufferInstance) MayStart(allowed bool) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gboolean            // in
@@ -9652,8 +9231,7 @@ func (buf *AudioRingBufferInstance) MayStart(allowed bool) {
 
 // OpenDevice wraps gst_audio_ring_buffer_open_device
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_open_device
 func (buf *AudioRingBufferInstance) OpenDevice() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9674,8 +9252,7 @@ func (buf *AudioRingBufferInstance) OpenDevice() bool {
 
 // Pause wraps gst_audio_ring_buffer_pause
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_pause
 func (buf *AudioRingBufferInstance) Pause() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9696,8 +9273,7 @@ func (buf *AudioRingBufferInstance) Pause() bool {
 
 // Read wraps gst_audio_ring_buffer_read
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_read
 func (buf *AudioRingBufferInstance) Read(sample uint64, data []uint8) (gst.ClockTime, uint) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.guint64             // in, none, casted
@@ -9729,8 +9305,7 @@ func (buf *AudioRingBufferInstance) Read(sample uint64, data []uint8) (gst.Clock
 
 // Release wraps gst_audio_ring_buffer_release
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_release
 func (buf *AudioRingBufferInstance) Release() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9751,8 +9326,7 @@ func (buf *AudioRingBufferInstance) Release() bool {
 
 // SamplesDone wraps gst_audio_ring_buffer_samples_done
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_samples_done
 func (buf *AudioRingBufferInstance) SamplesDone() uint64 {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.guint64             // return, none, casted
@@ -9771,8 +9345,7 @@ func (buf *AudioRingBufferInstance) SamplesDone() uint64 {
 
 // SetCallbackFull wraps gst_audio_ring_buffer_set_callback_full
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_callback_full
 func (buf *AudioRingBufferInstance) SetCallbackFull(cb AudioRingBufferCallback) {
 	var carg0 *C.GstAudioRingBuffer        // in, none, converted
 	var carg1 C.GstAudioRingBufferCallback // callback, scope: notified, closure: carg2, destroy: carg3, nullable
@@ -9793,8 +9366,7 @@ func (buf *AudioRingBufferInstance) SetCallbackFull(cb AudioRingBufferCallback) 
 
 // SetErrored wraps gst_audio_ring_buffer_set_errored
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_errored
 func (buf *AudioRingBufferInstance) SetErrored() {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 
@@ -9806,8 +9378,7 @@ func (buf *AudioRingBufferInstance) SetErrored() {
 
 // SetFlushing wraps gst_audio_ring_buffer_set_flushing
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_flushing
 func (buf *AudioRingBufferInstance) SetFlushing(flushing bool) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gboolean            // in
@@ -9824,8 +9395,7 @@ func (buf *AudioRingBufferInstance) SetFlushing(flushing bool) {
 
 // SetSample wraps gst_audio_ring_buffer_set_sample
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_sample
 func (buf *AudioRingBufferInstance) SetSample(sample uint64) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.guint64             // in, none, casted
@@ -9840,8 +9410,7 @@ func (buf *AudioRingBufferInstance) SetSample(sample uint64) {
 
 // SetSegdone wraps gst_audio_ring_buffer_set_segdone
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_segdone
 func (buf *AudioRingBufferInstance) SetSegdone(segdone uint64) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.guint64             // in, none, casted
@@ -9856,7 +9425,7 @@ func (buf *AudioRingBufferInstance) SetSegdone(segdone uint64) {
 
 // SetTimestamp wraps gst_audio_ring_buffer_set_timestamp
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_set_timestamp
 func (buf *AudioRingBufferInstance) SetTimestamp(readseg int32, timestamp gst.ClockTime) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gint                // in, none, casted
@@ -9874,8 +9443,7 @@ func (buf *AudioRingBufferInstance) SetTimestamp(readseg int32, timestamp gst.Cl
 
 // Start wraps gst_audio_ring_buffer_start
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_start
 func (buf *AudioRingBufferInstance) Start() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9896,8 +9464,7 @@ func (buf *AudioRingBufferInstance) Start() bool {
 
 // Stop wraps gst_audio_ring_buffer_stop
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#gst_audio_ring_buffer_stop
 func (buf *AudioRingBufferInstance) Stop() bool {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var cret  C.gboolean            // return
@@ -9924,47 +9491,47 @@ type AudioRingBufferOverrides[Instance AudioRingBuffer] struct {
 
 	// // Acquire allows you to override the implementation of the virtual method acquire.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#acquire
 	Acquire func(Instance, *AudioRingBufferSpec) bool
 	// // Activate allows you to override the implementation of the virtual method activate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#activate
 	Activate func(Instance, bool) bool
 	// // ClearAll allows you to override the implementation of the virtual method clear_all.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#clear_all
 	ClearAll func(Instance)
 	// // CloseDevice allows you to override the implementation of the virtual method close_device.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#close_device
 	CloseDevice func(Instance) bool
 	// // Delay allows you to override the implementation of the virtual method delay.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#delay
 	Delay func(Instance) uint
 	// // OpenDevice allows you to override the implementation of the virtual method open_device.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#open_device
 	OpenDevice func(Instance) bool
 	// // Pause allows you to override the implementation of the virtual method pause.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#pause
 	Pause func(Instance) bool
 	// // Release allows you to override the implementation of the virtual method release.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#release
 	Release func(Instance) bool
 	// // Resume allows you to override the implementation of the virtual method resume.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#resume
 	Resume func(Instance) bool
 	// // Start allows you to override the implementation of the virtual method start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#start
 	Start func(Instance) bool
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#stop
 	Stop func(Instance) bool
 }
 
@@ -10218,7 +9785,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 // ParentAcquire calls the default implementations of the `GstAudioRingBuffer.acquire` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#acquire
 func (buf *AudioRingBufferInstance) ParentAcquire(spec *AudioRingBufferSpec) bool {
 	var carg0 *C.GstAudioRingBuffer
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
@@ -10245,7 +9812,7 @@ func (buf *AudioRingBufferInstance) ParentAcquire(spec *AudioRingBufferSpec) boo
 // ParentActivate calls the default implementations of the `GstAudioRingBuffer.activate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#activate
 func (buf *AudioRingBufferInstance) ParentActivate(active bool) bool {
 	var carg0 *C.GstAudioRingBuffer
 	var carg1 C.gboolean // in, none, converted
@@ -10274,7 +9841,7 @@ func (buf *AudioRingBufferInstance) ParentActivate(active bool) bool {
 // ParentClearAll calls the default implementations of the `GstAudioRingBuffer.clear_all` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#clear_all
 func (buf *AudioRingBufferInstance) ParentClearAll() {
 	var carg0 *C.GstAudioRingBuffer
 
@@ -10289,7 +9856,7 @@ func (buf *AudioRingBufferInstance) ParentClearAll() {
 // ParentCloseDevice calls the default implementations of the `GstAudioRingBuffer.close_device` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#close_device
 func (buf *AudioRingBufferInstance) ParentCloseDevice() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -10313,7 +9880,7 @@ func (buf *AudioRingBufferInstance) ParentCloseDevice() bool {
 // ParentDelay calls the default implementations of the `GstAudioRingBuffer.delay` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#delay
 func (buf *AudioRingBufferInstance) ParentDelay() uint {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.guint // return, none, casted
@@ -10335,7 +9902,7 @@ func (buf *AudioRingBufferInstance) ParentDelay() uint {
 // ParentOpenDevice calls the default implementations of the `GstAudioRingBuffer.open_device` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#open_device
 func (buf *AudioRingBufferInstance) ParentOpenDevice() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -10359,7 +9926,7 @@ func (buf *AudioRingBufferInstance) ParentOpenDevice() bool {
 // ParentPause calls the default implementations of the `GstAudioRingBuffer.pause` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#pause
 func (buf *AudioRingBufferInstance) ParentPause() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -10383,7 +9950,7 @@ func (buf *AudioRingBufferInstance) ParentPause() bool {
 // ParentRelease calls the default implementations of the `GstAudioRingBuffer.release` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#release
 func (buf *AudioRingBufferInstance) ParentRelease() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -10407,7 +9974,7 @@ func (buf *AudioRingBufferInstance) ParentRelease() bool {
 // ParentResume calls the default implementations of the `GstAudioRingBuffer.resume` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#resume
 func (buf *AudioRingBufferInstance) ParentResume() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -10431,7 +9998,7 @@ func (buf *AudioRingBufferInstance) ParentResume() bool {
 // ParentStart calls the default implementations of the `GstAudioRingBuffer.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#start
 func (buf *AudioRingBufferInstance) ParentStart() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -10455,7 +10022,7 @@ func (buf *AudioRingBufferInstance) ParentStart() bool {
 // ParentStop calls the default implementations of the `GstAudioRingBuffer.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#stop
 func (buf *AudioRingBufferInstance) ParentStop() bool {
 	var carg0 *C.GstAudioRingBuffer
 	var cret  C.gboolean // return
@@ -10512,8 +10079,7 @@ var _ AudioSink = (*AudioSinkInstance)(nil)
 
 // AudioSink wraps GstAudioSink
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#GstAudioSink
 type AudioSink interface {
 	AudioBaseSink
 	upcastToGstAudioSink() *AudioSinkInstance
@@ -10523,47 +10089,47 @@ type AudioSink interface {
 	// ParentClose calls the default implementations of the `GstAudioSink.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#close
 	ParentClose() bool
 	// ParentDelay calls the default implementations of the `GstAudioSink.delay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#delay
 	ParentDelay() uint
 	// ParentOpen calls the default implementations of the `GstAudioSink.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#open
 	ParentOpen() bool
 	// ParentPause calls the default implementations of the `GstAudioSink.pause` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#pause
 	ParentPause()
 	// ParentPrepareAudioSink calls the default implementations of the `GstAudioSink.prepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#prepare
 	ParentPrepareAudioSink(spec *AudioRingBufferSpec) bool
 	// ParentReset calls the default implementations of the `GstAudioSink.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#reset
 	ParentReset()
 	// ParentResume calls the default implementations of the `GstAudioSink.resume` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#resume
 	ParentResume()
 	// ParentStopAudioSink calls the default implementations of the `GstAudioSink.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#stop
 	ParentStopAudioSink()
 	// ParentUnprepare calls the default implementations of the `GstAudioSink.unprepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#unprepare
 	ParentUnprepare() bool
 }
 
@@ -10633,39 +10199,39 @@ type AudioSinkOverrides[Instance AudioSink] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#close
 	Close func(Instance) bool
 	// // Delay allows you to override the implementation of the virtual method delay.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#delay
 	Delay func(Instance) uint
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#open
 	Open func(Instance) bool
 	// // Pause allows you to override the implementation of the virtual method pause.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#pause
 	Pause func(Instance)
 	// // Prepare allows you to override the implementation of the virtual method prepare.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#prepare
 	Prepare func(Instance, *AudioRingBufferSpec) bool
 	// // Reset allows you to override the implementation of the virtual method reset.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#reset
 	Reset func(Instance)
 	// // Resume allows you to override the implementation of the virtual method resume.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#resume
 	Resume func(Instance)
 	// // Stop allows you to override the implementation of the virtual method stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#stop
 	Stop func(Instance)
 	// // Unprepare allows you to override the implementation of the virtual method unprepare.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#unprepare
 	Unprepare func(Instance) bool
 }
 
@@ -10850,7 +10416,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 // ParentClose calls the default implementations of the `GstAudioSink.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#close
 func (sink *AudioSinkInstance) ParentClose() bool {
 	var carg0 *C.GstAudioSink
 	var cret  C.gboolean // return
@@ -10874,7 +10440,7 @@ func (sink *AudioSinkInstance) ParentClose() bool {
 // ParentDelay calls the default implementations of the `GstAudioSink.delay` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#delay
 func (sink *AudioSinkInstance) ParentDelay() uint {
 	var carg0 *C.GstAudioSink
 	var cret  C.guint // return, none, casted
@@ -10896,7 +10462,7 @@ func (sink *AudioSinkInstance) ParentDelay() uint {
 // ParentOpen calls the default implementations of the `GstAudioSink.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#open
 func (sink *AudioSinkInstance) ParentOpen() bool {
 	var carg0 *C.GstAudioSink
 	var cret  C.gboolean // return
@@ -10920,7 +10486,7 @@ func (sink *AudioSinkInstance) ParentOpen() bool {
 // ParentPause calls the default implementations of the `GstAudioSink.pause` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#pause
 func (sink *AudioSinkInstance) ParentPause() {
 	var carg0 *C.GstAudioSink
 
@@ -10935,7 +10501,7 @@ func (sink *AudioSinkInstance) ParentPause() {
 // ParentPrepareAudioSink calls the default implementations of the `GstAudioSink.prepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#prepare
 func (sink *AudioSinkInstance) ParentPrepareAudioSink(spec *AudioRingBufferSpec) bool {
 	var carg0 *C.GstAudioSink
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
@@ -10962,7 +10528,7 @@ func (sink *AudioSinkInstance) ParentPrepareAudioSink(spec *AudioRingBufferSpec)
 // ParentReset calls the default implementations of the `GstAudioSink.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#reset
 func (sink *AudioSinkInstance) ParentReset() {
 	var carg0 *C.GstAudioSink
 
@@ -10977,7 +10543,7 @@ func (sink *AudioSinkInstance) ParentReset() {
 // ParentResume calls the default implementations of the `GstAudioSink.resume` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#resume
 func (sink *AudioSinkInstance) ParentResume() {
 	var carg0 *C.GstAudioSink
 
@@ -10992,7 +10558,7 @@ func (sink *AudioSinkInstance) ParentResume() {
 // ParentStopAudioSink calls the default implementations of the `GstAudioSink.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#stop
 func (sink *AudioSinkInstance) ParentStopAudioSink() {
 	var carg0 *C.GstAudioSink
 
@@ -11007,7 +10573,7 @@ func (sink *AudioSinkInstance) ParentStopAudioSink() {
 // ParentUnprepare calls the default implementations of the `GstAudioSink.unprepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#unprepare
 func (sink *AudioSinkInstance) ParentUnprepare() bool {
 	var carg0 *C.GstAudioSink
 	var cret  C.gboolean // return
@@ -11064,8 +10630,7 @@ var _ AudioSrc = (*AudioSrcInstance)(nil)
 
 // AudioSrc wraps GstAudioSrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#GstAudioSrc
 type AudioSrc interface {
 	AudioBaseSrc
 	upcastToGstAudioSrc() *AudioSrcInstance
@@ -11075,32 +10640,32 @@ type AudioSrc interface {
 	// ParentClose calls the default implementations of the `GstAudioSrc.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#close
 	ParentClose() bool
 	// ParentDelay calls the default implementations of the `GstAudioSrc.delay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#delay
 	ParentDelay() uint
 	// ParentOpen calls the default implementations of the `GstAudioSrc.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#open
 	ParentOpen() bool
 	// ParentPrepare calls the default implementations of the `GstAudioSrc.prepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#prepare
 	ParentPrepare(spec *AudioRingBufferSpec) bool
 	// ParentReset calls the default implementations of the `GstAudioSrc.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#reset
 	ParentReset()
 	// ParentUnprepare calls the default implementations of the `GstAudioSrc.unprepare` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#unprepare
 	ParentUnprepare() bool
 }
 
@@ -11172,27 +10737,27 @@ type AudioSrcOverrides[Instance AudioSrc] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#close
 	Close func(Instance) bool
 	// // Delay allows you to override the implementation of the virtual method delay.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#delay
 	Delay func(Instance) uint
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#open
 	Open func(Instance) bool
 	// // Prepare allows you to override the implementation of the virtual method prepare.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#prepare
 	Prepare func(Instance, *AudioRingBufferSpec) bool
 	// // Reset allows you to override the implementation of the virtual method reset.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#reset
 	Reset func(Instance)
 	// // Unprepare allows you to override the implementation of the virtual method unprepare.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#unprepare
 	Unprepare func(Instance) bool
 }
 
@@ -11332,7 +10897,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 // ParentClose calls the default implementations of the `GstAudioSrc.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#close
 func (src *AudioSrcInstance) ParentClose() bool {
 	var carg0 *C.GstAudioSrc
 	var cret  C.gboolean // return
@@ -11356,7 +10921,7 @@ func (src *AudioSrcInstance) ParentClose() bool {
 // ParentDelay calls the default implementations of the `GstAudioSrc.delay` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#delay
 func (src *AudioSrcInstance) ParentDelay() uint {
 	var carg0 *C.GstAudioSrc
 	var cret  C.guint // return, none, casted
@@ -11378,7 +10943,7 @@ func (src *AudioSrcInstance) ParentDelay() uint {
 // ParentOpen calls the default implementations of the `GstAudioSrc.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#open
 func (src *AudioSrcInstance) ParentOpen() bool {
 	var carg0 *C.GstAudioSrc
 	var cret  C.gboolean // return
@@ -11402,7 +10967,7 @@ func (src *AudioSrcInstance) ParentOpen() bool {
 // ParentPrepare calls the default implementations of the `GstAudioSrc.prepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#prepare
 func (src *AudioSrcInstance) ParentPrepare(spec *AudioRingBufferSpec) bool {
 	var carg0 *C.GstAudioSrc
 	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
@@ -11429,7 +10994,7 @@ func (src *AudioSrcInstance) ParentPrepare(spec *AudioRingBufferSpec) bool {
 // ParentReset calls the default implementations of the `GstAudioSrc.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#reset
 func (src *AudioSrcInstance) ParentReset() {
 	var carg0 *C.GstAudioSrc
 
@@ -11444,7 +11009,7 @@ func (src *AudioSrcInstance) ParentReset() {
 // ParentUnprepare calls the default implementations of the `GstAudioSrc.unprepare` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#unprepare
 func (src *AudioSrcInstance) ParentUnprepare() bool {
 	var carg0 *C.GstAudioSrc
 	var cret  C.gboolean // return
@@ -11501,8 +11066,7 @@ var _ AudioAggregatorConvertPad = (*AudioAggregatorConvertPadInstance)(nil)
 
 // AudioAggregatorConvertPad wraps GstAudioAggregatorConvertPad
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#GstAudioAggregatorConvertPad
 type AudioAggregatorConvertPad interface {
 	AudioAggregatorPad
 	upcastToGstAudioAggregatorConvertPad() *AudioAggregatorConvertPadInstance
@@ -11610,7 +11174,7 @@ func RegisterAudioAggregatorConvertPadSubClass[InstanceT AudioAggregatorConvertP
 
 // AudioAggregatorClass wraps GstAudioAggregatorClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#GstAudioAggregatorClass
 // 
 // AudioAggregatorClass is the type struct for [AudioAggregator]
 type AudioAggregatorClass struct {
@@ -11664,7 +11228,7 @@ func (a *AudioAggregatorClass) ParentClass() *gstbase.AggregatorClass {
 
 // AudioAggregatorConvertPadClass wraps GstAudioAggregatorConvertPadClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#GstAudioAggregatorConvertPadClass
 // 
 // AudioAggregatorConvertPadClass is the type struct for [AudioAggregatorConvertPad]
 type AudioAggregatorConvertPadClass struct {
@@ -11718,7 +11282,7 @@ func (a *AudioAggregatorConvertPadClass) ParentClass() *AudioAggregatorPadClass 
 
 // AudioAggregatorPadClass wraps GstAudioAggregatorPadClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html#GstAudioAggregatorPadClass
 // 
 // AudioAggregatorPadClass is the type struct for [AudioAggregatorPad]
 type AudioAggregatorPadClass struct {
@@ -11772,8 +11336,7 @@ func (a *AudioAggregatorPadClass) ParentClass() *gstbase.AggregatorPadClass {
 
 // AudioBaseSinkClass wraps GstAudioBaseSinkClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GstAudioBaseSinkClass
 // 
 // AudioBaseSinkClass is the type struct for [AudioBaseSink]
 type AudioBaseSinkClass struct {
@@ -11827,8 +11390,7 @@ func (a *AudioBaseSinkClass) ParentClass() *gstbase.BaseSinkClass {
 
 // AudioBaseSrcClass wraps GstAudioBaseSrcClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#GstAudioBaseSrcClass
 // 
 // AudioBaseSrcClass is the type struct for [AudioBaseSrc]
 type AudioBaseSrcClass struct {
@@ -11882,8 +11444,7 @@ func (a *AudioBaseSrcClass) ParentClass() *gstbase.PushSrcClass {
 
 // AudioBuffer wraps GstAudioBuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-buffer.html#GstAudioBuffer
 type AudioBuffer struct {
 	*audioBuffer
 }
@@ -11964,8 +11525,7 @@ func UnsafeAudioBufferToGlibFull(a *AudioBuffer) unsafe.Pointer {
 
 // AudioBufferClip wraps gst_audio_buffer_clip
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-buffer.html#gst_audio_buffer_clip
 func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate int32, bpf int32) *gst.Buffer {
 	var carg1 *C.GstBuffer  // in, full, converted
 	var carg2 *C.GstSegment // in, none, converted
@@ -11995,8 +11555,7 @@ func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate int32, bpf i
 
 // AudioBufferMap wraps gst_audio_buffer_map
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-buffer.html#gst_audio_buffer_map
 func AudioBufferMap(info *AudioInfo, gstbuffer *gst.Buffer, flags gst.MapFlags) (AudioBuffer, bool) {
 	var carg2 *C.GstAudioInfo  // in, none, converted
 	var carg3 *C.GstBuffer     // in, none, converted
@@ -12028,8 +11587,7 @@ func AudioBufferMap(info *AudioInfo, gstbuffer *gst.Buffer, flags gst.MapFlags) 
 
 // AudioBufferReorderChannels wraps gst_audio_buffer_reorder_channels
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-buffer.html#gst_audio_buffer_reorder_channels
 func AudioBufferReorderChannels(buffer *gst.Buffer, format AudioFormat, from []AudioChannelPosition, to []AudioChannelPosition) bool {
 	var carg1 *C.GstBuffer               // in, none, converted
 	var carg2 C.GstAudioFormat           // in, none, casted
@@ -12066,8 +11624,7 @@ func AudioBufferReorderChannels(buffer *gst.Buffer, format AudioFormat, from []A
 
 // AudioBufferTruncate wraps gst_audio_buffer_truncate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-buffer.html#gst_audio_buffer_truncate
 func AudioBufferTruncate(buffer *gst.Buffer, bpf int32, trim uint, samples uint) *gst.Buffer {
 	var carg1 *C.GstBuffer // in, full, converted
 	var carg2 C.gint       // in, none, casted
@@ -12095,8 +11652,7 @@ func AudioBufferTruncate(buffer *gst.Buffer, bpf int32, trim uint, samples uint)
 
 // Unmap wraps gst_audio_buffer_unmap
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-buffer.html#gst_audio_buffer_unmap
 func (buffer *AudioBuffer) Unmap() {
 	var carg0 *C.GstAudioBuffer // in, none, converted
 
@@ -12108,8 +11664,7 @@ func (buffer *AudioBuffer) Unmap() {
 
 // AudioCdSrcClass wraps GstAudioCdSrcClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#GstAudioCdSrcClass
 // 
 // AudioCdSrcClass is the type struct for [AudioCdSrc]
 type AudioCdSrcClass struct {
@@ -12163,8 +11718,7 @@ func (a *AudioCdSrcClass) ParentClass() *gstbase.PushSrcClass {
 
 // AudioCdSrcTrack wraps GstAudioCdSrcTrack
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#GstAudioCdSrcTrack
 type AudioCdSrcTrack struct {
 	*audioCdSrcTrack
 }
@@ -12245,7 +11799,7 @@ func UnsafeAudioCdSrcTrackToGlibFull(a *AudioCdSrcTrack) unsafe.Pointer {
 
 // AudioChannelMixer wraps GstAudioChannelMixer
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channel-mixer.html#GstAudioChannelMixer
 type AudioChannelMixer struct {
 	*audioChannelMixer
 }
@@ -12326,8 +11880,7 @@ func UnsafeAudioChannelMixerToGlibFull(a *AudioChannelMixer) unsafe.Pointer {
 
 // IsPassthrough wraps gst_audio_channel_mixer_is_passthrough
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channel-mixer.html#gst_audio_channel_mixer_is_passthrough
 func (mix *AudioChannelMixer) IsPassthrough() bool {
 	var carg0 *C.GstAudioChannelMixer // in, none, converted
 	var cret  C.gboolean              // return
@@ -12348,8 +11901,7 @@ func (mix *AudioChannelMixer) IsPassthrough() bool {
 
 // AudioClippingMeta wraps GstAudioClippingMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiometa.html#GstAudioClippingMeta
 type AudioClippingMeta struct {
 	*audioClippingMeta
 }
@@ -12430,7 +11982,7 @@ func UnsafeAudioClippingMetaToGlibFull(a *AudioClippingMeta) unsafe.Pointer {
 
 // AudioClippingMetaGetInfo wraps gst_audio_clipping_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiometa.html#gst_audio_clipping_meta_get_info
 func AudioClippingMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -12445,7 +11997,7 @@ func AudioClippingMetaGetInfo() *gst.MetaInfo {
 
 // AudioClockClass wraps GstAudioClockClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioclock.html#GstAudioClockClass
 // 
 // AudioClockClass is the type struct for [AudioClock]
 type AudioClockClass struct {
@@ -12499,8 +12051,7 @@ func (a *AudioClockClass) ParentClass() *gst.SystemClockClass {
 
 // AudioConverter wraps GstAudioConverter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#GstAudioConverter
 type AudioConverter struct {
 	*audioConverter
 }
@@ -12596,8 +12147,7 @@ func UnsafeAudioConverterToGlibFull(a *AudioConverter) unsafe.Pointer {
 
 // NewAudioConverter wraps gst_audio_converter_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#gst_audio_converter_new
 func NewAudioConverter(flags AudioConverterFlags, inInfo *AudioInfo, outInfo *AudioInfo, config *gst.Structure) *AudioConverter {
 	var carg1 C.GstAudioConverterFlags // in, none, casted
 	var carg2 *C.GstAudioInfo          // in, none, converted
@@ -12629,8 +12179,7 @@ func NewAudioConverter(flags AudioConverterFlags, inInfo *AudioInfo, outInfo *Au
 
 // GetConfig wraps gst_audio_converter_get_config
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#gst_audio_converter_get_config
 func (convert *AudioConverter) GetConfig() (int32, int32, *gst.Structure) {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gint               // out, full, casted
@@ -12655,8 +12204,7 @@ func (convert *AudioConverter) GetConfig() (int32, int32, *gst.Structure) {
 
 // GetInFrames wraps gst_audio_converter_get_in_frames
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#gst_audio_converter_get_in_frames
 func (convert *AudioConverter) GetInFrames(outFrames uint) uint {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gsize              // in, none, casted
@@ -12678,8 +12226,7 @@ func (convert *AudioConverter) GetInFrames(outFrames uint) uint {
 
 // GetMaxLatency wraps gst_audio_converter_get_max_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#gst_audio_converter_get_max_latency
 func (convert *AudioConverter) GetMaxLatency() uint {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var cret  C.gsize              // return, none, casted
@@ -12698,8 +12245,7 @@ func (convert *AudioConverter) GetMaxLatency() uint {
 
 // GetOutFrames wraps gst_audio_converter_get_out_frames
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#gst_audio_converter_get_out_frames
 func (convert *AudioConverter) GetOutFrames(inFrames uint) uint {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gsize              // in, none, casted
@@ -12721,8 +12267,7 @@ func (convert *AudioConverter) GetOutFrames(inFrames uint) uint {
 
 // IsPassthrough wraps gst_audio_converter_is_passthrough
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#gst_audio_converter_is_passthrough
 func (convert *AudioConverter) IsPassthrough() bool {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var cret  C.gboolean           // return
@@ -12743,8 +12288,7 @@ func (convert *AudioConverter) IsPassthrough() bool {
 
 // Reset wraps gst_audio_converter_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#gst_audio_converter_reset
 func (convert *AudioConverter) Reset() {
 	var carg0 *C.GstAudioConverter // in, none, converted
 
@@ -12756,8 +12300,7 @@ func (convert *AudioConverter) Reset() {
 
 // SupportsInplace wraps gst_audio_converter_supports_inplace
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#gst_audio_converter_supports_inplace
 func (convert *AudioConverter) SupportsInplace() bool {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var cret  C.gboolean           // return
@@ -12778,8 +12321,7 @@ func (convert *AudioConverter) SupportsInplace() bool {
 
 // UpdateConfig wraps gst_audio_converter_update_config
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#gst_audio_converter_update_config
 func (convert *AudioConverter) UpdateConfig(inRate int32, outRate int32, config *gst.Structure) bool {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gint               // in, none, casted
@@ -12811,8 +12353,7 @@ func (convert *AudioConverter) UpdateConfig(inRate int32, outRate int32, config 
 
 // AudioDecoderClass wraps GstAudioDecoderClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiodecoder.html#GstAudioDecoderClass
 // 
 // AudioDecoderClass is the type struct for [AudioDecoder]
 type AudioDecoderClass struct {
@@ -12866,8 +12407,7 @@ func (a *AudioDecoderClass) ParentClass() *gst.ElementClass {
 
 // AudioDownmixMeta wraps GstAudioDownmixMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiometa.html#GstAudioDownmixMeta
 type AudioDownmixMeta struct {
 	*audioDownmixMeta
 }
@@ -12948,7 +12488,7 @@ func UnsafeAudioDownmixMetaToGlibFull(a *AudioDownmixMeta) unsafe.Pointer {
 
 // AudioDownmixMetaGetInfo wraps gst_audio_downmix_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiometa.html#gst_audio_downmix_meta_get_info
 func AudioDownmixMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -12963,8 +12503,7 @@ func AudioDownmixMetaGetInfo() *gst.MetaInfo {
 
 // AudioEncoderClass wraps GstAudioEncoderClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioencoder.html#GstAudioEncoderClass
 // 
 // AudioEncoderClass is the type struct for [AudioEncoder]
 type AudioEncoderClass struct {
@@ -13018,8 +12557,7 @@ func (a *AudioEncoderClass) ParentClass() *gst.ElementClass {
 
 // AudioFilterClass wraps GstAudioFilterClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiofilter.html#GstAudioFilterClass
 // 
 // AudioFilterClass is the type struct for [AudioFilter]
 type AudioFilterClass struct {
@@ -13073,8 +12611,7 @@ func (a *AudioFilterClass) ParentClass() *gstbase.BaseTransformClass {
 
 // AddPadTemplates wraps gst_audio_filter_class_add_pad_templates
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiofilter.html#gst_audio_filter_class_add_pad_templates
 func (klass *AudioFilterClass) AddPadTemplates(allowedCaps *gst.Caps) {
 	var carg0 *C.GstAudioFilterClass // in, none, converted
 	var carg1 *C.GstCaps             // in, none, converted
@@ -13089,8 +12626,7 @@ func (klass *AudioFilterClass) AddPadTemplates(allowedCaps *gst.Caps) {
 
 // AudioFormatInfo wraps GstAudioFormatInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GstAudioFormatInfo
 type AudioFormatInfo struct {
 	*audioFormatInfo
 }
@@ -13106,21 +12642,6 @@ func (a *AudioFormatInfo) instance() *C.GstAudioFormatInfo {
 		return nil
 	}
 	return a.native
-}
-
-var _ gobject.GoValueInitializer = (*AudioFormatInfo)(nil)
-
-func marshalAudioFormatInfo(p unsafe.Pointer) (interface{}, error) {
-	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeAudioFormatInfoFromGlibNone(b), nil
-}
-
-func (r *AudioFormatInfo) GoValueType() gobject.Type {
-	return TypeAudioFormatInfo
-}
-
-func (r *AudioFormatInfo) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.instance()))
 }
 
 // UnsafeAudioFormatInfoFromGlibBorrow is used to convert raw C.GstAudioFormatInfo pointers to go. This is used by the bindings internally.
@@ -13186,8 +12707,7 @@ func UnsafeAudioFormatInfoToGlibFull(a *AudioFormatInfo) unsafe.Pointer {
 
 // AudioInfo wraps GstAudioInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#GstAudioInfo
 type AudioInfo struct {
 	*audioInfo
 }
@@ -13283,8 +12803,7 @@ func UnsafeAudioInfoToGlibFull(a *AudioInfo) unsafe.Pointer {
 
 // NewAudioInfo wraps gst_audio_info_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_new
 func NewAudioInfo() *AudioInfo {
 	var cret *C.GstAudioInfo // return, full, converted
 
@@ -13299,8 +12818,7 @@ func NewAudioInfo() *AudioInfo {
 
 // NewAudioInfoFromCaps wraps gst_audio_info_new_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_new_from_caps
 func NewAudioInfoFromCaps(caps *gst.Caps) *AudioInfo {
 	var carg1 *C.GstCaps      // in, none, converted
 	var cret  *C.GstAudioInfo // return, full, converted, nullable
@@ -13321,8 +12839,7 @@ func NewAudioInfoFromCaps(caps *gst.Caps) *AudioInfo {
 
 // AudioInfoFromCaps wraps gst_audio_info_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_from_caps
 func AudioInfoFromCaps(caps *gst.Caps) (AudioInfo, bool) {
 	var carg2 *C.GstCaps     // in, none, converted
 	var carg1 C.GstAudioInfo // out, transfer: none, C Pointers: 0, Name: AudioInfo, caller-allocates
@@ -13348,8 +12865,7 @@ func AudioInfoFromCaps(caps *gst.Caps) (AudioInfo, bool) {
 
 // AudioInfoInit wraps gst_audio_info_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_init
 func AudioInfoInit() AudioInfo {
 	var carg1 C.GstAudioInfo // out, transfer: none, C Pointers: 0, Name: AudioInfo, caller-allocates
 
@@ -13366,8 +12882,7 @@ func AudioInfoInit() AudioInfo {
 
 // Convert wraps gst_audio_info_convert
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_convert
 func (info *AudioInfo) Convert(srcFmt gst.Format, srcVal int64, destFmt gst.Format) (int64, bool) {
 	var carg0 *C.GstAudioInfo // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
@@ -13400,8 +12915,7 @@ func (info *AudioInfo) Convert(srcFmt gst.Format, srcVal int64, destFmt gst.Form
 
 // Copy wraps gst_audio_info_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_copy
 func (info *AudioInfo) Copy() *AudioInfo {
 	var carg0 *C.GstAudioInfo // in, none, converted
 	var cret  *C.GstAudioInfo // return, full, converted
@@ -13420,8 +12934,7 @@ func (info *AudioInfo) Copy() *AudioInfo {
 
 // IsEqual wraps gst_audio_info_is_equal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_is_equal
 func (info *AudioInfo) IsEqual(other *AudioInfo) bool {
 	var carg0 *C.GstAudioInfo // in, none, converted
 	var carg1 *C.GstAudioInfo // in, none, converted
@@ -13445,8 +12958,7 @@ func (info *AudioInfo) IsEqual(other *AudioInfo) bool {
 
 // SetFormat wraps gst_audio_info_set_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_set_format
 func (info *AudioInfo) SetFormat(format AudioFormat, rate int32, channels int32, position [64]AudioChannelPosition) {
 	var carg0 *C.GstAudioInfo            // in, none, converted
 	var carg1 C.GstAudioFormat           // in, none, casted
@@ -13476,8 +12988,7 @@ func (info *AudioInfo) SetFormat(format AudioFormat, rate int32, channels int32,
 
 // ToCaps wraps gst_audio_info_to_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#gst_audio_info_to_caps
 func (info *AudioInfo) ToCaps() *gst.Caps {
 	var carg0 *C.GstAudioInfo // in, none, converted
 	var cret  *C.GstCaps      // return, full, converted
@@ -13496,8 +13007,7 @@ func (info *AudioInfo) ToCaps() *gst.Caps {
 
 // AudioLevelMeta wraps GstAudioLevelMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiometa.html#GstAudioLevelMeta
 type AudioLevelMeta struct {
 	*audioLevelMeta
 }
@@ -13578,8 +13088,7 @@ func UnsafeAudioLevelMetaToGlibFull(a *AudioLevelMeta) unsafe.Pointer {
 
 // AudioLevelMetaGetInfo wraps gst_audio_level_meta_get_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiometa.html#gst_audio_level_meta_get_info
 func AudioLevelMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -13594,8 +13103,7 @@ func AudioLevelMetaGetInfo() *gst.MetaInfo {
 
 // AudioMeta wraps GstAudioMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiometa.html#GstAudioMeta
 type AudioMeta struct {
 	*audioMeta
 }
@@ -13676,7 +13184,7 @@ func UnsafeAudioMetaToGlibFull(a *AudioMeta) unsafe.Pointer {
 
 // AudioMetaGetInfo wraps gst_audio_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiometa.html#gst_audio_meta_get_info
 func AudioMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -13691,7 +13199,7 @@ func AudioMetaGetInfo() *gst.MetaInfo {
 
 // AudioQuantize wraps GstAudioQuantize
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GstAudioQuantize
 type AudioQuantize struct {
 	*audioQuantize
 }
@@ -13772,8 +13280,7 @@ func UnsafeAudioQuantizeToGlibFull(a *AudioQuantize) unsafe.Pointer {
 
 // Reset wraps gst_audio_quantize_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#gst_audio_quantize_reset
 func (quant *AudioQuantize) Reset() {
 	var carg0 *C.GstAudioQuantize // in, none, converted
 
@@ -13785,8 +13292,7 @@ func (quant *AudioQuantize) Reset() {
 
 // AudioResampler wraps GstAudioResampler
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GstAudioResampler
 type AudioResampler struct {
 	*audioResampler
 }
@@ -13867,8 +13373,7 @@ func UnsafeAudioResamplerToGlibFull(a *AudioResampler) unsafe.Pointer {
 
 // NewAudioResampler wraps gst_audio_resampler_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#gst_audio_resampler_new
 func NewAudioResampler(method AudioResamplerMethod, flags AudioResamplerFlags, format AudioFormat, channels int32, inRate int32, outRate int32, options *gst.Structure) *AudioResampler {
 	var carg1 C.GstAudioResamplerMethod // in, none, casted
 	var carg2 C.GstAudioResamplerFlags  // in, none, casted
@@ -13905,8 +13410,7 @@ func NewAudioResampler(method AudioResamplerMethod, flags AudioResamplerFlags, f
 
 // AudioResamplerOptionsSetQuality wraps gst_audio_resampler_options_set_quality
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#gst_audio_resampler_options_set_quality
 func AudioResamplerOptionsSetQuality(method AudioResamplerMethod, quality uint, inRate int32, outRate int32, options *gst.Structure) {
 	var carg1 C.GstAudioResamplerMethod // in, none, casted
 	var carg2 C.guint                   // in, none, casted
@@ -13930,8 +13434,7 @@ func AudioResamplerOptionsSetQuality(method AudioResamplerMethod, quality uint, 
 
 // GetInFrames wraps gst_audio_resampler_get_in_frames
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#gst_audio_resampler_get_in_frames
 func (resampler *AudioResampler) GetInFrames(outFrames uint) uint {
 	var carg0 *C.GstAudioResampler // in, none, converted
 	var carg1 C.gsize              // in, none, casted
@@ -13953,8 +13456,7 @@ func (resampler *AudioResampler) GetInFrames(outFrames uint) uint {
 
 // GetMaxLatency wraps gst_audio_resampler_get_max_latency
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#gst_audio_resampler_get_max_latency
 func (resampler *AudioResampler) GetMaxLatency() uint {
 	var carg0 *C.GstAudioResampler // in, none, converted
 	var cret  C.gsize              // return, none, casted
@@ -13973,8 +13475,7 @@ func (resampler *AudioResampler) GetMaxLatency() uint {
 
 // GetOutFrames wraps gst_audio_resampler_get_out_frames
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#gst_audio_resampler_get_out_frames
 func (resampler *AudioResampler) GetOutFrames(inFrames uint) uint {
 	var carg0 *C.GstAudioResampler // in, none, converted
 	var carg1 C.gsize              // in, none, casted
@@ -13996,8 +13497,7 @@ func (resampler *AudioResampler) GetOutFrames(inFrames uint) uint {
 
 // Reset wraps gst_audio_resampler_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#gst_audio_resampler_reset
 func (resampler *AudioResampler) Reset() {
 	var carg0 *C.GstAudioResampler // in, none, converted
 
@@ -14009,8 +13509,7 @@ func (resampler *AudioResampler) Reset() {
 
 // Update wraps gst_audio_resampler_update
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#gst_audio_resampler_update
 func (resampler *AudioResampler) Update(inRate int32, outRate int32, options *gst.Structure) bool {
 	var carg0 *C.GstAudioResampler // in, none, converted
 	var carg1 C.gint               // in, none, casted
@@ -14040,8 +13539,7 @@ func (resampler *AudioResampler) Update(inRate int32, outRate int32, options *gs
 
 // AudioRingBufferClass wraps GstAudioRingBufferClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GstAudioRingBufferClass
 // 
 // AudioRingBufferClass is the type struct for [AudioRingBuffer]
 type AudioRingBufferClass struct {
@@ -14095,8 +13593,7 @@ func (a *AudioRingBufferClass) ParentClass() *gst.ObjectClass {
 
 // AudioRingBufferSpec wraps GstAudioRingBufferSpec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GstAudioRingBufferSpec
 type AudioRingBufferSpec struct {
 	*audioRingBufferSpec
 }
@@ -14177,7 +13674,7 @@ func UnsafeAudioRingBufferSpecToGlibFull(a *AudioRingBufferSpec) unsafe.Pointer 
 
 // AudioSinkClass wraps GstAudioSinkClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#GstAudioSinkClass
 // 
 // AudioSinkClass is the type struct for [AudioSink]
 type AudioSinkClass struct {
@@ -14231,7 +13728,7 @@ func (a *AudioSinkClass) ParentClass() *AudioBaseSinkClass {
 
 // AudioSinkClassExtension wraps GstAudioSinkClassExtension
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosink.html#GstAudioSinkClassExtension
 type AudioSinkClassExtension struct {
 	*audioSinkClassExtension
 }
@@ -14312,8 +13809,7 @@ func UnsafeAudioSinkClassExtensionToGlibFull(a *AudioSinkClassExtension) unsafe.
 
 // AudioSrcClass wraps GstAudioSrcClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiosrc.html#GstAudioSrcClass
 // 
 // AudioSrcClass is the type struct for [AudioSrc]
 type AudioSrcClass struct {
@@ -14367,8 +13863,7 @@ func (a *AudioSrcClass) ParentClass() *AudioBaseSrcClass {
 
 // AudioStreamAlign wraps GstAudioStreamAlign
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#GstAudioStreamAlign
 type AudioStreamAlign struct {
 	*audioStreamAlign
 }
@@ -14464,8 +13959,7 @@ func UnsafeAudioStreamAlignToGlibFull(a *AudioStreamAlign) unsafe.Pointer {
 
 // NewAudioStreamAlign wraps gst_audio_stream_align_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_new
 func NewAudioStreamAlign(rate int32, alignmentThreshold gst.ClockTime, discontWait gst.ClockTime) *AudioStreamAlign {
 	var carg1 C.gint                 // in, none, casted
 	var carg2 C.GstClockTime         // in, none, casted, alias
@@ -14490,8 +13984,7 @@ func NewAudioStreamAlign(rate int32, alignmentThreshold gst.ClockTime, discontWa
 
 // Copy wraps gst_audio_stream_align_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_copy
 func (align *AudioStreamAlign) Copy() *AudioStreamAlign {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  *C.GstAudioStreamAlign // return, full, converted
@@ -14510,8 +14003,7 @@ func (align *AudioStreamAlign) Copy() *AudioStreamAlign {
 
 // GetAlignmentThreshold wraps gst_audio_stream_align_get_alignment_threshold
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_get_alignment_threshold
 func (align *AudioStreamAlign) GetAlignmentThreshold() gst.ClockTime {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.GstClockTime         // return, none, casted, alias
@@ -14530,8 +14022,7 @@ func (align *AudioStreamAlign) GetAlignmentThreshold() gst.ClockTime {
 
 // GetDiscontWait wraps gst_audio_stream_align_get_discont_wait
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_get_discont_wait
 func (align *AudioStreamAlign) GetDiscontWait() gst.ClockTime {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.GstClockTime         // return, none, casted, alias
@@ -14550,8 +14041,7 @@ func (align *AudioStreamAlign) GetDiscontWait() gst.ClockTime {
 
 // GetRate wraps gst_audio_stream_align_get_rate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_get_rate
 func (align *AudioStreamAlign) GetRate() int32 {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.gint                 // return, none, casted
@@ -14570,8 +14060,7 @@ func (align *AudioStreamAlign) GetRate() int32 {
 
 // GetSamplesSinceDiscont wraps gst_audio_stream_align_get_samples_since_discont
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_get_samples_since_discont
 func (align *AudioStreamAlign) GetSamplesSinceDiscont() uint64 {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.guint64              // return, none, casted
@@ -14590,8 +14079,7 @@ func (align *AudioStreamAlign) GetSamplesSinceDiscont() uint64 {
 
 // GetTimestampAtDiscont wraps gst_audio_stream_align_get_timestamp_at_discont
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_get_timestamp_at_discont
 func (align *AudioStreamAlign) GetTimestampAtDiscont() gst.ClockTime {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.GstClockTime         // return, none, casted, alias
@@ -14610,8 +14098,7 @@ func (align *AudioStreamAlign) GetTimestampAtDiscont() gst.ClockTime {
 
 // MarkDiscont wraps gst_audio_stream_align_mark_discont
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_mark_discont
 func (align *AudioStreamAlign) MarkDiscont() {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 
@@ -14623,8 +14110,7 @@ func (align *AudioStreamAlign) MarkDiscont() {
 
 // Process wraps gst_audio_stream_align_process
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_process
 func (align *AudioStreamAlign) Process(discont bool, timestamp gst.ClockTime, nSamples uint) (gst.ClockTime, gst.ClockTime, uint64, bool) {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var carg1 C.gboolean             // in
@@ -14665,8 +14151,7 @@ func (align *AudioStreamAlign) Process(discont bool, timestamp gst.ClockTime, nS
 
 // SetAlignmentThreshold wraps gst_audio_stream_align_set_alignment_threshold
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_set_alignment_threshold
 func (align *AudioStreamAlign) SetAlignmentThreshold(alignmentThreshold gst.ClockTime) {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var carg1 C.GstClockTime         // in, none, casted, alias
@@ -14681,8 +14166,7 @@ func (align *AudioStreamAlign) SetAlignmentThreshold(alignmentThreshold gst.Cloc
 
 // SetDiscontWait wraps gst_audio_stream_align_set_discont_wait
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_set_discont_wait
 func (align *AudioStreamAlign) SetDiscontWait(discontWait gst.ClockTime) {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var carg1 C.GstClockTime         // in, none, casted, alias
@@ -14697,8 +14181,7 @@ func (align *AudioStreamAlign) SetDiscontWait(discontWait gst.ClockTime) {
 
 // SetRate wraps gst_audio_stream_align_set_rate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiostreamalign.html#gst_audio_stream_align_set_rate
 func (align *AudioStreamAlign) SetRate(rate int32) {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var carg1 C.gint                 // in, none, casted
@@ -14713,8 +14196,7 @@ func (align *AudioStreamAlign) SetRate(rate int32) {
 
 // DsdInfo wraps GstDsdInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#GstDsdInfo
 type DsdInfo struct {
 	*dsdInfo
 }
@@ -14810,8 +14292,7 @@ func UnsafeDsdInfoToGlibFull(d *DsdInfo) unsafe.Pointer {
 
 // NewDsdInfo wraps gst_dsd_info_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_new
 func NewDsdInfo() *DsdInfo {
 	var cret *C.GstDsdInfo // return, full, converted
 
@@ -14826,8 +14307,7 @@ func NewDsdInfo() *DsdInfo {
 
 // NewDsdInfoFromCaps wraps gst_dsd_info_new_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_new_from_caps
 func NewDsdInfoFromCaps(caps *gst.Caps) *DsdInfo {
 	var carg1 *C.GstCaps    // in, none, converted
 	var cret  *C.GstDsdInfo // return, full, converted
@@ -14846,8 +14326,7 @@ func NewDsdInfoFromCaps(caps *gst.Caps) *DsdInfo {
 
 // DsdInfoFromCaps wraps gst_dsd_info_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_from_caps
 func DsdInfoFromCaps(caps *gst.Caps) (DsdInfo, bool) {
 	var carg2 *C.GstCaps   // in, none, converted
 	var carg1 C.GstDsdInfo // out, transfer: none, C Pointers: 0, Name: DsdInfo, caller-allocates
@@ -14873,8 +14352,7 @@ func DsdInfoFromCaps(caps *gst.Caps) (DsdInfo, bool) {
 
 // DsdInfoInit wraps gst_dsd_info_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_init
 func DsdInfoInit() DsdInfo {
 	var carg1 C.GstDsdInfo // out, transfer: none, C Pointers: 0, Name: DsdInfo, caller-allocates
 
@@ -14891,8 +14369,7 @@ func DsdInfoInit() DsdInfo {
 
 // Copy wraps gst_dsd_info_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_copy
 func (info *DsdInfo) Copy() *DsdInfo {
 	var carg0 *C.GstDsdInfo // in, none, converted
 	var cret  *C.GstDsdInfo // return, full, converted
@@ -14911,8 +14388,7 @@ func (info *DsdInfo) Copy() *DsdInfo {
 
 // IsEqual wraps gst_dsd_info_is_equal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_is_equal
 func (info *DsdInfo) IsEqual(other *DsdInfo) bool {
 	var carg0 *C.GstDsdInfo // in, none, converted
 	var carg1 *C.GstDsdInfo // in, none, converted
@@ -14936,8 +14412,7 @@ func (info *DsdInfo) IsEqual(other *DsdInfo) bool {
 
 // SetFormat wraps gst_dsd_info_set_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_set_format
 func (info *DsdInfo) SetFormat(format DsdFormat, rate int32, channels int32, positions [64]AudioChannelPosition) {
 	var carg0 *C.GstDsdInfo              // in, none, converted
 	var carg1 C.GstDsdFormat             // in, none, casted
@@ -14967,8 +14442,7 @@ func (info *DsdInfo) SetFormat(format DsdFormat, rate int32, channels int32, pos
 
 // ToCaps wraps gst_dsd_info_to_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_info_to_caps
 func (info *DsdInfo) ToCaps() *gst.Caps {
 	var carg0 *C.GstDsdInfo // in, none, converted
 	var cret  *C.GstCaps    // return, full, converted
@@ -14987,8 +14461,7 @@ func (info *DsdInfo) ToCaps() *gst.Caps {
 
 // DsdPlaneOffsetMeta wraps GstDsdPlaneOffsetMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#GstDsdPlaneOffsetMeta
 type DsdPlaneOffsetMeta struct {
 	*dsdPlaneOffsetMeta
 }
@@ -15069,7 +14542,7 @@ func UnsafeDsdPlaneOffsetMetaToGlibFull(d *DsdPlaneOffsetMeta) unsafe.Pointer {
 
 // DsdPlaneOffsetMetaGetInfo wraps gst_dsd_plane_offset_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsd.html#gst_dsd_plane_offset_meta_get_info
 func DsdPlaneOffsetMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -15084,7 +14557,7 @@ func DsdPlaneOffsetMetaGetInfo() *gst.MetaInfo {
 
 // StreamVolumeInterface wraps GstStreamVolumeInterface
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#GstStreamVolumeInterface
 type StreamVolumeInterface struct {
 	*streamVolumeInterface
 }

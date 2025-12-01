@@ -148,98 +148,97 @@ func init() {
 
 // ATSCDescriptorType wraps GstMpegtsATSCDescriptorType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-descriptor.html#GstMpegtsATSCDescriptorType
 type ATSCDescriptorType C.int
 
 const (
 	// GstMtsDescAtscStuffing wraps GST_MTS_DESC_ATSC_STUFFING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_STUFFING
 	GstMtsDescAtscStuffing ATSCDescriptorType = 128
 	// GstMtsDescAtscAc3 wraps GST_MTS_DESC_ATSC_AC3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_AC3
 	GstMtsDescAtscAc3 ATSCDescriptorType = 129
 	// GstMtsDescAtscCaptionService wraps GST_MTS_DESC_ATSC_CAPTION_SERVICE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_CAPTION_SERVICE
 	GstMtsDescAtscCaptionService ATSCDescriptorType = 134
 	// GstMtsDescAtscContentAdvisory wraps GST_MTS_DESC_ATSC_CONTENT_ADVISORY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_CONTENT_ADVISORY
 	GstMtsDescAtscContentAdvisory ATSCDescriptorType = 135
 	// GstMtsDescAtscExtendedChannelName wraps GST_MTS_DESC_ATSC_EXTENDED_CHANNEL_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_EXTENDED_CHANNEL_NAME
 	GstMtsDescAtscExtendedChannelName ATSCDescriptorType = 160
 	// GstMtsDescAtscServiceLocation wraps GST_MTS_DESC_ATSC_SERVICE_LOCATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_SERVICE_LOCATION
 	GstMtsDescAtscServiceLocation ATSCDescriptorType = 161
 	// GstMtsDescAtscTimeShiftedService wraps GST_MTS_DESC_ATSC_TIME_SHIFTED_SERVICE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_TIME_SHIFTED_SERVICE
 	GstMtsDescAtscTimeShiftedService ATSCDescriptorType = 162
 	// GstMtsDescAtscComponentName wraps GST_MTS_DESC_ATSC_COMPONENT_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_COMPONENT_NAME
 	GstMtsDescAtscComponentName ATSCDescriptorType = 163
 	// GstMtsDescAtscDccDepartingRequest wraps GST_MTS_DESC_ATSC_DCC_DEPARTING_REQUEST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_DCC_DEPARTING_REQUEST
 	GstMtsDescAtscDccDepartingRequest ATSCDescriptorType = 168
 	// GstMtsDescAtscDccArrivingRequest wraps GST_MTS_DESC_ATSC_DCC_ARRIVING_REQUEST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_DCC_ARRIVING_REQUEST
 	GstMtsDescAtscDccArrivingRequest ATSCDescriptorType = 169
 	// GstMtsDescAtscRedistributionControl wraps GST_MTS_DESC_ATSC_REDISTRIBUTION_CONTROL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_REDISTRIBUTION_CONTROL
 	GstMtsDescAtscRedistributionControl ATSCDescriptorType = 170
 	// GstMtsDescAtscGenre wraps GST_MTS_DESC_ATSC_GENRE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_GENRE
 	GstMtsDescAtscGenre ATSCDescriptorType = 171
 	// GstMtsDescAtscPrivateInformation wraps GST_MTS_DESC_ATSC_PRIVATE_INFORMATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_PRIVATE_INFORMATION
 	GstMtsDescAtscPrivateInformation ATSCDescriptorType = 173
 	// GstMtsDescAtscEac3 wraps GST_MTS_DESC_ATSC_EAC3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_EAC3
 	GstMtsDescAtscEac3 ATSCDescriptorType = 204
 	// GstMtsDescAtscEnhancedSignaling wraps GST_MTS_DESC_ATSC_ENHANCED_SIGNALING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_ENHANCED_SIGNALING
 	GstMtsDescAtscEnhancedSignaling ATSCDescriptorType = 178
 	// GstMtsDescAtscDataService wraps GST_MTS_DESC_ATSC_DATA_SERVICE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_DATA_SERVICE
 	GstMtsDescAtscDataService ATSCDescriptorType = 164
 	// GstMtsDescAtscPidCount wraps GST_MTS_DESC_ATSC_PID_COUNT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_PID_COUNT
 	GstMtsDescAtscPidCount ATSCDescriptorType = 165
 	// GstMtsDescAtscDownloadDescriptor wraps GST_MTS_DESC_ATSC_DOWNLOAD_DESCRIPTOR
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_DOWNLOAD_DESCRIPTOR
 	GstMtsDescAtscDownloadDescriptor ATSCDescriptorType = 166
 	// GstMtsDescAtscMultiprotocolEncapsulation wraps GST_MTS_DESC_ATSC_MULTIPROTOCOL_ENCAPSULATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_MULTIPROTOCOL_ENCAPSULATION
 	GstMtsDescAtscMultiprotocolEncapsulation ATSCDescriptorType = 167
 	// GstMtsDescAtscModuleLink wraps GST_MTS_DESC_ATSC_MODULE_LINK
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_MODULE_LINK
 	GstMtsDescAtscModuleLink ATSCDescriptorType = 180
 	// GstMtsDescAtscCrc32 wraps GST_MTS_DESC_ATSC_CRC32
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_CRC32
 	GstMtsDescAtscCrc32 ATSCDescriptorType = 181
 	// GstMtsDescAtscGroupLink wraps GST_MTS_DESC_ATSC_GROUP_LINK
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ATSC_GROUP_LINK
 	GstMtsDescAtscGroupLink ATSCDescriptorType = 184
 )
 
@@ -274,45 +273,37 @@ func (e ATSCDescriptorType) String() string {
 
 // ATSCStreamType wraps GstMpegtsATSCStreamType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsATSCStreamType
 type ATSCStreamType C.int
 
 const (
 	// StreamTypeAtscDciiVideo wraps GST_MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
 	StreamTypeAtscDciiVideo ATSCStreamType = 128
 	// StreamTypeAtscAudioAc3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
 	StreamTypeAtscAudioAc3 ATSCStreamType = 129
 	// StreamTypeAtscSubtitling wraps GST_MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
 	StreamTypeAtscSubtitling ATSCStreamType = 130
 	// StreamTypeAtscIsochData wraps GST_MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
 	StreamTypeAtscIsochData ATSCStreamType = 131
 	// StreamTypeAtscSit wraps GST_MPEGTS_STREAM_TYPE_ATSC_SIT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_SIT
 	StreamTypeAtscSit ATSCStreamType = 134
 	// StreamTypeAtscAudioEac3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
 	StreamTypeAtscAudioEac3 ATSCStreamType = 135
 	// StreamTypeAtscAudioDtsHd wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
 	StreamTypeAtscAudioDtsHd ATSCStreamType = 136
 )
 
@@ -332,25 +323,25 @@ func (e ATSCStreamType) String() string {
 
 // AtscMGTTableType wraps GstMpegtsAtscMGTTableType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscMGTTableType
 type AtscMGTTableType C.int
 
 const (
 	// AtscMgtTableTypeEit0 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT0
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT0
 	AtscMgtTableTypeEit0 AtscMGTTableType = 256
 	// AtscMgtTableTypeEit127 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT127
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT127
 	AtscMgtTableTypeEit127 AtscMGTTableType = 383
 	// AtscMgtTableTypeEtt0 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT0
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT0
 	AtscMgtTableTypeEtt0 AtscMGTTableType = 512
 	// AtscMgtTableTypeEtt127 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT127
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT127
 	AtscMgtTableTypeEtt127 AtscMGTTableType = 639
 )
 
@@ -367,21 +358,21 @@ func (e AtscMGTTableType) String() string {
 
 // CableOuterFECScheme wraps GstMpegtsCableOuterFECScheme
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsCableOuterFECScheme
 type CableOuterFECScheme C.int
 
 const (
 	// CableOuterFecUndefined wraps GST_MPEGTS_CABLE_OUTER_FEC_UNDEFINED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CABLE_OUTER_FEC_UNDEFINED
 	CableOuterFecUndefined CableOuterFECScheme = 0
 	// CableOuterFecNone wraps GST_MPEGTS_CABLE_OUTER_FEC_NONE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CABLE_OUTER_FEC_NONE
 	CableOuterFecNone CableOuterFECScheme = 1
 	// CableOuterFecRs204188 wraps GST_MPEGTS_CABLE_OUTER_FEC_RS_204_188
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CABLE_OUTER_FEC_RS_204_188
 	CableOuterFecRs204188 CableOuterFECScheme = 2
 )
 
@@ -397,41 +388,41 @@ func (e CableOuterFECScheme) String() string {
 
 // ComponentStreamContent wraps GstMpegtsComponentStreamContent
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsComponentStreamContent
 type ComponentStreamContent C.int
 
 const (
 	// StreamContentMpeg2Video wraps GST_MPEGTS_STREAM_CONTENT_MPEG2_VIDEO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_CONTENT_MPEG2_VIDEO
 	StreamContentMpeg2Video ComponentStreamContent = 1
 	// StreamContentMpeg1Layer2Audio wraps GST_MPEGTS_STREAM_CONTENT_MPEG1_LAYER2_AUDIO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_CONTENT_MPEG1_LAYER2_AUDIO
 	StreamContentMpeg1Layer2Audio ComponentStreamContent = 2
 	// StreamContentTeletextOrSubtitle wraps GST_MPEGTS_STREAM_CONTENT_TELETEXT_OR_SUBTITLE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_CONTENT_TELETEXT_OR_SUBTITLE
 	StreamContentTeletextOrSubtitle ComponentStreamContent = 3
 	// StreamContentAc3 wraps GST_MPEGTS_STREAM_CONTENT_AC_3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_CONTENT_AC_3
 	StreamContentAc3 ComponentStreamContent = 4
 	// StreamContentAvc wraps GST_MPEGTS_STREAM_CONTENT_AVC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_CONTENT_AVC
 	StreamContentAvc ComponentStreamContent = 5
 	// StreamContentAac wraps GST_MPEGTS_STREAM_CONTENT_AAC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_CONTENT_AAC
 	StreamContentAac ComponentStreamContent = 6
 	// StreamContentDts wraps GST_MPEGTS_STREAM_CONTENT_DTS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_CONTENT_DTS
 	StreamContentDts ComponentStreamContent = 7
 	// StreamContentSrmCpcm wraps GST_MPEGTS_STREAM_CONTENT_SRM_CPCM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_CONTENT_SRM_CPCM
 	StreamContentSrmCpcm ComponentStreamContent = 8
 )
 
@@ -452,53 +443,53 @@ func (e ComponentStreamContent) String() string {
 
 // ContentNibbleHi wraps GstMpegtsContentNibbleHi
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsContentNibbleHi
 type ContentNibbleHi C.int
 
 const (
 	// ContentMovieDrama wraps GST_MPEGTS_CONTENT_MOVIE_DRAMA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_MOVIE_DRAMA
 	ContentMovieDrama ContentNibbleHi = 1
 	// ContentNewsCurrentAffairs wraps GST_MPEGTS_CONTENT_NEWS_CURRENT_AFFAIRS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_NEWS_CURRENT_AFFAIRS
 	ContentNewsCurrentAffairs ContentNibbleHi = 2
 	// ContentShowGameShow wraps GST_MPEGTS_CONTENT_SHOW_GAME_SHOW
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_SHOW_GAME_SHOW
 	ContentShowGameShow ContentNibbleHi = 3
 	// ContentSports wraps GST_MPEGTS_CONTENT_SPORTS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_SPORTS
 	ContentSports ContentNibbleHi = 4
 	// ContentChildrenYouthProgram wraps GST_MPEGTS_CONTENT_CHILDREN_YOUTH_PROGRAM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_CHILDREN_YOUTH_PROGRAM
 	ContentChildrenYouthProgram ContentNibbleHi = 5
 	// ContentMusicBalletDance wraps GST_MPEGTS_CONTENT_MUSIC_BALLET_DANCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_MUSIC_BALLET_DANCE
 	ContentMusicBalletDance ContentNibbleHi = 6
 	// ContentArtsCulture wraps GST_MPEGTS_CONTENT_ARTS_CULTURE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_ARTS_CULTURE
 	ContentArtsCulture ContentNibbleHi = 7
 	// ContentSocialPoliticalEconomics wraps GST_MPEGTS_CONTENT_SOCIAL_POLITICAL_ECONOMICS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_SOCIAL_POLITICAL_ECONOMICS
 	ContentSocialPoliticalEconomics ContentNibbleHi = 8
 	// ContentEducationScienceFactual wraps GST_MPEGTS_CONTENT_EDUCATION_SCIENCE_FACTUAL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_EDUCATION_SCIENCE_FACTUAL
 	ContentEducationScienceFactual ContentNibbleHi = 9
 	// ContentLeisureHobbies wraps GST_MPEGTS_CONTENT_LEISURE_HOBBIES
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_LEISURE_HOBBIES
 	ContentLeisureHobbies ContentNibbleHi = 10
 	// ContentSpecialCharacteristics wraps GST_MPEGTS_CONTENT_SPECIAL_CHARACTERISTICS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_CONTENT_SPECIAL_CHARACTERISTICS
 	ContentSpecialCharacteristics ContentNibbleHi = 11
 )
 
@@ -522,61 +513,61 @@ func (e ContentNibbleHi) String() string {
 
 // DVBCodeRate wraps GstMpegtsDVBCodeRate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBCodeRate
 type DVBCodeRate C.int
 
 const (
 	// FecNone wraps GST_MPEGTS_FEC_NONE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_NONE
 	FecNone DVBCodeRate = 0
 	// Fec12 wraps GST_MPEGTS_FEC_1_2
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_1_2
 	Fec12 DVBCodeRate = 1
 	// Fec23 wraps GST_MPEGTS_FEC_2_3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_2_3
 	Fec23 DVBCodeRate = 2
 	// Fec34 wraps GST_MPEGTS_FEC_3_4
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_3_4
 	Fec34 DVBCodeRate = 3
 	// Fec45 wraps GST_MPEGTS_FEC_4_5
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_4_5
 	Fec45 DVBCodeRate = 4
 	// Fec56 wraps GST_MPEGTS_FEC_5_6
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_5_6
 	Fec56 DVBCodeRate = 5
 	// Fec67 wraps GST_MPEGTS_FEC_6_7
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_6_7
 	Fec67 DVBCodeRate = 6
 	// Fec78 wraps GST_MPEGTS_FEC_7_8
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_7_8
 	Fec78 DVBCodeRate = 7
 	// Fec89 wraps GST_MPEGTS_FEC_8_9
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_8_9
 	Fec89 DVBCodeRate = 8
 	// FecAuto wraps GST_MPEGTS_FEC_AUTO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_AUTO
 	FecAuto DVBCodeRate = 9
 	// Fec35 wraps GST_MPEGTS_FEC_3_5
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_3_5
 	Fec35 DVBCodeRate = 10
 	// Fec910 wraps GST_MPEGTS_FEC_9_10
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_9_10
 	Fec910 DVBCodeRate = 11
 	// Fec25 wraps GST_MPEGTS_FEC_2_5
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_FEC_2_5
 	Fec25 DVBCodeRate = 12
 )
 
@@ -602,267 +593,265 @@ func (e DVBCodeRate) String() string {
 
 // DVBDescriptorType wraps GstMpegtsDVBDescriptorType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBDescriptorType
 type DVBDescriptorType C.int
 
 const (
 	// GstMtsDescDvbNetworkName wraps GST_MTS_DESC_DVB_NETWORK_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_NETWORK_NAME
 	GstMtsDescDvbNetworkName DVBDescriptorType = 64
 	// GstMtsDescDvbServiceList wraps GST_MTS_DESC_DVB_SERVICE_LIST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SERVICE_LIST
 	GstMtsDescDvbServiceList DVBDescriptorType = 65
 	// GstMtsDescDvbStuffing wraps GST_MTS_DESC_DVB_STUFFING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_STUFFING
 	GstMtsDescDvbStuffing DVBDescriptorType = 66
 	// GstMtsDescDvbSatelliteDeliverySystem wraps GST_MTS_DESC_DVB_SATELLITE_DELIVERY_SYSTEM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SATELLITE_DELIVERY_SYSTEM
 	GstMtsDescDvbSatelliteDeliverySystem DVBDescriptorType = 67
 	// GstMtsDescDvbCableDeliverySystem wraps GST_MTS_DESC_DVB_CABLE_DELIVERY_SYSTEM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_CABLE_DELIVERY_SYSTEM
 	GstMtsDescDvbCableDeliverySystem DVBDescriptorType = 68
 	// GstMtsDescDvbVbiData wraps GST_MTS_DESC_DVB_VBI_DATA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_VBI_DATA
 	GstMtsDescDvbVbiData DVBDescriptorType = 69
 	// GstMtsDescDvbVbiTeletext wraps GST_MTS_DESC_DVB_VBI_TELETEXT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_VBI_TELETEXT
 	GstMtsDescDvbVbiTeletext DVBDescriptorType = 70
 	// GstMtsDescDvbBouquetName wraps GST_MTS_DESC_DVB_BOUQUET_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_BOUQUET_NAME
 	GstMtsDescDvbBouquetName DVBDescriptorType = 71
 	// GstMtsDescDvbService wraps GST_MTS_DESC_DVB_SERVICE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SERVICE
 	GstMtsDescDvbService DVBDescriptorType = 72
 	// GstMtsDescDvbCountryAvailability wraps GST_MTS_DESC_DVB_COUNTRY_AVAILABILITY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_COUNTRY_AVAILABILITY
 	GstMtsDescDvbCountryAvailability DVBDescriptorType = 73
 	// GstMtsDescDvbLinkage wraps GST_MTS_DESC_DVB_LINKAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_LINKAGE
 	GstMtsDescDvbLinkage DVBDescriptorType = 74
 	// GstMtsDescDvbNvodReference wraps GST_MTS_DESC_DVB_NVOD_REFERENCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_NVOD_REFERENCE
 	GstMtsDescDvbNvodReference DVBDescriptorType = 75
 	// GstMtsDescDvbTimeShiftedService wraps GST_MTS_DESC_DVB_TIME_SHIFTED_SERVICE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_TIME_SHIFTED_SERVICE
 	GstMtsDescDvbTimeShiftedService DVBDescriptorType = 76
 	// GstMtsDescDvbShortEvent wraps GST_MTS_DESC_DVB_SHORT_EVENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SHORT_EVENT
 	GstMtsDescDvbShortEvent DVBDescriptorType = 77
 	// GstMtsDescDvbExtendedEvent wraps GST_MTS_DESC_DVB_EXTENDED_EVENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_EXTENDED_EVENT
 	GstMtsDescDvbExtendedEvent DVBDescriptorType = 78
 	// GstMtsDescDvbTimeShiftedEvent wraps GST_MTS_DESC_DVB_TIME_SHIFTED_EVENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_TIME_SHIFTED_EVENT
 	GstMtsDescDvbTimeShiftedEvent DVBDescriptorType = 79
 	// GstMtsDescDvbComponent wraps GST_MTS_DESC_DVB_COMPONENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_COMPONENT
 	GstMtsDescDvbComponent DVBDescriptorType = 80
 	// GstMtsDescDvbMosaic wraps GST_MTS_DESC_DVB_MOSAIC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_MOSAIC
 	GstMtsDescDvbMosaic DVBDescriptorType = 81
 	// GstMtsDescDvbStreamIdentifier wraps GST_MTS_DESC_DVB_STREAM_IDENTIFIER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_STREAM_IDENTIFIER
 	GstMtsDescDvbStreamIdentifier DVBDescriptorType = 82
 	// GstMtsDescDvbCaIdentifier wraps GST_MTS_DESC_DVB_CA_IDENTIFIER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_CA_IDENTIFIER
 	GstMtsDescDvbCaIdentifier DVBDescriptorType = 83
 	// GstMtsDescDvbContent wraps GST_MTS_DESC_DVB_CONTENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_CONTENT
 	GstMtsDescDvbContent DVBDescriptorType = 84
 	// GstMtsDescDvbParentalRating wraps GST_MTS_DESC_DVB_PARENTAL_RATING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_PARENTAL_RATING
 	GstMtsDescDvbParentalRating DVBDescriptorType = 85
 	// GstMtsDescDvbTeletext wraps GST_MTS_DESC_DVB_TELETEXT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_TELETEXT
 	GstMtsDescDvbTeletext DVBDescriptorType = 86
 	// GstMtsDescDvbTelephone wraps GST_MTS_DESC_DVB_TELEPHONE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_TELEPHONE
 	GstMtsDescDvbTelephone DVBDescriptorType = 87
 	// GstMtsDescDvbLocalTimeOffset wraps GST_MTS_DESC_DVB_LOCAL_TIME_OFFSET
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_LOCAL_TIME_OFFSET
 	GstMtsDescDvbLocalTimeOffset DVBDescriptorType = 88
 	// GstMtsDescDvbSubtitling wraps GST_MTS_DESC_DVB_SUBTITLING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SUBTITLING
 	GstMtsDescDvbSubtitling DVBDescriptorType = 89
 	// GstMtsDescDvbTerrestrialDeliverySystem wraps GST_MTS_DESC_DVB_TERRESTRIAL_DELIVERY_SYSTEM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_TERRESTRIAL_DELIVERY_SYSTEM
 	GstMtsDescDvbTerrestrialDeliverySystem DVBDescriptorType = 90
 	// GstMtsDescDvbMultilingualNetworkName wraps GST_MTS_DESC_DVB_MULTILINGUAL_NETWORK_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_MULTILINGUAL_NETWORK_NAME
 	GstMtsDescDvbMultilingualNetworkName DVBDescriptorType = 91
 	// GstMtsDescDvbMultilingualBouquetName wraps GST_MTS_DESC_DVB_MULTILINGUAL_BOUQUET_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_MULTILINGUAL_BOUQUET_NAME
 	GstMtsDescDvbMultilingualBouquetName DVBDescriptorType = 92
 	// GstMtsDescDvbMultilingualServiceName wraps GST_MTS_DESC_DVB_MULTILINGUAL_SERVICE_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_MULTILINGUAL_SERVICE_NAME
 	GstMtsDescDvbMultilingualServiceName DVBDescriptorType = 93
 	// GstMtsDescDvbMultilingualComponent wraps GST_MTS_DESC_DVB_MULTILINGUAL_COMPONENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_MULTILINGUAL_COMPONENT
 	GstMtsDescDvbMultilingualComponent DVBDescriptorType = 94
 	// GstMtsDescDvbPrivateDataSpecifier wraps GST_MTS_DESC_DVB_PRIVATE_DATA_SPECIFIER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_PRIVATE_DATA_SPECIFIER
 	GstMtsDescDvbPrivateDataSpecifier DVBDescriptorType = 95
 	// GstMtsDescDvbServiceMove wraps GST_MTS_DESC_DVB_SERVICE_MOVE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SERVICE_MOVE
 	GstMtsDescDvbServiceMove DVBDescriptorType = 96
 	// GstMtsDescDvbShortSmoothingBuffer wraps GST_MTS_DESC_DVB_SHORT_SMOOTHING_BUFFER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SHORT_SMOOTHING_BUFFER
 	GstMtsDescDvbShortSmoothingBuffer DVBDescriptorType = 97
 	// GstMtsDescDvbFrequencyList wraps GST_MTS_DESC_DVB_FREQUENCY_LIST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_FREQUENCY_LIST
 	GstMtsDescDvbFrequencyList DVBDescriptorType = 98
 	// GstMtsDescDvbPartialTransportStream wraps GST_MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
 	GstMtsDescDvbPartialTransportStream DVBDescriptorType = 99
 	// GstMtsDescDvbDataBroadcast wraps GST_MTS_DESC_DVB_DATA_BROADCAST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_DATA_BROADCAST
 	GstMtsDescDvbDataBroadcast DVBDescriptorType = 100
 	// GstMtsDescDvbScrambling wraps GST_MTS_DESC_DVB_SCRAMBLING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SCRAMBLING
 	GstMtsDescDvbScrambling DVBDescriptorType = 101
 	// GstMtsDescDvbDataBroadcastID wraps GST_MTS_DESC_DVB_DATA_BROADCAST_ID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_DATA_BROADCAST_ID
 	GstMtsDescDvbDataBroadcastID DVBDescriptorType = 102
 	// GstMtsDescDvbTransportStream wraps GST_MTS_DESC_DVB_TRANSPORT_STREAM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_TRANSPORT_STREAM
 	GstMtsDescDvbTransportStream DVBDescriptorType = 103
 	// GstMtsDescDvbDsng wraps GST_MTS_DESC_DVB_DSNG
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_DSNG
 	GstMtsDescDvbDsng DVBDescriptorType = 104
 	// GstMtsDescDvbPdc wraps GST_MTS_DESC_DVB_PDC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_PDC
 	GstMtsDescDvbPdc DVBDescriptorType = 105
 	// GstMtsDescDvbAc3 wraps GST_MTS_DESC_DVB_AC3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_AC3
 	GstMtsDescDvbAc3 DVBDescriptorType = 106
 	// GstMtsDescDvbAncillaryData wraps GST_MTS_DESC_DVB_ANCILLARY_DATA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_ANCILLARY_DATA
 	GstMtsDescDvbAncillaryData DVBDescriptorType = 107
 	// GstMtsDescDvbCellList wraps GST_MTS_DESC_DVB_CELL_LIST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_CELL_LIST
 	GstMtsDescDvbCellList DVBDescriptorType = 108
 	// GstMtsDescDvbCellFrequencyLink wraps GST_MTS_DESC_DVB_CELL_FREQUENCY_LINK
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_CELL_FREQUENCY_LINK
 	GstMtsDescDvbCellFrequencyLink DVBDescriptorType = 109
 	// GstMtsDescDvbAnnouncementSupport wraps GST_MTS_DESC_DVB_ANNOUNCEMENT_SUPPORT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_ANNOUNCEMENT_SUPPORT
 	GstMtsDescDvbAnnouncementSupport DVBDescriptorType = 110
 	// GstMtsDescDvbApplicationSignalling wraps GST_MTS_DESC_DVB_APPLICATION_SIGNALLING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_APPLICATION_SIGNALLING
 	GstMtsDescDvbApplicationSignalling DVBDescriptorType = 111
 	// GstMtsDescDvbAdaptationFieldData wraps GST_MTS_DESC_DVB_ADAPTATION_FIELD_DATA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_ADAPTATION_FIELD_DATA
 	GstMtsDescDvbAdaptationFieldData DVBDescriptorType = 112
 	// GstMtsDescDvbServiceIdentifier wraps GST_MTS_DESC_DVB_SERVICE_IDENTIFIER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SERVICE_IDENTIFIER
 	GstMtsDescDvbServiceIdentifier DVBDescriptorType = 113
 	// GstMtsDescDvbServiceAvailability wraps GST_MTS_DESC_DVB_SERVICE_AVAILABILITY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_SERVICE_AVAILABILITY
 	GstMtsDescDvbServiceAvailability DVBDescriptorType = 114
 	// GstMtsDescDvbDefaultAuthority wraps GST_MTS_DESC_DVB_DEFAULT_AUTHORITY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_DEFAULT_AUTHORITY
 	GstMtsDescDvbDefaultAuthority DVBDescriptorType = 115
 	// GstMtsDescDvbRelatedContent wraps GST_MTS_DESC_DVB_RELATED_CONTENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_RELATED_CONTENT
 	GstMtsDescDvbRelatedContent DVBDescriptorType = 116
 	// GstMtsDescDvbTvaID wraps GST_MTS_DESC_DVB_TVA_ID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_TVA_ID
 	GstMtsDescDvbTvaID DVBDescriptorType = 117
 	// GstMtsDescDvbContentIdentifier wraps GST_MTS_DESC_DVB_CONTENT_IDENTIFIER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_CONTENT_IDENTIFIER
 	GstMtsDescDvbContentIdentifier DVBDescriptorType = 118
 	// GstMtsDescDvbTimesliceFecIdentifier wraps GST_MTS_DESC_DVB_TIMESLICE_FEC_IDENTIFIER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_TIMESLICE_FEC_IDENTIFIER
 	GstMtsDescDvbTimesliceFecIdentifier DVBDescriptorType = 119
 	// GstMtsDescDvbEcmRepetitionRate wraps GST_MTS_DESC_DVB_ECM_REPETITION_RATE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_ECM_REPETITION_RATE
 	GstMtsDescDvbEcmRepetitionRate DVBDescriptorType = 120
 	// GstMtsDescDvbS2SatelliteDeliverySystem wraps GST_MTS_DESC_DVB_S2_SATELLITE_DELIVERY_SYSTEM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_S2_SATELLITE_DELIVERY_SYSTEM
 	GstMtsDescDvbS2SatelliteDeliverySystem DVBDescriptorType = 121
 	// GstMtsDescDvbEnhancedAc3 wraps GST_MTS_DESC_DVB_ENHANCED_AC3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_ENHANCED_AC3
 	GstMtsDescDvbEnhancedAc3 DVBDescriptorType = 122
 	// GstMtsDescDvbDts wraps GST_MTS_DESC_DVB_DTS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_DTS
 	GstMtsDescDvbDts DVBDescriptorType = 123
 	// GstMtsDescDvbAac wraps GST_MTS_DESC_DVB_AAC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_AAC
 	GstMtsDescDvbAac DVBDescriptorType = 124
 	// GstMtsDescDvbXaitLocation wraps GST_MTS_DESC_DVB_XAIT_LOCATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_XAIT_LOCATION
 	GstMtsDescDvbXaitLocation DVBDescriptorType = 125
 	// GstMtsDescDvbFtaContentManagement wraps GST_MTS_DESC_DVB_FTA_CONTENT_MANAGEMENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_FTA_CONTENT_MANAGEMENT
 	GstMtsDescDvbFtaContentManagement DVBDescriptorType = 126
 	// GstMtsDescDvbExtension wraps GST_MTS_DESC_DVB_EXTENSION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_EXTENSION
 	GstMtsDescDvbExtension DVBDescriptorType = 127
 )
 
@@ -939,95 +928,93 @@ func (e DVBDescriptorType) String() string {
 
 // DVBExtendedDescriptorType wraps GstMpegtsDVBExtendedDescriptorType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBExtendedDescriptorType
 type DVBExtendedDescriptorType C.int
 
 const (
 	// GstMtsDescExtDvbImageIcon wraps GST_MTS_DESC_EXT_DVB_IMAGE_ICON
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_IMAGE_ICON
 	GstMtsDescExtDvbImageIcon DVBExtendedDescriptorType = 0
 	// GstMtsDescExtDvbCpcmDeliverySignalling wraps GST_MTS_DESC_EXT_DVB_CPCM_DELIVERY_SIGNALLING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_CPCM_DELIVERY_SIGNALLING
 	GstMtsDescExtDvbCpcmDeliverySignalling DVBExtendedDescriptorType = 1
 	// GstMtsDescExtDvbCp wraps GST_MTS_DESC_EXT_DVB_CP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_CP
 	GstMtsDescExtDvbCp DVBExtendedDescriptorType = 2
 	// GstMtsDescExtDvbCpIdentifier wraps GST_MTS_DESC_EXT_DVB_CP_IDENTIFIER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_CP_IDENTIFIER
 	GstMtsDescExtDvbCpIdentifier DVBExtendedDescriptorType = 3
 	// GstMtsDescExtDvbT2DeliverySystem wraps GST_MTS_DESC_EXT_DVB_T2_DELIVERY_SYSTEM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_T2_DELIVERY_SYSTEM
 	GstMtsDescExtDvbT2DeliverySystem DVBExtendedDescriptorType = 4
 	// GstMtsDescExtDvbShDeliverySystem wraps GST_MTS_DESC_EXT_DVB_SH_DELIVERY_SYSTEM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_SH_DELIVERY_SYSTEM
 	GstMtsDescExtDvbShDeliverySystem DVBExtendedDescriptorType = 5
 	// GstMtsDescExtDvbSupplementaryAudio wraps GST_MTS_DESC_EXT_DVB_SUPPLEMENTARY_AUDIO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_SUPPLEMENTARY_AUDIO
 	GstMtsDescExtDvbSupplementaryAudio DVBExtendedDescriptorType = 6
 	// GstMtsDescExtDvbNetworkChangeNotify wraps GST_MTS_DESC_EXT_DVB_NETWORK_CHANGE_NOTIFY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_NETWORK_CHANGE_NOTIFY
 	GstMtsDescExtDvbNetworkChangeNotify DVBExtendedDescriptorType = 7
 	// GstMtsDescExtDvbMessage wraps GST_MTS_DESC_EXT_DVB_MESSAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_MESSAGE
 	GstMtsDescExtDvbMessage DVBExtendedDescriptorType = 8
 	// GstMtsDescExtDvbTargetRegion wraps GST_MTS_DESC_EXT_DVB_TARGET_REGION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_TARGET_REGION
 	GstMtsDescExtDvbTargetRegion DVBExtendedDescriptorType = 9
 	// GstMtsDescExtDvbTargetRegionName wraps GST_MTS_DESC_EXT_DVB_TARGET_REGION_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_TARGET_REGION_NAME
 	GstMtsDescExtDvbTargetRegionName DVBExtendedDescriptorType = 10
 	// GstMtsDescExtDvbServiceRelocated wraps GST_MTS_DESC_EXT_DVB_SERVICE_RELOCATED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_SERVICE_RELOCATED
 	GstMtsDescExtDvbServiceRelocated DVBExtendedDescriptorType = 11
 	// GstMtsDescExtDvbXaitPid wraps GST_MTS_DESC_EXT_DVB_XAIT_PID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_XAIT_PID
 	GstMtsDescExtDvbXaitPid DVBExtendedDescriptorType = 12
 	// GstMtsDescExtDvbC2DeliverySystem wraps GST_MTS_DESC_EXT_DVB_C2_DELIVERY_SYSTEM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_C2_DELIVERY_SYSTEM
 	GstMtsDescExtDvbC2DeliverySystem DVBExtendedDescriptorType = 13
 	// GstMtsDescExtDvbDtsHdAudioStream wraps GST_MTS_DESC_EXT_DVB_DTS_HD_AUDIO_STREAM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_DTS_HD_AUDIO_STREAM
 	GstMtsDescExtDvbDtsHdAudioStream DVBExtendedDescriptorType = 14
 	// GstMtsDescExtDvbDtsNeutral wraps GST_MTS_DESC_EXT_DVB_DTS_NEUTRAL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_DTS_NEUTRAL
 	GstMtsDescExtDvbDtsNeutral DVBExtendedDescriptorType = 15
 	// GstMtsDescExtDvbVideoDepthRange wraps GST_MTS_DESC_EXT_DVB_VIDEO_DEPTH_RANGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_VIDEO_DEPTH_RANGE
 	GstMtsDescExtDvbVideoDepthRange DVBExtendedDescriptorType = 16
 	// GstMtsDescExtDvbT2mi wraps GST_MTS_DESC_EXT_DVB_T2MI
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_T2MI
 	GstMtsDescExtDvbT2mi DVBExtendedDescriptorType = 17
 	// GstMtsDescExtDvbURILinkage wraps GST_MTS_DESC_EXT_DVB_URI_LINKAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_URI_LINKAGE
 	GstMtsDescExtDvbURILinkage DVBExtendedDescriptorType = 19
 	// GstMtsDescExtDvbAc4 wraps GST_MTS_DESC_EXT_DVB_AC4
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_AC4
 	GstMtsDescExtDvbAc4 DVBExtendedDescriptorType = 21
 	// GstMtsDescExtDvbAudioPreselection wraps GST_MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
 	GstMtsDescExtDvbAudioPreselection DVBExtendedDescriptorType = 25
 )
 
@@ -1061,25 +1048,25 @@ func (e DVBExtendedDescriptorType) String() string {
 
 // DVBLinkageHandOverType wraps GstMpegtsDVBLinkageHandOverType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBLinkageHandOverType
 type DVBLinkageHandOverType C.int
 
 const (
 	// DvbLinkageHandOverReserved wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_RESERVED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_HAND_OVER_RESERVED
 	DvbLinkageHandOverReserved DVBLinkageHandOverType = 0
 	// DvbLinkageHandOverIdentical wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_IDENTICAL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_HAND_OVER_IDENTICAL
 	DvbLinkageHandOverIdentical DVBLinkageHandOverType = 1
 	// DvbLinkageHandOverLocalVariation wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_LOCAL_VARIATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_HAND_OVER_LOCAL_VARIATION
 	DvbLinkageHandOverLocalVariation DVBLinkageHandOverType = 2
 	// DvbLinkageHandOverAssociated wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_ASSOCIATED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_HAND_OVER_ASSOCIATED
 	DvbLinkageHandOverAssociated DVBLinkageHandOverType = 3
 )
 
@@ -1096,70 +1083,69 @@ func (e DVBLinkageHandOverType) String() string {
 
 // DVBLinkageType wraps GstMpegtsDVBLinkageType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBLinkageType
 type DVBLinkageType C.int
 
 const (
 	// DvbLinkageReserved00 wraps GST_MPEGTS_DVB_LINKAGE_RESERVED_00
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_RESERVED_00
 	DvbLinkageReserved00 DVBLinkageType = 0
 	// DvbLinkageInformation wraps GST_MPEGTS_DVB_LINKAGE_INFORMATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_INFORMATION
 	DvbLinkageInformation DVBLinkageType = 1
 	// DvbLinkageEpg wraps GST_MPEGTS_DVB_LINKAGE_EPG
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_EPG
 	DvbLinkageEpg DVBLinkageType = 2
 	// DvbLinkageCaReplacement wraps GST_MPEGTS_DVB_LINKAGE_CA_REPLACEMENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_CA_REPLACEMENT
 	DvbLinkageCaReplacement DVBLinkageType = 3
 	// DvbLinkageTsContainingCompleteSi wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_COMPLETE_SI
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_COMPLETE_SI
 	DvbLinkageTsContainingCompleteSi DVBLinkageType = 4
 	// DvbLinkageServiceReplacement wraps GST_MPEGTS_DVB_LINKAGE_SERVICE_REPLACEMENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_SERVICE_REPLACEMENT
 	DvbLinkageServiceReplacement DVBLinkageType = 5
 	// DvbLinkageDataBroadcast wraps GST_MPEGTS_DVB_LINKAGE_DATA_BROADCAST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_DATA_BROADCAST
 	DvbLinkageDataBroadcast DVBLinkageType = 6
 	// DvbLinkageRcsMap wraps GST_MPEGTS_DVB_LINKAGE_RCS_MAP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_RCS_MAP
 	DvbLinkageRcsMap DVBLinkageType = 7
 	// DvbLinkageMobileHandOver wraps GST_MPEGTS_DVB_LINKAGE_MOBILE_HAND_OVER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_MOBILE_HAND_OVER
 	DvbLinkageMobileHandOver DVBLinkageType = 8
 	// DvbLinkageSystemSoftwareUpdate wraps GST_MPEGTS_DVB_LINKAGE_SYSTEM_SOFTWARE_UPDATE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_SYSTEM_SOFTWARE_UPDATE
 	DvbLinkageSystemSoftwareUpdate DVBLinkageType = 9
 	// DvbLinkageTsContainingSsu wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_SSU
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_SSU
 	DvbLinkageTsContainingSsu DVBLinkageType = 10
 	// DvbLinkageIpMacNotification wraps GST_MPEGTS_DVB_LINKAGE_IP_MAC_NOTIFICATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_IP_MAC_NOTIFICATION
 	DvbLinkageIpMacNotification DVBLinkageType = 11
 	// DvbLinkageTsContainingInt wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_INT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_INT
 	DvbLinkageTsContainingInt DVBLinkageType = 12
 	// DvbLinkageEvent wraps GST_MPEGTS_DVB_LINKAGE_EVENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_EVENT
 	DvbLinkageEvent DVBLinkageType = 13
 	// DvbLinkageExtendedEvent wraps GST_MPEGTS_DVB_LINKAGE_EXTENDED_EVENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_LINKAGE_EXTENDED_EVENT
 	DvbLinkageExtendedEvent DVBLinkageType = 14
 )
 
@@ -1187,45 +1173,45 @@ func (e DVBLinkageType) String() string {
 
 // DVBScramblingModeType wraps GstMpegtsDVBScramblingModeType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBScramblingModeType
 type DVBScramblingModeType C.int
 
 const (
 	// DvbScramblingModeReserved wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_RESERVED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_SCRAMBLING_MODE_RESERVED
 	DvbScramblingModeReserved DVBScramblingModeType = 0
 	// DvbScramblingModeCsa1 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA1
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA1
 	DvbScramblingModeCsa1 DVBScramblingModeType = 1
 	// DvbScramblingModeCsa2 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA2
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA2
 	DvbScramblingModeCsa2 DVBScramblingModeType = 2
 	// DvbScramblingModeCsa3Standard wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_STANDARD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_STANDARD
 	DvbScramblingModeCsa3Standard DVBScramblingModeType = 3
 	// DvbScramblingModeCsa3MinimalEnhanced wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_MINIMAL_ENHANCED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_MINIMAL_ENHANCED
 	DvbScramblingModeCsa3MinimalEnhanced DVBScramblingModeType = 4
 	// DvbScramblingModeCsa3FullEnhanced wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_FULL_ENHANCED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_FULL_ENHANCED
 	DvbScramblingModeCsa3FullEnhanced DVBScramblingModeType = 5
 	// DvbScramblingModeCissa wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CISSA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_SCRAMBLING_MODE_CISSA
 	DvbScramblingModeCissa DVBScramblingModeType = 16
 	// DvbScramblingModeAtis0 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_0
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_0
 	DvbScramblingModeAtis0 DVBScramblingModeType = 112
 	// DvbScramblingModeAtisF wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_F
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_F
 	DvbScramblingModeAtisF DVBScramblingModeType = 127
 )
 
@@ -1247,122 +1233,121 @@ func (e DVBScramblingModeType) String() string {
 
 // DVBServiceType wraps GstMpegtsDVBServiceType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBServiceType
 type DVBServiceType C.int
 
 const (
 	// GstDvbServiceReserved00 wraps GST_DVB_SERVICE_RESERVED_00
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_RESERVED_00
 	GstDvbServiceReserved00 DVBServiceType = 0
 	// GstDvbServiceDigitalTelevision wraps GST_DVB_SERVICE_DIGITAL_TELEVISION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_DIGITAL_TELEVISION
 	GstDvbServiceDigitalTelevision DVBServiceType = 1
 	// GstDvbServiceDigitalRadioSound wraps GST_DVB_SERVICE_DIGITAL_RADIO_SOUND
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_DIGITAL_RADIO_SOUND
 	GstDvbServiceDigitalRadioSound DVBServiceType = 2
 	// GstDvbServiceTeletext wraps GST_DVB_SERVICE_TELETEXT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_TELETEXT
 	GstDvbServiceTeletext DVBServiceType = 3
 	// GstDvbServiceNvodReference wraps GST_DVB_SERVICE_NVOD_REFERENCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_NVOD_REFERENCE
 	GstDvbServiceNvodReference DVBServiceType = 4
 	// GstDvbServiceNvodTimeShifted wraps GST_DVB_SERVICE_NVOD_TIME_SHIFTED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_NVOD_TIME_SHIFTED
 	GstDvbServiceNvodTimeShifted DVBServiceType = 5
 	// GstDvbServiceMosaic wraps GST_DVB_SERVICE_MOSAIC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_MOSAIC
 	GstDvbServiceMosaic DVBServiceType = 6
 	// GstDvbServiceFmRadio wraps GST_DVB_SERVICE_FM_RADIO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_FM_RADIO
 	GstDvbServiceFmRadio DVBServiceType = 7
 	// GstDvbServiceDvbSrm wraps GST_DVB_SERVICE_DVB_SRM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_DVB_SRM
 	GstDvbServiceDvbSrm DVBServiceType = 8
 	// GstDvbServiceReserved09 wraps GST_DVB_SERVICE_RESERVED_09
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_RESERVED_09
 	GstDvbServiceReserved09 DVBServiceType = 9
 	// GstDvbServiceAdvancedCodecDigitalRadioSound wraps GST_DVB_SERVICE_ADVANCED_CODEC_DIGITAL_RADIO_SOUND
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_DIGITAL_RADIO_SOUND
 	GstDvbServiceAdvancedCodecDigitalRadioSound DVBServiceType = 10
 	// GstDvbServiceAdvancedCodecMosaic wraps GST_DVB_SERVICE_ADVANCED_CODEC_MOSAIC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_MOSAIC
 	GstDvbServiceAdvancedCodecMosaic DVBServiceType = 11
 	// GstDvbServiceDataBroadcast wraps GST_DVB_SERVICE_DATA_BROADCAST
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_DATA_BROADCAST
 	GstDvbServiceDataBroadcast DVBServiceType = 12
 	// GstDvbServiceReserved0dCommonInterface wraps GST_DVB_SERVICE_RESERVED_0D_COMMON_INTERFACE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_RESERVED_0D_COMMON_INTERFACE
 	GstDvbServiceReserved0dCommonInterface DVBServiceType = 13
 	// GstDvbServiceRcsMap wraps GST_DVB_SERVICE_RCS_MAP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_RCS_MAP
 	GstDvbServiceRcsMap DVBServiceType = 14
 	// GstDvbServiceRcsFls wraps GST_DVB_SERVICE_RCS_FLS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_RCS_FLS
 	GstDvbServiceRcsFls DVBServiceType = 15
 	// GstDvbServiceDvbMhp wraps GST_DVB_SERVICE_DVB_MHP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_DVB_MHP
 	GstDvbServiceDvbMhp DVBServiceType = 16
 	// GstDvbServiceMpeg2HdDigitalTelevision wraps GST_DVB_SERVICE_MPEG2_HD_DIGITAL_TELEVISION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_MPEG2_HD_DIGITAL_TELEVISION
 	GstDvbServiceMpeg2HdDigitalTelevision DVBServiceType = 17
 	// GstDvbServiceAdvancedCodecSdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_DIGITAL_TELEVISION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_SD_DIGITAL_TELEVISION
 	GstDvbServiceAdvancedCodecSdDigitalTelevision DVBServiceType = 22
 	// GstDvbServiceAdvancedCodecSdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_TIME_SHIFTED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_TIME_SHIFTED
 	GstDvbServiceAdvancedCodecSdNvodTimeShifted DVBServiceType = 23
 	// GstDvbServiceAdvancedCodecSdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_REFERENCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_REFERENCE
 	GstDvbServiceAdvancedCodecSdNvodReference DVBServiceType = 24
 	// GstDvbServiceAdvancedCodecHdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_DIGITAL_TELEVISION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_HD_DIGITAL_TELEVISION
 	GstDvbServiceAdvancedCodecHdDigitalTelevision DVBServiceType = 25
 	// GstDvbServiceAdvancedCodecHdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_TIME_SHIFTED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_TIME_SHIFTED
 	GstDvbServiceAdvancedCodecHdNvodTimeShifted DVBServiceType = 26
 	// GstDvbServiceAdvancedCodecHdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_REFERENCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_REFERENCE
 	GstDvbServiceAdvancedCodecHdNvodReference DVBServiceType = 27
 	// GstDvbServiceAdvancedCodecStereoHdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_DIGITAL_TELEVISION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_DIGITAL_TELEVISION
 	GstDvbServiceAdvancedCodecStereoHdDigitalTelevision DVBServiceType = 28
 	// GstDvbServiceAdvancedCodecStereoHdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_TIME_SHIFTED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_TIME_SHIFTED
 	GstDvbServiceAdvancedCodecStereoHdNvodTimeShifted DVBServiceType = 29
 	// GstDvbServiceAdvancedCodecStereoHdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE
 	GstDvbServiceAdvancedCodecStereoHdNvodReference DVBServiceType = 30
 	// GstDvbServiceReservedFf wraps GST_DVB_SERVICE_RESERVED_FF
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_DVB_SERVICE_RESERVED_FF
 	GstDvbServiceReservedFf DVBServiceType = 31
 )
 
@@ -1403,30 +1388,29 @@ func (e DVBServiceType) String() string {
 
 // DVBTeletextType wraps GstMpegtsDVBTeletextType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBTeletextType
 type DVBTeletextType C.int
 
 const (
 	// GstInitialPage wraps gst_INITIAL_PAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#gst_INITIAL_PAGE
 	GstInitialPage DVBTeletextType = 1
 	// GstSubtitlePage wraps gst_SUBTITLE_PAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#gst_SUBTITLE_PAGE
 	GstSubtitlePage DVBTeletextType = 2
 	// GstAdditionalInfoPage wraps gst_ADDITIONAL_INFO_PAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#gst_ADDITIONAL_INFO_PAGE
 	GstAdditionalInfoPage DVBTeletextType = 3
 	// GstProgrammeSchedulePage wraps gst_PROGRAMME_SCHEDULE_PAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#gst_PROGRAMME_SCHEDULE_PAGE
 	GstProgrammeSchedulePage DVBTeletextType = 4
 	// GstHearingImpairedPage wraps gst_HEARING_IMPAIRED_PAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#gst_HEARING_IMPAIRED_PAGE
 	GstHearingImpairedPage DVBTeletextType = 5
 )
 
@@ -1444,231 +1428,229 @@ func (e DVBTeletextType) String() string {
 
 // DescriptorType wraps GstMpegtsDescriptorType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsDescriptorType
 type DescriptorType C.int
 
 const (
 	// GstMtsDescReserved00 wraps GST_MTS_DESC_RESERVED_00
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_RESERVED_00
 	GstMtsDescReserved00 DescriptorType = 0
 	// GstMtsDescReserved01 wraps GST_MTS_DESC_RESERVED_01
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_RESERVED_01
 	GstMtsDescReserved01 DescriptorType = 1
 	// GstMtsDescVideoStream wraps GST_MTS_DESC_VIDEO_STREAM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_VIDEO_STREAM
 	GstMtsDescVideoStream DescriptorType = 2
 	// GstMtsDescAudioStream wraps GST_MTS_DESC_AUDIO_STREAM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_AUDIO_STREAM
 	GstMtsDescAudioStream DescriptorType = 3
 	// GstMtsDescHierarchy wraps GST_MTS_DESC_HIERARCHY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_HIERARCHY
 	GstMtsDescHierarchy DescriptorType = 4
 	// GstMtsDescRegistration wraps GST_MTS_DESC_REGISTRATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_REGISTRATION
 	GstMtsDescRegistration DescriptorType = 5
 	// GstMtsDescDataStreamAlignment wraps GST_MTS_DESC_DATA_STREAM_ALIGNMENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DATA_STREAM_ALIGNMENT
 	GstMtsDescDataStreamAlignment DescriptorType = 6
 	// GstMtsDescTargetBackgroundGrid wraps GST_MTS_DESC_TARGET_BACKGROUND_GRID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_TARGET_BACKGROUND_GRID
 	GstMtsDescTargetBackgroundGrid DescriptorType = 7
 	// GstMtsDescVideoWindow wraps GST_MTS_DESC_VIDEO_WINDOW
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_VIDEO_WINDOW
 	GstMtsDescVideoWindow DescriptorType = 8
 	// GstMtsDescCa wraps GST_MTS_DESC_CA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_CA
 	GstMtsDescCa DescriptorType = 9
 	// GstMtsDescIso639Language wraps GST_MTS_DESC_ISO_639_LANGUAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISO_639_LANGUAGE
 	GstMtsDescIso639Language DescriptorType = 10
 	// GstMtsDescSystemClock wraps GST_MTS_DESC_SYSTEM_CLOCK
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SYSTEM_CLOCK
 	GstMtsDescSystemClock DescriptorType = 11
 	// GstMtsDescMultiplexBufferUtilisation wraps GST_MTS_DESC_MULTIPLEX_BUFFER_UTILISATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MULTIPLEX_BUFFER_UTILISATION
 	GstMtsDescMultiplexBufferUtilisation DescriptorType = 12
 	// GstMtsDescCopyright wraps GST_MTS_DESC_COPYRIGHT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_COPYRIGHT
 	GstMtsDescCopyright DescriptorType = 13
 	// GstMtsDescMaximumBitrate wraps GST_MTS_DESC_MAXIMUM_BITRATE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MAXIMUM_BITRATE
 	GstMtsDescMaximumBitrate DescriptorType = 14
 	// GstMtsDescPrivateDataIndicator wraps GST_MTS_DESC_PRIVATE_DATA_INDICATOR
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_PRIVATE_DATA_INDICATOR
 	GstMtsDescPrivateDataIndicator DescriptorType = 15
 	// GstMtsDescSmoothingBuffer wraps GST_MTS_DESC_SMOOTHING_BUFFER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SMOOTHING_BUFFER
 	GstMtsDescSmoothingBuffer DescriptorType = 16
 	// GstMtsDescStd wraps GST_MTS_DESC_STD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_STD
 	GstMtsDescStd DescriptorType = 17
 	// GstMtsDescIbp wraps GST_MTS_DESC_IBP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_IBP
 	GstMtsDescIbp DescriptorType = 18
 	// GstMtsDescDsmccCarouselIdentifier wraps GST_MTS_DESC_DSMCC_CAROUSEL_IDENTIFIER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DSMCC_CAROUSEL_IDENTIFIER
 	GstMtsDescDsmccCarouselIdentifier DescriptorType = 19
 	// GstMtsDescDsmccAssociationTag wraps GST_MTS_DESC_DSMCC_ASSOCIATION_TAG
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DSMCC_ASSOCIATION_TAG
 	GstMtsDescDsmccAssociationTag DescriptorType = 20
 	// GstMtsDescDsmccDeferredAssociationTag wraps GST_MTS_DESC_DSMCC_DEFERRED_ASSOCIATION_TAG
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DSMCC_DEFERRED_ASSOCIATION_TAG
 	GstMtsDescDsmccDeferredAssociationTag DescriptorType = 21
 	// GstMtsDescDsmccNptReference wraps GST_MTS_DESC_DSMCC_NPT_REFERENCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DSMCC_NPT_REFERENCE
 	GstMtsDescDsmccNptReference DescriptorType = 23
 	// GstMtsDescDsmccNptEndpoint wraps GST_MTS_DESC_DSMCC_NPT_ENDPOINT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DSMCC_NPT_ENDPOINT
 	GstMtsDescDsmccNptEndpoint DescriptorType = 24
 	// GstMtsDescDsmccStreamMode wraps GST_MTS_DESC_DSMCC_STREAM_MODE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DSMCC_STREAM_MODE
 	GstMtsDescDsmccStreamMode DescriptorType = 25
 	// GstMtsDescDsmccStreamEvent wraps GST_MTS_DESC_DSMCC_STREAM_EVENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DSMCC_STREAM_EVENT
 	GstMtsDescDsmccStreamEvent DescriptorType = 26
 	// GstMtsDescMpeg4Video wraps GST_MTS_DESC_MPEG4_VIDEO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MPEG4_VIDEO
 	GstMtsDescMpeg4Video DescriptorType = 27
 	// GstMtsDescMpeg4Audio wraps GST_MTS_DESC_MPEG4_AUDIO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MPEG4_AUDIO
 	GstMtsDescMpeg4Audio DescriptorType = 28
 	// GstMtsDescIod wraps GST_MTS_DESC_IOD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_IOD
 	GstMtsDescIod DescriptorType = 29
 	// GstMtsDescSl wraps GST_MTS_DESC_SL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SL
 	GstMtsDescSl DescriptorType = 30
 	// GstMtsDescFmc wraps GST_MTS_DESC_FMC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_FMC
 	GstMtsDescFmc DescriptorType = 31
 	// GstMtsDescExternalEsID wraps GST_MTS_DESC_EXTERNAL_ES_ID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXTERNAL_ES_ID
 	GstMtsDescExternalEsID DescriptorType = 32
 	// GstMtsDescMuxCode wraps GST_MTS_DESC_MUX_CODE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MUX_CODE
 	GstMtsDescMuxCode DescriptorType = 33
 	// GstMtsDescFmxBufferSize wraps GST_MTS_DESC_FMX_BUFFER_SIZE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_FMX_BUFFER_SIZE
 	GstMtsDescFmxBufferSize DescriptorType = 34
 	// GstMtsDescMultiplexBuffer wraps GST_MTS_DESC_MULTIPLEX_BUFFER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MULTIPLEX_BUFFER
 	GstMtsDescMultiplexBuffer DescriptorType = 35
 	// GstMtsDescContentLabeling wraps GST_MTS_DESC_CONTENT_LABELING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_CONTENT_LABELING
 	GstMtsDescContentLabeling DescriptorType = 36
 	// GstMtsDescMetadataPointer wraps GST_MTS_DESC_METADATA_POINTER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_METADATA_POINTER
 	GstMtsDescMetadataPointer DescriptorType = 37
 	// GstMtsDescMetadata wraps GST_MTS_DESC_METADATA
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_METADATA
 	GstMtsDescMetadata DescriptorType = 38
 	// GstMtsDescMetadataStd wraps GST_MTS_DESC_METADATA_STD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_METADATA_STD
 	GstMtsDescMetadataStd DescriptorType = 39
 	// GstMtsDescAvcVideo wraps GST_MTS_DESC_AVC_VIDEO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_AVC_VIDEO
 	GstMtsDescAvcVideo DescriptorType = 40
 	// GstMtsDescIpmp wraps GST_MTS_DESC_IPMP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_IPMP
 	GstMtsDescIpmp DescriptorType = 41
 	// GstMtsDescAvcTimingAndHrd wraps GST_MTS_DESC_AVC_TIMING_AND_HRD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_AVC_TIMING_AND_HRD
 	GstMtsDescAvcTimingAndHrd DescriptorType = 42
 	// GstMtsDescMpeg2AacAudio wraps GST_MTS_DESC_MPEG2_AAC_AUDIO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MPEG2_AAC_AUDIO
 	GstMtsDescMpeg2AacAudio DescriptorType = 43
 	// GstMtsDescFlexMuxTiming wraps GST_MTS_DESC_FLEX_MUX_TIMING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_FLEX_MUX_TIMING
 	GstMtsDescFlexMuxTiming DescriptorType = 44
 	// GstMtsDescMpeg4Text wraps GST_MTS_DESC_MPEG4_TEXT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MPEG4_TEXT
 	GstMtsDescMpeg4Text DescriptorType = 45
 	// GstMtsDescMpeg4AudioExtension wraps GST_MTS_DESC_MPEG4_AUDIO_EXTENSION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MPEG4_AUDIO_EXTENSION
 	GstMtsDescMpeg4AudioExtension DescriptorType = 46
 	// GstMtsDescAuxiliaryVideoStream wraps GST_MTS_DESC_AUXILIARY_VIDEO_STREAM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_AUXILIARY_VIDEO_STREAM
 	GstMtsDescAuxiliaryVideoStream DescriptorType = 47
 	// GstMtsDescSvcExtension wraps GST_MTS_DESC_SVC_EXTENSION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SVC_EXTENSION
 	GstMtsDescSvcExtension DescriptorType = 48
 	// GstMtsDescMvcExtension wraps GST_MTS_DESC_MVC_EXTENSION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MVC_EXTENSION
 	GstMtsDescMvcExtension DescriptorType = 49
 	// GstMtsDescJ2kVideo wraps GST_MTS_DESC_J2K_VIDEO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_J2K_VIDEO
 	GstMtsDescJ2kVideo DescriptorType = 50
 	// GstMtsDescMvcOperationPoint wraps GST_MTS_DESC_MVC_OPERATION_POINT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MVC_OPERATION_POINT
 	GstMtsDescMvcOperationPoint DescriptorType = 51
 	// GstMtsDescMpeg2StereoscopicVideoFormat wraps GST_MTS_DESC_MPEG2_STEREOSCOPIC_VIDEO_FORMAT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_MPEG2_STEREOSCOPIC_VIDEO_FORMAT
 	GstMtsDescMpeg2StereoscopicVideoFormat DescriptorType = 52
 	// GstMtsDescStereoscopicProgramInfo wraps GST_MTS_DESC_STEREOSCOPIC_PROGRAM_INFO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_STEREOSCOPIC_PROGRAM_INFO
 	GstMtsDescStereoscopicProgramInfo DescriptorType = 53
 	// GstMtsDescStereoscopicVideoInfo wraps GST_MTS_DESC_STEREOSCOPIC_VIDEO_INFO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_STEREOSCOPIC_VIDEO_INFO
 	GstMtsDescStereoscopicVideoInfo DescriptorType = 54
 	// GstMtsDescExtension wraps GST_MTS_DESC_EXTENSION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXTENSION
 	GstMtsDescExtension DescriptorType = 63
 )
 
@@ -1736,14 +1718,13 @@ func (e DescriptorType) String() string {
 
 // ExtendedDescriptorType wraps GstMpegtsExtendedDescriptorType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsExtendedDescriptorType
 type ExtendedDescriptorType C.int
 
 const (
 	// GstMtsDescExtJxsVideo wraps GST_MTS_DESC_EXT_JXS_VIDEO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_JXS_VIDEO
 	GstMtsDescExtJxsVideo ExtendedDescriptorType = 20
 )
 
@@ -1757,62 +1738,61 @@ func (e ExtendedDescriptorType) String() string {
 
 // HdmvStreamType wraps GstMpegtsHdmvStreamType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-hdmv-section.html#GstMpegtsHdmvStreamType
 type HdmvStreamType C.int
 
 const (
 	// StreamTypeHdmvAudioLpcm wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_LPCM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_LPCM
 	StreamTypeHdmvAudioLpcm HdmvStreamType = 128
 	// StreamTypeHdmvAudioAc3 wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3
 	StreamTypeHdmvAudioAc3 HdmvStreamType = 129
 	// StreamTypeHdmvAudioDts wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS
 	StreamTypeHdmvAudioDts HdmvStreamType = 130
 	// StreamTypeHdmvAudioAc3TrueHd wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_TRUE_HD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_TRUE_HD
 	StreamTypeHdmvAudioAc3TrueHd HdmvStreamType = 131
 	// StreamTypeHdmvAudioAc3Plus wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS
 	StreamTypeHdmvAudioAc3Plus HdmvStreamType = 132
 	// StreamTypeHdmvAudioDtsHd wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD
 	StreamTypeHdmvAudioDtsHd HdmvStreamType = 133
 	// StreamTypeHdmvAudioDtsHdMasterAudio wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_MASTER_AUDIO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_MASTER_AUDIO
 	StreamTypeHdmvAudioDtsHdMasterAudio HdmvStreamType = 134
 	// StreamTypeHdmvAudioEac3 wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_EAC3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_EAC3
 	StreamTypeHdmvAudioEac3 HdmvStreamType = 135
 	// StreamTypeHdmvSubpicturePgs wraps GST_MPEGTS_STREAM_TYPE_HDMV_SUBPICTURE_PGS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_SUBPICTURE_PGS
 	StreamTypeHdmvSubpicturePgs HdmvStreamType = 144
 	// StreamTypeHdmvIgs wraps GST_MPEGTS_STREAM_TYPE_HDMV_IGS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_IGS
 	StreamTypeHdmvIgs HdmvStreamType = 145
 	// StreamTypeHdmvSubtitle wraps GST_MPEGTS_STREAM_TYPE_HDMV_SUBTITLE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_SUBTITLE
 	StreamTypeHdmvSubtitle HdmvStreamType = 146
 	// StreamTypeHdmvAudioAc3PlusSecondary wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS_SECONDARY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS_SECONDARY
 	StreamTypeHdmvAudioAc3PlusSecondary HdmvStreamType = 161
 	// StreamTypeHdmvAudioDtsHdSecondary wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_SECONDARY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_SECONDARY
 	StreamTypeHdmvAudioDtsHdSecondary HdmvStreamType = 162
 )
 
@@ -1838,138 +1818,137 @@ func (e HdmvStreamType) String() string {
 
 // ISDBDescriptorType wraps GstMpegtsISDBDescriptorType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-isdb-descriptor.html#GstMpegtsISDBDescriptorType
 type ISDBDescriptorType C.int
 
 const (
 	// GstMtsDescIsdbHierarchicalTransmission wraps GST_MTS_DESC_ISDB_HIERARCHICAL_TRANSMISSION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_HIERARCHICAL_TRANSMISSION
 	GstMtsDescIsdbHierarchicalTransmission ISDBDescriptorType = 192
 	// GstMtsDescIsdbDigitalCopyControl wraps GST_MTS_DESC_ISDB_DIGITAL_COPY_CONTROL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_DIGITAL_COPY_CONTROL
 	GstMtsDescIsdbDigitalCopyControl ISDBDescriptorType = 193
 	// GstMtsDescIsdbNetworkIdentification wraps GST_MTS_DESC_ISDB_NETWORK_IDENTIFICATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_NETWORK_IDENTIFICATION
 	GstMtsDescIsdbNetworkIdentification ISDBDescriptorType = 194
 	// GstMtsDescIsdbPartialTsTime wraps GST_MTS_DESC_ISDB_PARTIAL_TS_TIME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_PARTIAL_TS_TIME
 	GstMtsDescIsdbPartialTsTime ISDBDescriptorType = 195
 	// GstMtsDescIsdbAudioComponent wraps GST_MTS_DESC_ISDB_AUDIO_COMPONENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_AUDIO_COMPONENT
 	GstMtsDescIsdbAudioComponent ISDBDescriptorType = 196
 	// GstMtsDescIsdbHyperlink wraps GST_MTS_DESC_ISDB_HYPERLINK
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_HYPERLINK
 	GstMtsDescIsdbHyperlink ISDBDescriptorType = 197
 	// GstMtsDescIsdbTargetRegion wraps GST_MTS_DESC_ISDB_TARGET_REGION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_TARGET_REGION
 	GstMtsDescIsdbTargetRegion ISDBDescriptorType = 198
 	// GstMtsDescIsdbDataContent wraps GST_MTS_DESC_ISDB_DATA_CONTENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_DATA_CONTENT
 	GstMtsDescIsdbDataContent ISDBDescriptorType = 199
 	// GstMtsDescIsdbVideoDecodeControl wraps GST_MTS_DESC_ISDB_VIDEO_DECODE_CONTROL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_VIDEO_DECODE_CONTROL
 	GstMtsDescIsdbVideoDecodeControl ISDBDescriptorType = 200
 	// GstMtsDescIsdbDownloadContent wraps GST_MTS_DESC_ISDB_DOWNLOAD_CONTENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_DOWNLOAD_CONTENT
 	GstMtsDescIsdbDownloadContent ISDBDescriptorType = 201
 	// GstMtsDescIsdbCaEmmTs wraps GST_MTS_DESC_ISDB_CA_EMM_TS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_CA_EMM_TS
 	GstMtsDescIsdbCaEmmTs ISDBDescriptorType = 202
 	// GstMtsDescIsdbCaContractInformation wraps GST_MTS_DESC_ISDB_CA_CONTRACT_INFORMATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_CA_CONTRACT_INFORMATION
 	GstMtsDescIsdbCaContractInformation ISDBDescriptorType = 203
 	// GstMtsDescIsdbCaService wraps GST_MTS_DESC_ISDB_CA_SERVICE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_CA_SERVICE
 	GstMtsDescIsdbCaService ISDBDescriptorType = 204
 	// GstMtsDescIsdbTsInformation wraps GST_MTS_DESC_ISDB_TS_INFORMATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_TS_INFORMATION
 	GstMtsDescIsdbTsInformation ISDBDescriptorType = 205
 	// GstMtsDescIsdbExtendedBroadcaster wraps GST_MTS_DESC_ISDB_EXTENDED_BROADCASTER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_EXTENDED_BROADCASTER
 	GstMtsDescIsdbExtendedBroadcaster ISDBDescriptorType = 206
 	// GstMtsDescIsdbLogoTransmission wraps GST_MTS_DESC_ISDB_LOGO_TRANSMISSION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_LOGO_TRANSMISSION
 	GstMtsDescIsdbLogoTransmission ISDBDescriptorType = 207
 	// GstMtsDescIsdbBasicLocalEvent wraps GST_MTS_DESC_ISDB_BASIC_LOCAL_EVENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_BASIC_LOCAL_EVENT
 	GstMtsDescIsdbBasicLocalEvent ISDBDescriptorType = 208
 	// GstMtsDescIsdbReference wraps GST_MTS_DESC_ISDB_REFERENCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_REFERENCE
 	GstMtsDescIsdbReference ISDBDescriptorType = 209
 	// GstMtsDescIsdbNodeRelation wraps GST_MTS_DESC_ISDB_NODE_RELATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_NODE_RELATION
 	GstMtsDescIsdbNodeRelation ISDBDescriptorType = 210
 	// GstMtsDescIsdbShortNodeInformation wraps GST_MTS_DESC_ISDB_SHORT_NODE_INFORMATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_SHORT_NODE_INFORMATION
 	GstMtsDescIsdbShortNodeInformation ISDBDescriptorType = 211
 	// GstMtsDescIsdbStcReference wraps GST_MTS_DESC_ISDB_STC_REFERENCE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_STC_REFERENCE
 	GstMtsDescIsdbStcReference ISDBDescriptorType = 212
 	// GstMtsDescIsdbSeries wraps GST_MTS_DESC_ISDB_SERIES
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_SERIES
 	GstMtsDescIsdbSeries ISDBDescriptorType = 213
 	// GstMtsDescIsdbEventGroup wraps GST_MTS_DESC_ISDB_EVENT_GROUP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_EVENT_GROUP
 	GstMtsDescIsdbEventGroup ISDBDescriptorType = 214
 	// GstMtsDescIsdbSiParameter wraps GST_MTS_DESC_ISDB_SI_PARAMETER
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_SI_PARAMETER
 	GstMtsDescIsdbSiParameter ISDBDescriptorType = 215
 	// GstMtsDescIsdbBroadcasterName wraps GST_MTS_DESC_ISDB_BROADCASTER_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_BROADCASTER_NAME
 	GstMtsDescIsdbBroadcasterName ISDBDescriptorType = 216
 	// GstMtsDescIsdbComponentGroup wraps GST_MTS_DESC_ISDB_COMPONENT_GROUP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_COMPONENT_GROUP
 	GstMtsDescIsdbComponentGroup ISDBDescriptorType = 217
 	// GstMtsDescIsdbSiPrimeTs wraps GST_MTS_DESC_ISDB_SI_PRIME_TS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_SI_PRIME_TS
 	GstMtsDescIsdbSiPrimeTs ISDBDescriptorType = 218
 	// GstMtsDescIsdbBoardInformation wraps GST_MTS_DESC_ISDB_BOARD_INFORMATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_BOARD_INFORMATION
 	GstMtsDescIsdbBoardInformation ISDBDescriptorType = 219
 	// GstMtsDescIsdbLdtLinkage wraps GST_MTS_DESC_ISDB_LDT_LINKAGE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_LDT_LINKAGE
 	GstMtsDescIsdbLdtLinkage ISDBDescriptorType = 220
 	// GstMtsDescIsdbConnectedTransmission wraps GST_MTS_DESC_ISDB_CONNECTED_TRANSMISSION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_CONNECTED_TRANSMISSION
 	GstMtsDescIsdbConnectedTransmission ISDBDescriptorType = 221
 	// GstMtsDescIsdbContentAvailability wraps GST_MTS_DESC_ISDB_CONTENT_AVAILABILITY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_CONTENT_AVAILABILITY
 	GstMtsDescIsdbContentAvailability ISDBDescriptorType = 222
 	// GstMtsDescIsdbServiceGroup wraps GST_MTS_DESC_ISDB_SERVICE_GROUP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_ISDB_SERVICE_GROUP
 	GstMtsDescIsdbServiceGroup ISDBDescriptorType = 224
 )
 
@@ -2014,25 +1993,25 @@ func (e ISDBDescriptorType) String() string {
 
 // Iso639AudioType wraps GstMpegtsIso639AudioType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsIso639AudioType
 type Iso639AudioType C.int
 
 const (
 	// AudioTypeUndefined wraps GST_MPEGTS_AUDIO_TYPE_UNDEFINED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_AUDIO_TYPE_UNDEFINED
 	AudioTypeUndefined Iso639AudioType = 0
 	// AudioTypeCleanEffects wraps GST_MPEGTS_AUDIO_TYPE_CLEAN_EFFECTS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_AUDIO_TYPE_CLEAN_EFFECTS
 	AudioTypeCleanEffects Iso639AudioType = 1
 	// AudioTypeHearingImpaired wraps GST_MPEGTS_AUDIO_TYPE_HEARING_IMPAIRED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_AUDIO_TYPE_HEARING_IMPAIRED
 	AudioTypeHearingImpaired Iso639AudioType = 2
 	// AudioTypeVisualImpairedCommentary wraps GST_MPEGTS_AUDIO_TYPE_VISUAL_IMPAIRED_COMMENTARY
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_AUDIO_TYPE_VISUAL_IMPAIRED_COMMENTARY
 	AudioTypeVisualImpairedCommentary Iso639AudioType = 3
 )
 
@@ -2049,22 +2028,21 @@ func (e Iso639AudioType) String() string {
 
 // MetadataApplicationFormat wraps GstMpegtsMetadataApplicationFormat
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsMetadataApplicationFormat
 type MetadataApplicationFormat C.int
 
 const (
 	// MetadataApplicationFormatIsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_ISAN
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_APPLICATION_FORMAT_ISAN
 	MetadataApplicationFormatIsan MetadataApplicationFormat = 16
 	// MetadataApplicationFormatVsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_VSAN
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_APPLICATION_FORMAT_VSAN
 	MetadataApplicationFormatVsan MetadataApplicationFormat = 17
 	// MetadataApplicationFormatIdentifierField wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD
 	MetadataApplicationFormatIdentifierField MetadataApplicationFormat = 65535
 )
 
@@ -2080,30 +2058,25 @@ func (e MetadataApplicationFormat) String() string {
 
 // MetadataFormat wraps GstMpegtsMetadataFormat
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsMetadataFormat
 type MetadataFormat C.int
 
 const (
 	// MetadataFormatTem wraps GST_MPEGTS_METADATA_FORMAT_TEM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_FORMAT_TEM
 	MetadataFormatTem MetadataFormat = 16
 	// MetadataFormatBim wraps GST_MPEGTS_METADATA_FORMAT_BIM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_FORMAT_BIM
 	MetadataFormatBim MetadataFormat = 17
 	// MetadataFormatApplicationFormat wraps GST_MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
 	MetadataFormatApplicationFormat MetadataFormat = 63
 	// MetadataFormatIdentifierField wraps GST_MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
 	MetadataFormatIdentifierField MetadataFormat = 255
 )
 
@@ -2120,14 +2093,13 @@ func (e MetadataFormat) String() string {
 
 // MiscDescriptorType wraps GstMpegtsMiscDescriptorType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsMiscDescriptorType
 type MiscDescriptorType C.int
 
 const (
 	// GstMtsDescDtgLogicalChannel wraps GST_MTS_DESC_DTG_LOGICAL_CHANNEL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DTG_LOGICAL_CHANNEL
 	GstMtsDescDtgLogicalChannel MiscDescriptorType = 131
 )
 
@@ -2141,69 +2113,69 @@ func (e MiscDescriptorType) String() string {
 
 // ModulationType wraps GstMpegtsModulationType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsModulationType
 type ModulationType C.int
 
 const (
 	// ModulationQpsk wraps GST_MPEGTS_MODULATION_QPSK
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_QPSK
 	ModulationQpsk ModulationType = 0
 	// ModulationQam16 wraps GST_MPEGTS_MODULATION_QAM_16
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_QAM_16
 	ModulationQam16 ModulationType = 1
 	// ModulationQam32 wraps GST_MPEGTS_MODULATION_QAM_32
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_QAM_32
 	ModulationQam32 ModulationType = 2
 	// ModulationQam64 wraps GST_MPEGTS_MODULATION_QAM_64
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_QAM_64
 	ModulationQam64 ModulationType = 3
 	// ModulationQam128 wraps GST_MPEGTS_MODULATION_QAM_128
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_QAM_128
 	ModulationQam128 ModulationType = 4
 	// ModulationQam256 wraps GST_MPEGTS_MODULATION_QAM_256
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_QAM_256
 	ModulationQam256 ModulationType = 5
 	// ModulationQamAuto wraps GST_MPEGTS_MODULATION_QAM_AUTO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_QAM_AUTO
 	ModulationQamAuto ModulationType = 6
 	// ModulationVsb8 wraps GST_MPEGTS_MODULATION_VSB_8
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_VSB_8
 	ModulationVsb8 ModulationType = 7
 	// ModulationVsb16 wraps GST_MPEGTS_MODULATION_VSB_16
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_VSB_16
 	ModulationVsb16 ModulationType = 8
 	// ModulationPsk8 wraps GST_MPEGTS_MODULATION_PSK_8
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_PSK_8
 	ModulationPsk8 ModulationType = 9
 	// ModulationApsk16 wraps GST_MPEGTS_MODULATION_APSK_16
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_APSK_16
 	ModulationApsk16 ModulationType = 10
 	// ModulationApsk32 wraps GST_MPEGTS_MODULATION_APSK_32
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_APSK_32
 	ModulationApsk32 ModulationType = 11
 	// ModulationDqpsk wraps GST_MPEGTS_MODULATION_DQPSK
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_DQPSK
 	ModulationDqpsk ModulationType = 12
 	// ModulationQam4Nr wraps GST_MPEGTS_MODULATION_QAM_4_NR_
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_QAM_4_NR_
 	ModulationQam4Nr ModulationType = 13
 	// ModulationNone wraps GST_MPEGTS_MODULATION_NONE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_MODULATION_NONE
 	ModulationNone ModulationType = 14
 )
 
@@ -2231,34 +2203,33 @@ func (e ModulationType) String() string {
 
 // RunningStatus wraps GstMpegtsRunningStatus
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsRunningStatus
 type RunningStatus C.int
 
 const (
 	// RunningStatusUndefined wraps GST_MPEGTS_RUNNING_STATUS_UNDEFINED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_RUNNING_STATUS_UNDEFINED
 	RunningStatusUndefined RunningStatus = 0
 	// RunningStatusNotRunning wraps GST_MPEGTS_RUNNING_STATUS_NOT_RUNNING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_RUNNING_STATUS_NOT_RUNNING
 	RunningStatusNotRunning RunningStatus = 1
 	// RunningStatusStartsInFewSeconds wraps GST_MPEGTS_RUNNING_STATUS_STARTS_IN_FEW_SECONDS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_RUNNING_STATUS_STARTS_IN_FEW_SECONDS
 	RunningStatusStartsInFewSeconds RunningStatus = 2
 	// RunningStatusPausing wraps GST_MPEGTS_RUNNING_STATUS_PAUSING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_RUNNING_STATUS_PAUSING
 	RunningStatusPausing RunningStatus = 3
 	// RunningStatusRunning wraps GST_MPEGTS_RUNNING_STATUS_RUNNING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_RUNNING_STATUS_RUNNING
 	RunningStatusRunning RunningStatus = 4
 	// RunningStatusOffAir wraps GST_MPEGTS_RUNNING_STATUS_OFF_AIR
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_RUNNING_STATUS_OFF_AIR
 	RunningStatusOffAir RunningStatus = 5
 )
 
@@ -2277,42 +2248,41 @@ func (e RunningStatus) String() string {
 
 // SCTEDescriptorType wraps GstMpegtsSCTEDescriptorType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsSCTEDescriptorType
 type SCTEDescriptorType C.int
 
 const (
 	// GstMtsDescScteStuffing wraps GST_MTS_DESC_SCTE_STUFFING
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SCTE_STUFFING
 	GstMtsDescScteStuffing SCTEDescriptorType = 128
 	// GstMtsDescScteAc3 wraps GST_MTS_DESC_SCTE_AC3
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SCTE_AC3
 	GstMtsDescScteAc3 SCTEDescriptorType = 129
 	// GstMtsDescScteFrameRate wraps GST_MTS_DESC_SCTE_FRAME_RATE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SCTE_FRAME_RATE
 	GstMtsDescScteFrameRate SCTEDescriptorType = 130
 	// GstMtsDescScteExtendedVideo wraps GST_MTS_DESC_SCTE_EXTENDED_VIDEO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SCTE_EXTENDED_VIDEO
 	GstMtsDescScteExtendedVideo SCTEDescriptorType = 131
 	// GstMtsDescScteComponentName wraps GST_MTS_DESC_SCTE_COMPONENT_NAME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SCTE_COMPONENT_NAME
 	GstMtsDescScteComponentName SCTEDescriptorType = 132
 	// GstMtsDescScteFrequencySpec wraps GST_MTS_DESC_SCTE_FREQUENCY_SPEC
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SCTE_FREQUENCY_SPEC
 	GstMtsDescScteFrequencySpec SCTEDescriptorType = 144
 	// GstMtsDescScteModulationParams wraps GST_MTS_DESC_SCTE_MODULATION_PARAMS
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SCTE_MODULATION_PARAMS
 	GstMtsDescScteModulationParams SCTEDescriptorType = 145
 	// GstMtsDescScteTransportStreamID wraps GST_MTS_DESC_SCTE_TRANSPORT_STREAM_ID
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_SCTE_TRANSPORT_STREAM_ID
 	GstMtsDescScteTransportStreamID SCTEDescriptorType = 146
 )
 
@@ -2333,33 +2303,33 @@ func (e SCTEDescriptorType) String() string {
 
 // SCTESpliceCommandType wraps GstMpegtsSCTESpliceCommandType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GstMpegtsSCTESpliceCommandType
 type SCTESpliceCommandType C.int
 
 const (
 	// GstMtsScteSpliceCommandNull wraps GST_MTS_SCTE_SPLICE_COMMAND_NULL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_SPLICE_COMMAND_NULL
 	GstMtsScteSpliceCommandNull SCTESpliceCommandType = 0
 	// GstMtsScteSpliceCommandSchedule wraps GST_MTS_SCTE_SPLICE_COMMAND_SCHEDULE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_SPLICE_COMMAND_SCHEDULE
 	GstMtsScteSpliceCommandSchedule SCTESpliceCommandType = 4
 	// GstMtsScteSpliceCommandInsert wraps GST_MTS_SCTE_SPLICE_COMMAND_INSERT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_SPLICE_COMMAND_INSERT
 	GstMtsScteSpliceCommandInsert SCTESpliceCommandType = 5
 	// GstMtsScteSpliceCommandTime wraps GST_MTS_SCTE_SPLICE_COMMAND_TIME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_SPLICE_COMMAND_TIME
 	GstMtsScteSpliceCommandTime SCTESpliceCommandType = 6
 	// GstMtsScteSpliceCommandBandwidth wraps GST_MTS_SCTE_SPLICE_COMMAND_BANDWIDTH
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_SPLICE_COMMAND_BANDWIDTH
 	GstMtsScteSpliceCommandBandwidth SCTESpliceCommandType = 7
 	// GstMtsScteSpliceCommandPrivate wraps GST_MTS_SCTE_SPLICE_COMMAND_PRIVATE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_SPLICE_COMMAND_PRIVATE
 	GstMtsScteSpliceCommandPrivate SCTESpliceCommandType = 255
 )
 
@@ -2378,29 +2348,29 @@ func (e SCTESpliceCommandType) String() string {
 
 // SCTESpliceDescriptor wraps GstMpegtsSCTESpliceDescriptor
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GstMpegtsSCTESpliceDescriptor
 type SCTESpliceDescriptor C.int
 
 const (
 	// GstMtsScteDescAvail wraps GST_MTS_SCTE_DESC_AVAIL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_DESC_AVAIL
 	GstMtsScteDescAvail SCTESpliceDescriptor = 0
 	// GstMtsScteDescDtmf wraps GST_MTS_SCTE_DESC_DTMF
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_DESC_DTMF
 	GstMtsScteDescDtmf SCTESpliceDescriptor = 1
 	// GstMtsScteDescSegmentation wraps GST_MTS_SCTE_DESC_SEGMENTATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_DESC_SEGMENTATION
 	GstMtsScteDescSegmentation SCTESpliceDescriptor = 2
 	// GstMtsScteDescTime wraps GST_MTS_SCTE_DESC_TIME
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_DESC_TIME
 	GstMtsScteDescTime SCTESpliceDescriptor = 3
 	// GstMtsScteDescAudio wraps GST_MTS_SCTE_DESC_AUDIO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_SCTE_DESC_AUDIO
 	GstMtsScteDescAudio SCTESpliceDescriptor = 4
 )
 
@@ -2418,25 +2388,25 @@ func (e SCTESpliceDescriptor) String() string {
 
 // SatellitePolarizationType wraps GstMpegtsSatellitePolarizationType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsSatellitePolarizationType
 type SatellitePolarizationType C.int
 
 const (
 	// PolarizationLinearHorizontal wraps GST_MPEGTS_POLARIZATION_LINEAR_HORIZONTAL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_POLARIZATION_LINEAR_HORIZONTAL
 	PolarizationLinearHorizontal SatellitePolarizationType = 0
 	// PolarizationLinearVertical wraps GST_MPEGTS_POLARIZATION_LINEAR_VERTICAL
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_POLARIZATION_LINEAR_VERTICAL
 	PolarizationLinearVertical SatellitePolarizationType = 1
 	// PolarizationCircularLeft wraps GST_MPEGTS_POLARIZATION_CIRCULAR_LEFT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_POLARIZATION_CIRCULAR_LEFT
 	PolarizationCircularLeft SatellitePolarizationType = 2
 	// PolarizationCircularRight wraps GST_MPEGTS_POLARIZATION_CIRCULAR_RIGHT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_POLARIZATION_CIRCULAR_RIGHT
 	PolarizationCircularRight SatellitePolarizationType = 3
 )
 
@@ -2453,29 +2423,29 @@ func (e SatellitePolarizationType) String() string {
 
 // SatelliteRolloff wraps GstMpegtsSatelliteRolloff
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsSatelliteRolloff
 type SatelliteRolloff C.int
 
 const (
 	// Rolloff35 wraps GST_MPEGTS_ROLLOFF_35
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_ROLLOFF_35
 	Rolloff35 SatelliteRolloff = 0
 	// Rolloff20 wraps GST_MPEGTS_ROLLOFF_20
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_ROLLOFF_20
 	Rolloff20 SatelliteRolloff = 1
 	// Rolloff25 wraps GST_MPEGTS_ROLLOFF_25
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_ROLLOFF_25
 	Rolloff25 SatelliteRolloff = 2
 	// RolloffReserved wraps GST_MPEGTS_ROLLOFF_RESERVED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_ROLLOFF_RESERVED
 	RolloffReserved SatelliteRolloff = 3
 	// RolloffAuto wraps GST_MPEGTS_ROLLOFF_AUTO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_ROLLOFF_AUTO
 	RolloffAuto SatelliteRolloff = 4
 )
 
@@ -2493,50 +2463,41 @@ func (e SatelliteRolloff) String() string {
 
 // ScteStreamType wraps GstMpegtsScteStreamType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GstMpegtsScteStreamType
 type ScteStreamType C.int
 
 const (
 	// StreamTypeScteSubtitling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
 	StreamTypeScteSubtitling ScteStreamType = 130
 	// StreamTypeScteIsochData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
 	StreamTypeScteIsochData ScteStreamType = 131
 	// StreamTypeScteSit wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_SIT
 	StreamTypeScteSit ScteStreamType = 134
 	// StreamTypeScteDstNrt wraps GST_MPEGTS_STREAM_TYPE_SCTE_DST_NRT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_DST_NRT
 	StreamTypeScteDstNrt ScteStreamType = 149
 	// StreamTypeScteDsmccDcb wraps GST_MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
 	StreamTypeScteDsmccDcb ScteStreamType = 176
 	// StreamTypeScteSignaling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIGNALING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_SIGNALING
 	StreamTypeScteSignaling ScteStreamType = 192
 	// StreamTypeScteSyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
 	StreamTypeScteSyncData ScteStreamType = 194
 	// StreamTypeScteAsyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
 	StreamTypeScteAsyncData ScteStreamType = 195
 )
 
@@ -2557,97 +2518,81 @@ func (e ScteStreamType) String() string {
 
 // SectionATSCTableID wraps GstMpegtsSectionATSCTableID
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsSectionATSCTableID
 type SectionATSCTableID C.int
 
 const (
 	// GstMtsTableIDAtscMasterGuide wraps GST_MTS_TABLE_ID_ATSC_MASTER_GUIDE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_MASTER_GUIDE
 	GstMtsTableIDAtscMasterGuide SectionATSCTableID = 199
 	// GstMtsTableIDAtscTerrestrialVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
 	GstMtsTableIDAtscTerrestrialVirtualChannel SectionATSCTableID = 200
 	// GstMtsTableIDAtscCableVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
 	GstMtsTableIDAtscCableVirtualChannel SectionATSCTableID = 201
 	// GstMtsTableIDAtscRatingRegion wraps GST_MTS_TABLE_ID_ATSC_RATING_REGION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_RATING_REGION
 	GstMtsTableIDAtscRatingRegion SectionATSCTableID = 202
 	// GstMtsTableIDAtscEventInformation wraps GST_MTS_TABLE_ID_ATSC_EVENT_INFORMATION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_EVENT_INFORMATION
 	GstMtsTableIDAtscEventInformation SectionATSCTableID = 203
 	// GstMtsTableIDAtscChannelOrEventExtendedText wraps GST_MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
 	GstMtsTableIDAtscChannelOrEventExtendedText SectionATSCTableID = 204
 	// GstMtsTableIDAtscSystemTime wraps GST_MTS_TABLE_ID_ATSC_SYSTEM_TIME
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_SYSTEM_TIME
 	GstMtsTableIDAtscSystemTime SectionATSCTableID = 205
 	// GstMtsTableIDAtscDataEvent wraps GST_MTS_TABLE_ID_ATSC_DATA_EVENT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_DATA_EVENT
 	GstMtsTableIDAtscDataEvent SectionATSCTableID = 206
 	// GstMtsTableIDAtscDataService wraps GST_MTS_TABLE_ID_ATSC_DATA_SERVICE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_DATA_SERVICE
 	GstMtsTableIDAtscDataService SectionATSCTableID = 207
 	// GstMtsTableIDAtscProgramIdentifier wraps GST_MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
 	GstMtsTableIDAtscProgramIdentifier SectionATSCTableID = 208
 	// GstMtsTableIDAtscNetworkResource wraps GST_MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
 	GstMtsTableIDAtscNetworkResource SectionATSCTableID = 209
 	// GstMtsTableIDAtscLongTermService wraps GST_MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
 	GstMtsTableIDAtscLongTermService SectionATSCTableID = 210
 	// GstMtsTableIDAtscDirectedChannelChange wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
 	GstMtsTableIDAtscDirectedChannelChange SectionATSCTableID = 211
 	// GstMtsTableIDAtscDirectedChannelChangeSectionCode wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
 	GstMtsTableIDAtscDirectedChannelChangeSectionCode SectionATSCTableID = 212
 	// GstMtsTableIDAtscAggregateEventInformation wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_EVENT_INFORMATION
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_AGGREGATE_EVENT_INFORMATION
 	GstMtsTableIDAtscAggregateEventInformation SectionATSCTableID = 214
 	// GstMtsTableIDAtscAggregateExtendedText wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_EXTENDED_TEXT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_AGGREGATE_EXTENDED_TEXT
 	GstMtsTableIDAtscAggregateExtendedText SectionATSCTableID = 215
 	// GstMtsTableIDAtscAggregateDataEvent wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_DATA_EVENT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_AGGREGATE_DATA_EVENT
 	GstMtsTableIDAtscAggregateDataEvent SectionATSCTableID = 217
 	// GstMtsTableIDAtscSatelliteVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
 	GstMtsTableIDAtscSatelliteVirtualChannel SectionATSCTableID = 218
 )
 
@@ -2678,205 +2623,173 @@ func (e SectionATSCTableID) String() string {
 
 // SectionDVBTableID wraps GstMpegtsSectionDVBTableID
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsSectionDVBTableID
 type SectionDVBTableID C.int
 
 const (
 	// GstMtsTableIDNetworkInformationActualNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
 	GstMtsTableIDNetworkInformationActualNetwork SectionDVBTableID = 64
 	// GstMtsTableIDNetworkInformationOtherNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
 	GstMtsTableIDNetworkInformationOtherNetwork SectionDVBTableID = 65
 	// GstMtsTableIDServiceDescriptionActualTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
 	GstMtsTableIDServiceDescriptionActualTs SectionDVBTableID = 66
 	// GstMtsTableIDServiceDescriptionOtherTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
 	GstMtsTableIDServiceDescriptionOtherTs SectionDVBTableID = 70
 	// GstMtsTableIDBouquetAssociation wraps GST_MTS_TABLE_ID_BOUQUET_ASSOCIATION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_BOUQUET_ASSOCIATION
 	GstMtsTableIDBouquetAssociation SectionDVBTableID = 74
 	// GstMtsTableIDUpdateNotification wraps GST_MTS_TABLE_ID_UPDATE_NOTIFICATION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_UPDATE_NOTIFICATION
 	GstMtsTableIDUpdateNotification SectionDVBTableID = 75
 	// GstMtsTableIDDownloadableFontInfo wraps GST_MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
 	GstMtsTableIDDownloadableFontInfo SectionDVBTableID = 76
 	// GstMtsTableIDEventInformationActualTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
 	GstMtsTableIDEventInformationActualTsPresent SectionDVBTableID = 78
 	// GstMtsTableIDEventInformationOtherTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
 	GstMtsTableIDEventInformationOtherTsPresent SectionDVBTableID = 79
 	// GstMtsTableIDEventInformationActualTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
 	GstMtsTableIDEventInformationActualTsSchedule1 SectionDVBTableID = 80
 	// GstMtsTableIDEventInformationActualTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
 	GstMtsTableIDEventInformationActualTsScheduleN SectionDVBTableID = 95
 	// GstMtsTableIDEventInformationOtherTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
 	GstMtsTableIDEventInformationOtherTsSchedule1 SectionDVBTableID = 96
 	// GstMtsTableIDEventInformationOtherTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
 	GstMtsTableIDEventInformationOtherTsScheduleN SectionDVBTableID = 111
 	// GstMtsTableIDTimeDate wraps GST_MTS_TABLE_ID_TIME_DATE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TIME_DATE
 	GstMtsTableIDTimeDate SectionDVBTableID = 112
 	// GstMtsTableIDRunningStatus wraps GST_MTS_TABLE_ID_RUNNING_STATUS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_RUNNING_STATUS
 	GstMtsTableIDRunningStatus SectionDVBTableID = 113
 	// GstMtsTableIDStuffing wraps GST_MTS_TABLE_ID_STUFFING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_STUFFING
 	GstMtsTableIDStuffing SectionDVBTableID = 114
 	// GstMtsTableIDTimeOffset wraps GST_MTS_TABLE_ID_TIME_OFFSET
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TIME_OFFSET
 	GstMtsTableIDTimeOffset SectionDVBTableID = 115
 	// GstMtsTableIDApplicationInformationTable wraps GST_MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
 	GstMtsTableIDApplicationInformationTable SectionDVBTableID = 116
 	// GstMtsTableIDContainer wraps GST_MTS_TABLE_ID_CONTAINER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CONTAINER
 	GstMtsTableIDContainer SectionDVBTableID = 117
 	// GstMtsTableIDRelatedContent wraps GST_MTS_TABLE_ID_RELATED_CONTENT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_RELATED_CONTENT
 	GstMtsTableIDRelatedContent SectionDVBTableID = 118
 	// GstMtsTableIDContentIdentifier wraps GST_MTS_TABLE_ID_CONTENT_IDENTIFIER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CONTENT_IDENTIFIER
 	GstMtsTableIDContentIdentifier SectionDVBTableID = 119
 	// GstMtsTableIDMpeFec wraps GST_MTS_TABLE_ID_MPE_FEC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_MPE_FEC
 	GstMtsTableIDMpeFec SectionDVBTableID = 120
 	// GstMtsTableIDResolutionNotification wraps GST_MTS_TABLE_ID_RESOLUTION_NOTIFICATION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_RESOLUTION_NOTIFICATION
 	GstMtsTableIDResolutionNotification SectionDVBTableID = 121
 	// GstMtsTableIDMpeIfec wraps GST_MTS_TABLE_ID_MPE_IFEC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_MPE_IFEC
 	GstMtsTableIDMpeIfec SectionDVBTableID = 122
 	// GstMtsTableIDProtectionMessage wraps GST_MTS_TABLE_ID_PROTECTION_MESSAGE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_PROTECTION_MESSAGE
 	GstMtsTableIDProtectionMessage SectionDVBTableID = 123
 	// GstMtsTableIDDiscontinuityInformation wraps GST_MTS_TABLE_ID_DISCONTINUITY_INFORMATION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DISCONTINUITY_INFORMATION
 	GstMtsTableIDDiscontinuityInformation SectionDVBTableID = 126
 	// GstMtsTableIDSelectionInformation wraps GST_MTS_TABLE_ID_SELECTION_INFORMATION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SELECTION_INFORMATION
 	GstMtsTableIDSelectionInformation SectionDVBTableID = 127
 	// GstMtsTableIDCaMessageEcm0 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_0
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CA_MESSAGE_ECM_0
 	GstMtsTableIDCaMessageEcm0 SectionDVBTableID = 128
 	// GstMtsTableIDCaMessageEcm1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CA_MESSAGE_ECM_1
 	GstMtsTableIDCaMessageEcm1 SectionDVBTableID = 129
 	// GstMtsTableIDCaMessageSystemPrivate1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
 	GstMtsTableIDCaMessageSystemPrivate1 SectionDVBTableID = 130
 	// GstMtsTableIDCaMessageSystemPrivateN wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
 	GstMtsTableIDCaMessageSystemPrivateN SectionDVBTableID = 143
 	// GstMtsTableIDSct wraps GST_MTS_TABLE_ID_SCT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCT
 	GstMtsTableIDSct SectionDVBTableID = 160
 	// GstMtsTableIDFct wraps GST_MTS_TABLE_ID_FCT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_FCT
 	GstMtsTableIDFct SectionDVBTableID = 161
 	// GstMtsTableIDTct wraps GST_MTS_TABLE_ID_TCT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TCT
 	GstMtsTableIDTct SectionDVBTableID = 162
 	// GstMtsTableIDSpt wraps GST_MTS_TABLE_ID_SPT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SPT
 	GstMtsTableIDSpt SectionDVBTableID = 163
 	// GstMtsTableIDCmt wraps GST_MTS_TABLE_ID_CMT
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CMT
 	GstMtsTableIDCmt SectionDVBTableID = 164
 	// GstMtsTableIDTbtp wraps GST_MTS_TABLE_ID_TBTP
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TBTP
 	GstMtsTableIDTbtp SectionDVBTableID = 165
 	// GstMtsTableIDPcrPacketPayload wraps GST_MTS_TABLE_ID_PCR_PACKET_PAYLOAD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_PCR_PACKET_PAYLOAD
 	GstMtsTableIDPcrPacketPayload SectionDVBTableID = 166
 	// GstMtsTableIDTransmissionModeSupportPayload wraps GST_MTS_TABLE_ID_TRANSMISSION_MODE_SUPPORT_PAYLOAD
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TRANSMISSION_MODE_SUPPORT_PAYLOAD
 	GstMtsTableIDTransmissionModeSupportPayload SectionDVBTableID = 170
 	// GstMtsTableIDTim wraps GST_MTS_TABLE_ID_TIM
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TIM
 	GstMtsTableIDTim SectionDVBTableID = 176
 	// GstMtsTableIDLlFecParityDataTable wraps GST_MTS_TABLE_ID_LL_FEC_PARITY_DATA_TABLE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_LL_FEC_PARITY_DATA_TABLE
 	GstMtsTableIDLlFecParityDataTable SectionDVBTableID = 177
 )
 
@@ -2930,44 +2843,37 @@ func (e SectionDVBTableID) String() string {
 
 // SectionSCTETableID wraps GstMpegtsSectionSCTETableID
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GstMpegtsSectionSCTETableID
 type SectionSCTETableID C.int
 
 const (
 	// GstMtsTableIDScteEas wraps GST_MTS_TABLE_ID_SCTE_EAS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_EAS
 	GstMtsTableIDScteEas SectionSCTETableID = 216
 	// GstMtsTableIDScteEbif wraps GST_MTS_TABLE_ID_SCTE_EBIF
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_EBIF
 	GstMtsTableIDScteEbif SectionSCTETableID = 224
 	// GstMtsTableIDScteReserved wraps GST_MTS_TABLE_ID_SCTE_RESERVED
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_RESERVED
 	GstMtsTableIDScteReserved SectionSCTETableID = 225
 	// GstMtsTableIDScteEiss wraps GST_MTS_TABLE_ID_SCTE_EISS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_EISS
 	GstMtsTableIDScteEiss SectionSCTETableID = 226
 	// GstMtsTableIDScteDii wraps GST_MTS_TABLE_ID_SCTE_DII
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_DII
 	GstMtsTableIDScteDii SectionSCTETableID = 227
 	// GstMtsTableIDScteDdb wraps GST_MTS_TABLE_ID_SCTE_DDB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_DDB
 	GstMtsTableIDScteDdb SectionSCTETableID = 228
 	// GstMtsTableIDScteSplice wraps GST_MTS_TABLE_ID_SCTE_SPLICE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_SPLICE
 	GstMtsTableIDScteSplice SectionSCTETableID = 252
 )
 
@@ -2987,100 +2893,81 @@ func (e SectionSCTETableID) String() string {
 
 // SectionTableID wraps GstMpegtsSectionTableID
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GstMpegtsSectionTableID
 type SectionTableID C.int
 
 const (
 	// GstMtsTableIDProgramAssociation wraps GST_MTS_TABLE_ID_PROGRAM_ASSOCIATION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_PROGRAM_ASSOCIATION
 	GstMtsTableIDProgramAssociation SectionTableID = 0
 	// GstMtsTableIDConditionalAccess wraps GST_MTS_TABLE_ID_CONDITIONAL_ACCESS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CONDITIONAL_ACCESS
 	GstMtsTableIDConditionalAccess SectionTableID = 1
 	// GstMtsTableIDTsProgramMap wraps GST_MTS_TABLE_ID_TS_PROGRAM_MAP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TS_PROGRAM_MAP
 	GstMtsTableIDTsProgramMap SectionTableID = 2
 	// GstMtsTableIDTsDescription wraps GST_MTS_TABLE_ID_TS_DESCRIPTION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TS_DESCRIPTION
 	GstMtsTableIDTsDescription SectionTableID = 3
 	// GstMtsTableID14496SceneDescription wraps GST_MTS_TABLE_ID_14496_SCENE_DESCRIPTION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_14496_SCENE_DESCRIPTION
 	GstMtsTableID14496SceneDescription SectionTableID = 4
 	// GstMtsTableID14496ObjetDescriptor wraps GST_MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
 	GstMtsTableID14496ObjetDescriptor SectionTableID = 5
 	// GstMtsTableIDMetadata wraps GST_MTS_TABLE_ID_METADATA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_METADATA
 	GstMtsTableIDMetadata SectionTableID = 6
 	// GstMtsTableIDIpmpControlInformation wraps GST_MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
 	GstMtsTableIDIpmpControlInformation SectionTableID = 7
 	// GstMtsTableID14496Section wraps GST_MTS_TABLE_ID_14496_SECTION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_14496_SECTION
 	GstMtsTableID14496Section SectionTableID = 8
 	// GstMtsTableID2300111Section wraps GST_MTS_TABLE_ID_23001_11_SECTION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_23001_11_SECTION
 	GstMtsTableID2300111Section SectionTableID = 9
 	// GstMtsTableID2300110Section wraps GST_MTS_TABLE_ID_23001_10_SECTION
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_23001_10_SECTION
 	GstMtsTableID2300110Section SectionTableID = 10
 	// GstMtsTableIDDsmCcMultiprotoEncapsulatedData wraps GST_MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
 	GstMtsTableIDDsmCcMultiprotoEncapsulatedData SectionTableID = 58
 	// GstMtsTableIDDsmCcUNMessages wraps GST_MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
 	GstMtsTableIDDsmCcUNMessages SectionTableID = 59
 	// GstMtsTableIDDsmCcDownloadDataMessages wraps GST_MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
 	GstMtsTableIDDsmCcDownloadDataMessages SectionTableID = 60
 	// GstMtsTableIDDsmCcStreamDescriptors wraps GST_MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
 	GstMtsTableIDDsmCcStreamDescriptors SectionTableID = 61
 	// GstMtsTableIDDsmCcPrivateData wraps GST_MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
 	GstMtsTableIDDsmCcPrivateData SectionTableID = 62
 	// GstMtsTableIDDsmCcAddressableSections wraps GST_MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
 	GstMtsTableIDDsmCcAddressableSections SectionTableID = 63
 	// GstMtsTableIDUnset wraps GST_MTS_TABLE_ID_UNSET
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_UNSET
 	GstMtsTableIDUnset SectionTableID = 255
 )
 
@@ -3111,110 +2998,89 @@ func (e SectionTableID) String() string {
 
 // SectionType wraps GstMpegtsSectionType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GstMpegtsSectionType
 type SectionType C.int
 
 const (
 	// SectionUnknown wraps GST_MPEGTS_SECTION_UNKNOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_UNKNOWN
 	SectionUnknown SectionType = 0
 	// SectionPat wraps GST_MPEGTS_SECTION_PAT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_PAT
 	SectionPat SectionType = 1
 	// SectionPmt wraps GST_MPEGTS_SECTION_PMT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_PMT
 	SectionPmt SectionType = 2
 	// SectionCat wraps GST_MPEGTS_SECTION_CAT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_CAT
 	SectionCat SectionType = 3
 	// SectionTsdt wraps GST_MPEGTS_SECTION_TSDT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_TSDT
 	SectionTsdt SectionType = 4
 	// SectionEit wraps GST_MPEGTS_SECTION_EIT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_EIT
 	SectionEit SectionType = 5
 	// SectionNit wraps GST_MPEGTS_SECTION_NIT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_NIT
 	SectionNit SectionType = 6
 	// SectionBat wraps GST_MPEGTS_SECTION_BAT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_BAT
 	SectionBat SectionType = 7
 	// SectionSdt wraps GST_MPEGTS_SECTION_SDT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_SDT
 	SectionSdt SectionType = 8
 	// SectionTdt wraps GST_MPEGTS_SECTION_TDT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_TDT
 	SectionTdt SectionType = 9
 	// SectionTot wraps GST_MPEGTS_SECTION_TOT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_TOT
 	SectionTot SectionType = 10
 	// SectionSit wraps GST_MPEGTS_SECTION_SIT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_SIT
 	SectionSit SectionType = 11
 	// SectionAtscTvct wraps GST_MPEGTS_SECTION_ATSC_TVCT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_TVCT
 	SectionAtscTvct SectionType = 12
 	// SectionAtscCvct wraps GST_MPEGTS_SECTION_ATSC_CVCT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_CVCT
 	SectionAtscCvct SectionType = 13
 	// SectionAtscMgt wraps GST_MPEGTS_SECTION_ATSC_MGT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_MGT
 	SectionAtscMgt SectionType = 14
 	// SectionAtscEtt wraps GST_MPEGTS_SECTION_ATSC_ETT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_ETT
 	SectionAtscEtt SectionType = 15
 	// SectionAtscEit wraps GST_MPEGTS_SECTION_ATSC_EIT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_EIT
 	SectionAtscEit SectionType = 16
 	// SectionAtscStt wraps GST_MPEGTS_SECTION_ATSC_STT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_STT
 	SectionAtscStt SectionType = 17
 	// SectionAtscRrt wraps GST_MPEGTS_SECTION_ATSC_RRT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_RRT
 	SectionAtscRrt SectionType = 18
 	// SectionScteSit wraps GST_MPEGTS_SECTION_SCTE_SIT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_SCTE_SIT
 	SectionScteSit SectionType = 19
 )
 
@@ -3247,215 +3113,173 @@ func (e SectionType) String() string {
 
 // StreamType wraps GstMpegtsStreamType
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GstMpegtsStreamType
 type StreamType C.int
 
 const (
 	// StreamTypeReserved00 wraps GST_MPEGTS_STREAM_TYPE_RESERVED_00
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_RESERVED_00
 	StreamTypeReserved00 StreamType = 0
 	// StreamTypeVideoMpeg1 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG1
 	StreamTypeVideoMpeg1 StreamType = 1
 	// StreamTypeVideoMpeg2 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2
 	StreamTypeVideoMpeg2 StreamType = 2
 	// StreamTypeAudioMpeg1 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG1
 	StreamTypeAudioMpeg1 StreamType = 3
 	// StreamTypeAudioMpeg2 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG2
 	StreamTypeAudioMpeg2 StreamType = 4
 	// StreamTypePrivateSections wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
 	StreamTypePrivateSections StreamType = 5
 	// StreamTypePrivatePesPackets wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
 	StreamTypePrivatePesPackets StreamType = 6
 	// StreamTypeMheg wraps GST_MPEGTS_STREAM_TYPE_MHEG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_MHEG
 	StreamTypeMheg StreamType = 7
 	// StreamTypeDsmCc wraps GST_MPEGTS_STREAM_TYPE_DSM_CC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSM_CC
 	StreamTypeDsmCc StreamType = 8
 	// StreamTypeH2221 wraps GST_MPEGTS_STREAM_TYPE_H_222_1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_H_222_1
 	StreamTypeH2221 StreamType = 9
 	// StreamTypeDsmccA wraps GST_MPEGTS_STREAM_TYPE_DSMCC_A
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSMCC_A
 	StreamTypeDsmccA StreamType = 10
 	// StreamTypeDsmccB wraps GST_MPEGTS_STREAM_TYPE_DSMCC_B
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSMCC_B
 	StreamTypeDsmccB StreamType = 11
 	// StreamTypeDsmccC wraps GST_MPEGTS_STREAM_TYPE_DSMCC_C
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSMCC_C
 	StreamTypeDsmccC StreamType = 12
 	// StreamTypeDsmccD wraps GST_MPEGTS_STREAM_TYPE_DSMCC_D
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSMCC_D
 	StreamTypeDsmccD StreamType = 13
 	// StreamTypeAuxiliary wraps GST_MPEGTS_STREAM_TYPE_AUXILIARY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUXILIARY
 	StreamTypeAuxiliary StreamType = 14
 	// StreamTypeAudioAacAdts wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
 	StreamTypeAudioAacAdts StreamType = 15
 	// StreamTypeVideoMpeg4 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG4
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG4
 	StreamTypeVideoMpeg4 StreamType = 16
 	// StreamTypeAudioAacLatm wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
 	StreamTypeAudioAacLatm StreamType = 17
 	// StreamTypeSlFlexmuxPesPackets wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
 	StreamTypeSlFlexmuxPesPackets StreamType = 18
 	// StreamTypeSlFlexmuxSections wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
 	StreamTypeSlFlexmuxSections StreamType = 19
 	// StreamTypeSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
 	StreamTypeSynchronizedDownload StreamType = 20
 	// StreamTypeMetadataPesPackets wraps GST_MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
 	StreamTypeMetadataPesPackets StreamType = 21
 	// StreamTypeMetadataSections wraps GST_MPEGTS_STREAM_TYPE_METADATA_SECTIONS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_SECTIONS
 	StreamTypeMetadataSections StreamType = 22
 	// StreamTypeMetadataDataCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
 	StreamTypeMetadataDataCarousel StreamType = 23
 	// StreamTypeMetadataObjectCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
 	StreamTypeMetadataObjectCarousel StreamType = 24
 	// StreamTypeMetadataSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
 	StreamTypeMetadataSynchronizedDownload StreamType = 25
 	// StreamTypeMpeg2Ipmp wraps GST_MPEGTS_STREAM_TYPE_MPEG2_IPMP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_MPEG2_IPMP
 	StreamTypeMpeg2Ipmp StreamType = 26
 	// StreamTypeVideoH264 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_H264
 	StreamTypeVideoH264 StreamType = 27
 	// StreamTypeAudioAacClean wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
 	StreamTypeAudioAacClean StreamType = 28
 	// StreamTypeMpeg4TimedText wraps GST_MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
 	StreamTypeMpeg4TimedText StreamType = 29
 	// StreamTypeVideoRvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_RVC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_RVC
 	StreamTypeVideoRvc StreamType = 30
 	// StreamTypeVideoH264SvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
 	StreamTypeVideoH264SvcSubBitstream StreamType = 31
 	// StreamTypeVideoH264MvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
 	StreamTypeVideoH264MvcSubBitstream StreamType = 32
 	// StreamTypeVideoJp2k wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JP2K
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_JP2K
 	StreamTypeVideoJp2k StreamType = 33
 	// StreamTypeVideoMpeg2StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
 	StreamTypeVideoMpeg2StereoAdditionalView StreamType = 34
 	// StreamTypeVideoH264StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
 	StreamTypeVideoH264StereoAdditionalView StreamType = 35
 	// StreamTypeVideoHevc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_HEVC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_HEVC
 	StreamTypeVideoHevc StreamType = 36
 	// StreamTypeVideoJpegXs wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
 	StreamTypeVideoJpegXs StreamType = 50
 	// StreamTypeVideoVvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_VVC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_VVC
 	StreamTypeVideoVvc StreamType = 51
 	// StreamTypeIpmpStream wraps GST_MPEGTS_STREAM_TYPE_IPMP_STREAM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_IPMP_STREAM
 	StreamTypeIpmpStream StreamType = 127
 	// StreamTypeUserPrivateEa wraps GST_MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
 	StreamTypeUserPrivateEa StreamType = 234
 )
 
@@ -3509,53 +3333,53 @@ func (e StreamType) String() string {
 
 // TerrestrialGuardInterval wraps GstMpegtsTerrestrialGuardInterval
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsTerrestrialGuardInterval
 type TerrestrialGuardInterval C.int
 
 const (
 	// GuardInterval132 wraps GST_MPEGTS_GUARD_INTERVAL_1_32
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_1_32
 	GuardInterval132 TerrestrialGuardInterval = 0
 	// GuardInterval116 wraps GST_MPEGTS_GUARD_INTERVAL_1_16
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_1_16
 	GuardInterval116 TerrestrialGuardInterval = 1
 	// GuardInterval18 wraps GST_MPEGTS_GUARD_INTERVAL_1_8
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_1_8
 	GuardInterval18 TerrestrialGuardInterval = 2
 	// GuardInterval14 wraps GST_MPEGTS_GUARD_INTERVAL_1_4
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_1_4
 	GuardInterval14 TerrestrialGuardInterval = 3
 	// GuardIntervalAuto wraps GST_MPEGTS_GUARD_INTERVAL_AUTO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_AUTO
 	GuardIntervalAuto TerrestrialGuardInterval = 4
 	// GuardInterval1128 wraps GST_MPEGTS_GUARD_INTERVAL_1_128
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_1_128
 	GuardInterval1128 TerrestrialGuardInterval = 5
 	// GuardInterval19128 wraps GST_MPEGTS_GUARD_INTERVAL_19_128
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_19_128
 	GuardInterval19128 TerrestrialGuardInterval = 6
 	// GuardInterval19256 wraps GST_MPEGTS_GUARD_INTERVAL_19_256
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_19_256
 	GuardInterval19256 TerrestrialGuardInterval = 7
 	// GuardIntervalPn420 wraps GST_MPEGTS_GUARD_INTERVAL_PN420
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_PN420
 	GuardIntervalPn420 TerrestrialGuardInterval = 8
 	// GuardIntervalPn595 wraps GST_MPEGTS_GUARD_INTERVAL_PN595
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_PN595
 	GuardIntervalPn595 TerrestrialGuardInterval = 9
 	// GuardIntervalPn945 wraps GST_MPEGTS_GUARD_INTERVAL_PN945
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_GUARD_INTERVAL_PN945
 	GuardIntervalPn945 TerrestrialGuardInterval = 10
 )
 
@@ -3579,29 +3403,29 @@ func (e TerrestrialGuardInterval) String() string {
 
 // TerrestrialHierarchy wraps GstMpegtsTerrestrialHierarchy
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsTerrestrialHierarchy
 type TerrestrialHierarchy C.int
 
 const (
 	// HierarchyNone wraps GST_MPEGTS_HIERARCHY_NONE
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_HIERARCHY_NONE
 	HierarchyNone TerrestrialHierarchy = 0
 	// Hierarchy1 wraps GST_MPEGTS_HIERARCHY_1
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_HIERARCHY_1
 	Hierarchy1 TerrestrialHierarchy = 1
 	// Hierarchy2 wraps GST_MPEGTS_HIERARCHY_2
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_HIERARCHY_2
 	Hierarchy2 TerrestrialHierarchy = 2
 	// Hierarchy4 wraps GST_MPEGTS_HIERARCHY_4
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_HIERARCHY_4
 	Hierarchy4 TerrestrialHierarchy = 3
 	// HierarchyAuto wraps GST_MPEGTS_HIERARCHY_AUTO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_HIERARCHY_AUTO
 	HierarchyAuto TerrestrialHierarchy = 4
 )
 
@@ -3619,45 +3443,45 @@ func (e TerrestrialHierarchy) String() string {
 
 // TerrestrialTransmissionMode wraps GstMpegtsTerrestrialTransmissionMode
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsTerrestrialTransmissionMode
 type TerrestrialTransmissionMode C.int
 
 const (
 	// TransmissionMode2k wraps GST_MPEGTS_TRANSMISSION_MODE_2K
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_TRANSMISSION_MODE_2K
 	TransmissionMode2k TerrestrialTransmissionMode = 0
 	// TransmissionMode8k wraps GST_MPEGTS_TRANSMISSION_MODE_8K
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_TRANSMISSION_MODE_8K
 	TransmissionMode8k TerrestrialTransmissionMode = 1
 	// TransmissionModeAuto wraps GST_MPEGTS_TRANSMISSION_MODE_AUTO
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_TRANSMISSION_MODE_AUTO
 	TransmissionModeAuto TerrestrialTransmissionMode = 2
 	// TransmissionMode4k wraps GST_MPEGTS_TRANSMISSION_MODE_4K
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_TRANSMISSION_MODE_4K
 	TransmissionMode4k TerrestrialTransmissionMode = 3
 	// TransmissionMode1k wraps GST_MPEGTS_TRANSMISSION_MODE_1K
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_TRANSMISSION_MODE_1K
 	TransmissionMode1k TerrestrialTransmissionMode = 4
 	// TransmissionMode16k wraps GST_MPEGTS_TRANSMISSION_MODE_16K
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_TRANSMISSION_MODE_16K
 	TransmissionMode16k TerrestrialTransmissionMode = 5
 	// TransmissionMode32k wraps GST_MPEGTS_TRANSMISSION_MODE_32K
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_TRANSMISSION_MODE_32K
 	TransmissionMode32k TerrestrialTransmissionMode = 6
 	// TransmissionModeC1 wraps GST_MPEGTS_TRANSMISSION_MODE_C1
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_TRANSMISSION_MODE_C1
 	TransmissionModeC1 TerrestrialTransmissionMode = 7
 	// TransmissionModeC3780 wraps GST_MPEGTS_TRANSMISSION_MODE_C3780
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_TRANSMISSION_MODE_C3780
 	TransmissionModeC3780 TerrestrialTransmissionMode = 8
 )
 
@@ -3679,100 +3503,81 @@ func (e TerrestrialTransmissionMode) String() string {
 
 // RegistrationId wraps GstMpegtsRegistrationId
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsRegistrationId
 type RegistrationId C.gint
 
 const (
 	// GstMtsRegistration0 wraps GST_MTS_REGISTRATION_0
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_0
 	GstMtsRegistration0 RegistrationId = 0
 	// GstMtsRegistrationAc3 wraps GST_MTS_REGISTRATION_AC_3
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_AC_3
 	GstMtsRegistrationAc3 RegistrationId = 1094921523
 	// GstMtsRegistrationCuei wraps GST_MTS_REGISTRATION_CUEI
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_CUEI
 	GstMtsRegistrationCuei RegistrationId = 1129661769
 	// GstMtsRegistrationDrac wraps GST_MTS_REGISTRATION_drac
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_drac
 	GstMtsRegistrationDrac RegistrationId = 1685217635
 	// GstMtsRegistrationDts1 wraps GST_MTS_REGISTRATION_DTS1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_DTS1
 	GstMtsRegistrationDts1 RegistrationId = 1146377009
 	// GstMtsRegistrationDts2 wraps GST_MTS_REGISTRATION_DTS2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_DTS2
 	GstMtsRegistrationDts2 RegistrationId = 1146377010
 	// GstMtsRegistrationDts3 wraps GST_MTS_REGISTRATION_DTS3
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_DTS3
 	GstMtsRegistrationDts3 RegistrationId = 1146377011
 	// GstMtsRegistrationBssd wraps GST_MTS_REGISTRATION_BSSD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_BSSD
 	GstMtsRegistrationBssd RegistrationId = 1112757060
 	// GstMtsRegistrationEac3 wraps GST_MTS_REGISTRATION_EAC3
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_EAC3
 	GstMtsRegistrationEac3 RegistrationId = 1161904947
 	// GstMtsRegistrationEtv1 wraps GST_MTS_REGISTRATION_ETV1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_ETV1
 	GstMtsRegistrationEtv1 RegistrationId = 1163154993
 	// GstMtsRegistrationGa94 wraps GST_MTS_REGISTRATION_GA94
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_GA94
 	GstMtsRegistrationGa94 RegistrationId = 1195456820
 	// GstMtsRegistrationHdmv wraps GST_MTS_REGISTRATION_HDMV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_HDMV
 	GstMtsRegistrationHdmv RegistrationId = 1212435798
 	// GstMtsRegistrationKlva wraps GST_MTS_REGISTRATION_KLVA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_KLVA
 	GstMtsRegistrationKlva RegistrationId = 1263294017
 	// GstMtsRegistrationOpus wraps GST_MTS_REGISTRATION_OPUS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_OPUS
 	GstMtsRegistrationOpus RegistrationId = 1330664787
 	// GstMtsRegistrationTshv wraps GST_MTS_REGISTRATION_TSHV
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_TSHV
 	GstMtsRegistrationTshv RegistrationId = 1414744150
 	// GstMtsRegistrationVc1 wraps GST_MTS_REGISTRATION_VC_1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_VC_1
 	GstMtsRegistrationVc1 RegistrationId = 1447243057
 	// GstMtsRegistrationAc4 wraps GST_MTS_REGISTRATION_AC_4
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_AC_4
 	GstMtsRegistrationAc4 RegistrationId = 1094921524
 	// GstMtsRegistrationOtherHevc wraps GST_MTS_REGISTRATION_OTHER_HEVC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_OTHER_HEVC
 	GstMtsRegistrationOtherHevc RegistrationId = 1212503619
 )
 
@@ -3846,8 +3651,7 @@ func (f RegistrationId) String() string {
 
 // BufferAddMpegtsPesMetadataMeta wraps gst_buffer_add_mpegts_pes_metadata_meta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func BufferAddMpegtsPesMetadataMeta(buffer *gst.Buffer) *PESMetadataMeta {
 	var carg1 *C.GstBuffer                // in, none, converted
 	var cret  *C.GstMpegtsPESMetadataMeta // return, none, converted
@@ -3866,7 +3670,7 @@ func BufferAddMpegtsPesMetadataMeta(buffer *gst.Buffer) *PESMetadataMeta {
 
 // DvbComponentDescriptorFree wraps gst_mpegts_dvb_component_descriptor_free
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func DvbComponentDescriptorFree(source *ComponentDescriptor) {
 	var carg1 *C.GstMpegtsComponentDescriptor // in, none, converted
 
@@ -3878,8 +3682,7 @@ func DvbComponentDescriptorFree(source *ComponentDescriptor) {
 
 // EventNewMpegtsSection wraps gst_event_new_mpegts_section
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func EventNewMpegtsSection(section *Section) *gst.Event {
 	var carg1 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstEvent         // return, full, converted
@@ -3898,8 +3701,7 @@ func EventNewMpegtsSection(section *Section) *gst.Event {
 
 // EventParseMpegtsSection wraps gst_event_parse_mpegts_section
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func EventParseMpegtsSection(event *gst.Event) *Section {
 	var carg1 *C.GstEvent         // in, none, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -3920,8 +3722,7 @@ func EventParseMpegtsSection(event *gst.Event) *Section {
 
 // Initialize wraps gst_mpegts_initialize
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func Initialize() {
 
 	C.gst_mpegts_initialize()
@@ -3929,8 +3730,7 @@ func Initialize() {
 
 // MessageNewMpegtsSection wraps gst_message_new_mpegts_section
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func MessageNewMpegtsSection(parent gst.Object, section *Section) *gst.Message {
 	var carg1 *C.GstObject        // in, none, converted
 	var carg2 *C.GstMpegtsSection // in, none, converted
@@ -3954,8 +3754,7 @@ func MessageNewMpegtsSection(parent gst.Object, section *Section) *gst.Message {
 
 // MessageParseMpegtsSection wraps gst_message_parse_mpegts_section
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func MessageParseMpegtsSection(message *gst.Message) *Section {
 	var carg1 *C.GstMessage       // in, none, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -3976,8 +3775,7 @@ func MessageParseMpegtsSection(message *gst.Message) *Section {
 
 // PesMetadataMetaAPIGetType wraps gst_mpegts_pes_metadata_meta_api_get_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func PesMetadataMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -3992,8 +3790,7 @@ func PesMetadataMetaAPIGetType() gobject.Type {
 
 // NewScteCancel wraps gst_mpegts_scte_cancel_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func NewScteCancel(eventId uint32) *SCTESIT {
 	var carg1 C.guint32           // in, none, casted
 	var cret  *C.GstMpegtsSCTESIT // return, full, converted
@@ -4012,8 +3809,7 @@ func NewScteCancel(eventId uint32) *SCTESIT {
 
 // NewScteNull wraps gst_mpegts_scte_null_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func NewScteNull() *SCTESIT {
 	var cret *C.GstMpegtsSCTESIT // return, full, converted
 
@@ -4028,8 +3824,7 @@ func NewScteNull() *SCTESIT {
 
 // NewScteSpliceIn wraps gst_mpegts_scte_splice_in_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func NewScteSpliceIn(eventId uint32, spliceTime gst.ClockTime) *SCTESIT {
 	var carg1 C.guint32           // in, none, casted
 	var carg2 C.GstClockTime      // in, none, casted, alias
@@ -4051,8 +3846,7 @@ func NewScteSpliceIn(eventId uint32, spliceTime gst.ClockTime) *SCTESIT {
 
 // NewScteSpliceOut wraps gst_mpegts_scte_splice_out_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts
 func NewScteSpliceOut(eventId uint32, spliceTime gst.ClockTime, duration gst.ClockTime) *SCTESIT {
 	var carg1 C.guint32           // in, none, casted
 	var carg2 C.GstClockTime      // in, none, casted, alias
@@ -4077,8 +3871,7 @@ func NewScteSpliceOut(eventId uint32, spliceTime gst.ClockTime, duration gst.Clo
 
 // AtscEIT wraps GstMpegtsAtscEIT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscEIT
 type AtscEIT struct {
 	*atscEIT
 }
@@ -4174,8 +3967,7 @@ func UnsafeAtscEITToGlibFull(a *AtscEIT) unsafe.Pointer {
 
 // AtscEITEvent wraps GstMpegtsAtscEITEvent
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscEITEvent
 type AtscEITEvent struct {
 	*atscEITEvent
 }
@@ -4271,8 +4063,7 @@ func UnsafeAtscEITEventToGlibFull(a *AtscEITEvent) unsafe.Pointer {
 
 // AtscETT wraps GstMpegtsAtscETT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscETT
 type AtscETT struct {
 	*atscETT
 }
@@ -4368,8 +4159,7 @@ func UnsafeAtscETTToGlibFull(a *AtscETT) unsafe.Pointer {
 
 // AtscMGT wraps GstMpegtsAtscMGT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscMGT
 type AtscMGT struct {
 	*atscMGT
 }
@@ -4465,7 +4255,7 @@ func UnsafeAtscMGTToGlibFull(a *AtscMGT) unsafe.Pointer {
 
 // NewAtscMGT wraps gst_mpegts_atsc_mgt_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#gst_mpegts_atsc_mgt_new
 func NewAtscMGT() *AtscMGT {
 	var cret *C.GstMpegtsAtscMGT // return, full, converted
 
@@ -4480,8 +4270,7 @@ func NewAtscMGT() *AtscMGT {
 
 // AtscMGTTable wraps GstMpegtsAtscMGTTable
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscMGTTable
 type AtscMGTTable struct {
 	*atscMGTTable
 }
@@ -4577,7 +4366,7 @@ func UnsafeAtscMGTTableToGlibFull(a *AtscMGTTable) unsafe.Pointer {
 
 // AtscMultString wraps GstMpegtsAtscMultString
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscMultString
 type AtscMultString struct {
 	*atscMultString
 }
@@ -4673,8 +4462,7 @@ func UnsafeAtscMultStringToGlibFull(a *AtscMultString) unsafe.Pointer {
 
 // AtscRRT wraps GstMpegtsAtscRRT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscRRT
 type AtscRRT struct {
 	*atscRRT
 }
@@ -4770,7 +4558,7 @@ func UnsafeAtscRRTToGlibFull(a *AtscRRT) unsafe.Pointer {
 
 // NewAtscRRT wraps gst_mpegts_atsc_rrt_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#gst_mpegts_atsc_rrt_new
 func NewAtscRRT() *AtscRRT {
 	var cret *C.GstMpegtsAtscRRT // return, full, converted
 
@@ -4785,7 +4573,7 @@ func NewAtscRRT() *AtscRRT {
 
 // AtscRRTDimension wraps GstMpegtsAtscRRTDimension
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscRRTDimension
 type AtscRRTDimension struct {
 	*atscRRTDimension
 }
@@ -4881,7 +4669,7 @@ func UnsafeAtscRRTDimensionToGlibFull(a *AtscRRTDimension) unsafe.Pointer {
 
 // NewAtscRRTDimension wraps gst_mpegts_atsc_rrt_dimension_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#gst_mpegts_atsc_rrt_dimension_new
 func NewAtscRRTDimension() *AtscRRTDimension {
 	var cret *C.GstMpegtsAtscRRTDimension // return, full, converted
 
@@ -4896,7 +4684,7 @@ func NewAtscRRTDimension() *AtscRRTDimension {
 
 // AtscRRTDimensionValue wraps GstMpegtsAtscRRTDimensionValue
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscRRTDimensionValue
 type AtscRRTDimensionValue struct {
 	*atscRRTDimensionValue
 }
@@ -4992,7 +4780,7 @@ func UnsafeAtscRRTDimensionValueToGlibFull(a *AtscRRTDimensionValue) unsafe.Poin
 
 // NewAtscRRTDimensionValue wraps gst_mpegts_atsc_rrt_dimension_value_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#gst_mpegts_atsc_rrt_dimension_value_new
 func NewAtscRRTDimensionValue() *AtscRRTDimensionValue {
 	var cret *C.GstMpegtsAtscRRTDimensionValue // return, full, converted
 
@@ -5007,8 +4795,7 @@ func NewAtscRRTDimensionValue() *AtscRRTDimensionValue {
 
 // AtscSTT wraps GstMpegtsAtscSTT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscSTT
 type AtscSTT struct {
 	*atscSTT
 }
@@ -5104,7 +4891,7 @@ func UnsafeAtscSTTToGlibFull(a *AtscSTT) unsafe.Pointer {
 
 // NewAtscSTT wraps gst_mpegts_atsc_stt_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#gst_mpegts_atsc_stt_new
 func NewAtscSTT() *AtscSTT {
 	var cret *C.GstMpegtsAtscSTT // return, full, converted
 
@@ -5119,7 +4906,7 @@ func NewAtscSTT() *AtscSTT {
 
 // GetDatetimeUtc wraps gst_mpegts_atsc_stt_get_datetime_utc
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#gst_mpegts_atsc_stt_get_datetime_utc
 func (stt *AtscSTT) GetDatetimeUtc() *gst.DateTime {
 	var carg0 *C.GstMpegtsAtscSTT // in, none, converted
 	var cret  *C.GstDateTime      // return, full, converted
@@ -5138,8 +4925,7 @@ func (stt *AtscSTT) GetDatetimeUtc() *gst.DateTime {
 
 // AtscStringSegment wraps GstMpegtsAtscStringSegment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscStringSegment
 type AtscStringSegment struct {
 	*atscStringSegment
 }
@@ -5235,7 +5021,7 @@ func UnsafeAtscStringSegmentToGlibFull(a *AtscStringSegment) unsafe.Pointer {
 
 // GetString wraps gst_mpegts_atsc_string_segment_get_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#gst_mpegts_atsc_string_segment_get_string
 func (seg *AtscStringSegment) GetString() string {
 	var carg0 *C.GstMpegtsAtscStringSegment // in, none, converted
 	var cret  *C.gchar                      // return, none, string
@@ -5254,7 +5040,7 @@ func (seg *AtscStringSegment) GetString() string {
 
 // SetString wraps gst_mpegts_atsc_string_segment_set_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#gst_mpegts_atsc_string_segment_set_string
 func (seg *AtscStringSegment) SetString(str string, compressionType uint8, mode uint8) bool {
 	var carg0 *C.GstMpegtsAtscStringSegment // in, none, converted
 	var carg1 *C.gchar                      // in, none, string
@@ -5285,8 +5071,7 @@ func (seg *AtscStringSegment) SetString(str string, compressionType uint8, mode 
 
 // AtscVCT wraps GstMpegtsAtscVCT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscVCT
 type AtscVCT struct {
 	*atscVCT
 }
@@ -5382,8 +5167,7 @@ func UnsafeAtscVCTToGlibFull(a *AtscVCT) unsafe.Pointer {
 
 // AtscVCTSource wraps GstMpegtsAtscVCTSource
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GstMpegtsAtscVCTSource
 type AtscVCTSource struct {
 	*atscVCTSource
 }
@@ -5479,8 +5263,7 @@ func UnsafeAtscVCTSourceToGlibFull(a *AtscVCTSource) unsafe.Pointer {
 
 // AudioPreselectionDescriptor wraps GstMpegtsAudioPreselectionDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsAudioPreselectionDescriptor
 type AudioPreselectionDescriptor struct {
 	*audioPreselectionDescriptor
 }
@@ -5561,8 +5344,7 @@ func UnsafeAudioPreselectionDescriptorToGlibFull(a *AudioPreselectionDescriptor)
 
 // BAT wraps GstMpegtsBAT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsBAT
 type BAT struct {
 	*bAT
 }
@@ -5658,7 +5440,7 @@ func UnsafeBATToGlibFull(b *BAT) unsafe.Pointer {
 
 // BATStream wraps GstMpegtsBATStream
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsBATStream
 type BATStream struct {
 	*bATStream
 }
@@ -5754,8 +5536,7 @@ func UnsafeBATStreamToGlibFull(b *BATStream) unsafe.Pointer {
 
 // CableDeliverySystemDescriptor wraps GstMpegtsCableDeliverySystemDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsCableDeliverySystemDescriptor
 type CableDeliverySystemDescriptor struct {
 	*cableDeliverySystemDescriptor
 }
@@ -5851,7 +5632,7 @@ func UnsafeCableDeliverySystemDescriptorToGlibFull(c *CableDeliverySystemDescrip
 
 // ComponentDescriptor wraps GstMpegtsComponentDescriptor
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsComponentDescriptor
 type ComponentDescriptor struct {
 	*componentDescriptor
 }
@@ -5947,7 +5728,7 @@ func UnsafeComponentDescriptorToGlibFull(c *ComponentDescriptor) unsafe.Pointer 
 
 // Content wraps GstMpegtsContent
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsContent
 type Content struct {
 	*content
 }
@@ -6043,7 +5824,7 @@ func UnsafeContentToGlibFull(c *Content) unsafe.Pointer {
 
 // DVBLinkageDescriptor wraps GstMpegtsDVBLinkageDescriptor
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBLinkageDescriptor
 type DVBLinkageDescriptor struct {
 	*dVBLinkageDescriptor
 }
@@ -6139,7 +5920,7 @@ func UnsafeDVBLinkageDescriptorToGlibFull(d *DVBLinkageDescriptor) unsafe.Pointe
 
 // GetEvent wraps gst_mpegts_dvb_linkage_descriptor_get_event
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#gst_mpegts_dvb_linkage_descriptor_get_event
 func (desc *DVBLinkageDescriptor) GetEvent() *DVBLinkageEvent {
 	var carg0 *C.GstMpegtsDVBLinkageDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDVBLinkageEvent      // return, none, converted, nullable
@@ -6160,7 +5941,7 @@ func (desc *DVBLinkageDescriptor) GetEvent() *DVBLinkageEvent {
 
 // GetMobileHandOver wraps gst_mpegts_dvb_linkage_descriptor_get_mobile_hand_over
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#gst_mpegts_dvb_linkage_descriptor_get_mobile_hand_over
 func (desc *DVBLinkageDescriptor) GetMobileHandOver() *DVBLinkageMobileHandOver {
 	var carg0 *C.GstMpegtsDVBLinkageDescriptor     // in, none, converted
 	var cret  *C.GstMpegtsDVBLinkageMobileHandOver // return, none, converted, nullable
@@ -6181,7 +5962,7 @@ func (desc *DVBLinkageDescriptor) GetMobileHandOver() *DVBLinkageMobileHandOver 
 
 // DVBLinkageEvent wraps GstMpegtsDVBLinkageEvent
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBLinkageEvent
 type DVBLinkageEvent struct {
 	*dVBLinkageEvent
 }
@@ -6277,7 +6058,7 @@ func UnsafeDVBLinkageEventToGlibFull(d *DVBLinkageEvent) unsafe.Pointer {
 
 // DVBLinkageExtendedEvent wraps GstMpegtsDVBLinkageExtendedEvent
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBLinkageExtendedEvent
 type DVBLinkageExtendedEvent struct {
 	*dVBLinkageExtendedEvent
 }
@@ -6373,7 +6154,7 @@ func UnsafeDVBLinkageExtendedEventToGlibFull(d *DVBLinkageExtendedEvent) unsafe.
 
 // DVBLinkageMobileHandOver wraps GstMpegtsDVBLinkageMobileHandOver
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBLinkageMobileHandOver
 type DVBLinkageMobileHandOver struct {
 	*dVBLinkageMobileHandOver
 }
@@ -6469,7 +6250,7 @@ func UnsafeDVBLinkageMobileHandOverToGlibFull(d *DVBLinkageMobileHandOver) unsaf
 
 // DVBParentalRatingItem wraps GstMpegtsDVBParentalRatingItem
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBParentalRatingItem
 type DVBParentalRatingItem struct {
 	*dVBParentalRatingItem
 }
@@ -6565,7 +6346,7 @@ func UnsafeDVBParentalRatingItemToGlibFull(d *DVBParentalRatingItem) unsafe.Poin
 
 // DVBServiceListItem wraps GstMpegtsDVBServiceListItem
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDVBServiceListItem
 type DVBServiceListItem struct {
 	*dVBServiceListItem
 }
@@ -6661,7 +6442,7 @@ func UnsafeDVBServiceListItemToGlibFull(d *DVBServiceListItem) unsafe.Pointer {
 
 // DataBroadcastDescriptor wraps GstMpegtsDataBroadcastDescriptor
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDataBroadcastDescriptor
 type DataBroadcastDescriptor struct {
 	*dataBroadcastDescriptor
 }
@@ -6757,8 +6538,7 @@ func UnsafeDataBroadcastDescriptorToGlibFull(d *DataBroadcastDescriptor) unsafe.
 
 // Descriptor wraps GstMpegtsDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsDescriptor
 type Descriptor struct {
 	*descriptor
 }
@@ -6854,8 +6634,7 @@ func UnsafeDescriptorToGlibFull(d *Descriptor) unsafe.Pointer {
 
 // DescriptorFromCustom wraps gst_mpegts_descriptor_from_custom
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_custom
 func DescriptorFromCustom(tag uint8, data []uint8) *Descriptor {
 	var carg1 C.guint8               // in, none, casted
 	var carg2 *C.guint8              // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -6883,8 +6662,7 @@ func DescriptorFromCustom(tag uint8, data []uint8) *Descriptor {
 
 // DescriptorFromCustomWithExtension wraps gst_mpegts_descriptor_from_custom_with_extension
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_custom_with_extension
 func DescriptorFromCustomWithExtension(tag uint8, tagExtension uint8, data []uint8) *Descriptor {
 	var carg1 C.guint8               // in, none, casted
 	var carg2 C.guint8               // in, none, casted
@@ -6913,8 +6691,7 @@ func DescriptorFromCustomWithExtension(tag uint8, tagExtension uint8, data []uin
 
 // DescriptorFromDvbNetworkName wraps gst_mpegts_descriptor_from_dvb_network_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_dvb_network_name
 func DescriptorFromDvbNetworkName(name string) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var cret  *C.GstMpegtsDescriptor // return, full, converted, nullable
@@ -6936,8 +6713,7 @@ func DescriptorFromDvbNetworkName(name string) *Descriptor {
 
 // DescriptorFromDvbService wraps gst_mpegts_descriptor_from_dvb_service
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_dvb_service
 func DescriptorFromDvbService(serviceType DVBServiceType, serviceName string, serviceProvider string) *Descriptor {
 	var carg1 C.GstMpegtsDVBServiceType // in, none, casted
 	var carg2 *C.gchar                  // in, none, string, nullable-string
@@ -6970,7 +6746,7 @@ func DescriptorFromDvbService(serviceType DVBServiceType, serviceName string, se
 
 // DescriptorFromDvbSubtitling wraps gst_mpegts_descriptor_from_dvb_subtitling
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_dvb_subtitling
 func DescriptorFromDvbSubtitling(lang string, typ uint8, composition uint16, ancillary uint16) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var carg2 C.guint8               // in, none, casted
@@ -6999,8 +6775,7 @@ func DescriptorFromDvbSubtitling(lang string, typ uint8, composition uint16, anc
 
 // DescriptorFromIso639Language wraps gst_mpegts_descriptor_from_iso_639_language
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_iso_639_language
 func DescriptorFromIso639Language(language string) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var cret  *C.GstMpegtsDescriptor // return, full, converted
@@ -7020,8 +6795,7 @@ func DescriptorFromIso639Language(language string) *Descriptor {
 
 // DescriptorFromJpegXs wraps gst_mpegts_descriptor_from_jpeg_xs
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_jpeg_xs
 func DescriptorFromJpegXs(jpegxs *JpegXsDescriptor) *Descriptor {
 	var carg1 *C.GstMpegtsJpegXsDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDescriptor       // return, full, converted
@@ -7040,7 +6814,7 @@ func DescriptorFromJpegXs(jpegxs *JpegXsDescriptor) *Descriptor {
 
 // DescriptorFromMetadata wraps gst_mpegts_descriptor_from_metadata
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_metadata
 func DescriptorFromMetadata(metadataDescriptor *MetadataDescriptor) *Descriptor {
 	var carg1 *C.GstMpegtsMetadataDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDescriptor         // return, full, converted
@@ -7059,7 +6833,7 @@ func DescriptorFromMetadata(metadataDescriptor *MetadataDescriptor) *Descriptor 
 
 // DescriptorFromMetadataPointer wraps gst_mpegts_descriptor_from_metadata_pointer
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_metadata_pointer
 func DescriptorFromMetadataPointer(metadataPointerDescriptor *MetadataPointerDescriptor) *Descriptor {
 	var carg1 *C.GstMpegtsMetadataPointerDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDescriptor                // return, full, converted
@@ -7078,8 +6852,7 @@ func DescriptorFromMetadataPointer(metadataPointerDescriptor *MetadataPointerDes
 
 // DescriptorFromRegistration wraps gst_mpegts_descriptor_from_registration
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_from_registration
 func DescriptorFromRegistration(formatIdentifier string, additionalInfo []uint8) *Descriptor {
 	var carg1 *C.gchar               // in, none, string
 	var carg2 *C.guint8              // in, transfer: none, C Pointers: 1, Name: array[guint8], nullable, array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -7106,7 +6879,7 @@ func DescriptorFromRegistration(formatIdentifier string, additionalInfo []uint8)
 
 // DescriptorParseAudioPreselectionDump wraps gst_mpegts_descriptor_parse_audio_preselection_dump
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_audio_preselection_dump
 func DescriptorParseAudioPreselectionDump(source *AudioPreselectionDescriptor) {
 	var carg1 *C.GstMpegtsAudioPreselectionDescriptor // in, none, converted
 
@@ -7118,7 +6891,7 @@ func DescriptorParseAudioPreselectionDump(source *AudioPreselectionDescriptor) {
 
 // DescriptorParseAudioPreselectionFree wraps gst_mpegts_descriptor_parse_audio_preselection_free
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_audio_preselection_free
 func DescriptorParseAudioPreselectionFree(source *AudioPreselectionDescriptor) {
 	var carg1 *C.GstMpegtsAudioPreselectionDescriptor // in, none, converted
 
@@ -7130,8 +6903,7 @@ func DescriptorParseAudioPreselectionFree(source *AudioPreselectionDescriptor) {
 
 // Copy wraps gst_mpegts_descriptor_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_copy
 func (desc *Descriptor) Copy() *Descriptor {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var cret  *C.GstMpegtsDescriptor // return, full, converted
@@ -7150,8 +6922,7 @@ func (desc *Descriptor) Copy() *Descriptor {
 
 // ParseCableDeliverySystem wraps gst_mpegts_descriptor_parse_cable_delivery_system
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_cable_delivery_system
 func (descriptor *Descriptor) ParseCableDeliverySystem() (CableDeliverySystemDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor                   // in, none, converted
 	var carg1 C.GstMpegtsCableDeliverySystemDescriptor // out, transfer: none, C Pointers: 0, Name: CableDeliverySystemDescriptor, caller-allocates
@@ -7177,8 +6948,7 @@ func (descriptor *Descriptor) ParseCableDeliverySystem() (CableDeliverySystemDes
 
 // ParseDvbBouquetName wraps gst_mpegts_descriptor_parse_dvb_bouquet_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_bouquet_name
 func (descriptor *Descriptor) ParseDvbBouquetName() (string, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.gchar               // out, full, string
@@ -7203,8 +6973,7 @@ func (descriptor *Descriptor) ParseDvbBouquetName() (string, bool) {
 
 // ParseDvbComponent wraps gst_mpegts_descriptor_parse_dvb_component
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_component
 func (descriptor *Descriptor) ParseDvbComponent() (*ComponentDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor          // in, none, converted
 	var carg1 *C.GstMpegtsComponentDescriptor // out, full, converted
@@ -7228,8 +6997,7 @@ func (descriptor *Descriptor) ParseDvbComponent() (*ComponentDescriptor, bool) {
 
 // ParseDvbDataBroadcast wraps gst_mpegts_descriptor_parse_dvb_data_broadcast
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_data_broadcast
 func (descriptor *Descriptor) ParseDvbDataBroadcast() (*DataBroadcastDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor              // in, none, converted
 	var carg1 *C.GstMpegtsDataBroadcastDescriptor // out, full, converted
@@ -7253,8 +7021,7 @@ func (descriptor *Descriptor) ParseDvbDataBroadcast() (*DataBroadcastDescriptor,
 
 // ParseDvbExtendedEvent wraps gst_mpegts_descriptor_parse_dvb_extended_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_extended_event
 func (descriptor *Descriptor) ParseDvbExtendedEvent() (*ExtendedEventDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor              // in, none, converted
 	var carg1 *C.GstMpegtsExtendedEventDescriptor // out, full, converted
@@ -7278,8 +7045,7 @@ func (descriptor *Descriptor) ParseDvbExtendedEvent() (*ExtendedEventDescriptor,
 
 // ParseDvbLinkage wraps gst_mpegts_descriptor_parse_dvb_linkage
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_linkage
 func (descriptor *Descriptor) ParseDvbLinkage() (*DVBLinkageDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor           // in, none, converted
 	var carg1 *C.GstMpegtsDVBLinkageDescriptor // out, full, converted
@@ -7303,8 +7069,7 @@ func (descriptor *Descriptor) ParseDvbLinkage() (*DVBLinkageDescriptor, bool) {
 
 // ParseDvbNetworkName wraps gst_mpegts_descriptor_parse_dvb_network_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_network_name
 func (descriptor *Descriptor) ParseDvbNetworkName() (string, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.gchar               // out, full, string
@@ -7329,8 +7094,7 @@ func (descriptor *Descriptor) ParseDvbNetworkName() (string, bool) {
 
 // ParseDvbScrambling wraps gst_mpegts_descriptor_parse_dvb_scrambling
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_scrambling
 func (descriptor *Descriptor) ParseDvbScrambling() (DVBScramblingModeType, bool) {
 	var carg0 *C.GstMpegtsDescriptor           // in, none, converted
 	var carg1 C.GstMpegtsDVBScramblingModeType // out, full, casted
@@ -7354,8 +7118,7 @@ func (descriptor *Descriptor) ParseDvbScrambling() (DVBScramblingModeType, bool)
 
 // ParseDvbService wraps gst_mpegts_descriptor_parse_dvb_service
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_service
 func (descriptor *Descriptor) ParseDvbService() (DVBServiceType, string, string, bool) {
 	var carg0 *C.GstMpegtsDescriptor    // in, none, converted
 	var carg1 C.GstMpegtsDVBServiceType // out, full, casted
@@ -7387,8 +7150,7 @@ func (descriptor *Descriptor) ParseDvbService() (DVBServiceType, string, string,
 
 // ParseDvbShortEvent wraps gst_mpegts_descriptor_parse_dvb_short_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_short_event
 func (descriptor *Descriptor) ParseDvbShortEvent() (string, string, string, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.gchar               // out, full, string
@@ -7421,8 +7183,7 @@ func (descriptor *Descriptor) ParseDvbShortEvent() (string, string, string, bool
 
 // ParseDvbStreamIdentifier wraps gst_mpegts_descriptor_parse_dvb_stream_identifier
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_stream_identifier
 func (descriptor *Descriptor) ParseDvbStreamIdentifier() (uint8, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 C.guint8               // out, none, casted
@@ -7446,8 +7207,7 @@ func (descriptor *Descriptor) ParseDvbStreamIdentifier() (uint8, bool) {
 
 // ParseDvbStuffing wraps gst_mpegts_descriptor_parse_dvb_stuffing
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_stuffing
 func (descriptor *Descriptor) ParseDvbStuffing() (*uint8, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.guint8              // out, transfer: full, C Pointers: 1, Name: guint8
@@ -7473,8 +7233,7 @@ func (descriptor *Descriptor) ParseDvbStuffing() (*uint8, bool) {
 
 // ParseDvbSubtitlingIdx wraps gst_mpegts_descriptor_parse_dvb_subtitling_idx
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_subtitling_idx
 func (descriptor *Descriptor) ParseDvbSubtitlingIdx(idx uint) (string, uint8, uint16, uint16, bool) {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 C.guint                // in, none, casted
@@ -7511,7 +7270,7 @@ func (descriptor *Descriptor) ParseDvbSubtitlingIdx(idx uint) (string, uint8, ui
 
 // ParseDvbSubtitlingNb wraps gst_mpegts_descriptor_parse_dvb_subtitling_nb
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_subtitling_nb
 func (descriptor *Descriptor) ParseDvbSubtitlingNb() uint {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var cret  C.guint                // return, none, casted
@@ -7530,8 +7289,7 @@ func (descriptor *Descriptor) ParseDvbSubtitlingNb() uint {
 
 // ParseDvbT2DeliverySystem wraps gst_mpegts_descriptor_parse_dvb_t2_delivery_system
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_t2_delivery_system
 func (descriptor *Descriptor) ParseDvbT2DeliverySystem() (*T2DeliverySystemDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor                 // in, none, converted
 	var carg1 *C.GstMpegtsT2DeliverySystemDescriptor // out, full, converted
@@ -7555,8 +7313,7 @@ func (descriptor *Descriptor) ParseDvbT2DeliverySystem() (*T2DeliverySystemDescr
 
 // ParseDvbTeletextIdx wraps gst_mpegts_descriptor_parse_dvb_teletext_idx
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_teletext_idx
 func (descriptor *Descriptor) ParseDvbTeletextIdx(idx uint) (string, DVBTeletextType, uint8, uint8, bool) {
 	var carg0 *C.GstMpegtsDescriptor     // in, none, converted
 	var carg1 C.guint                    // in, none, casted
@@ -7593,8 +7350,7 @@ func (descriptor *Descriptor) ParseDvbTeletextIdx(idx uint) (string, DVBTeletext
 
 // ParseDvbTeletextNb wraps gst_mpegts_descriptor_parse_dvb_teletext_nb
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_dvb_teletext_nb
 func (descriptor *Descriptor) ParseDvbTeletextNb() uint {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var cret  C.guint                // return, none, casted
@@ -7613,8 +7369,7 @@ func (descriptor *Descriptor) ParseDvbTeletextNb() uint {
 
 // ParseIso639Language wraps gst_mpegts_descriptor_parse_iso_639_language
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_iso_639_language
 func (descriptor *Descriptor) ParseIso639Language() (*ISO639LanguageDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor               // in, none, converted
 	var carg1 *C.GstMpegtsISO639LanguageDescriptor // out, full, converted
@@ -7638,8 +7393,7 @@ func (descriptor *Descriptor) ParseIso639Language() (*ISO639LanguageDescriptor, 
 
 // ParseIso639LanguageIdx wraps gst_mpegts_descriptor_parse_iso_639_language_idx
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_iso_639_language_idx
 func (descriptor *Descriptor) ParseIso639LanguageIdx(idx uint) (string, Iso639AudioType, bool) {
 	var carg0 *C.GstMpegtsDescriptor     // in, none, converted
 	var carg1 C.guint                    // in, none, casted
@@ -7670,7 +7424,7 @@ func (descriptor *Descriptor) ParseIso639LanguageIdx(idx uint) (string, Iso639Au
 
 // ParseIso639LanguageNb wraps gst_mpegts_descriptor_parse_iso_639_language_nb
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_iso_639_language_nb
 func (descriptor *Descriptor) ParseIso639LanguageNb() uint {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var cret  C.guint                // return, none, casted
@@ -7689,8 +7443,7 @@ func (descriptor *Descriptor) ParseIso639LanguageNb() uint {
 
 // ParseJpegXs wraps gst_mpegts_descriptor_parse_jpeg_xs
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_jpeg_xs
 func (descriptor *Descriptor) ParseJpegXs() (JpegXsDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor      // in, none, converted
 	var carg1 C.GstMpegtsJpegXsDescriptor // out, transfer: none, C Pointers: 0, Name: JpegXsDescriptor, caller-allocates
@@ -7716,8 +7469,7 @@ func (descriptor *Descriptor) ParseJpegXs() (JpegXsDescriptor, bool) {
 
 // ParseLogicalChannel wraps gst_mpegts_descriptor_parse_logical_channel
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_logical_channel
 func (descriptor *Descriptor) ParseLogicalChannel() (LogicalChannelDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor              // in, none, converted
 	var carg1 C.GstMpegtsLogicalChannelDescriptor // out, transfer: none, C Pointers: 0, Name: LogicalChannelDescriptor, caller-allocates
@@ -7743,8 +7495,7 @@ func (descriptor *Descriptor) ParseLogicalChannel() (LogicalChannelDescriptor, b
 
 // ParseMetadata wraps gst_mpegts_descriptor_parse_metadata
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_metadata
 func (descriptor *Descriptor) ParseMetadata() (*MetadataDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor         // in, none, converted
 	var carg1 *C.GstMpegtsMetadataDescriptor // out, full, converted
@@ -7768,8 +7519,7 @@ func (descriptor *Descriptor) ParseMetadata() (*MetadataDescriptor, bool) {
 
 // ParseMetadataStd wraps gst_mpegts_descriptor_parse_metadata_std
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_metadata_std
 func (descriptor *Descriptor) ParseMetadataStd(metadataInputLeakRate *uint32, metadataBufferSize *uint32, metadataOutputLeakRate *uint32) bool {
 	var carg0 *C.GstMpegtsDescriptor // in, none, converted
 	var carg1 *C.guint32             // in, transfer: none, C Pointers: 1, Name: guint32
@@ -7805,8 +7555,7 @@ func (descriptor *Descriptor) ParseMetadataStd(metadataInputLeakRate *uint32, me
 
 // ParseSatelliteDeliverySystem wraps gst_mpegts_descriptor_parse_satellite_delivery_system
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_satellite_delivery_system
 func (descriptor *Descriptor) ParseSatelliteDeliverySystem() (SatelliteDeliverySystemDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor                       // in, none, converted
 	var carg1 C.GstMpegtsSatelliteDeliverySystemDescriptor // out, transfer: none, C Pointers: 0, Name: SatelliteDeliverySystemDescriptor, caller-allocates
@@ -7832,8 +7581,7 @@ func (descriptor *Descriptor) ParseSatelliteDeliverySystem() (SatelliteDeliveryS
 
 // ParseTerrestrialDeliverySystem wraps gst_mpegts_descriptor_parse_terrestrial_delivery_system
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_descriptor_parse_terrestrial_delivery_system
 func (descriptor *Descriptor) ParseTerrestrialDeliverySystem() (TerrestrialDeliverySystemDescriptor, bool) {
 	var carg0 *C.GstMpegtsDescriptor                         // in, none, converted
 	var carg1 C.GstMpegtsTerrestrialDeliverySystemDescriptor // out, transfer: none, C Pointers: 0, Name: TerrestrialDeliverySystemDescriptor, caller-allocates
@@ -7859,8 +7607,7 @@ func (descriptor *Descriptor) ParseTerrestrialDeliverySystem() (TerrestrialDeliv
 
 // DvbMultilingualBouquetNameItem wraps GstMpegtsDvbMultilingualBouquetNameItem
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDvbMultilingualBouquetNameItem
 type DvbMultilingualBouquetNameItem struct {
 	*dvbMultilingualBouquetNameItem
 }
@@ -7956,7 +7703,7 @@ func UnsafeDvbMultilingualBouquetNameItemToGlibFull(d *DvbMultilingualBouquetNam
 
 // DvbMultilingualComponentItem wraps GstMpegtsDvbMultilingualComponentItem
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDvbMultilingualComponentItem
 type DvbMultilingualComponentItem struct {
 	*dvbMultilingualComponentItem
 }
@@ -8052,8 +7799,7 @@ func UnsafeDvbMultilingualComponentItemToGlibFull(d *DvbMultilingualComponentIte
 
 // DvbMultilingualNetworkNameItem wraps GstMpegtsDvbMultilingualNetworkNameItem
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDvbMultilingualNetworkNameItem
 type DvbMultilingualNetworkNameItem struct {
 	*dvbMultilingualNetworkNameItem
 }
@@ -8149,8 +7895,7 @@ func UnsafeDvbMultilingualNetworkNameItemToGlibFull(d *DvbMultilingualNetworkNam
 
 // DvbMultilingualServiceNameItem wraps GstMpegtsDvbMultilingualServiceNameItem
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsDvbMultilingualServiceNameItem
 type DvbMultilingualServiceNameItem struct {
 	*dvbMultilingualServiceNameItem
 }
@@ -8246,8 +7991,7 @@ func UnsafeDvbMultilingualServiceNameItemToGlibFull(d *DvbMultilingualServiceNam
 
 // EIT wraps GstMpegtsEIT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsEIT
 type EIT struct {
 	*eIT
 }
@@ -8343,8 +8087,7 @@ func UnsafeEITToGlibFull(e *EIT) unsafe.Pointer {
 
 // EITEvent wraps GstMpegtsEITEvent
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsEITEvent
 type EITEvent struct {
 	*eITEvent
 }
@@ -8440,8 +8183,7 @@ func UnsafeEITEventToGlibFull(e *EITEvent) unsafe.Pointer {
 
 // ExtendedEventDescriptor wraps GstMpegtsExtendedEventDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsExtendedEventDescriptor
 type ExtendedEventDescriptor struct {
 	*extendedEventDescriptor
 }
@@ -8537,7 +8279,7 @@ func UnsafeExtendedEventDescriptorToGlibFull(e *ExtendedEventDescriptor) unsafe.
 
 // ExtendedEventItem wraps GstMpegtsExtendedEventItem
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsExtendedEventItem
 type ExtendedEventItem struct {
 	*extendedEventItem
 }
@@ -8633,7 +8375,7 @@ func UnsafeExtendedEventItemToGlibFull(e *ExtendedEventItem) unsafe.Pointer {
 
 // ISO639LanguageDescriptor wraps GstMpegtsISO639LanguageDescriptor
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsISO639LanguageDescriptor
 type ISO639LanguageDescriptor struct {
 	*iSO639LanguageDescriptor
 }
@@ -8729,7 +8471,7 @@ func UnsafeISO639LanguageDescriptorToGlibFull(i *ISO639LanguageDescriptor) unsaf
 
 // DescriptorFree wraps gst_mpegts_iso_639_language_descriptor_free
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_iso_639_language_descriptor_free
 func (desc *ISO639LanguageDescriptor) DescriptorFree() {
 	var carg0 *C.GstMpegtsISO639LanguageDescriptor // in, none, converted
 
@@ -8741,8 +8483,7 @@ func (desc *ISO639LanguageDescriptor) DescriptorFree() {
 
 // JpegXsDescriptor wraps GstMpegtsJpegXsDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsJpegXsDescriptor
 type JpegXsDescriptor struct {
 	*jpegXsDescriptor
 }
@@ -8838,7 +8579,7 @@ func UnsafeJpegXsDescriptorToGlibFull(j *JpegXsDescriptor) unsafe.Pointer {
 
 // LogicalChannel wraps GstMpegtsLogicalChannel
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsLogicalChannel
 type LogicalChannel struct {
 	*logicalChannel
 }
@@ -8934,7 +8675,7 @@ func UnsafeLogicalChannelToGlibFull(l *LogicalChannel) unsafe.Pointer {
 
 // LogicalChannelDescriptor wraps GstMpegtsLogicalChannelDescriptor
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsLogicalChannelDescriptor
 type LogicalChannelDescriptor struct {
 	*logicalChannelDescriptor
 }
@@ -9030,8 +8771,7 @@ func UnsafeLogicalChannelDescriptorToGlibFull(l *LogicalChannelDescriptor) unsaf
 
 // MetadataDescriptor wraps GstMpegtsMetadataDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsMetadataDescriptor
 type MetadataDescriptor struct {
 	*metadataDescriptor
 }
@@ -9127,8 +8867,7 @@ func UnsafeMetadataDescriptorToGlibFull(m *MetadataDescriptor) unsafe.Pointer {
 
 // MetadataPointerDescriptor wraps GstMpegtsMetadataPointerDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsMetadataPointerDescriptor
 type MetadataPointerDescriptor struct {
 	*metadataPointerDescriptor
 }
@@ -9224,8 +8963,7 @@ func UnsafeMetadataPointerDescriptorToGlibFull(m *MetadataPointerDescriptor) uns
 
 // NIT wraps GstMpegtsNIT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsNIT
 type NIT struct {
 	*nIT
 }
@@ -9321,8 +9059,7 @@ func UnsafeNITToGlibFull(n *NIT) unsafe.Pointer {
 
 // NewNIT wraps gst_mpegts_nit_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#gst_mpegts_nit_new
 func NewNIT() *NIT {
 	var cret *C.GstMpegtsNIT // return, full, converted
 
@@ -9337,7 +9074,7 @@ func NewNIT() *NIT {
 
 // NITStream wraps GstMpegtsNITStream
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsNITStream
 type NITStream struct {
 	*nITStream
 }
@@ -9433,8 +9170,7 @@ func UnsafeNITStreamToGlibFull(n *NITStream) unsafe.Pointer {
 
 // NewNITStream wraps gst_mpegts_nit_stream_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#gst_mpegts_nit_stream_new
 func NewNITStream() *NITStream {
 	var cret *C.GstMpegtsNITStream // return, full, converted
 
@@ -9449,8 +9185,7 @@ func NewNITStream() *NITStream {
 
 // PESMetadataMeta wraps GstMpegtsPESMetadataMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GstMpegtsPESMetadataMeta
 type PESMetadataMeta struct {
 	*pESMetadataMeta
 }
@@ -9531,8 +9266,7 @@ func UnsafePESMetadataMetaToGlibFull(p *PESMetadataMeta) unsafe.Pointer {
 
 // PESMetadataMetaGetInfo wraps gst_mpegts_pes_metadata_meta_get_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#gst_mpegts_pes_metadata_meta_get_info
 func PESMetadataMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -9547,8 +9281,7 @@ func PESMetadataMetaGetInfo() *gst.MetaInfo {
 
 // PMT wraps GstMpegtsPMT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GstMpegtsPMT
 type PMT struct {
 	*pMT
 }
@@ -9644,8 +9377,7 @@ func UnsafePMTToGlibFull(p *PMT) unsafe.Pointer {
 
 // NewPMT wraps gst_mpegts_pmt_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_pmt_new
 func NewPMT() *PMT {
 	var cret *C.GstMpegtsPMT // return, full, converted
 
@@ -9660,8 +9392,7 @@ func NewPMT() *PMT {
 
 // PMTStream wraps GstMpegtsPMTStream
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GstMpegtsPMTStream
 type PMTStream struct {
 	*pMTStream
 }
@@ -9757,8 +9488,7 @@ func UnsafePMTStreamToGlibFull(p *PMTStream) unsafe.Pointer {
 
 // NewPMTStream wraps gst_mpegts_pmt_stream_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_pmt_stream_new
 func NewPMTStream() *PMTStream {
 	var cret *C.GstMpegtsPMTStream // return, full, converted
 
@@ -9773,8 +9503,7 @@ func NewPMTStream() *PMTStream {
 
 // PatProgram wraps GstMpegtsPatProgram
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GstMpegtsPatProgram
 type PatProgram struct {
 	*patProgram
 }
@@ -9870,8 +9599,7 @@ func UnsafePatProgramToGlibFull(p *PatProgram) unsafe.Pointer {
 
 // NewPatProgram wraps gst_mpegts_pat_program_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_pat_program_new
 func NewPatProgram() *PatProgram {
 	var cret *C.GstMpegtsPatProgram // return, full, converted
 
@@ -9886,7 +9614,7 @@ func NewPatProgram() *PatProgram {
 
 // SCTESIT wraps GstMpegtsSCTESIT
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GstMpegtsSCTESIT
 type SCTESIT struct {
 	*sCTESIT
 }
@@ -9982,8 +9710,7 @@ func UnsafeSCTESITToGlibFull(s *SCTESIT) unsafe.Pointer {
 
 // NewSCTESIT wraps gst_mpegts_scte_sit_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#gst_mpegts_scte_sit_new
 func NewSCTESIT() *SCTESIT {
 	var cret *C.GstMpegtsSCTESIT // return, full, converted
 
@@ -9998,8 +9725,7 @@ func NewSCTESIT() *SCTESIT {
 
 // SCTESpliceComponent wraps GstMpegtsSCTESpliceComponent
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GstMpegtsSCTESpliceComponent
 type SCTESpliceComponent struct {
 	*sCTESpliceComponent
 }
@@ -10095,8 +9821,7 @@ func UnsafeSCTESpliceComponentToGlibFull(s *SCTESpliceComponent) unsafe.Pointer 
 
 // NewSCTESpliceComponent wraps gst_mpegts_scte_splice_component_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#gst_mpegts_scte_splice_component_new
 func NewSCTESpliceComponent(tag uint8) *SCTESpliceComponent {
 	var carg1 C.guint8                        // in, none, casted
 	var cret  *C.GstMpegtsSCTESpliceComponent // return, full, converted
@@ -10115,7 +9840,7 @@ func NewSCTESpliceComponent(tag uint8) *SCTESpliceComponent {
 
 // SCTESpliceEvent wraps GstMpegtsSCTESpliceEvent
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GstMpegtsSCTESpliceEvent
 type SCTESpliceEvent struct {
 	*sCTESpliceEvent
 }
@@ -10211,8 +9936,7 @@ func UnsafeSCTESpliceEventToGlibFull(s *SCTESpliceEvent) unsafe.Pointer {
 
 // NewSCTESpliceEvent wraps gst_mpegts_scte_splice_event_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#gst_mpegts_scte_splice_event_new
 func NewSCTESpliceEvent() *SCTESpliceEvent {
 	var cret *C.GstMpegtsSCTESpliceEvent // return, full, converted
 
@@ -10227,8 +9951,7 @@ func NewSCTESpliceEvent() *SCTESpliceEvent {
 
 // SDT wraps GstMpegtsSDT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsSDT
 type SDT struct {
 	*sDT
 }
@@ -10324,8 +10047,7 @@ func UnsafeSDTToGlibFull(s *SDT) unsafe.Pointer {
 
 // NewSDT wraps gst_mpegts_sdt_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#gst_mpegts_sdt_new
 func NewSDT() *SDT {
 	var cret *C.GstMpegtsSDT // return, full, converted
 
@@ -10340,7 +10062,7 @@ func NewSDT() *SDT {
 
 // SDTService wraps GstMpegtsSDTService
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsSDTService
 type SDTService struct {
 	*sDTService
 }
@@ -10436,8 +10158,7 @@ func UnsafeSDTServiceToGlibFull(s *SDTService) unsafe.Pointer {
 
 // NewSDTService wraps gst_mpegts_sdt_service_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#gst_mpegts_sdt_service_new
 func NewSDTService() *SDTService {
 	var cret *C.GstMpegtsSDTService // return, full, converted
 
@@ -10452,8 +10173,7 @@ func NewSDTService() *SDTService {
 
 // SIT wraps GstMpegtsSIT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsSIT
 type SIT struct {
 	*sIT
 }
@@ -10549,8 +10269,7 @@ func UnsafeSITToGlibFull(s *SIT) unsafe.Pointer {
 
 // SITService wraps GstMpegtsSITService
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsSITService
 type SITService struct {
 	*sITService
 }
@@ -10646,8 +10365,7 @@ func UnsafeSITServiceToGlibFull(s *SITService) unsafe.Pointer {
 
 // SatelliteDeliverySystemDescriptor wraps GstMpegtsSatelliteDeliverySystemDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsSatelliteDeliverySystemDescriptor
 type SatelliteDeliverySystemDescriptor struct {
 	*satelliteDeliverySystemDescriptor
 }
@@ -10743,8 +10461,7 @@ func UnsafeSatelliteDeliverySystemDescriptorToGlibFull(s *SatelliteDeliverySyste
 
 // Section wraps GstMpegtsSection
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GstMpegtsSection
 type Section struct {
 	*section
 }
@@ -10840,8 +10557,7 @@ func UnsafeSectionToGlibFull(s *Section) unsafe.Pointer {
 
 // NewSection wraps gst_mpegts_section_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_new
 func NewSection(pid uint16, data []uint8) *Section {
 	var carg1 C.guint16           // in, none, casted
 	var carg2 *C.guint8           // in, transfer: full, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -10867,7 +10583,7 @@ func NewSection(pid uint16, data []uint8) *Section {
 
 // SectionFromAtscMgt wraps gst_mpegts_section_from_atsc_mgt
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_from_atsc_mgt
 func SectionFromAtscMgt(mgt *AtscMGT) *Section {
 	var carg1 *C.GstMpegtsAtscMGT // in, full, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -10888,7 +10604,7 @@ func SectionFromAtscMgt(mgt *AtscMGT) *Section {
 
 // SectionFromAtscRrt wraps gst_mpegts_section_from_atsc_rrt
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_from_atsc_rrt
 func SectionFromAtscRrt(rrt *AtscRRT) *Section {
 	var carg1 *C.GstMpegtsAtscRRT // in, none, converted
 	var cret  *C.GstMpegtsSection // return, full, converted
@@ -10907,7 +10623,7 @@ func SectionFromAtscRrt(rrt *AtscRRT) *Section {
 
 // SectionFromAtscStt wraps gst_mpegts_section_from_atsc_stt
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_from_atsc_stt
 func SectionFromAtscStt(stt *AtscSTT) *Section {
 	var carg1 *C.GstMpegtsAtscSTT // in, none, converted
 	var cret  *C.GstMpegtsSection // return, full, converted
@@ -10926,8 +10642,7 @@ func SectionFromAtscStt(stt *AtscSTT) *Section {
 
 // SectionFromNit wraps gst_mpegts_section_from_nit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_from_nit
 func SectionFromNit(nit *NIT) *Section {
 	var carg1 *C.GstMpegtsNIT     // in, full, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -10948,8 +10663,7 @@ func SectionFromNit(nit *NIT) *Section {
 
 // SectionFromPmt wraps gst_mpegts_section_from_pmt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_from_pmt
 func SectionFromPmt(pmt *PMT, pid uint16) *Section {
 	var carg1 *C.GstMpegtsPMT     // in, full, converted
 	var carg2 C.guint16           // in, none, casted
@@ -10973,8 +10687,7 @@ func SectionFromPmt(pmt *PMT, pid uint16) *Section {
 
 // SectionFromScteSit wraps gst_mpegts_section_from_scte_sit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_from_scte_sit
 func SectionFromScteSit(sit *SCTESIT, pid uint16) *Section {
 	var carg1 *C.GstMpegtsSCTESIT // in, full, converted
 	var carg2 C.guint16           // in, none, casted
@@ -10998,8 +10711,7 @@ func SectionFromScteSit(sit *SCTESIT, pid uint16) *Section {
 
 // SectionFromSdt wraps gst_mpegts_section_from_sdt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_from_sdt
 func SectionFromSdt(sdt *SDT) *Section {
 	var carg1 *C.GstMpegtsSDT     // in, full, converted
 	var cret  *C.GstMpegtsSection // return, full, converted, nullable
@@ -11020,8 +10732,7 @@ func SectionFromSdt(sdt *SDT) *Section {
 
 // GetAtscCvct wraps gst_mpegts_section_get_atsc_cvct
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_cvct
 func (section *Section) GetAtscCvct() *AtscVCT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscVCT // return, none, converted, nullable
@@ -11042,8 +10753,7 @@ func (section *Section) GetAtscCvct() *AtscVCT {
 
 // GetAtscEit wraps gst_mpegts_section_get_atsc_eit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_eit
 func (section *Section) GetAtscEit() *AtscEIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscEIT // return, none, converted
@@ -11062,8 +10772,7 @@ func (section *Section) GetAtscEit() *AtscEIT {
 
 // GetAtscEtt wraps gst_mpegts_section_get_atsc_ett
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_ett
 func (section *Section) GetAtscEtt() *AtscETT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscETT // return, none, converted
@@ -11082,8 +10791,7 @@ func (section *Section) GetAtscEtt() *AtscETT {
 
 // GetAtscMgt wraps gst_mpegts_section_get_atsc_mgt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_mgt
 func (section *Section) GetAtscMgt() *AtscMGT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscMGT // return, none, converted, nullable
@@ -11104,8 +10812,7 @@ func (section *Section) GetAtscMgt() *AtscMGT {
 
 // GetAtscRrt wraps gst_mpegts_section_get_atsc_rrt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_rrt
 func (section *Section) GetAtscRrt() *AtscRRT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscRRT // return, none, converted
@@ -11124,8 +10831,7 @@ func (section *Section) GetAtscRrt() *AtscRRT {
 
 // GetAtscStt wraps gst_mpegts_section_get_atsc_stt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_stt
 func (section *Section) GetAtscStt() *AtscSTT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscSTT // return, none, converted
@@ -11144,8 +10850,7 @@ func (section *Section) GetAtscStt() *AtscSTT {
 
 // GetAtscTvct wraps gst_mpegts_section_get_atsc_tvct
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_atsc_tvct
 func (section *Section) GetAtscTvct() *AtscVCT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsAtscVCT // return, none, converted, nullable
@@ -11166,8 +10871,7 @@ func (section *Section) GetAtscTvct() *AtscVCT {
 
 // GetBat wraps gst_mpegts_section_get_bat
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_bat
 func (section *Section) GetBat() *BAT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsBAT     // return, none, converted, nullable
@@ -11188,8 +10892,7 @@ func (section *Section) GetBat() *BAT {
 
 // GetData wraps gst_mpegts_section_get_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_data
 func (section *Section) GetData() *glib.Bytes {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GBytes           // return, full, converted
@@ -11208,8 +10911,7 @@ func (section *Section) GetData() *glib.Bytes {
 
 // GetEit wraps gst_mpegts_section_get_eit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_eit
 func (section *Section) GetEit() *EIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsEIT     // return, none, converted, nullable
@@ -11230,8 +10932,7 @@ func (section *Section) GetEit() *EIT {
 
 // GetNit wraps gst_mpegts_section_get_nit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_nit
 func (section *Section) GetNit() *NIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsNIT     // return, none, converted, nullable
@@ -11252,8 +10953,7 @@ func (section *Section) GetNit() *NIT {
 
 // GetPmt wraps gst_mpegts_section_get_pmt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_pmt
 func (section *Section) GetPmt() *PMT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsPMT     // return, none, converted, nullable
@@ -11274,8 +10974,7 @@ func (section *Section) GetPmt() *PMT {
 
 // GetScteSit wraps gst_mpegts_section_get_scte_sit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_scte_sit
 func (section *Section) GetScteSit() *SCTESIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsSCTESIT // return, none, converted, nullable
@@ -11296,8 +10995,7 @@ func (section *Section) GetScteSit() *SCTESIT {
 
 // GetSdt wraps gst_mpegts_section_get_sdt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_sdt
 func (section *Section) GetSdt() *SDT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsSDT     // return, none, converted, nullable
@@ -11318,8 +11016,7 @@ func (section *Section) GetSdt() *SDT {
 
 // GetSit wraps gst_mpegts_section_get_sit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_sit
 func (section *Section) GetSit() *SIT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsSIT     // return, none, converted, nullable
@@ -11340,8 +11037,7 @@ func (section *Section) GetSit() *SIT {
 
 // GetTdt wraps gst_mpegts_section_get_tdt
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_tdt
 func (section *Section) GetTdt() *gst.DateTime {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstDateTime      // return, full, converted, nullable
@@ -11362,8 +11058,7 @@ func (section *Section) GetTdt() *gst.DateTime {
 
 // GetTot wraps gst_mpegts_section_get_tot
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_get_tot
 func (section *Section) GetTot() *TOT {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var cret  *C.GstMpegtsTOT     // return, none, converted, nullable
@@ -11384,8 +11079,7 @@ func (section *Section) GetTot() *TOT {
 
 // Packetize wraps gst_mpegts_section_packetize
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_packetize
 func (section *Section) Packetize() (uint, *uint8) {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var carg1 C.gsize             // out, full, casted
@@ -11409,8 +11103,7 @@ func (section *Section) Packetize() (uint, *uint8) {
 
 // SendEvent wraps gst_mpegts_section_send_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#gst_mpegts_section_send_event
 func (section *Section) SendEvent(element gst.Element) bool {
 	var carg0 *C.GstMpegtsSection // in, none, converted
 	var carg1 *C.GstElement       // in, none, converted
@@ -11434,7 +11127,7 @@ func (section *Section) SendEvent(element gst.Element) bool {
 
 // T2DeliverySystemCell wraps GstMpegtsT2DeliverySystemCell
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsT2DeliverySystemCell
 type T2DeliverySystemCell struct {
 	*t2DeliverySystemCell
 }
@@ -11530,7 +11223,7 @@ func UnsafeT2DeliverySystemCellToGlibFull(t *T2DeliverySystemCell) unsafe.Pointe
 
 // T2DeliverySystemCellExtension wraps GstMpegtsT2DeliverySystemCellExtension
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsT2DeliverySystemCellExtension
 type T2DeliverySystemCellExtension struct {
 	*t2DeliverySystemCellExtension
 }
@@ -11626,8 +11319,7 @@ func UnsafeT2DeliverySystemCellExtensionToGlibFull(t *T2DeliverySystemCellExtens
 
 // T2DeliverySystemDescriptor wraps GstMpegtsT2DeliverySystemDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsT2DeliverySystemDescriptor
 type T2DeliverySystemDescriptor struct {
 	*t2DeliverySystemDescriptor
 }
@@ -11723,8 +11415,7 @@ func UnsafeT2DeliverySystemDescriptorToGlibFull(t *T2DeliverySystemDescriptor) u
 
 // TOT wraps GstMpegtsTOT
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GstMpegtsTOT
 type TOT struct {
 	*tOT
 }
@@ -11820,8 +11511,7 @@ func UnsafeTOTToGlibFull(t *TOT) unsafe.Pointer {
 
 // TerrestrialDeliverySystemDescriptor wraps GstMpegtsTerrestrialDeliverySystemDescriptor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GstMpegtsTerrestrialDeliverySystemDescriptor
 type TerrestrialDeliverySystemDescriptor struct {
 	*terrestrialDeliverySystemDescriptor
 }

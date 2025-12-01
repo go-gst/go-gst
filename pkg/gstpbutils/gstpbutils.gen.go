@@ -99,80 +99,65 @@ func init() {
 
 // PLUGINS_BASE_VERSION_MAJOR wraps GST_PLUGINS_BASE_VERSION_MAJOR
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstpluginsbaseversion.html#GST_PLUGINS_BASE_VERSION_MAJOR
 const PLUGINS_BASE_VERSION_MAJOR = 1
 // PLUGINS_BASE_VERSION_MICRO wraps GST_PLUGINS_BASE_VERSION_MICRO
 // 
-// see also No documentation available
-//
-const PLUGINS_BASE_VERSION_MICRO = 0
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstpluginsbaseversion.html#GST_PLUGINS_BASE_VERSION_MICRO
+const PLUGINS_BASE_VERSION_MICRO = 2
 // PLUGINS_BASE_VERSION_MINOR wraps GST_PLUGINS_BASE_VERSION_MINOR
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstpluginsbaseversion.html#GST_PLUGINS_BASE_VERSION_MINOR
 const PLUGINS_BASE_VERSION_MINOR = 27
 // PLUGINS_BASE_VERSION_NANO wraps GST_PLUGINS_BASE_VERSION_NANO
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstpluginsbaseversion.html#GST_PLUGINS_BASE_VERSION_NANO
 const PLUGINS_BASE_VERSION_NANO = 1
 // AudioVisualizerShader wraps GstAudioVisualizerShader
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstAudioVisualizerShader
 type AudioVisualizerShader C.int
 
 const (
 	// AudioVisualizerShaderNone wraps GST_AUDIO_VISUALIZER_SHADER_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_NONE
 	AudioVisualizerShaderNone AudioVisualizerShader = 0
 	// AudioVisualizerShaderFade wraps GST_AUDIO_VISUALIZER_SHADER_FADE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_FADE
 	AudioVisualizerShaderFade AudioVisualizerShader = 1
 	// AudioVisualizerShaderFadeAndMoveUp wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_UP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_UP
 	AudioVisualizerShaderFadeAndMoveUp AudioVisualizerShader = 2
 	// AudioVisualizerShaderFadeAndMoveDown wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_DOWN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_DOWN
 	AudioVisualizerShaderFadeAndMoveDown AudioVisualizerShader = 3
 	// AudioVisualizerShaderFadeAndMoveLeft wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_LEFT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_LEFT
 	AudioVisualizerShaderFadeAndMoveLeft AudioVisualizerShader = 4
 	// AudioVisualizerShaderFadeAndMoveRight wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_RIGHT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_RIGHT
 	AudioVisualizerShaderFadeAndMoveRight AudioVisualizerShader = 5
 	// AudioVisualizerShaderFadeAndMoveHorizOut wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_OUT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_OUT
 	AudioVisualizerShaderFadeAndMoveHorizOut AudioVisualizerShader = 6
 	// AudioVisualizerShaderFadeAndMoveHorizIn wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_IN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_IN
 	AudioVisualizerShaderFadeAndMoveHorizIn AudioVisualizerShader = 7
 	// AudioVisualizerShaderFadeAndMoveVertOut wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_OUT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_OUT
 	AudioVisualizerShaderFadeAndMoveVertOut AudioVisualizerShader = 8
 	// AudioVisualizerShaderFadeAndMoveVertIn wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_IN
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_IN
 	AudioVisualizerShaderFadeAndMoveVertIn AudioVisualizerShader = 9
 )
 
@@ -208,40 +193,33 @@ func (e AudioVisualizerShader) String() string {
 
 // DiscovererResult wraps GstDiscovererResult
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstDiscovererResult
 type DiscovererResult C.int
 
 const (
 	// DiscovererOK wraps GST_DISCOVERER_OK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_OK
 	DiscovererOK DiscovererResult = 0
 	// DiscovererURIInvalid wraps GST_DISCOVERER_URI_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_URI_INVALID
 	DiscovererURIInvalid DiscovererResult = 1
 	// DiscovererError wraps GST_DISCOVERER_ERROR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_ERROR
 	DiscovererError DiscovererResult = 2
 	// DiscovererTimeout wraps GST_DISCOVERER_TIMEOUT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_TIMEOUT
 	DiscovererTimeout DiscovererResult = 3
 	// DiscovererBusy wraps GST_DISCOVERER_BUSY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_BUSY
 	DiscovererBusy DiscovererResult = 4
 	// DiscovererMissingPlugins wraps GST_DISCOVERER_MISSING_PLUGINS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_MISSING_PLUGINS
 	DiscovererMissingPlugins DiscovererResult = 5
 )
 
@@ -273,65 +251,53 @@ func (e DiscovererResult) String() string {
 
 // InstallPluginsReturn wraps GstInstallPluginsReturn
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstInstallPluginsReturn
 type InstallPluginsReturn C.int
 
 const (
 	// InstallPluginsSuccess wraps GST_INSTALL_PLUGINS_SUCCESS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_SUCCESS
 	InstallPluginsSuccess InstallPluginsReturn = 0
 	// InstallPluginsNotFound wraps GST_INSTALL_PLUGINS_NOT_FOUND
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_NOT_FOUND
 	InstallPluginsNotFound InstallPluginsReturn = 1
 	// InstallPluginsError wraps GST_INSTALL_PLUGINS_ERROR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_ERROR
 	InstallPluginsError InstallPluginsReturn = 2
 	// InstallPluginsPartialSuccess wraps GST_INSTALL_PLUGINS_PARTIAL_SUCCESS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_PARTIAL_SUCCESS
 	InstallPluginsPartialSuccess InstallPluginsReturn = 3
 	// InstallPluginsUserAbort wraps GST_INSTALL_PLUGINS_USER_ABORT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_USER_ABORT
 	InstallPluginsUserAbort InstallPluginsReturn = 4
 	// InstallPluginsCrashed wraps GST_INSTALL_PLUGINS_CRASHED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_CRASHED
 	InstallPluginsCrashed InstallPluginsReturn = 100
 	// InstallPluginsInvalid wraps GST_INSTALL_PLUGINS_INVALID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_INVALID
 	InstallPluginsInvalid InstallPluginsReturn = 101
 	// InstallPluginsStartedOK wraps GST_INSTALL_PLUGINS_STARTED_OK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_STARTED_OK
 	InstallPluginsStartedOK InstallPluginsReturn = 200
 	// InstallPluginsInternalFailure wraps GST_INSTALL_PLUGINS_INTERNAL_FAILURE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_INTERNAL_FAILURE
 	InstallPluginsInternalFailure InstallPluginsReturn = 201
 	// InstallPluginsHelperMissing wraps GST_INSTALL_PLUGINS_HELPER_MISSING
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_HELPER_MISSING
 	InstallPluginsHelperMissing InstallPluginsReturn = 202
 	// InstallPluginsInstallInProgress wraps GST_INSTALL_PLUGINS_INSTALL_IN_PROGRESS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_INSTALL_PLUGINS_INSTALL_IN_PROGRESS
 	InstallPluginsInstallInProgress InstallPluginsReturn = 203
 )
 
@@ -368,8 +334,7 @@ func (e InstallPluginsReturn) String() string {
 
 // InstallPluginsReturnGetName wraps gst_install_plugins_return_get_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_install_plugins_return_get_name
 func InstallPluginsReturnGetName(ret InstallPluginsReturn) string {
 	var carg1 C.GstInstallPluginsReturn // in, none, casted
 	var cret  *C.gchar                  // return, none, string
@@ -388,35 +353,29 @@ func InstallPluginsReturnGetName(ret InstallPluginsReturn) string {
 
 // DiscovererSerializeFlags wraps GstDiscovererSerializeFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstDiscovererSerializeFlags
 type DiscovererSerializeFlags C.gint
 
 const (
 	// DiscovererSerializeBasic wraps GST_DISCOVERER_SERIALIZE_BASIC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_SERIALIZE_BASIC
 	DiscovererSerializeBasic DiscovererSerializeFlags = 0
 	// DiscovererSerializeCaps wraps GST_DISCOVERER_SERIALIZE_CAPS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_SERIALIZE_CAPS
 	DiscovererSerializeCaps DiscovererSerializeFlags = 1
 	// DiscovererSerializeTags wraps GST_DISCOVERER_SERIALIZE_TAGS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_SERIALIZE_TAGS
 	DiscovererSerializeTags DiscovererSerializeFlags = 2
 	// DiscovererSerializeMisc wraps GST_DISCOVERER_SERIALIZE_MISC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_SERIALIZE_MISC
 	DiscovererSerializeMisc DiscovererSerializeFlags = 4
 	// DiscovererSerializeAll wraps GST_DISCOVERER_SERIALIZE_ALL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_DISCOVERER_SERIALIZE_ALL
 	DiscovererSerializeAll DiscovererSerializeFlags = 7
 )
 
@@ -464,50 +423,41 @@ func (f DiscovererSerializeFlags) String() string {
 
 // PbUtilsCapsDescriptionFlags wraps GstPbUtilsCapsDescriptionFlags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstPbUtilsCapsDescriptionFlags
 type PbUtilsCapsDescriptionFlags C.gint
 
 const (
 	// PbutilsCapsDescriptionFlagContainer wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_CONTAINER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_PBUTILS_CAPS_DESCRIPTION_FLAG_CONTAINER
 	PbutilsCapsDescriptionFlagContainer PbUtilsCapsDescriptionFlags = 1
 	// PbutilsCapsDescriptionFlagAudio wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_AUDIO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_PBUTILS_CAPS_DESCRIPTION_FLAG_AUDIO
 	PbutilsCapsDescriptionFlagAudio PbUtilsCapsDescriptionFlags = 2
 	// PbutilsCapsDescriptionFlagVideo wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_VIDEO
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_PBUTILS_CAPS_DESCRIPTION_FLAG_VIDEO
 	PbutilsCapsDescriptionFlagVideo PbUtilsCapsDescriptionFlags = 4
 	// PbutilsCapsDescriptionFlagImage wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_IMAGE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_PBUTILS_CAPS_DESCRIPTION_FLAG_IMAGE
 	PbutilsCapsDescriptionFlagImage PbUtilsCapsDescriptionFlags = 8
 	// PbutilsCapsDescriptionFlagSubtitle wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_SUBTITLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_PBUTILS_CAPS_DESCRIPTION_FLAG_SUBTITLE
 	PbutilsCapsDescriptionFlagSubtitle PbUtilsCapsDescriptionFlags = 16
 	// PbutilsCapsDescriptionFlagTag wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_TAG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_PBUTILS_CAPS_DESCRIPTION_FLAG_TAG
 	PbutilsCapsDescriptionFlagTag PbUtilsCapsDescriptionFlags = 32
 	// PbutilsCapsDescriptionFlagGeneric wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_GENERIC
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_PBUTILS_CAPS_DESCRIPTION_FLAG_GENERIC
 	PbutilsCapsDescriptionFlagGeneric PbUtilsCapsDescriptionFlags = 64
 	// PbutilsCapsDescriptionFlagMetadata wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_METADATA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#GST_PBUTILS_CAPS_DESCRIPTION_FLAG_METADATA
 	PbutilsCapsDescriptionFlagMetadata PbUtilsCapsDescriptionFlags = 128
 )
 
@@ -564,14 +514,12 @@ func (f PbUtilsCapsDescriptionFlags) String() string {
 
 // InstallPluginsResultFunc wraps GstInstallPluginsResultFunc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/install-plugins.html#GstInstallPluginsResultFunc
 type InstallPluginsResultFunc func(result InstallPluginsReturn)
 
 // CodecUtilsAacCapsSetLevelAndProfile wraps gst_codec_utils_aac_caps_set_level_and_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAacCapsSetLevelAndProfile(caps *gst.Caps, audioConfig []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
 	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -599,8 +547,7 @@ func CodecUtilsAacCapsSetLevelAndProfile(caps *gst.Caps, audioConfig []uint8) bo
 
 // CodecUtilsAacGetChannels wraps gst_codec_utils_aac_get_channels
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAacGetChannels(audioConfig []uint8) uint {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -623,8 +570,7 @@ func CodecUtilsAacGetChannels(audioConfig []uint8) uint {
 
 // CodecUtilsAacGetIndexFromSampleRate wraps gst_codec_utils_aac_get_index_from_sample_rate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAacGetIndexFromSampleRate(rate uint) int32 {
 	var carg1 C.guint // in, none, casted
 	var cret  C.gint  // return, none, casted
@@ -643,8 +589,7 @@ func CodecUtilsAacGetIndexFromSampleRate(rate uint) int32 {
 
 // CodecUtilsAacGetLevel wraps gst_codec_utils_aac_get_level
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAacGetLevel(audioConfig []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -669,8 +614,7 @@ func CodecUtilsAacGetLevel(audioConfig []uint8) string {
 
 // CodecUtilsAacGetProfile wraps gst_codec_utils_aac_get_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAacGetProfile(audioConfig []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -695,8 +639,7 @@ func CodecUtilsAacGetProfile(audioConfig []uint8) string {
 
 // CodecUtilsAacGetSampleRate wraps gst_codec_utils_aac_get_sample_rate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAacGetSampleRate(audioConfig []uint8) uint {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -719,8 +662,7 @@ func CodecUtilsAacGetSampleRate(audioConfig []uint8) uint {
 
 // CodecUtilsAacGetSampleRateFromIndex wraps gst_codec_utils_aac_get_sample_rate_from_index
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAacGetSampleRateFromIndex(srIdx uint) uint {
 	var carg1 C.guint // in, none, casted
 	var cret  C.guint // return, none, casted
@@ -739,8 +681,7 @@ func CodecUtilsAacGetSampleRateFromIndex(srIdx uint) uint {
 
 // CodecUtilsAv1CreateAv1cFromCaps wraps gst_codec_utils_av1_create_av1c_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAv1CreateAv1cFromCaps(caps *gst.Caps) *gst.Buffer {
 	var carg1 *C.GstCaps   // in, none, converted
 	var cret  *C.GstBuffer // return, full, converted, nullable
@@ -761,8 +702,7 @@ func CodecUtilsAv1CreateAv1cFromCaps(caps *gst.Caps) *gst.Buffer {
 
 // CodecUtilsAv1CreateCapsFromAv1c wraps gst_codec_utils_av1_create_caps_from_av1c
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAv1CreateCapsFromAv1c(av1c *gst.Buffer) *gst.Caps {
 	var carg1 *C.GstBuffer // in, none, converted
 	var cret  *C.GstCaps   // return, full, converted, nullable
@@ -783,8 +723,7 @@ func CodecUtilsAv1CreateCapsFromAv1c(av1c *gst.Buffer) *gst.Caps {
 
 // CodecUtilsAv1GetLevel wraps gst_codec_utils_av1_get_level
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAv1GetLevel(seqLevelIdx uint8) string {
 	var carg1 C.guint8 // in, none, casted
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -805,8 +744,7 @@ func CodecUtilsAv1GetLevel(seqLevelIdx uint8) string {
 
 // CodecUtilsAv1GetSeqLevelIdx wraps gst_codec_utils_av1_get_seq_level_idx
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsAv1GetSeqLevelIdx(level string) uint8 {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.guint8 // return, none, casted
@@ -826,8 +764,7 @@ func CodecUtilsAv1GetSeqLevelIdx(level string) uint8 {
 
 // CodecUtilsCapsFromMimeCodec wraps gst_codec_utils_caps_from_mime_codec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsCapsFromMimeCodec(codecsField string) *gst.Caps {
 	var carg1 *C.gchar   // in, none, string
 	var cret  *C.GstCaps // return, full, converted, nullable
@@ -849,8 +786,7 @@ func CodecUtilsCapsFromMimeCodec(codecsField string) *gst.Caps {
 
 // CodecUtilsCapsGetMimeCodec wraps gst_codec_utils_caps_get_mime_codec
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsCapsGetMimeCodec(caps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.gchar   // return, full, string, nullable-string
@@ -872,8 +808,7 @@ func CodecUtilsCapsGetMimeCodec(caps *gst.Caps) string {
 
 // CodecUtilsH264CapsSetLevelAndProfile wraps gst_codec_utils_h264_caps_set_level_and_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
 	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -901,8 +836,7 @@ func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []uint8) bool {
 
 // CodecUtilsH264GetLevel wraps gst_codec_utils_h264_get_level
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH264GetLevel(sps []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -927,8 +861,7 @@ func CodecUtilsH264GetLevel(sps []uint8) string {
 
 // CodecUtilsH264GetLevelIdc wraps gst_codec_utils_h264_get_level_idc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH264GetLevelIdc(level string) uint8 {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.guint8 // return, none, casted
@@ -948,8 +881,7 @@ func CodecUtilsH264GetLevelIdc(level string) uint8 {
 
 // CodecUtilsH264GetProfile wraps gst_codec_utils_h264_get_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH264GetProfile(sps []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -974,8 +906,7 @@ func CodecUtilsH264GetProfile(sps []uint8) string {
 
 // CodecUtilsH264GetProfileFlagsLevel wraps gst_codec_utils_h264_get_profile_flags_level
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH264GetProfileFlagsLevel(codecData []uint8) (uint8, uint8, uint8, bool) {
 	var carg1 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint    // implicit
@@ -1009,8 +940,7 @@ func CodecUtilsH264GetProfileFlagsLevel(codecData []uint8) (uint8, uint8, uint8,
 
 // CodecUtilsH265CapsSetLevelTierAndProfile wraps gst_codec_utils_h265_caps_set_level_tier_and_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
 	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -1038,8 +968,7 @@ func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel [
 
 // CodecUtilsH265GetLevel wraps gst_codec_utils_h265_get_level
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH265GetLevel(profileTierLevel []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -1064,8 +993,7 @@ func CodecUtilsH265GetLevel(profileTierLevel []uint8) string {
 
 // CodecUtilsH265GetLevelIdc wraps gst_codec_utils_h265_get_level_idc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH265GetLevelIdc(level string) uint8 {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.guint8 // return, none, casted
@@ -1085,8 +1013,7 @@ func CodecUtilsH265GetLevelIdc(level string) uint8 {
 
 // CodecUtilsH265GetProfile wraps gst_codec_utils_h265_get_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -1111,8 +1038,7 @@ func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
 
 // CodecUtilsH265GetTier wraps gst_codec_utils_h265_get_tier
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH265GetTier(profileTierLevel []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -1137,8 +1063,7 @@ func CodecUtilsH265GetTier(profileTierLevel []uint8) string {
 
 // CodecUtilsH266CapsSetLevelTierAndProfile wraps gst_codec_utils_h266_caps_set_level_tier_and_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH266CapsSetLevelTierAndProfile(caps *gst.Caps, decoderConfiguration []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
 	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -1166,8 +1091,7 @@ func CodecUtilsH266CapsSetLevelTierAndProfile(caps *gst.Caps, decoderConfigurati
 
 // CodecUtilsH266GetLevel wraps gst_codec_utils_h266_get_level
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH266GetLevel(ptlRecord []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -1192,8 +1116,7 @@ func CodecUtilsH266GetLevel(ptlRecord []uint8) string {
 
 // CodecUtilsH266GetLevelIdc wraps gst_codec_utils_h266_get_level_idc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH266GetLevelIdc(level string) uint8 {
 	var carg1 *C.gchar // in, none, string
 	var cret  C.guint8 // return, none, casted
@@ -1213,8 +1136,7 @@ func CodecUtilsH266GetLevelIdc(level string) uint8 {
 
 // CodecUtilsH266GetProfile wraps gst_codec_utils_h266_get_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH266GetProfile(ptlRecord []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -1239,8 +1161,7 @@ func CodecUtilsH266GetProfile(ptlRecord []uint8) string {
 
 // CodecUtilsH266GetTier wraps gst_codec_utils_h266_get_tier
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsH266GetTier(ptlRecord []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -1265,8 +1186,7 @@ func CodecUtilsH266GetTier(ptlRecord []uint8) string {
 
 // CodecUtilsMpeg4videoCapsSetLevelAndProfile wraps gst_codec_utils_mpeg4video_caps_set_level_and_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsMpeg4videoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
 	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
@@ -1294,8 +1214,7 @@ func CodecUtilsMpeg4videoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint
 
 // CodecUtilsMpeg4videoGetLevel wraps gst_codec_utils_mpeg4video_get_level
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsMpeg4videoGetLevel(visObjSeq []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -1320,8 +1239,7 @@ func CodecUtilsMpeg4videoGetLevel(visObjSeq []uint8) string {
 
 // CodecUtilsMpeg4videoGetProfile wraps gst_codec_utils_mpeg4video_get_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsMpeg4videoGetProfile(visObjSeq []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
@@ -1346,8 +1264,7 @@ func CodecUtilsMpeg4videoGetProfile(visObjSeq []uint8) string {
 
 // CodecUtilsOpusCreateCapsFromHeader wraps gst_codec_utils_opus_create_caps_from_header
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func CodecUtilsOpusCreateCapsFromHeader(header *gst.Buffer, comments *gst.Buffer) *gst.Caps {
 	var carg1 *C.GstBuffer // in, none, converted
 	var carg2 *C.GstBuffer // in, none, converted, nullable
@@ -1373,8 +1290,7 @@ func CodecUtilsOpusCreateCapsFromHeader(header *gst.Buffer, comments *gst.Buffer
 
 // EncodingListAllTargets wraps gst_encoding_list_all_targets
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func EncodingListAllTargets(categoryname string) []EncodingTarget {
 	var carg1 *C.gchar // in, none, string, nullable-string
 	var cret  *C.GList // container, transfer: full
@@ -1403,8 +1319,7 @@ func EncodingListAllTargets(categoryname string) []EncodingTarget {
 
 // EncodingListAvailableCategories wraps gst_encoding_list_available_categories
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func EncodingListAvailableCategories() []string {
 	var cret *C.GList // container, transfer: full
 
@@ -1427,8 +1342,7 @@ func EncodingListAvailableCategories() []string {
 
 // InstallPluginsAsync wraps gst_install_plugins_async
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func InstallPluginsAsync(details []string, ctx *InstallPluginsContext, fn InstallPluginsResultFunc) InstallPluginsReturn {
 	var carg1 **C.gchar                     // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 	var carg2 *C.GstInstallPluginsContext   // in, none, converted, nullable
@@ -1459,8 +1373,7 @@ func InstallPluginsAsync(details []string, ctx *InstallPluginsContext, fn Instal
 
 // InstallPluginsInstallationInProgress wraps gst_install_plugins_installation_in_progress
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func InstallPluginsInstallationInProgress() bool {
 	var cret C.gboolean // return
 
@@ -1477,8 +1390,7 @@ func InstallPluginsInstallationInProgress() bool {
 
 // InstallPluginsSupported wraps gst_install_plugins_supported
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func InstallPluginsSupported() bool {
 	var cret C.gboolean // return
 
@@ -1495,8 +1407,7 @@ func InstallPluginsSupported() bool {
 
 // InstallPluginsSync wraps gst_install_plugins_sync
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func InstallPluginsSync(details []string, ctx *InstallPluginsContext) InstallPluginsReturn {
 	var carg1 **C.gchar                   // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 	var carg2 *C.GstInstallPluginsContext // in, none, converted, nullable
@@ -1522,8 +1433,7 @@ func InstallPluginsSync(details []string, ctx *InstallPluginsContext) InstallPlu
 
 // IsMissingPluginMessage wraps gst_is_missing_plugin_message
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func IsMissingPluginMessage(msg *gst.Message) bool {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  C.gboolean    // return
@@ -1544,8 +1454,7 @@ func IsMissingPluginMessage(msg *gst.Message) bool {
 
 // NewMissingDecoderInstallerDetail wraps gst_missing_decoder_installer_detail_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingDecoderInstallerDetail(decodeCaps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.gchar   // return, full, string
@@ -1565,8 +1474,7 @@ func NewMissingDecoderInstallerDetail(decodeCaps *gst.Caps) string {
 
 // NewMissingDecoderMessage wraps gst_missing_decoder_message_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingDecoderMessage(element gst.Element, decodeCaps *gst.Caps) *gst.Message {
 	var carg1 *C.GstElement // in, none, converted
 	var carg2 *C.GstCaps    // in, none, converted
@@ -1588,8 +1496,7 @@ func NewMissingDecoderMessage(element gst.Element, decodeCaps *gst.Caps) *gst.Me
 
 // NewMissingElementInstallerDetail wraps gst_missing_element_installer_detail_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingElementInstallerDetail(factoryName string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
@@ -1610,8 +1517,7 @@ func NewMissingElementInstallerDetail(factoryName string) string {
 
 // NewMissingElementMessage wraps gst_missing_element_message_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingElementMessage(element gst.Element, factoryName string) *gst.Message {
 	var carg1 *C.GstElement // in, none, converted
 	var carg2 *C.gchar      // in, none, string
@@ -1634,8 +1540,7 @@ func NewMissingElementMessage(element gst.Element, factoryName string) *gst.Mess
 
 // NewMissingEncoderInstallerDetail wraps gst_missing_encoder_installer_detail_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingEncoderInstallerDetail(encodeCaps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.gchar   // return, full, string
@@ -1655,8 +1560,7 @@ func NewMissingEncoderInstallerDetail(encodeCaps *gst.Caps) string {
 
 // NewMissingEncoderMessage wraps gst_missing_encoder_message_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingEncoderMessage(element gst.Element, encodeCaps *gst.Caps) *gst.Message {
 	var carg1 *C.GstElement // in, none, converted
 	var carg2 *C.GstCaps    // in, none, converted
@@ -1678,8 +1582,7 @@ func NewMissingEncoderMessage(element gst.Element, encodeCaps *gst.Caps) *gst.Me
 
 // MissingPluginMessageGetDescription wraps gst_missing_plugin_message_get_description
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func MissingPluginMessageGetDescription(msg *gst.Message) string {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  *C.gchar      // return, full, string
@@ -1699,8 +1602,7 @@ func MissingPluginMessageGetDescription(msg *gst.Message) string {
 
 // MissingPluginMessageGetInstallerDetail wraps gst_missing_plugin_message_get_installer_detail
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func MissingPluginMessageGetInstallerDetail(msg *gst.Message) string {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  *C.gchar      // return, full, string, nullable-string
@@ -1722,8 +1624,7 @@ func MissingPluginMessageGetInstallerDetail(msg *gst.Message) string {
 
 // MissingPluginMessageGetStreamID wraps gst_missing_plugin_message_get_stream_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func MissingPluginMessageGetStreamID(msg *gst.Message) string {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  *C.gchar      // return, none, string, nullable-string
@@ -1744,8 +1645,7 @@ func MissingPluginMessageGetStreamID(msg *gst.Message) string {
 
 // MissingPluginMessageSetStreamID wraps gst_missing_plugin_message_set_stream_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func MissingPluginMessageSetStreamID(msg *gst.Message, streamId string) {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 *C.gchar      // in, none, string
@@ -1761,8 +1661,7 @@ func MissingPluginMessageSetStreamID(msg *gst.Message, streamId string) {
 
 // NewMissingURISinkInstallerDetail wraps gst_missing_uri_sink_installer_detail_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingURISinkInstallerDetail(protocol string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
@@ -1783,8 +1682,7 @@ func NewMissingURISinkInstallerDetail(protocol string) string {
 
 // NewMissingURISinkMessage wraps gst_missing_uri_sink_message_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingURISinkMessage(element gst.Element, protocol string) *gst.Message {
 	var carg1 *C.GstElement // in, none, converted
 	var carg2 *C.gchar      // in, none, string
@@ -1807,8 +1705,7 @@ func NewMissingURISinkMessage(element gst.Element, protocol string) *gst.Message
 
 // NewMissingURISourceInstallerDetail wraps gst_missing_uri_source_installer_detail_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingURISourceInstallerDetail(protocol string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
@@ -1829,8 +1726,7 @@ func NewMissingURISourceInstallerDetail(protocol string) string {
 
 // NewMissingURISourceMessage wraps gst_missing_uri_source_message_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func NewMissingURISourceMessage(element gst.Element, protocol string) *gst.Message {
 	var carg1 *C.GstElement // in, none, converted
 	var carg2 *C.gchar      // in, none, string
@@ -1853,8 +1749,7 @@ func NewMissingURISourceMessage(element gst.Element, protocol string) *gst.Messa
 
 // PbUtilsAddCodecDescriptionToTagList wraps gst_pb_utils_add_codec_description_to_tag_list
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsAddCodecDescriptionToTagList(taglist *gst.TagList, codecTag string, caps *gst.Caps) bool {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.gchar      // in, none, string, nullable-string
@@ -1884,8 +1779,7 @@ func PbUtilsAddCodecDescriptionToTagList(taglist *gst.TagList, codecTag string, 
 
 // PbUtilsGetCapsDescriptionFlags wraps gst_pb_utils_get_caps_description_flags
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsGetCapsDescriptionFlags(caps *gst.Caps) PbUtilsCapsDescriptionFlags {
 	var carg1 *C.GstCaps                       // in, none, converted
 	var cret  C.GstPbUtilsCapsDescriptionFlags // return, none, casted
@@ -1904,8 +1798,7 @@ func PbUtilsGetCapsDescriptionFlags(caps *gst.Caps) PbUtilsCapsDescriptionFlags 
 
 // PbUtilsGetCodecDescription wraps gst_pb_utils_get_codec_description
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsGetCodecDescription(caps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.gchar   // return, full, string, nullable-string
@@ -1927,8 +1820,7 @@ func PbUtilsGetCodecDescription(caps *gst.Caps) string {
 
 // PbUtilsGetDecoderDescription wraps gst_pb_utils_get_decoder_description
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsGetDecoderDescription(caps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.gchar   // return, full, string
@@ -1948,8 +1840,7 @@ func PbUtilsGetDecoderDescription(caps *gst.Caps) string {
 
 // PbUtilsGetElementDescription wraps gst_pb_utils_get_element_description
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsGetElementDescription(factoryName string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
@@ -1970,8 +1861,7 @@ func PbUtilsGetElementDescription(factoryName string) string {
 
 // PbUtilsGetEncoderDescription wraps gst_pb_utils_get_encoder_description
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsGetEncoderDescription(caps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.gchar   // return, full, string
@@ -1991,8 +1881,7 @@ func PbUtilsGetEncoderDescription(caps *gst.Caps) string {
 
 // PbUtilsGetFileExtensionFromCaps wraps gst_pb_utils_get_file_extension_from_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsGetFileExtensionFromCaps(caps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.gchar   // return, full, string, nullable-string
@@ -2014,8 +1903,7 @@ func PbUtilsGetFileExtensionFromCaps(caps *gst.Caps) string {
 
 // PbUtilsGetSinkDescription wraps gst_pb_utils_get_sink_description
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsGetSinkDescription(protocol string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
@@ -2036,8 +1924,7 @@ func PbUtilsGetSinkDescription(protocol string) string {
 
 // PbUtilsGetSourceDescription wraps gst_pb_utils_get_source_description
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsGetSourceDescription(protocol string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, full, string
@@ -2058,8 +1945,7 @@ func PbUtilsGetSourceDescription(protocol string) string {
 
 // PbUtilsInit wraps gst_pb_utils_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PbUtilsInit() {
 
 	C.gst_pb_utils_init()
@@ -2067,8 +1953,7 @@ func PbUtilsInit() {
 
 // PluginsBaseVersion wraps gst_plugins_base_version
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PluginsBaseVersion() (uint, uint, uint, uint) {
 	var carg1 C.guint // out, full, casted
 	var carg2 C.guint // out, full, casted
@@ -2092,8 +1977,7 @@ func PluginsBaseVersion() (uint, uint, uint, uint) {
 
 // PluginsBaseVersionString wraps gst_plugins_base_version_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func PluginsBaseVersionString() string {
 	var cret *C.gchar // return, full, string
 
@@ -2117,8 +2001,7 @@ var _ AudioVisualizer = (*AudioVisualizerInstance)(nil)
 
 // AudioVisualizer wraps GstAudioVisualizer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#GstAudioVisualizer
 type AudioVisualizer interface {
 	gst.Element
 	upcastToGstAudioVisualizer() *AudioVisualizerInstance
@@ -2128,17 +2011,17 @@ type AudioVisualizer interface {
 	// ParentDecideAllocation calls the default implementations of the `GstAudioVisualizer.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#decide_allocation
 	ParentDecideAllocation(query *gst.Query) bool
 	// ParentRender calls the default implementations of the `GstAudioVisualizer.render` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#render
 	ParentRender(audio *gst.Buffer, video *gstvideo.VideoFrame) bool
 	// ParentSetup calls the default implementations of the `GstAudioVisualizer.setup` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#setup
 	ParentSetup() bool
 }
 
@@ -2204,15 +2087,15 @@ type AudioVisualizerOverrides[Instance AudioVisualizer] struct {
 
 	// // DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#decide_allocation
 	DecideAllocation func(Instance, *gst.Query) bool
 	// // Render allows you to override the implementation of the virtual method render.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#render
 	Render func(Instance, *gst.Buffer, *gstvideo.VideoFrame) bool
 	// // Setup allows you to override the implementation of the virtual method setup.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#setup
 	Setup func(Instance) bool
 }
 
@@ -2299,7 +2182,7 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 // ParentDecideAllocation calls the default implementations of the `GstAudioVisualizer.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#decide_allocation
 func (scope *AudioVisualizerInstance) ParentDecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstAudioVisualizer
 	var carg1 *C.GstQuery // in, none, converted
@@ -2326,7 +2209,7 @@ func (scope *AudioVisualizerInstance) ParentDecideAllocation(query *gst.Query) b
 // ParentRender calls the default implementations of the `GstAudioVisualizer.render` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#render
 func (scope *AudioVisualizerInstance) ParentRender(audio *gst.Buffer, video *gstvideo.VideoFrame) bool {
 	var carg0 *C.GstAudioVisualizer
 	var carg1 *C.GstBuffer     // in, none, converted
@@ -2356,7 +2239,7 @@ func (scope *AudioVisualizerInstance) ParentRender(audio *gst.Buffer, video *gst
 // ParentSetup calls the default implementations of the `GstAudioVisualizer.setup` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#setup
 func (scope *AudioVisualizerInstance) ParentSetup() bool {
 	var carg0 *C.GstAudioVisualizer
 	var cret  C.gboolean // return
@@ -2413,56 +2296,46 @@ var _ Discoverer = (*DiscovererInstance)(nil)
 
 // Discoverer wraps GstDiscoverer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#GstDiscoverer
 type Discoverer interface {
 	gobject.Object
 	upcastToGstDiscoverer() *DiscovererInstance
 
 	// DiscoverURI wraps gst_discoverer_discover_uri
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_discover_uri
 	DiscoverURI(string) (DiscovererInfo, error)
 	// DiscoverURIAsync wraps gst_discoverer_discover_uri_async
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_discover_uri_async
 	DiscoverURIAsync(string) bool
 	// Start wraps gst_discoverer_start
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_start
 	Start()
 	// Stop wraps gst_discoverer_stop
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_stop
 	Stop()
 	// ConnectDiscovered connects the provided callback to the "discovered" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils
 	ConnectDiscovered(func(Discoverer, DiscovererInfo, error)) gobject.SignalHandle
 	// ConnectFinished connects the provided callback to the "finished" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils
 	ConnectFinished(func(Discoverer)) gobject.SignalHandle
 	// ConnectLoadSerializedInfo connects the provided callback to the "load-serialized-info" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils
 	ConnectLoadSerializedInfo(func(Discoverer, string) DiscovererInfoInstance) gobject.SignalHandle
 	// ConnectSourceSetup connects the provided callback to the "source-setup" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils
 	ConnectSourceSetup(func(Discoverer, gst.Element)) gobject.SignalHandle
 	// ConnectStarting connects the provided callback to the "starting" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils
 	ConnectStarting(func(Discoverer)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -2470,22 +2343,22 @@ type Discoverer interface {
 	// ParentFinished calls the default implementations of the `GstDiscoverer.finished` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#finished
 	ParentFinished()
 	// ParentLoadSerializeInfo calls the default implementations of the `GstDiscoverer.load_serialize_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#load_serialize_info
 	ParentLoadSerializeInfo(uri string) DiscovererInfo
 	// ParentSourceSetup calls the default implementations of the `GstDiscoverer.source_setup` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#source_setup
 	ParentSourceSetup(source gst.Element)
 	// ParentStarting calls the default implementations of the `GstDiscoverer.starting` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#starting
 	ParentStarting()
 }
 
@@ -2539,8 +2412,7 @@ func UnsafeDiscovererToGlibFull(c Discoverer) unsafe.Pointer {
 
 // NewDiscoverer wraps gst_discoverer_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_new
 func NewDiscoverer(timeout gst.ClockTime) (Discoverer, error) {
 	var carg1 C.GstClockTime   // in, none, casted, alias
 	var cret  *C.GstDiscoverer // return, full, converted
@@ -2564,8 +2436,7 @@ func NewDiscoverer(timeout gst.ClockTime) (Discoverer, error) {
 
 // DiscoverURI wraps gst_discoverer_discover_uri
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_discover_uri
 func (discoverer *DiscovererInstance) DiscoverURI(uri string) (DiscovererInfo, error) {
 	var carg0 *C.GstDiscoverer     // in, none, converted
 	var carg1 *C.gchar             // in, none, string
@@ -2593,8 +2464,7 @@ func (discoverer *DiscovererInstance) DiscoverURI(uri string) (DiscovererInfo, e
 
 // DiscoverURIAsync wraps gst_discoverer_discover_uri_async
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_discover_uri_async
 func (discoverer *DiscovererInstance) DiscoverURIAsync(uri string) bool {
 	var carg0 *C.GstDiscoverer // in, none, converted
 	var carg1 *C.gchar         // in, none, string
@@ -2619,8 +2489,7 @@ func (discoverer *DiscovererInstance) DiscoverURIAsync(uri string) bool {
 
 // Start wraps gst_discoverer_start
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_start
 func (discoverer *DiscovererInstance) Start() {
 	var carg0 *C.GstDiscoverer // in, none, converted
 
@@ -2632,8 +2501,7 @@ func (discoverer *DiscovererInstance) Start() {
 
 // Stop wraps gst_discoverer_stop
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#gst_discoverer_stop
 func (discoverer *DiscovererInstance) Stop() {
 	var carg0 *C.GstDiscoverer // in, none, converted
 
@@ -2645,40 +2513,35 @@ func (discoverer *DiscovererInstance) Stop() {
 
 // ConnectDiscovered connects the provided callback to the "discovered" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func (o *DiscovererInstance) ConnectDiscovered(fn func(Discoverer, DiscovererInfo, error)) gobject.SignalHandle {
 	return o.Connect("discovered", fn)
 }
 
 // ConnectFinished connects the provided callback to the "finished" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func (o *DiscovererInstance) ConnectFinished(fn func(Discoverer)) gobject.SignalHandle {
 	return o.Connect("finished", fn)
 }
 
 // ConnectLoadSerializedInfo connects the provided callback to the "load-serialized-info" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func (o *DiscovererInstance) ConnectLoadSerializedInfo(fn func(Discoverer, string) DiscovererInfoInstance) gobject.SignalHandle {
 	return o.Connect("load-serialized-info", fn)
 }
 
 // ConnectSourceSetup connects the provided callback to the "source-setup" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func (o *DiscovererInstance) ConnectSourceSetup(fn func(Discoverer, gst.Element)) gobject.SignalHandle {
 	return o.Connect("source-setup", fn)
 }
 
 // ConnectStarting connects the provided callback to the "starting" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils
 func (o *DiscovererInstance) ConnectStarting(fn func(Discoverer)) gobject.SignalHandle {
 	return o.Connect("starting", fn)
 }
@@ -2691,19 +2554,19 @@ type DiscovererOverrides[Instance Discoverer] struct {
 
 	// // Finished allows you to override the implementation of the virtual method finished.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#finished
 	Finished func(Instance)
 	// // LoadSerializeInfo allows you to override the implementation of the virtual method load_serialize_info.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#load_serialize_info
 	LoadSerializeInfo func(Instance, string) DiscovererInfo
 	// // SourceSetup allows you to override the implementation of the virtual method source_setup.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#source_setup
 	SourceSetup func(Instance, gst.Element)
 	// // Starting allows you to override the implementation of the virtual method starting.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#starting
 	Starting func(Instance)
 }
 
@@ -2787,7 +2650,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 // ParentFinished calls the default implementations of the `GstDiscoverer.finished` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#finished
 func (discoverer *DiscovererInstance) ParentFinished() {
 	var carg0 *C.GstDiscoverer
 
@@ -2802,7 +2665,7 @@ func (discoverer *DiscovererInstance) ParentFinished() {
 // ParentLoadSerializeInfo calls the default implementations of the `GstDiscoverer.load_serialize_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#load_serialize_info
 func (dc *DiscovererInstance) ParentLoadSerializeInfo(uri string) DiscovererInfo {
 	var carg0 *C.GstDiscoverer
 	var carg1 *C.gchar             // in, none, converted
@@ -2828,7 +2691,7 @@ func (dc *DiscovererInstance) ParentLoadSerializeInfo(uri string) DiscovererInfo
 // ParentSourceSetup calls the default implementations of the `GstDiscoverer.source_setup` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#source_setup
 func (discoverer *DiscovererInstance) ParentSourceSetup(source gst.Element) {
 	var carg0 *C.GstDiscoverer
 	var carg1 *C.GstElement // in, none, converted
@@ -2846,7 +2709,7 @@ func (discoverer *DiscovererInstance) ParentSourceSetup(source gst.Element) {
 // ParentStarting calls the default implementations of the `GstDiscoverer.starting` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#starting
 func (discoverer *DiscovererInstance) ParentStarting() {
 	var carg0 *C.GstDiscoverer
 
@@ -2894,77 +2757,70 @@ var _ DiscovererInfo = (*DiscovererInfoInstance)(nil)
 
 // DiscovererInfo wraps GstDiscovererInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstDiscovererInfo
 type DiscovererInfo interface {
 	gobject.Object
 	upcastToGstDiscovererInfo() *DiscovererInfoInstance
 
 	// Copy wraps gst_discoverer_info_copy
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_copy
 	Copy() DiscovererInfo
 	// GetAudioStreams wraps gst_discoverer_info_get_audio_streams
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_audio_streams
 	GetAudioStreams() []DiscovererAudioInfo
 	// GetContainerStreams wraps gst_discoverer_info_get_container_streams
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_container_streams
 	GetContainerStreams() []DiscovererContainerInfo
 	// GetDuration wraps gst_discoverer_info_get_duration
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_duration
 	GetDuration() gst.ClockTime
 	// GetLive wraps gst_discoverer_info_get_live
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_live
 	GetLive() bool
 	// GetMissingElementsInstallerDetails wraps gst_discoverer_info_get_missing_elements_installer_details
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_missing_elements_installer_details
 	GetMissingElementsInstallerDetails() []string
 	// GetResult wraps gst_discoverer_info_get_result
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_result
 	GetResult() DiscovererResult
 	// GetSeekable wraps gst_discoverer_info_get_seekable
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_seekable
 	GetSeekable() bool
 	// GetStreamInfo wraps gst_discoverer_info_get_stream_info
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_stream_info
 	GetStreamInfo() DiscovererStreamInfo
 	// GetStreamList wraps gst_discoverer_info_get_stream_list
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_stream_list
 	GetStreamList() []DiscovererStreamInfo
 	// GetStreams wraps gst_discoverer_info_get_streams
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_streams
 	GetStreams(gobject.Type) []DiscovererStreamInfo
 	// GetSubtitleStreams wraps gst_discoverer_info_get_subtitle_streams
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_subtitle_streams
 	GetSubtitleStreams() []DiscovererSubtitleInfo
 	// GetToc wraps gst_discoverer_info_get_toc
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_toc
 	GetToc() *gst.Toc
 	// GetURI wraps gst_discoverer_info_get_uri
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_uri
 	GetURI() string
 	// GetVideoStreams wraps gst_discoverer_info_get_video_streams
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_video_streams
 	GetVideoStreams() []DiscovererVideoInfo
 }
 
@@ -3018,7 +2874,7 @@ func UnsafeDiscovererInfoToGlibFull(c DiscovererInfo) unsafe.Pointer {
 
 // Copy wraps gst_discoverer_info_copy
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_copy
 func (ptr *DiscovererInfoInstance) Copy() DiscovererInfo {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  *C.GstDiscovererInfo // return, full, converted
@@ -3037,8 +2893,7 @@ func (ptr *DiscovererInfoInstance) Copy() DiscovererInfo {
 
 // GetAudioStreams wraps gst_discoverer_info_get_audio_streams
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_audio_streams
 func (info *DiscovererInfoInstance) GetAudioStreams() []DiscovererAudioInfo {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  *C.GList             // container, transfer: full
@@ -3064,8 +2919,7 @@ func (info *DiscovererInfoInstance) GetAudioStreams() []DiscovererAudioInfo {
 
 // GetContainerStreams wraps gst_discoverer_info_get_container_streams
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_container_streams
 func (info *DiscovererInfoInstance) GetContainerStreams() []DiscovererContainerInfo {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  *C.GList             // container, transfer: full
@@ -3091,7 +2945,7 @@ func (info *DiscovererInfoInstance) GetContainerStreams() []DiscovererContainerI
 
 // GetDuration wraps gst_discoverer_info_get_duration
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_duration
 func (info *DiscovererInfoInstance) GetDuration() gst.ClockTime {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  C.GstClockTime       // return, none, casted, alias
@@ -3110,7 +2964,7 @@ func (info *DiscovererInfoInstance) GetDuration() gst.ClockTime {
 
 // GetLive wraps gst_discoverer_info_get_live
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_live
 func (info *DiscovererInfoInstance) GetLive() bool {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  C.gboolean           // return
@@ -3131,8 +2985,7 @@ func (info *DiscovererInfoInstance) GetLive() bool {
 
 // GetMissingElementsInstallerDetails wraps gst_discoverer_info_get_missing_elements_installer_details
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_missing_elements_installer_details
 func (info *DiscovererInfoInstance) GetMissingElementsInstallerDetails() []string {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  **C.gchar            // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
@@ -3153,7 +3006,7 @@ func (info *DiscovererInfoInstance) GetMissingElementsInstallerDetails() []strin
 
 // GetResult wraps gst_discoverer_info_get_result
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_result
 func (info *DiscovererInfoInstance) GetResult() DiscovererResult {
 	var carg0 *C.GstDiscovererInfo  // in, none, converted
 	var cret  C.GstDiscovererResult // return, none, casted
@@ -3172,7 +3025,7 @@ func (info *DiscovererInfoInstance) GetResult() DiscovererResult {
 
 // GetSeekable wraps gst_discoverer_info_get_seekable
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_seekable
 func (info *DiscovererInfoInstance) GetSeekable() bool {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  C.gboolean           // return
@@ -3193,7 +3046,7 @@ func (info *DiscovererInfoInstance) GetSeekable() bool {
 
 // GetStreamInfo wraps gst_discoverer_info_get_stream_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_stream_info
 func (info *DiscovererInfoInstance) GetStreamInfo() DiscovererStreamInfo {
 	var carg0 *C.GstDiscovererInfo       // in, none, converted
 	var cret  *C.GstDiscovererStreamInfo // return, full, converted, nullable
@@ -3214,7 +3067,7 @@ func (info *DiscovererInfoInstance) GetStreamInfo() DiscovererStreamInfo {
 
 // GetStreamList wraps gst_discoverer_info_get_stream_list
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_stream_list
 func (info *DiscovererInfoInstance) GetStreamList() []DiscovererStreamInfo {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  *C.GList             // container, transfer: full
@@ -3240,8 +3093,7 @@ func (info *DiscovererInfoInstance) GetStreamList() []DiscovererStreamInfo {
 
 // GetStreams wraps gst_discoverer_info_get_streams
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_streams
 func (info *DiscovererInfoInstance) GetStreams(streamtype gobject.Type) []DiscovererStreamInfo {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var carg1 C.GType              // in, none, casted, alias
@@ -3270,8 +3122,7 @@ func (info *DiscovererInfoInstance) GetStreams(streamtype gobject.Type) []Discov
 
 // GetSubtitleStreams wraps gst_discoverer_info_get_subtitle_streams
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_subtitle_streams
 func (info *DiscovererInfoInstance) GetSubtitleStreams() []DiscovererSubtitleInfo {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  *C.GList             // container, transfer: full
@@ -3297,7 +3148,7 @@ func (info *DiscovererInfoInstance) GetSubtitleStreams() []DiscovererSubtitleInf
 
 // GetToc wraps gst_discoverer_info_get_toc
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_toc
 func (info *DiscovererInfoInstance) GetToc() *gst.Toc {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  *C.GstToc            // return, none, converted, nullable
@@ -3318,7 +3169,7 @@ func (info *DiscovererInfoInstance) GetToc() *gst.Toc {
 
 // GetURI wraps gst_discoverer_info_get_uri
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_uri
 func (info *DiscovererInfoInstance) GetURI() string {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  *C.gchar             // return, none, string
@@ -3337,8 +3188,7 @@ func (info *DiscovererInfoInstance) GetURI() string {
 
 // GetVideoStreams wraps gst_discoverer_info_get_video_streams
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_info_get_video_streams
 func (info *DiscovererInfoInstance) GetVideoStreams() []DiscovererVideoInfo {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
 	var cret  *C.GList             // container, transfer: full
@@ -3372,43 +3222,42 @@ var _ DiscovererStreamInfo = (*DiscovererStreamInfoInstance)(nil)
 
 // DiscovererStreamInfo wraps GstDiscovererStreamInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstDiscovererStreamInfo
 type DiscovererStreamInfo interface {
 	gobject.Object
 	upcastToGstDiscovererStreamInfo() *DiscovererStreamInfoInstance
 
 	// GetCaps wraps gst_discoverer_stream_info_get_caps
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_caps
 	GetCaps() *gst.Caps
 	// GetNext wraps gst_discoverer_stream_info_get_next
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_next
 	GetNext() DiscovererStreamInfo
 	// GetPrevious wraps gst_discoverer_stream_info_get_previous
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_previous
 	GetPrevious() DiscovererStreamInfo
 	// GetStreamID wraps gst_discoverer_stream_info_get_stream_id
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_stream_id
 	GetStreamID() string
 	// GetStreamNumber wraps gst_discoverer_stream_info_get_stream_number
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_stream_number
 	GetStreamNumber() int32
 	// GetStreamTypeNick wraps gst_discoverer_stream_info_get_stream_type_nick
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_stream_type_nick
 	GetStreamTypeNick() string
 	// GetTags wraps gst_discoverer_stream_info_get_tags
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_tags
 	GetTags() *gst.TagList
 	// GetToc wraps gst_discoverer_stream_info_get_toc
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_toc
 	GetToc() *gst.Toc
 }
 
@@ -3462,7 +3311,7 @@ func UnsafeDiscovererStreamInfoToGlibFull(c DiscovererStreamInfo) unsafe.Pointer
 
 // GetCaps wraps gst_discoverer_stream_info_get_caps
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_caps
 func (info *DiscovererStreamInfoInstance) GetCaps() *gst.Caps {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
 	var cret  *C.GstCaps                 // return, full, converted, nullable
@@ -3483,7 +3332,7 @@ func (info *DiscovererStreamInfoInstance) GetCaps() *gst.Caps {
 
 // GetNext wraps gst_discoverer_stream_info_get_next
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_next
 func (info *DiscovererStreamInfoInstance) GetNext() DiscovererStreamInfo {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
 	var cret  *C.GstDiscovererStreamInfo // return, full, converted, nullable
@@ -3504,7 +3353,7 @@ func (info *DiscovererStreamInfoInstance) GetNext() DiscovererStreamInfo {
 
 // GetPrevious wraps gst_discoverer_stream_info_get_previous
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_previous
 func (info *DiscovererStreamInfoInstance) GetPrevious() DiscovererStreamInfo {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
 	var cret  *C.GstDiscovererStreamInfo // return, full, converted, nullable
@@ -3525,7 +3374,7 @@ func (info *DiscovererStreamInfoInstance) GetPrevious() DiscovererStreamInfo {
 
 // GetStreamID wraps gst_discoverer_stream_info_get_stream_id
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_stream_id
 func (info *DiscovererStreamInfoInstance) GetStreamID() string {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
 	var cret  *C.gchar                   // return, none, string, nullable-string
@@ -3546,7 +3395,7 @@ func (info *DiscovererStreamInfoInstance) GetStreamID() string {
 
 // GetStreamNumber wraps gst_discoverer_stream_info_get_stream_number
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_stream_number
 func (info *DiscovererStreamInfoInstance) GetStreamNumber() int32 {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
 	var cret  C.gint                     // return, none, casted
@@ -3565,7 +3414,7 @@ func (info *DiscovererStreamInfoInstance) GetStreamNumber() int32 {
 
 // GetStreamTypeNick wraps gst_discoverer_stream_info_get_stream_type_nick
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_stream_type_nick
 func (info *DiscovererStreamInfoInstance) GetStreamTypeNick() string {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
 	var cret  *C.gchar                   // return, none, string
@@ -3584,7 +3433,7 @@ func (info *DiscovererStreamInfoInstance) GetStreamTypeNick() string {
 
 // GetTags wraps gst_discoverer_stream_info_get_tags
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_tags
 func (info *DiscovererStreamInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
 	var cret  *C.GstTagList              // return, none, converted, nullable
@@ -3605,7 +3454,7 @@ func (info *DiscovererStreamInfoInstance) GetTags() *gst.TagList {
 
 // GetToc wraps gst_discoverer_stream_info_get_toc
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_stream_info_get_toc
 func (info *DiscovererStreamInfoInstance) GetToc() *gst.Toc {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
 	var cret  *C.GstToc                  // return, none, converted, nullable
@@ -3634,15 +3483,14 @@ var _ DiscovererSubtitleInfo = (*DiscovererSubtitleInfoInstance)(nil)
 
 // DiscovererSubtitleInfo wraps GstDiscovererSubtitleInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstDiscovererSubtitleInfo
 type DiscovererSubtitleInfo interface {
 	DiscovererStreamInfo
 	upcastToGstDiscovererSubtitleInfo() *DiscovererSubtitleInfoInstance
 
 	// GetLanguage wraps gst_discoverer_subtitle_info_get_language
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_subtitle_info_get_language
 	GetLanguage() string
 }
 
@@ -3698,7 +3546,7 @@ func UnsafeDiscovererSubtitleInfoToGlibFull(c DiscovererSubtitleInfo) unsafe.Poi
 
 // GetLanguage wraps gst_discoverer_subtitle_info_get_language
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_subtitle_info_get_language
 func (info *DiscovererSubtitleInfoInstance) GetLanguage() string {
 	var carg0 *C.GstDiscovererSubtitleInfo // in, none, converted
 	var cret  *C.gchar                     // return, none, string, nullable-string
@@ -3727,55 +3575,54 @@ var _ DiscovererVideoInfo = (*DiscovererVideoInfoInstance)(nil)
 
 // DiscovererVideoInfo wraps GstDiscovererVideoInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstDiscovererVideoInfo
 type DiscovererVideoInfo interface {
 	DiscovererStreamInfo
 	upcastToGstDiscovererVideoInfo() *DiscovererVideoInfoInstance
 
 	// GetBitrate wraps gst_discoverer_video_info_get_bitrate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_bitrate
 	GetBitrate() uint
 	// GetDepth wraps gst_discoverer_video_info_get_depth
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_depth
 	GetDepth() uint
 	// GetFramerateDenom wraps gst_discoverer_video_info_get_framerate_denom
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_framerate_denom
 	GetFramerateDenom() uint
 	// GetFramerateNum wraps gst_discoverer_video_info_get_framerate_num
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_framerate_num
 	GetFramerateNum() uint
 	// GetHeight wraps gst_discoverer_video_info_get_height
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_height
 	GetHeight() uint
 	// GetMaxBitrate wraps gst_discoverer_video_info_get_max_bitrate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_max_bitrate
 	GetMaxBitrate() uint
 	// GetParDenom wraps gst_discoverer_video_info_get_par_denom
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_par_denom
 	GetParDenom() uint
 	// GetParNum wraps gst_discoverer_video_info_get_par_num
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_par_num
 	GetParNum() uint
 	// GetWidth wraps gst_discoverer_video_info_get_width
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_width
 	GetWidth() uint
 	// IsImage wraps gst_discoverer_video_info_is_image
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_is_image
 	IsImage() bool
 	// IsInterlaced wraps gst_discoverer_video_info_is_interlaced
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_is_interlaced
 	IsInterlaced() bool
 }
 
@@ -3831,7 +3678,7 @@ func UnsafeDiscovererVideoInfoToGlibFull(c DiscovererVideoInfo) unsafe.Pointer {
 
 // GetBitrate wraps gst_discoverer_video_info_get_bitrate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_bitrate
 func (info *DiscovererVideoInfoInstance) GetBitrate() uint {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -3850,7 +3697,7 @@ func (info *DiscovererVideoInfoInstance) GetBitrate() uint {
 
 // GetDepth wraps gst_discoverer_video_info_get_depth
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_depth
 func (info *DiscovererVideoInfoInstance) GetDepth() uint {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -3869,7 +3716,7 @@ func (info *DiscovererVideoInfoInstance) GetDepth() uint {
 
 // GetFramerateDenom wraps gst_discoverer_video_info_get_framerate_denom
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_framerate_denom
 func (info *DiscovererVideoInfoInstance) GetFramerateDenom() uint {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -3888,7 +3735,7 @@ func (info *DiscovererVideoInfoInstance) GetFramerateDenom() uint {
 
 // GetFramerateNum wraps gst_discoverer_video_info_get_framerate_num
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_framerate_num
 func (info *DiscovererVideoInfoInstance) GetFramerateNum() uint {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -3907,7 +3754,7 @@ func (info *DiscovererVideoInfoInstance) GetFramerateNum() uint {
 
 // GetHeight wraps gst_discoverer_video_info_get_height
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_height
 func (info *DiscovererVideoInfoInstance) GetHeight() uint {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -3926,7 +3773,7 @@ func (info *DiscovererVideoInfoInstance) GetHeight() uint {
 
 // GetMaxBitrate wraps gst_discoverer_video_info_get_max_bitrate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_max_bitrate
 func (info *DiscovererVideoInfoInstance) GetMaxBitrate() uint {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -3945,7 +3792,7 @@ func (info *DiscovererVideoInfoInstance) GetMaxBitrate() uint {
 
 // GetParDenom wraps gst_discoverer_video_info_get_par_denom
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_par_denom
 func (info *DiscovererVideoInfoInstance) GetParDenom() uint {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -3964,7 +3811,7 @@ func (info *DiscovererVideoInfoInstance) GetParDenom() uint {
 
 // GetParNum wraps gst_discoverer_video_info_get_par_num
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_par_num
 func (info *DiscovererVideoInfoInstance) GetParNum() uint {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -3983,7 +3830,7 @@ func (info *DiscovererVideoInfoInstance) GetParNum() uint {
 
 // GetWidth wraps gst_discoverer_video_info_get_width
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_get_width
 func (info *DiscovererVideoInfoInstance) GetWidth() uint {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -4002,7 +3849,7 @@ func (info *DiscovererVideoInfoInstance) GetWidth() uint {
 
 // IsImage wraps gst_discoverer_video_info_is_image
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_is_image
 func (info *DiscovererVideoInfoInstance) IsImage() bool {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.gboolean                // return
@@ -4023,7 +3870,7 @@ func (info *DiscovererVideoInfoInstance) IsImage() bool {
 
 // IsInterlaced wraps gst_discoverer_video_info_is_interlaced
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_video_info_is_interlaced
 func (info *DiscovererVideoInfoInstance) IsInterlaced() bool {
 	var carg0 *C.GstDiscovererVideoInfo // in, none, converted
 	var cret  C.gboolean                // return
@@ -4052,139 +3899,122 @@ var _ EncodingProfile = (*EncodingProfileInstance)(nil)
 
 // EncodingProfile wraps GstEncodingProfile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#GstEncodingProfile
 type EncodingProfile interface {
 	gobject.Object
 	upcastToGstEncodingProfile() *EncodingProfileInstance
 
 	// Copy wraps gst_encoding_profile_copy
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_copy
 	Copy() EncodingProfile
 	// GetAllowDynamicOutput wraps gst_encoding_profile_get_allow_dynamic_output
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_allow_dynamic_output
 	GetAllowDynamicOutput() bool
 	// GetDescription wraps gst_encoding_profile_get_description
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_description
 	GetDescription() string
 	// GetElementProperties wraps gst_encoding_profile_get_element_properties
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_element_properties
 	GetElementProperties() *gst.Structure
 	// GetFileExtension wraps gst_encoding_profile_get_file_extension
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_file_extension
 	GetFileExtension() string
 	// GetFormat wraps gst_encoding_profile_get_format
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_format
 	GetFormat() *gst.Caps
 	// GetInputCaps wraps gst_encoding_profile_get_input_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_input_caps
 	GetInputCaps() *gst.Caps
 	// GetName wraps gst_encoding_profile_get_name
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_name
 	GetName() string
 	// GetPresence wraps gst_encoding_profile_get_presence
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_presence
 	GetPresence() uint
 	// GetPreset wraps gst_encoding_profile_get_preset
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_preset
 	GetPreset() string
 	// GetPresetName wraps gst_encoding_profile_get_preset_name
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_preset_name
 	GetPresetName() string
 	// GetRestriction wraps gst_encoding_profile_get_restriction
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_restriction
 	GetRestriction() *gst.Caps
 	// GetSingleSegment wraps gst_encoding_profile_get_single_segment
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_single_segment
 	GetSingleSegment() bool
 	// GetTypeNick wraps gst_encoding_profile_get_type_nick
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_type_nick
 	GetTypeNick() string
 	// IsEnabled wraps gst_encoding_profile_is_enabled
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_is_enabled
 	IsEnabled() bool
 	// IsEqual wraps gst_encoding_profile_is_equal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_is_equal
 	IsEqual(EncodingProfile) bool
 	// SetAllowDynamicOutput wraps gst_encoding_profile_set_allow_dynamic_output
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_allow_dynamic_output
 	SetAllowDynamicOutput(bool)
 	// SetDescription wraps gst_encoding_profile_set_description
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_description
 	SetDescription(string)
 	// SetElementProperties wraps gst_encoding_profile_set_element_properties
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_element_properties
 	SetElementProperties(*gst.Structure)
 	// SetEnabled wraps gst_encoding_profile_set_enabled
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_enabled
 	SetEnabled(bool)
 	// SetFormat wraps gst_encoding_profile_set_format
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_format
 	SetFormat(*gst.Caps)
 	// SetName wraps gst_encoding_profile_set_name
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_name
 	SetName(string)
 	// SetPresence wraps gst_encoding_profile_set_presence
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_presence
 	SetPresence(uint)
 	// SetPreset wraps gst_encoding_profile_set_preset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_preset
 	SetPreset(string)
 	// SetPresetName wraps gst_encoding_profile_set_preset_name
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_preset_name
 	SetPresetName(string)
 	// SetRestriction wraps gst_encoding_profile_set_restriction
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_restriction
 	SetRestriction(*gst.Caps)
 	// SetSingleSegment wraps gst_encoding_profile_set_single_segment
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_single_segment
 	SetSingleSegment(bool)
 	// String wraps gst_encoding_profile_to_string
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_to_string
 	String() string
 }
 
@@ -4238,8 +4068,7 @@ func UnsafeEncodingProfileToGlibFull(c EncodingProfile) unsafe.Pointer {
 
 // EncodingProfileFind wraps gst_encoding_profile_find
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_find
 func EncodingProfileFind(targetname string, profilename string, category string) EncodingProfile {
 	var carg1 *C.gchar              // in, none, string
 	var carg2 *C.gchar              // in, none, string, nullable-string
@@ -4273,8 +4102,7 @@ func EncodingProfileFind(targetname string, profilename string, category string)
 
 // EncodingProfileFromDiscoverer wraps gst_encoding_profile_from_discoverer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_from_discoverer
 func EncodingProfileFromDiscoverer(info DiscovererInfo) EncodingProfile {
 	var carg1 *C.GstDiscovererInfo  // in, none, converted
 	var cret  *C.GstEncodingProfile // return, full, converted, nullable
@@ -4295,8 +4123,7 @@ func EncodingProfileFromDiscoverer(info DiscovererInfo) EncodingProfile {
 
 // EncodingProfileFromString wraps gst_encoding_profile_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_from_string
 func EncodingProfileFromString(str string) EncodingProfile {
 	var carg1 *C.gchar              // in, none, string
 	var cret  *C.GstEncodingProfile // return, full, converted, nullable
@@ -4318,8 +4145,7 @@ func EncodingProfileFromString(str string) EncodingProfile {
 
 // Copy wraps gst_encoding_profile_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_copy
 func (self *EncodingProfileInstance) Copy() EncodingProfile {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.GstEncodingProfile // return, full, converted
@@ -4338,8 +4164,7 @@ func (self *EncodingProfileInstance) Copy() EncodingProfile {
 
 // GetAllowDynamicOutput wraps gst_encoding_profile_get_allow_dynamic_output
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_allow_dynamic_output
 func (profile *EncodingProfileInstance) GetAllowDynamicOutput() bool {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  C.gboolean            // return
@@ -4360,7 +4185,7 @@ func (profile *EncodingProfileInstance) GetAllowDynamicOutput() bool {
 
 // GetDescription wraps gst_encoding_profile_get_description
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_description
 func (profile *EncodingProfileInstance) GetDescription() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.gchar              // return, none, string, nullable-string
@@ -4381,7 +4206,7 @@ func (profile *EncodingProfileInstance) GetDescription() string {
 
 // GetElementProperties wraps gst_encoding_profile_get_element_properties
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_element_properties
 func (self *EncodingProfileInstance) GetElementProperties() *gst.Structure {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.GstStructure       // return, full, converted, nullable
@@ -4402,7 +4227,7 @@ func (self *EncodingProfileInstance) GetElementProperties() *gst.Structure {
 
 // GetFileExtension wraps gst_encoding_profile_get_file_extension
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_file_extension
 func (profile *EncodingProfileInstance) GetFileExtension() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.gchar              // return, none, string, nullable-string
@@ -4423,7 +4248,7 @@ func (profile *EncodingProfileInstance) GetFileExtension() string {
 
 // GetFormat wraps gst_encoding_profile_get_format
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_format
 func (profile *EncodingProfileInstance) GetFormat() *gst.Caps {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.GstCaps            // return, full, converted
@@ -4442,8 +4267,7 @@ func (profile *EncodingProfileInstance) GetFormat() *gst.Caps {
 
 // GetInputCaps wraps gst_encoding_profile_get_input_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_input_caps
 func (profile *EncodingProfileInstance) GetInputCaps() *gst.Caps {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.GstCaps            // return, full, converted
@@ -4462,7 +4286,7 @@ func (profile *EncodingProfileInstance) GetInputCaps() *gst.Caps {
 
 // GetName wraps gst_encoding_profile_get_name
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_name
 func (profile *EncodingProfileInstance) GetName() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.gchar              // return, none, string, nullable-string
@@ -4483,7 +4307,7 @@ func (profile *EncodingProfileInstance) GetName() string {
 
 // GetPresence wraps gst_encoding_profile_get_presence
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_presence
 func (profile *EncodingProfileInstance) GetPresence() uint {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  C.guint               // return, none, casted
@@ -4502,7 +4326,7 @@ func (profile *EncodingProfileInstance) GetPresence() uint {
 
 // GetPreset wraps gst_encoding_profile_get_preset
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_preset
 func (profile *EncodingProfileInstance) GetPreset() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.gchar              // return, none, string, nullable-string
@@ -4523,7 +4347,7 @@ func (profile *EncodingProfileInstance) GetPreset() string {
 
 // GetPresetName wraps gst_encoding_profile_get_preset_name
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_preset_name
 func (profile *EncodingProfileInstance) GetPresetName() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.gchar              // return, none, string, nullable-string
@@ -4544,7 +4368,7 @@ func (profile *EncodingProfileInstance) GetPresetName() string {
 
 // GetRestriction wraps gst_encoding_profile_get_restriction
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_restriction
 func (profile *EncodingProfileInstance) GetRestriction() *gst.Caps {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.GstCaps            // return, full, converted, nullable
@@ -4565,7 +4389,7 @@ func (profile *EncodingProfileInstance) GetRestriction() *gst.Caps {
 
 // GetSingleSegment wraps gst_encoding_profile_get_single_segment
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_single_segment
 func (profile *EncodingProfileInstance) GetSingleSegment() bool {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  C.gboolean            // return
@@ -4586,7 +4410,7 @@ func (profile *EncodingProfileInstance) GetSingleSegment() bool {
 
 // GetTypeNick wraps gst_encoding_profile_get_type_nick
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_get_type_nick
 func (profile *EncodingProfileInstance) GetTypeNick() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.gchar              // return, none, string
@@ -4605,7 +4429,7 @@ func (profile *EncodingProfileInstance) GetTypeNick() string {
 
 // IsEnabled wraps gst_encoding_profile_is_enabled
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_is_enabled
 func (profile *EncodingProfileInstance) IsEnabled() bool {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  C.gboolean            // return
@@ -4626,8 +4450,7 @@ func (profile *EncodingProfileInstance) IsEnabled() bool {
 
 // IsEqual wraps gst_encoding_profile_is_equal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_is_equal
 func (a *EncodingProfileInstance) IsEqual(b EncodingProfile) bool {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.GstEncodingProfile // in, none, converted
@@ -4651,8 +4474,7 @@ func (a *EncodingProfileInstance) IsEqual(b EncodingProfile) bool {
 
 // SetAllowDynamicOutput wraps gst_encoding_profile_set_allow_dynamic_output
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_allow_dynamic_output
 func (profile *EncodingProfileInstance) SetAllowDynamicOutput(allowDynamicOutput bool) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 C.gboolean            // in
@@ -4669,8 +4491,7 @@ func (profile *EncodingProfileInstance) SetAllowDynamicOutput(allowDynamicOutput
 
 // SetDescription wraps gst_encoding_profile_set_description
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_description
 func (profile *EncodingProfileInstance) SetDescription(description string) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.gchar              // in, none, string, nullable-string
@@ -4688,8 +4509,7 @@ func (profile *EncodingProfileInstance) SetDescription(description string) {
 
 // SetElementProperties wraps gst_encoding_profile_set_element_properties
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_element_properties
 func (self *EncodingProfileInstance) SetElementProperties(elementProperties *gst.Structure) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.GstStructure       // in, full, converted
@@ -4704,8 +4524,7 @@ func (self *EncodingProfileInstance) SetElementProperties(elementProperties *gst
 
 // SetEnabled wraps gst_encoding_profile_set_enabled
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_enabled
 func (profile *EncodingProfileInstance) SetEnabled(enabled bool) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 C.gboolean            // in
@@ -4722,8 +4541,7 @@ func (profile *EncodingProfileInstance) SetEnabled(enabled bool) {
 
 // SetFormat wraps gst_encoding_profile_set_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_format
 func (profile *EncodingProfileInstance) SetFormat(format *gst.Caps) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.GstCaps            // in, none, converted
@@ -4738,8 +4556,7 @@ func (profile *EncodingProfileInstance) SetFormat(format *gst.Caps) {
 
 // SetName wraps gst_encoding_profile_set_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_name
 func (profile *EncodingProfileInstance) SetName(name string) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.gchar              // in, none, string, nullable-string
@@ -4757,8 +4574,7 @@ func (profile *EncodingProfileInstance) SetName(name string) {
 
 // SetPresence wraps gst_encoding_profile_set_presence
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_presence
 func (profile *EncodingProfileInstance) SetPresence(presence uint) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 C.guint               // in, none, casted
@@ -4773,8 +4589,7 @@ func (profile *EncodingProfileInstance) SetPresence(presence uint) {
 
 // SetPreset wraps gst_encoding_profile_set_preset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_preset
 func (profile *EncodingProfileInstance) SetPreset(preset string) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.gchar              // in, none, string, nullable-string
@@ -4792,8 +4607,7 @@ func (profile *EncodingProfileInstance) SetPreset(preset string) {
 
 // SetPresetName wraps gst_encoding_profile_set_preset_name
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_preset_name
 func (profile *EncodingProfileInstance) SetPresetName(presetName string) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.gchar              // in, none, string, nullable-string
@@ -4811,8 +4625,7 @@ func (profile *EncodingProfileInstance) SetPresetName(presetName string) {
 
 // SetRestriction wraps gst_encoding_profile_set_restriction
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_restriction
 func (profile *EncodingProfileInstance) SetRestriction(restriction *gst.Caps) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.GstCaps            // in, full, converted, nullable
@@ -4829,8 +4642,7 @@ func (profile *EncodingProfileInstance) SetRestriction(restriction *gst.Caps) {
 
 // SetSingleSegment wraps gst_encoding_profile_set_single_segment
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_set_single_segment
 func (profile *EncodingProfileInstance) SetSingleSegment(singleSegment bool) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 C.gboolean            // in
@@ -4847,8 +4659,7 @@ func (profile *EncodingProfileInstance) SetSingleSegment(singleSegment bool) {
 
 // String wraps gst_encoding_profile_to_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_profile_to_string
 func (profile *EncodingProfileInstance) String() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var cret  *C.gchar              // return, full, string
@@ -4876,50 +4687,46 @@ var _ EncodingTarget = (*EncodingTargetInstance)(nil)
 
 // EncodingTarget wraps GstEncodingTarget
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstEncodingTarget
 type EncodingTarget interface {
 	gobject.Object
 	upcastToGstEncodingTarget() *EncodingTargetInstance
 
 	// AddProfile wraps gst_encoding_target_add_profile
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_add_profile
 	AddProfile(EncodingProfile) bool
 	// GetCategory wraps gst_encoding_target_get_category
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_category
 	GetCategory() string
 	// GetDescription wraps gst_encoding_target_get_description
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_description
 	GetDescription() string
 	// GetName wraps gst_encoding_target_get_name
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_name
 	GetName() string
 	// GetPath wraps gst_encoding_target_get_path
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_path
 	GetPath() string
 	// GetProfile wraps gst_encoding_target_get_profile
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_profile
 	GetProfile(string) EncodingProfile
 	// GetProfiles wraps gst_encoding_target_get_profiles
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_profiles
 	GetProfiles() []EncodingProfile
 	// Save wraps gst_encoding_target_save
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_save
 	Save() (bool, error)
 	// SaveToFile wraps gst_encoding_target_save_to_file
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_save_to_file
 	SaveToFile(string) (bool, error)
 }
 
@@ -4973,8 +4780,7 @@ func UnsafeEncodingTargetToGlibFull(c EncodingTarget) unsafe.Pointer {
 
 // EncodingTargetLoad wraps gst_encoding_target_load
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_load
 func EncodingTargetLoad(name string, category string) (EncodingTarget, error) {
 	var carg1 *C.gchar             // in, none, string
 	var carg2 *C.gchar             // in, none, string, nullable-string
@@ -5005,8 +4811,7 @@ func EncodingTargetLoad(name string, category string) (EncodingTarget, error) {
 
 // EncodingTargetLoadFromFile wraps gst_encoding_target_load_from_file
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_load_from_file
 func EncodingTargetLoadFromFile(filepath string) (EncodingTarget, error) {
 	var carg1 *C.gchar             // in, none, string
 	var cret  *C.GstEncodingTarget // return, full, converted
@@ -5031,8 +4836,7 @@ func EncodingTargetLoadFromFile(filepath string) (EncodingTarget, error) {
 
 // AddProfile wraps gst_encoding_target_add_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_add_profile
 func (target *EncodingTargetInstance) AddProfile(profile EncodingProfile) bool {
 	var carg0 *C.GstEncodingTarget  // in, none, converted
 	var carg1 *C.GstEncodingProfile // in, full, converted
@@ -5056,7 +4860,7 @@ func (target *EncodingTargetInstance) AddProfile(profile EncodingProfile) bool {
 
 // GetCategory wraps gst_encoding_target_get_category
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_category
 func (target *EncodingTargetInstance) GetCategory() string {
 	var carg0 *C.GstEncodingTarget // in, none, converted
 	var cret  *C.gchar             // return, none, string
@@ -5075,7 +4879,7 @@ func (target *EncodingTargetInstance) GetCategory() string {
 
 // GetDescription wraps gst_encoding_target_get_description
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_description
 func (target *EncodingTargetInstance) GetDescription() string {
 	var carg0 *C.GstEncodingTarget // in, none, converted
 	var cret  *C.gchar             // return, none, string
@@ -5094,7 +4898,7 @@ func (target *EncodingTargetInstance) GetDescription() string {
 
 // GetName wraps gst_encoding_target_get_name
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_name
 func (target *EncodingTargetInstance) GetName() string {
 	var carg0 *C.GstEncodingTarget // in, none, converted
 	var cret  *C.gchar             // return, none, string
@@ -5113,7 +4917,7 @@ func (target *EncodingTargetInstance) GetName() string {
 
 // GetPath wraps gst_encoding_target_get_path
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_path
 func (target *EncodingTargetInstance) GetPath() string {
 	var carg0 *C.GstEncodingTarget // in, none, converted
 	var cret  *C.gchar             // return, none, string, nullable
@@ -5134,7 +4938,7 @@ func (target *EncodingTargetInstance) GetPath() string {
 
 // GetProfile wraps gst_encoding_target_get_profile
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_profile
 func (target *EncodingTargetInstance) GetProfile(name string) EncodingProfile {
 	var carg0 *C.GstEncodingTarget  // in, none, converted
 	var carg1 *C.gchar              // in, none, string
@@ -5159,7 +4963,7 @@ func (target *EncodingTargetInstance) GetProfile(name string) EncodingProfile {
 
 // GetProfiles wraps gst_encoding_target_get_profiles
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_get_profiles
 func (target *EncodingTargetInstance) GetProfiles() []EncodingProfile {
 	var carg0 *C.GstEncodingTarget // in, none, converted
 	var cret  *C.GList             // container, transfer: none
@@ -5185,8 +4989,7 @@ func (target *EncodingTargetInstance) GetProfiles() []EncodingProfile {
 
 // Save wraps gst_encoding_target_save
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_save
 func (target *EncodingTargetInstance) Save() (bool, error) {
 	var carg0 *C.GstEncodingTarget // in, none, converted
 	var cret  C.gboolean           // return
@@ -5212,8 +5015,7 @@ func (target *EncodingTargetInstance) Save() (bool, error) {
 
 // SaveToFile wraps gst_encoding_target_save_to_file
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_encoding_target_save_to_file
 func (target *EncodingTargetInstance) SaveToFile(filepath string) (bool, error) {
 	var carg0 *C.GstEncodingTarget // in, none, converted
 	var carg1 *C.gchar             // in, none, string
@@ -5251,31 +5053,26 @@ var _ EncodingVideoProfile = (*EncodingVideoProfileInstance)(nil)
 
 // EncodingVideoProfile wraps GstEncodingVideoProfile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#GstEncodingVideoProfile
 type EncodingVideoProfile interface {
 	EncodingProfile
 	upcastToGstEncodingVideoProfile() *EncodingVideoProfileInstance
 
 	// GetPass wraps gst_encoding_video_profile_get_pass
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_video_profile_get_pass
 	GetPass() uint
 	// GetVariableframerate wraps gst_encoding_video_profile_get_variableframerate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_video_profile_get_variableframerate
 	GetVariableframerate() bool
 	// SetPass wraps gst_encoding_video_profile_set_pass
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_video_profile_set_pass
 	SetPass(uint)
 	// SetVariableframerate wraps gst_encoding_video_profile_set_variableframerate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_video_profile_set_variableframerate
 	SetVariableframerate(bool)
 }
 
@@ -5331,8 +5128,7 @@ func UnsafeEncodingVideoProfileToGlibFull(c EncodingVideoProfile) unsafe.Pointer
 
 // NewEncodingVideoProfile wraps gst_encoding_video_profile_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_video_profile_new
 func NewEncodingVideoProfile(format *gst.Caps, preset string, restriction *gst.Caps, presence uint) EncodingVideoProfile {
 	var carg1 *C.GstCaps                 // in, none, converted
 	var carg2 *C.gchar                   // in, none, string, nullable-string
@@ -5365,8 +5161,7 @@ func NewEncodingVideoProfile(format *gst.Caps, preset string, restriction *gst.C
 
 // GetPass wraps gst_encoding_video_profile_get_pass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_video_profile_get_pass
 func (prof *EncodingVideoProfileInstance) GetPass() uint {
 	var carg0 *C.GstEncodingVideoProfile // in, none, converted
 	var cret  C.guint                    // return, none, casted
@@ -5385,8 +5180,7 @@ func (prof *EncodingVideoProfileInstance) GetPass() uint {
 
 // GetVariableframerate wraps gst_encoding_video_profile_get_variableframerate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_video_profile_get_variableframerate
 func (prof *EncodingVideoProfileInstance) GetVariableframerate() bool {
 	var carg0 *C.GstEncodingVideoProfile // in, none, converted
 	var cret  C.gboolean                 // return
@@ -5407,8 +5201,7 @@ func (prof *EncodingVideoProfileInstance) GetVariableframerate() bool {
 
 // SetPass wraps gst_encoding_video_profile_set_pass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_video_profile_set_pass
 func (prof *EncodingVideoProfileInstance) SetPass(pass uint) {
 	var carg0 *C.GstEncodingVideoProfile // in, none, converted
 	var carg1 C.guint                    // in, none, casted
@@ -5423,8 +5216,7 @@ func (prof *EncodingVideoProfileInstance) SetPass(pass uint) {
 
 // SetVariableframerate wraps gst_encoding_video_profile_set_variableframerate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_video_profile_set_variableframerate
 func (prof *EncodingVideoProfileInstance) SetVariableframerate(variableframerate bool) {
 	var carg0 *C.GstEncodingVideoProfile // in, none, converted
 	var carg1 C.gboolean                 // in
@@ -5449,39 +5241,38 @@ var _ DiscovererAudioInfo = (*DiscovererAudioInfoInstance)(nil)
 
 // DiscovererAudioInfo wraps GstDiscovererAudioInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstDiscovererAudioInfo
 type DiscovererAudioInfo interface {
 	DiscovererStreamInfo
 	upcastToGstDiscovererAudioInfo() *DiscovererAudioInfoInstance
 
 	// GetBitrate wraps gst_discoverer_audio_info_get_bitrate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_bitrate
 	GetBitrate() uint
 	// GetChannelMask wraps gst_discoverer_audio_info_get_channel_mask
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_channel_mask
 	GetChannelMask() uint64
 	// GetChannels wraps gst_discoverer_audio_info_get_channels
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_channels
 	GetChannels() uint
 	// GetDepth wraps gst_discoverer_audio_info_get_depth
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_depth
 	GetDepth() uint
 	// GetLanguage wraps gst_discoverer_audio_info_get_language
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_language
 	GetLanguage() string
 	// GetMaxBitrate wraps gst_discoverer_audio_info_get_max_bitrate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_max_bitrate
 	GetMaxBitrate() uint
 	// GetSampleRate wraps gst_discoverer_audio_info_get_sample_rate
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_sample_rate
 	GetSampleRate() uint
 }
 
@@ -5537,7 +5328,7 @@ func UnsafeDiscovererAudioInfoToGlibFull(c DiscovererAudioInfo) unsafe.Pointer {
 
 // GetBitrate wraps gst_discoverer_audio_info_get_bitrate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_bitrate
 func (info *DiscovererAudioInfoInstance) GetBitrate() uint {
 	var carg0 *C.GstDiscovererAudioInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -5556,7 +5347,7 @@ func (info *DiscovererAudioInfoInstance) GetBitrate() uint {
 
 // GetChannelMask wraps gst_discoverer_audio_info_get_channel_mask
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_channel_mask
 func (info *DiscovererAudioInfoInstance) GetChannelMask() uint64 {
 	var carg0 *C.GstDiscovererAudioInfo // in, none, converted
 	var cret  C.guint64                 // return, none, casted
@@ -5575,7 +5366,7 @@ func (info *DiscovererAudioInfoInstance) GetChannelMask() uint64 {
 
 // GetChannels wraps gst_discoverer_audio_info_get_channels
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_channels
 func (info *DiscovererAudioInfoInstance) GetChannels() uint {
 	var carg0 *C.GstDiscovererAudioInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -5594,7 +5385,7 @@ func (info *DiscovererAudioInfoInstance) GetChannels() uint {
 
 // GetDepth wraps gst_discoverer_audio_info_get_depth
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_depth
 func (info *DiscovererAudioInfoInstance) GetDepth() uint {
 	var carg0 *C.GstDiscovererAudioInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -5613,7 +5404,7 @@ func (info *DiscovererAudioInfoInstance) GetDepth() uint {
 
 // GetLanguage wraps gst_discoverer_audio_info_get_language
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_language
 func (info *DiscovererAudioInfoInstance) GetLanguage() string {
 	var carg0 *C.GstDiscovererAudioInfo // in, none, converted
 	var cret  *C.gchar                  // return, none, string, nullable-string
@@ -5634,7 +5425,7 @@ func (info *DiscovererAudioInfoInstance) GetLanguage() string {
 
 // GetMaxBitrate wraps gst_discoverer_audio_info_get_max_bitrate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_max_bitrate
 func (info *DiscovererAudioInfoInstance) GetMaxBitrate() uint {
 	var carg0 *C.GstDiscovererAudioInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -5653,7 +5444,7 @@ func (info *DiscovererAudioInfoInstance) GetMaxBitrate() uint {
 
 // GetSampleRate wraps gst_discoverer_audio_info_get_sample_rate
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_audio_info_get_sample_rate
 func (info *DiscovererAudioInfoInstance) GetSampleRate() uint {
 	var carg0 *C.GstDiscovererAudioInfo // in, none, converted
 	var cret  C.guint                   // return, none, casted
@@ -5680,19 +5471,18 @@ var _ DiscovererContainerInfo = (*DiscovererContainerInfoInstance)(nil)
 
 // DiscovererContainerInfo wraps GstDiscovererContainerInfo
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#GstDiscovererContainerInfo
 type DiscovererContainerInfo interface {
 	DiscovererStreamInfo
 	upcastToGstDiscovererContainerInfo() *DiscovererContainerInfoInstance
 
 	// GetStreams wraps gst_discoverer_container_info_get_streams
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_container_info_get_streams
 	GetStreams() []DiscovererStreamInfo
 	// GetTags wraps gst_discoverer_container_info_get_tags
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_container_info_get_tags
 	GetTags() *gst.TagList
 }
 
@@ -5748,7 +5538,7 @@ func UnsafeDiscovererContainerInfoToGlibFull(c DiscovererContainerInfo) unsafe.P
 
 // GetStreams wraps gst_discoverer_container_info_get_streams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_container_info_get_streams
 func (info *DiscovererContainerInfoInstance) GetStreams() []DiscovererStreamInfo {
 	var carg0 *C.GstDiscovererContainerInfo // in, none, converted
 	var cret  *C.GList                      // container, transfer: full
@@ -5774,7 +5564,7 @@ func (info *DiscovererContainerInfoInstance) GetStreams() []DiscovererStreamInfo
 
 // GetTags wraps gst_discoverer_container_info_get_tags
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils#gst_discoverer_container_info_get_tags
 func (info *DiscovererContainerInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstDiscovererContainerInfo // in, none, converted
 	var cret  *C.GstTagList                 // return, none, converted, nullable
@@ -5803,8 +5593,7 @@ var _ EncodingAudioProfile = (*EncodingAudioProfileInstance)(nil)
 
 // EncodingAudioProfile wraps GstEncodingAudioProfile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#GstEncodingAudioProfile
 type EncodingAudioProfile interface {
 	EncodingProfile
 	upcastToGstEncodingAudioProfile() *EncodingAudioProfileInstance
@@ -5862,8 +5651,7 @@ func UnsafeEncodingAudioProfileToGlibFull(c EncodingAudioProfile) unsafe.Pointer
 
 // NewEncodingAudioProfile wraps gst_encoding_audio_profile_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_audio_profile_new
 func NewEncodingAudioProfile(format *gst.Caps, preset string, restriction *gst.Caps, presence uint) EncodingAudioProfile {
 	var carg1 *C.GstCaps                 // in, none, converted
 	var carg2 *C.gchar                   // in, none, string, nullable-string
@@ -5904,25 +5692,22 @@ var _ EncodingContainerProfile = (*EncodingContainerProfileInstance)(nil)
 
 // EncodingContainerProfile wraps GstEncodingContainerProfile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#GstEncodingContainerProfile
 type EncodingContainerProfile interface {
 	EncodingProfile
 	upcastToGstEncodingContainerProfile() *EncodingContainerProfileInstance
 
 	// AddProfile wraps gst_encoding_container_profile_add_profile
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_container_profile_add_profile
 	AddProfile(EncodingProfile) bool
 	// ContainsProfile wraps gst_encoding_container_profile_contains_profile
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_container_profile_contains_profile
 	ContainsProfile(EncodingProfile) bool
 	// GetProfiles wraps gst_encoding_container_profile_get_profiles
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_container_profile_get_profiles
 	GetProfiles() []EncodingProfile
 }
 
@@ -5978,8 +5763,7 @@ func UnsafeEncodingContainerProfileToGlibFull(c EncodingContainerProfile) unsafe
 
 // NewEncodingContainerProfile wraps gst_encoding_container_profile_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_container_profile_new
 func NewEncodingContainerProfile(name string, description string, format *gst.Caps, preset string) EncodingContainerProfile {
 	var carg1 *C.gchar                       // in, none, string, nullable-string
 	var carg2 *C.gchar                       // in, none, string, nullable-string
@@ -6016,8 +5800,7 @@ func NewEncodingContainerProfile(name string, description string, format *gst.Ca
 
 // AddProfile wraps gst_encoding_container_profile_add_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_container_profile_add_profile
 func (container *EncodingContainerProfileInstance) AddProfile(profile EncodingProfile) bool {
 	var carg0 *C.GstEncodingContainerProfile // in, none, converted
 	var carg1 *C.GstEncodingProfile          // in, full, converted
@@ -6041,8 +5824,7 @@ func (container *EncodingContainerProfileInstance) AddProfile(profile EncodingPr
 
 // ContainsProfile wraps gst_encoding_container_profile_contains_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_container_profile_contains_profile
 func (container *EncodingContainerProfileInstance) ContainsProfile(profile EncodingProfile) bool {
 	var carg0 *C.GstEncodingContainerProfile // in, none, converted
 	var carg1 *C.GstEncodingProfile          // in, none, converted
@@ -6066,7 +5848,7 @@ func (container *EncodingContainerProfileInstance) ContainsProfile(profile Encod
 
 // GetProfiles wraps gst_encoding_container_profile_get_profiles
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#gst_encoding_container_profile_get_profiles
 func (profile *EncodingContainerProfileInstance) GetProfiles() []EncodingProfile {
 	var carg0 *C.GstEncodingContainerProfile // in, none, converted
 	var cret  *C.GList                       // container, transfer: none
@@ -6092,7 +5874,7 @@ func (profile *EncodingContainerProfileInstance) GetProfiles() []EncodingProfile
 
 // AudioVisualizerClass wraps GstAudioVisualizerClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstaudiovisualizer.html#GstAudioVisualizerClass
 // 
 // AudioVisualizerClass is the type struct for [AudioVisualizer]
 type AudioVisualizerClass struct {
@@ -6146,7 +5928,7 @@ func (a *AudioVisualizerClass) ParentClass() *gst.ElementClass {
 
 // DiscovererClass wraps GstDiscovererClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html#GstDiscovererClass
 // 
 // DiscovererClass is the type struct for [Discoverer]
 type DiscovererClass struct {
@@ -6200,7 +5982,7 @@ func (d *DiscovererClass) ParentClass() *gobject.ObjectClass {
 
 // EncodingAudioProfileClass wraps GstEncodingAudioProfileClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#GstEncodingAudioProfileClass
 // 
 // EncodingAudioProfileClass is the type struct for [EncodingAudioProfile]
 type EncodingAudioProfileClass struct {
@@ -6254,7 +6036,7 @@ func (e *EncodingAudioProfileClass) ParentClass() *EncodingProfileClass {
 
 // EncodingContainerProfileClass wraps GstEncodingContainerProfileClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#GstEncodingContainerProfileClass
 // 
 // EncodingContainerProfileClass is the type struct for [EncodingContainerProfile]
 type EncodingContainerProfileClass struct {
@@ -6308,7 +6090,7 @@ func (e *EncodingContainerProfileClass) ParentClass() *EncodingProfileClass {
 
 // EncodingProfileClass wraps GstEncodingProfileClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#GstEncodingProfileClass
 // 
 // EncodingProfileClass is the type struct for [EncodingProfile]
 type EncodingProfileClass struct {
@@ -6362,7 +6144,7 @@ func (e *EncodingProfileClass) ParentClass() *gobject.ObjectClass {
 
 // EncodingVideoProfileClass wraps GstEncodingVideoProfileClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/encoding-profile.html#GstEncodingVideoProfileClass
 // 
 // EncodingVideoProfileClass is the type struct for [EncodingVideoProfile]
 type EncodingVideoProfileClass struct {
@@ -6416,8 +6198,7 @@ func (e *EncodingVideoProfileClass) ParentClass() *EncodingProfileClass {
 
 // InstallPluginsContext wraps GstInstallPluginsContext
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/install-plugins.html#GstInstallPluginsContext
 type InstallPluginsContext struct {
 	*installPluginsContext
 }
@@ -6513,8 +6294,7 @@ func UnsafeInstallPluginsContextToGlibFull(i *InstallPluginsContext) unsafe.Poin
 
 // NewInstallPluginsContext wraps gst_install_plugins_context_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/install-plugins.html#gst_install_plugins_context_new
 func NewInstallPluginsContext() *InstallPluginsContext {
 	var cret *C.GstInstallPluginsContext // return, full, converted
 
@@ -6529,8 +6309,7 @@ func NewInstallPluginsContext() *InstallPluginsContext {
 
 // Copy wraps gst_install_plugins_context_copy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/install-plugins.html#gst_install_plugins_context_copy
 func (ctx *InstallPluginsContext) Copy() *InstallPluginsContext {
 	var carg0 *C.GstInstallPluginsContext // in, none, converted
 	var cret  *C.GstInstallPluginsContext // return, full, converted
@@ -6549,8 +6328,7 @@ func (ctx *InstallPluginsContext) Copy() *InstallPluginsContext {
 
 // SetConfirmSearch wraps gst_install_plugins_context_set_confirm_search
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/install-plugins.html#gst_install_plugins_context_set_confirm_search
 func (ctx *InstallPluginsContext) SetConfirmSearch(confirmSearch bool) {
 	var carg0 *C.GstInstallPluginsContext // in, none, converted
 	var carg1 C.gboolean                  // in
@@ -6567,8 +6345,7 @@ func (ctx *InstallPluginsContext) SetConfirmSearch(confirmSearch bool) {
 
 // SetDesktopID wraps gst_install_plugins_context_set_desktop_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/install-plugins.html#gst_install_plugins_context_set_desktop_id
 func (ctx *InstallPluginsContext) SetDesktopID(desktopId string) {
 	var carg0 *C.GstInstallPluginsContext // in, none, converted
 	var carg1 *C.gchar                    // in, none, string
@@ -6584,8 +6361,7 @@ func (ctx *InstallPluginsContext) SetDesktopID(desktopId string) {
 
 // SetStartupNotificationID wraps gst_install_plugins_context_set_startup_notification_id
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/install-plugins.html#gst_install_plugins_context_set_startup_notification_id
 func (ctx *InstallPluginsContext) SetStartupNotificationID(startupId string) {
 	var carg0 *C.GstInstallPluginsContext // in, none, converted
 	var carg1 *C.gchar                    // in, none, string
@@ -6601,8 +6377,7 @@ func (ctx *InstallPluginsContext) SetStartupNotificationID(startupId string) {
 
 // SetXid wraps gst_install_plugins_context_set_xid
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/pbutils/install-plugins.html#gst_install_plugins_context_set_xid
 func (ctx *InstallPluginsContext) SetXid(xid uint) {
 	var carg0 *C.GstInstallPluginsContext // in, none, converted
 	var carg1 C.guint                     // in, none, casted

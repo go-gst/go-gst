@@ -11,27 +11,7 @@ import "C"
 
 // Map wraps gst_buffer_map
 //
-// The function takes the following parameters:
-//
-//   - flags MapFlags: flags for the mapping
-//
-// The function returns the following values:
-//
-//   - info MapInfo: info about the mapping
-//   - goret bool
-//
-// Fills @info with the #GstMapInfo of all merged memory blocks in @buffer.
-//
-// @flags describe the desired access of the memory. When @flags is
-// #GST_MAP_WRITE, @buffer should be writable (as returned from
-// gst_buffer_is_writable()).
-//
-// When @buffer is writable but the memory isn't, a writable copy will
-// automatically be created and returned. The readonly copy of the
-// buffer memory will then also be replaced with this writable copy.
-//
-// The memory in @info should be unmapped with gst_buffer_unmap() after
-// usage.
+// Users should call [MapInfo.Unmap] or [MapInfo.Close] when done with the buffer
 func (buffer *Buffer) Map(flags MapFlags) (*MapInfo, bool) {
 	var carg0 *C.GstBuffer  // in, none, converted
 	var carg2 C.GstMapFlags // in, none, casted

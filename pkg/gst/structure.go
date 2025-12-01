@@ -14,15 +14,6 @@ import (
 import "C"
 
 // IDTakeValue wraps gst_structure_id_take_value
-//
-// The function takes the following parameters:
-//
-//   - field glib.Quark: a #GQuark representing a field
-//   - value *gobject.Value: the new value of the field
-//
-// Sets the field with the given GQuark @field to @value.  If the field
-// does not exist, it is created.  If the field exists, the previous
-// value is replaced and freed.
 func (structure *Structure) IDTakeValue(field glib.Quark, value any) {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 C.GQuark        // in, none, casted, alias
@@ -41,15 +32,6 @@ func (structure *Structure) IDTakeValue(field glib.Quark, value any) {
 }
 
 // TakeValue wraps gst_structure_take_value
-//
-// The function takes the following parameters:
-//
-//   - fieldname string: the name of the field to set
-//   - value *gobject.Value: the new value of the field
-//
-// Sets the field with the given name @field to @value.  If the field
-// does not exist, it is created.  If the field exists, the previous
-// value is replaced and freed. The function will take ownership of @value.
 func (structure *Structure) TakeValue(fieldname string, value any) {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.gchar        // in, none, string, casted *C.gchar
@@ -69,16 +51,6 @@ func (structure *Structure) TakeValue(fieldname string, value any) {
 }
 
 // GetValue wraps gst_structure_get_value
-//
-// The function takes the following parameters:
-//
-//   - fieldname string: the name of the field to get
-//
-// The function returns the following values:
-//
-//   - goret any
-//
-// Get the value of the field with name @fieldname.
 func (structure *Structure) GetValue(fieldname string) any {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.gchar        // in, none, string, casted *C.gchar
@@ -101,15 +73,6 @@ func (structure *Structure) GetValue(fieldname string) any {
 }
 
 // SetValue wraps gst_structure_set_value
-//
-// The function takes the following parameters:
-//
-//   - fieldname string: the name of the field to set
-//   - value any: the new value of the field
-//
-// Sets the field with the given name @field to @value.  If the field
-// does not exist, it is created.  If the field exists, the previous
-// value is replaced and freed.
 func (structure *Structure) SetValue(fieldname string, value any) {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.gchar        // in, none, string, casted *C.gchar
@@ -128,16 +91,6 @@ func (structure *Structure) SetValue(fieldname string, value any) {
 }
 
 // IDGetValue wraps gst_structure_id_get_value
-//
-// The function takes the following parameters:
-//
-//   - field glib.Quark: the #GQuark of the field to get
-//
-// The function returns the following values:
-//
-//   - goret any
-//
-// Get the value of the field with GQuark @field.
 func (structure *Structure) IDGetValue(field glib.Quark) any {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 C.GQuark        // in, none, casted, alias

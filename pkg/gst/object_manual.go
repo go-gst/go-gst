@@ -2,32 +2,10 @@ package gst
 
 type ObjectExtManual interface {
 	// GetValue wraps gst_object_get_value
-	//
-	// The function takes the following parameters:
-	//
-	// 	- propertyName string: the name of the property to get
-	// 	- timestamp ClockTime: the time the control-change should be read from
-	//
-	// The function returns the following values:
-	//
-	// 	- goret any
-	//
-	// Gets the value for the given controlled property at the requested time.
 	GetValue(propertyName string, timestamp ClockTime) any
 }
 
 // GetValue wraps gst_object_get_value
-//
-// The function takes the following parameters:
-//
-//   - propertyName string: the name of the property to get
-//   - timestamp ClockTime: the time the control-change should be read from
-//
-// The function returns the following values:
-//
-//   - goret *gobject.Value
-//
-// Gets the value for the given controlled property at the requested time.
 func (object *ObjectInstance) GetValue(propertyName string, timestamp ClockTime) any {
 	panic("not implemented yet")
 	// var carg0 *C.GstObject   // in, none, converted

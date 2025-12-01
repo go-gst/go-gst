@@ -295,59 +295,49 @@ func init() {
 
 // GL_ALLOCATION_PARAMS_ALLOC_FLAG_ALLOC wraps GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_ALLOC
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_ALLOC
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_ALLOC = 1
 // GL_ALLOCATION_PARAMS_ALLOC_FLAG_BUFFER wraps GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_BUFFER
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbuffer.html#GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_BUFFER
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_BUFFER = 16
 // GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER wraps GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER = 65536
 // GL_ALLOCATION_PARAMS_ALLOC_FLAG_VIDEO wraps GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_VIDEO
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_VIDEO
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_VIDEO = 8
 // GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_GPU_HANDLE wraps GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_GPU_HANDLE
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_GPU_HANDLE
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_GPU_HANDLE = 4
 // GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM wraps GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM
 const GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM = 2
 // MAP_GL wraps GST_MAP_GL
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_MAP_GL
 const MAP_GL = 131072
 // GLBaseMemoryError wraps GstGLBaseMemoryError
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLBaseMemoryError
 type GLBaseMemoryError C.int
 
 const (
 	// GlBaseMemoryErrorFailed wraps GST_GL_BASE_MEMORY_ERROR_FAILED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_ERROR_FAILED
 	GlBaseMemoryErrorFailed GLBaseMemoryError = 0
 	// GlBaseMemoryErrorOldLibs wraps GST_GL_BASE_MEMORY_ERROR_OLD_LIBS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_ERROR_OLD_LIBS
 	GlBaseMemoryErrorOldLibs GLBaseMemoryError = 1
 	// GlBaseMemoryErrorResourceUnavailable wraps GST_GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE
 	GlBaseMemoryErrorResourceUnavailable GLBaseMemoryError = 2
 )
 
@@ -376,7 +366,7 @@ func (e GLBaseMemoryError) String() string {
 
 // GLBaseMemoryErrorQuark wraps gst_gl_base_memory_error_quark
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_base_memory_error_quark
 func GLBaseMemoryErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -391,24 +381,21 @@ func GLBaseMemoryErrorQuark() glib.Quark {
 
 // GLConfigCaveat wraps GstGLConfigCaveat
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLConfigCaveat
 type GLConfigCaveat C.int
 
 const (
 	// GlConfigCaveatNone wraps GST_GL_CONFIG_CAVEAT_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_CAVEAT_NONE
 	GlConfigCaveatNone GLConfigCaveat = 0
 	// GlConfigCaveatSlow wraps GST_GL_CONFIG_CAVEAT_SLOW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_CAVEAT_SLOW
 	GlConfigCaveatSlow GLConfigCaveat = 1
 	// GlConfigCaveatNonConformant wraps GST_GL_CONFIG_CAVEAT_NON_CONFORMANT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_CAVEAT_NON_CONFORMANT
 	GlConfigCaveatNonConformant GLConfigCaveat = 2
 )
 
@@ -437,7 +424,7 @@ func (e GLConfigCaveat) String() string {
 
 // GLConfigCaveatString wraps gst_gl_config_caveat_to_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_config_caveat_to_string
 func GLConfigCaveatString(caveat GLConfigCaveat) string {
 	var carg1 C.GstGLConfigCaveat // in, none, casted
 	var cret  *C.gchar            // return, none, string, nullable-string
@@ -458,40 +445,33 @@ func GLConfigCaveatString(caveat GLConfigCaveat) string {
 
 // GLContextError wraps GstGLContextError
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLContextError
 type GLContextError C.int
 
 const (
 	// GlContextErrorFailed wraps GST_GL_CONTEXT_ERROR_FAILED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_FAILED
 	GlContextErrorFailed GLContextError = 0
 	// GlContextErrorWrongConfig wraps GST_GL_CONTEXT_ERROR_WRONG_CONFIG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_WRONG_CONFIG
 	GlContextErrorWrongConfig GLContextError = 1
 	// GlContextErrorWrongAPI wraps GST_GL_CONTEXT_ERROR_WRONG_API
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_WRONG_API
 	GlContextErrorWrongAPI GLContextError = 2
 	// GlContextErrorOldLibs wraps GST_GL_CONTEXT_ERROR_OLD_LIBS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_OLD_LIBS
 	GlContextErrorOldLibs GLContextError = 3
 	// GlContextErrorCreateContext wraps GST_GL_CONTEXT_ERROR_CREATE_CONTEXT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_CREATE_CONTEXT
 	GlContextErrorCreateContext GLContextError = 4
 	// GlContextErrorResourceUnavailable wraps GST_GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE
 	GlContextErrorResourceUnavailable GLContextError = 5
 )
 
@@ -523,7 +503,7 @@ func (e GLContextError) String() string {
 
 // GLContextErrorQuark wraps gst_gl_context_error_quark
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_context_error_quark
 func GLContextErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -538,103 +518,85 @@ func GLContextErrorQuark() glib.Quark {
 
 // GLFormat wraps GstGLFormat
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLFormat
 type GLFormat C.int
 
 const (
 	// GlLuminance wraps GST_GL_LUMINANCE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_LUMINANCE
 	GlLuminance GLFormat = 6409
 	// GlAlpha wraps GST_GL_ALPHA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_ALPHA
 	GlAlpha GLFormat = 6406
 	// GlLuminanceAlpha wraps GST_GL_LUMINANCE_ALPHA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_LUMINANCE_ALPHA
 	GlLuminanceAlpha GLFormat = 6410
 	// GlRed wraps GST_GL_RED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RED
 	GlRed GLFormat = 6403
 	// GlR8 wraps GST_GL_R8
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_R8
 	GlR8 GLFormat = 33321
 	// GlRg wraps GST_GL_RG
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RG
 	GlRg GLFormat = 33319
 	// GlRg8 wraps GST_GL_RG8
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RG8
 	GlRg8 GLFormat = 33323
 	// GlRgb wraps GST_GL_RGB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGB
 	GlRgb GLFormat = 6407
 	// GlRgb8 wraps GST_GL_RGB8
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGB8
 	GlRgb8 GLFormat = 32849
 	// GlRgb565 wraps GST_GL_RGB565
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGB565
 	GlRgb565 GLFormat = 36194
 	// GlRgb16 wraps GST_GL_RGB16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGB16
 	GlRgb16 GLFormat = 32852
 	// GlRgba wraps GST_GL_RGBA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGBA
 	GlRgba GLFormat = 6408
 	// GlRgba8 wraps GST_GL_RGBA8
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGBA8
 	GlRgba8 GLFormat = 32856
 	// GlRgba16 wraps GST_GL_RGBA16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGBA16
 	GlRgba16 GLFormat = 32859
 	// GlDepthComponent16 wraps GST_GL_DEPTH_COMPONENT16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DEPTH_COMPONENT16
 	GlDepthComponent16 GLFormat = 33189
 	// GlDepth24Stencil8 wraps GST_GL_DEPTH24_STENCIL8
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DEPTH24_STENCIL8
 	GlDepth24Stencil8 GLFormat = 35056
 	// GlRgb10A2 wraps GST_GL_RGB10_A2
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGB10_A2
 	GlRgb10A2 GLFormat = 32857
 	// GlR16 wraps GST_GL_R16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_R16
 	GlR16 GLFormat = 33322
 	// GlRg16 wraps GST_GL_RG16
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RG16
 	GlRg16 GLFormat = 33324
 )
 
@@ -679,7 +641,7 @@ func (e GLFormat) String() string {
 
 // GLFormatFromVideoInfo wraps gst_gl_format_from_video_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_format_from_video_info
 func GLFormatFromVideoInfo(_context GLContext, vinfo *gstvideo.VideoInfo, plane uint) GLFormat {
 	var carg1 *C.GstGLContext // in, none, converted
 	var carg2 *C.GstVideoInfo // in, none, converted
@@ -704,7 +666,7 @@ func GLFormatFromVideoInfo(_context GLContext, vinfo *gstvideo.VideoInfo, plane 
 
 // GLFormatIsSupported wraps gst_gl_format_is_supported
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_format_is_supported
 func GLFormatIsSupported(_context GLContext, format GLFormat) bool {
 	var carg1 *C.GstGLContext // in, none, converted
 	var carg2 C.GstGLFormat   // in, none, casted
@@ -728,7 +690,7 @@ func GLFormatIsSupported(_context GLContext, format GLFormat) bool {
 
 // GLFormatNComponents wraps gst_gl_format_n_components
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_format_n_components
 func GLFormatNComponents(glFormat GLFormat) uint {
 	var carg1 C.GstGLFormat // in, none, casted
 	var cret  C.guint       // return, none, casted
@@ -747,8 +709,7 @@ func GLFormatNComponents(glFormat GLFormat) uint {
 
 // GLFormatTypeFromSizedGlFormat wraps gst_gl_format_type_from_sized_gl_format
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_format_type_from_sized_gl_format
 func GLFormatTypeFromSizedGlFormat(format GLFormat) (GLFormat, uint) {
 	var carg1 C.GstGLFormat // in, none, casted
 	var carg2 C.GstGLFormat // out, full, casted
@@ -770,7 +731,7 @@ func GLFormatTypeFromSizedGlFormat(format GLFormat) (GLFormat, uint) {
 
 // GLFormatTypeNBytes wraps gst_gl_format_type_n_bytes
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_format_type_n_bytes
 func GLFormatTypeNBytes(format uint, typ uint) uint {
 	var carg1 C.guint // in, none, casted
 	var carg2 C.guint // in, none, casted
@@ -792,24 +753,21 @@ func GLFormatTypeNBytes(format uint, typ uint) uint {
 
 // GLQueryType wraps GstGLQueryType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLQueryType
 type GLQueryType C.int
 
 const (
 	// GlQueryNone wraps GST_GL_QUERY_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_QUERY_NONE
 	GlQueryNone GLQueryType = 0
 	// GlQueryTimeElapsed wraps GST_GL_QUERY_TIME_ELAPSED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_QUERY_TIME_ELAPSED
 	GlQueryTimeElapsed GLQueryType = 1
 	// GlQueryTimestamp wraps GST_GL_QUERY_TIMESTAMP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_QUERY_TIMESTAMP
 	GlQueryTimestamp GLQueryType = 2
 )
 
@@ -838,25 +796,21 @@ func (e GLQueryType) String() string {
 
 // GLSLError wraps GstGLSLError
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLSLError
 type GLSLError C.int
 
 const (
 	// GlslErrorCompile wraps GST_GLSL_ERROR_COMPILE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_ERROR_COMPILE
 	GlslErrorCompile GLSLError = 0
 	// GlslErrorLink wraps GST_GLSL_ERROR_LINK
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_ERROR_LINK
 	GlslErrorLink GLSLError = 1
 	// GlslErrorProgram wraps GST_GLSL_ERROR_PROGRAM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_ERROR_PROGRAM
 	GlslErrorProgram GLSLError = 2
 )
 
@@ -885,7 +839,7 @@ func (e GLSLError) String() string {
 
 // GLSLErrorQuark wraps gst_glsl_error_quark
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_error_quark
 func GLSLErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -900,95 +854,77 @@ func GLSLErrorQuark() glib.Quark {
 
 // GLSLVersion wraps GstGLSLVersion
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLSLVersion
 type GLSLVersion C.int
 
 const (
 	// GlslVersionNone wraps GST_GLSL_VERSION_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_NONE
 	GlslVersionNone GLSLVersion = 0
 	// GlslVersion100 wraps GST_GLSL_VERSION_100
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_100
 	GlslVersion100 GLSLVersion = 100
 	// GlslVersion110 wraps GST_GLSL_VERSION_110
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_110
 	GlslVersion110 GLSLVersion = 110
 	// GlslVersion120 wraps GST_GLSL_VERSION_120
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_120
 	GlslVersion120 GLSLVersion = 120
 	// GlslVersion130 wraps GST_GLSL_VERSION_130
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_130
 	GlslVersion130 GLSLVersion = 130
 	// GlslVersion140 wraps GST_GLSL_VERSION_140
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_140
 	GlslVersion140 GLSLVersion = 140
 	// GlslVersion150 wraps GST_GLSL_VERSION_150
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_150
 	GlslVersion150 GLSLVersion = 150
 	// GlslVersion300 wraps GST_GLSL_VERSION_300
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_300
 	GlslVersion300 GLSLVersion = 300
 	// GlslVersion310 wraps GST_GLSL_VERSION_310
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_310
 	GlslVersion310 GLSLVersion = 310
 	// GlslVersion320 wraps GST_GLSL_VERSION_320
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_320
 	GlslVersion320 GLSLVersion = 320
 	// GlslVersion330 wraps GST_GLSL_VERSION_330
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_330
 	GlslVersion330 GLSLVersion = 330
 	// GlslVersion400 wraps GST_GLSL_VERSION_400
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_400
 	GlslVersion400 GLSLVersion = 400
 	// GlslVersion410 wraps GST_GLSL_VERSION_410
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_410
 	GlslVersion410 GLSLVersion = 410
 	// GlslVersion420 wraps GST_GLSL_VERSION_420
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_420
 	GlslVersion420 GLSLVersion = 420
 	// GlslVersion430 wraps GST_GLSL_VERSION_430
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_430
 	GlslVersion430 GLSLVersion = 430
 	// GlslVersion440 wraps GST_GLSL_VERSION_440
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_440
 	GlslVersion440 GLSLVersion = 440
 	// GlslVersion450 wraps GST_GLSL_VERSION_450
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_450
 	GlslVersion450 GLSLVersion = 450
 )
 
@@ -1031,7 +967,7 @@ func (e GLSLVersion) String() string {
 
 // GLSLVersionFromString wraps gst_glsl_version_from_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_version_from_string
 func GLSLVersionFromString(str string) GLSLVersion {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstGLSLVersion // return, none, casted
@@ -1051,8 +987,7 @@ func GLSLVersionFromString(str string) GLSLVersion {
 
 // GLSLVersionProfileFromString wraps gst_glsl_version_profile_from_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_version_profile_from_string
 func GLSLVersionProfileFromString(str string) (GLSLVersion, GLSLProfile, bool) {
 	var carg1 *C.gchar         // in, none, string
 	var carg2 C.GstGLSLVersion // out, full, casted
@@ -1080,7 +1015,7 @@ func GLSLVersionProfileFromString(str string) (GLSLVersion, GLSLProfile, bool) {
 
 // GLSLVersionProfileToString wraps gst_glsl_version_profile_to_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_version_profile_to_string
 func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string {
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var carg2 C.GstGLSLProfile // in, none, casted
@@ -1105,7 +1040,7 @@ func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string
 
 // GLSLVersionString wraps gst_glsl_version_to_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_version_to_string
 func GLSLVersionString(version GLSLVersion) string {
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var cret  *C.gchar         // return, none, string, nullable-string
@@ -1126,25 +1061,21 @@ func GLSLVersionString(version GLSLVersion) string {
 
 // GLStereoDownmix wraps GstGLStereoDownmix
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLStereoDownmix
 type GLStereoDownmix C.int
 
 const (
 	// GlStereoDownmixAnaglyphGreenMagentaDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS
 	GlStereoDownmixAnaglyphGreenMagentaDubois GLStereoDownmix = 0
 	// GlStereoDownmixAnaglyphRedCyanDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS
 	GlStereoDownmixAnaglyphRedCyanDubois GLStereoDownmix = 1
 	// GlStereoDownmixAnaglyphAmberBlueDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS
 	GlStereoDownmixAnaglyphAmberBlueDubois GLStereoDownmix = 2
 )
 
@@ -1173,30 +1104,25 @@ func (e GLStereoDownmix) String() string {
 
 // GLTextureTarget wraps GstGLTextureTarget
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLTextureTarget
 type GLTextureTarget C.int
 
 const (
 	// GlTextureTargetNone wraps GST_GL_TEXTURE_TARGET_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_TEXTURE_TARGET_NONE
 	GlTextureTargetNone GLTextureTarget = 0
 	// GlTextureTarget2d wraps GST_GL_TEXTURE_TARGET_2D
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_TEXTURE_TARGET_2D
 	GlTextureTarget2d GLTextureTarget = 1
 	// GlTextureTargetRectangle wraps GST_GL_TEXTURE_TARGET_RECTANGLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_TEXTURE_TARGET_RECTANGLE
 	GlTextureTargetRectangle GLTextureTarget = 2
 	// GlTextureTargetExternalOes wraps GST_GL_TEXTURE_TARGET_EXTERNAL_OES
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_TEXTURE_TARGET_EXTERNAL_OES
 	GlTextureTargetExternalOes GLTextureTarget = 3
 )
 
@@ -1226,7 +1152,7 @@ func (e GLTextureTarget) String() string {
 
 // GLTextureTargetFromGl wraps gst_gl_texture_target_from_gl
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_from_gl
 func GLTextureTargetFromGl(target uint) GLTextureTarget {
 	var carg1 C.guint              // in, none, casted
 	var cret  C.GstGLTextureTarget // return, none, casted
@@ -1245,7 +1171,7 @@ func GLTextureTargetFromGl(target uint) GLTextureTarget {
 
 // GLTextureTargetFromString wraps gst_gl_texture_target_from_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_from_string
 func GLTextureTargetFromString(str string) GLTextureTarget {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstGLTextureTarget // return, none, casted
@@ -1265,7 +1191,7 @@ func GLTextureTargetFromString(str string) GLTextureTarget {
 
 // GLTextureTargetToBufferPoolOption wraps gst_gl_texture_target_to_buffer_pool_option
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_to_buffer_pool_option
 func GLTextureTargetToBufferPoolOption(target GLTextureTarget) string {
 	var carg1 C.GstGLTextureTarget // in, none, casted
 	var cret  *C.gchar             // return, none, string, nullable-string
@@ -1286,7 +1212,7 @@ func GLTextureTargetToBufferPoolOption(target GLTextureTarget) string {
 
 // GLTextureTargetToGl wraps gst_gl_texture_target_to_gl
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_to_gl
 func GLTextureTargetToGl(target GLTextureTarget) uint {
 	var carg1 C.GstGLTextureTarget // in, none, casted
 	var cret  C.guint              // return, none, casted
@@ -1305,7 +1231,7 @@ func GLTextureTargetToGl(target GLTextureTarget) uint {
 
 // GLTextureTargetString wraps gst_gl_texture_target_to_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_to_string
 func GLTextureTargetString(target GLTextureTarget) string {
 	var carg1 C.GstGLTextureTarget // in, none, casted
 	var cret  *C.gchar             // return, none, string, nullable-string
@@ -1326,34 +1252,29 @@ func GLTextureTargetString(target GLTextureTarget) string {
 
 // GLUploadReturn wraps GstGLUploadReturn
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLUploadReturn
 type GLUploadReturn C.int
 
 const (
 	// GlUploadDone wraps GST_GL_UPLOAD_DONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_DONE
 	GlUploadDone GLUploadReturn = 1
 	// GlUploadError wraps GST_GL_UPLOAD_ERROR
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_ERROR
 	GlUploadError GLUploadReturn = -1
 	// GlUploadUnsupported wraps GST_GL_UPLOAD_UNSUPPORTED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_UNSUPPORTED
 	GlUploadUnsupported GLUploadReturn = -2
 	// GlUploadReconfigure wraps GST_GL_UPLOAD_RECONFIGURE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_RECONFIGURE
 	GlUploadReconfigure GLUploadReturn = -3
 	// GlUploadUnsharedGlContext wraps GST_GL_UPLOAD_UNSHARED_GL_CONTEXT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_UNSHARED_GL_CONTEXT
 	GlUploadUnsharedGlContext GLUploadReturn = -100
 )
 
@@ -1384,24 +1305,21 @@ func (e GLUploadReturn) String() string {
 
 // GLWindowError wraps GstGLWindowError
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLWindowError
 type GLWindowError C.int
 
 const (
 	// GlWindowErrorFailed wraps GST_GL_WINDOW_ERROR_FAILED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_WINDOW_ERROR_FAILED
 	GlWindowErrorFailed GLWindowError = 0
 	// GlWindowErrorOldLibs wraps GST_GL_WINDOW_ERROR_OLD_LIBS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_WINDOW_ERROR_OLD_LIBS
 	GlWindowErrorOldLibs GLWindowError = 1
 	// GlWindowErrorResourceUnavailable wraps GST_GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE
 	GlWindowErrorResourceUnavailable GLWindowError = 2
 )
 
@@ -1430,7 +1348,7 @@ func (e GLWindowError) String() string {
 
 // GLWindowErrorQuark wraps gst_gl_window_error_quark
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_window_error_quark
 func GLWindowErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -1445,39 +1363,33 @@ func GLWindowErrorQuark() glib.Quark {
 
 // GLAPI wraps GstGLAPI
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLAPI
 type GLAPI C.gint
 
 const (
 	// GlAPINone wraps GST_GL_API_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_NONE
 	GlAPINone GLAPI = 0
 	// GlAPIOpengl wraps GST_GL_API_OPENGL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_OPENGL
 	GlAPIOpengl GLAPI = 1
 	// GlAPIOpengl3 wraps GST_GL_API_OPENGL3
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_OPENGL3
 	GlAPIOpengl3 GLAPI = 2
 	// GlAPIGles1 wraps GST_GL_API_GLES1
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_GLES1
 	GlAPIGles1 GLAPI = 32768
 	// GlAPIGles2 wraps GST_GL_API_GLES2
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_GLES2
 	GlAPIGles2 GLAPI = 65536
 	// GlAPIAny wraps GST_GL_API_ANY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_ANY
 	GlAPIAny GLAPI = -1
 )
 
@@ -1528,7 +1440,7 @@ func (f GLAPI) String() string {
 
 // GLAPIFromString wraps gst_gl_api_from_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_api_from_string
 func GLAPIFromString(apiS string) GLAPI {
 	var carg1 *C.gchar   // in, none, string
 	var cret  C.GstGLAPI // return, none, casted
@@ -1548,7 +1460,7 @@ func GLAPIFromString(apiS string) GLAPI {
 
 // GLAPIString wraps gst_gl_api_to_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_api_to_string
 func GLAPIString(api GLAPI) string {
 	var carg1 C.GstGLAPI // in, none, casted
 	var cret  *C.gchar   // return, full, string
@@ -1568,19 +1480,17 @@ func GLAPIString(api GLAPI) string {
 
 // GLBaseMemoryTransfer wraps GstGLBaseMemoryTransfer
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLBaseMemoryTransfer
 type GLBaseMemoryTransfer C.gint
 
 const (
 	// GlBaseMemoryTransferNeedDownload wraps GST_GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD
 	GlBaseMemoryTransferNeedDownload GLBaseMemoryTransfer = 1048576
 	// GlBaseMemoryTransferNeedUpload wraps GST_GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD
 	GlBaseMemoryTransferNeedUpload GLBaseMemoryTransfer = 2097152
 )
 
@@ -1619,29 +1529,25 @@ func (f GLBaseMemoryTransfer) String() string {
 
 // GLConfigSurfaceType wraps GstGLConfigSurfaceType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLConfigSurfaceType
 type GLConfigSurfaceType C.gint
 
 const (
 	// GlConfigSurfaceTypeNone wraps GST_GL_CONFIG_SURFACE_TYPE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_SURFACE_TYPE_NONE
 	GlConfigSurfaceTypeNone GLConfigSurfaceType = 0
 	// GlConfigSurfaceTypeWindow wraps GST_GL_CONFIG_SURFACE_TYPE_WINDOW
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_SURFACE_TYPE_WINDOW
 	GlConfigSurfaceTypeWindow GLConfigSurfaceType = 1
 	// GlConfigSurfaceTypePbuffer wraps GST_GL_CONFIG_SURFACE_TYPE_PBUFFER
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_SURFACE_TYPE_PBUFFER
 	GlConfigSurfaceTypePbuffer GLConfigSurfaceType = 2
 	// GlConfigSurfaceTypePixmap wraps GST_GL_CONFIG_SURFACE_TYPE_PIXMAP
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_SURFACE_TYPE_PIXMAP
 	GlConfigSurfaceTypePixmap GLConfigSurfaceType = 4
 )
 
@@ -1686,7 +1592,7 @@ func (f GLConfigSurfaceType) String() string {
 
 // GLConfigSurfaceTypeString wraps gst_gl_config_surface_type_to_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_config_surface_type_to_string
 func GLConfigSurfaceTypeString(surfaceType GLConfigSurfaceType) string {
 	var carg1 C.GstGLConfigSurfaceType // in, none, casted
 	var cret  *C.gchar                 // return, none, string, nullable-string
@@ -1707,84 +1613,69 @@ func GLConfigSurfaceTypeString(surfaceType GLConfigSurfaceType) string {
 
 // GLDisplayType wraps GstGLDisplayType
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLDisplayType
 type GLDisplayType C.gint
 
 const (
 	// GlDisplayTypeNone wraps GST_GL_DISPLAY_TYPE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_NONE
 	GlDisplayTypeNone GLDisplayType = 0
 	// GlDisplayTypeX11 wraps GST_GL_DISPLAY_TYPE_X11
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_X11
 	GlDisplayTypeX11 GLDisplayType = 1
 	// GlDisplayTypeWayland wraps GST_GL_DISPLAY_TYPE_WAYLAND
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_WAYLAND
 	GlDisplayTypeWayland GLDisplayType = 2
 	// GlDisplayTypeCocoa wraps GST_GL_DISPLAY_TYPE_COCOA
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_COCOA
 	GlDisplayTypeCocoa GLDisplayType = 4
 	// GlDisplayTypeWin32 wraps GST_GL_DISPLAY_TYPE_WIN32
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_WIN32
 	GlDisplayTypeWin32 GLDisplayType = 8
 	// GlDisplayTypeDispmanx wraps GST_GL_DISPLAY_TYPE_DISPMANX
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_DISPMANX
 	GlDisplayTypeDispmanx GLDisplayType = 16
 	// GlDisplayTypeEgl wraps GST_GL_DISPLAY_TYPE_EGL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_EGL
 	GlDisplayTypeEgl GLDisplayType = 32
 	// GlDisplayTypeVivFb wraps GST_GL_DISPLAY_TYPE_VIV_FB
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_VIV_FB
 	GlDisplayTypeVivFb GLDisplayType = 64
 	// GlDisplayTypeGbm wraps GST_GL_DISPLAY_TYPE_GBM
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_GBM
 	GlDisplayTypeGbm GLDisplayType = 128
 	// GlDisplayTypeEglDevice wraps GST_GL_DISPLAY_TYPE_EGL_DEVICE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_EGL_DEVICE
 	GlDisplayTypeEglDevice GLDisplayType = 256
 	// GlDisplayTypeEagl wraps GST_GL_DISPLAY_TYPE_EAGL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_EAGL
 	GlDisplayTypeEagl GLDisplayType = 512
 	// GlDisplayTypeWinrt wraps GST_GL_DISPLAY_TYPE_WINRT
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_WINRT
 	GlDisplayTypeWinrt GLDisplayType = 1024
 	// GlDisplayTypeAndroid wraps GST_GL_DISPLAY_TYPE_ANDROID
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_ANDROID
 	GlDisplayTypeAndroid GLDisplayType = 2048
 	// GlDisplayTypeEglSurfaceless wraps GST_GL_DISPLAY_TYPE_EGL_SURFACELESS
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_EGL_SURFACELESS
 	GlDisplayTypeEglSurfaceless GLDisplayType = 4096
 	// GlDisplayTypeAny wraps GST_GL_DISPLAY_TYPE_ANY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_ANY
 	GlDisplayTypeAny GLDisplayType = -1
 )
 
@@ -1862,25 +1753,26 @@ func (f GLDisplayType) String() string {
 
 // GLDrmFormatFlags wraps GstGLDrmFormatFlags
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLDrmFormatFlags
 type GLDrmFormatFlags C.gint
 
 const (
 	// GlDrmFormatIncludeExternal wraps GST_GL_DRM_FORMAT_INCLUDE_EXTERNAL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DRM_FORMAT_INCLUDE_EXTERNAL
 	GlDrmFormatIncludeExternal GLDrmFormatFlags = 1
 	// GlDrmFormatLinearOnly wraps GST_GL_DRM_FORMAT_LINEAR_ONLY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DRM_FORMAT_LINEAR_ONLY
 	GlDrmFormatLinearOnly GLDrmFormatFlags = 2
 	// GlDrmFormatIncludeEmulated wraps GST_GL_DRM_FORMAT_INCLUDE_EMULATED
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DRM_FORMAT_INCLUDE_EMULATED
 	GlDrmFormatIncludeEmulated GLDrmFormatFlags = 4
+	// GlDrmFormatDirectImport wraps GST_GL_DRM_FORMAT_DIRECT_IMPORT
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DRM_FORMAT_DIRECT_IMPORT
+	GlDrmFormatDirectImport GLDrmFormatFlags = 8
 )
 
 func marshalGLDrmFormatFlags(p unsafe.Pointer) (any, error) {
@@ -1916,49 +1808,45 @@ func (f GLDrmFormatFlags) String() string {
 	if (f & GlDrmFormatIncludeEmulated) != 0 {
 		parts = append(parts, "GlDrmFormatIncludeEmulated")
 	}
+	if (f & GlDrmFormatDirectImport) != 0 {
+		parts = append(parts, "GlDrmFormatDirectImport")
+	}
 	return "GLDrmFormatFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // GLPlatform wraps GstGLPlatform
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLPlatform
 type GLPlatform C.gint
 
 const (
 	// GlPlatformNone wraps GST_GL_PLATFORM_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_NONE
 	GlPlatformNone GLPlatform = 0
 	// GlPlatformEgl wraps GST_GL_PLATFORM_EGL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_EGL
 	GlPlatformEgl GLPlatform = 1
 	// GlPlatformGlx wraps GST_GL_PLATFORM_GLX
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_GLX
 	GlPlatformGlx GLPlatform = 2
 	// GlPlatformWgl wraps GST_GL_PLATFORM_WGL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_WGL
 	GlPlatformWgl GLPlatform = 4
 	// GlPlatformCgl wraps GST_GL_PLATFORM_CGL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_CGL
 	GlPlatformCgl GLPlatform = 8
 	// GlPlatformEagl wraps GST_GL_PLATFORM_EAGL
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_EAGL
 	GlPlatformEagl GLPlatform = 16
 	// GlPlatformAny wraps GST_GL_PLATFORM_ANY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_ANY
 	GlPlatformAny GLPlatform = -1
 )
 
@@ -2012,7 +1900,7 @@ func (f GLPlatform) String() string {
 
 // GLPlatformFromString wraps gst_gl_platform_from_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_platform_from_string
 func GLPlatformFromString(platformS string) GLPlatform {
 	var carg1 *C.gchar        // in, none, string
 	var cret  C.GstGLPlatform // return, none, casted
@@ -2032,7 +1920,7 @@ func GLPlatformFromString(platformS string) GLPlatform {
 
 // GLPlatformString wraps gst_gl_platform_to_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_platform_to_string
 func GLPlatformString(platform GLPlatform) string {
 	var carg1 C.GstGLPlatform // in, none, casted
 	var cret  *C.gchar        // return, full, string
@@ -2052,35 +1940,29 @@ func GLPlatformString(platform GLPlatform) string {
 
 // GLSLProfile wraps GstGLSLProfile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLSLProfile
 type GLSLProfile C.gint
 
 const (
 	// GlslProfileNone wraps GST_GLSL_PROFILE_NONE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_NONE
 	GlslProfileNone GLSLProfile = 0
 	// GlslProfileEs wraps GST_GLSL_PROFILE_ES
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_ES
 	GlslProfileEs GLSLProfile = 1
 	// GlslProfileCore wraps GST_GLSL_PROFILE_CORE
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_CORE
 	GlslProfileCore GLSLProfile = 2
 	// GlslProfileCompatibility wraps GST_GLSL_PROFILE_COMPATIBILITY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_COMPATIBILITY
 	GlslProfileCompatibility GLSLProfile = 4
 	// GlslProfileAny wraps GST_GLSL_PROFILE_ANY
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_ANY
 	GlslProfileAny GLSLProfile = -1
 )
 
@@ -2128,7 +2010,7 @@ func (f GLSLProfile) String() string {
 
 // GLSLProfileFromString wraps gst_glsl_profile_from_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_profile_from_string
 func GLSLProfileFromString(str string) GLSLProfile {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstGLSLProfile // return, none, casted
@@ -2148,7 +2030,7 @@ func GLSLProfileFromString(str string) GLSLProfile {
 
 // GLSLProfileString wraps gst_glsl_profile_to_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_profile_to_string
 func GLSLProfileString(profile GLSLProfile) string {
 	var carg1 C.GstGLSLProfile // in, none, casted
 	var cret  *C.gchar         // return, none, string, nullable-string
@@ -2169,17 +2051,17 @@ func GLSLProfileString(profile GLSLProfile) string {
 
 // GLAsyncDebugLogGetMessage wraps GstGLAsyncDebugLogGetMessage
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldebug.html#GstGLAsyncDebugLogGetMessage
 type GLAsyncDebugLogGetMessage func() (goret string)
 
 // GLFilterRenderFunc wraps GstGLFilterRenderFunc
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#GstGLFilterRenderFunc
 type GLFilterRenderFunc func(filter GLFilter, inTex *GLMemory) (goret bool)
 
 // BufferAddGlSyncMeta wraps gst_buffer_add_gl_sync_meta
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func BufferAddGlSyncMeta(_context GLContext, buffer *gst.Buffer) *GLSyncMeta {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 *C.GstBuffer     // in, none, converted
@@ -2201,7 +2083,7 @@ func BufferAddGlSyncMeta(_context GLContext, buffer *gst.Buffer) *GLSyncMeta {
 
 // BufferPoolConfigGetGlAllocationParams wraps gst_buffer_pool_config_get_gl_allocation_params
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func BufferPoolConfigGetGlAllocationParams(config *gst.Structure) *GLAllocationParams {
 	var carg1 *C.GstStructure          // in, none, converted
 	var cret  *C.GstGLAllocationParams // return, full, converted, nullable
@@ -2222,8 +2104,7 @@ func BufferPoolConfigGetGlAllocationParams(config *gst.Structure) *GLAllocationP
 
 // BufferPoolConfigGetGlMinFreeQueueSize wraps gst_buffer_pool_config_get_gl_min_free_queue_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func BufferPoolConfigGetGlMinFreeQueueSize(config *gst.Structure) uint {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -2242,8 +2123,7 @@ func BufferPoolConfigGetGlMinFreeQueueSize(config *gst.Structure) uint {
 
 // BufferPoolConfigSetGlAllocationParams wraps gst_buffer_pool_config_set_gl_allocation_params
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func BufferPoolConfigSetGlAllocationParams(config *gst.Structure, params *GLAllocationParams) {
 	var carg1 *C.GstStructure          // in, none, converted
 	var carg2 *C.GstGLAllocationParams // in, none, converted, nullable
@@ -2260,8 +2140,7 @@ func BufferPoolConfigSetGlAllocationParams(config *gst.Structure, params *GLAllo
 
 // BufferPoolConfigSetGlMinFreeQueueSize wraps gst_buffer_pool_config_set_gl_min_free_queue_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func BufferPoolConfigSetGlMinFreeQueueSize(config *gst.Structure, queueSize uint) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -2276,7 +2155,7 @@ func BufferPoolConfigSetGlMinFreeQueueSize(config *gst.Structure, queueSize uint
 
 // ContextGetGlDisplay wraps gst_context_get_gl_display
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func ContextGetGlDisplay(_context *gst.Context) (GLDisplay, bool) {
 	var carg1 *C.GstContext   // in, none, converted
 	var carg2 *C.GstGLDisplay // out, full, converted, nullable
@@ -2302,8 +2181,7 @@ func ContextGetGlDisplay(_context *gst.Context) (GLDisplay, bool) {
 
 // ContextSetGlDisplay wraps gst_context_set_gl_display
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func ContextSetGlDisplay(_context *gst.Context, display GLDisplay) {
 	var carg1 *C.GstContext   // in, none, converted
 	var carg2 *C.GstGLDisplay // in, none, converted, nullable
@@ -2320,7 +2198,7 @@ func ContextSetGlDisplay(_context *gst.Context, display GLDisplay) {
 
 // GlCheckExtension wraps gst_gl_check_extension
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlCheckExtension(name string, ext string) bool {
 	var carg1 *C.char    // in, none, string
 	var carg2 *C.gchar   // in, none, string
@@ -2346,7 +2224,7 @@ func GlCheckExtension(name string, ext string) bool {
 
 // GlElementPropagateDisplayContext wraps gst_gl_element_propagate_display_context
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlElementPropagateDisplayContext(element gst.Element, display GLDisplay) {
 	var carg1 *C.GstElement   // in, none, converted
 	var carg2 *C.GstGLDisplay // in, none, converted
@@ -2361,8 +2239,7 @@ func GlElementPropagateDisplayContext(element gst.Element, display GLDisplay) {
 
 // GlGetPlaneDataSize wraps gst_gl_get_plane_data_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlGetPlaneDataSize(info *gstvideo.VideoInfo, align *gstvideo.VideoAlignment, plane uint) uint {
 	var carg1 *C.GstVideoInfo      // in, none, converted
 	var carg2 *C.GstVideoAlignment // in, none, converted
@@ -2387,7 +2264,7 @@ func GlGetPlaneDataSize(info *gstvideo.VideoInfo, align *gstvideo.VideoAlignment
 
 // GlGetPlaneStart wraps gst_gl_get_plane_start
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlGetPlaneStart(info *gstvideo.VideoInfo, valign *gstvideo.VideoAlignment, plane uint) uint {
 	var carg1 *C.GstVideoInfo      // in, none, converted
 	var carg2 *C.GstVideoAlignment // in, none, converted
@@ -2412,7 +2289,7 @@ func GlGetPlaneStart(info *gstvideo.VideoInfo, valign *gstvideo.VideoAlignment, 
 
 // GlHandleContextQuery wraps gst_gl_handle_context_query
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlHandleContextQuery(element gst.Element, query *gst.Query, display GLDisplay, _context GLContext, otherContext GLContext) bool {
 	var carg1 *C.GstElement   // in, none, converted
 	var carg2 *C.GstQuery     // in, none, converted
@@ -2451,8 +2328,7 @@ func GlHandleContextQuery(element gst.Element, query *gst.Query, display GLDispl
 
 // GlHandleSetContext wraps gst_gl_handle_set_context
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlHandleSetContext(element gst.Element, _context *gst.Context) (GLDisplay, GLContext, bool) {
 	var carg1 *C.GstElement   // in, none, converted
 	var carg2 *C.GstContext   // in, none, converted
@@ -2482,8 +2358,7 @@ func GlHandleSetContext(element gst.Element, _context *gst.Context) (GLDisplay, 
 
 // GlSetAffineTransformationMetaFromNdc wraps gst_gl_set_affine_transformation_meta_from_ndc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformationMeta, matrix [16]float32) {
 	var carg1 *C.GstVideoAffineTransformationMeta // in, none, converted
 	var carg2 *C.gfloat                           // in, none, array fixed size (inner: gfloat, size: 16)
@@ -2504,7 +2379,7 @@ func GlSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformati
 
 // GlSizedGlFormatFromGlFormatType wraps gst_gl_sized_gl_format_from_gl_format_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlSizedGlFormatFromGlFormatType(_context GLContext, format uint, typ uint) uint {
 	var carg1 *C.GstGLContext // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -2529,7 +2404,7 @@ func GlSizedGlFormatFromGlFormatType(_context GLContext, format uint, typ uint) 
 
 // GlStereoDownmixModeGetType wraps gst_gl_stereo_downmix_mode_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlStereoDownmixModeGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2544,7 +2419,7 @@ func GlStereoDownmixModeGetType() gobject.Type {
 
 // GlSyncMetaAPIGetType wraps gst_gl_sync_meta_api_get_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlSyncMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
@@ -2559,8 +2434,7 @@ func GlSyncMetaAPIGetType() gobject.Type {
 
 // GlValueGetTextureTargetMask wraps gst_gl_value_get_texture_target_mask
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlValueGetTextureTargetMask(value *gobject.Value) GLTextureTarget {
 	var carg1 *C.GValue            // in, none, converted
 	var cret  C.GstGLTextureTarget // return, none, casted
@@ -2579,7 +2453,7 @@ func GlValueGetTextureTargetMask(value *gobject.Value) GLTextureTarget {
 
 // GlValueSetTextureTarget wraps gst_gl_value_set_texture_target
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlValueSetTextureTarget(value *gobject.Value, target GLTextureTarget) bool {
 	var carg1 *C.GValue            // in, none, converted
 	var carg2 C.GstGLTextureTarget // in, none, casted
@@ -2603,8 +2477,7 @@ func GlValueSetTextureTarget(value *gobject.Value, target GLTextureTarget) bool 
 
 // GlValueSetTextureTargetFromMask wraps gst_gl_value_set_texture_target_from_mask
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlValueSetTextureTargetFromMask(value *gobject.Value, targetMask GLTextureTarget) bool {
 	var carg1 *C.GValue            // in, none, converted
 	var carg2 C.GstGLTextureTarget // in, none, casted
@@ -2628,7 +2501,7 @@ func GlValueSetTextureTargetFromMask(value *gobject.Value, targetMask GLTextureT
 
 // GlVersionToGlslVersion wraps gst_gl_version_to_glsl_version
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlVersionToGlslVersion(glApi GLAPI, maj int32, min int32) GLSLVersion {
 	var carg1 C.GstGLAPI       // in, none, casted
 	var carg2 C.gint           // in, none, casted
@@ -2653,8 +2526,7 @@ func GlVersionToGlslVersion(glApi GLAPI, maj int32, min int32) GLSLVersion {
 
 // GlslStringGetVersionProfile wraps gst_glsl_string_get_version_profile
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func GlslStringGetVersionProfile(s string) (GLSLVersion, GLSLProfile, bool) {
 	var carg1 *C.gchar         // in, none, string
 	var carg2 C.GstGLSLVersion // out, full, casted
@@ -2682,7 +2554,7 @@ func GlslStringGetVersionProfile(s string) (GLSLVersion, GLSLProfile, bool) {
 
 // IsGlBaseMemory wraps gst_is_gl_base_memory
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func IsGlBaseMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -2703,7 +2575,7 @@ func IsGlBaseMemory(mem *gst.Memory) bool {
 
 // IsGlBuffer wraps gst_is_gl_buffer
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func IsGlBuffer(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -2724,7 +2596,7 @@ func IsGlBuffer(mem *gst.Memory) bool {
 
 // IsGlMemory wraps gst_is_gl_memory
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func IsGlMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -2745,7 +2617,7 @@ func IsGlMemory(mem *gst.Memory) bool {
 
 // IsGlMemoryPbo wraps gst_is_gl_memory_pbo
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func IsGlMemoryPbo(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -2766,7 +2638,7 @@ func IsGlMemoryPbo(mem *gst.Memory) bool {
 
 // IsGlRenderbuffer wraps gst_is_gl_renderbuffer
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func IsGlRenderbuffer(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
@@ -2795,19 +2667,18 @@ var _ GLBaseFilter = (*GLBaseFilterInstance)(nil)
 
 // GLBaseFilter wraps GstGLBaseFilter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#GstGLBaseFilter
 type GLBaseFilter interface {
 	gstbase.BaseTransform
 	upcastToGstGLBaseFilter() *GLBaseFilterInstance
 
 	// FindGlContext wraps gst_gl_base_filter_find_gl_context
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gst_gl_base_filter_find_gl_context
 	FindGlContext() bool
 	// GetGlContext wraps gst_gl_base_filter_get_gl_context
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gst_gl_base_filter_get_gl_context
 	GetGlContext() GLContext
 
 	// chain up virtual methods:
@@ -2815,17 +2686,17 @@ type GLBaseFilter interface {
 	// ParentGlSetCaps calls the default implementations of the `GstGLBaseFilter.gl_set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gl_set_caps
 	ParentGlSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
 	// ParentGlStart calls the default implementations of the `GstGLBaseFilter.gl_start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gl_start
 	ParentGlStart() bool
 	// ParentGlStop calls the default implementations of the `GstGLBaseFilter.gl_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gl_stop
 	ParentGlStop()
 }
 
@@ -2887,7 +2758,7 @@ func UnsafeGLBaseFilterToGlibFull(c GLBaseFilter) unsafe.Pointer {
 
 // FindGlContext wraps gst_gl_base_filter_find_gl_context
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gst_gl_base_filter_find_gl_context
 func (filter *GLBaseFilterInstance) FindGlContext() bool {
 	var carg0 *C.GstGLBaseFilter // in, none, converted
 	var cret  C.gboolean         // return
@@ -2908,7 +2779,7 @@ func (filter *GLBaseFilterInstance) FindGlContext() bool {
 
 // GetGlContext wraps gst_gl_base_filter_get_gl_context
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gst_gl_base_filter_get_gl_context
 func (filter *GLBaseFilterInstance) GetGlContext() GLContext {
 	var carg0 *C.GstGLBaseFilter // in, none, converted
 	var cret  *C.GstGLContext    // return, full, converted, nullable
@@ -2935,15 +2806,15 @@ type GLBaseFilterOverrides[Instance GLBaseFilter] struct {
 
 	// // GlSetCaps allows you to override the implementation of the virtual method gl_set_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gl_set_caps
 	GlSetCaps func(Instance, *gst.Caps, *gst.Caps) bool
 	// // GlStart allows you to override the implementation of the virtual method gl_start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gl_start
 	GlStart func(Instance) bool
 	// // GlStop allows you to override the implementation of the virtual method gl_stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gl_stop
 	GlStop func(Instance)
 }
 
@@ -3021,7 +2892,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 // ParentGlSetCaps calls the default implementations of the `GstGLBaseFilter.gl_set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gl_set_caps
 func (filter *GLBaseFilterInstance) ParentGlSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool {
 	var carg0 *C.GstGLBaseFilter
 	var carg1 *C.GstCaps // in, none, converted
@@ -3051,7 +2922,7 @@ func (filter *GLBaseFilterInstance) ParentGlSetCaps(incaps *gst.Caps, outcaps *g
 // ParentGlStart calls the default implementations of the `GstGLBaseFilter.gl_start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gl_start
 func (filter *GLBaseFilterInstance) ParentGlStart() bool {
 	var carg0 *C.GstGLBaseFilter
 	var cret  C.gboolean // return
@@ -3075,7 +2946,7 @@ func (filter *GLBaseFilterInstance) ParentGlStart() bool {
 // ParentGlStop calls the default implementations of the `GstGLBaseFilter.gl_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#gl_stop
 func (filter *GLBaseFilterInstance) ParentGlStop() {
 	var carg0 *C.GstGLBaseFilter
 
@@ -3123,8 +2994,7 @@ var _ GLBaseMemoryAllocator = (*GLBaseMemoryAllocatorInstance)(nil)
 
 // GLBaseMemoryAllocator wraps GstGLBaseMemoryAllocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GstGLBaseMemoryAllocator
 type GLBaseMemoryAllocator interface {
 	gst.Allocator
 	upcastToGstGLBaseMemoryAllocator() *GLBaseMemoryAllocatorInstance
@@ -3134,7 +3004,7 @@ type GLBaseMemoryAllocator interface {
 	// ParentAllocGLBaseMemoryAllocator calls the default implementations of the `GstGLBaseMemoryAllocator.alloc` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#alloc
 	ParentAllocGLBaseMemoryAllocator(params *GLAllocationParams) *GLBaseMemory
 }
 
@@ -3200,7 +3070,7 @@ type GLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator] struct {
 
 	// // Alloc allows you to override the implementation of the virtual method alloc.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#alloc
 	Alloc func(Instance, *GLAllocationParams) *GLBaseMemory
 }
 
@@ -3239,7 +3109,7 @@ func UnsafeApplyGLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator](g
 // ParentAllocGLBaseMemoryAllocator calls the default implementations of the `GstGLBaseMemoryAllocator.alloc` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#alloc
 func (allocator *GLBaseMemoryAllocatorInstance) ParentAllocGLBaseMemoryAllocator(params *GLAllocationParams) *GLBaseMemory {
 	var carg0 *C.GstGLBaseMemoryAllocator
 	var carg1 *C.GstGLAllocationParams // in, none, converted
@@ -3299,15 +3169,14 @@ var _ GLBaseMixer = (*GLBaseMixerInstance)(nil)
 
 // GLBaseMixer wraps GstGLBaseMixer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#GstGLBaseMixer
 type GLBaseMixer interface {
 	gstvideo.VideoAggregator
 	upcastToGstGLBaseMixer() *GLBaseMixerInstance
 
 	// GetGlContext wraps gst_gl_base_mixer_get_gl_context
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#gst_gl_base_mixer_get_gl_context
 	GetGlContext() GLContext
 
 	// chain up virtual methods:
@@ -3315,12 +3184,12 @@ type GLBaseMixer interface {
 	// ParentGlStart calls the default implementations of the `GstGLBaseMixer.gl_start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#gl_start
 	ParentGlStart() bool
 	// ParentGlStop calls the default implementations of the `GstGLBaseMixer.gl_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#gl_stop
 	ParentGlStop()
 }
 
@@ -3384,7 +3253,7 @@ func UnsafeGLBaseMixerToGlibFull(c GLBaseMixer) unsafe.Pointer {
 
 // GetGlContext wraps gst_gl_base_mixer_get_gl_context
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#gst_gl_base_mixer_get_gl_context
 func (mix *GLBaseMixerInstance) GetGlContext() GLContext {
 	var carg0 *C.GstGLBaseMixer // in, none, converted
 	var cret  *C.GstGLContext   // return, full, converted, nullable
@@ -3411,11 +3280,11 @@ type GLBaseMixerOverrides[Instance GLBaseMixer] struct {
 
 	// // GlStart allows you to override the implementation of the virtual method gl_start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#gl_start
 	GlStart func(Instance) bool
 	// // GlStop allows you to override the implementation of the virtual method gl_stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#gl_stop
 	GlStop func(Instance)
 }
 
@@ -3467,7 +3336,7 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 // ParentGlStart calls the default implementations of the `GstGLBaseMixer.gl_start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#gl_start
 func (mix *GLBaseMixerInstance) ParentGlStart() bool {
 	var carg0 *C.GstGLBaseMixer
 	var cret  C.gboolean // return
@@ -3491,7 +3360,7 @@ func (mix *GLBaseMixerInstance) ParentGlStart() bool {
 // ParentGlStop calls the default implementations of the `GstGLBaseMixer.gl_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#gl_stop
 func (mix *GLBaseMixerInstance) ParentGlStop() {
 	var carg0 *C.GstGLBaseMixer
 
@@ -3539,7 +3408,7 @@ var _ GLBaseMixerPad = (*GLBaseMixerPadInstance)(nil)
 
 // GLBaseMixerPad wraps GstGLBaseMixerPad
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#GstGLBaseMixerPad
 type GLBaseMixerPad interface {
 	gstvideo.VideoAggregatorPad
 	upcastToGstGLBaseMixerPad() *GLBaseMixerPadInstance
@@ -3655,28 +3524,32 @@ var _ GLBaseSrc = (*GLBaseSrcInstance)(nil)
 
 // GLBaseSrc wraps GstGLBaseSrc
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#GstGLBaseSrc
 type GLBaseSrc interface {
 	gstbase.PushSrc
 	upcastToGstGLBaseSrc() *GLBaseSrcInstance
+
+	// GetGlContext wraps gst_gl_base_src_get_gl_context
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gst_gl_base_src_get_gl_context
+	GetGlContext() GLContext
 
 	// chain up virtual methods:
 
 	// ParentFillGlMemory calls the default implementations of the `GstGLBaseSrc.fill_gl_memory` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#fill_gl_memory
 	ParentFillGlMemory(mem *GLMemory) bool
 	// ParentGlStart calls the default implementations of the `GstGLBaseSrc.gl_start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gl_start
 	ParentGlStart() bool
 	// ParentGlStop calls the default implementations of the `GstGLBaseSrc.gl_stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gl_stop
 	ParentGlStop()
 }
 
@@ -3738,6 +3611,27 @@ func UnsafeGLBaseSrcToGlibFull(c GLBaseSrc) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// GetGlContext wraps gst_gl_base_src_get_gl_context
+// 
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gst_gl_base_src_get_gl_context
+func (baseSrc *GLBaseSrcInstance) GetGlContext() GLContext {
+	var carg0 *C.GstGLBaseSrc // in, none, converted
+	var cret  *C.GstGLContext // return, full, converted, nullable
+
+	carg0 = (*C.GstGLBaseSrc)(UnsafeGLBaseSrcToGlibNone(baseSrc))
+
+	cret = C.gst_gl_base_src_get_gl_context(carg0)
+	runtime.KeepAlive(baseSrc)
+
+	var goret GLContext
+
+	if cret != nil {
+		goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
 // GLBaseSrcOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type GLBaseSrcOverrides[Instance GLBaseSrc] struct {
@@ -3746,15 +3640,15 @@ type GLBaseSrcOverrides[Instance GLBaseSrc] struct {
 
 	// // FillGlMemory allows you to override the implementation of the virtual method fill_gl_memory.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#fill_gl_memory
 	FillGlMemory func(Instance, *GLMemory) bool
 	// // GlStart allows you to override the implementation of the virtual method gl_start.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gl_start
 	GlStart func(Instance) bool
 	// // GlStop allows you to override the implementation of the virtual method gl_stop.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gl_stop
 	GlStop func(Instance)
 }
 
@@ -3830,7 +3724,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 // ParentFillGlMemory calls the default implementations of the `GstGLBaseSrc.fill_gl_memory` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#fill_gl_memory
 func (src *GLBaseSrcInstance) ParentFillGlMemory(mem *GLMemory) bool {
 	var carg0 *C.GstGLBaseSrc
 	var carg1 *C.GstGLMemory // in, none, converted
@@ -3857,7 +3751,7 @@ func (src *GLBaseSrcInstance) ParentFillGlMemory(mem *GLMemory) bool {
 // ParentGlStart calls the default implementations of the `GstGLBaseSrc.gl_start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gl_start
 func (src *GLBaseSrcInstance) ParentGlStart() bool {
 	var carg0 *C.GstGLBaseSrc
 	var cret  C.gboolean // return
@@ -3881,7 +3775,7 @@ func (src *GLBaseSrcInstance) ParentGlStart() bool {
 // ParentGlStop calls the default implementations of the `GstGLBaseSrc.gl_stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gl_stop
 func (src *GLBaseSrcInstance) ParentGlStop() {
 	var carg0 *C.GstGLBaseSrc
 
@@ -3929,8 +3823,7 @@ var _ GLBufferAllocator = (*GLBufferAllocatorInstance)(nil)
 
 // GLBufferAllocator wraps GstGLBufferAllocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbuffer.html#GstGLBufferAllocator
 type GLBufferAllocator interface {
 	GLBaseMemoryAllocator
 	upcastToGstGLBufferAllocator() *GLBufferAllocatorInstance
@@ -4044,16 +3937,14 @@ var _ GLBufferPool = (*GLBufferPoolInstance)(nil)
 
 // GLBufferPool wraps GstGLBufferPool
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbufferpool.html#GstGLBufferPool
 type GLBufferPool interface {
 	gst.BufferPool
 	upcastToGstGLBufferPool() *GLBufferPoolInstance
 
 	// GetGlAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbufferpool.html#gst_gl_buffer_pool_get_gl_allocation_params
 	GetGlAllocationParams() *GLAllocationParams
 
 	// chain up virtual methods:
@@ -4115,7 +4006,7 @@ func UnsafeGLBufferPoolToGlibFull(c GLBufferPool) unsafe.Pointer {
 
 // NewGLBufferPool wraps gst_gl_buffer_pool_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbufferpool.html#gst_gl_buffer_pool_new
 func NewGLBufferPool(_context GLContext) gst.BufferPool {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var cret  *C.GstBufferPool // return, none, converted
@@ -4134,8 +4025,7 @@ func NewGLBufferPool(_context GLContext) gst.BufferPool {
 
 // GetGlAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbufferpool.html#gst_gl_buffer_pool_get_gl_allocation_params
 func (pool *GLBufferPoolInstance) GetGlAllocationParams() *GLAllocationParams {
 	var carg0 *C.GstGLBufferPool       // in, none, converted
 	var cret  *C.GstGLAllocationParams // return, full, converted, nullable
@@ -4204,26 +4094,22 @@ var _ GLColorConvert = (*GLColorConvertInstance)(nil)
 
 // GLColorConvert wraps GstGLColorConvert
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#GstGLColorConvert
 type GLColorConvert interface {
 	gst.Object
 	upcastToGstGLColorConvert() *GLColorConvertInstance
 
 	// DecideAllocation wraps gst_gl_color_convert_decide_allocation
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_decide_allocation
 	DecideAllocation(*gst.Query) bool
 	// Perform wraps gst_gl_color_convert_perform
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_perform
 	Perform(*gst.Buffer) *gst.Buffer
 	// SetCaps wraps gst_gl_color_convert_set_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_set_caps
 	SetCaps(*gst.Caps, *gst.Caps) bool
 
 	// chain up virtual methods:
@@ -4283,7 +4169,7 @@ func UnsafeGLColorConvertToGlibFull(c GLColorConvert) unsafe.Pointer {
 
 // NewGLColorConvert wraps gst_gl_color_convert_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_new
 func NewGLColorConvert(_context GLContext) GLColorConvert {
 	var carg1 *C.GstGLContext      // in, none, converted
 	var cret  *C.GstGLColorConvert // return, full, converted
@@ -4302,8 +4188,7 @@ func NewGLColorConvert(_context GLContext) GLColorConvert {
 
 // GLColorConvertFixateCaps wraps gst_gl_color_convert_fixate_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_fixate_caps
 func GLColorConvertFixateCaps(_context GLContext, direction gst.PadDirection, caps *gst.Caps, other *gst.Caps) *gst.Caps {
 	var carg1 *C.GstGLContext   // in, none, converted
 	var carg2 C.GstPadDirection // in, none, casted
@@ -4331,7 +4216,7 @@ func GLColorConvertFixateCaps(_context GLContext, direction gst.PadDirection, ca
 
 // GLColorConvertSwizzleShaderString wraps gst_gl_color_convert_swizzle_shader_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_swizzle_shader_string
 func GLColorConvertSwizzleShaderString(_context GLContext) string {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.gchar        // return, full, string
@@ -4351,8 +4236,7 @@ func GLColorConvertSwizzleShaderString(_context GLContext) string {
 
 // GLColorConvertTransformCaps wraps gst_gl_color_convert_transform_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_transform_caps
 func GLColorConvertTransformCaps(_context GLContext, direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg1 *C.GstGLContext   // in, none, converted
 	var carg2 C.GstPadDirection // in, none, casted
@@ -4380,8 +4264,7 @@ func GLColorConvertTransformCaps(_context GLContext, direction gst.PadDirection,
 
 // GLColorConvertYuvToRgbShaderString wraps gst_gl_color_convert_yuv_to_rgb_shader_string
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_yuv_to_rgb_shader_string
 func GLColorConvertYuvToRgbShaderString(_context GLContext) string {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.gchar        // return, full, string
@@ -4401,8 +4284,7 @@ func GLColorConvertYuvToRgbShaderString(_context GLContext) string {
 
 // DecideAllocation wraps gst_gl_color_convert_decide_allocation
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_decide_allocation
 func (convert *GLColorConvertInstance) DecideAllocation(query *gst.Query) bool {
 	var carg0 *C.GstGLColorConvert // in, none, converted
 	var carg1 *C.GstQuery          // in, none, converted
@@ -4426,8 +4308,7 @@ func (convert *GLColorConvertInstance) DecideAllocation(query *gst.Query) bool {
 
 // Perform wraps gst_gl_color_convert_perform
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_perform
 func (convert *GLColorConvertInstance) Perform(inbuf *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstGLColorConvert // in, none, converted
 	var carg1 *C.GstBuffer         // in, none, converted
@@ -4451,8 +4332,7 @@ func (convert *GLColorConvertInstance) Perform(inbuf *gst.Buffer) *gst.Buffer {
 
 // SetCaps wraps gst_gl_color_convert_set_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#gst_gl_color_convert_set_caps
 func (convert *GLColorConvertInstance) SetCaps(inCaps *gst.Caps, outCaps *gst.Caps) bool {
 	var carg0 *C.GstGLColorConvert // in, none, converted
 	var carg1 *C.GstCaps           // in, none, converted
@@ -4527,129 +4407,110 @@ var _ GLContext = (*GLContextInstance)(nil)
 
 // GLContext wraps GstGLContext
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#GstGLContext
 type GLContext interface {
 	gst.Object
 	upcastToGstGLContext() *GLContextInstance
 
 	// Activate wraps gst_gl_context_activate
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_activate
 	Activate(bool) bool
 	// CanShare wraps gst_gl_context_can_share
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_can_share
 	CanShare(GLContext) bool
 	// CheckFeature wraps gst_gl_context_check_feature
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_check_feature
 	CheckFeature(string) bool
 	// CheckFramebufferStatus wraps gst_gl_context_check_framebuffer_status
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_check_framebuffer_status
 	CheckFramebufferStatus(uint) bool
 	// CheckGlVersion wraps gst_gl_context_check_gl_version
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_check_gl_version
 	CheckGlVersion(GLAPI, int32, int32) bool
 	// ClearFramebuffer wraps gst_gl_context_clear_framebuffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_clear_framebuffer
 	ClearFramebuffer()
 	// ClearShader wraps gst_gl_context_clear_shader
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_clear_shader
 	ClearShader()
 	// Create wraps gst_gl_context_create
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_create
 	Create(GLContext) (bool, error)
 	// Destroy wraps gst_gl_context_destroy
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_destroy
 	Destroy()
 	// FillInfo wraps gst_gl_context_fill_info
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_fill_info
 	FillInfo() (bool, error)
 	// GetConfig wraps gst_gl_context_get_config
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_config
 	GetConfig() *gst.Structure
 	// GetDisplay wraps gst_gl_context_get_display
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_display
 	GetDisplay() GLDisplay
 	// GetGlAPI wraps gst_gl_context_get_gl_api
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_gl_api
 	GetGlAPI() GLAPI
 	// GetGlPlatform wraps gst_gl_context_get_gl_platform
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_gl_platform
 	GetGlPlatform() GLPlatform
 	// GetGlPlatformVersion wraps gst_gl_context_get_gl_platform_version
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_gl_platform_version
 	GetGlPlatformVersion() (int32, int32)
 	// GetGlVersion wraps gst_gl_context_get_gl_version
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_gl_version
 	GetGlVersion() (int32, int32)
 	// GetWindow wraps gst_gl_context_get_window
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_window
 	GetWindow() GLWindow
 	// IsShared wraps gst_gl_context_is_shared
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_is_shared
 	IsShared() bool
 	// RequestConfig wraps gst_gl_context_request_config
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_request_config
 	RequestConfig(*gst.Structure) bool
 	// SetSharedWith wraps gst_gl_context_set_shared_with
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_set_shared_with
 	SetSharedWith(GLContext)
 	// SetWindow wraps gst_gl_context_set_window
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_set_window
 	SetWindow(GLWindow) bool
 	// SupportsGlslProfileVersion wraps gst_gl_context_supports_glsl_profile_version
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_supports_glsl_profile_version
 	SupportsGlslProfileVersion(GLSLVersion, GLSLProfile) bool
 	// SupportsPrecision wraps gst_gl_context_supports_precision
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_supports_precision
 	SupportsPrecision(GLSLVersion, GLSLProfile) bool
 	// SupportsPrecisionHighp wraps gst_gl_context_supports_precision_highp
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_supports_precision_highp
 	SupportsPrecisionHighp(GLSLVersion, GLSLProfile) bool
 	// SwapBuffers wraps gst_gl_context_swap_buffers
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_swap_buffers
 	SwapBuffers()
 
 	// chain up virtual methods:
@@ -4657,57 +4518,57 @@ type GLContext interface {
 	// ParentActivate calls the default implementations of the `GstGLContext.activate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#activate
 	ParentActivate(activate bool) bool
 	// ParentCheckFeature calls the default implementations of the `GstGLContext.check_feature` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#check_feature
 	ParentCheckFeature(feature string) bool
 	// ParentChooseFormat calls the default implementations of the `GstGLContext.choose_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#choose_format
 	ParentChooseFormat() (bool, error)
 	// ParentCreateContext calls the default implementations of the `GstGLContext.create_context` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#create_context
 	ParentCreateContext(glApi GLAPI, otherContext GLContext) (bool, error)
 	// ParentDestroyContext calls the default implementations of the `GstGLContext.destroy_context` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#destroy_context
 	ParentDestroyContext()
 	// ParentGetConfig calls the default implementations of the `GstGLContext.get_config` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_config
 	ParentGetConfig() *gst.Structure
 	// ParentGetGlAPI calls the default implementations of the `GstGLContext.get_gl_api` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_gl_api
 	ParentGetGlAPI() GLAPI
 	// ParentGetGlPlatform calls the default implementations of the `GstGLContext.get_gl_platform` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_gl_platform
 	ParentGetGlPlatform() GLPlatform
 	// ParentGetGlPlatformVersion calls the default implementations of the `GstGLContext.get_gl_platform_version` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_gl_platform_version
 	ParentGetGlPlatformVersion() (int32, int32)
 	// ParentRequestConfig calls the default implementations of the `GstGLContext.request_config` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#request_config
 	ParentRequestConfig(glConfig *gst.Structure) bool
 	// ParentSwapBuffers calls the default implementations of the `GstGLContext.swap_buffers` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#swap_buffers
 	ParentSwapBuffers()
 }
 
@@ -4765,8 +4626,7 @@ func UnsafeGLContextToGlibFull(c GLContext) unsafe.Pointer {
 
 // NewGLContext wraps gst_gl_context_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_new
 func NewGLContext(display GLDisplay) GLContext {
 	var carg1 *C.GstGLDisplay // in, none, converted
 	var cret  *C.GstGLContext // return, none, converted
@@ -4785,8 +4645,7 @@ func NewGLContext(display GLDisplay) GLContext {
 
 // GLContextGetCurrent wraps gst_gl_context_get_current
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_current
 func GLContextGetCurrent() GLContext {
 	var cret *C.GstGLContext // return, none, converted, nullable
 
@@ -4803,8 +4662,7 @@ func GLContextGetCurrent() GLContext {
 
 // GLContextGetCurrentGlAPI wraps gst_gl_context_get_current_gl_api
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_current_gl_api
 func GLContextGetCurrentGlAPI(platform GLPlatform) (uint, uint, GLAPI) {
 	var carg1 C.GstGLPlatform // in, none, casted
 	var carg2 C.guint         // out, full, casted
@@ -4829,8 +4687,7 @@ func GLContextGetCurrentGlAPI(platform GLPlatform) (uint, uint, GLAPI) {
 
 // Activate wraps gst_gl_context_activate
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_activate
 func (_context *GLContextInstance) Activate(activate bool) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.gboolean      // in
@@ -4856,8 +4713,7 @@ func (_context *GLContextInstance) Activate(activate bool) bool {
 
 // CanShare wraps gst_gl_context_can_share
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_can_share
 func (_context *GLContextInstance) CanShare(otherContext GLContext) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
@@ -4881,8 +4737,7 @@ func (_context *GLContextInstance) CanShare(otherContext GLContext) bool {
 
 // CheckFeature wraps gst_gl_context_check_feature
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_check_feature
 func (_context *GLContextInstance) CheckFeature(feature string) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.gchar        // in, none, string
@@ -4907,8 +4762,7 @@ func (_context *GLContextInstance) CheckFeature(feature string) bool {
 
 // CheckFramebufferStatus wraps gst_gl_context_check_framebuffer_status
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_check_framebuffer_status
 func (_context *GLContextInstance) CheckFramebufferStatus(fboTarget uint) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.guint         // in, none, casted
@@ -4932,7 +4786,7 @@ func (_context *GLContextInstance) CheckFramebufferStatus(fboTarget uint) bool {
 
 // CheckGlVersion wraps gst_gl_context_check_gl_version
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_check_gl_version
 func (_context *GLContextInstance) CheckGlVersion(api GLAPI, maj int32, min int32) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.GstGLAPI      // in, none, casted
@@ -4962,8 +4816,7 @@ func (_context *GLContextInstance) CheckGlVersion(api GLAPI, maj int32, min int3
 
 // ClearFramebuffer wraps gst_gl_context_clear_framebuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_clear_framebuffer
 func (_context *GLContextInstance) ClearFramebuffer() {
 	var carg0 *C.GstGLContext // in, none, converted
 
@@ -4975,8 +4828,7 @@ func (_context *GLContextInstance) ClearFramebuffer() {
 
 // ClearShader wraps gst_gl_context_clear_shader
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_clear_shader
 func (_context *GLContextInstance) ClearShader() {
 	var carg0 *C.GstGLContext // in, none, converted
 
@@ -4988,8 +4840,7 @@ func (_context *GLContextInstance) ClearShader() {
 
 // Create wraps gst_gl_context_create
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_create
 func (_context *GLContextInstance) Create(otherContext GLContext) (bool, error) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted, nullable
@@ -5020,8 +4871,7 @@ func (_context *GLContextInstance) Create(otherContext GLContext) (bool, error) 
 
 // Destroy wraps gst_gl_context_destroy
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_destroy
 func (_context *GLContextInstance) Destroy() {
 	var carg0 *C.GstGLContext // in, none, converted
 
@@ -5033,8 +4883,7 @@ func (_context *GLContextInstance) Destroy() {
 
 // FillInfo wraps gst_gl_context_fill_info
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_fill_info
 func (_context *GLContextInstance) FillInfo() (bool, error) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.gboolean      // return
@@ -5060,8 +4909,7 @@ func (_context *GLContextInstance) FillInfo() (bool, error) {
 
 // GetConfig wraps gst_gl_context_get_config
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_config
 func (_context *GLContextInstance) GetConfig() *gst.Structure {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  *C.GstStructure // return, full, converted, nullable
@@ -5082,7 +4930,7 @@ func (_context *GLContextInstance) GetConfig() *gst.Structure {
 
 // GetDisplay wraps gst_gl_context_get_display
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_display
 func (_context *GLContextInstance) GetDisplay() GLDisplay {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLDisplay // return, full, converted
@@ -5101,8 +4949,7 @@ func (_context *GLContextInstance) GetDisplay() GLDisplay {
 
 // GetGlAPI wraps gst_gl_context_get_gl_api
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_gl_api
 func (_context *GLContextInstance) GetGlAPI() GLAPI {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.GstGLAPI      // return, none, casted
@@ -5121,8 +4968,7 @@ func (_context *GLContextInstance) GetGlAPI() GLAPI {
 
 // GetGlPlatform wraps gst_gl_context_get_gl_platform
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_gl_platform
 func (_context *GLContextInstance) GetGlPlatform() GLPlatform {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.GstGLPlatform // return, none, casted
@@ -5141,8 +4987,7 @@ func (_context *GLContextInstance) GetGlPlatform() GLPlatform {
 
 // GetGlPlatformVersion wraps gst_gl_context_get_gl_platform_version
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_gl_platform_version
 func (_context *GLContextInstance) GetGlPlatformVersion() (int32, int32) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.gint          // out, full, casted
@@ -5164,8 +5009,7 @@ func (_context *GLContextInstance) GetGlPlatformVersion() (int32, int32) {
 
 // GetGlVersion wraps gst_gl_context_get_gl_version
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_gl_version
 func (_context *GLContextInstance) GetGlVersion() (int32, int32) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.gint          // out, full, casted
@@ -5187,7 +5031,7 @@ func (_context *GLContextInstance) GetGlVersion() (int32, int32) {
 
 // GetWindow wraps gst_gl_context_get_window
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_get_window
 func (_context *GLContextInstance) GetWindow() GLWindow {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLWindow  // return, full, converted, nullable
@@ -5208,7 +5052,7 @@ func (_context *GLContextInstance) GetWindow() GLWindow {
 
 // IsShared wraps gst_gl_context_is_shared
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_is_shared
 func (_context *GLContextInstance) IsShared() bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.gboolean      // return
@@ -5229,8 +5073,7 @@ func (_context *GLContextInstance) IsShared() bool {
 
 // RequestConfig wraps gst_gl_context_request_config
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_request_config
 func (_context *GLContextInstance) RequestConfig(glConfig *gst.Structure) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstStructure // in, full, converted, nullable
@@ -5256,8 +5099,7 @@ func (_context *GLContextInstance) RequestConfig(glConfig *gst.Structure) bool {
 
 // SetSharedWith wraps gst_gl_context_set_shared_with
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_set_shared_with
 func (_context *GLContextInstance) SetSharedWith(share GLContext) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
@@ -5272,8 +5114,7 @@ func (_context *GLContextInstance) SetSharedWith(share GLContext) {
 
 // SetWindow wraps gst_gl_context_set_window
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_set_window
 func (_context *GLContextInstance) SetWindow(window GLWindow) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstGLWindow  // in, full, converted
@@ -5297,7 +5138,7 @@ func (_context *GLContextInstance) SetWindow(window GLWindow) bool {
 
 // SupportsGlslProfileVersion wraps gst_gl_context_supports_glsl_profile_version
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_supports_glsl_profile_version
 func (_context *GLContextInstance) SupportsGlslProfileVersion(version GLSLVersion, profile GLSLProfile) bool {
 	var carg0 *C.GstGLContext  // in, none, converted
 	var carg1 C.GstGLSLVersion // in, none, casted
@@ -5324,7 +5165,7 @@ func (_context *GLContextInstance) SupportsGlslProfileVersion(version GLSLVersio
 
 // SupportsPrecision wraps gst_gl_context_supports_precision
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_supports_precision
 func (_context *GLContextInstance) SupportsPrecision(version GLSLVersion, profile GLSLProfile) bool {
 	var carg0 *C.GstGLContext  // in, none, converted
 	var carg1 C.GstGLSLVersion // in, none, casted
@@ -5351,7 +5192,7 @@ func (_context *GLContextInstance) SupportsPrecision(version GLSLVersion, profil
 
 // SupportsPrecisionHighp wraps gst_gl_context_supports_precision_highp
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_supports_precision_highp
 func (_context *GLContextInstance) SupportsPrecisionHighp(version GLSLVersion, profile GLSLProfile) bool {
 	var carg0 *C.GstGLContext  // in, none, converted
 	var carg1 C.GstGLSLVersion // in, none, casted
@@ -5378,8 +5219,7 @@ func (_context *GLContextInstance) SupportsPrecisionHighp(version GLSLVersion, p
 
 // SwapBuffers wraps gst_gl_context_swap_buffers
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_swap_buffers
 func (_context *GLContextInstance) SwapBuffers() {
 	var carg0 *C.GstGLContext // in, none, converted
 
@@ -5397,47 +5237,47 @@ type GLContextOverrides[Instance GLContext] struct {
 
 	// // Activate allows you to override the implementation of the virtual method activate.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#activate
 	Activate func(Instance, bool) bool
 	// // CheckFeature allows you to override the implementation of the virtual method check_feature.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#check_feature
 	CheckFeature func(Instance, string) bool
 	// // ChooseFormat allows you to override the implementation of the virtual method choose_format.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#choose_format
 	ChooseFormat func(Instance) (bool, error)
 	// // CreateContext allows you to override the implementation of the virtual method create_context.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#create_context
 	CreateContext func(Instance, GLAPI, GLContext) (bool, error)
 	// // DestroyContext allows you to override the implementation of the virtual method destroy_context.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#destroy_context
 	DestroyContext func(Instance)
 	// // GetConfig allows you to override the implementation of the virtual method get_config.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_config
 	GetConfig func(Instance) *gst.Structure
 	// // GetGlAPI allows you to override the implementation of the virtual method get_gl_api.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_gl_api
 	GetGlAPI func(Instance) GLAPI
 	// // GetGlPlatform allows you to override the implementation of the virtual method get_gl_platform.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_gl_platform
 	GetGlPlatform func(Instance) GLPlatform
 	// // GetGlPlatformVersion allows you to override the implementation of the virtual method get_gl_platform_version.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_gl_platform_version
 	GetGlPlatformVersion func(Instance) (int32, int32)
 	// // RequestConfig allows you to override the implementation of the virtual method request_config.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#request_config
 	RequestConfig func(Instance, *gst.Structure) bool
 	// // SwapBuffers allows you to override the implementation of the virtual method swap_buffers.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#swap_buffers
 	SwapBuffers func(Instance)
 }
 
@@ -5692,7 +5532,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 // ParentActivate calls the default implementations of the `GstGLContext.activate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#activate
 func (_context *GLContextInstance) ParentActivate(activate bool) bool {
 	var carg0 *C.GstGLContext
 	var carg1 C.gboolean // in, none, converted
@@ -5721,7 +5561,7 @@ func (_context *GLContextInstance) ParentActivate(activate bool) bool {
 // ParentCheckFeature calls the default implementations of the `GstGLContext.check_feature` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#check_feature
 func (_context *GLContextInstance) ParentCheckFeature(feature string) bool {
 	var carg0 *C.GstGLContext
 	var carg1 *C.gchar   // in, none, converted
@@ -5749,7 +5589,7 @@ func (_context *GLContextInstance) ParentCheckFeature(feature string) bool {
 // ParentChooseFormat calls the default implementations of the `GstGLContext.choose_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#choose_format
 func (_context *GLContextInstance) ParentChooseFormat() (bool, error) {
 	var carg0 *C.GstGLContext
 	var cret  C.gboolean // return
@@ -5778,7 +5618,7 @@ func (_context *GLContextInstance) ParentChooseFormat() (bool, error) {
 // ParentCreateContext calls the default implementations of the `GstGLContext.create_context` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#create_context
 func (_context *GLContextInstance) ParentCreateContext(glApi GLAPI, otherContext GLContext) (bool, error) {
 	var carg0 *C.GstGLContext
 	var carg1 C.GstGLAPI      // in, none, converted
@@ -5813,7 +5653,7 @@ func (_context *GLContextInstance) ParentCreateContext(glApi GLAPI, otherContext
 // ParentDestroyContext calls the default implementations of the `GstGLContext.destroy_context` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#destroy_context
 func (_context *GLContextInstance) ParentDestroyContext() {
 	var carg0 *C.GstGLContext
 
@@ -5828,7 +5668,7 @@ func (_context *GLContextInstance) ParentDestroyContext() {
 // ParentGetConfig calls the default implementations of the `GstGLContext.get_config` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_config
 func (_context *GLContextInstance) ParentGetConfig() *gst.Structure {
 	var carg0 *C.GstGLContext
 	var cret  *C.GstStructure // return, full, converted, nullable
@@ -5852,7 +5692,7 @@ func (_context *GLContextInstance) ParentGetConfig() *gst.Structure {
 // ParentGetGlAPI calls the default implementations of the `GstGLContext.get_gl_api` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_gl_api
 func (_context *GLContextInstance) ParentGetGlAPI() GLAPI {
 	var carg0 *C.GstGLContext
 	var cret  C.GstGLAPI // return, none, casted
@@ -5874,7 +5714,7 @@ func (_context *GLContextInstance) ParentGetGlAPI() GLAPI {
 // ParentGetGlPlatform calls the default implementations of the `GstGLContext.get_gl_platform` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_gl_platform
 func (_context *GLContextInstance) ParentGetGlPlatform() GLPlatform {
 	var carg0 *C.GstGLContext
 	var cret  C.GstGLPlatform // return, none, casted
@@ -5896,7 +5736,7 @@ func (_context *GLContextInstance) ParentGetGlPlatform() GLPlatform {
 // ParentGetGlPlatformVersion calls the default implementations of the `GstGLContext.get_gl_platform_version` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#get_gl_platform_version
 func (_context *GLContextInstance) ParentGetGlPlatformVersion() (int32, int32) {
 	var carg0 *C.GstGLContext
 	var carg1 C.gint // out, full, casted
@@ -5921,7 +5761,7 @@ func (_context *GLContextInstance) ParentGetGlPlatformVersion() (int32, int32) {
 // ParentRequestConfig calls the default implementations of the `GstGLContext.request_config` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#request_config
 func (_context *GLContextInstance) ParentRequestConfig(glConfig *gst.Structure) bool {
 	var carg0 *C.GstGLContext
 	var carg1 *C.GstStructure // in, none, converted
@@ -5950,7 +5790,7 @@ func (_context *GLContextInstance) ParentRequestConfig(glConfig *gst.Structure) 
 // ParentSwapBuffers calls the default implementations of the `GstGLContext.swap_buffers` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#swap_buffers
 func (_context *GLContextInstance) ParentSwapBuffers() {
 	var carg0 *C.GstGLContext
 
@@ -5998,56 +5838,50 @@ var _ GLDisplay = (*GLDisplayInstance)(nil)
 
 // GLDisplay wraps GstGLDisplay
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GstGLDisplay
 type GLDisplay interface {
 	gst.Object
 	upcastToGstGLDisplay() *GLDisplayInstance
 
 	// AddContext wraps gst_gl_display_add_context
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_add_context
 	AddContext(GLContext) bool
 	// CreateContext wraps gst_gl_display_create_context
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_create_context
 	CreateContext(GLContext) (GLContext, bool, error)
 	// CreateWindow wraps gst_gl_display_create_window
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_create_window
 	CreateWindow() GLWindow
 	// FilterGlAPI wraps gst_gl_display_filter_gl_api
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_filter_gl_api
 	FilterGlAPI(GLAPI)
 	// GetGlAPI wraps gst_gl_display_get_gl_api
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_get_gl_api
 	GetGlAPI() GLAPI
 	// GetGlAPIUnlocked wraps gst_gl_display_get_gl_api_unlocked
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_get_gl_api_unlocked
 	GetGlAPIUnlocked() GLAPI
 	// GetHandleType wraps gst_gl_display_get_handle_type
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_get_handle_type
 	GetHandleType() GLDisplayType
 	// RemoveContext wraps gst_gl_display_remove_context
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_remove_context
 	RemoveContext(GLContext)
 	// RemoveWindow wraps gst_gl_display_remove_window
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_remove_window
 	RemoveWindow(GLWindow) bool
 	// ConnectCreateContext connects the provided callback to the "create-context" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl
 	ConnectCreateContext(func(GLDisplay, GLContext) GLContextInstance) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -6055,7 +5889,7 @@ type GLDisplay interface {
 	// ParentCreateWindow calls the default implementations of the `GstGLDisplay.create_window` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#create_window
 	ParentCreateWindow() GLWindow
 }
 
@@ -6113,7 +5947,7 @@ func UnsafeGLDisplayToGlibFull(c GLDisplay) unsafe.Pointer {
 
 // NewGLDisplay wraps gst_gl_display_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_new
 func NewGLDisplay() GLDisplay {
 	var cret *C.GstGLDisplay // return, full, converted
 
@@ -6128,8 +5962,7 @@ func NewGLDisplay() GLDisplay {
 
 // NewGLDisplayWithType wraps gst_gl_display_new_with_type
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_new_with_type
 func NewGLDisplayWithType(typ GLDisplayType) GLDisplay {
 	var carg1 C.GstGLDisplayType // in, none, casted
 	var cret  *C.GstGLDisplay    // return, full, converted, nullable
@@ -6150,7 +5983,7 @@ func NewGLDisplayWithType(typ GLDisplayType) GLDisplay {
 
 // AddContext wraps gst_gl_display_add_context
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_add_context
 func (display *GLDisplayInstance) AddContext(_context GLContext) bool {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
@@ -6174,8 +6007,7 @@ func (display *GLDisplayInstance) AddContext(_context GLContext) bool {
 
 // CreateContext wraps gst_gl_display_create_context
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_create_context
 func (display *GLDisplayInstance) CreateContext(otherContext GLContext) (GLContext, bool, error) {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted, nullable
@@ -6209,7 +6041,7 @@ func (display *GLDisplayInstance) CreateContext(otherContext GLContext) (GLConte
 
 // CreateWindow wraps gst_gl_display_create_window
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_create_window
 func (display *GLDisplayInstance) CreateWindow() GLWindow {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var cret  *C.GstGLWindow  // return, full, converted, nullable
@@ -6230,8 +6062,7 @@ func (display *GLDisplayInstance) CreateWindow() GLWindow {
 
 // FilterGlAPI wraps gst_gl_display_filter_gl_api
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_filter_gl_api
 func (display *GLDisplayInstance) FilterGlAPI(glApi GLAPI) {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var carg1 C.GstGLAPI      // in, none, casted
@@ -6246,8 +6077,7 @@ func (display *GLDisplayInstance) FilterGlAPI(glApi GLAPI) {
 
 // GetGlAPI wraps gst_gl_display_get_gl_api
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_get_gl_api
 func (display *GLDisplayInstance) GetGlAPI() GLAPI {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var cret  C.GstGLAPI      // return, none, casted
@@ -6266,7 +6096,7 @@ func (display *GLDisplayInstance) GetGlAPI() GLAPI {
 
 // GetGlAPIUnlocked wraps gst_gl_display_get_gl_api_unlocked
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_get_gl_api_unlocked
 func (display *GLDisplayInstance) GetGlAPIUnlocked() GLAPI {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var cret  C.GstGLAPI      // return, none, casted
@@ -6285,7 +6115,7 @@ func (display *GLDisplayInstance) GetGlAPIUnlocked() GLAPI {
 
 // GetHandleType wraps gst_gl_display_get_handle_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_get_handle_type
 func (display *GLDisplayInstance) GetHandleType() GLDisplayType {
 	var carg0 *C.GstGLDisplay    // in, none, converted
 	var cret  C.GstGLDisplayType // return, none, casted
@@ -6304,8 +6134,7 @@ func (display *GLDisplayInstance) GetHandleType() GLDisplayType {
 
 // RemoveContext wraps gst_gl_display_remove_context
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_remove_context
 func (display *GLDisplayInstance) RemoveContext(_context GLContext) {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
@@ -6320,7 +6149,7 @@ func (display *GLDisplayInstance) RemoveContext(_context GLContext) {
 
 // RemoveWindow wraps gst_gl_display_remove_window
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#gst_gl_display_remove_window
 func (display *GLDisplayInstance) RemoveWindow(window GLWindow) bool {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var carg1 *C.GstGLWindow  // in, none, converted
@@ -6344,8 +6173,7 @@ func (display *GLDisplayInstance) RemoveWindow(window GLWindow) bool {
 
 // ConnectCreateContext connects the provided callback to the "create-context" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func (o *GLDisplayInstance) ConnectCreateContext(fn func(GLDisplay, GLContext) GLContextInstance) gobject.SignalHandle {
 	return o.Connect("create-context", fn)
 }
@@ -6358,7 +6186,7 @@ type GLDisplayOverrides[Instance GLDisplay] struct {
 
 	// // CreateWindow allows you to override the implementation of the virtual method create_window.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#create_window
 	CreateWindow func(Instance) GLWindow
 }
 
@@ -6395,7 +6223,7 @@ func UnsafeApplyGLDisplayOverrides[Instance GLDisplay](gclass unsafe.Pointer, ov
 // ParentCreateWindow calls the default implementations of the `GstGLDisplay.create_window` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#create_window
 func (display *GLDisplayInstance) ParentCreateWindow() GLWindow {
 	var carg0 *C.GstGLDisplay
 	var cret  *C.GstGLWindow // return, full, converted, nullable
@@ -6452,31 +6280,26 @@ var _ GLFilter = (*GLFilterInstance)(nil)
 
 // GLFilter wraps GstGLFilter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#GstGLFilter
 type GLFilter interface {
 	GLBaseFilter
 	upcastToGstGLFilter() *GLFilterInstance
 
 	// DrawFullscreenQuad wraps gst_gl_filter_draw_fullscreen_quad
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#gst_gl_filter_draw_fullscreen_quad
 	DrawFullscreenQuad()
 	// FilterTexture wraps gst_gl_filter_filter_texture
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#gst_gl_filter_filter_texture
 	FilterTexture(*gst.Buffer, *gst.Buffer) bool
 	// RenderToTarget wraps gst_gl_filter_render_to_target
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#gst_gl_filter_render_to_target
 	RenderToTarget(*GLMemory, *GLMemory, GLFilterRenderFunc) bool
 	// RenderToTargetWithShader wraps gst_gl_filter_render_to_target_with_shader
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#gst_gl_filter_render_to_target_with_shader
 	RenderToTargetWithShader(*GLMemory, *GLMemory, GLShader)
 
 	// chain up virtual methods:
@@ -6484,27 +6307,27 @@ type GLFilter interface {
 	// ParentFilter calls the default implementations of the `GstGLFilter.filter` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#filter
 	ParentFilter(inbuf *gst.Buffer, outbuf *gst.Buffer) bool
 	// ParentFilterTexture calls the default implementations of the `GstGLFilter.filter_texture` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#filter_texture
 	ParentFilterTexture(input *GLMemory, output *GLMemory) bool
 	// ParentInitFbo calls the default implementations of the `GstGLFilter.init_fbo` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#init_fbo
 	ParentInitFbo() bool
 	// ParentSetCaps calls the default implementations of the `GstGLFilter.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#set_caps
 	ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
 	// ParentTransformInternalCaps calls the default implementations of the `GstGLFilter.transform_internal_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#transform_internal_caps
 	ParentTransformInternalCaps(direction gst.PadDirection, caps *gst.Caps, filterCaps *gst.Caps) *gst.Caps
 }
 
@@ -6568,7 +6391,7 @@ func UnsafeGLFilterToGlibFull(c GLFilter) unsafe.Pointer {
 
 // GLFilterAddRgbaPadTemplates wraps gst_gl_filter_add_rgba_pad_templates
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#gst_gl_filter_add_rgba_pad_templates
 func GLFilterAddRgbaPadTemplates(klass *GLFilterClass) {
 	var carg1 *C.GstGLFilterClass // in, none, converted
 
@@ -6580,8 +6403,7 @@ func GLFilterAddRgbaPadTemplates(klass *GLFilterClass) {
 
 // DrawFullscreenQuad wraps gst_gl_filter_draw_fullscreen_quad
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#gst_gl_filter_draw_fullscreen_quad
 func (filter *GLFilterInstance) DrawFullscreenQuad() {
 	var carg0 *C.GstGLFilter // in, none, converted
 
@@ -6593,8 +6415,7 @@ func (filter *GLFilterInstance) DrawFullscreenQuad() {
 
 // FilterTexture wraps gst_gl_filter_filter_texture
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#gst_gl_filter_filter_texture
 func (filter *GLFilterInstance) FilterTexture(input *gst.Buffer, output *gst.Buffer) bool {
 	var carg0 *C.GstGLFilter // in, none, converted
 	var carg1 *C.GstBuffer   // in, none, converted
@@ -6621,8 +6442,7 @@ func (filter *GLFilterInstance) FilterTexture(input *gst.Buffer, output *gst.Buf
 
 // RenderToTarget wraps gst_gl_filter_render_to_target
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#gst_gl_filter_render_to_target
 func (filter *GLFilterInstance) RenderToTarget(input *GLMemory, output *GLMemory, fn GLFilterRenderFunc) bool {
 	var carg0 *C.GstGLFilter          // in, none, converted
 	var carg1 *C.GstGLMemory          // in, none, converted
@@ -6655,8 +6475,7 @@ func (filter *GLFilterInstance) RenderToTarget(input *GLMemory, output *GLMemory
 
 // RenderToTargetWithShader wraps gst_gl_filter_render_to_target_with_shader
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#gst_gl_filter_render_to_target_with_shader
 func (filter *GLFilterInstance) RenderToTargetWithShader(input *GLMemory, output *GLMemory, shader GLShader) {
 	var carg0 *C.GstGLFilter // in, none, converted
 	var carg1 *C.GstGLMemory // in, none, converted
@@ -6683,23 +6502,23 @@ type GLFilterOverrides[Instance GLFilter] struct {
 
 	// // Filter allows you to override the implementation of the virtual method filter.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#filter
 	Filter func(Instance, *gst.Buffer, *gst.Buffer) bool
 	// // FilterTexture allows you to override the implementation of the virtual method filter_texture.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#filter_texture
 	FilterTexture func(Instance, *GLMemory, *GLMemory) bool
 	// // InitFbo allows you to override the implementation of the virtual method init_fbo.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#init_fbo
 	InitFbo func(Instance) bool
 	// // SetCaps allows you to override the implementation of the virtual method set_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#set_caps
 	SetCaps func(Instance, *gst.Caps, *gst.Caps) bool
 	// // TransformInternalCaps allows you to override the implementation of the virtual method transform_internal_caps.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#transform_internal_caps
 	TransformInternalCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 }
 
@@ -6840,7 +6659,7 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 // ParentFilter calls the default implementations of the `GstGLFilter.filter` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#filter
 func (filter *GLFilterInstance) ParentFilter(inbuf *gst.Buffer, outbuf *gst.Buffer) bool {
 	var carg0 *C.GstGLFilter
 	var carg1 *C.GstBuffer // in, none, converted
@@ -6870,7 +6689,7 @@ func (filter *GLFilterInstance) ParentFilter(inbuf *gst.Buffer, outbuf *gst.Buff
 // ParentFilterTexture calls the default implementations of the `GstGLFilter.filter_texture` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#filter_texture
 func (filter *GLFilterInstance) ParentFilterTexture(input *GLMemory, output *GLMemory) bool {
 	var carg0 *C.GstGLFilter
 	var carg1 *C.GstGLMemory // in, none, converted
@@ -6900,7 +6719,7 @@ func (filter *GLFilterInstance) ParentFilterTexture(input *GLMemory, output *GLM
 // ParentInitFbo calls the default implementations of the `GstGLFilter.init_fbo` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#init_fbo
 func (filter *GLFilterInstance) ParentInitFbo() bool {
 	var carg0 *C.GstGLFilter
 	var cret  C.gboolean // return
@@ -6924,7 +6743,7 @@ func (filter *GLFilterInstance) ParentInitFbo() bool {
 // ParentSetCaps calls the default implementations of the `GstGLFilter.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#set_caps
 func (filter *GLFilterInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool {
 	var carg0 *C.GstGLFilter
 	var carg1 *C.GstCaps // in, none, converted
@@ -6954,7 +6773,7 @@ func (filter *GLFilterInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Cap
 // ParentTransformInternalCaps calls the default implementations of the `GstGLFilter.transform_internal_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#transform_internal_caps
 func (filter *GLFilterInstance) ParentTransformInternalCaps(direction gst.PadDirection, caps *gst.Caps, filterCaps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstGLFilter
 	var carg1 C.GstPadDirection // in, none, converted
@@ -7018,30 +6837,26 @@ var _ GLFramebuffer = (*GLFramebufferInstance)(nil)
 
 // GLFramebuffer wraps GstGLFramebuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#GstGLFramebuffer
 type GLFramebuffer interface {
 	gst.Object
 	upcastToGstGLFramebuffer() *GLFramebufferInstance
 
 	// Attach wraps gst_gl_framebuffer_attach
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_attach
 	Attach(uint, *GLBaseMemory)
 	// Bind wraps gst_gl_framebuffer_bind
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_bind
 	Bind()
 	// GetEffectiveDimensions wraps gst_gl_framebuffer_get_effective_dimensions
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_get_effective_dimensions
 	GetEffectiveDimensions() (uint, uint)
 	// GetID wraps gst_gl_framebuffer_get_id
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_get_id
 	GetID() uint
 
 	// chain up virtual methods:
@@ -7101,8 +6916,7 @@ func UnsafeGLFramebufferToGlibFull(c GLFramebuffer) unsafe.Pointer {
 
 // NewGLFramebuffer wraps gst_gl_framebuffer_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_new
 func NewGLFramebuffer(_context GLContext) GLFramebuffer {
 	var carg1 *C.GstGLContext     // in, none, converted
 	var cret  *C.GstGLFramebuffer // return, full, converted
@@ -7121,8 +6935,7 @@ func NewGLFramebuffer(_context GLContext) GLFramebuffer {
 
 // NewGLFramebufferWithDefaultDepth wraps gst_gl_framebuffer_new_with_default_depth
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_new_with_default_depth
 func NewGLFramebufferWithDefaultDepth(_context GLContext, width uint, height uint) GLFramebuffer {
 	var carg1 *C.GstGLContext     // in, none, converted
 	var carg2 C.guint             // in, none, casted
@@ -7147,8 +6960,7 @@ func NewGLFramebufferWithDefaultDepth(_context GLContext, width uint, height uin
 
 // Attach wraps gst_gl_framebuffer_attach
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_attach
 func (fb *GLFramebufferInstance) Attach(attachmentPoint uint, mem *GLBaseMemory) {
 	var carg0 *C.GstGLFramebuffer // in, none, converted
 	var carg1 C.guint             // in, none, casted
@@ -7166,8 +6978,7 @@ func (fb *GLFramebufferInstance) Attach(attachmentPoint uint, mem *GLBaseMemory)
 
 // Bind wraps gst_gl_framebuffer_bind
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_bind
 func (fb *GLFramebufferInstance) Bind() {
 	var carg0 *C.GstGLFramebuffer // in, none, converted
 
@@ -7179,8 +6990,7 @@ func (fb *GLFramebufferInstance) Bind() {
 
 // GetEffectiveDimensions wraps gst_gl_framebuffer_get_effective_dimensions
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_get_effective_dimensions
 func (fb *GLFramebufferInstance) GetEffectiveDimensions() (uint, uint) {
 	var carg0 *C.GstGLFramebuffer // in, none, converted
 	var carg1 C.guint             // out, full, casted
@@ -7202,7 +7012,7 @@ func (fb *GLFramebufferInstance) GetEffectiveDimensions() (uint, uint) {
 
 // GetID wraps gst_gl_framebuffer_get_id
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#gst_gl_framebuffer_get_id
 func (fb *GLFramebufferInstance) GetID() uint {
 	var carg0 *C.GstGLFramebuffer // in, none, converted
 	var cret  C.guint             // return, none, casted
@@ -7269,8 +7079,7 @@ var _ GLMemoryAllocator = (*GLMemoryAllocatorInstance)(nil)
 
 // GLMemoryAllocator wraps GstGLMemoryAllocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#GstGLMemoryAllocator
 type GLMemoryAllocator interface {
 	GLBaseMemoryAllocator
 	upcastToGstGLMemoryAllocator() *GLMemoryAllocatorInstance
@@ -7336,7 +7145,7 @@ func UnsafeGLMemoryAllocatorToGlibFull(c GLMemoryAllocator) unsafe.Pointer {
 
 // GLMemoryAllocatorGetDefault wraps gst_gl_memory_allocator_get_default
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_memory_allocator_get_default
 func GLMemoryAllocatorGetDefault(_context GLContext) GLMemoryAllocator {
 	var carg1 *C.GstGLContext         // in, none, converted
 	var cret  *C.GstGLMemoryAllocator // return, full, converted
@@ -7403,8 +7212,7 @@ var _ GLMemoryPBOAllocator = (*GLMemoryPBOAllocatorInstance)(nil)
 
 // GLMemoryPBOAllocator wraps GstGLMemoryPBOAllocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemorypbo.html#GstGLMemoryPBOAllocator
 type GLMemoryPBOAllocator interface {
 	GLMemoryAllocator
 	upcastToGstGLMemoryPBOAllocator() *GLMemoryPBOAllocatorInstance
@@ -7520,20 +7328,18 @@ var _ GLMixer = (*GLMixerInstance)(nil)
 
 // GLMixer wraps GstGLMixer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#GstGLMixer
 type GLMixer interface {
 	GLBaseMixer
 	upcastToGstGLMixer() *GLMixerInstance
 
 	// GetFramebuffer wraps gst_gl_mixer_get_framebuffer
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#gst_gl_mixer_get_framebuffer
 	GetFramebuffer() GLFramebuffer
 	// ProcessTextures wraps gst_gl_mixer_process_textures
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#gst_gl_mixer_process_textures
 	ProcessTextures(*gst.Buffer) bool
 
 	// chain up virtual methods:
@@ -7541,12 +7347,12 @@ type GLMixer interface {
 	// ParentProcessBuffers calls the default implementations of the `GstGLMixer.process_buffers` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#process_buffers
 	ParentProcessBuffers(outbuf *gst.Buffer) bool
 	// ParentProcessTextures calls the default implementations of the `GstGLMixer.process_textures` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#process_textures
 	ParentProcessTextures(outTex *GLMemory) bool
 }
 
@@ -7612,7 +7418,7 @@ func UnsafeGLMixerToGlibFull(c GLMixer) unsafe.Pointer {
 
 // GetFramebuffer wraps gst_gl_mixer_get_framebuffer
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#gst_gl_mixer_get_framebuffer
 func (mix *GLMixerInstance) GetFramebuffer() GLFramebuffer {
 	var carg0 *C.GstGLMixer       // in, none, converted
 	var cret  *C.GstGLFramebuffer // return, full, converted
@@ -7631,8 +7437,7 @@ func (mix *GLMixerInstance) GetFramebuffer() GLFramebuffer {
 
 // ProcessTextures wraps gst_gl_mixer_process_textures
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#gst_gl_mixer_process_textures
 func (mix *GLMixerInstance) ProcessTextures(outbuf *gst.Buffer) bool {
 	var carg0 *C.GstGLMixer // in, none, converted
 	var carg1 *C.GstBuffer  // in, none, converted
@@ -7662,11 +7467,11 @@ type GLMixerOverrides[Instance GLMixer] struct {
 
 	// // ProcessBuffers allows you to override the implementation of the virtual method process_buffers.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#process_buffers
 	ProcessBuffers func(Instance, *gst.Buffer) bool
 	// // ProcessTextures allows you to override the implementation of the virtual method process_textures.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#process_textures
 	ProcessTextures func(Instance, *GLMemory) bool
 }
 
@@ -7729,7 +7534,7 @@ func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overri
 // ParentProcessBuffers calls the default implementations of the `GstGLMixer.process_buffers` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#process_buffers
 func (mix *GLMixerInstance) ParentProcessBuffers(outbuf *gst.Buffer) bool {
 	var carg0 *C.GstGLMixer
 	var carg1 *C.GstBuffer // in, none, converted
@@ -7756,7 +7561,7 @@ func (mix *GLMixerInstance) ParentProcessBuffers(outbuf *gst.Buffer) bool {
 // ParentProcessTextures calls the default implementations of the `GstGLMixer.process_textures` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#process_textures
 func (mix *GLMixerInstance) ParentProcessTextures(outTex *GLMemory) bool {
 	var carg0 *C.GstGLMixer
 	var carg1 *C.GstGLMemory // in, none, converted
@@ -7816,7 +7621,7 @@ var _ GLMixerPad = (*GLMixerPadInstance)(nil)
 
 // GLMixerPad wraps GstGLMixerPad
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#GstGLMixerPad
 type GLMixerPad interface {
 	GLBaseMixerPad
 	upcastToGstGLMixerPad() *GLMixerPadInstance
@@ -7934,23 +7739,22 @@ var _ GLOverlayCompositor = (*GLOverlayCompositorInstance)(nil)
 
 // GLOverlayCompositor wraps GstGLOverlayCompositor
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#GstGLOverlayCompositor
 type GLOverlayCompositor interface {
 	gst.Object
 	upcastToGstGLOverlayCompositor() *GLOverlayCompositorInstance
 
 	// DrawOverlays wraps gst_gl_overlay_compositor_draw_overlays
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#gst_gl_overlay_compositor_draw_overlays
 	DrawOverlays()
 	// FreeOverlays wraps gst_gl_overlay_compositor_free_overlays
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#gst_gl_overlay_compositor_free_overlays
 	FreeOverlays()
 	// UploadOverlays wraps gst_gl_overlay_compositor_upload_overlays
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#gst_gl_overlay_compositor_upload_overlays
 	UploadOverlays(*gst.Buffer)
 
 	// chain up virtual methods:
@@ -8010,7 +7814,7 @@ func UnsafeGLOverlayCompositorToGlibFull(c GLOverlayCompositor) unsafe.Pointer {
 
 // NewGLOverlayCompositor wraps gst_gl_overlay_compositor_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#gst_gl_overlay_compositor_new
 func NewGLOverlayCompositor(_context GLContext) GLOverlayCompositor {
 	var carg1 *C.GstGLContext           // in, none, converted
 	var cret  *C.GstGLOverlayCompositor // return, none, converted
@@ -8029,7 +7833,7 @@ func NewGLOverlayCompositor(_context GLContext) GLOverlayCompositor {
 
 // GLOverlayCompositorAddCaps wraps gst_gl_overlay_compositor_add_caps
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#gst_gl_overlay_compositor_add_caps
 func GLOverlayCompositorAddCaps(caps *gst.Caps) *gst.Caps {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.GstCaps // return, full, converted
@@ -8048,7 +7852,7 @@ func GLOverlayCompositorAddCaps(caps *gst.Caps) *gst.Caps {
 
 // DrawOverlays wraps gst_gl_overlay_compositor_draw_overlays
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#gst_gl_overlay_compositor_draw_overlays
 func (compositor *GLOverlayCompositorInstance) DrawOverlays() {
 	var carg0 *C.GstGLOverlayCompositor // in, none, converted
 
@@ -8060,7 +7864,7 @@ func (compositor *GLOverlayCompositorInstance) DrawOverlays() {
 
 // FreeOverlays wraps gst_gl_overlay_compositor_free_overlays
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#gst_gl_overlay_compositor_free_overlays
 func (compositor *GLOverlayCompositorInstance) FreeOverlays() {
 	var carg0 *C.GstGLOverlayCompositor // in, none, converted
 
@@ -8072,7 +7876,7 @@ func (compositor *GLOverlayCompositorInstance) FreeOverlays() {
 
 // UploadOverlays wraps gst_gl_overlay_compositor_upload_overlays
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#gst_gl_overlay_compositor_upload_overlays
 func (compositor *GLOverlayCompositorInstance) UploadOverlays(buf *gst.Buffer) {
 	var carg0 *C.GstGLOverlayCompositor // in, none, converted
 	var carg1 *C.GstBuffer              // in, none, converted
@@ -8135,8 +7939,7 @@ var _ GLRenderbufferAllocator = (*GLRenderbufferAllocatorInstance)(nil)
 
 // GLRenderbufferAllocator wraps GstGLRenderbufferAllocator
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#GstGLRenderbufferAllocator
 type GLRenderbufferAllocator interface {
 	GLBaseMemoryAllocator
 	upcastToGstGLRenderbufferAllocator() *GLRenderbufferAllocatorInstance
@@ -8250,36 +8053,34 @@ var _ GLSLStage = (*GLSLStageInstance)(nil)
 
 // GLSLStage wraps GstGLSLStage
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#GstGLSLStage
 type GLSLStage interface {
 	gst.Object
 	upcastToGstGLSLStage() *GLSLStageInstance
 
 	// Compile wraps gst_glsl_stage_compile
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_compile
 	Compile() (bool, error)
 	// GetHandle wraps gst_glsl_stage_get_handle
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_get_handle
 	GetHandle() uint
 	// GetProfile wraps gst_glsl_stage_get_profile
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_get_profile
 	GetProfile() GLSLProfile
 	// GetShaderType wraps gst_glsl_stage_get_shader_type
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_get_shader_type
 	GetShaderType() uint
 	// GetVersion wraps gst_glsl_stage_get_version
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_get_version
 	GetVersion() GLSLVersion
 	// SetStrings wraps gst_glsl_stage_set_strings
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_set_strings
 	SetStrings(GLSLVersion, GLSLProfile, []string) bool
 
 	// chain up virtual methods:
@@ -8339,7 +8140,7 @@ func UnsafeGLSLStageToGlibFull(c GLSLStage) unsafe.Pointer {
 
 // NewGLSLStage wraps gst_glsl_stage_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_new
 func NewGLSLStage(_context GLContext, typ uint) GLSLStage {
 	var carg1 *C.GstGLContext // in, none, converted
 	var carg2 C.guint         // in, none, casted
@@ -8361,7 +8162,7 @@ func NewGLSLStage(_context GLContext, typ uint) GLSLStage {
 
 // NewGLSLStageDefaultFragment wraps gst_glsl_stage_new_default_fragment
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_new_default_fragment
 func NewGLSLStageDefaultFragment(_context GLContext) GLSLStage {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLSLStage // return, none, converted
@@ -8380,7 +8181,7 @@ func NewGLSLStageDefaultFragment(_context GLContext) GLSLStage {
 
 // NewGLSLStageDefaultVertex wraps gst_glsl_stage_new_default_vertex
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_new_default_vertex
 func NewGLSLStageDefaultVertex(_context GLContext) GLSLStage {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLSLStage // return, none, converted
@@ -8399,7 +8200,7 @@ func NewGLSLStageDefaultVertex(_context GLContext) GLSLStage {
 
 // NewGLSLStageWithString wraps gst_glsl_stage_new_with_string
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_new_with_string
 func NewGLSLStageWithString(_context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str string) GLSLStage {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.guint          // in, none, casted
@@ -8431,7 +8232,7 @@ func NewGLSLStageWithString(_context GLContext, typ uint, version GLSLVersion, p
 
 // NewGLSLStageWithStrings wraps gst_glsl_stage_new_with_strings
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_new_with_strings
 func NewGLSLStageWithStrings(_context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str []string) GLSLStage {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.guint          // in, none, casted
@@ -8466,7 +8267,7 @@ func NewGLSLStageWithStrings(_context GLContext, typ uint, version GLSLVersion, 
 
 // Compile wraps gst_glsl_stage_compile
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_compile
 func (stage *GLSLStageInstance) Compile() (bool, error) {
 	var carg0 *C.GstGLSLStage // in, none, converted
 	var cret  C.gboolean      // return
@@ -8492,7 +8293,7 @@ func (stage *GLSLStageInstance) Compile() (bool, error) {
 
 // GetHandle wraps gst_glsl_stage_get_handle
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_get_handle
 func (stage *GLSLStageInstance) GetHandle() uint {
 	var carg0 *C.GstGLSLStage // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -8511,7 +8312,7 @@ func (stage *GLSLStageInstance) GetHandle() uint {
 
 // GetProfile wraps gst_glsl_stage_get_profile
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_get_profile
 func (stage *GLSLStageInstance) GetProfile() GLSLProfile {
 	var carg0 *C.GstGLSLStage  // in, none, converted
 	var cret  C.GstGLSLProfile // return, none, casted
@@ -8530,7 +8331,7 @@ func (stage *GLSLStageInstance) GetProfile() GLSLProfile {
 
 // GetShaderType wraps gst_glsl_stage_get_shader_type
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_get_shader_type
 func (stage *GLSLStageInstance) GetShaderType() uint {
 	var carg0 *C.GstGLSLStage // in, none, converted
 	var cret  C.guint         // return, none, casted
@@ -8549,7 +8350,7 @@ func (stage *GLSLStageInstance) GetShaderType() uint {
 
 // GetVersion wraps gst_glsl_stage_get_version
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_get_version
 func (stage *GLSLStageInstance) GetVersion() GLSLVersion {
 	var carg0 *C.GstGLSLStage  // in, none, converted
 	var cret  C.GstGLSLVersion // return, none, casted
@@ -8568,8 +8369,7 @@ func (stage *GLSLStageInstance) GetVersion() GLSLVersion {
 
 // SetStrings wraps gst_glsl_stage_set_strings
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#gst_glsl_stage_set_strings
 func (stage *GLSLStageInstance) SetStrings(version GLSLVersion, profile GLSLProfile, str []string) bool {
 	var carg0 *C.GstGLSLStage  // in, none, converted
 	var carg1 C.GstGLSLVersion // in, none, casted
@@ -8651,203 +8451,166 @@ var _ GLShader = (*GLShaderInstance)(nil)
 
 // GLShader wraps GstGLShader
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#GstGLShader
 type GLShader interface {
 	gst.Object
 	upcastToGstGLShader() *GLShaderInstance
 
 	// Attach wraps gst_gl_shader_attach
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_attach
 	Attach(GLSLStage) bool
 	// AttachUnlocked wraps gst_gl_shader_attach_unlocked
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_attach_unlocked
 	AttachUnlocked(GLSLStage) bool
 	// BindAttributeLocation wraps gst_gl_shader_bind_attribute_location
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_bind_attribute_location
 	BindAttributeLocation(uint, string)
 	// BindFragDataLocation wraps gst_gl_shader_bind_frag_data_location
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_bind_frag_data_location
 	BindFragDataLocation(uint, string)
 	// CompileAttachStage wraps gst_gl_shader_compile_attach_stage
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_compile_attach_stage
 	CompileAttachStage(GLSLStage) (bool, error)
 	// Detach wraps gst_gl_shader_detach
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_detach
 	Detach(GLSLStage)
 	// DetachUnlocked wraps gst_gl_shader_detach_unlocked
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_detach_unlocked
 	DetachUnlocked(GLSLStage)
 	// GetAttributeLocation wraps gst_gl_shader_get_attribute_location
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_get_attribute_location
 	GetAttributeLocation(string) int32
 	// GetProgramHandle wraps gst_gl_shader_get_program_handle
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_get_program_handle
 	GetProgramHandle() int32
 	// IsLinked wraps gst_gl_shader_is_linked
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_is_linked
 	IsLinked() bool
 	// Link wraps gst_gl_shader_link
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_link
 	Link() (bool, error)
 	// Release wraps gst_gl_shader_release
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_release
 	Release()
 	// ReleaseUnlocked wraps gst_gl_shader_release_unlocked
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_release_unlocked
 	ReleaseUnlocked()
 	// SetUniform1f wraps gst_gl_shader_set_uniform_1f
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_1f
 	SetUniform1f(string, float32)
 	// SetUniform1fv wraps gst_gl_shader_set_uniform_1fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_1fv
 	SetUniform1fv(string, []float32)
 	// SetUniform1i wraps gst_gl_shader_set_uniform_1i
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_1i
 	SetUniform1i(string, int32)
 	// SetUniform1iv wraps gst_gl_shader_set_uniform_1iv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_1iv
 	SetUniform1iv(string, []int32)
 	// SetUniform2f wraps gst_gl_shader_set_uniform_2f
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_2f
 	SetUniform2f(string, float32, float32)
 	// SetUniform2fv wraps gst_gl_shader_set_uniform_2fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_2fv
 	SetUniform2fv(string, []float32)
 	// SetUniform2i wraps gst_gl_shader_set_uniform_2i
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_2i
 	SetUniform2i(string, int32, int32)
 	// SetUniform2iv wraps gst_gl_shader_set_uniform_2iv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_2iv
 	SetUniform2iv(string, []int32)
 	// SetUniform3f wraps gst_gl_shader_set_uniform_3f
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_3f
 	SetUniform3f(string, float32, float32, float32)
 	// SetUniform3fv wraps gst_gl_shader_set_uniform_3fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_3fv
 	SetUniform3fv(string, []float32)
 	// SetUniform3i wraps gst_gl_shader_set_uniform_3i
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_3i
 	SetUniform3i(string, int32, int32, int32)
 	// SetUniform3iv wraps gst_gl_shader_set_uniform_3iv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_3iv
 	SetUniform3iv(string, []int32)
 	// SetUniform4f wraps gst_gl_shader_set_uniform_4f
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_4f
 	SetUniform4f(string, float32, float32, float32, float32)
 	// SetUniform4fv wraps gst_gl_shader_set_uniform_4fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_4fv
 	SetUniform4fv(string, []float32)
 	// SetUniform4i wraps gst_gl_shader_set_uniform_4i
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_4i
 	SetUniform4i(string, int32, int32, int32, int32)
 	// SetUniform4iv wraps gst_gl_shader_set_uniform_4iv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_4iv
 	SetUniform4iv(string, []int32)
 	// SetUniformMatrix2fv wraps gst_gl_shader_set_uniform_matrix_2fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_2fv
 	SetUniformMatrix2fv(string, int32, bool, *float32)
 	// SetUniformMatrix2x3fv wraps gst_gl_shader_set_uniform_matrix_2x3fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_2x3fv
 	SetUniformMatrix2x3fv(string, int32, bool, *float32)
 	// SetUniformMatrix2x4fv wraps gst_gl_shader_set_uniform_matrix_2x4fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_2x4fv
 	SetUniformMatrix2x4fv(string, int32, bool, *float32)
 	// SetUniformMatrix3fv wraps gst_gl_shader_set_uniform_matrix_3fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_3fv
 	SetUniformMatrix3fv(string, int32, bool, *float32)
 	// SetUniformMatrix3x2fv wraps gst_gl_shader_set_uniform_matrix_3x2fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_3x2fv
 	SetUniformMatrix3x2fv(string, int32, bool, *float32)
 	// SetUniformMatrix3x4fv wraps gst_gl_shader_set_uniform_matrix_3x4fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_3x4fv
 	SetUniformMatrix3x4fv(string, int32, bool, *float32)
 	// SetUniformMatrix4fv wraps gst_gl_shader_set_uniform_matrix_4fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_4fv
 	SetUniformMatrix4fv(string, int32, bool, *float32)
 	// SetUniformMatrix4x2fv wraps gst_gl_shader_set_uniform_matrix_4x2fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_4x2fv
 	SetUniformMatrix4x2fv(string, int32, bool, *float32)
 	// SetUniformMatrix4x3fv wraps gst_gl_shader_set_uniform_matrix_4x3fv
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_4x3fv
 	SetUniformMatrix4x3fv(string, int32, bool, *float32)
 	// Use wraps gst_gl_shader_use
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_use
 	Use()
 
 	// chain up virtual methods:
@@ -8907,8 +8670,7 @@ func UnsafeGLShaderToGlibFull(c GLShader) unsafe.Pointer {
 
 // NewGLShader wraps gst_gl_shader_new
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_new
 func NewGLShader(_context GLContext) GLShader {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLShader  // return, full, converted
@@ -8927,8 +8689,7 @@ func NewGLShader(_context GLContext) GLShader {
 
 // NewGLShaderDefault wraps gst_gl_shader_new_default
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_new_default
 func NewGLShaderDefault(_context GLContext) (GLShader, error) {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLShader  // return, full, converted
@@ -8952,7 +8713,7 @@ func NewGLShaderDefault(_context GLContext) (GLShader, error) {
 
 // GLShaderStringFragmentExternalOesGetDefault wraps gst_gl_shader_string_fragment_external_oes_get_default
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_string_fragment_external_oes_get_default
 func GLShaderStringFragmentExternalOesGetDefault(_context GLContext, version GLSLVersion, profile GLSLProfile) string {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLSLVersion // in, none, casted
@@ -8978,7 +8739,7 @@ func GLShaderStringFragmentExternalOesGetDefault(_context GLContext, version GLS
 
 // GLShaderStringFragmentGetDefault wraps gst_gl_shader_string_fragment_get_default
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_string_fragment_get_default
 func GLShaderStringFragmentGetDefault(_context GLContext, version GLSLVersion, profile GLSLProfile) string {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLSLVersion // in, none, casted
@@ -9004,8 +8765,7 @@ func GLShaderStringFragmentGetDefault(_context GLContext, version GLSLVersion, p
 
 // GLShaderStringGetHighestPrecision wraps gst_gl_shader_string_get_highest_precision
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_string_get_highest_precision
 func GLShaderStringGetHighestPrecision(_context GLContext, version GLSLVersion, profile GLSLProfile) string {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLSLVersion // in, none, casted
@@ -9030,8 +8790,7 @@ func GLShaderStringGetHighestPrecision(_context GLContext, version GLSLVersion, 
 
 // Attach wraps gst_gl_shader_attach
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_attach
 func (shader *GLShaderInstance) Attach(stage GLSLStage) bool {
 	var carg0 *C.GstGLShader  // in, none, converted
 	var carg1 *C.GstGLSLStage // in, none, converted
@@ -9055,8 +8814,7 @@ func (shader *GLShaderInstance) Attach(stage GLSLStage) bool {
 
 // AttachUnlocked wraps gst_gl_shader_attach_unlocked
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_attach_unlocked
 func (shader *GLShaderInstance) AttachUnlocked(stage GLSLStage) bool {
 	var carg0 *C.GstGLShader  // in, none, converted
 	var carg1 *C.GstGLSLStage // in, none, converted
@@ -9080,8 +8838,7 @@ func (shader *GLShaderInstance) AttachUnlocked(stage GLSLStage) bool {
 
 // BindAttributeLocation wraps gst_gl_shader_bind_attribute_location
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_bind_attribute_location
 func (shader *GLShaderInstance) BindAttributeLocation(index uint, name string) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 C.guint        // in, none, casted
@@ -9100,8 +8857,7 @@ func (shader *GLShaderInstance) BindAttributeLocation(index uint, name string) {
 
 // BindFragDataLocation wraps gst_gl_shader_bind_frag_data_location
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_bind_frag_data_location
 func (shader *GLShaderInstance) BindFragDataLocation(index uint, name string) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 C.guint        // in, none, casted
@@ -9120,8 +8876,7 @@ func (shader *GLShaderInstance) BindFragDataLocation(index uint, name string) {
 
 // CompileAttachStage wraps gst_gl_shader_compile_attach_stage
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_compile_attach_stage
 func (shader *GLShaderInstance) CompileAttachStage(stage GLSLStage) (bool, error) {
 	var carg0 *C.GstGLShader  // in, none, converted
 	var carg1 *C.GstGLSLStage // in, none, converted
@@ -9150,8 +8905,7 @@ func (shader *GLShaderInstance) CompileAttachStage(stage GLSLStage) (bool, error
 
 // Detach wraps gst_gl_shader_detach
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_detach
 func (shader *GLShaderInstance) Detach(stage GLSLStage) {
 	var carg0 *C.GstGLShader  // in, none, converted
 	var carg1 *C.GstGLSLStage // in, none, converted
@@ -9166,8 +8920,7 @@ func (shader *GLShaderInstance) Detach(stage GLSLStage) {
 
 // DetachUnlocked wraps gst_gl_shader_detach_unlocked
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_detach_unlocked
 func (shader *GLShaderInstance) DetachUnlocked(stage GLSLStage) {
 	var carg0 *C.GstGLShader  // in, none, converted
 	var carg1 *C.GstGLSLStage // in, none, converted
@@ -9182,7 +8935,7 @@ func (shader *GLShaderInstance) DetachUnlocked(stage GLSLStage) {
 
 // GetAttributeLocation wraps gst_gl_shader_get_attribute_location
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_get_attribute_location
 func (shader *GLShaderInstance) GetAttributeLocation(name string) int32 {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9205,7 +8958,7 @@ func (shader *GLShaderInstance) GetAttributeLocation(name string) int32 {
 
 // GetProgramHandle wraps gst_gl_shader_get_program_handle
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_get_program_handle
 func (shader *GLShaderInstance) GetProgramHandle() int32 {
 	var carg0 *C.GstGLShader // in, none, converted
 	var cret  C.int          // return, none, casted
@@ -9224,8 +8977,7 @@ func (shader *GLShaderInstance) GetProgramHandle() int32 {
 
 // IsLinked wraps gst_gl_shader_is_linked
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_is_linked
 func (shader *GLShaderInstance) IsLinked() bool {
 	var carg0 *C.GstGLShader // in, none, converted
 	var cret  C.gboolean     // return
@@ -9246,8 +8998,7 @@ func (shader *GLShaderInstance) IsLinked() bool {
 
 // Link wraps gst_gl_shader_link
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_link
 func (shader *GLShaderInstance) Link() (bool, error) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var cret  C.gboolean     // return
@@ -9273,8 +9024,7 @@ func (shader *GLShaderInstance) Link() (bool, error) {
 
 // Release wraps gst_gl_shader_release
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_release
 func (shader *GLShaderInstance) Release() {
 	var carg0 *C.GstGLShader // in, none, converted
 
@@ -9286,8 +9036,7 @@ func (shader *GLShaderInstance) Release() {
 
 // ReleaseUnlocked wraps gst_gl_shader_release_unlocked
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_release_unlocked
 func (shader *GLShaderInstance) ReleaseUnlocked() {
 	var carg0 *C.GstGLShader // in, none, converted
 
@@ -9299,8 +9048,7 @@ func (shader *GLShaderInstance) ReleaseUnlocked() {
 
 // SetUniform1f wraps gst_gl_shader_set_uniform_1f
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_1f
 func (shader *GLShaderInstance) SetUniform1f(name string, value float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9319,8 +9067,7 @@ func (shader *GLShaderInstance) SetUniform1f(name string, value float32) {
 
 // SetUniform1fv wraps gst_gl_shader_set_uniform_1fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_1fv
 func (shader *GLShaderInstance) SetUniform1fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9343,8 +9090,7 @@ func (shader *GLShaderInstance) SetUniform1fv(name string, value []float32) {
 
 // SetUniform1i wraps gst_gl_shader_set_uniform_1i
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_1i
 func (shader *GLShaderInstance) SetUniform1i(name string, value int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9363,8 +9109,7 @@ func (shader *GLShaderInstance) SetUniform1i(name string, value int32) {
 
 // SetUniform1iv wraps gst_gl_shader_set_uniform_1iv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_1iv
 func (shader *GLShaderInstance) SetUniform1iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9387,8 +9132,7 @@ func (shader *GLShaderInstance) SetUniform1iv(name string, value []int32) {
 
 // SetUniform2f wraps gst_gl_shader_set_uniform_2f
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_2f
 func (shader *GLShaderInstance) SetUniform2f(name string, v0 float32, v1 float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9410,8 +9154,7 @@ func (shader *GLShaderInstance) SetUniform2f(name string, v0 float32, v1 float32
 
 // SetUniform2fv wraps gst_gl_shader_set_uniform_2fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_2fv
 func (shader *GLShaderInstance) SetUniform2fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9434,8 +9177,7 @@ func (shader *GLShaderInstance) SetUniform2fv(name string, value []float32) {
 
 // SetUniform2i wraps gst_gl_shader_set_uniform_2i
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_2i
 func (shader *GLShaderInstance) SetUniform2i(name string, v0 int32, v1 int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9457,8 +9199,7 @@ func (shader *GLShaderInstance) SetUniform2i(name string, v0 int32, v1 int32) {
 
 // SetUniform2iv wraps gst_gl_shader_set_uniform_2iv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_2iv
 func (shader *GLShaderInstance) SetUniform2iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9481,8 +9222,7 @@ func (shader *GLShaderInstance) SetUniform2iv(name string, value []int32) {
 
 // SetUniform3f wraps gst_gl_shader_set_uniform_3f
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_3f
 func (shader *GLShaderInstance) SetUniform3f(name string, v0 float32, v1 float32, v2 float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9507,8 +9247,7 @@ func (shader *GLShaderInstance) SetUniform3f(name string, v0 float32, v1 float32
 
 // SetUniform3fv wraps gst_gl_shader_set_uniform_3fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_3fv
 func (shader *GLShaderInstance) SetUniform3fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9531,8 +9270,7 @@ func (shader *GLShaderInstance) SetUniform3fv(name string, value []float32) {
 
 // SetUniform3i wraps gst_gl_shader_set_uniform_3i
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_3i
 func (shader *GLShaderInstance) SetUniform3i(name string, v0 int32, v1 int32, v2 int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9557,8 +9295,7 @@ func (shader *GLShaderInstance) SetUniform3i(name string, v0 int32, v1 int32, v2
 
 // SetUniform3iv wraps gst_gl_shader_set_uniform_3iv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_3iv
 func (shader *GLShaderInstance) SetUniform3iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9581,8 +9318,7 @@ func (shader *GLShaderInstance) SetUniform3iv(name string, value []int32) {
 
 // SetUniform4f wraps gst_gl_shader_set_uniform_4f
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_4f
 func (shader *GLShaderInstance) SetUniform4f(name string, v0 float32, v1 float32, v2 float32, v3 float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9610,8 +9346,7 @@ func (shader *GLShaderInstance) SetUniform4f(name string, v0 float32, v1 float32
 
 // SetUniform4fv wraps gst_gl_shader_set_uniform_4fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_4fv
 func (shader *GLShaderInstance) SetUniform4fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9634,8 +9369,7 @@ func (shader *GLShaderInstance) SetUniform4fv(name string, value []float32) {
 
 // SetUniform4i wraps gst_gl_shader_set_uniform_4i
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_4i
 func (shader *GLShaderInstance) SetUniform4i(name string, v0 int32, v1 int32, v2 int32, v3 int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9663,8 +9397,7 @@ func (shader *GLShaderInstance) SetUniform4i(name string, v0 int32, v1 int32, v2
 
 // SetUniform4iv wraps gst_gl_shader_set_uniform_4iv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_4iv
 func (shader *GLShaderInstance) SetUniform4iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9687,8 +9420,7 @@ func (shader *GLShaderInstance) SetUniform4iv(name string, value []int32) {
 
 // SetUniformMatrix2fv wraps gst_gl_shader_set_uniform_matrix_2fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_2fv
 func (shader *GLShaderInstance) SetUniformMatrix2fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9717,8 +9449,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2fv(name string, count int32, tr
 
 // SetUniformMatrix2x3fv wraps gst_gl_shader_set_uniform_matrix_2x3fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_2x3fv
 func (shader *GLShaderInstance) SetUniformMatrix2x3fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9747,8 +9478,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2x3fv(name string, count int32, 
 
 // SetUniformMatrix2x4fv wraps gst_gl_shader_set_uniform_matrix_2x4fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_2x4fv
 func (shader *GLShaderInstance) SetUniformMatrix2x4fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9777,8 +9507,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2x4fv(name string, count int32, 
 
 // SetUniformMatrix3fv wraps gst_gl_shader_set_uniform_matrix_3fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_3fv
 func (shader *GLShaderInstance) SetUniformMatrix3fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9807,8 +9536,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3fv(name string, count int32, tr
 
 // SetUniformMatrix3x2fv wraps gst_gl_shader_set_uniform_matrix_3x2fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_3x2fv
 func (shader *GLShaderInstance) SetUniformMatrix3x2fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9837,8 +9565,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3x2fv(name string, count int32, 
 
 // SetUniformMatrix3x4fv wraps gst_gl_shader_set_uniform_matrix_3x4fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_3x4fv
 func (shader *GLShaderInstance) SetUniformMatrix3x4fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9867,8 +9594,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3x4fv(name string, count int32, 
 
 // SetUniformMatrix4fv wraps gst_gl_shader_set_uniform_matrix_4fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_4fv
 func (shader *GLShaderInstance) SetUniformMatrix4fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9897,8 +9623,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4fv(name string, count int32, tr
 
 // SetUniformMatrix4x2fv wraps gst_gl_shader_set_uniform_matrix_4x2fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_4x2fv
 func (shader *GLShaderInstance) SetUniformMatrix4x2fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9927,8 +9652,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4x2fv(name string, count int32, 
 
 // SetUniformMatrix4x3fv wraps gst_gl_shader_set_uniform_matrix_4x3fv
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_set_uniform_matrix_4x3fv
 func (shader *GLShaderInstance) SetUniformMatrix4x3fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
@@ -9957,8 +9681,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4x3fv(name string, count int32, 
 
 // Use wraps gst_gl_shader_use
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#gst_gl_shader_use
 func (shader *GLShaderInstance) Use() {
 	var carg0 *C.GstGLShader // in, none, converted
 
@@ -10018,43 +9741,38 @@ var _ GLUpload = (*GLUploadInstance)(nil)
 
 // GLUpload wraps GstGLUpload
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#GstGLUpload
 type GLUpload interface {
 	gst.Object
 	upcastToGstGLUpload() *GLUploadInstance
 
 	// FixateCaps wraps gst_gl_upload_fixate_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_fixate_caps
 	FixateCaps(gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 	// GetCaps wraps gst_gl_upload_get_caps
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_get_caps
 	GetCaps() (*gst.Caps, *gst.Caps)
 	// PerformWithBuffer wraps gst_gl_upload_perform_with_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_perform_with_buffer
 	PerformWithBuffer(*gst.Buffer) (*gst.Buffer, GLUploadReturn)
 	// ProposeAllocation wraps gst_gl_upload_propose_allocation
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_propose_allocation
 	ProposeAllocation(*gst.Query, *gst.Query)
 	// SetCaps wraps gst_gl_upload_set_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_set_caps
 	SetCaps(*gst.Caps, *gst.Caps) bool
 	// SetContext wraps gst_gl_upload_set_context
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_set_context
 	SetContext(GLContext)
 	// TransformCaps wraps gst_gl_upload_transform_caps
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_transform_caps
 	TransformCaps(GLContext, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 
 	// chain up virtual methods:
@@ -10114,7 +9832,7 @@ func UnsafeGLUploadToGlibFull(c GLUpload) unsafe.Pointer {
 
 // NewGLUpload wraps gst_gl_upload_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_new
 func NewGLUpload(_context GLContext) GLUpload {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLUpload  // return, full, converted
@@ -10133,7 +9851,7 @@ func NewGLUpload(_context GLContext) GLUpload {
 
 // GLUploadGetInputTemplateCaps wraps gst_gl_upload_get_input_template_caps
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_get_input_template_caps
 func GLUploadGetInputTemplateCaps() *gst.Caps {
 	var cret *C.GstCaps // return, full, converted
 
@@ -10148,8 +9866,7 @@ func GLUploadGetInputTemplateCaps() *gst.Caps {
 
 // FixateCaps wraps gst_gl_upload_fixate_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_fixate_caps
 func (upload *GLUploadInstance) FixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstGLUpload    // in, none, converted
 	var carg1 C.GstPadDirection // in, none, casted
@@ -10177,7 +9894,7 @@ func (upload *GLUploadInstance) FixateCaps(direction gst.PadDirection, caps *gst
 
 // GetCaps wraps gst_gl_upload_get_caps
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_get_caps
 func (upload *GLUploadInstance) GetCaps() (*gst.Caps, *gst.Caps) {
 	var carg0 *C.GstGLUpload // in, none, converted
 	var carg1 *C.GstCaps     // out, full, converted
@@ -10199,8 +9916,7 @@ func (upload *GLUploadInstance) GetCaps() (*gst.Caps, *gst.Caps) {
 
 // PerformWithBuffer wraps gst_gl_upload_perform_with_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_perform_with_buffer
 func (upload *GLUploadInstance) PerformWithBuffer(buffer *gst.Buffer) (*gst.Buffer, GLUploadReturn) {
 	var carg0 *C.GstGLUpload      // in, none, converted
 	var carg1 *C.GstBuffer        // in, none, converted
@@ -10225,8 +9941,7 @@ func (upload *GLUploadInstance) PerformWithBuffer(buffer *gst.Buffer) (*gst.Buff
 
 // ProposeAllocation wraps gst_gl_upload_propose_allocation
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_propose_allocation
 func (upload *GLUploadInstance) ProposeAllocation(decideQuery *gst.Query, query *gst.Query) {
 	var carg0 *C.GstGLUpload // in, none, converted
 	var carg1 *C.GstQuery    // in, none, converted, nullable
@@ -10246,8 +9961,7 @@ func (upload *GLUploadInstance) ProposeAllocation(decideQuery *gst.Query, query 
 
 // SetCaps wraps gst_gl_upload_set_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_set_caps
 func (upload *GLUploadInstance) SetCaps(inCaps *gst.Caps, outCaps *gst.Caps) bool {
 	var carg0 *C.GstGLUpload // in, none, converted
 	var carg1 *C.GstCaps     // in, none, converted
@@ -10274,7 +9988,7 @@ func (upload *GLUploadInstance) SetCaps(inCaps *gst.Caps, outCaps *gst.Caps) boo
 
 // SetContext wraps gst_gl_upload_set_context
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_set_context
 func (upload *GLUploadInstance) SetContext(_context GLContext) {
 	var carg0 *C.GstGLUpload  // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
@@ -10289,7 +10003,7 @@ func (upload *GLUploadInstance) SetContext(_context GLContext) {
 
 // TransformCaps wraps gst_gl_upload_transform_caps
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#gst_gl_upload_transform_caps
 func (upload *GLUploadInstance) TransformCaps(_context GLContext, direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstGLUpload    // in, none, converted
 	var carg1 *C.GstGLContext   // in, none, converted
@@ -10368,51 +10082,42 @@ var _ GLViewConvert = (*GLViewConvertInstance)(nil)
 
 // GLViewConvert wraps GstGLViewConvert
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#GstGLViewConvert
 type GLViewConvert interface {
 	gst.Object
 	upcastToGstGLViewConvert() *GLViewConvertInstance
 
 	// FixateCaps wraps gst_gl_view_convert_fixate_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_fixate_caps
 	FixateCaps(gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 	// GetOutput wraps gst_gl_view_convert_get_output
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_get_output
 	GetOutput() (*gst.Buffer, gst.FlowReturn)
 	// Perform wraps gst_gl_view_convert_perform
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_perform
 	Perform(*gst.Buffer) *gst.Buffer
 	// Reset wraps gst_gl_view_convert_reset
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_reset
 	Reset()
 	// SetCaps wraps gst_gl_view_convert_set_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_set_caps
 	SetCaps(*gst.Caps, *gst.Caps) bool
 	// SetContext wraps gst_gl_view_convert_set_context
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_set_context
 	SetContext(GLContext)
 	// SubmitInputBuffer wraps gst_gl_view_convert_submit_input_buffer
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_submit_input_buffer
 	SubmitInputBuffer(bool, *gst.Buffer) gst.FlowReturn
 	// TransformCaps wraps gst_gl_view_convert_transform_caps
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_transform_caps
 	TransformCaps(gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 
 	// chain up virtual methods:
@@ -10472,7 +10177,7 @@ func UnsafeGLViewConvertToGlibFull(c GLViewConvert) unsafe.Pointer {
 
 // NewGLViewConvert wraps gst_gl_view_convert_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_new
 func NewGLViewConvert() GLViewConvert {
 	var cret *C.GstGLViewConvert // return, full, converted
 
@@ -10487,8 +10192,7 @@ func NewGLViewConvert() GLViewConvert {
 
 // FixateCaps wraps gst_gl_view_convert_fixate_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_fixate_caps
 func (viewconvert *GLViewConvertInstance) FixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 	var carg1 C.GstPadDirection   // in, none, casted
@@ -10516,8 +10220,7 @@ func (viewconvert *GLViewConvertInstance) FixateCaps(direction gst.PadDirection,
 
 // GetOutput wraps gst_gl_view_convert_get_output
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_get_output
 func (viewconvert *GLViewConvertInstance) GetOutput() (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 	var carg1 *C.GstBuffer        // out, full, converted
@@ -10539,8 +10242,7 @@ func (viewconvert *GLViewConvertInstance) GetOutput() (*gst.Buffer, gst.FlowRetu
 
 // Perform wraps gst_gl_view_convert_perform
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_perform
 func (viewconvert *GLViewConvertInstance) Perform(inbuf *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 	var carg1 *C.GstBuffer        // in, none, converted
@@ -10564,8 +10266,7 @@ func (viewconvert *GLViewConvertInstance) Perform(inbuf *gst.Buffer) *gst.Buffer
 
 // Reset wraps gst_gl_view_convert_reset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_reset
 func (viewconvert *GLViewConvertInstance) Reset() {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 
@@ -10577,8 +10278,7 @@ func (viewconvert *GLViewConvertInstance) Reset() {
 
 // SetCaps wraps gst_gl_view_convert_set_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_set_caps
 func (viewconvert *GLViewConvertInstance) SetCaps(inCaps *gst.Caps, outCaps *gst.Caps) bool {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 	var carg1 *C.GstCaps          // in, none, converted
@@ -10605,8 +10305,7 @@ func (viewconvert *GLViewConvertInstance) SetCaps(inCaps *gst.Caps, outCaps *gst
 
 // SetContext wraps gst_gl_view_convert_set_context
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_set_context
 func (viewconvert *GLViewConvertInstance) SetContext(_context GLContext) {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 	var carg1 *C.GstGLContext     // in, none, converted
@@ -10621,8 +10320,7 @@ func (viewconvert *GLViewConvertInstance) SetContext(_context GLContext) {
 
 // SubmitInputBuffer wraps gst_gl_view_convert_submit_input_buffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_submit_input_buffer
 func (viewconvert *GLViewConvertInstance) SubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 	var carg1 C.gboolean          // in
@@ -10649,8 +10347,7 @@ func (viewconvert *GLViewConvertInstance) SubmitInputBuffer(isDiscont bool, inpu
 
 // TransformCaps wraps gst_gl_view_convert_transform_caps
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#gst_gl_view_convert_transform_caps
 func (viewconvert *GLViewConvertInstance) TransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 	var carg1 C.GstPadDirection   // in, none, casted
@@ -10726,107 +10423,98 @@ var _ GLWindow = (*GLWindowInstance)(nil)
 
 // GLWindow wraps GstGLWindow
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#GstGLWindow
 type GLWindow interface {
 	gst.Object
 	upcastToGstGLWindow() *GLWindowInstance
 
 	// ControlsViewport wraps gst_gl_window_controls_viewport
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_controls_viewport
 	ControlsViewport() bool
 	// Draw wraps gst_gl_window_draw
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_draw
 	Draw()
 	// GetContext wraps gst_gl_window_get_context
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_context
 	GetContext() GLContext
+	// GetRequestOutputSurface wraps gst_gl_window_get_request_output_surface
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_request_output_surface
+	GetRequestOutputSurface() bool
 	// GetSurfaceDimensions wraps gst_gl_window_get_surface_dimensions
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_surface_dimensions
 	GetSurfaceDimensions() (uint, uint)
 	// HandleEvents wraps gst_gl_window_handle_events
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_handle_events
 	HandleEvents(bool)
 	// HasOutputSurface wraps gst_gl_window_has_output_surface
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_has_output_surface
 	HasOutputSurface() bool
 	// QueueResize wraps gst_gl_window_queue_resize
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_queue_resize
 	QueueResize()
 	// Quit wraps gst_gl_window_quit
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_quit
 	Quit()
 	// Resize wraps gst_gl_window_resize
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_resize
 	Resize(uint, uint)
 	// Run wraps gst_gl_window_run
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_run
 	Run()
 	// SendKeyEvent wraps gst_gl_window_send_key_event
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_send_key_event
 	SendKeyEvent(string, string)
 	// SendMouseEvent wraps gst_gl_window_send_mouse_event
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_send_mouse_event
 	SendMouseEvent(string, int32, float64, float64)
 	// SendScrollEvent wraps gst_gl_window_send_scroll_event
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_send_scroll_event
 	SendScrollEvent(float64, float64, float64, float64)
 	// SetPreferredSize wraps gst_gl_window_set_preferred_size
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_set_preferred_size
 	SetPreferredSize(int32, int32)
 	// SetRenderRectangle wraps gst_gl_window_set_render_rectangle
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_set_render_rectangle
 	SetRenderRectangle(int32, int32, int32, int32) bool
+	// SetRequestOutputSurface wraps gst_gl_window_set_request_output_surface
+	// 
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_set_request_output_surface
+	SetRequestOutputSurface(bool)
 	// Show wraps gst_gl_window_show
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_show
 	Show()
 	// ConnectKeyEvent connects the provided callback to the "key-event" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl
 	ConnectKeyEvent(func(GLWindow, string, string)) gobject.SignalHandle
 	// ConnectMouseEvent connects the provided callback to the "mouse-event" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl
 	ConnectMouseEvent(func(GLWindow, string, int32, float64, float64)) gobject.SignalHandle
 	// ConnectScrollEvent connects the provided callback to the "scroll-event" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl
 	ConnectScrollEvent(func(GLWindow, float64, float64, float64, float64)) gobject.SignalHandle
 	// ConnectWindowHandleChanged connects the provided callback to the "window-handle-changed" signal
 	// 
-	// see also No documentation available
-	//
+	// see also https://gstreamer.freedesktop.org/documentation/gl
 	ConnectWindowHandleChanged(func(GLWindow)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -10834,62 +10522,62 @@ type GLWindow interface {
 	// ParentClose calls the default implementations of the `GstGLWindow.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#close
 	ParentClose()
 	// ParentControlsViewport calls the default implementations of the `GstGLWindow.controls_viewport` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#controls_viewport
 	ParentControlsViewport() bool
 	// ParentDraw calls the default implementations of the `GstGLWindow.draw` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#draw
 	ParentDraw()
 	// ParentHandleEvents calls the default implementations of the `GstGLWindow.handle_events` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#handle_events
 	ParentHandleEvents(handleEvents bool)
 	// ParentHasOutputSurface calls the default implementations of the `GstGLWindow.has_output_surface` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#has_output_surface
 	ParentHasOutputSurface() bool
 	// ParentOpen calls the default implementations of the `GstGLWindow.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#open
 	ParentOpen() (bool, error)
 	// ParentQueueResize calls the default implementations of the `GstGLWindow.queue_resize` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#queue_resize
 	ParentQueueResize()
 	// ParentQuit calls the default implementations of the `GstGLWindow.quit` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#quit
 	ParentQuit()
 	// ParentRun calls the default implementations of the `GstGLWindow.run` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#run
 	ParentRun()
 	// ParentSetPreferredSize calls the default implementations of the `GstGLWindow.set_preferred_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#set_preferred_size
 	ParentSetPreferredSize(width int32, height int32)
 	// ParentSetRenderRectangle calls the default implementations of the `GstGLWindow.set_render_rectangle` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#set_render_rectangle
 	ParentSetRenderRectangle(x int32, y int32, width int32, height int32) bool
 	// ParentShow calls the default implementations of the `GstGLWindow.show` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#show
 	ParentShow()
 }
 
@@ -10947,7 +10635,7 @@ func UnsafeGLWindowToGlibFull(c GLWindow) unsafe.Pointer {
 
 // NewGLWindow wraps gst_gl_window_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_new
 func NewGLWindow(display GLDisplay) GLWindow {
 	var carg1 *C.GstGLDisplay // in, none, converted
 	var cret  *C.GstGLWindow  // return, full, converted
@@ -10966,8 +10654,7 @@ func NewGLWindow(display GLDisplay) GLWindow {
 
 // ControlsViewport wraps gst_gl_window_controls_viewport
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_controls_viewport
 func (window *GLWindowInstance) ControlsViewport() bool {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var cret  C.gboolean     // return
@@ -10988,8 +10675,7 @@ func (window *GLWindowInstance) ControlsViewport() bool {
 
 // Draw wraps gst_gl_window_draw
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_draw
 func (window *GLWindowInstance) Draw() {
 	var carg0 *C.GstGLWindow // in, none, converted
 
@@ -11001,7 +10687,7 @@ func (window *GLWindowInstance) Draw() {
 
 // GetContext wraps gst_gl_window_get_context
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_context
 func (window *GLWindowInstance) GetContext() GLContext {
 	var carg0 *C.GstGLWindow  // in, none, converted
 	var cret  *C.GstGLContext // return, full, converted
@@ -11018,9 +10704,30 @@ func (window *GLWindowInstance) GetContext() GLContext {
 	return goret
 }
 
+// GetRequestOutputSurface wraps gst_gl_window_get_request_output_surface
+// 
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_request_output_surface
+func (window *GLWindowInstance) GetRequestOutputSurface() bool {
+	var carg0 *C.GstGLWindow // in, none, converted
+	var cret  C.gboolean     // return
+
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
+
+	cret = C.gst_gl_window_get_request_output_surface(carg0)
+	runtime.KeepAlive(window)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // GetSurfaceDimensions wraps gst_gl_window_get_surface_dimensions
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_surface_dimensions
 func (window *GLWindowInstance) GetSurfaceDimensions() (uint, uint) {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var carg1 C.guint        // out, full, casted
@@ -11042,8 +10749,7 @@ func (window *GLWindowInstance) GetSurfaceDimensions() (uint, uint) {
 
 // HandleEvents wraps gst_gl_window_handle_events
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_handle_events
 func (window *GLWindowInstance) HandleEvents(handleEvents bool) {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var carg1 C.gboolean     // in
@@ -11060,8 +10766,7 @@ func (window *GLWindowInstance) HandleEvents(handleEvents bool) {
 
 // HasOutputSurface wraps gst_gl_window_has_output_surface
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_has_output_surface
 func (window *GLWindowInstance) HasOutputSurface() bool {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var cret  C.gboolean     // return
@@ -11082,8 +10787,7 @@ func (window *GLWindowInstance) HasOutputSurface() bool {
 
 // QueueResize wraps gst_gl_window_queue_resize
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_queue_resize
 func (window *GLWindowInstance) QueueResize() {
 	var carg0 *C.GstGLWindow // in, none, converted
 
@@ -11095,8 +10799,7 @@ func (window *GLWindowInstance) QueueResize() {
 
 // Quit wraps gst_gl_window_quit
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_quit
 func (window *GLWindowInstance) Quit() {
 	var carg0 *C.GstGLWindow // in, none, converted
 
@@ -11108,8 +10811,7 @@ func (window *GLWindowInstance) Quit() {
 
 // Resize wraps gst_gl_window_resize
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_resize
 func (window *GLWindowInstance) Resize(width uint, height uint) {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var carg1 C.guint        // in, none, casted
@@ -11127,8 +10829,7 @@ func (window *GLWindowInstance) Resize(width uint, height uint) {
 
 // Run wraps gst_gl_window_run
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_run
 func (window *GLWindowInstance) Run() {
 	var carg0 *C.GstGLWindow // in, none, converted
 
@@ -11140,7 +10841,7 @@ func (window *GLWindowInstance) Run() {
 
 // SendKeyEvent wraps gst_gl_window_send_key_event
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_send_key_event
 func (window *GLWindowInstance) SendKeyEvent(eventType string, keyStr string) {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var carg1 *C.char        // in, none, string
@@ -11160,7 +10861,7 @@ func (window *GLWindowInstance) SendKeyEvent(eventType string, keyStr string) {
 
 // SendMouseEvent wraps gst_gl_window_send_mouse_event
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_send_mouse_event
 func (window *GLWindowInstance) SendMouseEvent(eventType string, button int32, posx float64, posy float64) {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var carg1 *C.char        // in, none, string
@@ -11185,8 +10886,7 @@ func (window *GLWindowInstance) SendMouseEvent(eventType string, button int32, p
 
 // SendScrollEvent wraps gst_gl_window_send_scroll_event
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_send_scroll_event
 func (window *GLWindowInstance) SendScrollEvent(posx float64, posy float64, deltaX float64, deltaY float64) {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var carg1 C.double       // in, none, casted
@@ -11210,8 +10910,7 @@ func (window *GLWindowInstance) SendScrollEvent(posx float64, posy float64, delt
 
 // SetPreferredSize wraps gst_gl_window_set_preferred_size
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_set_preferred_size
 func (window *GLWindowInstance) SetPreferredSize(width int32, height int32) {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var carg1 C.gint         // in, none, casted
@@ -11229,8 +10928,7 @@ func (window *GLWindowInstance) SetPreferredSize(width int32, height int32) {
 
 // SetRenderRectangle wraps gst_gl_window_set_render_rectangle
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_set_render_rectangle
 func (window *GLWindowInstance) SetRenderRectangle(x int32, y int32, width int32, height int32) bool {
 	var carg0 *C.GstGLWindow // in, none, converted
 	var carg1 C.gint         // in, none, casted
@@ -11261,10 +10959,26 @@ func (window *GLWindowInstance) SetRenderRectangle(x int32, y int32, width int32
 	return goret
 }
 
+// SetRequestOutputSurface wraps gst_gl_window_set_request_output_surface
+// 
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_set_request_output_surface
+func (window *GLWindowInstance) SetRequestOutputSurface(outputSurface bool) {
+	var carg0 *C.GstGLWindow // in, none, converted
+	var carg1 C.gboolean     // in
+
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
+	if outputSurface {
+		carg1 = C.TRUE
+	}
+
+	C.gst_gl_window_set_request_output_surface(carg0, carg1)
+	runtime.KeepAlive(window)
+	runtime.KeepAlive(outputSurface)
+}
+
 // Show wraps gst_gl_window_show
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_show
 func (window *GLWindowInstance) Show() {
 	var carg0 *C.GstGLWindow // in, none, converted
 
@@ -11276,32 +10990,28 @@ func (window *GLWindowInstance) Show() {
 
 // ConnectKeyEvent connects the provided callback to the "key-event" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func (o *GLWindowInstance) ConnectKeyEvent(fn func(GLWindow, string, string)) gobject.SignalHandle {
 	return o.Connect("key-event", fn)
 }
 
 // ConnectMouseEvent connects the provided callback to the "mouse-event" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func (o *GLWindowInstance) ConnectMouseEvent(fn func(GLWindow, string, int32, float64, float64)) gobject.SignalHandle {
 	return o.Connect("mouse-event", fn)
 }
 
 // ConnectScrollEvent connects the provided callback to the "scroll-event" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func (o *GLWindowInstance) ConnectScrollEvent(fn func(GLWindow, float64, float64, float64, float64)) gobject.SignalHandle {
 	return o.Connect("scroll-event", fn)
 }
 
 // ConnectWindowHandleChanged connects the provided callback to the "window-handle-changed" signal
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl
 func (o *GLWindowInstance) ConnectWindowHandleChanged(fn func(GLWindow)) gobject.SignalHandle {
 	return o.Connect("window-handle-changed", fn)
 }
@@ -11314,51 +11024,51 @@ type GLWindowOverrides[Instance GLWindow] struct {
 
 	// // Close allows you to override the implementation of the virtual method close.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#close
 	Close func(Instance)
 	// // ControlsViewport allows you to override the implementation of the virtual method controls_viewport.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#controls_viewport
 	ControlsViewport func(Instance) bool
 	// // Draw allows you to override the implementation of the virtual method draw.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#draw
 	Draw func(Instance)
 	// // HandleEvents allows you to override the implementation of the virtual method handle_events.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#handle_events
 	HandleEvents func(Instance, bool)
 	// // HasOutputSurface allows you to override the implementation of the virtual method has_output_surface.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#has_output_surface
 	HasOutputSurface func(Instance) bool
 	// // Open allows you to override the implementation of the virtual method open.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#open
 	Open func(Instance) (bool, error)
 	// // QueueResize allows you to override the implementation of the virtual method queue_resize.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#queue_resize
 	QueueResize func(Instance)
 	// // Quit allows you to override the implementation of the virtual method quit.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#quit
 	Quit func(Instance)
 	// // Run allows you to override the implementation of the virtual method run.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#run
 	Run func(Instance)
 	// // SetPreferredSize allows you to override the implementation of the virtual method set_preferred_size.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#set_preferred_size
 	SetPreferredSize func(Instance, int32, int32)
 	// // SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#set_render_rectangle
 	SetRenderRectangle func(Instance, int32, int32, int32, int32) bool
 	// // Show allows you to override the implementation of the virtual method show.
 	// 
-	// see also No documentation available
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#show
 	Show func(Instance)
 }
 
@@ -11599,7 +11309,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 // ParentClose calls the default implementations of the `GstGLWindow.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#close
 func (window *GLWindowInstance) ParentClose() {
 	var carg0 *C.GstGLWindow
 
@@ -11614,7 +11324,7 @@ func (window *GLWindowInstance) ParentClose() {
 // ParentControlsViewport calls the default implementations of the `GstGLWindow.controls_viewport` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#controls_viewport
 func (window *GLWindowInstance) ParentControlsViewport() bool {
 	var carg0 *C.GstGLWindow
 	var cret  C.gboolean // return
@@ -11638,7 +11348,7 @@ func (window *GLWindowInstance) ParentControlsViewport() bool {
 // ParentDraw calls the default implementations of the `GstGLWindow.draw` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#draw
 func (window *GLWindowInstance) ParentDraw() {
 	var carg0 *C.GstGLWindow
 
@@ -11653,7 +11363,7 @@ func (window *GLWindowInstance) ParentDraw() {
 // ParentHandleEvents calls the default implementations of the `GstGLWindow.handle_events` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#handle_events
 func (window *GLWindowInstance) ParentHandleEvents(handleEvents bool) {
 	var carg0 *C.GstGLWindow
 	var carg1 C.gboolean // in, none, converted
@@ -11673,7 +11383,7 @@ func (window *GLWindowInstance) ParentHandleEvents(handleEvents bool) {
 // ParentHasOutputSurface calls the default implementations of the `GstGLWindow.has_output_surface` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#has_output_surface
 func (window *GLWindowInstance) ParentHasOutputSurface() bool {
 	var carg0 *C.GstGLWindow
 	var cret  C.gboolean // return
@@ -11697,7 +11407,7 @@ func (window *GLWindowInstance) ParentHasOutputSurface() bool {
 // ParentOpen calls the default implementations of the `GstGLWindow.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#open
 func (window *GLWindowInstance) ParentOpen() (bool, error) {
 	var carg0 *C.GstGLWindow
 	var cret  C.gboolean // return
@@ -11726,7 +11436,7 @@ func (window *GLWindowInstance) ParentOpen() (bool, error) {
 // ParentQueueResize calls the default implementations of the `GstGLWindow.queue_resize` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#queue_resize
 func (window *GLWindowInstance) ParentQueueResize() {
 	var carg0 *C.GstGLWindow
 
@@ -11741,7 +11451,7 @@ func (window *GLWindowInstance) ParentQueueResize() {
 // ParentQuit calls the default implementations of the `GstGLWindow.quit` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#quit
 func (window *GLWindowInstance) ParentQuit() {
 	var carg0 *C.GstGLWindow
 
@@ -11756,7 +11466,7 @@ func (window *GLWindowInstance) ParentQuit() {
 // ParentRun calls the default implementations of the `GstGLWindow.run` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#run
 func (window *GLWindowInstance) ParentRun() {
 	var carg0 *C.GstGLWindow
 
@@ -11771,7 +11481,7 @@ func (window *GLWindowInstance) ParentRun() {
 // ParentSetPreferredSize calls the default implementations of the `GstGLWindow.set_preferred_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#set_preferred_size
 func (window *GLWindowInstance) ParentSetPreferredSize(width int32, height int32) {
 	var carg0 *C.GstGLWindow
 	var carg1 C.gint // in, none, converted
@@ -11792,7 +11502,7 @@ func (window *GLWindowInstance) ParentSetPreferredSize(width int32, height int32
 // ParentSetRenderRectangle calls the default implementations of the `GstGLWindow.set_render_rectangle` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#set_render_rectangle
 func (window *GLWindowInstance) ParentSetRenderRectangle(x int32, y int32, width int32, height int32) bool {
 	var carg0 *C.GstGLWindow
 	var carg1 C.gint     // in, none, converted
@@ -11828,7 +11538,7 @@ func (window *GLWindowInstance) ParentSetRenderRectangle(x int32, y int32, width
 // ParentShow calls the default implementations of the `GstGLWindow.show` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#show
 func (window *GLWindowInstance) ParentShow() {
 	var carg0 *C.GstGLWindow
 
@@ -11868,7 +11578,7 @@ func RegisterGLWindowSubClass[InstanceT GLWindow](
 
 // GLAllocationParams wraps GstGLAllocationParams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GstGLAllocationParams
 type GLAllocationParams struct {
 	*gLAllocationParams
 }
@@ -11964,7 +11674,7 @@ func UnsafeGLAllocationParamsToGlibFull(g *GLAllocationParams) unsafe.Pointer {
 
 // Copy wraps gst_gl_allocation_params_copy
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#gst_gl_allocation_params_copy
 func (src *GLAllocationParams) Copy() *GLAllocationParams {
 	var carg0 *C.GstGLAllocationParams // in, none, converted
 	var cret  *C.GstGLAllocationParams // return, full, converted
@@ -11983,8 +11693,7 @@ func (src *GLAllocationParams) Copy() *GLAllocationParams {
 
 // CopyData wraps gst_gl_allocation_params_copy_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#gst_gl_allocation_params_copy_data
 func (src *GLAllocationParams) CopyData(dest *GLAllocationParams) {
 	var carg0 *C.GstGLAllocationParams // in, none, converted
 	var carg1 *C.GstGLAllocationParams // in, none, converted
@@ -11999,8 +11708,7 @@ func (src *GLAllocationParams) CopyData(dest *GLAllocationParams) {
 
 // FreeData wraps gst_gl_allocation_params_free_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#gst_gl_allocation_params_free_data
 func (params *GLAllocationParams) FreeData() {
 	var carg0 *C.GstGLAllocationParams // in, none, converted
 
@@ -12012,8 +11720,7 @@ func (params *GLAllocationParams) FreeData() {
 
 // GLAsyncDebug wraps GstGLAsyncDebug
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldebug.html#GstGLAsyncDebug
 type GLAsyncDebug struct {
 	*gLAsyncDebug
 }
@@ -12094,8 +11801,7 @@ func UnsafeGLAsyncDebugToGlibFull(g *GLAsyncDebug) unsafe.Pointer {
 
 // Freeze wraps gst_gl_async_debug_freeze
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldebug.html#gst_gl_async_debug_freeze
 func (ad *GLAsyncDebug) Freeze() {
 	var carg0 *C.GstGLAsyncDebug // in, none, converted
 
@@ -12107,8 +11813,7 @@ func (ad *GLAsyncDebug) Freeze() {
 
 // Init wraps gst_gl_async_debug_init
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldebug.html#gst_gl_async_debug_init
 func (ad *GLAsyncDebug) Init() {
 	var carg0 *C.GstGLAsyncDebug // in, none, converted
 
@@ -12120,8 +11825,7 @@ func (ad *GLAsyncDebug) Init() {
 
 // OutputLogMsg wraps gst_gl_async_debug_output_log_msg
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldebug.html#gst_gl_async_debug_output_log_msg
 func (ad *GLAsyncDebug) OutputLogMsg() {
 	var carg0 *C.GstGLAsyncDebug // in, none, converted
 
@@ -12133,8 +11837,7 @@ func (ad *GLAsyncDebug) OutputLogMsg() {
 
 // Thaw wraps gst_gl_async_debug_thaw
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldebug.html#gst_gl_async_debug_thaw
 func (ad *GLAsyncDebug) Thaw() {
 	var carg0 *C.GstGLAsyncDebug // in, none, converted
 
@@ -12146,8 +11849,7 @@ func (ad *GLAsyncDebug) Thaw() {
 
 // Unset wraps gst_gl_async_debug_unset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldebug.html#gst_gl_async_debug_unset
 func (ad *GLAsyncDebug) Unset() {
 	var carg0 *C.GstGLAsyncDebug // in, none, converted
 
@@ -12159,8 +11861,7 @@ func (ad *GLAsyncDebug) Unset() {
 
 // GLBaseFilterClass wraps GstGLBaseFilterClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasefilter.html#GstGLBaseFilterClass
 // 
 // GLBaseFilterClass is the type struct for [GLBaseFilter]
 type GLBaseFilterClass struct {
@@ -12214,8 +11915,7 @@ func (g *GLBaseFilterClass) ParentClass() *gstbase.BaseTransformClass {
 
 // GLBaseMemory wraps GstGLBaseMemory
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GstGLBaseMemory
 type GLBaseMemory struct {
 	*gLBaseMemory
 }
@@ -12311,7 +12011,7 @@ func UnsafeGLBaseMemoryToGlibFull(g *GLBaseMemory) unsafe.Pointer {
 
 // GLBaseMemoryAlloc wraps gst_gl_base_memory_alloc
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#gst_gl_base_memory_alloc
 func GLBaseMemoryAlloc(allocator GLBaseMemoryAllocator, params *GLAllocationParams) *GLBaseMemory {
 	var carg1 *C.GstGLBaseMemoryAllocator // in, none, converted
 	var carg2 *C.GstGLAllocationParams    // in, none, converted
@@ -12335,8 +12035,7 @@ func GLBaseMemoryAlloc(allocator GLBaseMemoryAllocator, params *GLAllocationPara
 
 // GLBaseMemoryInitOnce wraps gst_gl_base_memory_init_once
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#gst_gl_base_memory_init_once
 func GLBaseMemoryInitOnce() {
 
 	C.gst_gl_base_memory_init_once()
@@ -12344,8 +12043,7 @@ func GLBaseMemoryInitOnce() {
 
 // AllocData wraps gst_gl_base_memory_alloc_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#gst_gl_base_memory_alloc_data
 func (glMem *GLBaseMemory) AllocData() bool {
 	var carg0 *C.GstGLBaseMemory // in, none, converted
 	var cret  C.gboolean         // return
@@ -12366,7 +12064,7 @@ func (glMem *GLBaseMemory) AllocData() bool {
 
 // Memcpy wraps gst_gl_base_memory_memcpy
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#gst_gl_base_memory_memcpy
 func (src *GLBaseMemory) Memcpy(dest *GLBaseMemory, offset int, size int) bool {
 	var carg0 *C.GstGLBaseMemory // in, none, converted
 	var carg1 *C.GstGLBaseMemory // in, none, converted
@@ -12396,7 +12094,7 @@ func (src *GLBaseMemory) Memcpy(dest *GLBaseMemory, offset int, size int) bool {
 
 // GLBaseMemoryAllocatorClass wraps GstGLBaseMemoryAllocatorClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GstGLBaseMemoryAllocatorClass
 // 
 // GLBaseMemoryAllocatorClass is the type struct for [GLBaseMemoryAllocator]
 type GLBaseMemoryAllocatorClass struct {
@@ -12450,7 +12148,7 @@ func (g *GLBaseMemoryAllocatorClass) ParentClass() *gst.AllocatorClass {
 
 // GLBaseMixerClass wraps GstGLBaseMixerClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#GstGLBaseMixerClass
 // 
 // GLBaseMixerClass is the type struct for [GLBaseMixer]
 type GLBaseMixerClass struct {
@@ -12504,7 +12202,7 @@ func (g *GLBaseMixerClass) ParentClass() *gstvideo.VideoAggregatorClass {
 
 // GLBaseMixerPadClass wraps GstGLBaseMixerPadClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasemixer.html#GstGLBaseMixerPadClass
 // 
 // GLBaseMixerPadClass is the type struct for [GLBaseMixerPad]
 type GLBaseMixerPadClass struct {
@@ -12558,8 +12256,7 @@ func (g *GLBaseMixerPadClass) ParentClass() *gstvideo.VideoAggregatorPadClass {
 
 // GLBaseSrcClass wraps GstGLBaseSrcClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#GstGLBaseSrcClass
 // 
 // GLBaseSrcClass is the type struct for [GLBaseSrc]
 type GLBaseSrcClass struct {
@@ -12613,8 +12310,7 @@ func (g *GLBaseSrcClass) ParentClass() *gstbase.PushSrcClass {
 
 // GLBuffer wraps GstGLBuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbuffer.html#GstGLBuffer
 type GLBuffer struct {
 	*gLBuffer
 }
@@ -12710,8 +12406,7 @@ func UnsafeGLBufferToGlibFull(g *GLBuffer) unsafe.Pointer {
 
 // GLBufferInitOnce wraps gst_gl_buffer_init_once
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbuffer.html#gst_gl_buffer_init_once
 func GLBufferInitOnce() {
 
 	C.gst_gl_buffer_init_once()
@@ -12719,7 +12414,7 @@ func GLBufferInitOnce() {
 
 // GLBufferAllocationParams wraps GstGLBufferAllocationParams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbuffer.html#GstGLBufferAllocationParams
 type GLBufferAllocationParams struct {
 	*gLBufferAllocationParams
 }
@@ -12815,7 +12510,7 @@ func UnsafeGLBufferAllocationParamsToGlibFull(g *GLBufferAllocationParams) unsaf
 
 // NewGLBufferAllocationParams wraps gst_gl_buffer_allocation_params_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbuffer.html#gst_gl_buffer_allocation_params_new
 func NewGLBufferAllocationParams(_context GLContext, allocSize uint, allocParams *gst.AllocationParams, glTarget uint, glUsage uint) *GLBufferAllocationParams {
 	var carg1 *C.GstGLContext                // in, none, converted
 	var carg2 C.gsize                        // in, none, casted
@@ -12848,8 +12543,7 @@ func NewGLBufferAllocationParams(_context GLContext, allocSize uint, allocParams
 
 // GLBufferAllocatorClass wraps GstGLBufferAllocatorClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbuffer.html#GstGLBufferAllocatorClass
 // 
 // GLBufferAllocatorClass is the type struct for [GLBufferAllocator]
 type GLBufferAllocatorClass struct {
@@ -12903,8 +12597,7 @@ func (g *GLBufferAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass {
 
 // GLBufferPoolClass wraps GstGLBufferPoolClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbufferpool.html#GstGLBufferPoolClass
 // 
 // GLBufferPoolClass is the type struct for [GLBufferPool]
 type GLBufferPoolClass struct {
@@ -12958,8 +12651,7 @@ func (g *GLBufferPoolClass) ParentClass() *gst.BufferPoolClass {
 
 // GLColorConvertClass wraps GstGLColorConvertClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcolorconvert.html#GstGLColorConvertClass
 // 
 // GLColorConvertClass is the type struct for [GLColorConvert]
 type GLColorConvertClass struct {
@@ -13013,7 +12705,7 @@ func (g *GLColorConvertClass) ParentClass() *gst.ObjectClass {
 
 // GLContextClass wraps GstGLContextClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#GstGLContextClass
 // 
 // GLContextClass is the type struct for [GLContext]
 type GLContextClass struct {
@@ -13067,7 +12759,7 @@ func (g *GLContextClass) ParentClass() *gst.ObjectClass {
 
 // GLDisplayClass wraps GstGLDisplayClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GstGLDisplayClass
 // 
 // GLDisplayClass is the type struct for [GLDisplay]
 type GLDisplayClass struct {
@@ -13121,7 +12813,7 @@ func (g *GLDisplayClass) ParentClass() *gst.ObjectClass {
 
 // GLFilterClass wraps GstGLFilterClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglfilter.html#GstGLFilterClass
 // 
 // GLFilterClass is the type struct for [GLFilter]
 type GLFilterClass struct {
@@ -13175,8 +12867,7 @@ func (g *GLFilterClass) ParentClass() *GLBaseFilterClass {
 
 // GLFramebufferClass wraps GstGLFramebufferClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglframebuffer.html#GstGLFramebufferClass
 // 
 // GLFramebufferClass is the type struct for [GLFramebuffer]
 type GLFramebufferClass struct {
@@ -13230,8 +12921,7 @@ func (g *GLFramebufferClass) ParentClass() *gst.ObjectClass {
 
 // GLFuncs wraps GstGLFuncs
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_fwd.html#GstGLFuncs
 type GLFuncs struct {
 	*gLFuncs
 }
@@ -13312,8 +13002,7 @@ func UnsafeGLFuncsToGlibFull(g *GLFuncs) unsafe.Pointer {
 
 // GLMemory wraps GstGLMemory
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#GstGLMemory
 type GLMemory struct {
 	*gLMemory
 }
@@ -13409,8 +13098,7 @@ func UnsafeGLMemoryToGlibFull(g *GLMemory) unsafe.Pointer {
 
 // GLMemoryInitOnce wraps gst_gl_memory_init_once
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_memory_init_once
 func GLMemoryInitOnce() {
 
 	C.gst_gl_memory_init_once()
@@ -13418,8 +13106,7 @@ func GLMemoryInitOnce() {
 
 // CopyInto wraps gst_gl_memory_copy_into
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_memory_copy_into
 func (glMem *GLMemory) CopyInto(texId uint, target GLTextureTarget, texFormat GLFormat, width int32, height int32) bool {
 	var carg0 *C.GstGLMemory       // in, none, converted
 	var carg1 C.guint              // in, none, casted
@@ -13455,8 +13142,7 @@ func (glMem *GLMemory) CopyInto(texId uint, target GLTextureTarget, texFormat GL
 
 // CopyTeximage wraps gst_gl_memory_copy_teximage
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_memory_copy_teximage
 func (src *GLMemory) CopyTeximage(texId uint, outTarget GLTextureTarget, outTexFormat GLFormat, outWidth int32, outHeight int32) bool {
 	var carg0 *C.GstGLMemory       // in, none, converted
 	var carg1 C.guint              // in, none, casted
@@ -13492,7 +13178,7 @@ func (src *GLMemory) CopyTeximage(texId uint, outTarget GLTextureTarget, outTexF
 
 // GetTextureFormat wraps gst_gl_memory_get_texture_format
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_memory_get_texture_format
 func (glMem *GLMemory) GetTextureFormat() GLFormat {
 	var carg0 *C.GstGLMemory // in, none, converted
 	var cret  C.GstGLFormat  // return, none, casted
@@ -13511,7 +13197,7 @@ func (glMem *GLMemory) GetTextureFormat() GLFormat {
 
 // GetTextureHeight wraps gst_gl_memory_get_texture_height
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_memory_get_texture_height
 func (glMem *GLMemory) GetTextureHeight() int32 {
 	var carg0 *C.GstGLMemory // in, none, converted
 	var cret  C.gint         // return, none, casted
@@ -13530,7 +13216,7 @@ func (glMem *GLMemory) GetTextureHeight() int32 {
 
 // GetTextureID wraps gst_gl_memory_get_texture_id
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_memory_get_texture_id
 func (glMem *GLMemory) GetTextureID() uint {
 	var carg0 *C.GstGLMemory // in, none, converted
 	var cret  C.guint        // return, none, casted
@@ -13549,7 +13235,7 @@ func (glMem *GLMemory) GetTextureID() uint {
 
 // GetTextureTarget wraps gst_gl_memory_get_texture_target
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_memory_get_texture_target
 func (glMem *GLMemory) GetTextureTarget() GLTextureTarget {
 	var carg0 *C.GstGLMemory       // in, none, converted
 	var cret  C.GstGLTextureTarget // return, none, casted
@@ -13568,7 +13254,7 @@ func (glMem *GLMemory) GetTextureTarget() GLTextureTarget {
 
 // GetTextureWidth wraps gst_gl_memory_get_texture_width
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_memory_get_texture_width
 func (glMem *GLMemory) GetTextureWidth() int32 {
 	var carg0 *C.GstGLMemory // in, none, converted
 	var cret  C.gint         // return, none, casted
@@ -13587,7 +13273,7 @@ func (glMem *GLMemory) GetTextureWidth() int32 {
 
 // GLMemoryAllocatorClass wraps GstGLMemoryAllocatorClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#GstGLMemoryAllocatorClass
 // 
 // GLMemoryAllocatorClass is the type struct for [GLMemoryAllocator]
 type GLMemoryAllocatorClass struct {
@@ -13641,8 +13327,7 @@ func (g *GLMemoryAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass {
 
 // GLMemoryPBO wraps GstGLMemoryPBO
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemorypbo.html#GstGLMemoryPBO
 type GLMemoryPBO struct {
 	*gLMemoryPBO
 }
@@ -13738,7 +13423,7 @@ func UnsafeGLMemoryPBOToGlibFull(g *GLMemoryPBO) unsafe.Pointer {
 
 // GLMemoryPBOInitOnce wraps gst_gl_memory_pbo_init_once
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemorypbo.html#gst_gl_memory_pbo_init_once
 func GLMemoryPBOInitOnce() {
 
 	C.gst_gl_memory_pbo_init_once()
@@ -13746,8 +13431,7 @@ func GLMemoryPBOInitOnce() {
 
 // CopyIntoTexture wraps gst_gl_memory_pbo_copy_into_texture
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemorypbo.html#gst_gl_memory_pbo_copy_into_texture
 func (glMem *GLMemoryPBO) CopyIntoTexture(texId uint, target GLTextureTarget, texFormat GLFormat, width int32, height int32, stride int32, respecify bool) bool {
 	var carg0 *C.GstGLMemoryPBO    // in, none, converted
 	var carg1 C.guint              // in, none, casted
@@ -13791,8 +13475,7 @@ func (glMem *GLMemoryPBO) CopyIntoTexture(texId uint, target GLTextureTarget, te
 
 // DownloadTransfer wraps gst_gl_memory_pbo_download_transfer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemorypbo.html#gst_gl_memory_pbo_download_transfer
 func (glMem *GLMemoryPBO) DownloadTransfer() {
 	var carg0 *C.GstGLMemoryPBO // in, none, converted
 
@@ -13804,8 +13487,7 @@ func (glMem *GLMemoryPBO) DownloadTransfer() {
 
 // UploadTransfer wraps gst_gl_memory_pbo_upload_transfer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemorypbo.html#gst_gl_memory_pbo_upload_transfer
 func (glMem *GLMemoryPBO) UploadTransfer() {
 	var carg0 *C.GstGLMemoryPBO // in, none, converted
 
@@ -13817,8 +13499,7 @@ func (glMem *GLMemoryPBO) UploadTransfer() {
 
 // GLMemoryPBOAllocatorClass wraps GstGLMemoryPBOAllocatorClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemorypbo.html#GstGLMemoryPBOAllocatorClass
 // 
 // GLMemoryPBOAllocatorClass is the type struct for [GLMemoryPBOAllocator]
 type GLMemoryPBOAllocatorClass struct {
@@ -13872,7 +13553,7 @@ func (g *GLMemoryPBOAllocatorClass) ParentClass() *GLMemoryAllocatorClass {
 
 // GLMixerClass wraps GstGLMixerClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#GstGLMixerClass
 // 
 // GLMixerClass is the type struct for [GLMixer]
 type GLMixerClass struct {
@@ -13926,8 +13607,7 @@ func (g *GLMixerClass) ParentClass() *GLBaseMixerClass {
 
 // AddRgbaPadTemplates wraps gst_gl_mixer_class_add_rgba_pad_templates
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#gst_gl_mixer_class_add_rgba_pad_templates
 func (klass *GLMixerClass) AddRgbaPadTemplates() {
 	var carg0 *C.GstGLMixerClass // in, none, converted
 
@@ -13939,7 +13619,7 @@ func (klass *GLMixerClass) AddRgbaPadTemplates() {
 
 // GLMixerPadClass wraps GstGLMixerPadClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmixer.html#GstGLMixerPadClass
 // 
 // GLMixerPadClass is the type struct for [GLMixerPad]
 type GLMixerPadClass struct {
@@ -13993,7 +13673,7 @@ func (g *GLMixerPadClass) ParentClass() *GLBaseMixerPadClass {
 
 // GLOverlayCompositorClass wraps GstGLOverlayCompositorClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgloverlaycompositor.html#GstGLOverlayCompositorClass
 // 
 // GLOverlayCompositorClass is the type struct for [GLOverlayCompositor]
 type GLOverlayCompositorClass struct {
@@ -14047,8 +13727,7 @@ func (g *GLOverlayCompositorClass) ParentClass() *gst.ObjectClass {
 
 // GLQuery wraps GstGLQuery
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#GstGLQuery
 type GLQuery struct {
 	*gLQuery
 }
@@ -14129,8 +13808,7 @@ func UnsafeGLQueryToGlibFull(g *GLQuery) unsafe.Pointer {
 
 // Counter wraps gst_gl_query_counter
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#gst_gl_query_counter
 func (query *GLQuery) Counter() {
 	var carg0 *C.GstGLQuery // in, none, converted
 
@@ -14142,8 +13820,7 @@ func (query *GLQuery) Counter() {
 
 // End wraps gst_gl_query_end
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#gst_gl_query_end
 func (query *GLQuery) End() {
 	var carg0 *C.GstGLQuery // in, none, converted
 
@@ -14155,7 +13832,7 @@ func (query *GLQuery) End() {
 
 // Init wraps gst_gl_query_init
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#gst_gl_query_init
 func (query *GLQuery) Init(_context GLContext, queryType GLQueryType) {
 	var carg0 *C.GstGLQuery    // in, none, converted
 	var carg1 *C.GstGLContext  // in, none, converted
@@ -14173,7 +13850,7 @@ func (query *GLQuery) Init(_context GLContext, queryType GLQueryType) {
 
 // Result wraps gst_gl_query_result
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#gst_gl_query_result
 func (query *GLQuery) Result() uint64 {
 	var carg0 *C.GstGLQuery // in, none, converted
 	var cret  C.guint64     // return, none, casted
@@ -14192,8 +13869,7 @@ func (query *GLQuery) Result() uint64 {
 
 // Start wraps gst_gl_query_start
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#gst_gl_query_start
 func (query *GLQuery) Start() {
 	var carg0 *C.GstGLQuery // in, none, converted
 
@@ -14205,8 +13881,7 @@ func (query *GLQuery) Start() {
 
 // Unset wraps gst_gl_query_unset
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#gst_gl_query_unset
 func (query *GLQuery) Unset() {
 	var carg0 *C.GstGLQuery // in, none, converted
 
@@ -14218,8 +13893,7 @@ func (query *GLQuery) Unset() {
 
 // GLRenderbuffer wraps GstGLRenderbuffer
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#GstGLRenderbuffer
 type GLRenderbuffer struct {
 	*gLRenderbuffer
 }
@@ -14315,8 +13989,7 @@ func UnsafeGLRenderbufferToGlibFull(g *GLRenderbuffer) unsafe.Pointer {
 
 // GLRenderbufferInitOnce wraps gst_gl_renderbuffer_init_once
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#gst_gl_renderbuffer_init_once
 func GLRenderbufferInitOnce() {
 
 	C.gst_gl_renderbuffer_init_once()
@@ -14324,7 +13997,7 @@ func GLRenderbufferInitOnce() {
 
 // GetFormat wraps gst_gl_renderbuffer_get_format
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#gst_gl_renderbuffer_get_format
 func (glMem *GLRenderbuffer) GetFormat() GLFormat {
 	var carg0 *C.GstGLRenderbuffer // in, none, converted
 	var cret  C.GstGLFormat        // return, none, casted
@@ -14343,7 +14016,7 @@ func (glMem *GLRenderbuffer) GetFormat() GLFormat {
 
 // GetHeight wraps gst_gl_renderbuffer_get_height
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#gst_gl_renderbuffer_get_height
 func (glMem *GLRenderbuffer) GetHeight() int32 {
 	var carg0 *C.GstGLRenderbuffer // in, none, converted
 	var cret  C.gint               // return, none, casted
@@ -14362,7 +14035,7 @@ func (glMem *GLRenderbuffer) GetHeight() int32 {
 
 // GetID wraps gst_gl_renderbuffer_get_id
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#gst_gl_renderbuffer_get_id
 func (glMem *GLRenderbuffer) GetID() uint {
 	var carg0 *C.GstGLRenderbuffer // in, none, converted
 	var cret  C.guint              // return, none, casted
@@ -14381,7 +14054,7 @@ func (glMem *GLRenderbuffer) GetID() uint {
 
 // GetWidth wraps gst_gl_renderbuffer_get_width
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#gst_gl_renderbuffer_get_width
 func (glMem *GLRenderbuffer) GetWidth() int32 {
 	var carg0 *C.GstGLRenderbuffer // in, none, converted
 	var cret  C.gint               // return, none, casted
@@ -14400,8 +14073,7 @@ func (glMem *GLRenderbuffer) GetWidth() int32 {
 
 // GLRenderbufferAllocationParams wraps GstGLRenderbufferAllocationParams
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#GstGLRenderbufferAllocationParams
 type GLRenderbufferAllocationParams struct {
 	*gLRenderbufferAllocationParams
 }
@@ -14497,7 +14169,7 @@ func UnsafeGLRenderbufferAllocationParamsToGlibFull(g *GLRenderbufferAllocationP
 
 // NewGLRenderbufferAllocationParams wraps gst_gl_renderbuffer_allocation_params_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#gst_gl_renderbuffer_allocation_params_new
 func NewGLRenderbufferAllocationParams(_context GLContext, allocParams *gst.AllocationParams, renderbufferFormat GLFormat, width uint, height uint) *GLRenderbufferAllocationParams {
 	var carg1 *C.GstGLContext                      // in, none, converted
 	var carg2 *C.GstAllocationParams               // in, none, converted, nullable
@@ -14530,8 +14202,7 @@ func NewGLRenderbufferAllocationParams(_context GLContext, allocParams *gst.Allo
 
 // GLRenderbufferAllocatorClass wraps GstGLRenderbufferAllocatorClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglrenderbuffer.html#GstGLRenderbufferAllocatorClass
 // 
 // GLRenderbufferAllocatorClass is the type struct for [GLRenderbufferAllocator]
 type GLRenderbufferAllocatorClass struct {
@@ -14585,8 +14256,7 @@ func (g *GLRenderbufferAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass
 
 // GLSLStageClass wraps GstGLSLStageClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglslstage.html#GstGLSLStageClass
 // 
 // GLSLStageClass is the type struct for [GLSLStage]
 type GLSLStageClass struct {
@@ -14640,7 +14310,7 @@ func (g *GLSLStageClass) ParentClass() *gst.ObjectClass {
 
 // GLShaderClass wraps GstGLShaderClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglshader.html#GstGLShaderClass
 // 
 // GLShaderClass is the type struct for [GLShader]
 type GLShaderClass struct {
@@ -14694,8 +14364,7 @@ func (g *GLShaderClass) ParentClass() *gst.ObjectClass {
 
 // GLSyncMeta wraps GstGLSyncMeta
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsyncmeta.html#GstGLSyncMeta
 type GLSyncMeta struct {
 	*gLSyncMeta
 }
@@ -14776,7 +14445,7 @@ func UnsafeGLSyncMetaToGlibFull(g *GLSyncMeta) unsafe.Pointer {
 
 // GLSyncMetaGetInfo wraps gst_gl_sync_meta_get_info
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsyncmeta.html#gst_gl_sync_meta_get_info
 func GLSyncMetaGetInfo() *gst.MetaInfo {
 	var cret *C.GstMetaInfo // return, none, converted
 
@@ -14791,8 +14460,7 @@ func GLSyncMetaGetInfo() *gst.MetaInfo {
 
 // SetSyncPoint wraps gst_gl_sync_meta_set_sync_point
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsyncmeta.html#gst_gl_sync_meta_set_sync_point
 func (syncMeta *GLSyncMeta) SetSyncPoint(_context GLContext) {
 	var carg0 *C.GstGLSyncMeta // in, none, converted
 	var carg1 *C.GstGLContext  // in, none, converted
@@ -14807,8 +14475,7 @@ func (syncMeta *GLSyncMeta) SetSyncPoint(_context GLContext) {
 
 // Wait wraps gst_gl_sync_meta_wait
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsyncmeta.html#gst_gl_sync_meta_wait
 func (syncMeta *GLSyncMeta) Wait(_context GLContext) {
 	var carg0 *C.GstGLSyncMeta // in, none, converted
 	var carg1 *C.GstGLContext  // in, none, converted
@@ -14823,8 +14490,7 @@ func (syncMeta *GLSyncMeta) Wait(_context GLContext) {
 
 // WaitCpu wraps gst_gl_sync_meta_wait_cpu
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsyncmeta.html#gst_gl_sync_meta_wait_cpu
 func (syncMeta *GLSyncMeta) WaitCpu(_context GLContext) {
 	var carg0 *C.GstGLSyncMeta // in, none, converted
 	var carg1 *C.GstGLContext  // in, none, converted
@@ -14839,8 +14505,7 @@ func (syncMeta *GLSyncMeta) WaitCpu(_context GLContext) {
 
 // GLUploadClass wraps GstGLUploadClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#GstGLUploadClass
 // 
 // GLUploadClass is the type struct for [GLUpload]
 type GLUploadClass struct {
@@ -14894,7 +14559,7 @@ func (g *GLUploadClass) ParentClass() *gst.ObjectClass {
 
 // GLVideoAllocationParams wraps GstGLVideoAllocationParams
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#GstGLVideoAllocationParams
 type GLVideoAllocationParams struct {
 	*gLVideoAllocationParams
 }
@@ -14990,7 +14655,7 @@ func UnsafeGLVideoAllocationParamsToGlibFull(g *GLVideoAllocationParams) unsafe.
 
 // NewGLVideoAllocationParams wraps gst_gl_video_allocation_params_new
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_video_allocation_params_new
 func NewGLVideoAllocationParams(_context GLContext, allocParams *gst.AllocationParams, vInfo *gstvideo.VideoInfo, plane uint, valign *gstvideo.VideoAlignment, target GLTextureTarget, texFormat GLFormat) *GLVideoAllocationParams {
 	var carg1 *C.GstGLContext               // in, none, converted
 	var carg2 *C.GstAllocationParams        // in, none, converted, nullable
@@ -15031,8 +14696,7 @@ func NewGLVideoAllocationParams(_context GLContext, allocParams *gst.AllocationP
 
 // CopyData wraps gst_gl_video_allocation_params_copy_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_video_allocation_params_copy_data
 func (srcVid *GLVideoAllocationParams) CopyData(destVid *GLVideoAllocationParams) {
 	var carg0 *C.GstGLVideoAllocationParams // in, none, converted
 	var carg1 *C.GstGLVideoAllocationParams // in, none, converted
@@ -15047,8 +14711,7 @@ func (srcVid *GLVideoAllocationParams) CopyData(destVid *GLVideoAllocationParams
 
 // FreeData wraps gst_gl_video_allocation_params_free_data
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglmemory.html#gst_gl_video_allocation_params_free_data
 func (params *GLVideoAllocationParams) FreeData() {
 	var carg0 *C.GstGLVideoAllocationParams // in, none, converted
 
@@ -15060,8 +14723,7 @@ func (params *GLVideoAllocationParams) FreeData() {
 
 // GLViewConvertClass wraps GstGLViewConvertClass
 // 
-// see also No documentation available
-//
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#GstGLViewConvertClass
 // 
 // GLViewConvertClass is the type struct for [GLViewConvert]
 type GLViewConvertClass struct {
@@ -15115,7 +14777,7 @@ func (g *GLViewConvertClass) ParentClass() *gst.ObjectClass {
 
 // GLWindowClass wraps GstGLWindowClass
 // 
-// see also No documentation available
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#GstGLWindowClass
 // 
 // GLWindowClass is the type struct for [GLWindow]
 type GLWindowClass struct {
