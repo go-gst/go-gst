@@ -31212,27 +31212,6 @@ func (list *BufferList) Insert(idx int32, buffer *Buffer) {
 	runtime.KeepAlive(buffer)
 }
 
-// IsWritable wraps gst_buffer_list_is_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferlist.html#gst_buffer_list_is_writable
-func (list *BufferList) IsWritable() bool {
-	var carg0 *C.GstBufferList // in, none, converted
-	var cret  C.gboolean       // return
-
-	carg0 = (*C.GstBufferList)(UnsafeBufferListToGlibNone(list))
-
-	cret = C.gst_buffer_list_is_writable(carg0)
-	runtime.KeepAlive(list)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
 // Length wraps gst_buffer_list_length
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferlist.html#gst_buffer_list_length
@@ -31248,25 +31227,6 @@ func (list *BufferList) Length() uint {
 	var goret uint
 
 	goret = uint(cret)
-
-	return goret
-}
-
-// MakeWritable wraps gst_buffer_list_make_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferlist.html#gst_buffer_list_make_writable
-func (list *BufferList) MakeWritable() *BufferList {
-	var carg0 *C.GstBufferList // in, none, converted
-	var cret  *C.GstBufferList // return, full, converted
-
-	carg0 = (*C.GstBufferList)(UnsafeBufferListToGlibNone(list))
-
-	cret = C.gst_buffer_list_make_writable(carg0)
-	runtime.KeepAlive(list)
-
-	var goret *BufferList
-
-	goret = UnsafeBufferListFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -32321,46 +32281,6 @@ func (caps *Caps) IsSubsetStructureFull(structure *Structure, features *CapsFeat
 	if cret != 0 {
 		goret = true
 	}
-
-	return goret
-}
-
-// IsWritable wraps gst_caps_is_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstcaps.html#gst_caps_is_writable
-func (caps *Caps) IsWritable() bool {
-	var carg0 *C.GstCaps // in, none, converted
-	var cret  C.gboolean // return
-
-	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
-
-	cret = C.gst_caps_is_writable(carg0)
-	runtime.KeepAlive(caps)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// MakeWritable wraps gst_caps_make_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstcaps.html#gst_caps_make_writable
-func (caps *Caps) MakeWritable() *Caps {
-	var carg0 *C.GstCaps // in, none, converted
-	var cret  *C.GstCaps // return, full, converted
-
-	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
-
-	cret = C.gst_caps_make_writable(carg0)
-	runtime.KeepAlive(caps)
-
-	var goret *Caps
-
-	goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -33612,46 +33532,6 @@ func (_context *Context) IsPersistent() bool {
 	if cret != 0 {
 		goret = true
 	}
-
-	return goret
-}
-
-// IsWritable wraps gst_context_is_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstcontext.html#gst_context_is_writable
-func (_context *Context) IsWritable() bool {
-	var carg0 *C.GstContext // in, none, converted
-	var cret  C.gboolean    // return
-
-	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
-
-	cret = C.gst_context_is_writable(carg0)
-	runtime.KeepAlive(_context)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// MakeWritable wraps gst_context_make_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstcontext.html#gst_context_make_writable
-func (_context *Context) MakeWritable() *Context {
-	var carg0 *C.GstContext // in, none, converted
-	var cret  *C.GstContext // return, full, converted
-
-	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
-
-	cret = C.gst_context_make_writable(carg0)
-	runtime.KeepAlive(_context)
-
-	var goret *Context
-
-	goret = UnsafeContextFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -36366,46 +36246,6 @@ func (event *Event) HasName(name string) bool {
 	return goret
 }
 
-// IsWritable wraps gst_event_is_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_is_writable
-func (event *Event) IsWritable() bool {
-	var carg0 *C.GstEvent // in, none, converted
-	var cret  C.gboolean  // return
-
-	carg0 = (*C.GstEvent)(UnsafeEventToGlibNone(event))
-
-	cret = C.gst_event_is_writable(carg0)
-	runtime.KeepAlive(event)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// MakeWritable wraps gst_event_make_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_make_writable
-func (event *Event) MakeWritable() *Event {
-	var carg0 *C.GstEvent // in, none, converted
-	var cret  *C.GstEvent // return, full, converted
-
-	carg0 = (*C.GstEvent)(UnsafeEventToGlibNone(event))
-
-	cret = C.gst_event_make_writable(carg0)
-	runtime.KeepAlive(event)
-
-	var goret *Event
-
-	goret = UnsafeEventFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
 // ParseBufferSize wraps gst_event_parse_buffer_size
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_parse_buffer_size
@@ -38027,46 +37867,6 @@ func (mem *Memory) IsType(memType string) bool {
 	return goret
 }
 
-// IsWritable wraps gst_memory_is_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#gst_memory_is_writable
-func (memory *Memory) IsWritable() bool {
-	var carg0 *C.GstMemory // in, none, converted
-	var cret  C.gboolean   // return
-
-	carg0 = (*C.GstMemory)(UnsafeMemoryToGlibNone(memory))
-
-	cret = C.gst_memory_is_writable(carg0)
-	runtime.KeepAlive(memory)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// MakeWritable wraps gst_memory_make_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#gst_memory_make_writable
-func (memory *Memory) MakeWritable() *Memory {
-	var carg0 *C.GstMemory // in, none, converted
-	var cret  *C.GstMemory // return, full, converted
-
-	carg0 = (*C.GstMemory)(UnsafeMemoryToGlibNone(memory))
-
-	cret = C.gst_memory_make_writable(carg0)
-	runtime.KeepAlive(memory)
-
-	var goret *Memory
-
-	goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
 // Resize wraps gst_memory_resize
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#gst_memory_resize
@@ -39333,46 +39133,6 @@ func (message *Message) HasName(name string) bool {
 	if cret != 0 {
 		goret = true
 	}
-
-	return goret
-}
-
-// IsWritable wraps gst_message_is_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#gst_message_is_writable
-func (message *Message) IsWritable() bool {
-	var carg0 *C.GstMessage // in, none, converted
-	var cret  C.gboolean    // return
-
-	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
-
-	cret = C.gst_message_is_writable(carg0)
-	runtime.KeepAlive(message)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// MakeWritable wraps gst_message_make_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#gst_message_make_writable
-func (message *Message) MakeWritable() *Message {
-	var carg0 *C.GstMessage // in, none, converted
-	var cret  *C.GstMessage // return, full, converted
-
-	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
-
-	cret = C.gst_message_make_writable(carg0)
-	runtime.KeepAlive(message)
-
-	var goret *Message
-
-	goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -40827,87 +40587,6 @@ func (meta *Meta) Serialize(data *ByteArrayInterface) bool {
 	}
 
 	return goret
-}
-
-// MetaFactoryClass wraps GstMetaFactoryClass
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmetafactory.html#GstMetaFactoryClass
-type MetaFactoryClass struct {
-	*metaFactoryClass
-}
-
-// metaFactoryClass is the struct that's finalized
-type metaFactoryClass struct {
-	native *C.GstMetaFactoryClass
-}
-
-// UnsafeMetaFactoryClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
-func (m *MetaFactoryClass) instance() *C.GstMetaFactoryClass {
-	if m == nil {
-		return nil
-	}
-	return m.native
-}
-
-// UnsafeMetaFactoryClassFromGlibBorrow is used to convert raw C.GstMetaFactoryClass pointers to go. This is used by the bindings internally.
-func UnsafeMetaFactoryClassFromGlibBorrow(p unsafe.Pointer) *MetaFactoryClass {
-	if p == nil {
-		return nil
-	}
-	return &MetaFactoryClass{&metaFactoryClass{(*C.GstMetaFactoryClass)(p)}}
-}
-
-// UnsafeMetaFactoryClassFromGlibNone is used to convert raw C.GstMetaFactoryClass pointers to go without transferring ownership. This is used by the bindings internally.
-func UnsafeMetaFactoryClassFromGlibNone(p unsafe.Pointer) *MetaFactoryClass {
-	wrapped := UnsafeMetaFactoryClassFromGlibBorrow(p)
-	if wrapped == nil {
-		return nil
-	}
-
-	log.Println("WARNING: not attaching a finalizer to MetaFactoryClass because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
-	return wrapped
-}
-
-// UnsafeMetaFactoryClassFromGlibFull is used to convert raw C.GstMetaFactoryClass pointers to go while taking ownership. This is used by the bindings internally.
-func UnsafeMetaFactoryClassFromGlibFull(p unsafe.Pointer) *MetaFactoryClass {
-	wrapped := UnsafeMetaFactoryClassFromGlibBorrow(p)
-	if wrapped == nil {
-		return nil
-	}
-	runtime.SetFinalizer(
-		wrapped.metaFactoryClass,
-		func (intern *metaFactoryClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeMetaFactoryClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
-// 
-// After this is called, no other method on [MetaFactoryClass] is expected to work anymore.
-func UnsafeMetaFactoryClassFree(m *MetaFactoryClass) {
-	C.free(unsafe.Pointer(m.native))
-}
-
-// UnsafeMetaFactoryClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
-func UnsafeMetaFactoryClassToGlibNone(m *MetaFactoryClass) unsafe.Pointer {
-	if m == nil {
-		return nil
-	}
-	return unsafe.Pointer(m.native)
-}
-
-// UnsafeMetaFactoryClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeMetaFactoryClassToGlibFull(m *MetaFactoryClass) unsafe.Pointer {
-	if m == nil {
-		return nil
-	}
-	runtime.SetFinalizer(m.metaFactoryClass, nil)
-	_p := unsafe.Pointer(m.native)
-	m.native = nil // MetaFactoryClass is invalid from here on
-	return _p
 }
 
 // MetaInfo wraps GstMetaInfo
@@ -43688,46 +43367,6 @@ func (query *Query) HasSchedulingModeWithFlags(mode PadMode, flags SchedulingFla
 	return goret
 }
 
-// IsWritable wraps gst_query_is_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_is_writable
-func (query *Query) IsWritable() bool {
-	var carg0 *C.GstQuery // in, none, converted
-	var cret  C.gboolean  // return
-
-	carg0 = (*C.GstQuery)(UnsafeQueryToGlibNone(query))
-
-	cret = C.gst_query_is_writable(carg0)
-	runtime.KeepAlive(query)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// MakeWritable wraps gst_query_make_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_make_writable
-func (query *Query) MakeWritable() *Query {
-	var carg0 *C.GstQuery // in, none, converted
-	var cret  *C.GstQuery // return, full, converted
-
-	carg0 = (*C.GstQuery)(UnsafeQueryToGlibNone(query))
-
-	cret = C.gst_query_make_writable(carg0)
-	runtime.KeepAlive(query)
-
-	var goret *Query
-
-	goret = UnsafeQueryFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
 // ParseAcceptCaps wraps gst_query_parse_accept_caps
 // 
 // see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_parse_accept_caps
@@ -45326,46 +44965,6 @@ func (sample *Sample) GetSegment() *Segment {
 	var goret *Segment
 
 	goret = UnsafeSegmentFromGlibNone(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// IsWritable wraps gst_sample_is_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsample.html#gst_sample_is_writable
-func (sample *Sample) IsWritable() bool {
-	var carg0 *C.GstSample // in, none, converted
-	var cret  C.gboolean   // return
-
-	carg0 = (*C.GstSample)(UnsafeSampleToGlibNone(sample))
-
-	cret = C.gst_sample_is_writable(carg0)
-	runtime.KeepAlive(sample)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// MakeWritable wraps gst_sample_make_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsample.html#gst_sample_make_writable
-func (sample *Sample) MakeWritable() *Sample {
-	var carg0 *C.GstSample // in, none, converted
-	var cret  *C.GstSample // return, full, converted
-
-	carg0 = (*C.GstSample)(UnsafeSampleToGlibNone(sample))
-
-	cret = C.gst_sample_make_writable(carg0)
-	runtime.KeepAlive(sample)
-
-	var goret *Sample
-
-	goret = UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -48836,46 +48435,6 @@ func (list1 *TagList) IsEqual(list2 *TagList) bool {
 	if cret != 0 {
 		goret = true
 	}
-
-	return goret
-}
-
-// IsWritable wraps gst_tag_list_is_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#gst_tag_list_is_writable
-func (taglist *TagList) IsWritable() bool {
-	var carg0 *C.GstTagList // in, none, converted
-	var cret  C.gboolean    // return
-
-	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(taglist))
-
-	cret = C.gst_tag_list_is_writable(carg0)
-	runtime.KeepAlive(taglist)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// MakeWritable wraps gst_tag_list_make_writable
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#gst_tag_list_make_writable
-func (taglist *TagList) MakeWritable() *TagList {
-	var carg0 *C.GstTagList // in, none, converted
-	var cret  *C.GstTagList // return, full, converted
-
-	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(taglist))
-
-	cret = C.gst_tag_list_make_writable(carg0)
-	runtime.KeepAlive(taglist)
-
-	var goret *TagList
-
-	goret = UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
 }
