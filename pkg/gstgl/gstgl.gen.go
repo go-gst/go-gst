@@ -329,15 +329,15 @@ type GLBaseMemoryError C.int
 const (
 	// GlBaseMemoryErrorFailed wraps GST_GL_BASE_MEMORY_ERROR_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_ERROR_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_GL_BASE_MEMORY_ERROR_FAILED
 	GlBaseMemoryErrorFailed GLBaseMemoryError = 0
 	// GlBaseMemoryErrorOldLibs wraps GST_GL_BASE_MEMORY_ERROR_OLD_LIBS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_ERROR_OLD_LIBS
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_GL_BASE_MEMORY_ERROR_OLD_LIBS
 	GlBaseMemoryErrorOldLibs GLBaseMemoryError = 1
 	// GlBaseMemoryErrorResourceUnavailable wraps GST_GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE
 	GlBaseMemoryErrorResourceUnavailable GLBaseMemoryError = 2
 )
 
@@ -387,15 +387,15 @@ type GLConfigCaveat C.int
 const (
 	// GlConfigCaveatNone wraps GST_GL_CONFIG_CAVEAT_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_CAVEAT_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontextconfig.html#GST_GL_CONFIG_CAVEAT_NONE
 	GlConfigCaveatNone GLConfigCaveat = 0
 	// GlConfigCaveatSlow wraps GST_GL_CONFIG_CAVEAT_SLOW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_CAVEAT_SLOW
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontextconfig.html#GST_GL_CONFIG_CAVEAT_SLOW
 	GlConfigCaveatSlow GLConfigCaveat = 1
 	// GlConfigCaveatNonConformant wraps GST_GL_CONFIG_CAVEAT_NON_CONFORMANT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_CAVEAT_NON_CONFORMANT
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontextconfig.html#GST_GL_CONFIG_CAVEAT_NON_CONFORMANT
 	GlConfigCaveatNonConformant GLConfigCaveat = 2
 )
 
@@ -445,33 +445,33 @@ func GLConfigCaveatString(caveat GLConfigCaveat) string {
 
 // GLContextError wraps GstGLContextError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLContextError
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#GstGLContextError
 type GLContextError C.int
 
 const (
 	// GlContextErrorFailed wraps GST_GL_CONTEXT_ERROR_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#GST_GL_CONTEXT_ERROR_FAILED
 	GlContextErrorFailed GLContextError = 0
 	// GlContextErrorWrongConfig wraps GST_GL_CONTEXT_ERROR_WRONG_CONFIG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_WRONG_CONFIG
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#GST_GL_CONTEXT_ERROR_WRONG_CONFIG
 	GlContextErrorWrongConfig GLContextError = 1
 	// GlContextErrorWrongAPI wraps GST_GL_CONTEXT_ERROR_WRONG_API
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_WRONG_API
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#GST_GL_CONTEXT_ERROR_WRONG_API
 	GlContextErrorWrongAPI GLContextError = 2
 	// GlContextErrorOldLibs wraps GST_GL_CONTEXT_ERROR_OLD_LIBS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_OLD_LIBS
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#GST_GL_CONTEXT_ERROR_OLD_LIBS
 	GlContextErrorOldLibs GLContextError = 3
 	// GlContextErrorCreateContext wraps GST_GL_CONTEXT_ERROR_CREATE_CONTEXT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_CREATE_CONTEXT
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#GST_GL_CONTEXT_ERROR_CREATE_CONTEXT
 	GlContextErrorCreateContext GLContextError = 4
 	// GlContextErrorResourceUnavailable wraps GST_GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#GST_GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE
 	GlContextErrorResourceUnavailable GLContextError = 5
 )
 
@@ -503,7 +503,7 @@ func (e GLContextError) String() string {
 
 // GLContextErrorQuark wraps gst_gl_context_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_context_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontext.html#gst_gl_context_error_quark
 func GLContextErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -524,67 +524,67 @@ type GLFormat C.int
 const (
 	// GlLuminance wraps GST_GL_LUMINANCE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_LUMINANCE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_LUMINANCE
 	GlLuminance GLFormat = 6409
 	// GlAlpha wraps GST_GL_ALPHA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_ALPHA
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_ALPHA
 	GlAlpha GLFormat = 6406
 	// GlLuminanceAlpha wraps GST_GL_LUMINANCE_ALPHA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_LUMINANCE_ALPHA
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_LUMINANCE_ALPHA
 	GlLuminanceAlpha GLFormat = 6410
 	// GlRed wraps GST_GL_RED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RED
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RED
 	GlRed GLFormat = 6403
 	// GlR8 wraps GST_GL_R8
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_R8
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_R8
 	GlR8 GLFormat = 33321
 	// GlRg wraps GST_GL_RG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RG
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RG
 	GlRg GLFormat = 33319
 	// GlRg8 wraps GST_GL_RG8
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RG8
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RG8
 	GlRg8 GLFormat = 33323
 	// GlRgb wraps GST_GL_RGB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGB
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RGB
 	GlRgb GLFormat = 6407
 	// GlRgb8 wraps GST_GL_RGB8
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGB8
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RGB8
 	GlRgb8 GLFormat = 32849
 	// GlRgb565 wraps GST_GL_RGB565
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGB565
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RGB565
 	GlRgb565 GLFormat = 36194
 	// GlRgb16 wraps GST_GL_RGB16
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGB16
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RGB16
 	GlRgb16 GLFormat = 32852
 	// GlRgba wraps GST_GL_RGBA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGBA
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RGBA
 	GlRgba GLFormat = 6408
 	// GlRgba8 wraps GST_GL_RGBA8
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGBA8
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RGBA8
 	GlRgba8 GLFormat = 32856
 	// GlRgba16 wraps GST_GL_RGBA16
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RGBA16
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RGBA16
 	GlRgba16 GLFormat = 32859
 	// GlDepthComponent16 wraps GST_GL_DEPTH_COMPONENT16
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DEPTH_COMPONENT16
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_DEPTH_COMPONENT16
 	GlDepthComponent16 GLFormat = 33189
 	// GlDepth24Stencil8 wraps GST_GL_DEPTH24_STENCIL8
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DEPTH24_STENCIL8
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_DEPTH24_STENCIL8
 	GlDepth24Stencil8 GLFormat = 35056
 	// GlRgb10A2 wraps GST_GL_RGB10_A2
 	// 
@@ -592,11 +592,11 @@ const (
 	GlRgb10A2 GLFormat = 32857
 	// GlR16 wraps GST_GL_R16
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_R16
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_R16
 	GlR16 GLFormat = 33322
 	// GlRg16 wraps GST_GL_RG16
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_RG16
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglformat.html#GST_GL_RG16
 	GlRg16 GLFormat = 33324
 )
 
@@ -759,15 +759,15 @@ type GLQueryType C.int
 const (
 	// GlQueryNone wraps GST_GL_QUERY_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_QUERY_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#GST_GL_QUERY_NONE
 	GlQueryNone GLQueryType = 0
 	// GlQueryTimeElapsed wraps GST_GL_QUERY_TIME_ELAPSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_QUERY_TIME_ELAPSED
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#GST_GL_QUERY_TIME_ELAPSED
 	GlQueryTimeElapsed GLQueryType = 1
 	// GlQueryTimestamp wraps GST_GL_QUERY_TIMESTAMP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_QUERY_TIMESTAMP
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglquery.html#GST_GL_QUERY_TIMESTAMP
 	GlQueryTimestamp GLQueryType = 2
 )
 
@@ -796,21 +796,21 @@ func (e GLQueryType) String() string {
 
 // GLSLError wraps GstGLSLError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLSLError
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GstGLSLError
 type GLSLError C.int
 
 const (
 	// GlslErrorCompile wraps GST_GLSL_ERROR_COMPILE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_ERROR_COMPILE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_ERROR_COMPILE
 	GlslErrorCompile GLSLError = 0
 	// GlslErrorLink wraps GST_GLSL_ERROR_LINK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_ERROR_LINK
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_ERROR_LINK
 	GlslErrorLink GLSLError = 1
 	// GlslErrorProgram wraps GST_GLSL_ERROR_PROGRAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_ERROR_PROGRAM
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_ERROR_PROGRAM
 	GlslErrorProgram GLSLError = 2
 )
 
@@ -839,7 +839,7 @@ func (e GLSLError) String() string {
 
 // GLSLErrorQuark wraps gst_glsl_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#gst_glsl_error_quark
 func GLSLErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -854,77 +854,77 @@ func GLSLErrorQuark() glib.Quark {
 
 // GLSLVersion wraps GstGLSLVersion
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLSLVersion
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GstGLSLVersion
 type GLSLVersion C.int
 
 const (
 	// GlslVersionNone wraps GST_GLSL_VERSION_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_NONE
 	GlslVersionNone GLSLVersion = 0
 	// GlslVersion100 wraps GST_GLSL_VERSION_100
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_100
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_100
 	GlslVersion100 GLSLVersion = 100
 	// GlslVersion110 wraps GST_GLSL_VERSION_110
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_110
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_110
 	GlslVersion110 GLSLVersion = 110
 	// GlslVersion120 wraps GST_GLSL_VERSION_120
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_120
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_120
 	GlslVersion120 GLSLVersion = 120
 	// GlslVersion130 wraps GST_GLSL_VERSION_130
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_130
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_130
 	GlslVersion130 GLSLVersion = 130
 	// GlslVersion140 wraps GST_GLSL_VERSION_140
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_140
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_140
 	GlslVersion140 GLSLVersion = 140
 	// GlslVersion150 wraps GST_GLSL_VERSION_150
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_150
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_150
 	GlslVersion150 GLSLVersion = 150
 	// GlslVersion300 wraps GST_GLSL_VERSION_300
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_300
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_300
 	GlslVersion300 GLSLVersion = 300
 	// GlslVersion310 wraps GST_GLSL_VERSION_310
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_310
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_310
 	GlslVersion310 GLSLVersion = 310
 	// GlslVersion320 wraps GST_GLSL_VERSION_320
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_320
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_320
 	GlslVersion320 GLSLVersion = 320
 	// GlslVersion330 wraps GST_GLSL_VERSION_330
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_330
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_330
 	GlslVersion330 GLSLVersion = 330
 	// GlslVersion400 wraps GST_GLSL_VERSION_400
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_400
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_400
 	GlslVersion400 GLSLVersion = 400
 	// GlslVersion410 wraps GST_GLSL_VERSION_410
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_410
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_410
 	GlslVersion410 GLSLVersion = 410
 	// GlslVersion420 wraps GST_GLSL_VERSION_420
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_420
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_420
 	GlslVersion420 GLSLVersion = 420
 	// GlslVersion430 wraps GST_GLSL_VERSION_430
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_430
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_430
 	GlslVersion430 GLSLVersion = 430
 	// GlslVersion440 wraps GST_GLSL_VERSION_440
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_440
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_440
 	GlslVersion440 GLSLVersion = 440
 	// GlslVersion450 wraps GST_GLSL_VERSION_450
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_VERSION_450
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_VERSION_450
 	GlslVersion450 GLSLVersion = 450
 )
 
@@ -967,7 +967,7 @@ func (e GLSLVersion) String() string {
 
 // GLSLVersionFromString wraps gst_glsl_version_from_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_version_from_string
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#gst_glsl_version_from_string
 func GLSLVersionFromString(str string) GLSLVersion {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstGLSLVersion // return, none, casted
@@ -987,7 +987,7 @@ func GLSLVersionFromString(str string) GLSLVersion {
 
 // GLSLVersionProfileFromString wraps gst_glsl_version_profile_from_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_version_profile_from_string
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#gst_glsl_version_profile_from_string
 func GLSLVersionProfileFromString(str string) (GLSLVersion, GLSLProfile, bool) {
 	var carg1 *C.gchar         // in, none, string
 	var carg2 C.GstGLSLVersion // out, full, casted
@@ -1015,7 +1015,7 @@ func GLSLVersionProfileFromString(str string) (GLSLVersion, GLSLProfile, bool) {
 
 // GLSLVersionProfileToString wraps gst_glsl_version_profile_to_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_version_profile_to_string
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#gst_glsl_version_profile_to_string
 func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string {
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var carg2 C.GstGLSLProfile // in, none, casted
@@ -1040,7 +1040,7 @@ func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string
 
 // GLSLVersionString wraps gst_glsl_version_to_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_version_to_string
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#gst_glsl_version_to_string
 func GLSLVersionString(version GLSLVersion) string {
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var cret  *C.gchar         // return, none, string, nullable-string
@@ -1061,21 +1061,21 @@ func GLSLVersionString(version GLSLVersion) string {
 
 // GLStereoDownmix wraps GstGLStereoDownmix
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLStereoDownmix
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#GstGLStereoDownmix
 type GLStereoDownmix C.int
 
 const (
 	// GlStereoDownmixAnaglyphGreenMagentaDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#GST_GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS
 	GlStereoDownmixAnaglyphGreenMagentaDubois GLStereoDownmix = 0
 	// GlStereoDownmixAnaglyphRedCyanDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#GST_GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS
 	GlStereoDownmixAnaglyphRedCyanDubois GLStereoDownmix = 1
 	// GlStereoDownmixAnaglyphAmberBlueDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglviewconvert.html#GST_GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS
 	GlStereoDownmixAnaglyphAmberBlueDubois GLStereoDownmix = 2
 )
 
@@ -1104,25 +1104,25 @@ func (e GLStereoDownmix) String() string {
 
 // GLTextureTarget wraps GstGLTextureTarget
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLTextureTarget
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#GstGLTextureTarget
 type GLTextureTarget C.int
 
 const (
 	// GlTextureTargetNone wraps GST_GL_TEXTURE_TARGET_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_TEXTURE_TARGET_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#GST_GL_TEXTURE_TARGET_NONE
 	GlTextureTargetNone GLTextureTarget = 0
 	// GlTextureTarget2d wraps GST_GL_TEXTURE_TARGET_2D
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_TEXTURE_TARGET_2D
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#GST_GL_TEXTURE_TARGET_2D
 	GlTextureTarget2d GLTextureTarget = 1
 	// GlTextureTargetRectangle wraps GST_GL_TEXTURE_TARGET_RECTANGLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_TEXTURE_TARGET_RECTANGLE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#GST_GL_TEXTURE_TARGET_RECTANGLE
 	GlTextureTargetRectangle GLTextureTarget = 2
 	// GlTextureTargetExternalOes wraps GST_GL_TEXTURE_TARGET_EXTERNAL_OES
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_TEXTURE_TARGET_EXTERNAL_OES
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#GST_GL_TEXTURE_TARGET_EXTERNAL_OES
 	GlTextureTargetExternalOes GLTextureTarget = 3
 )
 
@@ -1152,7 +1152,7 @@ func (e GLTextureTarget) String() string {
 
 // GLTextureTargetFromGl wraps gst_gl_texture_target_from_gl
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_from_gl
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#gst_gl_texture_target_from_gl
 func GLTextureTargetFromGl(target uint) GLTextureTarget {
 	var carg1 C.guint              // in, none, casted
 	var cret  C.GstGLTextureTarget // return, none, casted
@@ -1171,7 +1171,7 @@ func GLTextureTargetFromGl(target uint) GLTextureTarget {
 
 // GLTextureTargetFromString wraps gst_gl_texture_target_from_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_from_string
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#gst_gl_texture_target_from_string
 func GLTextureTargetFromString(str string) GLTextureTarget {
 	var carg1 *C.gchar             // in, none, string
 	var cret  C.GstGLTextureTarget // return, none, casted
@@ -1191,7 +1191,7 @@ func GLTextureTargetFromString(str string) GLTextureTarget {
 
 // GLTextureTargetToBufferPoolOption wraps gst_gl_texture_target_to_buffer_pool_option
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_to_buffer_pool_option
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#gst_gl_texture_target_to_buffer_pool_option
 func GLTextureTargetToBufferPoolOption(target GLTextureTarget) string {
 	var carg1 C.GstGLTextureTarget // in, none, casted
 	var cret  *C.gchar             // return, none, string, nullable-string
@@ -1212,7 +1212,7 @@ func GLTextureTargetToBufferPoolOption(target GLTextureTarget) string {
 
 // GLTextureTargetToGl wraps gst_gl_texture_target_to_gl
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_to_gl
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#gst_gl_texture_target_to_gl
 func GLTextureTargetToGl(target GLTextureTarget) uint {
 	var carg1 C.GstGLTextureTarget // in, none, casted
 	var cret  C.guint              // return, none, casted
@@ -1231,7 +1231,7 @@ func GLTextureTargetToGl(target GLTextureTarget) uint {
 
 // GLTextureTargetString wraps gst_gl_texture_target_to_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_gl_texture_target_to_string
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgl_enums.html#gst_gl_texture_target_to_string
 func GLTextureTargetString(target GLTextureTarget) string {
 	var carg1 C.GstGLTextureTarget // in, none, casted
 	var cret  *C.gchar             // return, none, string, nullable-string
@@ -1258,23 +1258,23 @@ type GLUploadReturn C.int
 const (
 	// GlUploadDone wraps GST_GL_UPLOAD_DONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_DONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#GST_GL_UPLOAD_DONE
 	GlUploadDone GLUploadReturn = 1
 	// GlUploadError wraps GST_GL_UPLOAD_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#GST_GL_UPLOAD_ERROR
 	GlUploadError GLUploadReturn = -1
 	// GlUploadUnsupported wraps GST_GL_UPLOAD_UNSUPPORTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_UNSUPPORTED
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#GST_GL_UPLOAD_UNSUPPORTED
 	GlUploadUnsupported GLUploadReturn = -2
 	// GlUploadReconfigure wraps GST_GL_UPLOAD_RECONFIGURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_RECONFIGURE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#GST_GL_UPLOAD_RECONFIGURE
 	GlUploadReconfigure GLUploadReturn = -3
 	// GlUploadUnsharedGlContext wraps GST_GL_UPLOAD_UNSHARED_GL_CONTEXT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_UPLOAD_UNSHARED_GL_CONTEXT
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglupload.html#GST_GL_UPLOAD_UNSHARED_GL_CONTEXT
 	GlUploadUnsharedGlContext GLUploadReturn = -100
 )
 
@@ -1311,15 +1311,15 @@ type GLWindowError C.int
 const (
 	// GlWindowErrorFailed wraps GST_GL_WINDOW_ERROR_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_WINDOW_ERROR_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#GST_GL_WINDOW_ERROR_FAILED
 	GlWindowErrorFailed GLWindowError = 0
 	// GlWindowErrorOldLibs wraps GST_GL_WINDOW_ERROR_OLD_LIBS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_WINDOW_ERROR_OLD_LIBS
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#GST_GL_WINDOW_ERROR_OLD_LIBS
 	GlWindowErrorOldLibs GLWindowError = 1
 	// GlWindowErrorResourceUnavailable wraps GST_GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#GST_GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE
 	GlWindowErrorResourceUnavailable GLWindowError = 2
 )
 
@@ -1369,27 +1369,27 @@ type GLAPI C.gint
 const (
 	// GlAPINone wraps GST_GL_API_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_API_NONE
 	GlAPINone GLAPI = 0
 	// GlAPIOpengl wraps GST_GL_API_OPENGL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_OPENGL
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_API_OPENGL
 	GlAPIOpengl GLAPI = 1
 	// GlAPIOpengl3 wraps GST_GL_API_OPENGL3
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_OPENGL3
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_API_OPENGL3
 	GlAPIOpengl3 GLAPI = 2
 	// GlAPIGles1 wraps GST_GL_API_GLES1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_GLES1
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_API_GLES1
 	GlAPIGles1 GLAPI = 32768
 	// GlAPIGles2 wraps GST_GL_API_GLES2
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_GLES2
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_API_GLES2
 	GlAPIGles2 GLAPI = 65536
 	// GlAPIAny wraps GST_GL_API_ANY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_API_ANY
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_API_ANY
 	GlAPIAny GLAPI = -1
 )
 
@@ -1486,11 +1486,11 @@ type GLBaseMemoryTransfer C.gint
 const (
 	// GlBaseMemoryTransferNeedDownload wraps GST_GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD
 	GlBaseMemoryTransferNeedDownload GLBaseMemoryTransfer = 1048576
 	// GlBaseMemoryTransferNeedUpload wraps GST_GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasememory.html#GST_GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD
 	GlBaseMemoryTransferNeedUpload GLBaseMemoryTransfer = 2097152
 )
 
@@ -1535,19 +1535,19 @@ type GLConfigSurfaceType C.gint
 const (
 	// GlConfigSurfaceTypeNone wraps GST_GL_CONFIG_SURFACE_TYPE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_SURFACE_TYPE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontextconfig.html#GST_GL_CONFIG_SURFACE_TYPE_NONE
 	GlConfigSurfaceTypeNone GLConfigSurfaceType = 0
 	// GlConfigSurfaceTypeWindow wraps GST_GL_CONFIG_SURFACE_TYPE_WINDOW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_SURFACE_TYPE_WINDOW
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontextconfig.html#GST_GL_CONFIG_SURFACE_TYPE_WINDOW
 	GlConfigSurfaceTypeWindow GLConfigSurfaceType = 1
 	// GlConfigSurfaceTypePbuffer wraps GST_GL_CONFIG_SURFACE_TYPE_PBUFFER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_SURFACE_TYPE_PBUFFER
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontextconfig.html#GST_GL_CONFIG_SURFACE_TYPE_PBUFFER
 	GlConfigSurfaceTypePbuffer GLConfigSurfaceType = 2
 	// GlConfigSurfaceTypePixmap wraps GST_GL_CONFIG_SURFACE_TYPE_PIXMAP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_CONFIG_SURFACE_TYPE_PIXMAP
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglcontextconfig.html#GST_GL_CONFIG_SURFACE_TYPE_PIXMAP
 	GlConfigSurfaceTypePixmap GLConfigSurfaceType = 4
 )
 
@@ -1619,63 +1619,63 @@ type GLDisplayType C.gint
 const (
 	// GlDisplayTypeNone wraps GST_GL_DISPLAY_TYPE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_NONE
 	GlDisplayTypeNone GLDisplayType = 0
 	// GlDisplayTypeX11 wraps GST_GL_DISPLAY_TYPE_X11
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_X11
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_X11
 	GlDisplayTypeX11 GLDisplayType = 1
 	// GlDisplayTypeWayland wraps GST_GL_DISPLAY_TYPE_WAYLAND
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_WAYLAND
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_WAYLAND
 	GlDisplayTypeWayland GLDisplayType = 2
 	// GlDisplayTypeCocoa wraps GST_GL_DISPLAY_TYPE_COCOA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_COCOA
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_COCOA
 	GlDisplayTypeCocoa GLDisplayType = 4
 	// GlDisplayTypeWin32 wraps GST_GL_DISPLAY_TYPE_WIN32
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_WIN32
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_WIN32
 	GlDisplayTypeWin32 GLDisplayType = 8
 	// GlDisplayTypeDispmanx wraps GST_GL_DISPLAY_TYPE_DISPMANX
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_DISPMANX
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_DISPMANX
 	GlDisplayTypeDispmanx GLDisplayType = 16
 	// GlDisplayTypeEgl wraps GST_GL_DISPLAY_TYPE_EGL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_EGL
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_EGL
 	GlDisplayTypeEgl GLDisplayType = 32
 	// GlDisplayTypeVivFb wraps GST_GL_DISPLAY_TYPE_VIV_FB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_VIV_FB
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_VIV_FB
 	GlDisplayTypeVivFb GLDisplayType = 64
 	// GlDisplayTypeGbm wraps GST_GL_DISPLAY_TYPE_GBM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_GBM
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_GBM
 	GlDisplayTypeGbm GLDisplayType = 128
 	// GlDisplayTypeEglDevice wraps GST_GL_DISPLAY_TYPE_EGL_DEVICE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_EGL_DEVICE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_EGL_DEVICE
 	GlDisplayTypeEglDevice GLDisplayType = 256
 	// GlDisplayTypeEagl wraps GST_GL_DISPLAY_TYPE_EAGL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_EAGL
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_EAGL
 	GlDisplayTypeEagl GLDisplayType = 512
 	// GlDisplayTypeWinrt wraps GST_GL_DISPLAY_TYPE_WINRT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_WINRT
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_WINRT
 	GlDisplayTypeWinrt GLDisplayType = 1024
 	// GlDisplayTypeAndroid wraps GST_GL_DISPLAY_TYPE_ANDROID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_ANDROID
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_ANDROID
 	GlDisplayTypeAndroid GLDisplayType = 2048
 	// GlDisplayTypeEglSurfaceless wraps GST_GL_DISPLAY_TYPE_EGL_SURFACELESS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_EGL_SURFACELESS
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_EGL_SURFACELESS
 	GlDisplayTypeEglSurfaceless GLDisplayType = 4096
 	// GlDisplayTypeAny wraps GST_GL_DISPLAY_TYPE_ANY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DISPLAY_TYPE_ANY
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html#GST_GL_DISPLAY_TYPE_ANY
 	GlDisplayTypeAny GLDisplayType = -1
 )
 
@@ -1759,19 +1759,19 @@ type GLDrmFormatFlags C.gint
 const (
 	// GlDrmFormatIncludeExternal wraps GST_GL_DRM_FORMAT_INCLUDE_EXTERNAL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DRM_FORMAT_INCLUDE_EXTERNAL
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglutils.html#GST_GL_DRM_FORMAT_INCLUDE_EXTERNAL
 	GlDrmFormatIncludeExternal GLDrmFormatFlags = 1
 	// GlDrmFormatLinearOnly wraps GST_GL_DRM_FORMAT_LINEAR_ONLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DRM_FORMAT_LINEAR_ONLY
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglutils.html#GST_GL_DRM_FORMAT_LINEAR_ONLY
 	GlDrmFormatLinearOnly GLDrmFormatFlags = 2
 	// GlDrmFormatIncludeEmulated wraps GST_GL_DRM_FORMAT_INCLUDE_EMULATED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DRM_FORMAT_INCLUDE_EMULATED
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglutils.html#GST_GL_DRM_FORMAT_INCLUDE_EMULATED
 	GlDrmFormatIncludeEmulated GLDrmFormatFlags = 4
 	// GlDrmFormatDirectImport wraps GST_GL_DRM_FORMAT_DIRECT_IMPORT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_DRM_FORMAT_DIRECT_IMPORT
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglutils.html#GST_GL_DRM_FORMAT_DIRECT_IMPORT
 	GlDrmFormatDirectImport GLDrmFormatFlags = 8
 )
 
@@ -1822,31 +1822,31 @@ type GLPlatform C.gint
 const (
 	// GlPlatformNone wraps GST_GL_PLATFORM_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_PLATFORM_NONE
 	GlPlatformNone GLPlatform = 0
 	// GlPlatformEgl wraps GST_GL_PLATFORM_EGL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_EGL
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_PLATFORM_EGL
 	GlPlatformEgl GLPlatform = 1
 	// GlPlatformGlx wraps GST_GL_PLATFORM_GLX
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_GLX
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_PLATFORM_GLX
 	GlPlatformGlx GLPlatform = 2
 	// GlPlatformWgl wraps GST_GL_PLATFORM_WGL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_WGL
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_PLATFORM_WGL
 	GlPlatformWgl GLPlatform = 4
 	// GlPlatformCgl wraps GST_GL_PLATFORM_CGL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_CGL
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_PLATFORM_CGL
 	GlPlatformCgl GLPlatform = 8
 	// GlPlatformEagl wraps GST_GL_PLATFORM_EAGL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_EAGL
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_PLATFORM_EAGL
 	GlPlatformEagl GLPlatform = 16
 	// GlPlatformAny wraps GST_GL_PLATFORM_ANY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GL_PLATFORM_ANY
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglapi.html#GST_GL_PLATFORM_ANY
 	GlPlatformAny GLPlatform = -1
 )
 
@@ -1940,29 +1940,29 @@ func GLPlatformString(platform GLPlatform) string {
 
 // GLSLProfile wraps GstGLSLProfile
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#GstGLSLProfile
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GstGLSLProfile
 type GLSLProfile C.gint
 
 const (
 	// GlslProfileNone wraps GST_GLSL_PROFILE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_PROFILE_NONE
 	GlslProfileNone GLSLProfile = 0
 	// GlslProfileEs wraps GST_GLSL_PROFILE_ES
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_ES
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_PROFILE_ES
 	GlslProfileEs GLSLProfile = 1
 	// GlslProfileCore wraps GST_GLSL_PROFILE_CORE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_CORE
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_PROFILE_CORE
 	GlslProfileCore GLSLProfile = 2
 	// GlslProfileCompatibility wraps GST_GLSL_PROFILE_COMPATIBILITY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_COMPATIBILITY
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_PROFILE_COMPATIBILITY
 	GlslProfileCompatibility GLSLProfile = 4
 	// GlslProfileAny wraps GST_GLSL_PROFILE_ANY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl#GST_GLSL_PROFILE_ANY
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#GST_GLSL_PROFILE_ANY
 	GlslProfileAny GLSLProfile = -1
 )
 
@@ -2010,7 +2010,7 @@ func (f GLSLProfile) String() string {
 
 // GLSLProfileFromString wraps gst_glsl_profile_from_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_profile_from_string
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#gst_glsl_profile_from_string
 func GLSLProfileFromString(str string) GLSLProfile {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstGLSLProfile // return, none, casted
@@ -2030,7 +2030,7 @@ func GLSLProfileFromString(str string) GLSLProfile {
 
 // GLSLProfileString wraps gst_glsl_profile_to_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl#gst_glsl_profile_to_string
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglsl.html#gst_glsl_profile_to_string
 func GLSLProfileString(profile GLSLProfile) string {
 	var carg1 C.GstGLSLProfile // in, none, casted
 	var cret  *C.gchar         // return, none, string, nullable-string
@@ -5881,7 +5881,7 @@ type GLDisplay interface {
 	RemoveWindow(GLWindow) bool
 	// ConnectCreateContext connects the provided callback to the "create-context" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html
 	ConnectCreateContext(func(GLDisplay, GLContext) GLContextInstance) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -6173,7 +6173,7 @@ func (display *GLDisplayInstance) RemoveWindow(window GLWindow) bool {
 
 // ConnectCreateContext connects the provided callback to the "create-context" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstgldisplay.html
 func (o *GLDisplayInstance) ConnectCreateContext(fn func(GLDisplay, GLContext) GLContextInstance) gobject.SignalHandle {
 	return o.Connect("create-context", fn)
 }
@@ -10502,19 +10502,19 @@ type GLWindow interface {
 	Show()
 	// ConnectKeyEvent connects the provided callback to the "key-event" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html
 	ConnectKeyEvent(func(GLWindow, string, string)) gobject.SignalHandle
 	// ConnectMouseEvent connects the provided callback to the "mouse-event" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html
 	ConnectMouseEvent(func(GLWindow, string, int32, float64, float64)) gobject.SignalHandle
 	// ConnectScrollEvent connects the provided callback to the "scroll-event" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html
 	ConnectScrollEvent(func(GLWindow, float64, float64, float64, float64)) gobject.SignalHandle
 	// ConnectWindowHandleChanged connects the provided callback to the "window-handle-changed" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl
+	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html
 	ConnectWindowHandleChanged(func(GLWindow)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -10990,28 +10990,28 @@ func (window *GLWindowInstance) Show() {
 
 // ConnectKeyEvent connects the provided callback to the "key-event" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html
 func (o *GLWindowInstance) ConnectKeyEvent(fn func(GLWindow, string, string)) gobject.SignalHandle {
 	return o.Connect("key-event", fn)
 }
 
 // ConnectMouseEvent connects the provided callback to the "mouse-event" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html
 func (o *GLWindowInstance) ConnectMouseEvent(fn func(GLWindow, string, int32, float64, float64)) gobject.SignalHandle {
 	return o.Connect("mouse-event", fn)
 }
 
 // ConnectScrollEvent connects the provided callback to the "scroll-event" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html
 func (o *GLWindowInstance) ConnectScrollEvent(fn func(GLWindow, float64, float64, float64, float64)) gobject.SignalHandle {
 	return o.Connect("scroll-event", fn)
 }
 
 // ConnectWindowHandleChanged connects the provided callback to the "window-handle-changed" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gl
+// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html
 func (o *GLWindowInstance) ConnectWindowHandleChanged(fn func(GLWindow)) gobject.SignalHandle {
 	return o.Connect("window-handle-changed", fn)
 }

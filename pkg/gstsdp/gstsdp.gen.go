@@ -45,15 +45,15 @@ type MIKEYCacheType C.int
 const (
 	// MikeyCacheNone wraps GST_MIKEY_CACHE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_CACHE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_CACHE_NONE
 	MikeyCacheNone MIKEYCacheType = 0
 	// MikeyCacheAlways wraps GST_MIKEY_CACHE_ALWAYS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_CACHE_ALWAYS
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_CACHE_ALWAYS
 	MikeyCacheAlways MIKEYCacheType = 1
 	// MikeyCacheForCsb wraps GST_MIKEY_CACHE_FOR_CSB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_CACHE_FOR_CSB
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_CACHE_FOR_CSB
 	MikeyCacheForCsb MIKEYCacheType = 2
 )
 
@@ -75,19 +75,19 @@ type MIKEYEncAlg C.int
 const (
 	// MikeyEncNull wraps GST_MIKEY_ENC_NULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_ENC_NULL
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_ENC_NULL
 	MikeyEncNull MIKEYEncAlg = 0
 	// MikeyEncAesCm128 wraps GST_MIKEY_ENC_AES_CM_128
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_ENC_AES_CM_128
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_ENC_AES_CM_128
 	MikeyEncAesCm128 MIKEYEncAlg = 1
 	// MikeyEncAesKw128 wraps GST_MIKEY_ENC_AES_KW_128
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_ENC_AES_KW_128
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_ENC_AES_KW_128
 	MikeyEncAesKw128 MIKEYEncAlg = 2
 	// MikeyEncAesGcm128 wraps GST_MIKEY_ENC_AES_GCM_128
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_ENC_AES_GCM_128
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_ENC_AES_GCM_128
 	MikeyEncAesGcm128 MIKEYEncAlg = 6
 )
 
@@ -110,15 +110,15 @@ type MIKEYKVType C.int
 const (
 	// MikeyKvNull wraps GST_MIKEY_KV_NULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_KV_NULL
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KV_NULL
 	MikeyKvNull MIKEYKVType = 0
 	// MikeyKvSpi wraps GST_MIKEY_KV_SPI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_KV_SPI
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KV_SPI
 	MikeyKvSpi MIKEYKVType = 1
 	// MikeyKvInterval wraps GST_MIKEY_KV_INTERVAL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_KV_INTERVAL
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KV_INTERVAL
 	MikeyKvInterval MIKEYKVType = 2
 )
 
@@ -140,11 +140,11 @@ type MIKEYKeyDataType C.int
 const (
 	// MikeyKdTgk wraps GST_MIKEY_KD_TGK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_KD_TGK
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KD_TGK
 	MikeyKdTgk MIKEYKeyDataType = 0
 	// MikeyKdTek wraps GST_MIKEY_KD_TEK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_KD_TEK
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_KD_TEK
 	MikeyKdTek MIKEYKeyDataType = 2
 )
 
@@ -165,11 +165,11 @@ type MIKEYMacAlg C.int
 const (
 	// MikeyMacNull wraps GST_MIKEY_MAC_NULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_MAC_NULL
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_MAC_NULL
 	MikeyMacNull MIKEYMacAlg = 0
 	// MikeyMacHmacSha1160 wraps GST_MIKEY_MAC_HMAC_SHA_1_160
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_MAC_HMAC_SHA_1_160
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_MAC_HMAC_SHA_1_160
 	MikeyMacHmacSha1160 MIKEYMacAlg = 1
 )
 
@@ -190,7 +190,7 @@ type MIKEYMapType C.int
 const (
 	// MikeyMapTypeSrtp wraps GST_MIKEY_MAP_TYPE_SRTP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_MAP_TYPE_SRTP
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_MAP_TYPE_SRTP
 	MikeyMapTypeSrtp MIKEYMapType = 0
 )
 
@@ -210,7 +210,7 @@ type MIKEYPRFFunc C.int
 const (
 	// MikeyPrfMikey1 wraps GST_MIKEY_PRF_MIKEY_1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PRF_MIKEY_1
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PRF_MIKEY_1
 	MikeyPrfMikey1 MIKEYPRFFunc = 0
 )
 
@@ -230,63 +230,63 @@ type MIKEYPayloadType C.int
 const (
 	// MikeyPtLast wraps GST_MIKEY_PT_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_LAST
 	MikeyPtLast MIKEYPayloadType = 0
 	// MikeyPtKemac wraps GST_MIKEY_PT_KEMAC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_KEMAC
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_KEMAC
 	MikeyPtKemac MIKEYPayloadType = 1
 	// MikeyPtPke wraps GST_MIKEY_PT_PKE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_PKE
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_PKE
 	MikeyPtPke MIKEYPayloadType = 2
 	// MikeyPtDh wraps GST_MIKEY_PT_DH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_DH
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_DH
 	MikeyPtDh MIKEYPayloadType = 3
 	// MikeyPtSign wraps GST_MIKEY_PT_SIGN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_SIGN
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_SIGN
 	MikeyPtSign MIKEYPayloadType = 4
 	// MikeyPtT wraps GST_MIKEY_PT_T
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_T
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_T
 	MikeyPtT MIKEYPayloadType = 5
 	// MikeyPtID wraps GST_MIKEY_PT_ID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_ID
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_ID
 	MikeyPtID MIKEYPayloadType = 6
 	// MikeyPtCert wraps GST_MIKEY_PT_CERT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_CERT
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_CERT
 	MikeyPtCert MIKEYPayloadType = 7
 	// MikeyPtChash wraps GST_MIKEY_PT_CHASH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_CHASH
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_CHASH
 	MikeyPtChash MIKEYPayloadType = 8
 	// MikeyPtV wraps GST_MIKEY_PT_V
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_V
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_V
 	MikeyPtV MIKEYPayloadType = 9
 	// MikeyPtSp wraps GST_MIKEY_PT_SP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_SP
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_SP
 	MikeyPtSp MIKEYPayloadType = 10
 	// MikeyPtRand wraps GST_MIKEY_PT_RAND
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_RAND
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_RAND
 	MikeyPtRand MIKEYPayloadType = 11
 	// MikeyPtErr wraps GST_MIKEY_PT_ERR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_ERR
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_ERR
 	MikeyPtErr MIKEYPayloadType = 12
 	// MikeyPtKeyData wraps GST_MIKEY_PT_KEY_DATA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_KEY_DATA
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_KEY_DATA
 	MikeyPtKeyData MIKEYPayloadType = 20
 	// MikeyPtGenExt wraps GST_MIKEY_PT_GEN_EXT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_PT_GEN_EXT
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_PT_GEN_EXT
 	MikeyPtGenExt MIKEYPayloadType = 21
 )
 
@@ -320,7 +320,7 @@ type MIKEYSecProto C.int
 const (
 	// MikeySecProtoSrtp wraps GST_MIKEY_SEC_PROTO_SRTP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SEC_PROTO_SRTP
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SEC_PROTO_SRTP
 	MikeySecProtoSrtp MIKEYSecProto = 0
 )
 
@@ -340,59 +340,59 @@ type MIKEYSecSRTP C.int
 const (
 	// MikeySpSrtpEncAlg wraps GST_MIKEY_SP_SRTP_ENC_ALG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_ENC_ALG
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_ENC_ALG
 	MikeySpSrtpEncAlg MIKEYSecSRTP = 0
 	// MikeySpSrtpEncKeyLen wraps GST_MIKEY_SP_SRTP_ENC_KEY_LEN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_ENC_KEY_LEN
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_ENC_KEY_LEN
 	MikeySpSrtpEncKeyLen MIKEYSecSRTP = 1
 	// MikeySpSrtpAuthAlg wraps GST_MIKEY_SP_SRTP_AUTH_ALG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_AUTH_ALG
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_AUTH_ALG
 	MikeySpSrtpAuthAlg MIKEYSecSRTP = 2
 	// MikeySpSrtpAuthKeyLen wraps GST_MIKEY_SP_SRTP_AUTH_KEY_LEN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_AUTH_KEY_LEN
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_AUTH_KEY_LEN
 	MikeySpSrtpAuthKeyLen MIKEYSecSRTP = 3
 	// MikeySpSrtpSaltKeyLen wraps GST_MIKEY_SP_SRTP_SALT_KEY_LEN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_SALT_KEY_LEN
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SALT_KEY_LEN
 	MikeySpSrtpSaltKeyLen MIKEYSecSRTP = 4
 	// MikeySpSrtpPrf wraps GST_MIKEY_SP_SRTP_PRF
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_PRF
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_PRF
 	MikeySpSrtpPrf MIKEYSecSRTP = 5
 	// MikeySpSrtpKeyDerivRate wraps GST_MIKEY_SP_SRTP_KEY_DERIV_RATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_KEY_DERIV_RATE
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_KEY_DERIV_RATE
 	MikeySpSrtpKeyDerivRate MIKEYSecSRTP = 6
 	// MikeySpSrtpSrtpEnc wraps GST_MIKEY_SP_SRTP_SRTP_ENC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_SRTP_ENC
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SRTP_ENC
 	MikeySpSrtpSrtpEnc MIKEYSecSRTP = 7
 	// MikeySpSrtpSrtcpEnc wraps GST_MIKEY_SP_SRTP_SRTCP_ENC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_SRTCP_ENC
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SRTCP_ENC
 	MikeySpSrtpSrtcpEnc MIKEYSecSRTP = 8
 	// MikeySpSrtpFecOrder wraps GST_MIKEY_SP_SRTP_FEC_ORDER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_FEC_ORDER
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_FEC_ORDER
 	MikeySpSrtpFecOrder MIKEYSecSRTP = 9
 	// MikeySpSrtpSrtpAuth wraps GST_MIKEY_SP_SRTP_SRTP_AUTH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_SRTP_AUTH
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SRTP_AUTH
 	MikeySpSrtpSrtpAuth MIKEYSecSRTP = 10
 	// MikeySpSrtpAuthTagLen wraps GST_MIKEY_SP_SRTP_AUTH_TAG_LEN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_AUTH_TAG_LEN
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_AUTH_TAG_LEN
 	MikeySpSrtpAuthTagLen MIKEYSecSRTP = 11
 	// MikeySpSrtpSrtpPrefixLen wraps GST_MIKEY_SP_SRTP_SRTP_PREFIX_LEN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_SRTP_PREFIX_LEN
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_SRTP_PREFIX_LEN
 	MikeySpSrtpSrtpPrefixLen MIKEYSecSRTP = 12
 	// MikeySpSrtpAeadAuthTagLen wraps GST_MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN
 	MikeySpSrtpAeadAuthTagLen MIKEYSecSRTP = 20
 )
 
@@ -425,15 +425,15 @@ type MIKEYTSType C.int
 const (
 	// MikeyTsTypeNtpUtc wraps GST_MIKEY_TS_TYPE_NTP_UTC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TS_TYPE_NTP_UTC
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TS_TYPE_NTP_UTC
 	MikeyTsTypeNtpUtc MIKEYTSType = 0
 	// MikeyTsTypeNtp wraps GST_MIKEY_TS_TYPE_NTP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TS_TYPE_NTP
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TS_TYPE_NTP
 	MikeyTsTypeNtp MIKEYTSType = 1
 	// MikeyTsTypeCounter wraps GST_MIKEY_TS_TYPE_COUNTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TS_TYPE_COUNTER
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TS_TYPE_COUNTER
 	MikeyTsTypeCounter MIKEYTSType = 2
 )
 
@@ -455,35 +455,35 @@ type MIKEYType C.int
 const (
 	// MikeyTypeInvalid wraps GST_MIKEY_TYPE_INVALID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TYPE_INVALID
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_INVALID
 	MikeyTypeInvalid MIKEYType = -1
 	// MikeyTypePskInit wraps GST_MIKEY_TYPE_PSK_INIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TYPE_PSK_INIT
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_PSK_INIT
 	MikeyTypePskInit MIKEYType = 0
 	// MikeyTypePskVerify wraps GST_MIKEY_TYPE_PSK_VERIFY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TYPE_PSK_VERIFY
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_PSK_VERIFY
 	MikeyTypePskVerify MIKEYType = 1
 	// MikeyTypePkInit wraps GST_MIKEY_TYPE_PK_INIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TYPE_PK_INIT
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_PK_INIT
 	MikeyTypePkInit MIKEYType = 2
 	// MikeyTypePkVerify wraps GST_MIKEY_TYPE_PK_VERIFY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TYPE_PK_VERIFY
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_PK_VERIFY
 	MikeyTypePkVerify MIKEYType = 3
 	// MikeyTypeDhInit wraps GST_MIKEY_TYPE_DH_INIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TYPE_DH_INIT
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_DH_INIT
 	MikeyTypeDhInit MIKEYType = 4
 	// MikeyTypeDhResp wraps GST_MIKEY_TYPE_DH_RESP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TYPE_DH_RESP
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_DH_RESP
 	MikeyTypeDhResp MIKEYType = 5
 	// MikeyTypeError wraps GST_MIKEY_TYPE_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_MIKEY_TYPE_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstmikey.html#GST_MIKEY_TYPE_ERROR
 	MikeyTypeError MIKEYType = 6
 )
 
@@ -510,11 +510,11 @@ type SDPResult C.int
 const (
 	// SdpOK wraps GST_SDP_OK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_SDP_OK
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdp.html#GST_SDP_OK
 	SdpOK SDPResult = 0
 	// SdpEinval wraps GST_SDP_EINVAL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/sdp#GST_SDP_EINVAL
+	// see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdp.html#GST_SDP_EINVAL
 	SdpEinval SDPResult = -1
 )
 

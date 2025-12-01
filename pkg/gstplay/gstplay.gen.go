@@ -64,19 +64,19 @@ type PlayColorBalanceType C.int
 const (
 	// PlayColorBalanceHue wraps GST_PLAY_COLOR_BALANCE_HUE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_COLOR_BALANCE_HUE
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_COLOR_BALANCE_HUE
 	PlayColorBalanceHue PlayColorBalanceType = 3
 	// PlayColorBalanceBrightness wraps GST_PLAY_COLOR_BALANCE_BRIGHTNESS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_COLOR_BALANCE_BRIGHTNESS
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_COLOR_BALANCE_BRIGHTNESS
 	PlayColorBalanceBrightness PlayColorBalanceType = 0
 	// PlayColorBalanceSaturation wraps GST_PLAY_COLOR_BALANCE_SATURATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_COLOR_BALANCE_SATURATION
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_COLOR_BALANCE_SATURATION
 	PlayColorBalanceSaturation PlayColorBalanceType = 2
 	// PlayColorBalanceContrast wraps GST_PLAY_COLOR_BALANCE_CONTRAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_COLOR_BALANCE_CONTRAST
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_COLOR_BALANCE_CONTRAST
 	PlayColorBalanceContrast PlayColorBalanceType = 1
 )
 
@@ -131,7 +131,7 @@ type PlayError C.int
 const (
 	// PlayErrorFailed wraps GST_PLAY_ERROR_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_ERROR_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_ERROR_FAILED
 	PlayErrorFailed PlayError = 0
 )
 
@@ -198,55 +198,55 @@ type PlayMessage C.int
 const (
 	// PlayMessageURILoaded wraps GST_PLAY_MESSAGE_URI_LOADED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_URI_LOADED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_URI_LOADED
 	PlayMessageURILoaded PlayMessage = 0
 	// PlayMessagePositionUpdated wraps GST_PLAY_MESSAGE_POSITION_UPDATED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_POSITION_UPDATED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_POSITION_UPDATED
 	PlayMessagePositionUpdated PlayMessage = 1
 	// PlayMessageDurationChanged wraps GST_PLAY_MESSAGE_DURATION_CHANGED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_DURATION_CHANGED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_DURATION_CHANGED
 	PlayMessageDurationChanged PlayMessage = 2
 	// PlayMessageStateChanged wraps GST_PLAY_MESSAGE_STATE_CHANGED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_STATE_CHANGED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_STATE_CHANGED
 	PlayMessageStateChanged PlayMessage = 3
 	// PlayMessageBuffering wraps GST_PLAY_MESSAGE_BUFFERING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_BUFFERING
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_BUFFERING
 	PlayMessageBuffering PlayMessage = 4
 	// PlayMessageEndOfStream wraps GST_PLAY_MESSAGE_END_OF_STREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_END_OF_STREAM
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_END_OF_STREAM
 	PlayMessageEndOfStream PlayMessage = 5
 	// PlayMessageError wraps GST_PLAY_MESSAGE_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_ERROR
 	PlayMessageError PlayMessage = 6
 	// PlayMessageWarning wraps GST_PLAY_MESSAGE_WARNING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_WARNING
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_WARNING
 	PlayMessageWarning PlayMessage = 7
 	// PlayMessageVideoDimensionsChanged wraps GST_PLAY_MESSAGE_VIDEO_DIMENSIONS_CHANGED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_VIDEO_DIMENSIONS_CHANGED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_VIDEO_DIMENSIONS_CHANGED
 	PlayMessageVideoDimensionsChanged PlayMessage = 8
 	// PlayMessageMediaInfoUpdated wraps GST_PLAY_MESSAGE_MEDIA_INFO_UPDATED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_MEDIA_INFO_UPDATED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_MEDIA_INFO_UPDATED
 	PlayMessageMediaInfoUpdated PlayMessage = 9
 	// PlayMessageVolumeChanged wraps GST_PLAY_MESSAGE_VOLUME_CHANGED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_VOLUME_CHANGED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_VOLUME_CHANGED
 	PlayMessageVolumeChanged PlayMessage = 10
 	// PlayMessageMuteChanged wraps GST_PLAY_MESSAGE_MUTE_CHANGED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_MUTE_CHANGED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_MUTE_CHANGED
 	PlayMessageMuteChanged PlayMessage = 11
 	// PlayMessageSeekDone wraps GST_PLAY_MESSAGE_SEEK_DONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_MESSAGE_SEEK_DONE
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_MESSAGE_SEEK_DONE
 	PlayMessageSeekDone PlayMessage = 12
 )
 
@@ -655,23 +655,23 @@ type PlaySnapshotFormat C.int
 const (
 	// PlayThumbnailRawNative wraps GST_PLAY_THUMBNAIL_RAW_NATIVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_RAW_NATIVE
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_THUMBNAIL_RAW_NATIVE
 	PlayThumbnailRawNative PlaySnapshotFormat = 0
 	// PlayThumbnailRawXrgb wraps GST_PLAY_THUMBNAIL_RAW_xRGB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_RAW_xRGB
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_THUMBNAIL_RAW_xRGB
 	PlayThumbnailRawXrgb PlaySnapshotFormat = 1
 	// PlayThumbnailRawBgrx wraps GST_PLAY_THUMBNAIL_RAW_BGRx
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_RAW_BGRx
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_THUMBNAIL_RAW_BGRx
 	PlayThumbnailRawBgrx PlaySnapshotFormat = 2
 	// PlayThumbnailJpg wraps GST_PLAY_THUMBNAIL_JPG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_JPG
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_THUMBNAIL_JPG
 	PlayThumbnailJpg PlaySnapshotFormat = 3
 	// PlayThumbnailPng wraps GST_PLAY_THUMBNAIL_PNG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_THUMBNAIL_PNG
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_THUMBNAIL_PNG
 	PlayThumbnailPng PlaySnapshotFormat = 4
 )
 
@@ -695,19 +695,19 @@ type PlayState C.int
 const (
 	// PlayStateStopped wraps GST_PLAY_STATE_STOPPED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_STATE_STOPPED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_STATE_STOPPED
 	PlayStateStopped PlayState = 0
 	// PlayStateBuffering wraps GST_PLAY_STATE_BUFFERING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_STATE_BUFFERING
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_STATE_BUFFERING
 	PlayStateBuffering PlayState = 1
 	// PlayStatePaused wraps GST_PLAY_STATE_PAUSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_STATE_PAUSED
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_STATE_PAUSED
 	PlayStatePaused PlayState = 2
 	// PlayStatePlaying wraps GST_PLAY_STATE_PLAYING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play#GST_PLAY_STATE_PLAYING
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay.html#GST_PLAY_STATE_PLAYING
 	PlayStatePlaying PlayState = 3
 )
 
@@ -2840,7 +2840,7 @@ type PlaySignalAdapter interface {
 	ConnectEndOfStream(func(PlaySignalAdapter)) gobject.SignalHandle
 	// ConnectError connects the provided callback to the "error" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-signal-adapter.html
 	ConnectError(func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle
 	// ConnectMediaInfoUpdated connects the provided callback to the "media-info-updated" signal
 	// 
@@ -2876,7 +2876,7 @@ type PlaySignalAdapter interface {
 	ConnectVolumeChanged(func(PlaySignalAdapter, float64)) gobject.SignalHandle
 	// ConnectWarning connects the provided callback to the "warning" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play
+	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-signal-adapter.html
 	ConnectWarning(func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle
 }
 
@@ -3030,7 +3030,7 @@ func (o *PlaySignalAdapterInstance) ConnectEndOfStream(fn func(PlaySignalAdapter
 
 // ConnectError connects the provided callback to the "error" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/play
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-signal-adapter.html
 func (o *PlaySignalAdapterInstance) ConnectError(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("error", fn)
 }
@@ -3093,7 +3093,7 @@ func (o *PlaySignalAdapterInstance) ConnectVolumeChanged(fn func(PlaySignalAdapt
 
 // ConnectWarning connects the provided callback to the "warning" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/play
+// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-signal-adapter.html
 func (o *PlaySignalAdapterInstance) ConnectWarning(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("warning", fn)
 }

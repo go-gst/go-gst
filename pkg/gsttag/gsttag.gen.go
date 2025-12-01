@@ -63,21 +63,21 @@ func init() {
 const TAG_ID3V2_HEADER_SIZE = 10
 // TagDemuxResult wraps GstTagDemuxResult
 // 
-// see also https://gstreamer.freedesktop.org/documentation/tag#GstTagDemuxResult
+// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GstTagDemuxResult
 type TagDemuxResult C.int
 
 const (
 	// TagDemuxResultBrokenTag wraps GST_TAG_DEMUX_RESULT_BROKEN_TAG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_DEMUX_RESULT_BROKEN_TAG
+	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GST_TAG_DEMUX_RESULT_BROKEN_TAG
 	TagDemuxResultBrokenTag TagDemuxResult = 0
 	// TagDemuxResultAgain wraps GST_TAG_DEMUX_RESULT_AGAIN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_DEMUX_RESULT_AGAIN
+	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GST_TAG_DEMUX_RESULT_AGAIN
 	TagDemuxResultAgain TagDemuxResult = 1
 	// TagDemuxResultOK wraps GST_TAG_DEMUX_RESULT_OK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_DEMUX_RESULT_OK
+	// see also https://gstreamer.freedesktop.org/documentation/tag/gsttagdemux.html#GST_TAG_DEMUX_RESULT_OK
 	TagDemuxResultOK TagDemuxResult = 2
 )
 
@@ -106,89 +106,89 @@ func (e TagDemuxResult) String() string {
 
 // TagImageType wraps GstTagImageType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/tag#GstTagImageType
+// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GstTagImageType
 type TagImageType C.int
 
 const (
 	// TagImageTypeNone wraps GST_TAG_IMAGE_TYPE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_NONE
 	TagImageTypeNone TagImageType = -1
 	// TagImageTypeUndefined wraps GST_TAG_IMAGE_TYPE_UNDEFINED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_UNDEFINED
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_UNDEFINED
 	TagImageTypeUndefined TagImageType = 0
 	// TagImageTypeFrontCover wraps GST_TAG_IMAGE_TYPE_FRONT_COVER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_FRONT_COVER
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_FRONT_COVER
 	TagImageTypeFrontCover TagImageType = 1
 	// TagImageTypeBackCover wraps GST_TAG_IMAGE_TYPE_BACK_COVER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_BACK_COVER
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_BACK_COVER
 	TagImageTypeBackCover TagImageType = 2
 	// TagImageTypeLeafletPage wraps GST_TAG_IMAGE_TYPE_LEAFLET_PAGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_LEAFLET_PAGE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_LEAFLET_PAGE
 	TagImageTypeLeafletPage TagImageType = 3
 	// TagImageTypeMedium wraps GST_TAG_IMAGE_TYPE_MEDIUM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_MEDIUM
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_MEDIUM
 	TagImageTypeMedium TagImageType = 4
 	// TagImageTypeLeadArtist wraps GST_TAG_IMAGE_TYPE_LEAD_ARTIST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_LEAD_ARTIST
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_LEAD_ARTIST
 	TagImageTypeLeadArtist TagImageType = 5
 	// TagImageTypeArtist wraps GST_TAG_IMAGE_TYPE_ARTIST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_ARTIST
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_ARTIST
 	TagImageTypeArtist TagImageType = 6
 	// TagImageTypeConductor wraps GST_TAG_IMAGE_TYPE_CONDUCTOR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_CONDUCTOR
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_CONDUCTOR
 	TagImageTypeConductor TagImageType = 7
 	// TagImageTypeBandOrchestra wraps GST_TAG_IMAGE_TYPE_BAND_ORCHESTRA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_BAND_ORCHESTRA
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_BAND_ORCHESTRA
 	TagImageTypeBandOrchestra TagImageType = 8
 	// TagImageTypeComposer wraps GST_TAG_IMAGE_TYPE_COMPOSER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_COMPOSER
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_COMPOSER
 	TagImageTypeComposer TagImageType = 9
 	// TagImageTypeLyricist wraps GST_TAG_IMAGE_TYPE_LYRICIST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_LYRICIST
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_LYRICIST
 	TagImageTypeLyricist TagImageType = 10
 	// TagImageTypeRecordingLocation wraps GST_TAG_IMAGE_TYPE_RECORDING_LOCATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_RECORDING_LOCATION
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_RECORDING_LOCATION
 	TagImageTypeRecordingLocation TagImageType = 11
 	// TagImageTypeDuringRecording wraps GST_TAG_IMAGE_TYPE_DURING_RECORDING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_DURING_RECORDING
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_DURING_RECORDING
 	TagImageTypeDuringRecording TagImageType = 12
 	// TagImageTypeDuringPerformance wraps GST_TAG_IMAGE_TYPE_DURING_PERFORMANCE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_DURING_PERFORMANCE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_DURING_PERFORMANCE
 	TagImageTypeDuringPerformance TagImageType = 13
 	// TagImageTypeVideoCapture wraps GST_TAG_IMAGE_TYPE_VIDEO_CAPTURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_VIDEO_CAPTURE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_VIDEO_CAPTURE
 	TagImageTypeVideoCapture TagImageType = 14
 	// TagImageTypeFish wraps GST_TAG_IMAGE_TYPE_FISH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_FISH
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_FISH
 	TagImageTypeFish TagImageType = 15
 	// TagImageTypeIllustration wraps GST_TAG_IMAGE_TYPE_ILLUSTRATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_ILLUSTRATION
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_ILLUSTRATION
 	TagImageTypeIllustration TagImageType = 16
 	// TagImageTypeBandArtistLogo wraps GST_TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
 	TagImageTypeBandArtistLogo TagImageType = 17
 	// TagImageTypePublisherStudioLogo wraps GST_TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
 	TagImageTypePublisherStudioLogo TagImageType = 18
 )
 
@@ -234,65 +234,65 @@ func (e TagImageType) String() string {
 
 // TagLicenseFlags wraps GstTagLicenseFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/tag#GstTagLicenseFlags
+// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GstTagLicenseFlags
 type TagLicenseFlags C.gint
 
 const (
 	// TagLicensePermitsReproduction wraps GST_TAG_LICENSE_PERMITS_REPRODUCTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_PERMITS_REPRODUCTION
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PERMITS_REPRODUCTION
 	TagLicensePermitsReproduction TagLicenseFlags = 1
 	// TagLicensePermitsDistribution wraps GST_TAG_LICENSE_PERMITS_DISTRIBUTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_PERMITS_DISTRIBUTION
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PERMITS_DISTRIBUTION
 	TagLicensePermitsDistribution TagLicenseFlags = 2
 	// TagLicensePermitsDerivativeWorks wraps GST_TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
 	TagLicensePermitsDerivativeWorks TagLicenseFlags = 4
 	// TagLicensePermitsSharing wraps GST_TAG_LICENSE_PERMITS_SHARING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_PERMITS_SHARING
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PERMITS_SHARING
 	TagLicensePermitsSharing TagLicenseFlags = 8
 	// TagLicenseRequiresNotice wraps GST_TAG_LICENSE_REQUIRES_NOTICE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_REQUIRES_NOTICE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_NOTICE
 	TagLicenseRequiresNotice TagLicenseFlags = 256
 	// TagLicenseRequiresAttribution wraps GST_TAG_LICENSE_REQUIRES_ATTRIBUTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_REQUIRES_ATTRIBUTION
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_ATTRIBUTION
 	TagLicenseRequiresAttribution TagLicenseFlags = 512
 	// TagLicenseRequiresShareAlike wraps GST_TAG_LICENSE_REQUIRES_SHARE_ALIKE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_REQUIRES_SHARE_ALIKE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_SHARE_ALIKE
 	TagLicenseRequiresShareAlike TagLicenseFlags = 1024
 	// TagLicenseRequiresSourceCode wraps GST_TAG_LICENSE_REQUIRES_SOURCE_CODE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_REQUIRES_SOURCE_CODE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_SOURCE_CODE
 	TagLicenseRequiresSourceCode TagLicenseFlags = 2048
 	// TagLicenseRequiresCopyleft wraps GST_TAG_LICENSE_REQUIRES_COPYLEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_REQUIRES_COPYLEFT
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_COPYLEFT
 	TagLicenseRequiresCopyleft TagLicenseFlags = 4096
 	// TagLicenseRequiresLesserCopyleft wraps GST_TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
 	TagLicenseRequiresLesserCopyleft TagLicenseFlags = 8192
 	// TagLicenseProhibitsCommercialUse wraps GST_TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
 	TagLicenseProhibitsCommercialUse TagLicenseFlags = 65536
 	// TagLicenseProhibitsHighIncomeNationUse wraps GST_TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
 	TagLicenseProhibitsHighIncomeNationUse TagLicenseFlags = 131072
 	// TagLicenseCreativeCommonsLicense wraps GST_TAG_LICENSE_CREATIVE_COMMONS_LICENSE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_CREATIVE_COMMONS_LICENSE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_CREATIVE_COMMONS_LICENSE
 	TagLicenseCreativeCommonsLicense TagLicenseFlags = 16777216
 	// TagLicenseFreeSoftwareFoundationLicense wraps GST_TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/tag#GST_TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
+	// see also https://gstreamer.freedesktop.org/documentation/tag/tag.html#GST_TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
 	TagLicenseFreeSoftwareFoundationLicense TagLicenseFlags = 33554432
 )
 

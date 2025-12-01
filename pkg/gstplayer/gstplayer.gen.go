@@ -64,19 +64,19 @@ type PlayerColorBalanceType C.int
 const (
 	// PlayerColorBalanceHue wraps GST_PLAYER_COLOR_BALANCE_HUE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/player#GST_PLAYER_COLOR_BALANCE_HUE
+	// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer.html#GST_PLAYER_COLOR_BALANCE_HUE
 	PlayerColorBalanceHue PlayerColorBalanceType = 3
 	// PlayerColorBalanceBrightness wraps GST_PLAYER_COLOR_BALANCE_BRIGHTNESS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/player#GST_PLAYER_COLOR_BALANCE_BRIGHTNESS
+	// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer.html#GST_PLAYER_COLOR_BALANCE_BRIGHTNESS
 	PlayerColorBalanceBrightness PlayerColorBalanceType = 0
 	// PlayerColorBalanceSaturation wraps GST_PLAYER_COLOR_BALANCE_SATURATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/player#GST_PLAYER_COLOR_BALANCE_SATURATION
+	// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer.html#GST_PLAYER_COLOR_BALANCE_SATURATION
 	PlayerColorBalanceSaturation PlayerColorBalanceType = 2
 	// PlayerColorBalanceContrast wraps GST_PLAYER_COLOR_BALANCE_CONTRAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/player#GST_PLAYER_COLOR_BALANCE_CONTRAST
+	// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer.html#GST_PLAYER_COLOR_BALANCE_CONTRAST
 	PlayerColorBalanceContrast PlayerColorBalanceType = 1
 )
 
@@ -131,7 +131,7 @@ type PlayerError C.int
 const (
 	// PlayerErrorFailed wraps GST_PLAYER_ERROR_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/player#GST_PLAYER_ERROR_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer.html#GST_PLAYER_ERROR_FAILED
 	PlayerErrorFailed PlayerError = 0
 )
 
@@ -238,19 +238,19 @@ type PlayerState C.int
 const (
 	// PlayerStateStopped wraps GST_PLAYER_STATE_STOPPED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/player#GST_PLAYER_STATE_STOPPED
+	// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer.html#GST_PLAYER_STATE_STOPPED
 	PlayerStateStopped PlayerState = 0
 	// PlayerStateBuffering wraps GST_PLAYER_STATE_BUFFERING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/player#GST_PLAYER_STATE_BUFFERING
+	// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer.html#GST_PLAYER_STATE_BUFFERING
 	PlayerStateBuffering PlayerState = 1
 	// PlayerStatePaused wraps GST_PLAYER_STATE_PAUSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/player#GST_PLAYER_STATE_PAUSED
+	// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer.html#GST_PLAYER_STATE_PAUSED
 	PlayerStatePaused PlayerState = 2
 	// PlayerStatePlaying wraps GST_PLAYER_STATE_PLAYING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/player#GST_PLAYER_STATE_PLAYING
+	// see also https://gstreamer.freedesktop.org/documentation/player/gstplayer.html#GST_PLAYER_STATE_PLAYING
 	PlayerStatePlaying PlayerState = 3
 )
 
