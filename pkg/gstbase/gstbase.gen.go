@@ -471,15 +471,15 @@ type AggregatorStartTimeSelection C.int
 const (
 	// AggregatorStartTimeSelectionZero wraps GST_AGGREGATOR_START_TIME_SELECTION_ZERO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_AGGREGATOR_START_TIME_SELECTION_ZERO
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#GST_AGGREGATOR_START_TIME_SELECTION_ZERO
 	AggregatorStartTimeSelectionZero AggregatorStartTimeSelection = 0
 	// AggregatorStartTimeSelectionFirst wraps GST_AGGREGATOR_START_TIME_SELECTION_FIRST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_AGGREGATOR_START_TIME_SELECTION_FIRST
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#GST_AGGREGATOR_START_TIME_SELECTION_FIRST
 	AggregatorStartTimeSelectionFirst AggregatorStartTimeSelection = 1
 	// AggregatorStartTimeSelectionSet wraps GST_AGGREGATOR_START_TIME_SELECTION_SET
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_AGGREGATOR_START_TIME_SELECTION_SET
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html#GST_AGGREGATOR_START_TIME_SELECTION_SET
 	AggregatorStartTimeSelectionSet AggregatorStartTimeSelection = 2
 )
 
@@ -514,27 +514,27 @@ type BaseParseFrameFlags C.gint
 const (
 	// BaseParseFrameFlagNone wraps GST_BASE_PARSE_FRAME_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GST_BASE_PARSE_FRAME_FLAG_NONE
 	BaseParseFrameFlagNone BaseParseFrameFlags = 0
 	// BaseParseFrameFlagNewFrame wraps GST_BASE_PARSE_FRAME_FLAG_NEW_FRAME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_NEW_FRAME
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GST_BASE_PARSE_FRAME_FLAG_NEW_FRAME
 	BaseParseFrameFlagNewFrame BaseParseFrameFlags = 1
 	// BaseParseFrameFlagNoFrame wraps GST_BASE_PARSE_FRAME_FLAG_NO_FRAME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_NO_FRAME
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GST_BASE_PARSE_FRAME_FLAG_NO_FRAME
 	BaseParseFrameFlagNoFrame BaseParseFrameFlags = 2
 	// BaseParseFrameFlagClip wraps GST_BASE_PARSE_FRAME_FLAG_CLIP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_CLIP
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GST_BASE_PARSE_FRAME_FLAG_CLIP
 	BaseParseFrameFlagClip BaseParseFrameFlags = 4
 	// BaseParseFrameFlagDrop wraps GST_BASE_PARSE_FRAME_FLAG_DROP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_DROP
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GST_BASE_PARSE_FRAME_FLAG_DROP
 	BaseParseFrameFlagDrop BaseParseFrameFlags = 8
 	// BaseParseFrameFlagQueue wraps GST_BASE_PARSE_FRAME_FLAG_QUEUE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_PARSE_FRAME_FLAG_QUEUE
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbaseparse.html#GST_BASE_PARSE_FRAME_FLAG_QUEUE
 	BaseParseFrameFlagQueue BaseParseFrameFlags = 16
 )
 
@@ -578,15 +578,15 @@ type BaseSrcFlags C.gint
 const (
 	// BaseSrcFlagStarting wraps GST_BASE_SRC_FLAG_STARTING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_SRC_FLAG_STARTING
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#GST_BASE_SRC_FLAG_STARTING
 	BaseSrcFlagStarting BaseSrcFlags = 16384
 	// BaseSrcFlagStarted wraps GST_BASE_SRC_FLAG_STARTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_SRC_FLAG_STARTED
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#GST_BASE_SRC_FLAG_STARTED
 	BaseSrcFlagStarted BaseSrcFlags = 32768
 	// BaseSrcFlagLast wraps GST_BASE_SRC_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_BASE_SRC_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstbasesrc.html#GST_BASE_SRC_FLAG_LAST
 	BaseSrcFlagLast BaseSrcFlags = 1048576
 )
 
@@ -621,23 +621,23 @@ type CollectPadsStateFlags C.gint
 const (
 	// CollectPadsStateEOS wraps GST_COLLECT_PADS_STATE_EOS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_EOS
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GST_COLLECT_PADS_STATE_EOS
 	CollectPadsStateEOS CollectPadsStateFlags = 1
 	// CollectPadsStateFlushing wraps GST_COLLECT_PADS_STATE_FLUSHING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_FLUSHING
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GST_COLLECT_PADS_STATE_FLUSHING
 	CollectPadsStateFlushing CollectPadsStateFlags = 2
 	// CollectPadsStateNewSegment wraps GST_COLLECT_PADS_STATE_NEW_SEGMENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_NEW_SEGMENT
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GST_COLLECT_PADS_STATE_NEW_SEGMENT
 	CollectPadsStateNewSegment CollectPadsStateFlags = 4
 	// CollectPadsStateWaiting wraps GST_COLLECT_PADS_STATE_WAITING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_WAITING
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GST_COLLECT_PADS_STATE_WAITING
 	CollectPadsStateWaiting CollectPadsStateFlags = 8
 	// CollectPadsStateLocked wraps GST_COLLECT_PADS_STATE_LOCKED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base#GST_COLLECT_PADS_STATE_LOCKED
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstcollectpads.html#GST_COLLECT_PADS_STATE_LOCKED
 	CollectPadsStateLocked CollectPadsStateFlags = 16
 )
 
@@ -1836,7 +1836,7 @@ type Aggregator interface {
 	UpdateSegment(*gst.Segment)
 	// ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html
 	ConnectSamplesSelected(func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -2357,7 +2357,7 @@ func (self *AggregatorInstance) UpdateSegment(segment *gst.Segment) {
 
 // ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/base
+// see also https://gstreamer.freedesktop.org/documentation/base/gstaggregator.html
 func (o *AggregatorInstance) ConnectSamplesSelected(fn func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle {
 	return o.Connect("samples-selected", fn)
 }
@@ -11358,11 +11358,11 @@ type DataQueue interface {
 
 	// ConnectEmpty connects the provided callback to the "empty" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html
 	ConnectEmpty(func(DataQueue)) gobject.SignalHandle
 	// ConnectFull connects the provided callback to the "full" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/base
+	// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html
 	ConnectFull(func(DataQueue)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -11429,14 +11429,14 @@ func UnsafeDataQueueToGlibFull(c DataQueue) unsafe.Pointer {
 
 // ConnectEmpty connects the provided callback to the "empty" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/base
+// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html
 func (o *DataQueueInstance) ConnectEmpty(fn func(DataQueue)) gobject.SignalHandle {
 	return o.Connect("empty", fn)
 }
 
 // ConnectFull connects the provided callback to the "full" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/base
+// see also https://gstreamer.freedesktop.org/documentation/base/gstdataqueue.html
 func (o *DataQueueInstance) ConnectFull(fn func(DataQueue)) gobject.SignalHandle {
 	return o.Connect("full", fn)
 }

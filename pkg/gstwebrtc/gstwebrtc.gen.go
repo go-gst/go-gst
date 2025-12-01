@@ -177,25 +177,25 @@ func init() {
 
 // WebRTCBundlePolicy wraps GstWebRTCBundlePolicy
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCBundlePolicy
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCBundlePolicy
 type WebRTCBundlePolicy C.int
 
 const (
 	// WebrtcBundlePolicyNone wraps GST_WEBRTC_BUNDLE_POLICY_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_BUNDLE_POLICY_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_BUNDLE_POLICY_NONE
 	WebrtcBundlePolicyNone WebRTCBundlePolicy = 0
 	// WebrtcBundlePolicyBalanced wraps GST_WEBRTC_BUNDLE_POLICY_BALANCED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_BUNDLE_POLICY_BALANCED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_BUNDLE_POLICY_BALANCED
 	WebrtcBundlePolicyBalanced WebRTCBundlePolicy = 1
 	// WebrtcBundlePolicyMaxCompat wraps GST_WEBRTC_BUNDLE_POLICY_MAX_COMPAT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_BUNDLE_POLICY_MAX_COMPAT
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_BUNDLE_POLICY_MAX_COMPAT
 	WebrtcBundlePolicyMaxCompat WebRTCBundlePolicy = 2
 	// WebrtcBundlePolicyMaxBundle wraps GST_WEBRTC_BUNDLE_POLICY_MAX_BUNDLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_BUNDLE_POLICY_MAX_BUNDLE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_BUNDLE_POLICY_MAX_BUNDLE
 	WebrtcBundlePolicyMaxBundle WebRTCBundlePolicy = 3
 )
 
@@ -231,19 +231,19 @@ type WebRTCDTLSSetup C.int
 const (
 	// WebrtcDtlsSetupNone wraps GST_WEBRTC_DTLS_SETUP_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DTLS_SETUP_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_SETUP_NONE
 	WebrtcDtlsSetupNone WebRTCDTLSSetup = 0
 	// WebrtcDtlsSetupActpass wraps GST_WEBRTC_DTLS_SETUP_ACTPASS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DTLS_SETUP_ACTPASS
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_SETUP_ACTPASS
 	WebrtcDtlsSetupActpass WebRTCDTLSSetup = 1
 	// WebrtcDtlsSetupActive wraps GST_WEBRTC_DTLS_SETUP_ACTIVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DTLS_SETUP_ACTIVE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_SETUP_ACTIVE
 	WebrtcDtlsSetupActive WebRTCDTLSSetup = 2
 	// WebrtcDtlsSetupPassive wraps GST_WEBRTC_DTLS_SETUP_PASSIVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DTLS_SETUP_PASSIVE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_SETUP_PASSIVE
 	WebrtcDtlsSetupPassive WebRTCDTLSSetup = 3
 )
 
@@ -279,23 +279,23 @@ type WebRTCDTLSTransportState C.int
 const (
 	// WebrtcDtlsTransportStateNew wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_NEW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DTLS_TRANSPORT_STATE_NEW
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_NEW
 	WebrtcDtlsTransportStateNew WebRTCDTLSTransportState = 0
 	// WebrtcDtlsTransportStateClosed wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
 	WebrtcDtlsTransportStateClosed WebRTCDTLSTransportState = 1
 	// WebrtcDtlsTransportStateFailed wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DTLS_TRANSPORT_STATE_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_FAILED
 	WebrtcDtlsTransportStateFailed WebRTCDTLSTransportState = 2
 	// WebrtcDtlsTransportStateConnecting wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING
 	WebrtcDtlsTransportStateConnecting WebRTCDTLSTransportState = 3
 	// WebrtcDtlsTransportStateConnected wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED
 	WebrtcDtlsTransportStateConnected WebRTCDTLSTransportState = 4
 )
 
@@ -326,25 +326,25 @@ func (e WebRTCDTLSTransportState) String() string {
 
 // WebRTCDataChannelState wraps GstWebRTCDataChannelState
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCDataChannelState
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCDataChannelState
 type WebRTCDataChannelState C.int
 
 const (
 	// WebrtcDataChannelStateConnecting wraps GST_WEBRTC_DATA_CHANNEL_STATE_CONNECTING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DATA_CHANNEL_STATE_CONNECTING
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DATA_CHANNEL_STATE_CONNECTING
 	WebrtcDataChannelStateConnecting WebRTCDataChannelState = 1
 	// WebrtcDataChannelStateOpen wraps GST_WEBRTC_DATA_CHANNEL_STATE_OPEN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DATA_CHANNEL_STATE_OPEN
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DATA_CHANNEL_STATE_OPEN
 	WebrtcDataChannelStateOpen WebRTCDataChannelState = 2
 	// WebrtcDataChannelStateClosing wraps GST_WEBRTC_DATA_CHANNEL_STATE_CLOSING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DATA_CHANNEL_STATE_CLOSING
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DATA_CHANNEL_STATE_CLOSING
 	WebrtcDataChannelStateClosing WebRTCDataChannelState = 3
 	// WebrtcDataChannelStateClosed wraps GST_WEBRTC_DATA_CHANNEL_STATE_CLOSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_DATA_CHANNEL_STATE_CLOSED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_DATA_CHANNEL_STATE_CLOSED
 	WebrtcDataChannelStateClosed WebRTCDataChannelState = 4
 )
 
@@ -374,53 +374,53 @@ func (e WebRTCDataChannelState) String() string {
 
 // WebRTCError wraps GstWebRTCError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCError
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCError
 type WebRTCError C.int
 
 const (
 	// WebrtcErrorDataChannelFailure wraps GST_WEBRTC_ERROR_DATA_CHANNEL_FAILURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_DATA_CHANNEL_FAILURE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_DATA_CHANNEL_FAILURE
 	WebrtcErrorDataChannelFailure WebRTCError = 0
 	// WebrtcErrorDtlsFailure wraps GST_WEBRTC_ERROR_DTLS_FAILURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_DTLS_FAILURE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_DTLS_FAILURE
 	WebrtcErrorDtlsFailure WebRTCError = 1
 	// WebrtcErrorFingerprintFailure wraps GST_WEBRTC_ERROR_FINGERPRINT_FAILURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_FINGERPRINT_FAILURE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_FINGERPRINT_FAILURE
 	WebrtcErrorFingerprintFailure WebRTCError = 2
 	// WebrtcErrorSctpFailure wraps GST_WEBRTC_ERROR_SCTP_FAILURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_SCTP_FAILURE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_SCTP_FAILURE
 	WebrtcErrorSctpFailure WebRTCError = 3
 	// WebrtcErrorSdpSyntaxError wraps GST_WEBRTC_ERROR_SDP_SYNTAX_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_SDP_SYNTAX_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_SDP_SYNTAX_ERROR
 	WebrtcErrorSdpSyntaxError WebRTCError = 4
 	// WebrtcErrorHardwareEncoderNotAvailable wraps GST_WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE
 	WebrtcErrorHardwareEncoderNotAvailable WebRTCError = 5
 	// WebrtcErrorEncoderError wraps GST_WEBRTC_ERROR_ENCODER_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_ENCODER_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_ENCODER_ERROR
 	WebrtcErrorEncoderError WebRTCError = 6
 	// WebrtcErrorInvalidState wraps GST_WEBRTC_ERROR_INVALID_STATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_INVALID_STATE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_INVALID_STATE
 	WebrtcErrorInvalidState WebRTCError = 7
 	// WebrtcErrorInternalFailure wraps GST_WEBRTC_ERROR_INTERNAL_FAILURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_INTERNAL_FAILURE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_INTERNAL_FAILURE
 	WebrtcErrorInternalFailure WebRTCError = 8
 	// WebrtcErrorInvalidModification wraps GST_WEBRTC_ERROR_INVALID_MODIFICATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_INVALID_MODIFICATION
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_INVALID_MODIFICATION
 	WebrtcErrorInvalidModification WebRTCError = 9
 	// WebrtcErrorTypeError wraps GST_WEBRTC_ERROR_TYPE_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ERROR_TYPE_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ERROR_TYPE_ERROR
 	WebrtcErrorTypeError WebRTCError = 10
 )
 
@@ -457,7 +457,7 @@ func (e WebRTCError) String() string {
 
 // WebRTCErrorQuark wraps gst_webrtc_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#gst_webrtc_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_error_quark
 func WebRTCErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -478,11 +478,11 @@ type WebRTCFECType C.int
 const (
 	// WebrtcFecTypeNone wraps GST_WEBRTC_FEC_TYPE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_FEC_TYPE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_FEC_TYPE_NONE
 	WebrtcFecTypeNone WebRTCFECType = 0
 	// WebrtcFecTypeUlpRed wraps GST_WEBRTC_FEC_TYPE_ULP_RED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_FEC_TYPE_ULP_RED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_FEC_TYPE_ULP_RED
 	WebrtcFecTypeUlpRed WebRTCFECType = 1
 )
 
@@ -516,11 +516,11 @@ type WebRTCICEComponent C.int
 const (
 	// WebrtcIceComponentRtp wraps GST_WEBRTC_ICE_COMPONENT_RTP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_COMPONENT_RTP
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_COMPONENT_RTP
 	WebrtcIceComponentRtp WebRTCICEComponent = 0
 	// WebrtcIceComponentRtcp wraps GST_WEBRTC_ICE_COMPONENT_RTCP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_COMPONENT_RTCP
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_COMPONENT_RTCP
 	WebrtcIceComponentRtcp WebRTCICEComponent = 1
 )
 
@@ -548,37 +548,37 @@ func (e WebRTCICEComponent) String() string {
 
 // WebRTCICEConnectionState wraps GstWebRTCICEConnectionState
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCICEConnectionState
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCICEConnectionState
 type WebRTCICEConnectionState C.int
 
 const (
 	// WebrtcIceConnectionStateNew wraps GST_WEBRTC_ICE_CONNECTION_STATE_NEW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_CONNECTION_STATE_NEW
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_NEW
 	WebrtcIceConnectionStateNew WebRTCICEConnectionState = 0
 	// WebrtcIceConnectionStateChecking wraps GST_WEBRTC_ICE_CONNECTION_STATE_CHECKING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_CONNECTION_STATE_CHECKING
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_CHECKING
 	WebrtcIceConnectionStateChecking WebRTCICEConnectionState = 1
 	// WebrtcIceConnectionStateConnected wraps GST_WEBRTC_ICE_CONNECTION_STATE_CONNECTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_CONNECTION_STATE_CONNECTED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_CONNECTED
 	WebrtcIceConnectionStateConnected WebRTCICEConnectionState = 2
 	// WebrtcIceConnectionStateCompleted wraps GST_WEBRTC_ICE_CONNECTION_STATE_COMPLETED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_CONNECTION_STATE_COMPLETED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_COMPLETED
 	WebrtcIceConnectionStateCompleted WebRTCICEConnectionState = 3
 	// WebrtcIceConnectionStateFailed wraps GST_WEBRTC_ICE_CONNECTION_STATE_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_CONNECTION_STATE_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_FAILED
 	WebrtcIceConnectionStateFailed WebRTCICEConnectionState = 4
 	// WebrtcIceConnectionStateDisconnected wraps GST_WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED
 	WebrtcIceConnectionStateDisconnected WebRTCICEConnectionState = 5
 	// WebrtcIceConnectionStateClosed wraps GST_WEBRTC_ICE_CONNECTION_STATE_CLOSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_CONNECTION_STATE_CLOSED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_CONNECTION_STATE_CLOSED
 	WebrtcIceConnectionStateClosed WebRTCICEConnectionState = 6
 )
 
@@ -611,21 +611,21 @@ func (e WebRTCICEConnectionState) String() string {
 
 // WebRTCICEGatheringState wraps GstWebRTCICEGatheringState
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCICEGatheringState
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCICEGatheringState
 type WebRTCICEGatheringState C.int
 
 const (
 	// WebrtcIceGatheringStateNew wraps GST_WEBRTC_ICE_GATHERING_STATE_NEW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_GATHERING_STATE_NEW
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_GATHERING_STATE_NEW
 	WebrtcIceGatheringStateNew WebRTCICEGatheringState = 0
 	// WebrtcIceGatheringStateGathering wraps GST_WEBRTC_ICE_GATHERING_STATE_GATHERING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_GATHERING_STATE_GATHERING
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_GATHERING_STATE_GATHERING
 	WebrtcIceGatheringStateGathering WebRTCICEGatheringState = 1
 	// WebrtcIceGatheringStateComplete wraps GST_WEBRTC_ICE_GATHERING_STATE_COMPLETE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_GATHERING_STATE_COMPLETE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_GATHERING_STATE_COMPLETE
 	WebrtcIceGatheringStateComplete WebRTCICEGatheringState = 2
 )
 
@@ -660,11 +660,11 @@ type WebRTCICERole C.int
 const (
 	// WebrtcIceRoleControlled wraps GST_WEBRTC_ICE_ROLE_CONTROLLED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_ROLE_CONTROLLED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_ROLE_CONTROLLED
 	WebrtcIceRoleControlled WebRTCICERole = 0
 	// WebrtcIceRoleControlling wraps GST_WEBRTC_ICE_ROLE_CONTROLLING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_ROLE_CONTROLLING
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_ROLE_CONTROLLING
 	WebrtcIceRoleControlling WebRTCICERole = 1
 )
 
@@ -692,17 +692,17 @@ func (e WebRTCICERole) String() string {
 
 // WebRTCICETransportPolicy wraps GstWebRTCICETransportPolicy
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCICETransportPolicy
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCICETransportPolicy
 type WebRTCICETransportPolicy C.int
 
 const (
 	// WebrtcIceTransportPolicyAll wraps GST_WEBRTC_ICE_TRANSPORT_POLICY_ALL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_TRANSPORT_POLICY_ALL
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_TRANSPORT_POLICY_ALL
 	WebrtcIceTransportPolicyAll WebRTCICETransportPolicy = 0
 	// WebrtcIceTransportPolicyRelay wraps GST_WEBRTC_ICE_TRANSPORT_POLICY_RELAY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_ICE_TRANSPORT_POLICY_RELAY
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_ICE_TRANSPORT_POLICY_RELAY
 	WebrtcIceTransportPolicyRelay WebRTCICETransportPolicy = 1
 )
 
@@ -730,21 +730,21 @@ func (e WebRTCICETransportPolicy) String() string {
 
 // WebRTCKind wraps GstWebRTCKind
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCKind
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCKind
 type WebRTCKind C.int
 
 const (
 	// WebrtcKindUnknown wraps GST_WEBRTC_KIND_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_KIND_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_KIND_UNKNOWN
 	WebrtcKindUnknown WebRTCKind = 0
 	// WebrtcKindAudio wraps GST_WEBRTC_KIND_AUDIO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_KIND_AUDIO
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_KIND_AUDIO
 	WebrtcKindAudio WebRTCKind = 1
 	// WebrtcKindVideo wraps GST_WEBRTC_KIND_VIDEO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_KIND_VIDEO
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_KIND_VIDEO
 	WebrtcKindVideo WebRTCKind = 2
 )
 
@@ -773,33 +773,33 @@ func (e WebRTCKind) String() string {
 
 // WebRTCPeerConnectionState wraps GstWebRTCPeerConnectionState
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCPeerConnectionState
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCPeerConnectionState
 type WebRTCPeerConnectionState C.int
 
 const (
 	// WebrtcPeerConnectionStateNew wraps GST_WEBRTC_PEER_CONNECTION_STATE_NEW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PEER_CONNECTION_STATE_NEW
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_NEW
 	WebrtcPeerConnectionStateNew WebRTCPeerConnectionState = 0
 	// WebrtcPeerConnectionStateConnecting wraps GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTING
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTING
 	WebrtcPeerConnectionStateConnecting WebRTCPeerConnectionState = 1
 	// WebrtcPeerConnectionStateConnected wraps GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTED
 	WebrtcPeerConnectionStateConnected WebRTCPeerConnectionState = 2
 	// WebrtcPeerConnectionStateDisconnected wraps GST_WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED
 	WebrtcPeerConnectionStateDisconnected WebRTCPeerConnectionState = 3
 	// WebrtcPeerConnectionStateFailed wraps GST_WEBRTC_PEER_CONNECTION_STATE_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PEER_CONNECTION_STATE_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_FAILED
 	WebrtcPeerConnectionStateFailed WebRTCPeerConnectionState = 4
 	// WebrtcPeerConnectionStateClosed wraps GST_WEBRTC_PEER_CONNECTION_STATE_CLOSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PEER_CONNECTION_STATE_CLOSED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PEER_CONNECTION_STATE_CLOSED
 	WebrtcPeerConnectionStateClosed WebRTCPeerConnectionState = 5
 )
 
@@ -831,25 +831,25 @@ func (e WebRTCPeerConnectionState) String() string {
 
 // WebRTCPriorityType wraps GstWebRTCPriorityType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCPriorityType
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCPriorityType
 type WebRTCPriorityType C.int
 
 const (
 	// WebrtcPriorityTypeVeryLow wraps GST_WEBRTC_PRIORITY_TYPE_VERY_LOW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PRIORITY_TYPE_VERY_LOW
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PRIORITY_TYPE_VERY_LOW
 	WebrtcPriorityTypeVeryLow WebRTCPriorityType = 1
 	// WebrtcPriorityTypeLow wraps GST_WEBRTC_PRIORITY_TYPE_LOW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PRIORITY_TYPE_LOW
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PRIORITY_TYPE_LOW
 	WebrtcPriorityTypeLow WebRTCPriorityType = 2
 	// WebrtcPriorityTypeMedium wraps GST_WEBRTC_PRIORITY_TYPE_MEDIUM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PRIORITY_TYPE_MEDIUM
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PRIORITY_TYPE_MEDIUM
 	WebrtcPriorityTypeMedium WebRTCPriorityType = 3
 	// WebrtcPriorityTypeHigh wraps GST_WEBRTC_PRIORITY_TYPE_HIGH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_PRIORITY_TYPE_HIGH
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_PRIORITY_TYPE_HIGH
 	WebrtcPriorityTypeHigh WebRTCPriorityType = 4
 )
 
@@ -885,23 +885,23 @@ type WebRTCRTPTransceiverDirection C.int
 const (
 	// WebrtcRtpTransceiverDirectionNone wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE
 	WebrtcRtpTransceiverDirectionNone WebRTCRTPTransceiverDirection = 0
 	// WebrtcRtpTransceiverDirectionInactive wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE
 	WebrtcRtpTransceiverDirectionInactive WebRTCRTPTransceiverDirection = 1
 	// WebrtcRtpTransceiverDirectionSendonly wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY
 	WebrtcRtpTransceiverDirectionSendonly WebRTCRTPTransceiverDirection = 2
 	// WebrtcRtpTransceiverDirectionRecvonly wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY
 	WebrtcRtpTransceiverDirectionRecvonly WebRTCRTPTransceiverDirection = 3
 	// WebrtcRtpTransceiverDirectionSendrecv wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV
 	WebrtcRtpTransceiverDirectionSendrecv WebRTCRTPTransceiverDirection = 4
 )
 
@@ -932,25 +932,25 @@ func (e WebRTCRTPTransceiverDirection) String() string {
 
 // WebRTCSCTPTransportState wraps GstWebRTCSCTPTransportState
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCSCTPTransportState
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCSCTPTransportState
 type WebRTCSCTPTransportState C.int
 
 const (
 	// WebrtcSctpTransportStateNew wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_NEW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SCTP_TRANSPORT_STATE_NEW
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SCTP_TRANSPORT_STATE_NEW
 	WebrtcSctpTransportStateNew WebRTCSCTPTransportState = 0
 	// WebrtcSctpTransportStateConnecting wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
 	WebrtcSctpTransportStateConnecting WebRTCSCTPTransportState = 1
 	// WebrtcSctpTransportStateConnected wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED
 	WebrtcSctpTransportStateConnected WebRTCSCTPTransportState = 2
 	// WebrtcSctpTransportStateClosed wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CLOSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SCTP_TRANSPORT_STATE_CLOSED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SCTP_TRANSPORT_STATE_CLOSED
 	WebrtcSctpTransportStateClosed WebRTCSCTPTransportState = 3
 )
 
@@ -980,25 +980,25 @@ func (e WebRTCSCTPTransportState) String() string {
 
 // WebRTCSDPType wraps GstWebRTCSDPType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCSDPType
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCSDPType
 type WebRTCSDPType C.int
 
 const (
 	// WebrtcSdpTypeOffer wraps GST_WEBRTC_SDP_TYPE_OFFER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SDP_TYPE_OFFER
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SDP_TYPE_OFFER
 	WebrtcSdpTypeOffer WebRTCSDPType = 1
 	// WebrtcSdpTypePranswer wraps GST_WEBRTC_SDP_TYPE_PRANSWER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SDP_TYPE_PRANSWER
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SDP_TYPE_PRANSWER
 	WebrtcSdpTypePranswer WebRTCSDPType = 2
 	// WebrtcSdpTypeAnswer wraps GST_WEBRTC_SDP_TYPE_ANSWER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SDP_TYPE_ANSWER
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SDP_TYPE_ANSWER
 	WebrtcSdpTypeAnswer WebRTCSDPType = 3
 	// WebrtcSdpTypeRollback wraps GST_WEBRTC_SDP_TYPE_ROLLBACK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SDP_TYPE_ROLLBACK
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SDP_TYPE_ROLLBACK
 	WebrtcSdpTypeRollback WebRTCSDPType = 4
 )
 
@@ -1028,7 +1028,7 @@ func (e WebRTCSDPType) String() string {
 
 // WebRTCSDPTypeString wraps gst_webrtc_sdp_type_to_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#gst_webrtc_sdp_type_to_string
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#gst_webrtc_sdp_type_to_string
 func WebRTCSDPTypeString(typ WebRTCSDPType) string {
 	var carg1 C.GstWebRTCSDPType // in, none, casted
 	var cret  *C.gchar           // return, none, string
@@ -1047,33 +1047,33 @@ func WebRTCSDPTypeString(typ WebRTCSDPType) string {
 
 // WebRTCSignalingState wraps GstWebRTCSignalingState
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCSignalingState
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCSignalingState
 type WebRTCSignalingState C.int
 
 const (
 	// WebrtcSignalingStateStable wraps GST_WEBRTC_SIGNALING_STATE_STABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SIGNALING_STATE_STABLE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_STABLE
 	WebrtcSignalingStateStable WebRTCSignalingState = 0
 	// WebrtcSignalingStateClosed wraps GST_WEBRTC_SIGNALING_STATE_CLOSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SIGNALING_STATE_CLOSED
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_CLOSED
 	WebrtcSignalingStateClosed WebRTCSignalingState = 1
 	// WebrtcSignalingStateHaveLocalOffer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER
 	WebrtcSignalingStateHaveLocalOffer WebRTCSignalingState = 2
 	// WebrtcSignalingStateHaveRemoteOffer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER
 	WebrtcSignalingStateHaveRemoteOffer WebRTCSignalingState = 3
 	// WebrtcSignalingStateHaveLocalPranswer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER
 	WebrtcSignalingStateHaveLocalPranswer WebRTCSignalingState = 4
 	// WebrtcSignalingStateHaveRemotePranswer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER
 	WebrtcSignalingStateHaveRemotePranswer WebRTCSignalingState = 5
 )
 
@@ -1105,65 +1105,65 @@ func (e WebRTCSignalingState) String() string {
 
 // WebRTCStatsType wraps GstWebRTCStatsType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc#GstWebRTCStatsType
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GstWebRTCStatsType
 type WebRTCStatsType C.int
 
 const (
 	// WebrtcStatsCodec wraps GST_WEBRTC_STATS_CODEC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_CODEC
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_CODEC
 	WebrtcStatsCodec WebRTCStatsType = 1
 	// WebrtcStatsInboundRtp wraps GST_WEBRTC_STATS_INBOUND_RTP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_INBOUND_RTP
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_INBOUND_RTP
 	WebrtcStatsInboundRtp WebRTCStatsType = 2
 	// WebrtcStatsOutboundRtp wraps GST_WEBRTC_STATS_OUTBOUND_RTP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_OUTBOUND_RTP
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_OUTBOUND_RTP
 	WebrtcStatsOutboundRtp WebRTCStatsType = 3
 	// WebrtcStatsRemoteInboundRtp wraps GST_WEBRTC_STATS_REMOTE_INBOUND_RTP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_REMOTE_INBOUND_RTP
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_REMOTE_INBOUND_RTP
 	WebrtcStatsRemoteInboundRtp WebRTCStatsType = 4
 	// WebrtcStatsRemoteOutboundRtp wraps GST_WEBRTC_STATS_REMOTE_OUTBOUND_RTP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_REMOTE_OUTBOUND_RTP
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_REMOTE_OUTBOUND_RTP
 	WebrtcStatsRemoteOutboundRtp WebRTCStatsType = 5
 	// WebrtcStatsCsrc wraps GST_WEBRTC_STATS_CSRC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_CSRC
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_CSRC
 	WebrtcStatsCsrc WebRTCStatsType = 6
 	// WebrtcStatsPeerConnection wraps GST_WEBRTC_STATS_PEER_CONNECTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_PEER_CONNECTION
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_PEER_CONNECTION
 	WebrtcStatsPeerConnection WebRTCStatsType = 7
 	// WebrtcStatsDataChannel wraps GST_WEBRTC_STATS_DATA_CHANNEL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_DATA_CHANNEL
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_DATA_CHANNEL
 	WebrtcStatsDataChannel WebRTCStatsType = 8
 	// WebrtcStatsStream wraps GST_WEBRTC_STATS_STREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_STREAM
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_STREAM
 	WebrtcStatsStream WebRTCStatsType = 9
 	// WebrtcStatsTransport wraps GST_WEBRTC_STATS_TRANSPORT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_TRANSPORT
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_TRANSPORT
 	WebrtcStatsTransport WebRTCStatsType = 10
 	// WebrtcStatsCandidatePair wraps GST_WEBRTC_STATS_CANDIDATE_PAIR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_CANDIDATE_PAIR
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_CANDIDATE_PAIR
 	WebrtcStatsCandidatePair WebRTCStatsType = 11
 	// WebrtcStatsLocalCandidate wraps GST_WEBRTC_STATS_LOCAL_CANDIDATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_LOCAL_CANDIDATE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_LOCAL_CANDIDATE
 	WebrtcStatsLocalCandidate WebRTCStatsType = 12
 	// WebrtcStatsRemoteCandidate wraps GST_WEBRTC_STATS_REMOTE_CANDIDATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_REMOTE_CANDIDATE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_REMOTE_CANDIDATE
 	WebrtcStatsRemoteCandidate WebRTCStatsType = 13
 	// WebrtcStatsCertificate wraps GST_WEBRTC_STATS_CERTIFICATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc#GST_WEBRTC_STATS_CERTIFICATE
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/webrtc_fwd.html#GST_WEBRTC_STATS_CERTIFICATE
 	WebrtcStatsCertificate WebRTCStatsType = 14
 )
 
@@ -1303,7 +1303,7 @@ type WebRTCDataChannel interface {
 	SendStringFull(string) (bool, error)
 	// EmitClose emits the "close" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/datachannel.html
 	EmitClose()
 	// ConnectOnBufferedAmountLow connects the provided callback to the "on-buffered-amount-low" signal
 	// 
@@ -1464,7 +1464,7 @@ func (channel *WebRTCDataChannelInstance) SendStringFull(str string) (bool, erro
 
 // EmitClose emits the "close" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/datachannel.html
 func (o *WebRTCDataChannelInstance) EmitClose() {
 	o.Emit("close")
 }
@@ -1626,7 +1626,7 @@ type WebRTCICE interface {
 	SetTurnServer(string)
 	// EmitAddLocalIpAddress emits the "add-local-ip-address" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/webrtc
+	// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html
 	EmitAddLocalIpAddress(string) bool
 
 	// chain up virtual methods:
@@ -2251,7 +2251,7 @@ func (ice *WebRTCICEInstance) SetTurnServer(uri string) {
 
 // EmitAddLocalIpAddress emits the "add-local-ip-address" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/webrtc
+// see also https://gstreamer.freedesktop.org/documentation/webrtc/ice.html
 func (o *WebRTCICEInstance) EmitAddLocalIpAddress(arg0 string) bool {
 	return o.Emit("add-local-ip-address", arg0).(bool)
 }

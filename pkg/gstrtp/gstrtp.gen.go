@@ -200,29 +200,29 @@ const RTP_SOURCE_META_MAX_CSRC_COUNT = 15
 const RTP_VERSION = 2
 // RTCPFBType wraps GstRTCPFBType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTCPFBType
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GstRTCPFBType
 type RTCPFBType C.int
 
 const (
 	// RtcpFbTypeInvalid wraps GST_RTCP_FB_TYPE_INVALID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_FB_TYPE_INVALID
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_FB_TYPE_INVALID
 	RtcpFbTypeInvalid RTCPFBType = 0
 	// RtcpRtpfbTypeNack wraps GST_RTCP_RTPFB_TYPE_NACK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_RTPFB_TYPE_NACK
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_RTPFB_TYPE_NACK
 	RtcpRtpfbTypeNack RTCPFBType = 1
 	// RtcpRtpfbTypeTmmbr wraps GST_RTCP_RTPFB_TYPE_TMMBR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_RTPFB_TYPE_TMMBR
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_RTPFB_TYPE_TMMBR
 	RtcpRtpfbTypeTmmbr RTCPFBType = 3
 	// RtcpRtpfbTypeTmmbn wraps GST_RTCP_RTPFB_TYPE_TMMBN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_RTPFB_TYPE_TMMBN
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_RTPFB_TYPE_TMMBN
 	RtcpRtpfbTypeTmmbn RTCPFBType = 4
 	// RtcpRtpfbTypeRtcpSrReq wraps GST_RTCP_RTPFB_TYPE_RTCP_SR_REQ
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_RTPFB_TYPE_RTCP_SR_REQ
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_RTPFB_TYPE_RTCP_SR_REQ
 	RtcpRtpfbTypeRtcpSrReq RTCPFBType = 5
 	// RtcpRtpfbTypeTwcc wraps GST_RTCP_RTPFB_TYPE_TWCC
 	// 
@@ -230,35 +230,35 @@ const (
 	RtcpRtpfbTypeTwcc RTCPFBType = 15
 	// RtcpPsfbTypePli wraps GST_RTCP_PSFB_TYPE_PLI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_PLI
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_PSFB_TYPE_PLI
 	RtcpPsfbTypePli RTCPFBType = 1
 	// RtcpPsfbTypeSli wraps GST_RTCP_PSFB_TYPE_SLI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_SLI
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_PSFB_TYPE_SLI
 	RtcpPsfbTypeSli RTCPFBType = 2
 	// RtcpPsfbTypeRpsi wraps GST_RTCP_PSFB_TYPE_RPSI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_RPSI
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_PSFB_TYPE_RPSI
 	RtcpPsfbTypeRpsi RTCPFBType = 3
 	// RtcpPsfbTypeAfb wraps GST_RTCP_PSFB_TYPE_AFB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_AFB
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_PSFB_TYPE_AFB
 	RtcpPsfbTypeAfb RTCPFBType = 15
 	// RtcpPsfbTypeFir wraps GST_RTCP_PSFB_TYPE_FIR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_FIR
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_PSFB_TYPE_FIR
 	RtcpPsfbTypeFir RTCPFBType = 4
 	// RtcpPsfbTypeTstr wraps GST_RTCP_PSFB_TYPE_TSTR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_TSTR
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_PSFB_TYPE_TSTR
 	RtcpPsfbTypeTstr RTCPFBType = 5
 	// RtcpPsfbTypeTstn wraps GST_RTCP_PSFB_TYPE_TSTN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_TSTN
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_PSFB_TYPE_TSTN
 	RtcpPsfbTypeTstn RTCPFBType = 6
 	// RtcpPsfbTypeVbcn wraps GST_RTCP_PSFB_TYPE_VBCN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_PSFB_TYPE_VBCN
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_PSFB_TYPE_VBCN
 	RtcpPsfbTypeVbcn RTCPFBType = 7
 )
 
@@ -293,77 +293,77 @@ func (e RTCPFBType) String() string {
 
 // RTCPSDESType wraps GstRTCPSDESType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTCPSDESType
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GstRTCPSDESType
 type RTCPSDESType C.int
 
 const (
 	// RtcpSdesInvalid wraps GST_RTCP_SDES_INVALID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_INVALID
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_INVALID
 	RtcpSdesInvalid RTCPSDESType = -1
 	// RtcpSdesEnd wraps GST_RTCP_SDES_END
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_END
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_END
 	RtcpSdesEnd RTCPSDESType = 0
 	// RtcpSdesCname wraps GST_RTCP_SDES_CNAME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_CNAME
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_CNAME
 	RtcpSdesCname RTCPSDESType = 1
 	// RtcpSdesName wraps GST_RTCP_SDES_NAME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_NAME
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_NAME
 	RtcpSdesName RTCPSDESType = 2
 	// RtcpSdesEmail wraps GST_RTCP_SDES_EMAIL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_EMAIL
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_EMAIL
 	RtcpSdesEmail RTCPSDESType = 3
 	// RtcpSdesPhone wraps GST_RTCP_SDES_PHONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_PHONE
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_PHONE
 	RtcpSdesPhone RTCPSDESType = 4
 	// RtcpSdesLoc wraps GST_RTCP_SDES_LOC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_LOC
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_LOC
 	RtcpSdesLoc RTCPSDESType = 5
 	// RtcpSdesTool wraps GST_RTCP_SDES_TOOL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_TOOL
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_TOOL
 	RtcpSdesTool RTCPSDESType = 6
 	// RtcpSdesNote wraps GST_RTCP_SDES_NOTE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_NOTE
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_NOTE
 	RtcpSdesNote RTCPSDESType = 7
 	// RtcpSdesPriv wraps GST_RTCP_SDES_PRIV
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_PRIV
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_PRIV
 	RtcpSdesPriv RTCPSDESType = 8
 	// RtcpSdesH323Caddr wraps GST_RTCP_SDES_H323_CADDR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_H323_CADDR
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_H323_CADDR
 	RtcpSdesH323Caddr RTCPSDESType = 9
 	// RtcpSdesApsi wraps GST_RTCP_SDES_APSI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_APSI
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_APSI
 	RtcpSdesApsi RTCPSDESType = 10
 	// RtcpSdesRgrp wraps GST_RTCP_SDES_RGRP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_RGRP
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_RGRP
 	RtcpSdesRgrp RTCPSDESType = 11
 	// RtcpSdesRtpStreamID wraps GST_RTCP_SDES_RTP_STREAM_ID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_RTP_STREAM_ID
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_RTP_STREAM_ID
 	RtcpSdesRtpStreamID RTCPSDESType = 12
 	// RtcpSdesRepairedRtpStreamID wraps GST_RTCP_SDES_REPAIRED_RTP_STREAM_ID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_REPAIRED_RTP_STREAM_ID
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_REPAIRED_RTP_STREAM_ID
 	RtcpSdesRepairedRtpStreamID RTCPSDESType = 13
 	// RtcpSdesCcid wraps GST_RTCP_SDES_CCID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_CCID
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_CCID
 	RtcpSdesCcid RTCPSDESType = 14
 	// RtcpSdesMid wraps GST_RTCP_SDES_MID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_SDES_MID
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_SDES_MID
 	RtcpSdesMid RTCPSDESType = 15
 )
 
@@ -406,45 +406,45 @@ func (e RTCPSDESType) String() string {
 
 // RTCPType wraps GstRTCPType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTCPType
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GstRTCPType
 type RTCPType C.int
 
 const (
 	// RtcpTypeInvalid wraps GST_RTCP_TYPE_INVALID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_INVALID
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_TYPE_INVALID
 	RtcpTypeInvalid RTCPType = 0
 	// RtcpTypeSr wraps GST_RTCP_TYPE_SR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_SR
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_TYPE_SR
 	RtcpTypeSr RTCPType = 200
 	// RtcpTypeRr wraps GST_RTCP_TYPE_RR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_RR
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_TYPE_RR
 	RtcpTypeRr RTCPType = 201
 	// RtcpTypeSdes wraps GST_RTCP_TYPE_SDES
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_SDES
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_TYPE_SDES
 	RtcpTypeSdes RTCPType = 202
 	// RtcpTypeBye wraps GST_RTCP_TYPE_BYE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_BYE
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_TYPE_BYE
 	RtcpTypeBye RTCPType = 203
 	// RtcpTypeApp wraps GST_RTCP_TYPE_APP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_APP
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_TYPE_APP
 	RtcpTypeApp RTCPType = 204
 	// RtcpTypeRtpfb wraps GST_RTCP_TYPE_RTPFB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_RTPFB
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_TYPE_RTPFB
 	RtcpTypeRtpfb RTCPType = 205
 	// RtcpTypePsfb wraps GST_RTCP_TYPE_PSFB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_PSFB
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_TYPE_PSFB
 	RtcpTypePsfb RTCPType = 206
 	// RtcpTypeXr wraps GST_RTCP_TYPE_XR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_TYPE_XR
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_TYPE_XR
 	RtcpTypeXr RTCPType = 207
 )
 
@@ -479,41 +479,41 @@ func (e RTCPType) String() string {
 
 // RTCPXRType wraps GstRTCPXRType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTCPXRType
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GstRTCPXRType
 type RTCPXRType C.int
 
 const (
 	// RtcpXrTypeInvalid wraps GST_RTCP_XR_TYPE_INVALID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_INVALID
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_XR_TYPE_INVALID
 	RtcpXrTypeInvalid RTCPXRType = -1
 	// RtcpXrTypeLrle wraps GST_RTCP_XR_TYPE_LRLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_LRLE
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_XR_TYPE_LRLE
 	RtcpXrTypeLrle RTCPXRType = 1
 	// RtcpXrTypeDrle wraps GST_RTCP_XR_TYPE_DRLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_DRLE
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_XR_TYPE_DRLE
 	RtcpXrTypeDrle RTCPXRType = 2
 	// RtcpXrTypePrt wraps GST_RTCP_XR_TYPE_PRT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_PRT
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_XR_TYPE_PRT
 	RtcpXrTypePrt RTCPXRType = 3
 	// RtcpXrTypeRrt wraps GST_RTCP_XR_TYPE_RRT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_RRT
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_XR_TYPE_RRT
 	RtcpXrTypeRrt RTCPXRType = 4
 	// RtcpXrTypeDlrr wraps GST_RTCP_XR_TYPE_DLRR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_DLRR
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_XR_TYPE_DLRR
 	RtcpXrTypeDlrr RTCPXRType = 5
 	// RtcpXrTypeSsumm wraps GST_RTCP_XR_TYPE_SSUMM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_SSUMM
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_XR_TYPE_SSUMM
 	RtcpXrTypeSsumm RTCPXRType = 6
 	// RtcpXrTypeVoipMetrics wraps GST_RTCP_XR_TYPE_VOIP_METRICS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTCP_XR_TYPE_VOIP_METRICS
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtcpbuffer.html#GST_RTCP_XR_TYPE_VOIP_METRICS
 	RtcpXrTypeVoipMetrics RTCPXRType = 7
 )
 
@@ -547,113 +547,113 @@ func (e RTCPXRType) String() string {
 
 // RTPPayload wraps GstRTPPayload
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPPayload
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GstRTPPayload
 type RTPPayload C.int
 
 const (
 	// RtpPayloadPcmu wraps GST_RTP_PAYLOAD_PCMU
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_PCMU
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_PCMU
 	RtpPayloadPcmu RTPPayload = 0
 	// RtpPayload1016 wraps GST_RTP_PAYLOAD_1016
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_1016
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_1016
 	RtpPayload1016 RTPPayload = 1
 	// RtpPayloadG721 wraps GST_RTP_PAYLOAD_G721
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G721
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_G721
 	RtpPayloadG721 RTPPayload = 2
 	// RtpPayloadGsm wraps GST_RTP_PAYLOAD_GSM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_GSM
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_GSM
 	RtpPayloadGsm RTPPayload = 3
 	// RtpPayloadG723 wraps GST_RTP_PAYLOAD_G723
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G723
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_G723
 	RtpPayloadG723 RTPPayload = 4
 	// RtpPayloadDvi48000 wraps GST_RTP_PAYLOAD_DVI4_8000
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_DVI4_8000
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_DVI4_8000
 	RtpPayloadDvi48000 RTPPayload = 5
 	// RtpPayloadDvi416000 wraps GST_RTP_PAYLOAD_DVI4_16000
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_DVI4_16000
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_DVI4_16000
 	RtpPayloadDvi416000 RTPPayload = 6
 	// RtpPayloadLpc wraps GST_RTP_PAYLOAD_LPC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_LPC
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_LPC
 	RtpPayloadLpc RTPPayload = 7
 	// RtpPayloadPcma wraps GST_RTP_PAYLOAD_PCMA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_PCMA
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_PCMA
 	RtpPayloadPcma RTPPayload = 8
 	// RtpPayloadG722 wraps GST_RTP_PAYLOAD_G722
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G722
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_G722
 	RtpPayloadG722 RTPPayload = 9
 	// RtpPayloadL16Stereo wraps GST_RTP_PAYLOAD_L16_STEREO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_L16_STEREO
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_L16_STEREO
 	RtpPayloadL16Stereo RTPPayload = 10
 	// RtpPayloadL16Mono wraps GST_RTP_PAYLOAD_L16_MONO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_L16_MONO
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_L16_MONO
 	RtpPayloadL16Mono RTPPayload = 11
 	// RtpPayloadQcelp wraps GST_RTP_PAYLOAD_QCELP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_QCELP
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_QCELP
 	RtpPayloadQcelp RTPPayload = 12
 	// RtpPayloadCn wraps GST_RTP_PAYLOAD_CN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_CN
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_CN
 	RtpPayloadCn RTPPayload = 13
 	// RtpPayloadMpa wraps GST_RTP_PAYLOAD_MPA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_MPA
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_MPA
 	RtpPayloadMpa RTPPayload = 14
 	// RtpPayloadG728 wraps GST_RTP_PAYLOAD_G728
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G728
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_G728
 	RtpPayloadG728 RTPPayload = 15
 	// RtpPayloadDvi411025 wraps GST_RTP_PAYLOAD_DVI4_11025
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_DVI4_11025
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_DVI4_11025
 	RtpPayloadDvi411025 RTPPayload = 16
 	// RtpPayloadDvi422050 wraps GST_RTP_PAYLOAD_DVI4_22050
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_DVI4_22050
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_DVI4_22050
 	RtpPayloadDvi422050 RTPPayload = 17
 	// RtpPayloadG729 wraps GST_RTP_PAYLOAD_G729
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_G729
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_G729
 	RtpPayloadG729 RTPPayload = 18
 	// RtpPayloadCellb wraps GST_RTP_PAYLOAD_CELLB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_CELLB
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_CELLB
 	RtpPayloadCellb RTPPayload = 25
 	// RtpPayloadJpeg wraps GST_RTP_PAYLOAD_JPEG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_JPEG
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_JPEG
 	RtpPayloadJpeg RTPPayload = 26
 	// RtpPayloadNv wraps GST_RTP_PAYLOAD_NV
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_NV
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_NV
 	RtpPayloadNv RTPPayload = 28
 	// RtpPayloadH261 wraps GST_RTP_PAYLOAD_H261
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_H261
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_H261
 	RtpPayloadH261 RTPPayload = 31
 	// RtpPayloadMpv wraps GST_RTP_PAYLOAD_MPV
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_MPV
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_MPV
 	RtpPayloadMpv RTPPayload = 32
 	// RtpPayloadMp2t wraps GST_RTP_PAYLOAD_MP2T
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_MP2T
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_MP2T
 	RtpPayloadMp2t RTPPayload = 33
 	// RtpPayloadH263 wraps GST_RTP_PAYLOAD_H263
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PAYLOAD_H263
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtppayloads.html#GST_RTP_PAYLOAD_H263
 	RtpPayloadH263 RTPPayload = 34
 )
 
@@ -705,29 +705,29 @@ func (e RTPPayload) String() string {
 
 // RTPProfile wraps GstRTPProfile
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPProfile
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpdefs.html#GstRTPProfile
 type RTPProfile C.int
 
 const (
 	// RtpProfileUnknown wraps GST_RTP_PROFILE_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpdefs.html#GST_RTP_PROFILE_UNKNOWN
 	RtpProfileUnknown RTPProfile = 0
 	// RtpProfileAvp wraps GST_RTP_PROFILE_AVP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_AVP
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpdefs.html#GST_RTP_PROFILE_AVP
 	RtpProfileAvp RTPProfile = 1
 	// RtpProfileSavp wraps GST_RTP_PROFILE_SAVP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_SAVP
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpdefs.html#GST_RTP_PROFILE_SAVP
 	RtpProfileSavp RTPProfile = 2
 	// RtpProfileAvpf wraps GST_RTP_PROFILE_AVPF
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_AVPF
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpdefs.html#GST_RTP_PROFILE_AVPF
 	RtpProfileAvpf RTPProfile = 3
 	// RtpProfileSavpf wraps GST_RTP_PROFILE_SAVPF
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_PROFILE_SAVPF
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpdefs.html#GST_RTP_PROFILE_SAVPF
 	RtpProfileSavpf RTPProfile = 4
 )
 
@@ -758,21 +758,21 @@ func (e RTPProfile) String() string {
 
 // RTPBufferFlags wraps GstRTPBufferFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPBufferFlags
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#GstRTPBufferFlags
 type RTPBufferFlags C.gint
 
 const (
 	// RtpBufferFlagRetransmission wraps GST_RTP_BUFFER_FLAG_RETRANSMISSION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_FLAG_RETRANSMISSION
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#GST_RTP_BUFFER_FLAG_RETRANSMISSION
 	RtpBufferFlagRetransmission RTPBufferFlags = 1048576
 	// RtpBufferFlagRedundant wraps GST_RTP_BUFFER_FLAG_REDUNDANT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_FLAG_REDUNDANT
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#GST_RTP_BUFFER_FLAG_REDUNDANT
 	RtpBufferFlagRedundant RTPBufferFlags = 2097152
 	// RtpBufferFlagLast wraps GST_RTP_BUFFER_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#GST_RTP_BUFFER_FLAG_LAST
 	RtpBufferFlagLast RTPBufferFlags = 268435456
 )
 
@@ -814,17 +814,17 @@ func (f RTPBufferFlags) String() string {
 
 // RTPBufferMapFlags wraps GstRTPBufferMapFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPBufferMapFlags
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#GstRTPBufferMapFlags
 type RTPBufferMapFlags C.gint
 
 const (
 	// RtpBufferMapFlagSkipPadding wraps GST_RTP_BUFFER_MAP_FLAG_SKIP_PADDING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_MAP_FLAG_SKIP_PADDING
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#GST_RTP_BUFFER_MAP_FLAG_SKIP_PADDING
 	RtpBufferMapFlagSkipPadding RTPBufferMapFlags = 65536
 	// RtpBufferMapFlagLast wraps GST_RTP_BUFFER_MAP_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_BUFFER_MAP_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbuffer.html#GST_RTP_BUFFER_MAP_FLAG_LAST
 	RtpBufferMapFlagLast RTPBufferMapFlags = 16777216
 )
 
@@ -863,17 +863,17 @@ func (f RTPBufferMapFlags) String() string {
 
 // RTPHeaderExtensionDirection wraps GstRTPHeaderExtensionDirection
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPHeaderExtensionDirection
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GstRTPHeaderExtensionDirection
 type RTPHeaderExtensionDirection C.gint
 
 const (
 	// RtpHeaderExtensionDirectionInactive wraps GST_RTP_HEADER_EXTENSION_DIRECTION_INACTIVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_DIRECTION_INACTIVE
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GST_RTP_HEADER_EXTENSION_DIRECTION_INACTIVE
 	RtpHeaderExtensionDirectionInactive RTPHeaderExtensionDirection = 0
 	// RtpHeaderExtensionDirectionSendonly wraps GST_RTP_HEADER_EXTENSION_DIRECTION_SENDONLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_DIRECTION_SENDONLY
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GST_RTP_HEADER_EXTENSION_DIRECTION_SENDONLY
 	RtpHeaderExtensionDirectionSendonly RTPHeaderExtensionDirection = 1
 	// RtpHeaderExtensionDirectionRecvonly wraps GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY
 	// 
@@ -881,11 +881,11 @@ const (
 	RtpHeaderExtensionDirectionRecvonly RTPHeaderExtensionDirection = 2
 	// RtpHeaderExtensionDirectionSendrecv wraps GST_RTP_HEADER_EXTENSION_DIRECTION_SENDRECV
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_DIRECTION_SENDRECV
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GST_RTP_HEADER_EXTENSION_DIRECTION_SENDRECV
 	RtpHeaderExtensionDirectionSendrecv RTPHeaderExtensionDirection = 3
 	// RtpHeaderExtensionDirectionInherited wraps GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED
 	RtpHeaderExtensionDirectionInherited RTPHeaderExtensionDirection = 4
 )
 
@@ -933,17 +933,17 @@ func (f RTPHeaderExtensionDirection) String() string {
 
 // RTPHeaderExtensionFlags wraps GstRTPHeaderExtensionFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp#GstRTPHeaderExtensionFlags
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GstRTPHeaderExtensionFlags
 type RTPHeaderExtensionFlags C.gint
 
 const (
 	// RtpHeaderExtensionOneByte wraps GST_RTP_HEADER_EXTENSION_ONE_BYTE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_ONE_BYTE
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GST_RTP_HEADER_EXTENSION_ONE_BYTE
 	RtpHeaderExtensionOneByte RTPHeaderExtensionFlags = 1
 	// RtpHeaderExtensionTwoByte wraps GST_RTP_HEADER_EXTENSION_TWO_BYTE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp#GST_RTP_HEADER_EXTENSION_TWO_BYTE
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtphdrext.html#GST_RTP_HEADER_EXTENSION_TWO_BYTE
 	RtpHeaderExtensionTwoByte RTPHeaderExtensionFlags = 2
 )
 
@@ -1201,15 +1201,15 @@ type RTPBaseDepayload interface {
 	SetSourceInfoEnabled(bool)
 	// EmitAddExtension emits the "add-extension" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html
 	EmitAddExtension(RTPHeaderExtension)
 	// EmitClearExtensions emits the "clear-extensions" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html
 	EmitClearExtensions()
 	// ConnectRequestExtension connects the provided callback to the "request-extension" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html
 	ConnectRequestExtension(func(RTPBaseDepayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -1458,21 +1458,21 @@ func (depayload *RTPBaseDepayloadInstance) SetSourceInfoEnabled(enable bool) {
 
 // EmitAddExtension emits the "add-extension" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html
 func (o *RTPBaseDepayloadInstance) EmitAddExtension(arg0 RTPHeaderExtension) {
 	o.Emit("add-extension", arg0)
 }
 
 // EmitClearExtensions emits the "clear-extensions" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html
 func (o *RTPBaseDepayloadInstance) EmitClearExtensions() {
 	o.Emit("clear-extensions")
 }
 
 // ConnectRequestExtension connects the provided callback to the "request-extension" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasedepayload.html
 func (o *RTPBaseDepayloadInstance) ConnectRequestExtension(fn func(RTPBaseDepayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle {
 	return o.Connect("request-extension", fn)
 }
@@ -1839,15 +1839,15 @@ type RTPBasePayload interface {
 	SetSourceInfoEnabled(bool)
 	// EmitAddExtension emits the "add-extension" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html
 	EmitAddExtension(RTPHeaderExtension)
 	// EmitClearExtensions emits the "clear-extensions" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html
 	EmitClearExtensions()
 	// ConnectRequestExtension connects the provided callback to the "request-extension" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/rtp
+	// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html
 	ConnectRequestExtension(func(RTPBasePayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -2153,21 +2153,21 @@ func (payload *RTPBasePayloadInstance) SetSourceInfoEnabled(enable bool) {
 
 // EmitAddExtension emits the "add-extension" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html
 func (o *RTPBasePayloadInstance) EmitAddExtension(arg0 RTPHeaderExtension) {
 	o.Emit("add-extension", arg0)
 }
 
 // EmitClearExtensions emits the "clear-extensions" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html
 func (o *RTPBasePayloadInstance) EmitClearExtensions() {
 	o.Emit("clear-extensions")
 }
 
 // ConnectRequestExtension connects the provided callback to the "request-extension" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/rtp
+// see also https://gstreamer.freedesktop.org/documentation/rtp/gstrtpbasepayload.html
 func (o *RTPBasePayloadInstance) ConnectRequestExtension(fn func(RTPBasePayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle {
 	return o.Connect("request-extension", fn)
 }

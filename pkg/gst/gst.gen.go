@@ -707,25 +707,25 @@ type ClockTimeDiff = int64
 type ElementFactoryListType = uint64
 // BufferingMode wraps GstBufferingMode
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstBufferingMode
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GstBufferingMode
 type BufferingMode C.int
 
 const (
 	// BufferingStream wraps GST_BUFFERING_STREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFERING_STREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_BUFFERING_STREAM
 	BufferingStream BufferingMode = 0
 	// BufferingDownload wraps GST_BUFFERING_DOWNLOAD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFERING_DOWNLOAD
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_BUFFERING_DOWNLOAD
 	BufferingDownload BufferingMode = 1
 	// BufferingTimeshift wraps GST_BUFFERING_TIMESHIFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFERING_TIMESHIFT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_BUFFERING_TIMESHIFT
 	BufferingTimeshift BufferingMode = 2
 	// BufferingLive wraps GST_BUFFERING_LIVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFERING_LIVE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_BUFFERING_LIVE
 	BufferingLive BufferingMode = 3
 )
 
@@ -755,21 +755,21 @@ func (e BufferingMode) String() string {
 
 // BusSyncReply wraps GstBusSyncReply
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstBusSyncReply
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#GstBusSyncReply
 type BusSyncReply C.int
 
 const (
 	// BusDrop wraps GST_BUS_DROP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUS_DROP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#GST_BUS_DROP
 	BusDrop BusSyncReply = 0
 	// BusPass wraps GST_BUS_PASS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUS_PASS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#GST_BUS_PASS
 	BusPass BusSyncReply = 1
 	// BusAsync wraps GST_BUS_ASYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUS_ASYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#GST_BUS_ASYNC
 	BusAsync BusSyncReply = 2
 )
 
@@ -798,17 +798,17 @@ func (e BusSyncReply) String() string {
 
 // CapsIntersectMode wraps GstCapsIntersectMode
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstCapsIntersectMode
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstcaps.html#GstCapsIntersectMode
 type CapsIntersectMode C.int
 
 const (
 	// CapsIntersectZigZag wraps GST_CAPS_INTERSECT_ZIG_ZAG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CAPS_INTERSECT_ZIG_ZAG
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstcaps.html#GST_CAPS_INTERSECT_ZIG_ZAG
 	CapsIntersectZigZag CapsIntersectMode = 0
 	// CapsIntersectFirst wraps GST_CAPS_INTERSECT_FIRST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CAPS_INTERSECT_FIRST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstcaps.html#GST_CAPS_INTERSECT_FIRST
 	CapsIntersectFirst CapsIntersectMode = 1
 )
 
@@ -836,17 +836,17 @@ func (e CapsIntersectMode) String() string {
 
 // ClockEntryType wraps GstClockEntryType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstClockEntryType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GstClockEntryType
 type ClockEntryType C.int
 
 const (
 	// ClockEntrySingle wraps GST_CLOCK_ENTRY_SINGLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_ENTRY_SINGLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_ENTRY_SINGLE
 	ClockEntrySingle ClockEntryType = 0
 	// ClockEntryPeriodic wraps GST_CLOCK_ENTRY_PERIODIC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_ENTRY_PERIODIC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_ENTRY_PERIODIC
 	ClockEntryPeriodic ClockEntryType = 1
 )
 
@@ -874,41 +874,41 @@ func (e ClockEntryType) String() string {
 
 // ClockReturn wraps GstClockReturn
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstClockReturn
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GstClockReturn
 type ClockReturn C.int
 
 const (
 	// ClockOK wraps GST_CLOCK_OK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_OK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_OK
 	ClockOK ClockReturn = 0
 	// ClockEarly wraps GST_CLOCK_EARLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_EARLY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_EARLY
 	ClockEarly ClockReturn = 1
 	// ClockUnscheduled wraps GST_CLOCK_UNSCHEDULED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_UNSCHEDULED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_UNSCHEDULED
 	ClockUnscheduled ClockReturn = 2
 	// ClockBusy wraps GST_CLOCK_BUSY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_BUSY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_BUSY
 	ClockBusy ClockReturn = 3
 	// ClockBadtime wraps GST_CLOCK_BADTIME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_BADTIME
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_BADTIME
 	ClockBadtime ClockReturn = 4
 	// ClockError wraps GST_CLOCK_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_ERROR
 	ClockError ClockReturn = 5
 	// ClockUnsupported wraps GST_CLOCK_UNSUPPORTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_UNSUPPORTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_UNSUPPORTED
 	ClockUnsupported ClockReturn = 6
 	// ClockDone wraps GST_CLOCK_DONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_DONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_DONE
 	ClockDone ClockReturn = 7
 )
 
@@ -942,25 +942,25 @@ func (e ClockReturn) String() string {
 
 // ClockType wraps GstClockType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstClockType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsystemclock.html#GstClockType
 type ClockType C.int
 
 const (
 	// ClockTypeRealtime wraps GST_CLOCK_TYPE_REALTIME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_TYPE_REALTIME
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsystemclock.html#GST_CLOCK_TYPE_REALTIME
 	ClockTypeRealtime ClockType = 0
 	// ClockTypeMonotonic wraps GST_CLOCK_TYPE_MONOTONIC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_TYPE_MONOTONIC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsystemclock.html#GST_CLOCK_TYPE_MONOTONIC
 	ClockTypeMonotonic ClockType = 1
 	// ClockTypeOther wraps GST_CLOCK_TYPE_OTHER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_TYPE_OTHER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsystemclock.html#GST_CLOCK_TYPE_OTHER
 	ClockTypeOther ClockType = 2
 	// ClockTypeTai wraps GST_CLOCK_TYPE_TAI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_TYPE_TAI
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsystemclock.html#GST_CLOCK_TYPE_TAI
 	ClockTypeTai ClockType = 3
 )
 
@@ -990,69 +990,69 @@ func (e ClockType) String() string {
 
 // CoreError wraps GstCoreError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstCoreError
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GstCoreError
 type CoreError C.int
 
 const (
 	// CoreErrorFailed wraps GST_CORE_ERROR_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_FAILED
 	CoreErrorFailed CoreError = 1
 	// CoreErrorTooLazy wraps GST_CORE_ERROR_TOO_LAZY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_TOO_LAZY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_TOO_LAZY
 	CoreErrorTooLazy CoreError = 2
 	// CoreErrorNotImplemented wraps GST_CORE_ERROR_NOT_IMPLEMENTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_NOT_IMPLEMENTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_NOT_IMPLEMENTED
 	CoreErrorNotImplemented CoreError = 3
 	// CoreErrorStateChange wraps GST_CORE_ERROR_STATE_CHANGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_STATE_CHANGE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_STATE_CHANGE
 	CoreErrorStateChange CoreError = 4
 	// CoreErrorPad wraps GST_CORE_ERROR_PAD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_PAD
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_PAD
 	CoreErrorPad CoreError = 5
 	// CoreErrorThread wraps GST_CORE_ERROR_THREAD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_THREAD
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_THREAD
 	CoreErrorThread CoreError = 6
 	// CoreErrorNegotiation wraps GST_CORE_ERROR_NEGOTIATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_NEGOTIATION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_NEGOTIATION
 	CoreErrorNegotiation CoreError = 7
 	// CoreErrorEvent wraps GST_CORE_ERROR_EVENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_EVENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_EVENT
 	CoreErrorEvent CoreError = 8
 	// CoreErrorSeek wraps GST_CORE_ERROR_SEEK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_SEEK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_SEEK
 	CoreErrorSeek CoreError = 9
 	// CoreErrorCaps wraps GST_CORE_ERROR_CAPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_CAPS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_CAPS
 	CoreErrorCaps CoreError = 10
 	// CoreErrorTag wraps GST_CORE_ERROR_TAG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_TAG
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_TAG
 	CoreErrorTag CoreError = 11
 	// CoreErrorMissingPlugin wraps GST_CORE_ERROR_MISSING_PLUGIN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_MISSING_PLUGIN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_MISSING_PLUGIN
 	CoreErrorMissingPlugin CoreError = 12
 	// CoreErrorClock wraps GST_CORE_ERROR_CLOCK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_CLOCK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_CLOCK
 	CoreErrorClock CoreError = 13
 	// CoreErrorDisabled wraps GST_CORE_ERROR_DISABLED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_DISABLED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_DISABLED
 	CoreErrorDisabled CoreError = 14
 	// CoreErrorNumErrors wraps GST_CORE_ERROR_NUM_ERRORS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CORE_ERROR_NUM_ERRORS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_CORE_ERROR_NUM_ERRORS
 	CoreErrorNumErrors CoreError = 15
 )
 
@@ -1093,7 +1093,7 @@ func (e CoreError) String() string {
 
 // CoreErrorQuark wraps gst_core_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_core_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#gst_core_error_quark
 func CoreErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -1114,15 +1114,15 @@ type DebugColorMode C.int
 const (
 	// DebugColorModeOff wraps GST_DEBUG_COLOR_MODE_OFF
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_COLOR_MODE_OFF
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_COLOR_MODE_OFF
 	DebugColorModeOff DebugColorMode = 0
 	// DebugColorModeOn wraps GST_DEBUG_COLOR_MODE_ON
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_COLOR_MODE_ON
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_COLOR_MODE_ON
 	DebugColorModeOn DebugColorMode = 1
 	// DebugColorModeUnix wraps GST_DEBUG_COLOR_MODE_UNIX
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_COLOR_MODE_UNIX
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_COLOR_MODE_UNIX
 	DebugColorModeUnix DebugColorMode = 2
 )
 
@@ -1151,49 +1151,49 @@ func (e DebugColorMode) String() string {
 
 // DebugLevel wraps GstDebugLevel
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstDebugLevel
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GstDebugLevel
 type DebugLevel C.int
 
 const (
 	// LevelNone wraps GST_LEVEL_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_NONE
 	LevelNone DebugLevel = 0
 	// LevelError wraps GST_LEVEL_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_ERROR
 	LevelError DebugLevel = 1
 	// LevelWarning wraps GST_LEVEL_WARNING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_WARNING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_WARNING
 	LevelWarning DebugLevel = 2
 	// LevelFixme wraps GST_LEVEL_FIXME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_FIXME
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_FIXME
 	LevelFixme DebugLevel = 3
 	// LevelInfo wraps GST_LEVEL_INFO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_INFO
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_INFO
 	LevelInfo DebugLevel = 4
 	// LevelDebug wraps GST_LEVEL_DEBUG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_DEBUG
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_DEBUG
 	LevelDebug DebugLevel = 5
 	// LevelLog wraps GST_LEVEL_LOG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_LOG
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_LOG
 	LevelLog DebugLevel = 6
 	// LevelTrace wraps GST_LEVEL_TRACE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_TRACE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_TRACE
 	LevelTrace DebugLevel = 7
 	// LevelMemdump wraps GST_LEVEL_MEMDUMP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_MEMDUMP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_MEMDUMP
 	LevelMemdump DebugLevel = 9
 	// LevelCount wraps GST_LEVEL_COUNT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LEVEL_COUNT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_LEVEL_COUNT
 	LevelCount DebugLevel = 10
 )
 
@@ -1229,7 +1229,7 @@ func (e DebugLevel) String() string {
 
 // DebugLevelGetName wraps gst_debug_level_get_name
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_debug_level_get_name
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#gst_debug_level_get_name
 func DebugLevelGetName(level DebugLevel) string {
 	var carg1 C.GstDebugLevel // in, none, casted
 	var cret  *C.gchar        // return, none, string
@@ -1248,137 +1248,137 @@ func DebugLevelGetName(level DebugLevel) string {
 
 // EventType wraps GstEventType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstEventType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GstEventType
 type EventType C.int
 
 const (
 	// EventUnknown wraps GST_EVENT_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_UNKNOWN
 	EventUnknown EventType = 0
 	// EventFlushStart wraps GST_EVENT_FLUSH_START
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_FLUSH_START
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_FLUSH_START
 	EventFlushStart EventType = 2563
 	// EventFlushStop wraps GST_EVENT_FLUSH_STOP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_FLUSH_STOP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_FLUSH_STOP
 	EventFlushStop EventType = 5127
 	// EventStreamStart wraps GST_EVENT_STREAM_START
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_STREAM_START
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_STREAM_START
 	EventStreamStart EventType = 10254
 	// EventCaps wraps GST_EVENT_CAPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_CAPS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_CAPS
 	EventCaps EventType = 12814
 	// EventSegment wraps GST_EVENT_SEGMENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_SEGMENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_SEGMENT
 	EventSegment EventType = 17934
 	// EventStreamCollection wraps GST_EVENT_STREAM_COLLECTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_STREAM_COLLECTION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_STREAM_COLLECTION
 	EventStreamCollection EventType = 19230
 	// EventTag wraps GST_EVENT_TAG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_TAG
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_TAG
 	EventTag EventType = 20510
 	// EventBuffersize wraps GST_EVENT_BUFFERSIZE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_BUFFERSIZE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_BUFFERSIZE
 	EventBuffersize EventType = 23054
 	// EventSinkMessage wraps GST_EVENT_SINK_MESSAGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_SINK_MESSAGE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_SINK_MESSAGE
 	EventSinkMessage EventType = 25630
 	// EventStreamGroupDone wraps GST_EVENT_STREAM_GROUP_DONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_STREAM_GROUP_DONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_STREAM_GROUP_DONE
 	EventStreamGroupDone EventType = 26894
 	// EventEOS wraps GST_EVENT_EOS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_EOS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_EOS
 	EventEOS EventType = 28174
 	// EventToc wraps GST_EVENT_TOC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_TOC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_TOC
 	EventToc EventType = 30750
 	// EventProtection wraps GST_EVENT_PROTECTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_PROTECTION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_PROTECTION
 	EventProtection EventType = 33310
 	// EventSegmentDone wraps GST_EVENT_SEGMENT_DONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_SEGMENT_DONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_SEGMENT_DONE
 	EventSegmentDone EventType = 38406
 	// EventGap wraps GST_EVENT_GAP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_GAP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_GAP
 	EventGap EventType = 40966
 	// EventInstantRateChange wraps GST_EVENT_INSTANT_RATE_CHANGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_INSTANT_RATE_CHANGE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_INSTANT_RATE_CHANGE
 	EventInstantRateChange EventType = 46090
 	// EventQos wraps GST_EVENT_QOS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_QOS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_QOS
 	EventQos EventType = 48641
 	// EventSeek wraps GST_EVENT_SEEK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_SEEK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_SEEK
 	EventSeek EventType = 51201
 	// EventNavigation wraps GST_EVENT_NAVIGATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_NAVIGATION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_NAVIGATION
 	EventNavigation EventType = 53761
 	// EventLatency wraps GST_EVENT_LATENCY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_LATENCY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_LATENCY
 	EventLatency EventType = 56321
 	// EventStep wraps GST_EVENT_STEP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_STEP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_STEP
 	EventStep EventType = 58881
 	// EventReconfigure wraps GST_EVENT_RECONFIGURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_RECONFIGURE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_RECONFIGURE
 	EventReconfigure EventType = 61441
 	// EventTocSelect wraps GST_EVENT_TOC_SELECT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_TOC_SELECT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_TOC_SELECT
 	EventTocSelect EventType = 64001
 	// EventSelectStreams wraps GST_EVENT_SELECT_STREAMS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_SELECT_STREAMS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_SELECT_STREAMS
 	EventSelectStreams EventType = 66561
 	// EventInstantRateSyncTime wraps GST_EVENT_INSTANT_RATE_SYNC_TIME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_INSTANT_RATE_SYNC_TIME
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_INSTANT_RATE_SYNC_TIME
 	EventInstantRateSyncTime EventType = 66817
 	// EventCustomUpstream wraps GST_EVENT_CUSTOM_UPSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_CUSTOM_UPSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_CUSTOM_UPSTREAM
 	EventCustomUpstream EventType = 69121
 	// EventCustomDownstream wraps GST_EVENT_CUSTOM_DOWNSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_CUSTOM_DOWNSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_CUSTOM_DOWNSTREAM
 	EventCustomDownstream EventType = 71686
 	// EventCustomDownstreamOob wraps GST_EVENT_CUSTOM_DOWNSTREAM_OOB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_CUSTOM_DOWNSTREAM_OOB
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_CUSTOM_DOWNSTREAM_OOB
 	EventCustomDownstreamOob EventType = 74242
 	// EventCustomDownstreamSticky wraps GST_EVENT_CUSTOM_DOWNSTREAM_STICKY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_CUSTOM_DOWNSTREAM_STICKY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_CUSTOM_DOWNSTREAM_STICKY
 	EventCustomDownstreamSticky EventType = 76830
 	// EventCustomBoth wraps GST_EVENT_CUSTOM_BOTH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_CUSTOM_BOTH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_CUSTOM_BOTH
 	EventCustomBoth EventType = 79367
 	// EventCustomBothOob wraps GST_EVENT_CUSTOM_BOTH_OOB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_CUSTOM_BOTH_OOB
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_CUSTOM_BOTH_OOB
 	EventCustomBothOob EventType = 81923
 )
 
@@ -1436,7 +1436,7 @@ func (e EventType) String() string {
 
 // EventTypeGetFlags wraps gst_event_type_get_flags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_event_type_get_flags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_type_get_flags
 func EventTypeGetFlags(typ EventType) EventTypeFlags {
 	var carg1 C.GstEventType      // in, none, casted
 	var cret  C.GstEventTypeFlags // return, none, casted
@@ -1455,7 +1455,7 @@ func EventTypeGetFlags(typ EventType) EventTypeFlags {
 
 // EventTypeGetName wraps gst_event_type_get_name
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_event_type_get_name
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_type_get_name
 func EventTypeGetName(typ EventType) string {
 	var carg1 C.GstEventType // in, none, casted
 	var cret  *C.gchar       // return, none, string
@@ -1474,7 +1474,7 @@ func EventTypeGetName(typ EventType) string {
 
 // EventTypeToQuark wraps gst_event_type_to_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_event_type_to_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_type_to_quark
 func EventTypeToQuark(typ EventType) glib.Quark {
 	var carg1 C.GstEventType // in, none, casted
 	var cret  C.GQuark       // return, none, casted, alias
@@ -1493,7 +1493,7 @@ func EventTypeToQuark(typ EventType) glib.Quark {
 
 // EventTypeToStickyOrdering wraps gst_event_type_to_sticky_ordering
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_event_type_to_sticky_ordering
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#gst_event_type_to_sticky_ordering
 func EventTypeToStickyOrdering(typ EventType) uint {
 	var carg1 C.GstEventType // in, none, casted
 	var cret  C.guint        // return, none, casted
@@ -1512,61 +1512,61 @@ func EventTypeToStickyOrdering(typ EventType) uint {
 
 // FlowReturn wraps GstFlowReturn
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstFlowReturn
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GstFlowReturn
 type FlowReturn C.int
 
 const (
 	// FlowCustomSuccess2 wraps GST_FLOW_CUSTOM_SUCCESS_2
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_CUSTOM_SUCCESS_2
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_CUSTOM_SUCCESS_2
 	FlowCustomSuccess2 FlowReturn = 102
 	// FlowCustomSuccess1 wraps GST_FLOW_CUSTOM_SUCCESS_1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_CUSTOM_SUCCESS_1
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_CUSTOM_SUCCESS_1
 	FlowCustomSuccess1 FlowReturn = 101
 	// FlowCustomSuccess wraps GST_FLOW_CUSTOM_SUCCESS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_CUSTOM_SUCCESS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_CUSTOM_SUCCESS
 	FlowCustomSuccess FlowReturn = 100
 	// FlowOK wraps GST_FLOW_OK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_OK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_OK
 	FlowOK FlowReturn = 0
 	// FlowNotLinked wraps GST_FLOW_NOT_LINKED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_NOT_LINKED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_NOT_LINKED
 	FlowNotLinked FlowReturn = -1
 	// FlowFlushing wraps GST_FLOW_FLUSHING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_FLUSHING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_FLUSHING
 	FlowFlushing FlowReturn = -2
 	// FlowEOS wraps GST_FLOW_EOS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_EOS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_EOS
 	FlowEOS FlowReturn = -3
 	// FlowNotNegotiated wraps GST_FLOW_NOT_NEGOTIATED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_NOT_NEGOTIATED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_NOT_NEGOTIATED
 	FlowNotNegotiated FlowReturn = -4
 	// FlowError wraps GST_FLOW_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_ERROR
 	FlowError FlowReturn = -5
 	// FlowNotSupported wraps GST_FLOW_NOT_SUPPORTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_NOT_SUPPORTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_NOT_SUPPORTED
 	FlowNotSupported FlowReturn = -6
 	// FlowCustomError wraps GST_FLOW_CUSTOM_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_CUSTOM_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_CUSTOM_ERROR
 	FlowCustomError FlowReturn = -100
 	// FlowCustomError1 wraps GST_FLOW_CUSTOM_ERROR_1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_CUSTOM_ERROR_1
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_CUSTOM_ERROR_1
 	FlowCustomError1 FlowReturn = -101
 	// FlowCustomError2 wraps GST_FLOW_CUSTOM_ERROR_2
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FLOW_CUSTOM_ERROR_2
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_FLOW_CUSTOM_ERROR_2
 	FlowCustomError2 FlowReturn = -102
 )
 
@@ -1605,33 +1605,33 @@ func (e FlowReturn) String() string {
 
 // Format wraps GstFormat
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstFormat
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#GstFormat
 type Format C.int
 
 const (
 	// FormatUndefined wraps GST_FORMAT_UNDEFINED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FORMAT_UNDEFINED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#GST_FORMAT_UNDEFINED
 	FormatUndefined Format = 0
 	// FormatDefault wraps GST_FORMAT_DEFAULT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FORMAT_DEFAULT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#GST_FORMAT_DEFAULT
 	FormatDefault Format = 1
 	// FormatBytes wraps GST_FORMAT_BYTES
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FORMAT_BYTES
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#GST_FORMAT_BYTES
 	FormatBytes Format = 2
 	// FormatTime wraps GST_FORMAT_TIME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FORMAT_TIME
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#GST_FORMAT_TIME
 	FormatTime Format = 3
 	// FormatBuffers wraps GST_FORMAT_BUFFERS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FORMAT_BUFFERS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#GST_FORMAT_BUFFERS
 	FormatBuffers Format = 4
 	// FormatPercent wraps GST_FORMAT_PERCENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_FORMAT_PERCENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#GST_FORMAT_PERCENT
 	FormatPercent Format = 5
 )
 
@@ -1663,7 +1663,7 @@ func (e Format) String() string {
 
 // FormatGetByNick wraps gst_format_get_by_nick
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_format_get_by_nick
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#gst_format_get_by_nick
 func FormatGetByNick(nick string) Format {
 	var carg1 *C.gchar    // in, none, string
 	var cret  C.GstFormat // return, none, casted
@@ -1683,7 +1683,7 @@ func FormatGetByNick(nick string) Format {
 
 // FormatGetDetails wraps gst_format_get_details
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_format_get_details
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#gst_format_get_details
 func FormatGetDetails(format Format) *FormatDefinition {
 	var carg1 C.GstFormat            // in, none, casted
 	var cret  *C.GstFormatDefinition // return, none, converted, nullable
@@ -1704,7 +1704,7 @@ func FormatGetDetails(format Format) *FormatDefinition {
 
 // FormatGetName wraps gst_format_get_name
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_format_get_name
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#gst_format_get_name
 func FormatGetName(format Format) string {
 	var carg1 C.GstFormat // in, none, casted
 	var cret  *C.gchar    // return, none, string, nullable-string
@@ -1725,7 +1725,7 @@ func FormatGetName(format Format) string {
 
 // FormatIterateDefinitions wraps gst_format_iterate_definitions
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_format_iterate_definitions
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#gst_format_iterate_definitions
 func FormatIterateDefinitions() *Iterator {
 	var cret *C.GstIterator // return, full, converted
 
@@ -1740,7 +1740,7 @@ func FormatIterateDefinitions() *Iterator {
 
 // FormatRegister wraps gst_format_register
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_format_register
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#gst_format_register
 func FormatRegister(nick string, description string) Format {
 	var carg1 *C.gchar    // in, none, string
 	var carg2 *C.gchar    // in, none, string
@@ -1764,7 +1764,7 @@ func FormatRegister(nick string, description string) Format {
 
 // FormatToQuark wraps gst_format_to_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_format_to_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstformat.html#gst_format_to_quark
 func FormatToQuark(format Format) glib.Quark {
 	var carg1 C.GstFormat // in, none, casted
 	var cret  C.GQuark    // return, none, casted, alias
@@ -1783,21 +1783,21 @@ func FormatToQuark(format Format) glib.Quark {
 
 // IteratorItem wraps GstIteratorItem
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstIteratorItem
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstiterator.html#GstIteratorItem
 type IteratorItem C.int
 
 const (
 	// IteratorItemSkip wraps GST_ITERATOR_ITEM_SKIP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ITERATOR_ITEM_SKIP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstiterator.html#GST_ITERATOR_ITEM_SKIP
 	IteratorItemSkip IteratorItem = 0
 	// IteratorItemPass wraps GST_ITERATOR_ITEM_PASS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ITERATOR_ITEM_PASS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstiterator.html#GST_ITERATOR_ITEM_PASS
 	IteratorItemPass IteratorItem = 1
 	// IteratorItemEnd wraps GST_ITERATOR_ITEM_END
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ITERATOR_ITEM_END
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstiterator.html#GST_ITERATOR_ITEM_END
 	IteratorItemEnd IteratorItem = 2
 )
 
@@ -1826,25 +1826,25 @@ func (e IteratorItem) String() string {
 
 // IteratorResult wraps GstIteratorResult
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstIteratorResult
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstiterator.html#GstIteratorResult
 type IteratorResult C.int
 
 const (
 	// IteratorDone wraps GST_ITERATOR_DONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ITERATOR_DONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstiterator.html#GST_ITERATOR_DONE
 	IteratorDone IteratorResult = 0
 	// IteratorOK wraps GST_ITERATOR_OK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ITERATOR_OK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstiterator.html#GST_ITERATOR_OK
 	IteratorOK IteratorResult = 1
 	// IteratorResync wraps GST_ITERATOR_RESYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ITERATOR_RESYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstiterator.html#GST_ITERATOR_RESYNC
 	IteratorResync IteratorResult = 2
 	// IteratorError wraps GST_ITERATOR_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ITERATOR_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstiterator.html#GST_ITERATOR_ERROR
 	IteratorError IteratorResult = 3
 )
 
@@ -1874,37 +1874,37 @@ func (e IteratorResult) String() string {
 
 // LibraryError wraps GstLibraryError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstLibraryError
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GstLibraryError
 type LibraryError C.int
 
 const (
 	// LibraryErrorFailed wraps GST_LIBRARY_ERROR_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LIBRARY_ERROR_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_LIBRARY_ERROR_FAILED
 	LibraryErrorFailed LibraryError = 1
 	// LibraryErrorTooLazy wraps GST_LIBRARY_ERROR_TOO_LAZY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LIBRARY_ERROR_TOO_LAZY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_LIBRARY_ERROR_TOO_LAZY
 	LibraryErrorTooLazy LibraryError = 2
 	// LibraryErrorInit wraps GST_LIBRARY_ERROR_INIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LIBRARY_ERROR_INIT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_LIBRARY_ERROR_INIT
 	LibraryErrorInit LibraryError = 3
 	// LibraryErrorShutdown wraps GST_LIBRARY_ERROR_SHUTDOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LIBRARY_ERROR_SHUTDOWN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_LIBRARY_ERROR_SHUTDOWN
 	LibraryErrorShutdown LibraryError = 4
 	// LibraryErrorSettings wraps GST_LIBRARY_ERROR_SETTINGS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LIBRARY_ERROR_SETTINGS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_LIBRARY_ERROR_SETTINGS
 	LibraryErrorSettings LibraryError = 5
 	// LibraryErrorEncode wraps GST_LIBRARY_ERROR_ENCODE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LIBRARY_ERROR_ENCODE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_LIBRARY_ERROR_ENCODE
 	LibraryErrorEncode LibraryError = 6
 	// LibraryErrorNumErrors wraps GST_LIBRARY_ERROR_NUM_ERRORS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LIBRARY_ERROR_NUM_ERRORS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_LIBRARY_ERROR_NUM_ERRORS
 	LibraryErrorNumErrors LibraryError = 7
 )
 
@@ -1937,7 +1937,7 @@ func (e LibraryError) String() string {
 
 // LibraryErrorQuark wraps gst_library_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_library_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#gst_library_error_quark
 func LibraryErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -1952,21 +1952,21 @@ func LibraryErrorQuark() glib.Quark {
 
 // PadDirection wraps GstPadDirection
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPadDirection
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GstPadDirection
 type PadDirection C.int
 
 const (
 	// PadUnknown wraps GST_PAD_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_UNKNOWN
 	PadUnknown PadDirection = 0
 	// PadSrc wraps GST_PAD_SRC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_SRC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_SRC
 	PadSrc PadDirection = 1
 	// PadSink wraps GST_PAD_SINK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_SINK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_SINK
 	PadSink PadDirection = 2
 )
 
@@ -1995,37 +1995,37 @@ func (e PadDirection) String() string {
 
 // PadLinkReturn wraps GstPadLinkReturn
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPadLinkReturn
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GstPadLinkReturn
 type PadLinkReturn C.int
 
 const (
 	// PadLinkOK wraps GST_PAD_LINK_OK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_OK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_OK
 	PadLinkOK PadLinkReturn = 0
 	// PadLinkWrongHierarchy wraps GST_PAD_LINK_WRONG_HIERARCHY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_WRONG_HIERARCHY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_WRONG_HIERARCHY
 	PadLinkWrongHierarchy PadLinkReturn = -1
 	// PadLinkWasLinked wraps GST_PAD_LINK_WAS_LINKED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_WAS_LINKED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_WAS_LINKED
 	PadLinkWasLinked PadLinkReturn = -2
 	// PadLinkWrongDirection wraps GST_PAD_LINK_WRONG_DIRECTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_WRONG_DIRECTION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_WRONG_DIRECTION
 	PadLinkWrongDirection PadLinkReturn = -3
 	// PadLinkNoformat wraps GST_PAD_LINK_NOFORMAT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_NOFORMAT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_NOFORMAT
 	PadLinkNoformat PadLinkReturn = -4
 	// PadLinkNosched wraps GST_PAD_LINK_NOSCHED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_NOSCHED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_NOSCHED
 	PadLinkNosched PadLinkReturn = -5
 	// PadLinkRefused wraps GST_PAD_LINK_REFUSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_REFUSED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_REFUSED
 	PadLinkRefused PadLinkReturn = -6
 )
 
@@ -2058,21 +2058,21 @@ func (e PadLinkReturn) String() string {
 
 // PadMode wraps GstPadMode
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPadMode
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GstPadMode
 type PadMode C.int
 
 const (
 	// PadModeNone wraps GST_PAD_MODE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_MODE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_MODE_NONE
 	PadModeNone PadMode = 0
 	// PadModePush wraps GST_PAD_MODE_PUSH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_MODE_PUSH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_MODE_PUSH
 	PadModePush PadMode = 1
 	// PadModePull wraps GST_PAD_MODE_PULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_MODE_PULL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_MODE_PULL
 	PadModePull PadMode = 2
 )
 
@@ -2101,7 +2101,7 @@ func (e PadMode) String() string {
 
 // PadModeGetName wraps gst_pad_mode_get_name
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_pad_mode_get_name
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#gst_pad_mode_get_name
 func PadModeGetName(mode PadMode) string {
 	var carg1 C.GstPadMode // in, none, casted
 	var cret  *C.gchar     // return, none, string
@@ -2120,21 +2120,21 @@ func PadModeGetName(mode PadMode) string {
 
 // PadPresence wraps GstPadPresence
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPadPresence
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpadtemplate.html#GstPadPresence
 type PadPresence C.int
 
 const (
 	// PadAlways wraps GST_PAD_ALWAYS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_ALWAYS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpadtemplate.html#GST_PAD_ALWAYS
 	PadAlways PadPresence = 0
 	// PadSometimes wraps GST_PAD_SOMETIMES
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_SOMETIMES
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpadtemplate.html#GST_PAD_SOMETIMES
 	PadSometimes PadPresence = 1
 	// PadRequest wraps GST_PAD_REQUEST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_REQUEST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpadtemplate.html#GST_PAD_REQUEST
 	PadRequest PadPresence = 2
 )
 
@@ -2163,29 +2163,29 @@ func (e PadPresence) String() string {
 
 // PadProbeReturn wraps GstPadProbeReturn
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPadProbeReturn
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GstPadProbeReturn
 type PadProbeReturn C.int
 
 const (
 	// PadProbeDrop wraps GST_PAD_PROBE_DROP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_DROP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_DROP
 	PadProbeDrop PadProbeReturn = 0
 	// PadProbeOK wraps GST_PAD_PROBE_OK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_OK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_OK
 	PadProbeOK PadProbeReturn = 1
 	// PadProbeRemove wraps GST_PAD_PROBE_REMOVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_REMOVE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_REMOVE
 	PadProbeRemove PadProbeReturn = 2
 	// PadProbePass wraps GST_PAD_PROBE_PASS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_PASS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_PASS
 	PadProbePass PadProbeReturn = 3
 	// PadProbeHandled wraps GST_PAD_PROBE_HANDLED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_HANDLED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_HANDLED
 	PadProbeHandled PadProbeReturn = 4
 )
 
@@ -2216,41 +2216,41 @@ func (e PadProbeReturn) String() string {
 
 // ParseError wraps GstParseError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstParseError
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GstParseError
 type ParseError C.int
 
 const (
 	// ParseErrorSyntax wraps GST_PARSE_ERROR_SYNTAX
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_ERROR_SYNTAX
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_ERROR_SYNTAX
 	ParseErrorSyntax ParseError = 0
 	// ParseErrorNoSuchElement wraps GST_PARSE_ERROR_NO_SUCH_ELEMENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_ERROR_NO_SUCH_ELEMENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_ERROR_NO_SUCH_ELEMENT
 	ParseErrorNoSuchElement ParseError = 1
 	// ParseErrorNoSuchProperty wraps GST_PARSE_ERROR_NO_SUCH_PROPERTY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_ERROR_NO_SUCH_PROPERTY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_ERROR_NO_SUCH_PROPERTY
 	ParseErrorNoSuchProperty ParseError = 2
 	// ParseErrorLink wraps GST_PARSE_ERROR_LINK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_ERROR_LINK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_ERROR_LINK
 	ParseErrorLink ParseError = 3
 	// ParseErrorCouldNotSetProperty wraps GST_PARSE_ERROR_COULD_NOT_SET_PROPERTY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_ERROR_COULD_NOT_SET_PROPERTY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_ERROR_COULD_NOT_SET_PROPERTY
 	ParseErrorCouldNotSetProperty ParseError = 4
 	// ParseErrorEmptyBin wraps GST_PARSE_ERROR_EMPTY_BIN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_ERROR_EMPTY_BIN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_ERROR_EMPTY_BIN
 	ParseErrorEmptyBin ParseError = 5
 	// ParseErrorEmpty wraps GST_PARSE_ERROR_EMPTY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_ERROR_EMPTY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_ERROR_EMPTY
 	ParseErrorEmpty ParseError = 6
 	// ParseErrorDelayedLink wraps GST_PARSE_ERROR_DELAYED_LINK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_ERROR_DELAYED_LINK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_ERROR_DELAYED_LINK
 	ParseErrorDelayedLink ParseError = 7
 )
 
@@ -2284,7 +2284,7 @@ func (e ParseError) String() string {
 
 // ParseErrorQuark wraps gst_parse_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_parse_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#gst_parse_error_quark
 func ParseErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -2299,21 +2299,21 @@ func ParseErrorQuark() glib.Quark {
 
 // PluginError wraps GstPluginError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPluginError
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GstPluginError
 type PluginError C.int
 
 const (
 	// PluginErrorModule wraps GST_PLUGIN_ERROR_MODULE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_ERROR_MODULE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_ERROR_MODULE
 	PluginErrorModule PluginError = 0
 	// PluginErrorDependencies wraps GST_PLUGIN_ERROR_DEPENDENCIES
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_ERROR_DEPENDENCIES
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_ERROR_DEPENDENCIES
 	PluginErrorDependencies PluginError = 1
 	// PluginErrorNameMismatch wraps GST_PLUGIN_ERROR_NAME_MISMATCH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_ERROR_NAME_MISMATCH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_ERROR_NAME_MISMATCH
 	PluginErrorNameMismatch PluginError = 2
 )
 
@@ -2342,7 +2342,7 @@ func (e PluginError) String() string {
 
 // PluginErrorQuark wraps gst_plugin_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_plugin_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#gst_plugin_error_quark
 func PluginErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -2357,29 +2357,29 @@ func PluginErrorQuark() glib.Quark {
 
 // ProgressType wraps GstProgressType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstProgressType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GstProgressType
 type ProgressType C.int
 
 const (
 	// ProgressTypeStart wraps GST_PROGRESS_TYPE_START
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PROGRESS_TYPE_START
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_PROGRESS_TYPE_START
 	ProgressTypeStart ProgressType = 0
 	// ProgressTypeContinue wraps GST_PROGRESS_TYPE_CONTINUE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PROGRESS_TYPE_CONTINUE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_PROGRESS_TYPE_CONTINUE
 	ProgressTypeContinue ProgressType = 1
 	// ProgressTypeComplete wraps GST_PROGRESS_TYPE_COMPLETE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PROGRESS_TYPE_COMPLETE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_PROGRESS_TYPE_COMPLETE
 	ProgressTypeComplete ProgressType = 2
 	// ProgressTypeCanceled wraps GST_PROGRESS_TYPE_CANCELED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PROGRESS_TYPE_CANCELED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_PROGRESS_TYPE_CANCELED
 	ProgressTypeCanceled ProgressType = 3
 	// ProgressTypeError wraps GST_PROGRESS_TYPE_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PROGRESS_TYPE_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_PROGRESS_TYPE_ERROR
 	ProgressTypeError ProgressType = 4
 )
 
@@ -2410,25 +2410,25 @@ func (e ProgressType) String() string {
 
 // PromiseResult wraps GstPromiseResult
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPromiseResult
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpromise.html#GstPromiseResult
 type PromiseResult C.int
 
 const (
 	// PromiseResultPending wraps GST_PROMISE_RESULT_PENDING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PROMISE_RESULT_PENDING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpromise.html#GST_PROMISE_RESULT_PENDING
 	PromiseResultPending PromiseResult = 0
 	// PromiseResultInterrupted wraps GST_PROMISE_RESULT_INTERRUPTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PROMISE_RESULT_INTERRUPTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpromise.html#GST_PROMISE_RESULT_INTERRUPTED
 	PromiseResultInterrupted PromiseResult = 1
 	// PromiseResultReplied wraps GST_PROMISE_RESULT_REPLIED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PROMISE_RESULT_REPLIED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpromise.html#GST_PROMISE_RESULT_REPLIED
 	PromiseResultReplied PromiseResult = 2
 	// PromiseResultExpired wraps GST_PROMISE_RESULT_EXPIRED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PROMISE_RESULT_EXPIRED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpromise.html#GST_PROMISE_RESULT_EXPIRED
 	PromiseResultExpired PromiseResult = 3
 )
 
@@ -2458,21 +2458,21 @@ func (e PromiseResult) String() string {
 
 // QOSType wraps GstQOSType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstQOSType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GstQOSType
 type QOSType C.int
 
 const (
 	// QosTypeOverflow wraps GST_QOS_TYPE_OVERFLOW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QOS_TYPE_OVERFLOW
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_QOS_TYPE_OVERFLOW
 	QosTypeOverflow QOSType = 0
 	// QosTypeUnderflow wraps GST_QOS_TYPE_UNDERFLOW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QOS_TYPE_UNDERFLOW
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_QOS_TYPE_UNDERFLOW
 	QosTypeUnderflow QOSType = 1
 	// QosTypeThrottle wraps GST_QOS_TYPE_THROTTLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QOS_TYPE_THROTTLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_QOS_TYPE_THROTTLE
 	QosTypeThrottle QOSType = 2
 )
 
@@ -2501,93 +2501,93 @@ func (e QOSType) String() string {
 
 // QueryType wraps GstQueryType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstQueryType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GstQueryType
 type QueryType C.int
 
 const (
 	// QueryUnknown wraps GST_QUERY_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_UNKNOWN
 	QueryUnknown QueryType = 0
 	// QueryPosition wraps GST_QUERY_POSITION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_POSITION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_POSITION
 	QueryPosition QueryType = 2563
 	// QueryDuration wraps GST_QUERY_DURATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_DURATION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_DURATION
 	QueryDuration QueryType = 5123
 	// QueryLatency wraps GST_QUERY_LATENCY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_LATENCY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_LATENCY
 	QueryLatency QueryType = 7683
 	// QueryJitter wraps GST_QUERY_JITTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_JITTER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_JITTER
 	QueryJitter QueryType = 10243
 	// QueryRate wraps GST_QUERY_RATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_RATE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_RATE
 	QueryRate QueryType = 12803
 	// QuerySeeking wraps GST_QUERY_SEEKING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_SEEKING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_SEEKING
 	QuerySeeking QueryType = 15363
 	// QuerySegment wraps GST_QUERY_SEGMENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_SEGMENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_SEGMENT
 	QuerySegment QueryType = 17923
 	// QueryConvert wraps GST_QUERY_CONVERT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_CONVERT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_CONVERT
 	QueryConvert QueryType = 20483
 	// QueryFormats wraps GST_QUERY_FORMATS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_FORMATS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_FORMATS
 	QueryFormats QueryType = 23043
 	// QueryBuffering wraps GST_QUERY_BUFFERING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_BUFFERING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_BUFFERING
 	QueryBuffering QueryType = 28163
 	// QueryCustom wraps GST_QUERY_CUSTOM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_CUSTOM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_CUSTOM
 	QueryCustom QueryType = 30723
 	// QueryURI wraps GST_QUERY_URI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_URI
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_URI
 	QueryURI QueryType = 33283
 	// QueryAllocation wraps GST_QUERY_ALLOCATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_ALLOCATION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_ALLOCATION
 	QueryAllocation QueryType = 35846
 	// QueryScheduling wraps GST_QUERY_SCHEDULING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_SCHEDULING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_SCHEDULING
 	QueryScheduling QueryType = 38401
 	// QueryAcceptCaps wraps GST_QUERY_ACCEPT_CAPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_ACCEPT_CAPS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_ACCEPT_CAPS
 	QueryAcceptCaps QueryType = 40963
 	// QueryCaps wraps GST_QUERY_CAPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_CAPS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_CAPS
 	QueryCaps QueryType = 43523
 	// QueryDrain wraps GST_QUERY_DRAIN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_DRAIN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_DRAIN
 	QueryDrain QueryType = 46086
 	// QueryContext wraps GST_QUERY_CONTEXT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_CONTEXT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_CONTEXT
 	QueryContext QueryType = 48643
 	// QueryBitrate wraps GST_QUERY_BITRATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_BITRATE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_BITRATE
 	QueryBitrate QueryType = 51202
 	// QuerySelectable wraps GST_QUERY_SELECTABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_SELECTABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_SELECTABLE
 	QuerySelectable QueryType = 53763
 )
 
@@ -2634,7 +2634,7 @@ func (e QueryType) String() string {
 
 // QueryTypeGetFlags wraps gst_query_type_get_flags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_query_type_get_flags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_type_get_flags
 func QueryTypeGetFlags(typ QueryType) QueryTypeFlags {
 	var carg1 C.GstQueryType      // in, none, casted
 	var cret  C.GstQueryTypeFlags // return, none, casted
@@ -2653,7 +2653,7 @@ func QueryTypeGetFlags(typ QueryType) QueryTypeFlags {
 
 // QueryTypeGetName wraps gst_query_type_get_name
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_query_type_get_name
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_type_get_name
 func QueryTypeGetName(typ QueryType) string {
 	var carg1 C.GstQueryType // in, none, casted
 	var cret  *C.gchar       // return, none, string
@@ -2672,7 +2672,7 @@ func QueryTypeGetName(typ QueryType) string {
 
 // QueryTypeToQuark wraps gst_query_type_to_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_query_type_to_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#gst_query_type_to_quark
 func QueryTypeToQuark(typ QueryType) glib.Quark {
 	var carg1 C.GstQueryType // in, none, casted
 	var cret  C.GQuark       // return, none, casted, alias
@@ -2691,25 +2691,25 @@ func QueryTypeToQuark(typ QueryType) glib.Quark {
 
 // Rank wraps GstRank
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstRank
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpluginfeature.html#GstRank
 type Rank C.int
 
 const (
 	// RankNone wraps GST_RANK_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RANK_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpluginfeature.html#GST_RANK_NONE
 	RankNone Rank = 0
 	// RankMarginal wraps GST_RANK_MARGINAL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RANK_MARGINAL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpluginfeature.html#GST_RANK_MARGINAL
 	RankMarginal Rank = 64
 	// RankSecondary wraps GST_RANK_SECONDARY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RANK_SECONDARY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpluginfeature.html#GST_RANK_SECONDARY
 	RankSecondary Rank = 128
 	// RankPrimary wraps GST_RANK_PRIMARY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RANK_PRIMARY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpluginfeature.html#GST_RANK_PRIMARY
 	RankPrimary Rank = 256
 )
 
@@ -2739,73 +2739,73 @@ func (e Rank) String() string {
 
 // ResourceError wraps GstResourceError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstResourceError
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GstResourceError
 type ResourceError C.int
 
 const (
 	// ResourceErrorFailed wraps GST_RESOURCE_ERROR_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_FAILED
 	ResourceErrorFailed ResourceError = 1
 	// ResourceErrorTooLazy wraps GST_RESOURCE_ERROR_TOO_LAZY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_TOO_LAZY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_TOO_LAZY
 	ResourceErrorTooLazy ResourceError = 2
 	// ResourceErrorNotFound wraps GST_RESOURCE_ERROR_NOT_FOUND
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_NOT_FOUND
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_NOT_FOUND
 	ResourceErrorNotFound ResourceError = 3
 	// ResourceErrorBusy wraps GST_RESOURCE_ERROR_BUSY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_BUSY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_BUSY
 	ResourceErrorBusy ResourceError = 4
 	// ResourceErrorOpenRead wraps GST_RESOURCE_ERROR_OPEN_READ
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_OPEN_READ
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_OPEN_READ
 	ResourceErrorOpenRead ResourceError = 5
 	// ResourceErrorOpenWrite wraps GST_RESOURCE_ERROR_OPEN_WRITE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_OPEN_WRITE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_OPEN_WRITE
 	ResourceErrorOpenWrite ResourceError = 6
 	// ResourceErrorOpenReadWrite wraps GST_RESOURCE_ERROR_OPEN_READ_WRITE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_OPEN_READ_WRITE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_OPEN_READ_WRITE
 	ResourceErrorOpenReadWrite ResourceError = 7
 	// ResourceErrorClose wraps GST_RESOURCE_ERROR_CLOSE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_CLOSE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_CLOSE
 	ResourceErrorClose ResourceError = 8
 	// ResourceErrorRead wraps GST_RESOURCE_ERROR_READ
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_READ
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_READ
 	ResourceErrorRead ResourceError = 9
 	// ResourceErrorWrite wraps GST_RESOURCE_ERROR_WRITE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_WRITE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_WRITE
 	ResourceErrorWrite ResourceError = 10
 	// ResourceErrorSeek wraps GST_RESOURCE_ERROR_SEEK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_SEEK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_SEEK
 	ResourceErrorSeek ResourceError = 11
 	// ResourceErrorSync wraps GST_RESOURCE_ERROR_SYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_SYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_SYNC
 	ResourceErrorSync ResourceError = 12
 	// ResourceErrorSettings wraps GST_RESOURCE_ERROR_SETTINGS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_SETTINGS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_SETTINGS
 	ResourceErrorSettings ResourceError = 13
 	// ResourceErrorNoSpaceLeft wraps GST_RESOURCE_ERROR_NO_SPACE_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_NO_SPACE_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_NO_SPACE_LEFT
 	ResourceErrorNoSpaceLeft ResourceError = 14
 	// ResourceErrorNotAuthorized wraps GST_RESOURCE_ERROR_NOT_AUTHORIZED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_NOT_AUTHORIZED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_NOT_AUTHORIZED
 	ResourceErrorNotAuthorized ResourceError = 15
 	// ResourceErrorNumErrors wraps GST_RESOURCE_ERROR_NUM_ERRORS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_RESOURCE_ERROR_NUM_ERRORS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_RESOURCE_ERROR_NUM_ERRORS
 	ResourceErrorNumErrors ResourceError = 16
 )
 
@@ -2847,7 +2847,7 @@ func (e ResourceError) String() string {
 
 // ResourceErrorQuark wraps gst_resource_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_resource_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#gst_resource_error_quark
 func ResourceErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -2862,21 +2862,21 @@ func ResourceErrorQuark() glib.Quark {
 
 // SearchMode wraps GstSearchMode
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstSearchMode
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstutils.html#GstSearchMode
 type SearchMode C.int
 
 const (
 	// SearchModeExact wraps GST_SEARCH_MODE_EXACT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEARCH_MODE_EXACT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstutils.html#GST_SEARCH_MODE_EXACT
 	SearchModeExact SearchMode = 0
 	// SearchModeBefore wraps GST_SEARCH_MODE_BEFORE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEARCH_MODE_BEFORE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstutils.html#GST_SEARCH_MODE_BEFORE
 	SearchModeBefore SearchMode = 1
 	// SearchModeAfter wraps GST_SEARCH_MODE_AFTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEARCH_MODE_AFTER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstutils.html#GST_SEARCH_MODE_AFTER
 	SearchModeAfter SearchMode = 2
 )
 
@@ -2905,21 +2905,21 @@ func (e SearchMode) String() string {
 
 // SeekType wraps GstSeekType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstSeekType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GstSeekType
 type SeekType C.int
 
 const (
 	// SeekTypeNone wraps GST_SEEK_TYPE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_TYPE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_TYPE_NONE
 	SeekTypeNone SeekType = 0
 	// SeekTypeSet wraps GST_SEEK_TYPE_SET
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_TYPE_SET
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_TYPE_SET
 	SeekTypeSet SeekType = 1
 	// SeekTypeEnd wraps GST_SEEK_TYPE_END
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_TYPE_END
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_TYPE_END
 	SeekTypeEnd SeekType = 2
 )
 
@@ -2948,29 +2948,29 @@ func (e SeekType) String() string {
 
 // State wraps GstState
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstState
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GstState
 type State C.int
 
 const (
 	// StateVoidPending wraps GST_STATE_VOID_PENDING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_VOID_PENDING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_VOID_PENDING
 	StateVoidPending State = 0
 	// StateNull wraps GST_STATE_NULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_NULL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_NULL
 	StateNull State = 1
 	// StateReady wraps GST_STATE_READY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_READY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_READY
 	StateReady State = 2
 	// StatePaused wraps GST_STATE_PAUSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_PAUSED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_PAUSED
 	StatePaused State = 3
 	// StatePlaying wraps GST_STATE_PLAYING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_PLAYING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_PLAYING
 	StatePlaying State = 4
 )
 
@@ -3001,49 +3001,49 @@ func (e State) String() string {
 
 // StateChange wraps GstStateChange
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstStateChange
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GstStateChange
 type StateChange C.int
 
 const (
 	// StateChangeNullToReady wraps GST_STATE_CHANGE_NULL_TO_READY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_NULL_TO_READY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_NULL_TO_READY
 	StateChangeNullToReady StateChange = 10
 	// StateChangeReadyToPaused wraps GST_STATE_CHANGE_READY_TO_PAUSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_READY_TO_PAUSED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_READY_TO_PAUSED
 	StateChangeReadyToPaused StateChange = 19
 	// StateChangePausedToPlaying wraps GST_STATE_CHANGE_PAUSED_TO_PLAYING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_PAUSED_TO_PLAYING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_PAUSED_TO_PLAYING
 	StateChangePausedToPlaying StateChange = 28
 	// StateChangePlayingToPaused wraps GST_STATE_CHANGE_PLAYING_TO_PAUSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_PLAYING_TO_PAUSED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_PLAYING_TO_PAUSED
 	StateChangePlayingToPaused StateChange = 35
 	// StateChangePausedToReady wraps GST_STATE_CHANGE_PAUSED_TO_READY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_PAUSED_TO_READY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_PAUSED_TO_READY
 	StateChangePausedToReady StateChange = 26
 	// StateChangeReadyToNull wraps GST_STATE_CHANGE_READY_TO_NULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_READY_TO_NULL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_READY_TO_NULL
 	StateChangeReadyToNull StateChange = 17
 	// StateChangeNullToNull wraps GST_STATE_CHANGE_NULL_TO_NULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_NULL_TO_NULL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_NULL_TO_NULL
 	StateChangeNullToNull StateChange = 9
 	// StateChangeReadyToReady wraps GST_STATE_CHANGE_READY_TO_READY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_READY_TO_READY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_READY_TO_READY
 	StateChangeReadyToReady StateChange = 18
 	// StateChangePausedToPaused wraps GST_STATE_CHANGE_PAUSED_TO_PAUSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_PAUSED_TO_PAUSED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_PAUSED_TO_PAUSED
 	StateChangePausedToPaused StateChange = 27
 	// StateChangePlayingToPlaying wraps GST_STATE_CHANGE_PLAYING_TO_PLAYING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_PLAYING_TO_PLAYING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_PLAYING_TO_PLAYING
 	StateChangePlayingToPlaying StateChange = 36
 )
 
@@ -3079,7 +3079,7 @@ func (e StateChange) String() string {
 
 // StateChangeGetName wraps gst_state_change_get_name
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_state_change_get_name
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#gst_state_change_get_name
 func StateChangeGetName(transition StateChange) string {
 	var carg1 C.GstStateChange // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -3098,25 +3098,25 @@ func StateChangeGetName(transition StateChange) string {
 
 // StateChangeReturn wraps GstStateChangeReturn
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstStateChangeReturn
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GstStateChangeReturn
 type StateChangeReturn C.int
 
 const (
 	// StateChangeFailure wraps GST_STATE_CHANGE_FAILURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_FAILURE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_FAILURE
 	StateChangeFailure StateChangeReturn = 0
 	// StateChangeSuccess wraps GST_STATE_CHANGE_SUCCESS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_SUCCESS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_SUCCESS
 	StateChangeSuccess StateChangeReturn = 1
 	// StateChangeAsync wraps GST_STATE_CHANGE_ASYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_ASYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_ASYNC
 	StateChangeAsync StateChangeReturn = 2
 	// StateChangeNoPreroll wraps GST_STATE_CHANGE_NO_PREROLL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STATE_CHANGE_NO_PREROLL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_STATE_CHANGE_NO_PREROLL
 	StateChangeNoPreroll StateChangeReturn = 3
 )
 
@@ -3146,65 +3146,65 @@ func (e StateChangeReturn) String() string {
 
 // StreamError wraps GstStreamError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstStreamError
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GstStreamError
 type StreamError C.int
 
 const (
 	// StreamErrorFailed wraps GST_STREAM_ERROR_FAILED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_FAILED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_FAILED
 	StreamErrorFailed StreamError = 1
 	// StreamErrorTooLazy wraps GST_STREAM_ERROR_TOO_LAZY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_TOO_LAZY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_TOO_LAZY
 	StreamErrorTooLazy StreamError = 2
 	// StreamErrorNotImplemented wraps GST_STREAM_ERROR_NOT_IMPLEMENTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_NOT_IMPLEMENTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_NOT_IMPLEMENTED
 	StreamErrorNotImplemented StreamError = 3
 	// StreamErrorTypeNotFound wraps GST_STREAM_ERROR_TYPE_NOT_FOUND
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_TYPE_NOT_FOUND
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_TYPE_NOT_FOUND
 	StreamErrorTypeNotFound StreamError = 4
 	// StreamErrorWrongType wraps GST_STREAM_ERROR_WRONG_TYPE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_WRONG_TYPE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_WRONG_TYPE
 	StreamErrorWrongType StreamError = 5
 	// StreamErrorCodecNotFound wraps GST_STREAM_ERROR_CODEC_NOT_FOUND
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_CODEC_NOT_FOUND
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_CODEC_NOT_FOUND
 	StreamErrorCodecNotFound StreamError = 6
 	// StreamErrorDecode wraps GST_STREAM_ERROR_DECODE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_DECODE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_DECODE
 	StreamErrorDecode StreamError = 7
 	// StreamErrorEncode wraps GST_STREAM_ERROR_ENCODE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_ENCODE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_ENCODE
 	StreamErrorEncode StreamError = 8
 	// StreamErrorDemux wraps GST_STREAM_ERROR_DEMUX
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_DEMUX
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_DEMUX
 	StreamErrorDemux StreamError = 9
 	// StreamErrorMux wraps GST_STREAM_ERROR_MUX
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_MUX
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_MUX
 	StreamErrorMux StreamError = 10
 	// StreamErrorFormat wraps GST_STREAM_ERROR_FORMAT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_FORMAT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_FORMAT
 	StreamErrorFormat StreamError = 11
 	// StreamErrorDecrypt wraps GST_STREAM_ERROR_DECRYPT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_DECRYPT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_DECRYPT
 	StreamErrorDecrypt StreamError = 12
 	// StreamErrorDecryptNokey wraps GST_STREAM_ERROR_DECRYPT_NOKEY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_DECRYPT_NOKEY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_DECRYPT_NOKEY
 	StreamErrorDecryptNokey StreamError = 13
 	// StreamErrorNumErrors wraps GST_STREAM_ERROR_NUM_ERRORS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_ERROR_NUM_ERRORS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#GST_STREAM_ERROR_NUM_ERRORS
 	StreamErrorNumErrors StreamError = 14
 )
 
@@ -3244,7 +3244,7 @@ func (e StreamError) String() string {
 
 // StreamErrorQuark wraps gst_stream_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_stream_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsterror.html#gst_stream_error_quark
 func StreamErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -3259,37 +3259,37 @@ func StreamErrorQuark() glib.Quark {
 
 // StreamStatusType wraps GstStreamStatusType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstStreamStatusType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GstStreamStatusType
 type StreamStatusType C.int
 
 const (
 	// StreamStatusTypeCreate wraps GST_STREAM_STATUS_TYPE_CREATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_STATUS_TYPE_CREATE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_STREAM_STATUS_TYPE_CREATE
 	StreamStatusTypeCreate StreamStatusType = 0
 	// StreamStatusTypeEnter wraps GST_STREAM_STATUS_TYPE_ENTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_STATUS_TYPE_ENTER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_STREAM_STATUS_TYPE_ENTER
 	StreamStatusTypeEnter StreamStatusType = 1
 	// StreamStatusTypeLeave wraps GST_STREAM_STATUS_TYPE_LEAVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_STATUS_TYPE_LEAVE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_STREAM_STATUS_TYPE_LEAVE
 	StreamStatusTypeLeave StreamStatusType = 2
 	// StreamStatusTypeDestroy wraps GST_STREAM_STATUS_TYPE_DESTROY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_STATUS_TYPE_DESTROY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_STREAM_STATUS_TYPE_DESTROY
 	StreamStatusTypeDestroy StreamStatusType = 3
 	// StreamStatusTypeStart wraps GST_STREAM_STATUS_TYPE_START
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_STATUS_TYPE_START
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_STREAM_STATUS_TYPE_START
 	StreamStatusTypeStart StreamStatusType = 8
 	// StreamStatusTypePause wraps GST_STREAM_STATUS_TYPE_PAUSE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_STATUS_TYPE_PAUSE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_STREAM_STATUS_TYPE_PAUSE
 	StreamStatusTypePause StreamStatusType = 9
 	// StreamStatusTypeStop wraps GST_STREAM_STATUS_TYPE_STOP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_STATUS_TYPE_STOP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_STREAM_STATUS_TYPE_STOP
 	StreamStatusTypeStop StreamStatusType = 10
 )
 
@@ -3322,17 +3322,17 @@ func (e StreamStatusType) String() string {
 
 // StructureChangeType wraps GstStructureChangeType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstStructureChangeType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GstStructureChangeType
 type StructureChangeType C.int
 
 const (
 	// StructureChangeTypePadLink wraps GST_STRUCTURE_CHANGE_TYPE_PAD_LINK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STRUCTURE_CHANGE_TYPE_PAD_LINK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_STRUCTURE_CHANGE_TYPE_PAD_LINK
 	StructureChangeTypePadLink StructureChangeType = 0
 	// StructureChangeTypePadUnlink wraps GST_STRUCTURE_CHANGE_TYPE_PAD_UNLINK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STRUCTURE_CHANGE_TYPE_PAD_UNLINK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_STRUCTURE_CHANGE_TYPE_PAD_UNLINK
 	StructureChangeTypePadUnlink StructureChangeType = 1
 )
 
@@ -3360,29 +3360,29 @@ func (e StructureChangeType) String() string {
 
 // TagFlag wraps GstTagFlag
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTagFlag
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GstTagFlag
 type TagFlag C.int
 
 const (
 	// TagFlagUndefined wraps GST_TAG_FLAG_UNDEFINED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_FLAG_UNDEFINED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_FLAG_UNDEFINED
 	TagFlagUndefined TagFlag = 0
 	// TagFlagMeta wraps GST_TAG_FLAG_META
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_FLAG_META
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_FLAG_META
 	TagFlagMeta TagFlag = 1
 	// TagFlagEncoded wraps GST_TAG_FLAG_ENCODED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_FLAG_ENCODED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_FLAG_ENCODED
 	TagFlagEncoded TagFlag = 2
 	// TagFlagDecoded wraps GST_TAG_FLAG_DECODED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_FLAG_DECODED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_FLAG_DECODED
 	TagFlagDecoded TagFlag = 3
 	// TagFlagCount wraps GST_TAG_FLAG_COUNT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_FLAG_COUNT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_FLAG_COUNT
 	TagFlagCount TagFlag = 4
 )
 
@@ -3413,41 +3413,41 @@ func (e TagFlag) String() string {
 
 // TagMergeMode wraps GstTagMergeMode
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTagMergeMode
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GstTagMergeMode
 type TagMergeMode C.int
 
 const (
 	// TagMergeUndefined wraps GST_TAG_MERGE_UNDEFINED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_MERGE_UNDEFINED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_MERGE_UNDEFINED
 	TagMergeUndefined TagMergeMode = 0
 	// TagMergeReplaceAll wraps GST_TAG_MERGE_REPLACE_ALL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_MERGE_REPLACE_ALL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_MERGE_REPLACE_ALL
 	TagMergeReplaceAll TagMergeMode = 1
 	// TagMergeReplace wraps GST_TAG_MERGE_REPLACE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_MERGE_REPLACE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_MERGE_REPLACE
 	TagMergeReplace TagMergeMode = 2
 	// TagMergeAppend wraps GST_TAG_MERGE_APPEND
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_MERGE_APPEND
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_MERGE_APPEND
 	TagMergeAppend TagMergeMode = 3
 	// TagMergePrepend wraps GST_TAG_MERGE_PREPEND
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_MERGE_PREPEND
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_MERGE_PREPEND
 	TagMergePrepend TagMergeMode = 4
 	// TagMergeKeep wraps GST_TAG_MERGE_KEEP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_MERGE_KEEP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_MERGE_KEEP
 	TagMergeKeep TagMergeMode = 5
 	// TagMergeKeepAll wraps GST_TAG_MERGE_KEEP_ALL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_MERGE_KEEP_ALL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_MERGE_KEEP_ALL
 	TagMergeKeepAll TagMergeMode = 6
 	// TagMergeCount wraps GST_TAG_MERGE_COUNT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_MERGE_COUNT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_MERGE_COUNT
 	TagMergeCount TagMergeMode = 7
 )
 
@@ -3481,17 +3481,17 @@ func (e TagMergeMode) String() string {
 
 // TagScope wraps GstTagScope
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTagScope
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GstTagScope
 type TagScope C.int
 
 const (
 	// TagScopeStream wraps GST_TAG_SCOPE_STREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_SCOPE_STREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_SCOPE_STREAM
 	TagScopeStream TagScope = 0
 	// TagScopeGlobal wraps GST_TAG_SCOPE_GLOBAL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TAG_SCOPE_GLOBAL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GST_TAG_SCOPE_GLOBAL
 	TagScopeGlobal TagScope = 1
 )
 
@@ -3519,21 +3519,21 @@ func (e TagScope) String() string {
 
 // TaskState wraps GstTaskState
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTaskState
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttask.html#GstTaskState
 type TaskState C.int
 
 const (
 	// TaskStarted wraps GST_TASK_STARTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TASK_STARTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttask.html#GST_TASK_STARTED
 	TaskStarted TaskState = 0
 	// TaskStopped wraps GST_TASK_STOPPED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TASK_STOPPED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttask.html#GST_TASK_STOPPED
 	TaskStopped TaskState = 1
 	// TaskPaused wraps GST_TASK_PAUSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TASK_PAUSED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttask.html#GST_TASK_PAUSED
 	TaskPaused TaskState = 2
 )
 
@@ -3562,37 +3562,37 @@ func (e TaskState) String() string {
 
 // TocEntryType wraps GstTocEntryType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTocEntryType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GstTocEntryType
 type TocEntryType C.int
 
 const (
 	// TocEntryTypeAngle wraps GST_TOC_ENTRY_TYPE_ANGLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_ENTRY_TYPE_ANGLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_ENTRY_TYPE_ANGLE
 	TocEntryTypeAngle TocEntryType = -3
 	// TocEntryTypeVersion wraps GST_TOC_ENTRY_TYPE_VERSION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_ENTRY_TYPE_VERSION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_ENTRY_TYPE_VERSION
 	TocEntryTypeVersion TocEntryType = -2
 	// TocEntryTypeEdition wraps GST_TOC_ENTRY_TYPE_EDITION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_ENTRY_TYPE_EDITION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_ENTRY_TYPE_EDITION
 	TocEntryTypeEdition TocEntryType = -1
 	// TocEntryTypeInvalid wraps GST_TOC_ENTRY_TYPE_INVALID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_ENTRY_TYPE_INVALID
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_ENTRY_TYPE_INVALID
 	TocEntryTypeInvalid TocEntryType = 0
 	// TocEntryTypeTitle wraps GST_TOC_ENTRY_TYPE_TITLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_ENTRY_TYPE_TITLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_ENTRY_TYPE_TITLE
 	TocEntryTypeTitle TocEntryType = 1
 	// TocEntryTypeTrack wraps GST_TOC_ENTRY_TYPE_TRACK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_ENTRY_TYPE_TRACK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_ENTRY_TYPE_TRACK
 	TocEntryTypeTrack TocEntryType = 2
 	// TocEntryTypeChapter wraps GST_TOC_ENTRY_TYPE_CHAPTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_ENTRY_TYPE_CHAPTER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_ENTRY_TYPE_CHAPTER
 	TocEntryTypeChapter TocEntryType = 3
 )
 
@@ -3625,7 +3625,7 @@ func (e TocEntryType) String() string {
 
 // TocEntryTypeGetNick wraps gst_toc_entry_type_get_nick
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_toc_entry_type_get_nick
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#gst_toc_entry_type_get_nick
 func TocEntryTypeGetNick(typ TocEntryType) string {
 	var carg1 C.GstTocEntryType // in, none, casted
 	var cret  *C.gchar          // return, none, string
@@ -3644,25 +3644,25 @@ func TocEntryTypeGetNick(typ TocEntryType) string {
 
 // TocLoopType wraps GstTocLoopType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTocLoopType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GstTocLoopType
 type TocLoopType C.int
 
 const (
 	// TocLoopNone wraps GST_TOC_LOOP_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_LOOP_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_LOOP_NONE
 	TocLoopNone TocLoopType = 0
 	// TocLoopForward wraps GST_TOC_LOOP_FORWARD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_LOOP_FORWARD
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_LOOP_FORWARD
 	TocLoopForward TocLoopType = 1
 	// TocLoopReverse wraps GST_TOC_LOOP_REVERSE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_LOOP_REVERSE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_LOOP_REVERSE
 	TocLoopReverse TocLoopType = 2
 	// TocLoopPingPong wraps GST_TOC_LOOP_PING_PONG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_LOOP_PING_PONG
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_LOOP_PING_PONG
 	TocLoopPingPong TocLoopType = 3
 )
 
@@ -3692,17 +3692,17 @@ func (e TocLoopType) String() string {
 
 // TocScope wraps GstTocScope
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTocScope
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GstTocScope
 type TocScope C.int
 
 const (
 	// TocScopeGlobal wraps GST_TOC_SCOPE_GLOBAL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_SCOPE_GLOBAL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_SCOPE_GLOBAL
 	TocScopeGlobal TocScope = 1
 	// TocScopeCurrent wraps GST_TOC_SCOPE_CURRENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TOC_SCOPE_CURRENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttoc.html#GST_TOC_SCOPE_CURRENT
 	TocScopeCurrent TocScope = 2
 )
 
@@ -3730,25 +3730,25 @@ func (e TocScope) String() string {
 
 // TracerValueScope wraps GstTracerValueScope
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTracerValueScope
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttracerrecord.html#GstTracerValueScope
 type TracerValueScope C.int
 
 const (
 	// TracerValueScopeProcess wraps GST_TRACER_VALUE_SCOPE_PROCESS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TRACER_VALUE_SCOPE_PROCESS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttracerrecord.html#GST_TRACER_VALUE_SCOPE_PROCESS
 	TracerValueScopeProcess TracerValueScope = 0
 	// TracerValueScopeThread wraps GST_TRACER_VALUE_SCOPE_THREAD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TRACER_VALUE_SCOPE_THREAD
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttracerrecord.html#GST_TRACER_VALUE_SCOPE_THREAD
 	TracerValueScopeThread TracerValueScope = 1
 	// TracerValueScopeElement wraps GST_TRACER_VALUE_SCOPE_ELEMENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TRACER_VALUE_SCOPE_ELEMENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttracerrecord.html#GST_TRACER_VALUE_SCOPE_ELEMENT
 	TracerValueScopeElement TracerValueScope = 2
 	// TracerValueScopePad wraps GST_TRACER_VALUE_SCOPE_PAD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TRACER_VALUE_SCOPE_PAD
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttracerrecord.html#GST_TRACER_VALUE_SCOPE_PAD
 	TracerValueScopePad TracerValueScope = 3
 )
 
@@ -3778,33 +3778,33 @@ func (e TracerValueScope) String() string {
 
 // TypeFindProbability wraps GstTypeFindProbability
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTypeFindProbability
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttypefind.html#GstTypeFindProbability
 type TypeFindProbability C.int
 
 const (
 	// TypeFindNone wraps GST_TYPE_FIND_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TYPE_FIND_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttypefind.html#GST_TYPE_FIND_NONE
 	TypeFindNone TypeFindProbability = 0
 	// TypeFindMinimum wraps GST_TYPE_FIND_MINIMUM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TYPE_FIND_MINIMUM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttypefind.html#GST_TYPE_FIND_MINIMUM
 	TypeFindMinimum TypeFindProbability = 1
 	// TypeFindPossible wraps GST_TYPE_FIND_POSSIBLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TYPE_FIND_POSSIBLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttypefind.html#GST_TYPE_FIND_POSSIBLE
 	TypeFindPossible TypeFindProbability = 50
 	// TypeFindLikely wraps GST_TYPE_FIND_LIKELY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TYPE_FIND_LIKELY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttypefind.html#GST_TYPE_FIND_LIKELY
 	TypeFindLikely TypeFindProbability = 80
 	// TypeFindNearlyCertain wraps GST_TYPE_FIND_NEARLY_CERTAIN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TYPE_FIND_NEARLY_CERTAIN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttypefind.html#GST_TYPE_FIND_NEARLY_CERTAIN
 	TypeFindNearlyCertain TypeFindProbability = 99
 	// TypeFindMaximum wraps GST_TYPE_FIND_MAXIMUM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TYPE_FIND_MAXIMUM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttypefind.html#GST_TYPE_FIND_MAXIMUM
 	TypeFindMaximum TypeFindProbability = 100
 )
 
@@ -3836,25 +3836,25 @@ func (e TypeFindProbability) String() string {
 
 // URIError wraps GstURIError
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstURIError
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#GstURIError
 type URIError C.int
 
 const (
 	// URIErrorUnsupportedProtocol wraps GST_URI_ERROR_UNSUPPORTED_PROTOCOL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_URI_ERROR_UNSUPPORTED_PROTOCOL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#GST_URI_ERROR_UNSUPPORTED_PROTOCOL
 	URIErrorUnsupportedProtocol URIError = 0
 	// URIErrorBadURI wraps GST_URI_ERROR_BAD_URI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_URI_ERROR_BAD_URI
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#GST_URI_ERROR_BAD_URI
 	URIErrorBadURI URIError = 1
 	// URIErrorBadState wraps GST_URI_ERROR_BAD_STATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_URI_ERROR_BAD_STATE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#GST_URI_ERROR_BAD_STATE
 	URIErrorBadState URIError = 2
 	// URIErrorBadReference wraps GST_URI_ERROR_BAD_REFERENCE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_URI_ERROR_BAD_REFERENCE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#GST_URI_ERROR_BAD_REFERENCE
 	URIErrorBadReference URIError = 3
 )
 
@@ -3884,7 +3884,7 @@ func (e URIError) String() string {
 
 // URIErrorQuark wraps gst_uri_error_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_uri_error_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#gst_uri_error_quark
 func URIErrorQuark() glib.Quark {
 	var cret C.GQuark // return, none, casted, alias
 
@@ -3899,21 +3899,21 @@ func URIErrorQuark() glib.Quark {
 
 // URIType wraps GstURIType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstURIType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#GstURIType
 type URIType C.int
 
 const (
 	// URIUnknown wraps GST_URI_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_URI_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#GST_URI_UNKNOWN
 	URIUnknown URIType = 0
 	// URISink wraps GST_URI_SINK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_URI_SINK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#GST_URI_SINK
 	URISink URIType = 1
 	// URISrc wraps GST_URI_SRC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_URI_SRC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsturi.html#GST_URI_SRC
 	URISrc URIType = 2
 )
 
@@ -3942,21 +3942,21 @@ func (e URIType) String() string {
 
 // AllocatorFlags wraps GstAllocatorFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstAllocatorFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstallocator.html#GstAllocatorFlags
 type AllocatorFlags C.gint
 
 const (
 	// AllocatorFlagCustomAlloc wraps GST_ALLOCATOR_FLAG_CUSTOM_ALLOC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ALLOCATOR_FLAG_CUSTOM_ALLOC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstallocator.html#GST_ALLOCATOR_FLAG_CUSTOM_ALLOC
 	AllocatorFlagCustomAlloc AllocatorFlags = 16
 	// AllocatorFlagNoCopy wraps GST_ALLOCATOR_FLAG_NO_COPY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ALLOCATOR_FLAG_NO_COPY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstallocator.html#GST_ALLOCATOR_FLAG_NO_COPY
 	AllocatorFlagNoCopy AllocatorFlags = 32
 	// AllocatorFlagLast wraps GST_ALLOCATOR_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ALLOCATOR_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstallocator.html#GST_ALLOCATOR_FLAG_LAST
 	AllocatorFlagLast AllocatorFlags = 1048576
 )
 
@@ -3998,21 +3998,21 @@ func (f AllocatorFlags) String() string {
 
 // BinFlags wraps GstBinFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstBinFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html#GstBinFlags
 type BinFlags C.gint
 
 const (
 	// BinFlagNoResync wraps GST_BIN_FLAG_NO_RESYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BIN_FLAG_NO_RESYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html#GST_BIN_FLAG_NO_RESYNC
 	BinFlagNoResync BinFlags = 16384
 	// BinFlagStreamsAware wraps GST_BIN_FLAG_STREAMS_AWARE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BIN_FLAG_STREAMS_AWARE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html#GST_BIN_FLAG_STREAMS_AWARE
 	BinFlagStreamsAware BinFlags = 32768
 	// BinFlagLast wraps GST_BIN_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BIN_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html#GST_BIN_FLAG_LAST
 	BinFlagLast BinFlags = 524288
 )
 
@@ -4054,37 +4054,37 @@ func (f BinFlags) String() string {
 
 // BufferCopyFlags wraps GstBufferCopyFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstBufferCopyFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GstBufferCopyFlags
 type BufferCopyFlags C.gint
 
 const (
 	// BufferCopyNone wraps GST_BUFFER_COPY_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_COPY_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_COPY_NONE
 	BufferCopyNone BufferCopyFlags = 0
 	// BufferCopyBufferFlags wraps GST_BUFFER_COPY_BUFFER_FLAGS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_COPY_BUFFER_FLAGS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_COPY_BUFFER_FLAGS
 	BufferCopyBufferFlags BufferCopyFlags = 1
 	// BufferCopyTimestamps wraps GST_BUFFER_COPY_TIMESTAMPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_COPY_TIMESTAMPS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_COPY_TIMESTAMPS
 	BufferCopyTimestamps BufferCopyFlags = 2
 	// BufferCopyMeta wraps GST_BUFFER_COPY_META
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_COPY_META
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_COPY_META
 	BufferCopyMeta BufferCopyFlags = 4
 	// BufferCopyMemory wraps GST_BUFFER_COPY_MEMORY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_COPY_MEMORY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_COPY_MEMORY
 	BufferCopyMemory BufferCopyFlags = 8
 	// BufferCopyMerge wraps GST_BUFFER_COPY_MERGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_COPY_MERGE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_COPY_MERGE
 	BufferCopyMerge BufferCopyFlags = 16
 	// BufferCopyDeep wraps GST_BUFFER_COPY_DEEP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_COPY_DEEP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_COPY_DEEP
 	BufferCopyDeep BufferCopyFlags = 32
 )
 
@@ -4138,65 +4138,65 @@ func (f BufferCopyFlags) String() string {
 
 // BufferFlags wraps GstBufferFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstBufferFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GstBufferFlags
 type BufferFlags C.gint
 
 const (
 	// BufferFlagLive wraps GST_BUFFER_FLAG_LIVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_LIVE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_LIVE
 	BufferFlagLive BufferFlags = 16
 	// BufferFlagDecodeOnly wraps GST_BUFFER_FLAG_DECODE_ONLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_DECODE_ONLY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_DECODE_ONLY
 	BufferFlagDecodeOnly BufferFlags = 32
 	// BufferFlagDiscont wraps GST_BUFFER_FLAG_DISCONT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_DISCONT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_DISCONT
 	BufferFlagDiscont BufferFlags = 64
 	// BufferFlagResync wraps GST_BUFFER_FLAG_RESYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_RESYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_RESYNC
 	BufferFlagResync BufferFlags = 128
 	// BufferFlagCorrupted wraps GST_BUFFER_FLAG_CORRUPTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_CORRUPTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_CORRUPTED
 	BufferFlagCorrupted BufferFlags = 256
 	// BufferFlagMarker wraps GST_BUFFER_FLAG_MARKER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_MARKER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_MARKER
 	BufferFlagMarker BufferFlags = 512
 	// BufferFlagHeader wraps GST_BUFFER_FLAG_HEADER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_HEADER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_HEADER
 	BufferFlagHeader BufferFlags = 1024
 	// BufferFlagGap wraps GST_BUFFER_FLAG_GAP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_GAP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_GAP
 	BufferFlagGap BufferFlags = 2048
 	// BufferFlagDroppable wraps GST_BUFFER_FLAG_DROPPABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_DROPPABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_DROPPABLE
 	BufferFlagDroppable BufferFlags = 4096
 	// BufferFlagDeltaUnit wraps GST_BUFFER_FLAG_DELTA_UNIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_DELTA_UNIT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_DELTA_UNIT
 	BufferFlagDeltaUnit BufferFlags = 8192
 	// BufferFlagTagMemory wraps GST_BUFFER_FLAG_TAG_MEMORY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_TAG_MEMORY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_TAG_MEMORY
 	BufferFlagTagMemory BufferFlags = 16384
 	// BufferFlagSyncAfter wraps GST_BUFFER_FLAG_SYNC_AFTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_SYNC_AFTER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_SYNC_AFTER
 	BufferFlagSyncAfter BufferFlags = 32768
 	// BufferFlagNonDroppable wraps GST_BUFFER_FLAG_NON_DROPPABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_NON_DROPPABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_NON_DROPPABLE
 	BufferFlagNonDroppable BufferFlags = 65536
 	// BufferFlagLast wraps GST_BUFFER_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html#GST_BUFFER_FLAG_LAST
 	BufferFlagLast BufferFlags = 1048576
 )
 
@@ -4271,29 +4271,29 @@ func (f BufferFlags) String() string {
 
 // BufferPoolAcquireFlags wraps GstBufferPoolAcquireFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstBufferPoolAcquireFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferpool.html#GstBufferPoolAcquireFlags
 type BufferPoolAcquireFlags C.gint
 
 const (
 	// BufferPoolAcquireFlagNone wraps GST_BUFFER_POOL_ACQUIRE_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_POOL_ACQUIRE_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferpool.html#GST_BUFFER_POOL_ACQUIRE_FLAG_NONE
 	BufferPoolAcquireFlagNone BufferPoolAcquireFlags = 0
 	// BufferPoolAcquireFlagKeyUnit wraps GST_BUFFER_POOL_ACQUIRE_FLAG_KEY_UNIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_POOL_ACQUIRE_FLAG_KEY_UNIT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferpool.html#GST_BUFFER_POOL_ACQUIRE_FLAG_KEY_UNIT
 	BufferPoolAcquireFlagKeyUnit BufferPoolAcquireFlags = 1
 	// BufferPoolAcquireFlagDontwait wraps GST_BUFFER_POOL_ACQUIRE_FLAG_DONTWAIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_POOL_ACQUIRE_FLAG_DONTWAIT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferpool.html#GST_BUFFER_POOL_ACQUIRE_FLAG_DONTWAIT
 	BufferPoolAcquireFlagDontwait BufferPoolAcquireFlags = 2
 	// BufferPoolAcquireFlagDiscont wraps GST_BUFFER_POOL_ACQUIRE_FLAG_DISCONT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_POOL_ACQUIRE_FLAG_DISCONT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferpool.html#GST_BUFFER_POOL_ACQUIRE_FLAG_DISCONT
 	BufferPoolAcquireFlagDiscont BufferPoolAcquireFlags = 4
 	// BufferPoolAcquireFlagLast wraps GST_BUFFER_POOL_ACQUIRE_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUFFER_POOL_ACQUIRE_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbufferpool.html#GST_BUFFER_POOL_ACQUIRE_FLAG_LAST
 	BufferPoolAcquireFlagLast BufferPoolAcquireFlags = 65536
 )
 
@@ -4341,17 +4341,17 @@ func (f BufferPoolAcquireFlags) String() string {
 
 // BusFlags wraps GstBusFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstBusFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#GstBusFlags
 type BusFlags C.gint
 
 const (
 	// BusFlushing wraps GST_BUS_FLUSHING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUS_FLUSHING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#GST_BUS_FLUSHING
 	BusFlushing BusFlags = 16
 	// BusFlagLast wraps GST_BUS_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_BUS_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html#GST_BUS_FLAG_LAST
 	BusFlagLast BusFlags = 32
 )
 
@@ -4390,13 +4390,13 @@ func (f BusFlags) String() string {
 
 // CapsFlags wraps GstCapsFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstCapsFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstcaps.html#GstCapsFlags
 type CapsFlags C.gint
 
 const (
 	// CapsFlagAny wraps GST_CAPS_FLAG_ANY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CAPS_FLAG_ANY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstcaps.html#GST_CAPS_FLAG_ANY
 	CapsFlagAny CapsFlags = 16
 )
 
@@ -4432,41 +4432,41 @@ func (f CapsFlags) String() string {
 
 // ClockFlags wraps GstClockFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstClockFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GstClockFlags
 type ClockFlags C.gint
 
 const (
 	// ClockFlagCanDoSingleSync wraps GST_CLOCK_FLAG_CAN_DO_SINGLE_SYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_FLAG_CAN_DO_SINGLE_SYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_FLAG_CAN_DO_SINGLE_SYNC
 	ClockFlagCanDoSingleSync ClockFlags = 16
 	// ClockFlagCanDoSingleAsync wraps GST_CLOCK_FLAG_CAN_DO_SINGLE_ASYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_FLAG_CAN_DO_SINGLE_ASYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_FLAG_CAN_DO_SINGLE_ASYNC
 	ClockFlagCanDoSingleAsync ClockFlags = 32
 	// ClockFlagCanDoPeriodicSync wraps GST_CLOCK_FLAG_CAN_DO_PERIODIC_SYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_FLAG_CAN_DO_PERIODIC_SYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_FLAG_CAN_DO_PERIODIC_SYNC
 	ClockFlagCanDoPeriodicSync ClockFlags = 64
 	// ClockFlagCanDoPeriodicAsync wraps GST_CLOCK_FLAG_CAN_DO_PERIODIC_ASYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_FLAG_CAN_DO_PERIODIC_ASYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_FLAG_CAN_DO_PERIODIC_ASYNC
 	ClockFlagCanDoPeriodicAsync ClockFlags = 128
 	// ClockFlagCanSetResolution wraps GST_CLOCK_FLAG_CAN_SET_RESOLUTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_FLAG_CAN_SET_RESOLUTION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_FLAG_CAN_SET_RESOLUTION
 	ClockFlagCanSetResolution ClockFlags = 256
 	// ClockFlagCanSetMaster wraps GST_CLOCK_FLAG_CAN_SET_MASTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_FLAG_CAN_SET_MASTER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_FLAG_CAN_SET_MASTER
 	ClockFlagCanSetMaster ClockFlags = 512
 	// ClockFlagNeedsStartupSync wraps GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
 	ClockFlagNeedsStartupSync ClockFlags = 1024
 	// ClockFlagLast wraps GST_CLOCK_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_CLOCK_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#GST_CLOCK_FLAG_LAST
 	ClockFlagLast ClockFlags = 4096
 )
 
@@ -4523,81 +4523,81 @@ func (f ClockFlags) String() string {
 
 // DebugColorFlags wraps GstDebugColorFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstDebugColorFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GstDebugColorFlags
 type DebugColorFlags C.gint
 
 const (
 	// DebugFgBlack wraps GST_DEBUG_FG_BLACK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_FG_BLACK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_FG_BLACK
 	DebugFgBlack DebugColorFlags = 0
 	// DebugFgRed wraps GST_DEBUG_FG_RED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_FG_RED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_FG_RED
 	DebugFgRed DebugColorFlags = 1
 	// DebugFgGreen wraps GST_DEBUG_FG_GREEN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_FG_GREEN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_FG_GREEN
 	DebugFgGreen DebugColorFlags = 2
 	// DebugFgYellow wraps GST_DEBUG_FG_YELLOW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_FG_YELLOW
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_FG_YELLOW
 	DebugFgYellow DebugColorFlags = 3
 	// DebugFgBlue wraps GST_DEBUG_FG_BLUE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_FG_BLUE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_FG_BLUE
 	DebugFgBlue DebugColorFlags = 4
 	// DebugFgMagenta wraps GST_DEBUG_FG_MAGENTA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_FG_MAGENTA
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_FG_MAGENTA
 	DebugFgMagenta DebugColorFlags = 5
 	// DebugFgCyan wraps GST_DEBUG_FG_CYAN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_FG_CYAN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_FG_CYAN
 	DebugFgCyan DebugColorFlags = 6
 	// DebugFgWhite wraps GST_DEBUG_FG_WHITE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_FG_WHITE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_FG_WHITE
 	DebugFgWhite DebugColorFlags = 7
 	// DebugBgBlack wraps GST_DEBUG_BG_BLACK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_BG_BLACK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_BG_BLACK
 	DebugBgBlack DebugColorFlags = 0
 	// DebugBgRed wraps GST_DEBUG_BG_RED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_BG_RED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_BG_RED
 	DebugBgRed DebugColorFlags = 16
 	// DebugBgGreen wraps GST_DEBUG_BG_GREEN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_BG_GREEN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_BG_GREEN
 	DebugBgGreen DebugColorFlags = 32
 	// DebugBgYellow wraps GST_DEBUG_BG_YELLOW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_BG_YELLOW
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_BG_YELLOW
 	DebugBgYellow DebugColorFlags = 48
 	// DebugBgBlue wraps GST_DEBUG_BG_BLUE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_BG_BLUE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_BG_BLUE
 	DebugBgBlue DebugColorFlags = 64
 	// DebugBgMagenta wraps GST_DEBUG_BG_MAGENTA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_BG_MAGENTA
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_BG_MAGENTA
 	DebugBgMagenta DebugColorFlags = 80
 	// DebugBgCyan wraps GST_DEBUG_BG_CYAN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_BG_CYAN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_BG_CYAN
 	DebugBgCyan DebugColorFlags = 96
 	// DebugBgWhite wraps GST_DEBUG_BG_WHITE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_BG_WHITE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_BG_WHITE
 	DebugBgWhite DebugColorFlags = 112
 	// DebugBold wraps GST_DEBUG_BOLD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_BOLD
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_BOLD
 	DebugBold DebugColorFlags = 256
 	// DebugUnderline wraps GST_DEBUG_UNDERLINE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_UNDERLINE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_DEBUG_UNDERLINE
 	DebugUnderline DebugColorFlags = 512
 )
 
@@ -4684,37 +4684,37 @@ func (f DebugColorFlags) String() string {
 
 // DebugGraphDetails wraps GstDebugGraphDetails
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstDebugGraphDetails
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdebugutils.html#GstDebugGraphDetails
 type DebugGraphDetails C.gint
 
 const (
 	// DebugGraphShowMediaType wraps GST_DEBUG_GRAPH_SHOW_MEDIA_TYPE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_GRAPH_SHOW_MEDIA_TYPE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdebugutils.html#GST_DEBUG_GRAPH_SHOW_MEDIA_TYPE
 	DebugGraphShowMediaType DebugGraphDetails = 1
 	// DebugGraphShowCapsDetails wraps GST_DEBUG_GRAPH_SHOW_CAPS_DETAILS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_GRAPH_SHOW_CAPS_DETAILS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdebugutils.html#GST_DEBUG_GRAPH_SHOW_CAPS_DETAILS
 	DebugGraphShowCapsDetails DebugGraphDetails = 2
 	// DebugGraphShowNonDefaultParams wraps GST_DEBUG_GRAPH_SHOW_NON_DEFAULT_PARAMS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_GRAPH_SHOW_NON_DEFAULT_PARAMS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdebugutils.html#GST_DEBUG_GRAPH_SHOW_NON_DEFAULT_PARAMS
 	DebugGraphShowNonDefaultParams DebugGraphDetails = 4
 	// DebugGraphShowStates wraps GST_DEBUG_GRAPH_SHOW_STATES
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_GRAPH_SHOW_STATES
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdebugutils.html#GST_DEBUG_GRAPH_SHOW_STATES
 	DebugGraphShowStates DebugGraphDetails = 8
 	// DebugGraphShowFullParams wraps GST_DEBUG_GRAPH_SHOW_FULL_PARAMS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_GRAPH_SHOW_FULL_PARAMS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdebugutils.html#GST_DEBUG_GRAPH_SHOW_FULL_PARAMS
 	DebugGraphShowFullParams DebugGraphDetails = 16
 	// DebugGraphShowAll wraps GST_DEBUG_GRAPH_SHOW_ALL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_GRAPH_SHOW_ALL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdebugutils.html#GST_DEBUG_GRAPH_SHOW_ALL
 	DebugGraphShowAll DebugGraphDetails = 15
 	// DebugGraphShowVerbose wraps GST_DEBUG_GRAPH_SHOW_VERBOSE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_DEBUG_GRAPH_SHOW_VERBOSE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstdebugutils.html#GST_DEBUG_GRAPH_SHOW_VERBOSE
 	DebugGraphShowVerbose DebugGraphDetails = -1
 )
 
@@ -4768,37 +4768,37 @@ func (f DebugGraphDetails) String() string {
 
 // ElementFlags wraps GstElementFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstElementFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GstElementFlags
 type ElementFlags C.gint
 
 const (
 	// ElementFlagLockedState wraps GST_ELEMENT_FLAG_LOCKED_STATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ELEMENT_FLAG_LOCKED_STATE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_ELEMENT_FLAG_LOCKED_STATE
 	ElementFlagLockedState ElementFlags = 16
 	// ElementFlagSink wraps GST_ELEMENT_FLAG_SINK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ELEMENT_FLAG_SINK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_ELEMENT_FLAG_SINK
 	ElementFlagSink ElementFlags = 32
 	// ElementFlagSource wraps GST_ELEMENT_FLAG_SOURCE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ELEMENT_FLAG_SOURCE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_ELEMENT_FLAG_SOURCE
 	ElementFlagSource ElementFlags = 64
 	// ElementFlagProvideClock wraps GST_ELEMENT_FLAG_PROVIDE_CLOCK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ELEMENT_FLAG_PROVIDE_CLOCK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_ELEMENT_FLAG_PROVIDE_CLOCK
 	ElementFlagProvideClock ElementFlags = 128
 	// ElementFlagRequireClock wraps GST_ELEMENT_FLAG_REQUIRE_CLOCK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ELEMENT_FLAG_REQUIRE_CLOCK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_ELEMENT_FLAG_REQUIRE_CLOCK
 	ElementFlagRequireClock ElementFlags = 256
 	// ElementFlagIndexable wraps GST_ELEMENT_FLAG_INDEXABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ELEMENT_FLAG_INDEXABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_ELEMENT_FLAG_INDEXABLE
 	ElementFlagIndexable ElementFlags = 512
 	// ElementFlagLast wraps GST_ELEMENT_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_ELEMENT_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html#GST_ELEMENT_FLAG_LAST
 	ElementFlagLast ElementFlags = 16384
 )
 
@@ -4852,29 +4852,29 @@ func (f ElementFlags) String() string {
 
 // EventTypeFlags wraps GstEventTypeFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstEventTypeFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GstEventTypeFlags
 type EventTypeFlags C.gint
 
 const (
 	// EventTypeUpstream wraps GST_EVENT_TYPE_UPSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_TYPE_UPSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_TYPE_UPSTREAM
 	EventTypeUpstream EventTypeFlags = 1
 	// EventTypeDownstream wraps GST_EVENT_TYPE_DOWNSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_TYPE_DOWNSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_TYPE_DOWNSTREAM
 	EventTypeDownstream EventTypeFlags = 2
 	// EventTypeSerialized wraps GST_EVENT_TYPE_SERIALIZED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_TYPE_SERIALIZED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_TYPE_SERIALIZED
 	EventTypeSerialized EventTypeFlags = 4
 	// EventTypeSticky wraps GST_EVENT_TYPE_STICKY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_TYPE_STICKY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_TYPE_STICKY
 	EventTypeSticky EventTypeFlags = 8
 	// EventTypeStickyMulti wraps GST_EVENT_TYPE_STICKY_MULTI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_EVENT_TYPE_STICKY_MULTI
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_EVENT_TYPE_STICKY_MULTI
 	EventTypeStickyMulti EventTypeFlags = 16
 )
 
@@ -4922,13 +4922,13 @@ func (f EventTypeFlags) String() string {
 
 // GapFlags wraps GstGapFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstGapFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GstGapFlags
 type GapFlags C.gint
 
 const (
 	// GapFlagMissingData wraps GST_GAP_FLAG_MISSING_DATA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_GAP_FLAG_MISSING_DATA
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_GAP_FLAG_MISSING_DATA
 	GapFlagMissingData GapFlags = 1
 )
 
@@ -4964,25 +4964,25 @@ func (f GapFlags) String() string {
 
 // LockFlags wraps GstLockFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstLockFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GstLockFlags
 type LockFlags C.gint
 
 const (
 	// LockFlagRead wraps GST_LOCK_FLAG_READ
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LOCK_FLAG_READ
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GST_LOCK_FLAG_READ
 	LockFlagRead LockFlags = 1
 	// LockFlagWrite wraps GST_LOCK_FLAG_WRITE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LOCK_FLAG_WRITE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GST_LOCK_FLAG_WRITE
 	LockFlagWrite LockFlags = 2
 	// LockFlagExclusive wraps GST_LOCK_FLAG_EXCLUSIVE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LOCK_FLAG_EXCLUSIVE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GST_LOCK_FLAG_EXCLUSIVE
 	LockFlagExclusive LockFlags = 4
 	// LockFlagLast wraps GST_LOCK_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_LOCK_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GST_LOCK_FLAG_LAST
 	LockFlagLast LockFlags = 256
 )
 
@@ -5027,21 +5027,21 @@ func (f LockFlags) String() string {
 
 // MapFlags wraps GstMapFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstMapFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GstMapFlags
 type MapFlags C.gint
 
 const (
 	// MapRead wraps GST_MAP_READ
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MAP_READ
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MAP_READ
 	MapRead MapFlags = 1
 	// MapWrite wraps GST_MAP_WRITE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MAP_WRITE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MAP_WRITE
 	MapWrite MapFlags = 2
 	// MapFlagLast wraps GST_MAP_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MAP_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MAP_FLAG_LAST
 	MapFlagLast MapFlags = 65536
 )
 
@@ -5083,37 +5083,37 @@ func (f MapFlags) String() string {
 
 // MemoryFlags wraps GstMemoryFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstMemoryFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GstMemoryFlags
 type MemoryFlags C.gint
 
 const (
 	// MemoryFlagReadonly wraps GST_MEMORY_FLAG_READONLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MEMORY_FLAG_READONLY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MEMORY_FLAG_READONLY
 	MemoryFlagReadonly MemoryFlags = 2
 	// MemoryFlagNoShare wraps GST_MEMORY_FLAG_NO_SHARE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MEMORY_FLAG_NO_SHARE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MEMORY_FLAG_NO_SHARE
 	MemoryFlagNoShare MemoryFlags = 16
 	// MemoryFlagZeroPrefixed wraps GST_MEMORY_FLAG_ZERO_PREFIXED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MEMORY_FLAG_ZERO_PREFIXED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MEMORY_FLAG_ZERO_PREFIXED
 	MemoryFlagZeroPrefixed MemoryFlags = 32
 	// MemoryFlagZeroPadded wraps GST_MEMORY_FLAG_ZERO_PADDED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MEMORY_FLAG_ZERO_PADDED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MEMORY_FLAG_ZERO_PADDED
 	MemoryFlagZeroPadded MemoryFlags = 64
 	// MemoryFlagPhysicallyContiguous wraps GST_MEMORY_FLAG_PHYSICALLY_CONTIGUOUS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MEMORY_FLAG_PHYSICALLY_CONTIGUOUS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MEMORY_FLAG_PHYSICALLY_CONTIGUOUS
 	MemoryFlagPhysicallyContiguous MemoryFlags = 128
 	// MemoryFlagNotMappable wraps GST_MEMORY_FLAG_NOT_MAPPABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MEMORY_FLAG_NOT_MAPPABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MEMORY_FLAG_NOT_MAPPABLE
 	MemoryFlagNotMappable MemoryFlags = 256
 	// MemoryFlagLast wraps GST_MEMORY_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MEMORY_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmemory.html#GST_MEMORY_FLAG_LAST
 	MemoryFlagLast MemoryFlags = 1048576
 )
 
@@ -5167,177 +5167,177 @@ func (f MemoryFlags) String() string {
 
 // MessageType wraps GstMessageType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstMessageType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GstMessageType
 type MessageType C.gint
 
 const (
 	// MessageUnknown wraps GST_MESSAGE_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_UNKNOWN
 	MessageUnknown MessageType = 0
 	// MessageEOS wraps GST_MESSAGE_EOS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_EOS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_EOS
 	MessageEOS MessageType = 1
 	// MessageError wraps GST_MESSAGE_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_ERROR
 	MessageError MessageType = 2
 	// MessageWarning wraps GST_MESSAGE_WARNING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_WARNING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_WARNING
 	MessageWarning MessageType = 4
 	// MessageInfo wraps GST_MESSAGE_INFO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_INFO
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_INFO
 	MessageInfo MessageType = 8
 	// MessageTag wraps GST_MESSAGE_TAG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_TAG
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_TAG
 	MessageTag MessageType = 16
 	// MessageBuffering wraps GST_MESSAGE_BUFFERING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_BUFFERING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_BUFFERING
 	MessageBuffering MessageType = 32
 	// MessageStateChanged wraps GST_MESSAGE_STATE_CHANGED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_STATE_CHANGED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_STATE_CHANGED
 	MessageStateChanged MessageType = 64
 	// MessageStateDirty wraps GST_MESSAGE_STATE_DIRTY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_STATE_DIRTY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_STATE_DIRTY
 	MessageStateDirty MessageType = 128
 	// MessageStepDone wraps GST_MESSAGE_STEP_DONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_STEP_DONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_STEP_DONE
 	MessageStepDone MessageType = 256
 	// MessageClockProvide wraps GST_MESSAGE_CLOCK_PROVIDE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_CLOCK_PROVIDE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_CLOCK_PROVIDE
 	MessageClockProvide MessageType = 512
 	// MessageClockLost wraps GST_MESSAGE_CLOCK_LOST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_CLOCK_LOST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_CLOCK_LOST
 	MessageClockLost MessageType = 1024
 	// MessageNewClock wraps GST_MESSAGE_NEW_CLOCK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_NEW_CLOCK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_NEW_CLOCK
 	MessageNewClock MessageType = 2048
 	// MessageStructureChange wraps GST_MESSAGE_STRUCTURE_CHANGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_STRUCTURE_CHANGE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_STRUCTURE_CHANGE
 	MessageStructureChange MessageType = 4096
 	// MessageStreamStatus wraps GST_MESSAGE_STREAM_STATUS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_STREAM_STATUS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_STREAM_STATUS
 	MessageStreamStatus MessageType = 8192
 	// MessageApplication wraps GST_MESSAGE_APPLICATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_APPLICATION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_APPLICATION
 	MessageApplication MessageType = 16384
 	// MessageElement wraps GST_MESSAGE_ELEMENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_ELEMENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_ELEMENT
 	MessageElement MessageType = 32768
 	// MessageSegmentStart wraps GST_MESSAGE_SEGMENT_START
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_SEGMENT_START
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_SEGMENT_START
 	MessageSegmentStart MessageType = 65536
 	// MessageSegmentDone wraps GST_MESSAGE_SEGMENT_DONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_SEGMENT_DONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_SEGMENT_DONE
 	MessageSegmentDone MessageType = 131072
 	// MessageDurationChanged wraps GST_MESSAGE_DURATION_CHANGED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_DURATION_CHANGED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_DURATION_CHANGED
 	MessageDurationChanged MessageType = 262144
 	// MessageLatency wraps GST_MESSAGE_LATENCY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_LATENCY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_LATENCY
 	MessageLatency MessageType = 524288
 	// MessageAsyncStart wraps GST_MESSAGE_ASYNC_START
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_ASYNC_START
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_ASYNC_START
 	MessageAsyncStart MessageType = 1048576
 	// MessageAsyncDone wraps GST_MESSAGE_ASYNC_DONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_ASYNC_DONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_ASYNC_DONE
 	MessageAsyncDone MessageType = 2097152
 	// MessageRequestState wraps GST_MESSAGE_REQUEST_STATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_REQUEST_STATE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_REQUEST_STATE
 	MessageRequestState MessageType = 4194304
 	// MessageStepStart wraps GST_MESSAGE_STEP_START
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_STEP_START
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_STEP_START
 	MessageStepStart MessageType = 8388608
 	// MessageQos wraps GST_MESSAGE_QOS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_QOS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_QOS
 	MessageQos MessageType = 16777216
 	// MessageProgress wraps GST_MESSAGE_PROGRESS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_PROGRESS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_PROGRESS
 	MessageProgress MessageType = 33554432
 	// MessageToc wraps GST_MESSAGE_TOC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_TOC
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_TOC
 	MessageToc MessageType = 67108864
 	// MessageResetTime wraps GST_MESSAGE_RESET_TIME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_RESET_TIME
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_RESET_TIME
 	MessageResetTime MessageType = 134217728
 	// MessageStreamStart wraps GST_MESSAGE_STREAM_START
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_STREAM_START
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_STREAM_START
 	MessageStreamStart MessageType = 268435456
 	// MessageNeedContext wraps GST_MESSAGE_NEED_CONTEXT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_NEED_CONTEXT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_NEED_CONTEXT
 	MessageNeedContext MessageType = 536870912
 	// MessageHaveContext wraps GST_MESSAGE_HAVE_CONTEXT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_HAVE_CONTEXT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_HAVE_CONTEXT
 	MessageHaveContext MessageType = 1073741824
 	// MessageExtended wraps GST_MESSAGE_EXTENDED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_EXTENDED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_EXTENDED
 	MessageExtended MessageType = -2147483648
 	// MessageDeviceAdded wraps GST_MESSAGE_DEVICE_ADDED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_DEVICE_ADDED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_DEVICE_ADDED
 	MessageDeviceAdded MessageType = -2147483647
 	// MessageDeviceRemoved wraps GST_MESSAGE_DEVICE_REMOVED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_DEVICE_REMOVED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_DEVICE_REMOVED
 	MessageDeviceRemoved MessageType = -2147483646
 	// MessagePropertyNotify wraps GST_MESSAGE_PROPERTY_NOTIFY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_PROPERTY_NOTIFY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_PROPERTY_NOTIFY
 	MessagePropertyNotify MessageType = -2147483645
 	// MessageStreamCollection wraps GST_MESSAGE_STREAM_COLLECTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_STREAM_COLLECTION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_STREAM_COLLECTION
 	MessageStreamCollection MessageType = -2147483644
 	// MessageStreamsSelected wraps GST_MESSAGE_STREAMS_SELECTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_STREAMS_SELECTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_STREAMS_SELECTED
 	MessageStreamsSelected MessageType = -2147483643
 	// MessageRedirect wraps GST_MESSAGE_REDIRECT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_REDIRECT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_REDIRECT
 	MessageRedirect MessageType = -2147483642
 	// MessageDeviceChanged wraps GST_MESSAGE_DEVICE_CHANGED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_DEVICE_CHANGED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_DEVICE_CHANGED
 	MessageDeviceChanged MessageType = -2147483641
 	// MessageInstantRateRequest wraps GST_MESSAGE_INSTANT_RATE_REQUEST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_INSTANT_RATE_REQUEST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_INSTANT_RATE_REQUEST
 	MessageInstantRateRequest MessageType = -2147483640
 	// MessageAny wraps GST_MESSAGE_ANY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MESSAGE_ANY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#GST_MESSAGE_ANY
 	MessageAny MessageType = -1
 )
 
@@ -5496,7 +5496,7 @@ func (f MessageType) String() string {
 
 // MessageTypeGetName wraps gst_message_type_get_name
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_message_type_get_name
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#gst_message_type_get_name
 func MessageTypeGetName(typ MessageType) string {
 	var carg1 C.GstMessageType // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -5515,7 +5515,7 @@ func MessageTypeGetName(typ MessageType) string {
 
 // MessageTypeToQuark wraps gst_message_type_to_quark
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_message_type_to_quark
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#gst_message_type_to_quark
 func MessageTypeToQuark(typ MessageType) glib.Quark {
 	var carg1 C.GstMessageType // in, none, casted
 	var cret  C.GQuark         // return, none, casted, alias
@@ -5534,29 +5534,29 @@ func MessageTypeToQuark(typ MessageType) glib.Quark {
 
 // MetaFlags wraps GstMetaFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstMetaFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmeta.html#GstMetaFlags
 type MetaFlags C.gint
 
 const (
 	// MetaFlagNone wraps GST_META_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_META_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmeta.html#GST_META_FLAG_NONE
 	MetaFlagNone MetaFlags = 0
 	// MetaFlagReadonly wraps GST_META_FLAG_READONLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_META_FLAG_READONLY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmeta.html#GST_META_FLAG_READONLY
 	MetaFlagReadonly MetaFlags = 1
 	// MetaFlagPooled wraps GST_META_FLAG_POOLED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_META_FLAG_POOLED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmeta.html#GST_META_FLAG_POOLED
 	MetaFlagPooled MetaFlags = 2
 	// MetaFlagLocked wraps GST_META_FLAG_LOCKED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_META_FLAG_LOCKED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmeta.html#GST_META_FLAG_LOCKED
 	MetaFlagLocked MetaFlags = 4
 	// MetaFlagLast wraps GST_META_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_META_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstmeta.html#GST_META_FLAG_LAST
 	MetaFlagLast MetaFlags = 65536
 )
 
@@ -5604,25 +5604,25 @@ func (f MetaFlags) String() string {
 
 // MiniObjectFlags wraps GstMiniObjectFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstMiniObjectFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GstMiniObjectFlags
 type MiniObjectFlags C.gint
 
 const (
 	// MiniObjectFlagLockable wraps GST_MINI_OBJECT_FLAG_LOCKABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MINI_OBJECT_FLAG_LOCKABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GST_MINI_OBJECT_FLAG_LOCKABLE
 	MiniObjectFlagLockable MiniObjectFlags = 1
 	// MiniObjectFlagLockReadonly wraps GST_MINI_OBJECT_FLAG_LOCK_READONLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MINI_OBJECT_FLAG_LOCK_READONLY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GST_MINI_OBJECT_FLAG_LOCK_READONLY
 	MiniObjectFlagLockReadonly MiniObjectFlags = 2
 	// MiniObjectFlagMayBeLeaked wraps GST_MINI_OBJECT_FLAG_MAY_BE_LEAKED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MINI_OBJECT_FLAG_MAY_BE_LEAKED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GST_MINI_OBJECT_FLAG_MAY_BE_LEAKED
 	MiniObjectFlagMayBeLeaked MiniObjectFlags = 4
 	// MiniObjectFlagLast wraps GST_MINI_OBJECT_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_MINI_OBJECT_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstminiobject.html#GST_MINI_OBJECT_FLAG_LAST
 	MiniObjectFlagLast MiniObjectFlags = 16
 )
 
@@ -5667,21 +5667,21 @@ func (f MiniObjectFlags) String() string {
 
 // ObjectFlags wraps GstObjectFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstObjectFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstobject.html#GstObjectFlags
 type ObjectFlags C.gint
 
 const (
 	// ObjectFlagMayBeLeaked wraps GST_OBJECT_FLAG_MAY_BE_LEAKED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_OBJECT_FLAG_MAY_BE_LEAKED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstobject.html#GST_OBJECT_FLAG_MAY_BE_LEAKED
 	ObjectFlagMayBeLeaked ObjectFlags = 1
 	// ObjectFlagConstructed wraps GST_OBJECT_FLAG_CONSTRUCTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_OBJECT_FLAG_CONSTRUCTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstobject.html#GST_OBJECT_FLAG_CONSTRUCTED
 	ObjectFlagConstructed ObjectFlags = 2
 	// ObjectFlagLast wraps GST_OBJECT_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_OBJECT_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstobject.html#GST_OBJECT_FLAG_LAST
 	ObjectFlagLast ObjectFlags = 16
 )
 
@@ -5723,65 +5723,65 @@ func (f ObjectFlags) String() string {
 
 // PadFlags wraps GstPadFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPadFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GstPadFlags
 type PadFlags C.gint
 
 const (
 	// PadFlagBlocked wraps GST_PAD_FLAG_BLOCKED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_BLOCKED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_BLOCKED
 	PadFlagBlocked PadFlags = 16
 	// PadFlagFlushing wraps GST_PAD_FLAG_FLUSHING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_FLUSHING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_FLUSHING
 	PadFlagFlushing PadFlags = 32
 	// PadFlagEOS wraps GST_PAD_FLAG_EOS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_EOS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_EOS
 	PadFlagEOS PadFlags = 64
 	// PadFlagBlocking wraps GST_PAD_FLAG_BLOCKING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_BLOCKING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_BLOCKING
 	PadFlagBlocking PadFlags = 128
 	// PadFlagNeedParent wraps GST_PAD_FLAG_NEED_PARENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_NEED_PARENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_NEED_PARENT
 	PadFlagNeedParent PadFlags = 256
 	// PadFlagNeedReconfigure wraps GST_PAD_FLAG_NEED_RECONFIGURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_NEED_RECONFIGURE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_NEED_RECONFIGURE
 	PadFlagNeedReconfigure PadFlags = 512
 	// PadFlagPendingEvents wraps GST_PAD_FLAG_PENDING_EVENTS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_PENDING_EVENTS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_PENDING_EVENTS
 	PadFlagPendingEvents PadFlags = 1024
 	// PadFlagFixedCaps wraps GST_PAD_FLAG_FIXED_CAPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_FIXED_CAPS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_FIXED_CAPS
 	PadFlagFixedCaps PadFlags = 2048
 	// PadFlagProxyCaps wraps GST_PAD_FLAG_PROXY_CAPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_PROXY_CAPS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_PROXY_CAPS
 	PadFlagProxyCaps PadFlags = 4096
 	// PadFlagProxyAllocation wraps GST_PAD_FLAG_PROXY_ALLOCATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_PROXY_ALLOCATION
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_PROXY_ALLOCATION
 	PadFlagProxyAllocation PadFlags = 8192
 	// PadFlagProxyScheduling wraps GST_PAD_FLAG_PROXY_SCHEDULING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_PROXY_SCHEDULING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_PROXY_SCHEDULING
 	PadFlagProxyScheduling PadFlags = 16384
 	// PadFlagAcceptIntersect wraps GST_PAD_FLAG_ACCEPT_INTERSECT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_ACCEPT_INTERSECT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_ACCEPT_INTERSECT
 	PadFlagAcceptIntersect PadFlags = 32768
 	// PadFlagAcceptTemplate wraps GST_PAD_FLAG_ACCEPT_TEMPLATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_ACCEPT_TEMPLATE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_ACCEPT_TEMPLATE
 	PadFlagAcceptTemplate PadFlags = 65536
 	// PadFlagLast wraps GST_PAD_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_FLAG_LAST
 	PadFlagLast PadFlags = 1048576
 )
 
@@ -5856,33 +5856,33 @@ func (f PadFlags) String() string {
 
 // PadLinkCheck wraps GstPadLinkCheck
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPadLinkCheck
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GstPadLinkCheck
 type PadLinkCheck C.gint
 
 const (
 	// PadLinkCheckNothing wraps GST_PAD_LINK_CHECK_NOTHING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_CHECK_NOTHING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_CHECK_NOTHING
 	PadLinkCheckNothing PadLinkCheck = 0
 	// PadLinkCheckHierarchy wraps GST_PAD_LINK_CHECK_HIERARCHY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_CHECK_HIERARCHY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_CHECK_HIERARCHY
 	PadLinkCheckHierarchy PadLinkCheck = 1
 	// PadLinkCheckTemplateCaps wraps GST_PAD_LINK_CHECK_TEMPLATE_CAPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_CHECK_TEMPLATE_CAPS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_CHECK_TEMPLATE_CAPS
 	PadLinkCheckTemplateCaps PadLinkCheck = 2
 	// PadLinkCheckCaps wraps GST_PAD_LINK_CHECK_CAPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_CHECK_CAPS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_CHECK_CAPS
 	PadLinkCheckCaps PadLinkCheck = 4
 	// PadLinkCheckNoReconfigure wraps GST_PAD_LINK_CHECK_NO_RECONFIGURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_CHECK_NO_RECONFIGURE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_CHECK_NO_RECONFIGURE
 	PadLinkCheckNoReconfigure PadLinkCheck = 8
 	// PadLinkCheckDefault wraps GST_PAD_LINK_CHECK_DEFAULT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_LINK_CHECK_DEFAULT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_LINK_CHECK_DEFAULT
 	PadLinkCheckDefault PadLinkCheck = 5
 )
 
@@ -5933,97 +5933,97 @@ func (f PadLinkCheck) String() string {
 
 // PadProbeType wraps GstPadProbeType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPadProbeType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GstPadProbeType
 type PadProbeType C.gint
 
 const (
 	// PadProbeTypeInvalid wraps GST_PAD_PROBE_TYPE_INVALID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_INVALID
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_INVALID
 	PadProbeTypeInvalid PadProbeType = 0
 	// PadProbeTypeIdle wraps GST_PAD_PROBE_TYPE_IDLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_IDLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_IDLE
 	PadProbeTypeIdle PadProbeType = 1
 	// PadProbeTypeBlock wraps GST_PAD_PROBE_TYPE_BLOCK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_BLOCK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_BLOCK
 	PadProbeTypeBlock PadProbeType = 2
 	// PadProbeTypeBuffer wraps GST_PAD_PROBE_TYPE_BUFFER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_BUFFER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_BUFFER
 	PadProbeTypeBuffer PadProbeType = 16
 	// PadProbeTypeBufferList wraps GST_PAD_PROBE_TYPE_BUFFER_LIST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_BUFFER_LIST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_BUFFER_LIST
 	PadProbeTypeBufferList PadProbeType = 32
 	// PadProbeTypeEventDownstream wraps GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM
 	PadProbeTypeEventDownstream PadProbeType = 64
 	// PadProbeTypeEventUpstream wraps GST_PAD_PROBE_TYPE_EVENT_UPSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_EVENT_UPSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_EVENT_UPSTREAM
 	PadProbeTypeEventUpstream PadProbeType = 128
 	// PadProbeTypeEventFlush wraps GST_PAD_PROBE_TYPE_EVENT_FLUSH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_EVENT_FLUSH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_EVENT_FLUSH
 	PadProbeTypeEventFlush PadProbeType = 256
 	// PadProbeTypeQueryDownstream wraps GST_PAD_PROBE_TYPE_QUERY_DOWNSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_QUERY_DOWNSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_QUERY_DOWNSTREAM
 	PadProbeTypeQueryDownstream PadProbeType = 512
 	// PadProbeTypeQueryUpstream wraps GST_PAD_PROBE_TYPE_QUERY_UPSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_QUERY_UPSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_QUERY_UPSTREAM
 	PadProbeTypeQueryUpstream PadProbeType = 1024
 	// PadProbeTypePush wraps GST_PAD_PROBE_TYPE_PUSH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_PUSH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_PUSH
 	PadProbeTypePush PadProbeType = 4096
 	// PadProbeTypePull wraps GST_PAD_PROBE_TYPE_PULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_PULL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_PULL
 	PadProbeTypePull PadProbeType = 8192
 	// PadProbeTypeBlocking wraps GST_PAD_PROBE_TYPE_BLOCKING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_BLOCKING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_BLOCKING
 	PadProbeTypeBlocking PadProbeType = 3
 	// PadProbeTypeDataDownstream wraps GST_PAD_PROBE_TYPE_DATA_DOWNSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_DATA_DOWNSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_DATA_DOWNSTREAM
 	PadProbeTypeDataDownstream PadProbeType = 112
 	// PadProbeTypeDataUpstream wraps GST_PAD_PROBE_TYPE_DATA_UPSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_DATA_UPSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_DATA_UPSTREAM
 	PadProbeTypeDataUpstream PadProbeType = 128
 	// PadProbeTypeDataBoth wraps GST_PAD_PROBE_TYPE_DATA_BOTH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_DATA_BOTH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_DATA_BOTH
 	PadProbeTypeDataBoth PadProbeType = 240
 	// PadProbeTypeBlockDownstream wraps GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM
 	PadProbeTypeBlockDownstream PadProbeType = 114
 	// PadProbeTypeBlockUpstream wraps GST_PAD_PROBE_TYPE_BLOCK_UPSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_BLOCK_UPSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_BLOCK_UPSTREAM
 	PadProbeTypeBlockUpstream PadProbeType = 130
 	// PadProbeTypeEventBoth wraps GST_PAD_PROBE_TYPE_EVENT_BOTH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_EVENT_BOTH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_EVENT_BOTH
 	PadProbeTypeEventBoth PadProbeType = 192
 	// PadProbeTypeQueryBoth wraps GST_PAD_PROBE_TYPE_QUERY_BOTH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_QUERY_BOTH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_QUERY_BOTH
 	PadProbeTypeQueryBoth PadProbeType = 1536
 	// PadProbeTypeAllBoth wraps GST_PAD_PROBE_TYPE_ALL_BOTH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_ALL_BOTH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_ALL_BOTH
 	PadProbeTypeAllBoth PadProbeType = 1776
 	// PadProbeTypeScheduling wraps GST_PAD_PROBE_TYPE_SCHEDULING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_PROBE_TYPE_SCHEDULING
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html#GST_PAD_PROBE_TYPE_SCHEDULING
 	PadProbeTypeScheduling PadProbeType = 12288
 )
 
@@ -6122,13 +6122,13 @@ func (f PadProbeType) String() string {
 
 // PadTemplateFlags wraps GstPadTemplateFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPadTemplateFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpadtemplate.html#GstPadTemplateFlags
 type PadTemplateFlags C.gint
 
 const (
 	// PadTemplateFlagLast wraps GST_PAD_TEMPLATE_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PAD_TEMPLATE_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpadtemplate.html#GST_PAD_TEMPLATE_FLAG_LAST
 	PadTemplateFlagLast PadTemplateFlags = 256
 )
 
@@ -6164,25 +6164,25 @@ func (f PadTemplateFlags) String() string {
 
 // ParseFlags wraps GstParseFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstParseFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GstParseFlags
 type ParseFlags C.gint
 
 const (
 	// ParseFlagNone wraps GST_PARSE_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_FLAG_NONE
 	ParseFlagNone ParseFlags = 0
 	// ParseFlagFatalErrors wraps GST_PARSE_FLAG_FATAL_ERRORS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_FLAG_FATAL_ERRORS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_FLAG_FATAL_ERRORS
 	ParseFlagFatalErrors ParseFlags = 1
 	// ParseFlagNoSingleElementBins wraps GST_PARSE_FLAG_NO_SINGLE_ELEMENT_BINS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_FLAG_NO_SINGLE_ELEMENT_BINS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_FLAG_NO_SINGLE_ELEMENT_BINS
 	ParseFlagNoSingleElementBins ParseFlags = 2
 	// ParseFlagPlaceInBin wraps GST_PARSE_FLAG_PLACE_IN_BIN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PARSE_FLAG_PLACE_IN_BIN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstparse.html#GST_PARSE_FLAG_PLACE_IN_BIN
 	ParseFlagPlaceInBin ParseFlags = 4
 )
 
@@ -6227,17 +6227,17 @@ func (f ParseFlags) String() string {
 
 // PipelineFlags wraps GstPipelineFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPipelineFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpipeline.html#GstPipelineFlags
 type PipelineFlags C.gint
 
 const (
 	// PipelineFlagFixedClock wraps GST_PIPELINE_FLAG_FIXED_CLOCK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PIPELINE_FLAG_FIXED_CLOCK
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpipeline.html#GST_PIPELINE_FLAG_FIXED_CLOCK
 	PipelineFlagFixedClock PipelineFlags = 524288
 	// PipelineFlagLast wraps GST_PIPELINE_FLAG_LAST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PIPELINE_FLAG_LAST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpipeline.html#GST_PIPELINE_FLAG_LAST
 	PipelineFlagLast PipelineFlags = 8388608
 )
 
@@ -6282,7 +6282,7 @@ type PluginAPIFlags C.gint
 const (
 	// PluginAPIFlagIgnoreEnumMembers wraps GST_PLUGIN_API_FLAG_IGNORE_ENUM_MEMBERS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_API_FLAG_IGNORE_ENUM_MEMBERS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstutils.html#GST_PLUGIN_API_FLAG_IGNORE_ENUM_MEMBERS
 	PluginAPIFlagIgnoreEnumMembers PluginAPIFlags = 1
 )
 
@@ -6318,33 +6318,33 @@ func (f PluginAPIFlags) String() string {
 
 // PluginDependencyFlags wraps GstPluginDependencyFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPluginDependencyFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GstPluginDependencyFlags
 type PluginDependencyFlags C.gint
 
 const (
 	// PluginDependencyFlagNone wraps GST_PLUGIN_DEPENDENCY_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_DEPENDENCY_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_DEPENDENCY_FLAG_NONE
 	PluginDependencyFlagNone PluginDependencyFlags = 0
 	// PluginDependencyFlagRecurse wraps GST_PLUGIN_DEPENDENCY_FLAG_RECURSE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_DEPENDENCY_FLAG_RECURSE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_DEPENDENCY_FLAG_RECURSE
 	PluginDependencyFlagRecurse PluginDependencyFlags = 1
 	// PluginDependencyFlagPathsAreDefaultOnly wraps GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_DEFAULT_ONLY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_DEFAULT_ONLY
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_DEFAULT_ONLY
 	PluginDependencyFlagPathsAreDefaultOnly PluginDependencyFlags = 2
 	// PluginDependencyFlagFileNameIsSuffix wraps GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_SUFFIX
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_SUFFIX
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_SUFFIX
 	PluginDependencyFlagFileNameIsSuffix PluginDependencyFlags = 4
 	// PluginDependencyFlagFileNameIsPrefix wraps GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_PREFIX
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_PREFIX
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_PREFIX
 	PluginDependencyFlagFileNameIsPrefix PluginDependencyFlags = 8
 	// PluginDependencyFlagPathsAreRelativeToExe wraps GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_RELATIVE_TO_EXE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_RELATIVE_TO_EXE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_RELATIVE_TO_EXE
 	PluginDependencyFlagPathsAreRelativeToExe PluginDependencyFlags = 16
 )
 
@@ -6395,17 +6395,17 @@ func (f PluginDependencyFlags) String() string {
 
 // PluginFlags wraps GstPluginFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstPluginFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GstPluginFlags
 type PluginFlags C.gint
 
 const (
 	// PluginFlagCached wraps GST_PLUGIN_FLAG_CACHED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_FLAG_CACHED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_FLAG_CACHED
 	PluginFlagCached PluginFlags = 16
 	// PluginFlagBlacklisted wraps GST_PLUGIN_FLAG_BLACKLISTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_PLUGIN_FLAG_BLACKLISTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstplugin.html#GST_PLUGIN_FLAG_BLACKLISTED
 	PluginFlagBlacklisted PluginFlags = 32
 )
 
@@ -6444,21 +6444,21 @@ func (f PluginFlags) String() string {
 
 // QueryTypeFlags wraps GstQueryTypeFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstQueryTypeFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GstQueryTypeFlags
 type QueryTypeFlags C.gint
 
 const (
 	// QueryTypeUpstream wraps GST_QUERY_TYPE_UPSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_TYPE_UPSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_TYPE_UPSTREAM
 	QueryTypeUpstream QueryTypeFlags = 1
 	// QueryTypeDownstream wraps GST_QUERY_TYPE_DOWNSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_TYPE_DOWNSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_TYPE_DOWNSTREAM
 	QueryTypeDownstream QueryTypeFlags = 2
 	// QueryTypeSerialized wraps GST_QUERY_TYPE_SERIALIZED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_QUERY_TYPE_SERIALIZED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_QUERY_TYPE_SERIALIZED
 	QueryTypeSerialized QueryTypeFlags = 4
 )
 
@@ -6500,21 +6500,21 @@ func (f QueryTypeFlags) String() string {
 
 // SchedulingFlags wraps GstSchedulingFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstSchedulingFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GstSchedulingFlags
 type SchedulingFlags C.gint
 
 const (
 	// SchedulingFlagSeekable wraps GST_SCHEDULING_FLAG_SEEKABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SCHEDULING_FLAG_SEEKABLE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_SCHEDULING_FLAG_SEEKABLE
 	SchedulingFlagSeekable SchedulingFlags = 1
 	// SchedulingFlagSequential wraps GST_SCHEDULING_FLAG_SEQUENTIAL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SCHEDULING_FLAG_SEQUENTIAL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_SCHEDULING_FLAG_SEQUENTIAL
 	SchedulingFlagSequential SchedulingFlags = 2
 	// SchedulingFlagBandwidthLimited wraps GST_SCHEDULING_FLAG_BANDWIDTH_LIMITED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SCHEDULING_FLAG_BANDWIDTH_LIMITED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstquery.html#GST_SCHEDULING_FLAG_BANDWIDTH_LIMITED
 	SchedulingFlagBandwidthLimited SchedulingFlags = 4
 )
 
@@ -6556,65 +6556,65 @@ func (f SchedulingFlags) String() string {
 
 // SeekFlags wraps GstSeekFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstSeekFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GstSeekFlags
 type SeekFlags C.gint
 
 const (
 	// SeekFlagNone wraps GST_SEEK_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_NONE
 	SeekFlagNone SeekFlags = 0
 	// SeekFlagFlush wraps GST_SEEK_FLAG_FLUSH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_FLUSH
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_FLUSH
 	SeekFlagFlush SeekFlags = 1
 	// SeekFlagAccurate wraps GST_SEEK_FLAG_ACCURATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_ACCURATE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_ACCURATE
 	SeekFlagAccurate SeekFlags = 2
 	// SeekFlagKeyUnit wraps GST_SEEK_FLAG_KEY_UNIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_KEY_UNIT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_KEY_UNIT
 	SeekFlagKeyUnit SeekFlags = 4
 	// SeekFlagSegment wraps GST_SEEK_FLAG_SEGMENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_SEGMENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_SEGMENT
 	SeekFlagSegment SeekFlags = 8
 	// SeekFlagTrickmode wraps GST_SEEK_FLAG_TRICKMODE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_TRICKMODE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_TRICKMODE
 	SeekFlagTrickmode SeekFlags = 16
 	// SeekFlagSkip wraps GST_SEEK_FLAG_SKIP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_SKIP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_SKIP
 	SeekFlagSkip SeekFlags = 16
 	// SeekFlagSnapBefore wraps GST_SEEK_FLAG_SNAP_BEFORE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_SNAP_BEFORE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_SNAP_BEFORE
 	SeekFlagSnapBefore SeekFlags = 32
 	// SeekFlagSnapAfter wraps GST_SEEK_FLAG_SNAP_AFTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_SNAP_AFTER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_SNAP_AFTER
 	SeekFlagSnapAfter SeekFlags = 64
 	// SeekFlagSnapNearest wraps GST_SEEK_FLAG_SNAP_NEAREST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_SNAP_NEAREST
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_SNAP_NEAREST
 	SeekFlagSnapNearest SeekFlags = 96
 	// SeekFlagTrickmodeKeyUnits wraps GST_SEEK_FLAG_TRICKMODE_KEY_UNITS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_TRICKMODE_KEY_UNITS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_TRICKMODE_KEY_UNITS
 	SeekFlagTrickmodeKeyUnits SeekFlags = 128
 	// SeekFlagTrickmodeNoAudio wraps GST_SEEK_FLAG_TRICKMODE_NO_AUDIO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_TRICKMODE_NO_AUDIO
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_TRICKMODE_NO_AUDIO
 	SeekFlagTrickmodeNoAudio SeekFlags = 256
 	// SeekFlagTrickmodeForwardPredicted wraps GST_SEEK_FLAG_TRICKMODE_FORWARD_PREDICTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_TRICKMODE_FORWARD_PREDICTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_TRICKMODE_FORWARD_PREDICTED
 	SeekFlagTrickmodeForwardPredicted SeekFlags = 512
 	// SeekFlagInstantRateChange wraps GST_SEEK_FLAG_INSTANT_RATE_CHANGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEEK_FLAG_INSTANT_RATE_CHANGE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEEK_FLAG_INSTANT_RATE_CHANGE
 	SeekFlagInstantRateChange SeekFlags = 1024
 )
 
@@ -6689,41 +6689,41 @@ func (f SeekFlags) String() string {
 
 // SegmentFlags wraps GstSegmentFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstSegmentFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GstSegmentFlags
 type SegmentFlags C.gint
 
 const (
 	// SegmentFlagNone wraps GST_SEGMENT_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEGMENT_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEGMENT_FLAG_NONE
 	SegmentFlagNone SegmentFlags = 0
 	// SegmentFlagReset wraps GST_SEGMENT_FLAG_RESET
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEGMENT_FLAG_RESET
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEGMENT_FLAG_RESET
 	SegmentFlagReset SegmentFlags = 1
 	// SegmentFlagTrickmode wraps GST_SEGMENT_FLAG_TRICKMODE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEGMENT_FLAG_TRICKMODE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEGMENT_FLAG_TRICKMODE
 	SegmentFlagTrickmode SegmentFlags = 16
 	// SegmentFlagSkip wraps GST_SEGMENT_FLAG_SKIP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEGMENT_FLAG_SKIP
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEGMENT_FLAG_SKIP
 	SegmentFlagSkip SegmentFlags = 16
 	// SegmentFlagSegment wraps GST_SEGMENT_FLAG_SEGMENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEGMENT_FLAG_SEGMENT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEGMENT_FLAG_SEGMENT
 	SegmentFlagSegment SegmentFlags = 8
 	// SegmentFlagTrickmodeKeyUnits wraps GST_SEGMENT_FLAG_TRICKMODE_KEY_UNITS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEGMENT_FLAG_TRICKMODE_KEY_UNITS
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEGMENT_FLAG_TRICKMODE_KEY_UNITS
 	SegmentFlagTrickmodeKeyUnits SegmentFlags = 128
 	// SegmentFlagTrickmodeForwardPredicted wraps GST_SEGMENT_FLAG_TRICKMODE_FORWARD_PREDICTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEGMENT_FLAG_TRICKMODE_FORWARD_PREDICTED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEGMENT_FLAG_TRICKMODE_FORWARD_PREDICTED
 	SegmentFlagTrickmodeForwardPredicted SegmentFlags = 512
 	// SegmentFlagTrickmodeNoAudio wraps GST_SEGMENT_FLAG_TRICKMODE_NO_AUDIO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SEGMENT_FLAG_TRICKMODE_NO_AUDIO
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html#GST_SEGMENT_FLAG_TRICKMODE_NO_AUDIO
 	SegmentFlagTrickmodeNoAudio SegmentFlags = 256
 )
 
@@ -6786,15 +6786,15 @@ type SerializeFlags C.gint
 const (
 	// SerializeFlagNone wraps GST_SERIALIZE_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SERIALIZE_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststructure.html#GST_SERIALIZE_FLAG_NONE
 	SerializeFlagNone SerializeFlags = 0
 	// SerializeFlagBackwardCompat wraps GST_SERIALIZE_FLAG_BACKWARD_COMPAT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SERIALIZE_FLAG_BACKWARD_COMPAT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststructure.html#GST_SERIALIZE_FLAG_BACKWARD_COMPAT
 	SerializeFlagBackwardCompat SerializeFlags = 1
 	// SerializeFlagStrict wraps GST_SERIALIZE_FLAG_STRICT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_SERIALIZE_FLAG_STRICT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststructure.html#GST_SERIALIZE_FLAG_STRICT
 	SerializeFlagStrict SerializeFlags = 2
 )
 
@@ -6842,11 +6842,11 @@ type StackTraceFlags C.gint
 const (
 	// StackTraceShowNone wraps GST_STACK_TRACE_SHOW_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STACK_TRACE_SHOW_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_STACK_TRACE_SHOW_NONE
 	StackTraceShowNone StackTraceFlags = 0
 	// StackTraceShowFull wraps GST_STACK_TRACE_SHOW_FULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STACK_TRACE_SHOW_FULL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstinfo.html#GST_STACK_TRACE_SHOW_FULL
 	StackTraceShowFull StackTraceFlags = 1
 )
 
@@ -6891,19 +6891,19 @@ type StreamFlags C.gint
 const (
 	// StreamFlagNone wraps GST_STREAM_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_STREAM_FLAG_NONE
 	StreamFlagNone StreamFlags = 0
 	// StreamFlagSparse wraps GST_STREAM_FLAG_SPARSE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_FLAG_SPARSE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_STREAM_FLAG_SPARSE
 	StreamFlagSparse StreamFlags = 1
 	// StreamFlagSelect wraps GST_STREAM_FLAG_SELECT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_FLAG_SELECT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_STREAM_FLAG_SELECT
 	StreamFlagSelect StreamFlags = 2
 	// StreamFlagUnselect wraps GST_STREAM_FLAG_UNSELECT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_FLAG_UNSELECT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstevent.html#GST_STREAM_FLAG_UNSELECT
 	StreamFlagUnselect StreamFlags = 4
 )
 
@@ -6948,29 +6948,29 @@ func (f StreamFlags) String() string {
 
 // StreamType wraps GstStreamType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstStreamType
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreams.html#GstStreamType
 type StreamType C.gint
 
 const (
 	// StreamTypeUnknown wraps GST_STREAM_TYPE_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_TYPE_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreams.html#GST_STREAM_TYPE_UNKNOWN
 	StreamTypeUnknown StreamType = 1
 	// StreamTypeAudio wraps GST_STREAM_TYPE_AUDIO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_TYPE_AUDIO
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreams.html#GST_STREAM_TYPE_AUDIO
 	StreamTypeAudio StreamType = 2
 	// StreamTypeVideo wraps GST_STREAM_TYPE_VIDEO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_TYPE_VIDEO
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreams.html#GST_STREAM_TYPE_VIDEO
 	StreamTypeVideo StreamType = 4
 	// StreamTypeContainer wraps GST_STREAM_TYPE_CONTAINER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_TYPE_CONTAINER
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreams.html#GST_STREAM_TYPE_CONTAINER
 	StreamTypeContainer StreamType = 8
 	// StreamTypeText wraps GST_STREAM_TYPE_TEXT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_STREAM_TYPE_TEXT
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreams.html#GST_STREAM_TYPE_TEXT
 	StreamTypeText StreamType = 16
 )
 
@@ -7018,7 +7018,7 @@ func (f StreamType) String() string {
 
 // StreamTypeGetName wraps gst_stream_type_get_name
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#gst_stream_type_get_name
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreams.html#gst_stream_type_get_name
 func StreamTypeGetName(stype StreamType) string {
 	var carg1 C.GstStreamType // in, none, casted
 	var cret  *C.gchar        // return, none, string
@@ -7037,21 +7037,21 @@ func StreamTypeGetName(stype StreamType) string {
 
 // TracerValueFlags wraps GstTracerValueFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GstTracerValueFlags
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttracerrecord.html#GstTracerValueFlags
 type TracerValueFlags C.gint
 
 const (
 	// TracerValueFlagsNone wraps GST_TRACER_VALUE_FLAGS_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TRACER_VALUE_FLAGS_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttracerrecord.html#GST_TRACER_VALUE_FLAGS_NONE
 	TracerValueFlagsNone TracerValueFlags = 0
 	// TracerValueFlagsOptional wraps GST_TRACER_VALUE_FLAGS_OPTIONAL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TRACER_VALUE_FLAGS_OPTIONAL
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttracerrecord.html#GST_TRACER_VALUE_FLAGS_OPTIONAL
 	TracerValueFlagsOptional TracerValueFlags = 1
 	// TracerValueFlagsAggregated wraps GST_TRACER_VALUE_FLAGS_AGGREGATED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer#GST_TRACER_VALUE_FLAGS_AGGREGATED
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gsttracerrecord.html#GST_TRACER_VALUE_FLAGS_AGGREGATED
 	TracerValueFlagsAggregated TracerValueFlags = 2
 )
 
@@ -10254,11 +10254,11 @@ type ChildProxy interface {
 	Lookup(string) (gobject.Object, *gobject.ParamSpec, bool)
 	// ConnectChildAdded connects the provided callback to the "child-added" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstchildproxy.html
 	ConnectChildAdded(func(ChildProxy, gobject.Object, string)) gobject.SignalHandle
 	// ConnectChildRemoved connects the provided callback to the "child-removed" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstchildproxy.html
 	ConnectChildRemoved(func(ChildProxy, gobject.Object, string)) gobject.SignalHandle
 }
 
@@ -10469,14 +10469,14 @@ func (object *ChildProxyInstance) Lookup(name string) (gobject.Object, *gobject.
 
 // ConnectChildAdded connects the provided callback to the "child-added" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstchildproxy.html
 func (o *ChildProxyInstance) ConnectChildAdded(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
 	return o.Instance.Connect("child-added", fn)
 }
 
 // ConnectChildRemoved connects the provided callback to the "child-removed" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstchildproxy.html
 func (o *ChildProxyInstance) ConnectChildRemoved(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
 	return o.Instance.Connect("child-removed", fn)
 }
@@ -11393,7 +11393,7 @@ type Object interface {
 	Unparent()
 	// ConnectDeepNotify connects the provided callback to the "deep-notify" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstobject.html
 	ConnectDeepNotify(func(Object, Object, gobject.ParamSpec)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -11863,7 +11863,7 @@ func (object *ObjectInstance) Unparent() {
 
 // ConnectDeepNotify connects the provided callback to the "deep-notify" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstobject.html
 func (o *ObjectInstance) ConnectDeepNotify(fn func(Object, Object, gobject.ParamSpec)) gobject.SignalHandle {
 	return o.Connect("deep-notify", fn)
 }
@@ -12235,11 +12235,11 @@ type Pad interface {
 	UseFixedCaps()
 	// ConnectLinked connects the provided callback to the "linked" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html
 	ConnectLinked(func(Pad, Pad)) gobject.SignalHandle
 	// ConnectUnlinked connects the provided callback to the "unlinked" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html
 	ConnectUnlinked(func(Pad, Pad)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -13935,14 +13935,14 @@ func (pad *PadInstance) UseFixedCaps() {
 
 // ConnectLinked connects the provided callback to the "linked" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html
 func (o *PadInstance) ConnectLinked(fn func(Pad, Pad)) gobject.SignalHandle {
 	return o.Connect("linked", fn)
 }
 
 // ConnectUnlinked connects the provided callback to the "unlinked" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpad.html
 func (o *PadInstance) ConnectUnlinked(fn func(Pad, Pad)) gobject.SignalHandle {
 	return o.Connect("unlinked", fn)
 }
@@ -14100,7 +14100,7 @@ type PadTemplate interface {
 	SetDocumentationCaps(*Caps)
 	// ConnectPadCreated connects the provided callback to the "pad-created" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpadtemplate.html
 	ConnectPadCreated(func(PadTemplate, Pad)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -14323,7 +14323,7 @@ func (templ *PadTemplateInstance) SetDocumentationCaps(caps *Caps) {
 
 // ConnectPadCreated connects the provided callback to the "pad-created" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstpadtemplate.html
 func (o *PadTemplateInstance) ConnectPadCreated(fn func(PadTemplate, Pad)) gobject.SignalHandle {
 	return o.Connect("pad-created", fn)
 }
@@ -15644,11 +15644,11 @@ type Registry interface {
 	ScanPath(string) bool
 	// ConnectFeatureAdded connects the provided callback to the "feature-added" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstregistry.html
 	ConnectFeatureAdded(func(Registry, PluginFeature)) gobject.SignalHandle
 	// ConnectPluginAdded connects the provided callback to the "plugin-added" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstregistry.html
 	ConnectPluginAdded(func(Registry, Plugin)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -16172,14 +16172,14 @@ func (registry *RegistryInstance) ScanPath(path string) bool {
 
 // ConnectFeatureAdded connects the provided callback to the "feature-added" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstregistry.html
 func (o *RegistryInstance) ConnectFeatureAdded(fn func(Registry, PluginFeature)) gobject.SignalHandle {
 	return o.Connect("feature-added", fn)
 }
 
 // ConnectPluginAdded connects the provided callback to the "plugin-added" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstregistry.html
 func (o *RegistryInstance) ConnectPluginAdded(fn func(Registry, Plugin)) gobject.SignalHandle {
 	return o.Connect("plugin-added", fn)
 }
@@ -16602,7 +16602,7 @@ type StreamCollection interface {
 	GetUpstreamID() string
 	// ConnectStreamNotify connects the provided callback to the "stream-notify" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreamcollection.html
 	ConnectStreamNotify(func(StreamCollection, Stream, gobject.ParamSpec)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -16778,7 +16778,7 @@ func (collection *StreamCollectionInstance) GetUpstreamID() string {
 
 // ConnectStreamNotify connects the provided callback to the "stream-notify" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gststreamcollection.html
 func (o *StreamCollectionInstance) ConnectStreamNotify(fn func(StreamCollection, Stream, gobject.ParamSpec)) gobject.SignalHandle {
 	return o.Connect("stream-notify", fn)
 }
@@ -19604,11 +19604,11 @@ type Bus interface {
 	TimedPopFiltered(ClockTime, MessageType) *Message
 	// ConnectMessage connects the provided callback to the "message" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html
 	ConnectMessage(func(Bus, Message)) gobject.SignalHandle
 	// ConnectSyncMessage connects the provided callback to the "sync-message" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html
 	ConnectSyncMessage(func(Bus, Message)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -20034,14 +20034,14 @@ func (bus *BusInstance) TimedPopFiltered(timeout ClockTime, types MessageType) *
 
 // ConnectMessage connects the provided callback to the "message" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html
 func (o *BusInstance) ConnectMessage(fn func(Bus, Message)) gobject.SignalHandle {
 	return o.Connect("message", fn)
 }
 
 // ConnectSyncMessage connects the provided callback to the "sync-message" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbus.html
 func (o *BusInstance) ConnectSyncMessage(fn func(Bus, Message)) gobject.SignalHandle {
 	return o.Connect("sync-message", fn)
 }
@@ -20275,7 +20275,7 @@ type Clock interface {
 	WaitForSync(ClockTime) bool
 	// ConnectSynced connects the provided callback to the "synced" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html
 	ConnectSynced(func(Clock, bool)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -21083,7 +21083,7 @@ func (clock *ClockInstance) WaitForSync(timeout ClockTime) bool {
 
 // ConnectSynced connects the provided callback to the "synced" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html
 func (o *ClockInstance) ConnectSynced(fn func(Clock, bool)) gobject.SignalHandle {
 	return o.Connect("synced", fn)
 }
@@ -23947,15 +23947,15 @@ type Element interface {
 	UnlinkPads(string, Element, string)
 	// ConnectNoMorePads connects the provided callback to the "no-more-pads" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html
 	ConnectNoMorePads(func(Element)) gobject.SignalHandle
 	// ConnectPadAdded connects the provided callback to the "pad-added" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html
 	ConnectPadAdded(func(Element, Pad)) gobject.SignalHandle
 	// ConnectPadRemoved connects the provided callback to the "pad-removed" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html
 	ConnectPadRemoved(func(Element, Pad)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -25807,21 +25807,21 @@ func (src *ElementInstance) UnlinkPads(srcpadname string, dest Element, destpadn
 
 // ConnectNoMorePads connects the provided callback to the "no-more-pads" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html
 func (o *ElementInstance) ConnectNoMorePads(fn func(Element)) gobject.SignalHandle {
 	return o.Connect("no-more-pads", fn)
 }
 
 // ConnectPadAdded connects the provided callback to the "pad-added" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html
 func (o *ElementInstance) ConnectPadAdded(fn func(Element, Pad)) gobject.SignalHandle {
 	return o.Connect("pad-added", fn)
 }
 
 // ConnectPadRemoved connects the provided callback to the "pad-removed" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html
 func (o *ElementInstance) ConnectPadRemoved(fn func(Element, Pad)) gobject.SignalHandle {
 	return o.Connect("pad-removed", fn)
 }
@@ -28001,23 +28001,23 @@ type Bin interface {
 	SyncChildrenStates() bool
 	// ConnectDeepElementAdded connects the provided callback to the "deep-element-added" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 	ConnectDeepElementAdded(func(Bin, Bin, Element)) gobject.SignalHandle
 	// ConnectDeepElementRemoved connects the provided callback to the "deep-element-removed" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 	ConnectDeepElementRemoved(func(Bin, Bin, Element)) gobject.SignalHandle
 	// ConnectDoLatency connects the provided callback to the "do-latency" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 	ConnectDoLatency(func(Bin) bool) gobject.SignalHandle
 	// ConnectElementAdded connects the provided callback to the "element-added" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 	ConnectElementAdded(func(Bin, Element)) gobject.SignalHandle
 	// ConnectElementRemoved connects the provided callback to the "element-removed" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+	// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 	ConnectElementRemoved(func(Bin, Element)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -28521,35 +28521,35 @@ func (bin *BinInstance) SyncChildrenStates() bool {
 
 // ConnectDeepElementAdded connects the provided callback to the "deep-element-added" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 func (o *BinInstance) ConnectDeepElementAdded(fn func(Bin, Bin, Element)) gobject.SignalHandle {
 	return o.Connect("deep-element-added", fn)
 }
 
 // ConnectDeepElementRemoved connects the provided callback to the "deep-element-removed" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 func (o *BinInstance) ConnectDeepElementRemoved(fn func(Bin, Bin, Element)) gobject.SignalHandle {
 	return o.Connect("deep-element-removed", fn)
 }
 
 // ConnectDoLatency connects the provided callback to the "do-latency" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 func (o *BinInstance) ConnectDoLatency(fn func(Bin) bool) gobject.SignalHandle {
 	return o.Connect("do-latency", fn)
 }
 
 // ConnectElementAdded connects the provided callback to the "element-added" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 func (o *BinInstance) ConnectElementAdded(fn func(Bin, Element)) gobject.SignalHandle {
 	return o.Connect("element-added", fn)
 }
 
 // ConnectElementRemoved connects the provided callback to the "element-removed" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/gstreamer
+// see also https://gstreamer.freedesktop.org/documentation/gstreamer/gstbin.html
 func (o *BinInstance) ConnectElementRemoved(fn func(Bin, Element)) gobject.SignalHandle {
 	return o.Connect("element-removed", fn)
 }

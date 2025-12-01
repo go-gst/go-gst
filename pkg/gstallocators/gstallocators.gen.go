@@ -44,19 +44,19 @@ type FdMemoryFlags C.gint
 const (
 	// FdMemoryFlagNone wraps GST_FD_MEMORY_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/allocators#GST_FD_MEMORY_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GST_FD_MEMORY_FLAG_NONE
 	FdMemoryFlagNone FdMemoryFlags = 0
 	// FdMemoryFlagKeepMapped wraps GST_FD_MEMORY_FLAG_KEEP_MAPPED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/allocators#GST_FD_MEMORY_FLAG_KEEP_MAPPED
+	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GST_FD_MEMORY_FLAG_KEEP_MAPPED
 	FdMemoryFlagKeepMapped FdMemoryFlags = 1
 	// FdMemoryFlagMapPrivate wraps GST_FD_MEMORY_FLAG_MAP_PRIVATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/allocators#GST_FD_MEMORY_FLAG_MAP_PRIVATE
+	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GST_FD_MEMORY_FLAG_MAP_PRIVATE
 	FdMemoryFlagMapPrivate FdMemoryFlags = 2
 	// FdMemoryFlagDontClose wraps GST_FD_MEMORY_FLAG_DONT_CLOSE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/allocators#GST_FD_MEMORY_FLAG_DONT_CLOSE
+	// see also https://gstreamer.freedesktop.org/documentation/allocators/gstfdmemory.html#GST_FD_MEMORY_FLAG_DONT_CLOSE
 	FdMemoryFlagDontClose FdMemoryFlags = 4
 )
 

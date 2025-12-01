@@ -279,31 +279,31 @@ type ATSCStreamType C.int
 const (
 	// StreamTypeAtscDciiVideo wraps GST_MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
 	StreamTypeAtscDciiVideo ATSCStreamType = 128
 	// StreamTypeAtscAudioAc3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
 	StreamTypeAtscAudioAc3 ATSCStreamType = 129
 	// StreamTypeAtscSubtitling wraps GST_MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
 	StreamTypeAtscSubtitling ATSCStreamType = 130
 	// StreamTypeAtscIsochData wraps GST_MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
 	StreamTypeAtscIsochData ATSCStreamType = 131
 	// StreamTypeAtscSit wraps GST_MPEGTS_STREAM_TYPE_ATSC_SIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_SIT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MPEGTS_STREAM_TYPE_ATSC_SIT
 	StreamTypeAtscSit ATSCStreamType = 134
 	// StreamTypeAtscAudioEac3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
 	StreamTypeAtscAudioEac3 ATSCStreamType = 135
 	// StreamTypeAtscAudioDtsHd wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
 	StreamTypeAtscAudioDtsHd ATSCStreamType = 136
 )
 
@@ -739,7 +739,7 @@ const (
 	GstMtsDescDvbFrequencyList DVBDescriptorType = 98
 	// GstMtsDescDvbPartialTransportStream wraps GST_MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GST_MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
 	GstMtsDescDvbPartialTransportStream DVBDescriptorType = 99
 	// GstMtsDescDvbDataBroadcast wraps GST_MTS_DESC_DVB_DATA_BROADCAST
 	// 
@@ -1014,7 +1014,7 @@ const (
 	GstMtsDescExtDvbAc4 DVBExtendedDescriptorType = 21
 	// GstMtsDescExtDvbAudioPreselection wraps GST_MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-descriptor.html#GST_MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
 	GstMtsDescExtDvbAudioPreselection DVBExtendedDescriptorType = 25
 )
 
@@ -1650,7 +1650,7 @@ const (
 	GstMtsDescStereoscopicVideoInfo DescriptorType = 54
 	// GstMtsDescExtension wraps GST_MTS_DESC_EXTENSION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_DESC_EXTENSION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_DESC_EXTENSION
 	GstMtsDescExtension DescriptorType = 63
 )
 
@@ -2064,19 +2064,19 @@ type MetadataFormat C.int
 const (
 	// MetadataFormatTem wraps GST_MPEGTS_METADATA_FORMAT_TEM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_FORMAT_TEM
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MPEGTS_METADATA_FORMAT_TEM
 	MetadataFormatTem MetadataFormat = 16
 	// MetadataFormatBim wraps GST_MPEGTS_METADATA_FORMAT_BIM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_FORMAT_BIM
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MPEGTS_METADATA_FORMAT_BIM
 	MetadataFormatBim MetadataFormat = 17
 	// MetadataFormatApplicationFormat wraps GST_MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
 	MetadataFormatApplicationFormat MetadataFormat = 63
 	// MetadataFormatIdentifierField wraps GST_MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
 	MetadataFormatIdentifierField MetadataFormat = 255
 )
 
@@ -2469,35 +2469,35 @@ type ScteStreamType C.int
 const (
 	// StreamTypeScteSubtitling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
 	StreamTypeScteSubtitling ScteStreamType = 130
 	// StreamTypeScteIsochData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
 	StreamTypeScteIsochData ScteStreamType = 131
 	// StreamTypeScteSit wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_SIT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MPEGTS_STREAM_TYPE_SCTE_SIT
 	StreamTypeScteSit ScteStreamType = 134
 	// StreamTypeScteDstNrt wraps GST_MPEGTS_STREAM_TYPE_SCTE_DST_NRT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_DST_NRT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MPEGTS_STREAM_TYPE_SCTE_DST_NRT
 	StreamTypeScteDstNrt ScteStreamType = 149
 	// StreamTypeScteDsmccDcb wraps GST_MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
 	StreamTypeScteDsmccDcb ScteStreamType = 176
 	// StreamTypeScteSignaling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIGNALING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_SIGNALING
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MPEGTS_STREAM_TYPE_SCTE_SIGNALING
 	StreamTypeScteSignaling ScteStreamType = 192
 	// StreamTypeScteSyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
 	StreamTypeScteSyncData ScteStreamType = 194
 	// StreamTypeScteAsyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
 	StreamTypeScteAsyncData ScteStreamType = 195
 )
 
@@ -2524,59 +2524,59 @@ type SectionATSCTableID C.int
 const (
 	// GstMtsTableIDAtscMasterGuide wraps GST_MTS_TABLE_ID_ATSC_MASTER_GUIDE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_MASTER_GUIDE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_MASTER_GUIDE
 	GstMtsTableIDAtscMasterGuide SectionATSCTableID = 199
 	// GstMtsTableIDAtscTerrestrialVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
 	GstMtsTableIDAtscTerrestrialVirtualChannel SectionATSCTableID = 200
 	// GstMtsTableIDAtscCableVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
 	GstMtsTableIDAtscCableVirtualChannel SectionATSCTableID = 201
 	// GstMtsTableIDAtscRatingRegion wraps GST_MTS_TABLE_ID_ATSC_RATING_REGION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_RATING_REGION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_RATING_REGION
 	GstMtsTableIDAtscRatingRegion SectionATSCTableID = 202
 	// GstMtsTableIDAtscEventInformation wraps GST_MTS_TABLE_ID_ATSC_EVENT_INFORMATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_EVENT_INFORMATION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_EVENT_INFORMATION
 	GstMtsTableIDAtscEventInformation SectionATSCTableID = 203
 	// GstMtsTableIDAtscChannelOrEventExtendedText wraps GST_MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
 	GstMtsTableIDAtscChannelOrEventExtendedText SectionATSCTableID = 204
 	// GstMtsTableIDAtscSystemTime wraps GST_MTS_TABLE_ID_ATSC_SYSTEM_TIME
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_SYSTEM_TIME
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_SYSTEM_TIME
 	GstMtsTableIDAtscSystemTime SectionATSCTableID = 205
 	// GstMtsTableIDAtscDataEvent wraps GST_MTS_TABLE_ID_ATSC_DATA_EVENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_DATA_EVENT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_DATA_EVENT
 	GstMtsTableIDAtscDataEvent SectionATSCTableID = 206
 	// GstMtsTableIDAtscDataService wraps GST_MTS_TABLE_ID_ATSC_DATA_SERVICE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_DATA_SERVICE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_DATA_SERVICE
 	GstMtsTableIDAtscDataService SectionATSCTableID = 207
 	// GstMtsTableIDAtscProgramIdentifier wraps GST_MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
 	GstMtsTableIDAtscProgramIdentifier SectionATSCTableID = 208
 	// GstMtsTableIDAtscNetworkResource wraps GST_MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
 	GstMtsTableIDAtscNetworkResource SectionATSCTableID = 209
 	// GstMtsTableIDAtscLongTermService wraps GST_MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
 	GstMtsTableIDAtscLongTermService SectionATSCTableID = 210
 	// GstMtsTableIDAtscDirectedChannelChange wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
 	GstMtsTableIDAtscDirectedChannelChange SectionATSCTableID = 211
 	// GstMtsTableIDAtscDirectedChannelChangeSectionCode wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
 	GstMtsTableIDAtscDirectedChannelChangeSectionCode SectionATSCTableID = 212
 	// GstMtsTableIDAtscAggregateEventInformation wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_EVENT_INFORMATION
 	// 
@@ -2592,7 +2592,7 @@ const (
 	GstMtsTableIDAtscAggregateDataEvent SectionATSCTableID = 217
 	// GstMtsTableIDAtscSatelliteVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-atsc-section.html#GST_MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
 	GstMtsTableIDAtscSatelliteVirtualChannel SectionATSCTableID = 218
 )
 
@@ -2629,127 +2629,127 @@ type SectionDVBTableID C.int
 const (
 	// GstMtsTableIDNetworkInformationActualNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
 	GstMtsTableIDNetworkInformationActualNetwork SectionDVBTableID = 64
 	// GstMtsTableIDNetworkInformationOtherNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
 	GstMtsTableIDNetworkInformationOtherNetwork SectionDVBTableID = 65
 	// GstMtsTableIDServiceDescriptionActualTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
 	GstMtsTableIDServiceDescriptionActualTs SectionDVBTableID = 66
 	// GstMtsTableIDServiceDescriptionOtherTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
 	GstMtsTableIDServiceDescriptionOtherTs SectionDVBTableID = 70
 	// GstMtsTableIDBouquetAssociation wraps GST_MTS_TABLE_ID_BOUQUET_ASSOCIATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_BOUQUET_ASSOCIATION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_BOUQUET_ASSOCIATION
 	GstMtsTableIDBouquetAssociation SectionDVBTableID = 74
 	// GstMtsTableIDUpdateNotification wraps GST_MTS_TABLE_ID_UPDATE_NOTIFICATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_UPDATE_NOTIFICATION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_UPDATE_NOTIFICATION
 	GstMtsTableIDUpdateNotification SectionDVBTableID = 75
 	// GstMtsTableIDDownloadableFontInfo wraps GST_MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
 	GstMtsTableIDDownloadableFontInfo SectionDVBTableID = 76
 	// GstMtsTableIDEventInformationActualTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
 	GstMtsTableIDEventInformationActualTsPresent SectionDVBTableID = 78
 	// GstMtsTableIDEventInformationOtherTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
 	GstMtsTableIDEventInformationOtherTsPresent SectionDVBTableID = 79
 	// GstMtsTableIDEventInformationActualTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
 	GstMtsTableIDEventInformationActualTsSchedule1 SectionDVBTableID = 80
 	// GstMtsTableIDEventInformationActualTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
 	GstMtsTableIDEventInformationActualTsScheduleN SectionDVBTableID = 95
 	// GstMtsTableIDEventInformationOtherTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
 	GstMtsTableIDEventInformationOtherTsSchedule1 SectionDVBTableID = 96
 	// GstMtsTableIDEventInformationOtherTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
 	GstMtsTableIDEventInformationOtherTsScheduleN SectionDVBTableID = 111
 	// GstMtsTableIDTimeDate wraps GST_MTS_TABLE_ID_TIME_DATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TIME_DATE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_TIME_DATE
 	GstMtsTableIDTimeDate SectionDVBTableID = 112
 	// GstMtsTableIDRunningStatus wraps GST_MTS_TABLE_ID_RUNNING_STATUS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_RUNNING_STATUS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_RUNNING_STATUS
 	GstMtsTableIDRunningStatus SectionDVBTableID = 113
 	// GstMtsTableIDStuffing wraps GST_MTS_TABLE_ID_STUFFING
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_STUFFING
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_STUFFING
 	GstMtsTableIDStuffing SectionDVBTableID = 114
 	// GstMtsTableIDTimeOffset wraps GST_MTS_TABLE_ID_TIME_OFFSET
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TIME_OFFSET
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_TIME_OFFSET
 	GstMtsTableIDTimeOffset SectionDVBTableID = 115
 	// GstMtsTableIDApplicationInformationTable wraps GST_MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
 	GstMtsTableIDApplicationInformationTable SectionDVBTableID = 116
 	// GstMtsTableIDContainer wraps GST_MTS_TABLE_ID_CONTAINER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CONTAINER
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_CONTAINER
 	GstMtsTableIDContainer SectionDVBTableID = 117
 	// GstMtsTableIDRelatedContent wraps GST_MTS_TABLE_ID_RELATED_CONTENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_RELATED_CONTENT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_RELATED_CONTENT
 	GstMtsTableIDRelatedContent SectionDVBTableID = 118
 	// GstMtsTableIDContentIdentifier wraps GST_MTS_TABLE_ID_CONTENT_IDENTIFIER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CONTENT_IDENTIFIER
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_CONTENT_IDENTIFIER
 	GstMtsTableIDContentIdentifier SectionDVBTableID = 119
 	// GstMtsTableIDMpeFec wraps GST_MTS_TABLE_ID_MPE_FEC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_MPE_FEC
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_MPE_FEC
 	GstMtsTableIDMpeFec SectionDVBTableID = 120
 	// GstMtsTableIDResolutionNotification wraps GST_MTS_TABLE_ID_RESOLUTION_NOTIFICATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_RESOLUTION_NOTIFICATION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_RESOLUTION_NOTIFICATION
 	GstMtsTableIDResolutionNotification SectionDVBTableID = 121
 	// GstMtsTableIDMpeIfec wraps GST_MTS_TABLE_ID_MPE_IFEC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_MPE_IFEC
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_MPE_IFEC
 	GstMtsTableIDMpeIfec SectionDVBTableID = 122
 	// GstMtsTableIDProtectionMessage wraps GST_MTS_TABLE_ID_PROTECTION_MESSAGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_PROTECTION_MESSAGE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_PROTECTION_MESSAGE
 	GstMtsTableIDProtectionMessage SectionDVBTableID = 123
 	// GstMtsTableIDDiscontinuityInformation wraps GST_MTS_TABLE_ID_DISCONTINUITY_INFORMATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DISCONTINUITY_INFORMATION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_DISCONTINUITY_INFORMATION
 	GstMtsTableIDDiscontinuityInformation SectionDVBTableID = 126
 	// GstMtsTableIDSelectionInformation wraps GST_MTS_TABLE_ID_SELECTION_INFORMATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SELECTION_INFORMATION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_SELECTION_INFORMATION
 	GstMtsTableIDSelectionInformation SectionDVBTableID = 127
 	// GstMtsTableIDCaMessageEcm0 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_0
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CA_MESSAGE_ECM_0
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_CA_MESSAGE_ECM_0
 	GstMtsTableIDCaMessageEcm0 SectionDVBTableID = 128
 	// GstMtsTableIDCaMessageEcm1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CA_MESSAGE_ECM_1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_CA_MESSAGE_ECM_1
 	GstMtsTableIDCaMessageEcm1 SectionDVBTableID = 129
 	// GstMtsTableIDCaMessageSystemPrivate1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
 	GstMtsTableIDCaMessageSystemPrivate1 SectionDVBTableID = 130
 	// GstMtsTableIDCaMessageSystemPrivateN wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-dvb-section.html#GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
 	GstMtsTableIDCaMessageSystemPrivateN SectionDVBTableID = 143
 	// GstMtsTableIDSct wraps GST_MTS_TABLE_ID_SCT
 	// 
@@ -2849,11 +2849,11 @@ type SectionSCTETableID C.int
 const (
 	// GstMtsTableIDScteEas wraps GST_MTS_TABLE_ID_SCTE_EAS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_EAS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MTS_TABLE_ID_SCTE_EAS
 	GstMtsTableIDScteEas SectionSCTETableID = 216
 	// GstMtsTableIDScteEbif wraps GST_MTS_TABLE_ID_SCTE_EBIF
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_EBIF
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MTS_TABLE_ID_SCTE_EBIF
 	GstMtsTableIDScteEbif SectionSCTETableID = 224
 	// GstMtsTableIDScteReserved wraps GST_MTS_TABLE_ID_SCTE_RESERVED
 	// 
@@ -2861,19 +2861,19 @@ const (
 	GstMtsTableIDScteReserved SectionSCTETableID = 225
 	// GstMtsTableIDScteEiss wraps GST_MTS_TABLE_ID_SCTE_EISS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_EISS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MTS_TABLE_ID_SCTE_EISS
 	GstMtsTableIDScteEiss SectionSCTETableID = 226
 	// GstMtsTableIDScteDii wraps GST_MTS_TABLE_ID_SCTE_DII
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_DII
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MTS_TABLE_ID_SCTE_DII
 	GstMtsTableIDScteDii SectionSCTETableID = 227
 	// GstMtsTableIDScteDdb wraps GST_MTS_TABLE_ID_SCTE_DDB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_DDB
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MTS_TABLE_ID_SCTE_DDB
 	GstMtsTableIDScteDdb SectionSCTETableID = 228
 	// GstMtsTableIDScteSplice wraps GST_MTS_TABLE_ID_SCTE_SPLICE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_SCTE_SPLICE
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html#GST_MTS_TABLE_ID_SCTE_SPLICE
 	GstMtsTableIDScteSplice SectionSCTETableID = 252
 )
 
@@ -2899,75 +2899,75 @@ type SectionTableID C.int
 const (
 	// GstMtsTableIDProgramAssociation wraps GST_MTS_TABLE_ID_PROGRAM_ASSOCIATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_PROGRAM_ASSOCIATION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_PROGRAM_ASSOCIATION
 	GstMtsTableIDProgramAssociation SectionTableID = 0
 	// GstMtsTableIDConditionalAccess wraps GST_MTS_TABLE_ID_CONDITIONAL_ACCESS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_CONDITIONAL_ACCESS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_CONDITIONAL_ACCESS
 	GstMtsTableIDConditionalAccess SectionTableID = 1
 	// GstMtsTableIDTsProgramMap wraps GST_MTS_TABLE_ID_TS_PROGRAM_MAP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TS_PROGRAM_MAP
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_TS_PROGRAM_MAP
 	GstMtsTableIDTsProgramMap SectionTableID = 2
 	// GstMtsTableIDTsDescription wraps GST_MTS_TABLE_ID_TS_DESCRIPTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_TS_DESCRIPTION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_TS_DESCRIPTION
 	GstMtsTableIDTsDescription SectionTableID = 3
 	// GstMtsTableID14496SceneDescription wraps GST_MTS_TABLE_ID_14496_SCENE_DESCRIPTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_14496_SCENE_DESCRIPTION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_14496_SCENE_DESCRIPTION
 	GstMtsTableID14496SceneDescription SectionTableID = 4
 	// GstMtsTableID14496ObjetDescriptor wraps GST_MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
 	GstMtsTableID14496ObjetDescriptor SectionTableID = 5
 	// GstMtsTableIDMetadata wraps GST_MTS_TABLE_ID_METADATA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_METADATA
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_METADATA
 	GstMtsTableIDMetadata SectionTableID = 6
 	// GstMtsTableIDIpmpControlInformation wraps GST_MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
 	GstMtsTableIDIpmpControlInformation SectionTableID = 7
 	// GstMtsTableID14496Section wraps GST_MTS_TABLE_ID_14496_SECTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_14496_SECTION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_14496_SECTION
 	GstMtsTableID14496Section SectionTableID = 8
 	// GstMtsTableID2300111Section wraps GST_MTS_TABLE_ID_23001_11_SECTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_23001_11_SECTION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_23001_11_SECTION
 	GstMtsTableID2300111Section SectionTableID = 9
 	// GstMtsTableID2300110Section wraps GST_MTS_TABLE_ID_23001_10_SECTION
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_23001_10_SECTION
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_23001_10_SECTION
 	GstMtsTableID2300110Section SectionTableID = 10
 	// GstMtsTableIDDsmCcMultiprotoEncapsulatedData wraps GST_MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
 	GstMtsTableIDDsmCcMultiprotoEncapsulatedData SectionTableID = 58
 	// GstMtsTableIDDsmCcUNMessages wraps GST_MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
 	GstMtsTableIDDsmCcUNMessages SectionTableID = 59
 	// GstMtsTableIDDsmCcDownloadDataMessages wraps GST_MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
 	GstMtsTableIDDsmCcDownloadDataMessages SectionTableID = 60
 	// GstMtsTableIDDsmCcStreamDescriptors wraps GST_MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
 	GstMtsTableIDDsmCcStreamDescriptors SectionTableID = 61
 	// GstMtsTableIDDsmCcPrivateData wraps GST_MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
 	GstMtsTableIDDsmCcPrivateData SectionTableID = 62
 	// GstMtsTableIDDsmCcAddressableSections wraps GST_MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
 	GstMtsTableIDDsmCcAddressableSections SectionTableID = 63
 	// GstMtsTableIDUnset wraps GST_MTS_TABLE_ID_UNSET
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_TABLE_ID_UNSET
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MTS_TABLE_ID_UNSET
 	GstMtsTableIDUnset SectionTableID = 255
 )
 
@@ -3004,83 +3004,83 @@ type SectionType C.int
 const (
 	// SectionUnknown wraps GST_MPEGTS_SECTION_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_UNKNOWN
 	SectionUnknown SectionType = 0
 	// SectionPat wraps GST_MPEGTS_SECTION_PAT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_PAT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_PAT
 	SectionPat SectionType = 1
 	// SectionPmt wraps GST_MPEGTS_SECTION_PMT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_PMT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_PMT
 	SectionPmt SectionType = 2
 	// SectionCat wraps GST_MPEGTS_SECTION_CAT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_CAT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_CAT
 	SectionCat SectionType = 3
 	// SectionTsdt wraps GST_MPEGTS_SECTION_TSDT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_TSDT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_TSDT
 	SectionTsdt SectionType = 4
 	// SectionEit wraps GST_MPEGTS_SECTION_EIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_EIT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_EIT
 	SectionEit SectionType = 5
 	// SectionNit wraps GST_MPEGTS_SECTION_NIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_NIT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_NIT
 	SectionNit SectionType = 6
 	// SectionBat wraps GST_MPEGTS_SECTION_BAT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_BAT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_BAT
 	SectionBat SectionType = 7
 	// SectionSdt wraps GST_MPEGTS_SECTION_SDT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_SDT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_SDT
 	SectionSdt SectionType = 8
 	// SectionTdt wraps GST_MPEGTS_SECTION_TDT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_TDT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_TDT
 	SectionTdt SectionType = 9
 	// SectionTot wraps GST_MPEGTS_SECTION_TOT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_TOT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_TOT
 	SectionTot SectionType = 10
 	// SectionSit wraps GST_MPEGTS_SECTION_SIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_SIT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_SIT
 	SectionSit SectionType = 11
 	// SectionAtscTvct wraps GST_MPEGTS_SECTION_ATSC_TVCT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_TVCT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_ATSC_TVCT
 	SectionAtscTvct SectionType = 12
 	// SectionAtscCvct wraps GST_MPEGTS_SECTION_ATSC_CVCT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_CVCT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_ATSC_CVCT
 	SectionAtscCvct SectionType = 13
 	// SectionAtscMgt wraps GST_MPEGTS_SECTION_ATSC_MGT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_MGT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_ATSC_MGT
 	SectionAtscMgt SectionType = 14
 	// SectionAtscEtt wraps GST_MPEGTS_SECTION_ATSC_ETT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_ETT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_ATSC_ETT
 	SectionAtscEtt SectionType = 15
 	// SectionAtscEit wraps GST_MPEGTS_SECTION_ATSC_EIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_EIT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_ATSC_EIT
 	SectionAtscEit SectionType = 16
 	// SectionAtscStt wraps GST_MPEGTS_SECTION_ATSC_STT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_STT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_ATSC_STT
 	SectionAtscStt SectionType = 17
 	// SectionAtscRrt wraps GST_MPEGTS_SECTION_ATSC_RRT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_ATSC_RRT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_ATSC_RRT
 	SectionAtscRrt SectionType = 18
 	// SectionScteSit wraps GST_MPEGTS_SECTION_SCTE_SIT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_SECTION_SCTE_SIT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_SECTION_SCTE_SIT
 	SectionScteSit SectionType = 19
 )
 
@@ -3119,167 +3119,167 @@ type StreamType C.int
 const (
 	// StreamTypeReserved00 wraps GST_MPEGTS_STREAM_TYPE_RESERVED_00
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_RESERVED_00
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_RESERVED_00
 	StreamTypeReserved00 StreamType = 0
 	// StreamTypeVideoMpeg1 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG1
 	StreamTypeVideoMpeg1 StreamType = 1
 	// StreamTypeVideoMpeg2 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2
 	StreamTypeVideoMpeg2 StreamType = 2
 	// StreamTypeAudioMpeg1 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG1
 	StreamTypeAudioMpeg1 StreamType = 3
 	// StreamTypeAudioMpeg2 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG2
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG2
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG2
 	StreamTypeAudioMpeg2 StreamType = 4
 	// StreamTypePrivateSections wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
 	StreamTypePrivateSections StreamType = 5
 	// StreamTypePrivatePesPackets wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
 	StreamTypePrivatePesPackets StreamType = 6
 	// StreamTypeMheg wraps GST_MPEGTS_STREAM_TYPE_MHEG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_MHEG
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_MHEG
 	StreamTypeMheg StreamType = 7
 	// StreamTypeDsmCc wraps GST_MPEGTS_STREAM_TYPE_DSM_CC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSM_CC
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_DSM_CC
 	StreamTypeDsmCc StreamType = 8
 	// StreamTypeH2221 wraps GST_MPEGTS_STREAM_TYPE_H_222_1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_H_222_1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_H_222_1
 	StreamTypeH2221 StreamType = 9
 	// StreamTypeDsmccA wraps GST_MPEGTS_STREAM_TYPE_DSMCC_A
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSMCC_A
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_DSMCC_A
 	StreamTypeDsmccA StreamType = 10
 	// StreamTypeDsmccB wraps GST_MPEGTS_STREAM_TYPE_DSMCC_B
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSMCC_B
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_DSMCC_B
 	StreamTypeDsmccB StreamType = 11
 	// StreamTypeDsmccC wraps GST_MPEGTS_STREAM_TYPE_DSMCC_C
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSMCC_C
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_DSMCC_C
 	StreamTypeDsmccC StreamType = 12
 	// StreamTypeDsmccD wraps GST_MPEGTS_STREAM_TYPE_DSMCC_D
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_DSMCC_D
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_DSMCC_D
 	StreamTypeDsmccD StreamType = 13
 	// StreamTypeAuxiliary wraps GST_MPEGTS_STREAM_TYPE_AUXILIARY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUXILIARY
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_AUXILIARY
 	StreamTypeAuxiliary StreamType = 14
 	// StreamTypeAudioAacAdts wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
 	StreamTypeAudioAacAdts StreamType = 15
 	// StreamTypeVideoMpeg4 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG4
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG4
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG4
 	StreamTypeVideoMpeg4 StreamType = 16
 	// StreamTypeAudioAacLatm wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
 	StreamTypeAudioAacLatm StreamType = 17
 	// StreamTypeSlFlexmuxPesPackets wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
 	StreamTypeSlFlexmuxPesPackets StreamType = 18
 	// StreamTypeSlFlexmuxSections wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
 	StreamTypeSlFlexmuxSections StreamType = 19
 	// StreamTypeSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
 	StreamTypeSynchronizedDownload StreamType = 20
 	// StreamTypeMetadataPesPackets wraps GST_MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
 	StreamTypeMetadataPesPackets StreamType = 21
 	// StreamTypeMetadataSections wraps GST_MPEGTS_STREAM_TYPE_METADATA_SECTIONS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_SECTIONS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_METADATA_SECTIONS
 	StreamTypeMetadataSections StreamType = 22
 	// StreamTypeMetadataDataCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
 	StreamTypeMetadataDataCarousel StreamType = 23
 	// StreamTypeMetadataObjectCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
 	StreamTypeMetadataObjectCarousel StreamType = 24
 	// StreamTypeMetadataSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
 	StreamTypeMetadataSynchronizedDownload StreamType = 25
 	// StreamTypeMpeg2Ipmp wraps GST_MPEGTS_STREAM_TYPE_MPEG2_IPMP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_MPEG2_IPMP
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_MPEG2_IPMP
 	StreamTypeMpeg2Ipmp StreamType = 26
 	// StreamTypeVideoH264 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_H264
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_H264
 	StreamTypeVideoH264 StreamType = 27
 	// StreamTypeAudioAacClean wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
 	StreamTypeAudioAacClean StreamType = 28
 	// StreamTypeMpeg4TimedText wraps GST_MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
 	StreamTypeMpeg4TimedText StreamType = 29
 	// StreamTypeVideoRvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_RVC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_RVC
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_RVC
 	StreamTypeVideoRvc StreamType = 30
 	// StreamTypeVideoH264SvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
 	StreamTypeVideoH264SvcSubBitstream StreamType = 31
 	// StreamTypeVideoH264MvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
 	StreamTypeVideoH264MvcSubBitstream StreamType = 32
 	// StreamTypeVideoJp2k wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JP2K
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_JP2K
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_JP2K
 	StreamTypeVideoJp2k StreamType = 33
 	// StreamTypeVideoMpeg2StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
 	StreamTypeVideoMpeg2StereoAdditionalView StreamType = 34
 	// StreamTypeVideoH264StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
 	StreamTypeVideoH264StereoAdditionalView StreamType = 35
 	// StreamTypeVideoHevc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_HEVC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_HEVC
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_HEVC
 	StreamTypeVideoHevc StreamType = 36
 	// StreamTypeVideoJpegXs wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
 	StreamTypeVideoJpegXs StreamType = 50
 	// StreamTypeVideoVvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_VVC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_VIDEO_VVC
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_VIDEO_VVC
 	StreamTypeVideoVvc StreamType = 51
 	// StreamTypeIpmpStream wraps GST_MPEGTS_STREAM_TYPE_IPMP_STREAM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_IPMP_STREAM
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_IPMP_STREAM
 	StreamTypeIpmpStream StreamType = 127
 	// StreamTypeUserPrivateEa wraps GST_MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html#GST_MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
 	StreamTypeUserPrivateEa StreamType = 234
 )
 
@@ -3509,75 +3509,75 @@ type RegistrationId C.gint
 const (
 	// GstMtsRegistration0 wraps GST_MTS_REGISTRATION_0
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_0
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_0
 	GstMtsRegistration0 RegistrationId = 0
 	// GstMtsRegistrationAc3 wraps GST_MTS_REGISTRATION_AC_3
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_AC_3
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_AC_3
 	GstMtsRegistrationAc3 RegistrationId = 1094921523
 	// GstMtsRegistrationCuei wraps GST_MTS_REGISTRATION_CUEI
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_CUEI
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_CUEI
 	GstMtsRegistrationCuei RegistrationId = 1129661769
 	// GstMtsRegistrationDrac wraps GST_MTS_REGISTRATION_drac
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_drac
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_drac
 	GstMtsRegistrationDrac RegistrationId = 1685217635
 	// GstMtsRegistrationDts1 wraps GST_MTS_REGISTRATION_DTS1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_DTS1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_DTS1
 	GstMtsRegistrationDts1 RegistrationId = 1146377009
 	// GstMtsRegistrationDts2 wraps GST_MTS_REGISTRATION_DTS2
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_DTS2
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_DTS2
 	GstMtsRegistrationDts2 RegistrationId = 1146377010
 	// GstMtsRegistrationDts3 wraps GST_MTS_REGISTRATION_DTS3
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_DTS3
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_DTS3
 	GstMtsRegistrationDts3 RegistrationId = 1146377011
 	// GstMtsRegistrationBssd wraps GST_MTS_REGISTRATION_BSSD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_BSSD
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_BSSD
 	GstMtsRegistrationBssd RegistrationId = 1112757060
 	// GstMtsRegistrationEac3 wraps GST_MTS_REGISTRATION_EAC3
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_EAC3
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_EAC3
 	GstMtsRegistrationEac3 RegistrationId = 1161904947
 	// GstMtsRegistrationEtv1 wraps GST_MTS_REGISTRATION_ETV1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_ETV1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_ETV1
 	GstMtsRegistrationEtv1 RegistrationId = 1163154993
 	// GstMtsRegistrationGa94 wraps GST_MTS_REGISTRATION_GA94
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_GA94
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_GA94
 	GstMtsRegistrationGa94 RegistrationId = 1195456820
 	// GstMtsRegistrationHdmv wraps GST_MTS_REGISTRATION_HDMV
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_HDMV
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_HDMV
 	GstMtsRegistrationHdmv RegistrationId = 1212435798
 	// GstMtsRegistrationKlva wraps GST_MTS_REGISTRATION_KLVA
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_KLVA
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_KLVA
 	GstMtsRegistrationKlva RegistrationId = 1263294017
 	// GstMtsRegistrationOpus wraps GST_MTS_REGISTRATION_OPUS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_OPUS
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_OPUS
 	GstMtsRegistrationOpus RegistrationId = 1330664787
 	// GstMtsRegistrationTshv wraps GST_MTS_REGISTRATION_TSHV
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_TSHV
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_TSHV
 	GstMtsRegistrationTshv RegistrationId = 1414744150
 	// GstMtsRegistrationVc1 wraps GST_MTS_REGISTRATION_VC_1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_VC_1
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_VC_1
 	GstMtsRegistrationVc1 RegistrationId = 1447243057
 	// GstMtsRegistrationAc4 wraps GST_MTS_REGISTRATION_AC_4
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_AC_4
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_AC_4
 	GstMtsRegistrationAc4 RegistrationId = 1094921524
 	// GstMtsRegistrationOtherHevc wraps GST_MTS_REGISTRATION_OTHER_HEVC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/mpegts#GST_MTS_REGISTRATION_OTHER_HEVC
+	// see also https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtsdescriptor.html#GST_MTS_REGISTRATION_OTHER_HEVC
 	GstMtsRegistrationOtherHevc RegistrationId = 1212503619
 )
 

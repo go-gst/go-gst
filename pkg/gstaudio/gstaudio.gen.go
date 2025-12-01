@@ -428,33 +428,33 @@ const AUDIO_RESAMPLER_QUALITY_MIN = 0
 const DSD_SILENCE_PATTERN_BYTE = 105
 // AudioBaseSinkDiscontReason wraps GstAudioBaseSinkDiscontReason
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioBaseSinkDiscontReason
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GstAudioBaseSinkDiscontReason
 type AudioBaseSinkDiscontReason C.int
 
 const (
 	// AudioBaseSinkDiscontReasonNoDiscont wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_NO_DISCONT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_NO_DISCONT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_DISCONT_REASON_NO_DISCONT
 	AudioBaseSinkDiscontReasonNoDiscont AudioBaseSinkDiscontReason = 0
 	// AudioBaseSinkDiscontReasonNewCaps wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_NEW_CAPS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_NEW_CAPS
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_DISCONT_REASON_NEW_CAPS
 	AudioBaseSinkDiscontReasonNewCaps AudioBaseSinkDiscontReason = 1
 	// AudioBaseSinkDiscontReasonFlush wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_FLUSH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_FLUSH
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_DISCONT_REASON_FLUSH
 	AudioBaseSinkDiscontReasonFlush AudioBaseSinkDiscontReason = 2
 	// AudioBaseSinkDiscontReasonSyncLatency wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_SYNC_LATENCY
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_SYNC_LATENCY
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_DISCONT_REASON_SYNC_LATENCY
 	AudioBaseSinkDiscontReasonSyncLatency AudioBaseSinkDiscontReason = 3
 	// AudioBaseSinkDiscontReasonAlignment wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_ALIGNMENT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_ALIGNMENT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_DISCONT_REASON_ALIGNMENT
 	AudioBaseSinkDiscontReasonAlignment AudioBaseSinkDiscontReason = 4
 	// AudioBaseSinkDiscontReasonDeviceFailure wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_DEVICE_FAILURE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_DISCONT_REASON_DEVICE_FAILURE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_DISCONT_REASON_DEVICE_FAILURE
 	AudioBaseSinkDiscontReasonDeviceFailure AudioBaseSinkDiscontReason = 5
 )
 
@@ -486,25 +486,25 @@ func (e AudioBaseSinkDiscontReason) String() string {
 
 // AudioBaseSinkSlaveMethod wraps GstAudioBaseSinkSlaveMethod
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioBaseSinkSlaveMethod
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GstAudioBaseSinkSlaveMethod
 type AudioBaseSinkSlaveMethod C.int
 
 const (
 	// AudioBaseSinkSlaveResample wraps GST_AUDIO_BASE_SINK_SLAVE_RESAMPLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_SLAVE_RESAMPLE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_SLAVE_RESAMPLE
 	AudioBaseSinkSlaveResample AudioBaseSinkSlaveMethod = 0
 	// AudioBaseSinkSlaveSkew wraps GST_AUDIO_BASE_SINK_SLAVE_SKEW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_SLAVE_SKEW
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_SLAVE_SKEW
 	AudioBaseSinkSlaveSkew AudioBaseSinkSlaveMethod = 1
 	// AudioBaseSinkSlaveNone wraps GST_AUDIO_BASE_SINK_SLAVE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_SLAVE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_SLAVE_NONE
 	AudioBaseSinkSlaveNone AudioBaseSinkSlaveMethod = 2
 	// AudioBaseSinkSlaveCustom wraps GST_AUDIO_BASE_SINK_SLAVE_CUSTOM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SINK_SLAVE_CUSTOM
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesink.html#GST_AUDIO_BASE_SINK_SLAVE_CUSTOM
 	AudioBaseSinkSlaveCustom AudioBaseSinkSlaveMethod = 3
 )
 
@@ -534,25 +534,25 @@ func (e AudioBaseSinkSlaveMethod) String() string {
 
 // AudioBaseSrcSlaveMethod wraps GstAudioBaseSrcSlaveMethod
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioBaseSrcSlaveMethod
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#GstAudioBaseSrcSlaveMethod
 type AudioBaseSrcSlaveMethod C.int
 
 const (
 	// AudioBaseSrcSlaveResample wraps GST_AUDIO_BASE_SRC_SLAVE_RESAMPLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SRC_SLAVE_RESAMPLE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#GST_AUDIO_BASE_SRC_SLAVE_RESAMPLE
 	AudioBaseSrcSlaveResample AudioBaseSrcSlaveMethod = 0
 	// AudioBaseSrcSlaveReTimestamp wraps GST_AUDIO_BASE_SRC_SLAVE_RE_TIMESTAMP
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SRC_SLAVE_RE_TIMESTAMP
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#GST_AUDIO_BASE_SRC_SLAVE_RE_TIMESTAMP
 	AudioBaseSrcSlaveReTimestamp AudioBaseSrcSlaveMethod = 1
 	// AudioBaseSrcSlaveSkew wraps GST_AUDIO_BASE_SRC_SLAVE_SKEW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SRC_SLAVE_SKEW
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#GST_AUDIO_BASE_SRC_SLAVE_SKEW
 	AudioBaseSrcSlaveSkew AudioBaseSrcSlaveMethod = 2
 	// AudioBaseSrcSlaveNone wraps GST_AUDIO_BASE_SRC_SLAVE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_BASE_SRC_SLAVE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiobasesrc.html#GST_AUDIO_BASE_SRC_SLAVE_NONE
 	AudioBaseSrcSlaveNone AudioBaseSrcSlaveMethod = 3
 )
 
@@ -582,17 +582,17 @@ func (e AudioBaseSrcSlaveMethod) String() string {
 
 // AudioCdSrcMode wraps GstAudioCdSrcMode
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioCdSrcMode
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#GstAudioCdSrcMode
 type AudioCdSrcMode C.int
 
 const (
 	// AudioCdSrcModeNormal wraps GST_AUDIO_CD_SRC_MODE_NORMAL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CD_SRC_MODE_NORMAL
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#GST_AUDIO_CD_SRC_MODE_NORMAL
 	AudioCdSrcModeNormal AudioCdSrcMode = 0
 	// AudioCdSrcModeContinuous wraps GST_AUDIO_CD_SRC_MODE_CONTINUOUS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CD_SRC_MODE_CONTINUOUS
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudiocdsrc.html#GST_AUDIO_CD_SRC_MODE_CONTINUOUS
 	AudioCdSrcModeContinuous AudioCdSrcMode = 1
 )
 
@@ -620,141 +620,141 @@ func (e AudioCdSrcMode) String() string {
 
 // AudioChannelPosition wraps GstAudioChannelPosition
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioChannelPosition
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GstAudioChannelPosition
 type AudioChannelPosition C.int
 
 const (
 	// AudioChannelPositionNone wraps GST_AUDIO_CHANNEL_POSITION_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_NONE
 	AudioChannelPositionNone AudioChannelPosition = -3
 	// AudioChannelPositionMono wraps GST_AUDIO_CHANNEL_POSITION_MONO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_MONO
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_MONO
 	AudioChannelPositionMono AudioChannelPosition = -2
 	// AudioChannelPositionInvalid wraps GST_AUDIO_CHANNEL_POSITION_INVALID
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_INVALID
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_INVALID
 	AudioChannelPositionInvalid AudioChannelPosition = -1
 	// AudioChannelPositionFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT
 	AudioChannelPositionFrontLeft AudioChannelPosition = 0
 	// AudioChannelPositionFrontRight wraps GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT
 	AudioChannelPositionFrontRight AudioChannelPosition = 1
 	// AudioChannelPositionFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_CENTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_CENTER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_FRONT_CENTER
 	AudioChannelPositionFrontCenter AudioChannelPosition = 2
 	// AudioChannelPositionLfe1 wraps GST_AUDIO_CHANNEL_POSITION_LFE1
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_LFE1
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_LFE1
 	AudioChannelPositionLfe1 AudioChannelPosition = 3
 	// AudioChannelPositionRearLeft wraps GST_AUDIO_CHANNEL_POSITION_REAR_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_REAR_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_REAR_LEFT
 	AudioChannelPositionRearLeft AudioChannelPosition = 4
 	// AudioChannelPositionRearRight wraps GST_AUDIO_CHANNEL_POSITION_REAR_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_REAR_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_REAR_RIGHT
 	AudioChannelPositionRearRight AudioChannelPosition = 5
 	// AudioChannelPositionFrontLeftOfCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT_OF_CENTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT_OF_CENTER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT_OF_CENTER
 	AudioChannelPositionFrontLeftOfCenter AudioChannelPosition = 6
 	// AudioChannelPositionFrontRightOfCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT_OF_CENTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT_OF_CENTER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT_OF_CENTER
 	AudioChannelPositionFrontRightOfCenter AudioChannelPosition = 7
 	// AudioChannelPositionRearCenter wraps GST_AUDIO_CHANNEL_POSITION_REAR_CENTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_REAR_CENTER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_REAR_CENTER
 	AudioChannelPositionRearCenter AudioChannelPosition = 8
 	// AudioChannelPositionLfe2 wraps GST_AUDIO_CHANNEL_POSITION_LFE2
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_LFE2
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_LFE2
 	AudioChannelPositionLfe2 AudioChannelPosition = 9
 	// AudioChannelPositionSideLeft wraps GST_AUDIO_CHANNEL_POSITION_SIDE_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_SIDE_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_SIDE_LEFT
 	AudioChannelPositionSideLeft AudioChannelPosition = 10
 	// AudioChannelPositionSideRight wraps GST_AUDIO_CHANNEL_POSITION_SIDE_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_SIDE_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_SIDE_RIGHT
 	AudioChannelPositionSideRight AudioChannelPosition = 11
 	// AudioChannelPositionTopFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_LEFT
 	AudioChannelPositionTopFrontLeft AudioChannelPosition = 12
 	// AudioChannelPositionTopFrontRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_RIGHT
 	AudioChannelPositionTopFrontRight AudioChannelPosition = 13
 	// AudioChannelPositionTopFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_CENTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_CENTER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_CENTER
 	AudioChannelPositionTopFrontCenter AudioChannelPosition = 14
 	// AudioChannelPositionTopCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_CENTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_CENTER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_CENTER
 	AudioChannelPositionTopCenter AudioChannelPosition = 15
 	// AudioChannelPositionTopRearLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_REAR_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_REAR_LEFT
 	AudioChannelPositionTopRearLeft AudioChannelPosition = 16
 	// AudioChannelPositionTopRearRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_REAR_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_REAR_RIGHT
 	AudioChannelPositionTopRearRight AudioChannelPosition = 17
 	// AudioChannelPositionTopSideLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_LEFT
 	AudioChannelPositionTopSideLeft AudioChannelPosition = 18
 	// AudioChannelPositionTopSideRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_RIGHT
 	AudioChannelPositionTopSideRight AudioChannelPosition = 19
 	// AudioChannelPositionTopRearCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_CENTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_REAR_CENTER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_REAR_CENTER
 	AudioChannelPositionTopRearCenter AudioChannelPosition = 20
 	// AudioChannelPositionBottomFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_CENTER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_CENTER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_CENTER
 	AudioChannelPositionBottomFrontCenter AudioChannelPosition = 21
 	// AudioChannelPositionBottomFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_LEFT
 	AudioChannelPositionBottomFrontLeft AudioChannelPosition = 22
 	// AudioChannelPositionBottomFrontRight wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_RIGHT
 	AudioChannelPositionBottomFrontRight AudioChannelPosition = 23
 	// AudioChannelPositionWideLeft wraps GST_AUDIO_CHANNEL_POSITION_WIDE_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_WIDE_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_WIDE_LEFT
 	AudioChannelPositionWideLeft AudioChannelPosition = 24
 	// AudioChannelPositionWideRight wraps GST_AUDIO_CHANNEL_POSITION_WIDE_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_WIDE_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_WIDE_RIGHT
 	AudioChannelPositionWideRight AudioChannelPosition = 25
 	// AudioChannelPositionSurroundLeft wraps GST_AUDIO_CHANNEL_POSITION_SURROUND_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_SURROUND_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_SURROUND_LEFT
 	AudioChannelPositionSurroundLeft AudioChannelPosition = 26
 	// AudioChannelPositionSurroundRight wraps GST_AUDIO_CHANNEL_POSITION_SURROUND_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_SURROUND_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_SURROUND_RIGHT
 	AudioChannelPositionSurroundRight AudioChannelPosition = 27
 	// AudioChannelPositionTopSurroundLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_LEFT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_LEFT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_LEFT
 	AudioChannelPositionTopSurroundLeft AudioChannelPosition = 28
 	// AudioChannelPositionTopSurroundRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_RIGHT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_RIGHT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channels.html#GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_RIGHT
 	AudioChannelPositionTopSurroundRight AudioChannelPosition = 29
 )
 
@@ -813,25 +813,25 @@ func (e AudioChannelPosition) String() string {
 
 // AudioDitherMethod wraps GstAudioDitherMethod
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioDitherMethod
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GstAudioDitherMethod
 type AudioDitherMethod C.int
 
 const (
 	// AudioDitherNone wraps GST_AUDIO_DITHER_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_DITHER_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_DITHER_NONE
 	AudioDitherNone AudioDitherMethod = 0
 	// AudioDitherRpdf wraps GST_AUDIO_DITHER_RPDF
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_DITHER_RPDF
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_DITHER_RPDF
 	AudioDitherRpdf AudioDitherMethod = 1
 	// AudioDitherTpdf wraps GST_AUDIO_DITHER_TPDF
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_DITHER_TPDF
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_DITHER_TPDF
 	AudioDitherTpdf AudioDitherMethod = 2
 	// AudioDitherTpdfHf wraps GST_AUDIO_DITHER_TPDF_HF
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_DITHER_TPDF_HF
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_DITHER_TPDF_HF
 	AudioDitherTpdfHf AudioDitherMethod = 3
 )
 
@@ -861,193 +861,193 @@ func (e AudioDitherMethod) String() string {
 
 // AudioFormat wraps GstAudioFormat
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioFormat
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GstAudioFormat
 type AudioFormat C.int
 
 const (
 	// AudioFormatUnknown wraps GST_AUDIO_FORMAT_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_UNKNOWN
 	AudioFormatUnknown AudioFormat = 0
 	// AudioFormatEncoded wraps GST_AUDIO_FORMAT_ENCODED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_ENCODED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_ENCODED
 	AudioFormatEncoded AudioFormat = 1
 	// AudioFormatS8 wraps GST_AUDIO_FORMAT_S8
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S8
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S8
 	AudioFormatS8 AudioFormat = 2
 	// AudioFormatU8 wraps GST_AUDIO_FORMAT_U8
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U8
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U8
 	AudioFormatU8 AudioFormat = 3
 	// AudioFormatS16le wraps GST_AUDIO_FORMAT_S16LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S16LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S16LE
 	AudioFormatS16le AudioFormat = 4
 	// AudioFormatS16be wraps GST_AUDIO_FORMAT_S16BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S16BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S16BE
 	AudioFormatS16be AudioFormat = 5
 	// AudioFormatU16le wraps GST_AUDIO_FORMAT_U16LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U16LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U16LE
 	AudioFormatU16le AudioFormat = 6
 	// AudioFormatU16be wraps GST_AUDIO_FORMAT_U16BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U16BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U16BE
 	AudioFormatU16be AudioFormat = 7
 	// AudioFormatS2432le wraps GST_AUDIO_FORMAT_S24_32LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24_32LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S24_32LE
 	AudioFormatS2432le AudioFormat = 8
 	// AudioFormatS2432be wraps GST_AUDIO_FORMAT_S24_32BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24_32BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S24_32BE
 	AudioFormatS2432be AudioFormat = 9
 	// AudioFormatU2432le wraps GST_AUDIO_FORMAT_U24_32LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24_32LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U24_32LE
 	AudioFormatU2432le AudioFormat = 10
 	// AudioFormatU2432be wraps GST_AUDIO_FORMAT_U24_32BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24_32BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U24_32BE
 	AudioFormatU2432be AudioFormat = 11
 	// AudioFormatS32le wraps GST_AUDIO_FORMAT_S32LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S32LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S32LE
 	AudioFormatS32le AudioFormat = 12
 	// AudioFormatS32be wraps GST_AUDIO_FORMAT_S32BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S32BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S32BE
 	AudioFormatS32be AudioFormat = 13
 	// AudioFormatU32le wraps GST_AUDIO_FORMAT_U32LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U32LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U32LE
 	AudioFormatU32le AudioFormat = 14
 	// AudioFormatU32be wraps GST_AUDIO_FORMAT_U32BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U32BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U32BE
 	AudioFormatU32be AudioFormat = 15
 	// AudioFormatS24le wraps GST_AUDIO_FORMAT_S24LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S24LE
 	AudioFormatS24le AudioFormat = 16
 	// AudioFormatS24be wraps GST_AUDIO_FORMAT_S24BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S24BE
 	AudioFormatS24be AudioFormat = 17
 	// AudioFormatU24le wraps GST_AUDIO_FORMAT_U24LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U24LE
 	AudioFormatU24le AudioFormat = 18
 	// AudioFormatU24be wraps GST_AUDIO_FORMAT_U24BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U24BE
 	AudioFormatU24be AudioFormat = 19
 	// AudioFormatS20le wraps GST_AUDIO_FORMAT_S20LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S20LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S20LE
 	AudioFormatS20le AudioFormat = 20
 	// AudioFormatS20be wraps GST_AUDIO_FORMAT_S20BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S20BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S20BE
 	AudioFormatS20be AudioFormat = 21
 	// AudioFormatU20le wraps GST_AUDIO_FORMAT_U20LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U20LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U20LE
 	AudioFormatU20le AudioFormat = 22
 	// AudioFormatU20be wraps GST_AUDIO_FORMAT_U20BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U20BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U20BE
 	AudioFormatU20be AudioFormat = 23
 	// AudioFormatS18le wraps GST_AUDIO_FORMAT_S18LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S18LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S18LE
 	AudioFormatS18le AudioFormat = 24
 	// AudioFormatS18be wraps GST_AUDIO_FORMAT_S18BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S18BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S18BE
 	AudioFormatS18be AudioFormat = 25
 	// AudioFormatU18le wraps GST_AUDIO_FORMAT_U18LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U18LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U18LE
 	AudioFormatU18le AudioFormat = 26
 	// AudioFormatU18be wraps GST_AUDIO_FORMAT_U18BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U18BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U18BE
 	AudioFormatU18be AudioFormat = 27
 	// AudioFormatF32le wraps GST_AUDIO_FORMAT_F32LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F32LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_F32LE
 	AudioFormatF32le AudioFormat = 28
 	// AudioFormatF32be wraps GST_AUDIO_FORMAT_F32BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F32BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_F32BE
 	AudioFormatF32be AudioFormat = 29
 	// AudioFormatF64le wraps GST_AUDIO_FORMAT_F64LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F64LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_F64LE
 	AudioFormatF64le AudioFormat = 30
 	// AudioFormatF64be wraps GST_AUDIO_FORMAT_F64BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F64BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_F64BE
 	AudioFormatF64be AudioFormat = 31
 	// AudioFormatS16 wraps GST_AUDIO_FORMAT_S16
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S16
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S16
 	AudioFormatS16 AudioFormat = 4
 	// AudioFormatU16 wraps GST_AUDIO_FORMAT_U16
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U16
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U16
 	AudioFormatU16 AudioFormat = 6
 	// AudioFormatS2432 wraps GST_AUDIO_FORMAT_S24_32
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24_32
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S24_32
 	AudioFormatS2432 AudioFormat = 8
 	// AudioFormatU2432 wraps GST_AUDIO_FORMAT_U24_32
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24_32
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U24_32
 	AudioFormatU2432 AudioFormat = 10
 	// AudioFormatS32 wraps GST_AUDIO_FORMAT_S32
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S32
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S32
 	AudioFormatS32 AudioFormat = 12
 	// AudioFormatU32 wraps GST_AUDIO_FORMAT_U32
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U32
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U32
 	AudioFormatU32 AudioFormat = 14
 	// AudioFormatS24 wraps GST_AUDIO_FORMAT_S24
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S24
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S24
 	AudioFormatS24 AudioFormat = 16
 	// AudioFormatU24 wraps GST_AUDIO_FORMAT_U24
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U24
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U24
 	AudioFormatU24 AudioFormat = 18
 	// AudioFormatS20 wraps GST_AUDIO_FORMAT_S20
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S20
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S20
 	AudioFormatS20 AudioFormat = 20
 	// AudioFormatU20 wraps GST_AUDIO_FORMAT_U20
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U20
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U20
 	AudioFormatU20 AudioFormat = 22
 	// AudioFormatS18 wraps GST_AUDIO_FORMAT_S18
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_S18
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_S18
 	AudioFormatS18 AudioFormat = 24
 	// AudioFormatU18 wraps GST_AUDIO_FORMAT_U18
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_U18
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_U18
 	AudioFormatU18 AudioFormat = 26
 	// AudioFormatF32 wraps GST_AUDIO_FORMAT_F32
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F32
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_F32
 	AudioFormatF32 AudioFormat = 28
 	// AudioFormatF64 wraps GST_AUDIO_FORMAT_F64
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_F64
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_F64
 	AudioFormatF64 AudioFormat = 30
 )
 
@@ -1105,7 +1105,7 @@ func (e AudioFormat) String() string {
 
 // AudioFormatBuildInteger wraps gst_audio_format_build_integer
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#gst_audio_format_build_integer
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#gst_audio_format_build_integer
 func AudioFormatBuildInteger(sign bool, endianness int32, width int32, depth int32) AudioFormat {
 	var carg1 C.gboolean       // in
 	var carg2 C.gint           // in, none, casted
@@ -1135,7 +1135,7 @@ func AudioFormatBuildInteger(sign bool, endianness int32, width int32, depth int
 
 // AudioFormatFromString wraps gst_audio_format_from_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#gst_audio_format_from_string
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#gst_audio_format_from_string
 func AudioFormatFromString(format string) AudioFormat {
 	var carg1 *C.gchar         // in, none, string
 	var cret  C.GstAudioFormat // return, none, casted
@@ -1155,7 +1155,7 @@ func AudioFormatFromString(format string) AudioFormat {
 
 // AudioFormatGetInfo wraps gst_audio_format_get_info
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#gst_audio_format_get_info
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#gst_audio_format_get_info
 func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
 	var carg1 C.GstAudioFormat      // in, none, casted
 	var cret  *C.GstAudioFormatInfo // return, none, converted
@@ -1174,7 +1174,7 @@ func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
 
 // AudioFormatString wraps gst_audio_format_to_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#gst_audio_format_to_string
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#gst_audio_format_to_string
 func AudioFormatString(format AudioFormat) string {
 	var carg1 C.GstAudioFormat // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -1193,17 +1193,17 @@ func AudioFormatString(format AudioFormat) string {
 
 // AudioLayout wraps GstAudioLayout
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioLayout
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GstAudioLayout
 type AudioLayout C.int
 
 const (
 	// AudioLayoutInterleaved wraps GST_AUDIO_LAYOUT_INTERLEAVED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_LAYOUT_INTERLEAVED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_LAYOUT_INTERLEAVED
 	AudioLayoutInterleaved AudioLayout = 0
 	// AudioLayoutNonInterleaved wraps GST_AUDIO_LAYOUT_NON_INTERLEAVED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_LAYOUT_NON_INTERLEAVED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_LAYOUT_NON_INTERLEAVED
 	AudioLayoutNonInterleaved AudioLayout = 1
 )
 
@@ -1231,29 +1231,29 @@ func (e AudioLayout) String() string {
 
 // AudioNoiseShapingMethod wraps GstAudioNoiseShapingMethod
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioNoiseShapingMethod
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GstAudioNoiseShapingMethod
 type AudioNoiseShapingMethod C.int
 
 const (
 	// AudioNoiseShapingNone wraps GST_AUDIO_NOISE_SHAPING_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_NOISE_SHAPING_NONE
 	AudioNoiseShapingNone AudioNoiseShapingMethod = 0
 	// AudioNoiseShapingErrorFeedback wraps GST_AUDIO_NOISE_SHAPING_ERROR_FEEDBACK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_ERROR_FEEDBACK
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_NOISE_SHAPING_ERROR_FEEDBACK
 	AudioNoiseShapingErrorFeedback AudioNoiseShapingMethod = 1
 	// AudioNoiseShapingSimple wraps GST_AUDIO_NOISE_SHAPING_SIMPLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_SIMPLE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_NOISE_SHAPING_SIMPLE
 	AudioNoiseShapingSimple AudioNoiseShapingMethod = 2
 	// AudioNoiseShapingMedium wraps GST_AUDIO_NOISE_SHAPING_MEDIUM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_MEDIUM
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_NOISE_SHAPING_MEDIUM
 	AudioNoiseShapingMedium AudioNoiseShapingMethod = 3
 	// AudioNoiseShapingHigh wraps GST_AUDIO_NOISE_SHAPING_HIGH
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_NOISE_SHAPING_HIGH
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_NOISE_SHAPING_HIGH
 	AudioNoiseShapingHigh AudioNoiseShapingMethod = 4
 )
 
@@ -1284,21 +1284,21 @@ func (e AudioNoiseShapingMethod) String() string {
 
 // AudioResamplerFilterInterpolation wraps GstAudioResamplerFilterInterpolation
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioResamplerFilterInterpolation
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GstAudioResamplerFilterInterpolation
 type AudioResamplerFilterInterpolation C.int
 
 const (
 	// AudioResamplerFilterInterpolationNone wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_NONE
 	AudioResamplerFilterInterpolationNone AudioResamplerFilterInterpolation = 0
 	// AudioResamplerFilterInterpolationLinear wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_LINEAR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_LINEAR
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_LINEAR
 	AudioResamplerFilterInterpolationLinear AudioResamplerFilterInterpolation = 1
 	// AudioResamplerFilterInterpolationCubic wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC
 	AudioResamplerFilterInterpolationCubic AudioResamplerFilterInterpolation = 2
 )
 
@@ -1327,21 +1327,21 @@ func (e AudioResamplerFilterInterpolation) String() string {
 
 // AudioResamplerFilterMode wraps GstAudioResamplerFilterMode
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioResamplerFilterMode
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GstAudioResamplerFilterMode
 type AudioResamplerFilterMode C.int
 
 const (
 	// AudioResamplerFilterModeInterpolated wraps GST_AUDIO_RESAMPLER_FILTER_MODE_INTERPOLATED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_MODE_INTERPOLATED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FILTER_MODE_INTERPOLATED
 	AudioResamplerFilterModeInterpolated AudioResamplerFilterMode = 0
 	// AudioResamplerFilterModeFull wraps GST_AUDIO_RESAMPLER_FILTER_MODE_FULL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_MODE_FULL
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FILTER_MODE_FULL
 	AudioResamplerFilterModeFull AudioResamplerFilterMode = 1
 	// AudioResamplerFilterModeAuto wraps GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO
 	AudioResamplerFilterModeAuto AudioResamplerFilterMode = 2
 )
 
@@ -1370,29 +1370,29 @@ func (e AudioResamplerFilterMode) String() string {
 
 // AudioResamplerMethod wraps GstAudioResamplerMethod
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioResamplerMethod
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GstAudioResamplerMethod
 type AudioResamplerMethod C.int
 
 const (
 	// AudioResamplerMethodNearest wraps GST_AUDIO_RESAMPLER_METHOD_NEAREST
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_NEAREST
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_METHOD_NEAREST
 	AudioResamplerMethodNearest AudioResamplerMethod = 0
 	// AudioResamplerMethodLinear wraps GST_AUDIO_RESAMPLER_METHOD_LINEAR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_LINEAR
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_METHOD_LINEAR
 	AudioResamplerMethodLinear AudioResamplerMethod = 1
 	// AudioResamplerMethodCubic wraps GST_AUDIO_RESAMPLER_METHOD_CUBIC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_CUBIC
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_METHOD_CUBIC
 	AudioResamplerMethodCubic AudioResamplerMethod = 2
 	// AudioResamplerMethodBlackmanNuttall wraps GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL
 	AudioResamplerMethodBlackmanNuttall AudioResamplerMethod = 3
 	// AudioResamplerMethodKaiser wraps GST_AUDIO_RESAMPLER_METHOD_KAISER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_METHOD_KAISER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_METHOD_KAISER
 	AudioResamplerMethodKaiser AudioResamplerMethod = 4
 )
 
@@ -1423,73 +1423,73 @@ func (e AudioResamplerMethod) String() string {
 
 // AudioRingBufferFormatType wraps GstAudioRingBufferFormatType
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioRingBufferFormatType
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GstAudioRingBufferFormatType
 type AudioRingBufferFormatType C.int
 
 const (
 	// AudioRingBufferFormatTypeRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_RAW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_RAW
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_RAW
 	AudioRingBufferFormatTypeRaw AudioRingBufferFormatType = 0
 	// AudioRingBufferFormatTypeMuLaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MU_LAW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MU_LAW
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MU_LAW
 	AudioRingBufferFormatTypeMuLaw AudioRingBufferFormatType = 1
 	// AudioRingBufferFormatTypeALaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_A_LAW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_A_LAW
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_A_LAW
 	AudioRingBufferFormatTypeALaw AudioRingBufferFormatType = 2
 	// AudioRingBufferFormatTypeImaAdpcm wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IMA_ADPCM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IMA_ADPCM
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IMA_ADPCM
 	AudioRingBufferFormatTypeImaAdpcm AudioRingBufferFormatType = 3
 	// AudioRingBufferFormatTypeMpeg wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG
 	AudioRingBufferFormatTypeMpeg AudioRingBufferFormatType = 4
 	// AudioRingBufferFormatTypeGsm wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_GSM
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_GSM
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_GSM
 	AudioRingBufferFormatTypeGsm AudioRingBufferFormatType = 5
 	// AudioRingBufferFormatTypeIec958 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IEC958
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IEC958
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IEC958
 	AudioRingBufferFormatTypeIec958 AudioRingBufferFormatType = 6
 	// AudioRingBufferFormatTypeAc3 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_AC3
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_AC3
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_AC3
 	AudioRingBufferFormatTypeAc3 AudioRingBufferFormatType = 7
 	// AudioRingBufferFormatTypeEac3 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_EAC3
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_EAC3
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_EAC3
 	AudioRingBufferFormatTypeEac3 AudioRingBufferFormatType = 8
 	// AudioRingBufferFormatTypeDts wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DTS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DTS
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DTS
 	AudioRingBufferFormatTypeDts AudioRingBufferFormatType = 9
 	// AudioRingBufferFormatTypeMpeg2Aac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC
 	AudioRingBufferFormatTypeMpeg2Aac AudioRingBufferFormatType = 10
 	// AudioRingBufferFormatTypeMpeg4Aac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC
 	AudioRingBufferFormatTypeMpeg4Aac AudioRingBufferFormatType = 11
 	// AudioRingBufferFormatTypeMpeg2AacRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC_RAW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC_RAW
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC_RAW
 	AudioRingBufferFormatTypeMpeg2AacRaw AudioRingBufferFormatType = 12
 	// AudioRingBufferFormatTypeMpeg4AacRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC_RAW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC_RAW
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC_RAW
 	AudioRingBufferFormatTypeMpeg4AacRaw AudioRingBufferFormatType = 13
 	// AudioRingBufferFormatTypeFlac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_FLAC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_FLAC
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_FLAC
 	AudioRingBufferFormatTypeFlac AudioRingBufferFormatType = 14
 	// AudioRingBufferFormatTypeDsd wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD
 	AudioRingBufferFormatTypeDsd AudioRingBufferFormatType = 15
 )
 
@@ -1531,25 +1531,25 @@ func (e AudioRingBufferFormatType) String() string {
 
 // AudioRingBufferState wraps GstAudioRingBufferState
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioRingBufferState
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GstAudioRingBufferState
 type AudioRingBufferState C.int
 
 const (
 	// AudioRingBufferStateStopped wraps GST_AUDIO_RING_BUFFER_STATE_STOPPED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_STATE_STOPPED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_STATE_STOPPED
 	AudioRingBufferStateStopped AudioRingBufferState = 0
 	// AudioRingBufferStatePaused wraps GST_AUDIO_RING_BUFFER_STATE_PAUSED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_STATE_PAUSED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_STATE_PAUSED
 	AudioRingBufferStatePaused AudioRingBufferState = 1
 	// AudioRingBufferStateStarted wraps GST_AUDIO_RING_BUFFER_STATE_STARTED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_STATE_STARTED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_STATE_STARTED
 	AudioRingBufferStateStarted AudioRingBufferState = 2
 	// AudioRingBufferStateError wraps GST_AUDIO_RING_BUFFER_STATE_ERROR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RING_BUFFER_STATE_ERROR
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstaudioringbuffer.html#GST_AUDIO_RING_BUFFER_STATE_ERROR
 	AudioRingBufferStateError AudioRingBufferState = 3
 )
 
@@ -1579,45 +1579,45 @@ func (e AudioRingBufferState) String() string {
 
 // DsdFormat wraps GstDsdFormat
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstDsdFormat
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GstDsdFormat
 type DsdFormat C.int
 
 const (
 	// DsdFormatUnknown wraps GST_DSD_FORMAT_UNKNOWN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_UNKNOWN
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GST_DSD_FORMAT_UNKNOWN
 	DsdFormatUnknown DsdFormat = 0
 	// DsdFormatU8 wraps GST_DSD_FORMAT_U8
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U8
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GST_DSD_FORMAT_U8
 	DsdFormatU8 DsdFormat = 1
 	// DsdFormatU16le wraps GST_DSD_FORMAT_U16LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U16LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GST_DSD_FORMAT_U16LE
 	DsdFormatU16le DsdFormat = 2
 	// DsdFormatU16be wraps GST_DSD_FORMAT_U16BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U16BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GST_DSD_FORMAT_U16BE
 	DsdFormatU16be DsdFormat = 3
 	// DsdFormatU32le wraps GST_DSD_FORMAT_U32LE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U32LE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GST_DSD_FORMAT_U32LE
 	DsdFormatU32le DsdFormat = 4
 	// DsdFormatU32be wraps GST_DSD_FORMAT_U32BE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U32BE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GST_DSD_FORMAT_U32BE
 	DsdFormatU32be DsdFormat = 5
 	// NumDsdFormats wraps GST_NUM_DSD_FORMATS
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_NUM_DSD_FORMATS
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GST_NUM_DSD_FORMATS
 	NumDsdFormats DsdFormat = 6
 	// DsdFormatU16 wraps GST_DSD_FORMAT_U16
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U16
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GST_DSD_FORMAT_U16
 	DsdFormatU16 DsdFormat = 2
 	// DsdFormatU32 wraps GST_DSD_FORMAT_U32
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_DSD_FORMAT_U32
+	// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#GST_DSD_FORMAT_U32
 	DsdFormatU32 DsdFormat = 4
 )
 
@@ -1650,7 +1650,7 @@ func (e DsdFormat) String() string {
 
 // DsdFormatFromString wraps gst_dsd_format_from_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#gst_dsd_format_from_string
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#gst_dsd_format_from_string
 func DsdFormatFromString(str string) DsdFormat {
 	var carg1 *C.gchar       // in, none, string
 	var cret  C.GstDsdFormat // return, none, casted
@@ -1670,7 +1670,7 @@ func DsdFormatFromString(str string) DsdFormat {
 
 // DsdFormatGetWidth wraps gst_dsd_format_get_width
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#gst_dsd_format_get_width
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#gst_dsd_format_get_width
 func DsdFormatGetWidth(format DsdFormat) uint {
 	var carg1 C.GstDsdFormat // in, none, casted
 	var cret  C.guint        // return, none, casted
@@ -1689,7 +1689,7 @@ func DsdFormatGetWidth(format DsdFormat) uint {
 
 // DsdFormatString wraps gst_dsd_format_to_string
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#gst_dsd_format_to_string
+// see also https://gstreamer.freedesktop.org/documentation/audio/gstdsdformat.html#gst_dsd_format_to_string
 func DsdFormatString(format DsdFormat) string {
 	var carg1 C.GstDsdFormat // in, none, casted
 	var cret  *C.gchar       // return, none, string
@@ -1714,15 +1714,15 @@ type StreamVolumeFormat C.int
 const (
 	// StreamVolumeFormatLinear wraps GST_STREAM_VOLUME_FORMAT_LINEAR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_STREAM_VOLUME_FORMAT_LINEAR
+	// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#GST_STREAM_VOLUME_FORMAT_LINEAR
 	StreamVolumeFormatLinear StreamVolumeFormat = 0
 	// StreamVolumeFormatCubic wraps GST_STREAM_VOLUME_FORMAT_CUBIC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_STREAM_VOLUME_FORMAT_CUBIC
+	// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#GST_STREAM_VOLUME_FORMAT_CUBIC
 	StreamVolumeFormatCubic StreamVolumeFormat = 1
 	// StreamVolumeFormatDb wraps GST_STREAM_VOLUME_FORMAT_DB
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_STREAM_VOLUME_FORMAT_DB
+	// see also https://gstreamer.freedesktop.org/documentation/audio/streamvolume.html#GST_STREAM_VOLUME_FORMAT_DB
 	StreamVolumeFormatDb StreamVolumeFormat = 2
 )
 
@@ -1738,29 +1738,29 @@ func (e StreamVolumeFormat) String() string {
 
 // AudioChannelMixerFlags wraps GstAudioChannelMixerFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioChannelMixerFlags
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channel-mixer.html#GstAudioChannelMixerFlags
 type AudioChannelMixerFlags C.gint
 
 const (
 	// AudioChannelMixerFlagsNone wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channel-mixer.html#GST_AUDIO_CHANNEL_MIXER_FLAGS_NONE
 	AudioChannelMixerFlagsNone AudioChannelMixerFlags = 0
 	// AudioChannelMixerFlagsNonInterleavedIn wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_IN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_IN
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channel-mixer.html#GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_IN
 	AudioChannelMixerFlagsNonInterleavedIn AudioChannelMixerFlags = 1
 	// AudioChannelMixerFlagsNonInterleavedOut wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_OUT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_OUT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channel-mixer.html#GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_OUT
 	AudioChannelMixerFlagsNonInterleavedOut AudioChannelMixerFlags = 2
 	// AudioChannelMixerFlagsUnpositionedIn wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_IN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_IN
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channel-mixer.html#GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_IN
 	AudioChannelMixerFlagsUnpositionedIn AudioChannelMixerFlags = 4
 	// AudioChannelMixerFlagsUnpositionedOut wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_OUT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_OUT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-channel-mixer.html#GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_OUT
 	AudioChannelMixerFlagsUnpositionedOut AudioChannelMixerFlags = 8
 )
 
@@ -1808,21 +1808,21 @@ func (f AudioChannelMixerFlags) String() string {
 
 // AudioConverterFlags wraps GstAudioConverterFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioConverterFlags
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#GstAudioConverterFlags
 type AudioConverterFlags C.gint
 
 const (
 	// AudioConverterFlagNone wraps GST_AUDIO_CONVERTER_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CONVERTER_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#GST_AUDIO_CONVERTER_FLAG_NONE
 	AudioConverterFlagNone AudioConverterFlags = 0
 	// AudioConverterFlagInWritable wraps GST_AUDIO_CONVERTER_FLAG_IN_WRITABLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CONVERTER_FLAG_IN_WRITABLE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#GST_AUDIO_CONVERTER_FLAG_IN_WRITABLE
 	AudioConverterFlagInWritable AudioConverterFlags = 1
 	// AudioConverterFlagVariableRate wraps GST_AUDIO_CONVERTER_FLAG_VARIABLE_RATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_CONVERTER_FLAG_VARIABLE_RATE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-converter.html#GST_AUDIO_CONVERTER_FLAG_VARIABLE_RATE
 	AudioConverterFlagVariableRate AudioConverterFlags = 2
 )
 
@@ -1864,17 +1864,17 @@ func (f AudioConverterFlags) String() string {
 
 // AudioFlags wraps GstAudioFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioFlags
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#GstAudioFlags
 type AudioFlags C.gint
 
 const (
 	// AudioFlagNone wraps GST_AUDIO_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#GST_AUDIO_FLAG_NONE
 	AudioFlagNone AudioFlags = 0
 	// AudioFlagUnpositioned wraps GST_AUDIO_FLAG_UNPOSITIONED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FLAG_UNPOSITIONED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-info.html#GST_AUDIO_FLAG_UNPOSITIONED
 	AudioFlagUnpositioned AudioFlags = 1
 )
 
@@ -1913,29 +1913,29 @@ func (f AudioFlags) String() string {
 
 // AudioFormatFlags wraps GstAudioFormatFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioFormatFlags
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GstAudioFormatFlags
 type AudioFormatFlags C.gint
 
 const (
 	// AudioFormatFlagInteger wraps GST_AUDIO_FORMAT_FLAG_INTEGER
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_INTEGER
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_FLAG_INTEGER
 	AudioFormatFlagInteger AudioFormatFlags = 1
 	// AudioFormatFlagFloat wraps GST_AUDIO_FORMAT_FLAG_FLOAT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_FLOAT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_FLAG_FLOAT
 	AudioFormatFlagFloat AudioFormatFlags = 2
 	// AudioFormatFlagSigned wraps GST_AUDIO_FORMAT_FLAG_SIGNED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_SIGNED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_FLAG_SIGNED
 	AudioFormatFlagSigned AudioFormatFlags = 4
 	// AudioFormatFlagComplex wraps GST_AUDIO_FORMAT_FLAG_COMPLEX
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_COMPLEX
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_FLAG_COMPLEX
 	AudioFormatFlagComplex AudioFormatFlags = 16
 	// AudioFormatFlagUnpack wraps GST_AUDIO_FORMAT_FLAG_UNPACK
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_FORMAT_FLAG_UNPACK
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_FORMAT_FLAG_UNPACK
 	AudioFormatFlagUnpack AudioFormatFlags = 32
 )
 
@@ -1983,17 +1983,17 @@ func (f AudioFormatFlags) String() string {
 
 // AudioPackFlags wraps GstAudioPackFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioPackFlags
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GstAudioPackFlags
 type AudioPackFlags C.gint
 
 const (
 	// AudioPackFlagNone wraps GST_AUDIO_PACK_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_PACK_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_PACK_FLAG_NONE
 	AudioPackFlagNone AudioPackFlags = 0
 	// AudioPackFlagTruncateRange wraps GST_AUDIO_PACK_FLAG_TRUNCATE_RANGE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_PACK_FLAG_TRUNCATE_RANGE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-format.html#GST_AUDIO_PACK_FLAG_TRUNCATE_RANGE
 	AudioPackFlagTruncateRange AudioPackFlags = 1
 )
 
@@ -2032,17 +2032,17 @@ func (f AudioPackFlags) String() string {
 
 // AudioQuantizeFlags wraps GstAudioQuantizeFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioQuantizeFlags
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GstAudioQuantizeFlags
 type AudioQuantizeFlags C.gint
 
 const (
 	// AudioQuantizeFlagNone wraps GST_AUDIO_QUANTIZE_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_QUANTIZE_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_QUANTIZE_FLAG_NONE
 	AudioQuantizeFlagNone AudioQuantizeFlags = 0
 	// AudioQuantizeFlagNonInterleaved wraps GST_AUDIO_QUANTIZE_FLAG_NON_INTERLEAVED
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_QUANTIZE_FLAG_NON_INTERLEAVED
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-quantize.html#GST_AUDIO_QUANTIZE_FLAG_NON_INTERLEAVED
 	AudioQuantizeFlagNonInterleaved AudioQuantizeFlags = 1
 )
 
@@ -2081,25 +2081,25 @@ func (f AudioQuantizeFlags) String() string {
 
 // AudioResamplerFlags wraps GstAudioResamplerFlags
 // 
-// see also https://gstreamer.freedesktop.org/documentation/audio#GstAudioResamplerFlags
+// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GstAudioResamplerFlags
 type AudioResamplerFlags C.gint
 
 const (
 	// AudioResamplerFlagNone wraps GST_AUDIO_RESAMPLER_FLAG_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FLAG_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FLAG_NONE
 	AudioResamplerFlagNone AudioResamplerFlags = 0
 	// AudioResamplerFlagNonInterleavedIn wraps GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_IN
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_IN
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_IN
 	AudioResamplerFlagNonInterleavedIn AudioResamplerFlags = 1
 	// AudioResamplerFlagNonInterleavedOut wraps GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_OUT
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_OUT
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_OUT
 	AudioResamplerFlagNonInterleavedOut AudioResamplerFlags = 2
 	// AudioResamplerFlagVariableRate wraps GST_AUDIO_RESAMPLER_FLAG_VARIABLE_RATE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/audio#GST_AUDIO_RESAMPLER_FLAG_VARIABLE_RATE
+	// see also https://gstreamer.freedesktop.org/documentation/audio/audio-resampler.html#GST_AUDIO_RESAMPLER_FLAG_VARIABLE_RATE
 	AudioResamplerFlagVariableRate AudioResamplerFlags = 4
 )
 

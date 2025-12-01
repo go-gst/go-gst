@@ -48,25 +48,25 @@ func init() {
 
 // InterpolationMode wraps GstInterpolationMode
 // 
-// see also https://gstreamer.freedesktop.org/documentation/controller#GstInterpolationMode
+// see also https://gstreamer.freedesktop.org/documentation/controller/gstinterpolationcontrolsource.html#GstInterpolationMode
 type InterpolationMode C.int
 
 const (
 	// InterpolationModeNone wraps GST_INTERPOLATION_MODE_NONE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller#GST_INTERPOLATION_MODE_NONE
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gstinterpolationcontrolsource.html#GST_INTERPOLATION_MODE_NONE
 	InterpolationModeNone InterpolationMode = 0
 	// InterpolationModeLinear wraps GST_INTERPOLATION_MODE_LINEAR
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller#GST_INTERPOLATION_MODE_LINEAR
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gstinterpolationcontrolsource.html#GST_INTERPOLATION_MODE_LINEAR
 	InterpolationModeLinear InterpolationMode = 1
 	// InterpolationModeCubic wraps GST_INTERPOLATION_MODE_CUBIC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller#GST_INTERPOLATION_MODE_CUBIC
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gstinterpolationcontrolsource.html#GST_INTERPOLATION_MODE_CUBIC
 	InterpolationModeCubic InterpolationMode = 2
 	// InterpolationModeCubicMonotonic wraps GST_INTERPOLATION_MODE_CUBIC_MONOTONIC
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller#GST_INTERPOLATION_MODE_CUBIC_MONOTONIC
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gstinterpolationcontrolsource.html#GST_INTERPOLATION_MODE_CUBIC_MONOTONIC
 	InterpolationModeCubicMonotonic InterpolationMode = 3
 )
 
@@ -96,29 +96,29 @@ func (e InterpolationMode) String() string {
 
 // LFOWaveform wraps GstLFOWaveform
 // 
-// see also https://gstreamer.freedesktop.org/documentation/controller#GstLFOWaveform
+// see also https://gstreamer.freedesktop.org/documentation/controller/gstlfocontrolsource.html#GstLFOWaveform
 type LFOWaveform C.int
 
 const (
 	// LfoWaveformSine wraps GST_LFO_WAVEFORM_SINE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller#GST_LFO_WAVEFORM_SINE
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gstlfocontrolsource.html#GST_LFO_WAVEFORM_SINE
 	LfoWaveformSine LFOWaveform = 0
 	// LfoWaveformSquare wraps GST_LFO_WAVEFORM_SQUARE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller#GST_LFO_WAVEFORM_SQUARE
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gstlfocontrolsource.html#GST_LFO_WAVEFORM_SQUARE
 	LfoWaveformSquare LFOWaveform = 1
 	// LfoWaveformSaw wraps GST_LFO_WAVEFORM_SAW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller#GST_LFO_WAVEFORM_SAW
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gstlfocontrolsource.html#GST_LFO_WAVEFORM_SAW
 	LfoWaveformSaw LFOWaveform = 2
 	// LfoWaveformReverseSaw wraps GST_LFO_WAVEFORM_REVERSE_SAW
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller#GST_LFO_WAVEFORM_REVERSE_SAW
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gstlfocontrolsource.html#GST_LFO_WAVEFORM_REVERSE_SAW
 	LfoWaveformReverseSaw LFOWaveform = 3
 	// LfoWaveformTriangle wraps GST_LFO_WAVEFORM_TRIANGLE
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller#GST_LFO_WAVEFORM_TRIANGLE
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gstlfocontrolsource.html#GST_LFO_WAVEFORM_TRIANGLE
 	LfoWaveformTriangle LFOWaveform = 4
 )
 
@@ -780,15 +780,15 @@ type TimedValueControlSource interface {
 	UnsetAll()
 	// ConnectValueAdded connects the provided callback to the "value-added" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
 	ConnectValueAdded(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
 	// ConnectValueChanged connects the provided callback to the "value-changed" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
 	ConnectValueChanged(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
 	// ConnectValueRemoved connects the provided callback to the "value-removed" signal
 	// 
-	// see also https://gstreamer.freedesktop.org/documentation/controller
+	// see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
 	ConnectValueRemoved(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
 
 	// chain up virtual methods:
@@ -982,21 +982,21 @@ func (self *TimedValueControlSourceInstance) UnsetAll() {
 
 // ConnectValueAdded connects the provided callback to the "value-added" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/controller
+// see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
 func (o *TimedValueControlSourceInstance) ConnectValueAdded(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
 	return o.Connect("value-added", fn)
 }
 
 // ConnectValueChanged connects the provided callback to the "value-changed" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/controller
+// see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
 func (o *TimedValueControlSourceInstance) ConnectValueChanged(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
 	return o.Connect("value-changed", fn)
 }
 
 // ConnectValueRemoved connects the provided callback to the "value-removed" signal
 // 
-// see also https://gstreamer.freedesktop.org/documentation/controller
+// see also https://gstreamer.freedesktop.org/documentation/controller/gsttimedvaluecontrolsource.html
 func (o *TimedValueControlSourceInstance) ConnectValueRemoved(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
 	return o.Connect("value-removed", fn)
 }
