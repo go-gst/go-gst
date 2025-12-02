@@ -14642,11 +14642,12 @@ func UnsafeAncillaryMetaFromGlibFull(p unsafe.Pointer) *AncillaryMeta {
 	return wrapped
 }
 
-// UnsafeAncillaryMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAncillaryMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AncillaryMeta] is expected to work anymore.
 func UnsafeAncillaryMetaFree(a *AncillaryMeta) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.ancillaryMeta, nil)
 }
 
 // UnsafeAncillaryMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14714,11 +14715,12 @@ func UnsafeColorBalanceChannelClassFromGlibBorrow(p unsafe.Pointer) *ColorBalanc
 	return &ColorBalanceChannelClass{&colorBalanceChannelClass{(*C.GstColorBalanceChannelClass)(p)}}
 }
 
-// UnsafeColorBalanceChannelClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeColorBalanceChannelClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [ColorBalanceChannelClass] is expected to work anymore.
 func UnsafeColorBalanceChannelClassFree(c *ColorBalanceChannelClass) {
 	C.free(unsafe.Pointer(c.native))
+	runtime.SetFinalizer(c.colorBalanceChannelClass, nil)
 }
 
 // UnsafeColorBalanceChannelClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14792,11 +14794,12 @@ func UnsafeColorBalanceInterfaceFromGlibFull(p unsafe.Pointer) *ColorBalanceInte
 	return wrapped
 }
 
-// UnsafeColorBalanceInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeColorBalanceInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [ColorBalanceInterface] is expected to work anymore.
 func UnsafeColorBalanceInterfaceFree(c *ColorBalanceInterface) {
 	C.free(unsafe.Pointer(c.native))
+	runtime.SetFinalizer(c.colorBalanceInterface, nil)
 }
 
 // UnsafeColorBalanceInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14873,11 +14876,12 @@ func UnsafeNavigationInterfaceFromGlibFull(p unsafe.Pointer) *NavigationInterfac
 	return wrapped
 }
 
-// UnsafeNavigationInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeNavigationInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [NavigationInterface] is expected to work anymore.
 func UnsafeNavigationInterfaceFree(n *NavigationInterface) {
 	C.free(unsafe.Pointer(n.native))
+	runtime.SetFinalizer(n.navigationInterface, nil)
 }
 
 // UnsafeNavigationInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14954,11 +14958,12 @@ func UnsafeVideoAFDMetaFromGlibFull(p unsafe.Pointer) *VideoAFDMeta {
 	return wrapped
 }
 
-// UnsafeVideoAFDMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoAFDMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoAFDMeta] is expected to work anymore.
 func UnsafeVideoAFDMetaFree(v *VideoAFDMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoAFDMeta, nil)
 }
 
 // UnsafeVideoAFDMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15050,11 +15055,12 @@ func UnsafeVideoAffineTransformationMetaFromGlibFull(p unsafe.Pointer) *VideoAff
 	return wrapped
 }
 
-// UnsafeVideoAffineTransformationMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoAffineTransformationMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoAffineTransformationMeta] is expected to work anymore.
 func UnsafeVideoAffineTransformationMetaFree(v *VideoAffineTransformationMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoAffineTransformationMeta, nil)
 }
 
 // UnsafeVideoAffineTransformationMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15143,11 +15149,12 @@ func UnsafeVideoAggregatorClassFromGlibBorrow(p unsafe.Pointer) *VideoAggregator
 	return &VideoAggregatorClass{&videoAggregatorClass{(*C.GstVideoAggregatorClass)(p)}}
 }
 
-// UnsafeVideoAggregatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoAggregatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoAggregatorClass] is expected to work anymore.
 func UnsafeVideoAggregatorClassFree(v *VideoAggregatorClass) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoAggregatorClass, nil)
 }
 
 // UnsafeVideoAggregatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15197,11 +15204,12 @@ func UnsafeVideoAggregatorConvertPadClassFromGlibBorrow(p unsafe.Pointer) *Video
 	return &VideoAggregatorConvertPadClass{&videoAggregatorConvertPadClass{(*C.GstVideoAggregatorConvertPadClass)(p)}}
 }
 
-// UnsafeVideoAggregatorConvertPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoAggregatorConvertPadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoAggregatorConvertPadClass] is expected to work anymore.
 func UnsafeVideoAggregatorConvertPadClassFree(v *VideoAggregatorConvertPadClass) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoAggregatorConvertPadClass, nil)
 }
 
 // UnsafeVideoAggregatorConvertPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15251,11 +15259,12 @@ func UnsafeVideoAggregatorPadClassFromGlibBorrow(p unsafe.Pointer) *VideoAggrega
 	return &VideoAggregatorPadClass{&videoAggregatorPadClass{(*C.GstVideoAggregatorPadClass)(p)}}
 }
 
-// UnsafeVideoAggregatorPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoAggregatorPadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoAggregatorPadClass] is expected to work anymore.
 func UnsafeVideoAggregatorPadClassFree(v *VideoAggregatorPadClass) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoAggregatorPadClass, nil)
 }
 
 // UnsafeVideoAggregatorPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15305,11 +15314,12 @@ func UnsafeVideoAggregatorParallelConvertPadClassFromGlibBorrow(p unsafe.Pointer
 	return &VideoAggregatorParallelConvertPadClass{&videoAggregatorParallelConvertPadClass{(*C.GstVideoAggregatorParallelConvertPadClass)(p)}}
 }
 
-// UnsafeVideoAggregatorParallelConvertPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoAggregatorParallelConvertPadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoAggregatorParallelConvertPadClass] is expected to work anymore.
 func UnsafeVideoAggregatorParallelConvertPadClassFree(v *VideoAggregatorParallelConvertPadClass) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoAggregatorParallelConvertPadClass, nil)
 }
 
 // UnsafeVideoAggregatorParallelConvertPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15383,11 +15393,12 @@ func UnsafeVideoAlignmentFromGlibFull(p unsafe.Pointer) *VideoAlignment {
 	return wrapped
 }
 
-// UnsafeVideoAlignmentFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoAlignmentFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoAlignment] is expected to work anymore.
 func UnsafeVideoAlignmentFree(v *VideoAlignment) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoAlignment, nil)
 }
 
 // UnsafeVideoAlignmentToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15476,11 +15487,12 @@ func UnsafeVideoAncillaryFromGlibFull(p unsafe.Pointer) *VideoAncillary {
 	return wrapped
 }
 
-// UnsafeVideoAncillaryFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoAncillaryFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoAncillary] is expected to work anymore.
 func UnsafeVideoAncillaryFree(v *VideoAncillary) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoAncillary, nil)
 }
 
 // UnsafeVideoAncillaryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15557,11 +15569,12 @@ func UnsafeVideoBarMetaFromGlibFull(p unsafe.Pointer) *VideoBarMeta {
 	return wrapped
 }
 
-// UnsafeVideoBarMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoBarMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoBarMeta] is expected to work anymore.
 func UnsafeVideoBarMetaFree(v *VideoBarMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoBarMeta, nil)
 }
 
 // UnsafeVideoBarMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15629,11 +15642,12 @@ func UnsafeVideoBufferPoolClassFromGlibBorrow(p unsafe.Pointer) *VideoBufferPool
 	return &VideoBufferPoolClass{&videoBufferPoolClass{(*C.GstVideoBufferPoolClass)(p)}}
 }
 
-// UnsafeVideoBufferPoolClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoBufferPoolClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoBufferPoolClass] is expected to work anymore.
 func UnsafeVideoBufferPoolClassFree(v *VideoBufferPoolClass) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoBufferPoolClass, nil)
 }
 
 // UnsafeVideoBufferPoolClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15707,11 +15721,12 @@ func UnsafeVideoCaptionMetaFromGlibFull(p unsafe.Pointer) *VideoCaptionMeta {
 	return wrapped
 }
 
-// UnsafeVideoCaptionMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoCaptionMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoCaptionMeta] is expected to work anymore.
 func UnsafeVideoCaptionMetaFree(v *VideoCaptionMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoCaptionMeta, nil)
 }
 
 // UnsafeVideoCaptionMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15803,11 +15818,12 @@ func UnsafeVideoChromaResamplerFromGlibFull(p unsafe.Pointer) *VideoChromaResamp
 	return wrapped
 }
 
-// UnsafeVideoChromaResampleFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoChromaResampleFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoChromaResample] is expected to work anymore.
 func UnsafeVideoChromaResampleFree(v *VideoChromaResample) {
 	C.gst_video_chroma_resample_free(v.native)
+	runtime.SetFinalizer(v.videoChromaResample, nil)
 }
 
 // UnsafeVideoChromaResamplerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -15884,11 +15900,12 @@ func UnsafeVideoCodecAlphaMetaFromGlibFull(p unsafe.Pointer) *VideoCodecAlphaMet
 	return wrapped
 }
 
-// UnsafeVideoCodecAlphaMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoCodecAlphaMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoCodecAlphaMeta] is expected to work anymore.
 func UnsafeVideoCodecAlphaMetaFree(v *VideoCodecAlphaMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoCodecAlphaMeta, nil)
 }
 
 // UnsafeVideoCodecAlphaMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16008,11 +16025,12 @@ func UnsafeVideoCodecFrameRef(v *VideoCodecFrame) {
 	C.gst_video_codec_frame_ref((*C.GstVideoCodecFrame)(v.native))
 }
 
-// UnsafeVideoCodecFrameUnref unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoCodecFrameUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoCodecFrame] is expected to work anymore.
 func UnsafeVideoCodecFrameUnref(v *VideoCodecFrame) {
 	C.gst_video_codec_frame_unref(v.native)
+	runtime.SetFinalizer(v.videoCodecFrame, nil)
 }
 
 // UnsafeVideoCodecFrameToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16117,11 +16135,12 @@ func UnsafeVideoCodecStateRef(v *VideoCodecState) {
 	C.gst_video_codec_state_ref((*C.GstVideoCodecState)(v.native))
 }
 
-// UnsafeVideoCodecStateUnref unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoCodecStateUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoCodecState] is expected to work anymore.
 func UnsafeVideoCodecStateUnref(v *VideoCodecState) {
 	C.gst_video_codec_state_unref(v.native)
+	runtime.SetFinalizer(v.videoCodecState, nil)
 }
 
 // UnsafeVideoCodecStateToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16198,11 +16217,12 @@ func UnsafeVideoColorPrimariesInfoFromGlibFull(p unsafe.Pointer) *VideoColorPrim
 	return wrapped
 }
 
-// UnsafeVideoColorPrimariesInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoColorPrimariesInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoColorPrimariesInfo] is expected to work anymore.
 func UnsafeVideoColorPrimariesInfoFree(v *VideoColorPrimariesInfo) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoColorPrimariesInfo, nil)
 }
 
 // UnsafeVideoColorPrimariesInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16279,11 +16299,12 @@ func UnsafeVideoColorimetryFromGlibFull(p unsafe.Pointer) *VideoColorimetry {
 	return wrapped
 }
 
-// UnsafeVideoColorimetryFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoColorimetryFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoColorimetry] is expected to work anymore.
 func UnsafeVideoColorimetryFree(v *VideoColorimetry) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoColorimetry, nil)
 }
 
 // UnsafeVideoColorimetryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16486,11 +16507,12 @@ func UnsafeVideoContentLightLevelFromGlibFull(p unsafe.Pointer) *VideoContentLig
 	return wrapped
 }
 
-// UnsafeVideoContentLightLevelFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoContentLightLevelFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoContentLightLevel] is expected to work anymore.
 func UnsafeVideoContentLightLevelFree(v *VideoContentLightLevel) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoContentLightLevel, nil)
 }
 
 // UnsafeVideoContentLightLevelToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16696,11 +16718,12 @@ func UnsafeVideoConverterFromGlibFull(p unsafe.Pointer) *VideoConverter {
 	return wrapped
 }
 
-// UnsafeVideoConverterFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoConverterFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoConverter] is expected to work anymore.
 func UnsafeVideoConverterFree(v *VideoConverter) {
 	C.gst_video_converter_free(v.native)
+	runtime.SetFinalizer(v.videoConverter, nil)
 }
 
 // UnsafeVideoConverterToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16888,11 +16911,12 @@ func UnsafeVideoCropMetaFromGlibFull(p unsafe.Pointer) *VideoCropMeta {
 	return wrapped
 }
 
-// UnsafeVideoCropMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoCropMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoCropMeta] is expected to work anymore.
 func UnsafeVideoCropMetaFree(v *VideoCropMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoCropMeta, nil)
 }
 
 // UnsafeVideoCropMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -16960,11 +16984,12 @@ func UnsafeVideoDecoderClassFromGlibBorrow(p unsafe.Pointer) *VideoDecoderClass 
 	return &VideoDecoderClass{&videoDecoderClass{(*C.GstVideoDecoderClass)(p)}}
 }
 
-// UnsafeVideoDecoderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoDecoderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoDecoderClass] is expected to work anymore.
 func UnsafeVideoDecoderClassFree(v *VideoDecoderClass) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoDecoderClass, nil)
 }
 
 // UnsafeVideoDecoderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -17038,11 +17063,12 @@ func UnsafeVideoDirectionInterfaceFromGlibFull(p unsafe.Pointer) *VideoDirection
 	return wrapped
 }
 
-// UnsafeVideoDirectionInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoDirectionInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoDirectionInterface] is expected to work anymore.
 func UnsafeVideoDirectionInterfaceFree(v *VideoDirectionInterface) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoDirectionInterface, nil)
 }
 
 // UnsafeVideoDirectionInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -17119,11 +17145,12 @@ func UnsafeVideoDitherFromGlibFull(p unsafe.Pointer) *VideoDither {
 	return wrapped
 }
 
-// UnsafeVideoDitherFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoDitherFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoDither] is expected to work anymore.
 func UnsafeVideoDitherFree(v *VideoDither) {
 	C.gst_video_dither_free(v.native)
+	runtime.SetFinalizer(v.videoDither, nil)
 }
 
 // UnsafeVideoDitherToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -17176,11 +17203,12 @@ func UnsafeVideoEncoderClassFromGlibBorrow(p unsafe.Pointer) *VideoEncoderClass 
 	return &VideoEncoderClass{&videoEncoderClass{(*C.GstVideoEncoderClass)(p)}}
 }
 
-// UnsafeVideoEncoderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoEncoderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoEncoderClass] is expected to work anymore.
 func UnsafeVideoEncoderClassFree(v *VideoEncoderClass) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoEncoderClass, nil)
 }
 
 // UnsafeVideoEncoderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -17230,11 +17258,12 @@ func UnsafeVideoFilterClassFromGlibBorrow(p unsafe.Pointer) *VideoFilterClass {
 	return &VideoFilterClass{&videoFilterClass{(*C.GstVideoFilterClass)(p)}}
 }
 
-// UnsafeVideoFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoFilterClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoFilterClass] is expected to work anymore.
 func UnsafeVideoFilterClassFree(v *VideoFilterClass) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoFilterClass, nil)
 }
 
 // UnsafeVideoFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -17308,11 +17337,12 @@ func UnsafeVideoFormatInfoFromGlibFull(p unsafe.Pointer) *VideoFormatInfo {
 	return wrapped
 }
 
-// UnsafeVideoFormatInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoFormatInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoFormatInfo] is expected to work anymore.
 func UnsafeVideoFormatInfoFree(v *VideoFormatInfo) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoFormatInfo, nil)
 }
 
 // UnsafeVideoFormatInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -17436,11 +17466,12 @@ func UnsafeVideoFrameFromGlibFull(p unsafe.Pointer) *VideoFrame {
 	return wrapped
 }
 
-// UnsafeVideoFrameFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoFrameFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoFrame] is expected to work anymore.
 func UnsafeVideoFrameFree(v *VideoFrame) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoFrame, nil)
 }
 
 // UnsafeVideoFrameToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -17647,11 +17678,12 @@ func UnsafeVideoGLTextureUploadMetaFromGlibFull(p unsafe.Pointer) *VideoGLTextur
 	return wrapped
 }
 
-// UnsafeVideoGLTextureUploadMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoGLTextureUploadMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoGLTextureUploadMeta] is expected to work anymore.
 func UnsafeVideoGLTextureUploadMetaFree(v *VideoGLTextureUploadMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoGLTextureUploadMeta, nil)
 }
 
 // UnsafeVideoGLTextureUploadMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -17784,11 +17816,12 @@ func UnsafeVideoInfoFromGlibFull(p unsafe.Pointer) *VideoInfo {
 	return wrapped
 }
 
-// UnsafeVideoInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoInfo] is expected to work anymore.
 func UnsafeVideoInfoFree(v *VideoInfo) {
 	C.gst_video_info_free(v.native)
+	runtime.SetFinalizer(v.videoInfo, nil)
 }
 
 // UnsafeVideoInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -18168,11 +18201,12 @@ func UnsafeVideoInfoDmaDrmFromGlibFull(p unsafe.Pointer) *VideoInfoDmaDrm {
 	return wrapped
 }
 
-// UnsafeVideoInfoDmaDrmFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoInfoDmaDrmFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoInfoDmaDrm] is expected to work anymore.
 func UnsafeVideoInfoDmaDrmFree(v *VideoInfoDmaDrm) {
 	C.gst_video_info_dma_drm_free(v.native)
+	runtime.SetFinalizer(v.videoInfoDmaDrm, nil)
 }
 
 // UnsafeVideoInfoDmaDrmToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -18404,11 +18438,12 @@ func UnsafeVideoMasteringDisplayInfoFromGlibFull(p unsafe.Pointer) *VideoMasteri
 	return wrapped
 }
 
-// UnsafeVideoMasteringDisplayInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoMasteringDisplayInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoMasteringDisplayInfo] is expected to work anymore.
 func UnsafeVideoMasteringDisplayInfoFree(v *VideoMasteringDisplayInfo) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoMasteringDisplayInfo, nil)
 }
 
 // UnsafeVideoMasteringDisplayInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -18616,11 +18651,12 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibFull(p unsafe.Pointer) *V
 	return wrapped
 }
 
-// UnsafeVideoMasteringDisplayInfoCoordinatesFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoMasteringDisplayInfoCoordinatesFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoMasteringDisplayInfoCoordinates] is expected to work anymore.
 func UnsafeVideoMasteringDisplayInfoCoordinatesFree(v *VideoMasteringDisplayInfoCoordinates) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoMasteringDisplayInfoCoordinates, nil)
 }
 
 // UnsafeVideoMasteringDisplayInfoCoordinatesToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -18697,11 +18733,12 @@ func UnsafeVideoMetaFromGlibFull(p unsafe.Pointer) *VideoMeta {
 	return wrapped
 }
 
-// UnsafeVideoMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoMeta] is expected to work anymore.
 func UnsafeVideoMetaFree(v *VideoMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoMeta, nil)
 }
 
 // UnsafeVideoMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -18819,11 +18856,12 @@ func UnsafeVideoMetaTransformFromGlibFull(p unsafe.Pointer) *VideoMetaTransform 
 	return wrapped
 }
 
-// UnsafeVideoMetaTransformFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoMetaTransformFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoMetaTransform] is expected to work anymore.
 func UnsafeVideoMetaTransformFree(v *VideoMetaTransform) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoMetaTransform, nil)
 }
 
 // UnsafeVideoMetaTransformToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -18915,11 +18953,12 @@ func UnsafeVideoOrientationInterfaceFromGlibFull(p unsafe.Pointer) *VideoOrienta
 	return wrapped
 }
 
-// UnsafeVideoOrientationInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoOrientationInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoOrientationInterface] is expected to work anymore.
 func UnsafeVideoOrientationInterfaceFree(v *VideoOrientationInterface) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoOrientationInterface, nil)
 }
 
 // UnsafeVideoOrientationInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -19011,11 +19050,12 @@ func UnsafeVideoOverlayCompositionFromGlibFull(p unsafe.Pointer) *VideoOverlayCo
 	return wrapped
 }
 
-// UnsafeVideoOverlayCompositionFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoOverlayCompositionFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoOverlayComposition] is expected to work anymore.
 func UnsafeVideoOverlayCompositionFree(v *VideoOverlayComposition) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoOverlayComposition, nil)
 }
 
 // UnsafeVideoOverlayCompositionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -19252,11 +19292,12 @@ func UnsafeVideoOverlayCompositionMetaFromGlibFull(p unsafe.Pointer) *VideoOverl
 	return wrapped
 }
 
-// UnsafeVideoOverlayCompositionMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoOverlayCompositionMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoOverlayCompositionMeta] is expected to work anymore.
 func UnsafeVideoOverlayCompositionMetaFree(v *VideoOverlayCompositionMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoOverlayCompositionMeta, nil)
 }
 
 // UnsafeVideoOverlayCompositionMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -19348,11 +19389,12 @@ func UnsafeVideoOverlayInterfaceFromGlibFull(p unsafe.Pointer) *VideoOverlayInte
 	return wrapped
 }
 
-// UnsafeVideoOverlayInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoOverlayInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoOverlayInterface] is expected to work anymore.
 func UnsafeVideoOverlayInterfaceFree(v *VideoOverlayInterface) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoOverlayInterface, nil)
 }
 
 // UnsafeVideoOverlayInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -19444,11 +19486,12 @@ func UnsafeVideoOverlayRectangleFromGlibFull(p unsafe.Pointer) *VideoOverlayRect
 	return wrapped
 }
 
-// UnsafeVideoOverlayRectangleFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoOverlayRectangleFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoOverlayRectangle] is expected to work anymore.
 func UnsafeVideoOverlayRectangleFree(v *VideoOverlayRectangle) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoOverlayRectangle, nil)
 }
 
 // UnsafeVideoOverlayRectangleToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -19839,11 +19882,12 @@ func UnsafeVideoRectangleFromGlibFull(p unsafe.Pointer) *VideoRectangle {
 	return wrapped
 }
 
-// UnsafeVideoRectangleFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoRectangleFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoRectangle] is expected to work anymore.
 func UnsafeVideoRectangleFree(v *VideoRectangle) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoRectangle, nil)
 }
 
 // UnsafeVideoRectangleToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -19920,11 +19964,12 @@ func UnsafeVideoRegionOfInterestMetaFromGlibFull(p unsafe.Pointer) *VideoRegionO
 	return wrapped
 }
 
-// UnsafeVideoRegionOfInterestMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoRegionOfInterestMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoRegionOfInterestMeta] is expected to work anymore.
 func UnsafeVideoRegionOfInterestMetaFree(v *VideoRegionOfInterestMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoRegionOfInterestMeta, nil)
 }
 
 // UnsafeVideoRegionOfInterestMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -20056,11 +20101,12 @@ func UnsafeVideoResamplerFromGlibFull(p unsafe.Pointer) *VideoResampler {
 	return wrapped
 }
 
-// UnsafeVideoResamplerFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoResamplerFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoResampler] is expected to work anymore.
 func UnsafeVideoResamplerFree(v *VideoResampler) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoResampler, nil)
 }
 
 // UnsafeVideoResamplerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -20194,11 +20240,12 @@ func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibFull(p unsafe.Pointer) *Video
 	return wrapped
 }
 
-// UnsafeVideoSEIUserDataUnregisteredMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoSEIUserDataUnregisteredMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoSEIUserDataUnregisteredMeta] is expected to work anymore.
 func UnsafeVideoSEIUserDataUnregisteredMetaFree(v *VideoSEIUserDataUnregisteredMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoSEIUserDataUnregisteredMeta, nil)
 }
 
 // UnsafeVideoSEIUserDataUnregisteredMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -20290,11 +20337,12 @@ func UnsafeVideoScalerFromGlibFull(p unsafe.Pointer) *VideoScaler {
 	return wrapped
 }
 
-// UnsafeVideoScalerFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoScalerFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoScaler] is expected to work anymore.
 func UnsafeVideoScalerFree(v *VideoScaler) {
 	C.gst_video_scaler_free(v.native)
+	runtime.SetFinalizer(v.videoScaler, nil)
 }
 
 // UnsafeVideoScalerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -20396,11 +20444,12 @@ func UnsafeVideoSinkClassFromGlibBorrow(p unsafe.Pointer) *VideoSinkClass {
 	return &VideoSinkClass{&videoSinkClass{(*C.GstVideoSinkClass)(p)}}
 }
 
-// UnsafeVideoSinkClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoSinkClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoSinkClass] is expected to work anymore.
 func UnsafeVideoSinkClassFree(v *VideoSinkClass) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoSinkClass, nil)
 }
 
 // UnsafeVideoSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -20474,11 +20523,12 @@ func UnsafeVideoTileInfoFromGlibFull(p unsafe.Pointer) *VideoTileInfo {
 	return wrapped
 }
 
-// UnsafeVideoTileInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoTileInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoTileInfo] is expected to work anymore.
 func UnsafeVideoTileInfoFree(v *VideoTileInfo) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoTileInfo, nil)
 }
 
 // UnsafeVideoTileInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -20555,11 +20605,12 @@ func UnsafeVideoTimeCodeFromGlibFull(p unsafe.Pointer) *VideoTimeCode {
 	return wrapped
 }
 
-// UnsafeVideoTimeCodeFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoTimeCodeFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoTimeCode] is expected to work anymore.
 func UnsafeVideoTimeCodeFree(v *VideoTimeCode) {
 	C.gst_video_time_code_free(v.native)
+	runtime.SetFinalizer(v.videoTimeCode, nil)
 }
 
 // UnsafeVideoTimeCodeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -20856,11 +20907,12 @@ func UnsafeVideoTimeCodeConfigFromGlibFull(p unsafe.Pointer) *VideoTimeCodeConfi
 	return wrapped
 }
 
-// UnsafeVideoTimeCodeConfigFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoTimeCodeConfigFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoTimeCodeConfig] is expected to work anymore.
 func UnsafeVideoTimeCodeConfigFree(v *VideoTimeCodeConfig) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoTimeCodeConfig, nil)
 }
 
 // UnsafeVideoTimeCodeConfigToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -20952,11 +21004,12 @@ func UnsafeVideoTimeCodeIntervalFromGlibFull(p unsafe.Pointer) *VideoTimeCodeInt
 	return wrapped
 }
 
-// UnsafeVideoTimeCodeIntervalFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoTimeCodeIntervalFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoTimeCodeInterval] is expected to work anymore.
 func UnsafeVideoTimeCodeIntervalFree(v *VideoTimeCodeInterval) {
 	C.gst_video_time_code_interval_free(v.native)
+	runtime.SetFinalizer(v.videoTimeCodeInterval, nil)
 }
 
 // UnsafeVideoTimeCodeIntervalToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -21138,11 +21191,12 @@ func UnsafeVideoTimeCodeMetaFromGlibFull(p unsafe.Pointer) *VideoTimeCodeMeta {
 	return wrapped
 }
 
-// UnsafeVideoTimeCodeMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoTimeCodeMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoTimeCodeMeta] is expected to work anymore.
 func UnsafeVideoTimeCodeMetaFree(v *VideoTimeCodeMeta) {
 	C.free(unsafe.Pointer(v.native))
+	runtime.SetFinalizer(v.videoTimeCodeMeta, nil)
 }
 
 // UnsafeVideoTimeCodeMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -21249,11 +21303,12 @@ func UnsafeVideoVBIEncoderFromGlibFull(p unsafe.Pointer) *VideoVBIEncoder {
 	return wrapped
 }
 
-// UnsafeVideoVBIEncoderFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoVBIEncoderFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoVBIEncoder] is expected to work anymore.
 func UnsafeVideoVBIEncoderFree(v *VideoVBIEncoder) {
 	C.gst_video_vbi_encoder_free(v.native)
+	runtime.SetFinalizer(v.videoVBIEncoder, nil)
 }
 
 // UnsafeVideoVBIEncoderToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -21444,11 +21499,12 @@ func UnsafeVideoVBIParserFromGlibFull(p unsafe.Pointer) *VideoVBIParser {
 	return wrapped
 }
 
-// UnsafeVideoVBIParserFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeVideoVBIParserFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [VideoVBIParser] is expected to work anymore.
 func UnsafeVideoVBIParserFree(v *VideoVBIParser) {
 	C.gst_video_vbi_parser_free(v.native)
+	runtime.SetFinalizer(v.videoVBIParser, nil)
 }
 
 // UnsafeVideoVBIParserToGlibNone returns the underlying C pointer. This is used by the bindings internally.

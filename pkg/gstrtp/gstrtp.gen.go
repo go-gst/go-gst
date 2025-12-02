@@ -3987,11 +3987,12 @@ func UnsafeRTCPBufferFromGlibFull(p unsafe.Pointer) *RTCPBuffer {
 	return wrapped
 }
 
-// UnsafeRTCPBufferFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTCPBufferFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTCPBuffer] is expected to work anymore.
 func UnsafeRTCPBufferFree(r *RTCPBuffer) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTCPBuffer, nil)
 }
 
 // UnsafeRTCPBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4297,11 +4298,12 @@ func UnsafeRTCPPacketFromGlibFull(p unsafe.Pointer) *RTCPPacket {
 	return wrapped
 }
 
-// UnsafeRTCPPacketFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTCPPacketFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTCPPacket] is expected to work anymore.
 func UnsafeRTCPPacketFree(r *RTCPPacket) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTCPPacket, nil)
 }
 
 // UnsafeRTCPPacketToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6160,11 +6162,12 @@ func UnsafeRTPBaseAudioPayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBaseAudi
 	return &RTPBaseAudioPayloadClass{&rTPBaseAudioPayloadClass{(*C.GstRTPBaseAudioPayloadClass)(p)}}
 }
 
-// UnsafeRTPBaseAudioPayloadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTPBaseAudioPayloadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTPBaseAudioPayloadClass] is expected to work anymore.
 func UnsafeRTPBaseAudioPayloadClassFree(r *RTPBaseAudioPayloadClass) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTPBaseAudioPayloadClass, nil)
 }
 
 // UnsafeRTPBaseAudioPayloadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6214,11 +6217,12 @@ func UnsafeRTPBaseDepayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBaseDepaylo
 	return &RTPBaseDepayloadClass{&rTPBaseDepayloadClass{(*C.GstRTPBaseDepayloadClass)(p)}}
 }
 
-// UnsafeRTPBaseDepayloadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTPBaseDepayloadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTPBaseDepayloadClass] is expected to work anymore.
 func UnsafeRTPBaseDepayloadClassFree(r *RTPBaseDepayloadClass) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTPBaseDepayloadClass, nil)
 }
 
 // UnsafeRTPBaseDepayloadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6268,11 +6272,12 @@ func UnsafeRTPBasePayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBasePayloadCl
 	return &RTPBasePayloadClass{&rTPBasePayloadClass{(*C.GstRTPBasePayloadClass)(p)}}
 }
 
-// UnsafeRTPBasePayloadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTPBasePayloadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTPBasePayloadClass] is expected to work anymore.
 func UnsafeRTPBasePayloadClassFree(r *RTPBasePayloadClass) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTPBasePayloadClass, nil)
 }
 
 // UnsafeRTPBasePayloadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6346,11 +6351,12 @@ func UnsafeRTPBufferFromGlibFull(p unsafe.Pointer) *RTPBuffer {
 	return wrapped
 }
 
-// UnsafeRTPBufferFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTPBufferFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTPBuffer] is expected to work anymore.
 func UnsafeRTPBufferFree(r *RTPBuffer) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTPBuffer, nil)
 }
 
 // UnsafeRTPBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -7183,11 +7189,12 @@ func UnsafeRTPHeaderExtensionClassFromGlibBorrow(p unsafe.Pointer) *RTPHeaderExt
 	return &RTPHeaderExtensionClass{&rTPHeaderExtensionClass{(*C.GstRTPHeaderExtensionClass)(p)}}
 }
 
-// UnsafeRTPHeaderExtensionClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTPHeaderExtensionClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTPHeaderExtensionClass] is expected to work anymore.
 func UnsafeRTPHeaderExtensionClassFree(r *RTPHeaderExtensionClass) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTPHeaderExtensionClass, nil)
 }
 
 // UnsafeRTPHeaderExtensionClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -7277,11 +7284,12 @@ func UnsafeRTPPayloadInfoFromGlibFull(p unsafe.Pointer) *RTPPayloadInfo {
 	return wrapped
 }
 
-// UnsafeRTPPayloadInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTPPayloadInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTPPayloadInfo] is expected to work anymore.
 func UnsafeRTPPayloadInfoFree(r *RTPPayloadInfo) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTPPayloadInfo, nil)
 }
 
 // UnsafeRTPPayloadInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -7405,11 +7413,12 @@ func UnsafeRTPSourceMetaFromGlibFull(p unsafe.Pointer) *RTPSourceMeta {
 	return wrapped
 }
 
-// UnsafeRTPSourceMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTPSourceMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTPSourceMeta] is expected to work anymore.
 func UnsafeRTPSourceMetaFree(r *RTPSourceMeta) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTPSourceMeta, nil)
 }
 
 // UnsafeRTPSourceMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.

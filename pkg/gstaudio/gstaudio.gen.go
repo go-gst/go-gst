@@ -11202,11 +11202,12 @@ func UnsafeAudioAggregatorClassFromGlibBorrow(p unsafe.Pointer) *AudioAggregator
 	return &AudioAggregatorClass{&audioAggregatorClass{(*C.GstAudioAggregatorClass)(p)}}
 }
 
-// UnsafeAudioAggregatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioAggregatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioAggregatorClass] is expected to work anymore.
 func UnsafeAudioAggregatorClassFree(a *AudioAggregatorClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioAggregatorClass, nil)
 }
 
 // UnsafeAudioAggregatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11256,11 +11257,12 @@ func UnsafeAudioAggregatorConvertPadClassFromGlibBorrow(p unsafe.Pointer) *Audio
 	return &AudioAggregatorConvertPadClass{&audioAggregatorConvertPadClass{(*C.GstAudioAggregatorConvertPadClass)(p)}}
 }
 
-// UnsafeAudioAggregatorConvertPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioAggregatorConvertPadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioAggregatorConvertPadClass] is expected to work anymore.
 func UnsafeAudioAggregatorConvertPadClassFree(a *AudioAggregatorConvertPadClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioAggregatorConvertPadClass, nil)
 }
 
 // UnsafeAudioAggregatorConvertPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11310,11 +11312,12 @@ func UnsafeAudioAggregatorPadClassFromGlibBorrow(p unsafe.Pointer) *AudioAggrega
 	return &AudioAggregatorPadClass{&audioAggregatorPadClass{(*C.GstAudioAggregatorPadClass)(p)}}
 }
 
-// UnsafeAudioAggregatorPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioAggregatorPadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioAggregatorPadClass] is expected to work anymore.
 func UnsafeAudioAggregatorPadClassFree(a *AudioAggregatorPadClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioAggregatorPadClass, nil)
 }
 
 // UnsafeAudioAggregatorPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11364,11 +11367,12 @@ func UnsafeAudioBaseSinkClassFromGlibBorrow(p unsafe.Pointer) *AudioBaseSinkClas
 	return &AudioBaseSinkClass{&audioBaseSinkClass{(*C.GstAudioBaseSinkClass)(p)}}
 }
 
-// UnsafeAudioBaseSinkClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioBaseSinkClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioBaseSinkClass] is expected to work anymore.
 func UnsafeAudioBaseSinkClassFree(a *AudioBaseSinkClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioBaseSinkClass, nil)
 }
 
 // UnsafeAudioBaseSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11418,11 +11422,12 @@ func UnsafeAudioBaseSrcClassFromGlibBorrow(p unsafe.Pointer) *AudioBaseSrcClass 
 	return &AudioBaseSrcClass{&audioBaseSrcClass{(*C.GstAudioBaseSrcClass)(p)}}
 }
 
-// UnsafeAudioBaseSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioBaseSrcClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioBaseSrcClass] is expected to work anymore.
 func UnsafeAudioBaseSrcClassFree(a *AudioBaseSrcClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioBaseSrcClass, nil)
 }
 
 // UnsafeAudioBaseSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11496,11 +11501,12 @@ func UnsafeAudioBufferFromGlibFull(p unsafe.Pointer) *AudioBuffer {
 	return wrapped
 }
 
-// UnsafeAudioBufferFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioBufferFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioBuffer] is expected to work anymore.
 func UnsafeAudioBufferFree(a *AudioBuffer) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioBuffer, nil)
 }
 
 // UnsafeAudioBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11692,11 +11698,12 @@ func UnsafeAudioCdSrcClassFromGlibBorrow(p unsafe.Pointer) *AudioCdSrcClass {
 	return &AudioCdSrcClass{&audioCdSrcClass{(*C.GstAudioCdSrcClass)(p)}}
 }
 
-// UnsafeAudioCdSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioCdSrcClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioCdSrcClass] is expected to work anymore.
 func UnsafeAudioCdSrcClassFree(a *AudioCdSrcClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioCdSrcClass, nil)
 }
 
 // UnsafeAudioCdSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11770,11 +11777,12 @@ func UnsafeAudioCdSrcTrackFromGlibFull(p unsafe.Pointer) *AudioCdSrcTrack {
 	return wrapped
 }
 
-// UnsafeAudioCdSrcTrackFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioCdSrcTrackFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioCdSrcTrack] is expected to work anymore.
 func UnsafeAudioCdSrcTrackFree(a *AudioCdSrcTrack) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioCdSrcTrack, nil)
 }
 
 // UnsafeAudioCdSrcTrackToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11851,11 +11859,12 @@ func UnsafeAudioChannelMixerFromGlibFull(p unsafe.Pointer) *AudioChannelMixer {
 	return wrapped
 }
 
-// UnsafeAudioChannelMixerFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioChannelMixerFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioChannelMixer] is expected to work anymore.
 func UnsafeAudioChannelMixerFree(a *AudioChannelMixer) {
 	C.gst_audio_channel_mixer_free(a.native)
+	runtime.SetFinalizer(a.audioChannelMixer, nil)
 }
 
 // UnsafeAudioChannelMixerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11953,11 +11962,12 @@ func UnsafeAudioClippingMetaFromGlibFull(p unsafe.Pointer) *AudioClippingMeta {
 	return wrapped
 }
 
-// UnsafeAudioClippingMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioClippingMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioClippingMeta] is expected to work anymore.
 func UnsafeAudioClippingMetaFree(a *AudioClippingMeta) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioClippingMeta, nil)
 }
 
 // UnsafeAudioClippingMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12025,11 +12035,12 @@ func UnsafeAudioClockClassFromGlibBorrow(p unsafe.Pointer) *AudioClockClass {
 	return &AudioClockClass{&audioClockClass{(*C.GstAudioClockClass)(p)}}
 }
 
-// UnsafeAudioClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioClockClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioClockClass] is expected to work anymore.
 func UnsafeAudioClockClassFree(a *AudioClockClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioClockClass, nil)
 }
 
 // UnsafeAudioClockClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12118,11 +12129,12 @@ func UnsafeAudioConverterFromGlibFull(p unsafe.Pointer) *AudioConverter {
 	return wrapped
 }
 
-// UnsafeAudioConverterFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioConverterFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioConverter] is expected to work anymore.
 func UnsafeAudioConverterFree(a *AudioConverter) {
 	C.gst_audio_converter_free(a.native)
+	runtime.SetFinalizer(a.audioConverter, nil)
 }
 
 // UnsafeAudioConverterToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12381,11 +12393,12 @@ func UnsafeAudioDecoderClassFromGlibBorrow(p unsafe.Pointer) *AudioDecoderClass 
 	return &AudioDecoderClass{&audioDecoderClass{(*C.GstAudioDecoderClass)(p)}}
 }
 
-// UnsafeAudioDecoderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioDecoderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioDecoderClass] is expected to work anymore.
 func UnsafeAudioDecoderClassFree(a *AudioDecoderClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioDecoderClass, nil)
 }
 
 // UnsafeAudioDecoderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12459,11 +12472,12 @@ func UnsafeAudioDownmixMetaFromGlibFull(p unsafe.Pointer) *AudioDownmixMeta {
 	return wrapped
 }
 
-// UnsafeAudioDownmixMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioDownmixMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioDownmixMeta] is expected to work anymore.
 func UnsafeAudioDownmixMetaFree(a *AudioDownmixMeta) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioDownmixMeta, nil)
 }
 
 // UnsafeAudioDownmixMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12531,11 +12545,12 @@ func UnsafeAudioEncoderClassFromGlibBorrow(p unsafe.Pointer) *AudioEncoderClass 
 	return &AudioEncoderClass{&audioEncoderClass{(*C.GstAudioEncoderClass)(p)}}
 }
 
-// UnsafeAudioEncoderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioEncoderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioEncoderClass] is expected to work anymore.
 func UnsafeAudioEncoderClassFree(a *AudioEncoderClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioEncoderClass, nil)
 }
 
 // UnsafeAudioEncoderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12585,11 +12600,12 @@ func UnsafeAudioFilterClassFromGlibBorrow(p unsafe.Pointer) *AudioFilterClass {
 	return &AudioFilterClass{&audioFilterClass{(*C.GstAudioFilterClass)(p)}}
 }
 
-// UnsafeAudioFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioFilterClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioFilterClass] is expected to work anymore.
 func UnsafeAudioFilterClassFree(a *AudioFilterClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioFilterClass, nil)
 }
 
 // UnsafeAudioFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12678,11 +12694,12 @@ func UnsafeAudioFormatInfoFromGlibFull(p unsafe.Pointer) *AudioFormatInfo {
 	return wrapped
 }
 
-// UnsafeAudioFormatInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioFormatInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioFormatInfo] is expected to work anymore.
 func UnsafeAudioFormatInfoFree(a *AudioFormatInfo) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioFormatInfo, nil)
 }
 
 // UnsafeAudioFormatInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12774,11 +12791,12 @@ func UnsafeAudioInfoFromGlibFull(p unsafe.Pointer) *AudioInfo {
 	return wrapped
 }
 
-// UnsafeAudioInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioInfo] is expected to work anymore.
 func UnsafeAudioInfoFree(a *AudioInfo) {
 	C.gst_audio_info_free(a.native)
+	runtime.SetFinalizer(a.audioInfo, nil)
 }
 
 // UnsafeAudioInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13059,11 +13077,12 @@ func UnsafeAudioLevelMetaFromGlibFull(p unsafe.Pointer) *AudioLevelMeta {
 	return wrapped
 }
 
-// UnsafeAudioLevelMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioLevelMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioLevelMeta] is expected to work anymore.
 func UnsafeAudioLevelMetaFree(a *AudioLevelMeta) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioLevelMeta, nil)
 }
 
 // UnsafeAudioLevelMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13155,11 +13174,12 @@ func UnsafeAudioMetaFromGlibFull(p unsafe.Pointer) *AudioMeta {
 	return wrapped
 }
 
-// UnsafeAudioMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioMeta] is expected to work anymore.
 func UnsafeAudioMetaFree(a *AudioMeta) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioMeta, nil)
 }
 
 // UnsafeAudioMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13251,11 +13271,12 @@ func UnsafeAudioQuantizeFromGlibFull(p unsafe.Pointer) *AudioQuantize {
 	return wrapped
 }
 
-// UnsafeAudioQuantizeFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioQuantizeFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioQuantize] is expected to work anymore.
 func UnsafeAudioQuantizeFree(a *AudioQuantize) {
 	C.gst_audio_quantize_free(a.native)
+	runtime.SetFinalizer(a.audioQuantize, nil)
 }
 
 // UnsafeAudioQuantizeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13344,11 +13365,12 @@ func UnsafeAudioResamplerFromGlibFull(p unsafe.Pointer) *AudioResampler {
 	return wrapped
 }
 
-// UnsafeAudioResamplerFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioResamplerFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioResampler] is expected to work anymore.
 func UnsafeAudioResamplerFree(a *AudioResampler) {
 	C.gst_audio_resampler_free(a.native)
+	runtime.SetFinalizer(a.audioResampler, nil)
 }
 
 // UnsafeAudioResamplerToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13567,11 +13589,12 @@ func UnsafeAudioRingBufferClassFromGlibBorrow(p unsafe.Pointer) *AudioRingBuffer
 	return &AudioRingBufferClass{&audioRingBufferClass{(*C.GstAudioRingBufferClass)(p)}}
 }
 
-// UnsafeAudioRingBufferClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioRingBufferClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioRingBufferClass] is expected to work anymore.
 func UnsafeAudioRingBufferClassFree(a *AudioRingBufferClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioRingBufferClass, nil)
 }
 
 // UnsafeAudioRingBufferClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13645,11 +13668,12 @@ func UnsafeAudioRingBufferSpecFromGlibFull(p unsafe.Pointer) *AudioRingBufferSpe
 	return wrapped
 }
 
-// UnsafeAudioRingBufferSpecFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioRingBufferSpecFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioRingBufferSpec] is expected to work anymore.
 func UnsafeAudioRingBufferSpecFree(a *AudioRingBufferSpec) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioRingBufferSpec, nil)
 }
 
 // UnsafeAudioRingBufferSpecToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13702,11 +13726,12 @@ func UnsafeAudioSinkClassFromGlibBorrow(p unsafe.Pointer) *AudioSinkClass {
 	return &AudioSinkClass{&audioSinkClass{(*C.GstAudioSinkClass)(p)}}
 }
 
-// UnsafeAudioSinkClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioSinkClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioSinkClass] is expected to work anymore.
 func UnsafeAudioSinkClassFree(a *AudioSinkClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioSinkClass, nil)
 }
 
 // UnsafeAudioSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13780,11 +13805,12 @@ func UnsafeAudioSinkClassExtensionFromGlibFull(p unsafe.Pointer) *AudioSinkClass
 	return wrapped
 }
 
-// UnsafeAudioSinkClassExtensionFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioSinkClassExtensionFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioSinkClassExtension] is expected to work anymore.
 func UnsafeAudioSinkClassExtensionFree(a *AudioSinkClassExtension) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioSinkClassExtension, nil)
 }
 
 // UnsafeAudioSinkClassExtensionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13837,11 +13863,12 @@ func UnsafeAudioSrcClassFromGlibBorrow(p unsafe.Pointer) *AudioSrcClass {
 	return &AudioSrcClass{&audioSrcClass{(*C.GstAudioSrcClass)(p)}}
 }
 
-// UnsafeAudioSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioSrcClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioSrcClass] is expected to work anymore.
 func UnsafeAudioSrcClassFree(a *AudioSrcClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioSrcClass, nil)
 }
 
 // UnsafeAudioSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13930,11 +13957,12 @@ func UnsafeAudioStreamAlignFromGlibFull(p unsafe.Pointer) *AudioStreamAlign {
 	return wrapped
 }
 
-// UnsafeAudioStreamAlignFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioStreamAlignFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioStreamAlign] is expected to work anymore.
 func UnsafeAudioStreamAlignFree(a *AudioStreamAlign) {
 	C.gst_audio_stream_align_free(a.native)
+	runtime.SetFinalizer(a.audioStreamAlign, nil)
 }
 
 // UnsafeAudioStreamAlignToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14263,11 +14291,12 @@ func UnsafeDsdInfoFromGlibFull(p unsafe.Pointer) *DsdInfo {
 	return wrapped
 }
 
-// UnsafeDsdInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeDsdInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [DsdInfo] is expected to work anymore.
 func UnsafeDsdInfoFree(d *DsdInfo) {
 	C.gst_dsd_info_free(d.native)
+	runtime.SetFinalizer(d.dsdInfo, nil)
 }
 
 // UnsafeDsdInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14513,11 +14542,12 @@ func UnsafeDsdPlaneOffsetMetaFromGlibFull(p unsafe.Pointer) *DsdPlaneOffsetMeta 
 	return wrapped
 }
 
-// UnsafeDsdPlaneOffsetMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeDsdPlaneOffsetMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [DsdPlaneOffsetMeta] is expected to work anymore.
 func UnsafeDsdPlaneOffsetMetaFree(d *DsdPlaneOffsetMeta) {
 	C.free(unsafe.Pointer(d.native))
+	runtime.SetFinalizer(d.dsdPlaneOffsetMeta, nil)
 }
 
 // UnsafeDsdPlaneOffsetMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14609,11 +14639,12 @@ func UnsafeStreamVolumeInterfaceFromGlibFull(p unsafe.Pointer) *StreamVolumeInte
 	return wrapped
 }
 
-// UnsafeStreamVolumeInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeStreamVolumeInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [StreamVolumeInterface] is expected to work anymore.
 func UnsafeStreamVolumeInterfaceFree(s *StreamVolumeInterface) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.streamVolumeInterface, nil)
 }
 
 // UnsafeStreamVolumeInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.

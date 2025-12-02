@@ -2591,11 +2591,12 @@ func UnsafeAppSinkClassFromGlibBorrow(p unsafe.Pointer) *AppSinkClass {
 	return &AppSinkClass{&appSinkClass{(*C.GstAppSinkClass)(p)}}
 }
 
-// UnsafeAppSinkClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAppSinkClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AppSinkClass] is expected to work anymore.
 func UnsafeAppSinkClassFree(a *AppSinkClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.appSinkClass, nil)
 }
 
 // UnsafeAppSinkClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2645,11 +2646,12 @@ func UnsafeAppSrcClassFromGlibBorrow(p unsafe.Pointer) *AppSrcClass {
 	return &AppSrcClass{&appSrcClass{(*C.GstAppSrcClass)(p)}}
 }
 
-// UnsafeAppSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAppSrcClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AppSrcClass] is expected to work anymore.
 func UnsafeAppSrcClassFree(a *AppSrcClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.appSrcClass, nil)
 }
 
 // UnsafeAppSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.

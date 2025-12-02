@@ -4109,11 +4109,12 @@ func UnsafeWebRTCDTLSTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDTLST
 	return &WebRTCDTLSTransportClass{&webRTCDTLSTransportClass{(*C.GstWebRTCDTLSTransportClass)(p)}}
 }
 
-// UnsafeWebRTCDTLSTransportClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCDTLSTransportClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCDTLSTransportClass] is expected to work anymore.
 func UnsafeWebRTCDTLSTransportClassFree(w *WebRTCDTLSTransportClass) {
 	C.free(unsafe.Pointer(w.native))
+	runtime.SetFinalizer(w.webRTCDTLSTransportClass, nil)
 }
 
 // UnsafeWebRTCDTLSTransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4163,11 +4164,12 @@ func UnsafeWebRTCDataChannelClassFromGlibBorrow(p unsafe.Pointer) *WebRTCDataCha
 	return &WebRTCDataChannelClass{&webRTCDataChannelClass{(*C.GstWebRTCDataChannelClass)(p)}}
 }
 
-// UnsafeWebRTCDataChannelClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCDataChannelClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCDataChannelClass] is expected to work anymore.
 func UnsafeWebRTCDataChannelClassFree(w *WebRTCDataChannelClass) {
 	C.free(unsafe.Pointer(w.native))
+	runtime.SetFinalizer(w.webRTCDataChannelClass, nil)
 }
 
 // UnsafeWebRTCDataChannelClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4256,11 +4258,12 @@ func UnsafeWebRTCICECandidateStatsFromGlibFull(p unsafe.Pointer) *WebRTCICECandi
 	return wrapped
 }
 
-// UnsafeWebRTCICECandidateStatsFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCICECandidateStatsFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCICECandidateStats] is expected to work anymore.
 func UnsafeWebRTCICECandidateStatsFree(w *WebRTCICECandidateStats) {
 	C.gst_webrtc_ice_candidate_stats_free(w.native)
+	runtime.SetFinalizer(w.webRTCICECandidateStats, nil)
 }
 
 // UnsafeWebRTCICECandidateStatsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4332,11 +4335,12 @@ func UnsafeWebRTCICEClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICEClass {
 	return &WebRTCICEClass{&webRTCICEClass{(*C.GstWebRTCICEClass)(p)}}
 }
 
-// UnsafeWebRTCICEClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCICEClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCICEClass] is expected to work anymore.
 func UnsafeWebRTCICEClassFree(w *WebRTCICEClass) {
 	C.free(unsafe.Pointer(w.native))
+	runtime.SetFinalizer(w.webRTCICEClass, nil)
 }
 
 // UnsafeWebRTCICEClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4386,11 +4390,12 @@ func UnsafeWebRTCICEStreamClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICEStream
 	return &WebRTCICEStreamClass{&webRTCICEStreamClass{(*C.GstWebRTCICEStreamClass)(p)}}
 }
 
-// UnsafeWebRTCICEStreamClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCICEStreamClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCICEStreamClass] is expected to work anymore.
 func UnsafeWebRTCICEStreamClassFree(w *WebRTCICEStreamClass) {
 	C.free(unsafe.Pointer(w.native))
+	runtime.SetFinalizer(w.webRTCICEStreamClass, nil)
 }
 
 // UnsafeWebRTCICEStreamClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4440,11 +4445,12 @@ func UnsafeWebRTCICETransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCICETra
 	return &WebRTCICETransportClass{&webRTCICETransportClass{(*C.GstWebRTCICETransportClass)(p)}}
 }
 
-// UnsafeWebRTCICETransportClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCICETransportClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCICETransportClass] is expected to work anymore.
 func UnsafeWebRTCICETransportClassFree(w *WebRTCICETransportClass) {
 	C.free(unsafe.Pointer(w.native))
+	runtime.SetFinalizer(w.webRTCICETransportClass, nil)
 }
 
 // UnsafeWebRTCICETransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4494,11 +4500,12 @@ func UnsafeWebRTCRTPReceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPRece
 	return &WebRTCRTPReceiverClass{&webRTCRTPReceiverClass{(*C.GstWebRTCRTPReceiverClass)(p)}}
 }
 
-// UnsafeWebRTCRTPReceiverClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCRTPReceiverClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCRTPReceiverClass] is expected to work anymore.
 func UnsafeWebRTCRTPReceiverClassFree(w *WebRTCRTPReceiverClass) {
 	C.free(unsafe.Pointer(w.native))
+	runtime.SetFinalizer(w.webRTCRTPReceiverClass, nil)
 }
 
 // UnsafeWebRTCRTPReceiverClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4548,11 +4555,12 @@ func UnsafeWebRTCRTPSenderClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPSender
 	return &WebRTCRTPSenderClass{&webRTCRTPSenderClass{(*C.GstWebRTCRTPSenderClass)(p)}}
 }
 
-// UnsafeWebRTCRTPSenderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCRTPSenderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCRTPSenderClass] is expected to work anymore.
 func UnsafeWebRTCRTPSenderClassFree(w *WebRTCRTPSenderClass) {
 	C.free(unsafe.Pointer(w.native))
+	runtime.SetFinalizer(w.webRTCRTPSenderClass, nil)
 }
 
 // UnsafeWebRTCRTPSenderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4602,11 +4610,12 @@ func UnsafeWebRTCRTPTransceiverClassFromGlibBorrow(p unsafe.Pointer) *WebRTCRTPT
 	return &WebRTCRTPTransceiverClass{&webRTCRTPTransceiverClass{(*C.GstWebRTCRTPTransceiverClass)(p)}}
 }
 
-// UnsafeWebRTCRTPTransceiverClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCRTPTransceiverClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCRTPTransceiverClass] is expected to work anymore.
 func UnsafeWebRTCRTPTransceiverClassFree(w *WebRTCRTPTransceiverClass) {
 	C.free(unsafe.Pointer(w.native))
+	runtime.SetFinalizer(w.webRTCRTPTransceiverClass, nil)
 }
 
 // UnsafeWebRTCRTPTransceiverClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4656,11 +4665,12 @@ func UnsafeWebRTCSCTPTransportClassFromGlibBorrow(p unsafe.Pointer) *WebRTCSCTPT
 	return &WebRTCSCTPTransportClass{&webRTCSCTPTransportClass{(*C.GstWebRTCSCTPTransportClass)(p)}}
 }
 
-// UnsafeWebRTCSCTPTransportClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCSCTPTransportClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCSCTPTransportClass] is expected to work anymore.
 func UnsafeWebRTCSCTPTransportClassFree(w *WebRTCSCTPTransportClass) {
 	C.free(unsafe.Pointer(w.native))
+	runtime.SetFinalizer(w.webRTCSCTPTransportClass, nil)
 }
 
 // UnsafeWebRTCSCTPTransportClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4749,11 +4759,12 @@ func UnsafeWebRTCSessionDescriptionFromGlibFull(p unsafe.Pointer) *WebRTCSession
 	return wrapped
 }
 
-// UnsafeWebRTCSessionDescriptionFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeWebRTCSessionDescriptionFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [WebRTCSessionDescription] is expected to work anymore.
 func UnsafeWebRTCSessionDescriptionFree(w *WebRTCSessionDescription) {
 	C.gst_webrtc_session_description_free(w.native)
+	runtime.SetFinalizer(w.webRTCSessionDescription, nil)
 }
 
 // UnsafeWebRTCSessionDescriptionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
