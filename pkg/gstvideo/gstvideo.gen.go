@@ -16018,7 +16018,7 @@ func UnsafeVideoCodecFrameFromGlibFull(p unsafe.Pointer) *VideoCodecFrame {
 	return wrapped
 }
 
-// UnsafeVideoCodecFrameRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeVideoCodecFrameRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [VideoCodecFrame.UnsafeVideoCodecFrameUnref], then [VideoCodecFrame] will leak memory.
 func UnsafeVideoCodecFrameRef(v *VideoCodecFrame) {
@@ -16128,7 +16128,7 @@ func UnsafeVideoCodecStateFromGlibFull(p unsafe.Pointer) *VideoCodecState {
 	return wrapped
 }
 
-// UnsafeVideoCodecStateRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeVideoCodecStateRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [VideoCodecState.UnsafeVideoCodecStateUnref], then [VideoCodecState] will leak memory.
 func UnsafeVideoCodecStateRef(v *VideoCodecState) {

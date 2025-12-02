@@ -15766,7 +15766,7 @@ func UnsafeFlowCombinerFromGlibFull(p unsafe.Pointer) *FlowCombiner {
 	return wrapped
 }
 
-// UnsafeFlowCombinerRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeFlowCombinerRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [FlowCombiner.UnsafeFlowCombinerUnref], then [FlowCombiner] will leak memory.
 func UnsafeFlowCombinerRef(f *FlowCombiner) {
