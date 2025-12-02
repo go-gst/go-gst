@@ -3185,30 +3185,6 @@ func UnsafeSDPMediaToGlibFull(s *SDPMedia) unsafe.Pointer {
 	return _p
 }
 
-// SDPMediaAddMediaFromStructure wraps gst_sdp_media_add_media_from_structure
-// 
-// see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_add_media_from_structure
-func SDPMediaAddMediaFromStructure(structure *gst.Structure) (SDPMedia, SDPResult) {
-	var carg1 *C.GstStructure // in, none, converted
-	var carg2 C.GstSDPMedia   // out, transfer: none, C Pointers: 0, Name: SDPMedia, caller-allocates
-	var cret  C.GstSDPResult  // return, none, casted
-
-	carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(structure))
-
-	cret = C.gst_sdp_media_add_media_from_structure(carg1, &carg2)
-	runtime.KeepAlive(structure)
-
-	var media SDPMedia
-	var goret SDPResult
-
-	_ = media
-	_ = carg2
-	panic("unimplemented conversion of SDPMedia (GstSDPMedia) because of unknown reason")
-	goret = SDPResult(cret)
-
-	return media, goret
-}
-
 // SDPMediaInit wraps gst_sdp_media_init
 // 
 // see also https://gstreamer.freedesktop.org/documentation/sdp/gstsdpmessage.html#gst_sdp_media_init

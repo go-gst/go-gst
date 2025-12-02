@@ -402,14 +402,6 @@ func NewNetClientClock(name string, remoteAddress string, remotePort int32, base
 	return goret
 }
 
-// NetClientClockDeinit wraps gst_net_client_clock_deinit
-// 
-// see also https://gstreamer.freedesktop.org/documentation/net/gstnetclientclock.html#gst_net_client_clock_deinit
-func NetClientClockDeinit() {
-
-	C.gst_net_client_clock_deinit()
-}
-
 // NetClientClockOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type NetClientClockOverrides[Instance NetClientClock] struct {

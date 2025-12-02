@@ -1769,10 +1769,6 @@ const (
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglutils.html#GST_GL_DRM_FORMAT_INCLUDE_EMULATED
 	GlDrmFormatIncludeEmulated GLDrmFormatFlags = 4
-	// GlDrmFormatDirectImport wraps GST_GL_DRM_FORMAT_DIRECT_IMPORT
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglutils.html#GST_GL_DRM_FORMAT_DIRECT_IMPORT
-	GlDrmFormatDirectImport GLDrmFormatFlags = 8
 )
 
 func marshalGLDrmFormatFlags(p unsafe.Pointer) (any, error) {
@@ -1807,9 +1803,6 @@ func (f GLDrmFormatFlags) String() string {
 	}
 	if (f & GlDrmFormatIncludeEmulated) != 0 {
 		parts = append(parts, "GlDrmFormatIncludeEmulated")
-	}
-	if (f & GlDrmFormatDirectImport) != 0 {
-		parts = append(parts, "GlDrmFormatDirectImport")
 	}
 	return "GLDrmFormatFlags(" + strings.Join(parts, "|") + ")"
 }
@@ -3529,11 +3522,6 @@ type GLBaseSrc interface {
 	gstbase.PushSrc
 	upcastToGstGLBaseSrc() *GLBaseSrcInstance
 
-	// GetGlContext wraps gst_gl_base_src_get_gl_context
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gst_gl_base_src_get_gl_context
-	GetGlContext() GLContext
-
 	// chain up virtual methods:
 
 	// ParentFillGlMemory calls the default implementations of the `GstGLBaseSrc.fill_gl_memory` virtual method.
@@ -3609,27 +3597,6 @@ func UnsafeGLBaseSrcToGlibNone(c GLBaseSrc) unsafe.Pointer {
 // UnsafeGLBaseSrcToGlibFull is used to convert the instance to it's C value GstGLBaseSrc, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeGLBaseSrcToGlibFull(c GLBaseSrc) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// GetGlContext wraps gst_gl_base_src_get_gl_context
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gl/gstglbasesrc.html#gst_gl_base_src_get_gl_context
-func (baseSrc *GLBaseSrcInstance) GetGlContext() GLContext {
-	var carg0 *C.GstGLBaseSrc // in, none, converted
-	var cret  *C.GstGLContext // return, full, converted, nullable
-
-	carg0 = (*C.GstGLBaseSrc)(UnsafeGLBaseSrcToGlibNone(baseSrc))
-
-	cret = C.gst_gl_base_src_get_gl_context(carg0)
-	runtime.KeepAlive(baseSrc)
-
-	var goret GLContext
-
-	if cret != nil {
-		goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
 }
 
 // GLBaseSrcOverrides is the struct used to override the default implementation of virtual methods.
@@ -10440,10 +10407,6 @@ type GLWindow interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_context
 	GetContext() GLContext
-	// GetRequestOutputSurface wraps gst_gl_window_get_request_output_surface
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_request_output_surface
-	GetRequestOutputSurface() bool
 	// GetSurfaceDimensions wraps gst_gl_window_get_surface_dimensions
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_surface_dimensions
@@ -10492,10 +10455,6 @@ type GLWindow interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_set_render_rectangle
 	SetRenderRectangle(int32, int32, int32, int32) bool
-	// SetRequestOutputSurface wraps gst_gl_window_set_request_output_surface
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_set_request_output_surface
-	SetRequestOutputSurface(bool)
 	// Show wraps gst_gl_window_show
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_show
@@ -10700,27 +10659,6 @@ func (window *GLWindowInstance) GetContext() GLContext {
 	var goret GLContext
 
 	goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// GetRequestOutputSurface wraps gst_gl_window_get_request_output_surface
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_get_request_output_surface
-func (window *GLWindowInstance) GetRequestOutputSurface() bool {
-	var carg0 *C.GstGLWindow // in, none, converted
-	var cret  C.gboolean     // return
-
-	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
-
-	cret = C.gst_gl_window_get_request_output_surface(carg0)
-	runtime.KeepAlive(window)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
 
 	return goret
 }
@@ -10957,23 +10895,6 @@ func (window *GLWindowInstance) SetRenderRectangle(x int32, y int32, width int32
 	}
 
 	return goret
-}
-
-// SetRequestOutputSurface wraps gst_gl_window_set_request_output_surface
-// 
-// see also https://gstreamer.freedesktop.org/documentation/gl/gstglwindow.html#gst_gl_window_set_request_output_surface
-func (window *GLWindowInstance) SetRequestOutputSurface(outputSurface bool) {
-	var carg0 *C.GstGLWindow // in, none, converted
-	var carg1 C.gboolean     // in
-
-	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
-	if outputSurface {
-		carg1 = C.TRUE
-	}
-
-	C.gst_gl_window_set_request_output_surface(carg0, carg1)
-	runtime.KeepAlive(window)
-	runtime.KeepAlive(outputSurface)
 }
 
 // Show wraps gst_gl_window_show

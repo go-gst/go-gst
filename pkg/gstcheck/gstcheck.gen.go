@@ -636,12 +636,6 @@ type TestClock interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_wait_for_next_pending_id
 	WaitForNextPendingID() gst.ClockID
-	// WaitForPendingIDCount wraps gst_test_clock_wait_for_pending_id_count
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_wait_for_pending_id_count
-	//
-	// Deprecated: see the provided link for the reason
-	WaitForPendingIDCount(uint)
 
 	// chain up virtual methods:
 }
@@ -933,23 +927,6 @@ func (testClock *TestClockInstance) WaitForNextPendingID() gst.ClockID {
 	pendingId = gst.ClockID(carg1)
 
 	return pendingId
-}
-
-// WaitForPendingIDCount wraps gst_test_clock_wait_for_pending_id_count
-// 
-// see also https://gstreamer.freedesktop.org/documentation/check/gsttestclock.html#gst_test_clock_wait_for_pending_id_count
-//
-// Deprecated: see the provided link for the reason
-func (testClock *TestClockInstance) WaitForPendingIDCount(count uint) {
-	var carg0 *C.GstTestClock // in, none, converted
-	var carg1 C.guint         // in, none, casted
-
-	carg0 = (*C.GstTestClock)(UnsafeTestClockToGlibNone(testClock))
-	carg1 = C.guint(count)
-
-	C.gst_test_clock_wait_for_pending_id_count(carg0, carg1)
-	runtime.KeepAlive(testClock)
-	runtime.KeepAlive(count)
 }
 
 // TestClockOverrides is the struct used to override the default implementation of virtual methods.
