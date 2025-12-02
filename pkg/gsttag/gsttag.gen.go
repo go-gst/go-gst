@@ -2013,11 +2013,12 @@ func UnsafeTagDemuxClassFromGlibBorrow(p unsafe.Pointer) *TagDemuxClass {
 	return &TagDemuxClass{&tagDemuxClass{(*C.GstTagDemuxClass)(p)}}
 }
 
-// UnsafeTagDemuxClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeTagDemuxClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [TagDemuxClass] is expected to work anymore.
 func UnsafeTagDemuxClassFree(t *TagDemuxClass) {
 	C.free(unsafe.Pointer(t.native))
+	runtime.SetFinalizer(t.tagDemuxClass, nil)
 }
 
 // UnsafeTagDemuxClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2067,11 +2068,12 @@ func UnsafeTagMuxClassFromGlibBorrow(p unsafe.Pointer) *TagMuxClass {
 	return &TagMuxClass{&tagMuxClass{(*C.GstTagMuxClass)(p)}}
 }
 
-// UnsafeTagMuxClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeTagMuxClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [TagMuxClass] is expected to work anymore.
 func UnsafeTagMuxClassFree(t *TagMuxClass) {
 	C.free(unsafe.Pointer(t.native))
+	runtime.SetFinalizer(t.tagMuxClass, nil)
 }
 
 // UnsafeTagMuxClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2145,11 +2147,12 @@ func UnsafeTagXmpWriterInterfaceFromGlibFull(p unsafe.Pointer) *TagXmpWriterInte
 	return wrapped
 }
 
-// UnsafeTagXmpWriterInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeTagXmpWriterInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [TagXmpWriterInterface] is expected to work anymore.
 func UnsafeTagXmpWriterInterfaceFree(t *TagXmpWriterInterface) {
 	C.free(unsafe.Pointer(t.native))
+	runtime.SetFinalizer(t.tagXmpWriterInterface, nil)
 }
 
 // UnsafeTagXmpWriterInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.

@@ -2468,11 +2468,12 @@ func UnsafeRTSPAuthCredentialFromGlibFull(p unsafe.Pointer) *RTSPAuthCredential 
 	return wrapped
 }
 
-// UnsafeRTSPAuthCredentialFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPAuthCredentialFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPAuthCredential] is expected to work anymore.
 func UnsafeRTSPAuthCredentialFree(r *RTSPAuthCredential) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTSPAuthCredential, nil)
 }
 
 // UnsafeRTSPAuthCredentialToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2564,11 +2565,12 @@ func UnsafeRTSPAuthParamFromGlibFull(p unsafe.Pointer) *RTSPAuthParam {
 	return wrapped
 }
 
-// UnsafeRTSPAuthParamFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPAuthParamFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPAuthParam] is expected to work anymore.
 func UnsafeRTSPAuthParamFree(r *RTSPAuthParam) {
 	C.gst_rtsp_auth_param_free(r.native)
+	runtime.SetFinalizer(r.rTSPAuthParam, nil)
 }
 
 // UnsafeRTSPAuthParamToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2664,11 +2666,12 @@ func UnsafeRTSPConnectionFromGlibFull(p unsafe.Pointer) *RTSPConnection {
 	return wrapped
 }
 
-// UnsafeRTSPConnectionFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPConnectionFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPConnection] is expected to work anymore.
 func UnsafeRTSPConnectionFree(r *RTSPConnection) {
 	C.gst_rtsp_connection_free(r.native)
+	runtime.SetFinalizer(r.rTSPConnection, nil)
 }
 
 // UnsafeRTSPConnectionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3707,11 +3710,12 @@ func UnsafeRTSPExtensionInterfaceFromGlibFull(p unsafe.Pointer) *RTSPExtensionIn
 	return wrapped
 }
 
-// UnsafeRTSPExtensionInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPExtensionInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPExtensionInterface] is expected to work anymore.
 func UnsafeRTSPExtensionInterfaceFree(r *RTSPExtensionInterface) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTSPExtensionInterface, nil)
 }
 
 // UnsafeRTSPExtensionInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3803,11 +3807,12 @@ func UnsafeRTSPMessageFromGlibFull(p unsafe.Pointer) *RTSPMessage {
 	return wrapped
 }
 
-// UnsafeRTSPMessageFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPMessageFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPMessage] is expected to work anymore.
 func UnsafeRTSPMessageFree(r *RTSPMessage) {
 	C.gst_rtsp_message_free(r.native)
+	runtime.SetFinalizer(r.rTSPMessage, nil)
 }
 
 // UnsafeRTSPMessageToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4544,11 +4549,12 @@ func UnsafeRTSPRangeFromGlibFull(p unsafe.Pointer) *RTSPRange {
 	return wrapped
 }
 
-// UnsafeRTSPRangeFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPRangeFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPRange] is expected to work anymore.
 func UnsafeRTSPRangeFree(r *RTSPRange) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTSPRange, nil)
 }
 
 // UnsafeRTSPRangeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4731,11 +4737,12 @@ func UnsafeRTSPTimeFromGlibFull(p unsafe.Pointer) *RTSPTime {
 	return wrapped
 }
 
-// UnsafeRTSPTimeFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPTimeFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPTime] is expected to work anymore.
 func UnsafeRTSPTimeFree(r *RTSPTime) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTSPTime, nil)
 }
 
 // UnsafeRTSPTimeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4812,11 +4819,12 @@ func UnsafeRTSPTime2FromGlibFull(p unsafe.Pointer) *RTSPTime2 {
 	return wrapped
 }
 
-// UnsafeRTSPTime2Free unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPTime2Free unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPTime2] is expected to work anymore.
 func UnsafeRTSPTime2Free(r *RTSPTime2) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTSPTime2, nil)
 }
 
 // UnsafeRTSPTime2ToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4893,11 +4901,12 @@ func UnsafeRTSPTimeRangeFromGlibFull(p unsafe.Pointer) *RTSPTimeRange {
 	return wrapped
 }
 
-// UnsafeRTSPTimeRangeFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPTimeRangeFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPTimeRange] is expected to work anymore.
 func UnsafeRTSPTimeRangeFree(r *RTSPTimeRange) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTSPTimeRange, nil)
 }
 
 // UnsafeRTSPTimeRangeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4974,11 +4983,12 @@ func UnsafeRTSPTransportFromGlibFull(p unsafe.Pointer) *RTSPTransport {
 	return wrapped
 }
 
-// UnsafeRTSPTransportFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPTransportFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPTransport] is expected to work anymore.
 func UnsafeRTSPTransportFree(r *RTSPTransport) {
 	C.gst_rtsp_transport_free(r.native)
+	runtime.SetFinalizer(r.rTSPTransport, nil)
 }
 
 // UnsafeRTSPTransportToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -5204,11 +5214,12 @@ func UnsafeRTSPUrlFromGlibFull(p unsafe.Pointer) *RTSPUrl {
 	return wrapped
 }
 
-// UnsafeRTSPUrlFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPUrlFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPUrl] is expected to work anymore.
 func UnsafeRTSPUrlFree(r *RTSPUrl) {
 	C.gst_rtsp_url_free(r.native)
+	runtime.SetFinalizer(r.rTSPUrl, nil)
 }
 
 // UnsafeRTSPUrlToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -5438,11 +5449,12 @@ func UnsafeRTSPWatchFromGlibFull(p unsafe.Pointer) *RTSPWatch {
 	return wrapped
 }
 
-// UnsafeRTSPWatchUnref unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPWatchUnref unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPWatch] is expected to work anymore.
 func UnsafeRTSPWatchUnref(r *RTSPWatch) {
 	C.gst_rtsp_watch_unref(r.native)
+	runtime.SetFinalizer(r.rTSPWatch, nil)
 }
 
 // UnsafeRTSPWatchToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -5717,11 +5729,12 @@ func UnsafeRTSPWatchFuncsFromGlibFull(p unsafe.Pointer) *RTSPWatchFuncs {
 	return wrapped
 }
 
-// UnsafeRTSPWatchFuncsFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeRTSPWatchFuncsFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [RTSPWatchFuncs] is expected to work anymore.
 func UnsafeRTSPWatchFuncsFree(r *RTSPWatchFuncs) {
 	C.free(unsafe.Pointer(r.native))
+	runtime.SetFinalizer(r.rTSPWatchFuncs, nil)
 }
 
 // UnsafeRTSPWatchFuncsToGlibNone returns the underlying C pointer. This is used by the bindings internally.

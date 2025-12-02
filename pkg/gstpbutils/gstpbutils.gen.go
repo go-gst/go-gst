@@ -5902,11 +5902,12 @@ func UnsafeAudioVisualizerClassFromGlibBorrow(p unsafe.Pointer) *AudioVisualizer
 	return &AudioVisualizerClass{&audioVisualizerClass{(*C.GstAudioVisualizerClass)(p)}}
 }
 
-// UnsafeAudioVisualizerClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeAudioVisualizerClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [AudioVisualizerClass] is expected to work anymore.
 func UnsafeAudioVisualizerClassFree(a *AudioVisualizerClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.audioVisualizerClass, nil)
 }
 
 // UnsafeAudioVisualizerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -5956,11 +5957,12 @@ func UnsafeDiscovererClassFromGlibBorrow(p unsafe.Pointer) *DiscovererClass {
 	return &DiscovererClass{&discovererClass{(*C.GstDiscovererClass)(p)}}
 }
 
-// UnsafeDiscovererClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeDiscovererClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [DiscovererClass] is expected to work anymore.
 func UnsafeDiscovererClassFree(d *DiscovererClass) {
 	C.free(unsafe.Pointer(d.native))
+	runtime.SetFinalizer(d.discovererClass, nil)
 }
 
 // UnsafeDiscovererClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6010,11 +6012,12 @@ func UnsafeEncodingAudioProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingAu
 	return &EncodingAudioProfileClass{&encodingAudioProfileClass{(*C.GstEncodingAudioProfileClass)(p)}}
 }
 
-// UnsafeEncodingAudioProfileClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeEncodingAudioProfileClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [EncodingAudioProfileClass] is expected to work anymore.
 func UnsafeEncodingAudioProfileClassFree(e *EncodingAudioProfileClass) {
 	C.free(unsafe.Pointer(e.native))
+	runtime.SetFinalizer(e.encodingAudioProfileClass, nil)
 }
 
 // UnsafeEncodingAudioProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6064,11 +6067,12 @@ func UnsafeEncodingContainerProfileClassFromGlibBorrow(p unsafe.Pointer) *Encodi
 	return &EncodingContainerProfileClass{&encodingContainerProfileClass{(*C.GstEncodingContainerProfileClass)(p)}}
 }
 
-// UnsafeEncodingContainerProfileClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeEncodingContainerProfileClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [EncodingContainerProfileClass] is expected to work anymore.
 func UnsafeEncodingContainerProfileClassFree(e *EncodingContainerProfileClass) {
 	C.free(unsafe.Pointer(e.native))
+	runtime.SetFinalizer(e.encodingContainerProfileClass, nil)
 }
 
 // UnsafeEncodingContainerProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6118,11 +6122,12 @@ func UnsafeEncodingProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingProfile
 	return &EncodingProfileClass{&encodingProfileClass{(*C.GstEncodingProfileClass)(p)}}
 }
 
-// UnsafeEncodingProfileClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeEncodingProfileClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [EncodingProfileClass] is expected to work anymore.
 func UnsafeEncodingProfileClassFree(e *EncodingProfileClass) {
 	C.free(unsafe.Pointer(e.native))
+	runtime.SetFinalizer(e.encodingProfileClass, nil)
 }
 
 // UnsafeEncodingProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6172,11 +6177,12 @@ func UnsafeEncodingVideoProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingVi
 	return &EncodingVideoProfileClass{&encodingVideoProfileClass{(*C.GstEncodingVideoProfileClass)(p)}}
 }
 
-// UnsafeEncodingVideoProfileClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeEncodingVideoProfileClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [EncodingVideoProfileClass] is expected to work anymore.
 func UnsafeEncodingVideoProfileClassFree(e *EncodingVideoProfileClass) {
 	C.free(unsafe.Pointer(e.native))
+	runtime.SetFinalizer(e.encodingVideoProfileClass, nil)
 }
 
 // UnsafeEncodingVideoProfileClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6265,11 +6271,12 @@ func UnsafeInstallPluginsContextFromGlibFull(p unsafe.Pointer) *InstallPluginsCo
 	return wrapped
 }
 
-// UnsafeInstallPluginsContextFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeInstallPluginsContextFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [InstallPluginsContext] is expected to work anymore.
 func UnsafeInstallPluginsContextFree(i *InstallPluginsContext) {
 	C.gst_install_plugins_context_free(i.native)
+	runtime.SetFinalizer(i.installPluginsContext, nil)
 }
 
 // UnsafeInstallPluginsContextToGlibNone returns the underlying C pointer. This is used by the bindings internally.

@@ -3804,11 +3804,12 @@ func UnsafePlayAudioInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayAudioInfoClas
 	return &PlayAudioInfoClass{&playAudioInfoClass{(*C.GstPlayAudioInfoClass)(p)}}
 }
 
-// UnsafePlayAudioInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlayAudioInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlayAudioInfoClass] is expected to work anymore.
 func UnsafePlayAudioInfoClassFree(p *PlayAudioInfoClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.playAudioInfoClass, nil)
 }
 
 // UnsafePlayAudioInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3858,11 +3859,12 @@ func UnsafePlayClassFromGlibBorrow(p unsafe.Pointer) *PlayClass {
 	return &PlayClass{&playClass{(*C.GstPlayClass)(p)}}
 }
 
-// UnsafePlayClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlayClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlayClass] is expected to work anymore.
 func UnsafePlayClassFree(p *PlayClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.playClass, nil)
 }
 
 // UnsafePlayClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3912,11 +3914,12 @@ func UnsafePlayMediaInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayMediaInfoClas
 	return &PlayMediaInfoClass{&playMediaInfoClass{(*C.GstPlayMediaInfoClass)(p)}}
 }
 
-// UnsafePlayMediaInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlayMediaInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlayMediaInfoClass] is expected to work anymore.
 func UnsafePlayMediaInfoClassFree(p *PlayMediaInfoClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.playMediaInfoClass, nil)
 }
 
 // UnsafePlayMediaInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3966,11 +3969,12 @@ func UnsafePlaySignalAdapterClassFromGlibBorrow(p unsafe.Pointer) *PlaySignalAda
 	return &PlaySignalAdapterClass{&playSignalAdapterClass{(*C.GstPlaySignalAdapterClass)(p)}}
 }
 
-// UnsafePlaySignalAdapterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlaySignalAdapterClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlaySignalAdapterClass] is expected to work anymore.
 func UnsafePlaySignalAdapterClassFree(p *PlaySignalAdapterClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.playSignalAdapterClass, nil)
 }
 
 // UnsafePlaySignalAdapterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4020,11 +4024,12 @@ func UnsafePlayStreamInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayStreamInfoCl
 	return &PlayStreamInfoClass{&playStreamInfoClass{(*C.GstPlayStreamInfoClass)(p)}}
 }
 
-// UnsafePlayStreamInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlayStreamInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlayStreamInfoClass] is expected to work anymore.
 func UnsafePlayStreamInfoClassFree(p *PlayStreamInfoClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.playStreamInfoClass, nil)
 }
 
 // UnsafePlayStreamInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4074,11 +4079,12 @@ func UnsafePlaySubtitleInfoClassFromGlibBorrow(p unsafe.Pointer) *PlaySubtitleIn
 	return &PlaySubtitleInfoClass{&playSubtitleInfoClass{(*C.GstPlaySubtitleInfoClass)(p)}}
 }
 
-// UnsafePlaySubtitleInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlaySubtitleInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlaySubtitleInfoClass] is expected to work anymore.
 func UnsafePlaySubtitleInfoClassFree(p *PlaySubtitleInfoClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.playSubtitleInfoClass, nil)
 }
 
 // UnsafePlaySubtitleInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4128,11 +4134,12 @@ func UnsafePlayVideoInfoClassFromGlibBorrow(p unsafe.Pointer) *PlayVideoInfoClas
 	return &PlayVideoInfoClass{&playVideoInfoClass{(*C.GstPlayVideoInfoClass)(p)}}
 }
 
-// UnsafePlayVideoInfoClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlayVideoInfoClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlayVideoInfoClass] is expected to work anymore.
 func UnsafePlayVideoInfoClassFree(p *PlayVideoInfoClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.playVideoInfoClass, nil)
 }
 
 // UnsafePlayVideoInfoClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4182,11 +4189,12 @@ func UnsafePlayVideoOverlayVideoRendererClassFromGlibBorrow(p unsafe.Pointer) *P
 	return &PlayVideoOverlayVideoRendererClass{&playVideoOverlayVideoRendererClass{(*C.GstPlayVideoOverlayVideoRendererClass)(p)}}
 }
 
-// UnsafePlayVideoOverlayVideoRendererClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlayVideoOverlayVideoRendererClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlayVideoOverlayVideoRendererClass] is expected to work anymore.
 func UnsafePlayVideoOverlayVideoRendererClassFree(p *PlayVideoOverlayVideoRendererClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.playVideoOverlayVideoRendererClass, nil)
 }
 
 // UnsafePlayVideoOverlayVideoRendererClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4260,11 +4268,12 @@ func UnsafePlayVideoRendererInterfaceFromGlibFull(p unsafe.Pointer) *PlayVideoRe
 	return wrapped
 }
 
-// UnsafePlayVideoRendererInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlayVideoRendererInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlayVideoRendererInterface] is expected to work anymore.
 func UnsafePlayVideoRendererInterfaceFree(p *PlayVideoRendererInterface) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.playVideoRendererInterface, nil)
 }
 
 // UnsafePlayVideoRendererInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4356,11 +4365,12 @@ func UnsafePlayVisualizationFromGlibFull(p unsafe.Pointer) *PlayVisualization {
 	return wrapped
 }
 
-// UnsafePlayVisualizationFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePlayVisualizationFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PlayVisualization] is expected to work anymore.
 func UnsafePlayVisualizationFree(p *PlayVisualization) {
 	C.gst_play_visualization_free(p.native)
+	runtime.SetFinalizer(p.playVisualization, nil)
 }
 
 // UnsafePlayVisualizationToGlibNone returns the underlying C pointer. This is used by the bindings internally.

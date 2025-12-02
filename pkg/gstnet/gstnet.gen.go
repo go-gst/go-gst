@@ -931,11 +931,12 @@ func UnsafeNetAddressMetaFromGlibFull(p unsafe.Pointer) *NetAddressMeta {
 	return wrapped
 }
 
-// UnsafeNetAddressMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeNetAddressMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [NetAddressMeta] is expected to work anymore.
 func UnsafeNetAddressMetaFree(n *NetAddressMeta) {
 	C.free(unsafe.Pointer(n.native))
+	runtime.SetFinalizer(n.netAddressMeta, nil)
 }
 
 // UnsafeNetAddressMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1003,11 +1004,12 @@ func UnsafeNetClientClockClassFromGlibBorrow(p unsafe.Pointer) *NetClientClockCl
 	return &NetClientClockClass{&netClientClockClass{(*C.GstNetClientClockClass)(p)}}
 }
 
-// UnsafeNetClientClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeNetClientClockClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [NetClientClockClass] is expected to work anymore.
 func UnsafeNetClientClockClassFree(n *NetClientClockClass) {
 	C.free(unsafe.Pointer(n.native))
+	runtime.SetFinalizer(n.netClientClockClass, nil)
 }
 
 // UnsafeNetClientClockClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1081,11 +1083,12 @@ func UnsafeNetControlMessageMetaFromGlibFull(p unsafe.Pointer) *NetControlMessag
 	return wrapped
 }
 
-// UnsafeNetControlMessageMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeNetControlMessageMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [NetControlMessageMeta] is expected to work anymore.
 func UnsafeNetControlMessageMetaFree(n *NetControlMessageMeta) {
 	C.free(unsafe.Pointer(n.native))
+	runtime.SetFinalizer(n.netControlMessageMeta, nil)
 }
 
 // UnsafeNetControlMessageMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1192,11 +1195,12 @@ func UnsafeNetTimePacketFromGlibFull(p unsafe.Pointer) *NetTimePacket {
 	return wrapped
 }
 
-// UnsafeNetTimePacketFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeNetTimePacketFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [NetTimePacket] is expected to work anymore.
 func UnsafeNetTimePacketFree(n *NetTimePacket) {
 	C.gst_net_time_packet_free(n.native)
+	runtime.SetFinalizer(n.netTimePacket, nil)
 }
 
 // UnsafeNetTimePacketToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1373,11 +1377,12 @@ func UnsafeNetTimeProviderClassFromGlibBorrow(p unsafe.Pointer) *NetTimeProvider
 	return &NetTimeProviderClass{&netTimeProviderClass{(*C.GstNetTimeProviderClass)(p)}}
 }
 
-// UnsafeNetTimeProviderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeNetTimeProviderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [NetTimeProviderClass] is expected to work anymore.
 func UnsafeNetTimeProviderClassFree(n *NetTimeProviderClass) {
 	C.free(unsafe.Pointer(n.native))
+	runtime.SetFinalizer(n.netTimeProviderClass, nil)
 }
 
 // UnsafeNetTimeProviderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1427,11 +1432,12 @@ func UnsafeNtpClockClassFromGlibBorrow(p unsafe.Pointer) *NtpClockClass {
 	return &NtpClockClass{&ntpClockClass{(*C.GstNtpClockClass)(p)}}
 }
 
-// UnsafeNtpClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeNtpClockClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [NtpClockClass] is expected to work anymore.
 func UnsafeNtpClockClassFree(n *NtpClockClass) {
 	C.free(unsafe.Pointer(n.native))
+	runtime.SetFinalizer(n.ntpClockClass, nil)
 }
 
 // UnsafeNtpClockClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1481,11 +1487,12 @@ func UnsafePtpClockClassFromGlibBorrow(p unsafe.Pointer) *PtpClockClass {
 	return &PtpClockClass{&ptpClockClass{(*C.GstPtpClockClass)(p)}}
 }
 
-// UnsafePtpClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePtpClockClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PtpClockClass] is expected to work anymore.
 func UnsafePtpClockClassFree(p *PtpClockClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.ptpClockClass, nil)
 }
 
 // UnsafePtpClockClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.

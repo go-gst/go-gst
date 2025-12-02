@@ -1032,11 +1032,12 @@ func UnsafeDRMDumbAllocatorClassFromGlibBorrow(p unsafe.Pointer) *DRMDumbAllocat
 	return &DRMDumbAllocatorClass{&dRMDumbAllocatorClass{(*C.GstDRMDumbAllocatorClass)(p)}}
 }
 
-// UnsafeDRMDumbAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeDRMDumbAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [DRMDumbAllocatorClass] is expected to work anymore.
 func UnsafeDRMDumbAllocatorClassFree(d *DRMDumbAllocatorClass) {
 	C.free(unsafe.Pointer(d.native))
+	runtime.SetFinalizer(d.dRMDumbAllocatorClass, nil)
 }
 
 // UnsafeDRMDumbAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1086,11 +1087,12 @@ func UnsafeDmaBufAllocatorClassFromGlibBorrow(p unsafe.Pointer) *DmaBufAllocator
 	return &DmaBufAllocatorClass{&dmaBufAllocatorClass{(*C.GstDmaBufAllocatorClass)(p)}}
 }
 
-// UnsafeDmaBufAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeDmaBufAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [DmaBufAllocatorClass] is expected to work anymore.
 func UnsafeDmaBufAllocatorClassFree(d *DmaBufAllocatorClass) {
 	C.free(unsafe.Pointer(d.native))
+	runtime.SetFinalizer(d.dmaBufAllocatorClass, nil)
 }
 
 // UnsafeDmaBufAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1140,11 +1142,12 @@ func UnsafeFdAllocatorClassFromGlibBorrow(p unsafe.Pointer) *FdAllocatorClass {
 	return &FdAllocatorClass{&fdAllocatorClass{(*C.GstFdAllocatorClass)(p)}}
 }
 
-// UnsafeFdAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeFdAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [FdAllocatorClass] is expected to work anymore.
 func UnsafeFdAllocatorClassFree(f *FdAllocatorClass) {
 	C.free(unsafe.Pointer(f.native))
+	runtime.SetFinalizer(f.fdAllocatorClass, nil)
 }
 
 // UnsafeFdAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1218,11 +1221,12 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibFull(p unsafe.Pointer) *PhysMemor
 	return wrapped
 }
 
-// UnsafePhysMemoryAllocatorInterfaceFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafePhysMemoryAllocatorInterfaceFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [PhysMemoryAllocatorInterface] is expected to work anymore.
 func UnsafePhysMemoryAllocatorInterfaceFree(p *PhysMemoryAllocatorInterface) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.physMemoryAllocatorInterface, nil)
 }
 
 // UnsafePhysMemoryAllocatorInterfaceToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1275,11 +1279,12 @@ func UnsafeShmAllocatorClassFromGlibBorrow(p unsafe.Pointer) *ShmAllocatorClass 
 	return &ShmAllocatorClass{&shmAllocatorClass{(*C.GstShmAllocatorClass)(p)}}
 }
 
-// UnsafeShmAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeShmAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [ShmAllocatorClass] is expected to work anymore.
 func UnsafeShmAllocatorClassFree(s *ShmAllocatorClass) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.shmAllocatorClass, nil)
 }
 
 // UnsafeShmAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.

@@ -1023,11 +1023,12 @@ func UnsafeCheckABIStructFromGlibFull(p unsafe.Pointer) *CheckABIStruct {
 	return wrapped
 }
 
-// UnsafeCheckABIStructFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeCheckABIStructFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [CheckABIStruct] is expected to work anymore.
 func UnsafeCheckABIStructFree(c *CheckABIStruct) {
 	C.free(unsafe.Pointer(c.native))
+	runtime.SetFinalizer(c.checkABIStruct, nil)
 }
 
 // UnsafeCheckABIStructToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1104,11 +1105,12 @@ func UnsafeCheckLogFilterFromGlibFull(p unsafe.Pointer) *CheckLogFilter {
 	return wrapped
 }
 
-// UnsafeCheckLogFilterFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeCheckLogFilterFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [CheckLogFilter] is expected to work anymore.
 func UnsafeCheckLogFilterFree(c *CheckLogFilter) {
 	C.free(unsafe.Pointer(c.native))
+	runtime.SetFinalizer(c.checkLogFilter, nil)
 }
 
 // UnsafeCheckLogFilterToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1185,11 +1187,12 @@ func UnsafeHarnessFromGlibFull(p unsafe.Pointer) *Harness {
 	return wrapped
 }
 
-// UnsafeHarnessFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeHarnessFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [Harness] is expected to work anymore.
 func UnsafeHarnessFree(h *Harness) {
 	C.free(unsafe.Pointer(h.native))
+	runtime.SetFinalizer(h.harness, nil)
 }
 
 // UnsafeHarnessToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2470,11 +2473,12 @@ func UnsafeHarnessThreadFromGlibFull(p unsafe.Pointer) *HarnessThread {
 	return wrapped
 }
 
-// UnsafeHarnessThreadFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeHarnessThreadFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [HarnessThread] is expected to work anymore.
 func UnsafeHarnessThreadFree(h *HarnessThread) {
 	C.free(unsafe.Pointer(h.native))
+	runtime.SetFinalizer(h.harnessThread, nil)
 }
 
 // UnsafeHarnessThreadToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2551,11 +2555,12 @@ func UnsafeStreamConsistencyFromGlibFull(p unsafe.Pointer) *StreamConsistency {
 	return wrapped
 }
 
-// UnsafeStreamConsistencyFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeStreamConsistencyFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [StreamConsistency] is expected to work anymore.
 func UnsafeStreamConsistencyFree(s *StreamConsistency) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.streamConsistency, nil)
 }
 
 // UnsafeStreamConsistencyToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2608,11 +2613,12 @@ func UnsafeTestClockClassFromGlibBorrow(p unsafe.Pointer) *TestClockClass {
 	return &TestClockClass{&testClockClass{(*C.GstTestClockClass)(p)}}
 }
 
-// UnsafeTestClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeTestClockClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [TestClockClass] is expected to work anymore.
 func UnsafeTestClockClassFree(t *TestClockClass) {
 	C.free(unsafe.Pointer(t.native))
+	runtime.SetFinalizer(t.testClockClass, nil)
 }
 
 // UnsafeTestClockClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.

@@ -636,11 +636,12 @@ func UnsafeMIKEYDecryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYDecryptInfo {
 	return wrapped
 }
 
-// UnsafeMIKEYDecryptInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYDecryptInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYDecryptInfo] is expected to work anymore.
 func UnsafeMIKEYDecryptInfoFree(m *MIKEYDecryptInfo) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYDecryptInfo, nil)
 }
 
 // UnsafeMIKEYDecryptInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -717,11 +718,12 @@ func UnsafeMIKEYEncryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYEncryptInfo {
 	return wrapped
 }
 
-// UnsafeMIKEYEncryptInfoFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYEncryptInfoFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYEncryptInfo] is expected to work anymore.
 func UnsafeMIKEYEncryptInfoFree(m *MIKEYEncryptInfo) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYEncryptInfo, nil)
 }
 
 // UnsafeMIKEYEncryptInfoToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -798,11 +800,12 @@ func UnsafeMIKEYMapSRTPFromGlibFull(p unsafe.Pointer) *MIKEYMapSRTP {
 	return wrapped
 }
 
-// UnsafeMIKEYMapSRTPFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYMapSRTPFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYMapSRTP] is expected to work anymore.
 func UnsafeMIKEYMapSRTPFree(m *MIKEYMapSRTP) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYMapSRTP, nil)
 }
 
 // UnsafeMIKEYMapSRTPToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -894,11 +897,12 @@ func UnsafeMIKEYMessageFromGlibFull(p unsafe.Pointer) *MIKEYMessage {
 	return wrapped
 }
 
-// UnsafeMIKEYMessageFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYMessageFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYMessage] is expected to work anymore.
 func UnsafeMIKEYMessageFree(m *MIKEYMessage) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYMessage, nil)
 }
 
 // UnsafeMIKEYMessageToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1592,11 +1596,12 @@ func UnsafeMIKEYPayloadFromGlibFull(p unsafe.Pointer) *MIKEYPayload {
 	return wrapped
 }
 
-// UnsafeMIKEYPayloadFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYPayloadFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYPayload] is expected to work anymore.
 func UnsafeMIKEYPayloadFree(m *MIKEYPayload) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYPayload, nil)
 }
 
 // UnsafeMIKEYPayloadToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2118,11 +2123,12 @@ func UnsafeMIKEYPayloadKEMACFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 	return wrapped
 }
 
-// UnsafeMIKEYPayloadKEMACFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYPayloadKEMACFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYPayloadKEMAC] is expected to work anymore.
 func UnsafeMIKEYPayloadKEMACFree(m *MIKEYPayloadKEMAC) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYPayloadKEMAC, nil)
 }
 
 // UnsafeMIKEYPayloadKEMACToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2199,11 +2205,12 @@ func UnsafeMIKEYPayloadKeyDataFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKeyDat
 	return wrapped
 }
 
-// UnsafeMIKEYPayloadKeyDataFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYPayloadKeyDataFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYPayloadKeyData] is expected to work anymore.
 func UnsafeMIKEYPayloadKeyDataFree(m *MIKEYPayloadKeyData) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYPayloadKeyData, nil)
 }
 
 // UnsafeMIKEYPayloadKeyDataToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2280,11 +2287,12 @@ func UnsafeMIKEYPayloadPKEFromGlibFull(p unsafe.Pointer) *MIKEYPayloadPKE {
 	return wrapped
 }
 
-// UnsafeMIKEYPayloadPKEFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYPayloadPKEFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYPayloadPKE] is expected to work anymore.
 func UnsafeMIKEYPayloadPKEFree(m *MIKEYPayloadPKE) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYPayloadPKE, nil)
 }
 
 // UnsafeMIKEYPayloadPKEToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2361,11 +2369,12 @@ func UnsafeMIKEYPayloadRANDFromGlibFull(p unsafe.Pointer) *MIKEYPayloadRAND {
 	return wrapped
 }
 
-// UnsafeMIKEYPayloadRANDFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYPayloadRANDFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYPayloadRAND] is expected to work anymore.
 func UnsafeMIKEYPayloadRANDFree(m *MIKEYPayloadRAND) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYPayloadRAND, nil)
 }
 
 // UnsafeMIKEYPayloadRANDToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2442,11 +2451,12 @@ func UnsafeMIKEYPayloadSPFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSP {
 	return wrapped
 }
 
-// UnsafeMIKEYPayloadSPFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYPayloadSPFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYPayloadSP] is expected to work anymore.
 func UnsafeMIKEYPayloadSPFree(m *MIKEYPayloadSP) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYPayloadSP, nil)
 }
 
 // UnsafeMIKEYPayloadSPToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2523,11 +2533,12 @@ func UnsafeMIKEYPayloadSPParamFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSPPara
 	return wrapped
 }
 
-// UnsafeMIKEYPayloadSPParamFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYPayloadSPParamFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYPayloadSPParam] is expected to work anymore.
 func UnsafeMIKEYPayloadSPParamFree(m *MIKEYPayloadSPParam) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYPayloadSPParam, nil)
 }
 
 // UnsafeMIKEYPayloadSPParamToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2604,11 +2615,12 @@ func UnsafeMIKEYPayloadTFromGlibFull(p unsafe.Pointer) *MIKEYPayloadT {
 	return wrapped
 }
 
-// UnsafeMIKEYPayloadTFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMIKEYPayloadTFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [MIKEYPayloadT] is expected to work anymore.
 func UnsafeMIKEYPayloadTFree(m *MIKEYPayloadT) {
 	C.free(unsafe.Pointer(m.native))
+	runtime.SetFinalizer(m.mIKEYPayloadT, nil)
 }
 
 // UnsafeMIKEYPayloadTToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2685,11 +2697,12 @@ func UnsafeSDPAttributeFromGlibFull(p unsafe.Pointer) *SDPAttribute {
 	return wrapped
 }
 
-// UnsafeSDPAttributeFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSDPAttributeFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [SDPAttribute] is expected to work anymore.
 func UnsafeSDPAttributeFree(s *SDPAttribute) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.sDPAttribute, nil)
 }
 
 // UnsafeSDPAttributeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2814,11 +2827,12 @@ func UnsafeSDPBandwidthFromGlibFull(p unsafe.Pointer) *SDPBandwidth {
 	return wrapped
 }
 
-// UnsafeSDPBandwidthFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSDPBandwidthFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [SDPBandwidth] is expected to work anymore.
 func UnsafeSDPBandwidthFree(s *SDPBandwidth) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.sDPBandwidth, nil)
 }
 
 // UnsafeSDPBandwidthToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -2940,11 +2954,12 @@ func UnsafeSDPConnectionFromGlibFull(p unsafe.Pointer) *SDPConnection {
 	return wrapped
 }
 
-// UnsafeSDPConnectionFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSDPConnectionFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [SDPConnection] is expected to work anymore.
 func UnsafeSDPConnectionFree(s *SDPConnection) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.sDPConnection, nil)
 }
 
 // UnsafeSDPConnectionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3077,11 +3092,12 @@ func UnsafeSDPKeyFromGlibFull(p unsafe.Pointer) *SDPKey {
 	return wrapped
 }
 
-// UnsafeSDPKeyFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSDPKeyFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [SDPKey] is expected to work anymore.
 func UnsafeSDPKeyFree(s *SDPKey) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.sDPKey, nil)
 }
 
 // UnsafeSDPKeyToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -3158,11 +3174,12 @@ func UnsafeSDPMediaFromGlibFull(p unsafe.Pointer) *SDPMedia {
 	return wrapped
 }
 
-// UnsafeSDPMediaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSDPMediaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [SDPMedia] is expected to work anymore.
 func UnsafeSDPMediaFree(s *SDPMedia) {
 	C.gst_sdp_media_free(s.native)
+	runtime.SetFinalizer(s.sDPMedia, nil)
 }
 
 // UnsafeSDPMediaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -4305,11 +4322,12 @@ func UnsafeSDPMessageFromGlibFull(p unsafe.Pointer) *SDPMessage {
 	return wrapped
 }
 
-// UnsafeSDPMessageFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSDPMessageFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [SDPMessage] is expected to work anymore.
 func UnsafeSDPMessageFree(s *SDPMessage) {
 	C.gst_sdp_message_free(s.native)
+	runtime.SetFinalizer(s.sDPMessage, nil)
 }
 
 // UnsafeSDPMessageToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -5961,11 +5979,12 @@ func UnsafeSDPOriginFromGlibFull(p unsafe.Pointer) *SDPOrigin {
 	return wrapped
 }
 
-// UnsafeSDPOriginFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSDPOriginFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [SDPOrigin] is expected to work anymore.
 func UnsafeSDPOriginFree(s *SDPOrigin) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.sDPOrigin, nil)
 }
 
 // UnsafeSDPOriginToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6042,11 +6061,12 @@ func UnsafeSDPTimeFromGlibFull(p unsafe.Pointer) *SDPTime {
 	return wrapped
 }
 
-// UnsafeSDPTimeFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSDPTimeFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [SDPTime] is expected to work anymore.
 func UnsafeSDPTimeFree(s *SDPTime) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.sDPTime, nil)
 }
 
 // UnsafeSDPTimeToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -6174,11 +6194,12 @@ func UnsafeSDPZoneFromGlibFull(p unsafe.Pointer) *SDPZone {
 	return wrapped
 }
 
-// UnsafeSDPZoneFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSDPZoneFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [SDPZone] is expected to work anymore.
 func UnsafeSDPZoneFree(s *SDPZone) {
 	C.free(unsafe.Pointer(s.native))
+	runtime.SetFinalizer(s.sDPZone, nil)
 }
 
 // UnsafeSDPZoneToGlibNone returns the underlying C pointer. This is used by the bindings internally.

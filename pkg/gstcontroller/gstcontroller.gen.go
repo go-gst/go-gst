@@ -1329,11 +1329,12 @@ func UnsafeARGBControlBindingClassFromGlibBorrow(p unsafe.Pointer) *ARGBControlB
 	return &ARGBControlBindingClass{&aRGBControlBindingClass{(*C.GstARGBControlBindingClass)(p)}}
 }
 
-// UnsafeARGBControlBindingClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeARGBControlBindingClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [ARGBControlBindingClass] is expected to work anymore.
 func UnsafeARGBControlBindingClassFree(a *ARGBControlBindingClass) {
 	C.free(unsafe.Pointer(a.native))
+	runtime.SetFinalizer(a.aRGBControlBindingClass, nil)
 }
 
 // UnsafeARGBControlBindingClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1422,11 +1423,12 @@ func UnsafeControlPointFromGlibFull(p unsafe.Pointer) *ControlPoint {
 	return wrapped
 }
 
-// UnsafeControlPointFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeControlPointFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [ControlPoint] is expected to work anymore.
 func UnsafeControlPointFree(c *ControlPoint) {
 	C.gst_control_point_free(c.native)
+	runtime.SetFinalizer(c.controlPoint, nil)
 }
 
 // UnsafeControlPointToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1498,11 +1500,12 @@ func UnsafeDirectControlBindingClassFromGlibBorrow(p unsafe.Pointer) *DirectCont
 	return &DirectControlBindingClass{&directControlBindingClass{(*C.GstDirectControlBindingClass)(p)}}
 }
 
-// UnsafeDirectControlBindingClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeDirectControlBindingClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [DirectControlBindingClass] is expected to work anymore.
 func UnsafeDirectControlBindingClassFree(d *DirectControlBindingClass) {
 	C.free(unsafe.Pointer(d.native))
+	runtime.SetFinalizer(d.directControlBindingClass, nil)
 }
 
 // UnsafeDirectControlBindingClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1552,11 +1555,12 @@ func UnsafeInterpolationControlSourceClassFromGlibBorrow(p unsafe.Pointer) *Inte
 	return &InterpolationControlSourceClass{&interpolationControlSourceClass{(*C.GstInterpolationControlSourceClass)(p)}}
 }
 
-// UnsafeInterpolationControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeInterpolationControlSourceClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [InterpolationControlSourceClass] is expected to work anymore.
 func UnsafeInterpolationControlSourceClassFree(i *InterpolationControlSourceClass) {
 	C.free(unsafe.Pointer(i.native))
+	runtime.SetFinalizer(i.interpolationControlSourceClass, nil)
 }
 
 // UnsafeInterpolationControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1606,11 +1610,12 @@ func UnsafeLFOControlSourceClassFromGlibBorrow(p unsafe.Pointer) *LFOControlSour
 	return &LFOControlSourceClass{&lFOControlSourceClass{(*C.GstLFOControlSourceClass)(p)}}
 }
 
-// UnsafeLFOControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeLFOControlSourceClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [LFOControlSourceClass] is expected to work anymore.
 func UnsafeLFOControlSourceClassFree(l *LFOControlSourceClass) {
 	C.free(unsafe.Pointer(l.native))
+	runtime.SetFinalizer(l.lFOControlSourceClass, nil)
 }
 
 // UnsafeLFOControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1660,11 +1665,12 @@ func UnsafeProxyControlBindingClassFromGlibBorrow(p unsafe.Pointer) *ProxyContro
 	return &ProxyControlBindingClass{&proxyControlBindingClass{(*C.GstProxyControlBindingClass)(p)}}
 }
 
-// UnsafeProxyControlBindingClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeProxyControlBindingClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [ProxyControlBindingClass] is expected to work anymore.
 func UnsafeProxyControlBindingClassFree(p *ProxyControlBindingClass) {
 	C.free(unsafe.Pointer(p.native))
+	runtime.SetFinalizer(p.proxyControlBindingClass, nil)
 }
 
 // UnsafeProxyControlBindingClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1714,11 +1720,12 @@ func UnsafeTimedValueControlSourceClassFromGlibBorrow(p unsafe.Pointer) *TimedVa
 	return &TimedValueControlSourceClass{&timedValueControlSourceClass{(*C.GstTimedValueControlSourceClass)(p)}}
 }
 
-// UnsafeTimedValueControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeTimedValueControlSourceClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [TimedValueControlSourceClass] is expected to work anymore.
 func UnsafeTimedValueControlSourceClassFree(t *TimedValueControlSourceClass) {
 	C.free(unsafe.Pointer(t.native))
+	runtime.SetFinalizer(t.timedValueControlSourceClass, nil)
 }
 
 // UnsafeTimedValueControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -1768,11 +1775,12 @@ func UnsafeTriggerControlSourceClassFromGlibBorrow(p unsafe.Pointer) *TriggerCon
 	return &TriggerControlSourceClass{&triggerControlSourceClass{(*C.GstTriggerControlSourceClass)(p)}}
 }
 
-// UnsafeTriggerControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeTriggerControlSourceClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [TriggerControlSourceClass] is expected to work anymore.
 func UnsafeTriggerControlSourceClassFree(t *TriggerControlSourceClass) {
 	C.free(unsafe.Pointer(t.native))
+	runtime.SetFinalizer(t.triggerControlSourceClass, nil)
 }
 
 // UnsafeTriggerControlSourceClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.

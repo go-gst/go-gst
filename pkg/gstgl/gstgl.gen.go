@@ -11566,11 +11566,12 @@ func UnsafeGLAllocationParamsFromGlibFull(p unsafe.Pointer) *GLAllocationParams 
 	return wrapped
 }
 
-// UnsafeGLAllocationParamsFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLAllocationParamsFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLAllocationParams] is expected to work anymore.
 func UnsafeGLAllocationParamsFree(g *GLAllocationParams) {
 	C.gst_gl_allocation_params_free(g.native)
+	runtime.SetFinalizer(g.gLAllocationParams, nil)
 }
 
 // UnsafeGLAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11693,11 +11694,12 @@ func UnsafeGLAsyncDebugFromGlibFull(p unsafe.Pointer) *GLAsyncDebug {
 	return wrapped
 }
 
-// UnsafeGLAsyncDebugFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLAsyncDebugFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLAsyncDebug] is expected to work anymore.
 func UnsafeGLAsyncDebugFree(g *GLAsyncDebug) {
 	C.gst_gl_async_debug_free(g.native)
+	runtime.SetFinalizer(g.gLAsyncDebug, nil)
 }
 
 // UnsafeGLAsyncDebugToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11810,11 +11812,12 @@ func UnsafeGLBaseFilterClassFromGlibBorrow(p unsafe.Pointer) *GLBaseFilterClass 
 	return &GLBaseFilterClass{&gLBaseFilterClass{(*C.GstGLBaseFilterClass)(p)}}
 }
 
-// UnsafeGLBaseFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBaseFilterClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBaseFilterClass] is expected to work anymore.
 func UnsafeGLBaseFilterClassFree(g *GLBaseFilterClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBaseFilterClass, nil)
 }
 
 // UnsafeGLBaseFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -11903,11 +11906,12 @@ func UnsafeGLBaseMemoryFromGlibFull(p unsafe.Pointer) *GLBaseMemory {
 	return wrapped
 }
 
-// UnsafeGLBaseMemoryFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBaseMemoryFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBaseMemory] is expected to work anymore.
 func UnsafeGLBaseMemoryFree(g *GLBaseMemory) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBaseMemory, nil)
 }
 
 // UnsafeGLBaseMemoryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12043,11 +12047,12 @@ func UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMem
 	return &GLBaseMemoryAllocatorClass{&gLBaseMemoryAllocatorClass{(*C.GstGLBaseMemoryAllocatorClass)(p)}}
 }
 
-// UnsafeGLBaseMemoryAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBaseMemoryAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBaseMemoryAllocatorClass] is expected to work anymore.
 func UnsafeGLBaseMemoryAllocatorClassFree(g *GLBaseMemoryAllocatorClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBaseMemoryAllocatorClass, nil)
 }
 
 // UnsafeGLBaseMemoryAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12097,11 +12102,12 @@ func UnsafeGLBaseMixerClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMixerClass {
 	return &GLBaseMixerClass{&gLBaseMixerClass{(*C.GstGLBaseMixerClass)(p)}}
 }
 
-// UnsafeGLBaseMixerClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBaseMixerClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBaseMixerClass] is expected to work anymore.
 func UnsafeGLBaseMixerClassFree(g *GLBaseMixerClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBaseMixerClass, nil)
 }
 
 // UnsafeGLBaseMixerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12151,11 +12157,12 @@ func UnsafeGLBaseMixerPadClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMixerPadCl
 	return &GLBaseMixerPadClass{&gLBaseMixerPadClass{(*C.GstGLBaseMixerPadClass)(p)}}
 }
 
-// UnsafeGLBaseMixerPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBaseMixerPadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBaseMixerPadClass] is expected to work anymore.
 func UnsafeGLBaseMixerPadClassFree(g *GLBaseMixerPadClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBaseMixerPadClass, nil)
 }
 
 // UnsafeGLBaseMixerPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12205,11 +12212,12 @@ func UnsafeGLBaseSrcClassFromGlibBorrow(p unsafe.Pointer) *GLBaseSrcClass {
 	return &GLBaseSrcClass{&gLBaseSrcClass{(*C.GstGLBaseSrcClass)(p)}}
 }
 
-// UnsafeGLBaseSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBaseSrcClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBaseSrcClass] is expected to work anymore.
 func UnsafeGLBaseSrcClassFree(g *GLBaseSrcClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBaseSrcClass, nil)
 }
 
 // UnsafeGLBaseSrcClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12298,11 +12306,12 @@ func UnsafeGLBufferFromGlibFull(p unsafe.Pointer) *GLBuffer {
 	return wrapped
 }
 
-// UnsafeGLBufferFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBufferFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBuffer] is expected to work anymore.
 func UnsafeGLBufferFree(g *GLBuffer) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBuffer, nil)
 }
 
 // UnsafeGLBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12402,11 +12411,12 @@ func UnsafeGLBufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLBufferAlloc
 	return wrapped
 }
 
-// UnsafeGLBufferAllocationParamsFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBufferAllocationParamsFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBufferAllocationParams] is expected to work anymore.
 func UnsafeGLBufferAllocationParamsFree(g *GLBufferAllocationParams) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBufferAllocationParams, nil)
 }
 
 // UnsafeGLBufferAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12492,11 +12502,12 @@ func UnsafeGLBufferAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLBufferAlloc
 	return &GLBufferAllocatorClass{&gLBufferAllocatorClass{(*C.GstGLBufferAllocatorClass)(p)}}
 }
 
-// UnsafeGLBufferAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBufferAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBufferAllocatorClass] is expected to work anymore.
 func UnsafeGLBufferAllocatorClassFree(g *GLBufferAllocatorClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBufferAllocatorClass, nil)
 }
 
 // UnsafeGLBufferAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12546,11 +12557,12 @@ func UnsafeGLBufferPoolClassFromGlibBorrow(p unsafe.Pointer) *GLBufferPoolClass 
 	return &GLBufferPoolClass{&gLBufferPoolClass{(*C.GstGLBufferPoolClass)(p)}}
 }
 
-// UnsafeGLBufferPoolClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLBufferPoolClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLBufferPoolClass] is expected to work anymore.
 func UnsafeGLBufferPoolClassFree(g *GLBufferPoolClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLBufferPoolClass, nil)
 }
 
 // UnsafeGLBufferPoolClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12600,11 +12612,12 @@ func UnsafeGLColorConvertClassFromGlibBorrow(p unsafe.Pointer) *GLColorConvertCl
 	return &GLColorConvertClass{&gLColorConvertClass{(*C.GstGLColorConvertClass)(p)}}
 }
 
-// UnsafeGLColorConvertClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLColorConvertClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLColorConvertClass] is expected to work anymore.
 func UnsafeGLColorConvertClassFree(g *GLColorConvertClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLColorConvertClass, nil)
 }
 
 // UnsafeGLColorConvertClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12654,11 +12667,12 @@ func UnsafeGLContextClassFromGlibBorrow(p unsafe.Pointer) *GLContextClass {
 	return &GLContextClass{&gLContextClass{(*C.GstGLContextClass)(p)}}
 }
 
-// UnsafeGLContextClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLContextClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLContextClass] is expected to work anymore.
 func UnsafeGLContextClassFree(g *GLContextClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLContextClass, nil)
 }
 
 // UnsafeGLContextClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12708,11 +12722,12 @@ func UnsafeGLDisplayClassFromGlibBorrow(p unsafe.Pointer) *GLDisplayClass {
 	return &GLDisplayClass{&gLDisplayClass{(*C.GstGLDisplayClass)(p)}}
 }
 
-// UnsafeGLDisplayClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLDisplayClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLDisplayClass] is expected to work anymore.
 func UnsafeGLDisplayClassFree(g *GLDisplayClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLDisplayClass, nil)
 }
 
 // UnsafeGLDisplayClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12762,11 +12777,12 @@ func UnsafeGLFilterClassFromGlibBorrow(p unsafe.Pointer) *GLFilterClass {
 	return &GLFilterClass{&gLFilterClass{(*C.GstGLFilterClass)(p)}}
 }
 
-// UnsafeGLFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLFilterClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLFilterClass] is expected to work anymore.
 func UnsafeGLFilterClassFree(g *GLFilterClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLFilterClass, nil)
 }
 
 // UnsafeGLFilterClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12816,11 +12832,12 @@ func UnsafeGLFramebufferClassFromGlibBorrow(p unsafe.Pointer) *GLFramebufferClas
 	return &GLFramebufferClass{&gLFramebufferClass{(*C.GstGLFramebufferClass)(p)}}
 }
 
-// UnsafeGLFramebufferClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLFramebufferClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLFramebufferClass] is expected to work anymore.
 func UnsafeGLFramebufferClassFree(g *GLFramebufferClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLFramebufferClass, nil)
 }
 
 // UnsafeGLFramebufferClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12894,11 +12911,12 @@ func UnsafeGLFuncsFromGlibFull(p unsafe.Pointer) *GLFuncs {
 	return wrapped
 }
 
-// UnsafeGLFuncsFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLFuncsFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLFuncs] is expected to work anymore.
 func UnsafeGLFuncsFree(g *GLFuncs) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLFuncs, nil)
 }
 
 // UnsafeGLFuncsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -12990,11 +13008,12 @@ func UnsafeGLMemoryFromGlibFull(p unsafe.Pointer) *GLMemory {
 	return wrapped
 }
 
-// UnsafeGLMemoryFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLMemoryFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLMemory] is expected to work anymore.
 func UnsafeGLMemoryFree(g *GLMemory) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLMemory, nil)
 }
 
 // UnsafeGLMemoryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13222,11 +13241,12 @@ func UnsafeGLMemoryAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLMemoryAlloc
 	return &GLMemoryAllocatorClass{&gLMemoryAllocatorClass{(*C.GstGLMemoryAllocatorClass)(p)}}
 }
 
-// UnsafeGLMemoryAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLMemoryAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLMemoryAllocatorClass] is expected to work anymore.
 func UnsafeGLMemoryAllocatorClassFree(g *GLMemoryAllocatorClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLMemoryAllocatorClass, nil)
 }
 
 // UnsafeGLMemoryAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13315,11 +13335,12 @@ func UnsafeGLMemoryPBOFromGlibFull(p unsafe.Pointer) *GLMemoryPBO {
 	return wrapped
 }
 
-// UnsafeGLMemoryPBOFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLMemoryPBOFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLMemoryPBO] is expected to work anymore.
 func UnsafeGLMemoryPBOFree(g *GLMemoryPBO) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLMemoryPBO, nil)
 }
 
 // UnsafeGLMemoryPBOToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13448,11 +13469,12 @@ func UnsafeGLMemoryPBOAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLMemoryPB
 	return &GLMemoryPBOAllocatorClass{&gLMemoryPBOAllocatorClass{(*C.GstGLMemoryPBOAllocatorClass)(p)}}
 }
 
-// UnsafeGLMemoryPBOAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLMemoryPBOAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLMemoryPBOAllocatorClass] is expected to work anymore.
 func UnsafeGLMemoryPBOAllocatorClassFree(g *GLMemoryPBOAllocatorClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLMemoryPBOAllocatorClass, nil)
 }
 
 // UnsafeGLMemoryPBOAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13502,11 +13524,12 @@ func UnsafeGLMixerClassFromGlibBorrow(p unsafe.Pointer) *GLMixerClass {
 	return &GLMixerClass{&gLMixerClass{(*C.GstGLMixerClass)(p)}}
 }
 
-// UnsafeGLMixerClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLMixerClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLMixerClass] is expected to work anymore.
 func UnsafeGLMixerClassFree(g *GLMixerClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLMixerClass, nil)
 }
 
 // UnsafeGLMixerClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13568,11 +13591,12 @@ func UnsafeGLMixerPadClassFromGlibBorrow(p unsafe.Pointer) *GLMixerPadClass {
 	return &GLMixerPadClass{&gLMixerPadClass{(*C.GstGLMixerPadClass)(p)}}
 }
 
-// UnsafeGLMixerPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLMixerPadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLMixerPadClass] is expected to work anymore.
 func UnsafeGLMixerPadClassFree(g *GLMixerPadClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLMixerPadClass, nil)
 }
 
 // UnsafeGLMixerPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13622,11 +13646,12 @@ func UnsafeGLOverlayCompositorClassFromGlibBorrow(p unsafe.Pointer) *GLOverlayCo
 	return &GLOverlayCompositorClass{&gLOverlayCompositorClass{(*C.GstGLOverlayCompositorClass)(p)}}
 }
 
-// UnsafeGLOverlayCompositorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLOverlayCompositorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLOverlayCompositorClass] is expected to work anymore.
 func UnsafeGLOverlayCompositorClassFree(g *GLOverlayCompositorClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLOverlayCompositorClass, nil)
 }
 
 // UnsafeGLOverlayCompositorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13700,11 +13725,12 @@ func UnsafeGLQueryFromGlibFull(p unsafe.Pointer) *GLQuery {
 	return wrapped
 }
 
-// UnsafeGLQueryFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLQueryFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLQuery] is expected to work anymore.
 func UnsafeGLQueryFree(g *GLQuery) {
 	C.gst_gl_query_free(g.native)
+	runtime.SetFinalizer(g.gLQuery, nil)
 }
 
 // UnsafeGLQueryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -13881,11 +13907,12 @@ func UnsafeGLRenderbufferFromGlibFull(p unsafe.Pointer) *GLRenderbuffer {
 	return wrapped
 }
 
-// UnsafeGLRenderbufferFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLRenderbufferFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLRenderbuffer] is expected to work anymore.
 func UnsafeGLRenderbufferFree(g *GLRenderbuffer) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLRenderbuffer, nil)
 }
 
 // UnsafeGLRenderbufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14061,11 +14088,12 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLRende
 	return wrapped
 }
 
-// UnsafeGLRenderbufferAllocationParamsFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLRenderbufferAllocationParamsFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLRenderbufferAllocationParams] is expected to work anymore.
 func UnsafeGLRenderbufferAllocationParamsFree(g *GLRenderbufferAllocationParams) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLRenderbufferAllocationParams, nil)
 }
 
 // UnsafeGLRenderbufferAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14151,11 +14179,12 @@ func UnsafeGLRenderbufferAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLRende
 	return &GLRenderbufferAllocatorClass{&gLRenderbufferAllocatorClass{(*C.GstGLRenderbufferAllocatorClass)(p)}}
 }
 
-// UnsafeGLRenderbufferAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLRenderbufferAllocatorClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLRenderbufferAllocatorClass] is expected to work anymore.
 func UnsafeGLRenderbufferAllocatorClassFree(g *GLRenderbufferAllocatorClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLRenderbufferAllocatorClass, nil)
 }
 
 // UnsafeGLRenderbufferAllocatorClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14205,11 +14234,12 @@ func UnsafeGLSLStageClassFromGlibBorrow(p unsafe.Pointer) *GLSLStageClass {
 	return &GLSLStageClass{&gLSLStageClass{(*C.GstGLSLStageClass)(p)}}
 }
 
-// UnsafeGLSLStageClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLSLStageClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLSLStageClass] is expected to work anymore.
 func UnsafeGLSLStageClassFree(g *GLSLStageClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLSLStageClass, nil)
 }
 
 // UnsafeGLSLStageClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14259,11 +14289,12 @@ func UnsafeGLShaderClassFromGlibBorrow(p unsafe.Pointer) *GLShaderClass {
 	return &GLShaderClass{&gLShaderClass{(*C.GstGLShaderClass)(p)}}
 }
 
-// UnsafeGLShaderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLShaderClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLShaderClass] is expected to work anymore.
 func UnsafeGLShaderClassFree(g *GLShaderClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLShaderClass, nil)
 }
 
 // UnsafeGLShaderClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14337,11 +14368,12 @@ func UnsafeGLSyncMetaFromGlibFull(p unsafe.Pointer) *GLSyncMeta {
 	return wrapped
 }
 
-// UnsafeGLSyncMetaFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLSyncMetaFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLSyncMeta] is expected to work anymore.
 func UnsafeGLSyncMetaFree(g *GLSyncMeta) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLSyncMeta, nil)
 }
 
 // UnsafeGLSyncMetaToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14454,11 +14486,12 @@ func UnsafeGLUploadClassFromGlibBorrow(p unsafe.Pointer) *GLUploadClass {
 	return &GLUploadClass{&gLUploadClass{(*C.GstGLUploadClass)(p)}}
 }
 
-// UnsafeGLUploadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLUploadClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLUploadClass] is expected to work anymore.
 func UnsafeGLUploadClassFree(g *GLUploadClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLUploadClass, nil)
 }
 
 // UnsafeGLUploadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14547,11 +14580,12 @@ func UnsafeGLVideoAllocationParamsFromGlibFull(p unsafe.Pointer) *GLVideoAllocat
 	return wrapped
 }
 
-// UnsafeGLVideoAllocationParamsFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLVideoAllocationParamsFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLVideoAllocationParams] is expected to work anymore.
 func UnsafeGLVideoAllocationParamsFree(g *GLVideoAllocationParams) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLVideoAllocationParams, nil)
 }
 
 // UnsafeGLVideoAllocationParamsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14672,11 +14706,12 @@ func UnsafeGLViewConvertClassFromGlibBorrow(p unsafe.Pointer) *GLViewConvertClas
 	return &GLViewConvertClass{&gLViewConvertClass{(*C.GstGLViewConvertClass)(p)}}
 }
 
-// UnsafeGLViewConvertClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLViewConvertClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLViewConvertClass] is expected to work anymore.
 func UnsafeGLViewConvertClassFree(g *GLViewConvertClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLViewConvertClass, nil)
 }
 
 // UnsafeGLViewConvertClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -14726,11 +14761,12 @@ func UnsafeGLWindowClassFromGlibBorrow(p unsafe.Pointer) *GLWindowClass {
 	return &GLWindowClass{&gLWindowClass{(*C.GstGLWindowClass)(p)}}
 }
 
-// UnsafeGLWindowClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeGLWindowClassFree unrefs/frees the underlying resource. This can be used to remove the instance before the GC decides to do so.
 // 
 // After this is called, no other method on [GLWindowClass] is expected to work anymore.
 func UnsafeGLWindowClassFree(g *GLWindowClass) {
 	C.free(unsafe.Pointer(g.native))
+	runtime.SetFinalizer(g.gLWindowClass, nil)
 }
 
 // UnsafeGLWindowClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
