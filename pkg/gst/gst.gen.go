@@ -29637,7 +29637,7 @@ func UnsafeAtomicQueueFromGlibFull(p unsafe.Pointer) *AtomicQueue {
 	return wrapped
 }
 
-// UnsafeAtomicQueueRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeAtomicQueueRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [AtomicQueue.UnsafeAtomicQueueUnref], then [AtomicQueue] will leak memory.
 func UnsafeAtomicQueueRef(a *AtomicQueue) {
@@ -29840,7 +29840,7 @@ func UnsafeBufferFromGlibFull(p unsafe.Pointer) *Buffer {
 	return wrapped
 }
 
-// UnsafeBufferRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeBufferRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Buffer.UnsafeBufferUnref], then [Buffer] will leak memory.
 func UnsafeBufferRef(b *Buffer) {
@@ -31020,7 +31020,7 @@ func UnsafeBufferListFromGlibFull(p unsafe.Pointer) *BufferList {
 	return wrapped
 }
 
-// UnsafeBufferListRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeBufferListRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [BufferList.UnsafeBufferListUnref], then [BufferList] will leak memory.
 func UnsafeBufferListRef(b *BufferList) {
@@ -31604,7 +31604,7 @@ func UnsafeCapsFromGlibFull(p unsafe.Pointer) *Caps {
 	return wrapped
 }
 
-// UnsafeCapsRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeCapsRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Caps.UnsafeCapsUnref], then [Caps] will leak memory.
 func UnsafeCapsRef(c *Caps) {
@@ -33389,7 +33389,7 @@ func UnsafeContextFromGlibFull(p unsafe.Pointer) *Context {
 	return wrapped
 }
 
-// UnsafeContextRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeContextRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Context.UnsafeContextUnref], then [Context] will leak memory.
 func UnsafeContextRef(c *Context) {
@@ -33882,7 +33882,7 @@ func UnsafeDateTimeFromGlibFull(p unsafe.Pointer) *DateTime {
 	return wrapped
 }
 
-// UnsafeDateTimeRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeDateTimeRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [DateTime.UnsafeDateTimeUnref], then [DateTime] will leak memory.
 func UnsafeDateTimeRef(d *DateTime) {
@@ -35586,7 +35586,7 @@ func UnsafeEventFromGlibFull(p unsafe.Pointer) *Event {
 	return wrapped
 }
 
-// UnsafeEventRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeEventRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Event.UnsafeEventUnref], then [Event] will leak memory.
 func UnsafeEventRef(e *Event) {
@@ -37763,7 +37763,7 @@ func UnsafeMemoryFromGlibFull(p unsafe.Pointer) *Memory {
 	return wrapped
 }
 
-// UnsafeMemoryRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeMemoryRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Memory.UnsafeMemoryUnref], then [Memory] will leak memory.
 func UnsafeMemoryRef(m *Memory) {
@@ -38020,7 +38020,7 @@ func UnsafeMessageFromGlibFull(p unsafe.Pointer) *Message {
 	return wrapped
 }
 
-// UnsafeMessageRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeMessageRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Message.UnsafeMessageUnref], then [Message] will leak memory.
 func UnsafeMessageRef(m *Message) {
@@ -40905,7 +40905,7 @@ func UnsafeMiniObjectFromGlibFull(p unsafe.Pointer) *MiniObject {
 	return wrapped
 }
 
-// UnsafeMiniObjectRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeMiniObjectRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [MiniObject.UnsafeMiniObjectUnref], then [MiniObject] will leak memory.
 func UnsafeMiniObjectRef(m *MiniObject) {
@@ -42750,7 +42750,7 @@ func UnsafeQueryFromGlibFull(p unsafe.Pointer) *Query {
 	return wrapped
 }
 
-// UnsafeQueryRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeQueryRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Query.UnsafeQueryUnref], then [Query] will leak memory.
 func UnsafeQueryRef(q *Query) {
@@ -44850,7 +44850,7 @@ func UnsafeSampleFromGlibFull(p unsafe.Pointer) *Sample {
 	return wrapped
 }
 
-// UnsafeSampleRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeSampleRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Sample.UnsafeSampleUnref], then [Sample] will leak memory.
 func UnsafeSampleRef(s *Sample) {
@@ -46123,7 +46123,7 @@ func UnsafeStructureFromGlibFull(p unsafe.Pointer) *Structure {
 	return wrapped
 }
 
-// UnsafeStructureRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeStructureRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Structure.UnsafeStructureUnref], then [Structure] will leak memory.
 func UnsafeStructureRef(s *Structure) {
@@ -47645,7 +47645,7 @@ func UnsafeTagListFromGlibFull(p unsafe.Pointer) *TagList {
 	return wrapped
 }
 
-// UnsafeTagListRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeTagListRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [TagList.UnsafeTagListUnref], then [TagList] will leak memory.
 func UnsafeTagListRef(t *TagList) {
@@ -49008,7 +49008,7 @@ func UnsafeTocFromGlibFull(p unsafe.Pointer) *Toc {
 	return wrapped
 }
 
-// UnsafeTocRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeTocRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Toc.UnsafeTocUnref], then [Toc] will leak memory.
 func UnsafeTocRef(t *Toc) {
@@ -50331,7 +50331,7 @@ func UnsafeUriFromGlibFull(p unsafe.Pointer) *Uri {
 	return wrapped
 }
 
-// UnsafeUriRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// UnsafeUriRef increases the refcount on the underlying resource.
 // 
 // When this is called without an associated call to [Uri.UnsafeUriUnref], then [Uri] will leak memory.
 func UnsafeUriRef(u *Uri) {
