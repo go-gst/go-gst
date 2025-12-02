@@ -31,7 +31,7 @@
           gst_all_1.gst-plugins-bad
           gst_all_1.gst-plugins-base
           gst_all_1.gst-plugins-good
-          gst_all_1.gst-plugins-rs
+          # gst_all_1.gst-plugins-rs failing to build in github actions on darwin
           gst_all_1.gst-plugins-ugly
           gst_all_1.gst-rtsp-server
           # gst_all_1.gst-vaapi not available in darwin
