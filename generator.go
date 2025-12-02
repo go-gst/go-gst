@@ -204,15 +204,15 @@ var Data = genmain.Data{
 					typesystem.IgnoreMatching("TagList.make_writable"),
 				},
 			},
-			"GstApp-1": {
-				MinVersion: "1.26",
-				MaxVersion: "1.26",
-			},
 			"GstAllocators-1": {
 				MinVersion: "1.26",
 				MaxVersion: "1.26",
 			},
-			"GstWebRTC-1": {
+			"GstApp-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstAudio-1": {
 				MinVersion: "1.26",
 				MaxVersion: "1.26",
 			},
@@ -224,16 +224,25 @@ var Data = genmain.Data{
 					typesystem.IgnoreMatching("TypeFindData"),
 				},
 			},
-			"GstVideo-1": {
+			"GstCheck-1": {
 				MinVersion: "1.26",
 				MaxVersion: "1.26",
-				IgnoredDefinitions: []typesystem.IgnoreFunc{
-					// must be implemented manually
-					typesystem.IgnoreMatching("VideoCodecFrame.set_user_data"),
-					typesystem.IgnoreMatching("VideoCodecFrame.get_user_data"),
-					// returns a gconstpointer to an array, manually implemented instead
-					typesystem.IgnoreMatching("VideoFormat.get_palette"),
-				},
+			},
+			"GstController-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstGL-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstMpegts-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstNet-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
 			},
 			"GstPbutils-1": {
 				MinVersion: "1.26",
@@ -248,6 +257,45 @@ var Data = genmain.Data{
 					typesystem.IgnoreMatching("DiscovererVideoInfoClass"),
 					typesystem.IgnoreMatching("EncodingTargetClass"),
 				},
+			},
+			"GstPlay-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstPlayer-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstRtp-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstRtsp-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstSdp-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstTag-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+			},
+			"GstVideo-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
+				IgnoredDefinitions: []typesystem.IgnoreFunc{
+					// must be implemented manually
+					typesystem.IgnoreMatching("VideoCodecFrame.set_user_data"),
+					typesystem.IgnoreMatching("VideoCodecFrame.get_user_data"),
+					// returns a gconstpointer to an array, manually implemented instead
+					typesystem.IgnoreMatching("VideoFormat.get_palette"),
+				},
+			},
+			"GstWebRTC-1": {
+				MinVersion: "1.26",
+				MaxVersion: "1.26",
 			},
 		},
 	},

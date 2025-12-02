@@ -361,27 +361,6 @@ func PlayMessageParseBuffering(msg *gst.Message) uint {
 	return percent
 }
 
-// PlayMessageParseBufferingPercent wraps gst_play_message_parse_buffering_percent
-// 
-// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_buffering_percent
-//
-// Deprecated: (since 1.26.0) see the provided link for the reason
-func PlayMessageParseBufferingPercent(msg *gst.Message) uint {
-	var carg1 *C.GstMessage // in, none, converted
-	var carg2 C.guint       // out, full, casted
-
-	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
-
-	C.gst_play_message_parse_buffering_percent(carg1, &carg2)
-	runtime.KeepAlive(msg)
-
-	var percent uint
-
-	percent = uint(carg2)
-
-	return percent
-}
-
 // PlayMessageParseDurationChanged wraps gst_play_message_parse_duration_changed
 // 
 // see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_duration_changed
@@ -392,27 +371,6 @@ func PlayMessageParseDurationChanged(msg *gst.Message) gst.ClockTime {
 	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
 
 	C.gst_play_message_parse_duration_changed(carg1, &carg2)
-	runtime.KeepAlive(msg)
-
-	var duration gst.ClockTime
-
-	duration = gst.ClockTime(carg2)
-
-	return duration
-}
-
-// PlayMessageParseDurationUpdated wraps gst_play_message_parse_duration_updated
-// 
-// see also https://gstreamer.freedesktop.org/documentation/play#gst_play_message_parse_duration_updated
-//
-// Deprecated: (since 1.26.0) see the provided link for the reason
-func PlayMessageParseDurationUpdated(msg *gst.Message) gst.ClockTime {
-	var carg1 *C.GstMessage  // in, none, converted
-	var carg2 C.GstClockTime // out, full, casted, alias
-
-	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
-
-	C.gst_play_message_parse_duration_updated(carg1, &carg2)
 	runtime.KeepAlive(msg)
 
 	var duration gst.ClockTime
@@ -927,12 +885,6 @@ type Play interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_seek
 	Seek(gst.ClockTime)
-	// SetAudioTrack wraps gst_play_set_audio_track
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track
-	//
-	// Deprecated: (since 1.26.0) see the provided link for the reason
-	SetAudioTrack(int32) bool
 	// SetAudioTrackEnabled wraps gst_play_set_audio_track_enabled
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track_enabled
@@ -969,12 +921,6 @@ type Play interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_rate
 	SetRate(float64)
-	// SetSubtitleTrack wraps gst_play_set_subtitle_track
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track
-	//
-	// Deprecated: (since 1.26.0) see the provided link for the reason
-	SetSubtitleTrack(int32) bool
 	// SetSubtitleTrackEnabled wraps gst_play_set_subtitle_track_enabled
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track_enabled
@@ -999,12 +945,6 @@ type Play interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_uri
 	SetURI(string)
-	// SetVideoTrack wraps gst_play_set_video_track
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_video_track
-	//
-	// Deprecated: (since 1.26.0) see the provided link for the reason
-	SetVideoTrack(int32) bool
 	// SetVideoTrackEnabled wraps gst_play_set_video_track_enabled
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_video_track_enabled
@@ -1844,32 +1784,6 @@ func (play *PlayInstance) Seek(position gst.ClockTime) {
 	runtime.KeepAlive(position)
 }
 
-// SetAudioTrack wraps gst_play_set_audio_track
-// 
-// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track
-//
-// Deprecated: (since 1.26.0) see the provided link for the reason
-func (play *PlayInstance) SetAudioTrack(streamIndex int32) bool {
-	var carg0 *C.GstPlay // in, none, converted
-	var carg1 C.gint     // in, none, casted
-	var cret  C.gboolean // return
-
-	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
-	carg1 = C.gint(streamIndex)
-
-	cret = C.gst_play_set_audio_track(carg0, carg1)
-	runtime.KeepAlive(play)
-	runtime.KeepAlive(streamIndex)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
 // SetAudioTrackEnabled wraps gst_play_set_audio_track_enabled
 // 
 // see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_audio_track_enabled
@@ -2033,32 +1947,6 @@ func (play *PlayInstance) SetRate(rate float64) {
 	runtime.KeepAlive(rate)
 }
 
-// SetSubtitleTrack wraps gst_play_set_subtitle_track
-// 
-// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track
-//
-// Deprecated: (since 1.26.0) see the provided link for the reason
-func (play *PlayInstance) SetSubtitleTrack(streamIndex int32) bool {
-	var carg0 *C.GstPlay // in, none, converted
-	var carg1 C.gint     // in, none, casted
-	var cret  C.gboolean // return
-
-	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
-	carg1 = C.gint(streamIndex)
-
-	cret = C.gst_play_set_subtitle_track(carg0, carg1)
-	runtime.KeepAlive(play)
-	runtime.KeepAlive(streamIndex)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
 // SetSubtitleTrackEnabled wraps gst_play_set_subtitle_track_enabled
 // 
 // see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_subtitle_track_enabled
@@ -2191,32 +2079,6 @@ func (play *PlayInstance) SetURI(uri string) {
 	C.gst_play_set_uri(carg0, carg1)
 	runtime.KeepAlive(play)
 	runtime.KeepAlive(uri)
-}
-
-// SetVideoTrack wraps gst_play_set_video_track
-// 
-// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-types.html#gst_play_set_video_track
-//
-// Deprecated: (since 1.26.0) see the provided link for the reason
-func (play *PlayInstance) SetVideoTrack(streamIndex int32) bool {
-	var carg0 *C.GstPlay // in, none, converted
-	var carg1 C.gint     // in, none, casted
-	var cret  C.gboolean // return
-
-	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
-	carg1 = C.gint(streamIndex)
-
-	cret = C.gst_play_set_video_track(carg0, carg1)
-	runtime.KeepAlive(play)
-	runtime.KeepAlive(streamIndex)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
 }
 
 // SetVideoTrackEnabled wraps gst_play_set_video_track_enabled
@@ -3121,12 +2983,6 @@ type PlayStreamInfo interface {
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_codec
 	GetCodec() string
-	// GetIndex wraps gst_play_stream_info_get_index
-	// 
-	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_index
-	//
-	// Deprecated: (since 1.26.0) see the provided link for the reason
-	GetIndex() int32
 	// GetStreamID wraps gst_play_stream_info_get_stream_id
 	// 
 	// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_stream_id
@@ -3227,27 +3083,6 @@ func (info *PlayStreamInfoInstance) GetCodec() string {
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
 	}
-
-	return goret
-}
-
-// GetIndex wraps gst_play_stream_info_get_index
-// 
-// see also https://gstreamer.freedesktop.org/documentation/play/gstplay-media-info.html#gst_play_stream_info_get_index
-//
-// Deprecated: (since 1.26.0) see the provided link for the reason
-func (info *PlayStreamInfoInstance) GetIndex() int32 {
-	var carg0 *C.GstPlayStreamInfo // in, none, converted
-	var cret  C.gint               // return, none, casted
-
-	carg0 = (*C.GstPlayStreamInfo)(UnsafePlayStreamInfoToGlibNone(info))
-
-	cret = C.gst_play_stream_info_get_index(carg0)
-	runtime.KeepAlive(info)
-
-	var goret int32
-
-	goret = int32(cret)
 
 	return goret
 }

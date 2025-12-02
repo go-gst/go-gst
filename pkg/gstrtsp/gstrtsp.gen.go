@@ -5028,30 +5028,6 @@ func RTSPTransportGetManager(trans RTSPTransMode, option uint) (string, RTSPResu
 	return manager, goret
 }
 
-// RTSPTransportGetMime wraps gst_rtsp_transport_get_mime
-// 
-// see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_get_mime
-//
-// Deprecated: see the provided link for the reason
-func RTSPTransportGetMime(trans RTSPTransMode) (string, RTSPResult) {
-	var carg1 C.GstRTSPTransMode // in, none, casted
-	var carg2 *C.gchar           // out, none, string
-	var cret  C.GstRTSPResult    // return, none, casted
-
-	carg1 = C.GstRTSPTransMode(trans)
-
-	cret = C.gst_rtsp_transport_get_mime(carg1, &carg2)
-	runtime.KeepAlive(trans)
-
-	var mime  string
-	var goret RTSPResult
-
-	mime = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-	goret = RTSPResult(cret)
-
-	return mime, goret
-}
-
 // RTSPTransportInit wraps gst_rtsp_transport_init
 // 
 // see also https://gstreamer.freedesktop.org/documentation/rtsp/gstrtsptransport.html#gst_rtsp_transport_init
